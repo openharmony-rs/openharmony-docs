@@ -105,7 +105,7 @@
       - [Data Object State Management FAQs](state-management/arkts-state-management-faq-inner-class.md)
       - [In-App State Management and Other FAQs](state-management/arkts-state-management-faq-application-and-others.md)
       - [Common Methods for Locating the Problem That Component Refresh Is Not Triggered When State Variables Change](state-management/troubleshooting-state-manage.md)
-    - [State Management Terms](state-management/arkts-state-management-glossary.md)
+    - [State Management Glossary](state-management/arkts-state-management-glossary.md)
   - UI Paradigm Rendering Control<!--arkts-rendering-control-->
     - [Rendering Control Overview](rendering-control/arkts-rendering-control-overview.md)
     - [if/else: Conditional Rendering](rendering-control/arkts-rendering-control-ifelse.md)

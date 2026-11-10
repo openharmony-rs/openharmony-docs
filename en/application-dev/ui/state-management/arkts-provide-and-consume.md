@@ -1,18 +1,17 @@
 # \@Provide and \@Consume Decorators: Two-Way Synchronization with Descendant Components
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=2fe87adc16af5a903a1eb4a9624e4d36fa962e3d translatedAt=2026-07-25T08:56:38.732Z pushedAt=2026-07-25T09:33:49.523Z -->
+<!-- md-trans-meta sourceCommit=471200c68ae4e4e45485585923907f9999ef399d translatedAt=2026-11-09T11:05:50.224Z pushedAt=2026-11-10T02:01:32.409Z nl=1 -->
 
 [\@Provide](../../reference/apis-arkui/arkui-ts/ts-state-management-provide.md#provide) and [\@Consume](../../reference/apis-arkui/arkui-ts/ts-state-management-consume.md#consume) are used for two-way data synchronization with descendent components and for passing state data across multiple levels. Unlike the named parameter mechanism used between parent and child components mentioned earlier, \@Provide and \@Consume break free from the parameter passing mechanism and enable cross-level transfer.
 
 An \@Provide decorated state variable exists in the ancestor component and is said to be "provided" to descendent components. An \@Consume decorated state variable is used in a descendent component. It is linked to ("consumes") the provided state variable in its ancestor component.
 
-\@Provide/\@Consume is bidirectional synchronization across component levels. Before reading the @Provide and @Consume documents, it would be helpful if you have a basic understanding of the basic syntax of the UI paradigm and custom components. You are advised to read [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), and [Creating a Custom Component](./arkts-create-custom-components.md) in advance. For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management Development](./arkts-state-management-faq.md).
+\@Provide/\@Consume is a two-way synchronization across component levels. Before reading the \@Provide and \@Consume documents, you are advised to have a basic understanding of the basic UI paradigm syntax and custom components. It is recommended that you read the following in advance: [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), and [Creating Custom Components](./arkts-create-custom-components.md). For FAQs, see [State Management FAQs](./arkts-state-management-faq.md).
 
 > **NOTE**
 >
@@ -30,12 +29,11 @@ An \@Provide decorated state variable exists in the ancestor component and is sa
 
 \@Provide/\@Consume decorated state variables have the following features:
 
-- State variables decorated with @Provide are automatically available to all their descendant components, eliminating the need for manual variable passing through component hierarchies.
+- State variables decorated with \@Provide are automatically available to all their descendant components, eliminating the need for manual variable passing through component hierarchies.
 
-- The descendants use \@Consume to obtain the variables provided by \@Provide and establish bidirectional data synchronization between \@Provide and \@Consume. [\@State](./arkts-state.md)/[\@Link](./arkts-link.md) The difference is that the former can be transferred between multi-level parent and child components more conveniently.
+- The descendants use \@Consume to obtain the variables provided by \@Provide and establish two-way synchronization between \@Provide and \@Consume. Unlike [\@State](./arkts-state.md)/[\@Link](./arkts-link.md), the former allows variables to be passed more conveniently between multi-level parent and child components.
 
 - \@Provide and \@Consume are bound using variable names or aliases. They must be of the same type. Otherwise, implicit type conversion occurs, causing application exceptions.
-
 ```ts
 // Binding through the same variable name
 @Provide age: number = 0;
@@ -54,27 +52,24 @@ An \@Provide decorated state variable exists in the ancestor component and is sa
 @Consume('id') a: number;
    
 ```
-
 When \@Provide specifies a variable alias, both the original variable name and alias are stored. \@Consume uses its specified alias (or variable name if no alias exists) as the search key. A binding is successfully established when \@Consume's search key matches either the variable name or alias stored by \@Provide.
 
 ## Decorator Description
 
 <!--Table: 25%; 75%-->
-
 | \@Provide Decorator| Description                                      |
 | -------------- | ---------------------------------------- |
 | Parameters         | Alias: constant string, optional.<br>If an alias is specified, the variable is bound using the alias. If no alias is specified, the variable is bound using the variable name.<br>allowOverride: (optional) overriding allowed. The value is of the string type.<br>If allowOverride is used to specify an alias, the alias can be overridden, that is, the @Provide variable with the same name can exist.<br>If allowOverride is not used, the name must be unique. For details, see [Support for the allowOverride Parameter](#support-for-the-allowoverride-parameter).|
-| Allowed variable types     | Object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Example of @Provide and @Consume Supporting Union Types](#example-of-provide-and-consume-supporting-union-types).|
+| Allowed variable types      | Object, class, string, number, Boolean, enum, and array of these types.<br/>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br/>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Example of @Provide and @Consume Supporting Union Types](#example-of-provide-and-consume-supporting-union-types). |
 | Disallowed variable types| Function.|
 | Initialization Rules| Local default values must be defined.<br>A non-undefined variable can be transferred from the parent component. In this case, the variable is used for initialization.<br>If the parent component does not transfer a variable or transfers an undefined variable, the local default value is used for initialization.|
-| Synchronization rule       | **When a child component is used**:<br>Does not synchronize with any type of variable in the parent component.<br>When the external variable transferred by the parent component is initialized for \@Provide, it is used only as the initial value. The subsequent variable changes will not be synchronized to \@Provide.<br>**When the parent component is used**:<br>You can initialize the regular variables, \@State, \@Link, [\@Prop](./arkts-prop.md), and \@Provide of the child component.<br>The changes of the \@Provide variable are synchronized to the \@Link and \@Prop variables of the child component.<br>The \@Consume variable that matches the alias in the descendant child component is double-synchronized.|
+| Synchronization rules        | **When used in a child component:** <br/>It is not synchronized with any typed variable in the parent component.<br/>When an external variable passed by the parent component initializes @Provide, it serves only as the initial value, and subsequent changes to the variable are not synchronized to @Provide.<br/>**When used in a parent component:** <br/>It can initialize the regular variables, \@State, \@Link, [\@Prop](./arkts-prop.md), and \@Provide variables in child components. Changes to the @Provide variable are synchronized to the \@Link and \@Prop variables of child components.<br/>It is bidirectionally synchronized with the \@Consume variable whose alias matches in descendant child components. |
 
-  **Figure 1** \@Provide initialization rule 
+  **Figure 1** \@Provide initialization rule  
 
 ![provide-initialization](figures/provide-initialization.PNG)
 
 <!--Table: 25%; 75%-->
-
 | \@Consume Decorator | Description                                                        |
 | -------------------- | ------------------------------------------------------------ |
 | Parameters          | Alias: constant string, optional.<br>If an alias is specified, the variable is bound via the alias; if not, it is bound via the variable name.|
@@ -83,7 +78,8 @@ When \@Provide specifies a variable alias, both the original variable name and a
 | Initialization Rules          | In versions earlier than API version 20, the default value of the variable decorated by \@Consume cannot be set locally. The variable decorated by \@Provide must match the variable decorated by \@Consume.<br>Since API version 20, \@Consume supports default values. If a matching @Provide is found, the \@Provide decorated variable value takes precedence as the initial value. If the \@Provide variable is not matched, the local default value is used. For details, see [Setting Default Values for @Consume Decorated Variables](#setting-default-values-for-consume-decorated-variables).|
 | Synchronization Rule            | **When a child component is used**:<br>The \@Provide variable that matches the ancestor component is synchronized bidirectionally.<br>**When the parent component is used**:<br>You can initialize the regular variables, \@State, \@Link, \@Prop, and \@Provide of child components.<br>Changes of the @Consume variable are synchronized to the \@Link and \@Prop variables of the child component.|
 
-  **Figure 2** \@Consume initialization rules
+  **Figure 2** \@Consume initialization rules  
+
 
 ![consume-initialization](figures/consume-initialization.PNG)
 
@@ -106,19 +102,13 @@ When \@Provide specifies a variable alias, both the original variable name and a
 ### Framework Behavior
 
 1. Initial rendering:
-
    1. The @Provide decorated variable is passed to all child components of the owning component as a map.
-
    2. If \@Consume decorated variables are used in child components, the framework searches the map for \@Provide decorated variables matching the variable name or alias. If no match is found: Before API version 20: A JS error is thrown. Since API version 20: The framework checks whether \@Consume has a default value; if not, a JS error is thrown.
-
    3. During initialization of @Consume variables, if a matching @Provide is found in the map, the process resembles \@State/\@Link initialization: \@Consume saves the \@Provide reference and registers itself with the \@Provide decorated variable.
-
    4. Since API version 20, if no matching \@Provide is found and \@Consume has a default value, \@Consume creates a temporary data source using the default value to maintain notification chain continuity.
 
 2. When the \@Provide decorated variable is updated:
-
-   1. The system traverses and updates all system components (**elementId**) and state variable (\@Consume) that depend on the \@Provide decorated variable, with which the \@Consume decorated variable has registered itself on initial render. After the \@Provide decorated variable of the parent component is changed, all system components (**elementId**) and state variables (\@Consume) that depend on the parent component are traversed and updated.
-
+   1. As can be seen from the initial rendering steps, the child component \@Consume has registered itself with the parent component. After the parent component \@Provide variable is changed, all system components (elementId) and state variables (\@Consume) that depend on it are traversed and updated.
    2. After the \@Consume decorated variable is updated in all owning child components, all system components (**elementId**) that depend on the \@Consume decorated variable are updated. In this way, changes to the \@Provide decorated variable are synchronized to the \@Consume decorated variable.
 
 3. When the \@Consume decorated variable is updated:
@@ -170,9 +160,8 @@ When \@Provide specifies a variable alias, both the original variable name and a
    ```
 
    **Correct Usage**
-
    <!-- @[provide_consume_proper_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemo.ets) --> 
-
+   
    ``` TypeScript
    @Component
    struct Child {
@@ -216,7 +205,7 @@ When \@Provide specifies a variable alias, both the original variable name and a
     @Provide('b') num: number = 10;
     ```
 
-4. Before API version 20: A runtime error is thrown if no matching \@Provide decorated variable is found during \@Consume initialization. Starting from API version 20, when initializing an @Consume variable, if the developer has not defined an @Provide variable with the corresponding key and has not set a default value, the framework will throw a runtime error. Starting from API version 23, it will return error code [140112](../../reference/apis-arkui/errorcode-stateManagement.md#140112-consume-does-not-have-the-corresponding-provide), indicating that the initialization of the @Consume variable failed because the corresponding @Provide variable with that key could not be found and no default value was set.
+4. Before API version 20: A runtime error is thrown if no matching \@Provide decorated variable is found during \@Consume initialization. Starting from API version 20, when initializing an @Consume variable, if you have not defined an @Provide variable with the corresponding key and have not set a default value, the framework will throw a runtime error. Starting from API version 23, it will return error code [140112](../../reference/apis-arkui/errorcode-stateManagement.md#140112-consume-does-not-have-the-corresponding-provide), indicating that the initialization of the @Consume variable failed because the corresponding @Provide variable with that key could not be found and no default value was set.
 
    **Incorrect Usage**
 
@@ -248,9 +237,8 @@ When \@Provide specifies a variable alias, both the original variable name and a
     ```
 
    **Correct Usage**
-
    <!-- @[provide_consume_proper_demo_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemoTwo.ets) --> 
-
+   
    ``` TypeScript
    @Component
    struct Child {
@@ -302,7 +290,7 @@ When \@Provide specifies a variable alias, both the original variable name and a
    In non-BuilderNode scenarios, it is recommended that you maintain identical types for \@Provide/\@Consume pairs. Although runtime validation is not strict, the \@Consume variable undergoes implicit type conversion to match the \@Provide variable type during initialization.
 
    <!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) -->
-
+   
    ``` TypeScript
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
    
@@ -368,9 +356,9 @@ When \@Provide specifies a variable alias, both the original variable name and a
    ![provide_consume_builder_node](figures/provide_consume_builder_node.png)
 
 7. If the parent component passes **undefined**, the variable decorated by \@Provide is still initialized using the local default value.
-
+   
    <!-- @[provide_consume_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeUndefined.ets) -->  
-
+   
    ``` TypeScript
    @Entry
    @Component
@@ -783,7 +771,7 @@ struct Parent {
 
 ### Example of @Provide and @Consume Supporting Union Types
 
-\@Provide and \@Consume support union types, **undefined**, and **null**. In the following example, the type of count is **string** | **undefined**. When **Button** in the ancestor component **Ancestors** is clicked to change the attribute or type of **count**, the **Child** component refreshes accordingly.
+@Provide and @Consume support union types, **undefined**, and **null**. In the following example, the type of count is **string** | **undefined**. When **Button** in the ancestor component **Ancestors** is clicked to change the value or type of **count**, the **Child** component refreshes accordingly.
 
 <!-- @[provide_consume_Provide_Consume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeFederation.ets) --> 
 
@@ -928,15 +916,10 @@ struct GrandParent {
 ![provide_consume_provide_allowoverride](figures/provide_consume_provide_allowoverride.gif)
 
 In the preceding example:
-
 - GrandParent declares @Provide('reviewVotes') reviewVotes: number = 40.
-
 - Parent is a child component of GrandParent. Declare @Provide as allowOverride and override @Provide('reviewVotes') reviewVotes: number = 40 of GrandParent. If **allowOverride** is not declared, a runtime error is thrown to indicate that the @Provide decorated variable is already in use. The same case applies to **Child**.
-
 - The @Consume decorated variable of **GrandSon** is initialized from the @Provide decorated variable of its nearest ancestor under the same attribute name.
-
 - **GrandSon** finds that @Provide with the same attribute name is in the ancestor **Child**. Therefore, the initial value of @Consume('reviewVotes') reviewVotes: number is **10**. If a @Provide decorated variable with the same attribute name as @Consume decorated variable is not defined in **Child**, **GrandSon** continues its search in **Parent** until it finds the one decorated by @Provide with the same attribute name, whose value is **20**.
-
 - If no such a variable is found when **GrandSon** has reached the root node, an error is thrown to indicate that @Provide could not be found for @Consume initialization.
 
 ### Setting Default Values for @Consume Decorated Variables
@@ -1056,13 +1039,9 @@ struct Child {
 ![provide_consume_decorated_variable](figures/provide_consume_decorated_variable.gif)
 
 In the preceding example:
-
 - Parent declares **@Provide('firstKey') provideOne: string | undefined = undefined** and **@Provide('secondKey') provideTwo: string = 'the second provider'**.
-
 - Child declares **@Consume('firstKey') textOne: string | undefined = 'child'**, **@Consume('secondKey') textTwo: string**, and **@Consume('thirdKey') textThree: string = 'defaultValue'**.
-
 - **Child** is a child component of **Parent**. When **Child** initializes the three \@Consume decorated attributes, **textOne** binds to the **provideOne** attribute in **Parent** via the **'firstKey'** alias. The value of **provideOne** overrides the default value of **textOne**, so **textOne** is initialized to **undefined**. **textTwo** binds to the **provideTwo** attribute in **Parent** via the **'secondKey'** alias, so **textTwo** is initialized to **'the second provider'**. **textThree** finds no match in the ancestor component. If \@Consume has no default value, a runtime error is thrown. In this example, **textThree** has the default value **'defaultValue'**, so **textThree** is initialized to **'defaultValue'**.
-
 - The default value set for @Consume decorated variables takes effect only when no matching @Provide (via alias or name) is found in ancestor components.
 
 ### Using \@Consume to Establish Two-Way Synchronization with \@Provide Across BuilderNode Scenarios
@@ -1072,31 +1051,19 @@ In the preceding example:
 > Since API version 20, @Provide and @Consume support cross-BuilderNode pairing.
 
 \@Provide and \@Consume are supported within BuilderNode. Key considerations:
-
 1. \@Consume variables defined in BuilderNode subtrees must have default values, or \@Provide must exist within the subtree. Otherwise, runtime errors occur.
-
 2. After the BuilderNode is mounted to the tree, \@Consume with default values searches upward for \@Provide. Upon finding the nearest matching \@Provide by key, \@Consume establishes two-way synchronization. If no match is found, \@Consume retains its default value.
-
 3. After the bidirectional synchronization relationship is established, if the value of the @Provide-decorated variable is different from the default value of @Consume, the [\@Watch](./arkts-watch.md) method of @Consume is called back, and the @Watch methods of variables that have synchronization relationships with @Consume are also called back. For example, @Consume triggers the @Watch method of the @Link that is bidirectionally synchronized with it.
-
 4. When **BuilderNode** is unmounted from the tree, \@Consume searches for the corresponding \@Provide again. If the previously paired \@Provide is unavailable, the synchronization relationship breaks and \@Consume reverts to its default value.
-
 5. When \@Consume disconnects from \@Provide and reverts to the default value, if the value changes from \@Provide's value to \@Consume's default, \@Watch methods on \@Consume and synchronized variables are triggered.
 
 In the following example:
-
 1. Click **add Child**.
-
    - Construct the child node Child under BuilderNode. If \@Consume in Child does not find \@Provide, use the local default value for initialization.
-
    - When the BuilderNode is added to the tree, \@Consume in Child finds \@Provide in the nearest Index, updates \@Consume from the default value to the value of \@Provide, and calls back the \@Watch method of \@Consume.
-
 2. After \@Provide and \@Consume are paired, a bidirectional synchronization relationship is established. Click either **Text(`@Provide: ${this.message}`)** or **Text(`@Consume ${this.message}`)**. Both **Text** components bound to \@Provide and \@Consume will refresh. In addition, the \@Watch methods on both \@Provide and \@Consume are triggered.
-
 3. Click remove Child. In the tree under BuilderNode, \@Consume in Child is disconnected from \@Provide in Index. \@Consume in Child is restored to the default value, and the \@Watch method of \@Consume is called back.
-
 4. Click dispose Child to release the child nodes of BuilderNode, destroy the child nodes of BuilderNode, and execute [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear).
-
 <!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeTwoWay.ets) -->  
 
 ``` TypeScript
@@ -1387,5 +1354,3 @@ struct CustomWidgetChild {
 ```
 
 ![provide_consume_right](figures/provide_consume_right.gif)
-
-<!--no_check-->

@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren--> 
 <!--Tester: @TerryTsao--> 
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:23:07.963Z pushedAt=2026-07-24T03:23:19.860Z -->
+<!-- md-trans-meta sourceCommit=8917fa9a06fba0322d5ee6f97bf1bc1616272188 translatedAt=2026-11-09T11:14:45.907Z pushedAt=2026-11-10T01:32:36.356Z nl=1 -->
 
 ## Overview
 
@@ -69,7 +69,7 @@ Before API version 19, mixed usage scenarios are subject to relatively strict va
   @Local @Param message: string = 'Hello World'; // Multiple V2 decorators are not allowed to decorate the same variable, resulting in a compilation error
   ```
 
-Except for capability extension decorators such as \@Watch, \@Once, and \@Require, which can be used in conjunction with other decorators, other decorators are not allowed to decorate the same variable.
+  Except for capability extension decorators such as \@Watch, \@Once, and \@Require, which can be used in conjunction with other decorators, other decorators are not allowed to decorate the same variable.
 
 
 ## Using V2 Custom Components in V1
@@ -189,8 +189,8 @@ struct ChildTwo {
 @Entry
 @Component
 struct IndexTwo {
-  message: string = 'Hello World'; // Primitive type.
-  undefinedVal: undefined = undefined; // Primitive type, undefined.
+  message: string = 'Hello World'; // Simple type.
+  undefinedVal: undefined = undefined; // Simple type, undefined.
   info: InfoTwo = new InfoTwo(); // Class type.
   set: Set<number> = new Set([10, 20]); // Built-in type.
 
@@ -222,7 +222,7 @@ struct IndexTwo {
 
 ### Passing simple type state variables
 
-When using a V2 component in V1, decorators in V1 components only support decorating simple type data, including: boolean, number, string, null, and undefined. V2 components use \@Param to receive parameters.
+When using a V2 component in V1, decorators in V1 components only support decorating simple type data, including: boolean, number, enum, string, null, and undefined. V2 components use \@Param to receive parameters.
 
 If a Class type or built-in type (Array, Map, Set, Date) decorated with \@State is passed when using a V2 component in V1, a compilation error will occur. In the following example code, the \@State decorator must be removed from the info and set variables. The behavior of \@Prop, \@Link, \@ObjectLink, \@Provide, \@Consume, \@StorageProp, \@StorageLink, \@LocalStorageProp, and \@LocalStorageLink is consistent with \@State.
 
@@ -285,8 +285,8 @@ struct ChildFour {
 @Entry
 @Component
 struct IndexFour {
-  @State message: string = 'Hello World'; // Primitive type, supported.
-  @State undefinedVal: undefined = undefined; // Primitive type; undefined; supported
+  @State message: string = 'Hello World'; // Simple type, supported.
+  @State undefinedVal: undefined = undefined; // Simple type; undefined; supported
   @State info: InfoFour = new InfoFour(); // Class type is not supported for passing, resulting in a compilation error. Remove @State to eliminate the compilation error.
   @State set: Set<number> = new Set([10, 20]); // Built-in type is not supported for passing, resulting in a compilation error. Remove @State to eliminate the compilation error.
 
@@ -322,15 +322,15 @@ When using V2 components in V1 to pass parameters, V1 decorators only support de
 
 **Class decorated by \@Observed**
 
-V2 decorators cannot be used together with @Observed. When V1 passes a class decorated by @Observed to a V2 custom component, do not directly use @Param to receive the data. As shown in the following figure, first define a V1BridgeComponent as the bridging layer. Listen to the data of the V1 component in the bridging layer and synchronize it to the singleton data defined in V2. The V1 component directly uses V1BridgeComponent, and the V2 custom component is introduced within V1BridgeComponent.
+V2 decorators cannot be used together with @Observed. When V1 passes a class decorated by @Observed to a V2 custom component, do not directly use @Param to receive the data. As shown in the following figure, first define a V1BridgeComponent as the bridge layer. Listen to the data of the V1 component in the bridge layer and synchronize it to the singleton data defined in V2. The V1 component directly uses V1BridgeComponent, and the V2 custom component is introduced within V1BridgeComponent.
 
 ![mixusage-example-observed-class](./figures/mixusage-example-observed-class.png)
 
 For specific implementation, refer to the following example code:
 
 1. Use @ObservedV2 to decorate the class singleton ViewModelV2. The V2 component V2Comp directly uses the singleton ViewModelV2 instance for UI rendering.
-2. Add a bridging component V1BridgeComponent decorated by @Component between the V1 component V1Comp and the V2 component V2Comp. Use @Watch to listen and assign the class data decorated by @Observed in V1 to the class data decorated by @ObservedV2 in V2.
-3. Directly introduce the bridge component V1BridgeComponent in the V1 component V1Comp, and the bridge component V1BridgeComponent introduces the V2 component V2Comp.
+2. Add a bridge component V1BridgeComponent decorated by @Component between the V1 component V1Comp and the V2 component V2Comp. Use @Watch to listen and assign the class data decorated by @Observed in V1 to the class data decorated by @ObservedV2 in V2.
+3. Directly introduce V1BridgeComponent in V1Comp, and V1BridgeComponent introduces V2Comp.
 
 <!-- @[v1_to_v2_observed_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1ToV2_ObservedClass.ets) -->
 

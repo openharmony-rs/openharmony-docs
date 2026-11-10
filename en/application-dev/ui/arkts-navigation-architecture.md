@@ -1,42 +1,30 @@
 # Navigation Architecture
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @huangxiaolinabc-->
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d183ccbb4b9da18321b5f157f9120086cf3f2d25 translatedAt=2026-08-04T06:35:07.592Z pushedAt=2026-08-04T07:51:08.570Z -->
+<!-- md-trans-meta sourceCommit=eab4216f10b2702ab78e3b75753de76f01c6e47b translatedAt=2026-11-09T10:57:12.602Z pushedAt=2026-11-10T01:01:19.676Z nl=1 -->
 
-The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component is used to implement redirection between [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) pages, pass parameters between different **NavDestination** pages, and provide flexible stack redirections to facilitate access to and reuse of different pages.
+The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component is used to implement redirection between [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) pages, pass parameters between different **NavDestination** pages, and provide flexible stack navigation to facilitate access to and reuse of different pages.
 
 ## Overall Architecture
 
 The **Navigation** component structure is complex and contains the following key concepts:
 
 - [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md): root view container. All navigation pages are wrapped by this container and can be displayed in split-view mode. Generally, this component is used as the global root container.
-
 - [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md): subpage container. All page routing operations for navigation are performed on **NavDestination**, including the following areas:
-
   - [Title bar](#title-bar): located at the top of **NavDestination**, including the back button and title. The default style is provided, but customization is also supported.
-
   - [Menu bar](#menu-bar): located at the top of **NavDestination** and is user-defined. The system provides the default style.
-
   - Content area: child component of **NavDestination**. The content is user-defined.
-
   - [Toolbar](#toolbar): located at the bottom of **NavDestination** and is user-defined. The system provides the default style.
-
 - [NavBar](#navbar-navigation-bar): navigation bar, also called the main page, which contains the following:
-
   - [Title bar](#title-bar): located at the top of **NavBar**, including the back button and title. The system provides the default style and supports customization.
-
   - [Menu bar](#menu-bar): located at the top of **NavBar**. The system provides the default style and also supports customization.
-
   - Content area: located in the center of **NavBar**. The content is user-defined.
-
   - [Toolbar](#toolbar): located at the bottom of **NavBar**. The system provides the default style and also supports customization.
-
-- [NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10): navigation controller, which is used to manage the **NavDestination** page stack. It encapsulates various APIs for controlling page redirection and can be inherited and rewritten. It must be used together with **Navigation**.
+- [NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10): navigation controller, which is used to manage the **NavDestination** page stack. It encapsulates various APIs for controlling page navigation and can be inherited and rewritten. It must be used together with **Navigation**.
 
 **Figure 1** Overall Navigation architecture
 
@@ -82,7 +70,7 @@ As the root container of a subpage, **NavDestination** supports universal attrib
 
 ## NavBar (Navigation Bar)
 
-The child node directly loaded in **Navigation** is called a navigation bar (**NavBar**). The **NavBar** is the home page of entire navigation when displayed in single-column mode, while it is a fixed navigation bar in split-view mode. By default, the navigation bar is displayed on the left. You can also use the [navBarPosition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarposition9) attribute to control it.
+The child node directly loaded in **Navigation** is called a navigation bar (**NavBar**). The **NavBar** is the home page of entire navigation when displayed in single-column mode, while it is a fixed navigation bar in multi-column mode. By default, the navigation bar is displayed on the left. You can also use the [navBarPosition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarposition9) attribute to control it.
 
 You can use [hideNavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9) to control the visibility of the navigation bar, and use [navBarWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidth9) to control the width of the navigation bar in dual-column mode. The navigation bar does not belong to the page stack and does not have the page lifecycle. Therefore, it cannot be controlled by the methods of **NavPathStack**. In addition, [onNavBarStateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#onnavbarstatechange9) can be used to detect the visibility of the navigation bar, [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9) allows you to control the switching between single-column and dual-column modes, and [onNavigationModeChange](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#onnavigationmodechange11) is used to detect the switching between single-column and dual-column modes.
 
@@ -91,7 +79,7 @@ The content area of the navigation bar can be specified in either of the followi
  - Method 1: Directly specify the child node of **Navigation**.
 
   <!-- @[NavigationDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExample.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -203,7 +191,7 @@ The title bar is at the top of the page and displays the page name and operation
   ![mini](figures/mini.jpg)
 
   <!-- @[NavigationTitleModeMini](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeMini.ets) -->
-
+  
   ``` TypeScript
   Navigation() {
     // ...
@@ -220,7 +208,7 @@ The title bar is at the top of the page and displays the page name and operation
   ![free1](figures/free1.jpg)
 
   <!-- @[NavigationTitleModeFUll](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeFull.ets) -->
-
+  
   ``` TypeScript
   Navigation() {
     // ...
@@ -237,7 +225,7 @@ The menu bar is located at the top of the component. You can set the menu bar of
 ![menu-bar-2](figures/menu-bar-2.jpg)
 
    <!-- @[NavigationMenuThreeImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeImage.ets) -->
-
+   
    ``` TypeScript
    let menuItem: NavigationMenuItem  = {
      'value': 'func',
@@ -254,7 +242,7 @@ The menu bar is located at the top of the component. You can set the menu bar of
 You can also reference images in the **resources** folder.
 
    <!-- @[NavigationMenuThreeResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeResource.ets) -->
-
+   
    ``` TypeScript
    let menuItem: NavigationMenuItem  = {
      'value': 'func',
@@ -275,7 +263,7 @@ You can also reference images in the **resources** folder.
 In portrait mode, a maximum of three buttons can be displayed on the menu bar. If there are more than three buttons, the extra buttons are collapsed.
 
    <!-- @[NavigationMenuFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusFour.ets) -->
-
+   
    ``` TypeScript
    let menuItem: NavigationMenuItem  = {
      'value': 'func',
@@ -299,7 +287,7 @@ The toolbar is located at the bottom of the component. You can set the toolbar o
 ![free3](figures/free3.jpg)
 
    <!-- @[ToolBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/ToolBar.ets) -->
-
+   
    ``` TypeScript
    let toolTmp: ToolbarItem = {
      'value': 'func',

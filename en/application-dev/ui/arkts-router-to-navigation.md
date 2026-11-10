@@ -5,7 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8d75ae784f56fc7e62ba636f357115f8f4b9c3ff translatedAt=2026-11-05T11:22:56.306Z pushedAt=2026-11-09T10:02:18.761Z nl=1 -->
+<!-- md-trans-meta sourceCommit=eab4216f10b2702ab78e3b75753de76f01c6e47b translatedAt=2026-11-09T11:00:15.893Z pushedAt=2026-11-10T01:04:36.598Z nl=1 -->
 
 The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component stands out for its wider range of animations, higher flexibility in one-time development for multi-device deployment, and more adaptable stack operations. This topic guides you through the transition from using APIs in the Router module to using the **Navigation** component in terms of page navigation, animation, and lifecycle.
 
@@ -191,16 +191,16 @@ The **Router** module leverages APIs from the @ohos.router module to perform pag
 <!-- @[get_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/GetRouter.ets) -->  
 
 ``` TypeScript
-// push page
+// Redirect to the page.
 this.getUIContext().getRouter().pushUrl({ url:'pages/PageOne', params: null });
 
-// pop page
+// Return to the previous page.
 this.getUIContext().getRouter().back({ url: 'pages/PageOne' });
 
-// replace page
+// Replace the current page.
 this.getUIContext().getRouter().replaceUrl({ url: 'pages/PageOne' });
 
-// clear all page
+// Clear all pages.
 this.getUIContext().getRouter().clear();
 
 // Obtain the size of the page stack.
@@ -234,21 +234,21 @@ struct Index {
 
 ``` TypeScript
 this.pathStack.pop();
-// push page
+// Redirect to the page.
 this.pathStack.pushPath({ name: 'PageOne' });
 
-// pop page
+// Return to the previous page.
 this.pathStack.pop();
 this.pathStack.popToIndex(1);
 this.pathStack.popToName('PageOne');
 
-// replace page
+// Replace the current page.
 this.pathStack.replacePath({ name: 'PageOne' });
 
-// clear all page
+// Clear all pages.
 this.pathStack.clear();
 
-//Obtain the size of the navigation stack.
+// Obtain the size of the navigation stack.
 let size: number = this.pathStack.size();
 
 // Delete all pages named PageOne from the stack.
@@ -380,7 +380,7 @@ struct CustomNode {
   pathStack: NavPathStack = new NavPathStack();
 
   aboutToAppear() {
-    // query navigation info
+    // Query navigation information.
     let navigationInfo: NavigationInfo = this.queryNavigationInfo() as NavigationInfo;
     if (navigationInfo !== undefined) {
       this.pathStack = navigationInfo.pathStack ;
@@ -679,7 +679,7 @@ The basic implementation is similar to the aforementioned dynamic routing with *
 
 **Solution 2: System Routing Table**
 
-Starting from API version 12, **Navigation** supports a system-level cross-module routing table solution. The overall design delegates route table management to the system: each business module (HSP/HAR) that requires routing independently configures a `router_map.json` file. When a route navigation is triggered, the app only needs to call **NavPathStack** to perform the navigation. The system then automatically completes dynamic loading of the routing module, component construction, and route navigation, thereby achieving module decoupling at the development level.
+Starting from API version 12, **Navigation** supports a system-level cross-module routing table solution. The overall design delegates route table management to the system: each service module (HSP/HAR) that requires routing independently configures a `router_map.json` file. When a route navigation is triggered, the app only needs to call **NavPathStack** to perform the navigation. The system then automatically completes dynamic loading of the routing module, component construction, and route navigation, thereby achieving module decoupling at the development level.
 
 For details, see [System Routing Table](./arkts-navigation-cross-package.md#system-routing-table).
 
@@ -700,10 +700,10 @@ function callbackFunc(info: uiObserver.RouterPageInfo) {
   hilog.info(DOMAIN, TAG,'RouterPageInfo is : ' + JSON.stringify(info));
 }
 
-// used in ability context.
+// Use in abilityContext.
 uiObserver.on('routerPageUpdate', this.context, callbackFunc);
 
-// used in UIContext.
+// Use in UIContext.
 uiObserver.on('routerPageUpdate', this.getUIContext(), callbackFunc);
 ```
 
