@@ -888,6 +888,23 @@ MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)�
 
 **起始版本**：26.0.0
 
+## ohos.permission.MANAGE_DATA_ENCRYPTION_POLICY
+
+允许设备管理应用管理数据加密策略。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
+
 ## ohos.permission.ENTERPRISE_REQUEST_PUBLISH_FORM
 
 允许设备管理应用在桌面添加卡片。
