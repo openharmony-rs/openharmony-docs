@@ -9,17 +9,17 @@
 
 - Framework Description<!--js-lite-framework-overview-->
   - [File Organization](js-lite-framework-file.md)
-  - [js Tag Configuration](js-lite-framework-js-tag.md)
+  - ["js" Tag](js-lite-framework-js-tag.md)
   - [app.js](js-lite-framework-js-file.md)
   - [Lifecycle](js-lite-framework-lifecycle.md)
   - [Multi-Language Capability](js-lite-framework-localization.md)
   - Syntax<!--js-lite-syntax-->
-    - [HML Syntax Reference](js-lite-framework-syntax-hml.md)
-    - [CSS Syntax Reference](js-lite-framework-syntax-css.md)
-    - [JS Syntax Reference](js-lite-framework-syntax-js.md)
+    - [HML](js-lite-framework-syntax-hml.md)
+    - [CSS](js-lite-framework-syntax-css.md)
+    - [JavaScript](js-lite-framework-syntax-js.md)
 - Component General Information<!--js-lite-universal-comp-inform-->
-  - [Common Events](js-lite-common-events.md)
-  - [Common Attributes](js-lite-common-attributes.md)
+  - [Universal Events](js-lite-common-events.md)
+  - [Universal Attributes](js-lite-common-attributes.md)
   - [Common Styles](js-lite-common-styles.md)
   - [Animation Styles](js-lite-components-common-animation.md)
   - [Media Query](js-lite-components-common-mediaquery.md)
@@ -43,6 +43,6 @@
   - [text](js-lite-components-basic-text.md)
 - Canvas Components<!--js-lite-canvas-comp-->
   - [canvas component](js-lite-components-canvas-canvas.md)
-  - [CanvasRenderingContext2D object](js-lite-components-canvas-canvasrenderingcontext2d.md)
+  - [CanvasRenderingContext2D](js-lite-components-canvas-canvasrenderingcontext2d.md)
 - Global APIs<!--js-lite-global-interface-->
-  - [Rotating Crown Event Listening](js-lite-common-monitorcrownevents.md)
+  - [Monitoring Rotating Crown Events](js-lite-common-monitorcrownevents.md)

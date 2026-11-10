@@ -1,4 +1,4 @@
-# WorkSchedulerExtensionContext (Work Scheduler Extension Context) (System API)
+# WorkSchedulerExtensionContext (System API)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->

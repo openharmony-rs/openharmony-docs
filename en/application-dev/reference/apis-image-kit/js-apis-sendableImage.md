@@ -385,7 +385,7 @@ function convertToPixelMap() {
 ```
 
 ## ISendable
-type ISendable = lang.ISendable
+type ISendable = [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)
 
 **ISendable** is the parent type of all sendable types except null and undefined. It does not have any necessary methods or properties.
 
@@ -393,7 +393,7 @@ type ISendable = lang.ISendable
 
 | Type               | Description                    |
 | ------------------ | ------------------------ |
-| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#isendable)  | Parent type of all sendable types.               |
+| [[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)](../apis-arkts/js-apis-arkts-lang.md#isendable)  | Parent type of all sendable types.               |
 
 ## PixelMap
 
@@ -1930,7 +1930,7 @@ function release(pixelMap: sendableImage.PixelMap) {
 
 Describes the size of an image.
 
-It inherits from [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable).
+It inherits from [[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)](../../arkts-utils/arkts-sendable.md#isendable).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1947,7 +1947,7 @@ It inherits from [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)
 
 Describes the region information.
 
-It inherits from [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable).
+It inherits from [[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)](../../arkts-utils/arkts-sendable.md#isendable).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 

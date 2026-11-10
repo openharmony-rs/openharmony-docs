@@ -24,7 +24,7 @@
   - Application<!--background-tasks-arkts-application-->
     - [WorkSchedulerExtensionContext (Work Scheduler Extension Context)](js-apis-WorkSchedulerExtensionContext.md)
     <!--Del-->
-    - [WorkSchedulerExtensionContext (Work Scheduler Extension Context)(System API)](js-apis-WorkSchedulerExtensionContext-sys.md)
+    - [WorkSchedulerExtensionContext (System API)](js-apis-WorkSchedulerExtensionContext-sys.md)
     <!--DelEnd-->
   - APIs No Longer Maintained<!--background-tasks-arkts-dep-->
     - [@ohos.backgroundTaskManager (Background Task Management)](js-apis-backgroundTaskManager.md)

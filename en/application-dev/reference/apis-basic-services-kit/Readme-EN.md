@@ -14,13 +14,13 @@
     - [@ohos.account.osAccount (OS Account Management)](js-apis-osAccount.md)
     <!--Del-->
     - [@ohos.account.distributedAccount (Distributed Account Management) (System API)](js-apis-distributed-account-sys.md)
-    - [@ohos.account.osAccount (System Account Management) (System API)](js-apis-osAccount-sys.md)
+    - [@ohos.account.osAccount (OS Account Management) (System API)](js-apis-osAccount-sys.md)
     <!--DelEnd-->
   - Device Management<!--device-management-arkts-->
     - [@ohos.batteryInfo (Battery Information)](js-apis-battery-info.md)
     - [@ohos.busManager.serial (Serial Port Management)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (Device Information)](js-apis-device-info.md)
-    - [@ohos.power (System Power Management)](js-apis-power.md)
+    - [@ohos.power (Power Management)](js-apis-power.md)
     - [@ohos.runningLock (RunningLock)](js-apis-runninglock.md)
     - [@ohos.thermal (Thermal Management)](js-apis-thermal.md)
     - [@ohos.usbManager (USB Manager)](js-apis-usbManager.md)
@@ -33,7 +33,7 @@
     - [@ohos.charger (Charging Type) (System API)](js-apis-charger-sys.md)
     - [@ohos.deviceAttest (Device Attestation) (System API)](js-apis-deviceAttest-sys.md)
     - [@ohos.power (Power Management) (System API)](js-apis-power-sys.md)
-    - [@ohos.systemCapability (SystemCapability) (System API)](js-apis-system-capability-sys.md)
+    - [@ohos.systemCapability (System Capability) (System API)](js-apis-system-capability-sys.md)
     - [@ohos.systemParameterEnhance (System Parameter) (System API)](js-apis-system-parameterEnhance-sys.md)
     - [@ohos.screenLock (Screen Lock) (System API)](js-apis-screen-lock-sys.md)
     - [@ohos.usbManager (USB Manager) (System API)](js-apis-usbManager-sys.md)
