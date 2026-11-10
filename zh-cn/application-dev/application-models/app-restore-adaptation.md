@@ -33,7 +33,7 @@
 | 遇到的情况 | 处理方式 | 详见 |
 | --- | --- | --- |
 | 页面参数含函数、回调、Proxy等不可序列化对象 | 替换为定位键、注册表等可重建数据 | [函数与类实例等字段的转换](#函数与类实例等字段的转换) |
-| 单条数据过大，超出want.parameters序列化后总大小上限（200KB） | 数据本体写入磁盘，快照只存文件名 | [超大数据分流](#超大数据分流) |
+| 单条数据过大，超出want.parameters序列化后总大小上限（200KB） | 数据本体写入磁盘，保存的数据里只存文件名 | [超大数据分流](#超大数据分流) |
 | 需要区分恢复启动与正常启动 | 组合判断三个条件：恢复重启标记为true、want.parameters中带回本应用保存的数据、launchReason为APP_RECOVERY | [判定恢复启动](#判定恢复启动) |
 
 
@@ -126,16 +126,16 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 
 ## 数据恢复
 
-适用：不需要恢复页面栈（可接受恢复启动后回到首页）、但有未持久化的临时数据（草稿、阅读进度、表单内容等）需要恢复的应用。系统不会恢复应用运行时状态（全局变量、用户数据、自定义业务数据），需要开发者通过[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)自行保存恢复。数据超出快照大小限制时，结合[超大数据分流](#超大数据分流)分流。
+适用：不需要恢复页面栈（可接受恢复启动后回到首页）、但有未持久化的临时数据（草稿、阅读进度、表单内容等）需要恢复的应用。系统不会恢复应用运行时状态（全局变量、用户数据、自定义业务数据），需要开发者通过[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)自行保存恢复。数据超出总大小限制时，结合[超大数据分流](#超大数据分流)分流。
 
 ### 最小适配
 
-临时数据（非持久化的页面状态、路由快照等）通过`onSaveState()`写入`wantParam`，恢复启动时从`want.parameters`读回。
+临时数据（非持久化的页面状态、页面路径等）通过`onSaveState()`写入`wantParam`，恢复启动时从`want.parameters`读回。
 
 适用条件有两条：
 
-- **数据可序列化**：只含string、number、boolean、数组等可序列化类型的字段。含Function、Callback、Proxy、类实例、Map/Set等无法序列化的字段时，这些字段不会进入快照且系统不报错，须先按[函数与类实例等字段的转换](#函数与类实例等字段的转换)替换为字符串、uri等可序列化形式；
-- **数据总量远低于快照大小上限200KB**：任一单项数据接近或超过上限时，按[超大数据分流](#超大数据分流)保存到文件。
+- **数据可序列化**：只含string、number、boolean、数组等可序列化类型的字段。含Function、Callback、Proxy、类实例、Map/Set等无法序列化的字段时，这些字段不会被保存且系统不报错，须先按[函数与类实例等字段的转换](#函数与类实例等字段的转换)替换为字符串、uri等可序列化形式；
+- **数据总量远低于总大小上限200KB**：任一单项数据接近或超过上限时，按[超大数据分流](#超大数据分流)保存到文件。
 
 保存与恢复分四步流程：
 
@@ -263,7 +263,7 @@ aboutToAppear(): void {
 
 - onSaveState()在系统触发备份的短暂时间窗内被调用，**只做同步读取**，不能在这里才异步采集数据，也不要做耗时操作——超时或异常可能导致本次数据不保存；
 - 恢复数据仅随恢复启动的这一次Want带回，后续启动不再携带；应用读取后应即从AppStorage删除，防止重复读取；
-- 若数据已持久化（preferences/RDB/文件），不要进备份快照——进程重建后持久化数据仍在，快照里只存定位键。
+- 若数据已持久化（preferences/RDB/文件），不要通过`onSaveState()`保存——进程重建后持久化数据仍在，保存的数据里只存定位键。
 
 > **注意：multiton多实例需按实例隔离AppStorage数据**
 >
@@ -573,7 +573,7 @@ if (routes !== undefined) {
 
 ### 函数与类实例等字段的转换
 
-Want parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组。**函数、Map/Set、Date、类实例无法序列化，无法随备份快照保存，须先按以下方式转换**（`onSaveState()`写入wantParam的数据与页面的param同理——param中这类字段在恢复时会被直接丢弃）：
+Want parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组。**函数、Map/Set、Date、类实例无法序列化，无法通过`onSaveState()`保存，须先按以下方式转换**（`onSaveState()`写入wantParam的数据与页面的param同理——param中这类字段在恢复时会被直接丢弃）：
 
 | 原字段类型 | 处理方式 |
 | --- | --- |
@@ -582,9 +582,9 @@ Want parameters的值只支持String/Number/Boolean等基本类型以及由它�
 | Function / Callback | 删除，页面改为从AppStorage或注册表重新获取 |
 | 类实例（MediaItem、PhotoAsset等） | 替换为定位键（如uri、id），页面挂载后按定位键重新查询 |
 | Map / Set / Date | 转换为普通对象或序列化字符串（如JSON.stringify后随字符串传输） |
-| 已持久化的数据（preferences/RDB/文件） | 不进快照（进程重建后仍在），只存定位键 |
+| 已持久化的数据（preferences/RDB/文件） | 不通过`onSaveState()`保存（进程重建后仍在），只存定位键 |
 
-回调函数、Proxy对象等复杂对象同样无法随备份快照保存，须按上表方式替换。表中两个概念说明：
+回调函数、Proxy对象等复杂对象同样无法通过`onSaveState()`保存，须按上表方式替换。表中两个概念说明：
 
 - **定位键**：能重新查回完整数据的轻量字段，如uri、id、preferences键名、文件名——页面挂载后按定位键重新查询或读取原数据；
 - **注册表**：应用在内存中维护的"名字 → 函数/对象"的映射表（应用每次启动时注册）——页面挂载后按名字从表中取回函数或对象，再重新绑定。
