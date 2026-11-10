@@ -583,6 +583,30 @@ struct Index {
 }
 ```
 
+## getPlaceholderRegister
+
+getPlaceholderRegister(): PlaceholderRegister
+
+获取[PlaceholderRegister](./arkts-apis-placeholderregister.md#placeholderregister)对象，可通过该对象注册、注销和查询滚动占位模板，供[List](./arkui-ts/ts-container-list.md)的[scrollPlaceholder](./arkui-ts/ts-container-list.md#scrollplaceholder)属性使用。每个UI实例持有独立的注册表。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [PlaceholderRegister](./arkts-apis-placeholderregister.md#placeholderregister) | 当前UI实例的滚动占位注册表。 |
+
+**示例：**
+
+参考[示例1（注册滚动占位模板并设置滚动占位）](./arkts-apis-placeholderregister.md#示例1注册滚动占位模板并设置滚动占位)。
+
 ## getId<sup>22+</sup>
 
 getId(): number
@@ -685,6 +709,8 @@ getDialogPresenter(): DialogPresenter
 **起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2080,7 +2106,7 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 <!--Table: 10%; 20%; 10%; 60%-->
 | 参数名  | 类型            | 必填 | 说明                                                         |
 | ------- | --------------- | ---- | ------------------------------------------------------------ |
-| filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>从API version 20开始，支持该过滤字段：<br/>"isLayoutInspector"：返回组件树是否包含[自定义组件](../../ui/state-management/arkts-create-custom-components.md)。如果用户未传入filters参数或者filters数组不包含isLayoutInspector，返回的组件树将缺少自定义组件的信息。<br/>其余字段仅供测试场景使用。 |
+| filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>从API version 20开始，支持该过滤字段：<br/>"isLayoutInspector"：返回组件树是否包含[自定义组件](../../ui/state-management/arkts-create-custom-components.md)。如果用户未传入filters参数或者filters数组不包含isLayoutInspector，返回的组件树将缺少自定义组件的信息。<br/>从API版本26.1.0开始，支持该过滤字段：<br/>"isWebEnable"：返回的组件树是否包含Web组件所加载网页的组件树。如果用户未传入filters参数或者filters数组不包含isWebEnable，返回的组件树将缺少Web组件所加载网页的组件树信息。<br/>其余字段仅供测试场景使用。 |
 
 **返回值：** 
 
@@ -2182,7 +2208,7 @@ getFilteredInspectorTreeById(id: string, depth: number, filters?: Array\<string\
 | ------- | --------------- | ---- | ------------------------------------------------------------ |
 | id      | string          | 是   | 指定的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)id。 |
 | depth   | number          | 是   | 获取子组件的层数。当取值0时，获取指定的组件及其所有的子孙组件的属性。当取值1时，仅获取指定的组件的属性。当取值2时，指定的组件及其1层子组件的属性。以此类推。 |
-| filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>其余字段仅供测试场景使用。 |
+| filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>从API版本26.1.0开始，支持该过滤字段：<br/>"isWebEnable"：返回的组件树是否包含Web组件所加载网页的组件树。如果用户未传入filters参数或者filters数组不包含isWebEnable，返回的组件树将缺少Web组件所加载网页的组件树信息。<br/>其余字段仅供测试场景使用。 |
 
 **返回值：** 
 
@@ -2892,9 +2918,9 @@ isWindowInfoInitialized(): boolean
 
 查询当前实例所在窗口信息是否已初始化。通常用于启动阶段，在通过UI上下文获取窗口布局断点前进行判断。窗口信息未初始化时，断点接口返回是不可信的。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4742,9 +4768,9 @@ applyDefaultImmersiveStrategy(...types: ImmersiveStrategy[]): void
 >
 > 不支持动态更新。该接口仅在应用首次布局流程开始前调用才生效。如果在页面进入首次布局流程后调用，则应用的策略不变，此接口不生效。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4787,3 +4813,109 @@ struct Index {
 ```
 
 ![ImmersiveStrategy](./figures/ImmersiveStrategy.jpeg)
+
+## setTransPageEnabled
+
+setTransPageEnabled(enabled: boolean): void
+
+<!--RP3-->启用或禁用强制分栏的transPages配置。禁用后，transPages中配置的过渡页面将参与右推左的转场行为，不再固定在右侧。未通过该接口设置时，默认值为true。<!--RP3End-->
+
+> **说明：**
+>
+> - <!--RP4-->该接口仅在购物模式下生效，导航模式（使用pagePairs机制）下调用无副作用。<!--RP4End-->
+> - 该接口在下一次路由转场时生效，不会触发当前页面的重新布局或动效。
+> - 应用未配置强制分栏时调用该接口不产生任何效果，也不影响应用稳定性。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明 |
+| ------- | ---- | ---- | ---- |
+| enabled | boolean | 是   | 是否启用transPages配置。true表示启用transPages行为（默认值），false表示禁用，禁用后过渡页面将参与右推左的转场行为。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State transPageEnabled: boolean = true;
+
+  build() {
+    Column() {
+      Text(`${this.transPageEnabled ? 'transPages enabled' : 'transPages disabled'}`)
+        .fontSize(20)
+        .margin(10)
+      Button('Disable TransPage')
+        .onClick(() => {
+          this.getUIContext()?.setTransPageEnabled(false);
+          this.transPageEnabled = this.getUIContext()?.isTransPageEnabled();
+        })
+        .margin(10)
+      Button('Enable TransPage')
+        .onClick(() => {
+          this.getUIContext()?.setTransPageEnabled(true);
+          this.transPageEnabled = this.getUIContext()?.isTransPageEnabled();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## isTransPageEnabled
+
+isTransPageEnabled(): boolean
+
+<!--RP5-->查询强制分栏的transPages配置当前是否启用。<!--RP5End-->
+
+> **说明：**
+>
+> - 未调用[setTransPageEnabled](#settranspageenabled)时返回true，表示transPages配置默认生效。
+> - 应用未配置强制分栏时返回true（与默认行为一致）。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型    | 说明                                       |
+| ------- | ------------------------------------------ |
+| boolean | 返回当前UI实例强制分栏的transPages配置是否启用，transPages配置启用时返回true，禁用时返回false。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State transPageEnabled: boolean = true;
+
+  build() {
+    Column() {
+      Text(`${this.transPageEnabled ? 'transPages enabled' : 'transPages disabled'}`)
+        .fontSize(20)
+        .margin(10)
+      Button('Check TransPageEnabled')
+        .onClick(() => {
+          this.transPageEnabled = this.getUIContext()?.isTransPageEnabled();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

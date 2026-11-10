@@ -7,7 +7,9 @@
 <!--Tester: @WIFIroam-test-->
 <!--Adviser: @zhang_yixin13-->
 
-该模块提供了第三方客户端接入802.1X认证（一种基于端口的网络接入控制协议）流程的机制，支撑客户端的定制认证等功能。
+该模块提供了第三方客户端接入802.1X认证流程的机制，支撑客户端的定制认证等功能，以及以太网802.1X认证配置管理、认证控制和认证状态监听功能。
+
+802.1X是一种基于端口的网络接入控制协议，用于在终端接入网络时进行身份认证。EAP（Extensible Authentication Protocol，可扩展认证协议）是一种可支持多种认证方法的认证框架。本模块的以太网802.1X认证使用EAP完成身份认证。
 
 > **说明：** 
 >
@@ -271,6 +273,369 @@ try{
 }
 ```
 
+## eap.setEthEapConfig
+
+setEthEapConfig(config: EthEapConfig): void
+
+设置以太网802.1X认证配置，配置将加密并持久化保存。
+
+多次调用本接口时，若config参数中任意字段发生变化，会触发一次自动认证流程。如果802.1X功能或自动认证已禁用，则保存配置并停止自动认证；如果当前认证由企业应用通过[eap.startEthEap](#eapstartetheap)发起，则仅保存配置，不触发自动认证，企业应用仍保留认证控制权。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回，本接口调用返回不代表认证成功。
+
+**起始版本：** 26.0.1
+
+**需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**系统能力**：SystemCapability.Communication.NetManager.Eap
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| config | [EthEapConfig](#etheapconfig) | 是 | 待设置的以太网802.1X认证配置。当EthEapProfile中的敏感字段password、certPassword传入空字符串，或certEntry传入空数组时，表示保留原值；通过getEthEapConfig读取时，password、certPassword返回空字符串，certEntry返回空数组。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 请根据实际认证环境替换身份、密码和证书等配置。
+let profile: eap.EthEapProfile = {
+  eapMethod: eap.EapMethod.EAP_PEAP,
+  phase2Method: eap.Phase2Method.PHASE2_MSCHAPV2,
+  identity: 'identity',
+  anonymousIdentity: '',
+  password: 'password',
+  caCertAliases: 'caCertAliases',
+  caPath: '',
+  clientCertAliases: '',
+  certEntry: new Uint8Array(0),
+  certPassword: '',
+  altSubjectMatch: '',
+  domainSuffixMatch: 'example.com',
+  realm: '',
+  plmn: '',
+  eapSubId: 0
+};
+let config: eap.EthEapConfig = {
+  profile: profile,
+  enabled: true,
+  autoAuth: true,
+  locked: false
+};
+
+try {
+  eap.setEthEapConfig(config);
+  console.info('setEthEapConfig success');
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`setEthEapConfig failed. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## eap.getEthEapConfig
+
+getEthEapConfig(): Promise\<EthEapConfig\>
+
+获取已保存的以太网802.1X认证配置。使用Promise异步回调。
+
+返回配置中profile的敏感字段password、certPassword始终为空字符串，certEntry始终为空数组。
+
+**起始版本：** 26.0.1
+
+**需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**系统能力**：SystemCapability.Communication.NetManager.Eap
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<[EthEapConfig](#etheapconfig)\> | Promise对象，返回已保存的以太网802.1X认证配置，其中password、certPassword返回空字符串，certEntry返回空数组。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  eap.getEthEapConfig().then((config: eap.EthEapConfig) => {
+    console.info(`enabled: ${config.enabled}, autoAuth: ${config.autoAuth}, locked: ${config.locked}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getEthEapConfig failed. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getEthEapConfig failed. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## eap.deleteEthEapConfig
+
+deleteEthEapConfig(): Promise\<void\>
+
+删除已持久化保存的以太网802.1X EAP配置。若当前存在正在进行的自动认证，则会停止本次认证流程。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**系统能力**：SystemCapability.Communication.NetManager.Eap
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  eap.deleteEthEapConfig().then(() => {
+    console.info('deleteEthEapConfig success');
+  }).catch((err: BusinessError) => {
+    console.error(`deleteEthEapConfig failed. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`deleteEthEapConfig failed. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## eap.getEthEapStateInfo
+
+getEthEapStateInfo(): EthEapStateInfo
+
+同步获取当前以太网802.1X认证状态信息，包括认证状态、重试次数和补充信息。
+
+**起始版本：** 26.0.1
+
+**需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**系统能力**：SystemCapability.Communication.NetManager.Eap
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [EthEapStateInfo](#etheapstateinfo) | 当前以太网802.1X认证状态信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let stateInfo: eap.EthEapStateInfo = eap.getEthEapStateInfo();
+  console.info(`state: ${stateInfo.state}, retryCount: ${stateInfo.retryCount}`);
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getEthEapStateInfo failed. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## eap.onStateChange
+
+onStateChange(callback: Callback\<EthEapStateInfo\>): void
+
+订阅以太网802.1X认证状态变化。使用callback异步回调。
+
+**起始版本：** 26.0.1
+
+**需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**系统能力**：SystemCapability.Communication.NetManager.Eap
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback\<[EthEapStateInfo](#etheapstateinfo)\> | 是 | 回调函数，返回以太网802.1X认证状态信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callback = (stateInfo: eap.EthEapStateInfo): void => {
+  console.info(`state: ${stateInfo.state}, retryCount: ${stateInfo.retryCount}`);
+};
+
+try {
+  eap.onStateChange(callback);
+  console.info('onStateChange success');
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`onStateChange failed. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## eap.offStateChange
+
+offStateChange(callback?: Callback\<EthEapStateInfo\>): void
+
+取消订阅以太网802.1X认证状态变化。
+
+**起始版本：** 26.0.1
+
+**需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**系统能力**：SystemCapability.Communication.NetManager.Eap
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback\<[EthEapStateInfo](#etheapstateinfo)\> | 否 | 待取消的回调函数，应与订阅时传入的回调函数为同一对象。不传入时，取消该事件的所有回调。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callback = (stateInfo: eap.EthEapStateInfo): void => {
+  console.info(`state: ${stateInfo.state}, retryCount: ${stateInfo.retryCount}`);
+};
+
+try {
+  eap.onStateChange(callback);
+  // 不再需要监听时，传入订阅时使用的同一个回调函数。
+  eap.offStateChange(callback);
+  // 不传入回调函数时，取消该事件的所有回调。
+  eap.offStateChange();
+  console.info('offStateChange success');
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`offStateChange failed. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## eap.connect
+
+connect(action: EthEapConnectAction): Promise\<void\>
+
+手动触发或断开以太网802.1X认证。使用Promise异步回调。
+
+当action为ACTION_CONNECT时，使用已保存的802.1X认证配置重新触发认证；未保存802.1X认证配置时，操作失败。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回。若当前认证由企业应用通过eap.startEthEap发起，则本接口不生效，仍保持原有认证。
+
+当action为ACTION_DISCONNECT时，停止自动认证及重试，退出当前以太网802.1X认证，并将认证状态重置为[STATE_IDLE](#etheapstate)。
+
+**起始版本：** 26.0.1
+
+**需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
+
+**系统能力**：SystemCapability.Communication.NetManager.Eap
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| action | [EthEapConnectAction](#etheapconnectaction) | 是 | 手动连接操作：ACTION_CONNECT表示重新触发认证，ACTION_DISCONNECT表示断开认证。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { eap } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // 调用前需先通过setEthEapConfig保存配置。
+  // 如需断开认证，将action替换为eap.EthEapConnectAction.ACTION_DISCONNECT。
+  eap.connect(eap.EthEapConnectAction.ACTION_CONNECT).then(() => {
+    console.info('connect request completed');
+  }).catch((err: BusinessError) => {
+    console.error(`connect failed. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`connect failed. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## EapData
 
 EAP信息。
@@ -353,3 +718,69 @@ EAP信息。
 | realm             | string                        | 否   | 否 | 通行证凭证的领域。               |
 | plmn              | string                        | 否   | 否 | 公共陆地移动网的直通凭证提供商。 |
 | eapSubId          | number                        | 否   | 否 | SIM卡的子ID。                    |
+
+## EthEapConfig
+
+以太网802.1X认证配置，包括EAP配置信息和功能开关。
+
+**起始版本：** 26.0.1
+
+**系统能力**：SystemCapability.Communication.NetManager.Eap
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| profile | [EthEapProfile](#etheapprofile) | 否 | 否 | EAP配置信息。通过[eap.setEthEapConfig](#eapsetetheapconfig)设置时，password、certPassword传入空字符串或certEntry传入空数组表示保留原值；通过[eap.getEthEapConfig](#eapgetetheapconfig)获取时，password、certPassword返回空字符串，certEntry返回空数组。 |
+| enabled | boolean | 否 | 否 | 是否启用802.1X功能。true表示启用，false表示禁用。 |
+| autoAuth | boolean | 否 | 否 | 是否在连接网线或设备启动时自动发起认证。true表示自动发起，false表示不自动发起。 |
+| locked | boolean | 否 | 否 | 是否锁定配置。true表示锁定，false表示未锁定。锁定后，除解锁外，不允许修改配置。 |
+
+## EthEapState
+
+以太网802.1X认证状态枚举。
+
+**起始版本：** 26.0.1
+
+**系统能力**：SystemCapability.Communication.NetManager.Eap
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| STATE_IDLE | 0 | 空闲状态，尚未发起认证。 |
+| STATE_AUTHENTICATING | 1 | 正在进行以太网802.1X认证。 |
+| STATE_AUTHENTICATED | 2 | 认证成功。 |
+| STATE_FAILED | 3 | 认证失败，已达到最大重试次数。 |
+| STATE_RETRYING | 4 | 等待下一次重试。 |
+
+## EthEapStateInfo
+
+以太网802.1X认证状态信息，可通过[eap.getEthEapStateInfo](#eapgetetheapstateinfo)获取，也可通过[eap.onStateChange](#eaponstatechange)注册的回调返回。
+
+**起始版本：** 26.0.1
+
+**系统能力**：SystemCapability.Communication.NetManager.Eap
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| state | [EthEapState](#etheapstate) | 否 | 否 | 当前认证状态。 |
+| retryCount | number | 否 | 否 | 当前重试次数，取值为整数，认证成功后重置为0。 |
+| message | string | 否 | 是 | 补充信息，例如认证失败原因。认证成功时为空。 |
+
+## EthEapConnectAction
+
+以太网802.1X认证操作枚举，用于[eap.connect](#eapconnect)。
+
+**起始版本：** 26.0.1
+
+**系统能力**：SystemCapability.Communication.NetManager.Eap
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| ACTION_CONNECT | 0 | 使用已保存的配置重新触发认证。 |
+| ACTION_DISCONNECT | 1 | 停止自动认证及重试，退出当前以太网802.1X认证，并将认证状态重置为空闲。 |

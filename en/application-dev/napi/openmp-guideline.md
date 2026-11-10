@@ -1,16 +1,27 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to integrate and use OpenMP parallel processing in OpenHarmony NDK projects. Covers adding static (libomp.a) or shared (libomp.so) library dependencies, modifying source files with pragma omp directives, configuring builds in DevEco Studio, and verifying execution."
+keywords: ["OpenMP", "omp.h", "libomp", "-fopenmp", "Tsan", "static linking", "dynamic linking", "pragma omp", "DevEco Studio"]
+doctype: guide
+status: active
+---
+
 # Building and Running Applications Using OpenMP
-<!--Kit: NDK Development-->
+
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @rePeek-->
-<!--Designer: @ychen3--->
+<!--Owner: @da_wei_li11-->
+<!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=235c2cef2c01aded2d0dcd8f4c12337fcc18fc53 translatedAt=2026-11-09T08:52:17.316Z nl=1 -->
 
 The OpenHarmony NDK provides dynamic and static library files of OpenMP so that you can use OpenMP in native applications. This topic guides you through on how to call library files in [DevEco Studio](https://developer.huawei.com/consumer/en/deveco-studio/) to use OpenMP. For details about the APIs and examples, see [clang-OpenMPSupport](https://clang.llvm.org/docs/OpenMPSupport.html).
 
 ## How to Develop
 
 ### Creating a Native C++ Project
+
 [Creating an NDK Project](./create-with-ndk.md)
 
 ### Adding Dependencies
@@ -37,7 +48,7 @@ target_link_libraries(entry PUBLIC libomp.a libace_napi.z.so libhilog_ndk.z.so)
     "externalNativeOptions": {
       "path": "./src/main/cpp/CMakeLists.txt",
       "arguments": "",
-      "cppFlags": "-static-openmp -fopenmp",
+      "cppFlags": "-static-openmp -fopenmp"
     }
   }
 ```
@@ -57,7 +68,7 @@ target_link_libraries(entry PUBLIC libomp.so libace_napi.z.so libhilog_ndk.z.so)
     "externalNativeOptions": {
       "path": "./src/main/cpp/CMakeLists.txt",
       "arguments": "",
-      "cppFlags": "-fopenmp",
+      "cppFlags": "-fopenmp"
     }
   }
 ```
@@ -158,6 +169,6 @@ Check the device connection and [sign the application](https://developer.huawei.
 
 > **NOTE**
 > 
-> When an OpenMP application is running, the error message "dlopen_impl load library header failed for libarcher.so" will be displayed in HiLog, as shown in the following figure. The **libarcher.so** file in the error information is used only when the OpenMP application has Tsan enabled. Currently, OpenHarmony does not support Tsan of OpenMP applications. Therefore, this error message does not affect the normal running of the application and can be ignored.
+> When an OpenMP program runs, HiLog outputs the error message "dlopen_impl load library header failed for libarcher.so" (as shown in the following figure). The libarcher.so mentioned in this error message is required only when Tsan detection is enabled for the OpenMP program. Currently, OpenHarmony does not support Tsan detection for OpenMP programs, so this error message can be ignored and does not affect normal program execution.
 >
 > ![image2](./figures/omp-error.png)

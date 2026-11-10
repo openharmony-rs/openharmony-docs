@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c89f019bd160f83d0ff52aa7098bfa8e6ffafa79 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 The photoAccessHelper module provides APIs for managing system albums, including **Favorites**, **Videos**, and **Screenshots**.
 
@@ -119,7 +120,7 @@ Example: Obtain an image from **Favorites**.
 3. Call **Album.getAssets** to obtain the image assets.
 4. Call [FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1) to obtain the first image from the result set.
 
-<!-- @[get_media_from_favorites](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getmediafromfavoritesability/GetMediaFromFavoritesAbility.ets) -->
+<!-- @[get_media_from_favorites](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getmediafromfavoritesability/GetMediaFromFavoritesAbility.ets) --> 
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -134,22 +135,28 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
 
+  let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> | null = null;
+  let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
-    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
-      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.FAVORITE);
+    albumFetchResult = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM,
+      photoAccessHelper.AlbumSubtype.FAVORITE);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     console.info('get favorite album successfully, albumUri: ' + album.albumUri);
 
-    let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
-      await album.getAssets(fetchOptions);
+    photoFetchResult = await album.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await photoFetchResult.getFirstObject();
     console.info('favorite album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName);
-    photoFetchResult.close();
-    albumFetchResult.close();
     // ...
   } catch (err) {
     console.error('favorite failed with err: ' + err);
     // ...
+  } finally {
+    if (photoFetchResult) {
+      photoFetchResult.close();
+    }
+    if (albumFetchResult) {
+      albumFetchResult.close();
+    }
   }
 }
 ```

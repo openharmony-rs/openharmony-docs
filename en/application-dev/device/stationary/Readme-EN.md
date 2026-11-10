@@ -6,7 +6,7 @@
 <!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=561a48f0279b682322ad16aa122a3161b679e716 translatedAt=2026-08-20T06:26:23.713Z pushedAt=2026-08-20T13:31:39.869Z -->
+<!-- md-trans-meta sourceCommit=f7dd5f67f82eb6d649c8b4e95145a32310e25482 translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z -->
 
 - [About This Kit](multimodalawareness-kit-intro.md)
 

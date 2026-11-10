@@ -328,19 +328,19 @@ struct GetFontDescriptorsFromPathTest {
       Button("get fontDescriptors")
         .onClick(() => {
           let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
-          promise.then((fontFullDescriptors) => {
-            for (let index = 0; index < fontFullDescriptors.length; index++) {
-              console.info("Path:" + fontFullDescriptors[index].path +
-                          "\npostScriptName:" + fontFullDescriptors[index].postScriptName +
-                          "\nfullName:" + fontFullDescriptors[index].fullName +
-                          "\nfamilyName:" + fontFullDescriptors[index].fontFamily +
-                          "\nfontSubName:" + fontFullDescriptors[index].fontSubfamily +
-                          "\nweight:" + fontFullDescriptors[index].weight +
-                          "\nwidth:" + fontFullDescriptors[index].width +
-                          "\nitalic:" + fontFullDescriptors[index].italic +
-                          "\nmonoSpace:" + fontFullDescriptors[index].monoSpace +
-                          "\nsymbolic:" + fontFullDescriptors[index].symbolic)
-            }
+          promise.then((fontDescriptors) => {
+            fontDescriptors.forEach((fontDescriptor) => {
+              console.info("Path:" + fontDescriptor.path +
+                          "\npostScriptName:" + fontDescriptor.postScriptName +
+                          "\nfullName:" + fontDescriptor.fullName +
+                          "\nfamilyName:" + fontDescriptor.fontFamily +
+                          "\nfontSubfamily:" + fontDescriptor.fontSubfamily +
+                          "\nweight:" + fontDescriptor.weight +
+                          "\nwidth:" + fontDescriptor.width +
+                          "\nitalic:" + fontDescriptor.italic +
+                          "\nmonoSpace:" + fontDescriptor.monoSpace +
+                          "\nsymbolic:" + fontDescriptor.symbolic)
+            })
           })
         })
     }.width("100%")
@@ -387,10 +387,10 @@ struct GetFontUnicodeSetTest {
       Button("get fontUnicode")
         .onClick(() => {
           let promise = text.getFontUnicodeSet("file:///system/fonts/HMSymbolVF.ttf", 0)
-          promise.then((unicodeSet) => {
-            for (let index = 0; index < unicodeSet.length; index++) {
-              console.info(unicodeSet[index].toString())
-            }
+          promise.then((unicodeCodes) => {
+            unicodeCodes.forEach((unicode) => {
+              console.info(unicode.toString(16))
+            })
           })
         })
     }.width("100%")
@@ -483,9 +483,9 @@ struct GetFontPathsByTypeTest {
         .onClick(() => {
           let fontList = text.getFontPathsByType(text.SystemFontType.ALL)
           console.info("file count: " + fontList.length)
-          for (let index = 0; index < fontList.length; index++) {
-            console.info("file path: " + fontList[index])
-          }
+          fontList.forEach((fontPath) => {
+            console.info("file path: " + fontPath)
+          })
         })
     }.width("100%")
     .height("100%")
@@ -855,8 +855,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | rightTopRadius     | number                                               | 否  |  否   | 矩形框的右上半径，单位为物理像素px。       |
 | rightBottomRadius  | number                                               | 否  |  否   | 矩形框的右下半径，单位为物理像素px。       |
 | leftBottomRadius   | number                                               | 否  |  否   | 矩形框的左下半径，单位为物理像素px。       |
-| borderColor        | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  是   | 矩形边框的颜色，默认值为白色。<br>**起始版本：** 26.2.0<br>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。               |
-| borderWidth        | number                                               | 否  |  是   | 矩形边框的宽度，单位为物理像素px，默认值为0。<br>**起始版本：** 26.2.0<br>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| borderColor        | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  是   | 矩形边框的颜色，默认值为白色。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。               |
+| borderWidth        | number                                               | 否  |  是   | 矩形边框的宽度，单位为物理像素px，默认值为0。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## FontFeature
 
@@ -918,36 +918,34 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
-
 | 名称                      | 类型                                     | 只读 | 可选 | 说明                                                   |
 | ------------- | ---------------------------------------------------- | -- | -- | --------------------------------------------------------- |
-| decoration    | [Decoration](#decoration)                            | 否 | 是 | 装饰线设置，默认不使用装饰线。             |
-| color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否 | 是 | 文字颜色，默认为白色。                         |
-| fontWeight    | [FontWeight](#fontweight)                            | 否 | 是 | 字重，默认为W400。 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，仅系统字体中的可变字体支持字重调节；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，系统字体与三方注册字体中的可变字体均支持字重调节。非可变字体设置字重值小于semi-bold（即W600）时字体粗细无变化，设置字重值大于等于semi-bold（即W600）时可能会触发伪加粗效果。                         |
-| fontWidth<sup>21+</sup>     | [FontWidth](#fontwidth)                              | 否 | 是 | 字体宽度，默认为NORMAL。                          |
-| fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。                          |
-| baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。               |
-| fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。使用自定义字体时，需将加载字体时指定的名称填入此列表中。当与fontTypefaces同时设置时，fontTypefaces优先级更高，fontFamilies不生效。                    |
+| decoration    | [Decoration](#decoration)                            | 否 | 是 | 装饰线设置，默认不使用装饰线。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| color         | [common2D.Color](js-apis-graphics-common2D.md#color) | 否 | 是 | 文字颜色，默认为白色。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontWeight    | [FontWeight](#fontweight)                            | 否 | 是 | 字重，默认为W400。 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，仅系统字体中的可变字体支持字重调节；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，系统字体与三方注册字体中的可变字体均支持字重调节。非可变字体设置字重值小于semi-bold（即W600）时字体粗细无变化，设置字重值大于等于semi-bold（即W600）时可能会触发伪加粗效果。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontWidth<sup>21+</sup>     | [FontWidth](#fontwidth)                              | 否 | 是 | 字体宽度，默认为NORMAL。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。使用自定义字体时，需将加载字体时指定的名称填入此列表中。当与fontTypefaces同时设置时，fontTypefaces优先级更高，fontFamilies不生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | fontTypefaces | Array\<[drawing.Typeface](arkts-apis-graphics-drawing-Typeface.md)> | 否 | 是 | 指定排版字体对象数组，用于优先使用指定的字体对象进行文本塑形，跳过字体匹配流程。当数组中某个字体对象无法塑形部分文字时，未能塑形的文字将使用系统字体进行塑形。默认为空数组，表示不指定字体对象，使用默认字体匹配流程。<br/>当fontTypefaces与[TextStyle](#textstyle).fontFamilies同时设置时，fontTypefaces优先级更高。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| fontSize      | number                                               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为物理像素px。  |
-| letterSpacing | number                                               | 否 | 是 | 字符间距，正数拉开字符距离，如果为负数则拉近字符距离，浮点数，单位为物理像素px，默认为0.0。|
-| wordSpacing   | number                                               | 否 | 是 | 单词间距，浮点数，单位为物理像素px，默认为0.0。                 |
-| heightScale   | number                                               | 否 | 是 | 行高缩放倍数，浮点数，默认为1.0，heightOnly为true时生效。              |
-| heightOnly    | boolean                                              | 否 | 是 | true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距设置文本框高度，默认为false。 |
-| halfLeading   | boolean                                              | 否 | 是 | true表示将行间距平分至行的顶部与底部，false则不平分，默认为false。|
-| ellipsis      | string                                               | 否 | 是 | 省略号文本，表示省略号生效后使用该字段值替换省略号部分，默认为空字符串，即使用系统默认省略号…（U+2026）。与ParagraphStyle的tab属性共同配置时，tab属性无效。 |
-| ellipsisMode  | [EllipsisMode](#ellipsismode)                        | 否 | 是 | 省略号类型，默认为END，行尾省略号。                       |
-| locale        | string                                               | 否 | 是 | 语言类型，例如'en-Latn'代表英文(拉丁文字)，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。支持language-script格式的两段式语言标签，language遵循ISO 639-1规范，script遵循ISO 15924规范。未指定locale或者设置为空字符串或为undefined时，默认locale为'zh-Hans'。 |
-| baselineShift | number                                               | 否 | 是 | 文本基线的垂直偏移距离，浮点数，单位为物理像素px，默认为0.0。 |
-| fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | 否 | 是 | 文本字体特征数组。当需要启用或禁用特定字体特性（如连字、字距调整等）时传入。|
-| fontVariations| Array\<[FontVariation](#fontvariation)>              | 否 | 是 | 可变字体属性数组。当需要调整可变字体的可变轴参数（如字重轴、字宽轴等）时传入。|
-| textShadows   | Array\<[TextShadow](#textshadow)>                    | 否 | 是 | 文本阴影数组。当需要为文本添加阴影效果时传入。|
-| backgroundRect| [RectStyle](#rectstyle)                              | 否 | 是 | 文本矩形框样式。当需要为文本添加背景矩形框（如设置背景色、圆角等）时传入。|
-| badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | 否   | 是   | 设置文本排版时是否使能上标或下标。TEXT_SUPERSCRIPT表示使能上标，TEXT_SUBSCRIPT表示使能下标，默认值为TEXT_BADGE_NONE表示不使能。|
-| lineHeightMaximum<sup>21+</sup> | number | 否   | 是   | 行高上限，单位为物理像素px。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。 |
-| lineHeightMinimum<sup>21+</sup> | number | 否 | 是 | 行高下限，单位为物理像素px。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。 |
-| lineHeightStyle<sup>21+</sup> | [LineHeightStyle](#lineheightstyle21) | 否 | 是 | 行高缩放基数样式。默认为FONT_SIZE。 |
+| fontSize      | number                                               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为物理像素px。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| letterSpacing | number                                               | 否 | 是 | 字符间距，正数拉开字符距离，如果为负数则拉近字符距离，浮点数，单位为物理像素px，默认为0.0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| wordSpacing   | number                                               | 否 | 是 | 单词间距，浮点数，单位为物理像素px，默认为0.0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| heightScale   | number                                               | 否 | 是 | 行高缩放倍数，浮点数，默认为1.0，heightOnly为true时生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| heightOnly    | boolean                                              | 否 | 是 | true表示根据字体大小和heightScale设置文本框的高度，false表示根据行高和行距设置文本框高度，默认为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| halfLeading   | boolean                                              | 否 | 是 | true表示将行间距平分至行的顶部与底部，false则不平分，默认为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| ellipsis      | string                                               | 否 | 是 | 省略号文本，表示省略号生效后使用该字段值替换省略号部分，默认为空字符串，即使用系统默认省略号…（U+2026）。与ParagraphStyle的tab属性共同配置时，tab属性无效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| ellipsisMode  | [EllipsisMode](#ellipsismode)                        | 否 | 是 | 省略号类型，默认为END，行尾省略号。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| locale        | string                                               | 否 | 是 | 语言类型，例如'en-Latn'代表英文(拉丁文字)，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。支持language-script格式的两段式语言标签，language遵循ISO 639-1规范，script遵循ISO 15924规范。未指定locale或者设置为空字符串或为undefined时，默认locale为'zh-Hans'。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| baselineShift | number                                               | 否 | 是 | 文本基线的垂直偏移距离，浮点数，单位为物理像素px，默认为0.0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | 否 | 是 | 文本字体特征数组。当需要启用或禁用特定字体特性（如连字、字距调整等）时传入。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| fontVariations| Array\<[FontVariation](#fontvariation)>              | 否 | 是 | 可变字体属性数组。当需要调整可变字体的可变轴参数（如字重轴、字宽轴等）时传入。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| textShadows   | Array\<[TextShadow](#textshadow)>                    | 否 | 是 | 文本阴影数组。当需要为文本添加阴影效果时传入。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| backgroundRect| [RectStyle](#rectstyle)                              | 否 | 是 | 文本矩形框样式。当需要为文本添加背景矩形框（如设置背景色、圆角等）时传入。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| badgeType<sup>20+</sup>   | [TextBadgeType](#textbadgetype20) | 否   | 是   | 设置文本排版时是否使能上标或下标。TEXT_SUPERSCRIPT表示使能上标，TEXT_SUBSCRIPT表示使能下标，默认值为TEXT_BADGE_NONE表示不使能。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| lineHeightMaximum<sup>21+</sup> | number | 否   | 是   | 行高上限，单位为物理像素px。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| lineHeightMinimum<sup>21+</sup> | number | 否 | 是 | 行高下限，单位为物理像素px。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| lineHeightStyle<sup>21+</sup> | [LineHeightStyle](#lineheightstyle21) | 否 | 是 | 行高缩放基数样式。默认为FONT_SIZE。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | fontEdging<sup>24+</sup> | [drawing.FontEdging](arkts-apis-graphics-drawing-e.md#fontedging12) | 否 | 是 | 绘制文本的边缘处理方式，默认值为ANTI_ALIAS。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## StrutStyle
@@ -986,7 +984,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | fontFamily | string | 否 | 是 | 字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | fontSubfamily | string | 否 | 是 | 子字体家族，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | weight | [FontWeight](#fontweight) | 否 | 是 | 字体字重，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| width | number | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| width | number | 否 | 是 | 字体宽度，取值范围1-9整数，默认值为0，0表示未指定字体宽度。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | italic | number | 否 | 是 | 是否是斜体字体，0表示非斜体，1表示斜体，默认值为0。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | monoSpace | boolean | 否 | 是 | 是否是等宽字体，true表示等宽，false表示非等宽，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | symbolic | boolean | 否 | 是 | 是否支持符号，true表示支持，false表示不支持，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
@@ -1869,9 +1867,9 @@ layoutWithConstraints(size: TextRectSize): TextLayoutResult
 let size: text.TextRectSize = { width: 200, height: 100 };
 let result = paragraph.layoutWithConstraints(size); // 功能增强的 layoutSync
 console.info('Width: ' + result.correctRect.width + ', Height: ' + result.correctRect.height);
-for (let i = 0; i < result.fitStrRange.length; ++i) {
-  console.info('fitRange: [' + result.fitStrRange[i].start + ', ' + result.fitStrRange[i].end + ']');
-}
+result.fitStrRange.forEach((range) => {
+  console.info('fitRange: [' + range.start + ', ' + range.end + ']');
+});
 ```
 
 ### paint
@@ -2069,7 +2067,7 @@ let maxIntrinsicWidth = paragraph.getMaxIntrinsicWidth();
 
 getAlphabeticBaseline(): number
 
-获取拉丁字母基线位置。
+获取拉丁字母的基线位置。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -2079,7 +2077,7 @@ getAlphabeticBaseline(): number
 
 | 类型   | 说明                |
 | ------ | ------------------ |
-| number | 拉丁字母下的基线位置，浮点数，单位为物理像素px。|
+| number | 拉丁字母的基线位置，浮点数，单位为物理像素px。|
 
 **示例：**
 
@@ -2091,7 +2089,7 @@ let alphabeticBaseline = paragraph.getAlphabeticBaseline();
 
 getIdeographicBaseline(): number
 
-获取表意字（如CJK（中文，日文，韩文））下的基线位置。
+获取表意字（如CJK（中文，日文，韩文））的基线位置。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -2101,7 +2099,7 @@ getIdeographicBaseline(): number
 
 | 类型   | 说明                  |
 | ------ | -------------------- |
-| number | 表意字下的基线位置，浮点数，单位为物理像素px。 |
+| number | 表意字的基线位置，浮点数，单位为物理像素px。 |
 
 **示例：**
 
@@ -2555,7 +2553,7 @@ struct Index {
         .onClick(() => {
           let glyphRange: text.Range = { start: 0, end: 5 };
           let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let textData = "Heน้ำllo1️⃣World";
           let myTextStyle: text.TextStyle = {
             color: { alpha: 255, red: 255, green: 0, blue: 0 },
             fontSize: 33,
@@ -2623,7 +2621,7 @@ struct Index {
         .onClick(() => {
           let characterRange: text.Range = { start: 0, end: 5 };
           let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let textData = "Heน้ำllo1️⃣World";
           let myTextStyle: text.TextStyle = {
             color: { alpha: 255, red: 255, green: 0, blue: 0 },
             fontSize: 33,
@@ -2691,7 +2689,7 @@ struct Index {
       Button("get character position")
         .onClick(() => {
           let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
-          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let textData = "Heน้ำllo1️⃣World";
           let myTextStyle: text.TextStyle = {
             color: { alpha: 255, red: 255, green: 0, blue: 0 },
             fontSize: 33,
@@ -4362,7 +4360,7 @@ let bounds = runs[0].getImageBounds();
 
 getTypographicBounds(): TypographicBounds
 
-获取该排版单元的排版边界，排版边界与排版字体、排版字号有关，与字符本身无关，例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。
+获取该排版单元的排版边界，排版边界与排版字体、排版字号有关，与字符本身无关，例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。例如字符串为"j"或"E"，排版边界相同，即与字符本身无关。
 
 >**说明：**
 >
@@ -4486,19 +4484,17 @@ function textFunc() {
   let paragraph = paragraphBuilder.build();
   paragraph.layoutSync(50);
   let lines = paragraph.getTextLines();
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
+  lines.forEach((line, i) => {
     let runs = line.getGlyphRuns();
-    for (let j = 0; j < runs.length; j++) {
-      const run = runs[j];
+    runs.forEach((run, j) => {
       const runStyle = run.getTextStyle();
       console.info(`print line [${i}] run [${j}] textStyle: ${JSON.stringify(runStyle)}`);
       if (runStyle?.color != undefined && typeof runStyle?.color == 'number') {
         let textColor: common2D.Color = numberToRGBA(runStyle?.color);
         console.info(`Print text color ARGB: ${textColor.alpha}, ${textColor.red}, ${textColor.green}, ${textColor.blue}`);
       }
-    }
-  }
+    });
+  });
 }
 
 @Entry

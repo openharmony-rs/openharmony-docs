@@ -55,7 +55,7 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 
 write(info: SysEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，适用于需要异步记录系统事件以避免阻塞主线程的场景，能够提升应用响应性能。使用callback方式作为异步回调。
+系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用Callback异步回调。适用于需要异步记录系统事件以避免阻塞主线程的场景，能够提升应用响应性能。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -118,7 +118,7 @@ try {
 
 write(info: SysEventInfo): Promise&lt;void&gt;
 
-系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，适用于需要链式调用处理异步结果的场景，能够使代码更加简洁优雅。使用promise方式作为异步回调。
+系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用Promise异步回调。适用于需要链式调用处理异步结果的场景，能够使代码更加简洁优雅。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 

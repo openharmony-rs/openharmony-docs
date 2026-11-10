@@ -1,11 +1,20 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how to request an independent drawing frame rate and register per-frame callbacks for self-drawn content through the XComponent native APIs."
+keywords: [XComponent, self-drawing, per-frame callback, expected callback, expected frame rate]
+doctype: guide
+status: active
+---
+
 # Requesting Frame Rates for Custom Content
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @wh_qwe-->
 <!--Designer: @wh_qwe-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=14d8a1428d1d6973a2e4f1b0113ff7541a7aa44a translatedAt=2026-10-19T01:24:34.251Z pushedAt=2026-10-19T07:35:50.063Z -->
+<!-- md-trans-meta sourceCommit=263f6d28c3a62b89d47845e6da97eea2212aedc9 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 When you use native APIs to develop an application based on the [XComponent](../ui/napi-xcomponent-guidelines.md), you can request an independent frame rate for custom content in scenarios such as gaming and custom UI framework interconnection.
 

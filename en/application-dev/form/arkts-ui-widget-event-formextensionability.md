@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a08d450b4f575e3d4749ddeef9dd32275ec0a19e translatedAt=2026-08-26T04:48:04.990Z pushedAt=2026-08-28T08:42:54.134Z -->
+<!-- md-trans-meta sourceCommit=91acbcecf28d453c305ed57577445c09e0c79ba1 translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 On the widget page, you can trigger a message event via the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API to launch the [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md). The FormExtensionAbility then notifies the application through the [onFormEvent](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent) callback. This process enables the functionality of passing messages to the application after a widget is touched. Subsequently, the FormExtensionAbility refreshes the widget content. Below is a simple example.
 
@@ -98,8 +98,7 @@ On the widget page, you can trigger a message event via the [postCardAction](../
       // ...
       onFormEvent(formId: string, message: string): void {
         // If the widget supports event triggering, override this method and implement the trigger.
-        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
-    
+        hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] onFormEvent, formId = ${formId}, message: ${message}`);
         class FormDataClass {
           title: string = 'Title Update.'; // It matches the widget layout.
           detail: string = 'Description update success.'; // It matches the widget layout.
@@ -109,7 +108,7 @@ On the widget page, you can trigger a message event via the [postCardAction](../
         let formData = new FormDataClass();
         let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
         formProvider.updateForm(formId, formInfo).then(() => {
-          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+          hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm success.');
         }).catch((error: BusinessError) => {
           hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
         });

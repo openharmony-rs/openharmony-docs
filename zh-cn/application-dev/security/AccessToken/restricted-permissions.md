@@ -1762,6 +1762,55 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**：26.0.1
 
+## ohos.permission.HIDDEN_CAMERA_DETECTION
+
+允许应用检测隐藏摄像头。
+
+获取该权限后，在酒店、民宿等地点，应用可辅助使用人员以检测当前空间是否存在隐藏摄像头，保护用户隐私。
+
+<!--RP120--><!--RP120End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone
+
+**起始版本**：26.0.1
+
+## ohos.permission.ALLOW_CROSS_APP_IPC
+
+允许同一开发者的应用之间进行IPC通信。
+
+<!--RP121-->
+应用需要在HarmonyAppProvision配置文件中修改"app-services-capabilities"字段来添加ipcGroupId，配置了相同ipcGroupId的应用之间才可完成跨应用IPC通信。
+
+配置样例：
+
+```json5
+{
+  // ...
+  "acls":{
+    "allowed-acls":[
+      "ohos.permission.ALLOW_CROSS_APP_IPC"
+    ]
+  },
+  "app-services-capabilities": {
+    "ohos.permission.ALLOW_CROSS_APP_IPC": {"ipcGroupIds": ["ipcGroupId0000", "ipcGroupId1000"]}
+  }
+}
+```
+
+<!--RP121End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
+
 ## ohos.permission.INPUT_RECORDING
 
 允许应用监听输入事件。
@@ -1776,4 +1825,62 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：PC/2in1
 
-**起始版本**：26.2.0
+**起始版本**：26.1.0
+
+## ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM
+ 
+允许应用在创建音频播放流或音频录制流时，创建指定超低时延音频模式，从而使得创建出来的音频流在播放或录制时，整体时延低于普通模式。
+
+<!--RP117--><!--RP117End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：PC/2in1 | Phone | Tablet
+ 
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_BOARD_INFO
+ 
+允许应用获取设备硬件信息。
+
+<!--RP118--><!--RP118End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**支持设备**：PC/2in1
+ 
+**起始版本**：26.0.1
+
+## ohos.permission.CONTROL_COMPONENT
+
+允许应用管理指定组件是否支持被模拟操控。
+
+获取该权限后，应用可将指定组件标记为禁止模拟操控，使其他应用（如智能体应用）无法通过模拟操控操作该组件。
+
+<!--RP119--><!--RP119End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.HOOK_INPUT_EVENT
+
+允许应用拦截输入事件。
+
+<!--RP122--><!--RP122End-->
+
+**权限级别**：system_basic
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "面向应用性能敏感场景提供高性能编程建议，涵盖声明与表达式、函数、数组、异常等环节的优化写法，帮助开发者编写高性能应用。"
+keywords: [高性能编程, 性能优化, 性能敏感场景, 数组, const声明, 函数优化, 异常处理开销]
+doctype: guide
+status: active
+---
+
 # ArkTS高性能编程实践
 
 <!--Kit: ArkTS-->

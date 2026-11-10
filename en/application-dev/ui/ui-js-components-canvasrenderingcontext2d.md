@@ -1,18 +1,20 @@
 # CanvasRenderingContext2D
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=276d60289816e1dd5baf9329b4a307375826cd4b translatedAt=2026-08-05T10:12:58.992Z pushedAt=2026-08-06T06:23:23.324Z -->
+<!-- md-trans-meta sourceCommit=69c407040f576942fb168782eab7b193850836b4 translatedAt=2026-10-29T08:55:30.158Z pushedAt=2026-10-30T03:00:45.555Z nl=1 -->
+
 
 Use **CanvasRenderingContext2D** to draw objects such as graphics, texts, line segments, and images on the **\<canvas>** component. For details, see [CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md).
+
 
 ## Drawing Line Segments
 
 Use **moveTo** and **lineTo** to draw a line segment. Use the **closePath** method to end current path, obtaining a closed path. Set **quadraticCurveTo** (quadratic Bézier curve) or **bezierCurveTo** (cubic Bézier curve) to draw a graphic.
+
 
 ```html
 <!-- xxx.hml -->
@@ -27,6 +29,7 @@ Use **moveTo** and **lineTo** to draw a line segment. Use the **closePath** meth
   </select>
 </div>
 ```
+
 
 ```css
 /* xxx.css */
@@ -53,6 +56,7 @@ select {
     background-color: white;
 }
 ```
+
 
 ```js
 // xxx.js
@@ -208,6 +212,7 @@ export default {
 
 ![Drawing-Line-Segments](figures/Drawing-Line-Segments.gif)
 
+
 ## Drawing Border
 
 Globally define the canvas (**el**) and brush (**ctx**), and create a rectangle with the border width of 5 upon initialization. Change the border width (**lineWidth**), color (**strokeStyle**), and line dash level (**setLineDash**). Add the **change** event to the **\<select>** component. The **change** event will be triggered upon selection and the changed image will be displayed.
@@ -301,11 +306,14 @@ export default {
 }
 ```
 
+
 ![Drawing-Border](figures/Drawing-Border.gif)
+
 
 ## Setting Gradient Fill Colors
 
 Use the [createLinearGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createlineargradient) and [createRadialGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createradialgradient) methods to create gradient containers, then call the `addColorStop` method to add multiple color stops to form a gradient. Set `fillStyle` to `gradient` to fill the rectangle with the gradient, and finally configure the shadow blur level (`shadowBlur`), shadow color (`shadowColor`), and shadow offset (`shadowOffset`).
+
 
 ```html
 <!-- xxx.hml -->
@@ -319,6 +327,7 @@ Use the [createLinearGradient](../reference/apis-arkui/arkui-ts/ts-components-ca
   </select>
 </div>
 ```
+
 
 ```css
 /* xxx.css */
@@ -346,6 +355,7 @@ select {
     background-color: white;
 }
 ```
+
 
 ```js
 // xxx.js
@@ -385,7 +395,7 @@ export default {
             this.ctx.fillRect(100, 100, 400, 300);
         } else if (e.newValue == 'value2') {
             this.ctx.clearRect(0, 0, 600, 500);
-            // Creates a radial gradient.
+            // Create a radial gradient.
             let gradient = this.ctx.createRadialGradient(300, 250, 20, 300, 250, 100);
             gradient.addColorStop(0.0, 'red');
             gradient.addColorStop(0.7, 'white');
@@ -409,7 +419,6 @@ export default {
             this.ctx.fillRect(100, 100, 400, 300);
         } else if (e.newValue == 'value4') {
             this.ctx.clearRect(0, 0, 600, 500);
-            this.ctx.clearRect(0, 0, 600, 500);
             let gradient = this.ctx.createRadialGradient(300, 250, 20, 300, 250, 200);
             gradient.addColorStop(0.0, 'red');
             gradient.addColorStop(0.5, 'white');
@@ -428,9 +437,11 @@ export default {
 
 ![Gradient-Fill-Colors](figures/Gradient-Fill-Colors.gif)
 
+
 ## Filling Text
 
 First create the text, then use the [fillText](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#filltext) method to draw the text on the canvas. Adjust the baseline transparency through the [globalAlpha](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#globalalpha) property so that the baseline does not obscure the text, and then set the [textAlign](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#textalign) and [textBaseline](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#textbaseline) properties to determine the text position relative to the baseline.
+
 
 ```html
 <!-- xxx.hml -->
@@ -443,6 +454,7 @@ First create the text, then use the [fillText](../reference/apis-arkui/arkui-ts/
   </select>
 </div>
 ```
+
 
 ```css
 /* xxx.css */
@@ -469,6 +481,7 @@ select {
     background-color: white;
 }
 ```
+
 
 ```js
 // xxx.js
@@ -558,13 +571,15 @@ export default {
 
 ![Filling-Text](figures/Filling-Text.gif)
 
-> **NOTE**
+> **NOTE** 
 >
 > In the **ltr** layout mode, the value **start** equals **left**. In the **rtl** layout mode, the value **start** equals **right**.
+
 
 ## Adding Images
 
 After creating an image object, use the [drawImage](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#drawimage) method to draw the image, and apply animation styles such as scale, translate, or rotate to the image.
+
 
 ```html
 <!-- xxx.hml -->
@@ -586,6 +601,7 @@ After creating an image object, use the [drawImage](../reference/apis-arkui/arku
   </div>
 </div>
 ```
+
 
 ```css
 /* xxx.css */
@@ -624,6 +640,7 @@ text {
     margin-bottom: 30px;
 }
 ```
+
 
 ```js
 // xxx.js
@@ -742,9 +759,11 @@ export default {
 >
 >   y' = skewX \* x + scaleY \* y + translateY
 
+
 ## Adding Methods
 
 Use the **save** method to save the brush style, and use the **restore** method to restore the saved settings. In the following example, the brush color is first set to red. After the brush settings are saved, the canvas is cleared and the brush color is changed to blue. Drawing immediately at this point will produce a blue rectangle. However, if the brush settings are restored and then used for drawing, a red rectangle will be produced instead.
+
 
 ```html
 <!-- xxx.hml -->
@@ -759,6 +778,7 @@ Use the **save** method to save the brush style, and use the **restore** method 
   </div>
 </div>
 ```
+
 
 ```css
 /* xxx.css */
@@ -798,6 +818,7 @@ text {
 }
 ```
 
+
 ```js
 // xxx.js
 import promptAction from '@ohos.promptAction';
@@ -831,5 +852,3 @@ export default {
 ```
 
 ![Adding-Methods](figures/Adding-Methods.gif)
-
-<!--no_check-->

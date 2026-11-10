@@ -6,10 +6,11 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=108cfcdbfe0194d8e3c64ec5128e21493da21f53 translatedAt=2026-11-03T05:01:03.081Z pushedAt=2026-11-03T05:45:42.851Z nl=1 -->
 
 Since API version 26.0.0, the certificate chain validator provides the capabilities of building and verifying a certificate chain. It supports building and verifying a certificate chain through [CertValidationParams](../../reference/apis-device-certificate-kit/js-apis-cert.md#certvalidationparams), including trust anchor setting, certificate revocation check, and date verification.
 
-## Development Procedure
+## How to Develop
 
 1. Import [@ohos.security.cert](../../reference/apis-device-certificate-kit/js-apis-cert.md).
    ```ts
@@ -68,7 +69,7 @@ async function validateCertChainWithCustomTrustAnchor(): Promise<void> {
     let rootCaCert = await createX509Cert(rootCaCertData);
 
     // Construct verification parameters.
-    let params: cert.X509CertValidatorParams = {
+    let params: cert.CertValidationParams = {
       // Untrusted certificates used only for building a certificate chain.
       untrustedCerts: [intermediateCaCert],
       // Trust anchor certificate used to verify the certificate chain.
@@ -81,7 +82,7 @@ async function validateCertChainWithCustomTrustAnchor(): Promise<void> {
     let validator = cert.createCertChainValidator('PKIX');
 
     // Verify endEntityCert.
-    let result: cert.VerifyCertResult = await validator.validate(endEntityCert, params);
+    let result: cert.CertValidationResult = await validator.validateCert(endEntityCert, params);
     console.info('validate success, certChain length: ' + result.certChain.length);
     for (let i = 0; i < result.certChain.length; i++) {
       let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
@@ -91,6 +92,7 @@ async function validateCertChainWithCustomTrustAnchor(): Promise<void> {
     // Validation failed.
     let error = err as BusinessError;
     console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    throw new Error(error.message)
   }
 }
 ```
@@ -138,12 +140,12 @@ async function validateCertChainWithSystemCa(): Promise<void> {
     let intermediateCaCert = await createX509Cert(intermediateCaCertData);
 
     // Construct verification parameters.
-    let params: cert.X509CertValidatorParams = {
+    let params: cert.CertValidationParams = {
       // Untrusted certificates used only for building a certificate chain.
       untrustedCerts: [intermediateCaCert],
       // Trust the CA certificates preset in the system.
       trustSystemCa: true,
-      // Ignore certificate expiration or invalidity.
+      // Ignore certificate expiration or not-yet-valid errors.
       ignoreErrs: [cert.CertResult.ERR_CERT_HAS_EXPIRED, cert.CertResult.ERR_CERT_NOT_YET_VALID],
     };
 
@@ -151,7 +153,7 @@ async function validateCertChainWithSystemCa(): Promise<void> {
     let validator = cert.createCertChainValidator('PKIX');
 
     // Verify endEntityCert.
-    let result: cert.VerifyCertResult = await validator.validate(endEntityCert, params);
+    let result: cert.CertValidationResult = await validator.validateCert(endEntityCert, params);
     console.info('validate success, certChain length: ' + result.certChain.length);
     for (let i = 0; i < result.certChain.length; i++) {
       let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
@@ -160,6 +162,7 @@ async function validateCertChainWithSystemCa(): Promise<void> {
   } catch (err) {
     let error = err as BusinessError;
     console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    throw new Error(error.message)
   }
 }
 ```
@@ -235,7 +238,7 @@ async function validateCertChainWithCrl(): Promise<void> {
     };
 
     // Construct verification parameters.
-    let params: cert.X509CertValidatorParams = {
+    let params: cert.CertValidationParams = {
       untrustedCerts: [intermediateCaCert],
       trustedCerts: [rootCaCert],
       trustSystemCa: false,
@@ -249,7 +252,7 @@ async function validateCertChainWithCrl(): Promise<void> {
     let validator = cert.createCertChainValidator('PKIX');
 
     // Verify endEntityCert.
-    let result: cert.VerifyCertResult = await validator.validate(endEntityCert, params);
+    let result: cert.CertValidationResult = await validator.validateCert(endEntityCert, params);
     console.info('validate success, certChain length: ' + result.certChain.length);
     for (let i = 0; i < result.certChain.length; i++) {
       let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
@@ -261,6 +264,7 @@ async function validateCertChainWithCrl(): Promise<void> {
       console.error('certificate has been revoked');
     } else {
       console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      throw new Error(error.message)
     }
   }
 }
@@ -312,7 +316,7 @@ async function validateSm2CertChain(): Promise<void> {
       0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38
     ]);
 
-    let params: cert.X509CertValidatorParams = {
+    let params: cert.CertValidationParams = {
       // Untrusted certificates used only for building a certificate chain.
       untrustedCerts: [sm2IntermediateCaCert],
       // Trust anchor certificate used to verify the certificate chain.
@@ -326,7 +330,7 @@ async function validateSm2CertChain(): Promise<void> {
     let validator = cert.createCertChainValidator('PKIX');
 
     // Verify the sm2EndEntityCert certificate.
-    let result: cert.VerifyCertResult = await validator.validate(sm2EndEntityCert, params);
+    let result: cert.CertValidationResult = await validator.validateCert(sm2EndEntityCert, params);
     console.info('validate success, certChain length: ' + result.certChain.length);
     for (let i = 0; i < result.certChain.length; i++) {
       let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
@@ -337,7 +341,7 @@ async function validateSm2CertChain(): Promise<void> {
   } catch (err) {
     let error = err as BusinessError;
     console.error('validate failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+    throw new Error(error.message)
   }
 }
 ```
-<!--no_check-->

@@ -2,9 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @@zhusiyuan2-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=21d7fb018b953ab448f4d22cd451a6c19737d6c2 translatedAt=2026-11-02T00:56:44.713Z pushedAt=2026-11-02T03:15:43.507Z nl=1 -->
 
 This module provides the capabilities of managing the system pasteboard to support the copy and paste functions. You can use the APIs of this module to operate pasteboard content of the plain text, HTML, URI, Want, pixel map, and other types.
 
@@ -227,7 +228,7 @@ Obtains a **SystemPasteboard** object and returns a singleton instance of the pa
 **Example**
 
 ```ts
-// Obtain the SystemPasteboard object.
+// Obtain the SystemPasteboard object. 
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 ```
 
@@ -1284,7 +1285,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 12900001 | The index is out of the record. |
+| 12900001 | The index is out of range. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -1399,7 +1400,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 12900001 | The index is out of the record. |
+| 12900001 | The index is out of range. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **Example**
@@ -1432,7 +1433,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 12900001 | The index is out of the record. |
+| 12900001 | The index is out of range. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **Example**
@@ -1797,7 +1798,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // Obtain the SystemPasteboard object.
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-// Define a callback to be invoked when the pasteboard content changes.
+// Define a callback to be invoked when the pasteboard content changes. 
 let listener = () => {
     console.info('The system pasteboard has changed.');
 };
@@ -1837,7 +1838,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // Obtain the SystemPasteboard object.
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-// Define a callback to be invoked when the pasteboard content changes.
+// Define a callback to be invoked when the pasteboard content changes. 
 let listener = () => {
     console.info('The system pasteboard has changed.');
 };
@@ -3189,7 +3190,7 @@ struct PasteboardTest {
               systemPasteboard.getDataWithProgress(params).then((pasteData: pasteboard.PasteData) => {
                 console.info('getDataWithProgress success');
               }).catch((err: BusinessError) => {
-                console.error(`Failed to get PasteData. CerrorCode: ${err.code}, errorMessage: ${err.message}.`);
+                console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
               })
           })
         }
@@ -3297,4 +3298,3 @@ let listener = () => {
 };
 systemPasteboard.offRemoteUpdate(listener);
 ```
-<!--no_check-->

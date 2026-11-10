@@ -3,21 +3,23 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=b1ea9cd9cd88170b19b9d24c35dcb3d01ec39823 translatedAt=2026-11-09T06:22:10.694Z pushedAt=2026-11-09T07:53:43.077Z nl=1 -->
 
 - ArkTS APIs<!--localization-arkts-->
   - [@ohos.i18n (Internationalization)](js-apis-i18n.md)
   - [@ohos.intl (Internationalization)](js-apis-intl.md)
   - [@ohos.resourceManager (Resource Management)](js-apis-resource-manager.md)
   - [@ohos.sendableResourceManager (resource management)](js-apis-sendable-resource-manager.md)
+  - [@ohos.fontManager (Font Management)](js-apis-font-manager.md)
   <!--Del-->
   - [@ohos.fontManager (Font Management) (System API)](js-apis-font-manager-sys.md)
   - [@ohos.i18n (Internationalization) (System API)](js-apis-i18n-sys.md)
   <!--DelEnd-->
   - Globalization<!--localization-global-arkts-->
-    - [RawFileDescriptor](js-apis-rawFileDescriptor.md) 
+    - [RawFileDescriptor](js-apis-rawFileDescriptor.md)
     - [Resource](js-apis-resource.md)
     - [SendableResource](js-apis-sendableResource.md)
 - C API<!--localization-c-->
@@ -50,6 +52,6 @@
 - Error Codes<!--localization-arkts-errcode-->
   - [I18N Error Codes](errorcode-i18n.md)
   - [Resource Manager Error Codes](errorcode-resource-manager.md)
-  <!--Del-->
   - [Font Management Error Codes](errorcode-font-manager.md)
-  <!--DelEnd-->
+- Appendix<!--localization-appendixe-->
+  - [Intl Formatting Options](appendixes-intl-formatting-options.md)

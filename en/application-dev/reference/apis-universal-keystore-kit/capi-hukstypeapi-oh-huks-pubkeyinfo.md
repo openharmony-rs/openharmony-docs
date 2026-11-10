@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=cd5375bfd4eb9f0c52b88e433ebccd662d60f877 translatedAt=2026-11-03T06:28:09.068Z pushedAt=2026-11-03T12:08:25.633Z nl=1 -->
 
 ```c
 struct OH_Huks_PubKeyInfo {...}
@@ -28,7 +29,7 @@ Defines the struct of a public key.
 | Name| Description|
 | -- | -- |
 | enum [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg) keyAlg | Algorithm of the public key.|
-| uint32_t keySize | Length of the public key.|
-| uint32_t nOrXSize | Length of **n** or **X**.|
-| uint32_t eOrYSize | Length of **e** or **Y**.|
-| uint32_t placeHolder | Placeholder size.|
+| uint32_t keySize | Length of the public key, in bits. |
+| uint32_t nOrXSize | Length of the n or X value, in bytes. |
+| uint32_t eOrYSize | Length of the e or Y value, in bytes. |
+| uint32_t placeHolder | Size of the placeholder, in bytes. |

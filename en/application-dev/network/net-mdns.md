@@ -5,19 +5,20 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=abe6566e80dd35dec57c3c8679a5169a4e331354 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T06:41:24.028Z nl=1 -->
 
 ## Overview
 
 Multicast DNS (MDNS) provides functions such as adding, removing, discovering, and resolving local services on a LAN.
-- Local service: a service provider on a LAN, for example, a printer or scanner.
+- Local service: the provider of services within the LAN, such as printers and scanners.
 
 Typical MDNS management scenarios include:
 
 - Managing local services on a LAN, such as adding, removing, and resolving local services.
-- Discovering local services and listening to the status changes of local services of the specified type through the **DiscoveryService** object.
+- Discover local services and listen to the status changes of local services of the specified type through the [DiscoveryService](../reference/apis-network-kit/js-apis-net-mdns.md#discoveryservice) object.
 
 > **NOTE**
-> To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [MDNS Management](../reference/apis-network-kit/js-apis-net-mdns.md).
+> To maximize the app running efficiency, most API calls are asynchronous. For asynchronous APIs, both callback and promise modes are provided. The following examples use the promise mode. For more modes, see [@ohos.net.mdns (MDNS Management)](../reference/apis-network-kit/js-apis-net-mdns.md).
 
 The following describes the development procedure specific to each application scenario.
 
@@ -28,7 +29,7 @@ The following describes the development procedure specific to each application s
 ## Managing Local Services
 
 1. Connect the device to the Wi-Fi network.
-2. Import the **mdns**, **BusinessError**, and **common** namespaces from @kit.NetworkKit.
+2. Import the **mdns**, **BusinessError**, and [common](../reference/apis-ability-kit/js-apis-app-ability-common.md) namespaces from @kit.NetworkKit.
 
    <!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -39,7 +40,7 @@ The following describes the development procedure specific to each application s
    import { common } from '@kit.AbilityKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
-3. Call **addLocalService** to add a local service.
+3. Call [addLocalService](../reference/apis-network-kit/js-apis-net-mdns.md#mdnsaddlocalservice-1) to add a local service.
 
    <!-- @[MDNS_add_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -64,7 +65,7 @@ The following describes the development procedure specific to each application s
      // ...
    ```
 
-4. (Optional) Call **resolveLocalService** to resolve the local service for the IP address of the local network.
+4. Call [resolveLocalService](../reference/apis-network-kit/js-apis-net-mdns.md#mdnsresolvelocalservice-1) to resolve the IP address of the local network (optional; use it as needed).
    
    <!-- @[MDNS_resolve_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -76,7 +77,7 @@ The following describes the development procedure specific to each application s
    })
    ```
 
-5. Call **removeLocalService** to remove the local service.
+5. Call [removeLocalService](../reference/apis-network-kit/js-apis-net-mdns.md#mdnsremovelocalservice-1) to remove a local service.
 
    <!-- @[MDNS_remove_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -102,7 +103,7 @@ The following describes the development procedure specific to each application s
    import { common } from '@kit.AbilityKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
-3. Create a **DiscoveryService** object, which is used to discover MDNS services of the specified type.
+3. Create a [DiscoveryService](../reference/apis-network-kit/js-apis-net-mdns.md#mdnscreatediscoveryservice) object to discover MDNS services of the specified service type.
 
    <!-- @[create_discovery_service_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -158,21 +159,11 @@ The following describes the development procedure specific to each application s
    <!-- @[discovery_service_off_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // Unsubscribe from mDNS service discovery status changes.
-   discoveryService.off('discoveryStart', (data: mdns.DiscoveryEventInfo) => {
-     hilog.info(0x0000, 'testTag', JSON.stringify(data));
-   });
-   discoveryService.off('discoveryStop', (data: mdns.DiscoveryEventInfo) => {
-     hilog.info(0x0000, 'testTag', JSON.stringify(data));
-   });
-   discoveryService.off('serviceFound', (data: mdns.LocalServiceInfo) => {
-     hilog.info(0x0000, 'testTag', JSON.stringify(data));
-     // ...
-   });
-   discoveryService.off('serviceLost', (data: mdns.LocalServiceInfo) => {
-     hilog.info(0x0000, 'testTag', JSON.stringify(data));
-     // ...
-   });
+   // Unsubscribe from the mDNS service event. If callback is omitted, remove all callbacks for the event.
+   discoveryService.off('discoveryStart');
+   discoveryService.off('discoveryStop');
+   discoveryService.off('serviceFound');
+   discoveryService.off('serviceLost');
    ```
 ## Samples
 

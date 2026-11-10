@@ -24,44 +24,74 @@
 
 为确保开发阶段顺利接收事件回调，建议采取以下方案：创建新的Native C++工程，在ArkTS代码中实现订阅，并通过C++代码构造故障注入以触发任务执行超时事件。
 
-1. 在DevEco Studio中，新建Native C++工程，目录结构如下：
+1. 获取该示例工程依赖的jsoncpp文件，打开链接[HiAppEvent示例工程EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub)，点击“下载当前目录”，下载EventSub工程文件。
+
+2. 在DevEco Studio新建Native C++模板工程，并将上述文件导入到新建工程，目录结构如下。
 
    ```yml
    entry:
+     libs:    //  放置jsoncpp关联三方库的文件夹
      src:
        main:
          cpp:
-           types:
-             libentry:
-               - index.d.ts
+           - thirdparty:
+               jsoncpp:    //  放置jsoncpp关联三方库的文件夹
+           - types:
+               libentry:
+                 - index.d.ts
            - CMakeLists.txt
            - napi_init.cpp
          ets:
-           entryability:
-             - EntryAbility.ets
-           pages:
-             - Index.ets
+           - entryability:
+               - EntryAbility.ets
+           - pages:
+               - Index.ets
    ```
 
-2. 编辑工程中的“entry > src > main > cpp > CMakeLists.txt”文件，添加源文件及动态库。
+   该示例工程中jsoncpp库文件对应的源码来自[三方开源库jsoncpp](https://codeload.github.com/open-source-parsers/jsoncpp/tar.gz/refs/tags/1.9.6)。
+
+3. 编辑工程中的“entry > src > main > cpp > CMakeLists.txt”文件，添加源文件及动态库。
 
    ```cmake
-   # 新增动态库依赖libhilog_ndk.z.so（日志输出）及libohhicollie.so（HiCollie检测）
-   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohhicollie.so)
+   add_library(entry SHARED napi_init.cpp)
+   # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
+   target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
+   set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
+   # 检查是否存在entry/build目录
+   execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_DIR})
+   # 解压jsoncpp-1.9.6.tar.gz到entry/build，得到jsoncpp头文件的目录
+   execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
+       WORKING_DIRECTORY ${DEST_DIR})
+
+   # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
+   target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
+   target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
    ```
 
-3. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
+4. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
 
-   ```ts
+   <!-- @[AppHicollie_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
-4. 订阅系统事件，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中添加订阅代码，示例代码如下：
+5. 订阅系统事件，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中添加订阅代码，示例代码如下：
 
-   ```ts
-   let watcher: hiAppEvent.Watcher = {
+   <!-- @[appHicollieWatcher_Watcher_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   let appHicollieWatcher: hiAppEvent.Watcher;
+   ```
+  
+   <!-- @[AppHicollie_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   // 订阅任务执行超时事件
+   appHicollieWatcher = {
      // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
-     name: "watcher",
+     name: "appHicollieWatcher",
      // 开发者可以订阅感兴趣的系统事件，此处是订阅了任务执行超时事件
      appEventFilters: [
        {
@@ -87,10 +117,10 @@
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uuid=${eventInfo.params['uuid']}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${eventInfo.params['exception']}`);
            if (eventInfo.params['hilog'] != undefined) {
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
+             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
            }
            if (eventInfo.params['peer_binder'] != undefined) {
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.peer_binder.size=${JSON.stringify(eventInfo.params['peer_binder'].length)}`);
+             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.peer_binder.size=${JSON.stringify(eventInfo.params['peer_binder'].length)}`);
            }
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${eventInfo.params['memory']}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
@@ -99,27 +129,46 @@
          }
        }
      }
-    };
-   hiAppEvent.addWatcher(watcher);
+   };
+   hiAppEvent.addWatcher(appHicollieWatcher);
    ```
 
-5. 新增TestHiCollieTimerNdk函数。
+6. 新增HiCollieTestTimerNdk函数。 
 
-   编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，新增TestHiCollieTimerNdk函数，构造任务执行超时事件：
+   编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，导入依赖的头文件，并定义LOG_TAG。
 
-   ```c++
-   // 引入hicollie.h头文件
-   #include "napi/native_api.h"
-   #include "hicollie/hicollie.h"
-   #include "hilog/log.h"
-   #include <unistd.h>
-   #undef LOG_TAG
-   #define LOG_TAG "testTag"
+    <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    #include "napi/native_api.h"
+    // 根据工程中三方库jsoncpp的位置适配引用json.h的路径
+    #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
+    #include "hiappevent/hiappevent.h"
+    #include "hiappevent/hiappevent_param.h"
+    #include "hilog/log.h"
+    
+    #undef LOG_TAG
+    #define LOG_TAG "testTag"
+    ```
+
+   编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，新增HiCollieTestTimerNdk函数，构造任务执行超时事件：
+
+   <!-- @[Hicollie_Set_Timer_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
-   static napi_value TestHiCollieTimerNdk(napi_env env, napi_callback_info exports)
+   ``` C++
+   #include <unistd.h>
+   #include "hicollie/hicollie.h"
+   ```
+
+   构造任务执行时间超时场景，并使用OH_HiCollie_SetTimer及OH_HiCollie_CancelTimer函数进行监控。
+
+   <!-- @[Hicollie_Test_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   static napi_value HiCollieTestTimerNdk(napi_env env, napi_callback_info exports)
    {
        // 定义执行任务超时id值
-       int id;  
+       int id;
        // 定义任务超时检测参数：超时时间阈值1s，动作级别为生成日志
        HiCollie_SetTimerParam param = {"testTimer", 1, nullptr, nullptr, HiCollie_Flag::HICOLLIE_FLAG_LOG};
        // 设置检测
@@ -132,72 +181,59 @@
        } else {
            OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_SetTimer failed, errorCode is %{public}d", errorCode);
        }
-       return nullptr; 
+       return nullptr;
    }
    ```
 
-6. 将TestHiCollieTimerNdk注册为ArkTS接口。
+7. 将HiCollieTestTimerNdk注册为ArkTS接口。
 
-   编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，TestHiCollieTimerNdk注册为ArkTS接口：
+   编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，在Init函数中的desc[]数组中将HiCollieTestTimerNdk注册为ArkTS接口：
 
-   ```c++
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "TestHiCollieTimerNdk", nullptr, TestHiCollieTimerNdk, nullptr, nullptr, nullptr, napi_default, nullptr }
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = ((void*)0),
-       .reserved = { 0 },
-   };
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
+   <!-- @[test_hicollie_set_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 将HiCollieTestTimerNdk注册为ArkTS接口
+   { "HiCollieTestTimerNdk", nullptr, HiCollieTestTimerNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
    ```
 
-   编辑工程中的“entry > src > main > cpp > types > libentry > Index.ets”文件，定义ArkTS接口：
+   编辑工程中的“entry > src > main > cpp > types > libentry > Index.ets”文件，定义ArkTS接口。
 
-   ```typescript
-   export const TestHiCollieTimerNdk: () => void;
+   <!-- @[test_hicollie_set_timer_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const HiCollieTestTimerNdk: () => void;
    ```
 
-7. 编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，新增按钮触发任务执行超时事件。
+8. 编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，新增按钮触发任务执行超时事件。
 
-   ```typescript
+   引入调用C接口的头文件。
+
+   <!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import testNapi from 'libentry.so';
-
-   @Entry
-   @Component
-   struct Index {
-     @State message: string = 'Hello World';
-
-     build() {
-       Row() {
-         Column() {
-           Button("TestHiCollieTimerNdk")
-             .fontSize(50)
-             .fontWeight(FontWeight.Bold)
-             .onClick(testNapi.TestHiCollieTimerNdk);  // 添加点击事件，触发TestHiCollieTimerNdk方法。
-         }
-         .width('100%')
-       }
-       .height('100%')
-     }
-   }
+   ```
+   
+   在Index页面新增触发HiCollieTestTimerNdk方法的按钮。
+   
+   <!-- @[hicollie_set_timer_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 添加点击事件，触发HiCollieTestTimerNdk方法。
+   Button('HiCollieTestTimerNdk')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       testNapi.HiCollieTestTimerNdk();
+     })
    ```
 
-8. 单击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中单击按钮“TestHiCollieTimerNdk”，触发任务执行超时事件。
+9. 单击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中单击按钮“HiCollieTestTimerNdk”，触发任务执行超时事件。
 
 ### 验证观察者是否订阅到任务执行超时事件
 
@@ -225,7 +261,11 @@
 
 ### 移除事件观察者
 
-```ts
+在onDestroy函数中移除事件观察者代码，示例代码如下：
+
+<!-- @[remove_hicollie_watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 // 移除该应用事件观察者以取消订阅事件
-hiAppEvent.removeWatcher(watcher);
+hiAppEvent.removeWatcher(appHicollieWatcher);
 ```

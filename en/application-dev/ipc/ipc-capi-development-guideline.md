@@ -5,6 +5,7 @@
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=275c0ec1fd5330f05ceab239fae7855ffdf9f4a0 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 ## When to Use
 
@@ -14,7 +15,7 @@ The IPC C APIs do not provide the capability of obtaining the communication prox
 
 ![](./figures/_i_p_c_architecture_diagram.png)
 
-This document describes how to use the IPC C APIs.
+For details about how to establish an IPC channel, see [Creating/Terminating Native Child Processes (C/C++)](../application-models/capi-nativechildprocess-development-guideline.md). This document describes how to use the IPC C APIs.
 
 ## Available APIs
 
@@ -35,15 +36,16 @@ For details about the APIs, see [IPCKit](../reference/apis-ipc-kit/capi-ipckit.m
 
 Create a stub object on the server, obtain the proxy object of the client through ability APIs, and use the proxy object to communicate with the stub object on the server through IPC. Then, register the death notification callback of the remote object to detect the death status of the process hosting the remote stub object.
 
+When reading the following examples, follow this sequence: the child process creates a stub object, the main process starts the child process and obtains the proxy object, the proxy side sends a request, and the stub side processes the request and returns the result. The proxy side and stub side must use the same `code` definitions and interface descriptor.
+
 **Linking Dynamic Libraries**
 
 Add the following libraries to **CMakeLists.txt**.
 
-```txt
-# ipc capi
-libipc_capi.so
-# Ability C/C++ APIs
-libchild_process.so
+<!-- @[child_process_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(childprocesssample libipc_capi.so libchild_process.so)
 ```
 
 **Including Header Files**
@@ -56,6 +58,8 @@ libchild_process.so
 ```
 
 **Implementing Child Processes**
+
+The child process creates a stub object and returns it through `NativeChildProcess_OnConnect` to receive IPC requests sent by the main process. The `OnRemoteRequest` in the following code only demonstrates the basic form of the callback function. For the specific request processing procedure, see "Implementing the Stub Side" later in this document.
 
 <!-- @[child_process_must_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
 
@@ -107,7 +111,7 @@ OHIPCRemoteStub *NativeChildProcess_OnConnect()
     return g_ipcStubObj.GetRemoteStub();
 }
 
-void NativeChildProcessMainProc()
+void NativeChildProcess_MainProc()
 {
     // Equivalent to the Main function of the child process. It implements the service logic of the child process.
     // ...
@@ -119,11 +123,15 @@ void NativeChildProcessMainProc()
 
 **Implementing the Main Process**
 
+The main process calls `OH_Ability_CreateNativeChildProcess` to start the child process. After the child process is started successfully, the `OnNativeChildProcessStarted` callback provides the `remoteProxy` corresponding to the stub object of the child process, which can then be used to send IPC requests to the child process.
+
 <!-- @[main_processIpc_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp) -->
 
 ``` C++
 #include <IPCKit/ipc_kit.h>
 #include <AbilityKit/native_child_process.h>
+// ...
+int32_t g_result = -1;
 // ...
 static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
 {
@@ -152,6 +160,8 @@ void CreateNativeChildProcess()
 ```
 
 **Implementing the Proxy Side**
+
+The proxy side is used to send IPC requests to the remote stub. The following example demonstrates the process of creating an `OHIPCParcel` object, writing the interface descriptor and request data, calling `OH_IPCRemoteProxy_SendRequest` to send the request, and reading the processing result from the reply data object. Different operations are distinguished by different `code` values.
 
 <!-- @[proxy_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/IpcProxy.cpp) -->
 
@@ -271,6 +281,8 @@ bool IpcProxy::WriteInterfaceToken(OHIPCParcel* data)
 ```
 
 **Implementing the Stub Side**
+
+The stub side receives requests sent by the proxy side through `OnRemoteRequest`. This callback first reads and verifies the interface descriptor, and then calls the corresponding processing method based on the `code`. The processing method reads data from the request data object `data`, writes the processing result to the reply data object `reply`, and returns it to the proxy side.
 
 <!-- @[stub_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/IpcStub.cpp) -->
 

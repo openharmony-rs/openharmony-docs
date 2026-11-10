@@ -5,7 +5,7 @@
 <!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T11:27:24.862Z pushedAt=2026-06-22T11:28:55.803Z -->
+<!-- md-trans-meta sourceCommit=6bfcf5261eb2f83e0869ab9ec15c9d0a1edd6edd translatedAt=2026-11-03T10:54:38.444Z pushedAt=2026-11-03T11:29:47.350Z nl=1 -->
 
 > **NOTE**
 >
@@ -29,7 +29,7 @@ Bluetooth is disabled on the local device.
 
 Enable Bluetooth on the local device and try again.
 
-## 32390002 Bluetooth Unpaired
+## 32390002 Device Not Paired
 
 **Error Message**
 
@@ -42,14 +42,18 @@ This error code is reported if the local device has not established a Bluetooth 
 **Possible Causes**
 
 1. The local device has not established a Bluetooth pairing with the target device.
-2. The Bluetooth service on the peer device has not enabled listening for pairing requests.
-3. An invalid MAC address or UUID is used.
+
+2. The target device has not started service listening.
+
+3. An invalid MAC or UUID is used.
 
 **Solution**
 
-1. Use the Health & Fitness app to add the device and pair it via Bluetooth.
+1. Use the Sports Health app to add and pair the device.
+
 2. Check whether the Bluetooth service on the peer device has enabled listening for pairing requests.
-3. Check whether the input MAC address and UUID are valid.
+
+3. Check the validity of the entered MAC and UUID. The MAC should be a Bluetooth MAC address string in the XX:XX:XX:XX:XX:XX format, and the UUID should be a standard UUID format string, such as xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.
 
 ## 32390004 Invalid or Unavailable Channel ID
 
@@ -59,17 +63,19 @@ ChannelId is invalid or unavailable.
 
 **Description**
 
-This error code is reported if the channel ID is invalid or unavailable.
+The channel ID passed when calling the proxy channel API does not meet the requirements or the channel has become invalid, causing the operation to fail.
 
 **Possible Causes**
 
-1. The input **channelId** is invalid, that is, it is not the one returned by **openProxyChannel**.
-2. The related channel has been closed.
+1. An invalid channelId is passed. The channelId should be the number-type channel identifier returned by openProxyChannel.
+
+2. The channel corresponding to this channelId has been closed through closeProxyChannel, and the channelId is no longer available after closure.
 
 **Solution**
 
 1. Review the code logic to determine if **channelId** is the one returned by **openProxyChannel**.
-2. Review the code logic to determine if **channelId** is still used after the channel is closed. 
+
+2. Check the code logic to confirm whether the channel corresponding to this channelId has been closed. If it has been closed, do not continue to use this channelId. If communication needs to continue, call openProxyChannel again to establish a new channel.
 
 ## 32390006 Parameter Verification Error
 
@@ -79,16 +85,19 @@ Parameter error.
 
 **Description**
 
-This error code is reported if the parameter verification fails.
+The parameters passed when calling the proxy channel API do not meet the requirements, such as an abnormal MAC or UUID format or an incorrect input parameter type, causing the API call to fail.
 
 **Possible Causes**
 
-1. The format of the input MAC address or service UUID is incorrect.
+1. The input MAC or UUID is in an invalid format. The MAC should be a Bluetooth MAC address string in the XX:XX:XX:XX:XX:XX format, and the UUID should be a standard UUID string, for example, xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.
+
 2. The type of the input parameters is incorrect.
 
 **Solution**
 
-Review the code logic to determine if the MAC address and service UUID are in correct format and the type of the input parameters is correct.
+1. Check the code logic to ensure that the MAC is a Bluetooth MAC address string in the XX:XX:XX:XX:XX:XX format and the UUID is a standard UUID string, for example, xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.
+
+2. Check the code logic to ensure that the input parameter types are consistent with the API definition.
 
 ## 32390100 Internal Error
 
@@ -98,7 +107,7 @@ Internal error.
 
 **Description**
 
-Internal error.
+An internal system exception occurs, which may cause the current operation to fail or the service to become unavailable.
 
 **Possible Causes**
 
@@ -106,7 +115,11 @@ System errors, such as null pointer, insufficient memory, unexpected distributed
 
 **Solution**
 
-Try again. If the fault persists, restart the application, update the application, or update the device version.
+1. Retry the operation.
+
+2. If the problem persists, restart the application.
+
+3. If restarting does not work, upgrade the application or the device version.
 
 ## 32390101 Call Restricted
 
@@ -116,7 +129,7 @@ Call is restricted.
 
 **Description**
 
-This error code is reported if an API call is restricted.
+The call is unauthorized and restricted.
 
 **Possible Causes**
 
@@ -124,7 +137,7 @@ The caller is not authorized to perform the operation.
 
 **Solution**
 
-Apply for the required permissions.
+Apply for the permission required for proxy channel management (confirm the specific permission name from the proxy channel management API reference), declare the corresponding permission in the application configuration, and try again.
 
 ## 32390102 Operation Failed or Connection Timed Out
 
@@ -134,7 +147,7 @@ Operation failed or Connection timed out.
 
 **Description**
 
-This error code is reported if the operation fails or the connection times out.
+A Bluetooth underlying fault causes the proxy channel operation to fail, or the connection times out because it is not established within the specified time.
 
 **Possible Causes**
 
@@ -142,7 +155,8 @@ The underlying Bluetooth is faulty, leading to a connection failure or timeout.
 
 **Solution**
 
-1. Enable and disable Bluetooth on the local device and the target device.
+1. Turn off and then turn on Bluetooth on the local device and the target device.
+
 2. Restart the local device and the target device, and then enable Bluetooth on the devices.
 
 ## 32390103 Data Too Long
@@ -153,7 +167,7 @@ Data too long.
 
 **Description**
 
-This error code is reported if the data to be sent exceeds the length limit.
+The length of the data sent through the proxy channel exceeds the maximum limit (4096 bytes), causing the sending to fail.
 
 **Possible Causes**
 
@@ -161,7 +175,7 @@ The length of the data to be sent exceeds 4096 bytes.
 
 **Solution**
 
-Check the length of the data to be sent.
+Ensure that the length of the data to be sent does not exceed 4096 bytes. If the data is too long, send it in segments.
 
 ## 32390104 Data Sending Failed
 
@@ -171,13 +185,14 @@ Send failed.
 
 **Description**
 
-This error code is reported if data fails to be sent via Bluetooth.
+When data is sent through the proxy channel, a Bluetooth fault prevents the data from being successfully delivered to the target device.
 
 **Possible Causes**
 
-The underlying Bluetooth is faulty.
+The underlying Bluetooth connection is faulty or the protocol is abnormal.
 
 **Solution**
 
 1. Restart Bluetooth on the local device and the target device.
+
 2. Restart the local device and the target device.

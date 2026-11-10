@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to locate JSVM memory leaks by first using hidumper sampling to distinguish native memory leaks from JavaScript heap memory leaks, then using DevEco Studio Profiler or DevTools heap snapshot comparisons to locate the source."
+keywords: ["memory leak","qualitative analysis","hidumper","native memory","JavaScript heap memory","heap snapshot comparison","OH_JSVM_CreateReference","DevEco Studio","memory analysis"]
+doctype: guide
+status: active
+---
+
 # Troubleshooting JSVM-API Memory Leaks
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=22baf984090461cd5ea4c03a32296adcf2f37702 translatedAt=2026-11-09T08:52:17.299Z nl=1 -->
 
 JSVM memory usage includes native memory usage (C/C++ memory usage) and heap memory usage of the underlying JavaScript engine. Heap memory is used for maintaining a heap and its lifecycle to manage generated JavaScript objects by the JavaScript engine. Other memory is called native memory. When using the JSVM, you may encounter the two types of memory exceptions.
 
@@ -12,7 +21,7 @@ This topic describes how to determine the memory leak type and how to locate the
 
 ## Determining the Memory Leak Type
 
-You can use hdc to connect to the device, run the following command to sample the memory of the target application, and compare the memory changes within a period of time to determine whether the native memory leaks or JavaScript memory leaks. In the **Pss Total** column in the following figure, **native heap** indicates the native memory usage, and **AnonPage other** indicates the JavaScript heap memory usage.
+You can connect to the device via hdc and run the following command to sample the memory of the target app, then compare the memory changes over a period of time to qualitatively determine whether the issue is a Native memory leak or abnormal JS heap memory growth. In the following figure, under the Pss Total column, native heap corresponds to Native memory usage, and AnonPage other corresponds to JS heap memory usage.
 ```hdc
 hidumper --mem $(pidof dest_app)
 ```
@@ -64,7 +73,41 @@ function createElements() {
 
 ### How to Locate
 
-Currently, JSVM provides OH_JSVM_OpenInspector to enable the inspector. For details, see [Using OH_JSVM_OpenInspector](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/jsvm-debugger-cpuprofiler-heapsnapshot#using-oh_jsvm_openinspector) and [Using Chrome Inspect](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/jsvm-debugger-cpuprofiler-heapsnapshot#using-chrome-inspect).
+Currently, JSVM provides `OH_JSVM_OpenInspector` to enable the inspector. For details, see [Using OH_JSVM_OpenInspector](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/jsvm-debugger-cpuprofiler-heapsnapshot#%E4%BD%BF%E7%94%A8-oh_jsvm_openinspector) and [Using Chrome Inspect](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/jsvm-debugger-cpuprofiler-heapsnapshot#%E4%BD%BF%E7%94%A8-chrome-inspect-%E9%A1%B5%E9%9D%A2%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95).
 
 Use DevTools to take a snapshot of the heap memory in the target scenario (click the garbage collection button above before taking a snapshot). Compare the snapshots to find the unreleased JavaScript objects and their locations in the source code to further locate the cause of the unreleased heap memory.
+
 <div align=left><img src="figures/jsvm_locate_memory_leak_devtool.png"/></div> 
+
+### Automatically Exporting Heap Dumps on OOM with --heap-dump-on-oom
+
+In addition to manually capturing heap snapshots with DevTools for comparison, JSVM can automatically export the current heap to a heap dump file when the JS heap runs out of memory (OOM). You can use this file to locate heap memory leaks after the event.
+
+To enable this capability, pass `--heap-dump-on-oom` through `argc`/`argv` in `JSVM_InitOptions` when initializing JSVM. `OH_JSVM_Init` passes the engine arguments in `argv` to the underlying JS engine.
+
+```c++
+// Enable OOM heap dumps when initializing JSVM.
+static int32_t TestJSVM()
+{
+  JSVM_InitOptions initOptions = {0};
+  int argc = 2;
+  const char* argv[2] = {
+    "",
+    "--heap-dump-on-oom",
+  };
+  initOptions.argc = &argc;
+  initOptions.argv = const_cast<char**>(argv);
+  // Initialize the JavaScript engine instance.
+  JSVM_CALL(OH_JSVM_Init(&initOptions));
+  // ... Create the VM/Env and execute application logic.
+  return 0;
+}
+```
+
+> **NOTE**
+>
+> - `--heap-dump-on-oom` is a development and debugging option that adds performance overhead. Enable it temporarily only when locating JS heap memory leaks. Including this option in a production release is not recommended.
+> - When enabled, the engine writes the current heap snapshot to a heap dump file before the process exits if the JS heap reaches its limit and triggers OOM.
+> - The default output path is `/data/app/el2/100/base/<package-name>/`. For example, for the package `com.example.Test`, files are written to `/data/app/el2/100/base/com.example.Test/`. File names take the form `xxx.rawheap`. You can retrieve the files from the device using hdc for analysis.
+> - Before visual analysis, convert the `xxx.rawheap` heap dump to a `.heapsnapshot` file using `js_rawheap_translator`. For details, see [js-rawheap-translator](../tools/js-rawheap-translator.md).
+> - Import the converted `.heapsnapshot` file into DevTools or DevEco Studio to locate unreleased JS objects and their reference chains.

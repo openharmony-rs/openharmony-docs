@@ -1,12 +1,11 @@
 # Class (UIInspector)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c43314d48e5bb6db0c940e002f5fb3a101c7f656 translatedAt=2026-08-05T03:05:15.424Z pushedAt=2026-08-06T02:04:06.134Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-02T12:53:28.915Z pushedAt=2026-11-06T11:05:30.342Z nl=1 -->
 
 Provides the capability to register callbacks for component layout and component draw-to-display completion notifications. "Draw-to-display" means that the drawing commands of the node are sent to the graphics service and have been successfully displayed. For example, you can obtain the precise component size after layout is complete, or perform operations such as screenshot capture or animation synchronization after draw-to-display is complete. This is suitable for scenarios where precise awareness of component layout and drawing timing is required.
 
@@ -36,7 +35,7 @@ Registers callbacks for component layout and component draw-to-display completio
 | ---- | ------ | ---- | ------- |
 | id   | string | Yes   | ID of the target component, set using the universal attributes [id](./arkui-ts/ts-universal-attributes-component-id.md#id) or [key](./arkui-ts/ts-universal-attributes-component-id.md#key12).|
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                              |
 | ------------------------------------------------------------ | -------------------------------------------------- |
@@ -45,7 +44,6 @@ Registers callbacks for component layout and component draw-to-display completio
 **Example**
 
 <!--code_no_check-->
-
 ```ts
 import { inspector, UIInspector } from '@kit.ArkUI';
 
@@ -67,7 +65,7 @@ struct UIInspectorExample {
   }
 
   uiInspector: UIInspector = this.getUIContext().getUIInspector();
-  listener:inspector.ComponentObserver = this.uiInspector.createComponentObserver('TEXT_ID');
+  listener: inspector.ComponentObserver = this.uiInspector.createComponentObserver('TEXT_ID');
 
   aboutToAppear() {
     let onLayoutComplete: () => void = (): void => {
@@ -95,9 +93,10 @@ Registers callbacks for component layout and component draw-to-display completio
 
 Compared with [createComponentObserver](#createcomponentobserver), this API additionally supports the input of **UniqueID** (the unique ID allocated by the system to a node).
 
+
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,7 +106,7 @@ Compared with [createComponentObserver](#createcomponentobserver), this API addi
 | ---- | ------ | ---- | ------- |
 | id   | string \| number | Yes    | When string type is used, this parameter specifies the component ID, which is set through the universal attribute [id](./arkui-ts/ts-universal-attributes-component-id.md#id) or [key](./arkui-ts/ts-universal-attributes-component-id.md#key12). When using a component ID to create a listener handle, ensure that the component corresponding to the ID already exists; otherwise, the listener will not take effect. When the type is number, this parameter specifies the UniqueID, which is a unique identifier assigned by the system to a node and can be obtained through [getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12). When using a UniqueID to create a listener handle, ensure that the node corresponding to the UniqueID already exists; otherwise, the listener will not take effect. The value range of the number type is an integer from 1 to 2147483647.|
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                              |
 | ------------------------------------------------------------ | -------------------------------------------------- |
@@ -136,7 +135,7 @@ struct UIInspectorExample {
   }
 
   uiInspector: UIInspector = this.getUIContext().getUIInspector();
-  listener:inspector.ComponentObserver = this.uiInspector.createComponentObserver('TEXT_ID');
+  listener: inspector.ComponentObserver = this.uiInspector.createComponentObserver('TEXT_ID');
 
   aboutToAppear() {
     let onLayoutComplete: () => void = (): void => {
@@ -158,6 +157,7 @@ struct UIInspectorExample {
     // Unregister callbacks through the handle. You should decide when to call these APIs.
     // this.listener.off('layout', onLayoutComplete)
     // this.listener.off('draw', onDrawComplete)
+    // listenerForThis.offLayoutChildren(onLayoutChildrenComplete)
   }
 }
 ```

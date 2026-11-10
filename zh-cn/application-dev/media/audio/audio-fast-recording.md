@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "为K歌、直播配置OHAudio低时延录制，查询模式状态并优化数据回调，避免采集杂音和卡顿。"
+keywords: [OHAudio, 低时延音频录制, K歌录音, 直播录音, 录音数据回调, 录音低时延状态]
+doctype: guide
+status: active
+---
+
 # 低时延音频录制(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -88,8 +96,8 @@ int32_t MyOnReadData_Legacy(
     OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, readDataCb, nullptr);
 ```
 
-- 为避免音频卡顿，禁止在回调方法OH_AudioCapturer_OnReadData中执行耗时操作。
-- 为保证OH_AudioCapturer_OnReadData与流状态控制逻辑独立正常运行，禁止在OH_AudioCapturer_OnReadData回调方法中调用音频流控制接口。
+- 为避免音频卡顿，禁止在回调方法OH_AudioCapturer_OnReadDataCallback中执行耗时操作。
+- 为保证OH_AudioCapturer_OnReadDataCallback与流状态控制逻辑独立正常运行，禁止在OH_AudioCapturer_OnReadDataCallback回调方法中调用音频流控制接口。
   
     | 音频流控制接口                                                    | 说明         |
     | ------------------------------------------------------------ | ------------ |

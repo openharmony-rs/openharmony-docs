@@ -1,3 +1,10 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用AVImageGenerator的ArkTS接口从视频资源中提取指定时间点的缩略图，适用于视频封面生成、时间轴预览等场景。"
+keywords: [AVImageGenerator, 视频缩略图, ArkTS, PixelMap, fetchFrameByTime, 帧提取, 视频封面, fdSrc, 关键帧]
+doctype: guide
+status: active
+---
 # 使用AVImageGenerator提取视频指定时间图像(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -16,8 +23,10 @@
 
 1. 使用[createAVImageGenerator()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavimagegenerator12-1)创建实例。
 
-   ```ts
-   import { media } from '@kit.MediaKit';
+   <!-- @[AVImageGenerator_CreateAVImageGenerator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 创建AVImageGenerator对象。
    let avImageGenerator: media.AVImageGenerator = await media.createAVImageGenerator();
    ```
 
@@ -31,8 +40,9 @@
    >
    > - 不同AVImageGenerator或者[AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md)，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
 
-   ```ts
-   import { common } from '@kit.AbilityKit';
+   <!-- @[AVImageGenerator_SetFdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 获取当前组件所在Ability的Context，并通过Context获取应用文件路径。
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    // 设置fdSrc，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
@@ -40,12 +50,10 @@
    ```
 
 3. 获取指定时间图像：调用fetchFrameByTime()，可以获取到一个PixelMap对象，该对象可用于图片显示。
-   ```ts
-   import { image } from '@kit.ImageKit';
-
-   // pixelMap对象声明，用于图片显示。
-   @State pixelMap: image.PixelMap | undefined = undefined;
-
+   
+   <!-- @[AVImageGenerator_fetchFrameByTime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 初始化入参。
    let timeUs = 0; // 需要获取的缩略图在视频中的时间点。
    let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC; // AV_IMAGE_QUERY_NEXT_SYNC表示选取传入时间点或之后的关键帧。
@@ -54,17 +62,18 @@
      width : 300, // 输出的缩略图宽度。
      height : 300 // 输出的缩略图高度。
    };
-
+   
    // 获取缩略图（promise模式）。
    this.pixelMap = await avImageGenerator.fetchFrameByTime(timeUs, queryOption, param);
    ```
 
 4. 释放资源：调用release()销毁实例，释放资源。
-   ```ts
+
+   <!-- @[AVImageGenerator_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 释放资源（promise模式）。
-   await avImageGenerator.release().catch((err: BusinessError) => {
-      console.error(`release failed, error code: ${err.code}, error message: ${err.message}`);
-   });
+   avImageGenerator.release();
    ```
 
 ## 运行示例工程

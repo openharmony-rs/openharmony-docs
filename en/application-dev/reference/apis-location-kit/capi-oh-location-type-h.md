@@ -5,6 +5,7 @@
 <!--Designer: @liu-binjun-->
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=461bfe2357ae9914a8e5bde0c12af96637a06708 translatedAt=2026-11-03T04:31:14.494Z pushedAt=2026-11-03T12:08:25.487Z nl=1 -->
 
 ## Overview
 
@@ -43,6 +44,7 @@ Defines common attributes of the location service.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
+| [bool OH_LocationInfo_IsFromMock(Location_Info* location)](#oh_locationinfo_isfrommock) | - | Checks whether the location information is from the mock location feature.<br />**Since:** 26.0.0 |
 | [Location_BasicInfo OH_LocationInfo_GetBasicInfo(Location_Info* location)](#oh_locationinfo_getbasicinfo) | - | Obtains basic location information.|
 | [Location_ResultCode OH_LocationInfo_GetAdditionalInfo(Location_Info* location, char* additionalInfo, uint32_t length)](#oh_locationinfo_getadditionalinfo) | - | Obtains the additional information in the location information.|
 | [typedef void (\*Location_InfoCallback)(Location_Info* location, void* userData)](#location_infocallback) | Location_InfoCallback | Defines the callback for receiving reported location information.|
@@ -90,7 +92,7 @@ Enumerates use scenes in a location request.
 
 | Enum Item| Description|
 | -- | -- |
-| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | Navigation scenario.<br> This option is applicable when your application needs to obtain the real-time location of a mobile device outdoors, such as navigation for driving or walking.<br> This option mainly uses the GNSS positioning technology and therefore the power consumption is relatively high.|
+| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | Indicates the navigation scenario.<br> Applicable to scenarios where the real-time location of a device is obtained outdoors, such as in-vehicle and walking navigation.<br> Mainly uses GNSS positioning technology to provide positioning services, with high power consumption. |
 | LOCATION_USE_SCENE_SPORT = 0x0402 | Sport scenario.<br> Applicable when your application needs to record user trajectories, for example, the track recording function of sports applications.<br> This option mainly uses the GNSS positioning technology and therefore the power consumption is relatively high.|
 | LOCATION_USE_SCENE_TRANSPORT = 0x0403 | Travel scenario.<br> This option is applicable to user travel scenarios, such as taxi hailing and public transportation.<br> This option mainly uses the GNSS positioning technology and therefore the power consumption is relatively high.|
 | LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404 | Daily life services.<br> This option is applicable when your application only needs the approximate location in scenarios such as when the user is browsing news, shopping online, and ordering food.<br> It mainly uses the network positioning technology and therefore the power consumption is relatively low.|
@@ -134,6 +136,30 @@ Defines the source of location information.
 
 
 ## Function Description
+
+### OH_LocationInfo_IsFromMock()
+
+```c
+bool OH_LocationInfo_IsFromMock(Location_Info* location)
+```
+
+**Description**
+
+Checks whether the location information comes from the mock location feature.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [Location_Info](capi-location-location-info.md)* location | Pointer to the location information structure.<br> A non-null pointer must be passed in. This pointer can be obtained from [Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback). |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| bool | Returns a bool value indicating whether the location comes from the mock location feature.<br> The value true indicates that the location comes from the mock location feature, and the value false indicates that the location comes from the real positioning result of the system.<br> |
 
 ### OH_LocationInfo_GetBasicInfo()
 
@@ -316,3 +342,5 @@ Sets a callback for sign generation.
 | [Location_RequestConfig](capi-location-location-requestconfig.md)* requestConfig | Pointer to the [Location_RequestConfig](capi-location-location-requestconfig.md) instance,<br> which is created using [OH_Location_CreateRequestConfig](capi-oh-location-type-h.md#oh_location_createrequestconfig).|
 | [Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback) callback | Pointer to the callback function, which is used to receive location information changes.<br> For details, see [Location_InfoCallback](capi-oh-location-type-h.md#location_infocallback).|
 | void* userData | Pointer to the **userData** struct or object. This pointer is returned to the caller as an input parameter when the callback function is executed.|
+
+

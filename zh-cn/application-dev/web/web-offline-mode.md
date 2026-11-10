@@ -39,12 +39,12 @@ import { window } from '@kit.ArkUI';
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err && err.code) {
-        console.info('loadContent failed. errorCode: ' + err.code);
+        console.error('loadContent failed. errorCode: ' + err.code);
         return;
       }
       let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
       if (!windowClass) {
-        console.info('windowClass is null');
+        console.error('windowClass is null');
         return;
       }
       // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
@@ -191,12 +191,12 @@ import { createNWeb } from '../pages/Common';
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err && err.code) {
-        console.info('loadContent failed. errorCode: ' + err.code);
+        console.error('loadContent failed. errorCode: ' + err.code);
         return;
       }
       let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
       if (!windowClass) {
-        console.info('windowClass is null');
+        console.error('windowClass is null');
         return;
       }
       // 创建空的Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建
@@ -371,12 +371,12 @@ import { window } from '@kit.ArkUI';
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err && err.code) {
-        console.info('loadContent failed. errorCode: ' + err.code);
+        console.error('loadContent failed. errorCode: ' + err.code);
         return;
       }
       let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
       if (!windowClass) {
-        console.info('windowClass is null');
+        console.error('windowClass is null');
         return;
       }
       // 创建Web动态组件（需传入UIContext），loadContent之后的任意时机均可创建

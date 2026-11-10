@@ -1,12 +1,11 @@
 # Class (SmartGestureController)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:54:14.191Z pushedAt=2026-08-11T06:05:03.590Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-02T12:49:40.700Z pushedAt=2026-11-03T06:45:19.246Z nl=1 -->
 
 Provides the capabilities of smart gestures enabling, listening, selected state control, and dynamic smart gesture behaviors decision. It is suitable for scenarios where an app integrates smart gestures, listens for the system's default gesture handling intent, and customizes gesture response behaviors, helping the app flexibly control the smart gesture interaction process.
 
@@ -24,8 +23,9 @@ Sets whether to enable tap and slide gestures in smart gestures.
 
 > **NOTE**
 >
-> - This API affects only tap and slide gestures in smart gestures, but does not affect a wrist rotation gesture.
+> - This API affects only tap and slide gestures in smart gestures, but does not affect a wrist flip gesture.
 > - After disabled, the [smartGestureShortcut](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut) configuration on the component side will be retained, but tap and slide gestures in smart gestures will not be responded.
+> - This API is not supported in subwindow scenarios.
 
 **Since**: 26.0.0
 
@@ -88,7 +88,7 @@ struct SmartGestureControllerExample {
 
 registerMonitor(monitorCallback: Callback\<BaseGestureHandlingProposal, GestureHandlingResolution\>): void
 
-Registers a callback for listening to smart gestures. Before the system handles the current smart gesture, an application can receive the default action handling of the current gesture and perform custom intervention. This API uses an asynchronous callback to return the result.
+Registers a callback for listening to smart gestures. Before the system handles the current smart gesture, an application can receive the default action handling of the current gesture and perform custom intervention. The return value is used to declare whether to consume the current smart gesture and whether to replace the default action handling. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -317,8 +317,8 @@ Requests to set a specified component as the node selected by the current smart 
 
 > **NOTE**
 >
-> - The request takes effect only when the target component meets all of the following conditions: the component can respond to smart gestures, the component is visible on the screen, and the component is bound with [onClick](./arkui-ts/ts-universal-events-click.md#onclick) or a tap gesture [TapGesture](./arkui-ts/ts-basic-gestures-tapgesture.md#apis).
-> - Whether a component can respond to smart gestures is determined by the **enabled** property in [smartGestureShortcut](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut).
+> - The request takes effect only when the target component meets all of the following conditions: the component can respond to smart gestures, the component is visible on the screen, and the component is bound with [onClick](./arkui-ts/ts-universal-events-click.md#onclick) or [TapGesture](./arkui-ts/ts-basic-gestures-tapgesture.md#apis).
+> - Whether a component can respond to smart gestures is determined by the **enabled** property in [smartGestureShortcut](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut); whether a component can be selected by smart gestures is determined by the **selectable** property.
 
 **Since**: 26.0.0
 
@@ -469,7 +469,8 @@ import {
   NoneActionProposal,
   PageSwitchActionProposal,
   ScrollActionProposal,
-  SelectActionProposal
+  SelectActionProposal,
+  SmartGestureAction
 } from '@kit.ArkUI';
 
 @Entry
@@ -595,6 +596,10 @@ struct SmartGestureControllerExample {
       this.controller.enableSmartTapAndSlideGestures(true);
       this.controller.registerMonitor(this.callback);
     })
+    .onDisappear(() => {
+      this.controller.unregisterMonitor(this.callback);
+      this.controller.enableSmartTapAndSlideGestures(false);
+    })
     .width('100%')
     .height('100%')
     .padding(12)
@@ -604,4 +609,3 @@ struct SmartGestureControllerExample {
 ```
 
 ![smartgesture_06](figures/smartgesture_06.PNG)
-<!--no_check-->

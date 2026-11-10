@@ -33,9 +33,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 | 名称 | 值 | 说明 |
 | ---- | -- | ---- |
-| NORMAL | 0 | 普通同步。 |
-| FORCE | 1 | 强制同步。 |
-| FORCE_THM | 2 | 强制缩略图同步。 |
+| FORCE_THM | 0 | 强制缩略图同步。 |
 
 ## GallerySync
 
@@ -85,7 +83,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -125,7 +123,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -168,7 +166,7 @@ off(evt: 'progress'): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -534,7 +532,7 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -574,7 +572,7 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -617,7 +615,7 @@ off(evt: 'progress'): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -903,7 +901,7 @@ registerUploadProgress(callback: Callback&lt;UploadProgress&gt;): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010 | Try again. |
-| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit.|
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameter are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit.|
 
 **示例：**
 
@@ -1004,7 +1002,7 @@ getUploadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;UploadProgress&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010  | Try again. |
-| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit. 3.The input parameter contains an invalid uri. |
+| 13900020  | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit. 3.The input parameter contains an invalid uri. |
 
 **示例：**
 
@@ -1014,11 +1012,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let fileSync = new cloudSync.FileSync("com.ohos.demo");
 let uris: string[] = ["file:///data/storage/el2/cloud/1.txt", "file:///data/storage/el2/cloud/2.jpg"];
 
-fileSync.getUploadList(uris).then((progressList: cloudSync.UploadProgress[]) => {
+fileSync.getUploadList(uris).then((progressList: Array<cloudSync.UploadProgress>) => {
   console.info("get upload list successfully, count: " + progressList.length);
-  for (let i = 0; i < progressList.length; i++) {
-    console.info("file uri: " + progressList[i].uri + ", state: " + progressList[i].state);
-  }
+  progressList.forEach((item) => {
+    console.info("file uri: " + item.uri + ", state: " + item.state);
+  })
 }).catch((error: BusinessError) => {
   console.error("get upload list failed with error message: " + error.message + ", error code: " + error.code);
 });
@@ -1056,7 +1054,7 @@ pauseUpload(uri: string): void
 | 202 | The caller is not a system application. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
-| 14000002 | Invalid URI. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -1109,7 +1107,7 @@ resumeUpload(uri: string): void
 | 202 | The caller is not a system application. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
-| 14000002 | Invalid URI. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -1197,9 +1195,9 @@ cleanCache(uri: string): void
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 13900002  | No such file or directory. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 
 **示例：**
 
@@ -1257,7 +1255,7 @@ getDownloadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;DownloadProgress
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010  | Try again. |
-| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit. 3.The input parameter contains an invalid uri. |
+| 13900020  | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit. 3.The input parameter contains an invalid uri. |
 
 **示例：**
 
@@ -1265,7 +1263,7 @@ getDownloadList(uris: Array&lt;string&gt;): Promise&lt;Array&lt;DownloadProgress
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-let fileCache = new cloudSync.CloudFileCache();
+let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
 let path1 = "/data/storage/el2/cloud/1.txt";
 let path2 = "/data/storage/el2/cloud/2.txt";
 let uri1 = fileUri.getUriFromPath(path1);
@@ -1275,11 +1273,11 @@ let uriArray = [uri1, uri2];
 try {
   fileCache.getDownloadList(uriArray).then((downloadList: Array<cloudSync.DownloadProgress>) => {
     console.info("get download list successfully");
-    for (let i = 0; i < downloadList.length; i++) {
-      console.info("download progress - uri: ".concat(downloadList[i].uri, ", state: ").concat(downloadList[i].state.toString()));
-      console.info("processed: ".concat(downloadList[i].processed.toString(), ", size: ").concat(downloadList[i].size.toString()));
-      console.info("error: ".concat(downloadList[i].error.toString()));
-    }
+    downloadList.forEach((item) => {
+      console.info("download progress - uri: ".concat(item.uri, ", state: ").concat(item.state.toString()));
+      console.info("processed: ".concat(item.processed.toString(), ", size: ").concat(item.size.toString()));
+      console.info("error: ".concat(item.error.toString()));
+    })
   }).catch((error: BusinessError) => {
     console.error("get download list failed with error message: " + error.message + ", error code: " + error.code);
   });
@@ -1321,9 +1319,9 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 13900002  | No such file or directory. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 
 **示例：**
 
@@ -1332,9 +1330,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let uris: Array<string> = ["file://uri"];
 cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState>) => {
-  for(let i = 0, len = syncStates.length; i < len; i++){
-    console.info("get file sync state successfully" + syncStates[i]);
-  }
+  syncStates.forEach((item) => {
+    console.info("get file sync state successfully" + item);
+  })
 }).catch((err: BusinessError) => {
   console.error(`get file sync state failed with error message: ${err.message}, error code: ${err.code}`);
 });
@@ -1369,9 +1367,9 @@ getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;F
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 13900002  | No such file or directory. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 
 **示例：**
 
@@ -1383,9 +1381,9 @@ cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSyn
   if (err) {
     console.error(`get file sync state with error message: ${err.message}, error code: ${err.code}`);
   } else {
-    for(let i = 0, len = syncStates.length; i < len; i++){
-      console.info("get file sync state successfully" + syncStates[i]);
-  }
+    syncStates.forEach((item) => {
+      console.info("get file sync state successfully" + item);
+    })
   }
 });
 ```
@@ -1426,7 +1424,7 @@ getFileSyncState(uri: string): FileSyncState
 | 13900012  | Permission denied by the file system. |
 | 13900031  | Function not implemented. |
 | 13900042  | Unknown error. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 
 **示例：**
 
@@ -1488,7 +1486,7 @@ optimizeStorage(): Promise&lt;void&gt;
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 13900042  | Unknown error. |
 
 **示例：**
@@ -1539,7 +1537,7 @@ startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 22400005  | Inner error. |
 | 22400006  | The same task is already in progress. |
 
@@ -1551,7 +1549,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
 let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
-    console.info("optimize space failed");
+    console.error("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
     console.info("optimize space successfully");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
@@ -1585,7 +1583,7 @@ stopOptimizeSpace(): void
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 22400005  | Inner error. |
 
 **示例：**
@@ -1596,7 +1594,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
 let callback = (data:cloudSync.OptimizeSpaceProgress) => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
-    console.info("optimize space failed");
+    console.error("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
     console.info("optimize space progress: " + data.progress);
   }

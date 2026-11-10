@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-07-28T09:21:05.134Z pushedAt=2026-07-28T11:40:31.873Z -->
+<!-- md-trans-meta sourceCommit=de39d2341a67c53067f3b6d431ff5c5e4b78ae22 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Overview
 
@@ -20,7 +20,9 @@ An application exits in the following scenarios:
 
 2. When a user manually terminates an application, for example, by clicking the clear button in the task list to clear all applications or swiping up to clear an application, no stack or other maintenance and debugging logs are generated.
 
-3. When **exit** is called, maintenance and debugging logs such as stack logs are not generated.
+3. The application exits voluntarily by calling an API such as **exit()**.
+
+   Starting from API version 26.1.0, the system supports exit capture. If **hilog.exit.catch.abort** is enabled for a debug application, a voluntary exit is converted into a **SIGABRT** signal, generating a CppCrash log that includes the call stack. For details, see [Missing Crash Logs When an Application Exits Voluntarily](cppcrash-guidelines.md#missing-crash-logs-when-an-application-exits-voluntarily). Before API version 26.1.0, crash logs cannot be captured for voluntary application exits.
 
 4. When the application main thread is blocked, the UI freezes and the **APP_FREEZE** log is generated.
 
@@ -85,7 +87,6 @@ Applications can detect abnormal termination in either of the following ways:
 2. Subscribe to the **APP_KILLED** event through HiAppEvent.
 
     Based on the **APP_KILLED** event, you can obtain key information such as the termination reason and application foreground and background. Perform operations based on the following table.
-
     | reason(string)                | Causes                                                    | Handling Policy                                                    | Whether Control Is Triggered by Application Exceptions| Whether There Are Associated Events|
     | ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------ | -------------- |
     | LowMemoryKill                 | The system is low on memory, triggering process termination in ascending order of priority.| Reduce the memory usage of the application.| No                      | No            |
@@ -108,6 +109,7 @@ Applications can detect abnormal termination in either of the following ways:
     | OomKiller                     | The system is low on memory, triggering kernel management and application termination based on specific policies.                | Reduce the memory usage of the application.| No                      | No            |
     | CpaKiller                          | When DRM (Digital Rights Management) services request memory but memory is insufficient, processes are terminated based on certain policies to reclaim memory. | Attempt to reduce the app's own memory usage to reduce the probability of being selected by the device-wide management policy.                                                                         | No             | No        |
     | KillApplication                    | The app exits proactively.                                                       | No handling required.                                                                                                  | No             | No        |
+    | KillProcess | The application exits voluntarily.<br>**Note:** Supported starting from API version 26.0.0. | No action is required. | No | No |
     | OnRemoteDied                       | Remote service died.                                                       | Check whether the dependent remote service is functioning properly.                                                                                         | No             | No        |
     | Restart                            | App restart.                                                         | No handling required.                                                                                                  | No             | No        |
     | UserRequest                        | Swiped away or cleared from the recent tasks list.                                                    | No handling required.                                                                                                  | No             | No        |
@@ -116,7 +118,9 @@ Applications can detect abnormal termination in either of the following ways:
     | Logout                             | The app sandbox is uninstalled when the user logs out.                                                 | No handling required.                                                                                                  | No             | No        |
     | PermissionUpdate                   | App permission update.                                                       | Check whether the app's permission usage is reasonable.                                                                                          | No             | No        |
     | aaForceStop                        | The app is forcibly stopped using the aa command.                                                 | No handling required.                                                                                                  | No             | No        |
-    | ThreadBlock6S                      | The app's main thread is blocked and times out.                                                    | Check whether there are blocking operations on the app's main thread, and optimize the code logic.                                                                                | Yes             | Yes. For details, see [ThreadBlock6S](./appfreeze-guidelines.md#thread_block_6s-app-main-thread-freeze-timeout).        |
+    | signalKill | The application is terminated by a signal such as SIGKILL.<br>**Note:** Supported starting from API version 26.0.1. | Check whether another process sent the signal or the system sent it for resource control. | No | No |
+    | signalExit | The application process exits voluntarily through the exit() system call.<br>**Note:** Supported starting from API version 26.0.1. | Check the application exit logic to determine whether the exit is expected. For an unexpected exit, examine the call stack. | No | No |
+    | ThreadBlock6S | The application main thread is blocked and times out. | Check for blocking operations on the main thread and optimize the code. | Yes | Yes. For details, see [ThreadBlock6S](./appfreeze-guidelines.md#thread_block_6s-app-main-thread-freeze-timeout). |
     | AppInputBlock                      | User input response timeout.                                                     | Check whether the app's UI response is timely, and optimize the input handling logic.                                                                                 | Yes             | Yes. For details, see [AppInputBlock](./appfreeze-guidelines.md#app_input_block-user-input-response-timeout).        |
     | LifecycleTimeout                   | App lifecycle timeout.                                                     | Check whether there are time-consuming operations in the app's lifecycle callbacks.                                                                                    | Yes             | No       |
     | JsError                            | JS layer program crash.                                                      | Check whether there are exceptions in the JS code, and optimize error handling.                                                                                   | Yes             | Yes. For details, see [JsError](./jscrash-guidelines.md).        |

@@ -1,11 +1,20 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to use Node-API extensions to create Sendable strong references to ArkTS objects and share references across ArkTS threads for multithreaded object transfer and sharing."
+keywords: [Node-API, Sendable strong references, napi_sendable_ref, cross-thread, Sendable objects, thread sharing, reference management]
+doctype: guide
+status: active
+---
+
 # Creating a Sendable Strong Reference to an ArkTS Object Using Node-API Extension APIs
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.383Z nl=1 -->
 
 OpenHarmony APIs provide the capability of sharing strong references across ArkTS threads in the same process. Unlike **napi_ref**, **napi_sendable_ref** supports operations across ArkTS threads, but also has some restrictions.
 
@@ -18,8 +27,8 @@ You can use the [napi_create_strong_sendable_reference](../reference/native-lib/
 | API                                    | Description                                      |
 | ---------------------------------------- | ------------------------------------------ |
 | [napi_create_strong_sendable_reference](../reference/native-lib/napi.md#napi_create_strong_sendable_reference)    | Creates a Sendable strong reference to a Sendable ArkTS object.|
-| napi_delete_strong_sendable_reference   | Deletes a Sendable strong reference.                       |
-| napi_get_strong_sendable_reference_value| Obtains the ArkTS object value associated with a Sendable strong reference.  |
+| [napi_delete_strong_sendable_reference](../reference/native-lib/napi.md#napi_delete_strong_sendable_reference)   | Deletes a Sendable strong reference.                       |
+| [napi_get_strong_sendable_reference_value](../reference/native-lib/napi.md#napi_get_strong_sendable_reference_value)| Obtains the ArkTS object value associated with a Sendable strong reference.  |
 
 ## Sample Code
 
@@ -286,11 +295,11 @@ You can use the [napi_create_strong_sendable_reference](../reference/native-lib/
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
    /**
-   * Defines the event handler to be called when the worker thread receives a message sent by the host thread.
-   * The event handler is executed in the worker thread.
-   *
-   * @param event message data
-   */
+    * Defines the event handler to be called when the worker thread receives a message sent by the host thread.
+    * The event handler is executed in the worker thread.
+    *
+    * @param event message data
+    */
    workerPort.onmessage = (event: MessageEvents) => {
       let data: string = event.data;
       hilog.info(DOMAIN, 'testTag', data);
@@ -300,21 +309,25 @@ You can use the [napi_create_strong_sendable_reference](../reference/native-lib/
    };
 
    /**
-   * Defines the event handler to be called when the worker receives a message that cannot be deserialized.
-   * The event handler is executed in the worker thread.
-   *
-   * @param event message data
-   */
+    * Defines the event handler to be called when the worker receives a message that cannot be deserialized.
+    * The event handler is executed in the worker thread.
+    *
+    * @param event message data
+    */
    workerPort.onmessageerror = (event: MessageEvents) => {
+      // Reserved API.
+      console.error('onmessageerror:' + event.data);
    };
 
    /**
-   * Defines the event handler to be called when an exception occurs during worker execution.
-   * The event handler is executed in the worker thread.
-   *
-   * @param event error message
-   */
+    * Defines the event handler to be called when an exception occurs during worker execution.
+    * The event handler is executed in the worker thread.
+    *
+    * @param event error message
+    */
    workerPort.onerror = (event: ErrorEvent) => {
+      // Reserved API.
+      console.error('onerror:' + event.message);
    };
    ```
 

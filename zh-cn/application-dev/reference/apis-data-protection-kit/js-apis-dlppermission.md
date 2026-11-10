@@ -1039,7 +1039,7 @@ startDLPManagerForResult(context: common.Context, want: Want, window: window.Win
 >
 > 该接口仅支持域账号调用。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1272,6 +1272,8 @@ setEnterprisePolicy(policy: EnterprisePolicy): void
 
 设置企业应用防护策略。调用成功后，企业应用的DLP防护将按照设置的策略执行。
 
+<!--RP1--><!--RP1End-->
+
 该接口可用于企业管理员配置DLP安全策略，以统一管理企业数据安全防护规则。
 
 > **说明：**
@@ -1295,7 +1297,7 @@ setEnterprisePolicy(policy: EnterprisePolicy): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 | 19100021 | Failed to set the enterprise policy. |
@@ -1382,6 +1384,27 @@ DLP文件授权类型的枚举。
 | READ_ONLY | 1 | 表示文件的只读权限。 |
 | CONTENT_EDIT | 2 | 表示文件的编辑权限。 |
 | FULL_CONTROL | 3 | 表示文件的完全控制权限。 |
+| ATOMIC_CONTROL | 4 | 用户对文件拥有原子控制。通过[DlpAtomicPermissionType](#dlpatomicpermissiontype)位掩码实现细粒度权限管理。与授予所有权限的FULL_CONTROL相比，这提供了更细粒度的控制。 <br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
+
+## DlpAtomicPermissionType
+
+枚举DLP文件的原子权限，包括用户操作和应用权限控制。该枚举支持按位或运算，以组合多个权限。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| ATOMIC_READ | 0x01 | 读取文件的原子权限。 |
+| ATOMIC_EDIT | 0x02 | 编辑文件的原子权限。 |
+| ATOMIC_COPY | 0x04 | 复制文件内容的原子权限。 |
+| ATOMIC_SCREENSHOT | 0x08 | 截图文件的原子权限。 |
+| ATOMIC_PRINT | 0x10 | 打印文件的原子权限。 |
+| ATOMIC_APP_PERMISSION | 0x20 | 允许沙箱应用访问被限制的系统服务的原子权限。<br>访问DLP文件时，系统会创建应用的独立沙箱，该沙箱继承应用的数据、配置和权限。<br>该标志位允许沙箱在继承的权限内访问系统服务。例如，如果原始应用没有使用蓝牙权限，那么即使启用此标志，沙箱应用也无法调用蓝牙相关API。<br>具体包括以下权限：<br> -访问互联网，设置Wi-Fi配置，设置Wi-Fi信息，管理Wi-Fi热点权限。<br> -使用蓝牙，管理蓝牙，访问蓝牙，发现蓝牙权限。<br> -访问NearLink并管理NearLink权限。<br> -使用云公共服务、使用云备份服务、使用云硬盘服务、云文件同步、云文件同步管理器权限。<br> -发送消息、接收短信、接收彩信、接收WAP消息权限。<br> -写入音频、写入文档、写入图像/视频和写入媒体权限。<br> -读写下载目录、读写桌面目录、读写文档目录权限。<br> -写入整个日历权限。<br> -代理授权URI权限。<br> -文件访问管理器权限。<br> -分布式数据同步权限。<br> -NFC标签权限。<br>该权限可以与其他原子权限使用按位或运算组合。<br>查看 [DLP服务开发指导](../../security/DataProtectionKit/dlp-guidelines.md)。 |
+
 
 ## DLPPermissionInfo
 
@@ -1446,6 +1469,8 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 
 将明文文件加密生成企业账号DLP文件，仅支持企业账号调用。使用Promise异步回调。
 
+<!--RP1--><!--RP1End-->
+
 用于将明文文件加密生成企业账号的DLP权限受控文件，实现企业级的文件权限管理。
 
 > **说明：**
@@ -1478,7 +1503,7 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1532,6 +1557,8 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 
 将DLP文件解密生成明文文件，仅支持企业账号调用。使用Promise异步回调。
 
+<!--RP1--><!--RP1End-->
+
 该接口用于将DLP加密文件解密为明文文件，适用于拥有者权限用户导出或迁移文件。
 > **说明：**
 >
@@ -1561,7 +1588,7 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1604,6 +1631,8 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 在DLP文件中解析文件头，获取DLP明文策略。返回的策略JSON字符串包含[DLPProperty](#dlpproperty21)和[CustomProperty](#customproperty21)信息。使用Promise异步回调。
 
+<!--RP1--><!--RP1End-->
+
 该接口可用于在查看DLP文件权限配置等场景中，获取文件的策略信息以便进行分析。
 
 > **说明：**
@@ -1633,7 +1662,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1697,7 +1726,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | enterprise | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围抛出错误码401。 |
-| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 是 | 企业DLP文件的查询选项，默认为空。<br>**起始版本：** 26.0.0**<br>模型约束**：此接口仅可在Stage模型下使用。 |
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 是 | 企业DLP文件的查询选项，默认为空。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## DLPProperty<sup>21+</sup>
 
@@ -1735,6 +1764,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | authAccountType | [AccountType](#accounttype21) | 否 | 否 | 表示被授权用户账号类型。 |
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | 否 | 否 | 表示被授予的权限。 |
 | permExpiryTime | number | 否 | 否 | 表示授权到期时间戳。取值范围大于等于0，超出此范围将被强转为无符号整数。单位：s。 |
+| atomicDlpFileAccess | number | 否 | 是 | DLP文件的原子权限控制位掩码。值是由DlpAtomicPermissionType标志的按位或运算符（\|）形成的掩码，来控制读取、编辑、复制、截图、打印和应用级权限。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## DlpConnPlugin<sup>21+</sup>
 
@@ -1750,6 +1780,8 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 connectServer(requestId: string, requestData: string, callback: Callback\<string\>): void
 
 该函数提供给SA（System Ability）侧调用，处理完连接云端服务的请求后，通过callback将结果返回给SA（System Ability）。
+
+<!--RP1--><!--RP1End-->
 
 该接口可用于企业账号认证、云端权限验证等场景，实现SA与云服务器的通信能力，完成权限校验或账号验证流程。
 
@@ -1776,7 +1808,7 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100011 | The system ability works abnormally. |
   
 **示例：**
@@ -1816,6 +1848,8 @@ let plugin: dlpPermission.DlpConnPlugin = new DataCapsulePlugin();
 constructor()
 
 [DlpConnManager](#dlpconnmanager21) 实例化时的构造函数。
+
+<!--RP1--><!--RP1End-->
  
 **需要权限：** 从API版本26.0.0开始，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE或ohos.permission.ACCESS_DLP_SERVICE；对于API版本21 - 24，需要申请权限ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
  
@@ -1828,7 +1862,7 @@ constructor()
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
   
 **示例：**
 
@@ -1842,6 +1876,8 @@ let dlpConnManager: dlpPermission.DlpConnManager = new dlpPermission.DlpConnMana
 static registerPlugin(plugin: DlpConnPlugin): number
   
 该接口提供将回调注册到SA（System Ability）侧的功能。
+
+<!--RP1--><!--RP1End-->
 
 > **说明：**
 >
@@ -1870,7 +1906,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1906,6 +1942,8 @@ static unregisterPlugin(): void
   
 提供将回调从SA（System Ability）侧注销的能力。
 
+<!--RP1--><!--RP1End-->
+
 该接口可用于应用退出时注销回调以释放资源。
 
 > **说明：**
@@ -1923,7 +1961,7 @@ static unregisterPlugin(): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 801 | Capability not supported because car not support DLP feature. <br>适用版本：26.0.1+ |
+| 801 | Capability not supported. Possible causes: the car does not support DLP feature. <br>适用版本：26.0.1+ |
 | 19100001 | Invalid parameter value. |
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
@@ -1941,6 +1979,8 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 
 表示企业DLP文件的查询选项。
 
+<!--RP1--><!--RP1End-->
+
 **起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -1956,6 +1996,8 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 查询已打开且符合指定选项的企业DLP文件的URI列表。使用Promise异步回调。
+
+<!--RP1--><!--RP1End-->
 
 在需要管理或追踪当前应用已打开的企业DLP文件时调用该接口，可用于文件状态检查、资源管理等场景。
 
@@ -2018,6 +2060,8 @@ closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt
 
 关闭当前打开的所有符合指定选项的企业DLP文件。使用Promise异步回调。
 
+<!--RP1--><!--RP1End-->
+
 在需要批量关闭企业DLP文件、清理文件资源或应用退出前释放文件句柄时调用该接口。
 
 > **说明：**
@@ -2077,6 +2121,8 @@ dlpPermission.closeOpenedEnterpriseDlpFiles(options).then(() => {
 setControlledAppLists(appLists: Array&lt;string&gt;, userId?: number): Promise&lt;void&gt;
 
 设置受企业DLP控制的应用程序列表。使用Promise异步回调。
+
+<!--RP1--><!--RP1End-->
   
 **起始版本：** 26.0.0
 
@@ -2134,6 +2180,8 @@ dlpPermission.setControlledAppLists(appList, userId).then(() => {
 getControlledAppLists(): Promise&lt;Array&lt;string&gt;&gt;
 
 获取当前用户受企业DLP控制的应用程序列表。使用Promise异步回调。
+
+<!--RP1--><!--RP1End-->
 
 >**说明：**
 >

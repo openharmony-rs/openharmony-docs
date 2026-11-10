@@ -99,7 +99,7 @@ status: active
       ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/ObjectUtils", "com.example.myapplication/entry",
                                        &objectUtils);
       if (ret != napi_ok) {
-          OH_LOG_INFO(LOG_APP, "Failed to load module");
+          OH_LOG_ERROR(LOG_APP, "Failed to load module");
           napi_close_handle_scope(env, scope);
           napi_destroy_ark_runtime(&env);
           return nullptr;
@@ -134,7 +134,7 @@ status: active
       if (env != nullptr) {
           napi_status destroy_ret = napi_destroy_ark_runtime(&env);
           if (destroy_ret != napi_ok) {
-              OH_LOG_INFO(LOG_APP, "Failed to destroy ark runtime");
+              OH_LOG_ERROR(LOG_APP, "Failed to destroy ark runtime");
           }
           env = nullptr;
       }
@@ -254,7 +254,7 @@ status: active
     return new Promise((resolve) => {
       setTimeout(() => {
         console.info('set timer delay 1s');
-        // attempt to stop the event loop at napi terminal
+        // 尝试在napi侧停止事件循环
         resolve();
       }, 1000)
     })

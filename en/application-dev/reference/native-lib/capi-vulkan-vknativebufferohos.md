@@ -6,6 +6,7 @@
 <!--Designer: @ext4FAT1-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=68d36fe6a470724ea3793d2df73c0f7910331ef9 translatedAt=2026-11-06T12:13:06.471Z pushedAt=2026-11-09T11:49:00.743Z nl=1 -->
 
 ```c
 typedef struct VkNativeBufferOHOS {...} VkNativeBufferOHOS
@@ -16,6 +17,8 @@ typedef struct VkNativeBufferOHOS {...} VkNativeBufferOHOS
 Describes the parameters of the native display buffer.
 
 **Since**: 10
+
+**Deprecated since:** 23
 
 **Related module**: [Vulkan](capi-vulkan.md)
 

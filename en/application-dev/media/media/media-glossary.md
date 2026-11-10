@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / Media Services"]
+description: "Defines core Media Kit audio/video terms with Chinese and English equivalents, including AVPlayer, AVRecorder, HLS, DASH, HDR, streaming media, audio focus, MPD, and M3U8, to explain playback, recording, and transcoding concepts."
+keywords: [Media Kit, glossary, AVPlayer, HLS, DASH, HDR, streaming media, audio focus, transcoding]
+doctype: glossary
+status: active
+---
+
 # Glossary
 
 <!--Kit: Media Kit-->
@@ -5,8 +13,8 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @yxc2-->
 <!--Tester: @zengxi_3007-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=be1284f3fa5fa2a0aa17a86ac585ca0e13c05ae4 translatedAt=2026-07-23T01:17:37.735Z pushedAt=2026-07-23T02:43:31.177Z -->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=d14b2c7a45c50a915ec878b22f98f961a1264b59 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## A
 

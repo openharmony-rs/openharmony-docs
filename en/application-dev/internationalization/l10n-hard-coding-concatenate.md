@@ -3,17 +3,18 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=9da32f18d9f596600b1bcf7b3e4ed4f31b219c61 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 ## Use Cases
 
 A key part of localization is the translation of resource files. To improve the translation efficiency, avoid hard coding and concatenation during development.
 
-Unlike obtaining data from external systems or dynamically generating data during running, hard coding refers to directly writing data, parameters, and constants into the program code to implement specific features. Hard-coded content displayed on the UI, including text in images, audios, and subtitles, is prohibited as this can increase the difficulty and workload in localization. In addition, a complete piece of text on the UI should not be concatenated from multiple segments. Concatenation makes it difficult to obtain the complete sentence, potentially resulting in translation errors or semantic errors. For example, in the following figure, when **Rain tomorrow** and **Bring an umbrella** are directly concatenated, a capitalization error will occur.
+For example, in the following figure, "Rain tomorrow" and "Bring an umbrella" are directly concatenated, causing a capitalization issue in the sentence.
 
-![image_0000001784263061](figures/image_0000001784263061.png)
+![information-weather-forecast](figures/information-weather-forecast.png)
 
 ## Constraints
 

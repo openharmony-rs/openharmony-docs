@@ -1,12 +1,11 @@
 # System Window Development (Stage Model Only) (for System Applications Only)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=80561ebc7faaf623275268c36fa1115cdebd8434 translatedAt=2026-08-11T10:10:53.388Z pushedAt=2026-08-11T11:19:47.783Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T02:49:54.928Z pushedAt=2026-11-03T02:57:58.469Z nl=1 -->
 
 ## Overview
 
@@ -21,6 +20,7 @@ However, you can customize an animation to be played during the display or hidin
 > **NOTE**
 >
 > This document involves the use of system APIs. You must use the full SDK for development. <!--Del-->For details, see [Guide to Switching to Full SDK](../faqs/full-sdk-switch-guide.md).<!--DelEnd-->
+
 
 ## Available APIs
 
@@ -46,6 +46,7 @@ For more API details, see [@ohos.window (System API)](../reference/apis-arkui/js
 This section uses the volume bar as an example to describe how to develop a system window.
 
 ### How to Develop
+
 
 1. Create a system window.
 

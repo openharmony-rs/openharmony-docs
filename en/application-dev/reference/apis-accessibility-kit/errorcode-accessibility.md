@@ -2,11 +2,11 @@
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
-<!--Owner: @qiiiiiiian-->
+<!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9d26bd1999a89e67cfecfa777535add71144c96b translatedAt=2026-08-03T09:34:23.253Z pushedAt=2026-08-03T12:18:09.104Z -->
+<!-- md-trans-meta sourceCommit=b3705e4afba37476aadaf9a1df5606a3fb890cb1 translatedAt=2026-11-06T08:11:04.978Z pushedAt=2026-11-09T12:45:00.766Z nl=1 -->
 
 > **NOTE**
 >
@@ -25,41 +25,26 @@ The method returns this error code when the accessibility system service is abno
 **Possible Causes**
 
 This error code indicates an abnormal accessibility system service. Possible causes are as follows:
-
 1. Internal operation failed.
-
 2. Failed to obtain the required service or client object (null pointer).
-
 3. IPC communication failed.
-
 4. Failed to obtain the accessibility service proxy.
-
 5. Timed out while waiting for the result of an asynchronous operation.
-
 6. The listener or observer has already been registered.
-
 7. The listener or observer is not registered.
-
 8. The client is not connected.
-
 9. The target application failed to connect to the accessibility service.
-
 10. The element information received from ACE is invalid.
-
 11. Failed to perform an action in ACE.
-
 12. Failed to inject a gesture event.
 
 **Processing Steps**
 
 1. Wait for a while and call the method again.
-
 2. If this error code is still reported after a retry, restart the accessibility extension app.
-
 3. If the error persists, restart the device.
 
 <!--Del-->
-
 ## 9300001 Invalid Bundle Name or Ability Name
 
 **Error Message**
@@ -73,15 +58,12 @@ This error code is returned when the input bundle name or ability name is invali
 **Possible Causes**
 
 This error code indicates an invalid bundle name or ability name. The possible causes are as follows:
-
 1. The bundle name does not exist.
-
 2. The bundle does not contain the corresponding ability.
 
 **Processing Steps**
 
 1. Check whether the bundle name is correct.
-
 2. Check whether the Ability corresponding to the package name is correct.
 
 ## 9300002 Target Ability Already Enabled
@@ -101,11 +83,8 @@ This error code indicates that the target Ability is already enabled and cannot 
 **Processing Steps**
 
 1. Stop the target Ability.
-
 2. Enable the target Ability again.
-
 <!--DelEnd-->
-
 ## 9300003 No Accessibility Permission to Perform the Operation
 
 **Error Message**
@@ -123,7 +102,6 @@ This error code indicates that the app does not have the accessibility permissio
 **Processing Steps**
 
 1. Try to prompt the user about the necessity of performing the accessibility feature operation and obtain user authorization. After authorization is complete, the app will have the permission to perform this accessibility feature operation.
-
 2. Re-enable the accessibility extension app and enable the required accessibility feature operation. After completion, the accessibility feature operation can be performed normally without reporting this error code again.
 
 ## 9300004 Attribute Does Not Exist
@@ -143,7 +121,6 @@ This error code indicates that an invalid attribute of an accessibility node ele
 **Processing Steps**
 
 1. Check whether the attribute exists in the accessibility node element.
-
 2. If not, use an attribute that already exists in the node element.
 
 ## 9300005 Operation Not Supported
@@ -163,7 +140,6 @@ This error code indicates that an operation not supported by the accessibility n
 **Processing Steps**
 
 1. Check whether the operation is included in the list of operations supported by the accessibility node element.
-
 2. If not, use an operation supported by the node element.
 
 <!--Del-->
@@ -199,15 +175,12 @@ This error code is returned when the magnification function fails to trigger.
 **Possible Causes**
 
 1. The magnification gesture function is not enabled.
-
 2. The magnification mode is not configured.
 
 **Processing Steps**
 
 1. Enable the magnification gesture function.
-
 2. Configure the magnification mode. After the configuration is complete, trigger the magnification function again to execute it successfully.
-
 <!--DelEnd-->
 
 ## 9300008 App Clone Index Invalid
@@ -223,9 +196,7 @@ This error code is returned when the input app clone index (that is, the index o
 **Possible Causes**
 
 This error code indicates that the app clone index is invalid. Possible causes are as follows:
-
 1. The app clone index is out of the valid range. It must be an integer greater than or equal to 0.
-
 2. The app corresponding to this index does not exist.
 
 **Processing Steps**

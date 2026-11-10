@@ -1199,7 +1199,7 @@ Text组件需要设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-com
       }
       // 处理自定义菜单项，return true，点击自定义菜单项后菜单不会关闭
       if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.PREPARE_MENU_ITEM_ID))) {
-        let msg = '拦截 id: prepare1 start:' + textRange.start + '; end:+' + textRange.end;
+        let msg = '拦截 id: prepare1 start:' + textRange.start + '; end:' + textRange.end;
         this.blockCallbackText = msg;
         return true;
       }

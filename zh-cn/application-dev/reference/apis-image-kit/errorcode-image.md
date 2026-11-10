@@ -15,7 +15,7 @@
 
 **错误信息**
 
-The resource is unavailable as it is occupied by another thread.
+Access denied because the resource is occupied by another thread.
 
 **错误描述**
 
@@ -23,8 +23,7 @@ The resource is unavailable as it is occupied by another thread.
 
 **可能原因**
 
-1. 组件的服务资源正忙，无法使用。
-2. 当前资源正在被其他线程使用，无法完成操作。
+当前资源正在被其他线程使用，无法完成操作。
 
 **处理步骤**
 

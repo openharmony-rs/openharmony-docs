@@ -1453,7 +1453,7 @@ access(sourceFileUri: string, callback: AsyncCallback&lt;boolean&gt;) : void
 
 getFileInfoFromUri(uri: string) : Promise\<FileInfo>
 
-以异步方法获取uri对应的FileInfo对象。使用promise异步回调。
+以异步方法获取uri对应的FileInfo对象。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1544,7 +1544,7 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback\<FileInfo>) : void
 
 getFileInfoFromRelativePath(relativePath: string) : Promise\<FileInfo>
 
-以异步方法获取relativePath对应的FileInfo对象。使用promise异步回调。
+以异步方法获取relativePath对应的FileInfo对象。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1946,7 +1946,7 @@ copyFile(sourceUri: string, destUri: string, fileName: string): Promise&lt;strin
 | --------- | ------- | ---- | ------------------------------------------------------------ |
 | sourceUri | string  | 是   | 待拷贝的源文件(夹)的 uri。例如：file://docs/storage/Users/currentUser/Download/1.txt。  |
 | destUri   | string  | 是   | 目标文件夹的 uri。例如：file://docs/storage/Users/currentUser/Download/test。        |
-| fileName  | string  | 是   | 如果目标目录中有1.txt文件，就是用fileName 作为文件名进行复制。 |
+| fileName  | string  | 是   | 若目标目录已存在1.txt，则使用fileName作为文件名进行复制。 |
 
 **返回值：**
 
@@ -1999,7 +1999,7 @@ copyFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCa
 | --------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                           | 是   | 待拷贝的源文件(夹)的 uri。例如：file://docs/storage/Users/currentUser/Download/1.txt。  |
 | destUri   | string                                           | 是   | 目标文件夹的 uri。例如：file://docs/storage/Users/currentUser/Download/test。         |
-| fileName  | string                                           | 是   | 如果目标目录中有1.txt文件。就是用fileName 作为文件名进行复制。 |
+| fileName  | string                                           | 是   | 若目标目录已存在1.txt，则使用fileName作为文件名进行复制。 |
 | callback  | AsyncCallback&lt;string&gt; | 是   | 返回一个复制成功的文件的uri。 |
 
 **示例：**

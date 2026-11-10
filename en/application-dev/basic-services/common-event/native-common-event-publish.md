@@ -1,11 +1,11 @@
 # Publishing Common Events in C
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=3e6a64491cc90c6990b3231ac614d6d55ecbf6a5 translatedAt=2026-11-06T12:01:46.189Z pushedAt=2026-11-09T12:23:52.661Z nl=1 -->
 
 ## When to Use
 
@@ -13,7 +13,7 @@ You can use the [OH_CommonEvent_Publish](../../reference/apis-basic-services-kit
 
 ## Available APIs
 
-For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md).
+For detailed API descriptions, see [oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md).
 
 | API                              | Description                                                            |
 | ------------------------------------ | ---------------------------------------------------------------- |
@@ -33,8 +33,6 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
    
    ``` C
    #include <cstdint>
-   #include <cstdio>
-   #include <cwchar>
    #include <cstring>
    #include "hilog/log.h"
    #include "BasicServicesKit/oh_commonevent.h"
@@ -69,57 +67,81 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
    
    ``` C++
    // Create and add additional information of common event properties.
+   static bool CheckRetAndDestroy(CommonEvent_Parameters *param, int32_t ret, const char *apiName)
+   {
+       if (ret != COMMONEVENT_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "%{public}s failed, ret <%{public}d>.", apiName, ret);
+           OH_CommonEvent_DestroyParameters(param);
+           return true;
+       }
+       return false;
+   }
+   
    CommonEvent_Parameters *CreateParameters()
    {
        int32_t ret = -1;
        // Create the additional information of a common event.
        CommonEvent_Parameters *param = OH_CommonEvent_CreateParameters();
+       if (param == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "OH_CommonEvent_CreateParameters failed, param is null.");
+           return nullptr;
+       }
    
        // Set the additional information and key of the int type.
        ret = OH_CommonEvent_SetIntToParameters(param, "intKey", PARAM_INT_VALUE1);
+       if (CheckRetAndDestroy(param, ret, "OH_CommonEvent_SetIntToParameters")) { return nullptr; }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetIntToParameters ret <%{public}d>.", ret);
    
        // Set the additional information and key of the int array type.
        int intArray[] = {PARAM_INT_VALUE2, PARAM_INT_VALUE3, PARAM_INT_VALUE4};
        size_t arraySize = sizeof(intArray) / sizeof(intArray[0]);
        ret = OH_CommonEvent_SetIntArrayToParameters(param, "intArrayKey", intArray, arraySize);
+       if (CheckRetAndDestroy(param, ret, "OH_CommonEvent_SetIntArrayToParameters")) { return nullptr; }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetIntArrayToParameters ret <%{public}d>.", ret);
    
        // Set the additional information and key of the long type.
        ret = OH_CommonEvent_SetLongToParameters(param, "longKey", PARAM_LONG_VALUE1);
+       if (CheckRetAndDestroy(param, ret, "OH_CommonEvent_SetLongToParameters")) { return nullptr; }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetLongToParameters ret <%{public}d>.", ret);
    
        // Set the additional information and key of the long array type.
        long longArray[] = {PARAM_LONG_VALUE1, PARAM_LONG_VALUE3, PARAM_LONG_VALUE2};
        ret = OH_CommonEvent_SetLongArrayToParameters(param, "longArrayKey", longArray, arraySize);
+       if (CheckRetAndDestroy(param, ret, "OH_CommonEvent_SetLongArrayToParameters")) { return nullptr; }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetLongArrayToParameters ret <%{public}d>.", ret);
    
        // Set the additional information and key of the double type.
        ret = OH_CommonEvent_SetDoubleToParameters(param, "doubleKey", PARAM_DOUBLE_VALUE1);
+       if (CheckRetAndDestroy(param, ret, "OH_CommonEvent_SetDoubleToParameters")) { return nullptr; }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetDoubleToParameters ret <%{public}d>.", ret);
    
        // Set the additional information and key of the double array type.
        double doubleArray[] = {PARAM_DOUBLE_VALUE1, PARAM_DOUBLE_VALUE2, PARAM_DOUBLE_VALUE3};
        ret = OH_CommonEvent_SetDoubleArrayToParameters(param, "doubleArrayKey", doubleArray, arraySize);
+       if (CheckRetAndDestroy(param, ret, "OH_CommonEvent_SetDoubleArrayToParameters")) { return nullptr; }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetDoubleArrayToParameters ret <%{public}d>.", ret);
    
        // Set the additional information and key of the Boolean type.
        ret = OH_CommonEvent_SetBoolToParameters(param, "boolKey", true);
+       if (CheckRetAndDestroy(param, ret, "OH_CommonEvent_SetBoolToParameters")) { return nullptr; }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetBoolToParameters ret <%{public}d>.", ret);
    
        // Set the additional information and key of the Boolean array type.
        bool boolArray[] = {true, false, true};
        ret = OH_CommonEvent_SetBoolArrayToParameters(param, "boolArrayKey", boolArray, arraySize);
+       if (CheckRetAndDestroy(param, ret, "OH_CommonEvent_SetBoolArrayToParameters")) { return nullptr; }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetBoolArrayToParameters ret <%{public}d>.", ret);
    
        // Set the additional information and key of the char type.
        ret = OH_CommonEvent_SetCharToParameters(param, "charKey", 'A');
+       if (CheckRetAndDestroy(param, ret, "OH_CommonEvent_SetCharToParameters")) { return nullptr; }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetCharToParameters ret <%{public}d>.", ret);
    
        // Set the additional information and key of the char array type.
        const char *value = "Char Array";
        size_t valueLength = strlen(value);
        ret = OH_CommonEvent_SetCharArrayToParameters(param, "charArrayKey", value, valueLength);
+       if (CheckRetAndDestroy(param, ret, "OH_CommonEvent_SetCharArrayToParameters")) { return nullptr; }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetCharArrayToParameters ret <%{public}d>.", ret);
        return param;
    }
@@ -151,6 +173,13 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
    
        // Set the additional information of a common event.
        CommonEvent_Parameters *param = CreateParameters();
+       if (param == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "CreateParameters failed, param is null.");
+           if (info != nullptr) {
+               OH_CommonEvent_DestroyPublishInfo(info);
+           }
+           return;
+       }
        ret = OH_CommonEvent_SetPublishInfoParameters(info, param);
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublishInfoParameters ret <%{public}d>.", ret);
    }

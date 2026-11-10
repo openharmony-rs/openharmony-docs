@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:40:42.685Z pushedAt=2026-10-08T02:39:02.483Z -->
+<!-- md-trans-meta sourceCommit=097d84c08b6dd34c7fea7675d84d753092b8a960 translatedAt=2026-10-23T03:11:04.293Z pushedAt=2026-10-23T09:16:43.239Z nl=1 -->
 
 ## Overview
 
@@ -39,7 +39,7 @@ Ordered common events are controlled by the subscriber handle in the subscriptio
 
 Note that this module follows the typical lifecycle of creation, use, and release.
 
-- **Subscriber object**: **CommonEvent_SubscribeInfo** and **CommonEvent_Subscriber**. The subscription takes effect after being created. After the subscription is canceled, the subscriber and subscription information must be destroyed in sequence to prevent memory leak.
+- **Subscriber object**: **CommonEvent_SubscribeInfo** and **CommonEvent_Subscriber**. The subscription takes effect after the object is created. You are advised to call **OH_CommonEvent_UnSubscribe** to complete unsubscription and then destroy the subscriber and subscription information in sequence to avoid memory leaks.
 - **Publisher object**: **CommonEvent_PublishInfo** and **CommonEvent_Parameters**. After the publishing is complete, destroy the publishing information and additional information separately. They are independent of each other.
 
 
@@ -175,6 +175,8 @@ typedef void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)
 **Description**
 
 Defines the callback function of a common event.
+
+The callback parameter **data** and all its field pointers (including **event**, **data**, **bundleName**, **parameters**, and their internal data) are valid only during the execution of the callback function. After the callback function returns, the system immediately destroys them. Do not save these pointers or use them asynchronously outside the callback. If you need to use related data outside the callback, copy the data within the callback.
 
 **Since**: 12
 
@@ -318,6 +320,10 @@ void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)
 
 Destroys a subscriber.
 
+You are advised to call [OH_CommonEvent_UnSubscribe](#oh_commonevent_unsubscribe) to unsubscribe from the common event before destroying the subscriber. If you destroy a subscriber that is still in the subscription status, the system automatically unsubscribes from the common event and then destroys the handle.
+
+If you continue to use the handle (for example, passing it to [OH_CommonEvent_SetCodeToSubscriber](#oh_commonevent_setcodetosubscriber) or other APIs) after the subscriber is destroyed, the API call is ignored by the system for security reasons, and the return value is the same as that when an invalid parameter is passed (for example, **false**, **0**, **NULL**, or **COMMONEVENT_ERR_INVALID_PARAMETER**).
+
 **Since**: 12
 
 
@@ -350,7 +356,7 @@ Subscribes to a common event.
 
 | Type| Description|
 | -- | -- |
-| [CommonEvent_ErrCode](#commonevent_errcode) | Returns an execution result.<br>         [COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode): Operation is successful.<br>         [COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode): The parameter subscriber is invalid.<br>         [COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to send IPC requests.<br>         [COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode): [COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode): The [common event service](../../basic-services/common-event/common-event-glossary.md#common-event-service-ces) is not initialized.<br>         [COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode): The number of subscribers in the process exceeds the system limit (200).<br>         [COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to allocate memory. |
+| [CommonEvent_ErrCode](#commonevent_errcode) | Returns an execution result.<br>         [COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode): Operation is successful.<br>         [COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode): The parameter subscriber is invalid.<br>         [COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to send IPC requests.<br>         [COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode): The [common event service](../../basic-services/common-event/common-event-glossary.md#common-event-service-ces) is not initialized.<br>         [COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode): The number of subscribers in the process exceeds the system limit (200).<br>         [COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to allocate memory. |
 
 ### OH_CommonEvent_UnSubscribe()
 
@@ -500,7 +506,7 @@ Obtains the additional information of a common event.
 
 | Type| Description|
 | -- | -- |
-| const [CommonEvent_Parameters](#variables) *| Additional information obtained.|
+| const [CommonEvent_Parameters](#variables) * | Additional information obtained. This pointer is valid only during the execution of the [CommonEvent_ReceiveCallback](#commonevent_receivecallback) callback and is automatically released by the system after the callback is returned. The caller does not need to release the pointer and must not call [OH_CommonEvent_DestroyParameters](#oh_commonevent_destroyparameters) on it. During the callback execution, the system will detect the call and safely ignore it. After the callback is returned, using this pointer is undefined behavior. If you need to use the pointer outside the callback, copy the data within the callback. |
 
 ### OH_CommonEvent_CreatePublishInfo()
 
@@ -704,7 +710,9 @@ void OH_CommonEvent_DestroyParameters(CommonEvent_Parameters* param)
 
 **Description**
 
-Destroys the additional information object of a common event.
+Destroys the additional information object of a common event and releases the array memory obtained by calling **Get*ArrayFromParameters** APIs such as [OH_CommonEvent_GetIntArrayFromParameters](#oh_commonevent_getintarrayfromparameters). The caller does not need to release these arrays separately.
+
+This API is used only to destroy the object created by the caller by calling [OH_CommonEvent_CreateParameters](#oh_commonevent_createparameters). Do not call this API for the additional information object obtained from the [CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md) callback data. This object is held by the framework and automatically released after the callback is returned. If this API is called for such an object during callback execution, the system will detect the call and safely ignore it. After the callback is returned, the object has been released, and continuing to use the pointer is undefined behavior. If you need to use the object outside the callback, copy the data within the callback.
 
 **Since**: 18
 
@@ -814,7 +822,7 @@ Obtains the int array with a specific key from the additional information of a c
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| int** array | Output parameter, which is used to receive the int array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.|
+| int** array | Output parameter, which is used to receive the int array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.<br>         The array memory is managed by the framework. If **para** is the additional information created by the caller using [OH_CommonEvent_CreateParameters](#oh_commonevent_createparameters), the array is released together with [OH_CommonEvent_DestroyParameters](#oh_commonevent_destroyparameters) and cannot be released separately by the caller. If **para** comes from the callback data (receiving path) of [CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md), the array memory obtained using this API in the callback is automatically released by the framework along with the callback. If you need to use the array content outside the callback, copy the data within the callback. |
 
 **Returns**
 
@@ -923,7 +931,7 @@ Obtains the long array with a specific key from the additional information of a 
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| long** array | Output parameter, which is used to receive the long array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.|
+| long** array | Output parameter, which is used to receive the long array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.<br>         The array memory is managed by the framework. If **para** is the additional information created by the caller using [OH_CommonEvent_CreateParameters](#oh_commonevent_createparameters), the array is released together with [OH_CommonEvent_DestroyParameters](#oh_commonevent_destroyparameters) and cannot be released separately by the caller. If **para** comes from the callback data (receiving path) of [CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md), the array memory obtained using this API in the callback is automatically released by the framework along with the callback. If you need to use the array content outside the callback, copy the data within the callback. |
 
 **Returns**
 
@@ -1032,7 +1040,7 @@ Obtains the Boolean array with a specific key from the additional information of
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| bool** array | Output parameter, which is used to receive the bool array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.|
+| bool** array | Output parameter used to receive the queried bool array data. The memory of this array is allocated internally by the function, and the caller does not need to allocate it in advance.<br>         The array memory is managed by the framework: if para is the additional information created by the caller through [OH_CommonEvent_CreateParameters](#oh_commonevent_createparameters), the array is released together with [OH_CommonEvent_DestroyParameters](#oh_commonevent_destroyparameters), and the caller must not release it separately; if para comes from the [CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md) callback data (receive path), the array memory obtained through this API in the callback is automatically released by the framework when the callback returns. If the array content needs to be used outside the callback, copy the data within the callback. |
 
 **Returns**
 
@@ -1141,7 +1149,7 @@ Obtains the character array with a specific key from the additional information 
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| char** array | Output parameter, which is used to receive the character array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.|
+| char** array | Output parameter, which is used to receive the char array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.<br>         The array memory is managed by the framework. If **para** is the additional information created by the caller using [OH_CommonEvent_CreateParameters](#oh_commonevent_createparameters), the array is released together with [OH_CommonEvent_DestroyParameters](#oh_commonevent_destroyparameters) and cannot be released separately by the caller. If **para** comes from the callback data (receiving path) of [CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md), the array memory obtained using this API in the callback is automatically released by the framework along with the callback. If you need to use the array content outside the callback, copy the data within the callback. |
 
 **Returns**
 
@@ -1250,7 +1258,7 @@ Obtains the double array with a specific key from the additional information of 
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information to check.|
 | const char* key | Pointer to the key.|
-| double** array | Output parameter, which is used to receive the double array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.|
+| double** array | Output parameter, which is used to receive the double array. The array memory is allocated internally by the function, and the caller does not need to allocate it in advance.<br>         The array memory is managed by the framework. If **para** is the additional information created by the caller using [OH_CommonEvent_CreateParameters](#oh_commonevent_createparameters), the array is released together with [OH_CommonEvent_DestroyParameters](#oh_commonevent_destroyparameters) and cannot be released separately by the caller. If **para** comes from the callback data (receiving path) of [CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md), the array memory obtained using this API in the callback is automatically released by the framework along with the callback. If you need to use the array content outside the callback, copy the data within the callback. |
 
 **Returns**
 
@@ -1385,7 +1393,7 @@ Finishes an ordered common event.
 
 | Type| Description|
 | -- | -- |
-| bool | Returns **true** if the operation is successful; returns **false** otherwise.|
+| bool | The value **true** indicates that the operation request is accepted. The value **false** indicates that the operation fails. The possible causes are as follows:<br>- **subscriber** is empty.<br>- The subscriber has not subscribed to or has unsubscribed from the event.<br>- The current common event is not an ordered one.<br>- The current subscriber has finished processing the ordered common event.<br>- The IPC request fails.<br>         Note: If **true** is returned, it only indicates that the request has been accepted. The actual processing is performed asynchronously by the server. If the current subscriber's processing of the ordered common event has timed out (the maximum processing duration for each subscriber is 10 seconds), the operation will not take effect even if **true** is returned. |
 
 ### OH_CommonEvent_GetAbortCommonEvent()
 
@@ -1435,7 +1443,7 @@ Aborts an ordered common event when used with [OH_CommonEvent_FinishCommonEvent]
 
 | Type| Description|
 | -- | -- |
-| bool | Returns **true** if the operation is successful; returns **false** otherwise.|
+| bool | The value **true** indicates that the operation request is accepted. The value **false** indicates that the operation fails. The possible causes are as follows:<br>- **subscriber** is empty.<br>- The subscriber has not subscribed to or has unsubscribed from the event.<br>- The current common event is not an ordered one.<br>- The current subscriber has finished processing the ordered common event.<br>- The IPC request fails.<br>         Note: If **true** is returned, it only indicates that the request has been accepted. The actual processing is performed asynchronously by the server. If the current subscriber's processing of the ordered common event has timed out (the maximum processing duration for each subscriber is 10 seconds), the operation will not take effect even if **true** is returned. |
 
 ### OH_CommonEvent_ClearAbortCommonEvent()
 
@@ -1460,7 +1468,7 @@ Clears the abort state of an ordered common event when used with [OH_CommonEvent
 
 | Type| Description|
 | -- | -- |
-| bool | Returns **true** if the operation is successful; returns **false** otherwise.|
+| bool | The value **true** indicates that the operation request is accepted. The value **false** indicates that the operation fails. The possible causes are as follows:<br>- **subscriber** is empty.<br>- The subscriber has not subscribed to or has unsubscribed from the event.<br>- The current common event is not an ordered one.<br>- The current subscriber has finished processing the ordered common event.<br>- The IPC request fails.<br>         Note: If **true** is returned, it only indicates that the request has been accepted. The actual processing is performed asynchronously by the server. If the current subscriber's processing of the ordered common event has timed out (the maximum processing duration for each subscriber is 10 seconds), the operation will not take effect even if **true** is returned. |
 
 ### OH_CommonEvent_GetCodeFromSubscriber()
 
@@ -1511,7 +1519,7 @@ Sets the result code (integer type) of an ordered common event.
 
 | Type| Description|
 | -- | -- |
-| bool | Returns **true** if the operation is successful; returns **false** otherwise.|
+| bool | The value **true** indicates that the operation request is accepted. The value **false** indicates that the operation fails. The possible causes are as follows:<br>- **subscriber** is empty.<br>- The subscriber has not subscribed to or has unsubscribed from the event.<br>- The current common event is not an ordered one.<br>- The current subscriber has finished processing the ordered common event.<br>- The IPC request fails.<br>         Note: If **true** is returned, it only indicates that the request has been accepted. The actual processing is performed asynchronously by the server. If the current subscriber's processing of the ordered common event has timed out (the maximum processing duration for each subscriber is 10 seconds), the operation will not take effect even if **true** is returned. |
 
 ### OH_CommonEvent_GetDataFromSubscriber()
 
@@ -1563,6 +1571,6 @@ Sets the result data (string type) of an ordered common event.
 
 | Type| Description|
 | -- | -- |
-| bool | Returns **true** if the operation is successful; returns **false** otherwise.|
+| bool | The value **true** indicates that the operation request is accepted. The value **false** indicates that the operation fails. The possible causes are as follows:<br>- **subscriber** is empty.<br>- The subscriber has not subscribed to or has unsubscribed from the event.<br>- The current common event is not an ordered one.<br>- The current subscriber has finished processing the ordered common event.<br>- The IPC request fails.<br>         Note: If **true** is returned, it only indicates that the request has been accepted. The actual processing is performed asynchronously by the server. If the current subscriber's processing of the ordered common event has timed out (the maximum processing duration for each subscriber is 10 seconds), the operation will not take effect even if **true** is returned. |
 
 

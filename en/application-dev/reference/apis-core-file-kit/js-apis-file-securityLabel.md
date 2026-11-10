@@ -1,12 +1,13 @@
 # @ohos.file.securityLabel (Data Label)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=6c0893247bd78c129e32a38e52ccc47805b1914a translatedAt=2026-11-03T04:38:32.848Z pushedAt=2026-11-04T05:56:42.496Z nl=1 -->
 
-This module provides ArkTS APIs for managing data security levels of files, including obtaining and setting file security levels.
+This module provides functions related to file data security levels: it provides ArkTS APIs for applications to query and set file data security levels. This function helps applications implement hierarchical management and access control for files of different security levels, addressing the need for data security control and improving the data security compliance of applications.
 
 > **NOTE**
 >
@@ -20,22 +21,7 @@ import { securityLabel } from '@kit.CoreFileKit';
 
 ## How to Use
 
-Before using the APIs provided by this module to perform operations on a file or directory, obtain the application sandbox path of the file or directory as follows:
-
-
-  ```ts
-  import { UIAbility } from '@kit.AbilityKit';
-  import { window } from '@kit.ArkUI';
-
-  export default class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-      let context = this.context;
-      let pathDir = context.filesDir;
-    }
-  }
-  ```
-
-For details about how to obtain the application sandbox path, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths).
+Before using this function module to operate on files/directories, you need to obtain the app sandbox path pathDir. For how to obtain the sandbox path and how to use the related APIs, see [Application Context - Obtaining the Application File Path](../../application-models/application-context-stage.md#obtaining-application-file-paths).
 
 ## DataLevel
 
@@ -47,11 +33,11 @@ Represents the data security level.
 
 | Type| Description|
 | --- | ---------------- |
-| 's0' | Level S0|
-| 's1' | Level S1|
-| 's2' | Level S2|
-| 's3' | Level S3|
-| 's4' | Level S4|
+| 's0' | Data security level "S0". |
+| 's1' | Data security level "S1". |
+| 's2' | Data security level "S2". |
+| 's3' | Data security level "S3". |
+| 's4' | Data security level "S4". |
 
 For details, see [Data Security Labels](../../database/access-control-by-device-and-data-level.md#data-security-labels).
 
@@ -60,7 +46,7 @@ For details, see [Data Security Labels](../../database/access-control-by-device-
 
 setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
 
-Sets the data security level for a file or directory. The level can only be adjusted from low to high, or set to the same level. This API uses a promise to return the result.
+Sets the data security level of a file or directory to implement hierarchical management and access control of files. This API uses a promise asynchronous callback.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -68,8 +54,8 @@ Sets the data security level for a file or directory. The level can only be adju
 
 | Name   | Type      | Mandatory| Description                                        |
 | --------- | ------    | ---- | -------------------------------------------- |
-| path      | string    | Yes  | File path.                                    |
-| type      | [DataLevel](#datalevel) | Yes  | Data security level. The value can only be **s0**, **s1**, **s2**, **s3**, or **s4**.|
+| path      | string    | Yes   | App sandbox path of the file or directory.                                     |
+| type      | [DataLevel](#datalevel) | Yes   | Data security level. Only supports "s0", "s1", "s2", "s3", "s4".<br>**Note**: The data security level can only be set from low to high or same level. |
 
 **Return value**
 
@@ -98,9 +84,9 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + '/test.txt';
   securityLabel.setSecurityLabel(filePath, "s0").then(() => {
-    console.info("setSecurityLabel successfully");
+    console.info("Succeeded in setting security label.");
   }).catch((err: BusinessError) => {
-    console.error("setSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
+    console.error("Failed to set security label. Code: " + err.code + ", message: " + err.message);
   });
   ```
 
@@ -108,7 +94,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt;):void
 
-Sets the data security level for a file or directory. The level can only be adjusted from low to high, or set to the same level. This API uses an asynchronous callback to return the result.
+Sets the data security level of a file or directory to implement hierarchical management and access control of files. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -116,9 +102,9 @@ Sets the data security level for a file or directory. The level can only be adju
 
 | Name   | Type                     | Mandatory| Description                                        |
 | --------- | ------------------------- | ---- | -------------------------------------------- |
-| path      | string                    | Yes  | File path.                                    |
-| type      | [DataLevel](#datalevel)   | Yes  | Data security level. The value can only be **s0**, **s1**, **s2**, **s3**, or **s4**.|
-| callback  | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the security level.                  |
+| path      | string                    | Yes  | App sandbox path of the file or directory.                                      |
+| type      | [DataLevel](#datalevel)   | Yes  | Data security level. Only "s0", "s1", "s2", "s3", and "s4" are supported.<br>**Note**: The data security level can only be set from low to high or to the same level. |
+| callback  | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the data security level is set successfully, **err** is **undefined**; otherwise, **err** is an error object.                   |
 
 **Error codes**
 
@@ -142,9 +128,9 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + '/test.txt';
   securityLabel.setSecurityLabel(filePath, "s0", (err: BusinessError) => {
     if (err) {
-      console.error("setSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
+      console.error("Failed to set security label. Code: " + err.code + ", message: " + err.message);
     } else {
-      console.info("setSecurityLabel successfully.");
+      console.info("Succeeded in setting security label.");
     }
   });
   ```
@@ -153,7 +139,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 setSecurityLabelSync(path:string, type:DataLevel):void
 
-Sets the data security level for a file or directory in synchronous mode. The level can only be adjusted from low to high, or set to the same level.
+Sets the data security level of a file or directory using a synchronous method to implement hierarchical management and access control of files.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -161,8 +147,8 @@ Sets the data security level for a file or directory in synchronous mode. The le
 
 | Name   | Type  | Mandatory| Description                                        |
 | --------- | ------ | ---- | -------------------------------------------- |
-| path      | string | Yes  | File path.                                    |
-| type      | [DataLevel](#datalevel) | Yes  | Data security level. The value can only be **s0**, **s1**, **s2**, **s3**, or **s4**.|
+| path      | string | Yes   | App sandbox path of the file or directory.                                      |
+| type      | [DataLevel](#datalevel) | Yes   | Data security level. Only "s0", "s1", "s2", "s3", and "s4" are supported.<br>**Note**: The data security level can only be set from low to high or to the same level. |
 
 **Error codes**
 
@@ -198,13 +184,13 @@ Obtains the data security level of a file or directory. If no data security leve
 
   | Name| Type  | Mandatory| Description    |
   | ------ | ------ | ---- | -------- |
-  | path   | string | Yes  | File path.|
+  | path   | string | Yes   | App sandbox path of the file or directory.  |
 
 **Return value**
 
   | Type                 | Description        |
   | --------------------- | ------------ |
-  | Promise&lt;string&gt; | Promise used to return the data security level.|
+  | Promise&lt;string&gt; | Promise object, which returns the data security level. |
 
 **Error codes**
 
@@ -227,9 +213,9 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + '/test.txt';
   securityLabel.getSecurityLabel(filePath).then((type: string) => {
-    console.info("getSecurityLabel successfully, Label: " + type);
+    console.info("Succeeded in getting security label, Label: " + type);
   }).catch((err: BusinessError) => {
-    console.error("getSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
+    console.error("Failed to get security label. Code: " + err.code + ", message: " + err.message);
   });
   ```
 
@@ -245,8 +231,8 @@ Obtains the data security level of a file or directory. If no data security leve
 
   | Name  | Type                       | Mandatory| Description                      |
   | -------- | --------------------------- | ---- | -------------------------- |
-  | path     | string                      | Yes  | File path.                  |
-  | callback | AsyncCallback&lt;string&gt; | Yes  | Callback after the data security level is obtained asynchronously.|
+  | path     | string                      | Yes  | App sandbox path of the file or directory.                  |
+  | callback | AsyncCallback&lt;string&gt; | Yes  | Callback function. When the data security level of the file or directory is obtained, err is undefined and type is the obtained data security level; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -270,9 +256,9 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + '/test.txt';
   securityLabel.getSecurityLabel(filePath, (err: BusinessError, type: string) => {
     if (err) {
-      console.error("getSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
+      console.error("Failed to get security label. Code: " + err.code + ", message: " + err.message);
     } else {
-      console.info("getSecurityLabel successfully, Label: " + type);
+      console.info("Succeeded in getting security label, Label: " + type);
     }
   });
   ```
@@ -289,7 +275,7 @@ Obtains the data security level of a file or directory in synchronous mode. If n
 
 | Name| Type  | Mandatory| Description    |
 | ------ | ------ | ---- | -------- |
-| path   | string | Yes  | File path.|
+| path   | string | Yes   | App sandbox path of the file or directory.  |
 
 **Return value**
 
@@ -317,5 +303,5 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 ```ts
 let filePath = pathDir + '/test.txt';
 let type = securityLabel.getSecurityLabelSync(filePath);
-console.info("getSecurityLabel successfully, Label: " + type);
+console.info("Succeeded in getting security label, Label: " + type);
 ```

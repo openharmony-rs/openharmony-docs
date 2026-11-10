@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to use JSVM-API to convert BigInt values between C/C++ and JavaScript, creating and reading arbitrary-precision integers using int64, uint64, and arrays of 64-bit words."
+keywords: ["OH_JSVM_CreateBigintInt64","OH_JSVM_CreateBigintUint64","OH_JSVM_CreateBigintWords","OH_JSVM_GetValueBigintInt64","OH_JSVM_GetValueBigintUint64","OH_JSVM_GetValueBigintWords","BigInt","arbitrary-precision integer","sign bit"]
+doctype: guide
+status: active
+---
+
 # Working with BigInt Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.324Z nl=1 -->
 
 ## Introduction
 
@@ -39,15 +48,17 @@ Use **OH_JSVM_GetValueBigintWords** to obtain the underlying data of a given JS 
 
 CPP code:
 
-```cpp
-// hello.cpp
-#include "napi/native_api.h"
-#include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-#include <fstream>
+<!-- @[oh_jsvm_get_value_bigint_words](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/getvaluebigintwords/src/main/cpp/hello.cpp) -->
 
-// Define OH_JSVM_GetValueBigintWords.
-static JSVM_Value GetValueBigintWords(JSVM_Env env, JSVM_CallbackInfo info) {
+``` C++
+#include "napi/native_api.h"
+#include "hilog/log.h"
+#include "ark_runtime/jsvm.h"
+#include <cstdlib>
+// ...
+// Sample method for OH_JSVM_GetValueBigintWords
+static JSVM_Value GetValueBigintWords(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -56,7 +67,11 @@ static JSVM_Value GetValueBigintWords(JSVM_Env env, JSVM_CallbackInfo info) {
     uint64_t* words{nullptr};
     // Call OH_JSVM_GetValueBigintWords to obtain wordCount.
     JSVM_Status status = OH_JSVM_GetValueBigintWords(env, args[0], nullptr, &wordCount, nullptr);
-    OH_LOG_INFO(LOG_APP, "OH_JSVM_GetValueBigintWords wordCount:%{public}d.", wordCount);
+    OH_LOG_INFO(LOG_APP, "OH_JSVM_GetValueBigintWords wordCount:%{public}zu.", wordCount);
+    if (wordCount == 0 || wordCount > MAX_MALLOC_SIZE) {
+        OH_LOG_ERROR(LOG_APP, "Invalid wordCount: %{public}zu", wordCount);
+        return nullptr;
+    }
     words = (uint64_t*)malloc(wordCount*sizeof(uint64_t));
     if (words == nullptr) {
         OH_LOG_ERROR(LOG_APP, "OH_JSVM_GetValueBigintWords malloc failed.");
@@ -81,14 +96,13 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetValueBigintWords},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named getValueBigintWords and associate it with a callback. This allows the GetValueBigintWords callback to be called from JS.
+// Alias for the GetValueBigintWords method, for JS invocation
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getValueBigintWords", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char* srcCallNative = R"JS(getValueBigintWords(BigInt(5555555555555555)))JS";
+// Sample test JS
+const char* SRC_CALL_NATIVE = R"JS(getValueBigintWords(BigInt(5555555555555555)))JS";
 ```
-<!-- @[oh_jsvm_get_value_bigint_words](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/getvaluebigintwords/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -98,22 +112,25 @@ OH_JSVM_GetValueBigintWords signBit: 0.
 
 ### OH_JSVM_CreateBigintWords
 
-Use **OH_JSVM_GetValueBigintWords** to create a JS BigInt object from a C uint64_t array.
+Creates a JavaScript BigInt object based on a given uint64_t array.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_bigint_words](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/createbigintwords/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_CreateBigintWords.
-static int DIFF_VALUE_THREE = 3;
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_CreateBigintWords
+static int g_diffValueThree = 3;
 static JSVM_Value CreateBigintWords(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // Call OH_JSVM_CreateBigintWords to create a BigInt object.
     int signBit = 0;
-    size_t wordCount = DIFF_VALUE_THREE;
+    size_t wordCount = g_diffValueThree;
     uint64_t words[] = {12ULL, 34ULL, 56ULL};
     JSVM_Value returnValue = nullptr;
     JSVM_Status status = OH_JSVM_CreateBigintWords(env, signBit, wordCount, words, &returnValue);
@@ -129,14 +146,13 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateBigintWords},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named createBigintWords and associate it with a callback. This allows the CreateBigintWords callback to be called from JS.
+// Alias for the CreateBigintWords method, for JS invocation
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createBigintWords", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char* srcCallNative = R"JS(createBigintWords())JS";
+// Sample test JS
+const char* SRC_CALL_NATIVE = R"JS(createBigintWords())JS";
 ```
-<!-- @[oh_jsvm_create_bigint_words](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/createbigintwords/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -145,23 +161,26 @@ JSVM OH_JSVM_CreateBigintWords success
 
 ### OH_JSVM_CreateBigintUint64
 
-Use **OH_JSVM_CreateBigintUint64** to create a JavaScript BigInt object from a Uint64 object.
+Creates a JavaScript BigInt object based on a given uint64 type object.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_bigint_uint64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/createbigintuint64/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // Declare the variable value of uint64_t.
-static uint64_t TEST_VALUE = 5555555555555555555;
-// Define OH_JSVM_CreateBigintUint64.
+static uint64_t g_testValue = 5555555555555555555;
+// Sample method for OH_JSVM_CreateBigintUint64
 static JSVM_Value CreateBigintUint64(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // Convert value to the JSVM_Value type and return the value.
     JSVM_Value returnValue = nullptr;
-    JSVM_Status status = OH_JSVM_CreateBigintUint64(env, TEST_VALUE, &returnValue);
+    JSVM_Status status = OH_JSVM_CreateBigintUint64(env, g_testValue, &returnValue);
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM OH_JSVM_CreateBigintUint64 fail");
     } else {
@@ -169,19 +188,18 @@ static JSVM_Value CreateBigintUint64(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return returnValue;
 }
-// Define CreateBigintUint64.
+// Register callback for CreateBigintUint64
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateBigintUint64},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named createBigintUint64 and associate it with a callback. This allows the CreateBigintUint64 callback to be called from JS.
+// Alias for the CreateBigintUint64 method, for JS invocation
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createBigintUint64", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char* srcCallNative = R"JS(createBigintUint64())JS";
+// Sample test JS
+const char *SRC_CALL_NATIVE = R"JS(createBigintUint64())JS";
 ```
-<!-- @[oh_jsvm_create_bigint_uint64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/createbigintuint64/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -191,16 +209,19 @@ JSVM OH_JSVM_CreateBigintUint64 success
 
 ### OH_JSVM_GetValueBigintUint64
 
-Use **OH_JSVM_GetValueBigintUint64** to obtain the C uint64_t primitive equivalent of the given JS BigInt object.
+Obtains the uint64_t primitive type value of a given JavaScript BigInt.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_value_bigint_uint64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/getvaluebigintuint64/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_GetValueBigintUint64.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_GetValueBigintUint64
 static JSVM_Value GetValueBigintUint64(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -212,10 +233,10 @@ static JSVM_Value GetValueBigintUint64(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetValueBigintUint64(env, args[0], &value, &lossLess);
     // Check whether the BigInt value obtained is a product of lossless conversion. If no, an exception is thrown.
     if (!lossLess) {
-        OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless converted");
+        OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless conversion");
         return nullptr;
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM GetValueBigintUint64 success");
+        OH_LOG_INFO(LOG_APP, "JSVM GetValueBigintUint64 success:%{public}d", lossLess);
     }
     JSVM_Value returnValue = nullptr;
     OH_JSVM_CreateBigintUint64(env, value, &returnValue);
@@ -226,14 +247,13 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetValueBigintUint64},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named getValueBigintUint64 and associate it with a callback. This allows the GetValueBigintUint64 callback to be called from JS.
+// Alias for the GetValueBigintUint64 method, for JS invocation
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getValueBigintUint64", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char* srcCallNative = R"JS(getValueBigintUint64(BigInt(5555555555555555)))JS";
+// Sample test JS
+const char* SRC_CALL_NATIVE = R"JS(getValueBigintUint64(BigInt(5555555555555555)))JS";
 ```
-<!-- @[oh_jsvm_get_value_bigint_uint64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/getvaluebigintuint64/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -242,22 +262,25 @@ JSVM GetValueBigintUint64 success
 
 ### OH_JSVM_CreateBigintInt64
 
-Use **OH_JSVM_CreateBigintInt64** to create a JavaScript BigInt object from an int64_t object.
+Creates a JavaScript BigInt object based on a given int64_t type object.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_bigint_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/createbigintint64/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // Declare the variable value of int64_t.
-static int64_t TEST_VALUE_DEMO = -5555555555555555555;
-// Define OH_JSVM_CreateBigintInt64.
+static int64_t g_testValueDemo = -5555555555555555555;
+// Sample method for OH_JSVM_CreateBigintInt64
 static JSVM_Value CreateBigintInt64(JSVM_Env env, JSVM_CallbackInfo info)
 {
     JSVM_Value returnValue = nullptr;
-    JSVM_Status status = OH_JSVM_CreateBigintInt64(env, TEST_VALUE_DEMO, &returnValue);
+    JSVM_Status status = OH_JSVM_CreateBigintInt64(env, g_testValueDemo, &returnValue);
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM OH_JSVM_CreateBigintInt64 fail");
     } else {
@@ -270,14 +293,13 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateBigintInt64},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named createBigintInt64 and associate it with a callback. This allows the CreateBigintInt64 callback to be called from JS.
+// Alias for the CreateBigintInt64 method, for JS invocation
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createBigintInt64", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char* srcCallNative = R"JS(createBigintInt64())JS";
+// Sample test JS
+const char* SRC_CALL_NATIVE = R"JS(createBigintInt64())JS";
 ```
-<!-- @[oh_jsvm_create_bigint_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/createbigintint64/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -290,12 +312,15 @@ Use OH_JSVM_GetValueBigintInt64 to obtain the C int64_t primitive equivalent of 
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_value_bigint_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/getvaluebigintint64/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_GetValueBigintInt64.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_GetValueBigintInt64
 static JSVM_Value GetBigintInt64(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -307,10 +332,10 @@ static JSVM_Value GetBigintInt64(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetValueBigintInt64(env, args[0], &value, &lossLess);
     // Check whether the BigInt value obtained is a product of lossless conversion. If no, an exception is thrown.
     if (!lossLess) {
-        OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless converted");
+        OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless conversion");
         return nullptr;
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM GetBigintInt64 success");
+        OH_LOG_INFO(LOG_APP, "JSVM GetBigintInt64 success:%{public}d", lossLess);
     }
     JSVM_Value returnValue = nullptr;
     OH_JSVM_CreateBigintInt64(env, value, &returnValue);
@@ -321,16 +346,15 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetBigintInt64},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named getBigintInt64 and associate it with a callback. This allows the GetBigintInt64 callback to be called from JS.
+// Alias for the GetBigintInt64 method, for JS invocation
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getBigintInt64", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char* srcCallNative = R"JS(getBigintInt64(BigInt(-5555555555555555)))JS";
+// Sample test JS
+const char* SRC_CALL_NATIVE = R"JS(getBigintInt64(BigInt(-5555555555555555)))JS";
 ```
-<!-- @[oh_jsvm_get_value_bigint_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/getvaluebigintint64/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
-JSVM GetValueBigintUint64 success
+JSVM GetBigintInt64 success:1
 ```

@@ -1,18 +1,20 @@
 # marquee Development
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9a5da59cdf4f4c3dc0f87035f85ddf06f80ecfc4 translatedAt=2026-08-05T10:13:12.342Z pushedAt=2026-08-06T06:30:03.771Z -->
+<!-- md-trans-meta sourceCommit=87f36412b9792c0776f707878176294c4360c8f0 translatedAt=2026-10-29T08:57:13.585Z pushedAt=2026-10-30T03:02:26.521Z nl=1 -->
+
 
 The **&lt;marquee&gt;** component displays single-line scrolling text. For details, see [marquee](../reference/apis-arkui/arkui-js/js-components-basic-marquee.md).
+
 
 ## Creating a &lt;marquee&gt; Component
 
 Create a **&lt;marquee&gt;** component in the .hml file under **pages/index**.
+
 
 ```html
 <!-- xxx.hml -->
@@ -20,6 +22,7 @@ Create a **&lt;marquee&gt;** component in the .hml file under **pages/index**.
   <marquee style="width: 100%;height: 80px; color: #ffffff; background-color: #0820ef;padding-left: 200px;">It's a racing lamp.</marquee>
 </div>
 ```
+
 
 ```css
 /* xxx.css */
@@ -35,9 +38,11 @@ Create a **&lt;marquee&gt;** component in the .hml file under **pages/index**.
 
 ![marquee component](figures/marquee-Component.png)
 
+
 ## Setting Attributes and Styles
 
 The **marquee** uses the **color** and **font-weight** attributes to set the text color and font weight in the marquee, and the **border** attribute to set the border style.
+
 
 ```html
 <!-- xxx.hml -->
@@ -45,6 +50,7 @@ The **marquee** uses the **color** and **font-weight** attributes to set the tex
  <marquee class="custommarquee">It's a racing lamp.</marquee>
 </div>
 ```
+
 
 ```css
 /* xxx.css */
@@ -72,7 +78,8 @@ The **marquee** uses the **color** and **font-weight** attributes to set the tex
 
 ![Attributes-and-Styles](figures/Attributes-and-Styles.png)
 
-Set the **scrollamount**, **loop**, and **direction** attributes to define the maximum scroll length, number of scrolling times, and text scrolling direction.
+Set the **scrollamount**, **loop**, and **direction** attributes to define the scroll distance, number of scrolling times, and text scrolling direction of the marquee.
+
 
 ```html
 <!-- xxx.hml -->
@@ -88,6 +95,7 @@ Set the **scrollamount**, **loop**, and **direction** attributes to define the m
   </div>
 </div>
 ```
+
 
 ```css
 /* xxx.css */
@@ -122,6 +130,7 @@ button{
 }
 ```
 
+
 ```js
 // xxx.js
 export default {
@@ -144,17 +153,19 @@ export default {
 }
 ```
 
-> **NOTE**
+> **NOTE** 
 >
 > When the value of **loop** is less than or equal to 0, the marquee scrolls continuously. If **loop** is not set, the default value **-1** is used.
 
 ![Attributes-and-Styles](figures/Attributes-and-Styles.gif)
+
 
 ## Example Scenario
 
 In this example, you can control the scrolling of marquee text.
 
 Set **loop** to **1**. When scrolling ends, trigger a **finish** event to increase the number of scrolling times by 1 and change the font color to a random color. Then, call the **start** method to start scrolling again.
+
 
 ```html
 <!-- xxx.hml -->
@@ -171,6 +182,7 @@ Set **loop** to **1**. When scrolling ends, trigger a **finish** event to increa
   </div>
 </div>
 ```
+
 
 ```css
 /* xxx.css */
@@ -200,6 +212,7 @@ button{
   margin-top: 100px;
 }
 ```
+
 
 ```js
 // xxx.js

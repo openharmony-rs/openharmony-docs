@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "概述ArkTS并发能力体系：异步并发基于Promise和async/await适用于单次I/O任务，多线程并发基于TaskPool和Worker适用于耗时、长时、常驻等任务场景，并介绍线程间通信对象的不同传输方式。"
+keywords: [并发概述, 异步并发, 多线程并发, Promise, TaskPool, Worker, 耗时任务, 线程间通信]
+doctype: guide
+status: active
+---
+
 # 并发概述
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

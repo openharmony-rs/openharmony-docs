@@ -69,7 +69,7 @@
 >
 > - 针对监听类接口：请使用对应的off()接口在页面销毁时移除相关监听，以避免内存泄漏。
 >
-> - 页面加载优于显示：在调用showWindow()显示窗口等接口时，请确保已使用loadContent()或setUIContent等接口完成页面的加载。
+> - 页面加载优于显示：在调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow20)显示窗口等接口时，请确保已使用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1)等接口完成页面的加载。
 >
 > - 合理使用窗口独占激活模式：避免滥用[setExclusivelyHighlighted()](../reference/apis-arkui/arkts-apis-window-Window.md#setexclusivelyhighlighted15)导致用户体验割裂。
 >

@@ -5,8 +5,8 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=fa715e076d4d88419e10085f9538284e3293d667 translatedAt=2026-07-29T01:30:03.177Z pushedAt=2026-07-30T03:36:37.692Z -->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=f72dc3ff720fe281ad4c1f08c69635e9b62959a5 translatedAt=2026-11-03T01:18:34.005Z pushedAt=2026-11-03T03:27:38.650Z nl=1 -->
 
 > **NOTE**
 >
@@ -31,7 +31,6 @@ The bundle name of the application cannot be obtained.
 Check whether the test application is properly installed and available, and ensure that the bundle name of the test application can be obtained.
 
 ## 32400002 Internal Error
-
 **Error Message**
 
 Internal error.
@@ -43,17 +42,14 @@ An internal error occurs in the framework.
 **Possible Causes**
 
 1. IPC transmission fails.
-
 2. The **PerfTest** object does not exist.
 
 **Solution**
 
 1. Retry the IPC transmission.
-
 2. Check whether the **PerfTest** object has been destroyed. If so, create a new **PerfTest** object using [PerfTest.create](js-apis-perftest.md#create).
 
 ## 32400003 Parameter Verification Failed
-
 **Error Message**
 
 Parameter verification failed.
@@ -71,7 +67,6 @@ The parameter type is incorrect, or the parameter value is out of the specified 
 Check whether the type and value range of the input parameter meet the API requirements.
 
 ## 32400004 Failed to Execute the Callback
-
 **Error Message**
 
 Failed to execute the callback.
@@ -83,7 +78,6 @@ The callback fails to be executed.
 **Possible Causes**
 
 1. An exception is thrown in the callback.
-
 2. The callback execution times out.
 
 **Solution**
@@ -91,7 +85,6 @@ The callback fails to be executed.
 Check the internal logic of the callback, including the exception handling and timeout control mechanisms, to ensure that no exception is thrown and that the callback execution does not time out.
 
 ## 32400005 Failed to Collect Performance Data
-
 **Error Message**
 
 Failed to collect metric data.
@@ -109,7 +102,6 @@ The application process does not exist during performance data collection.
 Run the **ps** command to check whether the application process exists during performance data collection. Ensure that the application process exists.
 
 ## 32400006 Failed to Obtain Performance Data
-
 **Error Message**
 
 Failed to obtain the measurement result.
@@ -127,7 +119,6 @@ The data collection is not complete.
 Ensure that the [PerfTest.run](js-apis-perftest.md#run) API has been executed and no exception is thrown. Ensure that the data collection is complete before obtaining the specified data.
 
 ## 32400007 API Does Not Support Concurrent Calls
-
 **Error Message**
 
 The API does not support concurrent calls.

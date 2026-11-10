@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍基于Node-API在C++侧加载工程内模块的接口，推荐使用napi_load_module_with_info接口，支持在主线程或子线程加载hap/hsp/har/native模块。"
 keywords: [Node-API, 模块加载, napi_load_module_with_info, napi_load_module, C++加载模块, hap, hsp, har, native模块]
 doctype: guide

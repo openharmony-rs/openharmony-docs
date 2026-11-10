@@ -282,14 +282,14 @@ async function getHiddenAlbumsView(phAccessHelper: sendablePhotoAccessHelper.Pho
       fetchColumns: [],
       predicates: predicates
     };
-    for (let i = 0; i < albums.length; i++) {
+    albums.forEach((album) => {
       // 获取相册中的隐藏文件。
-      albums[i].getAssets(fetchOption).then((assetFetchResult) => {
+      album.getAssets(fetchOption).then((assetFetchResult) => {
         console.info('album get hidden assets successfully, getCount: ' + assetFetchResult.getCount());
       }).catch((err: BusinessError) => {
         console.error(`album get hidden assets failed with error: ${err.code}, ${err.message}`);
       });
-    }
+    });
     fetchResult.close();
   }).catch((err: BusinessError) => {
     console.error(`getHiddenAlbumsViewPromise failed with err: ${err.code}, ${err.message}`);
@@ -355,6 +355,80 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
     console.info('getPhotoAssets successfully');
   } catch (err) {
     console.error(`valuesArr failed: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+
+### getShareAlbums
+
+getShareAlbums(options?: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
+
+查询共享相册。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_SHARE_PHOTO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | 否 | 检索选项。默认值为空，查询所有共享相册。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;FetchResult&lt;[Album](#album)&gt;&gt; | Promise对象，返回相册的fetch结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151     | The scenario parameter verification fails. Possible causes: 1. The column field does not support querying. 2. Filter conditions do not match expectations. |
+| 23800301     | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](js-apis-sendablePhotoAccessHelper.md)的示例使用。
+
+```ts
+import { photoAccessHelper, sendablePhotoAccessHelper} from '@kit.MediaLibraryKit'
+import { dataSharePredicates } from '@kit.ArkData' 
+
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
+  console.info('getShareAlbums demo');
+  // 配置检索选项。
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  predicates.equalTo("album_name", "newAlbumName");
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    // 查询共享相册。
+    let fetchResult = await phAccessHelper.getShareAlbums(fetchOption)
+    if (fetchResult == undefined) {
+      console.error(`getShareAlbums fetchResult is undefined`);
+      return;
+    }
+    let album = await fetchResult.getFirstObject();
+    console.info(`getShareAlbums successfully, albumName: ${album.albumName}`);
+    // 关闭FetchResult。
+    fetchResult.close();
+  } catch (err) {
+    console.error(`getShareAlbums failed: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -488,9 +562,69 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 }
 ```
 
+## SharedPhotoAsset<sup>14+</sup>
+
+定义共享图片资产。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | --- | ---- | ---- | --- |
+| fileId | number | 否 | 否 | 图片资产标识ID。|
+| uri | string | 否 | 否 | 图片资产URI。|
+| data | string | 否 | 否 | 图片资产的路径数据。|
+| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。|
+| displayName | string | 否 | 否 | 图片资产的显示名称。|
+| size | number  | 否 | 否 | 图片资产文件大小。 单位为字节（Byte），取值应为≥0的整数。|
+| dateAdded | number | 否 | 否 | 图片资产创建时间。单位为毫秒（ms），取值应为≥0的整数。|
+| dateModified | number | 否 | 否 | 图片资产最后修改时间。单位为毫秒（ms），取值应为≥0的整数。|
+| duration | number | 否 | 否 | 视频类型的图片资产时长。单位为毫秒（ms），取值应为≥0的整数。|
+| width | number | 否 | 否 |  图片资产的像素宽度。单位为像素（px），取值应为≥0的整数。|
+| height | number | 否 | 否 | 图片资产的像素高度。单位为像素（px），取值应为≥0的整数。|
+| dateTaken | number | 否 | 否 | 图片资产拍照后存入本地时间。单位为毫秒（ms），取值应为≥0的整数。    |
+| orientation | number | 否 | 否 |图片资产的旋转角度。单位为度（°），取值应为[0, 359]内的整数。|
+| isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏，默认为false。|
+| title | string | 否 | 否 | 图片资产的标题。|
+| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。|
+| dateTrashed | number | 否 | 否 | 图片资产被移入回收站的时长。单位为秒（s），取值应为≥0的整数。 |
+| hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏，默认为false。|
+| userComment | string | 否 | 否 | 图片资产的用户评论信息。|
+| cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。|
+| dateYear | string | 否 | 否 | 图片资产创建年份时间。|
+| dateMonth | string | 否 | 否 | 图片资产创建月份时间。|
+| dateDay | string | 否 | 否 | 图片资产创建日时间。|
+| pending | boolean | 否 | 否 | 图片资产等待状态，true表示等待，false表示解除等待，默认为false。|
+| dateAddedMs | number | 否 | 否 | 图片资产数据添加后经过时间，单位为毫秒（ms），取值应为≥0的整数。|
+| dateTrashedMs | number | 否 | 否 | 图片资产被移入回收站的时长，单位为毫秒（ms），取值应为≥0的整数。|
+| subtype | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12) | 否 | 否 | 图片资产子类型。|
+| movingPhotoEffectMode | [MovingPhotoEffectMode](js-apis-photoAccessHelper-sys.md#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。|
+| dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | 否 | 否 | 媒体文件的动态范围类型。|
+| thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。true表示已准备好，false表示未准备好，默认为false。|
+| lcdSize | string | 否 | 否 | 图片资产的lcd（Liquid Crystal Display）缩略图宽高信息。|
+| thmSize | string | 否 | 否 | 图片资产的缩略图（Thumb）宽高信息。|
+| thumbnailModifiedMs | number | 否 | 是 | 图片资产的缩略图状态改变时间，单位为毫秒（ms），取值应为≥0的整数。|
+| thumbnailVisible | [ThumbnailVisibility](js-apis-photoAccessHelper-sys.md#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。|
+
 ## Album
 
-实体相册
+实体相册。
+
+### 属性
+
+**起始版本：** 26.0.1
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称         | 类型                          | 只读                         | 可选 | 说明             |
+| ------------ | ----------------------------- | ---------------------------- | ---- | ---------------- |
+| shareRiskType   | string                                        | 是  | 是   | 共享相册的风控类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。   |
+| shareRiskStatus | [ShareAlbumRiskStatus](#sharealbumriskstatus) | 是  | 是   | 共享相册的风控状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。   |
+| cloudId         | string                                        | 是  | 是   | 相册CloudId。<br>**模型约束：** 此接口仅可在Stage模型下使用。         |
+| shareAlbumOwner | string                                        | 是  | 是   | 共享相册的所有者。<br>**模型约束：** 此接口仅可在Stage模型下使用。     |
 
 ### getFaceId<sup>13+</sup>
 
@@ -560,6 +694,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | 名称  | 值   | 说明                                           |
 | ----- | ---- | ---------------------------------------------- |
 | SMART | 4096 | 智慧分析相册。**系统接口**：此接口为系统接口。 |
+| SHARE | 8192 | 共享相册。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumSubtype
 
@@ -582,3 +717,20 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | GROUP_PHOTO           | 4103 | 合影相册。**系统接口**：此接口为系统接口。                 |
 | HIGHLIGHT             | 4104 | 时刻相册。**系统接口**：此接口为系统接口。                 |
 | HIGHLIGHT_SUGGESTIONS | 4105 | 时刻建议相册。**系统接口**：此接口为系统接口。             |
+| SHARE                 | 8193 | 共享相册。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。                 |
+
+## ShareAlbumRiskStatus
+
+表示共享相册的风险状态的枚举。
+
+**起始版本：** 26.0.1
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                  | 值   | 说明                                                       |
+| --------------------- | ---- | ---------------------------------------------------------- |
+| UNDER_REVIEW          | 0 | 表示共享相册正在审查中。  |
+| LOW_REVIEW_RISK       | 1 | 表示共享相册审核风险低。  |
+| HIGH_REVIEW_RISK      | 2 | 表示共享相册审核风险高。  |

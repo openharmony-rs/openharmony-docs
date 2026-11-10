@@ -1544,7 +1544,7 @@ on(type: 'interrupt', interrupt: AudioInterrupt, callback: Callback\<InterruptAc
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 11开始废弃，建议使用[on('audioInterrupt')](arkts-apis-audio-AudioCapturer.md#onaudiointerrupt10)替代。
+> 从API version 7开始支持，从API version 11开始废弃，建议使用[on('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -1580,7 +1580,7 @@ off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback\<Interrupt
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 11开始废弃，建议使用[off('audioInterrupt')](arkts-apis-audio-AudioCapturer.md#offaudiointerrupt10)替代。
+> 从API version 7开始支持，从API version 11开始废弃，建议使用[off('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#offaudiointerrupt18)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
