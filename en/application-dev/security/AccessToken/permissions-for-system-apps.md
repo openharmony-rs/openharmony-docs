@@ -459,8 +459,6 @@ Allows a system application to forcibly restore a device to its factory settings
 
 Allows an application to subscribe to and obtain the status of the mating part (air conditioner).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -474,8 +472,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_HVAC
 
 Allows an application to set the status of the mating part (air conditioner).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -491,8 +487,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (refrigerator).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -506,8 +500,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_FRIDGE
 
 Allows an application to set the status of the mating part (refrigerator).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -523,8 +515,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (seat).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -538,8 +528,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_SEAT
 
 Allows an application to set the status of the mating part (seat).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -555,8 +543,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (door).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -570,8 +556,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_DOOR
 
 Allows an application to set the status of the mating part (door).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -587,8 +571,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (car lock).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -602,8 +584,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_LOCK
 
 Allows an application to set the status of the mating part (car lock).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -619,8 +599,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (car window).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -634,8 +612,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_WINDOW
 
 Allows an application to set the status of the mating part (car window).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -651,8 +627,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (sunroof).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -666,8 +640,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_SUNROOF
 
 Allows an application to set the status of the mating part (sunroof).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -683,8 +655,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (steering wheel).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -698,8 +668,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.ENERGY_PORT_COVER_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (energy port cover).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -715,8 +683,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (energy port cover).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -730,8 +696,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.EXTERIOR_LIGHT_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (exterior light).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -747,8 +711,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (exterior light).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -762,8 +724,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.INTERIOR_CAMERA_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (interior camera).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -779,8 +739,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (interior camera).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -794,8 +752,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.EXTERIOR_CAMERA_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (exterior camera).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -811,8 +767,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (exterior camera).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -826,8 +780,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.INTERIOR_SPEAKER_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (interior speaker).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -843,8 +795,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (interior speaker).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -858,8 +808,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.EXTERIOR_SPEAKER_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (exterior speaker).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -875,8 +823,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (exterior speaker).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -890,8 +836,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.WIPER_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (wiper).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -907,8 +851,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (wiper).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -922,8 +864,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.MIRROR_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (mirror).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -939,8 +879,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (mirror).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -954,8 +892,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.HORN_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (horn).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -971,8 +907,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (horn).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -986,8 +920,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CHB_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (cooling and heating box).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1003,8 +935,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (cooling and heating box).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1018,8 +948,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CODEBOX_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (code box).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1035,8 +963,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (code box).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1050,8 +976,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.STANDEMBLEM_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (standing emblem).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1067,8 +991,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (standing emblem).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1082,8 +1004,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.GRILLE_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (grille).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1099,8 +1019,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (grille).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1114,8 +1032,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.WIRELESSCHARGER_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (wireless charger).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1131,8 +1047,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (wireless charger).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1146,8 +1060,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.PROJECTORSCREEN_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (projector screen).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1163,8 +1075,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (projector screen).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1178,8 +1088,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_DRIVE_INFORMATION
 
 Allows an application to set the status of the mating part (drive information module).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1195,8 +1103,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (body sensor).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1210,8 +1116,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_BODY_SENSOR
 
 Allows an application to set the status of the mating part (body sensor).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1227,7 +1131,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (vehicle stability control system).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1243,8 +1146,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (vehicle stability control system).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1258,8 +1159,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CHG_DISCHG_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (charge and discharge control system).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1275,8 +1174,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (charge and discharge control system).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1290,8 +1187,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.EPB_INFO
 
 Allows an application to subscribe to and obtain the status of the mating part (electronic parking brake).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1307,7 +1202,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (electronic parking brake).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1323,8 +1217,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (power battery system).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1338,8 +1230,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_PBS
 
 Allows an application to set the status of the mating part (power battery system).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1355,8 +1245,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (tire system).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1370,8 +1258,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_TIRE_SYSTEM
 
 Allows an application to set the status of the mating part (tire system).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1387,8 +1273,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (tow system).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1402,8 +1286,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_TOW_SYSTEM
 
 Allows an application to set the status of the mating part (tow system).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1419,8 +1301,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (suspension system).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1434,8 +1314,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_SUSPENSION_SYSTEM
 
 Allows an application to set the status of the mating part (suspension system).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1451,8 +1329,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to set the status of the mating part (accelerator pedal).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1466,8 +1342,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_BRAKE_PEDAL
 
 Allows an application to set the status of the mating part (brake pedal).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1483,8 +1357,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (vehicle mode).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1498,8 +1370,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_CAR_MODE
 
 Allows an application to set the status of the mating part (vehicle mode).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1515,8 +1385,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (driving mode).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1530,8 +1398,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_DRIVING_MODE
 
 Allows an application to set the status of the mating part (driving mode).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1547,8 +1413,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (interior heating module).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1562,8 +1426,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_INTERIOR_HEATING_MODULE
 
 Allows an application to set the status of the mating part (interior heating module).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1579,8 +1441,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (special mobility mode).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1594,8 +1454,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_SPECIAL_MOBILITY_MODE
 
 Allows an application to set the status of the mating part (special mobility mode).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1611,8 +1469,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (button and lever).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1626,8 +1482,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_BUTTON_LEVER
 
 Allows an application to set the status of the mating part (button and lever).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1643,8 +1497,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (water dispenser).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1658,8 +1510,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_WHC
 
 Allows an application to set the status of the mating part (water dispenser).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1675,8 +1525,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (privacy curtain).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1690,8 +1538,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_PRIVACYCURTAIN
 
 Allows an application to set the status of the mating part (privacy curtain).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1707,8 +1553,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (vehicle power management).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1722,8 +1566,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_POWER_MANAGEMENT
 
 Allows an application to set the status of the mating part (vehicle power management).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1739,8 +1581,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (smart key).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1754,8 +1594,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_SMARTKEY
 
 Allows an application to set the status of the mating part (smart key).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1771,8 +1609,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (ETC).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1786,8 +1622,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_ETC
 
 Allows an application to set the status of the mating part (ETC).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1803,8 +1637,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (HUD).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1818,8 +1650,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_HUD
 
 Allows an application to set the status of the mating part (HUD).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1835,8 +1665,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (navigation).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1850,8 +1678,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_NAVIGATION
 
 Allows an application to set the status of the mating part (navigation).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1867,8 +1693,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (oxygen concentrator).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1882,8 +1706,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_OXYGEN_CONCENTRATOR
 
 Allows an application to set the status of the mating part (oxygen concentrator).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1899,8 +1721,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (electric seat belt).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1914,8 +1734,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_SEAT_BELT
 
 Allows an application to set the status of the mating part (electric seat belt).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1931,8 +1749,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (front and rear trunk).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1946,8 +1762,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_FRONT_REAR_TRUNK
 
 Allows an application to set the status of the mating part (front and rear trunk).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1963,8 +1777,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (range extender).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -1978,8 +1790,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_RANGE_EXTENDER
 
 Allows an application to set the status of the mating part (range extender).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -1995,8 +1805,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (differential lock).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -2010,8 +1818,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_DIFFERENTIAL_LOCK
 
 Allows an application to set the status of the mating part (differential lock).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -2027,8 +1833,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (armrest screen).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -2042,8 +1846,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_ARMREST_SCREEN
 
 Allows an application to set the status of the mating part (armrest screen).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -2059,8 +1861,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (armrest box).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -2074,8 +1874,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_ARMREST_BOX
 
 Allows an application to set the status of the mating part (armrest box).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -2091,8 +1889,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (electric rear spoiler).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -2106,8 +1902,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_REAR_SPOILER
 
 Allows an application to set the status of the mating part (electric rear spoiler).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -2123,8 +1917,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (electric pedal).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -2138,8 +1930,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_PEDAL
 
 Allows an application to set the status of the mating part (electric pedal).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -2155,8 +1945,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (electric drive system).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -2170,8 +1958,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_ELECTRIC_DRIVE_SYSTEM
 
 Allows an application to set the status of the mating part (electric drive system).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -2187,8 +1973,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (space partitioning).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -2202,8 +1986,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_SPACE_PARTITIONING
 
 Allows an application to set the status of the mating part (space partitioning).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
@@ -2219,8 +2001,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 
 Allows an application to subscribe to and obtain the status of the mating part (USB).
 
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -2234,8 +2014,6 @@ You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md
 ## ohos.permission.vehicle.CONTROL_USB
 
 Allows an application to set the status of the mating part (USB).
-
-You must request [ohos.permission.vehicle.CAR_CONTROL](restricted-permissions.md#ohospermissionvehiclecar_control) before requesting this permission.
 
 **Permission level**: system_basic
 
