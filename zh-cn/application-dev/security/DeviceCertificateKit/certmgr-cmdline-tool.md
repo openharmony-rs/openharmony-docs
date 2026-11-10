@@ -146,7 +146,7 @@ pem:
 MIIBxxDCCAWygAwIBAgIUdGVzdDIwMjYxMTEwMDAwMDAwMBQX
 ...（PEM 编码内容，可多行）...
 -----END CERTIFICATE-----
-
+```
 未指定-z时，不输出SHA-256 hash:和SHA-1 hash:两行；未指定-p时，不输出pem:及其后的PEM编码内容；同时指定-z和-p时，先输出哈希值（-z），再输出PEM编码（-p）。
 各字段说明：
 - certificate count: 始终输出，取值为证书数量。
