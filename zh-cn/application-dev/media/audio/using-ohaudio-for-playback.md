@@ -298,6 +298,12 @@ int32_t MyOnWriteDataWithMetadata_New(
     OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(builder, metadataCallback, nullptr);
 ```
 
+### 等待音频数据场景的处理建议
+
+在音频播放过程中，应用可能因网络下载等待等原因暂时无法提供音频数据。此时可以调用[OH_AudioRenderer_Standby](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_standby)接口让音频流进入standby状态，暂停数据回调，避免空转。已写入系统的缓存数据会继续播放完毕。退出standby后，数据回调恢复。仅AUDIOSTREAM_USAGE_MUSIC、AUDIOSTREAM_USAGE_MOVIE、AUDIOSTREAM_USAGE_GAME、AUDIOSTREAM_USAGE_AUDIOBOOK类型的播放流支持standby。
+
+<!-- @[Render_Standby](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) --> 
+
 ### 相关实例
 
 针对OHAudio开发音频播放的相关实例请参考：[OHAudio录制和播放](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/OHAudio)。
