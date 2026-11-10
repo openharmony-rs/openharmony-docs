@@ -768,14 +768,14 @@
 						"start_line":2109
 					},
 					{
-						"end_line":1116,
+						"end_line":1420,
 						"name":"AppEvent_C++_RemoveWatcher",
-						"start_line":1063
+						"start_line":1372
 					},
 					{
-						"end_line":1195,
+						"end_line":1502,
 						"name":"AppEvent_C++_DestroyWatcher",
-						"start_line":1131
+						"start_line":1444
 					}
 				]
 			},
@@ -808,7 +808,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":30,
 						"name":"eventsub_cmake_code",
 						"start_line":14
 					}
@@ -3348,14 +3348,14 @@
 						"start_line":1134
 					},
 					{
-						"end_line":1115,
+						"end_line":1419,
 						"name":"APP_Hicollie_RemoveWatcher",
-						"start_line":1064
+						"start_line":1373
 					},
 					{
-						"end_line":1194,
+						"end_line":1501,
 						"name":"APP_Hicollie_DestroyWatcher",
-						"start_line":1132
+						"start_line":1445
 					},
 					{
 						"end_line":59,
@@ -12084,9 +12084,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":257,
+						"end_line":253,
 						"name":"Crash_ArkTS_Add_Event",
-						"start_line":212
+						"start_line":210
 					},
 					{
 						"end_line":329,
@@ -12094,7 +12094,7 @@
 						"start_line":265
 					},
 					{
-						"end_line":50,
+						"end_line":42,
 						"name":"Crash_Click_ArkTS_Header",
 						"start_line":21
 					}
@@ -12224,7 +12224,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":30,
 						"name":"eventsub_cmake_code",
 						"start_line":14
 					}
@@ -69583,7 +69583,7 @@
 						"start_line":59
 					},
 					{
-						"end_line":55,
+						"end_line":47,
 						"name":"External_Log_ArkTS_Header",
 						"start_line":25
 					}
@@ -69618,7 +69618,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":30,
 						"name":"eventsub_cmake_code",
 						"start_line":14
 					}
@@ -70487,7 +70487,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":34,
+						"end_line":33,
 						"name":"AppHicollie_ArkTS_Header",
 						"start_line":23
 					},
@@ -70567,7 +70567,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":56,
+						"end_line":48,
 						"name":"MainThreadJank_ArkTS_Header",
 						"start_line":24
 					},
@@ -70632,14 +70632,14 @@
 						"start_line":1611
 					},
 					{
-						"end_line":1111,
+						"end_line":1415,
 						"name":"MainThreadJankEvent_RemoveWatcher",
-						"start_line":1068
+						"start_line":1377
 					},
 					{
-						"end_line":1190,
+						"end_line":1497,
 						"name":"MainThreadJankEvent_DestroyWatcher",
-						"start_line":1136
+						"start_line":1449
 					}
 				]
 			},
