@@ -7,6 +7,7 @@
 <!--Adviser: @k1ngqaquuu-->
 
 - [ArkTS简介](arkts-overview.md)
+- [ArkTS指南配套示例代码](arkts-samples.md)
 - ArkTS基础类库<!--arkts-utils-->
   - [ArkTS基础类库概述](arkts-utils-overview.md)
   - XML生成、解析与转换<!--xml-generation-parsing-conversion-->
