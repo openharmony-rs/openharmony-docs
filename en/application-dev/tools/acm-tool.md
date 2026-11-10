@@ -6,6 +6,7 @@
 <!--Designer: @JiDong-CS1-->
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b1c9499fc837aac00211c1c930eea24e95395db8 translatedAt=2026-11-02T07:53:37.849Z pushedAt=2026-11-03T01:24:45.019Z nl=1 -->
 
 Account Manager (acm) is a tool that provides basic capabilities of managing local accounts, such as creating, deleting, and querying accounts.
 
@@ -187,5 +188,5 @@ If the constraint is set successfully, "set constraints for the local account su
 | ----------------------------------- | -------------------------- |
 | -h | This parameter is optional. It displays the parameters supported by the **set** command.|
 | -i | This parameter is mandatory. It specifies the account ID.|
-| -c | This parameter is mandatory. It specifies the constraints to be set. Each constraint is separated by a comma (,). For details, see [Constraints](../reference/apis-basic-services-kit/js-apis-osAccount.md#constraints).|
-| -e | This parameter is optional. If this parameter is carried, the command is used to add a constraint; otherwise, the command is used to delete a constraint.|
+| -c | Required parameter. Specifies the constraints to be set. Each constraint is separated by a comma (,). For details, see [Constraints](../reference/apis-basic-services-kit/appendix-osAccount-constraints.md). |
+| -e | Optional parameter. Including (or not including) this option means adding (or removing) a constraint. |

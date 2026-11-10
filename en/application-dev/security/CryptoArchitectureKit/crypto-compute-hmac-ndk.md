@@ -6,8 +6,14 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=66ae00e929608a6217f0e1d4333b3ef4ebe545cf translatedAt=2026-10-30T03:31:49.870Z pushedAt=2026-10-30T06:54:26.495Z nl=1 -->
 
 A hash-based message authentication code (HMAC) uses a specified digest algorithm to generate a MAC based on the key and message shared by communicating parties. The MAC is used to check the integrity of transmitted packets. The HMAC adds key input on the basis of the message digest algorithm to ensure information correctness. The generated MAC has a fixed length.
+
+## Linking Related Dynamic Libraries in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## How to Develop
 

@@ -5,6 +5,7 @@
 <!--Designer: @ge-yafang-->
 <!--Tester: @ge-yafang-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=89495e7a36933b261220328f8ea8c98108c58b84 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->
@@ -27,7 +28,7 @@
    
    To develop native projects, select the Native C++ template. For details about how to use templates, see [Introduction to Project Templates](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-template).
 
-   ![Native-C++-template.png](figures/Native-C++-template.png)
+   ![Native-C++-template](figures/Native-C++-template.png)
 
 3. On the **Create Project** page, choose **5.0.0(12)** as an example of **Compatible SDK**, which specifies the earliest compatible API version. Retain the default values for other parameters.
 

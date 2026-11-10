@@ -1,12 +1,11 @@
 # Using WindowManager to Manage Multimodal Input Events (C/C++)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @stupidb-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1d2e539fa76ba959f887435f6b2f6352d2e02e4a translatedAt=2026-08-11T10:11:13.323Z pushedAt=2026-08-11T11:19:41.367Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T02:49:19.985Z pushedAt=2026-11-03T02:57:13.496Z nl=1 -->
 
 ## When to Use
 
@@ -32,11 +31,8 @@ target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 | OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t windowId) | Unregisters the key event filter of a window.              |
 
 - After an application window is created, bind a key event filter using the window ID.
-
 - The key event filter is triggered only when the application window receives a key event.
-
 - If the callback function returns **true**, the event is intercepted; if it returns **false**, the event is not intercepted.
-
 - Only one key event filter can be registered for the same window ID. The last registered key event filter overwrites the previously registered one. To filter a multi-key event, you are advised to process the multi-key combination in a filter.
 
 ### Example
@@ -57,7 +53,7 @@ static bool filterFunc(Input_KeyEvent *event)
 {
     auto keyCode = OH_Input_GetKeyEventKeyCode(event);
     auto action = OH_Input_GetKeyEventAction(event);
-
+    
     // Filter the press of the Escape key and number keys.
     return (keyCode >= Input_KeyCode::KEYCODE_0 && keyCode <= Input_KeyCode::KEYCODE_9
          && action == Input_KeyEventAction::KEY_ACTION_DOWN) || (keyCode == Input_KeyCode::KEYCODE_ESCAPE);
@@ -68,13 +64,13 @@ static napi_value registerFilter(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-  
+    
     int32_t windowId;
     napi_get_value_int32(env, args[0], &windowId);
-  
+    
     // Register the filter function filterFunc for the window corresponding to windowId.
     auto res = OH_NativeWindowManager_RegisterKeyEventFilter(windowId, filterFunc);
-  
+    
     napi_value errCode;
     napi_create_int32(env, res, &errCode);
     return errCode;
@@ -110,6 +106,7 @@ EXTERN_C_END
 ## Injecting Multimodal Touch Events
 
 You can use the capability provided by the WindowManager module to inject touch events into a specified window. This operation is supported only for windows within the same process. It does not trigger changes in window focus, z-order, or dragging. Instead, the events are directly sent to ArkUI.
+
 
 ### Linking the Dynamic Library in the CMake Script
 
@@ -206,7 +203,7 @@ static napi_value injectEvent(napi_env env, napi_callback_info info)
 
     int32_t TE_WindowId;
     napi_get_value_int32(env, args[ARGS_NINE], &TE_WindowId);
-  
+    
     // Construct a multimodal event touchEvent.
     Input_TouchEvent* touchEvent = OH_Input_CreateTouchEvent();
     OH_Input_SetTouchEventAction(touchEvent, action);
@@ -222,7 +219,7 @@ static napi_value injectEvent(napi_env env, napi_callback_info info)
 
     // Destroy the object after using touchEvent.
     OH_Input_DestroyTouchEvent(&touchEvent);
-  
+    
     napi_value errCode;
     napi_create_int32(env, res, &errCode);
     return errCode;

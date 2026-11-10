@@ -6,7 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=59e5d04244500cd348360c290a73001279be1119 translatedAt=2026-09-16T10:11:46.047Z pushedAt=2026-09-20T09:01:52.226Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T06:09:06.314Z pushedAt=2026-11-03T12:08:25.597Z nl=1 -->
 
 ## Overview
 
@@ -44,7 +44,7 @@ For details about how to use the following macro definitions, see [Parameters of
 | [OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING](#oh_app_crash_param_simplify_vma_printing) "simplify_vma_printing"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to print only the VMA mapping information of the address in the crash log to reduce the size of the **CPP_CRASH** log file.<br>**Since**: 24 |
 | [OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG](#oh_app_crash_param_merge_cppcrash_app_log) "merge_cppcrash_app_log"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to combine the logs of the specified file in the application sandbox in the **CPP_CRASH** scenario.<br>**Since**: 24 |
 | [OH_APP_CRASH_PARAM_COLLECT_MINIDUMP](#oh_app_crash_param_collect_minidump) "collect_minidump"  | <!--RP1-->Used for the **APP_CRASH** event, whether to enable minidump.<!--RP1End--><br>**Since:** 26.0.0  |
-
+| [OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH ](#oh_app_crash_param_publish_on_next_launch) "publish_on_next_launch"  | Used for the APP_CRASH event to set whether to enable receiving the event callback after restart.<br>**Since:** 26.1.0  |
 
 ## Macro Description
 
@@ -215,3 +215,15 @@ Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH*
 <!--RP2-->Used for the APP_CRASH event to enable or disable minidump.<!--RP2End-->
 
 **Since:** 26.0.0
+
+### OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH
+
+```c
+#define OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH "publish_on_next_launch"
+```
+
+**Description**
+
+Used in the APP_CRASH event to set whether to enable the event callback to be received after restart.
+
+**Since:** 26.1.0

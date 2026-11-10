@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=abc0089348a50a5b847f5d0ffe23935755465c25 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 20, the camera framework supports monitoring of system pressure levels.
 
@@ -18,19 +19,23 @@ When the system pressure level changes, the callback returns the **Camera_System
 
 For details about this parameter, see [Camera_SystemPressureLevel](../../reference/apis-camera-kit/capi-camera-h.md#camera_systempressurelevel).
 
-   ```c++
-   void SystemPressureLevelChangeCallback(Camera_CaptureSession* captureSession, Camera_SystemPressureLevel systemPressureLevel)
-   {
-      OH_LOG_INFO(LOG_APP, "SystemPressureLevelChangeCallback is called.");
-   }
+<!-- @[system_pressure_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
-   Camera_ErrorCode RegisterSystemPressureCallback(Camera_CaptureSession* captureSession)
-   {
-       Camera_ErrorCode ret = OH_CaptureSession_RegisterSystemPressureLevelChangeCallback(captureSession,
-          SystemPressureLevelChangeCallback);
-       if (ret != CAMERA_OK) {
-          OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_RegisterSystemPressureLevelChangeCallback failed.");
-       }
-       return ret;
-   }
-   ```
+``` C++
+void SystemPressureLevelChangeCallback(Camera_CaptureSession *captureSession,
+    Camera_SystemPressureLevel systemPressureLevel)
+{
+    OH_LOG_INFO(LOG_APP, "SystemPressureLevelChangeCallback level: %{public}d", systemPressureLevel);
+}
+
+Camera_ErrorCode NDKCamera::RegisterSystemPressureCallback()
+{
+    Camera_ErrorCode ret = OH_CaptureSession_RegisterSystemPressureLevelChangeCallback(
+        captureSession_, SystemPressureLevelChangeCallback);
+    if (ret != CAMERA_OK) {
+        OH_LOG_ERROR(LOG_APP,
+            "OH_CaptureSession_RegisterSystemPressureLevelChangeCallback failed.");
+    }
+    return ret;
+}
+```

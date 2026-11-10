@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @xiaojianfeng_jeffery-->
 <!--Designer: @njuptkid-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述

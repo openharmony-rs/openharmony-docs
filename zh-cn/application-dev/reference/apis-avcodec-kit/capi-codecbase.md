@@ -66,6 +66,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_AVCODEC_MIMETYPE_AUDIO_DVAUDIO | DVAUDIO（Digital Video Audio）音频解码器的MIME类型。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_AUDIO_DTS | DTS（Digital Theater Systems）音频解码器的MIME类型。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_AUDIO_COOK | COOK（RealAudio Cook）音频解码器的MIME类型。<br>从API version 23开始支持。 |
+| OH_AVCODEC_MIMETYPE_AUDIO_DSD | DSD（Direct Stream Digital）音频解码器的MIME类型。<br>从API版本26.1.0开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_VVC | VVC（H.266）视频编解码器的MIME类型。                    |
 | OH_AVCODEC_MIMETYPE_VIDEO_HEVC | HEVC（H.265）视频编解码器的MIME类型。                    |
 | OH_AVCODEC_MIMETYPE_VIDEO_AVC | AVC（H.264）视频编解码器的MIME类型。                     |
@@ -182,6 +183,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER | 解码器输出模式的键值。值类型为int32_t，取值为0或1。1表示解码器按解码顺序输出帧；0表示解码器按显示顺序输出帧，默认值为0。该键是可选的，仅用于视频解码，且仅可在Configure阶段使用。设置该键前，可通过[OH_AVCapability_IsFeatureSupported](capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported)接口和枚举值[OH_AVCapabilityFeature](capi-native-avcapability-h.md#oh_avcapabilityfeature).VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER查询是否支持该特性。如果视频解码不支持该特性，通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)接口设置该键将返回AV_ERR_INVALID_VAL。<br>**起始版本：** 26.0.0 |
 | OH_MD_KEY_VIDEO_ENCODER_MAX_FRAME_DELAY_COUNT | 视频编码器在输出压缩帧前允许缓存的最大帧数的键值。值类型为int32_t，取值范围为[1，5]。该键是可选的，仅用于视频编码，且仅可在Configure阶段使用。取值在[1，5]区间内时可正常生效；若超出该范围（小于1或大于5），调用[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)接口会返回AV_ERR_INVALID_VAL。<br>**起始版本：** 26.0.0 |
 | OH_MD_KEY_VIDEO_ENCODER_REPEAT_HEADER_BEFORE_SYNC_FRAMES | 码流同步帧前置参数集的键值。值类型为int32_t，取值为0或1，1表示使能，0表示不使能，默认值为0。该键是可选的，仅用于视频编码，且仅可在Configure阶段使用。开启后，编码器会在每个同步帧前插入前置参数集数据（例如H.264/H.265格式对应的SPS、PPS）。<br>**起始版本：** 26.0.0 |
+| OH_MD_KEY_VIDEO_SET_DMABUF_NAME_SUFFIX | 设置视频编解码器DMABUF名称后缀的键，值类型为字符串。<br>后缀使用英文冒号`:`作为分隔符，拼接在编解码器内部DMABUF名称之后。最终的DMABUF名称格式为：{系统自定义字符串}:{后缀}。<br>后缀值的约束条件如下：<br>1. 仅允许ASCII可打印字符，若后缀包含任何非ASCII字符、空格、换行、制表符或其他不可见（控制）字符，将返回AV_ERR_INVALID_VAL。<br>2. 后缀必须至少包含一个非数字字符，否则将返回AV_ERR_INVALID_VAL。<br>该键是可选项，未设置时DMABUF名称保持不变。可通过[OH_VideoDecoder_Configure()](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)或[OH_VideoEncoder_Configure()](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)进行配置。<br>**起始版本：** 26.0.1 |
 
 ### 音频专有的键值对
 
@@ -209,6 +211,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_AUDIO_MAX_INPUT_BUFFER_SIZE | 设置或查询音频编解码器最大输入缓冲区大小的键，值类型为int32_t，单位为字节。实际缓冲区大小受编解码器实现限制，超出上限的值不生效。该键是可选的。 |
 | OH_MD_KEY_AUDIO_ENCODER_PTS_MODE | 配置音频编码器输出PTS模式的键，值类型为int32_t，请参见[OH_AudioEncoderPTSMode](capi-native-avcodec-base-h.md#oh_audioencoderptsmode)。该键是可选的，不设置时默认为OH_AUDIO_ENCODER_PTS_MODE_DEFAULT。 |
 | OH_MD_KEY_AUDIO_ENCODER_ENABLE_SAMPLE_FORMAT_CONVERT | 使能音频编码器采样格式转换的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。使能后支持的输入采样格式为：SAMPLE_U8、SAMPLE_S16LE、SAMPLE_S24LE、SAMPLE_S32LE、SAMPLE_F32LE。该键是可选的。 |
+| OH_MD_KEY_AUDIO_DSD_CODEC_TYPE | DSD解码类型的键，值类型为int32_t，请参见[OH_AVCodec_DSDCodecType](capi-native-avcodec-audiobase-h.md#oh_avcodec_dsdcodectype)。该键是可选的，只用来标记DSD解码类型，默认值为OH_AVCODEC_DSD_CODEC_LSBF_PLANAR(0)。<br>该键从API版本26.1.0开始支持。 |
 
 ### 封装/解封装专有的键值对
 

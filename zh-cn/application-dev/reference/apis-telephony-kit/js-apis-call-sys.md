@@ -8,7 +8,7 @@
 
 该模块提供呼叫管理功能，包括拨打电话、跳转到拨号界面、获取通话状态、格式化电话号码等。
 
-如需订阅通话状态请使用[`observer.on('callStateChange')`](js-apis-observer.md#observeroncallstatechange)。
+如需订阅通话状态请使用[observer.on('callStateChange')](js-apis-observer.md#observeroncallstatechange)。
 
 > **说明：**
 >
@@ -146,7 +146,7 @@ dialCall\(phoneNumber: string, options?: DialCallOptions\): Promise\<void\>
 | 参数名      |                 类型                | 必填 |                说明                    |
 | ----------- | ----------------------------------- | ---- | -------------------------------------- |
 | phoneNumber | string                              | 是   | 电话号码。                             |
-| options     | [DialCallOptions](#dialcalloptions9)| 否   | 通话参数，携带呼叫的其他配置信息。<br/>不填该参数则默认使用如下配置，参考[DialCallOptions](#dialcalloptions9)。<br/>- 帐户Id：卡槽1。 <br/>- 音视频类型：语音通话。 <br/>- 拨号场景：普通呼叫。 <br/>- 拨号类型：运营商通话。  |
+| options     | [DialCallOptions](#dialcalloptions9)| 否   | 通话参数，携带呼叫的其他配置信息。<br/>不填该参数则默认使用如下配置，参考[DialCallOptions](#dialcalloptions9)。<br/>- 账户Id：卡槽1。 <br/>- 音视频类型：语音通话。 <br/>- 拨号场景：普通呼叫。 <br/>- 拨号类型：运营商通话。  |
 
 **返回值：**
 
@@ -1753,6 +1753,8 @@ startDTMF\(callId: number, character: string\): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+
 **系统能力**：SystemCapability.Telephony.CallManager
 
 **参数：**
@@ -1774,6 +1776,7 @@ startDTMF\(callId: number, character: string\): Promise\<void\>
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 801      | Capability not supported.                    |
@@ -1818,6 +1821,7 @@ stopDTMF\(callId: number, callback: AsyncCallback\<void\>\): void
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 801      | Capability not supported.                    |
@@ -3760,6 +3764,7 @@ updateImsCallMode\(callId: number, mode: ImsCallMode, callback: AsyncCallback\<v
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
@@ -3810,6 +3815,7 @@ updateImsCallMode\(callId: number, mode: ImsCallMode\): Promise\<void\>
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
@@ -4836,9 +4842,9 @@ sendUssdResponse\(slotId: number, content: string\): void
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Operation failed. Cannot connect to service. |
-| 8300003  | System internal error.                       |
+| 8400001  | Invalid parameter value.                     |
+| 8400002  | Operation failed. Cannot connect to service. |
+| 8400003  | System internal error, system database write fail.  |
 
 **示例：**
 
@@ -4868,7 +4874,7 @@ function testSendUssdResponse() {
 
 |        名称              | 类型                               | 必填 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ----------------------------------------------------------------------------------------------- |
-| accountId <sup>8+</sup>  | number                             | 否   | 帐户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br/>。此接口为系统接口。                                   |
+| accountId <sup>8+</sup>  | number                             | 否   | 账户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br/>。此接口为系统接口。                                   |
 | videoState <sup>8+</sup> | [VideoStateType](#videostatetype7) | 否   | 视频状态类型。此接口为系统接口。                                                                  |
 | dialScene <sup>8+</sup>  | [DialScene](#dialscene8)           | 否   | 拨号场景。此接口为系统接口。                                                                      |
 | dialType <sup>8+</sup>   | [DialType](#dialtype8)             | 否   | 拨号类型。此接口为系统接口。                                                                      |
@@ -4881,13 +4887,14 @@ function testSendUssdResponse() {
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
-|        名称              | 类型                               | 必填 | 说明                                         |
-| ------------------------ | ---------------------------------- | ---- | ------------------------------------------- |
-| accountId <sup>9+</sup>  | number                             | 否   | 帐户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
-| videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | 否   | 视频状态类型。                               |
-| dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | 否   | 拨号场景。                                   |
-| dialType <sup>9+</sup>   | [DialType](#dialtype8)             | 否   | 拨号类型。                                   |
-| xCallType                | [xCallType](#xcalltype)            | 否   | XCALL类型。 <br>**起始版本:** 26.0.0         |
+|        名称              | 类型                               | 只读 | 可选 | 说明                                         |
+| ------------------------ | ---------------------------------- | ---- | ---- | ------------------------------------------- |
+| accountId <sup>9+</sup>  | number                             | 是   | 否   | 账户Id。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+| videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | 是   | 否   | 视频状态类型。                               |
+| dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | 是   | 否   | 拨号场景。                                   |
+| dialType <sup>9+</sup>   | [DialType](#dialtype8)             | 是   | 否   | 拨号类型。                                   |
+| extraParams <sup>14+</sup>   | Record\<string, Object\>       | 是   | 否   | 表示额外的呼叫参数。                          |
+| xCallType                | [xCallType](#xcalltype)            | 是   | 否   | XCALL类型。 <br>**起始版本:** 26.0.0         |
 
 
 ## ImsCallMode<sup>8+</sup>
@@ -5026,25 +5033,27 @@ IP多媒体系统调用模式。
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
-|      名称       | 类型                                     | 必填 | 说明           |
-| --------------- | ---------------------------------------- | ---- | -------------- |
-| accountNumber   | string                                   | 是   | 账号号码。       |
-| speakerphoneOn  | boolean                                  | 是   | 判断是否是扬声器接通电话，默认false。<br/>-true：是<br/>-false：否 |
-| accountId       | number                                   | 是   | 帐户Id。         |
-| videoState      | [VideoStateType](#videostatetype7)       | 是   | 视频状态类型。   |
-| startTime       | number                                   | 是   | 开始时间。       |
-| isEcc           | boolean                                  | 是   | 判断是否是Ecc，默认false。<br/>-true：是<br/>-false：否      |
-| callType        | [CallType](#calltype7)                   | 是   | 通话类型。       |
-| callId          | number                                   | 是   | 呼叫Id。         |
-| callState       | [DetailedCallState](#detailedcallstate7) | 是   | 详细呼叫状态。   |
-| conferenceState | [ConferenceState](#conferencestate7)     | 是   | 会议状态。       |
-| voipCallAttribute<sup>11+</sup> | [VoipCallAttribute](#voipcallattribute11)     | 否   | VoIP通话信息。       |
-| crsType<sup>11+</sup> | number                             | 是   | 视频彩振类型。|
-| originalCallType<sup>11+</sup> | number                    | 是   | 视频彩振原始呼叫类型。|
-| numberLocation<sup>12+</sup> | string | 否 | 号码归属地信息 |
-| numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 否 | 号码标记信息。 |
-| xCallType | [xCallType](#xcalltype) | 否 | XCALL类型。 <br>**起始版本:** 26.0.0|
-| isCustomAccessibility  | boolean              | 否 | 应用是否支持自定义无障碍能力，默认为false。<br>-true:支持<br>-false:不支持  <br>**起始版本:** 26.0.0|
+|      名称       | 类型                                     | 只读 | 可选| 说明           |
+| --------------- | ---------------------------------------- | ---- | ---- | -------------- |
+| accountNumber   | string                                   | 是   | 否   | 账号号码。       |
+| speakerphoneOn  | boolean                                  | 是   | 否   | 判断是否是扬声器接通电话，默认false。<br/>-true：是<br/>-false：否 |
+| accountId       | number                                   | 是   | 否   | 账户Id。         |
+| videoState      | [VideoStateType](#videostatetype7)       | 是   | 否   | 视频状态类型。   |
+| startTime       | number                                   | 是   | 否   | 开始时间。       |
+| isEcc           | boolean                                  | 是   | 否   | 判断是否是Ecc，默认false。<br/>-true：是<br/>-false：否      |
+| callType        | [CallType](#calltype7)                   | 是   | 否   | 通话类型。       |
+| callId          | number                                   | 是   | 否   | 呼叫Id。         |
+| callState       | [DetailedCallState](#detailedcallstate7) | 是   | 否   | 详细呼叫状态。   |
+| conferenceState | [ConferenceState](#conferencestate7)     | 是   | 否   | 会议状态。       |
+| voipCallAttribute<sup>11+</sup> | [VoipCallAttribute](#voipcallattribute11)     | 是   | 否   | VoIP通话信息。       |
+| crsType<sup>11+</sup> | number                             | 是   | 否   | 视频彩振类型。|
+| originalCallType<sup>11+</sup> | number                    | 是   | 否   | 视频彩振原始呼叫类型。|
+| numberLocation<sup>12+</sup> | string | 是   | 否 | 号码归属地信息 |
+| numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 是   | 否 | 号码标记信息。 |
+| extraParams <sup>14+</sup>   | Record\<string, Object\>       | 是   | 否   | 表示额外的呼叫参数。                          |
+| rttState <sup>22+</sup>   | [RttState](#rttstate22)      | 是   | 否   | rtt通话状态。                          |
+| xCallType | [xCallType](#xcalltype) | 是   | 否 | XCALL类型。 <br>**起始版本:** 26.0.0|
+| isCustomAccessibility  | boolean              | 是   | 否 | 应用是否支持自定义无障碍能力，默认为false。<br>-true:支持<br>-false:不支持  <br>**起始版本:** 26.0.0|
 
 ## VoipCallAttribute<sup>11+</sup>
 
@@ -5109,10 +5118,10 @@ VoIP通话信息。
 | 名称                                   | 值   | 说明     |
 | ------------------------------------- | ---- | --------|
 | TYPE_VOICE                            | 0    | 语音状态。 |
+| TYPE_VIDEO                            | 1    | Video state. |
 | TYPE_VIDEO_SEND_ONLY<sup>11+</sup>    | 1    | 视频通话只发送数据状态。 |
 | TYPE_VIDEO_RECEIVE_ONLY<sup>11+</sup> | 2    | 视频通话只接收数据状态。 |
-| TYPE_VIDEO                            | 3    | 视频状态。 |
-| TYPE_VIDEO_BIDIRECTIONAL<sup>11+</sup>| 4    | 视频通话接收发送数据状态。|
+| TYPE_VIDEO_BIDIRECTIONAL<sup>11+</sup>| 3    | 视频通话接收发送数据状态。|
 
 ## DetailedCallState<sup>7+</sup>
 
@@ -5130,9 +5139,9 @@ VoIP通话信息。
 | CALL_STATUS_ALERTING      | 3    | 电话振铃状态。   |
 | CALL_STATUS_INCOMING      | 4    | 呼叫传入状态。   |
 | CALL_STATUS_WAITING       | 5    | 呼叫等待状态。   |
-| CALL_STATUS_DISCONNECTED  | 6    | 呼叫状态已断开。 |
-| CALL_STATUS_DISCONNECTING | 7    | 呼叫状态断开。   |
-| CALL_STATUS_IDLE          | 8    | 呼叫状态空闲。   |
+| CALL_STATUS_DISCONNECTED  | 6    | 电话会议已断开。 |
+| CALL_STATUS_DISCONNECTING | 7    | 电话会议断开。   |
+| CALL_STATUS_IDLE          | 8    | 电话会议空闲。   |
 
 ## CallRestrictionInfo<sup>8+</sup>
 
@@ -5219,7 +5228,7 @@ VoIP通话信息。
 | DIAL_CARRIER_TYPE    | 0    | 载波拨号类型。     |
 | DIAL_VOICE_MAIL_TYPE | 1    | 语音邮件拨号类型。 |
 | DIAL_OTT_TYPE        | 2    | OTT拨号类型。      |
-| DIAL_XCALL_TYPE | 3 | XCALL拨号类型。 <br>**起始版本:** 26.0.0|
+| DIAL_XCALL_TYPE | 3 | XCALL通话。 <br>**起始版本:** 26.0.0|
 
 ## RejectMessageOptions<sup>7+</sup>
 
@@ -6189,6 +6198,21 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 | MARK_TYPE_OTHERS | 9 | 其他。 |
 | MARK_TYPE_YELLOW_PAGE | 10 | 黄页。 |
 | MARK_TYPE_ENTERPRISE<sup>14+</sup> | 11 | 企业联系人。 |
+
+## RttState<sup>22+</sup>
+
+rtt通话状态。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+| 名称                           | 值     | 说明     |
+| ------------------------------ | ------ | --------|
+| RTT_STATE_NO | 0      | rtt关闭。 |
+| RTT_STATE_YES | 1      | rtt打开。 |
+| RTT_STATE_REMOTE_TTY | 2      | tty模式。 |
+| RTT_STATE_REMOTE_NOT_SUPPORT | 3      | 对端不支持rtt。 |
 
 ## XCallType
 

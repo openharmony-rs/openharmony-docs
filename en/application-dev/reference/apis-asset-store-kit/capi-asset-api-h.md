@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=c780ec602b8a429e3e53fe261f8afc5ed18a2559 translatedAt=2026-11-06T11:52:45.583Z pushedAt=2026-11-09T11:55:33.607Z nl=1 -->
 
 ## Overview
 
@@ -27,7 +28,7 @@ Defines the functions for accessing assets.
 
 | Name| Description|
 | -- | -- |
-| [int32_t OH_Asset_Add(const Asset_Attr *attributes, uint32_t attrCnt)](#oh_asset_add) | Adds an asset.<br>To set the [Asset_Tag](capi-asset-type-h.md#asset_tag).**ASSET_TAG_IS_PERSISTENT** attribute, request the **ohos.permission.STORE_PERSISTENT_DATA** permission.|
+| [int32_t OH_Asset_Add(const Asset_Attr *attributes, uint32_t attrCnt)](#oh_asset_add) | Adds a critical asset.<br>To set the [Asset_Tag](capi-asset-type-h.md#asset_tag).ASSET_TAG_IS_PERSISTENT attribute, the ohos.permission.STORE_PERSISTENT_DATA permission is required. For details about how to request the permission, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md). |
 | [int32_t OH_Asset_Remove(const Asset_Attr *query, uint32_t queryCnt)](#oh_asset_remove) | Removes one or more assets.|
 | [int32_t OH_Asset_Update(const Asset_Attr *query, uint32_t queryCnt, const Asset_Attr *attributesToUpdate, uint32_t updateCnt)](#oh_asset_update) | Updates an asset.|
 | [int32_t OH_Asset_PreQuery(const Asset_Attr *query, uint32_t queryCnt, Asset_Blob *challenge)](#oh_asset_prequery) | Performs preprocessing for the asset query. This function is used when user authentication is required for the access to the asset.|
@@ -50,7 +51,7 @@ int32_t OH_Asset_Add(const Asset_Attr *attributes, uint32_t attrCnt)
 
 Adds an asset.
 
-To set the [Asset_Tag](capi-asset-type-h.md#asset_tag).**ASSET_TAG_IS_PERSISTENT** attribute, request the **ohos.permission.STORE_PERSISTENT_DATA** permission.
+To set the [Asset_Tag](capi-asset-type-h.md#asset_tag).ASSET_TAG_IS_PERSISTENT attribute, you need to apply for the ohos.permission.STORE_PERSISTENT_DATA permission. For details about how to apply, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
 **Since**: 11
 
@@ -66,7 +67,7 @@ To set the [Asset_Tag](capi-asset-type-h.md#asset_tag).**ASSET_TAG_IS_PERSISTENT
 
 | Type| Description|
 | -- | -- |
-| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: Operation succeeded.<br>     ASSET_PERMISSION_DENIED = 201: The caller is not a system application.<br>     ASSET_INVALID_ARGUMENT = 401: invalid parameter. Possible causes:<br>         1. Mandatory parameters are left unspecified.<br>         2. The parameter type is incorrect.<br>         3. Parameter verification failed.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: The asset service is unavailable.<br>     ASSET_DUPLICATED = 24000003: The asset already exists.<br>     ASSET_STATUS_MISMATCH = 24000005: The screen lock status is incorrect.<br>     ASSET_OUT_OF_MEMORY = 24000006: The system memory is insufficient.<br>     ASSET_DATA_CORRUPTED = 24000007: The asset is corrupted.<br>     ASSET_DATABASE_ERROR = 24000008: The database operation failed.<br>     ASSET_CRYPTO_ERROR = 24000009: The cryptographic operation failed.<br>     ASSET_IPC_ERROR = 24000010: The IPC failed.<br>     ASSET_BMS_ERROR = 24000011: The bundle manager service is abnormal.<br>     ASSET_ACCOUNT_ERROR = 24000012: The account service is abnormal.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: The access token service is abnormal.<br>     ASSET_FILE_OPERATION_ERROR = 24000014: The file operation failed.<br>     ASSET_GET_SYSTEM_TIME_ERROR = 24000015: Failed to obtain the system time.|
+| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: operation succeeded.<br>     ASSET_PERMISSION_DENIED = 201: permission validation failed, the application has no permission to use this API and requires application for permission.<br>     ASSET_INVALID_ARGUMENT = 401: parameter error. Possible causes:<br>         1. A required parameter is not specified.<br>         2. The parameter type is incorrect.<br>         3. Parameter validation failed.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: the critical asset service is unavailable.<br>     ASSET_DUPLICATED = 24000003: the critical asset already exists.<br>     ASSET_STATUS_MISMATCH = 24000005: the lock screen state does not match.<br>     ASSET_OUT_OF_MEMORY = 24000006: insufficient system memory.<br>     ASSET_DATA_CORRUPTED = 24000007: the critical asset is corrupted.<br>     ASSET_DATABASE_ERROR = 24000008: database operation failed.<br>     ASSET_CRYPTO_ERROR = 24000009: algorithm library operation failed.<br>     ASSET_IPC_ERROR = 24000010: process communication error.<br>     ASSET_BMS_ERROR = 24000011: package management service exception.<br>     ASSET_ACCOUNT_ERROR = 24000012: account system service exception.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: access control service exception.<br>     ASSET_FILE_OPERATION_ERROR = 24000014: file operation failed.<br>     ASSET_GET_SYSTEM_TIME_ERROR = 24000015: failed to obtain system time. |
 
 ### OH_Asset_Remove()
 
@@ -92,12 +93,12 @@ Removes one or more assets.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: Operation succeeded.<br>     ASSET_INVALID_ARGUMENT = 401: invalid parameter. Possible causes:<br>         1. The parameter type is incorrect.<br>         2. Parameter verification failed.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: The asset service is unavailable.<br>     ASSET_NOT_FOUND = 24000002: The asset is not found.<br>     ASSET_OUT_OF_MEMORY = 24000006: The system memory is insufficient.<br>     ASSET_DATA_CORRUPTED = 24000007: The asset is corrupted.<br>     ASSET_DATABASE_ERROR = 24000008: The database operation failed.<br>     ASSET_IPC_ERROR = 24000010: The IPC failed.<br>     ASSET_BMS_ERROR = 24000011: The bundle manager service is abnormal.<br>     ASSET_ACCOUNT_ERROR = 24000012: The account service is abnormal.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: The access token service is abnormal.<br>     ASSET_GET_SYSTEM_TIME_ERROR = 24000015: Failed to obtain the system time.|
+| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: operation succeeded.<br>     ASSET_INVALID_ARGUMENT = 401: parameter error. Possible cause:<br>         1. Required parameter not specified.<br>         2. Parameter type error.<br>         3. Parameter validation failed.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: critical asset service unavailable.<br>     ASSET_NOT_FOUND = 24000002: critical asset not found.<br>     ASSET_OUT_OF_MEMORY = 24000006: insufficient system memory.<br>     ASSET_DATA_CORRUPTED = 24000007: critical asset corrupted.<br>     ASSET_DATABASE_ERROR = 24000008: database operation failed.<br>     ASSET_IPC_ERROR = 24000010: process communication error.<br>     ASSET_BMS_ERROR = 24000011: package management service exception.<br>     ASSET_ACCOUNT_ERROR = 24000012: account system service exception.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: access control service exception.<br>     ASSET_GET_SYSTEM_TIME_ERROR = 24000015: failed to obtain system time. |
 
 ### OH_Asset_Update()
 
 ```c
-int32_t OH_Asset_Update(const Asset_Attr *query, uint32_t queryCnt,const Asset_Attr *attributesToUpdate, uint32_t updateCnt)
+int32_t OH_Asset_Update(const Asset_Attr *query, uint32_t queryCnt, const Asset_Attr *attributesToUpdate, uint32_t updateCnt)
 ```
 
 **Description**
@@ -120,7 +121,7 @@ Updates an asset.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: Operation succeeded.<br>     ASSET_INVALID_ARGUMENT = 401: invalid parameter. Possible causes:<br>         1. Mandatory parameters are left unspecified.<br>         2. The parameter type is incorrect.<br>         3. Parameter verification failed.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: The asset service is unavailable.<br>     ASSET_NOT_FOUND = 24000002: The asset is not found.<br>     ASSET_STATUS_MISMATCH = 24000005: The screen lock status is incorrect.<br>     ASSET_OUT_OF_MEMORY = 24000006: The system memory is insufficient.<br>     ASSET_DATA_CORRUPTED = 24000007: The asset is corrupted.<br>     ASSET_DATABASE_ERROR = 24000008: The database operation failed.<br>     ASSET_CRYPTO_ERROR = 24000009: The cryptographic operation failed.<br>     ASSET_IPC_ERROR = 24000010: The IPC failed.<br>     ASSET_BMS_ERROR = 24000011: The bundle manager service is abnormal.<br>     ASSET_ACCOUNT_ERROR = 24000012: The account service is abnormal.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: The access token service is abnormal.<br>     ASSET_GET_SYSTEM_TIME_ERROR = 24000015: Failed to obtain the system time.|
+| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: operation succeeded.<br>     ASSET_INVALID_ARGUMENT = 401: parameter error. Possible cause:<br>         1. Required parameter not specified.<br>         2. Parameter type error.<br>         3. Parameter validation failed.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: critical asset service unavailable.<br>     ASSET_NOT_FOUND = 24000002: critical asset not found.<br>     ASSET_STATUS_MISMATCH = 24000005: lock screen state mismatch.<br>     ASSET_OUT_OF_MEMORY = 24000006: insufficient system memory.<br>     ASSET_DATA_CORRUPTED = 24000007: critical asset corrupted.<br>     ASSET_DATABASE_ERROR = 24000008: database operation failed.<br>     ASSET_CRYPTO_ERROR = 24000009: algorithm library operation failed.<br>     ASSET_IPC_ERROR = 24000010: process communication error.<br>     ASSET_BMS_ERROR = 24000011: package management service exception.<br>     ASSET_ACCOUNT_ERROR = 24000012: account system service exception.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: access control service exception.<br>     ASSET_GET_SYSTEM_TIME_ERROR = 24000015: obtain system time failure. |
 
 ### OH_Asset_PreQuery()
 
@@ -147,7 +148,7 @@ Performs preprocessing for the asset query. This API is used when user authentic
 
 | Type| Description|
 | -- | -- |
-| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: Operation succeeded.<br>     ASSET_INVALID_ARGUMENT = 401: invalid parameter. Possible causes:<br>         1. The parameter type is incorrect.<br>         2. Parameter verification failed.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: The asset service is unavailable.<br>     ASSET_NOT_FOUND = 24000002: The asset is not found.<br>     ASSET_STATUS_MISMATCH = 24000005: The screen lock status is incorrect.<br>     ASSET_OUT_OF_MEMORY = 24000006: The system memory is insufficient.<br>     ASSET_DATA_CORRUPTED = 24000007: The asset is corrupted.<br>     ASSET_DATABASE_ERROR = 24000008: The database operation failed.<br>     ASSET_CRYPTO_ERROR = 24000009: The cryptographic operation failed.<br>     ASSET_IPC_ERROR = 24000010: The IPC failed.<br>     ASSET_BMS_ERROR = 24000011: The bundle manager service is abnormal.<br>     ASSET_ACCOUNT_ERROR = 24000012: The account service is abnormal.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: The access token service is abnormal.<br>     ASSET_LIMIT_EXCEEDED = 24000016: The number of cached assets reaches the limit.<br>     ASSET_UNSUPPORTED = 24000017: This function is not supported.|
+| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: operation succeeded.<br>     ASSET_INVALID_ARGUMENT = 401: parameter error. Possible cause:<br>         1. Required parameter not specified.<br>         2. Parameter type error.<br>         3. Parameter validation failed.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: critical asset service unavailable.<br>     ASSET_NOT_FOUND = 24000002: critical asset not found.<br>     ASSET_STATUS_MISMATCH = 24000005: lock screen state mismatch.<br>     ASSET_OUT_OF_MEMORY = 24000006: insufficient system memory.<br>     ASSET_DATA_CORRUPTED = 24000007: critical asset corrupted.<br>     ASSET_DATABASE_ERROR = 24000008: database operation failed.<br>     ASSET_CRYPTO_ERROR = 24000009: algorithm library operation failed.<br>     ASSET_IPC_ERROR = 24000010: process communication error.<br>     ASSET_BMS_ERROR = 24000011: package management service exception.<br>     ASSET_ACCOUNT_ERROR = 24000012: account system service exception.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: access control service exception.<br>     ASSET_LIMIT_EXCEEDED = 24000016: cache count limit exceeded.<br>     ASSET_UNSUPPORTED = 24000017: this sub-feature is not supported. |
 
 ### OH_Asset_Query()
 
@@ -174,7 +175,7 @@ Queries one or more assets.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: Operation succeeded.<br>     ASSET_INVALID_ARGUMENT = 401: invalid parameter. Possible causes:<br>         1. The parameter type is incorrect.<br>         2. Parameter verification failed.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: The asset service is unavailable.<br>     ASSET_NOT_FOUND = 24000002: The asset is not found.<br>     ASSET_ACCESS_DENIED = 24000004: Access to the asset is denied.<br>     ASSET_STATUS_MISMATCH = 24000005: The screen lock status is incorrect.<br>     ASSET_OUT_OF_MEMORY = 24000006: The system memory is insufficient.<br>     ASSET_DATA_CORRUPTED = 24000007: The asset is corrupted.<br>     ASSET_DATABASE_ERROR = 24000008: The database operation failed.<br>     ASSET_CRYPTO_ERROR = 24000009: The cryptographic operation failed.<br>     ASSET_IPC_ERROR = 24000010: The IPC failed.<br>     ASSET_BMS_ERROR = 24000011: The bundle manager service is abnormal.<br>     ASSET_ACCOUNT_ERROR = 24000012: The account service is abnormal.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: The access token service is abnormal.<br>     ASSET_UNSUPPORTED = 24000017: This function is not supported.|
+| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: operation succeeded.<br>     ASSET_INVALID_ARGUMENT = 401: parameter error. Possible cause:<br>         1. Required parameter not specified.<br>         2. Parameter type error.<br>         3. Parameter validation failed.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: critical asset service unavailable.<br>     ASSET_NOT_FOUND = 24000002: critical asset not found.<br>     ASSET_ACCESS_DENIED = 24000004: access denied.<br>     ASSET_STATUS_MISMATCH = 24000005: lock screen state mismatch.<br>     ASSET_OUT_OF_MEMORY = 24000006: system memory insufficient.<br>     ASSET_DATA_CORRUPTED = 24000007: critical asset corrupted.<br>     ASSET_DATABASE_ERROR = 24000008: database operation failed.<br>     ASSET_CRYPTO_ERROR = 24000009: algorithm library operation failed.<br>     ASSET_IPC_ERROR = 24000010: process communication error.<br>     ASSET_BMS_ERROR = 24000011: package management service exception.<br>     ASSET_ACCOUNT_ERROR = 24000012: account system service exception.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: access control service exception.<br>     ASSET_UNSUPPORTED = 24000017: this sub-feature is not supported. |
 
 ### OH_Asset_PostQuery()
 
@@ -200,7 +201,7 @@ Performs postprocessing for the asset query. This API is used when user authenti
 
 | Type| Description|
 | -- | -- |
-| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: Operation succeeded.<br>     ASSET_INVALID_ARGUMENT = 401: invalid parameter. Possible causes:<br>         1. Mandatory parameters are left unspecified.<br>         2. The parameter type is incorrect.<br>         3. Parameter verification failed.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: The asset service is unavailable.<br>     ASSET_OUT_OF_MEMORY = 24000006: The system memory is insufficient.<br>     ASSET_IPC_ERROR = 24000010: The IPC failed.<br>     ASSET_BMS_ERROR = 24000011: The bundle manager service is abnormal.<br>     ASSET_ACCOUNT_ERROR = 24000012: The account service is abnormal.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: The access token service is abnormal.|
+| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: operation succeeded.<br>     ASSET_INVALID_ARGUMENT = 401: parameter error. Possible cause:<br>         1. A required parameter is not specified.<br>         2. The parameter type is incorrect.<br>         3. Parameter validation failed.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: the critical asset service is unavailable.<br>     ASSET_OUT_OF_MEMORY = 24000006: insufficient system memory.<br>     ASSET_IPC_ERROR = 24000010: process communication error.<br>     ASSET_BMS_ERROR = 24000011: package management service exception.<br>     ASSET_ACCOUNT_ERROR = 24000012: account system service exception.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: access control service exception. |
 
 ### OH_Asset_QuerySyncResult()
 
@@ -227,7 +228,7 @@ Queries the sync result of an asset.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: Operation succeeded.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: The asset service is unavailable.<br>     ASSET_OUT_OF_MEMORY = 24000006: The system memory is insufficient.<br>     ASSET_IPC_ERROR = 24000010: The IPC failed.<br>     ASSET_BMS_ERROR = 24000011: The bundle manager service is abnormal.<br>     ASSET_ACCOUNT_ERROR = 24000012: The account service is abnormal.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: The access token service is abnormal.<br>     ASSET_FILE_OPERATION_ERROR = 24000014: The file operation failed.<br>     ASSET_PARAM_VERIFICATION_FAILED = 24000018: Parameter verification failed.|
+| int32_t | [Asset_ResultCode](capi-asset-type-h.md#asset_resultcode):<br>     ASSET_SUCCESS = 0: operation succeeded.<br>     ASSET_SERVICE_UNAVAILABLE = 24000001: critical asset service unavailable.<br>     ASSET_OUT_OF_MEMORY = 24000006: insufficient system memory.<br>     ASSET_IPC_ERROR = 24000010: process communication error.<br>     ASSET_BMS_ERROR = 24000011: package management service exception.<br>     ASSET_ACCOUNT_ERROR = 24000012: account system service exception.<br>     ASSET_ACCESS_TOKEN_ERROR = 24000013: access control service exception.<br>     ASSET_FILE_OPERATION_ERROR = 24000014: file operation failed.<br>     ASSET_PARAM_VERIFICATION_FAILED = 24000018: parameter validation failed. |
 
 ### OH_Asset_ParseAttr()
 
@@ -253,7 +254,7 @@ Parses the query result and obtains the specified attribute.
 
 | Type| Description|
 | -- | -- |
-| [Asset_Attr](capi-assettype-asset-attr.md) | Returns **Asset_Attr** obtained if the operation is successful; returns **NULL** otherwise. The attribute does not need to be released by the service.|
+| [Asset_Attr](capi-assettype-asset-attr.md)* | If the operation succeeds, the attribute is returned in the form of Asset_Attr, which does not need to be released by the caller; otherwise, NULL is returned. |
 
 ### OH_Asset_FreeBlob()
 
@@ -292,3 +293,5 @@ Releases the memory occupied by the query result.
 | Parameter| Description|
 | -- | -- |
 | [Asset_ResultSet](capi-assettype-asset-resultset.md) *resultSet | Query result returned by [OH_Asset_Query](#oh_asset_query).|
+
+

@@ -43,7 +43,7 @@ connect(deviceId: string): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
@@ -57,12 +57,12 @@ connect(deviceId: string): void
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
-|801 | Capability not supported.          |
+|801 | Capability not supported. Only can be called on phone, tablet, and 2in1 devices. Failed to call the API when the short-range chip is not inserted on 2in1 device.         |
 |2900003 | Bluetooth disabled.                 |
-|2900004 | Profile not supported.                |
+|2900004 | Remote Device profile not supported.               |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 try {
@@ -88,7 +88,7 @@ disconnect(deviceId: string): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
@@ -109,7 +109,7 @@ disconnect(deviceId: string): void
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 try {
@@ -137,7 +137,7 @@ setTethering(enable: boolean): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
@@ -158,7 +158,7 @@ setTethering(enable: boolean): void
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 try {

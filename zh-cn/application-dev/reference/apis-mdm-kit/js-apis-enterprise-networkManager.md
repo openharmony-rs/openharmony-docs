@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供设备网络管理能力，包括查询设备IP地址、MAC地址信息、管理网络接口状态、配置网络全局代理、管理防火墙规则和域名过滤规则、控制移动数据网络、管理APN配置、配置以太网网络等。适用于企业IT管理员对设备网络进行集中管理和安全管控，帮助企业实现网络访问策略统一管理、防止网络攻击和数据泄露、降低网络管理成本。
+本模块提供设备网络管理能力，包括查询设备IP地址、MAC地址信息、管理网络接口状态、配置网络全局代理、管理防火墙规则和域名过滤规则、控制移动数据网络、管理APN配置、配置以太网网络、查询共享路径信息等。适用于企业IT管理员对设备网络进行集中管理和安全管控，帮助企业实现网络访问策略统一管理、防止网络攻击和数据泄露、降低网络管理成本。
 
 > **说明：**
 >
@@ -1547,6 +1547,50 @@ try {
 }
 ```
 
+## networkManager.getSharedList
+
+getSharedList(): Array\<[PathSharedData](#pathshareddata)>
+
+获取设备上所有的共享路径列表。适用于企业管理场景，例如审计设备上的共享文件夹、排查共享路径安全风险、帮助企业掌握设备共享资源状态，防止敏感数据通过共享路径泄露。如果设备上不存在共享路径，返回空数组。如果存在多用户，仅返回当前调用者所在用户的共享路径。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Array\<[PathSharedData](#pathshareddata)> | 返回共享路径信息数组。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { networkManager } from '@kit.MDMKit';
+
+try {
+  let sharedList: Array<networkManager.PathSharedData> = networkManager.getSharedList();
+  console.info(`Succeeded in getting shared list, result : ${JSON.stringify(sharedList)}`);
+} catch (err) {
+  console.error(`Failed to get shared list. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## FirewallRule
 
 防火墙过滤规则。
@@ -1561,8 +1605,8 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 | 名称      | 类型                    | 只读 | 可选 | 说明                                                         |
 | --------- | ----------------------- | ---- | ---- |------------------------------------------------------------ |
-| srcAddr   | string                  | 否   | 是 |IP源地址。支持IP段，例如：192.168.0.0/22或者192.168.1.100-192.168.1.200 |
-| destAddr  | string                  | 否   | 是 |IP目标地址。支持IP段，例如：192.168.0.0/22或者192.168.1.100-192.168.1.200 |
+| srcAddr   | string                  | 否   | 是 |IP源地址。支持IP段，例如：192.168.0.0/22或者192.168.1.100-192.168.1.200。支持所有的IP地址，IPv4设置为0.0.0.0/0，IPv6设置为::/0。 |
+| destAddr  | string                  | 否   | 是 |IP目标地址。支持IP段，例如：192.168.0.0/22或者192.168.1.100-192.168.1.200。支持所有的IP地址，IPv4设置为0.0.0.0/0，IPv6设置为::/0。 |
 | srcPort   | string                  | 否   | 是 |源端口。                                                     |
 | destPort  | string                  | 否   | 是 |目标端口。                                                   |
 | appUid    | string                  | 否   | 是 |应用uid，可以通过接口[bundleManager.getInstalledBundleList](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)获取bundleInfo.appInfo.uid。                                                    |
@@ -1676,4 +1720,19 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 | ---- | ---- | -------------- |
 | STATIC  | 0    | 以太网连接静态配置网络信息，设置为该模式时，需要同步设置IP地址、子网掩码、默认网关、DNS服务器。 |
 | DHCP  | 1    | 以太网连接动态配置网络信息，设置为该模式时，由网络中的DHCP服务器自动分配IP地址等信息。  |
+
+## PathSharedData
+
+共享路径数据。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| shareName | string | 否 | 否 | 共享路径名称。 |
+| shareUri | string | 否 | 否 | 共享路径的URI。路径格式如：file://docs/storage/User/currentUser/目录。 |
 

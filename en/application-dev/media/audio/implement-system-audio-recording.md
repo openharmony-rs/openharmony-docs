@@ -5,7 +5,7 @@
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=236b51147301be1af85b0564fb6c65b78e2ee120 translatedAt=2026-09-18T03:28:36.957Z pushedAt=2026-09-18T10:58:51.455Z -->
+<!-- md-trans-meta sourceCommit=236b51147301be1af85b0564fb6c65b78e2ee120 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 26.0.0, Audio Kit supports recording system audio using AudioCapturer (ArkTS) or OH_AudioCapturer (C/C++). This topic describes how to implement this feature.
 
@@ -39,9 +39,9 @@ If the user selects **Allow**, the asynchronous callback returns a successful st
 
 The start API is a non-blocking API. While waiting for the user to operate the dialog box and for the system to return the asynchronous callback, the app must not block the current thread through loop waiting, synchronous lock waiting, or other means. The C API start API returning `AUDIOSTREAM_SUCCESS` only indicates that the start request was submitted successfully, and cannot be used as the final authorization result.
 
-<!--Del--> <!--DelEnd-->
+<!--Del-->
 
-<!--Del--> <!--DelEnd-->
+<!--DelEnd-->
 
 ### Development Steps and Notes (ArkTS)
 
@@ -380,7 +380,7 @@ The following C/C++ examples are code snippets that demonstrate the complete lif
    >
    > - `OH_AudioCapturer_RequestPlaybackCaptureStart()` returning `AUDIOSTREAM_SUCCESS` only indicates that the start request is submitted successfully. The internal recording start is successful only when the asynchronous callback returns `AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_SUCCESS`.
    > - If the user rejects the authorization or the system fails to display the authorization dialog box, the callback returns `AUDIOSTREAM_PLAYBACKCAPTURE_START_STATE_NOT_AUTHORIZED`.
-
+   
 4. Stop and release the internal recording capturer.
 
    After the service ends, call [OH_AudioCapturer_Stop()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_stop) to stop capture, and call [OH_AudioCapturer_Release()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_release) to release resources.

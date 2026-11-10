@@ -6,7 +6,7 @@
 <!--Designer: @milkbread123-->
 <!--Tester: @yufeifei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=3120a9eb545cca6ffdcd89f28e2434c3ac8d5a79 translatedAt=2026-07-30T03:03:20.182Z pushedAt=2026-07-30T12:34:35.723Z -->
+<!-- md-trans-meta sourceCommit=93b5325f5b55e75c4a74e888a26d2e38ecc1f921 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 During application development, you can log from your application's key code. Through logs, you can find out how the application is running. For example, the logs can tell you whether the application is running properly, and whether the code execution sequence and logic branch are correct.
 
@@ -63,7 +63,7 @@ HiLog defines five log levels: DEBUG, INFO, WARN, ERROR, and FATAL. It provides 
   | d/i | Prints decimal integer types. | 123 |
   | s | Prints char\* type. | "this is a hilog" |
 
-Multiple parameters can be set in a format string. For example, in the format string "%s World", "%s" is a variable argument identifier of the string type, and its specific value is defined in args. For details about format specifiers, see [printf](https://man7.org/linux/man-pages/man3/printf.3.html).
+  Multiple parameters can be set in a format string. For example, in the format string "%s World", "%s" is a variable argument identifier of the string type, and its specific value is defined in args. For details about format specifiers, see [printf](https://man7.org/linux/man-pages/man3/printf.3.html).
 
   The debug application does not have a privacy control mechanism. Parameters can be displayed in plaintext when any of the preceding private flags is used to print logs.
 
@@ -101,7 +101,7 @@ The maximum size of a log file is 4096 bytes. Excess content will be discarded.
    ```c++
    #undef LOG_DOMAIN
    #undef LOG_TAG
-   #define LOG_DOMAIN 0x3200 // Global domain, which identifies the service domain.
+   #define LOG_DOMAIN 0x3200  // Global domain, which identifies the service domain.
    #define LOG_TAG "MY_TAG"   // Global tag, which identifies the module log tag.
    ```
 
@@ -122,14 +122,12 @@ The maximum size of a log file is 4096 bytes. Excess content will be discarded.
 4. The output is as follows:
 
 <!--RP2-->
-
    ```txt
    01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              I     Failed to visit path.
    01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              E     this is an error level log
    01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              I     this is an another info level log
    01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              E     this is an another error level log
    ```
-
 <!--RP2End-->
 
 ### Registering a Log Callback
@@ -137,7 +135,7 @@ The maximum size of a log file is 4096 bytes. Excess content will be discarded.
 > **NOTE**
 >
 > 1. Do not recursively call HiLog APIs in the callback function. Otherwise, circular calls may occur.
->
+> 
 > 2. A process needs to register the callback function only once. If the callback function is registered multiple times, the last registered callback function takes effect.
 
 ```c++

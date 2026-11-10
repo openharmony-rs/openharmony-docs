@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "How to collect and parse JSVM traces with HiSmartPerf, including enabling web.debug.rcs, capturing traces with hitrace, and filtering RCS_-prefixed events by categories such as compile, runtime, and builtin."
+keywords: [HiSmartPerf, JSVM trace, hitrace, web.debug.rcs, RCS prefix, trace points, performance optimization]
+doctype: guide
+status: active
+---
+
 # Using HiSmartPerf to Collect JSVM Trace
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.340Z nl=1 -->
 
 ## Overview
 

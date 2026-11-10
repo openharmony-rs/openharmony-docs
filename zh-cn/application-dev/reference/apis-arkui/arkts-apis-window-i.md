@@ -293,8 +293,8 @@
 
 1. 应用通过[setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11)设置窗口尺寸限制。
 2. 应用在[startAbility](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)拉起窗口时通过[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定窗口尺寸限制（API version 17开始支持）。
-3. 应用在[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置windowLimits。
-4. 默认系统限制（基于不同产品和窗口类型，其windowLimits系统默认限制存在差异）。
+3. 应用在[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置WindowLimits。
+4. 默认系统限制（基于不同产品和窗口类型，其WindowLimits系统默认限制存在差异）。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -307,14 +307,15 @@
 > - 默认值为0，表示属性不发生变化。
 > - 可生效范围下限值：系统限定的最小高度/宽度。
 > - 可生效范围上限值：系统限定的最大高度/宽度。
+> - 当窗口大于系统最大值或小于最小值时会自动变为系统规定的最大值和最小值。
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                          |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | 否   | 是   | 窗口的最大宽度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
-| maxHeight | number | 否   | 是   | 窗口的最大高度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
-| minWidth  | number | 否   | 是   | 窗口的最小宽度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
-| minHeight | number | 否   | 是   | 窗口的最小高度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
-| pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。 |
+| maxWidth  | number | 否   | 是   | 窗口的最大宽度，默认单位为px。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| maxHeight | number | 否   | 是   | 窗口的最大高度，默认单位为px。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| minWidth  | number | 否   | 是   | 窗口的最小宽度，默认单位为px。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| minHeight | number | 否   | 是   | 窗口的最小高度，默认单位为px。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可设置为px或vp。 |
 
 ## TitleButtonRect<sup>11+</sup>
 
@@ -543,8 +544,8 @@
 | animationParams             | [StartAnimationParams](arkts-apis-window-i.md#startanimationparams20)                 | 否   | 是   | 启动动画参数配置。默认值为undefined，若不配置将保持系统默认动效。 |
 | needAnimation<sup>23+</sup> | boolean | 否 | 是 | 是否启用窗口创建动效。<br>传入true时，跟随系统默认动效。传入false时，表示关闭窗口创建动效，仅在[自由窗口状态](../../windowmanager/window-terminology.md#freeform-window自由窗口)的情况下生效。<br>此参数不填时，默认为undefined，跟随系统默认动效。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 | minimizeOnStart| boolean | 否 | 是 | 窗口是否以最小化状态启动。<br>true表示当前窗口以最小化状态启动，false表示窗口启动到前台。默认值为false。<br>仅在同应用间传递参数生效；如果拉起的主窗口已经在前台，传true和false都不生效不报错；如果拉起的主窗口已经在后台，传true不生效不报错，传false生效；如果主窗首次启动，传true和false都生效。<br> **设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
-| excludeFromDock| boolean | 否 | 是 | 是否屏蔽Dock栏图标及预览窗。<br>true表示当前窗口屏蔽Dock栏图标及预览窗，false表示窗口正常显示Dock栏图标及预览窗。默认值为undefined，不改变Dock栏图标及预览窗的显示。<br>仅在同应用间传递参数生效；需要被拉起方添加应用图标到状态栏，参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/statusbar-extension-guide)；被拉起的主窗在前台时设置无效。<br> **设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
-| excludeFromRecent| boolean | 否 | 是 | 是否屏蔽多任务视图预览窗。<br>true表示当前窗口屏蔽多任务视图预览窗，false表示窗口正常显示多任务视图预览窗。默认值为undefined，不改变多任务视图预览窗的显示。<br>仅在同应用间传递参数生效；需要被拉起方添加应用图标到状态栏，参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/statusbar-extension-guide)；被拉起的主窗在前台时设置无效。<br>**设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
+| excludeFromDock| boolean | 否 | 是 | 是否屏蔽Dock栏图标及预览窗。<br>true表示当前窗口屏蔽Dock栏图标及预览窗，false表示窗口正常显示Dock栏图标及预览窗。默认值为undefined，不改变Dock栏图标及预览窗的显示。<br>仅在同应用间传递参数生效；需要被拉起方添加应用图标到状态栏；被拉起的主窗在前台时设置无效。<br> **设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
+| excludeFromRecent| boolean | 否 | 是 | 是否屏蔽多任务视图预览窗。<br>true表示当前窗口屏蔽多任务视图预览窗，false表示窗口正常显示多任务视图预览窗。默认值为undefined，不改变多任务视图预览窗的显示。<br>仅在同应用间传递参数生效；需要被拉起方添加应用图标到状态栏；被拉起的主窗在前台时设置无效。<br>**设备行为差异：** 该参数在PC/2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，不生效不报错。<br> **起始版本：** 26.0.1 <br> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## Callback<sup>15+</sup>
 
@@ -630,7 +631,7 @@ Callback<T, V = void> {
 | ---------- | ---- | ---- | ---- | ----------- |
 | title<sup>11+</sup>    | string | 否 | 否 | 子窗口标题。标题显示区域最右端不超过系统三键区域最左端，超过部分以省略号表示。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | decorEnabled<sup>11+</sup> | boolean | 否 | 否 | 子窗口是否显示标题栏。true表示子窗口显示标题栏，false表示子窗口不显示标题栏。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
-| isModal<sup>12+</sup>    | boolean | 否 | 是 | 子窗口是否启用模态属性。true表示子窗口启用模态属性，false表示子窗口禁用模态属性。不设置，则默认为false。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
+| isModal<sup>12+</sup>    | boolean | 否 | 是 | 子窗口是否启用模态属性，仅当子窗口未启用独立子窗属性，即未设置zLevelAboveParentLoosened时生效。true表示子窗口启用模态属性，false表示子窗口禁用模态属性。不设置，则默认为false。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | modalityType<sup>14+</sup>    | [ModalityType](arkts-apis-window-e.md#modalitytype14) | 否 | 是 | 子窗口模态类型，仅当子窗口启用模态属性（即[isModal](#subwindowoptions11)为true）时可设置并生效，否则设置该参数会抛异常（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。不设置，则默认为WINDOW_MODALITY。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。       |
 | windowRect<sup>18+</sup>    | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-apis-window-Window.md#resize9)方法。不设置且未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)显示前，则默认为{left: 0, top: 0, width: 0, height: 0}。具体参考[子窗口开发指导](../../windowmanager/subwindow-guide.md)。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | zLevel<sup>18+</sup>    | number | 否 | 是 | 子窗口层级级别，仅当子窗口未启用模态属性，即未设置isModal时生效。该参数应为整数，取值范围为[-10000, 10000]，浮点数输入将向下取整。不设置，则默认为0。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|

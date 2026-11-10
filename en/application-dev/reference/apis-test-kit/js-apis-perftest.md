@@ -5,8 +5,8 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dfdeddd048755ef82a0878ce3b1c104a522bb3dd translatedAt=2026-08-07T09:47:37.550Z pushedAt=2026-08-10T02:22:22.477Z -->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=f72dc3ff720fe281ad4c1f08c69635e9b62959a5 translatedAt=2026-11-03T01:19:12.786Z pushedAt=2026-11-03T03:28:45.515Z nl=1 -->
 
 PerfTest provides white-box performance test capabilities in test scenarios. It can automatically execute tests on specified code segments or scenarios and collect performance data such as time required, CPU usage, memory usage, latency, and frame rate.
 
@@ -15,6 +15,7 @@ PerfTest provides white-box performance test capabilities in test scenarios. It 
 > - The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
 > - The APIs of this module do not support concurrent calls.
 > - The APIs of this module are applicable to phones, tablets, PCs/2-in-1 devices, smart TVs, and head units.
+
 
 ## Modules to Import
 
@@ -60,6 +61,7 @@ Represents performance metrics that can be collected by the framework.
 >    - Supported scenarios: list scrolling of the **List**, **Grid**, **Scroll**, and **WaterFlow** components in the ArkUI subsystem.
 >    - During a test, only the first list scrolling frame rate in the specified application is collected.
 
+
 ## PerfTestStrategy
 
 Represents the performance test strategy.
@@ -96,6 +98,7 @@ Represents the measurement result data corresponding to the performance metric.
 | maximum       | number        | Yes| No| Maximum value of the measurement data of each round (the value **-1** is excluded). |
 | minimum       | number        | Yes| No| Minimum value of the measurement data of each round (the value **-1** is excluded). |
 | average       | number        | Yes| No| Average value of the measurement data of each round (the value **-1** is excluded). |
+
 
 ## PerfTest
 

@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T02:18:18.638Z pushedAt=2026-09-21T12:56:58.381Z -->
+<!-- md-trans-meta sourceCommit=25b6361d3eb37456c4cbd5bc47e1cfe1a805ace6 translatedAt=2026-11-03T03:08:43.419Z pushedAt=2026-11-03T03:22:59.201Z nl=1 -->
 
 When you browse web pages in incognito mode, data such as cookies and caches is not written to local persistent storage. After the Web component in incognito mode is destroyed, this data is cleared and will not be retained.
 
@@ -15,7 +15,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
 
 - Create a [Web](../reference/apis-arkweb/arkts-basic-components-web.md) component in incognito mode.
   <!-- @[create_a_web_component_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_one.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   
@@ -34,7 +34,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
 
 - Use [isIncognitoMode](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#isincognitomode11) to determine whether incognito mode is enabled for the current **Web** component.
   <!-- @[determine_whether_the_current_web_component_is_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_two.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -66,7 +66,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
 
 - Use [allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation) to allow the specified origin to use the geolocation information.
   <!-- @[setting_the_web_component_in_privacy_mode_allows_specifying_the_geolocation_of_the_source_used](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/AllowGeolocation.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -97,7 +97,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
 
 - Use [deleteGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deletegeolocation) to clear the geolocation permission status of a specified origin.
   <!-- @[clear_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteGeolocation.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -128,7 +128,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
 
 - Use [getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation) to asynchronously obtain the geolocation permission status of the specified origin.
   <!-- @[asynchronously_obtains_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/GetAccessibleGeolocation.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -148,7 +148,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
               // This API uses an asynchronous callback to return the result.
               webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
                 if (error) {
-                  console.error(`getAccessibleGeolocationAsync error: + Code: ${error.code}, message: ${error.message}`);
+                  console.error(`getAccessibleGeolocationAsync error: Code: ${error.code}, message: ${error.message}`);
                   return;
                 }
                 console.info('getAccessibleGeolocationAsync result: ' + result);
@@ -167,7 +167,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
 
 - Use [deleteAllData](../reference/apis-arkweb/arkts-apis-webview-WebStorage.md#deletealldata) to delete all data in the Web SQL Database.
   <!-- @[clear_all_storage_currently_used_by_web_sql_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteAllData.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -244,7 +244,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
 
 - Use [fetchCookieSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#fetchcookiesync11) to obtain the cookie corresponding to the specified URL.
   <!-- @[obtain_the_value_of_the_cookie_corresponding_to_the_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/FetchCookieSync.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -275,7 +275,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
 
 - Use [configCookieSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11) to set a cookie for the specified URL.
   <!-- @[set_the_value_of_a_single_cookie_for_a_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ConfigCookieSync.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -305,7 +305,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
 
 - Use [existCookie](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#existcookie) to check whether cookies exist.
   <!-- @[check_whether_cookies_exist_in_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ExistCookie.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   
@@ -330,7 +330,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
 
 - Use [clearAllCookiesSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#clearallcookiessync11) to clear all cookies. 
   <!-- @[clear_all_cookies_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ClearAllCookiesSync.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   

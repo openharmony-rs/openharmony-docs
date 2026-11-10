@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "详细说明OHAudioSuite提供的均衡器、降噪、音源分离、混音、变声、变速变调等音频效果节点的参数规格、预置效果与设置方法，适用于离线编辑和实时预览管线中的效果节点配置。"
+keywords: [OHAudioSuite, 音频效果, 均衡器, 降噪, 音源分离, 混音, 变声, 变速变调, 预置效果]
+doctype: guide
+status: active
+---
+
 # 音频效果(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

@@ -32,7 +32,7 @@
 import { huks } from "@kit.UniversalKeystoreKit";
 import { BusinessError } from "@kit.BasicServicesKit";
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = new Array();
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -40,8 +40,8 @@ function StringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-let g_challenge: Uint8Array = StringToUint8Array("hi_challenge_data");
-let g_keyAlias: Uint8Array = StringToUint8Array("testKey");
+let g_challenge: Uint8Array = stringToUint8Array("hi_challenge_data");
+let g_keyAlias: Uint8Array = stringToUint8Array("testKey");
 
 let gCommonParam: Array<huks.HuksParam> = [
   { tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE, value: g_challenge },

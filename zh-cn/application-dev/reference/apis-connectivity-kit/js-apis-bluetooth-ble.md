@@ -252,8 +252,7 @@ getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
 - 若指定本机设备作为server端，则返回与本机设备连接的所有client端设备地址集合。
 - 若指定本机设备同时作为client端和server端，则返回与本机设备连接的所有client端和server端设备地址集合。
 
-**需要权限**：
-- API版本21-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -3425,7 +3424,7 @@ client端刷新已连接server端设备的服务信息。使用Promise异步回�
 - 调用本接口会重新触发服务发现，属于耗时操作，建议在服务发现失败后尝试恢复等场景调用。比如：设备MTU异常导致服务发现失败场景；server端添加或删除服务时，client端未感知场景等。
 
 
-**起始版本**： 26.2.0
+**起始版本**： 26.1.0
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 

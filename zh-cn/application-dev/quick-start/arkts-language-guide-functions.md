@@ -1,8 +1,16 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "讲解ArkTS函数的声明与调用方式，涵盖参数、返回值、函数类型及闭包、箭头函数、重载、高阶函数等特性。"
+keywords: [ArkTS, 函数, 参数, 返回值, 闭包, 箭头函数, 函数重载, 高阶函数, 调用签名]
+doctype: guide
+status: active
+---
+
 # 函数
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -10,20 +18,11 @@ ArkTS提供丰富的函数特性，包括参数、返回值、类型定义、重
 
 ## 函数的声明与调用
 
-函数通过`function`关键字声明，包含函数名、参数列表、返回类型和函数体，通过函数名加括号调用。
+函数通过`function`关键字声明，包含函数名、参数列表、返回类型和函数体，通过函数名加括号调用。函数的作用体现在四个方面：将重复逻辑封装以避免代码冗余、将复杂操作封装以提供清晰接口、将大任务分解为小函数以便管理和测试、隐藏实现细节只暴露必要接口。由此带来的好处是提高复用性（一次编写多处调用）、增强可读性（函数名直观表达功能）、易于维护（修改一处所有调用点生效）、便于测试（独立函数更易单独测试调试）。
 
 ### 函数的基本语法结构
 
 ArkTS函数通过`function`关键字声明，支持类型标注的参数和返回值、可选/默认/剩余参数、函数类型、重载和高阶函数等特性。
-
-函数的作用体现在四个方面：将重复逻辑封装为函数以避免代码冗余，将复杂操作封装为函数以提供清晰接口，将大任务分解为多个小函数以便管理和测试，隐藏实现细节只暴露必要接口。由此带来的好处是提高复用性（一次编写多处调用）、增强可读性（函数名直观表达功能）、易于维护（修改一处所有调用点生效）以及便于测试（独立函数更易单独测试调试）。
-
-``` TypeScript
-function functionName(parameters: parameterTypes): returnType {
-  // 函数体
-  return returnValue;
-}
-```
 
 <!-- @[function_declaration_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
@@ -59,11 +58,11 @@ function calculateArea(width: number, height: number): number {
 let area: number = calculateArea(10, 20);  // 200
 ```
 
-ArkTS要求函数参数和返回值显式标注类型。在上下文类型推断的场景中（如回调函数参数），编译器可根据函数签名自动推断参数类型，此时可省略回调参数的类型标注。返回类型为`void`的函数可省略`return`，或使用`return;`提前退出。
+ArkTS要求函数参数显式标注类型（省略将因隐式`any`编译报错）；返回类型多数场景可推断，但当`return`表达式是对返回类型未标注的函数或方法进行调用时，必须显式标注返回类型（如递归函数）。在上下文类型推断的场景中（如回调函数参数），编译器可根据函数签名自动推断参数类型，此时可省略回调参数的类型标注。返回类型为`void`的函数可省略`return`，或使用`return;`提前退出。
 
 ### 函数名与参数命名规范
 
-函数名使用camelCase动词短语（如calculateTotal、validateInput），应描述"做什么"而非"怎么做"；参数名使用描述性名词，避免缩写和无意义命名。
+函数名使用camelCase动词短语（如`calculateTotal`、`validateInput`），应描述"做什么"而非"怎么做"；参数名使用描述性名词，避免缩写和无意义命名。
 
 <!-- @[function_naming_conventions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
@@ -96,11 +95,11 @@ interface Point {
 // 推荐：function calculateSum(firstValue: number, secondValue: number) {}
 ```
 
-命名是约定而非编译约束：`function f(a, b)`能编译通过，但会降低可读性。ArkTS中函数和参数用camelCase，类型（如`Point`）用PascalCase。
+命名是约定而非编译约束：命名不当仅降低可读性；但注意省略参数类型标注（如`function f(a, b)`）会因隐式`any`直接编译报错。ArkTS中函数和参数用camelCase，类型（如`Point`）用PascalCase。
 
 ### 函数的调用方式
 
-函数支持直接调用、链式调用、嵌套调用和条件调用。链式调用从内向外执行，函数返回值作为外层调用的参数；嵌套调用在函数内部调用其他函数，适合组合复杂逻辑。
+函数支持直接调用、嵌套调用和条件调用。嵌套调用在函数内部调用其他函数，函数的返回值也可以直接作为其他调用的实参，适合组合复杂逻辑。
 
 <!-- @[function_invocation_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
@@ -126,23 +125,12 @@ function invokeAdd(a: number, b: number): number {
 
 let sum: number = invokeAdd(1, 2);
 
-// 链式调用
+// 嵌套调用
 function double(x: number): number {
   return x * 2;
 }
 
 let invokeResult: number = double(double(5));  // 20
-
-// 嵌套调用
-function square(x: number): number {
-  return x * x;
-}
-
-function sumOfSquares(a: number, b: number): number {
-  return square(a) + square(b);
-}
-
-let squaresSum: number = sumOfSquares(3, 4);  // 25
 
 // 条件调用
 function invokeProcessData(data: string | null): void {
@@ -156,79 +144,7 @@ function processValidData(data: string): void {
 }
 ```
 
-嵌套与链式调用的求值顺序为由内向外：`double(double(5))`先求`double(5)`得10，再求`double(10)`得20。链式调用要求内层函数的返回类型与外层函数的参数类型匹配，类型不一致会在编译期报错。条件调用将"是否调用"与"调用什么"解耦，是后续可选链调用（`?.()`）的基础模式。
-
-### 函数的返回值处理
-
-函数通过`return`语句返回结果，返回类型由声明决定；无返回值时使用`void`。
-
-<!-- @[function_return_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-// 单一返回值
-function getMax(a: number, b: number): number {
-  return a > b ? a : b;
-}
-
-let max: number = getMax(10, 20);
-
-// 无返回值
-function logInfo(info: string): void {
-  console.info(`${info}`);
-  // 无return或return;
-}
-
-// 提前返回
-function validateAge(age: number): boolean {
-  if (age < 0) {
-    return false;
-  }
-  if (age > 150) {
-    return false;
-  }
-  return true;
-}
-
-// 多路径返回
-function classifyNumber(value: number): string {
-  if (value > 0) {
-    return 'positive';
-  }
-  if (value < 0) {
-    return 'negative';
-  }
-  return 'zero';
-}
-
-// 返回对象
-function createUser(id: number, name: string): User {
-  return {
-    id: id,
-    name: name,
-    active: true
-  };
-}
-
-interface User {
-  id: number;
-  name: string;
-  active: boolean;
-}
-
-let user: User = createUser(1, 'Alice');
-
-// 返回数组
-function createRange(start: number, end: number): number[] {
-  let result: number[] = [];
-  for (let i: number = start; i <= end; i++) {
-    result.push(i);
-  }
-  return result;
-}
-
-let range: number[] = createRange(1, 5);
-console.info(`${range.join(', ')}`);  // 1, 2, 3, 4, 5
-```
+嵌套调用的求值顺序为由内向外：`double(double(5))`先求`double(5)`得10，再求`double(10)`得20。嵌套调用要求内层函数的返回类型与外层函数的参数类型匹配，类型不一致会在编译期报错。条件调用将"是否调用"与"调用什么"解耦，是后续可选链调用（`?.()`）的基础模式。
 
 ## 函数的参数
 
@@ -241,11 +157,6 @@ console.info(`${range.join(', ')}`);  // 1, 2, 3, 4, 5
 <!-- @[parameters_formal_and_actual](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
 ``` TypeScript
-interface FormalPoint {
-  x: number;
-  y: number;
-}
-
 // 形参（形式参数）：函数定义时的参数
 function addNumbers(a: number, b: number): number {
   return a + b;
@@ -260,21 +171,7 @@ console.info(`${paramsResult}`); // 3
 // addNumbers(1, 2, 3);  // 编译错误：参数过多
 
 // 参数类型必须匹配
-function greetUser(name: string): string {
-  return `Hello, ${name}`;
-}
-
-let greeting: string = greetUser('Alice');
-console.info(`${greeting}`); // Hello, Alice
-// greetUser(123);  // 编译错误：类型不匹配
-
-// 参数顺序必须匹配
-function createPoint(x: number, y: number): FormalPoint {
-  return { x: x, y: y };
-}
-
-let fpPoint: FormalPoint = createPoint(10, 20);
-console.info(`${fpPoint.x}, ${fpPoint.y}`); // 10, 20
+// addNumbers('1', '2');  // 编译错误：类型不匹配
 ```
 
 ### 可选参数
@@ -302,6 +199,7 @@ function buildMessage(
   suffix?: string
 ): string {
   let result: string = content;
+  // 检查可选参数
   if (prefix !== undefined) {
     result = prefix + result;
   }
@@ -314,24 +212,9 @@ function buildMessage(
 buildMessage('Hello');           // "Hello"
 buildMessage('Hello', '[');      // "[Hello"
 buildMessage('Hello', '[', ']'); // "[Hello]"
-
-// 检查可选参数
-function processConfig(config: Config): void {
-  if (config.timeout !== undefined) {
-    console.info(`超时: ${config.timeout}`);
-  }
-  if (config.retries !== undefined) {
-    console.info(`重试次数: ${config.retries}`);
-  }
-}
-
-interface Config {
-  timeout?: number;
-  retries?: number;
-}
 ```
 
-### 默认参数值
+### 默认参数
 
 为参数指定默认值，调用时若未传入该参数则使用默认值，可与可选参数混用。
 
@@ -365,7 +248,7 @@ createMessage('Hello', '[WARN]', '!'); // "[WARN] Hello!"
 
 // 默认值可以是表达式
 function createTimer(
-  interval: number = 1000,
+  interval: number = 60 * 1000,
   callback: () => void = () => {}
 ): Timer {
   return {
@@ -396,7 +279,7 @@ calculatePrice(100, 0.2); // 100 + 20 - 5 = 115
 
 ### 剩余参数（可变参数）
 
-使用`...`语法将不定数量的参数收集为数组，实现参数数量可变的函数。
+使用`...`语法定义剩余参数，将不定数量的参数收集为数组，实现参数数量可变。函数只能在参数列表末尾定义一个剩余参数。
 
 <!-- @[rest_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
@@ -425,93 +308,18 @@ function greetAll(greeting: string, ...names: string[]): string {
 }
 
 greetAll('Hello', 'Alice', 'Bob', 'Charlie');
-
-// 剩余参数必须是最后一个参数
-function buildArray(first: number, ...rest: number[]): number[] {
-  let result: number[] = [first];
-  for (let value of rest) {
-    result.push(value);
-  }
-  return result;
-}
-
-let single: number[] = buildArray(1);
-console.info(`${single.join(', ')}`);  // 1
-let multiple: number[] = buildArray(1, 2, 3, 4);
-console.info(`${multiple.join(', ')}`);  // 1, 2, 3, 4
-
-// 剩余参数类型
-function concatenate(...strings: string[]): string {
-  return strings.join('');
-}
-
-concatenate('a', 'b', 'c');  // "abc"
-
-// 剩余参数用于转发
-function logAll(...messages: string[]): void {
-  for (let message of messages) {
-    console.info(`${message}`);
-  }
-}
-```
-
-### 解构参数对照（结合元组、对象）
-
-TypeScript支持解构参数将元组或对象成员直接提取为参数（如`function foo({x, y}: Point)`）。ArkTS不支持解构参数，需要通过接口类型参数接收后手动提取属性。
-
-<!-- @[parameter_destructuring_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-// ArkTS不支持解构参数，需通过接口类型参数接收后手动提取
-
-interface PdPoint {
-  x: number;
-  y: number;
-}
-
-function processPoint(point: PdPoint): number {
-  let x: number = point.x;
-  let y: number = point.y;
-  return x + y;
-}
-
-let pdPoint: PdPoint = { x: 10, y: 20 };
-console.info(`${processPoint(pdPoint)}`); // 30
-
-function processTuple(tuple: [number, string]): string {
-  let id: number = tuple[0];
-  let name: string = tuple[1];
-  return `ID: ${id}, Name: ${name}`;
-}
-
-let tuple: [number, string] = [1, 'Alice'];
-processTuple(tuple);
-
-// 使用接口替代解构
-interface Options {
-  timeout: number;
-  retries: number;
-  verbose: boolean;
-}
-
-function configure(options: Options): void {
-  let timeout: number = options.timeout;
-  let retries: number = options.retries;
-  let verbose: boolean = options.verbose;
-  
-  console.info(`Timeout: ${timeout}, Retries: ${retries}`);
-}
-
-configure({ timeout: 5000, retries: 3, verbose: true });
+// Hello, Alice
+// Hello, Bob
+// Hello, Charlie
 ```
 
 ## 函数的返回值
 
-本节介绍void函数、单返回值、多返回值（元组）和可选返回值（T | undefined）等不同返回模式。
+本节介绍`void`函数、单返回值、多返回值（元组）和可选返回值（`T | undefined`）等不同返回模式。
 
 ### 无返回值函数（void类型）
 
-void函数不返回值，用于执行操作但不产生结果。
+`void`函数不返回值，用于执行操作但不产生结果。
 
 <!-- @[void_type_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
@@ -680,7 +488,7 @@ let error: Error | null = dataResult[1];
 
 ### 可选返回值函数（T | undefined类型）
 
-返回类型为T | undefined的函数，表示结果可能不存在。
+返回类型为`T | undefined`的函数，表示结果可能不存在。
 
 <!-- @[optional_return_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
@@ -736,7 +544,7 @@ function getElement(arr: string[], index: number): string | undefined {
 }
 
 let element: string | undefined = getElement(['a', 'b', 'c'], 1);
-console.info(`${element}`); // b
+console.info(`${element}`); // 'b'
 
 // 返回null或值
 function getConfigValue(key: string): string | null {
@@ -752,13 +560,84 @@ function getConfigValue(key: string): string | null {
 }
 ```
 
-## 函数类型
+## 递归函数
 
-使用`(params) => returnType`形式描述函数的参数与返回值签名，可作为变量、参数和属性的类型。
+递归函数是在函数体内调用自身的函数，适合处理可分解为同构子问题的问题，如阶乘、斐波那契数列、树结构遍历等。递归函数必须包含基线条件（终止条件）：满足基线条件时直接返回结果、不再递归；缺少基线条件或基线条件不可达会导致无限递归，引发调用栈溢出。
+
+<!-- @[recursive_factorial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+
+``` TypeScript
+// 阶乘：n! = n * (n-1)!
+function factorial(n: number): number {
+  if (n <= 1) {
+    return 1;  // 基线条件：终止递归
+  }
+  return n * factorial(n - 1);  // 递归调用
+}
+
+console.info(`${factorial(5)}`);  // 120
+
+// 斐波那契数列：fib(n) = fib(n-1) + fib(n-2)
+function fibonacci(n: number): number {
+  if (n <= 1) {
+    return n;  // 基线条件
+  }
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.info(`${fibonacci(10)}`);  // 55
+```
+
+### 尾递归
+
+尾递归指递归调用是函数体中的最后一个操作，其返回值直接作为当前函数的返回值，不再有后续计算。普通递归（如`n * factorial(n - 1)`）在递归调用返回后还需执行乘法，外层调用的栈帧需要保留，调用栈随递归深度增长；尾递归将中间结果通过参数传递给下一次调用，当前调用没有未完成的计算。部分语言和编译器支持尾调用优化，将尾递归转换为循环执行，从而避免栈溢出；递归深度较大时，也可以直接改写为循环实现。
+
+<!-- @[tail_vs_normal_recursion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+
+``` TypeScript
+// 普通递归：递归调用返回后还需执行乘法，调用栈随深度增长
+function factorialNormal(n: number): number {
+  if (n <= 1) {
+    return 1;
+  }
+  return n * factorialNormal(n - 1);
+}
+
+// 尾递归：累积结果通过acc参数传递，递归调用是最后一个操作
+function factorialTail(n: number, acc: number = 1): number {
+  if (n <= 1) {
+    return acc;
+  }
+  return factorialTail(n - 1, n * acc);
+}
+
+console.info(`${factorialNormal(5)}`);  // 120
+console.info(`${factorialTail(5)}`);    // 120
+```
+
+## 箭头函数与函数类型
+
+函数在ArkTS中是一等公民：既可以通过`function`关键字声明具名函数，也可以通过箭头函数（lambda表达式）定义匿名函数。函数拥有独立的类型，使用`(param1: paramType1, param2: paramType2, ...) => returnType`描述参数与返回值签名，可作为变量、参数和属性的类型；函数可以赋值给变量、作为参数传递或作为返回值返回，支持函数式编程范式。
+
+### 箭头函数（lambda）的定义
+
+箭头函数（lambda表达式）是定义函数的简洁语法：括号内为参数列表及可选的返回类型标注，后跟`=>`和函数体。函数体为单表达式时，可以省略花括号和`return`。箭头函数常与函数类型标注配合使用。
+
+<!-- @[arrow_function_body_forms](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+
+``` TypeScript
+// 块体形式：花括号内显式return
+let addFn: (a: number, b: number) => number = (a: number, b: number): number => {
+  return a + b;
+};
+
+// 表达式体形式：单表达式省略花括号和return
+let doubleFn: (value: number) => number = (value: number): number => value * 2;
+```
 
 ### 函数类型的定义与匹配规则
 
-函数类型赋值时需满足参数兼容和返回值兼容，参数类型可按子类型方向协变。
+函数类型赋值时需要满足函数的子类型规则，即参数类型逆变（父类型），返回值类型协变（子类型）。
 
 <!-- @[ts_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
 
@@ -832,7 +711,7 @@ let processed: string[] = paramsProcessData(
   ['hello', 'world'],
   (s: string): string => s.toUpperCase()
 );
-console.info(`${processed[0]}, ${processed[1]}`); // HELLO, WORLD
+console.info(`${processed[0]}, ${processed[1]}`); // 'HELLO, WORLD'
 
 // 条件判断函数
 function filterNumbers(
@@ -904,21 +783,21 @@ let descComparator: (a: number, b: number) => number = createComparator(false);
 
 ### 类型别名简化函数类型
 
-用type为复杂函数类型起别名，简化签名书写。
+用`type`为复杂函数类型起别名，简化签名书写。
 
 <!-- @[function_type_aliases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
 ``` TypeScript
 // 使用类型别名
-type Callback = (result: string) => void;
+type MyCallback = (result: string) => void;
 type Predicate = (value: number) => boolean;
 type Transformer = (input: string) => string;
 type Comparator = (a: number, b: number) => number;
 
 // 简化复杂函数类型
-type EventHandler = (event: Event) => void;
+type EventHandler = (event: MyEvent) => void;
 
-interface Event {
+interface MyEvent {
   type: string;
   data: string | number | boolean;
 }
@@ -926,24 +805,9 @@ interface Event {
 function addEventListener(handler: EventHandler): void {
   // 注册事件处理器
 }
-
-// 使用泛型函数类型
-type Mapper<T, R> = (value: T) => R;
-type Filter<T> = (value: T) => boolean;
-type Reducer<T, R> = (acc: R, value: T) => R;
-
-function mapArray<T, R>(arr: T[], mapper: Mapper<T, R>): R[] {
-  let result: R[] = [];
-  for (let item of arr) {
-    result.push(mapper(item));
-  }
-  return result;
-}
-
-let doubled: number[] = mapArray([1, 2, 3], (n: number): number => n * 2);
 ```
 
-## 闭包与箭头函数
+## 闭包
 
 闭包是函数与其词法环境的组合。ArkTS不使用局部函数声明来构造闭包，但局部箭头函数仍然可以捕获外层作用域中的变量和参数。
 
@@ -992,33 +856,6 @@ console.info(`${multiplierDouble(5)}`);  // 10
 ```
 闭包适合保存少量配置或状态。若状态较多、生命周期复杂，优先使用类来表达。
 
-### 箭头函数的简写规则
-
-箭头函数支持表达式体简写：单表达式可省略`return`和花括号，常用于回调。
-
-<!-- @[arrow_function_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-let arrowAdd: (a: number, b: number) => number = (a: number, b: number): number => {
-  return a + b;
-};
-
-let subtract: (a: number, b: number) => number = (a: number, b: number): number => a - b;
-let doubleValue: (value: number) => number = (value: number): number => value * 2;
-let arrowGreet: () => string = (): string => 'Hello';
-```
-
-箭头函数最常见的用途是作为数组方法的回调，其简洁的语法在高阶函数调用中尤为实用。
-
-<!-- @[arrow_function_array_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-let numbers: number[] = [1, 2, 3, 4, 5];
-let callbackDoubled: number[] = numbers.map((value: number): number => {
-  return value * 2;
-});
-```
-
 ### 箭头函数中的this
 
 箭头函数不绑定自己的`this`，而是捕获外层作用域的`this`，适合在类方法中作回调。
@@ -1030,79 +867,19 @@ class BindingTimer {
   private seconds: number = 0;
 
   start(): void {
-    setInterval((): void => {
+    mySetInterval((): void => {
       this.seconds++;
       console.info(`${this.seconds.toString()}`);
     }, 1000);
   }
 }
 
-function setInterval(callback: () => void, ms: number): void {
+// 示意桩：同步模拟异步定时调用，实际开发中请使用系统或第三方异步定时接口
+function mySetInterval(callback: () => void, ms: number): void {
   callback();
 }
 ```
 独立函数体内不应依赖`this`；需要实例状态时，使用类方法或显式参数传递。
-
-## 局部辅助函数
-
-TypeScript允许在函数内部声明局部函数，也允许使用`function`表达式。ArkTS对这两类写法做了收紧：局部函数声明不支持，函数表达式也应避免使用，应改为带显式函数类型的箭头函数。
-
-### 局部辅助函数
-
-TypeScript的嵌套函数声明在ArkTS中不支持，需改用带显式函数类型的箭头函数表达式替代。
-
-**TypeScript对照**
-
-<!-- @[ts_nested_function_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
-
-``` TypeScript
-function addNum(a: number, b: number): void {
-  function logToConsole(message: string): void {
-    console.info(`${message}`);
-  }
-
-  let result: number = a + b;
-  logToConsole('result is ' + result);
-}
-```
-
-ArkTS不支持上述嵌套函数声明，需将局部函数改写为带显式函数类型的箭头函数表达式：
-
-<!-- @[local_function_expression](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-function expressionAddNum(a: number, b: number): void {
-  let logToConsole: (message: string) => void = (message: string): void => {
-    console.info(`${message}`);
-  };
-
-  let result: number = a + b;
-  logToConsole('result is ' + result);
-}
-```
-
-### 局部辅助逻辑
-
-局部函数封装辅助逻辑，限制作用域提高内聚性。
-
-<!-- @[multiple_local_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-function functionsProcessData(data: string[]): string {
-  let clean: (item: string) => string = (item: string): string => {
-    return item.trim();
-  };
-
-  let format: (item: string) => string = (item: string): string => {
-    return `[${item}]`;
-  };
-
-  let cleaned: string[] = data.map(clean);
-  let formatted: string[] = cleaned.map(format);
-  return formatted.join(', ');
-}
-```
-这种写法保留了局部可读性，同时符合ArkTS对函数声明位置的要求。
 
 ## 函数的重载
 
@@ -1157,9 +934,9 @@ interface OverloadPoint {
 }
 
 let point1: OverloadPoint = overloadCreatePoint(10);
-console.info(`${JSON.stringify(point1)}`);  // {"x":10,"y":0}
+console.info(`${JSON.stringify(point1)}`);  // '{"x":10,"y":0}'
 let point2: OverloadPoint = overloadCreatePoint(10, 20);
-console.info(`${JSON.stringify(point2)}`);  // {"x":10,"y":20}
+console.info(`${JSON.stringify(point2)}`);  // '{"x":10,"y":20}'
 ```
 
 ### 重载签名与实现签名的匹配
@@ -1232,7 +1009,7 @@ function getData(idOrName: number | string): OverloadData {
 
 let otcData1: OverloadData = getData(1);
 let otcData2: OverloadData = getData('test');
-console.info(`${otcData1.id}, ${otcData2.type}`); // 1, named
+console.info(`${otcData1.id}, ${otcData2.type}`); // '1, named'
 
 // 返回类型不同的重载
 function parseInput(input: string): number;
@@ -1248,6 +1025,27 @@ let parsedNum: number = parseInput('42');
 let parsedDate: Date = parseInput('2024-01-01', 'date');
 console.info(`${parsedNum}`); // 42
 ```
+
+## 泛型函数
+
+泛型函数在函数名后使用`<T>`声明类型参数，并在参数类型和返回值类型中使用该类型参数，使同一份函数体在保留类型检查的前提下适用于多种类型。调用泛型函数时可以显式指定类型参数，也可以由编译器根据实参自动推断。
+
+<!-- @[generic_function_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+
+``` TypeScript
+// 泛型函数签名：T为类型参数，调用时确定具体类型
+function firstOrDefault<T>(values: T[], defaultValue: T): T {
+  if (values.length > 0) {
+    return values[0];
+  }
+  return defaultValue;
+}
+
+let firstNum: number = firstOrDefault<number>([1, 2, 3], 0);  // 显式指定类型参数
+let firstStr: string = firstOrDefault(['a', 'b'], 'none');    // 根据实参推断T为string
+```
+
+泛型的详细介绍（类型约束、泛型接口、泛型类等），请阅读[泛型](arkts-language-guide-generics.md)。
 
 ## 高阶函数
 
@@ -1315,7 +1113,7 @@ let squared: number[] = orderNumbers.map((n: number): number => n * n);
 console.info(`${squared.join(', ')}`);  // 1, 4, 9, 16, 25
 
 let strings: string[] = orderNumbers.map((n: number): string => `Item ${n}`);
-console.info(`${strings.join(', ')}`);  // Item 1, Item 2, Item 3, Item 4, Item 5
+console.info(`${strings.join(', ')}`);  // 'Item 1, Item 2, Item 3, Item 4, Item 5'
 
 // filter：过滤元素
 let orderEvens: number[] = orderNumbers.filter((n: number): boolean => n % 2 === 0);
@@ -1410,11 +1208,11 @@ function customFind<T>(arr: T[], predicate: (item: T) => boolean): T | undefined
 
 ## 函数的可选链调用
 
-可选链调用（?.()）在函数可能为undefined时安全调用，避免运行时错误。
+可选链调用（?.()）在函数可能为`undefined`时安全调用，避免运行时错误。
 
 ### 函数的可选调用语法（func?.()）
 
-func?.()在func不为undefined时才执行调用，否则返回undefined。
+`func?.()`在`func`不为`undefined`时才执行调用，否则返回`undefined`。
 
 <!-- @[ts_optional_chaining_function_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
 
@@ -1517,159 +1315,6 @@ let response: APIResponse | null = null;
 
 response?.callback?.();  // 不执行
 response?.data?.items?.forEach?.(item => console.info(`${item}`));
-```
-
-## 调用签名
-
-调用签名用于描述可调用的对象（既有属性又可像函数一样调用）。语法使用`:`而非`=>`。
-
-**TypeScript对照**
-
-<!-- @[ts_call_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
-
-``` TypeScript
-// TypeScript对照写法，ArkTS中用接口分离属性和方法
-type DescribableFunction = {
-  description: string;
-  (someArg: number): boolean;
-};
-```
-
-ArkTS中使用接口分离属性和方法。
-
-<!-- @[call_signature_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-interface CsDescribableFunction {
-  description: string;
-  call(someArg: number): boolean;
-}
-
-class CsMyFunc implements CsDescribableFunction {
-  public description: string = 'default description';
-
-  call(someArg: number): boolean {
-    return someArg > 3;
-  }
-}
-
-function csDoSomething(fn: CsDescribableFunction): void {
-  console.info(`${fn.description + ' returned ' + fn.call(6)}`);
-}
-
-let csFn: CsMyFunc = new CsMyFunc();
-csDoSomething(csFn);  // default description returned true
-```
-
-## 构造签名
-
-构造签名描述可用`new`调用的函数，在调用签名前加`new`关键字。
-
-**TypeScript对照**
-
-<!-- @[ts_construct_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
-
-``` TypeScript
-// TypeScript构造签名，ArkTS不支持（arkts-no-ctor-signatures-type）
-class SomeObject {
-  public value: string;
-  constructor(s: string) {
-    this.value = s;
-  }
-}
-
-type SomeConstructor = {
-  new (s: string): SomeObject;
-};
-
-function createSomeInstance(ctor: SomeConstructor, s: string): SomeObject {
-  return new ctor(s);
-}
-
-let someObj: SomeObject = createSomeInstance(SomeObject, 'hello');
-console.info(`${someObj.value}`); // hello
-```
-
-ArkTS不支持构造函数类型（`arkts-no-ctor-signatures-funcs`），详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持构造函数类型)，使用工厂模式替代。
-
-<!-- @[construct_signature_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-class CsaPoint {
-  public x: number;
-  public y: number;
-
-  constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
-  }
-}
-
-interface CsaPointFactory {
-  create(x: number, y: number): CsaPoint;
-}
-
-class CsaPointFactoryImpl implements CsaPointFactory {
-  create(x: number, y: number): CsaPoint {
-    return new CsaPoint(x, y);
-  }
-}
-
-function createCsaPoint(factory: CsaPointFactory, x: number, y: number): CsaPoint {
-  return factory.create(x, y);
-}
-
-let csaP: CsaPoint = createCsaPoint(new CsaPointFactoryImpl(), 3, 4);
-console.info(`${csaP.x}, ${csaP.y}`); // 3, 4
-```
-
-## 回调中的可选参数
-
-TypeScript中回调函数类型不应使用可选参数，因为可选参数意味着"可能不传该参数调用"，而回调的调用方通常会传入所有参数。少参数的函数可赋给多参数的函数类型（参数逆变）。
-
-<!-- @[callback_no_optional_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-// 回调参数全部为必选
-type CbCallback = (value: string, index: number) => void;
-
-let cbNames: string[] = ['Alice', 'Bob'];
-cbNames.forEach((value: string, index: number) => {
-  console.info(`${index}: ${value}`);
-});
-
-// 少参数的回调可赋给多参数类型
-type UnaryCallback = (value: string) => void;
-let cbSimple: CbCallback = (value: string): void => {
-  console.info(`${value}`);
-};
-```
-
-> **说明：**
-> 
-> 在回调函数类型中不要使用可选参数（`?`），否则调用方可能不传该参数，导致回调内部访问`undefined`。
-
-## Function类型
-
-TypeScript有全局`Function`类型，接受任意函数。`Function`类型调用返回`any`，不安全。需要接受任意函数时，使用`() => void`替代。
-
-<!-- @[function_type_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-// 不建议：使用Function类型
-let ftFn: Function = (x: number): number => x * 2;
-console.info(`${ftFn(10)}`); // 20
-
-// 建议：使用具体函数类型
-let ftSafeFn: (x: number) => number = (x: number): number => x * 2;
-console.info(`${ftSafeFn(10)}`); // 20
-
-// 需要接受任意函数时使用 () => void
-function ftRunCallback(cb: () => void): void {
-  cb();
-}
-
-ftRunCallback((): void => console.info('executed'));
 ```
 
 ## void返回类型的赋值兼容性

@@ -6,7 +6,7 @@
 <!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1261675227cc6cdcc1de52f55ec6ca59a8d9110a translatedAt=2026-07-28T06:43:36.589Z pushedAt=2026-07-28T07:10:27.911Z -->
+<!-- md-trans-meta sourceCommit=fcab20b6a1295c7f438a4eab65130a270dde3b74 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 Calendar Kit provides calendar and event management capabilities, which usually refer to APIs that can be used to access and operate calendar data. These APIs allow you to integrate time-related event services (such as travel, catering, sports, and entertainment) in other applications with the system calendar to implement functions such as event management, creation, and query.
 
@@ -44,9 +44,7 @@ Calendar Kit provides management capability for accounts and events.
 
   You can query events by event ID, event title, event start time, and event end time.
 
-## Features
-
-**One-tap event service**: Through a persistent authorization mechanism, you can write a service DeepLink to a calendar event after the user grants the application permission to read and write the system calendar. Based on the configured reminder rules, a corresponding service button is displayed in the calendar application, calendar notifications, calendar widgets, and other entry points when the event is approaching or due. Users can tap this button to open the DeepLink and go directly to the target service page.
+<!--RP2--><!--RP2End-->
 
 ## Working Principles
 

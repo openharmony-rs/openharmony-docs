@@ -39,7 +39,7 @@ createPbapServerProfile(): PbapServerProfile
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
-**返回值：**
+**返回值**：
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
@@ -47,14 +47,14 @@ createPbapServerProfile(): PbapServerProfile
 
 **错误码**：
 
-以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -62,6 +62,46 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
     console.info('pbapServer success');
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## pbap.createPbapClientProfile
+
+createPbapClientProfile(): PbapClientProfile
+
+创建蓝牙电话簿访问协议中的[PCE](../../connectivity/bluetooth/terminology.md#pce)实例。通过该实例可使用本端作为PCE设备时提供的接口，如：获取电话簿同步状态、订阅电话簿同步状态变化事件等。典型使用场景包括：车载蓝牙系统作为PCE访问手机电话簿、跨设备联系人同步等。
+
+**起始版本**： 26.0.1
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
+
+| 类型                            | 说明         |
+| ----------------------------- | ---------- |
+|PbapClientProfile | 返回PCE实例。<br>- 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。<br>- 和该实例角色相对应的是[PSE](../../connectivity/bluetooth/terminology.md#pse)角色。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.        |
+
+**示例**：
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let pbapClientProfile = pbap.createPbapClientProfile();
+    console.info('pbapClient success');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

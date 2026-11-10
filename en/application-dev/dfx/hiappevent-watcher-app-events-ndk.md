@@ -6,7 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=3fdb75dda2360c4f4f6ae710ea1030d053ea28b8 translatedAt=2026-07-30T02:50:43.765Z pushedAt=2026-07-30T03:33:27.293Z -->
+<!-- md-trans-meta sourceCommit=2ea0ba89d6cbfa2d7d56e7da6453e9c870d092d4 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 HiAppEvent provides APIs for subscribing to and receiving application events.
 
@@ -36,37 +36,37 @@ The following describes how to subscribe to a crash event (system event) and a b
 1. Copy the **jsoncpp** library file on which the sample project depends to the new project.
 
    Click [HiAppEvent Sample Project EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub) and click **Download the directory** to download the EventSub project file.
-
+   
    Create a native C++ project. Copy the **jsoncpp** library file (**entry/libs** and **entry/src/main/cpp/thirdparty**) from the decompressed **EventSub** folder to the new project. The directory structure is as follows:
-
    ```text
    entry
    ├── libs        // Create a folder and place the related third-party libraries in the folder.
    └── src
        ├── main
-       │   ├── cpp
+       │   ├── cpp
        │   │   ├── CMakeLists.txt       // Import the link of the .so file.
        │   │   ├── napi_init.cpp        // Define the function and watcher.
        │   │   ├── thirdparty    // Create a folder and place the related third-party libraries in the folder.
-       │   │   │   └── jsoncpp
-       │   │   └── types
-       │   │       └── libentry
+       │   │   │   └── jsoncpp
+       │   │   └── types
+       │   │       └── libentry
        │   │           ├── Index.d.ts        // Define the ArkTS API.
-       │   │           └── oh-package.json5
-       │   ├── ets
-       │   │   ├── entryability
+       │   │           └── oh-package.json5
+       │   ├── ets
+       │   │   ├── entryability
        │   │   │   └── EntryAbility.ets    // Add an API call.
-       │   │   ├── entrybackupability
-       │   │   │   └── EntryBackupAbility.ets
-       │   │   └── pages
+       │   │   ├── entrybackupability
+       │   │   │   └── EntryBackupAbility.ets
+       │   │   └── pages
        │   │       └── Index.ets        // Home page.
    ```
-
    The source code corresponding to the jsoncpp library file in this sample project is derived from [the third-party open-source library JsonCpp](https://codeload.github.com/open-source-parsers/jsoncpp/tar.gz/refs/tags/1.9.6).
 
 2. In the **CMakeLists.txt** file, add the required source files and dynamic libraries.
 
-   ```cmake
+   <!-- @[eventsub_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` cmake
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
    # Check whether the entry/build directory exists.
@@ -74,7 +74,7 @@ The following describes how to subscribe to a crash event (system event) and a b
    # Decompress jsoncpp-1.9.6.tar.gz to entry/build to obtain the directory of the jsoncpp header file.
    execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
        WORKING_DIRECTORY ${DEST_DIR})
-
+   
    add_library(entry SHARED napi_init.cpp)
    # Add libhiappevent_ndk.z.so and libhilog_ndk.z.so (log output). 
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
@@ -86,7 +86,7 @@ The following describes how to subscribe to a crash event (system event) and a b
 3. Import the dependencies to the **napi_init.cpp** file, and define **LOG_TAG**.
 
    <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    #include "napi/native_api.h"
    // Adapt the path for referencing json.h based on the location of the third-party library jsoncpp in the project.
@@ -98,15 +98,13 @@ The following describes how to subscribe to a crash event (system event) and a b
    #undef LOG_TAG
    #define LOG_TAG "testTag"
    ```
-
 ### Step 2: Subscribing to an Event
 
 1. Subscribe to the events using **OnReceive** and **OnTrigger**, respectively.
-
    - Subscribe to the crash event (system event) using **OnReceive**. After receiving the event, the watcher immediately triggers the **OnReceive** callback. In the **napi_init.cpp** file, define the methods related to the watcher of the **OnReceive** type.
 
     <!-- @[AppEvent_Crash_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     // Define a variable to cache the pointer to the created watcher.
     static HiAppEvent_Watcher *eventWatcherR1;
@@ -163,7 +161,7 @@ The following describes how to subscribe to a crash event (system event) and a b
    - Subscribe to the button click event (application event) using **OnTrigger**. The **OnTrigger()** callback can be triggered only when the conditions specified by **OH_HiAppEvent_SetTriggerCondition()** are met. In the **napi_init.cpp** file, define the methods related to the watcher of the **OnTrigger** type.
 
     <!-- @[AppEvent_Click_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     // Define a variable to cache the pointer to the created watcher.
     static HiAppEvent_Watcher *eventWatcherT1;
@@ -219,7 +217,7 @@ The following describes how to subscribe to a crash event (system event) and a b
 2. In the **napi_init.cpp** file, add the logging API for the button click event.
 
    <!-- @[AppEvent_Click_C++_WriteAppEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
-
+   
    ``` C++
    static napi_value WriteAppEvent(napi_env env, napi_callback_info info)
    {
@@ -235,7 +233,7 @@ The following describes how to subscribe to a crash event (system event) and a b
 3. In the **napi_init.cpp** file, register **RegisterWatcherCrash()** (crash event subscription), **RegisterWatcherClick()** (button click event subscription), and **WriteAppEvent()** (button click event logging) as ArkTS APIs.
 
    <!-- @[AppEvent_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    static napi_value Init(napi_env env, napi_value exports)
    {
@@ -254,7 +252,7 @@ The following describes how to subscribe to a crash event (system event) and a b
 4. In the **index.d.ts** file, define the ArkTS API.
 
    <!-- @[AppEvent_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
-
+   
    ``` TypeScript
    export const registerWatcherCrash: () => void;
    export const registerWatcherClick: () => void;
@@ -264,13 +262,13 @@ The following describes how to subscribe to a crash event (system event) and a b
 5. In the **EntryAbility.ets** file, add the following API to **onCreate()**.
 
    <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
-
+   
    ``` TypeScript
    import testNapi from 'libentry.so';
    ```
-
+   
    <!-- @[AppEvent_Call_Capi_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
-
+   
    ``` TypeScript
    // Add the C API call in onCreate().
    // Register the crash event watcher at startup.
@@ -352,7 +350,7 @@ Button('writeEvent C++')
 4. Remove the application event watcher.
 
    <!-- @[AppEvent_C++_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
-
+   
    ``` C++
    static napi_value RemoveWatcher(napi_env env, napi_callback_info info)
    {
@@ -368,7 +366,7 @@ Button('writeEvent C++')
 5. Destroy the application event watcher.
 
    <!-- @[AppEvent_C++_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
-
+   
    ``` C++
    static napi_value DestroyWatcher(napi_env env, napi_callback_info info)
    {

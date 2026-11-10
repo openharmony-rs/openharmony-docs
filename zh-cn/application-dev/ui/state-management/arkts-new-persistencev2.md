@@ -442,7 +442,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 13. 当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API版本26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
     - 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
 
-14. 在API版本26.2.0前，不支持在使用globalConnect持久化的类中使用[\@Computed](./arkts-new-computed.md)函数。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。从API版本26.2.0开始，通过在[ConnectOptions](../../reference/apis-arkui/js-apis-stateManagement.md#connectoptionst18)中配置ignoreReadOnlyProperties为true，可以在globalConnect持久化的类中使用\@Computed函数。ignoreReadOnlyProperties默认为false，设为true时，PersistenceV2会跳过只读的属性（如\@Computed函数），避免反序列化失败。
+14. 在API版本26.1.0前，不支持在使用globalConnect持久化的类中使用[\@Computed](./arkts-new-computed.md)函数。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。从API版本26.1.0开始，通过在[ConnectOptions](../../reference/apis-arkui/js-apis-stateManagement.md#connectoptionst18)中配置ignoreReadOnlyProperties为true，可以在globalConnect持久化的类中使用\@Computed函数。ignoreReadOnlyProperties默认为false，设为true时，PersistenceV2会跳过只读的属性（如\@Computed函数），避免反序列化失败。
 
     ```typescript
     import { PersistenceV2 } from '@kit.ArkUI';
@@ -501,6 +501,8 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
     ```
 
 16. 不支持对持久化数据类的类名和属性名进行混淆，否则会导致已有数据无法读取或反序列化失败。应用需关闭混淆，或通过混淆配置保留相关类名和属性名，具体请参考[源码混淆保留选项](../../arkts-utils/source-obfuscation-keep-options.md#保留选项汇总)和[字节码混淆保留选项](../../arkts-utils/bytecode-obfuscation.md#已有保留选项汇总)。
+
+17. [通过意图装饰器开发标准意图](../../application-models/insight-intent-decorator-development.md#通过意图装饰器开发标准意图)场景中声明的后台意图（UI_ABILITY_BACKGROUND）的程序执行入口不涉及UI组件，不会初始化PersistenceV2模块，导致在onExecute函数中使用PersistenceV2无法持久化数据。建议开发者在后台意图场景下使用ArkData模块的[通过用户首选项实现数据持久化（ArkTS）](../../database/data-persistence-by-preferences.md)能力，向UI主程序同步持久化数据。
 
 ## globalConnect支持的类型
 

@@ -18,7 +18,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [OH_Scan](capi-oh-scan.md)
+**相关模块：** [Scan](capi-oh-scan.md)
 
 ## 汇总
 

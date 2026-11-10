@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "按ArkTS语法规则分类，通过具体应用场景案例展示TS代码适配为ArkTS代码的前后对比与修改建议，帮助开发者掌握语法适配方法。"
+keywords: [ArkTS, 适配案例, TS适配, 语法规则, arkts-no-any-unknown, 代码重构, 对象字面量]
+doctype: guide
+status: active
+---
+
 # 适配指导案例
 
 <!--Kit: ArkTS-->

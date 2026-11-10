@@ -27,5 +27,5 @@ The dynamic attribute setting mechanism of **attributeModifier** does not suppor
 
 **Solution**
 
-Stop using the unsupported APIs. For details, see [JS Crash Occurs When AttributeModifier Is Used to Set Dynamic Attributes for a Component](../../ui/arkts-attribute-modifier-faq.md#js-crash-occurs-when-attributemodifier-is-used-to-set-dynamic-attributes-for-a-component).
+Stop using the unsupported APIs. For details, see [Using AttributeModifier to Set Component Dynamic Attributes Causes JS Crash](../../ui/arkts-attribute-modifier-faq.md#using-attributemodifier-to-set-component-dynamic-attributes-causes-js-crash).
 

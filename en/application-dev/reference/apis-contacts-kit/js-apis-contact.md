@@ -6,13 +6,14 @@
 <!--Designer: @jiayanhong-hw-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3937f95844564676855b902f3b539685111fdaaa translatedAt=2026-07-29T01:42:24.207Z pushedAt=2026-07-30T03:36:35.621Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T03:48:29.002Z pushedAt=2026-11-03T08:12:13.108Z nl=2 -->
 
 This module provides contact management capabilities, including adding, deleting, and updating contacts.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+
 
 ## Modules to Import
 
@@ -22,7 +23,7 @@ import { contact } from '@kit.ContactsKit';
 
 ## contact.addContact<sup>10+</sup>
 
-addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;): void
+addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;): void 
 
 Adds a contact. This API uses an asynchronous callback to return the result.
 
@@ -46,7 +47,7 @@ For details about the following error codes, see [General Error Code Description
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait.|
 
 **Example**
@@ -88,7 +89,7 @@ Adds a contact. This API uses an asynchronous callback to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [addContact](#contactaddcontact10) instead.
 
-**Required Permissions:** ohos.permission.WRITE_CONTACTS
+**Required permissions:** ohos.permission.WRITE_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -155,7 +156,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 | ID | Error Message |
 | -------- | ------------------ |
-| 201 | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. |
 
 **Example**
@@ -251,7 +252,7 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Example**
@@ -290,7 +291,7 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [deleteContact](#contactdeletecontact10) instead.
 
-**Required Permissions:** ohos.permission.WRITE_CONTACTS
+**Required permissions:** ohos.permission.WRITE_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -349,7 +350,7 @@ Deletes a contact. This API uses a promise to return the result.
 
 | ID | Error Message |
 | -------- | ------------------ |
-| 201 | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Example**
@@ -384,7 +385,7 @@ Deletes a contact. This API uses a promise to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [deleteContact](#contactdeletecontact10-1) instead.
 
-**Required Permissions:** ohos.permission.WRITE_CONTACTS
+**Required permissions:** ohos.permission.WRITE_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -439,7 +440,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId.  |
 
 **Example**
@@ -486,7 +487,7 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [updateContact](#contactupdatecontact10) instead.
 
-**Required Permissions:** ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -505,9 +506,7 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 
   // Select a contact through the selectContacts API.
   contact.selectContacts().then((data) => {
-    // Obtain the context within the component.
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    contact.updateContact(context, {
+    contact.updateContact({
       id: data[0].id, // ID of the selected contact.
       name: {
         fullName: 'xxx'
@@ -541,7 +540,7 @@ Updates a contact (with support for passing in a list of contact attributes). Th
 | ------ | --------------------------------------- | --------- | ------------------------------------------------------------ |
 | context  | Context                                 | Yes   | Application context, which is defined in [Context](../apis-ability-kit/js-apis-inner-application-context.md) of the stage model. |
 | contact  | [Contact](#contact)                     | Yes   | Contact information. The ID is mandatory and can be obtained through [selectContacts](#contactselectcontacts10-1).                                         |
-| attrs    | [ContactAttributes](#contactattributes) | Yes   | List of contact attributes. If this parameter is left empty, all attribute fields of the contact (including name, phone number, and email) are queried.                         |
+| attrs    | [ContactAttributes](#contactattributes) | Yes   | Contact attributes. If this parameter is left empty, all attribute fields of the contact (including name, phone number, and email) are updated.                         |
 | callback | AsyncCallback&lt;void&gt;               | Yes   | Callback used to return the result. If the contact is updated successfully, **err** is **undefined**; otherwise, **err** is an error object.     |
 
 **Error codes**
@@ -550,7 +549,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
 
 **Example**
@@ -598,7 +597,7 @@ Updates a contact with the specified attribute list. This API uses an asynchrono
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [updateContact](#contactupdatecontact10-1) instead.
 
-**Required Permissions:** ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -606,9 +605,9 @@ Updates a contact with the specified attribute list. This API uses an asynchrono
 
 | Name     | Type                                    | Mandatory | Description                                                         |
 | -------- | --------------------------------------- | --------- | ------------------------------------------------------------------- |
-| contact  | [Contact](#contact)                     | Yes       | Contact information. The **id** field is mandatory and can be obtained through the [selectContacts](#contactselectcontacts10-1) API. |
-| attrs    | [ContactAttributes](#contactattributes) | Yes       | List of contact attributes. If this parameter is left empty, all attributes (including name, phone number, and email) of the contact are queried. |
-| callback | AsyncCallback&lt;void&gt;               | Yes       | Callback used to return the result. If the contact is updated successfully, **err** is undefined; otherwise, **err** is an error object. |
+| contact  | [Contact](#contact)                     | Yes       | Contact information. The ID is mandatory and can be obtained through [selectContacts](#contactselectcontacts10-1). |
+| attrs    | [ContactAttributes](#contactattributes) | Yes   | Contact attributes. If this parameter is left empty, all attribute fields of the contact (including name, phone number, and email) are updated.                   |
+| callback | AsyncCallback&lt;void&gt;               | Yes       | Callback used to return the result. If the contact is updated successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Example**
 
@@ -645,7 +644,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 
 Updates a contact (with the attribute list of the contact supported). This API uses a promise to return the result.
 
-**Required Permissions:** ohos.permission.WRITE_CONTACTS
+**Required permissions:** ohos.permission.WRITE_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -653,9 +652,9 @@ Updates a contact (with the attribute list of the contact supported). This API u
 
 | Name | Type                                    | Mandatory | Description                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| context | Context                                 | Yes  | Application context, that is, the context of the app. For the definition of Context in the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
-| contact | [Contact](#contact)                     | Yes  | Contact information. The id field is mandatory and can be obtained through the [selectContacts](#contactselectcontacts10-1) API.                                                 |
-| attrs   | [ContactAttributes](#contactattributes) | No   | List of contact attributes. If this parameter is left empty, all attribute fields of the contact (including name, phone number, and email) are queried.                       |
+| context | Context                                 | Yes  | Application context, which is defined in [Context](../apis-ability-kit/js-apis-inner-application-context.md) of the stage model. |
+| contact | [Contact](#contact)                     | Yes  | Contact information. The ID is mandatory and can be obtained through [selectContacts](#contactselectcontacts10-1).                                                 |
+| attrs   | [ContactAttributes](#contactattributes) | No   | Contact attributes. If this parameter is left empty, all attribute fields of the contact (including name, phone number, and email) are updated.                       |
 
 **Return value**
 
@@ -669,7 +668,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
 
 **Example**
@@ -721,8 +720,8 @@ Updates a contact with the specified attribute list. This API uses a promise to 
 
 | Name  | Type                                    | Mandatory | Description               |
 | ------- | --------------------------------------- | ---- | ------------------ |
-| contact | [Contact](#contact)                     | Yes   | Contact information. The id field is mandatory and can be obtained through the [selectContacts](#contactselectcontacts10-1) API.       |
-| attrs   | [ContactAttributes](#contactattributes) | No   | List of contact attributes. If this parameter is left empty, all attribute fields of the contact (including name, phone number, email, etc.) are queried. |
+| contact | [Contact](#contact)                     | Yes   | Contact information. The ID is mandatory and can be obtained through [selectContacts](#contactselectcontacts10-1).       |
+| attrs   | [ContactAttributes](#contactattributes) | No   | Contact attributes. If this parameter is left empty, all attribute fields of the contact (including name, phone number, and email) are updated. |
 
 **Return value**
 
@@ -778,7 +777,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **Example**
@@ -813,7 +812,7 @@ Checks whether the current contact ID exists in the phone book. This API uses an
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [isLocalContact](#contactislocalcontact10) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -869,7 +868,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | ------------------ |
-| 201 | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 
 **Example**
@@ -900,7 +899,7 @@ Checks whether the current contact ID exists in the phone book. This API uses a 
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [isLocalContact](#contactislocalcontact10-1) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -934,7 +933,7 @@ isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;):
 
 Checks whether the contact is "My Card". This API uses an asynchronous callback to return the result.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -952,7 +951,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | ------------------ |
-| 201 | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **Example**
@@ -1022,7 +1021,7 @@ Checks whether a contact is "my card". This API uses a promise to return the res
 
 **Required Permissions**: ohos.permission.READ_CONTACTS
 
-**System Capability**: SystemCapability.Applications.ContactsData
+**System capability**: SystemCapability.Applications.ContactsData
 
 **Parameters**
 
@@ -1043,7 +1042,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | ------------------ |
-| 201 | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **Example**
@@ -1074,7 +1073,7 @@ Determines whether it is "My Card". This API uses a promise to return the result
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [isMyCard](#contactismycard10-1) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -1125,7 +1124,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Example**
@@ -1160,7 +1159,7 @@ Queries "my card". This API uses an asynchronous callback to return the result.
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryMyCard](#contactquerymycard10) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1210,7 +1209,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -1247,7 +1246,7 @@ Queries the "my card" (supports passing in a list of contact attributes). This A
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryMyCard](#contactquerymycard10-1) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -1282,9 +1281,9 @@ queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt
 
 Queries "my card" (with support for passing in a list of contact attributes). This API uses a promise to return the result.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
-**System Capability:** SystemCapability.Applications.ContactsData
+**System capability:** SystemCapability.Applications.ContactsData
 
 **Parameters**
 
@@ -1305,7 +1304,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message          |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -1338,7 +1337,7 @@ Queries my card (with support for passing in a list of contact attributes). This
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryMyCard](#contactquerymycard10-2) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1488,6 +1487,7 @@ Calls the contact selection API to open the contact selection UI. This API uses 
 | ----------------------------------------------- | ---------------------------------------------- |
 | Promise&lt;Array&lt;[Contact](#contact)&gt;&gt; | Promise used to return the result. Array of selected contact objects. |
 
+
 **Example**
 
   ```js
@@ -1504,7 +1504,7 @@ Calls the contact selection API to open the contact selection UI. This API uses 
 
 selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Opens the contact selection UI to select a contact. You can pass in filter criteria <a href="#contactselectionoptions10">ContactSelectionOptions</a> when selecting a contact. This API uses an asynchronous callback to return the result.
+Opens the contact selection UI to select a contact. You can pass in filter criteria [ContactSelectionOptions](#contactselectionoptions10) when selecting a contact. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1609,7 +1609,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message          |
 | --- | ---------------------- |
-| 201 | Permission denied.     |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Example**
@@ -1644,7 +1644,7 @@ Queries a contact based on the unique identifier key. This API uses an asynchron
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryContact](#contactquerycontact10) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -1696,7 +1696,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -1773,9 +1773,9 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
 
 Queries contacts based on the key and attrs. This API uses an asynchronous callback to return the result.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
-**System Capability:** SystemCapability.Applications.ContactsData
+**System capability:** SystemCapability.Applications.ContactsData
 
 **Parameters**
 
@@ -1792,7 +1792,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -1885,7 +1885,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -1926,7 +1926,7 @@ Queries the contact based on the key, holder, and attrs. This API uses an asynch
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryContact](#contactquerycontact10-3) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -1967,7 +1967,7 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
 
 Queries contacts based on the key, holder, and attrs. This API uses a promise to return the result.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -1992,7 +1992,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -2029,7 +2029,7 @@ Queries a contact based on the key, holder, and attrs. This API uses a promise t
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryContact](#contactquerycontact10-4) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2088,7 +2088,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -2123,7 +2123,7 @@ Queries all contacts. This API uses an asynchronous callback to return the resul
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryContacts](#contactquerycontacts10) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -2173,7 +2173,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -2212,7 +2212,7 @@ Queries all contacts based on the holder. This API uses an asynchronous callback
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryContacts](#contactquerycontacts10-1) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2251,7 +2251,7 @@ Queries all contacts based on attrs. This API uses an asynchronous callback to r
 
 **Required Permissions**: ohos.permission.READ_CONTACTS
 
-**System Capability**: SystemCapability.Applications.ContactsData
+**System capability**: SystemCapability.Applications.ContactsData
 
 **Parameters**
 
@@ -2267,7 +2267,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -2304,7 +2304,7 @@ Queries all contacts based on attrs. This API uses an asynchronous callback to r
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryContacts](#contactquerycontacts10-2) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2341,7 +2341,7 @@ Queries all contacts based on the holder and attrs. This API uses an asynchronou
 
 **Required Permissions**: ohos.permission.READ_CONTACTS
 
-**System Capability**: SystemCapability.Applications.ContactsData
+**System capability**: SystemCapability.Applications.ContactsData
 
 **Parameters**
 
@@ -2358,7 +2358,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -2399,7 +2399,7 @@ Queries all contacts based on the holder and attrs. This API uses an asynchronou
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryContacts](#contactquerycontacts10-3) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -2463,7 +2463,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -2500,7 +2500,7 @@ Queries all contacts based on the holder and attrs. This API uses a promise to r
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryContacts](#contactquerycontacts10-4) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -2559,7 +2559,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.  |
 
 **Example**
@@ -2594,7 +2594,7 @@ Queries contacts by phone number. This API uses an asynchronous callback to retu
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryContactsByPhoneNumber](#contactquerycontactsbyphonenumber10) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -2627,7 +2627,7 @@ queryContactsByPhoneNumber(context: Context, phoneNumber: string, holder: Holder
 
 Queries contacts by phone number and holder. This API uses an asynchronous callback to return the result. The list returned by this API contains only the id, key, and phoneNumbers attributes in the contact information. To query all information of a contact, you are advised to use the [queryContact](#contactquerycontact10-3) API and query based on the key attribute returned by that API. When an app calls this API in the background to obtain contact information, it must request the corresponding long-term task.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -2646,7 +2646,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.   |
 
 **Example**
@@ -2725,15 +2725,15 @@ Queries contacts by phone number and attrs. This API uses an asynchronous callba
 
 **Required Permissions**: ohos.permission.READ_CONTACTS
 
-**System Capability**: SystemCapability.Applications.ContactsData
+**System capability**: SystemCapability.Applications.ContactsData
 
 **Parameters**
 
 | Name      | Type                                                  | Mandatory | Description                                                         |
 | --------- | ----------------------------------------------------- | --------- | ------------------------------------------------------------ |
-| context     | Context                                               | Yes   | Application context Context. For the definition of Context in the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
+| context     | Context                                               | Yes   | Application context. For the definition of the context in the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
 | phoneNumber | string                                                | Yes   | Phone number of the contact. Only exact match is supported; wildcard matching is not supported.                  |
-| attrs       | [ContactAttributes](#contactattributes)               | Yes   | List of contact attributes. If empty, all attribute fields of the contact (including name, phone number, email, etc.) are queried.                                          |
+| attrs       | [ContactAttributes](#contactattributes)               | Yes   | Contact attributes. If this parameter is left empty, the **id**, **key**, and **phoneNumbers** attributes of the contact are queried.                                          |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes   | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is the array of contact objects found; otherwise, **err** is an error object. |
 
 **Error codes**
@@ -2742,7 +2742,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.   |
 
 **Example**
@@ -2779,7 +2779,7 @@ Queries contacts by phone number and attrs. This API uses an asynchronous callba
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryContactsByPhoneNumber](#contactquerycontactsbyphonenumber10-2) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -2787,9 +2787,9 @@ Queries contacts by phone number and attrs. This API uses an asynchronous callba
 
 | Name      | Type                                                  | Mandatory | Description                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| phoneNumber | string                                                | Yes   | Phone number of the contact. Only full match is supported; wildcard matching is not supported.                    |
-| attrs       | [ContactAttributes](#contactattributes)               | Yes   | List of contact attributes. If this parameter is left empty, all attribute fields of the contact (including name, phone number, and email) are queried.                                           |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes   | Callback used to return the result. If the query is successful, **err** is undefined and **data** is the array of contact objects found; otherwise, **err** is an error object. |
+| phoneNumber | string                                                | Yes   | Phone number of the contact. Only exact match is supported; wildcard matching is not supported.                    |
+| attrs       | [ContactAttributes](#contactattributes)               | Yes   | Contact attributes. If this parameter is left empty, the **id**, **key**, and **phoneNumbers** attributes of the contact are queried.                                           |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes   | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is the array of contact objects found; otherwise, **err** is an error object. |
 
 **Example**
 
@@ -2822,10 +2822,10 @@ Queries contacts by phone number, holder, and attrs. This API uses an asynchrono
 
 | Name     | Type                                                  | Mandatory | Description                                                        |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| context     | Context                                               | Yes   | Application context. For the definition of the application context in the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
-| phoneNumber | string                                                | Yes   | Phone number of the contact. Only exact match is supported, and wildcard matching is not supported.                      |
+| context     | Context                                               | Yes   | Application context Context. For the definition of Context in the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
+| phoneNumber | string                                                | Yes   | Phone number of the contact. Only exact match is supported; wildcard matching is not supported.                      |
 | holder      | [Holder](#holder)                                     | Yes   | Application information class for creating the contact. If this parameter is empty, the system Contacts app is used for the query by default.                                        |
-| attrs       | [ContactAttributes](#contactattributes)               | Yes   | Attribute list of the contact. If this parameter is empty, all attribute fields of the contact (including name, phone number, email, etc.) are queried.                                           |
+| attrs       | [ContactAttributes](#contactattributes)               | Yes   | Contact attributes. If this parameter is left empty, the **id**, **key**, and **phoneNumbers** attributes of the contact are queried.                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes   | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is the array of contact objects found; otherwise, **err** is an error object. |
 
 **Error codes**
@@ -2834,7 +2834,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.   |
 
 **Example**
@@ -2875,7 +2875,7 @@ Queries contacts by phone number, holder, and attrs. This API uses an asynchrono
 >
 > Supported since API version 7 and deprecated since API version 10. You are advised to use [queryContactsByPhoneNumber](#contactquerycontactsbyphonenumber10-3) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -2883,10 +2883,10 @@ Queries contacts by phone number, holder, and attrs. This API uses an asynchrono
 
 | Name      | Type                                                  | Mandatory | Description                                                         |
 | --------- | ----------------------------------------------------- | --------- | ------------------------------------------------------------ |
-| phoneNumber | string                                                | Yes   | Phone number of the contact. Only exact match is supported, and wildcard matching is not supported.                    |
-| holder      | [Holder](#holder)                                     | Yes   | App information class for creating the contact. If this parameter is empty, the system Contacts app is used for the query by default.                                        |
-| attrs       | [ContactAttributes](#contactattributes)               | Yes   | List of contact attributes. If this parameter is empty, all attribute fields of the contact are queried.                                           |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes   | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is the array of contact objects obtained; otherwise, **err** is an error object. |
+| phoneNumber | string                                                | Yes   | Phone number of the contact. Only exact match is supported; wildcard matching is not supported.                    |
+| holder      | [Holder](#holder)                                     | Yes   | Application information class for creating the contact. If this parameter is empty, the system Contacts app is used for the query by default.                                        |
+| attrs       | [ContactAttributes](#contactattributes)               | Yes   | Contact attributes. If this parameter is left empty, the **id**, **key**, and **phoneNumbers** attributes of the contact are queried.                                           |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes   | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is the array of contact objects found; otherwise, **err** is an error object. |
 
 **Example**
 
@@ -2923,10 +2923,10 @@ Queries contacts by phone number, holder, and attrs. This API uses a promise to 
 
 | Name      | Type                                    | Mandatory | Description                                                         |
 | --------- | --------------------------------------- | --------- | ------------------------------------------------------------ |
-| context     | Context                                 | Yes   | Application context, that is, Context. For the definition of Context in the Stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
-| phoneNumber | string                                  | Yes   | Phone number of the contact. Only exact match is supported, and wildcard match is not supported.                      |
-| holder      | [Holder](#holder)                       | No   | App information class for creating a contact. If this parameter is not passed, the system Contacts app is used for the query by default.       |
-| attrs       | [ContactAttributes](#contactattributes) | No   | List of contact attributes. If not passed, all contact attributes are queried by default.               |
+| context     | Context                                 | Yes   | Application context Context. For the definition of Context in the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
+| phoneNumber | string                                  | Yes   | Phone number of the contact. Only exact match is supported; wildcard matching is not supported.                      |
+| holder      | [Holder](#holder)                       | No   | Application information class for creating the contact. If this parameter is not passed, the system Contacts app is used for the query by default.       |
+| attrs       | [ContactAttributes](#contactattributes) | No   | Contact attributes. If this parameter is left empty, the **id**, **key**, and **phoneNumbers** attributes of the contact are queried.               |
 
 **Return value**
 
@@ -2940,7 +2940,7 @@ For details about the following error codes, see [General Error Code Description
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.   |
 
 **Example**
@@ -2977,7 +2977,7 @@ Queries contacts by phone number, holder, and attrs. This API uses a promise to 
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryContactsByPhoneNumber](#contactquerycontactsbyphonenumber10-4) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -2985,9 +2985,9 @@ Queries contacts by phone number, holder, and attrs. This API uses a promise to 
 
 | Name      | Type                                    | Mandatory | Description                   |
 | ----------- | --------------------------------------- | ---- | ---------------------- |
-| phoneNumber | string                                  | Yes   | Phone number of the contact. Only full match is supported, and wildcard matching is not supported.     |
-| holder      | [Holder](#holder)                       | No   | App information class for creating the contact. If this parameter is not passed, the system Contacts app is used for the query by default. |
-| attrs       | [ContactAttributes](#contactattributes) | No   | List of contact attributes. If this parameter is not passed, all contact attributes are queried by default.     |
+| phoneNumber | string                                  | Yes   | Phone number of the contact. Only exact match is supported; wildcard matching is not supported.     |
+| holder      | [Holder](#holder)                       | No   | Application information class for creating the contact. If this parameter is not passed, the system Contacts app is used for the query by default. |
+| attrs       | [ContactAttributes](#contactattributes) | No   | Contact attributes. If this parameter is left empty, the **id**, **key**, and **phoneNumbers** attributes of the contact are queried.     |
 
 **Return value**
 
@@ -3036,7 +3036,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message           |
 | --- | ------------------ |
-| 201 | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -3103,9 +3103,9 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
 
 Queries contacts by email and holder. This API uses an asynchronous callback to return the result. The list returned by this API contains only the id, key, and Emails properties in the contact information. To query all information of a contact, you are advised to use the [queryContact](#contactquerycontact10-3) API to query by the key property returned by this API.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
-**System Capability:** SystemCapability.Applications.ContactsData
+**System capability:** SystemCapability.Applications.ContactsData
 
 **Parameters**
 
@@ -3122,7 +3122,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -3206,10 +3206,10 @@ Queries contacts by email and attributes. This API uses an asynchronous callback
 
 | Name   | Type                                                  | Mandatory | Description                                                         |
 | ------ | ----------------------------------------------------- | --------- | ------------------------------------------------------------ |
-| context  | Context                                               | Yes   | Application context, which is defined in [Context](../apis-ability-kit/js-apis-inner-application-context.md) for the stage model. |
+| context  | Context                                               | Yes   | Application context Context. For the definition of Context in the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
 | email    | string                                                | Yes   | Email address of the contact.                                           |
-| attrs    | [ContactAttributes](#contactattributes)               | Yes   | List of contact attributes. If this parameter is left empty, all attribute fields of the contact (including name, phone number, email, etc.) are queried.                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes   | Callback used to return the result. If the contact query is successful, **err** is **undefined** and **data** is the array of contact objects obtained; otherwise, **err** is an error object. |
+| attrs    | [ContactAttributes](#contactattributes)               | Yes   | Contact attributes. If this parameter is left empty, the **id**, **key**, and **Emails** attributes of the contact are queried.                                           |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes   | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is the array of contact objects found; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -3217,7 +3217,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -3263,8 +3263,8 @@ Queries contacts based on the email and attrs. This API uses an asynchronous cal
 | Name     | Type                                                  | Mandatory | Description                                                         |
 | -------- | ----------------------------------------------------- | --------- | ------------------------------------------------------------ |
 | email    | string                                                | Yes       | Email address of the contact.                                           |
-| attrs    | [ContactAttributes](#contactattributes)               | Yes       | Attribute list of the contact. If this parameter is left empty, all attribute fields of the contact (including name, phone number, email, etc.) are queried.                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes       | Callback used to return the result. If the contact query is successful, **err** is undefined and **data** is the array of contact objects obtained; otherwise, **err** is an error object. |
+| attrs    | [ContactAttributes](#contactattributes)               | Yes   | Contact attributes. If this parameter is left empty, the **id**, **key**, and **Emails** attributes of the contact are queried.                                           |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes       | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is the array of contact objects found; otherwise, **err** is an error object. |
 
 **Example**
 
@@ -3297,11 +3297,11 @@ Queries contacts by email, holder, and attrs. This API uses an asynchronous call
 
 | Name     | Type                                                 | Mandatory | Description                                                        |
 | -------- | ---------------------------------------------------- | --------- | ------------------------------------------------------------------ |
-| context  | Context                                              | Yes       | Application context Context. For the definition of application context in the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
+| context  | Context                                              | Yes       | Application context Context. For the definition of Context in the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
 | email    | string                                               | Yes       | Email address of the contact.                                      |
-| holder   | [Holder](#holder)                                    | Yes       | App information class for creating the contact. If this parameter is left empty, the system contacts app is used for the query by default. |
-| attrs    | [ContactAttributes](#contactattributes)              | Yes       | Attribute list of the contact. If this parameter is left empty, all attribute fields of the contact (including name, phone number, email, etc.) are queried. |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes       | Callback used to return the result. If the contact is queried successfully, err is undefined and data is the array of contact objects obtained; otherwise, err is an error object. |
+| holder   | [Holder](#holder)                                    | Yes       | Application information class for creating the contact. If this parameter is left empty, the system Contacts app is used for the query by default. |
+| attrs    | [ContactAttributes](#contactattributes)               | Yes   | Contact attributes. If this parameter is left empty, the **id**, **key**, and **Emails** attributes of the contact are queried.                                           |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes       | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is the array of contact objects found; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -3309,7 +3309,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message                                                      |
 | --- | ------------------------------------------------------------------ |
-| 201 | Permission denied.                                                 |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Example**
@@ -3359,9 +3359,9 @@ Queries contacts based on email, holder, and attrs. This API uses an asynchronou
 | Name     | Type                                                  | Mandatory | Description                                                        |
 | -------- | ----------------------------------------------------- | --------- | ------------------------------------------------------------ |
 | email    | string                                                | Yes       | Email address of the contact.                                           |
-| holder   | [Holder](#holder)                                     | Yes       | Application information class for creating the contact. If this parameter is left empty, the system contact app is used for query by default.                                       |
-| attrs    | [ContactAttributes](#contactattributes)               | Yes       | List of contact attributes. If this parameter is left empty, all attribute fields of the contact (including name, phone number, email, etc.) are queried.                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes       | Callback used to return the result. If the contact is queried successfully, **err** is **undefined** and **data** is the array of contact objects obtained; otherwise, **err** is an error object. |
+| holder   | [Holder](#holder)                                     | Yes       | Application information class for creating the contact. If this parameter is left empty, the system Contacts app is used for the query by default.                                       |
+| attrs    | [ContactAttributes](#contactattributes)               | Yes   | Contact attributes. If this parameter is left empty, the **id**, **key**, and **Emails** attributes of the contact are queried.                                           |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | Yes       | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is the array of contact objects found; otherwise, **err** is an error object. |
 
 **Example**
 
@@ -3390,18 +3390,18 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
 
 Queries contacts by email, holder, and attrs. This API uses a promise to return the result. The returned list contains only the id, key, and Emails attributes of the contact information. To query all information of a contact, you are advised to use the [queryContact](#contactquerycontact10-3) API to query by the attribute key returned by this API.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
-**System Capability:** SystemCapability.Applications.ContactsData
+**System capability:** SystemCapability.Applications.ContactsData
 
 **Parameters**
 
 | Name | Type                                    | Mandatory | Description                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| context | Context                                 | Yes   | Application context. For the definition of the Context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
+| context | Context                                 | Yes   | Application context Context. For the definition of Context in the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). |
 | email   | string                                  | Yes   | Email address of the contact.                                           |
-| holder  | [Holder](#holder)                       | No   | App information class for creating the contact. If this parameter is not passed, the system Contacts app is used for the query by default.                                       |
-| attrs   | [ContactAttributes](#contactattributes) | No   | List of contact attributes. If not passed, all contact attributes are queried by default.                                           |
+| holder  | [Holder](#holder)                       | No   | Application information class for creating the contact. If this parameter is not passed, the system Contacts app is used for the query by default.                                       |
+| attrs   | [ContactAttributes](#contactattributes) | No   | Contact attributes. If this parameter is left empty, the **id**, **key**, and **Emails** attributes of the contact are queried.                                           |
 
 **Return value**
 
@@ -3415,7 +3415,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -3451,7 +3451,7 @@ Queries contacts by email, holder, and attrs. This API uses a promise to return 
 >
 > Supported since API version 7 and deprecated since API version 10. You are advised to use [queryContactsByEmail](#contactquerycontactsbyemail10-4) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3460,8 +3460,8 @@ Queries contacts by email, holder, and attrs. This API uses a promise to return 
 | Name | Type                                    | Mandatory | Description                   |
 | ------ | --------------------------------------- | ---- | ---------------------- |
 | email  | string                                  | Yes   | Email address of the contact.     |
-| holder | [Holder](#holder)                       | No   | Application information class for creating a contact. If this parameter is not passed, the system Contacts app is used for the query by default. |
-| attrs  | [ContactAttributes](#contactattributes) | No   | List of contact attributes. If this parameter is not passed, all contact attributes are queried by default.     |
+| holder | [Holder](#holder)                       | No   | Application information class for creating the contact. If this parameter is not passed, the system Contacts app is used for the query by default. |
+| attrs  | [ContactAttributes](#contactattributes) | No   | Contact attributes. If this parameter is left empty, the **id**, **key**, and **Emails** attributes of the contact are queried.     |
 
 **Return value**
 
@@ -3494,7 +3494,7 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
 
 **Required Permissions**: ohos.permission.READ_CONTACTS
 
-**System Capability**: SystemCapability.Applications.ContactsData
+**System capability**: SystemCapability.Applications.ContactsData
 
 **Parameters**
 
@@ -3507,7 +3507,7 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -3563,7 +3563,7 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
       console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info(`Succeeded in querying Groups.. data->${JSON.stringify(data)}`);
+    console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
   });
   ```
 
@@ -3591,7 +3591,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message           |
 | --- | ------------------ |
-| 201 | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -3630,7 +3630,7 @@ Queries all groups of a contact based on the holder. This API uses an asynchrono
 >
 > Supported since API version 7 and deprecated since API version 10. You are advised to use [queryGroups](#contactquerygroups10-1) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -3689,7 +3689,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | ------------------ |
-| 201 | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Example**
@@ -3724,7 +3724,7 @@ Queries all contact groups based on the holder. This API uses a promise to retur
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryGroups](#contactquerygroups10-2) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -3778,7 +3778,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **Example**
@@ -3813,7 +3813,7 @@ Queries the information of all apps that create contacts. This API uses an async
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryHolders](#contactqueryholders10) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -3866,7 +3866,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | ------------------ |
-| 201 | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **Example**
@@ -3942,7 +3942,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | ------------------ |
-| 201 | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **Example**
@@ -3977,7 +3977,7 @@ Queries the key of a contact based on the contact ID. This API uses an asynchron
 &gt;
 &gt; This API is supported since API version 7 and deprecated since API version 10. You are advised to use [queryKey](#contactquerykey10) instead.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability**: SystemCapability.Applications.ContactsData
 
@@ -4009,7 +4009,7 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
 
 Queries the key of a contact based on the contact ID and holder. This API uses an asynchronous callback to return the result.
 
-**Required Permissions:** ohos.permission.READ_CONTACTS
+**Required permissions:** ohos.permission.READ_CONTACTS
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -4028,7 +4028,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID  | Error Message          |
 | --- | ---------------------- |
-| 201 | Permission denied.     |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **Example**
@@ -4106,7 +4106,7 @@ Queries the contact key based on the contact ID and holder. This API uses a prom
 
 **Required Permissions**: ohos.permission.READ_CONTACTS
 
-**System Capability**: SystemCapability.Applications.ContactsData
+**System capability**: SystemCapability.Applications.ContactsData
 
 **Parameters**
 
@@ -4128,7 +4128,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message |
 | -------- | ------------------ |
-| 201 | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **Example**
@@ -4225,7 +4225,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 16700001      | General error. |
 
 **Example**
@@ -4250,7 +4250,7 @@ promise.then((data) => {
 
 addContactViaUI(context: Context, contact: Contact): Promise&lt;number&gt;
 
-Calls the contact creation API to open the new contact UI page and complete the creation. This API uses a promise to return the result.
+Calls the contact creation API to open the contact creation UI. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -4276,7 +4276,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | ID                 | Error Message                                       |
 | --------------------- | ------------------------------------------ |
 | 401       | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
-| 801       | The specified SystemCapability name was not found. |
+| 801       | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16700001       | General error. |
 | 16700102       | Failed to set value to contacts data. |
 | 16700103       | User cancel. |
@@ -4337,7 +4337,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 | ID                 | Error Message                                       |
 | --------------------- | ------------------------------------------ |
 | 401       | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
-| 801       | The specified SystemCapability name was not found. |
+| 801       | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16700001       | General error. |
 | 16700101       | Failed to get value from contacts data. |
 | 16700102       | Failed to set value to contacts data. |
@@ -4401,7 +4401,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 16700001      | General error. |
 | 16700002      | Invalid parameter value. |
 
@@ -4412,7 +4412,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > In the examples in this document, this.context is used to obtain the UIAbilityContext, where this represents a UIAbility instance inherited from UIAbility. If you need to use the capabilities provided by UIAbilityContext in the UI, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
-
 ```js
 import { common } from '@kit.AbilityKit';
 import { contact } from '@kit.ContactsKit';
@@ -4440,7 +4439,7 @@ Checks whether there are call records that meet the specified conditions, only f
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
-**Required Permissions:** ohos.permission.CHECK_CALL_LOG
+**Required permissions:** ohos.permission.CHECK_CALL_LOG
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -4467,7 +4466,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 16700001      | General error. |
 | 16700002      | Invalid parameter value. |
 
@@ -4502,7 +4501,7 @@ Checks whether there are matching call logs. By default, call logs within the la
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
-**Required Permissions:** ohos.permission.CHECK_CALL_LOG
+**Required permissions:** ohos.permission.CHECK_CALL_LOG
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -4528,7 +4527,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 16700001      | General error. |
 | 16700002      | Invalid parameter value. |
 
@@ -4557,7 +4556,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 
 syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
-Synchronizes multiple contacts to the contact database in batches. A maximum of 400 contacts can be synchronized per batch. Synchronizes the third-party app's own contacts to the local device. The caller must be in the foreground.
+Synchronizes multiple contacts to the contact database in batches. A maximum of 400 contacts can be synchronized in each batch. The caller must be in the foreground. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -4590,7 +4589,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 16700001      | General error. |
 | 16700002      | Invalid parameter value. |
 | 16700003      | Background usage is prohibited. |
@@ -4640,13 +4639,12 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
       currentBatch: batch,
       totalBatches: totalBatches
     };
-    console.info(`Sync batch ${batch}/${totalBatches}, contact count: ${currentBatchSize}`);
     let result = await contact.syncContacts(context, mode, progress, contacts);
-    console.info(`Batch ${batch} synced successfully, result: `  + JSON.stringify(result));
+    console.info(`Succeeded in syncContacts. result->${JSON.stringify(result)}`);
   }
   catch (err) {
     const e = err as BusinessError;
-    console.error(`syncContacts failed: code=${e.code}, message=${e.message}`);
+    console.error(`Failed to syncContacts. Code: ${e.code}, message: ${e.message}`);
   }
 }
 ```
@@ -4655,7 +4653,7 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
 
 queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&gt;
 
-Queries the contact synchronization status of the current app. An empty value indicates that the app has not initiated synchronization or synchronization is complete. This API uses a promise to return the result.
+Queries the contact information synchronization status of the current app. If the returned contact synchronization information is empty, the caller does not perform contact synchronization or the contact synchronization has been completed. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -4685,7 +4683,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 | ID | Error Message           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 16700001      | General error. |
 
 **Example**
@@ -4708,7 +4706,7 @@ console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList
 
 importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
-Imports multiple contacts in batches through UI interaction. A maximum of 100 contacts can be imported at a time. Importing contact portraits is not supported.
+Imports multiple contacts in batches through UI interaction. A maximum of 100 contacts can be imported each time. Importing contact avatars is not supported. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -4737,7 +4735,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID | Error Message |
 | -------- | ------------------ |
-| 801 | The specified SystemCapability name was not found. |
+| 801       | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16700001 | General error. |
 | 16700002 | Invalid parameter value. |
 | 16700004 | The number of contacts exceeds the limit. |
@@ -4783,7 +4781,7 @@ Options for selecting contacts.
 | maxSelectable<sup>15+</sup>         | number | No   | Yes   | Maximum number of contacts. The default value is **10000**. If the value exceeds the upper limit, the default value is used for filtering.<br>**Atomic Service API**: This API is supported in atomic services since API version 15.     | 
 | isDisplayedByName<sup>15+</sup>         | boolean | No   | Yes   | Whether to display by contact name. The value **true** means display by contact name, and **false** means display by contact number. The default value is **false**.<br>**Atomic Service API**: This API is supported in atomic services since API version 15.     |
 | filter<sup>15+</sup>         | [ContactSelectionFilter](#contactselectionfilter15) | No   | Yes   | Contact query filter.<br>**Atomic Service API**: This API is supported in atomic services since API version 15.     | 
-| isAutoDismissOnNavigation        | boolean | No   | Yes   | Whether to allow automatic dismissal of the picker when the page that launched it undergoes a route change. The value **true** means the picker is allowed to be dismissed automatically, and **false** means the picker is not allowed to be dismissed automatically. The default value is **false**.<br> **Since:** 26.0.0 <br> **Atomic Service API**: This API is supported in atomic services since API version 26.0.0.<br> **Model constraint**: This API can be used only in the stage model.     |
+| isAutoDismissOnNavigation        | boolean | No   | Yes   | Whether to allow automatic dismissal of the picker when the page that launched it undergoes a route change. The value **true** means the picker is allowed to be dismissed automatically, and **false** means the picker is not allowed to be dismissed automatically. The default value is **false**.<br> **Since:** 26.0.0 <br> **Atomic Service API**: This API is supported in atomic services since API version 26.0.0.<br> **Model restriction**: This API can be used only in the stage model.     |
 
 ## ContactSelectionFilter<sup>15+</sup>
 
@@ -4838,7 +4836,7 @@ Defines the filter options for contacts.
 |                Name               |                  Type                 |  Read-Only  | Optional    |        Description      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
 | filterCondition         | [FilterCondition](#filtercondition15) | No    |   No   | Filter condition.     |
-| value        | string \| ValueType[] |  No    |   Yes   | Filter value. The default value is undefined.     |
+| value        | string \| [ValueType](../apis-arkdata/js-apis-data-valuesBucket.md#valuetype) [] |  No    |   Yes   | Filter value. The default value is **undefined**.     |
 
 ## FilterCondition<sup>15+</sup>
 
@@ -4892,6 +4890,7 @@ Defines a contact object class.
 
 **System capability**: SystemCapability.Applications.ContactsData
 
+
 |       Name        |                   Type                  | Read-Only | Optional | Description                                   |
 | ----------------- | --------------------------------------- | ---- | ---- | -------------------------------------- |
 | INVALID_CONTACT_ID | number                                 | Yes   | No    | Default contact ID. The value is **-1**.                           |
@@ -4899,7 +4898,7 @@ Defines a contact object class.
 | key               | string                                  | Yes   | Yes   | Contact key, which is automatically generated by the system.               |
 | contactAttributes | [ContactAttributes](#contactattributes) | No   | Yes   | Contact attribute list. If this parameter is empty, all attribute fields (including the name, phone number, and email address) of the contact are queried.                     |
 | emails            | [Email](#email)[]                       | No   | Yes   | List of email addresses of the contact.                 |
-| events            | [Event](#event)[]                       | No   | Yes   | List of important dates of the contact, such as birthdays and anniversaries. |
+| events<sup>(deprecated)</sup>            | [Event](#eventdeprecated)[]                       | No   | Yes   | List of important dates of the contact, such as birthdays and anniversaries.<br> **Since:** 7 <br> **Deprecated since:** 26.1.0 <br> **Replaced by:** significantDates |
 | groups            | [Group](#group)[]                       | No   | Yes   | List of groups of the contact.<br> Note: When adding or updating a contact, you can only associate the contact with an existing group. Creating a new group is not supported.                     |
 | imAddresses       | [ImAddress](#imaddress)[]               | No   | Yes   | List of instant message addresses of the contact.             |
 | phoneNumbers      | [PhoneNumber](#phonenumber)[]           | No   | Yes   | List of phone numbers of the contact.                 |
@@ -4912,6 +4911,7 @@ Defines a contact object class.
 | nickName          | [NickName](#nickname)                   | No   | Yes   | Nickname of the contact.                         |
 | note              | [Note](#note)                           | No   | Yes   | Note of the contact.                         |
 | organization      | [Organization](#organization)           | No   | Yes   | Organization information of the contact.                     |
+| significantDates      | [SignificantDate](#significantdate)[]           | No   | Yes   | List of important dates of the contact, such as birthdays and anniversaries.<br> **Since:** 26.1.0                    |
 
 **Example**
 
@@ -5017,7 +5017,7 @@ Email address of the contact.
 
 **Example**
 
-Create data in JSON format.
+  Create data in JSON format.
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -5028,7 +5028,8 @@ let email: contact.Email = {
 }
 ```
 
-Alternatively, create data by using the new Email object.
+
+  Alternatively, create data by using the new Email object.
 
 ```js
 let email = new contact.Email();
@@ -5049,7 +5050,7 @@ Creates an app information class for a contact.
 
 **Example**
 
-Create data in JSON format.
+  Create data in JSON format.
 
 ```js
 let holder: contact.Holder = {
@@ -5059,9 +5060,15 @@ let holder: contact.Holder = {
 };
 ```
 
-## Event
+## Event<sup>(deprecated)</sup>
 
 Defines the contact event class.
+
+**Since:** 7
+
+**Deprecated since:** 26.1.0
+
+**Replaced by:** [SignificantDate](#significantdate)
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -5080,7 +5087,7 @@ Defines the contact event class.
 
 **Example**
 
-Create data in JSON format.
+  Create data in JSON format.
 
 ```js
 let event: contact.Event = {
@@ -5088,7 +5095,7 @@ let event: contact.Event = {
 };
 ```
 
-Or create data by instantiating an Event object.
+  Or create data by instantiating an Event object.
 
 ```js
 let event = new contact.Event();
@@ -5146,7 +5153,7 @@ Defines the instant message address of a contact.
 
 **Example**
 
-Create data in JSON format.
+  Create data in JSON format.
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -5157,7 +5164,8 @@ let imAddress: contact.ImAddress = {
 };
 ```
 
-Or create data by instantiating an ImAddress object with new.
+
+  Or create data by instantiating an ImAddress object with new.
 
 ```js
 let imAddress = new contact.ImAddress();
@@ -5185,7 +5193,7 @@ Defines the name class of a contact.
 
 **Example**
 
-Create data in JSON format.
+  Create data in JSON format.
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -5234,7 +5242,7 @@ Defines the note class of a contact.
 
 **Example**
 
-Create data in JSON format.
+  Create data in JSON format.
 
 ```js
 let note: contact.Note = {
@@ -5275,6 +5283,7 @@ Defines a contact phone number.
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Applications.ContactsData
+
 
 | Name             |  Type  | Read-Only  | Optional  | Description                                             |
 | ---------------- | ---- | ---- | ---- | ------------------------------------------------ |
@@ -5391,7 +5400,7 @@ Defines the postal address of a contact.
 
 **Example**
 
-Create data using JSON format.
+  Create data using JSON format.
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -5402,7 +5411,7 @@ let postalAddress: contact.PostalAddress = {
 };
 ```
 
-Alternatively, create data by instantiating a PostalAddress object.
+  Alternatively, create data by instantiating a PostalAddress object.
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -5444,7 +5453,7 @@ Defines the relation class for a contact.
 
 **Example**
 
-Create data in JSON format.
+  Create data in JSON format.
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -5455,7 +5464,7 @@ let relation: contact.Relation = {
 };
 ```
 
-Alternatively, create data by instantiating a Relation object using new.
+  Alternatively, create data by instantiating a Relation object using new.
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -5486,7 +5495,7 @@ Defines the Session Initiation Protocol (SIP) address class for a contact.
 
 **Example**
 
-Create data in JSON format.
+  Create data in JSON format.
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -5496,7 +5505,7 @@ let sipAddress: contact.SipAddress = {
 };
 ```
 
-Alternatively, create data by instantiating a SipAddress object.
+  Alternatively, create data by instantiating a SipAddress object.
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -5519,7 +5528,7 @@ Defines the website information class for a contact.
 
 **Example**
 
-Create data in JSON format.
+  Create data in JSON format.
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -5528,6 +5537,7 @@ let website: contact.Website = {
     website: 'website'
 };
 ```
+
 
 ## ContactSyncMode
 
@@ -5583,3 +5593,61 @@ Information about contact synchronization for the calling app.
 | completedBatches        | Array&lt;number&gt; |  No  |  No    | Array of batch IDs of contacts that have been successfully synchronized. The value ranges from 1 to **totalBatches**.      |
 | totalBatches        | number |  No  |  No    | Total number of contact batches to be synchronized.     |
 | lastSyncTime        | number |  No  |  No    | Latest timestamp of contact synchronization, in milliseconds (ms).|
+
+## SignificantDateType
+
+Enumerates the important date types of a contact.
+
+**Since:** 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
+| Name                  | Value | Description                               |
+| --------------------- | ---- | ---------------------------------- |
+| DATE_TYPE_OTHER    | 0 | Other date type. |
+| DATE_TYPE_BIRTHDAY            | 1 | Birthday date type.                 |
+| DATE_TYPE_LUNAR_BIRTHDAY            | 2 | Lunar birthday.                 |
+| DATE_TYPE_ANNIVERSARY            | 3 | Anniversary.                 |
+
+
+## SignificantDate
+
+Defines the significant date of a contact.
+
+**Since:** 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.ContactsData
+
+|    Name   |   Type   | Read-Only | Optional | Description           |
+| --------- | -------- | ---- | ---- | -------------- |
+| dateType      | [SignificantDateType](#significantdatetype)   | No   | No   | Type of the significant date.   |
+| dateValue | string   | No   | No   | Value of the significant date. |
+| dateName       | string   | No   | Yes   | Name of the significant date type.     |
+
+**Example**
+
+  Create data in JSON format.
+
+```js
+let significantDate: contact.SignificantDate = {
+    dateValue: '2000-01-01',
+    dateType: contact.SignificantDateType.DATE_TYPE_BIRTHDAY
+};
+```
+
+  Alternatively, create data using a new **SignificantDate** object.
+
+```js
+let significantDate = new contact.SignificantDate();
+significantDate.dateValue = '2000-01-01';
+significantDate.dateType = contact.SignificantDateType.DATE_TYPE_BIRTHDAY;
+```
+

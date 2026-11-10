@@ -759,11 +759,11 @@ Repeated PiP operation.
 **处理步骤**<br>
 不要重复启动/停止画中画。<br>
 
-## 1300016 参数校验错误
+## 1300016 参数错误
 
 **错误信息**
 
-Parameter validation error.
+Parameter error.
 
 **错误描述**
 

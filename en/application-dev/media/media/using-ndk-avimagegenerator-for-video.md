@@ -1,3 +1,10 @@
+---
+kits: ["Media Kit / Media Services"]
+description: "Describes using AVImageGenerator C/C++ APIs to retrieve a frame at a specified video time for native video frame extraction and thumbnail generation."
+keywords: [AVImageGenerator, C/C++, Native API, video frame extraction, OH_AVImageGenerator, SetFDSource, PixelMap, NDK, thumbnails]
+doctype: guide
+status: active
+---
 # Using AVImageGenerator to Obtain Video Frames (C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -5,6 +12,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=0a76cfa162aa017c208ea67b923bbdadc8c1830d translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 You can use the AVImageGenerator to obtain the video frame at the specified time from the raw media asset.
 
@@ -66,7 +74,7 @@ Read [AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md)
 
    int64_t offset = 0; // Offset of the media source in the file descriptor.
    int32_t fileDescribe = -1; // File descriptor of the media file.
-   int32_t fileSize = 0; // Size of the media file.
+   int64_t fileSize = 0; // Size of the media file.
        
    // Set the file descriptor of the video resource.
    OH_AVErrCode avErrCode = OH_AVImageGenerator_SetFDSource(generator, fileDescribe, offset, fileSize);
@@ -143,7 +151,7 @@ Read [AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md)
        int64_t timeUs = 0; // Specified time (in us).
        int64_t offset = 0; // Offset of the media source in the file descriptor.
        int32_t fileDescribe = -1; // File descriptor of the media file.
-       int32_t fileSize = 0; // Size of the media file.
+       int64_t fileSize = 0; // Size of the media file.
        int32_t options = OH_AVIMAGE_GENERATOR_QUERY_CLOSEST; // OH_AVIMAGE_GENERATOR_QUERY_CLOSEST means that the key frame closest to the specified time is selected.
    };
 

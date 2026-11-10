@@ -1,11 +1,20 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Introduces variable frame rate concepts and mechanisms, including how LTPO displays balance performance and power consumption and how frame rates are configured for animations, UI drawing, self-drawn content, and non-UI threads."
+keywords: [variable frame rate, LTPO, DisplaySync, expected frame rate, frame rate control, drawing frame rate, refresh rate, frame rate]
+doctype: guide
+status: active
+---
+
 # Introduction to Variable Frame Rates
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @wh_qwe-->
 <!--Designer: @wh_qwe-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8274e2d7a391483e6c7c9de842768baf61c0596c translatedAt=2026-10-19T01:24:14.981Z pushedAt=2026-10-19T07:35:01.623Z -->
+<!-- md-trans-meta sourceCommit=263f6d28c3a62b89d47845e6da97eea2212aedc9 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 Nowadays, low-temperature polycrystalline oxide (LTPO) screens are widely used. This type of screen supports switching between frame rates at multiple levels.
 

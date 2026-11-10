@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "提供ArkGuard字节码混淆实操指引，涵盖在DevEco Studio中开启混淆、配置混淆规则、查看混淆效果及还原报错栈的步骤。"
+keywords: [混淆, 字节码混淆, 开启混淆, obfuscation-rules.txt, 混淆规则配置, 查看混淆效果, 报错栈还原, DevEco Studio, release构建]
+doctype: guide
+status: active
+---
+
 # ArkGuard字节码混淆开启指南
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

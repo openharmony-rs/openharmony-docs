@@ -527,7 +527,7 @@ napi_object_freeze等同于Object.freeze语义，freeze后对象的所有属性�
 
 ## 参考文档
 
-[Native侧子线程与UI主线程通信开发](https://developer.huawei.com/consumer/cn/doc/best-practices-V5/bpta-native-sub-main-comm-V5);
+[Native侧子线程与UI主线程通信](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/native_subthread-to-uimain);
 
 [如何在Native侧C++子线程直接调用ArkTS接口，不用通过ArkTS侧触发回调](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-ndk-8-V5);
 

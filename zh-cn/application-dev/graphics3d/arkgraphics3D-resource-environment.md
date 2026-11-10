@@ -1,9 +1,17 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "介绍3D场景下环境资源的创建与使用方法，通过createEnvironment()加载环境贴图，设置等距柱状投影背景与基于图像的光照（IBL），控制间接漫反射强度，使物体更自然地融入场景提升渲染真实感。"
+keywords: [ArkGraphics 3D, IBL, 环境贴图, 场景背景]
+doctype: guide
+status: active
+---
+
 # 创建并使用环境资源
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 环境（Environment）：用于定义3D场景背景，可基于图片创建。它将环境贴图映射到立方体或球体表面（如等距柱状投影），以模拟真实环境背景；同时提供基于图像的光照（Image-Based Lighting，IBL），通过间接漫反射等方式影响物体环境光照，使物体更自然地融入场景，提升渲染真实感。

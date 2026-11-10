@@ -5,7 +5,7 @@
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4a1885253ed0085f8ca9bd93a745e3efffa237cb translatedAt=2026-09-21T02:26:45.959Z pushedAt=2026-09-21T13:56:55.180Z -->
+<!-- md-trans-meta sourceCommit=2ad5fc6234f7f269bb6601ed8aa7fb97b91184d8 translatedAt=2026-11-03T03:11:11.535Z pushedAt=2026-11-03T03:24:38.553Z nl=1 -->
 
 The **Web** component can print HTML pages in two ways: through the W3C standard protocol API and through the app-side API.
 
@@ -28,12 +28,14 @@ You can use frontend CSS styles to control whether to print, for example, **@med
 
   Example 1:
 
-  ```html
+  <!-- @[w3c_print_html_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/print.html) -->
+  
+  ``` HTML
   <!DOCTYPE html>
   <html>
-
+  
   <head>
-      <meta charset="utf-8">
+      <meta charset='utf-8'>
       <title>printTest</title>
       <style>
           @media print {
@@ -43,78 +45,79 @@ You can use frontend CSS styles to control whether to print, for example, **@med
           }
       </style>
   </head>
-
+  
   <body>
-      <div>
-          <h1><b>
-                  <p style="text-align: center;">This is a test page for printing</p>
-              </b>
-              <hr color="#00cc00" width="95%">
-          </h1>
-          <button class="Button Button--outline" onclick="window.print();">Print</button>
-          <p> content content content </p>
-          <div id="printableTable">
-              <table>
-                  <thead>
-                      <tr>
-                          <td>Thing</td>
-                          <td>Chairs</td>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>blue</td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>green</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-          <p> content content content </p>
-          <p> content content content </p>
+  <div>
+      <h1><b>
+          <center>This is a test page for printing</center>
+      </b>
+          <hr color=#00cc00 width=95%>
+      </h1>
+      <button class='Button Button--outline' onclick='window.print();'>Print</button>
+      <p> content content content </p>
+      <div id='printableTable'>
+          <table>
+              <thead>
+              <tr>
+                  <td>Thing</td>
+                  <td>Chairs</td>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <td>1</td>
+                  <td>blue</td>
+              </tr>
+              <tr>
+                  <td>2</td>
+                  <td>green</td>
+              </tr>
+              </tbody>
+          </table>
       </div>
+      <p> content content content </p>
+      <p> content content content </p>
+  </div>
   </body>
   ```
-
+  
   Example 2 (nesting a page in an iframe):
 
-
-  ```html
+  <!-- @[w3c_print_html_iframe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/iframe.html) --> 
+  
+  ``` HTML
   <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Print Nested Page in an iframe</title>
-  </head>
-  <body>
-      <button id="printIframe">Print nested page in an iframe</button>
-      <iframe id="contentIframe" hidden></iframe>
-
-      <script>
-          document.getElementById("printIframe").addEventListener("click", () => {
-              var ctIframe = document.getElementById("contentIframe");
-              if(!ctIframe.contentWindow || !ctIframe.contentWindow.document) {
-                console.error("Failed to initialize the iframe page");
-                return;
-              }
-              var ctIframeDoc = ctIframe.contentWindow.document;
-              ctIframeDoc.write("Nested page");
-              ctIframeDoc.close();
-              ctIframe.contentWindow.print();
-          });
-      </script>
-  </body>
-  </html>
+    <html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>iframe Nested Page Printing</title>
+    </head>
+    <body>
+        <button id='printIframe'>Print iframe nested page</button>
+        <iframe id='contentIframe' hidden></iframe>
+  
+        <script>
+            document.getElementById('printIframe').addEventListener('click', () => {
+                var ctIframe = document.getElementById('contentIframe');
+                if (!ctIframe.contentWindow || !ctIframe.contentWindow.document) {
+                  console.error('iframe page initialization failed');
+                  return;
+                }
+                var ctIframeDoc = ctIframe.contentWindow.document;
+                ctIframeDoc.write('Nested page');
+                ctIframeDoc.close();
+                ctIframe.contentWindow.print();
+            });
+        </script>
+    </body>
+    </html>
   ```
 
 - Application code:
 
   <!-- @[w3c_print_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/InitiatePrintW3CAPI.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   

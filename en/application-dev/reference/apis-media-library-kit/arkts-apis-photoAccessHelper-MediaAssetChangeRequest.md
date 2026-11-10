@@ -1,14 +1,13 @@
 # Class (MediaAssetChangeRequest)
-
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:36.264Z pushedAt=2026-06-23T09:25:46.746Z -->
+<!-- md-trans-meta sourceCommit=f2c7727dff910038fdcf1b75fb074e51aa470331 translatedAt=2026-11-03T07:05:52.072Z pushedAt=2026-11-04T03:11:19.963Z nl=1 -->
 
-MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
+The MediaAssetChangeRequest class implements the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11) interface.
 
 MediaAssetChangeRequest represents a media asset change request.
 
@@ -57,8 +56,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.          |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The constructor was not called with the new keyword.<br>2. Parameter parsing failed, please check the number and types of parameters.<br>3. The asset parameter is not a valid PhotoAsset object.<br>4. System memory insufficient, please retry.<br>5. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -111,9 +110,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900002   | The file corresponding to the URI is not in the app sandbox.         |
-| 14000011   | System inner fail.        |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context.<br>2. IPC communication error, please retry.<br>3. System memory insufficient, please retry.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -163,9 +162,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900002   | The file corresponding to the URI is not in the app sandbox.         |
-| 14000011   | System inner fail.        |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context.<br>2. IPC communication error, please retry.<br>3. System memory insufficient, please retry.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -202,7 +201,7 @@ Create an asset change request based on the file type and filename extension.
 | ------- | ------- | ---- | -------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Context of the ability instance.|
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | Yes  | Type of the file to create, which can be **IMAGE** or **VIDEO**.             |
-| extension  | string        | Yes  | File name extension, for example, **'jpg'**.             |
+| extension  | string        | Yes   | File extension. It must be a valid image or video extension, such as jpg, png, gif, mp4, mov, and so on. |
 | options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | No  | Options for creating the image or video asset, for example, **{title: 'testPhoto'}**.<br>The file name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ]|
 
 **Return value**
@@ -217,8 +216,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context.<br>2. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is valid and retry.<br>3. System memory insufficient, please retry.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -274,9 +273,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 |  System inner fail.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context.<br>2. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is valid and retry.<br>3. The assets array contains elements that are not valid PhotoAsset objects.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>5. System memory insufficient, please retry. |
 
 **Example**
 
@@ -332,10 +331,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000002 |  The uri format is incorrect or does not exist.         |
-| 14000011 |  System inner fail.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000002 | The URI format is incorrect or the URI does not exist. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The context parameter is invalid or not properly initialized, please pass a valid Context obtained from the application context.<br>2. User file service initialization failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please check if the context is valid and retry.<br>3. The uriList array contains elements that are not valid string URIs, each element must be a valid file URI string.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>5. System memory insufficient, please retry. |
 
 **Example**
 
@@ -380,7 +379,7 @@ Obtains the asset in this asset change request.
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) | Asset obtained.|
+| [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) | Returns the asset in the current asset change request. For an asset change request that creates an asset, this API returns null before the applyChanges API takes effect. |
 
 **Error codes**
 
@@ -388,8 +387,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011 |  System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object.<br>2. System memory insufficient, please retry.<br>3. IPC timeout, please retry. |
 
 **Example**
 
@@ -428,11 +427,8 @@ Sets the media asset title.
 | title | string | Yes  | Title to set.|
 
 The title must meet the following requirements:
-
 - It must not contain a file name extension.
-
 - The total length of the file name must be between 1 and 255 characters.
-
 - It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > | { } [ ]
 
 **Error codes**
@@ -441,8 +437,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object.<br>2. System memory insufficient, please retry.<br>3. IPC timeout, please retry. |
 
 **Example**
 
@@ -498,10 +494,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011 |  System inner fail.        |
-| 14000016 |  Operation Not Support.     |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 14000016 | Operation type not support. Possible causes:<br>1. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>2. A previous asset creation or modification request has not been applied yet. |
 
 **Example**
 
@@ -516,6 +512,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
     let extension: string = 'mp4';
     let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context, photoType, extension);
+    // Obtain the write handle of the temporary file to write data.
     let fd: number = await assetChangeRequest.getWriteCacheHandler();
     console.info('getWriteCacheHandler successfully');
     // write data into fd..
@@ -554,10 +551,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900002      |  The file corresponding to the URI is not in the app sandbox.   |
-| 14000011 |  System inner fail.         |
-| 14000016 |  Operation Not Support.     |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 14000016 | Operation type not support. Possible causes:<br>A previous asset creation or modification request has not been applied yet. |
 
 **Example**
 
@@ -608,9 +605,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 |  System inner fail.         |
-| 14000016 |  Operation Not Support.     |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 14000016 | Operation type not support. Possible causes:<br>A previous asset creation or modification request has not been applied yet. |
 
 **Example**
 
@@ -639,6 +636,11 @@ saveCameraPhoto(): void
 
 Saves the photo taken by the camera.
 
+> **NOTE**
+>
+> - In non-YUV capture mode, the encoding format of the saved photo resource is consistent with [CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat).
+> - In YUV capture mode, this API cannot specify the encoding format, and the image resource is saved in the default JPG format. Starting from API version 13, to specify the encoding format, use the [saveCameraPhoto](#savecameraphoto13) API.
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Error codes**
@@ -647,8 +649,8 @@ For details about the error codes, see [File Management Error Codes](../apis-cor
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 14000011 |  System inner fail.         |
-| 14000016 |  Operation Not Support.         |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 14000016 | Operation type not support. Possible causes:<br>A previous asset creation or modification request has not been applied yet. |
 
 **Example**
 
@@ -672,7 +674,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
 
 saveCameraPhoto(imageFileType: ImageFileType): void
 
-Saves a captured photo. The type to save must be specified.
+Saves the photo taken by the camera.
+
+> **NOTE**
+> 
+> - In non-YUV shooting mode, the encoding format of the saved photo is the same as that of [CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat).
+> - In YUV shooting mode, this API encodes the YUV object into a specified format based on [ImageFileType](arkts-apis-photoAccessHelper-e.md#imagefiletype13).
+> - When this API is used together with [addResource](#addresource11-1), the encoding format of the photo resource to be saved must be the same as that of the resource added using [addResource](#addresource11-1).
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -688,8 +696,8 @@ For details about the error codes, see [File Management Error Codes](../apis-cor
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 14000011 |  System inner fail.         |
-| 14000016 |  Operation Not Support.         |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 14000016 | Operation type not support. Possible causes:<br>1. The operation type is not supported, the asset is a moving photo which does not support this operation.<br>2. A previous asset creation or modification request has not been applied yet, please call applyChanges first.<br>3. The asset is not a moving photo, this operation is only supported for moving photos. |
 
 **Example**
 
@@ -697,7 +705,6 @@ For details about how to create a phAccessHelper instance, see the example provi
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
-import { image } from '@kit.ImageKit';
 
 async function example(context: Context, asset: photoAccessHelper.PhotoAsset) {
   console.info('saveCameraPhotoDemo');
@@ -727,8 +734,8 @@ For details about the error codes, see [File Management Error Codes](../apis-cor
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 14000011 |  Internal system error.         |
-| 14000016 |  Operation Not Support.         |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The asset parameter is not a valid PhotoAsset object.<br>2. System internal error, IPC communication error, please retry. |
+| 14000016 | Operation type not support. Possible causes:<br>1. The operation type is not supported, the asset is a moving photo which does not support this operation.<br>2. A previous asset creation or modification request has not been applied yet, please call applyChanges first.<br>3. The asset is not a moving photo, this operation is only supported for moving photos. |
 
 **Example**
 
@@ -752,7 +759,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
 
 setOrientation(orientation: number): void
 
-Sets the orientation of this image.
+Sets the image rotation angle. This API adjusts the image rotation angle by modifying the Exif metadata.
+
+> **NOTE**
+> 
+> - BMP, GIF, ICO, and SVG images do not contain Exif metadata. Therefore, the rotation angle of these images cannot be adjusted using this API.
+> - The Exif metadata of DNG images cannot be edited. Therefore, the rotation angle of these images cannot be adjusted using this API.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -760,7 +772,7 @@ Sets the orientation of this image.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| orientation | number | Yes  | Rotation angle of the image to set. The value can only be **0**, **90**, **180**, or **270**.|
+| orientation | number | Yes | Rotation angle of the image to be modified, in degrees (°). Only 0°, 90°, 180°, and 270° are supported. |
 
 **Error codes**
 
@@ -768,8 +780,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 |  Internal system error.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -789,11 +801,64 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let asset = await fetchResult.getFirstObject();
   let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+  // Change the rotation angle of the image to 90° (the parameter can only be 0°, 90°, 180°, or 270°).
   assetChangeRequest.setOrientation(90);
   phAccessHelper.applyChanges(assetChangeRequest).then(() => {
     console.info('apply setOrientation successfully');
   }).catch((err: BusinessError) => {
     console.error(`apply setOrientation failed with error: ${err.code}, ${err.message}`);
+  });
+}
+```
+
+## setFavorite
+
+setFavorite(favoriteState: boolean): void
+
+Favorites or unfavorites this file asset.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---------- | ------- | ---- | ---------------------------------- |
+| favoriteState | boolean | Yes | Whether to set the file as a favorite. The value **true** means to set it as a favorite, and **false** means to cancel the favorite. |
+
+**Error codes**
+
+For details about the error codes thrown by the API, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+
+| ID | Error Message |
+| -------- | ---------------------------------------- |
+| 14000011       | System inner fail.         |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('setFavoriteDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let asset = await fetchResult.getFirstObject();
+  let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+  // Set the file as a favorite (true indicates marking it as a favorite, and false indicates unfavoriting it).
+  assetChangeRequest.setFavorite(true);
+  phAccessHelper.applyChanges(assetChangeRequest).then(() => {
+    console.info('apply setFavorite successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`apply setFavorite failed with error: ${err.code}, ${err.message}`);
   });
 }
 ```

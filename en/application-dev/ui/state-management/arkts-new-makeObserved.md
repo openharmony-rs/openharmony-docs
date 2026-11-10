@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-09-21T11:13:21.226Z pushedAt=2026-09-23T08:54:08.527Z -->
+<!-- md-trans-meta sourceCommit=85829ecc69be975331761318a4754507166212af translatedAt=2026-10-28T04:02:00.857Z pushedAt=2026-10-28T07:57:15.630Z nl=1 -->
 
 To change the unobservable data to observable data, you can use the [makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved) API.
 
@@ -77,10 +77,10 @@ To change the unobservable data to observable data, you can use the [makeObserve
   Note: The following writing method of **message2** does not throw an exception. The reason is as follows:
   - this.message is decorated with [@State](./arkts-state.md), and its implementation is equivalent to @Observed.
   - If the input parameter of UIUtils.makeObserved is the instance of the class decorated with @Observed, the instance is directly returned.
-
+  
   Therefore, the initial value of **message2** is not the proxy object returned by makeObserved, but **this.message** decorated with @State.
   <!-- @[UI_will_not_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page1.ets) --> 
-
+  
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
   class Person {
@@ -110,7 +110,7 @@ To change the unobservable data to observable data, you can use the [makeObserve
   }
   ```
 
-![makeobserved-sync-0](./figures/makeobserved-sync-0.png)
+  ![makeobserved-sync-0](./figures/makeobserved-sync-0.png)
 
 ### makeObserved Performs Deep Observation Only on the Input Parameters
 
@@ -119,7 +119,7 @@ To change the unobservable data to observable data, you can use the [makeObserve
  - Click **change Info** to set **this.message** to unobservable data. Click **change id** again, UI cannot be re-rendered.
  - Click **change Info1** to set **this.message** to observable data. Click **change id** again, UI can be re-rendered.
   <!-- @[MakeObserved_only_applies_to_input_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page2.ets) -->  
-
+  
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
   class Info {
@@ -159,7 +159,7 @@ To change the unobservable data to observable data, you can use the [makeObserve
   }
   ```
 
-![makeobserved-sync-1](./figures/makeobserved-sync-1.gif)
+  ![makeobserved-sync-1](./figures/makeobserved-sync-1.gif)
 
 ## Supported Types and Observed Changes
 
@@ -210,7 +210,7 @@ export class SendableData  {
 }
 ```
 
-<!-- @[function_threadGetData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets) -->   
+<!-- @[function_threadGetData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets) --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -248,7 +248,7 @@ struct Page3 {
         .width(300)
         .margin(10)
         .onClick(() => {
-          // OK. Changes to properties can be observed.
+          // Observe the property change.
           this.send.name += '0';
         })
 
@@ -605,7 +605,7 @@ let test2JsonStr: string = JSON.stringify(test2);
 @Entry
 @ComponentV2
 struct Page7 {
-  // The object returned by JSON.parse is converted into observable data using makeObserved 
+  // The object returned by JSON.parse is converted into observable data using makeObserved
   message: Record<string, number> = 
         UIUtils.makeObserved<Record<string, number>>(JSON.parse(testJsonStr) as Record<string, number>);
   message2: Record<string, Info> = 

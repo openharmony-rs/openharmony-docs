@@ -6,9 +6,14 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:32:52.546Z pushedAt=2026-08-10T09:52:30.892Z -->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T03:57:51.557Z pushedAt=2026-10-30T07:31:23.572Z nl=1 -->
 
 For the corresponding algorithm specifications, see [Asymmetric Encryption and Decryption Algorithm Specifications: SM2](crypto-encryption-decryption.md#sm2).
+
+## Adding the Dynamic Library in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 **Encryption**
 
@@ -134,5 +139,3 @@ OH_Crypto_ErrCode doTestSm2EncMessage()
     return CRYPTO_SUCCESS;
 }
 ```
-
-<!--no_check-->

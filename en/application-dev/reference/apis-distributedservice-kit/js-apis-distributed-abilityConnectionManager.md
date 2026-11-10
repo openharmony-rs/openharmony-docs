@@ -4,9 +4,21 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=9595a2fa6148ab1fe62fdb3a91b42e555f349a5e translatedAt=2026-11-03T11:03:13.710Z pushedAt=2026-11-03T12:05:01.647Z nl=1 -->
 
-The **abilityConnectionManager** module provides APIs for cross-device connection management. After successful networking between devices (login with the same account and enabling of Bluetooth on the devices), a system application and a third-party application can start a [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) of the same application across these devices to establish a Bluetooth connection. This way, data (specifically, text) can be transmitted across the devices over the connection.
+The **abilityConnectionManager** module provides APIs for cross-device connection management. After successful networking between devices, a system application and a third-party application can start a [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) of the same application across these devices. Once the UIAbility is started and connected, data (Text Information) can be transmitted across the devices.
+
+The logical layered architecture of multi-device collaboration is as follows:
+
+![abilityConnectionManager_sequenceDiagram](../figures/abilityConnectionManager_sequenceDiagram.png)
+
+The key principles of the logical layered architecture are described as follows:
+
+1. **Application adaptation to the collaboration APIs**: An application adapts to the collaboration APIs through abilityConnectionManager, establishes a connection and a session within seconds based on the soft bus, and automatically starts the peer application upon connection.
+2. **Data transmission based on session ID**: After the connection is established, the applications on both ends directly transmit data (sendMessage/sendData) through the soft bus channel based on sessionId, achieving more efficient and more secure point-to-point communication.
+3. **Peer collaboration framework**: Device A and Device B run a symmetric collaboration framework layer that uniformly manages the entire session lifecycle (create → connect → transmit → disconnect → destroy). The paired invocation of APIs on both ends (connect and acceptConnect) ensures connection reliability.
+4. **Event-driven communication**: The on/off registration mechanism is used to listen for connection status (connect/disconnect) and data reception (receiveMessage/receiveData) events, implementing asynchronous and decoupled collaborative communication.
 
 > **NOTE**
 >
@@ -22,15 +34,17 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
 ## abilityConnectionManager.createAbilityConnectionSession
 
-createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Context,&nbsp;peerInfo:&nbsp;PeerInfo ,&nbsp;connectOptions:&nbsp;ConnectOptions):&nbsp;number
+createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Context,&nbsp;peerInfo:&nbsp;PeerInfo,&nbsp;connectOptions:&nbsp;ConnectOptions):&nbsp;number
 
-Creates a collaboration session between applications.
+Creates a collaborative session between applications. A collaborative session is used to manage the connection state of cross-device communication. You need to create a session on each of the two devices first, and then establish a connection through connect.
 
 **Required permissions**: ohos.permission.INTERNET, ohos.permission.GET_NETWORK_INFO, ohos.permission.SET_NETWORK_INFO, and ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior differences:** When this API is called on wearable that does not support distributed services or on a device managed by an enterprise policy, error code 801 is returned.
 
 **Parameters**
 
@@ -45,7 +59,7 @@ Creates a collaboration session between applications.
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| number | ID of the collaboration session.|
+| number | ID of the successfully created collaborative session, used for subsequent API calls such as connect, acceptConnect, sendMessage, sendData, and disconnect. The value range is an integer greater than 100. |
 
 **Error codes**
 
@@ -53,20 +67,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities.|
+| 801      | Capability not supported. Possible causes: Failed to call the API due to limited device capabilities.|
 
 **Example**
 
-1. On device A, an application calls **createAbilityConnectionSession()** to create a collaboration session and return the session ID.
+1. On device A, call **createAbilityConnectionSession()** to create a collaboration session and return the session ID.
 
    ```ts
    import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
- 
+   
    let dmClass: distributedDeviceManager.DeviceManager;
- 
+   
    function initDmClass(): void {
      try {
        dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
@@ -74,7 +88,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
        hilog.error(0x0000, 'testTag', 'createDeviceManager err: ' + JSON.stringify(err));
      }
    }
- 
+   
    function getRemoteDeviceId(): string | undefined {
      initDmClass();
      if (typeof dmClass === 'object' && dmClass !== null) {
@@ -94,7 +108,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
        return;
      }
    }
- 
+   
    @Entry
    @Component
    struct Index {
@@ -107,10 +121,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
          abilityName: 'EntryAbility',
          serviceName: 'collabTest'
        };
-       const myRecord: Record<string, string> = {
-         "newKey1": "value1",
-       };
- 
+        const myRecord: Record<string, string> = {
+          'newKey1': 'value1',
+        };
+   
        // Define connection options.
        const connectOptions: abilityConnectionManager.ConnectOptions = {
          needSendData: true,
@@ -125,12 +139,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
          hilog.error(0x0000, 'testTag', error);
        }
      }
- 
+   
      build() {
      }
    }
    ```
-
+   
 2. On device B, **createAbilityConnectionSession** can be called in **onCollaborate**, which is triggered when the application is started.
 
    ```ts
@@ -165,30 +179,33 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
          AppStorage.setOrCreate('sessionId', sessionId);
-         hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+         hilog.info(0x0000, 'testTag', 'createSession sessionId is ' + sessionId);
        } catch (error) {
          hilog.error(0x0000, 'testTag', error);
        }
        return sessionId;
      }
    }
+   
    ```
 
 ## abilityConnectionManager.destroyAbilityConnectionSession
 
 destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
-Destroys a collaboration session between applications.
+Destroys the collaboration session between applications. It is used together with **createAbilityConnectionSession** to release session resources. This API must be called after a collaboration session is successfully created. Destroying a session releases related resources. It is recommended that you call **disconnect** to disconnect the connection before destroying the session. Failure to call this API causes resource leakage.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences:** When this API is called on wearable that does not support distributed services or on a device managed by an enterprise policy, error code 401 is returned.
+
 **Parameters**
 
 | Name      | Type                                      | Mandatory  | Description                             |
 | --------- | ---------------------------------------- | ---- |---------------------------------|
-| sessionId | number  | Yes   | Collaboration session ID.<br>The value is an integer greater than 100.|
+| sessionId | number | Yes | ID of the collaborative session to be destroyed.<br />The value range is an integer not less than 100. Error code 401 is returned if a value less than 100 or a nonexistent collaborative session ID is passed. |
 
 **Example**
 
@@ -205,23 +222,25 @@ Destroys a collaboration session between applications.
 
 getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
-Obtains information about the peer application in the specified session.
+Obtains the peer application information in the specified session. This API must be called after a collaboration session is successfully created.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences:** When this API is called on wearable that does not support distributed services or on a device managed by an enterprise policy, a null value is returned.
+
 **Parameters**
 
 | Name      | Type                                      | Mandatory  | Description      |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | number  | Yes   | ID of the collaboration session.  |
+| sessionId | number  | Yes    | Collaborative session ID. Returned by the createAbilityConnectionSession API.   |
 
 **Return value**
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| [PeerInfo](#peerinfo) \| undefined | Information about the peer application if the corresponding **PeerInfo** exists; **undefined** if the session ID is not found.|
+| [PeerInfo](#peerinfo) \| undefined | Information about the collaborative application on the receiving end. undefined is returned if the sessionId is not found. |
 
 **Error codes**
 
@@ -238,7 +257,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   hilog.info(0x0000, 'testTag', 'getPeerInfoById called');
+  // The sessionId must be created and obtained through the createAbilityConnectionSession API. This is only an example.
   let sessionId = 100;
+  // Obtain the peer application information of the specified session.
   const peerInfo = abilityConnectionManager.getPeerInfoById(sessionId);
   ```
 
@@ -246,23 +267,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
-Sets up a UIAbility connection after a collaboration session is created and the session ID is obtained. This API uses a promise to return the result.
+After a collaboration session is successfully created and the session ID is obtained, a UIAbility connection can be set up on device A. Before calling this API, you must create a collaboration session on both devices. The **connect** API establishes a connection through the underlying distributed communication service and must be used together with **acceptConnect** on device B to establish a successful connection. Calling **connect** starts the application on device B. The connection process triggers the 'connect' event to notify the status change. This API uses a promise to return the result asynchronously. If the connection fails, the **errorCode** field in the returned **ConnectResult** object contains the specific error information. For details about the error causes, see the **ConnectErrorCode** enum.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior differences:** When this API is called on wearable that does not support distributed services or on a device managed by an enterprise policy, error code 401 is returned.
+
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description       |
 | --------- | --------------------------------------- | ---- | --------- |
-| sessionId | number | Yes   | ID of the collaboration session.   |
+| sessionId | number | Yes | ID of the created collaborative session, returned by createAbilityConnectionSession. |
 
 **Return value**
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;ConnectResult&gt; | Promise used to return the [connection result](#connectresult).|
+| Promise&lt;ConnectResult&gt; | Promise object. On success, it resolves to return [ConnectResult](#connectresult) (containing the isConnected and errorCode fields); on failure, it rejects to return an error object. |
 
 **Error codes**
 
@@ -274,7 +297,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-After an application sets up a collaboration session and obtains the session ID on device A, it calls **connect()** to set up a UIAbility connection and start the application on device B.
+After a collaboration session is successfully created and the session ID is obtained on device A, call **connect()** to set up a UIAbility connection and start the application on device B.
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -295,24 +318,26 @@ After an application sets up a collaboration session and obtains the session ID 
 
 acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
-Accepts the UIAbility connection after a collaboration session is set up and the session ID is obtained. This API uses a promise to return the result.
+After a collaboration session is successfully created and the session ID is obtained on device B, the application calls **acceptConnect()** to accept the connection. Before calling this API, you must create a collaboration session on both devices. This API must be used together with the **connect** method on device A: device A calls **connect** to start the application on device B, and device B calls **acceptConnect** after creating a session in the **onCollaborate** lifecycle. This API uses a promise to return the result asynchronously.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
 
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
 | sessionId | number | Yes   | ID of the collaboration session.   |
-| token | string | Yes   | Token value passed by the application on device A.   |
+| token | string | Yes | Token value passed in by the application on device A. This value is obtained through the 'ohos.dms.collabToken' key in the wantParam parameter (obtained from the wantParam parameter of the onCollaborate lifecycle method after the application is started). When device A calls the connect method, the system automatically generates collabToken and passes it to device B through the want parameter. Device B can obtain this token from the wantParam parameter in the onCollaborate lifecycle callback. |
 
 **Return value**
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; |Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -324,7 +349,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-After **createAbilityConnectionSession** is called on device A to create a collaboration session and the session ID is obtained, the application on device B can call **acceptConnect** to accept the connection.
+On device B, after **createAbilityConnectionSession** is called and the session ID is obtained, call **acceptConnect** to accept the connection.
 
   ```ts
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -368,7 +393,7 @@ After **createAbilityConnectionSession** is called on device A to create a colla
       try {
         sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
         AppStorage.setOrCreate('sessionId', sessionId);
-        hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+        hilog.info(0x0000, 'testTag', 'createSession sessionId is ' + sessionId);
       } catch (error) {
         hilog.error(0x0000, 'testTag', error);
       }
@@ -381,11 +406,13 @@ After **createAbilityConnectionSession** is called on device A to create a colla
 
 disconnect(sessionId:&nbsp;number):&nbsp;void
 
-Disconnects the UIAbility connection to end the collaboration session.
+After a collaborative session is created, the application connection succeeds, and the collaborative service is complete, either device at the two ends of the collaboration should disconnect the UIAbility connection to end the collaboration state. This API must be called after **connect()** establishes the connection.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
 
 **Parameters**
 
@@ -414,11 +441,13 @@ Rejects a connection request in a cross-device collaboration session. After a co
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
+
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| token | string | Yes   | Token used for application collaboration management.   |
+| token | string | Yes | Token used for collaboration service management. The value is obtained from the 'ohos.dms.collabToken' key in the wantParam parameter (obtained from the wantParam parameter of the onCollaborate lifecycle method after the application is started). |
 | reason | string | Yes   | Reason why the connection is rejected.   |
 
 **Error codes**
@@ -432,7 +461,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { AbilityConstant, UIAbility, Want} from '@kit.AbilityKit';
+  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -441,7 +470,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
         let collabParam = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>;
         const collabToken = collabParam["ohos.dms.collabToken"] as string;
-        const reason = "test";
+        const reason = 'test';
         hilog.info(0x0000, 'testTag', 'reject begin');
         abilityConnectionManager.reject(collabToken, reason);
         return AbilityConstant.CollaborateResult.REJECT;
@@ -454,17 +483,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
-Enables listening for **connect** events. This API uses an asynchronous callback to return the result.
+Registers a listener for the connect event. This event is triggered after the **connect** API is called successfully. This API uses an asynchronous callback.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type. This field has a fixed value of **connect**. This event is triggered when [abilityConnectionManager.connect()](#abilityconnectionmanagerconnect) is called.  |
+| type | string  | Yes   |   Event type. This field has a fixed value of **connect**. This event is triggered when [abilityConnectionManager.connect](#abilityconnectionmanagerconnect) is called.  |
 | sessionId | number  | Yes   | ID of the collaboration session.   |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | Yes   | Registered callback function.   |
 
@@ -482,6 +513,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
+  // sessionId must be created and obtained through the createAbilityConnectionSession API. This is only an example.
   let sessionId = 100;
   abilityConnectionManager.on("connect", sessionId,(callbackInfo) => {
     hilog.info(0x0000, 'testTag', 'session connect, sessionId is', callbackInfo.sessionId);
@@ -499,13 +531,15 @@ Disables listening for **connect** events.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type. This field has a fixed value of **connect**.   |
+| type | string  | Yes    |   Event callback type. The supported event is 'connect', which can be unsubscribed only after being registered through [abilityConnectionManager.on('connect')](#abilityconnectionmanageronconnect).    |
 | sessionId | number  | Yes   | ID of the collaboration session.   |
-| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | No   | Registered callback function.   |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | No    | Callback for the 'connect' event. If this parameter is not passed, all callback listeners for this event are unsubscribed.    |
 
 **Error codes**
 
@@ -520,6 +554,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
+  // sessionId must be created and obtained through the createAbilityConnectionSession API. This is only an example.
   let sessionId = 100;
   abilityConnectionManager.off("connect", sessionId);
 
@@ -535,11 +570,13 @@ Enables listening for **disconnect** events.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type. This field has a fixed value of **disconnect**. This event is triggered when [abilityConnectionManager.disconnect()](#abilityconnectionmanagerdisconnect) is called.  |
+| type | string  | Yes   |   Event type. This field has a fixed value of **disconnect**. This event is triggered when [abilityConnectionManager.disconnect](#abilityconnectionmanagerdisconnect) is called.  |
 | sessionId | number  | Yes   | ID of the collaboration session.   |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | Yes   | Registered callback function.   |
 
@@ -557,6 +594,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
+  // Obtain sessionId by calling createAbilityConnectionSession. This is only an example.
   let sessionId = 100;
   abilityConnectionManager.on("disconnect", sessionId,(callbackInfo) => {
     hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
@@ -574,13 +612,15 @@ Disables listening for **disconnect** events.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type. This field has a fixed value of **disconnect**.   |
+| type | string  | Yes    |   Event callback type. The supported event is 'disconnect', which can be unsubscribed only after being registered through [abilityConnectionManager.on('disconnect')](#abilityconnectionmanagerondisconnect).    |
 | sessionId | number  | Yes   | ID of the collaboration session.   |
-| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | No   | Registered callback function.   |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | No    | Callback for the 'disconnect' event. If this parameter is not passed, all callback listeners of this event are unsubscribed.    |
 
 **Error codes**
 
@@ -596,6 +636,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
+  // Obtain the sessionId by calling createAbilityConnectionSession. This is only an example.
   let sessionId = 100;
   abilityConnectionManager.off("disconnect", sessionId);
 
@@ -611,11 +652,13 @@ Enables listening for **receiveMessage** events.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type. This field has a fixed value of **receiveMessage**. This event is triggered when [abilityConnectionManager.sendMessage()](#abilityconnectionmanagersendmessage) is called.  |
+| type | string  | Yes   |   Event type. This field has a fixed value of **receiveMessage**. This event is triggered when [abilityConnectionManager.sendMessage](#abilityconnectionmanagersendmessage) is called.  |
 | sessionId | number  | Yes   | ID of the collaboration session.   |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | Yes   | Registered callback function.   |
 
@@ -633,6 +676,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
+  // Obtain sessionId by calling createAbilityConnectionSession. This is only an example.
   let sessionId = 100;
   abilityConnectionManager.on("receiveMessage", sessionId,(callbackInfo) => {
     hilog.info(0x0000, 'testTag', 'receiveMessage, sessionId is', callbackInfo.sessionId);
@@ -650,13 +694,15 @@ Disables listening for **receiveMessage** events.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type. This field has a fixed value of **receiveMessage**.   |
+| type | string  | Yes    | Event callback type. The supported event is 'receiveMessage', which can be canceled only after being registered through [abilityConnectionManager.on('receiveMessage')](#abilityconnectionmanageronreceivemessage).    |
 | sessionId | number  | Yes   | ID of the collaboration session.   |
-| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | No   | Registered callback function.   |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | No    | Callback to be canceled. If this parameter is not passed, all callback listeners for the event are canceled.    |
 
 **Error codes**
 
@@ -672,6 +718,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
+  // Obtain sessionId by calling createAbilityConnectionSession. This is only an example.
   let sessionId = 100;
   abilityConnectionManager.off("receiveMessage", sessionId);
 
@@ -687,11 +734,13 @@ Enables listening for **receiveData** events.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type. This field has a fixed value of **receiveData**. This event is triggered when [abilityConnectionManager.sendData()](#abilityconnectionmanagersenddata) is called.  |
+| type | string  | Yes   |   Event type. This field has a fixed value of **receiveData**. This event is triggered when [abilityConnectionManager.sendData](#abilityconnectionmanagersenddata) is called.  |
 | sessionId | number  | Yes   | ID of the collaboration session.   |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | Yes   | Registered callback function.   |
 
@@ -709,6 +758,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
+  // sessionId must be created and obtained through the createAbilityConnectionSession API. This is only an example.
   let sessionId = 100;
   abilityConnectionManager.on("receiveData", sessionId,(callbackInfo) => {
     hilog.info(0x0000, 'testTag', 'receiveData, sessionId is', callbackInfo.sessionId);
@@ -726,13 +776,15 @@ Disables listening for **receiveData** events.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type. This field has a fixed value of **receiveData**.   |
+| type | string  | Yes    |   Event callback type. The supported event is 'receiveData', which must be registered through [abilityConnectionManager.on('receiveData')](#abilityconnectionmanageronreceivedata) before it can be unsubscribed.    |
 | sessionId | number  | Yes   | ID of the collaboration session.   |
-| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | No   | Registered callback function.   |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | No    | Callback for the event to be unsubscribed. If this parameter is not passed, all callbacks for the event are unsubscribed.    |
 
 **Error codes**
 
@@ -748,6 +800,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
+  // sessionId must be created and obtained through the createAbilityConnectionSession API. This is only an example.
   let sessionId = 100;
   abilityConnectionManager.off("receiveData", sessionId);
 
@@ -757,24 +810,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
-Sends text messages after a collaboration session is set up.
+After a collaborative session is created and the session ID is obtained, and after the connect API is called to establish a connection, device A or device B can send text information to the peer device. This API uses a promise to return the result asynchronously.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
+
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description   |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | Yes   | ID of the collaboration session.|
-| msg | string | Yes   | Text content. The maximum size of the text content is 1 KB.|
+| sessionId | number | Yes | Collaborative Session ID, returned by the createAbilityConnectionSession API. |
+| msg | string | Yes | Text information content (maximum 1 KB). Error code 401 is returned when the length limit is exceeded. |
 
 **Return value**
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object that returns no value. It resolves when the message is sent successfully and rejects when the message fails to be sent. |
 
 **Error codes**
 
@@ -787,14 +842,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+  import { abilityConnectionManager } from '@kit.DistributedServiceKit'; 
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let sessionId = 100;
   abilityConnectionManager.sendMessage(sessionId, "message send success").then(() => {
     hilog.info(0x0000, 'testTag', "sendMessage success");
   }).catch(() => {
-    hilog.error(0x0000, 'testTag', "connect failed");
+    hilog.error(0x0000, 'testTag', "sendMessage failed");
   })
   ```
 
@@ -802,11 +857,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
 
-Sends [ArrayBuffer](../../arkts-utils/arraybuffer-object.md) byte streams from one device to another after a connection is successfully established.
+After a collaborative session is created and the session ID is obtained, and after the application is connected, device A or device B can send an [ArrayBuffer](../../arkts-utils/arraybuffer-object.md) byte stream to the peer device. This API uses a promise to return the result asynchronously.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
 
 **Parameters**
 
@@ -835,15 +892,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { util } from '@kit.ArkTS';
-
+ 
   let textEncoder = util.TextEncoder.create("utf-8");
   const arrayBuffer  = textEncoder.encodeInto("data send success");
 
   let sessionId = 100;
   abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
+    hilog.info(0x0000, 'testTag', "sendData success");
   }).catch(() => {
-    hilog.error(0x0000, 'testTag', "sendMessage failed");
+    hilog.error(0x0000, 'testTag', "sendData failed");
   })
   ```
 
@@ -851,21 +908,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 Defines the application collaboration information.
 
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
+
  **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name                   | Type      |Read Only  | Optional  | Description                |
 | ----------------- | ------ | ----  | ---- | ------------------ |
-| deviceId          | string | No  |No   | Peer device ID.    |
-| bundleName        | string | No  |No   | Bundle name of the application.|
-| moduleName        | string | No  |No   | Module name of the peer application.|
-| abilityName       | string | No  |No    | Ability name of the peer application.|
-| serviceName       | string | No  |Yes    | Service name for the application.|
+| deviceId          | string | No   | No    | Network ID of the peer device, used to identify the remote device to connect. It can be obtained through the distributed device management API getAvailableDeviceListSync.     |
+| bundleName        | string | No   | No    | Bundle name of the peer application, used to uniquely identify the application to connect. It must be consistent with the bundleName of the peer application. |
+| moduleName        | string | No   | No    | Module name of the peer application, used to identify the application module to connect. It is usually 'entry' or another custom module name. |
+| abilityName       | string | No   | No     | Component name of the peer application, used to identify the UIAbility component to connect. It must be consistent with the abilityName of the peer application. |
+| serviceName       | string | No   | Yes     | Service name set in the application settings. If this value is set, it must be consistent with the serviceName parameter of the createAbilityConnectionSession API. If this value is not set, the default service name is used. |
 
 ## ConnectOptions
 
 Connection options for the application.
+
+**Device behavior difference:** If this API is called on wearable that does not support distributed services or on a device managed by enterprise policies, error code 401 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -873,13 +934,15 @@ Connection options for the application.
 
 | Name         | Type   | Read Only  | Optional  | Description         |
 | ----------- | ------- | ---- | ---- | ----------- |
-| needSendData    | boolean  | No   | Yes  | Whether to send data. The value **true** indicates that data needs to be sent, and the value **false** indicates the opposite.    |
-| startOptions | [StartOptionParams](#startoptionparams) | No   | Yes  | Application startup options.|
-| parameters | Record&lt;string, string&gt;  | No   | Yes  | Additional configuration for the connection.   |
+| needSendData    | boolean  | No    | Yes   | Whether to transfer data. The value **true** means data needs to be transferred (the **sendMessage** and **sendData** methods can be called), and the value **false** means data does not need to be transferred. The default value is **false** if this parameter is not passed.     |
+| startOptions | [StartOptionParams](#startoptionparams) | No    | Yes   | Application startup options. **START_IN_FOREGROUND** (value 0) means the peer application is started in the foreground, which is suitable for scenarios requiring user interaction. The system default startup configuration is used if this parameter is not passed. |
+| parameters | Record&lt;string, string&gt;  | No    | Yes   | Additional information for configuring the connection. Pass this parameter when custom parameters, such as identity identifiers and service identifiers, need to be transferred to the peer device. No additional information is transferred if this parameter is not passed.    |
 
 ## ConnectResult
 
 Defines the connection result.
+
+**Device behavior differences:** This API returns error code 401 when called on wearable that does not support distributed services or on a device managed by enterprise policies.
 
  **Model restriction**: This API can be used only in the stage model.
 
@@ -887,13 +950,15 @@ Defines the connection result.
 
 | Name      | Type  | Read Only  | Optional  | Description     |
 | -------- | ------ | ---- | ---- | ------- |
-| isConnected | boolean | No  | No| Whether the connection is successful. The value **true** indicates that the connection is successful, and the value **false** indicates the opposite.|
-| errorCode | [ConnectErrorCode](#connecterrorcode) | No  | Yes  | Connection error code.|
-| reason | string | No  | Yes  | Connection rejection reason.|
+| isConnected | boolean | No | No | true indicates that the connection succeeds; false indicates that the connection fails. For the specific cause, see the errorCode or reason field. |
+| errorCode | [ConnectErrorCode](#connecterrorcode) | No | Yes | Connection error code. Present when the connection fails, used to identify the specific error cause. Absent when the connection succeeds. |
+| reason | string | No | Yes | Reason for rejecting the connection. Returned only when the connection is rejected. This value is the reason parameter passed in when the peer application calls the reject API, and is used to inform the local end of the specific reason for rejection. This field is absent when the connection succeeds or is not rejected. |
 
 ## EventCallbackInfo
 
 Defines the event callback information.
+
+**Device behavior differences:** This API returns error code 401 when called on wearable that does not support distributed services or on a device managed by enterprise policies.
 
  **Model restriction**: This API can be used only in the stage model.
 
@@ -902,13 +967,15 @@ Defines the event callback information.
 | Name      | Type   | Read Only| Optional| Description         |
 | -------- | ------ | ---- | ---- | ----------- |
 | sessionId | number   | No  | No  |   Collaboration session ID.|
-| reason | [DisconnectReason](#disconnectreason)     | No  | Yes  |   Disconnection reason.|
-| msg | string   | No  | Yes  |   Received message.|
-| data  | ArrayBuffer | No  | Yes  |   Received byte stream.|
+| reason | [DisconnectReason](#disconnectreason)     | No   | Yes   | Disconnect reason. Present when the disconnect event is triggered, used to identify the specific disconnect reason. Not present for other event types. |
+| msg | string   | No   | Yes   | Received message. Present when the receiveMessage event is triggered, containing the received text message content. Not present for other event types. |
+| data  | ArrayBuffer | No   | Yes   | Received byte stream. Present when the receiveData event is triggered, containing the received binary data. Not present for other event types. |
 
 ## CollaborateEventInfo
 
 Collaboration event information.
+
+**Device behavior differences:** This API returns error code 401 when called on wearable that does not support distributed services or on a device managed by enterprise policies.
 
  **Model restriction**: This API can be used only in the stage model.
 
@@ -916,12 +983,14 @@ Collaboration event information.
 
 | Name      | Type  | Read Only  | Optional  | Description     |
 | -------- | ------ | ---- | ---- | ------- |
-| eventType | [CollaborateEventType](#collaborateeventtype) | No  | No| Collaboration event type.|
-| eventMsg | string | No  | Yes  | Content of a collaboration event.|
+| eventType | [CollaborateEventType](#collaborateeventtype) | No | No | Type of the collaborative event (0 indicates SEND_FAILURE, and 1 indicates COLOR_SPACE_CONVERSION_FAILURE). |
+| eventMsg | string | No | Yes | Message content of the collaborative event. It exists when eventType is SEND_FAILURE or COLOR_SPACE_CONVERSION_FAILURE, and contains detailed message information related to the event. |
 
 ## ConnectErrorCode
 
 Enumerates connection error codes.
+
+**Device behavior differences:** This API returns error code 401 when called on wearable that does not support distributed services or on a device managed by enterprise policies.
 
  **Model restriction**: This API can be used only in the stage model.
 
@@ -940,6 +1009,8 @@ Enumerates connection error codes.
 
 Enumerates application start options.
 
+**Device behavior differences:** This API returns error code 401 when called on wearable that does not support distributed services or on a device managed by enterprise policies.
+
  **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
@@ -952,18 +1023,22 @@ Enumerates application start options.
 
 Enumerates collaboration event types.
 
+**Device behavior differences:** This API returns error code 401 when called on wearable that does not support distributed services or on a device managed by enterprise policies.
+
  **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name|  Value| Description|
 |-------|-------|-------|
-| SEND_FAILURE | 0 |Task sending failure.|
-| COLOR_SPACE_CONVERSION_FAILURE | 1 |Color space conversion failure.|
+| SEND_FAILURE | 0 |Indicates a task sending failure. This event is generated when sending a collaboration task (such as a collaboration event) fails during cross-device collaboration. Common causes include network exceptions and the peer device being unreachable.|
+| COLOR_SPACE_CONVERSION_FAILURE | 1 |Indicates a color space conversion failure. In cross-device image collaboration scenarios, this event is generated when converting image data from the source device color space to the target device color space format fails. Common causes include unsupported color formats or incorrect conversion parameters.|
 
 ## DisconnectReason
 
 Enumerates the disconnection reasons.
+
+**Device behavior differences:** This API returns error code 401 when called on wearable that does not support distributed services or on a device managed by enterprise policies.
 
  **Model restriction**: This API can be used only in the stage model.
 
@@ -979,6 +1054,8 @@ Enumerates the disconnection reasons.
 
 Enumerates application collaboration key values.
 
+**Device behavior differences:** This API returns error code 401 when called on wearable that does not support distributed services or on a device managed by enterprise policies.
+
  **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
@@ -990,6 +1067,8 @@ Enumerates application collaboration key values.
 | COLLABORATE_TYPE    | ohos.collaboration.key.abilityCollaborateType | Key value of the collaboration type.  |
 
 ## CollaborationValues
+
+**Device behavior differences:** This API returns error code 401 when called on wearable that does not support distributed services or on a device managed by enterprise policies.
 
  **Model restriction**: This API can be used only in the stage model.
 

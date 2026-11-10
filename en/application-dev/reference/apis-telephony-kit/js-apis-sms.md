@@ -5,8 +5,12 @@
 <!--Designer: @wnazgul-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=d24d003a07db9ee1ded2d51b1a31fb4eb823af5f translatedAt=2026-11-03T04:07:53.028Z pushedAt=2026-11-03T10:38:45.212Z nl=1 -->
 
-The **sms** module provides basic SMS management functions. With the APIs provided by this module, you can create and send SMS messages, and obtain the ID of the default SIM card used to send and receive SMS messages, and check whether the current device can send and receive SMS messages.
+The SMS service provides basic capabilities for managing SMS messages, including:
+ - Creating and sending SMS messages.
+ - Obtaining the default SIM card slot ID for sending SMS messages.
+ - Checking whether the current device supports SMS sending and receiving.
 
 > **NOTE**
 >
@@ -24,6 +28,8 @@ createMessage\(pdu: Array&lt;number&gt;, specification: string, callback: AsyncC
 
 Creates an SMS instance based on the protocol data unit (PDU) and specified SMS protocol. This API uses an asynchronous callback to return the result.
 
+Use scenarios: after an SMS message is received, parse the PDU data returned by the system into an SMS instance to read the SMS body, sender address, and other content.
+
 **System capability**: SystemCapability.Telephony.SmsMms
 
 **Parameters**
@@ -31,7 +37,7 @@ Creates an SMS instance based on the protocol data unit (PDU) and specified SMS 
 | Name       | Type                                              | Mandatory| Description                                                        |
 | ------------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | pdu           | Array&lt;number&gt;                                | Yes  | Protocol data unit, which is obtained from the received SMS message.                          |
-| specification | string                                             | Yes  | SMS protocol type. <br>- **3gpp**: GSM/UMTS/LTE SMS<br>- **3gpp2**: CDMA SMS|
+| specification | string                                             | Required   | SMS protocol type.<br>- **3gpp**: GSM/UMTS/LTE SMS.<br>- **3gpp2**: CDMA SMS. |
 | callback      | AsyncCallback&lt;[ShortMessage](#shortmessage)&gt; | Yes  | Callback used to return the result.                                                  |
 
 **Error codes**
@@ -56,7 +62,11 @@ const specification: string = '3gpp';
 // Display PDUs in array format. The type is number.
 const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00, 0x05, 0xE8, 0x32, 0x9B, 0xFD, 0x06];
 sms.createMessage(pdu, specification, (err: BusinessError, data: sms.ShortMessage) => {
-    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    if (err) {
+        console.error(`callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -74,7 +84,7 @@ Creates an SMS instance based on the protocol data unit (PDU) and specified SMS 
 | Name       | Type               | Mandatory| Description                                                        |
 | ------------- | ------------------- | ---- | ------------------------------------------------------------ |
 | pdu           | Array&lt;number&gt; | Yes  | Protocol data unit, which is obtained from the received SMS message.                          |
-| specification | string              | Yes  | SMS protocol type. <br>- **3gpp**: GSM/UMTS/LTE SMS<br>- **3gpp2**: CDMA SMS|
+| specification | string              | Yes   | SMS protocol type.<br>- **3gpp**: GSM/UMTS/LTE SMS.<br>- **3gpp2**: CDMA SMS. |
 
 **Return value**
 
@@ -106,7 +116,7 @@ const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00
 sms.createMessage(pdu, specification).then((data: sms.ShortMessage) => {
     console.info(`createMessage success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`createMessage failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`createMessage failed, promise: errCode:${err.code},errMsg:${err.message}`);
 });
 ```
 
@@ -118,7 +128,7 @@ Sends an SMS message.
 
 > **NOTE**
 >
-> This API is supported since API version 6 and deprecated since API version 10. You are advised to use [sendShortMessage](#smssendshortmessage10).
+> This API is supported since API version 6 and deprecated since API version 10. You are advised to use [sendShortMessage](#smssendshortmessage10) instead.
 
 **Required permissions**: ohos.permission.SEND_MESSAGES (available only for system applications)
 
@@ -150,11 +160,18 @@ import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+    if (err) {
+        console.error(`sendCallback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`sendCallback: data->${JSON.stringify(data)}`); 
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
-};
+    if (err) {
+        console.error(`deliveryCallback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`deliveryCallback: data->${JSON.stringify(data)}`);
 let options: sms.SendMessageOptions = {
     slotId: 0,
     content: 'SMS message content',
@@ -204,10 +221,18 @@ import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    if (err) {
+        console.error(`sendCallback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`sendCallback: data->${JSON.stringify(data)}`);
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    if (err) {
+        console.error(`deliveryCallback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`deliveryCallback: data->${JSON.stringify(data)}`);
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -219,7 +244,10 @@ let options: sms.SendMessageOptions = {
     deliveryCallback: deliveryCallback
 };
 sms.sendShortMessage(options, (err: BusinessError) => {
-    console.info(`callback: err->${JSON.stringify(err)}`);
+    if (err) {
+        console.error(`callback: err->${JSON.stringify(err)}`);
+        return;
+    }
 });
 ```
 
@@ -243,7 +271,7 @@ Sends an SMS message. This API uses a promise to return the result.
 
 | Type           | Description                                                        |
 | --------------- | ------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -265,10 +293,18 @@ import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    if (err) {
+        console.error(`sendCallback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`sendCallback: data->${JSON.stringify(data)}`);
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    if (err) {
+        console.error(`deliveryCallback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`deliveryCallback: data->${JSON.stringify(data)}`);
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -283,7 +319,7 @@ let promise = sms.sendShortMessage(options);
 promise.then(() => {
     console.info(`sendShortMessage success`);
 }).catch((err: BusinessError) => {
-    console.error(`sendShortMessage failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`sendShortMessage failed, promise: errCode:${err.code},errMsg:${err.message}`);
 });
 
 ```
@@ -301,7 +337,7 @@ Obtains the default slot ID of the SIM card used to send SMS messages. This API 
 
 | Name  | Type                       | Mandatory| Description                                    |
 | -------- | --------------------------- | ---- | ---------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| callback | AsyncCallback&lt;number&gt; | Required | Callback used to return the default SIM card slot ID for sending SMS.<br>- **0**: slot 1<br>- **1**: slot 2 |
 
 **Example**
 
@@ -310,7 +346,11 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getDefaultSmsSlotId((err: BusinessError, data: number) => {
-    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    if (err) {
+        console.error(`callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -327,7 +367,7 @@ Obtains the default slot ID of the SIM card used to send SMS messages. This API 
 
 | Type           | Description                                                        |
 | --------------- | ------------------------------------------------------------ |
-| Promise&lt;number&gt; | Promise used to return the result.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| Promise&lt;number&gt; | Promise used to return the default SIM card for sending SMS:<br>- **0**: slot 1<br>- **1**: slot 2 |
 
 **Example**
 
@@ -338,7 +378,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 sms.getDefaultSmsSlotId().then((data: number) => {
     console.info(`getDefaultSmsSlotId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getDefaultSmsSlotId failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`getDefaultSmsSlotId failed, promise: errCode${err.code},errMsg:${err.message}`);
 });
 ```
 
@@ -346,7 +386,7 @@ sms.getDefaultSmsSlotId().then((data: number) => {
 
 hasSmsCapability\(\): boolean
 
-Checks whether the current device can send and receive SMS messages. This API works in synchronous mode.
+Checks whether the current device supports SMS sending and receiving. This API is a synchronous method.
 
 **System capability**: SystemCapability.Telephony.SmsMms
 
@@ -354,7 +394,9 @@ Checks whether the current device can send and receive SMS messages. This API wo
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| boolean | - **true**: The device can send and receive SMS messages.<br>- **false**: The device cannot send or receive SMS messages.|
+| boolean | - **true**: the device supports sending and receiving SMS.<br>- **false**: the device does not support sending and receiving SMS. |
+
+**Example**
 
 ```ts
 import { sms } from '@kit.TelephonyKit';
@@ -375,7 +417,7 @@ Obtains the default ID of the SIM card used to send SMS messages. This API uses 
 
 | Name  | Type                       | Mandatory| Description                                    |
 | -------- | --------------------------- | ---- | ---------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result.<br>The return value is bound to the SIM card and increases from 1.<br>The return value is **-1** if no SIM card is detected.|
+| callback | AsyncCallback&lt;number&gt; | Yes | Callback used to return the SIM ID of the default SIM card for sending SMS.<br>The SIM ID is bound to the SIM card and increments from 1.<br>The value **-1** is returned when no SIM card is inserted. |
 
 **Error codes**
 
@@ -398,7 +440,11 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getDefaultSmsSimId((err: BusinessError, data: number) => {
-    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    if (err) {
+        console.error(`callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -415,7 +461,7 @@ Obtains the default ID of the SIM card used to send SMS messages. This API uses 
 
 | Type           | Description                                                        |
 | --------------- | ------------------------------------------------------------ |
-| Promise&lt;number&gt; | Promise used to return the result.<br>The return value is bound to the SIM card and increases from 1.<br>The return value is **-1** if no SIM card is detected.|
+| Promise&lt;number&gt; | Promise used to return the default SIM card ID for sending SMS:<br>Bound to the SIM card, incrementing from 1.<br>The value is **-1** when no SIM card is inserted. |
 
 **Error codes**
 
@@ -440,7 +486,7 @@ let promise = sms.getDefaultSmsSimId();
 promise.then((data: number) => {
     console.info(`getDefaultSmsSimId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-    console.error(`getDefaultSmsSimId failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`getDefaultSmsSimId failed, promise: errCode:${err.code},errMsg:${err.message}`);
 });
 ```
 
@@ -453,14 +499,14 @@ Defines an SMS message instance.
 
 |         Name            |                  Type                  | Read-Only | Optional| Description                                                        |
 | ------------------------ | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| hasReplyPath             | boolean                                 |  No |  No | Whether the received SMS contains **TP-Reply-Path**. The default value is **false**.<br>- **true**: yes<br>- **false**: no<br>**TP-Reply-Path**: The device returns a response based on the SMSC that sends the SMS message. |
-| isReplaceMessage         | boolean                                 |  No |  No | Whether the received SMS message is a **replace short message**. The default value is **false**.<br>- **true**: yes<br>- **false**: no<br>For details, see [3GPP TS 23.040 9.2.3.9](https://www.3gpp.org/ftp/specs/archive/23_series/23.040).|
-| isSmsStatusReportMessage | boolean                                 |  No |  No | Whether the received SMS message is an SMS delivery report. The default value is **false**.<br>- **true**: yes<br>- **false**: no<br>SMS delivery report: a message sent from the SMSC to show the current status of the SMS message you delivered.|
+| hasReplyPath             | boolean                                 |  No  |  No  | Whether the received SMS contains **TP-Reply-Path**. Default: **false**.<br>- **true**: yes<br>- **false**: no<br>**TP-Reply-Path**: the device replies based on the short message service center that sends the SMS message.  |
+| isReplaceMessage         | boolean                                 |  No  |  No  | Whether the received SMS is a replace message. Default: **false**.<br>- **true**: yes<br>- **false**: no<br>For details about "replace message", see ["3GPP TS 23.040 9.2.3.9"](https://www.3gpp.org/ftp/specs/archive/23_series/23.040). |
+| isSmsStatusReportMessage | boolean                                 |  No  |  No  | Whether the current message is an SMS status report. Default: **false**.<br>- **true**: yes<br>- **false**: no<br>An SMS status report is an SMS in a specific format, which is used to transfer a status report from the service center to the mobile station.|
 | messageClass             | [ShortMessageClass](#shortmessageclass) |  No |  No | Enumerates SMS message types.                                                  |
-| pdu                      | Array&lt;number&gt;                     |  No |  No | PDU in the SMS message.                           |
+| pdu                      | Array&lt;number&gt;                     |  No  |  No  | Protocol data unit (PDU) in the SMS message.                            |
 | protocolId               | number                                  |  No |  No | Protocol identifier used for delivering the SMS message.                                  |
-| scAddress                | string                                  |  No |  No | SMSC address.                                |
-| scTimestamp              | number                                  |  No |  No | SMSC timestamp.                                                |
+| scAddress                | string                                  |  No  |  No  | Short message service center (SMSC) address.                                 |
+| scTimestamp              | number                                  |  No  |  No  | SMSC timestamp, in ms. The value is the number of milliseconds based on UTC time.          |
 | status                   | number                                  |  No |  No | SMS message status sent by the SMSC in the **SMS-STATUS-REPORT** message.|
 | visibleMessageBody       | string                                  |  No |  No | SMS message body.                                                  |
 | visibleRawAddress        | string                                  |  No |  No | Sender address.                                                |
@@ -483,19 +529,19 @@ Enumerates SMS message types.
 
 ## SendMessageOptions
 
-Provides the options (including callbacks) for sending SMS messages. For example, you can specify the SMS message type by the optional parameter **content**.
+Parameters and callback for sending an SMS message. The SMS type is determined by the value of the **content** parameter in **SendMessageOptions**.
 
 **System capability**: SystemCapability.Telephony.SmsMms
 
 |       Name      | Type                                                        | Read-Only| Optional| Description                                                        |
 | ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| slotId           | number                                                       |  No |  No | Slot ID of the SIM card used for sending SMS messages. <br>- **0**: card slot 1.<br>- **1**: card slot 2     |
-| destinationHost  | string                                                       |  No |  No | Destination address of the SMS message.                                            |
+| slotId           | number                                                       |  No  |  No  | ID of the SIM card slot used to send the SMS:<br>- **0**: slot 1<br>- **1**: slot 2     |
+| destinationHost  | string                                                       |  No  |  No  | Destination address of the SMS, in the format of a mobile number with a country code, for example, **+861xxxxxxxxxx**.     |
 | content          | string \| Array&lt;number&gt;                                |  No |  No | SMS message type. If the content is composed of character strings, the SMS message is a text message. If the content is composed of byte arrays, the SMS message is a data message.|
-| serviceCenter    | string                                                       |  No |  Yes | SMSC address. By default, the SMSC address in the SIM card is used.               |
-| destinationPort  | number                                                       |  No |  Yes | Destination port of the SMS message. This field is mandatory only for a data message. Otherwise, it is optional.  |
-| sendCallback     | AsyncCallback&lt;[ISendShortMessageCallback](#isendshortmessagecallback)&gt; |  No |  Yes | Callback used to return the SMS message sending result. For details, see [ISendShortMessageCallback](#isendshortmessagecallback). This parameter is mandatory for sending an SMS message.|
-| deliveryCallback | AsyncCallback&lt;[IDeliveryShortMessageCallback](#ideliveryshortmessagecallback)&gt; |  No |  Yes | Callback used to return the SMS message delivery report. For details, see [IDeliveryShortMessageCallback](#ideliveryshortmessagecallback). This parameter is mandatory for sending an SMS message.|
+| serviceCenter    | string                                                       |  No  |  Yes  | Address of the SMS service center, in the format of a mobile number with a country code. By default, the SMS service center address in the SIM card is used.     |
+| destinationPort  | number                                                       |  No  |  Yes  | Destination port. This parameter is required when a data SMS is sent. Otherwise, it is optional, and no data port is set when it is not passed in.  |
+| sendCallback     | AsyncCallback&lt;[ISendShortMessageCallback](#isendshortmessagecallback)&gt; |  No  |  Yes  | Callback used to return the SMS sending result. For details, see [ISendShortMessageCallback](#isendshortmessagecallback). This parameter is required when a data SMS is sent. When a text SMS is sent, this parameter is optional, and if it is not set, no callback notification of the SMS sending result is received.|
+| deliveryCallback | AsyncCallback&lt;[IDeliveryShortMessageCallback](#ideliveryshortmessagecallback)&gt; |  No  |  Yes  | Callback used to return the SMS delivery report. For details, see [IDeliveryShortMessageCallback](#ideliveryshortmessagecallback). This parameter is required when a data SMS is sent. When a text SMS is sent, this parameter is optional, and if it is not set, no callback notification of the SMS delivery report is received.|
 
 
 
@@ -507,7 +553,7 @@ Provides the callback for the SMS message sending result. It consists of three p
 
 |   Name    | Type                           | Read-Only| Optional|                                               Description                                        |
 | ---------- | ------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------- |
-| isLastPart | boolean                         | No  | No  | Whether this SMS message is the last part of a long SMS message. The default value is **false**.<br>- **true**: yes<br>- **false**: no<br>|
+| isLastPart | boolean                         | No   | No   | Whether this is the last part of a long SMS. Default: false.<br>-**true**: yes<br>-**false**: no<br> |
 | result     | [SendSmsResult](#sendsmsresult) | No  | No  | SMS message sending result.                                                                            |
 | url        | string                          | No  | No  | URI for storing the sent SMS message.                                                                       |
 

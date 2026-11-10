@@ -57,7 +57,23 @@
     }
     ```
 
-3. 通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的previewProfiles属性获取当前设备支持的预览能力，返回previewProfilesArray数组 。通过[createPreviewOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)方法创建预览输出流，其中，[createPreviewOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)方法中的两个参数分别是当前设备支持的预览配置信息previewProfile和步骤二中获取的surfaceId。
+3. 通过[getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)接口获取镜头支持的[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)列表。
+
+   ```ts
+   function getSupportedOutputCapability(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): camera.CameraOutputCapability | undefined
+   {
+     try {
+       // 接口传入要使能的模式，此处以拍照模式为例。
+       return cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedOutputCapability, err code: ${err.code}`);
+       return undefined;
+     }
+   }
+   ```
+
+4. 通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的previewProfiles属性获取当前设备支持的预览能力，返回previewProfilesArray数组 。通过[createPreviewOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)方法创建预览输出流，其中，[createPreviewOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)方法中的两个参数分别是当前设备支持的预览配置信息previewProfile和步骤二中获取的surfaceId。
      
    ```ts
    function getPreviewOutput(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, surfaceId: string): camera.PreviewOutput | undefined {
@@ -81,7 +97,7 @@
    }
    ```
 
-4. 使能。通过[Session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11)方法输出预览流，接口调用失败会返回相应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
+5. 使能。通过[Session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11)方法输出预览流，接口调用失败会返回相应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
      
    ```ts
    async function startPreviewOutput(cameraManager: camera.CameraManager, previewOutput: camera.PreviewOutput): Promise<void> {

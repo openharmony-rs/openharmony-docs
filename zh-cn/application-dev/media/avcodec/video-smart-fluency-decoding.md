@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍智能流畅倍速解码能力，基于运动矢量与人因感知模型，在解码前剔除视觉感知权重较低的非关键帧，降低高倍速播放的解码与渲染负载，支持感知自适应、全量直通与平滑定比三种帧保留模式。"
+keywords: [智能流畅倍速解码, 运动矢量, 帧保留模式, 感知自适应, 平滑定比, 倍速播放, 降载降温, 解码性能优化]
+doctype: guide
+status: active
+---
+
 # 智能流畅倍速解码
 
 <!--Kit: AVCodec Kit-->
@@ -69,7 +77,7 @@
 
 如果业务直接以高倍速起播，也可在初始化阶段配置感知自适应模式，建议同时显式设置OH_MD_KEY_VIDEO_DECODER_SPEED为实际起播倍速。
 
-<!-- @[configure_full_baseline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp) -->
+<!-- @[configure_full_baseline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp) -->
 
 ``` C++
 bool ConfigureSmartFluency(OH_AVFormat *format)
@@ -85,7 +93,7 @@ bool ConfigureSmartFluency(OH_AVFormat *format)
 
 系统支持在运行态下动态切换帧保留模式。开发者可通过调用OH_VideoDecoder_SetParameter()实时下发配置，参数的生效时机与该接口的标准行为一致。
 
-<!-- @[onUserSpeedChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp) -->
+<!-- @[onUserSpeedChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp) -->
 
 ``` C++
 int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
@@ -133,7 +141,7 @@ int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
 
 **示例（以应对温控告警为例）：**
 
-<!-- @[onThermalWarningReceived](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp) -->
+<!-- @[onThermalWarningReceived](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp) -->
 
 ``` C++
 int32_t VideoDecoder::OnThermalWarningReceived(double ratio)

@@ -3,9 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=9da32f18d9f596600b1bcf7b3e4ed4f31b219c61 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 ## Use Cases
 
@@ -23,25 +24,25 @@ Pseudo-localization testing simulates the translation process of an application 
    >  **NOTE**
    >
    >  The **setSystemLanguage** API is a system API and needs to be called by the system applications. Once the target locale is successfully set, non-system applications can then perform pseudo-localization testing.
-   <!--RP1-->
+   <!--Del-->
    ```ts
    import { i18n } from '@kit.LocalizationKit';
 
    i18n.System.setSystemLanguage('en-XA');
    ```
-   <!--RP1End-->
+   <!--DelEnd-->
 
 2. Traverse the applications to be tested.
 
 
 ## **Test Item**
 
-![image_0000001737423156](figures/image_0000001737423156.png)
+![internationalization-phone-settings](figures/internationalization-phone-settings.png)
 
 1. Check the UI for text truncation or distortion, or abnormal layout. Text truncation can be observed by checking whether the text ends with **]** (a right square bracket). If the text does not end with **]**, it is not completely displayed.
 
 2. Check for hard coding problems. Hard coding of UI text can be observed by checking whether the text is processed in pseudo-translation format.
 
-3. Check for string concatenation problems. String concatenation can be observed by checking whether strings in the pseudo-translation format appear in the same control in a consecutive manner, for example, **[string 1][string 2]**.
+3. Check for string concatenation problems. String concatenation can be observed by checking whether strings in the pseudo-translation format appear in the same control in a consecutive manner, for example, **\[string 1\]\[string 2\]**.
 
-4. Check for multilingual text display problems. If the text is not properly displayed, for example, squares or blanks are present or the text is incomplete or partially truncated, the display is abnormal.
+4. Check for multilingual text display issues. If the pseudo-translated text fails to display properly, for example, appearing as boxes, blanks, or incomplete text, it indicates an anomaly in multilingual display.

@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=f125faebecb74e0ac91596bf752ffa6043e4b775 translatedAt=2026-10-30T06:46:42.488Z pushedAt=2026-11-03T02:57:04.672Z nl=1 -->
 
 The **cert** module provides APIs for performing certificate operations. For details about the APIs for implementing the basic algorithm capabilities based on the cryptographic (crypto) framework, see [@ohos.security.cryptoFramework (Crypto Framework)](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md).
 
@@ -149,7 +150,7 @@ Describes the configuration parameters for generating a CSR, including the subje
 
 ## CertItemType<sup>10+</sup>
 
- Enumerates the certificate fields that can be obtained. 
+ Enumerates the certificate fields that can be obtained.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -872,7 +873,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error.      |
@@ -945,7 +946,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error.      |
@@ -1016,7 +1017,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message          |
 | -------- | ------------------ |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | Crypto operation error.      |
 
 **Example**
@@ -1105,7 +1106,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message          |
 | -------- | ------------------ |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | Crypto operation error.      |
 
 **Example**
@@ -1181,7 +1182,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.|
@@ -1255,7 +1256,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.|
@@ -1398,7 +1399,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19030001 | Crypto operation error.|
 | 19030003 | The certificate has not taken effect.                                     |
@@ -1852,7 +1853,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed. <br>Applicable versions: 12 and later         |
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed. <br>Applicable version: 12+          |
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.|
@@ -2802,7 +2803,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -2884,7 +2885,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error. |
 
@@ -3296,7 +3297,7 @@ async function certToString() {
 
 toString(encodingType: EncodingType): string
 
-Converts this object into a string in the specified encoding format. 
+Converts this object into a string in the specified encoding format.  
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
@@ -3575,7 +3576,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error.      |
@@ -3641,7 +3642,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error.      |
@@ -3777,7 +3778,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -3852,7 +3853,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -4051,7 +4052,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 
@@ -4124,7 +4125,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 
@@ -4189,7 +4190,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 
@@ -4260,7 +4261,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 
@@ -4340,7 +4341,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 
 **Example**
 
@@ -4495,7 +4496,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -4570,7 +4571,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -4643,7 +4644,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | Crypto operation error. |
 
 **Example**
@@ -4801,7 +4802,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | Crypto operation error. |
 
 **Example**
@@ -5239,7 +5240,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -5298,7 +5299,7 @@ Obtains the revoked certificate based on the specified certificate object.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11) instead.
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -5320,7 +5321,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -5431,7 +5432,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -5505,7 +5506,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -5959,7 +5960,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 
 **Example**
 
@@ -6110,7 +6111,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -6183,7 +6184,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -6254,7 +6255,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | Crypto operation error. |
 
 **Example**
@@ -6410,7 +6411,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | Crypto operation error. |
 
 **Example**
@@ -6925,7 +6926,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -7004,7 +7005,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -7113,7 +7114,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -7185,7 +7186,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -7702,7 +7703,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message      |
 | -------- | -------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.  |
 | 19030001 | Crypto operation error. |
 
@@ -8189,7 +8190,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
@@ -8248,7 +8249,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.                           |
@@ -8382,7 +8383,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.                           |
@@ -8699,7 +8700,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -8782,7 +8783,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -9086,7 +9087,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -9167,7 +9168,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -10063,7 +10064,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 
 **Example**
@@ -10179,7 +10180,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -10271,7 +10272,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -10368,7 +10369,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -10494,7 +10495,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -10625,7 +10626,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error. |
 
@@ -10742,7 +10743,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error. |
 
@@ -10859,7 +10860,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error. |
 
@@ -10949,7 +10950,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.                           |
@@ -11090,7 +11091,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.                           |
@@ -11874,7 +11875,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.                           |
@@ -12030,7 +12031,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -12154,7 +12155,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error.           |
@@ -12304,7 +12305,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error.           |
@@ -12707,7 +12708,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -12806,7 +12807,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -12877,7 +12878,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -12998,7 +12999,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -13225,7 +13226,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -13295,7 +13296,7 @@ Provide APIs for generating messages in CMS format.
 
 ### addSigner<sup>18+</sup>
 
-addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
+addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void
 
 Adds a signer to the CMS **SIGNED_DATA** structure.
   
@@ -13321,7 +13322,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 401      | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -13437,7 +13438,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 401      | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -13694,7 +13695,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 401      | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -13827,7 +13828,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 401      | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |

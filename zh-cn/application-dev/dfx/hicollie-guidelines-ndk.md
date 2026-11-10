@@ -62,7 +62,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
            - napi_init.cpp
          ets:
            entryability:
-             - EntryAbility.ts
+             - EntryAbility.ets
            pages:
              - Index.ets
    ```
@@ -531,10 +531,10 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    
    static napi_value TestHiCollieAssociateProcessReport(napi_env env, napi_callback_info info)
    {
-      // 上报BUSINESS_THREAD_BLOCK_3S事件
+      // 上报BUSSINESS_THREAD_BLOCK_3S事件
       OH_HiCollie_AssociateProcessReport(false);
       sleep(3);
-      // 上报BUSINESS_THREAD_BLOCK_6S事件
+      // 上报BUSSINESS_THREAD_BLOCK_6S事件
       OH_HiCollie_AssociateProcessReport(true);
       return 0;
    }

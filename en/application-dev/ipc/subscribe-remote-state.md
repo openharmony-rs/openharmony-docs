@@ -5,6 +5,7 @@
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=a058faf9554a4e15f6e3d83e8300a629fbc557db translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 IPC/RPC allows you to subscribe to the state changes of a remote stub object. When the remote stub object dies, a death notification will be sent to your local proxy. To subscribe to death notifications, you need to call the [registerDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#registerdeathrecipient9-1) API. To unsubscribe from death notifications, call the [unregisterDeathRecipient](../reference/apis-ipc-kit/js-apis-rpc.md#unregisterdeathrecipient9-1) API.
 
@@ -61,7 +62,7 @@ let connectId: number | undefined;
 // Death notification
 class MyDeathRecipient implements rpc.DeathRecipient {
   onRemoteDied() {
-    hilog.info(0x0000, 'testTag', 'server is died');
+    hilog.info(0x0000, 'testTag', 'server is dead');
   }
 }
 let deathRecipient = new MyDeathRecipient();
@@ -165,7 +166,7 @@ let deviceId: string| undefined;
 // Death notification
 class MyDeathRecipient implements rpc.DeathRecipient {
   onRemoteDied() {
-    hilog.info(0x0000, 'testTag', 'server is died');
+    hilog.info(0x0000, 'testTag', 'server is dead');
   }
 };
 let deathRecipient = new MyDeathRecipient();

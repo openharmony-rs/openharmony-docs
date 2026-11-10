@@ -5,6 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=b307803a33130c0e4efc7fa43a3a1e1f246ced00 translatedAt=2026-11-09T06:24:03.039Z pushedAt=2026-11-09T08:19:08.917Z nl=1 -->
 
 > **NOTE**
 >
@@ -447,6 +448,21 @@ Enumerates the display mode for the screen capture picker.
 | WINDOW_AND_APP | 4    | Displays both windows and apps.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 | SCREEN_AND_APP | 5    | Displays both screens and apps.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 | SCREEN_WINDOW_AND_APP | 6    | Displays screens, windows, and apps.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+
+## AVScreenCaptureAutoPauseCaptureScene
+
+Enumerates the scenarios for automatically pausing screen recording.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
+| Name | Value | Description |
+| -------------------------- | ---- | -------------------------------------- |
+| SCENE_NONE | 0 | No scenario is set. Screen recording is not automatically paused in any scenario. |
+| SCENE_SCREEN_FOLD_STATE_CHANGE | 1 << 0 | Scenario in which the screen fold state changes. |
 
 ## AVMetricsEventType<sup>23+</sup>
 

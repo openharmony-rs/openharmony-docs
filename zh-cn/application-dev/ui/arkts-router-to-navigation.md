@@ -190,16 +190,16 @@ Router通过`@ohos.router`模块提供的方法来操作页面，建议使用[UI
 <!-- @[get_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/GetRouter.ets) -->  
 
 ``` TypeScript
-// push page
+// 跳转页面
 this.getUIContext().getRouter().pushUrl({ url:'pages/PageOne', params: null });
 
-// pop page
+// 返回页面
 this.getUIContext().getRouter().back({ url: 'pages/PageOne' });
 
-// replace page
+// 替换当前页面
 this.getUIContext().getRouter().replaceUrl({ url: 'pages/PageOne' });
 
-// clear all page
+// 清空所有页面
 this.getUIContext().getRouter().clear();
 
 // 获取页面栈大小
@@ -233,18 +233,18 @@ struct Index {
 
 ``` TypeScript
 this.pathStack.pop();
-// push page
+// 跳转页面
 this.pathStack.pushPath({ name: 'PageOne' });
 
-// pop page
+// 返回页面
 this.pathStack.pop();
 this.pathStack.popToIndex(1);
 this.pathStack.popToName('PageOne');
 
-// replace page
+// 替换当前页面
 this.pathStack.replacePath({ name: 'PageOne' });
 
-// clear all page
+// 清空所有页面
 this.pathStack.clear();
 
 // 获取路由栈大小
@@ -379,7 +379,7 @@ struct CustomNode {
   pathStack: NavPathStack = new NavPathStack();
 
   aboutToAppear() {
-    // query navigation info
+    // 查询navigation信息
     let navigationInfo: NavigationInfo = this.queryNavigationInfo() as NavigationInfo;
     if (navigationInfo !== undefined) {
       this.pathStack = navigationInfo.pathStack ;
@@ -699,10 +699,10 @@ function callbackFunc(info: uiObserver.RouterPageInfo) {
   hilog.info(DOMAIN, TAG,'RouterPageInfo is : ' + JSON.stringify(info));
 }
 
-// used in ability context.
+// 在abilityContext中使用
 uiObserver.on('routerPageUpdate', this.context, callbackFunc);
 
-// used in UIContext.
+// 在UIContext中使用
 uiObserver.on('routerPageUpdate', this.getUIContext(), callbackFunc);
 ```
 

@@ -1067,3 +1067,34 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 }
 ```
+
+### onUnmountExternalStorageDevice
+
+onUnmountExternalStorageDevice(deviceInfo: common.ExternalStorageDeviceInfo): void
+
+外置存储设备插入事件回调。通过[usbManager.setExternalStorageInterceptEnable](./js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable)接口开启外置存储设备拦截后，当有外置存储设备插入时，系统会通过该回调将插入的外置存储设备信息上报给开启了该拦截的设备管理应用。仅当插入的外置存储设备类型为[DiskType](./js-apis-enterprise-common.md#disktype)枚举所列的三种类型（SD卡、U盘、光盘）时，才会触发该回调进行上报。
+
+**起始版本：** 26.0.1
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+
+**参数：**
+
+| 参数名     | 类型                                                                                                 | 必填 | 说明                                 |
+| ---------- | ---------------------------------------------------------------------------------------------------- | ---- | ------------------------------------ |
+| deviceInfo | [common.ExternalStorageDeviceInfo](./js-apis-enterprise-common.md#externalstoragedeviceinfo)         | 是   | 插入但尚未挂载的外置存储设备信息，包含磁盘类型（type）、挂载路径（devicePath）、卷ID（volumeId）、挂载状态（mountStatus）、厂商ID（vendorId）、产品ID（productId）和序列号（serial），设备管理应用可据此识别插入的设备并做相应处理。       |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onUnmountExternalStorageDevice(deviceInfo: common.ExternalStorageDeviceInfo): void {
+    console.info(`Succeeded in calling onUnmountExternalStorageDevice callback, deviceInfo:${JSON.stringify(deviceInfo)}`);
+  }
+}
+```

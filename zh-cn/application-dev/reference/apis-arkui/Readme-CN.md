@@ -17,6 +17,7 @@
     - [@ohos.arkui.inspector (布局回调)](js-apis-arkui-inspector.md)
     - [@ohos.arkui.node (自定义节点)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (无感监听)](js-apis-arkui-observer.md)
+    - [@ohos.arkui.placeholderRegister (滚动占位注册)](arkts-apis-placeholderregister.md)
     - [@ohos.arkui.Prefetcher (内容预取)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (形状)](js-apis-arkui-shape.md)
     - [@ohos.arkui.theme(主题换肤)](js-apis-arkui-theme.md)
@@ -203,6 +204,9 @@
       - [布局约束](arkui-ts/ts-universal-attributes-layout-constraints.md)
       - [Flex布局](arkui-ts/ts-universal-attributes-flex-layout.md)
       - [安全区域](arkui-ts/ts-universal-attributes-expand-safe-area.md)
+      <!--Del-->
+      - [安全区域 (系统接口)](arkui-ts/ts-universal-attributes-expand-safe-area-sys.md)
+      <!--DelEnd-->
       - [组件级像素取整](arkui-ts/ts-universal-attributes-pixelRoundForComponent.md)
       - [页面级像素取整](arkui-ts/ts-universal-attributes-pixelRoundForPage.md)
       - [边框设置](arkui-ts/ts-universal-attributes-border.md)
@@ -832,7 +836,7 @@
     - [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md)
     - [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)
     - [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)
-    - [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
+    - [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
     - [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)
     - [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)
     - [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)

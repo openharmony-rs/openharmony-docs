@@ -1,4 +1,4 @@
-# Converting SM2 Ciphertext (ArkTS)
+# SM2 Ciphertext Format Conversion (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

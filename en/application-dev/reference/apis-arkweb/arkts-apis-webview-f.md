@@ -1,12 +1,11 @@
 # Functions
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=9c41f9fad7f6d910dff2a356347531b943719c3e translatedAt=2026-08-07T04:40:06.068Z pushedAt=2026-08-07T07:52:53.193Z -->
+<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-11-06T11:01:51.407Z pushedAt=2026-11-09T11:16:33.618Z nl=1 -->
 
 The ArkWeb Functions module is a collection of function capabilities of ArkWeb (Web subsystem). It provides independent functions required during the running of the Web component, such as subscribing to the Web engine initialization completion event. When using the Web component, developers can use the functions in this module to listen for key lifecycle events of the Web engine or perform global Web operations.
 

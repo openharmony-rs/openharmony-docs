@@ -5,7 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=de1f2d3e9438dd3132f8a8b2adc4ad8d0495d150 translatedAt=2026-09-22T13:40:06.940Z pushedAt=2026-09-23T10:35:32.912Z -->
+<!-- md-trans-meta sourceCommit=620bf4182bcb799f841b76719b180bae2faedd52 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## When to Use
 
@@ -72,7 +72,7 @@ libnet_connection.so
 1. Write the code for calling the API in the source file, encapsulate it into a value of the `napi_value` type, and return the value to the Node.js environment.
 
    <!-- @[build_project1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    // Obtain the default network.
    static napi_value GetDefaultNet(napi_env env, napi_callback_info info)
@@ -85,7 +85,7 @@ libnet_connection.so
        napi_get_value_int32(env, args[0], &param); // Obtain an integer from args[0] and store the integer in param.
        
        NetConn_NetHandle netHandle;
-       if (param == 0) { // If the parameter is 0
+       if (param == 0) { // If the argument is 0, pass NULL to demonstrate a parameter error. The API returns 401.
            param = OH_NetConn_GetDefaultNet(NULL);
        } else {
            param = OH_NetConn_GetDefaultNet(&netHandle);
@@ -114,7 +114,7 @@ libnet_connection.so
 2. Initialize and export the `napi_value` objects encapsulated through **NAPI**, and expose the preceding two functions to JavaScript through external function APIs.
 
    <!-- @[build_project2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
@@ -133,7 +133,7 @@ libnet_connection.so
 3. Register the objects successfully initialized in the previous step into the `Node.js` file by using the `napi_module_register` function of `RegisterEntryModule`.
 
    <!-- @[build_project3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    static napi_module demoModule = {
        .nm_version = 1,
@@ -153,7 +153,7 @@ libnet_connection.so
    - The `NetId` function does not accept parameters and returns a numeric value.
 
    <!-- @[defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
+   
    ``` TypeScript
    export const GetDefaultNet: (code: number) => number;
    export const NetId: () => number;
@@ -161,7 +161,7 @@ libnet_connection.so
 5. Call the encapsulated APIs in the `index.ets` file.
 
    <!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->    
-
+   
    ``` TypeScript
    import testNetManager from 'libentry.so';
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -215,6 +215,7 @@ libnet_connection.so
      }
    
      CodeNumber() {
+       // A nonzero value passes a valid netHandle pointer; 0 passes NULL to demonstrate parameter error 401.
        let testParam = 1;
        // ...
          let codeNumber = testNetManager.GetDefaultNet(testParam);

@@ -1,14 +1,13 @@
 # Class (MediaAlbumChangeRequest)
-
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:11.121Z pushedAt=2026-06-23T09:25:46.740Z -->
+<!-- md-trans-meta sourceCommit=f2c7727dff910038fdcf1b75fb074e51aa470331 translatedAt=2026-11-03T07:02:48.973Z pushedAt=2026-11-04T03:11:19.954Z nl=1 -->
 
-MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
+The MediaAlbumChangeRequest class implements the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11) interface.
 
 MediaAlbumChangeRequest provides APIs for managing the media album change request.
 
@@ -53,8 +52,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.          |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The constructor was not called with the new keyword.<br>2. The album to be modified is invalid, the passed Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum().<br>3. System memory insufficient, please retry.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -70,9 +69,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
-  let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
-  let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+  try {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, fetchOptions);
+    let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
+    let albumChangeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
+  } catch (err) {
+    console.error(`MediaAlbumChangeRequest constructorDemo failed with error: ${err.code}, ${err.message}`);
+  }
 }
 ```
 
@@ -100,8 +103,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011 |  System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The album to be modified is invalid, the Album passed to the MediaAlbumChangeRequest constructor is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum().<br>2. System memory insufficient, please retry.<br>3. IPC timeout, please retry.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -129,23 +132,13 @@ setAlbumName(name: string): void
 
 Sets the album name.
 
-The album name must meet the following requirements:
-
-- The total length of the album name must be between 1 and 255 characters.
-
-- It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > | { } [ ]
-
-- It is case-insensitive.
-
-- Duplicate album names are not allowed.
-
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters**
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| name | string | Yes  | Album name to set.|
+| name | string | Yes | Name of the album to set.<br>The album name is a string of 1 to 255 characters. The following illegal English characters are not allowed:<br> . \ / : * ? " ' ` < > \| { } [ ]<br>English characters are case-insensitive.<br>Duplicate album names are not allowed. |
 
 **Error codes**
 
@@ -153,8 +146,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The name parameter is invalid, please check if the name meets the naming rules (non-empty, within length limit, no illegal characters).<br>2. The album to be modified is invalid, the Album passed to the MediaAlbumChangeRequest constructor is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum().<br>3. The album type does not support setAlbumName, only user source albums, highlights, smart portrait albums and group photos support this operation.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **Example**
 
@@ -197,9 +190,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
-| 14000016 |  Operation Not Support.     |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The assets array contains assets that were already added in a previous addAssets operation, please remove duplicates.<br>2. The album to be modified is invalid, the Album passed to the MediaAlbumChangeRequest constructor is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum().<br>3. The album type does not support addAssets, only user albums and highlight albums support this operation.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 14000016 | Operation type not support. Possible causes:<br>Duplicate asset in addAssets, the asset was already added in a previous addAssets operation. |
 
 **Example**
 
@@ -251,9 +244,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.         |
-| 14000016 |  Operation Not Support.     |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The album to be modified is invalid, the Album passed to the MediaAlbumChangeRequest constructor is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum().<br>2. The album type does not support removeAssets, only user albums support this operation.<br>3. The assets array contains elements that are not valid PhotoAsset objects.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 14000016 | Operation type not support. Possible causes:<br>Duplicate asset in removeAssets, the asset was already removed in a previous removeAssets operation. |
 
 **Example**
 

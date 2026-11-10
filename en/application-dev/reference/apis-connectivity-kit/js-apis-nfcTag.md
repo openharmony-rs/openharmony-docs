@@ -6,7 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=37e87e28b1f57566fffb557016c871f107cbe03a translatedAt=2026-09-08T07:24:52.870Z pushedAt=2026-09-08T11:08:39.264Z -->
+<!-- md-trans-meta sourceCommit=0d5bc9298f401d2d43e377f0c6777e605efaeed7 translatedAt=2026-10-29T12:23:51.479Z pushedAt=2026-10-30T07:35:14.532Z nl=1 -->
 
 The **tag** module provides APIs for operating and managing NFC tags. The following tag read modes are available:
 <br>Background mode: The device reads the tag by using NFC without starting any application, and then searches for applications based on the tag type. If only one application is matched, the card reading page of that application will be started. If multiple applications are matched, an application selector will be started, asking the user to select an application. Background mode does not involve tag-related APIs. For details, see [nfc-tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md#accessing-an-nfc-tag-without-starting-an-application).
@@ -14,9 +14,9 @@ The **tag** module provides APIs for operating and managing NFC tags. The follow
 
 > **NOTE**
 >
->1. The initial APIs of this module are supported since API version 7. New APIs will be marked with a superscript to indicate their earliest API version.
->2. For API versions earlier than 26.0.0, use [canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap__ndk_8h.md#caniuse) and [nfcController.isNfcAvailable](js-apis-nfcController.md#nfccontrollerisnfcsupported) to check whether the device supports NFC. Since API version 26.0.0, it is more accurate to determine whether a device supports NFC by calling both [canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap__ndk_8h.md#caniuse) and [nfcController.isNfcSupported](js-apis-nfcController.md#nfccontrollerisnfcsupported). If the device does not support NFC, the application stability may be affected. For details, see [NFC Tag Read/Write Development](../../connectivity/nfc/nfc-tag-access-guide.md).
->3. If an error is reported when importing the **tag** module, the capability may exceed the capability set defined by the default device in the project on a specific device model. To use this capability, configure a custom SysCap. For details, see [SysCap development guide](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap).
+>1. The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>2. Before API version 26.0.0, use [canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap-ndk-8h.md#caniuse) and [nfcController.isNfcAvailable](js-apis-nfcController.md#nfccontrollerisnfcsupported) to check whether the device supports the NFC capability. Starting from API version 26.0.0, use [canIUse("SystemCapability.Communication.NFC.Tag")](../common/syscap-ndk-8h.md#caniuse) and [nfcController.isNfcSupported](js-apis-nfcController.md#nfccontrollerisnfcsupported) to check whether the device supports the NFC capability more accurately. Otherwise, application running stability issues may occur. For details, see [NFC Tag Development Guide](../../connectivity/nfc/nfc-tag-access-guide.md).
+>3. If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
 
 ## **Modules to Import**
 

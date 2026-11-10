@@ -353,3 +353,62 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+## formAgent.getVisibleFormRect
+
+getVisibleFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
+
+获取可见卡片区域的位置和尺寸。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | -------|
+| formId | string | 是 | 卡片标识。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对于屏幕左上角的位置和尺寸，单位为vp。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+| 16500100 | Failed to obtain the configuration information. |
+| 16501001 | The ID of the form to be operated does not exist. |
+| 16501003 | The form cannot be operated by the current application. |
+
+**示例：**
+
+```ts
+import { formAgent, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '123456789'; // 卡片标识，请替换为实际的卡片标识。
+try {
+  formAgent.getVisibleFormRect(formId).then((data: formInfo.Rect) => {
+    console.info(`formAgent getVisibleFormRect success, left: ${data.left}, top: ${data.top},` +
+      `width: ${data.width}, height: ${data.height}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```

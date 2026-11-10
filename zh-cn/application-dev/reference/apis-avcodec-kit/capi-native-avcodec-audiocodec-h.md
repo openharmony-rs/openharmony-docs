@@ -491,14 +491,14 @@ OH_AVErrCode OH_AudioCodec_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySessio
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向OH_AVCodec实例的指针。 |
-| [MediaKeySession](../apis-drm-kit/capi-drm-mediakeysession.md) *mediaKeySession | 带有解密功能的媒体秘钥会话实例。 |
+| [MediaKeySession](../apis-drm-kit/capi-drm-mediakeysession.md) *mediaKeySession | 带有解密功能的媒体密钥会话实例。 |
 | bool secureAudio | 是否使用安全解码器。使用安全解码器为true,否则为false。<br> 注意：当前音频解密尚不支持使用安全解码器。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：OH_AVCodec实例为nullptr或无效，mediaKeySystemInfo实例为nullptr或无效。<br>         AV_ERR_INVALID_STATE：编解码器服务不可用。<br>         AV_ERR_NO_MEMORY：请求内存失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：OH_AVCodec实例为nullptr或无效，mediaKeySession实例为nullptr或无效。<br>         AV_ERR_INVALID_STATE：编解码器服务不可用。<br>         AV_ERR_NO_MEMORY：请求内存失败。 |
 
 ### OH_AudioCodec_QueryInputBuffer()
 

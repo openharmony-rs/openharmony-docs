@@ -70,6 +70,8 @@ AVSession Kit（Audio &amp; Video Session Kit，音视频播控服务）是系�
 
 所有需要进行后台播放的音视频类应用，都需要同时接入AVSession和后台任务管理，未接入的应用在退到后台时，将会被强制暂停音频播放。
 
+<!--RP2--><!--RP2End-->
+
 ## 与相关Kit的关系
 
 应用实现后台播放时，需要使用[Background Tasks Kit](../../task-management/background-task-overview.md)（后台任务管理）的能力，申请对应的长时任务，避免进入挂起（Suspend）状态。

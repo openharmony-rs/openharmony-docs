@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to develop asynchronous tasks using Node-API by creating asynchronous work objects with napi_create_async_work for time-consuming operations, using callbacks or Promises in scenarios such as file operations and network requests."
+keywords: [Node-API, asynchronous tasks, napi_create_async_work, napi_queue_async_work, asynchronous work, callback, Promise, uv_queue_work]
+doctype: guide
+status: active
+---
+
 # Asynchronous Task Development Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.386Z nl=1 -->
 
 ## When to Use
 
@@ -153,7 +162,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
    import testNapi from 'libentry.so';
    ```
 
-   <!-- @[promise_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->  
+   <!-- @[promise_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    testNapi.asyncWork(1024).then((result: number) => {
@@ -162,7 +171,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
    ```
 
    ``` txt
-   Result: **result is 1024**
+   Result: result is 1024
    ```
 
 ## Example (Callback)
@@ -272,6 +281,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
    ```ts
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import nativeModule from 'libentry1.so';
+
    let num1: number = 123;
    let num2: number = 456;
    ```
@@ -285,7 +295,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
    ```
 
    ``` txt
-   Result: **result is 579**
+   Result: result is 579
    ```
 
 ## Child Thread Interaction Scenarios
@@ -348,7 +358,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 
    ``` txt
    Execution result: 
-   Worker thread received data: 123, 456 
+   Worker thread received data: 123, 456  
    result is 579
    ```
 
@@ -389,7 +399,7 @@ You can use a callback or a promise to implement asynchronous calls as required.
 
    ``` txt
    Execution result: 
-   Taskpool thread received data: 123, 456 
+   Taskpool thread received data: 123, 456  
    result is 579
    ```
 

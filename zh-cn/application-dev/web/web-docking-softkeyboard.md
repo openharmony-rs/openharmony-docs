@@ -94,7 +94,9 @@
 </html>
 ```
 
-```ts
+<!-- @[soft_keyboard_auto_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/AutoShowSoftKeyboard.ets) -->
+
+``` TypeScript
 // Index.ets
 import { webview } from '@kit.ArkWeb';
 import { inputMethod } from '@kit.IMEKit';
@@ -105,7 +107,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   build() {
     Column() {
-      Web({ src: $rawfile("index.html"), controller: this.controller})
+      Web({ src: $rawfile('index.html'), controller: this.controller})
         .onPageEnd(() => {
           this.controller.runJavaScript(`document.getElementById('input_a').focus()`).then(() => {
             setTimeout(() => {
@@ -241,15 +243,17 @@ struct WebComponent {
 
 3. 在软键盘弹出时，为使Web组件不发生避让行为，可通过调用[expandSafeArea()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域。更多详细示例可参考[网页中安全区域计算和避让适配](../web/web-safe-area-insets.md)。
 
-     ```ts
+     <!-- @[soft_keyboard_expand_safe_area](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/ExpandSafeArea.ets) -->
+     
+     ``` TypeScript
      // xxx.ets
      import { webview } from '@kit.ArkWeb';
-
+     
      @Entry
      @Component
      struct WebComponent {
        controller: webview.WebviewController = new webview.WebviewController();
-
+     
        build() {
          Column() {
            Web({ src: 'www.example.com', controller: this.controller })
@@ -282,113 +286,115 @@ struct WebComponent {
 - 使用带有定制Enter键的系统软键盘
 - 使用完全由应用程序自定义的软键盘
 
-```ts
-  // Index.ets
-  import { webview } from '@kit.ArkWeb';
-  import { inputMethodEngine } from '@kit.IMEKit';
+<!-- @[soft_keyboard_web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/OnIntKbdAttachSysCustIn.ets) -->
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    webKeyboardController: WebKeyboardController = new WebKeyboardController();
-    inputAttributeMap: Map<string, number> = new Map([
-        ['UNSPECIFIED', inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED],
-        ['GO', inputMethodEngine.ENTER_KEY_TYPE_GO],
-        ['SEARCH', inputMethodEngine.ENTER_KEY_TYPE_SEARCH],
-        ['SEND', inputMethodEngine.ENTER_KEY_TYPE_SEND],
-        ['NEXT', inputMethodEngine.ENTER_KEY_TYPE_NEXT],
-        ['DONE', inputMethodEngine.ENTER_KEY_TYPE_DONE],
-        ['PREVIOUS', inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS]
-      ])
+``` TypeScript
+// Index.ets
+import { webview } from '@kit.ArkWeb';
+import { inputMethodEngine } from '@kit.IMEKit';
 
-      /**
-       * 自定义键盘组件Builder
-       */
-      @Builder
-      customKeyboardBuilder() {
-      // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。
-        Row() {
-          Text("完成")
-            .fontSize(20)
-            .fontColor(Color.Blue)
-            .onClick(() => {
-              this.webKeyboardController.close();
-            })
-          // 插入字符。
-          Button("insertText").onClick(() => {
-            this.webKeyboardController.insertText('insert ');
-          }).margin({
-            bottom: 200,
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  webKeyboardController: WebKeyboardController = new WebKeyboardController();
+  inputAttributeMap: Map<string, number> = new Map([
+      ['UNSPECIFIED', inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED],
+      ['GO', inputMethodEngine.ENTER_KEY_TYPE_GO],
+      ['SEARCH', inputMethodEngine.ENTER_KEY_TYPE_SEARCH],
+      ['SEND', inputMethodEngine.ENTER_KEY_TYPE_SEND],
+      ['NEXT', inputMethodEngine.ENTER_KEY_TYPE_NEXT],
+      ['DONE', inputMethodEngine.ENTER_KEY_TYPE_DONE],
+      ['PREVIOUS', inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS]
+    ])
+
+    /**
+      * 自定义键盘组件Builder
+      */
+    @Builder
+    customKeyboardBuilder() {
+    // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。
+      Row() {
+        Text($r('app.string.custom_keyboard_done'))
+          .fontSize(20)
+          .fontColor(Color.Blue)
+          .onClick(() => {
+            this.webKeyboardController.close();
           })
-          // 从后往前删除length参数指定长度的字符。
-          Button("deleteForward").onClick(() => {
-            this.webKeyboardController.deleteForward(1);
-          }).margin({
-            bottom: 200,
-          })
-          // 从前往后删除length参数指定长度的字符。
-          Button("deleteBackward").onClick(() => {
-            this.webKeyboardController.deleteBackward(1);
-          }).margin({
-            left: -220,
-          })
-          // 插入功能按键。
-          Button("sendFunctionKey").onClick(() => {
-            this.webKeyboardController.sendFunctionKey(6);
-          })
-        }
-      }
-
-    build() {
-      Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
-        .onInterceptKeyboardAttach((KeyboardCallbackInfo) => {
-          // option初始化，默认使用系统默认键盘
-          let option: WebKeyboardOptions = {
-            useSystemKeyboard: true,
-          };
-          if (!KeyboardCallbackInfo) {
-            return option;
-          }
-
-          // 保存WebKeyboardController，使用自定义键盘时候，需要使用该handler控制输入、删除、软键盘关闭等行为
-          this.webKeyboardController = KeyboardCallbackInfo.controller;
-          let attributes: Record<string, string> = KeyboardCallbackInfo.attributes;
-          // 遍历attributes
-          let attributeKeys = Object.keys(attributes);
-          for (let i = 0; i < attributeKeys.length; i++) {
-            console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]]);
-          }
-
-          if (attributes) {
-            if (attributes['data-keyboard'] == 'customKeyboard') {
-              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘
-              console.info('WebCustomKeyboard use custom keyboard');
-              option.useSystemKeyboard = false;
-              // 设置自定义键盘builder
-              option.customKeyboard = () => {
-                this.customKeyboardBuilder()
-              }
-              return option;
-            }
-
-            if (attributes['keyboard-return'] != undefined) {
-              // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有keyboard-return，使用系统键盘，并且指定系统软键盘enterKey类型
-              option.useSystemKeyboard = true;
-              let enterKeyType: number | undefined = this.inputAttributeMap.get(attributes['keyboard-return']);
-              if (enterKeyType != undefined) {
-                option.enterKeyType = enterKeyType;
-              }
-              return option;
-            }
-          }
-
-          return option;
+        // 插入字符。
+        Button('insertText').onClick(() => {
+          this.webKeyboardController.insertText('insert ');
+        }).margin({
+          bottom: 200,
+        })
+        // 从后往前删除length参数指定长度的字符。
+        Button('deleteForward').onClick(() => {
+          this.webKeyboardController.deleteForward(1);
+        }).margin({
+          bottom: 200,
+        })
+        // 从前往后删除length参数指定长度的字符。
+        Button('deleteBackward').onClick(() => {
+          this.webKeyboardController.deleteBackward(1);
+        }).margin({
+          left: -220,
+        })
+        // 插入功能按键。
+        Button('sendFunctionKey').onClick(() => {
+          this.webKeyboardController.sendFunctionKey(6);
         })
       }
     }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.controller })
+      .onInterceptKeyboardAttach((keyboardCallbackInfo) => {
+        // option初始化，默认使用系统默认键盘
+        let option: WebKeyboardOptions = {
+          useSystemKeyboard: true,
+        };
+        if (!keyboardCallbackInfo) {
+          return option;
+        }
+
+        // 保存WebKeyboardController，使用自定义键盘时候，需要使用该handler控制输入、删除、软键盘关闭等行为
+        this.webKeyboardController = keyboardCallbackInfo.controller;
+        let attributes: Record<string, string> = keyboardCallbackInfo.attributes;
+        // 遍历attributes
+        let attributeKeys = Object.keys(attributes);
+        for (let i = 0; i < attributeKeys.length; i++) {
+          console.info('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]]);
+        }
+
+        if (attributes) {
+          if (attributes['data-keyboard'] == 'customKeyboard') {
+            // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有data-keyboard，且值为customKeyboard，则使用自定义键盘
+            console.info('WebCustomKeyboard use custom keyboard');
+            option.useSystemKeyboard = false;
+            // 设置自定义键盘builder
+            option.customKeyboard = () => {
+              this.customKeyboardBuilder()
+            }
+            return option;
+          }
+
+          if (attributes['keyboard-return'] != undefined) {
+            // 根据html可编辑元素的属性，判断使用不同的软键盘，例如这里如果属性包含有keyboard-return，使用系统键盘，并且指定系统软键盘enterKey类型
+            option.useSystemKeyboard = true;
+            let enterKeyType: number | undefined = this.inputAttributeMap.get(attributes['keyboard-return']);
+            if (enterKeyType != undefined) {
+              option.enterKeyType = enterKeyType;
+            }
+            return option;
+          }
+        }
+
+        return option;
+      })
+    }
   }
+}
 ```
 
 ```html
