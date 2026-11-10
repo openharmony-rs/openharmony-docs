@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "按场景分类列出Audio Kit各示例工程的名称、开发语言与实现能力，涵盖ArkTS和C/C++两种语言，供开发者按需检索并跳转到对应示例代码工程。"
-keywords: [Audio Kit, 示例工程, 音频示例, 音频播放示例, 音频录制示例, 设备路由示例, 音量管理示例, 示例代码, AudioSample, MIDI, 空间音频]
+keywords: [Audio Kit, 示例工程, 音频示例, 设备路由示例, 音量管理示例, 示例代码, AudioSample, MIDI, 空间音频]
 doctype: guide
 status: active
 ---
