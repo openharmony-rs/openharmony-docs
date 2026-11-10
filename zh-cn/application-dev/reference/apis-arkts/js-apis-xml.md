@@ -762,7 +762,7 @@ setCdata(text: string): void
 
 | 参数名 | 类型   | 必填 | 说明              |
 | ------ | ------ | ---- | ----------------- |
-| text   | string | 是   | CDATA标签中的数据内容。所组成的XML长度不能超过100000。 |
+| text   | string | 是   | CDATA标签中的数据内容。所组成的XML长度不能超过100000。不能是空字符串。 |
 
 **错误码：**
 
@@ -845,7 +845,7 @@ setDocType(text: string): void
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ------ | ------ | ---- | ------------------- |
-| text   | string | 是   | 文档类型声明的内容。所组成的XML长度不能超过100000。 |
+| text   | string | 是   | 文档类型声明的内容。所组成的XML长度不能超过100000。不能是空字符串。 |
 
 **错误码：**
 
@@ -998,6 +998,8 @@ that.parse(options);
 ## AttributeWithTagCb<sup>20+</sup>
 
 type AttributeWithTagCb = (tagName: string, key: string, value: string) => boolean
+
+ParseOptions中attributeWithTagCallbackFunction的回调方法，三个字符串参数都是由XML解析器在解析过程中自动提取的，开发者无法直接自定义这些值。开发者只能在回调函数中通过返回值来决定如何处理这些已存在的属性。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 

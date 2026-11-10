@@ -1002,7 +1002,7 @@ Worker线程用于与宿主线程通信的类。ThreadWorkerGlobalScope类继承
 
 ### postMessage<sup>9+</sup>
 
-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void;
+postMessage(messageObject: Object, transfer: ArrayBuffer[]): void
 
 Worker线程通过转移对象所有权的方式向宿主线程发送消息。
 
