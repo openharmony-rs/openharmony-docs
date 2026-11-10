@@ -51,7 +51,7 @@
      this.winWidthPx = Math.round(widthPx);
      this.winHeightPx = Math.round(heightPx);
    }
-
+   
    // 读取生效尺寸范围（入参与系统限制的交集），存到状态变量供界面展示
    private readLimits(win: window.Window): void {
      try {
@@ -66,7 +66,7 @@
        console.error('Failed to read effective size range:', String(err));
      }
    }
-
+   
    // 窗口初始化：使能拖拽缩放、设置尺寸范围、同步初始尺寸
    private setupWindow(win: window.Window): void {
      // 默认已支持拖拽缩放，显式开启以防被关闭
@@ -75,7 +75,7 @@
      }).catch((err: BusinessError) => {
        console.error(`setResizeByDragEnabled failed: ${err.code} ${err.message}`);
      });
-
+   
      // 防止过度缩放导致内容截断或布局错乱
      const limits: window.WindowLimits = {
        minWidth: 480,
@@ -89,7 +89,7 @@
      }).catch((err: BusinessError) => {
        console.error(`setWindowLimits failed: ${err.code} ${err.message}`);
      });
-
+   
      // 读取初始窗口尺寸，同步到界面
      try {
        this.applySize(win.getWindowProperties().windowRect.width,
@@ -98,7 +98,7 @@
        console.error('Failed to get initial window size:', JSON.stringify(err));
      }
    }
-
+   
    // 获取主窗口、完成初始化，并注册尺寸变化监听
    aboutToAppear(): void {
      const ctx = this.getUIContext().getHostContext();   // 获取宿主上下文作为getLastWindow入参
@@ -108,13 +108,13 @@
      window.getLastWindow(ctx).then((win: window.Window) => {
        this.mainWindow = win;   // 保存主窗口实例
        this.setupWindow(win);   // 完成初始化：使能拖拽缩放、设置尺寸范围、同步初始尺寸
-
+   
        // ...
      }).catch((err: BusinessError) => {
        console.error(`getLastWindow failed: ${err.code} ${err.message}`);
      });
    }
-
+   
    // ...
    ```
 
