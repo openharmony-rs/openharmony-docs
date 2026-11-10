@@ -1,4 +1,4 @@
-# ToolBarV2 （系统接口）
+# ToolBarV2（系统接口）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
