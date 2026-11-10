@@ -3655,7 +3655,7 @@ encodeToStringSync(src: Uint8Array | collections.Uint8Array, options?: Type): st
 **示例：**
 
   ```ts
-  import { util, collections } from '@kit.ArkTS';
+  import { util } from '@kit.ArkTS';
   // MIME编码
   let base64Helper = new util.Base64Helper();
   let array =
@@ -3676,7 +3676,7 @@ encodeToStringSync(src: Uint8Array | collections.Uint8Array, options?: Type): st
   ```
 
   ```ts
-  import { util, collections } from '@kit.ArkTS';
+  import { util } from '@kit.ArkTS';
   // BASIC编码
   let base64Helper = new util.Base64Helper();
   let array =
@@ -3695,7 +3695,7 @@ encodeToStringSync(src: Uint8Array | collections.Uint8Array, options?: Type): st
   ```
 
   ```ts
-  import { util, collections } from '@kit.ArkTS';
+  import { util } from '@kit.ArkTS';
   // BASIC_URL_SAFE编码
   let base64Helper = new util.Base64Helper();
   let array =
@@ -3714,7 +3714,7 @@ encodeToStringSync(src: Uint8Array | collections.Uint8Array, options?: Type): st
   ```
 
   ```ts
-  import { util, collections } from '@kit.ArkTS';
+  import { util } from '@kit.ArkTS';
   // MIME_URL_SAFE编码
   let base64Helper = new util.Base64Helper();
   let array =
