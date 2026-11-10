@@ -9,8 +9,6 @@
 
 ## 概述
 
-本机制自API版本14起可用，各属性的版本要求见[约束与限制](#约束与限制)。
-
 系统内存紧张时会回收后台应用进程。应用被回收后，用户再次打开只能回到首页，此前的页面与操作上下文全部丢失。接入备份恢复后，应用可恢复到回收前的页面与数据。例如：用户在地铁乘车码页面退至后台，应用被回收；再次点击桌面图标即可回到乘车码页面完成出站。小说阅读、新闻阅读、视频播放等场景同理。
 
 [UIAbility备份恢复](ability-recover-guideline.md)基础文档介绍了通过[setRestoreEnabled()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled14)开启备份恢复、通过[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)保存临时数据的基本用法：应用切后台时系统调用onSaveState()并把页面栈序列化后写入磁盘；应用被回收后恢复启动时，系统把保存的数据合并进本次启动Want的parameters字段带回，页面栈由系统恢复。
