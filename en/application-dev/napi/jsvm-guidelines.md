@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Summarizes JSVM-API usage guidelines for HandleScope lifecycle management, engine instance isolation, multithreaded locking, argument retrieval, exception handling, and context binding to help prevent crashes and memory leaks."
+keywords: ["JSVM-API","usage guidelines","lifecycle management","HandleScope","multiple engine instances","multithreaded sharing","OH_JSVM_GetCbInfo","exception handling","context binding"]
+doctype: guide
+status: active
+---
+
 # JSVM-API Development Specifications
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=23d7ff60c67cd3075712762902e4e8f21f8c70ac translatedAt=2026-11-09T08:52:17.297Z nl=1 -->
 
 ## Lifecycle Management
 
@@ -178,7 +187,7 @@ static napi_value Add([[maybe_unused]] napi_env _env, [[maybe_unused]] napi_call
         JSVM_CreateVMOptions options;
         memset(&options, 0, sizeof(options));
         OH_JSVM_CreateVM(&options, &vm);
-        // Create env.
+        // create env
         OH_JSVM_CreateEnv(vm, 0, nullptr, &env);
     }
 
@@ -230,7 +239,7 @@ If **argv** is not **nullptr**, the arguments actually passed from JS will be wr
 
 ```cpp
 static JSVM_Value IncorrectDemo1(JSVM_Env env, JSVM_CallbackInfo info) {
-    // argc is not correctly initialized and is set to a random value. If the length of argv is less than the number of arguments specified by argc, data overwriting occurs.
+    // argc is not properly initialized, and its value is an indeterminate random value. As a result, the length of argv may be less than the number declared by argc, causing out-of-bounds data access.
     size_t argc;
     JSVM_Value argv[10] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
@@ -269,7 +278,7 @@ static JSVM_Value GetArgvDemo1(napi_env env, JSVM_CallbackInfo info) {
 
 static JSVM_Value GetArgvDemo2(napi_env env, JSVM_CallbackInfo info) {
     size_t argc = 2;
-    JSVM_Value* argv[2] = {nullptr};
+    JSVM_Value argv[2] = {nullptr};
     // The arguments (of the quantity specified by argc) passed from JS or undefined will be written to argv of OH_JSVM_GetCbInfo.
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     // Service code.
@@ -345,13 +354,13 @@ static JSVM_Value GetArgvDemo2(napi_env env, JSVM_CallbackInfo info) {
 
     // Bind NativeFunction to the JSVM. The process is omitted here.
     std::string sourcecodestr = R"JS(
-        // The console log needs to be implemented.
+        // consoleinfo requires user implementation.
         try {
             // Call the native function.
             NativeFunction()
         } catch (e) {
             // Handle the exception in C/C++.
-            consolelog(e.message)
+            consoleinfo(e.message)
         }
     )JS";
     JSVM_Value sourcecodevalue = nullptr;
@@ -420,13 +429,13 @@ OH_JSVM_CreateStringLatin1(env, "FunctionNameInJSContext", JSVM_AUTO_LENGTH, &ke
 OH_JSVM_SetProperty(env, global, key, JSFunc);
 // Call the function from JS.
 std::string sourcecodestr = R"JS(
-    // The console log needs to be implemented.
+    // consoleinfo requires user implementation.
     FunctionNameInJSContext() // The call is successful.
-    consolelog(FunctionNameInJSContext.name) // Print "NativeFunction."
+    consoleinfo(FunctionNameInJSContext.name) // Print "NativeFunction."
     try {
         NativeFunction() // If the function cannot be found, throw an exception.
     } catch (e) {
-        consolelog(e.message)
+        consoleinfo(e.message)
     }
 )JS";
 ```

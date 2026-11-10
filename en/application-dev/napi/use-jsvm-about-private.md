@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to use JSVM-API to create private keys, set, get, and delete private properties on JavaScript objects, and persist private keys using data references."
+keywords: ["OH_JSVM_CreatePrivate","OH_JSVM_SetPrivate","OH_JSVM_GetPrivate","OH_JSVM_DeletePrivate","OH_JSVM_CreateDataReference","OH_JSVM_GetReferenceData","private property","private key"]
+doctype: guide
+status: active
+---
+
 # Setting the private Property Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.334Z nl=1 -->
 
 ## Introduction
 
@@ -19,7 +28,7 @@ JSVM-API provides the capability of creating private keys, creating and deleting
 | API                                   | Description                      |
 |----------------------------------------|--------------------------------|
 | OH_JSVM_CreateDataReference            | Creates a data reference with a specified reference count in JSVM.|
-| OH_JSVM_GetReferenceData               | Checks whether a specified reference is valid. If the reference is valid, the JavaScript data associated with the reference is returned; otherwise, **result** is set to **NULL**.|
+| OH_JSVM_GetReferenceData               | Checks whether the specified reference is valid, returns the JavaScript data associated with the reference, and sets result to NULL if the reference is invalid.|
 | OH_JSVM_CreatePrivate                  | Creates a JS private key object.  |
 | OH_JSVM_SetPrivate                     | Sets a private property for a passed-in object.  |
 | OH_JSVM_GetPrivate                     | Obtains the private property of an object based on the private key.  |
@@ -86,7 +95,7 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-// Alias for the wrapperObject method to be called from JS.
+// Alias for the privateTest method to be called from JS.
 static JSVM_PropertyDescriptor descriptor[] = {
     {"privateTest", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
@@ -96,7 +105,7 @@ const char *srcCallNative = R"JS(privateTest();)JS";
 ```
 
 ## Expected Result
-```
+```txt
 private property set: 1
 private property deleted is undefined: 1
 second private property set: 2

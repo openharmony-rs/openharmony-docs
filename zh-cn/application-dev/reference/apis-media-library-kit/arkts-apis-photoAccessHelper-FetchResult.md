@@ -733,7 +733,7 @@ getObjectsByIndexSet(indexSet: number[]): Promise\<T[]\>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | Invalid parameter. Possible causes:<br>1. The parameter is not an array.<br>2. indexSet is null or undefined. |
+| 23800151 | Invalid parameter. Possible causes: <br>1.The index is out of range, must be within [0, count).<br>2.The FetchResType is not supported, must be a valid FetchResType enum value. |
 
 **示例：**
 
@@ -836,7 +836,7 @@ getRangeObjects(index: number, offset: number): Promise\<T[]\>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | Invalid parameter. Possible causes:<br>1. The index is out of range, must be within [0, count).<br>2. The FetchResType is not supported, must be a valid FetchResType enum value. |
+| 23800151 | The scenario parameter verification fails. <br>Possible causes: index or offset validity check failed. |
 | 23800301       | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal.         |
 
 **示例：**

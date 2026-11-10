@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供通知管理的系统接口能力，包括发布通知给指定用户、发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)、取消代理通知，创建、获取、移除[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)，设定和查询通知使能状态、角标使能状态、渠道使能状态，设置和查询免打扰时间及勿扰模式配置，管理[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)协同，管理通知发布权限管控，获取活动通知信息，设置[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)，订阅[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)，注册[通知校验](../../notification/notification-glossary.md#notification-check通知校验)回调，管理通知优先级策略，以及设置[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)、铃声信息、[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)等高级功能。
+本模块提供通知管理的系统接口能力，包括发布通知给指定用户、发布代理通知、取消代理通知，创建、获取、移除[通知渠道](../../notification/notification-glossary.md#notification-slot通知渠道)，设定和查询通知使能状态、角标使能状态、渠道使能状态，设置和查询免打扰时间及勿扰模式配置，管理[分布式通知](../../notification/notification-glossary.md#distributed-notification分布式通知)协同，管理通知发布权限管控，获取活动通知信息，设置[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)，订阅[系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)，注册通知校验回调，管理通知优先级策略，以及设置[地理围栏](../../notification/notification-glossary.md#geofence地理围栏)、铃声信息、静默提醒等高级功能。
 
 > **说明：**
 >
@@ -2885,7 +2885,7 @@ notificationManager.getDeviceRemindType().then((data: notificationManager.Device
 
 publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number, callback: AsyncCallback\<void\>): void
 
-发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用callback异步回调。
+发布代理通知。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2969,7 +2969,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId, callb
 
 publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number): Promise\<void\>
 
-发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
+发布代理通知。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3055,7 +3055,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId).then(
 
 publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest): Promise\<void\>
 
-发布[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
+发布代理通知。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3138,7 +3138,7 @@ notificationManager.publishAsBundle(representativeBundle, request).then(() => {
 
 cancelAsBundle(id: number, representativeBundle: string, userId: number, callback: AsyncCallback\<void\>): void
 
-取消[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用callback异步回调。
+取消代理通知。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3195,7 +3195,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBund
 
 cancelAsBundle(id: number, representativeBundle: string, userId: number): Promise\<void\>
 
-取消[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
+取消代理通知。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3254,7 +3254,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 
 cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
 
-取消[代理通知](../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。
+取消代理通知。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5371,7 +5371,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\>
 
-设置[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)的开关状态。使用Promise进行异步回调。
+设置静默提醒的开关状态。使用Promise进行异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -5426,7 +5426,7 @@ notificationManager.setSilentReminderEnabled(bundle, true).then(() => {
 
 isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
 
-查询[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)的开关状态。使用Promise进行异步回调。
+查询静默提醒的开关状态。使用Promise进行异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6203,7 +6203,7 @@ isPriorityEnabled(): Promise\<boolean\>
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。<br> - true：允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - false：禁止设置为优先通知。 |
+| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
 
 **错误码**：
 
@@ -6245,7 +6245,7 @@ setPriorityEnabled(enable: boolean): Promise\<void\>
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| enable   | boolean | 是  | 所有通知的优先使能状态。<br> - true：允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - false：禁止设置为优先通知。 |
+| enable   | boolean | 是  | 所有通知的优先使能状态。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
 
 **返回值：**
 
@@ -6346,7 +6346,7 @@ setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableSta
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
-| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | 是 | 应用通知优先级开关状态。<br> - DISABLE：不允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
+| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | 是 | 应用通知优先级开关状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
 
 **返回值：**
 
@@ -6488,7 +6488,7 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
 
 isPriorityIntelligentEnabled(): Promise\<boolean\>
 
-获取[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)智能服务使能状态。使用Promise异步回调。
+获取优先通知智能服务使能状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6533,7 +6533,7 @@ notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
 
 setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 
-设置[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)智能服务使能状态。使用Promise异步回调。
+设置优先通知智能服务使能状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -6990,7 +6990,7 @@ notificationManager.getNotificationStatisticsByBundle(bundles).then(
 
 snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
 
-设置通知[稍后提醒](../../notification/notification-glossary.md#notification-snooze稍后提醒)。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。<br/>设置后该通知被删除。
+设置通知稍后提醒。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。<br/>设置后该通知被删除。
 
 **起始版本**：26.0.0
 
@@ -7105,7 +7105,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## NotificationCheckInfo<sup>10+</sup>
 
-[通知校验](../../notification/notification-glossary.md#notification-check通知校验)参数。
+通知校验参数。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7125,7 +7125,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## NotificationCheckResult<sup>10+</sup>
 
-[通知校验](../../notification/notification-glossary.md#notification-check通知校验)结果。
+通知校验结果。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -7296,7 +7296,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
 | reminderFlags | number | 否 | 否 | 表示[通知提醒方式](../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)的标志位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
-| silentReminderEnabled | boolean | 否 | 否 | 表示[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)开关使能状态（true：使能，false：禁止）。 |
+| silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
 
 ## BundleNotificationStatistics
 
@@ -7348,7 +7348,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
 | DISABLE    | 0   | 应用通知的优先级开关为关闭状态。 |
-| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。 |
+| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。 |
 | ENABLE   | 2   | 应用通知均设置为优先通知。 |
 
 ## NotificationIconButton<sup>23+</sup>

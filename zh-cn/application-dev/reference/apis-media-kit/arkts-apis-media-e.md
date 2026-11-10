@@ -533,6 +533,27 @@ Codec MIME类型枚举。
 | PLAYBACK_COMMAND_SEEK | 0    | 表示视频跳转操作。可通过[checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand)查询当前片源是否支持该操作。 |
 | PLAYBACK_COMMAND_RATE | 1    | 表示调整播放速率的操作。可通过[checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand)查询当前片源是否支持该操作。 |
 
+## SideBySideTransparentVideoLayoutMode
+
+表示并排（Side-by-Side）模式下透明视频布局模式的枚举。
+
+> **说明：**
+>
+> 用于指定透明视频的Alpha数据在图像中的位置，以便播放器正确合成透明视频。Alpha是描述像素不透明度的标量数据。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 名称                       | 值   | 说明                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| SIDE_BY_SIDE_LAYOUT_HORIZONTAL | 0    | 表示透明视频为左右布局，左边数据为Alpha数据。 |
+| SIDE_BY_SIDE_LAYOUT_VERTICAL | 1    | 表示透明视频为上下布局，上边数据为Alpha数据。 |
+| SIDE_BY_SIDE_LAYOUT_HORIZONTAL_REVERSE | 2    | 表示透明视频为左右布局，右边数据为Alpha数据。 |
+| SIDE_BY_SIDE_LAYOUT_VERTICAL_REVERSE | 3    | 表示透明视频为上下布局，下边数据为Alpha数据。 |
+
 ## AudioEncoder<sup>(deprecated)</sup>
 
 > **说明：**
@@ -588,3 +609,4 @@ Codec MIME类型枚举。
 | MSERR_SERVICE_DIED         | 7    | 表示服务端失效。                       |
 | MSERR_INVALID_STATE        | 8    | 表示在当前状态下，不允许执行此操作。   |
 | MSERR_UNSUPPORTED          | 9    | 表示在当前版本下，不支持此操作。       |
+
