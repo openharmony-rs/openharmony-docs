@@ -43,6 +43,8 @@ GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos(GameDevice_AllDeviceInf
 
 Obtains information about all online devices.
 
+<!--Device-GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos(GameDevice_AllDeviceInfos** allDeviceInfos)--><!--Device-GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos(GameDevice_AllDeviceInfos** allDeviceInfos)-End-->
+
 **System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
@@ -73,6 +75,8 @@ GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor(GameDevice_DeviceMo
 **Description**
 
 Registers a callback for device status change events.
+
+<!--Device-GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor(GameDevice_DeviceMonitorCallback deviceMonitorCallback)--><!--Device-GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor(GameDevice_DeviceMonitorCallback deviceMonitorCallback)-End-->
 
 **System capability**: SystemCapability.Game.GameController
 
@@ -105,6 +109,8 @@ GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor(void)
 
 Unregisters the callback for device status change events.
 
+<!--Device-GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor(void)--><!--Device-GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor(void)-End-->
+
 **System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
@@ -124,6 +130,8 @@ GameController_ErrorCode OH_GameDevice_DestroyAllDeviceInfos(GameDevice_AllDevic
 **Description**
 
 Destroys all device information instances.
+
+<!--Device-GameController_ErrorCode OH_GameDevice_DestroyAllDeviceInfos(GameDevice_AllDeviceInfos** allDeviceInfos)--><!--Device-GameController_ErrorCode OH_GameDevice_DestroyAllDeviceInfos(GameDevice_AllDeviceInfos** allDeviceInfos)-End-->
 
 **System capability**: SystemCapability.Game.GameController
 
@@ -151,6 +159,8 @@ GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetCount(const struct Game
 
 Obtains the number of devices.
 
+<!--Device-GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetCount(const struct GameDevice_AllDeviceInfos* allDeviceInfos, int32_t* count)--><!--Device-GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetCount(const struct GameDevice_AllDeviceInfos* allDeviceInfos, int32_t* count)-End-->
+
 **System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
@@ -177,6 +187,8 @@ GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetDeviceInfo(const struct
 **Description**
 
 Obtains the device information at the specified index.
+
+<!--Device-GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetDeviceInfo(const struct GameDevice_AllDeviceInfos* allDeviceInfos, const int32_t index, GameDevice_DeviceInfo** deviceInfo)--><!--Device-GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetDeviceInfo(const struct GameDevice_AllDeviceInfos* allDeviceInfos, const int32_t index, GameDevice_DeviceInfo** deviceInfo)-End-->
 
 **System capability**: SystemCapability.Game.GameController
 

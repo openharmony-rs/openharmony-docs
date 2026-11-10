@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct timeb {...}--><!--Device-struct timeb {...}-End-->
+
 ## Summary
 
 ### Member variables

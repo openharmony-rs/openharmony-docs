@@ -96,6 +96,8 @@ enum OH_Huks_KeyPurpose
 
 密钥用途类型。
 
+<!--Device-OH_Huks_KeyPurpose--><!--Device-OH_Huks_KeyPurpose-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -122,6 +124,8 @@ enum OH_Huks_KeyDigest
 
 摘要算法类型。
 
+<!--Device-OH_Huks_KeyDigest--><!--Device-OH_Huks_KeyDigest-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -146,6 +150,8 @@ enum OH_Huks_KeyPadding
 **描述：**
 
 填充算法类型。
+
+<!--Device-OH_Huks_KeyPadding--><!--Device-OH_Huks_KeyPadding-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -172,6 +178,8 @@ enum OH_Huks_CipherMode
 
 加密模式。
 
+<!--Device-OH_Huks_CipherMode--><!--Device-OH_Huks_CipherMode-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -195,6 +203,8 @@ enum OH_Huks_KeySize
 **描述：**
 
 算法密钥长度。
+
+<!--Device-OH_Huks_KeySize--><!--Device-OH_Huks_KeySize-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -236,6 +246,8 @@ enum OH_Huks_KeyAlg
 
 密钥使用的算法。
 
+<!--Device-OH_Huks_KeyAlg--><!--Device-OH_Huks_KeyAlg-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -270,6 +282,8 @@ enum OH_Huks_AlgSuite
 
 密文导入所需的算法套件类型。 <br>OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING对应的密钥材料格式。 <br>\| x25519_plain_pubkey_length (4 Byte) \| x25519_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad <br>\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag <br>\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad <br>\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag <br>\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING对应的密钥材料格式。 <br>\| ECC_plain_pubkey_length (4 Byte) \| ECC_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad <br>\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag <br>\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad <br>\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag <br>\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING对应的密钥材料格式。 <br>\| kek_SM4_enc_length (4 Byte) \| EN_SM4_key \| importkey_enc_length (4 Byte) \| importkey_enc
 
+<!--Device-OH_Huks_AlgSuite--><!--Device-OH_Huks_AlgSuite-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -290,6 +304,8 @@ enum OH_Huks_KeyGenerateType
 
 生成的密钥类型。
 
+<!--Device-OH_Huks_KeyGenerateType--><!--Device-OH_Huks_KeyGenerateType-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -309,6 +325,8 @@ enum OH_Huks_KeyFlag
 **描述：**
 
 密钥的产生方式。
+
+<!--Device-OH_Huks_KeyFlag--><!--Device-OH_Huks_KeyFlag-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -331,6 +349,8 @@ enum OH_Huks_KeyStorageType
 
 密钥的存储方式。
 
+<!--Device-OH_Huks_KeyStorageType--><!--Device-OH_Huks_KeyStorageType-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -352,6 +372,8 @@ enum OH_Huks_ImportKeyType
 
 导入密钥的类型，默认为导入公钥，导入对称密钥时不需要该字段。
 
+<!--Device-OH_Huks_ImportKeyType--><!--Device-OH_Huks_ImportKeyType-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -372,6 +394,8 @@ enum OH_Huks_RsaPssSaltLenType
 
 PSS填充模式下盐值长度类型。
 
+<!--Device-OH_Huks_RsaPssSaltLenType--><!--Device-OH_Huks_RsaPssSaltLenType-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 10
@@ -390,6 +414,8 @@ enum OH_Huks_ErrCode
 **描述：**
 
 错误码。
+
+<!--Device-OH_Huks_ErrCode--><!--Device-OH_Huks_ErrCode-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -437,6 +463,8 @@ enum OH_Huks_TagType
 
 参数集中参数的类型。
 
+<!--Device-OH_Huks_TagType--><!--Device-OH_Huks_TagType-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -465,6 +493,8 @@ enum OH_Huks_UserAuthType
 
 密钥访问控制中的用户认证类型。
 
+<!--Device-OH_Huks_UserAuthType--><!--Device-OH_Huks_UserAuthType-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -486,6 +516,8 @@ enum OH_Huks_AuthAccessType
 
 安全访问控制类型，表示密钥失效的原则。
 
+<!--Device-OH_Huks_AuthAccessType--><!--Device-OH_Huks_AuthAccessType-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -505,6 +537,8 @@ enum OH_Huks_AuthStorageLevel
 **描述：**
 
 表示生成或导入密钥时，指定该密钥的存储安全等级。
+
+<!--Device-OH_Huks_AuthStorageLevel--><!--Device-OH_Huks_AuthStorageLevel-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -526,6 +560,8 @@ enum OH_Huks_UserAuthMode
 
 密钥访问控制中的用户认证模式。
 
+<!--Device-OH_Huks_UserAuthMode--><!--Device-OH_Huks_UserAuthMode-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 12
@@ -544,6 +580,8 @@ enum OH_Huks_ChallengeType
 **描述：**
 
 密钥使用时生成challenge的类型。
+
+<!--Device-OH_Huks_ChallengeType--><!--Device-OH_Huks_ChallengeType-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -570,6 +608,8 @@ enum OH_Huks_ChallengePosition
 
 challenge类型为用户自定义类型时，生成的challenge有效长度仅为8字节连续的数据，且仅支持4种位置。
 
+<!--Device-OH_Huks_ChallengePosition--><!--Device-OH_Huks_ChallengePosition-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -591,6 +631,8 @@ enum OH_Huks_SecureSignType
 
 生成或导入密钥时，指定该密钥的安全签名类型。
 
+<!--Device-OH_Huks_SecureSignType--><!--Device-OH_Huks_SecureSignType-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
@@ -608,6 +650,8 @@ enum OH_Huks_KeyClassType
 **描述：**
 
 密钥类型。
+
+<!--Device-OH_Huks_KeyClassType--><!--Device-OH_Huks_KeyClassType-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
@@ -628,6 +672,8 @@ enum OH_Huks_KeyWrapType
 
 生成或导入密钥时，指定该密钥的封装类型。
 
+<!--Device-OH_Huks_KeyWrapType--><!--Device-OH_Huks_KeyWrapType-End-->
+
 **系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 20
@@ -645,6 +691,8 @@ enum OH_Huks_Tag
 **描述：**
 
 参数集所用的TAG值枚举。 <br>1-200：密钥参数标签值。 <br>301-500：密钥使用访问控制和使用认证相关的标签值。 <br>501-600：密钥认证相关的标签值。 <br>601-1000：其他类型的标签值预留值。 <br>1001-9999：扩展标签值。 <br>11000-12000：预留值。 <br>20001-N：其他标签预留值。
+
+<!--Device-OH_Huks_Tag--><!--Device-OH_Huks_Tag-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
 

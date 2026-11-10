@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct msgbuf {...}--><!--Device-struct msgbuf {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -32,6 +32,8 @@ enum ImageEffect_ErrorCode
 
 效果器错误码。
 
+<!--Device-ImageEffect_ErrorCode--><!--Device-ImageEffect_ErrorCode-End-->
+
 **系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12

@@ -86,6 +86,8 @@ enum VkSwapchainImageUsageFlagBitsOHOS
 
 move to vk_ohos_native_buffer.h
 
+<!--Device-VkSwapchainImageUsageFlagBitsOHOS--><!--Device-VkSwapchainImageUsageFlagBitsOHOS-End-->
+
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
@@ -107,6 +109,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkCreateSurfaceOHOS)(VkInstance instance, const
 **Description**
 
 Defines the function pointer for creating a Vulkan surface.
+
+<!--Device-typedef VkResult (VKAPI_PTR *PFN_vkCreateSurfaceOHOS)(VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)--><!--Device-typedef VkResult (VKAPI_PTR *PFN_vkCreateSurfaceOHOS)(VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)-End-->
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -137,6 +141,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device,
 
 this type is deprecated, please use PFN_vkAcquireImageOHOS instead
 
+<!--Device-typedef VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)--><!--Device-typedef VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)-End-->
+
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
@@ -152,6 +158,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, u
 **Description**
 
 this type is deprecated, please use PFN_vkQueueSignalReleaseImageOHOS instead
+
+<!--Device-typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)--><!--Device-typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)-End-->
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -169,6 +177,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device
 
 move to vk_ohos_native_buffer.h
 
+<!--Device-typedef VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)--><!--Device-typedef VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)-End-->
+
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
@@ -184,6 +194,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage im
 **Description**
 
 move to vk_ohos_native_buffer.h
+
+<!--Device-typedef VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)--><!--Device-typedef VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)-End-->
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -201,6 +213,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, u
 
 move to vk_ohos_native_buffer.h
 
+<!--Device-typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)--><!--Device-typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)-End-->
+
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
@@ -216,6 +230,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, in
 **Description**
 
 this interface is deprecated, please use vkAcquireImageOHOS instead
+
+<!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)--><!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)-End-->
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -233,6 +249,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint
 
 this interface is deprecated, please use vkQueueSignalReleaseImageOHOS instead
 
+<!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)--><!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)-End-->
+
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
@@ -248,6 +266,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, V
 **Description**
 
 Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag. move to vk_ohos_native_buffer.h
+
+<!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)--><!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)-End-->
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -279,6 +299,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image
 **Description**
 
 Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects. move to vk_ohos_native_buffer.h
+
+<!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)--><!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)-End-->
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -312,6 +334,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint
 
 Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it. move to vk_ohos_native_buffer.h
 
+<!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)--><!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)-End-->
+
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
@@ -344,6 +368,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetNativeBufferPropertiesOHOS)(VkDevice devic
 
 Defines a function pointer used to obtain <b>OH_NativeBuffer</b> properties.
 
+<!--Device-typedef VkResult (VKAPI_PTR *PFN_vkGetNativeBufferPropertiesOHOS)(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)--><!--Device-typedef VkResult (VKAPI_PTR *PFN_vkGetNativeBufferPropertiesOHOS)(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)-End-->
+
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
@@ -371,6 +397,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)(VkDevice device, c
 **Description**
 
 Defines a function pointer used to obtain an <b>OH_NativeBuffer</b> instance.
+
+<!--Device-typedef VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)--><!--Device-typedef VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)-End-->
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
@@ -400,6 +428,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, 
 
 Obtains the properties of an <b>OH_NativeBuffer</b> instance.
 
+<!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)--><!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)-End-->
+
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
@@ -427,6 +457,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetMemoryNativeBufferOHOS(VkDevice device, cons
 **Description**
 
 Obtains an <b>OH_NativeBuffer</b> instance.
+
+<!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkGetMemoryNativeBufferOHOS(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)--><!--Device-VKAPI_ATTR VkResult VKAPI_CALL vkGetMemoryNativeBufferOHOS(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)-End-->
 
 **System capability**: SystemCapability.Graphic.Vulkan
 

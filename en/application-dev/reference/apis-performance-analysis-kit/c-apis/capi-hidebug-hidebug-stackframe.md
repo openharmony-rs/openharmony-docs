@@ -8,11 +8,13 @@ struct HiDebug_StackFrame {...}
 
 Defines the stack frame content.
 
+<!--Device-struct HiDebug_StackFrame {...}--><!--Device-struct HiDebug_StackFrame {...}-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 20
 
-**Related module**: [HiDebug](capi-others-hidebug.md)
+**Related module**: [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 

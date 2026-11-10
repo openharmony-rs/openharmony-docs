@@ -8,11 +8,13 @@ struct OH_TrafficFilter_IPAddress {...}
 
 二进制形式的IP地址，支持IPv4和IPv6。
 
+<!--Device-struct OH_TrafficFilter_IPAddress {...}--><!--Device-struct OH_TrafficFilter_IPAddress {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **起始版本：** 26.0.0
 
-**相关模块：** [TrafficFilter](capi-others-trafficfilter.md)
+**相关模块：** [TrafficFilter](capi-network-kit-trafficfilter.md)
 
 **所在头文件：** [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

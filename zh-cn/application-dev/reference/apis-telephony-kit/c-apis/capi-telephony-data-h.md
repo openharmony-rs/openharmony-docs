@@ -32,6 +32,8 @@ int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)
 
 获取默认移动数据的SIM卡接口。
 
+<!--Device-int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)--><!--Device-int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)-End-->
+
 **系统能力：** SystemCapability.Telephony.CellularData
 
 **起始版本：** 13

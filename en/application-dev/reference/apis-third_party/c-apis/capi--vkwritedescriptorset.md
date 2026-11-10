@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkWriteDescriptorSet {...}--><!--Device-struct VkWriteDescriptorSet {...}-End-->
+
 ## Summary
 
 ### Member variables

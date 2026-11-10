@@ -8,11 +8,13 @@ struct MediaKeySession_Callback {...}
 
 The MediaKeySession_Callback struct describes the callbacks for media key session events such as key expiration and key changes. It does not provide a MediaKeySession instance, making it suitable for single-session decryption scenarios.
 
+<!--Device-struct MediaKeySession_Callback {...}--><!--Device-struct MediaKeySession_Callback {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
-**Related module**: [Drm](capi-others-drm.md)
+**Related module**: [Drm](capi-drm-kit-drm.md)
 
 **Header file**: [native_mediakeysession.h](capi-native-mediakeysession-h.md)
 

@@ -8,11 +8,13 @@ typedef struct OH_AVSamplesBuffer OH_AVSamplesBuffer
 
 LowPowerAVSink输入数据的结构体。应用在收到DataNeeded回调后需要将数据打包装进OH_AVSamplesBuffer实例中送给对应的LowPowerAVSink。
 
+<!--Device-typedef struct OH_AVSamplesBuffer OH_AVSamplesBuffer--><!--Device-typedef struct OH_AVSamplesBuffer OH_AVSamplesBuffer-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **起始版本：** 20
 
-**相关模块：** [AVSinkBase](capi-others-avsinkbase.md)
+**相关模块：** [AVSinkBase](capi-media-kit-avsinkbase.md)
 
 **所在头文件：** [lowpower_avsink_base.h](capi-lowpower-avsink-base-h.md)
 

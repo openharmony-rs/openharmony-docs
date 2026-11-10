@@ -8,11 +8,13 @@ struct HiCollie_DetectionParam {...}
 
 检测业务线程卡顿的相关参数。请注意，API 12及以上支持。
 
+<!--Device-struct HiCollie_DetectionParam {...}--><!--Device-struct HiCollie_DetectionParam {...}-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiCollie
 
 **起始版本：** 12
 
-**相关模块：** [HiCollie](capi-others-hicollie.md)
+**相关模块：** [HiCollie](capi-performance-analysis-kit-hicollie.md)
 
 **所在头文件：** [hicollie.h](capi-hicollie-h.md)
 

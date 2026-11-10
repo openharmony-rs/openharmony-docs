@@ -47,6 +47,8 @@ enum OH_Crypto_ErrCode
 
 Enumerates the error codes.
 
+<!--Device-OH_Crypto_ErrCode--><!--Device-OH_Crypto_ErrCode-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
@@ -71,6 +73,8 @@ enum Crypto_CipherMode
 
 Defines the cipher mode.
 
+<!--Device-Crypto_CipherMode--><!--Device-Crypto_CipherMode-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
@@ -92,6 +96,8 @@ void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)
 **Description**
 
 Frees the memory of a data blob.
+
+<!--Device-void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)--><!--Device-void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 

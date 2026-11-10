@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-union VkAccelerationStructureGeometryDataKHR {...}--><!--Device-union VkAccelerationStructureGeometryDataKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

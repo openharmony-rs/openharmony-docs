@@ -8,11 +8,13 @@ typedef struct ArkUI_DragAndDropInfo ArkUI_DragAndDropInfo
 
 主动发起拖拽后，通过拖拽状态监听返回的系统拖拽相关数据。
 
+<!--Device-typedef struct ArkUI_DragAndDropInfo ArkUI_DragAndDropInfo--><!--Device-typedef struct ArkUI_DragAndDropInfo ArkUI_DragAndDropInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [drag_and_drop.h](capi-drag-and-drop-h.md)
 

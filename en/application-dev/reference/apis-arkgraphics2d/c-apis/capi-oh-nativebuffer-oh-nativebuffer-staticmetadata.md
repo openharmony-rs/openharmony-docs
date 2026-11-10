@@ -8,11 +8,13 @@ struct OH_NativeBuffer_StaticMetadata {...}
 
 Indicates the HDR static metadata.
 
+<!--Device-struct OH_NativeBuffer_StaticMetadata {...}--><!--Device-struct OH_NativeBuffer_StaticMetadata {...}-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
 
-**Related module**: [OH_NativeBuffer](capi-others-oh-nativebuffer.md)
+**Related module**: [OH_NativeBuffer](capi-arkgraphics2d-oh-nativebuffer.md)
 
 **Header file**: [buffer_common.h](capi-buffer-common-h.md)
 

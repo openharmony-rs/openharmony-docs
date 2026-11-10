@@ -8,11 +8,13 @@ struct ScsiPeripheral_InquiryRequest {...}
 
 Defines the SCSI command (**INQUIRY**) request struct, which is usually used to query basic device information.
 
+<!--Device-struct ScsiPeripheral_InquiryRequest {...}--><!--Device-struct ScsiPeripheral_InquiryRequest {...}-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 
-**Related module**: [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

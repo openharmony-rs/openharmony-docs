@@ -90,6 +90,8 @@ enum TEE_ParamType
 
 Enumerates the types of the TEE parameter.
 
+<!--Device-TEE_ParamType--><!--Device-TEE_ParamType-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -119,6 +121,8 @@ enum TEE_ObjectAttribute
 **Description**
 
 Enumerates the types of object attribute.
+
+<!--Device-TEE_ObjectAttribute--><!--Device-TEE_ObjectAttribute-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -180,6 +184,8 @@ enum TEE_ObjectType
 
 Enumerates the types of object.
 
+<!--Device-TEE_ObjectType--><!--Device-TEE_ObjectType-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -234,6 +240,8 @@ enum TEE_Result_Value
 **Description**
 
 Enumerates the result codes used in the TEEKit APIs.
+
+<!--Device-TEE_Result_Value--><!--Device-TEE_Result_Value-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -394,6 +402,8 @@ enum TEE_LoginMethod
 
 Login type definitions
 
+<!--Device-TEE_LoginMethod--><!--Device-TEE_LoginMethod-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -422,6 +432,8 @@ static inline bool check_param_type(uint32_t param_to_check, uint32_t valid0, ui
 **Description**
 
 Checks parameter types.
+
+<!--Device-static inline bool check_param_type(uint32_t param_to_check, uint32_t valid0, uint32_t valid1, uint32_t valid2, uint32_t valid3) {return (TEE_PARAM_TYPES(valid0, valid1, valid2, valid3) == param_to_check)--><!--Device-static inline bool check_param_type(uint32_t param_to_check, uint32_t valid0, uint32_t valid1, uint32_t valid2, uint32_t valid3) {return (TEE_PARAM_TYPES(valid0, valid1, valid2, valid3) == param_to_check)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 

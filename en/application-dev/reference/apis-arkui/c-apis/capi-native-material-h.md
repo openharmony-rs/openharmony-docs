@@ -76,6 +76,8 @@ enum ArkUI_ImmersiveStyle
 
 Enumerates the immersive material styles. Different styles correspond to different material parameters, which affect the thickness of the material.
 
+<!--Device-ArkUI_ImmersiveStyle--><!--Device-ArkUI_ImmersiveStyle-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -97,6 +99,8 @@ enum ArkUI_MaterialLevel
 **Description**
 
 Enumerates the material levels, which indicate the computing power level of the device. Use [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel) to obtain the material level of the current device.
+
+<!--Device-ArkUI_MaterialLevel--><!--Device-ArkUI_MaterialLevel-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,6 +125,8 @@ bool OH_ArkUI_NativeModule_GetSystemMaterialSupported()
 
 Checks whether the current device supports system materials (that is, the built-in material rendering capability of the device system).
 
+<!--Device-bool OH_ArkUI_NativeModule_GetSystemMaterialSupported()--><!--Device-bool OH_ArkUI_NativeModule_GetSystemMaterialSupported()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -141,6 +147,8 @@ ArkUI_MaterialLevel OH_ArkUI_NativeModule_GetGlobalMaterialLevel()
 
 Obtains the global material level, which is related to the device computing power. This configuration item is defined by the device and cannot be modified.
 
+<!--Device-ArkUI_MaterialLevel OH_ArkUI_NativeModule_GetGlobalMaterialLevel()--><!--Device-ArkUI_MaterialLevel OH_ArkUI_NativeModule_GetGlobalMaterialLevel()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -160,6 +168,8 @@ ArkUI_ImmersiveMaterialHandle OH_ArkUI_NativeModule_ImmersiveMaterial_Create(Ark
 **Description**
 
 Creates an immersive material object with a specified style. The material level of the created object follows the global material level, which can be obtained through [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel).
+
+<!--Device-ArkUI_ImmersiveMaterialHandle OH_ArkUI_NativeModule_ImmersiveMaterial_Create(ArkUI_ImmersiveStyle style)--><!--Device-ArkUI_ImmersiveMaterialHandle OH_ArkUI_NativeModule_ImmersiveMaterial_Create(ArkUI_ImmersiveStyle style)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,6 +199,8 @@ void OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy(ArkUI_ImmersiveMaterialHand
 
 Destroys the immersive material object.
 
+<!--Device-void OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy(ArkUI_ImmersiveMaterialHandle material)--><!--Device-void OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy(ArkUI_ImmersiveMaterialHandle material)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -208,6 +220,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetStyle(ArkUI_Immersive
 **Description**
 
 Sets a style for an immersive material object. This attribute is valid only for display effects of devices with high- and mid-level computing power. It does not take effect for devices with low-level computing power, but no error is reported. You can call [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel) to obtain the material level of the current device to determine whether this attribute takes effect.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetStyle(ArkUI_ImmersiveMaterialHandle material, ArkUI_ImmersiveStyle style)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetStyle(ArkUI_ImmersiveMaterialHandle material, ArkUI_ImmersiveStyle style)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -236,6 +250,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetStyle(ArkUI_Immersive
 
 Obtains the style of an immersive material object.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetStyle(ArkUI_ImmersiveMaterialHandle material, ArkUI_ImmersiveStyle* style)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetStyle(ArkUI_ImmersiveMaterialHandle material, ArkUI_ImmersiveStyle* style)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -262,6 +278,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetMaterialColor(ArkUI_I
 **Description**
 
 Sets a material color for an immersive material object. This attribute is valid for the display effects on devices with all computing power levels. You can call [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel) to obtain the material level of the current device to determine whether this attribute takes effect. If this parameter is not set, the default value **0** is used, indicating the transparent color.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetMaterialColor(ArkUI_ImmersiveMaterialHandle material, uint32_t color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetMaterialColor(ArkUI_ImmersiveMaterialHandle material, uint32_t color)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -290,6 +308,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetMaterialColor(ArkUI_I
 
 Obtains the material color of an immersive material object.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetMaterialColor(ArkUI_ImmersiveMaterialHandle material, uint32_t* color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetMaterialColor(ArkUI_ImmersiveMaterialHandle material, uint32_t* color)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -316,6 +336,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetApplyShadow(ArkUI_Imm
 **Description**
 
 Sets whether to apply a shadow to an immersive material object. This parameter takes effect for materials of all levels.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetApplyShadow(ArkUI_ImmersiveMaterialHandle material, bool applyShadow)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetApplyShadow(ArkUI_ImmersiveMaterialHandle material, bool applyShadow)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -344,6 +366,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetApplyShadow(ArkUI_Imm
 
 Obtains whether a shadow is applied to an immersive material object.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetApplyShadow(ArkUI_ImmersiveMaterialHandle material, bool* applyShadow)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetApplyShadow(ArkUI_ImmersiveMaterialHandle material, bool* applyShadow)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -370,6 +394,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive(ArkUI_Imm
 **Description**
 
 Sets whether an immersive material object can be interactively deformed. That is, whether the material generates a visual deformation response during user interaction (such as touch and press). This parameter takes effect for materials of all levels.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive(ArkUI_ImmersiveMaterialHandle material, bool interactive)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive(ArkUI_ImmersiveMaterialHandle material, bool interactive)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -398,6 +424,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive(ArkUI_Imm
 
 Obtains whether an immersive material object can be interactively deformed. You are advised to call [OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setinteractive) to set this attribute before calling this API. If this attribute has never been set, ARKUI_ERROR_CODE_PARAM_ERROR will be returned.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive(ArkUI_ImmersiveMaterialHandle material, bool* interactive)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive(ArkUI_ImmersiveMaterialHandle material, bool* interactive)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -425,6 +453,8 @@ ArkUI_LightEffectOptionsHandle OH_ArkUI_NativeModule_LightEffectOptions_Create()
 
 Creates a light sensing interaction effect configuration object, which is used to configure the effect of highlighted feedback upon touch for an immersive material. The default color is white (0xffffffff). After the creation is complete, you need to call [OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect) to set the configuration object to the immersive material object for the configuration to take effect.
 
+<!--Device-ArkUI_LightEffectOptionsHandle OH_ArkUI_NativeModule_LightEffectOptions_Create()--><!--Device-ArkUI_LightEffectOptionsHandle OH_ArkUI_NativeModule_LightEffectOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -447,6 +477,8 @@ void OH_ArkUI_NativeModule_LightEffectOptions_Destroy(ArkUI_LightEffectOptionsHa
 
 Destroys the light sensing interaction effect configuration object.
 
+<!--Device-void OH_ArkUI_NativeModule_LightEffectOptions_Destroy(ArkUI_LightEffectOptionsHandle options)--><!--Device-void OH_ArkUI_NativeModule_LightEffectOptions_Destroy(ArkUI_LightEffectOptionsHandle options)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -466,6 +498,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LightEffectOptions_SetColor(ArkUI_LightEff
 **Description**
 
 Sets a color for the light sensing interaction effect. If this parameter is not set, the default color is white (0xffffffff).
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LightEffectOptions_SetColor(ArkUI_LightEffectOptionsHandle options, uint32_t color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LightEffectOptions_SetColor(ArkUI_LightEffectOptionsHandle options, uint32_t color)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -494,6 +528,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect(ArkUI_Imm
 
 Sets the light sensing interaction effect for an immersive material object, that is, the light reflection on the material surface that dynamically changes with user interaction. This parameter takes effect for materials of all levels.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect(ArkUI_ImmersiveMaterialHandle material, const ArkUI_LightEffectOptionsHandle options)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect(ArkUI_ImmersiveMaterialHandle material, const ArkUI_LightEffectOptionsHandle options)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -520,6 +556,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetLightEffectColor(ArkU
 **Description**
 
 Obtains the color of the light sensing interaction effect for an immersive material object.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetLightEffectColor(ArkUI_ImmersiveMaterialHandle material, uint32_t* color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetLightEffectColor(ArkUI_ImmersiveMaterialHandle material, uint32_t* color)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

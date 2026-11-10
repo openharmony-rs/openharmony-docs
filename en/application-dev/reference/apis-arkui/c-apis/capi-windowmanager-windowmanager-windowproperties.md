@@ -8,11 +8,13 @@ typedef struct WindowManager_WindowProperties {...} WindowManager_WindowProperti
 
 The struct describes the window properties.
 
+<!--Device-typedef struct WindowManager_WindowProperties {...} WindowManager_WindowProperties--><!--Device-typedef struct WindowManager_WindowProperties {...} WindowManager_WindowProperties-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
-**Related module**: [WindowManager](capi-others-windowmanager.md)
+**Related module**: [WindowManager](capi-arkui-windowmanager.md)
 
 **Header file**: [oh_window_comm.h](capi-oh-window-comm-h.md)
 

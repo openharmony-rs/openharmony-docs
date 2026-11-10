@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkComponentMapping {...}--><!--Device-struct VkComponentMapping {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct Print_PageSize {...} Print_PageSize
 
 Represents the paper size information in a print task, including key attributes such as the paper ID, name, width, and height. This API can be used to specify or query paper specifications during printing configuration.
 
+<!--Device-typedef struct Print_PageSize {...} Print_PageSize--><!--Device-typedef struct Print_PageSize {...} Print_PageSize-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
-**Related module**: [Print](capi-others-print.md)
+**Related module**: [Print](capi-basic-services-kit-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 

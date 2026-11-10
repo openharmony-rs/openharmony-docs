@@ -56,6 +56,8 @@ FFRT_C_API int ffrt_task_attr_init(ffrt_task_attr_t* attr)
 
 Initializes a task attribute.<br> After the call, the task attribute is set to its default values (for example, the QoS defaults to [ffrt_qos_default](capi-type-def-h.md#ffrt_qos_default_t)). The caller is expected to invoke [ffrt_task_attr_destroy](capi-task-h.md#ffrt_task_attr_destroy) to release the attribute when it is no longer needed.
 
+<!--Device-FFRT_C_API int ffrt_task_attr_init(ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API int ffrt_task_attr_init(ffrt_task_attr_t* attr)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
@@ -82,6 +84,8 @@ FFRT_C_API void ffrt_task_attr_set_name(ffrt_task_attr_t* attr, const char* name
 
 Sets the name of a task attribute.
 
+<!--Device-FFRT_C_API void ffrt_task_attr_set_name(ffrt_task_attr_t* attr, const char* name)--><!--Device-FFRT_C_API void ffrt_task_attr_set_name(ffrt_task_attr_t* attr, const char* name)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
@@ -102,6 +106,8 @@ FFRT_C_API const char* ffrt_task_attr_get_name(const ffrt_task_attr_t* attr)
 **Description**
 
 Gets the name of a task attribute.
+
+<!--Device-FFRT_C_API const char* ffrt_task_attr_get_name(const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API const char* ffrt_task_attr_get_name(const ffrt_task_attr_t* attr)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -129,6 +135,8 @@ FFRT_C_API void ffrt_task_attr_destroy(ffrt_task_attr_t* attr)
 
 Destroys a task attribute.<br> This interface must be called on a task attribute that was previously initialized with [ffrt_task_attr_init](capi-task-h.md#ffrt_task_attr_init), and is used to release the resources held by the attribute. The attribute must not be used again after destruction.
 
+<!--Device-FFRT_C_API void ffrt_task_attr_destroy(ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API void ffrt_task_attr_destroy(ffrt_task_attr_t* attr)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
@@ -148,6 +156,8 @@ FFRT_C_API void ffrt_task_attr_set_qos(ffrt_task_attr_t* attr, ffrt_qos_t qos)
 **Description**
 
 Sets the QoS of a task attribute.<br> The QoS controls the scheduling priority of the task. For example, assign a higher QoS to user-facing work to keep the response time low, and a lower QoS to background or housekeeping work to reduce its impact on system resources.
+
+<!--Device-FFRT_C_API void ffrt_task_attr_set_qos(ffrt_task_attr_t* attr, ffrt_qos_t qos)--><!--Device-FFRT_C_API void ffrt_task_attr_set_qos(ffrt_task_attr_t* attr, ffrt_qos_t qos)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -169,6 +179,8 @@ FFRT_C_API ffrt_qos_t ffrt_task_attr_get_qos(const ffrt_task_attr_t* attr)
 **Description**
 
 Gets the QoS of a task attribute.
+
+<!--Device-FFRT_C_API ffrt_qos_t ffrt_task_attr_get_qos(const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API ffrt_qos_t ffrt_task_attr_get_qos(const ffrt_task_attr_t* attr)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -196,6 +208,8 @@ FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_
 
 Sets the delay time of a task attribute.
 
+<!--Device-FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_us)--><!--Device-FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_us)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
@@ -216,6 +230,8 @@ FFRT_C_API uint64_t ffrt_task_attr_get_delay(const ffrt_task_attr_t* attr)
 **Description**
 
 Gets the delay time of a task attribute.
+
+<!--Device-FFRT_C_API uint64_t ffrt_task_attr_get_delay(const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API uint64_t ffrt_task_attr_get_delay(const ffrt_task_attr_t* attr)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -243,6 +259,8 @@ FFRT_C_API void ffrt_task_attr_set_queue_priority(ffrt_task_attr_t* attr, ffrt_q
 
 Sets the priority of a task attribute.
 
+<!--Device-FFRT_C_API void ffrt_task_attr_set_queue_priority(ffrt_task_attr_t* attr, ffrt_queue_priority_t priority)--><!--Device-FFRT_C_API void ffrt_task_attr_set_queue_priority(ffrt_task_attr_t* attr, ffrt_queue_priority_t priority)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 12
@@ -263,6 +281,8 @@ FFRT_C_API ffrt_queue_priority_t ffrt_task_attr_get_queue_priority(const ffrt_ta
 **Description**
 
 Gets the priority of a task attribute.
+
+<!--Device-FFRT_C_API ffrt_queue_priority_t ffrt_task_attr_get_queue_priority(const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API ffrt_queue_priority_t ffrt_task_attr_get_queue_priority(const ffrt_task_attr_t* attr)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -290,6 +310,8 @@ FFRT_C_API void ffrt_task_attr_set_stack_size(ffrt_task_attr_t* attr, uint64_t s
 
 Sets the stack size of a task attribute.
 
+<!--Device-FFRT_C_API void ffrt_task_attr_set_stack_size(ffrt_task_attr_t* attr, uint64_t size)--><!--Device-FFRT_C_API void ffrt_task_attr_set_stack_size(ffrt_task_attr_t* attr, uint64_t size)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 12
@@ -310,6 +332,8 @@ FFRT_C_API uint64_t ffrt_task_attr_get_stack_size(const ffrt_task_attr_t* attr)
 **Description**
 
 Gets the stack size of a task attribute.
+
+<!--Device-FFRT_C_API uint64_t ffrt_task_attr_get_stack_size(const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API uint64_t ffrt_task_attr_get_stack_size(const ffrt_task_attr_t* attr)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -336,6 +360,8 @@ FFRT_C_API int ffrt_this_task_update_qos(ffrt_qos_t qos)
 **Description**
 
 Updates the QoS of this task.<br> Use this interface to adjust the scheduling priority of the currently running task when its priority needs to change during execution, for example when a background task starts to handle a user-initiated operation and requires faster response.
+
+<!--Device-FFRT_C_API int ffrt_this_task_update_qos(ffrt_qos_t qos)--><!--Device-FFRT_C_API int ffrt_this_task_update_qos(ffrt_qos_t qos)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -368,6 +394,8 @@ FFRT_C_API ffrt_qos_t ffrt_this_task_get_qos(void)
 
 Gets the QoS of this task.
 
+<!--Device-FFRT_C_API ffrt_qos_t ffrt_this_task_get_qos(void)--><!--Device-FFRT_C_API ffrt_qos_t ffrt_this_task_get_qos(void)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 12
@@ -388,6 +416,8 @@ FFRT_C_API uint64_t ffrt_this_task_get_id(void)
 
 Gets the ID of this task.
 
+<!--Device-FFRT_C_API uint64_t ffrt_this_task_get_id(void)--><!--Device-FFRT_C_API uint64_t ffrt_this_task_get_id(void)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
@@ -407,6 +437,8 @@ FFRT_C_API void* ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kin
 **Description**
 
 Allocates memory for the function execution structure.<br> The allocated memory is used as the task executor wrapper passed to [ffrt_submit_base](capi-task-h.md#ffrt_submit_base) or [ffrt_submit_h_base](capi-task-h.md#ffrt_submit_h_base) when submitting a task. The memory is automatically released by the FFRT runtime after the submitted task finishes execution, so the caller does not need to free it manually.
+
+<!--Device-FFRT_C_API void* ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kind_t kind)--><!--Device-FFRT_C_API void* ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kind_t kind)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -440,6 +472,8 @@ FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* i
 
 Submits a task.<br> The task is submitted to the FFRT scheduler together with its input and output dependencies and the task attribute. The scheduler uses the dependencies and the task QoS to determine when the task becomes ready to run and which worker executes it. This is the underlying submission interface; the simplified wrapper [ffrt_submit_f](capi-task-h.md#ffrt_submit_f) can be used when no task destroy callback is required. Unlike [ffrt_submit_h_base](capi-task-h.md#ffrt_submit_h_base), this interface does not return a task handle and should be used when the caller does not need to track the task after submission.<br> If a task delay has been set on the attribute with [ffrt_task_attr_set_delay](capi-task-h.md#ffrt_task_attr_set_delay), the input and output dependencies are ignored and the task is scheduled after the delay elapses.
 
+<!--Device-FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
@@ -467,6 +501,8 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, cons
 **Description**
 
 Submits a task, and obtains a task handle.<br> The task is submitted to the FFRT scheduler together with its input and output dependencies and the task attribute. The scheduler uses the dependencies to determine when the task becomes ready to run. The returned handle can be used with [ffrt_wait_deps](capi-task-h.md#ffrt_wait_deps) to wait for the task, or passed as an input dependency to other submitted tasks to build a dependency chain. This is the underlying submission interface that returns a task handle; the simplified wrapper [ffrt_submit_h_f](capi-task-h.md#ffrt_submit_h_f) can be used when no task destroy callback is required. The returned handle should be released with [ffrt_task_handle_destroy](capi-task-h.md#ffrt_task_handle_destroy) when it is no longer needed, and its reference count can be managed with [ffrt_task_handle_inc_ref](capi-task-h.md#ffrt_task_handle_inc_ref) and [ffrt_task_handle_dec_ref](capi-task-h.md#ffrt_task_handle_dec_ref).
+
+<!--Device-FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -502,6 +538,8 @@ FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t
 
 Submits a task, simplified from the [ffrt_submit_base](capi-task-h.md#ffrt_submit_base) interface.<br> This interface wraps the provided task function and its argument into a task wrapper designated as a general task (`ffrt_function_kind_general`). During wrapper creation, the task destroy callback (after_func), which is intended to handle any post-execution cleanup, is set to NULL, thus omitting any additional cleanup actions. The resulting task wrapper is then submitted using the underlying [ffrt_submit_base](capi-task-h.md#ffrt_submit_base) interface.<br> If a task delay has been set on the attribute with [ffrt_task_attr_set_delay](capi-task-h.md#ffrt_task_attr_set_delay), the input and output dependencies are ignored and the task is scheduled after the delay elapses.
 
+<!--Device-FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 20
@@ -530,6 +568,8 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, c
 **Description**
 
 Submits a task, and obtains a handle, simplified from the [ffrt_submit_h_base](capi-task-h.md#ffrt_submit_h_base) interface.<br> This interface wraps the provided task function and its argument into a task wrapper designated as a general task (`ffrt_function_kind_general`). During wrapper creation, the task destroy callback (after_func), which is intended to handle any post-execution cleanup, is set to NULL, thus omitting any additional cleanup actions. The resulting task wrapper is then submitted using the underlying [ffrt_submit_h_base](capi-task-h.md#ffrt_submit_h_base) interface.<br> If a task delay has been set on the attribute with [ffrt_task_attr_set_delay](capi-task-h.md#ffrt_task_attr_set_delay), the input and output dependencies are ignored and the task is scheduled after the delay elapses. The returned task handle should be released with [ffrt_task_handle_destroy](capi-task-h.md#ffrt_task_handle_destroy) when it is no longer needed.
+
+<!--Device-FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -566,6 +606,8 @@ FFRT_C_API uint32_t ffrt_task_handle_inc_ref(ffrt_task_handle_t handle)
 
 Increases the reference count of a task handle.<br> The reference count of the task handle is incremented by one, and the value of the reference count before the increment is returned.
 
+<!--Device-FFRT_C_API uint32_t ffrt_task_handle_inc_ref(ffrt_task_handle_t handle)--><!--Device-FFRT_C_API uint32_t ffrt_task_handle_inc_ref(ffrt_task_handle_t handle)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 12
@@ -591,6 +633,8 @@ FFRT_C_API uint32_t ffrt_task_handle_dec_ref(ffrt_task_handle_t handle)
 **Description**
 
 Decreases the reference count of a task handle.<br> The reference count of the task handle is decremented by one, and the value of the reference count before the decrement is returned. Pair this call with [ffrt_task_handle_inc_ref](capi-task-h.md#ffrt_task_handle_inc_ref) and use [ffrt_task_handle_destroy](capi-task-h.md#ffrt_task_handle_destroy) to release the handle when it is no longer needed.
+
+<!--Device-FFRT_C_API uint32_t ffrt_task_handle_dec_ref(ffrt_task_handle_t handle)--><!--Device-FFRT_C_API uint32_t ffrt_task_handle_dec_ref(ffrt_task_handle_t handle)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -618,6 +662,8 @@ FFRT_C_API void ffrt_task_handle_destroy(ffrt_task_handle_t handle)
 
 Destroys a task handle.<br> After the call, the task handle is destroyed and the resources associated with it are released. The handle must not be used again after destruction.
 
+<!--Device-FFRT_C_API void ffrt_task_handle_destroy(ffrt_task_handle_t handle)--><!--Device-FFRT_C_API void ffrt_task_handle_destroy(ffrt_task_handle_t handle)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
@@ -638,6 +684,8 @@ FFRT_C_API void ffrt_wait_deps(const ffrt_deps_t* deps)
 
 Waits until the dependent tasks are complete.
 
+<!--Device-FFRT_C_API void ffrt_wait_deps(const ffrt_deps_t* deps)--><!--Device-FFRT_C_API void ffrt_wait_deps(const ffrt_deps_t* deps)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
@@ -657,6 +705,8 @@ FFRT_C_API void ffrt_wait(void)
 **Description**
 
 Waits until all submitted tasks are complete.
+
+<!--Device-FFRT_C_API void ffrt_wait(void)--><!--Device-FFRT_C_API void ffrt_wait(void)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 

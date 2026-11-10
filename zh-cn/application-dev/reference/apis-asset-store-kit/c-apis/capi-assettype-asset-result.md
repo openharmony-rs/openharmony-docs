@@ -8,11 +8,13 @@ typedef struct Asset_Result {...} Asset_Result
 
 单条关键资的产查询结果。
 
+<!--Device-typedef struct Asset_Result {...} Asset_Result--><!--Device-typedef struct Asset_Result {...} Asset_Result-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 **起始版本：** 11
 
-**相关模块：** [AssetType](capi-others-assettype.md)
+**相关模块：** [AssetType](capi-asset-store-kit-assettype.md)
 
 **所在头文件：** [asset_type.h](capi-asset-type-h.md)
 

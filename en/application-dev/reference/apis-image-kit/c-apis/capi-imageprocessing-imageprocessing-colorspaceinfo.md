@@ -8,11 +8,13 @@ struct ImageProcessing_ColorSpaceInfo {...}
 
 The color space information is used for color space conversion capability query.
 
+<!--Device-struct ImageProcessing_ColorSpaceInfo {...}--><!--Device-struct ImageProcessing_ColorSpaceInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
 **Since**: 13
 
-**Related module**: [ImageProcessing](capi-others-imageprocessing.md)
+**Related module**: [ImageProcessing](capi-image-kit-imageprocessing.md)
 
 **Header file**: [image_processing_types.h](capi-image-processing-types-h.md)
 

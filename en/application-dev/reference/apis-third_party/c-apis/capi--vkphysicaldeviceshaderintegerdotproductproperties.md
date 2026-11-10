@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderIntegerDotProductProperties {...}--><!--Device-struct VkPhysicalDeviceShaderIntegerDotProductProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

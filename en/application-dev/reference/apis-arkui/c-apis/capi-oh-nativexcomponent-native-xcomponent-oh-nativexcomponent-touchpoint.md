@@ -8,11 +8,13 @@ typedef struct OH_NativeXComponent_TouchPoint {...} OH_NativeXComponent_TouchPoi
 
 Represents the touch point information of touch event.
 
+<!--Device-typedef struct OH_NativeXComponent_TouchPoint {...} OH_NativeXComponent_TouchPoint--><!--Device-typedef struct OH_NativeXComponent_TouchPoint {...} OH_NativeXComponent_TouchPoint-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 8
 
-**Related module**: [OH_NativeXComponent Native XComponent](capi-others-oh-nativexcomponent-native-xcomponent.md)
+**Related module**: [OH_NativeXComponent Native XComponent](capi-arkui-oh-nativexcomponent-native-xcomponent.md)
 
 **Header file**: [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
 

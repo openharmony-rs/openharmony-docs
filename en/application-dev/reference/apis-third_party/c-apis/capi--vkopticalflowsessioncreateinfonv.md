@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkOpticalFlowSessionCreateInfoNV {...}--><!--Device-struct VkOpticalFlowSessionCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

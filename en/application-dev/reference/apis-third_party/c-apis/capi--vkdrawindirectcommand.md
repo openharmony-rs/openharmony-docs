@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDrawIndirectCommand {...}--><!--Device-struct VkDrawIndirectCommand {...}-End-->
+
 ## Summary
 
 ### Member variables

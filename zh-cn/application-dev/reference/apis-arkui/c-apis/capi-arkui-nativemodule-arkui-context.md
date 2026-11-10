@@ -8,11 +8,13 @@ typedef struct ArkUI_Context ArkUI_Context
 
 native UI的上下文实例对象。
 
+<!--Device-typedef struct ArkUI_Context ArkUI_Context--><!--Device-typedef struct ArkUI_Context ArkUI_Context-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [common_type.h](capi-common-type-h.md)
 

@@ -8,11 +8,13 @@ typedef struct OH_AVScreenCapture_ContentFilter OH_AVScreenCapture_ContentFilter
 
 The OH_AVScreenCapture_ContentFilter struct describes the filter used to filter audio and video content.
 
+<!--Device-typedef struct OH_AVScreenCapture_ContentFilter OH_AVScreenCapture_ContentFilter--><!--Device-typedef struct OH_AVScreenCapture_ContentFilter OH_AVScreenCapture_ContentFilter-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 12
 
-**Related module**: [AVScreenCapture](capi-others-avscreencapture.md)
+**Related module**: [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **Header file**: [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

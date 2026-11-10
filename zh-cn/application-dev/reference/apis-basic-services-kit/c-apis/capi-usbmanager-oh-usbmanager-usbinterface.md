@@ -8,11 +8,13 @@ struct OH_UsbManager_UsbInterface {...}
 
 定义USB接口。一个[OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md)可以包含多个 <br>OH_UsbManager_UsbInterface实例，每个实例提供特定功能。
 
+<!--Device-struct OH_UsbManager_UsbInterface {...}--><!--Device-struct OH_UsbManager_UsbInterface {...}-End-->
+
 **系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
-**相关模块：** [UsbManager](capi-others-usbmanager.md)
+**相关模块：** [UsbManager](capi-basic-services-kit-usbmanager.md)
 
 **所在头文件：** [ohusb_manager.h](capi-ohusb-manager-h.md)
 

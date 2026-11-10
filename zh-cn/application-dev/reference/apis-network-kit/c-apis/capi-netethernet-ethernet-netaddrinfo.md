@@ -8,11 +8,13 @@ struct Ethernet_NetAddrInfo {...}
 
 以太网网卡网络地址信息，包含以太网网卡名称及网络地址信息。
 
+<!--Device-struct Ethernet_NetAddrInfo {...}--><!--Device-struct Ethernet_NetAddrInfo {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Ethernet
 
 **起始版本：** 26.0.0
 
-**相关模块：** [NetEthernet](capi-others-netethernet.md)
+**相关模块：** [NetEthernet](capi-network-kit-netethernet.md)
 
 **所在头文件：** [net_ethernet_type.h](capi-net-ethernet-type-h.md)
 

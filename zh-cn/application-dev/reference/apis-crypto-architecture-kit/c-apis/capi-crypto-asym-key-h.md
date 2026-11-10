@@ -86,6 +86,8 @@ enum CryptoAsymKey_ParamType
 
 定义非对称密钥参数类型。
 
+<!--Device-CryptoAsymKey_ParamType--><!--Device-CryptoAsymKey_ParamType-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
@@ -133,6 +135,8 @@ enum Crypto_EncodingType
 
 定义编码类型。
 
+<!--Device-Crypto_EncodingType--><!--Device-Crypto_EncodingType-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
@@ -152,6 +156,8 @@ enum CryptoPrivKeyEncoding_ParamType
 
 定义私钥编码参数类型。
 
+<!--Device-CryptoPrivKeyEncoding_ParamType--><!--Device-CryptoPrivKeyEncoding_ParamType-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -170,6 +176,8 @@ enum CryptoAsymKeySpec_Type
 **描述：**
 
 定义非对称密钥规格类型。
+
+<!--Device-CryptoAsymKeySpec_Type--><!--Device-CryptoAsymKeySpec_Type-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -194,6 +202,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_Cryp
 **描述：**
 
 根据给定的算法名称创建非对称密钥生成器。
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_CryptoAsymKeyGenerator **ctx)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_CryptoAsymKeyGenerator **ctx)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -230,6 +240,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *
 
 生成非对称密钥对。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyCtx)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyCtx)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
@@ -258,6 +270,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *c
 **描述：**
 
 将非对称密钥数据转换为密钥对。
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *ctx, Crypto_EncodingType type, Crypto_DataBlob *pubKeyData, Crypto_DataBlob *priKeyData, OH_CryptoKeyPair **keyCtx)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *ctx, Crypto_EncodingType type, Crypto_DataBlob *pubKeyData, Crypto_DataBlob *priKeyData, OH_CryptoKeyPair **keyCtx)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -291,6 +305,8 @@ const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx
 
 获取非对称密钥生成器的算法名称。
 
+<!--Device-const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx)--><!--Device-const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
@@ -317,6 +333,8 @@ void OH_CryptoAsymKeyGenerator_Destroy(OH_CryptoAsymKeyGenerator *ctx)
 
 销毁非对称密钥生成器。
 
+<!--Device-void OH_CryptoAsymKeyGenerator_Destroy(OH_CryptoAsymKeyGenerator *ctx)--><!--Device-void OH_CryptoAsymKeyGenerator_Destroy(OH_CryptoAsymKeyGenerator *ctx)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
@@ -337,6 +355,8 @@ void OH_CryptoKeyPair_Destroy(OH_CryptoKeyPair *keyCtx)
 
 销毁密钥对。
 
+<!--Device-void OH_CryptoKeyPair_Destroy(OH_CryptoKeyPair *keyCtx)--><!--Device-void OH_CryptoKeyPair_Destroy(OH_CryptoKeyPair *keyCtx)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
@@ -356,6 +376,8 @@ OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)
 **描述：**
 
 获取密钥对中的公钥。
+
+<!--Device-OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)--><!--Device-OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -383,6 +405,8 @@ OH_CryptoPrivKey *OH_CryptoKeyPair_GetPrivKey(OH_CryptoKeyPair *keyCtx)
 
 获取密钥对中的私钥。
 
+<!--Device-OH_CryptoPrivKey *OH_CryptoKeyPair_GetPrivKey(OH_CryptoKeyPair *keyCtx)--><!--Device-OH_CryptoPrivKey *OH_CryptoKeyPair_GetPrivKey(OH_CryptoKeyPair *keyCtx)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -408,6 +432,8 @@ OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingTy
 **描述：**
 
 对公钥进行编码。
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingType type, const char *encodingStandard, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingType type, const char *encodingStandard, Crypto_DataBlob *out)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -440,6 +466,8 @@ OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_P
 
 获取公钥的指定参数。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)--><!--Device-OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
@@ -470,6 +498,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerato
 
 设置非对称密钥生成器的密码。如果需要使用[OH_CryptoAsymKeyGenerator_Convert](capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert)将加密的私钥数据转换为密钥对，请调用此方法 设置密码。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerator *ctx, const unsigned char *password, uint32_t passwordLen)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerator *ctx, const unsigned char *password, uint32_t passwordLen)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -497,6 +527,8 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncoding
 **描述：**
 
 创建私钥编码参数。
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncodingParams **ctx)--><!--Device-OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncodingParams **ctx)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -531,6 +563,8 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodi
 
 设置私钥编码参数。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodingParams *ctx, CryptoPrivKeyEncoding_ParamType type, Crypto_DataBlob *value)--><!--Device-OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodingParams *ctx, CryptoPrivKeyEncoding_ParamType type, Crypto_DataBlob *value)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -559,6 +593,8 @@ void OH_CryptoPrivKeyEncodingParams_Destroy(OH_CryptoPrivKeyEncodingParams *ctx)
 
 销毁私钥编码参数。
 
+<!--Device-void OH_CryptoPrivKeyEncodingParams_Destroy(OH_CryptoPrivKeyEncodingParams *ctx)--><!--Device-void OH_CryptoPrivKeyEncodingParams_Destroy(OH_CryptoPrivKeyEncodingParams *ctx)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -578,6 +614,8 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_Encoding
 **描述：**
 
 对私钥进行编码。
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type, const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type, const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -611,6 +649,8 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey
 
 获取私钥的指定参数。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)--><!--Device-OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -641,6 +681,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveNa
 
 生成EC通用参数规格。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveName, OH_CryptoAsymKeySpec **spec)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveName, OH_CryptoAsymKeySpec **spec)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -669,6 +711,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen
 **描述：**
 
 生成DH通用参数规格。
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen, OH_CryptoAsymKeySpec **spec)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen, OH_CryptoAsymKeySpec **spec)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -700,6 +744,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKe
 
 根据给定的算法名称和规格类型创建非对称密钥规格。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKeySpec_Type type, OH_CryptoAsymKeySpec **spec)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKeySpec_Type type, OH_CryptoAsymKeySpec **spec)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -730,6 +776,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, Cryp
 
 设置非对称密钥规格的指定参数。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -758,6 +806,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec 
 
 将通用参数规格设置到非对称密钥规格中。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec *spec, OH_CryptoAsymKeySpec *commonParamsSpec)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec *spec, OH_CryptoAsymKeySpec *commonParamsSpec)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -784,6 +834,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, Cryp
 **描述：**
 
 获取非对称密钥规格的指定参数。
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -815,6 +867,8 @@ void OH_CryptoAsymKeySpec_Destroy(OH_CryptoAsymKeySpec *spec)
 
 销毁非对称密钥规格。
 
+<!--Device-void OH_CryptoAsymKeySpec_Destroy(OH_CryptoAsymKeySpec *spec)--><!--Device-void OH_CryptoAsymKeySpec_Destroy(OH_CryptoAsymKeySpec *spec)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -834,6 +888,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec 
 **描述：**
 
 根据非对称密钥规格创建密钥生成器。
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec *keySpec, OH_CryptoAsymKeyGeneratorWithSpec **generator)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec *keySpec, OH_CryptoAsymKeyGeneratorWithSpec **generator)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -869,6 +925,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyG
 
 根据非对称密钥规格生成密钥对。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyGeneratorWithSpec *generator, OH_CryptoKeyPair **keyPair)--><!--Device-OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyGeneratorWithSpec *generator, OH_CryptoKeyPair **keyPair)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -898,6 +956,8 @@ void OH_CryptoAsymKeyGeneratorWithSpec_Destroy(OH_CryptoAsymKeyGeneratorWithSpec
 
 销毁根据规格创建的非对称密钥生成器。
 
+<!--Device-void OH_CryptoAsymKeyGeneratorWithSpec_Destroy(OH_CryptoAsymKeyGeneratorWithSpec *generator)--><!--Device-void OH_CryptoAsymKeyGeneratorWithSpec_Destroy(OH_CryptoAsymKeyGeneratorWithSpec *generator)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -917,6 +977,8 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob
 **描述：**
 
 创建椭圆曲线点。
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob *ecKeyData, OH_CryptoEcPoint **point)--><!--Device-OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob *ecKeyData, OH_CryptoEcPoint **point)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -954,6 +1016,8 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto
 
 获取椭圆曲线点的x和y坐标。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)--><!--Device-OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -983,6 +1047,8 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_SetCoordinate(OH_CryptoEcPoint *point, Crypto
 **描述：**
 
 设置椭圆曲线点的x和y坐标。
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoEcPoint_SetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)--><!--Device-OH_Crypto_ErrCode OH_CryptoEcPoint_SetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -1017,6 +1083,8 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *f
 
 将椭圆曲线点编码为指定格式。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *format, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *format, Crypto_DataBlob *out)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -1046,6 +1114,8 @@ void OH_CryptoEcPoint_Destroy(OH_CryptoEcPoint *point)
 **描述：**
 
 销毁椭圆曲线点。
+
+<!--Device-void OH_CryptoEcPoint_Destroy(OH_CryptoEcPoint *point)--><!--Device-void OH_CryptoEcPoint_Destroy(OH_CryptoEcPoint *point)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkClusterAccelerationStructureCommandsInfoNV {...}--><!--Device-struct VkClusterAccelerationStructureCommandsInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

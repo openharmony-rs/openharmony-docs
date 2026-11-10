@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR {...}--><!--Device-struct VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

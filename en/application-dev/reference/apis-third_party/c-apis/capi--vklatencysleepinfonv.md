@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkLatencySleepInfoNV {...}--><!--Device-struct VkLatencySleepInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceDepthStencilResolveProperties {...}--><!--Device-struct VkPhysicalDeviceDepthStencilResolveProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

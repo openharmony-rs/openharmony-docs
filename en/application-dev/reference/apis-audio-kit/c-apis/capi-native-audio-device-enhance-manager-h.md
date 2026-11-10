@@ -43,6 +43,8 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioDeviceEnhanceManager(OH_AudioDevic
 
 Obtains the audio device enhancement manager handle.<br> This handle is used as the first parameter when calling enhanced audio device management functions. The functional APIs of this manager are only available on specific devices. Your application can first call [OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported](capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_isenhancedroutingsupported) to check if the system supports them before using.
 
+<!--Device-OH_AudioCommon_Result OH_AudioManager_GetAudioDeviceEnhanceManager(OH_AudioDeviceEnhanceManager **audioDeviceEnhanceManager)--><!--Device-OH_AudioCommon_Result OH_AudioManager_GetAudioDeviceEnhanceManager(OH_AudioDeviceEnhanceManager **audioDeviceEnhanceManager)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
@@ -68,6 +70,8 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported(OH
 **Description**
 
 Queries whether the system supports the enhanced routing functions provided by this manager.<br> The enhanced routing functions support selecting input and output devices for the application or audio streams. You are advised to call this API to check system support before using the enhanced routing functions. Even for the same type of host device, some models may support these functions while others may not due to hardware limitations. If the system does not support these enhanced routing functions, calling them will have no effect, and the system will select default input/output devices for the application or audio streams instead.
+
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, bool *supported)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, bool *supported)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -96,6 +100,8 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDevice(OH_AudioDe
 
 Sets the preferred output device for the application.<br> This configuration applies to all playback streams created by the application, unless a specific output device is designated for an individual stream. When the application implements its own UX for output device selection, it can obtain the list of available output devices through [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices), and use the [OH_AudioRoutingManager_GetPreferredOutputDevice](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getpreferredoutputdevice) API to obtain the currently selected output device. The application can register a callback via OH_AudioDeviceEnhanceManager_RegisterCurrentOutputDeviceChangeCallback to listen for changes to the actual output device. The selection becomes invalid when the application exits or the selected device goes offline. After the application restarts or the device comes back online, the selection must be re-issued to take effect. If the system does not support this function, it will select a default output device for the application.
 
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDevice(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioDeviceDescriptor *deviceDescriptor)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDevice(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioDeviceDescriptor *deviceDescriptor)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
@@ -122,6 +128,8 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDevice(OH_AudioDev
 **Description**
 
 Sets the preferred input device for the application.<br> This setting applies to all recording streams created by the application, unless a specific input device is designated for an individual stream. When the application implements its own UX for input device selection, it can obtain the list of available input devices through [OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices), and use the [OH_AudioRoutingManager_GetPreferredInputDevice](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getpreferredinputdevice) API to obtain the currently selected input device. Your application can register a callback via OH_AudioDeviceEnhanceManager_RegisterCurrentInputDeviceChangeCallback to listen for changes to the actual input device. The selection becomes invalid when the application exits or the selected device goes offline. After the application restarts or the device comes back online, you must re-issue the selection for it to take effect. If the system does not support this function, a default input device will be selected automatically.
+
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDevice(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioDeviceDescriptor *deviceDescriptor)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDevice(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioDeviceDescriptor *deviceDescriptor)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -150,6 +158,8 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRen
 
 Sets the preferred output device for a specific audio renderer.<br> Your application must ensure that the specified renderer is valid. This selection only applies to the designated stream; other playback streams in your application will use the application's forced selection or the system's default output device. The selection becomes invalid when the application exits or the selected device goes offline. After the application restarts or the device comes back online, you must re-issue the selection for it to take effect. If the system does not support this function, it will select a default output device for the renderer.
 
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioRenderer *renderer, OH_AudioDeviceDescriptor *deviceDescriptor)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioRenderer *renderer, OH_AudioDeviceDescriptor *deviceDescriptor)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
@@ -177,6 +187,8 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapt
 **Description**
 
 Sets the preferred input device for a specific audio capturer.<br> Your application must ensure that the specified capturer is valid. This selection only applies to the designated stream; other recording streams in your application will use the application's forced selection or the system's default input device. The selection becomes invalid when the application exits or the selected device goes offline. After the application restarts or the device comes back online, you must re-issue the selection for it to take effect. If the system does not support this function, it will select a default input device for the capturer.
+
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioCapturer *capturer, OH_AudioDeviceDescriptor *deviceDescriptor)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer(OH_AudioDeviceEnhanceManager *audioDeviceEnhanceManager, OH_AudioCapturer *capturer, OH_AudioDeviceDescriptor *deviceDescriptor)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 

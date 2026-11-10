@@ -8,11 +8,13 @@ typedef struct OH_IPC_MessageOption {...} OH_IPC_MessageOption
 
 Defines IPC message options, which are used to configure request parameters during IPC communication.
 
+<!--Device-typedef struct OH_IPC_MessageOption {...} OH_IPC_MessageOption--><!--Device-typedef struct OH_IPC_MessageOption {...} OH_IPC_MessageOption-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
 
-**Related module**: [OHIPCRemoteObject](capi-others-ohipcremoteobject.md)
+**Related module**: [OHIPCRemoteObject](capi-ipc-kit-ohipcremoteobject.md)
 
 **Header file**: [ipc_cremote_object.h](capi-ipc-cremote-object-h.md)
 

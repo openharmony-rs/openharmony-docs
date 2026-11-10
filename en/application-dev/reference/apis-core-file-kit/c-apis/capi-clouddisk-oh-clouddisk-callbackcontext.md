@@ -8,11 +8,13 @@ union OH_CloudDisk_CallbackContext {...}
 
 A union that encapsulates callback request context information.
 
+<!--Device-union OH_CloudDisk_CallbackContext {...}--><!--Device-union OH_CloudDisk_CallbackContext {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 26.0.1
 
-**Related module**: [CloudDisk](capi-others-clouddisk.md)
+**Related module**: [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 **Header file**: [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

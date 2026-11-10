@@ -8,11 +8,13 @@ struct NetConn_NetConnCallback {...}
 
 网络状态监听回调集合，所有回调事件需全部注册，无需关注的回调可以设为空实现。
 
+<!--Device-struct NetConn_NetConnCallback {...}--><!--Device-struct NetConn_NetConnCallback {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 12
 
-**相关模块：** [NetConnection](capi-others-netconnection.md)
+**相关模块：** [NetConnection](capi-network-kit-netconnection.md)
 
 **所在头文件：** [net_connection_type.h](capi-net-connection-type-h.md)
 

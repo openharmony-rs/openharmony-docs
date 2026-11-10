@@ -310,6 +310,8 @@ enum OH_ArkUI_StyledStringKey
 
 Enumerates the styles of a styled string.
 
+<!--Device-OH_ArkUI_StyledStringKey--><!--Device-OH_ArkUI_StyledStringKey-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -342,6 +344,8 @@ enum OH_ArkUI_SuperscriptStyle
 
 Enumerates the text superscript and subscript styles.
 
+<!--Device-OH_ArkUI_SuperscriptStyle--><!--Device-OH_ArkUI_SuperscriptStyle-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -361,6 +365,8 @@ enum OH_ArkUI_TextEncoding
 **Description**
 
 Enumerates the text encoding types supported by ArkUI text layout query APIs.
+
+<!--Device-OH_ArkUI_TextEncoding--><!--Device-OH_ArkUI_TextEncoding-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -384,6 +390,8 @@ ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* sty
 
 Creates a pointer to the ArkUI_StyledString object.
 
+<!--Device-ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* style, OH_Drawing_FontCollection* collection)--><!--Device-ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* style, OH_Drawing_FontCollection* collection)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -392,8 +400,8 @@ Creates a pointer to the ArkUI_StyledString object.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_Drawing_TypographyStyle](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-typographystyle.md)* style | A pointer to OH_Drawing_TypographyStyle, obtained by [OH_Drawing_CreateTypographyStyle](capi-drawing-text-typography-h.md#oh_drawing_createtypographystyle). |
-| [OH_Drawing_FontCollection](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-fontcollection.md)* collection | A pointer to OH_Drawing_FontCollection, obtained by [OH_Drawing_CreateFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createfontcollection). |
+| [OH_Drawing_TypographyStyle](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-typographystyle.md)* style | A pointer to OH_Drawing_TypographyStyle, obtained by [OH_Drawing_CreateTypographyStyle](../../apis-arkgraphics2d/c-apis/capi-drawing-text-typography-h.md#oh_drawing_createtypographystyle). |
+| [OH_Drawing_FontCollection](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-fontcollection.md)* collection | A pointer to OH_Drawing_FontCollection, obtained by [OH_Drawing_CreateFontCollection](../../apis-arkgraphics2d/c-apis/capi-drawing-font-collection-h.md#oh_drawing_createfontcollection). |
 
 **Returns**:
 
@@ -410,6 +418,8 @@ void OH_ArkUI_StyledString_Destroy(ArkUI_StyledString* handle)
 **Description**
 
 Free the memory occupied by the ArkUI_StyledString object.
+
+<!--Device-void OH_ArkUI_StyledString_Destroy(ArkUI_StyledString* handle)--><!--Device-void OH_ArkUI_StyledString_Destroy(ArkUI_StyledString* handle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -430,6 +440,8 @@ void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_
 **Description**
 
 Sets the new layout style to the top of the current format string style stack.
+
+<!--Device-void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_TextStyle* style)--><!--Device-void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_TextStyle* style)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -452,6 +464,8 @@ void OH_ArkUI_StyledString_AddText(ArkUI_StyledString* handle, const char* conte
 
 Sets the corresponding text content based on the current format string style.
 
+<!--Device-void OH_ArkUI_StyledString_AddText(ArkUI_StyledString* handle, const char* content)--><!--Device-void OH_ArkUI_StyledString_AddText(ArkUI_StyledString* handle, const char* content)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -473,6 +487,8 @@ void OH_ArkUI_StyledString_PopTextStyle(ArkUI_StyledString* handle)
 
 Removes the top style from the stack in the current format string object.
 
+<!--Device-void OH_ArkUI_StyledString_PopTextStyle(ArkUI_StyledString* handle)--><!--Device-void OH_ArkUI_StyledString_PopTextStyle(ArkUI_StyledString* handle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -492,6 +508,8 @@ OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString
 **Description**
 
 Creates a pointer to an OH_Drawing_Typography object based on a format string object for advanced text estimation and typography.
+
+<!--Device-OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString* handle)--><!--Device-OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString* handle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -519,6 +537,8 @@ void OH_ArkUI_StyledString_AddPlaceholder(ArkUI_StyledString* handle, OH_Drawing
 
 Set the placeholder.
 
+<!--Device-void OH_ArkUI_StyledString_AddPlaceholder(ArkUI_StyledString* handle, OH_Drawing_PlaceholderSpan* placeholder)--><!--Device-void OH_ArkUI_StyledString_AddPlaceholder(ArkUI_StyledString* handle, OH_Drawing_PlaceholderSpan* placeholder)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -540,6 +560,8 @@ ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_Create(void)
 
 Creates an <b>ArkUI_StyledString_Descriptor</b> object.
 
+<!--Device-ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_Create(void)--><!--Device-ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_Create(void)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
@@ -560,6 +582,8 @@ void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* des
 
 Destroys an <b>ArkUI_StyledString_Descriptor</b> object and reclaims the memory occupied by the object.
 
+<!--Device-void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* descriptor)--><!--Device-void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* descriptor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
@@ -579,6 +603,8 @@ const char* OH_ArkUI_ConvertToHtml(ArkUI_StyledString_Descriptor* descriptor)
 **Description**
 
 Converts styled string information into HTML.
+
+<!--Device-const char* OH_ArkUI_ConvertToHtml(ArkUI_StyledString_Descriptor* descriptor)--><!--Device-const char* OH_ArkUI_ConvertToHtml(ArkUI_StyledString_Descriptor* descriptor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -605,6 +631,8 @@ int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t buffer
 **Description**
 
 Deserializes a byte array containing styled string information into a styled string.
+
+<!--Device-int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor)--><!--Device-int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -633,6 +661,8 @@ int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSi
 **Description**
 
 Serializes the styled string information into a byte array.
+
+<!--Device-int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor, size_t* resultSize)--><!--Device-int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor, size_t* resultSize)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -667,6 +697,8 @@ Creates an [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styleds
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_StyledString_Descriptor_Destroy </b> to destroy it. All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_CreateWithString(const char* value, const OH_ArkUI_SpanStyle** styles, int32_t length)--><!--Device-ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_CreateWithString(const char* value, const OH_ArkUI_SpanStyle** styles, int32_t length)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -699,6 +731,8 @@ Creates an [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styleds
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_StyledString_Descriptor_Destroy </b> to destroy it. All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_CreateWithImageAttachment(const OH_ArkUI_ImageAttachment* value)--><!--Device-ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_CreateWithImageAttachment(const OH_ArkUI_ImageAttachment* value)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -728,6 +762,8 @@ Creates an [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styleds
 > **Note**:
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_StyledString_Descriptor_Destroy </b> to destroy it. All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_CreateWithCustomSpan(const OH_ArkUI_CustomSpan* value)--><!--Device-ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_CreateWithCustomSpan(const OH_ArkUI_CustomSpan* value)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -759,6 +795,8 @@ Obtains the length of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_GetLength(const ArkUI_StyledString_Descriptor* descriptor, int32_t* length)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_GetLength(const ArkUI_StyledString_Descriptor* descriptor, int32_t* length)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -789,6 +827,8 @@ Obtains the text content of a styled string.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_GetString(const ArkUI_StyledString_Descriptor* descriptor, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_GetString(const ArkUI_StyledString_Descriptor* descriptor, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -823,6 +863,8 @@ Checks whether a styled string is the same as another styled string. The two sty
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_IsEqual(const ArkUI_StyledString_Descriptor* firstDescriptor, const ArkUI_StyledString_Descriptor* secondDescriptor, bool* isEqual)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_IsEqual(const ArkUI_StyledString_Descriptor* firstDescriptor, const ArkUI_StyledString_Descriptor* secondDescriptor, bool* isEqual)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -854,6 +896,8 @@ Obtains a sub-styled string of a styled string.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_SubStyledString(const ArkUI_StyledString_Descriptor* descriptor, ArkUI_StyledString_Descriptor* subDescriptor, uint32_t start, uint32_t length)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_SubStyledString(const ArkUI_StyledString_Descriptor* descriptor, ArkUI_StyledString_Descriptor* subDescriptor, uint32_t start, uint32_t length)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -887,6 +931,8 @@ Obtains the style set within a specified range of a styled string.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_GetStyles(const ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length, OH_ArkUI_StyledStringKey styledKey, OH_ArkUI_SpanStyle** styles, uint32_t stylesSize, uint32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_GetStyles(const ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length, OH_ArkUI_StyledStringKey styledKey, OH_ArkUI_SpanStyle** styles, uint32_t stylesSize, uint32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -924,6 +970,8 @@ Converts an HTML string to a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_FromHtml(ArkUI_StyledString_Descriptor* descriptor, const char* html)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_FromHtml(ArkUI_StyledString_Descriptor* descriptor, const char* html)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -954,6 +1002,8 @@ Replaces the text within a specified range of a styled string.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ReplaceString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length, const char* string)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ReplaceString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length, const char* string)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -988,6 +1038,8 @@ Inserts text at a specified position of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_InsertString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, const char* string)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_InsertString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, const char* string)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1019,6 +1071,8 @@ Removes the text within a specified range of a styled string.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_RemoveString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_RemoveString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1052,6 +1106,8 @@ Replaces the style within a specified range of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ReplaceStyle(ArkUI_StyledString_Descriptor* descriptor, const OH_ArkUI_SpanStyle* spanStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ReplaceStyle(ArkUI_StyledString_Descriptor* descriptor, const OH_ArkUI_SpanStyle* spanStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1083,6 +1139,8 @@ Sets a new style for a specified range of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_SetStyle(ArkUI_StyledString_Descriptor* descriptor, const OH_ArkUI_SpanStyle* spanStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_SetStyle(ArkUI_StyledString_Descriptor* descriptor, const OH_ArkUI_SpanStyle* spanStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1113,6 +1171,8 @@ Removes the specified style for a specified range of a styled string.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_RemoveStyle(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length, OH_ArkUI_StyledStringKey styledKey)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_RemoveStyle(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length, OH_ArkUI_StyledStringKey styledKey)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1147,6 +1207,8 @@ Clears all styles of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ClearStyles(ArkUI_StyledString_Descriptor* descriptor)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ClearStyles(ArkUI_StyledString_Descriptor* descriptor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1176,6 +1238,8 @@ Replaces the styled string within a specified range.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ReplaceStyledString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length, const ArkUI_StyledString_Descriptor* other)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_ReplaceStyledString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, uint32_t length, const ArkUI_StyledString_Descriptor* other)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1210,6 +1274,8 @@ Inserts a new styled string at a specified position of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_InsertStyledString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, const ArkUI_StyledString_Descriptor* other)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_InsertStyledString(ArkUI_StyledString_Descriptor* descriptor, uint32_t start, const ArkUI_StyledString_Descriptor* other)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1242,6 +1308,8 @@ Appends a new styled string to the end of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_AppendStyledString(ArkUI_StyledString_Descriptor* descriptor, const ArkUI_StyledString_Descriptor* other)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_AppendStyledString(ArkUI_StyledString_Descriptor* descriptor, const ArkUI_StyledString_Descriptor* other)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1273,6 +1341,8 @@ Actively refreshes the custom span in a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_InvalidateCustomSpan(const ArkUI_StyledString_Descriptor* descriptor)--><!--Device-ArkUI_ErrorCode OH_ArkUI_StyledString_Descriptor_InvalidateCustomSpan(const ArkUI_StyledString_Descriptor* descriptor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1303,6 +1373,8 @@ Creates an [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md) o
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_TextStyle_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_TextStyle* OH_ArkUI_TextStyle_Create()--><!--Device-OH_ArkUI_TextStyle* OH_ArkUI_TextStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1322,6 +1394,8 @@ void OH_ArkUI_TextStyle_Destroy(OH_ArkUI_TextStyle* textStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md) object.
+
+<!--Device-void OH_ArkUI_TextStyle_Destroy(OH_ArkUI_TextStyle* textStyle)--><!--Device-void OH_ArkUI_TextStyle_Destroy(OH_ArkUI_TextStyle* textStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1346,6 +1420,8 @@ Sets text color for a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetFontColor(OH_ArkUI_TextStyle* textStyle, uint32_t fontColor)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetFontColor(OH_ArkUI_TextStyle* textStyle, uint32_t fontColor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1378,6 +1454,8 @@ Obtains the text color of a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetFontColor(const OH_ArkUI_TextStyle* textStyle, uint32_t* fontColor)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetFontColor(const OH_ArkUI_TextStyle* textStyle, uint32_t* fontColor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1409,6 +1487,8 @@ Sets a font family for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetFontFamily(OH_ArkUI_TextStyle* textStyle, const char* fontFamily)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetFontFamily(OH_ArkUI_TextStyle* textStyle, const char* fontFamily)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1439,6 +1519,8 @@ Obtains the font family of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetFontFamily(const OH_ArkUI_TextStyle* textStyle, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetFontFamily(const OH_ArkUI_TextStyle* textStyle, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1473,6 +1555,8 @@ Sets font size for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetFontSize(OH_ArkUI_TextStyle* textStyle, float fontSize)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetFontSize(OH_ArkUI_TextStyle* textStyle, float fontSize)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1503,6 +1587,8 @@ Obtains the font size of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetFontSize(const OH_ArkUI_TextStyle* textStyle, float* fontSize)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetFontSize(const OH_ArkUI_TextStyle* textStyle, float* fontSize)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1535,6 +1621,8 @@ Sets font weight for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetFontWeight(OH_ArkUI_TextStyle* textStyle, uint32_t fontWeight)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetFontWeight(OH_ArkUI_TextStyle* textStyle, uint32_t fontWeight)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1565,6 +1653,8 @@ Obtains the font weight of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetFontWeight(const OH_ArkUI_TextStyle* textStyle, uint32_t* fontWeight)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetFontWeight(const OH_ArkUI_TextStyle* textStyle, uint32_t* fontWeight)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1597,6 +1687,8 @@ Sets font style for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetFontStyle(OH_ArkUI_TextStyle* textStyle, ArkUI_FontStyle fontStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetFontStyle(OH_ArkUI_TextStyle* textStyle, ArkUI_FontStyle fontStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1627,6 +1719,8 @@ Obtains the font style of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetFontStyle(const OH_ArkUI_TextStyle* textStyle, ArkUI_FontStyle* fontStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetFontStyle(const OH_ArkUI_TextStyle* textStyle, ArkUI_FontStyle* fontStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1659,6 +1753,8 @@ Sets stroke width for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetStrokeWidth(OH_ArkUI_TextStyle* textStyle, float strokeWidth)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetStrokeWidth(OH_ArkUI_TextStyle* textStyle, float strokeWidth)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1689,6 +1785,8 @@ Obtains the stroke width of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetStrokeWidth(const OH_ArkUI_TextStyle* textStyle, float* strokeWidth)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetStrokeWidth(const OH_ArkUI_TextStyle* textStyle, float* strokeWidth)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1721,6 +1819,8 @@ Sets a stroke color for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetStrokeColor(OH_ArkUI_TextStyle* textStyle, uint32_t strokeColor)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetStrokeColor(OH_ArkUI_TextStyle* textStyle, uint32_t strokeColor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1751,6 +1851,8 @@ Obtains the stroke color of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetStrokeColor(const OH_ArkUI_TextStyle* textStyle, uint32_t* strokeColor)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetStrokeColor(const OH_ArkUI_TextStyle* textStyle, uint32_t* strokeColor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1783,6 +1885,8 @@ Sets superscript and subscript styles for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetSuperscript(OH_ArkUI_TextStyle* textStyle, OH_ArkUI_SuperscriptStyle superscript)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_SetSuperscript(OH_ArkUI_TextStyle* textStyle, OH_ArkUI_SuperscriptStyle superscript)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1813,6 +1917,8 @@ Obtains the superscript and subscript styles of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetSuperscript(const OH_ArkUI_TextStyle* textStyle, OH_ArkUI_SuperscriptStyle* superscript)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextStyle_GetSuperscript(const OH_ArkUI_TextStyle* textStyle, OH_ArkUI_SuperscriptStyle* superscript)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1845,6 +1951,8 @@ Creates an [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md) o
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_SpanStyle_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_SpanStyle* OH_ArkUI_SpanStyle_Create()--><!--Device-OH_ArkUI_SpanStyle* OH_ArkUI_SpanStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1864,6 +1972,8 @@ void OH_ArkUI_SpanStyle_Destroy(OH_ArkUI_SpanStyle* spanStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md) object.
+
+<!--Device-void OH_ArkUI_SpanStyle_Destroy(OH_ArkUI_SpanStyle* spanStyle)--><!--Device-void OH_ArkUI_SpanStyle_Destroy(OH_ArkUI_SpanStyle* spanStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1888,6 +1998,8 @@ Obtains the style of the styled string object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetStyledKey(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_StyledStringKey* styledKey)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetStyledKey(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_StyledStringKey* styledKey)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1920,6 +2032,8 @@ Sets the start position for the styled string object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetStart(OH_ArkUI_SpanStyle* spanStyle, int32_t start)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetStart(OH_ArkUI_SpanStyle* spanStyle, int32_t start)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1950,6 +2064,8 @@ Obtains the start position of the styled string object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetStart(const OH_ArkUI_SpanStyle* spanStyle, int32_t* start)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetStart(const OH_ArkUI_SpanStyle* spanStyle, int32_t* start)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1982,6 +2098,8 @@ Sets the length for the styled string object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetLength(OH_ArkUI_SpanStyle* spanStyle, int32_t length)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetLength(OH_ArkUI_SpanStyle* spanStyle, int32_t length)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2012,6 +2130,8 @@ Obtains the length of the styled string object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetLength(const OH_ArkUI_SpanStyle* spanStyle, int32_t* length)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetLength(const OH_ArkUI_SpanStyle* spanStyle, int32_t* length)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2044,6 +2164,8 @@ Sets the text font style for the styled string object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetTextStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_TextStyle* textStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetTextStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_TextStyle* textStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2074,6 +2196,8 @@ Obtains the text font style of the styled string object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetTextStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_TextStyle* textStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetTextStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_TextStyle* textStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2106,6 +2230,8 @@ Sets the paragraph style for the styled string object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetParagraphStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_ParagraphStyle* paragraphStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetParagraphStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_ParagraphStyle* paragraphStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2136,6 +2262,8 @@ Obtains the paragraph style of the styled string object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetParagraphStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_ParagraphStyle* paragraphStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetParagraphStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_ParagraphStyle* paragraphStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2168,6 +2296,8 @@ Sets the gesture style for the styled string object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetGestureStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_GestureStyle* gestureStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetGestureStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_GestureStyle* gestureStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2198,6 +2328,8 @@ Obtains the gesture style of the styled string object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetGestureStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_GestureStyle* gestureStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetGestureStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_GestureStyle* gestureStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2230,6 +2362,8 @@ Sets the text shadow style for the styled string object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetTextShadowStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_TextShadowStyle* textShadowStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetTextShadowStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_TextShadowStyle* textShadowStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2260,6 +2394,8 @@ Obtains the text shadow style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetTextShadowStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_TextShadowStyle* textShadowStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetTextShadowStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_TextShadowStyle* textShadowStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2292,6 +2428,8 @@ Sets the text decorative line style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetDecorationStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_DecorationStyle* decorationStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetDecorationStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_DecorationStyle* decorationStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2322,6 +2460,8 @@ Obtains the text decorative line style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetDecorationStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_DecorationStyle* decorationStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetDecorationStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_DecorationStyle* decorationStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2354,6 +2494,8 @@ Sets the baseline offset style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetBaselineOffsetStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_BaselineOffsetStyle* baselineOffsetStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetBaselineOffsetStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_BaselineOffsetStyle* baselineOffsetStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2384,6 +2526,8 @@ Obtains the baseline offset style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetBaselineOffsetStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_BaselineOffsetStyle* baselineOffsetStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetBaselineOffsetStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_BaselineOffsetStyle* baselineOffsetStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2416,6 +2560,8 @@ Sets the letter spacing style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetLetterSpacingStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_LetterSpacingStyle* letterSpacingStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetLetterSpacingStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_LetterSpacingStyle* letterSpacingStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2446,6 +2592,8 @@ Obtains the letter spacing style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetLetterSpacingStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_LetterSpacingStyle* letterSpacingStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetLetterSpacingStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_LetterSpacingStyle* letterSpacingStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2478,6 +2626,8 @@ Sets the line height style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetLineHeightStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_LineHeightStyle* lineHeightStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetLineHeightStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_LineHeightStyle* lineHeightStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2508,6 +2658,8 @@ Obtains the line height style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetLineHeightStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_LineHeightStyle* lineHeightStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetLineHeightStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_LineHeightStyle* lineHeightStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2540,6 +2692,8 @@ Sets the URL style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetUrlStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_UrlStyle* urlStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetUrlStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_UrlStyle* urlStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2570,6 +2724,8 @@ Obtains the URL style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetUrlStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_UrlStyle* urlStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetUrlStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_UrlStyle* urlStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2602,6 +2758,8 @@ Sets the background color style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetBackgroundColorStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_BackgroundColorStyle* backgroundColorStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetBackgroundColorStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_BackgroundColorStyle* backgroundColorStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2632,6 +2790,8 @@ Obtains the background color style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetBackgroundColorStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_BackgroundColorStyle* backgroundColorStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetBackgroundColorStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_BackgroundColorStyle* backgroundColorStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2664,6 +2824,8 @@ Sets the user data span style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetUserDataSpan(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_UserDataSpan* userDataSpan)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetUserDataSpan(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_UserDataSpan* userDataSpan)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2694,6 +2856,8 @@ Obtains the user data span style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetUserDataSpan(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_UserDataSpan* userDataSpan)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetUserDataSpan(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_UserDataSpan* userDataSpan)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2726,6 +2890,8 @@ Sets the custom span style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetCustomSpan(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_CustomSpan* customSpan)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetCustomSpan(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_CustomSpan* customSpan)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2756,6 +2922,8 @@ Obtains the custom span style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetCustomSpan(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_CustomSpan* customSpan)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetCustomSpan(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_CustomSpan* customSpan)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2788,6 +2956,8 @@ Sets the image style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetImageAttachment(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_ImageAttachment* imageAttachment)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetImageAttachment(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_ImageAttachment* imageAttachment)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2818,6 +2988,8 @@ Obtains the image style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetImageAttachment(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_ImageAttachment* imageAttachment)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetImageAttachment(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_ImageAttachment* imageAttachment)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2850,6 +3022,8 @@ Creates an [OH_ArkUI_LeadingMarginSpanDrawInfo](capi-arkui-nativemodule-oh-arkui
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_LeadingMarginSpanDrawInfo_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_LeadingMarginSpanDrawInfo* OH_ArkUI_LeadingMarginSpanDrawInfo_Create()--><!--Device-OH_ArkUI_LeadingMarginSpanDrawInfo* OH_ArkUI_LeadingMarginSpanDrawInfo_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2869,6 +3043,8 @@ void OH_ArkUI_LeadingMarginSpanDrawInfo_Destroy(OH_ArkUI_LeadingMarginSpanDrawIn
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_LeadingMarginSpanDrawInfo](capi-arkui-nativemodule-oh-arkui-leadingmarginspandrawinfo.md) object.
+
+<!--Device-void OH_ArkUI_LeadingMarginSpanDrawInfo_Destroy(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo)--><!--Device-void OH_ArkUI_LeadingMarginSpanDrawInfo_Destroy(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2893,6 +3069,8 @@ Sets the horizontal offset of the current line relative to the component in the 
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetX(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float x)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetX(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float x)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2925,6 +3103,8 @@ Obtains the horizontal offset of the current line relative to the component in t
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetX(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float* x)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetX(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float* x)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2955,6 +3135,8 @@ Sets the distance between the top of a line and the top edge of the component in
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetTop(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float top)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetTop(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float top)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2987,6 +3169,8 @@ Obtains the distance between the top of a line and the top edge of the component
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetTop(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float* top)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetTop(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float* top)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3017,6 +3201,8 @@ Sets the distance between the bottom of a line and the top edge of the component
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetBottom(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float bottom)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetBottom(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float bottom)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3049,6 +3235,8 @@ Obtains the distance between the bottom of a line and the top edge of the compon
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetBottom(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float* bottom)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetBottom(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float* bottom)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3079,6 +3267,8 @@ Sets the distance between the baseline of the current line and the top edge of t
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetBaseline(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float baseline)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetBaseline(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float baseline)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3111,6 +3301,8 @@ Obtains the distance between the baseline of the current line and the top edge o
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetBaseline(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float* baseline)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetBaseline(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, float* baseline)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3141,6 +3333,8 @@ Sets the text direction in the custom drawing information object for paragraph i
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetTextDirection(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, ArkUI_TextDirection direction)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetTextDirection(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, ArkUI_TextDirection direction)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3173,6 +3367,8 @@ Obtains the text direction in the custom drawing information object for paragrap
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetTextDirection(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, ArkUI_TextDirection* direction)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetTextDirection(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, ArkUI_TextDirection* direction)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3203,6 +3399,8 @@ Sets the start index of the current line in the custom drawing information objec
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetStart(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, uint32_t start)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetStart(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, uint32_t start)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3235,6 +3433,8 @@ Obtains the start index of the current line in the custom drawing information ob
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetStart(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, uint32_t* start)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetStart(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, uint32_t* start)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3265,6 +3465,8 @@ Sets the end index of the current line in the custom drawing information object 
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetEnd(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, uint32_t end)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetEnd(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, uint32_t end)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3297,6 +3499,8 @@ Obtains the end index of the current line in the custom drawing information obje
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetEnd(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, uint32_t* end)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetEnd(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, uint32_t* end)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3327,6 +3531,8 @@ Sets whether the current line is the first line of the paragraph in the custom d
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetFirst(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, bool first)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_SetFirst(OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, bool first)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3359,6 +3565,8 @@ Obtains whether the current line is the first line of the paragraph in the custo
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetFirst(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, bool* first)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LeadingMarginSpanDrawInfo_GetFirst(const OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo, bool* first)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3390,6 +3598,8 @@ Creates an [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphs
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_ParagraphStyle_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_ParagraphStyle* OH_ArkUI_ParagraphStyle_Create()--><!--Device-OH_ArkUI_ParagraphStyle* OH_ArkUI_ParagraphStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3409,6 +3619,8 @@ void OH_ArkUI_ParagraphStyle_Destroy(OH_ArkUI_ParagraphStyle* paragraphStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.
+
+<!--Device-void OH_ArkUI_ParagraphStyle_Destroy(OH_ArkUI_ParagraphStyle* paragraphStyle)--><!--Device-void OH_ArkUI_ParagraphStyle_Destroy(OH_ArkUI_ParagraphStyle* paragraphStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3433,6 +3645,8 @@ Sets the horizontal text alignment method in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTextAlign(OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextAlignment align)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTextAlign(OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextAlignment align)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3465,6 +3679,8 @@ Obtains the horizontal text alignment method in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTextAlign(const OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextAlignment* align)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTextAlign(const OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextAlignment* align)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3495,6 +3711,8 @@ Sets the first-line text indentation in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTextIndent(OH_ArkUI_ParagraphStyle* paragraphStyle, float textIndent)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTextIndent(OH_ArkUI_ParagraphStyle* paragraphStyle, float textIndent)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3527,6 +3745,8 @@ Obtains the first-line text indentation in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTextIndent(const OH_ArkUI_ParagraphStyle* paragraphStyle, float* textIndent)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTextIndent(const OH_ArkUI_ParagraphStyle* paragraphStyle, float* textIndent)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3557,6 +3777,8 @@ Sets the maximum number of lines in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetMaxLines(OH_ArkUI_ParagraphStyle* paragraphStyle, int32_t maxLines)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetMaxLines(OH_ArkUI_ParagraphStyle* paragraphStyle, int32_t maxLines)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3589,6 +3811,8 @@ Obtains the maximum number of lines in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetMaxLines(const OH_ArkUI_ParagraphStyle* paragraphStyle, int32_t* maxLines)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetMaxLines(const OH_ArkUI_ParagraphStyle* paragraphStyle, int32_t* maxLines)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3619,6 +3843,8 @@ Sets the display mode when the paragraph is too long in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetOverflow(OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextOverflow overflow)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetOverflow(OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextOverflow overflow)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3651,6 +3877,8 @@ Obtains the display mode when the paragraph is too long in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetOverflow(const OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextOverflow* overflow)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetOverflow(const OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextOverflow* overflow)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3681,6 +3909,8 @@ Sets the word breaking rule in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetWordBreak(OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_WordBreak wordBreak)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetWordBreak(OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_WordBreak wordBreak)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3713,6 +3943,8 @@ Obtains the word breaking rule in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetWordBreak(const OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_WordBreak* wordBreak)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetWordBreak(const OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_WordBreak* wordBreak)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3743,6 +3975,8 @@ Sets the PixelMap for paragraph indentation in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetLeadingMarginPixelMap(OH_ArkUI_ParagraphStyle* paragraphStyle, struct OH_PixelmapNative* pixelmap)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetLeadingMarginPixelMap(OH_ArkUI_ParagraphStyle* paragraphStyle, struct OH_PixelmapNative* pixelmap)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3775,6 +4009,8 @@ Obtains the PixelMap for paragraph indentation in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetLeadingMarginPixelMap(const OH_ArkUI_ParagraphStyle* paragraphStyle, struct OH_PixelmapNative** pixelmap)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetLeadingMarginPixelMap(const OH_ArkUI_ParagraphStyle* paragraphStyle, struct OH_PixelmapNative** pixelmap)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3805,6 +4041,8 @@ Sets the width for paragraph indentation in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetLeadingMarginWidth(OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t width)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetLeadingMarginWidth(OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t width)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3837,6 +4075,8 @@ Obtains the width for paragraph indentation in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetLeadingMarginWidth(const OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t* width)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetLeadingMarginWidth(const OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t* width)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3867,6 +4107,8 @@ Sets the height for paragraph indentation in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetLeadingMarginHeight(OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t height)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetLeadingMarginHeight(OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t height)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3899,6 +4141,8 @@ Obtains the height for paragraph indentation in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetLeadingMarginHeight(const OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t* height)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetLeadingMarginHeight(const OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t* height)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3929,6 +4173,8 @@ Sets the paragraph spacing in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetParagraphSpacing(OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t paragraphSpacing)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetParagraphSpacing(OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t paragraphSpacing)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3961,6 +4207,8 @@ Obtains the paragraph spacing in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetParagraphSpacing(const OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t* paragraphSpacing)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetParagraphSpacing(const OH_ArkUI_ParagraphStyle* paragraphStyle, uint32_t* paragraphSpacing)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -3991,6 +4239,8 @@ Sets the vertical text alignment method in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTextVerticalAlign(OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextVerticalAlignment verticalAlignment)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTextVerticalAlign(OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextVerticalAlignment verticalAlignment)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4023,6 +4273,8 @@ Obtains the vertical text alignment method in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTextVerticalAlign(const OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextVerticalAlignment* verticalAlignment)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTextVerticalAlign(const OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextVerticalAlignment* verticalAlignment)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4053,6 +4305,8 @@ Sets the callback function triggered when the paragraph indentation is drawn in 
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_RegisterOnDrawLeadingMarginCallback(OH_ArkUI_ParagraphStyle* paragraphStyle, void(*onDraw)(ArkUI_DrawContext* context, OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo))--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_RegisterOnDrawLeadingMarginCallback(OH_ArkUI_ParagraphStyle* paragraphStyle, void(*onDraw)(ArkUI_DrawContext* context, OH_ArkUI_LeadingMarginSpanDrawInfo* drawInfo))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4085,6 +4339,8 @@ Sets the callback function triggered when the paragraph indentation distance is 
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_RegisterOnGetLeadingMarginCallback(OH_ArkUI_ParagraphStyle* paragraphStyle, float(*leadingMargin)())--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_RegisterOnGetLeadingMarginCallback(OH_ArkUI_ParagraphStyle* paragraphStyle, float(*leadingMargin)())-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4115,6 +4371,8 @@ Sets the text direction in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTextDirection(OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextDirection textDirection)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTextDirection(OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextDirection textDirection)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4147,6 +4405,8 @@ Obtains the text direction in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTextDirection(const OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextDirection* textDirection)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTextDirection(const OH_ArkUI_ParagraphStyle* paragraphStyle, ArkUI_TextDirection* textDirection)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4178,6 +4438,8 @@ Creates an [OH_ArkUI_GestureStyle](capi-arkui-nativemodule-oh-arkui-gesturestyle
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_GestureStyle_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_GestureStyle* OH_ArkUI_GestureStyle_Create()--><!--Device-OH_ArkUI_GestureStyle* OH_ArkUI_GestureStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4197,6 +4459,8 @@ void OH_ArkUI_GestureStyle_Destroy(OH_ArkUI_GestureStyle* gestureStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_GestureStyle](capi-arkui-nativemodule-oh-arkui-gesturestyle.md) object.
+
+<!--Device-void OH_ArkUI_GestureStyle_Destroy(OH_ArkUI_GestureStyle* gestureStyle)--><!--Device-void OH_ArkUI_GestureStyle_Destroy(OH_ArkUI_GestureStyle* gestureStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4221,6 +4485,8 @@ Sets the click event callback in the event gesture style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnClickCallback(OH_ArkUI_GestureStyle* gestureStyle, void(*onClick)(ArkUI_NodeEvent*))--><!--Device-ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnClickCallback(OH_ArkUI_GestureStyle* gestureStyle, void(*onClick)(ArkUI_NodeEvent*))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4253,6 +4519,8 @@ Sets the long-pressing event callback in the event gesture style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnLongPressCallback(OH_ArkUI_GestureStyle* gestureStyle, void(*onLongPress)(ArkUI_GestureEvent*))--><!--Device-ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnLongPressCallback(OH_ArkUI_GestureStyle* gestureStyle, void(*onLongPress)(ArkUI_GestureEvent*))-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4283,6 +4551,8 @@ Sets the touch event callback in the event gesture style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnTouchCallback(OH_ArkUI_GestureStyle* gestureStyle, void(*onTouch)(ArkUI_NodeEvent*))--><!--Device-ArkUI_ErrorCode OH_ArkUI_GestureStyle_RegisterOnTouchCallback(OH_ArkUI_GestureStyle* gestureStyle, void(*onTouch)(ArkUI_NodeEvent*))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4315,6 +4585,8 @@ Creates an [OH_ArkUI_TextShadowStyle](capi-arkui-nativemodule-oh-arkui-textshado
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_TextShadowStyle_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_TextShadowStyle* OH_ArkUI_TextShadowStyle_Create()--><!--Device-OH_ArkUI_TextShadowStyle* OH_ArkUI_TextShadowStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4334,6 +4606,8 @@ void OH_ArkUI_TextShadowStyle_Destroy(OH_ArkUI_TextShadowStyle* textShadowStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_TextShadowStyle](capi-arkui-nativemodule-oh-arkui-textshadowstyle.md) object.
+
+<!--Device-void OH_ArkUI_TextShadowStyle_Destroy(OH_ArkUI_TextShadowStyle* textShadowStyle)--><!--Device-void OH_ArkUI_TextShadowStyle_Destroy(OH_ArkUI_TextShadowStyle* textShadowStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4358,6 +4632,8 @@ Sets the text shadow options for the text shadow style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextShadowStyle_SetTextShadow(OH_ArkUI_TextShadowStyle* textShadowStyle, const OH_ArkUI_ShadowOptions** options, uint32_t length)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextShadowStyle_SetTextShadow(OH_ArkUI_TextShadowStyle* textShadowStyle, const OH_ArkUI_ShadowOptions** options, uint32_t length)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4390,6 +4666,8 @@ Obtains the text shadow options of the text shadow style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextShadowStyle_GetTextShadow(const OH_ArkUI_TextShadowStyle* textShadowStyle, OH_ArkUI_ShadowOptions** shadowOptions, uint32_t shadowOptionsSize, uint32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextShadowStyle_GetTextShadow(const OH_ArkUI_TextShadowStyle* textShadowStyle, OH_ArkUI_ShadowOptions** shadowOptions, uint32_t shadowOptionsSize, uint32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4424,6 +4702,8 @@ Creates an [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decoratio
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_DecorationStyle_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_DecorationStyle* OH_ArkUI_DecorationStyle_Create()--><!--Device-OH_ArkUI_DecorationStyle* OH_ArkUI_DecorationStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4443,6 +4723,8 @@ void OH_ArkUI_DecorationStyle_Destroy(OH_ArkUI_DecorationStyle* decorationStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md) object.
+
+<!--Device-void OH_ArkUI_DecorationStyle_Destroy(OH_ArkUI_DecorationStyle* decorationStyle)--><!--Device-void OH_ArkUI_DecorationStyle_Destroy(OH_ArkUI_DecorationStyle* decorationStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4467,6 +4749,8 @@ Sets the decoration type for the text decorative line style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_SetTextDecorationType(OH_ArkUI_DecorationStyle* decorationStyle, ArkUI_TextDecorationType type)--><!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_SetTextDecorationType(OH_ArkUI_DecorationStyle* decorationStyle, ArkUI_TextDecorationType type)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4499,6 +4783,8 @@ Obtains the decoration type of the text decorative line style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_GetTextDecorationType(const OH_ArkUI_DecorationStyle* decorationStyle, ArkUI_TextDecorationType* type)--><!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_GetTextDecorationType(const OH_ArkUI_DecorationStyle* decorationStyle, ArkUI_TextDecorationType* type)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4529,6 +4815,8 @@ Sets the decoration color for the text decorative line style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_SetColor(OH_ArkUI_DecorationStyle* decorationStyle, uint32_t color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_SetColor(OH_ArkUI_DecorationStyle* decorationStyle, uint32_t color)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4561,6 +4849,8 @@ Obtains the decoration color of the text decorative line style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_GetColor(const OH_ArkUI_DecorationStyle* decorationStyle, uint32_t* color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_GetColor(const OH_ArkUI_DecorationStyle* decorationStyle, uint32_t* color)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4591,6 +4881,8 @@ Sets the decoration style for the text decorative line style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_SetTextDecorationStyle(OH_ArkUI_DecorationStyle* decorationStyle, ArkUI_TextDecorationStyle style)--><!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_SetTextDecorationStyle(OH_ArkUI_DecorationStyle* decorationStyle, ArkUI_TextDecorationStyle style)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4623,6 +4915,8 @@ Obtains the decoration style of the text decorative line style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_GetTextDecorationStyle(const OH_ArkUI_DecorationStyle* decorationStyle, ArkUI_TextDecorationStyle* style)--><!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_GetTextDecorationStyle(const OH_ArkUI_DecorationStyle* decorationStyle, ArkUI_TextDecorationStyle* style)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4653,6 +4947,8 @@ Sets the thickness scaling factor of the text decorative line style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_SetThicknessScale(OH_ArkUI_DecorationStyle* decorationStyle, float thicknessScale)--><!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_SetThicknessScale(OH_ArkUI_DecorationStyle* decorationStyle, float thicknessScale)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4685,6 +4981,8 @@ Obtains the thickness scaling factor of the text decorative line style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_GetThicknessScale(const OH_ArkUI_DecorationStyle* decorationStyle, float* thicknessScale)--><!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_GetThicknessScale(const OH_ArkUI_DecorationStyle* decorationStyle, float* thicknessScale)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4715,6 +5013,8 @@ Sets whether to enable the display of multiple decorative lines in the text deco
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_SetEnableMultiType(OH_ArkUI_DecorationStyle* decorationStyle, bool enableMultiType)--><!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_SetEnableMultiType(OH_ArkUI_DecorationStyle* decorationStyle, bool enableMultiType)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4747,6 +5047,8 @@ Obtains whether the display of multiple decorative lines is enabled in the text 
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_GetEnableMultiType(const OH_ArkUI_DecorationStyle* decorationStyle, bool* enableMultiType)--><!--Device-ArkUI_ErrorCode OH_ArkUI_DecorationStyle_GetEnableMultiType(const OH_ArkUI_DecorationStyle* decorationStyle, bool* enableMultiType)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4778,6 +5080,8 @@ Creates an [OH_ArkUI_BaselineOffsetStyle](capi-arkui-nativemodule-oh-arkui-basel
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_BaselineOffsetStyle_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_BaselineOffsetStyle* OH_ArkUI_BaselineOffsetStyle_Create()--><!--Device-OH_ArkUI_BaselineOffsetStyle* OH_ArkUI_BaselineOffsetStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4797,6 +5101,8 @@ void OH_ArkUI_BaselineOffsetStyle_Destroy(OH_ArkUI_BaselineOffsetStyle* baseline
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_BaselineOffsetStyle](capi-arkui-nativemodule-oh-arkui-baselineoffsetstyle.md) object.
+
+<!--Device-void OH_ArkUI_BaselineOffsetStyle_Destroy(OH_ArkUI_BaselineOffsetStyle* baselineOffsetStyle)--><!--Device-void OH_ArkUI_BaselineOffsetStyle_Destroy(OH_ArkUI_BaselineOffsetStyle* baselineOffsetStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4821,6 +5127,8 @@ Sets the baseline offset.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_BaselineOffsetStyle_SetBaselineOffset(OH_ArkUI_BaselineOffsetStyle* baselineOffsetStyle, float baselineOffset)--><!--Device-ArkUI_ErrorCode OH_ArkUI_BaselineOffsetStyle_SetBaselineOffset(OH_ArkUI_BaselineOffsetStyle* baselineOffsetStyle, float baselineOffset)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4853,6 +5161,8 @@ Obtains the baseline offset.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_BaselineOffsetStyle_GetBaselineOffset(const OH_ArkUI_BaselineOffsetStyle* baselineOffsetStyle, float* baselineOffset)--><!--Device-ArkUI_ErrorCode OH_ArkUI_BaselineOffsetStyle_GetBaselineOffset(const OH_ArkUI_BaselineOffsetStyle* baselineOffsetStyle, float* baselineOffset)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4884,6 +5194,8 @@ Creates an [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letter
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_LetterSpacingStyle_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_LetterSpacingStyle* OH_ArkUI_LetterSpacingStyle_Create()--><!--Device-OH_ArkUI_LetterSpacingStyle* OH_ArkUI_LetterSpacingStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4903,6 +5215,8 @@ void OH_ArkUI_LetterSpacingStyle_Destroy(OH_ArkUI_LetterSpacingStyle* letterSpac
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md) object.
+
+<!--Device-void OH_ArkUI_LetterSpacingStyle_Destroy(OH_ArkUI_LetterSpacingStyle* letterSpacingStyle)--><!--Device-void OH_ArkUI_LetterSpacingStyle_Destroy(OH_ArkUI_LetterSpacingStyle* letterSpacingStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4927,6 +5241,8 @@ Sets the letter spacing.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LetterSpacingStyle_SetLetterSpacing(OH_ArkUI_LetterSpacingStyle* letterSpacingStyle, float letterSpacing)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LetterSpacingStyle_SetLetterSpacing(OH_ArkUI_LetterSpacingStyle* letterSpacingStyle, float letterSpacing)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -4959,6 +5275,8 @@ Obtains the letter spacing.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LetterSpacingStyle_GetLetterSpacing(const OH_ArkUI_LetterSpacingStyle* letterSpacingStyle, float* letterSpacing)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LetterSpacingStyle_GetLetterSpacing(const OH_ArkUI_LetterSpacingStyle* letterSpacingStyle, float* letterSpacing)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -4990,6 +5308,8 @@ Creates an [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheigh
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_LineHeightStyle_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_LineHeightStyle* OH_ArkUI_LineHeightStyle_Create()--><!--Device-OH_ArkUI_LineHeightStyle* OH_ArkUI_LineHeightStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -5009,6 +5329,8 @@ void OH_ArkUI_LineHeightStyle_Destroy(OH_ArkUI_LineHeightStyle* lineHeightStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md) object.
+
+<!--Device-void OH_ArkUI_LineHeightStyle_Destroy(OH_ArkUI_LineHeightStyle* lineHeightStyle)--><!--Device-void OH_ArkUI_LineHeightStyle_Destroy(OH_ArkUI_LineHeightStyle* lineHeightStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5033,6 +5355,8 @@ Sets the line height.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LineHeightStyle_SetLineHeight(OH_ArkUI_LineHeightStyle* lineHeightStyle, float lineHeight)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LineHeightStyle_SetLineHeight(OH_ArkUI_LineHeightStyle* lineHeightStyle, float lineHeight)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5065,6 +5389,8 @@ Obtains the line height.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LineHeightStyle_GetLineHeight(const OH_ArkUI_LineHeightStyle* lineHeightStyle, float* lineHeight)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LineHeightStyle_GetLineHeight(const OH_ArkUI_LineHeightStyle* lineHeightStyle, float* lineHeight)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -5095,6 +5421,8 @@ Sets a line height multiplier.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LineHeightStyle_SetLineHeightMultiple(OH_ArkUI_LineHeightStyle* lineHeightStyle, float lineHeightMultiple)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LineHeightStyle_SetLineHeightMultiple(OH_ArkUI_LineHeightStyle* lineHeightStyle, float lineHeightMultiple)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5127,6 +5455,8 @@ Obtains the line height multiplier.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LineHeightStyle_GetLineHeightMultiple(const OH_ArkUI_LineHeightStyle* lineHeightStyle, float* lineHeightMultiple)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LineHeightStyle_GetLineHeightMultiple(const OH_ArkUI_LineHeightStyle* lineHeightStyle, float* lineHeightMultiple)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -5157,6 +5487,8 @@ Sets a line spacing style for the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetLineSpacingStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_LineSpacingStyle* lineSpacingStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_SetLineSpacingStyle(OH_ArkUI_SpanStyle* spanStyle, const OH_ArkUI_LineSpacingStyle* lineSpacingStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5189,6 +5521,8 @@ Obtains the line spacing style of the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetLineSpacingStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_LineSpacingStyle* lineSpacingStyle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_SpanStyle_GetLineSpacingStyle(const OH_ArkUI_SpanStyle* spanStyle, OH_ArkUI_LineSpacingStyle* lineSpacingStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -5220,6 +5554,8 @@ Creates an [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespac
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_LineSpacingStyle_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_LineSpacingStyle* OH_ArkUI_LineSpacingStyle_Create()--><!--Device-OH_ArkUI_LineSpacingStyle* OH_ArkUI_LineSpacingStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -5239,6 +5575,8 @@ void OH_ArkUI_LineSpacingStyle_Destroy(OH_ArkUI_LineSpacingStyle* lineSpacingSty
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md) object.
+
+<!--Device-void OH_ArkUI_LineSpacingStyle_Destroy(OH_ArkUI_LineSpacingStyle* lineSpacingStyle)--><!--Device-void OH_ArkUI_LineSpacingStyle_Destroy(OH_ArkUI_LineSpacingStyle* lineSpacingStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5263,6 +5601,8 @@ Sets line spacing.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_SetLineSpacing(OH_ArkUI_LineSpacingStyle* lineSpacingStyle, float lineSpacing)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_SetLineSpacing(OH_ArkUI_LineSpacingStyle* lineSpacingStyle, float lineSpacing)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5295,6 +5635,8 @@ Queries the line spacing.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_GetLineSpacing(const OH_ArkUI_LineSpacingStyle* lineSpacingStyle, float* lineSpacing)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_GetLineSpacing(const OH_ArkUI_LineSpacingStyle* lineSpacingStyle, float* lineSpacing)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -5325,6 +5667,8 @@ Sets whether the line spacing takes effect only between lines.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_SetOnlyBetweenLines(OH_ArkUI_LineSpacingStyle* lineSpacingStyle, bool onlyBetweenLines)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_SetOnlyBetweenLines(OH_ArkUI_LineSpacingStyle* lineSpacingStyle, bool onlyBetweenLines)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5357,6 +5701,8 @@ Checks whether the line spacing takes effect only between lines.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_GetOnlyBetweenLines(const OH_ArkUI_LineSpacingStyle* lineSpacingStyle, bool* onlyBetweenLines)--><!--Device-ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_GetOnlyBetweenLines(const OH_ArkUI_LineSpacingStyle* lineSpacingStyle, bool* onlyBetweenLines)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -5388,6 +5734,8 @@ Creates an [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-back
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_BackgroundColorStyle_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_BackgroundColorStyle* OH_ArkUI_BackgroundColorStyle_Create()--><!--Device-OH_ArkUI_BackgroundColorStyle* OH_ArkUI_BackgroundColorStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -5407,6 +5755,8 @@ void OH_ArkUI_BackgroundColorStyle_Destroy(OH_ArkUI_BackgroundColorStyle* style)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md) object.
+
+<!--Device-void OH_ArkUI_BackgroundColorStyle_Destroy(OH_ArkUI_BackgroundColorStyle* style)--><!--Device-void OH_ArkUI_BackgroundColorStyle_Destroy(OH_ArkUI_BackgroundColorStyle* style)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5431,6 +5781,8 @@ Sets the background color for the background color style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetColor(OH_ArkUI_BackgroundColorStyle* style, uint32_t color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetColor(OH_ArkUI_BackgroundColorStyle* style, uint32_t color)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5463,6 +5815,8 @@ Obtains the background color of the background color style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* color)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -5493,6 +5847,8 @@ Sets the background radii for the background color style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetRadius(OH_ArkUI_BackgroundColorStyle* style, float topLeft, float topRight, float bottomLeft, float bottomRight)--><!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetRadius(OH_ArkUI_BackgroundColorStyle* style, float topLeft, float topRight, float bottomLeft, float bottomRight)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5528,6 +5884,8 @@ Obtains the background radii of the background color style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetRadius(const OH_ArkUI_BackgroundColorStyle* style, float* topLeft, float* topRight, float* bottomLeft, float* bottomRight)--><!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetRadius(const OH_ArkUI_BackgroundColorStyle* style, float* topLeft, float* topRight, float* bottomLeft, float* bottomRight)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -5562,6 +5920,8 @@ Sets the border width for the background color style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderWidth(OH_ArkUI_BackgroundColorStyle* style, float borderWidth)--><!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderWidth(OH_ArkUI_BackgroundColorStyle* style, float borderWidth)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -5592,6 +5952,8 @@ Obtains the border width of the background color style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderWidth(const OH_ArkUI_BackgroundColorStyle* style, float* borderWidth)--><!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderWidth(const OH_ArkUI_BackgroundColorStyle* style, float* borderWidth)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5624,6 +5986,8 @@ Sets the border color for the background color style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderColor(OH_ArkUI_BackgroundColorStyle* style, uint32_t borderColor)--><!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderColor(OH_ArkUI_BackgroundColorStyle* style, uint32_t borderColor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -5654,6 +6018,8 @@ Obtains the border color of the background color style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* borderColor)--><!--Device-ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* borderColor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5686,6 +6052,8 @@ Creates an [OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md) obj
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_UrlStyle_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_UrlStyle* OH_ArkUI_UrlStyle_Create()--><!--Device-OH_ArkUI_UrlStyle* OH_ArkUI_UrlStyle_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -5705,6 +6073,8 @@ void OH_ArkUI_UrlStyle_Destroy(OH_ArkUI_UrlStyle* style)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md) object.
+
+<!--Device-void OH_ArkUI_UrlStyle_Destroy(OH_ArkUI_UrlStyle* style)--><!--Device-void OH_ArkUI_UrlStyle_Destroy(OH_ArkUI_UrlStyle* style)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5729,6 +6099,8 @@ Sets the URL content for the URL style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_UrlStyle_SetUrl(OH_ArkUI_UrlStyle* style, const char* url)--><!--Device-ArkUI_ErrorCode OH_ArkUI_UrlStyle_SetUrl(OH_ArkUI_UrlStyle* style, const char* url)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5760,6 +6132,8 @@ Obtains the URL content of the URL style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_UrlStyle_GetUrl(const OH_ArkUI_UrlStyle* style, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_UrlStyle_GetUrl(const OH_ArkUI_UrlStyle* style, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5794,6 +6168,8 @@ Creates an [OH_ArkUI_UserDataSpan](capi-arkui-nativemodule-oh-arkui-userdataspan
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_UserDataSpan_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_UserDataSpan* OH_ArkUI_UserDataSpan_Create()--><!--Device-OH_ArkUI_UserDataSpan* OH_ArkUI_UserDataSpan_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -5813,6 +6189,8 @@ void OH_ArkUI_UserDataSpan_Destroy(OH_ArkUI_UserDataSpan* userDataSpan)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_UserDataSpan](capi-arkui-nativemodule-oh-arkui-userdataspan.md) object.
+
+<!--Device-void OH_ArkUI_UserDataSpan_Destroy(OH_ArkUI_UserDataSpan* userDataSpan)--><!--Device-void OH_ArkUI_UserDataSpan_Destroy(OH_ArkUI_UserDataSpan* userDataSpan)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5837,6 +6215,8 @@ Sets the user data in the user data span style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_UserDataSpan_SetUserData(OH_ArkUI_UserDataSpan* userDataSpan, void* userData)--><!--Device-ArkUI_ErrorCode OH_ArkUI_UserDataSpan_SetUserData(OH_ArkUI_UserDataSpan* userDataSpan, void* userData)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5869,6 +6249,8 @@ Obtains the user data in the user data span style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_UserDataSpan_GetUserData(const OH_ArkUI_UserDataSpan* userDataSpan, void** userData)--><!--Device-ArkUI_ErrorCode OH_ArkUI_UserDataSpan_GetUserData(const OH_ArkUI_UserDataSpan* userDataSpan, void** userData)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -5900,6 +6282,8 @@ Creates an [OH_ArkUI_CustomSpan](capi-arkui-nativemodule-oh-arkui-customspan.md)
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_CustomSpan_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_CustomSpan* OH_ArkUI_CustomSpan_Create()--><!--Device-OH_ArkUI_CustomSpan* OH_ArkUI_CustomSpan_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -5919,6 +6303,8 @@ void OH_ArkUI_CustomSpan_Destroy(OH_ArkUI_CustomSpan* customSpan)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_CustomSpan](capi-arkui-nativemodule-oh-arkui-customspan.md) object.
+
+<!--Device-void OH_ArkUI_CustomSpan_Destroy(OH_ArkUI_CustomSpan* customSpan)--><!--Device-void OH_ArkUI_CustomSpan_Destroy(OH_ArkUI_CustomSpan* customSpan)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5943,6 +6329,8 @@ Sets the callback function triggered when metrics are obtained for the custom sp
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_CustomSpan_RegisterOnMeasureCallback(OH_ArkUI_CustomSpan* customSpan, ArkUI_CustomSpanMetrics*(*onMeasure)(float))--><!--Device-ArkUI_ErrorCode OH_ArkUI_CustomSpan_RegisterOnMeasureCallback(OH_ArkUI_CustomSpan* customSpan, ArkUI_CustomSpanMetrics*(*onMeasure)(float))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -5975,6 +6363,8 @@ Registers the callback function triggered when the custom span is drawn.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_CustomSpan_RegisterOnDrawCallback(OH_ArkUI_CustomSpan* customSpan, void(*onDraw)(ArkUI_DrawContext*, ArkUI_CustomSpanDrawInfo*))--><!--Device-ArkUI_ErrorCode OH_ArkUI_CustomSpan_RegisterOnDrawCallback(OH_ArkUI_CustomSpan* customSpan, void(*onDraw)(ArkUI_DrawContext*, ArkUI_CustomSpanDrawInfo*))-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6006,6 +6396,8 @@ Creates an [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageatta
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_ImageAttachment_Destroy </b> to destroy it.
 
+<!--Device-OH_ArkUI_ImageAttachment* OH_ArkUI_ImageAttachment_Create()--><!--Device-OH_ArkUI_ImageAttachment* OH_ArkUI_ImageAttachment_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6025,6 +6417,8 @@ void OH_ArkUI_ImageAttachment_Destroy(OH_ArkUI_ImageAttachment* imageAttachment)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object.
+
+<!--Device-void OH_ArkUI_ImageAttachment_Destroy(OH_ArkUI_ImageAttachment* imageAttachment)--><!--Device-void OH_ArkUI_ImageAttachment_Destroy(OH_ArkUI_ImageAttachment* imageAttachment)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6049,6 +6443,8 @@ Sets the image data source in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetPixelMap(OH_ArkUI_ImageAttachment* imageAttachment, struct OH_PixelmapNative* pixelmap)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetPixelMap(OH_ArkUI_ImageAttachment* imageAttachment, struct OH_PixelmapNative* pixelmap)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6081,6 +6477,8 @@ Obtains the image data source in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetPixelMap(const OH_ArkUI_ImageAttachment* imageAttachment, struct OH_PixelmapNative** pixelmap)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetPixelMap(const OH_ArkUI_ImageAttachment* imageAttachment, struct OH_PixelmapNative** pixelmap)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6112,6 +6510,8 @@ Sets the image resource address in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResource(OH_ArkUI_ImageAttachment* imageAttachment, const char* resource)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResource(OH_ArkUI_ImageAttachment* imageAttachment, const char* resource)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6142,6 +6542,8 @@ Obtains the image resource address in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResource(const OH_ArkUI_ImageAttachment* imageAttachment, char* buffer, int32_t bufferSize, int32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResource(const OH_ArkUI_ImageAttachment* imageAttachment, char* buffer, int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6176,6 +6578,8 @@ Sets the image width in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSizeWidth(OH_ArkUI_ImageAttachment* imageAttachment, float width)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSizeWidth(OH_ArkUI_ImageAttachment* imageAttachment, float width)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6206,6 +6610,8 @@ Obtains the image width in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSizeWidth(const OH_ArkUI_ImageAttachment* imageAttachment, float* width)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSizeWidth(const OH_ArkUI_ImageAttachment* imageAttachment, float* width)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6238,6 +6644,8 @@ Sets the image height in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSizeHeight(OH_ArkUI_ImageAttachment* imageAttachment, float height)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSizeHeight(OH_ArkUI_ImageAttachment* imageAttachment, float height)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6268,6 +6676,8 @@ Obtains the image height in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSizeHeight(const OH_ArkUI_ImageAttachment* imageAttachment, float* height)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSizeHeight(const OH_ArkUI_ImageAttachment* imageAttachment, float* height)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6300,6 +6710,8 @@ Sets the image alignment method in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetVerticalAlign(OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ImageSpanAlignment verticalAlign)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetVerticalAlign(OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ImageSpanAlignment verticalAlign)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6330,6 +6742,8 @@ Obtains the image alignment method in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetVerticalAlign(const OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ImageSpanAlignment* verticalAlign)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetVerticalAlign(const OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ImageSpanAlignment* verticalAlign)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6362,6 +6776,8 @@ Sets the image scaling type in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetObjectFit(OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ObjectFit objectFit)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetObjectFit(OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ObjectFit objectFit)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6392,6 +6808,8 @@ Obtains the image scaling type in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetObjectFit(const OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ObjectFit* objectFit)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetObjectFit(const OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_ObjectFit* objectFit)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6424,6 +6842,8 @@ Sets the image margin in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetMargin(OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_Margin margin)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetMargin(OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_Margin margin)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6454,6 +6874,8 @@ Obtains the image margin in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetMargin(const OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_Margin* margin)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetMargin(const OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_Margin* margin)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6486,6 +6908,8 @@ Sets the image padding in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetPadding(OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_Margin padding)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetPadding(OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_Margin padding)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6517,6 +6941,8 @@ Obtains the image padding in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetPadding(const OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_Margin* padding)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetPadding(const OH_ArkUI_ImageAttachment* imageAttachment, ArkUI_Margin* padding)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6547,6 +6973,8 @@ Sets the image border radii in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetBorderRadiuses(OH_ArkUI_ImageAttachment* imageAttachment, float topLeft, float topRight, float bottomLeft, float bottomRight)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetBorderRadiuses(OH_ArkUI_ImageAttachment* imageAttachment, float topLeft, float topRight, float bottomLeft, float bottomRight)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6582,6 +7010,8 @@ Obtains the image border radii in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetBorderRadiuses(const OH_ArkUI_ImageAttachment* imageAttachment, float* topLeft, float* topRight, float* bottomLeft, float* bottomRight)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetBorderRadiuses(const OH_ArkUI_ImageAttachment* imageAttachment, float* topLeft, float* topRight, float* bottomLeft, float* bottomRight)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6616,6 +7046,8 @@ Sets the image color filter in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetColorFilter(OH_ArkUI_ImageAttachment* imageAttachment, const float* colorFilter, uint32_t size)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetColorFilter(OH_ArkUI_ImageAttachment* imageAttachment, const float* colorFilter, uint32_t size)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6647,6 +7079,8 @@ Obtains the image color filter in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetColorFilter(const OH_ArkUI_ImageAttachment* imageAttachment, float** colorFilter, uint32_t colorFilterSize, uint32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetColorFilter(const OH_ArkUI_ImageAttachment* imageAttachment, float** colorFilter, uint32_t colorFilterSize, uint32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6681,6 +7115,8 @@ Sets the image drawing color filter in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetDrawingColorFilter(OH_ArkUI_ImageAttachment* imageAttachment, const OH_Drawing_ColorFilter* drawingColorFilter)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetDrawingColorFilter(OH_ArkUI_ImageAttachment* imageAttachment, const OH_Drawing_ColorFilter* drawingColorFilter)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6711,6 +7147,8 @@ Obtains the image drawing color filter in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetDrawingColorFilter(const OH_ArkUI_ImageAttachment* imageAttachment, OH_Drawing_ColorFilter* drawingColorFilter)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetDrawingColorFilter(const OH_ArkUI_ImageAttachment* imageAttachment, OH_Drawing_ColorFilter* drawingColorFilter)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6743,6 +7181,8 @@ Sets whether to load the image synchronously in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSyncLoad(OH_ArkUI_ImageAttachment* imageAttachment, bool syncLoad)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSyncLoad(OH_ArkUI_ImageAttachment* imageAttachment, bool syncLoad)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6773,6 +7213,8 @@ Obtains whether the image is loaded synchronously in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSyncLoad(const OH_ArkUI_ImageAttachment* imageAttachment, bool* syncLoad)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSyncLoad(const OH_ArkUI_ImageAttachment* imageAttachment, bool* syncLoad)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6805,6 +7247,8 @@ Sets whether to enable the enhanced SVG tag parsing feature in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSupportSvg(OH_ArkUI_ImageAttachment* imageAttachment, bool supportSvg)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSupportSvg(OH_ArkUI_ImageAttachment* imageAttachment, bool supportSvg)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6836,6 +7280,8 @@ Obtains whether the enhanced SVG tag parsing feature is enabled in the image sty
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSupportSvg(const OH_ArkUI_ImageAttachment* imageAttachment, bool* supportSvg)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSupportSvg(const OH_ArkUI_ImageAttachment* imageAttachment, bool* supportSvg)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -6866,6 +7312,8 @@ Sets the resizable image slice in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableSlice(OH_ArkUI_ImageAttachment* imageAttachment, float left, float top, float right, float bottom)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableSlice(OH_ArkUI_ImageAttachment* imageAttachment, float left, float top, float right, float bottom)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -6901,6 +7349,8 @@ Obtains the resizable image slice in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableSlice(const OH_ArkUI_ImageAttachment* imageAttachment, float* left, float* top, float* right, float* bottom)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableSlice(const OH_ArkUI_ImageAttachment* imageAttachment, float* left, float* top, float* right, float* bottom)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
@@ -6935,6 +7385,8 @@ Sets the resizable image lattice in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableLattice(OH_ArkUI_ImageAttachment* imageAttachment, const OH_Drawing_Lattice* lattice)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableLattice(OH_ArkUI_ImageAttachment* imageAttachment, const OH_Drawing_Lattice* lattice)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
@@ -6944,7 +7396,7 @@ Sets the resizable image lattice in the image style.
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | [in] Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object. |
-| [const OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md)* lattice | [in] Pointer to the image resizable lattice. The type is [OH_Drawing_Lattice](capi-drawing-oh-drawing-lattice.md). |
+| [const OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md)* lattice | [in] Pointer to the image resizable lattice. The type is [OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md). |
 
 **Returns**:
 
@@ -6966,6 +7418,8 @@ Obtains the resizable image lattice in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableLattice(const OH_ArkUI_ImageAttachment* imageAttachment, OH_Drawing_Lattice* lattice)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableLattice(const OH_ArkUI_ImageAttachment* imageAttachment, OH_Drawing_Lattice* lattice)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
@@ -6975,7 +7429,7 @@ Obtains the resizable image lattice in the image style.
 | Parameter | Description |
 | -- | -- |
 | [const OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | [in] Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object. |
-| [OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md)* lattice | [out] Output parameter. Pointer to the image resizable lattice. The type is [OH_Drawing_Lattice](capi-drawing-oh-drawing-lattice.md). |
+| [OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md)* lattice | [out] Output parameter. Pointer to the image resizable lattice. The type is [OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md). |
 
 **Returns**:
 
@@ -6992,6 +7446,8 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetImageTag(OH_ArkUI_ImageAttachment *i
 **Description**
 
 Sets the image text tag in the image style.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetImageTag(OH_ArkUI_ImageAttachment *imageAttachment, const char *imageTag)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetImageTag(OH_ArkUI_ImageAttachment *imageAttachment, const char *imageTag)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7019,6 +7475,8 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetImageTag(const OH_ArkUI_ImageAttachm
 **Description**
 
 Obtains the image text tag in the image style.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetImageTag(const OH_ArkUI_ImageAttachment *imageAttachment, int32_t bufferSize, char *buffer, int32_t *writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetImageTag(const OH_ArkUI_ImageAttachment *imageAttachment, int32_t bufferSize, char *buffer, int32_t *writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7053,6 +7511,8 @@ Obtains the range of the content to be replaced in the text change information.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetRangeBefore(const OH_ArkUI_TextEditorChangeEvent* event, uint32_t* start, uint32_t* end)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetRangeBefore(const OH_ArkUI_TextEditorChangeEvent* event, uint32_t* start, uint32_t* end)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -7085,6 +7545,8 @@ Obtains the styled string used for replacement in the text change information.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetReplacementStyledString(const OH_ArkUI_TextEditorChangeEvent* event, ArkUI_StyledString_Descriptor* descriptor)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetReplacementStyledString(const OH_ArkUI_TextEditorChangeEvent* event, ArkUI_StyledString_Descriptor* descriptor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -7116,6 +7578,8 @@ Obtains the styled string of the previewed content in the text change informatio
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetPreviewStyledString(const OH_ArkUI_TextEditorChangeEvent* event, ArkUI_StyledString_Descriptor* descriptor)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetPreviewStyledString(const OH_ArkUI_TextEditorChangeEvent* event, ArkUI_StyledString_Descriptor* descriptor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -7143,6 +7607,8 @@ void OH_ArkUI_TextLayoutManager_Dispose(ArkUI_TextLayoutManager* layoutManager)
 
 Dispose an object of the text layout manager.
 
+<!--Device-void OH_ArkUI_TextLayoutManager_Dispose(ArkUI_TextLayoutManager* layoutManager)--><!--Device-void OH_ArkUI_TextLayoutManager_Dispose(ArkUI_TextLayoutManager* layoutManager)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -7162,6 +7628,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineCount(ArkUI_TextLayoutManager*
 **Description**
 
 Gets the line count.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineCount(ArkUI_TextLayoutManager* layoutManager, int32_t* outLineCount)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineCount(ArkUI_TextLayoutManager* layoutManager, int32_t* outLineCount)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7189,6 +7657,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetRectsForRange(ArkUI_TextLayoutMana
 **Description**
 
 Gets the rects for range.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetRectsForRange(ArkUI_TextLayoutManager* layoutManager, int32_t start, int32_t end, OH_Drawing_RectWidthStyle widthStyle, OH_Drawing_RectHeightStyle heightStyle, OH_Drawing_TextBox** outTextBoxes)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetRectsForRange(ArkUI_TextLayoutManager* layoutManager, int32_t start, int32_t end, OH_Drawing_RectWidthStyle widthStyle, OH_Drawing_RectHeightStyle heightStyle, OH_Drawing_TextBox** outTextBoxes)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7221,6 +7691,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphPositionAtCoordinate(ArkUI_Te
 
 Gets the glyph position at coordinate.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphPositionAtCoordinate(ArkUI_TextLayoutManager* layoutManager, double dx, double dy, OH_Drawing_PositionAndAffinity** outPos)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphPositionAtCoordinate(ArkUI_TextLayoutManager* layoutManager, double dx, double dy, OH_Drawing_PositionAndAffinity** outPos)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -7250,6 +7722,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineMetrics(ArkUI_TextLayoutManage
 
 Get line metrics information.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineMetrics(ArkUI_TextLayoutManager* layoutManager, int32_t lineNumber, OH_Drawing_LineMetrics* outMetrics)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineMetrics(ArkUI_TextLayoutManager* layoutManager, int32_t lineNumber, OH_Drawing_LineMetrics* outMetrics)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -7277,6 +7751,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterPositionAtCoordinate(ArkU
 **Description**
 
 Gets the character position at coordinate.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterPositionAtCoordinate(ArkUI_TextLayoutManager* layoutManager, double dx, double dy, OH_Drawing_PositionAndAffinity** outPos)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterPositionAtCoordinate(ArkUI_TextLayoutManager* layoutManager, double dx, double dy, OH_Drawing_PositionAndAffinity** outPos)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7306,6 +7782,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterPositionAtCoordinateWithE
 **Description**
 
 Gets the character position at coordinate based on the specified encoding type.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterPositionAtCoordinateWithEncoding(ArkUI_TextLayoutManager* layoutManager, double dx, double dy, OH_ArkUI_TextEncoding encoding, OH_Drawing_PositionAndAffinity** outPos)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterPositionAtCoordinateWithEncoding(ArkUI_TextLayoutManager* layoutManager, double dx, double dy, OH_ArkUI_TextEncoding encoding, OH_Drawing_PositionAndAffinity** outPos)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7337,6 +7815,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphRangeForCharacterRange(ArkUI_
 
 Get the glyph range produced by the specified range of characters.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphRangeForCharacterRange(ArkUI_TextLayoutManager* layoutManager, OH_Drawing_Range* charRange, OH_Drawing_Range** outGlyphRange, OH_Drawing_Range** outActualCharRange)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphRangeForCharacterRange(ArkUI_TextLayoutManager* layoutManager, OH_Drawing_Range* charRange, OH_Drawing_Range** outGlyphRange, OH_Drawing_Range** outActualCharRange)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -7365,6 +7845,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphRangeForCharacterRangeWithEnc
 **Description**
 
 Get the glyph range produced by the specified range of characters based on the specified encoding type.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphRangeForCharacterRangeWithEncoding(ArkUI_TextLayoutManager* layoutManager, OH_Drawing_Range* charRange, OH_ArkUI_TextEncoding encoding, OH_Drawing_Range** outGlyphRange, OH_Drawing_Range** outActualCharRange)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphRangeForCharacterRangeWithEncoding(ArkUI_TextLayoutManager* layoutManager, OH_Drawing_Range* charRange, OH_ArkUI_TextEncoding encoding, OH_Drawing_Range** outGlyphRange, OH_Drawing_Range** outActualCharRange)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7396,6 +7878,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterRangeForGlyphRange(ArkUI_
 
 Get the character range that maps to the glyphs in the given glyph range.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterRangeForGlyphRange(ArkUI_TextLayoutManager* layoutManager, OH_Drawing_Range* glyphRange, OH_Drawing_Range** outCharRange, OH_Drawing_Range** outActualGlyphRange)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterRangeForGlyphRange(ArkUI_TextLayoutManager* layoutManager, OH_Drawing_Range* glyphRange, OH_Drawing_Range** outCharRange, OH_Drawing_Range** outActualGlyphRange)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -7424,6 +7908,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterRangeForGlyphRangeWithEnc
 **Description**
 
 Get the character range that maps to the glyphs in the given glyph range based on the specified encoding type.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterRangeForGlyphRangeWithEncoding(ArkUI_TextLayoutManager* layoutManager, OH_Drawing_Range* glyphRange, OH_ArkUI_TextEncoding encoding, OH_Drawing_Range** outCharRange, OH_Drawing_Range** outActualGlyphRange)--><!--Device-ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterRangeForGlyphRangeWithEncoding(ArkUI_TextLayoutManager* layoutManager, OH_Drawing_Range* glyphRange, OH_ArkUI_TextEncoding encoding, OH_Drawing_Range** outCharRange, OH_Drawing_Range** outActualGlyphRange)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7459,6 +7945,8 @@ Set linear gradient of paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetLinearGradient(OH_ArkUI_ParagraphStyle* paragraphStyle, const OH_ArkUI_LinearGradientOptions* linearGradient)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetLinearGradient(OH_ArkUI_ParagraphStyle* paragraphStyle, const OH_ArkUI_LinearGradientOptions* linearGradient)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -7489,6 +7977,8 @@ Get linear gradient of paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetLinearGradient(const OH_ArkUI_ParagraphStyle* paragraphStyle, OH_ArkUI_LinearGradientOptions* linearGradient)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetLinearGradient(const OH_ArkUI_ParagraphStyle* paragraphStyle, OH_ArkUI_LinearGradientOptions* linearGradient)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7521,6 +8011,8 @@ Set radial gradient of paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetRadialGradient(OH_ArkUI_ParagraphStyle* paragraphStyle, const OH_ArkUI_RadialGradientOptions* radialGradient)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetRadialGradient(OH_ArkUI_ParagraphStyle* paragraphStyle, const OH_ArkUI_RadialGradientOptions* radialGradient)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -7551,6 +8043,8 @@ Get radial gradient of paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetRadialGradient(const OH_ArkUI_ParagraphStyle* paragraphStyle, OH_ArkUI_RadialGradientOptions* radialGradient)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetRadialGradient(const OH_ArkUI_ParagraphStyle* paragraphStyle, OH_ArkUI_RadialGradientOptions* radialGradient)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -7583,6 +8077,8 @@ Set tail indents of paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTailIndents(OH_ArkUI_ParagraphStyle* paragraphStyle, const float* tailIndents, uint32_t size)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTailIndents(OH_ArkUI_ParagraphStyle* paragraphStyle, const float* tailIndents, uint32_t size)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -7614,6 +8110,8 @@ Get tail indents of paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTailIndents(const OH_ArkUI_ParagraphStyle* paragraphStyle, float** tailIndents, uint32_t tailIndentsSize, uint32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTailIndents(const OH_ArkUI_ParagraphStyle* paragraphStyle, float** tailIndents, uint32_t tailIndentsSize, uint32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

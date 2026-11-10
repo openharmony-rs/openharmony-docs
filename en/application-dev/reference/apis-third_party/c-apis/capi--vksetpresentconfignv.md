@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSetPresentConfigNV {...}--><!--Device-struct VkSetPresentConfigNV {...}-End-->
+
 ## Summary
 
 ### Member variables

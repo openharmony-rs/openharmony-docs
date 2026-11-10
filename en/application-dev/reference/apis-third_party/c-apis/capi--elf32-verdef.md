@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf32_Verdef {...}--><!--Device-struct Elf32_Verdef {...}-End-->
+
 ## Summary
 
 ### Member variables

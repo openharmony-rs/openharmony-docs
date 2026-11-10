@@ -8,6 +8,8 @@ struct OH_NN_Tensor {...}
 
 Defines the tensor structure.<br> It is usually used to construct data nodes and operator parameters in a model graph. When constructing a tensor, you need to specify the data type, number of dimensions, dimension information, and quantization information.
 
+<!--Device-struct OH_NN_Tensor {...}--><!--Device-struct OH_NN_Tensor {...}-End-->
+
 **System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
@@ -16,7 +18,7 @@ Defines the tensor structure.<br> It is usually used to construct data nodes and
 
 **Replaced by**: [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md)
 
-**Related module**: [NeuralNetworkRuntime](capi-others-neuralnetworkruntime.md)
+**Related module**: [NeuralNetworkRuntime](capi-neural-network-runtime-kit-neuralnetworkruntime.md)
 
 **Header file**: [neural_network_runtime_type.h](capi-neural-network-runtime-type-h.md)
 

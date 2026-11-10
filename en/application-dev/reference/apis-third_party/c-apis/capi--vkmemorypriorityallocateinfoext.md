@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMemoryPriorityAllocateInfoEXT {...}--><!--Device-struct VkMemoryPriorityAllocateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

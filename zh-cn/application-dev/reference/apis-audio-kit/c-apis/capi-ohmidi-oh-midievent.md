@@ -8,11 +8,13 @@ typedef struct OH_MIDIEvent {...} OH_MIDIEvent
 
 MIDI事件结构体（通用），用于以UMP（Universal MIDI Packet）格式承载和传输MIDI事件数据，适用于MIDI消息的接收、发送与处理场景（如音乐制作应用接收和处理MIDI控制器输入事件、 数字音频工作站处理MIDI消息、音乐教育类应用中MIDI设备交互等）。原始字节流（MIDI 1.0）数据需要先转换为UMP格式后再填充此结构体。
 
+<!--Device-typedef struct OH_MIDIEvent {...} OH_MIDIEvent--><!--Device-typedef struct OH_MIDIEvent {...} OH_MIDIEvent-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
 
-**相关模块：** [OHMIDI](capi-others-ohmidi.md)
+**相关模块：** [OHMIDI](capi-audio-kit-ohmidi.md)
 
 **所在头文件：** [native_midi_base.h](capi-native-midi-base-h.md)
 

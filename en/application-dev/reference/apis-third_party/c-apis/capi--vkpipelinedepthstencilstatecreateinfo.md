@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineDepthStencilStateCreateInfo {...}--><!--Device-struct VkPipelineDepthStencilStateCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -43,6 +43,8 @@ InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double wid
 
 Creates an [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance.
 
+<!--Device-InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double width, double height)--><!--Device-InputMethod_CursorInfo *OH_CursorInfo_Create(double left, double top, double width, double height)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -72,6 +74,8 @@ void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)
 
 Destroys an [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) instance.
 
+<!--Device-void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)--><!--Device-void OH_CursorInfo_Destroy(InputMethod_CursorInfo *cursorInfo)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -91,6 +95,8 @@ InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, 
 **Description**
 
 Sets the cursor information.
+
+<!--Device-InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, double left, double top, double width, double height)--><!--Device-InputMethod_ErrorCode OH_CursorInfo_SetRect(InputMethod_CursorInfo *cursorInfo, double left, double top, double width, double height)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -121,6 +127,8 @@ InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, 
 **Description**
 
 Obtains the cursor information.
+
+<!--Device-InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, double *left, double *top, double *width, double *height)--><!--Device-InputMethod_ErrorCode OH_CursorInfo_GetRect(InputMethod_CursorInfo *cursorInfo, double *left, double *top, double *width, double *height)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

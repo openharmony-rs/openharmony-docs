@@ -8,11 +8,13 @@ typedef struct OH_Archive_Stream_Config {...} OH_Archive_Stream_Config
 
 流式压缩配置结构体。
 
+<!--Device-typedef struct OH_Archive_Stream_Config {...} OH_Archive_Stream_Config--><!--Device-typedef struct OH_Archive_Stream_Config {...} OH_Archive_Stream_Config-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
-**相关模块：** [Archive](capi-others-archive.md)
+**相关模块：** [Archive](capi-core-file-kit-archive.md)
 
 **所在头文件：** [oh_archive.h](capi-oh-archive-h.md)
 

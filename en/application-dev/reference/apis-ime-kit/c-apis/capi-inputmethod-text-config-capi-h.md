@@ -59,6 +59,8 @@ InputMethod_TextConfig *OH_TextConfig_Create(void)
 
 Creates an [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) instance.
 
+<!--Device-InputMethod_TextConfig *OH_TextConfig_Create(void)--><!--Device-InputMethod_TextConfig *OH_TextConfig_Create(void)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -79,6 +81,8 @@ void OH_TextConfig_Destroy(InputMethod_TextConfig *config)
 
 Destroys an [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) instance.
 
+<!--Device-void OH_TextConfig_Destroy(InputMethod_TextConfig *config)--><!--Device-void OH_TextConfig_Destroy(InputMethod_TextConfig *config)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -98,6 +102,8 @@ InputMethod_ErrorCode OH_TextConfig_SetInputType(InputMethod_TextConfig *config,
 **Description**
 
 Sets the text box type.
+
+<!--Device-InputMethod_ErrorCode OH_TextConfig_SetInputType(InputMethod_TextConfig *config, InputMethod_TextInputType inputType)--><!--Device-InputMethod_ErrorCode OH_TextConfig_SetInputType(InputMethod_TextConfig *config, InputMethod_TextInputType inputType)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -126,6 +132,8 @@ InputMethod_ErrorCode OH_TextConfig_SetEnterKeyType(InputMethod_TextConfig *conf
 
 Sets the Enter key type.
 
+<!--Device-InputMethod_ErrorCode OH_TextConfig_SetEnterKeyType(InputMethod_TextConfig *config, InputMethod_EnterKeyType enterKeyType)--><!--Device-InputMethod_ErrorCode OH_TextConfig_SetEnterKeyType(InputMethod_TextConfig *config, InputMethod_EnterKeyType enterKeyType)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -153,6 +161,8 @@ InputMethod_ErrorCode OH_TextConfig_SetPreviewTextSupport(InputMethod_TextConfig
 
 Sets the text preview feature.
 
+<!--Device-InputMethod_ErrorCode OH_TextConfig_SetPreviewTextSupport(InputMethod_TextConfig *config, bool supported)--><!--Device-InputMethod_ErrorCode OH_TextConfig_SetPreviewTextSupport(InputMethod_TextConfig *config, bool supported)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -179,6 +189,8 @@ InputMethod_ErrorCode OH_TextConfig_SetSelection(InputMethod_TextConfig *config,
 **Description**
 
 Sets the selected text area.
+
+<!--Device-InputMethod_ErrorCode OH_TextConfig_SetSelection(InputMethod_TextConfig *config, int32_t start, int32_t end)--><!--Device-InputMethod_ErrorCode OH_TextConfig_SetSelection(InputMethod_TextConfig *config, int32_t start, int32_t end)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -208,6 +220,8 @@ InputMethod_ErrorCode OH_TextConfig_SetWindowId(InputMethod_TextConfig *config, 
 
 Sets the window ID.
 
+<!--Device-InputMethod_ErrorCode OH_TextConfig_SetWindowId(InputMethod_TextConfig *config, int32_t windowId)--><!--Device-InputMethod_ErrorCode OH_TextConfig_SetWindowId(InputMethod_TextConfig *config, int32_t windowId)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -234,6 +248,8 @@ InputMethod_ErrorCode OH_TextConfig_SetPlaceholder(InputMethod_TextConfig *confi
 **Description**
 
 Sets the placeholder text.
+
+<!--Device-InputMethod_ErrorCode OH_TextConfig_SetPlaceholder(InputMethod_TextConfig *config, const char16_t *placeholder, size_t length)--><!--Device-InputMethod_ErrorCode OH_TextConfig_SetPlaceholder(InputMethod_TextConfig *config, const char16_t *placeholder, size_t length)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -263,6 +279,8 @@ InputMethod_ErrorCode OH_TextConfig_SetAbilityName(InputMethod_TextConfig *confi
 
 Sets the ability name.
 
+<!--Device-InputMethod_ErrorCode OH_TextConfig_SetAbilityName(InputMethod_TextConfig *config, const char16_t *abilityName, size_t length)--><!--Device-InputMethod_ErrorCode OH_TextConfig_SetAbilityName(InputMethod_TextConfig *config, const char16_t *abilityName, size_t length)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 20
@@ -291,6 +309,8 @@ InputMethod_ErrorCode OH_TextConfig_SetConsumeKeyEvents(InputMethod_TextConfig *
 
 Set whether the editor supports consuming key events into TextConfig.
 
+<!--Device-InputMethod_ErrorCode OH_TextConfig_SetConsumeKeyEvents(InputMethod_TextConfig *config, bool consumeKeyEvents)--><!--Device-InputMethod_ErrorCode OH_TextConfig_SetConsumeKeyEvents(InputMethod_TextConfig *config, bool consumeKeyEvents)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 26.0.0
@@ -317,6 +337,8 @@ InputMethod_ErrorCode OH_TextConfig_GetInputType(InputMethod_TextConfig *config,
 **Description**
 
 Obtains the text box type.
+
+<!--Device-InputMethod_ErrorCode OH_TextConfig_GetInputType(InputMethod_TextConfig *config, InputMethod_TextInputType *inputType)--><!--Device-InputMethod_ErrorCode OH_TextConfig_GetInputType(InputMethod_TextConfig *config, InputMethod_TextInputType *inputType)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -345,6 +367,8 @@ InputMethod_ErrorCode OH_TextConfig_GetEnterKeyType(InputMethod_TextConfig *conf
 
 Obtains the Enter key type.
 
+<!--Device-InputMethod_ErrorCode OH_TextConfig_GetEnterKeyType(InputMethod_TextConfig *config, InputMethod_EnterKeyType *enterKeyType)--><!--Device-InputMethod_ErrorCode OH_TextConfig_GetEnterKeyType(InputMethod_TextConfig *config, InputMethod_EnterKeyType *enterKeyType)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -371,6 +395,8 @@ InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfi
 **Description**
 
 Obtains whether the text preview feature is supported.
+
+<!--Device-InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfig *config, bool *supported)--><!--Device-InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfig *config, bool *supported)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -399,6 +425,8 @@ InputMethod_ErrorCode OH_TextConfig_GetCursorInfo(InputMethod_TextConfig *config
 
 Obtains the cursor information.
 
+<!--Device-InputMethod_ErrorCode OH_TextConfig_GetCursorInfo(InputMethod_TextConfig *config, InputMethod_CursorInfo **cursorInfo)--><!--Device-InputMethod_ErrorCode OH_TextConfig_GetCursorInfo(InputMethod_TextConfig *config, InputMethod_CursorInfo **cursorInfo)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -426,6 +454,8 @@ InputMethod_ErrorCode OH_TextConfig_GetTextAvoidInfo(InputMethod_TextConfig *con
 
 Obtains the avoidance information.
 
+<!--Device-InputMethod_ErrorCode OH_TextConfig_GetTextAvoidInfo(InputMethod_TextConfig *config, InputMethod_TextAvoidInfo **avoidInfo)--><!--Device-InputMethod_ErrorCode OH_TextConfig_GetTextAvoidInfo(InputMethod_TextConfig *config, InputMethod_TextAvoidInfo **avoidInfo)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -452,6 +482,8 @@ InputMethod_ErrorCode OH_TextConfig_GetSelection(InputMethod_TextConfig *config,
 **Description**
 
 Obtains the selected text area.
+
+<!--Device-InputMethod_ErrorCode OH_TextConfig_GetSelection(InputMethod_TextConfig *config, int32_t *start, int32_t *end)--><!--Device-InputMethod_ErrorCode OH_TextConfig_GetSelection(InputMethod_TextConfig *config, int32_t *start, int32_t *end)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -481,6 +513,8 @@ InputMethod_ErrorCode OH_TextConfig_GetWindowId(InputMethod_TextConfig *config, 
 
 Obtains the window ID.
 
+<!--Device-InputMethod_ErrorCode OH_TextConfig_GetWindowId(InputMethod_TextConfig *config, int32_t *windowId)--><!--Device-InputMethod_ErrorCode OH_TextConfig_GetWindowId(InputMethod_TextConfig *config, int32_t *windowId)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -507,6 +541,8 @@ InputMethod_ErrorCode OH_TextConfig_GetPlaceholder(InputMethod_TextConfig *confi
 **Description**
 
 Obtains the placeholder text.
+
+<!--Device-InputMethod_ErrorCode OH_TextConfig_GetPlaceholder(InputMethod_TextConfig *config, char16_t *placeholder, size_t *length)--><!--Device-InputMethod_ErrorCode OH_TextConfig_GetPlaceholder(InputMethod_TextConfig *config, char16_t *placeholder, size_t *length)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -536,6 +572,8 @@ InputMethod_ErrorCode OH_TextConfig_GetAbilityName(InputMethod_TextConfig *confi
 
 Obtains the ability name.
 
+<!--Device-InputMethod_ErrorCode OH_TextConfig_GetAbilityName(InputMethod_TextConfig *config, char16_t *abilityName, size_t *length)--><!--Device-InputMethod_ErrorCode OH_TextConfig_GetAbilityName(InputMethod_TextConfig *config, char16_t *abilityName, size_t *length)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 20
@@ -563,6 +601,8 @@ InputMethod_ErrorCode OH_TextConfig_GetConsumeKeyEvents(InputMethod_TextConfig *
 **Description**
 
 Get whether the editor supports consuming key events from TextConfig.
+
+<!--Device-InputMethod_ErrorCode OH_TextConfig_GetConsumeKeyEvents(InputMethod_TextConfig *config, bool *consumeKeyEvents)--><!--Device-InputMethod_ErrorCode OH_TextConfig_GetConsumeKeyEvents(InputMethod_TextConfig *config, bool *consumeKeyEvents)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

@@ -8,6 +8,8 @@ struct OH_AVCodecAsyncCallback {...}
 
 The struct defines all the asynchronous callback function pointers of an OH_AVCodec instance. To ensure the normal running of OH_AVCodec, you must register the instance of this struct with the OH_AVCodec instance and process the information reported by the callback function.
 
+<!--Device-struct OH_AVCodecAsyncCallback {...}--><!--Device-struct OH_AVCodecAsyncCallback {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 9
@@ -16,7 +18,7 @@ The struct defines all the asynchronous callback function pointers of an OH_AVCo
 
 **Replaced by**: OH_AVCodecCallback
 
-**Related module**: [CodecBase](capi-others-codecbase.md)
+**Related module**: [CodecBase](capi-avcodec-kit-codecbase.md)
 
 **Header file**: [native_avcodec_base.h](capi-native-avcodec-base-h.md)
 

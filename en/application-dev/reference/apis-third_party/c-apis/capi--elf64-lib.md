@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf64_Lib {...}--><!--Device-struct Elf64_Lib {...}-End-->
+
 ## Summary
 
 ### Member variables

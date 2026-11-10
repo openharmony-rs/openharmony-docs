@@ -8,11 +8,13 @@ typedef struct CommonEvent_PublishInfo CommonEvent_PublishInfo
 
 Defines the property object used for publishing a common event. This object encapsulates the property configuration required for publishing a common event. It is applicable to scenarios where an app needs to publish a custom common event and specify the publishing parameters.
 
+<!--Device-typedef struct CommonEvent_PublishInfo CommonEvent_PublishInfo--><!--Device-typedef struct CommonEvent_PublishInfo CommonEvent_PublishInfo-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
 
-**Related module**: [OH_CommonEvent](capi-others-oh-commonevent.md)
+**Related module**: [OH_CommonEvent](capi-basic-services-kit-oh-commonevent.md)
 
 **Header file**: [oh_commonevent.h](capi-oh-commonevent-h.md)
 

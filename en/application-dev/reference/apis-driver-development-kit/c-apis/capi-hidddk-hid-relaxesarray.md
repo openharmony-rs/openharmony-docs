@@ -8,11 +8,13 @@ struct Hid_RelAxesArray {...}
 
 Defines an array of relative coordinate attribute codes, which stores the relative coordinate attributes supported by an HID device.
 
+<!--Device-struct Hid_RelAxesArray {...}--><!--Device-struct Hid_RelAxesArray {...}-End-->
+
 **System capability**: SystemCapability.Driver.HID.Extension
 
 **Since**: 11
 
-**Related module**: [HidDdk](capi-others-hidddk.md)
+**Related module**: [HidDdk](capi-driver-development-kit-hidddk.md)
 
 **Header file**: [hid_ddk_types.h](capi-hid-ddk-types-h.md)
 

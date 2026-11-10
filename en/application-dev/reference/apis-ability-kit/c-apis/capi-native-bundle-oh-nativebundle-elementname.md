@@ -8,11 +8,13 @@ typedef struct OH_NativeBundle_ElementName {...} OH_NativeBundle_ElementName
 
 The struct describes the elementName information.
 
+<!--Device-typedef struct OH_NativeBundle_ElementName {...} OH_NativeBundle_ElementName--><!--Device-typedef struct OH_NativeBundle_ElementName {...} OH_NativeBundle_ElementName-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 13
 
-**Related module**: [Native_Bundle](capi-others-native-bundle.md)
+**Related module**: [Native_Bundle](capi-ability-kit-native-bundle.md)
 
 **Header file**: [native_interface_bundle.h](capi-native-interface-bundle-h.md)
 

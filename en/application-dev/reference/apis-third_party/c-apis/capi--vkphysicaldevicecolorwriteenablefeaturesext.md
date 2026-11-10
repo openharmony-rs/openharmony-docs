@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceColorWriteEnableFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceColorWriteEnableFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

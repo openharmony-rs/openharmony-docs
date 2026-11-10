@@ -32,6 +32,8 @@ enum AbilityBase_ErrorCode
 
 AbilityBase相关错误码枚举。
 
+<!--Device-AbilityBase_ErrorCode--><!--Device-AbilityBase_ErrorCode-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 15

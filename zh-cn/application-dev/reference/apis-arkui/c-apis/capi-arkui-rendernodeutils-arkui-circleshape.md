@@ -8,11 +8,13 @@ typedef struct ArkUI_CircleShape ArkUI_CircleShapeOption
 
 定义圆形形状配置项，用于在ArkUI_RenderNodeUtils中创建圆形形状，并配置圆心坐标和半径，作为RenderNode的遮罩或裁剪形状。
 
+<!--Device-typedef struct ArkUI_CircleShape ArkUI_CircleShapeOption--><!--Device-typedef struct ArkUI_CircleShape ArkUI_CircleShapeOption-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
-**相关模块：** [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
+**相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-arkui-rendernodeutils.md)
 
 **所在头文件：** [native_render.h](capi-native-render-h.md)
 

@@ -8,11 +8,13 @@ typedef struct JSVM_InitOptions {...} JSVM_InitOptions
 
 初始化选项，用于初始化JavaScript虚拟机。
 
+<!--Device-typedef struct JSVM_InitOptions {...} JSVM_InitOptions--><!--Device-typedef struct JSVM_InitOptions {...} JSVM_InitOptions-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
 
-**相关模块：** [JSVM](capi-others-jsvm.md)
+**相关模块：** [JSVM](capi-arkts-jsvm.md)
 
 **所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
 

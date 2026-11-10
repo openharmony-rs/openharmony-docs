@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkTimelineSemaphoreSubmitInfo {...}--><!--Device-struct VkTimelineSemaphoreSubmitInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

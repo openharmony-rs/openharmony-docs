@@ -8,11 +8,13 @@ struct HiCollie_SetTimerParam {...}
 
 Defines the input parameters of the **OH_HiCollie_SetTimer** function.
 
+<!--Device-struct HiCollie_SetTimerParam {...}--><!--Device-struct HiCollie_SetTimerParam {...}-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiCollie
 
 **Since**: 18
 
-**Related module**: [HiCollie](capi-others-hicollie.md)
+**Related module**: [HiCollie](capi-performance-analysis-kit-hicollie.md)
 
 **Header file**: [hicollie.h](capi-hicollie-h.md)
 

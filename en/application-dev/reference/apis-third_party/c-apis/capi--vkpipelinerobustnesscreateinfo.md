@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineRobustnessCreateInfo {...}--><!--Device-struct VkPipelineRobustnessCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

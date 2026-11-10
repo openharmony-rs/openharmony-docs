@@ -8,11 +8,13 @@ struct OH_Filter_ColorMatrix {...}
 
 Defines a 4x5 matrix for creating a filter effect, with elements of floating-point numbers.
 
+<!--Device-struct OH_Filter_ColorMatrix {...}--><!--Device-struct OH_Filter_ColorMatrix {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
-**Related module**: [effectKit](capi-others-effectkit.md)
+**Related module**: [effectKit](capi-arkgraphics2d-effectkit.md)
 
 **Header file**: [effect_types.h](capi-effect-types-h.md)
 

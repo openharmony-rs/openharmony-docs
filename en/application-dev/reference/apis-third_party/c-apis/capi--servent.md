@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct servent {...}--><!--Device-struct servent {...}-End-->
+
 ## Summary
 
 ### Member variables

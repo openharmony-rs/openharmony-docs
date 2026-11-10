@@ -8,11 +8,13 @@ typedef struct OH_NNModel OH_NNModel
 
 模型句柄。
 
+<!--Device-typedef struct OH_NNModel OH_NNModel--><!--Device-typedef struct OH_NNModel OH_NNModel-End-->
+
 **系统能力：** SystemCapability.AI.NeuralNetworkRuntime
 
 **起始版本：** 9
 
-**相关模块：** [NeuralNetworkRuntime](capi-others-neuralnetworkruntime.md)
+**相关模块：** [NeuralNetworkRuntime](capi-neural-network-runtime-kit-neuralnetworkruntime.md)
 
 **所在头文件：** [neural_network_runtime_type.h](capi-neural-network-runtime-type-h.md)
 

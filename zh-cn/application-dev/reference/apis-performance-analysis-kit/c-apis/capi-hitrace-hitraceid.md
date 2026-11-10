@@ -8,11 +8,13 @@ struct HiTraceId {...}
 
 用于标识调用链的结构体。
 
+<!--Device-struct HiTraceId {...}--><!--Device-struct HiTraceId {...}-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
 **起始版本：** 12
 
-**相关模块：** [HiTrace](capi-others-hitrace.md)
+**相关模块：** [HiTrace](capi-performance-analysis-kit-hitrace.md)
 
 **所在头文件：** [trace.h](capi-trace-h.md)
 

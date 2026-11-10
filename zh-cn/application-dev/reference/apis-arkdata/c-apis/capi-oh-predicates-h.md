@@ -49,6 +49,8 @@ enum OH_OrderType
 
 排序方式。
 
+<!--Device-OH_OrderType--><!--Device-OH_OrderType-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
@@ -70,6 +72,8 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 **描述：**
 
 设置OH_Predicates以匹配数据类型为字符串且值不类似于指定值的字段。 <br>此方法类似于SQL语句中的“Not like”。
+
+<!--Device-int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)--><!--Device-int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -99,6 +103,8 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 
 设置OH_Predicates以匹配指定字段（数据类型为字符串）且值包含通配符的字段。 <br>与like方法不同，此方法的输入参数区分大小写。
 
+<!--Device-int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)--><!--Device-int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
@@ -127,6 +133,8 @@ int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const ch
 
 设置OH_Predicates以不匹配指定字段（数据类型为字符串）且值包含通配符的字段。 <br>与Not Like方法不同，此方法的输入参数区分大小写。
 
+<!--Device-int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)--><!--Device-int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
@@ -154,6 +162,8 @@ int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, cons
 **描述：**
 
 设置OH_Predicates以指定条件来过滤分组结果，这些结果将出现在最终结果中。
+
+<!--Device-int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, const OH_Data_Values *values)--><!--Device-int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, const OH_Data_Values *values)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

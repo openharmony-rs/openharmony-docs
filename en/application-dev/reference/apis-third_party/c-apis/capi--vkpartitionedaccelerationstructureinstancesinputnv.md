@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPartitionedAccelerationStructureInstancesInputNV {...}--><!--Device-struct VkPartitionedAccelerationStructureInstancesInputNV {...}-End-->
+
 ## Summary
 
 ### Member variables

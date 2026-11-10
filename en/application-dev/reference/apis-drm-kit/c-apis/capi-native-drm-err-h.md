@@ -32,6 +32,8 @@ enum Drm_ErrCode
 
 Enumerates the DRM error codes.
 
+<!--Device-Drm_ErrCode--><!--Device-Drm_ErrCode-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11

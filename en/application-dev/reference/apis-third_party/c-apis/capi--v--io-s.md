@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct v__io_s {...}--><!--Device-struct v__io_s {...}-End-->
+
 ## Summary
 
 ### Member variables

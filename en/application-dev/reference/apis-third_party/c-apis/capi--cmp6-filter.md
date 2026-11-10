@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct cmp6_filter {...}--><!--Device-struct cmp6_filter {...}-End-->
+
 ## Summary
 
 ### Member variables

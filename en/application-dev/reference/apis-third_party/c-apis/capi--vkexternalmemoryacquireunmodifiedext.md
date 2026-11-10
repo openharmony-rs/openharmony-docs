@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkExternalMemoryAcquireUnmodifiedEXT {...}--><!--Device-struct VkExternalMemoryAcquireUnmodifiedEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

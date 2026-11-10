@@ -43,6 +43,8 @@ typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)
 
 Defines a function for filtering multimodal key events.
 
+<!--Device-typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)--><!--Device-typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 12
@@ -68,6 +70,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t wi
 **Description**
 
 Registers a function for filtering multimodal key events.
+
+<!--Device-WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId, OH_NativeWindowManager_KeyEventFilter keyEventFilter)--><!--Device-WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId, OH_NativeWindowManager_KeyEventFilter keyEventFilter)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -96,6 +100,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t 
 
 Unregisters a function for filtering multimodal key events.
 
+<!--Device-WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t windowId)--><!--Device-WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t windowId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 12
@@ -122,6 +128,8 @@ typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseE
 
 Defines a function for filtering multimodal mouse events.
 
+<!--Device-typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseEvent)--><!--Device-typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseEvent)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -147,6 +155,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t 
 **Description**
 
 Registers a function for filtering multimodal mouse events.
+
+<!--Device-WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t windowId, OH_NativeWindowManager_MouseEventFilter mouseEventFilter)--><!--Device-WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t windowId, OH_NativeWindowManager_MouseEventFilter mouseEventFilter)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -175,6 +185,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_
 
 Unregisters a function for filtering multimodal mouse events.
 
+<!--Device-WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_t windowId)--><!--Device-WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_t windowId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -201,6 +213,8 @@ typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchE
 
 Defines a function for filtering multimodal touch events.
 
+<!--Device-typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchEvent)--><!--Device-typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchEvent)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -226,6 +240,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t 
 **Description**
 
 Registers a function for filtering multimodal touch events.
+
+<!--Device-WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t windowId, OH_NativeWindowManager_TouchEventFilter touchEventFilter)--><!--Device-WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t windowId, OH_NativeWindowManager_TouchEventFilter touchEventFilter)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -254,6 +270,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_
 
 Unregisters a function for filtering multimodal touch events.
 
+<!--Device-WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_t windowId)--><!--Device-WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_t windowId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -279,6 +297,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetKeyEventFilter(int32_t windowI
 **Description**
 
 Gets the key event filter callback for the window.
+
+<!--Device-WindowManager_ErrorCode OH_NativeWindowManager_GetKeyEventFilter(int32_t windowId, OH_NativeWindowManager_KeyEventFilter* outKeyEventFilter)--><!--Device-WindowManager_ErrorCode OH_NativeWindowManager_GetKeyEventFilter(int32_t windowId, OH_NativeWindowManager_KeyEventFilter* outKeyEventFilter)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -307,6 +327,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetMouseEventFilter(int32_t windo
 
 Gets the mouse event filter callback for the window.
 
+<!--Device-WindowManager_ErrorCode OH_NativeWindowManager_GetMouseEventFilter(int32_t windowId, OH_NativeWindowManager_MouseEventFilter* outMouseEventFilter)--><!--Device-WindowManager_ErrorCode OH_NativeWindowManager_GetMouseEventFilter(int32_t windowId, OH_NativeWindowManager_MouseEventFilter* outMouseEventFilter)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 26.0.0
@@ -333,6 +355,8 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetTouchEventFilter(int32_t windo
 **Description**
 
 Gets the touch event filter callback for the window.
+
+<!--Device-WindowManager_ErrorCode OH_NativeWindowManager_GetTouchEventFilter(int32_t windowId, OH_NativeWindowManager_TouchEventFilter* outTouchEventFilter)--><!--Device-WindowManager_ErrorCode OH_NativeWindowManager_GetTouchEventFilter(int32_t windowId, OH_NativeWindowManager_TouchEventFilter* outTouchEventFilter)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 

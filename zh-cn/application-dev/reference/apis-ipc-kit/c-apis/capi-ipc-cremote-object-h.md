@@ -21,7 +21,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_IPC_MessageOption](capi-ohipcremoteobject-oh-ipc-messageoption.md) | OH_IPC_MessageOption | IPC消息选项定义，用于配置IPC通信过程中的请求参数。 |
-| [OHIPCDeathRecipient](capi-ohipcremoteobject-ohipcdeathrecipient.md) | - | IPC死亡通知对象，用于监听IPC远程对象的死亡事件。创建OHIPCDeathRecipient对象后，必须注册到 OHIPCRemoteObject对象才能生效；若未注册，将无法监听死亡事件。当远程进程意外终止或主动销毁时，注册了死亡监听的本 地进程将收到死亡通知回调，从而及时释放相关资源或进行错误处理。 |
+| [OHIPCDeathRecipient](capi-ohipcremoteobject-ohipcdeathrecipient.md) | OHIPCDeathRecipient | IPC死亡通知对象，用于监听IPC远程对象的死亡事件。创建OHIPCDeathRecipient对象后，必须注册到 OHIPCRemoteObject对象才能生效；若未注册，将无法监听死亡事件。当远程进程意外终止或主动销毁时，注册了死亡监听的本 地进程将收到死亡通知回调，从而及时释放相关资源或进行错误处理。 |
 
 ### 枚举
 
@@ -60,6 +60,8 @@ enum OH_IPC_RequestMode
 
 IPC请求模式定义。同步请求模式适用于需要等待远端响应的场景，异步请求模式适用于不需要等待远端响应或需要提高并发性能 的场景。
 
+<!--Device-OH_IPC_RequestMode--><!--Device-OH_IPC_RequestMode-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -84,6 +86,8 @@ Stub端用于处理远端数据请求的回调函数。当Proxy端通过[OH_IPCR
 - 服务端实现自定义IPC通信协议时，用于接收并处理来自客户端的跨进程请求。
 - 需要跨进程调用服务端能力时，服务端通过此回调函数处理具体业务逻辑。
 - 实现RPC服务端能力时，作为消息分发和处理的入口。
+
+<!--Device-typedef int (*OH_OnRemoteRequestCallback)(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData)--><!--Device-typedef int (*OH_OnRemoteRequestCallback)(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -117,6 +121,8 @@ typedef void (*OH_OnRemoteDestroyCallback)(void *userData)
 - 需要在对象销毁时通知其他模块进行状态同步。
 - 需要在对象销毁时清理用户私有数据。
 
+<!--Device-typedef void (*OH_OnRemoteDestroyCallback)(void *userData)--><!--Device-typedef void (*OH_OnRemoteDestroyCallback)(void *userData)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -144,6 +150,8 @@ OHIPCRemoteStub* OH_IPCRemoteStub_Create(const char *descriptor, OH_OnRemoteRequ
 - 确保userData的生命周期覆盖Stub对象的生命周期，避免悬空指针。
 - 调用OH_IPCRemoteStub_Create()创建对象后，必须在使用完毕后调用[OH_IPCRemoteStub_Destroy()](capi-ipc-cremote-object-h.md#oh_ipcremotestub_destroy())销毁对象释放资源。
 - 未销毁会导致内存泄漏。
+
+<!--Device-OHIPCRemoteStub* OH_IPCRemoteStub_Create(const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)--><!--Device-OHIPCRemoteStub* OH_IPCRemoteStub_Create(const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -180,6 +188,8 @@ void OH_IPCRemoteStub_Destroy(OHIPCRemoteStub *stub)
 - 销毁后会自动触发destroyCallback回调释放userData。
 - 销毁后不能再使用该Stub对象进行任何操作。
 
+<!--Device-void OH_IPCRemoteStub_Destroy(OHIPCRemoteStub *stub)--><!--Device-void OH_IPCRemoteStub_Destroy(OHIPCRemoteStub *stub)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -204,6 +214,8 @@ void OH_IPCRemoteProxy_Destroy(OHIPCRemoteProxy *proxy)
 - 必须先调用[OH_IPCRemoteProxy_RemoveDeathRecipient()](capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_removedeathrecipient())移除所有已添加的死亡监听。
 - 如果未移除监听就销毁Proxy对象，将导致死亡监听回调异常或内存泄漏。
 - 销毁后不能再调用该Proxy的任何方法。
+
+<!--Device-void OH_IPCRemoteProxy_Destroy(OHIPCRemoteProxy *proxy)--><!--Device-void OH_IPCRemoteProxy_Destroy(OHIPCRemoteProxy *proxy)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -233,6 +245,8 @@ IPC消息发送函数，用于Proxy端向远端Stub发送IPC消息请求，支�
 - 建议在调用前先使用[OH_IPCRemoteProxy_IsRemoteDead()](capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_isremotedead())检查远端是否存活。
 - 调用失败时，建议根据返回的错误码进行相应的重试或错误处理。
 - 频繁的IPC调用会影响性能，建议合理设计通信协议，减少调用次数。
+
+<!--Device-int OH_IPCRemoteProxy_SendRequest(const OHIPCRemoteProxy *proxy, uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, const OH_IPC_MessageOption *option)--><!--Device-int OH_IPCRemoteProxy_SendRequest(const OHIPCRemoteProxy *proxy, uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, const OH_IPC_MessageOption *option)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -265,6 +279,8 @@ int OH_IPCRemoteProxy_GetInterfaceDescriptor(OHIPCRemoteProxy *proxy, char **des
 从Stub端获取接口描述符。接口描述符是Stub对象的唯一标识，用于识别远端服务类型、进行服务版本兼容性检查或者验证远端 服务是否实现了特定接口。函数通过IPC调用从远端Stub获取描述符字符串，并使用用户提供的内存分配器存储结果。
 - 返回的描述符字符串内存由用户提供的allocator分配，用户使用完毕后必须主动释放，否则会造成内存泄漏。即使函数调用失败，也 需要检查descriptor是否非空并释放。
 
+<!--Device-int OH_IPCRemoteProxy_GetInterfaceDescriptor(OHIPCRemoteProxy *proxy, char **descriptor, int32_t *len, OH_IPC_MemAllocator allocator)--><!--Device-int OH_IPCRemoteProxy_GetInterfaceDescriptor(OHIPCRemoteProxy *proxy, char **descriptor, int32_t *len, OH_IPC_MemAllocator allocator)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -294,6 +310,8 @@ typedef void (*OH_OnDeathRecipientCallback)(void *userData)
 
 远端[OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md)对象死亡通知的回调函数类型。当远端Stub对象所在进程异常退出或被系统杀死时，系统会触发此 回调通知客户端。回调函数在Binder线程中执行，注意线程安全。回调中不建议进行复杂的IPC操作，避免潜在的死锁风险。常用于客户端 需要感知服务端异常退出或崩溃、需要在服务端对象死亡时进行资源清理或状态重置以及需要实现服务端存活监控和故障恢复机制。
 
+<!--Device-typedef void (*OH_OnDeathRecipientCallback)(void *userData)--><!--Device-typedef void (*OH_OnDeathRecipientCallback)(void *userData)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -313,6 +331,8 @@ typedef void (*OH_OnDeathRecipientDestroyCallback)(void *userData)
 **描述：**
 
 [OHIPCDeathRecipient](capi-ohipcremoteobject-ohipcdeathrecipient.md)对象销毁回调函数类型。常用于需要在死亡监听对象销毁时释放用户私有数据或需要清理死亡监听 相关的资源。
+
+<!--Device-typedef void (*OH_OnDeathRecipientDestroyCallback)(void *userData)--><!--Device-typedef void (*OH_OnDeathRecipientDestroyCallback)(void *userData)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -342,6 +362,8 @@ OHIPCDeathRecipient* OH_IPCDeathRecipient_Create(OH_OnDeathRecipientCallback dea
 - 创建后需要通过[OH_IPCRemoteProxy_AddDeathRecipient()](capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_adddeathrecipient())添加到Proxy对象。
 - 不再需要监听时，必须先调用[OH_IPCRemoteProxy_RemoveDeathRecipient()](capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_removedeathrecipient())移除监听。
 - 移除监听后，必须调用[OH_IPCDeathRecipient_Destroy()](capi-ipc-cremote-object-h.md#oh_ipcdeathrecipient_destroy())销毁对象。
+
+<!--Device-OHIPCDeathRecipient* OH_IPCDeathRecipient_Create(OH_OnDeathRecipientCallback deathRecipientCallback, OH_OnDeathRecipientDestroyCallback destroyCallback, void *userData)--><!--Device-OHIPCDeathRecipient* OH_IPCDeathRecipient_Create(OH_OnDeathRecipientCallback deathRecipientCallback, OH_OnDeathRecipientDestroyCallback destroyCallback, void *userData)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -375,6 +397,8 @@ void OH_IPCDeathRecipient_Destroy(OHIPCDeathRecipient *recipient)
 - 死亡监听对象不再需要时销毁。
 - 未移除监听直接销毁将导致回调异常或内存泄漏。
 
+<!--Device-void OH_IPCDeathRecipient_Destroy(OHIPCDeathRecipient *recipient)--><!--Device-void OH_IPCDeathRecipient_Destroy(OHIPCDeathRecipient *recipient)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -400,6 +424,8 @@ int OH_IPCRemoteProxy_AddDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRecip
 - 使用中，监听回调会被触发。
 - 在销毁Proxy或Recipient前，应先调用[OH_IPCRemoteProxy_RemoveDeathRecipient()](capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_removedeathrecipient())移除监听。
 - 调用[OH_IPCDeathRecipient_Destroy()](capi-ipc-cremote-object-h.md#oh_ipcdeathrecipient_destroy())销毁监听对象。
+
+<!--Device-int OH_IPCRemoteProxy_AddDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRecipient *recipient)--><!--Device-int OH_IPCRemoteProxy_AddDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRecipient *recipient)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -430,6 +456,8 @@ int OH_IPCRemoteProxy_RemoveDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRe
 - 如果不再需要该监听对象，应调用[OH_IPCDeathRecipient_Destroy()](capi-ipc-cremote-object-h.md#oh_ipcdeathrecipient_destroy())销毁。
 - 未销毁会导致内存泄漏。
 
+<!--Device-int OH_IPCRemoteProxy_RemoveDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRecipient *recipient)--><!--Device-int OH_IPCRemoteProxy_RemoveDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRecipient *recipient)-End-->
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
@@ -456,6 +484,8 @@ int OH_IPCRemoteProxy_IsRemoteDead(const OHIPCRemoteProxy *proxy)
 **描述：**
 
 判断[OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md)对象对应的远端[OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md)对象是否死亡。常用于在发送IPC请求前，主动检查服 务端是否存活、在重连机制中判断是否需要重新建立连接以及在业务逻辑中需要根据服务端存活状态采取不同处理策略。
+
+<!--Device-int OH_IPCRemoteProxy_IsRemoteDead(const OHIPCRemoteProxy *proxy)--><!--Device-int OH_IPCRemoteProxy_IsRemoteDead(const OHIPCRemoteProxy *proxy)-End-->
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 

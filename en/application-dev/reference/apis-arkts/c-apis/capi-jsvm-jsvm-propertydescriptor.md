@@ -8,11 +8,13 @@ typedef struct JSVM_PropertyDescriptor {...} JSVM_PropertyDescriptor
 
 Property descriptor.
 
+<!--Device-typedef struct JSVM_PropertyDescriptor {...} JSVM_PropertyDescriptor--><!--Device-typedef struct JSVM_PropertyDescriptor {...} JSVM_PropertyDescriptor-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
 
-**Related module**: [JSVM](capi-others-jsvm.md)
+**Related module**: [JSVM](capi-arkts-jsvm.md)
 
 **Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 

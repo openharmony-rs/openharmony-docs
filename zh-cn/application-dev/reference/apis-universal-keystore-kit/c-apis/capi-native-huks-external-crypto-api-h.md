@@ -44,6 +44,8 @@ struct OH_Huks_Result OH_Huks_RegisterProvider(const struct OH_Huks_Blob *provid
 
 注册外部密钥管理能力扩展提供者。
 
+<!--Device-struct OH_Huks_Result OH_Huks_RegisterProvider(const struct OH_Huks_Blob *providerName, const OH_Huks_ExternalCryptoParamSet *paramSet)--><!--Device-struct OH_Huks_Result OH_Huks_RegisterProvider(const struct OH_Huks_Blob *providerName, const OH_Huks_ExternalCryptoParamSet *paramSet)-End-->
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **需要权限：** ohos.permission.CRYPTO_EXTENSION_REGISTER
@@ -72,6 +74,8 @@ struct OH_Huks_Result OH_Huks_UnregisterProvider(const struct OH_Huks_Blob *prov
 **描述：**
 
 注销外部密钥管理能力扩展提供者。
+
+<!--Device-struct OH_Huks_Result OH_Huks_UnregisterProvider(const struct OH_Huks_Blob *providerName, const OH_Huks_ExternalCryptoParamSet *paramSet)--><!--Device-struct OH_Huks_Result OH_Huks_UnregisterProvider(const struct OH_Huks_Blob *providerName, const OH_Huks_ExternalCryptoParamSet *paramSet)-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -102,6 +106,8 @@ struct OH_Huks_Result OH_Huks_OpenResource(const struct OH_Huks_Blob *resourceId
 
 根据指定的资源ID打开资源。 <br>注意：打开的资源必须通过[OH_Huks_CloseResource](capi-native-huks-external-crypto-api-h.md#oh_huks_closeresource)关闭。
 
+<!--Device-struct OH_Huks_Result OH_Huks_OpenResource(const struct OH_Huks_Blob *resourceId, const OH_Huks_ExternalCryptoParamSet *paramSet)--><!--Device-struct OH_Huks_Result OH_Huks_OpenResource(const struct OH_Huks_Blob *resourceId, const OH_Huks_ExternalCryptoParamSet *paramSet)-End-->
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **起始版本：** 22
@@ -128,6 +134,8 @@ struct OH_Huks_Result OH_Huks_CloseResource(const struct OH_Huks_Blob *resourceI
 **描述：**
 
 根据指定的资源ID关闭资源。
+
+<!--Device-struct OH_Huks_Result OH_Huks_CloseResource(const struct OH_Huks_Blob *resourceId, const OH_Huks_ExternalCryptoParamSet *paramSet)--><!--Device-struct OH_Huks_Result OH_Huks_CloseResource(const struct OH_Huks_Blob *resourceId, const OH_Huks_ExternalCryptoParamSet *paramSet)-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -156,6 +164,8 @@ struct OH_Huks_Result OH_Huks_GetUkeyPinAuthState(const struct OH_Huks_Blob *res
 
 获取指定UKey资源ID的PIN授权状态。
 
+<!--Device-struct OH_Huks_Result OH_Huks_GetUkeyPinAuthState(const struct OH_Huks_Blob *resourceId, const OH_Huks_ExternalCryptoParamSet *paramSet, OH_Huks_ExternalPinAuthState *authState)--><!--Device-struct OH_Huks_Result OH_Huks_GetUkeyPinAuthState(const struct OH_Huks_Blob *resourceId, const OH_Huks_ExternalCryptoParamSet *paramSet, OH_Huks_ExternalPinAuthState *authState)-End-->
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **起始版本：** 22
@@ -183,6 +193,8 @@ struct OH_Huks_Result OH_Huks_GetProperty(const struct OH_Huks_Blob *resourceId,
 **描述：**
 
 获取外部密钥管理能力扩展提供者的属性信息。
+
+<!--Device-struct OH_Huks_Result OH_Huks_GetProperty(const struct OH_Huks_Blob *resourceId, const struct OH_Huks_Blob *propertyId, const OH_Huks_ExternalCryptoParamSet *paramSetIn, OH_Huks_ExternalCryptoParamSet **paramSetOut)--><!--Device-struct OH_Huks_Result OH_Huks_GetProperty(const struct OH_Huks_Blob *resourceId, const struct OH_Huks_Blob *propertyId, const OH_Huks_ExternalCryptoParamSet *paramSetIn, OH_Huks_ExternalCryptoParamSet **paramSetOut)-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -213,6 +225,8 @@ struct OH_Huks_Result OH_Huks_InitExternalCryptoParamSet(OH_Huks_ExternalCryptoP
 
 初始化一个参数集合。
 
+<!--Device-struct OH_Huks_Result OH_Huks_InitExternalCryptoParamSet(OH_Huks_ExternalCryptoParamSet **paramSet)--><!--Device-struct OH_Huks_Result OH_Huks_InitExternalCryptoParamSet(OH_Huks_ExternalCryptoParamSet **paramSet)-End-->
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **起始版本：** 22
@@ -238,6 +252,8 @@ struct OH_Huks_Result OH_Huks_AddExternalCryptoParams(OH_Huks_ExternalCryptoPara
 **描述：**
 
 向参数集合中添加参数。
+
+<!--Device-struct OH_Huks_Result OH_Huks_AddExternalCryptoParams(OH_Huks_ExternalCryptoParamSet *paramSet, const OH_Huks_ExternalCryptoParam *params, uint32_t paramCnt)--><!--Device-struct OH_Huks_Result OH_Huks_AddExternalCryptoParams(OH_Huks_ExternalCryptoParamSet *paramSet, const OH_Huks_ExternalCryptoParam *params, uint32_t paramCnt)-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
@@ -267,6 +283,8 @@ struct OH_Huks_Result OH_Huks_BuildExternalCryptoParamSet(OH_Huks_ExternalCrypto
 
 构建一个参数集合。
 
+<!--Device-struct OH_Huks_Result OH_Huks_BuildExternalCryptoParamSet(OH_Huks_ExternalCryptoParamSet **paramSet)--><!--Device-struct OH_Huks_Result OH_Huks_BuildExternalCryptoParamSet(OH_Huks_ExternalCryptoParamSet **paramSet)-End-->
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **起始版本：** 22
@@ -293,6 +311,8 @@ void OH_Huks_FreeExternalCryptoParamSet(OH_Huks_ExternalCryptoParamSet **paramSe
 
 销毁一个参数集合并释放相关内存。
 
+<!--Device-void OH_Huks_FreeExternalCryptoParamSet(OH_Huks_ExternalCryptoParamSet **paramSet)--><!--Device-void OH_Huks_FreeExternalCryptoParamSet(OH_Huks_ExternalCryptoParamSet **paramSet)-End-->
+
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 **起始版本：** 22
@@ -312,6 +332,8 @@ struct OH_Huks_Result OH_Huks_GetExternalCryptoParam(OH_Huks_ExternalCryptoParam
 **描述：**
 
 从参数集合中获取指定参数。
+
+<!--Device-struct OH_Huks_Result OH_Huks_GetExternalCryptoParam(OH_Huks_ExternalCryptoParamSet *paramSet, const uint32_t tag, OH_Huks_ExternalCryptoParam **param)--><!--Device-struct OH_Huks_Result OH_Huks_GetExternalCryptoParam(OH_Huks_ExternalCryptoParamSet *paramSet, const uint32_t tag, OH_Huks_ExternalCryptoParam **param)-End-->
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 

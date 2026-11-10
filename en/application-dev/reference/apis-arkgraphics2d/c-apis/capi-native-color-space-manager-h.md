@@ -51,6 +51,8 @@ enum ColorSpaceName
 
 Defines an enum for the color space names.
 
+<!--Device-ColorSpaceName--><!--Device-ColorSpaceName-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Since**: 13
@@ -104,6 +106,8 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpace
 
 Creates an **OH_NativeColorSpaceManager** instance based on a color space name. <br>A new **OH_NativeColorSpaceManager** instance is created each time this function is called.
 
+<!--Device-OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpaceName colorSpaceName)--><!--Device-OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpaceName colorSpaceName)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Since**: 13
@@ -129,6 +133,8 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGam
 **Description**
 
 Creates an **OH_NativeColorSpaceManager** instance based on the color primaries and gamma value. <br>A new **OH_NativeColorSpaceManager** instance is created each time this function is called.
+
+<!--Device-OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(ColorSpacePrimaries primaries, float gamma)--><!--Device-OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(ColorSpacePrimaries primaries, float gamma)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -157,6 +163,8 @@ void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorS
 
 Destroys an **OH_NativeColorSpaceManager** instance. When the OH_NativeColorSpaceManager instance is no longer needed, you need to call this function to destroy the instance to release the memory.
 
+<!--Device-void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)--><!--Device-void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Since**: 13
@@ -176,6 +184,8 @@ int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nat
 **Description**
 
 Obtains the color space name.
+
+<!--Device-int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nativeColorSpaceManager)--><!--Device-int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nativeColorSpaceManager)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -203,6 +213,8 @@ WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceMana
 
 Obtains the white points.
 
+<!--Device-WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceManager* nativeColorSpaceManager)--><!--Device-WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceManager* nativeColorSpaceManager)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Since**: 13
@@ -228,6 +240,8 @@ float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColo
 **Description**
 
 Obtains the gamma value.
+
+<!--Device-float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColorSpaceManager)--><!--Device-float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColorSpaceManager)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 

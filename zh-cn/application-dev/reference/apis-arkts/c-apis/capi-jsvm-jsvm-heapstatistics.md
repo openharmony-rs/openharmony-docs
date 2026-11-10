@@ -8,11 +8,13 @@ typedef struct JSVM_HeapStatistics {...} JSVM_HeapStatistics
 
 用于保存有关JavaScript堆内存使用情况的统计信息。
 
+<!--Device-typedef struct JSVM_HeapStatistics {...} JSVM_HeapStatistics--><!--Device-typedef struct JSVM_HeapStatistics {...} JSVM_HeapStatistics-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 12
 
-**相关模块：** [JSVM](capi-others-jsvm.md)
+**相关模块：** [JSVM](capi-arkts-jsvm.md)
 
 **所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
 

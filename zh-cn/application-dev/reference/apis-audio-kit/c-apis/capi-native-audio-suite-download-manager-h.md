@@ -2,7 +2,7 @@
 
 ## 概述
 
-Declare audio download manager related interfaces.
+声明音频下载管理器相关接口。
 
 **库：** libohaudiosuite.so
 

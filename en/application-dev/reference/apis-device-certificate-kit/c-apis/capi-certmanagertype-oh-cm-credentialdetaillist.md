@@ -8,11 +8,13 @@ typedef struct OH_CM_CredentialDetailList {...} OH_CM_CredentialDetailList
 
 Defines a struct for the certificate credential detail list.
 
+<!--Device-typedef struct OH_CM_CredentialDetailList {...} OH_CM_CredentialDetailList--><!--Device-typedef struct OH_CM_CredentialDetailList {...} OH_CM_CredentialDetailList-End-->
+
 **System capability**: SystemCapability.Security.CertificateManager
 
 **Since**: 22
 
-**Related module**: [CertManagerType](capi-others-certmanagertype.md)
+**Related module**: [CertManagerType](capi-device-certificate-kit-certmanagertype.md)
 
 **Header file**: [cm_native_type.h](capi-cm-native-type-h.md)
 

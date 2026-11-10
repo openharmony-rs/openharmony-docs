@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkQueryPoolPerformanceCreateInfoKHR {...}--><!--Device-struct VkQueryPoolPerformanceCreateInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct OH_HiDebug_ProfilerOptions OH_HiDebug_ProfilerOptions
 
 资源采集配置结构体前向声明。
 
+<!--Device-typedef struct OH_HiDebug_ProfilerOptions OH_HiDebug_ProfilerOptions--><!--Device-typedef struct OH_HiDebug_ProfilerOptions OH_HiDebug_ProfilerOptions-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 26.0.1
 
-**相关模块：** [HiDebug](capi-others-hidebug.md)
+**相关模块：** [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **所在头文件：** [hidebug.h](capi-hidebug-h.md)
 

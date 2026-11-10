@@ -8,11 +8,13 @@ struct CameraInput_Callbacks {...}
 
 The struct describes the callbacks used to listen for camera input errors.
 
+<!--Device-struct CameraInput_Callbacks {...}--><!--Device-struct CameraInput_Callbacks {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera_input.h](capi-camera-input-h.md)
 

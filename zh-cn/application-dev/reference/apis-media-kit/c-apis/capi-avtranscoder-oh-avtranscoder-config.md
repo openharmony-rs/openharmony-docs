@@ -8,11 +8,13 @@ typedef struct OH_AVTranscoder_Config OH_AVTranscoder_Config
 
 配置AVTranscoder参数的结构体。
 
+<!--Device-typedef struct OH_AVTranscoder_Config OH_AVTranscoder_Config--><!--Device-typedef struct OH_AVTranscoder_Config OH_AVTranscoder_Config-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
 **起始版本：** 20
 
-**相关模块：** [AVTranscoder](capi-others-avtranscoder.md)
+**相关模块：** [AVTranscoder](capi-media-kit-avtranscoder.md)
 
 **所在头文件：** [avtranscoder_base.h](capi-avtranscoder-base-h.md)
 

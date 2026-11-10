@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkGeneratedCommandsPipelineInfoEXT {...}--><!--Device-struct VkGeneratedCommandsPipelineInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

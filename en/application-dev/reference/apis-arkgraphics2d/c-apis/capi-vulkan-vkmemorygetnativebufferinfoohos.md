@@ -8,11 +8,13 @@ struct VkMemoryGetNativeBufferInfoOHOS {...}
 
 Defines a struct used to obtain an <b>OH_NativeBuffer</b> from the Vulkan memory.
 
+<!--Device-struct VkMemoryGetNativeBufferInfoOHOS {...}--><!--Device-struct VkMemoryGetNativeBufferInfoOHOS {...}-End-->
+
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
 
-**Related module**: [Vulkan](capi-others-vulkan.md)
+**Related module**: [Vulkan](capi-arkgraphics2d-vulkan.md)
 
 **Header file**: [vulkan_ohos.h](capi-vulkan-ohos-h.md)
 

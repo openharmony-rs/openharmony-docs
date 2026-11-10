@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSparseImageMemoryRequirements {...}--><!--Device-struct VkSparseImageMemoryRequirements {...}-End-->
+
 ## Summary
 
 ### Member variables

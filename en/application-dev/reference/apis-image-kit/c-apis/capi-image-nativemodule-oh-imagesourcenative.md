@@ -8,11 +8,13 @@ struct OH_ImageSourceNative
 
 The struct describes the image source, which is encapsulated at the native layer and is used to create image data. The struct cannot be directly operated. Instead, functions must be called to create and release the struct and operate the fields in the struct.
 
+<!--Device-struct OH_ImageSourceNative--><!--Device-struct OH_ImageSourceNative-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **Header file**: [image_source_native.h](capi-image-source-native-h.md)
 

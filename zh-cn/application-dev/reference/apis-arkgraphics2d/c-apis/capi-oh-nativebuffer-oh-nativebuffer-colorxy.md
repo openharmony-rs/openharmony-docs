@@ -8,11 +8,13 @@ struct OH_NativeBuffer_ColorXY {...}
 
 表示基色的X和Y坐标。
 
+<!--Device-struct OH_NativeBuffer_ColorXY {...}--><!--Device-struct OH_NativeBuffer_ColorXY {...}-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 12
 
-**相关模块：** [OH_NativeBuffer](capi-others-oh-nativebuffer.md)
+**相关模块：** [OH_NativeBuffer](capi-arkgraphics2d-oh-nativebuffer.md)
 
 **所在头文件：** [buffer_common.h](capi-buffer-common-h.md)
 

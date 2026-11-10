@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceTilePropertiesFeaturesQCOM {...}--><!--Device-struct VkPhysicalDeviceTilePropertiesFeaturesQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

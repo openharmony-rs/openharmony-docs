@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDecompressMemoryRegionNV {...}--><!--Device-struct VkDecompressMemoryRegionNV {...}-End-->
+
 ## Summary
 
 ### Member variables

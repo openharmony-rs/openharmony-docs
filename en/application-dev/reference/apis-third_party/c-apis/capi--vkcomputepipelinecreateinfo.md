@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkComputePipelineCreateInfo {...}--><!--Device-struct VkComputePipelineCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

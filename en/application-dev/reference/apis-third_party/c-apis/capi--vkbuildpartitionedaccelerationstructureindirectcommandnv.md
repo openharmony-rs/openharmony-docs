@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBuildPartitionedAccelerationStructureIndirectCommandNV {...}--><!--Device-struct VkBuildPartitionedAccelerationStructureIndirectCommandNV {...}-End-->
+
 ## Summary
 
 ### Member variables

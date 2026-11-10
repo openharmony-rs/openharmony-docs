@@ -8,11 +8,13 @@ typedef struct OH_MIDICallbacks {...} OH_MIDICallbacks
 
 客户端回调结构体，用于监听MIDI设备的热插拔事件和关键服务错误，包含设备热插拔和错误处理的回调函数指针， 适用于需要在应用中实时感知MIDI设备状态变化并处理异常的场景。
 
+<!--Device-typedef struct OH_MIDICallbacks {...} OH_MIDICallbacks--><!--Device-typedef struct OH_MIDICallbacks {...} OH_MIDICallbacks-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
 
-**相关模块：** [OHMIDI](capi-others-ohmidi.md)
+**相关模块：** [OHMIDI](capi-audio-kit-ohmidi.md)
 
 **所在头文件：** [native_midi_base.h](capi-native-midi-base-h.md)
 

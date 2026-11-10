@@ -8,11 +8,13 @@ typedef struct Print_PrinterCapability {...} Print_PrinterCapability
 
 Describes the printer capabilities, including the supported colors, duplex modes, paper sizes, media types, print quality, paper sources, copies, resolution, print orientations, and advanced capabilities. This API can be used to query or match printer capabilities, helping developers configure and adapt print tasks based on printer capabilities.
 
+<!--Device-typedef struct Print_PrinterCapability {...} Print_PrinterCapability--><!--Device-typedef struct Print_PrinterCapability {...} Print_PrinterCapability-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
-**Related module**: [Print](capi-others-print.md)
+**Related module**: [Print](capi-basic-services-kit-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 

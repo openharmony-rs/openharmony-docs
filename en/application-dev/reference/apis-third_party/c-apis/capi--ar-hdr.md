@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct ar_hdr {...}--><!--Device-struct ar_hdr {...}-End-->
+
 ## Summary
 
 ### Member variables

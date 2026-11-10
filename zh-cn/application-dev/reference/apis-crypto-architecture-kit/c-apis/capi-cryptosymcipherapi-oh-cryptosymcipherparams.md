@@ -8,11 +8,13 @@ typedef struct OH_CryptoSymCipherParams OH_CryptoSymCipherParams
 
 对称密钥加解密参数结构体，表示对称密钥加解密参数。
 
+<!--Device-typedef struct OH_CryptoSymCipherParams OH_CryptoSymCipherParams--><!--Device-typedef struct OH_CryptoSymCipherParams OH_CryptoSymCipherParams-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
-**相关模块：** [CryptoSymCipherApi](capi-others-cryptosymcipherapi.md)
+**相关模块：** [CryptoSymCipherApi](capi-crypto-architecture-kit-cryptosymcipherapi.md)
 
 **所在头文件：** [crypto_sym_cipher.h](capi-crypto-sym-cipher-h.md)
 

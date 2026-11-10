@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineCoverageModulationStateCreateInfoNV {...}--><!--Device-struct VkPipelineCoverageModulationStateCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

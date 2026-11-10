@@ -40,6 +40,8 @@ enum OH_AVCodec_DSDCodecType
 
 DSD codec type.
 
+<!--Device-OH_AVCodec_DSDCodecType--><!--Device-OH_AVCodec_DSDCodecType-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 26.1.0

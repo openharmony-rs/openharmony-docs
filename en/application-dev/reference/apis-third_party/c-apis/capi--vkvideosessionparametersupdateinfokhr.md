@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoSessionParametersUpdateInfoKHR {...}--><!--Device-struct VkVideoSessionParametersUpdateInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

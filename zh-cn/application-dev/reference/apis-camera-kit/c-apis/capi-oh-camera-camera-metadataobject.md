@@ -8,11 +8,13 @@ struct Camera_MetadataObject {...}
 
 元数据对象基础。
 
+<!--Device-struct Camera_MetadataObject {...}--><!--Device-struct Camera_MetadataObject {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-others-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **所在头文件：** [camera.h](capi-camera-h.md)
 

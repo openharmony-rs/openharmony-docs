@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineExecutableInfoKHR {...}--><!--Device-struct VkPipelineExecutableInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

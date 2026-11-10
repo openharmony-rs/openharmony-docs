@@ -34,6 +34,8 @@ enum PASTEBOARD_ErrCode
 
 Enumerates the error codes.
 
+<!--Device-PASTEBOARD_ErrCode--><!--Device-PASTEBOARD_ErrCode-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 13

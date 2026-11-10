@@ -283,6 +283,8 @@ enum OH_MediaType
 
 媒体类型。
 
+<!--Device-OH_MediaType--><!--Device-OH_MediaType-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 9
@@ -305,6 +307,8 @@ enum OH_AACProfile
 
 AAC档次。
 
+<!--Device-OH_AACProfile--><!--Device-OH_AACProfile-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 9
@@ -325,6 +329,8 @@ enum OH_AVCProfile
 
 AVC档次。
 
+<!--Device-OH_AVCProfile--><!--Device-OH_AVCProfile-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 9
@@ -344,6 +350,8 @@ enum OH_HEVCProfile
 **描述：**
 
 HEVC档次。
+
+<!--Device-OH_HEVCProfile--><!--Device-OH_HEVCProfile-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -366,6 +374,8 @@ enum OH_VVCProfile
 **描述：**
 
 VVC档次。
+
+<!--Device-OH_VVCProfile--><!--Device-OH_VVCProfile-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -399,6 +409,8 @@ enum OH_MPEG2Profile
 
 MPEG2档次。
 
+<!--Device-OH_MPEG2Profile--><!--Device-OH_MPEG2Profile-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 17
@@ -421,6 +433,8 @@ enum OH_MPEG4Profile
 **描述：**
 
 MPEG4档次。
+
+<!--Device-OH_MPEG4Profile--><!--Device-OH_MPEG4Profile-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -454,6 +468,8 @@ enum OH_H263Profile
 
 H.263档次。
 
+<!--Device-OH_H263Profile--><!--Device-OH_H263Profile-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 17
@@ -472,6 +488,8 @@ enum OH_VC1Profile
 **描述：**
 
 VC-1档次。
+
+<!--Device-OH_VC1Profile--><!--Device-OH_VC1Profile-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -493,6 +511,8 @@ enum OH_AV1Profile
 
 AV1档次。
 
+<!--Device-OH_AV1Profile--><!--Device-OH_AV1Profile-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 23
@@ -512,6 +532,8 @@ enum OH_VP9Profile
 **描述：**
 
 VP9档次。
+
+<!--Device-OH_VP9Profile--><!--Device-OH_VP9Profile-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -534,6 +556,8 @@ enum OH_WVC1Profile
 
 WVC1档次。
 
+<!--Device-OH_WVC1Profile--><!--Device-OH_WVC1Profile-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 23
@@ -551,6 +575,8 @@ enum OH_WMV3Profile
 **描述：**
 
 WMV3档次。<br> *
+
+<!--Device-OH_WMV3Profile--><!--Device-OH_WMV3Profile-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -570,6 +596,8 @@ enum OH_AVOutputFormat
 **描述：**
 
 封装器支持的输出文件格式。
+
+<!--Device-OH_AVOutputFormat--><!--Device-OH_AVOutputFormat-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -598,6 +626,8 @@ enum OH_AVSeekMode
 
 跳转模式。
 
+<!--Device-OH_AVSeekMode--><!--Device-OH_AVSeekMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
@@ -617,6 +647,8 @@ enum OH_ScalingMode
 **描述：**
 
 缩放模式，只在Surface模式下使用。
+
+<!--Device-OH_ScalingMode--><!--Device-OH_ScalingMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -640,6 +672,8 @@ enum OH_BitsPerSample
 **描述：**
 
 每个编码样本的音频位数。
+
+<!--Device-OH_BitsPerSample--><!--Device-OH_BitsPerSample-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -669,6 +703,8 @@ enum OH_ColorPrimary
 
 色域。编解码都支持。
 
+<!--Device-OH_ColorPrimary--><!--Device-OH_ColorPrimary-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
@@ -696,6 +732,8 @@ enum OH_TransferCharacteristic
 **描述：**
 
 转移特性。编解码都支持。
+
+<!--Device-OH_TransferCharacteristic--><!--Device-OH_TransferCharacteristic-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -731,6 +769,8 @@ enum OH_MatrixCoefficient
 
 矩阵系数。编解码都支持。
 
+<!--Device-OH_MatrixCoefficient--><!--Device-OH_MatrixCoefficient-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
@@ -761,6 +801,8 @@ enum OH_AVCLevel
 **描述：**
 
 AVC级别。
+
+<!--Device-OH_AVCLevel--><!--Device-OH_AVCLevel-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -799,6 +841,8 @@ enum OH_HEVCLevel
 
 HEVC级别。
 
+<!--Device-OH_HEVCLevel--><!--Device-OH_HEVCLevel-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 12
@@ -828,6 +872,8 @@ enum OH_VVCLevel
 **描述：**
 
 VVC级别。
+
+<!--Device-OH_VVCLevel--><!--Device-OH_VVCLevel-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -861,6 +907,8 @@ enum OH_MPEG2Level
 
 MPEG2级别。
 
+<!--Device-OH_MPEG2Level--><!--Device-OH_MPEG2Level-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 17
@@ -881,6 +929,8 @@ enum OH_MPEG4Level
 **描述：**
 
 MPEG4级别。
+
+<!--Device-OH_MPEG4Level--><!--Device-OH_MPEG4Level-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -909,6 +959,8 @@ enum OH_H263Level
 
 H.263级别。
 
+<!--Device-OH_H263Level--><!--Device-OH_H263Level-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 17
@@ -934,6 +986,8 @@ enum OH_VC1Level
 
 VC-1级别。
 
+<!--Device-OH_VC1Level--><!--Device-OH_VC1Level-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 22
@@ -958,6 +1012,8 @@ enum OH_AV1Level
 **描述：**
 
 AV1级别。
+
+<!--Device-OH_AV1Level--><!--Device-OH_AV1Level-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -1000,6 +1056,8 @@ enum OH_VP9Level
 
 VP9级别。
 
+<!--Device-OH_VP9Level--><!--Device-OH_VP9Level-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 23
@@ -1031,6 +1089,8 @@ enum OH_WVC1Level
 
 WVC1级别。
 
+<!--Device-OH_WVC1Level--><!--Device-OH_WVC1Level-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 23
@@ -1053,6 +1113,8 @@ enum OH_WMV3Level
 
 WMV3级别。
 
+<!--Device-OH_WMV3Level--><!--Device-OH_WMV3Level-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 22
@@ -1073,6 +1135,8 @@ enum OH_TemporalGopReferenceMode
 
 时域图片组参考模式。
 
+<!--Device-OH_TemporalGopReferenceMode--><!--Device-OH_TemporalGopReferenceMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 12
@@ -1092,6 +1156,8 @@ enum OH_BitrateMode
 **描述：**
 
 编码器的比特率模式。
+
+<!--Device-OH_BitrateMode--><!--Device-OH_BitrateMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -1115,6 +1181,8 @@ enum OH_FrameRetentionMode
 
 视频解码帧保留模式。
 
+<!--Device-OH_FrameRetentionMode--><!--Device-OH_FrameRetentionMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 26.0.0
@@ -1134,6 +1202,8 @@ enum OH_AudioEncoderPTSMode
 **描述：**
 
 音频编码器PTS模式。
+
+<!--Device-OH_AudioEncoderPTSMode--><!--Device-OH_AudioEncoderPTSMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -1162,6 +1232,8 @@ typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *us
 \| 视频编解码 \| AV_ERR_NO_MEMORY：系统资源不足。<br>AV_ERR_UNKNOWN：未知错误，请通过具体日志分析。<br>AV_ERR_SERVICE_DIED：服务状态已消亡。 \|
 \| 视频解码 \| AV_ERR_VIDEO_UNSUPPORTED_COLOR_SPACE_CONVERSION：当前输入不支持色彩空间转换功能。 \| <!--RP1--><!--RP1End-->
 
+<!--Device-typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *userData)--><!--Device-typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *userData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 9
@@ -1184,6 +1256,8 @@ typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format
 
 当视频解码输入码流分辨率或者视频编码输出码流的分辨率发生变化时，调用此函数指针报告新的流描述信息。<br> 从API 15开始，支持音频解码时，码流采样率、声道数或者音频采样格式发生变化时，将调用此函数指针报告新的流描述信息， 支持检测此变化的解码格式有：<!--RP3--><!--RP3End-->AAC，FLAC，MP3，VORBIS。<br> 需要注意的是，OH_AVFormat指针的生命周期只有在函数指针被调用时才有效，调用结束后禁止继续访问。
 
+<!--Device-typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format, void *userData)--><!--Device-typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format, void *userData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 9
@@ -1205,6 +1279,8 @@ typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_
 **描述：**
 
 当OH_AVCodec在运行过程中需要新的输入数据时，将调用此函数指针，并携带可用的缓冲区来填充新的输入数据。
+
+<!--Device-typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, void *userData)--><!--Device-typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, void *userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -1232,6 +1308,8 @@ typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_
 **描述：**
 
 当OH_AVCodec运行过程中生成新的输出数据时，将调用此函数指针，并携带包含新输出数据的缓冲区。 需要注意的是，OH_AVCodecBufferAttr指针的生命周期仅在调用函数指针时有效，这将禁止调用结束后继续访问。
+
+<!--Device-typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, OH_AVCodecBufferAttr *attr, void *userData)--><!--Device-typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, OH_AVCodecBufferAttr *attr, void *userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -1261,6 +1339,8 @@ typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, O
 
 当OH_AVCodec在运行过程中需要新的输入数据时，将调用此函数指针，并携带可用的缓冲区来填充新的输入数据。
 
+<!--Device-typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)--><!--Device-typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 11
@@ -1284,6 +1364,8 @@ typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, O
 
 当OH_AVCodec运行过程中生成新的输出数据时，将调用此函数指针，并携带包含新输出数据的缓冲区。
 
+<!--Device-typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)--><!--Device-typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 11
@@ -1306,6 +1388,8 @@ typedef int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int6
 **描述：**
 
 函数指针定义，用于提供获取用户自定义媒体数据的能力。
+
+<!--Device-typedef int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int64_t pos)--><!--Device-typedef int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int64_t pos)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -1334,6 +1418,8 @@ typedef int32_t (*OH_AVDataSourceReadAtExt)(OH_AVBuffer *data, int32_t length, i
 **描述：**
 
 函数指针定义，用于提供获取用户自定义媒体数据的能力。
+
+<!--Device-typedef int32_t (*OH_AVDataSourceReadAtExt)(OH_AVBuffer *data, int32_t length, int64_t pos, void *userData)--><!--Device-typedef int32_t (*OH_AVDataSourceReadAtExt)(OH_AVBuffer *data, int32_t length, int64_t pos, void *userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 

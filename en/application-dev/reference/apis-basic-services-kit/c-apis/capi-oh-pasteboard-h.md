@@ -90,6 +90,8 @@ enum Pasteboard_NotifyType
 
 Enumerates the data change types of the pasteboard.
 
+<!--Device-Pasteboard_NotifyType--><!--Device-Pasteboard_NotifyType-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 13
@@ -109,6 +111,8 @@ enum Pasteboard_FileConflictOptions
 
 Enumerates the options used to resolve file copy conflicts.
 
+<!--Device-Pasteboard_FileConflictOptions--><!--Device-Pasteboard_FileConflictOptions-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 15
@@ -127,6 +131,8 @@ enum Pasteboard_ProgressIndicator
 **Description**
 
 Enumerates the progress indicator options. You can use the default progress indicator as required.
+
+<!--Device-Pasteboard_ProgressIndicator--><!--Device-Pasteboard_ProgressIndicator-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -150,6 +156,8 @@ typedef void (*OH_Pasteboard_ProgressListener)(Pasteboard_ProgressInfo* progress
 
 Defines a callback to be invoked to obtain the progress information when the default progress indicator is not used.
 
+<!--Device-typedef void (*OH_Pasteboard_ProgressListener)(Pasteboard_ProgressInfo* progressInfo)--><!--Device-typedef void (*OH_Pasteboard_ProgressListener)(Pasteboard_ProgressInfo* progressInfo)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 15
@@ -169,6 +177,8 @@ typedef void (*Pasteboard_Notify)(void* context, Pasteboard_NotifyType type)
 **Description**
 
 Defines a callback to be invoked when the pasteboard content changes.
+
+<!--Device-typedef void (*Pasteboard_Notify)(void* context, Pasteboard_NotifyType type)--><!--Device-typedef void (*Pasteboard_Notify)(void* context, Pasteboard_NotifyType type)-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -191,6 +201,8 @@ typedef void (*Pasteboard_Finalize)(void* context)
 
 Defines a callback to be invoked to release the context when the pasteboard observer object is destroyed.
 
+<!--Device-typedef void (*Pasteboard_Finalize)(void* context)--><!--Device-typedef void (*Pasteboard_Finalize)(void* context)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 13
@@ -210,6 +222,8 @@ OH_PasteboardObserver* OH_PasteboardObserver_Create()
 **Description**
 
 Creates an [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md) instance and a pointer to it.
+
+<!--Device-OH_PasteboardObserver* OH_PasteboardObserver_Create()--><!--Device-OH_PasteboardObserver* OH_PasteboardObserver_Create()-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -235,6 +249,8 @@ int OH_PasteboardObserver_Destroy(OH_PasteboardObserver* observer)
 **Description**
 
 Destroys the [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md) instance.
+
+<!--Device-int OH_PasteboardObserver_Destroy(OH_PasteboardObserver* observer)--><!--Device-int OH_PasteboardObserver_Destroy(OH_PasteboardObserver* observer)-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -267,6 +283,8 @@ int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context
 **Description**
 
 Sets a callback for the pasteboard observer.
+
+<!--Device-int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context, const Pasteboard_Notify callback, const Pasteboard_Finalize finalize)--><!--Device-int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context, const Pasteboard_Notify callback, const Pasteboard_Finalize finalize)-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -304,6 +322,8 @@ OH_Pasteboard* OH_Pasteboard_Create()
 
 Creates an [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md) instance and a pointer to it.
 
+<!--Device-OH_Pasteboard* OH_Pasteboard_Create()--><!--Device-OH_Pasteboard* OH_Pasteboard_Create()-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 13
@@ -329,6 +349,8 @@ void OH_Pasteboard_Destroy(OH_Pasteboard* pasteboard)
 
 Destroys the [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md) instance.
 
+<!--Device-void OH_Pasteboard_Destroy(OH_Pasteboard* pasteboard)--><!--Device-void OH_Pasteboard_Destroy(OH_Pasteboard* pasteboard)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 13
@@ -353,6 +375,8 @@ int OH_Pasteboard_Subscribe(OH_Pasteboard* pasteboard, int type, const OH_Pasteb
 **Description**
 
 Subscribes to the pasteboard observer.
+
+<!--Device-int OH_Pasteboard_Subscribe(OH_Pasteboard* pasteboard, int type, const OH_PasteboardObserver* observer)--><!--Device-int OH_Pasteboard_Subscribe(OH_Pasteboard* pasteboard, int type, const OH_PasteboardObserver* observer)-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -390,6 +414,8 @@ int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_Past
 
 Unsubscribes from the pasteboard observer.
 
+<!--Device-int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_PasteboardObserver* observer)--><!--Device-int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_PasteboardObserver* observer)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 13
@@ -426,6 +452,8 @@ bool OH_Pasteboard_IsRemoteData(OH_Pasteboard* pasteboard)
 
 Checks whether the pasteboard data comes from remote devices.
 
+<!--Device-bool OH_Pasteboard_IsRemoteData(OH_Pasteboard* pasteboard)--><!--Device-bool OH_Pasteboard_IsRemoteData(OH_Pasteboard* pasteboard)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 13
@@ -456,6 +484,8 @@ int OH_Pasteboard_GetDataSource(OH_Pasteboard* pasteboard, char* source, unsigne
 **Description**
 
 Obtains the pasteboard data source.
+
+<!--Device-int OH_Pasteboard_GetDataSource(OH_Pasteboard* pasteboard, char* source, unsigned int len)--><!--Device-int OH_Pasteboard_GetDataSource(OH_Pasteboard* pasteboard, char* source, unsigned int len)-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -491,6 +521,8 @@ bool OH_Pasteboard_HasType(OH_Pasteboard* pasteboard, const char* type)
 
 Checks whether the pasteboard contains data of the specified type.
 
+<!--Device-bool OH_Pasteboard_HasType(OH_Pasteboard* pasteboard, const char* type)--><!--Device-bool OH_Pasteboard_HasType(OH_Pasteboard* pasteboard, const char* type)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 13
@@ -523,6 +555,8 @@ bool OH_Pasteboard_HasData(OH_Pasteboard* pasteboard)
 
 Checks whether the pasteboard contains data.
 
+<!--Device-bool OH_Pasteboard_HasData(OH_Pasteboard* pasteboard)--><!--Device-bool OH_Pasteboard_HasData(OH_Pasteboard* pasteboard)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 13
@@ -554,6 +588,8 @@ bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)
 
 Checks whether the pasteboard data is on a remote device. Transferring data across devices takes time. If the pasteboard data is on a remote device, do not check for custom data types or read the pasteboard data on the UI thread.
 
+<!--Device-bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)--><!--Device-bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 24
@@ -584,6 +620,8 @@ OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)
 **Description**
 
 Obtains data from the pasteboard.
+
+<!--Device-OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)--><!--Device-OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -621,6 +659,8 @@ int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)
 
 Writes the unified data object to the OH_Pasteboard instance.
 
+<!--Device-int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)--><!--Device-int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 13
@@ -655,6 +695,8 @@ int OH_Pasteboard_ClearData(OH_Pasteboard* pasteboard)
 
 Clears data in the Pasteboard.
 
+<!--Device-int OH_Pasteboard_ClearData(OH_Pasteboard* pasteboard)--><!--Device-int OH_Pasteboard_ClearData(OH_Pasteboard* pasteboard)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 13
@@ -686,6 +728,8 @@ char **OH_Pasteboard_GetMimeTypes(OH_Pasteboard *pasteboard, unsigned int *count
 **Description**
 
 Obtains the types of data in the pasteboard.
+
+<!--Device-char **OH_Pasteboard_GetMimeTypes(OH_Pasteboard *pasteboard, unsigned int *count)--><!--Device-char **OH_Pasteboard_GetMimeTypes(OH_Pasteboard *pasteboard, unsigned int *count)-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -719,6 +763,8 @@ uint32_t OH_Pasteboard_GetChangeCount(OH_Pasteboard *pasteboard)
 
 Obtains the number of pasteboard content changes.
 
+<!--Device-uint32_t OH_Pasteboard_GetChangeCount(OH_Pasteboard *pasteboard)--><!--Device-uint32_t OH_Pasteboard_GetChangeCount(OH_Pasteboard *pasteboard)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 18
@@ -745,6 +791,8 @@ Pasteboard_GetDataParams *OH_Pasteboard_GetDataParams_Create(void)
 
 Creates a [Pasteboard_GetDataParams](capi-pasteboard-pasteboard-getdataparams.md) instance and a pointer to it.
 
+<!--Device-Pasteboard_GetDataParams *OH_Pasteboard_GetDataParams_Create(void)--><!--Device-Pasteboard_GetDataParams *OH_Pasteboard_GetDataParams_Create(void)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 15
@@ -770,6 +818,8 @@ void OH_Pasteboard_GetDataParams_Destroy(Pasteboard_GetDataParams* params)
 
 Destroys the [Pasteboard_GetDataParams](capi-pasteboard-pasteboard-getdataparams.md) instance.
 
+<!--Device-void OH_Pasteboard_GetDataParams_Destroy(Pasteboard_GetDataParams* params)--><!--Device-void OH_Pasteboard_GetDataParams_Destroy(Pasteboard_GetDataParams* params)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 15
@@ -794,6 +844,8 @@ void OH_Pasteboard_GetDataParams_SetProgressIndicator(Pasteboard_GetDataParams* 
 **Description**
 
 Sets a progress indicator in [Pasteboard_GetDataParams](capi-pasteboard-pasteboard-getdataparams.md). You can use the default progress indicator as required.
+
+<!--Device-void OH_Pasteboard_GetDataParams_SetProgressIndicator(Pasteboard_GetDataParams* params, Pasteboard_ProgressIndicator progressIndicator)--><!--Device-void OH_Pasteboard_GetDataParams_SetProgressIndicator(Pasteboard_GetDataParams* params, Pasteboard_ProgressIndicator progressIndicator)-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -822,6 +874,8 @@ void OH_Pasteboard_GetDataParams_SetDestUri(Pasteboard_GetDataParams* params, co
 
 Sets the destination URI for copying files. If file processing is not supported, this parameter is not required. If the application involves complex file processing policies or needs to distinguish file multipathing storage, you are advised not to set this parameter but let the application copies files by itself.
 
+<!--Device-void OH_Pasteboard_GetDataParams_SetDestUri(Pasteboard_GetDataParams* params, const char* destUri, uint32_t destUriLen)--><!--Device-void OH_Pasteboard_GetDataParams_SetDestUri(Pasteboard_GetDataParams* params, const char* destUri, uint32_t destUriLen)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 15
@@ -848,6 +902,8 @@ void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams
 **Description**
 
 Sets the options used to resolve file copy conflicts in a [Pasteboard_GetDataParams](capi-pasteboard-pasteboard-getdataparams.md) instance.
+
+<!--Device-void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams* params, Pasteboard_FileConflictOptions option)--><!--Device-void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams* params, Pasteboard_FileConflictOptions option)-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -876,6 +932,8 @@ void OH_Pasteboard_GetDataParams_SetProgressListener(Pasteboard_GetDataParams* p
 
 Sets a progress listener in a [Pasteboard_GetDataParams](capi-pasteboard-pasteboard-getdataparams.md) instance.
 
+<!--Device-void OH_Pasteboard_GetDataParams_SetProgressListener(Pasteboard_GetDataParams* params, const OH_Pasteboard_ProgressListener listener)--><!--Device-void OH_Pasteboard_GetDataParams_SetProgressListener(Pasteboard_GetDataParams* params, const OH_Pasteboard_ProgressListener listener)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 15
@@ -902,6 +960,8 @@ int OH_Pasteboard_ProgressInfo_GetProgress(Pasteboard_ProgressInfo* progressInfo
 **Description**
 
 Obtains the paste progress in a [Pasteboard_ProgressInfo](capi-pasteboard-pasteboard-progressinfo.md) instance.
+
+<!--Device-int OH_Pasteboard_ProgressInfo_GetProgress(Pasteboard_ProgressInfo* progressInfo)--><!--Device-int OH_Pasteboard_ProgressInfo_GetProgress(Pasteboard_ProgressInfo* progressInfo)-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -934,6 +994,8 @@ void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)
 
 Cancels the ongoing paste operation when the pasteboard data is obtained.
 
+<!--Device-void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)--><!--Device-void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)-End-->
+
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 15
@@ -958,6 +1020,8 @@ OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteb
 **Description**
 
 Obtains the pasteboard data and paste progress. Folders cannot be copied.
+
+<!--Device-OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params, int* status)--><!--Device-OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params, int* status)-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -995,6 +1059,8 @@ void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callba
 **Description**
 
 Syncs all delayed data from the application to the pasteboard. Use this API together with the [OH_UdmfRecordProvider_SetData](../../apis-arkdata/c-apis/capi-udmf-h.md#oh_udmfrecordprovider_setdata)API.When the application uses the delayed copy feature, only the data types supported by the application are written to the pasteboard. Before the application exits, it should call the [OH_Pasteboard_SetData](capi-oh-pasteboard-h.md#oh_pasteboard_setdata) API to submit all copied data or call the **OH_Pasteboard_SyncDelayedDataAsync** API to notify the pasteboard to obtain all data. The application can exit only after the data sync is complete. Otherwise, other applications may fail to obtain the data.
+
+<!--Device-void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callback)(int errorCode))--><!--Device-void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callback)(int errorCode))-End-->
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 

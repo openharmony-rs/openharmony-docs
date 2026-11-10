@@ -8,11 +8,13 @@ struct OH_HiDebug_ProfilingResult {...}
 
 封装单次资源采集的结果。
 
+<!--Device-struct OH_HiDebug_ProfilingResult {...}--><!--Device-struct OH_HiDebug_ProfilingResult {...}-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 24
 
-**相关模块：** [HiDebug](capi-others-hidebug.md)
+**相关模块：** [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **所在头文件：** [hidebug_type.h](capi-hidebug-type-h.md)
 

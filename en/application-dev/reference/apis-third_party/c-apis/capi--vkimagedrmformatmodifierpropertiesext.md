@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageDrmFormatModifierPropertiesEXT {...}--><!--Device-struct VkImageDrmFormatModifierPropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

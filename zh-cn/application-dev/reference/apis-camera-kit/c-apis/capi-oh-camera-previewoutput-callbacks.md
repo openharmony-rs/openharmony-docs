@@ -8,11 +8,13 @@ struct PreviewOutput_Callbacks {...}
 
 用于预览输出的回调。
 
+<!--Device-struct PreviewOutput_Callbacks {...}--><!--Device-struct PreviewOutput_Callbacks {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-others-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **所在头文件：** [preview_output.h](capi-preview-output-h.md)
 

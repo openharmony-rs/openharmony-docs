@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImportMemoryFdInfoKHR {...}--><!--Device-struct VkImportMemoryFdInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

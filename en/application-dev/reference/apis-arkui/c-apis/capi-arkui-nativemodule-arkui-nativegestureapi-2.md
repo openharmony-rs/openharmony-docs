@@ -8,11 +8,13 @@ typedef struct ArkUI_NativeGestureAPI_2 {...} ArkUI_NativeGestureAPI_2
 
 Defines a collection of gesture APIs. Based on [ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md), the capability of setting a gesture interruption event callback function is extended, which is used to continue or interrupt a gesture based on the callback result during gesture recognition. You can access basic gesture APIs through **gestureApi1** and use [setGestureInterrupterToNode](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setgestureinterruptertonode) to handle gesture interruption.
 
+<!--Device-typedef struct ArkUI_NativeGestureAPI_2 {...} ArkUI_NativeGestureAPI_2--><!--Device-typedef struct ArkUI_NativeGestureAPI_2 {...} ArkUI_NativeGestureAPI_2-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_gesture.h](capi-native-gesture-h.md)
 
@@ -42,6 +44,8 @@ int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData,Ark
 **Description**
 
 Sets the callback function for gesture interruption events. It is applicable to scenarios where you need to decide, based on the current interaction state during gesture recognition, whether the gesture continues to respond or is interrupted.
+
+<!--Device-int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureInterruptResult (*interrupter)(ArkUI_GestureInterruptInfo* info))--><!--Device-int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureInterruptResult (*interrupter)(ArkUI_GestureInterruptInfo* info))-End-->
 
 **Parameters**:
 

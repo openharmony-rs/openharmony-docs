@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoH264PictureParameterSet {...}--><!--Device-struct StdVideoH264PictureParameterSet {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -53,6 +53,8 @@ enum ImageDetailEnhancer_QualityLevel
 
 The quality level is used for detail enhancement.<br> It is the value of the key parameter [IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-image-processing-types-h.md#变量).
 
+<!--Device-ImageDetailEnhancer_QualityLevel--><!--Device-ImageDetailEnhancer_QualityLevel-End-->
+
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
 **Since**: 13
@@ -79,6 +81,8 @@ enum ImageProcessing_ErrorCode
 **Description**
 
 Image processing error code.
+
+<!--Device-ImageProcessing_ErrorCode--><!--Device-ImageProcessing_ErrorCode-End-->
 
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 

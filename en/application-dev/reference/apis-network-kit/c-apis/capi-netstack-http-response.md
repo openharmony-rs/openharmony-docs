@@ -8,11 +8,13 @@ struct Http_Response {...}
 
 Defines the structure of HTTP responses.
 
+<!--Device-struct Http_Response {...}--><!--Device-struct Http_Response {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
-**Related module**: [netstack](capi-others-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 **Header file**: [net_http_type.h](capi-net-http-type-h.md)
 
@@ -46,6 +48,8 @@ void (*destroyResponse)(struct Http_Response **response)
 **Description**
 
 Callback function for destroying an HTTP response.
+
+<!--Device-void (*destroyResponse)(struct Http_Response **response)--><!--Device-void (*destroyResponse)(struct Http_Response **response)-End-->
 
 **Since**: 20
 

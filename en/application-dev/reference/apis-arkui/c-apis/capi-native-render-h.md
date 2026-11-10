@@ -38,6 +38,12 @@ Declares the APIs of **NativeRender**. For details, see Building a Rendering Nod
 | [ArkUI_RenderNodeClipOption](capi-arkui-rendernodeutils-arkui-rendernodeclipoption.md) | ArkUI_RenderNodeClipOption | Defines a clipping option for a render node. It is used to describe the clipping area of a render node through a rectangle, rounded rectangle, circle, ellipse, or custom path, and serves as the input parameter of [OH_ArkUI_RenderNodeUtils_SetClip](capi-native-render-h.md#oh_arkui_rendernodeutils_setclip) to apply clipping to the render node. |
 | [ArkUI_RenderBlurStyleOption](capi-arkui-rendernodeutils-arkui-renderblurstyleoption.md) | ArkUI_RenderBlurStyleOption | Defines a blur style. |
 
+### Enum
+
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) | OH_ArkUI_RenderNodeAttachPolicy | Defines the attach policy for a child render node, which determines whether the child and it complete render node subtree inherit the parent render node's instance. |
+
 ### Function
 
 | Name | Description |
@@ -59,6 +65,8 @@ Declares the APIs of **NativeRender**. For details, see Building a Rendering Nod
 | [int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_disposenode) | Destroys the render node. |
 | [int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_addchild) | Adds a child node to the target parent render node. |
 | [int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling)](#oh_arkui_rendernodeutils_insertchildafter) | Adds a child node after the target child node of the parent node. |
+| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, OH_ArkUI_RenderNodeAttachPolicy policy)](#oh_arkui_rendernodeutils_addchildwithpolicy) | Adds a child render node to the target parent render node, when the policy requires, migrates the child and its render node subtree to the parent instance. |
+| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling, OH_ArkUI_RenderNodeAttachPolicy policy)](#oh_arkui_rendernodeutils_insertchildafterwithpolicy) | Insert a child node after the target child node of the parent node, when the policy requires, migrates the child and its render node subtree to the parent instance. |
 | [int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_removechild) | Removes a child node from the specified render node. |
 | [int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_clearchildren) | Clears all child nodes of the specified render node. |
 | [int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t index, ArkUI_RenderNodeHandle* child)](#oh_arkui_rendernodeutils_getchild) | Obtains the child node at the specified index. |
@@ -195,6 +203,30 @@ Declares the APIs of **NativeRender**. For details, see Building a Rendering Nod
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)](#oh_arkui_rendernodeutils_getrendernodechildrencount) | Obtains the number of all child nodes of a parent custom node in the mixed mount order.<br> The count includes both common nodes and render nodes. The parent node must be of the **ARKUI_NODE_CUSTOM** type and the **OH_ARKUI_NODE_MOUNT_POLICY_MIXED** policy must have been set using [OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy). Otherwise, ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)](#oh_arkui_rendernodeutils_getrendernodeat) | Obtains the render node handle corresponding to the child node at a specified position of a parent custom node in the mixed mount order.<br> The parent node must be of the **ARKUI_NODE_CUSTOM** type and the **OH_ARKUI_NODE_MOUNT_POLICY_MIXED** policy must have been set using [OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy). Otherwise, ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
 
+## Enum type description
+
+### OH_ArkUI_RenderNodeAttachPolicy
+
+```c
+enum OH_ArkUI_RenderNodeAttachPolicy
+```
+
+**Description**
+
+Defines the attach policy for a child render node, which determines whether the child and it complete render node subtree inherit the parent render node's instance.
+
+<!--Device-OH_ArkUI_RenderNodeAttachPolicy--><!--Device-OH_ArkUI_RenderNodeAttachPolicy-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+| Enum item | Description |
+| -- | -- |
+| OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_NOT_INHERIT_PARENT_INSTANCE = 0 | The child and its render node subtree not inherit the parent render node's instance.<br>**Since**: 26.1.0 |
+| OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE = 1 | The child and its render node subtree inherit the parent render node's instance.<br>**Since**: 26.1.0 |
+
+
 ## Function description
 
 ### OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()
@@ -206,6 +238,8 @@ ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()
 **Description**
 
 Creates a blur style object.<br> After using the object, call [OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposeblurstyleoption) to destroy it and release resources.
+
+<!--Device-ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()--><!--Device-ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -227,6 +261,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption
 
 Dispose of a blur style object.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -246,6 +282,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleO
 **Description**
 
 Sets a blur radius for a target blur style.<br> The blur radius is used to control the blur density. A larger radius indicates a higher blur density. If the radius is set to 0, no blur processing is performed. For background blur, a radius of 80 px can achieve a good frosted glass effect. Avoid using a blur radius greater than 200 px, as this may cause performance degradation.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleOption* option, float radius)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleOption* option, float radius)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -274,6 +312,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle 
 
 Sets a background blur style for a render node. This API is applicable to scenarios where the background content of the node needs to be blurred.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -301,6 +341,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandl
 
 Resets a background blur style for a render node.<br> After the reset, there is no background blur style.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandle node)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -326,6 +368,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle 
 **Description**
 
 Sets a foreground blur style for a render node. This API is applicable to scenarios where the foreground image layer of the node needs to be blurred.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -354,6 +398,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandl
 
 Resets a foreground blur style for a render node.<br> After the reset, there is no foreground blur style.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandle node)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -379,6 +425,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle nod
 **Description**
 
 Sets a content blur style for a render node. This API is applicable to scenarios where the content drawn by the node needs to be blurred.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -407,6 +455,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle n
 
 Resets a content blur style for a render node.<br> After the reset, there is no content blur style.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle node)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -432,6 +482,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 **Description**
 
 Adds a child render node to the parent custom node.<br> The parent node supports only the nodes of the **ARKUI_NODE_CUSTOM** type in [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype). By default, when the [OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](capi-native-type-h.md#oh_arkui_nodemountpolicy) mount policy is used, a custom node can mount only one child render node and cannot mount child nodes of other types at the same time. Since API version 26.0.0, you can set the mount policy to **OH_ARKUI_NODE_MOUNT_POLICY_MIXED** using [OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy) to support mixed mounting of multiple child nodes.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -460,6 +512,8 @@ int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_R
 
 Removes the specified child render node from the parent node.<br> The parent node supports only the nodes of the **ARKUI_NODE_CUSTOM** type in [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype).
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -487,6 +541,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)
 
 Clears child render nodes in the parent node.<br> The parent node supports only the nodes of the **ARKUI_NODE_CUSTOM** type in [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype).
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -512,6 +568,8 @@ int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)
 **Description**
 
 Marks the target node, triggering its lifecycle and child nodes to re-render.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -539,6 +597,8 @@ ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()
 
 Creates a render node.<br> After using the render node, call [OH_ArkUI_RenderNodeUtils_DisposeNode](capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode) to destroy it and release the resources.
 
+<!--Device-ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()--><!--Device-ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -558,6 +618,8 @@ int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)
 **Description**
 
 Destroys the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -584,6 +646,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_Ren
 **Description**
 
 Adds a child node to the target parent render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -612,6 +676,8 @@ int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, A
 
 Adds a child node after the target child node of the parent node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -630,6 +696,67 @@ Adds a child node after the target child node of the parent node.
 | -- | -- |
 | int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed. <br>Returns ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE if the target node originates from a **FrameNode**. This specification is supported since API version 22. <br>Returns ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE if the current render node originates from a **FrameNode** that has been either detached as a child node or destroyed. This specification is supported since API version 22. |
 
+### OH_ArkUI_RenderNodeUtils_AddChildWithPolicy()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, OH_ArkUI_RenderNodeAttachPolicy policy)
+```
+
+**Description**
+
+Adds a child render node to the target parent render node, when the policy requires, migrates the child and its render node subtree to the parent instance.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, OH_ArkUI_RenderNodeAttachPolicy policy)--><!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, OH_ArkUI_RenderNodeAttachPolicy policy)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | [in] Target parent render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) child | [in] Child render node to be added. |
+| [OH_ArkUI_RenderNodeAttachPolicy](capi-native-render-h.md#oh_arkui_rendernodeattachpolicy) policy | [in] Attach policy that determines whether the child inherits the parent render node's instance. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Error code. <ul><li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> <li>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed.</li> <li>Returns ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE if the target node originates from a FrameNode.</li> <li>Returns ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE if the current render node originates from a FrameNode that has been either detached as a child node or destroyed.</li></ul> |
+
+### OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling, OH_ArkUI_RenderNodeAttachPolicy policy)
+```
+
+**Description**
+
+Insert a child node after the target child node of the parent node, when the policy requires, migrates the child and its render node subtree to the parent instance.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling, OH_ArkUI_RenderNodeAttachPolicy policy)--><!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling, OH_ArkUI_RenderNodeAttachPolicy policy)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) node | [in] Target parent render node. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) child | [in] Child render node to be inserted. |
+| [ArkUI_RenderNodeHandle](capi-arkui-rendernodeutils-arkui-rendernode8h.md) sibling | [in] Target child node, which is used to determine the reference sibling render node of the insertion position. If the node is not in the current child node list of **node**, the node is appended to the end. |
+| [OH_ArkUI_RenderNodeAttachPolicy](capi-native-render-h.md#oh_arkui_rendernodeattachpolicy) policy | [in] Attach policy that determines whether the child inherits the parent render node's instance. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Error code. <ul><li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> <li>Returns ARKUI_ERROR_CODE_CAPI_INIT_ERROR if C API initialization failed.</li> <li>Returns ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE if the target node or child originates from a FrameNode.</li> <li>Returns ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE if the current render node originates from a FrameNode that has been either detached as a child node or destroyed.</li></ul> |
+
 ### OH_ArkUI_RenderNodeUtils_RemoveChild()
 
 ```c
@@ -639,6 +766,8 @@ int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_
 **Description**
 
 Removes a child node from the specified render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -667,6 +796,8 @@ int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)
 
 Clears all child nodes of the specified render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -692,6 +823,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t i
 **Description**
 
 Obtains the child node at the specified index.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t index, ArkUI_RenderNodeHandle* child)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t index, ArkUI_RenderNodeHandle* child)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -721,6 +854,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFirstChild(ArkUI_RenderNodeHandle node, ArkU
 
 Obtains the first child node of the specified render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetFirstChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* child)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetFirstChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* child)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -747,6 +882,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetNextSibling(ArkUI_RenderNodeHandle node, Ark
 **Description**
 
 Obtains the next sibling node of the specified node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetNextSibling(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* sibling)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetNextSibling(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* sibling)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -775,6 +912,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPreviousSibling(ArkUI_RenderNodeHandle node,
 
 Obtains the previous sibling node of the specified node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetPreviousSibling(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* sibling)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetPreviousSibling(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle* sibling)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -801,6 +940,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChildren(ArkUI_RenderNodeHandle node, ArkUI_
 **Description**
 
 Obtains all child render nodes of the parent render node.<br> The caller is responsible for releasing the returned child node array.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetChildren(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle** children, int32_t* count)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetChildren(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle** children, int32_t* count)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -830,6 +971,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetChildrenCount(ArkUI_RenderNodeHandle node, i
 
 Obtains the number of child render nodes of the specified render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetChildrenCount(ArkUI_RenderNodeHandle node, int32_t* count)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetChildrenCount(ArkUI_RenderNodeHandle node, int32_t* count)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -856,6 +999,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundColor(ArkUI_RenderNodeHandle node,
 **Description**
 
 Sets the background color for the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundColor(ArkUI_RenderNodeHandle node, uint32_t color)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundColor(ArkUI_RenderNodeHandle node, uint32_t color)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -884,6 +1029,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBackgroundColor(ArkUI_RenderNodeHandle node,
 
 Obtains the background color of the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBackgroundColor(ArkUI_RenderNodeHandle node, uint32_t* color)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBackgroundColor(ArkUI_RenderNodeHandle node, uint32_t* color)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -910,6 +1057,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int
 **Description**
 
 Sets whether to clip the render node based on the frame area.<br> The frame area is determined by the node size and position. Different from [OH_ArkUI_RenderNodeUtils_SetClipToBounds](capi-native-render-h.md#oh_arkui_rendernodeutils_setcliptobounds), which clips the render node based on the node bounds (rounded corner bounds are used when rounded corners are configured), this API always uses the frame rectangle. To clip the render node based on a custom shape, use [OH_ArkUI_RenderNodeUtils_SetClip](capi-native-render-h.md#oh_arkui_rendernodeutils_setclip). If this parameter is set to **1**, the content that exceeds the clipping area will be clipped.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int32_t clipToFrame)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetClipToFrame(ArkUI_RenderNodeHandle node, int32_t clipToFrame)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -938,6 +1087,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int
 
 Obtains whether the render node is clipped based on the frame area.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int32_t* clipToFrame)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetClipToFrame(ArkUI_RenderNodeHandle node, int32_t* clipToFrame)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -964,6 +1115,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, in
 **Description**
 
 Sets whether to clip the render node based on its bounds.<br> When rounded corners are configured for a node, the rounded corner bounds are used. When this parameter is set to **1**, the content that exceeds the clipping area will be clipped.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, int32_t clipToBounds)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetClipToBounds(ArkUI_RenderNodeHandle node, int32_t clipToBounds)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -992,6 +1145,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, in
 
 Obtains whether the render node is clipped based on its bounds.<br> When rounded corners are configured for a node, the rounded corner bounds are used.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, int32_t* clipToBounds)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetClipToBounds(ArkUI_RenderNodeHandle node, int32_t* clipToBounds)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1018,6 +1173,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetOpacity(ArkUI_RenderNodeHandle node, float o
 **Description**
 
 Sets the opacity value for the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetOpacity(ArkUI_RenderNodeHandle node, float opacity)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetOpacity(ArkUI_RenderNodeHandle node, float opacity)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1046,6 +1203,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetOpacity(ArkUI_RenderNodeHandle node, float* 
 
 Obtains the opacity value of the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetOpacity(ArkUI_RenderNodeHandle node, float* opacity)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetOpacity(ArkUI_RenderNodeHandle node, float* opacity)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1072,6 +1231,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t wi
 **Description**
 
 Sets the size for the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t width, int32_t height)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetSize(ArkUI_RenderNodeHandle node, int32_t width, int32_t height)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1101,6 +1262,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetSize(ArkUI_RenderNodeHandle node, int32_t* w
 
 Obtains the size of the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetSize(ArkUI_RenderNodeHandle node, int32_t* width, int32_t* height)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetSize(ArkUI_RenderNodeHandle node, int32_t* width, int32_t* height)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1128,6 +1291,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetPosition(ArkUI_RenderNodeHandle node, int32_
 **Description**
 
 Sets the position coordinates for the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetPosition(ArkUI_RenderNodeHandle node, int32_t x, int32_t y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetPosition(ArkUI_RenderNodeHandle node, int32_t x, int32_t y)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1157,6 +1322,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPosition(ArkUI_RenderNodeHandle node, int32_
 
 Obtains the position coordinates of the render node. The coordinates are the position offset of the render node relative to its parent node after the parent node lays out the node. The unit is px. The **offset** attribute that takes effect after the layout and the **position** attribute that does not participate in the layout do not affect the coordinates.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetPosition(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetPosition(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1184,6 +1351,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetPivot(ArkUI_RenderNodeHandle node, float x, 
 **Description**
 
 Sets the pivot point for the transformation of the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetPivot(ArkUI_RenderNodeHandle node, float x, float y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetPivot(ArkUI_RenderNodeHandle node, float x, float y)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1213,6 +1382,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetPivot(ArkUI_RenderNodeHandle node, float* x,
 
 Obtains the pivot point coordinates of the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetPivot(ArkUI_RenderNodeHandle node, float* x, float* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetPivot(ArkUI_RenderNodeHandle node, float* x, float* y)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1240,6 +1411,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetScale(ArkUI_RenderNodeHandle node, float x, 
 **Description**
 
 Sets the scale factors for the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetScale(ArkUI_RenderNodeHandle node, float x, float y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetScale(ArkUI_RenderNodeHandle node, float x, float y)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1269,6 +1442,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetScale(ArkUI_RenderNodeHandle node, float* x,
 
 Obtains the scale factors of the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetScale(ArkUI_RenderNodeHandle node, float* x, float* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetScale(ArkUI_RenderNodeHandle node, float* x, float* y)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1296,6 +1471,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetTranslation(ArkUI_RenderNodeHandle node, flo
 **Description**
 
 Sets the translation offset for the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetTranslation(ArkUI_RenderNodeHandle node, float x, float y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetTranslation(ArkUI_RenderNodeHandle node, float x, float y)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1325,6 +1502,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetTranslation(ArkUI_RenderNodeHandle node, flo
 
 Obtains the translation offset of the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetTranslation(ArkUI_RenderNodeHandle node, float* x, float* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetTranslation(ArkUI_RenderNodeHandle node, float* x, float* y)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1352,6 +1531,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetRotation(ArkUI_RenderNodeHandle node, float 
 **Description**
 
 Sets the rotation angles for the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetRotation(ArkUI_RenderNodeHandle node, float x, float y, float z)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetRotation(ArkUI_RenderNodeHandle node, float x, float y, float z)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1382,6 +1563,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetRotation(ArkUI_RenderNodeHandle node, float*
 
 Obtains the rotation angles of the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetRotation(ArkUI_RenderNodeHandle node, float* x, float* y, float* z)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetRotation(ArkUI_RenderNodeHandle node, float* x, float* y, float* z)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1411,6 +1594,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetTransform(ArkUI_RenderNodeHandle node, float
 
 Sets the transformation matrix for the render node.<br> This API is used to control the scaling, rotation, translation, skewing, and perspective projection effects of a render node using a 4 x 4 matrix.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetTransform(ArkUI_RenderNodeHandle node, float* matrix)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetTransform(ArkUI_RenderNodeHandle node, float* matrix)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1437,6 +1622,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowColor(ArkUI_RenderNodeHandle node, uin
 **Description**
 
 Sets the shadow color for the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowColor(ArkUI_RenderNodeHandle node, uint32_t color)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowColor(ArkUI_RenderNodeHandle node, uint32_t color)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1465,6 +1652,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uin
 
 Obtains the shadow color of the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uint32_t* color)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uint32_t* color)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1491,6 +1680,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowOffset(ArkUI_RenderNodeHandle node, in
 **Description**
 
 Sets the shadow offset for the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowOffset(ArkUI_RenderNodeHandle node, int32_t x, int32_t y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowOffset(ArkUI_RenderNodeHandle node, int32_t x, int32_t y)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1520,6 +1711,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowOffset(ArkUI_RenderNodeHandle node, in
 
 Obtains the shadow offset of the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowOffset(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowOffset(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1548,6 +1741,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 
 Sets the shadow alpha (transparency) for the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowAlpha(ArkUI_RenderNodeHandle node, float alpha)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowAlpha(ArkUI_RenderNodeHandle node, float alpha)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1574,6 +1769,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowAlpha(ArkUI_RenderNodeHandle node, flo
 **Description**
 
 Obtains the shadow alpha (transparency) of the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowAlpha(ArkUI_RenderNodeHandle node, float* alpha)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowAlpha(ArkUI_RenderNodeHandle node, float* alpha)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1602,6 +1799,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowElevation(ArkUI_RenderNodeHandle node,
 
 Sets the shadow elevation for the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowElevation(ArkUI_RenderNodeHandle node, float elevation)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowElevation(ArkUI_RenderNodeHandle node, float elevation)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1628,6 +1827,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowElevation(ArkUI_RenderNodeHandle node,
 **Description**
 
 Obtains the shadow elevation of the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowElevation(ArkUI_RenderNodeHandle node, float* elevation)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowElevation(ArkUI_RenderNodeHandle node, float* elevation)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1656,6 +1857,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetShadowRadius(ArkUI_RenderNodeHandle node, fl
 
 Sets the shadow radius for the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowRadius(ArkUI_RenderNodeHandle node, float radius)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetShadowRadius(ArkUI_RenderNodeHandle node, float radius)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1682,6 +1885,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowRadius(ArkUI_RenderNodeHandle node, fl
 **Description**
 
 Obtains the shadow radius of the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowRadius(ArkUI_RenderNodeHandle node, float* radius)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetShadowRadius(ArkUI_RenderNodeHandle node, float* radius)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1710,6 +1915,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderStyle(ArkUI_RenderNodeHandle node, Ark
 
 Sets the border style for the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderStyle(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderStyleOption* borderStyle)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderStyle(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderStyleOption* borderStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1736,6 +1943,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderStyle(ArkUI_RenderNodeHandle node, Ark
 **Description**
 
 Obtains the border style of the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderStyle(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderStyleOption** borderStyle)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderStyle(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderStyleOption** borderStyle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1764,6 +1973,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderWidth(ArkUI_RenderNodeHandle node, Ark
 
 Sets the border width for the render node.<br> The border width must be less than the node size.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderWidth(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderWidthOption* borderWidth)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderWidth(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderWidthOption* borderWidth)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1790,6 +2001,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderWidth(ArkUI_RenderNodeHandle node, Ark
 **Description**
 
 Obtains the border width of the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderWidth(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderWidthOption** borderWidth)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderWidth(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderWidthOption** borderWidth)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1818,6 +2031,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderColor(ArkUI_RenderNodeHandle node, Ark
 
 Sets the border color for the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderColor(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderColorOption* borderColor)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderColor(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderColorOption* borderColor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1844,6 +2059,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderColor(ArkUI_RenderNodeHandle node, Ark
 **Description**
 
 Obtains the border color of the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderColor(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderColorOption** borderColor)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderColor(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderColorOption** borderColor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1872,6 +2089,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBorderRadius(ArkUI_RenderNodeHandle node, Ar
 
 Sets the border corner radius for the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption* borderRadius)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption* borderRadius)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1898,6 +2117,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, Ar
 **Description**
 
 Obtains the border corner radius of the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption** borderRadius)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBorderRadius(ArkUI_RenderNodeHandle node, ArkUI_NodeBorderRadiusOption** borderRadius)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1929,6 +2150,8 @@ Applies a mask to the render node using the mask configuration.<br> The mask lay
 2. Draw the mask graphic under this filter.
 3. Use the original node image as the source color and the mask graphic as the target color, and blend them into a mask image using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeMaskOption* mask)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeMaskOption* mask)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1955,6 +2178,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_Rend
 **Description**
 
 Applies clipping to the render node using the clipping configuration.<br> The clipping shape can exceed the node boundary. To display the drawing content outside the node boundary, call [OH_ArkUI_RenderNodeUtils_SetDrawRegion](capi-native-render-h.md#oh_arkui_rendernodeutils_setdrawregion) to set the drawing area that covers the content. The final display is still affected by other clipping conditions.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeClipOption* clip)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetClip(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeClipOption* clip)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1983,6 +2208,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, b
 
 Sets whether to form a render group with the target node and its subtree.<br> If the **markNodeGroup** parameter is set to **true**, the system generates an offscreen cache that contains the node and its subtree to reuse the drawing result. This is applicable to scenarios where the subtree content is fixed and only the overall application animation is required. When this API is used together with screenshot, blur, brightness adjustment, or blending operations, display exceptions or performance deterioration may occur.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, bool markNodeGroup)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetMarkNodeGroup(ArkUI_RenderNodeHandle node, bool markNodeGroup)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2009,6 +2236,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetBounds(ArkUI_RenderNodeHandle node, int32_t 
 **Description**
 
 Sets the bounds for the render node.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBounds(ArkUI_RenderNodeHandle node, int32_t x, int32_t y, int32_t width, int32_t height)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetBounds(ArkUI_RenderNodeHandle node, int32_t x, int32_t y, int32_t width, int32_t height)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2040,6 +2269,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t*
 
 Obtains the bounds of the render node.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y, int32_t* width, int32_t* height)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetBounds(ArkUI_RenderNodeHandle node, int32_t* x, int32_t* y, int32_t* width, int32_t* height)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2069,6 +2300,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, floa
 **Description**
 
 Sets the drawing region for the render node.<br> The drawing area is defined by the x, y, w, and h coordinates in the local coordinate system of the node. This area is combined with the node's own range and is used to calculate the node's drawing range and dirty regions. If the drawing content exceeds the node's boundary, the area should cover the entire overflow. This API does not change the node's boundary or expand the mask layer's range.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, float x, float y, float w, float h)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetDrawRegion(ArkUI_RenderNodeHandle node, float x, float y, float w, float h)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2100,6 +2333,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachContentModifier(ArkUI_RenderNodeHandle no
 
 Attaches a content modifier to the render node.<br> This API is used to extend the custom drawing content of a node through the **onDraw** callback.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachContentModifier(ArkUI_RenderNodeHandle node, ArkUI_RenderContentModifierHandle modifier)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachContentModifier(ArkUI_RenderNodeHandle node, ArkUI_RenderContentModifierHandle modifier)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2127,6 +2362,8 @@ ArkUI_RenderContentModifierHandle OH_ArkUI_RenderNodeUtils_CreateContentModifier
 
 Creates a content modifier.<br> This API is used to save the drawing attributes, set the **onDraw** callback, and attach the content modifier to the render node. After using the content modifier, call [OH_ArkUI_RenderNodeUtils_DisposeContentModifier](capi-native-render-h.md#oh_arkui_rendernodeutils_disposecontentmodifier) to release it.
 
+<!--Device-ArkUI_RenderContentModifierHandle OH_ArkUI_RenderNodeUtils_CreateContentModifier()--><!--Device-ArkUI_RenderContentModifierHandle OH_ArkUI_RenderNodeUtils_CreateContentModifier()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2147,6 +2384,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeContentModifier(ArkUI_RenderContentModifier
 
 Disposes of the content modifier.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeContentModifier(ArkUI_RenderContentModifierHandle modifier)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeContentModifier(ArkUI_RenderContentModifierHandle modifier)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2166,6 +2405,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachFloatProperty(ArkUI_RenderContentModifier
 **Description**
 
 Attaches a float property to the target content modifier.<br> This API is used to pass or update floating-point drawing parameters in the drawing callback.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachFloatProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_FloatPropertyHandle property)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachFloatProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_FloatPropertyHandle property)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2194,6 +2435,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachVector2Property(ArkUI_RenderContentModifi
 
 Attaches a 2D vector property to the target content modifier.<br> This API is used to pass or update drawing parameters such as 2D coordinates and offsets in the drawing callback.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachVector2Property(ArkUI_RenderContentModifierHandle modifier, ArkUI_Vector2PropertyHandle property)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachVector2Property(ArkUI_RenderContentModifierHandle modifier, ArkUI_Vector2PropertyHandle property)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2220,6 +2463,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachColorProperty(ArkUI_RenderContentModifier
 **Description**
 
 Attaches a color property to the target content modifier.<br> This API is used to pass or update color drawing parameters in the drawing callback.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachColorProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_ColorPropertyHandle property)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachColorProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_ColorPropertyHandle property)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2248,6 +2493,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(ArkUI_RenderConte
 
 Attaches an animatable float property to the target content modifier.<br> This API is used to set floating-point drawing parameters that change with the animation in the drawing callback.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_FloatAnimatablePropertyHandle property)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_FloatAnimatablePropertyHandle property)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2274,6 +2521,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(ArkUI_RenderCon
 **Description**
 
 Attaches an animatable 2D vector property to the target content modifier.<br> This API is used to set drawing parameters such as 2D coordinates and offsets that change with the animation in the drawing callback.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_Vector2AnimatablePropertyHandle property)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_Vector2AnimatablePropertyHandle property)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2302,6 +2551,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(ArkUI_RenderConte
 
 Attaches an animatable color property to the target content modifier.<br> This API is used to set color drawing parameters that change with the animation in the drawing callback.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_ColorAnimatablePropertyHandle property)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(ArkUI_RenderContentModifierHandle modifier, ArkUI_ColorAnimatablePropertyHandle property)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2329,6 +2580,8 @@ ArkUI_FloatPropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatProperty(float val
 
 Creates a float property.<br> After using the property, call [OH_ArkUI_RenderNodeUtils_DisposeFloatProperty](capi-native-render-h.md#oh_arkui_rendernodeutils_disposefloatproperty) to release it.
 
+<!--Device-ArkUI_FloatPropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatProperty(float value)--><!--Device-ArkUI_FloatPropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatProperty(float value)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2354,6 +2607,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue(ArkUI_FloatPropertyHandle
 **Description**
 
 Sets the value of the float property.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue(ArkUI_FloatPropertyHandle property, float value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue(ArkUI_FloatPropertyHandle property, float value)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2382,6 +2637,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFloatPropertyValue(ArkUI_FloatPropertyHandle
 
 Obtains the value of the float property.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetFloatPropertyValue(ArkUI_FloatPropertyHandle property, float* value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetFloatPropertyValue(ArkUI_FloatPropertyHandle property, float* value)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2409,6 +2666,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeFloatProperty(ArkUI_FloatPropertyHandle pro
 
 Disposes of the float property.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeFloatProperty(ArkUI_FloatPropertyHandle property)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeFloatProperty(ArkUI_FloatPropertyHandle property)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2428,6 +2687,8 @@ ArkUI_Vector2PropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Property(float
 **Description**
 
 Creates a 2D vector property.<br> After using the property, call [OH_ArkUI_RenderNodeUtils_DisposeVector2Property](capi-native-render-h.md#oh_arkui_rendernodeutils_disposevector2property) to release it.
+
+<!--Device-ArkUI_Vector2PropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Property(float x, float y)--><!--Device-ArkUI_Vector2PropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Property(float x, float y)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2455,6 +2716,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue(ArkUI_Vector2PropertyHa
 **Description**
 
 Sets the value of the 2D vector property.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue(ArkUI_Vector2PropertyHandle property, float x, float y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetVector2PropertyValue(ArkUI_Vector2PropertyHandle property, float x, float y)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2484,6 +2747,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetVector2PropertyValue(ArkUI_Vector2PropertyHa
 
 Obtains the value of the 2D vector property.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetVector2PropertyValue(ArkUI_Vector2PropertyHandle property, float* x, float* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetVector2PropertyValue(ArkUI_Vector2PropertyHandle property, float* x, float* y)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2512,6 +2777,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeVector2Property(ArkUI_Vector2PropertyHandle
 
 Disposes of the 2D vector property.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeVector2Property(ArkUI_Vector2PropertyHandle property)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeVector2Property(ArkUI_Vector2PropertyHandle property)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2531,6 +2798,8 @@ ArkUI_ColorPropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorProperty(uint32_t 
 **Description**
 
 Creates a color property.<br> After using the property, call [OH_ArkUI_RenderNodeUtils_DisposeColorProperty](capi-native-render-h.md#oh_arkui_rendernodeutils_disposecolorproperty) to release it.
+
+<!--Device-ArkUI_ColorPropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorProperty(uint32_t value)--><!--Device-ArkUI_ColorPropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorProperty(uint32_t value)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2557,6 +2826,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetColorPropertyValue(ArkUI_ColorPropertyHandle
 **Description**
 
 Sets the value of the color property.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetColorPropertyValue(ArkUI_ColorPropertyHandle property, uint32_t value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetColorPropertyValue(ArkUI_ColorPropertyHandle property, uint32_t value)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2585,6 +2856,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetColorPropertyValue(ArkUI_ColorPropertyHandle
 
 Obtains the value of the color property.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetColorPropertyValue(ArkUI_ColorPropertyHandle property, uint32_t* value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetColorPropertyValue(ArkUI_ColorPropertyHandle property, uint32_t* value)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2612,6 +2885,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeColorProperty(ArkUI_ColorPropertyHandle pro
 
 Disposes of the color property.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeColorProperty(ArkUI_ColorPropertyHandle property)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeColorProperty(ArkUI_ColorPropertyHandle property)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2631,6 +2906,8 @@ ArkUI_FloatAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatAnimatab
 **Description**
 
 Creates an animatable float property.<br> This API is used to save the float drawing parameters that can change with the animation. After using the property, call [OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty](capi-native-render-h.md#oh_arkui_rendernodeutils_disposefloatanimatableproperty) to release it.
+
+<!--Device-ArkUI_FloatAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty(float value)--><!--Device-ArkUI_FloatAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty(float value)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2657,6 +2934,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue(ArkUI_FloatAnim
 **Description**
 
 Sets the value of the animatable float property.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue(ArkUI_FloatAnimatablePropertyHandle property, float value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue(ArkUI_FloatAnimatablePropertyHandle property, float value)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2685,6 +2964,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetFloatAnimatablePropertyValue(ArkUI_FloatAnim
 
 Obtains the value of the animatable float property.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetFloatAnimatablePropertyValue(ArkUI_FloatAnimatablePropertyHandle property, float* value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetFloatAnimatablePropertyValue(ArkUI_FloatAnimatablePropertyHandle property, float* value)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2712,6 +2993,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty(ArkUI_FloatAnimatab
 
 Disposes of the animatable float property.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty(ArkUI_FloatAnimatablePropertyHandle property)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty(ArkUI_FloatAnimatablePropertyHandle property)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2731,6 +3014,8 @@ ArkUI_Vector2AnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2Anim
 **Description**
 
 Creates an animatable 2D vector property.<br> This API is used to save the drawing parameters such as 2D coordinates and offsets that can change with animation. After using the property, call [OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty](capi-native-render-h.md#oh_arkui_rendernodeutils_disposevector2animatableproperty) to release it.
+
+<!--Device-ArkUI_Vector2AnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2AnimatableProperty(float x, float y)--><!--Device-ArkUI_Vector2AnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateVector2AnimatableProperty(float x, float y)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2758,6 +3043,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue(ArkUI_Vector2
 **Description**
 
 Sets the value of the animatable 2D vector property.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue(ArkUI_Vector2AnimatablePropertyHandle property, float x, float y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue(ArkUI_Vector2AnimatablePropertyHandle property, float x, float y)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2787,6 +3074,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue(ArkUI_Vector2
 
 Obtains the value of the animatable 2D vector property.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue(ArkUI_Vector2AnimatablePropertyHandle property, float* x, float* y)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue(ArkUI_Vector2AnimatablePropertyHandle property, float* x, float* y)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2815,6 +3104,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty(ArkUI_Vector2Anim
 
 Disposes of the animatable 2D vector property.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty(ArkUI_Vector2AnimatablePropertyHandle property)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty(ArkUI_Vector2AnimatablePropertyHandle property)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2834,6 +3125,8 @@ ArkUI_ColorAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorAnimatab
 **Description**
 
 Creates an animatable color property.<br> This API is used to save the color drawing parameters that can change with the animation. After using the property, call [OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty](capi-native-render-h.md#oh_arkui_rendernodeutils_disposecoloranimatableproperty) to release it.
+
+<!--Device-ArkUI_ColorAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorAnimatableProperty(uint32_t value)--><!--Device-ArkUI_ColorAnimatablePropertyHandle OH_ArkUI_RenderNodeUtils_CreateColorAnimatableProperty(uint32_t value)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2860,6 +3153,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnim
 **Description**
 
 Sets the value of the animatable color property.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t value)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2888,6 +3183,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnim
 
 Obtains the value of the animatable color property.
 
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t* value)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(ArkUI_ColorAnimatablePropertyHandle property, uint32_t* value)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2915,6 +3212,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatab
 
 Disposes of the animatable color property.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatablePropertyHandle property)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(ArkUI_ColorAnimatablePropertyHandle property)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2934,6 +3233,8 @@ int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentMod
 **Description**
 
 Sets the **onDraw** callback of the content modifier.<br> This callback is used to execute the custom drawing logic during the drawing phase of the content modifier.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext* context, void* userData))--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(ArkUI_RenderContentModifierHandle modifier, void* userData, void (*callback)(ArkUI_DrawContext* context, void* userData))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2963,6 +3264,8 @@ ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()
 
 Creates a rectangle shape option.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposerectshapeoption) to release it.
 
+<!--Device-ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()--><!--Device-ArkUI_RectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRectShapeOption()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -2983,6 +3286,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption(ArkUI_RectShapeOption* opti
 
 Disposes of the rectangle shape option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption(ArkUI_RectShapeOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRectShapeOption(ArkUI_RectShapeOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3002,6 +3307,8 @@ void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption*
 **Description**
 
 Sets the edge value for the rectangle shape option.<br> The left or top edge can be a negative value, indicating that the corresponding edge is on the left or above the node origin. When the shape is used for masking, the part that exceeds the node boundary is not displayed. When the shape is used for clipping and the content outside the node boundary needs to be displayed, you need to use [OH_ArkUI_RenderNodeUtils_SetDrawRegion](capi-native-render-h.md#oh_arkui_rendernodeutils_setdrawregion) to set the drawing area that covers the content.
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionEdgeValue(ArkUI_RectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3025,6 +3332,8 @@ ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOptio
 
 Creates a node border style option.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposenodeborderstyleoption) to release it.
 
+<!--Device-ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOption()--><!--Device-ArkUI_NodeBorderStyleOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderStyleOption()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3045,6 +3354,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyle
 
 Disposes of the node border style option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyleOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption(ArkUI_NodeBorderStyleOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3064,6 +3375,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorder
 **Description**
 
 Sets the edge style of the node border.
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorderStyleOption* option, ArkUI_BorderStyle edgeStyle, ArkUI_EdgeDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderStyleOptionEdgeStyle(ArkUI_NodeBorderStyleOption* option, ArkUI_BorderStyle edgeStyle, ArkUI_EdgeDirection direction)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3087,6 +3400,8 @@ ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOptio
 
 Creates a node border width option.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposenodeborderwidthoption) to release it.
 
+<!--Device-ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOption()--><!--Device-ArkUI_NodeBorderWidthOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderWidthOption()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3107,6 +3422,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption(ArkUI_NodeBorderWidth
 
 Disposes of the node border width option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption(ArkUI_NodeBorderWidthOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderWidthOption(ArkUI_NodeBorderWidthOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3126,6 +3443,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorder
 **Description**
 
 Sets the edge width of the node border.
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorderWidthOption* option, float edgeWidth, ArkUI_EdgeDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderWidthOptionEdgeWidth(ArkUI_NodeBorderWidthOption* option, float edgeWidth, ArkUI_EdgeDirection direction)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3149,6 +3468,8 @@ ArkUI_NodeBorderColorOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOptio
 
 Creates a node border color option.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposenodebordercoloroption) to release it.
 
+<!--Device-ArkUI_NodeBorderColorOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOption()--><!--Device-ArkUI_NodeBorderColorOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderColorOption()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3169,6 +3490,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption(ArkUI_NodeBorderColor
 
 Disposes of the node border color option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption(ArkUI_NodeBorderColorOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderColorOption(ArkUI_NodeBorderColorOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3188,6 +3511,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorder
 **Description**
 
 Sets the edge color of the node border.
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorderColorOption* option, uint32_t edgeColor, ArkUI_EdgeDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderColorOptionEdgeColor(ArkUI_NodeBorderColorOption* option, uint32_t edgeColor, ArkUI_EdgeDirection direction)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3211,6 +3536,8 @@ ArkUI_NodeBorderRadiusOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOpt
 
 Creates a node border radius option.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposenodeborderradiusoption) to release it.
 
+<!--Device-ArkUI_NodeBorderRadiusOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOption()--><!--Device-ArkUI_NodeBorderRadiusOption* OH_ArkUI_RenderNodeUtils_CreateNodeBorderRadiusOption()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3231,6 +3558,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption(ArkUI_NodeBorderRadi
 
 Disposes of the node border radius option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption(ArkUI_NodeBorderRadiusOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeNodeBorderRadiusOption(ArkUI_NodeBorderRadiusOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3250,6 +3579,8 @@ void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBo
 **Description**
 
 Sets the border radius of a specified corner of a node.
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBorderRadiusOption* option, uint32_t cornerRadius, ArkUI_CornerDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetNodeBorderRadiusOptionCornerRadius(ArkUI_NodeBorderRadiusOption* option, uint32_t cornerRadius, ArkUI_CornerDirection direction)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3273,6 +3604,8 @@ ArkUI_CircleShapeOption* OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()
 
 Creates a circle shape option.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposecircleshapeoption) to release it.
 
+<!--Device-ArkUI_CircleShapeOption* OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()--><!--Device-ArkUI_CircleShapeOption* OH_ArkUI_RenderNodeUtils_CreateCircleShapeOption()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3293,6 +3626,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption(ArkUI_CircleShapeOption* 
 
 Disposes of the circle shape option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption(ArkUI_CircleShapeOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeCircleShapeOption(ArkUI_CircleShapeOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3312,6 +3647,8 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOptio
 **Description**
 
 Sets the X-coordinate of the center for the circle shape option.
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOption* option, float centerX)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterX(ArkUI_CircleShapeOption* option, float centerX)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3334,6 +3671,8 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOptio
 
 Sets the Y-coordinate of the center for the circle shape option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOption* option, float centerY)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionCenterY(ArkUI_CircleShapeOption* option, float centerY)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3354,6 +3693,8 @@ void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius(ArkUI_CircleShapeOption
 **Description**
 
 Sets the radius value for the circle shape option.
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius(ArkUI_CircleShapeOption* option, float radius)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetCircleShapeOptionRadius(ArkUI_CircleShapeOption* option, float radius)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3376,6 +3717,8 @@ ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption(
 
 Creates a rounded rectangle shape option.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposeroundrectshapeoption) to release it.
 
+<!--Device-ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption()--><!--Device-ArkUI_RoundRectShapeOption* OH_ArkUI_RenderNodeUtils_CreateRoundRectShapeOption()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3396,6 +3739,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption(ArkUI_RoundRectShapeOp
 
 Disposes of the rounded rectangle shape option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption(ArkUI_RoundRectShapeOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRoundRectShapeOption(ArkUI_RoundRectShapeOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3415,6 +3760,8 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectSh
 **Description**
 
 Sets the edge value for the rounded rectangle shape option.<br> The left or top edge can be a negative value, indicating that the corresponding edge is on the left or above the node origin. When the shape is used for masking, the part that exceeds the node boundary is not displayed. When the shape is used for clipping and the content outside the node boundary needs to be displayed, you need to use [OH_ArkUI_RenderNodeUtils_SetDrawRegion](capi-native-render-h.md#oh_arkui_rendernodeutils_setdrawregion) to set the drawing area that covers the content.
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionEdgeValue(ArkUI_RoundRectShapeOption* option, float edgeValue, ArkUI_EdgeDirection direction)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3437,6 +3784,8 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectSha
 **Description**
 
 Sets the corner radius for the X and Y axes of a specified corner.
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectShapeOption* option, float x, float y, ArkUI_CornerDirection direction)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionCornerXY(ArkUI_RoundRectShapeOption* option, float x, float y, ArkUI_CornerDirection direction)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3461,6 +3810,8 @@ ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()
 
 Creates a custom drawing path option.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposecommandpathoption) to release it.
 
+<!--Device-ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()--><!--Device-ArkUI_CommandPathOption* OH_ArkUI_RenderNodeUtils_CreateCommandPathOption()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3480,6 +3831,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption(ArkUI_CommandPathOption* 
 **Description**
 
 Disposes of the custom drawing path option.
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption(ArkUI_CommandPathOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeCommandPathOption(ArkUI_CommandPathOption* option)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3501,6 +3854,8 @@ void OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands(ArkUI_CommandPathOpti
 
 Sets the command values for the custom drawing path option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands(ArkUI_CommandPathOption* option, char* commands)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands(ArkUI_CommandPathOption* option, char* commands)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3521,6 +3876,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **Description**
 
 Creates a mask from a rectangle shape.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposerendernodemaskoption) to release it.
+
+<!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRectShape(ArkUI_RectShapeOption* shape)--><!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRectShape(ArkUI_RectShapeOption* shape)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3548,6 +3905,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 Creates a mask from a rounded rectangle shape.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposerendernodemaskoption) to release it.
 
+<!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRoundRectShape(ArkUI_RoundRectShapeOption* shape)--><!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRoundRectShape(ArkUI_RoundRectShapeOption* shape)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3573,6 +3932,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **Description**
 
 Creates a mask from a circle shape.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposerendernodemaskoption) to release it.
+
+<!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCircleShape(ArkUI_CircleShapeOption* shape)--><!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCircleShape(ArkUI_CircleShapeOption* shape)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3600,6 +3961,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 
 Creates a mask from an oval shape.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposerendernodemaskoption) to release it.
 
+<!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromOvalShape(ArkUI_RectShapeOption* shape)--><!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromOvalShape(ArkUI_RectShapeOption* shape)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3625,6 +3988,8 @@ ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionF
 **Description**
 
 Creates a mask from a custom drawing path.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposerendernodemaskoption) to release it.
+
+<!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCommandPath(ArkUI_CommandPathOption* path)--><!--Device-ArkUI_RenderNodeMaskOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromCommandPath(ArkUI_CommandPathOption* path)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3652,6 +4017,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption(ArkUI_RenderNodeMaskOp
 
 Disposes of the render node mask option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption(ArkUI_RenderNodeMaskOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeMaskOption(ArkUI_RenderNodeMaskOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3671,6 +4038,8 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor(ArkUI_RenderNodeM
 **Description**
 
 Sets the fill color for the render node mask option.
+
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor(ArkUI_RenderNodeMaskOption* mask, uint32_t fillColor)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionFillColor(ArkUI_RenderNodeMaskOption* mask, uint32_t fillColor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3693,6 +4062,8 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor(ArkUI_RenderNod
 
 Sets the stroke color for the render node mask option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor(ArkUI_RenderNodeMaskOption* mask, uint32_t strokeColor)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeColor(ArkUI_RenderNodeMaskOption* mask, uint32_t strokeColor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3714,6 +4085,8 @@ void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth(ArkUI_RenderNod
 
 Sets the stroke width for the render node mask option.<br> Drawing with the corresponding width is performed centered on the border path.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth(ArkUI_RenderNodeMaskOption* mask, float strokeWidth)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRenderNodeMaskOptionStrokeWidth(ArkUI_RenderNodeMaskOption* mask, float strokeWidth)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3734,6 +4107,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **Description**
 
 Creates a render node clip option from a rectangle shape.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposerendernodeclipoption) to release it.
+
+<!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRectShape(ArkUI_RectShapeOption* shape)--><!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRectShape(ArkUI_RectShapeOption* shape)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3761,6 +4136,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 Creates a render node clip option from a rounded rectangle shape.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposerendernodeclipoption) to release it.
 
+<!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRoundRectShape(ArkUI_RoundRectShapeOption* shape)--><!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromRoundRectShape(ArkUI_RoundRectShapeOption* shape)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3786,6 +4163,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **Description**
 
 Creates a render node clip option from a circle shape.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposerendernodeclipoption) to release it.
+
+<!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCircleShape(ArkUI_CircleShapeOption* shape)--><!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCircleShape(ArkUI_CircleShapeOption* shape)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3813,6 +4192,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 
 Creates a render node clip option from an oval shape.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposerendernodeclipoption) to release it.
 
+<!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromOvalShape(ArkUI_RectShapeOption* shape)--><!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromOvalShape(ArkUI_RectShapeOption* shape)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3838,6 +4219,8 @@ ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionF
 **Description**
 
 Creates a render node clip option from a custom drawing path.<br> After using the option, call [OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption](capi-native-render-h.md#oh_arkui_rendernodeutils_disposerendernodeclipoption) to release it.
+
+<!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCommandPath(ArkUI_CommandPathOption* path)--><!--Device-ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCommandPath(ArkUI_CommandPathOption* path)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3865,6 +4248,8 @@ void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOp
 
 Disposes of the render node clip option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOption* option)--><!--Device-void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -3884,6 +4269,8 @@ int32_t OH_ArkUI_RenderNodeUtils_GetRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 **Description**
 
 Obtains the RenderNode of the target node that has been accepted as a child node. If a RenderNode is obtained through this API, when the [disposeNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) API of [ArkUI_NativeNodeAPI_1](capi-arkui-nativemodule-arkui-nativenodeapi-1.md) is invoked to destroy the FrameNode, the [OH_ArkUI_RenderNodeUtils_DisposeNode](capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode) API needs to be invoked additionally to release the RenderNode.
+
+<!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle* renderNode)--><!--Device-int32_t OH_ArkUI_RenderNodeUtils_GetRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle* renderNode)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3912,6 +4299,8 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeO
 
 Sets the border range for a rounded rectangle shape option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeOption* option, float x, float y, float width, float height)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeOption* option, float x, float y, float width, float height)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -3936,6 +4325,8 @@ void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* opt
 
 Sets the border range for a rectangle shape option.
 
+<!--Device-void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* option, float x, float y, float width, float height)--><!--Device-void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* option, float x, float y, float width, float height)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -3959,6 +4350,8 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle nod
 **Description**
 
 Inserts a child render node at a specified position under a parent custom node.<br> By default, the [OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](capi-native-type-h.md#oh_arkui_nodemountpolicy) mount policy is used. The child render node to be inserted must be the only child node of the parent element. You can use [OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy) to set the mount policy to **OH_ARKUI_NODE_MOUNT_POLICY_MIXED** to mount multiple child nodes.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)--><!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -3988,6 +4381,8 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHa
 
 Obtains the number of all child nodes of a parent custom node in the mixed mount order.<br> The count includes both common nodes and render nodes. The parent node must be of the **ARKUI_NODE_CUSTOM** type and the **OH_ARKUI_NODE_MOUNT_POLICY_MIXED** policy must have been set using [OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy). Otherwise, ARKUI_ERROR_CODE_PARAM_INVALID is returned.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)--><!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -4014,6 +4409,8 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, 
 **Description**
 
 Obtains the render node handle corresponding to the child node at a specified position of a parent custom node in the mixed mount order.<br> The parent node must be of the **ARKUI_NODE_CUSTOM** type and the **OH_ARKUI_NODE_MOUNT_POLICY_MIXED** policy must have been set using [OH_ArkUI_NativeModule_SetChildMountPolicy](capi-native-node-h.md#oh_arkui_nativemodule_setchildmountpolicy). Otherwise, ARKUI_ERROR_CODE_PARAM_INVALID is returned.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)--><!--Device-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

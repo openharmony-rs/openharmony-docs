@@ -8,11 +8,13 @@ typedef struct ArkUI_NativeDialogAPI_1 {...} ArkUI_NativeDialogAPI_1
 
 Provides the custom dialog box APIs for the native side.
 
+<!--Device-typedef struct ArkUI_NativeDialogAPI_1 {...} ArkUI_NativeDialogAPI_1--><!--Device-typedef struct ArkUI_NativeDialogAPI_1 {...} ArkUI_NativeDialogAPI_1-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_dialog.h](capi-native-dialog-h.md)
 
@@ -57,6 +59,8 @@ Creates a custom dialog box and returns the pointer to the created dialog box.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-ArkUI_NativeDialogHandle (*create)()--><!--Device-ArkUI_NativeDialogHandle (*create)()-End-->
+
 **Returns**:
 
 | Type | Description |
@@ -72,6 +76,8 @@ void (*dispose)(ArkUI_NativeDialogHandle handle)
 **Description**
 
 Destroys a custom dialog box.
+
+<!--Device-void (*dispose)(ArkUI_NativeDialogHandle handle)--><!--Device-void (*dispose)(ArkUI_NativeDialogHandle handle)-End-->
 
 **Parameters**:
 
@@ -92,6 +98,8 @@ Attaches the content of a custom dialog box.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)--><!--Device-int32_t (*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)-End-->
 
 **Parameters**:
 
@@ -120,6 +128,8 @@ Detaches the content of a custom dialog box.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*removeContent)(ArkUI_NativeDialogHandle handle)--><!--Device-int32_t (*removeContent)(ArkUI_NativeDialogHandle handle)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -145,6 +155,8 @@ Sets the alignment mode for a custom dialog box.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignment, float offsetX, float offsetY)--><!--Device-int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignment, float offsetX, float offsetY)-End-->
 
 **Parameters**:
 
@@ -175,6 +187,8 @@ Resets the alignment mode of a custom dialog box to its default settings.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)--><!--Device-int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -200,6 +214,8 @@ Sets the modal mode for a custom dialog box.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)--><!--Device-int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)-End-->
 
 **Parameters**:
 
@@ -228,6 +244,8 @@ Specifies whether to allow users to touch the mask to dismiss the custom dialog 
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)--><!--Device-int32_t (*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -254,6 +272,8 @@ Sets the mask for a custom dialog box.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const ArkUI_Rect* maskRect)--><!--Device-int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const ArkUI_Rect* maskRect)-End-->
 
 **Parameters**:
 
@@ -283,6 +303,8 @@ Sets the background color for a custom dialog box.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgroundColor)--><!--Device-int32_t (*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgroundColor)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -309,6 +331,8 @@ Sets the background corner radius for a custom dialog box.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float topRight, float bottomLeft, float bottomRight)--><!--Device-int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float topRight, float bottomLeft, float bottomRight)-End-->
 
 **Parameters**:
 
@@ -340,6 +364,8 @@ Sets the number of grid columns occupied by a custom dialog box.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount)--><!--Device-int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -366,6 +392,8 @@ Specifies whether to use a custom style for the custom dialog box.
 > **Note**:
 >
 > This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomStyle)--><!--Device-int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomStyle)-End-->
 
 **Parameters**:
 
@@ -394,6 +422,8 @@ Specifies whether to use a custom animation for a custom dialog box.
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCustomAnimation)--><!--Device-int32_t (*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCustomAnimation)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -421,6 +451,8 @@ Registers a callback for a custom dialog box so that the user can decide whether
 >
 > This method must be called before the <b>show</b> method.
 
+<!--Device-int32_t (*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDismissEvent eventHandler)--><!--Device-int32_t (*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDismissEvent eventHandler)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -443,6 +475,8 @@ int32_t (*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)
 **Description**
 
 Shows a custom dialog box.
+
+<!--Device-int32_t (*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)--><!--Device-int32_t (*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)-End-->
 
 **Parameters**:
 
@@ -467,6 +501,8 @@ int32_t (*close)(ArkUI_NativeDialogHandle handle)
 
 Closes a custom dialog box. If the dialog box has been closed, this API does not take effect.
 
+<!--Device-int32_t (*close)(ArkUI_NativeDialogHandle handle)--><!--Device-int32_t (*close)(ArkUI_NativeDialogHandle handle)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -488,6 +524,8 @@ int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, vo
 **Description**
 
 Registers a listener for the dismiss event of the custom dialog box.
+
+<!--Device-int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(ArkUI_DialogDismissEvent* event))--><!--Device-int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(ArkUI_DialogDismissEvent* event))-End-->
 
 **Parameters**:
 

@@ -8,11 +8,13 @@ typedef struct ArkUI_SelectedDragPreviewStyle ArkUI_SelectedDragPreviewStyle
 
 定义选中状态下文本拖拽预览样式，适用于需要在文本拖拽过程中展示选中状态预览效果的场景，可提升用户的拖拽交互体验。
 
+<!--Device-typedef struct ArkUI_SelectedDragPreviewStyle ArkUI_SelectedDragPreviewStyle--><!--Device-typedef struct ArkUI_SelectedDragPreviewStyle ArkUI_SelectedDragPreviewStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_type.h](capi-native-type-h.md)
 

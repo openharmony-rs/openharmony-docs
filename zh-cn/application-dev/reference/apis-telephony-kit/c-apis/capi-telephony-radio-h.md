@@ -35,6 +35,8 @@ Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state
 
 获取网络状态。
 
+<!--Device-Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state)--><!--Device-Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state)-End-->
+
 **系统能力：** SystemCapability.Telephony.CoreService
 
 **需要权限：** ohos.permission.GET_NETWORK_INFO
@@ -62,6 +64,8 @@ Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Teleph
 **描述：**
 
 获取给定卡槽ID的网络状态。
+
+<!--Device-Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Telephony_NetworkState *state)--><!--Device-Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Telephony_NetworkState *state)-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 

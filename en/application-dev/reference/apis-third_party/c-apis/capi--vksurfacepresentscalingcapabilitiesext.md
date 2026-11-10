@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSurfacePresentScalingCapabilitiesEXT {...}--><!--Device-struct VkSurfacePresentScalingCapabilitiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

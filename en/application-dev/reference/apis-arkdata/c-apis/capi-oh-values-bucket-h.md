@@ -41,6 +41,8 @@ int OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Data_Asset *value
 
 Put the [Data_Asset](capi-rdb-data-asset.md) * value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name.
 
+<!--Device-int OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Data_Asset *value)--><!--Device-int OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Data_Asset *value)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
@@ -73,6 +75,8 @@ int OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Data_Asset **val
 **Description**
 
 Put the [Data_Asset](capi-rdb-data-asset.md) * value of given count to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name.
+
+<!--Device-int OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Data_Asset **value, uint32_t count)--><!--Device-int OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Data_Asset **value, uint32_t count)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -108,6 +112,8 @@ int OH_VBucket_PutFloatVector(OH_VBucket *bucket, const char *field, const float
 
 Put the float vector to the OH_VBucket object.
 
+<!--Device-int OH_VBucket_PutFloatVector(OH_VBucket *bucket, const char *field, const float *vec, size_t len)--><!--Device-int OH_VBucket_PutFloatVector(OH_VBucket *bucket, const char *field, const float *vec, size_t len)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
@@ -141,6 +147,8 @@ int OH_VBucket_PutUnlimitedInt(OH_VBucket *bucket, const char *field, int sign, 
 **Description**
 
 Put the an integer of any length to the OH_VBucket object.
+
+<!--Device-int OH_VBucket_PutUnlimitedInt(OH_VBucket *bucket, const char *field, int sign, const uint64_t *trueForm, size_t len)--><!--Device-int OH_VBucket_PutUnlimitedInt(OH_VBucket *bucket, const char *field, int sign, const uint64_t *trueForm, size_t len)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

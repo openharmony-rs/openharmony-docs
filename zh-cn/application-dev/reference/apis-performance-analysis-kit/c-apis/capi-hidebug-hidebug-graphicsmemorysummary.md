@@ -8,11 +8,13 @@ struct HiDebug_GraphicsMemorySummary {...}
 
 应用图形显存占用详情的结构定义。
 
+<!--Device-struct HiDebug_GraphicsMemorySummary {...}--><!--Device-struct HiDebug_GraphicsMemorySummary {...}-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 21
 
-**相关模块：** [HiDebug](capi-others-hidebug.md)
+**相关模块：** [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **所在头文件：** [hidebug_type.h](capi-hidebug-type-h.md)
 

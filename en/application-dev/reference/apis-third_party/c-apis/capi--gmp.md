@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct gmp {...}--><!--Device-struct gmp {...}-End-->
+
 ## Summary
 
 ### Member variables

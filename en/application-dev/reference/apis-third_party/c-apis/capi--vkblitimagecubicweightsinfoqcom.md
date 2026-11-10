@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBlitImageCubicWeightsInfoQCOM {...}--><!--Device-struct VkBlitImageCubicWeightsInfoQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ struct OH_CloudDisk_SyncFolderEx {...}
 
 定义带占位符支持的云盘同步文件夹。 必须将版本字段设置为有效的版本宏(例如[OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1](capi-oh-cloud-disk-manager-h.md#宏定义))，然后才能传递结构到任何API。 运行时使用版本来确定字段有效；当指定低版本时，在较高版本中引入的字段将被忽略。
 
+<!--Device-struct OH_CloudDisk_SyncFolderEx {...}--><!--Device-struct OH_CloudDisk_SyncFolderEx {...}-End-->
+
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 26.0.1
 
-**相关模块：** [CloudDisk](capi-others-clouddisk.md)
+**相关模块：** [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 **所在头文件：** [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

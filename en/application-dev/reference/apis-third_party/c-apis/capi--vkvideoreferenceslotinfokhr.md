@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoReferenceSlotInfoKHR {...}--><!--Device-struct VkVideoReferenceSlotInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct ArkUI_TextPickerRangeContentArray ArkUI_TextPickerRangeContentArr
 
 Defines the option content array of a text picker. This struct is used to configure the option list of a text picker, setting the icon and text content of each option by index. It applies to scenarios such as date selection, time selection, and list selection that require displaying multiple options for users to select by scrolling.
 
+<!--Device-typedef struct ArkUI_TextPickerRangeContentArray ArkUI_TextPickerRangeContentArray--><!--Device-typedef struct ArkUI_TextPickerRangeContentArray ArkUI_TextPickerRangeContentArray-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [picker.h](capi-picker-h.md)
 

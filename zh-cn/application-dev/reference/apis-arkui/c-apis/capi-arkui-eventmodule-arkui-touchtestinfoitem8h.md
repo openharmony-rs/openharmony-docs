@@ -8,9 +8,11 @@ typedef ArkUI_TouchTestInfoItem* ArkUI_TouchTestInfoItemHandle
 
 定义触摸测试信息项句柄。
 
+<!--Device-typedef ArkUI_TouchTestInfoItem* ArkUI_TouchTestInfoItemHandle--><!--Device-typedef ArkUI_TouchTestInfoItem* ArkUI_TouchTestInfoItemHandle-End-->
+
 **起始版本：** 22
 
-**相关模块：** [ArkUI_EventModule](capi-others-arkui-eventmodule.md)
+**相关模块：** [ArkUI_EventModule](capi-arkui-arkui-eventmodule.md)
 
 **所在头文件：** [ui_input_event.h](capi-ui-input-event-h.md)
 

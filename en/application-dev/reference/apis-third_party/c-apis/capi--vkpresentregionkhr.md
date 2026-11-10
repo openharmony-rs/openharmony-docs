@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPresentRegionKHR {...}--><!--Device-struct VkPresentRegionKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

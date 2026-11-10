@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct sysinfo {...}--><!--Device-struct sysinfo {...}-End-->
+
 ## Summary
 
 ### Member variables

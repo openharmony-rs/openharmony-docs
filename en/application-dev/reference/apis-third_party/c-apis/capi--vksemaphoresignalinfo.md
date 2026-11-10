@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSemaphoreSignalInfo {...}--><!--Device-struct VkSemaphoreSignalInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

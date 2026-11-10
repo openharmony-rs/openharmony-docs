@@ -8,11 +8,13 @@ struct TransientTask_TransientTaskInfo {...}
 
 定义所有短时任务信息结构体。用于返回当日剩余总配额和已申请的所有短时任务信息。
 
+<!--Device-struct TransientTask_TransientTaskInfo {...}--><!--Device-struct TransientTask_TransientTaskInfo {...}-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **起始版本：** 20
 
-**相关模块：** [TransientTask](capi-others-transienttask.md)
+**相关模块：** [TransientTask](capi-background-tasks-kit-transienttask.md)
 
 **所在头文件：** [transient_task_type.h](capi-transient-task-type-h.md)
 

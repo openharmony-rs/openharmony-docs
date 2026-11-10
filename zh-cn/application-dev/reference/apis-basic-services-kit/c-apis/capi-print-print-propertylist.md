@@ -8,11 +8,13 @@ typedef struct Print_PropertyList {...} Print_PropertyList
 
 打印机属性列表，用于存储和管理打印机属性，支持通过属性数量和属性数组的指针对打印机属性进行批量访问和操作。其中count表示属性数量，list为指向属性数组的指针，两者配合表示一组完整的打印机属性， 适用于需要查询或设置打印机多项属性信息的场景。
 
+<!--Device-typedef struct Print_PropertyList {...} Print_PropertyList--><!--Device-typedef struct Print_PropertyList {...} Print_PropertyList-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 12
 
-**相关模块：** [Print](capi-others-print.md)
+**相关模块：** [Print](capi-basic-services-kit-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

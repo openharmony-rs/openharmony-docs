@@ -43,6 +43,8 @@ int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)
 
 获取JavaScript native层ImagePacker对象。
 
+<!--Device-int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)--><!--Device-int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 11
@@ -69,6 +71,8 @@ ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)
 **描述：**
 
 从输入JavaScript native层ImagePacker对象中，转换成ImagePacker_Native值。
+
+<!--Device-ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)--><!--Device-ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -101,6 +105,8 @@ int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source,
 **描述：**
 
 通过一个给定的选项ImagePacker_Opts结构体，将输入JavaScript native层PixelMap对象或者ImageSource对象编码并输出到指定的缓冲区outData中。
+
+<!--Device-int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source, ImagePacker_Opts* opts, uint8_t* outData, size_t* size)--><!--Device-int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source, ImagePacker_Opts* opts, uint8_t* outData, size_t* size)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -137,6 +143,8 @@ int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source,
 
 通过一个给定的选项ImagePacker_Opts结构体，将输入JavaScript native层PixelMap对象或者ImageSource对象编码并输出到指定的文件中。
 
+<!--Device-int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source, ImagePacker_Opts* opts, int fd)--><!--Device-int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source, ImagePacker_Opts* opts, int fd)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **起始版本：** 11
@@ -170,6 +178,8 @@ int32_t OH_ImagePacker_Release(ImagePacker_Native* native)
 **描述：**
 
 释放native层编码器对象[ImagePacker_Native](capi-image-imagepacker-native-.md)。 <br>此API不用于释放JavaScript原生API ImagePacker对象，它用于释放native层对象ImagePacker_Native。 <br>通过调用[OH_ImagePacker_InitNative](capi-image-packer-mdk-h.md#oh_imagepacker_initnative)解析。
+
+<!--Device-int32_t OH_ImagePacker_Release(ImagePacker_Native* native)--><!--Device-int32_t OH_ImagePacker_Release(ImagePacker_Native* native)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 

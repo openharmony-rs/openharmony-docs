@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceDeviceMemoryReportCreateInfoEXT {...}--><!--Device-struct VkDeviceDeviceMemoryReportCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

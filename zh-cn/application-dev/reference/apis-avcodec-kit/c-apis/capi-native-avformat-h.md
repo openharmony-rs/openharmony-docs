@@ -71,6 +71,8 @@ enum OH_AVPixelFormat
 
 视频像素格式的枚举类。
 
+<!--Device-OH_AVPixelFormat--><!--Device-OH_AVPixelFormat-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
@@ -97,6 +99,8 @@ struct OH_AVFormat *OH_AVFormat_Create(void)
 
 创建OH_AVFormat实例，用于读取数据。
 
+<!--Device-struct OH_AVFormat *OH_AVFormat_Create(void)--><!--Device-struct OH_AVFormat *OH_AVFormat_Create(void)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
@@ -116,6 +120,8 @@ struct OH_AVFormat *OH_AVFormat_CreateAudioFormat(const char *mimeType, int32_t 
 **描述：**
 
 创建音频OH_AVFormat实例指针并预设置指定参数，用于读写数据。
+
+<!--Device-struct OH_AVFormat *OH_AVFormat_CreateAudioFormat(const char *mimeType, int32_t sampleRate, int32_t channelCount)--><!--Device-struct OH_AVFormat *OH_AVFormat_CreateAudioFormat(const char *mimeType, int32_t sampleRate, int32_t channelCount)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -145,6 +151,8 @@ struct OH_AVFormat *OH_AVFormat_CreateVideoFormat(const char *mimeType, int32_t 
 
 创建视频OH_AVFormat实例指针并预设置指定参数，用于读写数据。
 
+<!--Device-struct OH_AVFormat *OH_AVFormat_CreateVideoFormat(const char *mimeType, int32_t width, int32_t height)--><!--Device-struct OH_AVFormat *OH_AVFormat_CreateVideoFormat(const char *mimeType, int32_t width, int32_t height)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 10
@@ -173,6 +181,8 @@ void OH_AVFormat_Destroy(struct OH_AVFormat *format)
 
 销毁OH_AVFormat实例，不允许重复销毁。
 
+<!--Device-void OH_AVFormat_Destroy(struct OH_AVFormat *format)--><!--Device-void OH_AVFormat_Destroy(struct OH_AVFormat *format)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
@@ -192,6 +202,8 @@ bool OH_AVFormat_Copy(struct OH_AVFormat *to, struct OH_AVFormat *from)
 **描述：**
 
 复制OH_AVFormat实例。
+
+<!--Device-bool OH_AVFormat_Copy(struct OH_AVFormat *to, struct OH_AVFormat *from)--><!--Device-bool OH_AVFormat_Copy(struct OH_AVFormat *to, struct OH_AVFormat *from)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -219,6 +231,8 @@ bool OH_AVFormat_SetIntValue(struct OH_AVFormat *format, const char *key, int32_
 **描述：**
 
 对OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)赋int类型的值。 该接口仅能设置int类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md)。
+
+<!--Device-bool OH_AVFormat_SetIntValue(struct OH_AVFormat *format, const char *key, int32_t value)--><!--Device-bool OH_AVFormat_SetIntValue(struct OH_AVFormat *format, const char *key, int32_t value)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -248,6 +262,8 @@ bool OH_AVFormat_SetUintValue(struct OH_AVFormat *format, const char *key, uint3
 
 对OH_AVFormat的key赋unsigned int类型的值。<br> 该接口仅能设置unsigned int类型的参数，具体参数类型定义请参考[native_avcodec_base.h](capi-native-avcodec-base-h.md)。
 
+<!--Device-bool OH_AVFormat_SetUintValue(struct OH_AVFormat *format, const char *key, uint32_t value)--><!--Device-bool OH_AVFormat_SetUintValue(struct OH_AVFormat *format, const char *key, uint32_t value)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
@@ -275,6 +291,8 @@ bool OH_AVFormat_SetLongValue(struct OH_AVFormat *format, const char *key, int64
 **描述：**
 
 对OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)赋long类型的值。 该接口仅能设置long类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md)。
+
+<!--Device-bool OH_AVFormat_SetLongValue(struct OH_AVFormat *format, const char *key, int64_t value)--><!--Device-bool OH_AVFormat_SetLongValue(struct OH_AVFormat *format, const char *key, int64_t value)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -304,6 +322,8 @@ bool OH_AVFormat_SetFloatValue(struct OH_AVFormat *format, const char *key, floa
 
 对OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)赋float类型的值。 该接口仅能设置float类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md)。
 
+<!--Device-bool OH_AVFormat_SetFloatValue(struct OH_AVFormat *format, const char *key, float value)--><!--Device-bool OH_AVFormat_SetFloatValue(struct OH_AVFormat *format, const char *key, float value)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
@@ -331,6 +351,8 @@ bool OH_AVFormat_SetDoubleValue(struct OH_AVFormat *format, const char *key, dou
 **描述：**
 
 对OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)赋double类型的值。 该接口仅能设置double类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md)。
+
+<!--Device-bool OH_AVFormat_SetDoubleValue(struct OH_AVFormat *format, const char *key, double value)--><!--Device-bool OH_AVFormat_SetDoubleValue(struct OH_AVFormat *format, const char *key, double value)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -360,6 +382,8 @@ bool OH_AVFormat_SetStringValue(struct OH_AVFormat *format, const char *key, con
 
 对OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)赋string类型的值。 该接口仅能设置string类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md)。
 
+<!--Device-bool OH_AVFormat_SetStringValue(struct OH_AVFormat *format, const char *key, const char *value)--><!--Device-bool OH_AVFormat_SetStringValue(struct OH_AVFormat *format, const char *key, const char *value)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
@@ -387,6 +411,8 @@ bool OH_AVFormat_SetBuffer(struct OH_AVFormat *format, const char *key, const ui
 **描述：**
 
 将指定长度的数据块写入OH_AVFormat。 该接口仅能设置buffer类型的参数，参数类型定义详见[native_avcodec_base.h](capi-native-avcodec-base-h.md)。
+
+<!--Device-bool OH_AVFormat_SetBuffer(struct OH_AVFormat *format, const char *key, const uint8_t *addr, size_t size)--><!--Device-bool OH_AVFormat_SetBuffer(struct OH_AVFormat *format, const char *key, const uint8_t *addr, size_t size)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -417,6 +443,8 @@ bool OH_AVFormat_GetIntValue(struct OH_AVFormat *format, const char *key, int32_
 
 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取int类型的值。
 
+<!--Device-bool OH_AVFormat_GetIntValue(struct OH_AVFormat *format, const char *key, int32_t *out)--><!--Device-bool OH_AVFormat_GetIntValue(struct OH_AVFormat *format, const char *key, int32_t *out)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
@@ -444,6 +472,8 @@ bool OH_AVFormat_GetUintValue(struct OH_AVFormat *format, const char *key, uint3
 **描述：**
 
 使用key从OH_AVFormat中获取unsigned int类型的值。
+
+<!--Device-bool OH_AVFormat_GetUintValue(struct OH_AVFormat *format, const char *key, uint32_t *out)--><!--Device-bool OH_AVFormat_GetUintValue(struct OH_AVFormat *format, const char *key, uint32_t *out)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -473,6 +503,8 @@ bool OH_AVFormat_GetLongValue(struct OH_AVFormat *format, const char *key, int64
 
 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取long类型的值。
 
+<!--Device-bool OH_AVFormat_GetLongValue(struct OH_AVFormat *format, const char *key, int64_t *out)--><!--Device-bool OH_AVFormat_GetLongValue(struct OH_AVFormat *format, const char *key, int64_t *out)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
@@ -500,6 +532,8 @@ bool OH_AVFormat_GetFloatValue(struct OH_AVFormat *format, const char *key, floa
 **描述：**
 
 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取float类型的值。
+
+<!--Device-bool OH_AVFormat_GetFloatValue(struct OH_AVFormat *format, const char *key, float *out)--><!--Device-bool OH_AVFormat_GetFloatValue(struct OH_AVFormat *format, const char *key, float *out)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -529,6 +563,8 @@ bool OH_AVFormat_GetDoubleValue(struct OH_AVFormat *format, const char *key, dou
 
 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取double类型的值。
 
+<!--Device-bool OH_AVFormat_GetDoubleValue(struct OH_AVFormat *format, const char *key, double *out)--><!--Device-bool OH_AVFormat_GetDoubleValue(struct OH_AVFormat *format, const char *key, double *out)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
@@ -557,6 +593,8 @@ bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, con
 
 从OH_AVFormat的[key](capi-codecbase.md#媒体数据键值对)获取string类型的值。
 
+<!--Device-bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, const char **out)--><!--Device-bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, const char **out)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
@@ -584,6 +622,8 @@ bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t 
 **描述：**
 
 从OH_AVFormat中读取指定长度的数据块。
+
+<!--Device-bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t **addr, size_t *size)--><!--Device-bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t **addr, size_t *size)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -614,6 +654,8 @@ bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32
 
 从OH_AVFormat中读取一个int32_t数据的数组。<br> 需要注意的是，获取的buffer生命周期与OH_AVFormat对象绑定，当format销毁时自动失效。<br> 如果开发者需要长时间保持绑定，应用程序必须将数据显式复制到新分配的内存。
 
+<!--Device-bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32_t **addr, size_t *size)--><!--Device-bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32_t **addr, size_t *size)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 20
@@ -643,6 +685,8 @@ const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)
 
 返回OH_AVFormat中包含的key-value组成的字符串。最大可返回1024字节的字符串，销毁format时释放字符串指针。
 
+<!--Device-const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)--><!--Device-const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
@@ -668,6 +712,8 @@ bool OH_AVFormat_SetIntBuffer(struct OH_AVFormat *format, const char *key, const
 **描述：**
 
 将指定长度int32_t类型的数据块写入OH_AVFormat。
+
+<!--Device-bool OH_AVFormat_SetIntBuffer(struct OH_AVFormat *format, const char *key, const int32_t *addr, size_t size)--><!--Device-bool OH_AVFormat_SetIntBuffer(struct OH_AVFormat *format, const char *key, const int32_t *addr, size_t size)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -698,6 +744,8 @@ uint32_t OH_AVFormat_GetKeyCount(OH_AVFormat *format)
 
 获取OH_AVFormat中包含的键总数。
 
+<!--Device-uint32_t OH_AVFormat_GetKeyCount(OH_AVFormat *format)--><!--Device-uint32_t OH_AVFormat_GetKeyCount(OH_AVFormat *format)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 23
@@ -723,6 +771,8 @@ bool OH_AVFormat_GetKey(OH_AVFormat *format, uint32_t index, const char **key)
 **描述：**
 
 通过索引从OH_AVFormat中获取键名字符串。
+
+<!--Device-bool OH_AVFormat_GetKey(OH_AVFormat *format, uint32_t index, const char **key)--><!--Device-bool OH_AVFormat_GetKey(OH_AVFormat *format, uint32_t index, const char **key)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

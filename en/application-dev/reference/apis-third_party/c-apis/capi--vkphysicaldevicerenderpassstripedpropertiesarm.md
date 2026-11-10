@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceRenderPassStripedPropertiesARM {...}--><!--Device-struct VkPhysicalDeviceRenderPassStripedPropertiesARM {...}-End-->
+
 ## Summary
 
 ### Member variables

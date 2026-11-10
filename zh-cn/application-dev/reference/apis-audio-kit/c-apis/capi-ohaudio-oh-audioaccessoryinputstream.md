@@ -8,11 +8,13 @@ typedef struct OH_AudioAccessoryInputStream OH_AudioAccessoryInputStream
 
 声明音频配件输入流。<br> 用于表示音频配件的输入音频流。
 
+<!--Device-typedef struct OH_AudioAccessoryInputStream OH_AudioAccessoryInputStream--><!--Device-typedef struct OH_AudioAccessoryInputStream OH_AudioAccessoryInputStream-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
-**相关模块：** [OHAudio](capi-others-ohaudio.md)
+**相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 
 **所在头文件：** [native_audio_accessory_common.h](capi-native-audio-accessory-common-h.md)
 

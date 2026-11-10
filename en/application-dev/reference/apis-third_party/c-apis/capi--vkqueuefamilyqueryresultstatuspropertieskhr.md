@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkQueueFamilyQueryResultStatusPropertiesKHR {...}--><!--Device-struct VkQueueFamilyQueryResultStatusPropertiesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

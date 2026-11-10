@@ -8,11 +8,13 @@ typedef struct OH_QoS_GewuCreateSessionResult {...} OH_QoS_GewuCreateSessionResu
 
 Return result of the **OH_QoS_GewuCreateSession()** API, used to encapsulate the execution status of the Gewu session creation operation. This struct supports unified handling of both success and failure scenarios. Upon success, the `session` field contains the handle to the created session. Upon failure, the `error` field stores the error code, helping you locate and handle exceptions.
 
+<!--Device-typedef struct OH_QoS_GewuCreateSessionResult {...} OH_QoS_GewuCreateSessionResult--><!--Device-typedef struct OH_QoS_GewuCreateSessionResult {...} OH_QoS_GewuCreateSessionResult-End-->
+
 **System capability**: SystemCapability.Resourceschedule.QoS.Core
 
 **Since**: 20
 
-**Related module**: [QoS](capi-others-qos.md)
+**Related module**: [QoS](capi-kernel-enhance-kit-qos.md)
 
 **Header file**: [qos.h](capi-qos-h.md)
 

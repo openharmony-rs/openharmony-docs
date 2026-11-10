@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoAV1SequenceHeader {...}--><!--Device-struct StdVideoAV1SequenceHeader {...}-End-->
+
 ## Summary
 
 ### Member variables

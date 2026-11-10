@@ -43,6 +43,8 @@ enum OH_ArkUI_NativeModule_UIEventInjection_ResultCode
 
 Enumerates the result codes of UI event injection.<br> This enumeration is shared by all injection APIs, including relaxed interaction injection (non-precise) and precise component-targeted injection. A nonzero result code indicates an execution failure, and its specific value conveys the failure reason.
 
+<!--Device-OH_ArkUI_NativeModule_UIEventInjection_ResultCode--><!--Device-OH_ArkUI_NativeModule_UIEventInjection_ResultCode-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -66,6 +68,8 @@ typedef void (*OH_ArkUI_NativeModule_UIEventInjectionCallback)(OH_ArkUI_NativeMo
 **Description**
 
 Callback for injection completion.<br> Reports the results of command dispatch and immediate component handling, without waiting for deferred effects or rendering. Each accepted request receives exactly one callback on the originating UI thread after the injection function returns. Callbacks on different UI threads are not globally serialized.
+
+<!--Device-typedef void (*OH_ArkUI_NativeModule_UIEventInjectionCallback)(OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData)--><!--Device-typedef void (*OH_ArkUI_NativeModule_UIEventInjectionCallback)(OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void *userData)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +96,8 @@ Injects a relaxed interaction command into the UI asynchronously.<br> The comman
 - scroll: mode (optional, default "auto"); action_info.direction ("forward" \| "backward" \| "left" \| "right" \| "up" \| "down", optional, default "forward"); action_info.distance, a non-negative physical-pixel value (optional, default one third of the window height); action_info.coordinates with x1 and y1 required, and x2 and y2 optional.
 - backpress: no parameters.
 - key: action_info.code, the virtual key code of the key, which must be a valid key code (required).<br> All positional coordinates are relative to the window, in physical pixels (px). If a required field is missing or a value is outside its valid range, ARKUI_ERROR_CODE_PARAM_INVALID is returned.<br> This function is thread-safe, can be called from any thread, does not block the caller, and is not async-signal-safe.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,6 +127,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_Contex
 **Description**
 
 Injects a control command into a target UI node asynchronously.<br> This API provides no cancellation operation or fixed completion timeout. Completion depends on UI-thread task processing. A caller-side wait timeout does not cancel an accepted request. Instance destruction does not cancel completion callbacks for accepted requests.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_ContextHandle uiContext, uint32_t uniqueId, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectCompositeCommand(ArkUI_ContextHandle uiContext, uint32_t uniqueId, const OH_ArkUI_NativeModule_UIJsonWrapper *command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void *userData)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

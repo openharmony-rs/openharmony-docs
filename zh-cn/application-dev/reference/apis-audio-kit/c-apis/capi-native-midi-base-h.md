@@ -57,6 +57,8 @@ enum OH_MIDIStatusCode
 
 MIDI状态码枚举。定义MIDI操作的状态码，用于表示操作成功或失败的原因。
 
+<!--Device-OH_MIDIStatusCode--><!--Device-OH_MIDIStatusCode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -90,6 +92,8 @@ enum OH_MIDIPortDirection
 
 表示端口方向的枚举。定义MIDI端口的数据传输方向。
 
+<!--Device-OH_MIDIPortDirection--><!--Device-OH_MIDIPortDirection-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -113,6 +117,8 @@ MIDI协议版本枚举，用于指定端口使用的MIDI协议行为。
 >
 > SDK始终使用UMP（Universal MIDI Packet）格式进行数据传输，无论选择何种协议。 此枚举定义连接的数据行为和语义，而不是数据结构。 MT（Message Type，消息类型）是UMP数据包的消息类型标识，不同MT值对应不同类型的MIDI消息。
 
+<!--Device-OH_MIDIProtocol--><!--Device-OH_MIDIProtocol-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -132,6 +138,8 @@ enum OH_MIDIDeviceType
 
 MIDI设备类型枚举。定义MIDI设备的连接类型。
 
+<!--Device-OH_MIDIDeviceType--><!--Device-OH_MIDIDeviceType-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -150,6 +158,8 @@ enum OH_MIDIDeviceChangeAction
 **描述：**
 
 设备连接状态变化操作枚举。用于标识设备的连接和断开事件。
+
+<!--Device-OH_MIDIDeviceChangeAction--><!--Device-OH_MIDIDeviceChangeAction-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
@@ -173,6 +183,8 @@ typedef void (*OH_MIDICallback_OnDeviceChange)(void *userData, OH_MIDIDeviceChan
 
 监控设备连接/断开连接的回调。
 
+<!--Device-typedef void (*OH_MIDICallback_OnDeviceChange)(void *userData, OH_MIDIDeviceChangeAction action, OH_MIDIDeviceInformation deviceInfo)--><!--Device-typedef void (*OH_MIDICallback_OnDeviceChange)(void *userData, OH_MIDIDeviceChangeAction action, OH_MIDIDeviceInformation deviceInfo)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -194,6 +206,8 @@ typedef void (*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code)
 **描述：**
 
 处理客户端级别错误的回调。当MIDI服务发生关键错误（如服务崩溃）时调用。应用可能需要重新创建客户端。
+
+<!--Device-typedef void (*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code)--><!--Device-typedef void (*OH_MIDICallback_OnError)(void *userData, OH_MIDIStatusCode code)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
@@ -220,6 +234,8 @@ typedef void (*OH_MIDIDevice_OnReceived)(void *userData, const OH_MIDIEvent *eve
 >
 > 内存安全与线程安全注意事项： - 内存安全：events数组及其中所有数据指针是临时的，仅在此回调期间有效。 在回调返回后访问这些指针会导致未定义行为（崩溃、内存损坏）。调用方必须复制任何需要保留的数据。 - 线程安全：此回调在高优先级系统线程上调用。不要执行阻塞操作、大量计算或I/O操作。
 
+<!--Device-typedef void (*OH_MIDIDevice_OnReceived)(void *userData, const OH_MIDIEvent *events, size_t eventCount)--><!--Device-typedef void (*OH_MIDIDevice_OnReceived)(void *userData, const OH_MIDIEvent *events, size_t eventCount)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -241,6 +257,8 @@ typedef void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MID
 **描述：**
 
 异步打开BLE设备的结果回调。 此回调在系统线程上调用，不要在此回调中执行阻塞操作、大量计算或I/O操作。
+
+<!--Device-typedef void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MIDIDevice *device, OH_MIDIDeviceInformation info)--><!--Device-typedef void (*OH_MIDIClient_OnDeviceOpened)(void *userData, bool opened, OH_MIDIDevice *device, OH_MIDIDeviceInformation info)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 

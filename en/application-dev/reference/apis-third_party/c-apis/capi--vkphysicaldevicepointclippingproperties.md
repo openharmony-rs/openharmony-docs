@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePointClippingProperties {...}--><!--Device-struct VkPhysicalDevicePointClippingProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

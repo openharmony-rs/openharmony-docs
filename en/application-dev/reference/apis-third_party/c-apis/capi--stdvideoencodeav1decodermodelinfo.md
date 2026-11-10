@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoEncodeAV1DecoderModelInfo {...}--><!--Device-struct StdVideoEncodeAV1DecoderModelInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

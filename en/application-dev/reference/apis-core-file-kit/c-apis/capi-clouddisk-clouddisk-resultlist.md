@@ -8,11 +8,13 @@ struct CloudDisk_ResultList {...}
 
 A struct that encapsulates the file sync result. It includes the absolute path of the file, sync result, and sync state or failure cause.
 
+<!--Device-struct CloudDisk_ResultList {...}--><!--Device-struct CloudDisk_ResultList {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
-**Related module**: [CloudDisk](capi-others-clouddisk.md)
+**Related module**: [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 **Header file**: [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

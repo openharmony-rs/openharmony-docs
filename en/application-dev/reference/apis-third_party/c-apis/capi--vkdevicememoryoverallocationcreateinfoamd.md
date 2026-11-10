@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceMemoryOverallocationCreateInfoAMD {...}--><!--Device-struct VkDeviceMemoryOverallocationCreateInfoAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

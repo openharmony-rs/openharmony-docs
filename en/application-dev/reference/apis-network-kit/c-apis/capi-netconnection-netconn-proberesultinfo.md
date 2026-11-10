@@ -8,11 +8,13 @@ struct NetConn_ProbeResultInfo {...}
 
 Defines the probe result.
 
+<!--Device-struct NetConn_ProbeResultInfo {...}--><!--Device-struct NetConn_ProbeResultInfo {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 20
 
-**Related module**: [NetConnection](capi-others-netconnection.md)
+**Related module**: [NetConnection](capi-network-kit-netconnection.md)
 
 **Header file**: [net_connection_type.h](capi-net-connection-type-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceConditionalRenderingFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceConditionalRenderingFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

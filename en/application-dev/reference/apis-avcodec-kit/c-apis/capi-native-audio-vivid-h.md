@@ -58,6 +58,8 @@ enum OH_AudioVividSignalFormat
 
 Enumerates the signal formats of the Audio Vivid encoder.
 
+<!--Device-OH_AudioVividSignalFormat--><!--Device-OH_AudioVividSignalFormat-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
@@ -87,6 +89,8 @@ Creates an Audio Vivid metadata builder.
 >
 > Lifecycle Management:* *     The instance created by this function must be manually released by calling [OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy) when it is no longer needed to prevent memory leaks.
 
+<!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_Create(OH_AudioVividMetaBuilder **builder, const OH_AVFormat *format)--><!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_Create(OH_AudioVividMetaBuilder **builder, const OH_AVFormat *format)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
@@ -113,6 +117,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectPos(OH_AudioVividMetaBuilder *
 **Description**
 
 Updates the position of the audio object when the Audio Vivid signal format is [OH_AudioVividSignalFormat](capi-native-audio-vivid-h.md#oh_audiovividsignalformat).OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX. In this signal format, the channel arrangement in the input encoded Pulse Code Modulation (PCM) data is as follows: bed channels come first, followed by object channels.<br> The object channels correspond to **objectIndex** in sequence, starting from 0.
+
+<!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectPos(OH_AudioVividMetaBuilder *builder, int32_t objectIndex, OH_AudioObjectPosition pos)--><!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectPos(OH_AudioVividMetaBuilder *builder, int32_t objectIndex, OH_AudioObjectPosition pos)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -142,6 +148,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectGain(OH_AudioVividMetaBuilder 
 
 Updates the linear gain of audio object rendering when the Audio Vivid signal format is [OH_AudioVividSignalFormat](capi-native-audio-vivid-h.md#oh_audiovividsignalformat).OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX.
 
+<!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectGain(OH_AudioVividMetaBuilder *builder, int32_t objectIndex, float gain)--><!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectGain(OH_AudioVividMetaBuilder *builder, int32_t objectIndex, float gain)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
@@ -169,6 +177,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMetaLen(const OH_AudioVividMetaBuilder 
 **Description**
 
 Obtains the length of metadata.
+
+<!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_GetMetaLen(const OH_AudioVividMetaBuilder *builder, bool withStaticMeta, int32_t *len)--><!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_GetMetaLen(const OH_AudioVividMetaBuilder *builder, bool withStaticMeta, int32_t *len)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -198,6 +208,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMeta(const OH_AudioVividMetaBuilder *bu
 
 Obtains the metadata buffer.
 
+<!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_GetMeta(const OH_AudioVividMetaBuilder *builder, bool withStaticMeta, uint8_t *buffer, int32_t len)--><!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_GetMeta(const OH_AudioVividMetaBuilder *builder, bool withStaticMeta, uint8_t *buffer, int32_t len)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
@@ -226,6 +238,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_Destroy(OH_AudioVividMetaBuilder *builder)
 **Description**
 
 Destroys an Audio Vivid metadata builder and releases resources.
+
+<!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_Destroy(OH_AudioVividMetaBuilder *builder)--><!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_Destroy(OH_AudioVividMetaBuilder *builder)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -257,6 +271,8 @@ Creates an empty Audio Vivid metadata builder.<br> This function is used for mer
 >
 > Lifecycle Management:* *      The instance created by this function must be manually released by calling [OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy) when it is no longer needed to prevent memory leaks.
 
+<!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_CreateEmptyBuilder(OH_AudioVividMetaBuilder **builder)--><!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_CreateEmptyBuilder(OH_AudioVividMetaBuilder **builder)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
@@ -286,6 +302,8 @@ Updates the base metadata of the builder.<br> The buffer contains complete Audio
 > **Note**:
 >
 > Constraint:* *      The total number of soundbed channels plus base objects plus added objects must not exceed 11.
+
+<!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *builder, const uint8_t *buffer, int32_t len)--><!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *builder, const uint8_t *buffer, int32_t len)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -319,6 +337,8 @@ Adds a new audio object to the builder.<br> After adding an object, you can upda
 >
 > Constraint:* *      The total number of soundbed channels plus base objects plus added objects must not exceed 11.
 
+<!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_AddObject(OH_AudioVividMetaBuilder *builder, int32_t *objectIndex)--><!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_AddObject(OH_AudioVividMetaBuilder *builder, int32_t *objectIndex)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 26.0.0
@@ -345,6 +365,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *bui
 **Description**
 
 Removes an audio object from the builder.<br> Only objects added by [OH_AudioVividMetaBuilder_AddObject](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_addobject) can be removed. Base objects from the base metadata cannot be removed. After removal, the indices of remaining objects remain unchanged.
+
+<!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *builder, int32_t objectIndex)--><!--Device-OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *builder, int32_t objectIndex)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 

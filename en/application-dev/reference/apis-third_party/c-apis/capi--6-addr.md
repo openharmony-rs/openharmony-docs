@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct 6_addr {...}--><!--Device-struct 6_addr {...}-End-->
+
 ## Summary
 
 ### Member variables

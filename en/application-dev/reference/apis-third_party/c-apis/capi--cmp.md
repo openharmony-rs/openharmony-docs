@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct cmp {...}--><!--Device-struct cmp {...}-End-->
+
 ## Summary
 
 ### Member variables

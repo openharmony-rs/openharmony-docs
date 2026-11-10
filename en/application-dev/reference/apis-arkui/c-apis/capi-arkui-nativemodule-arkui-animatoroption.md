@@ -8,11 +8,13 @@ typedef struct ArkUI_AnimatorOption ArkUI_AnimatorOption
 
 Defines an animator animation option object, which is used to set animation attributes when creating an animator animation.
 
+<!--Device-typedef struct ArkUI_AnimatorOption ArkUI_AnimatorOption--><!--Device-typedef struct ArkUI_AnimatorOption ArkUI_AnimatorOption-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_animate.h](capi-native-animate-h.md)
 

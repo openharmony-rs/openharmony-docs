@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceImageProcessing2FeaturesQCOM {...}--><!--Device-struct VkPhysicalDeviceImageProcessing2FeaturesQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

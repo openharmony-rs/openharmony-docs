@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct d_opt_home_agent_info {...}--><!--Device-struct d_opt_home_agent_info {...}-End-->
+
 ## Summary
 
 ### Member variables

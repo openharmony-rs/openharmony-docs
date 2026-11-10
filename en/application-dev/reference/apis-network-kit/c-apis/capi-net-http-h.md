@@ -40,6 +40,8 @@ Http_Headers *OH_Http_CreateHeaders(void)
 
 Creates headers for a request or response.
 
+<!--Device-Http_Headers *OH_Http_CreateHeaders(void)--><!--Device-Http_Headers *OH_Http_CreateHeaders(void)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
@@ -60,6 +62,8 @@ void OH_Http_DestroyHeaders(Http_Headers **headers)
 
 Destroys the headers of a request or response.
 
+<!--Device-void OH_Http_DestroyHeaders(Http_Headers **headers)--><!--Device-void OH_Http_DestroyHeaders(Http_Headers **headers)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
@@ -79,6 +83,8 @@ uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, 
 **Description**
 
 Sets the key-value pair of the request or response header.
+
+<!--Device-uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, const char *value)--><!--Device-uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, const char *value)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -108,6 +114,8 @@ Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name
 
 Obtains the value of a request or response header by key.
 
+<!--Device-Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name)--><!--Device-Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
@@ -135,6 +143,8 @@ Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)
 
 Obtains all the key-value pairs of a request or response header.
 
+<!--Device-Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)--><!--Device-Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
@@ -161,6 +171,8 @@ void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)
 
 Destroys all key-value pairs obtained in [OH_Http_GetHeaderEntries](capi-net-http-h.md#oh_http_getheaderentries).
 
+<!--Device-void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)--><!--Device-void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
@@ -180,6 +192,8 @@ Http_Request *OH_Http_CreateRequest(const char *url)
 **Description**
 
 Create a http request.
+
+<!--Device-Http_Request *OH_Http_CreateRequest(const char *url)--><!--Device-Http_Request *OH_Http_CreateRequest(const char *url)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -206,6 +220,8 @@ int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_
 **Description**
 
 Initiates an HTTP request.
+
+<!--Device-int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_EventsHandler handler)--><!--Device-int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_EventsHandler handler)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -236,6 +252,8 @@ void OH_Http_Destroy(struct Http_Request **request)
 **Description**
 
 Destroy the HTTP request.
+
+<!--Device-void OH_Http_Destroy(struct Http_Request **request)--><!--Device-void OH_Http_Destroy(struct Http_Request **request)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 

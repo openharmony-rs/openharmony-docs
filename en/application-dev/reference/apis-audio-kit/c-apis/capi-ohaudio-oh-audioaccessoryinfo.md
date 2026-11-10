@@ -8,11 +8,13 @@ typedef struct OH_AudioAccessoryInfo {...} OH_AudioAccessoryInfo
 
 Defines the basic information of an audio accessory.<br> <b>Version Control:</b> Callers MUST set structSize to sizeof(OH_AudioAccessoryInfo) before passing this structure to the framework.
 
+<!--Device-typedef struct OH_AudioAccessoryInfo {...} OH_AudioAccessoryInfo--><!--Device-typedef struct OH_AudioAccessoryInfo {...} OH_AudioAccessoryInfo-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 
-**Related module**: [OHAudio](capi-others-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 **Header file**: [native_audio_accessory_common.h](capi-native-audio-accessory-common-h.md)
 

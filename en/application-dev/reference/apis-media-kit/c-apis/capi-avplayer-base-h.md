@@ -109,6 +109,8 @@ enum AVPlayerState
 
 Enumerates the AVPlayer states.
 
+<!--Device-AVPlayerState--><!--Device-AVPlayerState-End-->
+
 **Since**: 11
 
 | Enum item | Description |
@@ -133,6 +135,8 @@ enum AVPlayerSeekMode
 
 Enumerates the seek modes.
 
+<!--Device-AVPlayerSeekMode--><!--Device-AVPlayerSeekMode-End-->
+
 **Since**: 11
 
 | Enum item | Description |
@@ -151,6 +155,8 @@ enum AVPlaybackSpeed
 **Description**
 
 Enumerates the playback speeds of the AVPlayer.
+
+<!--Device-AVPlaybackSpeed--><!--Device-AVPlaybackSpeed-End-->
 
 **Since**: 11
 
@@ -176,6 +182,8 @@ enum AVPlayerOnInfoType
 **Description**
 
 Enumerates the types of messages received by the AVPlayer. The enum can be used in **OH_AVPlayerOnInfoCallback** and **OH_AVPlayerOnInfo** (deprecated) to indicate the type of information received by the AVPlayer. Starting from API version 12, you are advised to use [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) instead. Different information (**infoBody**) can be obtained for different **OnInfo** types. **infoBody** contains the key-value pairs. For details, see the following enumerated value table. If you are using API version 11 for development, use **OH_AVPlayerOnInfo (deprecated)**. For details about the mappings used in this deprecated API, see [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo).
+
+<!--Device-AVPlayerOnInfoType--><!--Device-AVPlayerOnInfoType-End-->
 
 **Since**: 11
 
@@ -212,6 +220,8 @@ enum AVPlayerBufferingType
 
 Enumerates the types of buffer messages of the AVPlayer.
 
+<!--Device-AVPlayerBufferingType--><!--Device-AVPlayerBufferingType-End-->
+
 **Since**: 12
 
 | Enum item | Description |
@@ -231,6 +241,8 @@ enum AVPlayerTrackSwitchMode
 
 Enumerates the track switching modes.
 
+<!--Device-AVPlayerTrackSwitchMode--><!--Device-AVPlayerTrackSwitchMode-End-->
+
 **Since**: 23
 
 | Enum item | Description |
@@ -248,6 +260,8 @@ enum OH_VideoOutputResult
 **Description**
 
 Result of Video output.
+
+<!--Device-OH_VideoOutputResult--><!--Device-OH_VideoOutputResult-End-->
 
 **Since**: 26.0.0
 
@@ -268,6 +282,8 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 **Description**
 
 Called when the AVPlayer receives a message.
+
+<!--Device-typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)--><!--Device-typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)-End-->
 
 **Since**: 11
 
@@ -293,6 +309,8 @@ typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoTyp
 
 Called when the AVPlayer receives a message. If this callback is successfully set, the **OH_AVPlayerOnInfo**<br>function will not be invoked.
 
+<!--Device-typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoType type, OH_AVFormat* infoBody, void *userData)--><!--Device-typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoType type, OH_AVFormat* infoBody, void *userData)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -314,6 +332,8 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 Called when an error occurs in the AVPlayer. This callback is available in API version 9 or later.
 
+<!--Device-typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)--><!--Device-typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)-End-->
+
 **Since**: 11
 
 **Deprecated**: 12
@@ -325,7 +345,7 @@ Called when an error occurs in the AVPlayer. This callback is available in API v
 | Parameter | Description |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to an OH_AVPlayer instance. |
-| int32_t errorCode | Error code. **AV_ERR_NO_MEMORY**: No memory. The value is **1**. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The operation is not allowed. The value is **2**. AV_ERR_INVALID_VA: Invalid value. The value is **3**. **AV_ERR_IO**: I/O error. The value is **4**. **AV_ERR_TIMEOUT**: Timeout. The value is **5**. **AV_ERR_UNKNOWN**: Unknown error. The value is **6**. [AV_ERR_SERVICE_DIED](capi-native-averrors-h.md#oh_averrcode): The service is dead. The value is **7**. **AV_ERR_INVALID_STATE**: The operation is not supported in the current state. The value is **8**. [AV_ERR_UNSUPPORT](capi-native-averrors-h.md#oh_averrcode): The function is not supported. The value is **9**. **AV_ERR_EXTEND_START**: Initial value for extended error codes. The value is **100**. |
+| int32_t errorCode | Error code. **AV_ERR_NO_MEMORY**: No memory. The value is **1**. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is not allowed. The value is **2**. AV_ERR_INVALID_VA: Invalid value. The value is **3**. **AV_ERR_IO**: I/O error. The value is **4**. **AV_ERR_TIMEOUT**: Timeout. The value is **5**. **AV_ERR_UNKNOWN**: Unknown error. The value is **6**. [AV_ERR_SERVICE_DIED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The service is dead. The value is **7**. **AV_ERR_INVALID_STATE**: The operation is not supported in the current state. The value is **8**. [AV_ERR_UNSUPPORT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The function is not supported. The value is **9**. **AV_ERR_EXTEND_START**: Initial value for extended error codes. The value is **100**. |
 | const char *errorMsg | Error message. |
 
 ### OH_AVPlayerOnErrorCallback()
@@ -338,6 +358,8 @@ typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCod
 
 Called when an error occurs in the AVPlayer. If this callback is successfully set, the **OH_AVPlayerOnError**<br>function will not be invoked.
 
+<!--Device-typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg, void *userData)--><!--Device-typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg, void *userData)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -345,7 +367,7 @@ Called when an error occurs in the AVPlayer. If this callback is successfully se
 | Parameter | Description |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to an OH_AVPlayer instance. |
-| int32_t errorCode | Error code. **AV_ERR_NO_MEMORY**: No memory. The value is **1**. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The operation is not allowed. The value is **2**. AV_ERR_INVALID_VA: Invalid value. The value is **3**. **AV_ERR_IO**: I/O error. For API versions 12 and 13, the value is **4**. Starting from API version 14, it corresponds to more specific error codes ranging from 5411001 to 5411011. **AV_ERR_TIMEOUT**: Timeout. The value is **5**. **AV_ERR_UNKNOWN**: Unknown error. The value is **6**. [AV_ERR_SERVICE_DIED](capi-native-averrors-h.md#oh_averrcode): The service is dead. The value is **7**. **AV_ERR_INVALID_STATE**: The operation is not supported in the current state. The value is **8**. [AV_ERR_UNSUPPORT](capi-native-averrors-h.md#oh_averrcode): The function is not supported. The value is **9**. **AV_ERR_EXTEND_START**: Initial value for extended error codes. The value is **100**. |
+| int32_t errorCode | Error code. **AV_ERR_NO_MEMORY**: No memory. The value is **1**. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The operation is not allowed. The value is **2**. AV_ERR_INVALID_VA: Invalid value. The value is **3**. **AV_ERR_IO**: I/O error. For API versions 12 and 13, the value is **4**. Starting from API version 14, it corresponds to more specific error codes ranging from 5411001 to 5411011. **AV_ERR_TIMEOUT**: Timeout. The value is **5**. **AV_ERR_UNKNOWN**: Unknown error. The value is **6**. [AV_ERR_SERVICE_DIED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The service is dead. The value is **7**. **AV_ERR_INVALID_STATE**: The operation is not supported in the current state. The value is **8**. [AV_ERR_UNSUPPORT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The function is not supported. The value is **9**. **AV_ERR_EXTEND_START**: Initial value for extended error codes. The value is **100**. |
 | const char *errorMsg | Error message, only valid in callback function. |
 | void *userData | Pointer to user specific data. |
 
@@ -358,6 +380,8 @@ typedef void (*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double
 **Description**
 
 Called when the maximum audio amplitude is calculated.
+
+<!--Device-typedef void (*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double *amplitudes, uint32_t size, void *userData)--><!--Device-typedef void (*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double *amplitudes, uint32_t size, void *userData)-End-->
 
 **Since**: 23
 
@@ -380,6 +404,8 @@ typedef void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_
 
 Called for obtaining SEI messages. This function is used to subscribe to SEI message events and returns detailed SEI information.
 
+<!--Device-typedef void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_AVSeiMessageArray *message, int32_t playbackPosition, void *userData)--><!--Device-typedef void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_AVSeiMessageArray *message, int32_t playbackPosition, void *userData)-End-->
+
 **Since**: 23
 
 **Parameters**:
@@ -401,6 +427,8 @@ typedef void (*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *p
 
 Describes the handle used to obtain the decoded audio PCM data.
 
+<!--Device-typedef void (*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)--><!--Device-typedef void (*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)-End-->
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -420,6 +448,8 @@ typedef void (*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer
 **Description**
 
 This callback provides a PCM buffer for processing. AVPlayer needs to use the processed data for audio playback, and processing must be completed in a timely manner, otherwise it will block playback. Do not change sampling rate, channels, or sampling format.
+
+<!--Device-typedef void (*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)--><!--Device-typedef void (*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)-End-->
 
 **Since**: 26.0.0
 

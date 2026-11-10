@@ -8,11 +8,13 @@ struct Rdb_ProgressDetails {...}
 
 Describes detail of the cloud sync progress.
 
+<!--Device-struct Rdb_ProgressDetails {...}--><!--Device-struct Rdb_ProgressDetails {...}-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
 
-**Related module**: [RDB](capi-others-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 **Header file**: [relational_store.h](capi-relational-store-h.md)
 

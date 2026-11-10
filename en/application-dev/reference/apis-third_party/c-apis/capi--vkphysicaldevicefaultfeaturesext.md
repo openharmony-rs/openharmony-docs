@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceFaultFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceFaultFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

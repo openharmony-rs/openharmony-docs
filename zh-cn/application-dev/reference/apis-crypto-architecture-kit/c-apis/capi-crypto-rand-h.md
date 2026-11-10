@@ -45,6 +45,8 @@ OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)
 
 创建随机数生成器上下文。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)--><!--Device-OH_Crypto_ErrCode OH_CryptoRand_Create(OH_CryptoRand **ctx)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -72,6 +74,8 @@ OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Cryp
 **描述：**
 
 生成随机数。
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Crypto_DataBlob *out)--><!--Device-OH_Crypto_ErrCode OH_CryptoRand_GenerateRandom(OH_CryptoRand *ctx, int len, Crypto_DataBlob *out)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -103,6 +107,8 @@ const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)
 
 获取随机数生成器的算法名称。
 
+<!--Device-const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)--><!--Device-const char *OH_CryptoRand_GetAlgoName(OH_CryptoRand *ctx)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
@@ -128,6 +134,8 @@ OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *see
 **描述：**
 
 设置随机数生成器的种子。
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *seed)--><!--Device-OH_Crypto_ErrCode OH_CryptoRand_SetSeed(OH_CryptoRand *ctx, Crypto_DataBlob *seed)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 
@@ -156,6 +164,8 @@ OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)
 
 启用硬件熵源。
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)--><!--Device-OH_Crypto_ErrCode OH_CryptoRand_EnableHardwareEntropy(OH_CryptoRand *ctx)-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 21
@@ -181,6 +191,8 @@ void OH_CryptoRand_Destroy(OH_CryptoRand *ctx)
 **描述：**
 
 销毁随机数生成器上下文。
+
+<!--Device-void OH_CryptoRand_Destroy(OH_CryptoRand *ctx)--><!--Device-void OH_CryptoRand_Destroy(OH_CryptoRand *ctx)-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
 

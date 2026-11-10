@@ -8,11 +8,13 @@ typedef struct OH_AVTranscoder OH_AVTranscoder
 
 定义AVTranscoder结构体类型。
 
+<!--Device-typedef struct OH_AVTranscoder OH_AVTranscoder--><!--Device-typedef struct OH_AVTranscoder OH_AVTranscoder-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
 **起始版本：** 20
 
-**相关模块：** [AVTranscoder](capi-others-avtranscoder.md)
+**相关模块：** [AVTranscoder](capi-media-kit-avtranscoder.md)
 
 **所在头文件：** [avtranscoder_base.h](capi-avtranscoder-base-h.md)
 

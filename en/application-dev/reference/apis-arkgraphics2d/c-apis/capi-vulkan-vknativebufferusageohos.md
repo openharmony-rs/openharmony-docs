@@ -8,11 +8,13 @@ struct VkNativeBufferUsageOHOS {...}
 
 Defines the usage of a <b>OH_NativeBuffer</b>.
 
+<!--Device-struct VkNativeBufferUsageOHOS {...}--><!--Device-struct VkNativeBufferUsageOHOS {...}-End-->
+
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
 
-**Related module**: [Vulkan](capi-others-vulkan.md)
+**Related module**: [Vulkan](capi-arkgraphics2d-vulkan.md)
 
 **Header file**: [vulkan_ohos.h](capi-vulkan-ohos-h.md)
 

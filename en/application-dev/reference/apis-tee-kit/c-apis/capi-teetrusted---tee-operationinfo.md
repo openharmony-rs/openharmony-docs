@@ -8,11 +8,13 @@ typedef struct __TEE_OperationInfo {...} TEE_OperationInfo
 
 Defines the operation information.
 
+<!--Device-typedef struct __TEE_OperationInfo {...} TEE_OperationInfo--><!--Device-typedef struct __TEE_OperationInfo {...} TEE_OperationInfo-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_crypto_api.h](capi-tee-crypto-api-h.md)
 

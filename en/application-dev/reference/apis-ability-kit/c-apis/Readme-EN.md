@@ -33,6 +33,7 @@
     - [AbilityRuntime_Context](capi-abilityruntime-abilityruntime-context.md)
     - [AbilityRuntime_Context*](capi-abilityruntime-abilityruntime-context8h.md)
     - [OH_AbilityRuntime_ModularObjectExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md)
+    - [AbilityRuntime_StartOptions](capi-abilityruntime-abilityruntime-startoptions.md)
     - [OH_AbilityRuntime_ModObjDispatcher_TypeInfo](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-typeinfo.md)
     - [OH_AbilityRuntime_ModObjDispatcher_Variant](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-variant.md)
     - [OH_AbilityRuntime_ModObjDispatcher_InputParams](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-inputparams.md)

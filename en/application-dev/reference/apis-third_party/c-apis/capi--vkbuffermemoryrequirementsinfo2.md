@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBufferMemoryRequirementsInfo2 {...}--><!--Device-struct VkBufferMemoryRequirementsInfo2 {...}-End-->
+
 ## Summary
 
 ### Member variables

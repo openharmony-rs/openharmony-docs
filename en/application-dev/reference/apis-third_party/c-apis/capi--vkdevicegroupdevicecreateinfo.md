@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceGroupDeviceCreateInfo {...}--><!--Device-struct VkDeviceGroupDeviceCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

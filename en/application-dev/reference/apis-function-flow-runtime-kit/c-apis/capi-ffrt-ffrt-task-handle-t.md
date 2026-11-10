@@ -8,11 +8,13 @@ typedef void* ffrt_task_handle_t
 
 Defines the task handle, which identifies different tasks.
 
+<!--Device-typedef void* ffrt_task_handle_t--><!--Device-typedef void* ffrt_task_handle_t-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-others-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 **Header file**: [type_def.h](capi-type-def-h.md)
 

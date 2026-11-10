@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBindIndexBufferIndirectCommandNV {...}--><!--Device-struct VkBindIndexBufferIndirectCommandNV {...}-End-->
+
 ## Summary
 
 ### Member variables

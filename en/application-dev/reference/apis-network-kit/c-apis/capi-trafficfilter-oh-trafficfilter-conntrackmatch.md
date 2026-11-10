@@ -8,11 +8,13 @@ struct OH_TrafficFilter_ConntrackMatch {...}
 
 Connection tracking match condition<br> Matches packets based on connection tracking states
 
+<!--Device-struct OH_TrafficFilter_ConntrackMatch {...}--><!--Device-struct OH_TrafficFilter_ConntrackMatch {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.1
 
-**Related module**: [TrafficFilter](capi-others-trafficfilter.md)
+**Related module**: [TrafficFilter](capi-network-kit-trafficfilter.md)
 
 **Header file**: [net_trafficfilter_type.h](capi-net-trafficfilter-type-h.md)
 

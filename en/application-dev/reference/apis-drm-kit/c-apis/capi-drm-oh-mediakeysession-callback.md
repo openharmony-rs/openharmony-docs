@@ -8,11 +8,13 @@ struct OH_MediaKeySession_Callback {...}
 
 The OH_MediaKeySession_Callback struct describes the callbacks for media key session events such as key expiration and key changes. It provides a MediaKeySession instance, making it suitable for multi-session decryption scenarios.
 
+<!--Device-struct OH_MediaKeySession_Callback {...}--><!--Device-struct OH_MediaKeySession_Callback {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 12
 
-**Related module**: [Drm](capi-others-drm.md)
+**Related module**: [Drm](capi-drm-kit-drm.md)
 
 **Header file**: [native_mediakeysession.h](capi-native-mediakeysession-h.md)
 

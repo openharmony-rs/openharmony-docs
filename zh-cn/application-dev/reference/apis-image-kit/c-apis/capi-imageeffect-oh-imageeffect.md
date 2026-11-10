@@ -8,11 +8,13 @@ typedef struct OH_ImageEffect OH_ImageEffect
 
 定义效果器结构类型。
 
+<!--Device-typedef struct OH_ImageEffect OH_ImageEffect--><!--Device-typedef struct OH_ImageEffect OH_ImageEffect-End-->
+
 **系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
-**相关模块：** [ImageEffect](capi-others-imageeffect.md)
+**相关模块：** [ImageEffect](capi-image-kit-imageeffect.md)
 
 **所在头文件：** [image_effect.h](capi-image-effect-h.md)
 

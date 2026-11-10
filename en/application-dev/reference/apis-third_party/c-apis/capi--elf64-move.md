@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf64_Move {...}--><!--Device-struct Elf64_Move {...}-End-->
+
 ## Summary
 
 ### Member variables

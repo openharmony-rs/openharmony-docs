@@ -35,6 +35,8 @@ bool OH_NativeFence_IsValid(int fenceFd)
 
 检查fenceFd是否有效。
 
+<!--Device-bool OH_NativeFence_IsValid(int fenceFd)--><!--Device-bool OH_NativeFence_IsValid(int fenceFd)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 20
@@ -60,6 +62,8 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 **描述：**
 
 阻塞传入的fenceFd。最大阻塞时间由超时参数决定。传入的fenceFd需要用户自己关闭。
+
+<!--Device-bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)--><!--Device-bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
@@ -88,6 +92,8 @@ bool OH_NativeFence_WaitForever(int fenceFd)
 
 永久阻塞传入的fenceFd。传入的fenceFd需要用户自己关闭。
 
+<!--Device-bool OH_NativeFence_WaitForever(int fenceFd)--><!--Device-bool OH_NativeFence_WaitForever(int fenceFd)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 20
@@ -113,6 +119,8 @@ void OH_NativeFence_Close(int fenceFd)
 **描述：**
 
 关闭fenceFd。
+
+<!--Device-void OH_NativeFence_Close(int fenceFd)--><!--Device-void OH_NativeFence_Close(int fenceFd)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 

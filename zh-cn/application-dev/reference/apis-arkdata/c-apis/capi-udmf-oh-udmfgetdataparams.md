@@ -8,11 +8,13 @@ typedef struct OH_UdmfGetDataParams OH_UdmfGetDataParams
 
 定义异步获取UDMF数据的请求参数。
 
+<!--Device-typedef struct OH_UdmfGetDataParams OH_UdmfGetDataParams--><!--Device-typedef struct OH_UdmfGetDataParams OH_UdmfGetDataParams-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 15
 
-**相关模块：** [UDMF](capi-others-udmf.md)
+**相关模块：** [UDMF](capi-arkdata-udmf.md)
 
 **所在头文件：** [udmf.h](capi-udmf-h.md)
 

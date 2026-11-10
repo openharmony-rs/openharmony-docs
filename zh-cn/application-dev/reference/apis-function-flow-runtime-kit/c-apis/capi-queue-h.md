@@ -71,6 +71,8 @@ enum ffrt_queue_type_t
 
 枚举队列类型。
 
+<!--Device-ffrt_queue_type_t--><!--Device-ffrt_queue_type_t-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 12
@@ -93,6 +95,8 @@ FFRT_C_API int ffrt_queue_attr_init(ffrt_queue_attr_t* attr)
 **描述：**
 
 初始化队列属性。<br> 该队列属性不再使用时，必须通过[ffrt_queue_attr_destroy](capi-queue-h.md#ffrt_queue_attr_destroy)销毁。
+
+<!--Device-FFRT_C_API int ffrt_queue_attr_init(ffrt_queue_attr_t* attr)--><!--Device-FFRT_C_API int ffrt_queue_attr_init(ffrt_queue_attr_t* attr)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -120,6 +124,8 @@ FFRT_C_API void ffrt_queue_attr_destroy(ffrt_queue_attr_t* attr)
 
 销毁队列属性。<br> 该队列属性必须已通过[ffrt_queue_attr_init](capi-queue-h.md#ffrt_queue_attr_init)初始化。
 
+<!--Device-FFRT_C_API void ffrt_queue_attr_destroy(ffrt_queue_attr_t* attr)--><!--Device-FFRT_C_API void ffrt_queue_attr_destroy(ffrt_queue_attr_t* attr)-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
@@ -139,6 +145,8 @@ FFRT_C_API void ffrt_queue_attr_set_qos(ffrt_queue_attr_t* attr, ffrt_qos_t qos)
 **描述：**
 
 设置队列属性的QoS。
+
+<!--Device-FFRT_C_API void ffrt_queue_attr_set_qos(ffrt_queue_attr_t* attr, ffrt_qos_t qos)--><!--Device-FFRT_C_API void ffrt_queue_attr_set_qos(ffrt_queue_attr_t* attr, ffrt_qos_t qos)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -160,6 +168,8 @@ FFRT_C_API ffrt_qos_t ffrt_queue_attr_get_qos(const ffrt_queue_attr_t* attr)
 **描述：**
 
 获取队列属性的QoS。
+
+<!--Device-FFRT_C_API ffrt_qos_t ffrt_queue_attr_get_qos(const ffrt_queue_attr_t* attr)--><!--Device-FFRT_C_API ffrt_qos_t ffrt_queue_attr_get_qos(const ffrt_queue_attr_t* attr)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -187,6 +197,8 @@ FFRT_C_API void ffrt_queue_attr_set_timeout(ffrt_queue_attr_t* attr, uint64_t ti
 
 设置队列属性的任务执行超时时长。
 
+<!--Device-FFRT_C_API void ffrt_queue_attr_set_timeout(ffrt_queue_attr_t* attr, uint64_t timeout_us)--><!--Device-FFRT_C_API void ffrt_queue_attr_set_timeout(ffrt_queue_attr_t* attr, uint64_t timeout_us)-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
@@ -207,6 +219,8 @@ FFRT_C_API uint64_t ffrt_queue_attr_get_timeout(const ffrt_queue_attr_t* attr)
 **描述：**
 
 获取队列属性的任务执行超时时长。
+
+<!--Device-FFRT_C_API uint64_t ffrt_queue_attr_get_timeout(const ffrt_queue_attr_t* attr)--><!--Device-FFRT_C_API uint64_t ffrt_queue_attr_get_timeout(const ffrt_queue_attr_t* attr)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -234,6 +248,8 @@ FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_funct
 
 设置队列属性的超时回调函数。<br> 当队列中的任务执行时间超过通过[ffrt_queue_attr_set_timeout](capi-queue-h.md#ffrt_queue_attr_set_timeout)设置的超时时长时触发该回调。
 
+<!--Device-FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_function_header_t* f)--><!--Device-FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_function_header_t* f)-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
@@ -254,6 +270,8 @@ FFRT_C_API ffrt_function_header_t* ffrt_queue_attr_get_callback(const ffrt_queue
 **描述：**
 
 获取队列属性的超时回调函数。
+
+<!--Device-FFRT_C_API ffrt_function_header_t* ffrt_queue_attr_get_callback(const ffrt_queue_attr_t* attr)--><!--Device-FFRT_C_API ffrt_function_header_t* ffrt_queue_attr_get_callback(const ffrt_queue_attr_t* attr)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -281,6 +299,8 @@ FFRT_C_API void ffrt_queue_attr_set_max_concurrency(ffrt_queue_attr_t* attr, con
 
 设置并发队列属性的最大并发度。
 
+<!--Device-FFRT_C_API void ffrt_queue_attr_set_max_concurrency(ffrt_queue_attr_t* attr, const int max_concurrency)--><!--Device-FFRT_C_API void ffrt_queue_attr_set_max_concurrency(ffrt_queue_attr_t* attr, const int max_concurrency)-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 12
@@ -301,6 +321,8 @@ FFRT_C_API int ffrt_queue_attr_get_max_concurrency(const ffrt_queue_attr_t* attr
 **描述：**
 
 获取并发队列属性的最大并发度。
+
+<!--Device-FFRT_C_API int ffrt_queue_attr_get_max_concurrency(const ffrt_queue_attr_t* attr)--><!--Device-FFRT_C_API int ffrt_queue_attr_get_max_concurrency(const ffrt_queue_attr_t* attr)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -328,6 +350,8 @@ FFRT_C_API void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mo
 
 设置队列属性的执行模式。<br> 该接口指定队列中的任务是以协程模式还是线程模式执行。默认以协程模式执行。 将mode设为`true`时启用基于线程的执行。
 
+<!--Device-FFRT_C_API void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mode)--><!--Device-FFRT_C_API void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mode)-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 20
@@ -348,6 +372,8 @@ FFRT_C_API bool ffrt_queue_attr_get_thread_mode(const ffrt_queue_attr_t* attr)
 **描述：**
 
 获取队列属性的执行模式。
+
+<!--Device-FFRT_C_API bool ffrt_queue_attr_get_thread_mode(const ffrt_queue_attr_t* attr)--><!--Device-FFRT_C_API bool ffrt_queue_attr_get_thread_mode(const ffrt_queue_attr_t* attr)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -374,6 +400,8 @@ FFRT_C_API ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* na
 **描述：**
 
 创建队列。<br> 该队列不再使用时，必须通过[ffrt_queue_destroy](capi-queue-h.md#ffrt_queue_destroy)销毁。
+
+<!--Device-FFRT_C_API ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* name, const ffrt_queue_attr_t* attr)--><!--Device-FFRT_C_API ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* name, const ffrt_queue_attr_t* attr)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -403,6 +431,8 @@ FFRT_C_API void ffrt_queue_destroy(ffrt_queue_t queue)
 
 销毁队列。<br> 该队列必须已通过[ffrt_queue_create](capi-queue-h.md#ffrt_queue_create)创建。销毁时会取消尚未开始执行的任务， 并阻塞等待正在执行的任务完成。
 
+<!--Device-FFRT_C_API void ffrt_queue_destroy(ffrt_queue_t queue)--><!--Device-FFRT_C_API void ffrt_queue_destroy(ffrt_queue_t queue)-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
@@ -422,6 +452,8 @@ FFRT_C_API void ffrt_queue_submit(ffrt_queue_t queue, ffrt_function_header_t* f,
 **描述：**
 
 提交任务到队列。
+
+<!--Device-FFRT_C_API void ffrt_queue_submit(ffrt_queue_t queue, ffrt_function_header_t* f, const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API void ffrt_queue_submit(ffrt_queue_t queue, ffrt_function_header_t* f, const ffrt_task_attr_t* attr)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -449,6 +481,8 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_funct
 **描述：**
 
 提交任务到队列，并获取任务句柄。
+
+<!--Device-FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_function_header_t* f, const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_function_header_t* f, const ffrt_task_attr_t* attr)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -483,6 +517,8 @@ FFRT_C_API void ffrt_queue_submit_f(ffrt_queue_t queue, ffrt_function_t func, vo
 
 提交任务到队列，是[ffrt_queue_submit](capi-queue-h.md#ffrt_queue_submit)接口的简化形式。<br> 该接口将给定的任务函数及其参数包装为用于队列提交的任务包装器（`ffrt_function_kind_queue`）。 其中用于处理执行后清理的任务销毁回调（after_func）会被设为NULL，因而省略任何额外清理动作。 生成的任务包装器随后通过[ffrt_queue_submit](capi-queue-h.md#ffrt_queue_submit)接口被提交到指定队列。
 
+<!--Device-FFRT_C_API void ffrt_queue_submit_f(ffrt_queue_t queue, ffrt_function_t func, void* arg, const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API void ffrt_queue_submit_f(ffrt_queue_t queue, ffrt_function_t func, void* arg, const ffrt_task_attr_t* attr)-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 20
@@ -510,6 +546,8 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_fun
 **描述：**
 
 提交任务到队列并获取任务句柄，是[ffrt_queue_submit_h](capi-queue-h.md#ffrt_queue_submit_h)接口的简化形式。<br> 该接口将给定的任务函数及其参数包装为用于队列提交的任务包装器（`ffrt_function_kind_queue`）。 其中用于处理执行后清理的任务销毁回调（after_func）会被设为NULL，因而省略任何额外清理动作。 生成的任务包装器随后通过[ffrt_queue_submit_h](capi-queue-h.md#ffrt_queue_submit_h)接口被提交到指定队列。
+
+<!--Device-FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_function_t func, void* arg, const ffrt_task_attr_t* attr)--><!--Device-FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_function_t func, void* arg, const ffrt_task_attr_t* attr)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -545,6 +583,8 @@ FFRT_C_API void ffrt_queue_wait(ffrt_task_handle_t handle)
 
 等待队列中的任务执行完成。
 
+<!--Device-FFRT_C_API void ffrt_queue_wait(ffrt_task_handle_t handle)--><!--Device-FFRT_C_API void ffrt_queue_wait(ffrt_task_handle_t handle)-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
@@ -564,6 +604,8 @@ FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)
 **描述：**
 
 取消队列中的任务。<br> 已开始执行的任务无法被取消。
+
+<!--Device-FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)--><!--Device-FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -591,6 +633,8 @@ FFRT_C_API ffrt_queue_t ffrt_get_main_queue(void)
 
 获取应用主线程队列。
 
+<!--Device-FFRT_C_API ffrt_queue_t ffrt_get_main_queue(void)--><!--Device-FFRT_C_API ffrt_queue_t ffrt_get_main_queue(void)-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 12
@@ -610,6 +654,8 @@ FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)
 **描述：**
 
 获取应用Worker（ArkTS）线程队列。
+
+<!--Device-FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)--><!--Device-FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 

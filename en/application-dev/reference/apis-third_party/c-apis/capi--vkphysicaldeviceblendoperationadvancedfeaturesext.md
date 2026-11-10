@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

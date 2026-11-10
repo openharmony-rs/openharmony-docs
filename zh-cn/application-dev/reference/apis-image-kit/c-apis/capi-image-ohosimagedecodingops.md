@@ -8,11 +8,13 @@ struct OhosImageDecodingOps {...}
 
 定义图像源解码的范围选项。是[OhosImageDecodingOps](capi-image-ohosimagedecodingops.md)的成员变量。
 
+<!--Device-struct OhosImageDecodingOps {...}--><!--Device-struct OhosImageDecodingOps {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-others-image.md)
+**相关模块：** [Image](capi-image-kit-image.md)
 
 **所在头文件：** [image_source_mdk.h](capi-image-source-mdk-h.md)
 

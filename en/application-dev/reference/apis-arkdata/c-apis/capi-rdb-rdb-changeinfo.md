@@ -8,11 +8,13 @@ struct Rdb_ChangeInfo {...}
 
 Describes the notify info of data change.
 
+<!--Device-struct Rdb_ChangeInfo {...}--><!--Device-struct Rdb_ChangeInfo {...}-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
 
-**Related module**: [RDB](capi-others-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 **Header file**: [relational_store.h](capi-relational-store-h.md)
 

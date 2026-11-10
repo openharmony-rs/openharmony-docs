@@ -8,11 +8,13 @@ typedef struct JSVM_CompileOptions {...} JSVM_CompileOptions
 
 Compile Options
 
+<!--Device-typedef struct JSVM_CompileOptions {...} JSVM_CompileOptions--><!--Device-typedef struct JSVM_CompileOptions {...} JSVM_CompileOptions-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
 
-**Related module**: [JSVM](capi-others-jsvm.md)
+**Related module**: [JSVM](capi-arkts-jsvm.md)
 
 **Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 

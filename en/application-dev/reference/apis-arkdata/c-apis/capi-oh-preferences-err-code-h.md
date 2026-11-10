@@ -32,6 +32,8 @@ enum OH_Preferences_ErrCode
 
 Enumerates the error codes.
 
+<!--Device-OH_Preferences_ErrCode--><!--Device-OH_Preferences_ErrCode-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
 
 **Since**: 13

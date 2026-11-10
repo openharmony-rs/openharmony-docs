@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineShaderStageModuleIdentifierCreateInfoEXT {...}--><!--Device-struct VkPipelineShaderStageModuleIdentifierCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

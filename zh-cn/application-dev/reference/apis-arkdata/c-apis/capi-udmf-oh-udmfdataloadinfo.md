@@ -8,11 +8,13 @@ typedef struct OH_UdmfDataLoadInfo OH_UdmfDataLoadInfo
 
 表示数据加载信息结构体。
 
+<!--Device-typedef struct OH_UdmfDataLoadInfo OH_UdmfDataLoadInfo--><!--Device-typedef struct OH_UdmfDataLoadInfo OH_UdmfDataLoadInfo-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 
-**相关模块：** [UDMF](capi-others-udmf.md)
+**相关模块：** [UDMF](capi-arkdata-udmf.md)
 
 **所在头文件：** [udmf.h](capi-udmf-h.md)
 

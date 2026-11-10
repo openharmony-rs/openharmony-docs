@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoEncodeH264FrameSizeKHR {...}--><!--Device-struct VkVideoEncodeH264FrameSizeKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

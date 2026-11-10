@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDescriptorSetVariableDescriptorCountAllocateInfo {...}--><!--Device-struct VkDescriptorSetVariableDescriptorCountAllocateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageAlignmentControlCreateInfoMESA {...}--><!--Device-struct VkImageAlignmentControlCreateInfoMESA {...}-End-->
+
 ## Summary
 
 ### Member variables

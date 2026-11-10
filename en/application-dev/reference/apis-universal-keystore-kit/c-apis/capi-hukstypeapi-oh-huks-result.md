@@ -8,11 +8,13 @@ struct OH_Huks_Result {...}
 
 Defines the returned data, including a status code and related description.
 
+<!--Device-struct OH_Huks_Result {...}--><!--Device-struct OH_Huks_Result {...}-End-->
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
-**Related module**: [HuksTypeApi](capi-others-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-universal-keystore-kit-hukstypeapi.md)
 
 **Header file**: [native_huks_type.h](capi-native-huks-type-h.md)
 

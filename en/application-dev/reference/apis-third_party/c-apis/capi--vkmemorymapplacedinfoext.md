@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMemoryMapPlacedInfoEXT {...}--><!--Device-struct VkMemoryMapPlacedInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

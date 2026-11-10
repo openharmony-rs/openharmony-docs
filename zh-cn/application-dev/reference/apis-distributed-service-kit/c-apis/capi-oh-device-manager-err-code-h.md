@@ -34,6 +34,8 @@ enum DeviceManager_ErrorCode
 
 分布式设备管理错误码信息。
 
+<!--Device-DeviceManager_ErrorCode--><!--Device-DeviceManager_ErrorCode-End-->
+
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **起始版本：** 20

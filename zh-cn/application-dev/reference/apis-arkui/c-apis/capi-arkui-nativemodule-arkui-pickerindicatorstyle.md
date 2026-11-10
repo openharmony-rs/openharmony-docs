@@ -8,11 +8,13 @@ typedef struct ArkUI_PickerIndicatorStyle ArkUI_PickerIndicatorStyle
 
 选中项指示器的样式。包含指示器的颜色、大小等属性配置，用于增强Picker组件的选中项视觉效果，提升用户交互体验。
 
+<!--Device-typedef struct ArkUI_PickerIndicatorStyle ArkUI_PickerIndicatorStyle--><!--Device-typedef struct ArkUI_PickerIndicatorStyle ArkUI_PickerIndicatorStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [picker.h](capi-picker-h.md)
 

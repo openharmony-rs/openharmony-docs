@@ -8,11 +8,13 @@ typedef struct PurgMem OH_PurgeableMemory
 
 可清除的内存结构。
 
+<!--Device-typedef struct PurgMem OH_PurgeableMemory--><!--Device-typedef struct PurgMem OH_PurgeableMemory-End-->
+
 **系统能力：** SystemCapability.Kernel.Memory
 
 **起始版本：** 10
 
-**相关模块：** [memory](capi-others-memory.md)
+**相关模块：** [memory](capi-kernel-enhance-kit-memory.md)
 
 **所在头文件：** [purgeable_memory.h](capi-purgeable-memory-h.md)
 

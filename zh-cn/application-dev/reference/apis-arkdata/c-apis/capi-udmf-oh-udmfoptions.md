@@ -8,11 +8,13 @@ typedef struct OH_UdmfOptions OH_UdmfOptions
 
 数据操作选项，定义数据操作的可选参数。
 
+<!--Device-typedef struct OH_UdmfOptions OH_UdmfOptions--><!--Device-typedef struct OH_UdmfOptions OH_UdmfOptions-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **起始版本：** 20
 
-**相关模块：** [UDMF](capi-others-udmf.md)
+**相关模块：** [UDMF](capi-arkdata-udmf.md)
 
 **所在头文件：** [udmf.h](capi-udmf-h.md)
 

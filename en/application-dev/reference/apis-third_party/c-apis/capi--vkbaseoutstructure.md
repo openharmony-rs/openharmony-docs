@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBaseOutStructure {...}--><!--Device-struct VkBaseOutStructure {...}-End-->
+
 ## Summary
 
 ### Member variables

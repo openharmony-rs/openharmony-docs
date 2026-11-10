@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderSubgroupRotateFeatures {...}--><!--Device-struct VkPhysicalDeviceShaderSubgroupRotateFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

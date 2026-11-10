@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct api_node_version {...}--><!--Device-struct api_node_version {...}-End-->
+
 ## Summary
 
 ### Member variables

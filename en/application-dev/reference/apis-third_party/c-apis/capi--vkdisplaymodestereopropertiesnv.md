@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDisplayModeStereoPropertiesNV {...}--><!--Device-struct VkDisplayModeStereoPropertiesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

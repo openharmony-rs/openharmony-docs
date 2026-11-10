@@ -8,11 +8,13 @@ typedef struct ArkUI_NativeDialogAPI_2 {...} ArkUI_NativeDialogAPI_2
 
 ArkUI提供的Native侧自定义弹窗接口集合，用于在Native层创建和管理自定义弹窗，支持设置弹窗避让键盘距离、显示层级、层级节点id和嵌入式弹窗蒙层显示区域等功能，适用于需要精细化控制弹窗行为的场景。
 
+<!--Device-typedef struct ArkUI_NativeDialogAPI_2 {...} ArkUI_NativeDialogAPI_2--><!--Device-typedef struct ArkUI_NativeDialogAPI_2 {...} ArkUI_NativeDialogAPI_2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_dialog.h](capi-native-dialog-h.md)
 
@@ -50,6 +52,8 @@ int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float dista
 >
 > setKeyboardAvoidDistance方法需要在调用show方法之前调用。
 
+<!--Device-int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)-End-->
+
 **起始版本：** 15
 
 **参数：**
@@ -80,6 +84,8 @@ int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMo
 >
 > setLevelMode方法需要在调用show方法之前调用；若需配合setLevelUniqueId使用，则需要在调用setLevelUniqueId方法之后调用。
 
+<!--Device-int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMode)--><!--Device-int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMode)-End-->
+
 **起始版本：** 15
 
 **参数：**
@@ -109,6 +115,8 @@ int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)
 >
 > setLevelUniqueId方法需要在调用setLevelMode方法之前调用，且需要在调用show方法之前调用。
 
+<!--Device-int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)--><!--Device-int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)-End-->
+
 **起始版本：** 15
 
 **参数：**
@@ -137,6 +145,8 @@ int32_t (*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode
 > **说明：**
 >
 > setImmersiveMode方法需要在调用show方法之前调用。
+
+<!--Device-int32_t (*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode immersiveMode)--><!--Device-int32_t (*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode immersiveMode)-End-->
 
 **起始版本：** 15
 

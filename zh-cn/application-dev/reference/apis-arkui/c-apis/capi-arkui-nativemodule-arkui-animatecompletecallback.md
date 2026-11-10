@@ -8,11 +8,13 @@ typedef struct ArkUI_AnimateCompleteCallback {...} ArkUI_AnimateCompleteCallback
 
 动画播放结束回调类型，用于在动画播放完成时通知开发者动画已结束。开发者可通过type字段指定回调触发方式，通过callback字段设置自定义回调函数，并通过userData字段传递自定义数据至回调函数中。
 
+<!--Device-typedef struct ArkUI_AnimateCompleteCallback {...} ArkUI_AnimateCompleteCallback--><!--Device-typedef struct ArkUI_AnimateCompleteCallback {...} ArkUI_AnimateCompleteCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_animate.h](capi-native-animate-h.md)
 
@@ -43,5 +45,7 @@ void (*callback)(void* userData)
 **描述：**
 
 动画播放结束回调，与type和userData配合使用。type参数决定回调触发的时机类型，回调函数接收userData作为入参。设置该回调后，当动画播放结束时将自动调用该函数， 开发者可在回调中通过userData参数执行自定义逻辑，如更新UI状态或处理动画完成后的后续操作。
+
+<!--Device-void (*callback)(void* userData)--><!--Device-void (*callback)(void* userData)-End-->
 
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct cmp6_router_renum {...}--><!--Device-struct cmp6_router_renum {...}-End-->
+
 ## Summary
 
 ### Member variables

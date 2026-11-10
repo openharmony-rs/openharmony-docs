@@ -34,6 +34,8 @@ enum OH_Swapfs_ErrCode
 
 Error codes of swapfs module.
 
+<!--Device-OH_Swapfs_ErrCode--><!--Device-OH_Swapfs_ErrCode-End-->
+
 **System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0

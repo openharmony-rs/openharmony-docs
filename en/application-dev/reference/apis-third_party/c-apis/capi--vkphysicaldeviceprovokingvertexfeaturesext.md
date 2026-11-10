@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceProvokingVertexFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceProvokingVertexFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

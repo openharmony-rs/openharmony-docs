@@ -8,11 +8,13 @@ typedef struct ArkUI_IntOffset {...} ArkUI_IntOffset
 
 偏移量，用于描述当前组件相对于父组件的位置。
 
+<!--Device-typedef struct ArkUI_IntOffset {...} ArkUI_IntOffset--><!--Device-typedef struct ArkUI_IntOffset {...} ArkUI_IntOffset-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [common_type.h](capi-common-type-h.md)
 

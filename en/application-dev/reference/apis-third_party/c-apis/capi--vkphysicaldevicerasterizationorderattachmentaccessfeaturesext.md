@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

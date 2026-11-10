@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCudaLaunchInfoNV {...}--><!--Device-struct VkCudaLaunchInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

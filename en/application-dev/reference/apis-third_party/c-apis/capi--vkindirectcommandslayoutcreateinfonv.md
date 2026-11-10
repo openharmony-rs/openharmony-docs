@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkIndirectCommandsLayoutCreateInfoNV {...}--><!--Device-struct VkIndirectCommandsLayoutCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

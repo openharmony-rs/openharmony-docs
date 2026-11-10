@@ -8,11 +8,13 @@ struct OH_NativeBundle_ModuleMetadata {...}
 
 模块元数据的信息。
 
+<!--Device-struct OH_NativeBundle_ModuleMetadata {...}--><!--Device-struct OH_NativeBundle_ModuleMetadata {...}-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 20
 
-**相关模块：** [Native_Bundle](capi-others-native-bundle.md)
+**相关模块：** [Native_Bundle](capi-ability-kit-native-bundle.md)
 
 **所在头文件：** [native_interface_bundle.h](capi-native-interface-bundle-h.md)
 

@@ -57,6 +57,8 @@ enum OH_AbilityRuntime_LaunchMode
 
 Defines the launch mode of a ModularObjectExtensionAbility.
 
+<!--Device-OH_AbilityRuntime_LaunchMode--><!--Device-OH_AbilityRuntime_LaunchMode-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
@@ -75,6 +77,8 @@ enum OH_AbilityRuntime_ProcessMode
 **Description**
 
 Defines the process mode of a ModularObjectExtensionAbility.
+
+<!--Device-OH_AbilityRuntime_ProcessMode--><!--Device-OH_AbilityRuntime_ProcessMode-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -95,6 +99,8 @@ enum OH_AbilityRuntime_ThreadMode
 **Description**
 
 Defines the thread mode of a ModularObjectExtensionAbility.
+
+<!--Device-OH_AbilityRuntime_ThreadMode--><!--Device-OH_AbilityRuntime_ThreadMode-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -118,6 +124,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoLaunchMo
 **Description**
 
 Obtains the startup mode from the specified ModularObjectExtensionAbility information.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoLaunchMode(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, OH_AbilityRuntime_LaunchMode *launchMode)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoLaunchMode(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, OH_AbilityRuntime_LaunchMode *launchMode)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -146,6 +154,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoProcessM
 
 Obtains the process mode from the specified ModularObjectExtensionAbility information.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoProcessMode(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, OH_AbilityRuntime_ProcessMode *processMode)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoProcessMode(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, OH_AbilityRuntime_ProcessMode *processMode)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
@@ -172,6 +182,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoThreadMo
 **Description**
 
 Obtains the thread mode from the specified ModularObjectExtensionAbility information.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoThreadMode(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, OH_AbilityRuntime_ThreadMode *threadMode)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoThreadMode(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, OH_AbilityRuntime_ThreadMode *threadMode)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -200,6 +212,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoElementN
 
 Gets the component name (AbilityBase_Element) from the specified ModularObjectExtensionAbility information. The bundleName, moduleName, and abilityName in element are non-owning pointers that point to the internal data of extensionInfo. Do not release them separately. They are available only while extensionInfo is valid.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoElementName(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, AbilityBase_Element *element)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoElementName(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, AbilityBase_Element *element)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
@@ -226,6 +240,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoDisableS
 **Description**
 
 Obtains the disabled state from the specified ModularObjectExtensionAbility information.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoDisableState(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, bool *isDisabled)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoDisableState(OH_AbilityRuntime_ModObjExtensionInfoHandle extensionInfo, bool *isDisabled)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -254,6 +270,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfo
 
 Gets the information about all registered ModularObjectExtensionAbility instances of the current application and returns a handle to the ModularObjectExtensionAbility information set. Use [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos) to obtain the information count of the set, and use [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex) to traverse each ModularObjectExtensionAbility information by index to obtain attributes such as the launch mode, process mode, and thread mode. After use, call [OH_AbilityRuntime_ReleaseAllExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_releaseallextensioninfos) to release the handle to avoid memory leaks.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos(OH_AbilityRuntime_AllModObjExtensionInfosHandle *outOwnedAllExtensionInfos)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos(OH_AbilityRuntime_AllModObjExtensionInfosHandle *outOwnedAllExtensionInfos)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
@@ -281,6 +299,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ReleaseAllExtensionInfos(OH_AbilityRu
 **Description**
 
 Releases the ModularObjectExtensionAbility information collection obtained by [OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_acquireselfmodularobjectextensioninfos). When the ModularObjectExtensionAbility information collection is no longer needed, you must call this API to release the related resources to avoid memory leaks.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ReleaseAllExtensionInfos(OH_AbilityRuntime_AllModObjExtensionInfosHandle *allExtensionInfos)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ReleaseAllExtensionInfos(OH_AbilityRuntime_AllModObjExtensionInfosHandle *allExtensionInfos)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -313,6 +333,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos(O
 
 Obtains the number of ModularObjectExtensionAbility information items contained in the ModularObjectExtensionAbility information collection. The returned count can be used to determine the upper limit of the index when traversing the collection, and works with [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex) to access each ModularObjectExtensionAbility information item in the collection.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos(OH_AbilityRuntime_AllModObjExtensionInfosHandle allExtensionInfos, size_t *count)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos(OH_AbilityRuntime_AllModObjExtensionInfosHandle allExtensionInfos, size_t *count)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
@@ -339,6 +361,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModObjExtensionInfoByIndex(OH_Abil
 **Description**
 
 Obtains the specified ModularObjectExtensionAbility information from the ModularObjectExtensionAbility information collection by index. The valid index range is [0, count), where count can be obtained through [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos). The obtained ModularObjectExtensionAbility information handle can be used to query the startup mode, process mode, thread mode, and other attributes of the ModularObjectExtensionAbility. The returned extensionInfo is a non-owning handle that points to the internal storage of the allExtensionInfos collection. Do not release it separately. It is available only while allExtensionInfos is valid.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModObjExtensionInfoByIndex(OH_AbilityRuntime_AllModObjExtensionInfosHandle allExtensionInfos, size_t index, OH_AbilityRuntime_ModObjExtensionInfoHandle *extensionInfo)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModObjExtensionInfoByIndex(OH_AbilityRuntime_AllModObjExtensionInfosHandle allExtensionInfos, size_t index, OH_AbilityRuntime_ModObjExtensionInfoHandle *extensionInfo)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -368,6 +392,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectModularObjectExtensionAbility(
 
 Connects to a ModularObjectExtensionAbility.
 
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectModularObjectExtensionAbility(AbilityBase_Want *want, OH_AbilityRuntime_ConnectOptions *connectOptions, int64_t *connectionId)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectModularObjectExtensionAbility(AbilityBase_Want *want, OH_AbilityRuntime_ConnectOptions *connectOptions, int64_t *connectionId)-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
@@ -395,6 +421,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_DisconnectModularObjectExtensionAbili
 **Description**
 
 Disconnects from the ModularObjectExtensionAbility.
+
+<!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_DisconnectModularObjectExtensionAbility(int64_t connectionId)--><!--Device-AbilityRuntime_ErrorCode OH_AbilityRuntime_DisconnectModularObjectExtensionAbility(int64_t connectionId)-End-->
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkViewportSwizzleNV {...}--><!--Device-struct VkViewportSwizzleNV {...}-End-->
+
 ## Summary
 
 ### Member variables

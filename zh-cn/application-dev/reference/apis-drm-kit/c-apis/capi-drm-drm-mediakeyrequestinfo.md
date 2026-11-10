@@ -8,11 +8,13 @@ struct DRM_MediaKeyRequestInfo {...}
 
 媒体密钥请求信息。
 
+<!--Device-struct DRM_MediaKeyRequestInfo {...}--><!--Device-struct DRM_MediaKeyRequestInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
 
-**相关模块：** [Drm](capi-others-drm.md)
+**相关模块：** [Drm](capi-drm-kit-drm.md)
 
 **所在头文件：** [native_drm_common.h](capi-native-drm-common-h.md)
 

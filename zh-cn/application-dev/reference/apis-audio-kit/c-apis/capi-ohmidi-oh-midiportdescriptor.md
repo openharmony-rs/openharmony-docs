@@ -8,11 +8,13 @@ typedef struct OH_MIDIPortDescriptor {...} OH_MIDIPortDescriptor
 
 端口描述符结构体，用于打开端口时指定端口索引和MIDI协议版本（MIDI 1.0或MIDI 2.0），由系统自动完成应用与硬件之间的协议适配与数据转换，适用于需要在不同MIDI协议版本间进行兼容通信的场景。
 
+<!--Device-typedef struct OH_MIDIPortDescriptor {...} OH_MIDIPortDescriptor--><!--Device-typedef struct OH_MIDIPortDescriptor {...} OH_MIDIPortDescriptor-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
 
-**相关模块：** [OHMIDI](capi-others-ohmidi.md)
+**相关模块：** [OHMIDI](capi-audio-kit-ohmidi.md)
 
 **所在头文件：** [native_midi_base.h](capi-native-midi-base-h.md)
 

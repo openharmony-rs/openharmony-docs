@@ -42,6 +42,8 @@ EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative* pixelmap, OH_Filter** 
 
 创建一个OH_Filter对象，对图像应用各种滤镜效果（如模糊、提亮或灰度等）， 适用于图像编辑、相册应用和视频处理等场景。
 
+<!--Device-EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative* pixelmap, OH_Filter** filter)--><!--Device-EffectErrorCode OH_Filter_CreateEffect(OH_PixelmapNative* pixelmap, OH_Filter** filter)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
@@ -71,6 +73,8 @@ EffectErrorCode OH_Filter_Release(OH_Filter* filter)
 
 释放OH_Filter对象。
 
+<!--Device-EffectErrorCode OH_Filter_Release(OH_Filter* filter)--><!--Device-EffectErrorCode OH_Filter_Release(OH_Filter* filter)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
@@ -96,6 +100,8 @@ EffectErrorCode OH_Filter_Blur(OH_Filter* filter, float radius)
 **描述：**
 
 创建一个毛玻璃滤镜效果，并添加到滤镜效果链中。
+
+<!--Device-EffectErrorCode OH_Filter_Blur(OH_Filter* filter, float radius)--><!--Device-EffectErrorCode OH_Filter_Blur(OH_Filter* filter, float radius)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -123,6 +129,8 @@ EffectErrorCode OH_Filter_BlurWithTileMode(OH_Filter* filter, float radius, Effe
 **描述：**
 
 创建一个毛玻璃滤镜效果，并添加到滤镜效果链中，支持选择着色器效果平铺模式。
+
+<!--Device-EffectErrorCode OH_Filter_BlurWithTileMode(OH_Filter* filter, float radius, EffectTileMode tileMode)--><!--Device-EffectErrorCode OH_Filter_BlurWithTileMode(OH_Filter* filter, float radius, EffectTileMode tileMode)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -152,6 +160,8 @@ EffectErrorCode OH_Filter_Brighten(OH_Filter* filter, float brightness)
 
 创建一个提亮效果，并添加到滤镜效果链中。
 
+<!--Device-EffectErrorCode OH_Filter_Brighten(OH_Filter* filter, float brightness)--><!--Device-EffectErrorCode OH_Filter_Brighten(OH_Filter* filter, float brightness)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
@@ -179,6 +189,8 @@ EffectErrorCode OH_Filter_GrayScale(OH_Filter* filter)
 
 创建一个灰度效果，并添加到滤镜效果链中。
 
+<!--Device-EffectErrorCode OH_Filter_GrayScale(OH_Filter* filter)--><!--Device-EffectErrorCode OH_Filter_GrayScale(OH_Filter* filter)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
@@ -204,6 +216,8 @@ EffectErrorCode OH_Filter_Invert(OH_Filter* filter)
 **描述：**
 
 创建一个反色效果，并添加到滤镜效果链中。
+
+<!--Device-EffectErrorCode OH_Filter_Invert(OH_Filter* filter)--><!--Device-EffectErrorCode OH_Filter_Invert(OH_Filter* filter)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -231,6 +245,8 @@ EffectErrorCode OH_Filter_SetColorMatrix(OH_Filter* filter, OH_Filter_ColorMatri
 
 通过矩阵创建一个自定义的效果，并添加到滤镜效果链中， 适用于需要实现特定的颜色变换效果（如色彩校正、色调调整或色温调节等）的场景。
 
+<!--Device-EffectErrorCode OH_Filter_SetColorMatrix(OH_Filter* filter, OH_Filter_ColorMatrix* matrix)--><!--Device-EffectErrorCode OH_Filter_SetColorMatrix(OH_Filter* filter, OH_Filter_ColorMatrix* matrix)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
@@ -257,6 +273,8 @@ EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter* filter, OH_PixelmapNative
 **描述：**
 
 获取滤镜生成的位图。
+
+<!--Device-EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter* filter, OH_PixelmapNative** pixelmap)--><!--Device-EffectErrorCode OH_Filter_GetEffectPixelMap(OH_Filter* filter, OH_PixelmapNative** pixelmap)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineRepresentativeFragmentTestStateCreateInfoNV {...}--><!--Device-struct VkPipelineRepresentativeFragmentTestStateCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

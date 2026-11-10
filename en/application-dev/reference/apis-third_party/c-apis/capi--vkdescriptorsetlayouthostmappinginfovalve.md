@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDescriptorSetLayoutHostMappingInfoVALVE {...}--><!--Device-struct VkDescriptorSetLayoutHostMappingInfoVALVE {...}-End-->
+
 ## Summary
 
 ### Member variables

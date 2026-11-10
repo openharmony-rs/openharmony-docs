@@ -8,11 +8,13 @@ struct Usb_DeviceArray {...}
 
 Defines the device ID array, which is used to store the device IDs and device quantity obtained using [OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices). After using the structure, you must release the memory allocated for the device ID array. Otherwise, resource leaks may occur.
 
+<!--Device-struct Usb_DeviceArray {...}--><!--Device-struct Usb_DeviceArray {...}-End-->
+
 **System capability**: SystemCapability.Driver.USB.Extension
 
 **Since**: 18
 
-**Related module**: [UsbDdk](capi-others-usbddk.md)
+**Related module**: [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 **Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

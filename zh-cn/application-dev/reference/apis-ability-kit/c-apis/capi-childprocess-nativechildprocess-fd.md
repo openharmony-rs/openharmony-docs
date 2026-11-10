@@ -8,11 +8,13 @@ struct NativeChildProcess_Fd {...}
 
 传递给子进程的文件描述符信息。
 
+<!--Device-struct NativeChildProcess_Fd {...}--><!--Device-struct NativeChildProcess_Fd {...}-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 13
 
-**相关模块：** [ChildProcess](capi-others-childprocess.md)
+**相关模块：** [ChildProcess](capi-ability-kit-childprocess.md)
 
 **所在头文件：** [native_child_process.h](capi-native-child-process-h.md)
 

@@ -48,6 +48,8 @@ enum OH_AI_ModelType
 
 model file type.
 
+<!--Device-OH_AI_ModelType--><!--Device-OH_AI_ModelType-End-->
+
 **Since**: 9
 
 | Enum item | Description |
@@ -64,6 +66,8 @@ enum OH_AI_DeviceType
 **Description**
 
 device type information.
+
+<!--Device-OH_AI_DeviceType--><!--Device-OH_AI_DeviceType-End-->
 
 **Since**: 9
 
@@ -85,6 +89,8 @@ enum OH_AI_NNRTDeviceType
 
 the hard deivce type managed by NNRT.
 
+<!--Device-OH_AI_NNRTDeviceType--><!--Device-OH_AI_NNRTDeviceType-End-->
+
 **Since**: 10
 
 | Enum item | Description |
@@ -103,6 +109,8 @@ enum OH_AI_PerformanceMode
 **Description**
 
 performance mode of the NNRT hard deivce.
+
+<!--Device-OH_AI_PerformanceMode--><!--Device-OH_AI_PerformanceMode-End-->
 
 **Since**: 10
 
@@ -124,6 +132,8 @@ enum OH_AI_Priority
 
 NNRT reasoning task priority.
 
+<!--Device-OH_AI_Priority--><!--Device-OH_AI_Priority-End-->
+
 **Since**: 10
 
 | Enum item | Description |
@@ -142,6 +152,8 @@ enum OH_AI_OptimizationLevel
 **Description**
 
 optimization level for train model.
+
+<!--Device-OH_AI_OptimizationLevel--><!--Device-OH_AI_OptimizationLevel-End-->
 
 **Since**: 11
 
@@ -162,6 +174,8 @@ enum OH_AI_QuantizationType
 **Description**
 
 quantization type
+
+<!--Device-OH_AI_QuantizationType--><!--Device-OH_AI_QuantizationType-End-->
 
 **Since**: 11
 

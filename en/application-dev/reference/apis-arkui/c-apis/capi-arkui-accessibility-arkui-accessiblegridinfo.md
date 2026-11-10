@@ -8,11 +8,13 @@ typedef struct ArkUI_AccessibleGridInfo {...} ArkUI_AccessibleGridInfo
 
 Defines a struct for the accessible grid information.
 
+<!--Device-typedef struct ArkUI_AccessibleGridInfo {...} ArkUI_AccessibleGridInfo--><!--Device-typedef struct ArkUI_AccessibleGridInfo {...} ArkUI_AccessibleGridInfo-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
-**Related module**: [ArkUI_Accessibility](capi-others-arkui-accessibility.md)
+**Related module**: [ArkUI_Accessibility](capi-arkui-arkui-accessibility.md)
 
 **Header file**: [native_interface_accessibility.h](capi-native-interface-accessibility-h.md)
 

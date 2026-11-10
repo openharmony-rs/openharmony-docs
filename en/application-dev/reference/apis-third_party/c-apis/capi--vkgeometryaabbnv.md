@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkGeometryAABBNV {...}--><!--Device-struct VkGeometryAABBNV {...}-End-->
+
 ## Summary
 
 ### Member variables

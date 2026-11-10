@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCopyMicromapToMemoryInfoEXT {...}--><!--Device-struct VkCopyMicromapToMemoryInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

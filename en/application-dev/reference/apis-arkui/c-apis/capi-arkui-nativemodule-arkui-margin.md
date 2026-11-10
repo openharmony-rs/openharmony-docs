@@ -8,11 +8,13 @@ typedef struct ArkUI_Margin {...} ArkUI_Margin
 
 Describes the margins of a component, which is used to define the blank area between the component boundary and its parent container or adjacent components, affecting the actually occupied space and position of the component in the layout.
 
+<!--Device-typedef struct ArkUI_Margin {...} ArkUI_Margin--><!--Device-typedef struct ArkUI_Margin {...} ArkUI_Margin-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [water_flow.h](capi-water-flow-h.md)
 

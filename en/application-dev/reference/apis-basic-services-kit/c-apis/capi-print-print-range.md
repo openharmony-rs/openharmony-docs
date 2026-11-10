@@ -8,11 +8,13 @@ typedef struct Print_Range {...} Print_Range
 
 Represents the print range, which is used to specify the page range in a print task. You can use **startPage**<br>and **endPage** to specify consecutive pages, or use **pagesArray** and **pagesArrayLen** to specify an array of non-consecutive pages to be printed.
 
+<!--Device-typedef struct Print_Range {...} Print_Range--><!--Device-typedef struct Print_Range {...} Print_Range-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 13
 
-**Related module**: [Print](capi-others-print.md)
+**Related module**: [Print](capi-basic-services-kit-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 

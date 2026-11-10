@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkWriteDescriptorSetInlineUniformBlock {...}--><!--Device-struct VkWriteDescriptorSetInlineUniformBlock {...}-End-->
+
 ## Summary
 
 ### Member variables

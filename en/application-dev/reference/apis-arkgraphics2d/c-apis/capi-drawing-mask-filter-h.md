@@ -39,6 +39,8 @@ enum OH_Drawing_BlurType
 
 Defines an enum for the blur types.
 
+<!--Device-OH_Drawing_BlurType--><!--Device-OH_Drawing_BlurType-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
@@ -62,6 +64,8 @@ OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurT
 **Description**
 
 Creates an **OH_Drawing_MaskFilter** object with a blur type.
+
+<!--Device-OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurType, float sigma, bool respectCTM)--><!--Device-OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurType, float sigma, bool respectCTM)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -90,6 +94,8 @@ void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)
 **Description**
 
 Destroys an **OH_Drawing_MaskFilter** object and reclaims the memory occupied by the object.
+
+<!--Device-void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)--><!--Device-void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 

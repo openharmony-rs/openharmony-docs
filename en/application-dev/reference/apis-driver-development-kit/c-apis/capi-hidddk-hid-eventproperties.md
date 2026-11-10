@@ -8,11 +8,13 @@ struct Hid_EventProperties {...}
 
 Defines device event attributes, including the event type, key value, absolute coordinate, and relative coordinate, as well as their attribute codes and value ranges. Defines the property configuration of an HID device. This struct is applicable to scenarios that require refined management of input events. Before using this struct, initialize all member variables based on the HID device specifications.
 
+<!--Device-struct Hid_EventProperties {...}--><!--Device-struct Hid_EventProperties {...}-End-->
+
 **System capability**: SystemCapability.Driver.HID.Extension
 
 **Since**: 11
 
-**Related module**: [HidDdk](capi-others-hidddk.md)
+**Related module**: [HidDdk](capi-driver-development-kit-hidddk.md)
 
 **Header file**: [hid_ddk_types.h](capi-hid-ddk-types-h.md)
 

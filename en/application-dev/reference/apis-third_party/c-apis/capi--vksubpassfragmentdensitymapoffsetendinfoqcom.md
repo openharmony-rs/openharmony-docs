@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSubpassFragmentDensityMapOffsetEndInfoQCOM {...}--><!--Device-struct VkSubpassFragmentDensityMapOffsetEndInfoQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

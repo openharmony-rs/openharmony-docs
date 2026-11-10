@@ -8,11 +8,13 @@ typedef struct Input_DeviceInfo Input_DeviceInfo
 
 Defines input device information, which is used to describe the basic information and capability characteristics of an input device, including attributes such as the device type and device ID. You can use this struct to obtain and manage detailed information about input devices, facilitating device identification and configuration management.
 
+<!--Device-typedef struct Input_DeviceInfo Input_DeviceInfo--><!--Device-typedef struct Input_DeviceInfo Input_DeviceInfo-End-->
+
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 13
 
-**Related module**: [input](capi-others-input.md)
+**Related module**: [input](capi-input-kit-input.md)
 
 **Header file**: [oh_input_manager.h](capi-oh-input-manager-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoH265LongTermRefPicsSps {...}--><!--Device-struct StdVideoH265LongTermRefPicsSps {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct OH_ImageReceiverOptions OH_ImageReceiverOptions
 
 The struct describes the data type name of the image receiver options.
 
+<!--Device-typedef struct OH_ImageReceiverOptions OH_ImageReceiverOptions--><!--Device-typedef struct OH_ImageReceiverOptions OH_ImageReceiverOptions-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **Header file**: [image_receiver_native.h](capi-image-receiver-native-h.md)
 

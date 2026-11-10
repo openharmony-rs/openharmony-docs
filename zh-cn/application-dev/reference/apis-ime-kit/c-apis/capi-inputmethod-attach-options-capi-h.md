@@ -20,7 +20,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) | InputMethod_AttachOptions | 输入法绑定选项，用于在绑定输入法时携带相关配置。这是一个不透明类型（opaque type），调用者不可直接访问其成员变量，只能通 过本头文件提供的函数操作。 <br> <br>用途：作为OH_InputMethodController_Attach和OH_InputMethodController_AttachWithUIContext的必要参数，用于配置绑定 输入法时的行为选项，包括： <br>- 是否在绑定时自动显示键盘（showKeyboard）：控制绑定完成后键盘是否立即弹出。 <br>- 请求键盘的原因（requestKeyboardReason）：标识触发输入法拉起的场景原因（如触摸点击、鼠标点击或应用主动调用），帮助系 统优化输入体验。 <br> <br>使用场景： <br>- showKeyboard=true：适用于输入框获得焦点后需要立即输入的场景（如文本编辑框），绑定后键盘自动弹出。 <br>- showKeyboard=false：适用于先建立交互通道但暂不需要键盘的场景（如搜索框），绑定后键盘不弹出，后续通过ShowKeyboard主 动拉起。 <br>- requestKeyboardReason：适用于需要向系统说明触发输入法的场景原因，帮助系统选择合适的输入策略。 <br> <br>与其他结构体的关系： <br>- InputMethod_AttachOptions是OH_InputMethodController_Attach和OH_InputMethodController_AttachWithUIContext的 必要参数之一。Attach函数同时需要InputMethod_TextEditorProxy和InputMethod_AttachOptions两个参数。 <br>- InputMethod_AttachOptions中的requestKeyboardReason使用InputMethod_RequestKeyboardReason枚举类型，该枚举定义在 [inputmethod_types_capi.h](capi-inputmethod-types-capi-h.md)中。 <br>- OH_InputMethodProxy_ShowTextInput函数也接受InputMethod_AttachOptions作为参数，用于在已绑定的状态下重新请求显示 键盘并指定请求原因。 |
+| [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) | InputMethod_AttachOptions | 输入法绑定选项，用于在绑定输入法时携带相关配置。这是一个不透明类型（opaque type），调用者不可直接访问其成员变量，只能通 过本头文件提供的函数操作。 <br> <br>用途：作为OH_InputMethodController_Attach和OH_InputMethodController_AttachWithUIContext的必要参数，用于配置绑定 输入法时的行为选项，包括： <br>- 是否在绑定时自动显示键盘（showKeyboard）：控制绑定完成后键盘是否立即弹出。 <br>- 请求键盘的原因（requestKeyboardReason）：标识触发输入法拉起的场景原因（如触摸点击、鼠标点击或应用主动调用），帮助系 统优化输入体验。 <br> <br>使用场景： <br>- showKeyboard=true：适用于输入框获得焦点后需要立即输入的场景（如文本编辑框），绑定后键盘自动弹出。 <br>- showKeyboard=false：适用于先建立交互通道但暂不需要键盘的场景（如搜索框），绑定后键盘不弹出，后续通过ShowKeyboard主 动拉起。 <br>- requestKeyboardReason：适用于需要向系统说明触发输入法的场景原因，帮助系统选择合适的输入策略。 <br> <br>与其他结构体的关系： <br>- InputMethod_AttachOptions是OH_InputMethodController_Attach和OH_InputMethodController_AttachWithUIContext的 必要参数之一。Attach函数同时需要InputMethod_TextEditorProxy和InputMethod_AttachOptions两个参数。 <br>- InputMethod_AttachOptions中的requestKeyboardReason使用InputMethod_RequestKeyboardReason枚举类型，该枚举定义在 [inputmethod_types_capi.h](capi-inputmethod-types-capi-h.md)中。 <br>- OH_InputMethodProxy_ShowTextInput函数也接受InputMethod_AttachOptions作为参数，用于在已绑定的状态下重新请求显示 键盘并指定请求原因。 <br> <br>句柄与所有权：仅可使用本API创建的有效句柄或框架提供的借用句柄；仅可销毁独立创建的对象。 回调提供的对象和TextConfig的子对象视图均为借用对象。访问接口对未注册或已失效的句柄返回IME_ERR_PARAMCHECK， NULL参数仍按原有规则返回错误。 <br>保护边界：生命周期检查不保证对象成员的线程安全，也不能在地址复用后识别所有失效地址。 对象销毁后应将指针置空；不得在回调结束后保留回调对象。 |
 
 ### 函数
 
@@ -43,6 +43,8 @@ InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)
 **描述：**
 
 创建一个[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)实例，适用于仅需控制键盘显示状态的简单场景。 如需同时指定触发输入法拉起的场景原因，建议使用[OH_AttachOptions_CreateWithRequestKeyboardReason] (#oh_attachoptions_createwithrequestkeyboardreason)。 <br> <br>配对调用：必须与[OH_AttachOptions_Destroy](#oh_attachoptions_destroy)配对调用，OH_AttachOptions_Create创建的对象 必须通过OH_AttachOptions_Destroy销毁，否则会导致内存泄漏。 <br> <br>生命周期管理： <br>- 创建后可多次读取（IsShowKeyboard）。 <br>- 将options传入Attach函数后，Attach函数将读取配置信息。Attach完成后options可立即销毁，因为配置已被读取。 <br>- 不可将已销毁的options再次使用。
+
+<!--Device-InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)--><!--Device-InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -69,6 +71,8 @@ InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool
 **描述：**
 
 创建一个[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)实例，同时指定键盘显示状态和请求键盘的原因。 requestKeyboardReason参数用于标识触发输入法拉起的场景原因，帮助系统识别输入场景以提供更好的用户体验。 <br> <br>配对调用：必须与[OH_AttachOptions_Destroy](#oh_attachoptions_destroy)配对调用，Create创建的对象必须通过 OH_AttachOptions_Destroy销毁。 <br> <br>生命周期管理：与OH_AttachOptions_Create一致。创建后可多次读取，Attach完成后可立即销毁。
+
+<!--Device-InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard, InputMethod_RequestKeyboardReason requestKeyboardReason)--><!--Device-InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard, InputMethod_RequestKeyboardReason requestKeyboardReason)-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -97,6 +101,8 @@ void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)
 
 销毁一个[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)实例，释放由OH_AttachOptions_Create函数分配的内存资源。 该方法与OH_AttachOptions_Create和OH_AttachOptions_CreateWithRequestKeyboardReason配对使用。 <br> <br>配对调用：必须与OH_AttachOptions_Create或OH_AttachOptions_CreateWithRequestKeyboardReason配对调用。每个 OH_AttachOptions_Create创建的实例必须且只能调用一次OH_AttachOptions_Destroy。 <br> <br>生命周期管理： <br>- OH_AttachOptions_Destroy后，options指针不再有效，不可继续使用。 <br>- 不可对同一个options指针调用两次OH_AttachOptions_Destroy，否则会导致重复释放（double-free）。 <br>- 建议在Attach成功后立即调用OH_AttachOptions_Destroy，因为Attach已读取完配置信息。
 
+<!--Device-void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)--><!--Device-void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)-End-->
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **起始版本：** 12
@@ -117,6 +123,8 @@ InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions 
 
 从[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)中获取是否显示键盘的值。 <br> <br>前置条件：options必须是通过OH_AttachOptions_Create函数创建的有效实例，showKeyboard必须指向有效的bool变量。
 
+<!--Device-InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions *options, bool *showKeyboard)--><!--Device-InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions *options, bool *showKeyboard)-End-->
+
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **起始版本：** 12
@@ -132,7 +140,7 @@ InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions 
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。*showKeyboard已被赋值为正确的布尔值。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。表示options或showKeyboard为空指针，调用前需确保这两个参数已正确初始化且不为NULL。<br>**错误处理建议：** 若返回IME_ERR_NULL_POINTER，检查options和showKeyboard是否为有效指针；若返回IME_ERR_OK，*showKeyboard即为正确的配置值。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。*showKeyboard已被赋值为正确的布尔值。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 对象句柄未注册或已失效。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。表示options或showKeyboard为空指针，调用前需确保这两个参数已正确初始化且不为NULL。<br>**错误处理建议：** 若返回IME_ERR_NULL_POINTER，检查options和showKeyboard是否为有效指针；若返回IME_ERR_OK，*showKeyboard即为正确的配置值。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 ### OH_AttachOptions_GetRequestKeyboardReason()
 
@@ -143,6 +151,8 @@ InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_Atta
 **描述：**
 
 从[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)中获取请求键盘输入的原因。 <br> <br>前置条件：options必须是通过OH_AttachOptions_CreateWithRequestKeyboardReason创建的实例 （通过OH_AttachOptions_Create创建的实例的requestKeyboardReason默认值为IME_REQUEST_REASON_NONE）。 requestKeyboardReason必须指向有效的InputMethod_RequestKeyboardReason变量。
+
+<!--Device-InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)--><!--Device-InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -159,6 +169,6 @@ InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_Atta
 
 | 类型 | 说明 |
 | -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。*requestKeyboardReason已被赋值为正确的枚举值。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。表示options或requestKeyboardReason为空指针，调用前需确保这两个参数已正确初始化且不为NULL。<br>**错误处理建议：** 若返回IME_ERR_NULL_POINTER，检查options和requestKeyboardReason是否为有效指针；若返回IME_ERR_OK，*requestKeyboardReason即为正确的配置值。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。*requestKeyboardReason已被赋值为正确的枚举值。<br>[IME_ERR_PARAMCHECK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 对象句柄未注册或已失效。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。表示options或requestKeyboardReason为空指针，调用前需确保这两个参数已正确初始化且不为NULL。<br>**错误处理建议：** 若返回IME_ERR_NULL_POINTER，检查options和requestKeyboardReason是否为有效指针；若返回IME_ERR_OK，*requestKeyboardReason即为正确的配置值。具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 

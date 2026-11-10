@@ -32,6 +32,8 @@ enum ArkUI_ButtonType
 
 定义按钮样式枚举值。
 
+<!--Device-ArkUI_ButtonType--><!--Device-ArkUI_ButtonType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12

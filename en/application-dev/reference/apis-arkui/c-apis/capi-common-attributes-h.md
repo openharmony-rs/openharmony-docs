@@ -64,6 +64,8 @@ enum ArkUI_HitTestMode
 
 Enumerates the hit test modes.
 
+<!--Device-ArkUI_HitTestMode--><!--Device-ArkUI_HitTestMode-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -87,6 +89,8 @@ enum ArkUI_Visibility
 
 Enumerates the visibility values.
 
+<!--Device-ArkUI_Visibility--><!--Device-ArkUI_Visibility-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -106,6 +110,8 @@ enum ArkUI_HoverEffect
 **Description**
 
 Enumerates the hover effects when a component is hovered over.
+
+<!--Device-ArkUI_HoverEffect--><!--Device-ArkUI_HoverEffect-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +134,8 @@ enum ArkUI_FocusPriority
 
 Enumerates the priority levels for focus management within the application. These levels determine the sequence in which UI components receive focus during user interaction.
 
+<!--Device-ArkUI_FocusPriority--><!--Device-ArkUI_FocusPriority-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -147,6 +155,8 @@ enum ArkUI_UIState
 **Description**
 
 Enumerates the UI states of a component, used for handling state-specific styles.
+
+<!--Device-ArkUI_UIState--><!--Device-ArkUI_UIState-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,6 +181,8 @@ enum ArkUI_FocusMove
 
 Enumerates the focus movement directions.
 
+<!--Device-ArkUI_FocusMove--><!--Device-ArkUI_FocusMove-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
@@ -194,6 +206,8 @@ enum ArkUI_ResponseRegionSupportedTool
 
 Enumerates the input tool types supported for response region configuration.
 
+<!--Device-ArkUI_ResponseRegionSupportedTool--><!--Device-ArkUI_ResponseRegionSupportedTool-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -214,6 +228,8 @@ enum ArkUI_RawInputEventType
 **Description**
 
 Enumerates the types of raw input events.
+
+<!--Device-ArkUI_RawInputEventType--><!--Device-ArkUI_RawInputEventType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,6 +253,8 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 
 Creates a snapshot option object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions()) when no longer in use.
 
+<!--Device-ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()--><!--Device-ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
@@ -257,6 +275,8 @@ void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 
 Destroys the screenshot option object created by [OH_ArkUI_CreateSnapshotOptions](capi-common-attributes-h.md#oh_arkui_createsnapshotoptions).
 
+<!--Device-void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)--><!--Device-void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
@@ -276,6 +296,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 **Description**
 
 Set the scale attribute in screenshot options, which is used to control the scale factor of the generated screenshot.
+
+<!--Device-int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)--><!--Device-int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -303,6 +325,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 **Description**
 
 Sets the color space in the screenshot options.
+
+<!--Device-int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)--><!--Device-int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -332,6 +356,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 
 Sets the dynamic range mode in the screenshot options.
 
+<!--Device-int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)--><!--Device-int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -360,6 +386,8 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 
 Creates an instance of the parameters for visible area change events. This API is used in scenarios such as list scrolling exposure statistics, lazy loading of images or videos, and triggering business logic when a component enters or leaves the screen. After successful creation, you must first complete the related parameter configuration such as the visible ratio threshold and update interval through related APIs, and then use the parameter object to register the visible area change listener. The system calculates the component visible ratio based on the configured parameters and triggers the corresponding listener event. After use, call [OH_ArkUI_VisibleAreaEventOptions_Dispose](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_dispose) to release the parameter object. After **Dispose** is called, the parameter object must not be used again.
 
+<!--Device-ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()--><!--Device-ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
@@ -380,6 +408,8 @@ void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* opt
 
 Disposes of the instance of the parameters for visible area change events. The parameter object must be created by [OH_ArkUI_VisibleAreaEventOptions_Create](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_create), and must not be used after **Dispose** is called.
 
+<!--Device-void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)--><!--Device-void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
@@ -399,6 +429,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 **Description**
 
 Sets the threshold array used to determine the change in the visible ratio of a component. This API is applicable to scenarios such as exposure statistics, staged loading of components, and controlling media playback based on the visible ratio.
+
+<!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)--><!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -428,6 +460,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 
 Sets the expected update interval. This API is used to control the update frequency of the visible area ratio. A smaller interval is suitable for scenarios that require timely awareness of visible area changes, but increases computational overhead. A larger interval is suitable for scenarios that do not require high real-time performance and need to reduce computational overhead.
 
+<!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)--><!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
@@ -455,6 +489,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 
 Sets the visible area calculation mode. In scenarios involving scrolling containers, clipping containers, or allowing child components to extend beyond the parent component display, you can select the calculation mode based on whether the actually visible portion within the viewport needs to be included in exposure and visibility determination.
 
+<!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option, bool measureFromViewport)--><!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option, bool measureFromViewport)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -481,6 +517,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions
 **Description**
 
 Obtains the threshold ratios for visible area changes.
+
+<!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)--><!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -510,6 +548,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_Visible
 
 Obtains the expected update interval for visible area changes.
 
+<!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)--><!--Device-int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
@@ -535,6 +575,8 @@ bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEv
 **Description**
 
 Obtains the visible area calculation mode.
+
+<!--Device-bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)--><!--Device-bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

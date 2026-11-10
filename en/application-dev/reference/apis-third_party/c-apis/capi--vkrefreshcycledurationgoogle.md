@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRefreshCycleDurationGOOGLE {...}--><!--Device-struct VkRefreshCycleDurationGOOGLE {...}-End-->
+
 ## Summary
 
 ### Member variables

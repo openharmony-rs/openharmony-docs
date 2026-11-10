@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMemoryHostPointerPropertiesEXT {...}--><!--Device-struct VkMemoryHostPointerPropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

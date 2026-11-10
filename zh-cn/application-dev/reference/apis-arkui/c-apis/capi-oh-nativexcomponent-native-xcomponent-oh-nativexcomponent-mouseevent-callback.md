@@ -8,11 +8,13 @@ struct OH_NativeXComponent_MouseEvent_Callback {...}
 
 提供了鼠标事件和悬停事件的回调注册能力，开发者可通过该回调结构体监听NativeXComponent上的鼠标和手写笔交互行为，适用于需要在Native侧处理指针输入交互的场景。 其中，DispatchMouseEvent侧重鼠标按键按下、释放、移动等组件内的操作行为，DispatchHoverEvent侧重鼠标或手写笔进入/离开组件的悬停状态变化，两者监听维度不同，可按需同时注册。
 
+<!--Device-struct OH_NativeXComponent_MouseEvent_Callback {...}--><!--Device-struct OH_NativeXComponent_MouseEvent_Callback {...}-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 9
 
-**相关模块：** [OH_NativeXComponent Native XComponent](capi-others-oh-nativexcomponent-native-xcomponent.md)
+**相关模块：** [OH_NativeXComponent Native XComponent](capi-arkui-oh-nativexcomponent-native-xcomponent.md)
 
 **所在头文件：** [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
 
@@ -37,6 +39,8 @@ void (*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)
 
 当鼠标事件（例如鼠标按键按下、释放、移动等操作）被触发时调用。
 
+<!--Device-void (*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)--><!--Device-void (*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)-End-->
+
 **起始版本：** 9
 
 **参数：**
@@ -55,6 +59,8 @@ void (*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)
 **描述：**
 
 当悬停事件被触发时调用。 该函数在鼠标或手写笔进入或离开组件时触发。
+
+<!--Device-void (*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)--><!--Device-void (*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)-End-->
 
 **起始版本：** 9
 

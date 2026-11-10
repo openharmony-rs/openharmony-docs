@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderImageFootprintFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceShaderImageFootprintFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -88,6 +88,8 @@ double OH_HiDebug_GetSystemCpuUsage()
 
 Obtains the CPU usage of the system. Note that this API involves cross-process communication and takes a long time. Therefore, you are advised not to call this API in the main thread.
 
+<!--Device-double OH_HiDebug_GetSystemCpuUsage()--><!--Device-double OH_HiDebug_GetSystemCpuUsage()-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 12
@@ -107,6 +109,8 @@ double OH_HiDebug_GetAppCpuUsage()
 **Description**
 
 Obtains the CPU usage of an application. Note that this API involves cross-process communication and takes a long time. Therefore, you are advised not to call this API in the main thread.
+
+<!--Device-double OH_HiDebug_GetAppCpuUsage()--><!--Device-double OH_HiDebug_GetAppCpuUsage()-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -128,6 +132,8 @@ HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()
 
 Obtains the CPU usage of all threads of an application. Note that this API involves cross-process communication and takes a long time. Therefore, you are advised not to call this API in the main thread.
 
+<!--Device-HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()--><!--Device-HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 12
@@ -147,6 +153,8 @@ void OH_HiDebug_FreeThreadCpuUsage(HiDebug_ThreadCpuUsagePtr *threadCpuUsage)
 **Description**
 
 Releases the **HiDebug_ThreadCpuUsagePtr**.
+
+<!--Device-void OH_HiDebug_FreeThreadCpuUsage(HiDebug_ThreadCpuUsagePtr *threadCpuUsage)--><!--Device-void OH_HiDebug_FreeThreadCpuUsage(HiDebug_ThreadCpuUsagePtr *threadCpuUsage)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -168,6 +176,8 @@ void OH_HiDebug_GetSystemMemInfo(HiDebug_SystemMemInfo *systemMemInfo)
 
 Obtains system memory information.
 
+<!--Device-void OH_HiDebug_GetSystemMemInfo(HiDebug_SystemMemInfo *systemMemInfo)--><!--Device-void OH_HiDebug_GetSystemMemInfo(HiDebug_SystemMemInfo *systemMemInfo)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 12
@@ -188,6 +198,8 @@ void OH_HiDebug_GetAppNativeMemInfo(HiDebug_NativeMemInfo *nativeMemInfo)
 
 Obtains the memory information of an application process. Note that this API needs to read the **\/proc/{pid}/ smaps_rollup** node information, which takes a long time. Therefore, you are advised not to call this API in the main thread.
 
+<!--Device-void OH_HiDebug_GetAppNativeMemInfo(HiDebug_NativeMemInfo *nativeMemInfo)--><!--Device-void OH_HiDebug_GetAppNativeMemInfo(HiDebug_NativeMemInfo *nativeMemInfo)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 12
@@ -207,6 +219,8 @@ void OH_HiDebug_GetAppNativeMemInfoWithCache(HiDebug_NativeMemInfo *nativeMemInf
 **Description**
 
 Obtains the memory information of an application process. This API has a cache mechanism to improve its performance. The cache value is valid for 5 minutes. Note that this API needs to read the **\/proc/{pid}/ smaps_rollup** node information, which takes a long time. Therefore, you are advised not to call this API in the main thread.
+
+<!--Device-void OH_HiDebug_GetAppNativeMemInfoWithCache(HiDebug_NativeMemInfo *nativeMemInfo, bool forceRefresh)--><!--Device-void OH_HiDebug_GetAppNativeMemInfoWithCache(HiDebug_NativeMemInfo *nativeMemInfo, bool forceRefresh)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -229,6 +243,8 @@ void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)
 
 Obtains the memory limit of an application process.
 
+<!--Device-void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)--><!--Device-void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 12
@@ -248,6 +264,8 @@ HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64
 **Description**
 
 Starts application trace collection.
+
+<!--Device-HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64_t tags, uint32_t limitSize, char* fileName, uint32_t length)--><!--Device-HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64_t tags, uint32_t limitSize, char* fileName, uint32_t length)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -279,6 +297,8 @@ HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()
 
 Stops application trace collection.
 
+<!--Device-HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()--><!--Device-HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 12
@@ -298,6 +318,8 @@ HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config,
 **Description**
 
 Requests trace collection based on the configured collection settings.
+
+<!--Device-HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config, OH_HiDebug_RequestTraceCallback callback)--><!--Device-HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config, OH_HiDebug_RequestTraceCallback callback)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -326,6 +348,8 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)
 
 Obtains the size of the GPU memory. Note that this API involves multiple cross-process communications and may take more than 1 second. Therefore, you are advised not to call this API in the main thread.
 
+<!--Device-HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)--><!--Device-HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 14
@@ -351,6 +375,8 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug
 **Description**
 
 Obtains the detailed GPU memory usage of an application.
+
+<!--Device-HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug_GraphicsMemorySummary *summary)--><!--Device-HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug_GraphicsMemorySummary *summary)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -379,6 +405,8 @@ HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatc
 
 Sets the **MallocDispatch** table in the basic C library to temporarily replace the original memory operation functions (such as **malloc**, **free**, **calloc**, **realloc**, **mmap**, and **munmap**) with the custom memory operation functions. The **MallocDispatch** table is a struct that encapsulates memory operation functions such as **<br>malloc**, **calloc**, **realloc**, and **free** in the basic C library. **HiDebug_MallocDispatch** is only a part of the **MallocDispatch** struct.
 
+<!--Device-HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatch *dispatchTable)--><!--Device-HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatch *dispatchTable)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 20
@@ -405,6 +433,8 @@ HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)
 
 Obtains the default MallocDispatch table of the system C library. You can call [OH_HiDebug_RestoreMallocDispatchTable](capi-hidebug-h.md#oh_hidebug_restoremallocdispatchtable) to restore the table.
 
+<!--Device-HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)--><!--Device-HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 20
@@ -425,6 +455,8 @@ void OH_HiDebug_RestoreMallocDispatchTable(void)
 
 Restores the MallocDispatch table of the system C library.
 
+<!--Device-void OH_HiDebug_RestoreMallocDispatchTable(void)--><!--Device-void OH_HiDebug_RestoreMallocDispatchTable(void)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 20
@@ -438,6 +470,8 @@ int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, v
 **Description**
 
 Performs stack back-tracing based on the given fp address. This function is async-signal-safe.
+
+<!--Device-int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)--><!--Device-int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -468,6 +502,8 @@ typedef void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const Hi
 
 If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API is successfully called, the parsed stack information is returned to the caller through this function. Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.
 
+<!--Device-typedef void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)--><!--Device-typedef void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 20
@@ -489,6 +525,8 @@ HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, vo
 **Description**
 
 Obtains detailed symbol information based on the specified PC address. This function is not asyn-signal-safe.
+
+<!--Device-HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)--><!--Device-HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -519,6 +557,8 @@ HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)
 
 Creates an object for stack backtracing and parsing. This function is not asyn-signal-safe.
 
+<!--Device-HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)--><!--Device-HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 20
@@ -539,6 +579,8 @@ void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)
 
 Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject) to release the resources applied for during stack backtracing and parsing. This function is not asyn-signal-safe.
 
+<!--Device-void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)--><!--Device-void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 20
@@ -558,6 +600,8 @@ uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)
 **Description**
 
 Adds debugging information to the crash logs. This function is used together with [OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj). If a program crashes between **OH_HiDebug_SetCrashObj** and **<br>OH_HiDebug_ResetCrashObj**, the debugging information set by **OH_HiDebug_SetCrashObj** is added to the crash logs.
+
+<!--Device-uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)--><!--Device-uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -586,6 +630,8 @@ void OH_HiDebug_ResetCrashObj(uint64_t crashObj)
 
 Resets the debugging information object to the state before **OH_HiDebug_SetCrashObj** is used.
 
+<!--Device-void OH_HiDebug_ResetCrashObj(uint64_t crashObj)--><!--Device-void OH_HiDebug_ResetCrashObj(uint64_t crashObj)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 23
@@ -606,6 +652,8 @@ typedef void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)
 
 Triggered for the lightweight Perf sampling stack content. Note: The sampling data is valid only during the execution of this callback. If you need to use the data outside the function, deep copy the sampling stack content.
 
+<!--Device-typedef void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)--><!--Device-typedef void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 22
@@ -625,6 +673,8 @@ HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerCon
 **Description**
 
 Performs Perf sampling on the specified threads and returns the sampling stack content after the call is complete. Note: After this function is called, the current thread is blocked until the sampling process ends. The system strictly limits the number of times that this API is called. If the number of times that this API is called exceeds the upper limit, the error code [HIDEBUG_RESOURCE_UNAVAILABLE](capi-hidebug-type-h.md#hidebug_errorcode) is returned.
+
+<!--Device-HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)--><!--Device-HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -652,6 +702,8 @@ HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDe
 **Description**
 
 Asynchronously starts the resource profiler for the current process. <br>The callback function is called only when the collection is stopped (including when the system automatically stops the collection). It carries the resource type and file path to be collected. <br>If the collection is abnormal, the file path is **NULL**.
+
+<!--Device-HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDebug_ResProfilerConfig* config, OH_HiDebug_ProfilingCallback callback)--><!--Device-HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDebug_ResProfilerConfig* config, OH_HiDebug_ProfilingCallback callback)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -681,6 +733,8 @@ HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)
 
 Stops resource profiler for the current process. This API can be called after the [OH_HiDebug_StartProfiler](capi-hidebug-h.md#oh_hidebug_startprofiler) API and the call duration must be within the maximum duration.
 
+<!--Device-HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)--><!--Device-HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 24
@@ -700,6 +754,8 @@ typedef bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerTyp
 **Description**
 
 Callback triggered for listening. You can use FDs to write memory data in your app so that you can export the data using the hidumper command.
+
+<!--Device-typedef bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)--><!--Device-typedef bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -730,6 +786,8 @@ HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebu
 
 Registers a memory dump listener. When the memory usage of an application is high or the memory information is exported using the hidumper command, the system automatically calls the registered callback function. <br>The third-party application framework or developer can use this function to dump the internal memory information of the application to hidumper or upload the information to the OEM vendor through commercial grayscale release. <br>You can use [OH_HiDebug_UnregisterMemDumpListener](capi-hidebug-h.md#oh_hidebug_unregistermemdumplistener) to unregister the listener.
 
+<!--Device-HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebug_MemDumpListener listener)--><!--Device-HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebug_MemDumpListener listener)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.0
@@ -757,6 +815,8 @@ HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)
 
 Unregisters a memory dump listener that has been successfully registered.
 
+<!--Device-HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)--><!--Device-HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.0
@@ -783,6 +843,8 @@ uint64_t OH_HiDebug_AcquireAsyncContext()
 
 Obtains an **AsyncContext** for subsequent use. This API is an auxiliary API of the profiler. You can use [OH_HiDebug_ReleaseAsyncContext](capi-hidebug-h.md#oh_hidebug_releaseasynccontext) to release the context.
 
+<!--Device-uint64_t OH_HiDebug_AcquireAsyncContext()--><!--Device-uint64_t OH_HiDebug_AcquireAsyncContext()-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.0
@@ -802,6 +864,8 @@ void OH_HiDebug_PushAsyncContext(uint64_t ctx)
 **Description**
 
 Pushes an **AsyncContext** into the running context stack. This API is an auxiliary API of the profiler.
+
+<!--Device-void OH_HiDebug_PushAsyncContext(uint64_t ctx)--><!--Device-void OH_HiDebug_PushAsyncContext(uint64_t ctx)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -823,6 +887,8 @@ void OH_HiDebug_PopAsyncContext(uint64_t ctx)
 
 Pops an **AsyncContext** from the running context stack. This API is an auxiliary API of the profiler.
 
+<!--Device-void OH_HiDebug_PopAsyncContext(uint64_t ctx)--><!--Device-void OH_HiDebug_PopAsyncContext(uint64_t ctx)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.0
@@ -843,6 +909,8 @@ void OH_HiDebug_ReleaseAsyncContext(uint64_t ctx)
 
 Releases an **AsyncContext** to the system. This API is an auxiliary API of the profiler.
 
+<!--Device-void OH_HiDebug_ReleaseAsyncContext(uint64_t ctx)--><!--Device-void OH_HiDebug_ReleaseAsyncContext(uint64_t ctx)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.0
@@ -862,6 +930,8 @@ OH_HiDebug_ProfilerOptions *OH_HiDebug_CreateProfilerOptions(void)
 **Description**
 
 Create Profiler Options.
+
+<!--Device-OH_HiDebug_ProfilerOptions *OH_HiDebug_CreateProfilerOptions(void)--><!--Device-OH_HiDebug_ProfilerOptions *OH_HiDebug_CreateProfilerOptions(void)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -884,6 +954,8 @@ HiDebug_ErrorCode OH_HiDebug_DestroyProfilerOptions(OH_HiDebug_ProfilerOptions *
 **Description**
 
 Destroy Profiler Options.
+
+<!--Device-HiDebug_ErrorCode OH_HiDebug_DestroyProfilerOptions(OH_HiDebug_ProfilerOptions *opts)--><!--Device-HiDebug_ErrorCode OH_HiDebug_DestroyProfilerOptions(OH_HiDebug_ProfilerOptions *opts)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -910,6 +982,8 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncNestingDepth(OH_HiDebug_ProfilerOptions 
 **Description**
 
 Sets the maximum nesting depth for asynchronous invocations.
+
+<!--Device-HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncNestingDepth(OH_HiDebug_ProfilerOptions *opts, uint32_t depth)--><!--Device-HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncNestingDepth(OH_HiDebug_ProfilerOptions *opts, uint32_t depth)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -938,6 +1012,8 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncTaskStackDepth(OH_HiDebug_ProfilerOption
 
 Sets the maximum stack depth for each asynchronous task function.
 
+<!--Device-HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncTaskStackDepth(OH_HiDebug_ProfilerOptions *opts, uint32_t depth)--><!--Device-HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncTaskStackDepth(OH_HiDebug_ProfilerOptions *opts, uint32_t depth)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.1
@@ -964,6 +1040,8 @@ HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions *
 **Description**
 
 Sets the sampling interval in bytes.
+
+<!--Device-HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions *opts, uint32_t bytes)--><!--Device-HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions *opts, uint32_t bytes)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -992,6 +1070,8 @@ HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions
 
 Sets the statistics interval in seconds.
 
+<!--Device-HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions *opts, uint32_t seconds)--><!--Device-HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions *opts, uint32_t seconds)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.1
@@ -1018,6 +1098,8 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions *opts, 
 **Description**
 
 Sets the maximum backtrace stack depth.
+
+<!--Device-HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions *opts, uint32_t depth)--><!--Device-HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions *opts, uint32_t depth)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1046,6 +1128,8 @@ HiDebug_ErrorCode OH_HiDebug_SetFilterSize(OH_HiDebug_ProfilerOptions *opts, uin
 
 Sets the filter size for allocations.
 
+<!--Device-HiDebug_ErrorCode OH_HiDebug_SetFilterSize(OH_HiDebug_ProfilerOptions *opts, uint32_t size)--><!--Device-HiDebug_ErrorCode OH_HiDebug_SetFilterSize(OH_HiDebug_ProfilerOptions *opts, uint32_t size)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.1
@@ -1072,6 +1156,8 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions *opts,
 **Description**
 
 Sets the maximum profiling duration in seconds.
+
+<!--Device-HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions *opts, uint32_t seconds)--><!--Device-HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions *opts, uint32_t seconds)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1100,6 +1186,8 @@ HiDebug_ErrorCode OH_HiDebug_SetStackTraceMode(OH_HiDebug_ProfilerOptions *opts,
 
 Sets the stack trace mode.
 
+<!--Device-HiDebug_ErrorCode OH_HiDebug_SetStackTraceMode(OH_HiDebug_ProfilerOptions *opts, OH_HiDebug_ProfilerStackTraceMode mode)--><!--Device-HiDebug_ErrorCode OH_HiDebug_SetStackTraceMode(OH_HiDebug_ProfilerOptions *opts, OH_HiDebug_ProfilerStackTraceMode mode)-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.1
@@ -1126,6 +1214,8 @@ HiDebug_ErrorCode OH_HiDebug_StartProfilerWithOptions(OH_HiDebug_ResourceType ty
 **Description**
 
 Starts the profiler with the specified options and resource type.
+
+<!--Device-HiDebug_ErrorCode OH_HiDebug_StartProfilerWithOptions(OH_HiDebug_ResourceType type, OH_HiDebug_ProfilerOptions *opts, OH_HiDebug_ProfilingCallback callback)--><!--Device-HiDebug_ErrorCode OH_HiDebug_StartProfilerWithOptions(OH_HiDebug_ResourceType type, OH_HiDebug_ProfilerOptions *opts, OH_HiDebug_ProfilingCallback callback)-End-->
 
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 

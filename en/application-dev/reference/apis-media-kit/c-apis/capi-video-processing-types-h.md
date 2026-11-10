@@ -66,6 +66,8 @@ enum VideoDetailEnhancer_QualityLevel
 
 The quality level is used for detail enhancement.<br> It is the value of the key parameter [VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-video-processing-types-h.md#变量).
 
+<!--Device-VideoDetailEnhancer_QualityLevel--><!--Device-VideoDetailEnhancer_QualityLevel-End-->
+
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
 **Since**: 12
@@ -93,6 +95,8 @@ enum VideoMetadataGeneratorStyleControl
 
 The style control is used for video metadata generator.<br> It is the value of the key parameter [VIDEO_METADATA_GENERATOR_STYLE_CONTROL](capi-video-processing-types-h.md#变量).
 
+<!--Device-VideoMetadataGeneratorStyleControl--><!--Device-VideoMetadataGeneratorStyleControl-End-->
+
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
 **Since**: 22
@@ -118,6 +122,8 @@ enum VideoProcessing_ErrorCode
 **Description**
 
 Video processing error code.
+
+<!--Device-VideoProcessing_ErrorCode--><!--Device-VideoProcessing_ErrorCode-End-->
 
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -147,6 +153,8 @@ enum VideoProcessing_State
 
 Video processing states.<br> The state is reported to user by callback function OH_VideoProcessing_OnState.
 
+<!--Device-VideoProcessing_State--><!--Device-VideoProcessing_State-End-->
+
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
 **Since**: 12
@@ -168,6 +176,8 @@ typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProc
 **Description**
 
 The callback function pointer definition for reporting error during video processing.<br> Errors: [VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING](capi-video-processing-types-h.md#videoprocessing_errorcode), the processing is not supported. For example, the color space conversion according to the source and destination videos' properties is not supported. [VIDEO_PROCESSING_ERROR_INVALID_VALUE](capi-video-processing-types-h.md#videoprocessing_errorcode), some property of the video is invalid. For example, the color space of the video is invalid. [VIDEO_PROCESSING_ERROR_NO_MEMORY](capi-video-processing-types-h.md#videoprocessing_errorcode), out of memory. [VIDEO_PROCESSING_ERROR_PROCESS_FAILED](capi-video-processing-types-h.md#videoprocessing_errorcode), some processing error occurs. For more errors, see [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode).
+
+<!--Device-typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor, VideoProcessing_ErrorCode error, void* userData)--><!--Device-typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor, VideoProcessing_ErrorCode error, void* userData)-End-->
 
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
@@ -191,6 +201,8 @@ typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProc
 
 The callback function pointer definition for reporting video processing state.<br> The state will be [VIDEO_PROCESSING_STATE_RUNNING](capi-video-processing-types-h.md#videoprocessing_state) after [OH_VideoProcessing_Start](capi-video-processing-h.md#oh_videoprocessing_start) is called successfully. The state will be [VIDEO_PROCESSING_STATE_STOPPED](capi-video-processing-types-h.md#videoprocessing_state) after all the buffers cached before [OH_VideoProcessing_Stop](capi-video-processing-h.md#oh_videoprocessing_stop) is called are processed.
 
+<!--Device-typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state, void* userData)--><!--Device-typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state, void* userData)-End-->
+
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
 **Since**: 12
@@ -212,6 +224,8 @@ typedef void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing*
 **Description**
 
 The callback function pointer definition for reporting a new output buffer is filled with processed data.<br> Every new output buffer's index will report to user once the buffer is filled with processed data. Then call [OH_VideoProcessing_RenderOutputBuffer](capi-video-processing-h.md#oh_videoprocessing_renderoutputbuffer) with the buffer's index to send the output buffer out. If this function is not registered, the output buffer is sent out as soon as the buffer is filled with processed data without reporting.
+
+<!--Device-typedef void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index, void* userData)--><!--Device-typedef void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index, void* userData)-End-->
 
 **System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 

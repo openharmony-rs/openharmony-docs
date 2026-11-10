@@ -49,6 +49,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_CreateUsingAllocator(uint8_t *data, ui
 
 Creates an OH_AuxiliaryPictureNative object with a specified memory type. By default, the system selects the memory type based on the image type, image size, platform capability, and other factors. When processing the auxiliary picture returned by this API, always consider the impact of stride. If **data** is null or **dataLength**<br>is less than or equal to 0, the auxiliary picture will not be initialized.
 
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_CreateUsingAllocator(uint8_t *data, uint32_t dataLength, OH_AuxiliaryPictureInfo *info, IMAGE_ALLOCATOR_MODE allocator, OH_AuxiliaryPictureNative **auxiliaryPicture)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_CreateUsingAllocator(uint8_t *data, uint32_t dataLength, OH_AuxiliaryPictureInfo *info, IMAGE_ALLOCATOR_MODE allocator, OH_AuxiliaryPictureNative **auxiliaryPicture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
@@ -83,6 +85,8 @@ Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions
 
 Creates an OH_DecomposeOptions object.
 
+<!--Device-Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions)--><!--Device-Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
@@ -113,6 +117,8 @@ Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *op
 
 Sets whether to generate a full-size gainmap.
 
+<!--Device-Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *options, bool isFullSizeGainmap)--><!--Device-Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *options, bool isFullSizeGainmap)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
@@ -141,6 +147,8 @@ Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *op
 **Description**
 
 Gets whether to generate a full-size gainmap.
+
+<!--Device-Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *options, bool *isFullSizeGainmap)--><!--Device-Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *options, bool *isFullSizeGainmap)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -171,6 +179,8 @@ Image_ErrorCode OH_DecomposeOptions_SetDesiredPixelFormat(OH_DecomposeOptions *o
 
 Sets the desired pixel format of the SDR pixel map generated after HDR decomposition.
 
+<!--Device-Image_ErrorCode OH_DecomposeOptions_SetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t desiredPixelFormat)--><!--Device-Image_ErrorCode OH_DecomposeOptions_SetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t desiredPixelFormat)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
@@ -199,6 +209,8 @@ Image_ErrorCode OH_DecomposeOptions_GetDesiredPixelFormat(OH_DecomposeOptions *o
 **Description**
 
 Gets the desired pixel format of the SDR pixel map generated after HDR decomposition.
+
+<!--Device-Image_ErrorCode OH_DecomposeOptions_GetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t *desiredPixelFormat)--><!--Device-Image_ErrorCode OH_DecomposeOptions_GetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t *desiredPixelFormat)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -229,6 +241,8 @@ Image_ErrorCode OH_DecomposeOptions_Release(OH_DecomposeOptions *options)
 
 Releases an OH_DecomposeOptions object.
 
+<!--Device-Image_ErrorCode OH_DecomposeOptions_Release(OH_DecomposeOptions *options)--><!--Device-Image_ErrorCode OH_DecomposeOptions_Release(OH_DecomposeOptions *options)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
@@ -256,6 +270,8 @@ Image_ErrorCode OH_PictureNative_DecomposeToPicture(OH_PixelmapNative *hdrPixelm
 **Description**
 
 Decomposes an HDR pixel map into a Picture object which contains an SDR pixel map and a gainmap.
+
+<!--Device-Image_ErrorCode OH_PictureNative_DecomposeToPicture(OH_PixelmapNative *hdrPixelmap, OH_DecomposeOptions *options, OH_PictureNative **outOwnedPicture)--><!--Device-Image_ErrorCode OH_PictureNative_DecomposeToPicture(OH_PixelmapNative *hdrPixelmap, OH_DecomposeOptions *options, OH_PictureNative **outOwnedPicture)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -289,6 +305,8 @@ Image_ErrorCode OH_PictureNative_ConvertPictureNativeToNapi(napi_env env, OH_Pic
 
 Converts an [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) object to an ArkTS <b>Picture</b> object represented by a napi_value. The returned ArkTS Picture object holds its own strong reference to the same underlying Picture as pictureNative. This function does not copy the main image, auxiliary pictures, or metadata.
 
+<!--Device-Image_ErrorCode OH_PictureNative_ConvertPictureNativeToNapi(napi_env env, OH_PictureNative *pictureNative, napi_value *outPictureNapi)--><!--Device-Image_ErrorCode OH_PictureNative_ConvertPictureNativeToNapi(napi_env env, OH_PictureNative *pictureNative, napi_value *outPictureNapi)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.1
@@ -318,6 +336,8 @@ Image_ErrorCode OH_PictureNative_ConvertPictureNativeFromNapi(napi_env env, napi
 **Description**
 
 Converts an ArkTS <b>Picture</b> object represented by a napi_value to an [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) object. The returned OH_PictureNative object and pictureNapi share the same underlying Picture object. This function does not copy the main image, auxiliary pictures, or metadata.
+
+<!--Device-Image_ErrorCode OH_PictureNative_ConvertPictureNativeFromNapi(napi_env env, napi_value pictureNapi, OH_PictureNative **outOwnedPictureNative)--><!--Device-Image_ErrorCode OH_PictureNative_ConvertPictureNativeFromNapi(napi_env env, napi_value pictureNapi, OH_PictureNative **outOwnedPictureNative)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

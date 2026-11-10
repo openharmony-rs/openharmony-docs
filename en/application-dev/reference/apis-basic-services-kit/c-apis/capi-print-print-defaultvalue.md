@@ -8,11 +8,13 @@ typedef struct Print_DefaultValue {...} Print_DefaultValue
 
 Enumerates default attributes of a printer, including the color mode, duplex mode, media type, paper size, margin, paper source, print quality, copies, resolution, and orientation.
 
+<!--Device-typedef struct Print_DefaultValue {...} Print_DefaultValue--><!--Device-typedef struct Print_DefaultValue {...} Print_DefaultValue-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
-**Related module**: [Print](capi-others-print.md)
+**Related module**: [Print](capi-basic-services-kit-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 

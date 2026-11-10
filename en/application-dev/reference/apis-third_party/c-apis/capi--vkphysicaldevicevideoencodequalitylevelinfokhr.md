@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR {...}--><!--Device-struct VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

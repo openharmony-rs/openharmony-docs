@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceSampleLocationsPropertiesEXT {...}--><!--Device-struct VkPhysicalDeviceSampleLocationsPropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

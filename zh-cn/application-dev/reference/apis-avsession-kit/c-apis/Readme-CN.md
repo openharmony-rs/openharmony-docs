@@ -14,8 +14,8 @@
 - 结构体<!--avsessionkit-struct-->
     - [OH_AVMetadataBuilderStruct](capi-ohavsession-oh-avmetadatabuilderstruct.md)
     - [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md)
-    - [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)
     - [OH_AVSession](capi-ohavsession-oh-avsession.md)
+    - [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)
     - [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md)
     - [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)
     - [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md)

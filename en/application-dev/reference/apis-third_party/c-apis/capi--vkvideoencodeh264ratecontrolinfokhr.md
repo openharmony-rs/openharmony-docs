@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoEncodeH264RateControlInfoKHR {...}--><!--Device-struct VkVideoEncodeH264RateControlInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

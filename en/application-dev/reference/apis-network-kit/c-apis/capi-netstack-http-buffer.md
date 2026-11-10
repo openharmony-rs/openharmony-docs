@@ -8,11 +8,13 @@ struct Http_Buffer {...}
 
 Defines the HTTP buffer structure.
 
+<!--Device-struct Http_Buffer {...}--><!--Device-struct Http_Buffer {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
-**Related module**: [netstack](capi-others-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 **Header file**: [net_http_type.h](capi-net-http-type-h.md)
 

@@ -8,13 +8,15 @@ struct OH_SwapfsDataInfo {...}
 
 单个key的信息。用于在应用需要精确管理换出数据条目的元信息时（如查询换出状态、监控换出大小等）。
 
+<!--Device-struct OH_SwapfsDataInfo {...}--><!--Device-struct OH_SwapfsDataInfo {...}-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.Swapfs
 
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [Swapfs](capi-others-swapfs.md)
+**相关模块：** [Swapfs](capi-core-file-kit-swapfs.md)
 
 **所在头文件：** [oh_swapfs.h（系统接口）](capi-oh-swapfs-h-sys.md)
 

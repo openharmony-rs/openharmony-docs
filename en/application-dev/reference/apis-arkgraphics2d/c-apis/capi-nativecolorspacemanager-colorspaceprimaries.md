@@ -8,11 +8,13 @@ typedef struct ColorSpacePrimaries {...} ColorSpacePrimaries
 
 Provides the declaration for the color primary structure, which is used to store the coordinates of the red, green, and blue primary colors and white point in the color space.
 
+<!--Device-typedef struct ColorSpacePrimaries {...} ColorSpacePrimaries--><!--Device-typedef struct ColorSpacePrimaries {...} ColorSpacePrimaries-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Since**: 13
 
-**Related module**: [NativeColorSpaceManager](capi-others-nativecolorspacemanager.md)
+**Related module**: [NativeColorSpaceManager](capi-arkgraphics2d-nativecolorspacemanager.md)
 
 **Header file**: [native_color_space_manager.h](capi-native-color-space-manager-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSubpassSampleLocationsEXT {...}--><!--Device-struct VkSubpassSampleLocationsEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

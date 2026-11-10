@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct d_opt_prefix_info {...}--><!--Device-struct d_opt_prefix_info {...}-End-->
+
 ## Summary
 
 ### Member variables

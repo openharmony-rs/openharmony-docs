@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBindAccelerationStructureMemoryInfoNV {...}--><!--Device-struct VkBindAccelerationStructureMemoryInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

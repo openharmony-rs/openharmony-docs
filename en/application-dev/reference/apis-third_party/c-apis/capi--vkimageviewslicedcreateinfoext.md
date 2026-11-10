@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageViewSlicedCreateInfoEXT {...}--><!--Device-struct VkImageViewSlicedCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

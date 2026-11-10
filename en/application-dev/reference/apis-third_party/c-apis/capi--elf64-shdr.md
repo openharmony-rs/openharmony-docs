@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf64_Shdr {...}--><!--Device-struct Elf64_Shdr {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct ArkUI_SwiperDigitIndicator ArkUI_SwiperDigitIndicator
 
 定义Swiper组件的数字导航指示器样式，用于以数字形式展示当前位置和总页数。
 
+<!--Device-typedef struct ArkUI_SwiperDigitIndicator ArkUI_SwiperDigitIndicator--><!--Device-typedef struct ArkUI_SwiperDigitIndicator ArkUI_SwiperDigitIndicator-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [swiper.h](capi-swiper-h.md)
 

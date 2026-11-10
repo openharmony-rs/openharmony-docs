@@ -47,6 +47,8 @@ typedef bool (*OH_PurgeableMemory_ModifyFunc)(void *, size_t, void *)
 
 函数指针，它指向一个用于构建可丢弃内存对象内容的函数。<br> *
 
+<!--Device-typedef bool (*OH_PurgeableMemory_ModifyFunc)(void *, size_t, void *)--><!--Device-typedef bool (*OH_PurgeableMemory_ModifyFunc)(void *, size_t, void *)-End-->
+
 **系统能力：** SystemCapability.Kernel.Memory
 
 **起始版本：** 10
@@ -74,6 +76,8 @@ OH_PurgeableMemory *OH_PurgeableMemory_Create(size_t size, OH_PurgeableMemory_Mo
 **描述：**
 
 create 一个可丢弃内存对象的指针。<br> *
+
+<!--Device-OH_PurgeableMemory *OH_PurgeableMemory_Create(size_t size, OH_PurgeableMemory_ModifyFunc func, void *funcPara)--><!--Device-OH_PurgeableMemory *OH_PurgeableMemory_Create(size_t size, OH_PurgeableMemory_ModifyFunc func, void *funcPara)-End-->
 
 **系统能力：** SystemCapability.Kernel.Memory
 
@@ -103,6 +107,8 @@ bool OH_PurgeableMemory_Destroy(OH_PurgeableMemory *purgObj)
 
 销毁一个可丢弃内存对象<br> *
 
+<!--Device-bool OH_PurgeableMemory_Destroy(OH_PurgeableMemory *purgObj)--><!--Device-bool OH_PurgeableMemory_Destroy(OH_PurgeableMemory *purgObj)-End-->
+
 **系统能力：** SystemCapability.Kernel.Memory
 
 **起始版本：** 10
@@ -128,6 +134,8 @@ bool OH_PurgeableMemory_BeginRead(OH_PurgeableMemory *purgObj)
 **描述：**
 
 开始读取可丢弃内存对象。<br> *
+
+<!--Device-bool OH_PurgeableMemory_BeginRead(OH_PurgeableMemory *purgObj)--><!--Device-bool OH_PurgeableMemory_BeginRead(OH_PurgeableMemory *purgObj)-End-->
 
 **系统能力：** SystemCapability.Kernel.Memory
 
@@ -155,6 +163,8 @@ void OH_PurgeableMemory_EndRead(OH_PurgeableMemory *purgObj)
 
 结束读取可丢弃内存对象。<br> *
 
+<!--Device-void OH_PurgeableMemory_EndRead(OH_PurgeableMemory *purgObj)--><!--Device-void OH_PurgeableMemory_EndRead(OH_PurgeableMemory *purgObj)-End-->
+
 **系统能力：** SystemCapability.Kernel.Memory
 
 **起始版本：** 10
@@ -174,6 +184,8 @@ bool OH_PurgeableMemory_BeginWrite(OH_PurgeableMemory *purgObj)
 **描述：**
 
 开始写入可丢弃内存对象。<br> *
+
+<!--Device-bool OH_PurgeableMemory_BeginWrite(OH_PurgeableMemory *purgObj)--><!--Device-bool OH_PurgeableMemory_BeginWrite(OH_PurgeableMemory *purgObj)-End-->
 
 **系统能力：** SystemCapability.Kernel.Memory
 
@@ -201,6 +213,8 @@ void OH_PurgeableMemory_EndWrite(OH_PurgeableMemory *purgObj)
 
 结束写入可丢弃内存对象。<br> *
 
+<!--Device-void OH_PurgeableMemory_EndWrite(OH_PurgeableMemory *purgObj)--><!--Device-void OH_PurgeableMemory_EndWrite(OH_PurgeableMemory *purgObj)-End-->
+
 **系统能力：** SystemCapability.Kernel.Memory
 
 **起始版本：** 10
@@ -220,6 +234,8 @@ void *OH_PurgeableMemory_GetContent(OH_PurgeableMemory *purgObj)
 **描述：**
 
 获取可丢弃内存对象的内容指针。<br> *
+
+<!--Device-void *OH_PurgeableMemory_GetContent(OH_PurgeableMemory *purgObj)--><!--Device-void *OH_PurgeableMemory_GetContent(OH_PurgeableMemory *purgObj)-End-->
 
 **系统能力：** SystemCapability.Kernel.Memory
 
@@ -247,6 +263,8 @@ size_t OH_PurgeableMemory_ContentSize(OH_PurgeableMemory *purgObj)
 
 获取可丢弃内存对象的内容大小。<br> *
 
+<!--Device-size_t OH_PurgeableMemory_ContentSize(OH_PurgeableMemory *purgObj)--><!--Device-size_t OH_PurgeableMemory_ContentSize(OH_PurgeableMemory *purgObj)-End-->
+
 **系统能力：** SystemCapability.Kernel.Memory
 
 **起始版本：** 10
@@ -272,6 +290,8 @@ bool OH_PurgeableMemory_AppendModify(OH_PurgeableMemory *purgObj, OH_PurgeableMe
 **描述：**
 
 向可丢弃内存对象追加修改。<br> *
+
+<!--Device-bool OH_PurgeableMemory_AppendModify(OH_PurgeableMemory *purgObj, OH_PurgeableMemory_ModifyFunc func, void *funcPara)--><!--Device-bool OH_PurgeableMemory_AppendModify(OH_PurgeableMemory *purgObj, OH_PurgeableMemory_ModifyFunc func, void *funcPara)-End-->
 
 **系统能力：** SystemCapability.Kernel.Memory
 

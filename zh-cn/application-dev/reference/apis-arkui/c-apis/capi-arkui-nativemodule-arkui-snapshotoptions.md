@@ -8,11 +8,13 @@ typedef struct ArkUI_SnapshotOptions ArkUI_SnapshotOptions
 
 定义截图的可选项。
 
+<!--Device-typedef struct ArkUI_SnapshotOptions ArkUI_SnapshotOptions--><!--Device-typedef struct ArkUI_SnapshotOptions ArkUI_SnapshotOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [common_attributes.h](capi-common-attributes-h.md)
 

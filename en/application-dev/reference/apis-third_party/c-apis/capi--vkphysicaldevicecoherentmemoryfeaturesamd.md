@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceCoherentMemoryFeaturesAMD {...}--><!--Device-struct VkPhysicalDeviceCoherentMemoryFeaturesAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

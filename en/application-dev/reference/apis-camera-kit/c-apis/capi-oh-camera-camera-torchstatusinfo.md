@@ -8,11 +8,13 @@ struct Camera_TorchStatusInfo {...}
 
 The struct describes the flashlight status information.
 
+<!--Device-struct Camera_TorchStatusInfo {...}--><!--Device-struct Camera_TorchStatusInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

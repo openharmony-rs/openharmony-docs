@@ -8,11 +8,13 @@ struct Hid_EventTypeArray {...}
 
 Defines an array of event type codes, which stores information about the event types supported by an HID device.
 
+<!--Device-struct Hid_EventTypeArray {...}--><!--Device-struct Hid_EventTypeArray {...}-End-->
+
 **System capability**: SystemCapability.Driver.HID.Extension
 
 **Since**: 11
 
-**Related module**: [HidDdk](capi-others-hidddk.md)
+**Related module**: [HidDdk](capi-driver-development-kit-hidddk.md)
 
 **Header file**: [hid_ddk_types.h](capi-hid-ddk-types-h.md)
 

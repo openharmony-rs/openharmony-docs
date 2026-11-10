@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceVulkanMemoryModelFeatures {...}--><!--Device-struct VkPhysicalDeviceVulkanMemoryModelFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

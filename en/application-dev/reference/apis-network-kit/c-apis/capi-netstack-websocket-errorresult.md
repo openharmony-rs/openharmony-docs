@@ -8,11 +8,13 @@ struct WebSocket_ErrorResult {...}
 
 Defines the parameters for the connection error received by the WebSocket client.
 
+<!--Device-struct WebSocket_ErrorResult {...}--><!--Device-struct WebSocket_ErrorResult {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 11
 
-**Related module**: [netstack](capi-others-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 **Header file**: [net_websocket_type.h](capi-net-websocket-type-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceNonSeamlessCubeMapFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

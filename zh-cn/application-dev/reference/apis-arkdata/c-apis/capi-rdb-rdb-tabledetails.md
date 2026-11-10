@@ -8,11 +8,13 @@ struct Rdb_TableDetails {...}
 
 描述数据库表执行端云同步任务上传和下载的统计信息。
 
+<!--Device-struct Rdb_TableDetails {...}--><!--Device-struct Rdb_TableDetails {...}-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
-**相关模块：** [RDB](capi-others-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 **所在头文件：** [relational_store.h](capi-relational-store-h.md)
 

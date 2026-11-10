@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRenderingInputAttachmentIndexInfo {...}--><!--Device-struct VkRenderingInputAttachmentIndexInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

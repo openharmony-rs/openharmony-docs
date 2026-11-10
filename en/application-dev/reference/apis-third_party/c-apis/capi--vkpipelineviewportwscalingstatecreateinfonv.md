@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineViewportWScalingStateCreateInfoNV {...}--><!--Device-struct VkPipelineViewportWScalingStateCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

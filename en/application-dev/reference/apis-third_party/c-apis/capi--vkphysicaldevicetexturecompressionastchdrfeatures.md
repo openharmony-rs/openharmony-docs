@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceTextureCompressionASTCHDRFeatures {...}--><!--Device-struct VkPhysicalDeviceTextureCompressionASTCHDRFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

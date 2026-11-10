@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceCommandBufferInheritanceFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceCommandBufferInheritanceFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

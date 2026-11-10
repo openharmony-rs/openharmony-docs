@@ -8,11 +8,13 @@ struct OH_CloudDisk_DehydrateInfo {...}
 
 A struct that encapsulates the dehydrate authorization information.
 
+<!--Device-struct OH_CloudDisk_DehydrateInfo {...}--><!--Device-struct OH_CloudDisk_DehydrateInfo {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 26.0.1
 
-**Related module**: [CloudDisk](capi-others-clouddisk.md)
+**Related module**: [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 **Header file**: [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

@@ -8,11 +8,13 @@ struct OH_Drawing_RectSize {...}
 
 定义文本矩形结构体。
 
+<!--Device-struct OH_Drawing_RectSize {...}--><!--Device-struct OH_Drawing_RectSize {...}-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 24
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 

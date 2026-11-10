@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSemaphoreWaitInfo {...}--><!--Device-struct VkSemaphoreWaitInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

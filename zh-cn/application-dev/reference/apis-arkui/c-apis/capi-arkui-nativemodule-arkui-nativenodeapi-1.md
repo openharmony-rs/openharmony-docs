@@ -8,11 +8,13 @@ typedef struct ArkUI_NativeNodeAPI_1 {...} ArkUI_NativeNodeAPI_1
 
 ArkUI提供的Native侧Node类型接口集合。<br> Node模块相关接口需要在主线程上调用。
 
+<!--Device-typedef struct ArkUI_NativeNodeAPI_1 {...} ArkUI_NativeNodeAPI_1--><!--Device-typedef struct ArkUI_NativeNodeAPI_1 {...} ArkUI_NativeNodeAPI_1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_node.h](capi-native-node-h.md)
 
@@ -82,6 +84,8 @@ ArkUI_NodeHandle (*createNode)(ArkUI_NodeType type)
 
 基于[ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype)生成对应的组件并返回组件对象指针。
 
+<!--Device-ArkUI_NodeHandle (*createNode)(ArkUI_NodeType type)--><!--Device-ArkUI_NodeHandle (*createNode)(ArkUI_NodeType type)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -106,6 +110,8 @@ void (*disposeNode)(ArkUI_NodeHandle node)
 
 销毁组件指针指向的组件对象。在非主线程调用时需要注意待销毁组件对象的生命周期，生命周期管理不当有可能导致应用崩溃，因此不建议在非主线程上调用本接口。
 
+<!--Device-void (*disposeNode)(ArkUI_NodeHandle node)--><!--Device-void (*disposeNode)(ArkUI_NodeHandle node)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -123,6 +129,8 @@ int32_t (*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 **描述：**
 
 将组件挂载到某个父节点之下。本接口属于节点操作接口，不建议在非主线程上调用。
+
+<!--Device-int32_t (*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)--><!--Device-int32_t (*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)-End-->
 
 **起始版本：** 12
 
@@ -149,6 +157,8 @@ int32_t (*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 
 将组件从父节点中移除。本接口属于节点操作接口，不建议在非主线程上调用。
 
+<!--Device-int32_t (*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)--><!--Device-int32_t (*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -173,6 +183,8 @@ int32_t (*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, Ark
 **描述：**
 
 将组件挂载到某个父节点之下，挂载位置在<b>sibling</b>节点之后。本接口属于节点操作接口，不建议在非主线程上调用。
+
+<!--Device-int32_t (*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)--><!--Device-int32_t (*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)-End-->
 
 **起始版本：** 12
 
@@ -200,6 +212,8 @@ int32_t (*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, Ar
 
 将组件挂载到某个父节点之下，挂载位置在<b>sibling</b>节点之前。本接口属于节点操作接口，不建议在非主线程上调用。
 
+<!--Device-int32_t (*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)--><!--Device-int32_t (*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -225,6 +239,8 @@ int32_t (*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_
 **描述：**
 
 将组件挂载到某个父节点之下，挂载位置由<b>position</b>指定。本接口属于节点操作接口，不建议在非主线程上调用。
+
+<!--Device-int32_t (*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_t position)--><!--Device-int32_t (*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_t position)-End-->
 
 **起始版本：** 12
 
@@ -252,6 +268,8 @@ int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute
 
 属性设置函数，不建议在非主线程上调用。<br> 在实际业务场景下，如果组件设置的属性包含由开发者申请的堆内存，需确保组件不再使用后再调用对应释放接口。例如：[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_TEXT_CONTENT_WITH_STYLED_STRING。
 
+<!--Device-int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute, const ArkUI_AttributeItem* item)--><!--Device-int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute, const ArkUI_AttributeItem* item)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -278,6 +296,8 @@ const ArkUI_AttributeItem* (*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttr
 
 属性获取函数。该接口返回的指针是ArkUI框架内部的缓冲区指针，不需要开发者主动调用delete释放内存，但是需要在该函数下一次被调用前使用，否则可能会被其他值所覆盖。
 
+<!--Device-const ArkUI_AttributeItem* (*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)--><!--Device-const ArkUI_AttributeItem* (*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -303,6 +323,8 @@ int32_t (*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribu
 
 重置属性函数，不建议在非主线程上调用。
 
+<!--Device-int32_t (*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)--><!--Device-int32_t (*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -327,6 +349,8 @@ int32_t (*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventTyp
 **描述：**
 
 注册节点事件函数。
+
+<!--Device-int32_t (*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, int32_t targetId, void* userData)--><!--Device-int32_t (*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, int32_t targetId, void* userData)-End-->
 
 **起始版本：** 12
 
@@ -355,6 +379,8 @@ void (*unregisterNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType
 
 反注册节点事件函数。
 
+<!--Device-void (*unregisterNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)--><!--Device-void (*unregisterNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -374,6 +400,8 @@ void (*registerNodeEventReceiver)(void (*eventReceiver)(ArkUI_NodeEvent* event))
 
 注册事件回调统一入口函数。<br> ArkUI框架会统一收集过程中产生的组件事件并通过注册的eventReceiver函数回调给开发者。 重复调用时会覆盖前一次注册的函数。 避免直接保存ArkUI_NodeEvent对象指针，数据会在回调结束后销毁。 如果需要和组件实例绑定，可以使用addNodeEventReceiver函数接口。
 
+<!--Device-void (*registerNodeEventReceiver)(void (*eventReceiver)(ArkUI_NodeEvent* event))--><!--Device-void (*registerNodeEventReceiver)(void (*eventReceiver)(ArkUI_NodeEvent* event))-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -392,6 +420,8 @@ void (*unregisterNodeEventReceiver)()
 
 反注册事件回调统一入口函数。
 
+<!--Device-void (*unregisterNodeEventReceiver)()--><!--Device-void (*unregisterNodeEventReceiver)()-End-->
+
 **起始版本：** 12
 
 ### markDirty()
@@ -403,6 +433,8 @@ void (*markDirty)(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag)
 **描述：**
 
 强制标记当前节点，使其重新执行测量、布局或者绘制的区域。<br> 系统属性设置更新场景下，ArkUI框架会自动标记节点并重新执行测量，布局或者绘制，不需要开发者主动调用该函数。
+
+<!--Device-void (*markDirty)(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag)--><!--Device-void (*markDirty)(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag)-End-->
 
 **起始版本：** 12
 
@@ -422,6 +454,8 @@ uint32_t (*getTotalChildCount)(ArkUI_NodeHandle node)
 **描述：**
 
 获取子节点的个数。
+
+<!--Device-uint32_t (*getTotalChildCount)(ArkUI_NodeHandle node)--><!--Device-uint32_t (*getTotalChildCount)(ArkUI_NodeHandle node)-End-->
 
 **起始版本：** 12
 
@@ -446,6 +480,8 @@ ArkUI_NodeHandle (*getChildAt)(ArkUI_NodeHandle node, int32_t position)
 **描述：**
 
 获取子节点。
+
+<!--Device-ArkUI_NodeHandle (*getChildAt)(ArkUI_NodeHandle node, int32_t position)--><!--Device-ArkUI_NodeHandle (*getChildAt)(ArkUI_NodeHandle node, int32_t position)-End-->
 
 **起始版本：** 12
 
@@ -472,6 +508,8 @@ ArkUI_NodeHandle (*getFirstChild)(ArkUI_NodeHandle node)
 
 获取第一个子节点。
 
+<!--Device-ArkUI_NodeHandle (*getFirstChild)(ArkUI_NodeHandle node)--><!--Device-ArkUI_NodeHandle (*getFirstChild)(ArkUI_NodeHandle node)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -495,6 +533,8 @@ ArkUI_NodeHandle (*getLastChild)(ArkUI_NodeHandle node)
 **描述：**
 
 获取最后一个子节点。
+
+<!--Device-ArkUI_NodeHandle (*getLastChild)(ArkUI_NodeHandle node)--><!--Device-ArkUI_NodeHandle (*getLastChild)(ArkUI_NodeHandle node)-End-->
 
 **起始版本：** 12
 
@@ -520,6 +560,8 @@ ArkUI_NodeHandle (*getPreviousSibling)(ArkUI_NodeHandle node)
 
 获取上一个兄弟节点。
 
+<!--Device-ArkUI_NodeHandle (*getPreviousSibling)(ArkUI_NodeHandle node)--><!--Device-ArkUI_NodeHandle (*getPreviousSibling)(ArkUI_NodeHandle node)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -544,6 +586,8 @@ ArkUI_NodeHandle (*getNextSibling)(ArkUI_NodeHandle node)
 
 获取下一个兄弟节点。
 
+<!--Device-ArkUI_NodeHandle (*getNextSibling)(ArkUI_NodeHandle node)--><!--Device-ArkUI_NodeHandle (*getNextSibling)(ArkUI_NodeHandle node)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -567,6 +611,8 @@ int32_t (*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventT
 **描述：**
 
 注册自定义节点事件函数。事件触发时通过registerNodeCustomEventReceiver注册的自定义事件入口函数返回。
+
+<!--Device-int32_t (*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType, int32_t targetId, void* userData)--><!--Device-int32_t (*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType, int32_t targetId, void* userData)-End-->
 
 **起始版本：** 12
 
@@ -595,6 +641,8 @@ void (*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventTy
 
 反注册自定义节点事件函数。
 
+<!--Device-void (*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType)--><!--Device-void (*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -614,6 +662,8 @@ void (*registerNodeCustomEventReceiver)(void (*eventReceiver)(ArkUI_NodeCustomEv
 
 注册自定义节点事件回调统一入口函数。<br> ArkUI框架会统一收集过程中产生的自定义组件事件并通过注册的registerNodeCustomEventReceiver函数回调给开发者。 重复调用时会覆盖前一次注册的函数。 避免直接保存[ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md)对象指针，数据会在回调结束后销毁。 如果需要和组件实例绑定，可以使用addNodeCustomEventReceiver函数接口。
 
+<!--Device-void (*registerNodeCustomEventReceiver)(void (*eventReceiver)(ArkUI_NodeCustomEvent* event))--><!--Device-void (*registerNodeCustomEventReceiver)(void (*eventReceiver)(ArkUI_NodeCustomEvent* event))-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -632,6 +682,8 @@ void (*unregisterNodeCustomEventReceiver)()
 
 反注册自定义节点事件回调统一入口函数。
 
+<!--Device-void (*unregisterNodeCustomEventReceiver)()--><!--Device-void (*unregisterNodeCustomEventReceiver)()-End-->
+
 **起始版本：** 12
 
 ### setMeasuredSize()
@@ -643,6 +695,8 @@ int32_t (*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)
 **描述：**
 
 在测算回调函数中设置组件的测算完成后的宽和高。
+
+<!--Device-int32_t (*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)--><!--Device-int32_t (*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)-End-->
 
 **起始版本：** 12
 
@@ -670,6 +724,8 @@ int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t p
 
 在布局回调函数中设置组件的位置。该接口优先级低于[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_POSITION。
 
+<!--Device-int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)--><!--Device-int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -696,6 +752,8 @@ ArkUI_IntSize (*getMeasuredSize)(ArkUI_NodeHandle node)
 
 获取组件测算完成后的宽高尺寸。
 
+<!--Device-ArkUI_IntSize (*getMeasuredSize)(ArkUI_NodeHandle node)--><!--Device-ArkUI_IntSize (*getMeasuredSize)(ArkUI_NodeHandle node)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -719,6 +777,8 @@ ArkUI_IntOffset (*getLayoutPosition)(ArkUI_NodeHandle node)
 **描述：**
 
 获取组件布局完成后该节点相对于父节点的偏移，单位为px。该偏移是父容器对该节点进行布局之后的结果，因此布局之后生效的offset属性和不参与布局的position属性不影响该偏移值。
+
+<!--Device-ArkUI_IntOffset (*getLayoutPosition)(ArkUI_NodeHandle node)--><!--Device-ArkUI_IntOffset (*getLayoutPosition)(ArkUI_NodeHandle node)-End-->
 
 **起始版本：** 12
 
@@ -744,6 +804,8 @@ int32_t (*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint
 
 对目标组件进行测算，可以通过getMeasuredSize接口获取测算后的大小。
 
+<!--Device-int32_t (*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint)--><!--Device-int32_t (*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -768,6 +830,8 @@ int32_t (*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t position
 **描述：**
 
 对目标组件进行布局并传递该组件相对父组件的期望位置。
+
+<!--Device-int32_t (*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)--><!--Device-int32_t (*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)-End-->
 
 **起始版本：** 12
 
@@ -795,6 +859,8 @@ int32_t (*addNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(Ark
 
 在组件上添加组件事件回调函数，用于接收该组件产生的组件事件。<br> 不同于registerNodeEventReceiver的全局注册函数，该函数允许在同一个组件上添加多个事件接收器。 该函数添加的监听回调函数触发时机会先于registerNodeEventReceiver注册的全局回调函数。 避免直接保存ArkUI_NodeEvent对象指针，数据会在回调结束后销毁。
 
+<!--Device-int32_t (*addNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeEvent* event))--><!--Device-int32_t (*addNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeEvent* event))-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -819,6 +885,8 @@ int32_t (*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(
 **描述：**
 
 在组件上删除注册的组件事件回调函数。
+
+<!--Device-int32_t (*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeEvent* event))--><!--Device-int32_t (*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeEvent* event))-End-->
 
 **起始版本：** 12
 
@@ -845,6 +913,8 @@ int32_t (*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceive
 
 在组件上添加自定义事件回调函数，用于接收该组件产生的自定义事件（如布局事件，绘制事件）。<br> 不同于registerNodeCustomEventReceiver的全局注册函数，该函数允许在同一个组件上添加多个事件接收器。 该函数添加的监听回调函数触发时机会先于registerNodeCustomEventReceiver注册的全局回调函数。 避免直接保存ArkUI_NodeCustomEvent对象指针，数据会在回调结束后销毁。
 
+<!--Device-int32_t (*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeCustomEvent* event))--><!--Device-int32_t (*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeCustomEvent* event))-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -869,6 +939,8 @@ int32_t (*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node,void (*eventRecei
 **描述：**
 
 在组件上删除注册的自定义事件回调函数。
+
+<!--Device-int32_t (*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeCustomEvent* event))--><!--Device-int32_t (*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeCustomEvent* event))-End-->
 
 **起始版本：** 12
 
@@ -895,6 +967,8 @@ int32_t (*setUserData)(ArkUI_NodeHandle node, void* userData)
 
 在组件上保存自定义数据。
 
+<!--Device-int32_t (*setUserData)(ArkUI_NodeHandle node, void* userData)--><!--Device-int32_t (*setUserData)(ArkUI_NodeHandle node, void* userData)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -920,6 +994,8 @@ void* (*getUserData)(ArkUI_NodeHandle node)
 
 获取在组件上保存的自定义数据。
 
+<!--Device-void* (*getUserData)(ArkUI_NodeHandle node)--><!--Device-void* (*getUserData)(ArkUI_NodeHandle node)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -943,6 +1019,8 @@ int32_t (*setLengthMetricUnit)(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit uni
 **描述：**
 
 指定组件的单位。
+
+<!--Device-int32_t (*setLengthMetricUnit)(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t (*setLengthMetricUnit)(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit unit)-End-->
 
 **起始版本：** 12
 
@@ -969,6 +1047,8 @@ ArkUI_NodeHandle (*getParent)(ArkUI_NodeHandle node)
 
 获取父节点。
 
+<!--Device-ArkUI_NodeHandle (*getParent)(ArkUI_NodeHandle node)--><!--Device-ArkUI_NodeHandle (*getParent)(ArkUI_NodeHandle node)-End-->
+
 **起始版本：** 12
 
 **参数：**
@@ -992,6 +1072,8 @@ int32_t (*removeAllChildren)(ArkUI_NodeHandle parent)
 **描述：**
 
 从父组件上卸载所有子节点。
+
+<!--Device-int32_t (*removeAllChildren)(ArkUI_NodeHandle parent)--><!--Device-int32_t (*removeAllChildren)(ArkUI_NodeHandle parent)-End-->
 
 **起始版本：** 12
 

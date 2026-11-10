@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct dqblk {...}--><!--Device-struct dqblk {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct Print_PrintJob {...} Print_PrintJob
 
 Represents a print job, which is used to configure the attributes of a print job, including the number of copies, paper source, color mode, duplex mode, resolution, margin, orientation mode, print quality, document format, and advanced options. You can initiate a print job by populating this struct and submitting it to the print module API.
 
+<!--Device-typedef struct Print_PrintJob {...} Print_PrintJob--><!--Device-typedef struct Print_PrintJob {...} Print_PrintJob-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
-**Related module**: [Print](capi-others-print.md)
+**Related module**: [Print](capi-basic-services-kit-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 

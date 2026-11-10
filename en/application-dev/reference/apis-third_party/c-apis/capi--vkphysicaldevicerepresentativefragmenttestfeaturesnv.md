@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

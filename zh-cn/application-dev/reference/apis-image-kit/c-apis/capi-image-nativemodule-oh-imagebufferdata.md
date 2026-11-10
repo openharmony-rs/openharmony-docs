@@ -8,11 +8,13 @@ struct OH_ImageBufferData {...}
 
 OH_ImageBufferData是native层封装的图像数据结构体。获取OH_ImageNative_GetBufferData对象使用[OH_ImageNative_GetBufferData](capi-image-native-h.md#oh_imagenative_getbufferdata)函数。 <br> 结构体中保存的是对原图像数据的浅拷贝，当原数据被释放后，不应再对该结构体中的指针进行任何读写操作，否则会出现未定义行为。
 
+<!--Device-struct OH_ImageBufferData {...}--><!--Device-struct OH_ImageBufferData {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 23
 
-**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **所在头文件：** [image_native.h](capi-image-native-h.md)
 

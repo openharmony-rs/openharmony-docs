@@ -41,6 +41,8 @@ enum ContentEmbed_ErrorCode
 
 提供内容嵌入模块的错误码定义。
 
+<!--Device-ContentEmbed_ErrorCode--><!--Device-ContentEmbed_ErrorCode-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -77,6 +79,8 @@ enum ContentEmbed_CapabilityCode
 **描述：**
 
 嵌入文档对象支持能力的枚举，可通过位掩码组合多个能力值。
+
+<!--Device-ContentEmbed_CapabilityCode--><!--Device-ContentEmbed_CapabilityCode-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 

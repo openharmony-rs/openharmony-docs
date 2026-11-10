@@ -42,6 +42,8 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKe
 
 Creates a key agreement context based on the given algorithm name.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKeyAgreement **ctx)--><!--Device-OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKeyAgreement **ctx)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -76,6 +78,8 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ct
 
 Generates a shared secret.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ctx, OH_CryptoPrivKey *privkey, OH_CryptoPubKey *pubkey, Crypto_DataBlob *secret)--><!--Device-OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ctx, OH_CryptoPrivKey *privkey, OH_CryptoPubKey *pubkey, Crypto_DataBlob *secret)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -106,6 +110,8 @@ void OH_CryptoKeyAgreement_Destroy(OH_CryptoKeyAgreement *ctx)
 **Description**
 
 Destroys the key agreement context.
+
+<!--Device-void OH_CryptoKeyAgreement_Destroy(OH_CryptoKeyAgreement *ctx)--><!--Device-void OH_CryptoKeyAgreement_Destroy(OH_CryptoKeyAgreement *ctx)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 

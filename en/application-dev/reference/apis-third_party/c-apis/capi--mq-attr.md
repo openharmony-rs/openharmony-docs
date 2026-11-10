@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct mq_attr {...}--><!--Device-struct mq_attr {...}-End-->
+
 ## Summary
 
 ### Member variables

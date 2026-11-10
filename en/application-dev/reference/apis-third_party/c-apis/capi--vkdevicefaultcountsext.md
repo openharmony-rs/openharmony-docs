@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceFaultCountsEXT {...}--><!--Device-struct VkDeviceFaultCountsEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

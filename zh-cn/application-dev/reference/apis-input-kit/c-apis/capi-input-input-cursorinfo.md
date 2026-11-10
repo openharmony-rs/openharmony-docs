@@ -8,11 +8,13 @@ typedef struct Input_CursorInfo Input_CursorInfo
 
 定义鼠标光标信息，用于在输入系统中描述鼠标光标的显示行为和外观属性。包括光标显示状态、光标样式、光标大小档位、光标颜色。
 
+<!--Device-typedef struct Input_CursorInfo Input_CursorInfo--><!--Device-typedef struct Input_CursorInfo Input_CursorInfo-End-->
+
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **起始版本：** 22
 
-**相关模块：** [input](capi-others-input.md)
+**相关模块：** [input](capi-input-kit-input.md)
 
 **所在头文件：** [oh_input_manager.h](capi-oh-input-manager-h.md)
 

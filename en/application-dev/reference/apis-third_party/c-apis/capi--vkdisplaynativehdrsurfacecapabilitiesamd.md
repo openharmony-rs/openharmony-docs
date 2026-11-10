@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDisplayNativeHdrSurfaceCapabilitiesAMD {...}--><!--Device-struct VkDisplayNativeHdrSurfaceCapabilitiesAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

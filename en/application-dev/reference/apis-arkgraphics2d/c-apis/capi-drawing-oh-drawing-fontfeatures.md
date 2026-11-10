@@ -8,11 +8,13 @@ typedef struct OH_Drawing_FontFeatures OH_Drawing_FontFeatures
 
 Defines a struct for font features, which are typesetting rules within a font that determine how glyphs look, such as ligatures, alternates, and superscripts/subscripts.
 
+<!--Device-typedef struct OH_Drawing_FontFeatures OH_Drawing_FontFeatures--><!--Device-typedef struct OH_Drawing_FontFeatures OH_Drawing_FontFeatures-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
-**Related module**: [Drawing](capi-others-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 **Header file**: [drawing_types.h](capi-drawing-types-h.md)
 

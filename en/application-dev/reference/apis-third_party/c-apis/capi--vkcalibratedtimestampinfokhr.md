@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCalibratedTimestampInfoKHR {...}--><!--Device-struct VkCalibratedTimestampInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

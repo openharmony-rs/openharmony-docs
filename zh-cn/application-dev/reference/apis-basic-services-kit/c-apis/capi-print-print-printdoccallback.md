@@ -8,11 +8,13 @@ typedef struct Print_PrintDocCallback {...} Print_PrintDocCallback
 
 表示打印文档回调结构体。用于C/C++原生应用向打印框架提供文件生成和任务状态接收能力。
 
+<!--Device-typedef struct Print_PrintDocCallback {...} Print_PrintDocCallback--><!--Device-typedef struct Print_PrintDocCallback {...} Print_PrintDocCallback-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 13
 
-**相关模块：** [Print](capi-others-print.md)
+**相关模块：** [Print](capi-basic-services-kit-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

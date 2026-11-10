@@ -36,6 +36,8 @@ enum OH_AI_DataType
 
 Declares tensor data types.
 
+<!--Device-OH_AI_DataType--><!--Device-OH_AI_DataType-End-->
+
 **Since**: 9 /
 #define MINDSPORE_INCLUDE_C_API_DATA_TYPE_C_H
 

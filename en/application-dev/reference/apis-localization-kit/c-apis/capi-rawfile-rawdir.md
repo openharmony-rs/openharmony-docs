@@ -8,11 +8,13 @@ typedef struct RawDir RawDir
 
 `RawDir` represents an opened rawfile directory object, which can be used to traverse the directory and files within it. It is obtained through [OH_ResourceManager_OpenRawDir](capi-raw-file-manager-h.md#oh_resourcemanager_openrawdir), and must be closed and released through [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir) after use.
 
+<!--Device-typedef struct RawDir RawDir--><!--Device-typedef struct RawDir RawDir-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
 
-**Related module**: [rawfile](capi-others-rawfile.md)
+**Related module**: [rawfile](capi-localization-kit-rawfile.md)
 
 **Header file**: [raw_dir.h](capi-raw-dir-h.md)
 

@@ -21,7 +21,7 @@ This file provides C APIs for remote object creation, destruction, data sending,
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_IPC_MessageOption](capi-ohipcremoteobject-oh-ipc-messageoption.md) | OH_IPC_MessageOption | Defines IPC message options, which are used to configure request parameters during IPC communication. |
-| [OHIPCDeathRecipient](capi-ohipcremoteobject-ohipcdeathrecipient.md) | - | Defines the IPC death notification object, which is used to listen for the death event of a remote IPC object. After an **OHIPCDeathRecipient** object is created, it must be registered with the OHIPCRemoteObject object to take effect. If it is not registered, death events cannot be listened for. When a remote process terminates unexpectedly or is destroyed, the local process that has registered the death listener will receive a death notification callback. This allows the local process to release related resources or handle errors in a timely manner. |
+| [OHIPCDeathRecipient](capi-ohipcremoteobject-ohipcdeathrecipient.md) | OHIPCDeathRecipient | Defines the IPC death notification object, which is used to listen for the death event of a remote IPC object. After an **OHIPCDeathRecipient** object is created, it must be registered with the OHIPCRemoteObject object to take effect. If it is not registered, death events cannot be listened for. When a remote process terminates unexpectedly or is destroyed, the local process that has registered the death listener will receive a death notification callback. This allows the local process to release related resources or handle errors in a timely manner. |
 
 ### Enum
 
@@ -60,6 +60,8 @@ enum OH_IPC_RequestMode
 
 Enumerates the IPC request modes. The synchronous request mode is suitable for scenarios where you need to wait for a response from the remote side. The asynchronous request mode is suitable for scenarios where you do not need to wait for a response or where you need to improve concurrent performance.
 
+<!--Device-OH_IPC_RequestMode--><!--Device-OH_IPC_RequestMode-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -84,6 +86,8 @@ Called to process the peer request at the stub. This callback is triggered when 
 - This function is used to receive and process cross-process requests from the client when the server implements a custom IPC communication protocol.
 - When the server capabilities need to be called across processes, the server uses this callback to process the specific service logic.
 - This function serves as the entry for message distribution and processing when the RPC server capability is implemented.
+
+<!--Device-typedef int (*OH_OnRemoteRequestCallback)(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData)--><!--Device-typedef int (*OH_OnRemoteRequestCallback)(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -117,6 +121,8 @@ Called when an observed object is destroyed.
 - Notify other modules to synchronize the status when the object is destroyed.
 - Clear private user data when the object is destroyed.
 
+<!--Device-typedef void (*OH_OnRemoteDestroyCallback)(void *userData)--><!--Device-typedef void (*OH_OnRemoteDestroyCallback)(void *userData)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -144,6 +150,8 @@ Creates an [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) object, which 
 - Ensure that the lifecycle of **userData** covers the lifecycle of the stub object to avoid dangling pointers.
 - After the object is created by calling **OH_IPCRemoteStub_Create()**, it must be destroyed using [OH_IPCRemoteStub_Destroy()](capi-ipc-cremote-object-h.md#oh_ipcremotestub_destroy()) after use to release resources.
 - If the object is not destroyed, memory leaks may occur.
+
+<!--Device-OHIPCRemoteStub* OH_IPCRemoteStub_Create(const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)--><!--Device-OHIPCRemoteStub* OH_IPCRemoteStub_Create(const char *descriptor, OH_OnRemoteRequestCallback requestCallback, OH_OnRemoteDestroyCallback destroyCallback, void *userData)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -180,6 +188,8 @@ Destroys an [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) object.
 - After the destruction, the **destroyCallback** callback is automatically triggered to release **userData**.
 - After the destruction, the stub object cannot be used for any operation.
 
+<!--Device-void OH_IPCRemoteStub_Destroy(OHIPCRemoteStub *stub)--><!--Device-void OH_IPCRemoteStub_Destroy(OHIPCRemoteStub *stub)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -204,6 +214,8 @@ Destroys an [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) object.
 - You must call [OH_IPCRemoteProxy_RemoveDeathRecipient()](capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_removedeathrecipient()) to remove all added death event listeners before destroying the proxy object.
 - If the proxy object is destroyed when the listeners are not removed, the death event listener callback will be abnormal or memory leakage will occur.
 - After the destruction, no method of the proxy can be called.
+
+<!--Device-void OH_IPCRemoteProxy_Destroy(OHIPCRemoteProxy *proxy)--><!--Device-void OH_IPCRemoteProxy_Destroy(OHIPCRemoteProxy *proxy)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -233,6 +245,8 @@ Sends an IPC message from the proxy to the remote stub. This function supports b
 - It is advised to check whether the remote side is alive using [OH_IPCRemoteProxy_IsRemoteDead()](capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_isremotedead()) before making a call.
 - In case of call failure, it is advised to retry or perform error handling based on the returned error code.
 - Frequent IPC calls may affect performance. It is advised to design the communication protocol properly to reduce the number of calls.
+
+<!--Device-int OH_IPCRemoteProxy_SendRequest(const OHIPCRemoteProxy *proxy, uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, const OH_IPC_MessageOption *option)--><!--Device-int OH_IPCRemoteProxy_SendRequest(const OHIPCRemoteProxy *proxy, uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, const OH_IPC_MessageOption *option)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -265,6 +279,8 @@ int OH_IPCRemoteProxy_GetInterfaceDescriptor(OHIPCRemoteProxy *proxy, char **des
 Obtains the interface descriptor from the stub. The interface descriptor is the unique identifier of the stub object. It is used to identify the remote service type, check service version compatibility, or verify whether the remote service implements a specific API. This function obtains the descriptor string from the remote stub via IPC call and stores the result using the user-provided memory allocator.
 - The memory of the returned descriptor string is allocated by the user-provided allocator. The user must actively release it after use; otherwise, memory leaks will occur. Even if the function call fails, you should still check whether the descriptor is not NULL and release it accordingly.
 
+<!--Device-int OH_IPCRemoteProxy_GetInterfaceDescriptor(OHIPCRemoteProxy *proxy, char **descriptor, int32_t *len, OH_IPC_MemAllocator allocator)--><!--Device-int OH_IPCRemoteProxy_GetInterfaceDescriptor(OHIPCRemoteProxy *proxy, char **descriptor, int32_t *len, OH_IPC_MemAllocator allocator)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -294,6 +310,8 @@ typedef void (*OH_OnDeathRecipientCallback)(void *userData)
 
 Defines a callback to be invoked when the [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) object dies unexpectedly. When the process where the remote stub object resides exits abnormally or is killed by the system, the system triggers this callback to notify the client. The callback is executed in the Binder thread. Therefore, pay attention to thread security. Complex IPC operations are not recommended in callback to avoid potential deadlock risks. This function is commonly used when the client needs to detect abnormal exit or crash of the server, perform resource cleanup or state reset when the server object dies, or implement server liveness monitoring and fault recovery mechanisms.
 
+<!--Device-typedef void (*OH_OnDeathRecipientCallback)(void *userData)--><!--Device-typedef void (*OH_OnDeathRecipientCallback)(void *userData)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -313,6 +331,8 @@ typedef void (*OH_OnDeathRecipientDestroyCallback)(void *userData)
 **Description**
 
 Defines a callback to be invoked when the [OHIPCDeathRecipient](capi-ohipcremoteobject-ohipcdeathrecipient.md) object is destroyed. This function is usually used to release user private data or clear resources related to death listening when the death listening object is destroyed.
+
+<!--Device-typedef void (*OH_OnDeathRecipientDestroyCallback)(void *userData)--><!--Device-typedef void (*OH_OnDeathRecipientDestroyCallback)(void *userData)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -342,6 +362,8 @@ Creates an [OHIPCDeathRecipient](capi-ohipcremoteobject-ohipcdeathrecipient.md) 
 - After creation, it must be added to the proxy object via [OH_IPCRemoteProxy_AddDeathRecipient()](capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_adddeathrecipient()).
 - When the listener is no longer needed, you must first remove it via [OH_IPCRemoteProxy_RemoveDeathRecipient()](capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_removedeathrecipient()).
 - After removal, the object must be destroyed by calling [OH_IPCDeathRecipient_Destroy()](capi-ipc-cremote-object-h.md#oh_ipcdeathrecipient_destroy()).
+
+<!--Device-OHIPCDeathRecipient* OH_IPCDeathRecipient_Create(OH_OnDeathRecipientCallback deathRecipientCallback, OH_OnDeathRecipientDestroyCallback destroyCallback, void *userData)--><!--Device-OHIPCDeathRecipient* OH_IPCDeathRecipient_Create(OH_OnDeathRecipientCallback deathRecipientCallback, OH_OnDeathRecipientDestroyCallback destroyCallback, void *userData)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -376,6 +398,8 @@ Destroys an [OHIPCDeathRecipient](capi-ohipcremoteobject-ohipcdeathrecipient.md)
 - Destroying the listener object without removing it first may cause callback exceptions or memory leaks.
 - After the destruction, **destroyCallback** is automatically triggered to release **userData**.
 
+<!--Device-void OH_IPCDeathRecipient_Destroy(OHIPCDeathRecipient *recipient)--><!--Device-void OH_IPCDeathRecipient_Destroy(OHIPCDeathRecipient *recipient)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -401,6 +425,8 @@ Subscribes to the death of an [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub
 - The listener callback will be triggered during use.
 - Before destroying the proxy or recipient, call [OH_IPCRemoteProxy_RemoveDeathRecipient()](capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_removedeathrecipient()) to remove the listener.
 - Call [OH_IPCDeathRecipient_Destroy()](capi-ipc-cremote-object-h.md#oh_ipcdeathrecipient_destroy()) to destroy the listener object.
+
+<!--Device-int OH_IPCRemoteProxy_AddDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRecipient *recipient)--><!--Device-int OH_IPCRemoteProxy_AddDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRecipient *recipient)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -431,6 +457,8 @@ Unsubscribes from the death of the **OHIPCRemoteStub** object for an [OHIPCRemot
 - If a listener object is no longer needed, call [OH_IPCDeathRecipient_Destroy()](capi-ipc-cremote-object-h.md#oh_ipcdeathrecipient_destroy()) to destroy it.
 - If the object is not destroyed, memory leaks may occur.
 
+<!--Device-int OH_IPCRemoteProxy_RemoveDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRecipient *recipient)--><!--Device-int OH_IPCRemoteProxy_RemoveDeathRecipient(OHIPCRemoteProxy *proxy, OHIPCDeathRecipient *recipient)-End-->
+
 **System capability**: SystemCapability.Communication.IPC.Core
 
 **Since**: 12
@@ -457,6 +485,8 @@ int OH_IPCRemoteProxy_IsRemoteDead(const OHIPCRemoteProxy *proxy)
 **Description**
 
 Checks whether the [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) object corresponding to the [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) object is dead. This function is commonly used to proactively check whether the server is alive before sending an IPC request, to determine whether a reconnection is needed in the reconnection mechanism, and to adopt different handling strategies based on the server's liveness status in the service logic.
+
+<!--Device-int OH_IPCRemoteProxy_IsRemoteDead(const OHIPCRemoteProxy *proxy)--><!--Device-int OH_IPCRemoteProxy_IsRemoteDead(const OHIPCRemoteProxy *proxy)-End-->
 
 **System capability**: SystemCapability.Communication.IPC.Core
 

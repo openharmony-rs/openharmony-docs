@@ -8,11 +8,13 @@ struct OH_Drawing_FontAliasInfo {...}
 
 This struct describes the information about a font alias.
 
+<!--Device-struct OH_Drawing_FontAliasInfo {...}--><!--Device-struct OH_Drawing_FontAliasInfo {...}-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
-**Related module**: [Drawing](capi-others-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 **Header file**: [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 

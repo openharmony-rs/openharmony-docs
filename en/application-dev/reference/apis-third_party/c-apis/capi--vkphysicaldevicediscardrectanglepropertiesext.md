@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceDiscardRectanglePropertiesEXT {...}--><!--Device-struct VkPhysicalDeviceDiscardRectanglePropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

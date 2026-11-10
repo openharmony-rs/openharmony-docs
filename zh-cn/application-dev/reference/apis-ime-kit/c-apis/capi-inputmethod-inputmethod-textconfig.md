@@ -6,7 +6,7 @@ typedef struct InputMethod_TextConfig InputMethod_TextConfig
 
 ## 概述
 
-文本输入框的文本输入行为配置结构体，用于输入框向输入法框架传递核心输入规则，输入法框架根据配置执行相应输入行为。通过配置 输入属性（如输入类型、文本格式等），能够满足不同场景下的输入需求，提升用户输入体验，适用于需要精细化控制输入行为的文本输入场景。 该结构体为不透明类型（opaque type），调用者不可直接访问其内部成员，仅可通过本模块提供的函数接口进行操作。 <br> <br>结构体用途: <br>InputMethod_TextConfig承载编辑框的配置信息，包括输入类型、回车键类型、预上屏支持、选区范围、光标信息、避让信息、窗口 ID、占位符文本、abilityName等。该配置信息在[OH_TextEditorProxy_GetTextConfigFunc](capi-inputmethod-text-editor-proxy-capi-h. md#oh_texteditorproxy_gettextconfigfunc)回调中使用，开发者需在回调内对config 参数设置各配置项，输入法框架据此调整键盘布局和输入行为。 <br> <br>包含关系: <br>InputMethod_TextConfig内部包含以下子结构体信息： <br>- [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)：光标信息，包括光标位置、高度等。可通过 [OH_TextConfig_GetCursorInfo](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getcursorinfo)获取，返回双指针（函 数内部分配内存）。 <br>- [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)：避让信息，包括避让区域的位置和尺 寸。可通过[OH_TextConfig_GetTextAvoidInfo](capi-inputmethod-text-config-capi-h.md#oh_textconfig_gettextavoidinfo)获 取，返回双指针（函数内部分配内存）。 <br> <br>相关函数：<br> <br>- 创建/销毁函数：<br>
+文本输入框的文本输入行为配置结构体，用于输入框向输入法框架传递核心输入规则，输入法框架根据配置执行相应输入行为。通过配置 输入属性（如输入类型、文本格式等），能够满足不同场景下的输入需求，提升用户输入体验，适用于需要精细化控制输入行为的文本输入场景。 该结构体为不透明类型（opaque type），调用者不可直接访问其内部成员，仅可通过本模块提供的函数接口进行操作。 <br> <br>结构体用途: <br>InputMethod_TextConfig承载编辑框的配置信息，包括输入类型、回车键类型、预上屏支持、选区范围、光标信息、避让信息、窗口 ID、占位符文本、abilityName等。该配置信息在[OH_TextEditorProxy_GetTextConfigFunc](capi-inputmethod-text-editor-proxy-capi-h. md#oh_texteditorproxy_gettextconfigfunc)回调中使用，开发者需在回调内对config 参数设置各配置项，输入法框架据此调整键盘布局和输入行为。 <br> <br>包含关系: <br>InputMethod_TextConfig内部包含以下子结构体信息： <br>- [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md)：光标信息，包括光标位置、高度等。可通过 [OH_TextConfig_GetCursorInfo](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getcursorinfo)获取，通过输出双指针返回 内嵌光标信息的可写借用视图，不分配新对象，也不转移所有权。 <br>- [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)：避让信息，包括避让区域的位置和尺 寸。可通过[OH_TextConfig_GetTextAvoidInfo](capi-inputmethod-text-config-capi-h.md#oh_textconfig_gettextavoidinfo)获 取，通过输出双指针返回内嵌避让信息的可写借用视图，不分配新对象，也不转移所有权。 <br> <br>相关函数：<br> <br>- 创建/销毁函数：<br>
 \| 函数 \| 描述 \|
 \| -- \| -- \|
 \| [OH_TextConfig_Create](capi-inputmethod-text-config-capi-h.md#oh_textconfig_create) \| 创建一个新的 InputMethod_TextConfig实例。 \|
@@ -26,19 +26,21 @@ typedef struct InputMethod_TextConfig InputMethod_TextConfig
 \| [OH_TextConfig_GetInputType](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getinputtype) \| 获取输入 框类型。 \|
 \| [OH_TextConfig_GetEnterKeyType](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getenterkeytype) \| 获 取回车键功能类型。 \|
 \| [OH_TextConfig_IsPreviewTextSupported](capi-inputmethod-text-config-capi-h. md#oh_textconfig_ispreviewtextsupported) \| 获取是否支持预上屏。 \|
-\| [OH_TextConfig_GetCursorInfo](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getcursorinfo) \| 获取光 标信息（双指针，函数内部分配内存）。 \|
-\| [OH_TextConfig_GetTextAvoidInfo](capi-inputmethod-text-config-capi-h.md#oh_textconfig_gettextavoidinfo) \| 获取避让信息（双指针，函数内部分配内存）。 \|
+\| [OH_TextConfig_GetCursorInfo](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getcursorinfo) \| 获取光 标信息（通过输出双指针返回内嵌对象的可写借用视图，不分配新对象）。 \|
+\| [OH_TextConfig_GetTextAvoidInfo](capi-inputmethod-text-config-capi-h.md#oh_textconfig_gettextavoidinfo) \| 获取避让信息（通过输出双指针返回内嵌对象的可写借用视图，不分配新对象）。 \|
 \| [OH_TextConfig_GetSelection](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getselection) \| 获取选区 范围信息。 \|
 \| [OH_TextConfig_GetWindowId](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getwindowid) \| 获取所属窗口 的窗口ID。 \|
 \| [OH_TextConfig_GetPlaceholder](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getplaceholder) \| 获取 占位符文本信息。 \|
 \| [OH_TextConfig_GetAbilityName](capi-inputmethod-text-config-capi-h.md#oh_textconfig_getabilityname) \| 获取 abilityName信息。 \|
-\| [OH_TextConfig_GetConsumeKeyEvents](capi-inputmethod-text-config-capi-h. md#oh_textconfig_getconsumekeyevents) \| 获取文本配置中编辑框是否具有完整处理字母、字符、功能等按键的能力。<br/>**起始版本：** 26.0.0 \|
+\| [OH_TextConfig_GetConsumeKeyEvents](capi-inputmethod-text-config-capi-h. md#oh_textconfig_getconsumekeyevents) \| 获取文本配置中编辑框是否具有完整处理字母、字符、功能等按键的能力。<br/>**起始版本：** 26.0.0 \| <br> <br>句柄与所有权：仅可使用本API创建的有效句柄或框架提供的借用句柄；仅可销毁独立创建的对象。 回调提供的对象和TextConfig的子对象视图均为借用对象。访问接口对未注册或已失效的句柄返回IME_ERR_PARAMCHECK， NULL参数仍按原有规则返回错误。 <br>保护边界：生命周期检查不保证对象成员的线程安全，也不能在地址复用后识别所有失效地址。 对象销毁后应将指针置空；不得在回调结束后保留回调对象。
+
+<!--Device-typedef struct InputMethod_TextConfig InputMethod_TextConfig--><!--Device-typedef struct InputMethod_TextConfig InputMethod_TextConfig-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **起始版本：** 12
 
-**相关模块：** [InputMethod](capi-others-inputmethod.md)
+**相关模块：** [InputMethod](capi-ime-kit-inputmethod.md)
 
 **所在头文件：** [inputmethod_text_config_capi.h](capi-inputmethod-text-config-capi-h.md)
 

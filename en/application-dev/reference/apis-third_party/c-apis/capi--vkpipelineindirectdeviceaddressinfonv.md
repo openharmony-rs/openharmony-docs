@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineIndirectDeviceAddressInfoNV {...}--><!--Device-struct VkPipelineIndirectDeviceAddressInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,9 +8,11 @@ typedef struct OH_AVImageGenerator OH_AVImageGenerator
 
 定义OH_AVImageGenerator类型，用于生成指定时间点视频帧。
 
+<!--Device-typedef struct OH_AVImageGenerator OH_AVImageGenerator--><!--Device-typedef struct OH_AVImageGenerator OH_AVImageGenerator-End-->
+
 **起始版本：** 18
 
-**相关模块：** [AVImageGenerator](capi-others-avimagegenerator.md)
+**相关模块：** [AVImageGenerator](capi-media-kit-avimagegenerator.md)
 
 **所在头文件：** [avimage_generator.h](capi-avimage-generator-h.md)
 

@@ -8,11 +8,13 @@ struct Hid_KeyCodeArray {...}
 
 Defines an array of key value attribute codes, which stores information about the key value codes supported by an HID device.
 
+<!--Device-struct Hid_KeyCodeArray {...}--><!--Device-struct Hid_KeyCodeArray {...}-End-->
+
 **System capability**: SystemCapability.Driver.HID.Extension
 
 **Since**: 11
 
-**Related module**: [HidDdk](capi-others-hidddk.md)
+**Related module**: [HidDdk](capi-driver-development-kit-hidddk.md)
 
 **Header file**: [hid_ddk_types.h](capi-hid-ddk-types-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceGroupPresentCapabilitiesKHR {...}--><!--Device-struct VkDeviceGroupPresentCapabilitiesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

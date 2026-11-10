@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceDiagnosticsConfigCreateInfoNV {...}--><!--Device-struct VkDeviceDiagnosticsConfigCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

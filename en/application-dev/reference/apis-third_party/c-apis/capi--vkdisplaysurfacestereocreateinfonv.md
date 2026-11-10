@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDisplaySurfaceStereoCreateInfoNV {...}--><!--Device-struct VkDisplaySurfaceStereoCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

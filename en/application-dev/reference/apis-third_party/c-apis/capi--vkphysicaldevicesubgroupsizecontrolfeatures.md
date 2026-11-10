@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceSubgroupSizeControlFeatures {...}--><!--Device-struct VkPhysicalDeviceSubgroupSizeControlFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

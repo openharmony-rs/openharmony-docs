@@ -38,6 +38,8 @@ uint32_t OH_Drawing_RegisterFont(OH_Drawing_FontCollection* fontCollection, cons
 
 用于在字体管理器中注册自定义字体，支持的字体文件格式包含：ttf、otf。
 
+<!--Device-uint32_t OH_Drawing_RegisterFont(OH_Drawing_FontCollection* fontCollection, const char* fontFamily, const char* familySrc)--><!--Device-uint32_t OH_Drawing_RegisterFont(OH_Drawing_FontCollection* fontCollection, const char* fontFamily, const char* familySrc)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
@@ -65,6 +67,8 @@ uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection* fontCollection
 **描述：**
 
 用于在字体管理器中注册字体缓冲区，支持从ttf、otf文件读取的数据。
+
+<!--Device-uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection* fontCollection, const char* fontFamily, uint8_t* fontBuffer, size_t length)--><!--Device-uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection* fontCollection, const char* fontFamily, uint8_t* fontBuffer, size_t length)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -95,6 +99,8 @@ uint32_t OH_Drawing_RegisterFontByIndex(OH_Drawing_FontCollection* fontCollectio
 
 使用ttc/otc文件注册自定义字体，通过index参数指定需要注册的字体索引。
 
+<!--Device-uint32_t OH_Drawing_RegisterFontByIndex(OH_Drawing_FontCollection* fontCollection, const char* fontFamily, const char* familySrc, uint32_t index)--><!--Device-uint32_t OH_Drawing_RegisterFontByIndex(OH_Drawing_FontCollection* fontCollection, const char* fontFamily, const char* familySrc, uint32_t index)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
@@ -123,6 +129,8 @@ uint32_t OH_Drawing_RegisterFontBufferByIndex(OH_Drawing_FontCollection* fontCol
 **描述：**
 
 使用ttc/otc文件字节流注册字体。
+
+<!--Device-uint32_t OH_Drawing_RegisterFontBufferByIndex(OH_Drawing_FontCollection* fontCollection, const char* fontFamily, uint8_t* fontBuffer, size_t length, uint32_t index)--><!--Device-uint32_t OH_Drawing_RegisterFontBufferByIndex(OH_Drawing_FontCollection* fontCollection, const char* fontFamily, uint8_t* fontBuffer, size_t length, uint32_t index)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -154,6 +162,8 @@ uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, co
 
 通过字体名称取消注册自定义字体。 <br>取消注册当前正在使用的字体可能导致文本渲染异常，包括乱码或字形缺失。 <br>所有使用被取消注册的字体名称的排版对象都应该被销毁重建。
 
+<!--Device-uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, const char* fontFamily)--><!--Device-uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, const char* fontFamily)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
@@ -181,6 +191,8 @@ bool OH_Drawing_IsFontSupportedFromPath(const char* path)
 
 检查系统是否支持指定路径的字体格式。
 
+<!--Device-bool OH_Drawing_IsFontSupportedFromPath(const char* path)--><!--Device-bool OH_Drawing_IsFontSupportedFromPath(const char* path)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
@@ -206,6 +218,8 @@ bool OH_Drawing_IsFontSupportedFromBuffer(uint8_t* data, size_t dataLength)
 **描述：**
 
 检查系统是否支持缓冲区中指定的字体格式。
+
+<!--Device-bool OH_Drawing_IsFontSupportedFromBuffer(uint8_t* data, size_t dataLength)--><!--Device-bool OH_Drawing_IsFontSupportedFromBuffer(uint8_t* data, size_t dataLength)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

@@ -8,11 +8,13 @@ struct Rdb_ProgressObserver {...}
 
 端云同步进度观察者。
 
+<!--Device-struct Rdb_ProgressObserver {...}--><!--Device-struct Rdb_ProgressObserver {...}-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
-**相关模块：** [RDB](capi-others-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 **所在头文件：** [relational_store.h](capi-relational-store-h.md)
 

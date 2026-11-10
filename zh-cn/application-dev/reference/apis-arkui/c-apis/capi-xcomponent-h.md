@@ -42,6 +42,8 @@ enum ArkUI_XComponentType
 
 定义XComponent类型枚举值。
 
+<!--Device-ArkUI_XComponentType--><!--Device-ArkUI_XComponentType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceSamplerFilterMinmaxProperties {...}--><!--Device-struct VkPhysicalDeviceSamplerFilterMinmaxProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

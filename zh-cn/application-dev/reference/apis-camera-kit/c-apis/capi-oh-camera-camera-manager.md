@@ -8,11 +8,13 @@ typedef struct Camera_Manager Camera_Manager
 
 相机管理器对象。<br> 可以使用[OH_Camera_GetCameraManager](capi-camera-h.md#oh_camera_getcameramanager)方法创建指针。
 
+<!--Device-typedef struct Camera_Manager Camera_Manager--><!--Device-typedef struct Camera_Manager Camera_Manager-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-others-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **所在头文件：** [camera.h](capi-camera-h.md)
 

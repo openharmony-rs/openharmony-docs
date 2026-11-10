@@ -111,6 +111,8 @@ enum JSVM_PropertyAttributes
 
 JSVM_PropertyAttributes are flag used to control the behavior of properties set on a js object.
 
+<!--Device-JSVM_PropertyAttributes--><!--Device-JSVM_PropertyAttributes-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -137,6 +139,8 @@ enum JSVM_ValueType
 **Description**
 
 Describes the type of a JSVM_Value.
+
+<!--Device-JSVM_ValueType--><!--Device-JSVM_ValueType-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -165,6 +169,8 @@ enum JSVM_TypedarrayType
 
 Describes the type of a typedarray.
 
+<!--Device-JSVM_TypedarrayType--><!--Device-JSVM_TypedarrayType-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -192,6 +198,8 @@ enum JSVM_Status
 **Description**
 
 Integral status code indicating the success or failure of a JSVM-API call.
+
+<!--Device-JSVM_Status--><!--Device-JSVM_Status-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -236,6 +244,8 @@ enum JSVM_KeyCollectionMode
 
 limits the range of collected properties..
 
+<!--Device-JSVM_KeyCollectionMode--><!--Device-JSVM_KeyCollectionMode-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -254,6 +264,8 @@ enum JSVM_KeyFilter
 **Description**
 
 Property filter bits. They can be or'ed to build a composite filter..
+
+<!--Device-JSVM_KeyFilter--><!--Device-JSVM_KeyFilter-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -278,6 +290,8 @@ enum JSVM_KeyConversion
 
 key conversion select.
 
+<!--Device-JSVM_KeyConversion--><!--Device-JSVM_KeyConversion-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -296,6 +310,8 @@ enum JSVM_MemoryPressureLevel
 **Description**
 
 Memory pressure level.
+
+<!--Device-JSVM_MemoryPressureLevel--><!--Device-JSVM_MemoryPressureLevel-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -318,6 +334,8 @@ enum JSVM_CompileMode
 
 Compile mode
 
+<!--Device-JSVM_CompileMode--><!--Device-JSVM_CompileMode-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -339,6 +357,8 @@ enum JSVM_CompileOptionId
 **Description**
 
 Compile option id
+
+<!--Device-JSVM_CompileOptionId--><!--Device-JSVM_CompileOptionId-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -363,6 +383,8 @@ enum JSVM_RegExpFlags
 **Description**
 
 Regular expression flag bits. They can be or'ed to enable a set of flags.
+
+<!--Device-JSVM_RegExpFlags--><!--Device-JSVM_RegExpFlags-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -391,6 +413,8 @@ enum JSVM_InitializedFlag
 
 initialization flag
 
+<!--Device-JSVM_InitializedFlag--><!--Device-JSVM_InitializedFlag-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -409,6 +433,8 @@ enum JSVM_WasmOptLevel
 **Description**
 
 WebAssembly function optimization level
+
+<!--Device-JSVM_WasmOptLevel--><!--Device-JSVM_WasmOptLevel-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -429,6 +455,8 @@ enum JSVM_CacheType
 
 Cache data type
 
+<!--Device-JSVM_CacheType--><!--Device-JSVM_CacheType-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -448,6 +476,8 @@ enum JSVM_MicrotaskPolicy
 
 Microtask policies of JSVM.
 
+<!--Device-JSVM_MicrotaskPolicy--><!--Device-JSVM_MicrotaskPolicy-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -466,6 +496,8 @@ enum JSVM_TraceCategory
 **Description**
 
 Trace category for jsvm internal trace events.
+
+<!--Device-JSVM_TraceCategory--><!--Device-JSVM_TraceCategory-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -491,6 +523,8 @@ enum JSVM_PromiseRejectEvent
 
 The promise-reject event.
 
+<!--Device-JSVM_PromiseRejectEvent--><!--Device-JSVM_PromiseRejectEvent-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -512,6 +546,8 @@ enum JSVM_MessageErrorLevel
 **Description**
 
 The level of message error.
+
+<!--Device-JSVM_MessageErrorLevel--><!--Device-JSVM_MessageErrorLevel-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -536,6 +572,8 @@ enum JSVM_DefineClassOptionsId
 
 DefineClass options id.
 
+<!--Device-JSVM_DefineClassOptionsId--><!--Device-JSVM_DefineClassOptionsId-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -556,6 +594,8 @@ enum JSVM_CBTriggerTimeForGC
 
 The timing of GC callback trigger.
 
+<!--Device-JSVM_CBTriggerTimeForGC--><!--Device-JSVM_CBTriggerTimeForGC-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -574,6 +614,8 @@ enum JSVM_GCType
 **Description**
 
 The GC type.
+
+<!--Device-JSVM_GCType--><!--Device-JSVM_GCType-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -597,6 +639,8 @@ enum JSVM_GCCallbackFlags
 **Description**
 
 The GC callback flags.
+
+<!--Device-JSVM_GCCallbackFlags--><!--Device-JSVM_GCCallbackFlags-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -622,6 +666,8 @@ enum JSVM_DebugOption
 
 Debug options.
 
+<!--Device-JSVM_DebugOption--><!--Device-JSVM_DebugOption-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 20
@@ -643,6 +689,8 @@ typedef void(JSVM_CDECL* JSVM_Finalize)(JSVM_Env env, void* finalizeData, void* 
 
 Function pointer type for add-on provided function that allow the user to be notified.
 
+<!--Device-typedef void(JSVM_CDECL* JSVM_Finalize)(JSVM_Env env, void* finalizeData, void* finalizeHint)--><!--Device-typedef void(JSVM_CDECL* JSVM_Finalize)(JSVM_Env env, void* finalizeData, void* finalizeHint)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
@@ -659,6 +707,8 @@ typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env, void* finalizeD
 
 Finalize callback for ArrayBuffers created from external memory.<br> Similar to JSVM_Finalize, but includes a copied parameter indicating whether the engine copied the external data into an internal buffer (true) or used zero-copy (false). When copied is true, the engine does not hold a reference to the original external data, so the caller may free it immediately after the API call returns. When copied is false, finalizeData points to the original external memory that the engine is releasing — the callback should free it.
 
+<!--Device-typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env, void* finalizeData, void* finalizeHint, bool copied)--><!--Device-typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env, void* finalizeData, void* finalizeHint, bool copied)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 26.0.0
@@ -673,6 +723,8 @@ typedef bool(JSVM_CDECL* JSVM_OutputStream)(const char* data, int size, void* st
 
 Function pointer type for callback of output stream. The first parameter data is the data pointer. And the second parameter size is the data size to output. A null data pointer indicates the end of the stream. The third parameter streamData is the pointer passed in together with the callback to the API functions that generate data to the output stream. The callback returns true to indicate the stream can continue to accept data. Otherwise, it will abort the stream.
 
+<!--Device-typedef bool(JSVM_CDECL* JSVM_OutputStream)(const char* data, int size, void* streamData)--><!--Device-typedef bool(JSVM_CDECL* JSVM_OutputStream)(const char* data, int size, void* streamData)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 12
@@ -686,6 +738,8 @@ typedef void(JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location, const ch
 **Description**
 
 Function pointer type of OOM-Error callback.
+
+<!--Device-typedef void(JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location, const char* detail, bool isHeapOOM)--><!--Device-typedef void(JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location, const char* detail, bool isHeapOOM)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -709,6 +763,8 @@ typedef void(JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location, const 
 
 Function pointer type of Fatal-Error callback.
 
+<!--Device-typedef void(JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location, const char* message)--><!--Device-typedef void(JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location, const char* message)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -729,6 +785,8 @@ typedef void(JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_Promis
 **Description**
 
 Function pointer type of Promise-Reject callback.
+
+<!--Device-typedef void(JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)--><!--Device-typedef void(JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
@@ -752,6 +810,8 @@ typedef void(JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM
 
 Function pointer type of GC callback.
 
+<!--Device-typedef void(JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)--><!--Device-typedef void(JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
@@ -774,6 +834,8 @@ typedef void(JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t thre
 **Description**
 
 Function pointer type for heap threshold callback.
+
+<!--Device-typedef void(JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)--><!--Device-typedef void(JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 

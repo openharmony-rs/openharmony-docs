@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct HEADER {...}--><!--Device-struct HEADER {...}-End-->
+
 ## Summary
 
 ### Member variables

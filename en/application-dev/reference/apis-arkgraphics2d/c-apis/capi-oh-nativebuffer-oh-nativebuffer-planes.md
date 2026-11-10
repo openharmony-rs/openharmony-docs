@@ -8,11 +8,13 @@ typedef struct OH_NativeBuffer_Planes {...} OH_NativeBuffer_Planes
 
 Holds all image planes.
 
+<!--Device-typedef struct OH_NativeBuffer_Planes {...} OH_NativeBuffer_Planes--><!--Device-typedef struct OH_NativeBuffer_Planes {...} OH_NativeBuffer_Planes-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
 
-**Related module**: [OH_NativeBuffer](capi-others-oh-nativebuffer.md)
+**Related module**: [OH_NativeBuffer](capi-arkgraphics2d-oh-nativebuffer.md)
 
 **Header file**: [native_buffer.h](capi-native-buffer-h.md)
 

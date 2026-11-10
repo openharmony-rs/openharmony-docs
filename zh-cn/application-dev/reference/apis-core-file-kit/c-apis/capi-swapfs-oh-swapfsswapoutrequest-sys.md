@@ -8,13 +8,15 @@ struct OH_SwapfsSwapOutRequest {...}
 
 换出操作的请求参数。用于在应用需要释放内存时，主动触发数据换出到交换分区的场景，例如内存紧张时将部分数据临时换出。
 
+<!--Device-struct OH_SwapfsSwapOutRequest {...}--><!--Device-struct OH_SwapfsSwapOutRequest {...}-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.Swapfs
 
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [Swapfs](capi-others-swapfs.md)
+**相关模块：** [Swapfs](capi-core-file-kit-swapfs.md)
 
 **所在头文件：** [oh_swapfs.h（系统接口）](capi-oh-swapfs-h-sys.md)
 

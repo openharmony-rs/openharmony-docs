@@ -4,6 +4,8 @@
 
 Defines the error code for the native module.
 
+**File to Include**: <arkui/error_code.h>
+
 **Library**: libace_ndk.z.so
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -31,6 +33,8 @@ enum ArkUI_ErrorCode
 **Description**
 
 Enumerates error codes of ArkUI native APIs, which are used to indicate the results or failure causes of API calls.
+
+<!--Device-ArkUI_ErrorCode--><!--Device-ArkUI_ErrorCode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

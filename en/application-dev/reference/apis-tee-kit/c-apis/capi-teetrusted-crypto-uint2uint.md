@@ -8,11 +8,13 @@ typedef struct crypto_uint2uint {...} crypto_uint2uint
 
 Defines the data used for conversion of integers.
 
+<!--Device-typedef struct crypto_uint2uint {...} crypto_uint2uint--><!--Device-typedef struct crypto_uint2uint {...} crypto_uint2uint-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_crypto_api.h](capi-tee-crypto-api-h.md)
 

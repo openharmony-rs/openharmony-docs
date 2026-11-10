@@ -8,11 +8,13 @@ struct Http_HeaderValue {...}
 
 Defines the type of a mapped value in a request or response header.
 
+<!--Device-struct Http_HeaderValue {...}--><!--Device-struct Http_HeaderValue {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
-**Related module**: [netstack](capi-others-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 **Header file**: [net_http_type.h](capi-net-http-type-h.md)
 

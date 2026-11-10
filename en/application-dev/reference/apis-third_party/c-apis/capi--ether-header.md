@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct ether_header {...}--><!--Device-struct ether_header {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct fatal_msg {...}--><!--Device-struct fatal_msg {...}-End-->
+
 ## Summary
 
 ### Member variables

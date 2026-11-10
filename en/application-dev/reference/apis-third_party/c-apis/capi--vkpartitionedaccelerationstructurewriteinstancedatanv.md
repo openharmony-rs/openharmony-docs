@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPartitionedAccelerationStructureWriteInstanceDataNV {...}--><!--Device-struct VkPartitionedAccelerationStructureWriteInstanceDataNV {...}-End-->
+
 ## Summary
 
 ### Member variables

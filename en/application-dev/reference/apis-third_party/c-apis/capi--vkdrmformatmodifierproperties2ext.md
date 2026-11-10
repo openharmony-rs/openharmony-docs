@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDrmFormatModifierProperties2EXT {...}--><!--Device-struct VkDrmFormatModifierProperties2EXT {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -43,6 +43,8 @@ enum EffectErrorCode
 
 定义滤镜效果的状态码。这些状态码在使用滤镜效果相关接口时返回，开发者应根据 返回的状态码判断操作结果并进行相应处理。具体接口的状态码使用说明请参见对应接口文档。
 
+<!--Device-EffectErrorCode--><!--Device-EffectErrorCode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
@@ -63,6 +65,8 @@ enum EffectTileMode
 **描述：**
 
 定义着色器效果平铺模式的枚举。
+
+<!--Device-EffectTileMode--><!--Device-EffectTileMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

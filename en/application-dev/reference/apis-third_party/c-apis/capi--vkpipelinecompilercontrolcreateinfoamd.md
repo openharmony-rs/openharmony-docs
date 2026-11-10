@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineCompilerControlCreateInfoAMD {...}--><!--Device-struct VkPipelineCompilerControlCreateInfoAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

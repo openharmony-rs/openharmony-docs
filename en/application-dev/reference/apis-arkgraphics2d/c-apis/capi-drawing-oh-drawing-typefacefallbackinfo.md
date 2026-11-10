@@ -8,11 +8,13 @@ typedef struct OH_Drawing_TypefaceFallbackInfo {...} OH_Drawing_TypefaceFallback
 
 Defines the typeface fallback info structure for a run of glyphs that share the same fallback typeface.
 
+<!--Device-typedef struct OH_Drawing_TypefaceFallbackInfo {...} OH_Drawing_TypefaceFallbackInfo--><!--Device-typedef struct OH_Drawing_TypefaceFallbackInfo {...} OH_Drawing_TypefaceFallbackInfo-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 26.0.1
 
-**Related module**: [Drawing](capi-others-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 **Header file**: [drawing_font.h](capi-drawing-font-h.md)
 

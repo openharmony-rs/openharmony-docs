@@ -8,11 +8,13 @@ struct OH_UsbManager_UsbEndpoint {...}
 
 定义用于发送或接收数据的USB端点。端点从[OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md)获取。
 
+<!--Device-struct OH_UsbManager_UsbEndpoint {...}--><!--Device-struct OH_UsbManager_UsbEndpoint {...}-End-->
+
 **系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
-**相关模块：** [UsbManager](capi-others-usbmanager.md)
+**相关模块：** [UsbManager](capi-basic-services-kit-usbmanager.md)
 
 **所在头文件：** [ohusb_manager.h](capi-ohusb-manager-h.md)
 

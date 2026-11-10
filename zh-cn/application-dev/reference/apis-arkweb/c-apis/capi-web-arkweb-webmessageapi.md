@@ -8,11 +8,13 @@ typedef struct ArkWeb_WebMessageAPI {...} ArkWeb_WebMessageAPI
 
 ArkWeb_WebMessageAPI是Web消息相关Native API结构体。该结构体提供了创建和销毁消息、设置和获取消息类型、管理消息数据缓冲区等函数。此API是postMessage桥接的一部分， 支持Native代码与HTML页面之间的双向通信。<br>Web消息相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取，调用前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义) 校验函数指针的可用性，避免SDK与设备ROM不匹配导致崩溃。
 
+<!--Device-typedef struct ArkWeb_WebMessageAPI {...} ArkWeb_WebMessageAPI--><!--Device-typedef struct ArkWeb_WebMessageAPI {...} ArkWeb_WebMessageAPI-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 12
 
-**相关模块：** [Web](capi-others-web.md)
+**相关模块：** [Web](capi-arkweb-web.md)
 
 **所在头文件：** [arkweb_type.h](capi-arkweb-type-h.md)
 
@@ -48,6 +50,8 @@ ArkWeb_WebMessagePtr (*createWebMessage)()
 
 创建消息。用于在Native代码与HTML页面之间进行postMessage通信前，创建待发送的消息对象。调用createWebMessage()后，必须在使用完毕后调用destroyWebMessage() 释放消息资源，未调用destroyWebMessage()会导致消息资源泄漏，影响系统内存管理。<br> @return 创建的消息结构体指针。
 
+<!--Device-ArkWeb_WebMessagePtr (*createWebMessage)()--><!--Device-ArkWeb_WebMessagePtr (*createWebMessage)()-End-->
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -63,6 +67,8 @@ void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)
 **描述：**
 
 销毁消息，并释放消息对象占用的内存。必须与createWebMessage()成对使用，在使用完消息后调用此方法释放资源。调用后webMessage指针将变为无效，不应再被使用。
+
+<!--Device-void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)--><!--Device-void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)-End-->
 
 **参数：**
 
@@ -80,6 +86,8 @@ void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)
 
 设置消息类型。
 
+<!--Device-void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)--><!--Device-void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -96,6 +104,8 @@ ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)
 **描述：**
 
 获取消息类型。用于区分不同类型的通信消息，如文本消息、JSON消息、二进制消息等。
+
+<!--Device-ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)--><!--Device-ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)-End-->
 
 **参数：**
 
@@ -119,6 +129,8 @@ void (*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)
 
 设置数据。用于设置消息的具体内容，支持从Native代码向HTML页面传递文本、JSON或二进制数据。
 
+<!--Device-void (*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)--><!--Device-void (*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -136,6 +148,8 @@ void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)
 **描述：**
 
 获取数据。用于获取消息的具体内容，支持从HTML页面接收文本、JSON或二进制数据并在Native代码中处理。必须先调用setData()设置数据，然后才能调用getData()获取数据； 如果未调用setData()就调用getData()，将返回NULL，且dataLength为0。
+
+<!--Device-void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)--><!--Device-void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)-End-->
 
 **参数：**
 

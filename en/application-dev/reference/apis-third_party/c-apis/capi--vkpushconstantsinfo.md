@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPushConstantsInfo {...}--><!--Device-struct VkPushConstantsInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

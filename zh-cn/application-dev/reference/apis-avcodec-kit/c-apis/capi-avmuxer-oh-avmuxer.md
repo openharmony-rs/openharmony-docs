@@ -8,11 +8,13 @@ typedef struct OH_AVMuxer OH_AVMuxer
 
 定义封装接口native层对象类型。
 
+<!--Device-typedef struct OH_AVMuxer OH_AVMuxer--><!--Device-typedef struct OH_AVMuxer OH_AVMuxer-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Muxer
 
 **起始版本：** 10
 
-**相关模块：** [AVMuxer](capi-others-avmuxer.md)
+**相关模块：** [AVMuxer](capi-avcodec-kit-avmuxer.md)
 
 **所在头文件：** [native_avmuxer.h](capi-native-avmuxer-h.md)
 

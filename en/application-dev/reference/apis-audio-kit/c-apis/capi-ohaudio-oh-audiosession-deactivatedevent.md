@@ -8,11 +8,13 @@ struct OH_AudioSession_DeactivatedEvent {...}
 
 declare the audio session deactivated event
 
+<!--Device-struct OH_AudioSession_DeactivatedEvent {...}--><!--Device-struct OH_AudioSession_DeactivatedEvent {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
-**Related module**: [OHAudio](capi-others-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 **Header file**: [native_audio_session_manager.h](capi-native-audio-session-manager-h.md)
 

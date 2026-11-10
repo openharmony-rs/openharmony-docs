@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoH265SequenceParameterSetVui {...}--><!--Device-struct StdVideoH265SequenceParameterSetVui {...}-End-->
+
 ## Summary
 
 ### Member variables

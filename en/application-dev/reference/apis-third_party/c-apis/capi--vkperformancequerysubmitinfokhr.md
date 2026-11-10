@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPerformanceQuerySubmitInfoKHR {...}--><!--Device-struct VkPerformanceQuerySubmitInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

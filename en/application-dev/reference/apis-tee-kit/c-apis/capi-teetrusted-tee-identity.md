@@ -8,11 +8,13 @@ typedef struct TEE_Identity {...} TEE_Identity
 
 Definitions the TEE Identity.
 
+<!--Device-typedef struct TEE_Identity {...} TEE_Identity--><!--Device-typedef struct TEE_Identity {...} TEE_Identity-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_defines.h](capi-tee-defines-h.md)
 

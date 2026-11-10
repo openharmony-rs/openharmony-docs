@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct v__work {...}--><!--Device-struct v__work {...}-End-->
+
 ## Summary
 
 ### Member variables
@@ -28,6 +30,8 @@ void (*work)(struct uv__work *w)
 
 **Description**
 
+<!--Device-void (*work)(struct uv__work *w)--><!--Device-void (*work)(struct uv__work *w)-End-->
+
 ### done()
 
 ```c
@@ -35,5 +39,7 @@ void (*done)(struct uv__work *w, int status)
 ```
 
 **Description**
+
+<!--Device-void (*done)(struct uv__work *w, int status)--><!--Device-void (*done)(struct uv__work *w, int status)-End-->
 
 

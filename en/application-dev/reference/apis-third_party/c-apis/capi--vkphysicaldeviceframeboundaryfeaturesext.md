@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceFrameBoundaryFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceFrameBoundaryFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

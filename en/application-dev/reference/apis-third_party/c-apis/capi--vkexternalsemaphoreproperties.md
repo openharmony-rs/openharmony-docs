@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkExternalSemaphoreProperties {...}--><!--Device-struct VkExternalSemaphoreProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

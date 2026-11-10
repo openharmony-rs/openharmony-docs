@@ -60,6 +60,8 @@ ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)
 >
 > - 使用完毕后必须调用OH_ArkUI_CustomSpanMeasureInfo_Dispose()释放内存，否则会导致资源泄漏。
 
+<!--Device-ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)--><!--Device-ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -86,6 +88,8 @@ void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)
 >
 > - 调用前确保已不再需要该对象，调用后该对象不可再使用。
 
+<!--Device-void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)--><!--Device-void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -109,6 +113,8 @@ float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* in
 > - 必须先调用OH_ArkUI_CustomSpanMeasureInfo_Create()创建测量信息对象。
 >
 > - 参数info必须是通过OH_ArkUI_CustomSpanMeasureInfo_Create()方法返回的有效对象指针。
+
+<!--Device-float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* info)--><!--Device-float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* info)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,6 +148,8 @@ ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)
 >
 > - 调用前确保已不再需要该对象，调用后该对象不可再使用。
 
+<!--Device-ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)--><!--Device-ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -168,6 +176,8 @@ void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)
 >
 > - 调用前确保已不再需要该对象，调用后该对象不可再使用。
 
+<!--Device-void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)--><!--Device-void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -191,6 +201,8 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, fl
 > - 必须先调用OH_ArkUI_CustomSpanMetrics_Create()创建度量信息对象。
 >
 > - 参数metrics必须是通过OH_ArkUI_CustomSpanMetrics_Create()方法返回的有效对象指针。
+
+<!--Device-int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, float width)--><!--Device-int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, float width)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,6 +234,8 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, f
 > - 必须先调用OH_ArkUI_CustomSpanMetrics_Create()创建度量信息对象。
 >
 > - 参数metrics必须是通过OH_ArkUI_CustomSpanMetrics_Create()方法返回的有效对象指针。
+
+<!--Device-int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, float height)--><!--Device-int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, float height)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -256,6 +270,8 @@ ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)
 >
 > - 使用完毕后必须调用OH_ArkUI_CustomSpanDrawInfo_Dispose()释放内存，否则会导致资源泄漏。
 
+<!--Device-ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)--><!--Device-ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -282,6 +298,8 @@ void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)
 >
 > - 调用前确保已不再需要该对象，调用后该对象不可再使用。
 
+<!--Device-void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)--><!--Device-void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -305,6 +323,8 @@ float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 > - 必须先调用OH_ArkUI_CustomSpanDrawInfo_Create()创建绘制信息对象。
 >
 > - 参数info必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()方法返回的有效对象指针。
+
+<!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)--><!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -336,6 +356,8 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)
 >
 > - 参数info必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()方法返回的有效对象指针。
 
+<!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)--><!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -366,6 +388,8 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 >
 > - 参数info必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()方法返回的有效对象指针。
 
+<!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)--><!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
@@ -395,6 +419,8 @@ float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)
 > - 必须先调用OH_ArkUI_CustomSpanDrawInfo_Create()创建绘制信息对象。
 >
 > - 参数info必须是通过OH_ArkUI_CustomSpanDrawInfo_Create()方法返回的有效对象指针。
+
+<!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)--><!--Device-float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

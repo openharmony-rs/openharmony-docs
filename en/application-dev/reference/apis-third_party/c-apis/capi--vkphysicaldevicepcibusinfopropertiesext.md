@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePCIBusInfoPropertiesEXT {...}--><!--Device-struct VkPhysicalDevicePCIBusInfoPropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

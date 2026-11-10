@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct fanotify_event_metadata {...}--><!--Device-struct fanotify_event_metadata {...}-End-->
+
 ## Summary
 
 ### Member variables

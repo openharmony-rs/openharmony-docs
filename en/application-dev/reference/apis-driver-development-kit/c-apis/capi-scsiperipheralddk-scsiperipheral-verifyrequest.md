@@ -8,11 +8,13 @@ struct ScsiPeripheral_VerifyRequest {...}
 
 Defines the SCSI command (**VERIFY**) request struct, which is usually used to verify the data integrity of logical blocks.
 
+<!--Device-struct ScsiPeripheral_VerifyRequest {...}--><!--Device-struct ScsiPeripheral_VerifyRequest {...}-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 
-**Related module**: [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

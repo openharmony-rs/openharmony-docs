@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD {...}--><!--Device-struct VkPhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

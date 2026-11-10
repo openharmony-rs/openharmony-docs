@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineColorWriteCreateInfoEXT {...}--><!--Device-struct VkPipelineColorWriteCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

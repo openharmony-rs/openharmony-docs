@@ -32,6 +32,8 @@ bool OH_Notification_IsNotificationEnabled(void)
 
 Checks whether the notification of the specified application is enabled.
 
+<!--Device-bool OH_Notification_IsNotificationEnabled(void)--><!--Device-bool OH_Notification_IsNotificationEnabled(void)-End-->
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Since**: 13

@@ -153,6 +153,8 @@ enum ArkUI_ShadowType
 
 Enumerates shadow types.
 
+<!--Device-ArkUI_ShadowType--><!--Device-ArkUI_ShadowType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -171,6 +173,8 @@ enum ArkUI_ShadowStyle
 **Description**
 
 Enumerates shadow styles.
+
+<!--Device-ArkUI_ShadowStyle--><!--Device-ArkUI_ShadowStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -194,6 +198,8 @@ enum ArkUI_AnimationCurve
 **Description**
 
 Enumerates animation curves.
+
+<!--Device-ArkUI_AnimationCurve--><!--Device-ArkUI_AnimationCurve-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -225,6 +231,8 @@ enum ArkUI_AnimationPlayMode
 
 Enumerates animation playback modes.
 
+<!--Device-ArkUI_AnimationPlayMode--><!--Device-ArkUI_AnimationPlayMode-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -245,6 +253,8 @@ enum ArkUI_BlurStyle
 **Description**
 
 Enumerates blur styles.
+
+<!--Device-ArkUI_BlurStyle--><!--Device-ArkUI_BlurStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -276,6 +286,8 @@ enum ArkUI_BlurStyleActivePolicy
 
 Enumerates the activation policies for the background blur effect.
 
+<!--Device-ArkUI_BlurStyleActivePolicy--><!--Device-ArkUI_BlurStyleActivePolicy-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -295,6 +307,8 @@ enum ArkUI_BlendMode
 **Description**
 
 Enumerates blend modes.
+
+<!--Device-ArkUI_BlendMode--><!--Device-ArkUI_BlendMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -343,6 +357,8 @@ enum ArkUI_ColorStrategy
 
 Enumerates foreground and shadow colors.
 
+<!--Device-ArkUI_ColorStrategy--><!--Device-ArkUI_ColorStrategy-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -362,6 +378,8 @@ enum ArkUI_MaskType
 **Description**
 
 Enumerates mask types. A mask is a means to limit the display area of a component. It uses a specific shape to crop the component content so that only the content in the mask area is visible.
+
+<!--Device-ArkUI_MaskType--><!--Device-ArkUI_MaskType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -385,6 +403,8 @@ enum ArkUI_ClipType
 
 Enumerates clipping region types.
 
+<!--Device-ArkUI_ClipType--><!--Device-ArkUI_ClipType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -406,6 +426,8 @@ enum ArkUI_ShapeType
 
 Enumerates shape types.
 
+<!--Device-ArkUI_ShapeType--><!--Device-ArkUI_ShapeType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -426,6 +448,8 @@ enum ArkUI_LinearGradientDirection
 **Description**
 
 Enumerates linear gradient directions.
+
+<!--Device-ArkUI_LinearGradientDirection--><!--Device-ArkUI_LinearGradientDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -454,6 +478,8 @@ enum ArkUI_TransitionEdge
 
 Enumerates the slide-in and slide-out positions of the component from the screen edge during transition.
 
+<!--Device-ArkUI_TransitionEdge--><!--Device-ArkUI_TransitionEdge-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -475,6 +501,8 @@ enum ArkUI_BlendApplyType
 
 Defines how the specified blend mode is applied.
 
+<!--Device-ArkUI_BlendApplyType--><!--Device-ArkUI_BlendApplyType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -494,6 +522,8 @@ enum ArkUI_FinishCallbackType
 
 Enumerates the callback types for [OH_ArkUI_AnimatorOption_RegisterOnFinishCallback](capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback) in an animation.
 
+<!--Device-ArkUI_FinishCallbackType--><!--Device-ArkUI_FinishCallbackType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -512,6 +542,8 @@ enum ArkUI_RenderFit
 **Description**
 
 Enumerates the sizing and positioning behaviors of animated content in its final state.
+
+<!--Device-ArkUI_RenderFit--><!--Device-ArkUI_RenderFit-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -546,6 +578,8 @@ enum ArkUI_AnimationFillMode
 
 Enumerates the states before and after execution of the frame-by-frame animation.
 
+<!--Device-ArkUI_AnimationFillMode--><!--Device-ArkUI_AnimationFillMode-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -567,6 +601,8 @@ enum ArkUI_AnimationDirection
 
 Enumerates animation playback directions.
 
+<!--Device-ArkUI_AnimationDirection--><!--Device-ArkUI_AnimationDirection-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -587,6 +623,8 @@ enum OH_ArkUI_AnimationPropertyType
 **Description**
 
 Enumerates the animatable property types for property animations, keyframe animations, and path animations.
+
+<!--Device-OH_ArkUI_AnimationPropertyType--><!--Device-OH_ArkUI_AnimationPropertyType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -623,6 +661,8 @@ enum OH_ArkUI_AnimationGroupState
 
 Enumerates the playback states of an animation group.
 
+<!--Device-OH_ArkUI_AnimationGroupState--><!--Device-OH_ArkUI_AnimationGroupState-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
@@ -643,6 +683,8 @@ enum OH_ArkUI_AnimationFinishMode
 
 Enumerates the finish modes of an animation group.
 
+<!--Device-OH_ArkUI_AnimationFinishMode--><!--Device-OH_ArkUI_AnimationFinishMode-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
@@ -662,6 +704,8 @@ enum OH_ArkUI_LinearGradientBlurDirection
 **Description**
 
 Enumerates the gradient directions for linear gradient blur.
+
+<!--Device-OH_ArkUI_LinearGradientBlurDirection--><!--Device-OH_ArkUI_LinearGradientBlurDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -691,6 +735,8 @@ ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()
 
 Create a motion path option for path animation. When the object is no longer used, call [OH_ArkUI_MotionPathOptions_Dispose](capi-native-type-visual-h.md#oh_arkui_motionpathoptions_dispose) to dispose of it.
 
+<!--Device-ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()--><!--Device-ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -711,6 +757,8 @@ void OH_ArkUI_MotionPathOptions_Dispose(ArkUI_MotionPathOptions* options)
 
 Disposes of a motion path option of path animation.
 
+<!--Device-void OH_ArkUI_MotionPathOptions_Dispose(ArkUI_MotionPathOptions* options)--><!--Device-void OH_ArkUI_MotionPathOptions_Dispose(ArkUI_MotionPathOptions* options)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -730,6 +778,8 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* opti
 **Description**
 
 Sets the motion path of path animation.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* options, const char* svgPath)--><!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* options, const char* svgPath)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -757,6 +807,8 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions
 **Description**
 
 Obtains the motion path string stored in the motion path configuration item of the path animation.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions* options, char* svgPathBuffer, const int32_t bufferSize, int32_t* writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions* options, char* svgPathBuffer, const int32_t bufferSize, int32_t* writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -786,6 +838,8 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetFrom(ArkUI_MotionPathOptions* opti
 
 Sets the start progress of the path animation. The progress refers to the ratio of the distance already moved along the path to the total path length.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetFrom(ArkUI_MotionPathOptions* options, const float from)--><!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetFrom(ArkUI_MotionPathOptions* options, const float from)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -812,6 +866,8 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetFrom(const ArkUI_MotionPathOptions
 **Description**
 
 Obtains the start progress of the path animation.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetFrom(const ArkUI_MotionPathOptions* options, float* from)--><!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetFrom(const ArkUI_MotionPathOptions* options, float* from)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -840,6 +896,8 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetTo(ArkUI_MotionPathOptions* option
 
 Sets the end progress of the path animation. The progress refers to the ratio of the distance already moved along the path to the total path length.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetTo(ArkUI_MotionPathOptions* options, const float to)--><!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetTo(ArkUI_MotionPathOptions* options, const float to)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -866,6 +924,8 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetTo(const ArkUI_MotionPathOptions* 
 **Description**
 
 Obtains the end progress of the path animation.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetTo(const ArkUI_MotionPathOptions* options, float* to)--><!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetTo(const ArkUI_MotionPathOptions* options, float* to)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -894,6 +954,8 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetRotatable(ArkUI_MotionPathOptions*
 
 Sets whether a component rotates along the motion path.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetRotatable(ArkUI_MotionPathOptions* options, const bool rotatable)--><!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetRotatable(ArkUI_MotionPathOptions* options, const bool rotatable)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -920,6 +982,8 @@ ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOp
 **Description**
 
 Obtains whether a component rotates along the motion path.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOptions* options, bool* rotatable)--><!--Device-ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOptions* options, bool* rotatable)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -948,6 +1012,8 @@ OH_ArkUI_ShadowOptions* OH_ArkUI_ShadowOptions_Create()
 
 Creates a shadow option object. In the newly created object, the default value of the blur radius (**radius**) is **0**, the default value of the shadow offset on the x-axis (**offsetX**) is **0**, the default value of the shadow offset on the y-axis (**offsetY**) is **0**, the default value of the shadow color (**color**) is **<br>0xFF000000**, the default value of the shadow type (**type**) is **ARKUI_SHADOW_TYPE_COLOR**, and the default value of whether to fill the component with shadow (**isFill**) is **false**. If the object is no longer used, call [OH_ArkUI_ShadowOptions_Destroy](capi-native-type-visual-h.md#oh_arkui_shadowoptions_destroy) to destroy it.
 
+<!--Device-OH_ArkUI_ShadowOptions* OH_ArkUI_ShadowOptions_Create()--><!--Device-OH_ArkUI_ShadowOptions* OH_ArkUI_ShadowOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -968,6 +1034,8 @@ void OH_ArkUI_ShadowOptions_Destroy(OH_ArkUI_ShadowOptions* options)
 
 Destroys the shadow option object.
 
+<!--Device-void OH_ArkUI_ShadowOptions_Destroy(OH_ArkUI_ShadowOptions* options)--><!--Device-void OH_ArkUI_ShadowOptions_Destroy(OH_ArkUI_ShadowOptions* options)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -987,6 +1055,8 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options
 **Description**
 
 Sets the blur radius for the shadow options.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options, float radius)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options, float radius)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1015,6 +1085,8 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options
 
 Obtains the blur radius for the shadow options.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options, float* radius)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options, float* radius)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1041,6 +1113,8 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetType(OH_ArkUI_ShadowOptions* options, 
 **Description**
 
 Sets the shadow type for the shadow options.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType type)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType type)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1069,6 +1143,8 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetType(OH_ArkUI_ShadowOptions* options, 
 
 Obtains the shadow type for the shadow options.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType* type)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetType(OH_ArkUI_ShadowOptions* options, ArkUI_ShadowType* type)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1095,6 +1171,8 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetColor(OH_ArkUI_ShadowOptions* options,
 **Description**
 
 Sets the shadow color for the shadow options.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetColor(OH_ArkUI_ShadowOptions* options, uint32_t color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetColor(OH_ArkUI_ShadowOptions* options, uint32_t color)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1123,6 +1201,8 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetColor(OH_ArkUI_ShadowOptions* options,
 
 Obtains the shadow color of the shadow options.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetColor(OH_ArkUI_ShadowOptions* options, uint32_t* color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetColor(OH_ArkUI_ShadowOptions* options, uint32_t* color)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1149,6 +1229,8 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetX(OH_ArkUI_ShadowOptions* option
 **Description**
 
 Sets the shadow offset on the x-axis.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetX(OH_ArkUI_ShadowOptions* options, float offsetX)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetX(OH_ArkUI_ShadowOptions* options, float offsetX)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1177,6 +1259,8 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetX(OH_ArkUI_ShadowOptions* option
 
 Obtains the shadow offset on the x-axis.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetX(OH_ArkUI_ShadowOptions* options, float* offsetX)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetX(OH_ArkUI_ShadowOptions* options, float* offsetX)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1203,6 +1287,8 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetY(OH_ArkUI_ShadowOptions* option
 **Description**
 
 Sets the shadow offset on the y-axis.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetY(OH_ArkUI_ShadowOptions* options, float offsetY)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetOffsetY(OH_ArkUI_ShadowOptions* options, float offsetY)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1231,6 +1317,8 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetY(OH_ArkUI_ShadowOptions* option
 
 Obtains the shadow offset on the y-axis.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetY(OH_ArkUI_ShadowOptions* options, float* offsetY)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetY(OH_ArkUI_ShadowOptions* options, float* offsetY)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1257,6 +1345,8 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetFill(OH_ArkUI_ShadowOptions* options, 
 **Description**
 
 Sets whether to fill a component with a shadow.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetFill(OH_ArkUI_ShadowOptions* options, bool isFill)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetFill(OH_ArkUI_ShadowOptions* options, bool isFill)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1285,6 +1375,8 @@ ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, 
 
 Obtains whether a component is filled with a shadow.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, bool* isFill)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, bool* isFill)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1312,6 +1404,8 @@ ArkUI_Matrix4ScaleOptions* OH_ArkUI_Matrix4ScaleOptions_Create()
 
 Creates a pointer to the scaling parameter object for matrix operations. In the newly created object, the default scaling coefficients in the x, y, and z directions are 1. The default values of **centerX** and **centerY**<br>of the transformation center point are 0. When the object is no longer used, call [OH_ArkUI_Matrix4ScaleOptions_Dispose](capi-native-type-visual-h.md#oh_arkui_matrix4scaleoptions_dispose) to destroy it.
 
+<!--Device-ArkUI_Matrix4ScaleOptions* OH_ArkUI_Matrix4ScaleOptions_Create()--><!--Device-ArkUI_Matrix4ScaleOptions* OH_ArkUI_Matrix4ScaleOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1332,6 +1426,8 @@ void OH_ArkUI_Matrix4ScaleOptions_Dispose(ArkUI_Matrix4ScaleOptions* options)
 
 Disposes of the pointer to the scaling parameter object for matrix operations.
 
+<!--Device-void OH_ArkUI_Matrix4ScaleOptions_Dispose(ArkUI_Matrix4ScaleOptions* options)--><!--Device-void OH_ArkUI_Matrix4ScaleOptions_Dispose(ArkUI_Matrix4ScaleOptions* options)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1351,6 +1447,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetX(ArkUI_Matrix4ScaleOptions* opt
 **Description**
 
 Sets the scaling factor in the x direction of the scaling parameter object for matrix operations.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetX(ArkUI_Matrix4ScaleOptions* options, const float scaleX)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetX(ArkUI_Matrix4ScaleOptions* options, const float scaleX)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1379,6 +1477,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetX(const ArkUI_Matrix4ScaleOption
 
 Obtains the scaling factor in the x direction of the scaling parameter object for matrix operations. If the value of **x** is not set, the default value of the scaling factor in the x direction is 1.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetX(const ArkUI_Matrix4ScaleOptions* options, float* scaleX)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetX(const ArkUI_Matrix4ScaleOptions* options, float* scaleX)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1405,6 +1505,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetY(ArkUI_Matrix4ScaleOptions* opt
 **Description**
 
 Sets the scaling factor in the y direction of the scaling parameter object for matrix operations.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetY(ArkUI_Matrix4ScaleOptions* options, const float scaleY)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetY(ArkUI_Matrix4ScaleOptions* options, const float scaleY)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1433,6 +1535,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetY(const ArkUI_Matrix4ScaleOption
 
 Obtains the scaling factor in the y direction of the scaling parameter object for matrix operations. If the value of **y** is not set, the default value of the scaling factor in the y direction is 1.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetY(const ArkUI_Matrix4ScaleOptions* options, float* scaleY)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetY(const ArkUI_Matrix4ScaleOptions* options, float* scaleY)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1459,6 +1563,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetZ(ArkUI_Matrix4ScaleOptions* opt
 **Description**
 
 Sets the scaling factor in the z direction of the scaling parameter object for matrix operations.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetZ(ArkUI_Matrix4ScaleOptions* options, const float scaleZ)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetZ(ArkUI_Matrix4ScaleOptions* options, const float scaleZ)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1487,6 +1593,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetZ(const ArkUI_Matrix4ScaleOption
 
 Obtains the scaling factor in the z direction of the scaling parameter object for matrix operations. If the value of **z** is not set, the default value of the scaling factor in the z direction is 1.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetZ(const ArkUI_Matrix4ScaleOptions* options, float* scaleZ)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetZ(const ArkUI_Matrix4ScaleOptions* options, float* scaleZ)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1513,6 +1621,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterX(ArkUI_Matrix4ScaleOption
 **Description**
 
 Sets the x coordinate of the transformation center point of the scaling parameter object for matrix operations.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterX(ArkUI_Matrix4ScaleOptions* options, const float centerX)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterX(ArkUI_Matrix4ScaleOptions* options, const float centerX)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1541,6 +1651,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterX(const ArkUI_Matrix4Scale
 
 Obtains the x coordinate of the transformation center point of the scaling parameter object for matrix operations.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterX(const ArkUI_Matrix4ScaleOptions* options, float* centerX)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterX(const ArkUI_Matrix4ScaleOptions* options, float* centerX)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1567,6 +1679,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterY(ArkUI_Matrix4ScaleOption
 **Description**
 
 Sets the y coordinate of the transformation center point of the scaling parameter object for matrix operations.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterY(ArkUI_Matrix4ScaleOptions* options, const float centerY)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_SetCenterY(ArkUI_Matrix4ScaleOptions* options, const float centerY)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1595,6 +1709,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterY(const ArkUI_Matrix4Scale
 
 Obtains the y coordinate of the transformation center point of the scaling parameter object for matrix operations.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterY(const ArkUI_Matrix4ScaleOptions* options, float* centerY)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4ScaleOptions_GetCenterY(const ArkUI_Matrix4ScaleOptions* options, float* centerY)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1622,6 +1738,8 @@ ArkUI_Matrix4RotationOptions* OH_ArkUI_Matrix4RotationOptions_Create()
 
 Creates a pointer to the rotation parameter object for matrix operations. In the newly created object, the default value of an x-axis offset (**centerX**) of a single matrix transformation center point relative to a component transformation center point, the default value of a y-axis offset (**centerY**) of the single matrix transformation center point relative to the component transformation center point, and the default value of a rotation angle (**angle**) are 0. If any one of the vectors in the x, y, and z directions is not specified, the rotate effect is equivalent to rotating around the z axis (that is, the direction vectors are x=0, y=0, and z=1 during calculation). Once any of the vectors in the x, y, and z directions is specified, the specified vector takes effect.
 
+<!--Device-ArkUI_Matrix4RotationOptions* OH_ArkUI_Matrix4RotationOptions_Create()--><!--Device-ArkUI_Matrix4RotationOptions* OH_ArkUI_Matrix4RotationOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1642,6 +1760,8 @@ void OH_ArkUI_Matrix4RotationOptions_Dispose(ArkUI_Matrix4RotationOptions* optio
 
 Disposes of the pointer to the rotation parameter object for matrix operations.
 
+<!--Device-void OH_ArkUI_Matrix4RotationOptions_Dispose(ArkUI_Matrix4RotationOptions* options)--><!--Device-void OH_ArkUI_Matrix4RotationOptions_Dispose(ArkUI_Matrix4RotationOptions* options)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1661,6 +1781,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetX(ArkUI_Matrix4RotationOption
 **Description**
 
 Sets the direction vector in the x direction of the rotation parameter object for matrix operations.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetX(ArkUI_Matrix4RotationOptions* options, const float x)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetX(ArkUI_Matrix4RotationOptions* options, const float x)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1689,6 +1811,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetX(const ArkUI_Matrix4Rotation
 
 Obtains the direction vector in the x direction of the rotation parameter object for matrix operations. If the value of **x** has never been set, the value is undefined. In this case, ARKUI_ERROR_CODE_PARAM_INVALID is returned.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetX(const ArkUI_Matrix4RotationOptions* options, float* x)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetX(const ArkUI_Matrix4RotationOptions* options, float* x)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1715,6 +1839,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetY(ArkUI_Matrix4RotationOption
 **Description**
 
 Sets the direction vector in the y direction of the rotation parameter object for matrix operations.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetY(ArkUI_Matrix4RotationOptions* options, const float y)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetY(ArkUI_Matrix4RotationOptions* options, const float y)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1743,6 +1869,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetY(const ArkUI_Matrix4Rotation
 
 Obtains the direction vector in the y direction of the rotation parameter object for matrix operations. If the value of **y** has never been set, the value is undefined. In this case, ARKUI_ERROR_CODE_PARAM_INVALID is returned.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetY(const ArkUI_Matrix4RotationOptions* options, float* y)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetY(const ArkUI_Matrix4RotationOptions* options, float* y)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1769,6 +1897,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetZ(ArkUI_Matrix4RotationOption
 **Description**
 
 Sets the direction vector in the z direction of the rotation parameter object for matrix operations.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetZ(ArkUI_Matrix4RotationOptions* options, const float z)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetZ(ArkUI_Matrix4RotationOptions* options, const float z)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1797,6 +1927,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetZ(const ArkUI_Matrix4Rotation
 
 Obtains the direction vector in the z direction of the rotation parameter object for matrix operations. If the value of **z** has never been set, the value is undefined. In this case, ARKUI_ERROR_CODE_PARAM_INVALID is returned.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetZ(const ArkUI_Matrix4RotationOptions* options, float* z)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetZ(const ArkUI_Matrix4RotationOptions* options, float* z)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1823,6 +1955,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetAngle(ArkUI_Matrix4RotationOp
 **Description**
 
 Sets the rotation angle in the rotation parameter object for matrix operations.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetAngle(ArkUI_Matrix4RotationOptions* options, const float angle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetAngle(ArkUI_Matrix4RotationOptions* options, const float angle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1851,6 +1985,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetAngle(const ArkUI_Matrix4Rota
 
 Obtains the rotation angle in the rotation parameter object for matrix operations.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetAngle(const ArkUI_Matrix4RotationOptions* options, float* angle)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetAngle(const ArkUI_Matrix4RotationOptions* options, float* angle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1877,6 +2013,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterX(ArkUI_Matrix4Rotation
 **Description**
 
 Sets the x-axis offset of a single matrix transformation center point relative to a component transformation center point.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterX(ArkUI_Matrix4RotationOptions* options, const float centerX)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterX(ArkUI_Matrix4RotationOptions* options, const float centerX)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1905,6 +2043,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterX(const ArkUI_Matrix4Ro
 
 Obtains the x-axis offset of a single matrix transformation center point relative to a component transformation center point.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterX(const ArkUI_Matrix4RotationOptions* options, float* centerX)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterX(const ArkUI_Matrix4RotationOptions* options, float* centerX)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1931,6 +2071,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterY(ArkUI_Matrix4Rotation
 **Description**
 
 Sets the y-axis offset of a single matrix transformation center point relative to a component transformation center point.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterY(ArkUI_Matrix4RotationOptions* options, const float centerY)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_SetCenterY(ArkUI_Matrix4RotationOptions* options, const float centerY)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1959,6 +2101,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterY(const ArkUI_Matrix4Ro
 
 Obtains the y-axis offset of a single matrix transformation center point relative to a component transformation center point.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterY(const ArkUI_Matrix4RotationOptions* options, float* centerY)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterY(const ArkUI_Matrix4RotationOptions* options, float* centerY)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1986,6 +2130,8 @@ ArkUI_Matrix4TranslationOptions* OH_ArkUI_Matrix4TranslationOptions_Create()
 
 Creates a pointer to a translation object for matrix operations. In the newly created object, the default translation distances on the x, y, and z axes are 0. When the object is no longer used, call [OH_ArkUI_Matrix4TranslationOptions_Dispose](capi-native-type-visual-h.md#oh_arkui_matrix4translationoptions_dispose) to destroy it.
 
+<!--Device-ArkUI_Matrix4TranslationOptions* OH_ArkUI_Matrix4TranslationOptions_Create()--><!--Device-ArkUI_Matrix4TranslationOptions* OH_ArkUI_Matrix4TranslationOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2006,6 +2152,8 @@ void OH_ArkUI_Matrix4TranslationOptions_Dispose(ArkUI_Matrix4TranslationOptions*
 
 Disposes of the pointer to the translation object for matrix operations.
 
+<!--Device-void OH_ArkUI_Matrix4TranslationOptions_Dispose(ArkUI_Matrix4TranslationOptions* options)--><!--Device-void OH_ArkUI_Matrix4TranslationOptions_Dispose(ArkUI_Matrix4TranslationOptions* options)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2025,6 +2173,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetX(ArkUI_Matrix4Translation
 **Description**
 
 Sets the translation value of a translation object on the x-axis for matrix operations, in px.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetX(ArkUI_Matrix4TranslationOptions* options, const float x)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetX(ArkUI_Matrix4TranslationOptions* options, const float x)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2053,6 +2203,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4Trans
 
 Obtains the translation value of a translation object on the x-axis for matrix operations, in px. If the value of **x** has never been set, the default value is **0**.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4TranslationOptions* options, float* x)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4TranslationOptions* options, float* x)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2079,6 +2231,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4Translation
 **Description**
 
 Sets the translation value of a translation object on the y-axis for matrix operations, in px.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4TranslationOptions* options, const float y)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4TranslationOptions* options, const float y)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2107,6 +2261,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetY(const ArkUI_Matrix4Trans
 
 Obtains the translation value of a translation object on the y-axis for matrix operations, in px. If the value of **y** has never been set, the default value is **0**.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetY(const ArkUI_Matrix4TranslationOptions* options, float* y)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetY(const ArkUI_Matrix4TranslationOptions* options, float* y)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2133,6 +2289,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetZ(ArkUI_Matrix4Translation
 **Description**
 
 Sets the translation value of a translation object on the z-axis for matrix operations, in px.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetZ(ArkUI_Matrix4TranslationOptions* options, const float z)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetZ(ArkUI_Matrix4TranslationOptions* options, const float z)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2161,6 +2319,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetZ(const ArkUI_Matrix4Trans
 
 Obtains the translation value of a translation object on the z-axis for matrix operations, in px. If the value of **z** has never been set, the default value is **0**.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetZ(const ArkUI_Matrix4TranslationOptions* options, float* z)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetZ(const ArkUI_Matrix4TranslationOptions* options, float* z)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2188,6 +2348,8 @@ ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateIdentity()
 
 Creates a fourth-order identity matrix object.
 
+<!--Device-ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateIdentity()--><!--Device-ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateIdentity()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2207,6 +2369,8 @@ ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateByElements(const float* elements)
 **Description**
 
 Creates a fourth-order matrix object by specifying each element of the matrix.
+
+<!--Device-ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateByElements(const float* elements)--><!--Device-ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateByElements(const float* elements)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2234,6 +2398,8 @@ void OH_ArkUI_Matrix4_Dispose(ArkUI_Matrix4* matrix)
 
 Disposes of the pointer to the matrix object.
 
+<!--Device-void OH_ArkUI_Matrix4_Dispose(ArkUI_Matrix4* matrix)--><!--Device-void OH_ArkUI_Matrix4_Dispose(ArkUI_Matrix4* matrix)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2253,6 +2419,8 @@ ArkUI_Matrix4* OH_ArkUI_Matrix4_Copy(const ArkUI_Matrix4* matrix)
 **Description**
 
 Creates a copy of a fourth-order matrix object. By copying the original matrix, you can perform operations on it independently to obtain different matrix transformation results. When the copy object is no longer used, call [OH_ArkUI_Matrix4_Dispose](capi-native-type-visual-h.md#oh_arkui_matrix4_dispose) to dispose of it.
+
+<!--Device-ArkUI_Matrix4* OH_ArkUI_Matrix4_Copy(const ArkUI_Matrix4* matrix)--><!--Device-ArkUI_Matrix4* OH_ArkUI_Matrix4_Copy(const ArkUI_Matrix4* matrix)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2280,6 +2448,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Invert(ArkUI_Matrix4* matrix)
 
 Performs an inverse matrix transformation on the input matrix. The input matrix object will be modified after the transformation.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_Invert(ArkUI_Matrix4* matrix)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_Invert(ArkUI_Matrix4* matrix)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2305,6 +2475,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Combine(ArkUI_Matrix4* oriMatrix, const ArkUI_M
 **Description**
 
 Combines another matrix with the original matrix and stores the result matrix in **oriMatrix**. In this case, the result matrix applies the transformation of **oriMatrix** and then applies the transformation of **anotherMatrix**. This API will modify the **oriMatrix** object.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_Combine(ArkUI_Matrix4* oriMatrix, const ArkUI_Matrix4* anotherMatrix)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_Combine(ArkUI_Matrix4* oriMatrix, const ArkUI_Matrix4* anotherMatrix)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2333,6 +2505,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Translate(ArkUI_Matrix4* matrix, const ArkUI_Ma
 
 Applies translation transformation to the original matrix to obtain the translated matrix. Each translation transformation is accumulated on the previous matrix. The input matrix object will be modified after the transformation.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_Translate(ArkUI_Matrix4* matrix, const ArkUI_Matrix4TranslationOptions* translate)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_Translate(ArkUI_Matrix4* matrix, const ArkUI_Matrix4TranslationOptions* translate)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2359,6 +2533,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Scale(ArkUI_Matrix4* matrix, const ArkUI_Matrix
 **Description**
 
 Applies scaling transformation to the original matrix to obtain the scaled matrix. Each scaling transformation is accumulated on the previous matrix. This API will modify the input matrix object.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_Scale(ArkUI_Matrix4* matrix, const ArkUI_Matrix4ScaleOptions* scale)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_Scale(ArkUI_Matrix4* matrix, const ArkUI_Matrix4ScaleOptions* scale)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2387,6 +2563,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Rotate(ArkUI_Matrix4* matrix, const ArkUI_Matri
 
 Applies rotation transformation to the original matrix to obtain the rotated matrix. Each rotation transformation is accumulated on the previous matrix. This API will modify the input matrix object.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_Rotate(ArkUI_Matrix4* matrix, const ArkUI_Matrix4RotationOptions* rotate)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_Rotate(ArkUI_Matrix4* matrix, const ArkUI_Matrix4RotationOptions* rotate)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2413,6 +2591,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_Skew(ArkUI_Matrix4* matrix, const float skewX, 
 **Description**
 
 Applies skew transformation to the original matrix to obtain the skewed matrix. Each skew transformation is accumulated on the previous matrix. The input matrix object will be modified after the transformation.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_Skew(ArkUI_Matrix4* matrix, const float skewX, const float skewY)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_Skew(ArkUI_Matrix4* matrix, const float skewX, const float skewY)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2442,6 +2622,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_TransformPoint(const ArkUI_Matrix4* matrix, con
 
 Calculates the new coordinate position of a point after it is transformed by a matrix.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_TransformPoint(const ArkUI_Matrix4* matrix, const ArkUI_PointF* oriPoint, ArkUI_PointF* result)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_TransformPoint(const ArkUI_Matrix4* matrix, const ArkUI_PointF* oriPoint, ArkUI_PointF* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2469,6 +2651,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_SetPolyToPoly(ArkUI_Matrix4* matrix, const ArkU
 **Description**
 
 Maps the vertex coordinates of one polygon to the vertex coordinates of another polygon and calculates the required matrix.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_SetPolyToPoly(ArkUI_Matrix4* matrix, const ArkUI_PointF* src, const ArkUI_PointF* dst, const uint32_t pointCount)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_SetPolyToPoly(ArkUI_Matrix4* matrix, const ArkUI_PointF* src, const ArkUI_PointF* dst, const uint32_t pointCount)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2499,6 +2683,8 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4_GetElements(const ArkUI_Matrix4* matrix, float*
 
 Obtains the 16 elements of the fourth-order matrix.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_GetElements(const ArkUI_Matrix4* matrix, float* result)--><!--Device-ArkUI_ErrorCode OH_ArkUI_Matrix4_GetElements(const ArkUI_Matrix4* matrix, float* result)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -2526,6 +2712,8 @@ OH_ArkUI_LinearGradientBlurOptions* OH_ArkUI_NativeModule_LinearGradientBlurOpti
 
 Creates a linear gradient blur options object.
 
+<!--Device-OH_ArkUI_LinearGradientBlurOptions* OH_ArkUI_NativeModule_LinearGradientBlurOptions_Create(void)--><!--Device-OH_ArkUI_LinearGradientBlurOptions* OH_ArkUI_NativeModule_LinearGradientBlurOptions_Create(void)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -2548,6 +2736,8 @@ void OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy(OH_ArkUI_LinearGrad
 
 Destroys a linear gradient blur options object.
 
+<!--Device-void OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy(OH_ArkUI_LinearGradientBlurOptions *options)--><!--Device-void OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy(OH_ArkUI_LinearGradientBlurOptions *options)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -2567,6 +2757,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetBlurRadius(OH
 **Description**
 
 Sets the blur radius for the linear gradient blur options.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetBlurRadius(OH_ArkUI_LinearGradientBlurOptions *options, float blurRadius)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetBlurRadius(OH_ArkUI_LinearGradientBlurOptions *options, float blurRadius)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2595,6 +2787,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetBlurRadius(co
 
 Obtains the blur radius of linear gradient blur options.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetBlurRadius(const OH_ArkUI_LinearGradientBlurOptions *options, float *blurRadius)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetBlurRadius(const OH_ArkUI_LinearGradientBlurOptions *options, float *blurRadius)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -2621,6 +2815,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetFractionStops
 **Description**
 
 Sets the fraction stops for the linear gradient blur options.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetFractionStops(OH_ArkUI_LinearGradientBlurOptions *options, const float *fractionStops, int32_t stopsLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetFractionStops(OH_ArkUI_LinearGradientBlurOptions *options, const float *fractionStops, int32_t stopsLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2649,6 +2845,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetFractionStops
 **Description**
 
 Obtains the fraction stops of linear gradient blur options.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetFractionStops(const OH_ArkUI_LinearGradientBlurOptions *options, float *fractionStops, int32_t stopsSize, int32_t *writeLength)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetFractionStops(const OH_ArkUI_LinearGradientBlurOptions *options, float *fractionStops, int32_t stopsSize, int32_t *writeLength)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2679,6 +2877,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetDirection(OH_
 
 Sets the gradient blur direction for the linear gradient blur options.
 
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetDirection(OH_ArkUI_LinearGradientBlurOptions *options, OH_ArkUI_LinearGradientBlurDirection direction)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetDirection(OH_ArkUI_LinearGradientBlurOptions *options, OH_ArkUI_LinearGradientBlurDirection direction)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -2705,6 +2905,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetDirection(con
 **Description**
 
 Obtains the gradient blur direction of linear gradient blur options.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetDirection(const OH_ArkUI_LinearGradientBlurOptions *options, OH_ArkUI_LinearGradientBlurDirection *direction)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetDirection(const OH_ArkUI_LinearGradientBlurOptions *options, OH_ArkUI_LinearGradientBlurDirection *direction)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

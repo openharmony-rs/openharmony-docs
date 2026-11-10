@@ -42,6 +42,8 @@ enum BackgroundProcessManager_ProcessPriority
 
 子进程压制档位。
 
+<!--Device-BackgroundProcessManager_ProcessPriority--><!--Device-BackgroundProcessManager_ProcessPriority-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **起始版本：** 17
@@ -60,6 +62,8 @@ enum BackgroundProcessManager_ErrorCode
 **描述：**
 
 定义后台子进程管控错误码。
+
+<!--Device-BackgroundProcessManager_ErrorCode--><!--Device-BackgroundProcessManager_ErrorCode-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -83,6 +87,8 @@ int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessMan
 **描述：**
 
 设置子进程的压制档位，子进程被压制后可获得的CPU资源将会受到限制。如果主进程调度策略发生变化，如从后台切至前台等，子进程会跟随主进程一同变化，子进程如需继续压制，需要重新调用本接口。
+
+<!--Device-int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessManager_ProcessPriority priority)--><!--Device-int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessManager_ProcessPriority priority)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -110,6 +116,8 @@ int OH_BackgroundProcessManager_ResetProcessPriority(int pid)
 **描述：**
 
 为子进程解压制，即子进程策略恢复为主进程调度策略。若主进程调度策略发生变化，如从后台切至前台等，子进程会跟随主进程一同变化，等效于执行一次resetProcessPriority动作。
+
+<!--Device-int OH_BackgroundProcessManager_ResetProcessPriority(int pid)--><!--Device-int OH_BackgroundProcessManager_ResetProcessPriority(int pid)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 

@@ -52,6 +52,8 @@ enum CryptoKdf_ParamType
 
 Defines KDF parameter types.
 
+<!--Device-CryptoKdf_ParamType--><!--Device-CryptoKdf_ParamType-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -79,6 +81,8 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfPa
 **Description**
 
 Creates KDF parameters.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfParams **params)--><!--Device-OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfParams **params)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -114,6 +118,8 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, Crypto
 
 Sets KDF parameters.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, CryptoKdf_ParamType type, Crypto_DataBlob *value)--><!--Device-OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, CryptoKdf_ParamType type, Crypto_DataBlob *value)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -142,6 +148,8 @@ void OH_CryptoKdfParams_Destroy(OH_CryptoKdfParams *params)
 
 Destroys KDF parameters.
 
+<!--Device-void OH_CryptoKdfParams_Destroy(OH_CryptoKdfParams *params)--><!--Device-void OH_CryptoKdfParams_Destroy(OH_CryptoKdfParams *params)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -161,6 +169,8 @@ OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)
 **Description**
 
 Creates a KDF context based on the given algorithm name.
+
+<!--Device-OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)--><!--Device-OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -196,6 +206,8 @@ OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParam
 
 Derives a key.
 
+<!--Device-OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParams *params, int keyLen, Crypto_DataBlob *key)--><!--Device-OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParams *params, int keyLen, Crypto_DataBlob *key)-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
@@ -226,6 +238,8 @@ void OH_CryptoKdf_Destroy(OH_CryptoKdf *ctx)
 **Description**
 
 Destroys the KDF context.
+
+<!--Device-void OH_CryptoKdf_Destroy(OH_CryptoKdf *ctx)--><!--Device-void OH_CryptoKdf_Destroy(OH_CryptoKdf *ctx)-End-->
 
 **System capability**: SystemCapability.Security.CryptoFramework
 

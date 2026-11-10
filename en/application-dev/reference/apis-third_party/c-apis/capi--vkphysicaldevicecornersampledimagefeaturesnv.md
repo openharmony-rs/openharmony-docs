@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceCornerSampledImageFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceCornerSampledImageFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

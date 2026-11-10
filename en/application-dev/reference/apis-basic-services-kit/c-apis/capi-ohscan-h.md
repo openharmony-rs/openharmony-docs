@@ -58,6 +58,8 @@ enum Scan_ErrorCode
 
 Enumerates the error codes.
 
+<!--Device-Scan_ErrorCode--><!--Device-Scan_ErrorCode-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -93,6 +95,8 @@ typedef void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int3
 
 Callback for scanner discovery, which is registered using [OH_Scan_StartScannerDiscovery](capi-ohscan-h.md#oh_scan_startscannerdiscovery).
 
+<!--Device-typedef void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int32_t deviceCount)--><!--Device-typedef void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int32_t deviceCount)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -113,6 +117,8 @@ int32_t OH_Scan_Init()
 **Description**
 
 Initiates the scan service, initializes the scan client, and connects the client to the scan service. Call this API to initialize the scan service before calling other scan APIs. After using the service, call [OH_Scan_Exit](capi-ohscan-h.md#oh_scan_exit) to release resources.
+
+<!--Device-int32_t OH_Scan_Init()--><!--Device-int32_t OH_Scan_Init()-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -135,6 +141,8 @@ int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)
 **Description**
 
 Starts scanner discovery and registers a callback used to process the discovered scanners. Call [OH_Scan_Exit](capi-ohscan-h.md#oh_scan_exit) to unregister the callback.
+
+<!--Device-int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)--><!--Device-int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -164,6 +172,8 @@ int32_t OH_Scan_OpenScanner(const char* scannerId)
 
 Opens a scanner. After using the scanner, call [OH_Scan_CloseScanner](capi-ohscan-h.md#oh_scan_closescanner) to close it.
 
+<!--Device-int32_t OH_Scan_OpenScanner(const char* scannerId)--><!--Device-int32_t OH_Scan_OpenScanner(const char* scannerId)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
@@ -191,6 +201,8 @@ int32_t OH_Scan_CloseScanner(const char* scannerId)
 **Description**
 
 Closes a connected scanner. Generally, this API is called to disconnect the scanner after it is used.
+
+<!--Device-int32_t OH_Scan_CloseScanner(const char* scannerId)--><!--Device-int32_t OH_Scan_CloseScanner(const char* scannerId)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -220,6 +232,8 @@ Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t*
 
 Obtains scanner settings. The memory to which the returned struct pointer points is automatically released when [OH_Scan_Exit](capi-ohscan-h.md#oh_scan_exit) is called. Only one copy of each scanner model is stored in the memory.
 
+<!--Device-Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t* errorCode)--><!--Device-Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t* errorCode)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
@@ -248,6 +262,8 @@ int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option,
 **Description**
 
 Sets the option parameters of the scanner. The input options and values are obtained from [OH_Scan_GetScannerParameter](capi-ohscan-h.md#oh_scan_getscannerparameter).
+
+<!--Device-int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option, const char* value)--><!--Device-int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option, const char* value)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -279,6 +295,8 @@ int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 
 Starts a scanning task of the scanner. After the scanning service is successfully initialized and parameters have been set after the scanner is connected, you can call this API to start scanning. During scanning, you can call [OH_Scan_GetPictureScanProgress](capi-ohscan-h.md#oh_scan_getpicturescanprogress) to obtain the scanning progress and call [OH_Scan_CancelScan](capi-ohscan-h.md#oh_scan_cancelscan) to cancel the scanning.
 
+<!--Device-int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)--><!--Device-int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
@@ -308,6 +326,8 @@ int32_t OH_Scan_CancelScan(const char* scannerId)
 
 Cancels an ongoing scanning task of the scanner.
 
+<!--Device-int32_t OH_Scan_CancelScan(const char* scannerId)--><!--Device-int32_t OH_Scan_CancelScan(const char* scannerId)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
@@ -335,6 +355,8 @@ int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanPr
 **Description**
 
 Obtains the progress of scanning a picture by the scanner.
+
+<!--Device-int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanProgress* prog)--><!--Device-int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanProgress* prog)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -364,6 +386,8 @@ int32_t OH_Scan_Exit()
 **Description**
 
 Exits the scan service, releases the memory of the scan framework, and deregisters the scanner discovery callback. After the scan service exits, other scan APIs cannot be called.
+
+<!--Device-int32_t OH_Scan_Exit()--><!--Device-int32_t OH_Scan_Exit()-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 

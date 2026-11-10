@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRenderPassAttachmentBeginInfo {...}--><!--Device-struct VkRenderPassAttachmentBeginInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

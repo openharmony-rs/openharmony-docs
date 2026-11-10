@@ -8,11 +8,13 @@ typedef struct JSVM_DefineClassOptions {...} JSVM_DefineClassOptions
 
 DefineClass options.
 
+<!--Device-typedef struct JSVM_DefineClassOptions {...} JSVM_DefineClassOptions--><!--Device-typedef struct JSVM_DefineClassOptions {...} JSVM_DefineClassOptions-End-->
+
 **System capability**: SystemCapability.ArkCompiler.JSVM
 
 **Since**: 18
 
-**Related module**: [JSVM](capi-others-jsvm.md)
+**Related module**: [JSVM](capi-arkts-jsvm.md)
 
 **Header file**: [jsvm_types.h](capi-jsvm-types-h.md)
 

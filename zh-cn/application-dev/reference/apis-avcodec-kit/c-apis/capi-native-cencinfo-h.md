@@ -63,6 +63,8 @@ enum DrmCencAlgorithm
 
 Drm CENC算法类型。
 
+<!--Device-DrmCencAlgorithm--><!--Device-DrmCencAlgorithm-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 12
@@ -86,6 +88,8 @@ enum DrmCencInfoMode
 
 枚举类型，表示cencInfo中keyId/iv/subsample信息是否设置。
 
+<!--Device-DrmCencInfoMode--><!--Device-DrmCencInfoMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 12
@@ -108,6 +112,8 @@ OH_AVCencInfo *OH_AVCencInfo_Create()
 
 创建用于设置cencInfo的OH_AVCencInfo实例。
 
+<!--Device-OH_AVCencInfo *OH_AVCencInfo_Create()--><!--Device-OH_AVCencInfo *OH_AVCencInfo_Create()-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 12
@@ -127,6 +133,8 @@ OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)
 **描述：**
 
 销毁OH_AVCencInfo实例并释放内部资源。<br> 同一个实例只能销毁一次。在再次创建实例之前，不应使用该实例。 建议在实例销毁成功后立即将实例指针设置为nullptr。
+
+<!--Device-OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)--><!--Device-OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -154,6 +162,8 @@ OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlg
 
 设置cencInfo加密算法。
 
+<!--Device-OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlgorithm algo)--><!--Device-OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlgorithm algo)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 12
@@ -180,6 +190,8 @@ OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId
 **描述：**
 
 设置cencInfo的keyId和iv。
+
+<!--Device-OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId, uint32_t keyIdLen, uint8_t *iv, uint32_t ivLen)--><!--Device-OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId, uint32_t keyIdLen, uint8_t *iv, uint32_t ivLen)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -210,6 +222,8 @@ OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t en
 **描述：**
 
 设置cencInfo的subsamples信息。
+
+<!--Device-OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t encryptedBlockCount, uint32_t skippedBlockCount, uint32_t firstEncryptedOffset, uint32_t subsampleCount, DrmSubsample *subsamples)--><!--Device-OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t encryptedBlockCount, uint32_t skippedBlockCount, uint32_t firstEncryptedOffset, uint32_t subsampleCount, DrmSubsample *subsamples)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -242,6 +256,8 @@ OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode
 
 设置cencInfo的模式。
 
+<!--Device-OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode mode)--><!--Device-OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode mode)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 12
@@ -268,6 +284,8 @@ OH_AVErrCode OH_AVCencInfo_SetAVBuffer(OH_AVCencInfo *cencInfo, OH_AVBuffer *buf
 **描述：**
 
 将cencInfo设置到AVBuffer。
+
+<!--Device-OH_AVErrCode OH_AVCencInfo_SetAVBuffer(OH_AVCencInfo *cencInfo, OH_AVBuffer *buffer)--><!--Device-OH_AVErrCode OH_AVCencInfo_SetAVBuffer(OH_AVCencInfo *cencInfo, OH_AVBuffer *buffer)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 

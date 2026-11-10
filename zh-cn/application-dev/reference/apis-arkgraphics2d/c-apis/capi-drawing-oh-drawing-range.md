@@ -8,11 +8,13 @@ typedef struct OH_Drawing_Range OH_Drawing_Range
 
 用于接收文本的起始位置和结束位置。
 
+<!--Device-typedef struct OH_Drawing_Range OH_Drawing_Range--><!--Device-typedef struct OH_Drawing_Range OH_Drawing_Range-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_text_declaration.h](capi-drawing-text-declaration-h.md)
 

@@ -37,6 +37,8 @@ OH_Drawing_Image* OH_Drawing_ImageCreate(void)
 
 创建一个图片对象，描述了要绘制的二维像素数组。使用完毕后， 必须调用[OH_Drawing_ImageDestroy](capi-drawing-image-h.md#oh_drawing_imagedestroy)销毁该图片对象并回收内存，否则会导致内存泄漏。
 
+<!--Device-OH_Drawing_Image* OH_Drawing_ImageCreate(void)--><!--Device-OH_Drawing_Image* OH_Drawing_ImageCreate(void)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -57,6 +59,8 @@ void OH_Drawing_ImageDestroy(OH_Drawing_Image* image)
 
 销毁图片对象并回收该对象占用的内存。与[OH_Drawing_ImageCreate](capi-drawing-image-h.md#oh_drawing_imagecreate)配对使用，用于销毁由其创建的图片对象。 销毁后不应再使用该图片对象指针，否则可能导致未定义行为。
 
+<!--Device-void OH_Drawing_ImageDestroy(OH_Drawing_Image* image)--><!--Device-void OH_Drawing_ImageDestroy(OH_Drawing_Image* image)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -76,6 +80,8 @@ bool OH_Drawing_ImageBuildFromBitmap(OH_Drawing_Image* image, OH_Drawing_Bitmap*
 **描述：**
 
 从位图构造图片对象内容，共享或复制位图像素。在已有位图数据需要在画布上绘制图片的场景中， 可使用此接口将位图数据构造为图片对象。如果位图被标记为不可变状态，像素内存是共享的； 如果位图未被标记为不可变状态（即位图为可变状态） ，像素内存会被复制。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>image、bitmap任意一个为NULL时返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-bool OH_Drawing_ImageBuildFromBitmap(OH_Drawing_Image* image, OH_Drawing_Bitmap* bitmap)--><!--Device-bool OH_Drawing_ImageBuildFromBitmap(OH_Drawing_Image* image, OH_Drawing_Bitmap* bitmap)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -104,6 +110,8 @@ int32_t OH_Drawing_ImageGetWidth(OH_Drawing_Image* image)
 
 获取图片宽度，单位为物理像素px，即每行的像素个数。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>image为NULL时返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-int32_t OH_Drawing_ImageGetWidth(OH_Drawing_Image* image)--><!--Device-int32_t OH_Drawing_ImageGetWidth(OH_Drawing_Image* image)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -130,6 +138,8 @@ int32_t OH_Drawing_ImageGetHeight(OH_Drawing_Image* image)
 
 获取图片高度，单位为物理像素px，即像素行数。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>image为NULL时返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-int32_t OH_Drawing_ImageGetHeight(OH_Drawing_Image* image)--><!--Device-int32_t OH_Drawing_ImageGetHeight(OH_Drawing_Image* image)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -155,6 +165,8 @@ void OH_Drawing_ImageGetImageInfo(OH_Drawing_Image* image, OH_Drawing_Image_Info
 **描述：**
 
 获取图片信息。调用该接口后，传入的图片信息对象被填充。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>image、imageInfo任意一个为NULL时返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-void OH_Drawing_ImageGetImageInfo(OH_Drawing_Image* image, OH_Drawing_Image_Info* imageInfo)--><!--Device-void OH_Drawing_ImageGetImageInfo(OH_Drawing_Image* image, OH_Drawing_Image_Info* imageInfo)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

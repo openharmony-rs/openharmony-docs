@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMemoryHeap {...}--><!--Device-struct VkMemoryHeap {...}-End-->
+
 ## Summary
 
 ### Member variables

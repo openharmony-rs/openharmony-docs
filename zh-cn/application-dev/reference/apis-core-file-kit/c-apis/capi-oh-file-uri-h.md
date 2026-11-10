@@ -36,6 +36,8 @@ FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int 
 
 通过传入的路径生成应用自己的URI； 将路径转URI时，路径中的中文及非数字字母的特殊字符将会被百分号编码，拼接在URI中。
 
+<!--Device-FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int length, char **result)--><!--Device-FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int length, char **result)-End-->
+
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
 **起始版本：** 12
@@ -63,6 +65,8 @@ FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int l
 **描述：**
 
 将URI转换成对应的沙箱路径。 1、URI转路径过程中会将URI中存在的百分号编码字符进行解码后拼接在原处，非系统接口生成的URI中可能存在不符合编码规范的字符，导致字符串无法正常拼接。 2、转换处理为系统约定的字符串替换规则（规则随系统演进可能会发生变化），转换过程中不进行路径校验操作，无法保证转换结果一定可以访问。
+
+<!--Device-FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int length, char **result)--><!--Device-FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int length, char **result)-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
@@ -92,6 +96,8 @@ FileManagement_ErrCode OH_FileUri_GetFullDirectoryUri(const char *uri, unsigned 
 
 获取所在路径URI。URI指向文件则返回所在路径的URI，URI指向目录则不处理直接返回原串； 如果URI指向的文件不存在，或无法获取文件属性，则返回空串。
 
+<!--Device-FileManagement_ErrCode OH_FileUri_GetFullDirectoryUri(const char *uri, unsigned int length, char **result)--><!--Device-FileManagement_ErrCode OH_FileUri_GetFullDirectoryUri(const char *uri, unsigned int length, char **result)-End-->
+
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
 **起始版本：** 12
@@ -120,6 +126,8 @@ bool OH_FileUri_IsValidUri(const char *uri, unsigned int length)
 
 判断传入的URI格式是否正确。 仅校验URI是否满足系统定义的格式规范，不校验URI的有效性。
 
+<!--Device-bool OH_FileUri_IsValidUri(const char *uri, unsigned int length)--><!--Device-bool OH_FileUri_IsValidUri(const char *uri, unsigned int length)-End-->
+
 **系统能力：** SystemCapability.FileManagement.AppFileService
 
 **起始版本：** 12
@@ -146,6 +154,8 @@ FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int leng
 **描述：**
 
 通过传入的URI获取文件名称。 如果文件名中存在百分号编码字符，将会被解码处理后拼接在原处。
+
+<!--Device-FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int length, char **result)--><!--Device-FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int length, char **result)-End-->
 
 **系统能力：** SystemCapability.FileManagement.AppFileService
 

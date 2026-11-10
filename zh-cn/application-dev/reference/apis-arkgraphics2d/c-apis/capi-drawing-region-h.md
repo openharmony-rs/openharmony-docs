@@ -53,6 +53,8 @@ enum OH_Drawing_RegionOpMode
 
 区域操作类型枚举。
 
+<!--Device-OH_Drawing_RegionOpMode--><!--Device-OH_Drawing_RegionOpMode-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -79,6 +81,8 @@ OH_Drawing_Region* OH_Drawing_RegionCreate(void)
 
 用于创建一个区域对象，实现更精确的图形控制。
 
+<!--Device-OH_Drawing_Region* OH_Drawing_RegionCreate(void)--><!--Device-OH_Drawing_Region* OH_Drawing_RegionCreate(void)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -98,6 +102,8 @@ OH_Drawing_Region* OH_Drawing_RegionCopy(const OH_Drawing_Region* region)
 **描述：**
 
 用于创建一个区域对象的拷贝。
+
+<!--Device-OH_Drawing_Region* OH_Drawing_RegionCopy(const OH_Drawing_Region* region)--><!--Device-OH_Drawing_Region* OH_Drawing_RegionCopy(const OH_Drawing_Region* region)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -124,6 +130,8 @@ bool OH_Drawing_RegionContains(OH_Drawing_Region* region, int32_t x, int32_t y)
 **描述：**
 
 判断区域是否包含指定坐标点。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>region为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-bool OH_Drawing_RegionContains(OH_Drawing_Region* region, int32_t x, int32_t y)--><!--Device-bool OH_Drawing_RegionContains(OH_Drawing_Region* region, int32_t x, int32_t y)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -153,6 +161,8 @@ bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* oth
 
 将两个区域按照指定的区域操作类型合并。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>region、other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>op不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+<!--Device-bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* other, OH_Drawing_RegionOpMode op)--><!--Device-bool OH_Drawing_RegionOp(OH_Drawing_Region* region, const OH_Drawing_Region* other, OH_Drawing_RegionOpMode op)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -181,6 +191,8 @@ bool OH_Drawing_RegionSetRect(OH_Drawing_Region* region, const OH_Drawing_Rect* 
 
 用于尝试给区域对象设置矩形边界。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>region、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-bool OH_Drawing_RegionSetRect(OH_Drawing_Region* region, const OH_Drawing_Rect* rect)--><!--Device-bool OH_Drawing_RegionSetRect(OH_Drawing_Region* region, const OH_Drawing_Rect* rect)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -207,6 +219,8 @@ bool OH_Drawing_RegionSetPath(OH_Drawing_Region* region, const OH_Drawing_Path* 
 **描述：**
 
 将区域对象设置为指定区域内路径表示的范围。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>region、path、clip任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-bool OH_Drawing_RegionSetPath(OH_Drawing_Region* region, const OH_Drawing_Path* path, const OH_Drawing_Region* clip)--><!--Device-bool OH_Drawing_RegionSetPath(OH_Drawing_Region* region, const OH_Drawing_Path* path, const OH_Drawing_Region* clip)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -236,6 +250,8 @@ void OH_Drawing_RegionDestroy(OH_Drawing_Region* region)
 
 用于销毁区域对象并回收该对象占用的内存。
 
+<!--Device-void OH_Drawing_RegionDestroy(OH_Drawing_Region* region)--><!--Device-void OH_Drawing_RegionDestroy(OH_Drawing_Region* region)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -255,6 +271,8 @@ OH_Drawing_ErrorCode OH_Drawing_RegionEmpty(OH_Drawing_Region* region)
 **描述：**
 
 设置当前区域为空。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionEmpty(OH_Drawing_Region* region)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionEmpty(OH_Drawing_Region* region)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -281,6 +299,8 @@ OH_Drawing_ErrorCode OH_Drawing_RegionGetBoundaryPath(const OH_Drawing_Region* r
 **描述：**
 
 设置路径为区域的边界。如果区域为空，则路径也将为空。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionGetBoundaryPath(const OH_Drawing_Region* region, OH_Drawing_Path* path)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionGetBoundaryPath(const OH_Drawing_Region* region, OH_Drawing_Path* path)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -309,6 +329,8 @@ OH_Drawing_ErrorCode OH_Drawing_RegionGetBounds(const OH_Drawing_Region* region,
 
 获取包含该区域的最小边界矩形。
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionGetBounds(const OH_Drawing_Region* region, OH_Drawing_Rect* rect)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionGetBounds(const OH_Drawing_Region* region, OH_Drawing_Rect* rect)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
@@ -335,6 +357,8 @@ OH_Drawing_ErrorCode OH_Drawing_RegionIsComplex(const OH_Drawing_Region* region,
 **描述：**
 
 检查该区域是否包含多个（两个及两个以上）矩形。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionIsComplex(const OH_Drawing_Region* region, bool* isComplex)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionIsComplex(const OH_Drawing_Region* region, bool* isComplex)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -363,6 +387,8 @@ OH_Drawing_ErrorCode OH_Drawing_RegionIsEmpty(const OH_Drawing_Region* region, b
 
 检查该区域是否为空。
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionIsEmpty(const OH_Drawing_Region* region, bool* isEmpty)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionIsEmpty(const OH_Drawing_Region* region, bool* isEmpty)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
@@ -390,6 +416,8 @@ OH_Drawing_ErrorCode OH_Drawing_RegionIsRect(const OH_Drawing_Region* region, bo
 
 检查该区域是否等同于一个矩形。
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionIsRect(const OH_Drawing_Region* region, bool* isRect)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionIsRect(const OH_Drawing_Region* region, bool* isRect)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
@@ -416,6 +444,8 @@ OH_Drawing_ErrorCode OH_Drawing_RegionQuickContains(const OH_Drawing_Region* reg
 **描述：**
 
 检查该区域是否等同于单个矩形并且包含指定的矩形。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionQuickContains(const OH_Drawing_Region* region, int32_t left, int32_t top, int32_t right, int32_t bottom, bool* isContained)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionQuickContains(const OH_Drawing_Region* region, int32_t left, int32_t top, int32_t right, int32_t bottom, bool* isContained)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -448,6 +478,8 @@ OH_Drawing_ErrorCode OH_Drawing_RegionQuickReject(const OH_Drawing_Region* regio
 
 检查当前区域是否为空或是否与指定矩形不相交。
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionQuickReject(const OH_Drawing_Region* region, int32_t left, int32_t top, int32_t right, int32_t bottom, bool* isReject)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionQuickReject(const OH_Drawing_Region* region, int32_t left, int32_t top, int32_t right, int32_t bottom, bool* isReject)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
@@ -478,6 +510,8 @@ OH_Drawing_ErrorCode OH_Drawing_RegionTranslate(OH_Drawing_Region* region, int32
 **描述：**
 
 将当前区域在x轴和y轴上按指定距离平移。如果当前区域为空，则不执行任何操作。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionTranslate(OH_Drawing_Region* region, int32_t dx, int32_t dy)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_RegionTranslate(OH_Drawing_Region* region, int32_t dx, int32_t dy)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct 6_rtmsg {...}--><!--Device-struct 6_rtmsg {...}-End-->
+
 ## Summary
 
 ### Member variables

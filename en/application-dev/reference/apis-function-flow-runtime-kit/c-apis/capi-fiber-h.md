@@ -33,6 +33,8 @@ FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* ar
 
 Initializes a fiber.<br> This function initializes a fiber structure, preparing it for execution. The caller is responsible for allocating the stack memory pointed to by `stack` and keeping it valid for the entire lifetime of the fiber.
 
+<!--Device-FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* arg, void* stack, size_t stack_size)--><!--Device-FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* arg, void* stack, size_t stack_size)-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 20
@@ -62,6 +64,8 @@ FFRT_C_API void ffrt_fiber_switch(ffrt_fiber_t* from, ffrt_fiber_t* to)
 **Description**
 
 Switches execution context between two fibers.<br> Switches the execution context by saving the current context into the fiber specified by `from` and restoring the context from the fiber specified by `to`.<br> Both `from` and `to` must point to fiber instances that have been initialized by [ffrt_fiber_init](capi-fiber-h.md#ffrt_fiber_init); otherwise the behavior is undefined.
+
+<!--Device-FFRT_C_API void ffrt_fiber_switch(ffrt_fiber_t* from, ffrt_fiber_t* to)--><!--Device-FFRT_C_API void ffrt_fiber_switch(ffrt_fiber_t* from, ffrt_fiber_t* to)-End-->
 
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 

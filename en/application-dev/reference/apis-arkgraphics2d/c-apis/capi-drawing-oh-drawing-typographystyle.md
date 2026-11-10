@@ -8,11 +8,13 @@ typedef struct OH_Drawing_TypographyStyle OH_Drawing_TypographyStyle
 
 Defines a struct used to manage the typography style, such as the text direction.
 
+<!--Device-typedef struct OH_Drawing_TypographyStyle OH_Drawing_TypographyStyle--><!--Device-typedef struct OH_Drawing_TypographyStyle OH_Drawing_TypographyStyle-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
-**Related module**: [Drawing](capi-others-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 **Header file**: [drawing_text_declaration.h](capi-drawing-text-declaration-h.md)
 

@@ -8,11 +8,13 @@ typedef struct OH_NativeBundle_ApplicationInfo {...} OH_NativeBundle_Application
 
 The struct describes the application information, including the bundle name and fingerprint information.
 
+<!--Device-typedef struct OH_NativeBundle_ApplicationInfo {...} OH_NativeBundle_ApplicationInfo--><!--Device-typedef struct OH_NativeBundle_ApplicationInfo {...} OH_NativeBundle_ApplicationInfo-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 9
 
-**Related module**: [Native_Bundle](capi-others-native-bundle.md)
+**Related module**: [Native_Bundle](capi-ability-kit-native-bundle.md)
 
 **Header file**: [native_interface_bundle.h](capi-native-interface-bundle-h.md)
 

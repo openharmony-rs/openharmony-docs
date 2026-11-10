@@ -37,6 +37,8 @@ struct WebSocket *OH_WebSocketClient_Constructor(WebSocket_OnOpenCallback onOpen
 
 WebSocket客户端的构造函数。
 
+<!--Device-struct WebSocket *OH_WebSocketClient_Constructor(WebSocket_OnOpenCallback onOpen, WebSocket_OnMessageCallback onMessage, WebSocket_OnErrorCallback onError, WebSocket_OnCloseCallback onclose)--><!--Device-struct WebSocket *OH_WebSocketClient_Constructor(WebSocket_OnOpenCallback onOpen, WebSocket_OnMessageCallback onMessage, WebSocket_OnErrorCallback onError, WebSocket_OnCloseCallback onclose)-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 11
@@ -66,6 +68,8 @@ int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Head
 
 将header头信息添加到client客户端request中。
 
+<!--Device-int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Header header)--><!--Device-int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Header header)-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 11
@@ -92,6 +96,8 @@ int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct
 **描述：**
 
 客户端连接服务端。
+
+<!--Device-int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct WebSocket_RequestOptions options)--><!--Device-int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct WebSocket_RequestOptions options)-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -123,6 +129,8 @@ int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)
 
 客户端向服务端发送数据。
 
+<!--Device-int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)--><!--Device-int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **需要权限：** ohos.permission.INTERNET
@@ -153,6 +161,8 @@ int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOpt
 
 Closes the connection on the 客户端。
 
+<!--Device-int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOption options)--><!--Device-int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOption options)-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **需要权限：** ohos.permission.INTERNET
@@ -181,6 +191,8 @@ int OH_WebSocketClient_Destroy(struct WebSocket *client)
 **描述：**
 
 释放WebSocket连接上下文和资源。使用方式如下：
+
+<!--Device-int OH_WebSocketClient_Destroy(struct WebSocket *client)--><!--Device-int OH_WebSocketClient_Destroy(struct WebSocket *client)-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 

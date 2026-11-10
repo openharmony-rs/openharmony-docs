@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPushDescriptorSetWithTemplateInfo {...}--><!--Device-struct VkPushDescriptorSetWithTemplateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

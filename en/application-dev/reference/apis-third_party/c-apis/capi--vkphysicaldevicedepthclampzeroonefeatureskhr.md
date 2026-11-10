@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceDepthClampZeroOneFeaturesKHR {...}--><!--Device-struct VkPhysicalDeviceDepthClampZeroOneFeaturesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

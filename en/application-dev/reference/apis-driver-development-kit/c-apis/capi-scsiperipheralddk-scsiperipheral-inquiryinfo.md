@@ -8,11 +8,13 @@ struct ScsiPeripheral_InquiryInfo {...}
 
 Defines the SCSI **INQUIRY** data, which is used to store the query result of the **INQUIRY** command of SCSI peripherals.
 
+<!--Device-struct ScsiPeripheral_InquiryInfo {...}--><!--Device-struct ScsiPeripheral_InquiryInfo {...}-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 
-**Related module**: [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

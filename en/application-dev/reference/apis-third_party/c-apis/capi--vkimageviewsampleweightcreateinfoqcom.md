@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageViewSampleWeightCreateInfoQCOM {...}--><!--Device-struct VkImageViewSampleWeightCreateInfoQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

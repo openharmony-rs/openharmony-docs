@@ -38,6 +38,8 @@ OH_MediaAssetChangeRequest* OH_MediaAssetChangeRequest_Create(OH_MediaAsset* med
 
 创建[OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)实例。
 
+<!--Device-OH_MediaAssetChangeRequest* OH_MediaAssetChangeRequest_Create(OH_MediaAsset* mediaAsset)--><!--Device-OH_MediaAssetChangeRequest* OH_MediaAssetChangeRequest_Create(OH_MediaAsset* mediaAsset)-End-->
+
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 12
@@ -63,6 +65,8 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithUri(OH_MediaAss
 **描述：**
 
 通过文件uri添加资源。
+
+<!--Device-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithUri(OH_MediaAssetChangeRequest* changeRequest, MediaLibrary_ResourceType resourceType, char* fileUri)--><!--Device-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithUri(OH_MediaAssetChangeRequest* changeRequest, MediaLibrary_ResourceType resourceType, char* fileUri)-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -91,6 +95,8 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithBuffer(OH_Media
 **描述：**
 
 通过ArrayBuffer数据添加资源。
+
+<!--Device-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithBuffer(OH_MediaAssetChangeRequest* changeRequest, MediaLibrary_ResourceType resourceType, uint8_t* buffer, uint32_t length)--><!--Device-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithBuffer(OH_MediaAssetChangeRequest* changeRequest, MediaLibrary_ResourceType resourceType, uint8_t* buffer, uint32_t length)-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -121,6 +127,8 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_GetWriteCacheHandler(OH_MediaA
 
 获取临时文件写句柄。
 
+<!--Device-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_GetWriteCacheHandler(OH_MediaAssetChangeRequest* changeRequest, int32_t* fd)--><!--Device-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_GetWriteCacheHandler(OH_MediaAssetChangeRequest* changeRequest, int32_t* fd)-End-->
+
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
@@ -150,6 +158,8 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_SaveCameraPhoto(OH_MediaAssetC
 
 拍照场景下，使用该接口保存相机拍摄的照片资源。 <br>非YUV拍摄模式下，照片资源保存的编码格式与[Camera_Format](../../apis-camera-kit/c-apis/capi-camera-h.md#camera_format)中的编码格式保持一致。 <br>YUV拍摄模式下，该接口根据[MediaLibrary_ImageFileType](capi-media-asset-base-capi-h.md#medialibrary_imagefiletype)将YUV对象编码保存为指定格式。 <br>当该接口与[OH_MediaAssetChangeRequest_AddResourceWithUri](capi-media-asset-change-request-capi-h.md#oh_mediaassetchangerequest_addresourcewithuri)或 [OH_MediaAssetChangeRequest_AddResourceWithBuffer](capi-media-asset-change-request-capi-h.md#oh_mediaassetchangerequest_addresourcewithbuffer)组合使用时，照片资源保存的编码格式与 [OH_MediaAssetChangeRequest_AddResourceWithUri](capi-media-asset-change-request-capi-h.md#oh_mediaassetchangerequest_addresourcewithuri)或[OH_MediaAssetChangeRequest_AddResourceWithBuffer](capi-media-asset-change-request-capi-h.md#oh_mediaassetchangerequest_addresourcewithbuffer) 添加资源的编码格式保持一致。
 
+<!--Device-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_SaveCameraPhoto(OH_MediaAssetChangeRequest* changeRequest, MediaLibrary_ImageFileType imageFileType)--><!--Device-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_SaveCameraPhoto(OH_MediaAssetChangeRequest* changeRequest, MediaLibrary_ImageFileType imageFileType)-End-->
+
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 12
@@ -177,6 +187,8 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_DiscardCameraPhoto(OH_MediaAss
 
 丢弃相机拍摄的照片资源。
 
+<!--Device-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_DiscardCameraPhoto(OH_MediaAssetChangeRequest* changeRequest)--><!--Device-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_DiscardCameraPhoto(OH_MediaAssetChangeRequest* changeRequest)-End-->
+
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 12
@@ -202,6 +214,8 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_Release(OH_MediaAssetChangeReq
 **描述：**
 
 释放[OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md)实例。
+
+<!--Device-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_Release(OH_MediaAssetChangeRequest* changeRequest)--><!--Device-MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_Release(OH_MediaAssetChangeRequest* changeRequest)-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

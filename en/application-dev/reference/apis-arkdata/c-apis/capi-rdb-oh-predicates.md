@@ -8,11 +8,13 @@ typedef struct OH_Predicates {...} OH_Predicates
 
 Define the OH_Predicates structure type.
 
+<!--Device-typedef struct OH_Predicates {...} OH_Predicates--><!--Device-typedef struct OH_Predicates {...} OH_Predicates-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 10
 
-**Related module**: [RDB](capi-others-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 **Header file**: [oh_predicates.h](capi-oh-predicates-h.md)
 
@@ -66,6 +68,8 @@ OH_Predicates *(*equalTo)(OH_Predicates *predicates, const char *field, OH_VObje
 
 Function pointer. Restricts the value of the field to be equal to the specified value to the predicates.<br> This method is similar to = of the SQL statement.
 
+<!--Device-OH_Predicates *(*equalTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)--><!--Device-OH_Predicates *(*equalTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -96,6 +100,8 @@ OH_Predicates *(*notEqualTo)(OH_Predicates *predicates, const char *field, OH_VO
 **Description**
 
 Function pointer. Restricts the value of the field to be not equal to the specified value to the predicates.<br> This method is similar to != of the SQL statement.
+
+<!--Device-OH_Predicates *(*notEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)--><!--Device-OH_Predicates *(*notEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)-End-->
 
 **Since**: 10
 
@@ -128,6 +134,8 @@ OH_Predicates *(*beginWrap)(OH_Predicates *predicates)
 
 Function pointer. Add left parenthesis to predicate.<br> This method is similar to ( of the SQL statement.
 
+<!--Device-OH_Predicates *(*beginWrap)(OH_Predicates *predicates)--><!--Device-OH_Predicates *(*beginWrap)(OH_Predicates *predicates)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -156,6 +164,8 @@ OH_Predicates *(*endWrap)(OH_Predicates *predicates)
 **Description**
 
 Function pointer. Add right parenthesis to predicate.<br> This method is similar to ) of the SQL statement.
+
+<!--Device-OH_Predicates *(*endWrap)(OH_Predicates *predicates)--><!--Device-OH_Predicates *(*endWrap)(OH_Predicates *predicates)-End-->
 
 **Since**: 10
 
@@ -186,6 +196,8 @@ OH_Predicates *(*orOperate)(OH_Predicates *predicates)
 
 Function pointer. Adds an or condition to the predicates.<br> This method is similar to OR of the SQL statement.
 
+<!--Device-OH_Predicates *(*orOperate)(OH_Predicates *predicates)--><!--Device-OH_Predicates *(*orOperate)(OH_Predicates *predicates)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -215,6 +227,8 @@ OH_Predicates *(*andOperate)(OH_Predicates *predicates)
 
 Function pointer. Adds an and condition to the predicates.<br> This method is similar to AND of the SQL statement.
 
+<!--Device-OH_Predicates *(*andOperate)(OH_Predicates *predicates)--><!--Device-OH_Predicates *(*andOperate)(OH_Predicates *predicates)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -243,6 +257,8 @@ OH_Predicates *(*isNull)(OH_Predicates *predicates, const char *field)
 **Description**
 
 Function pointer. Restricts the value of the field which is null to the predicates.<br> This method is similar to IS NULL of the SQL statement.
+
+<!--Device-OH_Predicates *(*isNull)(OH_Predicates *predicates, const char *field)--><!--Device-OH_Predicates *(*isNull)(OH_Predicates *predicates, const char *field)-End-->
 
 **Since**: 10
 
@@ -274,6 +290,8 @@ OH_Predicates *(*isNotNull)(OH_Predicates *predicates, const char *field)
 
 Function pointer. Restricts the value of the field which is not null to the predicates.<br> This method is similar to IS NOT NULL of the SQL statement.
 
+<!--Device-OH_Predicates *(*isNotNull)(OH_Predicates *predicates, const char *field)--><!--Device-OH_Predicates *(*isNotNull)(OH_Predicates *predicates, const char *field)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -303,6 +321,8 @@ OH_Predicates *(*like)(OH_Predicates *predicates, const char *field, OH_VObject 
 **Description**
 
 Function pointer. Restricts the value of the field to be like the specified value to the predicates.<br> This method is similar to LIKE of the SQL statement.
+
+<!--Device-OH_Predicates *(*like)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)--><!--Device-OH_Predicates *(*like)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)-End-->
 
 **Since**: 10
 
@@ -335,6 +355,8 @@ OH_Predicates *(*between)(OH_Predicates *predicates, const char *field, OH_VObje
 
 Function pointer. Restricts the value of the field to be between the specified value to the predicates.<br> This method is similar to BETWEEN of the SQL statement.
 
+<!--Device-OH_Predicates *(*between)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)--><!--Device-OH_Predicates *(*between)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -365,6 +387,8 @@ OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VO
 **Description**
 
 Function pointer. Restricts the value of the field to be not between the specified value to the predicates.<br> This method is similar to NOT BETWEEN of the SQL statement.
+
+<!--Device-OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)--><!--Device-OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)-End-->
 
 **Since**: 10
 
@@ -397,6 +421,8 @@ OH_Predicates *(*greaterThan)(OH_Predicates *predicates, const char *field, OH_V
 
 Function pointer. Restricts the value of the field to be greater than the specified value to the predicates.<br> This method is similar to > of the SQL statement.
 
+<!--Device-OH_Predicates *(*greaterThan)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)--><!--Device-OH_Predicates *(*greaterThan)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -427,6 +453,8 @@ OH_Predicates *(*lessThan)(OH_Predicates *predicates, const char *field, OH_VObj
 **Description**
 
 Function pointer. Restricts the value of the field to be less than the specified value to the predicates.<br> This method is similar to < of the SQL statement.
+
+<!--Device-OH_Predicates *(*lessThan)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)--><!--Device-OH_Predicates *(*lessThan)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)-End-->
 
 **Since**: 10
 
@@ -459,6 +487,8 @@ OH_Predicates *(*greaterThanOrEqualTo)(OH_Predicates *predicates, const char *fi
 
 Function pointer. Restricts the value of the field to be greater than or equal to the specified value to the predicates.<br> This method is similar to >= of the SQL statement.
 
+<!--Device-OH_Predicates *(*greaterThanOrEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)--><!--Device-OH_Predicates *(*greaterThanOrEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -489,6 +519,8 @@ OH_Predicates *(*lessThanOrEqualTo)(OH_Predicates *predicates, const char *field
 **Description**
 
 Function pointer. Restricts the value of the field to be less than or equal to the specified value to the predicates.<br> This method is similar to <= of the SQL statement.
+
+<!--Device-OH_Predicates *(*lessThanOrEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)--><!--Device-OH_Predicates *(*lessThanOrEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)-End-->
 
 **Since**: 10
 
@@ -521,6 +553,8 @@ OH_Predicates *(*orderBy)(OH_Predicates *predicates, const char *field, OH_Order
 
 Function pointer. Restricts the ascending or descending order of the return list. When there are several orders, the one close to the head has the highest priority.<br> This method is similar ORDER BY the SQL statement.
 
+<!--Device-OH_Predicates *(*orderBy)(OH_Predicates *predicates, const char *field, OH_OrderType type)--><!--Device-OH_Predicates *(*orderBy)(OH_Predicates *predicates, const char *field, OH_OrderType type)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -552,6 +586,8 @@ OH_Predicates *(*distinct)(OH_Predicates *predicates)
 
 Function pointer. Configure predicates to filter duplicate records and retain only one of them.<br> This method is similar DISTINCT the SQL statement.
 
+<!--Device-OH_Predicates *(*distinct)(OH_Predicates *predicates)--><!--Device-OH_Predicates *(*distinct)(OH_Predicates *predicates)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -580,6 +616,8 @@ OH_Predicates *(*limit)(OH_Predicates *predicates, unsigned int value)
 **Description**
 
 Function pointer. Predicate for setting the maximum number of data records.<br> This method is similar LIMIT the SQL statement.
+
+<!--Device-OH_Predicates *(*limit)(OH_Predicates *predicates, unsigned int value)--><!--Device-OH_Predicates *(*limit)(OH_Predicates *predicates, unsigned int value)-End-->
 
 **Since**: 10
 
@@ -611,6 +649,8 @@ OH_Predicates *(*offset)(OH_Predicates *predicates, unsigned int rowOffset)
 
 Function pointer. Configure the predicate to specify the starting position of the returned result.<br> This method is similar OFFSET the SQL statement.
 
+<!--Device-OH_Predicates *(*offset)(OH_Predicates *predicates, unsigned int rowOffset)--><!--Device-OH_Predicates *(*offset)(OH_Predicates *predicates, unsigned int rowOffset)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -640,6 +680,8 @@ OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, 
 **Description**
 
 Function pointer. Configure predicates to group query results by specified columns.<br> This method is similar GROUP BY the SQL statement.
+
+<!--Device-OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, int length)--><!--Device-OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, int length)-End-->
 
 **Since**: 10
 
@@ -672,6 +714,8 @@ OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *v
 
 Function pointer. Configure the predicate to match the specified field and the value within the given array range.<br> This method is similar IN the SQL statement.
 
+<!--Device-OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)--><!--Device-OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -702,6 +746,8 @@ OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject
 **Description**
 
 Function pointer. Configure the predicate to match the specified field and the value not within the given array range.<br> This method is similar NOT IN the SQL statement.
+
+<!--Device-OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)--><!--Device-OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)-End-->
 
 **Since**: 10
 
@@ -734,6 +780,8 @@ OH_Predicates *(*clear)(OH_Predicates *predicates)
 
 Function pointer. Initialize OH_Predicates object.
 
+<!--Device-OH_Predicates *(*clear)(OH_Predicates *predicates)--><!--Device-OH_Predicates *(*clear)(OH_Predicates *predicates)-End-->
+
 **Since**: 10
 
 **Parameters**:
@@ -762,6 +810,8 @@ int (*destroy)(OH_Predicates *predicates)
 **Description**
 
 Destroy the [OH_Predicates](capi-rdb-oh-predicates.md) object and reclaim the memory occupied by the object.
+
+<!--Device-int (*destroy)(OH_Predicates *predicates)--><!--Device-int (*destroy)(OH_Predicates *predicates)-End-->
 
 **Since**: 10
 

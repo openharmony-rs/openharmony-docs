@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkWriteDescriptorSetAccelerationStructureNV {...}--><!--Device-struct VkWriteDescriptorSetAccelerationStructureNV {...}-End-->
+
 ## Summary
 
 ### Member variables

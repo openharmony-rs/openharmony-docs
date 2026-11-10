@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoEncodeH265PictureInfoFlags {...}--><!--Device-struct StdVideoEncodeH265PictureInfoFlags {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -42,6 +42,8 @@ enum NetStack_CertType
 
 Certificate type enums.
 
+<!--Device-NetStack_CertType--><!--Device-NetStack_CertType-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 11
@@ -62,6 +64,8 @@ enum NetStack_CertificatePinningKind
 
 Certificate pinning type enums.
 
+<!--Device-NetStack_CertificatePinningKind--><!--Device-NetStack_CertificatePinningKind-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 12
@@ -79,6 +83,8 @@ enum NetStack_HashAlgorithm
 **描述：**
 
 Hash algorithm enums.
+
+<!--Device-NetStack_HashAlgorithm--><!--Device-NetStack_HashAlgorithm-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
 

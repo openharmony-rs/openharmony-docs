@@ -75,6 +75,8 @@ OH_AVCodec *OH_VideoDecoder_CreateByMime(const char *mime)
 
 根据MIME类型创建视频解码器实例，大多数情况下建议使用。
 
+<!--Device-OH_AVCodec *OH_VideoDecoder_CreateByMime(const char *mime)--><!--Device-OH_AVCodec *OH_VideoDecoder_CreateByMime(const char *mime)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 9
@@ -100,6 +102,8 @@ OH_AVCodec *OH_VideoDecoder_CreateByName(const char *name)
 **描述：**
 
 根据视频解码器名称创建视频解码器实例。使用此接口的前提是知道解码器的确切名称，解码器的名称可以通过能力查询获取。<br> 详情请参见：[获取支持的编解码能力](../../../media/avcodec/obtain-supported-codecs.md#创建指定名称的编解码器)。
+
+<!--Device-OH_AVCodec *OH_VideoDecoder_CreateByName(const char *name)--><!--Device-OH_AVCodec *OH_VideoDecoder_CreateByName(const char *name)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -127,6 +131,8 @@ OH_AVErrCode OH_VideoDecoder_Destroy(OH_AVCodec *codec)
 
 清理解码器内部资源，销毁解码器实例。不能重复销毁。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_Destroy(OH_AVCodec *codec)--><!--Device-OH_AVErrCode OH_VideoDecoder_Destroy(OH_AVCodec *codec)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 9
@@ -152,6 +158,8 @@ OH_AVErrCode OH_VideoDecoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallb
 **描述：**
 
 设置异步回调函数，让应用可以响应视频解码器生成的事件。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。
+
+<!--Device-OH_AVErrCode OH_VideoDecoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)--><!--Device-OH_AVErrCode OH_VideoDecoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -185,6 +193,8 @@ OH_AVErrCode OH_VideoDecoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallb
 
 注册异步回调函数，让应用可以响应视频解码器生成的事件。在调用OH_VideoDecoder_Prepare接口之前，必须调用此接口。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)--><!--Device-OH_AVErrCode OH_VideoDecoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 11
@@ -212,6 +222,8 @@ OH_AVErrCode OH_VideoDecoder_SetSurface(OH_AVCodec *codec, OHNativeWindow *windo
 **描述：**
 
 设置输出surface以提供视频解码输出。<br> 在初始化阶段，必须在调用OH_VideoDecoder_Prepare接口之前调用此接口。在Executing状态可以直接调用该接口。
+
+<!--Device-OH_AVErrCode OH_VideoDecoder_SetSurface(OH_AVCodec *codec, OHNativeWindow *window)--><!--Device-OH_AVErrCode OH_VideoDecoder_SetSurface(OH_AVCodec *codec, OHNativeWindow *window)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -251,6 +263,8 @@ OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 >
 > 建议按照该实例需要支持的最大分辨率来配置，否则可能会出现高于该分辨率的码流解码会触发异常。该设置直接影响应用的内存使用情况。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)--><!--Device-OH_AVErrCode OH_VideoDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 9
@@ -278,6 +292,8 @@ OH_AVErrCode OH_VideoDecoder_Prepare(OH_AVCodec *codec)
 
 准备解码器的内部资源，在调用该接口之前，必须调用OH_VideoDecoder_Configure接口。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_Prepare(OH_AVCodec *codec)--><!--Device-OH_AVErrCode OH_VideoDecoder_Prepare(OH_AVCodec *codec)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 9
@@ -303,6 +319,8 @@ OH_AVErrCode OH_VideoDecoder_Start(OH_AVCodec *codec)
 **描述：**
 
 调用[OH_VideoDecoder_Prepare](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_prepare)接口成功后调用此接口启动解码器。成功启动后，解码器将开始报告注册的回调事件。
+
+<!--Device-OH_AVErrCode OH_VideoDecoder_Start(OH_AVCodec *codec)--><!--Device-OH_AVErrCode OH_VideoDecoder_Start(OH_AVCodec *codec)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -330,6 +348,8 @@ OH_AVErrCode OH_VideoDecoder_Stop(OH_AVCodec *codec)
 
 停止解码器，释放输入输出buffer。停止后，可以通过调用OH_VideoDecoder_Start接口重新进入Running状态。<br> 需要注意的是，如果编解码器特定数据以前已输入到解码器，则需要再次输入。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_Stop(OH_AVCodec *codec)--><!--Device-OH_AVErrCode OH_VideoDecoder_Stop(OH_AVCodec *codec)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 9
@@ -355,6 +375,8 @@ OH_AVErrCode OH_VideoDecoder_Flush(OH_AVCodec *codec)
 **描述：**
 
 清除解码器中缓存的输入和输出数据及参数集如H.264格式的PPS/SPS。 调用此接口后，以前通过异步回调上报的所有缓冲区index都将失效，请确保不要访问这些index对应的缓冲区。
+
+<!--Device-OH_AVErrCode OH_VideoDecoder_Flush(OH_AVCodec *codec)--><!--Device-OH_AVErrCode OH_VideoDecoder_Flush(OH_AVCodec *codec)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -382,6 +404,8 @@ OH_AVErrCode OH_VideoDecoder_Reset(OH_AVCodec *codec)
 
 重置解码器，解码器回到初始化状态。如果要继续解码，需要再次调用OH_VideoDecoder_Configure接口配置解码器实例。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_Reset(OH_AVCodec *codec)--><!--Device-OH_AVErrCode OH_VideoDecoder_Reset(OH_AVCodec *codec)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 9
@@ -407,6 +431,8 @@ OH_AVFormat *OH_VideoDecoder_GetOutputDescription(OH_AVCodec *codec)
 **描述：**
 
 获取解码器输出数据的OH_AVFormat信息，请参阅[OH_AVFormat](capi-core-oh-avformat.md)。<br> 需要注意的是，指向的OH_AVFormat实例在生命周期结束时需开发者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
+
+<!--Device-OH_AVFormat *OH_VideoDecoder_GetOutputDescription(OH_AVCodec *codec)--><!--Device-OH_AVFormat *OH_VideoDecoder_GetOutputDescription(OH_AVCodec *codec)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -434,6 +460,8 @@ OH_AVErrCode OH_VideoDecoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format
 
 设置解码器的动态参数。<br> 注意，该接口只能在解码器启动后调用。同时，参数配置错误可能会导致解码失败。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format)--><!--Device-OH_AVErrCode OH_VideoDecoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 9
@@ -460,6 +488,8 @@ OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 **描述：**
 
 将填充数据的输入缓冲区提交给视频解码器。<br> 输入回调将报告可用的输入缓冲区和相应的index值，请参阅[OH_AVCodecOnNeedInputData](capi-native-avcodec-base-h.md#oh_avcodeconneedinputdata)。 一旦具有指定index的缓冲区提交到视频解码器，则无法再次访问缓冲区，直到再次收到输入回调，报告具有相同index的缓冲区可用。 此外，对于某些解码器，需要在开始时向解码器输入编解码特定数据，以初始化解码器的解码过程，如H.264格式的PPS/SPS数据。
+
+<!--Device-OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH_AVCodecBufferAttr attr)--><!--Device-OH_AVErrCode OH_VideoDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH_AVCodecBufferAttr attr)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -493,6 +523,8 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputData(OH_AVCodec *codec, uint32_t index)
 
 将处理后的输出buffer返回给解码器，并通知解码器完成在输出surface上渲染buffer中包含的解码数据。<br> 如果之前没有配置输出surface，则调用此接口仅将指定index对应的输出缓冲区返回给解码器。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_RenderOutputData(OH_AVCodec *codec, uint32_t index)--><!--Device-OH_AVErrCode OH_VideoDecoder_RenderOutputData(OH_AVCodec *codec, uint32_t index)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 9
@@ -523,6 +555,8 @@ OH_AVErrCode OH_VideoDecoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 **描述：**
 
 将处理后的输出缓冲区返回到解码器。
+
+<!--Device-OH_AVErrCode OH_VideoDecoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)--><!--Device-OH_AVErrCode OH_VideoDecoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -555,6 +589,8 @@ OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 
 通知视频解码器已对index对应的缓冲区完成输入数据的填充。<br> 输入回调将报告可用的输入缓冲区和相应的index值，请参阅[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)。 一旦具有指定index的缓冲区提交到视频解码器，则无法再次访问缓冲区，直到再次收到输入回调，报告具有相同index的缓冲区可用。 此外，对于某些解码器，需要在开始时向解码器输入编解码特定数据，以初始化解码器的解码过程，如H.264格式的PPS/SPS数据。<br> 开发者可以使用该接口把解码需要的参数集如H.264格式的PPS/SPS传递给解码器，该参数集可以单独送入解码器也可以和要解码的数据一起传入。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)--><!--Device-OH_AVErrCode OH_VideoDecoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 11
@@ -581,6 +617,8 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputBuffer(OH_AVCodec *codec, uint32_t inde
 **描述：**
 
 将index对应的输出缓冲返回给解码器，缓冲区中携带解码输出数据，并通知解码器完成在输出surface上渲染，输出缓冲包含解码数据。<br> 如果之前没有配置输出surface，则调用此接口仅将指定index对应的输出缓冲区返回给解码器。
+
+<!--Device-OH_AVErrCode OH_VideoDecoder_RenderOutputBuffer(OH_AVCodec *codec, uint32_t index)--><!--Device-OH_AVErrCode OH_VideoDecoder_RenderOutputBuffer(OH_AVCodec *codec, uint32_t index)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -613,6 +651,8 @@ OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_
 3. 如果时间戳与当前的系统时间不是“合理接近”，surface将会忽略时间戳，并在可行的最早时间里显示buffer。在此模式下不会丢弃帧。<br>
 4. 如果需要由系统根据显示刷新率来丢帧，则必须调用此接口，否则应用需自行实现丢帧逻辑。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_t index, int64_t renderTimestampNs)--><!--Device-OH_AVErrCode OH_VideoDecoder_RenderOutputBufferAtTime(OH_AVCodec *codec, uint32_t index, int64_t renderTimestampNs)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 12
@@ -641,6 +681,8 @@ OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 
 将处理后的输出缓冲区返回到解码器。用户使用完需要及时调用此接口释放输出缓存区，否则会阻塞解码流程。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)--><!--Device-OH_AVErrCode OH_VideoDecoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 11
@@ -668,6 +710,8 @@ OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)
 
 检查当前编解码器实例是否有效。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)--><!--Device-OH_AVErrCode OH_VideoDecoder_IsValid(OH_AVCodec *codec, bool *isValid)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 10
@@ -694,6 +738,8 @@ OH_AVErrCode OH_VideoDecoder_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySess
 **描述：**
 
 设置解密配置。在调用OH_VideoDecoder_Prepare接口之前，可选择调用此接口。
+
+<!--Device-OH_AVErrCode OH_VideoDecoder_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySession *mediaKeySession, bool secureVideoPath)--><!--Device-OH_AVErrCode OH_VideoDecoder_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySession *mediaKeySession, bool secureVideoPath)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -723,6 +769,8 @@ OH_AVErrCode OH_VideoDecoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t
 
 查询下一个可用输入缓冲区的索引。<br> 调用此接口后需要接着调用[OH_VideoDecoder_GetInputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getinputbuffer)接口获取缓冲区实例，并通过[OH_VideoDecoder_PushInputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_pushinputbuffer)接口传递给解码器。<br> 需要注意的是，上述操作仅在同步模式下支持。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)--><!--Device-OH_AVErrCode OH_VideoDecoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 20
@@ -750,6 +798,8 @@ OH_AVBuffer *OH_VideoDecoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t i
 **描述：**
 
 获取可用输入缓冲区的实例。<br> 需要注意的是，此接口仅适用于同步模式。
+
+<!--Device-OH_AVBuffer *OH_VideoDecoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t index)--><!--Device-OH_AVBuffer *OH_VideoDecoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t index)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
@@ -781,6 +831,8 @@ OH_AVErrCode OH_VideoDecoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_
 2. 通过[OH_VideoDecoder_RenderOutputBuffer](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer)在输出surface上渲染。<br>
 3. 通过[OH_VideoDecoder_RenderOutputBufferAtTime](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)在指定时间内完成输出surface上渲染。<br> 需要注意的是，上述操作仅在同步模式下支持。
 
+<!--Device-OH_AVErrCode OH_VideoDecoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)--><!--Device-OH_AVErrCode OH_VideoDecoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 
 **起始版本：** 20
@@ -808,6 +860,8 @@ OH_AVBuffer *OH_VideoDecoder_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t 
 **描述：**
 
 获取可用输出缓冲区的实例。需要注意的是，此接口仅适用于同步模式。
+
+<!--Device-OH_AVBuffer *OH_VideoDecoder_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t index)--><!--Device-OH_AVBuffer *OH_VideoDecoder_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t index)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoDecoder
 

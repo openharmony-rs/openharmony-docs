@@ -71,6 +71,8 @@ enum ArkWeb_WebMessageType
 
 Post Message数据类型。
 
+<!--Device-ArkWeb_WebMessageType--><!--Device-ArkWeb_WebMessageType-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 12
@@ -90,6 +92,8 @@ enum ArkWeb_JavaScriptValueType
 **描述：**
 
 JavaScript数据类型。
+
+<!--Device-ArkWeb_JavaScriptValueType--><!--Device-ArkWeb_JavaScriptValueType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -114,6 +118,8 @@ typedef void (*ArkWeb_OnJavaScriptCallback)(const char* webTag, const ArkWeb_Jav
 
 注入的JavaScript执行完成的回调。用于获取JavaScript代码在Web组件中的执行结果，例如在需要根据JavaScript返回的数据更新原生UI或执行后续逻辑的场景中使用。
 
+<!--Device-typedef void (*ArkWeb_OnJavaScriptCallback)(const char* webTag, const ArkWeb_JavaScriptBridgeData* data, void* userData)--><!--Device-typedef void (*ArkWeb_OnJavaScriptCallback)(const char* webTag, const ArkWeb_JavaScriptBridgeData* data, void* userData)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 12
@@ -135,6 +141,8 @@ typedef void (*ArkWeb_OnJavaScriptProxyCallback)(const char* webTag, const ArkWe
 **描述：**
 
 Proxy方法被执行的回调。Proxy方法用于Native侧与JavaScript侧的对象交互和自定义操作。
+
+<!--Device-typedef void (*ArkWeb_OnJavaScriptProxyCallback)(const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData)--><!--Device-typedef void (*ArkWeb_OnJavaScriptProxyCallback)(const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -159,6 +167,8 @@ typedef ArkWeb_JavaScriptValuePtr (*ArkWeb_OnJavaScriptProxyCallbackWithResult)(
 
 Proxy方法被执行的回调（有返回值）。用于在JavaScript调用注入的Proxy方法时接收通知并返回执行结果，适用于实现JavaScript与原生代码的桥接通信场景，例如拦截JavaScript调用、执行原生逻辑、 计算结果并将结果返回给JavaScript。
 
+<!--Device-typedef ArkWeb_JavaScriptValuePtr (*ArkWeb_OnJavaScriptProxyCallbackWithResult)(const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData)--><!--Device-typedef ArkWeb_JavaScriptValuePtr (*ArkWeb_OnJavaScriptProxyCallbackWithResult)(const char* webTag, const ArkWeb_JavaScriptBridgeData* dataArray, size_t arraySize, void* userData)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 18
@@ -182,6 +192,8 @@ typedef void (*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)
 
 接收Web组件事件通知的回调。用于接收Web组件生命周期事件通知，例如页面加载完成、页面销毁、组件可见性变化等场景下的状态变更通知。
 
+<!--Device-typedef void (*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)--><!--Device-typedef void (*ArkWeb_OnComponentCallback)(const char* webTag, void* userData)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 12
@@ -202,6 +214,8 @@ typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, doub
 **描述：**
 
 Web组件滚动时的回调函数。
+
+<!--Device-typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, double x, double y)--><!--Device-typedef void (*ArkWeb_OnScrollCallback)(const char* webTag, void* userData, double x, double y)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -225,6 +239,8 @@ typedef void (*ArkWeb_OnMessageEventHandler)(const char* webTag, const ArkWeb_We
 **描述：**
 
 处理HTML发送过来的Post Message数据。
+
+<!--Device-typedef void (*ArkWeb_OnMessageEventHandler)(const char* webTag, const ArkWeb_WebMessagePortPtr port, const ArkWeb_WebMessagePtr message, void* userData)--><!--Device-typedef void (*ArkWeb_OnMessageEventHandler)(const char* webTag, const ArkWeb_WebMessagePortPtr port, const ArkWeb_WebMessagePtr message, void* userData)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

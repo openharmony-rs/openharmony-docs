@@ -8,11 +8,13 @@ struct OH_AbilityRuntime_ModObjDispatcher_TypeInfo {...}
 
 定义参数或返回值的类型信息。<br>使用带标签的联合体u描述类型信息，通过vt字段决定联合体中哪个成员有效。<br>使用完毕后需调用 [OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_typeinfoclear)释放内部持有的堆资源。
 
+<!--Device-struct OH_AbilityRuntime_ModObjDispatcher_TypeInfo {...}--><!--Device-struct OH_AbilityRuntime_ModObjDispatcher_TypeInfo {...}-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
-**相关模块：** [AbilityRuntime](capi-others-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 **所在头文件：** [modular_object_dispatcher.h](capi-modular-object-dispatcher-h.md)
 

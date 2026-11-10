@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceVulkan11Features {...}--><!--Device-struct VkPhysicalDeviceVulkan11Features {...}-End-->
+
 ## Summary
 
 ### Member variables

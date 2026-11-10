@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevice8BitStorageFeatures {...}--><!--Device-struct VkPhysicalDevice8BitStorageFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

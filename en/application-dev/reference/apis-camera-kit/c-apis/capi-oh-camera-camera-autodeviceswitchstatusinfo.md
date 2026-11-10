@@ -8,11 +8,13 @@ struct Camera_AutoDeviceSwitchStatusInfo {...}
 
 Auto device switch status info.
 
+<!--Device-struct Camera_AutoDeviceSwitchStatusInfo {...}--><!--Device-struct Camera_AutoDeviceSwitchStatusInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 13
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

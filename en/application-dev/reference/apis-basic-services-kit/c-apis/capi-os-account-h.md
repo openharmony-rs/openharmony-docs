@@ -33,6 +33,8 @@ OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)
 
 Obtains the name of the OS account, to which the caller process belongs.
 
+<!--Device-OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)--><!--Device-OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)-End-->
+
 **System capability**: SystemCapability.Account.OsAccount
 
 **Since**: 12
@@ -59,6 +61,8 @@ OsAccount_ErrCode OH_OsAccount_GetNameByLocalId(int32_t localId, char *name, siz
 **Description**
 
 Obtains the name of the target OS account based on its local ID.
+
+<!--Device-OsAccount_ErrCode OH_OsAccount_GetNameByLocalId(int32_t localId, char *name, size_t name_size)--><!--Device-OsAccount_ErrCode OH_OsAccount_GetNameByLocalId(int32_t localId, char *name, size_t name_size)-End-->
 
 **System capability**: SystemCapability.Account.OsAccount
 

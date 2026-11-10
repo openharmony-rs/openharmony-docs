@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAccelerationStructureGeometryMotionTrianglesDataNV {...}--><!--Device-struct VkAccelerationStructureGeometryMotionTrianglesDataNV {...}-End-->
+
 ## Summary
 
 ### Member variables

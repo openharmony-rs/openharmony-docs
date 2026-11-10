@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkComputePipelineIndirectBufferInfoNV {...}--><!--Device-struct VkComputePipelineIndirectBufferInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

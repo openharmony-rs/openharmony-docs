@@ -8,11 +8,13 @@ typedef union Asset_Value {...} Asset_Value
 
 关键资产属性的值（内容）。
 
+<!--Device-typedef union Asset_Value {...} Asset_Value--><!--Device-typedef union Asset_Value {...} Asset_Value-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 **起始版本：** 11
 
-**相关模块：** [AssetType](capi-others-assettype.md)
+**相关模块：** [AssetType](capi-asset-store-kit-assettype.md)
 
 **所在头文件：** [asset_type.h](capi-asset-type-h.md)
 

@@ -8,11 +8,13 @@ struct OhosImageReceiverInfo {...}
 
 定义ImageReceiver的相关信息。
 
+<!--Device-struct OhosImageReceiverInfo {...}--><!--Device-struct OhosImageReceiverInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-others-image.md)
+**相关模块：** [Image](capi-image-kit-image.md)
 
 **所在头文件：** [image_receiver_mdk.h](capi-image-receiver-mdk-h.md)
 

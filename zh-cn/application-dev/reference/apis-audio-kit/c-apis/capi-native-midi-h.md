@@ -51,6 +51,8 @@ OH_MIDIStatusCode OH_MIDIClient_Create(OH_MIDIClient **client, OH_MIDICallbacks 
 >
 > 资源管理和最佳实践： <br>MIDI是对低延迟有严格要求的系统服务。为确保实时性能和系统稳定性，服务强制执行以下限制： <br>1. 系统级限制：全局允许的活动MIDI客户端最大数量为8个。 <br>2. 每应用限制：每个应用UID允许的MIDI客户端最大数量为2个。建议应用在整个生命周期内维护单个MIDI客户端实例，用于管理多个设备/端口。 <br>在不再需要MIDI功能时，使用[OH_MIDIClient_Destroy](capi-native-midi-h.md#oh_midiclient_destroy)释放客户端及所有关联资源。
 
+<!--Device-OH_MIDIStatusCode OH_MIDIClient_Create(OH_MIDIClient **client, OH_MIDICallbacks callbacks, void *userData)--><!--Device-OH_MIDIStatusCode OH_MIDIClient_Create(OH_MIDIClient **client, OH_MIDICallbacks callbacks, void *userData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -83,6 +85,8 @@ OH_MIDIStatusCode OH_MIDIClient_Destroy(OH_MIDIClient *client)
 >
 > 在不再需要MIDI功能时（例如应用退出或MIDI模块停用时）调用此函数销毁客户端。 销毁客户端时会自动关闭所有通过此客户端打开的设备和端口（安全回收机制），无需手动逐一关闭。 建议在销毁前按逆序手动关闭资源以保证代码逻辑清晰（端口->设备->客户端），但这非强制要求。
 
+<!--Device-OH_MIDIStatusCode OH_MIDIClient_Destroy(OH_MIDIClient *client)--><!--Device-OH_MIDIStatusCode OH_MIDIClient_Destroy(OH_MIDIClient *client)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -108,6 +112,8 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceCount(const OH_MIDIClient *client, size
 **描述：**
 
 获取连接的MIDI设备数量。此函数用于确定存储设备信息所需的缓冲区大小。 <br>如果应用未获得蓝牙权限（ohos.permission.ACCESS_BLUETOOTH），蓝牙MIDI设备将不计入设备数量。
+
+<!--Device-OH_MIDIStatusCode OH_MIDIClient_GetDeviceCount(const OH_MIDIClient *client, size_t *count)--><!--Device-OH_MIDIStatusCode OH_MIDIClient_GetDeviceCount(const OH_MIDIClient *client, size_t *count)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
@@ -139,6 +145,8 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceInfos(const OH_MIDIClient *client, OH_M
 > **说明：**
 >
 > 当实际连接的设备数量大于输入参数'infos'数组的容量时，输出'infos'数组将仅包含部分设备信息， 输出'actualDeviceCount'将等于'capacity'，函数返回OH_MIDI_STATUS_OK。 当实际数量小于或等于'capacity'时，所有可用设备信息将填入'infos'，输出'actualDeviceCount'反映实际设备数量。
+
+<!--Device-OH_MIDIStatusCode OH_MIDIClient_GetDeviceInfos(const OH_MIDIClient *client, OH_MIDIDeviceInformation *infos, size_t capacity, size_t *actualDeviceCount)--><!--Device-OH_MIDIStatusCode OH_MIDIClient_GetDeviceInfos(const OH_MIDIClient *client, OH_MIDIDeviceInformation *infos, size_t capacity, size_t *actualDeviceCount)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
@@ -173,6 +181,8 @@ OH_MIDIStatusCode OH_MIDIClient_OpenDevice(OH_MIDIClient *client, int64_t device
 >
 > 使用[OH_MIDIClient_CloseDevice](capi-native-midi-h.md#oh_midiclient_closedevice)释放设备资源。
 
+<!--Device-OH_MIDIStatusCode OH_MIDIClient_OpenDevice(OH_MIDIClient *client, int64_t deviceId, OH_MIDIDevice **device)--><!--Device-OH_MIDIStatusCode OH_MIDIClient_OpenDevice(OH_MIDIClient *client, int64_t deviceId, OH_MIDIDevice **device)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -204,6 +214,8 @@ OH_MIDIStatusCode OH_MIDIClient_OpenBLEDevice(OH_MIDIClient *client, const char 
 > **说明：**
 >
 > 此函数会触发BLE扫描和连接过程，通常需要1-5秒的时间。使用[OH_MIDIClient_CloseDevice](capi-native-midi-h.md#oh_midiclient_closedevice)释放设备资源。
+
+<!--Device-OH_MIDIStatusCode OH_MIDIClient_OpenBLEDevice(OH_MIDIClient *client, const char *deviceAddr, OH_MIDIClient_OnDeviceOpened callback, void *userData)--><!--Device-OH_MIDIStatusCode OH_MIDIClient_OpenBLEDevice(OH_MIDIClient *client, const char *deviceAddr, OH_MIDIClient_OnDeviceOpened callback, void *userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
@@ -240,6 +252,8 @@ OH_MIDIStatusCode OH_MIDIClient_CloseDevice(OH_MIDIClient *client, OH_MIDIDevice
 >
 > 关闭设备时会同时关闭该设备上所有已打开的端口。 该功能与[OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice)或[OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice)配对使用。
 
+<!--Device-OH_MIDIStatusCode OH_MIDIClient_CloseDevice(OH_MIDIClient *client, OH_MIDIDevice *device)--><!--Device-OH_MIDIStatusCode OH_MIDIClient_CloseDevice(OH_MIDIClient *client, OH_MIDIDevice *device)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -266,6 +280,8 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortCount(const OH_MIDIClient *client, int64_
 **描述：**
 
 获取指定MIDI设备的端口数量。此函数用于确定存储端口信息所需的缓冲区大小。
+
+<!--Device-OH_MIDIStatusCode OH_MIDIClient_GetPortCount(const OH_MIDIClient *client, int64_t deviceId, size_t *count)--><!--Device-OH_MIDIStatusCode OH_MIDIClient_GetPortCount(const OH_MIDIClient *client, int64_t deviceId, size_t *count)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
@@ -298,6 +314,8 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortInfos(const OH_MIDIClient *client, int64_
 > **说明：**
 >
 > 当实际端口数量大于输入参数'infos'数组的容量时，输出'infos'数组将仅包含部分端口信息， 输出'actualPortCount'将等于'capacity'，函数返回OH_MIDI_STATUS_OK。当实际数量小于或等于'capacity'时， 所有可用端口信息将填入'infos'，输出'actualPortCount'反映实际端口数量。
+
+<!--Device-OH_MIDIStatusCode OH_MIDIClient_GetPortInfos(const OH_MIDIClient *client, int64_t deviceId, OH_MIDIPortInformation *infos, size_t capacity, size_t *actualPortCount)--><!--Device-OH_MIDIStatusCode OH_MIDIClient_GetPortInfos(const OH_MIDIClient *client, int64_t deviceId, OH_MIDIPortInformation *infos, size_t capacity, size_t *actualPortCount)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
@@ -333,6 +351,8 @@ OH_MIDIStatusCode OH_MIDIDevice_OpenInputPort(OH_MIDIDevice *device, OH_MIDIPort
 >
 > 使用[OH_MIDIDevice_CloseInputPort](capi-native-midi-h.md#oh_mididevice_closeinputport)关闭输入端口。
 
+<!--Device-OH_MIDIStatusCode OH_MIDIDevice_OpenInputPort(OH_MIDIDevice *device, OH_MIDIPortDescriptor descriptor, OH_MIDIDevice_OnReceived callback, void *userData)--><!--Device-OH_MIDIStatusCode OH_MIDIDevice_OpenInputPort(OH_MIDIDevice *device, OH_MIDIPortDescriptor descriptor, OH_MIDIDevice_OnReceived callback, void *userData)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -366,6 +386,8 @@ OH_MIDIStatusCode OH_MIDIDevice_OpenOutputPort(OH_MIDIDevice *device, OH_MIDIPor
 >
 > 使用[OH_MIDIDevice_CloseOutputPort](capi-native-midi-h.md#oh_mididevice_closeoutputport)关闭输出端口。
 
+<!--Device-OH_MIDIStatusCode OH_MIDIDevice_OpenOutputPort(OH_MIDIDevice *device, OH_MIDIPortDescriptor descriptor)--><!--Device-OH_MIDIStatusCode OH_MIDIDevice_OpenOutputPort(OH_MIDIDevice *device, OH_MIDIPortDescriptor descriptor)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -396,6 +418,8 @@ OH_MIDIStatusCode OH_MIDIDevice_CloseInputPort(OH_MIDIDevice *device, uint32_t p
 > **说明：**
 >
 > 与[OH_MIDIDevice_OpenInputPort](capi-native-midi-h.md#oh_mididevice_openinputport)配对使用。
+
+<!--Device-OH_MIDIStatusCode OH_MIDIDevice_CloseInputPort(OH_MIDIDevice *device, uint32_t portIndex)--><!--Device-OH_MIDIStatusCode OH_MIDIDevice_CloseInputPort(OH_MIDIDevice *device, uint32_t portIndex)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
@@ -428,6 +452,8 @@ OH_MIDIStatusCode OH_MIDIDevice_CloseOutputPort(OH_MIDIDevice *device, uint32_t 
 >
 > 与[OH_MIDIDevice_OpenOutputPort](capi-native-midi-h.md#oh_mididevice_openoutputport)配对使用。
 
+<!--Device-OH_MIDIStatusCode OH_MIDIDevice_CloseOutputPort(OH_MIDIDevice *device, uint32_t portIndex)--><!--Device-OH_MIDIStatusCode OH_MIDIDevice_CloseOutputPort(OH_MIDIDevice *device, uint32_t portIndex)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -456,6 +482,8 @@ OH_MIDIStatusCode OH_MIDIDevice_Send(OH_MIDIDevice *device, uint32_t portIndex, 
 批量发送MIDI消息（非阻塞模式，每条消息具有原子性）。 此函数需要通过[OH_MIDIDevice_OpenOutputPort](capi-native-midi-h.md#oh_mididevice_openoutputport)打开的输出端口发送数据，portIndex应为一个已打开的输出端口索引。 说明，将MIDI事件数组写入共享内存缓冲区。
 - 单条消息原子性：每条事件作为不可分割的单元处理，不会出现消息被截断的情况。
 - 批量操作非原子性：整个数组不一定全部写入成功。如果缓冲区空间不足，已成功写入的事件不会被回滚。 函数返回[OH_MIDI_STATUS_WOULD_BLOCK](capi-native-midi-base-h.md#oh_midistatuscode)，并通过eventsWritten参数返回已成功写入的事件数量， 开发者可据此从断点处继续发送剩余事件。
+
+<!--Device-OH_MIDIStatusCode OH_MIDIDevice_Send(OH_MIDIDevice *device, uint32_t portIndex, const OH_MIDIEvent *events, uint32_t eventCount, uint32_t *eventsWritten)--><!--Device-OH_MIDIStatusCode OH_MIDIDevice_Send(OH_MIDIDevice *device, uint32_t portIndex, const OH_MIDIEvent *events, uint32_t eventCount, uint32_t *eventsWritten)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
@@ -491,6 +519,8 @@ OH_MIDIStatusCode OH_MIDIDevice_SendSysEx(OH_MIDIDevice *device, uint32_t portIn
 >
 > 此函数为阻塞调用，执行循环写入，当缓冲区填满时将阻塞并重试，直至写入完整。
 
+<!--Device-OH_MIDIStatusCode OH_MIDIDevice_SendSysEx(OH_MIDIDevice *device, uint32_t portIndex, const uint8_t *data, uint32_t byteSize)--><!--Device-OH_MIDIStatusCode OH_MIDIDevice_SendSysEx(OH_MIDIDevice *device, uint32_t portIndex, const uint8_t *data, uint32_t byteSize)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 
 **起始版本：** 24
@@ -523,6 +553,8 @@ OH_MIDIStatusCode OH_MIDIDevice_FlushOutputPort(OH_MIDIDevice *device, uint32_t 
 > **说明：**
 >
 > 此操作不发送"All Notes Off"消息，仅清空队列。
+
+<!--Device-OH_MIDIStatusCode OH_MIDIDevice_FlushOutputPort(OH_MIDIDevice *device, uint32_t portIndex)--><!--Device-OH_MIDIStatusCode OH_MIDIDevice_FlushOutputPort(OH_MIDIDevice *device, uint32_t portIndex)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.MIDI
 

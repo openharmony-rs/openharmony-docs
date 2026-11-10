@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceInvocationMaskFeaturesHUAWEI {...}--><!--Device-struct VkPhysicalDeviceInvocationMaskFeaturesHUAWEI {...}-End-->
+
 ## Summary
 
 ### Member variables

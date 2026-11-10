@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoH265DecPicBufMgr {...}--><!--Device-struct StdVideoH265DecPicBufMgr {...}-End-->
+
 ## Summary
 
 ### Member variables

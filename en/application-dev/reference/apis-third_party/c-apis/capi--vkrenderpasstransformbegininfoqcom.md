@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRenderPassTransformBeginInfoQCOM {...}--><!--Device-struct VkRenderPassTransformBeginInfoQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

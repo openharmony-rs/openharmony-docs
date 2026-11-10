@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkQueueFamilyProperties2 {...}--><!--Device-struct VkQueueFamilyProperties2 {...}-End-->
+
 ## Summary
 
 ### Member variables

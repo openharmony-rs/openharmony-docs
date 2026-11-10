@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDisplayPropertiesKHR {...}--><!--Device-struct VkDisplayPropertiesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

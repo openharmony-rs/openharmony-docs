@@ -8,11 +8,13 @@ struct HiDebug_ProcessSamplerConfig {...}
 
 采样配置的结构定义。
 
+<!--Device-struct HiDebug_ProcessSamplerConfig {...}--><!--Device-struct HiDebug_ProcessSamplerConfig {...}-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 22
 
-**相关模块：** [HiDebug](capi-others-hidebug.md)
+**相关模块：** [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **所在头文件：** [hidebug_type.h](capi-hidebug-type-h.md)
 

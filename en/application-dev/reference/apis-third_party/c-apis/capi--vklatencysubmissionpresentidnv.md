@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkLatencySubmissionPresentIdNV {...}--><!--Device-struct VkLatencySubmissionPresentIdNV {...}-End-->
+
 ## Summary
 
 ### Member variables

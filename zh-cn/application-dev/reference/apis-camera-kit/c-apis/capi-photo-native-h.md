@@ -44,6 +44,8 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 
 获取全质量图。
 
+<!--Device-Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNative** mainImage)--><!--Device-Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNative** mainImage)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -71,6 +73,8 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_P
 
 获取非压缩图片。
 
+<!--Device-Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_PictureNative** picture)--><!--Device-Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_PictureNative** picture)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 23
@@ -97,6 +101,8 @@ Camera_ErrorCode OH_PhotoNative_GetAuxiliaryImage(const OH_PhotoNative* photo, O
 **描述：**
 
 获取指定类型的辅助图。 <br> <br>使用场景：使用本接口前需先通过OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled() 开启指定类型辅助图的自动回传功能，拍照获得的OH_PhotoNative 对象中才会包含辅助图，并通过本接口按类型获取辅助图，用于后续分析处理。支持的辅助图类型及各自用途请参考 [OH_Camera_AuxiliaryPhotoType](capi-camera-h.md#oh_camera_auxiliaryphototype)。
+
+<!--Device-Camera_ErrorCode OH_PhotoNative_GetAuxiliaryImage(const OH_PhotoNative* photo, OH_Camera_AuxiliaryPhotoType type, OH_ImageNative** outImage)--><!--Device-Camera_ErrorCode OH_PhotoNative_GetAuxiliaryImage(const OH_PhotoNative* photo, OH_Camera_AuxiliaryPhotoType type, OH_ImageNative** outImage)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -128,6 +134,8 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedAuxiliaryImage(const OH_PhotoNati
 
 获取指定类型的未压缩辅助图。 <br> <br>使用场景：使用本接口前需先通过OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled() 开启指定类型辅助图的自动回传功能，拍照获得的OH_PhotoNative 对象中才会包含辅助图，并通过本接口按类型获取辅助图，用于后续分析处理。支持的辅助图类型及各自用途请参考 [OH_Camera_AuxiliaryPhotoType](capi-camera-h.md#oh_camera_auxiliaryphototype)。
 
+<!--Device-Camera_ErrorCode OH_PhotoNative_GetUncompressedAuxiliaryImage(const OH_PhotoNative* photo, OH_Camera_AuxiliaryPhotoType type, OH_PictureNative** outImage)--><!--Device-Camera_ErrorCode OH_PhotoNative_GetUncompressedAuxiliaryImage(const OH_PhotoNative* photo, OH_Camera_AuxiliaryPhotoType type, OH_PictureNative** outImage)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.1
@@ -158,6 +166,8 @@ Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 
 释放全质量图实例。
 
+<!--Device-Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)--><!--Device-Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
@@ -184,6 +194,8 @@ Camera_ErrorCode OH_PhotoNative_ReleasePicture(OH_PictureNative* picture)
 
 释放OH_PictureNative实例。
 
+<!--Device-Camera_ErrorCode OH_PhotoNative_ReleasePicture(OH_PictureNative* picture)--><!--Device-Camera_ErrorCode OH_PhotoNative_ReleasePicture(OH_PictureNative* picture)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 26.0.1
@@ -209,6 +221,8 @@ Camera_ErrorCode OH_PhotoNative_ReleaseImage(OH_ImageNative* image)
 **描述：**
 
 释放OH_ImageNative实例。
+
+<!--Device-Camera_ErrorCode OH_PhotoNative_ReleaseImage(OH_ImageNative* image)--><!--Device-Camera_ErrorCode OH_PhotoNative_ReleaseImage(OH_ImageNative* image)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkReleaseSwapchainImagesInfoEXT {...}--><!--Device-struct VkReleaseSwapchainImagesInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

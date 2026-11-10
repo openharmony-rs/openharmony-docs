@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAccelerationStructureMotionInfoNV {...}--><!--Device-struct VkAccelerationStructureMotionInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

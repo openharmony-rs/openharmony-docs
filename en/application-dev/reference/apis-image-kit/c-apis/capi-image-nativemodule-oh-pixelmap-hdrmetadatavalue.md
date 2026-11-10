@@ -8,11 +8,13 @@ struct OH_Pixelmap_HdrMetadataValue {...}
 
 Value for HDR_METADATA_KEY. Corresponding relationship with HDR_METADATA_KEY.
 
+<!--Device-struct OH_Pixelmap_HdrMetadataValue {...}--><!--Device-struct OH_Pixelmap_HdrMetadataValue {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
-**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **Header file**: [pixelmap_native.h](capi-pixelmap-native-h.md)
 

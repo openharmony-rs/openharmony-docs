@@ -8,11 +8,13 @@ struct peration_src_dest {...}
 
 Defines a structure to hold the input and output data.
 
+<!--Device-struct peration_src_dest {...}--><!--Device-struct peration_src_dest {...}-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_crypto_api.h](capi-tee-crypto-api-h.md)
 

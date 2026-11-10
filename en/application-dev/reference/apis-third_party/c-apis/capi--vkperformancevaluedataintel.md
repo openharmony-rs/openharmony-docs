@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-union VkPerformanceValueDataINTEL {...}--><!--Device-union VkPerformanceValueDataINTEL {...}-End-->
+
 ## Summary
 
 ### Member variables

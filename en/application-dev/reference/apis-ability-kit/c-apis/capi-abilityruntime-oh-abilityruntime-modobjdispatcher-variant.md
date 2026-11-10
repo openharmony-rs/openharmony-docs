@@ -12,11 +12,13 @@ Defines a variant struct that uses a union with a type tag to distinguish the ac
 > Do not call OH_AbilityRuntime_ModObjDispatcher_VariantClear on a shallow copy of the variant.
 > If Variant v2 = v1 is executed, only one of them can be cleared.
 
+<!--Device-typedef struct OH_AbilityRuntime_ModObjDispatcher_Variant {...} OH_AbilityRuntime_ModObjDispatcher_Variant--><!--Device-typedef struct OH_AbilityRuntime_ModObjDispatcher_Variant {...} OH_AbilityRuntime_ModObjDispatcher_Variant-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
-**Related module**: [AbilityRuntime](capi-others-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 **Header file**: [modular_object_dispatcher.h](capi-modular-object-dispatcher-h.md)
 

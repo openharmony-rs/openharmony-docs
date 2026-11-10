@@ -8,11 +8,13 @@ typedef struct ArkUI_GridItemRect {...} ArkUI_GridItemRect
 
 定义Grid布局选项[OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback](capi-grid-h.md#oh_arkui_gridlayoutoptions_registergetrectbyindexcallback)回调返回值结构体， 用于通过GridItem索引指定该GridItem在Grid中的起始行列位置和占用的行列数。
 
+<!--Device-typedef struct ArkUI_GridItemRect {...} ArkUI_GridItemRect--><!--Device-typedef struct ArkUI_GridItemRect {...} ArkUI_GridItemRect-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [grid.h](capi-grid-h.md)
 

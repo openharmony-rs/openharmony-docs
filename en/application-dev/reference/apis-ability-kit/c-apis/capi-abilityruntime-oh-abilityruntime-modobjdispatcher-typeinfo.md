@@ -12,11 +12,13 @@ Defines the type information of a parameter or return value. Uses the tagged uni
 - For the vector (VECTOR) or set (SET) type, use u.pElementType to describe the element type.
 - For the struct (STRUCT), remote communication object (IPC_REMOTE_PROXY, IPC_REMOTE_STUB), and enum (ENUM) types, use u.idlType to describe the IDL type name. After use, call [OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_typeinfoclear) to release the heap resources held internally.
 
+<!--Device-struct OH_AbilityRuntime_ModObjDispatcher_TypeInfo {...}--><!--Device-struct OH_AbilityRuntime_ModObjDispatcher_TypeInfo {...}-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
-**Related module**: [AbilityRuntime](capi-others-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 **Header file**: [modular_object_dispatcher.h](capi-modular-object-dispatcher-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAcquireNextImageInfoKHR {...}--><!--Device-struct VkAcquireNextImageInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

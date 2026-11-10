@@ -8,11 +8,13 @@ struct Rdb_ChangeInfo {...}
 
 记录端云同步过程详情。
 
+<!--Device-struct Rdb_ChangeInfo {...}--><!--Device-struct Rdb_ChangeInfo {...}-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
-**相关模块：** [RDB](capi-others-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 **所在头文件：** [relational_store.h](capi-relational-store-h.md)
 

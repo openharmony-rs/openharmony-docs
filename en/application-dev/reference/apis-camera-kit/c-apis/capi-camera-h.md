@@ -108,6 +108,8 @@ enum Camera_ErrorCode
 
 Enumerates the camera error codes.
 
+<!--Device-Camera_ErrorCode--><!--Device-Camera_ErrorCode-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -141,6 +143,8 @@ enum Camera_Status
 
 Enumerates the camera statuses.
 
+<!--Device-Camera_Status--><!--Device-Camera_Status-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -162,6 +166,8 @@ enum Camera_SceneMode
 
 Enumerates the camera scene modes.
 
+<!--Device-Camera_SceneMode--><!--Device-Camera_SceneMode-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
@@ -182,6 +188,8 @@ enum Camera_Position
 
 Enumerates the camera positions.
 
+<!--Device-Camera_Position--><!--Device-Camera_Position-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -201,6 +209,8 @@ enum OH_Camera_AutomotiveCameraPosition
 **Description**
 
 Enum for automotive camera position.
+
+<!--Device-OH_Camera_AutomotiveCameraPosition--><!--Device-OH_Camera_AutomotiveCameraPosition-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -234,6 +244,8 @@ enum Camera_Type
 
 Enumerates the camera types.
 
+<!--Device-Camera_Type--><!--Device-Camera_Type-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -256,6 +268,8 @@ enum Camera_Connection
 
 Enumerates the camera connection types.
 
+<!--Device-Camera_Connection--><!--Device-Camera_Connection-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -275,6 +289,8 @@ enum OH_Camera_SensorColorFilterArrangement
 **Description**
 
 Sensor color filter arrangement.
+
+<!--Device-OH_Camera_SensorColorFilterArrangement--><!--Device-OH_Camera_SensorColorFilterArrangement-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -296,6 +312,8 @@ enum Camera_Format
 **Description**
 
 Enumerates the camera output formats.
+
+<!--Device-Camera_Format--><!--Device-Camera_Format-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -322,6 +340,8 @@ enum Camera_FlashMode
 
 Enumerates the flash modes.
 
+<!--Device-Camera_FlashMode--><!--Device-Camera_FlashMode-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -343,6 +363,8 @@ enum OH_Camera_FlashState
 
 Enum for flash state.
 
+<!--Device-OH_Camera_FlashState--><!--Device-OH_Camera_FlashState-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
@@ -362,6 +384,8 @@ enum Camera_ExposureMode
 **Description**
 
 Enumerates the exposure modes.
+
+<!--Device-Camera_ExposureMode--><!--Device-Camera_ExposureMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -385,6 +409,8 @@ enum OH_Camera_ExposureMeteringMode
 
 Enum for exposure metering mode.
 
+<!--Device-OH_Camera_ExposureMeteringMode--><!--Device-OH_Camera_ExposureMeteringMode-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
@@ -405,6 +431,8 @@ enum OH_Camera_ExposureState
 
 Enumerates camera exposure states.
 
+<!--Device-OH_Camera_ExposureState--><!--Device-OH_Camera_ExposureState-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
@@ -423,6 +451,8 @@ enum Camera_WhiteBalanceMode
 **Description**
 
 Enumerates the white balance modes.
+
+<!--Device-Camera_WhiteBalanceMode--><!--Device-Camera_WhiteBalanceMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -448,6 +478,8 @@ enum Camera_FocusMode
 
 Enumerates the focus modes.
 
+<!--Device-Camera_FocusMode--><!--Device-Camera_FocusMode-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -469,6 +501,8 @@ enum Camera_FocusState
 
 Enumerates the focus states.
 
+<!--Device-Camera_FocusState--><!--Device-Camera_FocusState-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -488,6 +522,8 @@ enum Camera_VideoStabilizationMode
 **Description**
 
 Enumerates the video stabilization modes.
+
+<!--Device-Camera_VideoStabilizationMode--><!--Device-Camera_VideoStabilizationMode-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -510,6 +546,8 @@ enum Camera_ImageRotation
 **Description**
 
 Enumerates the image rotation angles.
+
+<!--Device-Camera_ImageRotation--><!--Device-Camera_ImageRotation-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -536,6 +574,8 @@ enum Camera_QualityLevel
 
 Enumerates the image quality levels.
 
+<!--Device-Camera_QualityLevel--><!--Device-Camera_QualityLevel-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
@@ -555,6 +595,8 @@ enum Camera_MetadataObjectType
 **Description**
 
 Enumerates the metadata object types.
+
+<!--Device-Camera_MetadataObjectType--><!--Device-Camera_MetadataObjectType-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -583,6 +625,8 @@ enum Camera_TorchMode
 
 Enumerates the flashlight modes.
 
+<!--Device-Camera_TorchMode--><!--Device-Camera_TorchMode-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
@@ -606,6 +650,8 @@ enum Camera_SmoothZoomMode
 
 Enumerates the smooth zoom modes.
 
+<!--Device-Camera_SmoothZoomMode--><!--Device-Camera_SmoothZoomMode-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
@@ -624,6 +670,8 @@ enum Camera_PreconfigType
 **Description**
 
 Enumerates the preconfigured photo resolution types.
+
+<!--Device-Camera_PreconfigType--><!--Device-Camera_PreconfigType-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -647,6 +695,8 @@ enum Camera_PreconfigRatio
 
 Enumerates the preconfigured photo aspect ratios.
 
+<!--Device-Camera_PreconfigRatio--><!--Device-Camera_PreconfigRatio-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
@@ -666,6 +716,8 @@ enum Camera_HostDeviceType
 **Description**
 
 Enum for remote camera device type.
+
+<!--Device-Camera_HostDeviceType--><!--Device-Camera_HostDeviceType-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -687,6 +739,8 @@ enum Camera_FoldStatus
 **Description**
 
 Enumerates the fold statuses.
+
+<!--Device-Camera_FoldStatus--><!--Device-Camera_FoldStatus-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -711,6 +765,8 @@ enum Camera_QualityPrioritization
 
 Enum for quality prioritization.
 
+<!--Device-Camera_QualityPrioritization--><!--Device-Camera_QualityPrioritization-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 14
@@ -729,6 +785,8 @@ enum OH_Camera_AuxiliaryPhotoType
 **Description**
 
 Enumerates the camera auxiliary photo types for skin analysis. Use these types to specify the detection target when capturing auxiliary photos for skin health assessment.
+
+<!--Device-OH_Camera_AuxiliaryPhotoType--><!--Device-OH_Camera_AuxiliaryPhotoType-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -749,6 +807,8 @@ enum Camera_ConcurrentType
 
 Enum for camera concurrent type.
 
+<!--Device-Camera_ConcurrentType--><!--Device-Camera_ConcurrentType-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 18
@@ -767,6 +827,8 @@ enum Camera_SystemPressureLevel
 **Description**
 
 Enumerates the system pressure levels.
+
+<!--Device-Camera_SystemPressureLevel--><!--Device-Camera_SystemPressureLevel-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -790,6 +852,8 @@ enum Camera_PhotoQualityPrioritization
 
 Enumerates the photo quality prioritization strategies.
 
+<!--Device-Camera_PhotoQualityPrioritization--><!--Device-Camera_PhotoQualityPrioritization-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 21
@@ -808,6 +872,8 @@ enum Camera_ControlCenterEffectType
 **Description**
 
 Enumerates the effect types of a camera controller.
+
+<!--Device-Camera_ControlCenterEffectType--><!--Device-Camera_ControlCenterEffectType-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -830,6 +896,8 @@ enum OH_Camera_OISMode
 
 Enum for OIS (Optical Image Stabilization) mode.
 
+<!--Device-OH_Camera_OISMode--><!--Device-OH_Camera_OISMode-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
@@ -850,6 +918,8 @@ enum OH_Camera_OISAxes
 
 Enum for OIS (Optical Image Stabilization) axes.
 
+<!--Device-OH_Camera_OISAxes--><!--Device-OH_Camera_OISAxes-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
@@ -868,6 +938,8 @@ enum OH_Camera_MetadataObjectEmotion
 **Description**
 
 Enum for metadata object emotion.
+
+<!--Device-OH_Camera_MetadataObjectEmotion--><!--Device-OH_Camera_MetadataObjectEmotion-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -892,6 +964,8 @@ Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 **Description**
 
 Obtains a Camera_Manager instance.
+
+<!--Device-Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)--><!--Device-Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -918,6 +992,8 @@ Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 **Description**
 
 Deletes a Camera_Manager instance.
+
+<!--Device-Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)--><!--Device-Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)-End-->
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

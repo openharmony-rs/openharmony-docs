@@ -8,11 +8,13 @@ typedef struct TEEC_TempMemoryReference {...} TEEC_TempMemoryReference
 
 Defines a pointer to a temporary buffer.
 
+<!--Device-typedef struct TEEC_TempMemoryReference {...} TEEC_TempMemoryReference--><!--Device-typedef struct TEEC_TempMemoryReference {...} TEEC_TempMemoryReference-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeClient](capi-others-teeclient.md)
+**Related module**: [TeeClient](capi-tee-kit-teeclient.md)
 
 **Header file**: [tee_client_type.h](capi-tee-client-type-h.md)
 

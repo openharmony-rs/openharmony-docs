@@ -8,11 +8,13 @@ typedef struct GameDevice_DeviceEvent GameDevice_DeviceEvent
 
 定义设备状态变化事件。
 
+<!--Device-typedef struct GameDevice_DeviceEvent GameDevice_DeviceEvent--><!--Device-typedef struct GameDevice_DeviceEvent GameDevice_DeviceEvent-End-->
+
 **系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
-**相关模块：** [GameController](capi-others-gamecontroller.md)
+**相关模块：** [GameController](capi-game-controller-kit-gamecontroller.md)
 
 **所在头文件：** [game_device_event.h](capi-game-device-event-h.md)
 

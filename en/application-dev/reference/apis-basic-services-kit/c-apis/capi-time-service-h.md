@@ -38,6 +38,8 @@ enum TimeService_ErrCode
 
 Enumerates the error codes.
 
+<!--Device-TimeService_ErrCode--><!--Device-TimeService_ErrCode-End-->
+
 **System capability**: SystemCapability.MiscServices.Time
 
 **Since**: 12
@@ -60,6 +62,8 @@ TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)
 **Description**
 
 Obtains the current system time zone.
+
+<!--Device-TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)--><!--Device-TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)-End-->
 
 **System capability**: SystemCapability.MiscServices.Time
 

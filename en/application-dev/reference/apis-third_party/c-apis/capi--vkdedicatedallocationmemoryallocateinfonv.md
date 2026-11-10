@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDedicatedAllocationMemoryAllocateInfoNV {...}--><!--Device-struct VkDedicatedAllocationMemoryAllocateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

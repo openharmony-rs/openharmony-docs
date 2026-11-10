@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderQuadControlFeaturesKHR {...}--><!--Device-struct VkPhysicalDeviceShaderQuadControlFeaturesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct Input_TouchEvent Input_TouchEvent
 
 Defines the touchscreen input event object, which is used to represent detailed information about touchscreen input, including the touch point position, touch state, and timestamp.
 
+<!--Device-typedef struct Input_TouchEvent Input_TouchEvent--><!--Device-typedef struct Input_TouchEvent Input_TouchEvent-End-->
+
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
-**Related module**: [input](capi-others-input.md)
+**Related module**: [input](capi-input-kit-input.md)
 
 **Header file**: [oh_input_manager.h](capi-oh-input-manager-h.md)
 

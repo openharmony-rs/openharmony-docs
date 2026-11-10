@@ -50,6 +50,8 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 
 Defines a pointer to the callback function for DRM_MediaKeySystemInfo. No demuxer instance is returned. This callback function applies to the scenario where a single demuxer instance is used.<br> You need to call [OH_AVDemuxer_SetMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setmediakeysysteminfocallback) to set the callback function as a callback.
 
+<!--Device-typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)--><!--Device-typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 11
@@ -67,6 +69,8 @@ typedef void (*Demuxer_MediaKeySystemInfoCallback)(OH_AVDemuxer *demuxer, DRM_Me
 **Description**
 
 Defines a pointer to the callback function for [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md). A demuxer instance is returned. This callback function applies to the scenario where multiple demuxer instances are used.<br> You need to call [OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#oh_avdemuxer_setdemuxermediakeysysteminfocallback) to set the callback function as a callback. This callback function is recommended.
+
+<!--Device-typedef void (*Demuxer_MediaKeySystemInfoCallback)(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)--><!--Device-typedef void (*Demuxer_MediaKeySystemInfoCallback)(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -88,6 +92,8 @@ OH_AVDemuxer *OH_AVDemuxer_CreateWithSource(OH_AVSource *source)
 **Description**
 
 Creates an OH_AVDemuxer instance based on a source instance.<br> For details about how to create, destroy, and use a source instance, see [OH_AVSource](capi-avsource-oh-avsource.md).
+
+<!--Device-OH_AVDemuxer *OH_AVDemuxer_CreateWithSource(OH_AVSource *source)--><!--Device-OH_AVDemuxer *OH_AVDemuxer_CreateWithSource(OH_AVSource *source)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -115,6 +121,8 @@ OH_AVErrCode OH_AVDemuxer_Destroy(OH_AVDemuxer *demuxer)
 
 Destroys an OH_AVDemuxer instance and clears internal resources. An instance can be destroyed only once.<br> The destroyed instance cannot be used until it is re-created. You are advised to set the pointer to NULL after the instance is destroyed.
 
+<!--Device-OH_AVErrCode OH_AVDemuxer_Destroy(OH_AVDemuxer *demuxer)--><!--Device-OH_AVErrCode OH_AVDemuxer_Destroy(OH_AVDemuxer *demuxer)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 10
@@ -140,6 +148,8 @@ OH_AVErrCode OH_AVDemuxer_SelectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackI
 **Description**
 
 Selects a track from which the demuxer reads sample data.<br> You can select multiple tracks by calling this API multiple times, with a different track index passed in each time.<br> When [OH_AVDemuxer_ReadSample](capi-native-avdemuxer-h.md#oh_avdemuxer_readsample) is called, only the data in the selected track is read. If the same track is selected multiple times, [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode) is returned and the API call takes effect only once.
+
+<!--Device-OH_AVErrCode OH_AVDemuxer_SelectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)--><!--Device-OH_AVErrCode OH_AVDemuxer_SelectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -168,6 +178,8 @@ OH_AVErrCode OH_AVDemuxer_UnselectTrackByID(OH_AVDemuxer *demuxer, uint32_t trac
 
 Deselects a track. The demuxer no longer reads sample data from a track after it is deselected.<br> You can deselect multiple tracks by calling this API multiple times, with a different track index passed in each time. If the same track is deselected multiple times, [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode) is returned and the API call takes effect only once.
 
+<!--Device-OH_AVErrCode OH_AVDemuxer_UnselectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)--><!--Device-OH_AVErrCode OH_AVDemuxer_UnselectTrackByID(OH_AVDemuxer *demuxer, uint32_t trackIndex)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 10
@@ -194,6 +206,8 @@ OH_AVErrCode OH_AVDemuxer_ReadSample(OH_AVDemuxer *demuxer, uint32_t trackIndex,
 **Description**
 
 Reads the sample and related information from the specified track.<br> You must select a track before reading the sample. After this API is called, the demuxer automatically proceeds to the next frame.
+
+<!--Device-OH_AVErrCode OH_AVDemuxer_ReadSample(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVMemory *sample, OH_AVCodecBufferAttr *info)--><!--Device-OH_AVErrCode OH_AVDemuxer_ReadSample(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVMemory *sample, OH_AVCodecBufferAttr *info)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -228,6 +242,8 @@ OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t track
 
 Reads the sample and related information from the specified track.<br> You can use [OH_AVDemuxer_SelectTrackByID](capi-native-avdemuxer-h.md#oh_avdemuxer_selecttrackbyid) to select a track before reading the sample. After this API is called, the demuxer automatically proceeds to the next frame.
 
+<!--Device-OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVBuffer *sample)--><!--Device-OH_AVErrCode OH_AVDemuxer_ReadSampleBuffer(OH_AVDemuxer *demuxer, uint32_t trackIndex, OH_AVBuffer *sample)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 11
@@ -256,6 +272,8 @@ OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond,
 
 Seeks to the specified time for all the selected tracks based on a seek mode.
 
+<!--Device-OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond, OH_AVSeekMode mode)--><!--Device-OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond, OH_AVSeekMode mode)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 10
@@ -283,6 +301,8 @@ OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, D
 **Description**
 
 Sets a callback for obtaining the media key system information.
+
+<!--Device-OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfoCallback callback)--><!--Device-OH_AVErrCode OH_AVDemuxer_SetMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfoCallback callback)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
@@ -315,6 +335,8 @@ OH_AVErrCode OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(OH_AVDemuxer *dem
 
 Sets a callback for obtaining the media key system information.
 
+<!--Device-OH_AVErrCode OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, Demuxer_MediaKeySystemInfoCallback callback)--><!--Device-OH_AVErrCode OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(OH_AVDemuxer *demuxer, Demuxer_MediaKeySystemInfoCallback callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
@@ -341,6 +363,8 @@ OH_AVErrCode OH_AVDemuxer_GetMediaKeySystemInfo(OH_AVDemuxer *demuxer, DRM_Media
 **Description**
 
 Obtains the media key system information. The media key system information can be obtained only after [Demuxer_MediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback) or [DRM_MediaKeySystemInfoCallback](capi-native-avdemuxer-h.md#drm_mediakeysysteminfocallback) is successfully invoked.
+
+<!--Device-OH_AVErrCode OH_AVDemuxer_GetMediaKeySystemInfo(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)--><!--Device-OH_AVErrCode OH_AVDemuxer_GetMediaKeySystemInfo(OH_AVDemuxer *demuxer, DRM_MediaKeySystemInfo *mediaKeySystemInfo)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 

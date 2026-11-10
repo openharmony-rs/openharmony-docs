@@ -32,6 +32,8 @@ enum ImageEffect_ErrorCode
 
 Effect error code
 
+<!--Device-ImageEffect_ErrorCode--><!--Device-ImageEffect_ErrorCode-End-->
+
 **System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
 **Since**: 12

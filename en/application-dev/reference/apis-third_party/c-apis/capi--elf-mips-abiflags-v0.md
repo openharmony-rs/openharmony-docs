@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf_MIPS_ABIFlags_v0 {...}--><!--Device-struct Elf_MIPS_ABIFlags_v0 {...}-End-->
+
 ## Summary
 
 ### Member variables

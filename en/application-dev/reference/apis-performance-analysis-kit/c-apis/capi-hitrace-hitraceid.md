@@ -8,11 +8,13 @@ struct HiTraceId {...}
 
 Defines a **HiTraceId** instance.
 
+<!--Device-struct HiTraceId {...}--><!--Device-struct HiTraceId {...}-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 12
 
-**Related module**: [HiTrace](capi-others-hitrace.md)
+**Related module**: [HiTrace](capi-performance-analysis-kit-hitrace.md)
 
 **Header file**: [trace.h](capi-trace-h.md)
 

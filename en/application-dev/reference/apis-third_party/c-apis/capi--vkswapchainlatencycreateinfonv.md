@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSwapchainLatencyCreateInfoNV {...}--><!--Device-struct VkSwapchainLatencyCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

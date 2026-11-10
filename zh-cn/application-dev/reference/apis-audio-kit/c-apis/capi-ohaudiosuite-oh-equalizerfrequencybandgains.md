@@ -8,11 +8,13 @@ struct OH_EqualizerFrequencyBandGains {...}
 
 定义音频编创均衡器效果节点配置参数。
 
+<!--Device-struct OH_EqualizerFrequencyBandGains {...}--><!--Device-struct OH_EqualizerFrequencyBandGains {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
 **起始版本：** 22
 
-**相关模块：** [OHAudioSuite](capi-others-ohaudiosuite.md)
+**相关模块：** [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 **所在头文件：** [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
 

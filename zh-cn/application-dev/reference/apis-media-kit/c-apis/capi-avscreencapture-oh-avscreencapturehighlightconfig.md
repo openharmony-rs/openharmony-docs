@@ -8,11 +8,13 @@ struct OH_AVScreenCaptureHighlightConfig {...}
 
 表示高亮边框的样式，用于在录屏场景中标记被录制区域的边界，包括高亮边框的模式、边框宽度和边框颜色。 通过配置高亮边框，可帮助用户清晰区分录屏区域与非录屏区域，提升录屏交互体验。 该配置通常用于屏幕录制场景中高亮显示特定区域，例如：录制操作教程时高亮标注操作区域、 录制应用演示时突出显示重点内容、录制游戏时标注关注区域等。
 
+<!--Device-struct OH_AVScreenCaptureHighlightConfig {...}--><!--Device-struct OH_AVScreenCaptureHighlightConfig {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 22
 
-**相关模块：** [AVScreenCapture](capi-others-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **所在头文件：** [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

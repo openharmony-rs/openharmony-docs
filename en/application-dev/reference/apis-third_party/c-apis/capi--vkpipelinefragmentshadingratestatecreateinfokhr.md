@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineFragmentShadingRateStateCreateInfoKHR {...}--><!--Device-struct VkPipelineFragmentShadingRateStateCreateInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

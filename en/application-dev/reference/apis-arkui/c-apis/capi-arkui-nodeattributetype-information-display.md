@@ -42,7 +42,7 @@ NODE_PROGRESS_VALUE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_PROGRESS
 
 **Description**
 
-Defines the current value of the progress indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: current value of the progress indicator.The value range is [0, **total**]. The default value is **0**. If the value is out of range, it is automatically corrected to the boundary value in the valid range. </li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: Current value of the progress indicator. The value range is [0, **total**]. The default value is **0**.</li> </ul>
+Defines the current value of the progress indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: current value of the progress indicator.The value range is [0, **total**]. The default value is **0**. If the value is out of range, it is automatically corrected to the boundary value in the valid range. </li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: Current value of the progress indicator. The value range is [0, **total**].</li> </ul>
 
 **Since**: 12
 
@@ -54,7 +54,7 @@ NODE_PROGRESS_TOTAL
 
 **Description**
 
-Total value of the progress indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: Total value of the progress indicator. The value range is (0, +∞). The default value is **100**. The value must be greater than 0. The setting does not take effect if a value less than or equal to 0 is passed.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: Total value of the progress indicator. The value range is (0, +∞). The default value is **100**.</li> </ul>
+Total value of the progress indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: Total value of the progress indicator. The value range is (0, +∞). The default value is **100**. The value must be greater than 0. The setting does not take effect if a value less than or equal to 0 is passed.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: Total value of the progress indicator. The value range is (0, +∞).</li> </ul>
 
 **Since**: 12
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPresentTimesInfoGOOGLE {...}--><!--Device-struct VkPresentTimesInfoGOOGLE {...}-End-->
+
 ## Summary
 
 ### Member variables

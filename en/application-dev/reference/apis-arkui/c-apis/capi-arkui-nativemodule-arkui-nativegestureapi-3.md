@@ -8,11 +8,13 @@ typedef struct ArkUI_NativeGestureAPI_3 {...} ArkUI_NativeGestureAPI_3
 
 Defines a collection of gesture APIs, including gesture APIs in the [ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md) and [ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md) structs as well as new gesture APIs.<br> This API collection supports setting parallel gesture event callbacks for ArkUI nodes. The callback can select, from the conflicting gesture recognizers on the response chain, the object that needs to be recognized in parallel with the current gesture. For details about the related event data, see [ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md).
 
+<!--Device-typedef struct ArkUI_NativeGestureAPI_3 {...} ArkUI_NativeGestureAPI_3--><!--Device-typedef struct ArkUI_NativeGestureAPI_3 {...} ArkUI_NativeGestureAPI_3-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_gesture.h](capi-native-gesture-h.md)
 
@@ -42,6 +44,8 @@ ArkUI_ErrorCode (*setGestureParallelTo)(ArkUI_NodeHandle node, void* userData, A
 **Description**
 
 Sets the callback function for parallel gesture events. When the callback is triggered, you can return, from the conflicting gesture recognizers provided by the event, an object that needs to be recognized in parallel with the current gesture. This API applies to scenarios where your custom gesture needs to be processed in parallel with gestures of other components on the response chain.
+
+<!--Device-ArkUI_ErrorCode (*setGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureRecognizer* (*parallelGesture)(ArkUI_ParallelGestureEvent* event))--><!--Device-ArkUI_ErrorCode (*setGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureRecognizer* (*parallelGesture)(ArkUI_ParallelGestureEvent* event))-End-->
 
 **Since**: 26.0.0
 

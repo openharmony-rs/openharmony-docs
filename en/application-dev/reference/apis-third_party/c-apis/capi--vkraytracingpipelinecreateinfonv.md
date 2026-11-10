@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRayTracingPipelineCreateInfoNV {...}--><!--Device-struct VkRayTracingPipelineCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

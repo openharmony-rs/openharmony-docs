@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct gzFile_s {...}--><!--Device-struct gzFile_s {...}-End-->
+
 ## Summary
 
 ### Member variables

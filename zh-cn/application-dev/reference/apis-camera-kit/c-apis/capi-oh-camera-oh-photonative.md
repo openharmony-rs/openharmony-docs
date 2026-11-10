@@ -8,11 +8,13 @@ typedef struct OH_PhotoNative OH_PhotoNative
 
 相机照片对象。<br> 全质量图对象。
 
+<!--Device-typedef struct OH_PhotoNative OH_PhotoNative--><!--Device-typedef struct OH_PhotoNative OH_PhotoNative-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
 
-**相关模块：** [OH_Camera](capi-others-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **所在头文件：** [photo_native.h](capi-photo-native-h.md)
 

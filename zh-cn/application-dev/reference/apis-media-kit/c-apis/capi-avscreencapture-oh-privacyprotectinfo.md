@@ -8,11 +8,13 @@ struct OH_PrivacyProtectInfo {...}
 
 隐私保护信息结构体。<br> 用于在屏幕录制场景中对系统窗口和敏感应用进行隐私保护。systemWindowProtection控制系统窗口级别的隐私保护， sensitiveAppProtection控制敏感应用级别的隐私保护，两者都适用于需要在屏幕录制时保护用户隐私数据的场景。
 
+<!--Device-struct OH_PrivacyProtectInfo {...}--><!--Device-struct OH_PrivacyProtectInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 24
 
-**相关模块：** [AVScreenCapture](capi-others-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **所在头文件：** [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

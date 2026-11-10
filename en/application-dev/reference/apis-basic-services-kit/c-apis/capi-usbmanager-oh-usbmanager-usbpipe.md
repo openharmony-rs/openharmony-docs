@@ -8,11 +8,13 @@ struct OH_UsbManager_UsbPipe {...}
 
 Defines the USB device pipe used to communicate with an opened device.
 
+<!--Device-struct OH_UsbManager_UsbPipe {...}--><!--Device-struct OH_UsbManager_UsbPipe {...}-End-->
+
 **System capability**: SystemCapability.USB.USBManager
 
 **Since**: 26.0.1
 
-**Related module**: [UsbManager](capi-others-usbmanager.md)
+**Related module**: [UsbManager](capi-basic-services-kit-usbmanager.md)
 
 **Header file**: [ohusb_manager.h](capi-ohusb-manager-h.md)
 

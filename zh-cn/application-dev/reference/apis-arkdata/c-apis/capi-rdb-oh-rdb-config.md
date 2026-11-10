@@ -8,11 +8,13 @@ typedef struct OH_Rdb_Config {...} OH_Rdb_Config
 
 管理关系型数据库配置。
 
+<!--Device-typedef struct OH_Rdb_Config {...} OH_Rdb_Config--><!--Device-typedef struct OH_Rdb_Config {...} OH_Rdb_Config-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
-**相关模块：** [RDB](capi-others-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 **所在头文件：** [relational_store.h](capi-relational-store-h.md)
 

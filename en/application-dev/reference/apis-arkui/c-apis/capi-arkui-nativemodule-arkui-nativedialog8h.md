@@ -8,11 +8,13 @@ typedef struct ArkUI_NativeDialog* ArkUI_NativeDialogHandle
 
 Defines the pointer to the custom dialog box controller object of ArkUI on the native side, which is used to identify and operate a custom dialog box instance.
 
+<!--Device-typedef struct ArkUI_NativeDialog* ArkUI_NativeDialogHandle--><!--Device-typedef struct ArkUI_NativeDialog* ArkUI_NativeDialogHandle-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_type.h](capi-native-type-h.md)
 

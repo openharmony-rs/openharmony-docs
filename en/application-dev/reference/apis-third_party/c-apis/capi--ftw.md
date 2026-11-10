@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct FTW {...}--><!--Device-struct FTW {...}-End-->
+
 ## Summary
 
 ### Member variables

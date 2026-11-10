@@ -8,11 +8,13 @@ typedef struct OH_Drawing_FontVariationInstanceCoordinate {...} OH_Drawing_FontV
 
 可变字体属性键值对。
 
+<!--Device-typedef struct OH_Drawing_FontVariationInstanceCoordinate {...} OH_Drawing_FontVariationInstanceCoordinate--><!--Device-typedef struct OH_Drawing_FontVariationInstanceCoordinate {...} OH_Drawing_FontVariationInstanceCoordinate-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 24
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_text_font_descriptor.h](capi-drawing-text-font-descriptor-h.md)
 

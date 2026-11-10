@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCuModuleTexturingModeCreateInfoNVX {...}--><!--Device-struct VkCuModuleTexturingModeCreateInfoNVX {...}-End-->
+
 ## Summary
 
 ### Member variables

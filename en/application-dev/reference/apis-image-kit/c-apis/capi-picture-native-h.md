@@ -20,9 +20,9 @@ The file declares the APIs for obtaining picture data and information.
 | -- | -- | -- |
 | [OH_PictureNative_AuxiliaryPictureCopyItem](capi-image-nativemodule-oh-picturenative-auxiliarypicturecopyitem.md) | - | This structure is used to specify an auxiliary picture copy rule when creating a deep copy of a PictureNative object. It describes how to copy an auxiliary picture from one type to another. |
 | [OH_PictureNative_MetadataCopyItem](capi-image-nativemodule-oh-picturenative-metadatacopyitem.md) | - | This structure is used to specify a metadata copy rule when creating a deep copy of a PictureNative object. It describes how to copy metadata from one type to another. |
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) | - | The struct is used to perform operations related to the picture. |
-| [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) | - | The struct describes the auxiliary picture, which is used to perform operations related to the auxiliary picture. |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) | - | The struct describes the auxiliary picture information, which is used to perform operations related to the auxiliary picture information. |
+| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) | OH_PictureNative | The struct is used to perform operations related to the picture. |
+| [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) | OH_AuxiliaryPictureNative | The struct describes the auxiliary picture, which is used to perform operations related to the auxiliary picture. |
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) | OH_AuxiliaryPictureInfo | The struct describes the auxiliary picture information, which is used to perform operations related to the auxiliary picture information. |
 | [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) | OH_ComposeOptions | **OH_ComposeOptions** is the HDR composition option struct encapsulated at the native layer. It is used to specify parameters used for HDR composition, such as the target pixel format. |
 
 ### Enum
@@ -89,6 +89,8 @@ enum Image_AuxiliaryPictureType
 
 Type of the auxiliary picture.
 
+<!--Device-Image_AuxiliaryPictureType--><!--Device-Image_AuxiliaryPictureType-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -116,6 +118,8 @@ Image_ErrorCode OH_ComposeOptions_Create(OH_ComposeOptions **options)
 
 Creates an **OH_ComposeOptions** instance.
 
+<!--Device-Image_ErrorCode OH_ComposeOptions_Create(OH_ComposeOptions **options)--><!--Device-Image_ErrorCode OH_ComposeOptions_Create(OH_ComposeOptions **options)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 23
@@ -141,6 +145,8 @@ Image_ErrorCode OH_ComposeOptions_SetDesiredPixelFormat(OH_ComposeOptions *optio
 **Description**
 
 Sets the pixel format in **OH_ComposeOptions**.
+
+<!--Device-Image_ErrorCode OH_ComposeOptions_SetDesiredPixelFormat(OH_ComposeOptions *options, PIXEL_FORMAT desiredPixelFormat)--><!--Device-Image_ErrorCode OH_ComposeOptions_SetDesiredPixelFormat(OH_ComposeOptions *options, PIXEL_FORMAT desiredPixelFormat)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -169,6 +175,8 @@ Image_ErrorCode OH_ComposeOptions_GetDesiredPixelFormat(OH_ComposeOptions *optio
 
 Obtains the pixel format in **OH_ComposeOptions**.
 
+<!--Device-Image_ErrorCode OH_ComposeOptions_GetDesiredPixelFormat(OH_ComposeOptions *options, PIXEL_FORMAT *desiredPixelFormat)--><!--Device-Image_ErrorCode OH_ComposeOptions_GetDesiredPixelFormat(OH_ComposeOptions *options, PIXEL_FORMAT *desiredPixelFormat)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 23
@@ -196,6 +204,8 @@ Image_ErrorCode OH_ComposeOptions_Release(OH_ComposeOptions *options)
 
 Releases the pointer to **OH_ComposeOptions**.
 
+<!--Device-Image_ErrorCode OH_ComposeOptions_Release(OH_ComposeOptions *options)--><!--Device-Image_ErrorCode OH_ComposeOptions_Release(OH_ComposeOptions *options)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 23
@@ -221,6 +231,8 @@ Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, 
 **Description**
 
 Creates the pointer to an OH_PictureNative object.
+
+<!--Device-Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, OH_PictureNative **picture)--><!--Device-Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, OH_PictureNative **picture)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -249,6 +261,8 @@ Image_ErrorCode OH_PictureNative_GetMainPixelmap(OH_PictureNative *picture, OH_P
 
 Obtains the pointer to the OH_PixelmapNative object of a main picture.
 
+<!--Device-Image_ErrorCode OH_PictureNative_GetMainPixelmap(OH_PictureNative *picture, OH_PixelmapNative **mainPixelmap)--><!--Device-Image_ErrorCode OH_PictureNative_GetMainPixelmap(OH_PictureNative *picture, OH_PixelmapNative **mainPixelmap)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -276,6 +290,8 @@ Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *pictur
 
 Obtains the pointer to the OH_PixelmapNative object of an HDR picture.
 
+<!--Device-Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *picture, OH_PixelmapNative **hdrPixelmap)--><!--Device-Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *picture, OH_PixelmapNative **hdrPixelmap)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -302,6 +318,8 @@ Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmapWithOptions(OH_PictureNat
 **Description**
 
 Obtains the pointer to **OH_PixelmapNative** of an HDR picture based on **OH_ComposeOptions**.
+
+<!--Device-Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmapWithOptions(OH_PictureNative *picture, OH_ComposeOptions *options, OH_PixelmapNative **hdrPixelmap)--><!--Device-Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmapWithOptions(OH_PictureNative *picture, OH_ComposeOptions *options, OH_PixelmapNative **hdrPixelmap)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -331,6 +349,8 @@ Image_ErrorCode OH_PictureNative_GetGainmapPixelmap(OH_PictureNative *picture, O
 
 Obtains the pointer to the OH_PixelmapNative object of a gain map.
 
+<!--Device-Image_ErrorCode OH_PictureNative_GetGainmapPixelmap(OH_PictureNative *picture, OH_PixelmapNative **gainmapPixelmap)--><!--Device-Image_ErrorCode OH_PictureNative_GetGainmapPixelmap(OH_PictureNative *picture, OH_PixelmapNative **gainmapPixelmap)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -357,6 +377,8 @@ Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, 
 **Description**
 
 Sets an auxiliary picture.
+
+<!--Device-Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative *auxiliaryPicture)--><!--Device-Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative *auxiliaryPicture)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -386,6 +408,8 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, 
 
 Obtains an auxiliary picture by type.
 
+<!--Device-Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)--><!--Device-Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -413,6 +437,8 @@ Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_Me
 **Description**
 
 Obtains the metadata of a main picture.
+
+<!--Device-Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType, OH_PictureMetadata **metadata)--><!--Device-Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType, OH_PictureMetadata **metadata)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -442,6 +468,8 @@ Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_Me
 
 Sets the metadata for a main picture.
 
+<!--Device-Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType, OH_PictureMetadata *metadata)--><!--Device-Image_ErrorCode OH_PictureNative_SetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType, OH_PictureMetadata *metadata)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -470,6 +498,8 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPictureCount(OH_PictureNative *pict
 
 Obtains the number of auxiliary pictures in a Picture object.
 
+<!--Device-Image_ErrorCode OH_PictureNative_GetAuxiliaryPictureCount(OH_PictureNative *picture, uint32_t *count)--><!--Device-Image_ErrorCode OH_PictureNative_GetAuxiliaryPictureCount(OH_PictureNative *picture, uint32_t *count)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
@@ -496,6 +526,8 @@ Image_ErrorCode OH_PictureNative_GetAuxiliaryPictureTypes(OH_PictureNative *pict
 **Description**
 
 Obtains the types of auxiliary pictures in a Picture object.
+
+<!--Device-Image_ErrorCode OH_PictureNative_GetAuxiliaryPictureTypes(OH_PictureNative *picture, Image_AuxiliaryPictureType *auxiliaryPictureTypes, uint32_t *count)--><!--Device-Image_ErrorCode OH_PictureNative_GetAuxiliaryPictureTypes(OH_PictureNative *picture, Image_AuxiliaryPictureType *auxiliaryPictureTypes, uint32_t *count)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -525,6 +557,8 @@ Image_ErrorCode OH_PictureNative_GetMetadataCount(OH_PictureNative *picture, uin
 
 Obtains the number of metadata entries in a Picture object.
 
+<!--Device-Image_ErrorCode OH_PictureNative_GetMetadataCount(OH_PictureNative *picture, uint32_t *count)--><!--Device-Image_ErrorCode OH_PictureNative_GetMetadataCount(OH_PictureNative *picture, uint32_t *count)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
@@ -551,6 +585,8 @@ Image_ErrorCode OH_PictureNative_GetMetadataTypes(OH_PictureNative *picture, Ima
 **Description**
 
 Obtains the types of metadata in a Picture object.
+
+<!--Device-Image_ErrorCode OH_PictureNative_GetMetadataTypes(OH_PictureNative *picture, Image_MetadataType *metadataTypes, uint32_t *count)--><!--Device-Image_ErrorCode OH_PictureNative_GetMetadataTypes(OH_PictureNative *picture, Image_MetadataType *metadataTypes, uint32_t *count)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -580,6 +616,8 @@ Image_ErrorCode OH_PictureNative_RemoveAuxiliaryPicture(OH_PictureNative *pictur
 
 Removes an auxiliary picture from a Picture object.
 
+<!--Device-Image_ErrorCode OH_PictureNative_RemoveAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type)--><!--Device-Image_ErrorCode OH_PictureNative_RemoveAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
@@ -607,6 +645,8 @@ Image_ErrorCode OH_PictureNative_RemoveMetadata(OH_PictureNative *picture, Image
 
 Removes metadata from a Picture object.
 
+<!--Device-Image_ErrorCode OH_PictureNative_RemoveMetadata(OH_PictureNative *picture, Image_MetadataType type)--><!--Device-Image_ErrorCode OH_PictureNative_RemoveMetadata(OH_PictureNative *picture, Image_MetadataType type)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
@@ -633,6 +673,8 @@ Image_ErrorCode OH_PictureNative_DeepCopyWithItems(OH_PictureNative *source, con
 **Description**
 
 Creates a deep copy of a PictureNative object with specified auxiliary pictures and metadata copied to specified destination types.
+
+<!--Device-Image_ErrorCode OH_PictureNative_DeepCopyWithItems(OH_PictureNative *source, const OH_PictureNative_AuxiliaryPictureCopyItem *auxiliaryPictureCopyItems, uint32_t auxiliaryPictureCopyCount, const OH_PictureNative_MetadataCopyItem *metadataCopyItems, uint32_t metadataCopyCount, Image_AuxiliaryPictureType *sourceAuxPictureAsMainPixelMap, OH_PictureNative **picture)--><!--Device-Image_ErrorCode OH_PictureNative_DeepCopyWithItems(OH_PictureNative *source, const OH_PictureNative_AuxiliaryPictureCopyItem *auxiliaryPictureCopyItems, uint32_t auxiliaryPictureCopyCount, const OH_PictureNative_MetadataCopyItem *metadataCopyItems, uint32_t metadataCopyCount, Image_AuxiliaryPictureType *sourceAuxPictureAsMainPixelMap, OH_PictureNative **picture)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -668,6 +710,8 @@ Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)
 
 Releases the pointer to an OH_PictureNative object.
 
+<!--Device-Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)--><!--Device-Image_ErrorCode OH_PictureNative_Release(OH_PictureNative *picture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -693,6 +737,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLengt
 **Description**
 
 Creates the pointer to an OH_AuxiliaryPictureNative object. This API supports only continuous pixel data whose pixel format is BGRA_8888 and creates an auxiliary picture in RGBA_8888 format.
+
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_Create(uint8_t *data, size_t dataLength, Image_Size *size, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -724,6 +770,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative 
 
 Reads pixels in the buffer and writes the result to an auxiliary picture.
 
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source, size_t bufferSize)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_WritePixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *source, size_t bufferSize)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -751,6 +799,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *
 **Description**
 
 Reads pixels of an auxiliary picture and writes the result to the buffer.
+
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination, size_t *bufferSize)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_ReadPixels(OH_AuxiliaryPictureNative *auxiliaryPicture, uint8_t *destination, size_t *bufferSize)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -780,6 +830,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *aux
 
 Obtains the type of an auxiliary picture.
 
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_AuxiliaryPictureType *type)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_GetType(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_AuxiliaryPictureType *type)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -806,6 +858,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *aux
 **Description**
 
 Obtains the information of an auxiliary picture.
+
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture, OH_AuxiliaryPictureInfo **info)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_GetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture, OH_AuxiliaryPictureInfo **info)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -834,6 +888,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *aux
 
 Sets the information for an auxiliary picture.
 
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture, OH_AuxiliaryPictureInfo *info)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_SetInfo(OH_AuxiliaryPictureNative *auxiliaryPicture, OH_AuxiliaryPictureInfo *info)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -860,6 +916,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative 
 **Description**
 
 Obtains the metadata of an auxiliary picture.
+
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_MetadataType metadataType, OH_PictureMetadata **metadata)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_GetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_MetadataType metadataType, OH_PictureMetadata **metadata)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -889,6 +947,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative 
 
 Sets the metadata for an auxiliary picture.
 
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_MetadataType metadataType, OH_PictureMetadata *metadata)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_SetMetadata(OH_AuxiliaryPictureNative *auxiliaryPicture, Image_MetadataType metadataType, OH_PictureMetadata *metadata)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -916,6 +976,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_AcquirePixelmap(OH_AuxiliaryPictureNat
 **Description**
 
 Obtains the OH_PixelmapNative object of an auxiliary picture.
+
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_AcquirePixelmap(OH_AuxiliaryPictureNative *auxiliaryPicture, OH_PixelmapNative **pixelmap)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_AcquirePixelmap(OH_AuxiliaryPictureNative *auxiliaryPicture, OH_PixelmapNative **pixelmap)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -946,6 +1008,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *pic
 
 Releases the pointer to an OH_AuxiliaryPictureNative object.
 
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *picture)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureNative_Release(OH_AuxiliaryPictureNative *picture)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -972,6 +1036,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)
 
 Creates an OH_AuxiliaryPictureInfo object.
 
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_Create(OH_AuxiliaryPictureInfo **info)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -997,6 +1063,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, I
 **Description**
 
 Obtains the auxiliary picture type in **OH_AuxiliaryPictureInfo**.
+
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType *type)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_GetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType *type)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -1025,6 +1093,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, I
 
 Sets the auxiliary picture type in **OH_AuxiliaryPictureInfo**.
 
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType type)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_SetType(OH_AuxiliaryPictureInfo *info, Image_AuxiliaryPictureType type)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -1051,6 +1121,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, I
 **Description**
 
 Obtains the image size in **OH_AuxiliaryPictureInfo**.
+
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_GetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -1079,6 +1151,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, I
 
 Sets the image size in **OH_AuxiliaryPictureInfo**.
 
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_SetSize(OH_AuxiliaryPictureInfo *info, Image_Size *size)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -1105,6 +1179,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *in
 **Description**
 
 Obtains the row stride in **OH_AuxiliaryPictureInfo**.
+
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t *rowStride)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_GetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t *rowStride)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -1133,6 +1209,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *in
 
 Sets the row stride in **OH_AuxiliaryPictureInfo**.
 
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t rowStride)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_SetRowStride(OH_AuxiliaryPictureInfo *info, uint32_t rowStride)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -1159,6 +1237,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *
 **Description**
 
 Obtains the pixel format in **OH_AuxiliaryPictureInfo**.
+
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT *pixelFormat)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_GetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT *pixelFormat)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -1187,6 +1267,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *
 
 Sets the pixel format in **OH_AuxiliaryPictureInfo**.
 
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT pixelFormat)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_SetPixelFormat(OH_AuxiliaryPictureInfo *info, PIXEL_FORMAT pixelFormat)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
@@ -1213,6 +1295,8 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)
 **Description**
 
 Releases the pointer to an OH_AuxiliaryPictureInfo object.
+
+<!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)--><!--Device-Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

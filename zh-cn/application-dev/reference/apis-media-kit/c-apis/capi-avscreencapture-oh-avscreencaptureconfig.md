@@ -8,11 +8,13 @@ struct OH_AVScreenCaptureConfig {...}
 
 屏幕录制配置参数。<br> 用于配置屏幕录制的模式、数据格式、音频参数、视频参数及录制文件参数等，适用于需要自定义屏幕录制行为（如选择录制模式、 指定数据输出格式、设置音视频编码参数等）的场景。
 
+<!--Device-struct OH_AVScreenCaptureConfig {...}--><!--Device-struct OH_AVScreenCaptureConfig {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 10
 
-**相关模块：** [AVScreenCapture](capi-others-avscreencapture.md)
+**相关模块：** [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **所在头文件：** [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

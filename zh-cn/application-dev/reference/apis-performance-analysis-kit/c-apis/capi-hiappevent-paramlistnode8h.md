@@ -8,11 +8,13 @@ typedef struct ParamListNode* ParamList
 
 事件参数列表节点。用于组织和管理事件参数列表信息，通过ParamListNode可以构建参数链表，支持多参数事件的参数传递。
 
+<!--Device-typedef struct ParamListNode* ParamList--><!--Device-typedef struct ParamListNode* ParamList-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 **起始版本：** 8
 
-**相关模块：** [HiAppEvent](capi-others-hiappevent.md)
+**相关模块：** [HiAppEvent](capi-performance-analysis-kit-hiappevent.md)
 
 **所在头文件：** [hiappevent.h](capi-hiappevent-h.md)
 

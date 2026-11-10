@@ -35,6 +35,8 @@ int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int
 
 Obtains the display name of the local device. The device display name involves user privacy. You need to provide a privacy statement to declare the purpose of the device display name.
 
+<!--Device-int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int &len)--><!--Device-int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int &len)-End-->
+
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **Required permission**: ohos.permission.READ_LOCAL_DEVICE_NAME
@@ -67,6 +69,8 @@ int32_t OH_DeviceManager_GetLocalDeviceNameC(char **localDeviceName, unsigned in
 **Description**
 
 Obtains the display name of the local device. The device display name involves user privacy. You need to provide a privacy statement to declare the purpose of the device display name.
+
+<!--Device-int32_t OH_DeviceManager_GetLocalDeviceNameC(char **localDeviceName, unsigned int *len)--><!--Device-int32_t OH_DeviceManager_GetLocalDeviceNameC(char **localDeviceName, unsigned int *len)-End-->
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 

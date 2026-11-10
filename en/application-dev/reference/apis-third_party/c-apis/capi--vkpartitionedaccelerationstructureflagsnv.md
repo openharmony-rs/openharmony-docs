@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPartitionedAccelerationStructureFlagsNV {...}--><!--Device-struct VkPartitionedAccelerationStructureFlagsNV {...}-End-->
+
 ## Summary
 
 ### Member variables

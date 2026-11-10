@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAttachmentSampleCountInfoAMD {...}--><!--Device-struct VkAttachmentSampleCountInfoAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

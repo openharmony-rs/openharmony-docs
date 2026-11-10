@@ -8,11 +8,13 @@ struct UsbRequestPipe {...}
 
 请求管道，是USB数据传输请求的抽象，用于描述USB数据传输的基本配置参数，包括接口句柄、端点地址和超时时间。适用于需要进行USB数据传输的场景。
 
+<!--Device-struct UsbRequestPipe {...}--><!--Device-struct UsbRequestPipe {...}-End-->
+
 **系统能力：** SystemCapability.Driver.USB.Extension
 
 **起始版本：** 10
 
-**相关模块：** [UsbDdk](capi-others-usbddk.md)
+**相关模块：** [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 **所在头文件：** [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

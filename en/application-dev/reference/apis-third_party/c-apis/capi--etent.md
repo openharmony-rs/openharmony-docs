@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct etent {...}--><!--Device-struct etent {...}-End-->
+
 ## Summary
 
 ### Member variables

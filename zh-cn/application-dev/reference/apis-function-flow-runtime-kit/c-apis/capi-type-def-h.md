@@ -76,6 +76,8 @@ enum ffrt_queue_priority_t
 
 并发队列中用于排序任务调度的任务优先级类型枚举。
 
+<!--Device-ffrt_queue_priority_t--><!--Device-ffrt_queue_priority_t-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 12
@@ -96,6 +98,8 @@ enum ffrt_qos_default_t
 **描述：**
 
 任务QoS类型枚举。
+
+<!--Device-ffrt_qos_default_t--><!--Device-ffrt_qos_default_t-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -122,6 +126,8 @@ enum ffrt_storage_size_t
 
 多种类型结构体的存储大小定义，单位是字节。
 
+<!--Device-ffrt_storage_size_t--><!--Device-ffrt_storage_size_t-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
@@ -146,6 +152,8 @@ enum ffrt_function_kind_t
 
 任务类型枚举，用于区分通用并发任务和队列调度的任务。
 
+<!--Device-ffrt_function_kind_t--><!--Device-ffrt_function_kind_t-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
@@ -165,6 +173,8 @@ enum ffrt_dependence_type_t
 
 依赖类型枚举。<br> 用于指定任务间的依赖关系（数据就绪或任务完成）。
 
+<!--Device-ffrt_dependence_type_t--><!--Device-ffrt_dependence_type_t-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
@@ -183,6 +193,8 @@ enum ffrt_error_t
 **描述：**
 
 错误码枚举，由FFRT接口返回。
+
+<!--Device-ffrt_error_t--><!--Device-ffrt_error_t-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -207,6 +219,8 @@ enum ffrt_mutex_type
 
 互斥锁类型枚举。
 
+<!--Device-ffrt_mutex_type--><!--Device-ffrt_mutex_type-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 12
@@ -226,6 +240,8 @@ enum qos_default
 **描述：**
 
 任务QoS类型枚举。<br> 各枚举值与[ffrt_qos_default_t](capi-type-def-h.md#ffrt_qos_default_t)中对应的枚举值等价。
+
+<!--Device-qos_default--><!--Device-qos_default-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -255,6 +271,8 @@ typedef void (*ffrt_function_t)(void*)
 
 任务执行函数指针类型。<br> 函数指针定义了FFRT任务的入口点。FFRT在调度执行任务时调用该函数，并通过唯一的`void*`参数传入用户数据指针。
 
+<!--Device-typedef void (*ffrt_function_t)(void*)--><!--Device-typedef void (*ffrt_function_t)(void*)-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
@@ -268,6 +286,8 @@ typedef void (*ffrt_poller_cb)(void* data, uint32_t event)
 **描述：**
 
 poller回调函数类型。<br> 当poller检测到已注册事件时调用该回调。`data`指针携带注册时传入的用户数据，`event`值标识触发的事件类型。
+
+<!--Device-typedef void (*ffrt_poller_cb)(void* data, uint32_t event)--><!--Device-typedef void (*ffrt_poller_cb)(void* data, uint32_t event)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
@@ -289,6 +309,8 @@ typedef void (*ffrt_timer_cb)(void* data)
 **描述：**
 
 定时器回调函数类型。<br> 当定时器到期时调用该回调。`data`指针携带定时器注册时传入的用户数据。
+
+<!--Device-typedef void (*ffrt_timer_cb)(void* data)--><!--Device-typedef void (*ffrt_timer_cb)(void* data)-End-->
 
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 

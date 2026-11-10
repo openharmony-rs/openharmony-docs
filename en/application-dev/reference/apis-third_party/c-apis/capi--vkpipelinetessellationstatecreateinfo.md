@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineTessellationStateCreateInfo {...}--><!--Device-struct VkPipelineTessellationStateCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

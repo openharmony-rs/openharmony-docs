@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCooperativeMatrixPropertiesKHR {...}--><!--Device-struct VkCooperativeMatrixPropertiesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

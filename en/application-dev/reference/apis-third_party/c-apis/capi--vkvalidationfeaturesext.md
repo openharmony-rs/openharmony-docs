@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkValidationFeaturesEXT {...}--><!--Device-struct VkValidationFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

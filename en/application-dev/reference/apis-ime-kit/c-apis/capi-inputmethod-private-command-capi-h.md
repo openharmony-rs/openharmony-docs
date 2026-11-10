@@ -50,6 +50,8 @@ InputMethod_PrivateCommand *OH_PrivateCommand_Create(char key[], size_t keyLengt
 
 Creates an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance.
 
+<!--Device-InputMethod_PrivateCommand *OH_PrivateCommand_Create(char key[], size_t keyLength)--><!--Device-InputMethod_PrivateCommand *OH_PrivateCommand_Create(char key[], size_t keyLength)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -77,6 +79,8 @@ void OH_PrivateCommand_Destroy(InputMethod_PrivateCommand *command)
 
 Destroys an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) instance.
 
+<!--Device-void OH_PrivateCommand_Destroy(InputMethod_PrivateCommand *command)--><!--Device-void OH_PrivateCommand_Destroy(InputMethod_PrivateCommand *command)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -96,6 +100,8 @@ InputMethod_ErrorCode OH_PrivateCommand_SetKey(InputMethod_PrivateCommand *comma
 **Description**
 
 Sets the key value for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+
+<!--Device-InputMethod_ErrorCode OH_PrivateCommand_SetKey(InputMethod_PrivateCommand *command, char key[], size_t keyLength)--><!--Device-InputMethod_ErrorCode OH_PrivateCommand_SetKey(InputMethod_PrivateCommand *command, char key[], size_t keyLength)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -125,6 +131,8 @@ InputMethod_ErrorCode OH_PrivateCommand_SetBoolValue(InputMethod_PrivateCommand 
 
 Sets the value of the Boolean type for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
+<!--Device-InputMethod_ErrorCode OH_PrivateCommand_SetBoolValue(InputMethod_PrivateCommand *command, bool value)--><!--Device-InputMethod_ErrorCode OH_PrivateCommand_SetBoolValue(InputMethod_PrivateCommand *command, bool value)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -152,6 +160,8 @@ InputMethod_ErrorCode OH_PrivateCommand_SetIntValue(InputMethod_PrivateCommand *
 
 Sets the value of the integer type for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
+<!--Device-InputMethod_ErrorCode OH_PrivateCommand_SetIntValue(InputMethod_PrivateCommand *command, int32_t value)--><!--Device-InputMethod_ErrorCode OH_PrivateCommand_SetIntValue(InputMethod_PrivateCommand *command, int32_t value)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -178,6 +188,8 @@ InputMethod_ErrorCode OH_PrivateCommand_SetStrValue(InputMethod_PrivateCommand *
 **Description**
 
 Sets the value of the string type for [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+
+<!--Device-InputMethod_ErrorCode OH_PrivateCommand_SetStrValue(InputMethod_PrivateCommand *command, char value[], size_t valueLength)--><!--Device-InputMethod_ErrorCode OH_PrivateCommand_SetStrValue(InputMethod_PrivateCommand *command, char value[], size_t valueLength)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -207,6 +219,8 @@ InputMethod_ErrorCode OH_PrivateCommand_GetKey(InputMethod_PrivateCommand *comma
 
 Obtains the key value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
+<!--Device-InputMethod_ErrorCode OH_PrivateCommand_GetKey(InputMethod_PrivateCommand *command, const char **key, size_t *keyLength)--><!--Device-InputMethod_ErrorCode OH_PrivateCommand_GetKey(InputMethod_PrivateCommand *command, const char **key, size_t *keyLength)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -235,6 +249,8 @@ InputMethod_ErrorCode OH_PrivateCommand_GetValueType(InputMethod_PrivateCommand 
 
 Obtains the data type of value from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
+<!--Device-InputMethod_ErrorCode OH_PrivateCommand_GetValueType(InputMethod_PrivateCommand *command, InputMethod_CommandValueType *type)--><!--Device-InputMethod_ErrorCode OH_PrivateCommand_GetValueType(InputMethod_PrivateCommand *command, InputMethod_CommandValueType *type)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -261,6 +277,8 @@ InputMethod_ErrorCode OH_PrivateCommand_GetBoolValue(InputMethod_PrivateCommand 
 **Description**
 
 Obtains the value of the Boolean type from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+
+<!--Device-InputMethod_ErrorCode OH_PrivateCommand_GetBoolValue(InputMethod_PrivateCommand *command, bool *value)--><!--Device-InputMethod_ErrorCode OH_PrivateCommand_GetBoolValue(InputMethod_PrivateCommand *command, bool *value)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -289,6 +307,8 @@ InputMethod_ErrorCode OH_PrivateCommand_GetIntValue(InputMethod_PrivateCommand *
 
 Obtains the value of the integer type from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
 
+<!--Device-InputMethod_ErrorCode OH_PrivateCommand_GetIntValue(InputMethod_PrivateCommand *command, int32_t *value)--><!--Device-InputMethod_ErrorCode OH_PrivateCommand_GetIntValue(InputMethod_PrivateCommand *command, int32_t *value)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -315,6 +335,8 @@ InputMethod_ErrorCode OH_PrivateCommand_GetStrValue(InputMethod_PrivateCommand *
 **Description**
 
 Obtains the value of the string type from [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md).
+
+<!--Device-InputMethod_ErrorCode OH_PrivateCommand_GetStrValue(InputMethod_PrivateCommand *command, const char **value, size_t *valueLength)--><!--Device-InputMethod_ErrorCode OH_PrivateCommand_GetStrValue(InputMethod_PrivateCommand *command, const char **value, size_t *valueLength)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

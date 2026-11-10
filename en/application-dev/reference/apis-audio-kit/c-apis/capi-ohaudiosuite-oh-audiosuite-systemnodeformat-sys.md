@@ -8,13 +8,15 @@ struct OH_AudioSuite_SystemNodeFormat {...}
 
 Define the audio format info structure, used to describe basic audio format for system node.
 
+<!--Device-struct OH_AudioSuite_SystemNodeFormat {...}--><!--Device-struct OH_AudioSuite_SystemNodeFormat {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 
 **System API:** This is a system API.
 
-**Related module**: [OHAudioSuite](capi-others-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 **Header file**: [native_audio_suite_base.h(System API)](capi-native-audio-suite-base-h-sys.md)
 

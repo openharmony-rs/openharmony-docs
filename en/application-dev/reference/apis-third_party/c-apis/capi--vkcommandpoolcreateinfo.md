@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCommandPoolCreateInfo {...}--><!--Device-struct VkCommandPoolCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

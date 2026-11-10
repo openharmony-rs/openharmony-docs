@@ -8,11 +8,13 @@ struct OH_RecorderInfo {...}
 
 The struct describes the recording file information.
 
+<!--Device-struct OH_RecorderInfo {...}--><!--Device-struct OH_RecorderInfo {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
 
-**Related module**: [AVScreenCapture](capi-others-avscreencapture.md)
+**Related module**: [AVScreenCapture](capi-media-kit-avscreencapture.md)
 
 **Header file**: [native_avscreen_capture_base.h](capi-native-avscreen-capture-base-h.md)
 

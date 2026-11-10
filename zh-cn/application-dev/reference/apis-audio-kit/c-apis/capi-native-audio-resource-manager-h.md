@@ -45,6 +45,8 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceMa
 
 获取音频资源管理器实例，该实例为单例，用于调用音频资源管理功能接口。
 
+<!--Device-OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceManager **resourceManager)--><!--Device-OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceManager **resourceManager)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
@@ -70,6 +72,8 @@ OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceMa
 **描述：**
 
 创建音频工作组。 <br>每个应用进程最多创建2个音频工作组，不再使用的音频工作组， 及时通过[OH_AudioResourceManager_ReleaseWorkgroup](capi-native-audio-resource-manager-h.md#oh_audioresourcemanager_releaseworkgroup)接口释放。
+
+<!--Device-OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceManager *resourceManager, const char *name, OH_AudioWorkgroup **group)--><!--Device-OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceManager *resourceManager, const char *name, OH_AudioWorkgroup **group)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -99,6 +103,8 @@ OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceM
 
 释放音频工作组。
 
+<!--Device-OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceManager *resourceManager, OH_AudioWorkgroup *group)--><!--Device-OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceManager *resourceManager, OH_AudioWorkgroup *group)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
@@ -125,6 +131,8 @@ OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *grou
 **描述：**
 
 添加当前线程到音频工作组。 <br>添加完成后，系统会为此线程分配一个标识符，可在[OH_AudioWorkgroup_RemoveThread](capi-native-audio-resource-manager-h.md#oh_audioworkgroup_removethread)接口通过此标识符移除线程。 <br>添加到工作组的线程将参与工作组的统一调度，系统会根据工作组的任务时间要求动态调整线程的CPU资源分配。 <br>进程内所有工作组总共最多添加4个处理线程。
+
+<!--Device-OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *group, int32_t *tokenId)--><!--Device-OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *group, int32_t *tokenId)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -153,6 +161,8 @@ OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, i
 
 从音频工作组移除指定线程。
 
+<!--Device-OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, int32_t tokenId)--><!--Device-OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, int32_t tokenId)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
@@ -179,6 +189,8 @@ OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t
 **描述：**
 
 通知系统音频工作组开始执行任务。此接口应在每个周期的音频数据处理前调用， 处理完成后需要调用[OH_AudioWorkgroup_Stop](capi-native-audio-resource-manager-h.md#oh_audioworkgroup_stop)。 <br>系统会基于任务启动时间和预期完成时间，对音频工作组内的所有线程进行优先级调整和CPU资源分配。 <br>请合理设置启动和预期完成时间，如果时间间隔过短，系统无法确保音频任务能够及时完成。
+
+<!--Device-OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t startTime, uint64_t deadlineTime)--><!--Device-OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t startTime, uint64_t deadlineTime)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -207,6 +219,8 @@ OH_AudioCommon_Result OH_AudioWorkgroup_Stop(OH_AudioWorkgroup *group)
 **描述：**
 
 通知系统音频工作组任务执行完成。此接口应在每个周期的音频数据处理完成后调用。
+
+<!--Device-OH_AudioCommon_Result OH_AudioWorkgroup_Stop(OH_AudioWorkgroup *group)--><!--Device-OH_AudioCommon_Result OH_AudioWorkgroup_Stop(OH_AudioWorkgroup *group)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

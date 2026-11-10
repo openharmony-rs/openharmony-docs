@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct __ani_vm {...}--><!--Device-struct __ani_vm {...}-End-->
+
 **System capability**: SystemCapability.ArkCompiler.ANI
 
 ## Summary

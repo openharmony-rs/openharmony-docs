@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceHostImageCopyProperties {...}--><!--Device-struct VkPhysicalDeviceHostImageCopyProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

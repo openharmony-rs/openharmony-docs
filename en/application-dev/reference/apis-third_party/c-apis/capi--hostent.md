@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct hostent {...}--><!--Device-struct hostent {...}-End-->
+
 ## Summary
 
 ### Member variables

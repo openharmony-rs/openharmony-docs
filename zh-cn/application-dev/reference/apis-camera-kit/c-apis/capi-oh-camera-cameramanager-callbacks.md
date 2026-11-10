@@ -8,11 +8,13 @@ struct CameraManager_Callbacks {...}
 
 相机设备状态的回调。
 
+<!--Device-struct CameraManager_Callbacks {...}--><!--Device-struct CameraManager_Callbacks {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 11
 
-**相关模块：** [OH_Camera](capi-others-oh-camera.md)
+**相关模块：** [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **所在头文件：** [camera_manager.h](capi-camera-manager-h.md)
 

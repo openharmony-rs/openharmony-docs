@@ -34,6 +34,8 @@ enum ArkUI_TextAreaType
 
 Enumerates the input types of multi-line text. Different enumerated values specify the input types of the **<br>TextArea** component and affect the validation rules for the input content.
 
+<!--Device-ArkUI_TextAreaType--><!--Device-ArkUI_TextAreaType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12

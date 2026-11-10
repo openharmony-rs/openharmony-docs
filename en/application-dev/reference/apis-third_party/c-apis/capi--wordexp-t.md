@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct wordexp_t {...}--><!--Device-struct wordexp_t {...}-End-->
+
 ## Summary
 
 ### Member variables

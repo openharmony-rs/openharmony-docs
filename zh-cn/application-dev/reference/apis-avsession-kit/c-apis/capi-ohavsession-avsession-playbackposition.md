@@ -8,11 +8,13 @@ struct AVSession_PlaybackPosition {...}
 
 媒体播放位置的相关属性。
 
+<!--Device-struct AVSession_PlaybackPosition {...}--><!--Device-struct AVSession_PlaybackPosition {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
-**相关模块：** [OHAVSession](capi-others-ohavsession.md)
+**相关模块：** [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 **所在头文件：** [native_avplaybackstate.h](capi-native-avplaybackstate-h.md)
 

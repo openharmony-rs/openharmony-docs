@@ -8,11 +8,13 @@ typedef struct Asset_SyncResult {...} Asset_SyncResult
 
 Represents the sync result of an asset.
 
+<!--Device-typedef struct Asset_SyncResult {...} Asset_SyncResult--><!--Device-typedef struct Asset_SyncResult {...} Asset_SyncResult-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 20
 
-**Related module**: [AssetType](capi-others-assettype.md)
+**Related module**: [AssetType](capi-asset-store-kit-assettype.md)
 
 **Header file**: [asset_type.h](capi-asset-type-h.md)
 

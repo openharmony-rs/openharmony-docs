@@ -35,6 +35,8 @@ Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state
 
 Obtains the network status.
 
+<!--Device-Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state)--><!--Device-Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state)-End-->
+
 **System capability**: SystemCapability.Telephony.CoreService
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
@@ -62,6 +64,8 @@ Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Teleph
 **Description**
 
 Obtains the network status of the SIM card in the specified slot.
+
+<!--Device-Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Telephony_NetworkState *state)--><!--Device-Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Telephony_NetworkState *state)-End-->
 
 **System capability**: SystemCapability.Telephony.CoreService
 

@@ -8,11 +8,13 @@ struct Http_CustomProxy {...}
 
 用户自定义代理配置。
 
+<!--Device-struct Http_CustomProxy {...}--><!--Device-struct Http_CustomProxy {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 
-**相关模块：** [netstack](capi-others-netstack.md)
+**相关模块：** [netstack](capi-network-kit-netstack.md)
 
 **所在头文件：** [net_http_type.h](capi-net-http-type-h.md)
 

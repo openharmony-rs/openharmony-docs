@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct sg_io_hdr {...}--><!--Device-struct sg_io_hdr {...}-End-->
+
 ## Summary
 
 ### Member variables

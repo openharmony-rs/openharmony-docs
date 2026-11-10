@@ -33,6 +33,8 @@ int32_t OH_Ethernet_GetMacAddress(Ethernet_MacAddrInfoList *macAddrList)
 
 Obtains the MAC address list of Ethernet NICs.
 
+<!--Device-int32_t OH_Ethernet_GetMacAddress(Ethernet_MacAddrInfoList *macAddrList)--><!--Device-int32_t OH_Ethernet_GetMacAddress(Ethernet_MacAddrInfoList *macAddrList)-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.Ethernet
 
 **Required permission**: ohos.permission.GET_ETHERNET_LOCAL_MAC
@@ -60,6 +62,8 @@ int32_t OH_Ethernet_GetNetAddress(Ethernet_NetAddrList *netAddrList)
 **Description**
 
 Obtains the IP address list of Ethernet NICs.
+
+<!--Device-int32_t OH_Ethernet_GetNetAddress(Ethernet_NetAddrList *netAddrList)--><!--Device-int32_t OH_Ethernet_GetNetAddress(Ethernet_NetAddrList *netAddrList)-End-->
 
 **System capability**: SystemCapability.Communication.NetManager.Ethernet
 

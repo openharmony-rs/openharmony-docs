@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineCreateFlags2CreateInfo {...}--><!--Device-struct VkPipelineCreateFlags2CreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

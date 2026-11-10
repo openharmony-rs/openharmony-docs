@@ -82,6 +82,8 @@ enum OH_AudioSession_Scene
 
 Declare the audio session scene.
 
+<!--Device-OH_AudioSession_Scene--><!--Device-OH_AudioSession_Scene-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
@@ -102,6 +104,8 @@ enum OH_AudioSession_StateChangeHint
 **Description**
 
 Declare the audio session state change hints.
+
+<!--Device-OH_AudioSession_StateChangeHint--><!--Device-OH_AudioSession_StateChangeHint-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -130,6 +134,8 @@ enum OH_AudioSession_OutputDeviceChangeRecommendedAction
 
 Declare the recommend action when device change.
 
+<!--Device-OH_AudioSession_OutputDeviceChangeRecommendedAction--><!--Device-OH_AudioSession_OutputDeviceChangeRecommendedAction-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
@@ -149,6 +155,8 @@ enum OH_AudioSession_DeactivatedReason
 
 Declare the audio deactivated reasons.
 
+<!--Device-OH_AudioSession_DeactivatedReason--><!--Device-OH_AudioSession_DeactivatedReason-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -167,6 +175,8 @@ enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 **Description**
 
 Enumerates the categories application prefer to use when recording with bluetooth and nearlink.
+
+<!--Device-OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory--><!--Device-OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -192,6 +202,8 @@ typedef void (*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChange
 
 This function pointer will point to the callback function that is used to return the audio session state change event.
 
+<!--Device-typedef void (*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChangedEvent event)--><!--Device-typedef void (*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChangedEvent event)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
@@ -211,6 +223,8 @@ typedef void (*OH_AudioSession_AvailableDeviceChangedCallback)(OH_AudioDevice_Ch
 **Description**
 
 This function pointer will point to the callback function that is used to return the changing audio device descriptors. There may be more than one audio device descriptor returned.
+
+<!--Device-typedef void (*OH_AudioSession_AvailableDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)--><!--Device-typedef void (*OH_AudioSession_AvailableDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -233,6 +247,8 @@ typedef void (*OH_AudioSession_CurrentInputDeviceChangedCallback)(OH_AudioDevice
 
 This function pointer will point to the callback function that is used to return the audio session input device change event.
 
+<!--Device-typedef void (*OH_AudioSession_CurrentInputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason)--><!--Device-typedef void (*OH_AudioSession_CurrentInputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
@@ -253,6 +269,8 @@ typedef void (*OH_AudioSession_CurrentOutputDeviceChangedCallback)(OH_AudioDevic
 **Description**
 
 This function pointer will point to the callback function that is used to return the audio session device change event.
+
+<!--Device-typedef void (*OH_AudioSession_CurrentOutputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason, OH_AudioSession_OutputDeviceChangeRecommendedAction recommendedAction)--><!--Device-typedef void (*OH_AudioSession_CurrentOutputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason, OH_AudioSession_OutputDeviceChangeRecommendedAction recommendedAction)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -276,6 +294,8 @@ typedef int32_t (*OH_AudioSession_DeactivatedCallback)(OH_AudioSession_Deactivat
 
 This function pointer will point to the callback function that is used to return the audio session deactivated event.
 
+<!--Device-typedef int32_t (*OH_AudioSession_DeactivatedCallback)(OH_AudioSession_DeactivatedEvent event)--><!--Device-typedef int32_t (*OH_AudioSession_DeactivatedCallback)(OH_AudioSession_DeactivatedEvent event)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -295,6 +315,8 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioSessionManager(OH_AudioSessionMana
 **Description**
 
 Fetch the audio session manager handle. The audio session manager handle should be the first parameter in audio session related functions
+
+<!--Device-OH_AudioCommon_Result OH_AudioManager_GetAudioSessionManager(OH_AudioSessionManager **audioSessionManager)--><!--Device-OH_AudioCommon_Result OH_AudioManager_GetAudioSessionManager(OH_AudioSessionManager **audioSessionManager)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -321,6 +343,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_ActivateAudioSession(OH_AudioSessio
 **Description**
 
 Activate the audio session for the current pid application. If [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) is called, it will take focus when calling this method. If you want to take focus again after [OH_AudioSessionManager_DeactivateAudioSession](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_deactivateaudiosession) is called, you must call [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) again.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_ActivateAudioSession(OH_AudioSessionManager *audioSessionManager, const OH_AudioSession_Strategy *strategy)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_ActivateAudioSession(OH_AudioSessionManager *audioSessionManager, const OH_AudioSession_Strategy *strategy)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -349,6 +373,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_DeactivateAudioSession(OH_AudioSess
 
 Deactivate the audio session for the current pid application.
 
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_DeactivateAudioSession(OH_AudioSessionManager *audioSessionManager)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_DeactivateAudioSession(OH_AudioSessionManager *audioSessionManager)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -375,6 +401,8 @@ bool OH_AudioSessionManager_IsAudioSessionActivated(OH_AudioSessionManager *audi
 
 Querying whether the current pid application has an activated audio session.
 
+<!--Device-bool OH_AudioSessionManager_IsAudioSessionActivated(OH_AudioSessionManager *audioSessionManager)--><!--Device-bool OH_AudioSessionManager_IsAudioSessionActivated(OH_AudioSessionManager *audioSessionManager)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -400,6 +428,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterSessionDeactivatedCallback(
 **Description**
 
 Register the audio session deactivated event callback.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_RegisterSessionDeactivatedCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_DeactivatedCallback callback)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_RegisterSessionDeactivatedCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_DeactivatedCallback callback)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -428,6 +458,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterSessionDeactivatedCallbac
 
 Unregister the audio session deactivated event callback.
 
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_DeactivatedCallback callback)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_DeactivatedCallback callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
@@ -454,6 +486,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetScene(OH_AudioSessionManager *au
 **Description**
 
 Set scene for audio session.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_SetScene(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_Scene scene)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_SetScene(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_Scene scene)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -482,6 +516,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterStateChangeCallback(OH_Audi
 
 Register the audio session state change event callback.
 
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_RegisterStateChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_StateChangedCallback callback)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_RegisterStateChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_StateChangedCallback callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
@@ -508,6 +544,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterStateChangeCallback(OH_Au
 **Description**
 
 Unregister the audio session state change event callback.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_UnregisterStateChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_StateChangedCallback callback)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_UnregisterStateChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_StateChangedCallback callback)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -536,6 +574,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSess
 
 Sets the default output device. This function applys on audiorenderers whose StreamUsage are STREAM_USAGE_VOICE_COMMUNICATION/STREAM_USAGE_VIDEO_COMMUNICATION/STREAM_USAGE_VOICE_MESSAGE. Setting the device will only takes effect if no other accessory such as headphones are in use
 
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Type deviceType)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Type deviceType)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
@@ -562,6 +602,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetDefaultOutputDevice(OH_AudioSess
 **Description**
 
 Gets the default output device.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_GetDefaultOutputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Type *deviceType)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_GetDefaultOutputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Type *deviceType)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -590,6 +632,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevices(OH_AudioSessionManag
 
 Release the audio device descriptor array object.
 
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
@@ -616,6 +660,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCa
 **Description**
 
 Register the audio session device change event callback.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentOutputDeviceChangedCallback callback)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentOutputDeviceChangedCallback callback)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -644,6 +690,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentOutputDeviceChange
 
 Unregister the audio session device change event callback.
 
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentOutputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentOutputDeviceChangedCallback callback)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentOutputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentOutputDeviceChangedCallback callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
@@ -670,6 +718,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSession
 **Description**
 
 Get available devices by device usage.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -699,6 +749,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallb
 
 Register available device change event callback.
 
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioSession_AvailableDeviceChangedCallback callback)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioSession_AvailableDeviceChangedCallback callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
@@ -727,6 +779,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCal
 
 Unregister available device change event callback.
 
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_AvailableDeviceChangedCallback callback)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_AvailableDeviceChangedCallback callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
@@ -753,6 +807,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSess
 **Description**
 
 Sets the media input device. This function is not valid for call recording, whose SourceType is SOURCE_TYPE_VOICE_CALL or SOURCE_TYPE_VOICE_COMMUNICATION. In scenarios where there are concurrent recording streams with higher priority, the actual input device used by the application may differ from the selected one. The application can use [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *deviceDescriptor)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *deviceDescriptor)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -781,6 +837,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_Audi
 
 Gets the selected media input device.
 
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor **audioDeviceDescriptor)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor **audioDeviceDescriptor)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
@@ -807,6 +865,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRec
 **Description**
 
 Sets the preferred record category with bluetooth and nearlink device. The application can set this category before bluetooth and nearlink connected, and the system will prefer to use bluetooth and nearlink to record when the device connected. In scenarios where there are concurrent recording streams with higher priority, the actual input device used by the application may differ from the preferred one. The application can use [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory category)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory category)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -835,6 +895,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRec
 
 Gets the preferred record category with bluetooth and nearlink device.
 
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory *category)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory *category)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
@@ -861,6 +923,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCal
 **Description**
 
 Register the audio session input device change event callback.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -889,6 +953,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeC
 
 Unregister the audio session input device change event callback.
 
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 21
@@ -915,6 +981,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevice(OH_AudioSessionManage
 **Description**
 
 Release the audio device descriptor object.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *audioDeviceDescriptor)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *audioDeviceDescriptor)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -943,6 +1011,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthe
 
 Enables mute suggestion callback function when using [CONCURRENCY_MIX_WITH_OTHERS](capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) mode. Usually when using mix mode, application won't receive state change event when there is another audio playing simultaneously. But in some scenarios, like game or radio, the application may intend to mute its audio to achieve better user experience. If enabled, the mute and unmute suggestion hint will be sent by [OH_AudioSession_StateChangedCallback](capi-native-audio-session-manager-h.md#oh_audiosession_statechangedcallback) registered by [OH_AudioSessionManager_RegisterStateChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registerstatechangecallback). Mute suggestion means there is another application starting non-mixable audio. This function only supports audio session with [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) set and activated with [CONCURRENCY_MIX_WITH_OTHERS](capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode) mode. And it takes effect only once during activation, so application need to enable it every time before activation.
 
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers(OH_AudioSessionManager *audioSessionManager, bool enable)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers(OH_AudioSessionManager *audioSessionManager, bool enable)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 23
@@ -970,6 +1040,8 @@ bool OH_AudioSessionManager_IsOtherMediaPlaying(OH_AudioSessionManager *audioSes
 
 Returns if there is any other application playing audio in media usage, including media session activated.
 
+<!--Device-bool OH_AudioSessionManager_IsOtherMediaPlaying(OH_AudioSessionManager *audioSessionManager)--><!--Device-bool OH_AudioSessionManager_IsOtherMediaPlaying(OH_AudioSessionManager *audioSessionManager)-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 23
@@ -995,6 +1067,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetCaptureMuteHint(OH_AudioSessionM
 **Description**
 
 Sets recording mute state to audio system. This method is used as a hint for power optimization, it does not mute the recording stream, only affects internal processing strategy. Audio system may disable some recording effects when application notifies its muted state to system. Mute hint state can only be set when there is at least one running stream in current process.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_SetCaptureMuteHint(OH_AudioSessionManager *audioSessionManager, bool mute)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_SetCaptureMuteHint(OH_AudioSessionManager *audioSessionManager, bool mute)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -1022,6 +1096,8 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetBehavior(OH_AudioSessionManager 
 **Description**
 
 Set audio session behavior parameters (supporting multiple flag combinations) This interface takes effect only after the interface [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) is called. Each time you call this interface to set parameters, you need to call the interface [OH_AudioSessionManager_ActivateAudioSession](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) again for the settings to take effect.
+
+<!--Device-OH_AudioCommon_Result OH_AudioSessionManager_SetBehavior(OH_AudioSessionManager *audioSessionManager, uint32_t behavior)--><!--Device-OH_AudioCommon_Result OH_AudioSessionManager_SetBehavior(OH_AudioSessionManager *audioSessionManager, uint32_t behavior)-End-->
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 

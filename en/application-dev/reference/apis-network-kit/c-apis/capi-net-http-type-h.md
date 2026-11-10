@@ -80,6 +80,8 @@ enum Http_ErrCode
 
 Defines http error code.
 
+<!--Device-Http_ErrCode--><!--Device-Http_ErrCode-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
@@ -131,6 +133,8 @@ enum Http_ResponseCode
 **Description**
 
 Defines http response code.
+
+<!--Device-Http_ResponseCode--><!--Device-Http_ResponseCode-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -185,6 +189,8 @@ enum Http_AddressFamilyType
 
 Defines the address Family.
 
+<!--Device-Http_AddressFamilyType--><!--Device-Http_AddressFamilyType-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
@@ -204,6 +210,8 @@ enum Http_HttpProtocol
 **Description**
 
 Defines the HTTP version.
+
+<!--Device-Http_HttpProtocol--><!--Device-Http_HttpProtocol-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -226,6 +234,8 @@ enum Http_CertType
 
 Defines the Cert Type.
 
+<!--Device-Http_CertType--><!--Device-Http_CertType-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
@@ -245,6 +255,8 @@ enum Http_ProxyType
 **Description**
 
 Proxy type. Used to distinguish different proxy configurations.
+
+<!--Device-Http_ProxyType--><!--Device-Http_ProxyType-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -269,6 +281,8 @@ typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t e
 
 Callback function that is invoked when response is received.
 
+<!--Device-typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t errCode)--><!--Device-typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t errCode)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
@@ -289,6 +303,8 @@ typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)
 **Description**
 
 Callback function that is invoked when a response body is received.
+
+<!--Device-typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)--><!--Device-typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -311,6 +327,8 @@ typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferred
 
 Callback function invoked during request/response data transmission.
 
+<!--Device-typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferredSize)--><!--Device-typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferredSize)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
@@ -332,6 +350,8 @@ typedef void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers)
 
 Callback called when header are received.
 
+<!--Device-typedef void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers)--><!--Device-typedef void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
@@ -351,6 +371,8 @@ typedef void (*Http_OnVoidCallback)(void)
 **Description**
 
 Empty callback function for requested DataEnd or Canceled event callback.
+
+<!--Device-typedef void (*Http_OnVoidCallback)(void)--><!--Device-typedef void (*Http_OnVoidCallback)(void)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 

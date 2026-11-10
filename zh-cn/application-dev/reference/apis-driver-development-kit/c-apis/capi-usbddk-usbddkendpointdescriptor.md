@@ -8,11 +8,13 @@ struct UsbDdkEndpointDescriptor {...}
 
 端点描述符，包含标准端点描述符和未做解析的描述符信息。
 
+<!--Device-struct UsbDdkEndpointDescriptor {...}--><!--Device-struct UsbDdkEndpointDescriptor {...}-End-->
+
 **系统能力：** SystemCapability.Driver.USB.Extension
 
 **起始版本：** 10
 
-**相关模块：** [UsbDdk](capi-others-usbddk.md)
+**相关模块：** [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 **所在头文件：** [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

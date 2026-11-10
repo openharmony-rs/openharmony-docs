@@ -8,11 +8,13 @@ typedef struct OH_Camera_MetadataObjectExt OH_Camera_MetadataObjectExt
 
 The struct describes the camera metadata object ext.
 
+<!--Device-typedef struct OH_Camera_MetadataObjectExt OH_Camera_MetadataObjectExt--><!--Device-typedef struct OH_Camera_MetadataObjectExt OH_Camera_MetadataObjectExt-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [metadata_object_ext.h](capi-metadata-object-ext-h.md)
 

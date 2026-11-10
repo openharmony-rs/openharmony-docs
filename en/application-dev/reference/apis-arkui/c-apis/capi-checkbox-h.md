@@ -32,6 +32,8 @@ enum ArkUI_CheckboxShape
 
 Enumerates the shapes of the check box.
 
+<!--Device-ArkUI_CheckboxShape--><!--Device-ArkUI_CheckboxShape-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12

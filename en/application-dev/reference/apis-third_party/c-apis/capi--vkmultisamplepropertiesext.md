@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMultisamplePropertiesEXT {...}--><!--Device-struct VkMultisamplePropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

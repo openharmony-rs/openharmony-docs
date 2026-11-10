@@ -8,11 +8,13 @@ struct Ethernet_MacAddrInfoList {...}
 
 以太网网卡MAC地址信息列表。
 
+<!--Device-struct Ethernet_MacAddrInfoList {...}--><!--Device-struct Ethernet_MacAddrInfoList {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Ethernet
 
 **起始版本：** 26.0.0
 
-**相关模块：** [NetEthernet](capi-others-netethernet.md)
+**相关模块：** [NetEthernet](capi-network-kit-netethernet.md)
 
 **所在头文件：** [net_ethernet_type.h](capi-net-ethernet-type-h.md)
 

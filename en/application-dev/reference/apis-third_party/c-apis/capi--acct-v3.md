@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct acct_v3 {...}--><!--Device-struct acct_v3 {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkOffset2D {...}--><!--Device-struct VkOffset2D {...}-End-->
+
 ## Summary
 
 ### Member variables

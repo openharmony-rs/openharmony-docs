@@ -8,11 +8,13 @@ struct OH_UsbManager_UsbDevice {...}
 
 定义USB设备的扁平化表示。
 
+<!--Device-struct OH_UsbManager_UsbDevice {...}--><!--Device-struct OH_UsbManager_UsbDevice {...}-End-->
+
 **系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
-**相关模块：** [UsbManager](capi-others-usbmanager.md)
+**相关模块：** [UsbManager](capi-basic-services-kit-usbmanager.md)
 
 **所在头文件：** [ohusb_manager.h](capi-ohusb-manager-h.md)
 

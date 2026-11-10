@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkHdrVividDynamicMetadataHUAWEI {...}--><!--Device-struct VkHdrVividDynamicMetadataHUAWEI {...}-End-->
+
 ## Summary
 
 ### Member variables

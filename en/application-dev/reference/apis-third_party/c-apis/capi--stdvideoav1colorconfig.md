@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoAV1ColorConfig {...}--><!--Device-struct StdVideoAV1ColorConfig {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceExtendedDynamicState2FeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

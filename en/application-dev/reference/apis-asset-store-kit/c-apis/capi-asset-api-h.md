@@ -41,6 +41,8 @@ int32_t OH_Asset_Add(const Asset_Attr *attributes, uint32_t attrCnt)
 
 Adds an asset. Permission ohos.permission.STORE_PERSISTENT_DATA is required when the Asset needs to be stored persistently by setting [ASSET_TAG_IS_PERSISTENT](capi-asset-type-h.md#asset_tag) tag.
 
+<!--Device-int32_t OH_Asset_Add(const Asset_Attr *attributes, uint32_t attrCnt)--><!--Device-int32_t OH_Asset_Add(const Asset_Attr *attributes, uint32_t attrCnt)-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
@@ -68,6 +70,8 @@ int32_t OH_Asset_Remove(const Asset_Attr *query, uint32_t queryCnt)
 
 Removes one or more assets.
 
+<!--Device-int32_t OH_Asset_Remove(const Asset_Attr *query, uint32_t queryCnt)--><!--Device-int32_t OH_Asset_Remove(const Asset_Attr *query, uint32_t queryCnt)-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
@@ -94,6 +98,8 @@ int32_t OH_Asset_Update(const Asset_Attr *query, uint32_t queryCnt, const Asset_
 **Description**
 
 Updates an asset.
+
+<!--Device-int32_t OH_Asset_Update(const Asset_Attr *query, uint32_t queryCnt, const Asset_Attr *attributesToUpdate, uint32_t updateCnt)--><!--Device-int32_t OH_Asset_Update(const Asset_Attr *query, uint32_t queryCnt, const Asset_Attr *attributesToUpdate, uint32_t updateCnt)-End-->
 
 **System capability**: SystemCapability.Security.Asset
 
@@ -124,6 +130,8 @@ int32_t OH_Asset_PreQuery(const Asset_Attr *query, uint32_t queryCnt, Asset_Blob
 
 Performs preprocessing for the asset query. This API is used when user authentication is required for the access to the asset.
 
+<!--Device-int32_t OH_Asset_PreQuery(const Asset_Attr *query, uint32_t queryCnt, Asset_Blob *challenge)--><!--Device-int32_t OH_Asset_PreQuery(const Asset_Attr *query, uint32_t queryCnt, Asset_Blob *challenge)-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
@@ -151,6 +159,8 @@ int32_t OH_Asset_Query(const Asset_Attr *query, uint32_t queryCnt, Asset_ResultS
 **Description**
 
 Queries one or more assets.
+
+<!--Device-int32_t OH_Asset_Query(const Asset_Attr *query, uint32_t queryCnt, Asset_ResultSet *resultSet)--><!--Device-int32_t OH_Asset_Query(const Asset_Attr *query, uint32_t queryCnt, Asset_ResultSet *resultSet)-End-->
 
 **System capability**: SystemCapability.Security.Asset
 
@@ -180,6 +190,8 @@ int32_t OH_Asset_PostQuery(const Asset_Attr *handle, uint32_t handleCnt)
 
 Performs postprocessing for the asset query. This API is used when user authentication is required for the access to the asset.
 
+<!--Device-int32_t OH_Asset_PostQuery(const Asset_Attr *handle, uint32_t handleCnt)--><!--Device-int32_t OH_Asset_PostQuery(const Asset_Attr *handle, uint32_t handleCnt)-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
@@ -206,6 +218,8 @@ int32_t OH_Asset_QuerySyncResult(const Asset_Attr *query, uint32_t queryCnt, Ass
 **Description**
 
 Queries the sync result of an asset.
+
+<!--Device-int32_t OH_Asset_QuerySyncResult(const Asset_Attr *query, uint32_t queryCnt, Asset_SyncResult *syncResult)--><!--Device-int32_t OH_Asset_QuerySyncResult(const Asset_Attr *query, uint32_t queryCnt, Asset_SyncResult *syncResult)-End-->
 
 **System capability**: SystemCapability.Security.Asset
 
@@ -235,6 +249,8 @@ Asset_Attr *OH_Asset_ParseAttr(const Asset_Result *result, Asset_Tag tag)
 
 Parses the query result and obtains the specified attribute.
 
+<!--Device-Asset_Attr *OH_Asset_ParseAttr(const Asset_Result *result, Asset_Tag tag)--><!--Device-Asset_Attr *OH_Asset_ParseAttr(const Asset_Result *result, Asset_Tag tag)-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
@@ -262,6 +278,8 @@ void OH_Asset_FreeBlob(Asset_Blob *blob)
 
 Releases the memory occupied by the challenge value.
 
+<!--Device-void OH_Asset_FreeBlob(Asset_Blob *blob)--><!--Device-void OH_Asset_FreeBlob(Asset_Blob *blob)-End-->
+
 **System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
@@ -281,6 +299,8 @@ void OH_Asset_FreeResultSet(Asset_ResultSet *resultSet)
 **Description**
 
 Releases the memory occupied by the query result.
+
+<!--Device-void OH_Asset_FreeResultSet(Asset_ResultSet *resultSet)--><!--Device-void OH_Asset_FreeResultSet(Asset_ResultSet *resultSet)-End-->
 
 **System capability**: SystemCapability.Security.Asset
 

@@ -32,6 +32,8 @@ bool OH_Notification_IsNotificationEnabled(void)
 
 查询当前应用通知使能状态。
 
+<!--Device-bool OH_Notification_IsNotificationEnabled(void)--><!--Device-bool OH_Notification_IsNotificationEnabled(void)-End-->
+
 **系统能力：** SystemCapability.Notification.Notification
 
 **起始版本：** 13

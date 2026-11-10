@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct fconf {...}--><!--Device-struct fconf {...}-End-->
+
 ## Summary
 
 ### Member variables

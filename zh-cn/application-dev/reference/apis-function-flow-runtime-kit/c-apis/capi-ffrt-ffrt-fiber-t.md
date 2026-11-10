@@ -8,11 +8,13 @@ typedef struct ffrt_fiber_t {...} ffrt_fiber_t
 
 纤程结构体，用于存储纤程执行上下文。
 
+<!--Device-typedef struct ffrt_fiber_t {...} ffrt_fiber_t--><!--Device-typedef struct ffrt_fiber_t {...} ffrt_fiber_t-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 20
 
-**相关模块：** [FFRT](capi-others-ffrt.md)
+**相关模块：** [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 **所在头文件：** [type_def.h](capi-type-def-h.md)
 

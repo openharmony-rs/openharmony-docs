@@ -34,6 +34,8 @@ enum Input_PointerStyle
 
 Enumerates the cursor styles.
 
+<!--Device-Input_PointerStyle--><!--Device-Input_PointerStyle-End-->
+
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 22

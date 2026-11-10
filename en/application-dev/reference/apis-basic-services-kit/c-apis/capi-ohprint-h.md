@@ -92,6 +92,8 @@ enum Print_ErrorCode
 
 Enumerates the error codes.
 
+<!--Device-Print_ErrorCode--><!--Device-Print_ErrorCode-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -120,6 +122,8 @@ enum Print_PrinterState
 
 Enumerates the printer states.
 
+<!--Device-Print_PrinterState--><!--Device-Print_PrinterState-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -139,6 +143,8 @@ enum Print_DiscoveryEvent
 **Description**
 
 Enumerates the printer discovery events.
+
+<!--Device-Print_DiscoveryEvent--><!--Device-Print_DiscoveryEvent-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -161,6 +167,8 @@ enum Print_PrinterEvent
 
 Enumerates the printer change events.
 
+<!--Device-Print_PrinterEvent--><!--Device-Print_PrinterEvent-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -182,6 +190,8 @@ enum Print_DuplexMode
 
 Enumerates the duplex modes.
 
+<!--Device-Print_DuplexMode--><!--Device-Print_DuplexMode-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -202,6 +212,8 @@ enum Print_ColorMode
 
 Enumerates the color modes.
 
+<!--Device-Print_ColorMode--><!--Device-Print_ColorMode-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -221,6 +233,8 @@ enum Print_OrientationMode
 **Description**
 
 Enumerates the orientation modes.
+
+<!--Device-Print_OrientationMode--><!--Device-Print_OrientationMode-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -244,6 +258,8 @@ enum Print_Quality
 
 Enumerates the print qualities.
 
+<!--Device-Print_Quality--><!--Device-Print_Quality-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -263,6 +279,8 @@ enum Print_DocumentFormat
 **Description**
 
 Enumerates the MIME types.
+
+<!--Device-Print_DocumentFormat--><!--Device-Print_DocumentFormat-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -285,6 +303,8 @@ enum Print_JobDocAdapterState
 **Description**
 
 Enumerates the print job adapter states.
+
+<!--Device-Print_JobDocAdapterState--><!--Device-Print_JobDocAdapterState-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -310,6 +330,8 @@ enum OH_Print_JobState
 
 Enumerates the print job states.
 
+<!--Device-OH_Print_JobState--><!--Device-OH_Print_JobState-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 24
@@ -334,6 +356,8 @@ typedef void(*Print_WriteResultCallback)(const char *jobId, uint32_t code)
 
 Defines a callback used to return the file write-back result.
 
+<!--Device-typedef void(*Print_WriteResultCallback)(const char *jobId, uint32_t code)--><!--Device-typedef void(*Print_WriteResultCallback)(const char *jobId, uint32_t code)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 13
@@ -354,6 +378,8 @@ typedef void(*Print_OnStartLayoutWrite)(const char *jobId, uint32_t fd, const Pr
 **Description**
 
 Defines a callback to be invoked when the file write-back starts.
+
+<!--Device-typedef void(*Print_OnStartLayoutWrite)(const char *jobId, uint32_t fd, const Print_PrintAttributes *oldAttrs, const Print_PrintAttributes *newAttrs, Print_WriteResultCallback writeCallback)--><!--Device-typedef void(*Print_OnStartLayoutWrite)(const char *jobId, uint32_t fd, const Print_PrintAttributes *oldAttrs, const Print_PrintAttributes *newAttrs, Print_WriteResultCallback writeCallback)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -379,6 +405,8 @@ typedef void(*Print_OnJobStateChanged)(const char *jobId, uint32_t state)
 
 Defines a callback to be invoked when the print job state changes.
 
+<!--Device-typedef void(*Print_OnJobStateChanged)(const char *jobId, uint32_t state)--><!--Device-typedef void(*Print_OnJobStateChanged)(const char *jobId, uint32_t state)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 13
@@ -399,6 +427,8 @@ typedef void (*Print_PrinterDiscoveryCallback)(Print_DiscoveryEvent event, const
 **Description**
 
 Defines a callback used to return the discovered printers.
+
+<!--Device-typedef void (*Print_PrinterDiscoveryCallback)(Print_DiscoveryEvent event, const Print_PrinterInfo *printerInfo)--><!--Device-typedef void (*Print_PrinterDiscoveryCallback)(Print_DiscoveryEvent event, const Print_PrinterInfo *printerInfo)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -421,6 +451,8 @@ typedef void (*Print_PrinterChangeCallback)(Print_PrinterEvent event, const Prin
 
 Defines a callback to be invoked when a printer is changed.
 
+<!--Device-typedef void (*Print_PrinterChangeCallback)(Print_PrinterEvent event, const Print_PrinterInfo *printerInfo)--><!--Device-typedef void (*Print_PrinterChangeCallback)(Print_PrinterEvent event, const Print_PrinterInfo *printerInfo)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -441,6 +473,8 @@ Print_ErrorCode OH_Print_Init()
 **Description**
 
 Checks and starts the print service, initializes the print client, and connects it with the print service. Before calling other print APIs, you must call this API to complete initialization. Otherwise, other APIs cannot work properly because the connection to the print service is not established. After using the print service, call **OH_Print_Release()** to terminate the connection and release the print client resources. Otherwise, the connection to the print service will not be closed and the client resource leak may occur.
+
+<!--Device-Print_ErrorCode OH_Print_Init()--><!--Device-Print_ErrorCode OH_Print_Init()-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -464,6 +498,8 @@ Print_ErrorCode OH_Print_Release()
 
 Disconnects from the print service, unregister all registered callbacks, and releases the print client resources.
 
+<!--Device-Print_ErrorCode OH_Print_Release()--><!--Device-Print_ErrorCode OH_Print_Release()-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -483,6 +519,8 @@ Print_ErrorCode OH_Print_StartPrinterDiscovery(Print_PrinterDiscoveryCallback ca
 **Description**
 
 Starts printer discovery. During the discovery process, you can use **Print_PrinterDiscoveryCallback** to notify printer discovery events and obtain the printer information from **Print_PrinterInfo**. After the discovery is complete, you can call **OH_Print_StopPrinterDiscovery()** to stop the discovery process. Otherwise, the discovery process will continue, consuming system resources.
+
+<!--Device-Print_ErrorCode OH_Print_StartPrinterDiscovery(Print_PrinterDiscoveryCallback callback)--><!--Device-Print_ErrorCode OH_Print_StartPrinterDiscovery(Print_PrinterDiscoveryCallback callback)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -512,6 +550,8 @@ Print_ErrorCode OH_Print_StopPrinterDiscovery()
 
 Stops printer discovery.
 
+<!--Device-Print_ErrorCode OH_Print_StopPrinterDiscovery()--><!--Device-Print_ErrorCode OH_Print_StopPrinterDiscovery()-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
@@ -533,6 +573,8 @@ Print_ErrorCode OH_Print_ConnectPrinter(const char *printerId)
 **Description**
 
 Connects to a printer by the printer ID.
+
+<!--Device-Print_ErrorCode OH_Print_ConnectPrinter(const char *printerId)--><!--Device-Print_ErrorCode OH_Print_ConnectPrinter(const char *printerId)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -562,6 +604,8 @@ Print_ErrorCode OH_Print_StartPrintJob(const Print_PrintJob *printJob)
 
 Starts a print job. Before calling this API, ensure that the printer to be used is in the list of connected printers.
 
+<!--Device-Print_ErrorCode OH_Print_StartPrintJob(const Print_PrintJob *printJob)--><!--Device-Print_ErrorCode OH_Print_StartPrintJob(const Print_PrintJob *printJob)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
@@ -589,6 +633,8 @@ Print_ErrorCode OH_Print_RegisterPrinterChangeListener(Print_PrinterChangeCallba
 **Description**
 
 Registers a listener for printer changes. When you no longer need to listen for printer change events, call **OH_Print_UnregisterPrinterChangeListener()** to unregister the listener. If the listener is not unregistered, it may cause unnecessary calls and resource usage.
+
+<!--Device-Print_ErrorCode OH_Print_RegisterPrinterChangeListener(Print_PrinterChangeCallback callback)--><!--Device-Print_ErrorCode OH_Print_RegisterPrinterChangeListener(Print_PrinterChangeCallback callback)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -618,6 +664,8 @@ void OH_Print_UnregisterPrinterChangeListener()
 
 Unregisters this listener for printer changes.
 
+<!--Device-void OH_Print_UnregisterPrinterChangeListener()--><!--Device-void OH_Print_UnregisterPrinterChangeListener()-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
@@ -633,6 +681,8 @@ Print_ErrorCode OH_Print_QueryPrinterList(Print_StringList *printerIdList)
 **Description**
 
 Queries the list of added printers. After using this API, call **OH_Print_ReleasePrinterList()** to release the memory occupied by the query result. Otherwise, memory leak may occur.
+
+<!--Device-Print_ErrorCode OH_Print_QueryPrinterList(Print_StringList *printerIdList)--><!--Device-Print_ErrorCode OH_Print_QueryPrinterList(Print_StringList *printerIdList)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -662,6 +712,8 @@ void OH_Print_ReleasePrinterList(Print_StringList *printerIdList)
 
 Releases the memory used to store the printer list. The input pointer must come from the query result of **OH_Print_QueryPrinterList()**.
 
+<!--Device-void OH_Print_ReleasePrinterList(Print_StringList *printerIdList)--><!--Device-void OH_Print_ReleasePrinterList(Print_StringList *printerIdList)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -681,6 +733,8 @@ Print_ErrorCode OH_Print_QueryPrinterInfo(const char *printerId, Print_PrinterIn
 **Description**
 
 Queries printer information by printer ID. After using this API, call **OH_Print_ReleasePrinterInfo()** to release the memory occupied by the query result. Otherwise, memory leak may occur.
+
+<!--Device-Print_ErrorCode OH_Print_QueryPrinterInfo(const char *printerId, Print_PrinterInfo **printerInfo)--><!--Device-Print_ErrorCode OH_Print_QueryPrinterInfo(const char *printerId, Print_PrinterInfo **printerInfo)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -711,6 +765,8 @@ void OH_Print_ReleasePrinterInfo(Print_PrinterInfo *printerInfo)
 
 Releases the memory allocated for querying the printer information. The input pointer must come from the query result of **OH_Print_QueryPrinterInfo()**.
 
+<!--Device-void OH_Print_ReleasePrinterInfo(Print_PrinterInfo *printerInfo)--><!--Device-void OH_Print_ReleasePrinterInfo(Print_PrinterInfo *printerInfo)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -731,6 +787,8 @@ Print_ErrorCode OH_Print_LaunchPrinterManager()
 
 Starts the printer management window of the system.
 
+<!--Device-Print_ErrorCode OH_Print_LaunchPrinterManager()--><!--Device-Print_ErrorCode OH_Print_LaunchPrinterManager()-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -750,6 +808,8 @@ Print_ErrorCode OH_Print_QueryPrinterProperties(const char *printerId, const Pri
 **Description**
 
 Queries the printer properties based on the list of property keys. After using this API, call **OH_Print_ReleasePrinterProperties()** to release the memory occupied by the query result. Otherwise, memory leak may occur.
+
+<!--Device-Print_ErrorCode OH_Print_QueryPrinterProperties(const char *printerId, const Print_StringList *propertyKeyList, Print_PropertyList *propertyList)--><!--Device-Print_ErrorCode OH_Print_QueryPrinterProperties(const char *printerId, const Print_StringList *propertyKeyList, Print_PropertyList *propertyList)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -781,6 +841,8 @@ void OH_Print_ReleasePrinterProperties(Print_PropertyList *propertyList)
 
 Releases the memory used to store the property list. The input pointer must come from the query result of **OH_Print_QueryPrinterProperties()**.
 
+<!--Device-void OH_Print_ReleasePrinterProperties(Print_PropertyList *propertyList)--><!--Device-void OH_Print_ReleasePrinterProperties(Print_PropertyList *propertyList)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
@@ -800,6 +862,8 @@ Print_ErrorCode OH_Print_UpdatePrinterProperties(const char *printerId, const Pr
 **Description**
 
 Updates the printer properties based on the KV pairs.
+
+<!--Device-Print_ErrorCode OH_Print_UpdatePrinterProperties(const char *printerId, const Print_PropertyList *propertyList)--><!--Device-Print_ErrorCode OH_Print_UpdatePrinterProperties(const char *printerId, const Print_PropertyList *propertyList)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -830,6 +894,8 @@ Print_ErrorCode OH_Print_RestorePrinterProperties(const char *printerId, const P
 
 Restores printer properties to the default settings based on the property key list.
 
+<!--Device-Print_ErrorCode OH_Print_RestorePrinterProperties(const char *printerId, const Print_StringList *propertyKeyList)--><!--Device-Print_ErrorCode OH_Print_RestorePrinterProperties(const char *printerId, const Print_StringList *propertyKeyList)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Required permission**: {@code ohos.permission.PRINT}
@@ -858,6 +924,8 @@ Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_Prin
 **Description**
 
 Starts the system printing app. This API enables users to select a printer and set printing parameters (such as the number of copies, double-sided printing, and color) using the system printing app before printing.
+
+<!--Device-Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_PrintDocCallback printDocCallback, void *context)--><!--Device-Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_PrintDocCallback printDocCallback, void *context)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 
@@ -889,6 +957,8 @@ typedef void(*OH_Print_OnJobStateChanged)(const char *jobId, OH_Print_JobState s
 
 Defines a callback to be invoked when the print job state changes. Compared with **Print_OnJobStateChanged**<br>(which uses uint32_t to indicate the state and is available since API version 13), this callback uses the **OH_Print_JobState** enumeration to indicate the job state, which is clearer in semantics and more secure in type.
 
+<!--Device-typedef void(*OH_Print_OnJobStateChanged)(const char *jobId, OH_Print_JobState state)--><!--Device-typedef void(*OH_Print_OnJobStateChanged)(const char *jobId, OH_Print_JobState state)-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 24
@@ -909,6 +979,8 @@ Print_ErrorCode OH_Print_StartPrintWithJobStateCallback(const Print_PrintJob *pr
 **Description**
 
 Starts a print job with the callback to be invoked when the print job state changes. This API can be used to listen for the print job execution status, such as success, failure, and cancellation. Before calling this API, ensure that the printer to be used is in the list of connected printers. If you do not need to listen for task status changes, call **OH_Print_StartPrintJob**.
+
+<!--Device-Print_ErrorCode OH_Print_StartPrintWithJobStateCallback(const Print_PrintJob *printJob, OH_Print_OnJobStateChanged jobStateChangedCb)--><!--Device-Print_ErrorCode OH_Print_StartPrintWithJobStateCallback(const Print_PrintJob *printJob, OH_Print_OnJobStateChanged jobStateChangedCb)-End-->
 
 **System capability**: SystemCapability.Print.PrintFramework
 

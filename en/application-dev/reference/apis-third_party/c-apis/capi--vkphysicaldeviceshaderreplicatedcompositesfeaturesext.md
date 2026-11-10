@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceShaderReplicatedCompositesFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -36,6 +36,8 @@ enum OH_AI_Format
 
 Declares tensor data formats.
 
+<!--Device-OH_AI_Format--><!--Device-OH_AI_Format-End-->
+
 **Since**: 9 /
 #define MINDSPORE_INCLUDE_C_API_FORMAT_C_H
 

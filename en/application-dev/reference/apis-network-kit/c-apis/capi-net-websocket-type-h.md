@@ -53,6 +53,8 @@ enum WebSocket_ErrCode
 
 Defines the parameters for the connection closure received by the WebSocket client.
 
+<!--Device-WebSocket_ErrCode--><!--Device-WebSocket_ErrCode-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 11
@@ -92,6 +94,8 @@ typedef void (*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_Ope
 
 Callback invoked when the WebSocket client receives an **Open** message.
 
+<!--Device-typedef void (*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_OpenResult openResult)--><!--Device-typedef void (*WebSocket_OnOpenCallback)(struct WebSocket *client, WebSocket_OpenResult openResult)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 11
@@ -112,6 +116,8 @@ typedef void (*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data
 **Description**
 
 Callback invoked when the WebSocket client receives a **Message** message.
+
+<!--Device-typedef void (*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data, uint32_t length)--><!--Device-typedef void (*WebSocket_OnMessageCallback)(struct WebSocket *client, char *data, uint32_t length)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -135,6 +141,8 @@ typedef void (*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_Er
 
 Callback invoked when the WebSocket client receives an **Error** message.
 
+<!--Device-typedef void (*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_ErrorResult errorResult)--><!--Device-typedef void (*WebSocket_OnErrorCallback)(struct WebSocket *client, WebSocket_ErrorResult errorResult)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 11
@@ -155,6 +163,8 @@ typedef void (*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_Cl
 **Description**
 
 Callback invoked when the WebSocket client receives a **Close** message.
+
+<!--Device-typedef void (*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_CloseResult closeResult)--><!--Device-typedef void (*WebSocket_OnCloseCallback)(struct WebSocket *client, WebSocket_CloseResult closeResult)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 

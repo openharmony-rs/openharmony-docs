@@ -35,6 +35,8 @@ enum OH_AudioCommon_Result
 
 音频公共错误码枚举定义，用作音频管理接口的返回值。 <br>开发者可通过错误码确定报错类型，采取相应的处理步骤，解决报错场景的功能问题。
 
+<!--Device-OH_AudioCommon_Result--><!--Device-OH_AudioCommon_Result-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -65,6 +67,8 @@ enum OH_AudioScene
 
 音频场景枚举定义。
 
+<!--Device-OH_AudioScene--><!--Device-OH_AudioScene-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -86,6 +90,8 @@ enum OH_AudioRingerMode
 
 铃声模式枚举定义。
 
+<!--Device-OH_AudioRingerMode--><!--Device-OH_AudioRingerMode-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
@@ -105,6 +111,8 @@ enum OH_AudioNoiseReductionMode
 **描述：**
 
 录音降噪模式枚举定义。
+
+<!--Device-OH_AudioNoiseReductionMode--><!--Device-OH_AudioNoiseReductionMode-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

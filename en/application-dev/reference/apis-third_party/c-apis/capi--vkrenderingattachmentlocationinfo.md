@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRenderingAttachmentLocationInfo {...}--><!--Device-struct VkRenderingAttachmentLocationInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

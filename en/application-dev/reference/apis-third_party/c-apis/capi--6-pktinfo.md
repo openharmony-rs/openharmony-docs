@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct 6_pktinfo {...}--><!--Device-struct 6_pktinfo {...}-End-->
+
 ## Summary
 
 ### Member variables

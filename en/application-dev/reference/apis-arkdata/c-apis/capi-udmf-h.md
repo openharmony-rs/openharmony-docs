@@ -155,6 +155,8 @@ enum Udmf_Intention
 
 Describe the intention type of the udmf.
 
+<!--Device-Udmf_Intention--><!--Device-Udmf_Intention-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -178,6 +180,8 @@ enum Udmf_ShareOption
 
 Describe intra-device usage range type enumeration.
 
+<!--Device-Udmf_ShareOption--><!--Device-Udmf_ShareOption-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -198,6 +202,8 @@ enum Udmf_FileConflictOptions
 
 Describe the types of file conflict options when getting data from the udmf.
 
+<!--Device-Udmf_FileConflictOptions--><!--Device-Udmf_FileConflictOptions-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 15
@@ -217,6 +223,8 @@ enum Udmf_ProgressIndicator
 
 Describe the types of progress indicator when getting data from the udmf.
 
+<!--Device-Udmf_ProgressIndicator--><!--Device-Udmf_ProgressIndicator-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 15
@@ -235,6 +243,8 @@ enum Udmf_Visibility
 **Description**
 
 Describe the visibility range of data
+
+<!--Device-Udmf_Visibility--><!--Device-Udmf_Visibility-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -258,6 +268,8 @@ typedef void (*OH_Udmf_DataProgressListener)(OH_Udmf_ProgressInfo* progressInfo,
 
 Defines the callback used to return progress information and data. When using it, check whether a null pointer is returned. Data is returned only when the progress reaches 100%.
 
+<!--Device-typedef void (*OH_Udmf_DataProgressListener)(OH_Udmf_ProgressInfo* progressInfo, OH_UdmfData* data)--><!--Device-typedef void (*OH_Udmf_DataProgressListener)(OH_Udmf_ProgressInfo* progressInfo, OH_UdmfData* data)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 15
@@ -278,6 +290,8 @@ typedef OH_UdmfData* (*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableI
 **Description**
 
 Indicates the callback function for loading data.
+
+<!--Device-typedef OH_UdmfData* (*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableInfo)--><!--Device-typedef OH_UdmfData* (*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableInfo)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -305,6 +319,8 @@ OH_UdmfData* OH_UdmfData_Create()
 
 Creates an [OH_UdmfData](capi-udmf-oh-udmfdata.md) pointer and its instance. When the pointer is no longer needed, use OH_UdmfData_Destroy to destroy the instance; otherwise, memory leaks may occur.
 
+<!--Device-OH_UdmfData* OH_UdmfData_Create()--><!--Device-OH_UdmfData* OH_UdmfData_Create()-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -330,6 +346,8 @@ void OH_UdmfData_Destroy(OH_UdmfData* pThis)
 
 Destroy a pointer that points to the [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.
 
+<!--Device-void OH_UdmfData_Destroy(OH_UdmfData* pThis)--><!--Device-void OH_UdmfData_Destroy(OH_UdmfData* pThis)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -354,6 +372,8 @@ int OH_UdmfData_AddRecord(OH_UdmfData* pThis, OH_UdmfRecord* record)
 **Description**
 
 Add one {OH_UdmfRecord} record to the [OH_UdmfData](capi-udmf-oh-udmfdata.md) data.
+
+<!--Device-int OH_UdmfData_AddRecord(OH_UdmfData* pThis, OH_UdmfRecord* record)--><!--Device-int OH_UdmfData_AddRecord(OH_UdmfData* pThis, OH_UdmfRecord* record)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -387,6 +407,8 @@ bool OH_UdmfData_HasType(OH_UdmfData* pThis, const char* type)
 
 Check whether the type exists in the [OH_UdmfData](capi-udmf-oh-udmfdata.md) data.
 
+<!--Device-bool OH_UdmfData_HasType(OH_UdmfData* pThis, const char* type)--><!--Device-bool OH_UdmfData_HasType(OH_UdmfData* pThis, const char* type)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -418,6 +440,8 @@ char** OH_UdmfData_GetTypes(OH_UdmfData* pThis, unsigned int* count)
 **Description**
 
 Get all types in the [OH_UdmfData](capi-udmf-oh-udmfdata.md) data.
+
+<!--Device-char** OH_UdmfData_GetTypes(OH_UdmfData* pThis, unsigned int* count)--><!--Device-char** OH_UdmfData_GetTypes(OH_UdmfData* pThis, unsigned int* count)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -451,6 +475,8 @@ OH_UdmfRecord** OH_UdmfData_GetRecords(OH_UdmfData* pThis, unsigned int* count)
 
 Get all records in the [OH_UdmfData](capi-udmf-oh-udmfdata.md) data.
 
+<!--Device-OH_UdmfRecord** OH_UdmfData_GetRecords(OH_UdmfData* pThis, unsigned int* count)--><!--Device-OH_UdmfRecord** OH_UdmfData_GetRecords(OH_UdmfData* pThis, unsigned int* count)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -483,6 +509,8 @@ typedef void (*UdmfData_Finalize)(void* context)
 
 Defines the callback function used free the context.
 
+<!--Device-typedef void (*UdmfData_Finalize)(void* context)--><!--Device-typedef void (*UdmfData_Finalize)(void* context)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
@@ -502,6 +530,8 @@ OH_UdmfRecordProvider* OH_UdmfRecordProvider_Create()
 **Description**
 
 Creates an [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md) instance.
+
+<!--Device-OH_UdmfRecordProvider* OH_UdmfRecordProvider_Create()--><!--Device-OH_UdmfRecordProvider* OH_UdmfRecordProvider_Create()-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -527,6 +557,8 @@ int OH_UdmfRecordProvider_Destroy(OH_UdmfRecordProvider* provider)
 **Description**
 
 Destroy an [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md) instance.
+
+<!--Device-int OH_UdmfRecordProvider_Destroy(OH_UdmfRecordProvider* provider)--><!--Device-int OH_UdmfRecordProvider_Destroy(OH_UdmfRecordProvider* provider)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -559,6 +591,8 @@ typedef void* (*OH_UdmfRecordProvider_GetData)(void* context, const char* type)
 
 Defines a callback function used to obtain data by type.
 
+<!--Device-typedef void* (*OH_UdmfRecordProvider_GetData)(void* context, const char* type)--><!--Device-typedef void* (*OH_UdmfRecordProvider_GetData)(void* context, const char* type)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
@@ -585,6 +619,8 @@ int OH_UdmfRecordProvider_SetData(OH_UdmfRecordProvider* provider, void* context
 **Description**
 
 Sets a callback function to obtain data.
+
+<!--Device-int OH_UdmfRecordProvider_SetData(OH_UdmfRecordProvider* provider, void* context, const OH_UdmfRecordProvider_GetData callback, const UdmfData_Finalize finalize)--><!--Device-int OH_UdmfRecordProvider_SetData(OH_UdmfRecordProvider* provider, void* context, const OH_UdmfRecordProvider_GetData callback, const UdmfData_Finalize finalize)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -620,6 +656,8 @@ OH_UdmfRecord* OH_UdmfRecord_Create()
 
 Creates a pointer to the instance of the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md), it's relate with UDS data.
 
+<!--Device-OH_UdmfRecord* OH_UdmfRecord_Create()--><!--Device-OH_UdmfRecord* OH_UdmfRecord_Create()-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -645,6 +683,8 @@ void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)
 
 Destroy a pointer that points to an instance of [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md).
 
+<!--Device-void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)--><!--Device-void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -669,6 +709,8 @@ int OH_UdmfRecord_AddGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsi
 **Description**
 
 Adds user-defined general data to a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). This API cannot be used for defined UDS types (such as PlainText, Link, and Pixelmap).
+
+<!--Device-int OH_UdmfRecord_AddGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char* entry, unsigned int count)--><!--Device-int OH_UdmfRecord_AddGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char* entry, unsigned int count)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -704,6 +746,8 @@ int OH_UdmfRecord_AddPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)
 
 Add one {OH_UdsPlainText} data to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
 
+<!--Device-int OH_UdmfRecord_AddPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)--><!--Device-int OH_UdmfRecord_AddPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -735,6 +779,8 @@ int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)
 **Description**
 
 Add one {OH_UdsHyperlink} data to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
+
+<!--Device-int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)--><!--Device-int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -768,6 +814,8 @@ int OH_UdmfRecord_AddHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)
 
 Add one {OH_UdsHtml} data to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
 
+<!--Device-int OH_UdmfRecord_AddHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)--><!--Device-int OH_UdmfRecord_AddHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -799,6 +847,8 @@ int OH_UdmfRecord_AddAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)
 **Description**
 
 Add one {OH_UdsAppItem} data to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
+
+<!--Device-int OH_UdmfRecord_AddAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)--><!--Device-int OH_UdmfRecord_AddAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -832,6 +882,8 @@ int OH_UdmfRecord_AddFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)
 
 Add one {OH_UdsFileUri} data to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
 
+<!--Device-int OH_UdmfRecord_AddFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)--><!--Device-int OH_UdmfRecord_AddFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
@@ -864,6 +916,8 @@ int OH_UdmfRecord_AddPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)
 
 Add one {OH_UdsPixelMap} data to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
 
+<!--Device-int OH_UdmfRecord_AddPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)--><!--Device-int OH_UdmfRecord_AddPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
@@ -895,6 +949,8 @@ int OH_UdmfRecord_AddArrayBuffer(OH_UdmfRecord* record, const char* type, OH_Uds
 **Description**
 
 Add one [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) data to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
+
+<!--Device-int OH_UdmfRecord_AddArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)--><!--Device-int OH_UdmfRecord_AddArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -929,6 +985,8 @@ int OH_UdmfRecord_AddContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* conten
 
 Add one [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) data to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
 
+<!--Device-int OH_UdmfRecord_AddContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)--><!--Device-int OH_UdmfRecord_AddContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 14
@@ -961,6 +1019,8 @@ char** OH_UdmfRecord_GetTypes(OH_UdmfRecord* pThis, unsigned int* count)
 
 Get all types in the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
 
+<!--Device-char** OH_UdmfRecord_GetTypes(OH_UdmfRecord* pThis, unsigned int* count)--><!--Device-char** OH_UdmfRecord_GetTypes(OH_UdmfRecord* pThis, unsigned int* count)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -992,6 +1052,8 @@ int OH_UdmfRecord_GetGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsi
 **Description**
 
 Get one entry data from the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
+
+<!--Device-int OH_UdmfRecord_GetGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char** entry, unsigned int* count)--><!--Device-int OH_UdmfRecord_GetGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char** entry, unsigned int* count)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1027,6 +1089,8 @@ int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)
 
 Get one {OH_UdsPlainText} data from the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
 
+<!--Device-int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)--><!--Device-int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -1058,6 +1122,8 @@ int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)
 **Description**
 
 Get one {OH_UdsHyperlink} data from the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
+
+<!--Device-int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)--><!--Device-int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1091,6 +1157,8 @@ int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)
 
 Get one {OH_UdsHtml} data from the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
 
+<!--Device-int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)--><!--Device-int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -1122,6 +1190,8 @@ int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)
 **Description**
 
 Get one {OH_UdsAppItem} data from the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
+
+<!--Device-int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)--><!--Device-int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1155,6 +1225,8 @@ int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)
 
 Get one {OH_UdsFileUri} data from the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
 
+<!--Device-int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)--><!--Device-int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
@@ -1187,6 +1259,8 @@ int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)
 
 Get one {OH_UdsPixelMap} data from the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
 
+<!--Device-int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)--><!--Device-int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
@@ -1218,6 +1292,8 @@ int OH_UdmfRecord_SetProvider(OH_UdmfRecord* pThis, const char* const* types, un
 **Description**
 
 Set the data provider of the types.
+
+<!--Device-int OH_UdmfRecord_SetProvider(OH_UdmfRecord* pThis, const char* const* types, unsigned int count, OH_UdmfRecordProvider* provider)--><!--Device-int OH_UdmfRecord_SetProvider(OH_UdmfRecord* pThis, const char* const* types, unsigned int count, OH_UdmfRecordProvider* provider)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1253,6 +1329,8 @@ int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_Uds
 
 Get one [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) data from the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
 
+<!--Device-int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)--><!--Device-int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
@@ -1286,6 +1364,8 @@ int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* conten
 
 Get one [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) data from the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) record.
 
+<!--Device-int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)--><!--Device-int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 14
@@ -1317,6 +1397,8 @@ int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainTex
 **Description**
 
 Get primary [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) data from the [OH_UdmfData](capi-udmf-oh-udmfdata.md).
+
+<!--Device-int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainText)--><!--Device-int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainText)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1350,6 +1432,8 @@ int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)
 
 Get one [OH_UdsHtml](capi-udmf-oh-udshtml.md) data from the [OH_UdmfData](capi-udmf-oh-udmfdata.md).
 
+<!--Device-int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)--><!--Device-int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
@@ -1382,6 +1466,8 @@ int OH_UdmfData_GetRecordCount(OH_UdmfData* data)
 
 Get the count of [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) in the [OH_UdmfData](capi-udmf-oh-udmfdata.md).
 
+<!--Device-int OH_UdmfData_GetRecordCount(OH_UdmfData* data)--><!--Device-int OH_UdmfData_GetRecordCount(OH_UdmfData* data)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
@@ -1412,6 +1498,8 @@ OH_UdmfRecord* OH_UdmfData_GetRecord(OH_UdmfData* data, unsigned int index)
 **Description**
 
 Get the record of the specified index from the [OH_UdmfData](capi-udmf-oh-udmfdata.md).
+
+<!--Device-OH_UdmfRecord* OH_UdmfData_GetRecord(OH_UdmfData* data, unsigned int index)--><!--Device-OH_UdmfRecord* OH_UdmfData_GetRecord(OH_UdmfData* data, unsigned int index)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1445,6 +1533,8 @@ bool OH_UdmfData_IsLocal(OH_UdmfData* data)
 
 Checks whether the UDMF data is from a local device.
 
+<!--Device-bool OH_UdmfData_IsLocal(OH_UdmfData* data)--><!--Device-bool OH_UdmfData_IsLocal(OH_UdmfData* data)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
@@ -1475,6 +1565,8 @@ OH_UdmfProperty* OH_UdmfProperty_Create(OH_UdmfData* unifiedData)
 **Description**
 
 Creates a pointer to the instance of the [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) from a [OH_UdmfData](capi-udmf-oh-udmfdata.md) data.
+
+<!--Device-OH_UdmfProperty* OH_UdmfProperty_Create(OH_UdmfData* unifiedData)--><!--Device-OH_UdmfProperty* OH_UdmfProperty_Create(OH_UdmfData* unifiedData)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1507,6 +1599,8 @@ void OH_UdmfProperty_Destroy(OH_UdmfProperty* pThis)
 
 Destroy a pointer that points to the [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.
 
+<!--Device-void OH_UdmfProperty_Destroy(OH_UdmfProperty* pThis)--><!--Device-void OH_UdmfProperty_Destroy(OH_UdmfProperty* pThis)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -1531,6 +1625,8 @@ const char* OH_UdmfProperty_GetTag(OH_UdmfProperty* pThis)
 **Description**
 
 Get tag value from the [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md).
+
+<!--Device-const char* OH_UdmfProperty_GetTag(OH_UdmfProperty* pThis)--><!--Device-const char* OH_UdmfProperty_GetTag(OH_UdmfProperty* pThis)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1563,6 +1659,8 @@ int64_t OH_UdmfProperty_GetTimestamp(OH_UdmfProperty* pThis)
 
 Get timestamp value from the [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md).
 
+<!--Device-int64_t OH_UdmfProperty_GetTimestamp(OH_UdmfProperty* pThis)--><!--Device-int64_t OH_UdmfProperty_GetTimestamp(OH_UdmfProperty* pThis)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -1594,6 +1692,8 @@ Udmf_ShareOption OH_UdmfProperty_GetShareOption(OH_UdmfProperty* pThis)
 
 Get share option value from the [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md).
 
+<!--Device-Udmf_ShareOption OH_UdmfProperty_GetShareOption(OH_UdmfProperty* pThis)--><!--Device-Udmf_ShareOption OH_UdmfProperty_GetShareOption(OH_UdmfProperty* pThis)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -1624,6 +1724,8 @@ int OH_UdmfProperty_GetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, i
 **Description**
 
 Get integer value by key from the [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md).
+
+<!--Device-int OH_UdmfProperty_GetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int defaultValue)--><!--Device-int OH_UdmfProperty_GetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int defaultValue)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1658,6 +1760,8 @@ const char* OH_UdmfProperty_GetExtrasStringParam(OH_UdmfProperty* pThis, const c
 
 Get tag value from the [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md).
 
+<!--Device-const char* OH_UdmfProperty_GetExtrasStringParam(OH_UdmfProperty* pThis, const char* key)--><!--Device-const char* OH_UdmfProperty_GetExtrasStringParam(OH_UdmfProperty* pThis, const char* key)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -1689,6 +1793,8 @@ int OH_UdmfProperty_SetTag(OH_UdmfProperty* pThis, const char* tag)
 **Description**
 
 Set tag value to [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) .
+
+<!--Device-int OH_UdmfProperty_SetTag(OH_UdmfProperty* pThis, const char* tag)--><!--Device-int OH_UdmfProperty_SetTag(OH_UdmfProperty* pThis, const char* tag)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1722,6 +1828,8 @@ int OH_UdmfProperty_SetShareOption(OH_UdmfProperty* pThis, Udmf_ShareOption opti
 
 Set Udmf_ShareOption value to [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md).
 
+<!--Device-int OH_UdmfProperty_SetShareOption(OH_UdmfProperty* pThis, Udmf_ShareOption option)--><!--Device-int OH_UdmfProperty_SetShareOption(OH_UdmfProperty* pThis, Udmf_ShareOption option)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -1753,6 +1861,8 @@ int OH_UdmfProperty_SetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, i
 **Description**
 
 Set extras param to [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md).
+
+<!--Device-int OH_UdmfProperty_SetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int param)--><!--Device-int OH_UdmfProperty_SetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int param)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1787,6 +1897,8 @@ int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key
 
 Set extras param to [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md).
 
+<!--Device-int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key, const char* param)--><!--Device-int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key, const char* param)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -1820,6 +1932,8 @@ int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolic
 
 Set auth permission to the [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md).
 
+<!--Device-int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolicy)--><!--Device-int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolicy)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 26.0.0
@@ -1852,6 +1966,8 @@ OH_UdmfOptions* OH_UdmfOptions_Create()
 
 Creates a pointer to the instance of the [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md).
 
+<!--Device-OH_UdmfOptions* OH_UdmfOptions_Create()--><!--Device-OH_UdmfOptions* OH_UdmfOptions_Create()-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -1877,6 +1993,8 @@ void OH_UdmfOptions_Destroy(OH_UdmfOptions* pThis)
 
 Destroy the heap memory pointed to by the pointer of [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md). Note that this function cannot be called repeatedly for the same pointer.
 
+<!--Device-void OH_UdmfOptions_Destroy(OH_UdmfOptions* pThis)--><!--Device-void OH_UdmfOptions_Destroy(OH_UdmfOptions* pThis)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -1901,6 +2019,8 @@ const char* OH_UdmfOptions_GetKey(OH_UdmfOptions* pThis)
 **Description**
 
 Get key from the [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md).
+
+<!--Device-const char* OH_UdmfOptions_GetKey(OH_UdmfOptions* pThis)--><!--Device-const char* OH_UdmfOptions_GetKey(OH_UdmfOptions* pThis)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1932,6 +2052,8 @@ int OH_UdmfOptions_SetKey(OH_UdmfOptions* pThis, const char* key)
 **Description**
 
 Set the key to the [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md).
+
+<!--Device-int OH_UdmfOptions_SetKey(OH_UdmfOptions* pThis, const char* key)--><!--Device-int OH_UdmfOptions_SetKey(OH_UdmfOptions* pThis, const char* key)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -1965,6 +2087,8 @@ Udmf_Intention OH_UdmfOptions_GetIntention(OH_UdmfOptions* pThis)
 
 Get intention from the [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md).
 
+<!--Device-Udmf_Intention OH_UdmfOptions_GetIntention(OH_UdmfOptions* pThis)--><!--Device-Udmf_Intention OH_UdmfOptions_GetIntention(OH_UdmfOptions* pThis)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -1995,6 +2119,8 @@ int OH_UdmfOptions_SetIntention(OH_UdmfOptions* pThis, Udmf_Intention intention)
 **Description**
 
 Set intention value to [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md).
+
+<!--Device-int OH_UdmfOptions_SetIntention(OH_UdmfOptions* pThis, Udmf_Intention intention)--><!--Device-int OH_UdmfOptions_SetIntention(OH_UdmfOptions* pThis, Udmf_Intention intention)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2028,6 +2154,8 @@ int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)
 
 Reset [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) to default.
 
+<!--Device-int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)--><!--Device-int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -2059,6 +2187,8 @@ Udmf_Visibility OH_UdmfOptions_GetVisibility(OH_UdmfOptions* pThis)
 
 Get visibility from the [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md).
 
+<!--Device-Udmf_Visibility OH_UdmfOptions_GetVisibility(OH_UdmfOptions* pThis)--><!--Device-Udmf_Visibility OH_UdmfOptions_GetVisibility(OH_UdmfOptions* pThis)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -2089,6 +2219,8 @@ int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibili
 **Description**
 
 Set visibility value to [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md).
+
+<!--Device-int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibility)--><!--Device-int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibility)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2122,6 +2254,8 @@ OH_UDMF_Summary *OH_UDMF_CreateSummary(void)
 
 Creates an [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance.
 
+<!--Device-OH_UDMF_Summary *OH_UDMF_CreateSummary(void)--><!--Device-OH_UDMF_Summary *OH_UDMF_CreateSummary(void)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 26.0.1
@@ -2150,6 +2284,8 @@ void OH_UDMF_DestroySummary(OH_UDMF_Summary *summary)
 
 Destroy the heap memory pointed to by the pointer of [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md). Note that this function cannot be called repeatedly for the same pointer.
 
+<!--Device-void OH_UDMF_DestroySummary(OH_UDMF_Summary *summary)--><!--Device-void OH_UDMF_DestroySummary(OH_UDMF_Summary *summary)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 26.0.1
@@ -2175,6 +2311,8 @@ int OH_UDMF_GetSummaryOverviewTypes(const OH_UDMF_Summary *summary, const char *
 **Description**
 
 Gets all data types in the overview of an [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance.<br> The returned array and strings are owned by summary. The caller must not modify or free them. They remain valid until summary is destroyed by [OH_UDMF_DestroySummary](capi-udmf-h.md#oh_udmf_destroysummary). Each returned data type is a non-empty NUL-terminated UTF-8 string. The order of the returned data types is unspecified. If the overview is empty, *types is nullptr and *count is 0.
+
+<!--Device-int OH_UDMF_GetSummaryOverviewTypes(const OH_UDMF_Summary *summary, const char *const **types, int64_t *count)--><!--Device-int OH_UDMF_GetSummaryOverviewTypes(const OH_UDMF_Summary *summary, const char *const **types, int64_t *count)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2211,6 +2349,8 @@ int OH_UDMF_GetSummaryOverviewSize(const OH_UDMF_Summary *summary, const char *t
 
 Gets the data size associated with a data type in the overview of an [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance.
 
+<!--Device-int OH_UDMF_GetSummaryOverviewSize(const OH_UDMF_Summary *summary, const char *type, int64_t *dataSize)--><!--Device-int OH_UDMF_GetSummaryOverviewSize(const OH_UDMF_Summary *summary, const char *type, int64_t *dataSize)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 26.0.1
@@ -2246,6 +2386,8 @@ int OH_UDMF_GetSummaryFilenameExtensions(const OH_UDMF_Summary *summary, const c
 
 Gets all file name extensions in an [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) instance.<br> Each returned extension includes the leading period and uses lowercase ASCII letters, and is a non-empty NUL-terminated string. The returned array and strings are owned by summary. The caller must not modify or free them. They remain valid until summary is destroyed by [OH_UDMF_DestroySummary](capi-udmf-h.md#oh_udmf_destroysummary) or until the summary is populated again successfully. If no valid file name extension is available, *filenameExtensions is nullptr and *count is 0.
 
+<!--Device-int OH_UDMF_GetSummaryFilenameExtensions(const OH_UDMF_Summary *summary, const char *const **filenameExtensions, int64_t *count)--><!--Device-int OH_UDMF_GetSummaryFilenameExtensions(const OH_UDMF_Summary *summary, const char *const **filenameExtensions, int64_t *count)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 26.0.1
@@ -2280,6 +2422,8 @@ int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfDat
 
 Get [OH_UdmfData](capi-udmf-oh-udmfdata.md) data from udmf database.
 
+<!--Device-int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfData* unifiedData)--><!--Device-int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfData* unifiedData)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 12
@@ -2313,6 +2457,8 @@ int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataA
 
 Get [OH_UdmfData](capi-udmf-oh-udmfdata.md) data array from udmf database by intention.
 
+<!--Device-int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)--><!--Device-int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -2345,6 +2491,8 @@ int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, c
 **Description**
 
 Set [OH_UdmfData](capi-udmf-oh-udmfdata.md) data to database.
+
+<!--Device-int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)--><!--Device-int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2380,6 +2528,8 @@ int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifie
 
 Set [OH_UdmfData](capi-udmf-oh-udmfdata.md) data to database with options.
 
+<!--Device-int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)--><!--Device-int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -2414,6 +2564,8 @@ int OH_Udmf_UpdateUnifiedData(OH_UdmfOptions* options, OH_UdmfData* unifiedData)
 
 Update [OH_UdmfData](capi-udmf-oh-udmfdata.md) data to database with options.
 
+<!--Device-int OH_Udmf_UpdateUnifiedData(OH_UdmfOptions* options, OH_UdmfData* unifiedData)--><!--Device-int OH_Udmf_UpdateUnifiedData(OH_UdmfOptions* options, OH_UdmfData* unifiedData)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -2445,6 +2597,8 @@ int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, 
 **Description**
 
 Delete [OH_UdmfData](capi-udmf-oh-udmfdata.md) data of database with options.
+
+<!--Device-int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)--><!--Device-int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2479,6 +2633,8 @@ OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int inde
 
 Gets the pointer to the element at the specified index from the input array.
 
+<!--Device-OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)--><!--Device-OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 22
@@ -2511,6 +2667,8 @@ void OH_Udmf_DestroyDataArray(OH_UdmfData** dataArray, unsigned int dataSize)
 
 Destroy data array memory.
 
+<!--Device-void OH_Udmf_DestroyDataArray(OH_UdmfData** dataArray, unsigned int dataSize)--><!--Device-void OH_Udmf_DestroyDataArray(OH_UdmfData** dataArray, unsigned int dataSize)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -2536,6 +2694,8 @@ int OH_UdmfProgressInfo_GetProgress(OH_Udmf_ProgressInfo* progressInfo)
 **Description**
 
 Gets the progress from the {@OH_Udmf_ProgressInfo}.
+
+<!--Device-int OH_UdmfProgressInfo_GetProgress(OH_Udmf_ProgressInfo* progressInfo)--><!--Device-int OH_UdmfProgressInfo_GetProgress(OH_Udmf_ProgressInfo* progressInfo)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2568,6 +2728,8 @@ int OH_UdmfProgressInfo_GetStatus(OH_Udmf_ProgressInfo* progressInfo)
 
 Gets the status from the {@OH_Udmf_ProgressInfo}.
 
+<!--Device-int OH_UdmfProgressInfo_GetStatus(OH_Udmf_ProgressInfo* progressInfo)--><!--Device-int OH_UdmfProgressInfo_GetStatus(OH_Udmf_ProgressInfo* progressInfo)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 15
@@ -2599,6 +2761,8 @@ OH_UdmfGetDataParams* OH_UdmfGetDataParams_Create()
 
 Creates a pointer to the instance of the [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md).
 
+<!--Device-OH_UdmfGetDataParams* OH_UdmfGetDataParams_Create()--><!--Device-OH_UdmfGetDataParams* OH_UdmfGetDataParams_Create()-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 15
@@ -2624,6 +2788,8 @@ void OH_UdmfGetDataParams_Destroy(OH_UdmfGetDataParams* pThis)
 
 Destroy a pointer that points to an instance of [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md).
 
+<!--Device-void OH_UdmfGetDataParams_Destroy(OH_UdmfGetDataParams* pThis)--><!--Device-void OH_UdmfGetDataParams_Destroy(OH_UdmfGetDataParams* pThis)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 15
@@ -2648,6 +2814,8 @@ void OH_UdmfGetDataParams_SetDestUri(OH_UdmfGetDataParams* params, const char* d
 **Description**
 
 Sets the destination path in an asynchronous request parameter {@OH_UdmfGetDataParams}.If the destination path is set, file-type data is copied to the specified path, and the file-type data obtained in the callback is replaced with the URI of the destination path. If the destination path is not set, no file copy is performed, and the file-type data obtained in the callback is the URI of the source path. If the application involves complex file processing policies or needs to copy files to multiple paths, it is recommended not to set this parameter and let the application handle the file copy.
+
+<!--Device-void OH_UdmfGetDataParams_SetDestUri(OH_UdmfGetDataParams* params, const char* destUri)--><!--Device-void OH_UdmfGetDataParams_SetDestUri(OH_UdmfGetDataParams* params, const char* destUri)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2675,6 +2843,8 @@ void OH_UdmfGetDataParams_SetFileConflictOptions(OH_UdmfGetDataParams* params, c
 
 Sets the file conflict options to the {@OH_UdmfGetDataParams}.
 
+<!--Device-void OH_UdmfGetDataParams_SetFileConflictOptions(OH_UdmfGetDataParams* params, const Udmf_FileConflictOptions options)--><!--Device-void OH_UdmfGetDataParams_SetFileConflictOptions(OH_UdmfGetDataParams* params, const Udmf_FileConflictOptions options)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 15
@@ -2700,6 +2870,8 @@ void OH_UdmfGetDataParams_SetProgressIndicator(OH_UdmfGetDataParams* params, con
 **Description**
 
 Sets the progress indicator to the {@OH_UdmfGetDataParams}.
+
+<!--Device-void OH_UdmfGetDataParams_SetProgressIndicator(OH_UdmfGetDataParams* params, const Udmf_ProgressIndicator progressIndicator)--><!--Device-void OH_UdmfGetDataParams_SetProgressIndicator(OH_UdmfGetDataParams* params, const Udmf_ProgressIndicator progressIndicator)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2727,6 +2899,8 @@ void OH_UdmfGetDataParams_SetDataProgressListener(OH_UdmfGetDataParams* params, 
 
 Sets the progress indicator to the {@OH_UdmfGetDataParams}.
 
+<!--Device-void OH_UdmfGetDataParams_SetDataProgressListener(OH_UdmfGetDataParams* params, const OH_Udmf_DataProgressListener dataProgressListener)--><!--Device-void OH_UdmfGetDataParams_SetDataProgressListener(OH_UdmfGetDataParams* params, const OH_Udmf_DataProgressListener dataProgressListener)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 15
@@ -2752,6 +2926,8 @@ void OH_UdmfGetDataParams_SetAcceptableInfo(OH_UdmfGetDataParams* params, OH_Udm
 **Description**
 
 Sets the acceptable info to the {@OH_UdmfGetDataParams}.
+
+<!--Device-void OH_UdmfGetDataParams_SetAcceptableInfo(OH_UdmfGetDataParams* params, OH_UdmfDataLoadInfo* acceptableInfo)--><!--Device-void OH_UdmfGetDataParams_SetAcceptableInfo(OH_UdmfGetDataParams* params, OH_UdmfDataLoadInfo* acceptableInfo)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2779,6 +2955,8 @@ OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()
 
 Creates a pointer to the instance of the [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md).
 
+<!--Device-OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()--><!--Device-OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -2804,6 +2982,8 @@ void OH_UdmfDataLoadParams_Destroy(OH_UdmfDataLoadParams* pThis)
 
 Destroy a pointer that points to an instance of [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md).
 
+<!--Device-void OH_UdmfDataLoadParams_Destroy(OH_UdmfDataLoadParams* pThis)--><!--Device-void OH_UdmfDataLoadParams_Destroy(OH_UdmfDataLoadParams* pThis)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -2828,6 +3008,8 @@ void OH_UdmfDataLoadParams_SetLoadHandler(OH_UdmfDataLoadParams* params, const O
 **Description**
 
 Sets the data load handler to the {@OH_UdmfDataLoadParams}.
+
+<!--Device-void OH_UdmfDataLoadParams_SetLoadHandler(OH_UdmfDataLoadParams* params, const OH_Udmf_DataLoadHandler dataLoadHandler)--><!--Device-void OH_UdmfDataLoadParams_SetLoadHandler(OH_UdmfDataLoadParams* params, const OH_Udmf_DataLoadHandler dataLoadHandler)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2855,6 +3037,8 @@ void OH_UdmfDataLoadParams_SetDataLoadInfo(OH_UdmfDataLoadParams* params, OH_Udm
 
 Sets the data load info to the {@OH_UdmfDataLoadParams}.
 
+<!--Device-void OH_UdmfDataLoadParams_SetDataLoadInfo(OH_UdmfDataLoadParams* params, OH_UdmfDataLoadInfo* dataLoadInfo)--><!--Device-void OH_UdmfDataLoadParams_SetDataLoadInfo(OH_UdmfDataLoadParams* params, OH_UdmfDataLoadInfo* dataLoadInfo)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -2881,6 +3065,8 @@ OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()
 
 Creates a pointer to the instance of the [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md).
 
+<!--Device-OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()--><!--Device-OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -2906,6 +3092,8 @@ void OH_UdmfDataLoadInfo_Destroy(OH_UdmfDataLoadInfo* dataLoadInfo)
 
 Destroy the heap memory pointed to by the pointer of [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md). Note that this function cannot be called repeatedly for the same pointer.
 
+<!--Device-void OH_UdmfDataLoadInfo_Destroy(OH_UdmfDataLoadInfo* dataLoadInfo)--><!--Device-void OH_UdmfDataLoadInfo_Destroy(OH_UdmfDataLoadInfo* dataLoadInfo)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -2930,6 +3118,8 @@ char** OH_UdmfDataLoadInfo_GetTypes(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned 
 **Description**
 
 Gets the types from the {@OH_UdmfDataLoadInfo}.
+
+<!--Device-char** OH_UdmfDataLoadInfo_GetTypes(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int* count)--><!--Device-char** OH_UdmfDataLoadInfo_GetTypes(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int* count)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2963,6 +3153,8 @@ void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* 
 
 Sets the data type in a data load information {@OH_UdmfDataLoadInfo}.
 
+<!--Device-void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* type)--><!--Device-void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* type)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 20
@@ -2988,6 +3180,8 @@ int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)
 **Description**
 
 Gets the record count from the {@OH_UdmfDataLoadInfo}.
+
+<!--Device-int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)--><!--Device-int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -3019,6 +3213,8 @@ void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsig
 **Description**
 
 Sets the record count to the {@OH_UdmfDataLoadInfo}.
+
+<!--Device-void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)--><!--Device-void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 

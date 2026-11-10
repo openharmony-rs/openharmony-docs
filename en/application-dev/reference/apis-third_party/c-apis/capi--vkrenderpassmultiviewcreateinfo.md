@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRenderPassMultiviewCreateInfo {...}--><!--Device-struct VkRenderPassMultiviewCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

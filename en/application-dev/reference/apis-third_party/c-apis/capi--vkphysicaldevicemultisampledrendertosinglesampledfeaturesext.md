@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

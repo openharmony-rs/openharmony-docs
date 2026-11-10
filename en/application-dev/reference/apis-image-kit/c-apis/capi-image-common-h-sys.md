@@ -35,6 +35,8 @@ Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metada
 
 Obtains the PictureMetadata object matching the specified type from the PictureMetadata array.
 
+<!--Device-Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metadatas, uint32_t metadataCount, int32_t type, OH_PictureMetadata *metadata)--><!--Device-Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metadatas, uint32_t metadataCount, int32_t type, OH_PictureMetadata *metadata)-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
@@ -65,6 +67,8 @@ Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint
 **Description**
 
 Releases an array of OH_PictureMetadata objects.
+
+<!--Device-Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint32_t metadatasCount)--><!--Device-Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint32_t metadatasCount)-End-->
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

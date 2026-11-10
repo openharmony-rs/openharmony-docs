@@ -8,11 +8,13 @@ struct TransientTask_DelaySuspendInfo {...}
 
 定义短时任务返回信息结构体。用于返回当前短时任务的任务ID和剩余时间。
 
+<!--Device-struct TransientTask_DelaySuspendInfo {...}--><!--Device-struct TransientTask_DelaySuspendInfo {...}-End-->
+
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **起始版本：** 13
 
-**相关模块：** [TransientTask](capi-others-transienttask.md)
+**相关模块：** [TransientTask](capi-background-tasks-kit-transienttask.md)
 
 **所在头文件：** [transient_task_type.h](capi-transient-task-type-h.md)
 

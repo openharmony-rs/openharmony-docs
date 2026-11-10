@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPerformanceMarkerInfoINTEL {...}--><!--Device-struct VkPerformanceMarkerInfoINTEL {...}-End-->
+
 ## Summary
 
 ### Member variables

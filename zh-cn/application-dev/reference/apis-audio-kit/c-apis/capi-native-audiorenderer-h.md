@@ -73,6 +73,8 @@ OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)
 
 释放音频播放流。 <br>输入的OH_AudioRenderer指针指向的内存也会释放，不能再被使用，建议开发者在释放后主动将指针置空。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -98,6 +100,8 @@ OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)
 **描述：**
 
 启动音频播放流。 <br>音频流开始运行后，注册的数据回调会被周期性的触发，让调用者写入要播放的音频数据。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -125,6 +129,8 @@ OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)
 
 暂停音频播放流。 <br>对比OH_AudioRenderer_Stop接口，暂停时已写入系统的音频数据缓存不会被播放完，而是立即停止输出。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -150,6 +156,8 @@ OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)
 **描述：**
 
 停止音频播放流。 <br>对比OH_AudioRenderer_Pause接口，通常情况下，已写入系统的音频数据缓存会全部播放完，再停止输出。 但如果音频播放流处于低功耗运行模式，由于系统缓存数据很多，调用本接口仍会立即停止输出。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -177,6 +185,8 @@ OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)
 
 清空音频播放流缓冲区的音频数据。 <br>本接口主要用于音频播放器调节播放进度的场景，可以将已写入的数据清空，避免影响后续播放。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -202,6 +212,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* rendere
 **描述：**
 
 获取当前音频播放流状态。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* renderer, OH_AudioStream_State* state)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* renderer, OH_AudioStream_State* state)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -230,6 +242,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* rendere
 
 获取当前音频播放流采样率，单位为Hz。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* renderer, int32_t* rate)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* renderer, int32_t* rate)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -256,6 +270,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, u
 **描述：**
 
 获取当前音频播放流ID。 <br>音频系统会在创建时为每一个音频流分配全局唯一的音频流ID，此ID可以作为音频流的标识。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, uint32_t* streamId)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, uint32_t* streamId)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -284,6 +300,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* rendere
 
 获取当前音频播放流声道数。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* renderer, int32_t* channelCount)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* renderer, int32_t* channelCount)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -310,6 +328,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* rendere
 **描述：**
 
 获取当前音频播放流采样格式。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* renderer, OH_AudioStream_SampleFormat* sampleFormat)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* renderer, OH_AudioStream_SampleFormat* sampleFormat)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -338,6 +358,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer
 
 获取当前音频播放流时延模式。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer, OH_AudioStream_LatencyMode* latencyMode)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer, OH_AudioStream_LatencyMode* latencyMode)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -364,6 +386,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* rendere
 **描述：**
 
 获取当前音频播放流的使用场景类型。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* renderer, OH_AudioStream_Usage* usage)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* renderer, OH_AudioStream_Usage* usage)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -392,6 +416,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* rendere
 
 获取当前音频播放流编码类型。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* renderer, OH_AudioStream_EncodingType* encodingType)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* renderer, OH_AudioStream_EncodingType* encodingType)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -419,6 +445,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* render
 
 获取自创建音频播放流以来已写入的帧数。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* renderer, int64_t* frames)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* renderer, int64_t* frames)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -445,6 +473,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 **描述：**
 
 获取音频播放流时间戳和位置信息。 <br>该接口可以获取到音频通道实际播放位置（framePosition）以及播放到该位置时的时间戳（timestamp）。 <br>播放位置单位为采样数（samples），时间戳单位为ns。 <br>当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复， 调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。 <br>该接口通常用来实现音画同步，调用间隔建议不小于200ms，推荐频率为每秒一次。在能保证音画同步效果的情况下， 不需要频繁地查询时间戳，避免出现功耗问题。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, clockid_t clockId, int64_t* framePosition, int64_t* timestamp)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, clockid_t clockId, int64_t* framePosition, int64_t* timestamp)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -475,6 +505,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* 
 
 获取当前音频播放流每次数据回调请求写入的音频数据帧长，单位为采样点数。 <br>当音频播放流运行模式发生变化时，如从低时延模式切换到普通模式，此帧长可能发生变化。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* renderer, int32_t* frameSize)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* renderer, int32_t* frameSize)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 10
@@ -501,6 +533,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, floa
 **描述：**
 
 获取音频播放速率。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, float* speed)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, float* speed)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -529,6 +563,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, floa
 
 设置音频播放速率。 <br>默认播放速率为1.0。播放速率改变会影响音频数据的消耗速度，如设置2倍速时，数据消耗速度也会变为2倍， 调用者需确保写入足够的音频数据。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, float speed)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, float speed)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 11
@@ -556,6 +592,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, flo
 
 设置当前音频播放流音量值。 <br>此设置只会影响当前音频播放流，并且不会影响系统全局音量。默认音量为1.0，因此只能通过此接口降低音量。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, float volume)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, float volume)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -582,6 +620,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* rende
 **描述：**
 
 在指定时间范围内使用渐变更改音量。 <br>此设置只会影响当前音频播放流，并且不会影响系统全局音量。默认音量为1.0，因此只能通过此接口降低音量。 <br>设置后，音频播放流会根据设置的时间，从当前音量逐渐变化到目标音量，通常用于实现播放淡入和淡出效果。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* renderer, float volume, int32_t durationMs)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* renderer, float volume, int32_t durationMs)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -611,6 +651,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, flo
 
 获取当前音频播放流音量值。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, float* volume)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, float* volume)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -637,6 +679,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetMarkPosition(OH_AudioRenderer* rendere
 **描述：**
 
 设置标记位置和对应回调函数。 <br>当播放的音频帧数达到标记位置时，会触发此回调函数。 <br>重复设置会覆盖已设置的标记位置和回调函数。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_SetMarkPosition(OH_AudioRenderer* renderer, uint32_t samplePos, OH_AudioRenderer_OnMarkReachedCallback callback, void* userData)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_SetMarkPosition(OH_AudioRenderer* renderer, uint32_t samplePos, OH_AudioRenderer_OnMarkReachedCallback callback, void* userData)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -667,6 +711,8 @@ OH_AudioStream_Result OH_AudioRenderer_CancelMark(OH_AudioRenderer* renderer)
 
 取消由[OH_AudioRenderer_SetMarkPosition](capi-native-audiorenderer-h.md#oh_audiorenderer_setmarkposition)设置的标记和回调函数。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_CancelMark(OH_AudioRenderer* renderer)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_CancelMark(OH_AudioRenderer* renderer)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -692,6 +738,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetUnderflowCount(OH_AudioRenderer* rende
 **描述：**
 
 获取当前音频播放流欠载次数。 <br>在播放过程中，如果调用者没有及时通过数据回调写入音频数据，当系统将内部缓存全部输出后，就会触发欠载， 输出静音数据。 <br>欠载次数是按照音频系统的数据处理周期计算的，而不是以应用设置的回调长度作为周期。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetUnderflowCount(OH_AudioRenderer* renderer, uint32_t* count)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetUnderflowCount(OH_AudioRenderer* renderer, uint32_t* count)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -720,6 +768,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelLayout(OH_AudioRenderer* render
 
 获取当前音频播放流声道布局。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetChannelLayout(OH_AudioRenderer* renderer, OH_AudioChannelLayout* channelLayout)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetChannelLayout(OH_AudioRenderer* renderer, OH_AudioChannelLayout* channelLayout)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -746,6 +796,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetEffectMode(OH_AudioRenderer* renderer,
 **描述：**
 
 获取当前音频播放流音效模式。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetEffectMode(OH_AudioRenderer* renderer, OH_AudioStream_AudioEffectMode* effectMode)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetEffectMode(OH_AudioRenderer* renderer, OH_AudioStream_AudioEffectMode* effectMode)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -774,6 +826,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetEffectMode(OH_AudioRenderer* renderer,
 
 设置当前音频播放流音效模式。 <br>对于媒体类音频，系统会根据[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)为音频流添加音效，以达到更好的用户体验。 但如果开发者不想使用系统默认音效，可通过此接口关闭。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_SetEffectMode(OH_AudioRenderer* renderer, OH_AudioStream_AudioEffectMode effectMode)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_SetEffectMode(OH_AudioRenderer* renderer, OH_AudioStream_AudioEffectMode effectMode)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -800,6 +854,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetRendererPrivacy(OH_AudioRenderer* rend
 **描述：**
 
 获取当前音频播放流的隐私类型。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetRendererPrivacy(OH_AudioRenderer* renderer, OH_AudioStream_PrivacyType* privacy)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetRendererPrivacy(OH_AudioRenderer* renderer, OH_AudioStream_PrivacyType* privacy)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -828,6 +884,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetSilentModeAndMixWithOthers(OH_AudioRen
 
 设置音频播放流的静音并发播放模式。 <br>设置为true表示打开静音并发播放模式，系统将让此音频流静音播放，其他音频流可以保持正常播放不被打断。设置为false， 将关闭静音并发播放，音频流可根据系统焦点策略抢占焦点。 <br>此接口适用于视频静音播放场景，避免打断正在播放的音乐。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_SetSilentModeAndMixWithOthers(OH_AudioRenderer* renderer, bool on)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_SetSilentModeAndMixWithOthers(OH_AudioRenderer* renderer, bool on)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -854,6 +912,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetSilentModeAndMixWithOthers(OH_AudioRen
 **描述：**
 
 获取当前音频播放流是否开启静音并发播放模式。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetSilentModeAndMixWithOthers(OH_AudioRenderer* renderer, bool* on)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetSilentModeAndMixWithOthers(OH_AudioRenderer* renderer, bool* on)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -882,6 +942,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* 
 
 设置默认本机内置发声设备。 <br>本接口仅适用于音频流类型[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)为语音消息、VoIP语音通话或者VoIP视频通话的场景， 可选的设备类型为听筒、扬声器和系统默认设备。 <br>本接口允许在AudioRenderer创建以后的任何时间被调用，系统会记录应用设置的默认本机内置发声设备。在应用启动播放时， 若有外接设备如蓝牙耳机/有线耳机接入，系统优先从外接设备发声； 否则系统遵循应用设置的默认本机内置发声设备发声。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* renderer, OH_AudioDevice_Type deviceType)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* renderer, OH_AudioDevice_Type deviceType)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -908,6 +970,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 **描述：**
 
 获取音频播放流时间戳和位置信息。 <br>相比OH_AudioRenderer_GetTimestamp适配了倍速接口。 <br>通常用于进行音画同步对齐，播放位置单位为采样数（samples），时间戳单位为ns。 <br>当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复， 调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。 <br>该接口通常用来实现音画同步，调用间隔建议不小于200ms，推荐频率为每秒一次。在能保证音画同步效果的情况下， 不需要频繁地查询时间戳，避免出现功耗问题。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* renderer, int64_t* framePosition, int64_t* timestamp)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* renderer, int64_t* framePosition, int64_t* timestamp)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -937,6 +1001,8 @@ typedef void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer,
 
 音频播放流中断事件回调函数的原型定义。
 
+<!--Device-typedef void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint)--><!--Device-typedef void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
@@ -965,6 +1031,8 @@ typedef void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, voi
 
 音频播放流错误事件回调函数的原型定义。 <br>系统内部故障时触发，如音频服务异常退出，非应用调用导致。
 
+<!--Device-typedef void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error)--><!--Device-typedef void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
@@ -991,6 +1059,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetFastStatus(OH_AudioRenderer* renderer,
 **描述：**
 
 获取音频播放过程中的运行状态，是否在低时延运行状态下工作。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetFastStatus(OH_AudioRenderer* renderer, OH_AudioStream_FastStatus* status)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetFastStatus(OH_AudioRenderer* renderer, OH_AudioStream_FastStatus* status)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -1019,6 +1089,8 @@ typedef void (*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer, 
 
 音频播放流低时延状态变化事件回调函数的原型定义。
 
+<!--Device-typedef void (*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_FastStatus status)--><!--Device-typedef void (*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_FastStatus status)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
@@ -1040,6 +1112,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* rendere
 **描述：**
 
 设置音频播放的响度值。 <br>默认的响度值是0.0dB。音频流播放类型必须是音乐[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC， 电影或视频[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage). AUDIOSTREAM_USAGE_MOVIE， 有声读物（包括听书、相声、评书）、听新闻、 播客等[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK。 音频流的时延模式必须是普通时延[OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL。 本接口不支持设置通过高清通路播放的音频流响度。 <br>由于音频框架与硬件之间存在缓冲区，响度调节实际生效存在延迟，时长取决于缓冲区长度。 <br>建议在不同音频开始播放前预先设置响度，以实现最佳均衡效果。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* renderer, float loudnessGain)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* renderer, float loudnessGain)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -1068,6 +1142,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* rendere
 
 获取音频播放流的响度值。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* renderer, float* loudnessGain)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* renderer, float* loudnessGain)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 20
@@ -1094,6 +1170,8 @@ typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer
 **描述：**
 
 音频播放流写入音频数据回调函数的原型定义。 <br>不同于OH_AudioRenderer_OnWriteDataCallback，此函数允许应用填充[0, audioDataSize]长度的数据。 <br>其中audioDataSize为回调buffer的长度。调用方通过返回值告知系统写入的数据长度。 <br>如果返回0，回调线程将会sleep一段时间。 <br>否则，系统可能会立刻进行下一次回调。
+
+<!--Device-typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)--><!--Device-typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -1129,6 +1207,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH
 
 获取当前音频路由的估算时延（单位：ms）。无线连接的音频设备，时延估算可能存在误差，结果仅供参考。 <br>由于时延未计入实时缓冲区，建议仅在音频播放开始时获取，避免频繁调用，否则可能因路由切换而阻塞该接口调用。 <br>当音频数据输出到硬件后，建议使用[OH_AudioRenderer_GetAudioTimestampInfo](capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo)进行音视频同步。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH_AudioStream_LatencyType type, int32_t* latencyMs)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH_AudioStream_LatencyType type, int32_t* latencyMs)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 23
@@ -1157,6 +1237,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_Aud
 
 设置音频播放流的独立音频会话策略和行为参数，这些参数主要用于扩展音频流的默认并发策略。 <br>建议在音频流处于运行状态前设置。当在音频流运行时调用此接口， 只会在下次调用接口[OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start)启动音频流后参数才会生效。
 
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_AudioRenderer* renderer, const OH_AudioSession_Strategy* strategy, uint32_t behavior)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_AudioRenderer* renderer, const OH_AudioSession_Strategy* strategy, uint32_t behavior)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 24
@@ -1184,6 +1266,8 @@ OH_AudioStream_Result OH_AudioRenderer_Standby(OH_AudioRenderer* renderer, bool 
 **描述：**
 
 进入或退出音频standby状态。standby状态主要用于音频播放过程中短暂无数据的情况，如流媒体播放等待网络下载。进入standby状态后，音频通路保持不变，仅向应用请求数据的循环线程暂停，也不接受主动写入数据，已写入系统的数据会继续播放。只有在播放流状态为AUDIOFLOW_STATE_RUNNING时可以调用此接口进入standby状态。standby状态下才能再次调用接口退出。standby状态下也可以直接调用[OH_AudioRenderer_Pause](capi-native-audiorenderer-h.md#oh_audiorenderer_pause), [OH_AudioRenderer_Stop](capi-native-audiorenderer-h.md#oh_audiorenderer_stop),[OH_AudioRenderer_Release](capi-native-audiorenderer-h.md#oh_audiorenderer_release)停止播放，但不可调用[OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start)。注意，此接口并不会改变通过[OH_AudioRenderer_GetCurrentState](capi-native-audiorenderer-h.md#oh_audiorenderer_getcurrentstate)获取的状态。
+
+<!--Device-OH_AudioStream_Result OH_AudioRenderer_Standby(OH_AudioRenderer* renderer, bool on)--><!--Device-OH_AudioStream_Result OH_AudioRenderer_Standby(OH_AudioRenderer* renderer, bool on)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

@@ -54,6 +54,8 @@ TEE_Result tee_ext_get_caller_info(caller_info *caller_info_data, uint32_t lengt
 
 Get caller info of current session, refer caller_info struct for more details.
 
+<!--Device-TEE_Result tee_ext_get_caller_info(caller_info *caller_info_data, uint32_t length)--><!--Device-TEE_Result tee_ext_get_caller_info(caller_info *caller_info_data, uint32_t length)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -80,6 +82,8 @@ TEE_Result AddCaller_CA(const uint8_t *cainfo_hash, uint32_t length)
 **Description**
 
 Adds information about a caller that can invoke this TA. This API applies to the client applications (CAs) in the native CA and HAP format.
+
+<!--Device-TEE_Result AddCaller_CA(const uint8_t *cainfo_hash, uint32_t length)--><!--Device-TEE_Result AddCaller_CA(const uint8_t *cainfo_hash, uint32_t length)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -108,6 +112,8 @@ TEE_Result AddCaller_TA_all(void)
 
 TA call this API allow others TA open session with itself.
 
+<!--Device-TEE_Result AddCaller_TA_all(void)--><!--Device-TEE_Result AddCaller_TA_all(void)-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -127,6 +133,8 @@ uint32_t tee_get_session_type(void)
 **Description**
 
 Obtains the session type.
+
+<!--Device-uint32_t tee_get_session_type(void)--><!--Device-uint32_t tee_get_session_type(void)-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 

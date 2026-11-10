@@ -8,11 +8,13 @@ union Rdb_SubscribeCallback {...}
 
 表示回调函数。
 
+<!--Device-union Rdb_SubscribeCallback {...}--><!--Device-union Rdb_SubscribeCallback {...}-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
-**相关模块：** [RDB](capi-others-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 **所在头文件：** [relational_store.h](capi-relational-store-h.md)
 

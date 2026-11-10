@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDescriptorPoolInlineUniformBlockCreateInfo {...}--><!--Device-struct VkDescriptorPoolInlineUniformBlockCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct JSVM_DeserializeResult__* JSVM_DeserializeResult
 
 与JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT一起传递的后台反序列化结果。
 
+<!--Device-typedef struct JSVM_DeserializeResult__* JSVM_DeserializeResult--><!--Device-typedef struct JSVM_DeserializeResult__* JSVM_DeserializeResult-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 24
 
-**相关模块：** [JSVM](capi-others-jsvm.md)
+**相关模块：** [JSVM](capi-arkts-jsvm.md)
 
 **所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
 

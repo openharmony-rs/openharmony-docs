@@ -30,6 +30,8 @@ enum OH_AVImageGenerator_QueryOptions
 
 Enumerates the mappings between time points and video frames.
 
+<!--Device-OH_AVImageGenerator_QueryOptions--><!--Device-OH_AVImageGenerator_QueryOptions-End-->
+
 **Since**: 18
 
 | Enum item | Description |

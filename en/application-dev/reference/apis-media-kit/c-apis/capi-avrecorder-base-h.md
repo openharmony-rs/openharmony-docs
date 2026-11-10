@@ -65,6 +65,8 @@ enum OH_AVRecorder_AudioSourceType
 
 Enumerates the audio source types of the AVRecorder.
 
+<!--Device-OH_AVRecorder_AudioSourceType--><!--Device-OH_AVRecorder_AudioSourceType-End-->
+
 **Since**: 18
 
 | Enum item | Description |
@@ -86,6 +88,8 @@ enum OH_AVRecorder_VideoSourceType
 
 Enumerates the video source types of the AVRecorder.
 
+<!--Device-OH_AVRecorder_VideoSourceType--><!--Device-OH_AVRecorder_VideoSourceType-End-->
+
 **Since**: 18
 
 | Enum item | Description |
@@ -102,6 +106,8 @@ enum OH_AVRecorder_CodecMimeType
 **Description**
 
 Enumerates the MIME types of the encoder, which are used to specify the encoding format of audio and video data during recording. The encoder type must match the container format. If they do not match, the recording will fail. For details about the mapping, see the description of the corresponding encoder type.
+
+<!--Device-OH_AVRecorder_CodecMimeType--><!--Device-OH_AVRecorder_CodecMimeType-End-->
 
 **Since**: 18
 
@@ -126,6 +132,8 @@ enum OH_AVRecorder_ContainerFormatType
 
 Enumerates the Container Format Types (CFTs), which are used to specify the encapsulation format of recording files. The container format must be compatible with the MIME type of the encoder. If they are incompatible, the recording will fail. For details about the encoder types supported by each container format, see the description of the corresponding container format.
 
+<!--Device-OH_AVRecorder_ContainerFormatType--><!--Device-OH_AVRecorder_ContainerFormatType-End-->
+
 **Since**: 18
 
 | Enum item | Description |
@@ -146,6 +154,8 @@ enum OH_AVRecorder_State
 **Description**
 
 Enumerates the AVRecorder states, which indicate the different phases of the recorder in its lifecycle. The operations that can be performed vary depending on the state.
+
+<!--Device-OH_AVRecorder_State--><!--Device-OH_AVRecorder_State-End-->
 
 **Since**: 18
 
@@ -169,6 +179,8 @@ enum OH_AVRecorder_StateChangeReason
 
 Enumerates the reasons for AVRecorder state changes, which are used to determine whether the state change is triggered by a user operation or a background event. This helps the app execute the corresponding processing logic based on the reason.
 
+<!--Device-OH_AVRecorder_StateChangeReason--><!--Device-OH_AVRecorder_StateChangeReason-End-->
+
 **Since**: 18
 
 | Enum item | Description |
@@ -185,6 +197,8 @@ enum OH_AVRecorder_FileGenerationMode
 **Description**
 
 Defines the mode for generating a recording file. This mode specifies how media files are created. It is applicable to recording scenarios where you need to choose whether the app or the system automatically manages the files.
+
+<!--Device-OH_AVRecorder_FileGenerationMode--><!--Device-OH_AVRecorder_FileGenerationMode-End-->
 
 **Since**: 18
 
@@ -205,6 +219,8 @@ typedef void (*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder, OH_AVRecord
 **Description**
 
 Called when the AVRecorder state changes.
+
+<!--Device-typedef void (*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData)--><!--Device-typedef void (*OH_AVRecorder_OnStateChange)(OH_AVRecorder *recorder, OH_AVRecorder_State state, OH_AVRecorder_StateChangeReason reason, void *userData)-End-->
 
 **Since**: 18
 
@@ -227,6 +243,8 @@ typedef void (*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode
 
 Called when an error occurs during recording.
 
+<!--Device-typedef void (*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, void *userData)--><!--Device-typedef void (*OH_AVRecorder_OnError)(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, void *userData)-End-->
+
 **Since**: 18
 
 **Parameters**:
@@ -247,6 +265,8 @@ typedef void (*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asse
 **Description**
 
 Called when the recording file is generated in [OH_AVRecorder_FileGenerationMode][OH_AVRecorder_FileGenerationMode](capi-avrecorder-base-h.md#oh_avrecorder_filegenerationmode).AVRECORDER_AUTO_CREATE_CAMERA_SCENE mode to notify the app to obtain the media resources generated during recording.
+
+<!--Device-typedef void (*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userData)--><!--Device-typedef void (*OH_AVRecorder_OnUri)(OH_AVRecorder *recorder, OH_MediaAsset *asset, void *userData)-End-->
 
 **Since**: 18
 

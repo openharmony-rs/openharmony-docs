@@ -8,11 +8,13 @@ struct MetadataOutput_Callbacks {...}
 
 The struct describes the callbacks related to metadata output.
 
+<!--Device-struct MetadataOutput_Callbacks {...}--><!--Device-struct MetadataOutput_Callbacks {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [metadata_output.h](capi-metadata-output-h.md)
 

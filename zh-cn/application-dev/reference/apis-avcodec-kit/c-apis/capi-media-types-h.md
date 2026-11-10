@@ -34,6 +34,8 @@ enum OH_Core_HdrType
 
 HDR类型枚举。
 
+<!--Device-OH_Core_HdrType--><!--Device-OH_Core_HdrType-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 18

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {...}--><!--Device-struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

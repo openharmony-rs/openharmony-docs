@@ -8,11 +8,13 @@ typedef struct WindowManager_AvoidArea {...} WindowManager_AvoidArea
 
 The struct describes the avoid area.
 
+<!--Device-typedef struct WindowManager_AvoidArea {...} WindowManager_AvoidArea--><!--Device-typedef struct WindowManager_AvoidArea {...} WindowManager_AvoidArea-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 15
 
-**相关模块：** [WindowManager](capi-others-windowmanager.md)
+**相关模块：** [WindowManager](capi-arkui-windowmanager.md)
 
 **所在头文件：** [oh_window_comm.h](capi-oh-window-comm-h.md)
 

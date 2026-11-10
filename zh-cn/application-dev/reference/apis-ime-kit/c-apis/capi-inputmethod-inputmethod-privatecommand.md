@@ -26,13 +26,15 @@ typedef struct InputMethod_PrivateCommand InputMethod_PrivateCommand
 \| [OH_TextEditorProxy_ReceivePrivateCommandFunc](capi-inputmethod-text-editor-proxy-capi-h. md#oh_texteditorproxy_receiveprivatecommandfunc) \| 编辑框客户端接收私有指令的回调函数，PrivateCommand实例数组作为参数传 入。回调返回后实例内存被释放。 \| <br> <br>相关枚举：<br>
 \| 枚举 \| 说明 \|
 \| --- \| --- \|
-\| [InputMethod_CommandValueType](capi-inputmethod-types-capi-h. md#inputmethod_commandvaluetype) \| PrivateCommand中value的数据类型枚举（NONE/STRING/BOOL/INT32）。 \|
+\| [InputMethod_CommandValueType](capi-inputmethod-types-capi-h. md#inputmethod_commandvaluetype) \| PrivateCommand中value的数据类型枚举（NONE/STRING/BOOL/INT32）。 \| <br> <br>句柄与所有权：仅可使用本API创建的有效句柄或框架提供的借用句柄；仅可销毁独立创建的对象。 回调提供的对象和TextConfig的子对象视图均为借用对象。访问接口对未注册或已失效的句柄返回IME_ERR_PARAMCHECK， NULL参数仍按原有规则返回错误。 <br>保护边界：生命周期检查不保证对象成员的线程安全，也不能在地址复用后识别所有失效地址。 对象销毁后应将指针置空；不得在回调结束后保留回调对象。
+
+<!--Device-typedef struct InputMethod_PrivateCommand InputMethod_PrivateCommand--><!--Device-typedef struct InputMethod_PrivateCommand InputMethod_PrivateCommand-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **起始版本：** 12
 
-**相关模块：** [InputMethod](capi-others-inputmethod.md)
+**相关模块：** [InputMethod](capi-ime-kit-inputmethod.md)
 
 **所在头文件：** [inputmethod_private_command_capi.h](capi-inputmethod-private-command-capi-h.md)
 

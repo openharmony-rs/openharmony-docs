@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct bandinfo {...}--><!--Device-struct bandinfo {...}-End-->
+
 ## Summary
 
 ### Member variables

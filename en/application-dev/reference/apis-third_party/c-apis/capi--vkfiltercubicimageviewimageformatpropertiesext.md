@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkFilterCubicImageViewImageFormatPropertiesEXT {...}--><!--Device-struct VkFilterCubicImageViewImageFormatPropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

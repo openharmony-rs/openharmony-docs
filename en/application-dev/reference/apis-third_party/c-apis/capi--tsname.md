@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct tsname {...}--><!--Device-struct tsname {...}-End-->
+
 ## Summary
 
 ### Member variables

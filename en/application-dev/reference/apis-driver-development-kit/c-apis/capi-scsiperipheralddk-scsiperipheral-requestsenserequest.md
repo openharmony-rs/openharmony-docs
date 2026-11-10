@@ -8,11 +8,13 @@ struct ScsiPeripheral_RequestSenseRequest {...}
 
 Defines the SCSI **REQUEST SENSE** request struct. This command is usually used to obtain device error information.
 
+<!--Device-struct ScsiPeripheral_RequestSenseRequest {...}--><!--Device-struct ScsiPeripheral_RequestSenseRequest {...}-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 
-**Related module**: [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceLayeredApiPropertiesListKHR {...}--><!--Device-struct VkPhysicalDeviceLayeredApiPropertiesListKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

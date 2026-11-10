@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoEncodeH264GopRemainingFrameInfoKHR {...}--><!--Device-struct VkVideoEncodeH264GopRemainingFrameInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

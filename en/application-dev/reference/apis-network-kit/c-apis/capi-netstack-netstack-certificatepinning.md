@@ -8,11 +8,13 @@ struct NetStack_CertificatePinning {...}
 
 Defines certificate pinning information.
 
+<!--Device-struct NetStack_CertificatePinning {...}--><!--Device-struct NetStack_CertificatePinning {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 12
 
-**Related module**: [netstack](capi-others-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 **Header file**: [net_ssl_c_type.h](capi-net-ssl-c-type-h.md)
 

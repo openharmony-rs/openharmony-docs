@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkHeadlessSurfaceCreateInfoEXT {...}--><!--Device-struct VkHeadlessSurfaceCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

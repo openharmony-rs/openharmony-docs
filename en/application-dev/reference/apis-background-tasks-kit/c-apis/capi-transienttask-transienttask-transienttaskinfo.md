@@ -8,11 +8,13 @@ struct TransientTask_TransientTaskInfo {...}
 
 A struct that describes all transient task information. The struct returns all transient task information, including the remaining quota of the current day.
 
+<!--Device-struct TransientTask_TransientTaskInfo {...}--><!--Device-struct TransientTask_TransientTaskInfo {...}-End-->
+
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **Since**: 20
 
-**Related module**: [TransientTask](capi-others-transienttask.md)
+**Related module**: [TransientTask](capi-background-tasks-kit-transienttask.md)
 
 **Header file**: [transient_task_type.h](capi-transient-task-type-h.md)
 

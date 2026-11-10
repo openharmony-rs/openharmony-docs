@@ -33,6 +33,8 @@ int32_t OH_Ethernet_GetMacAddress(Ethernet_MacAddrInfoList *macAddrList)
 
 获取以太网网卡MAC地址列表。
 
+<!--Device-int32_t OH_Ethernet_GetMacAddress(Ethernet_MacAddrInfoList *macAddrList)--><!--Device-int32_t OH_Ethernet_GetMacAddress(Ethernet_MacAddrInfoList *macAddrList)-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Ethernet
 
 **需要权限：** ohos.permission.GET_ETHERNET_LOCAL_MAC
@@ -60,6 +62,8 @@ int32_t OH_Ethernet_GetNetAddress(Ethernet_NetAddrList *netAddrList)
 **描述：**
 
 获取以太网网卡IP地址列表。
+
+<!--Device-int32_t OH_Ethernet_GetNetAddress(Ethernet_NetAddrList *netAddrList)--><!--Device-int32_t OH_Ethernet_GetNetAddress(Ethernet_NetAddrList *netAddrList)-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Ethernet
 

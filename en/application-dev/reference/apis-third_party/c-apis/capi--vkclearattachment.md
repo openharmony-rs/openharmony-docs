@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkClearAttachment {...}--><!--Device-struct VkClearAttachment {...}-End-->
+
 ## Summary
 
 ### Member variables

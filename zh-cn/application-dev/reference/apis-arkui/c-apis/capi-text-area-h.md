@@ -34,6 +34,8 @@ enum ArkUI_TextAreaType
 
 定义多行文本输入类型枚举值。不同的枚举值用于指定TextArea组件的输入类型，会影响输入内容的验证规则。
 
+<!--Device-ArkUI_TextAreaType--><!--Device-ArkUI_TextAreaType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12

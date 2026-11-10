@@ -8,11 +8,13 @@ typedef struct OH_RDB_ReturningContext OH_RDB_ReturningContext
 
 returning相关接口的上下文。
 
+<!--Device-typedef struct OH_RDB_ReturningContext OH_RDB_ReturningContext--><!--Device-typedef struct OH_RDB_ReturningContext OH_RDB_ReturningContext-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 23
 
-**相关模块：** [RDB](capi-others-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 **所在头文件：** [oh_rdb_types.h](capi-oh-rdb-types-h.md)
 

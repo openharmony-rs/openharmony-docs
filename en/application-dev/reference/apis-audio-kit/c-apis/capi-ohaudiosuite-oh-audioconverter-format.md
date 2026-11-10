@@ -8,11 +8,13 @@ struct OH_AudioConverter_Format {...}
 
 Define the audio converter format info structure, used to describe basic audio format.
 
+<!--Device-struct OH_AudioConverter_Format {...}--><!--Device-struct OH_AudioConverter_Format {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 
-**Related module**: [OHAudioSuite](capi-others-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 **Header file**: [native_audio_converter.h](capi-native-audio-converter-h.md)
 

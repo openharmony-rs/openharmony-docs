@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDisplayPlaneInfo2KHR {...}--><!--Device-struct VkDisplayPlaneInfo2KHR {...}-End-->
+
 ## Summary
 
 ### Member variables

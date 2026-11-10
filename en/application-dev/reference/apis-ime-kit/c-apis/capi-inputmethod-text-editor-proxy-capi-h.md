@@ -40,6 +40,7 @@ Provides a set of methods that enable self‑drawn input boxes implemented by an
 | [typedef int32_t (\*OH_TextEditorProxy_GetTextIndexAtCursorFunc)(InputMethod_TextEditorProxy *textEditorProxy)](#oh_texteditorproxy_gettextindexatcursorfunc) | OH_TextEditorProxy_GetTextIndexAtCursorFunc | Callback triggered when the input method obtains the text index of the input box where the cursor is located. You need to implement this function and return the character index position of the cursor in the text of the edit box. <br>Usage scenarios: When the input method app needs to obtain the precise position of the cursor in the text, the system automatically calls this callback. <br>Use effect: After the callback returns, the input method app reads the returned index value to locate the context. <br>Preconditions: This callback must be set to **TextEditorProxy** via [OH_TextEditorProxy_SetGetTextIndexAtCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setgettextindexatcursorfunc) and registered through **Attach**. |
 | [typedef int32_t (\*OH_TextEditorProxy_ReceivePrivateCommandFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_PrivateCommand *privateCommand[], size_t size)](#oh_texteditorproxy_receiveprivatecommandfunc) | OH_TextEditorProxy_ReceivePrivateCommandFunc | Callback triggered when the input method app sends private data commands. You must implement this function to process the private command data sent by the input method app. <br>Usage scenarios: When the input method app sends a private command to the edit box through [OH_InputMethodProxy_SendPrivateCommand](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_sendprivatecommand), the system automatically invokes this callback. <br>Use effect: After the callback returns, the input method app determines whether the command was processed successfully based on the return value. <br>Preconditions: This callback must be set to **TextEditorProxy** through [OH_TextEditorProxy_SetReceivePrivateCommandFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setreceiveprivatecommandfunc) and registered through **Attach**. |
 | [typedef int32_t (\*OH_TextEditorProxy_SetPreviewTextFunc)(InputMethod_TextEditorProxy *textEditorProxy, const char16_t text[], size_t length, int32_t start, int32_t end)](#oh_texteditorproxy_setpreviewtextfunc) | OH_TextEditorProxy_SetPreviewTextFunc | Callback triggered when the input method sets preview text. Preview text is the candidate text display feature of the input method, typically shown when the user enters pinyin or input codes before the Chinese characters are determined. This function is responsible for setting the preview text and its cursor position. It is used together with [OH_TextEditorProxy_FinishTextPreviewFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_finishtextpreviewfunc): first call **SetPreviewTextFunc** to set the preview text content, and when the user selects a candidate word or cancels the input, call **FinishTextPreviewFunc**<br>to end the preview. <br>Usage scenarios: When the input method app needs to display candidate text (such as preview text during Pinyin input), the system automatically invokes this callback. <br>Use effect: After the callback is executed, the edit box should display the text content in preview text style within the range from **start** to **end**, and return the result to the input method. <br>Preconditions: This callback must be set to **TextEditorProxy** through [OH_TextEditorProxy_SetSetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setsetpreviewtextfunc) and registered through **Attach**. The edit box must enable preview text support in **TextConfig** (**supported**=**true**). |
+| [typedef int32_t (\*OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc)(InputMethod_TextEditorProxy *textEditorProxy, const char16_t text[], uint32_t length, int32_t start, int32_t end, const OH_InputMethod_PreviewTextStyle *style)](#oh_inputmethod_texteditorproxy_setpreviewtextwithstylefunc) | OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc | Callback function triggered when the input method sets pre-screen text with style. Similar to [OH_TextEditorProxy_SetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setpreviewtextfunc) but with extra pre-screen Text style information. Developers need to implement this function to insert the text content specified by the text parameter to the cursor position of the edit box in the specified style. When working with [OH_TextEditorProxy_FinishTextPreviewFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_finishtextpreviewfunc), call SetPreviewTextWithStyleFunc to set the pre-screen content with style, When a user selects a candidate word or cancels the input, the FinishTextPreviewFunc interface is invoked to end the pre-screen display. <br> <br>Application scenario: When an input method application needs to display candidate text with styles(such as pre-screen text during pinyin input), the system automatically invokes this callback. <br> <br>Effect after use: After the callback is executed, the text content should be displayed in the pre-screen style in the range from start to end and rendered according to the style specified by the style parameter, The return value is also fed back to the input method. <br> <br>Prerequisite: The [OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc] must be passed. (#oh_inputmethod_texteditorproxy_setsetpreviewtextwithstylefunc) Set this callback into TextEditorProxy and use the [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach) completes registration.<br> <br>**Note: * *<br><br>When an input method application sets pre-screen text with a style, [OH_TextEditorProxy_SetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setpreviewtextfunc) is also called back. Developers need to avoid repetition. <br>Processes pre-screen text content. |
 | [typedef void (\*OH_TextEditorProxy_FinishTextPreviewFunc)(InputMethod_TextEditorProxy *textEditorProxy)](#oh_texteditorproxy_finishtextpreviewfunc) | OH_TextEditorProxy_FinishTextPreviewFunc | Callback triggered when the input method finishes preview text. This function is used to clear the preview text state, and is typically invoked when the user selects a candidate word (confirms input) or cancels input. It is used together with [OH_TextEditorProxy_SetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setpreviewtextfunc). <br>Usage scenarios: When the input method app needs to end the preview text state, the system automatically invokes this callback. <br>Use effect: After callback execution, the edit box should clear the preview text display state and restore normal text display. <br>Preconditions: This callback must be set to **TextEditorProxy** through [OH_TextEditorProxy_SetFinishTextPreviewFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setfinishtextpreviewfunc) and registered through **Attach**. |
 | [InputMethod_TextEditorProxy *OH_TextEditorProxy_Create(void)](#oh_texteditorproxy_create) | - | Creates a new [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance. After creation, register callbacks through the **<br>Set*Func** APIs, and then complete attachment and registration through [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach). <br>Usage scenarios: Call this function when an app needs to create a text editor proxy object to receive input method requests and notifications. <br>Use effect: If the creation succeeds, a new **TextEditorProxy** instance pointer is returned, and callbacks can be registered through the **Set*Func** APIs afterward. <br>Lifecycle management: The returned object must be destroyed through [OH_TextEditorProxy_Destroy](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_destroy). **Create*<br> and **Destroy** must be used in pairs. Failure to destroy it will cause memory leaks. The same instance can be destroyed only once. |
 | [void OH_TextEditorProxy_Destroy(InputMethod_TextEditorProxy *proxy)](#oh_texteditorproxy_destroy) | - | Destroys an [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance. After destruction, the proxy pointer can no longer be used. It is recommended that you set the pointer to **NULL** to avoid misuse. <br>Usage scenarios: Call this function to release resources when the app no longer needs the **TextEditorProxy**<br>object (for example, after **Detach** is called or when the app exits). <br>Use effect: The proxy object is released and its internal resources are reclaimed. After that, no function can be called through the proxy pointer. <br>Lifecycle management: Used in pairs with [OH_TextEditorProxy_Create](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_create). The object returned by **Create**<br>must eventually be released through **Destroy**. The same instance can be destroyed only once and cannot be destroyed repeatedly. If proxy is null, the function does nothing. |
@@ -57,6 +58,7 @@ Provides a set of methods that enable self‑drawn input boxes implemented by an
 | [InputMethod_ErrorCode OH_TextEditorProxy_SetGetTextIndexAtCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetTextIndexAtCursorFunc getTextIndexAtCursorFunc)](#oh_texteditorproxy_setgettextindexatcursorfunc) | - | Sets the [OH_TextEditorProxy_GetTextIndexAtCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextindexatcursorfunc) function for [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**. |
 | [InputMethod_ErrorCode OH_TextEditorProxy_SetReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_ReceivePrivateCommandFunc receivePrivateCommandFunc)](#oh_texteditorproxy_setreceiveprivatecommandfunc) | - | Sets the [OH_TextEditorProxy_ReceivePrivateCommandFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_receiveprivatecommandfunc) function for [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**. |
 | [InputMethod_ErrorCode OH_TextEditorProxy_SetSetPreviewTextFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SetPreviewTextFunc setPreviewTextFunc)](#oh_texteditorproxy_setsetpreviewtextfunc) | - | Sets the [OH_TextEditorProxy_SetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setpreviewtextfunc) function for [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**. |
+| [InputMethod_ErrorCode OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc setPreviewTextWithStyleFunc)](#oh_inputmethod_texteditorproxy_setsetpreviewtextwithstylefunc) | - | Set the function [OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_inputmethod_texteditorproxy_setpreviewtextwithstylefunc) to in [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). If this function is registered, both SetPreviewTextFunc and PreviewTextFunc are called back when the pre-screen is triggered, Please be careful not to process the pre-screen content repeatedly. |
 | [InputMethod_ErrorCode OH_TextEditorProxy_SetFinishTextPreviewFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_FinishTextPreviewFunc finishTextPreviewFunc)](#oh_texteditorproxy_setfinishtextpreviewfunc) | - | Sets the [OH_TextEditorProxy_FinishTextPreviewFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_finishtextpreviewfunc) function for [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**. |
 | [InputMethod_ErrorCode OH_TextEditorProxy_GetGetTextConfigFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetTextConfigFunc *getTextConfigFunc)](#oh_texteditorproxy_getgettextconfigfunc) | - | Obtains the [OH_TextEditorProxy_GetTextConfigFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextconfigfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). |
 | [InputMethod_ErrorCode OH_TextEditorProxy_GetInsertTextFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_InsertTextFunc *insertTextFunc)](#oh_texteditorproxy_getinserttextfunc) | - | Obtains the [OH_TextEditorProxy_InsertTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_inserttextfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). |
@@ -72,6 +74,7 @@ Provides a set of methods that enable self‑drawn input boxes implemented by an
 | [InputMethod_ErrorCode OH_TextEditorProxy_GetGetTextIndexAtCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetTextIndexAtCursorFunc *getTextIndexAtCursorFunc)](#oh_texteditorproxy_getgettextindexatcursorfunc) | - | Obtains the [OH_TextEditorProxy_GetTextIndexAtCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextindexatcursorfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). |
 | [InputMethod_ErrorCode OH_TextEditorProxy_GetReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_ReceivePrivateCommandFunc *receivePrivateCommandFunc)](#oh_texteditorproxy_getreceiveprivatecommandfunc) | - | Obtains the [OH_TextEditorProxy_ReceivePrivateCommandFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_receiveprivatecommandfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). |
 | [InputMethod_ErrorCode OH_TextEditorProxy_GetSetPreviewTextFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SetPreviewTextFunc *setPreviewTextFunc)](#oh_texteditorproxy_getsetpreviewtextfunc) | - | Obtains the [OH_TextEditorProxy_SetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setpreviewtextfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). |
+| [InputMethod_ErrorCode OH_InputMethod_TextEditorProxy_GetSetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc *setPreviewTextWithStyleFunc)](#oh_inputmethod_texteditorproxy_getsetpreviewtextwithstylefunc) | - | Obtained from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) [OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_inputmethod_texteditorproxy_setpreviewtextwithstylefunc) function. |
 | [InputMethod_ErrorCode OH_TextEditorProxy_GetFinishTextPreviewFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_FinishTextPreviewFunc *finishTextPreviewFunc)](#oh_texteditorproxy_getfinishtextpreviewfunc) | - | Obtains the [OH_TextEditorProxy_FinishTextPreviewFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_finishtextpreviewfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). |
 | [InputMethod_ErrorCode OH_TextEditorProxy_SetCallbackInMainThread(InputMethod_TextEditorProxy *proxy, bool isCallbackInMainThread)](#oh_texteditorproxy_setcallbackinmainthread) | - | Configures the execution thread (main thread/IPC thread) for the callbacks of **InputMethod_TextEditorProxy**. This API only controls all callbacks in **InputMethod_TextEditorProxy** except [OH_TextEditorProxy_GetTextConfigFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextconfigfunc). The execution thread of [OH_TextEditorProxy_GetTextConfigFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextconfigfunc) is determined by the thread that calls [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach), and is not affected by this API. To ensure that **GetTextConfigFunc** also executes on the main thread, make sure that **Attach** is called on the main thread. <br>Usage scenarios: When an app needs to avoid multi-thread concurrency issues, it can switch callbacks to the main thread for execution. When an app requires faster callback response, it can keep callbacks executing on the IPC thread. <br>Use effect: When this API is set to **true**, all callbacks except **GetTextConfigFunc** will be executed on the main thread, avoiding multi-thread concurrency, but time-consuming operations should be avoided inside callbacks. When this API is set to **false**, callbacks are executed on the IPC thread, providing faster response but potentially introducing concurrency issues. <br>Preconditions: The **proxy** must be created through [OH_TextEditorProxy_Create](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_create) first. It is recommended that you call this API to configure the thread policy before **Attach** is called. |
 
@@ -86,6 +89,8 @@ typedef void (*OH_TextEditorProxy_GetTextConfigFunc)(InputMethod_TextEditorProxy
 **Description**
 
 Callback triggered when the input method obtains the input box configuration. You need to implement this function and set the configuration information of the edit box (input type, Enter key type, cursor information, etc.) for the **config** parameter in the function. The input method framework adjusts the keyboard layout and input behavior accordingly. <br>Usage scenarios: When the input method app needs to obtain the configuration information of the edit box, the system automatically invokes this callback. This callback is one of the core callbacks for interaction between the input method and the editor, and must be implemented. <br>Use effect: After the callback returns, the input method framework reads the configuration information in **<br>config** and adjusts the keyboard behavior accordingly. The memory of the **config** parameter is released after the callback returns and cannot be accessed again. <br>Preconditions: This callback must be set to **TextEditorProxy** through [OH_TextEditorProxy_SetGetTextConfigFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setgettextconfigfunc), and registration must be completed through [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach). The execution thread of this callback is determined by the thread that calls **Attach**, and is not affected by [OH_TextEditorProxy_SetCallbackInMainThread](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setcallbackinmainthread).
+
+<!--Device-typedef void (*OH_TextEditorProxy_GetTextConfigFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_TextConfig *config)--><!--Device-typedef void (*OH_TextEditorProxy_GetTextConfigFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_TextConfig *config)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -107,6 +112,8 @@ typedef void (*OH_TextEditorProxy_InsertTextFunc)(InputMethod_TextEditorProxy *t
 **Description**
 
 Callback triggered when the input method app inserts text. You need to implement this function to insert the text content specified by the **text** parameter at the cursor position of the edit box. <br>Usage scenarios: When the input method app inserts text into the edit box (for example, when the user selects a candidate word or enters a character), the system automatically invokes this callback. This callback is one of the core callbacks for interaction between the input method and the editor, and must be implemented. <br>Use effect: After the callback is executed, the edit box should insert the specified text at the cursor position and update the text content and cursor position. <br>Preconditions: This callback must be set to **TextEditorProxy** through [OH_TextEditorProxy_SetInsertTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setinserttextfunc), and registration must be completed through **Attach**.
+
+<!--Device-typedef void (*OH_TextEditorProxy_InsertTextFunc)(InputMethod_TextEditorProxy *textEditorProxy, const char16_t *text, size_t length)--><!--Device-typedef void (*OH_TextEditorProxy_InsertTextFunc)(InputMethod_TextEditorProxy *textEditorProxy, const char16_t *text, size_t length)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -130,6 +137,8 @@ typedef void (*OH_TextEditorProxy_DeleteForwardFunc)(InputMethod_TextEditorProxy
 
 Callback triggered when the input method deletes the text to the right of the cursor. You need to implement this function to delete the specified number of characters to the right from the cursor position. <br>Usage scenarios: This callback is automatically invoked when the input method app requests to delete the text to the right of the cursor (for example, when the user performs a forward delete operation in the input method). <br>Use effect: After the callback execution, the edit box should delete the specified number of characters to the right from the cursor position and update the text content and cursor position. <br>Preconditions: This callback must be set for **TextEditorProxy** through [OH_TextEditorProxy_SetDeleteForwardFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setdeleteforwardfunc) and registered through **Attach**.
 
+<!--Device-typedef void (*OH_TextEditorProxy_DeleteForwardFunc)(InputMethod_TextEditorProxy *textEditorProxy, int32_t length)--><!--Device-typedef void (*OH_TextEditorProxy_DeleteForwardFunc)(InputMethod_TextEditorProxy *textEditorProxy, int32_t length)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -150,6 +159,8 @@ typedef void (*OH_TextEditorProxy_DeleteBackwardFunc)(InputMethod_TextEditorProx
 **Description**
 
 Callback triggered when the input method deletes the text to the left of the cursor. You need to implement this function to delete the specified number of characters to the left from the cursor position. <br>Usage scenarios: When the input method app requests to delete text to the left of the cursor (for example, when the user performs a backspace deletion in the input method), the system automatically invokes this callback. <br>Use effect: After the callback is executed, the edit box should delete the specified number of characters to the left of the cursor position and update the text content and cursor position. <br>Preconditions: This callback must be set to **TextEditorProxy** via [OH_TextEditorProxy_SetDeleteBackwardFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setdeletebackwardfunc) and registered through **Attach**.
+
+<!--Device-typedef void (*OH_TextEditorProxy_DeleteBackwardFunc)(InputMethod_TextEditorProxy *textEditorProxy, int32_t length)--><!--Device-typedef void (*OH_TextEditorProxy_DeleteBackwardFunc)(InputMethod_TextEditorProxy *textEditorProxy, int32_t length)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -172,6 +183,8 @@ typedef void (*OH_TextEditorProxy_SendKeyboardStatusFunc)(InputMethod_TextEditor
 
 Callback triggered when the input method reports the keyboard status. You need to implement this function to update the edit box's awareness of the keyboard status based on the **keyboardStatus** parameter. <br>Usage scenarios: When the keyboard status of the input method app changes (shown or hidden), the system automatically invokes this callback to notify the edit box of the current keyboard status. <br>Use effect: After the callback is executed, the edit box should update its awareness of keyboard visibility accordingly, for example, adjusting the avoidance strategy or UI layout. <br>Preconditions: This callback must be set to **TextEditorProxy** via [OH_TextEditorProxy_SetSendKeyboardStatusFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setsendkeyboardstatusfunc) and registered through **Attach**.
 
+<!--Device-typedef void (*OH_TextEditorProxy_SendKeyboardStatusFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_KeyboardStatus keyboardStatus)--><!--Device-typedef void (*OH_TextEditorProxy_SendKeyboardStatusFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_KeyboardStatus keyboardStatus)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -192,6 +205,8 @@ typedef void (*OH_TextEditorProxy_SendEnterKeyFunc)(InputMethod_TextEditorProxy 
 **Description**
 
 Callback triggered when the input method sends the Enter key. You need to implement this function to perform the corresponding Enter key action based on the **enterKeyType** parameter. <br>Usage scenarios: When the input method app notifies the edit box of an Enter key event, the system automatically invokes this callback. <br>Use effect: After the callback is executed, the edit box should perform the corresponding Enter key behavior ( such as Search, Send, Done, etc.). <br>Preconditions: This callback must be set to the **TextEditorProxy** through [OH_TextEditorProxy_SetSendEnterKeyFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setsendenterkeyfunc) and registered through **Attach**.
+
+<!--Device-typedef void (*OH_TextEditorProxy_SendEnterKeyFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_EnterKeyType enterKeyType)--><!--Device-typedef void (*OH_TextEditorProxy_SendEnterKeyFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_EnterKeyType enterKeyType)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -214,6 +229,8 @@ typedef void (*OH_TextEditorProxy_MoveCursorFunc)(InputMethod_TextEditorProxy *t
 
 Callback triggered when the input method moves the cursor. You need to implement this function to move the cursor position in the edit box based on the **direction** parameter. <br>Usage scenarios: When the input method app requests to move the cursor, the system automatically invokes this callback. <br>Use effect: After the callback is executed, the edit box should move the cursor position accordingly and update the cursor display. <br>Preconditions: This callback must be set to the **TextEditorProxy** through [OH_TextEditorProxy_SetMoveCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setmovecursorfunc) and registered through **Attach**.
 
+<!--Device-typedef void (*OH_TextEditorProxy_MoveCursorFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_Direction direction)--><!--Device-typedef void (*OH_TextEditorProxy_MoveCursorFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_Direction direction)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -234,6 +251,8 @@ typedef void (*OH_TextEditorProxy_HandleSetSelectionFunc)(InputMethod_TextEditor
 **Description**
 
 Callback triggered when the input method requests text selection. You need to implement this function to select the specified range of text in the edit box based on the **start** and **end** parameters. <br>Usage scenarios: When the input method app requests to select a range of text in the text box, the system automatically invokes this callback. <br>Use effect: After the callback is executed, the edit box should select the text from **start** to **end** and update the selection state and UI display. <br>Preconditions: This callback must be set to **TextEditorProxy** through [OH_TextEditorProxy_SetHandleSetSelectionFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_sethandlesetselectionfunc) and registered through **Attach**.
+
+<!--Device-typedef void (*OH_TextEditorProxy_HandleSetSelectionFunc)(InputMethod_TextEditorProxy *textEditorProxy, int32_t start, int32_t end)--><!--Device-typedef void (*OH_TextEditorProxy_HandleSetSelectionFunc)(InputMethod_TextEditorProxy *textEditorProxy, int32_t start, int32_t end)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -257,6 +276,8 @@ typedef void (*OH_TextEditorProxy_HandleExtendActionFunc)(InputMethod_TextEditor
 
 Callback triggered when the input method sends an extended editing operation. You need to implement this function to perform the corresponding extended editing operation based on the action parameter. <br>Usage scenarios: When the input method app requests an extended editing operation (such as cut, copy, or select all), the system automatically invokes this callback. <br>Use effect: After the callback is executed, the edit box should perform the corresponding extended editing operation accordingly. <br>Preconditions: This callback must be set to the **TextEditorProxy** through [OH_TextEditorProxy_SetHandleExtendActionFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_sethandleextendactionfunc) and registered through **Attach**.
 
+<!--Device-typedef void (*OH_TextEditorProxy_HandleExtendActionFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_ExtendAction action)--><!--Device-typedef void (*OH_TextEditorProxy_HandleExtendActionFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_ExtendAction action)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -277,6 +298,8 @@ typedef void (*OH_TextEditorProxy_GetLeftTextOfCursorFunc)(InputMethod_TextEdito
 **Description**
 
 Callback triggered when the input method obtains the text to the left of the cursor. You must implement this function to write the specified number of characters to the left of the cursor into the **text** parameter and write the actual number of characters into the **length** parameter. <br>Usage scenarios: When the input method app needs to obtain the text to the left of the cursor (for example, for predictive input or context analysis), the system automatically invokes this callback. <br>Use effect: After the callback returns, the input method app reads the data in **text** and **length** for context analysis. <br>Preconditions: This callback must be set to **TextEditorProxy** through [OH_TextEditorProxy_SetGetLeftTextOfCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setgetlefttextofcursorfunc) and registered through **Attach**.
+
+<!--Device-typedef void (*OH_TextEditorProxy_GetLeftTextOfCursorFunc)(InputMethod_TextEditorProxy *textEditorProxy, int32_t number, char16_t text[], size_t *length)--><!--Device-typedef void (*OH_TextEditorProxy_GetLeftTextOfCursorFunc)(InputMethod_TextEditorProxy *textEditorProxy, int32_t number, char16_t text[], size_t *length)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -301,6 +324,8 @@ typedef void (*OH_TextEditorProxy_GetRightTextOfCursorFunc)(InputMethod_TextEdit
 
 Callback triggered when the input method obtains the text to the right of the cursor. You must implement this function to write the specified number of characters to the right of the cursor into the text parameter and write the actual number of characters into the length parameter. <br>Usage scenarios: When the input method app needs to obtain the text to the right of the cursor, the system automatically invokes this callback. <br>Use effect: After the callback returns, the input method app reads the data in **text** and **length** for context analysis. <br>Preconditions: This callback must be set to **TextEditorProxy** via [OH_TextEditorProxy_SetGetRightTextOfCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setgetrighttextofcursorfunc) and registered through **Attach**.
 
+<!--Device-typedef void (*OH_TextEditorProxy_GetRightTextOfCursorFunc)(InputMethod_TextEditorProxy *textEditorProxy, int32_t number, char16_t text[], size_t *length)--><!--Device-typedef void (*OH_TextEditorProxy_GetRightTextOfCursorFunc)(InputMethod_TextEditorProxy *textEditorProxy, int32_t number, char16_t text[], size_t *length)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -323,6 +348,8 @@ typedef int32_t (*OH_TextEditorProxy_GetTextIndexAtCursorFunc)(InputMethod_TextE
 **Description**
 
 Callback triggered when the input method obtains the text index of the input box where the cursor is located. You need to implement this function and return the character index position of the cursor in the text of the edit box. <br>Usage scenarios: When the input method app needs to obtain the precise position of the cursor in the text, the system automatically calls this callback. <br>Use effect: After the callback returns, the input method app reads the returned index value to locate the context. <br>Preconditions: This callback must be set to **TextEditorProxy** via [OH_TextEditorProxy_SetGetTextIndexAtCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setgettextindexatcursorfunc) and registered through **Attach**.
+
+<!--Device-typedef int32_t (*OH_TextEditorProxy_GetTextIndexAtCursorFunc)(InputMethod_TextEditorProxy *textEditorProxy)--><!--Device-typedef int32_t (*OH_TextEditorProxy_GetTextIndexAtCursorFunc)(InputMethod_TextEditorProxy *textEditorProxy)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -349,6 +376,8 @@ typedef int32_t (*OH_TextEditorProxy_ReceivePrivateCommandFunc)(InputMethod_Text
 **Description**
 
 Callback triggered when the input method app sends private data commands. You must implement this function to process the private command data sent by the input method app. <br>Usage scenarios: When the input method app sends a private command to the edit box through [OH_InputMethodProxy_SendPrivateCommand](capi-inputmethod-inputmethod-proxy-capi-h.md#oh_inputmethodproxy_sendprivatecommand), the system automatically invokes this callback. <br>Use effect: After the callback returns, the input method app determines whether the command was processed successfully based on the return value. <br>Preconditions: This callback must be set to **TextEditorProxy** through [OH_TextEditorProxy_SetReceivePrivateCommandFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setreceiveprivatecommandfunc) and registered through **Attach**.
+
+<!--Device-typedef int32_t (*OH_TextEditorProxy_ReceivePrivateCommandFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_PrivateCommand *privateCommand[], size_t size)--><!--Device-typedef int32_t (*OH_TextEditorProxy_ReceivePrivateCommandFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_PrivateCommand *privateCommand[], size_t size)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -378,6 +407,8 @@ typedef int32_t (*OH_TextEditorProxy_SetPreviewTextFunc)(InputMethod_TextEditorP
 
 Callback triggered when the input method sets preview text. Preview text is the candidate text display feature of the input method, typically shown when the user enters pinyin or input codes before the Chinese characters are determined. This function is responsible for setting the preview text and its cursor position. It is used together with [OH_TextEditorProxy_FinishTextPreviewFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_finishtextpreviewfunc): first call **SetPreviewTextFunc** to set the preview text content, and when the user selects a candidate word or cancels the input, call **FinishTextPreviewFunc**<br>to end the preview. <br>Usage scenarios: When the input method app needs to display candidate text (such as preview text during Pinyin input), the system automatically invokes this callback. <br>Use effect: After the callback is executed, the edit box should display the text content in preview text style within the range from **start** to **end**, and return the result to the input method. <br>Preconditions: This callback must be set to **TextEditorProxy** through [OH_TextEditorProxy_SetSetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setsetpreviewtextfunc) and registered through **Attach**. The edit box must enable preview text support in **TextConfig** (**supported**=**true**).
 
+<!--Device-typedef int32_t (*OH_TextEditorProxy_SetPreviewTextFunc)(InputMethod_TextEditorProxy *textEditorProxy, const char16_t text[], size_t length, int32_t start, int32_t end)--><!--Device-typedef int32_t (*OH_TextEditorProxy_SetPreviewTextFunc)(InputMethod_TextEditorProxy *textEditorProxy, const char16_t text[], size_t length, int32_t start, int32_t end)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -398,6 +429,39 @@ Callback triggered when the input method sets preview text. Preview text is the 
 | -- | -- |
 | int32_t | Returns the processing result. <br>**0**: indicates success. <br>A non-zero value: indicates failure. |
 
+### OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc()
+
+```c
+typedef int32_t (*OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc)(InputMethod_TextEditorProxy *textEditorProxy, const char16_t text[], uint32_t length, int32_t start, int32_t end, const OH_InputMethod_PreviewTextStyle *style)
+```
+
+**Description**
+
+Callback function triggered when the input method sets pre-screen text with style. Similar to [OH_TextEditorProxy_SetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setpreviewtextfunc) but with extra pre-screen Text style information. Developers need to implement this function to insert the text content specified by the text parameter to the cursor position of the edit box in the specified style. When working with [OH_TextEditorProxy_FinishTextPreviewFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_finishtextpreviewfunc), call SetPreviewTextWithStyleFunc to set the pre-screen content with style, When a user selects a candidate word or cancels the input, the FinishTextPreviewFunc interface is invoked to end the pre-screen display. <br> <br>Application scenario: When an input method application needs to display candidate text with styles(such as pre-screen text during pinyin input), the system automatically invokes this callback. <br> <br>Effect after use: After the callback is executed, the text content should be displayed in the pre-screen style in the range from start to end and rendered according to the style specified by the style parameter, The return value is also fed back to the input method. <br> <br>Prerequisite: The [OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc] must be passed. (#oh_inputmethod_texteditorproxy_setsetpreviewtextwithstylefunc) Set this callback into TextEditorProxy and use the [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach) completes registration.<br> <br>**Note: * *<br><br>When an input method application sets pre-screen text with a style, [OH_TextEditorProxy_SetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setpreviewtextfunc) is also called back. Developers need to avoid repetition. <br>Processes pre-screen text content.
+
+<!--Device-typedef int32_t (*OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc)(InputMethod_TextEditorProxy *textEditorProxy, const char16_t text[], uint32_t length, int32_t start, int32_t end, const OH_InputMethod_PreviewTextStyle *style)--><!--Device-typedef int32_t (*OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc)(InputMethod_TextEditorProxy *textEditorProxy, const char16_t text[], uint32_t length, int32_t start, int32_t end, const OH_InputMethod_PreviewTextStyle *style)-End-->
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *textEditorProxy | [in] Input pointer to the [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance that is called back. |
+| const char16_t text[] | [in] Input pointer, which is used to request the text content in the pre-screen format. The UTF-16 encoding mode is used. This pointer is valid only during the callback execution. After the callback is returned, the memory is Released, no longer accessible. |
+| uint32_t length | [in] Input parameter, which indicates the number of characters in the text to be displayed on the screen. The unit is char16_t. |
+| int32_t start | [in] Start cursor position of the text on the screen.(Unit: character offset, relative to the beginning of the text). |
+| int32_t end | [in] Input parameter, end cursor position of the text on the screen.(Unit: character offset, relative to the beginning of the text). |
+| [const OH_InputMethod_PreviewTextStyle](capi-inputmethod-oh-inputmethod-previewtextstyle.md) *style | [in] Input pointer, indicating the style of the pre-screen text. For details, see [OH_InputMethod_PreviewTextStyle](capi-inputmethod-oh-inputmethod-previewtextstyle.md). |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | Return the processing result. The value 0 indicates success, and other values indicate failure. |
+
 ### OH_TextEditorProxy_FinishTextPreviewFunc()
 
 ```c
@@ -407,6 +471,8 @@ typedef void (*OH_TextEditorProxy_FinishTextPreviewFunc)(InputMethod_TextEditorP
 **Description**
 
 Callback triggered when the input method finishes preview text. This function is used to clear the preview text state, and is typically invoked when the user selects a candidate word (confirms input) or cancels input. It is used together with [OH_TextEditorProxy_SetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setpreviewtextfunc). <br>Usage scenarios: When the input method app needs to end the preview text state, the system automatically invokes this callback. <br>Use effect: After callback execution, the edit box should clear the preview text display state and restore normal text display. <br>Preconditions: This callback must be set to **TextEditorProxy** through [OH_TextEditorProxy_SetFinishTextPreviewFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setfinishtextpreviewfunc) and registered through **Attach**.
+
+<!--Device-typedef void (*OH_TextEditorProxy_FinishTextPreviewFunc)(InputMethod_TextEditorProxy *textEditorProxy)--><!--Device-typedef void (*OH_TextEditorProxy_FinishTextPreviewFunc)(InputMethod_TextEditorProxy *textEditorProxy)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -429,6 +495,8 @@ InputMethod_TextEditorProxy *OH_TextEditorProxy_Create(void)
 Creates a new [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance. After creation, register callbacks through the **<br>Set*Func** APIs, and then complete attachment and registration through [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach). <br>Usage scenarios: Call this function when an app needs to create a text editor proxy object to receive input method requests and notifications. <br>Use effect: If the creation succeeds, a new **TextEditorProxy** instance pointer is returned, and callbacks can be registered through the **Set*Func** APIs afterward. <br>Lifecycle management: The returned object must be destroyed through [OH_TextEditorProxy_Destroy](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_destroy). **Create*
 * and **Destroy** must be used in pairs. Failure to destroy it will cause memory leaks. The same instance can be destroyed only once.
 
+<!--Device-InputMethod_TextEditorProxy *OH_TextEditorProxy_Create(void)--><!--Device-InputMethod_TextEditorProxy *OH_TextEditorProxy_Create(void)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -449,6 +517,8 @@ void OH_TextEditorProxy_Destroy(InputMethod_TextEditorProxy *proxy)
 
 Destroys an [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance. After destruction, the proxy pointer can no longer be used. It is recommended that you set the pointer to **NULL** to avoid misuse. <br>Usage scenarios: Call this function to release resources when the app no longer needs the **TextEditorProxy**<br>object (for example, after **Detach** is called or when the app exits). <br>Use effect: The proxy object is released and its internal resources are reclaimed. After that, no function can be called through the proxy pointer. <br>Lifecycle management: Used in pairs with [OH_TextEditorProxy_Create](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_create). The object returned by **Create**<br>must eventually be released through **Destroy**. The same instance can be destroyed only once and cannot be destroyed repeatedly. If proxy is null, the function does nothing.
 
+<!--Device-void OH_TextEditorProxy_Destroy(InputMethod_TextEditorProxy *proxy)--><!--Device-void OH_TextEditorProxy_Destroy(InputMethod_TextEditorProxy *proxy)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -468,6 +538,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetGetTextConfigFunc(InputMethod_TextEd
 **Description**
 
 Sets the [OH_TextEditorProxy_GetTextConfigFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextconfigfunc) function to [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach** is called. Callbacks set after **Attach** will not be invoked by the input method. <br>Usage scenarios: Call this function when the app needs to register the **GetTextConfigFunc** callback to respond to the input method's request for configuration. <br>Use effect: After the setting succeeds, the **GetTextConfigFunc** callback is registered to **TextEditorProxy**. After **Attach** is called, this callback is automatically triggered when the input method requests configuration. <br>Preconditions: **proxy** must be created through [OH_TextEditorProxy_Create](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_create) first.
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetGetTextConfigFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetTextConfigFunc getTextConfigFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetGetTextConfigFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetTextConfigFunc getTextConfigFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -496,6 +568,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetInsertTextFunc(InputMethod_TextEdito
 
 Sets the [OH_TextEditorProxy_InsertTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_inserttextfunc) function to [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**. <br>Usage scenarios: Call this function when the app needs to register the **InsertTextFunc** callback to respond to the input method's request to insert text. <br>Use effect: After the setting succeeds, the **InsertTextFunc** callback is registered to **TextEditorProxy**. After **Attach** is called, this callback is automatically triggered when the input method requests to insert text.
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetInsertTextFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_InsertTextFunc insertTextFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetInsertTextFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_InsertTextFunc insertTextFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -522,6 +596,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteForwardFunc(InputMethod_TextEd
 **Description**
 
 Sets the [OH_TextEditorProxy_DeleteForwardFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_deleteforwardfunc) function to [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**. <br>Usage scenarios: Call this function when the app needs to register the **DeleteForwardFunc** callback to respond to the input method's request to delete text to the right of the cursor. <br>Use effect: After the setting succeeds, the **DeleteForwardFunc** callback is registered to **TextEditorProxy**. After **Attach** is called, this callback is automatically triggered when the input method requests to delete text to the right of the cursor.
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteForwardFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_DeleteForwardFunc deleteForwardFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteForwardFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_DeleteForwardFunc deleteForwardFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -550,6 +626,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteBackwardFunc(InputMethod_TextE
 
 Sets the [OH_TextEditorProxy_DeleteBackwardFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_deletebackwardfunc) function for [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**. <br>Usage scenarios: Call this function when the app needs to register the **DeleteBackwardFunc** callback to respond to the input method's request to delete text to the left of the cursor. <br>Use effect: After the setting succeeds, the **DeleteBackwardFunc** callback is registered with **TextEditorProxy*<br>*. After **Attach** is called, this callback is automatically triggered when the input method requests deletion of text to the left of the cursor.
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteBackwardFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_DeleteBackwardFunc deleteBackwardFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteBackwardFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_DeleteBackwardFunc deleteBackwardFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -576,6 +654,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetSendKeyboardStatusFunc(InputMethod_T
 **Description**
 
 Sets the [OH_TextEditorProxy_SendKeyboardStatusFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_sendkeyboardstatusfunc) function for [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**.
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetSendKeyboardStatusFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SendKeyboardStatusFunc sendKeyboardStatusFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetSendKeyboardStatusFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SendKeyboardStatusFunc sendKeyboardStatusFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -604,6 +684,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetSendEnterKeyFunc(InputMethod_TextEdi
 
 Sets the [OH_TextEditorProxy_SendEnterKeyFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_sendenterkeyfunc) function for [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**.
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetSendEnterKeyFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SendEnterKeyFunc sendEnterKeyFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetSendEnterKeyFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SendEnterKeyFunc sendEnterKeyFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -630,6 +712,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetMoveCursorFunc(InputMethod_TextEdito
 **Description**
 
 Sets the function [OH_TextEditorProxy_MoveCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_movecursorfunc) for [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**.
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetMoveCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_MoveCursorFunc moveCursorFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetMoveCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_MoveCursorFunc moveCursorFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -658,6 +742,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetHandleSetSelectionFunc(InputMethod_T
 
 Sets the function [OH_TextEditorProxy_HandleSetSelectionFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_handlesetselectionfunc) into [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**.
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetHandleSetSelectionFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_HandleSetSelectionFunc handleSetSelectionFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetHandleSetSelectionFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_HandleSetSelectionFunc handleSetSelectionFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -684,6 +770,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetHandleExtendActionFunc(InputMethod_T
 **Description**
 
 Sets the function [OH_TextEditorProxy_HandleExtendActionFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_handleextendactionfunc) into [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**.
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetHandleExtendActionFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_HandleExtendActionFunc handleExtendActionFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetHandleExtendActionFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_HandleExtendActionFunc handleExtendActionFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -712,6 +800,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetGetLeftTextOfCursorFunc(InputMethod_
 
 Sets the function [OH_TextEditorProxy_GetLeftTextOfCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_getlefttextofcursorfunc) into [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**.
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetGetLeftTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetLeftTextOfCursorFunc getLeftTextOfCursorFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetGetLeftTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetLeftTextOfCursorFunc getLeftTextOfCursorFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -738,6 +828,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetGetRightTextOfCursorFunc(InputMethod
 **Description**
 
 Sets the function [OH_TextEditorProxy_GetRightTextOfCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_getrighttextofcursorfunc) into [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**.
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetGetRightTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetRightTextOfCursorFunc getRightTextOfCursorFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetGetRightTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetRightTextOfCursorFunc getRightTextOfCursorFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -766,6 +858,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetGetTextIndexAtCursorFunc(InputMethod
 
 Sets the [OH_TextEditorProxy_GetTextIndexAtCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextindexatcursorfunc) function for [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**.
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetGetTextIndexAtCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetTextIndexAtCursorFunc getTextIndexAtCursorFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetGetTextIndexAtCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetTextIndexAtCursorFunc getTextIndexAtCursorFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -792,6 +886,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetReceivePrivateCommandFunc(InputMetho
 **Description**
 
 Sets the [OH_TextEditorProxy_ReceivePrivateCommandFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_receiveprivatecommandfunc) function for [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**.
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_ReceivePrivateCommandFunc receivePrivateCommandFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_ReceivePrivateCommandFunc receivePrivateCommandFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -820,6 +916,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetSetPreviewTextFunc(InputMethod_TextE
 
 Sets the [OH_TextEditorProxy_SetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setpreviewtextfunc) function for [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**.
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetSetPreviewTextFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SetPreviewTextFunc setPreviewTextFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetSetPreviewTextFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SetPreviewTextFunc setPreviewTextFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -837,6 +935,35 @@ Sets the [OH_TextEditorProxy_SetPreviewTextFunc](capi-inputmethod-text-editor-pr
 | -- | -- |
 | [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode): Success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode): Unexpected null pointer. <br>For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
+### OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc()
+
+```c
+InputMethod_ErrorCode OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc setPreviewTextWithStyleFunc)
+```
+
+**Description**
+
+Set the function [OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_inputmethod_texteditorproxy_setpreviewtextwithstylefunc) to in [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). If this function is registered, both SetPreviewTextFunc and PreviewTextFunc are called back when the pre-screen is triggered, Please be careful not to process the pre-screen content repeatedly.
+
+<!--Device-InputMethod_ErrorCode OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc setPreviewTextWithStyleFunc)--><!--Device-InputMethod_ErrorCode OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc setPreviewTextWithStyleFunc)-End-->
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *proxy | [in] Input pointer to the [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance to be set. Cannot be NULL. |
+| [OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_inputmethod_texteditorproxy_setpreviewtextwithstylefunc) setPreviewTextWithStyleFunc | [in] Input parameter, indicating the callback function that is set to the proxy. [OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_inputmethod_texteditorproxy_setpreviewtextwithstylefunc). Cannot be NULL. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <ul> <li>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - indicates success. </li> <li>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Unexpected null pointer. </li> <li>For details about the error code, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). </li> </ul> |
+
 ### OH_TextEditorProxy_SetFinishTextPreviewFunc()
 
 ```c
@@ -846,6 +973,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetFinishTextPreviewFunc(InputMethod_Te
 **Description**
 
 Sets the [OH_TextEditorProxy_FinishTextPreviewFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_finishtextpreviewfunc) function for [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md). This setting must be completed before **Attach**.
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetFinishTextPreviewFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_FinishTextPreviewFunc finishTextPreviewFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetFinishTextPreviewFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_FinishTextPreviewFunc finishTextPreviewFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -874,6 +1003,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetGetTextConfigFunc(InputMethod_TextEd
 
 Obtains the [OH_TextEditorProxy_GetTextConfigFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextconfigfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetGetTextConfigFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetTextConfigFunc *getTextConfigFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetGetTextConfigFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetTextConfigFunc *getTextConfigFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -900,6 +1031,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetInsertTextFunc(InputMethod_TextEdito
 **Description**
 
 Obtains the [OH_TextEditorProxy_InsertTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_inserttextfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetInsertTextFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_InsertTextFunc *insertTextFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetInsertTextFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_InsertTextFunc *insertTextFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -928,6 +1061,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetDeleteForwardFunc(InputMethod_TextEd
 
 Obtains the [OH_TextEditorProxy_DeleteForwardFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_deleteforwardfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetDeleteForwardFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_DeleteForwardFunc *deleteForwardFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetDeleteForwardFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_DeleteForwardFunc *deleteForwardFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -954,6 +1089,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetDeleteBackwardFunc(InputMethod_TextE
 **Description**
 
 Obtains the [OH_TextEditorProxy_DeleteBackwardFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_deletebackwardfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetDeleteBackwardFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_DeleteBackwardFunc *deleteBackwardFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetDeleteBackwardFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_DeleteBackwardFunc *deleteBackwardFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -982,6 +1119,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetSendKeyboardStatusFunc(InputMethod_T
 
 Obtains the [OH_TextEditorProxy_SendKeyboardStatusFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_sendkeyboardstatusfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetSendKeyboardStatusFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SendKeyboardStatusFunc *sendKeyboardStatusFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetSendKeyboardStatusFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SendKeyboardStatusFunc *sendKeyboardStatusFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -1008,6 +1147,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetSendEnterKeyFunc(InputMethod_TextEdi
 **Description**
 
 Obtains the [OH_TextEditorProxy_SendEnterKeyFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_sendenterkeyfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetSendEnterKeyFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SendEnterKeyFunc *sendEnterKeyFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetSendEnterKeyFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SendEnterKeyFunc *sendEnterKeyFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1036,6 +1177,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetMoveCursorFunc(InputMethod_TextEdito
 
 Obtains the [OH_TextEditorProxy_MoveCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_movecursorfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetMoveCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_MoveCursorFunc *moveCursorFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetMoveCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_MoveCursorFunc *moveCursorFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -1062,6 +1205,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetHandleSetSelectionFunc(InputMethod_T
 **Description**
 
 Obtains the [OH_TextEditorProxy_HandleSetSelectionFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_handlesetselectionfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetHandleSetSelectionFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_HandleSetSelectionFunc *handleSetSelectionFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetHandleSetSelectionFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_HandleSetSelectionFunc *handleSetSelectionFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1090,6 +1235,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetHandleExtendActionFunc(InputMethod_T
 
 Obtains the [OH_TextEditorProxy_HandleExtendActionFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_handleextendactionfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetHandleExtendActionFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_HandleExtendActionFunc *handleExtendActionFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetHandleExtendActionFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_HandleExtendActionFunc *handleExtendActionFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -1116,6 +1263,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetGetLeftTextOfCursorFunc(InputMethod_
 **Description**
 
 Obtains the [OH_TextEditorProxy_GetLeftTextOfCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_getlefttextofcursorfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetGetLeftTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetLeftTextOfCursorFunc *getLeftTextOfCursorFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetGetLeftTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetLeftTextOfCursorFunc *getLeftTextOfCursorFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1144,6 +1293,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetGetRightTextOfCursorFunc(InputMethod
 
 Obtains the [OH_TextEditorProxy_GetRightTextOfCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_getrighttextofcursorfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetGetRightTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetRightTextOfCursorFunc *getRightTextOfCursorFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetGetRightTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetRightTextOfCursorFunc *getRightTextOfCursorFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -1170,6 +1321,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetGetTextIndexAtCursorFunc(InputMethod
 **Description**
 
 Obtains the [OH_TextEditorProxy_GetTextIndexAtCursorFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextindexatcursorfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetGetTextIndexAtCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetTextIndexAtCursorFunc *getTextIndexAtCursorFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetGetTextIndexAtCursorFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_GetTextIndexAtCursorFunc *getTextIndexAtCursorFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1198,6 +1351,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetReceivePrivateCommandFunc(InputMetho
 
 Obtains the [OH_TextEditorProxy_ReceivePrivateCommandFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_receiveprivatecommandfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_ReceivePrivateCommandFunc *receivePrivateCommandFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_ReceivePrivateCommandFunc *receivePrivateCommandFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -1225,6 +1380,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetSetPreviewTextFunc(InputMethod_TextE
 
 Obtains the [OH_TextEditorProxy_SetPreviewTextFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_setpreviewtextfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
 
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetSetPreviewTextFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SetPreviewTextFunc *setPreviewTextFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetSetPreviewTextFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_SetPreviewTextFunc *setPreviewTextFunc)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -1242,6 +1399,35 @@ Obtains the [OH_TextEditorProxy_SetPreviewTextFunc](capi-inputmethod-text-editor
 | -- | -- |
 | [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode): Success. <br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode): Unexpected null pointer. <br>For details about the error codes, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode). |
 
+### OH_InputMethod_TextEditorProxy_GetSetPreviewTextWithStyleFunc()
+
+```c
+InputMethod_ErrorCode OH_InputMethod_TextEditorProxy_GetSetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc *setPreviewTextWithStyleFunc)
+```
+
+**Description**
+
+Obtained from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) [OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_inputmethod_texteditorproxy_setpreviewtextwithstylefunc) function.
+
+<!--Device-InputMethod_ErrorCode OH_InputMethod_TextEditorProxy_GetSetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc *setPreviewTextWithStyleFunc)--><!--Device-InputMethod_ErrorCode OH_InputMethod_TextEditorProxy_GetSetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc *setPreviewTextWithStyleFunc)-End-->
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *proxy | [in] Input pointer to the [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance to be read. Cannot be NULL. |
+| [OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_inputmethod_texteditorproxy_setpreviewtextwithstylefunc) *setPreviewTextWithStyleFunc | [out] Output pointer, indicating the function pointer obtained from the proxy. [OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_inputmethod_texteditorproxy_setpreviewtextwithstylefunc). Cannot be NULL. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | Returns a specific error code. <ul> <li>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - indicates success.</li> <li>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - Unexpected null pointer.</li> <li>For details about the error code, see [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode).</li> <ul> |
+
 ### OH_TextEditorProxy_GetFinishTextPreviewFunc()
 
 ```c
@@ -1251,6 +1437,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_GetFinishTextPreviewFunc(InputMethod_Te
 **Description**
 
 Obtains the [OH_TextEditorProxy_FinishTextPreviewFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_finishtextpreviewfunc) function from [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md).
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetFinishTextPreviewFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_FinishTextPreviewFunc *finishTextPreviewFunc)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_GetFinishTextPreviewFunc(InputMethod_TextEditorProxy *proxy, OH_TextEditorProxy_FinishTextPreviewFunc *finishTextPreviewFunc)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1278,6 +1466,8 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetCallbackInMainThread(InputMethod_Tex
 **Description**
 
 Configures the execution thread (main thread/IPC thread) for the callbacks of **InputMethod_TextEditorProxy**. This API only controls all callbacks in **InputMethod_TextEditorProxy** except [OH_TextEditorProxy_GetTextConfigFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextconfigfunc). The execution thread of [OH_TextEditorProxy_GetTextConfigFunc](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_gettextconfigfunc) is determined by the thread that calls [OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach), and is not affected by this API. To ensure that **GetTextConfigFunc** also executes on the main thread, make sure that **Attach** is called on the main thread. <br>Usage scenarios: When an app needs to avoid multi-thread concurrency issues, it can switch callbacks to the main thread for execution. When an app requires faster callback response, it can keep callbacks executing on the IPC thread. <br>Use effect: When this API is set to **true**, all callbacks except **GetTextConfigFunc** will be executed on the main thread, avoiding multi-thread concurrency, but time-consuming operations should be avoided inside callbacks. When this API is set to **false**, callbacks are executed on the IPC thread, providing faster response but potentially introducing concurrency issues. <br>Preconditions: The **proxy** must be created through [OH_TextEditorProxy_Create](capi-inputmethod-text-editor-proxy-capi-h.md#oh_texteditorproxy_create) first. It is recommended that you call this API to configure the thread policy before **Attach** is called.
+
+<!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetCallbackInMainThread(InputMethod_TextEditorProxy *proxy, bool isCallbackInMainThread)--><!--Device-InputMethod_ErrorCode OH_TextEditorProxy_SetCallbackInMainThread(InputMethod_TextEditorProxy *proxy, bool isCallbackInMainThread)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

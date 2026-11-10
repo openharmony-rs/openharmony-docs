@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoAV1TileInfo {...}--><!--Device-struct StdVideoAV1TileInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

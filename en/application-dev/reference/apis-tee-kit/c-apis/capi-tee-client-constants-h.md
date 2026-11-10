@@ -42,6 +42,8 @@ enum TEEC_ReturnCode
 
 Defines the error codes returned.
 
+<!--Device-TEEC_ReturnCode--><!--Device-TEEC_ReturnCode-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -93,6 +95,8 @@ enum TEEC_ReturnCodeOrigin
 
 Defines the sources of the error codes returned.
 
+<!--Device-TEEC_ReturnCodeOrigin--><!--Device-TEEC_ReturnCodeOrigin-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -114,6 +118,8 @@ enum TEEC_SharedMemCtl
 
 Defines the identifiers of the shared memory.
 
+<!--Device-TEEC_SharedMemCtl--><!--Device-TEEC_SharedMemCtl-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
@@ -133,6 +139,8 @@ enum TEEC_ParamType
 **Description**
 
 Defines the parameter types.
+
+<!--Device-TEEC_ParamType--><!--Device-TEEC_ParamType-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 
@@ -163,6 +171,8 @@ enum TEEC_LoginMethod
 **Description**
 
 Defines the login methods.
+
+<!--Device-TEEC_LoginMethod--><!--Device-TEEC_LoginMethod-End-->
 
 **System capability**: SystemCapability.Tee.TeeClient
 

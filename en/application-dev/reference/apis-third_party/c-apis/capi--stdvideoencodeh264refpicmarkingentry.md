@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoEncodeH264RefPicMarkingEntry {...}--><!--Device-struct StdVideoEncodeH264RefPicMarkingEntry {...}-End-->
+
 ## Summary
 
 ### Member variables

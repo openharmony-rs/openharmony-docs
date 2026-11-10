@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDepthBiasInfoEXT {...}--><!--Device-struct VkDepthBiasInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

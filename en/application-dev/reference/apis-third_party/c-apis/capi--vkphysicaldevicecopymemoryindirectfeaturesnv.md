@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceCopyMemoryIndirectFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceCopyMemoryIndirectFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

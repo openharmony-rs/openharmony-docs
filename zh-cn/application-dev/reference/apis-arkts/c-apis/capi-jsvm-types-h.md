@@ -118,6 +118,8 @@ enum JSVM_PropertyAttributes
 
 用于控制JavaScript对象属性的行为。
 
+<!--Device-JSVM_PropertyAttributes--><!--Device-JSVM_PropertyAttributes-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
@@ -144,6 +146,8 @@ enum JSVM_ValueType
 **描述：**
 
 描述JSVM_Value的类型。
+
+<!--Device-JSVM_ValueType--><!--Device-JSVM_ValueType-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -172,6 +176,8 @@ enum JSVM_TypedarrayType
 
 描述Typedarray的类型。
 
+<!--Device-JSVM_TypedarrayType--><!--Device-JSVM_TypedarrayType-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
@@ -199,6 +205,8 @@ enum JSVM_Status
 **描述：**
 
 表示JSVM-API调用成功或失败的完整状态码。
+
+<!--Device-JSVM_Status--><!--Device-JSVM_Status-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -243,6 +251,8 @@ enum JSVM_KeyCollectionMode
 
 限制查找属性的范围。
 
+<!--Device-JSVM_KeyCollectionMode--><!--Device-JSVM_KeyCollectionMode-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
@@ -261,6 +271,8 @@ enum JSVM_KeyFilter
 **描述：**
 
 属性过滤器，可以通过使用or来构造一个复合过滤器。
+
+<!--Device-JSVM_KeyFilter--><!--Device-JSVM_KeyFilter-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -285,6 +297,8 @@ enum JSVM_KeyConversion
 
 键转换选项。
 
+<!--Device-JSVM_KeyConversion--><!--Device-JSVM_KeyConversion-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
@@ -303,6 +317,8 @@ enum JSVM_MemoryPressureLevel
 **描述：**
 
 内存压力水平。
+
+<!--Device-JSVM_MemoryPressureLevel--><!--Device-JSVM_MemoryPressureLevel-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -325,6 +341,8 @@ enum JSVM_CompileMode
 
 编译模式。
 
+<!--Device-JSVM_CompileMode--><!--Device-JSVM_CompileMode-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 12
@@ -346,6 +364,8 @@ enum JSVM_CompileOptionId
 **描述：**
 
 JSVM编译选项ID。
+
+<!--Device-JSVM_CompileOptionId--><!--Device-JSVM_CompileOptionId-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -370,6 +390,8 @@ enum JSVM_RegExpFlags
 **描述：**
 
 正则表达式标志位。它们可以用来启用一组标志。
+
+<!--Device-JSVM_RegExpFlags--><!--Device-JSVM_RegExpFlags-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -398,6 +420,8 @@ enum JSVM_InitializedFlag
 
 初始化方式的标志位。
 
+<!--Device-JSVM_InitializedFlag--><!--Device-JSVM_InitializedFlag-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 12
@@ -416,6 +440,8 @@ enum JSVM_WasmOptLevel
 **描述：**
 
 WebAssembly 函数优化等级。
+
+<!--Device-JSVM_WasmOptLevel--><!--Device-JSVM_WasmOptLevel-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -436,6 +462,8 @@ enum JSVM_CacheType
 
 缓存类型。
 
+<!--Device-JSVM_CacheType--><!--Device-JSVM_CacheType-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 12
@@ -455,6 +483,8 @@ enum JSVM_MicrotaskPolicy
 
 JSVM 微任务执行策略。
 
+<!--Device-JSVM_MicrotaskPolicy--><!--Device-JSVM_MicrotaskPolicy-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
@@ -473,6 +503,8 @@ enum JSVM_TraceCategory
 **描述：**
 
 JSVM 内部 Trace 事件的类别。
+
+<!--Device-JSVM_TraceCategory--><!--Device-JSVM_TraceCategory-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -498,6 +530,8 @@ enum JSVM_CBTriggerTimeForGC
 
 触发回调函数的时机。
 
+<!--Device-JSVM_CBTriggerTimeForGC--><!--Device-JSVM_CBTriggerTimeForGC-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
@@ -516,6 +550,8 @@ enum JSVM_GCType
 **描述：**
 
 GC类型。
+
+<!--Device-JSVM_GCType--><!--Device-JSVM_GCType-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -539,6 +575,8 @@ enum JSVM_GCCallbackFlags
 **描述：**
 
 GC回调函数标记。
+
+<!--Device-JSVM_GCCallbackFlags--><!--Device-JSVM_GCCallbackFlags-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -564,6 +602,8 @@ enum JSVM_PromiseRejectEvent
 
 promise-reject事件。
 
+<!--Device-JSVM_PromiseRejectEvent--><!--Device-JSVM_PromiseRejectEvent-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
@@ -585,6 +625,8 @@ enum JSVM_MessageErrorLevel
 **描述：**
 
 message的报错级别。
+
+<!--Device-JSVM_MessageErrorLevel--><!--Device-JSVM_MessageErrorLevel-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -609,6 +651,8 @@ enum JSVM_DefineClassOptionsId
 
 定义Class的选项ID。
 
+<!--Device-JSVM_DefineClassOptionsId--><!--Device-JSVM_DefineClassOptionsId-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
@@ -628,6 +672,8 @@ enum JSVM_DebugOption
 **描述：**
 
 调试选项。
+
+<!--Device-JSVM_DebugOption--><!--Device-JSVM_DebugOption-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -650,6 +696,8 @@ typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env, void* finalizeData, void*
 
 函数指针类型，当native类型对象或数据与JS对象被关联时，传入该指针。该函数将会 在关联的JS对象被GC回收时被调用，用以执行native的清理动作。
 
+<!--Device-typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env, void* finalizeData, void* finalizeHint)--><!--Device-typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env, void* finalizeData, void* finalizeHint)-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
@@ -666,6 +714,8 @@ typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env, void* finalizeD
 
 用于从外部内存创建的 ArrayBuffer 的 Finalize 回调函数指针类型。<br> 与 JSVM_Finalize 类似，但包含一个 copied 参数，用于指示引擎是否将外部数据拷贝到内部缓冲区 （true）或使用了零拷贝方式（false）。当 copied 为 true 时，引擎不持有对原始外部数据的引用， 调用方可在 API 调用返回后立即释放。当 copied 为 false 时，finalizeData 指向引擎正在释放 的原始外部内存，回调函数应对其进行释放。
 
+<!--Device-typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env, void* finalizeData, void* finalizeHint, bool copied)--><!--Device-typedef void(JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env, void* finalizeData, void* finalizeHint, bool copied)-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 26.0.0
@@ -679,6 +729,8 @@ typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data, int size, void* s
 **描述：**
 
 输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。 空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。
+
+<!--Device-typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data, int size, void* streamData)--><!--Device-typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data, int size, void* streamData)-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -700,6 +752,8 @@ typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSV
 
 GC回调的函数指针类型。
 
+<!--Device-typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)--><!--Device-typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
@@ -713,6 +767,8 @@ typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location, const c
 **描述：**
 
 OOM-Error回调的函数指针类型。
+
+<!--Device-typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location, const char* detail, bool isHeapOOM)--><!--Device-typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location, const char* detail, bool isHeapOOM)-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
@@ -728,6 +784,8 @@ typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location, const
 
 Fatal-Error回调的函数指针类型。
 
+<!--Device-typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location, const char* message)--><!--Device-typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location, const char* message)-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
@@ -742,6 +800,8 @@ typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_Promi
 
 Promise-Reject回调的函数指针类型。
 
+<!--Device-typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)--><!--Device-typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 18
@@ -755,6 +815,8 @@ typedef void (JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t thr
 **描述：**
 
 堆阈值回调的函数指针类型。
+
+<!--Device-typedef void (JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)--><!--Device-typedef void (JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 

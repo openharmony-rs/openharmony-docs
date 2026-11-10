@@ -8,11 +8,13 @@ struct ArkWeb_JavaScriptValueAPI {...}
 
 ArkWeb_JavaScriptValueAPI is a JavaScript-related Native API struct. This struct provides functions for creating JavaScript values, supporting the conversion of Native data into a JavaScript-recognizable format and returning it to HTML. This conversion mechanism parses and encapsulates the Native data buffer based on the specified JavaScript value type to generate the corresponding JavaScript value object. It is applicable to scenarios where data needs to be passed from the Native layer to the Web layer, enabling bidirectional data interaction between Native and Web and improving app development flexibility. <br>Call the OH_ArkWeb_GetNativeAPI method on the UI thread to obtain JavaScript-related APIs. Before calling, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义) to check the availability of the function pointer, to prevent crashes caused by mismatch between the SDK and device ROM.
 
+<!--Device-struct ArkWeb_JavaScriptValueAPI {...}--><!--Device-struct ArkWeb_JavaScriptValueAPI {...}-End-->
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 18
 
-**Related module**: [Web](capi-others-web.md)
+**Related module**: [Web](capi-arkweb-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
 
@@ -42,6 +44,8 @@ ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType ty
 **Description**
 
 Creates a JavaScript value to be returned to HTML. This function performs type conversion and encapsulation on the data in the data buffer based on the specified type parameter to generate the corresponding JavaScript value object. NULL is returned if the conversion fails. Before using this function, obtain the JavaScript API through OH_ArkWeb_GetNativeAPI and check the availability of the function pointer.
+
+<!--Device-ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)--><!--Device-ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)-End-->
 
 **Parameters**:
 

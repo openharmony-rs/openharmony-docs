@@ -8,11 +8,13 @@ struct NetConn_ProbeResultInfo {...}
 
 定义探测结果信息。
 
+<!--Device-struct NetConn_ProbeResultInfo {...}--><!--Device-struct NetConn_ProbeResultInfo {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 20
 
-**相关模块：** [NetConnection](capi-others-netconnection.md)
+**相关模块：** [NetConnection](capi-network-kit-netconnection.md)
 
 **所在头文件：** [net_connection_type.h](capi-net-connection-type-h.md)
 

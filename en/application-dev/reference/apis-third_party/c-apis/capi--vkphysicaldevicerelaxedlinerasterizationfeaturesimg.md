@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG {...}--><!--Device-struct VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG {...}-End-->
+
 ## Summary
 
 ### Member variables

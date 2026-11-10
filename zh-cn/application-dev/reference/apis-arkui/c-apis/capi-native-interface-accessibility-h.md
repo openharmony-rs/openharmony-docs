@@ -130,6 +130,8 @@ enum ArkUI_Accessibility_ActionType
 
 Accessibility操作类型的枚举。
 
+<!--Device-ArkUI_Accessibility_ActionType--><!--Device-ArkUI_Accessibility_ActionType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -161,6 +163,8 @@ enum ArkUI_AccessibilityEventType
 **描述：**
 
 Accessibility事件类型的枚举。
+
+<!--Device-ArkUI_AccessibilityEventType--><!--Device-ArkUI_AccessibilityEventType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -194,6 +198,8 @@ enum ArkUI_AcessbilityErrorCode
 
 Accessibility错误代码状态的枚举。
 
+<!--Device-ArkUI_AcessbilityErrorCode--><!--Device-ArkUI_AcessbilityErrorCode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -214,6 +220,8 @@ enum ArkUI_AccessibilitySearchMode
 **描述：**
 
 Accessibility搜索类型的枚举。
+
+<!--Device-ArkUI_AccessibilitySearchMode--><!--Device-ArkUI_AccessibilitySearchMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,6 +245,8 @@ enum ArkUI_AccessibilityFocusType
 
 Accessibility焦点类型的枚举。
 
+<!--Device-ArkUI_AccessibilityFocusType--><!--Device-ArkUI_AccessibilityFocusType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -256,6 +266,8 @@ enum ArkUI_AccessibilityFocusMoveDirection
 **描述：**
 
 Accessibility焦点移动方向的枚举。
+
+<!--Device-ArkUI_AccessibilityFocusMoveDirection--><!--Device-ArkUI_AccessibilityFocusMoveDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -284,6 +296,8 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvid
 
 注册第三方操作provider回调函数到系统侧，由第三方平台实现相关函数并通过本接口完成注册。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacks* callbacks)--><!--Device-int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacks* callbacks)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -310,6 +324,8 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* i
 **描述：**
 
 无障碍多实例场景第三方平台将回调函数注册到系统侧。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* instanceId, ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacksWithInstance* callbacks)--><!--Device-int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* instanceId, ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacksWithInstance* callbacks)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -343,6 +359,8 @@ void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider,
 3. 调用本接口发送事件。
 4. 发送完成后通过OH_ArkUI_DestoryAccessibilityEventInfo释放事件信息对象。
 
+<!--Device-void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityEventInfo* eventInfo, void (*callback)(int32_t errorCode))--><!--Device-void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityEventInfo* eventInfo, void (*callback)(int32_t errorCode))-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -367,6 +385,8 @@ ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI
 > <b>说明：</b>
 >
 > 该接口返回的ArkUI_AccessibilityElementInfo对象由传入的ArkUI_AccessibilityElementInfoList统一管理，生命周期与list绑定， 不需要单独调用OH_ArkUI_DestoryAccessibilityElementInfo释放。
+
+<!--Device-ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI_AccessibilityElementInfoList* list)--><!--Device-ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI_AccessibilityElementInfoList* list)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -398,6 +418,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElement
 > - elementId是无障碍组件树中节点的唯一标识，用于无障碍服务定位和引用特定节点。无障碍服务查找节点信息、执行操作和移动焦点时均依赖此标识。
 > - 第三方平台需保证同一组件树中各节点的elementId全局唯一，否则可能导致无障碍服务无法正确查找节点。
 > - elementId的值由第三方平台自行分配和维护，建议使用递增整数或稳定的组件标识。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t elementId)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t elementId)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -431,6 +453,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementI
 > - 若当前节点为根节点，建议将parentId设置为-1或0（与根节点自身的elementId不同即可）。
 > - parentId指向的父节点elementId必须在组件树中真实存在，否则无障碍服务向上遍历时可能出现异常。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t parentId)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t parentId)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -462,6 +486,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityEle
 > - componentType用于标识无障碍节点的组件类型，如Button、Text、Image、List。
 > - 无障碍服务（如无障碍辅助应用）根据组件类型决定如何向用户描述和交互该节点。例如，Button类型会被朗读为按钮，Text类型会被朗读为文本。 第三方平台可使用自身组件类型名称，建议使用与ArkUI组件名称一致的字符串以便获得最佳朗读效果。
 > - 建议使用的组件类型名称包括：Button、Text、Image、List、TextInput、Slider、Rating、Progress、Checkbox、Toggle、Grid、Swiper、Select、Tabs。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityElementInfo* elementInfo, const char* componentType)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityElementInfo* elementInfo, const char* componentType)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -498,6 +524,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementI
 > - 当组件同时设置了contents和accessibilityText时，无障碍辅助应用优先使用accessibilityText。
 > - contents不支持传入空指针，传入空指针将返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementInfo* elementInfo, const char* contents)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementInfo* elementInfo, const char* contents)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -529,6 +557,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementI
 > - hintText用于为组件提供辅助说明，通常用于可编辑组件的占位提示文本（例如输入框）。无障碍辅助应用在组件处于提示状态（isHint为true）时，会朗读hintText代替contents。 例如，当输入框为空时显示的占位文本“请输入用户名”，应通过hintText传递。
 > - hintText与isHint配合使用：当isHint为true时，无障碍辅助应用播报hintText；当isHint为false时，播报contents。 isHint通过OH_ArkUI_AccessibilityElementInfoSetIsHint设置，contents通过OH_ArkUI_AccessibilityElementInfoSetContents设置。
 > - hintText不支持传入空指针，传入空指针将返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementInfo* elementInfo, const char* hintText)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementInfo* elementInfo, const char* hintText)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -563,6 +593,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_Accessibilit
 > - 若accessibilityText为空字符串，无障碍辅助应用会回退使用contents。
 > - accessibilityText不支持传入空指针，传入空指针将返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityText)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityText)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -594,6 +626,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_Acces
 > - accessibilityDescription用于为组件提供额外的无障碍描述信息。
 > - 无障碍辅助应用在播报完组件的主要内容（accessibilityText或contents）后，会继续播报accessibilityDescription。 例如，一个按钮的contents为“提交”，accessibilityDescription可设置为“点击提交表单数据”，无障碍辅助应用将播报“提交，点击提交表单数据”。此属性适用于需要为用户提供额外操作提示或状态说明的场景。
 > - accessibilityDescription不支持传入空指针，传入空指针将返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityDescription)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityDescription)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -628,6 +662,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElem
 > - childCount必须大于0，且childNodeIds数组中至少包含childCount个有效元素。
 > - childNodeIds和elementInfo不支持传入空指针，childCount不支持小于等于0，否则返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElementInfo* elementInfo, int32_t childCount, int64_t* childNodeIds)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElementInfo* elementInfo, int32_t childCount, int64_t* childNodeIds)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -658,6 +694,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_Accessibility
 > <b>说明：</b>
 >
 > operationActions用于设置组件支持的无障碍操作集合，每次调用本接口将替换之前设置的所有操作动作（覆盖式更新，非追加）； operationCount必须大于0，且operationActions数组中至少包含operationCount个有效元素。 建议根据组件的交互属性注册对应的action类型：可点击组件应包含ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK， 可长按组件应包含ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_LONG_CLICK。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_AccessibilityElementInfo* elementInfo, int32_t operationCount, ArkUI_AccessibleAction* operationActions)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_AccessibilityElementInfo* elementInfo, int32_t operationCount, ArkUI_AccessibleAction* operationActions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -693,6 +731,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElemen
 > - 如果screenRect的区域面积为0或不在屏幕可见范围内，该节点可能不会被辅助应用聚焦。
 > - screenRect和elementInfo不支持传入空指针，否则返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRect* screenRect)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRect* screenRect)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -725,6 +765,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElement
 > - 无障碍辅助应用会根据checkable状态向用户播报“可勾选”提示，并告知用户可以通过操作来切换勾选状态。
 > - 设置checkable为true时，应同时通过OH_ArkUI_AccessibilityElementInfoSetChecked设置checked，以表示当前勾选状态。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElementInfo* elementInfo, bool checkable)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElementInfo* elementInfo, bool checkable)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -756,6 +798,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementIn
 > - 无障碍辅助应用会根据checked状态播报“已勾选”或“未勾选”。本接口仅设置勾选状态，不会自动设置checkable属性。
 > - 若需要组件被识别为可勾选，需同时调用OH_ArkUI_AccessibilityElementInfoSetCheckable设置checkable属性为true。
 > - 仅设置checked而不设置checkable为true时，checked状态不会在辅助应用中体现。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementInfo* elementInfo, bool checked)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementInfo* elementInfo, bool checked)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -790,6 +834,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElement
 > - 设置focusable为true的组件通常也需要通过OH_ArkUI_AccessibilityElementInfoSetClickable设置clickable为true，并注册相应的操作动作， 否则用户可能无法通过辅助应用对该组件执行聚焦后的交互操作。
 > - focusable与accessibilityFocused是不同的概念：focusable表示输入焦点能力，accessibilityFocused表示无障碍辅助焦点的当前状态。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElementInfo* elementInfo, bool focusable)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElementInfo* elementInfo, bool focusable)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -822,6 +868,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementIn
 > - 设置isFocused为true时，通常应同时通过OH_ArkUI_AccessibilityElementInfoSetFocusable设置focusable为true，否则焦点状态的含义不完整。
 > - isFocused与accessibilityFocused是不同的概念：isFocused表示输入焦点状态，accessibilityFocused（由OH_ArkUI_AccessibilityElementInfoSetA ccessibilityFocused设置）表示无障碍辅助焦点状态。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool isFocused)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool isFocused)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -852,6 +900,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementIn
 >
 > - 无障碍辅助应用等辅助应用在遍历节点时，默认会跳过isVisible为false的节点，不会对这些节点聚焦或播报。对于因滚动而暂时不在可视区域的组件，建议设置isVisible为false。
 > - 若一个可交互组件被错误地设置为不可见，用户将无法通过辅助应用访问该组件。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementInfo* elementInfo, bool isVisible)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementInfo* elementInfo, bool isVisible)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -886,6 +936,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_Accessibi
 > - 无障碍服务在执行ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS和ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLE AR_ACCESSIBILITY_FOCUS操作时，第三方平台应相应更新此状态，并通过发送ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED或ARKUI_ACCESSI BILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUS_CLEARED事件通知系统。
 > - accessibilityFocused与isFocused不同：前者是无障碍辅助焦点，后者是输入焦点（键盘焦点）。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityFocused)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityFocused)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -917,6 +969,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementI
 > - 适用于具备选中语义的组件（例如ArkUI的Tabs、ListItem）。
 > - 无障碍辅助应用会根据selected状态播报“已选中”或“未选中”。在Tabs页签场景中，selected为true的Tabs页签会被朗读为当前活动页签。
 > - 在列表场景中，selected可与accessibilityGroup（通过OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup设置）配合使用，标记当前激活的列表项。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementInfo* elementInfo, bool selected)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementInfo* elementInfo, bool selected)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -950,6 +1004,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElement
 > - 设置clickable为true时，通常需要通过OH_ArkUI_AccessibilityElementInfoSetOperationActions在operationActions中添加ARKUI_ACCESSIBILIT Y_NATIVE_ACTION_TYPE_CLICK，否则用户无法通过辅助应用对该组件执行点击操作。
 > - clickable与enabled（通过OH_ArkUI_AccessibilityElementInfoSetEnabled设置）应配合使用：当clickable为true但enabled为false时， 无障碍辅助应用会播报“已禁用”，提示用户该组件虽可点击但当前不可用。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool clickable)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool clickable)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -981,6 +1037,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityEle
 > - 无障碍辅助应用会向用户提示该组件支持长按，当用户通过辅助应用执行长按操作时，系统会通过[ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)中的executeAccessibilityActio n回调通知第三方平台。
 > - 设置longClickable为true时，通常需要通过OH_ArkUI_AccessibilityElementInfoSetOperationActions在operationActions中添加ARKUI_ACCESSIB ILITY_NATIVE_ACTION_TYPE_LONG_CLICK。
 > - 否则用户无法通过辅助应用对该组件执行长按操作。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool longClickable)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool longClickable)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1015,6 +1073,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementIn
 > - 如果isEnabled为false且clickable也为false，无障碍辅助应用可能完全跳过该组件。
 > - 所有需要与用户交互的组件必须显式设置为true。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementInfo* elementInfo, bool isEnabled)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementInfo* elementInfo, bool isEnabled)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1047,6 +1107,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElemen
 > - 对于TextInput等文本输入组件，若用于密码输入场景，必须设置isPassword为true。
 > - 若未设置或设置为false，无障碍辅助应用可能直接朗读密码内容，造成安全隐患。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElementInfo* elementInfo, bool isPassword)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElementInfo* elementInfo, bool isPassword)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1078,6 +1140,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElemen
 > - 适用于支持内容滚动的容器组件（例如ArkUI的List、Grid、Scroll、Swiper）。
 > - 无障碍辅助应用等辅助应用会根据scrollable状态向用户提供滚动操作提示，用户可通过辅助应用执行向前滚动（ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD） 或向后滚动（ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD）操作。
 > - 设置scrollable为true时，需要通过OH_ArkUI_AccessibilityElementInfoSetOperationActions在operationActions中添加滚动操作， 包括ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD和ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD， 否则用户无法通过辅助应用对该组件执行滚动操作。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElementInfo* elementInfo, bool scrollable)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElementInfo* elementInfo, bool scrollable)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1112,6 +1176,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementI
 > - 设置editable为true的组件，通常还应通过OH_ArkUI_AccessibilityElementInfoSetOperationActions注册相应的无障碍操作动作， 如ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_TEXT、ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_COPY、 ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PASTE、ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CUT等，以便用户通过辅助应用执行编辑操作。
 > - editable为true且isPassword（通过OH_ArkUI_AccessibilityElementInfoSetIsPassword设置）为true时，无障碍辅助应用会播报“密码编辑框”。默认值为false。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementInfo* elementInfo, bool editable)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementInfo* elementInfo, bool editable)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1144,6 +1210,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInf
 > - 此属性主要用于可编辑文本组件（如TextInput）在用户尚未输入内容时显示占位提示文本的场景。
 > - 例如：输入框显示“请输入用户名”时，isHint应设为true，hintText应设为“请输入用户名”；用户输入内容后，isHint应设为false，contents应设为用户输入的文本。
 > - 若isHint设置为true但未设置hintText，无障碍辅助应用可能播报空内容。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInfo* elementInfo, bool isHint)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInfo* elementInfo, bool isHint)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1179,6 +1247,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElement
 > - 设置rangeInfo时，应确保min不大于max，current应在min和max之间。
 > - rangeInfo和elementInfo不支持传入空指针，否则返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRangeInfo* rangeInfo)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRangeInfo* rangeInfo)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1211,6 +1281,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementI
 > - 无障碍辅助应用会根据gridInfo播报网格的结构信息，如“第2行，共5行3列”。
 > - rowCount表示行数，columnCount表示列数，selectionMode表示选择模式（值为0表示单行选择，非0表示多行选择）。
 > - gridInfo和elementInfo不支持传入空指针，否则返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridInfo* gridInfo)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridInfo* gridInfo)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1245,6 +1317,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElem
 > - [ArkUI_AccessibleGridItemInfo](capi-arkui-accessibility-arkui-accessiblegriditeminfo.md)中的heading为true时，无障碍辅助应用会播报“标题”。
 > - gridItem和elementInfo不支持传入空指针，否则返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridItemInfo* gridItem)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridItemInfo* gridItem)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1277,6 +1351,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_Accessibilit
 > - 无障碍辅助应用等辅助应用会根据selectedTextStart和selectedTextEnd播报当前选中的文本范围。
 > - 当用户通过辅助应用执行ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT操作时， 第三方平台应通过[ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md)中的selectTextBegin参数获取起始位置。
 > - selectedTextStart应与selectedTextEnd（通过OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd设置）配合使用， 且selectedTextStart不应大于selectedTextEnd。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextStart)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextStart)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1311,6 +1387,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityE
 > - selectedTextEnd应与selectedTextStart配合使用，且selectedTextEnd不应小于selectedTextStart。 其中selectedTextStart通过OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart设置。
 > - 当没有文本被选中时，selectedTextStart和selectedTextEnd可以设置为相同的值（即光标位置）。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextEnd)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextEnd)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1344,6 +1422,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_Accessibility
 > - currentItemIndex应与itemCount（通过OH_ArkUI_AccessibilityElementInfoSetItemCount设置）配合使用，以便辅助应用播报“第X项，共Y项”的完整信息。
 > - currentItemIndex的值应在0到itemCount-1的范围内。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t currentItemIndex)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t currentItemIndex)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1376,6 +1456,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityEl
 > - 无障碍辅助应用等辅助应用根据startItemIndex和endItemIndex（通过OH_ArkUI_AccessibilityElementInfoSetEndItemIndex设置）判断可见区域范围， 用于优化焦点移动和播报。
 > - startItemIndex应小于等于endItemIndex，且两者均应在0到itemCount-1的范围内。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t startItemIndex)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t startItemIndex)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1407,6 +1489,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElem
 > - endItemIndex用于List、Select、Swiper、Tabs等可滚动容器组件，表示当前屏幕可见区域中最后一个子项的位置索引（从0开始计数）。
 > - 无障碍辅助应用等辅助应用根据startItemIndex（通过OH_ArkUI_AccessibilityElementInfoSetStartItemIndex设置）和endItemIndex判断可见区域范围， 当用户执行滚动操作时，辅助应用可据此播报滚动进度。
 > - endItemIndex应大于等于startItemIndex，且两者均应在0到itemCount-1的范围内。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t endItemIndex)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t endItemIndex)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1441,6 +1525,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElement
 > - itemCount的值应为容器中所有子项的总数（包括可见和不可见的），而不仅是当前屏幕可见区域的子项数。
 > - itemCount应为非负整数，设置为0表示容器为空。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElementInfo* elementInfo, int32_t itemCount)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElementInfo* elementInfo, int32_t itemCount)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1474,6 +1560,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_Accessibil
 > - 当用户执行ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD或ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD操 作后，第三方平台应在更新后的节点信息中同步更新offset值。
 > - offset为0表示内容区未滚动（处于初始位置），正值表示向下/向右滚动的像素距离。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_AccessibilityElementInfo* elementInfo, int32_t offset)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_AccessibilityElementInfo* elementInfo, int32_t offset)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1506,6 +1594,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_Accessibili
 > - 当accessibilityGroup为true时，无障碍辅助应用会将该节点视为一个整体，不会单独聚焦或播报其子节点的信息，而是将子节点的文本内容合并后一起播报。
 > - 此属性适用于将一组相关内容（如一个列表项包含图标和文本）作为一个无障碍单元的场景。例如：一个列表项包含商品图片和商品名称，设置accessibilityGroup为true后，无障碍辅助应用会将整个列表项作为一个节点播报， 而不是分别播报图片和文本。
 > - accessibilityGroup为false时，无障碍辅助应用会逐个遍历子节点。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityGroup)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityGroup)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1544,6 +1634,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_Accessibili
 > - “no-hide-descendants”：表示该组件及其所有子孙节点都不重要，辅助服务不会识别该组件及其子孙节点。适用于纯装饰性容器，避免辅助服务播报无意义的内容。
 > - accessibilityLevel不支持传入空指针，传入空指针将返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityLevel)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityLevel)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1576,6 +1668,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInf
 > - 此属性主要供UiTest自动化测试框架使用，用于识别组件的层叠顺序。
 > - 无障碍服务在确定焦点移动方向时也可能参考zIndex进行判断。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1606,6 +1700,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_Accessibi
 >
 > - opacity表示组件的透明度。此属性主要供UiTest自动化测试框架使用，用于识别组件的视觉透明状态。取值范围为0到1，其中1表示完全不透明，0表示完全透明。
 > - 注意：传入NaN值将返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER，但超出0到1范围的值（如负数或大于1的值）不会被自动修正，建议始终传入0到1之间的有效值。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_AccessibilityElementInfo* elementInfo, float opacity)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_AccessibilityElementInfo* elementInfo, float opacity)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1639,6 +1735,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityE
 > - 数据格式为“#ARGB”字符串，例如非透明白色为“#FFFFFFFF”，半透明红色为“#80FF0000”。
 > - backgroundColor不支持传入空指针，传入空指针将返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundColor)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundColor)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1670,6 +1768,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityE
 > - backgroundImage表示组件的背景图片资源。此属性主要供UiTest自动化测试框架使用，用于识别组件的视觉背景图。
 > - backgroundImage不支持传入空指针，传入空指针将返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundImage)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundImage)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1700,6 +1800,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo*
 >
 > - blur表示组件的模糊效果参数。此属性主要供UiTest自动化测试框架使用，用于识别组件的视觉模糊状态。
 > - blur不支持传入空指针，传入空指针将返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo* elementInfo, const char* blur)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo* elementInfo, const char* blur)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1737,6 +1839,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityE
 > - “None”：自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。
 > - hitTestBehavior不支持传入空指针，传入空指针将返回ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1764,6 +1868,8 @@ ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)
 
 创建一个[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)对象，创建后需要调用OH_ArkUI_DestoryAccessibilityElementInfo释放。
 
+<!--Device-ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)--><!--Device-ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1783,6 +1889,8 @@ void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* el
 **描述：**
 
 销毁一个[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)对象。
+
+<!--Device-void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* elementInfo)--><!--Device-void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* elementInfo)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1804,6 +1912,8 @@ ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)
 
 创建一个[ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)对象，创建后需要调用OH_ArkUI_DestoryAccessibilityEventInfo释放。
 
+<!--Device-ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)--><!--Device-ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1824,6 +1934,8 @@ void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventI
 
 销毁[ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)对象。
 
+<!--Device-void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventInfo)--><!--Device-void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventInfo)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1843,6 +1955,8 @@ int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* ev
 **描述：**
 
 为[ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)设置事件类型。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityEventType eventType)--><!--Device-int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityEventType eventType)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1871,6 +1985,8 @@ int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_Access
 
 为[ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)设置主动播报的内容。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo, const char* textAnnouncedForAccessibility)--><!--Device-int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo, const char* textAnnouncedForAccessibility)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1897,6 +2013,8 @@ int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInf
 **描述：**
 
 为[ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)设置请求焦点id。
+
+<!--Device-int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo, int32_t requestFocusId)--><!--Device-int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo, int32_t requestFocusId)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1925,6 +2043,8 @@ int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* 
 
 为[ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)设置elementInfo。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityElementInfo* elementInfo)--><!--Device-int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityElementInfo* elementInfo)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
@@ -1951,6 +2071,8 @@ int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionA
 **描述：**
 
 获取[ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md)中指定key的value值。
+
+<!--Device-int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)--><!--Device-int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1980,6 +2102,8 @@ int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* n
 
 获取指向[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象指针的二级指针变量。 其中[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象与传入的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)的实例一一对应。 第三方平台将自身UI组件映射为ARKUI_NODE_CUSTOM类型的RenderNode并得到[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。 再调用OH_ArkUI_NativeModule_GetNativeAccessibilityProvider接口获取[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)指针并注册无障碍回调。 最终实现ArkUI无障碍服务对第三方平台UI的识别与事件触发。 仅当第三方平台将自身UI组件映射为ARKUI_NODE_CUSTOM的RenderNode，该接口才会生效，否则会报错误码。 本接口通过RenderNode实现第三方平台的接入，仅支持ARKUI_NODE_CUSTOM接入无障碍服务，可以实现无障碍控件树获取能力。 不支持多线程并发，由第三方平台保证调用时的线程安全。
 
+<!--Device-int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)--><!--Device-int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
@@ -2007,6 +2131,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_Accessibil
 
 为无障碍节点信息[ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)设置组件标识，可用于自动化测试识别特定组件。
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo *elementInfo, const char *identifier)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo *elementInfo, const char *identifier)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
@@ -2033,6 +2159,8 @@ int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bi
 **描述：**
 
 将外部ArkUI子树绑定到第三方平台无障碍树中的指定占位节点上。<br> 当第三方平台（例如CMP）使用RenderNode渲染页面，且RenderNode树上混用ArkUI原生组件时，这些ArkUI原生组件会形成一颗外部子树， 该子树对无障碍服务不可见。本接口将该外部ArkUI子树绑定到第三方平台无障碍树中的占位节点上，使无障碍焦点遍历能够进入这颗混用的ArkUI子树， 遍历其内部组件后，再返回第三方平台的无障碍树继续遍历。<br> 本接口必须在UI主线程调用。调用同步执行，不会向调用方回调任何函数，且不得在信号处理函数中调用。 若调用本接口时第三方平台的无障碍树尚未注册到无障碍服务，则绑定在注册完成后异步生效。<br> 绑定关系通过(owner, bindId)键值对标识。同一owner上支持多个不同bindId的绑定，每颗被导出的子树最多存在一个生效的绑定。 使用相同的(owner, bindId)对再次调用本接口不会替换或合并原绑定：原绑定保持不变，并返回ARKUI_ERROR_CODE_NO_ERROR； 若exportedRoot已经存在生效的绑定，则返回ARKUI_ERROR_CODE_PARAM_INVALID拒绝绑定。 当OH_ArkUI_Accessibility_UnbindExportTree执行完成后，被绑定的子树会完全从无障碍树中分离，所有绑定资源被释放， 此时再次使用相同的(owner, bindId)对绑定会执行完整的注册流程。
+
+<!--Device-int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bindId, ArkUI_NodeHandle exportedRoot)--><!--Device-int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bindId, ArkUI_NodeHandle exportedRoot)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2067,6 +2195,8 @@ int32_t OH_ArkUI_Accessibility_UnbindExportTree(ArkUI_NodeHandle owner, int64_t 
 
 从第三方平台的无障碍树中解绑之前绑定的外部ArkUI子树。<br> 当混用的ArkUI子树被销毁或替换时，应调用本接口移除由OH_ArkUI_Accessibility_BindExportTree建立的绑定关系。 解绑后，无障碍服务将不再遍历进入之前绑定的ArkUI子树。<br> 本接口必须在UI主线程调用。调用同步执行，不会向调用方回调任何函数，且不得在信号处理函数中调用。 仅移除由(owner, bindId)对标识的绑定，同一owner上的其他绑定不受影响。解绑未知或已解绑的(owner, bindId)对是幂等的，返回成功。 当存在绑定时，本接口返回ARKUI_ERROR_CODE_NO_ERROR后，被绑定的子树已完全从无障碍树中分离，所有绑定资源被释放； 相同的(owner, bindId)对可再次通过调用OH_ArkUI_Accessibility_BindExportTree绑定，此时执行完整注册流程。
 
+<!--Device-int32_t OH_ArkUI_Accessibility_UnbindExportTree(ArkUI_NodeHandle owner, int64_t bindId)--><!--Device-int32_t OH_ArkUI_Accessibility_UnbindExportTree(ArkUI_NodeHandle owner, int64_t bindId)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.1
@@ -2093,6 +2223,8 @@ int32_t OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler(ArkUI_Node
 **描述：**
 
 在第三方平台的宿主节点上注册无障碍hover事件处理函数。<br> 当屏幕阅读器开启且用户触摸宿主节点区域时，ArkUI以相对宿主节点的坐标同步调用已注册的回调。 第三方平台执行自身的命中测试，并在回调返回前向输出参数elementInfo填充命中节点的信息。 随后ArkUI向屏幕阅读器上报对应的无障碍hover事件，使返回的节点获得焦点。第三方平台不自行上报该事件。 hover事件类型（如进入、移动、退出）由ArkUI维护，不会传递给回调。<br> 处理函数注册期间，宿主子树的hover命中测试使用第三方平台的返回结果，而非系统的节点树命中测试结果。 滑动焦点导航不受影响。未注册处理函数的节点保持原有hover行为。 在同一节点上重复注册会替换之前的回调和userData，并返回ARKUI_ERROR_CODE_NO_ERROR；后续仅使用新的注册。<br> 本接口非线程安全。回调在UI主线程同步执行，应尽快返回以避免阻塞触摸处理。
+
+<!--Device-int32_t OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler(ArkUI_NodeHandle node, void *userData, void (*handleAccessibilityHoverEvent)(void *userData, int32_t x, int32_t y, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo))--><!--Device-int32_t OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler(ArkUI_NodeHandle node, void *userData, void (*handleAccessibilityHoverEvent)(void *userData, int32_t x, int32_t y, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo))-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2126,6 +2258,8 @@ int32_t OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler(ArkUI_No
 **描述：**
 
 从指定节点注销无障碍hover事件处理函数。<br> 注销后，ArkUI无障碍框架将不再调用由OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler注册的回调， 该节点恢复原有hover行为。对未注册处理函数的受支持节点执行注销返回ARKUI_ERROR_CODE_NO_ERROR，且其hover行为保持不变。 ArkUI不会释放userData指向的内存，调用方负责管理其生命周期。<br> 本接口非线程安全。
+
+<!--Device-int32_t OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler(ArkUI_NodeHandle node)--><!--Device-int32_t OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler(ArkUI_NodeHandle node)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

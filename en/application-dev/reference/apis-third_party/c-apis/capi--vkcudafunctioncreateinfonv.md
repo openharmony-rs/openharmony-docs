@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCudaFunctionCreateInfoNV {...}--><!--Device-struct VkCudaFunctionCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

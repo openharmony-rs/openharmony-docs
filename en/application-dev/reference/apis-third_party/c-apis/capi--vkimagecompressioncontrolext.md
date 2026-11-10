@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageCompressionControlEXT {...}--><!--Device-struct VkImageCompressionControlEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

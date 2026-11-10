@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceAntiLagFeaturesAMD {...}--><!--Device-struct VkPhysicalDeviceAntiLagFeaturesAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

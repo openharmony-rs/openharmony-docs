@@ -8,11 +8,13 @@ struct OH_HiAppEvent_ExternalLog {...}
 
 The OH_HiAppEvent_ExternalLog 结构体用于描述外部日志信息，包括 文件路径、生成时间戳、文件大小、系统事件类型。
 
+<!--Device-struct OH_HiAppEvent_ExternalLog {...}--><!--Device-struct OH_HiAppEvent_ExternalLog {...}-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 **起始版本：** 26.0.1
 
-**相关模块：** [HiAppEvent](capi-others-hiappevent.md)
+**相关模块：** [HiAppEvent](capi-performance-analysis-kit-hiappevent.md)
 
 **所在头文件：** [hiappevent.h](capi-hiappevent-h.md)
 

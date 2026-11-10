@@ -8,11 +8,13 @@ struct AbilityBase_Element {...}
 
 The struct describes the Element in Want.
 
+<!--Device-struct AbilityBase_Element {...}--><!--Device-struct AbilityBase_Element {...}-End-->
+
 **System capability**: SystemCapability.Ability.AbilityBase
 
 **Since**: 15
 
-**Related module**: [AbilityBase](capi-others-abilitybase.md)
+**Related module**: [AbilityBase](capi-ability-kit-abilitybase.md)
 
 **Header file**: [want.h](capi-want-h.md)
 

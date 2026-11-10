@@ -32,6 +32,8 @@ enum OH_AVSCREEN_CAPTURE_ErrCode
 
 Enumerates the error codes generated during screen capture.
 
+<!--Device-OH_AVSCREEN_CAPTURE_ErrCode--><!--Device-OH_AVSCREEN_CAPTURE_ErrCode-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10

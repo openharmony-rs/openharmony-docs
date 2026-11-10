@@ -8,11 +8,13 @@ struct OH_OnFrameAvailableListener {...}
 
 A listener for native image, use <b>OH_NativeImage_SetOnFrameAvailableListener</b> to register the listener object to <b>OH_NativeImage</b>, the callback will be triggered when there is available frame
 
+<!--Device-struct OH_OnFrameAvailableListener {...}--><!--Device-struct OH_OnFrameAvailableListener {...}-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 11
 
-**Related module**: [OH_NativeImage](capi-others-oh-nativeimage.md)
+**Related module**: [OH_NativeImage](capi-arkgraphics2d-oh-nativeimage.md)
 
 **Header file**: [native_image.h](capi-native-image-h.md)
 

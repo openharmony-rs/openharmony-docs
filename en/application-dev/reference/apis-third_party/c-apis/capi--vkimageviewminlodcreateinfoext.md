@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageViewMinLodCreateInfoEXT {...}--><!--Device-struct VkImageViewMinLodCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDescriptorImageInfo {...}--><!--Device-struct VkDescriptorImageInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

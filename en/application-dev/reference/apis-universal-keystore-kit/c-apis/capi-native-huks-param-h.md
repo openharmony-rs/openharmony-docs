@@ -44,6 +44,8 @@ struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)
 
 Initializes a parameter set. No parameter information is required, and the default available memory space is allocated to the parameter set. The initialized parameter set needs to be released by using [OH_Huks_FreeParamSet](capi-native-huks-param-h.md#oh_huks_freeparamset). To add parameters to a parameter set, you need to use [OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams) to add parameters and use [OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset) to construct the parameter set.
 
+<!--Device-struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)--><!--Device-struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)-End-->
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
@@ -69,6 +71,8 @@ struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const
 **Description**
 
 Adds parameters to a parameter set. After the parameters are added, use [OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset) to construct a parameter set.
+
+<!--Device-struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Param *params, uint32_t paramCnt)--><!--Device-struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Param *params, uint32_t paramCnt)-End-->
 
 **System capability**: SystemCapability.Security.Huks.Core
 
@@ -98,6 +102,8 @@ struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)
 
 Constructs a parameter set. After [OH_Huks_InitParamSet](capi-native-huks-param-h.md#oh_huks_initparamset) is called to initialize the parameter set and [OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams) is called to add parameters, serialize the parameter set and copy the data of the BLOB type to the adjacent memory area at the end of the **paramSet** structure.
 
+<!--Device-struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)--><!--Device-struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)-End-->
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
@@ -124,6 +130,8 @@ void OH_Huks_FreeParamSet(struct OH_Huks_ParamSet **paramSet)
 
 Frees a parameter set. This function frees the memory allocated by [OH_Huks_InitParamSet](capi-native-huks-param-h.md#oh_huks_initparamset).
 
+<!--Device-void OH_Huks_FreeParamSet(struct OH_Huks_ParamSet **paramSet)--><!--Device-void OH_Huks_FreeParamSet(struct OH_Huks_ParamSet **paramSet)-End-->
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
@@ -143,6 +151,8 @@ struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromPa
 **Description**
 
 Copies a parameter set (deep copy).
+
+<!--Device-struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromParamSet, uint32_t fromParamSetSize, struct OH_Huks_ParamSet **paramSet)--><!--Device-struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromParamSet, uint32_t fromParamSetSize, struct OH_Huks_ParamSet **paramSet)-End-->
 
 **System capability**: SystemCapability.Security.Huks.Core
 
@@ -172,6 +182,8 @@ struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, 
 
 Obtains a parameter from a parameter set.
 
+<!--Device-struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, uint32_t tag, struct OH_Huks_Param **param)--><!--Device-struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, uint32_t tag, struct OH_Huks_Param **param)-End-->
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
@@ -200,6 +212,8 @@ struct OH_Huks_Result OH_Huks_FreshParamSet(struct OH_Huks_ParamSet *paramSet, b
 
 Refreshes the [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) data in the parameter set.
 
+<!--Device-struct OH_Huks_Result OH_Huks_FreshParamSet(struct OH_Huks_ParamSet *paramSet, bool isCopy)--><!--Device-struct OH_Huks_Result OH_Huks_FreshParamSet(struct OH_Huks_ParamSet *paramSet, bool isCopy)-End-->
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
@@ -227,6 +241,8 @@ struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *
 
 Checks whether the tags in a parameter set are valid.
 
+<!--Device-struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *paramSet)--><!--Device-struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *paramSet)-End-->
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
@@ -252,6 +268,8 @@ struct OH_Huks_Result OH_Huks_IsParamSetValid(const struct OH_Huks_ParamSet *par
 **Description**
 
 Checks whether a parameter set is of the valid size.
+
+<!--Device-struct OH_Huks_Result OH_Huks_IsParamSetValid(const struct OH_Huks_ParamSet *paramSet, uint32_t size)--><!--Device-struct OH_Huks_Result OH_Huks_IsParamSetValid(const struct OH_Huks_ParamSet *paramSet, uint32_t size)-End-->
 
 **System capability**: SystemCapability.Security.Huks.Core
 
@@ -280,6 +298,8 @@ struct OH_Huks_Result OH_Huks_CheckParamMatch(const struct OH_Huks_Param *basePa
 
 Checks whether two parameters are the same.
 
+<!--Device-struct OH_Huks_Result OH_Huks_CheckParamMatch(const struct OH_Huks_Param *baseParam, const struct OH_Huks_Param *param)--><!--Device-struct OH_Huks_Result OH_Huks_CheckParamMatch(const struct OH_Huks_Param *baseParam, const struct OH_Huks_Param *param)-End-->
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
@@ -306,6 +326,8 @@ void OH_Huks_FreeKeyAliasSet(struct OH_Huks_KeyAliasSet *keyAliasSet)
 **Description**
 
 Frees a key alias set.
+
+<!--Device-void OH_Huks_FreeKeyAliasSet(struct OH_Huks_KeyAliasSet *keyAliasSet)--><!--Device-void OH_Huks_FreeKeyAliasSet(struct OH_Huks_KeyAliasSet *keyAliasSet)-End-->
 
 **System capability**: SystemCapability.Security.Huks.Core
 

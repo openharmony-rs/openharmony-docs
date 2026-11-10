@@ -8,11 +8,13 @@ typedef struct OH_Drawing_FontMgr OH_Drawing_FontMgr
 
 定义字体管理类，用于字体管理。
 
+<!--Device-typedef struct OH_Drawing_FontMgr OH_Drawing_FontMgr--><!--Device-typedef struct OH_Drawing_FontMgr OH_Drawing_FontMgr-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_types.h](capi-drawing-types-h.md)
 

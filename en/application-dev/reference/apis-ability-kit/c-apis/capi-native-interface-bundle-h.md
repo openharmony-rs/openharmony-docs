@@ -54,6 +54,8 @@ OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()
 
 Obtains the current application information, including the bundle name and fingerprint information.
 
+<!--Device-OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()--><!--Device-OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 9
@@ -73,6 +75,8 @@ char* OH_NativeBundle_GetAppId()
 **Description**
 
 Obtains the appId of the current application. The appId is the unique identifier of an application and is determined by the bundle name and signature information of the application. After using this function, you must manually release the pointer returned to prevent memory leakage.
+
+<!--Device-char* OH_NativeBundle_GetAppId()--><!--Device-char* OH_NativeBundle_GetAppId()-End-->
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
@@ -94,6 +98,8 @@ char* OH_NativeBundle_GetAppIdentifier()
 
 Obtains the appIdentifier of the current application. The appIdentifier does not change throughout the application lifecycle, including version updates, certificate changes, public and private key changes, and application migration. After using this function, you must manually release the pointer returned to prevent memory leakage.
 
+<!--Device-char* OH_NativeBundle_GetAppIdentifier()--><!--Device-char* OH_NativeBundle_GetAppIdentifier()-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 11
@@ -113,6 +119,8 @@ OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()
 **Description**
 
 Obtains the mainElement information of the current application, including the bundle name, module name, and ability name. After using this function, you must manually release the pointer returned to prevent memory leakage.
+
+<!--Device-OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()--><!--Device-OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()-End-->
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
@@ -134,6 +142,8 @@ char* OH_NativeBundle_GetCompatibleDeviceType()
 
 Obtains the compatible device type of the current application. It helps you optimize the layout and font size when distributing mobile applications to tablets or 2-in-1 devices. After using this function, you must manually release the pointer returned to prevent memory leakage.
 
+<!--Device-char* OH_NativeBundle_GetCompatibleDeviceType()--><!--Device-char* OH_NativeBundle_GetCompatibleDeviceType()-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 14
@@ -153,6 +163,8 @@ bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)
 **Description**
 
 Checks whether the current application is in debug mode.
+
+<!--Device-bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)--><!--Device-bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)-End-->
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
@@ -180,6 +192,8 @@ OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)
 
 Obtains the module metadata array of the current application. After using this function, you must manually release the pointer returned to prevent memory leakage.
 
+<!--Device-OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)--><!--Device-OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)-End-->
+
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 20
@@ -205,6 +219,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, O
 **Description**
 
 Obtain a list of ability that support opening files in a certain format.
+
+<!--Device-BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo, size_t* size)--><!--Device-BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo, size_t* size)-End-->
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 

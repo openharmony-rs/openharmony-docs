@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct __ptrace_seccomp_metadata {...}--><!--Device-struct __ptrace_seccomp_metadata {...}-End-->
+
 ## Summary
 
 ### Member variables

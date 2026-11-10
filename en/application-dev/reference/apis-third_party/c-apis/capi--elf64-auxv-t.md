@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf64_auxv_t {...}--><!--Device-struct Elf64_auxv_t {...}-End-->
+
 ## Summary
 
 ### Member variables

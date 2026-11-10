@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSwapchainPresentBarrierCreateInfoNV {...}--><!--Device-struct VkSwapchainPresentBarrierCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

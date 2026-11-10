@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageMemoryBarrier {...}--><!--Device-struct VkImageMemoryBarrier {...}-End-->
+
 ## Summary
 
 ### Member variables

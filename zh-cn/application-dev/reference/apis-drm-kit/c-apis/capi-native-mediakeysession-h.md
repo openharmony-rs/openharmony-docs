@@ -56,6 +56,8 @@ typedef Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, ui
 
 MediaKeySession事件触发时将调用的回调函数，如密钥过期事件。
 
+<!--Device-typedef Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)--><!--Device-typedef Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
@@ -85,6 +87,8 @@ typedef Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo,
 
 密钥变更时调用的回调函数。
 
+<!--Device-typedef Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable)--><!--Device-typedef Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
@@ -111,6 +115,8 @@ typedef Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKe
 **描述：**
 
 事件触发时将调用的回调函数。事件信息来源于媒体播放过程中的DRM事件，通过MediaKeySession实例触发。
+
+<!--Device-typedef Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)--><!--Device-typedef Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -142,6 +148,8 @@ typedef Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *med
 
 密钥变更时将调用的回调。
 
+<!--Device-typedef Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo, bool newKeysAvailable)--><!--Device-typedef Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo, bool newKeysAvailable)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 12
@@ -170,6 +178,8 @@ Drm_ErrCode OH_MediaKeySession_GenerateMediaKeyRequest(MediaKeySession *mediaKey
 
 生成媒体密钥请求。
 
+<!--Device-Drm_ErrCode OH_MediaKeySession_GenerateMediaKeyRequest(MediaKeySession *mediaKeySession, DRM_MediaKeyRequestInfo *info, DRM_MediaKeyRequest *mediaKeyRequest)--><!--Device-Drm_ErrCode OH_MediaKeySession_GenerateMediaKeyRequest(MediaKeySession *mediaKeySession, DRM_MediaKeyRequestInfo *info, DRM_MediaKeyRequest *mediaKeyRequest)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
@@ -197,6 +207,8 @@ Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKey
 **描述：**
 
 处理媒体密钥请求响应。
+
+<!--Device-Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKeySession, uint8_t *response, int32_t responseLen, uint8_t *offlineMediaKeyId, int32_t *offlineMediaKeyIdLen)--><!--Device-Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKeySession, uint8_t *response, int32_t responseLen, uint8_t *offlineMediaKeyId, int32_t *offlineMediaKeyIdLen)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -228,6 +240,8 @@ Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySess
 
 检查媒体密钥状态。
 
+<!--Device-Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySession, DRM_MediaKeyStatus *mediaKeyStatus)--><!--Device-Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySession, DRM_MediaKeyStatus *mediaKeyStatus)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
@@ -255,6 +269,8 @@ Drm_ErrCode OH_MediaKeySession_ClearMediaKeys(MediaKeySession *mediaKeySession)
 
 清除当前会话的媒体密钥。
 
+<!--Device-Drm_ErrCode OH_MediaKeySession_ClearMediaKeys(MediaKeySession *mediaKeySession)--><!--Device-Drm_ErrCode OH_MediaKeySession_ClearMediaKeys(MediaKeySession *mediaKeySession)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
@@ -280,6 +296,8 @@ Drm_ErrCode OH_MediaKeySession_GenerateOfflineReleaseRequest(MediaKeySession *me
 **描述：**
 
 生成离线媒体密钥释放请求。
+
+<!--Device-Drm_ErrCode OH_MediaKeySession_GenerateOfflineReleaseRequest(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseRequest, int32_t *releaseRequestLen)--><!--Device-Drm_ErrCode OH_MediaKeySession_GenerateOfflineReleaseRequest(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseRequest, int32_t *releaseRequestLen)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -311,6 +329,8 @@ Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *me
 
 处理离线媒体密钥释放请求响应。
 
+<!--Device-Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseResponse, int32_t releaseResponseLen)--><!--Device-Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseResponse, int32_t releaseResponseLen)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
@@ -341,6 +361,8 @@ Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKey
 
 恢复离线媒体密钥到当前会话。
 
+<!--Device-Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)--><!--Device-Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
@@ -369,6 +391,8 @@ Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaK
 
 获取会话的内容保护级别。
 
+<!--Device-Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaKeySession, DRM_ContentProtectionLevel *contentProtectionLevel)--><!--Device-Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaKeySession, DRM_ContentProtectionLevel *contentProtectionLevel)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
@@ -395,6 +419,8 @@ Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *media
 **描述：**
 
 是否需要安全解码。
+
+<!--Device-Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *mediaKeySession, const char *mimeType, bool *status)--><!--Device-Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *mediaKeySession, const char *mimeType, bool *status)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -424,6 +450,8 @@ Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *media
 
 设置MediaKeySession事件回调。该回调不返回MediaKeySession实例，适用于单个MediaKeySession场景。
 
+<!--Device-Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *mediaKeySession, MediaKeySession_Callback *callback)--><!--Device-Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *mediaKeySession, MediaKeySession_Callback *callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 11
@@ -451,6 +479,8 @@ Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession, OH_
 
 设置MediaKeySession事件回调。该回调返回MediaKeySession实例，适用于多个MediaKeySession场景。
 
+<!--Device-Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession, OH_MediaKeySession_Callback *callback)--><!--Device-Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession, OH_MediaKeySession_Callback *callback)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
 **起始版本：** 12
@@ -477,6 +507,8 @@ Drm_ErrCode OH_MediaKeySession_Destroy(MediaKeySession *mediaKeySession)
 **描述：**
 
 销毁MediaKeySession实例。
+
+<!--Device-Drm_ErrCode OH_MediaKeySession_Destroy(MediaKeySession *mediaKeySession)--><!--Device-Drm_ErrCode OH_MediaKeySession_Destroy(MediaKeySession *mediaKeySession)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 

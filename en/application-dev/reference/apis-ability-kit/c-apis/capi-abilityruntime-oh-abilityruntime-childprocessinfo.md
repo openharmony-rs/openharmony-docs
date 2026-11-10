@@ -8,11 +8,13 @@ typedef struct OH_AbilityRuntime_ChildProcessInfo *OH_AbilityRuntime_ChildProces
 
 Defines the pointer to OH_AbilityRuntime_ChildProcessInfo.
 
+<!--Device-typedef struct OH_AbilityRuntime_ChildProcessInfo *OH_AbilityRuntime_ChildProcessInfoHandle--><!--Device-typedef struct OH_AbilityRuntime_ChildProcessInfo *OH_AbilityRuntime_ChildProcessInfoHandle-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.1
 
-**Related module**: [AbilityRuntime](capi-others-abilityruntime.md)
+**Related module**: [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 **Header file**: [child_process_info.h](capi-child-process-info-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-union VkPerformanceCounterResultKHR {...}--><!--Device-union VkPerformanceCounterResultKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

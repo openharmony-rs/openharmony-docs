@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct api_property_descriptor {...}--><!--Device-struct api_property_descriptor {...}-End-->
+
 ## Summary
 
 ### Member variables

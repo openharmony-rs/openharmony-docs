@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoEncodeH265SessionCreateInfoKHR {...}--><!--Device-struct VkVideoEncodeH265SessionCreateInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

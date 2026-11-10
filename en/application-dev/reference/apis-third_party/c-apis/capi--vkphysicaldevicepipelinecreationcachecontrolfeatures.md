@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePipelineCreationCacheControlFeatures {...}--><!--Device-struct VkPhysicalDevicePipelineCreationCacheControlFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

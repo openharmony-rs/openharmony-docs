@@ -8,11 +8,13 @@ struct OH_UsbManager_UsbConfig {...}
 
 定义USB配置。一个[OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md)可以包含多个 <br>OH_UsbManager_UsbConfig实例。
 
+<!--Device-struct OH_UsbManager_UsbConfig {...}--><!--Device-struct OH_UsbManager_UsbConfig {...}-End-->
+
 **系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
-**相关模块：** [UsbManager](capi-others-usbmanager.md)
+**相关模块：** [UsbManager](capi-basic-services-kit-usbmanager.md)
 
 **所在头文件：** [ohusb_manager.h](capi-ohusb-manager-h.md)
 

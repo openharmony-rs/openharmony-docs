@@ -97,6 +97,8 @@ enum ArkUI_DismissReason
 
 Enumerates the actions for triggering closure of the dialog box.
 
+<!--Device-ArkUI_DismissReason--><!--Device-ArkUI_DismissReason-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -117,6 +119,8 @@ enum ArkUI_DialogState
 **Description**
 
 Enumerates the state of dialog.
+
+<!--Device-ArkUI_DialogState--><!--Device-ArkUI_DialogState-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,6 +145,8 @@ enum ArkUI_LevelMode
 
 Enumerates the level mode.
 
+<!--Device-ArkUI_LevelMode--><!--Device-ArkUI_LevelMode-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
@@ -159,6 +165,8 @@ enum ArkUI_ImmersiveMode
 **Description**
 
 Enumerates the immersive mode.
+
+<!--Device-ArkUI_ImmersiveMode--><!--Device-ArkUI_ImmersiveMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -179,6 +187,8 @@ enum OH_ArkUI_NativeModule_HandednessMode
 
 Enumerates the handedness adaptation mode of the dialog box.
 
+<!--Device-OH_ArkUI_NativeModule_HandednessMode--><!--Device-OH_ArkUI_NativeModule_HandednessMode-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -198,6 +208,8 @@ enum OH_ArkUI_DialogDisplayModeInSubWindow
 **Description**
 
 Enumerates the dialog display mode in subwindow.
+
+<!--Device-OH_ArkUI_DialogDisplayModeInSubWindow--><!--Device-OH_ArkUI_DialogDisplayModeInSubWindow-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -221,6 +233,8 @@ typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)
 
 Invoked when the dialog box is closed.
 
+<!--Device-typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)--><!--Device-typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -234,6 +248,8 @@ void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent*
 **Description**
 
 Sets whether to block the system behavior of dismissing a dialog box.
+
+<!--Device-void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent* event, bool shouldBlockDismiss)--><!--Device-void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent* event, bool shouldBlockDismiss)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -255,6 +271,8 @@ void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)
 **Description**
 
 Obtains the pointer to user data in a dialog box dismiss event object.
+
+<!--Device-void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)--><!--Device-void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -282,6 +300,8 @@ int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* e
 
 Obtains the dismiss reason from a dialog box dismiss event object.
 
+<!--Device-int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* event)--><!--Device-int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* event)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -307,6 +327,8 @@ int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, voi
 **Description**
 
 Displays a custom dialog box.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))--><!--Device-int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -335,6 +357,8 @@ typedef void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, vo
 
 Callback function when the dialog is displayed.
 
+<!--Device-typedef void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, void* userData)--><!--Device-typedef void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, void* userData)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
@@ -357,6 +381,8 @@ void OH_ArkUI_CustomDialog_OpenDialogWithCallback(ArkUI_CustomDialogOptions* opt
 
 Displays a custom dialog box.
 
+<!--Device-void OH_ArkUI_CustomDialog_OpenDialogWithCallback(ArkUI_CustomDialogOptions* options, void* userData, ArkUI_OpenDialogCallback callback)--><!--Device-void OH_ArkUI_CustomDialog_OpenDialogWithCallback(ArkUI_CustomDialogOptions* options, void* userData, ArkUI_OpenDialogCallback callback)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
@@ -378,6 +404,8 @@ int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, v
 **Description**
 
 Updates a custom dialog box.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))--><!--Device-int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -406,6 +434,8 @@ int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)
 
 Closes a custom dialog box.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)--><!--Device-int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -431,6 +461,8 @@ ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle 
 **Description**
 
 Creates custom dialog box options.
+
+<!--Device-ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle content)--><!--Device-ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle content)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -458,6 +490,8 @@ void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)
 
 Destroys the custom dialog box options.
 
+<!--Device-void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)--><!--Device-void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -481,6 +515,8 @@ Sets the level mode for a custom dialog box.
 > **Note**:
 >
 > This method must be called before the <b>OH_ArkUI_CustomDialog_OpenDialog</b> method.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, ArkUI_LevelMode levelMode)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, ArkUI_LevelMode levelMode)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -508,6 +544,8 @@ int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* option
 **Description**
 
 Sets the level uniqueId for a custom dialog box.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* options, int32_t uniqueId)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* options, int32_t uniqueId)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -540,6 +578,8 @@ Sets the immersive mode for a custom dialog box.
 >
 > This method must be called before the <b>OH_ArkUI_CustomDialog_OpenDialog</b> method.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetImmersiveMode(ArkUI_CustomDialogOptions* options, ArkUI_ImmersiveMode immersiveMode)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetImmersiveMode(ArkUI_CustomDialogOptions* options, ArkUI_ImmersiveMode immersiveMode)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -567,6 +607,8 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* opti
 
 Sets the background color of the dialog box.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* options, uint32_t backgroundColor)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* options, uint32_t backgroundColor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -593,6 +635,8 @@ int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options
 **Description**
 
 Sets the corner radius for a custom dialog box.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options, float topLeft, float topRight, float bottomLeft, float bottomRight)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options, float topLeft, float topRight, float bottomLeft, float bottomRight)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -623,6 +667,8 @@ int32_t OH_ArkUI_CustomDialog_SetBorderWidth(ArkUI_CustomDialogOptions* options,
 **Description**
 
 Sets the border width of the dialog box.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetBorderWidth(ArkUI_CustomDialogOptions* options, float top, float right, float bottom, float left, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetBorderWidth(ArkUI_CustomDialogOptions* options, float top, float right, float bottom, float left, ArkUI_LengthMetricUnit unit)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -655,6 +701,8 @@ int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options,
 
 Sets the border color of the dialog box.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options, uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options, uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -684,6 +732,8 @@ int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options,
 **Description**
 
 Sets the border style of the dialog box.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options, int32_t top, int32_t right, int32_t bottom, int32_t left)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options, int32_t top, int32_t right, int32_t bottom, int32_t left)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -715,6 +765,8 @@ int32_t OH_ArkUI_CustomDialog_SetWidth(ArkUI_CustomDialogOptions* options, float
 
 Sets the width of the dialog box background.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetWidth(ArkUI_CustomDialogOptions* options, float width, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetWidth(ArkUI_CustomDialogOptions* options, float width, ArkUI_LengthMetricUnit unit)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -742,6 +794,8 @@ int32_t OH_ArkUI_CustomDialog_SetHeight(ArkUI_CustomDialogOptions* options, floa
 **Description**
 
 Sets the height of the dialog box background.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetHeight(ArkUI_CustomDialogOptions* options, float height, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetHeight(ArkUI_CustomDialogOptions* options, float height, ArkUI_LengthMetricUnit unit)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -771,6 +825,8 @@ int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkU
 
 Sets the shadow of the dialog box background.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkUI_ShadowStyle shadow)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkUI_ShadowStyle shadow)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -797,6 +853,8 @@ int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options
 **Description**
 
 Sets the custom shadow of the dialog box background.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* customShadow)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* customShadow)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -825,6 +883,8 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* 
 
 Sets the background blur style of the dialog box.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* options, ArkUI_BlurStyle blurStyle)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* options, ArkUI_BlurStyle blurStyle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -851,6 +911,8 @@ int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, i
 **Description**
 
 Sets the alignment mode of the dialog box.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, int32_t alignment, float offsetX, float offsetY)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, int32_t alignment, float offsetX, float offsetY)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -881,6 +943,8 @@ int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, b
 
 Sets the modal mode for a custom dialog box.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, bool isModal)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, bool isModal)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -908,6 +972,8 @@ int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, 
 
 Specifies whether to allow users to touch the mask to dismiss the custom dialog box.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, bool autoCancel)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, bool autoCancel)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -934,6 +1000,8 @@ int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* option
 **Description**
 
 Sets whether to display the dialog box in a subwindow.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* options, bool showInSubwindow)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* options, bool showInSubwindow)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -966,6 +1034,8 @@ Sets the display mode of the custom dialog box in a subwindow.
 >
 > This method takes effect only when the dialog box is displayed in a subwindow.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOptions* options, OH_ArkUI_DialogDisplayModeInSubWindow displayModeInSubWindow)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOptions* options, OH_ArkUI_DialogDisplayModeInSubWindow displayModeInSubWindow)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -992,6 +1062,8 @@ int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32
 **Description**
 
 Sets the mask for a custom dialog box.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32_t maskColor, const ArkUI_Rect* maskRect)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32_t maskColor, const ArkUI_Rect* maskRect)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1021,6 +1093,8 @@ int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* op
 
 Sets the keyboard avoidance mode of the dialog box.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* options, ArkUI_KeyboardAvoidMode keyboardAvoidMode)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* options, ArkUI_KeyboardAvoidMode keyboardAvoidMode)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -1047,6 +1121,8 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* opt
 **Description**
 
 Sets whether to enable the hover mode for the dialog box.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* options, bool enabled)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* options, bool enabled)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1075,6 +1151,8 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* option
 
 Set the default display area of the dialog box in hover mode.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* options, ArkUI_HoverModeAreaType hoverModeAreaType)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* options, ArkUI_HoverModeAreaType hoverModeAreaType)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -1101,6 +1179,8 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOp
 **Description**
 
 Registers a callback for the dismissal event of the custom dialog box.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(ArkUI_DialogDismissEvent* event))--><!--Device-int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(ArkUI_DialogDismissEvent* event))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1130,6 +1210,8 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOpt
 
 Registers a callback to be invoked when the custom dialog box is about to appear.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))--><!--Device-int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -1157,6 +1239,8 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOpti
 **Description**
 
 Registers a callback to be invoked when the custom dialog box appears.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))--><!--Device-int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1186,6 +1270,8 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialog
 
 Registers a callback to be invoked when the custom dialog box is about to disappear.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))--><!--Device-int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -1213,6 +1299,8 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogO
 **Description**
 
 Registers a callback to be invoked when the custom dialog box disappears.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))--><!--Device-int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1242,6 +1330,8 @@ int32_t OH_ArkUI_CustomDialog_GetState(ArkUI_NativeDialogHandle handle, ArkUI_Di
 
 Get state of dialog.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_GetState(ArkUI_NativeDialogHandle handle, ArkUI_DialogState* state)--><!--Device-int32_t OH_ArkUI_CustomDialog_GetState(ArkUI_NativeDialogHandle handle, ArkUI_DialogState* state)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -1268,6 +1358,8 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOp
 **Description**
 
 Sets the background blur effect for a dialog box.
+
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* backgroundBlurStyleOptions)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* backgroundBlurStyleOptions)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1296,6 +1388,8 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundEffect(ArkUI_CustomDialogOptions* opt
 
 Sets the background effect parameters for a dialog box.
 
+<!--Device-int32_t OH_ArkUI_CustomDialog_SetBackgroundEffect(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* backgroundEffect)--><!--Device-int32_t OH_ArkUI_CustomDialog_SetBackgroundEffect(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* backgroundEffect)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
@@ -1322,6 +1416,8 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions(ArkUI_Cust
 **Description**
 
 Sets the system material of the dialog box.
+
+<!--Device-int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions(ArkUI_CustomDialogOptions* options, ArkUI_ImmersiveMaterialHandle material)--><!--Device-int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions(ArkUI_CustomDialogOptions* options, ArkUI_ImmersiveMaterialHandle material)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1350,6 +1446,8 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterial(ArkUI_NativeDialogH
 
 Sets the system material of the dialog box.
 
+<!--Device-int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterial(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMaterialHandle material)--><!--Device-int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterial(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMaterialHandle material)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
@@ -1377,6 +1475,8 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandednessInOptions(ArkUI_C
 
 Sets the handedness adaptation mode of the dialog box in options.<br> The dialog box offsets towards the trigger component position (OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_ANCHOR) or the grip hand (the hand holding the device) (OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_GRIP_HAND). It falls back to the current layout when no trigger component exists or the awareness service is unavailable.
 
+<!--Device-int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandednessInOptions(ArkUI_CustomDialogOptions* options, OH_ArkUI_NativeModule_HandednessMode mode)--><!--Device-int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandednessInOptions(ArkUI_CustomDialogOptions* options, OH_ArkUI_NativeModule_HandednessMode mode)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.1.0
@@ -1403,6 +1503,8 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandedness(ArkUI_NativeDial
 **Description**
 
 Sets the handedness adaptation mode of the dialog box.<br> The dialog box offsets towards the trigger component position (OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_ANCHOR) or the grip hand (the hand holding the device) (OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_GRIP_HAND). It falls back to the current layout when no trigger component exists or the awareness service is unavailable. This method must be called before the <b>show</b> method.
+
+<!--Device-int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandedness(ArkUI_NativeDialogHandle handle, OH_ArkUI_NativeModule_HandednessMode mode)--><!--Device-int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandedness(ArkUI_NativeDialogHandle handle, OH_ArkUI_NativeModule_HandednessMode mode)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

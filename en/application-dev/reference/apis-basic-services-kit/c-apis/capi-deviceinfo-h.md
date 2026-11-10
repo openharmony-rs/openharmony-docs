@@ -64,6 +64,8 @@ const char *OH_GetDeviceType(void)
 
 Obtains the device type. This API returns a predefined device type in the form of a string.
 
+<!--Device-const char *OH_GetDeviceType(void)--><!--Device-const char *OH_GetDeviceType(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -83,6 +85,8 @@ const char *OH_GetManufacture(void)
 **Description**
 
 Obtains the device manufacturer.
+
+<!--Device-const char *OH_GetManufacture(void)--><!--Device-const char *OH_GetManufacture(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -104,6 +108,8 @@ const char *OH_GetBrand(void)
 
 Obtains the device brand.
 
+<!--Device-const char *OH_GetBrand(void)--><!--Device-const char *OH_GetBrand(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -123,6 +129,8 @@ const char *OH_GetMarketName(void)
 **Description**
 
 Obtains the external product series, that is, the market name.
+
+<!--Device-const char *OH_GetMarketName(void)--><!--Device-const char *OH_GetMarketName(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -144,6 +152,8 @@ const char *OH_GetProductSeries(void)
 
 Obtains the product series.
 
+<!--Device-const char *OH_GetProductSeries(void)--><!--Device-const char *OH_GetProductSeries(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -163,6 +173,8 @@ const char *OH_GetProductModel(void)
 **Description**
 
 Obtains the product model.
+
+<!--Device-const char *OH_GetProductModel(void)--><!--Device-const char *OH_GetProductModel(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -184,6 +196,8 @@ const char *OH_GetSoftwareModel(void)
 
 Obtains the software model. When the same software version is used on different hardware models, this field is used to distinguish different software branches.
 
+<!--Device-const char *OH_GetSoftwareModel(void)--><!--Device-const char *OH_GetSoftwareModel(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -203,6 +217,8 @@ const char *OH_GetHardwareModel(void)
 **Description**
 
 Obtains the hardware model.
+
+<!--Device-const char *OH_GetHardwareModel(void)--><!--Device-const char *OH_GetHardwareModel(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -224,6 +240,8 @@ const char *OH_GetBootloaderVersion(void)
 
 Obtains the Bootloader version.
 
+<!--Device-const char *OH_GetBootloaderVersion(void)--><!--Device-const char *OH_GetBootloaderVersion(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -243,6 +261,8 @@ const char *OH_GetAbiList(void)
 **Description**
 
 Obtains the ABI list.
+
+<!--Device-const char *OH_GetAbiList(void)--><!--Device-const char *OH_GetAbiList(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -264,6 +284,8 @@ const char *OH_GetSecurityPatchTag(void)
 
 Obtains the security patch tag.
 
+<!--Device-const char *OH_GetSecurityPatchTag(void)--><!--Device-const char *OH_GetSecurityPatchTag(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -283,6 +305,8 @@ const char *OH_GetDisplayVersion(void)
 **Description**
 
 Obtains the display version.
+
+<!--Device-const char *OH_GetDisplayVersion(void)--><!--Device-const char *OH_GetDisplayVersion(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -304,6 +328,8 @@ const char *OH_GetIncrementalVersion(void)
 
 Obtains the incremental version.
 
+<!--Device-const char *OH_GetIncrementalVersion(void)--><!--Device-const char *OH_GetIncrementalVersion(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -323,6 +349,8 @@ const char *OH_GetOsReleaseType(void)
 **Description**
 
 Obtains the OS release type. This API returns a predefined OS release type in the form of a string.
+
+<!--Device-const char *OH_GetOsReleaseType(void)--><!--Device-const char *OH_GetOsReleaseType(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -344,6 +372,8 @@ const char *OH_GetOSFullName(void)
 
 Obtains the OS full name.
 
+<!--Device-const char *OH_GetOSFullName(void)--><!--Device-const char *OH_GetOSFullName(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -363,6 +393,8 @@ int OH_GetSdkApiVersion(void)
 **Description**
 
 Obtains the SDK API version.
+
+<!--Device-int OH_GetSdkApiVersion(void)--><!--Device-int OH_GetSdkApiVersion(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -384,6 +416,8 @@ int OH_GetSdkMinorApiVersion(void)
 
 Obtains the SDK minor API version. Starting from API version 26.0.0, the minor version is introduced as part of semantic versioning. It is the middle field in the semantic version and is an integer. The complete API version is represented by sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion.
 
+<!--Device-int OH_GetSdkMinorApiVersion(void)--><!--Device-int OH_GetSdkMinorApiVersion(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 26.0.1
@@ -403,6 +437,8 @@ int OH_GetSdkPatchApiVersion(void)
 **Description**
 
 Obtains the SDK patch API version. Starting from API version 26.0.0, the patch version is introduced as part of semantic versioning. It is the third field in the semantic version and is an integer. The complete API version is represented by sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion.
+
+<!--Device-int OH_GetSdkPatchApiVersion(void)--><!--Device-int OH_GetSdkPatchApiVersion(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -424,6 +460,8 @@ int OH_GetFirstApiVersion(void)
 
 Obtains the first API version, which is the API version supported by the device when it was first released.
 
+<!--Device-int OH_GetFirstApiVersion(void)--><!--Device-int OH_GetFirstApiVersion(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -443,6 +481,8 @@ const char *OH_GetVersionId(void)
 **Description**
 
 Obtains the version ID.
+
+<!--Device-const char *OH_GetVersionId(void)--><!--Device-const char *OH_GetVersionId(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -464,6 +504,8 @@ const char *OH_GetBuildType(void)
 
 Obtains the build type.
 
+<!--Device-const char *OH_GetBuildType(void)--><!--Device-const char *OH_GetBuildType(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -483,6 +525,8 @@ const char *OH_GetBuildUser(void)
 **Description**
 
 Obtains the build user.
+
+<!--Device-const char *OH_GetBuildUser(void)--><!--Device-const char *OH_GetBuildUser(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -504,6 +548,8 @@ const char *OH_GetBuildHost(void)
 
 Obtains the build host.
 
+<!--Device-const char *OH_GetBuildHost(void)--><!--Device-const char *OH_GetBuildHost(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -523,6 +569,8 @@ const char *OH_GetBuildTime(void)
 **Description**
 
 Obtains the build time.
+
+<!--Device-const char *OH_GetBuildTime(void)--><!--Device-const char *OH_GetBuildTime(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -544,6 +592,8 @@ const char *OH_GetBuildRootHash(void)
 
 Obtains the build root hash.
 
+<!--Device-const char *OH_GetBuildRootHash(void)--><!--Device-const char *OH_GetBuildRootHash(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -563,6 +613,8 @@ const char *OH_GetDistributionOSName(void)
 **Description**
 
 Obtains the ISV distribution OS name. ISVs can use their own OS names.
+
+<!--Device-const char *OH_GetDistributionOSName(void)--><!--Device-const char *OH_GetDistributionOSName(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -584,6 +636,8 @@ const char *OH_GetDistributionOSVersion(void)
 
 Obtains the ISV distribution OS version.
 
+<!--Device-const char *OH_GetDistributionOSVersion(void)--><!--Device-const char *OH_GetDistributionOSVersion(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -603,6 +657,8 @@ int OH_GetDistributionOSApiVersion(void)
 **Description**
 
 Obtains the ISV distribution OS API version.
+
+<!--Device-int OH_GetDistributionOSApiVersion(void)--><!--Device-int OH_GetDistributionOSApiVersion(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -624,6 +680,8 @@ const char *OH_GetDistributionOSReleaseType(void)
 
 Obtains the ISV distribution OS release type.
 
+<!--Device-const char *OH_GetDistributionOSReleaseType(void)--><!--Device-const char *OH_GetDistributionOSReleaseType(void)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Since**: 10
@@ -644,6 +702,8 @@ int32_t OH_GetDiskSN(char *diskSn)
 
 Obtains the Disk Serial Number.
 
+<!--Device-int32_t OH_GetDiskSN(char *diskSn)--><!--Device-int32_t OH_GetDiskSN(char *diskSn)-End-->
+
 **System capability**: SystemCapability.Startup.SystemInfo
 
 **Required permission**: ohos.permission.ACCESS_DISK_PHY_INFO
@@ -660,7 +720,7 @@ Obtains the Disk Serial Number.
 
 | Type | Description |
 | -- | -- |
-| int32_t | <ul> <li>0 if the operation is successful.</li> <li>201 if the caller does not have ohos.permission.ACCESS_DISK_PHY_INFO.</li> </ul> |
+| int32_t | <ul> <li>0 if the operation is successful.</li> <li>201 if the caller does not have ohos.permission.ACCESS_DISK_PHY_INFO.</li> <li>401 if the caller passes an invalid input parameter.</li> </ul> |
 
 ### OH_GetOdid()
 
@@ -671,6 +731,8 @@ const char *OH_GetOdid(void)
 **Description**
 
 Obtains the Open device identifier.
+
+<!--Device-const char *OH_GetOdid(void)--><!--Device-const char *OH_GetOdid(void)-End-->
 
 **System capability**: SystemCapability.Startup.SystemInfo
 

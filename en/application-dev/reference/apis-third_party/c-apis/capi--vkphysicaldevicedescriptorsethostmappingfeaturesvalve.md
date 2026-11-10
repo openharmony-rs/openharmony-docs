@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE {...}--><!--Device-struct VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE {...}-End-->
+
 ## Summary
 
 ### Member variables

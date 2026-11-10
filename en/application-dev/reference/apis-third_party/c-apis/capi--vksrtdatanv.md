@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSRTDataNV {...}--><!--Device-struct VkSRTDataNV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct sigevent {...}--><!--Device-struct sigevent {...}-End-->
+
 ## Summary
 
 ### Member variables
@@ -30,5 +32,7 @@ void (*sigev_notify_function)(union sigval)
 ```
 
 **Description**
+
+<!--Device-void (*sigev_notify_function)(union sigval)--><!--Device-void (*sigev_notify_function)(union sigval)-End-->
 
 

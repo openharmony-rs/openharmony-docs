@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRectLayerKHR {...}--><!--Device-struct VkRectLayerKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

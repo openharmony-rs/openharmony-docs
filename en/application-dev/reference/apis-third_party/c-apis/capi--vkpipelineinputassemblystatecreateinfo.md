@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineInputAssemblyStateCreateInfo {...}--><!--Device-struct VkPipelineInputAssemblyStateCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

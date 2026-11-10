@@ -8,11 +8,13 @@ struct Http_ClientCert {...}
 
 发送到服务端的客户端证书配置，服务端将通过客户端证书校验客户端身份。
 
+<!--Device-struct Http_ClientCert {...}--><!--Device-struct Http_ClientCert {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 
-**相关模块：** [netstack](capi-others-netstack.md)
+**相关模块：** [netstack](capi-network-kit-netstack.md)
 
 **所在头文件：** [net_http_type.h](capi-net-http-type-h.md)
 

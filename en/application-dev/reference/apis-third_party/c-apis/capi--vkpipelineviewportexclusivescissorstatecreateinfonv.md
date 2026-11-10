@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineViewportExclusiveScissorStateCreateInfoNV {...}--><!--Device-struct VkPipelineViewportExclusiveScissorStateCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

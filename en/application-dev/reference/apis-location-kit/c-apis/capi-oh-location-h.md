@@ -34,6 +34,8 @@ Location_ResultCode OH_Location_IsLocatingEnabled(bool* enabled)
 
 Check whether the location switch is enabled.
 
+<!--Device-Location_ResultCode OH_Location_IsLocatingEnabled(bool* enabled)--><!--Device-Location_ResultCode OH_Location_IsLocatingEnabled(bool* enabled)-End-->
+
 **System capability**: SystemCapability.Location.Location.Core
 
 **Since**: 13
@@ -59,6 +61,8 @@ Location_ResultCode OH_Location_StartLocating(const Location_RequestConfig* requ
 **Description**
 
 Start locating and subscribe location changed.
+
+<!--Device-Location_ResultCode OH_Location_StartLocating(const Location_RequestConfig* requestConfig)--><!--Device-Location_ResultCode OH_Location_StartLocating(const Location_RequestConfig* requestConfig)-End-->
 
 **System capability**: SystemCapability.Location.Location.Core
 
@@ -87,6 +91,8 @@ Location_ResultCode OH_Location_StopLocating(const Location_RequestConfig* reque
 **Description**
 
 Stop locating and unsubscribe location changed.
+
+<!--Device-Location_ResultCode OH_Location_StopLocating(const Location_RequestConfig* requestConfig)--><!--Device-Location_ResultCode OH_Location_StopLocating(const Location_RequestConfig* requestConfig)-End-->
 
 **System capability**: SystemCapability.Location.Location.Core
 

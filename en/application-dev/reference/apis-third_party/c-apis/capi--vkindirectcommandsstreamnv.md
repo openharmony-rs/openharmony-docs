@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkIndirectCommandsStreamNV {...}--><!--Device-struct VkIndirectCommandsStreamNV {...}-End-->
+
 ## Summary
 
 ### Member variables

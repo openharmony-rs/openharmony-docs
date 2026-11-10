@@ -109,6 +109,8 @@ enum CommonEvent_ErrCode
 
 Enumerates the error codes.
 
+<!--Device-CommonEvent_ErrCode--><!--Device-CommonEvent_ErrCode-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -139,6 +141,8 @@ typedef void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)
 
 Defines the callback function of a common event.
 
+<!--Device-typedef void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)--><!--Device-typedef void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -158,6 +162,8 @@ CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events
 **Description**
 
 Creates the subscriber information.
+
+<!--Device-CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)--><!--Device-CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -186,6 +192,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeI
 
 Sets the permission of the publisher.
 
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeInfo* info, const char* permission)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeInfo* info, const char* permission)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -212,6 +220,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeI
 **Description**
 
 Sets a bundle name of the publisher.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeInfo* info, const char* bundleName)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeInfo* info, const char* bundleName)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -240,6 +250,8 @@ void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)
 
 Destroys the subscriber information.
 
+<!--Device-void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)--><!--Device-void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -259,6 +271,8 @@ CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_Subscr
 **Description**
 
 Creates a subscriber.
+
+<!--Device-CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info, CommonEvent_ReceiveCallback callback)--><!--Device-CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info, CommonEvent_ReceiveCallback callback)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -287,6 +301,8 @@ void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)
 
 Destroys a subscriber.
 
+<!--Device-void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)--><!--Device-void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -306,6 +322,8 @@ CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subsc
 **Description**
 
 Subscribes to a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -333,6 +351,8 @@ CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* sub
 
 Unsubscribes from a common event.
 
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -358,6 +378,8 @@ const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvDat
 **Description**
 
 Obtains the name of a common event.
+
+<!--Device-const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvData)--><!--Device-const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvData)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -385,6 +407,8 @@ int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)
 
 Obtains the result code (integer type) of a common event.
 
+<!--Device-int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)--><!--Device-int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -410,6 +434,8 @@ const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvD
 **Description**
 
 Obtains the result data (string type) of a common event.
+
+<!--Device-const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvData)--><!--Device-const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvData)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -437,6 +463,8 @@ const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* r
 
 Obtains the bundle name of a common event.
 
+<!--Device-const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* rcvData)--><!--Device-const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* rcvData)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -462,6 +490,8 @@ const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const Comm
 **Description**
 
 Obtains the additional information of a common event.
+
+<!--Device-const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const CommonEvent_RcvData* rcvData)--><!--Device-const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const CommonEvent_RcvData* rcvData)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -489,6 +519,8 @@ CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)
 
 Creates a property object of a common event.
 
+<!--Device-CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)--><!--Device-CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -515,6 +547,8 @@ void OH_CommonEvent_DestroyPublishInfo(CommonEvent_PublishInfo* info)
 
 Destroys a property object of a common event.
 
+<!--Device-void OH_CommonEvent_DestroyPublishInfo(CommonEvent_PublishInfo* info)--><!--Device-void OH_CommonEvent_DestroyPublishInfo(CommonEvent_PublishInfo* info)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -534,6 +568,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishI
 **Description**
 
 Sets the bundle name of a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishInfo* info, const char* bundleName)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishInfo* info, const char* bundleName)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -561,6 +597,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_Publish
 **Description**
 
 Sets permissions for a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_PublishInfo* info, const char* permissions[], int32_t num)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_PublishInfo* info, const char* permissions[], int32_t num)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -590,6 +628,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* i
 
 Sets the result code (integer type) of a common event.
 
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* info, int32_t code)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* info, int32_t code)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -616,6 +656,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* i
 **Description**
 
 Sets the result data (string type) of a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* info, const char* data, size_t length)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* info, const char* data, size_t length)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -645,6 +687,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishI
 
 Sets the additional information of a common event.
 
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishInfo* info, CommonEvent_Parameters* param)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishInfo* info, CommonEvent_Parameters* param)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -672,6 +716,8 @@ CommonEvent_Parameters* OH_CommonEvent_CreateParameters()
 
 Creates an additional information object of a common event.
 
+<!--Device-CommonEvent_Parameters* OH_CommonEvent_CreateParameters()--><!--Device-CommonEvent_Parameters* OH_CommonEvent_CreateParameters()-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -692,6 +738,8 @@ void OH_CommonEvent_DestroyParameters(CommonEvent_Parameters* param)
 
 Destroys the additional information object of a common event.
 
+<!--Device-void OH_CommonEvent_DestroyParameters(CommonEvent_Parameters* param)--><!--Device-void OH_CommonEvent_DestroyParameters(CommonEvent_Parameters* param)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -711,6 +759,8 @@ bool OH_CommonEvent_HasKeyInParameters(const CommonEvent_Parameters* para, const
 **Description**
 
 Checks whether the additional information of a common event contains a KV pair.
+
+<!--Device-bool OH_CommonEvent_HasKeyInParameters(const CommonEvent_Parameters* para, const char* key)--><!--Device-bool OH_CommonEvent_HasKeyInParameters(const CommonEvent_Parameters* para, const char* key)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -738,6 +788,8 @@ int OH_CommonEvent_GetIntFromParameters(const CommonEvent_Parameters* para, cons
 **Description**
 
 Obtains the int data with a specific key from the additional information of a common event.
+
+<!--Device-int OH_CommonEvent_GetIntFromParameters(const CommonEvent_Parameters* para, const char* key, const int defaultValue)--><!--Device-int OH_CommonEvent_GetIntFromParameters(const CommonEvent_Parameters* para, const char* key, const int defaultValue)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -767,6 +819,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetIntToParameters(CommonEvent_Parameters* pa
 
 Sets the int data with a specific key for the additional information of a common event.
 
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetIntToParameters(CommonEvent_Parameters* param, const char* key, int value)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetIntToParameters(CommonEvent_Parameters* param, const char* key, int value)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -795,6 +849,8 @@ int32_t OH_CommonEvent_GetIntArrayFromParameters(const CommonEvent_Parameters* p
 
 Obtains the int array with a specific key from the additional information of a common event.
 
+<!--Device-int32_t OH_CommonEvent_GetIntArrayFromParameters(const CommonEvent_Parameters* para, const char* key, int** array)--><!--Device-int32_t OH_CommonEvent_GetIntArrayFromParameters(const CommonEvent_Parameters* para, const char* key, int** array)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -822,6 +878,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetIntArrayToParameters(CommonEvent_Parameter
 **Description**
 
 Sets the int array with a specific key for the additional information of a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetIntArrayToParameters(CommonEvent_Parameters* param, const char* key, const int* value, size_t num)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetIntArrayToParameters(CommonEvent_Parameters* param, const char* key, const int* value, size_t num)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -852,6 +910,8 @@ long OH_CommonEvent_GetLongFromParameters(const CommonEvent_Parameters* para, co
 
 Obtains the long data with a specific key from the additional information of a common event.
 
+<!--Device-long OH_CommonEvent_GetLongFromParameters(const CommonEvent_Parameters* para, const char* key, const long defaultValue)--><!--Device-long OH_CommonEvent_GetLongFromParameters(const CommonEvent_Parameters* para, const char* key, const long defaultValue)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -879,6 +939,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetLongToParameters(CommonEvent_Parameters* p
 **Description**
 
 Sets the long data with a specific key for the additional information of a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetLongToParameters(CommonEvent_Parameters* param, const char* key, long value)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetLongToParameters(CommonEvent_Parameters* param, const char* key, long value)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -908,6 +970,8 @@ int32_t OH_CommonEvent_GetLongArrayFromParameters(const CommonEvent_Parameters* 
 
 Obtains the long array with a specific key from the additional information of a common event.
 
+<!--Device-int32_t OH_CommonEvent_GetLongArrayFromParameters(const CommonEvent_Parameters* para, const char* key, long** array)--><!--Device-int32_t OH_CommonEvent_GetLongArrayFromParameters(const CommonEvent_Parameters* para, const char* key, long** array)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -935,6 +999,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetLongArrayToParameters(CommonEvent_Paramete
 **Description**
 
 Sets the long array for the additional information of a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetLongArrayToParameters(CommonEvent_Parameters* param, const char* key, const long* value, size_t num)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetLongArrayToParameters(CommonEvent_Parameters* param, const char* key, const long* value, size_t num)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -965,6 +1031,8 @@ bool OH_CommonEvent_GetBoolFromParameters(const CommonEvent_Parameters* para, co
 
 Obtains the Boolean data with a specific key from the additional information of a common event.
 
+<!--Device-bool OH_CommonEvent_GetBoolFromParameters(const CommonEvent_Parameters* para, const char* key, const bool defaultValue)--><!--Device-bool OH_CommonEvent_GetBoolFromParameters(const CommonEvent_Parameters* para, const char* key, const bool defaultValue)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -992,6 +1060,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetBoolToParameters(CommonEvent_Parameters* p
 **Description**
 
 Sets the Boolean data with a specific key for the additional information of a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetBoolToParameters(CommonEvent_Parameters* param, const char* key, bool value)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetBoolToParameters(CommonEvent_Parameters* param, const char* key, bool value)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1021,6 +1091,8 @@ int32_t OH_CommonEvent_GetBoolArrayFromParameters(const CommonEvent_Parameters* 
 
 Obtains the Boolean array with a specific key from the additional information of a common event.
 
+<!--Device-int32_t OH_CommonEvent_GetBoolArrayFromParameters(const CommonEvent_Parameters* para, const char* key, bool** array)--><!--Device-int32_t OH_CommonEvent_GetBoolArrayFromParameters(const CommonEvent_Parameters* para, const char* key, bool** array)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -1048,6 +1120,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetBoolArrayToParameters(CommonEvent_Paramete
 **Description**
 
 Sets the Boolean array with a specific key for the additional information of a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetBoolArrayToParameters(CommonEvent_Parameters* param, const char* key, const bool* value, size_t num)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetBoolArrayToParameters(CommonEvent_Parameters* param, const char* key, const bool* value, size_t num)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1078,6 +1152,8 @@ char OH_CommonEvent_GetCharFromParameters(const CommonEvent_Parameters* para, co
 
 Obtains the character data with a specific key from the additional information of a common event.
 
+<!--Device-char OH_CommonEvent_GetCharFromParameters(const CommonEvent_Parameters* para, const char* key, const char defaultValue)--><!--Device-char OH_CommonEvent_GetCharFromParameters(const CommonEvent_Parameters* para, const char* key, const char defaultValue)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -1105,6 +1181,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetCharToParameters(CommonEvent_Parameters* p
 **Description**
 
 Sets the character data with a specific key for the additional information of a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetCharToParameters(CommonEvent_Parameters* param, const char* key, char value)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetCharToParameters(CommonEvent_Parameters* param, const char* key, char value)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1134,6 +1212,8 @@ int32_t OH_CommonEvent_GetCharArrayFromParameters(const CommonEvent_Parameters* 
 
 Obtains the character array with a specific key from the additional information of a common event.
 
+<!--Device-int32_t OH_CommonEvent_GetCharArrayFromParameters(const CommonEvent_Parameters* para, const char* key, char** array)--><!--Device-int32_t OH_CommonEvent_GetCharArrayFromParameters(const CommonEvent_Parameters* para, const char* key, char** array)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -1161,6 +1241,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetCharArrayToParameters(CommonEvent_Paramete
 **Description**
 
 Sets the character array with a specific key for the additional information of a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetCharArrayToParameters(CommonEvent_Parameters* param, const char* key, const char* value, size_t num)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetCharArrayToParameters(CommonEvent_Parameters* param, const char* key, const char* value, size_t num)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1191,6 +1273,8 @@ double OH_CommonEvent_GetDoubleFromParameters(const CommonEvent_Parameters* para
 
 Obtains the double data with a specific key from the additional information of a common event.
 
+<!--Device-double OH_CommonEvent_GetDoubleFromParameters(const CommonEvent_Parameters* para, const char* key, const double defaultValue)--><!--Device-double OH_CommonEvent_GetDoubleFromParameters(const CommonEvent_Parameters* para, const char* key, const double defaultValue)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -1218,6 +1302,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetDoubleToParameters(CommonEvent_Parameters*
 **Description**
 
 Sets the double data with a specific key for the additional information of a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetDoubleToParameters(CommonEvent_Parameters* param, const char* key, double value)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetDoubleToParameters(CommonEvent_Parameters* param, const char* key, double value)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1247,6 +1333,8 @@ int32_t OH_CommonEvent_GetDoubleArrayFromParameters(const CommonEvent_Parameters
 
 Obtains the double array with a specific key from the additional information of a common event.
 
+<!--Device-int32_t OH_CommonEvent_GetDoubleArrayFromParameters(const CommonEvent_Parameters* para, const char* key, double** array)--><!--Device-int32_t OH_CommonEvent_GetDoubleArrayFromParameters(const CommonEvent_Parameters* para, const char* key, double** array)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12
@@ -1274,6 +1362,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetDoubleArrayToParameters(CommonEvent_Parame
 **Description**
 
 Sets the double array with a specific key for the additional information of a common event.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetDoubleArrayToParameters(CommonEvent_Parameters* param, const char* key, const double* value, size_t num)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetDoubleArrayToParameters(CommonEvent_Parameters* param, const char* key, const double* value, size_t num)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1304,6 +1394,8 @@ CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)
 
 Publishes a common event.
 
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -1329,6 +1421,8 @@ CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const Comm
 **Description**
 
 Publishes a common event with specified properties.
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const CommonEvent_PublishInfo* info)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const CommonEvent_PublishInfo* info)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1357,6 +1451,8 @@ bool OH_CommonEvent_IsOrderedCommonEvent(const CommonEvent_Subscriber* subscribe
 
 Checks whether a common event is an ordered one.
 
+<!--Device-bool OH_CommonEvent_IsOrderedCommonEvent(const CommonEvent_Subscriber* subscriber)--><!--Device-bool OH_CommonEvent_IsOrderedCommonEvent(const CommonEvent_Subscriber* subscriber)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -1382,6 +1478,8 @@ bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)
 **Description**
 
 Finishes an ordered common event.
+
+<!--Device-bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)--><!--Device-bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1409,6 +1507,8 @@ bool OH_CommonEvent_GetAbortCommonEvent(const CommonEvent_Subscriber* subscriber
 
 Checks whether an ordered common event is aborted.
 
+<!--Device-bool OH_CommonEvent_GetAbortCommonEvent(const CommonEvent_Subscriber* subscriber)--><!--Device-bool OH_CommonEvent_GetAbortCommonEvent(const CommonEvent_Subscriber* subscriber)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -1434,6 +1534,8 @@ bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)
 **Description**
 
 Aborts an ordered common event when used with [OH_CommonEvent_FinishCommonEvent](capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent). After the abort, the common event is not sent to the next subscriber.
+
+<!--Device-bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)--><!--Device-bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1461,6 +1563,8 @@ bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)
 
 Clears the abort state of an ordered common event when used with [OH_CommonEvent_FinishCommonEvent](capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent). After the clearance, the common event is sent to the next subscriber.
 
+<!--Device-bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)--><!--Device-bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -1487,6 +1591,8 @@ int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subsc
 
 Obtains the result code (integer type) of an ordered common event.
 
+<!--Device-int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subscriber)--><!--Device-int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subscriber)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -1512,6 +1618,8 @@ bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int3
 **Description**
 
 Sets the result code (integer type) of an ordered common event.
+
+<!--Device-bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int32_t code)--><!--Device-bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int32_t code)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1540,6 +1648,8 @@ const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* s
 
 Obtains the result data (string type) of an ordered common event.
 
+<!--Device-const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* subscriber)--><!--Device-const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* subscriber)-End-->
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 18
@@ -1565,6 +1675,8 @@ bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, cons
 **Description**
 
 Sets the result data (string type) of an ordered common event.
+
+<!--Device-bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, const char* data, size_t length)--><!--Device-bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, const char* data, size_t length)-End-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 

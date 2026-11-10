@@ -8,11 +8,13 @@ typedef struct OH_CryptoKeyAgreement OH_CryptoKeyAgreement
 
 密钥协商结构体，表示密钥协商上下文。
 
+<!--Device-typedef struct OH_CryptoKeyAgreement OH_CryptoKeyAgreement--><!--Device-typedef struct OH_CryptoKeyAgreement OH_CryptoKeyAgreement-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
-**相关模块：** [CryptoKeyAgreementApi](capi-others-cryptokeyagreementapi.md)
+**相关模块：** [CryptoKeyAgreementApi](capi-crypto-architecture-kit-cryptokeyagreementapi.md)
 
 **所在头文件：** [crypto_key_agreement.h](capi-crypto-key-agreement-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkFramebufferMixedSamplesCombinationNV {...}--><!--Device-struct VkFramebufferMixedSamplesCombinationNV {...}-End-->
+
 ## Summary
 
 ### Member variables

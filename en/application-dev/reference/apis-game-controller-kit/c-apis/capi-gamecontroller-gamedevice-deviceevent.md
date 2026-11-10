@@ -8,11 +8,13 @@ typedef struct GameDevice_DeviceEvent GameDevice_DeviceEvent
 
 Defines device status change events.
 
+<!--Device-typedef struct GameDevice_DeviceEvent GameDevice_DeviceEvent--><!--Device-typedef struct GameDevice_DeviceEvent GameDevice_DeviceEvent-End-->
+
 **System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
-**Related module**: [GameController](capi-others-gamecontroller.md)
+**Related module**: [GameController](capi-game-controller-kit-gamecontroller.md)
 
 **Header file**: [game_device_event.h](capi-game-device-event-h.md)
 

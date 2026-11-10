@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDebugUtilsObjectNameInfoEXT {...}--><!--Device-struct VkDebugUtilsObjectNameInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

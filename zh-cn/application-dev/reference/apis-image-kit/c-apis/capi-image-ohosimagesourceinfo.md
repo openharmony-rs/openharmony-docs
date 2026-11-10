@@ -8,11 +8,13 @@ struct OhosImageSourceInfo {...}
 
 定义图像源信息，由[OH_ImageSource_GetImageInfo](capi-image-source-mdk-h.md#oh_imagesource_getimageinfo)获取。
 
+<!--Device-struct OhosImageSourceInfo {...}--><!--Device-struct OhosImageSourceInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
 
-**相关模块：** [Image](capi-others-image.md)
+**相关模块：** [Image](capi-image-kit-image.md)
 
 **所在头文件：** [image_source_mdk.h](capi-image-source-mdk-h.md)
 

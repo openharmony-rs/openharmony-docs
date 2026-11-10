@@ -34,6 +34,8 @@ enum OH_AVImageGenerator_QueryOptions
 
 指定查询视频帧时，时间点与帧对应关系选项的枚举类型。
 
+<!--Device-OH_AVImageGenerator_QueryOptions--><!--Device-OH_AVImageGenerator_QueryOptions-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **起始版本：** 18

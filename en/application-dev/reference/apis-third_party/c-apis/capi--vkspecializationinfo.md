@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSpecializationInfo {...}--><!--Device-struct VkSpecializationInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

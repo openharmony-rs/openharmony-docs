@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceMultiDrawPropertiesEXT {...}--><!--Device-struct VkPhysicalDeviceMultiDrawPropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

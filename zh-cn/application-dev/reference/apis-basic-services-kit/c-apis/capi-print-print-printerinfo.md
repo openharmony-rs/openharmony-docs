@@ -8,11 +8,13 @@ typedef struct Print_PrinterInfo {...} Print_PrinterInfo
 
 Print_PrinterInfo表示打印机信息，包含打印机的状态、能力、默认属性以及标识信息（如打印机ID、名称、描述、位置、品牌型号、URI等），适用于应用在打印场景中获取和展示打印机详细信息的场景， 帮助开发者根据打印机能力与属性选择合适的打印设备。可通过 [OH_Print_StartPrinterDiscovery](capi-ohprint-h.md#oh_print_startprinterdiscovery) 或 [OH_Print_QueryPrinterInfo](capi-ohprint-h.md#oh_print_queryprinterinfo) 获取。
 
+<!--Device-typedef struct Print_PrinterInfo {...} Print_PrinterInfo--><!--Device-typedef struct Print_PrinterInfo {...} Print_PrinterInfo-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 12
 
-**相关模块：** [Print](capi-others-print.md)
+**相关模块：** [Print](capi-basic-services-kit-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

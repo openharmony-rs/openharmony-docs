@@ -47,6 +47,8 @@ enum OH_NativeBuffer_ColorSpace
 
 Indicates the color space of a native buffer. Move from native_buffer.h to native_common.h
 
+<!--Device-OH_NativeBuffer_ColorSpace--><!--Device-OH_NativeBuffer_ColorSpace-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
@@ -98,6 +100,8 @@ enum OH_NativeBuffer_MetadataType
 
 Indicates the HDR metadata type of a native buffer.
 
+<!--Device-OH_NativeBuffer_MetadataType--><!--Device-OH_NativeBuffer_MetadataType-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
@@ -123,6 +127,8 @@ enum OH_NativeBuffer_MetadataKey
 
 Indicates the descriptive information of a native buffer, such as HDR metadata, ROI metadata, etc.
 
+<!--Device-OH_NativeBuffer_MetadataKey--><!--Device-OH_NativeBuffer_MetadataKey-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
@@ -143,6 +149,8 @@ enum OH_NativeBuffer_Format
 **Description**
 
 Indicates the format of a native buffer.
+
+<!--Device-OH_NativeBuffer_Format--><!--Device-OH_NativeBuffer_Format-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
@@ -205,6 +213,8 @@ enum OH_NativeBuffer_TransformType
 
 Indicates the transform type of a native buffer.
 
+<!--Device-OH_NativeBuffer_TransformType--><!--Device-OH_NativeBuffer_TransformType-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
@@ -234,6 +244,8 @@ enum OH_NativeBuffer_VideoDimensionType
 
 Indicates video dimension type.
 
+<!--Device-OH_NativeBuffer_VideoDimensionType--><!--Device-OH_NativeBuffer_VideoDimensionType-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 26.0.0
@@ -254,6 +266,8 @@ enum OH_NativeBuffer_3D_MetadataKey
 **Description**
 
 Indicates the descriptive 3D information of a native buffer.
+
+<!--Device-OH_NativeBuffer_3D_MetadataKey--><!--Device-OH_NativeBuffer_3D_MetadataKey-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 

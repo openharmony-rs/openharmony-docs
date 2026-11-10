@@ -8,11 +8,13 @@ typedef struct Print_PageSize {...} Print_PageSize
 
 Print_PageSize用于表示打印任务中的纸张尺寸信息，包含纸张ID、名称、宽度与高度等关键属性，适用于需要在打印配置流程中指定或查询纸张规格的场景。
 
+<!--Device-typedef struct Print_PageSize {...} Print_PageSize--><!--Device-typedef struct Print_PageSize {...} Print_PageSize-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 12
 
-**相关模块：** [Print](capi-others-print.md)
+**相关模块：** [Print](capi-basic-services-kit-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

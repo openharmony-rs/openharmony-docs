@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSurfaceCapabilitiesPresentBarrierNV {...}--><!--Device-struct VkSurfaceCapabilitiesPresentBarrierNV {...}-End-->
+
 ## Summary
 
 ### Member variables

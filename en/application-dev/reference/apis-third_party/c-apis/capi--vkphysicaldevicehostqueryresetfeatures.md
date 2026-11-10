@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceHostQueryResetFeatures {...}--><!--Device-struct VkPhysicalDeviceHostQueryResetFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

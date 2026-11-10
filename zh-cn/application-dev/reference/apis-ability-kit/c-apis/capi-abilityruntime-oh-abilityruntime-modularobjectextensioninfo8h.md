@@ -8,11 +8,13 @@ typedef struct OH_AbilityRuntime_ModularObjectExtensionInfo* OH_AbilityRuntime_M
 
 表示单个ModularObjectExtensionAbility的信息句柄。该句柄指向一个ModularObjectExtensionAbility的完整信息，包含启动模式、进程模式、线程模式、组件名称（ [AbilityBase_Element](capi-abilitybase-abilitybase-element.md)）以及禁用状态等属性。
 
+<!--Device-typedef struct OH_AbilityRuntime_ModularObjectExtensionInfo* OH_AbilityRuntime_ModObjExtensionInfoHandle--><!--Device-typedef struct OH_AbilityRuntime_ModularObjectExtensionInfo* OH_AbilityRuntime_ModObjExtensionInfoHandle-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
-**相关模块：** [AbilityRuntime](capi-others-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 **所在头文件：** [modular_object_extension_manager.h](capi-modular-object-extension-manager-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct winsize {...}--><!--Device-struct winsize {...}-End-->
+
 ## Summary
 
 ### Member variables

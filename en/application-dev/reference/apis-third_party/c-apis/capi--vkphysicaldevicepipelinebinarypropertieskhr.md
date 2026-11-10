@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePipelineBinaryPropertiesKHR {...}--><!--Device-struct VkPhysicalDevicePipelineBinaryPropertiesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

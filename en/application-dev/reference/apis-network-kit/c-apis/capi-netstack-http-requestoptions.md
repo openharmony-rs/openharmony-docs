@@ -8,11 +8,13 @@ struct Http_RequestOptions {...}
 
 Defines the structure of HTTP requests.
 
+<!--Device-struct Http_RequestOptions {...}--><!--Device-struct Http_RequestOptions {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
-**Related module**: [netstack](capi-others-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 **Header file**: [net_http_type.h](capi-net-http-type-h.md)
 

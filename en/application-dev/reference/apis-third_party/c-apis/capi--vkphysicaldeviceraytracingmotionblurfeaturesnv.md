@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceRayTracingMotionBlurFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceRayTracingMotionBlurFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

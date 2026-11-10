@@ -8,11 +8,13 @@ struct NativeChildProcess_FdList {...}
 
 Defines the list of file descriptor information passed to the child process. The number of file descriptor records must not exceed 16; exceeding the limit will cause the child process creation to fail.
 
+<!--Device-struct NativeChildProcess_FdList {...}--><!--Device-struct NativeChildProcess_FdList {...}-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 13
 
-**Related module**: [ChildProcess](capi-others-childprocess.md)
+**Related module**: [ChildProcess](capi-ability-kit-childprocess.md)
 
 **Header file**: [native_child_process.h](capi-native-child-process-h.md)
 

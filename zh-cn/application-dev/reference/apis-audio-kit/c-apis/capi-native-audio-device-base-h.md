@@ -58,6 +58,8 @@ enum OH_AudioDevice_ChangeType
 
 定义音频设备更改类型。
 
+<!--Device-OH_AudioDevice_ChangeType--><!--Device-OH_AudioDevice_ChangeType-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -77,6 +79,8 @@ enum OH_AudioDevice_Role
 
 定义音频设备角色。
 
+<!--Device-OH_AudioDevice_Role--><!--Device-OH_AudioDevice_Role-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -95,6 +99,8 @@ enum OH_AudioDevice_Type
 **描述：**
 
 定义音频设备类型。
+
+<!--Device-OH_AudioDevice_Type--><!--Device-OH_AudioDevice_Type-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -131,6 +137,8 @@ enum OH_AudioDevice_Flag
 
 定义音频设备标志。
 
+<!--Device-OH_AudioDevice_Flag--><!--Device-OH_AudioDevice_Flag-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -151,6 +159,8 @@ enum OH_AudioDevice_Usage
 **描述：**
 
 定义可获取的设备种类。
+
+<!--Device-OH_AudioDevice_Usage--><!--Device-OH_AudioDevice_Usage-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -175,6 +185,8 @@ enum OH_AudioDevice_BlockStatus
 
 定义音频设备的堵塞状态，主要用于表示内置麦克风的堵塞。默认情况下，音频设备是未堵塞状态。
 
+<!--Device-OH_AudioDevice_BlockStatus--><!--Device-OH_AudioDevice_BlockStatus-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 13
@@ -196,6 +208,8 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceRole(OH_AudioDeviceDescr
 **描述：**
 
 查询目标音频设备描述符的设备角色。
+
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceRole(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_Role *deviceRole)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceRole(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_Role *deviceRole)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -224,6 +238,8 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceType(OH_AudioDeviceDescr
 
 查询目标音频设备描述符的设备类型。
 
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceType(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_Type *deviceType)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceType(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_Type *deviceType)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -250,6 +266,8 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceId(OH_AudioDeviceDescrip
 **描述：**
 
 查询目标音频设备描述符的设备ID。
+
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceId(OH_AudioDeviceDescriptor *audioDeviceDescriptor, uint32_t *id)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceId(OH_AudioDeviceDescriptor *audioDeviceDescriptor, uint32_t *id)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -278,6 +296,8 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceName(OH_AudioDeviceDescr
 
 查询目标音频设备描述符的设备名称。
 
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceName(OH_AudioDeviceDescriptor *audioDeviceDescriptor, char **name)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceName(OH_AudioDeviceDescriptor *audioDeviceDescriptor, char **name)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -305,6 +325,8 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceAddress(OH_AudioDeviceDe
 
 查询目标音频设备描述符的设备地址。
 
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceAddress(OH_AudioDeviceDescriptor *audioDeviceDescriptor, char **address)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceAddress(OH_AudioDeviceDescriptor *audioDeviceDescriptor, char **address)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -331,6 +353,8 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceSampleRates(OH_AudioDevi
 **描述：**
 
 查询目标音频设备描述符的支持采样率数组。
+
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceSampleRates(OH_AudioDeviceDescriptor *audioDeviceDescriptor, uint32_t **sampleRates, uint32_t *size)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceSampleRates(OH_AudioDeviceDescriptor *audioDeviceDescriptor, uint32_t **sampleRates, uint32_t *size)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -360,6 +384,8 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceChannelCounts(OH_AudioDe
 
 查询目标音频设备描述符的支持声道数数组。
 
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceChannelCounts(OH_AudioDeviceDescriptor *audioDeviceDescriptor, uint32_t **channelCounts, uint32_t *size)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceChannelCounts(OH_AudioDeviceDescriptor *audioDeviceDescriptor, uint32_t **channelCounts, uint32_t *size)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -388,6 +414,8 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceDisplayName(OH_AudioDevi
 
 查询目标音频设备描述符的显示名称。 <br>此名称为目标音频设备所属产品设备的名称，如扬声器所属手机的设备名称。主要用于分布式音频场景下设备选择列表的显示。
 
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceDisplayName(OH_AudioDeviceDescriptor *audioDeviceDescriptor, char **displayName)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceDisplayName(OH_AudioDeviceDescriptor *audioDeviceDescriptor, char **displayName)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
@@ -414,6 +442,8 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(OH_AudioDe
 **描述：**
 
 查询目标音频设备描述符的支持编码类型数组。
+
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioStream_EncodingType **encodingTypes, uint32_t *size)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioStream_EncodingType **encodingTypes, uint32_t *size)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

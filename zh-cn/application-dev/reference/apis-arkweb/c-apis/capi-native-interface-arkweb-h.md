@@ -70,6 +70,8 @@ enum ArkWebEngineVersion
 
 ArkWeb内核版本，请参考M114内核在OpenHarmony 6.0系统上的适配指导，M132内核在OpenHarmony 7.0系统上的适配指导。
 
+<!--Device-ArkWebEngineVersion--><!--Device-ArkWebEngineVersion-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 20
@@ -95,6 +97,8 @@ typedef void (*NativeArkWeb_OnJavaScriptCallback)(const char*)
 
 定义执行JavaScript代码后返回结果的回调函数的类型。
 
+<!--Device-typedef void (*NativeArkWeb_OnJavaScriptCallback)(const char*)--><!--Device-typedef void (*NativeArkWeb_OnJavaScriptCallback)(const char*)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 11
@@ -108,6 +112,8 @@ typedef char* (*NativeArkWeb_OnJavaScriptProxyCallback)(const char** argv, int32
 **描述：**
 
 定义注入对象的回调函数的类型。
+
+<!--Device-typedef char* (*NativeArkWeb_OnJavaScriptProxyCallback)(const char** argv, int32_t argc)--><!--Device-typedef char* (*NativeArkWeb_OnJavaScriptProxyCallback)(const char** argv, int32_t argc)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -123,6 +129,8 @@ typedef void (*NativeArkWeb_OnValidCallback)(const char*)
 
 定义Web组件可用时的回调函数的类型。
 
+<!--Device-typedef void (*NativeArkWeb_OnValidCallback)(const char*)--><!--Device-typedef void (*NativeArkWeb_OnValidCallback)(const char*)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 11
@@ -137,6 +145,8 @@ typedef void (*NativeArkWeb_OnDestroyCallback)(const char*)
 
 定义Web组件销毁时的回调函数的类型。
 
+<!--Device-typedef void (*NativeArkWeb_OnDestroyCallback)(const char*)--><!--Device-typedef void (*NativeArkWeb_OnDestroyCallback)(const char*)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 11
@@ -150,6 +160,8 @@ typedef void (*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode)
 **描述：**
 
 定义保存cookie的回调函数的类型。
+
+<!--Device-typedef void (*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode)--><!--Device-typedef void (*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -170,6 +182,8 @@ typedef void (*OH_ArkWeb_OnCookieFetchCallback)(ArkWeb_ErrorCode errorCode, char
 **描述：**
 
 定义在获取cookie操作完成时调用的回调函数类型。
+
+<!--Device-typedef void (*OH_ArkWeb_OnCookieFetchCallback)(ArkWeb_ErrorCode errorCode, char* cookieValue)--><!--Device-typedef void (*OH_ArkWeb_OnCookieFetchCallback)(ArkWeb_ErrorCode errorCode, char* cookieValue)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -192,6 +206,8 @@ void OH_NativeArkWeb_RunJavaScript(const char* webTag, const char* jsCode, Nativ
 
 在当前显示页面的环境下，加载并异步执行一段JavaScript代码。此函数应在主线程中调用。**使用场景**：需要在Native层动态修改页面内容、获取页面运行时信息、与页面JavaScript交互时使用， 例如获取表单数据、执行自定义脚本等。
 
+<!--Device-void OH_NativeArkWeb_RunJavaScript(const char* webTag, const char* jsCode, NativeArkWeb_OnJavaScriptCallback callback)--><!--Device-void OH_NativeArkWeb_RunJavaScript(const char* webTag, const char* jsCode, NativeArkWeb_OnJavaScriptCallback callback)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 11
@@ -213,6 +229,8 @@ void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* obj
 **描述：**
 
 注册对象及函数名称列表，用于向Web页面注入Native对象，实现应用侧与前端页面的双向通信。用于Web页面调用Native功能、Native代码控制Web页面行为、混合应用中的跨层交互等场景。
+
+<!--Device-void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* objName, const char** methodList, NativeArkWeb_OnJavaScriptProxyCallback* callback, int32_t size, bool needRefresh)--><!--Device-void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* objName, const char** methodList, NativeArkWeb_OnJavaScriptProxyCallback* callback, int32_t size, bool needRefresh)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -239,6 +257,8 @@ void OH_NativeArkWeb_UnregisterJavaScriptProxy(const char* webTag, const char* o
 
 删除已注册的对象及其下的回调函数，用于清理不再需要的JavaScript注入对象。典型使用场景：页面销毁时清理注入对象、功能模块卸载时移除对应的Native接口、防止内存泄漏等场景。
 
+<!--Device-void OH_NativeArkWeb_UnregisterJavaScriptProxy(const char* webTag, const char* objName)--><!--Device-void OH_NativeArkWeb_UnregisterJavaScriptProxy(const char* webTag, const char* objName)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 11
@@ -260,6 +280,8 @@ void OH_NativeArkWeb_SetJavaScriptProxyValidCallback(const char* webTag, NativeA
 
 设置对象可注册时的回调函数。需要在JavaScript代理对象成功注册后执行特定逻辑时使用，例如注册成功后通知页面或记录日志。
 
+<!--Device-void OH_NativeArkWeb_SetJavaScriptProxyValidCallback(const char* webTag, NativeArkWeb_OnValidCallback callback)--><!--Device-void OH_NativeArkWeb_SetJavaScriptProxyValidCallback(const char* webTag, NativeArkWeb_OnValidCallback callback)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 11
@@ -280,6 +302,8 @@ NativeArkWeb_OnValidCallback OH_NativeArkWeb_GetJavaScriptProxyValidCallback(con
 **描述：**
 
 获取已注册的对象可注册时的回调函数。
+
+<!--Device-NativeArkWeb_OnValidCallback OH_NativeArkWeb_GetJavaScriptProxyValidCallback(const char* webTag)--><!--Device-NativeArkWeb_OnValidCallback OH_NativeArkWeb_GetJavaScriptProxyValidCallback(const char* webTag)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -307,6 +331,8 @@ void OH_NativeArkWeb_SetDestroyCallback(const char* webTag, NativeArkWeb_OnDestr
 
 设置Web组件销毁时的回调函数。典型使用场景：需要在Web组件销毁时释放资源、清理状态或执行收尾操作时使用，例如释放JavaScript代理对象、取消网络请求、关闭文件句柄等。
 
+<!--Device-void OH_NativeArkWeb_SetDestroyCallback(const char* webTag, NativeArkWeb_OnDestroyCallback callback)--><!--Device-void OH_NativeArkWeb_SetDestroyCallback(const char* webTag, NativeArkWeb_OnDestroyCallback callback)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 11
@@ -327,6 +353,8 @@ NativeArkWeb_OnDestroyCallback OH_NativeArkWeb_GetDestroyCallback(const char* we
 **描述：**
 
 获取已注册的Web组件销毁时的回调函数。
+
+<!--Device-NativeArkWeb_OnDestroyCallback OH_NativeArkWeb_GetDestroyCallback(const char* webTag)--><!--Device-NativeArkWeb_OnDestroyCallback OH_NativeArkWeb_GetDestroyCallback(const char* webTag)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -353,6 +381,8 @@ ArkWeb_ErrorCode OH_NativeArkWeb_LoadData(const char* webTag, const char* data, 
 **描述：**
 
 加载数据或URL，此函数应在主线程中调用。典型使用场景：从网络或本地文件加载页面内容、动态生成HTML内容并显示、实现离线页面展示、自定义页面渲染等。
+
+<!--Device-ArkWeb_ErrorCode OH_NativeArkWeb_LoadData(const char* webTag, const char* data, const char* mimeType, const char* encoding, const char* baseUrl, const char* historyUrl)--><!--Device-ArkWeb_ErrorCode OH_NativeArkWeb_LoadData(const char* webTag, const char* data, const char* mimeType, const char* encoding, const char* baseUrl, const char* historyUrl)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -385,6 +415,8 @@ void OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy(const char* webTag, cons
 
 注册一个包含回调方法的 JavaScript 对象，这些方法可带有返回值。该对象将被注入到当前页面的所有frame中，包括所有的 iframe，并且可以通过在 ArkWeb_ProxyObjectWithResult 中指定的名称进行访问。该对象只会在下一次加载或重新加载页面后在 JavaScript 中生效。这些方法将在 ArkWeb 的工作线程中执行。典型使用场景：可在工作线程中处理JavaScript调用并返回结果时使用。例如执行耗时计算、 异步任务处理、复杂业务逻辑处理等场景，避免阻塞主线程。
 
+<!--Device-void OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject, const char* permission)--><!--Device-void OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject, const char* permission)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 20
@@ -409,6 +441,8 @@ ArkWeb_BlanklessErrorCode OH_NativeArkWeb_SetBlanklessLoadingWithKey(const char*
 - 需在触发页面加载的接口之后调用。其他约束同[OH_NativeArkWeb_GetBlanklessInfoWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_getblanklessinfowithkey)。
 - 页面的加载必须在调用本套接口的组件中进行。
 - 当相似度较低时，系统将判定为跳变过大，启用插帧会失败。
+
+<!--Device-ArkWeb_BlanklessErrorCode OH_NativeArkWeb_SetBlanklessLoadingWithKey(const char* webTag, const char* key, bool isStarted)--><!--Device-ArkWeb_BlanklessErrorCode OH_NativeArkWeb_SetBlanklessLoadingWithKey(const char* webTag, const char* key, bool isStarted)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -441,6 +475,8 @@ void OH_NativeArkWeb_ClearBlanklessLoadingCache(const char* key[], uint32_t size
 清除指定key值页面无白屏优化缓存，本接口只清除缓存。 <br>在小程序或Web应用场景中，当页面加载时内容变化显著，可能会出现一次明显的跳变。若对此跳变有所顾虑，可使用该接口清除页面缓存。<br> **说明：**
 - 清除之后的页面，需在第三次加载页面时才会产生优化效果。
 
+<!--Device-void OH_NativeArkWeb_ClearBlanklessLoadingCache(const char* key[], uint32_t size)--><!--Device-void OH_NativeArkWeb_ClearBlanklessLoadingCache(const char* key[], uint32_t size)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 20
@@ -465,6 +501,8 @@ ArkWeb_BlanklessInfo OH_NativeArkWeb_GetBlanklessInfoWithKey(const char* webTag,
 - 如果发现相似度（即[ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md)中的similarity）极低，请检查key值是否正确传递。
 - 调用本接口后，会启用页面加载快照检测及生成过渡帧计算，产生一定资源开销。
 - 启用无白屏加载的页面会带来一定的资源开销，开销的大小与Web组件的分辨率相关。假设分辨率的宽度和高度分别为：w, h。页面在打开阶段会增加峰值内存，增加量约为12*w*h B。 页面打开后，内存会被回收，不影响稳态内存。增加固态应用缓存的大小，每个页面增加的缓存约w*h/10 B，缓存位于应用缓存的位置。
+
+<!--Device-ArkWeb_BlanklessInfo OH_NativeArkWeb_GetBlanklessInfoWithKey(const char* webTag, const char* key)--><!--Device-ArkWeb_BlanklessInfo OH_NativeArkWeb_GetBlanklessInfoWithKey(const char* webTag, const char* key)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -495,6 +533,8 @@ uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)
 
 设置无白屏加载方案的持久化缓存容量，返回实际生效值。默认缓存容量为30MB，最大值为100MB。当实际缓存超过容量时，将采用淘汰不常用的过渡帧的方式清理。典型使用场景：根据应用内存占用情况调整缓存大小、优化存储空间使用、 平衡无白屏效果与系统资源消耗等。<br> 使用场景：使用者需要自定义缓存容量的场景。
 
+<!--Device-uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)--><!--Device-uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 20
@@ -521,6 +561,8 @@ ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()
 
 将当前可通过CookieManager API访问的所有cookie持久化到磁盘。如果要在非UI线程中使用此接口，则需要先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) 初始化CookieManager接口。典型使用场景：可在应用退出或特定时机保存cookie状态时使用。例如保存用户登录状态、应用配置信息、会话数据等，确保应用重启后能够恢复之前的状态。
 
+<!--Device-ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()--><!--Device-ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 20
@@ -540,6 +582,8 @@ void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callb
 **描述：**
 
 将当前可通过CookieManager API访问的所有cookie持久化到磁盘。如果要在非UI线程中使用此接口，则需要先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) 初始化CookieManager接口；在不初始化CookieManager接口的情况下，此接口将在UI线程上自动执行。典型使用场景：需要异步保存cookie状态时使用，例如在页面加载完成、用户操作完成后异步保存cookie， 避免阻塞主线程。
+
+<!--Device-void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callback)--><!--Device-void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callback)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -561,6 +605,8 @@ void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVers
 
 设置ArkWeb内核版本。若系统不支持指定版本，则设置无效，使用系统默认内核（可参考约束与限制）。需要根据应用兼容性需求选择特定内核版本时使用，例如应用依赖某些旧版本内核的特性， 或需要在新版本系统上保持兼容性，可以指定使用特定的遗留内核版本。<br>该接口为全局静态方法，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。
 
+<!--Device-void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVersion)--><!--Device-void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVersion)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 20
@@ -580,6 +626,8 @@ ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()
 **描述：**
 
 获取当前使用的ArkWeb内核版本。
+
+<!--Device-ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()--><!--Device-ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -607,6 +655,8 @@ void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)
 > 会在初始化CookieManager时跳过初始化ArkWeb内核，后续需自行初始化ArkWeb内核。
 > - 从API版本26.0.1开始，调用本接口设置为true后，[ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md)模块中的接口支持在非UI线程使用。
 
+<!--Device-void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)--><!--Device-void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 22
@@ -627,6 +677,8 @@ bool OH_NativeArkWeb_IsActiveWebEngineEvergreen()
 
 判断应用所使用ArkWeb内核是否是常青内核，即系统的最新内核。
 
+<!--Device-bool OH_NativeArkWeb_IsActiveWebEngineEvergreen()--><!--Device-bool OH_NativeArkWeb_IsActiveWebEngineEvergreen()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 23
@@ -646,6 +698,8 @@ ArkWeb_ErrorCode OH_ArkWebCookieManager_FetchCookieSync(const char* url, bool in
 **描述：**
 
 获取指定URL对应的cookies。如果要在非UI线程中使用此接口，则需要先使用[OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)初始化CookieManager接口。
+
+<!--Device-ArkWeb_ErrorCode OH_ArkWebCookieManager_FetchCookieSync(const char* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, char** cookieValue)--><!--Device-ArkWeb_ErrorCode OH_ArkWebCookieManager_FetchCookieSync(const char* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, char** cookieValue)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -676,6 +730,8 @@ void OH_ArkWebCookieManager_FetchCookieAsync(const char* url, bool incognito, bo
 **描述：**
 
 异步获取指定URL对应的cookies。在不初始化CookieManager接口的情况下，此接口将在UI线程上自动执行。
+
+<!--Device-void OH_ArkWebCookieManager_FetchCookieAsync(const char* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, OH_ArkWeb_OnCookieFetchCallback callback)--><!--Device-void OH_ArkWebCookieManager_FetchCookieAsync(const char* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, OH_ArkWeb_OnCookieFetchCallback callback)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

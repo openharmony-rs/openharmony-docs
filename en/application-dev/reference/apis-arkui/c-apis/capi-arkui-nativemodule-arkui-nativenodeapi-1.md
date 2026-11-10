@@ -8,11 +8,13 @@ typedef struct ArkUI_NativeNodeAPI_1 {...} ArkUI_NativeNodeAPI_1
 
 Provides a collection of native-side APIs of the Node type provided by ArkUI, supporting capabilities such as component node creation and destruction, node tree operations, attribute and event management, measurement, and layout. It is suitable for scenarios where native APIs are used to build and operate ArkUI component nodes. APIs related to the Node module must be called on the main thread.
 
+<!--Device-typedef struct ArkUI_NativeNodeAPI_1 {...} ArkUI_NativeNodeAPI_1--><!--Device-typedef struct ArkUI_NativeNodeAPI_1 {...} ArkUI_NativeNodeAPI_1-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 
@@ -82,6 +84,8 @@ ArkUI_NodeHandle (*createNode)(ArkUI_NodeType type)
 
 Creates a component based on [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype) and returns the pointer to the component object.
 
+<!--Device-ArkUI_NodeHandle (*createNode)(ArkUI_NodeType type)--><!--Device-ArkUI_NodeHandle (*createNode)(ArkUI_NodeType type)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -106,6 +110,8 @@ void (*disposeNode)(ArkUI_NodeHandle node)
 
 Disposes of the component to which the specified pointer points. When calling this API on a non-main thread, special attention must be paid to the lifecycle of the component object to be destroyed. Improper lifecycle management may cause the application to crash; therefore, it is not recommended to call this API on non-main threads.
 
+<!--Device-void (*disposeNode)(ArkUI_NodeHandle node)--><!--Device-void (*disposeNode)(ArkUI_NodeHandle node)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -123,6 +129,8 @@ int32_t (*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 **Description**
 
 Attaches a component to a parent node. This API is used for node operations, and you are advised to call this API in the main thread.
+
+<!--Device-int32_t (*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)--><!--Device-int32_t (*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)-End-->
 
 **Since**: 12
 
@@ -149,6 +157,8 @@ int32_t (*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 
 Removes a component from its parent node. This API is used for node operations, and you are advised to call this API in the main thread.
 
+<!--Device-int32_t (*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)--><!--Device-int32_t (*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -173,6 +183,8 @@ int32_t (*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, Ark
 **Description**
 
 Attaches a component to a parent node, with the position after the **sibling** node. This API is used for node operations, and you are advised to call this API in the main thread.
+
+<!--Device-int32_t (*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)--><!--Device-int32_t (*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)-End-->
 
 **Since**: 12
 
@@ -200,6 +212,8 @@ int32_t (*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, Ar
 
 Attaches a component to a parent node, with the position before the **sibling** node. This API is used for node operations, and you are advised to call this API in the main thread.
 
+<!--Device-int32_t (*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)--><!--Device-int32_t (*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, ArkUI_NodeHandle sibling)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -225,6 +239,8 @@ int32_t (*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_
 **Description**
 
 Attaches a component to a parent node, with the position specified by **position**. This API is used for node operations, and you are advised to call this API in the main thread.
+
+<!--Device-int32_t (*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_t position)--><!--Device-int32_t (*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_t position)-End-->
 
 **Since**: 12
 
@@ -252,6 +268,8 @@ int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute
 
 Sets attributes. You are advised to call this API in the main thread. In actual service scenarios, if the attributes set for a component contain the heap memory you apply for, ensure that the component no longer uses the heap memory before calling the corresponding release API. For example, **NODE_TEXT_CONTENT_WITH_STYLED_STRING** in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype).
 
+<!--Device-int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute, const ArkUI_AttributeItem* item)--><!--Device-int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute, const ArkUI_AttributeItem* item)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -278,6 +296,8 @@ const ArkUI_AttributeItem* (*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttr
 
 Obtains attributes. The pointer returned by this API is an internal buffer pointer of the ArkUI framework. As such, you do not need to call **delete** to free the memory. However, the pointer must be used before this API is called next time. Otherwise, the pointer may be overwritten by other values.
 
+<!--Device-const ArkUI_AttributeItem* (*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)--><!--Device-const ArkUI_AttributeItem* (*getAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -303,6 +323,8 @@ int32_t (*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribu
 
 Resets attributes. You are advised to call this API in the main thread.
 
+<!--Device-int32_t (*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)--><!--Device-int32_t (*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -327,6 +349,8 @@ int32_t (*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventTyp
 **Description**
 
 Registers an event for the specified node. After the event is triggered, it can be received through the component-level callback added by [addNodeEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver) or the global callback registered by [registerNodeEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver). When the event is no longer needed, call [unregisterNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodeevent) to unregister it.
+
+<!--Device-int32_t (*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, int32_t targetId, void* userData)--><!--Device-int32_t (*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, int32_t targetId, void* userData)-End-->
 
 **Since**: 12
 
@@ -355,6 +379,8 @@ void (*unregisterNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType
 
 Unregisters an event for the specified node, which is previously registered through [registerNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent). After unregistration, the event no longer triggers the corresponding callback.
 
+<!--Device-void (*unregisterNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)--><!--Device-void (*unregisterNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -374,6 +400,8 @@ void (*registerNodeEventReceiver)(void (*eventReceiver)(ArkUI_NodeEvent* event))
 
 Registers a unified entry point for event callbacks. The ArkUI framework collects component events generated during processing and returns them through the registered **eventReceiver** API. <br>Repeated calls will override the previously registered API. <br>Avoid directly saving pointers to [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) objects, as the data is destroyed after the callback is complete. <br>To bind with a component instance, you can use the [addNodeEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver) API. <br>When the global callback is no longer needed, call [unregisterNodeEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodeeventreceiver) to unregister it.
 
+<!--Device-void (*registerNodeEventReceiver)(void (*eventReceiver)(ArkUI_NodeEvent* event))--><!--Device-void (*registerNodeEventReceiver)(void (*eventReceiver)(ArkUI_NodeEvent* event))-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -392,6 +420,8 @@ void (*unregisterNodeEventReceiver)()
 
 Unregisters the unified entry point for event callbacks, which is previously registered through [registerNodeEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver). After unregistration, the global entry no longer receives component events.
 
+<!--Device-void (*unregisterNodeEventReceiver)()--><!--Device-void (*unregisterNodeEventReceiver)()-End-->
+
 **Since**: 12
 
 ### markDirty()
@@ -403,6 +433,8 @@ void (*markDirty)(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag)
 **Description**
 
 Forcibly marks the current node for re-measurement, re-layout, or re-drawing. Regarding updates to system attributes, the ArkUI framework automatically marks nodes and re-executes measurement, layout, or drawing; you do not need to call this API actively. This API can be called to trigger the corresponding process when you modify custom measurement, layout, or drawing data that the framework cannot automatically detect.
+
+<!--Device-void (*markDirty)(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag)--><!--Device-void (*markDirty)(ArkUI_NodeHandle node, ArkUI_NodeDirtyFlag dirtyFlag)-End-->
 
 **Since**: 12
 
@@ -422,6 +454,8 @@ uint32_t (*getTotalChildCount)(ArkUI_NodeHandle node)
 **Description**
 
 Obtains the number of child nodes.
+
+<!--Device-uint32_t (*getTotalChildCount)(ArkUI_NodeHandle node)--><!--Device-uint32_t (*getTotalChildCount)(ArkUI_NodeHandle node)-End-->
 
 **Since**: 12
 
@@ -446,6 +480,8 @@ ArkUI_NodeHandle (*getChildAt)(ArkUI_NodeHandle node, int32_t position)
 **Description**
 
 Obtains the child node at the specified index.
+
+<!--Device-ArkUI_NodeHandle (*getChildAt)(ArkUI_NodeHandle node, int32_t position)--><!--Device-ArkUI_NodeHandle (*getChildAt)(ArkUI_NodeHandle node, int32_t position)-End-->
 
 **Since**: 12
 
@@ -472,6 +508,8 @@ ArkUI_NodeHandle (*getFirstChild)(ArkUI_NodeHandle node)
 
 Obtains the first child node.
 
+<!--Device-ArkUI_NodeHandle (*getFirstChild)(ArkUI_NodeHandle node)--><!--Device-ArkUI_NodeHandle (*getFirstChild)(ArkUI_NodeHandle node)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -495,6 +533,8 @@ ArkUI_NodeHandle (*getLastChild)(ArkUI_NodeHandle node)
 **Description**
 
 Obtains the last child node.
+
+<!--Device-ArkUI_NodeHandle (*getLastChild)(ArkUI_NodeHandle node)--><!--Device-ArkUI_NodeHandle (*getLastChild)(ArkUI_NodeHandle node)-End-->
 
 **Since**: 12
 
@@ -520,6 +560,8 @@ ArkUI_NodeHandle (*getPreviousSibling)(ArkUI_NodeHandle node)
 
 Obtains the previous sibling node.
 
+<!--Device-ArkUI_NodeHandle (*getPreviousSibling)(ArkUI_NodeHandle node)--><!--Device-ArkUI_NodeHandle (*getPreviousSibling)(ArkUI_NodeHandle node)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -544,6 +586,8 @@ ArkUI_NodeHandle (*getNextSibling)(ArkUI_NodeHandle node)
 
 Obtains the next sibling node.
 
+<!--Device-ArkUI_NodeHandle (*getNextSibling)(ArkUI_NodeHandle node)--><!--Device-ArkUI_NodeHandle (*getNextSibling)(ArkUI_NodeHandle node)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -567,6 +611,8 @@ int32_t (*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventT
 **Description**
 
 Registers a custom event for a node. After the event is triggered, it can be received through the component-level callback added by [addNodeCustomEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver) or the global callback registered by [registerNodeCustomEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomeventreceiver). When the event is no longer needed, call [unregisterNodeCustomEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodecustomevent) to unregister it.
+
+<!--Device-int32_t (*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType, int32_t targetId, void* userData)--><!--Device-int32_t (*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType, int32_t targetId, void* userData)-End-->
 
 **Since**: 12
 
@@ -595,6 +641,8 @@ void (*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventTy
 
 Unregisters a custom event for a node, which is previously registered through [registerNodeCustomEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent). After unregistration, the event no longer triggers the corresponding callback.
 
+<!--Device-void (*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType)--><!--Device-void (*unregisterNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventType eventType)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -614,6 +662,8 @@ void (*registerNodeCustomEventReceiver)(void (*eventReceiver)(ArkUI_NodeCustomEv
 
 Registers a unified entry point for custom node event callbacks. The ArkUI framework collects custom component events generated during processing and returns them through the custom event entry point function registered using **registerNodeCustomEventReceiver**. <br>Repeated calls will override the previously registered API. <br>Avoid directly saving pointers to [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) objects, as the data will be destroyed after the callback is complete. <br>To bind with a component instance, you can use the [addNodeCustomEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver) API. <br>When the global callback is no longer needed, call [unregisterNodeCustomEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodecustomeventreceiver) to unregister it.
 
+<!--Device-void (*registerNodeCustomEventReceiver)(void (*eventReceiver)(ArkUI_NodeCustomEvent* event))--><!--Device-void (*registerNodeCustomEventReceiver)(void (*eventReceiver)(ArkUI_NodeCustomEvent* event))-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -632,6 +682,8 @@ void (*unregisterNodeCustomEventReceiver)()
 
 Unregisters the unified entry point function for custom node event callbacks, which is previously registered through [registerNodeCustomEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomeventreceiver). After unregistration, the global entry no longer receives custom component events.
 
+<!--Device-void (*unregisterNodeCustomEventReceiver)()--><!--Device-void (*unregisterNodeCustomEventReceiver)()-End-->
+
 **Since**: 12
 
 ### setMeasuredSize()
@@ -643,6 +695,8 @@ int32_t (*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)
 **Description**
 
 Sets the width and height of the component after measurement is complete in the measurement callback function.
+
+<!--Device-int32_t (*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)--><!--Device-int32_t (*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)-End-->
 
 **Since**: 12
 
@@ -670,6 +724,8 @@ int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t p
 
 Sets the layout position of the component relative to its parent component in the layout callback function. This API has a lower priority than [NODE_POSITION](capi-native-node-h.md#arkui_nodeattributetype) in **ArkUI_NodeAttributeType**.
 
+<!--Device-int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)--><!--Device-int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -696,6 +752,8 @@ ArkUI_IntSize (*getMeasuredSize)(ArkUI_NodeHandle node)
 
 Obtains the width and height of a component after measurement.
 
+<!--Device-ArkUI_IntSize (*getMeasuredSize)(ArkUI_NodeHandle node)--><!--Device-ArkUI_IntSize (*getMeasuredSize)(ArkUI_NodeHandle node)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -719,6 +777,8 @@ ArkUI_IntOffset (*getLayoutPosition)(ArkUI_NodeHandle node)
 **Description**
 
 Obtains the offset of a node relative to its parent node after component layout is completed. The unit is px. The offset is the result after the parent container lays out the node. Therefore, the **offset** attribute that takes effect after the layout and the **position** attribute that does not participate in the layout do not affect the offset value.
+
+<!--Device-ArkUI_IntOffset (*getLayoutPosition)(ArkUI_NodeHandle node)--><!--Device-ArkUI_IntOffset (*getLayoutPosition)(ArkUI_NodeHandle node)-End-->
 
 **Since**: 12
 
@@ -744,6 +804,8 @@ int32_t (*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint
 
 Measures a node. You can use the **getMeasuredSize** API to obtain the size after the measurement.
 
+<!--Device-int32_t (*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint)--><!--Device-int32_t (*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -768,6 +830,8 @@ int32_t (*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t position
 **Description**
 
 Lays out a node and specifies the expected position of the node relative to its parent node.
+
+<!--Device-int32_t (*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)--><!--Device-int32_t (*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t positionY)-End-->
 
 **Since**: 12
 
@@ -795,6 +859,8 @@ int32_t (*addNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(Ark
 
 Adds a component event callback function to a component to receive component events generated by it. Unlike the global registration function **registerNodeEventReceiver**, this API allows multiple event receivers to be added to the same component. <br>The callback added by this function is triggered before the global callback registered by **registerNodeEventReceiver**. <br>Avoid directly saving pointers to [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) objects, as the data is destroyed after the callback is complete. <br>When the callback is no longer needed, call [removeNodeEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodeeventreceiver) to remove it.
 
+<!--Device-int32_t (*addNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeEvent* event))--><!--Device-int32_t (*addNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeEvent* event))-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -819,6 +885,8 @@ int32_t (*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(
 **Description**
 
 Removes the event callback function previously added to the component through [addNodeEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver). After being removed, the callback no longer receives events generated by this component.
+
+<!--Device-int32_t (*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeEvent* event))--><!--Device-int32_t (*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeEvent* event))-End-->
 
 **Since**: 12
 
@@ -845,6 +913,8 @@ int32_t (*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceive
 
 Adds a custom event callback function to a component to receive custom events (such as layout and drawing events) generated by it. Unlike the global registration function **registerNodeCustomEventReceiver**, this API allows multiple event receivers to be added to the same component. <br>The callback added by this function is triggered before the global callback registered by **registerNodeCustomEventReceiver**. <br>Avoid directly saving pointers to [ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md) objects, as the data is destroyed after the callback is complete. <br>When the callback is no longer needed, call [removeNodeCustomEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodecustomeventreceiver) to remove it.
 
+<!--Device-int32_t (*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeCustomEvent* event))--><!--Device-int32_t (*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeCustomEvent* event))-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -869,6 +939,8 @@ int32_t (*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node,void (*eventRecei
 **Description**
 
 Removes the custom event callback function previously added to the component through [addNodeCustomEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver). After removed, the callback no longer receives custom events generated by this component.
+
+<!--Device-int32_t (*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeCustomEvent* event))--><!--Device-int32_t (*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(ArkUI_NodeCustomEvent* event))-End-->
 
 **Since**: 12
 
@@ -895,6 +967,8 @@ int32_t (*setUserData)(ArkUI_NodeHandle node, void* userData)
 
 Saves custom data on a component.
 
+<!--Device-int32_t (*setUserData)(ArkUI_NodeHandle node, void* userData)--><!--Device-int32_t (*setUserData)(ArkUI_NodeHandle node, void* userData)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -920,6 +994,8 @@ void* (*getUserData)(ArkUI_NodeHandle node)
 
 Obtains the custom data stored on a component.
 
+<!--Device-void* (*getUserData)(ArkUI_NodeHandle node)--><!--Device-void* (*getUserData)(ArkUI_NodeHandle node)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -943,6 +1019,8 @@ int32_t (*setLengthMetricUnit)(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit uni
 **Description**
 
 Sets the unit used when setting length-type attributes of a component through the native API of the Node type. When the service needs to uniformly use px, vp, or fp to set length-type attributes of a component, this API can be called to specify the unit.
+
+<!--Device-int32_t (*setLengthMetricUnit)(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit unit)--><!--Device-int32_t (*setLengthMetricUnit)(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit unit)-End-->
 
 **Since**: 12
 
@@ -969,6 +1047,8 @@ ArkUI_NodeHandle (*getParent)(ArkUI_NodeHandle node)
 
 Obtains the parent node.
 
+<!--Device-ArkUI_NodeHandle (*getParent)(ArkUI_NodeHandle node)--><!--Device-ArkUI_NodeHandle (*getParent)(ArkUI_NodeHandle node)-End-->
+
 **Since**: 12
 
 **Parameters**:
@@ -992,6 +1072,8 @@ int32_t (*removeAllChildren)(ArkUI_NodeHandle parent)
 **Description**
 
 Removes all child nodes from the parent component.
+
+<!--Device-int32_t (*removeAllChildren)(ArkUI_NodeHandle parent)--><!--Device-int32_t (*removeAllChildren)(ArkUI_NodeHandle parent)-End-->
 
 **Since**: 12
 

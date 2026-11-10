@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkExtent2D {...}--><!--Device-struct VkExtent2D {...}-End-->
+
 ## Summary
 
 ### Member variables

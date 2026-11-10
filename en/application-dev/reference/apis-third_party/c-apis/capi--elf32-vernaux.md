@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf32_Vernaux {...}--><!--Device-struct Elf32_Vernaux {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoEndCodingInfoKHR {...}--><!--Device-struct VkVideoEndCodingInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

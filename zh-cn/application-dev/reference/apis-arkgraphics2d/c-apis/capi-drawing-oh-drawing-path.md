@@ -8,11 +8,13 @@ typedef struct OH_Drawing_Path OH_Drawing_Path
 
 定义为路径，路径用于自定义各种形状。
 
+<!--Device-typedef struct OH_Drawing_Path OH_Drawing_Path--><!--Device-typedef struct OH_Drawing_Path OH_Drawing_Path-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_types.h](capi-drawing-types-h.md)
 

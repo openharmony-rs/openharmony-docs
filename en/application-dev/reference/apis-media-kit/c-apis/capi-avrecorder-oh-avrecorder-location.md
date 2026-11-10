@@ -8,9 +8,11 @@ struct OH_AVRecorder_Location {...}
 
 Describes the geographical location information about a media asset and supports the annotation of latitude and longitude during audio and video recording. This struct uses the [OH_AVRecorder_Prepare][OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare) API of AVRecorder to write the latitude and longitude information into the metadata of the recording file. You need to set the latitude and longitude parameters of this structure before recording. During recording, the geographical location information is automatically embedded into the generated media file. This struct is applicable to scenarios where geographical locations need to be embedded in the recording result, such as marking the shooting location during video shooting, marking the track location in activity record apps, and recording the itinerary coordinates in travel diary apps. This facilitates subsequent retrieval and classification management of media resources by location.
 
+<!--Device-struct OH_AVRecorder_Location {...}--><!--Device-struct OH_AVRecorder_Location {...}-End-->
+
 **Since**: 18
 
-**Related module**: [AVRecorder](capi-others-avrecorder.md)
+**Related module**: [AVRecorder](capi-media-kit-avrecorder.md)
 
 **Header file**: [avrecorder_base.h](capi-avrecorder-base-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures {...}--><!--Device-struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceTransformFeedbackPropertiesEXT {...}--><!--Device-struct VkPhysicalDeviceTransformFeedbackPropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -33,6 +33,8 @@ enum OH_NativeXComponent_KeyCode
 
 Represents the key event code.
 
+<!--Device-OH_NativeXComponent_KeyCode--><!--Device-OH_NativeXComponent_KeyCode-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 10
@@ -49,6 +51,8 @@ enum OH_NativeXComponent_KeyAction
 **Description**
 
 Represents the key event action.
+
+<!--Device-OH_NativeXComponent_KeyAction--><!--Device-OH_NativeXComponent_KeyAction-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

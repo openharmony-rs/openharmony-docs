@@ -20,8 +20,8 @@ Provides the capabilities to operate on rawfiles, including reading files, obtai
 | -- | -- | -- |
 | [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) | RawFileDescriptor | Provides rawfile file descriptor information, including the file descriptor, start position within the HAP, and file length.<br>This information is obtained through [OH_ResourceManager_GetRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_getrawfiledescriptordata), and must be released through [OH_ResourceManager_ReleaseRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptordata) after use. |
 | [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) | RawFileDescriptor64 | Provides the rawfile file descriptor information, including the file descriptor, start position within the HAP, and file length. Large files larger than 2 GB are supported.<br>This information is obtained through [OH_ResourceManager_GetRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_getrawfiledescriptor64), and must be released through [OH_ResourceManager_ReleaseRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor64) after use. |
-| [RawFile64](capi-rawfile-rawfile64.md) | - | `RawFile64` represents an opened rawfile object, which is used for accessing large files of 2 GB and above. It is obtained through [OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64), and must be closed and released through [OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64) after use. |
 | [RawFile](capi-rawfile-rawfile.md) | RawFile | `RawFile` represents an opened rawfile object. It is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile), and must be closed and released through [OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile) after use. |
+| [RawFile64](capi-rawfile-rawfile64.md) | RawFile64 | `RawFile64` represents an opened rawfile object, which is used for accessing large files of 2 GB and above. It is obtained through [OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64), and must be closed and released through [OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64) after use. |
 
 ### Macro
 
@@ -64,6 +64,8 @@ int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t len
 
 Reads data of the specified length from the current offset position of a rawfile file. The offset position moves forward by the specified length after the read operation. For example, if the current offset position is [0] and the specified length is 10, the offset position after data reading is [10].
 
+<!--Device-int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t length)--><!--Device-int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t length)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
@@ -91,6 +93,8 @@ int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int when
 **Description**
 
 Adjusts the offset position of a rawfile based on the specified offset and offset mode.
+
+<!--Device-int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int whence)--><!--Device-int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int whence)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -120,6 +124,8 @@ long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)
 
 Obtains the length (in bytes) of a rawfile.
 
+<!--Device-long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)--><!--Device-long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
@@ -145,6 +151,8 @@ long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)
 **Description**
 
 Obtains the remaining length (in bytes) of a rawfile from the current offset position to the end of the file.
+
+<!--Device-long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)--><!--Device-long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -172,6 +180,8 @@ void OH_ResourceManager_CloseRawFile(RawFile *rawFile)
 
 Closes a `RawFile` object and releases all associated resources.
 
+<!--Device-void OH_ResourceManager_CloseRawFile(RawFile *rawFile)--><!--Device-void OH_ResourceManager_CloseRawFile(RawFile *rawFile)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
@@ -196,6 +206,8 @@ long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)
 **Description**
 
 Obtains the current offset position (in bytes) of a rawfile. This information can be used to track progress during segmented reading, or to confirm the current offset position after seeking.
+
+<!--Device-long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)--><!--Device-long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -222,6 +234,8 @@ bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDesc
 **Description**
 
 Obtains the rawfile descriptor information. After obtaining the file descriptor information, you can call functions such as **pread** to read the rawfile.
+
+<!--Device-bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDescriptor &descriptor)--><!--Device-bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDescriptor &descriptor)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -254,6 +268,8 @@ bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFile
 
 Obtains the rawfile descriptor information. After obtaining the file descriptor information, you can call functions such as **pread** to read the rawfile.
 
+<!--Device-bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFileDescriptor *descriptor)--><!--Device-bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFileDescriptor *descriptor)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -282,6 +298,8 @@ bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descri
 **Description**
 
 Releases the file descriptor of a rawfile. To prevent file descriptor leakage, you are advised to release a rawfile descriptor immediately after use.
+
+<!--Device-bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descriptor)--><!--Device-bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descriptor)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -313,6 +331,8 @@ bool OH_ResourceManager_ReleaseRawFileDescriptorData(const RawFileDescriptor *de
 
 Releases rawfile file descriptor resources. After successful release, `fd` in `descriptor` becomes invalid and cannot be used any more.
 
+<!--Device-bool OH_ResourceManager_ReleaseRawFileDescriptorData(const RawFileDescriptor *descriptor)--><!--Device-bool OH_ResourceManager_ReleaseRawFileDescriptorData(const RawFileDescriptor *descriptor)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -338,6 +358,8 @@ int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, in
 **Description**
 
 Reads data of the specified length from the current offset position of a rawfile file. The offset position moves forward by the specified length after the read operation. For example, if the current offset position is [0] and the specified length is 10, the offset position after data reading is [10]. <br>Files larger than 2 GB are supported.
+
+<!--Device-int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, int64_t length)--><!--Device-int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, int64_t length)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -367,6 +389,8 @@ int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, i
 
 Adjusts the offset position of a rawfile based on the specified offset and offset mode. Files larger than 2 GB are supported.
 
+<!--Device-int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, int whence)--><!--Device-int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, int whence)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 11
@@ -395,6 +419,8 @@ int64_t OH_ResourceManager_GetRawFileSize64(RawFile64 *rawFile)
 
 Obtains the length (in bytes) of a rawfile. Files larger than 2 GB are supported.
 
+<!--Device-int64_t OH_ResourceManager_GetRawFileSize64(RawFile64 *rawFile)--><!--Device-int64_t OH_ResourceManager_GetRawFileSize64(RawFile64 *rawFile)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 11
@@ -420,6 +446,8 @@ int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)
 **Description**
 
 Obtains the remaining length (in bytes) of a rawfile from the current offset position to the end of the file. Files larger than 2 GB are supported.
+
+<!--Device-int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)--><!--Device-int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -447,6 +475,8 @@ void OH_ResourceManager_CloseRawFile64(RawFile64 *rawFile)
 
 Closes a `RawFile64` object and releases all associated resources.
 
+<!--Device-void OH_ResourceManager_CloseRawFile64(RawFile64 *rawFile)--><!--Device-void OH_ResourceManager_CloseRawFile64(RawFile64 *rawFile)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 11
@@ -471,6 +501,8 @@ int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)
 **Description**
 
 Obtains the current offset position (in bytes) of a rawfile. This information can be used to track progress during segmented reading, or to confirm the current offset position after seeking. <br>Files larger than 2 GB are supported.
+
+<!--Device-int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)--><!--Device-int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -498,6 +530,8 @@ bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFile
 
 Obtains the rawfile descriptor information. After obtaining the file descriptor information, you can call functions such as **pread** to read the rawfile. Files larger than 2 GB are supported.
 
+<!--Device-bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFileDescriptor64 *descriptor)--><!--Device-bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFileDescriptor64 *descriptor)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 11
@@ -524,6 +558,8 @@ bool OH_ResourceManager_ReleaseRawFileDescriptor64(const RawFileDescriptor64 *de
 **Description**
 
 Releases rawfile file descriptor resources. After successful release, `fd` in `descriptor` becomes invalid and cannot be used any more.
+
+<!--Device-bool OH_ResourceManager_ReleaseRawFileDescriptor64(const RawFileDescriptor64 *descriptor)--><!--Device-bool OH_ResourceManager_ReleaseRawFileDescriptor64(const RawFileDescriptor64 *descriptor)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkExportMemoryAllocateInfoNV {...}--><!--Device-struct VkExportMemoryAllocateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

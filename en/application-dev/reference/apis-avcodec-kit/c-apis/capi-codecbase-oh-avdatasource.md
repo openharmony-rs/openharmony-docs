@@ -8,11 +8,13 @@ struct OH_AVDataSource {...}
 
 The struct describes a user-defined data source.
 
+<!--Device-struct OH_AVDataSource {...}--><!--Device-struct OH_AVDataSource {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 12
 
-**Related module**: [CodecBase](capi-others-codecbase.md)
+**Related module**: [CodecBase](capi-avcodec-kit-codecbase.md)
 
 **Header file**: [native_avcodec_base.h](capi-native-avcodec-base-h.md)
 

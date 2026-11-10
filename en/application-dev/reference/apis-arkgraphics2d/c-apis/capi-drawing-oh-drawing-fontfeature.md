@@ -8,11 +8,13 @@ typedef struct OH_Drawing_FontFeature {...} OH_Drawing_FontFeature
 
 This struct describes a font feature.
 
+<!--Device-typedef struct OH_Drawing_FontFeature {...} OH_Drawing_FontFeature--><!--Device-typedef struct OH_Drawing_FontFeature {...} OH_Drawing_FontFeature-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
-**Related module**: [Drawing](capi-others-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 **Header file**: [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 

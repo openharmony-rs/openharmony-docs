@@ -8,11 +8,13 @@ typedef struct ArkUI_FloatProperty* ArkUI_FloatPropertyHandle
 
 Defines the pointer to an ArkUI native float rendering property, which is used to create, pass, and manage the floating-point property on the target content modifier.
 
+<!--Device-typedef struct ArkUI_FloatProperty* ArkUI_FloatPropertyHandle--><!--Device-typedef struct ArkUI_FloatProperty* ArkUI_FloatPropertyHandle-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
-**Related module**: [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
+**Related module**: [ArkUI_RenderNodeUtils](capi-arkui-arkui-rendernodeutils.md)
 
 **Header file**: [native_render.h](capi-native-render-h.md)
 

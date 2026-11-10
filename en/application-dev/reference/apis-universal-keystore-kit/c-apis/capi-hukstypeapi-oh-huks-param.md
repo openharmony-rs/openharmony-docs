@@ -8,11 +8,13 @@ struct OH_Huks_Param {...}
 
 Defines the types of the parameters in a parameter set.
 
+<!--Device-struct OH_Huks_Param {...}--><!--Device-struct OH_Huks_Param {...}-End-->
+
 **System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
-**Related module**: [HuksTypeApi](capi-others-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-universal-keystore-kit-hukstypeapi.md)
 
 **Header file**: [native_huks_type.h](capi-native-huks-type-h.md)
 

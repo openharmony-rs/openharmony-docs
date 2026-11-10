@@ -8,11 +8,13 @@ typedef struct Scan_PictureScanProgress {...} Scan_PictureScanProgress
 
 表示扫描仪扫描图片的进度。该结构体包含进度值（progress）、文件描述符（fd）及是否为最后扫描的图片（isFinal），适用于需要在应用中实时跟踪图片扫描状态、获取扫描结果文件的场景。详细实现机制请参见 OH_Scan。
 
+<!--Device-typedef struct Scan_PictureScanProgress {...} Scan_PictureScanProgress--><!--Device-typedef struct Scan_PictureScanProgress {...} Scan_PictureScanProgress-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 12
 
-**相关模块：** [OH_Scan](capi-others-oh-scan.md)
+**相关模块：** [OH_Scan](capi-basic-services-kit-oh-scan.md)
 
 **所在头文件：** [ohscan.h](capi-ohscan-h.md)
 

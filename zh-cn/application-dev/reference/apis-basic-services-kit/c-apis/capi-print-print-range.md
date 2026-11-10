@@ -8,11 +8,13 @@ typedef struct Print_Range {...} Print_Range
 
 表示打印范围结构体，用于指定打印任务中的页码范围。可通过startPage和endPage指定连续页码范围，或通过pagesArray和pagesArrayLen指定不连续的打印页码数组。
 
+<!--Device-typedef struct Print_Range {...} Print_Range--><!--Device-typedef struct Print_Range {...} Print_Range-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 13
 
-**相关模块：** [Print](capi-others-print.md)
+**相关模块：** [Print](capi-basic-services-kit-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

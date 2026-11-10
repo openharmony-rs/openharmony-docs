@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoAV1TimingInfoFlags {...}--><!--Device-struct StdVideoAV1TimingInfoFlags {...}-End-->
+
 ## Summary
 
 ### Member variables

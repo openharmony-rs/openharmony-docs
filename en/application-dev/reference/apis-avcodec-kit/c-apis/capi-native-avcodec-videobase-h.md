@@ -52,6 +52,8 @@ enum OH_VideoMetadataRoiSemanticLabel
 
 The semantic labels for Region of Interest (ROI) in video encoding.
 
+<!--Device-OH_VideoMetadataRoiSemanticLabel--><!--Device-OH_VideoMetadataRoiSemanticLabel-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
 **Since**: 26.0.0
@@ -77,6 +79,8 @@ Formats the region of interest (ROI) configuration from an OH_AVFormat handle in
 > **Note**:
 >
 > The caller takes ownership of the memory allocated for *roiStrInOut. The memory is allocated using the standard C library allocator (malloc/realloc). The caller must free the string using the matching standard C library deallocator (free) when it is no longer needed, and set the pointer to NULL to prevent double-free.
+
+<!--Device-OH_AVErrCode OH_VideoMetadata_AppendRoiString(char **roiStrInOut, OH_AVFormat *format)--><!--Device-OH_AVErrCode OH_VideoMetadata_AppendRoiString(char **roiStrInOut, OH_AVFormat *format)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -106,6 +110,8 @@ OH_AVErrCode OH_VideoMetadata_GetRoiCount(const char *roiStr, uint32_t *outCount
 **Description**
 
 Pre-parses the ROI string to obtain the number of valid ROI regions contained within it.<br> This interface is decoupled from specific backend capacity limits and accurately returns the number of valid regions identified in the string based on syntax rules.
+
+<!--Device-OH_AVErrCode OH_VideoMetadata_GetRoiCount(const char *roiStr, uint32_t *outCount)--><!--Device-OH_AVErrCode OH_VideoMetadata_GetRoiCount(const char *roiStr, uint32_t *outCount)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -137,6 +143,8 @@ Parses the ROI string and populates the caller-provided OH_AVFormat array.
 > **Note**:
 >
 > The caller takes ownership of every successfully created OH_AVFormat handle. Upon return, the valid handles are stored in the first *outCount elements of the outOwnedFormats array. - On full or partial success (*outCount > 0), the caller must individually destroy each valid handle using [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) to prevent memory leaks. - On total failure (*outCount == 0), no handles are created and no destruction is needed.
+
+<!--Device-OH_AVErrCode OH_VideoMetadata_ParseRoiString(const char *roiStr, OH_AVFormat **outOwnedFormats, uint32_t maxCapacity, uint32_t *outCount)--><!--Device-OH_AVErrCode OH_VideoMetadata_ParseRoiString(const char *roiStr, OH_AVFormat **outOwnedFormats, uint32_t maxCapacity, uint32_t *outCount)-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 

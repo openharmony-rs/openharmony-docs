@@ -8,11 +8,13 @@ typedef struct ArkUI_GridLayoutOptions ArkUI_GridLayoutOptions
 
 Defines grid layout options, which are used to set layout parameters for irregular grid items in a **Grid**<br>component, including the irregular item index and layout callback. An irregular grid item refers to a grid item that spans rows and columns or has a different size in the grid layout.
 
+<!--Device-typedef struct ArkUI_GridLayoutOptions ArkUI_GridLayoutOptions--><!--Device-typedef struct ArkUI_GridLayoutOptions ArkUI_GridLayoutOptions-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [grid.h](capi-grid-h.md)
 

@@ -48,6 +48,8 @@ ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()
 
 Creates an **EmbeddedComponent** option object.
 
+<!--Device-ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()--><!--Device-ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -67,6 +69,8 @@ void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* opt
 **Description**
 
 Disposes of an **EmbeddedComponent** option object.
+
+<!--Device-void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)--><!--Device-void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +92,8 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* 
 
 Sets the [onError](../../apis-media-kit/c-apis/capi-avplayer-avplayercallback.md) callback for the **EmbeddedComponent** component. This callback is triggered when an error occurs during the running of the **EmbeddedComponent** component.
 
+<!--Device-void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, const char* name, const char* message))--><!--Device-void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, const char* name, const char* message))-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -108,6 +114,8 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOpt
 **Description**
 
 Sets the onTerminated callback for the **EmbeddedComponent** component. This callback is triggered when the **EmbeddedComponent** component exits properly.
+
+<!--Device-void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, AbilityBase_Want* want))--><!--Device-void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, AbilityBase_Want* want))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf_Options_Hw {...}--><!--Device-struct Elf_Options_Hw {...}-End-->
+
 ## Summary
 
 ### Member variables

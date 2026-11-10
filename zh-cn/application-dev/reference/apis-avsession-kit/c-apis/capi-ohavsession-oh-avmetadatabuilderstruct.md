@@ -8,11 +8,13 @@ typedef struct OH_AVMetadataBuilderStruct OH_AVMetadataBuilder
 
 会话元数据构造器。 用于构造会话元数据。
 
+<!--Device-typedef struct OH_AVMetadataBuilderStruct OH_AVMetadataBuilder--><!--Device-typedef struct OH_AVMetadataBuilderStruct OH_AVMetadataBuilder-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
-**相关模块：** [OHAVSession](capi-others-ohavsession.md)
+**相关模块：** [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 **所在头文件：** [native_avmetadata.h](capi-native-avmetadata-h.md)
 

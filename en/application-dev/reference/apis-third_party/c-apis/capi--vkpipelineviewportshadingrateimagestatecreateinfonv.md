@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineViewportShadingRateImageStateCreateInfoNV {...}--><!--Device-struct VkPipelineViewportShadingRateImageStateCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

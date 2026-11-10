@@ -40,6 +40,8 @@ enum Vibrator_ErrorCode
 
 Enumerates the error codes. If an exception occurs during use of vibration APIs, the corresponding error code is returned.
 
+<!--Device-Vibrator_ErrorCode--><!--Device-Vibrator_ErrorCode-End-->
+
 **System capability**: SystemCapability.Sensors.MiscDevice
 
 **Since**: 11
@@ -60,6 +62,8 @@ enum Vibrator_Usage
 **Description**
 
 Enumerates the vibration priorities in different scenarios. A vibration with a higher priority interrupts a vibration with a lower priority. Suggestions: Select a proper priority based on the application scenario. In scenarios where continuous vibration is required, keep the priority consistent to avoid performance loss caused by frequently switching priorities. It is recommended that a higher priority be used for physical feedback and touch vibrations to ensure timely response.
+
+<!--Device-Vibrator_Usage--><!--Device-Vibrator_Usage-End-->
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 

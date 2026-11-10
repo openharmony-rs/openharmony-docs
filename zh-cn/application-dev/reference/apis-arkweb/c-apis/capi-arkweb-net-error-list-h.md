@@ -32,6 +32,8 @@ enum ArkWeb_NetError
 
 定义ArkWeb网络协议栈错误码。
 
+<!--Device-ArkWeb_NetError--><!--Device-ArkWeb_NetError-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 12

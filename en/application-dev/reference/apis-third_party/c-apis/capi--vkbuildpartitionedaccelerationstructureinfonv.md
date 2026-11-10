@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBuildPartitionedAccelerationStructureInfoNV {...}--><!--Device-struct VkBuildPartitionedAccelerationStructureInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

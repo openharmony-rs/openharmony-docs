@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBindImagePlaneMemoryInfo {...}--><!--Device-struct VkBindImagePlaneMemoryInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -55,6 +55,8 @@ enum ArkUI_ProgressType
 
 Enumerates progress indicator types.
 
+<!--Device-ArkUI_ProgressType--><!--Device-ArkUI_ProgressType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -80,6 +82,8 @@ ArkUI_ProgressLinearStyleOption* OH_ArkUI_ProgressLinearStyleOption_Create(void)
 
 Creates a **ProgressLinearStyleOption** instance. After use, you must call [OH_ArkUI_ProgressLinearStyleOption_Destroy](capi-progress-h.md#oh_arkui_progresslinearstyleoption_destroy) to release resources to avoid memory leaks.
 
+<!--Device-ArkUI_ProgressLinearStyleOption* OH_ArkUI_ProgressLinearStyleOption_Create(void)--><!--Device-ArkUI_ProgressLinearStyleOption* OH_ArkUI_ProgressLinearStyleOption_Create(void)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
@@ -100,6 +104,8 @@ void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption*
 
 Destroys a **ProgressLinearStyleOption** instance. This API must be used in pair with [OH_ArkUI_ProgressLinearStyleOption_Create](capi-progress-h.md#oh_arkui_progresslinearstyleoption_create). The **option** parameter should be obtained through **<br>OH_ArkUI_ProgressLinearStyleOption_Create()**, and the object should not be used after **<br>OH_ArkUI_ProgressLinearStyleOption_Destroy()** is called.
 
+<!--Device-void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption* option)--><!--Device-void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
@@ -119,6 +125,8 @@ void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinea
 **Description**
 
 Sets whether to enable the scan effect. It is suitable for loading scenarios that require enhanced visual feedback of the progress indicator, such as data loading and file upload. The scan effect refers to the dynamic visual effect of a light beam scanning across the progress indicator.
+
+<!--Device-void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)--><!--Device-void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,6 +149,8 @@ void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLin
 
 Sets whether to enable the smooth effect.
 
+<!--Device-void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)--><!--Device-void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
@@ -161,6 +171,8 @@ void OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(ArkUI_ProgressLinearStyle
 **Description**
 
 Sets the stroke width for a progress indicator.
+
+<!--Device-void OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(ArkUI_ProgressLinearStyleOption* option, float strokeWidth)--><!--Device-void OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(ArkUI_ProgressLinearStyleOption* option, float strokeWidth)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -183,6 +195,8 @@ void OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius(ArkUI_ProgressLinearStyl
 
 Sets the corner radius for a progress indicator.
 
+<!--Device-void OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius(ArkUI_ProgressLinearStyleOption* option, float strokeRadius)--><!--Device-void OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius(ArkUI_ProgressLinearStyleOption* option, float strokeRadius)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
@@ -203,6 +217,8 @@ bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinea
 **Description**
 
 Obtains the enabled status of the scan effect.
+
+<!--Device-bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option)--><!--Device-bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,6 +246,8 @@ bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLin
 
 Obtains the enabled status of the smooth effect.
 
+<!--Device-bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option)--><!--Device-bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
@@ -256,6 +274,8 @@ float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyl
 
 Obtains the stroke width of the progress indicator.
 
+<!--Device-float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyleOption* option)--><!--Device-float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyleOption* option)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
@@ -281,6 +301,8 @@ float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearSty
 **Description**
 
 Obtains the corner radius of the progress indicator.
+
+<!--Device-float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearStyleOption* option)--><!--Device-float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearStyleOption* option)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

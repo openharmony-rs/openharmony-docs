@@ -52,6 +52,8 @@ ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()
 
 创建EmbeddedComponent组件选项的对象。 返回的对象需要在不再使用时通过OH_ArkUI_EmbeddedComponentOption_Dispose销毁。
 
+<!--Device-ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()--><!--Device-ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -71,6 +73,8 @@ void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* opt
 **描述：**
 
 销毁EmbeddedComponent组件选项的对象。 该对象必须由OH_ArkUI_EmbeddedComponentOption_Create创建，销毁后不应再使用该对象。
+
+<!--Device-void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)--><!--Device-void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +96,8 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* 
 
 设置EmbeddedComponent组件的onError回调。 EmbeddedComponent组件在运行过程中发生异常时触发本回调。
 
+<!--Device-void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, const char* name, const char* message))--><!--Device-void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, const char* name, const char* message))-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
@@ -112,6 +118,8 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOpt
 **描述：**
 
 设置EmbeddedComponent组件的onTerminated回调。 EmbeddedComponent组件正常退出时触发本回调。
+
+<!--Device-void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, AbilityBase_Want* want))--><!--Device-void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, AbilityBase_Want* want))-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -8,13 +8,15 @@ typedef struct OH_Drawing_GpuContextOptions {...} OH_Drawing_GpuContextOptions
 
 定义有关图形处理器上下文的选项。
 
+<!--Device-typedef struct OH_Drawing_GpuContextOptions {...} OH_Drawing_GpuContextOptions--><!--Device-typedef struct OH_Drawing_GpuContextOptions {...} OH_Drawing_GpuContextOptions-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
 **废弃版本：** 18
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_gpu_context.h](capi-drawing-gpu-context-h.md)
 

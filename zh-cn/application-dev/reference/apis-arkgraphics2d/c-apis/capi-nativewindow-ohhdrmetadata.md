@@ -8,13 +8,15 @@ typedef struct OHHDRMetaData {...} OHHDRMetaData
 
 HDR元数据结构体定义。
 
+<!--Device-typedef struct OHHDRMetaData {...} OHHDRMetaData--><!--Device-typedef struct OHHDRMetaData {...} OHHDRMetaData-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 9
 
 **废弃版本：** 10
 
-**相关模块：** [NativeWindow](capi-others-nativewindow.md)
+**相关模块：** [NativeWindow](capi-arkgraphics2d-nativewindow.md)
 
 **所在头文件：** [external_window.h](capi-external-window-h.md)
 

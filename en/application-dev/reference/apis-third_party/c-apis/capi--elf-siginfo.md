@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct elf_siginfo {...}--><!--Device-struct elf_siginfo {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ struct NetConn_NetHandleList {...}
 
 Defines the network list.
 
+<!--Device-struct NetConn_NetHandleList {...}--><!--Device-struct NetConn_NetHandleList {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 11
 
-**Related module**: [NetConnection](capi-others-netconnection.md)
+**Related module**: [NetConnection](capi-network-kit-netconnection.md)
 
 **Header file**: [net_connection_type.h](capi-net-connection-type-h.md)
 

@@ -8,11 +8,13 @@ typedef struct ArkUI_NativeDialogAPI_1 {...} ArkUI_NativeDialogAPI_1
 
 ArkUI提供的Native侧自定义弹窗接口集合。
 
+<!--Device-typedef struct ArkUI_NativeDialogAPI_1 {...} ArkUI_NativeDialogAPI_1--><!--Device-typedef struct ArkUI_NativeDialogAPI_1 {...} ArkUI_NativeDialogAPI_1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_dialog.h](capi-native-dialog-h.md)
 
@@ -57,6 +59,8 @@ ArkUI_NativeDialogHandle (*create)()
 >
 > create方法需要在调用show方法之前调用。
 
+<!--Device-ArkUI_NativeDialogHandle (*create)()--><!--Device-ArkUI_NativeDialogHandle (*create)()-End-->
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -72,6 +76,8 @@ void (*dispose)(ArkUI_NativeDialogHandle handle)
 **描述：**
 
 销毁自定义弹窗。与create配对使用，用于释放create创建的弹窗资源。调用后handle会被释放，不能再继续使用该handle，如需再次使用弹窗，需要重新调用create创建。
+
+<!--Device-void (*dispose)(ArkUI_NativeDialogHandle handle)--><!--Device-void (*dispose)(ArkUI_NativeDialogHandle handle)-End-->
 
 **参数：**
 
@@ -92,6 +98,8 @@ int32_t (*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)
 > **说明：**
 >
 > setContent方法需要在调用show方法之前调用。
+
+<!--Device-int32_t (*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)--><!--Device-int32_t (*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)-End-->
 
 **参数：**
 
@@ -120,6 +128,8 @@ int32_t (*removeContent)(ArkUI_NativeDialogHandle handle)
 >
 > removeContent方法需要在调用show方法之前调用。
 
+<!--Device-int32_t (*removeContent)(ArkUI_NativeDialogHandle handle)--><!--Device-int32_t (*removeContent)(ArkUI_NativeDialogHandle handle)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -145,6 +155,8 @@ int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignmen
 > **说明：**
 >
 > setContentAlignment方法需要在调用show方法之前调用。
+
+<!--Device-int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignment, float offsetX, float offsetY)--><!--Device-int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignment, float offsetX, float offsetY)-End-->
 
 **参数：**
 
@@ -175,6 +187,8 @@ int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)
 >
 > resetContentAlignment方法需要在调用show方法之前调用。
 
+<!--Device-int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)--><!--Device-int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -200,6 +214,8 @@ int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)
 > **说明：**
 >
 > setModalMode方法需要在调用show方法之前调用。
+
+<!--Device-int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)--><!--Device-int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)-End-->
 
 **参数：**
 
@@ -228,6 +244,8 @@ int32_t (*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)
 >
 > setAutoCancel方法需要在调用show方法之前调用。
 
+<!--Device-int32_t (*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)--><!--Device-int32_t (*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -254,6 +272,8 @@ int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const Ar
 > **说明：**
 >
 > setMask方法需要在调用show方法之前调用。
+
+<!--Device-int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const ArkUI_Rect* maskRect)--><!--Device-int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const ArkUI_Rect* maskRect)-End-->
 
 **参数：**
 
@@ -283,6 +303,8 @@ int32_t (*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgrou
 >
 > setBackgroundColor方法需要在调用show方法之前调用。
 
+<!--Device-int32_t (*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgroundColor)--><!--Device-int32_t (*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgroundColor)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -309,6 +331,8 @@ int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float
 > **说明：**
 >
 > setCornerRadius方法需要在调用show方法之前调用。
+
+<!--Device-int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float topRight, float bottomLeft, float bottomRight)--><!--Device-int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float topRight, float bottomLeft, float bottomRight)-End-->
 
 **参数：**
 
@@ -340,6 +364,8 @@ int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount
 >
 > setGridColumnCount方法需要在调用show方法之前调用。
 
+<!--Device-int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount)--><!--Device-int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -366,6 +392,8 @@ int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomS
 > **说明：**
 >
 > enableCustomStyle方法需要在调用show方法之前调用。
+
+<!--Device-int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomStyle)--><!--Device-int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomStyle)-End-->
 
 **参数：**
 
@@ -394,6 +422,8 @@ int32_t (*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCus
 >
 > enableCustomAnimation方法需要在调用show方法之前调用。
 
+<!--Device-int32_t (*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCustomAnimation)--><!--Device-int32_t (*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCustomAnimation)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -421,6 +451,8 @@ int32_t (*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDi
 >
 > registerOnWillDismiss方法需要在调用show方法之前调用。
 
+<!--Device-int32_t (*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDismissEvent eventHandler)--><!--Device-int32_t (*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDismissEvent eventHandler)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -443,6 +475,8 @@ int32_t (*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)
 **描述：**
 
 显示自定义弹窗。
+
+<!--Device-int32_t (*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)--><!--Device-int32_t (*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)-End-->
 
 **参数：**
 
@@ -467,6 +501,8 @@ int32_t (*close)(ArkUI_NativeDialogHandle handle)
 
 关闭自定义弹窗，如已关闭，则不生效。该接口后台执行是异步的，在关闭动画执行完成后弹窗节点才会下树。如需关闭后再次打开弹窗，请在延迟300ms以后再执行。
 
+<!--Device-int32_t (*close)(ArkUI_NativeDialogHandle handle)--><!--Device-int32_t (*close)(ArkUI_NativeDialogHandle handle)-End-->
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -488,6 +524,8 @@ int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, vo
 **描述：**
 
 注册系统关闭自定义弹窗的监听事件。
+
+<!--Device-int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(ArkUI_DialogDismissEvent* event))--><!--Device-int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(ArkUI_DialogDismissEvent* event))-End-->
 
 **参数：**
 

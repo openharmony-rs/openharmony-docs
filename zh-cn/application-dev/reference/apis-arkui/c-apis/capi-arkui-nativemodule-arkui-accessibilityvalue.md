@@ -8,11 +8,13 @@ typedef struct ArkUI_AccessibilityValue ArkUI_AccessibilityValue
 
 定义组件的无障碍信息值，用于描述组件的无障碍状态，如范围类组件的最小值、最大值、当前值以及文本描述等，适用于需要向无障碍服务提供组件当前状态信息的场景。
 
+<!--Device-typedef struct ArkUI_AccessibilityValue ArkUI_AccessibilityValue--><!--Device-typedef struct ArkUI_AccessibilityValue ArkUI_AccessibilityValue-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_type.h](capi-native-type-h.md)
 

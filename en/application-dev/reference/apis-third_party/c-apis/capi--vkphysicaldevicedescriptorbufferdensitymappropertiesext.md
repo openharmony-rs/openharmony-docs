@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT {...}--><!--Device-struct VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

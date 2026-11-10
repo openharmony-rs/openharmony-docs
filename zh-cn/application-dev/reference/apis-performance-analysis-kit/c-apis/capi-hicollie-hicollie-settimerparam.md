@@ -8,11 +8,13 @@ struct HiCollie_SetTimerParam {...}
 
 定义OH_HiCollie_SetTimer函数的输入参数。
 
+<!--Device-struct HiCollie_SetTimerParam {...}--><!--Device-struct HiCollie_SetTimerParam {...}-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiCollie
 
 **起始版本：** 18
 
-**相关模块：** [HiCollie](capi-others-hicollie.md)
+**相关模块：** [HiCollie](capi-performance-analysis-kit-hicollie.md)
 
 **所在头文件：** [hicollie.h](capi-hicollie-h.md)
 

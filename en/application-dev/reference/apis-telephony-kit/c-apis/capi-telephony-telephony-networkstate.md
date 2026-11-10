@@ -8,11 +8,13 @@ typedef struct Telephony_NetworkState {...} Telephony_NetworkState
 
 Defines network status information.
 
+<!--Device-typedef struct Telephony_NetworkState {...} Telephony_NetworkState--><!--Device-typedef struct Telephony_NetworkState {...} Telephony_NetworkState-End-->
+
 **System capability**: SystemCapability.Telephony.CoreService
 
 **Since**: 13
 
-**Related module**: [Telephony](capi-others-telephony.md)
+**Related module**: [Telephony](capi-telephony-kit-telephony.md)
 
 **Header file**: [telephony_radio_type.h](capi-telephony-radio-type-h.md)
 

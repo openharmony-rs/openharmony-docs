@@ -90,6 +90,8 @@ enum ArkUI_TextAlignment
 
 Enumerates text horizontal alignment styles.
 
+<!--Device-ArkUI_TextAlignment--><!--Device-ArkUI_TextAlignment-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -113,6 +115,8 @@ enum ArkUI_TextVerticalAlignment
 
 Enumerates text vertical alignment styles.
 
+<!--Device-ArkUI_TextVerticalAlignment--><!--Device-ArkUI_TextVerticalAlignment-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
@@ -134,6 +138,8 @@ enum ArkUI_TextContentAlign
 
 Enumerates vertical alignment styles in the text content area.
 
+<!--Device-ArkUI_TextContentAlign--><!--Device-ArkUI_TextContentAlign-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
@@ -153,6 +159,8 @@ enum ArkUI_TextDirection
 **Description**
 
 Enumerates text layout directions.
+
+<!--Device-ArkUI_TextDirection--><!--Device-ArkUI_TextDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,6 +182,8 @@ enum ArkUI_EnterKeyType
 **Description**
 
 Enumerates the types of the **Enter** key for single-line text input.
+
+<!--Device-ArkUI_EnterKeyType--><!--Device-ArkUI_EnterKeyType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,6 +209,8 @@ enum ArkUI_TextDecorationType
 
 Enumerates text decoration types.
 
+<!--Device-ArkUI_TextDecorationType--><!--Device-ArkUI_TextDecorationType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -219,6 +231,8 @@ enum ArkUI_TextDecorationStyle
 **Description**
 
 Enumerates text decoration styles.
+
+<!--Device-ArkUI_TextDecorationStyle--><!--Device-ArkUI_TextDecorationStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -242,6 +256,8 @@ enum ArkUI_TextCase
 
 Enumerates text cases.
 
+<!--Device-ArkUI_TextCase--><!--Device-ArkUI_TextCase-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -261,6 +277,8 @@ enum ArkUI_TextCopyOptions
 **Description**
 
 Enumerates copy options, which define whether copy and paste is allowed for text content.
+
+<!--Device-ArkUI_TextCopyOptions--><!--Device-ArkUI_TextCopyOptions-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -283,6 +301,8 @@ enum ArkUI_TextOverflow
 
 Enumerates the display modes when the text is too long.
 
+<!--Device-ArkUI_TextOverflow--><!--Device-ArkUI_TextOverflow-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -304,6 +324,8 @@ enum ArkUI_WordBreak
 
 Enumerates word break rules.
 
+<!--Device-ArkUI_WordBreak--><!--Device-ArkUI_WordBreak-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
@@ -324,6 +346,8 @@ enum ArkUI_EllipsisMode
 **Description**
 
 Enumerates ellipsis positions.
+
+<!--Device-ArkUI_EllipsisMode--><!--Device-ArkUI_EllipsisMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -347,6 +371,8 @@ enum ArkUI_KeyboardAppearance
 
 Enumerates the appearance of the keyboard when the text box is focused.
 
+<!--Device-ArkUI_KeyboardAppearance--><!--Device-ArkUI_KeyboardAppearance-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
@@ -367,6 +393,8 @@ enum ArkUI_TextMenuItemId
 **Description**
 
 Enumerates the IDs of text menu items.
+
+<!--Device-ArkUI_TextMenuItemId--><!--Device-ArkUI_TextMenuItemId-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -406,6 +434,8 @@ enum OH_ArkUI_LineBreakStrategy
 
 Enumerates line break policies.
 
+<!--Device-OH_ArkUI_LineBreakStrategy--><!--Device-OH_ArkUI_LineBreakStrategy-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -425,6 +455,8 @@ enum OH_ArkUI_StrokeJoinStyle
 **Description**
 
 Enumerates the join styles of a text stroke.
+
+<!--Device-OH_ArkUI_StrokeJoinStyle--><!--Device-OH_ArkUI_StrokeJoinStyle-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -446,6 +478,8 @@ enum ArkUI_TextSpanType
 
 Enumerates the recognition types of a custom text selection menu.
 
+<!--Device-ArkUI_TextSpanType--><!--Device-ArkUI_TextSpanType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -466,6 +500,8 @@ enum ArkUI_TextResponseType
 **Description**
 
 Enumerates the response types of a custom text selection menu.
+
+<!--Device-ArkUI_TextResponseType--><!--Device-ArkUI_TextResponseType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -491,6 +527,8 @@ typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, voi
 
 Callback for the text menu creation event. This callback is triggered when a text menu is created, allowing you toset menu data in it.
 
+<!--Device-typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)--><!--Device-typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -512,6 +550,8 @@ typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, vo
 
 Callback for the text menu preparation event. This callback is called when the text selection area changes andbefore the menu is displayed, allowing you to set menu data in it.
 
+<!--Device-typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)--><!--Device-typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -532,6 +572,8 @@ typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item, 
 **Description**
 
 The text menu item click callback function.
+
+<!--Device-typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item, int32_t start, int32_t end, void* userData)--><!--Device-typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item, int32_t start, int32_t end, void* userData)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -562,6 +604,8 @@ ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()
 
 Creates a text input counter configuration object. When this object is no longer used, call [OH_ArkUI_ShowCounterConfig_Dispose](capi-text-common-h.md#oh_arkui_showcounterconfig_dispose) to dispose of it.
 
+<!--Device-ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()--><!--Device-ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -582,6 +626,8 @@ void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)
 
 Disposes of the text input counter configuration object created by [OH_ArkUI_ShowCounterConfig_Create](capi-text-common-h.md#oh_arkui_showcounterconfig_create).
 
+<!--Device-void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)--><!--Device-void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -601,6 +647,8 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* con
 **Description**
 
 Sets the text color of the counter when the text input has not reached the maximum character limit. If this API is not called, the default color is **0x66182431**, displayed as gray.
+
+<!--Device-void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* config, uint32_t color)--><!--Device-void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* config, uint32_t color)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -623,6 +671,8 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterCon
 
 Sets the text color of the counter when the text input exceeds the maximum character limit. If this API is not called, the default color is **0x99FA2A2D**, displayed as red.
 
+<!--Device-void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config, uint32_t color)--><!--Device-void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config, uint32_t color)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -643,6 +693,8 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig*
 **Description**
 
 Obtains the text color of the counter when the text input has not reached the maximum character limit.
+
+<!--Device-uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig* config)--><!--Device-uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig* config)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -670,6 +722,8 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounte
 
 Obtains the text color of the counter when the text input exceeds the maximum character limit.
 
+<!--Device-uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config)--><!--Device-uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -696,6 +750,8 @@ ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()
 
 Creates a text menu item object for customizing the text selection menu or extending the system menu. It is applicable when custom menu items need to be added, such as sharing to a specific platform or performing custom editing operations. When this object is no longer used, call [OH_ArkUI_TextMenuItem_Dispose](capi-text-common-h.md#oh_arkui_textmenuitem_dispose) to dispose of it.
 
+<!--Device-ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()--><!--Device-ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -715,6 +771,8 @@ void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)
 **Description**
 
 Disposes of the text menu item object created by [OH_ArkUI_TextMenuItem_Create](capi-text-common-h.md#oh_arkui_textmenuitem_create).
+
+<!--Device-void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)--><!--Device-void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -736,6 +794,8 @@ ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()
 
 Creates a text menu extension object for extending the text editing menu functionality. It is applicable when custom menu items need to be added to the text editing component, such as inserting special characters or performing quick formatting. When this object is no longer used, call [OH_ArkUI_TextEditMenuOptions_Dispose](capi-text-common-h.md#oh_arkui_texteditmenuoptions_dispose) to dispose of it.
 
+<!--Device-ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()--><!--Device-ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -755,6 +815,8 @@ void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOpt
 **Description**
 
 Disposes of the text menu extension object created by [OH_ArkUI_TextEditMenuOptions_Create](capi-text-common-h.md#oh_arkui_texteditmenuoptions_create).
+
+<!--Device-void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOptions)--><!--Device-void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOptions)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -776,6 +838,8 @@ ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create()
 
 Creates a custom text selection menu object for configuring the content and behavior of the text selection menu. It is applicable when the text selection menu needs to be fully customized, such as replacing the default menu and adding application-specific operations. When this object is no longer used, call [OH_ArkUI_TextSelectionMenuOptions_Dispose](capi-text-common-h.md#oh_arkui_textselectionmenuoptions_dispose) to dispose of it.
 
+<!--Device-ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create()--><!--Device-ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
@@ -795,6 +859,8 @@ void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* s
 **Description**
 
 Disposes of the custom text selection menu object created by [OH_ArkUI_TextSelectionMenuOptions_Create](capi-text-common-h.md#oh_arkui_textselectionmenuoptions_create).
+
+<!--Device-void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* selectionMenuOptions)--><!--Device-void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* selectionMenuOptions)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -816,6 +882,8 @@ ArkUI_TextContentBaseController* OH_ArkUI_TextContentBaseController_Create()
 
 Creates a text content base controller object. When this object is no longer used, call [OH_ArkUI_TextContentBaseController_Dispose](capi-text-common-h.md#oh_arkui_textcontentbasecontroller_dispose) to dispose of it.
 
+<!--Device-ArkUI_TextContentBaseController* OH_ArkUI_TextContentBaseController_Create()--><!--Device-ArkUI_TextContentBaseController* OH_ArkUI_TextContentBaseController_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -835,6 +903,8 @@ void OH_ArkUI_TextContentBaseController_Dispose(ArkUI_TextContentBaseController*
 **Description**
 
 Disposes of the text content base controller object created by [OH_ArkUI_TextContentBaseController_Create](capi-text-common-h.md#oh_arkui_textcontentbasecontroller_create).
+
+<!--Device-void OH_ArkUI_TextContentBaseController_Dispose(ArkUI_TextContentBaseController* controller)--><!--Device-void OH_ArkUI_TextContentBaseController_Dispose(ArkUI_TextContentBaseController* controller)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -856,6 +926,8 @@ void OH_ArkUI_TextContentBaseController_DeleteBackward(ArkUI_TextContentBaseCont
 
 Deletes the character before the cursor in editing state; deletes the last character of the text box component in other states.
 
+<!--Device-void OH_ArkUI_TextContentBaseController_DeleteBackward(ArkUI_TextContentBaseController* controller)--><!--Device-void OH_ArkUI_TextContentBaseController_DeleteBackward(ArkUI_TextContentBaseController* controller)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -875,6 +947,8 @@ void OH_ArkUI_TextContentBaseController_ScrollToVisible(ArkUI_TextContentBaseCon
 **Description**
 
 Passes the start and end indexes to the bound text box component, and scrolls the text within the range to the visible area.
+
+<!--Device-void OH_ArkUI_TextContentBaseController_ScrollToVisible(ArkUI_TextContentBaseController *controller, int32_t start, int32_t end)--><!--Device-void OH_ArkUI_TextContentBaseController_ScrollToVisible(ArkUI_TextContentBaseController *controller, int32_t start, int32_t end)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -898,6 +972,8 @@ OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()
 
 Creates a decoration style object for setting the type, style, and color of text decorative lines. It is applicable when decoration effects such as underlines or strikethroughs need to be added to text, for example, in rich text editors, hyperlink text, or price tags. When this object is no longer used, call [OH_ArkUI_DecorationStyleOptions_Destroy](capi-text-common-h.md#oh_arkui_decorationstyleoptions_destroy) to destroy it.
 
+<!--Device-OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()--><!--Device-OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -917,6 +993,8 @@ void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* op
 **Description**
 
 Destroys the decoration style object created by [OH_ArkUI_DecorationStyleOptions_Create](capi-text-common-h.md#oh_arkui_decorationstyleoptions_create).
+
+<!--Device-void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* options)--><!--Device-void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* options)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

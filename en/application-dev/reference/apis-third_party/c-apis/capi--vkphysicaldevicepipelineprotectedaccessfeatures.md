@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDevicePipelineProtectedAccessFeatures {...}--><!--Device-struct VkPhysicalDevicePipelineProtectedAccessFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

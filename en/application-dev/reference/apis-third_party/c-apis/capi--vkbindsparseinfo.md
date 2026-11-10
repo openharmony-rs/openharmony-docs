@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBindSparseInfo {...}--><!--Device-struct VkBindSparseInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

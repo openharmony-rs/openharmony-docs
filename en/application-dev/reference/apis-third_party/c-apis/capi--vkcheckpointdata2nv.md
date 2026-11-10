@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCheckpointData2NV {...}--><!--Device-struct VkCheckpointData2NV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct ArkUI_IntOffset {...} ArkUI_IntOffset
 
 Defines the offset of the current component relative to its parent component.
 
+<!--Device-typedef struct ArkUI_IntOffset {...} ArkUI_IntOffset--><!--Device-typedef struct ArkUI_IntOffset {...} ArkUI_IntOffset-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [common_type.h](capi-common-type-h.md)
 

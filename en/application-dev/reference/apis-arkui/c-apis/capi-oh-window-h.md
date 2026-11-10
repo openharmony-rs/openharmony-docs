@@ -71,6 +71,8 @@ int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enable
 
 Sets whether to display the status bar in a window.
 
+<!--Device-int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)--><!--Device-int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -99,6 +101,8 @@ int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color
 
 Sets the color of the status bar in a window.
 
+<!--Device-int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)--><!--Device-int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -125,6 +129,8 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 **Description**
 
 Sets whether to display the navigation bar in a window.
+
+<!--Device-int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)--><!--Device-int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -154,6 +160,8 @@ int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_Avoi
 
 Obtains the avoid area of a window.
 
+<!--Device-int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_AvoidAreaType type, WindowManager_AvoidArea* avoidArea)--><!--Device-int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_AvoidAreaType type, WindowManager_AvoidArea* avoidArea)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -182,6 +190,8 @@ int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)
 
 Checks whether a window is displayed.
 
+<!--Device-int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)--><!--Device-int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -209,6 +219,8 @@ int32_t OH_WindowManager_ShowWindow(int32_t windowId)
 
 Shows a window.
 
+<!--Device-int32_t OH_WindowManager_ShowWindow(int32_t windowId)--><!--Device-int32_t OH_WindowManager_ShowWindow(int32_t windowId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -234,6 +246,8 @@ int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)
 **Description**
 
 Sets whether a window is touchable.
+
+<!--Device-int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)--><!--Device-int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -262,6 +276,8 @@ int32_t OH_WindowManager_SetWindowFocusable(int32_t windowId, bool isFocusable)
 
 Sets whether a window is focusable.
 
+<!--Device-int32_t OH_WindowManager_SetWindowFocusable(int32_t windowId, bool isFocusable)--><!--Device-int32_t OH_WindowManager_SetWindowFocusable(int32_t windowId, bool isFocusable)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -288,6 +304,8 @@ int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* 
 **Description**
 
 Sets the background color of a window.
+
+<!--Device-int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* color)--><!--Device-int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* color)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -316,6 +334,8 @@ int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)
 
 Sets the window brightness for the main window. The window brightness takes effect only when the window is in the foreground and has focus.
 
+<!--Device-int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)--><!--Device-int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -343,6 +363,8 @@ int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScre
 
 Sets whether to always keep the screen on for a window.
 
+<!--Device-int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScreenOn)--><!--Device-int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScreenOn)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -369,6 +391,8 @@ int32_t OH_WindowManager_SetWindowPrivacyMode(int32_t windowId, bool isPrivacy)
 **Description**
 
 Sets whether to enable privacy mode for a window.
+
+<!--Device-int32_t OH_WindowManager_SetWindowPrivacyMode(int32_t windowId, bool isPrivacy)--><!--Device-int32_t OH_WindowManager_SetWindowPrivacyMode(int32_t windowId, bool isPrivacy)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -399,6 +423,8 @@ int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_Win
 
 Obtains the properties of a window.
 
+<!--Device-int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_WindowProperties* windowProperties)--><!--Device-int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_WindowProperties* windowProperties)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -426,6 +452,8 @@ int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)
 
 Obtains the snapshot of a window.
 
+<!--Device-int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)--><!--Device-int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -435,7 +463,7 @@ Obtains the snapshot of a window.
 | Parameter | Description |
 | -- | -- |
 | int32_t windowId | Window ID. The default value is **0**. The value is an integer. If the window ID is invalid or the window has been destroyed, you cannot obtain the window snapshot. To successfully obtain a snapshot, a valid window ID is required. You can obtain a valid window ID by calling the ArkTS API getWindowProperties() on the window object |
-| [OH_PixelmapNative](capi-windowmanager-oh-pixelmapnative.md)* pixelMap | Pointer to the snapshot. |
+| [OH_PixelmapNative](../../apis-input-kit/c-apis/capi-input-oh-pixelmapnative.md)* pixelMap | Pointer to the snapshot. |
 
 **Returns**:
 
@@ -452,6 +480,8 @@ int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId, WindowMan
 **Description**
 
 Obtains the layout information array of all windows visible on a display. The layout information is arranged based on the current window stacking order, and the topmost window in the hierarchy is at index 0 of the array.
+
+<!--Device-int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId, WindowManager_Rect** windowLayoutInfoList, size_t* windowLayoutInfoSize)--><!--Device-int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId, WindowManager_Rect** windowLayoutInfoList, size_t* windowLayoutInfoSize)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -481,6 +511,8 @@ void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowL
 
 Releases the memory occupied by a window layout information array.
 
+<!--Device-void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowLayoutInfoList)--><!--Device-void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowLayoutInfoList)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 17
@@ -500,6 +532,8 @@ int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* to
 **Description**
 
 Injects a multimodal touch event into the target window. This function is limited to injecting events into windows that belong to the same process. The injection does not affect window focus or stacking order, nor does it start window dragging. The event is forwarded directly to ArkUI. This function must be called after the target window has completed its UI loading.
+
+<!--Device-int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY)--><!--Device-int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -530,6 +564,8 @@ int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** inf
 
 Obtains the information about all main windows.
 
+<!--Device-int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** infoList, size_t* mainWindowInfoSize)--><!--Device-int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** infoList, size_t* mainWindowInfoSize)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Required permission**: ohos.permission.CUSTOM_SCREEN_CAPTURE
@@ -559,6 +595,8 @@ void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* inf
 
 Releases the memory used by the main window information list.
 
+<!--Device-void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* infoList)--><!--Device-void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* infoList)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 21
@@ -579,6 +617,8 @@ typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative*
 
 Defines the callback used for receiving the main window screenshot list.
 
+<!--Device-typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize)--><!--Device-typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 21
@@ -587,7 +627,7 @@ Defines the callback used for receiving the main window screenshot list.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_PixelmapNative](capi-windowmanager-oh-pixelmapnative.md)** snapshotPixelMapList | Double pointer to the list of window screenshots. |
+| [const OH_PixelmapNative](../../apis-input-kit/c-apis/capi-input-oh-pixelmapnative.md)** snapshotPixelMapList | Double pointer to the list of window screenshots. |
 | size_t snapshotListSize | Size of the window screenshot list. |
 
 ### OH_WindowManager_GetMainWindowSnapshot()
@@ -599,6 +639,8 @@ int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t win
 **Description**
 
 Obtains the screenshots of one or more main windows specified by **windowId**.
+
+<!--Device-int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)--><!--Device-int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -631,6 +673,8 @@ void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapsho
 
 Releases the memory used by the main window screenshot list.
 
+<!--Device-void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)--><!--Device-void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 21
@@ -639,7 +683,7 @@ Releases the memory used by the main window screenshot list.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_PixelmapNative](capi-windowmanager-oh-pixelmapnative.md)* snapshotPixelMapList | Pointer to the list of window screenshots. |
+| [const OH_PixelmapNative](../../apis-input-kit/c-apis/capi-input-oh-pixelmapnative.md)* snapshotPixelMapList | Pointer to the list of window screenshots. |
 
 ### OH_WindowManager_LockCursor()
 
@@ -650,6 +694,8 @@ int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovemen
 **Description**
 
 Locks the mouse cursor within the specified window area and controls whether the cursor follows mouse movements. It is only supported by the window that currently has focus, and the lock is automatically released when the window loses focus.
+
+<!--Device-int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)--><!--Device-int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -680,6 +726,8 @@ int32_t OH_WindowManager_UnlockCursor(int32_t windowId)
 
 Clears the mouse cursor mode previously set for the window.
 
+<!--Device-int32_t OH_WindowManager_UnlockCursor(int32_t windowId)--><!--Device-int32_t OH_WindowManager_UnlockCursor(int32_t windowId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Required permission**: ohos.permission.LOCK_WINDOW_CURSOR
@@ -708,6 +756,8 @@ int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_Fr
 
 Check whether the current frame is the first frame.
 
+<!--Device-int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_FrameMetrics* metrics, bool* isFirstDrawFrame)--><!--Device-int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_FrameMetrics* metrics, bool* isFirstDrawFrame)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 26.0.0
@@ -734,6 +784,8 @@ int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowMa
 **Description**
 
 Get the time taken to process external input events in one frame.
+
+<!--Device-int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)--><!--Device-int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -762,6 +814,8 @@ int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowMa
 
 Get the time taken for layout measurement in one frame.
 
+<!--Device-int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)--><!--Device-int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 26.0.0
@@ -788,6 +842,8 @@ int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_F
 **Description**
 
 Get the start timestamp of the current frame.
+
+<!--Device-int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)--><!--Device-int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -816,6 +872,8 @@ int32_t OH_WindowManager_FrameMetrics_GetTotalDuration(const OH_WindowManager_Fr
 
 Get the total time for this frame took to render and be issued to the display subsystem.
 
+<!--Device-int32_t OH_WindowManager_FrameMetrics_GetTotalDuration(const OH_WindowManager_FrameMetrics *metrics, uint64_t *duration)--><!--Device-int32_t OH_WindowManager_FrameMetrics_GetTotalDuration(const OH_WindowManager_FrameMetrics *metrics, uint64_t *duration)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 26.1.0
@@ -842,6 +900,8 @@ int32_t OH_WindowManager_FrameMetrics_GetAnimationDuration(const OH_WindowManage
 **Description**
 
 Get the time for elapsed issuing animation callbacks in one frame.
+
+<!--Device-int32_t OH_WindowManager_FrameMetrics_GetAnimationDuration(const OH_WindowManager_FrameMetrics *metrics, uint64_t *duration)--><!--Device-int32_t OH_WindowManager_FrameMetrics_GetAnimationDuration(const OH_WindowManager_FrameMetrics *metrics, uint64_t *duration)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -870,6 +930,8 @@ int32_t OH_WindowManager_FrameMetrics_GetIntendedVsyncTimestamp(const OH_WindowM
 
 Get the intended start point for the frame.
 
+<!--Device-int32_t OH_WindowManager_FrameMetrics_GetIntendedVsyncTimestamp(const OH_WindowManager_FrameMetrics *metrics, uint64_t *timestamp)--><!--Device-int32_t OH_WindowManager_FrameMetrics_GetIntendedVsyncTimestamp(const OH_WindowManager_FrameMetrics *metrics, uint64_t *timestamp)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 26.1.0
@@ -896,6 +958,8 @@ int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, 
 **Description**
 
 Registers a callback for window frame metric change events. This API depends on the loading of the window page content. That is, this API can be called only after the **<br>loadContent()** or **setUIContent()** API in ArkTS takes effect. The callback is triggered only when the client UI content is redrawn (for example, page switching, interaction with responsive components, or background color and opacity setting). To cancel the registration, call the [OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback) API.
+
+<!--Device-int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)--><!--Device-int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -924,6 +988,8 @@ int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId
 
 Unregisters the callback for window frame metric change events. This API depends on the loading of the window page content. That is, this API can be called only after the **<br>loadContent()** or **setUIContent()** API in ArkTS takes effect. To register such a callback, call the [OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback) API.
 
+<!--Device-int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)--><!--Device-int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 26.0.0
@@ -950,6 +1016,8 @@ int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_De
 **Description**
 
 Gets the system default display size scaling factor of the screen where the window is located.
+
+<!--Device-int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)--><!--Device-int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -978,6 +1046,8 @@ int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_Den
 
 Gets the system display size scaling factor of the screen where the window is located.
 
+<!--Device-int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)--><!--Device-int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 24
@@ -1004,6 +1074,8 @@ int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_Den
 **Description**
 
 Gets the custom display size scaling factor of the window.
+
+<!--Device-int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)--><!--Device-int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -1032,6 +1104,8 @@ int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowMan
 
 Get the system display size scaling factor, the system default display size scaling factor, and the custom display size scaling factor information of the screen where the current window is located.
 
+<!--Device-int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowManager_DensityInfo** info)--><!--Device-int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowManager_DensityInfo** info)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 24
@@ -1058,6 +1132,8 @@ int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_
 **Description**
 
 Listen for changes in the display size scaling factor information of the window. The callback function is triggered when any of the system display size scaling factor, system default display size scaling factor, or custom display size scaling factor of the screen where the window resides changes. To unlisten for changes in the display size scaling factor information of the window, call OH_WindowManager_UnregisterDensityInfoChangeCallback.
+
+<!--Device-int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)--><!--Device-int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -1086,6 +1162,8 @@ int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, O
 
 Unlisten for changes in the display size scaling factor information of the window. The callback function is triggered when any of the system display size scaling factor, system default display size scaling factor, or custom display size scaling factor of the screen where the window resides changes. To listen for changes in the display size scaling factor information of the window, call OH_WindowManager_RegisterDensityInfoChangeCallback.
 
+<!--Device-int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)--><!--Device-int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 24
@@ -1112,6 +1190,8 @@ int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo*
 **Description**
 
 Releases the memory occupied by DensityInfo.
+
+<!--Device-int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)--><!--Device-int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 

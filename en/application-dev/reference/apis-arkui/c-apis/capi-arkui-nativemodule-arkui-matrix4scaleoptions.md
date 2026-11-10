@@ -8,11 +8,13 @@ typedef struct ArkUI_Matrix4ScaleOptions ArkUI_Matrix4ScaleOptions
 
 Defines the configuration options for 4 × 4 matrix scaling. For details about the parameters and their value principles, see member variable descriptions.
 
+<!--Device-typedef struct ArkUI_Matrix4ScaleOptions ArkUI_Matrix4ScaleOptions--><!--Device-typedef struct ArkUI_Matrix4ScaleOptions ArkUI_Matrix4ScaleOptions-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_type_visual.h](capi-native-type-visual-h.md)
 

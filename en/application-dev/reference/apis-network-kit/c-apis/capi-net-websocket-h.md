@@ -37,6 +37,8 @@ struct WebSocket *OH_WebSocketClient_Constructor(WebSocket_OnOpenCallback onOpen
 
 Constructor used to create a WebSocket client.
 
+<!--Device-struct WebSocket *OH_WebSocketClient_Constructor(WebSocket_OnOpenCallback onOpen, WebSocket_OnMessageCallback onMessage, WebSocket_OnErrorCallback onError, WebSocket_OnCloseCallback onclose)--><!--Device-struct WebSocket *OH_WebSocketClient_Constructor(WebSocket_OnOpenCallback onOpen, WebSocket_OnMessageCallback onMessage, WebSocket_OnErrorCallback onError, WebSocket_OnCloseCallback onclose)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 11
@@ -66,6 +68,8 @@ int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Head
 
 Adds the header information to the client request.
 
+<!--Device-int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Header header)--><!--Device-int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Header header)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 11
@@ -92,6 +96,8 @@ int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct
 **Description**
 
 Connects the WebSocket client to the server.
+
+<!--Device-int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct WebSocket_RequestOptions options)--><!--Device-int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct WebSocket_RequestOptions options)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -123,6 +129,8 @@ int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)
 
 Sends data from the WebSocket client to the server.
 
+<!--Device-int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)--><!--Device-int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Required permission**: ohos.permission.INTERNET
@@ -153,6 +161,8 @@ int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOpt
 
 Closes the connection on the WebSocket client.
 
+<!--Device-int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOption options)--><!--Device-int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOption options)-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Required permission**: ohos.permission.INTERNET
@@ -181,6 +191,8 @@ int OH_WebSocketClient_Destroy(struct WebSocket *client)
 **Description**
 
 Destroys the WebSocket client and releases the context and resources of the WebSocket connection. Usage:
+
+<!--Device-int OH_WebSocketClient_Destroy(struct WebSocket *client)--><!--Device-int OH_WebSocketClient_Destroy(struct WebSocket *client)-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 

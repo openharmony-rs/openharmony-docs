@@ -8,11 +8,13 @@ typedef struct OH_CM_Blob {...} OH_CM_Blob
 
 Defines a struct for a binary large object (BLOB).
 
+<!--Device-typedef struct OH_CM_Blob {...} OH_CM_Blob--><!--Device-typedef struct OH_CM_Blob {...} OH_CM_Blob-End-->
+
 **System capability**: SystemCapability.Security.CertificateManager
 
 **Since**: 22
 
-**Related module**: [CertManagerType](capi-others-certmanagertype.md)
+**Related module**: [CertManagerType](capi-device-certificate-kit-certmanagertype.md)
 
 **Header file**: [cm_native_type.h](capi-cm-native-type-h.md)
 

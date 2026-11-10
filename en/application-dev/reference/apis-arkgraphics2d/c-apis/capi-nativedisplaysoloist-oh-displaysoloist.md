@@ -8,11 +8,13 @@ typedef struct OH_DisplaySoloist OH_DisplaySoloist
 
 Provides the declaration of an **OH_DisplaySoloist** struct.
 
+<!--Device-typedef struct OH_DisplaySoloist OH_DisplaySoloist--><!--Device-typedef struct OH_DisplaySoloist OH_DisplaySoloist-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.HyperGraphicManager
 
 **Since**: 12
 
-**Related module**: [NativeDisplaySoloist](capi-others-nativedisplaysoloist.md)
+**Related module**: [NativeDisplaySoloist](capi-arkgraphics2d-nativedisplaysoloist.md)
 
 **Header file**: [native_display_soloist.h](capi-native-display-soloist-h.md)
 

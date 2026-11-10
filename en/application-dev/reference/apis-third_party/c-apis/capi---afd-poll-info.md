@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct _AFD_POLL_INFO {...}--><!--Device-struct _AFD_POLL_INFO {...}-End-->
+
 ## Summary
 
 ### Member variables

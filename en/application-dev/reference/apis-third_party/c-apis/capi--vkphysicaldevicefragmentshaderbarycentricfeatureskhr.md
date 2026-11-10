@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR {...}--><!--Device-struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoAV1GlobalMotion {...}--><!--Device-struct StdVideoAV1GlobalMotion {...}-End-->
+
 ## Summary
 
 ### Member variables

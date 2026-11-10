@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceExternalMemoryRDMAFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceExternalMemoryRDMAFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

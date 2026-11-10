@@ -8,11 +8,13 @@ struct OH_UsbManager_UsbPipe {...}
 
 定义用于与已打开设备通信的USB设备管道。
 
+<!--Device-struct OH_UsbManager_UsbPipe {...}--><!--Device-struct OH_UsbManager_UsbPipe {...}-End-->
+
 **系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
-**相关模块：** [UsbManager](capi-others-usbmanager.md)
+**相关模块：** [UsbManager](capi-basic-services-kit-usbmanager.md)
 
 **所在头文件：** [ohusb_manager.h](capi-ohusb-manager-h.md)
 

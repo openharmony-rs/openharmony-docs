@@ -34,6 +34,8 @@ bool OH_AT_CheckSelfPermission(const char *permission)
 
 Checks whether a permission is granted to this application.
 
+<!--Device-bool OH_AT_CheckSelfPermission(const char *permission)--><!--Device-bool OH_AT_CheckSelfPermission(const char *permission)-End-->
+
 **System capability**: SystemCapability.Security.AccessToken
 
 **Since**: 12

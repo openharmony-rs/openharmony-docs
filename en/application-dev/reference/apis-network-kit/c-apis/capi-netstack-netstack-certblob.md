@@ -8,11 +8,13 @@ struct NetStack_CertBlob {...}
 
 Defines the certificate data structure.
 
+<!--Device-struct NetStack_CertBlob {...}--><!--Device-struct NetStack_CertBlob {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 11
 
-**Related module**: [netstack](capi-others-netstack.md)
+**Related module**: [netstack](capi-network-kit-netstack.md)
 
 **Header file**: [net_ssl_c_type.h](capi-net-ssl-c-type-h.md)
 

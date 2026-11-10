@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceBufferDeviceAddressFeatures {...}--><!--Device-struct VkPhysicalDeviceBufferDeviceAddressFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

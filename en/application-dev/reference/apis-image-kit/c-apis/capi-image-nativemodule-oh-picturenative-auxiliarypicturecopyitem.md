@@ -8,11 +8,13 @@ struct OH_PictureNative_AuxiliaryPictureCopyItem {...}
 
 This structure is used to specify an auxiliary picture copy rule when creating a deep copy of a PictureNative object. It describes how to copy an auxiliary picture from one type to another.
 
+<!--Device-struct OH_PictureNative_AuxiliaryPictureCopyItem {...}--><!--Device-struct OH_PictureNative_AuxiliaryPictureCopyItem {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
-**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **Header file**: [picture_native.h](capi-picture-native-h.md)
 

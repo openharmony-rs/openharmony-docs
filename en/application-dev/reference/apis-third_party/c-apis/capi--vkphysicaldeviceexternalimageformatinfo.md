@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceExternalImageFormatInfo {...}--><!--Device-struct VkPhysicalDeviceExternalImageFormatInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

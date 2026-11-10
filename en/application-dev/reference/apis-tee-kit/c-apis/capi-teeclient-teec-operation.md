@@ -8,11 +8,13 @@ typedef struct TEEC_Operation {...} TEEC_Operation
 
 Defines the parameters for opening a session or sending a command.
 
+<!--Device-typedef struct TEEC_Operation {...} TEEC_Operation--><!--Device-typedef struct TEEC_Operation {...} TEEC_Operation-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeClient](capi-others-teeclient.md)
+**Related module**: [TeeClient](capi-tee-kit-teeclient.md)
 
 **Header file**: [tee_client_type.h](capi-tee-client-type-h.md)
 

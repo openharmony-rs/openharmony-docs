@@ -8,11 +8,13 @@ typedef struct ffrt_queue_attr_t {...} ffrt_queue_attr_t
 
 队列属性结构体，用于存储队列的属性信息。
 
+<!--Device-typedef struct ffrt_queue_attr_t {...} ffrt_queue_attr_t--><!--Device-typedef struct ffrt_queue_attr_t {...} ffrt_queue_attr_t-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
 
-**相关模块：** [FFRT](capi-others-ffrt.md)
+**相关模块：** [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 **所在头文件：** [type_def.h](capi-type-def-h.md)
 

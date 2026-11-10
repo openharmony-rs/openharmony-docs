@@ -44,6 +44,8 @@ InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)
 
 Creates an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance for simple scenarios where only keyboard visibility needs to be controlled. If you also need to specify the reason for requesting the keyboard, it is recommended that you use [OH_AttachOptions_CreateWithRequestKeyboardReason](capi-inputmethod-attach-options-capi-h.md#oh_attachoptions_createwithrequestkeyboardreason). <br>Paired calls: This function must be called in pairs with [OH_AttachOptions_Destroy](capi-inputmethod-attach-options-capi-h.md#oh_attachoptions_destroy). Objects created by **<br>OH_AttachOptions_Create** must be destroyed via **OH_AttachOptions_Destroy**; otherwise, memory leaks will occur. <br>Lifecycle management: <br> <br> - After creation, it can be read multiple times (IsShowKeyboard). <br> - After options are passed to the attach function, the attach function reads configuration information. Once the attach operation completes, options can be destroyed immediately, as the configuration has already been read. <br> - Destroyed options must not be used again.
 
+<!--Device-InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)--><!--Device-InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -69,6 +71,8 @@ InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool
 **Description**
 
 Creates an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance, specifying both keyboard visibility and the reason for requesting the keyboard. The **requestKeyboardReason** parameter identifies the scenario that triggers the keyboard request, enabling the system to recognize input scenarios and deliver improved user experience. <br>Paired calls: This function must be called in pairs with [OH_AttachOptions_Destroy](capi-inputmethod-attach-options-capi-h.md#oh_attachoptions_destroy). The object created by the create function must be destroyed via **OH_AttachOptions_Destroy**. <br>Lifecycle management: Consistent with **OH_AttachOptions_Create**. Multiple read operations can be performed after creation. The instance can be destroyed immediately once the attach operation completes.
+
+<!--Device-InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard, InputMethod_RequestKeyboardReason requestKeyboardReason)--><!--Device-InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard, InputMethod_RequestKeyboardReason requestKeyboardReason)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -97,6 +101,8 @@ void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)
 
 Destroys an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance, releasing memory resources allocated by the **<br>OH_AttachOptions_Create** function. This method is used in pairs with **OH_AttachOptions_Create** and **<br>OH_AttachOptions_CreateWithRequestKeyboardReason**. <br>Paired calls: This function must be called in pairs with **OH_AttachOptions_Create** or **<br>OH_AttachOptions_CreateWithRequestKeyboardReason**. Each instance created by **OH_AttachOptions_Create** shall be destroyed by exactly one invocation of **OH_AttachOptions_Destroy**. <br>Lifecycle management: <br> - After OH_AttachOptions_Destroy is called, the options pointer becomes invalid and shall not be used further. <br> - OH_AttachOptions_Destroy cannot be called twice on the same options pointer; otherwise, a double-free error will occur. <br> - It is recommended that you call OH_AttachOptions_Destroy immediately after a successful attach operation, since configuration information has already been read upon attachment.
 
+<!--Device-void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)--><!--Device-void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)-End-->
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
@@ -116,6 +122,8 @@ InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions 
 **Description**
 
 Obtains the value that indicates whether to show the keyboard from [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md). <br>Preconditions: **options** must be a valid instance created via the **OH_AttachOptions_Create** function, and **<br>showKeyboard** must point to a valid **bool** variable.
+
+<!--Device-InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions *options, bool *showKeyboard)--><!--Device-InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions *options, bool *showKeyboard)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -143,6 +151,8 @@ InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_Atta
 **Description**
 
 Obtains the reason for requesting the keyboard from [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md). <br>Preconditions: **options** must be a valid instance created via **<br>OH_AttachOptions_CreateWithRequestKeyboardReason** (For instances created via **OH_AttachOptions_Create**, the default value of **requestKeyboardReason** is **IME_REQUEST_REASON_NONE**). **requestKeyboardReason** must point to a valid variable of **InputMethod_RequestKeyboardReason**.
+
+<!--Device-InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)--><!--Device-InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)-End-->
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

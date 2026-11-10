@@ -8,11 +8,13 @@ struct Rdb_Statistic {...}
 
 描述数据库表的端云同步过程的统计信息。
 
+<!--Device-struct Rdb_Statistic {...}--><!--Device-struct Rdb_Statistic {...}-End-->
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
-**相关模块：** [RDB](capi-others-rdb.md)
+**相关模块：** [RDB](capi-arkdata-rdb.md)
 
 **所在头文件：** [relational_store.h](capi-relational-store-h.md)
 

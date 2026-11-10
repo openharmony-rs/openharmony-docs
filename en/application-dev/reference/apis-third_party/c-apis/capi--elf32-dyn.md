@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf32_Dyn {...}--><!--Device-struct Elf32_Dyn {...}-End-->
+
 ## Summary
 
 ### Member variables

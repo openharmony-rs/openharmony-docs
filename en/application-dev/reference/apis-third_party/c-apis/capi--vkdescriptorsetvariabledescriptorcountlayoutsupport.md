@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDescriptorSetVariableDescriptorCountLayoutSupport {...}--><!--Device-struct VkDescriptorSetVariableDescriptorCountLayoutSupport {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf32_Syminfo {...}--><!--Device-struct Elf32_Syminfo {...}-End-->
+
 ## Summary
 
 ### Member variables

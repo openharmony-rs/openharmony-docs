@@ -8,11 +8,13 @@ typedef struct OH_ArkUI_UrlStyle OH_ArkUI_UrlStyle
 
 定义链接样式，用于为属性字符串中的文本设置可点击的URL链接效果，适用于需要在文本内容中嵌入可交互链接的场景，可提升文本的交互性和用户体验。 调用[OH_ArkUI_UrlStyle_Create](capi-styled-string-h.md#oh_arkui_urlstyle_create)接口创建链接样式对象。 调用[OH_ArkUI_UrlStyle_Destroy](capi-styled-string-h.md#oh_arkui_urlstyle_destroy)接口销毁链接样式对象。 创建链接样式对象后，调用[OH_ArkUI_UrlStyle_SetUrl](capi-styled-string-h.md#oh_arkui_urlstyle_seturl)接口设置链接地址。
 
+<!--Device-typedef struct OH_ArkUI_UrlStyle OH_ArkUI_UrlStyle--><!--Device-typedef struct OH_ArkUI_UrlStyle OH_ArkUI_UrlStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [styled_string.h](capi-styled-string-h.md)
 

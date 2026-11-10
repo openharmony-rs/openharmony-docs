@@ -85,6 +85,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, Co
 
 使用提供的标识符OEID创建一个新的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。 <br>开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, ContentEmbed_Document **document)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, ContentEmbed_Document **document)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -113,6 +115,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFileP
 **描述：**
 
 从源文件创建一个新的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。 <br>开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFilePath, size_t length, bool isLinking, ContentEmbed_Document **document)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFilePath, size_t length, bool isLinking, ContentEmbed_Document **document)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -145,6 +149,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFileP
 
 通过已存在的OE格式文件加载[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。 <br>开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFilePath, size_t length, ContentEmbed_Document **document)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFilePath, size_t length, ContentEmbed_Document **document)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -174,6 +180,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t len
 **描述：**
 
 从OE文档对象的指定偏移位置读取原始二进制数据到缓冲区。适用于文档备份、数据传输或自定义解析等需要直接访问文档原始二进制内容的场景。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t length, ContentEmbed_Document *document, size_t offset, size_t *readSize)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t length, ContentEmbed_Document *document, size_t offset, size_t *readSize)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -205,6 +213,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetOEid(const ContentEmbed_Docum
 
 从OE文档对象获取标识符OEID。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetOEid(const ContentEmbed_Document *document, char *oeid)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetOEid(const ContentEmbed_Document *document, char *oeid)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -231,6 +241,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_IsLinking(const ContentEmbed_Doc
 **描述：**
 
 判断OE文档是否以链接方式创建。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Document_IsLinking(const ContentEmbed_Document *document, bool *isLinking)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Document_IsLinking(const ContentEmbed_Document *document, bool *isLinking)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -259,6 +271,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetNativeFilePath(const ContentE
 
 从OE文档中获取客户端沙箱目录下存储的被嵌入源文件路径。适用于需要直接访问或操作被嵌入源文件的场景，如文件预览或二次编辑。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetNativeFilePath(const ContentEmbed_Document *document, char *nativeFilePath)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetNativeFilePath(const ContentEmbed_Document *document, char *nativeFilePath)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -285,6 +299,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetRootStorage(ContentEmbed_Docu
 **描述：**
 
 从OE文档对象获取根[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。 <br>开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetRootStorage(ContentEmbed_Document *document, ContentEmbed_Storage **storage)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetRootStorage(ContentEmbed_Document *document, ContentEmbed_Storage **storage)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -315,6 +331,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_Flush(const ContentEmbed_Documen
 
 将OE文档中数据落盘至OE格式文件。建议在对OE文档的Storage或Stream对象进行修改后调用此接口，以确保修改内容持久化保存；未调用可能导致修改数据丢失。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Document_Flush(const ContentEmbed_Document *document)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Document_Flush(const ContentEmbed_Document *document)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -340,6 +358,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStorage(const ContentEmbed_
 **描述：**
 
 根据OE文档父Storage对象和名称创建子[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。 <br>开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStorage(const ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Storage **childStorage)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStorage(const ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Storage **childStorage)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -371,6 +391,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStorage(const ContentEmbed_Sto
 
 从OE文档父Storage对象和名称获取子[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。 <br>与[OH_ContentEmbed_Storage_CreateStorage](capi-content-embed-document-h.md#oh_contentembed_storage_createstorage)不同，本接口用于获取OE文档中已存在的Storage对象。 <br>开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStorage(const ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Storage **childStorage)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStorage(const ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Storage **childStorage)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -400,6 +422,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStream(ContentEmbed_Storage
 **描述：**
 
 根据OE文档父Storage对象和名称创建[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象。 <br>开发者可通过[OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream)销毁实例，以避免内存泄漏。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStream(ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Stream **childStream)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStream(ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Stream **childStream)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -431,6 +455,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStream(ContentEmbed_Storage *p
 
 从OE文档父Storage对象和名称获取子[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象。 <br>与[OH_ContentEmbed_Storage_CreateStream](capi-content-embed-document-h.md#oh_contentembed_storage_createstream)不同，本接口用于获取OE文档中已存在的子Stream对象。 <br>开发者可通过[OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream)销毁实例，以避免内存泄漏。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStream(ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Stream **childStream)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStream(ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Stream **childStream)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -461,6 +487,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteEntry(ContentEmbed_Storage 
 
 从OE文档父Storage对象删除指定名称的子Storage对象或子Stream对象。适用于需要清理或重组OE文档内部存储结构的场景，删除后数据不可恢复，请谨慎操作。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteEntry(ContentEmbed_Storage *parentStorage, const char *name)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteEntry(ContentEmbed_Storage *parentStorage, const char *name)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -488,6 +516,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteAllEntry(ContentEmbed_Stora
 
 从OE文档Storage对象删除所有条目，包括子Storage对象和子Stream对象。适用于需要清空Storage对象全部内容的场景，删除后数据不可恢复，请谨慎操作。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteAllEntry(ContentEmbed_Storage *storage)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteAllEntry(ContentEmbed_Storage *storage)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -514,6 +544,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStorage(ContentEmbed_Storage *stor
 
 销毁OE文档[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象实例并回收内存。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStorage(ContentEmbed_Storage *storage)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStorage(ContentEmbed_Storage *storage)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -539,6 +571,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Read(ContentEmbed_Stream *stream, 
 **描述：**
 
 从OE文档Stream对象的当前位置读取指定长度的数据到缓冲区。读取成功后，Stream对象的偏移量会按实际读取的字节数递增。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Read(ContentEmbed_Stream *stream, unsigned char **buffer, size_t length, size_t *num)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Read(ContentEmbed_Stream *stream, unsigned char **buffer, size_t length, size_t *num)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -569,6 +603,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Write(ContentEmbed_Stream *stream,
 
 将指定长度的数据从缓冲区写入OE文档Stream对象的当前位置。写入成功后，Stream对象的偏移量会按实际写入的字节数递增。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Write(ContentEmbed_Stream *stream, const unsigned char *data, size_t length, size_t *num)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Write(ContentEmbed_Stream *stream, const unsigned char *data, size_t length, size_t *num)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -598,6 +634,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Seek(ContentEmbed_Stream *stream, 
 
 将OE文档Stream对象的当前位置设置为指定的偏移量。适用于需要随机访问Stream中特定位置数据的场景，常与读取或写入操作配合使用。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Seek(ContentEmbed_Stream *stream, size_t position)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Seek(ContentEmbed_Stream *stream, size_t position)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -624,6 +662,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetPosition(ContentEmbed_Stream *s
 **描述：**
 
 获取OE文档Stream对象的当前位置偏移量。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetPosition(ContentEmbed_Stream *stream, size_t *position)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetPosition(ContentEmbed_Stream *stream, size_t *position)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -652,6 +692,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetSize(ContentEmbed_Stream *strea
 
 获取OE文档Stream对象的总大小，单位为字节。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetSize(ContentEmbed_Stream *stream, size_t *size)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetSize(ContentEmbed_Stream *stream, size_t *size)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -679,6 +721,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStream(ContentEmbed_Stream *stream
 
 销毁OE文档[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象实例并回收内存。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStream(ContentEmbed_Stream *stream)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStream(ContentEmbed_Stream *stream)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -705,6 +749,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyDocument(ContentEmbed_Document *do
 
 销毁[ContentEmbed_Document](capi-contentembed-contentembed-document.md)对象实例并回收内存。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_DestroyDocument(ContentEmbed_Document *document)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_DestroyDocument(ContentEmbed_Document *document)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -730,6 +776,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetOEid(ContentEmbed_Storage *sto
 **描述：**
 
 通过OE文档Storage对象获取其所属文档的标识符OEID。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetOEid(ContentEmbed_Storage *storage, char *oeid, size_t oeidSize)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetOEid(ContentEmbed_Storage *storage, char *oeid, size_t oeidSize)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -759,6 +807,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetOEid(ContentEmbed_Storage *sto
 
 通过OE文档Storage对象设置其所属文档的标识符OEID。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetOEid(ContentEmbed_Storage *storage, char *oeid, size_t oeidSize)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetOEid(ContentEmbed_Storage *storage, char *oeid, size_t oeidSize)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -786,6 +836,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Create(ContentEmbed_Stora
 **描述：**
 
 创建并初始化[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例。 <br>开发者可通过[OH_ContentEmbed_StorageElements_Destroy](capi-content-embed-document-h.md#oh_contentembed_storageelements_destroy)销毁实例，以避免内存泄漏。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Create(ContentEmbed_StorageElements **storageElements)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Create(ContentEmbed_StorageElements **storageElements)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -815,6 +867,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Destroy(ContentEmbed_Stor
 
 销毁[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例并回收其占用的内存。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Destroy(ContentEmbed_StorageElements *storageElements)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Destroy(ContentEmbed_StorageElements *storageElements)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -840,6 +894,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetElements(const ContentEmbed_St
 **描述：**
 
 获取OE文档Storage对象中的元素列表。 <br>需先调用[OH_ContentEmbed_StorageElements_Create](capi-content-embed-document-h.md#oh_contentembed_storageelements_create)创建[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例。 调用此方法将Storage对象中的元素列表填充到StorageElements实例后，使用[OH_ContentEmbed_StorageElements_GetCount](capi-content-embed-document-h.md#oh_contentembed_storageelements_getcount)获取元素数量。调用 [OH_ContentEmbed_StorageElements_GetElement](capi-content-embed-document-h.md#oh_contentembed_storageelements_getelement)获取指定索引位置的元素。使用完毕后，调用 [OH_ContentEmbed_StorageElements_Destroy](capi-content-embed-document-h.md#oh_contentembed_storageelements_destroy)销毁实例，以避免内存泄漏。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetElements(const ContentEmbed_Storage *storage, ContentEmbed_StorageElements *storageElements)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetElements(const ContentEmbed_Storage *storage, ContentEmbed_StorageElements *storageElements)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -868,6 +924,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetCount(const ContentEmb
 
 获取[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例的元素数量。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetCount(const ContentEmbed_StorageElements *storageElements, size_t *count)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetCount(const ContentEmbed_StorageElements *storageElements, size_t *count)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -894,6 +952,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetElement(const ContentE
 **描述：**
 
 获取[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例的指定索引位置的元素。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetElement(const ContentEmbed_StorageElements *storageElements, size_t index, ContentEmbed_StorageElement **storageElement)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetElement(const ContentEmbed_StorageElements *storageElements, size_t index, ContentEmbed_StorageElement **storageElement)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -923,6 +983,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetName(const ContentEmbed
 
 获取[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例的名称。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetName(const ContentEmbed_StorageElement *storageElement, char *name, size_t nameSize)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetName(const ContentEmbed_StorageElement *storageElement, char *name, size_t nameSize)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -951,6 +1013,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetCTime(const ContentEmbe
 
 获取[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例的创建时间戳，单位为毫秒。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetCTime(const ContentEmbed_StorageElement *element, uint64_t *ctime)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetCTime(const ContentEmbed_StorageElement *element, uint64_t *ctime)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -977,6 +1041,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetMTime(const ContentEmbe
 **描述：**
 
 获取[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例的最后修改时间戳，单位为毫秒。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetMTime(const ContentEmbed_StorageElement *element, uint64_t *mtime)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetMTime(const ContentEmbed_StorageElement *element, uint64_t *mtime)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
@@ -1005,6 +1071,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStorage(const ContentEmb
 
 检查[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例是否为OE文档Storage对象。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStorage(const ContentEmbed_StorageElement *storageElement, bool *isStorage)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStorage(const ContentEmbed_StorageElement *storageElement, bool *isStorage)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -1032,6 +1100,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStream(const ContentEmbe
 
 检查[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例是否为OE文档Stream对象。
 
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStream(const ContentEmbed_StorageElement *element, bool *isStream)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStream(const ContentEmbed_StorageElement *element, bool *isStream)-End-->
+
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 
 **起始版本：** 24
@@ -1058,6 +1128,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CopyTo(ContentEmbed_Storage *srcS
 **描述：**
 
 将源OE文档Storage对象中的所有子Storage对象和Stream对象复制到目标OE文档Storage对象。该操作为递归深拷贝，会复制所有子层级；若目标Storage中已存在同名条目将覆盖原有内容。
+
+<!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CopyTo(ContentEmbed_Storage *srcStorage, ContentEmbed_Storage *destStorage)--><!--Device-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CopyTo(ContentEmbed_Storage *srcStorage, ContentEmbed_Storage *destStorage)-End-->
 
 **系统能力：** SystemCapability.ContentEmbed.ObjectEditor
 

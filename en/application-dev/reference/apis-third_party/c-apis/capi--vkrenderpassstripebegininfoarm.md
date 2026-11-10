@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRenderPassStripeBeginInfoARM {...}--><!--Device-struct VkRenderPassStripeBeginInfoARM {...}-End-->
+
 ## Summary
 
 ### Member variables

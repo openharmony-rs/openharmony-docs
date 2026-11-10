@@ -8,11 +8,13 @@ typedef struct Print_Property {...} Print_Property
 
 Describes the printer properties in key-value pair format. You can use this struct to obtain or set printer properties.
 
+<!--Device-typedef struct Print_Property {...} Print_Property--><!--Device-typedef struct Print_Property {...} Print_Property-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
-**Related module**: [Print](capi-others-print.md)
+**Related module**: [Print](capi-basic-services-kit-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 

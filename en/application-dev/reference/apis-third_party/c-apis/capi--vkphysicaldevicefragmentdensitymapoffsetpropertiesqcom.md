@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM {...}--><!--Device-struct VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

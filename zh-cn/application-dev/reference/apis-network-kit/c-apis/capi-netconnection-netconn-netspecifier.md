@@ -8,11 +8,13 @@ struct NetConn_NetSpecifier {...}
 
 网络的特征集。
 
+<!--Device-struct NetConn_NetSpecifier {...}--><!--Device-struct NetConn_NetSpecifier {...}-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 12
 
-**相关模块：** [NetConnection](capi-others-netconnection.md)
+**相关模块：** [NetConnection](capi-network-kit-netconnection.md)
 
 **所在头文件：** [net_connection_type.h](capi-net-connection-type-h.md)
 

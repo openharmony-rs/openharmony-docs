@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoAV1CDEF {...}--><!--Device-struct StdVideoAV1CDEF {...}-End-->
+
 ## Summary
 
 ### Member variables

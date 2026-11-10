@@ -35,6 +35,8 @@ bool OH_NativeFence_IsValid(int fenceFd)
 
 Checks if the fenceFd is valid.
 
+<!--Device-bool OH_NativeFence_IsValid(int fenceFd)--><!--Device-bool OH_NativeFence_IsValid(int fenceFd)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **Since**: 20
@@ -60,6 +62,8 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 **Description**
 
 Waits for a fence signal. The maximum waiting time is determined by the timeout parameter. The incoming fenceFd needs to be closed by the user themselves.
+
+<!--Device-bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)--><!--Device-bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 
@@ -88,6 +92,8 @@ bool OH_NativeFence_WaitForever(int fenceFd)
 
 Waits forever for a fence signal. The incoming fenceFd needs to be closed by the user themselves.
 
+<!--Device-bool OH_NativeFence_WaitForever(int fenceFd)--><!--Device-bool OH_NativeFence_WaitForever(int fenceFd)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **Since**: 20
@@ -113,6 +119,8 @@ void OH_NativeFence_Close(int fenceFd)
 **Description**
 
 Close the fenceFd.
+
+<!--Device-void OH_NativeFence_Close(int fenceFd)--><!--Device-void OH_NativeFence_Close(int fenceFd)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeWindow
 

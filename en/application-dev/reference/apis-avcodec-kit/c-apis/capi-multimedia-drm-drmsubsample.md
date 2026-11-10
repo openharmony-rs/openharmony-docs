@@ -8,11 +8,13 @@ struct DrmSubsample {...}
 
 The struct describes the subsample type.
 
+<!--Device-struct DrmSubsample {...}--><!--Device-struct DrmSubsample {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
 
-**Related module**: [Multimedia_Drm](capi-others-multimedia-drm.md)
+**Related module**: [Multimedia_Drm](capi-avcodec-kit-multimedia-drm.md)
 
 **Header file**: [native_cencinfo.h](capi-native-cencinfo-h.md)
 

@@ -8,11 +8,13 @@ typedef struct OH_Drawing_PlaceholderSpan {...} OH_Drawing_PlaceholderSpan
 
 用于描述占位符跨度的结构体。
 
+<!--Device-typedef struct OH_Drawing_PlaceholderSpan {...} OH_Drawing_PlaceholderSpan--><!--Device-typedef struct OH_Drawing_PlaceholderSpan {...} OH_Drawing_PlaceholderSpan-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 

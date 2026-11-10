@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSemaphoreGetFdInfoKHR {...}--><!--Device-struct VkSemaphoreGetFdInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

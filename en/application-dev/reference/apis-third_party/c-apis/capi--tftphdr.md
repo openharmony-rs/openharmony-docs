@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct tftphdr {...}--><!--Device-struct tftphdr {...}-End-->
+
 ## Summary
 
 ### Member variables

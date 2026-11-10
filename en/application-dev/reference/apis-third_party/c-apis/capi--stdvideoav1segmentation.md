@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoAV1Segmentation {...}--><!--Device-struct StdVideoAV1Segmentation {...}-End-->
+
 ## Summary
 
 ### Member variables

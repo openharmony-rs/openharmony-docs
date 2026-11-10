@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineCoverageToColorStateCreateInfoNV {...}--><!--Device-struct VkPipelineCoverageToColorStateCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

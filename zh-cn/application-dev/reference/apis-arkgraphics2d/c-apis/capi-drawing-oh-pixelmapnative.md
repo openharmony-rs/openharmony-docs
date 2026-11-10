@@ -8,11 +8,13 @@ typedef struct OH_PixelmapNative OH_PixelmapNative
 
 声明由图像框架定义的像素图对象。
 
+<!--Device-typedef struct OH_PixelmapNative OH_PixelmapNative--><!--Device-typedef struct OH_PixelmapNative OH_PixelmapNative-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_pixel_map.h](capi-drawing-pixel-map-h.md)
 

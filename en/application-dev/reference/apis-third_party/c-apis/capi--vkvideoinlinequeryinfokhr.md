@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoInlineQueryInfoKHR {...}--><!--Device-struct VkVideoInlineQueryInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

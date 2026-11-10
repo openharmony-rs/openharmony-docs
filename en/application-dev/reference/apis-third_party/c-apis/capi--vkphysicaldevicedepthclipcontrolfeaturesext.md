@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceDepthClipControlFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceDepthClipControlFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

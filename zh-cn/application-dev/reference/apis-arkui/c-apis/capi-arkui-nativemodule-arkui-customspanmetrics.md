@@ -8,11 +8,13 @@ typedef struct ArkUI_CustomSpanMetrics ArkUI_CustomSpanMetrics
 
 自定义绘制Span的度量指标，用于设置组件的宽高等布局信息。适用于富文本编辑器、聊天应用等场景的图文混排。
 
+<!--Device-typedef struct ArkUI_CustomSpanMetrics ArkUI_CustomSpanMetrics--><!--Device-typedef struct ArkUI_CustomSpanMetrics ArkUI_CustomSpanMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [custom_span.h](capi-custom-span-h.md)
 

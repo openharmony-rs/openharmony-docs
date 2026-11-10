@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

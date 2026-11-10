@@ -8,11 +8,13 @@ typedef struct OH_DecodingOptionsForPicture OH_DecodingOptionsForPicture
 
 The struct describes the decoding options for pictures. It is obtained by calling [OH_DecodingOptionsForPicture_Create](capi-image-source-native-h.md#oh_decodingoptionsforpicture_create).
 
+<!--Device-typedef struct OH_DecodingOptionsForPicture OH_DecodingOptionsForPicture--><!--Device-typedef struct OH_DecodingOptionsForPicture OH_DecodingOptionsForPicture-End-->
+
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 13
 
-**Related module**: [Image_NativeModule](capi-others-image-nativemodule.md)
+**Related module**: [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **Header file**: [image_source_native.h](capi-image-source-native-h.md)
 

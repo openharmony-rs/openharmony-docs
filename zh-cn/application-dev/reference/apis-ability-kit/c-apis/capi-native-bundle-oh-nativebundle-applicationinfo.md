@@ -8,11 +8,13 @@ typedef struct OH_NativeBundle_ApplicationInfo {...} OH_NativeBundle_Application
 
 应用包信息数据结构，包含应用包名和应用指纹信息。
 
+<!--Device-typedef struct OH_NativeBundle_ApplicationInfo {...} OH_NativeBundle_ApplicationInfo--><!--Device-typedef struct OH_NativeBundle_ApplicationInfo {...} OH_NativeBundle_ApplicationInfo-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 9
 
-**相关模块：** [Native_Bundle](capi-others-native-bundle.md)
+**相关模块：** [Native_Bundle](capi-ability-kit-native-bundle.md)
 
 **所在头文件：** [native_interface_bundle.h](capi-native-interface-bundle-h.md)
 

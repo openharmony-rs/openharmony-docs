@@ -8,11 +8,13 @@ typedef struct ArkUI_TransitionEffect ArkUI_TransitionEffect
 
 定义transition属性的转场效果参数对象，用于配置组件出现或消失时的过渡动画效果。
 
+<!--Device-typedef struct ArkUI_TransitionEffect ArkUI_TransitionEffect--><!--Device-typedef struct ArkUI_TransitionEffect ArkUI_TransitionEffect-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_animate.h](capi-native-animate-h.md)
 

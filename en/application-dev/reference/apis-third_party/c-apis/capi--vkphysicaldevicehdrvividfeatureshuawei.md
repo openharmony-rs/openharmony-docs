@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceHdrVividFeaturesHUAWEI {...}--><!--Device-struct VkPhysicalDeviceHdrVividFeaturesHUAWEI {...}-End-->
+
 ## Summary
 
 ### Member variables

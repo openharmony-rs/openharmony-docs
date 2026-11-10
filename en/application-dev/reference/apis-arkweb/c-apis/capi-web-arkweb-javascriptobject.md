@@ -8,11 +8,13 @@ typedef struct ArkWeb_JavaScriptObject {...} ArkWeb_JavaScriptObject
 
 The **ArkWeb_JavaScriptObject** struct is used to inject JavaScript code into a web page and obtain the execution result. It is suitable for scenarios where a native app needs to actively call JavaScript functions in a web page, read the web page state, or call web page APIs, simplifying the data interaction flow between the web and native app. Developers can use this struct to specify the JavaScript script content and length to be injected, register an execution completion callback, and pass custom context data through userData, thereby enabling data interaction between the web and native app.
 
+<!--Device-typedef struct ArkWeb_JavaScriptObject {...} ArkWeb_JavaScriptObject--><!--Device-typedef struct ArkWeb_JavaScriptObject {...} ArkWeb_JavaScriptObject-End-->
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
-**Related module**: [Web](capi-others-web.md)
+**Related module**: [Web](capi-arkweb-web.md)
 
 **Header file**: [arkweb_type.h](capi-arkweb-type-h.md)
 

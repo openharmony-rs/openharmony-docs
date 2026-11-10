@@ -8,11 +8,13 @@ typedef struct OH_AVBuffer OH_AVBuffer
 
 AVBuffer结构。
 
+<!--Device-typedef struct OH_AVBuffer OH_AVBuffer--><!--Device-typedef struct OH_AVBuffer OH_AVBuffer-End-->
+
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
 **起始版本：** 12
 
-**相关模块：** [Multimedia_Drm](capi-others-multimedia-drm.md)
+**相关模块：** [Multimedia_Drm](capi-avcodec-kit-multimedia-drm.md)
 
 **所在头文件：** [native_cencinfo.h](capi-native-cencinfo-h.md)
 

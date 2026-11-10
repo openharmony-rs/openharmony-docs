@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoAV1FilmGrainFlags {...}--><!--Device-struct StdVideoAV1FilmGrainFlags {...}-End-->
+
 ## Summary
 
 ### Member variables

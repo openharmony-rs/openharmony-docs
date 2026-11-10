@@ -65,6 +65,8 @@ enum ScsiPeripheral_DdkErrCode
 
 SCSI Peripheral DDK错误码。
 
+<!--Device-ScsiPeripheral_DdkErrCode--><!--Device-ScsiPeripheral_DdkErrCode-End-->
+
 **系统能力：** SystemCapability.Driver.SCSI.Extension
 
 **起始版本：** 18
@@ -91,6 +93,8 @@ enum ScsiPeripheral_Status
 **描述：**
 
 定义用于响应的SCSI状态。
+
+<!--Device-ScsiPeripheral_Status--><!--Device-ScsiPeripheral_Status-End-->
 
 **系统能力：** SystemCapability.Driver.SCSI.Extension
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct v_lib_t {...}--><!--Device-struct v_lib_t {...}-End-->
+
 ## Summary
 
 ### Member variables

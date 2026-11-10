@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSamplerCubicWeightsCreateInfoQCOM {...}--><!--Device-struct VkSamplerCubicWeightsCreateInfoQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

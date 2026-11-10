@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR {...}--><!--Device-struct VkPhysicalDeviceShaderMaximalReconvergenceFeaturesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

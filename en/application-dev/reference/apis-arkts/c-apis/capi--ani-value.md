@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-union ani_value {...}--><!--Device-union ani_value {...}-End-->
+
 **System capability**: SystemCapability.ArkCompiler.ANI
 
 ## Summary

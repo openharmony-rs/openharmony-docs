@@ -8,11 +8,13 @@ typedef struct ffrt_mutex_t {...} ffrt_mutex_t
 
 Defines the mutex structure used to store internal data of the mutex.
 
+<!--Device-typedef struct ffrt_mutex_t {...} ffrt_mutex_t--><!--Device-typedef struct ffrt_mutex_t {...} ffrt_mutex_t-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-others-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 **Header file**: [type_def.h](capi-type-def-h.md)
 

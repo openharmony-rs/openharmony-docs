@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkColorBlendAdvancedEXT {...}--><!--Device-struct VkColorBlendAdvancedEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

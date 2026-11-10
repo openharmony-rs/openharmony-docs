@@ -8,9 +8,11 @@ struct OH_AVMetadataExtractor_FrameInfo {...}
 
 Defines the information about a frame extracted from a video.
 
+<!--Device-struct OH_AVMetadataExtractor_FrameInfo {...}--><!--Device-struct OH_AVMetadataExtractor_FrameInfo {...}-End-->
+
 **Since**: 23
 
-**Related module**: [AVMetadataExtractor](capi-others-avmetadataextractor.md)
+**Related module**: [AVMetadataExtractor](capi-media-kit-avmetadataextractor.md)
 
 **Header file**: [avmetadata_extractor_base.h](capi-avmetadata-extractor-base-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMultiDrawIndexedInfoEXT {...}--><!--Device-struct VkMultiDrawIndexedInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

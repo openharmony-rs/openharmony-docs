@@ -8,11 +8,13 @@ typedef struct ffrt_cond_t {...} ffrt_cond_t
 
 条件变量结构体，用于存储条件变量的内部数据。
 
+<!--Device-typedef struct ffrt_cond_t {...} ffrt_cond_t--><!--Device-typedef struct ffrt_cond_t {...} ffrt_cond_t-End-->
+
 **系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 10
 
-**相关模块：** [FFRT](capi-others-ffrt.md)
+**相关模块：** [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 **所在头文件：** [type_def.h](capi-type-def-h.md)
 

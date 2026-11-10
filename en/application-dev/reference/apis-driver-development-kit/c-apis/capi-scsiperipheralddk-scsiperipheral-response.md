@@ -8,11 +8,13 @@ struct ScsiPeripheral_Response {...}
 
 Defines the SCSI response parameters, including the status, error diagnosis data, and transfer result. It is used to receive the response data from the SCSI device and determine whether the command is successful.
 
+<!--Device-struct ScsiPeripheral_Response {...}--><!--Device-struct ScsiPeripheral_Response {...}-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 
-**Related module**: [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

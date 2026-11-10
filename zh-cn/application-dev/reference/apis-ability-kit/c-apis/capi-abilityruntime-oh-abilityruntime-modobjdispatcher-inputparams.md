@@ -8,11 +8,13 @@ typedef struct OH_AbilityRuntime_ModObjDispatcher_InputParams {...} OH_AbilityRu
 
 定义方法调用的参数结构。rgvarg指向参数变体数组，数组长度由cArgs指定。参数顺序应与方法定义中的参数顺序一致。
 
+<!--Device-typedef struct OH_AbilityRuntime_ModObjDispatcher_InputParams {...} OH_AbilityRuntime_ModObjDispatcher_InputParams--><!--Device-typedef struct OH_AbilityRuntime_ModObjDispatcher_InputParams {...} OH_AbilityRuntime_ModObjDispatcher_InputParams-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
-**相关模块：** [AbilityRuntime](capi-others-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 **所在头文件：** [modular_object_dispatcher.h](capi-modular-object-dispatcher-h.md)
 

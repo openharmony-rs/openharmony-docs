@@ -8,11 +8,13 @@ typedef struct OH_AudioStreamBuilderStruct OH_AudioStreamBuilder
 
 Declaring the audio stream builder. The instance of builder is used for creating audio stream.
 
+<!--Device-typedef struct OH_AudioStreamBuilderStruct OH_AudioStreamBuilder--><!--Device-typedef struct OH_AudioStreamBuilderStruct OH_AudioStreamBuilder-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
-**Related module**: [OHAudio](capi-others-ohaudio.md)
+**Related module**: [OHAudio](capi-audio-kit-ohaudio.md)
 
 **Header file**: [native_audiostream_base.h](capi-native-audiostream-base-h.md)
 

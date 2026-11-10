@@ -8,11 +8,13 @@ struct Camera_PhotoCaptureSetting {...}
 
 The struct describes the parameters related to photo capture.
 
+<!--Device-struct Camera_PhotoCaptureSetting {...}--><!--Device-struct Camera_PhotoCaptureSetting {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
-**Related module**: [OH_Camera](capi-others-oh-camera.md)
+**Related module**: [OH_Camera](capi-camera-kit-oh-camera.md)
 
 **Header file**: [camera.h](capi-camera-h.md)
 

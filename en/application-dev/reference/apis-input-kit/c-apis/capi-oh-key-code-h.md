@@ -34,6 +34,8 @@ enum Input_KeyCode
 
 Enumerates the key codes.
 
+<!--Device-Input_KeyCode--><!--Device-Input_KeyCode-End-->
+
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12

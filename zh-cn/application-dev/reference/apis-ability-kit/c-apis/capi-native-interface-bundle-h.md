@@ -53,6 +53,8 @@ OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()
 
 获取当前应用信息，包含应用包名和应用指纹信息。
 
+<!--Device-OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()--><!--Device-OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 9
@@ -72,6 +74,8 @@ char* OH_NativeBundle_GetAppId()
 **描述：**
 
 获取当前应用的appId。appId是应用的唯一标识，由应用包名和签名信息决定。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。
+
+<!--Device-char* OH_NativeBundle_GetAppId()--><!--Device-char* OH_NativeBundle_GetAppId()-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -93,6 +97,8 @@ char* OH_NativeBundle_GetAppIdentifier()
 
 获取当前应用的应用程序标识符。该应用程序标识符在应用的整个生命周期中不会发生变化，包括版本更新、证书更改、公钥和私钥更改以及应用程序迁移。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。
 
+<!--Device-char* OH_NativeBundle_GetAppIdentifier()--><!--Device-char* OH_NativeBundle_GetAppIdentifier()-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 11
@@ -112,6 +118,8 @@ OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()
 **描述：**
 
 获取当前应用入口元素mainElement的信息，包括包名、模块名和组件名，在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。
+
+<!--Device-OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()--><!--Device-OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -133,6 +141,8 @@ char* OH_NativeBundle_GetCompatibleDeviceType()
 
 获取当前应用适用的设备类型。用于将手机应用分发到平板/2in1设备时，合理适配布局和字体大小。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。
 
+<!--Device-char* OH_NativeBundle_GetCompatibleDeviceType()--><!--Device-char* OH_NativeBundle_GetCompatibleDeviceType()-End-->
+
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **起始版本：** 14
@@ -152,6 +162,8 @@ bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)
 **描述：**
 
 查询当前应用是否处于调试模式。
+
+<!--Device-bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)--><!--Device-bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -178,6 +190,8 @@ OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)
 **描述：**
 
 获取当前应用程序的模块元数据数组。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。
+
+<!--Device-OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)--><!--Device-OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderExpectAssumeFeatures {...}--><!--Device-struct VkPhysicalDeviceShaderExpectAssumeFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM {...}--><!--Device-struct VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

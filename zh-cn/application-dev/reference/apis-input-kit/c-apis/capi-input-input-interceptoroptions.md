@@ -8,11 +8,13 @@ typedef struct Input_InterceptorOptions Input_InterceptorOptions
 
 事件拦截选项，用于配置输入事件拦截的参数和规则，支持按键事件、鼠标事件、触屏事件和轴事件的拦截控制。
 
+<!--Device-typedef struct Input_InterceptorOptions Input_InterceptorOptions--><!--Device-typedef struct Input_InterceptorOptions Input_InterceptorOptions-End-->
+
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **起始版本：** 12
 
-**相关模块：** [input](capi-others-input.md)
+**相关模块：** [input](capi-input-kit-input.md)
 
 **所在头文件：** [oh_input_manager.h](capi-oh-input-manager-h.md)
 

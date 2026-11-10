@@ -109,6 +109,8 @@ enum CommonEvent_ErrCode
 
 枚举错误码。
 
+<!--Device-CommonEvent_ErrCode--><!--Device-CommonEvent_ErrCode-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -139,6 +141,8 @@ typedef void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)
 
 提供CommonEvent_ReceiveCallback回调函数声明。
 
+<!--Device-typedef void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)--><!--Device-typedef void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -158,6 +162,8 @@ CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events
 **描述：**
 
 创建订阅者信息。
+
+<!--Device-CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)--><!--Device-CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -186,6 +192,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeI
 
 设置发布方权限。
 
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeInfo* info, const char* permission)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeInfo* info, const char* permission)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -212,6 +220,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeI
 **描述：**
 
 设置发布方包名称。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeInfo* info, const char* bundleName)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeInfo* info, const char* bundleName)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -240,6 +250,8 @@ void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)
 
 释放订阅者信息。
 
+<!--Device-void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)--><!--Device-void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -259,6 +271,8 @@ CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_Subscr
 **描述：**
 
 创建订阅者。
+
+<!--Device-CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info, CommonEvent_ReceiveCallback callback)--><!--Device-CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info, CommonEvent_ReceiveCallback callback)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -287,6 +301,8 @@ void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)
 
 释放订阅者。
 
+<!--Device-void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)--><!--Device-void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -306,6 +322,8 @@ CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subsc
 **描述：**
 
 订阅公共事件。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -333,6 +351,8 @@ CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* sub
 
 退订公共事件。
 
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -358,6 +378,8 @@ const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvDat
 **描述：**
 
 获取接收到的公共事件名称。
+
+<!--Device-const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvData)--><!--Device-const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvData)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -385,6 +407,8 @@ int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)
 
 获取接收到的公共事件Code数据，整数类型。
 
+<!--Device-int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)--><!--Device-int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -410,6 +434,8 @@ const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvD
 **描述：**
 
 获取接收到的公共事件数据，字符串类型。
+
+<!--Device-const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvData)--><!--Device-const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvData)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -437,6 +463,8 @@ const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* r
 
 获取接收到的公共事件的包名称信息。
 
+<!--Device-const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* rcvData)--><!--Device-const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* rcvData)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -462,6 +490,8 @@ const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const Comm
 **描述：**
 
 获取公共事件附加信息。
+
+<!--Device-const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const CommonEvent_RcvData* rcvData)--><!--Device-const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const CommonEvent_RcvData* rcvData)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -489,6 +519,8 @@ CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)
 
 创建公共事件属性对象。
 
+<!--Device-CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)--><!--Device-CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -515,6 +547,8 @@ void OH_CommonEvent_DestroyPublishInfo(CommonEvent_PublishInfo* info)
 
 销毁公共事件属性对象。
 
+<!--Device-void OH_CommonEvent_DestroyPublishInfo(CommonEvent_PublishInfo* info)--><!--Device-void OH_CommonEvent_DestroyPublishInfo(CommonEvent_PublishInfo* info)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -534,6 +568,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishI
 **描述：**
 
 设置公共事件订阅者包名称。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishInfo* info, const char* bundleName)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishInfo* info, const char* bundleName)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -561,6 +597,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_Publish
 **描述：**
 
 设置公共事件订阅者权限。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_PublishInfo* info, const char* permissions[], int32_t num)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_PublishInfo* info, const char* permissions[], int32_t num)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -590,6 +628,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* i
 
 设置公共事件传递的数据，整数类型。
 
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* info, int32_t code)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* info, int32_t code)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -616,6 +656,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* i
 **描述：**
 
 设置公共事件传递的数据，字符串类型。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* info, const char* data, size_t length)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* info, const char* data, size_t length)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -645,6 +687,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishI
 
 设置公共事件附加信息。
 
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishInfo* info, CommonEvent_Parameters* param)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishInfo* info, CommonEvent_Parameters* param)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -672,6 +716,8 @@ CommonEvent_Parameters* OH_CommonEvent_CreateParameters()
 
 创建公共事件附加信息对象。
 
+<!--Device-CommonEvent_Parameters* OH_CommonEvent_CreateParameters()--><!--Device-CommonEvent_Parameters* OH_CommonEvent_CreateParameters()-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -692,6 +738,8 @@ void OH_CommonEvent_DestroyParameters(CommonEvent_Parameters* param)
 
 销毁公共事件附加信息对象。
 
+<!--Device-void OH_CommonEvent_DestroyParameters(CommonEvent_Parameters* param)--><!--Device-void OH_CommonEvent_DestroyParameters(CommonEvent_Parameters* param)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -711,6 +759,8 @@ bool OH_CommonEvent_HasKeyInParameters(const CommonEvent_Parameters* para, const
 **描述：**
 
 检查附加信息中是否包含键值对信息。
+
+<!--Device-bool OH_CommonEvent_HasKeyInParameters(const CommonEvent_Parameters* para, const char* key)--><!--Device-bool OH_CommonEvent_HasKeyInParameters(const CommonEvent_Parameters* para, const char* key)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -738,6 +788,8 @@ int OH_CommonEvent_GetIntFromParameters(const CommonEvent_Parameters* para, cons
 **描述：**
 
 获取公共事件附加信息中键为key的int类型内容。
+
+<!--Device-int OH_CommonEvent_GetIntFromParameters(const CommonEvent_Parameters* para, const char* key, const int defaultValue)--><!--Device-int OH_CommonEvent_GetIntFromParameters(const CommonEvent_Parameters* para, const char* key, const int defaultValue)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -767,6 +819,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetIntToParameters(CommonEvent_Parameters* pa
 
 设置公共事件附加信息的int类型内容。
 
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetIntToParameters(CommonEvent_Parameters* param, const char* key, int value)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetIntToParameters(CommonEvent_Parameters* param, const char* key, int value)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -795,6 +849,8 @@ int32_t OH_CommonEvent_GetIntArrayFromParameters(const CommonEvent_Parameters* p
 
 获取公共事件附加信息中键为key的int数组数据。
 
+<!--Device-int32_t OH_CommonEvent_GetIntArrayFromParameters(const CommonEvent_Parameters* para, const char* key, int** array)--><!--Device-int32_t OH_CommonEvent_GetIntArrayFromParameters(const CommonEvent_Parameters* para, const char* key, int** array)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -822,6 +878,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetIntArrayToParameters(CommonEvent_Parameter
 **描述：**
 
 设置公共事件附加信息的int数组内容。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetIntArrayToParameters(CommonEvent_Parameters* param, const char* key, const int* value, size_t num)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetIntArrayToParameters(CommonEvent_Parameters* param, const char* key, const int* value, size_t num)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -852,6 +910,8 @@ long OH_CommonEvent_GetLongFromParameters(const CommonEvent_Parameters* para, co
 
 获取公共事件附加信息中键为key的long类型数据。
 
+<!--Device-long OH_CommonEvent_GetLongFromParameters(const CommonEvent_Parameters* para, const char* key, const long defaultValue)--><!--Device-long OH_CommonEvent_GetLongFromParameters(const CommonEvent_Parameters* para, const char* key, const long defaultValue)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -879,6 +939,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetLongToParameters(CommonEvent_Parameters* p
 **描述：**
 
 设置公共事件附加信息的long类型内容。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetLongToParameters(CommonEvent_Parameters* param, const char* key, long value)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetLongToParameters(CommonEvent_Parameters* param, const char* key, long value)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -908,6 +970,8 @@ int32_t OH_CommonEvent_GetLongArrayFromParameters(const CommonEvent_Parameters* 
 
 获取公共事件附加信息的long数组内容。
 
+<!--Device-int32_t OH_CommonEvent_GetLongArrayFromParameters(const CommonEvent_Parameters* para, const char* key, long** array)--><!--Device-int32_t OH_CommonEvent_GetLongArrayFromParameters(const CommonEvent_Parameters* para, const char* key, long** array)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -935,6 +999,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetLongArrayToParameters(CommonEvent_Paramete
 **描述：**
 
 设置公共事件附加信息的long数组内容。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetLongArrayToParameters(CommonEvent_Parameters* param, const char* key, const long* value, size_t num)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetLongArrayToParameters(CommonEvent_Parameters* param, const char* key, const long* value, size_t num)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -965,6 +1031,8 @@ bool OH_CommonEvent_GetBoolFromParameters(const CommonEvent_Parameters* para, co
 
 获取公共事件附加信息中键为key的布尔类型数据。
 
+<!--Device-bool OH_CommonEvent_GetBoolFromParameters(const CommonEvent_Parameters* para, const char* key, const bool defaultValue)--><!--Device-bool OH_CommonEvent_GetBoolFromParameters(const CommonEvent_Parameters* para, const char* key, const bool defaultValue)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -992,6 +1060,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetBoolToParameters(CommonEvent_Parameters* p
 **描述：**
 
 设置公共事件附加信息的布尔类型内容。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetBoolToParameters(CommonEvent_Parameters* param, const char* key, bool value)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetBoolToParameters(CommonEvent_Parameters* param, const char* key, bool value)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1021,6 +1091,8 @@ int32_t OH_CommonEvent_GetBoolArrayFromParameters(const CommonEvent_Parameters* 
 
 获取公共事件附加信息的布尔数组内容。
 
+<!--Device-int32_t OH_CommonEvent_GetBoolArrayFromParameters(const CommonEvent_Parameters* para, const char* key, bool** array)--><!--Device-int32_t OH_CommonEvent_GetBoolArrayFromParameters(const CommonEvent_Parameters* para, const char* key, bool** array)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -1048,6 +1120,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetBoolArrayToParameters(CommonEvent_Paramete
 **描述：**
 
 设置公共事件附加信息的布尔数组内容。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetBoolArrayToParameters(CommonEvent_Parameters* param, const char* key, const bool* value, size_t num)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetBoolArrayToParameters(CommonEvent_Parameters* param, const char* key, const bool* value, size_t num)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1078,6 +1152,8 @@ char OH_CommonEvent_GetCharFromParameters(const CommonEvent_Parameters* para, co
 
 获取公共事件附加信息中键为key的字符类型数据。
 
+<!--Device-char OH_CommonEvent_GetCharFromParameters(const CommonEvent_Parameters* para, const char* key, const char defaultValue)--><!--Device-char OH_CommonEvent_GetCharFromParameters(const CommonEvent_Parameters* para, const char* key, const char defaultValue)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -1105,6 +1181,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetCharToParameters(CommonEvent_Parameters* p
 **描述：**
 
 设置公共事件附加信息的字符类型内容。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetCharToParameters(CommonEvent_Parameters* param, const char* key, char value)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetCharToParameters(CommonEvent_Parameters* param, const char* key, char value)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1134,6 +1212,8 @@ int32_t OH_CommonEvent_GetCharArrayFromParameters(const CommonEvent_Parameters* 
 
 获取公共事件附加信息的字符数组内容。
 
+<!--Device-int32_t OH_CommonEvent_GetCharArrayFromParameters(const CommonEvent_Parameters* para, const char* key, char** array)--><!--Device-int32_t OH_CommonEvent_GetCharArrayFromParameters(const CommonEvent_Parameters* para, const char* key, char** array)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -1161,6 +1241,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetCharArrayToParameters(CommonEvent_Paramete
 **描述：**
 
 设置公共事件附加信息的字符数组内容。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetCharArrayToParameters(CommonEvent_Parameters* param, const char* key, const char* value, size_t num)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetCharArrayToParameters(CommonEvent_Parameters* param, const char* key, const char* value, size_t num)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1191,6 +1273,8 @@ double OH_CommonEvent_GetDoubleFromParameters(const CommonEvent_Parameters* para
 
 获取公共事件附加信息的double类型内容。
 
+<!--Device-double OH_CommonEvent_GetDoubleFromParameters(const CommonEvent_Parameters* para, const char* key, const double defaultValue)--><!--Device-double OH_CommonEvent_GetDoubleFromParameters(const CommonEvent_Parameters* para, const char* key, const double defaultValue)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -1218,6 +1302,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetDoubleToParameters(CommonEvent_Parameters*
 **描述：**
 
 设置公共事件附加信息的double类型内容。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetDoubleToParameters(CommonEvent_Parameters* param, const char* key, double value)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetDoubleToParameters(CommonEvent_Parameters* param, const char* key, double value)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1247,6 +1333,8 @@ int32_t OH_CommonEvent_GetDoubleArrayFromParameters(const CommonEvent_Parameters
 
 获取公共事件附加信息中键为key的double数组数据。
 
+<!--Device-int32_t OH_CommonEvent_GetDoubleArrayFromParameters(const CommonEvent_Parameters* para, const char* key, double** array)--><!--Device-int32_t OH_CommonEvent_GetDoubleArrayFromParameters(const CommonEvent_Parameters* para, const char* key, double** array)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 12
@@ -1274,6 +1362,8 @@ CommonEvent_ErrCode OH_CommonEvent_SetDoubleArrayToParameters(CommonEvent_Parame
 **描述：**
 
 设置公共事件附加信息的double数组内容。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_SetDoubleArrayToParameters(CommonEvent_Parameters* param, const char* key, const double* value, size_t num)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_SetDoubleArrayToParameters(CommonEvent_Parameters* param, const char* key, const double* value, size_t num)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1304,6 +1394,8 @@ CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)
 
 发布公共事件。
 
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -1329,6 +1421,8 @@ CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const Comm
 **描述：**
 
 发布带有指定属性的公共事件。
+
+<!--Device-CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const CommonEvent_PublishInfo* info)--><!--Device-CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const CommonEvent_PublishInfo* info)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1357,6 +1451,8 @@ bool OH_CommonEvent_IsOrderedCommonEvent(const CommonEvent_Subscriber* subscribe
 
 查询当前公共事件是否为有序公共事件。
 
+<!--Device-bool OH_CommonEvent_IsOrderedCommonEvent(const CommonEvent_Subscriber* subscriber)--><!--Device-bool OH_CommonEvent_IsOrderedCommonEvent(const CommonEvent_Subscriber* subscriber)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -1382,6 +1478,8 @@ bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)
 **描述：**
 
 用于订阅者结束对当前有序公共事件的处理。
+
+<!--Device-bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)--><!--Device-bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1409,6 +1507,8 @@ bool OH_CommonEvent_GetAbortCommonEvent(const CommonEvent_Subscriber* subscriber
 
 获取当前有序公共事件是否处于中止状态。
 
+<!--Device-bool OH_CommonEvent_GetAbortCommonEvent(const CommonEvent_Subscriber* subscriber)--><!--Device-bool OH_CommonEvent_GetAbortCommonEvent(const CommonEvent_Subscriber* subscriber)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -1434,6 +1534,8 @@ bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)
 **描述：**
 
 该接口与[OH_CommonEvent_FinishCommonEvent](capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent)配合使用，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
+
+<!--Device-bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)--><!--Device-bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1461,6 +1563,8 @@ bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)
 
 该接口与[OH_CommonEvent_FinishCommonEvent](capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent)配合使用，可以取消当前有序公共事件的中止状态，使该公共事件继续向下一个订阅者传递。
 
+<!--Device-bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)--><!--Device-bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -1487,6 +1591,8 @@ int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subsc
 
 获取有序公共事件传递的数据，整数类型。
 
+<!--Device-int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subscriber)--><!--Device-int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subscriber)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -1512,6 +1618,8 @@ bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int3
 **描述：**
 
 设置有序公共事件传递的数据，整数类型。
+
+<!--Device-bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int32_t code)--><!--Device-bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int32_t code)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1540,6 +1648,8 @@ const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* s
 
 获取有序公共事件传递的数据，字符串类型。
 
+<!--Device-const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* subscriber)--><!--Device-const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* subscriber)-End-->
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **起始版本：** 18
@@ -1565,6 +1675,8 @@ bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, cons
 **描述：**
 
 设置有序公共事件传递的数据，字符串类型。
+
+<!--Device-bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, const char* data, size_t length)--><!--Device-bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, const char* data, size_t length)-End-->
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 

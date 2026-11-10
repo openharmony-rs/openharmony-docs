@@ -84,6 +84,8 @@ int32_t OH_ImageSource_Create(napi_env env, struct OhosImageSource* src, struct 
 
 通过给定的信息OhosImageSource和OhosImageSourceOps结构体，获取JavaScript native层API ImageSource对象。
 
+<!--Device-int32_t OH_ImageSource_Create(napi_env env, struct OhosImageSource* src, struct OhosImageSourceOps* ops, napi_value *res)--><!--Device-int32_t OH_ImageSource_Create(napi_env env, struct OhosImageSource* src, struct OhosImageSourceOps* ops, napi_value *res)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
@@ -122,6 +124,8 @@ int32_t OH_ImageSource_CreateFromUri(napi_env env, char* uri, size_t size, struc
 
 通过给定的标识符URI和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取JavaScript native层API ImageSource对象。
 
+<!--Device-int32_t OH_ImageSource_CreateFromUri(napi_env env, char* uri, size_t size, struct OhosImageSourceOps* ops, napi_value *res)--><!--Device-int32_t OH_ImageSource_CreateFromUri(napi_env env, char* uri, size_t size, struct OhosImageSourceOps* ops, napi_value *res)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 11
@@ -157,6 +161,8 @@ int32_t OH_ImageSource_CreateFromFd(napi_env env, int32_t fd, struct OhosImageSo
 
 通过给定的文件描述符fd和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取JavaScript native层API ImageSource对象。
 
+<!--Device-int32_t OH_ImageSource_CreateFromFd(napi_env env, int32_t fd, struct OhosImageSourceOps* ops, napi_value *res)--><!--Device-int32_t OH_ImageSource_CreateFromFd(napi_env env, int32_t fd, struct OhosImageSourceOps* ops, napi_value *res)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 11
@@ -190,6 +196,8 @@ int32_t OH_ImageSource_CreateFromData(napi_env env, uint8_t* data, size_t dataSi
 **描述：**
 
 通过给定的图像源缓冲区资源data和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取JavaScript native层API ImageSource对象。
+
+<!--Device-int32_t OH_ImageSource_CreateFromData(napi_env env, uint8_t* data, size_t dataSize, struct OhosImageSourceOps* ops, napi_value *res)--><!--Device-int32_t OH_ImageSource_CreateFromData(napi_env env, uint8_t* data, size_t dataSize, struct OhosImageSourceOps* ops, napi_value *res)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -226,6 +234,8 @@ int32_t OH_ImageSource_CreateFromRawFile(napi_env env, RawFileDescriptor rawFile
 
 通过给定的资源描述符[RawFileDescriptor](../../apis-localization-kit/c-apis/capi-rawfile-rawfiledescriptor.md)和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取JavaScript native层API ImageSource对象。
 
+<!--Device-int32_t OH_ImageSource_CreateFromRawFile(napi_env env, RawFileDescriptor rawFile, struct OhosImageSourceOps* ops, napi_value *res)--><!--Device-int32_t OH_ImageSource_CreateFromRawFile(napi_env env, RawFileDescriptor rawFile, struct OhosImageSourceOps* ops, napi_value *res)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 11
@@ -259,6 +269,8 @@ int32_t OH_ImageSource_CreateIncremental(napi_env env, struct OhosImageSource* s
 **描述：**
 
 通过[OhosImageSource](capi-image-ohosimagesource.md)和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取增量类型的JavaScript Native API ImageSource对象。 图像数据应通过[OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata)更新。
+
+<!--Device-int32_t OH_ImageSource_CreateIncremental(napi_env env, struct OhosImageSource* source, struct OhosImageSourceOps* ops, napi_value *res)--><!--Device-int32_t OH_ImageSource_CreateIncremental(napi_env env, struct OhosImageSource* source, struct OhosImageSourceOps* ops, napi_value *res)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -298,6 +310,8 @@ int32_t OH_ImageSource_CreateIncrementalFromData(napi_env env, uint8_t* data, si
 
 通过给定的图像源缓冲区资源data和[OhosImageSourceOps](capi-image-ohosimagesourceops.md)结构体，获取增量类型的JavaScript Native API ImageSource对象，图像数据应通过 [OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata)更新。
 
+<!--Device-int32_t OH_ImageSource_CreateIncrementalFromData(napi_env env, uint8_t* data, size_t dataSize, struct OhosImageSourceOps* ops, napi_value *res)--><!--Device-int32_t OH_ImageSource_CreateIncrementalFromData(napi_env env, uint8_t* data, size_t dataSize, struct OhosImageSourceOps* ops, napi_value *res)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 11
@@ -333,6 +347,8 @@ int32_t OH_ImageSource_GetSupportedFormats(struct OhosImageSourceSupportedFormat
 
 获取所有支持的解码格式元标记。
 
+<!--Device-int32_t OH_ImageSource_GetSupportedFormats(struct OhosImageSourceSupportedFormatList* res)--><!--Device-int32_t OH_ImageSource_GetSupportedFormats(struct OhosImageSourceSupportedFormatList* res)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
@@ -363,6 +379,8 @@ ImageSourceNative* OH_ImageSource_InitNative(napi_env env, napi_value source)
 **描述：**
 
 从输入JavaScript native层ImageSource对象中，转换成[ImageSourceNative](capi-image-imagesourcenative-.md)值。
+
+<!--Device-ImageSourceNative* OH_ImageSource_InitNative(napi_env env, napi_value source)--><!--Device-ImageSourceNative* OH_ImageSource_InitNative(napi_env env, napi_value source)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -395,6 +413,8 @@ int32_t OH_ImageSource_CreatePixelMap(const ImageSourceNative* native, struct Oh
 **描述：**
 
 通过一个给定的选项[OhosImageDecodingOps](capi-image-ohosimagedecodingops.md)结构体，从ImageSource中解码JavaScript native层PixelMap对象。
+
+<!--Device-int32_t OH_ImageSource_CreatePixelMap(const ImageSourceNative* native, struct OhosImageDecodingOps* ops, napi_value *res)--><!--Device-int32_t OH_ImageSource_CreatePixelMap(const ImageSourceNative* native, struct OhosImageDecodingOps* ops, napi_value *res)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -429,6 +449,8 @@ int32_t OH_ImageSource_CreatePixelMapList(const ImageSourceNative* native, struc
 
 通过一个给定的选项[OhosImageDecodingOps](capi-image-ohosimagedecodingops.md)结构体，从ImageSource中解码所有的JavaScript native层PixelMap对象列表。
 
+<!--Device-int32_t OH_ImageSource_CreatePixelMapList(const ImageSourceNative* native, struct OhosImageDecodingOps* ops, napi_value *res)--><!--Device-int32_t OH_ImageSource_CreatePixelMapList(const ImageSourceNative* native, struct OhosImageDecodingOps* ops, napi_value *res)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
@@ -462,6 +484,8 @@ int32_t OH_ImageSource_GetDelayTime(const ImageSourceNative* native, struct Ohos
 
 从ImageSource（如GIF图像源）获取延迟时间列表。
 
+<!--Device-int32_t OH_ImageSource_GetDelayTime(const ImageSourceNative* native, struct OhosImageSourceDelayTimeList* res)--><!--Device-int32_t OH_ImageSource_GetDelayTime(const ImageSourceNative* native, struct OhosImageSourceDelayTimeList* res)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
@@ -494,6 +518,8 @@ int32_t OH_ImageSource_GetFrameCount(const ImageSourceNative* native, uint32_t *
 
 从ImageSource中获取帧计数。
 
+<!--Device-int32_t OH_ImageSource_GetFrameCount(const ImageSourceNative* native, uint32_t *res)--><!--Device-int32_t OH_ImageSource_GetFrameCount(const ImageSourceNative* native, uint32_t *res)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
@@ -525,6 +551,8 @@ int32_t OH_ImageSource_GetImageInfo(const ImageSourceNative* native, int32_t ind
 **描述：**
 
 通过索引从ImageSource获取图像源信息。
+
+<!--Device-int32_t OH_ImageSource_GetImageInfo(const ImageSourceNative* native, int32_t index, struct OhosImageSourceInfo* info)--><!--Device-int32_t OH_ImageSource_GetImageInfo(const ImageSourceNative* native, int32_t index, struct OhosImageSourceInfo* info)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -559,6 +587,8 @@ int32_t OH_ImageSource_GetImageProperty(const ImageSourceNative* native, struct 
 
 通过关键字从ImageSource中获取图像源属性。
 
+<!--Device-int32_t OH_ImageSource_GetImageProperty(const ImageSourceNative* native, struct OhosImageSourceProperty* key, struct OhosImageSourceProperty* value)--><!--Device-int32_t OH_ImageSource_GetImageProperty(const ImageSourceNative* native, struct OhosImageSourceProperty* key, struct OhosImageSourceProperty* value)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
@@ -591,6 +621,8 @@ int32_t OH_ImageSource_ModifyImageProperty(const ImageSourceNative* native, stru
 **描述：**
 
 通过关键字为ImageSource修改图像源属性。
+
+<!--Device-int32_t OH_ImageSource_ModifyImageProperty(const ImageSourceNative* native, struct OhosImageSourceProperty* key, struct OhosImageSourceProperty* value)--><!--Device-int32_t OH_ImageSource_ModifyImageProperty(const ImageSourceNative* native, struct OhosImageSourceProperty* key, struct OhosImageSourceProperty* value)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -625,6 +657,8 @@ int32_t OH_ImageSource_UpdateData(const ImageSourceNative* native, struct OhosIm
 
 为了增量类型的ImageSource更新源数据。
 
+<!--Device-int32_t OH_ImageSource_UpdateData(const ImageSourceNative* native, struct OhosImageSourceUpdateData* data)--><!--Device-int32_t OH_ImageSource_UpdateData(const ImageSourceNative* native, struct OhosImageSourceUpdateData* data)-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **起始版本：** 10
@@ -656,6 +690,8 @@ int32_t OH_ImageSource_Release(ImageSourceNative* native)
 **描述：**
 
 释放native层图像源ImageSourceNative。
+
+<!--Device-int32_t OH_ImageSource_Release(ImageSourceNative* native)--><!--Device-int32_t OH_ImageSource_Release(ImageSourceNative* native)-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 

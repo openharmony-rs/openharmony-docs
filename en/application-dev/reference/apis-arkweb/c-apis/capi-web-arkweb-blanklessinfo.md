@@ -8,11 +8,13 @@ typedef struct ArkWeb_BlanklessInfo {...} ArkWeb_BlanklessInfo
 
 Describes the first-screen loading prediction information, including the predicted first-screen similarity value, predicted first-screen loading time, and error code. The app uses this information to decide whether to enable the blankless loading frame insertion solution, which reduces the blank screen time by inserting pre-rendered frames during page loading.
 
+<!--Device-typedef struct ArkWeb_BlanklessInfo {...} ArkWeb_BlanklessInfo--><!--Device-typedef struct ArkWeb_BlanklessInfo {...} ArkWeb_BlanklessInfo-End-->
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 20
 
-**Related module**: [Web](capi-others-web.md)
+**Related module**: [Web](capi-arkweb-web.md)
 
 **Header file**: [native_interface_arkweb.h](capi-native-interface-arkweb-h.md)
 

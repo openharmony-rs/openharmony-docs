@@ -53,6 +53,8 @@ enum Rdb_EncryptionAlgo
 
 Enumerates the database encryption algorithms.
 
+<!--Device-Rdb_EncryptionAlgo--><!--Device-Rdb_EncryptionAlgo-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
@@ -73,6 +75,8 @@ enum Rdb_HmacAlgo
 
 Enumerates the supported HMAC algorithm when opening a database.
 
+<!--Device-Rdb_HmacAlgo--><!--Device-Rdb_HmacAlgo-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
@@ -92,6 +96,8 @@ enum Rdb_KdfAlgo
 **Description**
 
 Enumerates the supported KDF algorithm when opening a database.
+
+<!--Device-Rdb_KdfAlgo--><!--Device-Rdb_KdfAlgo-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -115,6 +121,8 @@ OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)
 **Description**
 
 Creates an OH_Rdb_CryptoParam instance object.
+
+<!--Device-OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)--><!--Device-OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -141,6 +149,8 @@ int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 
 Destroys an OH_Rdb_CryptoParam instance object.
 
+<!--Device-int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)--><!--Device-int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
@@ -166,6 +176,8 @@ int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, in
 **Description**
 
 Sets key data to the OH_Rdb_CryptoParam object.
+
+<!--Device-int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, int32_t length)--><!--Device-int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, int32_t length)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -195,6 +207,8 @@ int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)
 
 Sets the number of KDF iterations used when opening an encrypted database.
 
+<!--Device-int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)--><!--Device-int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
@@ -221,6 +235,8 @@ int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 **Description**
 
 Sets the encryption algorithm when opening an encrypted database.
+
+<!--Device-int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)--><!--Device-int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -249,6 +265,8 @@ int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 Sets the HMAC algorithm when opening an encrypted database.
 
+<!--Device-int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)--><!--Device-int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
@@ -276,6 +294,8 @@ int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 Sets the KDF algorithm when opening an encrypted database.
 
+<!--Device-int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)--><!--Device-int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
@@ -302,6 +322,8 @@ int OH_Crypto_SetCryptoPageSize(OH_Rdb_CryptoParam *param, int64_t size)
 **Description**
 
 Sets the page size used when opening an encrypted database.
+
+<!--Device-int OH_Crypto_SetCryptoPageSize(OH_Rdb_CryptoParam *param, int64_t size)--><!--Device-int OH_Crypto_SetCryptoPageSize(OH_Rdb_CryptoParam *param, int64_t size)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

@@ -8,13 +8,15 @@ struct OhosPixelMapInfo {...}
 
 用于定义PixelMap的相关信息。
 
+<!--Device-struct OhosPixelMapInfo {...}--><!--Device-struct OhosPixelMapInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 8
 
 **废弃版本：** 10
 
-**相关模块：** [Image](capi-others-image.md)
+**相关模块：** [Image](capi-image-kit-image.md)
 
 **所在头文件：** [image_pixel_map_napi.h](capi-image-pixel-map-napi-h.md)
 

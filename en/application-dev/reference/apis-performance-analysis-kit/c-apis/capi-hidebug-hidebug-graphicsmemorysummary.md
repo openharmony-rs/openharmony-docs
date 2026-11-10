@@ -8,11 +8,13 @@ struct HiDebug_GraphicsMemorySummary {...}
 
 Defines a struct for the application graphics memory usage details.
 
+<!--Device-struct HiDebug_GraphicsMemorySummary {...}--><!--Device-struct HiDebug_GraphicsMemorySummary {...}-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 21
 
-**Related module**: [HiDebug](capi-others-hidebug.md)
+**Related module**: [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 

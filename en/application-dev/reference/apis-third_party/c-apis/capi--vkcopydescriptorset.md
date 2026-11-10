@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCopyDescriptorSet {...}--><!--Device-struct VkCopyDescriptorSet {...}-End-->
+
 ## Summary
 
 ### Member variables

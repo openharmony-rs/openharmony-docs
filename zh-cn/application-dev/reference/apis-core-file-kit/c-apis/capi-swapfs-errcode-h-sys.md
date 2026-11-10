@@ -36,6 +36,8 @@ enum OH_Swapfs_ErrCode
 
 swapfs模块的错误码。
 
+<!--Device-OH_Swapfs_ErrCode--><!--Device-OH_Swapfs_ErrCode-End-->
+
 **系统能力：** SystemCapability.FileManagement.File.Swapfs
 
 **起始版本：** 26.0.0

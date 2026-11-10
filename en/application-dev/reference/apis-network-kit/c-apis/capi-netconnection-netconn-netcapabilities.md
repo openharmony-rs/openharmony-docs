@@ -8,11 +8,13 @@ struct NetConn_NetCapabilities {...}
 
 Defines network capability sets.
 
+<!--Device-struct NetConn_NetCapabilities {...}--><!--Device-struct NetConn_NetCapabilities {...}-End-->
+
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Since**: 11
 
-**Related module**: [NetConnection](capi-others-netconnection.md)
+**Related module**: [NetConnection](capi-network-kit-netconnection.md)
 
 **Header file**: [net_connection_type.h](capi-net-connection-type-h.md)
 

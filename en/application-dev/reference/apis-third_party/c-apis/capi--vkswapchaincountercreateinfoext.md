@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSwapchainCounterCreateInfoEXT {...}--><!--Device-struct VkSwapchainCounterCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

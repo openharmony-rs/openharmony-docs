@@ -8,11 +8,13 @@ typedef struct Print_PrintAttributes {...} Print_PrintAttributes
 
 表示打印属性结构体，用于配置打印任务的各项属性（如打印范围、纸张尺寸、边距、份数、双面模式、色彩模式、打印方向及打印选项等），适用于需要对打印输出进行精细化控制的场景。
 
+<!--Device-typedef struct Print_PrintAttributes {...} Print_PrintAttributes--><!--Device-typedef struct Print_PrintAttributes {...} Print_PrintAttributes-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 13
 
-**相关模块：** [Print](capi-others-print.md)
+**相关模块：** [Print](capi-basic-services-kit-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

@@ -8,11 +8,13 @@ typedef struct AbilityRuntime_Context* AbilityRuntime_ContextHandle
 
 定义AbilityRuntime_Context对象指针。
 
+<!--Device-typedef struct AbilityRuntime_Context* AbilityRuntime_ContextHandle--><!--Device-typedef struct AbilityRuntime_Context* AbilityRuntime_ContextHandle-End-->
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 24
 
-**相关模块：** [AbilityRuntime](capi-others-abilityruntime.md)
+**相关模块：** [AbilityRuntime](capi-ability-kit-abilityruntime.md)
 
 **所在头文件：** [context.h](capi-context-h.md)
 

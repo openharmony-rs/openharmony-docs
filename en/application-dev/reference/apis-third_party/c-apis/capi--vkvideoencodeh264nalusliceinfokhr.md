@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoEncodeH264NaluSliceInfoKHR {...}--><!--Device-struct VkVideoEncodeH264NaluSliceInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

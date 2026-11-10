@@ -32,6 +32,8 @@ enum OsAccount_ErrCode
 
 枚举错误码。
 
+<!--Device-OsAccount_ErrCode--><!--Device-OsAccount_ErrCode-End-->
+
 **系统能力：** SystemCapability.Account.OsAccount
 
 **起始版本：** 12

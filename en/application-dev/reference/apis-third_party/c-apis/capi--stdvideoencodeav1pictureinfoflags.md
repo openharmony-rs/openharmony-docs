@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoEncodeAV1PictureInfoFlags {...}--><!--Device-struct StdVideoEncodeAV1PictureInfoFlags {...}-End-->
+
 ## Summary
 
 ### Member variables

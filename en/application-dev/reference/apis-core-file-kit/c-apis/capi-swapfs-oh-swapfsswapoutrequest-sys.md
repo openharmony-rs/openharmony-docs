@@ -8,13 +8,15 @@ struct OH_SwapfsSwapOutRequest {...}
 
 Request parameters for swap-out operation.
 
+<!--Device-struct OH_SwapfsSwapOutRequest {...}--><!--Device-struct OH_SwapfsSwapOutRequest {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
 **System API:** This is a system API.
 
-**Related module**: [Swapfs](capi-others-swapfs.md)
+**Related module**: [Swapfs](capi-core-file-kit-swapfs.md)
 
 **Header file**: [oh_swapfs.h(System API)](capi-oh-swapfs-h-sys.md)
 

@@ -37,6 +37,8 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sig
 
 创建具有模糊效果的图像滤波器。使用本函数创建的图像滤波器对象， 在使用完毕后必须调用[OH_Drawing_ImageFilterDestroy](capi-drawing-image-filter-h.md#oh_drawing_imagefilterdestroy)进行销毁，否则会导致内存泄漏。
 
+<!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode, OH_Drawing_ImageFilter* imageFilter)--><!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode, OH_Drawing_ImageFilter* imageFilter)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -65,6 +67,8 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, f
 **描述：**
 
 创建具有模糊效果的图像滤波器。 <br>支持传入裁剪矩形，用于限制模糊效果仅在图像的指定矩形区域内生效。使用本函数创建的图像滤波器对象， 在使用完毕后必须调用[OH_Drawing_ImageFilterDestroy](capi-drawing-image-filter-h.md#oh_drawing_imagefilterdestroy)进行销毁，否则会导致内存泄漏。
+
+<!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode, OH_Drawing_ImageFilter* input, const OH_Drawing_Rect* rect)--><!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode, OH_Drawing_ImageFilter* input, const OH_Drawing_Rect* rect)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -96,6 +100,8 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_C
 
 创建具有颜色变换效果的图像滤波器。本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 colorFilter为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER；可用内存不足导致内存分配失败时也会产生错误码。 请检查并确保传入的colorFilter为有效的颜色滤波器对象指针。 使用本函数创建的图像滤波器对象，在使用完毕后必须调用[OH_Drawing_ImageFilterDestroy](capi-drawing-image-filter-h.md#oh_drawing_imagefilterdestroy)进行销毁， 否则会导致内存泄漏。
 
+<!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_ColorFilter* colorFilter, OH_Drawing_ImageFilter* imageFilter)--><!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_ColorFilter* colorFilter, OH_Drawing_ImageFilter* imageFilter)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -122,6 +128,8 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_
 **描述：**
 
 创建一个偏移滤波器，将输入的滤波器按照指定向量进行平移。适用于创建阴影偏移效果或位移动画等场景。 使用本函数创建的图像滤波器对象，在使用完毕后必须调用 [OH_Drawing_ImageFilterDestroy](capi-drawing-image-filter-h.md#oh_drawing_imagefilterdestroy)进行销毁，否则会导致内存泄漏。
+
+<!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_Drawing_ImageFilter* imageFilter)--><!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_Drawing_ImageFilter* imageFilter)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -151,6 +159,8 @@ OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_
 
 基于着色器创建一个图像滤波器。使用本函数创建的图像滤波器对象， 在使用完毕后必须调用[OH_Drawing_ImageFilterDestroy](capi-drawing-image-filter-h.md#oh_drawing_imagefilterdestroy)进行销毁，否则会导致内存泄漏。
 
+<!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_ShaderEffect* shaderEffect)--><!--Device-OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_ShaderEffect* shaderEffect)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
@@ -176,6 +186,8 @@ void OH_Drawing_ImageFilterDestroy(OH_Drawing_ImageFilter* imageFilter)
 **描述：**
 
 销毁图像滤波器对象并回收该对象占用的内存。
+
+<!--Device-void OH_Drawing_ImageFilterDestroy(OH_Drawing_ImageFilter* imageFilter)--><!--Device-void OH_Drawing_ImageFilterDestroy(OH_Drawing_ImageFilter* imageFilter)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

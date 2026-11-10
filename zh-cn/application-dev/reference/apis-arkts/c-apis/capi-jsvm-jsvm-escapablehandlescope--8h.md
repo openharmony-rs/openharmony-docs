@@ -8,11 +8,13 @@ typedef struct JSVM_EscapableHandleScope__* JSVM_EscapableHandleScope
 
 表示一种特殊类型的handle scope，用于将在特定handle scope内创建的值返回到父作用域。
 
+<!--Device-typedef struct JSVM_EscapableHandleScope__* JSVM_EscapableHandleScope--><!--Device-typedef struct JSVM_EscapableHandleScope__* JSVM_EscapableHandleScope-End-->
+
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
 
-**相关模块：** [JSVM](capi-others-jsvm.md)
+**相关模块：** [JSVM](capi-arkts-jsvm.md)
 
 **所在头文件：** [jsvm_types.h](capi-jsvm-types-h.md)
 

@@ -8,11 +8,13 @@ struct Crypto_DataBlob {...}
 
 Crypto data structure.
 
+<!--Device-struct Crypto_DataBlob {...}--><!--Device-struct Crypto_DataBlob {...}-End-->
+
 **System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 
-**Related module**: [CryptoCommonApi](capi-others-cryptocommonapi.md)
+**Related module**: [CryptoCommonApi](capi-crypto-architecture-kit-cryptocommonapi.md)
 
 **Header file**: [crypto_common.h](capi-crypto-common-h.md)
 

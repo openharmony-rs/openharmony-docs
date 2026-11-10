@@ -8,11 +8,13 @@ struct tee_uuid {...}
 
 Defines an UUID of TA.
 
+<!--Device-struct tee_uuid {...}--><!--Device-struct tee_uuid {...}-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_defines.h](capi-tee-defines-h.md)
 

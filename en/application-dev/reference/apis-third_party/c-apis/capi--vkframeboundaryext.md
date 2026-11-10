@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkFrameBoundaryEXT {...}--><!--Device-struct VkFrameBoundaryEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

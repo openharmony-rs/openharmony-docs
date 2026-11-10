@@ -8,11 +8,13 @@ typedef struct Print_PropertyList {...} Print_PropertyList
 
 Defines a printer property list, which is used to store and manage printer properties. You can access and operate printer properties in batches by using the property count and the pointer to the property array. **count**<br>indicates the number of properties, and **list** is a pointer to the property array. The two parameters together indicate a complete set of printer properties, which is applicable to scenarios where multiple printer properties need to be queried or set.
 
+<!--Device-typedef struct Print_PropertyList {...} Print_PropertyList--><!--Device-typedef struct Print_PropertyList {...} Print_PropertyList-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
-**Related module**: [Print](capi-others-print.md)
+**Related module**: [Print](capi-basic-services-kit-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 

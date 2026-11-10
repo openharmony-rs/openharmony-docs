@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceMemoryBudgetPropertiesEXT {...}--><!--Device-struct VkPhysicalDeviceMemoryBudgetPropertiesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

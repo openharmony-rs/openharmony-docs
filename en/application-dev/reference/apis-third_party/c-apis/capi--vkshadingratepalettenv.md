@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkShadingRatePaletteNV {...}--><!--Device-struct VkShadingRatePaletteNV {...}-End-->
+
 ## Summary
 
 ### Member variables

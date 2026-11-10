@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkIndirectExecutionSetShaderInfoEXT {...}--><!--Device-struct VkIndirectExecutionSetShaderInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

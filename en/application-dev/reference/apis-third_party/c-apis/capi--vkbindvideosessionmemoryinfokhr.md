@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBindVideoSessionMemoryInfoKHR {...}--><!--Device-struct VkBindVideoSessionMemoryInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

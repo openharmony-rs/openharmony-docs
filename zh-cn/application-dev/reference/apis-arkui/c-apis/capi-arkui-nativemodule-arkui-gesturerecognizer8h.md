@@ -8,9 +8,11 @@ typedef ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle
 
 定义手势识别器句柄类型，是ArkUI_GestureRecognizer指针类型的别名封装，用于在ArkUI原生手势接口中表示手势识别器对象。
 
+<!--Device-typedef ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle--><!--Device-typedef ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle-End-->
+
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_gesture.h](capi-native-gesture-h.md)
 

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct tcp_md5sig {...}--><!--Device-struct tcp_md5sig {...}-End-->
+
 ## Summary
 
 ### Member variables

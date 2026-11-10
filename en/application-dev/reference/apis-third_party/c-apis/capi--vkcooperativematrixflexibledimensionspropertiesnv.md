@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCooperativeMatrixFlexibleDimensionsPropertiesNV {...}--><!--Device-struct VkCooperativeMatrixFlexibleDimensionsPropertiesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

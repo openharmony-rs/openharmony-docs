@@ -8,11 +8,13 @@ typedef struct GameDevice_DeviceInfo GameDevice_DeviceInfo
 
 Defines the device information.
 
+<!--Device-typedef struct GameDevice_DeviceInfo GameDevice_DeviceInfo--><!--Device-typedef struct GameDevice_DeviceInfo GameDevice_DeviceInfo-End-->
+
 **System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
-**Related module**: [GameController](capi-others-gamecontroller.md)
+**Related module**: [GameController](capi-game-controller-kit-gamecontroller.md)
 
 **Header file**: [game_device_event.h](capi-game-device-event-h.md)
 

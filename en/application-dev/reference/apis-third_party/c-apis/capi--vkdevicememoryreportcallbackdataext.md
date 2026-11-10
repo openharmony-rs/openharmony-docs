@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDeviceMemoryReportCallbackDataEXT {...}--><!--Device-struct VkDeviceMemoryReportCallbackDataEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

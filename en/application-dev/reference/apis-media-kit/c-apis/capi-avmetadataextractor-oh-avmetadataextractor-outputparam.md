@@ -8,9 +8,11 @@ typedef struct OH_AVMetadataExtractor_OutputParam OH_AVMetadataExtractor_OutputP
 
 Defines a struct for the output parameters of a frame extracted by **AVMetadataExtractor**.
 
+<!--Device-typedef struct OH_AVMetadataExtractor_OutputParam OH_AVMetadataExtractor_OutputParam--><!--Device-typedef struct OH_AVMetadataExtractor_OutputParam OH_AVMetadataExtractor_OutputParam-End-->
+
 **Since**: 23
 
-**Related module**: [AVMetadataExtractor](capi-others-avmetadataextractor.md)
+**Related module**: [AVMetadataExtractor](capi-media-kit-avmetadataextractor.md)
 
 **Header file**: [avmetadata_extractor_base.h](capi-avmetadata-extractor-base-h.md)
 

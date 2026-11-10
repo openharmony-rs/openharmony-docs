@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineLayoutCreateInfo {...}--><!--Device-struct VkPipelineLayoutCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

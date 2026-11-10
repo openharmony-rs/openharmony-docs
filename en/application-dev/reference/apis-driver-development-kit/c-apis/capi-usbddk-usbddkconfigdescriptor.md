@@ -8,11 +8,13 @@ struct UsbDdkConfigDescriptor {...}
 
 Defines configuration descriptors, including standard configuration descriptors and interface descriptors.
 
+<!--Device-struct UsbDdkConfigDescriptor {...}--><!--Device-struct UsbDdkConfigDescriptor {...}-End-->
+
 **System capability**: SystemCapability.Driver.USB.Extension
 
 **Since**: 10
 
-**Related module**: [UsbDdk](capi-others-usbddk.md)
+**Related module**: [UsbDdk](capi-driver-development-kit-usbddk.md)
 
 **Header file**: [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

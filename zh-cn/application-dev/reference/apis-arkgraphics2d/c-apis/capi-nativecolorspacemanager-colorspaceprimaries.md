@@ -8,11 +8,13 @@ typedef struct ColorSpacePrimaries {...} ColorSpacePrimaries
 
 提供色彩原色结构体声明，用于存储色彩空间的红绿蓝三原色和白点的坐标信息。
 
+<!--Device-typedef struct ColorSpacePrimaries {...} ColorSpacePrimaries--><!--Device-typedef struct ColorSpacePrimaries {...} ColorSpacePrimaries-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **起始版本：** 13
 
-**相关模块：** [NativeColorSpaceManager](capi-others-nativecolorspacemanager.md)
+**相关模块：** [NativeColorSpaceManager](capi-arkgraphics2d-nativecolorspacemanager.md)
 
 **所在头文件：** [native_color_space_manager.h](capi-native-color-space-manager-h.md)
 

@@ -126,6 +126,8 @@ enum ArkUI_Accessibility_ActionType
 
 Defines an enum for accessibility action types.
 
+<!--Device-ArkUI_Accessibility_ActionType--><!--Device-ArkUI_Accessibility_ActionType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -157,6 +159,8 @@ enum ArkUI_AccessibilityEventType
 **Description**
 
 Defines an enum for accessibility event types.
+
+<!--Device-ArkUI_AccessibilityEventType--><!--Device-ArkUI_AccessibilityEventType-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,6 +194,8 @@ enum ArkUI_AcessbilityErrorCode
 
 Enumerates the accessibility error codes.
 
+<!--Device-ArkUI_AcessbilityErrorCode--><!--Device-ArkUI_AcessbilityErrorCode-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -210,6 +216,8 @@ enum ArkUI_AccessibilitySearchMode
 **Description**
 
 Defines an enum for the accessibility search modes.
+
+<!--Device-ArkUI_AccessibilitySearchMode--><!--Device-ArkUI_AccessibilitySearchMode-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -233,6 +241,8 @@ enum ArkUI_AccessibilityFocusType
 
 Defines an enum for the accessibility focus types.
 
+<!--Device-ArkUI_AccessibilityFocusType--><!--Device-ArkUI_AccessibilityFocusType-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -252,6 +262,8 @@ enum ArkUI_AccessibilityFocusMoveDirection
 **Description**
 
 Enumerates the directions for moving the accessibility focus.
+
+<!--Device-ArkUI_AccessibilityFocusMoveDirection--><!--Device-ArkUI_AccessibilityFocusMoveDirection-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -280,6 +292,8 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvid
 
 Registers a callback for this <b>ArkUI_AccessibilityProvider</b> instance.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacks* callbacks)--><!--Device-int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacks* callbacks)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -306,6 +320,8 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* i
 **Description**
 
 Registers a callback with instance for this <b>ArkUI_AccessibilityProvider</b> instance.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* instanceId, ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacksWithInstance* callbacks)--><!--Device-int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* instanceId, ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacksWithInstance* callbacks)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -335,6 +351,8 @@ void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider,
 
 Sends accessibility event information.
 
+<!--Device-void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityEventInfo* eventInfo, void (*callback)(int32_t errorCode))--><!--Device-void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityEventInfo* eventInfo, void (*callback)(int32_t errorCode))-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -356,6 +374,8 @@ ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI
 **Description**
 
 Adds and obtains the pointer to an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI_AccessibilityElementInfoList* list)--><!--Device-ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI_AccessibilityElementInfoList* list)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -382,6 +402,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElement
 **Description**
 
 Sets the element ID for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t elementId)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t elementId)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -410,6 +432,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementI
 
 Sets the parent ID for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t parentId)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t parentId)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -436,6 +460,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityEle
 **Description**
 
 Sets the component type for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityElementInfo* elementInfo, const char* componentType)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityElementInfo* elementInfo, const char* componentType)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -464,6 +490,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementI
 
 Sets the component content for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementInfo* elementInfo, const char* contents)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementInfo* elementInfo, const char* contents)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -490,6 +518,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementI
 **Description**
 
 Sets the hint text for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementInfo* elementInfo, const char* hintText)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementInfo* elementInfo, const char* hintText)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -518,6 +548,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_Accessibilit
 
 Sets the accessibility text for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityText)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityText)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -545,6 +577,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_Acces
 
 Sets the accessibility description for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityDescription)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityDescription)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -571,6 +605,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElem
 **Description**
 
 Set the number of child nodes and child node IDs for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElementInfo* elementInfo, int32_t childCount, int64_t* childNodeIds)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElementInfo* elementInfo, int32_t childCount, int64_t* childNodeIds)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -600,6 +636,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_Accessibility
 
 Sets the operation actions for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_AccessibilityElementInfo* elementInfo, int32_t operationCount, ArkUI_AccessibleAction* operationActions)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_AccessibilityElementInfo* elementInfo, int32_t operationCount, ArkUI_AccessibleAction* operationActions)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -628,6 +666,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElemen
 
 Sets the screen area for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRect* screenRect)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRect* screenRect)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -654,6 +694,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElement
 **Description**
 
 Sets whether the element is checkable for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElementInfo* elementInfo, bool checkable)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElementInfo* elementInfo, bool checkable)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -682,6 +724,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementIn
 
 Sets whether the element is checked for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementInfo* elementInfo, bool checked)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementInfo* elementInfo, bool checked)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -708,6 +752,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElement
 **Description**
 
 Sets whether the element is focusable for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElementInfo* elementInfo, bool focusable)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElementInfo* elementInfo, bool focusable)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -736,6 +782,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementIn
 
 Sets whether the element is focused for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool isFocused)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool isFocused)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -762,6 +810,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementIn
 **Description**
 
 Sets whether the element is visible for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementInfo* elementInfo, bool isVisible)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementInfo* elementInfo, bool isVisible)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -790,6 +840,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_Accessibi
 
 Sets the accessibility focus state for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityFocused)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityFocused)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -816,6 +868,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementI
 **Description**
 
 Sets whether the element is selected for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementInfo* elementInfo, bool selected)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementInfo* elementInfo, bool selected)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -844,6 +898,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElement
 
 Sets whether the element is clickable for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool clickable)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool clickable)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -870,6 +926,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityEle
 **Description**
 
 Sets whether the element is long clickable for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool longClickable)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool longClickable)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -898,6 +956,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementIn
 
 Sets whether the element is enabled for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementInfo* elementInfo, bool isEnabled)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementInfo* elementInfo, bool isEnabled)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -924,6 +984,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElemen
 **Description**
 
 Sets whether the element is a password for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElementInfo* elementInfo, bool isPassword)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElementInfo* elementInfo, bool isPassword)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -952,6 +1014,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElemen
 
 Sets whether the element is scrollable for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElementInfo* elementInfo, bool scrollable)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElementInfo* elementInfo, bool scrollable)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -978,6 +1042,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementI
 **Description**
 
 Sets whether the element is editable for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementInfo* elementInfo, bool editable)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementInfo* elementInfo, bool editable)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1006,6 +1072,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInf
 
 Sets whether the element is a hint for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInfo* elementInfo, bool isHint)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInfo* elementInfo, bool isHint)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1032,6 +1100,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElement
 **Description**
 
 Sets the range information for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRangeInfo* rangeInfo)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRangeInfo* rangeInfo)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1060,6 +1130,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementI
 
 Sets the grid information for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridInfo* gridInfo)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridInfo* gridInfo)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1086,6 +1158,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElem
 **Description**
 
 Sets the grid item for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridItemInfo* gridItem)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridItemInfo* gridItem)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1114,6 +1188,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_Accessibilit
 
 Sets the starting index of the selected text for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextStart)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextStart)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1140,6 +1216,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityE
 **Description**
 
 Sets the end index of the selected text for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextEnd)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextEnd)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1168,6 +1246,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_Accessibility
 
 Sets the index of the currently selected item for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t currentItemIndex)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t currentItemIndex)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1194,6 +1274,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityEl
 **Description**
 
 Sets the index of the first item for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t startItemIndex)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t startItemIndex)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1222,6 +1304,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElem
 
 Sets the index of the last item for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t endItemIndex)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t endItemIndex)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1248,6 +1332,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElement
 **Description**
 
 Sets the number of items for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElementInfo* elementInfo, int32_t itemCount)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElementInfo* elementInfo, int32_t itemCount)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1276,6 +1362,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_Accessibil
 
 Sets the offset for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_AccessibilityElementInfo* elementInfo, int32_t offset)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_AccessibilityElementInfo* elementInfo, int32_t offset)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1302,6 +1390,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_Accessibili
 **Description**
 
 Sets the accessibility group for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityGroup)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityGroup)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1330,6 +1420,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_Accessibili
 
 Sets the accessibility level for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityLevel)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityLevel)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1356,6 +1448,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInf
 **Description**
 
 Sets the z-index for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1384,6 +1478,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_Accessibi
 
 Sets the opacity for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_AccessibilityElementInfo* elementInfo, float opacity)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_AccessibilityElementInfo* elementInfo, float opacity)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1410,6 +1506,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityE
 **Description**
 
 Sets the background color for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundColor)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundColor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1438,6 +1536,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityE
 
 Sets the background image for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundImage)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundImage)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1464,6 +1564,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo*
 **Description**
 
 Sets the blur effect for an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo* elementInfo, const char* blur)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo* elementInfo, const char* blur)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1492,6 +1594,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityE
 
 Sets the hit test behavior for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1519,6 +1623,8 @@ ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)
 
 Creates an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)--><!--Device-ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1538,6 +1644,8 @@ void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* el
 **Description**
 
 Destroys an <b>ArkUI_AccessibilityElementInfo</b> object.
+
+<!--Device-void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* elementInfo)--><!--Device-void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* elementInfo)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1559,6 +1667,8 @@ ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)
 
 Creates an <b>ArkUI_AccessibilityEventInfo</b> object.
 
+<!--Device-ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)--><!--Device-ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1579,6 +1689,8 @@ void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventI
 
 Destroys an <b>ArkUI_AccessibilityEventInfo</b> object.
 
+<!--Device-void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventInfo)--><!--Device-void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventInfo)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1598,6 +1710,8 @@ int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* ev
 **Description**
 
 Sets the event type for an <b>ArkUI_AccessibilityEventInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityEventType eventType)--><!--Device-int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityEventType eventType)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1626,6 +1740,8 @@ int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_Access
 
 Sets the text announced for accessibility for an <b>ArkUI_AccessibilityEventInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo, const char* textAnnouncedForAccessibility)--><!--Device-int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo, const char* textAnnouncedForAccessibility)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1652,6 +1768,8 @@ int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInf
 **Description**
 
 Sets the request focus ID for an <b>ArkUI_AccessibilityEventInfo</b> object.
+
+<!--Device-int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo, int32_t requestFocusId)--><!--Device-int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo, int32_t requestFocusId)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1680,6 +1798,8 @@ int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* 
 
 Sets the element information for an <b>ArkUI_AccessibilityEventInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityElementInfo* elementInfo)--><!--Device-int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo, ArkUI_AccessibilityElementInfo* elementInfo)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
@@ -1706,6 +1826,8 @@ int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionA
 **Description**
 
 Obtains the value of a key from an <b>ArkUI_AccessibilityActionArguments</b> object.
+
+<!--Device-int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)--><!--Device-int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1735,6 +1857,8 @@ int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* n
 
 Obtains the pointer to the <b> ArkUI_AccessibilityProvider</b> instance of this <b>ArkUI_NodeHandle</b> instance.
 
+<!--Device-int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)--><!--Device-int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -1762,6 +1886,8 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_Accessibil
 
 Sets the component identifier for an <b>ArkUI_AccessibilityElementInfo</b> object.
 
+<!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo* elementInfo, const char* identifier)--><!--Device-int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo* elementInfo, const char* identifier)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
@@ -1788,6 +1914,8 @@ int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bi
 **Description**
 
 Binds an external ArkUI sub-tree to the third-party framework's accessibility tree at the specified placeholder node.<br> When a third-party framework (for example, CMP) renders pages using RenderNode and has mixed ArkUI native components on the RenderNode tree, those ArkUI native components form an external sub-tree that is not accessible to the accessibility service. This function binds the external ArkUI sub-tree to a placeholder node in the third-party framework's accessibility tree, so that accessibility focus traversal can enter the mixed ArkUI sub-tree, traverse through its internal components, and then return to the third-party framework's accessibility tree to continue traversal.<br> This API must be called on the UI main thread. The call is executed synchronously, does not invoke any callbacks back into the caller, and must not be called from a signal handler. If the third-party framework's accessibility tree has not yet been registered with the accessibility service when this API is called, the binding takes effect asynchronously once that registration completes.<br> Bindings are identified by the (owner, bindId) pair. Multiple bindings with different bindId values on the same owner are supported, and each exported sub-tree can have at most one active binding. Calling this API again with the same (owner, bindId) pair neither replaces nor merges the binding: the existing binding is kept unchanged and ARKUI_ERROR_CODE_NO_ERROR is returned; binding an exportedRoot that already has an active binding is rejected with ARKUI_ERROR_CODE_PARAM_INVALID. After [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) completes, the bound sub-tree is fully detached from the accessibility tree, all binding resources are released, and binding the same (owner, bindId) pair again performs the complete registration flow.
+
+<!--Device-int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bindId, ArkUI_NodeHandle exportedRoot)--><!--Device-int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bindId, ArkUI_NodeHandle exportedRoot)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1822,6 +1950,8 @@ int32_t OH_ArkUI_Accessibility_UnbindExportTree(ArkUI_NodeHandle owner, int64_t 
 
 Unbinds a previously bound external ArkUI sub-tree from the third-party framework's accessibility tree.<br> When the mixed ArkUI sub-tree is destroyed or replaced, this function should be called to remove the binding relationship established by [OH_ArkUI_Accessibility_BindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_bindexporttree). After unbinding, the accessibility service will no longer traverse into the previously bound ArkUI sub-tree.<br> This API must be called on the UI main thread. The call is executed synchronously, does not invoke any callbacks back into the caller, and must not be called from a signal handler. Only the binding identified by the (owner, bindId) pair is removed; other bindings on the same owner are not affected. Unbinding an unknown or already unbound (owner, bindId) pair is idempotent and returns success. When a binding exists, after this API returns ARKUI_ERROR_CODE_NO_ERROR the bound sub-tree is fully detached from the accessibility tree and all binding resources are released; the same (owner, bindId) pair can be bound again by calling [OH_ArkUI_Accessibility_BindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_bindexporttree), which then performs the complete registration flow.
 
+<!--Device-int32_t OH_ArkUI_Accessibility_UnbindExportTree(ArkUI_NodeHandle owner, int64_t bindId)--><!--Device-int32_t OH_ArkUI_Accessibility_UnbindExportTree(ArkUI_NodeHandle owner, int64_t bindId)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
@@ -1848,6 +1978,8 @@ int32_t OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler(ArkUI_Node
 **Description**
 
 Registers an accessibility hover event handler on a host node of a third-party framework.<br> When the screen reader is enabled and the user touches the host node area, ArkUI synchronously invokes the registered callback with coordinates relative to the host node. The third-party framework performs its own hit test and fills the output **elementInfo** with information about the hit node before the callback returns. ArkUI then reports the corresponding accessibility hover event to the screen reader to focus the returned node. The third-party framework does not report the event itself. Hover event types, such as enter, move, and exit, are maintained by ArkUI and are not passed to the callback.<br> While the handler is registered, hover hit testing for the host subtree uses the third-party framework's result instead of the system's node-tree hit test result. Swipe focus navigation is unchanged. Nodes without a registered handler retain their existing hover behavior. Registering again on the same node replaces the previous callback and **userData** and returns ARKUI_ERROR_CODE_NO_ERROR; subsequent callbacks use only the new registration.<br> This function is not thread-safe. The callback runs synchronously on the UI main thread and should return promptly to avoid blocking touch processing.
+
+<!--Device-int32_t OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler(ArkUI_NodeHandle node, void *userData, void (*handleAccessibilityHoverEvent)(void *userData, int32_t x, int32_t y, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo))--><!--Device-int32_t OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler(ArkUI_NodeHandle node, void *userData, void (*handleAccessibilityHoverEvent)(void *userData, int32_t x, int32_t y, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo))-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1881,6 +2013,8 @@ int32_t OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler(ArkUI_No
 **Description**
 
 Unregisters the accessibility hover event handler from the specified node.<br> After unregistration, the ArkUI accessibility framework will no longer invoke the callback registered by [OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_registeraccessibilityhovereventhandler), and the node resumes its existing hover behavior. Unregistering a handler from a supported node that has no registered handler returns ARKUI_ERROR_CODE_NO_ERROR and leaves its hover behavior unchanged. ArkUI does not release the memory pointed to by **userData**; the caller manages its lifetime.<br> This function is not thread-safe.
+
+<!--Device-int32_t OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler(ArkUI_NodeHandle node)--><!--Device-int32_t OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler(ArkUI_NodeHandle node)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

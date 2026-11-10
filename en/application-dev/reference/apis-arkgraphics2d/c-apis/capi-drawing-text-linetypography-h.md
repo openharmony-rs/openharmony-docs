@@ -35,6 +35,8 @@ OH_Drawing_LineTypography* OH_Drawing_CreateLineTypography(OH_Drawing_Typography
 
 Creates a pointer to a typography line object [OH_Drawing_LineTypography](capi-drawing-oh-drawing-linetypography.md). The typography line object serves as a container for storing text content and styles, and can be used to calculate single-line typography information.
 
+<!--Device-OH_Drawing_LineTypography* OH_Drawing_CreateLineTypography(OH_Drawing_TypographyCreate* handler)--><!--Device-OH_Drawing_LineTypography* OH_Drawing_CreateLineTypography(OH_Drawing_TypographyCreate* handler)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
@@ -61,6 +63,8 @@ void OH_Drawing_DestroyLineTypography(OH_Drawing_LineTypography* lineTypography)
 
 Releases the memory occupied by an [OH_Drawing_LineTypography](capi-drawing-oh-drawing-linetypography.md) object.
 
+<!--Device-void OH_Drawing_DestroyLineTypography(OH_Drawing_LineTypography* lineTypography)--><!--Device-void OH_Drawing_DestroyLineTypography(OH_Drawing_LineTypography* lineTypography)-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
@@ -80,6 +84,8 @@ size_t OH_Drawing_LineTypographyGetLineBreak(OH_Drawing_LineTypography* lineTypo
 **Description**
 
 Obtains the number of characters that can fit in the layout from the specified position within a limited layout width.
+
+<!--Device-size_t OH_Drawing_LineTypographyGetLineBreak(OH_Drawing_LineTypography* lineTypography, size_t startIndex, double width)--><!--Device-size_t OH_Drawing_LineTypographyGetLineBreak(OH_Drawing_LineTypography* lineTypography, size_t startIndex, double width)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -108,6 +114,8 @@ OH_Drawing_TextLine* OH_Drawing_LineTypographyCreateLine(OH_Drawing_LineTypograp
 **Description**
 
 Creates a pointer to an [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object based on the text content in a specified range.
+
+<!--Device-OH_Drawing_TextLine* OH_Drawing_LineTypographyCreateLine(OH_Drawing_LineTypography* lineTypography, size_t startIndex, size_t count)--><!--Device-OH_Drawing_TextLine* OH_Drawing_LineTypographyCreateLine(OH_Drawing_LineTypography* lineTypography, size_t startIndex, size_t count)-End-->
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 

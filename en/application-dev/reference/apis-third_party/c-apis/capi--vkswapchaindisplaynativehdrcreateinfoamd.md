@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSwapchainDisplayNativeHdrCreateInfoAMD {...}--><!--Device-struct VkSwapchainDisplayNativeHdrCreateInfoAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

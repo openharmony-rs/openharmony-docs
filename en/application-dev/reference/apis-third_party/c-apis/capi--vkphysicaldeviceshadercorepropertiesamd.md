@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceShaderCorePropertiesAMD {...}--><!--Device-struct VkPhysicalDeviceShaderCorePropertiesAMD {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSparseImageOpaqueMemoryBindInfo {...}--><!--Device-struct VkSparseImageOpaqueMemoryBindInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

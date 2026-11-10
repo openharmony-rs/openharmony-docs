@@ -79,6 +79,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResource
 
 Obtains the Base64-encoded string of the media resource by the specified resource ID and screen density.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density = 0)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density = 0)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -108,6 +110,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeReso
 **Description**
 
 Obtains the Base64-encoded string of the media resource by the specified resource ID and screen density.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64Data(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, uint64_t *resultLen, uint32_t density)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -141,6 +145,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeRe
 
 Obtains the Base64-encoded string of the media resource by the specified resource name and screen density.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64ByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density = 0)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -170,6 +176,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const Nati
 **Description**
 
 Obtains the Base64-encoded string of the media resource by the specified resource name and screen density.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaBase64DataByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, uint64_t *resultLen, uint32_t density)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -203,6 +211,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManage
 
 Obtains the binary data of the media resource by the specified resource ID and screen density.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMedia(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -232,6 +242,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceMa
 **Description**
 
 Obtains the binary data of the media resource by the specified resource ID and screen density.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaData(const NativeResourceManager *mgr, uint32_t resId, uint8_t **resultValue, uint64_t *resultLen, uint32_t density)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -265,6 +277,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResource
 
 Obtains the binary data of the media resource by the specified resource name and screen density.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density = 0)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -294,6 +308,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeReso
 **Description**
 
 Obtains the binary data of the media resource by the specified resource name and screen density.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetMediaDataByName(const NativeResourceManager *mgr, const char *resName, uint8_t **resultValue, uint64_t *resultLen, uint32_t density)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -327,6 +343,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeR
 
 Obtains the DrawableDescriptor object of the icon resource by the specified resource ID, screen density, and icon type.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptor(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -356,6 +374,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const Nat
 **Description**
 
 Obtains the DrawableDescriptor object of the icon resource by the specified resource ID, screen density, and icon type.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorData(const NativeResourceManager *mgr, uint32_t resId, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -389,6 +409,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const N
 
 Obtains the DrawableDescriptor object of the icon resource by the specified resource name, screen density, and icon type.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density = 0, uint32_t type = 0)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -418,6 +440,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(con
 **Description**
 
 Obtains the DrawableDescriptor object of the icon resource by the specified resource name and screen density.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -449,6 +473,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManag
 
 Obtains the Unicode encoding of the symbol icon corresponding to the specified resource ID.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -476,6 +502,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourc
 **Description**
 
 Obtains the Unicode encoding of the symbol icon corresponding to the specified resource name.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -507,6 +535,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceMana
 
 Obtains the list of languages supported by an application.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem = false)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem = false)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -536,6 +566,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResource
 
 Obtains the list of languages supported by an application.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -564,6 +596,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResour
 **Description**
 
 Obtains the configuration information of a device, such as the screen orientation, language and region, device type, screen density, and color mode.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -596,6 +630,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const Nati
 
 Obtains the configuration information of a device, such as the screen orientation, language and region, device type, screen density, and color mode.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 20
@@ -623,6 +659,8 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManage
 
 Releases the memory requested through the [OH_ResourceManager_GetConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getconfiguration) or [OH_ResourceManager_GetResourceConfiguration](capi-ohresmgr-h.md#oh_resourcemanager_getresourceconfiguration) function.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManager_Configuration *configuration)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManager_Configuration *configuration)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -648,6 +686,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManag
 **Description**
 
 Obtains a plain or formatted string based on the specified resource ID.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, ...)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetString(const NativeResourceManager *mgr, uint32_t resId, char **resultValue, ...)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -678,6 +718,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourc
 
 Obtains a plain or formatted string based on the specified resource name.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, ...)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetStringByName(const NativeResourceManager *mgr, const char *resName, char **resultValue, ...)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -706,6 +748,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResource
 **Description**
 
 Obtains the string array based on the specified resource ID.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResourceManager *mgr, uint32_t resId, char ***resultValue, uint32_t *resultLen)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetStringArray(const NativeResourceManager *mgr, uint32_t resId, char ***resultValue, uint32_t *resultLen)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -736,6 +780,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeRe
 
 Obtains the string array based on the specified resource name.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeResourceManager *mgr, const char *resName, char ***resultValue, uint32_t *resultLen)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetStringArrayByName(const NativeResourceManager *mgr, const char *resName, char ***resultValue, uint32_t *resultLen)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -765,6 +811,8 @@ ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue
 
 Releases the memory of the string array.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue, uint32_t len)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_ReleaseStringArray(char ***resValue, uint32_t len)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -791,6 +839,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourc
 **Description**
 
 Obtains the plural string based on the specified resource ID. <br>The Chinese language does not distinguish between singular and plural forms in strings, whereas other languages do. For details about the specific rules, see language plural rules. <br>In languages such as English and German, plural categories include cardinal forms (for example, 1, 2, 3) and ordinal forms (for example, 1st, 2nd, 3rd). This function applies only to cardinal forms.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -825,6 +875,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeR
 
 Obtains the plural string based on the specified resource name. <br>The Chinese language does not distinguish between singular and plural forms in strings, whereas other languages do. For details about the specific rules, see language plural rules. <br>In languages such as English and German, plural categories include cardinal forms (for example, 1, 2, 3) and ordinal forms (for example, 1st, 2nd, 3rd). This function applies only to cardinal forms.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -858,6 +910,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeReso
 
 Obtains the corresponding plural string and formats it based on the specified resource ID, integer quantity, and variable parameters. <br>The Chinese language does not distinguish between singular and plural forms in strings, whereas other languages do. For details about the specific rules, see language plural rules. <br>In languages such as English and German, plural categories include cardinal forms (for example, 1, 2, 3) and ordinal forms (for example, 1st, 2nd, 3rd). This function applies only to cardinal forms.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue, ...)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralString(const NativeResourceManager *mgr, uint32_t resId, uint32_t num, char **resultValue, ...)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 18
@@ -887,6 +941,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const Nati
 **Description**
 
 Obtains the corresponding plural string and formats it based on the specified resource name, integer quantity, and variable parameters. <br>The Chinese language does not distinguish between singular and plural forms in strings, whereas other languages do. For details about the specific rules, see language plural rules. <br>In languages such as English and German, plural categories include cardinal forms (for example, 1, 2, 3) and ordinal forms (for example, 1st, 2nd, 3rd). This function applies only to cardinal forms.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue, ...)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const NativeResourceManager *mgr, const char *resName, uint32_t num, char **resultValue, ...)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -918,6 +974,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeR
 
 Obtains the corresponding plural string and formats it based on the specified resource ID, floating-point quantity, and variable parameters. <br>The Chinese language does not distinguish between singular and plural forms in strings, whereas other languages do. For details about the specific rules, see language plural rules. <br>In languages such as English and German, plural categories include cardinal forms (for example, 1, 2, 3) and ordinal forms (for example, 1st, 2nd, 3rd). This function applies only to cardinal forms.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId, double num, char **resultValue, ...)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralString(const NativeResourceManager *mgr, uint32_t resId, double num, char **resultValue, ...)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 18
@@ -947,6 +1005,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const N
 **Description**
 
 Obtains the corresponding plural string and formats it based on the specified resource name, floating-point quantity, and variable parameters. <br>The Chinese language does not distinguish between singular and plural forms in strings, whereas other languages do. For details about the specific rules, see language plural rules. <br>In languages such as English and German, plural categories include cardinal forms (for example, 1, 2, 3) and ordinal forms (for example, 1st, 2nd, 3rd). This function applies only to cardinal forms.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const NativeResourceManager *mgr, const char *resName, double num, char **resultValue, ...)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetDoublePluralStringByName(const NativeResourceManager *mgr, const char *resName, double num, char **resultValue, ...)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -978,6 +1038,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManage
 
 Obtains the color resource value based on the specified resource ID.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetColor(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -1005,6 +1067,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResource
 **Description**
 
 Obtains the color resource value based on the specified resource name.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetColorByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -1034,6 +1098,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager 
 
 Obtains the integer resource value based on the specified resource ID.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager *mgr, uint32_t resId, int *resultValue)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetInt(const NativeResourceManager *mgr, uint32_t resId, int *resultValue)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -1061,6 +1127,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceMa
 **Description**
 
 Obtains the integer resource value based on the specified resource name.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceManager *mgr, const char *resName, int *resultValue)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetIntByName(const NativeResourceManager *mgr, const char *resName, int *resultValue)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -1090,6 +1158,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManage
 
 Obtains the floating-point resource value based on the specified resource ID.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManager *mgr, uint32_t resId, float *resultValue)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetFloat(const NativeResourceManager *mgr, uint32_t resId, float *resultValue)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -1117,6 +1187,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResource
 **Description**
 
 Obtains the floating-point resource value based on the specified resource name.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResourceManager *mgr, const char *resName, float *resultValue)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetFloatByName(const NativeResourceManager *mgr, const char *resName, float *resultValue)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -1146,6 +1218,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager
 
 Obtains the Boolean resource value based on the specified resource ID.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager *mgr, uint32_t resId, bool *resultValue)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetBool(const NativeResourceManager *mgr, uint32_t resId, bool *resultValue)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -1173,6 +1247,8 @@ ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceM
 **Description**
 
 Obtains the Boolean resource value based on the specified resource name.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceManager *mgr, const char *resName, bool *resultValue)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_GetBoolByName(const NativeResourceManager *mgr, const char *resName, bool *resultValue)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -1202,6 +1278,8 @@ ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceMan
 
 Dynamically loads overlay resources during application runtime to implement theme switching or resource overriding.
 
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceManager *mgr, const char *path)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_AddResource(const NativeResourceManager *mgr, const char *path)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 12
@@ -1228,6 +1306,8 @@ ResourceManager_ErrorCode OH_ResourceManager_RemoveResource(const NativeResource
 **Description**
 
 Removes the specified overlay resource during application runtime and restores the original resource before the override.
+
+<!--Device-ResourceManager_ErrorCode OH_ResourceManager_RemoveResource(const NativeResourceManager *mgr, const char *path)--><!--Device-ResourceManager_ErrorCode OH_ResourceManager_RemoveResource(const NativeResourceManager *mgr, const char *path)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 

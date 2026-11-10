@@ -8,11 +8,13 @@ typedef struct OH_NativeColorSpaceManager OH_NativeColorSpaceManager
 
 NativeColorSpaceManager结构体类型，用于执行NativeColorSpaceManager相关操作。
 
+<!--Device-typedef struct OH_NativeColorSpaceManager OH_NativeColorSpaceManager--><!--Device-typedef struct OH_NativeColorSpaceManager OH_NativeColorSpaceManager-End-->
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 13
 
-**相关模块：** [Image_NativeModule](capi-others-image-nativemodule.md)
+**相关模块：** [Image_NativeModule](capi-image-kit-image-nativemodule.md)
 
 **所在头文件：** [pixelmap_native.h](capi-pixelmap-native-h.md)
 

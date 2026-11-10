@@ -42,6 +42,8 @@ enum NetStack_CertType
 
 Certificate type enums.
 
+<!--Device-NetStack_CertType--><!--Device-NetStack_CertType-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 11
@@ -62,6 +64,8 @@ enum NetStack_CertificatePinningKind
 
 Certificate pinning type enums.
 
+<!--Device-NetStack_CertificatePinningKind--><!--Device-NetStack_CertificatePinningKind-End-->
+
 **System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 12
@@ -79,6 +83,8 @@ enum NetStack_HashAlgorithm
 **Description**
 
 Hash algorithm enums.
+
+<!--Device-NetStack_HashAlgorithm--><!--Device-NetStack_HashAlgorithm-End-->
 
 **System capability**: SystemCapability.Communication.NetStack
 

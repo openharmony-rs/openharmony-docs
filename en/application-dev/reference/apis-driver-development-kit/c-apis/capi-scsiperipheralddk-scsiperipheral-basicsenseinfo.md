@@ -8,11 +8,13 @@ struct ScsiPeripheral_BasicSenseInfo {...}
 
 Defines the basic information struct of SCSI sense data, which is used to encapsulate the sense data returned after a SCSI command is executed. This struct contains the response code, status flag, and various information fields, which are used by the driver to obtain and analyze the error status and command execution result of the SCSI device.
 
+<!--Device-struct ScsiPeripheral_BasicSenseInfo {...}--><!--Device-struct ScsiPeripheral_BasicSenseInfo {...}-End-->
+
 **System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 
-**Related module**: [ScsiPeripheralDDK](capi-others-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-driver-development-kit-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

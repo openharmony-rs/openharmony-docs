@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceInheritedViewportScissorFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceInheritedViewportScissorFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

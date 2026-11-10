@@ -46,6 +46,8 @@ const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)
 
 Obtains the file name in the `rawfile` directory by index. When you need to traverse the `rawfile` directory, you can use this function together with [OH_ResourceManager_GetRawFileCount](capi-raw-dir-h.md#oh_resourcemanager_getrawfilecount) to iterate through the directory in a loop.
 
+<!--Device-const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)--><!--Device-const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
@@ -78,6 +80,8 @@ int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)
 
 Obtains the number of subdirectories and files under `rawfile`. When traversal of the `rawfile` directory is needed, this function can be used with [OH_ResourceManager_GetRawFileName](capi-raw-dir-h.md#oh_resourcemanager_getrawfilename) to iterate through the directory in a loop.
 
+<!--Device-int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)--><!--Device-int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)-End-->
+
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
@@ -108,6 +112,8 @@ void OH_ResourceManager_CloseRawDir(RawDir *rawDir)
 **Description**
 
 Closes an opened `RawDir` object and releases all associated resources. After traversing the `rawfile` directory, this function must be called to close the directory and release resources.
+
+<!--Device-void OH_ResourceManager_CloseRawDir(RawDir *rawDir)--><!--Device-void OH_ResourceManager_CloseRawDir(RawDir *rawDir)-End-->
 
 **System capability**: SystemCapability.Global.ResourceManager
 

@@ -47,6 +47,8 @@ enum OH_OrderType
 
 Result set sort type.
 
+<!--Device-OH_OrderType--><!--Device-OH_OrderType-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 10
@@ -68,6 +70,8 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 **Description**
 
 Sets the OH_Predicates to match the field whose data type is string and value is not like the specified value. This method is similar to "Not like" of the SQL statement.
+
+<!--Device-int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)--><!--Device-int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -97,6 +101,8 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 
 Sets the OH_Predicates to match the specified field whose data type is string and the value contains a wildcard. Different from like, the input parameters of this method are case-sensitive.
 
+<!--Device-int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)--><!--Device-int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
@@ -125,6 +131,8 @@ int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const ch
 
 Sets the OH_Predicates to not match the specified field whose data type is string and the value contains a wildcard. Different from not like, the input parameters of this method are case-sensitive.
 
+<!--Device-int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)--><!--Device-int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
@@ -152,6 +160,8 @@ int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, cons
 **Description**
 
 Sets the OH_Predicates to specify conditions to filter grouped results that will appear in the final result.
+
+<!--Device-int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, const OH_Data_Values *values)--><!--Device-int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, const OH_Data_Values *values)-End-->
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

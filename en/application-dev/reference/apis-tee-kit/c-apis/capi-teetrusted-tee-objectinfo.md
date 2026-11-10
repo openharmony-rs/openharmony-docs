@@ -8,11 +8,13 @@ typedef struct TEE_ObjectInfo {...} TEE_ObjectInfo
 
 Defines an object information.
 
+<!--Device-typedef struct TEE_ObjectInfo {...} TEE_ObjectInfo--><!--Device-typedef struct TEE_ObjectInfo {...} TEE_ObjectInfo-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_defines.h](capi-tee-defines-h.md)
 

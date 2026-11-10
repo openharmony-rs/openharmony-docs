@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoDecodeH265PictureInfoKHR {...}--><!--Device-struct VkVideoDecodeH265PictureInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

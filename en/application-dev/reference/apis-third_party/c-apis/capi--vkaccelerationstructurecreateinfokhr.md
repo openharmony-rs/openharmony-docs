@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAccelerationStructureCreateInfoKHR {...}--><!--Device-struct VkAccelerationStructureCreateInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

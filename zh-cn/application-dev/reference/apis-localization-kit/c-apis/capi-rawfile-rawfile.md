@@ -8,11 +8,13 @@ typedef struct RawFile RawFile
 
 RawFile表示一个已打开的rawfile对象。通过[OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile)函数获取，使用完后须调用 [OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile)关闭并释放。
 
+<!--Device-typedef struct RawFile RawFile--><!--Device-typedef struct RawFile RawFile-End-->
+
 **系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 8
 
-**相关模块：** [rawfile](capi-others-rawfile.md)
+**相关模块：** [rawfile](capi-localization-kit-rawfile.md)
 
 **所在头文件：** [raw_file.h](capi-raw-file-h.md)
 

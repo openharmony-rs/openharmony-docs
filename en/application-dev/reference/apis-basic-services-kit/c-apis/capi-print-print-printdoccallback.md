@@ -8,11 +8,13 @@ typedef struct Print_PrintDocCallback {...} Print_PrintDocCallback
 
 Represents a callback for the printed document. This API can be used by native apps written in C or C++ to provide file generation and task status receiving capabilities for the print framework.
 
+<!--Device-typedef struct Print_PrintDocCallback {...} Print_PrintDocCallback--><!--Device-typedef struct Print_PrintDocCallback {...} Print_PrintDocCallback-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 13
 
-**Related module**: [Print](capi-others-print.md)
+**Related module**: [Print](capi-basic-services-kit-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 

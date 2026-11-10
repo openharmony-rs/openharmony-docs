@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBufferCopy {...}--><!--Device-struct VkBufferCopy {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -8,11 +8,13 @@ typedef struct ArkUI_RenderNode* ArkUI_RenderNodeHandle
 
 定义渲染节点指针，用于在ArkUI_RenderNodeUtils相关接口中表示和传递渲染节点对象。
 
+<!--Device-typedef struct ArkUI_RenderNode* ArkUI_RenderNodeHandle--><!--Device-typedef struct ArkUI_RenderNode* ArkUI_RenderNodeHandle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
-**相关模块：** [ArkUI_RenderNodeUtils](capi-others-arkui-rendernodeutils.md)
+**相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-arkui-rendernodeutils.md)
 
 **所在头文件：** [native_render.h](capi-native-render-h.md)
 

@@ -19,6 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_OnFrameAvailableListener](capi-oh-nativeimage-oh-onframeavailablelistener.md) | - | 一个OH_NativeImage的监听者，通过OH_NativeImage_SetOnFrameAvailableListener接口注册该监听结构体，当有buffer可获取时，将触发回调给用户。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md) | OH_NativeImage |  |
 | [NativeWindow](capi-oh-nativeimage-nativewindow.md) | OHNativeWindow | 定义结构体NativeWindow的新类型名OHNativeWindow。 |
 | [NativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md) | OHNativeWindowBuffer | 定义结构体NativeWindowBuffer的新类型名OHNativeWindowBuffer。 |
 
@@ -66,6 +67,8 @@ typedef void (*OH_OnFrameAvailable)(void *context)
 
 有buffer可获取时触发的回调函数。
 
+<!--Device-typedef void (*OH_OnFrameAvailable)(void *context)--><!--Device-typedef void (*OH_OnFrameAvailable)(void *context)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 11
@@ -86,6 +89,8 @@ OH_NativeImage* OH_NativeImage_Create(uint32_t textureId, uint32_t textureTarget
 
 创建一个OH_NativeImage实例，该实例与OpenGL ES的纹理ID和纹理目标相关联。 本接口需要与OH_NativeImage_Destroy接口配合使用，否则会存在内存泄露。 本接口为非线程安全类型接口。
 
+<!--Device-OH_NativeImage* OH_NativeImage_Create(uint32_t textureId, uint32_t textureTarget)--><!--Device-OH_NativeImage* OH_NativeImage_Create(uint32_t textureId, uint32_t textureTarget)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 9
@@ -101,7 +106,7 @@ OH_NativeImage* OH_NativeImage_Create(uint32_t textureId, uint32_t textureTarget
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_NativeImage* | 创建成功则返回一个指向OH_NativeImage实例的指针，否则返回NULL。 |
+| [OH_NativeImage*](capi-oh-nativeimage-oh-nativeimage.md) | 创建成功则返回一个指向OH_NativeImage实例的指针，否则返回NULL。 |
 
 ### OH_NativeImage_AcquireNativeWindow()
 
@@ -113,6 +118,8 @@ OHNativeWindow* OH_NativeImage_AcquireNativeWindow(OH_NativeImage* image)
 
 获取与OH_NativeImage相关联的OHNativeWindow指针。 本接口为非线程安全类型接口。
 
+<!--Device-OHNativeWindow* OH_NativeImage_AcquireNativeWindow(OH_NativeImage* image)--><!--Device-OHNativeWindow* OH_NativeImage_AcquireNativeWindow(OH_NativeImage* image)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 9
@@ -121,7 +128,7 @@ OHNativeWindow* OH_NativeImage_AcquireNativeWindow(OH_NativeImage* image)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 
 **返回值：**
 
@@ -139,6 +146,8 @@ int32_t OH_NativeImage_AttachContext(OH_NativeImage* image, uint32_t textureId)
 
 将OH_NativeImage实例附加到当前OpenGL ES上下文，且该OpenGL ES纹理会绑定到GL_TEXTURE_EXTERNAL_OES, 并通过OH_NativeImage进行更新。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_AttachContext(OH_NativeImage* image, uint32_t textureId)--><!--Device-int32_t OH_NativeImage_AttachContext(OH_NativeImage* image, uint32_t textureId)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 9
@@ -147,7 +156,7 @@ int32_t OH_NativeImage_AttachContext(OH_NativeImage* image, uint32_t textureId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | uint32_t textureId | OH_NativeImage要附加到的OpenGL ES纹理的id。 |
 
 **返回值：**
@@ -166,6 +175,8 @@ int32_t OH_NativeImage_DetachContext(OH_NativeImage* image)
 
 将OH_NativeImage实例从当前OpenGL ES上下文分离。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_DetachContext(OH_NativeImage* image)--><!--Device-int32_t OH_NativeImage_DetachContext(OH_NativeImage* image)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 9
@@ -174,7 +185,7 @@ int32_t OH_NativeImage_DetachContext(OH_NativeImage* image)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 
 **返回值：**
 
@@ -192,6 +203,8 @@ int32_t OH_NativeImage_UpdateSurfaceImage(OH_NativeImage* image)
 
 通过OH_NativeImage获取最新帧更新相关联的OpenGL ES纹理。 本接口需要在OpenGL ES环境上下文的线程中调用。 本接口需要在接收到OH_OnFrameAvailableListener回调后调用。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_UpdateSurfaceImage(OH_NativeImage* image)--><!--Device-int32_t OH_NativeImage_UpdateSurfaceImage(OH_NativeImage* image)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 9
@@ -200,7 +213,7 @@ int32_t OH_NativeImage_UpdateSurfaceImage(OH_NativeImage* image)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 
 **返回值：**
 
@@ -218,6 +231,8 @@ int64_t OH_NativeImage_GetTimestamp(OH_NativeImage* image)
 
 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的相关时间戳。 本接口为非线程安全类型接口。
 
+<!--Device-int64_t OH_NativeImage_GetTimestamp(OH_NativeImage* image)--><!--Device-int64_t OH_NativeImage_GetTimestamp(OH_NativeImage* image)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 9
@@ -226,7 +241,7 @@ int64_t OH_NativeImage_GetTimestamp(OH_NativeImage* image)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 
 **返回值：**
 
@@ -244,6 +259,8 @@ int32_t OH_NativeImage_GetTransformMatrix(OH_NativeImage* image, float matrix[16
 
 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的变化矩阵。
 
+<!--Device-int32_t OH_NativeImage_GetTransformMatrix(OH_NativeImage* image, float matrix[16])--><!--Device-int32_t OH_NativeImage_GetTransformMatrix(OH_NativeImage* image, float matrix[16])-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 9
@@ -256,7 +273,7 @@ int32_t OH_NativeImage_GetTransformMatrix(OH_NativeImage* image, float matrix[16
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | float matrix[16] | 用来存储要获取的4*4的变化矩阵。 |
 
 **返回值：**
@@ -275,6 +292,8 @@ int32_t OH_NativeImage_GetSurfaceId(OH_NativeImage* image, uint64_t* surfaceId)
 
 获取OH_NativeImage的surface编号。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_GetSurfaceId(OH_NativeImage* image, uint64_t* surfaceId)--><!--Device-int32_t OH_NativeImage_GetSurfaceId(OH_NativeImage* image, uint64_t* surfaceId)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 11
@@ -283,7 +302,7 @@ int32_t OH_NativeImage_GetSurfaceId(OH_NativeImage* image, uint64_t* surfaceId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | uint64_t* surfaceId | 是指向surface编号的指针。 |
 
 **返回值：**
@@ -302,6 +321,8 @@ int32_t OH_NativeImage_SetOnFrameAvailableListener(OH_NativeImage* image, OH_OnF
 
 设置帧可用回调。 不允许在回调函数中调用本模块的其他接口。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_SetOnFrameAvailableListener(OH_NativeImage* image, OH_OnFrameAvailableListener listener)--><!--Device-int32_t OH_NativeImage_SetOnFrameAvailableListener(OH_NativeImage* image, OH_OnFrameAvailableListener listener)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 11
@@ -310,7 +331,7 @@ int32_t OH_NativeImage_SetOnFrameAvailableListener(OH_NativeImage* image, OH_OnF
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | [OH_OnFrameAvailableListener](capi-oh-nativeimage-oh-onframeavailablelistener.md) listener | 表示回调监听者。 |
 
 **返回值：**
@@ -329,6 +350,8 @@ int32_t OH_NativeImage_UnsetOnFrameAvailableListener(OH_NativeImage* image)
 
 取消设置帧可用回调。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_UnsetOnFrameAvailableListener(OH_NativeImage* image)--><!--Device-int32_t OH_NativeImage_UnsetOnFrameAvailableListener(OH_NativeImage* image)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 11
@@ -337,7 +360,7 @@ int32_t OH_NativeImage_UnsetOnFrameAvailableListener(OH_NativeImage* image)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 
 **返回值：**
 
@@ -355,6 +378,8 @@ void OH_NativeImage_Destroy(OH_NativeImage** image)
 
 销毁通过OH_NativeImage_Create创建的OH_NativeImage实例，销毁后该OH_NativeImage指针会被赋值为空。 并将对应OHNativeWindow引用计数减一。 本接口为非线程安全类型接口。
 
+<!--Device-void OH_NativeImage_Destroy(OH_NativeImage** image)--><!--Device-void OH_NativeImage_Destroy(OH_NativeImage** image)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 9
@@ -363,7 +388,7 @@ void OH_NativeImage_Destroy(OH_NativeImage** image)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage** image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)** image | 指向OH_NativeImage实例的指针。 |
 
 ### OH_NativeImage_GetTransformMatrixV2()
 
@@ -375,6 +400,8 @@ int32_t OH_NativeImage_GetTransformMatrixV2(OH_NativeImage* image, float matrix[
 
 根据生产端设置的旋转角度，获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的变化矩阵。 matrix在OH_NativeImage_UpdateSurfaceImage接口调用后，才会更新。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_GetTransformMatrixV2(OH_NativeImage* image, float matrix[16])--><!--Device-int32_t OH_NativeImage_GetTransformMatrixV2(OH_NativeImage* image, float matrix[16])-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 12
@@ -383,7 +410,7 @@ int32_t OH_NativeImage_GetTransformMatrixV2(OH_NativeImage* image, float matrix[
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | float matrix[16] | 用来存储要获取的4*4的变化矩阵。 |
 
 **返回值：**
@@ -402,6 +429,8 @@ int32_t OH_NativeImage_GetBufferMatrix(OH_NativeImage* image, float matrix[16])
 
 获取根据生产端设置的旋转角度和buffer实际有效内容区域计算出的变换矩阵。<br> 本接口返回一个变换矩阵，该矩阵是OH_NativeImage在消费buffer，即调用 OH_NativeImage_UpdateSurfaceImage或者OH_NativeImage_AcquireNativeWindowBuffer时， 根据buffer的旋转角度和实际有效内容区域计算所得。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_GetBufferMatrix(OH_NativeImage* image, float matrix[16])--><!--Device-int32_t OH_NativeImage_GetBufferMatrix(OH_NativeImage* image, float matrix[16])-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 15
@@ -410,7 +439,7 @@ int32_t OH_NativeImage_GetBufferMatrix(OH_NativeImage* image, float matrix[16])
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | float matrix[16] | 用于存储获取的4*4变换矩阵。 |
 
 **返回值：**
@@ -429,6 +458,8 @@ int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image, OHNative
 
 通过消费端的OH_NativeImage获取一个OHNativeWindowBuffer。 本接口不能与OH_NativeImage_UpdateSurfaceImage接口同时使用。 本接口将会创建一个OHNativeWindowBuffer。 当使用OHNativeWindowBuffer时，用户需要通过OH_NativeWindow_NativeObjectReference接口将其引用计数加一。 当OHNativeWindowBuffer使用完，用户需要通过OH_NativeWindow_NativeObjectUnreference接口将其引用计数减一。 本接口需要和OH_NativeImage_ReleaseNativeWindowBuffer接口配合使用，否则会存在内存泄露。 当fenceFd使用完，用户需要将其close。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image, OHNativeWindowBuffer** nativeWindowBuffer, int* fenceFd)--><!--Device-int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image, OHNativeWindowBuffer** nativeWindowBuffer, int* fenceFd)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 12
@@ -437,7 +468,7 @@ int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image, OHNative
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)** nativeWindowBuffer | 指向OHNativeWindowBuffer指针的指针。 |
 | int* fenceFd | 指向文件描述符句柄的指针。 |
 
@@ -457,6 +488,8 @@ int32_t OH_NativeImage_ReleaseNativeWindowBuffer(OH_NativeImage* image, OHNative
 
 通过OH_NativeImage实例将OHNativeWindowBuffer归还到buffer队列中。 系统会将fenceFd关闭，无需用户close。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_ReleaseNativeWindowBuffer(OH_NativeImage* image, OHNativeWindowBuffer* nativeWindowBuffer, int fenceFd)--><!--Device-int32_t OH_NativeImage_ReleaseNativeWindowBuffer(OH_NativeImage* image, OHNativeWindowBuffer* nativeWindowBuffer, int fenceFd)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 12
@@ -465,7 +498,7 @@ int32_t OH_NativeImage_ReleaseNativeWindowBuffer(OH_NativeImage* image, OHNative
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)* nativeWindowBuffer | 指向OHNativeWindowBuffer实例的指针。 |
 | int fenceFd | 指向文件描述符句柄，用于并发同步控制。 |
 
@@ -485,6 +518,8 @@ OH_NativeImage* OH_ConsumerSurface_Create(void)
 
 创建一个OH_NativeImage实例，作为surface的消费端。 本接口仅用于surface消费端的内存轮转，创建的OH_NativeImage内部不会主动进行内存渲染处理。 本接口不能与OH_NativeImage_UpdateSurfaceImage接口同时使用。 本接口与OH_NativeImage_AcquireNativeWindowBuffer和OH_NativeImage_ReleaseNativeWindowBuffer配合使用。 本接口需要和OH_NativeImage_Destroy接口配合使用，否则会存在内存泄露。 本接口为非线程安全类型接口。
 
+<!--Device-OH_NativeImage* OH_ConsumerSurface_Create(void)--><!--Device-OH_NativeImage* OH_ConsumerSurface_Create(void)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 12
@@ -493,7 +528,7 @@ OH_NativeImage* OH_ConsumerSurface_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_NativeImage* | 成功则返回一个指向OH_NativeImage实例的指针，否则返回NULL。 |
+| [OH_NativeImage*](capi-oh-nativeimage-oh-nativeimage.md) | 成功则返回一个指向OH_NativeImage实例的指针，否则返回NULL。 |
 
 ### OH_ConsumerSurface_SetDefaultUsage()
 
@@ -505,6 +540,8 @@ int32_t OH_ConsumerSurface_SetDefaultUsage(OH_NativeImage* image, uint64_t usage
 
 设置默认读写方式。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_ConsumerSurface_SetDefaultUsage(OH_NativeImage* image, uint64_t usage)--><!--Device-int32_t OH_ConsumerSurface_SetDefaultUsage(OH_NativeImage* image, uint64_t usage)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 13
@@ -513,7 +550,7 @@ int32_t OH_ConsumerSurface_SetDefaultUsage(OH_NativeImage* image, uint64_t usage
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | uint64_t usage | 表示读写方式。枚举值参考OH_NativeBuffer_Usage。 |
 
 **返回值：**
@@ -532,6 +569,8 @@ int32_t OH_ConsumerSurface_SetDefaultSize(OH_NativeImage* image, int32_t width, 
 
 设置几何图形默认尺寸。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_ConsumerSurface_SetDefaultSize(OH_NativeImage* image, int32_t width, int32_t height)--><!--Device-int32_t OH_ConsumerSurface_SetDefaultSize(OH_NativeImage* image, int32_t width, int32_t height)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 13
@@ -540,7 +579,7 @@ int32_t OH_ConsumerSurface_SetDefaultSize(OH_NativeImage* image, int32_t width, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | int32_t width | 表示几何图形宽度，取值范围大于0，单位为像素。 |
 | int32_t height | 表示几何图形高度，取值范围大于0，单位为像素。 |
 
@@ -560,6 +599,8 @@ int32_t OH_NativeImage_SetDropBufferMode(OH_NativeImage* image, bool isOpen)
 
 设置OH_NativeImage是否为渲染丢帧模式。 处于此模式时，大部分生产端生产的buffer将会被丢弃，最新的buffer会及时上屏渲染。 此模式不能同时保证帧率高的要求。 此接口建议在OH_NativeImage_Create接口调用后立即调用。 此接口在与OH_NativeImage_UpdateSurfaceImage接口一起使用的场景下才会生效。 通过OH_NativeImage_SetOnFrameAvailableListener设置的listener回调不会因为设置了丢帧模式而减少。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_SetDropBufferMode(OH_NativeImage* image, bool isOpen)--><!--Device-int32_t OH_NativeImage_SetDropBufferMode(OH_NativeImage* image, bool isOpen)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 17
@@ -568,7 +609,7 @@ int32_t OH_NativeImage_SetDropBufferMode(OH_NativeImage* image, bool isOpen)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | bool isOpen | 是否设置渲染丢帧。true表示设置为渲染丢帧模式，false表示不设置。 |
 
 **返回值：**
@@ -587,6 +628,8 @@ OH_NativeImage* OH_NativeImage_CreateWithSingleBufferMode(uint32_t textureId, ui
 
 使用纹理ID创建一个OH_NativeImage实例，该实例与OpenGL ES的纹理ID和纹理目标相关联，并选择是否设置单buffer模式。
 
+<!--Device-OH_NativeImage* OH_NativeImage_CreateWithSingleBufferMode(uint32_t textureId, uint32_t textureTarget, bool singleBufferMode)--><!--Device-OH_NativeImage* OH_NativeImage_CreateWithSingleBufferMode(uint32_t textureId, uint32_t textureTarget, bool singleBufferMode)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 22
@@ -603,7 +646,7 @@ OH_NativeImage* OH_NativeImage_CreateWithSingleBufferMode(uint32_t textureId, ui
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_NativeImage* | 创建成功则返回一个指向OH_NativeImage实例的指针，否则返回NULL。 |
+| [OH_NativeImage*](capi-oh-nativeimage-oh-nativeimage.md) | 创建成功则返回一个指向OH_NativeImage实例的指针，否则返回NULL。 |
 
 ### OH_ConsumerSurface_CreateWithSingleBufferMode()
 
@@ -614,6 +657,8 @@ OH_NativeImage* OH_ConsumerSurface_CreateWithSingleBufferMode(bool singleBufferM
 **描述：**
 
 不使用纹理ID创建一个OH_NativeImage实例，作为surface的消费端，并选择是否设置单buffer模式。 本接口仅用于surface消费端的内存轮转，创建的OH_NativeImage内部不会主动进行内存渲染处理。 本接口不能与OH_NativeImage_UpdateSurfaceImage接口同时使用。 本接口需要和OH_NativeImage_Destroy接口配合使用，否则会存在内存泄露。
+
+<!--Device-OH_NativeImage* OH_ConsumerSurface_CreateWithSingleBufferMode(bool singleBufferMode)--><!--Device-OH_NativeImage* OH_ConsumerSurface_CreateWithSingleBufferMode(bool singleBufferMode)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
@@ -629,7 +674,7 @@ OH_NativeImage* OH_ConsumerSurface_CreateWithSingleBufferMode(bool singleBufferM
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_NativeImage* | 成功则返回一个指向OH_NativeImage实例的指针，否则返回NULL。 |
+| [OH_NativeImage*](capi-oh-nativeimage-oh-nativeimage.md) | 成功则返回一个指向OH_NativeImage实例的指针，否则返回NULL。 |
 
 ### OH_NativeImage_ReleaseTextImage()
 
@@ -641,6 +686,8 @@ int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)
 
 解除SurfaceBuffer与纹理的绑定，将纹理恢复到未使用状态。 单buffer模式下，需要调用该接口释放纹理，否则生产者下次无法申请buffer。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)--><!--Device-int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 22
@@ -649,7 +696,7 @@ int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 
 **返回值：**
 
@@ -667,6 +714,8 @@ int32_t OH_NativeImage_GetColorSpace(OH_NativeImage* image, OH_NativeBuffer_Colo
 
 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的相关色彩空间。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_GetColorSpace(OH_NativeImage* image, OH_NativeBuffer_ColorSpace* colorSpace)--><!--Device-int32_t OH_NativeImage_GetColorSpace(OH_NativeImage* image, OH_NativeBuffer_ColorSpace* colorSpace)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 22
@@ -675,7 +724,7 @@ int32_t OH_NativeImage_GetColorSpace(OH_NativeImage* image, OH_NativeBuffer_Colo
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | [OH_NativeBuffer_ColorSpace](capi-buffer-common-h.md#oh_nativebuffer_colorspace)* colorSpace | 为OH_NativeImage设置的颜色空间，其值从OH_NativeBuffer_ColorSpace获取。 |
 
 **返回值：**
@@ -694,6 +743,8 @@ int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OH
 
 通过消费端的OH_NativeImage获取一个生产者最近生产的OHNativeWindowBuffer，并将其余buffer丢弃。 消费端可以通过OH_OnFrameAvailableListener注册的回调，收到所有可用buffer（包括被丢弃的buffer）的回调。 本接口不能与OH_NativeImage_UpdateSurfaceImage接口同时使用。 本接口将会创建一个OHNativeWindowBuffer。 如果在调用OH_NativeImage_ReleaseNativeWindowBuffer之后还在使用OHNativeWindowBuffer的情况，需要注意以下两点。 1) 当使用OHNativeWindowBuffer时，用户需要通过OH_NativeWindow_NativeObjectReference接口将其引用计数加一。 2) 当OHNativeWindowBuffer使用完，用户需要通过OH_NativeWindow_NativeObjectUnreference接口将其引用计数减一。 本接口需要和OH_NativeImage_ReleaseNativeWindowBuffer接口配合使用，否则会存在内存泄露。 当fenceFd使用完，用户需要将其close。
 
+<!--Device-int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OHNativeWindowBuffer** nativeWindowBuffer, int* fenceFd)--><!--Device-int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OHNativeWindowBuffer** nativeWindowBuffer, int* fenceFd)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 22
@@ -702,7 +753,7 @@ int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OH
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | [OHNativeWindowBuffer](capi-oh-nativeimage-nativewindowbuffer.md)** nativeWindowBuffer | 指向OHNativeWindowBuffer的二级指针。 |
 | int* fenceFd | 指向文件描述符句柄的指针。 |
 
@@ -722,6 +773,8 @@ int32_t OH_NativeImage_IsReleased(OH_NativeImage* image, bool* isReleased)
 
 查询与OH_NativeImage关联的纹理是否已释放。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_IsReleased(OH_NativeImage* image, bool* isReleased)--><!--Device-int32_t OH_NativeImage_IsReleased(OH_NativeImage* image, bool* isReleased)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 23
@@ -730,7 +783,7 @@ int32_t OH_NativeImage_IsReleased(OH_NativeImage* image, bool* isReleased)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 | bool* isReleased | 纹理是否已释放。true表示纹理已释放，false表示纹理未释放，作为出参使用。 |
 
 **返回值：**
@@ -749,6 +802,8 @@ int32_t OH_NativeImage_Release(OH_NativeImage* image)
 
 清除所有OHNativeWindow的OHNativeWindowBuffer缓存，并将OH_NativeImage从OpenGL ES上下文中分离。 本接口为非线程安全类型接口。
 
+<!--Device-int32_t OH_NativeImage_Release(OH_NativeImage* image)--><!--Device-int32_t OH_NativeImage_Release(OH_NativeImage* image)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
 
 **起始版本：** 23
@@ -757,7 +812,7 @@ int32_t OH_NativeImage_Release(OH_NativeImage* image)
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_NativeImage* image | 指向OH_NativeImage实例的指针。 |
+| [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)* image | 指向OH_NativeImage实例的指针。 |
 
 **返回值：**
 

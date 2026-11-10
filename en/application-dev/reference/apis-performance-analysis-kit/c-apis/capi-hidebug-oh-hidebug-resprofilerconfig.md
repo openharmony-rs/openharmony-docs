@@ -8,11 +8,13 @@ struct OH_HiDebug_ResProfilerConfig {...}
 
 Defines a struct for the resource collection configurations.
 
+<!--Device-struct OH_HiDebug_ResProfilerConfig {...}--><!--Device-struct OH_HiDebug_ResProfilerConfig {...}-End-->
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 24
 
-**Related module**: [HiDebug](capi-others-hidebug.md)
+**Related module**: [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **Header file**: [hidebug_type.h](capi-hidebug-type-h.md)
 

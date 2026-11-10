@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkAmigoProfilingSubmitInfoSEC {...}--><!--Device-struct VkAmigoProfilingSubmitInfoSEC {...}-End-->
+
 ## Summary
 
 ### Member variables

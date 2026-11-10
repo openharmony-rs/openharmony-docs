@@ -54,6 +54,8 @@ enum WindowManager_ErrorCode
 
 Enumerates the status codes returned by the window manager interface.
 
+<!--Device-WindowManager_ErrorCode--><!--Device-WindowManager_ErrorCode-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 12
@@ -86,6 +88,8 @@ enum WindowManager_AvoidAreaType
 
 Enumerates the avoid area types.
 
+<!--Device-WindowManager_AvoidAreaType--><!--Device-WindowManager_AvoidAreaType-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
@@ -107,6 +111,8 @@ enum WindowManager_WindowType
 **Description**
 
 Enumerates the window types.
+
+<!--Device-WindowManager_WindowType--><!--Device-WindowManager_WindowType-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -132,6 +138,8 @@ typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, 
 
 Frame metrics callback type.
 
+<!--Device-typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)--><!--Device-typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 26.0.0
@@ -145,6 +153,8 @@ typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_
 **Description**
 
 Density info callback type.
+
+<!--Device-typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)--><!--Device-typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 

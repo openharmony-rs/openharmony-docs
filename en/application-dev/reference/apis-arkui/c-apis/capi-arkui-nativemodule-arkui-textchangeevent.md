@@ -8,11 +8,13 @@ typedef struct ArkUI_TextChangeEvent {...} ArkUI_TextChangeEvent
 
 Defines a text change event, which is used to listen for and handle text changes in text input scenarios. This struct contains the text content, extended information, and numeric parameters, allowing you to obtain text change data in real time. It applies to scenarios such as input box content monitoring, real-time search, and character count.
 
+<!--Device-typedef struct ArkUI_TextChangeEvent {...} ArkUI_TextChangeEvent--><!--Device-typedef struct ArkUI_TextChangeEvent {...} ArkUI_TextChangeEvent-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [native_node.h](capi-native-node-h.md)
 

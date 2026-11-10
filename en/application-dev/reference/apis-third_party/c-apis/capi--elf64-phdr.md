@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct Elf64_Phdr {...}--><!--Device-struct Elf64_Phdr {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -32,6 +32,8 @@ enum AbilityRuntime_ErrorCode
 
 Enumerates the error codes of the AbilityRuntime module.
 
+<!--Device-AbilityRuntime_ErrorCode--><!--Device-AbilityRuntime_ErrorCode-End-->
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 13

@@ -8,11 +8,13 @@ struct FileShare_PolicyInfo {...}
 
 Define the FileShare_PolicyInfo structure type.<br> Policy information to manager permissions on a URI.
 
+<!--Device-struct FileShare_PolicyInfo {...}--><!--Device-struct FileShare_PolicyInfo {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **Since**: 12
 
-**Related module**: [fileShare](capi-others-fileshare.md)
+**Related module**: [fileShare](capi-core-file-kit-fileshare.md)
 
 **Header file**: [oh_file_share.h](capi-oh-file-share-h.md)
 

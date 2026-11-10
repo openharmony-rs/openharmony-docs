@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPipelineViewportSwizzleStateCreateInfoNV {...}--><!--Device-struct VkPipelineViewportSwizzleStateCreateInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

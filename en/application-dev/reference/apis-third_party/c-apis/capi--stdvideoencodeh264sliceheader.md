@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct StdVideoEncodeH264SliceHeader {...}--><!--Device-struct StdVideoEncodeH264SliceHeader {...}-End-->
+
 ## Summary
 
 ### Member variables

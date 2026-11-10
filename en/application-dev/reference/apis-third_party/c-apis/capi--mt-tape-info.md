@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct mt_tape_info {...}--><!--Device-struct mt_tape_info {...}-End-->
+
 ## Summary
 
 ### Member variables

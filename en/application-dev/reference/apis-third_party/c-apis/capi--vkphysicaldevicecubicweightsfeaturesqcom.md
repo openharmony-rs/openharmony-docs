@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceCubicWeightsFeaturesQCOM {...}--><!--Device-struct VkPhysicalDeviceCubicWeightsFeaturesQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

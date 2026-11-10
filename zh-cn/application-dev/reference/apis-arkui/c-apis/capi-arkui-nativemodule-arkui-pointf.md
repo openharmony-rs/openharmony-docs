@@ -8,11 +8,13 @@ typedef struct ArkUI_PointF {...} ArkUI_PointF
 
 定义一个二维坐标点结构体，用于描述组件位置或偏移等坐标信息，坐标以浮点类型存储。
 
+<!--Device-typedef struct ArkUI_PointF {...} ArkUI_PointF--><!--Device-typedef struct ArkUI_PointF {...} ArkUI_PointF-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [native_type_visual.h](capi-native-type-visual-h.md)
 

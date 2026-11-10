@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct fanotify_response {...}--><!--Device-struct fanotify_response {...}-End-->
+
 ## Summary
 
 ### Member variables

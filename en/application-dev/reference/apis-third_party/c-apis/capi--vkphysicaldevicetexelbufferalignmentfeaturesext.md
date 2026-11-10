@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT {...}--><!--Device-struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

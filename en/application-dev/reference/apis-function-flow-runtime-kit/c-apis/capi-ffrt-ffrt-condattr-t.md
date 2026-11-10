@@ -8,11 +8,13 @@ typedef struct ffrt_condattr_t {...} ffrt_condattr_t
 
 Defines the condition variable attribute structure used to store condition variable attribute information.
 
+<!--Device-typedef struct ffrt_condattr_t {...} ffrt_condattr_t--><!--Device-typedef struct ffrt_condattr_t {...} ffrt_condattr_t-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-others-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 **Header file**: [type_def.h](capi-type-def-h.md)
 

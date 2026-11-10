@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceInlineUniformBlockFeatures {...}--><!--Device-struct VkPhysicalDeviceInlineUniformBlockFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

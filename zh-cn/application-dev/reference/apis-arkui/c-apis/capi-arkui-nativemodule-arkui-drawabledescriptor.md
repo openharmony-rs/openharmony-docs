@@ -8,11 +8,13 @@ typedef struct ArkUI_DrawableDescriptor ArkUI_DrawableDescriptor
 
 定义 DrawableDescriptor 对象。
 
+<!--Device-typedef struct ArkUI_DrawableDescriptor ArkUI_DrawableDescriptor--><!--Device-typedef struct ArkUI_DrawableDescriptor ArkUI_DrawableDescriptor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**相关模块：** [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **所在头文件：** [drawable_descriptor.h](capi-drawable-descriptor-h.md)
 

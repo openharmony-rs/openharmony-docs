@@ -97,6 +97,8 @@ enum OH_Drawing_PathDirection
 
 添加闭合路径方向枚举。
 
+<!--Device-OH_Drawing_PathDirection--><!--Device-OH_Drawing_PathDirection-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -115,6 +117,8 @@ enum OH_Drawing_PathFillType
 **描述：**
 
 定义路径的填充类型枚举。
+
+<!--Device-OH_Drawing_PathFillType--><!--Device-OH_Drawing_PathFillType-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -137,6 +141,8 @@ enum OH_Drawing_PathAddMode
 
 用于指定路径添加模式的枚举类型。
 
+<!--Device-OH_Drawing_PathAddMode--><!--Device-OH_Drawing_PathAddMode-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -155,6 +161,8 @@ enum OH_Drawing_PathOpMode
 **描述：**
 
 路径操作类型枚举。
+
+<!--Device-OH_Drawing_PathOpMode--><!--Device-OH_Drawing_PathOpMode-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -177,6 +185,8 @@ enum OH_Drawing_PathMeasureMatrixFlags
 **描述：**
 
 路径测量获取相应矩阵信息维度枚举。
+
+<!--Device-OH_Drawing_PathMeasureMatrixFlags--><!--Device-OH_Drawing_PathMeasureMatrixFlags-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -201,6 +211,8 @@ OH_Drawing_Path* OH_Drawing_PathCreate(void)
 
 用于创建一个路径对象。
 
+<!--Device-OH_Drawing_Path* OH_Drawing_PathCreate(void)--><!--Device-OH_Drawing_Path* OH_Drawing_PathCreate(void)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
@@ -220,6 +232,8 @@ OH_Drawing_Path* OH_Drawing_PathCopy(OH_Drawing_Path* path)
 **描述：**
 
 用于拷贝已有路径对象，返回路径对象副本[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-OH_Drawing_Path* OH_Drawing_PathCopy(OH_Drawing_Path* path)--><!--Device-OH_Drawing_Path* OH_Drawing_PathCopy(OH_Drawing_Path* path)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -247,6 +261,8 @@ void OH_Drawing_PathDestroy(OH_Drawing_Path* path)
 
 用于销毁路径对象并回收该对象占用的内存。
 
+<!--Device-void OH_Drawing_PathDestroy(OH_Drawing_Path* path)--><!--Device-void OH_Drawing_PathDestroy(OH_Drawing_Path* path)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
@@ -266,6 +282,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathSetPath(OH_Drawing_Path* path, OH_Drawing_Pa
 **描述：**
 
 将另一个路径对象的内容设置到当前路径对象中。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathSetPath(OH_Drawing_Path* path, OH_Drawing_Path* other)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathSetPath(OH_Drawing_Path* path, OH_Drawing_Path* other)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -294,6 +312,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsEmpty(OH_Drawing_Path* path, bool* isEmpty
 
 判断一个路径对象是否为空。
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathIsEmpty(OH_Drawing_Path* path, bool* isEmpty)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathIsEmpty(OH_Drawing_Path* path, bool* isEmpty)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
@@ -320,6 +340,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsRect(OH_Drawing_Path* path, OH_Drawing_Rec
 **描述：**
 
 判断路径对象是否构成一个矩形。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathIsRect(OH_Drawing_Path* path, OH_Drawing_Rect* rect, bool* isRect)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathIsRect(OH_Drawing_Path* path, OH_Drawing_Rect* rect, bool* isRect)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -349,6 +371,8 @@ void OH_Drawing_PathMoveTo(OH_Drawing_Path* path, float x, float y)
 
 用于设置路径的起始点位置。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-void OH_Drawing_PathMoveTo(OH_Drawing_Path* path, float x, float y)--><!--Device-void OH_Drawing_PathMoveTo(OH_Drawing_Path* path, float x, float y)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
@@ -371,6 +395,8 @@ void OH_Drawing_PathLineTo(OH_Drawing_Path* path, float x, float y)
 
 用于添加一条从路径的最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的线段。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-void OH_Drawing_PathLineTo(OH_Drawing_Path* path, float x, float y)--><!--Device-void OH_Drawing_PathLineTo(OH_Drawing_Path* path, float x, float y)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
@@ -392,6 +418,8 @@ void OH_Drawing_PathArcTo(OH_Drawing_Path* path, float x1, float y1, float x2, f
 **描述：**
 
 用于给路径添加一段弧线。绘制方式为角度弧：指定一个矩形边框，其内切椭圆用于截取弧线；再指定起始角度和扫描度数， 从起始角度扫描截取的椭圆周长部分即为弧线。若路径已有内容， 则默认添加一条从路径最后点位置到弧线起始点位置的线段。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-void OH_Drawing_PathArcTo(OH_Drawing_Path* path, float x1, float y1, float x2, float y2, float startDeg, float sweepDeg)--><!--Device-void OH_Drawing_PathArcTo(OH_Drawing_Path* path, float x1, float y1, float x2, float y2, float startDeg, float sweepDeg)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -419,6 +447,8 @@ void OH_Drawing_PathQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, floa
 
 用于添加一条从路径最后点位置（若路径没有内容则默认为 (0, 0)）到目标点位置的二阶贝塞尔曲线。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-void OH_Drawing_PathQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY)--><!--Device-void OH_Drawing_PathQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
@@ -442,6 +472,8 @@ void OH_Drawing_PathConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, flo
 **描述：**
 
 在当前路径上添加一条路径最后点位置（若路径没有内容则默认为(0, 0)）到目标点位置的圆锥曲线段， 其控制点为(ctrlX, ctrlY)，结束点为(endX, endY)。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-void OH_Drawing_PathConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY, float weight)--><!--Device-void OH_Drawing_PathConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY, float weight)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -467,6 +499,8 @@ void OH_Drawing_PathCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, f
 **描述：**
 
 用于添加一条从路径最后点位置到目标点位置的三阶贝塞尔曲线。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-void OH_Drawing_PathCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, float ctrlX2, float ctrlY2, float endX, float endY)--><!--Device-void OH_Drawing_PathCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, float ctrlX2, float ctrlY2, float endX, float endY)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -494,6 +528,8 @@ void OH_Drawing_PathRMoveTo(OH_Drawing_Path* path, float x, float y)
 
 用于设置一个相对于当前路径终点（若路径没有内容则默认为 (0, 0)）的路径起始点位置。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-void OH_Drawing_PathRMoveTo(OH_Drawing_Path* path, float x, float y)--><!--Device-void OH_Drawing_PathRMoveTo(OH_Drawing_Path* path, float x, float y)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -516,6 +552,8 @@ void OH_Drawing_PathRLineTo(OH_Drawing_Path* path, float x, float y)
 
 使用相对位置在当前路径上添加一条当前路径终点（若路径没有内容则默认为 (0, 0)）到目标点位置的线段。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-void OH_Drawing_PathRLineTo(OH_Drawing_Path* path, float x, float y)--><!--Device-void OH_Drawing_PathRLineTo(OH_Drawing_Path* path, float x, float y)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -537,6 +575,8 @@ void OH_Drawing_PathRQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, flo
 **描述：**
 
 使用相对位置在当前路径上添加一条当前路径终点（若路径没有内容则默认为 (0, 0)）到目标点位置的二阶贝塞尔曲线。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-void OH_Drawing_PathRQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY)--><!--Device-void OH_Drawing_PathRQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -562,6 +602,8 @@ void OH_Drawing_PathRConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, fl
 
 使用相对位置在当前路径上添加一条路径最后点位置（若路径没有内容则默认为(0, 0)）到目标点位置的圆锥曲线段。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-void OH_Drawing_PathRConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY, float weight)--><!--Device-void OH_Drawing_PathRConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY, float weight)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -586,6 +628,8 @@ void OH_Drawing_PathRCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, 
 **描述：**
 
 使用相对位置在当前路径上添加一条当前路径终点（若路径没有内容则默认为(0, 0)）到目标点位置的三阶贝塞尔曲线。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-void OH_Drawing_PathRCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, float ctrlX2, float ctrlY2, float endX, float endY)--><!--Device-void OH_Drawing_PathRCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, float ctrlX2, float ctrlY2, float endX, float endY)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -613,6 +657,8 @@ void OH_Drawing_PathAddRect(OH_Drawing_Path* path, float left, float top, float 
 
 按指定方向，将矩形添加到路径中，该矩形轮廓的起始点为矩形左上角。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>pathDirection不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+<!--Device-void OH_Drawing_PathAddRect(OH_Drawing_Path* path, float left, float top, float right, float bottom, OH_Drawing_PathDirection pathDirection)--><!--Device-void OH_Drawing_PathAddRect(OH_Drawing_Path* path, float left, float top, float right, float bottom, OH_Drawing_PathDirection pathDirection)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -638,6 +684,8 @@ void OH_Drawing_PathAddRectWithInitialCorner(OH_Drawing_Path* path, const OH_Dra
 
 按指定方向，向路径添加矩形轮廓。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>pathDirection不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+<!--Device-void OH_Drawing_PathAddRectWithInitialCorner(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, OH_Drawing_PathDirection pathDirection, uint32_t start)--><!--Device-void OH_Drawing_PathAddRectWithInitialCorner(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, OH_Drawing_PathDirection pathDirection, uint32_t start)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -661,6 +709,8 @@ void OH_Drawing_PathAddRoundRect(OH_Drawing_Path* path, const OH_Drawing_RoundRe
 
 按指定方向，向路径添加圆角矩形轮廓。路径添加方向为顺时针时，起始点位于圆角矩形左下方圆角与左边界的交点；路径添加方向为逆时针时，起始点位于圆角矩形左上方圆角与左边界的交点。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、roundRect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>pathDirection不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+<!--Device-void OH_Drawing_PathAddRoundRect(OH_Drawing_Path* path, const OH_Drawing_RoundRect* roundRect, OH_Drawing_PathDirection pathDirection)--><!--Device-void OH_Drawing_PathAddRoundRect(OH_Drawing_Path* path, const OH_Drawing_RoundRect* roundRect, OH_Drawing_PathDirection pathDirection)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -682,6 +732,8 @@ void OH_Drawing_PathAddOvalWithInitialPoint(OH_Drawing_Path* path, const OH_Draw
 **描述：**
 
 将椭圆添加到路径中，其中矩形对象作为椭圆的外切矩形区域，绘制方向用来指定绘制时是顺时针或者逆时针方向。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>pathDirection不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+<!--Device-void OH_Drawing_PathAddOvalWithInitialPoint(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, uint32_t start, OH_Drawing_PathDirection pathDirection)--><!--Device-void OH_Drawing_PathAddOvalWithInitialPoint(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, uint32_t start, OH_Drawing_PathDirection pathDirection)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -706,6 +758,8 @@ void OH_Drawing_PathAddOval(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, 
 
 按指定方向，向路径添加椭圆，其中矩形对象作为椭圆的外切矩形区域。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>pathDirection不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+<!--Device-void OH_Drawing_PathAddOval(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, OH_Drawing_PathDirection pathDirection)--><!--Device-void OH_Drawing_PathAddOval(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, OH_Drawing_PathDirection pathDirection)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -727,6 +781,8 @@ void OH_Drawing_PathAddArc(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, f
 **描述：**
 
 将圆弧添加到路径中，作为新轮廓的起点。从起始角度开始，按扫描度数添加弧，添加的弧是矩形内切椭圆的一部分。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-void OH_Drawing_PathAddArc(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, float startAngle, float sweepAngle)--><!--Device-void OH_Drawing_PathAddArc(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, float startAngle, float sweepAngle)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -751,6 +807,8 @@ void OH_Drawing_PathAddPath(OH_Drawing_Path* path, const OH_Drawing_Path* src, c
 
 将源路径矩阵变换后，添加到当前路径中。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、src任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-void OH_Drawing_PathAddPath(OH_Drawing_Path* path, const OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix)--><!--Device-void OH_Drawing_PathAddPath(OH_Drawing_Path* path, const OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -772,6 +830,8 @@ void OH_Drawing_PathAddPathWithMatrixAndMode(OH_Drawing_Path* path, const OH_Dra
 **描述：**
 
 将源路径矩阵变换后，以规定模式添加到当前路径中。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、src任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>pathAddMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+<!--Device-void OH_Drawing_PathAddPathWithMatrixAndMode(OH_Drawing_Path* path, const OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix, OH_Drawing_PathAddMode pathAddMode)--><!--Device-void OH_Drawing_PathAddPathWithMatrixAndMode(OH_Drawing_Path* path, const OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix, OH_Drawing_PathAddMode pathAddMode)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -796,6 +856,8 @@ void OH_Drawing_PathAddPathWithMode(OH_Drawing_Path* path, const OH_Drawing_Path
 
 将源路径以规定模式添加到当前路径中。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、src任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>pathAddMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+<!--Device-void OH_Drawing_PathAddPathWithMode(OH_Drawing_Path* path, const OH_Drawing_Path* src, OH_Drawing_PathAddMode pathAddMode)--><!--Device-void OH_Drawing_PathAddPathWithMode(OH_Drawing_Path* path, const OH_Drawing_Path* src, OH_Drawing_PathAddMode pathAddMode)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -817,6 +879,8 @@ void OH_Drawing_PathAddPathWithOffsetAndMode(OH_Drawing_Path* path, const OH_Dra
 **描述：**
 
 将源路径偏移后，以规定模式添加到当前路径中。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、src任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>pathAddMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+<!--Device-void OH_Drawing_PathAddPathWithOffsetAndMode(OH_Drawing_Path* path, const OH_Drawing_Path* src, float dx, float dy, OH_Drawing_PathAddMode pathAddMode)--><!--Device-void OH_Drawing_PathAddPathWithOffsetAndMode(OH_Drawing_Path* path, const OH_Drawing_Path* src, float dx, float dy, OH_Drawing_PathAddMode pathAddMode)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -842,6 +906,8 @@ void OH_Drawing_PathAddPolygon(OH_Drawing_Path* path, const OH_Drawing_Point2D* 
 
 向路径添加多边形。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、points任意一个为NULL或者count等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-void OH_Drawing_PathAddPolygon(OH_Drawing_Path* path, const OH_Drawing_Point2D* points, uint32_t count, bool isClosed)--><!--Device-void OH_Drawing_PathAddPolygon(OH_Drawing_Path* path, const OH_Drawing_Point2D* points, uint32_t count, bool isClosed)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -864,6 +930,8 @@ void OH_Drawing_PathAddCircle(OH_Drawing_Path* path, float x, float y, float rad
 **描述：**
 
 按指定方向，向路径添加圆形。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>radius小于等于0时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE； <br>pathDirection不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+<!--Device-void OH_Drawing_PathAddCircle(OH_Drawing_Path* path, float x, float y, float radius, OH_Drawing_PathDirection pathDirection)--><!--Device-void OH_Drawing_PathAddCircle(OH_Drawing_Path* path, float x, float y, float radius, OH_Drawing_PathDirection pathDirection)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -888,6 +956,8 @@ bool OH_Drawing_PathBuildFromSvgString(OH_Drawing_Path* path, const char* str)
 **描述：**
 
 解析SVG字符串表示的路径。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、str任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-bool OH_Drawing_PathBuildFromSvgString(OH_Drawing_Path* path, const char* str)--><!--Device-bool OH_Drawing_PathBuildFromSvgString(OH_Drawing_Path* path, const char* str)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -915,6 +985,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathConvertToSvgString(const OH_Drawing_Path* pa
 **描述：**
 
 将路径转换为SVG路径数据字符串。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathConvertToSvgString(const OH_Drawing_Path* path, char* str, size_t* strSize)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathConvertToSvgString(const OH_Drawing_Path* path, char* str, size_t* strSize)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -944,6 +1016,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetPointData(const OH_Drawing_Path* path, OH
 
 获取路径的点数据。 <br>在路径（path）图元中，点数据以数值序列的形式存在，与verb指令一一对应，用来精确指定绘图操作的几何坐标位置。 <br>点数据的主要类型包括如下： <ul> <li>终点坐标：[OH_Drawing_PathMoveTo](capi-drawing-path-h.md#oh_drawing_pathmoveto)、[OH_Drawing_PathLineTo](capi-drawing-path-h.md#oh_drawing_pathlineto)等指令配合，定义线段或移动的目标位置。</li> <li>控制点坐标：与曲线指令配合，用于定义贝塞尔曲线的形状（如三阶贝塞尔曲线需要两个控制点和一个终点）。</li> <li>闭合点：通常不单独提供坐标，由[OH_Drawing_PathClose](capi-drawing-path-h.md#oh_drawing_pathclose)指令隐式使用路径起点。</li> </ul>
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathGetPointData(const OH_Drawing_Path* path, OH_Drawing_Point2D* points, uint32_t* count)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathGetPointData(const OH_Drawing_Path* path, OH_Drawing_Point2D* points, uint32_t* count)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 26.0.0
@@ -971,6 +1045,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetVerbData(const OH_Drawing_Path* path, OH_
 **描述：**
 
 获取路径的指令数据(verb)。在路径（path）图元中，指令数据verb用于描述路径构造过程中的基本绘图动作。 <br>指令数据以枚举的形式存在，每个取值对应一种几何操作类型，例如： <ul> <li>[OH_Drawing_PathMoveTo](capi-drawing-path-h.md#oh_drawing_pathmoveto)：将当前绘图点移至指定坐标，不产生线段。</li> <li>[OH_Drawing_PathLineTo](capi-drawing-path-h.md#oh_drawing_pathlineto)：从当前点向指定点绘制直线段。</li> <li>[OH_Drawing_PathQuadTo](capi-drawing-path-h.md#oh_drawing_pathquadto)：从当前点向指定点绘制二阶贝塞尔曲线。</li> </ul>
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathGetVerbData(const OH_Drawing_Path* path, OH_Drawing_PathIteratorVerb* verbs, uint32_t* count)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathGetVerbData(const OH_Drawing_Path* path, OH_Drawing_PathIteratorVerb* verbs, uint32_t* count)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1000,6 +1076,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetConicWeightData(const OH_Drawing_Path* pa
 
 获取路径的圆锥曲线权重数据。 <br>路径的圆锥曲线权重数据用于描述路径中圆锥曲线的权重信息。 <br>在路径（path）图元中，圆锥曲线数据采用有理贝塞尔曲线（Rational Bézier Curve）形式表示， 其中每个控制点附带一个权重值（weight）。权重属于曲线定义的几何参数，作用如下： <ul> <li>形状调控：权重值越大，曲线越靠近对应控制点；权重为1时退化为标准贝塞尔曲线；权重为0时该控制点不起作用。</li> <li>精确表示圆锥曲线：通过组合权重与二次贝塞尔曲线，可以精确表示圆弧、椭圆弧、抛物线等圆锥曲线段，无需使用分段逼近或专用椭圆弧指令。</li> <li>数据组织：权重通常以数组形式与点数据并列，按顺序对应每个控制点，与相应的指令verb（如[OH_Drawing_PathConicTo](capi-drawing-path-h.md#oh_drawing_pathconicto)）配合使用。</li> </ul>
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathGetConicWeightData(const OH_Drawing_Path* path, float* conicWeights, uint32_t* count)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathGetConicWeightData(const OH_Drawing_Path* path, float* conicWeights, uint32_t* count)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 26.0.0
@@ -1027,6 +1105,8 @@ bool OH_Drawing_PathContains(OH_Drawing_Path* path, float x, float y)
 **描述：**
 
 判断指定坐标点是否被路径包含，判定规则参考[OH_Drawing_PathFillType](capi-drawing-path-h.md#oh_drawing_pathfilltype)。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-bool OH_Drawing_PathContains(OH_Drawing_Path* path, float x, float y)--><!--Device-bool OH_Drawing_PathContains(OH_Drawing_Path* path, float x, float y)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1056,6 +1136,8 @@ void OH_Drawing_PathTransform(OH_Drawing_Path* path, const OH_Drawing_Matrix* ma
 
 对路径进行矩阵变换，变换结果直接修改当前路径对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、matrix任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-void OH_Drawing_PathTransform(OH_Drawing_Path* path, const OH_Drawing_Matrix* matrix)--><!--Device-void OH_Drawing_PathTransform(OH_Drawing_Path* path, const OH_Drawing_Matrix* matrix)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -1076,6 +1158,8 @@ void OH_Drawing_PathTransformWithPerspectiveClip(OH_Drawing_Path* src, const OH_
 **描述：**
 
 对路径进行矩阵变换。用转换后的路径替换目标路径，如果目标路径为NULL，则替换源路径。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>src、matrix任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-void OH_Drawing_PathTransformWithPerspectiveClip(OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix, OH_Drawing_Path* dst, bool applyPerspectiveClip)--><!--Device-void OH_Drawing_PathTransformWithPerspectiveClip(OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix, OH_Drawing_Path* dst, bool applyPerspectiveClip)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1100,6 +1184,8 @@ void OH_Drawing_PathSetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType p
 
 设置路径的填充类型，决定路径内部区域的定义方式。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>pathFillType不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+<!--Device-void OH_Drawing_PathSetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType pathFillType)--><!--Device-void OH_Drawing_PathSetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType pathFillType)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -1120,6 +1206,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetFillType(OH_Drawing_Path* path, OH_Drawin
 **描述：**
 
 获取路径的填充类型。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathGetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType* pathFillType)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathGetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType* pathFillType)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1148,6 +1236,8 @@ float OH_Drawing_PathGetLength(OH_Drawing_Path* path, bool forceClosed)
 
 获取当前路径的长度。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-float OH_Drawing_PathGetLength(OH_Drawing_Path* path, bool forceClosed)--><!--Device-float OH_Drawing_PathGetLength(OH_Drawing_Path* path, bool forceClosed)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -1175,6 +1265,8 @@ void OH_Drawing_PathGetBounds(OH_Drawing_Path* path, OH_Drawing_Rect* rect)
 
 获取包含路径的最小边界框。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-void OH_Drawing_PathGetBounds(OH_Drawing_Path* path, OH_Drawing_Rect* rect)--><!--Device-void OH_Drawing_PathGetBounds(OH_Drawing_Path* path, OH_Drawing_Rect* rect)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -1196,6 +1288,8 @@ void OH_Drawing_PathClose(OH_Drawing_Path* path)
 
 用于闭合路径，会添加一条从路径起点位置到最后点位置的线段。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-void OH_Drawing_PathClose(OH_Drawing_Path* path)--><!--Device-void OH_Drawing_PathClose(OH_Drawing_Path* path)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
@@ -1215,6 +1309,8 @@ void OH_Drawing_PathOffset(OH_Drawing_Path* path, OH_Drawing_Path* dst, float dx
 **描述：**
 
 将路径中的所有点沿着x轴和y轴方向偏移一定距离，并将结果存储到目标路径对象中。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-void OH_Drawing_PathOffset(OH_Drawing_Path* path, OH_Drawing_Path* dst, float dx, float dy)--><!--Device-void OH_Drawing_PathOffset(OH_Drawing_Path* path, OH_Drawing_Path* dst, float dx, float dy)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1239,6 +1335,8 @@ void OH_Drawing_PathReset(OH_Drawing_Path* path)
 
 用于重置自定义路径数据。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+<!--Device-void OH_Drawing_PathReset(OH_Drawing_Path* path)--><!--Device-void OH_Drawing_PathReset(OH_Drawing_Path* path)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
@@ -1258,6 +1356,8 @@ bool OH_Drawing_PathIsClosed(OH_Drawing_Path* path, bool forceClosed)
 **描述：**
 
 获取路径是否闭合。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-bool OH_Drawing_PathIsClosed(OH_Drawing_Path* path, bool forceClosed)--><!--Device-bool OH_Drawing_PathIsClosed(OH_Drawing_Path* path, bool forceClosed)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1285,6 +1385,8 @@ bool OH_Drawing_PathGetPositionTangent(OH_Drawing_Path* path, bool forceClosed, 
 **描述：**
 
 获取距路径起始点指定距离的坐标点和切线值。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、position、tangent任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+<!--Device-bool OH_Drawing_PathGetPositionTangent(OH_Drawing_Path* path, bool forceClosed, float distance, OH_Drawing_Point2D* position, OH_Drawing_Point2D* tangent)--><!--Device-bool OH_Drawing_PathGetPositionTangent(OH_Drawing_Path* path, bool forceClosed, float distance, OH_Drawing_Point2D* position, OH_Drawing_Point2D* tangent)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1315,6 +1417,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetSegment(OH_Drawing_Path* path, bool force
 **描述：**
 
 截取路径的片段并追加到目标路径上。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathGetSegment(OH_Drawing_Path* path, bool forceClosed, float start, float stop, bool startWithMoveTo, OH_Drawing_Path* dst, bool* result)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathGetSegment(OH_Drawing_Path* path, bool forceClosed, float start, float stop, bool startWithMoveTo, OH_Drawing_Path* dst, bool* result)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1348,6 +1452,8 @@ bool OH_Drawing_PathOp(OH_Drawing_Path* path, const OH_Drawing_Path* other, OH_D
 
 将两个路径按照指定的路径操作类型合并。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>op不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+<!--Device-bool OH_Drawing_PathOp(OH_Drawing_Path* path, const OH_Drawing_Path* other, OH_Drawing_PathOpMode op)--><!--Device-bool OH_Drawing_PathOp(OH_Drawing_Path* path, const OH_Drawing_Path* other, OH_Drawing_PathOpMode op)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -1375,6 +1481,8 @@ bool OH_Drawing_PathGetMatrix(OH_Drawing_Path* path, bool forceClosed, float dis
 **描述：**
 
 获取距路径起始点指定距离的相应变换矩阵。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>path、matrix任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>flag不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+<!--Device-bool OH_Drawing_PathGetMatrix(OH_Drawing_Path* path, bool forceClosed, float distance, OH_Drawing_Matrix* matrix, OH_Drawing_PathMeasureMatrixFlags flag)--><!--Device-bool OH_Drawing_PathGetMatrix(OH_Drawing_Path* path, bool forceClosed, float distance, OH_Drawing_Matrix* matrix, OH_Drawing_PathMeasureMatrixFlags flag)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1406,6 +1514,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathApproximate(OH_Drawing_Path* path, float acc
 
 将当前路径转化为由连续直线段构成的近似路径。
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathApproximate(OH_Drawing_Path* path, float acceptableError, float* vals, uint32_t* count)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathApproximate(OH_Drawing_Path* path, float acceptableError, float* vals, uint32_t* count)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
@@ -1434,6 +1544,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathInterpolate(OH_Drawing_Path* path, OH_Drawin
 **描述：**
 
 按照给定权重在当前路径与另一条路径之间进行插值，并将结果存储到目标路径对象中。 <br>两条路径点数相同即可插值成功，目标路径按照当前路径的结构进行创建。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathInterpolate(OH_Drawing_Path* path, OH_Drawing_Path* other, float weight, bool* success, OH_Drawing_Path* interpolatedPath)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathInterpolate(OH_Drawing_Path* path, OH_Drawing_Path* other, float weight, bool* success, OH_Drawing_Path* interpolatedPath)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1465,6 +1577,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsInterpolate(OH_Drawing_Path* path, OH_Draw
 
 检查当前路径与另一条路径（other）在结构和操作顺序上是否完全一致，以确定两条路径是否兼容插值， 供[OH_Drawing_PathInterpolate](capi-drawing-path-h.md#oh_drawing_pathinterpolate)调用前预检查使用。 <br>若路径中包含圆锥曲线（Conic）操作，则对应操作的权重值也必须一致，才能视为兼容插值。
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathIsInterpolate(OH_Drawing_Path* path, OH_Drawing_Path* other, bool* result)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathIsInterpolate(OH_Drawing_Path* path, OH_Drawing_Path* other, bool* result)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
@@ -1493,6 +1607,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetLastPoint(OH_Drawing_Path* path, OH_Drawi
 
 用于获取路径的最后一个点的坐标。
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathGetLastPoint(OH_Drawing_Path* path, OH_Drawing_Point2D* point)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathGetLastPoint(OH_Drawing_Path* path, OH_Drawing_Point2D* point)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 26.0.0
@@ -1519,6 +1635,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsInverseFillType(const OH_Drawing_Path* pat
 **描述：**
 
 检查路径的填充类型是否是取反类型。 <br>取反类型即[OH_Drawing_PathFillType](capi-drawing-path-h.md#oh_drawing_pathfilltype)中的PATH_FILL_TYPE_INVERSE_WINDING和PATH_FILL_TYPE_INVERSE_EVEN_ODD。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathIsInverseFillType(const OH_Drawing_Path* path, bool* isInverse)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathIsInverseFillType(const OH_Drawing_Path* path, bool* isInverse)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1547,6 +1665,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathToggleInverseFillType(OH_Drawing_Path* path)
 
 切换路径填充类型的取反状态，即在取反类型与非取反类型之间翻转。 <br>取反类型即[OH_Drawing_PathFillType](capi-drawing-path-h.md#oh_drawing_pathfilltype)中的PATH_FILL_TYPE_INVERSE_WINDING和PATH_FILL_TYPE_INVERSE_EVEN_ODD。
 
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathToggleInverseFillType(OH_Drawing_Path* path)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathToggleInverseFillType(OH_Drawing_Path* path)-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
@@ -1572,6 +1692,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsEqual(OH_Drawing_Path* path, OH_Drawing_Pa
 **描述：**
 
 用于检查两个路径是否相等，即判断两个路径在构成数据上是否一致。
+
+<!--Device-OH_Drawing_ErrorCode OH_Drawing_PathIsEqual(OH_Drawing_Path* path, OH_Drawing_Path* other, bool* equal)--><!--Device-OH_Drawing_ErrorCode OH_Drawing_PathIsEqual(OH_Drawing_Path* path, OH_Drawing_Path* other, bool* equal)-End-->
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

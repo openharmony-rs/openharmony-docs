@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMultisampledRenderToSingleSampledInfoEXT {...}--><!--Device-struct VkMultisampledRenderToSingleSampledInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

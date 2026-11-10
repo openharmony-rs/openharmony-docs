@@ -4,6 +4,8 @@
 
 Declares APIs for converting <b>FrameNode</b> objects on the ArkTS side to <b>ArkUI_NodeHandle</b> objects on the native side.
 
+**File to Include**: <arkui/native_node_ani.h>
+
 **Library**: libace_ndk.z.so
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -37,6 +39,8 @@ int32_t OH_ArkUI_NativeModule_GetNodeHandleFromAniValue(ani_env* env, ani_object
 
 Obtains a <b>FrameNode</b> object on the ArkTS side and maps it to an <b>ArkUI_NodeHandle</b> object on the native side.
 
+<!--Device-int32_t OH_ArkUI_NativeModule_GetNodeHandleFromAniValue(ani_env* env, ani_object frameNode, ArkUI_NodeHandle* handle)--><!--Device-int32_t OH_ArkUI_NativeModule_GetNodeHandleFromAniValue(ani_env* env, ani_object frameNode, ArkUI_NodeHandle* handle)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -64,6 +68,8 @@ int32_t OH_ArkUI_NativeModule_GetContextFromAniValue(ani_env* env, ani_object co
 **Description**
 
 Obtains a <b>UIContext</b> object on the ArkTS side and maps it to an <b>ArkUI_ContextHandle</b> object on the native side.
+
+<!--Device-int32_t OH_ArkUI_NativeModule_GetContextFromAniValue(ani_env* env, ani_object context, ArkUI_ContextHandle* handle)--><!--Device-int32_t OH_ArkUI_NativeModule_GetContextFromAniValue(ani_env* env, ani_object context, ArkUI_ContextHandle* handle)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,6 +99,8 @@ int32_t OH_ArkUI_NativeModule_GetNodeContentFromAniValue(ani_env *env, ani_objec
 
 Obtains a <b>NodeContent</b> object on the ArkTS side and maps it to an <b>ArkUI_NodeContentHandle</b> object on the native side.
 
+<!--Device-int32_t OH_ArkUI_NativeModule_GetNodeContentFromAniValue(ani_env *env, ani_object nodeContent, ArkUI_NodeContentHandle *content)--><!--Device-int32_t OH_ArkUI_NativeModule_GetNodeContentFromAniValue(ani_env *env, ani_object nodeContent, ArkUI_NodeContentHandle *content)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -120,6 +128,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetNavDestinationAniParam(ArkUI_NodeHandle
 **Description**
 
 Obtains the parameters of the NavDestination component where the node is located.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_GetNavDestinationAniParam(ArkUI_NodeHandle node, ani_env* env, ani_value* param)--><!--Device-ArkUI_ErrorCode OH_ArkUI_NativeModule_GetNavDestinationAniParam(ArkUI_NodeHandle node, ani_env* env, ani_value* param)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -149,6 +159,8 @@ int32_t OH_ArkUI_NativeModule_GetDrawableDescriptorFromAniValue(ani_env *env, an
 
 Obtains a <b>DrawableDescriptor</b> object on the ArkTS side and maps it to an <b>ArkUI_DrawableDescriptro</b> object on the native side.
 
+<!--Device-int32_t OH_ArkUI_NativeModule_GetDrawableDescriptorFromAniValue(ani_env *env, ani_object drawable, ArkUI_DrawableDescriptor **drawableDescriptor)--><!--Device-int32_t OH_ArkUI_NativeModule_GetDrawableDescriptorFromAniValue(ani_env *env, ani_object drawable, ArkUI_DrawableDescriptor **drawableDescriptor)-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
@@ -176,6 +188,8 @@ int32_t OH_ArkUI_NativeModule_GetDrawableDescriptorFromResourceAniValue(ani_env 
 **Description**
 
 Obtains a <b>Resource</b> object on the ArkTS side and maps it to an <b>ArkUI_DrawableDescriptro</b> object on the native side.
+
+<!--Device-int32_t OH_ArkUI_NativeModule_GetDrawableDescriptorFromResourceAniValue(ani_env *env, ani_object resource, ArkUI_DrawableDescriptor **drawableDescriptor)--><!--Device-int32_t OH_ArkUI_NativeModule_GetDrawableDescriptorFromResourceAniValue(ani_env *env, ani_object resource, ArkUI_DrawableDescriptor **drawableDescriptor)-End-->
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

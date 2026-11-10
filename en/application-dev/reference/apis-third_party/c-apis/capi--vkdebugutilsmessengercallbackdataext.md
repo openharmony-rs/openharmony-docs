@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkDebugUtilsMessengerCallbackDataEXT {...}--><!--Device-struct VkDebugUtilsMessengerCallbackDataEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

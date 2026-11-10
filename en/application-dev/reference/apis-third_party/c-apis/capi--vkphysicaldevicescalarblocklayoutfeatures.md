@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceScalarBlockLayoutFeatures {...}--><!--Device-struct VkPhysicalDeviceScalarBlockLayoutFeatures {...}-End-->
+
 ## Summary
 
 ### Member variables

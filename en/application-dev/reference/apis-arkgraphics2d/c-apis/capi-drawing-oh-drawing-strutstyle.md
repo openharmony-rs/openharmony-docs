@@ -8,11 +8,13 @@ typedef struct OH_Drawing_StrutStyle {...} OH_Drawing_StrutStyle
 
 This struct describes a strut style. The strut style determines the line spacing, baseline alignment mode, and other properties related to the line height when drawing text.
 
+<!--Device-typedef struct OH_Drawing_StrutStyle {...} OH_Drawing_StrutStyle--><!--Device-typedef struct OH_Drawing_StrutStyle {...} OH_Drawing_StrutStyle-End-->
+
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
-**Related module**: [Drawing](capi-others-drawing.md)
+**Related module**: [Drawing](capi-arkgraphics2d-drawing.md)
 
 **Header file**: [drawing_text_typography.h](capi-drawing-text-typography-h.md)
 

@@ -46,6 +46,8 @@ int32_t OH_UsbSerial_Init(void)
 
 Initializes the USB Serial DDK. This API must be called before any other USB Serial DDK APIs. It establishes communication with the DDK service and loads necessary driver resources. After using the DDK, call [OH_UsbSerial_Release](capi-usb-serial-api-h.md#oh_usbserial_release) to release it to avoid resource leaks.
 
+<!--Device-int32_t OH_UsbSerial_Init(void)--><!--Device-int32_t OH_UsbSerial_Init(void)-End-->
+
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_USB_SERIAL
@@ -68,6 +70,8 @@ int32_t OH_UsbSerial_Release(void)
 
 Releases the USB Serial DDK. This function must be used together with [OH_UsbSerial_Init](capi-usb-serial-api-h.md#oh_usbserial_init). After the DDK is released, other USB Serial DDK methods cannot be called.
 
+<!--Device-int32_t OH_UsbSerial_Release(void)--><!--Device-int32_t OH_UsbSerial_Release(void)-End-->
+
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_USB_SERIAL
@@ -89,6 +93,8 @@ int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_D
 **Description**
 
 Opens the USB serial port device based on the specified **deviceId** and **interfaceIndex**. This API establishes a connection with the specified USB serial port device and returns the device handle for follow-up procedures. After using the device, call [OH_UsbSerial_Close](capi-usb-serial-api-h.md#oh_usbserial_close) to close the device. Otherwise, device resources may not be correctly released.
+
+<!--Device-int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev)--><!--Device-int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev)-End-->
 
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
@@ -120,6 +126,8 @@ int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)
 
 Closes the USB serial port device. This API releases the resources occupied by the device and must be used together with [OH_UsbSerial_Open](capi-usb-serial-api-h.md#oh_usbserial_open).
 
+<!--Device-int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)--><!--Device-int32_t OH_UsbSerial_Close(UsbSerial_Device **dev)-End-->
+
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_USB_SERIAL
@@ -147,6 +155,8 @@ int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferS
 **Description**
 
 Reads data from the USB serial port device to the buffer.
+
+<!--Device-int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead)--><!--Device-int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead)-End-->
 
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
@@ -179,6 +189,8 @@ int32_t OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t buffer
 
 Writes the data in the buffer to the USB serial port device.
 
+<!--Device-int32_t OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten)--><!--Device-int32_t OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten)-End-->
+
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_USB_SERIAL
@@ -210,6 +222,8 @@ int32_t OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate)
 
 Sets the baud rate for a USB serial port device. If the parameters of the USB serial port device are set to the default values (the data bit is **8**, the stop bit is **1**, and parity is disabled for data transfer), you only need to call this API to set the baud rate.
 
+<!--Device-int32_t OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate)--><!--Device-int32_t OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate)-End-->
+
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_USB_SERIAL
@@ -238,6 +252,8 @@ int32_t OH_UsbSerial_SetParams(UsbSerial_Device *dev, UsbSerial_Params *params)
 **Description**
 
 Sets the parameters of the USB serial port device. If the parameters of the USB serial port device are not set to the default values (the data bit is **8**, the stop bit is **1**, and parity is disabled for data transfer), you only need to call this API to set the related parameters.
+
+<!--Device-int32_t OH_UsbSerial_SetParams(UsbSerial_Device *dev, UsbSerial_Params *params)--><!--Device-int32_t OH_UsbSerial_SetParams(UsbSerial_Device *dev, UsbSerial_Params *params)-End-->
 
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
@@ -268,6 +284,8 @@ int32_t OH_UsbSerial_SetTimeout(UsbSerial_Device *dev, int timeout)
 
 Sets the timeout interval (ms) for reading data reported by a USB serial port device. If this function is not called, the timeout value is **0** by default, indicating that data is returned immediately regardless of whether data is read. If you need to wait for a certain period of time or data must be read, call this API to set the timeout interval.
 
+<!--Device-int32_t OH_UsbSerial_SetTimeout(UsbSerial_Device *dev, int timeout)--><!--Device-int32_t OH_UsbSerial_SetTimeout(UsbSerial_Device *dev, int timeout)-End-->
+
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_USB_SERIAL
@@ -296,6 +314,8 @@ int32_t OH_UsbSerial_SetFlowControl(UsbSerial_Device *dev, UsbSerial_FlowControl
 **Description**
 
 Sets flow control parameters. Flow control is used to manage the data transfer rate during communication with the USB serial port device to ensure that the sender does not send data that exceeds the processing capability of the receiver. If flow control is required, call this API to set flow control parameters. If this API is not called, flow control is disabled by default.
+
+<!--Device-int32_t OH_UsbSerial_SetFlowControl(UsbSerial_Device *dev, UsbSerial_FlowControl flowControl)--><!--Device-int32_t OH_UsbSerial_SetFlowControl(UsbSerial_Device *dev, UsbSerial_FlowControl flowControl)-End-->
 
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
@@ -326,6 +346,8 @@ int32_t OH_UsbSerial_Flush(UsbSerial_Device *dev)
 
 Flushes the input and output buffers. The system waits until all data in the output buffer is sent. If a large amount of data is to be transmitted to the USB serial port device, the data may be buffered in the kernel for transmission. If the app closes the device or exits before all data is sent out, some data may be lost. You can call this API to ensure that all data is sent before subsequent operations are performed.
 
+<!--Device-int32_t OH_UsbSerial_Flush(UsbSerial_Device *dev)--><!--Device-int32_t OH_UsbSerial_Flush(UsbSerial_Device *dev)-End-->
+
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_USB_SERIAL
@@ -354,6 +376,8 @@ int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev)
 
 Flushes the input buffer. The data in the buffer is flushed immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur. In this case, you can call this API to clear errors at the receive end to restore the communication. This API does not affect the data to be sent in the output buffer.
 
+<!--Device-int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev)--><!--Device-int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev)-End-->
+
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_USB_SERIAL
@@ -381,6 +405,8 @@ int32_t OH_UsbSerial_FlushOutput(UsbSerial_Device *dev)
 **Description**
 
 Flushes the output buffer. The data in the buffer is flushed immediately. During the communication with the USB serial port device, especially in the debugging phase, disordered data packets or other exceptions may occur. You can call this API to clear errors at the transmit end to restore the communication. This API does not affect the received data in the input buffer.
+
+<!--Device-int32_t OH_UsbSerial_FlushOutput(UsbSerial_Device *dev)--><!--Device-int32_t OH_UsbSerial_FlushOutput(UsbSerial_Device *dev)-End-->
 
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 

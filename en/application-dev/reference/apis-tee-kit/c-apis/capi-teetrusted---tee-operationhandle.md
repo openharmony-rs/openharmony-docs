@@ -8,11 +8,13 @@ typedef struct __TEE_OperationHandle {...} TEE_OperationHandleVar
 
 Defines the cryptographic operation handle.
 
+<!--Device-typedef struct __TEE_OperationHandle {...} TEE_OperationHandleVar--><!--Device-typedef struct __TEE_OperationHandle {...} TEE_OperationHandleVar-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_crypto_api.h](capi-tee-crypto-api-h.md)
 

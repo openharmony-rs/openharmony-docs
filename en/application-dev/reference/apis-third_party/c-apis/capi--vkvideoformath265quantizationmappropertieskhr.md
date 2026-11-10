@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkVideoFormatH265QuantizationMapPropertiesKHR {...}--><!--Device-struct VkVideoFormatH265QuantizationMapPropertiesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

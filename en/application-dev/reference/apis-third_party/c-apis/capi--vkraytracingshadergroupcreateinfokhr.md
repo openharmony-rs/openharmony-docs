@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRayTracingShaderGroupCreateInfoKHR {...}--><!--Device-struct VkRayTracingShaderGroupCreateInfoKHR {...}-End-->
+
 ## Summary
 
 ### Member variables

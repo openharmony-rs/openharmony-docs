@@ -8,11 +8,13 @@ typedef struct Scan_ScannerDevice {...} Scan_ScannerDevice
 
 Scan_ScannerDevice表示扫描仪设备信息，包含扫描仪ID、制造商、型号、发现模式和序列号等属性，用于在扫描仪发现流程中获取设备详情， 开发者可通过扫描仪发现相关接口获取该结构体以选择目标扫描仪设备进行扫描操作。相关模块设计逻辑请参见OH_Scan。
 
+<!--Device-typedef struct Scan_ScannerDevice {...} Scan_ScannerDevice--><!--Device-typedef struct Scan_ScannerDevice {...} Scan_ScannerDevice-End-->
+
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **起始版本：** 12
 
-**相关模块：** [OH_Scan](capi-others-oh-scan.md)
+**相关模块：** [OH_Scan](capi-basic-services-kit-oh-scan.md)
 
 **所在头文件：** [ohscan.h](capi-ohscan-h.md)
 

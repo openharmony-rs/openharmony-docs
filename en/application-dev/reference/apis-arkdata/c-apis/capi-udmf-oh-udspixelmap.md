@@ -8,11 +8,13 @@ typedef struct OH_UdsPixelMap OH_UdsPixelMap
 
 Describes the unified data struct of open harmony pixel map.
 
+<!--Device-typedef struct OH_UdsPixelMap OH_UdsPixelMap--><!--Device-typedef struct OH_UdsPixelMap OH_UdsPixelMap-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Since**: 13
 
-**Related module**: [UDMF](capi-others-udmf.md)
+**Related module**: [UDMF](capi-arkdata-udmf.md)
 
 **Header file**: [uds.h](capi-uds-h.md)
 

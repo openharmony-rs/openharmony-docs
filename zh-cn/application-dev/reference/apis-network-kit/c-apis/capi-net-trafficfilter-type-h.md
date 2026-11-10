@@ -89,6 +89,8 @@ enum OH_TrafficFilter_ErrCode
 
 流量过滤与重定向错误码。
 
+<!--Device-OH_TrafficFilter_ErrCode--><!--Device-OH_TrafficFilter_ErrCode-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **起始版本：** 26.0.0
@@ -114,6 +116,8 @@ enum OH_TrafficFilter_IPMatchType
 
 IP匹配类型。
 
+<!--Device-OH_TrafficFilter_IPMatchType--><!--Device-OH_TrafficFilter_IPMatchType-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **起始版本：** 26.0.0
@@ -136,6 +140,8 @@ enum OH_TrafficFilter_IPFamily
 
 IP地址族。
 
+<!--Device-OH_TrafficFilter_IPFamily--><!--Device-OH_TrafficFilter_IPFamily-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **起始版本：** 26.0.0
@@ -155,6 +161,8 @@ enum OH_TrafficFilter_PortMatchType
 **描述：**
 
 端口匹配类型。
+
+<!--Device-OH_TrafficFilter_PortMatchType--><!--Device-OH_TrafficFilter_PortMatchType-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -176,6 +184,8 @@ enum OH_TrafficFilter_HookPoint
 **描述：**
 
 钩子点类型，指定规则在网络协议栈中生效的位置。报文经过内核网络协议栈时会在不同阶段触发钩子点，规则在对应钩子点处对报文进行拦截。例如INPUT链处理进入本机的报文，OUTPUT链处理本机发出的报文。
+
+<!--Device-OH_TrafficFilter_HookPoint--><!--Device-OH_TrafficFilter_HookPoint-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -199,6 +209,8 @@ enum OH_TrafficFilter_PacketDecision
 
 报文决策类型
 
+<!--Device-OH_TrafficFilter_PacketDecision--><!--Device-OH_TrafficFilter_PacketDecision-End-->
+
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **起始版本：** 26.0.1
@@ -217,6 +229,8 @@ enum OH_TrafficFilter_PacketCopyMode
 **描述：**
 
 报文拷贝模式枚举
+
+<!--Device-OH_TrafficFilter_PacketCopyMode--><!--Device-OH_TrafficFilter_PacketCopyMode-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -241,6 +255,8 @@ typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const
 **描述：**
 
 报文回调函数类型
+
+<!--Device-typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const OH_TrafficFilter_PacketDesc* packet, void* userData)--><!--Device-typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const OH_TrafficFilter_PacketDesc* packet, void* userData)-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 

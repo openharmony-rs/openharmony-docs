@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceLimits {...}--><!--Device-struct VkPhysicalDeviceLimits {...}-End-->
+
 ## Summary
 
 ### Member variables

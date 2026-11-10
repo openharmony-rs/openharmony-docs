@@ -8,11 +8,13 @@ typedef struct ArkUI_DragEvent ArkUI_DragEvent
 
 Defines a drag event, used to represent event information during the drag process of an ArkUI component. You can obtain the drag status and event data through related drag event APIs in the following header file. For details about the drag event binding process, see Binding Drag Events.
 
+<!--Device-typedef struct ArkUI_DragEvent ArkUI_DragEvent--><!--Device-typedef struct ArkUI_DragEvent ArkUI_DragEvent-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
-**Related module**: [ArkUI_NativeModule](capi-others-arkui-nativemodule.md)
+**Related module**: [ArkUI_NativeModule](capi-arkui-arkui-nativemodule.md)
 
 **Header file**: [drag_and_drop.h](capi-drag-and-drop-h.md)
 

@@ -8,11 +8,13 @@ struct CloudDisk_ChangesResult {...}
 
 A struct that encapsulates the file change result under the sync root path. It includes the next change sequence number, end flag, and an array of change data items.
 
+<!--Device-struct CloudDisk_ChangesResult {...}--><!--Device-struct CloudDisk_ChangesResult {...}-End-->
+
 **System capability**: SystemCapability.FileManagement.CloudDiskManager
 
 **Since**: 21
 
-**Related module**: [CloudDisk](capi-others-clouddisk.md)
+**Related module**: [CloudDisk](capi-core-file-kit-clouddisk.md)
 
 **Header file**: [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
 

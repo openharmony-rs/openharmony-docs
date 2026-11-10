@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSpecializationMapEntry {...}--><!--Device-struct VkSpecializationMapEntry {...}-End-->
+
 ## Summary
 
 ### Member variables

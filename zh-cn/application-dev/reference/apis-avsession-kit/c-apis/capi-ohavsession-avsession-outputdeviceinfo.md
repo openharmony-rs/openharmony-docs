@@ -8,11 +8,13 @@ struct AVSession_OutputDeviceInfo {...}
 
 输出设备信息的定义。
 
+<!--Device-struct AVSession_OutputDeviceInfo {...}--><!--Device-struct AVSession_OutputDeviceInfo {...}-End-->
+
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
-**相关模块：** [OHAVSession](capi-others-ohavsession.md)
+**相关模块：** [OHAVSession](capi-avsession-kit-ohavsession.md)
 
 **所在头文件：** [native_deviceinfo.h](capi-native-deviceinfo-h.md)
 

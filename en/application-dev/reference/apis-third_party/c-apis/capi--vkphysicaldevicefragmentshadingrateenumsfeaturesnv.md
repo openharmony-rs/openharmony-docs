@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV {...}--><!--Device-struct VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV {...}-End-->
+
 ## Summary
 
 ### Member variables

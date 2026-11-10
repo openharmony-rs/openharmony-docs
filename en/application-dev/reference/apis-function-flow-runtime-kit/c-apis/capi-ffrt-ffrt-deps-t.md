@@ -8,11 +8,13 @@ typedef struct ffrt_deps_t {...} ffrt_deps_t
 
 Defines the dependency structure, used to hold a list of dependencies for a task.
 
+<!--Device-typedef struct ffrt_deps_t {...} ffrt_deps_t--><!--Device-typedef struct ffrt_deps_t {...} ffrt_deps_t-End-->
+
 **System capability**: SystemCapability.Resourceschedule.Ffrt.Core
 
 **Since**: 10
 
-**Related module**: [FFRT](capi-others-ffrt.md)
+**Related module**: [FFRT](capi-function-flow-runtime-kit-ffrt.md)
 
 **Header file**: [type_def.h](capi-type-def-h.md)
 

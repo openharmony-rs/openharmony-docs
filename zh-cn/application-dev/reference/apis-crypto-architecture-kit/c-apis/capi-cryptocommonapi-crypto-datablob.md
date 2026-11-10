@@ -8,11 +8,13 @@ struct Crypto_DataBlob {...}
 
 加解密数据结构体。
 
+<!--Device-struct Crypto_DataBlob {...}--><!--Device-struct Crypto_DataBlob {...}-End-->
+
 **系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
-**相关模块：** [CryptoCommonApi](capi-others-cryptocommonapi.md)
+**相关模块：** [CryptoCommonApi](capi-crypto-architecture-kit-cryptocommonapi.md)
 
 **所在头文件：** [crypto_common.h](capi-crypto-common-h.md)
 

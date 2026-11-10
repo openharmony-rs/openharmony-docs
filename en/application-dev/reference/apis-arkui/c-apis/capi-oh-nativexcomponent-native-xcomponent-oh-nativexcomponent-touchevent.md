@@ -8,11 +8,13 @@ typedef struct OH_NativeXComponent_TouchEvent {...} OH_NativeXComponent_TouchEve
 
 Represents the touch event.
 
+<!--Device-typedef struct OH_NativeXComponent_TouchEvent {...} OH_NativeXComponent_TouchEvent--><!--Device-typedef struct OH_NativeXComponent_TouchEvent {...} OH_NativeXComponent_TouchEvent-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 8
 
-**Related module**: [OH_NativeXComponent Native XComponent](capi-others-oh-nativexcomponent-native-xcomponent.md)
+**Related module**: [OH_NativeXComponent Native XComponent](capi-arkui-oh-nativexcomponent-native-xcomponent.md)
 
 **Header file**: [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
 

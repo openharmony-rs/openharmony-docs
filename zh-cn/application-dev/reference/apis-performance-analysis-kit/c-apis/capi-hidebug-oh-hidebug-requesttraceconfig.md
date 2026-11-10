@@ -8,11 +8,13 @@ struct OH_HiDebug_RequestTraceConfig {...}
 
 请求trace采集的配置结构类型定义。用于在应用性能分析和调试场景中配置trace采集参数，如定位应用启动慢、UI卡顿、CPU占用高等性能问题。
 
+<!--Device-struct OH_HiDebug_RequestTraceConfig {...}--><!--Device-struct OH_HiDebug_RequestTraceConfig {...}-End-->
+
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 24
 
-**相关模块：** [HiDebug](capi-others-hidebug.md)
+**相关模块：** [HiDebug](capi-performance-analysis-kit-hidebug.md)
 
 **所在头文件：** [hidebug_type.h](capi-hidebug-type-h.md)
 

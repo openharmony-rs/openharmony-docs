@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkImageFormatListCreateInfo {...}--><!--Device-struct VkImageFormatListCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

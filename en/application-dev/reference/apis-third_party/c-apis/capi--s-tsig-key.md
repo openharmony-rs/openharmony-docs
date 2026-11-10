@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct s_tsig_key {...}--><!--Device-struct s_tsig_key {...}-End-->
+
 ## Summary
 
 ### Member variables

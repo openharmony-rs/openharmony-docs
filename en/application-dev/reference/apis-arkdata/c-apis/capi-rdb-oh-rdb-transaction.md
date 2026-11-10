@@ -8,11 +8,13 @@ typedef struct OH_Rdb_Transaction OH_Rdb_Transaction
 
 Define the OH_Rdb_Transaction structure type.
 
+<!--Device-typedef struct OH_Rdb_Transaction OH_Rdb_Transaction--><!--Device-typedef struct OH_Rdb_Transaction OH_Rdb_Transaction-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 18
 
-**Related module**: [RDB](capi-others-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 **Header file**: [oh_rdb_transaction.h](capi-oh-rdb-transaction-h.md)
 

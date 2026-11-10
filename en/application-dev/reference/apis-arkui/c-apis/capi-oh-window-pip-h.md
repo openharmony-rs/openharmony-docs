@@ -87,6 +87,8 @@ enum PictureInPicture_PipTemplateType
 
 Enumerates the types of PiP templates.
 
+<!--Device-PictureInPicture_PipTemplateType--><!--Device-PictureInPicture_PipTemplateType-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -107,6 +109,8 @@ enum PictureInPicture_PipControlGroup
 **Description**
 
 Enumerates the types of component groups displayed on the PiP controller.
+
+<!--Device-PictureInPicture_PipControlGroup--><!--Device-PictureInPicture_PipControlGroup-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -137,6 +141,8 @@ enum PictureInPicture_PipControlType
 
 Enumerates the types of components displayed on the PiP controller.
 
+<!--Device-PictureInPicture_PipControlType--><!--Device-PictureInPicture_PipControlType-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -163,6 +169,8 @@ enum PictureInPicture_PipControlStatus
 
 Enumerates the statuses of components displayed on the PiP controller.
 
+<!--Device-PictureInPicture_PipControlStatus--><!--Device-PictureInPicture_PipControlStatus-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -183,6 +191,8 @@ enum PictureInPicture_PipState
 **Description**
 
 Enumerates the PiP lifecycle states.
+
+<!--Device-PictureInPicture_PipState--><!--Device-PictureInPicture_PipState-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -210,6 +220,8 @@ typedef void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId,
 
 Defines a callback function for PiP window creation.
 
+<!--Device-typedef void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId, uint64_t surfaceId)--><!--Device-typedef void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId, uint64_t surfaceId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -231,6 +243,8 @@ typedef void (*WebPipLifecycleCallback)(uint32_t controllerId, PictureInPicture_
 **Description**
 
 Defines a callback function for PiP window lifecycle changes.
+
+<!--Device-typedef void (*WebPipLifecycleCallback)(uint32_t controllerId, PictureInPicture_PipState state, int32_t errcode)--><!--Device-typedef void (*WebPipLifecycleCallback)(uint32_t controllerId, PictureInPicture_PipState state, int32_t errcode)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -254,6 +268,8 @@ typedef void (*WebPipControlEventCallback)(uint32_t controllerId, PictureInPictu
 
 Defines a callback function for the component click event of the PiP window.
 
+<!--Device-typedef void (*WebPipControlEventCallback)(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status)--><!--Device-typedef void (*WebPipControlEventCallback)(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -275,6 +291,8 @@ typedef void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint
 **Description**
 
 Defines a callback function for PiP window size changes.
+
+<!--Device-typedef void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint32_t height, double scale)--><!--Device-typedef void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint32_t height, double scale)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -298,6 +316,8 @@ int32_t OH_PictureInPicture_CreatePipConfig(PictureInPicture_PipConfig* pipConfi
 **Description**
 
 Creates a PiP configuration.
+
+<!--Device-int32_t OH_PictureInPicture_CreatePipConfig(PictureInPicture_PipConfig* pipConfig)--><!--Device-int32_t OH_PictureInPicture_CreatePipConfig(PictureInPicture_PipConfig* pipConfig)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -325,6 +345,8 @@ int32_t OH_PictureInPicture_DestroyPipConfig(PictureInPicture_PipConfig* pipConf
 
 Destroys a PiP configuration.
 
+<!--Device-int32_t OH_PictureInPicture_DestroyPipConfig(PictureInPicture_PipConfig* pipConfig)--><!--Device-int32_t OH_PictureInPicture_DestroyPipConfig(PictureInPicture_PipConfig* pipConfig)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -350,6 +372,8 @@ int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipCon
 **Description**
 
 Sets the ID of the main window that launches PiP.
+
+<!--Device-int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipConfig, uint32_t mainWindowId)--><!--Device-int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipConfig, uint32_t mainWindowId)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -378,6 +402,8 @@ int32_t OH_PictureInPicture_SetPipTemplateType(PictureInPicture_PipConfig pipCon
 
 Sets the PiP template type. The default value is video playback.
 
+<!--Device-int32_t OH_PictureInPicture_SetPipTemplateType(PictureInPicture_PipConfig pipConfig, PictureInPicture_PipTemplateType pipTemplateType)--><!--Device-int32_t OH_PictureInPicture_SetPipTemplateType(PictureInPicture_PipConfig pipConfig, PictureInPicture_PipTemplateType pipTemplateType)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -404,6 +430,8 @@ int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uin
 **Description**
 
 Sets the size of the PiP window for calculating the aspect ratio.
+
+<!--Device-int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uint32_t width, uint32_t height)--><!--Device-int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uint32_t width, uint32_t height)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -433,6 +461,8 @@ int32_t OH_PictureInPicture_SetPipControlGroup(PictureInPicture_PipConfig pipCon
 
 Sets a PiP component group, which must match the template type.
 
+<!--Device-int32_t OH_PictureInPicture_SetPipControlGroup(PictureInPicture_PipConfig pipConfig, PictureInPicture_PipControlGroup* controlGroup, uint8_t controlGroupLength)--><!--Device-int32_t OH_PictureInPicture_SetPipControlGroup(PictureInPicture_PipConfig pipConfig, PictureInPicture_PipControlGroup* controlGroup, uint8_t controlGroupLength)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -461,6 +491,8 @@ int32_t OH_PictureInPicture_SetPipNapiEnv(PictureInPicture_PipConfig pipConfig, 
 
 Sets the runtime environment for launching PiP.
 
+<!--Device-int32_t OH_PictureInPicture_SetPipNapiEnv(PictureInPicture_PipConfig pipConfig, void* env)--><!--Device-int32_t OH_PictureInPicture_SetPipNapiEnv(PictureInPicture_PipConfig pipConfig, void* env)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -487,6 +519,8 @@ int32_t OH_PictureInPicture_CreatePip(PictureInPicture_PipConfig pipConfig, uint
 **Description**
 
 Creates a PiP controller.
+
+<!--Device-int32_t OH_PictureInPicture_CreatePip(PictureInPicture_PipConfig pipConfig, uint32_t* controllerId)--><!--Device-int32_t OH_PictureInPicture_CreatePip(PictureInPicture_PipConfig pipConfig, uint32_t* controllerId)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -515,6 +549,8 @@ int32_t OH_PictureInPicture_DeletePip(uint32_t controllerId)
 
 Deletes a PiP controller.
 
+<!--Device-int32_t OH_PictureInPicture_DeletePip(uint32_t controllerId)--><!--Device-int32_t OH_PictureInPicture_DeletePip(uint32_t controllerId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -540,6 +576,8 @@ int32_t OH_PictureInPicture_StartPip(uint32_t controllerId)
 **Description**
 
 Starts PiP.
+
+<!--Device-int32_t OH_PictureInPicture_StartPip(uint32_t controllerId)--><!--Device-int32_t OH_PictureInPicture_StartPip(uint32_t controllerId)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -567,6 +605,8 @@ int32_t OH_PictureInPicture_StopPip(uint32_t controllerId)
 
 Stops PiP.
 
+<!--Device-int32_t OH_PictureInPicture_StopPip(uint32_t controllerId)--><!--Device-int32_t OH_PictureInPicture_StopPip(uint32_t controllerId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -592,6 +632,8 @@ int32_t OH_PictureInPicture_UpdatePipContentSize(uint32_t controllerId, uint32_t
 **Description**
 
 Updates the media content size when the media content changes.
+
+<!--Device-int32_t OH_PictureInPicture_UpdatePipContentSize(uint32_t controllerId, uint32_t width, uint32_t height)--><!--Device-int32_t OH_PictureInPicture_UpdatePipContentSize(uint32_t controllerId, uint32_t width, uint32_t height)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -621,6 +663,8 @@ int32_t OH_PictureInPicture_UpdatePipControlStatus(uint32_t controllerId, Pictur
 
 Updates the PiP component status.
 
+<!--Device-int32_t OH_PictureInPicture_UpdatePipControlStatus(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status)--><!--Device-int32_t OH_PictureInPicture_UpdatePipControlStatus(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -648,6 +692,8 @@ int32_t OH_PictureInPicture_SetPipControlEnabled(uint32_t controllerId, PictureI
 **Description**
 
 Sets the PiP component enabled status.
+
+<!--Device-int32_t OH_PictureInPicture_SetPipControlEnabled(uint32_t controllerId, PictureInPicture_PipControlType controlType, bool enabled)--><!--Device-int32_t OH_PictureInPicture_SetPipControlEnabled(uint32_t controllerId, PictureInPicture_PipControlType controlType, bool enabled)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -677,6 +723,8 @@ int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t wi
 
 Sets the main window ID for PiP.
 
+<!--Device-int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t windowId)--><!--Device-int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t windowId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 22
@@ -703,6 +751,8 @@ int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int3
 **Description**
 
 Sets the initial position and size of the PiP surface when the PiP launch animation starts. It can be used to achieve a seamless transition effect.
+
+<!--Device-int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int32_t positionX, int32_t positionY, uint32_t width, uint32_t height)--><!--Device-int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int32_t positionX, int32_t positionY, uint32_t width, uint32_t height)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -734,6 +784,8 @@ int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)
 
 Cancels the previously set initial position and size for the PiP surface.
 
+<!--Device-int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)--><!--Device-int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -759,6 +811,8 @@ int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebP
 **Description**
 
 Registers a callback to listen for the completion of PiP surface creation.
+
+<!--Device-int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)--><!--Device-int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -787,6 +841,8 @@ int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, We
 
 Unregisters the callback used to listen for the completion of PiP surface creation.
 
+<!--Device-int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)--><!--Device-int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -814,6 +870,8 @@ int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId
 
 Unregisters all the callbacks used to listen for the completion of PiP surface creation.
 
+<!--Device-int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId)--><!--Device-int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -839,6 +897,8 @@ int32_t OH_PictureInPicture_RegisterLifecycleListener(uint32_t controllerId, Web
 **Description**
 
 Registers a callback to listen for PiP lifecycle state changes.
+
+<!--Device-int32_t OH_PictureInPicture_RegisterLifecycleListener(uint32_t controllerId, WebPipLifecycleCallback callback)--><!--Device-int32_t OH_PictureInPicture_RegisterLifecycleListener(uint32_t controllerId, WebPipLifecycleCallback callback)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -867,6 +927,8 @@ int32_t OH_PictureInPicture_UnregisterLifecycleListener(uint32_t controllerId, W
 
 Unregisters the callback used to listen for PiP lifecycle state changes.
 
+<!--Device-int32_t OH_PictureInPicture_UnregisterLifecycleListener(uint32_t controllerId, WebPipLifecycleCallback callback)--><!--Device-int32_t OH_PictureInPicture_UnregisterLifecycleListener(uint32_t controllerId, WebPipLifecycleCallback callback)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -894,6 +956,8 @@ int32_t OH_PictureInPicture_UnregisterAllLifecycleListeners(uint32_t controllerI
 
 Unregisters all the callbacks used to listen for PiP lifecycle state changes.
 
+<!--Device-int32_t OH_PictureInPicture_UnregisterAllLifecycleListeners(uint32_t controllerId)--><!--Device-int32_t OH_PictureInPicture_UnregisterAllLifecycleListeners(uint32_t controllerId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -919,6 +983,8 @@ int32_t OH_PictureInPicture_RegisterControlEventListener(uint32_t controllerId, 
 **Description**
 
 Registers a callback to listen for control panel action events in PiP mode.
+
+<!--Device-int32_t OH_PictureInPicture_RegisterControlEventListener(uint32_t controllerId, WebPipControlEventCallback callback)--><!--Device-int32_t OH_PictureInPicture_RegisterControlEventListener(uint32_t controllerId, WebPipControlEventCallback callback)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -947,6 +1013,8 @@ int32_t OH_PictureInPicture_UnregisterControlEventListener(uint32_t controllerId
 
 Unregisters the callback used to listen for control panel action events in PiP mode.
 
+<!--Device-int32_t OH_PictureInPicture_UnregisterControlEventListener(uint32_t controllerId, WebPipControlEventCallback callback)--><!--Device-int32_t OH_PictureInPicture_UnregisterControlEventListener(uint32_t controllerId, WebPipControlEventCallback callback)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -974,6 +1042,8 @@ int32_t OH_PictureInPicture_UnregisterAllControlEventListeners(uint32_t controll
 
 Unregisters all the callbacks used to listen for control panel action events in PiP mode.
 
+<!--Device-int32_t OH_PictureInPicture_UnregisterAllControlEventListeners(uint32_t controllerId)--><!--Device-int32_t OH_PictureInPicture_UnregisterAllControlEventListeners(uint32_t controllerId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -999,6 +1069,8 @@ int32_t OH_PictureInPicture_RegisterResizeListener(uint32_t controllerId, WebPip
 **Description**
 
 Registers a callback to listen for PiP window size changes.
+
+<!--Device-int32_t OH_PictureInPicture_RegisterResizeListener(uint32_t controllerId, WebPipResizeCallback callback)--><!--Device-int32_t OH_PictureInPicture_RegisterResizeListener(uint32_t controllerId, WebPipResizeCallback callback)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -1027,6 +1099,8 @@ int32_t OH_PictureInPicture_UnregisterResizeListener(uint32_t controllerId, WebP
 
 Unregisters the callback used to listen for PiP window size changes.
 
+<!--Device-int32_t OH_PictureInPicture_UnregisterResizeListener(uint32_t controllerId, WebPipResizeCallback callback)--><!--Device-int32_t OH_PictureInPicture_UnregisterResizeListener(uint32_t controllerId, WebPipResizeCallback callback)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -1054,6 +1128,8 @@ int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)
 
 Unregisters all the callbacks used to listen for PiP window size changes.
 
+<!--Device-int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)--><!--Device-int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)-End-->
+
 **System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 20
@@ -1079,6 +1155,8 @@ int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enab
 **Description**
 
 Sets whether to automatically start a PiP window when the user returns to the home screen. By default, no PiP window is started.
+
+<!--Device-int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enabled)--><!--Device-int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enabled)-End-->
 
 **System capability**: SystemCapability.Window.SessionManager
 

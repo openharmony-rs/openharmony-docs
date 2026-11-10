@@ -36,6 +36,8 @@ enum OH_AudioChannelSet
 
 Enumerates the audio channels.<br> Each channel is mapped to a variable of uint64_t.
 
+<!--Device-OH_AudioChannelSet--><!--Device-OH_AudioChannelSet-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 11
@@ -83,6 +85,8 @@ enum OH_AmbAttributeSet
 
 Ambisonic attribute set.<br> A set of 64-bit integers indicate the ambisonic attributes.
 
+<!--Device-OH_AmbAttributeSet--><!--Device-OH_AmbAttributeSet-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 11
@@ -107,6 +111,8 @@ enum OH_AudioChannelLayout
 **Description**
 
 Enumerates the layouts of audio channels.<br> Int64 integers are used to indicate the appearance and sequence of speakers during recording or playback.
+
+<!--Device-OH_AudioChannelLayout--><!--Device-OH_AudioChannelLayout-End-->
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 

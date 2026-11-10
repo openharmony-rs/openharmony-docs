@@ -8,11 +8,13 @@ struct ArkUI_AccessibilityProviderCallbacks {...}
 
 Registers callbacks for the accessibility provider.
 
+<!--Device-struct ArkUI_AccessibilityProviderCallbacks {...}--><!--Device-struct ArkUI_AccessibilityProviderCallbacks {...}-End-->
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
-**Related module**: [ArkUI_Accessibility](capi-others-arkui-accessibility.md)
+**Related module**: [ArkUI_Accessibility](capi-arkui-arkui-accessibility.md)
 
 **Header file**: [native_interface_accessibility.h](capi-native-interface-accessibility-h.md)
 
@@ -42,6 +44,8 @@ int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_Accessibility
 
 Called to obtain element information based on a specified node.
 
+<!--Device-int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)--><!--Device-int32_t (*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -66,6 +70,8 @@ int32_t (*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text,
 **Description**
 
 Called to obtain element information based on a specified node and text content.
+
+<!--Device-int32_t (*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)--><!--Device-int32_t (*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)-End-->
 
 **Parameters**:
 
@@ -92,6 +98,8 @@ int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFo
 
 Called to obtain focused element information based on a specified node.
 
+<!--Device-int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)--><!--Device-int32_t (*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -116,6 +124,8 @@ int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_Accessibility
 **Description**
 
 Called to find the next focusable node based on the reference node.
+
+<!--Device-int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)--><!--Device-int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)-End-->
 
 **Parameters**:
 
@@ -142,6 +152,8 @@ int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_Act
 
 Called to execute a specified action on a specified node.
 
+<!--Device-int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)--><!--Device-int32_t (*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)-End-->
+
 **Parameters**:
 
 | Parameter | Description |
@@ -167,6 +179,8 @@ int32_t (*clearFocusedFocusAccessibilityNode)()
 
 Called to clear the focus state of the current focused node.
 
+<!--Device-int32_t (*clearFocusedFocusAccessibilityNode)()--><!--Device-int32_t (*clearFocusedFocusAccessibilityNode)()-End-->
+
 **Returns**:
 
 | Type | Description |
@@ -182,6 +196,8 @@ int32_t (*getAccessibilityNodeCursorPosition)(int64_t elementId, int32_t request
 **Description**
 
 Called to query the current cursor position of the specified node.
+
+<!--Device-int32_t (*getAccessibilityNodeCursorPosition)(int64_t elementId, int32_t requestId, int32_t* index)--><!--Device-int32_t (*getAccessibilityNodeCursorPosition)(int64_t elementId, int32_t requestId, int32_t* index)-End-->
 
 **Parameters**:
 

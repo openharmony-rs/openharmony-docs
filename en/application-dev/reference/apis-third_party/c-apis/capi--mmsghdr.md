@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct mmsghdr {...}--><!--Device-struct mmsghdr {...}-End-->
+
 ## Summary
 
 ### Member variables

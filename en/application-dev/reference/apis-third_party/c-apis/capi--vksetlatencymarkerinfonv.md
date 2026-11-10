@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSetLatencyMarkerInfoNV {...}--><!--Device-struct VkSetLatencyMarkerInfoNV {...}-End-->
+
 ## Summary
 
 ### Member variables

@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkPhysicalDeviceDriverProperties {...}--><!--Device-struct VkPhysicalDeviceDriverProperties {...}-End-->
+
 ## Summary
 
 ### Member variables

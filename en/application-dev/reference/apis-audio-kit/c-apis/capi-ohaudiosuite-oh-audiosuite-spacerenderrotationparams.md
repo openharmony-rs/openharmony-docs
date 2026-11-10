@@ -8,11 +8,13 @@ struct OH_AudioSuite_SpaceRenderRotationParams {...}
 
 Space rendering dynamic mode parameters.
 
+<!--Device-struct OH_AudioSuite_SpaceRenderRotationParams {...}--><!--Device-struct OH_AudioSuite_SpaceRenderRotationParams {...}-End-->
+
 **System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 23
 
-**Related module**: [OHAudioSuite](capi-others-ohaudiosuite.md)
+**Related module**: [OHAudioSuite](capi-audio-kit-ohaudiosuite.md)
 
 **Header file**: [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
 

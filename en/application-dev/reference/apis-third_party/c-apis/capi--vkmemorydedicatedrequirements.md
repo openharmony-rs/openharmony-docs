@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkMemoryDedicatedRequirements {...}--><!--Device-struct VkMemoryDedicatedRequirements {...}-End-->
+
 ## Summary
 
 ### Member variables

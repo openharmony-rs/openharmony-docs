@@ -8,11 +8,13 @@ union Rdb_SubscribeCallback {...}
 
 Indicates the callback functions.
 
+<!--Device-union Rdb_SubscribeCallback {...}--><!--Device-union Rdb_SubscribeCallback {...}-End-->
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 11
 
-**Related module**: [RDB](capi-others-rdb.md)
+**Related module**: [RDB](capi-arkdata-rdb.md)
 
 **Header file**: [relational_store.h](capi-relational-store-h.md)
 

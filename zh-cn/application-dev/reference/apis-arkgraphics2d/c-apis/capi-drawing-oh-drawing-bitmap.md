@@ -8,11 +8,13 @@ typedef struct OH_Drawing_Bitmap OH_Drawing_Bitmap
 
 定义为位图，位图是一块内存，内存中包含了描述一张图片的像素数据。
 
+<!--Device-typedef struct OH_Drawing_Bitmap OH_Drawing_Bitmap--><!--Device-typedef struct OH_Drawing_Bitmap OH_Drawing_Bitmap-End-->
+
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
-**相关模块：** [Drawing](capi-others-drawing.md)
+**相关模块：** [Drawing](capi-arkgraphics2d-drawing.md)
 
 **所在头文件：** [drawing_types.h](capi-drawing-types-h.md)
 

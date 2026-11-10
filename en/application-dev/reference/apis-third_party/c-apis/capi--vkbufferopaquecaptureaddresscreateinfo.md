@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkBufferOpaqueCaptureAddressCreateInfo {...}--><!--Device-struct VkBufferOpaqueCaptureAddressCreateInfo {...}-End-->
+
 ## Summary
 
 ### Member variables

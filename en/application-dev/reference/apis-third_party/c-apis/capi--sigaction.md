@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct sigaction {...}--><!--Device-struct sigaction {...}-End-->
+
 ## Summary
 
 ### Member variables
@@ -31,6 +33,8 @@ void (*sa_handler)(int)
 
 **Description**
 
+<!--Device-void (*sa_handler)(int)--><!--Device-void (*sa_handler)(int)-End-->
+
 ### sa_sigaction()
 
 ```c
@@ -39,6 +43,8 @@ void (*sa_sigaction)(int, siginfo_t *, void *)
 
 **Description**
 
+<!--Device-void (*sa_sigaction)(int, siginfo_t *, void *)--><!--Device-void (*sa_sigaction)(int, siginfo_t *, void *)-End-->
+
 ### sa_restorer()
 
 ```c
@@ -46,5 +52,7 @@ void (*sa_restorer)(void)
 ```
 
 **Description**
+
+<!--Device-void (*sa_restorer)(void)--><!--Device-void (*sa_restorer)(void)-End-->
 
 

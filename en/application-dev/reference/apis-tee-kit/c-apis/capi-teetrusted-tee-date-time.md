@@ -8,11 +8,13 @@ typedef struct TEE_Date_Time {...} TEE_Date_Time
 
 Definitions the date time of TEE.
 
+<!--Device-typedef struct TEE_Date_Time {...} TEE_Date_Time--><!--Device-typedef struct TEE_Date_Time {...} TEE_Date_Time-End-->
+
 **System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
-**Related module**: [TeeTrusted](capi-others-teetrusted.md)
+**Related module**: [TeeTrusted](capi-tee-kit-teetrusted.md)
 
 **Header file**: [tee_defines.h](capi-tee-defines-h.md)
 

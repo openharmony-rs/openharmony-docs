@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkCopyCommandTransformInfoQCOM {...}--><!--Device-struct VkCopyCommandTransformInfoQCOM {...}-End-->
+
 ## Summary
 
 ### Member variables

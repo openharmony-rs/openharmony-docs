@@ -8,11 +8,13 @@ typedef struct OH_AVMediaSourceLoadingRequest OH_AVMediaSourceLoadingRequest
 
 Defines a load request object for the media resource, through which the application obtains the location of the requested resource.
 
+<!--Device-typedef struct OH_AVMediaSourceLoadingRequest OH_AVMediaSourceLoadingRequest--><!--Device-typedef struct OH_AVMediaSourceLoadingRequest OH_AVMediaSourceLoadingRequest-End-->
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 23
 
-**Related module**: [AVMediaSource](capi-others-avmediasource.md)
+**Related module**: [AVMediaSource](capi-media-kit-avmediasource.md)
 
 **Header file**: [avmedia_source.h](capi-avmedia-source-h.md)
 

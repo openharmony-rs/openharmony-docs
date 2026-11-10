@@ -57,6 +57,8 @@ AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)
 
 Creates an AVMetadataBuilder instance.
 
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
@@ -83,6 +85,8 @@ AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)
 
 Destroy a builder.
 
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
@@ -108,6 +112,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder,
 **Description**
 
 Set current asset id of the resource
+
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder, const char* assetId)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder, const char* assetId)-End-->
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -136,6 +142,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, c
 
 Set the title of the resource
 
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, const char* title)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, const char* title)-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
@@ -162,6 +170,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, 
 **Description**
 
 Set the artist of the resource
+
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, const char* artist)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, const char* artist)-End-->
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -190,6 +200,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, 
 
 Set the author of the resource
 
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, const char* author)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, const char* author)-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
@@ -216,6 +228,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, c
 **Description**
 
 Set the album information
+
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, const char* album)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, const char* album)-End-->
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -244,6 +258,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, 
 
 Set the writer of the resource
 
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, const char* writer)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, const char* writer)-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
@@ -270,6 +286,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder
 **Description**
 
 Set the composer of the resource
+
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder, const char* composer)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder, const char* composer)-End-->
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -298,6 +316,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder
 
 Set the duration of the resource
 
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder, int64_t duration)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder, int64_t duration)-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
@@ -324,6 +344,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* bu
 **Description**
 
 Set the media image uri of the resource
+
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* builder, const char* mediaImageUri)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* builder, const char* mediaImageUri)-End-->
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -352,6 +374,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder
 
 Set the subtitle of the resource
 
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder, const char* subtitle)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder, const char* subtitle)-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
@@ -378,6 +402,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* buil
 **Description**
 
 Set the media description of the resource
+
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* builder, const char* description)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* builder, const char* description)-End-->
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -406,6 +432,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, c
 
 Set the media lyric content of the resource
 
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, const char* lyric)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, const char* lyric)-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
@@ -432,6 +460,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* bu
 **Description**
 
 Set the skip intervals of the resource
+
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* builder, AVMetadata_SkipIntervals intervals)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* builder, AVMetadata_SkipIntervals intervals)-End-->
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -460,6 +490,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* buil
 
 Set the display tags of the resource
 
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* builder, int32_t tags)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* builder, int32_t tags)-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
@@ -486,6 +518,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetFilter(OH_AVMetadataBuilder* builder, 
 **Description**
 
 Set the protocols supported
+
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetFilter(OH_AVMetadataBuilder* builder, uint32_t filter)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_SetFilter(OH_AVMetadataBuilder* builder, uint32_t filter)-End-->
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -514,6 +548,8 @@ AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* 
 
 Create the avmetadata.
 
+<!--Device-AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* builder, OH_AVMetadata** avMetadata)--><!--Device-AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* builder, OH_AVMetadata** avMetadata)-End-->
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
@@ -540,6 +576,8 @@ AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)
 **Description**
 
 Request to release the avmetadata.
+
+<!--Device-AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)--><!--Device-AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)-End-->
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 

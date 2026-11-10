@@ -58,6 +58,8 @@ enum Asset_TagType
 
 关键资产属性标签的类型。
 
+<!--Device-Asset_TagType--><!--Device-Asset_TagType-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 **起始版本：** 11
@@ -77,6 +79,8 @@ enum Asset_Tag
 **描述：**
 
 关键资产属性的标签。
+
+<!--Device-Asset_Tag--><!--Device-Asset_Tag-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -127,6 +131,8 @@ enum Asset_ResultCode
 
 ASSET APIs使用的结果码。
 
+<!--Device-Asset_ResultCode--><!--Device-Asset_ResultCode-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 **起始版本：** 11
@@ -165,6 +171,8 @@ enum Asset_Accessibility
 
 基于锁屏状态的访问控制类型。
 
+<!--Device-Asset_Accessibility--><!--Device-Asset_Accessibility-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 **起始版本：** 11
@@ -185,6 +193,8 @@ enum Asset_AuthType
 
 关键资产支持的用户认证类型。
 
+<!--Device-Asset_AuthType--><!--Device-Asset_AuthType-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 **起始版本：** 11
@@ -203,6 +213,8 @@ enum Asset_SyncType
 **描述：**
 
 关键资产支持的同步类型。
+
+<!--Device-Asset_SyncType--><!--Device-Asset_SyncType-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -225,6 +237,8 @@ enum Asset_WrapType
 
 关键资产支持的加密导入导出类型。
 
+<!--Device-Asset_WrapType--><!--Device-Asset_WrapType-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 **起始版本：** 18
@@ -243,6 +257,8 @@ enum Asset_ConflictResolution
 **描述：**
 
 新增关键资产时的冲突（如：别名相同）处理策略。
+
+<!--Device-Asset_ConflictResolution--><!--Device-Asset_ConflictResolution-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -263,6 +279,8 @@ enum Asset_ReturnType
 
 关键资产查询返回的结果类型。
 
+<!--Device-Asset_ReturnType--><!--Device-Asset_ReturnType-End-->
+
 **系统能力：** SystemCapability.Security.Asset
 
 **起始版本：** 11
@@ -281,6 +299,8 @@ enum Asset_OperationType
 **描述：**
 
 附属的操作类型。
+
+<!--Device-Asset_OperationType--><!--Device-Asset_OperationType-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 

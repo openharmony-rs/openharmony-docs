@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkInitializePerformanceApiInfoINTEL {...}--><!--Device-struct VkInitializePerformanceApiInfoINTEL {...}-End-->
+
 ## Summary
 
 ### Member variables

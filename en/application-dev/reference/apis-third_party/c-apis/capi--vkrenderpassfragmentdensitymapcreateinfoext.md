@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkRenderPassFragmentDensityMapCreateInfoEXT {...}--><!--Device-struct VkRenderPassFragmentDensityMapCreateInfoEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

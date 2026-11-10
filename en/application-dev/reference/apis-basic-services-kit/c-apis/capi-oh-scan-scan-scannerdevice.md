@@ -8,11 +8,13 @@ typedef struct Scan_ScannerDevice {...} Scan_ScannerDevice
 
 Represents the scanner device information, including the scanner ID, manufacturer, model, discovery mode, and serial number. It is used to obtain device details during the scanner discovery process. You can obtain this struct using the scanner discovery API to select the target scanner for scanning. For details about the design logic of the related module, see OH_Scan.
 
+<!--Device-typedef struct Scan_ScannerDevice {...} Scan_ScannerDevice--><!--Device-typedef struct Scan_ScannerDevice {...} Scan_ScannerDevice-End-->
+
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Since**: 12
 
-**Related module**: [OH_Scan](capi-others-oh-scan.md)
+**Related module**: [OH_Scan](capi-basic-services-kit-oh-scan.md)
 
 **Header file**: [ohscan.h](capi-ohscan-h.md)
 

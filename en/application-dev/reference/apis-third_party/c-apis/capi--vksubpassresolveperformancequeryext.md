@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSubpassResolvePerformanceQueryEXT {...}--><!--Device-struct VkSubpassResolvePerformanceQueryEXT {...}-End-->
+
 ## Summary
 
 ### Member variables

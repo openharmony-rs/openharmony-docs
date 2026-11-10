@@ -54,6 +54,8 @@ enum WindowManager_ErrorCode
 
 窗口管理接口返回状态码枚举。
 
+<!--Device-WindowManager_ErrorCode--><!--Device-WindowManager_ErrorCode-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 12
@@ -86,6 +88,8 @@ enum WindowManager_AvoidAreaType
 
 避让区域枚举类型。
 
+<!--Device-WindowManager_AvoidAreaType--><!--Device-WindowManager_AvoidAreaType-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 15
@@ -107,6 +111,8 @@ enum WindowManager_WindowType
 **描述：**
 
 窗口类型。
+
+<!--Device-WindowManager_WindowType--><!--Device-WindowManager_WindowType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -132,6 +138,8 @@ typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, 
 
 帧率指标回调类型。
 
+<!--Device-typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)--><!--Device-typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **起始版本：** 26.0.0
@@ -145,6 +153,8 @@ typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_
 **描述：**
 
 density信息回调类型。
+
+<!--Device-typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)--><!--Device-typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

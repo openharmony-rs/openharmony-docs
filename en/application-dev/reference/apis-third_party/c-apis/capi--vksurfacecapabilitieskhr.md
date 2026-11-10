@@ -2,6 +2,8 @@
 
 ## Overview
 
+<!--Device-struct VkSurfaceCapabilitiesKHR {...}--><!--Device-struct VkSurfaceCapabilitiesKHR {...}-End-->
+
 ## Summary
 
 ### Member variables
