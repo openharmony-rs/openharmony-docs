@@ -31,7 +31,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-3. （可选）调用[getMediaKeySystems()](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmgetmediakeysystems12)，获取设备支持的DRM解决方案名称和唯一标识的列表。
+3. （可选）调用[drm.getMediaKeySystems()](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmgetmediakeysystems12)，获取设备支持的DRM解决方案名称和唯一标识的列表。
 
    <!-- @[arkts_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    
@@ -41,7 +41,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
    如果获取结果数组为空，说明该设备中不存在支持的DRM解决方案。
 
-4. （可选）调用[isMediaKeySystemSupported()](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmismediakeysystemsupported)，查询设备是否支持对应DRM解决方案名称、媒体类型、安全保护级别的DRM解决方案。
+4. （可选）调用[drm.isMediaKeySystemSupported()](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmismediakeysystemsupported)，查询设备是否支持对应DRM解决方案名称、媒体类型、安全保护级别的DRM解决方案。
 
    <!-- @[arkts_isMediaKeySystemSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    
@@ -57,7 +57,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
    如果查询结果为false，说明该设备不支持对应的DRM解决方案。
 
-5. 调用[createMediaKeySystem()](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem)，创建MediaKeySystem实例。
+5. 调用[drm.createMediaKeySystem()](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem)，创建MediaKeySystem实例。
 
    <!-- @[arkts_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    

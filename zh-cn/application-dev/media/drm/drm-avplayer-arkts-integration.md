@@ -28,7 +28,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-3. 调用[createAVPlayer()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavplayer9)，创建AVPlayer实例并设置DRM信息监听事件。
+3. 调用[media.createAVPlayer()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavplayer9)，创建AVPlayer实例并设置DRM信息监听事件。
 
    <!-- @[avplayer_initPlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
    
@@ -50,7 +50,7 @@
    }
    ```
 
-4. 调用[createMediaKeySystem()](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem)和[createMediaKeySession()](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#createmediakeysession-1)根据DRM信息中的uuid创建MediaKeySystem和MediaKeySession实例。
+4. 调用[drm.createMediaKeySystem()](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem)和[createMediaKeySession()](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#createmediakeysession-1)根据DRM信息中的uuid创建MediaKeySystem和MediaKeySession实例。
 
    <!-- @[avplayer_processDrmInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmAVPlayer/entry/src/main/ets/pages/AVPlayerDrm.ets) -->
    
