@@ -1559,6 +1559,8 @@ getKeyData(itemType: AsyKeyDataItem): Promise\<Uint8Array>
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -1568,6 +1570,81 @@ async function eccGetKeyDataTest() {
   let returnBlob = await keyPair.pubKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
   console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
 }
+```
+
+JS示例：
+
+在Lite Wearable侧非对称密钥只支持ECC256算法。
+
+下述样例以非对称算法为ECC256为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="GetKeyDataTest">ECC256公钥获取数据异步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function getKeyDataTest() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    let keyGenPromise = asyKeyGenerator.generateKeyPair();
+    keyGenPromise.then(function (keyPair) {
+      let pubKey = keyPair.pubKey;
+      pubKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_04_X_Y).then(function (returnBlob) {
+        console.info('EC_PUBLIC_04_X_Y data: ' + returnBlob);
+      }).catch(function (error) {
+        console.error('getKeyData failed. Code: ' + error.code + " : " + error.message);
+      })
+    }).catch(function (error) {
+      console.error('generateKeyPair failed. Code: ' + error.code + " : " + error.message);
+    })
+  } catch (error) {
+    console.error(`getKeyDataTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    GetKeyDataTest() {
+        getKeyDataTest();
+    }
+};
 ```
 
 ### getKeyDataSync
@@ -1611,6 +1688,8 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -1620,6 +1699,73 @@ function eccGetKeyDataTest() {
   let returnBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
   console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
 }
+```
+
+JS示例：
+
+在Lite Wearable侧非对称密钥只支持ECC256算法。
+
+下述样例以非对称算法为ECC256为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="GetKeyDataSyncTest">ECC256公钥获取数据同步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function getKeyDataSyncTest() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    let keyPair = asyKeyGenerator.generateKeyPairSync();
+    let returnBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_04_X_Y);
+    console.info('EC_PUBLIC_04_X_Y data: ' + returnBlob);
+  } catch (error) {
+    console.error(`getKeyDataSyncTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    GetKeyDataSyncTest() {
+        getKeyDataSyncTest();
+    }
+};
 ```
 
 ## PriKey
@@ -2922,6 +3068,8 @@ generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -2933,6 +3081,77 @@ asyKeyGenerator.generateKeyPair((err, keyPair) => {
   }
   console.info('generateKeyPair result: success.');
 })
+```
+
+JS示例：
+
+在Lite Wearable侧非对称密钥只支持ECC256算法。
+
+下述样例以非对称算法为ECC256为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="GenerateKeyPairTest">ECC256非对称密钥生成异步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function generateKeyPairTest() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    asyKeyGenerator.generateKeyPair(function (err, keyPair) {
+      if (err) {
+        console.error('generateKeyPair failed. Code: ' + err.code + " : " + err.message);
+        return;
+      }
+      console.info('generateKeyPair result: success.');
+    })
+  } catch (error) {
+    console.error(`generateKeyPairTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    GenerateKeyPairTest() {
+        generateKeyPairTest();
+    }
+};
 ```
 
 ### generateKeyPair
@@ -3034,6 +3253,8 @@ generateKeyPairSync(): KeyPair
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -3048,6 +3269,76 @@ try {
 } catch (e) {
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
+```
+
+JS示例：
+
+在Lite Wearable侧非对称密钥只支持ECC256算法。
+
+下述样例以非对称算法为ECC256为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="GenerateKeyPairSyncTest">ECC256非对称密钥生成同步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function generateKeyPairSyncTest() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    let keyPairData = asyKeyGenerator.generateKeyPairSync();
+    if (keyPairData != null) {
+      console.info('[Sync]: key pair result: success.');
+    } else {
+      console.error('[Sync]: get key pair result: fail.');
+    }
+  } catch (error) {
+    console.error(`generateKeyPairSyncTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    GenerateKeyPairSyncTest() {
+        generateKeyPairSyncTest();
+    }
+};
 ```
 
 ### convertKey
@@ -3122,6 +3413,8 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCall
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -3143,6 +3436,79 @@ asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
   }
   console.info('convertKey result: success.');
 });
+```
+
+JS示例：
+
+在Lite Wearable侧非对称密钥只支持ECC256算法；convertKey只支持公钥数据转换，不支持私钥数据转换。
+
+下述样例以非对称算法为ECC256，仅转换公钥数据为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="ConvertKeyTest">ECC256公钥转换异步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function convertKeyTest() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    let keyPair = asyKeyGenerator.generateKeyPairSync();
+    let pubKeyBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_04_X_Y);
+    asyKeyGenerator.convertKey(pubKeyBlob, null, function (err, keyPair) {
+      if (err) {
+        console.error('convertKey failed. Code: ' + err.code + " : " + err.message);
+        return;
+      }
+      console.info('convertKey result: success.');
+    })
+  } catch (error) {
+    console.error(`convertKeyTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    ConvertKeyTest() {
+        convertKeyTest();
+    }
+};
 ```
 
 ### convertKey
@@ -3320,6 +3686,8 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
@@ -3344,6 +3712,78 @@ try {
 } catch (e) {
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
+```
+
+JS示例：
+
+在Lite Wearable侧非对称密钥只支持ECC256算法；convertKey只支持公钥数据转换，不支持私钥数据转换。
+
+下述样例以非对称算法为ECC256，仅转换公钥数据为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="ConvertKeySyncTest">ECC256公钥转换同步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function convertKeySyncTest() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    let keyPair = asyKeyGenerator.generateKeyPairSync();
+    let pubKeyBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_04_X_Y);
+    let keyPairData = asyKeyGenerator.convertKeySync(pubKeyBlob, null);
+    if (keyPairData != null) {
+      console.info('[Sync]: key pair result: success.');
+    } else {
+      console.error('[Sync]: convert key pair result: fail.');
+    }
+  } catch (error) {
+    console.error(`convertKeySyncTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    ConvertKeySyncTest() {
+        convertKeySyncTest();
+    }
+};
 ```
 
 ### convertPemKey<sup>12+</sup>
