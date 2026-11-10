@@ -105,6 +105,25 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 }
 ```
 
+### 函数与类实例等字段的转换
+
+Want parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组。**函数、Map/Set、Date、类实例无法序列化，无法通过`onSaveState()`保存，须先按以下方式转换**（`onSaveState()`写入wantParam的数据与页面的param同理——param中这类字段在恢复时会被直接丢弃）：
+
+| 原字段类型 | 处理方式 |
+| --- | --- |
+| string / number / boolean | 直接保留 |
+| 由基本类型组成的普通对象 | 直接保留 |
+| Function / Callback | 删除；页面改为从AppStorage重新获取，或改为按名字从应用启动时注册的"名字到函数"映射表中取回 |
+| 类实例（MediaItem、PhotoAsset等） | 替换为uri、id等可重新查回数据的字段，页面挂载后重新查询 |
+| Map / Set / Date | 转换为普通对象或序列化字符串（如JSON.stringify后随字符串传输） |
+| 已持久化的数据（preferences/RDB/文件） | 不通过`onSaveState()`保存（进程重建后仍在），只存键名、文件名等能重新查回数据的轻量信息 |
+
+回调函数、Proxy对象等复杂对象同样无法通过`onSaveState()`保存，须按上表方式替换。
+
+### 恢复期间不要自动跳页
+
+应用里"启动后自动跳首页/自动切Tab/重定向登录/进广告页"等导航逻辑，在恢复启动时会覆盖系统恢复的页面栈。做法：用一个普通布尔变量记录恢复流程是否结束——`onCreate()`判定为恢复启动时把变量置为`false`；首页`onPageShow()`触发时（此时系统页面栈恢复已完成），等应用的补齐或重新跳转执行完毕再把变量置为`true`。上述自动跳转逻辑执行前先检查该变量：为`false`时本次跳过，为`true`后恢复正常导航。
+
 ## 数据恢复
 
 适用：不需要恢复页面栈（可接受恢复启动后回到首页）、但有未持久化的临时数据（草稿、阅读进度、表单内容等）需要恢复的应用。系统不会恢复应用运行时状态（全局变量、用户数据、自定义业务数据），需要开发者通过[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)自行保存恢复。
@@ -548,29 +567,6 @@ if (routes !== undefined) {
 
 - 重新跳转期间，应用的"自动跳首页/重定向登录"等自动导航逻辑必须跳过，否则重新执行的跳转会被自动跳转覆盖——处理方法见[恢复期间不要自动跳页](#恢复期间不要自动跳页)；
 - 本方案依赖三方路由包，示例工程未包含，可按上述伪代码接入。HMRouter场景若愿意为其内部Navigation设置id+recoverable，也可选用[页面栈恢复：Navigation](#页面栈恢复navigation)三项配置方案，但HMRouter内部Navigation实例不易注入属性，默认推荐本方案。
-
-## 通用适配要点
-
-以下内容各场景通用。
-
-### 函数与类实例等字段的转换
-
-Want parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组。**函数、Map/Set、Date、类实例无法序列化，无法通过`onSaveState()`保存，须先按以下方式转换**（`onSaveState()`写入wantParam的数据与页面的param同理——param中这类字段在恢复时会被直接丢弃）：
-
-| 原字段类型 | 处理方式 |
-| --- | --- |
-| string / number / boolean | 直接保留 |
-| 由基本类型组成的普通对象 | 直接保留 |
-| Function / Callback | 删除；页面改为从AppStorage重新获取，或改为按名字从应用启动时注册的"名字到函数"映射表中取回 |
-| 类实例（MediaItem、PhotoAsset等） | 替换为uri、id等可重新查回数据的字段，页面挂载后重新查询 |
-| Map / Set / Date | 转换为普通对象或序列化字符串（如JSON.stringify后随字符串传输） |
-| 已持久化的数据（preferences/RDB/文件） | 不通过`onSaveState()`保存（进程重建后仍在），只存键名、文件名等能重新查回数据的轻量信息 |
-
-回调函数、Proxy对象等复杂对象同样无法通过`onSaveState()`保存，须按上表方式替换。
-
-### 恢复期间不要自动跳页
-
-应用里"启动后自动跳首页/自动切Tab/重定向登录/进广告页"等导航逻辑，在恢复启动时会覆盖系统恢复的页面栈。做法：用一个普通布尔变量记录恢复流程是否结束——`onCreate()`判定为恢复启动时把变量置为`false`；首页`onPageShow()`触发时（此时系统页面栈恢复已完成），等应用的补齐或重新跳转执行完毕再把变量置为`true`。上述自动跳转逻辑执行前先检查该变量：为`false`时本次跳过，为`true`后恢复正常导航。
 
 ## 常见问题
 
