@@ -178,7 +178,7 @@ OH_AudioStream_Result OH_AudioRenderer_Standby(OH_AudioRenderer* renderer, bool 
 
 standby状态主要用于音频播放过程中短暂无数据的情况，如流媒体播放等待网络下载。
 
-进入standby状态后，音频通路保持不变，仅向应用请求数据的循环线程暂停，也不接受主动写入数据，已写入系统的数据会继续播放。
+进入standby状态后，音频通路保持不变，仅向应用请求数据的循环线程暂停，也不接收主动写入数据，已写入系统的数据会继续播放。
 
 只有在播放流状态为[AUDIOSTREAM_STATE_RUNNING](capi-native-audiostream-base-h.md#oh_audiostream_state)时可以调用此接口进入standby状态。standby状态下才能再次调用接口退出。
 
