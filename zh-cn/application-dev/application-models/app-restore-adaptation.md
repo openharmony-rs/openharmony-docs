@@ -109,7 +109,7 @@ export function isRestoreLaunch(want: Want, launchParam: AbilityConstant.LaunchP
 }
 ```
 
-判定恢复启动后，可控制恢复行为——跳过部分初始化、从want.parameters取临时状态、跳过自动跳页逻辑：
+判定恢复启动后，即可针对恢复启动单独处理：不执行正常冷启动时的部分初始化，改为从want.parameters取回上次保存的数据，并跳过广告页、自动跳首页等自动跳转：
 
 ``` TypeScript
 onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
