@@ -335,6 +335,7 @@
     - [ability_access_control.h](capi-ability-access-control-h.md)
     - [ability_base_common.h](capi-ability-base-common-h.md)
     - [ability_runtime_common.h](capi-ability-runtime-common-h.md)
+    - [app_memory_optimizer.h](capi-app-memory-optimizer-h.md)
     - [application_context.h](capi-application-context-h.md)
     - [context_constant.h](capi-context-constant-h.md)
     - [connect_options.h](capi-connect-options-h.md)
