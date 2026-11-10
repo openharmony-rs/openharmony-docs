@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍音频输出设备管理能力，指导开发者通过AudioRoutingManager和AudioSession两种方式查询输出设备信息、监听设备连接与优先级变化。"
+keywords: [音频输出设备, AudioRoutingManager, AudioSessionManager, getDevices, getPreferOutputDeviceForRendererInfo, setDefaultOutputDevice, 扬声器, 听筒, 蓝牙耳机, 外放, 设备监听, 设备查询]
+doctype: guide
+status: active
+---
 # 查询和监听音频输出设备
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -565,3 +572,9 @@ async function getActiveOutputDeviceDescriptors() {
 }
 ```
 <!--DelEnd-->
+
+## 相关主题推荐
+
+- [实现音频输出设备路由切换](audio-output-device-switcher.md)
+- [查询和监听音频输入设备](audio-input-device-management.md)
+- [响应输出设备变更时合理暂停](audio-output-device-change.md)

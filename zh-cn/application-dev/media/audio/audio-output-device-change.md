@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者在音频流输出设备变更时合理暂停播放，介绍如何通过监听输出设备变更事件获取变更原因，并参考示例完成耳机拔出、设备切换等场景的播放适配。"
+keywords: [输出设备变更, outputDeviceChangeWithInfo, currentOutputDeviceChanged, AudioStreamDeviceChangeReason, 耳机拔出, 蓝牙断开, 设备下线, 播放暂停, 听歌中断]
+doctype: guide
+status: active
+---
 # 响应输出设备变更时合理暂停
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -325,3 +332,9 @@ let audioRendererOptions: audio.AudioRendererOptions = {
       }
     });
   ```
+
+## 相关主题推荐
+
+- [查询和监听音频输出设备](audio-output-device-management.md)
+- [实现音频输出设备路由切换](audio-output-device-switcher.md)
+- [播放无声定位指导](audio-playback-no-sound-troubleshooting.md)
