@@ -132,7 +132,7 @@ Codec MIME类型枚举。
 | MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | 表示轨道的mime_type类型，其对应键值类型为string。对于音视频轨道，该值与MD_KEY_CODEC_MIME相同。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 | MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | 表示此轨道与其他轨道的引用关系，其对应键值类型为string，以逗号分隔。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 | MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | 表示此轨道作为辅助轨的辅助类型，其对应键值类型为string。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
-
+| MD_KEY_TRACK_PLAYABLE  | 'is_playable'  | 表示此轨道是否可以正常播放，其对应键值类型为boolean。true表示可以正常播放，false表示不可以正常播放。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0|
 ## FetchResult<sup>23+</sup>
 
 表示批量获取缩略图操作结果的枚举。
@@ -509,6 +509,23 @@ Codec MIME类型枚举。
 | SCREEN_AND_APP | 5    | 同时显示屏幕和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | SCREEN_WINDOW_AND_APP | 6    | 同时显示屏幕、窗口和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
+## AVScreenCaptureAutoPauseCaptureScene
+
+表示自动暂停屏幕录制场景的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| -------------------------- | ---- | -------------------------------------- |
+| SCENE_NONE | 0 | 未设置任何场景；在任何场景下都不会自动暂停屏幕录制。 |
+| SCENE_SCREEN_FOLD_STATE_CHANGE | 1 << 0 | 屏幕折叠状态发生变化的场景。 |
+
 ## AVMetricsEventType<sup>23+</sup>
 
 表示媒体服务支持的指标事件的枚举。
@@ -549,6 +566,25 @@ Codec MIME类型枚举。
 | PLAYLIST_LOOP_MODE_ONE | 2    | 单曲循环模式。 |
 | PLAYLIST_LOOP_MODE_SHUFFLE | 3    | 随机循环模式。 |
 | PLAYLIST_LOOP_MODE_NONE | 4    | 关闭循环模式。 |
+
+## PlaybackCommand
+
+表示可执行的播控指令枚举。用于应用在[prepare()](arkts-apis-media-AVPlayer.md#prepare9)完成后，查询该片源是否可以执行对应的播放控制操作。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称                       | 值   | 说明                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| PLAYBACK_COMMAND_SEEK | 0    | 表示视频跳转操作。可通过[checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand)查询当前片源是否支持该操作。 |
+| PLAYBACK_COMMAND_RATE | 1    | 表示调整播放速率的操作。可通过[checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand)查询当前片源是否支持该操作。 |
 
 ## AudioEncoder<sup>(deprecated)</sup>
 

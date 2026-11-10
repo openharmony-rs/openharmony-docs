@@ -2031,7 +2031,7 @@ ArkTS-Sta: preloadApplication(bundleName: string, userId: int, mode: PreloadMode
 
 > **说明：**
 >
-> 该接口不支持预加载分身应用，参数appIndex只能传0，传其他值会返回16000050错误码。
+> 在API版本26.1.0之前，该接口不支持预加载分身应用，参数appIndex只能传0，传入其他值将返回错误码16000050。从API版本26.1.0开始，该接口支持预加载分身应用，若传入无效的appIndex，将统一返回错误码16000050。
 
 **需要权限**：ohos.permission.PRELOAD_APPLICATION
 
@@ -2052,7 +2052,7 @@ ArkTS-Sta: preloadApplication(bundleName: string, userId: int, mode: PreloadMode
 | bundleName | string | 是 | 预加载的应用包名。 |
 | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 预加载的用户Id。 |
 | mode | [PreloadMode](#appmanagerpreloadmode12) | 是 | 预加载模式。 |
-| appIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 预加载应用分身的appIndex，该参数只能传0，当前不支持预加载分身应用。 |
+| appIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 预加载应用分身的appIndex。 |
 
 **返回值：**
 

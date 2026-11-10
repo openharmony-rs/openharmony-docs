@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 从API version 7 开始支持，从API version 9 开始废弃。建议使用[@ohos.commonEventManager](js-apis-commonEventManager.md)替代。
+> 从API版本7开始支持，从API版本9开始废弃。建议使用[@ohos.commonEventManager](js-apis-commonEventManager.md)替代。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[CommonEvent](./js-apis-commonEvent.md)。
 
@@ -34,7 +34,7 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser)替代。
+> 从API版本8开始支持，从API版本9开始废弃。建议使用[commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -76,7 +76,7 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 以回调形式向指定用户发布公共事件并指定发布信息。
 
 > **说明：**
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser-1)替代。
+> 从API版本8开始支持，从API版本9开始废弃。建议使用[commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser-1)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 

@@ -149,9 +149,9 @@ API version 9-18，使用该接口无需权限；从API version 19开始，需�
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.<br>适用版本：19+ |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 801     | Capability not supported. This API cannot work in car devices. |
+| 801     | Capability not supported. This API cannot work in car devices.<br>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -197,11 +197,11 @@ API version 9-18，使用该接口无需权限；从API version 19开始，需�
 | 错误码ID   | 错误信息    |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.<br>适用版本：19+ |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
-| 4900701 | Failed to suspend the device. Possible causes: 1. Not allowed to turn off the screen during the exam. |
-| 801     | Capability not supported. This API cannot work in car devices. |
+| 4900701 | Failed to suspend the device. Possible causes: 1. Not allowed to turn off the screen during the exam.<br>适用版本：26.0.1+ |
+| 801     | Capability not supported. This API cannot work in car devices. <br>适用版本：26.0.1+ |
 
 **示例：**
 
@@ -218,6 +218,8 @@ try {
 setPowerMode(mode: DevicePowerMode, callback: AsyncCallback&lt;void&gt;): void
 
 设置当前设备的电源模式。使用callback异步回调。
+
+如需同时设置电源模式和子模式，请使用 power.setPowerMode 接口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -242,10 +244,11 @@ setPowerMode(mode: DevicePowerMode, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
-| 4900301 | Setting the power mode failed. |
+| 4900301 | Setting the power mode failed.<br>适用版本：23+ |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 203     | This function is prohibited by enterprise management policies. <br>**适用版本：** 26.1.0+ |
 
 **示例：**
 
@@ -276,6 +279,8 @@ setPowerMode(mode: DevicePowerMode): Promise&lt;void&gt;
 
 设置当前设备的电源模式。使用Promise异步回调。
 
+如需同时设置电源模式和子模式，请使用 power.setPowerMode 接口。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.POWER_OPTIMIZATION
@@ -304,10 +309,11 @@ setPowerMode(mode: DevicePowerMode): Promise&lt;void&gt;
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
-| 4900301 | Setting the power mode failed. |
+| 4900301 | Setting the power mode failed.<br>适用版本：23+ |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：19+|
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 203     | This function is prohibited by enterprise management policies. <br>**适用版本：** 26.1.0+ |
 
 **示例：**
 
@@ -315,6 +321,62 @@ setPowerMode(mode: DevicePowerMode): Promise&lt;void&gt;
 power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
 .then(() => {
     console.info('set power mode to MODE_PERFORMANCE');
+})
+.catch((err : Error)=> {
+    console.error('set power mode failed, err: ' + err);
+});
+```
+
+## power.setPowerMode
+
+setPowerMode(mode: DevicePowerMode, subMode?: DevicePowerSubMode): Promise&lt;void&gt;
+
+同时设置当前设备的电源模式及其子模式。使用Promise异步回调。subMode 仅在 mode 为 MODE_EXTREME_POWER_SAVE 时有效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_OPTIMIZATION
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| mode | [DevicePowerMode](js-apis-power.md#devicepowermode9) | 是 | 电源模式；该参数类型是一个枚举类。 |
+| subMode | [DevicePowerSubMode](js-apis-power.md#devicepowersubmode) | 否 | 电源模式子模式。仅在 mode 为 MODE_EXTREME_POWER_SAVE 时有效。 |
+
+**返回值：**
+
+| 类型                | 说明                                   |
+| ------------------- | -------------------------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 4900301 | Failed to set the power mode. Possible causes:<br>1. The power mode switching constraint is not met;<br>2. The power mode does not support the sub-mode, or the sub-mode does not match the power mode. |
+| 4900101 | Failed to connect to the service. |
+| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 203     | This function is prohibited by enterprise management policies. |
+
+**示例：**
+
+```ts
+power.setPowerMode(power.DevicePowerMode.MODE_EXTREME_POWER_SAVE, power.DevicePowerSubMode.SUB_MODE_SUPER_POWER_SAVE)
+.then(() => {
+    console.info('set power mode to MODE_EXTREME_POWER_SAVE with super power save sub-mode');
 })
 .catch((err : Error)=> {
     console.error('set power mode failed, err: ' + err);
@@ -357,9 +419,9 @@ API version 12-18，使用该接口无需权限；从API version 19开始，需�
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：19+|
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 801     | Capability not supported. This API cannot work in car devices. |
+| 801     | Capability not supported. This API cannot work in car devices.<br>适用版本：26.0.1+  |
 
 **示例：**
 
@@ -452,7 +514,7 @@ refreshActivity(reason: string): void
 | 4900201 |The device activity is being refreshed too frequently; the minimum time interval is 100 ms. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 801     | Capability not supported. This API cannot work in car devices. |
+| 801     | Capability not supported. This API cannot work in car devices. <br>适用版本：26.0.1+ |
 
 **示例：**
 

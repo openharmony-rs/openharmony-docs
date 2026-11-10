@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者组合OHAudio播放与录制能力实现自定义耳返，可在应用内处理录制数据并加入自定义音效后实时播放到耳机。"
+keywords: [耳返, 自定义耳返, 音频播放, 音频录制, 低时延, K歌]
+doctype: guide
+status: active
+---
 # 实现自定义耳返
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

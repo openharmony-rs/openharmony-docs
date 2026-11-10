@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导C/C++开发者使用OHAudio的OH_AudioRenderer播放PCM音频，涵盖低时延模式、声道布局、Audio Vivid及播放状态管理。"
+keywords: [OHAudio, 音频播放, OH_AudioRenderer, 低时延播放, Audio Vivid, 声道布局]
+doctype: guide
+status: active
+---
 # 推荐使用OHAudio开发音频播放功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -296,6 +303,26 @@ int32_t MyOnWriteDataWithMetadata_New(
     OH_AudioRenderer_WriteDataWithMetadataCallback metadataCallback = MyOnWriteDataWithMetadata_New;
     // 设置同时写入PCM数据和元数据的回调。
     OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(builder, metadataCallback, nullptr);
+```
+
+### 等待音频数据场景的处理建议
+
+在音频播放过程中，应用可能因网络下载等待等原因暂时无法提供音频数据。从API版本26.1.0开始，应用可以调用[OH_AudioRenderer_Standby](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_standby)接口让音频流进入standby状态，暂停数据回调，避免空转。已写入系统的缓存数据会继续播放完毕。退出standby后，数据回调恢复。仅AUDIOSTREAM_USAGE_MUSIC、AUDIOSTREAM_USAGE_MOVIE、AUDIOSTREAM_USAGE_GAME、AUDIOSTREAM_USAGE_AUDIOBOOK类型的播放流支持standby。
+
+<!-- @[Render_Standby](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) --> 
+
+``` C++
+// 进入standby状态。仅在STATE_RUNNING状态下可调用。
+OH_AudioStream_Result result = OH_AudioRenderer_Standby(audioRenderer, true);
+if (result == AUDIOSTREAM_SUCCESS) {
+    // 数据回调已暂停，已写入的缓存继续播放。
+}
+
+// 退出standby状态。仅在standby状态下可调用。
+result = OH_AudioRenderer_Standby(audioRenderer, false);
+if (result == AUDIOSTREAM_SUCCESS) {
+    // 数据回调恢复。
+}
 ```
 
 ### 相关实例

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Buffer与FastBuffer模块的二进制数据处理能力：将内存区域抽象为可读写的字节序列对象，支持创建自定义大小的内存块，适用于大数据传输、图像音频处理及二进制数据解析等场景。"
+keywords: [Buffer, FastBuffer, 二进制数据处理, 字节序列, 大数据传输, 图像音频处理, 内存块操作]
+doctype: guide
+status: active
+---
+
 # Buffer与FastBuffer
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

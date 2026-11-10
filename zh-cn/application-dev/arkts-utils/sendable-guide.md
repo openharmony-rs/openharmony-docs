@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Sendable对象的典型使用场景：跨并发实例传输大数据时以引用传递避免序列化深拷贝开销，以及跨并发实例传递带方法的class实例对象，并提供可直接参考的开发示例。"
+keywords: [Sendable使用场景, 大数据传输, 引用传递, 带方法的实例对象, 深拷贝优化, 跨并发实例, 共享对象]
+doctype: guide
+status: active
+---
+
 # Sendable使用场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

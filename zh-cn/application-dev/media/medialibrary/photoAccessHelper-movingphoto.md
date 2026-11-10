@@ -15,6 +15,8 @@
 - [使用MovingPhotoView播放动态照片](movingphotoview-guidelines.md)
 - [读取动态照片资源](#读取动态照片资源)
 
+除图片和视频分别保存的双文件形式外，动态照片还可以将图片和视频封装为单个文件，即合一动态照片，便于传输、备份和处理，详情请参考[使用合一动态照片](photoAccessHelper-singlefile-movingphoto.md)。
+
 拍摄动态照片的能力由Camera Kit提供，可参考[动态照片拍摄(ArkTS)](../camera/camera-moving-photo.md)。
 
 ## 保存动态照片资源

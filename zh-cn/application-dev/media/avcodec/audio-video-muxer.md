@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍将编码后的音视频数据按mp4、m4a、flv等格式封装为媒体文件的开发流程，支持音视频轨添加、封面与文件级元数据设置，适用于录像录音、编辑导出与转码保存场景。"
+keywords: [媒体数据封装, 封装器, OH_AVMuxer, mp4, m4a, flv, 音视频轨, 封面, 文件元数据]
+doctype: guide
+status: active
+---
+
 # 媒体数据封装
 
 <!--Kit: AVCodec Kit-->
@@ -33,7 +41,9 @@
 
 > **说明：**
 >
-> 如果调用封装模块写本地文件，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)：ohos.permission.READ_MEDIA, ohos.permission.WRITE_MEDIA。
+> - 封装的输出文件描述符（fd）必须以读写方式打开，由调用者负责关闭，要求详见[OH_AVMuxer_Create()](../../reference/apis-avcodec-kit/capi-native-avmuxer-h.md#oh_avmuxer_create)。
+>
+> - 如需将封装结果保存到媒体库（图库）并获取可写fd，可参考[保存媒体库资源](../medialibrary/photoAccessHelper-savebutton.md)文档，通过安全控件或授权弹窗创建媒体资源，无需申请ohos.permission.WRITE_IMAGEVIDEO权限。
 
 ### 在 CMake 脚本中链接动态库
 

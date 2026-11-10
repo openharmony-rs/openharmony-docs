@@ -56,7 +56,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -150,7 +150,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -251,7 +251,7 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -350,7 +350,7 @@ startAbilityForResult(want: Want, callback: AsyncCallback&lt;AbilityResult&gt;):
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -448,7 +448,7 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -554,7 +554,7 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityRes
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -662,7 +662,7 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1379,7 +1379,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1575,9 +1575,9 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                                                                    |
 | -------- | ----------------------------------------------------------------------------------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000001 | The specified ability does not exist.                                                                       |
 | 16000002 | Incorrect ability type.                                                                                     |
 | 16000004 | Cannot start an invisible component.                                                                      |
@@ -1717,9 +1717,9 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------- |
-| 201      | The application does not have permission to call the interface.        |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.        |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported.                                              |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                                              |
 | 16000001 | The specified ability does not exist.                                  |
 | 16000002 | Incorrect ability type.                                                |
 | 16000004 | Cannot start an invisible component.                                 |

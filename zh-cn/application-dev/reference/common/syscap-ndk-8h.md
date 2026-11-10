@@ -18,7 +18,7 @@
 
 **库：** libdeviceinfo_ndk.z.so
 
-**相关模块：** [syscapndk](capi-syscap-ndk.md)
+**相关模块：** [SyscapNdk](capi-syscap-ndk.md)
 
 ## 汇总
 

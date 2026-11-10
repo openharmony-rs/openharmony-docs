@@ -467,6 +467,8 @@ ellipsisMode属性需要与overflow设置为TextOverflow.Ellipsis以及maxLines�
 
 EllipsisMode.START和EllipsisMode.CENTER仅在单行文本超长时生效。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1576,8 +1578,6 @@ ArkTS-Sta: orphanCharOptimization(enabled: boolean | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 26.0.0
@@ -2142,6 +2142,8 @@ ArkTS-Sta: wordBreak(value: WordBreak | undefined)
 默认情况下，不调用wordBreak或者设置WordBreak.BREAK_WORD时，文本截断按字进行。例如，英文以单词为最小单位进行截断。
 
 WordBreak.BREAK_ALL与{overflow:&nbsp;TextOverflow.Ellipsis}、maxLines组合使用，可实现英文单词按字母截断，超出部分以省略号显示。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 

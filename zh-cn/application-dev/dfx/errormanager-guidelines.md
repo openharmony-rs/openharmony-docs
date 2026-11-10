@@ -26,7 +26,7 @@
 | off(type: "error", observerId: number): Promise&lt;void> | 以Promise的形式解除注册监听，传入的number为之前注册监听时返回的序号。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
 | on(type: 'globalErrorOccurred', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。<br/>**说明**：从API version 18开始，支持该接口。 |
 | off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | 以callback的形式解除注册监听。<br/>**说明**：<br/>- 从API version 18开始，支持该接口。<br/>- 注销监听器时可以监听进程中所有线程的异常，建议在进程回收时调用off接口，否则可能造成应用崩溃。 |
-| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用promise异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。<br/>说明：从API version 18开始，支持该接口。 |
+| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用promise异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。<br/>**说明**：从API version 18开始，支持该接口。 |
 | off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | 以callback的形式解除注册监听。<br/>**说明**：<br/>- 从API version 18开始，支持该接口。<br/>- 注销监听器时可以监听进程中所有线程的异常，建议在进程回收时调用off接口，否则可能造成应用崩溃。 |
 | on(type: 'loopObserver', timeout: number, observer: LoopObserver): void | 注册主线程消息处理耗时监听器，当系统监测到应用主线程事件处理超时时会回调该监听。<br/>只能在主线程调用，多次注册后，后一次的注册会覆盖前一次的。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
 | off(type: 'loopObserver', observer?: LoopObserver): void | 以LoopObserver的形式解除应用主线程消息处理耗时监听。<br/>**说明**：仅ArkTS-Dyn支持该接口。|

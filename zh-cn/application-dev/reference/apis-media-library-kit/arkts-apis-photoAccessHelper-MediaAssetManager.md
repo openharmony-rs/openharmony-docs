@@ -435,7 +435,7 @@ static loadMovingPhoto(context: Context, imageFileUri: string, videoFileUri: str
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Failed to parse parameters. Please check the number and types of parameters.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>User file client initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry. |
 
 **示例：**
 
@@ -450,6 +450,54 @@ async function example(context: Context) {
   }
 }
 
+```
+
+## loadSingleFileMovingPhoto
+
+static loadSingleFileMovingPhoto(singleFileMovingPhotoUri: string): MovingPhoto
+
+加载合一动态照片，将其转换为[MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md)对象。合一动态照片是指将图片和视频封装在同一个文件中的动态照片，更便于传输、备份和分享。相关开发指导请参考[使用合一动态照片](../../media/medialibrary/photoAccessHelper-singlefile-movingphoto.md)。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                      |
+| -------- | ------ | ---- | ------------------------- |
+| singleFileMovingPhotoUri | string | 是   | 合一动态照片URI。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) | 返回加载成功的动态照片对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The singleFileMovingPhotoUri is empty or can not open.<br>2. The singleFileMovingPhotoUri is belonging to MediaLibrary. |
+| 23800109 | Incorrect file format. |
+
+**示例：**
+
+```ts
+async function example(context: Context) {
+  try {
+    // singleFileMovingPhotoUri需指向一个完整的合一动态照片，不能为空，且不能属于媒体库URI。
+    let singleFileMovingPhotoUri: string = 'file://com.example.temptest/data/storage/el2/base/haps/EntryFile.jpg'; // 合一动态照片URI。
+    let movingPhoto: photoAccessHelper.MovingPhoto = photoAccessHelper.MediaAssetManager.loadSingleFileMovingPhoto(singleFileMovingPhotoUri);
+    console.info('Succeeded in loading single file moving photo, uri: ' + movingPhoto.getUri());
+  } catch (err) {
+    console.error(`Failed to load single file moving photo. Code: ${err.code}, message: ${err.message}`);
+  }
+}
 ```
 
 ## quickRequestImage<sup>13+</sup>
@@ -487,7 +535,7 @@ static quickRequestImage(context: Context, asset: PhotoAsset, requestOptions: Re
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>User file client initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please retry. |
+| 14000011 | Internal system error. |
 
 **示例：**
 

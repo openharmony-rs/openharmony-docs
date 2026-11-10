@@ -14,7 +14,7 @@
   - [Timer (定时器)](js-apis-timer.md)
 - C API<!--common-basic-c-->
   - 模块<!--common-basic-module-->
-    - [syscapndk](capi-syscap-ndk.md)
+    - [SyscapNdk](capi-syscap-ndk.md)
     - [JSVM](capi-jsvm.md)
   - 头文件<!--common-basic-headerfile-->
     - [syscap_ndk.h](syscap-ndk-8h.md)

@@ -15,6 +15,8 @@
   - [SystemProperties.WINDOW_SIZE_PX](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#systemproperties)，用于获取窗口的大小信息，单位为px。
   - [SystemProperties.WINDOW_AVOID_AREA](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#systemproperties)，用于获取窗口的避让区域信息，单位为vp。
   - [SystemProperties.WINDOW_AVOID_AREA_PX](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#systemproperties)，用于获取窗口的避让区域信息，单位为px。
+  - [WritableEnvKey.DIRECTION](../../reference/apis-arkui/arkui-ts/ts-env-system-property.md#writableenvkey)，用于获取窗口所在屏幕的布局方向。
+  - [WritableEnvKey.FONT_SCALE](../../reference/apis-arkui/arkui-ts/ts-env-system-property.md#writableenvkey)，用于获取局部字体缩放倍数。
 - 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新。
 - \@Env装饰的变量不允许开发者初始化。\@Env会返回给开发者可观察的环境变量类的实例。开发者如果想监听环境变量的变化，可以使用[addMonitor](./arkts-static-new-addmonitor-clearmonitor.md)，具体示例见[在\@ComponentV2中使用\@Env](#在componentv2中使用env)。
 

@@ -134,6 +134,21 @@ static struct OH_Huks_Blob g_keyAlias02001 = {(uint32_t)strlen("HksX25519AgreeKe
 <!-- @[key_agreement_X25519_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/cpp/types/projects/napi_X25519.cpp) -->
 
 ``` C++
+static OH_Huks_Result MallocAndCheckBlobData(struct OH_Huks_Blob *blob, const uint32_t blobSize)
+{
+    struct OH_Huks_Result ret;
+    ret.errorCode = OH_HUKS_SUCCESS;
+    if (blobSize == 0 || blobSize > X25519_COMMON_SIZE) {
+        ret.errorCode = OH_HUKS_ERR_CODE_INTERNAL_ERROR;
+        return ret;
+    }
+    blob->data = (uint8_t *)malloc(blobSize);
+    if (blob->data == NULL) {
+        ret.errorCode = OH_HUKS_ERR_CODE_INTERNAL_ERROR;
+    }
+    return ret;
+}
+
 /* 导出密钥 */
 OH_Huks_Result HksX25519AgreeExport(const struct OH_Huks_Blob *keyAlias1, const struct OH_Huks_Blob *keyAlias2,
     struct OH_Huks_Blob *publicKey1, struct OH_Huks_Blob *publicKey2,

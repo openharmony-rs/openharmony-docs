@@ -6,7 +6,7 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-[EAWorker](./eaworker_managed.md)执行任务返回值的句柄，用于表征一个任务。包含两个类：
+[EAWorker](./eaworker-managed.md)执行任务返回值的句柄，用于表征一个任务。包含两个类：
 - [Job](#job)：执行任务返回值的句柄，可通过[Await](#await)等待获取任务的返回值。
 - [CompletableJob](#completablejob)：继承自Job，可手动设置任务执行结果。
 

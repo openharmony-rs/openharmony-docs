@@ -660,7 +660,7 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 type PiPActionEventType = PiPVideoActionEvent | PiPCallActionEvent | PiPMeetingActionEvent | PiPLiveActionEvent
 
-画中画控制面板控件动作事件类型，支持以下四种。
+画中画控制面板控件动作事件类型。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1815,7 +1815,7 @@ on(type: 'pipWindowSizeChange', callback: Callback&lt;PiPWindowSize&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Params error. Possible causes: Callback is already registered. |
 | 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
-| 1300014    | PiP internal error.                                    |
+| 1300014    | PiP internal error. Possible cause: The PiP controller has been destroyed. |
 
 **示例：**
 

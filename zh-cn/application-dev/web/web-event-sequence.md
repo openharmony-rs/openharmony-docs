@@ -179,7 +179,6 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 // xxx.ets
-'use static'
 import { WebResourceRequest, WebResourceResponse, OnRenderExitedEvent, OnPageBeginEvent, RenderProcessNotRespondingReason, RenderProcessNotRespondingData, Entry, Component, Column, Row, Button, Web, Header } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 import { BusinessError, RecordData } from '@ohos.base';
@@ -344,7 +343,7 @@ struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
 
   // 指定加载的页面。
-  url: string = "www.example.com";
+  url: string = 'www.example.com';
   build() {
     Column() {
       Web({ src: this.url, controller: this.controller })
@@ -394,7 +393,6 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 // xxx.ets
-'use static'
 import webview from '@ohos.web.webview';
 import hilog from '@ohos.hilog'
 import { OnRenderExitedEvent, RenderExitReason, Entry, Component, Column, Web } from '@ohos.arkui.component';

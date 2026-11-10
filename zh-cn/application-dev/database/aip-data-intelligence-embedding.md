@@ -69,21 +69,11 @@
 
 1. 导入模块。
 
-   ArkTS-Dyn示例：
-
    <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
-   ```
-
-   ArkTS-Sta示例：
-
-   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   import { intelligence } from '@kit.ArkData';
    ```
 
 2. 获取文本嵌入模型。
@@ -101,7 +91,7 @@
        cachePath: "/data"
      }
      let textEmbedding: intelligence.TextEmbedding;
-     let modelInfo:  intelligence.CloudModelInfo;
+     let modelInfo: intelligence.CloudModelInfo;
      ```
 
      <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
@@ -162,6 +152,10 @@
            modelInfo = info[0];
          }
        })
+       .catch((err: BusinessError) => {
+         console.error('Failed to get supported model and code is ' + err.code);
+         // ...
+       })
      ```
 
      <!-- @[aip_getCloudTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
@@ -194,6 +188,10 @@
          if (info.length > 0) {
            modelInfo = info[0];
          }
+       })
+       .catch((err) => {
+        console.error('Failed to get supported model and code is ' + err.code);
+         // ...
        })
      ```
 
@@ -400,21 +398,11 @@
 
 1. 导入模块。
 
-   ArkTS-Dyn示例：
-
    <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
-   ```
-
-   ArkTS-Sta示例：
-
-   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Aip/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   import { intelligence } from '@kit.ArkData';
    ```
 
 2. 获取图像嵌入模型。

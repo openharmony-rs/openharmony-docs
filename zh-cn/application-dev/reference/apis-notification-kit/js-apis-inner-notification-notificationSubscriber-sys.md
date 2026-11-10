@@ -11,7 +11,7 @@
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
-> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API版本7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块为系统接口。
 
@@ -168,7 +168,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 onUpdate?: (data: NotificationSortingMap) => void
 
-更新[通知排序](../../notification/notification-glossary.md#notification-sorting通知排序)的回调函数。预留能力，暂未支持。
+更新通知排序的回调函数。预留能力，暂未支持。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -443,7 +443,7 @@ onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
 
 > **说明：**
 >
-> 此接口从API version 8开始支持，从API version 11开始不再维护，建议使用[onDoNotDisturbChanged](js-apis-inner-notification-notificationSubscriber-sys.md#ondonotdisturbchanged11)代替。
+> 此接口从API版本8开始支持，从API版本11开始不再维护，建议使用[onDoNotDisturbChanged](js-apis-inner-notification-notificationSubscriber-sys.md#ondonotdisturbchanged11)代替。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -862,7 +862,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | 名称   | 类型    | 只读 | 可选 | 说明             |
 | ------ | ------- | ---- | --- | ---------------- |
 | onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | 否 | 是 | 返回携带系统属性值的通知信息。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
-| onEnabledSilentReminderChanged | [EnabledSilentReminderChangedCallback](#enabledsilentreminderchangedcallback24) | 否 | 是 | 返回应用通知[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)的使能状态变化。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
+| onEnabledSilentReminderChanged | [EnabledSilentReminderChangedCallback](#enabledsilentreminderchangedcallback24) | 否 | 是 | 返回应用通知静默提醒的使能状态变化。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
 | onBadgeEnabledChanged | [BadgeEnabledChangedCallback](#badgeenabledchangedcallback12) | 否 | 是 | 返回应用角标的使能状态变化。 <br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23|
 | onNotificationSwitchChanged | [NotificationSwitchChangedCallback](#notificationswitchchangedcallback) | 否 | 是 | 返回由[notificationManager.setNotificationSwitch](js-apis-notificationManager-sys.md#notificationmanagersetnotificationswitch)接口设置的通知开关状态变化。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/> **模型约束：** 此接口仅可在Stage模型下使用。|
 
@@ -881,7 +881,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | 名称            | 类型                                                                 | 只读 | 可选 | 说明     |
 | --------------- |--------------------------------------------------------------------| ---- | --- | -------- |
 | request         | [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) | 是  | 否  | [通知内容](../../notification/notification-glossary.md#notification-content通知内容)。 |
-| sortingMap      | [NotificationSortingMap](js-apis-inner-notification-notificationSortingMap-sys.md) | 是  | 是  | [通知排序](../../notification/notification-glossary.md#notification-sorting通知排序)信息。 |
+| sortingMap      | [NotificationSortingMap](js-apis-inner-notification-notificationSortingMap-sys.md) | 是  | 是  | 通知排序信息。 |
 | reason          | ArkTS-Dyn:number <br/>ArkTS-Sta:int                                                             | 是  | 是  | 删除原因（1:点击通知后删除通知，2:用户删除通知） 。|
 | sound           | string                                                             | 是  | 是  | 通知声音。 |
 | vibrationValues | ArkTS-Dyn:Array\<number\> <br/>ArkTS-Sta:Array\<long\>      | 是  | 是  | 通知振动。 |
@@ -904,7 +904,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ## EnabledSilentReminderCallbackData<sup>24+</sup>
 
-应用通知[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)开关状态变化的回调数据。
+应用通知静默提醒开关状态变化的回调数据。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -935,7 +935,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | bundle      | string | 是   | 否   | 应用的包名。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23 |
 | uid         | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 应用的uid。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23  |
 | badgeNumber | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 角标个数。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23   |
-| instanceKey<sup>(deprecated)</sup>  | number | 是   | 是   | 应用实例键值。从API version 12开始支持，从API version 15开始废弃，建议使用appInstanceKey替代。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn<br/>**ArkTS-Dyn起始版本**：12   |
+| instanceKey<sup>(deprecated)</sup>  | number | 是   | 是   | 应用实例键值。从API版本12开始支持，从API版本15开始废弃，建议使用appInstanceKey替代。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn<br/>**ArkTS-Dyn起始版本**：12   |
 | appInstanceKey<sup>15+</sup>  | string | 是   | 是   | 应用实例键值。<br/> **ArkTS-Dyn起始版本**：15<br/>**ArkTS-Sta起始版本**：23   |
 
 
@@ -949,7 +949,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 | 名称        | 类型   | 只读 | 可选 | 说明         |
 | ----------- | ------ | ---- | ---- | ------------ |
-| enable | boolean | 是  | 否  | 所有通知的优先使能状态。<br> - true：允许设置为[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)。<br> - false：禁止设置为优先通知。 |
+| enable | boolean | 是  | 否  | 所有通知的优先使能状态。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
 
 ## EnabledPriorityNotificationByBundleCallbackData<sup>23+</sup>
 
@@ -1151,7 +1151,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) => void
 
-注册应用通知[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)使能状态变化的回调函数类型。
+注册应用通知静默提醒使能状态变化的回调函数类型。
 
 **系统能力**：SystemCapability.Notification.Notification
 

@@ -437,11 +437,11 @@ ArkTS-Dyn: showCounter(value: boolean, options?: InputCounterOptions)
 
 ArkTS-Sta: showCounter(value: boolean | undefined, options?: InputCounterOptions)
 
-设置当通过InputCounterOptions输入的字符数超过阈值时显示计数器。未调用showCounter接口时，默认不显示计数器。
+设置当输入的字符数超过阈值时显示计数器，阈值通过[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)配置。未调用showCounter接口时，默认不显示计数器。
 
-参数value为true时，才能设置options，文本框开启计数器功能，需要配合maxLength（设置最大字符限制）一起使用，未设置maxLength时计数器功能不生效。字符计数器显示的效果是当前输入字符数/最大可输入字符数。
+参数value为true时，才能设置options，文本框开启计数器功能，需要配合[maxLength](#maxlength10)（设置最大字符限制）一起使用，未设置maxLength时计数器功能不生效。字符计数器显示的效果是当前输入字符数/最大可输入字符数。
 
-当输入字符数大于最大字符数乘百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数达到最大字符数时，边框和计数器下标将变为红色。若用户同时设置参数value为true和InputCounterOptions，当thresholdPercentage数值在有效区间内且输入字符数超过最大字符数时，边框和计数器下标将变为红色，框体抖动。计数器默认显示红色边框；highlightBorder设置为false时，则不显示红色边框。内联模式下字符计数器不显示。
+当输入字符数大于最大字符数乘以[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)中的thresholdPercentage百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数超过最大字符数时，边框和计数器下标将变为红色。用户同时设置参数value为true和[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)，当InputCounterOptions中的thresholdPercentage数值在有效区间[1, 100]内，且输入字符数超过最大字符数时，边框和计数器下标将变为红色，框体抖动；InputCounterOptions中的highlightBorder设置为false时，则不显示红色边框。内联模式下字符计数器不显示。
 
 [示例2（设置计数器）](#示例2设置计数器)展示了设置showCounter的效果。
 
