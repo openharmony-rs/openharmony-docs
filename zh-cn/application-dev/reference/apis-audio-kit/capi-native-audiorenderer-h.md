@@ -184,7 +184,9 @@ standby状态主要用于音频播放过程中短暂无数据的情况，如流�
 
 standby状态下也可以直接调用[OH_AudioRenderer_Pause](#oh_audiorenderer_pause), [OH_AudioRenderer_Stop](#oh_audiorenderer_stop), [OH_AudioRenderer_Release](#oh_audiorenderer_release)停止播放，但不可调用[OH_AudioRenderer_Start](#oh_audiorenderer_start)。
 
-注意，此接口并不会改变通过[OH_AudioRenderer_GetCurrentState](#oh_audiorenderer_getcurrentstate)获取的状态。
+>**注意：**
+>
+> 此接口并不会改变通过[OH_AudioRenderer_GetCurrentState](#oh_audiorenderer_getcurrentstate)获取的状态。
 
 **起始版本：** 26.1.0
 
@@ -195,7 +197,7 @@ standby状态下也可以直接调用[OH_AudioRenderer_Pause](#oh_audiorenderer_
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向通过[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频播放流。 |
 | bool on | 进入或退出standby状态，true表示进入，false表示退出。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
