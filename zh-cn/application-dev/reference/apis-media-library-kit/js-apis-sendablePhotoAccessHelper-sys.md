@@ -570,8 +570,6 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core。
 
-### 属性
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | --- | ---- | ---- | --- |
 | fileId | number | 否 | 否 | 图片资产标识ID。|
