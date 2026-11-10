@@ -37645,9 +37645,9 @@
 						"start_line":57
 					},
 					{
-						"end_line":515,
+						"end_line":706,
 						"name":"SetRendererCallback",
-						"start_line":193
+						"start_line":212
 					},
 					{
 						"end_line":181,
@@ -38457,9 +38457,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp",
 				"functions":[
 					{
-						"end_line":21,
+						"end_line":23,
 						"name":"header_file",
-						"start_line":18
+						"start_line":19
 					},
 					{
 						"end_line":283,
@@ -66485,7 +66485,7 @@
 						"start_line":601
 					},
 					{
-						"end_line":22,
+						"end_line":23,
 						"name":"header_file",
 						"start_line":19
 					},
