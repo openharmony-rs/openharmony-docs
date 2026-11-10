@@ -773,7 +773,7 @@ scrollPlaceholder(provider?: PlaceholderProvider)
 
 > **说明：**
 >
-> - 真实瀑布流子组件创建完成后，在[FlowItem](ts-container-flowitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
+> 真实瀑布流子组件创建完成后，在[FlowItem](ts-container-flowitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -799,7 +799,7 @@ scrollPlaceholder(provider: PlaceholderProvider | undefined)
 
 > **说明：**
 >
-> - 真实瀑布流子组件创建完成后，在[FlowItem](ts-container-flowitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
+> 真实瀑布流子组件创建完成后，在[FlowItem](ts-container-flowitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
