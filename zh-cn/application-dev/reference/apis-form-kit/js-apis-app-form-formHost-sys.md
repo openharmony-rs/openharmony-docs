@@ -4005,7 +4005,7 @@ try {
 
 onGetVisibleFormRect(callback: formInfo.GetFormRectInfoCallback): void
 
-订阅请求可见卡片位置和尺寸事件。使用callback异步回调。
+订阅请求可见卡片位置和尺寸事件。
 
 **起始版本：** 26.0.1
 
@@ -4065,7 +4065,7 @@ try {
 
 offGetVisibleFormRect(callback?: formInfo.GetFormRectInfoCallback): void
 
-取消订阅请求可见卡片位置和尺寸事件。使用callback异步回调。
+取消订阅请求可见卡片位置和尺寸事件。
 
 **起始版本：** 26.0.1
 
