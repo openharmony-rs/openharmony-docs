@@ -462,3 +462,9 @@ status: active
    ```
 
 2. 实现通话功能，请参考[开发音频通话功能](../audio/audio-call-development.md)。
+
+## 相关主题推荐
+
+- [应用接入AVSession场景介绍](avsession-access-scene.md)
+- [AVSession Kit简介](avsession-overview.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)

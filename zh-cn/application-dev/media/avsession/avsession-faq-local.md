@@ -112,3 +112,9 @@ status: active
      更多说明请参考[设置后台播放模式](avsession-background-scene.md#设置后台播放模式)。
 
 <!--RP1--><!--RP1End-->
+
+## 相关主题推荐
+
+- [应用接入AVSession场景介绍](avsession-access-scene.md)
+- [后台播放](avsession-background-scene.md)
+- [AVSession Kit简介](avsession-overview.md)

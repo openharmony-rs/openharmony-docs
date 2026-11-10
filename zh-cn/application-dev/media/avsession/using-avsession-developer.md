@@ -661,3 +661,10 @@ status: active
 针对媒体会话提供方开发，有以下相关实例可供参考：
 
 - [媒体会话——提供方（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVSession/MediaProvider)
+
+## 相关主题推荐
+
+- [媒体会话提供方(C/C++)](using-ohavsession-developer.md)
+- [本地媒体会话概述](local-avsession-overview.md)
+- [应用接入AVSession场景介绍](avsession-access-scene.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)

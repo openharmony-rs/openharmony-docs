@@ -127,3 +127,9 @@ status: active
      }
    }
    ```
+
+## 相关主题推荐
+
+- [媒体会话提供方(ArkTS)](using-avsession-developer.md)
+- [应用接入AVSession场景介绍](avsession-access-scene.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)
