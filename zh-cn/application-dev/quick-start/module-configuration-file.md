@@ -1417,3 +1417,22 @@ skillProfiles标签示例：
 launchServices标签示例：
 
 <!-- @[module_launchServices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    // ...
+    "launchServices": [
+      {
+        "name": "mydaemon",
+        "binaryPath": "mydaemon/testdaemon",
+        "runAtLoad": true,
+        "keepAlive": true,
+        "provideIpcService": false,
+        "type": "daemon"
+      }
+    ],
+    // ...
+  },
+}
+```
