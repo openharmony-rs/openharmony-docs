@@ -290,7 +290,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | sqrFactor            | number                        | 否   | 是   | 设置SQR码控模式的质量参数。<br>取值为整数，取值范围为[0, 51]，值越小，编码输出码率越大，画质越高。<br>需要先设置enableStableQualityMode为true，SQR码控模式的质量参数设置才生效。<br>该参数为视频转码场景下的可选项，默认值为25。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0|
 | destHDRMode           | [DestHDRMode](arkts-apis-media-e.md#desthdrmode) | 否   | 是   | 指定目标文件的HDR格式。<br>当指定为AUTO_HDR_VIVID模式时，支持将HDR Vivid视频转码为新的HDR Vivid视频，其他格式视频转为SDR。<br>进行HDR Vivid视频转码时，必须设置视频编码格式为HEVC，且不支持添加水印。<br>该参数为视频转码场景下的可选项，默认值为SDR模式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0|
 | startTime            | number                        | 否   | 是   | 指定起始转码的时间点，单位为毫秒（ms）。<br>默认从源文件的起始处开始转码。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0| 
-| endTime            | number                        | 否   | 是   | 指定结束转码的时间点，单位为毫秒ms。<br>默认转码到源文件的结束位置。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0| 
+| endTime            | number                        | 否   | 是   | 指定结束转码的时间点，单位为毫秒（ms）。<br>默认转码到源文件的结束位置。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 26.1.0 <br> **ArkTS-Sta起始版本：** 26.1.0| 
 
 
 ## AVMetadata<sup>11+</sup>
