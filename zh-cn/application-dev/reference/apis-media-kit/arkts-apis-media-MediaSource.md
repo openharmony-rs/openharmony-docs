@@ -183,7 +183,11 @@ getTrackSelectionFilter(): TrackSelectionFilter | undefined
 
 setTransparentVideoLayoutMode(mode : SideBySideTransparentVideoLayoutMode): void
 
-设置并排（Side-by-Side）模式下视频源的布局信息，用于引导播放器合成正确的透明视频。透明视频是指每一帧画面都携带像素透明度信息的视频。如果入参非法设置，则当作普通视频播放。
+设置并排（Side-by-Side）模式下视频源的布局信息，用于引导播放器合成正确的透明视频。
+
+> **说明：**
+>
+> - 透明视频是指每一帧画面都携带像素透明度信息的视频。如果入参非法设置，则当作普通视频播放。
 
 **起始版本：** 26.1.0
 
