@@ -41,7 +41,7 @@
 
 **环境与版本**
 
-- API版本≥14是必要条件：`setRestoreEnabled()`与router页面`recoverable`属性自API版本14起可用，Navigation/NavDestination的`recoverable`属性自API版本14起可用，低于API版本14无从适配。
+- 本机制自API版本14起可用（`setRestoreEnabled()`及各`recoverable`属性均为API版本14起），低于该版本无从适配。
 - 应用正常关闭不触发备份；备份数据默认保存7天。
 - 备份恢复机制依赖任务保留机制：设置`removeMissionAfterTerminate`为true或设备不支持任务保留（如PC/2in1设备）时机制不生效；[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)不支持备份恢复。
 
