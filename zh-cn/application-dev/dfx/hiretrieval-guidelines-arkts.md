@@ -14,6 +14,11 @@
 
 开发者在云端新建任务时，可以选择已实现的一类故障。<!--RP2End-->在任务激活期间，被圈选的设备发生了对应故障，则会自动采集对应的日志并上传到云端。
 
+> **说明：**
+>
+> 对于API版本26.1.0及之后的版本，应用灰度支持多实例应用。
+> 对于API版本xxx之前的版本，应用灰度不支持多实例应用，若在多实例应用中调用[hiRetrieval.init()](../reference/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit)，会抛出错误码。
+
 ## 工作原理
 
 ### 故障感知
@@ -29,6 +34,8 @@
 ## 应用灰度采集开发指导
 
 1. 导入所需的依赖模块，以EntryAbility.ets为例。 
+
+   <!-- @[hiretrieval_import_sample_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiRetrieval/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
