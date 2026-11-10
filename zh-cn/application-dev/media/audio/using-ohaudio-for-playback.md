@@ -305,6 +305,20 @@ int32_t MyOnWriteDataWithMetadata_New(
 
 <!-- @[Render_Standby](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) --> 
 
+``` C++
+// 进入standby状态。仅在STATE_RUNNING状态下可调用。
+OH_AudioStream_Result result = OH_AudioRenderer_Standby(audioRenderer, true);
+if (result == AUDIOSTREAM_SUCCESS) {
+    // 数据回调已暂停，已写入的缓存继续播放。
+}
+
+// 退出standby状态。仅在standby状态下可调用。
+result = OH_AudioRenderer_Standby(audioRenderer, false);
+if (result == AUDIOSTREAM_SUCCESS) {
+    // 数据回调恢复。
+}
+```
+
 ### 相关实例
 
 针对OHAudio开发音频播放的相关实例请参考：[OHAudio录制和播放](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/OHAudio)。
