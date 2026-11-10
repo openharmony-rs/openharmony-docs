@@ -5,6 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3ddb6f7d5458e03f96ae5f64e626eb2fb03d26f6 translatedAt=2026-11-09T11:40:52.205Z pushedAt=2026-11-10T01:59:23.643Z nl=1 -->
 
 ```c
 typedef struct ArkUI_Context ArkUI_Context
@@ -18,4 +19,5 @@ Defines a context object of the ArkUI native UI, which is used to represent the 
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [drag_and_drop.h](capi-drag-and-drop-h.md)
+**Header file**: [native_type.h](capi-native-type-h.md)
+

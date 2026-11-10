@@ -1,12 +1,11 @@
-# ArkUI_RectShapeOption
-
+# ArkUI_RectShape
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=14647830c0b40a7fab26ca8e2bdacb7a37348965 translatedAt=2026-08-19T08:27:43.200Z pushedAt=2026-08-20T06:49:12.104Z -->
+<!-- md-trans-meta sourceCommit=1e574c3201e96cfe7f2709f4dc19e462d9daf562 translatedAt=2026-11-09T11:48:01.009Z pushedAt=2026-11-10T03:36:11.181Z nl=1 -->
 
 ```c
 typedef struct ArkUI_RectShape ArkUI_RectShapeOption

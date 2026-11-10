@@ -1,16 +1,15 @@
 # list_item.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @rongShao-Z; @wind_-->
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c49fd674e4d037d5cc12381f25673ba96011cc7b translatedAt=2026-08-21T10:45:42.405Z pushedAt=2026-08-21T12:03:54.027Z -->
+<!-- md-trans-meta sourceCommit=2b1373bdea0c2dc5f591760f8e7f35ba986a08d2 translatedAt=2026-11-09T11:53:19.658Z pushedAt=2026-11-10T06:37:50.919Z nl=1 -->
 
 ## Overview
 
-Defines the enumerations and APIs related to the swipe operation of the **ListItem** component, including setting a swipe action item, the swipe distance threshold for deleting the list item, and the swipe state change callback. It can be used to implement interactive scenarios such as displaying an operation menu when a list item is swiped or deleting a list item through a swipe distance.
+Defines the enumerations and APIs related to the swipe action of the **ListItem** component, including setting a swipe action item, the swipe distance threshold for deleting the list item, and the swipe state change callback. It can be used to implement interactive scenarios such as displaying an operation menu when a list item is swiped or deleting a list item through a swipe distance.
 
 **File to include:** <arkui/node_attributes/list_item.h>
 
@@ -62,8 +61,8 @@ Defines the enumerations and APIs related to the swipe operation of the **ListIt
 | [void OH_ArkUI_ListItemSwipeActionOption_SetEnd(ArkUI_ListItemSwipeActionOption\* option, ArkUI_ListItemSwipeActionItem\* item)](#oh_arkui_listitemswipeactionoption_setend) | Sets the layout content of **ListItemSwipeActionItem** on the right (in vertical layout) or bottom (in horizontal layout). |
 | [void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionOption\* option, ArkUI_ListItemSwipeEdgeEffect edgeEffect)](#oh_arkui_listitemswipeactionoption_setedgeeffect) | Sets the edge swipe effect. |
 | [int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActionOption\* option)](#oh_arkui_listitemswipeactionoption_getedgeeffect) | Obtains the edge swipe effect. |
-| [void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeActionOption\* option, void (\*callback)(float offset))](#oh_arkui_listitemswipeactionoption_setonoffsetchange) | Sets the callback invoked when the swipe operation offset changes. |
-| [void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(ArkUI_ListItemSwipeActionOption\* option, void\* userData, void (\*callback)(float offset, void\* userData))](#oh_arkui_listitemswipeactionoption_setonoffsetchangewithuserdata) | Sets the callback invoked when the swipe operation offset changes. The callback event will carry user-defined data. |
+| [void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeActionOption\* option, void (\*callback)(float offset))](#oh_arkui_listitemswipeactionoption_setonoffsetchange) | Sets the callback invoked when the swipe action offset changes. |
+| [void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(ArkUI_ListItemSwipeActionOption\* option, void\* userData, void (\*callback)(float offset, void\* userData))](#oh_arkui_listitemswipeactionoption_setonoffsetchangewithuserdata) | Sets the callback invoked when the swipe action offset changes. The callback event will carry user-defined data. |
 | [int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListItemSwipeActionDirection direction)](#oh_arkui_listitemswipeaction_expand) | Expands the swipe-out menu of the specified list item. |
 | [int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)](#oh_arkui_listitemswipeaction_collapse) | Collapses the swipe-out menu of the specified list item. |
 
@@ -76,6 +75,7 @@ enum ArkUI_ListItemSwipeActionState
 ```
 
 **Description**
+
 
 Enumerates the swipe states of a list item in the [swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) API of the [ListItem](./arkui-ts/ts-container-listitem.md#listitem10) component. A swipe action is performed horizontally in a vertical list and vertically in a horizontal list. The default value is **ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED**.
 
@@ -94,6 +94,7 @@ enum ArkUI_ListItemSwipeEdgeEffect
 ```
 
 **Description**
+
 
 Defines the edge swipe effects of the [swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) API of the **ListItem** component. The default value is **ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING**. The swipe-out component refers to the action item content displayed during a swipe action.
 
@@ -131,6 +132,7 @@ ArkUI_ListItemSwipeActionItem* OH_ArkUI_ListItemSwipeActionItem_Create()
 
 **Description**
 
+
 Creates an item configuration set by the **swipeAction** API of the **ListItem** component.
 
 **Since:** 12
@@ -149,9 +151,11 @@ void OH_ArkUI_ListItemSwipeActionItem_Dispose(ArkUI_ListItemSwipeActionItem* ite
 
 **Description**
 
+
 Disposes of the **ListItemSwipeActionItem** instance created by **OH_ArkUI_ListItemSwipeActionItem_Create**. Call this API to release the instance after use to avoid memory leaks.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -167,9 +171,11 @@ void OH_ArkUI_ListItemSwipeActionItem_SetContent(ArkUI_ListItemSwipeActionItem* 
 
 **Description**
 
+
 Sets the layout content of **ListItemSwipeActionItem**.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -186,9 +192,11 @@ void OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance(ArkUI_ListItemSwipeA
 
 **Description**
 
+
 Sets the swipe distance threshold for deleting the list item, that is, the distance for triggering list item deletion by swipe. When the swipe-out component is fully swiped out and the user continues swiping, and the threshold is greater than 0 and less than the size of the list item in the swipe direction minus the size of the swipe-out component in the swipe direction, the list item enters the delete area once the continued swipe distance reaches or exceeds the threshold.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -205,9 +213,11 @@ float OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance(ArkUI_ListItemSwipe
 
 **Description**
 
+
 Obtains the swipe distance threshold for deleting the list item.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -229,9 +239,11 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea(ArkUI_ListItemSwipeAc
 
 **Description**
 
+
 Sets the callback invoked each time the list item enters the delete area. This callback is triggered only when the swipe distance threshold for deleting the list item is valid and a delete area is formed.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -248,9 +260,11 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData(ArkUI_Lis
 
 **Description**
 
+
 Sets the callback invoked each time the list item enters the delete area. The callback event will carry user-defined data. It is triggered only when the swipe distance threshold for deleting the list item is valid and a delete area is formed.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -268,9 +282,11 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem*
 
 **Description**
 
+
 Sets the callback invoked each time the [list item](./arkui-ts/ts-container-listitem.md) is deleted while in the delete area. The callback is triggered only when the distance threshold for deleting the list item is within the valid range (greater than 0 and less than the size of the list item in the swipe direction minus the size of the swipe-out component in the swipe direction), and the release position after swiping exceeds or reaches threshold.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -287,9 +303,11 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(ArkUI_ListItemSwip
 
 **Description**
 
+
 Sets the callback invoked each time the list item is deleted while in the delete area. The callback event will carry user-defined data. The callback is triggered only when the distance threshold for deleting the list item is within the valid range (greater than 0 and less than the size of the list item in the swipe direction minus the size of the swipe-out component in the swipe direction), and the release position after swiping exceeds or reaches the threshold.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -307,9 +325,11 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea(ArkUI_ListItemSwipeAct
 
 **Description**
 
+
 Sets the callback invoked each time the list item exits the delete area. This callback is triggered only when the swipe distance threshold for deleting the list item is valid and a delete area is formed.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -326,9 +346,11 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData(ArkUI_List
 
 **Description**
 
+
 Sets the callback invoked each time the list item exits the delete area. The callback event will carry user-defined data. It is triggered only when the swipe distance threshold for deleting the list item is valid and a delete area is formed.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -346,9 +368,11 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange(ArkUI_ListItemSwipeAction
 
 **Description**
 
+
 Sets the callback invoked when the swipe state of the list item changes. The swipe state of a list item switches among the collapsed, expanded, and long swipe distance. For details about the states, see [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate).
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -365,9 +389,11 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData(ArkUI_ListIte
 
 **Description**
 
+
 Sets the callback invoked when the swipe state of the list item changes. The callback event will carry user-defined data. The swipe state of a list item switches among the collapsed, expanded, and long swipe distance. For details about the states, see [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate).
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -384,6 +410,7 @@ ArkUI_ListItemSwipeActionOption* OH_ArkUI_ListItemSwipeActionOption_Create()
 ```
 
 **Description**
+
 
 Creates a configuration option set by the **swipeAction** API of the **ListItem** component.
 
@@ -403,9 +430,11 @@ void OH_ArkUI_ListItemSwipeActionOption_Dispose(ArkUI_ListItemSwipeActionOption*
 
 **Description**
 
+
 Disposes of the **ListItemSwipeActionOption** instance created by **OH_ArkUI_ListItemSwipeActionOption_Create**. Call this API to release the instance after use to avoid memory leaks.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -421,9 +450,11 @@ void OH_ArkUI_ListItemSwipeActionOption_SetStart(ArkUI_ListItemSwipeActionOption
 
 **Description**
 
+
 Sets the layout content of **ListItemSwipeActionItem** on the left (in vertical layout) or top (in horizontal layout). This layout content can be expanded programmatically through the **OH_ArkUI_ListItemSwipeAction_Expand** API.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -440,9 +471,11 @@ void OH_ArkUI_ListItemSwipeActionOption_SetEnd(ArkUI_ListItemSwipeActionOption* 
 
 **Description**
 
+
 Sets the layout content of **ListItemSwipeActionItem** on the right side (vertical layout) or bottom side (horizontal layout). This layout content can be programmatically expanded through the **OH_ArkUI_ListItemSwipeAction_Expand** API.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -459,9 +492,11 @@ void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionO
 
 **Description**
 
+
 Sets the edge swipe effect. Use **ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING** when the swipe distance is allowed to exceed the size of the swipe-out component; use **ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE** when the swipe distance must not exceed the size of the swipe-out component.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -478,9 +513,11 @@ int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActi
 
 **Description**
 
+
 Obtains the edge swipe effect.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -502,9 +539,11 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeAct
 
 **Description**
 
+
 Sets the callback invoked when the offset of a swipe action changes.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -521,9 +560,11 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(ArkUI_List
 
 **Description**
 
+
 Sets the callback invoked when the offset of a swipe action changes. The callback event will carry user-defined data.
 
 **Since:** 12
+
 
 **Parameters**
 
@@ -543,6 +584,10 @@ int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListIte
 
 Expands the swipe-out menu (that is, the action item area displayed during a swipe action) of the specified list item. When **direction** is set to **ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START**, the swipe-out menu set through **OH_ArkUI_ListItemSwipeActionOption_SetStart** is expanded. When **direction** is set to **ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END**, the swipe-out menu set through **OH_ArkUI_ListItemSwipeActionOption_SetEnd** is expanded. The expanded swipe-out menu can be collapsed through **OH_ArkUI_ListItemSwipeAction_Collapse**. This API can also be called after the application responds to a user tap on a button such as "More" to expand the swipe-out menu programmatically.
 
+> **NOTE**
+>
+> - If the **List** component has the **NODE_LIST_CACHED_COUNT** attribute set to enable preloading, list items outside the **List** display area that have been preloaded support expansion. Otherwise, the nodes outside the **List** display area do not support expansion.
+
 **Since:** 21
 
 **Parameters**
@@ -557,10 +602,6 @@ Expands the swipe-out menu (that is, the action item area displayed during a swi
 | Type | Description |
 | -- | -- |
 | int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the type of the passed-in node object is incorrect. Check whether the passed-in node is a **ListItem** node.<br>         Returns [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the passed-in node is not mounted to the component tree. Mount the node to the component tree before performing this operation. |
-
-> **NOTE**
->
-> - If the **List** component has the **NODE_LIST_CACHED_COUNT** attribute set to enable preloading, list items outside the **List** display area that have been preloaded support expansion. Otherwise, the nodes outside the **List** display area do not support expansion.
 
 ### OH_ArkUI_ListItemSwipeAction_Collapse()
 

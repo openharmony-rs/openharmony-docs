@@ -1,12 +1,11 @@
-# ArkUI_CircleShapeOption
-
+# ArkUI_CircleShape
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-17T02:51:02.865Z pushedAt=2026-07-17T03:30:43.455Z -->
+<!-- md-trans-meta sourceCommit=01f3ca6e128bfafa8712d6c57a0efe116119e28c translatedAt=2026-11-09T11:40:18.590Z pushedAt=2026-11-10T01:58:28.555Z nl=1 -->
 
 ```c
 typedef struct ArkUI_CircleShape ArkUI_CircleShapeOption
