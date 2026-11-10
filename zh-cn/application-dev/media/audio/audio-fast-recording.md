@@ -65,7 +65,27 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST);
 ```
 
-设置超低时延模式仅表示应用发起超低时延请求，不代表最终一定运行在超低时延状态。系统可能因并发管控、资源调度或设备路由变化调整实际运行状态。建议应用在起流后通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)确认初始运行状态，并在创建音频流前通过[OH_AudioCapturer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onfaststatuschange)注册状态变化回调，以便在运行状态发生回落或恢复时及时感知。
+设置超低时延模式仅表示应用发起超低时延请求，不代表最终一定运行在超低时延状态。系统可能因并发管控、资源调度或设备路由变化调整实际运行状态。建议应用在创建音频流前，通过[OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerfaststatuschangecallback)注册状态变化回调，以便在运行状态发生变化时及时感知；并在起流后通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)查询确认初始运行状态。
+
+超低时延状态变化回调开发示例：
+
+<!-- @[OnUltraFastStatusChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
+``` C++
+void MyOnUltraFastStatusChange(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_FastStatus status)
+{
+    // 通过状态变化回调记录录制流当前的实际运行状态
+    g_ultraFastStatus.store(status);
+}
+```
+
+注册超低时延状态变化回调开发示例：
+
+<!-- @[SetCapturerFastStatusChangeCallback_UltraFast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
+``` C++
+OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(builder, MyOnUltraFastStatusChange, nullptr);
+```
 
 针对OHAudio开发音频录制，有以下相关实例可供参考：
 
