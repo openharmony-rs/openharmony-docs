@@ -327,3 +327,8 @@ status: active
      // ...
    }
    ```
+
+## 相关主题推荐
+
+- [AVSession Kit简介](avsession-overview.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)

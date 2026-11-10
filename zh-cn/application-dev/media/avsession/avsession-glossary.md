@@ -71,3 +71,8 @@ status: active
 ### TopSession；置顶会话
 
 系统中优先级最高的媒体会话，例如当前处于正在播放状态的会话。媒体会话控制方可以在不用获取对应控制器的情况下，直接与置顶会话通信，例如直接向置顶会话发送播控命令和按键事件。
+
+## 相关主题推荐
+
+- [AVSession Kit简介](avsession-overview.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)

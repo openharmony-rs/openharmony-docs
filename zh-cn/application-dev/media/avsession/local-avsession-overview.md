@@ -103,3 +103,10 @@ async function createController() {
 <!--DelEnd-->
 
 更多关于AVSessionManager的方法，请参考API文档：[模块描述](../../reference/apis-avsession-kit/arkts-apis-avsession.md)。
+
+## 相关主题推荐
+
+- [AVSession Kit简介](avsession-overview.md)
+- [媒体会话提供方(ArkTS)](using-avsession-developer.md)
+- [媒体会话控制方](using-avsession-controller.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)

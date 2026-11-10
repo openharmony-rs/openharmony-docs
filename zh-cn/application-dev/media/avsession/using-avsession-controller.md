@@ -282,3 +282,9 @@ status: active
      Log.info(TAG, 'stopControl done');
    }
    ```
+
+## 相关主题推荐
+
+- [本地媒体会话概述](local-avsession-overview.md)
+- [媒体会话提供方(ArkTS)](using-avsession-developer.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)

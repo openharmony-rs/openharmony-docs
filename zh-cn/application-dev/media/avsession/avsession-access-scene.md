@@ -931,3 +931,10 @@ struct Index {
 > 2. 方式一与方式二，选择其一接入即可，无需同时接入，系统推荐按照方式一接入。
 
 <!--RP2--><!--RP2End-->
+
+## 相关主题推荐
+
+- [后台播放](avsession-background-scene.md)
+- [媒体会话提供方(ArkTS)](using-avsession-developer.md)
+- [应用接入歌词组件](avsession-desktop-lyrics.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)
