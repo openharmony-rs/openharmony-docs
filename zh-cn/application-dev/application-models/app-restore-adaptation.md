@@ -87,7 +87,7 @@ export default class EntryAbility extends UIAbility {
 | want.parameters中带回了本应用保存的数据 | 高 | 这些数据只在恢复启动时由系统合并回来，API版本26.0.0之前最可靠的判断依据 |
 | launchReason === APP_RECOVERY | API版本26.0.0及以上可靠 | API版本26.0.0起可单独成立；之前版本只能作为辅助条件，与前两个条件联合判定 |
 
-示例工程把上述条件的组合判断封装成一个普通函数`isRestoreLaunch`（下方代码注释中的"系统键"即恢复重启标记，"恢复键"即本应用保存的数据的键名）：
+示例工程把上述条件的组合判断封装成一个普通函数`isRestoreLaunch`，调用时把onSaveState()写入want.parameters的全部键名通过`restoreKeys`参数传入：
 
 <!-- @[restore_launch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/common/RestoreUtil.ets) -->
 
