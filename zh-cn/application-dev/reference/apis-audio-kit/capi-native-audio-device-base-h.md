@@ -53,6 +53,7 @@
 | [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceChannelCounts(OH_AudioDeviceDescriptor *audioDeviceDescriptor, uint32_t **channelCounts, uint32_t *size)](#oh_audiodevicedescriptor_getdevicechannelcounts) | 查询目标音频设备描述符的设备通道计数数组。 |
 | [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceDisplayName(OH_AudioDeviceDescriptor *audioDeviceDescriptor, char **displayName)](#oh_audiodevicedescriptor_getdevicedisplayname) | 查询目标音频设备描述符的显示名称。 |
 | [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioStream_EncodingType **encodingTypes, uint32_t *size)](#oh_audiodevicedescriptor_getdeviceencodingtypes) | 查询目标音频设备描述符的编码类型数组。 |
+| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetUsbHeadsetType(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_UsbHeadsetType *usbHeadsetType)](#oh_audiodevicedescriptor_getusbheadsettype) | 查询USB耳机设备描述符的USB耳机子类型。 |
 
 ## 枚举类型说明
 
@@ -122,6 +123,24 @@ enum OH_AudioDevice_Type
 | AUDIO_DEVICE_TYPE_HEARING_AID = 30 |  助听器设备。<br>**起始版本：** 20 |
 | AUDIO_DEVICE_TYPE_NEARLINK = 31 | 星闪设备。<br>**起始版本：** 20 |
 | AUDIO_DEVICE_TYPE_DEFAULT = 1000 | 默认设备类型。 |
+
+### OH_AudioDevice_UsbHeadsetType
+
+```c
+enum OH_AudioDevice_UsbHeadsetType
+```
+
+**描述**
+
+定义USB耳机子类型。
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_AUDIO_DEVICE_USB_HEADSET_TYPE_INVALID = 0 | 无效的USB耳机子类型。<br>**起始版本：** 26.1.0 |
+| OH_AUDIO_DEVICE_USB_HEADSET_TYPE_HIFI = 1 | HIFI USB耳机。<br>**起始版本：** 26.1.0 |
+| OH_AUDIO_DEVICE_USB_HEADSET_TYPE_ARM = 2 | ARM USB耳机。<br>**起始版本：** 26.1.0 |
 
 ### OH_AudioDevice_Flag
 
@@ -413,6 +432,32 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(OH_AudioDe
 | [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | 音频设备描述符。通过 [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) 或者[OH_AudioRoutingManager_OnDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ondevicechangedcallback)获取。 |
 | [OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype) **encodingTypes | 音频设备编码类型指针，指向用于接收编码类型数组的变量，详细信息请参考[OH_AudioStream_EncodingType](capi-native-audiostream-base-h.md#oh_audiostream_encodingtype)。<br>不要单独释放音频设备编码类型指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，以便在不再使用时释放所有DeviceDescriptor数组。 |
 | uint32_t *size |  设置编码类型大小值的指针变量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS或AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM。 |
+
+### OH_AudioDeviceDescriptor_GetUsbHeadsetType()
+
+```c
+OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetUsbHeadsetType(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_UsbHeadsetType *usbHeadsetType)
+```
+
+**描述**
+
+查询USB耳机设备描述符的USB耳机子类型。
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | USB耳机设备描述符。通过 [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) 或者[OH_AudioRoutingManager_OnDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ondevicechangedcallback)获取。 |
+| [OH_AudioDevice_UsbHeadsetType](capi-native-audio-device-base-h.md#oh_audiodevice_usbheadsettype) *usbHeadsetType | 指向用于接收USB耳机子类型的变量。 |
 
 **返回：**
 
