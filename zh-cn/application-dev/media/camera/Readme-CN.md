@@ -22,6 +22,7 @@
     - [分段式拍照(ArkTS)](camera-deferred-capture.md)
     - [分段式拍照实践(ArkTS)](camera-deferred-capture-case.md)
     - [YUV拍照(ArkTS)](camera-yuv-shooting.md)<!--RP1--><!--RP1End-->
+    - [拍摄成片内容证真溯源设置(ArkTS)](camera-c2pa.md)
     - [相机基础动效(ArkTS)](camera-animation.md)
     - [元数据(ArkTS)](camera-metadata.md)
     <!--Del-->
