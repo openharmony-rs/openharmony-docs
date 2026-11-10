@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:47:57.415Z pushedAt=2026-06-22T11:21:11.384Z -->
+<!-- md-trans-meta sourceCommit=5bd79eab01cf38af26bab98453bcb9f96f6c3f3c translatedAt=2026-11-10T01:09:01.454Z pushedAt=2026-11-10T01:39:41.756Z nl=1 -->
 
 ```c
 typedef struct Hid_EventTypeArray {...} Hid_EventTypeArray
@@ -13,7 +13,7 @@ typedef struct Hid_EventTypeArray {...} Hid_EventTypeArray
 
 ## Overview
 
-Defines a struct for an array of event types.
+Array of event type encodings, used to store the event type information supported by an HID device.
 
 **Since**: 11
 
@@ -27,5 +27,7 @@ Defines a struct for an array of event types.
 
 | Name| Description|
 | -- | -- |
-| Hid_EventType* hidEventType | Array of event types.|
-| uint16_t length | Valid length of an array.|
+| [Hid_EventType](capi-hid-ddk-types-h.md#hid_eventtype)* hidEventType | Pointer to the event type code array, which points to the array pre-allocated by the caller (must not be a null pointer). The array size is not less than length. |
+| uint16_t length | Valid length of the array, which does not exceed the actual length of the hidEventType array. |
+
+

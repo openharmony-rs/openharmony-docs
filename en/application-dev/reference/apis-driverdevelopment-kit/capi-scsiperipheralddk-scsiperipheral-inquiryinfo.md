@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:48:31.858Z pushedAt=2026-06-22T11:21:11.400Z -->
+<!-- md-trans-meta sourceCommit=ab207ee3a06b8d11d3acab43cad98a7c15093d61 translatedAt=2026-11-10T01:09:52.963Z pushedAt=2026-11-10T01:44:49.009Z nl=1 -->
 
 ```c
 typedef struct ScsiPeripheral_InquiryInfo {...} ScsiPeripheral_InquiryInfo
@@ -13,7 +13,7 @@ typedef struct ScsiPeripheral_InquiryInfo {...} ScsiPeripheral_InquiryInfo
 
 ## Overview
 
-Defines the SCSI inquiry data.
+SCSI INQUIRY data, used to store the query result of the INQUIRY command of a SCSI peripheral.
 
 **Since**: 18
 
@@ -27,8 +27,10 @@ Defines the SCSI inquiry data.
 
 | Name| Description|
 | -- | -- |
-| uint8_t deviceType | Device type.|
-| char idVendor[[SCSIPERIPHERAL_VENDOR_ID_LEN](capi-scsi-peripheral-types-h.md) + 1] | Vendor ID.|
-| char idProduct[[SCSIPERIPHERAL_PRODUCT_ID_LEN](capi-scsi-peripheral-types-h.md) + 1] | Product ID.|
-| char revProduct[[SCSIPERIPHERAL_PRODUCT_REV_LEN](capi-scsi-peripheral-types-h.md) + 1] | Product version.|
-| ScsiPeripheral_DeviceMemMap* data | Inquiry data.|
+| uint8_t deviceType | Device type of the SCSI peripheral. For details about the specific type values, see the SCSI standard protocol. |
+| char idVendor[[SCSIPERIPHERAL_VENDOR_ID_LEN](capi-scsi-peripheral-types-h.md#macros) + 1] | Vendor ID. |
+| char idProduct[[SCSIPERIPHERAL_PRODUCT_ID_LEN](capi-scsi-peripheral-types-h.md#macros) + 1] | Product ID. |
+| char revProduct[[SCSIPERIPHERAL_PRODUCT_REV_LEN](capi-scsi-peripheral-types-h.md#macros) + 1] | Product version. |
+| [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md)* data | Pointer to the device memory map, used to store the queried data. |
+
+

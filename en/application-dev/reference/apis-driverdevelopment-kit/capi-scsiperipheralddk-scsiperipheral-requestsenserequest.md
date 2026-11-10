@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:48:48.301Z pushedAt=2026-06-22T11:21:11.406Z -->
+<!-- md-trans-meta sourceCommit=b5aa01b6af5d19922ff7e85249d00c2a9af91e2a translatedAt=2026-11-10T01:10:22.342Z pushedAt=2026-11-10T01:46:04.676Z nl=1 -->
 
 ```c
 typedef struct ScsiPeripheral_RequestSenseRequest {...} ScsiPeripheral_RequestSenseRequest
@@ -13,7 +13,7 @@ typedef struct ScsiPeripheral_RequestSenseRequest {...} ScsiPeripheral_RequestSe
 
 ## Overview
 
-Defines the request structure of the **Request Sense** command.
+Request structure of the SCSI command (**REQUEST SENSE**), which is typically used to obtain device error information.
 
 **Since**: 18
 
@@ -27,7 +27,9 @@ Defines the request structure of the **Request Sense** command.
 
 | Name| Description|
 | -- | -- |
-| uint8_t allocationLength | **Allocation length** field used to specify the size of the buffer prepared by the request initiator (usually the host) for the response data.|
-| uint8_t control | **Control** field used to specify control information.|
-| uint8_t byte1 | First byte of the CDB.|
-| uint32_t timeout | Timeout duration, in ms.|
+| uint8_t allocationLength | Allocation length field, which specifies the size of the buffer prepared by the request initiator (usually the host) for the response data, in bytes. |
+| uint8_t control | Control field, which specifies the control information of the SCSI command. |
+| uint8_t byte1 | First byte of the CDB (Command Descriptor Block). |
+| uint32_t timeout | Timeout interval, in milliseconds. |
+
+
