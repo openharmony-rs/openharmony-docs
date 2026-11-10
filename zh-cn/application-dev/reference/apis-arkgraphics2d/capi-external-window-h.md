@@ -171,7 +171,7 @@ enum OHScalingModeV2
 
 **描述**
 
-渲染缩放模式枚举。下表各枚举项的显示效果均基于[ArkUI_RenderFit](../apis-arkui/capi-native-type-visual-h.md#arkui_renderfit)的默认值[ARKUI_RENDER_FIT_RESIZE_FILL](../apis-arkui/capi-native-type-visual-h.md#arkui_renderfit)实现。若设置为ArkUI_RenderFit的其他枚举值，缓冲区的实际显示效果可能与下表描述存在差异。
+渲染缩放模式枚举。下表各枚举项的显示效果均基于[ArkUI_RenderFit](../apis-arkui/capi-native-type-visual-h.md#arkui_renderfit)的[ARKUI_RENDER_FIT_RESIZE_FILL](../apis-arkui/capi-native-type-visual-h.md#arkui_renderfit)枚举值实现。若设置为ArkUI_RenderFit的其他枚举值，缓冲区的实际显示效果可能与下表描述存在差异。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
