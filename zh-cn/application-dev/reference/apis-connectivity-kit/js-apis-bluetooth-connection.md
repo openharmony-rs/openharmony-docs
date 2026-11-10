@@ -155,7 +155,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // callback
 try {
     connection.pairDevice('11:22:33:44:55:66', (err: BusinessError) => {
-        console.info('pairDevice, device name err:' + JSON.stringify(err));
+        console.error('pairDevice, device name err:' + JSON.stringify(err));
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
