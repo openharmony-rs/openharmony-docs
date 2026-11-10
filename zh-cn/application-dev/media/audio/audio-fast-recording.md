@@ -57,7 +57,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 从API version 26.1.0开始，开发者可将[OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)设置为AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST，使用独立的超低时延通路进行录制。
 
-超低时延通路对采样率、声道数、采样格式等参数有设备相关约束，起流前请以[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)的查询结果为准。
+可通过[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)查询当前设备是否支持超低时延录制。
 
 设置超低时延模式开发示例：
 
