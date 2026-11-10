@@ -98,7 +98,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -195,7 +195,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -290,7 +290,7 @@ off(evt: 'progress'): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -793,7 +793,7 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -884,7 +884,7 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -979,7 +979,7 @@ off(evt: 'progress'): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -1402,7 +1402,7 @@ registerUploadProgress(callback: Callback&lt;UploadProgress&gt;): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010 | Try again. |
-| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit.|
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameter are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit.|
 
 **示例：**
 
@@ -1817,7 +1817,7 @@ cleanCache(uri: string): void
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 13900002  | No such file or directory. |
 | 14000002  | Invalid uri. |
 
@@ -1998,7 +1998,7 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 13900002  | No such file or directory. |
 | 14000002  | Invalid uri. |
 
@@ -2067,7 +2067,7 @@ getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;F
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 13900002  | No such file or directory. |
 | 14000002  | Invalid uri. |
 
@@ -2234,7 +2234,7 @@ optimizeStorage(): Promise&lt;void&gt;
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 13900042  | Unknown error. |
 
 **示例：**
@@ -2303,7 +2303,7 @@ startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 22400005  | Inner error. |
 | 22400006  | The same task is already in progress. |
 
@@ -2377,7 +2377,7 @@ stopOptimizeSpace(): void
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 22400005  | Inner error. |
 
 **示例：**
