@@ -88,7 +88,7 @@ Codec MIME类型枚举。
 
 ## DestHDRMode
  
-转码目标模式类型枚举。
+表示转码目标文件的HDR（High Dynamic Range，高动态范围）格式枚举。
  
 **ArkTS-Dyn起始版本：** 26.1.0
 
