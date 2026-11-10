@@ -55,16 +55,16 @@
      }
      window.getLastWindow(ctx).then((win: window.Window) => {
        this.mainWindow = win;   // 保存主窗口实例
-
+   
        // 用当前窗口宽度做一次初始化，换算断点并同步界面
        try {
          this.applyWidth(this.getUIContext().px2vp(win.getWindowProperties().windowRect.width));
        } catch (err) {
          console.error('Failed to get initial window width:', JSON.stringify(err));
        }
-
+   
        // ...
-
+   
        // 回调单位是px，需转vp
        this.onResize = (size: window.Size): void => {
          this.applyWidth(this.getUIContext().px2vp(size.width));
@@ -74,13 +74,13 @@
        } catch (err) {
          console.error('Failed to subscribe to windowSizeChange:', String(err));
        }
-
+   
        // ...
      }).catch((err: BusinessError) => {
        console.error(`getLastWindow failed: ${err.code} ${err.message}`);
      });
    }
-
+   
    aboutToDisappear(): void {
      // 必须解绑，否则页面反复进出会重复注册回调，造成内存泄漏与多次回调
      if (this.mainWindow) {
