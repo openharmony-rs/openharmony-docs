@@ -1871,3 +1871,17 @@ With this permission, the application can mark specified components as restricte
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.1.0
+
+## ohos.permission.HOOK_INPUT_EVENT
+
+Allows an application to intercept input events.
+
+<!--RP122--><!--RP122End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.1.0
