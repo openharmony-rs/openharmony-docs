@@ -25,10 +25,10 @@
 - 支持低时延模式的音频输入设备。
 - 可通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)验证当前设备是否支持低时延模式。
 - 使用超低时延模式还需满足：
-  - 应用已申请麦克风权限`ohos.permission.MICROPHONE`与超低时延音频流权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`（请到开发者网站申请ACL权限）。
+  - 应用已申请麦克风权限`ohos.permission.MICROPHONE`与超低时延音频流权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`（需要在开发者网站申请ACL权限）。
   - 设备支持超低时延录制，可通过[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)查询指定流参数与输入源类型下是否支持。
 
-超低时延模式的实际运行态可通过[注册状态变化回调](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerfaststatuschangecallback)监听确定（开发示例见"设置超低时延模式"）。
+超低时延模式的实际运行态可通过[注册状态变化回调](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerfaststatuschangecallback)监听确定。
 
 ## 开发指导
 
@@ -67,7 +67,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST);
 ```
 
-设置超低时延模式仅表示应用发起超低时延请求，不代表最终一定运行在超低时延状态。系统可能因并发管控、资源调度或设备路由变化调整实际运行状态。建议应用在创建音频流前，通过[OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerfaststatuschangecallback)注册状态变化回调，以便在运行状态发生变化时及时感知；并在起流后通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)查询确认初始运行状态。
+起流后可通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)查询初始运行状态。
 
 超低时延状态变化回调开发示例：
 
