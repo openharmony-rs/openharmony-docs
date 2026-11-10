@@ -32,7 +32,7 @@
 
 | 遇到的情况 | 处理方式 | 详见 |
 | --- | --- | --- |
-| 页面参数含函数、回调、Proxy等不可序列化对象 | 替换为定位键、注册表等可重建数据 | [函数与类实例等字段的转换](#函数与类实例等字段的转换) |
+| 页面参数含函数、回调、Proxy等不可序列化对象 | 替换为uri、id等可重新查回数据的轻量字段 | [函数与类实例等字段的转换](#函数与类实例等字段的转换) |
 | 单条数据过大，超出want.parameters序列化后总大小上限（200KB） | 数据本体写入磁盘，保存的数据里只存文件名 | [超大数据分流](#超大数据分流) |
 | 需要区分恢复启动与正常启动 | 组合判断三个条件：恢复重启标记为true、want.parameters中带回本应用保存的数据、launchReason为APP_RECOVERY | [判定恢复启动](#判定恢复启动) |
 
@@ -136,14 +136,14 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 <!-- @[reader_state_report](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/ReaderPage.ets) -->
 
 ``` TypeScript
-/** 数据通道：状态变化时发布到 AppStorage，onSaveState 同步读取；只放可序列化的轻量数据。 */
+/** 状态变化时把数据发布到 AppStorage，onSaveState 同步读取；只放可序列化的轻量数据。 */
 private reportState(): void {
   AppStorage.setOrCreate('reader.state', {
     'bookId': this.bookId,
     'chapterIndex': this.chapterIndex,
     'progress': this.progress
   } as Record<string, Object>);
-  // 草稿单独发布，onSaveState 按长度决定随数据保存还是落盘引用
+  // 草稿单独发布，onSaveState 按长度决定随数据保存还是保存到文件
   AppStorage.setOrCreate('reader.draft', this.draft);
 }
 ```
@@ -160,19 +160,19 @@ onSaveState(reason: AbilityConstant.StateType,
   if (st !== undefined) {
     wantParam[KEY_RESTORE_READER] = st;
   }
-  // 草稿超过分流阈值（示例取 2048 字节，可按业务调整）走落盘引用，want.parameters 只放文件名
+  // 草稿超过分流阈值（示例取 2048 字节，可按业务调整）保存到文件，want.parameters 只放文件名
   const draft = AppStorage.get<string>(KEY_READER_DRAFT) ?? '';
   if (draft.length > 2048) {
     wantParam[KEY_RESTORE_DRAFT_FILE] = saveBlob(this.context, 'reader', draft);
   } else if (draft !== '') {
     wantParam[KEY_RESTORE_DRAFT] = draft;
   }
-  // 深栈补推用的 Navigation 路径快照
+  // 深层栈补齐用的页面路径
   const navSnapshot = AppStorage.get<string>(KEY_NAV_SNAPSHOT);
   if (navSnapshot !== undefined) {
     wantParam[KEY_RESTORE_NAV_PATH] = navSnapshot;
   }
-  // 必须返回 ALL_AGREE，否则数据不落盘
+  // 必须返回 ALL_AGREE，否则数据不保存
   return AbilityConstant.OnSaveResult.ALL_AGREE;
 }
 ```
@@ -186,7 +186,7 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
   // 开启备份恢复总开关：不开启则系统不会保存/恢复任何数据
   this.context.setRestoreEnabled(true);
 
-  // 判断是否恢复启动（restoreKeys 传入本应用的全部恢复键）
+  // 判断是否恢复启动（restoreKeys 传入 onSaveState() 写入的全部键名）
   const restoreKeys: string[] = [KEY_RESTORE_READER, KEY_RESTORE_DRAFT,
     KEY_RESTORE_DRAFT_FILE, KEY_RESTORE_NAV_PATH];
   if (isRestoreLaunch(want, launchParam, restoreKeys)) {
@@ -205,13 +205,13 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     if (draftFile !== undefined) {
       AppStorage.setOrCreate(KEY_RESTORE_DRAFT, loadBlob(this.context, draftFile) ?? '');
     }
-    // 深栈补推用的路径快照
+    // 深层栈补齐用的页面路径
     const navPath = want?.parameters?.[KEY_RESTORE_NAV_PATH] as string | undefined;
     if (navPath !== undefined) {
       AppStorage.setOrCreate(KEY_RESTORE_NAV_PATH, navPath);
     }
   } else {
-    // 正常冷启：清理历史落盘文件
+    // 正常冷启动：清理过期的数据文件
     cleanupBlob(this.context);
   }
 }
@@ -223,7 +223,7 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 
 ``` TypeScript
 aboutToAppear(): void {
-  // 恢复消费：使用 Ability 层中转的恢复数据，取出即删，防止重复消费
+  // 读取恢复数据：从 AppStorage 取出即删，防止重复读取
   const restored = AppStorage.get<Record<string, Object>>('restore.reader');
   if (restored !== undefined) {
     AppStorage.delete('restore.reader');
@@ -231,7 +231,7 @@ aboutToAppear(): void {
     this.bookId = (restored['bookId'] as string) ?? '';
     this.chapterIndex = (restored['chapterIndex'] as number) ?? 1;
     this.progress = (restored['progress'] as number) ?? 0;
-    // 草稿统一经独立恢复键中转（短草稿随数据带回、长草稿按文件名读回），不在状态对象里
+    // 草稿单独经 AppStorage 中转（短草稿随数据带回、长草稿按文件名读回），不在状态对象里
     const draft = AppStorage.get<string>('restore.reader.draft');
     if (draft !== undefined) {
       AppStorage.delete('restore.reader.draft');
@@ -251,7 +251,7 @@ aboutToAppear(): void {
 - onSaveState()在系统触发备份的短暂时间窗内被调用，**只做同步读取**，不能在这里才异步采集数据，也不要做耗时操作——超时或异常可能导致本次数据不保存；
 - onSaveState()必须返回`ALL_AGREE`，否则数据不写入磁盘；确有耗时数据采集需求时改用[onSaveStateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestateasync20)（API版本20起）——应用实现了异步版时系统不再调用同步版，两者不要同时实现；
 - 恢复数据仅随恢复启动的这一次Want带回，后续启动不再携带；应用读取后应即从AppStorage删除，防止重复读取；
-- 若数据已持久化（preferences/RDB/文件），不要通过`onSaveState()`保存——进程重建后持久化数据仍在，保存的数据里只存定位键。
+- 若数据已持久化（preferences/RDB/文件），不要通过`onSaveState()`保存——进程重建后持久化数据仍在，保存的数据里只存能重新查回完整数据的轻量信息（如uri、id、文件名）。
 
 > **注意：multiton多实例需按实例隔离AppStorage数据**
 >
@@ -263,7 +263,7 @@ aboutToAppear(): void {
 
 ### 持久化优先
 
-已通过[Preferences](../reference/apis-arkdata/js-apis-data-preferences.md)、[RDB](../reference/apis-arkdata/js-apis-data-rdb.md)或文件保存的数据在进程被回收后仍然存在，恢复启动后按常规方式从磁盘读回即可，**不要把已持久化的数据再写入备份快照**——快照里只存**定位键**（如preferences键名、表名+主键、文件名），页面挂载后按定位键重新读取。这样既避免快照超限，也避免快照与磁盘双份数据不一致。
+已通过[Preferences](../reference/apis-arkdata/js-apis-data-preferences.md)、[RDB](../reference/apis-arkdata/js-apis-data-rdb.md)或文件保存的数据在进程被回收后仍然存在，恢复启动后按常规方式从磁盘读回即可，**不要把已持久化的数据再写入onSaveState()保存的数据**——保存的数据里只存能重新查回完整数据的轻量信息（如preferences键名、表名加主键、文件名），页面挂载后按这些信息重新读取。这样既避免数据超出总大小上限，也避免保存的数据与磁盘双份数据不一致。
 
 ### 超大数据分流
 
@@ -272,7 +272,7 @@ aboutToAppear(): void {
 <!-- @[blob_save](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/common/RestoreUtil.ets) -->
 
 ``` TypeScript
-/** 超大数据落盘：数据本体写入沙箱文件，返回文件名，want.parameters 只保存文件名。 */
+/** 超大数据保存到文件：数据本体写入沙箱文件，返回文件名，want.parameters 只保存文件名。 */
 export function saveBlob(context: common.Context, key: string, data: string): string {
   const fileName = BLOB_FILE_PREFIX + key + '.txt';
   const file = context.filesDir + '/' + fileName;
@@ -286,7 +286,7 @@ export function saveBlob(context: common.Context, key: string, data: string): st
 }
 ```
 
-onSaveState()按数据长度分流（短数据直接放，超长保存到文件，见[最小适配](#最小适配)onSaveState()示例中的草稿分支。示例中的2048字节仅为分流阈值的示例取值，可按业务调整——系统约束是快照序列化后总大小上限200KB，接近该量级的数据都应保存到文件）；onCreate()读回时`loadBlob(...) ?? ''`读不到降级为空。非恢复启动时清理过期文件（示例工程按7天清理，与系统备份数据过期时间对齐），防止残留堆积。
+onSaveState()按数据长度分流（短数据直接放，超长保存到文件，见[最小适配](#最小适配)onSaveState()示例中的草稿分支。示例中的2048字节仅为分流阈值的示例取值，可按业务调整——系统约束是onSaveState()保存的数据序列化后总大小上限200KB，接近该量级的数据都应保存到文件）；onCreate()读回时`loadBlob(...) ?? ''`读不到降级为空。非恢复启动时清理过期文件（示例工程按7天清理，与系统备份数据过期时间对齐），防止残留堆积。
 
 ## 页面栈恢复：Navigation
 
@@ -331,7 +331,7 @@ Navigation(this.pathStack) {
         this.pathStack.pushPathByName('ReaderPage', { bookId: 'book-1001' } as Record<string, Object>);
         this.reportNavSnapshot();
       })
-    Button('进入第三层页面（深栈补推演示）')
+    Button('进入第三层页面（深层栈补齐演示）')
       .width('80%')
       .onClick(() => {
         this.pathStack.pushPathByName('ReaderPage', { bookId: 'book-1001' } as Record<string, Object>);
@@ -352,9 +352,9 @@ Navigation(this.pathStack) {
   .justifyContent(FlexAlign.Center)
 }
 .navDestination(this.PageMap)
-// 三件套之 1：恢复按 navigationId 匹配，必须设置
+// 三项配置之 1：恢复按 navigationId 匹配，必须设置
 .id('restore-nav')
-// 三件套之 2：默认 false，必须显式开启（API版本14+）
+// 三项配置之 2：默认 false，必须显式开启（API版本14+）
 .recoverable(true)
 .mode(NavigationMode.Stack)
 ```
@@ -369,7 +369,7 @@ NavDestination() {
 .onReady((ctx: NavDestinationContext) => {
   this.handleParam(ctx);
 })
-// 三件套之页面级：数据通道与空值兜底完成后才允许开启（API版本14+）
+// 三项配置之页面级：完成数据保存与恢复、参数为空降级处理后才允许开启（API版本14+）
 .recoverable(true)
 ```
 
@@ -398,10 +398,10 @@ NavDestination() {
 <!-- @[empty_param_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/ReaderPage.ets) -->
 
 ``` TypeScript
-/** 空值兜底：恢复的 param 可能为空/残缺，不处理会白屏。 */
+/** 参数为空降级：恢复的 param 可能为空或残缺，不处理会白屏。 */
 private handleParam(ctx: NavDestinationContext): void {
   const param = ctx.pathInfo?.param as Record<string, Object> | undefined;
-  // param 有效：用定位键重新加载数据
+  // param 有效：按参数重新加载数据
   if (param !== undefined && param['bookId'] !== undefined) {
     this.bookId = param['bookId'] as string;
     if (!this.restoredFromChannel) {
@@ -409,7 +409,7 @@ private handleParam(ctx: NavDestinationContext): void {
     }
     return;
   }
-  // param 为空：从 AppStorage 恢复通道取
+  // param 为空：从 AppStorage 取恢复数据
   const restored = AppStorage.get<Record<string, Object>>('restore.reader');
   if (restored !== undefined) {
     AppStorage.delete('restore.reader');
@@ -417,7 +417,7 @@ private handleParam(ctx: NavDestinationContext): void {
     this.bookId = (restored['bookId'] as string) ?? '';
     this.chapterIndex = (restored['chapterIndex'] as number) ?? 1;
     this.progress = (restored['progress'] as number) ?? 0;
-    // 草稿经独立恢复键中转，不在状态对象里
+    // 草稿单独经 AppStorage 中转，不在状态对象里
     const draft = AppStorage.get<string>('restore.reader.draft');
     if (draft !== undefined) {
       AppStorage.delete('restore.reader.draft');
@@ -427,7 +427,7 @@ private handleParam(ctx: NavDestinationContext): void {
     this.reportState();
     return;
   }
-  // 兜底：退回上一页
+  // 都取不到：退回上一页
   ctx.pathStack?.pop();
 }
 ```
@@ -446,7 +446,7 @@ Navigation页面栈恢复不保证覆盖全部层级，更深层级需应用自�
 
 ``` TypeScript
 onPageShow(): void {
-  // 深栈补推时机：此时系统栈恢复已完成、页面已渲染；禁止提前到 loadContent 回调
+  // 深层栈补齐时机：此时系统栈恢复已完成、页面已渲染；不要提前到 loadContent 回调
   // （系统恢复尚未执行，会互相冲突）。恢复启动时首页的自动跳转（如广告页）必须跳过，
   // 否则会覆盖系统恢复出的栈顶页。
   this.replayDeepStack();
@@ -459,7 +459,7 @@ onPageShow(): void {
 
 ``` TypeScript
 aboutToAppear(): void {
-  // 栈变化统一监听：进入、返回、替换后都更新快照，避免只覆盖进入场景
+  // 栈变化统一监听：进入、返回、替换后都更新页面路径，避免只覆盖进入场景
   this.pathStack.setInterception({
     didShow: () => {
       this.reportNavSnapshot();
@@ -467,7 +467,7 @@ aboutToAppear(): void {
   });
 }
 
-/** 栈变化后把路径快照发布到 AppStorage，onSaveState 同步读取。 */
+/** 栈变化后把页面路径发布到 AppStorage，onSaveState 同步读取。 */
 private reportNavSnapshot(): void {
   AppStorage.setOrCreate(KEY_NAV_SNAPSHOT, JSON.stringify(this.pathStack.getAllPathName()));
 }
@@ -478,7 +478,7 @@ private reportNavSnapshot(): void {
 <!-- @[deep_stack_replay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/RestoreIndex.ets) -->
 
 ``` TypeScript
-/** 按保存的路径快照补齐系统未恢复的深层级。 */
+/** 按保存的页面路径补齐系统未恢复的深层级。 */
 private replayDeepStack(): void {
   const navPath = AppStorage.get<string>(KEY_RESTORE_NAV_PATH);
   if (navPath === undefined) {
@@ -488,13 +488,13 @@ private replayDeepStack(): void {
   try {
     const names: string[] = JSON.parse(navPath) as string[];
     const current: string[] = this.pathStack.getAllPathName();
-    // 从系统已恢复的层数起逐层补齐；补推失败则停在已恢复页，不白屏
+    // 从系统已恢复的层数起逐层补齐；补齐失败则停在已恢复页，不白屏
     for (let i = current.length; i < names.length; i++) {
       this.pathStack.pushPathByName(names[i], {} as Record<string, Object>);
     }
   } catch (_) {
-    // 快照损坏则跳过补推，停在已恢复页不白屏；打日志便于排障
-    hilog.warn(DOMAIN, TAG, 'replayDeepStack skipped: broken snapshot');
+    // 页面路径解析失败则跳过补齐，停在已恢复页不白屏；打日志便于排障
+    hilog.warn(DOMAIN, TAG, 'replayDeepStack skipped: invalid navPath');
   }
 }
 ```
@@ -535,13 +535,13 @@ Button('跳转广告页（不参与恢复）')
 onSaveState(reason: AbilityConstant.StateType,
   wantParam: Record<string, Object>): AbilityConstant.OnSaveResult {
   // 路由信息：uri天然可序列化；param含函数、类实例等字段时，须先转换为可序列化形式
-  const routes: RouteCredential[] = RouteRegistry.snapshot(); // [{uri, param}, ...]
+  const routes: RouteInfo[] = getCurrentRoutes(); // [{uri, param}, ...]
   wantParam['restore.routes'] = routes;
   return AbilityConstant.OnSaveResult.ALL_AGREE;
 }
 
 // 首页 onPageShow 中：
-const routes = AppStorage.get<RouteCredential[]>('restore.routes');
+const routes = AppStorage.get<RouteInfo[]>('restore.routes');
 if (routes !== undefined) {
   AppStorage.delete('restore.routes'); // 恢复数据仅随恢复启动的这一次携带，读后即删
   for (const r of routes) {
@@ -553,7 +553,7 @@ if (routes !== undefined) {
 **使用要点**：
 
 - 重新跳转期间，应用的"自动跳首页/重定向登录"等自动导航逻辑必须跳过，否则重新执行的跳转会被自动跳转覆盖——处理方法见[恢复期间不要自动跳页](#恢复期间不要自动跳页)；
-- 本方案demo不随示例工程提供（依赖三方路由包）。HMRouter场景若愿意为其内部Navigation设置id+recoverable，也可选用[页面栈恢复：Navigation](#页面栈恢复navigation)三项配置方案，但HMRouter内部Navigation实例不易注入属性，默认推荐本方案。
+- 本方案依赖三方路由包，示例工程未包含，可按上述伪代码接入。HMRouter场景若愿意为其内部Navigation设置id+recoverable，也可选用[页面栈恢复：Navigation](#页面栈恢复navigation)三项配置方案，但HMRouter内部Navigation实例不易注入属性，默认推荐本方案。
 
 ## 通用适配要点
 
@@ -567,15 +567,12 @@ Want parameters的值只支持String/Number/Boolean等基本类型以及由它�
 | --- | --- |
 | string / number / boolean | 直接保留 |
 | 由基本类型组成的普通对象 | 直接保留 |
-| Function / Callback | 删除，页面改为从AppStorage或注册表重新获取 |
-| 类实例（MediaItem、PhotoAsset等） | 替换为定位键（如uri、id），页面挂载后按定位键重新查询 |
+| Function / Callback | 删除；页面改为从AppStorage重新获取，或改为按名字从应用启动时注册的"名字到函数"映射表中取回 |
+| 类实例（MediaItem、PhotoAsset等） | 替换为uri、id等可重新查回数据的字段，页面挂载后重新查询 |
 | Map / Set / Date | 转换为普通对象或序列化字符串（如JSON.stringify后随字符串传输） |
-| 已持久化的数据（preferences/RDB/文件） | 不通过`onSaveState()`保存（进程重建后仍在），只存定位键 |
+| 已持久化的数据（preferences/RDB/文件） | 不通过`onSaveState()`保存（进程重建后仍在），只存键名、文件名等能重新查回数据的轻量信息 |
 
-回调函数、Proxy对象等复杂对象同样无法通过`onSaveState()`保存，须按上表方式替换。表中两个概念说明：
-
-- **定位键**：能重新查回完整数据的轻量字段，如uri、id、preferences键名、文件名——页面挂载后按定位键重新查询或读取原数据；
-- **注册表**：应用在内存中维护的"名字 → 函数/对象"的映射表（应用每次启动时注册）——页面挂载后按名字从表中取回函数或对象，再重新绑定。
+回调函数、Proxy对象等复杂对象同样无法通过`onSaveState()`保存，须按上表方式替换。
 
 ### 恢复期间不要自动跳页
 
@@ -602,7 +599,3 @@ Want parameters的值只支持String/Number/Boolean等基本类型以及由它�
 **恢复数据读不到或读取失败，如何降级？**
 
 整体原则：恢复数据缺失时，页面应能按默认数据正常展示，不要因恢复失败而阻塞启动。走文件分流的超大数据读不到文件时按空数据降级（见[超大数据分流](#超大数据分流)）；已持久化的数据不依赖恢复，直接从磁盘读回（见[持久化优先](#持久化优先)）。
-
-## 相关实例
-
-示例工程[UIAbilityRecover](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Ability/UIAbilityRecover)（applications_app_samples仓的`code/DocsSample/Ability/UIAbilityRecover`目录）覆盖本文各适配场景：数据保存与恢复、Navigation页面栈恢复（含参数为空降级与深层栈补齐）、Router页面排除、超大数据分流。将仓库导入DevEco Studio后运行该工程，按各示例页面内的提示操作即可对照验证本文的适配效果。
