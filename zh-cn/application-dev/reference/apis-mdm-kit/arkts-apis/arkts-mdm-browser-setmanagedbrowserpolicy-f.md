@@ -72,3 +72,45 @@ try {
   console.error(`Failed to set managed browser policy. Code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+
+## setManagedBrowserPolicy
+
+```TypeScript
+function setManagedBrowserPolicy(bundleName: string, policyName: string, policyValue: string, forceOverride?: boolean): void
+```
+
+设置指定浏览器应用程序的托管浏览器策略。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-browser-function setManagedBrowserPolicy(bundleName: string, policyName: string, policyValue: string, forceOverride?: boolean): void--><!--Device-browser-function setManagedBrowserPolicy(bundleName: string, policyName: string, policyValue: string, forceOverride?: boolean): void-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| bundleName | string | 是 | 浏览器应用的Bundle名称。 |
+| policyName | string | 是 | 要设置的策略名称。 |
+| policyValue | string | 是 | 要设置的策略的值。 |
+| forceOverride | boolean | 否 | 是否强制覆盖已有策略。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
+
+**示例**
+
+参见 [setManagedBrowserPolicy](#setmanagedbrowserpolicy)

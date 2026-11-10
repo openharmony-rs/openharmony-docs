@@ -4,7 +4,7 @@
 enum ProxyMethod
 ```
 
-表示WiFi代理方法的枚举。
+表示Wi-Fi代理方法的枚举。
 
 **起始版本：** 10
 

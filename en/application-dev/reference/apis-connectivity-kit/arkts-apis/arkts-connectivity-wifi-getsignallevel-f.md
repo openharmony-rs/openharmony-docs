@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function getSignalLevel(rssi: number, band: number): number
 ```
 
-Calculates the Wi-Fi signal level based on the Wi-Fi RSSI and frequency band.
+Calculates the Wi-Fi signal level based on the RSSI and frequency band.
 
 **Since:** 6
 
@@ -30,14 +30,14 @@ Calculates the Wi-Fi signal level based on the Wi-Fi RSSI and frequency band.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| rssi | number | Yes | Indicates the Wi-Fi RSSI. |
-| band | number | Yes | Indicates the Wi-Fi frequency band. |
+| rssi | number | Yes | RSSI of the hotspot, in dBm. |
+| band | number | Yes | Frequency band of the Wi-Fi access point. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| number | Returns Wi-Fi signal level ranging from 0 to 4. |
+| number | Signal level obtained. The value range is [0, 4]. |
 
 **Examples**
 

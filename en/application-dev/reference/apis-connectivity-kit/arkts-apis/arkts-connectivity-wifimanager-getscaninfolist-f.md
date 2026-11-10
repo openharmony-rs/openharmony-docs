@@ -14,7 +14,7 @@ function getScanInfoList(): Array<WifiScanInfo>
 
 Obtain the scanned station list. If does't have the permission of ohos.permission.GET_WIFI_PEERS_MAC, return random bssid.
 
-**Since:** 12
+**Since:** 10
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 

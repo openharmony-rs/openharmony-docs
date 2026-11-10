@@ -4,7 +4,7 @@
 interface WifiDeviceConfig
 ```
 
-Wi-Fi device configuration information.
+Represents the Wi-Fi configuration information.
 
 **Since:** 6
 

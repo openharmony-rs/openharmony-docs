@@ -4,7 +4,7 @@
 interface WifiP2pDevice
 ```
 
-P2P device information.
+Represents the P2P device information.
 
 **Since:** 8
 
@@ -28,7 +28,7 @@ import { wifi } from '@kit.ConnectivityKit';
 deviceAddress: string
 ```
 
-Device mac address
+MAC address of the device.
 
 **Type:** string
 
@@ -48,7 +48,7 @@ Device mac address
 deviceName: string
 ```
 
-Device name
+Device name.
 
 **Type:** string
 
@@ -68,7 +68,7 @@ Device name
 deviceStatus: P2pDeviceStatus
 ```
 
-Device status
+Device status.
 
 **Type:** [P2pDeviceStatus](arkts-connectivity-wifi-p2pdevicestatus-e.md)
 
@@ -88,7 +88,7 @@ Device status
 groupCapabilitys: number
 ```
 
-Device group capabilities
+Group capability, in the form of bitmask.
 
 **Type:** number
 
@@ -108,7 +108,7 @@ Device group capabilities
 primaryDeviceType: string
 ```
 
-Primary device type
+Type of the primary device.
 
 **Type:** string
 

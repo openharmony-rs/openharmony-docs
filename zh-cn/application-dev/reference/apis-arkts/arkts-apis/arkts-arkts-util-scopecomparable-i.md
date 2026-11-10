@@ -24,7 +24,7 @@ import { util } from '@kit.ArkTS';
 compareTo(other: ScopeComparable): boolean
 ```
 
-比较两个值并返回布尔值。
+比较两个值的大小，返回一个布尔值。
 
 **起始版本：** 8
 
@@ -38,13 +38,13 @@ compareTo(other: ScopeComparable): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| other | [ScopeComparable](arkts-arkts-util-scopecomparable-i.md) | 是 | 与当前值进行比较的另一个值。 |
+| other | [ScopeComparable](arkts-arkts-util-scopecomparable-i.md) | 是 | 表示要比较的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果当前值大于等于输入值，则返回 **true**；否则返回 **false**。 |
+| boolean | 调用compareTo的值大于等于传入的值返回true，否则返回false。 |
 
 **示例**
 

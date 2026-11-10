@@ -58,7 +58,7 @@ objectFit: ImageFit
 resizable?: ResizableOptions
 ```
 
-图片拉伸选项。
+图像拉伸时可调整大小的图像选项。
 
 **类型：** [ResizableOptions](arkts-arkui-image-comp-resizableoptions-i.md)
 

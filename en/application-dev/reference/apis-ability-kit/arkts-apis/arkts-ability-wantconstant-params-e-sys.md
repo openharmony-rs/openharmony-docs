@@ -12,6 +12,24 @@ Defines **Params** (specifying the action that can be performed) in the Want.
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
+## AGENT_TASK_ID
+
+```TypeScript
+AGENT_TASK_ID = 'ohos.aafwk.param.agent.taskId'
+```
+
+Indicates the ID of the task to be started.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Params-AGENT_TASK_ID = 'ohos.aafwk.param.agent.taskId'--><!--Device-Params-AGENT_TASK_ID = 'ohos.aafwk.param.agent.taskId'-End-->
+
+**System capability:** SystemCapability.Ability.AbilityBase
+
+**System API:** This is a system API.
+
 ## ASSERT_FAULT_SESSION_ID
 
 ```TypeScript

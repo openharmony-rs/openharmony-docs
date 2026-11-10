@@ -4,7 +4,7 @@
 export enum ConnState
 ```
 
-The state of Wi-Fi connection enumeration.
+Enumerates the Wi-Fi connection statuses.
 
 **Since:** 6
 
@@ -40,7 +40,7 @@ The Wi-Fi connection is being authenticated.
 CONNECTED
 ```
 
-The Wi-Fi connection has been set up.
+The Wi-Fi connection is established.
 
 **Since:** 6
 
@@ -58,7 +58,7 @@ The Wi-Fi connection has been set up.
 CONNECTING
 ```
 
-The Wi-Fi connection is being set up.
+The Wi-Fi connection is being established.
 
 **Since:** 6
 
@@ -76,7 +76,7 @@ The Wi-Fi connection is being set up.
 DISCONNECTED
 ```
 
-The Wi-Fi connection has been torn down.
+The Wi-Fi connection is disconnected.
 
 **Since:** 6
 
@@ -94,7 +94,7 @@ The Wi-Fi connection has been torn down.
 DISCONNECTING
 ```
 
-The Wi-Fi connection is being torn down.
+The Wi-Fi connection is being disconnected.
 
 **Since:** 6
 
@@ -130,7 +130,7 @@ The IP address of the Wi-Fi connection is being obtained.
 SCANNING
 ```
 
-The device is searching for an available AP.
+The device is scanning for available APs.
 
 **Since:** 6
 
@@ -148,7 +148,7 @@ The device is searching for an available AP.
 UNKNOWN
 ```
 
-Failed to set up the Wi-Fi connection.
+The Wi-Fi connection fails to be established.
 
 **Since:** 6
 

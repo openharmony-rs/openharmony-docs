@@ -24,7 +24,7 @@ import { stream } from '@kit.ArkTS';
 constructor()
 ```
 
-创建**Readable**对象的构造函数。
+Readable的构造函数。
 
 **起始版本：** 12
 
@@ -46,7 +46,7 @@ let readableStream = new stream.Readable();
 constructor(options: ReadableOptions)
 ```
 
-创建**Readable**对象的构造函数。
+Readable的构造函数。
 
 **起始版本：** 12
 
@@ -77,7 +77,7 @@ let readableStream = new stream.Readable(option);
 doInitialize(callback: Function): void
 ```
 
-需要由开发者实现此API。在可读流首次调用[on](#on)时调用此API。使用异步回调返回结果。
+开发者实现这个函数，这个函数在可读流第一次使用[on](#on)监听时被调用。使用callback异步回调。
 
 **起始版本：** 12
 
@@ -117,7 +117,7 @@ myReadable.on("data", () => {
 doRead(size: number): void
 ```
 
-数据读取API，需在子类中实现。
+数据读取接口，需要在子类中被实现。
 
 **起始版本：** 12
 
@@ -131,7 +131,7 @@ doRead(size: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | number | 是 | 读取数据的字节数。取值范围：0 &lt;= size &lt;= Number.MAX_VALUE。 |
+| size | number | 是 | 读取数据的字节数。 取值范围：0 &lt;= size &lt;= Number.MAX_VALUE。 |
 
 **示例**
 
@@ -157,7 +157,7 @@ readableStream.on("data", () => {
 isPaused(): boolean
 ```
 
-检查可读流是否已暂停。流在调用[pause()](#pause)后暂停，在调用[resume()](#resume)后从暂停状态恢复。
+检查流是否处于暂停模式，调用[pause()](#pause)后，返回值为true；调用[resume()](#resume)后，返回值为false。
 
 **起始版本：** 12
 
@@ -197,7 +197,7 @@ console.info("Readable isPaused", readableStream.isPaused()); // Readable isPaus
 off(event: string, callback?: Callback<emitter.EventData>): void
 ```
 
-移除通过on注册的事件处理函数。
+移除通过[on](#on)注册的事件处理函数。
 
 **起始版本：** 12
 
@@ -211,7 +211,7 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | string | 是 | 事件回调类型，支持的事件包括：'close' &#124; 'data' &#124; 'end' &#124; 'error' &#124; 'readable' &#124; 'pause' &#124; 'resume'。           - 'close'：完成push()调用，传入null值，触发该事件。           - 'data'：当流传递给消费者一个数据块时触发该事件。           - 'end'：完成push()调用，传入null值，触发该事件。           - 'error'：流发生异常时触发。           - 'readable'：当有可从流中读取的数据时触发该事件。           - 'pause'：完成pause()调用，触发该事件。           - 'resume'：完成resume()调用，触发该事件。 |
+| event | string | 是 | 事件回调类型，支持的事件包括：`'close'` &#124; `'data'` &#124; `'end'` &#124; `'error'` &#124; `'readable'` &#124; `'pause'` &#124; `'resume'` 。           - `'close'`：可读流关闭，发生error事件或end事件后触发该事件。           - `'data'`：当流传递给消费者一个数据块时触发该事件。           - `'end'`：完成[push()](#push)调用，传入null值，触发该事件。           - `'error'`：流发生异常时触发。           - `'readable'`：当有可从流中读取的数据时触发该事件。           - `'pause'`：完成[pause()](#pause)调用，触发该事件。           - `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[emitter.EventData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-emitter-eventdata-i.md)&gt; | 否 | 指定事件的要注销的回调函数。不传入时注销指定事件的所有回调函数。 |
 
 **示例**
@@ -259,7 +259,7 @@ on(event: string, callback: Callback<emitter.EventData>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | string | 是 | 事件回调类型，支持的事件包括：'close' &#124; 'data' &#124; 'end' &#124; 'error' &#124; 'readable' &#124; 'pause' &#124; 'resume'。           - 'close'：完成push()调用，传入null值，触发该事件。           - 'data'：当流传递给消费者一个数据块时触发该事件。           - 'end'：完成push()调用，传入null值，触发该事件。           - 'error'：流发生异常时触发。           - 'readable'：当有可从流中读取的数据时触发该事件。           - 'pause'：完成pause()调用，触发该事件。           - 'resume'：完成resume()调用，触发该事件。 |
+| event | string | 是 | 事件回调类型，支持的事件包括：`'close'` &#124; `'data'` &#124; `'end'` &#124; `'error'` &#124; `'readable'` &#124; `'pause'` &#124; `'resume'` 。           - `'close'`：可读流关闭，发生error事件或end事件后触发该事件。           - `'data'`：当流传递给消费者一个数据块时触发该事件。           - `'end'`：完成[push()](#push)调用，传入null值，触发该事件。           - `'error'`：流发生异常时触发。           - `'readable'`：当有可从流中读取的数据时触发该事件。           - `'pause'`：完成[pause()](#pause)调用，触发该事件。           - `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[emitter.EventData](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-emitter-eventdata-i.md)&gt; | 是 | 回调函数，返回事件数据。 |
 
 **示例**
@@ -288,7 +288,7 @@ readableStream.on("error", () => {
 pause(): Readable
 ```
 
-暂停流动模式下的可读流。可以使用**isPaused**检查流是否已暂停。
+将流的读取模式从流动切换到暂停模式，可用接口isPaused判断是否已切换。
 
 **起始版本：** 12
 
@@ -327,7 +327,7 @@ console.info("Readable test pause", readableStream.isPaused()); // Readable test
 pipe(destination: Writable, options?: Object): Writable
 ```
 
-将一个可写流附加到可读流上，以实现数据的自动传输。
+将一个可读流与一个可写流连接起来，实现数据的自动传输。
 
 **起始版本：** 12
 
@@ -386,7 +386,7 @@ readableStream.pipe(writableStream);
 push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean
 ```
 
-将数据推入可读流的缓冲区。
+将数据推送到可读流缓冲区中。
 
 **起始版本：** 12
 
@@ -433,7 +433,7 @@ console.info("Readable push test", readableStream.readableLength); // Readable p
 read(size?: number): string | null
 ```
 
-从可读流的缓冲区中读取数据，并返回读取的数据。如果没有读取到数据，则返回**null**。
+从可读流缓冲区读取数据，并返回读取到的数据，如果未读取到数据，则返回null。
 
 **起始版本：** 12
 
@@ -486,7 +486,7 @@ console.info("Readable data is", dataChunk); // Readable data is test
 resume(): Readable
 ```
 
-恢复已显式暂停的可读流。可以使用**isPaused**检查流是否已暂停。
+将流的读取模式从暂停切换到流动模式，可用接口isPaused判断是否已切换。
 
 **起始版本：** 12
 
@@ -525,7 +525,7 @@ console.info("Readable test resume", !readableStream.isPaused()); // 切换流�
 setEncoding(encoding?: string): boolean
 ```
 
-设置可读流的字符编码类型。当缓冲区有数据时，不允许设置字符编码类型，返回值为**false**。
+设置可读流的字符编码类型。当缓冲区有数据时，不允许设置字符编码类型，返回值为false。
 
 **起始版本：** 12
 
@@ -570,7 +570,7 @@ console.info("Readable result", result); // Readable result true
 unpipe(destination?: Writable): Readable
 ```
 
-将之前附加到可读流的可写流分离。
+从可写流中移除所有或指定的已连接的可读流。
 
 **起始版本：** 12
 

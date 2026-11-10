@@ -119,6 +119,7 @@ import { notificationManager } from '@kit.NotificationKit';
 | [getDoNotDisturbProfile](arkts-notification-notificationmanager-getdonotdisturbprofile-f-sys.md#getdonotdisturbprofile-2) | 查询指定用户的勿扰模式配置信息。使用Promise异步回调。 |
 | [getNotificationStatisticsByBundle](arkts-notification-notificationmanager-getnotificationstatisticsbybundle-f-sys.md#getnotificationstatisticsbybundle-1) | 批量获取指定应用列表的通知统计信息，使用Promise异步回调。 |
 | [getNotificationSwitch](arkts-notification-notificationmanager-getnotificationswitch-f-sys.md#getnotificationswitch-1) | 获取通知开关状态。使用Promise异步回调。 |
+| [getNotificationSwitchLimitedBundles](arkts-notification-notificationmanager-getnotificationswitchlimitedbundles-f-sys.md#getnotificationswitchlimitedbundles-1) | 获取通知开关受限的应用列表。使用Promise异步回调。 |
 | [getPriorityEnabledByBundles](arkts-notification-notificationmanager-getpriorityenabledbybundles-f-sys.md#getpriorityenabledbybundles-1) | 批量获取应用通知优先级开关状态。使用Promise异步回调。 |
 | [getPriorityStrategyByBundles](arkts-notification-notificationmanager-getprioritystrategybybundles-f-sys.md#getprioritystrategybybundles-1) | 批量获取应用通知优先策略。使用Promise异步回调。 |
 | [getReminderInfoByBundles](arkts-notification-notificationmanager-getreminderinfobybundles-f-sys.md#getreminderinfobybundles-1) | 批量获取指定应用提醒信息。使用Promise异步回调。 |

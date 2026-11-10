@@ -32,7 +32,7 @@ DEFAULT_LINK = 0
 WIFI7_EMLSR = 3
 ```
 
-Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单天线）连接。
+Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单射频）连接。
 
 **起始版本：** 18
 

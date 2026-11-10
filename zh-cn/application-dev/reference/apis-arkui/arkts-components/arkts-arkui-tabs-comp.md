@@ -62,7 +62,9 @@ Tabs(options?: TabsOptions)
 | [TabContentAnimatedTransition](arkts-arkui-tabs-comp-tabcontentanimatedtransition-i.md) | Tabs自定义切换动画相关信息。 |
 | [TabContentTransitionProxy](arkts-arkui-tabs-comp-tabcontenttransitionproxy-i.md) | Tabs自定义切换动画执行过程中，返回给开发者的proxy对象。开发者可通过该对象获取自定义动画的起始和目标页面信息，同时，也可以通过调用该对象的finishTransition接口通知Tabs组件自定义动画已结束。 |
 | [TabsAnimationEvent](arkts-arkui-tabs-comp-tabsanimationevent-i.md) | Tabs组件动画相关信息集合。 |
+| [TabsBreakpointType](arkts-arkui-tabs-comp-tabsbreakpointtype-i.md) | 定义不同Tabs容器大小的值类型。 |
 | [TabsOptions](arkts-arkui-tabs-comp-tabsoptions-i.md) | Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tabs控制器和页签栏（TabBar）的[通用属性](arkts-arkui-common-comp-commonmethod-c.md)。 |
+| [TabsSidebarSearchableOptions](arkts-arkui-tabs-comp-tabssidebarsearchableoptions-i.md) | 定义可搜索侧边栏标签栏的选项。 |
 
 ### 类型
 
@@ -75,6 +77,7 @@ Tabs(options?: TabsOptions)
 | [OnTabsContentWillChangeCallback](arkts-arkui-tabs-comp-ontabscontentwillchangecallback-t.md) | 自定义Tabs页面切换拦截事件能力，新页面即将显示时触发的回调。 |
 | [OnTabsGestureSwipeCallback](arkts-arkui-tabs-comp-ontabsgestureswipecallback-t.md) | 在页面跟手滑动过程中，逐帧触发的回调。 |
 | [TabsCustomContentTransitionCallback](arkts-arkui-tabs-comp-tabscustomcontenttransitioncallback-t.md) | 自定义Tabs页面切换动画开始时触发的回调。 |
+| [TabsSidebarSearchFilterCallback](arkts-arkui-tabs-comp-tabssidebarsearchfiltercallback-t.md) | 定义可搜索侧边栏标签栏的选项。 |
 | [UIMaterial](arkts-arkui-tabs-comp-uimaterial-t.md) | 材质 |
 
 ### 枚举
@@ -85,6 +88,8 @@ Tabs(options?: TabsOptions)
 | [BarMode](arkts-arkui-tabs-comp-barmode-e.md) | TabBar布局模式枚举。 |
 | [BarPosition](arkts-arkui-tabs-comp-barposition-e.md) | Tabs页签位置枚举。 |
 | [LayoutStyle](arkts-arkui-tabs-comp-layoutstyle-e.md) | [Scrollable](arkts-arkui-tabs-comp-attribute.md#barmode-1)模式下不滚动时的页签排布方式枚举。 |
+| [TabBarDisplayMode](arkts-arkui-tabs-comp-tabbardisplaymode-e.md) | 枚举不同Tabs容器大小下标签栏的实际显示方式。此枚举用于[barDisplayModeBreakpoint](arkts-arkui-tabs-comp-attribute.md#bardisplaymodebreakpoint)中指定不同断点大小的显示模式。只有当**TabBarStyle**设置为**侧栏自适应表**或**侧栏**。 |
+| [TabBarStyle](arkts-arkui-tabs-comp-tabbarstyle-e.md) | 枚举标签栏的显示样式。 |
 | [TabsCacheMode](arkts-arkui-tabs-comp-tabscachemode-e.md) | 子组件的缓存模式。 |
 | [TabsNestedScrollMode](arkts-arkui-tabs-comp-tabsnestedscrollmode-e.md) | Tabs组件和父组件的嵌套滚动模式枚举。 |
 
@@ -2188,7 +2193,7 @@ struct TabsFloatingStyleExample {
 
 ### 示例25（设置侧边页签栏样式）
 
-本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式。通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置，通过[sidebarHeader](#sidebarheader)接口在侧边页签栏头部设置自定义内容，通过[sidebarFooter](#sidebarfooter)接口在侧边页签栏页签列表尾部设置随页签列表滚动的自定义内容，通过[sidebarBottomBar](#sidebarbottombar)接口在侧边页签栏固定底部设置自定义内容。通过[sidebarSearchable](#sidebarsearchable)接口开启侧边页签栏的搜索功能，通过[onBarDisplayModeChange](#onbardisplaymodechange)接口注册显示模式切换的监听函数。
+本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式。通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置，通过[sidebarHeader](arkts-arkui-tabs-comp-attribute.md#sidebarheader)接口在侧边页签栏头部设置自定义内容，通过[sidebarFooter](#sidebarfooter)接口在侧边页签栏页签列表尾部设置随页签列表滚动的自定义内容，通过[sidebarBottomBar](#sidebarbottombar)接口在侧边页签栏固定底部设置自定义内容。通过[sidebarSearchable](arkts-arkui-tabs-comp-attribute.md#sidebarsearchable)接口开启侧边页签栏的搜索功能，通过[onBarDisplayModeChange](arkts-arkui-tabs-comp-attribute.md#onbardisplaymodechange)接口注册显示模式切换的监听函数。
 
 从API版本26.0.1开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarSearchable、onBarDisplayModeChange接口。从API版本26.1.0开始，新增sidebarFooter、sidebarBottomBar接口。
 
@@ -2410,15 +2415,15 @@ struct TabsSideBarDemo {
 
 通过[sidebarBackgroundBlurStyle](#sidebarbackgroundblurstyle)接口设置侧边页签栏的背景模糊样式。
 
-通过[sidebarSelectedIconColor](#sidebarselectediconcolor)接口设置侧边页签栏中选中态页签的图标颜色。
+通过[sidebarSelectedIconColor](arkts-arkui-tabs-comp-attribute.md#sidebarselectediconcolor)接口设置侧边页签栏中选中态页签的图标颜色。
 
-通过[sidebarSelectedTextColor](#sidebarselectedtextcolor)接口设置侧边页签栏中选中态页签的文本颜色。
+通过[sidebarSelectedTextColor](arkts-arkui-tabs-comp-attribute.md#sidebarselectedtextcolor)接口设置侧边页签栏中选中态页签的文本颜色。
 
-通过[sidebarUnselectedIconColor](#sidebarunselectediconcolor)接口设置侧边页签栏中非选中态页签的图标颜色。
+通过[sidebarUnselectedIconColor](arkts-arkui-tabs-comp-attribute.md#sidebarunselectediconcolor)接口设置侧边页签栏中非选中态页签的图标颜色。
 
-通过[sidebarUnselectedTextColor](#sidebarunselectedtextcolor)接口设置侧边页签栏中非选中态页签的文本颜色。
+通过[sidebarUnselectedTextColor](arkts-arkui-tabs-comp-attribute.md#sidebarunselectedtextcolor)接口设置侧边页签栏中非选中态页签的文本颜色。
 
-通过[sidebarSelectedBoardColor](#sidebarselectedboardcolor)接口设置侧边页签栏中选中页签的背板颜色。
+通过[sidebarSelectedBoardColor](arkts-arkui-tabs-comp-attribute.md#sidebarselectedboardcolor)接口设置侧边页签栏中选中页签的背板颜色。
 
 从API版本26.0.1开始，新增sidebarWidth、sidebarBackgroundColor、sidebarBackgroundBlurStyle、sidebarSelectedTextColor、sidebarSelectedIconColor、sidebarUnselectedTextColor、sidebarUnselectedIconColor、sidebarSelectedBoardColor接口。
 
@@ -2543,7 +2548,7 @@ struct TabsSidebarDraggableExample {
 
 ### 示例29（自定义显示模式断点）
 
-本示例展示了通过[barDisplayModeBreakpoint](#bardisplaymodebreakpoint)接口实现自定义显示模式断点的功能。
+本示例展示了通过[barDisplayModeBreakpoint](arkts-arkui-tabs-comp-attribute.md#bardisplaymodebreakpoint)接口实现自定义显示模式断点的功能。
 
 从API版本26.0.1开始，新增barDisplayModeBreakpoint接口。
 

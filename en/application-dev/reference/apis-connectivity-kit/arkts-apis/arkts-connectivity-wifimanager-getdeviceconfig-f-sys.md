@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function getDeviceConfig(networkId: number): WifiDeviceConfig
 ```
 
-Obtain the single Wi-Fi configuration with Network ID.
+Obtains the configuration of a single network based on the network ID.
 
 **Since:** 24
 
@@ -30,13 +30,13 @@ Obtain the single Wi-Fi configuration with Network ID.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| networkId | number | Yes | The network ID of the Wi-Fi configuration to retrieve. |
+| networkId | number | Yes | ID of the network configuration to be queried. <br>The value should be an integer. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i.md) | Returns the Wi-Fi configuration corresponding to the network ID. |
+| [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i.md) | Network configuration of a specified network ID. |
 
 **Error codes:**
 

@@ -16,14 +16,11 @@ Describes the parameters of the calendar picker.
 
 | Scenario | Description |  
 | -------- | ------------------------------------------------------------ |  
-| The start date is later than the end date. | Both start and end dates are invalid, and the selected date is the default value. |
-
+| The start date is later than the end date. | Both start and end dates are invalid, and the selected date is the default value. |  
 | The selected date is earlier than the start date. | The selected date is set as the start date. |  
 | The selected date is later than the end date. | The selected date is set as the end date. |  
-| The start date is later than the current system date, and the selected date is not set. | The selected date is set as the start date. |
-
-| The end date is earlier than the current system date, and the selected date is not set. | The selected date is set as the end date. |
-
+| The start date is later than the current system date, and the selected date is not set. | The selected date is set as the start date. |  
+| The end date is earlier than the current system date, and the selected date is not set. | The selected date is set as the end date. |  
 | The set date is in invalid format, for example, **1999-13-32**.| The start or end date setting is invalid,and the selected date is the default value.|
 
 ## disabledDateRange

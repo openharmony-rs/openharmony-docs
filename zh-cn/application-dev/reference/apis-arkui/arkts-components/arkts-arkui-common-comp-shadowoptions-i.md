@@ -90,11 +90,11 @@ offsetX?: number | Resource
 
 **类型：** number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
-**起始版本：** 11
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ShadowOptions-offsetX?: number | Resource--><!--Device-ShadowOptions-offsetX?: number | Resource-End-->
 
@@ -120,11 +120,11 @@ offsetY?: number | Resource
 
 **类型：** number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
-**起始版本：** 11
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ShadowOptions-offsetY?: number | Resource--><!--Device-ShadowOptions-offsetY?: number | Resource-End-->
 
@@ -144,7 +144,7 @@ radius: number | Resource
 
 **说明：** 
 
-API版本26.0.0之前，设置小于0的值时，按值为0处理。从API版本26.0.0开始，设置的值即为最终取值，当设置负数值时阴影消失。
+API版本26.0.0之前，设置小于0的值时，按值为0处理，此时不绘制阴影。从API版本26.0.0开始，设置的值即为最终取值，值为0时仍绘制阴影，设置负数值时不绘制阴影。
 
 如需使用vp单位的数值可用[vp2px](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#vp2px)进行转换。
 
@@ -152,11 +152,11 @@ API版本26.0.0之前，设置小于0的值时，按值为0处理。从API版本
 
 **类型：** number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
-**起始版本：** 11
+**起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ShadowOptions-radius: number | Resource--><!--Device-ShadowOptions-radius: number | Resource-End-->
 

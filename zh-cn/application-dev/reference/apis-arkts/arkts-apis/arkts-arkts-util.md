@@ -77,3 +77,4 @@ import { util } from '@kit.ArkTS';
 | 名称 | 说明 |
 | --- | --- |
 | [Type](arkts-arkts-util-type-e.md) | Base64 编码格式枚举。 |
+| [UrgencyLevel](arkts-arkts-util-urgencylevel-e.md) | 枚举，提示触发GC的紧急程度。 |

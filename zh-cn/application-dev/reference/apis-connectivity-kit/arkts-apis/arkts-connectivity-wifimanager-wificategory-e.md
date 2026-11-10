@@ -18,7 +18,7 @@ enum WifiCategory
 DEFAULT = 1
 ```
 
-Default。Wifi6以下的wifi类别。
+Default。Wi-Fi6以下的Wi-Fi类别。
 
 **起始版本：** 12
 
@@ -32,7 +32,7 @@ Default。Wifi6以下的wifi类别。
 WIFI6 = 2
 ```
 
-Wifi6。
+Wi-Fi6。
 
 **起始版本：** 12
 
@@ -46,7 +46,7 @@ Wifi6。
 WIFI6_PLUS = 3
 ```
 
-Wifi6+。
+Wi-Fi6+。
 
 **起始版本：** 12
 
@@ -60,7 +60,7 @@ Wifi6+。
 WIFI7 = 4
 ```
 
-Wifi7。
+Wi-Fi7。
 
 **起始版本：** 15
 
@@ -74,7 +74,7 @@ Wifi7。
 WIFI7_PLUS = 5
 ```
 
-Wifi7+。
+Wi-Fi7+。
 
 **起始版本：** 15
 

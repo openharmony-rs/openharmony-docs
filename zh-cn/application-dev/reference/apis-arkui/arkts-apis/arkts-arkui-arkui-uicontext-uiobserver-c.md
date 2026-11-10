@@ -1083,6 +1083,31 @@ offNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback?: Cal
 
 参考[onNavDestinationSizeChangeByUniqueId](#onnavdestinationsizechangebyuniqueid)接口示例。
 
+## offNodeSensitiveInput
+
+```TypeScript
+offNodeSensitiveInput(nodeIdentity: NodeIdentity, callback?: NodeSensitiveInputCallback): void
+```
+
+注销监听**nodeIdentity**指定节点输入事件的回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIObserver-offNodeSensitiveInput(nodeIdentity: NodeIdentity, callback?: NodeSensitiveInputCallback): void--><!--Device-UIObserver-offNodeSensitiveInput(nodeIdentity: NodeIdentity, callback?: NodeSensitiveInputCallback): void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| nodeIdentity | [NodeIdentity](arkts-arkui-nodeidentity-t.md) | 是 | 节点ID。 |
+| callback | [NodeSensitiveInputCallback](arkts-arkui-nodesensitiveinputcallback-t.md) | 否 | 待注销的目标监听器。未传入此参数时，注销指定节点的全部敏感输入事件监听器。 |
+
 ## offRouterPageSizeChange
 
 ```TypeScript
@@ -3356,6 +3381,37 @@ struct QueryNavDestinationSize {
   }
 }
 ```
+
+## onNodeSensitiveInput
+
+```TypeScript
+onNodeSensitiveInput(nodeIdentity: NodeIdentity, callback: NodeSensitiveInputCallback): void
+```
+
+注册回调，监听**nodeIdentity**指定节点的输入事件。注册后，在输入事件（触摸、鼠标或按键事件）分发到节点前触发回调，无论该事件由用户还是Agent生成。可以通过[NodeSensitiveInputInfo](arkts-arkui-arkui-uicontext-nodesensitiveinputinfo-i.md)中的**isAgent**判断事件是否由系统Agent生成，或由具有ohos.permission.CONTROL_DEVICE权限的应用注入。
+
+即使事件最终未分发到节点，也会触发回调。例如，被[agentControlMode](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#agentcontrolmode)阻止的Agent生成事件仍会上报，以便感知对敏感控件的操控尝试。
+
+仅上报命中测试目标为节点自身的事件；命中测试目标为子节点的事件不上报。
+
+同一**nodeIdentity**可以注册多个回调，所有回调都会在输入事件分发前执行。如果节点不存在，注册不生效，且不上报事件。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIObserver-onNodeSensitiveInput(nodeIdentity: NodeIdentity, callback: NodeSensitiveInputCallback): void--><!--Device-UIObserver-onNodeSensitiveInput(nodeIdentity: NodeIdentity, callback: NodeSensitiveInputCallback): void-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| nodeIdentity | [NodeIdentity](arkts-arkui-nodeidentity-t.md) | 是 | 节点ID。string类型表示通过[id](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id)属性设置的inspector ID；number类型表示通过FrameNode的[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid)获取的唯一ID。 |
+| callback | [NodeSensitiveInputCallback](arkts-arkui-nodesensitiveinputcallback-t.md) | 是 | 用于返回结果的回调，通过**NodeSensitiveInputInfo**提供输入事件信息，通过[FrameNode](arkts-arkui-framenode-c.md)提供组件信息。 |
 
 ## onRouterPageSizeChange
 

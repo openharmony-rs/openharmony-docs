@@ -6,7 +6,7 @@ enum DeviceAddressType
 
 Wi-Fi device address( mac / bssid ) type.
 
-**Since:** 12
+**Since:** 10
 
 <!--Device-wifiManager-enum DeviceAddressType--><!--Device-wifiManager-enum DeviceAddressType-End-->
 
@@ -20,7 +20,7 @@ RANDOM_DEVICE_ADDRESS
 
 random device address
 
-**Since:** 12
+**Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -36,7 +36,7 @@ REAL_DEVICE_ADDRESS
 
 real device address
 
-**Since:** 12
+**Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

@@ -209,6 +209,26 @@ moduleName: string
 
 **系统接口：** 此接口为系统接口。
 
+## toolCallId
+
+```TypeScript
+toolCallId?: string
+```
+
+表示工具调用ID，用于将此意图执行与某个测试步骤关联。
+
+**类型：** string
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ExecuteParam-toolCallId?: string--><!--Device-ExecuteParam-toolCallId?: string-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## uris
 
 ```TypeScript

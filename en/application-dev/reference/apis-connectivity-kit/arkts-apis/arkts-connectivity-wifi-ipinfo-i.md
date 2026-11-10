@@ -4,7 +4,7 @@
 interface IpInfo
 ```
 
-Wi-Fi IP information.
+Represents the IP information obtained.
 
 **Since:** 7
 
@@ -28,7 +28,7 @@ import { wifi } from '@kit.ConnectivityKit';
 gateway: number
 ```
 
-The gateway of the Wi-Fi connection
+Gateway.
 
 **Type:** number
 
@@ -48,7 +48,7 @@ The gateway of the Wi-Fi connection
 ipAddress: number
 ```
 
-The IP address of the Wi-Fi connection
+IP address.
 
 **Type:** number
 
@@ -68,7 +68,7 @@ The IP address of the Wi-Fi connection
 leaseDuration: number
 ```
 
-The IP address lease duration of the Wi-Fi connection
+Lease duration of the IP address, in seconds.
 
 **Type:** number
 
@@ -88,7 +88,7 @@ The IP address lease duration of the Wi-Fi connection
 netmask: number
 ```
 
-The network mask of the Wi-Fi connection
+Subnet mask.
 
 **Type:** number
 
@@ -108,7 +108,7 @@ The network mask of the Wi-Fi connection
 primaryDns: number
 ```
 
-The primary DNS server IP address of the Wi-Fi connection
+IP address of the preferred DNS server.
 
 **Type:** number
 
@@ -128,7 +128,7 @@ The primary DNS server IP address of the Wi-Fi connection
 secondDns: number
 ```
 
-T he secondary DNS server IP address of the Wi-Fi connection
+IP address of the alternate DNS server.
 
 **Type:** number
 
@@ -148,7 +148,7 @@ T he secondary DNS server IP address of the Wi-Fi connection
 serverIp: number
 ```
 
-The DHCP server IP address of the Wi-Fi connection
+IP address of the DHCP server.
 
 **Type:** number
 

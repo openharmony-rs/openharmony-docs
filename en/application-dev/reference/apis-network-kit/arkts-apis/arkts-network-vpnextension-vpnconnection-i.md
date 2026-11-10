@@ -28,13 +28,10 @@ Creates a VPN based on the specified configuration. This API uses a promise to r
 
 > **NOTE:** 
 > 
-> You are advised to call [destroy()](#destroy) or
-> [destroy(vpnId: string)](#destroy-2) to destroy the VPN and clear
-> resources when the VPN is not needed.
+> 1. You are advised to call [destroy()](#destroy) or [destroy(vpnId: string)](#destroy-2) to destroy the VPN and clear resources when the VPN is not needed.
+> 2. When error code 2200003 is returned by calling this interface, check whether the ohos.permission.INTERNET permission has been applied for.
 
 **Since:** 11
-
-**Required permissions:** ohos.permission.INTERNET
 
 <!--Device-VpnConnection-create(config: VpnConfig): Promise<int>--><!--Device-VpnConnection-create(config: VpnConfig): Promise<int>-End-->
 
@@ -56,7 +53,6 @@ Creates a VPN based on the specified configuration. This API uses a promise to r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 | [2200001](../errorcode-net-ethernet.md#2200001-invalid-parameter-value) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-service-connection-failure) | Operation failed. Cannot connect to service. |

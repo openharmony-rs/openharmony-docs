@@ -12,7 +12,7 @@ import { wifiext } from '@kit.ConnectivityKit';
 function enableHotspot(): boolean
 ```
 
-Enables a Wi-Fi hotspot.
+Enables the Wi-Fi hotspot.
 
 **Since:** 8
 
@@ -30,4 +30,4 @@ Enables a Wi-Fi hotspot.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if this method is called successfully; returns `false` otherwise. |
+| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |

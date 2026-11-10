@@ -45,16 +45,16 @@ compare(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | target | Buffer &#124; Uint8Array | 是 | 要比较的实例对象。 |
-| targetStart | number | 否 | target实例中开始的偏移量。取值范围：&gt;= 0且&lt;= target的字节长度。默认值：0。 |
-| targetEnd | number | 否 | target实例中结束的偏移量（不包含结束位置）。默认值：目标对象的字节长度。 |
-| sourceStart | number | 否 | this实例中开始的偏移量。默认值：0。 |
-| sourceEnd | number | 否 | this实例中结束的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
+| targetStart | number | 否 | `target`实例中开始的偏移量。取值范围：&gt;= 0且&lt;= target的字节长度。默认值：0。 |
+| targetEnd | number | 否 | `target`实例中结束的偏移量（不包含结束位置）。默认值：目标对象的字节长度。 |
+| sourceStart | number | 否 | `this`实例中开始的偏移量。默认值：0。 |
+| sourceEnd | number | 否 | `this`实例中结束的偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| -1 &#124; 0 &#124; 1 | 比较结果。如果两个Buffer对象相同，则返回0；如果当前对象在排序时位于目标对象之后，则返回1；如果当前对象在排序时位于目标对象之前，则返回-1。 |
+| -1 &#124; 0 &#124; 1 | 返回比较结果。-1：当前排列在目标前，0：当前与目标相同，1：当前排列在目标后。 |
 
 **错误码：**
 
@@ -231,7 +231,7 @@ fill(
     ): Buffer
 ```
 
-使用value填充当前对象指定位置的数据，当value的长度小于需要填充的范围时会重复value进行填充，并返回填充后的Buffer对象。
+使用`value`填充当前对象指定位置的数据，当`value`的长度小于需要填充的范围时会重复`value`进行填充，并返回填充后的Buffer对象。
 
 **起始版本：** 9
 
@@ -247,8 +247,8 @@ fill(
 | --- | --- | --- | --- |
 | value | string &#124; Buffer &#124; Uint8Array &#124; number | 是 | 用于填充的值。<br>**适用版本：** 11 |
 | offset | number | 否 | 起始偏移量。取值范围：&gt;= 0且&lt;= Buffer.length。默认值：0。 |
-| end | number | 否 | 结束偏移量（不包含结束位置）。默认值：当前对象的字节长度。 |
-| encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
+| end | number | 否 | 结束偏移量（不包含结束位置）。 默认值：当前对象的字节长度。 |
+| encoding | BufferEncoding | 否 | 字符编码格式（`value`参数为string才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
@@ -278,7 +278,7 @@ console.info(b.toString());
 includes(value: string | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): boolean
 ```
 
-检查Buffer对象是否包含value值。
+检查Buffer对象是否包含`value`值。
 
 **起始版本：** 9
 
@@ -294,13 +294,13 @@ includes(value: string | number | Buffer | Uint8Array, byteOffset?: number, enco
 | --- | --- | --- | --- |
 | value | string &#124; number &#124; Buffer &#124; Uint8Array | 是 | 要搜索的内容。<br>**适用版本：** 11 |
 | byteOffset | number | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
-| encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
+| encoding | BufferEncoding | 否 | 字符编码格式（`value`参数为string时才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 存在返回true，否则返回false。 |
+| boolean | 存在为true，否则为false。 |
 
 **示例**
 
@@ -320,7 +320,7 @@ console.info(buf.includes('be').toString());
 indexOf(value: string | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
 ```
 
-返回当前对象中首次出现value的索引，如果不包含value，则返回-1。
+返回当前对象中首次出现`value`的索引，如果不包含`value`，则返回-1。
 
 **起始版本：** 9
 
@@ -336,7 +336,7 @@ indexOf(value: string | number | Buffer | Uint8Array, byteOffset?: number, encod
 | --- | --- | --- | --- |
 | value | string &#124; number &#124; Buffer &#124; Uint8Array | 是 | 要查找的内容。<br>**适用版本：** 11 |
 | byteOffset | number | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：0。 |
-| encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
+| encoding | BufferEncoding | 否 | 字符编码格式（`value`参数为string时才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
@@ -404,7 +404,7 @@ for (const key of keys) {
 lastIndexOf(value: string | number | Buffer | Uint8Array, byteOffset?: number, encoding?: BufferEncoding): number
 ```
 
-返回this实例中最后一次出现value的索引，如果对象不包含value，则返回-1。
+返回`this`实例中最后一次出现`value`的索引，如果对象不包含`value`，则返回-1。
 
 **起始版本：** 9
 
@@ -420,13 +420,13 @@ lastIndexOf(value: string | number | Buffer | Uint8Array, byteOffset?: number, e
 | --- | --- | --- | --- |
 | value | string &#124; number &#124; Buffer &#124; Uint8Array | 是 | 要搜索的内容。<br>**适用版本：** 11 |
 | byteOffset | number | 否 | 字节偏移量。如果为负数，则从末尾开始计算偏移量。默认值：Buffer.length。 |
-| encoding | BufferEncoding | 否 | 字符编码格式（value为string才有意义）。默认值：'utf8'。 |
+| encoding | BufferEncoding | 否 | 字符编码格式（`value`参数为string时才有意义）。默认值：'utf8'。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 最后一次出现value值的索引。 |
+| number | 最后一次出现`value`值的索引。 |
 
 **示例**
 
@@ -460,7 +460,7 @@ readBigInt64BE(offset?: number): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。当Buffer长度小于8时无法使用此方法。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。 |
 
 **返回值：**
 
@@ -510,7 +510,7 @@ readBigInt64LE(offset?: number): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - 8，默认值：0。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - 8。当Buffer长度小于8时无法使用此方法。 |
 
 **返回值：**
 
@@ -1093,7 +1093,7 @@ readIntBE(offset: number, byteLength: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 是 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength，默认值：0。 |
+| offset | number | 是 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
 | byteLength | number | 是 | 读取的字节数。取值范围：1 &lt;= byteLength &lt;= 6。 |
 
 **返回值：**
@@ -1522,7 +1522,7 @@ console.info("result = " + result);
 subarray(start?: number, end?: number): Buffer
 ```
 
-截取当前对象指定位置的数据并返回。返回的Buffer与原Buffer共享内存，修改任一对象都会影响另一个对象。
+截取当前对象指定位置的数据并返回。返回的Buffer与原Buffer共享同一块内存区域，修改任一对象的数据会同步影响另一对象。
 
 **起始版本：** 9
 
@@ -1779,7 +1779,7 @@ values(): IterableIterator<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| IterableIterator&lt;number&gt; | 迭代器。 |
+| IterableIterator&lt;number&gt; | 返回包含Buffer中每个字节值的迭代器。 |
 
 **示例**
 
@@ -1825,7 +1825,7 @@ write(str: string, offset?: number, length?: number, encoding?: string): number
 | --- | --- | --- | --- |
 | str | string | 是 | 要写入Buffer的字符串。 |
 | offset | number | 否 | 偏移量。取值范围：&gt;= 0且&lt;= Buffer.length。默认值：0。 |
-| length | number | 否 | 最大字节长度。默认值：（Buffer.length - offset）。 |
+| length | number | 否 | 最大字节长度。默认值：(Buffer.length - offset)。 |
 | encoding | string | 否 | 字符编码，支持的格式范围为BufferEncoding。默认值：'utf8'。 |
 
 **返回值：**
@@ -2478,7 +2478,7 @@ writeIntBE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 写入Buffer的数据。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
+| offset | number | 是 | 偏移量。取值范围：0 &lt;= offset &lt;= Buffer.length - byteLength。 |
 | byteLength | number | 是 | 要写入的字节数，取值范围：1 &lt;= byteLength &lt;= 6。 |
 
 **返回值：**

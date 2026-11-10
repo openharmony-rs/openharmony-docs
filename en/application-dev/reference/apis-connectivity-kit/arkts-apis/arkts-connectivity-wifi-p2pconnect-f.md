@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function p2pConnect(config: WifiP2PConfig): boolean
 ```
 
-Initiates a P2P connection to a device with the specified configuration.
+Sets up a P2P connection.
 
 **Since:** 8
 
@@ -30,13 +30,13 @@ Initiates a P2P connection to a device with the specified configuration.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [WifiP2PConfig](arkts-connectivity-wifi-wifip2pconfig-i.md) | Yes | Indicates the configuration for connecting to a specific group. |
+| config | [WifiP2PConfig](arkts-connectivity-wifi-wifip2pconfig-i.md) | Yes | P2P group configuration. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if the operation is successful, returns `false` otherwise. |
+| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
 
 **Examples**
 

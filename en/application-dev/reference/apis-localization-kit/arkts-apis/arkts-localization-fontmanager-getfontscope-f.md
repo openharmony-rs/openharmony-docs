@@ -42,4 +42,4 @@ Queries the scope of a font by URL. This API uses a promise to return the result
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [31100110](../errorcode-font-manager.md#31100110-failed-to-call-the-api-due-to-system-errors) | Call failed due to system error. |
-| 31100112 | The scope font is not found. |
+| [31100112](../errorcode-font-manager.md#31100112-scope-font-not-found) | The scope font is not found. |

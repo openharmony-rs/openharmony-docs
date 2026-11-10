@@ -290,6 +290,8 @@
   - [killProcessesInBatch（系统接口）](arkts-ability-appmanager-killprocessesinbatch-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [killProcessWithAccount（系统接口）](arkts-ability-appmanager-killprocesswithaccount-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [killProcessWithAccountSafely（系统接口）](arkts-ability-appmanager-killprocesswithaccountsafely-f-sys.md)<!--DelEnd-->
   - [off](arkts-ability-appmanager-off-f.md)
   <!--Del-->
   - [off（系统接口）](arkts-ability-appmanager-off-f-sys.md)<!--DelEnd-->
@@ -666,8 +668,12 @@
 - [@ohos.app.ability.InsightIntentExecutor（意图执行基类）](arkts-ability-app-ability-insightintentexecutor.md)
   - [InsightIntentExecutor](arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md)
 - [@ohos.app.ability.insightIntentProvider（意图提供方管理能力）](arkts-ability-app-ability-insightintentprovider.md)
+  - [offWillInsightIntentExecute](arkts-ability-insightintentprovider-offwillinsightintentexecute-f.md)
+  - [onWillInsightIntentExecute](arkts-ability-insightintentprovider-onwillinsightintentexecute-f.md)
   - [sendExecuteResult](arkts-ability-insightintentprovider-sendexecuteresult-f.md)
   - [sendIntentResult](arkts-ability-insightintentprovider-sendintentresult-f.md)
+  - [InsightIntentExecutionCallBack](arkts-ability-insightintentprovider-insightintentexecutioncallback-i.md)
+  - [OnWillInsightIntentExecuteCallBackFn](arkts-ability-insightintentprovider-onwillinsightintentexecutecallbackfn-t.md)
 - [@ohos.app.ability.InteropAbilityLifecycleCallback](arkts-ability-app-ability-interopabilitylifecyclecallback.md)
   - [InteropAbilityLifecycleCallback](arkts-ability-app-ability-interopabilitylifecyclecallback-interopabilitylifecyclecallback-i.md)
   - [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)

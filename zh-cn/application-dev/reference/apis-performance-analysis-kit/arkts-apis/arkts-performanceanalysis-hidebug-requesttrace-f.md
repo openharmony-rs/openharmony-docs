@@ -16,7 +16,7 @@ function requestTrace(config: RequestTraceConfig): Promise<string>
 
 采集trace返回的.sys文件在目录下最多存储3份，数量大于等于3份时再次调用接口会抛出错误码11400120。
 
-接口不支持在输入法应用中使用。
+接口不支持在[输入法应用](../../../inputmethod/ime-kit-intro.md)中使用。
 
 **起始版本：** 24
 

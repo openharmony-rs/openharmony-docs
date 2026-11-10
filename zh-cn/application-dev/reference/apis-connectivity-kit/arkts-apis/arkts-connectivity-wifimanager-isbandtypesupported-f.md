@@ -26,13 +26,13 @@ function isBandTypeSupported(bandType: WifiBandType): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bandType | [WifiBandType](arkts-connectivity-wifimanager-wifibandtype-e.md) | 是 | Wifi 频段类型。 |
+| bandType | [WifiBandType](arkts-connectivity-wifimanager-wifibandtype-e.md) | 是 | Wi-Fi频段类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true:支持， false:不支持。 |
+| boolean | true表示支持，false表示不支持。 |
 
 **错误码：**
 

@@ -65,12 +65,10 @@ create(config: VpnConfig): Promise<number>
 
 > **说明：** 
 > 
-> 建议在不需要VPN网络的时候配对调用[destroy()](#destroy)或
-> [destroy(vpnId: string)](#destroy-2)接口销毁启动的VPN网络，并执行资源清理等操作。
+> 1. 建议在不需要VPN网络的时候配对调用[destroy()](#destroy)或[destroy(vpnId: string)](#destroy-2)接口销毁启动的VPN网络，并执行资源清理等操作。
+> 2. 当调用该接口返回错误码2200003时，请排查是否已申请ohos.permission.INTERNET权限。
 
 **起始版本：** 11
-
-**需要权限：** ohos.permission.INTERNET
 
 <!--Device-VpnConnection-create(config: VpnConfig): Promise<int>--><!--Device-VpnConnection-create(config: VpnConfig): Promise<int>-End-->
 
@@ -92,7 +90,6 @@ create(config: VpnConfig): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Operation failed. Cannot connect to service. |

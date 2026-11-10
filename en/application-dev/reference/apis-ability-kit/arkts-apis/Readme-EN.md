@@ -288,6 +288,8 @@
   - [killProcessesInBatch(system api)](arkts-ability-appmanager-killprocessesinbatch-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [killProcessWithAccount(system api)](arkts-ability-appmanager-killprocesswithaccount-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [killProcessWithAccountSafely(system api)](arkts-ability-appmanager-killprocesswithaccountsafely-f-sys.md)<!--DelEnd-->
   - [off](arkts-ability-appmanager-off-f.md)
   <!--Del-->
   - [off(system api)](arkts-ability-appmanager-off-f-sys.md)<!--DelEnd-->

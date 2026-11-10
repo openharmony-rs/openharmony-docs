@@ -33,6 +33,8 @@ import { collections } from '@kit.ArkTS';
 
 返回一个迭代器，迭代器的每一项都是一个number。
 
+本接口不支持在.ets文件中使用。
+
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
@@ -215,8 +217,8 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于构造ArkTS Int32Array的ArrayBuffer对象。buffer所占的字节数需是4的整数倍。 |
-| byteOffset | number | 否 | 指定buffer的字节偏移，从0开始。默认值为**0**。 |
-| length | number | 否 | 指定ArkTS Int32Array的长度。默认值为**0**。 |
+| byteOffset | number | 否 | 指定buffer的字节偏移，从0开始，默认值为0。byteOffset需为4的整数倍。 |
+| length | number | 否 | 指定ArkTS Int32Array的长度，需为非负整数。默认值为0。且需满足byteOffset + length * 4 &lt;= buffer.byteLength。 |
 
 **错误码：**
 
@@ -267,7 +269,7 @@ copyWithin(target: number, start: number, end?: number): Int32Array
 entries(): IterableIterator<[number, number]>
 ```
 
-返回一个新的迭代器对象，该对象包含ArkTS Float32Array中每个元素的键值对。
+返回一个新的迭代器对象，该对象包含ArkTS Int32Array中每个元素的键值对。
 
 **起始版本：** 12
 
@@ -588,7 +590,7 @@ static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, num
 includes(searchElement: number, fromIndex?: number): boolean
 ```
 
-判断ArkTS Float32Array是否包含特定元素。
+判断ArkTS Int32Array是否包含特定元素。
 
 **起始版本：** 12
 
@@ -603,7 +605,7 @@ includes(searchElement: number, fromIndex?: number): boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | number | 是 | 待搜索的元素。 |
-| fromIndex | number | 否 | 开始搜索的索引位置。 |
+| fromIndex | number | 否 | 开始搜索的索引，默认值为0。如果fromIndex &lt; 0，则会从fromIndex + Int32Array.length位置开始从前向后搜索。 |
 
 **返回值：**
 
@@ -624,7 +626,7 @@ includes(searchElement: number, fromIndex?: number): boolean
 indexOf(searchElement: number, fromIndex?: number): number
 ```
 
-返回在ArkTS Float32Array中给定元素的第一个索引，如果不存在，则返回**-1**。
+返回在ArkTS Int32Array中给定元素的第一个索引，如果不存在，则返回**-1**。
 
 **起始版本：** 12
 
@@ -639,7 +641,7 @@ indexOf(searchElement: number, fromIndex?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | number | 是 | 待索引的值。 |
-| fromIndex | number | 否 | 搜索的起始下标。默认值为**0**。如果下标大于等于ArkTS Float32Array的长度，则返回**-1**。如果传入负数，则从ArkTS Float32Array末尾开始搜索。 |
+| fromIndex | number | 否 | 搜索的起始索引。默认值为0。如果索引大于等于ArkTS Int32Array的长度，则返回-1。如果索引为负数，则从fromIndex + Int32Array.length位置开始从前到后搜索。 |
 
 **返回值：**
 
@@ -660,7 +662,7 @@ indexOf(searchElement: number, fromIndex?: number): number
 join(separator?: string): string
 ```
 
-将ArkTS Float32Array的所有元素拼接成一个字符串，元素之间使用指定的分隔符分隔。
+将ArkTS Int32Array的所有元素拼接成一个字符串，元素之间使用指定的分隔符分隔。
 
 **起始版本：** 12
 
@@ -695,7 +697,7 @@ join(separator?: string): string
 keys(): IterableIterator<number>
 ```
 
-返回一个新的迭代器对象，该对象包含ArkTS Float32Array中每个元素的键（下标）。
+返回一个新的迭代器对象，该对象包含ArkTS Int32Array中每个元素的键（下标）。
 
 **起始版本：** 12
 
@@ -739,7 +741,7 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | searchElement | number | 是 | 待索引的值。 |
-| fromIndex | number | 否 | 搜索的起始下标。默认值为ArkTS Int32Array长度减1（即从末尾开始）。如果下标大于等于ArkTS Int32Array的长度，则返回**-1**。如果传入负数，则从ArkTS Int32Array末尾开始搜索。 |
+| fromIndex | number | 否 | 搜索的起始索引，从该位置开始往前查找。默认值为ArkTS Int32Array长度减1（即从末尾开始）。如果索引大于等于ArkTS Int32Array的长度，则从末尾开始往前查找。如果提供的索引值是负数，则被当作距离数组尾部的偏移，从后到前搜索。 |
 
 **返回值：**
 
@@ -809,7 +811,7 @@ static of(...items: number[]): Int32Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。 |
+| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。默认值为空数组。 |
 
 **返回值：**
 
@@ -1045,7 +1047,7 @@ set(array: ArrayLike<number>, offset?: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | array | ArrayLike&lt;number&gt; | 是 | 用于设置的ArrayLike对象。 |
-| offset | number | 否 | 当前数组中开始写入值的位置索引。 |
+| offset | number | 否 | 写入的起始位置，需为非负整数。默认值为0。offset与array.length之和不能超过ArkTS Int32Array的长度。 |
 
 **错误码：**
 
@@ -1260,7 +1262,7 @@ toString(): string
 values(): IterableIterator<number>
 ```
 
-返回一个新的迭代器对象，该对象包含ArkTS Float32Array中每个元素的值。
+返回一个新的迭代器对象，该对象包含ArkTS Int32Array中每个元素的值。
 
 **起始版本：** 12
 
@@ -1290,6 +1292,8 @@ values(): IterableIterator<number>
 ```
 
 返回ArkTS Int32Array指定索引位置的元素。
+
+所需元素的从零开始的索引。取值范围为[0, Int32Array.length - 1]。
 
 **类型：** number
 

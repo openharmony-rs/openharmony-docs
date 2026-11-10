@@ -3839,6 +3839,42 @@ verticalScrollBarAccess(verticalScrollBar: boolean)
 | --- | --- | --- | --- |
 | verticalScrollBar | boolean | 是 | 设置是否显示纵向滚动条。<br>true表示显示，false表示不显示。<br>传入undefined或null时为false。 |
 
+## visitedLinkPersistEnabled
+
+```TypeScript
+visitedLinkPersistEnabled(enabled: boolean)
+```
+
+设置Web组件是否开启已访问链接持久化。
+
+开启后，已访问链接记录存储在数据库文件中，应用重启后记录仍保留，已访问链接着色在应用重启后保持一致。关闭后，已访问链接记录仅存储在共享内存中，应用退出后记录丢失。
+
+> **说明：** 
+> 默认值为`false`。未显式调用本属性时，
+> 已访问链接仅存储在共享内存中。
+
+> 开启持久化后，记录按应用隔离，
+> 最多保存20000条，保存期限为30天。
+
+> 过期记录和超出数量上限的记录会在后台线程中自动清理。
+
+> 当Web组件处于隐私模式（通过`incognitoMode:true`开启）时，本属性不生效，
+> 已访问链接记录仅存储在共享内存中，不会写入磁盘。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebAttribute-visitedLinkPersistEnabled(enabled: boolean): WebAttribute--><!--Device-WebAttribute-visitedLinkPersistEnabled(enabled: boolean): WebAttribute-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| enabled | boolean | 是 | 是否开启已访问链接持久化。默认值为**false**。 |
+
 ## webCursiveFont
 
 ```TypeScript

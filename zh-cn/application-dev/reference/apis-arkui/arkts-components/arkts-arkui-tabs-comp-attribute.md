@@ -195,6 +195,30 @@ barBackgroundEffect(options: BackgroundEffectOptions)
 | --- | --- | --- | --- |
 | options | [BackgroundEffectOptions](arkts-arkui-common-comp-backgroundeffectoptions-i.md) | 是 | 设置TabBar背景属性包括：模糊半径，亮度，饱和度，颜色等。 |
 
+## barDisplayModeBreakpoint
+
+```TypeScript
+barDisplayModeBreakpoint(style: Optional<TabsBreakpointType<TabBarDisplayMode>>)
+```
+
+为不同的Tabs容器大小设置tab栏的显示方式。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-barDisplayModeBreakpoint(style: Optional<TabsBreakpointType<TabBarDisplayMode>>): TabsAttribute--><!--Device-TabsAttribute-barDisplayModeBreakpoint(style: Optional<TabsBreakpointType<TabBarDisplayMode>>): TabsAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[TabsBreakpointType](arkts-arkui-tabs-comp-tabsbreakpointtype-i.md)&lt;[TabBarDisplayMode](arkts-arkui-tabs-comp-tabbardisplaymode-e.md)&gt;&gt; | 是 | Display mode of the tab bar for different Tabs container sizes. |
+
 ## barFloatingStyle
 
 ```TypeScript
@@ -409,6 +433,30 @@ barPosition(value: BarPosition)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [BarPosition](arkts-arkui-tabs-comp-barposition-e.md) | 是 | 设置Tabs的页签位置。页签的具体位置受vertical属性影响：vertical为true时Start位于左侧、End位于右侧；vertical为false时Start位于顶部、End位于底部。默认值：垂直Tabs为BarPosition.End，非垂直Tabs为BarPosition.Start |
+
+## barStyle
+
+```TypeScript
+barStyle(style: Optional<TabBarStyle>)
+```
+
+设置tab bar的显示样式。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-barStyle(style: Optional<TabBarStyle>): TabsAttribute--><!--Device-TabsAttribute-barStyle(style: Optional<TabBarStyle>): TabsAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[TabBarStyle](arkts-arkui-tabs-comp-tabbarstyle-e.md)&gt; | 是 | 标签栏显示样式.BOTTOM**。 |
 
 ## barWidth
 
@@ -643,6 +691,30 @@ onAnimationStart(handler: OnTabsAnimationStartCallback)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | handler | [OnTabsAnimationStartCallback](arkts-arkui-tabs-comp-ontabsanimationstartcallback-t.md) | 是 | 切换动画开始时触发的回调。<br>**适用版本：** 18 |
+
+## onBarDisplayModeChange
+
+```TypeScript
+onBarDisplayModeChange(callback: Optional<Callback<TabBarDisplayMode>>)
+```
+
+TabBar显示方式改变后触发。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-onBarDisplayModeChange(callback: Optional<Callback<TabBarDisplayMode>>): TabsAttribute--><!--Device-TabsAttribute-onBarDisplayModeChange(callback: Optional<Callback<TabBarDisplayMode>>): TabsAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;[TabBarDisplayMode](arkts-arkui-tabs-comp-tabbardisplaymode-e.md)&gt;&gt; | 是 | 显示模式变更回调。 |
 
 ## onChange
 
@@ -919,6 +991,198 @@ scrollable(value: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否可以通过滑动页面进行页面切换。<br>默认值：true，可以通过滑动页面进行页面切换。为false时不可滑动切换页面。 |
+
+## sidebarHeader
+
+```TypeScript
+sidebarHeader(header: Optional<ComponentContent>)
+```
+
+设置侧边栏标签栏的标题内容。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-sidebarHeader(header: Optional<ComponentContent>): TabsAttribute--><!--Device-TabsAttribute-sidebarHeader(header: Optional<ComponentContent>): TabsAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| header | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ComponentContent&gt; | 是 | Header content of the sidebar tab bar. |
+
+## sidebarPosition
+
+```TypeScript
+sidebarPosition(position: Optional<BarPosition>)
+```
+
+设置侧边栏标签栏的位置。侧边栏标签栏的位置不受**垂直***属性的影响。它始终位于Tabs容器的开始或结束一侧，无论**垂直**设置如何。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-sidebarPosition(position: Optional<BarPosition>): TabsAttribute--><!--Device-TabsAttribute-sidebarPosition(position: Optional<BarPosition>): TabsAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| position | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BarPosition](arkts-arkui-tabs-comp-barposition-e.md)&gt; | 是 | 侧边栏标签栏的位置。开始**。 |
+
+## sidebarSearchable
+
+```TypeScript
+sidebarSearchable(searchOptions?: TabsSidebarSearchableOptions)
+```
+
+设置侧边栏标签栏的搜索选项。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-sidebarSearchable(searchOptions?: TabsSidebarSearchableOptions): TabsAttribute--><!--Device-TabsAttribute-sidebarSearchable(searchOptions?: TabsSidebarSearchableOptions): TabsAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| searchOptions | [TabsSidebarSearchableOptions](arkts-arkui-tabs-comp-tabssidebarsearchableoptions-i.md) | 否 | 侧边栏标签栏的搜索选项。 |
+
+## sidebarSelectedBoardColor
+
+```TypeScript
+sidebarSelectedBoardColor(value: Optional<ResourceColor>)
+```
+
+设置侧边栏模式下tab板的选择颜色。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-sidebarSelectedBoardColor(value: Optional<ResourceColor>): TabsAttribute--><!--Device-TabsAttribute-sidebarSelectedBoardColor(value: Optional<ResourceColor>): TabsAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 侧边栏模式下tab板选择的颜色。<br>默认值：**#19007DFF**。 |
+
+## sidebarSelectedIconColor
+
+```TypeScript
+sidebarSelectedIconColor(value: Optional<ResourceColor>)
+```
+
+设置侧边栏模式下选项卡图标的选定颜色。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-sidebarSelectedIconColor(value: Optional<ResourceColor>): TabsAttribute--><!--Device-TabsAttribute-sidebarSelectedIconColor(value: Optional<ResourceColor>): TabsAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 侧边栏模式下tab图标的选中颜色。<br>默认值：**#ff182431**。 |
+
+## sidebarSelectedTextColor
+
+```TypeScript
+sidebarSelectedTextColor(value: Optional<ResourceColor>)
+```
+
+设置侧边栏模式下选项卡文本的选定颜色。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-sidebarSelectedTextColor(value: Optional<ResourceColor>): TabsAttribute--><!--Device-TabsAttribute-sidebarSelectedTextColor(value: Optional<ResourceColor>): TabsAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 侧边栏模式下选项卡文本的选定颜色。<br>默认值：**#ff182431**。 |
+
+## sidebarUnselectedIconColor
+
+```TypeScript
+sidebarUnselectedIconColor(value: Optional<ResourceColor>)
+```
+
+设置侧边栏模式下选项卡图标的未选中颜色。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-sidebarUnselectedIconColor(value: Optional<ResourceColor>): TabsAttribute--><!--Device-TabsAttribute-sidebarUnselectedIconColor(value: Optional<ResourceColor>): TabsAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 侧边栏模式下选项卡图标的未选中颜色。<br>默认值：**#99182431**。 |
+
+## sidebarUnselectedTextColor
+
+```TypeScript
+sidebarUnselectedTextColor(value: Optional<ResourceColor>)
+```
+
+设置侧边栏模式下选项卡文本的未选中颜色。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsAttribute-sidebarUnselectedTextColor(value: Optional<ResourceColor>): TabsAttribute--><!--Device-TabsAttribute-sidebarUnselectedTextColor(value: Optional<ResourceColor>): TabsAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | 侧边栏模式下选项卡文本的未选中颜色。<br>默认值：**#99182431**。 |
 
 ## vertical
 

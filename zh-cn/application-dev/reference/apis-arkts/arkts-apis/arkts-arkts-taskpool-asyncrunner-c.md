@@ -24,7 +24,7 @@ import { taskpool } from '@kit.ArkTS';
 constructor(runningCapacity: number, waitingCapacity?: number)
 ```
 
-AsyncRunner的构造函数，用于创建一个**AsyncRunner**实例。构造一个非全局的异步队列，即使传入的参数相同，也会返回不同的异步队列。
+AsyncRunner的构造函数。构造一个非全局的异步队列，即使参数相同，每次调用也会返回不同的异步队列实例。
 
 **起始版本：** 18
 
@@ -38,8 +38,8 @@ AsyncRunner的构造函数，用于创建一个**AsyncRunner**实例。构造一
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| runningCapacity | number | 是 | 指定任务执行的最大并发度，该值必须为正整数。如果传入负数，会报错；如果传入非整数，会向下取整。 |
-| waitingCapacity | number | 否 | 指定等待任务的列表容量，该值必须大于等于0。如果传入负数，会报错；如果传入非整数，会向下取整。默认值为**0**，表示等待任务列表的容量没有限制。如果传入大于0的值，则表示排队策略为丢弃策略，当加入的任务数量超过该值时，等待列表中处于队头的任务会被丢弃。 |
+| runningCapacity | number | 是 | 指定任务执行的最大并发度，该参数应为正整数，负数时报错，非整数时会向下取整。 |
+| waitingCapacity | number | 否 | 指定等待任务的列表容量，取值需大于等于0，负数时报错，输入非整数时会向下取整。默认值为0，表示等待任务列表的容量没有限制。如果设置大于0的值，则表示排队策略为丢弃策略，当加入的任务数量超过该值时，等待列表中处于队头的任务会被丢弃。 |
 
 **示例**
 
@@ -53,7 +53,7 @@ let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(5);
 constructor(name: string, runningCapacity: number, waitingCapacity?: number)
 ```
 
-AsyncRunner的构造函数，用于创建一个**AsyncRunner**实例。构造一个全局异步队列，如果队列名称与已有名称相同，将返回同一个异步队列。
+AsyncRunner的构造函数用于构造一个全局异步队列。如果队列名称相同，将返回同一个异步队列实例。
 
 > **说明：** 
 > 
@@ -74,8 +74,8 @@ AsyncRunner的构造函数，用于创建一个**AsyncRunner**实例。构造一
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 异步队列的名字。 |
-| runningCapacity | number | 是 | 指定任务执行的最大并发度，该值必须为正整数。如果传入负数，会报错；如果传入非整数，会向下取整。 |
-| waitingCapacity | number | 否 | 指定等待任务的列表容量，该值必须大于等于0。如果传入负数，会报错；如果传入非整数，会向下取整。默认值为**0**，表示等待任务列表的容量没有限制。如果传入大于0的值，则表示排队策略为丢弃策略，当加入的任务数量超过该值时，等待列表中处于队头的任务会被丢弃。 |
+| runningCapacity | number | 是 | 指定任务执行的最大并发度，该参数应为正整数。负数时报错，非整数会向下取整。 |
+| waitingCapacity | number | 否 | 指定等待任务的列表容量，取值需大于等于0，负数时报错，非整数时会向下取整。默认值为0，表示等待任务列表的容量没有限制。如果设置大于0的值，则表示排队策略为丢弃策略，当加入的任务数量超过该值时，等待列表中处于队头的任务会被丢弃。 |
 
 **示例**
 
@@ -89,7 +89,7 @@ let runner:taskpool.AsyncRunner = new taskpool.AsyncRunner("runner1", 5, 5);
 execute(task: Task, priority?: Priority): Promise<Object>
 ```
 
-执行异步任务。使用该方法前需要先构造**AsyncRunner**实例。使用Promise异步回调。
+执行异步任务。使用该方法前需要先构造AsyncRunner。使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -101,7 +101,7 @@ execute(task: Task, priority?: Priority): Promise<Object>
 > 
 > - 不支持执行周期性任务。
 > 
-> - 不支持执行延迟任务。
+> - 不支持执行延时任务。
 > 
 > - 不支持执行存在依赖的任务。
 > 
@@ -120,13 +120,13 @@ execute(task: Task, priority?: Priority): Promise<Object>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | task | [Task](arkts-arkts-taskpool-task-c.md) | 是 | 需要添加到异步队列中的任务。 |
-| priority | [Priority](arkts-arkts-taskpool-priority-e.md) | 否 | 指定任务的优先级，默认值为**taskpool.Priority.MEDIUM**。 |
+| priority | [Priority](arkts-arkts-taskpool-priority-e.md) | 否 | 指定任务的优先级，该参数默认值为taskpool.Priority.MEDIUM。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Object&gt; | Promise对象，返回任务执行的结果。 |
+| Promise&lt;Object&gt; | Promise对象，返回任务函数的执行结果。 |
 
 **错误码：**
 

@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function getLinkedInfo(): Promise<WifiLinkedInfo>
 ```
 
-Obtains information about a Wi-Fi connection.
+Obtains Wi-Fi connection information. This API uses a promise to return the result.
 
 **Since:** 6
 
@@ -30,7 +30,7 @@ Obtains information about a Wi-Fi connection.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[WifiLinkedInfo](arkts-connectivity-wifi-wifilinkedinfo-i.md)&gt; | Returns Wi-Fi linked information. |
+| Promise&lt;[WifiLinkedInfo](arkts-connectivity-wifi-wifilinkedinfo-i.md)&gt; | Promise used to return the Wi-Fi connection information. |
 
 **Examples**
 
@@ -59,7 +59,7 @@ wifi.getLinkedInfo().then(data => {
 function getLinkedInfo(callback: AsyncCallback<WifiLinkedInfo>): void
 ```
 
-Obtains information about a Wi-Fi connection.
+Obtains Wi-Fi connection information. This API uses an asynchronous callback to return the result.
 
 **Since:** 6
 
@@ -77,7 +77,7 @@ Obtains information about a Wi-Fi connection.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WifiLinkedInfo](arkts-connectivity-wifi-wifilinkedinfo-i.md)&gt; | Yes |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WifiLinkedInfo](arkts-connectivity-wifi-wifilinkedinfo-i.md)&gt; | Yes | Callback used to return the result. |
 
 **Examples**
 

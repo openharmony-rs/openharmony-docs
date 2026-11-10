@@ -34,7 +34,7 @@ All service protocol types.
 SERVICE_TYPE_BONJOUR = 1
 ```
 
-Bonjour（DNS-SD）service discovery protocol.
+Bonjour (DNS-SD) service discovery protocol.
 
 **Since:** 26.0.1
 

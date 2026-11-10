@@ -12,7 +12,7 @@ import { wifiext } from '@kit.ConnectivityKit';
 function setPowerModel(model: PowerModel): boolean
 ```
 
-Set the current Wi-Fi power mode.
+Sets the power model.
 
 **Since:** 8
 
@@ -30,10 +30,10 @@ Set the current Wi-Fi power mode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| model | [PowerModel](arkts-connectivity-wifiext-powermodel-e.md) | Yes | model indicates model file description to be loaded. |
+| model | [PowerModel](arkts-connectivity-wifiext-powermodel-e.md) | Yes | Power model to set. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if the Wi-Fi is active; returns `false` otherwise. |
+| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |

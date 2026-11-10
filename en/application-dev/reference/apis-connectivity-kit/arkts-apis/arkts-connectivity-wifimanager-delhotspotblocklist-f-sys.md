@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function delHotspotBlockList(stationInfo: StationInfo): void
 ```
 
-Delete the station from block list, the station can access the hotspot.
+Deletes a device from the list of blocked devices of the hotspot.
 
 **Since:** 11
 
@@ -28,7 +28,7 @@ Delete the station from block list, the station can access the hotspot.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| stationInfo | [StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md) | Yes | station which will be deleted in the block list. |
+| stationInfo | [StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md) | Yes | Device to delete. |
 
 **Error codes:**
 

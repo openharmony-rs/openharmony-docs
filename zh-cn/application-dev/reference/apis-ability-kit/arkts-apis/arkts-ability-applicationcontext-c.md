@@ -1850,6 +1850,39 @@ struct Index {
 }
 ```
 
+## setFont
+
+```TypeScript
+setFont(font: string, enableAnimation: boolean): void
+```
+
+设置应用的字体类型。仅支持主线程调用。
+
+> **说明：** 
+> 
+> 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在
+> [onWindowStageCreate()](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)生命周期中通过
+> [loadContent](../../apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md#loadcontent-1)方法加载页面之后调用。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ApplicationContext-setFont(font: string, enableAnimation: boolean): void--><!--Device-ApplicationContext-setFont(font: string, enableAnimation: boolean): void-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| font | string | 是 | 设置字体类型，字体可以通过UIContext.registerFont方法进行注册使用。 |
+| enableAnimation | boolean | 是 | 设置字体类型时是否使用动画，true表示使用动画，false表示不使用动画。 |
+
+**示例**
+
+参见 [setFont](#setfont)
+
 ## setFontSizeScale
 
 ```TypeScript

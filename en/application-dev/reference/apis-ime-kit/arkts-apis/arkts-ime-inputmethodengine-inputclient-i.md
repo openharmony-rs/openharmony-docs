@@ -2116,3 +2116,71 @@ Sets the preview text.
 let range: inputMethodEngine.Range = { start: 0, end: 1 };
 inputClient.setPreviewTextSync('test', range);
 ```
+
+## setPreviewTextWithStyle
+
+```TypeScript
+setPreviewTextWithStyle(text: string, range: Range, style: PreviewTextStyle): Promise<void>
+```
+
+Sets the preview text with style.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputClient-setPreviewTextWithStyle(text: string, range: Range, style: PreviewTextStyle): Promise<void>--><!--Device-InputClient-setPreviewTextWithStyle(text: string, range: Range, style: PreviewTextStyle): Promise<void>-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| text | string | Yes | Preview text to set. |
+| range | [Range](arkts-ime-inputmethodengine-range-i.md) | Yes | Range of the preview text. |
+| style | [PreviewTextStyle](arkts-ime-inputmethodengine-previewtextstyle-i.md) | Yes | Style of the preview text. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| [12800011](../errorcode-inputmethod-framework.md#12800011-text-preview-not-supported) | text preview not supported. |
+
+## setPreviewTextWithStyleSync
+
+```TypeScript
+setPreviewTextWithStyleSync(text: string, range: Range, style: PreviewTextStyle): void
+```
+
+Sets the preview text with style.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputClient-setPreviewTextWithStyleSync(text: string, range: Range, style: PreviewTextStyle): void--><!--Device-InputClient-setPreviewTextWithStyleSync(text: string, range: Range, style: PreviewTextStyle): void-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| text | string | Yes | Preview text to set. |
+| range | [Range](arkts-ime-inputmethodengine-range-i.md) | Yes | Range of the preview text. |
+| style | [PreviewTextStyle](arkts-ime-inputmethodengine-previewtextstyle-i.md) | Yes | Style of the preview text. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| [12800011](../errorcode-inputmethod-framework.md#12800011-text-preview-not-supported) | text preview not supported. |

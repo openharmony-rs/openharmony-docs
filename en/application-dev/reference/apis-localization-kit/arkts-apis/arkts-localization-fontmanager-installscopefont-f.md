@@ -53,4 +53,4 @@ Install the font file in the specified path as an application-level or session-l
 | [31100104](../errorcode-font-manager.md#31100104-font-file-already-installed) | The font file is installed. |
 | [31100105](../errorcode-font-manager.md#31100105-number-of-installed-font-files-reaching-the-maximum) | Exceeded the maximum number of installed files. |
 | [31100110](../errorcode-font-manager.md#31100110-failed-to-call-the-api-due-to-system-errors) | Call failed due to system error. |
-| 31100115 | The font observer is not registered. |
+| [31100115](../errorcode-font-manager.md#31100115-font-observer-not-registered) | The font observer is not registered. |

@@ -14,7 +14,7 @@ function removeCandidateConfig(networkId: number): Promise<void>
 
 Remove a specified candidate hotspot configuration, only the configuration which is added by ourself is allowed to be removed. The app must be in the foreground.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 
@@ -72,7 +72,7 @@ function removeCandidateConfig(networkId: number, callback: AsyncCallback<void>)
 
 Remove a specified candidate hotspot configuration, only the configuration which is added by ourself is allowed to be removed. The app must be in the foreground.
 
-**Since:** 12
+**Since:** 9
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 

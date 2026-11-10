@@ -32,7 +32,7 @@ MODE_CUSTOM_POWER_SAVE = 650
 MODE_EXTREME_POWER_SAVE
 ```
 
-表示超级省电模式。
+表示扩展省电模式。此模式支持子模式，子模式定义见 [DevicePowerSubMode](arkts-basicservices-power-devicepowersubmode-e.md)。
 
 **起始版本：** 9
 

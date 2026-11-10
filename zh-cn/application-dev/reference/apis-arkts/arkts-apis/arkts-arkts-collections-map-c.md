@@ -256,7 +256,7 @@ forEach(callbackFn: (value: V, key: K, map: Map<K, V>) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: V, key: K, map: Map&lt;K, V&gt;) =&gt; void | 是 | 对每个键值对运行的回调函数。 |
+| callbackFn | (value: V, key: K, map: Map&lt;K, V&gt;) =&gt; void | 是 | 回调函数。回调执行期间不能修改当前Map对象，否则会触发并发修改错误。value为当前遍历到的元素键值对的值，key为当前遍历到的元素键值对的键，map为当前Map实例对象。 |
 
 **错误码：**
 
@@ -372,7 +372,7 @@ put(key: K, value: V): V | undefined
 
 向该Map添加或更新一个指定的键值对，并返回该键之前关联的值。
 
-> **NOTE:** 
+> **说明：** 
 > 
 > - 返回**undefined**时无法直接区分是键不存在还是键存在但值为**undefined**，可在使用本接口前先使用
 > **has**接口判断键是否存在，进而区分返回的**undefined**所属情况。
@@ -477,7 +477,7 @@ remove(key: K): V | undefined
 
 删除该Map中的指定键及其对应值。
 
-> **NOTE:** 
+> **说明：** 
 > 
 > - 返回**undefined**时无法直接区分是键不存在还是键存在但值为**undefined**，可在使用本接口前先使用
 > **has**接口判断键是否存在，进而区分返回的**undefined**所属情况。

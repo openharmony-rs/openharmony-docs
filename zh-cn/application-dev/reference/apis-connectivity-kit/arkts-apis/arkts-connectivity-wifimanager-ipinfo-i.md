@@ -40,7 +40,7 @@ gateway: number
 ipAddress: number
 ```
 
-IP地址。（ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)）。
+IP地址。（ipAddress值为int类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)）。
 
 **类型：** number
 

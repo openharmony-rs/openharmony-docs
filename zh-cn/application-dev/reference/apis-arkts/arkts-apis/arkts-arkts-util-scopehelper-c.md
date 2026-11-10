@@ -24,7 +24,7 @@ import { util } from '@kit.ArkTS';
 clamp(value: ScopeType): ScopeType
 ```
 
-将一个值限制在此 **Scope** 范围内。
+将值限定到当前范围内。
 
 **起始版本：** 9
 
@@ -38,13 +38,13 @@ clamp(value: ScopeType): ScopeType
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 指定的值。 |
+| value | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 传入的给定值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ScopeType](arkts-arkts-util-scopetype-t.md) | 如果指定值小于下限，则返回 **lowerObj**；如果指定值大于上限，则返回 **upperObj**；如果在此 **Scope** 范围内，则返回指定值。 |
+| [ScopeType](arkts-arkts-util-scopetype-t.md) | 如果传入的value小于下限，返回lowerObj；如果大于上限值，返回upperObj；如果在当前范围内，返回value。 |
 
 **示例**
 
@@ -84,7 +84,7 @@ console.info("result = " + result);
 constructor(lowerObj: ScopeType, upperObj: ScopeType)
 ```
 
-用于创建具有指定上下限的 **ScopeHelper** 对象的构造函数。
+创建指定下限和上限的作用域实例，返回一个ScopeHelper对象。
 
 **起始版本：** 9
 
@@ -98,8 +98,8 @@ constructor(lowerObj: ScopeType, upperObj: ScopeType)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lowerObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | **Scope** 对象的下限。 |
-| upperObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | **Scope** 对象的上限。 |
+| lowerObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 指定作用域实例的下限，需具有可比性。 |
+| upperObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 指定作用域实例的上限，需具有可比性。 |
 
 **示例**
 
@@ -136,7 +136,7 @@ console.info("range = " + range);
 contains(value: ScopeType): boolean
 ```
 
-判断一个值是否在此 **Scope** 范围内。
+检查给定value是否在当前范围内。
 
 **起始版本：** 9
 
@@ -150,13 +150,13 @@ contains(value: ScopeType): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 指定的值。 |
+| value | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 传入一个给定值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果值在此 **Scope** 范围内，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果给定值包含在当前范围内返回true，否则返回false。 |
 
 **示例**
 
@@ -196,7 +196,7 @@ console.info("result = " + result);
 contains(range: ScopeHelper): boolean
 ```
 
-判断一个范围是否在此 **Scope** 范围内。
+检查给定range是否在当前范围内。
 
 **起始版本：** 9
 
@@ -210,13 +210,13 @@ contains(range: ScopeHelper): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 是 | 指定的 **Scope**。 |
+| range | [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 是 | 传入一个给定范围。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 检查结果。如果范围在此 **Scope** 范围内，则返回 **true**；否则返回 **false**。 |
+| boolean | 如果给定范围在当前范围内则返回true，否则返回false。 |
 
 **示例**
 
@@ -258,7 +258,7 @@ console.info("result = " + result);
 expand(lowerObj: ScopeType, upperObj: ScopeType): ScopeHelper
 ```
 
-获取此 **Scope** 与给定上下限的并集。
+创建并返回当前范围与给定下限和上限的并集。
 
 **起始版本：** 9
 
@@ -272,14 +272,14 @@ expand(lowerObj: ScopeType, upperObj: ScopeType): ScopeHelper
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lowerObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 下限。 |
-| upperObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 上限。 |
+| lowerObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 给定范围的下限。 |
+| upperObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 给定范围的上限。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 此 **Scope** 与给定上下限的并集。 |
+| [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 返回当前范围和给定下限和上限的并集。 |
 
 **示例**
 
@@ -320,7 +320,7 @@ console.info("result = " + result);
 expand(range: ScopeHelper): ScopeHelper
 ```
 
-获取此 **Scope** 与给定 **Scope** 的并集。
+创建并返回当前范围和给定范围的并集。
 
 **起始版本：** 9
 
@@ -334,13 +334,13 @@ expand(range: ScopeHelper): ScopeHelper
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 是 | 指定的 **Scope**。 |
+| range | [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 是 | 传入一个给定范围。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 此 **Scope** 与给定 **Scope** 的并集。 |
+| [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 返回包括当前范围和给定范围的并集。 |
 
 **示例**
 
@@ -382,7 +382,7 @@ console.info("result = " + result);
 expand(value: ScopeType): ScopeHelper
 ```
 
-获取此 **Scope** 与给定值的并集。
+创建并返回当前范围和给定值的并集。
 
 **起始版本：** 9
 
@@ -396,13 +396,13 @@ expand(value: ScopeType): ScopeHelper
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 指定的值。 |
+| value | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 要检查是否在当前范围内的值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 此 **Scope** 与给定值的并集。 |
+| [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 返回包括当前范围和给定值的并集。 |
 
 **示例**
 
@@ -442,7 +442,7 @@ console.info("result = " + result);
 getLower(): ScopeType
 ```
 
-获取此 **Scope** 的下限。
+获取当前范围的下限。
 
 **起始版本：** 9
 
@@ -456,7 +456,7 @@ getLower(): ScopeType
 
 | 类型 | 说明 |
 | --- | --- |
-| [ScopeType](arkts-arkts-util-scopetype-t.md) | 此 **Scope** 的下限。 |
+| [ScopeType](arkts-arkts-util-scopetype-t.md) | 返回当前范围的下限值。 |
 
 **示例**
 
@@ -495,7 +495,7 @@ console.info("result = " + result);
 getUpper(): ScopeType
 ```
 
-获取此 **Scope** 的上限。
+获取当前范围的上限。
 
 **起始版本：** 9
 
@@ -509,7 +509,7 @@ getUpper(): ScopeType
 
 | 类型 | 说明 |
 | --- | --- |
-| [ScopeType](arkts-arkts-util-scopetype-t.md) | 此 **Scope** 的上限。 |
+| [ScopeType](arkts-arkts-util-scopetype-t.md) | 返回当前范围的上限值。 |
 
 **示例**
 
@@ -548,7 +548,7 @@ console.info("result = " + result);
 intersect(range: ScopeHelper): ScopeHelper
 ```
 
-获取此 **Scope** 与给定 **Scope** 的交集。如果交集为空，则抛出异常。
+获取给定范围和当前范围的交集。当交集为空集时，抛出异常。
 
 **起始版本：** 9
 
@@ -562,13 +562,13 @@ intersect(range: ScopeHelper): ScopeHelper
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 是 | 指定的 **Scope**。 |
+| range | [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 是 | 传入给定范围。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 此 **Scope** 与给定 **Scope** 的交集。 |
+| [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 返回给定范围和当前范围的交集。 |
 
 **示例**
 
@@ -610,7 +610,7 @@ console.info("result = " + result);
 intersect(lowerObj: ScopeType, upperObj: ScopeType): ScopeHelper
 ```
 
-获取此 **Scope** 与给定上下限的交集。如果交集为空，则抛出异常。
+获取当前范围与指定下限和上限范围的交集。当交集为空集时，抛出异常。
 
 **起始版本：** 9
 
@@ -624,14 +624,14 @@ intersect(lowerObj: ScopeType, upperObj: ScopeType): ScopeHelper
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| lowerObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 下限。 |
-| upperObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 上限。 |
+| lowerObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 给定范围的下限。 |
+| upperObj | [ScopeType](arkts-arkts-util-scopetype-t.md) | 是 | 给定范围的上限。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 此 **Scope** 与给定上下限的交集。 |
+| [ScopeHelper](arkts-arkts-util-scopehelper-c.md) | 返回当前范围与给定下限和上限范围的交集。 |
 
 **示例**
 
@@ -672,7 +672,7 @@ console.info("result = " + result);
 toString(): string
 ```
 
-获取包含此 **Scope** 的字符串表示形式。
+该字符串化方法返回当前范围的字符串表示形式。
 
 **起始版本：** 9
 
@@ -686,7 +686,7 @@ toString(): string
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 包含此 **Scope** 的字符串表示形式。 |
+| string | 返回当前范围的字符串表示形式。 |
 
 **示例**
 

@@ -12,7 +12,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 function getVMRuntimeStat(item: string): number
 ```
 
-根据参数获取指定的系统GC统计信息。
+根据参数获取指定的系统[GC](../../../arkts-utils/gc-introduction.md)统计信息。
 
 **起始版本：** 12
 

@@ -4,7 +4,7 @@
 interface WifiInfoElem
 ```
 
-Wi-Fi information elements. @typedef WifiInfoElem
+Wi-Fi information elements.
 
 **Since:** 9
 

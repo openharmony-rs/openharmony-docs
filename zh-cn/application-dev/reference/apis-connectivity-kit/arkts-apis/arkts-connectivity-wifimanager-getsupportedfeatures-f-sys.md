@@ -28,7 +28,7 @@ function getSupportedFeatures(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 支持的特性值。枚举值如下：<br>- 0x0001: 基础结构模式特性。<br>- 0x0002: 5 GHz带宽特性。<br>- 0x0004: GAS/ANQP特性。<br>- 0x 0008: WiFi-Direct特性。<br>- 0x0010: Soft AP特性。<br>- 0x0040: Wi-Fi Aware组网特性。<br>- 0x8000: AP STA共存特性。<br>- 0x 8000000: WPA3-Personal SAE特性。<br>- 0x10000000: WPA3-Enterprise Suite-B。<br>- 0x20000000: 增强开放特性。 |
+| number | 支持的特性值。枚举值如下：<br>- 0x0001: 基础结构模式特性。<br>- 0x0002: 5 GHz带宽特性。<br>- 0x0004: GAS/ANQP特性。<br>- 0x 0008: Wi-Fi Direct特性。<br>- 0x0010: Soft AP特性。<br>- 0x0040: Wi-Fi Aware组网特性。<br>- 0x8000: AP STA共存特性。<br>- 0x 8000000: WPA3-Personal SAE特性。<br>- 0x10000000: WPA3-Enterprise Suite-B。<br>- 0x20000000: 增强开放特性。 |
 
 **错误码：**
 

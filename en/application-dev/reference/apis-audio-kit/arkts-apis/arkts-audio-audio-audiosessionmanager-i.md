@@ -1060,7 +1060,7 @@ Set mute hint for all capturer streams in the current audio session. It dose not
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [6800103](../errorcode-audio.md#6800103-unsupported-state) | Operation not permit at current state, there is no audio capturer running. |
+| [6800103](../errorcode-audio.md#6800103-unsupported-state) | Operation not permitted at current state, there is no audio capturer running. |
 
 **Examples**
 

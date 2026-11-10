@@ -36,7 +36,6 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | [createGroup](arkts-connectivity-wifimanager-creategroup-f.md#creategroup-1) | 创建群组。创建群组后，可调用[removeGroup](arkts-connectivity-wifimanager-removegroup-f.md)移除已创建的群组。 |
 | [disableWifi](arkts-connectivity-wifimanager-disablewifi-f.md#disablewifi-1) | 关闭Wi-Fi。 |
 | [disconnect](arkts-connectivity-wifimanager-disconnect-f.md#disconnect-1) | 断开Wi-Fi连接。 |
-| [disconnectFromCandidateConfig](arkts-connectivity-wifimanager-disconnectfromcandidateconfig-f.md#disconnectfromcandidateconfig-1) | 断开networkId标识的候选网络一段时间。断开的候选网络在阻塞持续时间内不会重新关联。您只能断开由主叫方添加的候选网络。 |
 | [discoverServices](arkts-connectivity-wifimanager-discoverservices-f.md#discoverservices-1) | 启动P2P服务发现。使用待处理请求的TLV查询进行发现，如果待处理列表为空，则回退为发现所有服务类型。启动发现前，请先通过[addDnsSdServiceRequest](arkts-connectivity-wifimanager-adddnssdservicerequest-f.md)或[addUpnpServiceRequest](arkts-connectivity-wifimanager-addupnpservicerequest-f.md)添加服务请求。 |
 | [enableWifi](arkts-connectivity-wifimanager-enablewifi-f.md#enablewifi-1) | 启动Wi-Fi。 |
 | [getCandidateConfigs](arkts-connectivity-wifimanager-getcandidateconfigs-f.md#getcandidateconfigs-1) | 获取候选网络配置。 |
@@ -59,15 +58,15 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | [getP2pPeerDevices](arkts-connectivity-wifimanager-getp2ppeerdevices-f.md#getp2ppeerdevices-1) | 获取P2P对端设备列表信息。使用Promise异步回调。 |
 | [getP2pPeerDevices](arkts-connectivity-wifimanager-getp2ppeerdevices-f.md#getp2ppeerdevices-2) | 获取P2P对端设备列表信息。使用callback异步回调。 |
 | [getP2pServiceRequest](arkts-connectivity-wifimanager-getp2pservicerequest-f.md#getp2pservicerequest-1) | 查询待处理的P2P服务发现请求，使用Promise异步回调。 |
-| [getScanInfoList](arkts-connectivity-wifimanager-getscaninfolist-f.md#getscaninfolist-1) | 获取包含当前时间点前30s内的缓存扫描结果。 |
+| [getScanInfoList](arkts-connectivity-wifimanager-getscaninfolist-f.md#getscaninfolist-1) | 获取包含当前时间点前30秒内的缓存扫描结果。 |
 | [getSignalLevel](arkts-connectivity-wifimanager-getsignallevel-f.md#getsignallevel-1) | 查询Wi-Fi信号强度。 |
 | [isBandTypeSupported](arkts-connectivity-wifimanager-isbandtypesupported-f.md#isbandtypesupported-1) | 判断当前频段是否支持。 |
 | [isConnected](arkts-connectivity-wifimanager-isconnected-f.md#isconnected-1) | 查询Wi-Fi是否已连接。 |
 | [isFeatureSupported](arkts-connectivity-wifimanager-isfeaturesupported-f.md#isfeaturesupported-1) | 判断设备是否支持指定的Wi-Fi特性。 |
 | [isHotspotActive](arkts-connectivity-wifimanager-ishotspotactive-f.md#ishotspotactive-1) | 热点是否已开启。 |
-| [isMeteredHotspot](arkts-connectivity-wifimanager-ismeteredhotspot-f.md#ismeteredhotspot-1) | 查询设备当前连接的wifi是否是手机热点。 |
+| [isMeteredHotspot](arkts-connectivity-wifimanager-ismeteredhotspot-f.md#ismeteredhotspot-1) | 查询设备当前连接的Wi-Fi是否是手机热点。 |
 | [isWifiActive](arkts-connectivity-wifimanager-iswifiactive-f.md#iswifiactive-1) | 查询Wi-Fi开关是否已激活。 |
-| [isWlanSupported](arkts-connectivity-wifimanager-iswlansupported-f.md#iswlansupported-1) | 查询是否可用Wi-Fi网络。 |
+| [isWlanSupported](arkts-connectivity-wifimanager-iswlansupported-f.md#iswlansupported-1) | 查询Wi-Fi网络是否可用。 |
 | [off('wifiStateChange')](arkts-connectivity-wifimanager-off-f.md#offwifistatechange) | 取消注册Wi-Fi状态改变事件。使用callback异步回调。 |
 | [off('wifiConnectionChange')](arkts-connectivity-wifimanager-off-f.md#offwificonnectionchange) | 取消注册Wi-Fi连接状态改变事件。使用callback异步回调。 |
 | [off('wifiScanStateChange')](arkts-connectivity-wifimanager-off-f.md#offwifiscanstatechange) | 取消注册扫描状态改变事件。使用callback异步回调。 |
@@ -117,7 +116,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | [addHotspotBlockList](arkts-connectivity-wifimanager-addhotspotblocklist-f-sys.md#addhotspotblocklist-1) | 将设备添加到热点的阻止连接设备列表中，列表中的设备将不能访问热点。 |
 | [allowAutoConnect](arkts-connectivity-wifimanager-allowautoconnect-f-sys.md#allowautoconnect-1) | 设置是否允许通过networkId自动连接。如果isAllowed为true，则可以再次关联该网络，否则不可。 |
 | [connectToDevice](arkts-connectivity-wifimanager-connecttodevice-f-sys.md#connecttodevice-1) | 连接到指定网络（如果当前已经连接到热点，请先断开连接）。 |
-| [deletePersistentGroup](arkts-connectivity-wifimanager-deletepersistentgroup-f-sys.md#deletepersistentgroup-1) | 删除指定网络ID的永久Wi-Fi组配置。该接口用于清除已保存的Wi-Fi网络配置信息，使其不再自动连接。 |
+| [deletePersistentGroup](arkts-connectivity-wifimanager-deletepersistentgroup-f-sys.md#deletepersistentgroup-1) | 删除指定网络ID的永久Wi-Fi组配置。该接口用于清除已保存的P2P永久组配置信息，使其不再自动连接。 |
 | [delHotspotBlockList](arkts-connectivity-wifimanager-delhotspotblocklist-f-sys.md#delhotspotblocklist-1) | 将设备从热点的阻止列表中删除。 |
 | [disableHotspot](arkts-connectivity-wifimanager-disablehotspot-f-sys.md#disablehotspot-1) | 关闭热点 ，异步接口，是否关闭成功需要注册并监听hotspotStateChange的回调。 |
 | [disableNetwork](arkts-connectivity-wifimanager-disablenetwork-f-sys.md#disablenetwork-1) | 关闭网络配置。 |
@@ -157,7 +156,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | [setScanAlwaysAllowed](arkts-connectivity-wifimanager-setscanalwaysallowed-f-sys.md#setscanalwaysallowed-1) | 设置是否始终允许扫描。 |
 | [setWifiCapability](arkts-connectivity-wifimanager-setwificapability-f-sys.md#setwificapability-1) | 设置Wi-Fi能力。 |
 | [startPortalCertification](arkts-connectivity-wifimanager-startportalcertification-f-sys.md#startportalcertification-1) | 启动Portal认证流程，用于处理需要Web页面认证的公共Wi-Fi网络（如酒店、机场、咖啡厅等场所的网络）。 |
-| [startWifiDetection](arkts-connectivity-wifimanager-startwifidetection-f-sys.md#startwifidetection-1) | 发起WiFi网络探测。 |
+| [startWifiDetection](arkts-connectivity-wifimanager-startwifidetection-f-sys.md#startwifidetection-1) | 发起Wi-Fi网络探测。 |
 | [updateNetwork](arkts-connectivity-wifimanager-updatenetwork-f-sys.md#updatenetwork-1) | 更新网络配置。 |
 <!--DelEnd-->
 
@@ -191,7 +190,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | [StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md) | 接入的设备信息。包含连接到Wi-Fi网络的设备详细信息。 |
 | [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i-sys.md) | Wi-Fi配置信息。 |
 | [WifiLinkedInfo](arkts-connectivity-wifimanager-wifilinkedinfo-i-sys.md) | Wi-Fi连接信息。 |
-| [WifiProxyConfig](arkts-connectivity-wifimanager-wifiproxyconfig-i-sys.md) | Wifi 代理配置。 |
+| [WifiProxyConfig](arkts-connectivity-wifimanager-wifiproxyconfig-i-sys.md) | Wi-Fi代理配置。 |
 | [WifiScanInfo](arkts-connectivity-wifimanager-wifiscaninfo-i-sys.md) | Wi-Fi热点信息。 |
 <!--DelEnd-->
 
@@ -208,13 +207,13 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | [P2pServiceProtocolType](arkts-connectivity-wifimanager-p2pserviceprotocoltype-e.md) | 枚举，P2P服务协议类型。 |
 | [Phase2Method](arkts-connectivity-wifimanager-phase2method-e.md) | 表示第二阶段认证方式的枚举。 |
 | [WapiPskType](arkts-connectivity-wifimanager-wapipsktype-e.md) | WAPI认证方式的枚举。 |
-| [WifiBandType](arkts-connectivity-wifimanager-wifibandtype-e.md) | 表示WIFI频段类型的枚举。 |
+| [WifiBandType](arkts-connectivity-wifimanager-wifibandtype-e.md) | 表示Wi-Fi频段类型的枚举。 |
 | [WifiCapability](arkts-connectivity-wifimanager-wificapability-e.md) | Wi-Fi功能。 |
 | [WifiCategory](arkts-connectivity-wifimanager-wificategory-e.md) | 表示热点支持的最高Wi-Fi类别。可以用于识别和区分不同Wi-Fi技术标准的热点。 |
 | [WifiChannelWidth](arkts-connectivity-wifimanager-wifichannelwidth-e.md) | 表示带宽类型的枚举。 |
 | [WifiLinkType](arkts-connectivity-wifimanager-wifilinktype-e.md) | 枚举，Wi-Fi7连接类型。 |
 | [WifiSecurityType](arkts-connectivity-wifimanager-wifisecuritytype-e.md) | 表示加密类型的枚举。 |
-| [WifiStandard](arkts-connectivity-wifimanager-wifistandard-e.md) | 表示WIFI标准的枚举。 |
+| [WifiStandard](arkts-connectivity-wifimanager-wifistandard-e.md) | 表示Wi-Fi标准的枚举。 |
 
 <!--Del-->
 ### 枚举（系统接口）
@@ -223,7 +222,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | --- | --- |
 | [DisconnectedReason](arkts-connectivity-wifimanager-disconnectedreason-e-sys.md) | 表示Wi-Fi断开原因的枚举，用于诊断网络连接问题和优化连接策略。 |
 | [IpType](arkts-connectivity-wifimanager-iptype-e-sys.md) | 表示IP类型的枚举。 |
-| [ProxyMethod](arkts-connectivity-wifimanager-proxymethod-e-sys.md) | 表示WiFi代理方法的枚举。 |
+| [ProxyMethod](arkts-connectivity-wifimanager-proxymethod-e-sys.md) | 表示Wi-Fi代理方法的枚举。 |
 | [SuppState](arkts-connectivity-wifimanager-suppstate-e-sys.md) | 表示请求状态的枚举。 |
 | [WifiDetailState](arkts-connectivity-wifimanager-wifidetailstate-e-sys.md) | 表示Wi-Fi开关状态的枚举。 |
 <!--DelEnd-->

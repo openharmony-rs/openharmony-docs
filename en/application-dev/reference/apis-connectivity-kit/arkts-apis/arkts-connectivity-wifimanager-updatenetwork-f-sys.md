@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function updateNetwork(config: WifiDeviceConfig): number
 ```
 
-Update the specified Wi-Fi configuration.
+Updates network configuration.
 
 **Since:** 9
 
@@ -28,13 +28,13 @@ Update the specified Wi-Fi configuration.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i.md) | Yes | Indicates the Wi-Fi configuration to update. |
+| config | [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i.md) | Yes | Wi-Fi configuration information. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| number | Returns the network ID in the updated Wi-Fi configuration if the update is successful; returns `-1` if the specified Wi-Fi configuration is not contained in the list. |
+| number | ID of the updated network configuration. The value **-1** indicates that the operation has failed. |
 
 **Error codes:**
 

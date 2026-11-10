@@ -4,7 +4,7 @@
 enum P2pConnectState
 ```
 
-P2P connection status.
+Enumerates the P2P connection states.
 
 **Since:** 8
 
@@ -22,7 +22,7 @@ P2P connection status.
 CONNECTED = 1
 ```
 
-p2p is connected.
+Connected.
 
 **Since:** 8
 
@@ -40,7 +40,7 @@ p2p is connected.
 DISCONNECTED = 0
 ```
 
-p2p is disconnected.
+Disconnected.
 
 **Since:** 8
 

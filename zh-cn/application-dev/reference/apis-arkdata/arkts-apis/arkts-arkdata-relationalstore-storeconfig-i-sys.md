@@ -42,10 +42,10 @@ autoCleanDeviceDirtyData?: boolean
 
 **系统接口：** 此接口为系统接口。
 
-## dumpStackOnFileDel
+## dumpStackOnFileDeletion
 
 ```TypeScript
-dumpStackOnFileDel?: boolean
+dumpStackOnFileDeletion?: boolean
 ```
 
 RDB存储是否开启dump-stack on文件删除开关，用于定位数据库文件被意外删除问题。
@@ -68,7 +68,7 @@ RDB存储是否开启dump-stack on文件删除开关，用于定位数据库文�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-StoreConfig-dumpStackOnFileDel?: boolean--><!--Device-StoreConfig-dumpStackOnFileDel?: boolean-End-->
+<!--Device-StoreConfig-dumpStackOnFileDeletion?: boolean--><!--Device-StoreConfig-dumpStackOnFileDeletion?: boolean-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

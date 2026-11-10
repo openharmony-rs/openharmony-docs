@@ -29,6 +29,7 @@ import { networkManager } from '@kit.MDMKit';
 | [addApn](arkts-mdm-networkmanager-addapn-f.md#addapn-1) | 添加APN（Access Point Name，接入点名称）。 |
 | [addDomainFilterRule](arkts-mdm-networkmanager-adddomainfilterrule-f.md#adddomainfilterrule-1) | 为设备添加域名过滤规则。 |
 | [addFirewallRule](arkts-mdm-networkmanager-addfirewallrule-f.md#addfirewallrule-1) | 为设备添加防火墙过滤规则。适用于企业网络安全管控场景，例如限制特定IP地址的网络访问、防止恶意网络攻击、控制应用程序的网络通信、实现网络访问的允许名单或禁用名单管理，帮助企业精细化控制网络访问，防止网络攻击和数据泄露。 |
+| [clearDnsCache](arkts-mdm-networkmanager-cleardnscache-f.md#cleardnscache-1) | 清除指定网络的DNS缓存。使用异步回调返回结果。 |
 | [deleteApn](arkts-mdm-networkmanager-deleteapn-f.md#deleteapn-1) | 删除APN。适用于企业移动网络配置管理场景，例如清理无效的APN配置、调整移动网络接入点配置、防止使用错误的APN配置，帮助企业维护正确的移动网络配置，确保设备使用正确的接入点连接移动网络。 |
 | [getAllNetworkInterfacesSync](arkts-mdm-networkmanager-getallnetworkinterfacessync-f.md#getallnetworkinterfacessync-1) | 获取所有激活的有线网络接口。适用于企业网络管理场景，例如查看当前设备可用的网络连接、审计网络接口状态、为后续网络配置操作做准备，帮助企业了解设备网络连接状态，便于集中管理网络资源和排查网络问题。 |
 | [getDomainFilterRules](arkts-mdm-networkmanager-getdomainfilterrules-f.md#getdomainfilterrules-1) | 查询设备域名过滤规则。适用于企业网络安全审计场景，例如检查当前域名过滤策略配置、审计域名访问控制规则、验证域名过滤规则是否正确执行、排查域名访问问题，帮助企业审核和验证域名访问控制策略，确保网络访问控制符合安全要求。 |

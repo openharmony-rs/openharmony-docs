@@ -320,6 +320,56 @@ async function example(context: Context, assetUri: string) {
 
 <!--DelEnd-->
 
+## deleteLocalAssetsAndGetUris
+
+```TypeScript
+static deleteLocalAssetsAndGetUris(context: Context, assetUris: string[]): Promise<Array<AssetUriResult>>
+```
+
+Deletes local media assets (images or videos) to the trash in batches and returns the operation result of each asset. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> - If the asset exists only on the local device, it is directly deleted to the trash. If the operation is successful, **resultUri** is the new URI of the asset in the trash.
+> 
+> - If the asset exists only in the cloud, no processing is performed. In the operation result, **isSuccess**is **false**, and **resultUri** is an empty string.
+> 
+> - For assets stored on both the local device and the cloud, after this API is called, only the cloud asset is retained, the local asset enters the trash, and if the operation is successful, **resultUri** is the new URI of the local asset in the trash.
+
+**Since:** 26.1.0
+
+**Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaAssetChangeRequest-static deleteLocalAssetsAndGetUris(context: Context, assetUris: string[]): Promise<Array<AssetUriResult>>--><!--Device-MediaAssetChangeRequest-static deleteLocalAssetsAndGetUris(context: Context, assetUris: string[]): Promise<Array<AssetUriResult>>-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Context of the ability instance. |
+| assetUris | string[] | Yes | Array of URIs of the images or videos to be deleted. The array can contain a maximum of 500 elements. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;[AssetUriResult](arkts-medialibrary-photoaccesshelper-asseturiresult-i-sys.md)&gt;&gt; | Promise used to return the operation result array of each asset. The result array is in one-to-one correspondence with the input **assetUri** array. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: <br>1. The context is empty; <br>2. Asset uri array size is empty or bigger than 500. |
+| [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+
 ## deleteLocalAssetsPermanently
 
 ```TypeScript
@@ -532,6 +582,48 @@ async function example(context: Context, assetUri: string) {
 ```
 
 <!--DelEnd-->
+
+## recoverAssetsAndGetUris
+
+```TypeScript
+static recoverAssetsAndGetUris(context: Context, assetUris: string[]): Promise<Array<AssetUriResult>>
+```
+
+Recovers the assets corresponding to the specified URI string array from the trash in batches and returns the operation result of each asset. After the operation is successful, the asset is recovered from the trash to the normal state, and **resultUri** is the new URI of the recovered asset. If the operation fails, **isSuccess** is **false**, and **resultUri** is an empty string. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaAssetChangeRequest-static recoverAssetsAndGetUris(context: Context, assetUris: string[]): Promise<Array<AssetUriResult>>--><!--Device-MediaAssetChangeRequest-static recoverAssetsAndGetUris(context: Context, assetUris: string[]): Promise<Array<AssetUriResult>>-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Context of the ability instance. |
+| assetUris | string[] | Yes | Array of URIs of the assets to be recovered from the trash. The array can contain a maximum of 500 elements. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;[AssetUriResult](arkts-medialibrary-photoaccesshelper-asseturiresult-i-sys.md)&gt;&gt; | Promise used to return the operation result array of each asset. The result array is in one-to-one correspondence with the input **assetUri** array. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. Possible causes: <br>1. The context is empty; <br>2. Asset uri array size is empty or bigger than 500. |
+| [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
 ## setAppLinkInfo
 

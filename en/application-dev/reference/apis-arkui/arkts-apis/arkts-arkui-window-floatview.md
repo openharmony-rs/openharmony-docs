@@ -29,8 +29,6 @@ refined animation effect.
   - The float view can be bound to the [floating ball](arkts-arkui-window-floatingball.md) for joint use,  
 enabling more complex scenarios.
 
-**Start version**: 26.0.0
-
 > **NOTE:** 
 > 
 > - Use [canIUse()](../../../reference/common/js-apis-syscap.md#caniuse) to check whether the device supports the system capability SystemCapability.Window.SessionManager and the corresponding APIs.

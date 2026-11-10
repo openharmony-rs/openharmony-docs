@@ -43,4 +43,4 @@ Uninstall installed application-level or session-level fonts based on the font p
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [31100108](../errorcode-font-manager.md#31100108-failed-to-delete-font-file) | Failed to delete the font file. |
 | [31100110](../errorcode-font-manager.md#31100110-failed-to-call-the-api-due-to-system-errors) | Call failed due to system error. |
-| 31100112 | The scope font is not found. |
+| [31100112](../errorcode-font-manager.md#31100112-scope-font-not-found) | The scope font is not found. |

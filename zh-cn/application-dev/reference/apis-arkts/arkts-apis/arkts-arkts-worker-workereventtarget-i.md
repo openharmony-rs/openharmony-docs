@@ -24,7 +24,7 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 addEventListener(type: string, listener: WorkerEventListener): void
 ```
 
-向Worker线程的实例对象添加事件监听。该接口与on9+接口功能一致。
+向Worker线程的实例对象添加事件监听。
 
 **起始版本：** 9
 
@@ -39,7 +39,7 @@ addEventListener(type: string, listener: WorkerEventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 监听的事件类型。 |
-| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 是 | listener 当指定类型的事件发生时调用的回调函数。 |
+| listener | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 是 | 回调的事件。 |
 
 **错误码：**
 
@@ -69,7 +69,7 @@ workerPort.onmessage = (event: MessageEvents) => {
 dispatchEvent(event: Event): boolean
 ```
 
-分发定义在Worker线程的事件。
+在Worker线程将事件对象分发到Worker线程的事件系统，并触发该类型事件的所有监听器回调。
 
 **起始版本：** 9
 
@@ -89,7 +89,7 @@ dispatchEvent(event: Event): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean |  |
+| boolean | 分发的结果。true表示分发成功，false表示分发失败。 |
 
 **错误码：**
 
@@ -173,8 +173,8 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 需要移除的事件类型。 |
-| callback | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 否 | 要移除的特定事件监听回调函数；省略时移除该类型的全部监听器。 |
+| type | string | 是 | 需要删除的监听事件类型。事件类型通过addEventListener设置。 |
+| callback | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 否 | 需要删除的特定监听器回调函数。如果未传入此参数，则会删除该类型的所有监听器。 |
 
 **错误码：**
 

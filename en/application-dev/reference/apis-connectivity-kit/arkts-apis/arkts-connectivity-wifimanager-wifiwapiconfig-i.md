@@ -4,7 +4,7 @@
 interface WifiWapiConfig
 ```
 
-Wi-Fi WAPI config. @typedef WifiWapiConfig
+Wi-Fi WAPI config.
 
 **Since:** 12
 

@@ -4,7 +4,7 @@
 interface IpInfo
 ```
 
-Wi-Fi IP information. @typedef IpInfo
+Wi-Fi IP information.
 
 **Since:** 9
 

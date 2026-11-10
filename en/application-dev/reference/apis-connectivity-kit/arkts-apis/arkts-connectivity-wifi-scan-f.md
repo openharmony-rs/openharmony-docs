@@ -12,9 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function scan(): boolean
 ```
 
-Scans Wi-Fi hotspot.
-
-<p>This API works in asynchronous mode.</p>
+Starts Wi-Fi scanning.
 
 **Since:** 6
 
@@ -32,7 +30,7 @@ Scans Wi-Fi hotspot.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if the accessibility is succeed; returns `false` otherwise. |
+| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
 
 **Examples**
 

@@ -4,7 +4,7 @@
 enum WifiBandType
 ```
 
-表示WIFI频段类型的枚举。
+表示Wi-Fi频段类型的枚举。
 
 **起始版本：** 10
 

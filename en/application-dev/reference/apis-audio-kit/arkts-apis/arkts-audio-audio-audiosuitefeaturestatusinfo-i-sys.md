@@ -4,7 +4,7 @@
 interface AudioSuiteFeatureStatusInfo
 ```
 
-Defines the audio suite feature status information.
+Defines the status of the audio encoding feature.
 
 **Since:** 26.0.1
 

@@ -4,7 +4,7 @@
 export enum PowerModel
 ```
 
-The power model enumeration.
+Enumerates the power models.
 
 **Since:** 8
 
@@ -22,7 +22,7 @@ The power model enumeration.
 GENERAL = 1
 ```
 
-General model.
+General mode.
 
 **Since:** 8
 
@@ -40,7 +40,7 @@ General model.
 SLEEPING = 0
 ```
 
-Sleeping model.
+Sleeping mode.
 
 **Since:** 8
 
@@ -58,7 +58,7 @@ Sleeping model.
 THROUGH_WALL = 2
 ```
 
-Through wall model.
+Through-wall mode.
 
 **Since:** 8
 

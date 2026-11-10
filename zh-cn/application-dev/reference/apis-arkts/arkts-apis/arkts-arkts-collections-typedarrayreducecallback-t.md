@@ -7,6 +7,8 @@ type TypedArrayReduceCallback<AccType, ElementType, ArrayType> =
 
 ArkTS TypedArray归约函数类型。
 
+此类型被TypedArray类的reduce()和reduceRight()接口使用。
+
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。

@@ -26,14 +26,14 @@ function getSignalLevel(rssi: number, band: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rssi | number | 是 | 热点的信号强度(dBm)。 |
+| rssi | number | 是 | 热点的信号强度，单位：dBm。 |
 | band | number | 是 | Wi-Fi接入点的频段，1表示2.4GHz；2表示5GHz。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 信号强度，取值范围为[0, 4]。 |
+| number | 信号强度，取值范围为[0, 4]。 |
 
 **错误码：**
 

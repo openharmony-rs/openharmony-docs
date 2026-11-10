@@ -12,7 +12,11 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function disableHotspot(): void
 ```
 
-Disable Wi-Fi hotspot function. If Wi-Fi is enabled after the Wi-Fi hotspot is disabled, Wi-Fi may be re-enabled.
+Disables the Wi-Fi hotspot.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 9 and deprecated since API version 10.
 
 **Since:** 9
 

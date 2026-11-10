@@ -24,4 +24,4 @@ import { lang, Retention, RetentionPolicy } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [ISendable](arkts-arkts-lang-isendable-i.md) | 是所有Sendable对象类型（除null和undefined）的父类型。实现该接口后，自定义类的实例将支持跨线程传递。自身不定义任何方法和属性。 |
+| [ISendable](arkts-arkts-lang-isendable-i.md) | 是所有Sendable对象类型（除`null`和`undefined`）的父类型。实现该接口后，自定义类的实例将支持跨线程传递。自身不定义任何方法和属性。 |

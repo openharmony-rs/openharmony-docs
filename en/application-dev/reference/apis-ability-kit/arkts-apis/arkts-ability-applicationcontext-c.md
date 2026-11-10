@@ -1900,12 +1900,6 @@ Sets the font for this application. This API can be called only on the main thre
 | font | string | Yes | Font, which can be registered by calling UIContext.registerFont. |
 | enableAnimation | boolean | Yes | Whether using animation during this setting, using animation if true or not using animation if false. |
 
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [16000011](../errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
-
 **Examples**
 
 See [setFont](#setfont)

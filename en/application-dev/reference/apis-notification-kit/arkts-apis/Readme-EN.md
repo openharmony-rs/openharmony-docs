@@ -79,6 +79,8 @@
   <!--Del-->
   - [getNotificationSwitch(system api)](arkts-notification-notificationmanager-getnotificationswitch-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [getNotificationSwitchLimitedBundles(system api)](arkts-notification-notificationmanager-getnotificationswitchlimitedbundles-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [getPriorityEnabledByBundles(system api)](arkts-notification-notificationmanager-getpriorityenabledbybundles-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getPriorityStrategyByBundles(system api)](arkts-notification-notificationmanager-getprioritystrategybybundles-f-sys.md)<!--DelEnd-->

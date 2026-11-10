@@ -27,7 +27,7 @@ function getDefaultApplicationBundleName(type: DefaultApplicationType, accountId
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | [DefaultApplicationType](arkts-mdm-bundlemanager-defaultapplicationtype-e.md) | 是 | Type of the default application. |
-| accountId | number | 是 | User ID, which must be greater than or equal to 0. |
+| accountId | number | 是 | Account ID, which must be greater than or equal to 0. |
 
 **返回值：**
 
@@ -39,8 +39,9 @@ function getDefaultApplicationBundleName(type: DefaultApplicationType, accountId
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200006](../errorcode-enterpriseDeviceManager.md#9200006-指定的用户id非法) | The specified account ID is invalid. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |

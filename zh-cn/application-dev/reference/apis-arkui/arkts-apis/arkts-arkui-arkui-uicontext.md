@@ -61,9 +61,11 @@ import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorControll
 
 | 名称 | 说明 |
 | --- | --- |
+| [ApplicationShortcutCallbackInfo](arkts-arkui-arkui-uicontext-applicationshortcutcallbackinfo-i.md) | 应用级快捷键触发时的回调信息。 |
 | [AtomicServiceBar](arkts-arkui-arkui-uicontext-atomicservicebar-i.md) | interface AtomicServiceBar |
 | [GestureObserverConfigs](arkts-arkui-arkui-uicontext-gestureobserverconfigs-i.md) | 该参数用于指定需要监听的手势回调阶段（传入空数组时不监听任何手势回调阶段），仅当手势触发指定阶段时才会发送通知。 |
 | [GestureTriggerInfo](arkts-arkui-arkui-uicontext-gesturetriggerinfo-i.md) | 特定手势回调函数触发时的信息。 |
+| [NodeSensitiveInputInfo](arkts-arkui-arkui-uicontext-nodesensitiveinputinfo-i.md) | 定义输入事件分发到**nodeIdentity**指定节点时上报的信息。 |
 | [OrderOverlayOptions](arkts-arkui-arkui-uicontext-orderoverlayoptions-i.md) | 使用顺序打开浮层的选项。 |
 | [OverlayManagerOptions](arkts-arkui-arkui-uicontext-overlaymanageroptions-i.md) | 初始化OverlayManager时所用参数。 |
 | [PageInfo](arkts-arkui-arkui-uicontext-pageinfo-i.md) | Router和NavDestination等页面信息，若无对应的Router或NavDestination页面信息，则对应属性为undefined。 |
@@ -90,6 +92,7 @@ import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorControll
 | [GestureListenerCallback](arkts-arkui-gesturelistenercallback-t.md) | 定义了用于在UIObserver中监控特定手势触发信息的回调类型。 |
 | [NodeIdentity](arkts-arkui-nodeidentity-t.md) | 定义节点标识类型。对于string类型，代表指定组件id，该id通过通用属性[id](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id)设置。对于number类型，代表系统分配的唯一标识的节点UniqueID，可通过getUniqueId获取。 |
 | [NodeRenderStateChangeCallback](arkts-arkui-noderenderstatechangecallback-t.md) | 定义了用于在UIObserver中监控某个特定节点渲染状态的回调类型。 |
+| [NodeSensitiveInputCallback](arkts-arkui-nodesensitiveinputcallback-t.md) | 定义监听指定节点输入事件的回调类型。 |
 | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | Pan手势事件监听函数类型。 |
 | [PointerStyle](arkts-arkui-pointerstyle-t.md) | 光标样式。 |
 
@@ -103,6 +106,7 @@ import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorControll
 | [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | 配置键盘弹出时页面的避让模式。 |
 | [MarqueeDynamicSyncSceneType](arkts-arkui-arkui-uicontext-marqueedynamicsyncscenetype-e.md) | Marquee的动态帧率场景的类型枚举 |
 | [NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md) | An enumeration type that identifies the current node's rendering state. The UI components used in the application are automatically managed by the system and controlled for participation in graphical rendering by either mounting them onto the render tree or removing them from it. Only nodes that participate in graphical rendering have the potential to be displayed. However, participating in rendering does not equal to the node's visibility, as there may be many occlusion scenarios in the actual implementation of the application. Nevertheless, if a node does not participate in rendering, it will definitely not be visible. |
+| [NodeSensitiveInputEventType](arkts-arkui-arkui-uicontext-nodesensitiveinputeventtype-e.md) | 定义可通过节点敏感输入监听器上报的输入事件类型。事件对象由[NodeSensitiveInputInfo](arkts-arkui-arkui-uicontext-nodesensitiveinputinfo-i.md)中与该类型匹配的成员字段承载；例如，取值为**TOUCH**时，事件对象由**touchEvent**承载。 |
 | [ResolveStrategy](arkts-arkui-arkui-uicontext-resolvestrategy-e.md) | UIContext对象的解析策略。 |
 | [SwiperDynamicSyncSceneType](arkts-arkui-arkui-uicontext-swiperdynamicsyncscenetype-e.md) | 枚举值，表示动态帧率场景的类型。 |
 | [TextSelectionClearPolicy](arkts-arkui-arkui-uicontext-textselectionclearpolicy-e.md) | TextSelectionClearPolicy的枚举 |

@@ -12,7 +12,11 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function enableHotspot(): void
 ```
 
-Enable Wi-Fi hotspot function. This method is asynchronous. After the Wi-Fi hotspot is enabled, Wi-Fi may be disabled.
+Enables the Wi-Fi hotspot.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 9 and deprecated since API version 10.
 
 **Since:** 9
 

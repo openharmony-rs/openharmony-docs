@@ -69,6 +69,7 @@ TabContent()
 | --- | --- |
 | [LayoutMode](arkts-arkui-tabcontent-comp-layoutmode-e.md) | 页签内容排布方式枚举。 |
 | [SelectedMode](arkts-arkui-tabcontent-comp-selectedmode-e.md) | 选中子页签的显示模式枚举。 |
+| [TabVisibility](arkts-arkui-tabcontent-comp-tabvisibility-e.md) | 选项卡可见性。 |
 
 ## 示例
 
@@ -1463,9 +1464,9 @@ struct TabsIndicatorExample {
 
 ### 示例12（设置页签在不同页签栏中的可见性）
 
-该示例通过[tabBarVisibility](#tabbarvisibility)属性，设置页签在不同样式的页签栏中的可见性。
+该示例通过[tabBarVisibility](arkts-arkui-tabcontent-comp-attribute.md#tabbarvisibility)属性，设置页签在不同样式的页签栏中的可见性。
 
-从API版本26.0.1开始，TabContent新增了[tabBarVisibility](#tabbarvisibility)属性。
+从API版本26.0.1开始，TabContent新增了[tabBarVisibility](arkts-arkui-tabcontent-comp-attribute.md#tabbarvisibility)属性。
 
 
 

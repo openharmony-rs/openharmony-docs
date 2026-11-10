@@ -4,7 +4,7 @@
 declare namespace worker
 ```
 
-JS跨线程通信工具。
+JS跨线程通信工具。Worker基于Actor并发模型，各线程运行环境相互隔离，通过序列化、引用传递或转移所有权传递对象。每个Actor具有消息队列和单线程执行模块，串行处理请求、发送请求并创建Actor。Actor异步交互，相互隔离且没有数据竞争。序列化支持除Symbol之外的基础类型、Date、String、RegExp、Array、Map、Set、Object、ArrayBuffer、TypedArray。普通Object仅传递属性，不传递原型及方法；通过自定义class创建的对象可以传递，但其函数属性及方法无法序列化传递。
 
 **起始版本：** 7
 

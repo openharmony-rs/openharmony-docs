@@ -192,6 +192,7 @@ import { media } from '@kit.MediaKit';
 | [PlaybackSpeed](arkts-media-media-playbackspeed-e.md) | Enumerates the video playback speeds, which can be passed in the **setSpeed** API. |
 | [PlaylistLoopMode](arkts-media-media-playlistloopmode-e.md) | Enumerates loop mode keys for playback. |
 | [SeekMode](arkts-media-media-seekmode-e.md) | Enumerates the video playback seek modes, which can be passed in the **seek** API. |
+| [SideBySideTransparentVideoLayoutMode](arkts-media-media-sidebysidetransparentvideolayoutmode-e.md) | Transparent video layout enumeration definition in side-by-side mode; It is used to specify the position of alpha data of the transparent video in the image, so that the player can correctly synthesize the transparent video. |
 | [SoundInterruptMode](arkts-media-media-soundinterruptmode-e.md) | Enumerates the interruption modes of the audio files with the same ID in SoundPool. |
 | [StateChangeReason](arkts-media-media-statechangereason-e.md) | Enumerates the reasons for the state transition of the AVPlayer or AVRecorder instance. The enum value is reported together with **state**. |
 | [SwitchMode](arkts-media-media-switchmode-e.md) | Enumerates the **selectTrack** modes for video playback. |

@@ -4,7 +4,7 @@
 interface IpConfig
 ```
 
-Wi-Fi IP configuration information. @typedef IpConfig
+Represents IP configuration information.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 dnsServers: number[]
 ```
 
-DNS servers.
+Domain name server (DNS) information.
 
 **Type:** number[]
 
@@ -44,7 +44,7 @@ DNS servers.
 domains: Array<string>
 ```
 
-Domains.
+Domain information.
 
 **Type:** Array&lt;string&gt;
 
@@ -62,7 +62,7 @@ Domains.
 gateway: number
 ```
 
-Gate way.
+Gateway.
 
 **Type:** number
 
@@ -98,7 +98,7 @@ IP address.
 prefixLength: number
 ```
 
-Prefix length.
+Subnet mask.
 
 **Type:** number
 

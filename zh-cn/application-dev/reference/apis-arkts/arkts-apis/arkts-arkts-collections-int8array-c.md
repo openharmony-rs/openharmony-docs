@@ -809,7 +809,7 @@ static of(...items: number[]): Int8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。 |
+| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。默认值为空数组。 |
 
 **返回值：**
 
@@ -1045,7 +1045,7 @@ set(array: ArrayLike<number>, offset?: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | array | ArrayLike&lt;number&gt; | 是 | 用于设置的ArrayLike对象。 |
-| offset | number | 否 | 写入的起始位置。默认为0。 |
+| offset | number | 否 | 写入的起始位置，需为非负整数。默认值为0。offset与array.length之和不能超过ArkTS Int8Array的长度。 |
 
 **错误码：**
 
@@ -1290,6 +1290,8 @@ values(): IterableIterator<number>
 ```
 
 返回ArkTS Int8Array指定索引位置的元素。
+
+所需元素的从零开始的索引。取值范围为[0, Int8Array.length - 1]。
 
 **类型：** number
 

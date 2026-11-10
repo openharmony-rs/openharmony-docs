@@ -24,7 +24,7 @@ import { taskpool } from '@kit.ArkTS';
 addTask(func: Function, ...args: Object[]): void
 ```
 
-将待执行的函数添加到任务组中。使用该方法前需要先构造**TaskGroup**实例。
+将待执行的函数添加到任务组中。使用该方法前需要先构造TaskGroup。
 
 **起始版本：** 10
 
@@ -39,7 +39,7 @@ addTask(func: Function, ...args: Object[]): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰，支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
-| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
+| args | Object[] | 是 | 任务执行函数的入参，支持的类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)，默认值为undefined。 |
 
 **错误码：**
 
@@ -66,7 +66,7 @@ taskGroup.addTask(printArgs, 100); // 100: test number
 addTask(task: Task): void
 ```
 
-将创建好的任务添加到任务组中。使用此方法前需要先构造**TaskGroup**实例。任务组不能添加其他任务组中的任务、串行队列任务、异步队列任务、有依赖关系的任务、长时任务、周期任务和已执行的任务。
+将创建好的任务添加到任务组中。使用此方法前需要先构造TaskGroup。任务组不能添加其他任务组中的任务、串行队列任务、异步队列任务、有依赖关系的任务、长时任务、周期任务和已执行的任务。
 
 **起始版本：** 10
 

@@ -26,7 +26,7 @@ import { stream } from '@kit.ArkTS';
 constructor()
 ```
 
-创建**Duplex**对象的构造函数。
+Duplex的构造函数。
 
 **起始版本：** 12
 
@@ -48,7 +48,7 @@ let duplex = new stream.Duplex();
 cork(): boolean
 ```
 
-强制将后续写入的数据缓存起来。调用此API可优化连续写入操作的性能。调用此API后，**writableCorked**的值加1。建议与[uncork()](arkts-arkts-stream-writable-c.md#uncork)配合使用。
+将写入的数据强制写入缓冲区暂存，用来优化连续写入操作的性能。使用后属性writableCorked的值会加一。建议和[uncork()](arkts-arkts-stream-writable-c.md#uncork)成对使用。
 
 **起始版本：** 12
 
@@ -175,7 +175,7 @@ duplexStream.end();
 end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable
 ```
 
-结束双工流的写入过程。如果**writableCorked**的值大于0，则将其置为**0**，并输出缓冲区中的剩余数据。如果传入**chunk**参数，则将其视为最后一个数据块，根据当前执行上下文使用**write**或**doWrite** API写入。如果使用**doWrite**写入，**encoding**参数的有效性检查由**doWrite**决定。如果单独使用**end**（不使用**write**）且传入**chunk**参数，则数据通过**doWrite**写入。使用异步回调返回结果。
+结束双工流的写入操作。如果属性writableCorked的值大于0，会将该属性的值置0，并输出缓冲区剩余数据。如果传入chunk参数，则根据实际运行情况，通过write或者doWrite将其作为最后一块数据写入。其中通过doWrite写入时，encoding参数的合法性检查依赖doWrite。end单独使用（不使用write）并传入chunk参数的情况下，必然通过doWrite写入。使用callback异步回调。
 
 **起始版本：** 12
 
@@ -190,7 +190,7 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | chunk | string &#124; Uint8Array | 否 | 需要写入的数据。默认值为undefined。 |
-| encoding | string | 否 | 编码格式。默认值为**'utf8'**。目前支持**'utf8'**、**'gb18030'**、**'gbk'**和**'gb2312'**。 |
+| encoding | string | 否 | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。 |
 | callback | Function | 否 | 回调函数。传入时异步调用，不传入时，不调用回调函数。 |
 
 **返回值：**
@@ -283,7 +283,7 @@ console.info("duplexStream is result", result); // duplexStream is result true
 uncork(): boolean
 ```
 
-释放cork状态，刷新缓冲区中的数据并写入目标位置。调用此API后，**writableCorked**的值减1。如果值变为**0**，则流不再处于cork状态；否则，流仍处于cork状态。建议与[cork()](arkts-arkts-stream-writable-c.md#cork)配合使用。
+解除cork状态，解除后将缓冲区中的数据全部刷新，并将其写入目标位置。使用后属性writableCorked的值会减一，如果该值降为0，则解除cork状态，否则流依然处于cork状态。建议和[cork()](arkts-arkts-stream-writable-c.md#cork)成对使用。
 
 **起始版本：** 12
 
@@ -331,7 +331,7 @@ console.info("Duplex test uncork", dataWritten); // Duplex test uncork ab
 write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): boolean
 ```
 
-向流的缓冲区写入数据。使用异步回调返回结果。
+将数据写入流的缓冲区中。使用callback异步回调。
 
 **起始版本：** 12
 
@@ -346,7 +346,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | chunk | string &#124; Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持传入null、undefined和空字符串，会抛出异常。 |
-| encoding | string | 否 | 编码格式。默认值为**'utf8'**。目前支持**'utf8'**、**'gb18030'**、**'gbk'**和**'gb2312'**。 |
+| encoding | string | 否 | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。 |
 | callback | Function | 否 | 回调函数，用于在数据写入完成后执行特定逻辑。传入callback时，数据写入缓冲区后会调用该回调函数；不传入时，不调用回调函数。 |
 
 **返回值：**

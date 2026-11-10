@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function disableNetwork(netId: number): void
 ```
 
-Disable the specified DeviceConfig by networkId. The disabled DeviceConfig will not be associated with again.
+Disables the network configuration.
 
 **Since:** 9
 
@@ -28,7 +28,7 @@ Disable the specified DeviceConfig by networkId. The disabled DeviceConfig will 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| netId | number | Yes | Identifies the network to disable. The value of networkId cannot be less than 0. |
+| netId | number | Yes | Network configuration ID. |
 
 **Error codes:**
 
@@ -64,7 +64,7 @@ try {
 function disableNetwork(netId: number, blockDuration: number): void
 ```
 
-Disable the specified DeviceConfig by networkId for a period of time. The disabled DeviceConfig will not be associated with again.
+Disables the network connection, disconnects the connected network, and does not automatically reconnect to the network within the specified time range.
 
 **Since:** 23
 
@@ -80,8 +80,8 @@ Disable the specified DeviceConfig by networkId for a period of time. The disabl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| netId | number | Yes | Identifies the network to disable. The value of networkId cannot be less than 0. |
-| blockDuration | number | Yes | Indicates the duration of network disablement(unit is secondes), If the value is -1, means permanent disablement. |
+| netId | number | Yes | Network configuration ID. <br>The value should be an integer. |
+| blockDuration | number | Yes | Network disabling duration, in seconds. <br>The value should be an integer. |
 
 **Error codes:**
 

@@ -4,7 +4,7 @@
 enum P2pDeviceStatus
 ```
 
-P2P device status.
+Enumerates the P2P device states.
 
 **Since:** 8
 
@@ -22,7 +22,7 @@ P2P device status.
 AVAILABLE = 3
 ```
 
-Indicate p2p device is available.
+Available.
 
 **Since:** 8
 
@@ -40,7 +40,7 @@ Indicate p2p device is available.
 CONNECTED = 0
 ```
 
-Indicate p2p device is connected.
+Connected.
 
 **Since:** 8
 
@@ -58,7 +58,7 @@ Indicate p2p device is connected.
 FAILED = 2
 ```
 
-Indicate p2p device is failed.
+Failed.
 
 **Since:** 8
 
@@ -76,7 +76,7 @@ Indicate p2p device is failed.
 INVITED = 1
 ```
 
-Indicate p2p device is invited.
+Invited.
 
 **Since:** 8
 
@@ -94,7 +94,7 @@ Indicate p2p device is invited.
 UNAVAILABLE = 4
 ```
 
-Indicate p2p device is unavailable.
+Unavailable.
 
 **Since:** 8
 

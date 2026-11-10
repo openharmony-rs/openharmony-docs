@@ -12,11 +12,13 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function getP2pGroups(): Promise<Array<WifiP2pGroupInfo>>
 ```
 
-Obtain information about the groups.
+Obtains information about all P2P groups. This API uses a promise to return the result.
 
-**Since:** 10
+**Since:** 9
 
-**Required permissions:** ohos.permission.GET_WIFI_INFO
+**Required permissions:** 
+- API version 10 and later: ohos.permission.GET_WIFI_INFO
+- API version 9: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
 <!--Device-wifiManager-function getP2pGroups(): Promise<Array<WifiP2pGroupInfo>>--><!--Device-wifiManager-function getP2pGroups(): Promise<Array<WifiP2pGroupInfo>>-End-->
 
@@ -28,7 +30,7 @@ Obtain information about the groups.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[WifiP2pGroupInfo](arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md)&gt;&gt; | Returns the information about own device info. |
+| Promise&lt;Array&lt;[WifiP2pGroupInfo](arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md)&gt;&gt; | Promise used to return the group information obtained. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address. |
 
 **Error codes:**
 
@@ -68,11 +70,13 @@ wifiManager.getP2pGroups().then(data => {
 function getP2pGroups(callback: AsyncCallback<Array<WifiP2pGroupInfo>>): void
 ```
 
-Obtain information about the groups.
+Obtains information about all P2P groups. This API uses an asynchronous callback to return the result.
 
-**Since:** 10
+**Since:** 9
 
-**Required permissions:** ohos.permission.GET_WIFI_INFO
+**Required permissions:** 
+- API version 10 and later: ohos.permission.GET_WIFI_INFO
+- API version 9: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
 <!--Device-wifiManager-function getP2pGroups(callback: AsyncCallback<Array<WifiP2pGroupInfo>>): void--><!--Device-wifiManager-function getP2pGroups(callback: AsyncCallback<Array<WifiP2pGroupInfo>>): void-End-->
 

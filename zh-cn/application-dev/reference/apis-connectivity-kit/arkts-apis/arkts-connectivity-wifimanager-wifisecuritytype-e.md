@@ -146,7 +146,7 @@ WAPI-PSK加密类型。
 WIFI_SEC_TYPE_WEP = 2
 ```
 
-Wired Equivalent Privacy (WEP)加密类型。候选网络(添加网络配置信息)配置不支持该加密类型。
+Wired Equivalent Privacy (WEP)加密类型。添加候选网络配置时不支持该加密类型。
 
 **起始版本：** 9
 

@@ -12,6 +12,50 @@ declare interface NavigationConfiguration
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## clearContentStackOnPrimaryNavigation
+
+```TypeScript
+clearContentStackOnPrimaryNavigation?: boolean
+```
+
+在导航分栏模式下，启用后，从主节点触发的导航会清除主节点之后的旧导航页面，同时保留当前操作创建的所有导航页面。
+
+**类型：** boolean
+
+**默认值：** false
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationConfiguration-clearContentStackOnPrimaryNavigation?: boolean--><!--Device-NavigationConfiguration-clearContentStackOnPrimaryNavigation?: boolean-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## recyclePagesOnLowMemory
+
+```TypeScript
+recyclePagesOnLowMemory?: boolean
+```
+
+当收到低内存信号时，是否回收不可见页。启用时，导航在接收后回收不可见的NavDestination页面实例低内存压力通知。NavPathInfo是保留的，以后可以重新构造页面。
+
+**类型：** boolean
+
+**默认值：** false
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationConfiguration-recyclePagesOnLowMemory?: boolean--><!--Device-NavigationConfiguration-recyclePagesOnLowMemory?: boolean-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## stackSizeLimit
 
 ```TypeScript

@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function getScanAlwaysAllowed(): boolean
 ```
 
-Get scan always allowed flag.
+Obtains whether scan is always allowed.
 
 **Since:** 10
 
@@ -28,7 +28,7 @@ Get scan always allowed flag.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if scan running state is true, returns `false` otherwise. |
+| boolean | Whether scan is always allowed. The value **true** means scan is always allowed, and the value **false** means scan is not allowed when Wi-Fi is disabled. |
 
 **Error codes:**
 

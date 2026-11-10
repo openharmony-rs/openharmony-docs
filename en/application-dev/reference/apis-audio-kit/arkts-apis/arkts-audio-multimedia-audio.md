@@ -129,9 +129,9 @@ import { audio } from '@kit.AudioKit';
 | [AudioSpatialDeviceState](arkts-audio-audio-audiospatialdevicestate-i-sys.md) | Describes spatial device state. |
 | [AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md) | This interface is used to notify the listener of any device Spatialization or Head Tracking enable or Adaptive Spatial Rendering state change. |
 | [AudioSpatializationManager](arkts-audio-audio-audiospatializationmanager-i-sys.md) | Implements audio spatialization management. @typedef AudioSpatializationManager This interface implements spatial audio management. |
-| [AudioSuiteDownloadManager](arkts-audio-audio-audiosuitedownloadmanager-i-sys.md) | Provides audio suite download management capabilities, including starting, pausing, canceling downloads, querying status, and uninstalling features. |
-| [AudioSuiteFeatureStatusInfo](arkts-audio-audio-audiosuitefeaturestatusinfo-i-sys.md) | Defines the audio suite feature status information. |
-| [AudioSuiteFeatureVersionInfo](arkts-audio-audio-audiosuitefeatureversioninfo-i-sys.md) | Defines the audio suite feature version information. |
+| [AudioSuiteDownloadManager](arkts-audio-audio-audiosuitedownloadmanager-i-sys.md) | Provides the capability of downloading and managing the audio editing feature, including starting, pausing, Cancel the download, status query, and uninstallation functions. |
+| [AudioSuiteFeatureStatusInfo](arkts-audio-audio-audiosuitefeaturestatusinfo-i-sys.md) | Defines the status of the audio encoding feature. |
+| [AudioSuiteFeatureVersionInfo](arkts-audio-audio-audiosuitefeatureversioninfo-i-sys.md) | Defines the version information of the audio editing feature. |
 | [AudioVolumeGroupManager](arkts-audio-audio-audiovolumegroupmanager-i-sys.md) | This interface implements volume management for an audio group. |
 | [AudioVolumeManager](arkts-audio-audio-audiovolumemanager-i-sys.md) | This interface implements audio volume management. |
 | [InterruptResult](arkts-audio-audio-interruptresult-i-sys.md) | Describes audio interrupt operation results. |
@@ -160,7 +160,7 @@ import { audio } from '@kit.AudioKit';
 | Name | Description |
 | --- | --- |
 | [ActiveStreamsVolumeInfoArray](arkts-audio-audio-activestreamsvolumeinfoarray-t-sys.md) | ActiveStreamVolumeInfo array. |
-| [AudioSuiteFeatureStatusInfoArray](arkts-audio-audio-audiosuitefeaturestatusinfoarray-t-sys.md) | Defines the audio suite feature status information array. |
+| [AudioSuiteFeatureStatusInfoArray](arkts-audio-audio-audiosuitefeaturestatusinfoarray-t-sys.md) | Defines the status information array of the audio encoding feature. |
 | [StreamUsageArray](arkts-audio-audio-streamusagearray-t-sys.md) | Array of StreamUsages. |
 | [VolumeGroupInfos](arkts-audio-audio-volumegroupinfos-t-sys.md) | Array of VolumeGroupInfos, which is read-only. |
 <!--DelEnd-->
@@ -237,8 +237,8 @@ import { audio } from '@kit.AudioKit';
 | [AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e-sys.md) | Enumerates audio session behavior flags. |
 | [AudioSpatialDeviceType](arkts-audio-audio-audiospatialdevicetype-e-sys.md) | Describes a spatial device type group. |
 | [AudioSpatializationSceneType](arkts-audio-audio-audiospatializationscenetype-e-sys.md) | Describes a spatialization scene type group. |
-| [AudioSuiteFeatureStatus](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md) | Enumerates the status for audio suite feature. |
-| [AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md) | Enumerates the feature type for audio suite. |
+| [AudioSuiteFeatureStatus](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md) | Enumerated value, indicating the status of the audio encoding feature. |
+| [AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md) | Enumerated audio encoding feature type. |
 | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e-sys.md) | Enumerates the audio volume types. |
 | [ConnectType](arkts-audio-audio-connecttype-e-sys.md) | Connect type for device. |
 | [DeviceFlag](arkts-audio-audio-deviceflag-e-sys.md) | Enumerates the audio device flags. |
@@ -246,7 +246,7 @@ import { audio } from '@kit.AudioKit';
 | [EffectFlag](arkts-audio-audio-effectflag-e-sys.md) | Enumerates audio effect flags. |
 | [InterruptRequestResultType](arkts-audio-audio-interruptrequestresulttype-e-sys.md) | Enumerates audio interrupt request result type. |
 | [InterruptRequestType](arkts-audio-audio-interruptrequesttype-e-sys.md) | Enumerates the audio interrupt request type. |
-| [NetworkType](arkts-audio-audio-networktype-e-sys.md) | Enumerates the network types for audio suite download. |
+| [NetworkType](arkts-audio-audio-networktype-e-sys.md) | Network type for downloading the audio encoding feature. |
 | [PolicyType](arkts-audio-audio-policytype-e-sys.md) | Enumerates type. |
 | [RenderTarget](arkts-audio-audio-rendertarget-e-sys.md) | Audio render target. |
 | [SourceType](arkts-audio-audio-sourcetype-e-sys.md) | Enumerates the types of audio streams captured. |

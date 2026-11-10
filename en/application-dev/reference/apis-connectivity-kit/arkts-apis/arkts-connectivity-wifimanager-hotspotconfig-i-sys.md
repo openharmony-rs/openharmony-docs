@@ -4,7 +4,7 @@
 interface HotspotConfig
 ```
 
-Wi-Fi hotspot configuration information. @typedef HotspotConfig
+Represents the hotspot configuration.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 band: number
 ```
 
-The frequency band of the Wi-Fi hotspot
+Hotspot band. The value **1** stands for 2.4 GHz, the value **2** for 5 GHz, and the value **3** for dual bands.
 
 **Type:** number
 
@@ -44,7 +44,7 @@ The frequency band of the Wi-Fi hotspot
 channel?: number
 ```
 
-The channel of the Wi-Fi hotspot.
+Hotspot channel (channels 1 to 14 for 2.4 GHz, and channels 7 to 196 for 5 GHz)
 
 **Type:** number
 
@@ -62,7 +62,7 @@ The channel of the Wi-Fi hotspot.
 ipAddress?: string
 ```
 
-IP address of the dhcp server, it's a string, For example 192.168.43.1
+DHCP server IP address
 
 **Type:** string
 
@@ -80,7 +80,7 @@ IP address of the dhcp server, it's a string, For example 192.168.43.1
 maxConn: number
 ```
 
-The maximum number of connections allowed by the Wi-Fi hotspot
+Maximum number of connections allowed.
 
 **Type:** number
 
@@ -98,7 +98,7 @@ The maximum number of connections allowed by the Wi-Fi hotspot
 preSharedKey: string
 ```
 
-The password of the Wi-Fi hotspot
+PSK of the hotspot.
 
 **Type:** string
 
@@ -116,7 +116,7 @@ The password of the Wi-Fi hotspot
 securityType: WifiSecurityType
 ```
 
-The encryption mode of the Wi-Fi hotspot
+Security type.
 
 **Type:** [WifiSecurityType](arkts-connectivity-wifimanager-wifisecuritytype-e.md)
 
@@ -134,7 +134,7 @@ The encryption mode of the Wi-Fi hotspot
 ssid: string
 ```
 
-The SSID of the Wi-Fi hotspot
+SSID of the hotspot, in UTF-8 format.
 
 **Type:** string
 

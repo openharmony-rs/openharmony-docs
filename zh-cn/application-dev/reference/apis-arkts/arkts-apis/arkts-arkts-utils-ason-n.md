@@ -6,6 +6,8 @@ namespace ASON
 
 为支持将JSON字符串解析为共享数据，即Sendable支持的数据类型，ArkTS语言基础库新增了ASON工具。ASON工具支持解析JSON字符串并生成共享数据，用于跨并发实例引用传递，同时也支持将共享数据转换为JSON字符串。
 
+此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
+
 **起始版本：** 12
 
 <!--Device-utils-namespace ASON--><!--Device-utils-namespace ASON-End-->

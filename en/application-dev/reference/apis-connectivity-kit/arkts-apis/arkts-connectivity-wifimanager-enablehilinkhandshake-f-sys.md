@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDeviceConfig): void
 ```
 
-Enable hiLink handshake.
+Enables or disables HiLink.
 
 **Since:** 12
 
@@ -28,9 +28,9 @@ Enable hiLink handshake.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isHiLinkEnable | boolean | Yes | Indicates the HiLink enable or not. |
-| bssid | string | Yes | Indicates the Wi-Fi bssid. |
-| config | [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i.md) | Yes | Indicates the Wi-Fi device config. |
+| isHiLinkEnable | boolean | Yes | Whether to enable hiLink. The value **true** means to enable HiLink, and the value **false** means the opposite. |
+| bssid | string | Yes | MAC address of the hotspot, for example, **00:11:22:33:44:55**. |
+| config | [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i.md) | Yes | Wi-Fi configuration information. The value of **config.bssid** must be the same as that of the second parameter **bssid**. The value of **bssidType** is a random device address by default. |
 
 **Error codes:**
 

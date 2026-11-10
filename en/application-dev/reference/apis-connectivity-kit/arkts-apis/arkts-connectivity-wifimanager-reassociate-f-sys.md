@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function reassociate(): void
 ```
 
-Re-associate to current network.
+Re-associates with the network.
 
 **Since:** 9
 

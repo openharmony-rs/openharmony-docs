@@ -79,6 +79,8 @@
   <!--Del-->
   - [getNotificationSwitch（系统接口）](arkts-notification-notificationmanager-getnotificationswitch-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [getNotificationSwitchLimitedBundles（系统接口）](arkts-notification-notificationmanager-getnotificationswitchlimitedbundles-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [getPriorityEnabledByBundles（系统接口）](arkts-notification-notificationmanager-getpriorityenabledbybundles-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getPriorityStrategyByBundles（系统接口）](arkts-notification-notificationmanager-getprioritystrategybybundles-f-sys.md)<!--DelEnd-->

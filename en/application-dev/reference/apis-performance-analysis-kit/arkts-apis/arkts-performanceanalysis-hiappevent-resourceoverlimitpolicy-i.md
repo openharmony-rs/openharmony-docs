@@ -49,6 +49,32 @@ the application may exit in advance due to a freeze event triggered by a perform
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
+## jsvmHeapLogEnable
+
+```TypeScript
+jsvmHeapLogEnable?: boolean
+```
+
+Whether to enable the JSVM heap log for RESOURCE_OVERLIMIT event.
+
+**true**: yes.
+
+**false**: no.
+
+The default value is **false**.
+
+**Type:** boolean
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ResourceOverlimitPolicy-jsvmHeapLogEnable?: boolean--><!--Device-ResourceOverlimitPolicy-jsvmHeapLogEnable?: boolean-End-->
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
 ## pageSwitchLogEnable
 
 ```TypeScript
@@ -94,5 +120,31 @@ This parameter is used to control whether to output refined external log file na
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ResourceOverlimitPolicy-useRefinedLogFileName?: boolean--><!--Device-ResourceOverlimitPolicy-useRefinedLogFileName?: boolean-End-->
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
+## v8HeapLogEnable
+
+```TypeScript
+v8HeapLogEnable?: boolean
+```
+
+Whether to enable the V8 heap log for RESOURCE_OVERLIMIT event.
+
+**true**: yes.
+
+**false**: no.
+
+The default value is **false**.
+
+**Type:** boolean
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ResourceOverlimitPolicy-v8HeapLogEnable?: boolean--><!--Device-ResourceOverlimitPolicy-v8HeapLogEnable?: boolean-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

@@ -4,9 +4,9 @@
 interface WifiDeviceConfig
 ```
 
-Wi-Fi device configuration information. @typedef WifiDeviceConfig
+Represents the Wi-Fi configuration information.
 
-**Since:** 12
+**Since:** 9
 
 <!--Device-wifiManager-interface WifiDeviceConfig--><!--Device-wifiManager-interface WifiDeviceConfig-End-->
 
@@ -24,7 +24,15 @@ import { wifiManager } from '@kit.ConnectivityKit';
 configStatus?: number
 ```
 
-Device config status: 0 - enabled, 1 - disabled, 2 - permanent disabled, 3 - unknown.
+Status indicating whether the current network can be selected.
+
+**1**: network selection allowed
+
+**2**: network selection forbidden
+
+**3**: network selection permanently forbidden
+
+4: unknown
 
 **Type:** number
 
@@ -42,7 +50,7 @@ Device config status: 0 - enabled, 1 - disabled, 2 - permanent disabled, 3 - unk
 creatorUid?: number
 ```
 
-The UID of the Wi-Fi configuration creator.
+ID of the creator.
 
 **Type:** number
 
@@ -60,7 +68,43 @@ The UID of the Wi-Fi configuration creator.
 disableReason?: number
 ```
 
-Disable reason
+Reason for disabling Wi-Fi.
+
+**-1**: unknown reason
+
+**0**: not disabled
+
+**1**: association refused
+
+**2**: authentication failed
+
+**3**: DHCP failure
+
+**4**: no Internet connection
+
+**5**: no authentication credentials
+
+**6**: no Internet connection permanently
+
+**7**: disabled by Wi-Fi manager
+
+**8**: disabled due to incorrect password
+
+**9**: authentication without subscription
+
+**10**: private EAP authentication error
+
+**11**: network not found
+
+**12**: consecutive failures
+
+**13**: disabled by the system
+
+**14**: EAP-AKA authentication failed
+
+**15**: association removed
+
+**16**: maximum number of forbidden network selections
 
 **Type:** number
 
@@ -96,7 +140,7 @@ Static IP family: 0 - IPv4, 1 - Ipv6.
 ipType?: IpType
 ```
 
-IP Type
+IP address type.
 
 **Type:** [IpType](arkts-connectivity-wifimanager-iptype-e-sys.md)
 
@@ -114,7 +158,7 @@ IP Type
 isAutoConnectAllowed?: boolean
 ```
 
-Allow auto connect config: false - not, true - yes.
+Whether automatic connection is allowed. The value **true** indicates that automatic connection is allowed, and the value **false** indicates the opposite.
 
 **Type:** boolean
 
@@ -132,7 +176,7 @@ Allow auto connect config: false - not, true - yes.
 isSecureWifi?: boolean
 ```
 
-Secure wifi detect config: false - not, true - yes.
+Whether the Wi-Fi connection is secure. The value **true** indicates that the Wi-Fi connection is secure, and the value **false** indicates the opposite.
 
 **Type:** boolean
 
@@ -150,7 +194,7 @@ Secure wifi detect config: false - not, true - yes.
 proxyConfig?: WifiProxyConfig
 ```
 
-Proxy config.
+Proxy configuration.
 
 **Type:** [WifiProxyConfig](arkts-connectivity-wifimanager-wifiproxyconfig-i-sys.md)
 
@@ -168,7 +212,7 @@ Proxy config.
 randomMacAddr?: string
 ```
 
-Random mac address, the length is 6.
+MAC address.
 
 **Type:** string
 
@@ -186,7 +230,9 @@ Random mac address, the length is 6.
 randomMacType?: number
 ```
 
-Random mac type
+MAC address type.
+
+The value **0** indicates a random MAC address, and the value **1** indicates a device MAC address.
 
 **Type:** number
 
@@ -204,7 +250,7 @@ Random mac type
 staticIp?: IpConfig
 ```
 
-IP config of static
+Static IP address information.
 
 **Type:** [IpConfig](arkts-connectivity-wifimanager-ipconfig-i-sys.md)
 

@@ -93,3 +93,46 @@ requestAuthorization(privilege: Privilege, context: UIAbilityContext): Promise<A
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300302](../errorcode-account.md#12300302-授权操作需要用户交互但当前交互操作受限) | User interaction is required but not allowed. Possible causes: 1. The specified UI context is invalid; 2. The application is not in the foreground. Suggested solutions: Ensure the application is in the foreground and pass a valid UIAbilityContext. |
 | [12300304](../errorcode-account.md#12300304-授权服务忙) | Authorization service is busy. Possible cause: Another authorization is being processed. |
+
+## requestBatchAuthorization
+
+```TypeScript
+requestBatchAuthorization(privileges: Array<Privilege>, context: UIAbilityContext): Promise<Map<Privilege, AuthorizationResult>>
+```
+
+请求将指定的批量特权授予当前进程。该接口使用Promise返回结果。
+
+当应用处于前台且不存在有效授权时，将以模应用方式显示授权弹窗。若已存在有效授权，则会直接复用。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AuthorizationManager-requestBatchAuthorization(privileges: Array<Privilege>, context: UIAbilityContext): Promise<Map<Privilege, AuthorizationResult>>--><!--Device-AuthorizationManager-requestBatchAuthorization(privileges: Array<Privilege>, context: UIAbilityContext): Promise<Map<Privilege, AuthorizationResult>>-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| privileges | Array&lt;[Privilege](arkts-basicservices-authorization-privilege-e.md)&gt; | 是 | 目标批量特权。有关可用值，请参阅[Privilege](arkts-basicservices-authorization-privilege-e.md)。<br>最大长度为5，且不能为空。 |
+| context | [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md) | 是 | 承载授权对话框的[UIAbility context](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md)。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;Map&lt;[Privilege](arkts-basicservices-authorization-privilege-e.md), [AuthorizationResult](arkts-basicservices-authorization-authorizationresult-i.md)&gt;&gt; | Promise用于返回授权结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
+| [12300002](../errorcode-account.md#12300002-无效参数) | The privileges array is empty or exceeds the batch limit. |
+| [12300302](../errorcode-account.md#12300302-授权操作需要用户交互但当前交互操作受限) | User interaction is required but not allowed. Possible causes: 1. The specified UI context is invalid; 2. The application is not in the foreground. Suggested solutions: Ensure the application is in the foreground and pass a valid UIAbilityContext. |
+| [12300304](../errorcode-account.md#12300304-授权服务忙) | Authorization service is busy. Possible cause: Another authorization is being processed. |

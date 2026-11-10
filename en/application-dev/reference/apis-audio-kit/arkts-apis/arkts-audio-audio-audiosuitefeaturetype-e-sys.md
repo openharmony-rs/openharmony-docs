@@ -4,7 +4,7 @@
 enum AudioSuiteFeatureType
 ```
 
-Enumerates the feature type for audio suite.
+Enumerated audio encoding feature type.
 
 **Since:** 26.0.1
 

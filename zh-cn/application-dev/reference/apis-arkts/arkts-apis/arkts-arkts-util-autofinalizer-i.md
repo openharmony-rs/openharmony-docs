@@ -28,7 +28,7 @@ import { util } from '@kit.ArkTS';
 onFinalization(heldValue: T): void
 ```
 
-开发者自定义的用于释放资源的回调。当注册对象被回收时自动触发，并将heldValue传递给onFinalization。
+开发者需要实现该接口，定义对象被回收时自动触发的资源清理回调。
 
 **起始版本：** 22
 
@@ -42,4 +42,4 @@ onFinalization(heldValue: T): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| heldValue | T | 是 | 传递给 finalizer 的值。 |
+| heldValue | T | 是 | 当监听的对象被回收时，该值会被传递给`onFinalization`回调方法。 |

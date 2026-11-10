@@ -16,7 +16,7 @@ function getServiceDump(serviceid : number, fd : number, args : Array<string>) :
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.DUMP
+**需要权限：** ohos.permission.DUMP，仅系统应用可申请。
 
 <!--Device-hidebug-function getServiceDump(serviceid : int, fd : int, args : Array<string>) : void--><!--Device-hidebug-function getServiceDump(serviceid : int, fd : int, args : Array<string>) : void-End-->
 

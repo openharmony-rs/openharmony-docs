@@ -12,7 +12,7 @@ import { wifiext } from '@kit.ConnectivityKit';
 function getSupportedPowerModel(): Promise<Array<PowerModel>>
 ```
 
-Obtains the supported power model.
+Obtains the supported power models. This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -30,7 +30,7 @@ Obtains the supported power model.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[PowerModel](arkts-connectivity-wifiext-powermodel-e.md)&gt;&gt; | Returns the array of supported power model. |
+| Promise&lt;Array&lt;[PowerModel](arkts-connectivity-wifiext-powermodel-e.md)&gt;&gt; | Promise used to return the power models obtained. |
 
 
 ## getSupportedPowerModel
@@ -39,7 +39,7 @@ Obtains the supported power model.
 function getSupportedPowerModel(callback: AsyncCallback<Array<PowerModel>>): void
 ```
 
-Obtains the supported power model.
+Obtains the supported power models. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -57,4 +57,4 @@ Obtains the supported power model.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[PowerModel](arkts-connectivity-wifiext-powermodel-e.md)&gt;&gt; | Yes | callback function, no return value. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[PowerModel](arkts-connectivity-wifiext-powermodel-e.md)&gt;&gt; | Yes | Callback used to return the result. |

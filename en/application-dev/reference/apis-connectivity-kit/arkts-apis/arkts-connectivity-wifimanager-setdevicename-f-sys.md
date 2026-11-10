@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function setDeviceName(devName: string): void
 ```
 
-Set the name of the Wi-Fi P2P device.
+Sets the device name.
 
 **Since:** 9
 
@@ -28,7 +28,7 @@ Set the name of the Wi-Fi P2P device.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| devName | string | Yes | Indicate the name to be set. |
+| devName | string | Yes | Device name. |
 
 **Error codes:**
 

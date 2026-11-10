@@ -627,7 +627,7 @@
   - [SEService](arkts-connectivity-omapi-seservice-i.md)
   - [Session](arkts-connectivity-omapi-session-i.md)
   - [ServiceState](arkts-connectivity-omapi-servicestate-e.md)
-- [@ohos.wifi](arkts-connectivity-wifi.md)
+- [@ohos.wifi(WLAN)](arkts-connectivity-wifi.md)
   <!--Del-->
   - [addDeviceConfig(system api)](arkts-connectivity-wifi-adddeviceconfig-f-sys.md)<!--DelEnd-->
   - [addUntrustedConfig](arkts-connectivity-wifi-adduntrustedconfig-f.md)
@@ -729,20 +729,22 @@
   <!--Del-->
   - [SuppState(system api)](arkts-connectivity-wifi-suppstate-e-sys.md)<!--DelEnd-->
   - [WifiSecurityType](arkts-connectivity-wifi-wifisecuritytype-e.md)
-- [@ohos.wifiext](arkts-connectivity-wifiext.md)
+- [@ohos.wifiext(WLAN Extension)](arkts-connectivity-wifiext.md)
   - [disableHotspot](arkts-connectivity-wifiext-disablehotspot-f.md)
   - [enableHotspot](arkts-connectivity-wifiext-enablehotspot-f.md)
   - [getPowerModel](arkts-connectivity-wifiext-getpowermodel-f.md)
   - [getSupportedPowerModel](arkts-connectivity-wifiext-getsupportedpowermodel-f.md)
   - [setPowerModel](arkts-connectivity-wifiext-setpowermodel-f.md)
   - [PowerModel](arkts-connectivity-wifiext-powermodel-e.md)
-- [@ohos.wifiManager](arkts-connectivity-wifimanager.md)
+- [@ohos.wifiManager(WLAN)](arkts-connectivity-wifimanager.md)
   - [addCandidateConfig](arkts-connectivity-wifimanager-addcandidateconfig-f.md)
   - [addDeviceConfig](arkts-connectivity-wifimanager-adddeviceconfig-f.md)
   - [addDnsSdLocalP2pService](arkts-connectivity-wifimanager-adddnssdlocalp2pservice-f.md)
+  - [addDnsSdServiceRequest](arkts-connectivity-wifimanager-adddnssdservicerequest-f.md)
   <!--Del-->
   - [addHotspotBlockList(system api)](arkts-connectivity-wifimanager-addhotspotblocklist-f-sys.md)<!--DelEnd-->
   - [addUpnpLocalP2pService](arkts-connectivity-wifimanager-addupnplocalp2pservice-f.md)
+  - [addUpnpServiceRequest](arkts-connectivity-wifimanager-addupnpservicerequest-f.md)
   <!--Del-->
   - [allowAutoConnect(system api)](arkts-connectivity-wifimanager-allowautoconnect-f-sys.md)<!--DelEnd-->
   - [connectToCandidateConfig](arkts-connectivity-wifimanager-connecttocandidateconfig-f.md)
@@ -762,6 +764,7 @@
   - [disableWifi](arkts-connectivity-wifimanager-disablewifi-f.md)
   - [disconnect](arkts-connectivity-wifimanager-disconnect-f.md)
   - [disconnectFromCandidateConfig](arkts-connectivity-wifimanager-disconnectfromcandidateconfig-f.md)
+  - [discoverServices](arkts-connectivity-wifimanager-discoverservices-f.md)
   <!--Del-->
   - [enableHiLinkHandshake(system api)](arkts-connectivity-wifimanager-enablehilinkhandshake-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -797,6 +800,7 @@
   - [getP2pLinkedInfo](arkts-connectivity-wifimanager-getp2plinkedinfo-f.md)
   - [getP2pLocalDevice](arkts-connectivity-wifimanager-getp2plocaldevice-f.md)
   - [getP2pPeerDevices](arkts-connectivity-wifimanager-getp2ppeerdevices-f.md)
+  - [getP2pServiceRequest](arkts-connectivity-wifimanager-getp2pservicerequest-f.md)
   <!--Del-->
   - [getScanAlwaysAllowed(system api)](arkts-connectivity-wifimanager-getscanalwaysallowed-f-sys.md)<!--DelEnd-->
   - [getScanInfoList](arkts-connectivity-wifimanager-getscaninfolist-f.md)
@@ -827,9 +831,11 @@
   - [off](arkts-connectivity-wifimanager-off-f.md)
   <!--Del-->
   - [off(system api)](arkts-connectivity-wifimanager-off-f-sys.md)<!--DelEnd-->
+  - [offP2pServiceDiscovery](arkts-connectivity-wifimanager-offp2pservicediscovery-f.md)
   - [on](arkts-connectivity-wifimanager-on-f.md)
   <!--Del-->
   - [on(system api)](arkts-connectivity-wifimanager-on-f-sys.md)<!--DelEnd-->
+  - [onP2pServiceDiscovery](arkts-connectivity-wifimanager-onp2pservicediscovery-f.md)
   - [p2pCancelConnect](arkts-connectivity-wifimanager-p2pcancelconnect-f.md)
   - [p2pConnect](arkts-connectivity-wifimanager-p2pconnect-f.md)
   <!--Del-->
@@ -838,10 +844,12 @@
   - [reconnect(system api)](arkts-connectivity-wifimanager-reconnect-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [removeAllNetwork(system api)](arkts-connectivity-wifimanager-removeallnetwork-f-sys.md)<!--DelEnd-->
+  - [removeAllP2pServiceRequests](arkts-connectivity-wifimanager-removeallp2pservicerequests-f.md)
   - [removeCandidateConfig](arkts-connectivity-wifimanager-removecandidateconfig-f.md)
   - [removeDevice](arkts-connectivity-wifimanager-removedevice-f.md)
   - [removeGroup](arkts-connectivity-wifimanager-removegroup-f.md)
   - [removeLocalP2pService](arkts-connectivity-wifimanager-removelocalp2pservice-f.md)
+  - [removeP2pServiceRequest](arkts-connectivity-wifimanager-removep2pservicerequest-f.md)
   <!--Del-->
   - [setDeviceName(system api)](arkts-connectivity-wifimanager-setdevicename-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -871,6 +879,10 @@
   <!--Del-->
   - [Ipv6Config(system api)](arkts-connectivity-wifimanager-ipv6config-i-sys.md)<!--DelEnd-->
   - [Ipv6Info](arkts-connectivity-wifimanager-ipv6info-i.md)
+  - [P2pDnsSdInfo](arkts-connectivity-wifimanager-p2pdnssdinfo-i.md)
+  - [P2pDnsSdTxtInfo](arkts-connectivity-wifimanager-p2pdnssdtxtinfo-i.md)
+  - [P2pGenericInfo](arkts-connectivity-wifimanager-p2pgenericinfo-i.md)
+  - [P2pUpnpInfo](arkts-connectivity-wifimanager-p2pupnpinfo-i.md)
   <!--Del-->
   - [SpecialWifiInfo(system api)](arkts-connectivity-wifimanager-specialwifiinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -888,12 +900,14 @@
   - [WifiP2pGroupInfo](arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md)
   - [WifiP2pLinkedInfo](arkts-connectivity-wifimanager-wifip2plinkedinfo-i.md)
   - [WifiP2pServiceInfo](arkts-connectivity-wifimanager-wifip2pserviceinfo-i.md)
+  - [WifiP2pServiceRequest](arkts-connectivity-wifimanager-wifip2pservicerequest-i.md)
   <!--Del-->
   - [WifiProxyConfig(system api)](arkts-connectivity-wifimanager-wifiproxyconfig-i-sys.md)<!--DelEnd-->
   - [WifiScanInfo](arkts-connectivity-wifimanager-wifiscaninfo-i.md)
   <!--Del-->
   - [WifiScanInfo(system api)](arkts-connectivity-wifimanager-wifiscaninfo-i-sys.md)<!--DelEnd-->
   - [WifiWapiConfig](arkts-connectivity-wifimanager-wifiwapiconfig-i.md)
+  - [P2pServiceDiscoveryInfo](arkts-connectivity-wifimanager-p2pservicediscoveryinfo-t.md)
   - [ConnState](arkts-connectivity-wifimanager-connstate-e.md)
   - [DeviceAddressType](arkts-connectivity-wifimanager-deviceaddresstype-e.md)
   <!--Del-->
@@ -920,7 +934,7 @@
   - [WifiLinkType](arkts-connectivity-wifimanager-wifilinktype-e.md)
   - [WifiSecurityType](arkts-connectivity-wifimanager-wifisecuritytype-e.md)
   - [WifiStandard](arkts-connectivity-wifimanager-wifistandard-e.md)
-- [@ohos.wifiManagerExt](arkts-connectivity-wifimanagerext.md)
+- [@ohos.wifiManagerExt(WLAN Extension)](arkts-connectivity-wifimanagerext.md)
   - [getPowerMode](arkts-connectivity-wifimanagerext-getpowermode-f.md)
   - [getSupportedPowerMode](arkts-connectivity-wifimanagerext-getsupportedpowermode-f.md)
   - [disableHotspot](arkts-connectivity-wifimanagerext-disablehotspot-f.md)

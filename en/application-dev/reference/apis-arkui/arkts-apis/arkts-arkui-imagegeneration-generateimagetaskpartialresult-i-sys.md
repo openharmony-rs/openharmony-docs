@@ -26,7 +26,7 @@ import { imageGeneration } from '@kit.ArkUI';
 imageData?: string
 ```
 
-Image data of the image corresponding to AI-generated image task, available in partial result.
+image data of the image corresponding to AI-generated image task, available in partial result.
 
 **Type:** string
 
@@ -46,7 +46,7 @@ Image data of the image corresponding to AI-generated image task, available in p
 imageIndex?: number
 ```
 
-Sequence number of the image corresponding to AI-generated image task, available in partial and partial error result.
+Sequence number of the image corresponding to AI-generated image task, available in partial result.
 
 **Type:** number
 

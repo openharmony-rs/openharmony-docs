@@ -32,7 +32,7 @@ function setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isScanAlwaysAllowed | boolean | 是 | 是否始终允许扫描。true:允许扫描， false:不允许扫描 |
+| isScanAlwaysAllowed | boolean | 是 | 是否始终允许扫描。true表示允许扫描，false表示不允许扫描 |
 
 **错误码：**
 

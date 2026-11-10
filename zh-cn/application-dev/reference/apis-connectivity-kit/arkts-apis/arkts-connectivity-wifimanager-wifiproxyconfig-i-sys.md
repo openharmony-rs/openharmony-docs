@@ -4,7 +4,7 @@
 interface WifiProxyConfig
 ```
 
-Wifi 代理配置。
+Wi-Fi代理配置。
 
 **起始版本：** 10
 
@@ -44,7 +44,7 @@ exclusionObjects?: string
 pacWebAddress?: string
 ```
 
-自动配置代理的PAC web 地址。
+自动配置代理的PAC网址。
 
 **类型：** string
 

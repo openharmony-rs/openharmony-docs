@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function isWifiActive(): boolean
 ```
 
-Queries the Wi-Fi status
+Checks whether Wi-Fi is enabled.
 
 **Since:** 6
 
@@ -30,7 +30,7 @@ Queries the Wi-Fi status
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if the Wi-Fi is active, returns `false` otherwise. |
+| boolean | Returns **true** if Wi-Fi is enabled; returns **false** otherwise. |
 
 **Examples**
 

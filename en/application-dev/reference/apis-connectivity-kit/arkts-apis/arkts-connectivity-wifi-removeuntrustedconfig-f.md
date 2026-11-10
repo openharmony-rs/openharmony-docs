@@ -12,9 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function removeUntrustedConfig(config: WifiDeviceConfig): Promise<boolean>
 ```
 
-Removes a specified untrusted hotspot configuration.
-
-<p>This method removes one configuration at a time.
+Removes the configuration of an untrusted network. This API uses a promise to return the result.
 
 **Since:** 7
 
@@ -32,13 +30,13 @@ Removes a specified untrusted hotspot configuration.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [WifiDeviceConfig](arkts-connectivity-wifi-wifideviceconfig-i.md) | Yes | Indicates the device configuration for connection to the Wi-Fi network. |
+| config | [WifiDeviceConfig](arkts-connectivity-wifi-wifideviceconfig-i.md) | Yes | Wi-Fi configuration information. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Returns `true` if the untrusted hotspot configuration is removed, returns `false` otherwise. |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the operation is successful; the value **false** means the opposite. |
 
 **Examples**
 
@@ -80,9 +78,7 @@ try {
 function removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback<boolean>): void
 ```
 
-Removes a specified untrusted hotspot configuration.
-
-<p>This method removes one configuration at a time.
+Removes the configuration of an untrusted network. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
 
@@ -100,8 +96,8 @@ Removes a specified untrusted hotspot configuration.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [WifiDeviceConfig](arkts-connectivity-wifi-wifideviceconfig-i.md) | Yes | Indicates the device configuration for connection to the Wi-Fi network. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes |  |
+| config | [WifiDeviceConfig](arkts-connectivity-wifi-wifideviceconfig-i.md) | Yes | Wi-Fi configuration information. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. |
 
 **Examples**
 

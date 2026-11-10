@@ -24,7 +24,7 @@ import { floatingBall } from '@kit.ArkUI';
 backgroundColor?: string
 ```
 
-Background color of the floating ball, in hexadecimal format without opacity (for example, **'#008EF5'** or **'#FF008EF5'**). If this parameter is not specified, the default background color of the system (light or dark mode) is used.
+Background color of the floating ball, in hexadecimal format without transparency (for example, **'#008EF5'** or **'#FF008EF5'**). If the format is incorrect, error code **1300019** is returned. If this parameter is not specified, the default background color of the system (light or dark mode) is used.
 
 **Type:** string
 
@@ -56,14 +56,11 @@ Content of the floating ball. It cannot exceed 64 bytes. The default value is an
 contentColor?: string
 ```
 
-The color of the floating ball content, in hexadecimal format without opacity (e.g., **'#008EF5'** or **'#FF008EF5'**). Providing contentColor is not allowed if 'backgroundColor' is not provided.
+Content text color of the floating ball, in hexadecimal format without the alpha channel (for example, **'#008EF5'** or **'#FF008EF5'**). If this parameter is not specified, the color is automatically filled based on the background color. If the background color is light, the text color is filled with black (**'#99000000'**). If the background color is dark, the text color is filled with white (**'#99FFFFFF'**). When setting this attribute, you must also set **backgroundColor**. Otherwise, error code **1300019** will be returned.
 
 **Type:** string
 
-**Default:** Set different default values according to the 'backgroundColor'.
-        - If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#99FFFFFF',
-otherwise is '#99000000'
-        - If 'backgroundColor' is not provided, default value is $r('sys.color.font_secondary')
+**Default:** Set different default values according to the 'backgroundColor'. When 'backgroundColor' is light color, default value is '#99000000', otherwise is '#99FFFFFF'.
 
 **Since:** 26.0.0
 
@@ -147,14 +144,11 @@ Title of the floating ball. It cannot be an empty string and cannot exceed 64 by
 titleColor?: string
 ```
 
-The color of the floating ball title, in hexadecimal format without opacity (e.g., **'#008EF5'** or **'#FF008EF5'**). Providing titleColor is not allowed if 'backgroundColor' is not provided.
+Title text color of the floating ball, in hexadecimal format without the alpha channel (for example, **'#008EF5'** or **'#FF008EF5'**). If this parameter is not specified, the color is automatically filled based on the background color. If the background color is light, the text color is filled with black (**'#E5000000'**). If the background color is dark, the text color is filled with white (**'#E5FFFFFF'**). When setting this attribute, you must also set **backgroundColor**. Otherwise, error code **1300019** will be returned.
 
 **Type:** string
 
-**Default:** Set different default values according to the 'backgroundColor'.
-        - If 'backgroundColor' is provided, when 'backgroundColor' is light color, default value is '#E5FFFFFF',
-otherwise is '#E5000000'.
-        - If 'backgroundColor' is not provided, default value is $r('sys.color.font_primary').
+**Default:** Set different default values according to the 'backgroundColor'. When 'backgroundColor' is light color, default value is '#E5000000', otherwise is '#E5FFFFFF'.
 
 **Since:** 26.0.0
 

@@ -90,8 +90,7 @@ For details about how to use this API, see [Example 12: Implementing Conversion 
 | Tag Name| Description |  
 | ------------- | ---------------------------- |  
 | \<p\> | Paragraph, separates text paragraphs. |  
-| \<span\> | Inline text supporting style configuration. In API version 17 and earlier, the **background-color**attribute set using **\<span\>** does not take effect. |
-
+| \<span\> | Inline text supporting style configuration. In API version 17 and earlier, the **background-color**attribute set using **\<span\>** does not take effect. |  
 | \<img\> | Image. |  
 | \<strong\> | Bolds text. |  
 | <br><sup>20+</sup> | Line break. |  
@@ -106,8 +105,7 @@ For details about how to use this API, see [Example 12: Implementing Conversion 
 | \<sub\><sup>20+</sup> | Subscript text. |  
 | \<cite\> | Italic text.<br>**Since:** 26.0.0 |  
 | \<dfn\> | Italic text.<br>**Since:** 26.0.0 |  
-| \<small\> | Font‑size reduction tag. The font size is scaled to 0.8 times the parent container font size, and nesting is supported.<br>**Since:** 26.0.0 |
-
+| \<small\> | Font‑size reduction tag. The font size is scaled to 0.8 times the parent container font size, and nesting is supported.<br>**Since:** 26.0.0 |  
 | \<h1\> | Level-1 heading.<br>**Since:** 26.0.0 |  
 | \<h2\> | Level-2 heading.<br>**Since:** 26.0.0 |  
 | \<h3\> | Level-3 heading.<br>**Since:** 26.0.0 |  

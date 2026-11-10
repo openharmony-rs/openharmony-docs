@@ -36,7 +36,7 @@ function getLocalP2pServices(): Promise<Array<WifiP2pServiceInfo>>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
-| [2801000](../errorcode-wifi.md#2801000-p2p模块异常) | The Wi-Fi service is not started properly, or there is an Wi-Fi service error. |
+| [2801000](../errorcode-wifi.md#2801000-p2p模块异常) | Operation failed. |
 
 **示例**
 

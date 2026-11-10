@@ -52,6 +52,32 @@ jsHeapLogtype?: string
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+## jsvmHeapLogEnable
+
+```TypeScript
+jsvmHeapLogEnable?: boolean
+```
+
+是否使能资源泄漏事件的JSVM堆日志。
+
+true：使能资源泄漏事件的JSVM堆日志。
+
+false：不使能资源泄漏事件的JSVM堆日志。
+
+默认值：false。
+
+**类型：** boolean
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ResourceOverlimitPolicy-jsvmHeapLogEnable?: boolean--><!--Device-ResourceOverlimitPolicy-jsvmHeapLogEnable?: boolean-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
 ## pageSwitchLogEnable
 
 ```TypeScript
@@ -103,5 +129,31 @@ false：不使能事件日志文件名精细化开关。
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceOverlimitPolicy-useRefinedLogFileName?: boolean--><!--Device-ResourceOverlimitPolicy-useRefinedLogFileName?: boolean-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+## v8HeapLogEnable
+
+```TypeScript
+v8HeapLogEnable?: boolean
+```
+
+是否使能资源泄漏事件的V8堆日志。
+
+true：使能资源泄漏事件的V8堆日志。
+
+false：不使能资源泄漏事件的V8堆日志。
+
+默认值：false。
+
+**类型：** boolean
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ResourceOverlimitPolicy-v8HeapLogEnable?: boolean--><!--Device-ResourceOverlimitPolicy-v8HeapLogEnable?: boolean-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent

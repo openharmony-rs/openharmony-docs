@@ -41,6 +41,7 @@ import { telephonyManager } from '@kit.MDMKit';
 | [getIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-getincomingcallpolicynumbers-f.md#getincomingcallpolicynumbers-2) | 获取通话呼入的允许或禁用名单。 |
 | [getOutgoingCallPolicyNumbers](arkts-mdm-telephonymanager-getoutgoingcallpolicynumbers-f.md#getoutgoingcallpolicynumbers-1) | 获取通话呼出的允许或禁用名单。 |
 | [getOutgoingCallPolicyNumbers](arkts-mdm-telephonymanager-getoutgoingcallpolicynumbers-f.md#getoutgoingcallpolicynumbers-2) | 获取通话呼出的允许或禁用名单。 |
+| [getSmsMessages](arkts-mdm-telephonymanager-getsmsmessages-f.md#getsmsmessages-1) | 根据指定的时间范围和电话号码查询短信消息。 |
 | [hangupCalling](arkts-mdm-telephonymanager-hangupcalling-f.md#hangupcalling-1) | 挂断当前通话。仅支持运营商通话，不包括畅联等。例如，企业设备管理员可在企业安全管理场景中，强制挂断员工正在进行的不合规通话。 |
 | [isSimDisabled](arkts-mdm-telephonymanager-issimdisabled-f.md#issimdisabled-1) | 查询指定卡槽是否禁用。适用于企业管理员需要确认SIM卡禁用策略是否生效的场景，帮助管理员验证策略执行状态，确保通话管控策略正确实施。 |
 | [removeIncomingCallPolicyNumbers](arkts-mdm-telephonymanager-removeincomingcallpolicynumbers-f.md#removeincomingcallpolicynumbers-1) | 移除通话呼入的允许或禁用名单，若在该名单尚未设置时进行移除，则会移除失败。例如，企业可在解除呼入通话限制、恢复员工正常接听权限时使用。 |
@@ -54,4 +55,5 @@ import { telephonyManager } from '@kit.MDMKit';
 | 名称 | 说明 |
 | --- | --- |
 | [CallLogInfo](arkts-mdm-telephonymanager-callloginfo-i.md) | 通话记录信息。提供通话记录的详细信息，包括通话时长、通话方向（呼入/呼出）、时间戳以及使用的SIM卡槽位。 |
+| [SmsMessageInfo](arkts-mdm-telephonymanager-smsmessageinfo-i.md) | 短信消息信息。提供短信的详细信息，包括消息内容、发送方/接收方信息、时间戳以及使用的SIM卡槽位。 |
 | [TelephonyQueryConfig](arkts-mdm-telephonymanager-telephonyqueryconfig-i.md) | 查询短信和通话记录的选项。提供电话相关查询的通用查询参数。 |

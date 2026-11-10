@@ -20,7 +20,8 @@ import { power } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getPowerMode](arkts-basicservices-power-getpowermode-f.md#getpowermode-1) | 获取当前设备的电源模式。不同电源模式对应不同的设备行为策略，开发者可根据返回的模式值调整应用行为以适配当前模式。各模式定义及说明请参见DevicePowerMode。 |
+| [getPowerMode](arkts-basicservices-power-getpowermode-f.md#getpowermode-1) | 获取当前设备的电源模式。不同电源模式对应不同的设备行为策略，开发者可根据返回的模式值调整应用行为以适配当前模式。各模式定义及说明请参见DevicePowerMode。如需获取当前设备的电源模式子模式，请使用[getPowerSubMode](arkts-basicservices-power-getpowersubmode-f.md)。 |
+| [getPowerSubMode](arkts-basicservices-power-getpowersubmode-f.md#getpowersubmode-1) | 获取当前设备的电源模式子模式。各子模式定义及说明请参见DevicePowerSubMode。如需获取当前设备的电源模式，请使用[getPowerMode](arkts-basicservices-power-getpowermode-f.md)。 |
 | [isActive](arkts-basicservices-power-isactive-f.md#isactive-1) | 检测当前设备是否处于活动状态。可用于应用根据设备活动状态调整行为，例如在设备非活动状态下暂停后台任务等。 |
 | [isStandby](arkts-basicservices-power-isstandby-f.md#isstandby-1) | 检测当前设备是否进入待机低功耗续航模式。待机模式下系统会采取降低功耗的策略，开发者应据此调整应用的后台任务和资源使用策略，避免在待机时执行高耗能操作。 |
 | [isScreenOn](arkts-basicservices-power-isscreenon-f.md#isscreenon-1) | 检测当前设备的亮灭屏状态。使用callback异步回调。 |
@@ -40,7 +41,8 @@ import { power } from '@kit.BasicServicesKit';
 | [setPowerConfig](arkts-basicservices-power-setpowerconfig-f-sys.md#setpowerconfig-1) | 根据场景名称设置电源配置值。例如，在系统电源管理应用中需要动态调整特定场景的电源配置参数时使用。 |
 | [setPowerKeyFilteringStrategy](arkts-basicservices-power-setpowerkeyfilteringstrategy-f-sys.md#setpowerkeyfilteringstrategy-1) | 设置电源键过滤策略，在电源服务订阅电源键事件后，用于配置电源键事件的处理方式。 |
 | [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-1) | 设置当前设备的电源模式，不同的电源模式会影响设备的性能与功耗策略。使用callback异步回调。 |
-| [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-2) | 设置当前设备的电源模式，不同的电源模式会影响设备的性能与功耗策略。使用Promise异步回调。 |
+| [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-2) | 设置当前设备的电源模式，不同的电源模式会影响设备的性能与功耗策略。使用Promise异步回调。如需同时设置电源模式及其子模式，请使用[setPowerMode(mode, subMode)](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-3)。 |
+| [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-3) | 设置当前设备的电源模式及其子模式。使用 Promise 异步回调。如仅需设置电源模式，请使用[setPowerMode(promise)][setPowerMode(promise)](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-2)或 [setPowerMode(callback)](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-1)。 |
 | [setScreenOffTime](arkts-basicservices-power-setscreenofftime-f-sys.md#setscreenofftime-1) | 设置灭屏超时时间。例如，在自助终端或展示设备场景下可设置较长的超时时间以保持屏幕常亮，在低电量场景下可设置较短的超时时间以节省电量。 |
 | [shutdown](arkts-basicservices-power-shutdown-f-sys.md#shutdown-1) | 系统关机。与reboot方法的区别：shutdown使设备完全关机不再运行，reboot使设备关机后自动重启。 |
 | [suspend](arkts-basicservices-power-suspend-f-sys.md#suspend-1) | 使设备进入睡眠状态。<br><br>调用此方法后设备将进入睡眠，如需恢复到活动状态，需调用power.wakeup唤醒设备。<br><br>与hibernate方法的区别：suspend为较浅的低功耗睡眠状态（灭屏后进入睡眠），hibernate为更深的休眠状态（休眠前可选择清理内存）。需快速恢复设备活动时选择suspend，需最大程度节省电量时选择hibernate。 |
@@ -53,4 +55,5 @@ import { power } from '@kit.BasicServicesKit';
 | 名称 | 说明 |
 | --- | --- |
 | [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md) | 表示电源模式的枚举值。 |
+| [DevicePowerSubMode](arkts-basicservices-power-devicepowersubmode-e.md) | 电源模式子模式枚举。 |
 | [PowerKeyFilteringStrategy](arkts-basicservices-power-powerkeyfilteringstrategy-e.md) | 表示电源键过滤策略。 |

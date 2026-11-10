@@ -73,6 +73,7 @@ import { pointer } from '@kit.InputKit';
 | [getTouchpadSwipeSwitch](arkts-input-pointer-gettouchpadswipeswitch-f-sys.md#gettouchpadswipeswitch-2) | Obtains the touchpad multi-finger swipe switch state. This API uses a promise to return the result. |
 | [getTouchpadTapSwitch](arkts-input-pointer-gettouchpadtapswitch-f-sys.md#gettouchpadtapswitch-1) | Obtains the touchpad tap switch state. This API uses an asynchronous callback to return the result. |
 | [getTouchpadTapSwitch](arkts-input-pointer-gettouchpadtapswitch-f-sys.md#gettouchpadtapswitch-2) | Obtains the touchpad tap switch state. This API uses a promise to return the result. |
+| [setGlobalPriorityCursor](arkts-input-pointer-setglobalprioritycursor-f-sys.md#setglobalprioritycursor-1) | Set a global high-priority cursor. Once set successfully, the cursor style will be locked and restricted when the cursor is visible, unaffected by other styles, until it is cleared or overridden by a new global high-priority cursor. |
 | [setHoverScrollState](arkts-input-pointer-sethoverscrollstate-f-sys.md#sethoverscrollstate-1) | Sets the mouse hover scrolling switch state. This API uses an asynchronous callback to return the result. |
 | [setHoverScrollState](arkts-input-pointer-sethoverscrollstate-f-sys.md#sethoverscrollstate-2) | Sets the status of the mouse hover scroll switch. This API uses a promise to return the result. |
 | [setMousePrimaryButton](arkts-input-pointer-setmouseprimarybutton-f-sys.md#setmouseprimarybutton-1) | Sets the primary mouse button. This API uses an asynchronous callback to return the result. |
@@ -105,6 +106,7 @@ import { pointer } from '@kit.InputKit';
 | [setTouchpadSwipeSwitch](arkts-input-pointer-settouchpadswipeswitch-f-sys.md#settouchpadswipeswitch-2) | Sets the touchpad multi-finger swipe switch. This API uses a promise to return the result. |
 | [setTouchpadTapSwitch](arkts-input-pointer-settouchpadtapswitch-f-sys.md#settouchpadtapswitch-1) | Sets the touchpad tap switch. This API uses an asynchronous callback to return the result. |
 | [setTouchpadTapSwitch](arkts-input-pointer-settouchpadtapswitch-f-sys.md#settouchpadtapswitch-2) | Sets the touchpad tap switch. This API uses a promise to return the result. |
+| [unsetGlobalPriorityCursor](arkts-input-pointer-unsetglobalprioritycursor-f-sys.md#unsetglobalprioritycursor-1) | Clear the global high-priority cursor. Only the global high-priority cursor set by the caller can be cleared. |
 <!--DelEnd-->
 
 ### Interfaces

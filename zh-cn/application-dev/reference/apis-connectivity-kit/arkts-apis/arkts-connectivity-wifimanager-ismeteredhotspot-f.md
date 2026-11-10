@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function isMeteredHotspot(): boolean
 ```
 
-查询设备当前连接的wifi是否是手机热点。
+查询设备当前连接的Wi-Fi是否是手机热点。
 
 **起始版本：** 11
 
@@ -26,7 +26,7 @@ function isMeteredHotspot(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true:是手机热点， false:不是手机热点。 |
+| boolean | true表示是手机热点，false表示不是手机热点。 |
 
 **错误码：**
 

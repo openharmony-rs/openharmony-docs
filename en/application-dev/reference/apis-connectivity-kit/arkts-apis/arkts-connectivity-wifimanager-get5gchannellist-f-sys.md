@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function get5GChannelList(): Array<number>
 ```
 
-Obtain the supported 5G channel list of the device.
+Obtains the list of 5 GHz channels supported by this device.
 
 **Since:** 10
 
@@ -28,7 +28,7 @@ Obtain the supported 5G channel list of the device.
 
 | Type | Description |
 | --- | --- |
-| Array&lt;number&gt; | Returns 5G channel list. |
+| Array&lt;number&gt; | List of 5 GHz channels supported by the device. |
 
 **Error codes:**
 

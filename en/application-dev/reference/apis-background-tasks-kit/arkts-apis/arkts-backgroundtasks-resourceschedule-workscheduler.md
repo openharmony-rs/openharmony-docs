@@ -71,6 +71,6 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 
 | Name | Description |
 | --- | --- |
-| [EXECUTE_IMMEDIATE](arkts-backgroundtasks-workscheduler-con-sys.md#execute_immediate) | Whether the requested task is executed immediately. |
-| [WORK_SCHEDULER_CONDITION](arkts-backgroundtasks-workscheduler-con-sys.md#work_scheduler_condition) | The last condition met when the current task is triggered. |
+| [EXECUTE_IMMEDIATE](arkts-backgroundtasks-workscheduler-con-sys.md#execute_immediate) | Whether the requested task is executed immediately. value: 'execute_immediate'. |
+| [WORK_SCHEDULER_CONDITION](arkts-backgroundtasks-workscheduler-con-sys.md#work_scheduler_condition) | The last condition met when the current task is triggered. value: 'WORK_SCHEDULER_CONDITION'. |
 <!--DelEnd-->

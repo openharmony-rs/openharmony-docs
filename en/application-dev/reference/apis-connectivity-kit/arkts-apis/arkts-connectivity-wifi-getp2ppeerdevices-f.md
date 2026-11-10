@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function getP2pPeerDevices(): Promise<WifiP2pDevice[]>
 ```
 
-Obtains the information about the found devices.
+Obtains the P2P peer device list. This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -30,7 +30,7 @@ Obtains the information about the found devices.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[WifiP2pDevice](arkts-connectivity-wifi-wifip2pdevice-i.md)[]&gt; | Returns the found devices list. |
+| Promise&lt;[WifiP2pDevice](arkts-connectivity-wifi-wifip2pdevice-i.md)[]&gt; | Promise used to return the peer device list. |
 
 **Examples**
 
@@ -57,7 +57,7 @@ wifi.getP2pPeerDevices().then(data => {
 function getP2pPeerDevices(callback: AsyncCallback<WifiP2pDevice[]>): void
 ```
 
-Obtains the information about the found devices.
+Obtains the P2P peer device list. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -75,7 +75,7 @@ Obtains the information about the found devices.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WifiP2pDevice](arkts-connectivity-wifi-wifip2pdevice-i.md)[]&gt; | Yes |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WifiP2pDevice](arkts-connectivity-wifi-wifip2pdevice-i.md)[]&gt; | Yes | Callback used to return the result. |
 
 **Examples**
 

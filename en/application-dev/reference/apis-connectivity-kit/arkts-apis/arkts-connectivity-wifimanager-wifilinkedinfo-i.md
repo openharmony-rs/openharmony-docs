@@ -4,9 +4,9 @@
 interface WifiLinkedInfo
 ```
 
-Wi-Fi connection information. @typedef WifiLinkedInfo
+Wi-Fi connection information.
 
-**Since:** 12
+**Since:** 9
 
 <!--Device-wifiManager-interface WifiLinkedInfo--><!--Device-wifiManager-interface WifiLinkedInfo-End-->
 
@@ -44,7 +44,7 @@ The BSSID of the Wi-Fi hotspot
 
 **Type:** string
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -94,7 +94,7 @@ The frequency of a Wi-Fi access point.
 
 **Type:** number
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -204,7 +204,7 @@ The Wi-Fi MAC address of a device.
 macType: number
 ```
 
-Type of macAddress: 0 - real mac, 1 - random mac.
+Type of macAddress: 0 - random mac, 1 - real mac.
 
 **Type:** number
 
@@ -256,7 +256,7 @@ The RSSI(dBm) of a Wi-Fi access point.
 
 **Type:** number
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -290,7 +290,7 @@ The SSID of the Wi-Fi hotspot
 
 **Type:** string
 
-**Since:** 12
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 

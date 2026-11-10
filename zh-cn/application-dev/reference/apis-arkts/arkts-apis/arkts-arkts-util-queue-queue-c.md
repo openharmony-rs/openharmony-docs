@@ -168,7 +168,7 @@ console.info("queue length:", queue.length);  // queue length: 0
 forEach(callbackFn: (value: T, index?: number, Queue?: Queue<T>) => void, thisArg?: Object): void
 ```
 
-遍历Queue实例中的每个元素，并对每个元素执行回调函数。
+在遍历Queue实例中的每个元素，并对每个元素执行回调函数。
 
 **起始版本：** 8
 
@@ -182,7 +182,7 @@ forEach(callbackFn: (value: T, index?: number, Queue?: Queue<T>) => void, thisAr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, Queue?: Queue&lt;T&gt;) =&gt; void | 是 | 对每个元素执行的回调函数。 |
+| callbackFn | (value: T, index?: number, Queue?: Queue&lt;T&gt;) =&gt; void | 是 | 对每个元素执行的回调函数。value为当前遍历元素，index默认从0开始，Queue为当前实例对象。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **错误码：**

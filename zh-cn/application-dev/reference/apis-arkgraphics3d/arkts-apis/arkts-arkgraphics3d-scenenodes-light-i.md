@@ -8,7 +8,7 @@ export interface Light extends Node
 
 > **说明：** 
 > 
-> 单个场景中所有光源的数量上限为64。当光源数量超过64时，超过该上限后添加的光源将被直接舍弃，不参与场景渲染。
+> 单个场景中所有使能的光源数量上限为64，超过该上限后添加的光源将被直接舍弃，不参与场景渲染。
 
 **继承/实现关系：** Light extends [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 

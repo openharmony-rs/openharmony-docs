@@ -52,7 +52,7 @@ actionType: InterruptActionType
 activated?: boolean
 ```
 
-焦点获取/释放是否成功。true表示焦点获取/释放成功，false表示焦点获得/释放失败。
+焦点获取/释放是否成功。true表示焦点获取/释放成功，false表示焦点获取/释放失败。
 
 **类型：** boolean
 

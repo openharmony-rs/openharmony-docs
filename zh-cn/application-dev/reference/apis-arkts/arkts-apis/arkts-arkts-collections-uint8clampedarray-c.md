@@ -32,6 +32,8 @@ import { collections } from '@kit.ArkTS';
 
 返回一个迭代器，迭代器的每一项都是一个数字对象。
 
+本接口不支持在.ets文件中使用。
+
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
@@ -214,7 +216,7 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | 是 | 用于构造ArkTS Uint8ClampedArray的ArrayBuffer对象。 |
-| byteOffset | number | 否 | 指定buffer的字节偏移，从0开始，默认为0。 |
+| byteOffset | number | 否 | 指定buffer的字节偏移，取值为非负整数且须小于buffer.byteLength，从0开始，默认为0。 |
 | length | number | 否 | 指定ArkTS Uint8ClampedArray的长度，默认为0。byteOffset和length的总和不能超过buffer.byteLength。 |
 
 **错误码：**
@@ -808,7 +810,7 @@ static of(...items: number[]): Uint8ClampedArray
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。 |
+| items | number[] | 是 | 用于创建数组的元素，参数个数可以是0个、1个或者多个。默认值为空数组。 |
 
 **返回值：**
 
@@ -1008,7 +1010,7 @@ set(array: ArrayLike<number>, offset?: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | array | ArrayLike&lt;number&gt; | 是 | 用于设置的ArrayLike对象。 |
-| offset | number | 否 | 写入的起始位置。默认为0。 |
+| offset | number | 否 | 写入的起始位置，需为非负整数。默认值为0。offset与array.length之和不能超过ArkTS Uint8ClampedArray的长度。 |
 
 **错误码：**
 
@@ -1253,6 +1255,8 @@ values(): IterableIterator<number>
 ```
 
 返回Uint8ClampedArray指定索引位置的元素。
+
+所需元素的从零开始的索引。
 
 **类型：** number
 

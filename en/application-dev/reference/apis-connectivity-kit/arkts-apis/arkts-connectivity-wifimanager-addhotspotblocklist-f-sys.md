@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function addHotspotBlockList(stationInfo: StationInfo): void
 ```
 
-Add the station into the block list, the station can NOT access the hotspot.
+Adds a device to the list of blocked devices of the hotspot. Devices in the list cannot access the hotspot.
 
 **Since:** 11
 
@@ -28,7 +28,7 @@ Add the station into the block list, the station can NOT access the hotspot.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| stationInfo | [StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md) | Yes | station which will be added in the block list. |
+| stationInfo | [StationInfo](arkts-connectivity-wifimanager-stationinfo-i-sys.md) | Yes | Device to add. |
 
 **Error codes:**
 

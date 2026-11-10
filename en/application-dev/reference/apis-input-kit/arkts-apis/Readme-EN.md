@@ -177,6 +177,8 @@
   - [setCustomCursor](arkts-input-pointer-setcustomcursor-f.md)
   - [setCustomCursorSync](arkts-input-pointer-setcustomcursorsync-f.md)
   <!--Del-->
+  - [setGlobalPriorityCursor(system api)](arkts-input-pointer-setglobalprioritycursor-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [setHoverScrollState(system api)](arkts-input-pointer-sethoverscrollstate-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setMousePrimaryButton(system api)](arkts-input-pointer-setmouseprimarybutton-f-sys.md)<!--DelEnd-->
@@ -216,6 +218,8 @@
   - [setTouchpadSwipeSwitch(system api)](arkts-input-pointer-settouchpadswipeswitch-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setTouchpadTapSwitch(system api)](arkts-input-pointer-settouchpadtapswitch-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [unsetGlobalPriorityCursor(system api)](arkts-input-pointer-unsetglobalprioritycursor-f-sys.md)<!--DelEnd-->
   - [CursorConfig](arkts-input-pointer-cursorconfig-i.md)
   - [CustomCursor](arkts-input-pointer-customcursor-i.md)
   - [PointerStyle](arkts-input-pointer-pointerstyle-e.md)

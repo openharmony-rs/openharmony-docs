@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function startWifiDetection(): void
 ```
 
-Start Wi-Fi network detection
+Starts Wi-Fi network detections.
 
 **Since:** 21
 

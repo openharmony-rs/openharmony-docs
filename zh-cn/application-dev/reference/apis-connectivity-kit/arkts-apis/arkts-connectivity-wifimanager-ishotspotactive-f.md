@@ -26,7 +26,7 @@ function isHotspotActive(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 热点是否已开启。true:已开启， false:未开启。 |
+| boolean | 热点是否已开启。true表示已开启，false表示未开启。 |
 
 **错误码：**
 

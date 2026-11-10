@@ -1619,6 +1619,8 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: promptAction.A
 
 **替代接口：** [showActionMenu](#showactionmenu)
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-PromptAction-showActionMenu(options: promptAction.ActionMenuOptions, callback: promptAction.ActionMenuSuccessResponse): void--><!--Device-PromptAction-showActionMenu(options: promptAction.ActionMenuOptions, callback: promptAction.ActionMenuSuccessResponse): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

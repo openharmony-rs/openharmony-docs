@@ -44,7 +44,7 @@ cancelDownload(featureTypes: Array<AudioSuiteFeatureType>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要取消的特性类型。最大长度为5。 |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要取消的特性类型。<br>最大长度为5。 |
 
 **返回值：**
 
@@ -84,7 +84,7 @@ getFeatureStatus(featureTypes: Array<AudioSuiteFeatureType>): Promise<AudioSuite
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要查询的特性类型。最大长度为5。 |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要查询的特性类型。<br>最大长度为5。 |
 
 **返回值：**
 
@@ -124,7 +124,7 @@ getNewVersionInfo(featureTypes: Array<AudioSuiteFeatureType>): Promise<Array<Aud
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要查询的特性类型。最大长度为5。 |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要查询的特性类型。<br>最大长度为5。 |
 
 **返回值：**
 
@@ -165,7 +165,7 @@ isFeatureInstalled(featureTypes: Array<AudioSuiteFeatureType>): Promise<Array<bo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要查询的特性类型。最大长度为5。 |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要查询的特性类型。<br>最大长度为5。 |
 
 **返回值：**
 
@@ -267,7 +267,7 @@ pauseDownload(featureTypes: Array<AudioSuiteFeatureType>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要暂停的特性类型。最大长度为5。 |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要暂停的特性类型。<br>最大长度为5。 |
 
 **返回值：**
 
@@ -307,7 +307,7 @@ startBackgroundDownload(featureTypes: Array<AudioSuiteFeatureType>): Promise<voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要下载的特性类型。最大长度为5。 |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要下载的特性类型。<br>最大长度为5。 |
 
 **返回值：**
 
@@ -329,7 +329,7 @@ startBackgroundDownload(featureTypes: Array<AudioSuiteFeatureType>): Promise<voi
 startDownload(featureTypes: Array<AudioSuiteFeatureType>, networkType: NetworkType): Promise<void>
 ```
 
-根据指定的网络开始下载特性。使用Promise异步回调。先调用[getNewVersionInfo](#getnewversioninfo)查询新版本；查询成功且状态变为[VERSION_CHECK_SUCCEEDED](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md#version_check_succeeded)后调用本接口，或者在[DOWNLOAD_PAUSED](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md#download_paused)状态调用本接口继续下载，调用后状态会变为[DOWNLOADING](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md#downloading)。下载成功后自动进入[INSTALLING](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md#installing)状态。
+根据指定的网络开始下载特性。使用Promise异步回调。先调用[getNewVersionInfo](#getnewversioninfo)查询新版本，查询成功且状态变为[VERSION_CHECK_SUCCEEDED](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md#version_check_succeeded)后调用本接口，或者在[DOWNLOAD_PAUSED](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md#download_paused)状态调用本接口继续下载，调用后状态会变为[DOWNLOADING](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md#downloading)。下载成功后自动进入[INSTALLING](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md#installing)状态。
 
 接口在开始下载后就返回，下载过程中可以通过[onDownloadStatusChange](#ondownloadstatuschange)订阅的下载状态变化事件获取下载进度。
 
@@ -347,7 +347,7 @@ startDownload(featureTypes: Array<AudioSuiteFeatureType>, networkType: NetworkTy
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要下载的特性类型。最大长度为5。 |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要下载的功能的类型。<br>最大长度为5。 |
 | networkType | [NetworkType](arkts-audio-audio-networktype-e-sys.md) | 是 | 下载的网络类型。 |
 
 **返回值：**
@@ -390,7 +390,7 @@ uninstallFeature(featureTypes: Array<AudioSuiteFeatureType>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要卸载的特性类型。最大长度为5。 |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | 是 | 要卸载的特性类型。<br>最大长度为5。 |
 
 **返回值：**
 

@@ -12,7 +12,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 function getPowerMode(): Promise<PowerMode>
 ```
 
-Obtains the current Wi-Fi power mode.
+Obtains the current power mode. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ Obtains the current Wi-Fi power mode.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)&gt; |  |
+| Promise&lt;[PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)&gt; | Promise used to return the current power mode obtained. |
 
 **Error codes:**
 
@@ -61,7 +61,7 @@ async function getWifiPowerMode() {
 function getPowerMode(callback: AsyncCallback<PowerMode>): void
 ```
 
-Obtains the current Wi-Fi power mode.
+Obtains the current power mode. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -75,7 +75,7 @@ Obtains the current Wi-Fi power mode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)&gt; | Yes | the callback of model |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
 

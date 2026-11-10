@@ -384,6 +384,7 @@
   <!--Del-->
   - [getPowerConfig(system api)](arkts-basicservices-power-getpowerconfig-f-sys.md)<!--DelEnd-->
   - [getPowerMode](arkts-basicservices-power-getpowermode-f.md)
+  - [getPowerSubMode](arkts-basicservices-power-getpowersubmode-f.md)
   <!--Del-->
   - [hibernate(system api)](arkts-basicservices-power-hibernate-f-sys.md)<!--DelEnd-->
   - [isActive](arkts-basicservices-power-isactive-f.md)
@@ -413,6 +414,7 @@
   - [isScreenOn](arkts-basicservices-power-isscreenon-f.md)
   - [rebootDevice](arkts-basicservices-power-rebootdevice-f.md)
   - [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md)
+  - [DevicePowerSubMode](arkts-basicservices-power-devicepowersubmode-e.md)
   - [PowerKeyFilteringStrategy](arkts-basicservices-power-powerkeyfilteringstrategy-e.md)
 - [@ohos.print(Print)](arkts-basicservices-print.md)
   - [addPrinter](arkts-basicservices-print-addprinter-f.md)

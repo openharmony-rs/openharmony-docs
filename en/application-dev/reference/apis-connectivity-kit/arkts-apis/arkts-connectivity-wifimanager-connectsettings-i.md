@@ -44,7 +44,7 @@ Whether to add the network to the system for connection. Default is false, if se
 networkId: number
 ```
 
-The ID (uniquely identifies) of a Wi-Fi connection.
+The ID (uniquely identifies) of a Wi-Fi connection. The value should be an integer.
 
 **Type:** number
 
@@ -64,7 +64,7 @@ The ID (uniquely identifies) of a Wi-Fi connection.
 userActionTimeout?: number
 ```
 
-User action timeout threshold(unit is seconds). The maximum value cannot exceed 30, and default is 10.
+User action timeout threshold(unit is seconds). The maximum value cannot exceed 30, and default is 10. The value should be an integer.
 
 **Type:** number
 

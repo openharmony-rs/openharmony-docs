@@ -28,7 +28,7 @@ function isConnected(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true:已连接， false:未连接。 |
+| boolean | true表示已连接，false表示未连接。 |
 
 **错误码：**
 

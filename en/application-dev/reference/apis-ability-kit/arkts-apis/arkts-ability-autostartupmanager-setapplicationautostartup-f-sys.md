@@ -43,7 +43,7 @@ Sets an application component to automatically start upon system boot. This API 
 | [16000004](../errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |
 | [16000013](../errorcode-ability.md#16000013-application-controlled-by-edm) | The application is controlled by EDM. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Failed to connect to the system service. |
-| 16000206 | The specified application is not authorized to start before the user is unlocked. |
+| 16000207 | The specified application is not authorized to start before the user is unlocked.<br>**Applicable version:** 26.1.0 and later |
 
 
 ## setApplicationAutoStartup
@@ -88,4 +88,4 @@ Sets an application component to automatically start upon system boot. This API 
 | [16000004](../errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |
 | [16000013](../errorcode-ability.md#16000013-application-controlled-by-edm) | The application is controlled by EDM. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Failed to connect to the system service. |
-| 16000206 | The specified application is not authorized to start before the user is unlocked. |
+| 16000207 | The specified application is not authorized to start before the user is unlocked.<br>**Applicable version:** 26.1.0 and later |

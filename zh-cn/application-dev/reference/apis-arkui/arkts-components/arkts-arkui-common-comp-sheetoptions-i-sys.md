@@ -42,6 +42,38 @@ blurSnapshot?: BlurSnapshotOptions
 
 **系统接口：** 此接口为系统接口。
 
+## closeButtonMaterial
+
+```TypeScript
+closeButtonMaterial?: SystemUiMaterial
+```
+
+关闭按钮的系统材质效果。
+
+默认值：undefined，表示不设置系统材质
+
+从API版本26.0.1开始，当该属性未设置时，使用半模态的systemMaterial接口设置材质会赋予关闭按钮一种系统内置的材质效果。
+
+通过该接口设置的材质效果会覆盖由半模态的systemMaterial接口带来的关闭按钮的内置材质效果。
+
+**说明：** 
+
+全屏模态样式（CONTENT_COVER）下不支持关闭按钮系统材质，该属性设置无效。
+
+**系统接口：** 此接口为系统接口。
+
+**类型：** [SystemUiMaterial](arkts-arkui-common-comp-systemuimaterial-t.md)
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SheetOptions-closeButtonMaterial?: SystemUiMaterial--><!--Device-SheetOptions-closeButtonMaterial?: SystemUiMaterial-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
 ## edgeLightMode
 
 ```TypeScript
@@ -87,6 +119,32 @@ offset?: Position
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SheetOptions-offset?: Position--><!--Device-SheetOptions-offset?: Position-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+## titleBarBackgroundBlur
+
+```TypeScript
+titleBarBackgroundBlur?: SheetTitleBarBackgroundBlurOptions
+```
+
+标题栏背景模糊效果，支持自定义模糊参数。仅当标题栏存在时生效。
+
+默认值：undefined，表示不设置标题栏背景模糊效果
+
+**说明：** 
+
+全屏模态样式（CONTENT_COVER）下不支持标题栏背景模糊，该属性设置无效。
+
+**类型：** [SheetTitleBarBackgroundBlurOptions](arkts-arkui-common-comp-sheettitlebarbackgroundbluroptions-i-sys.md)
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SheetOptions-titleBarBackgroundBlur?: SheetTitleBarBackgroundBlurOptions--><!--Device-SheetOptions-titleBarBackgroundBlur?: SheetTitleBarBackgroundBlurOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

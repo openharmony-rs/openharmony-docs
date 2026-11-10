@@ -4,7 +4,7 @@
 enum WifiStandard
 ```
 
-表示WIFI标准的枚举。
+表示Wi-Fi标准的枚举。
 
 **起始版本：** 10
 
@@ -18,7 +18,7 @@ enum WifiStandard
 WIFI_STANDARD_11A
 ```
 
-802.11a WiFi标准类型。
+802.11a Wi-Fi标准类型。
 
 **起始版本：** 10
 
@@ -32,7 +32,7 @@ WIFI_STANDARD_11A
 WIFI_STANDARD_11AC
 ```
 
-802.11ac WiFi标准类型。
+802.11ac Wi-Fi标准类型。
 
 **起始版本：** 10
 
@@ -46,7 +46,7 @@ WIFI_STANDARD_11AC
 WIFI_STANDARD_11AD
 ```
 
-802.11ad WiFi标准类型。
+802.11ad Wi-Fi标准类型。
 
 **起始版本：** 10
 
@@ -60,7 +60,7 @@ WIFI_STANDARD_11AD
 WIFI_STANDARD_11AX
 ```
 
-802.11ax WiFi标准类型。
+802.11ax Wi-Fi标准类型。
 
 **起始版本：** 10
 
@@ -74,7 +74,7 @@ WIFI_STANDARD_11AX
 WIFI_STANDARD_11B
 ```
 
-802.11b WiFi标准类型。
+802.11b Wi-Fi标准类型。
 
 **起始版本：** 10
 
@@ -88,7 +88,7 @@ WIFI_STANDARD_11B
 WIFI_STANDARD_11G
 ```
 
-802.11g WiFi标准类型。
+802.11g Wi-Fi标准类型。
 
 **起始版本：** 10
 
@@ -102,7 +102,7 @@ WIFI_STANDARD_11G
 WIFI_STANDARD_11N
 ```
 
-802.11n WiFi标准类型。
+802.11n Wi-Fi标准类型。
 
 **起始版本：** 10
 
@@ -116,7 +116,7 @@ WIFI_STANDARD_11N
 WIFI_STANDARD_UNDEFINED
 ```
 
-无效WIFI标准类型。
+无效Wi-Fi标准类型。
 
 **起始版本：** 10
 

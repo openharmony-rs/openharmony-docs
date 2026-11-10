@@ -114,7 +114,7 @@ getSystemConfig(name: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回系统配置信息。如果配置不存在，返回 -1。 |
+| number | 返回系统配置信息。如果配置不存在，返回-1。 |
 
 **示例**
 
@@ -133,7 +133,7 @@ let pres = processManager.getSystemConfig(_SC_ARG_MAX);
 getThreadPriority(v: number): number
 ```
 
-根据指定的 tid 获取线程优先级。
+根据指定的tid获取线程优先级。
 
 **起始版本：** 9
 
@@ -147,7 +147,7 @@ getThreadPriority(v: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| v | number | 是 | 指定的线程 tid。 |
+| v | number | 是 | 指定的线程tid。可通过process.tid获取。 |
 
 **返回值：**
 
@@ -172,7 +172,7 @@ let pres = processManager.getThreadPriority(tid);
 getUidForName(v: string): number
 ```
 
-根据指定的用户名，从系统的用户数据库中获取该用户 uid。
+根据指定的用户名，从系统的用户数据库中获取该用户的uid。
 
 **起始版本：** 9
 
@@ -192,7 +192,7 @@ getUidForName(v: string): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 获取用户 uid，如果用户不存在则返回 -1。 |
+| number | 获取用户uid，如果用户不存在则返回-1。 |
 
 **示例**
 
@@ -209,7 +209,7 @@ let pres = processManager.getUidForName("tool");
 isAppUid(v: number): boolean
 ```
 
-判断 uid 是否属于当前应用程序。
+判断uid是否属于当前应用程序。
 
 **起始版本：** 9
 
@@ -223,13 +223,13 @@ isAppUid(v: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| v | number | 是 | 应用程序的 uid。可通过 process.uid 获取。 |
+| v | number | 是 | 应用程序的uid。可通过process.uid获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回判断结果。如果是应用程序的 uid 则返回 true；否则返回 false。 |
+| boolean | 返回判断结果。如果是应用程序的uid则返回true，否则返回false。 |
 
 **示例**
 
@@ -263,7 +263,7 @@ kill(signal: number, pid: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| signal | number | 是 | 发送特定的信号给指定进程。取值范围：1 &lt;= signal &lt;= 64。 |
+| signal | number | 是 | 发送特定的信号给指定进程。 取值范围：1 &lt;= signal &lt;= 64。 |
 | pid | number | 是 | 进程的id。可通过process.pid获取。 |
 
 **返回值：**

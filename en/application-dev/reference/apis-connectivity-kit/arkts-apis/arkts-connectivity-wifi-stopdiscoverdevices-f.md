@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function stopDiscoverDevices(): boolean
 ```
 
-Stops discovering Wi-Fi P2P devices.
+Stops discovering devices.
 
 **Since:** 8
 
@@ -30,7 +30,7 @@ Stops discovering Wi-Fi P2P devices.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if the operation is successful, returns `false` otherwise. |
+| boolean | Whether the device discovery is stopped successfully. **true** if the operation is successful; **false** otherwise. |
 
 **Examples**
 

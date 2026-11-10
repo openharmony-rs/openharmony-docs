@@ -39,4 +39,4 @@ Registers a proxy input method. The proxy input method is activated when an edit
 | Error Code ID | Error Message |
 | --- | --- |
 | 12800027 | The caller is not a focused application. |
-| 12800028 | The caller is an input method extension. |
+| 12800028 | The input method extension is not allowed. |

@@ -4,6 +4,12 @@
 namespace tags
 ```
 
+支持trace使用场景的标签，用户可通过[hitrace](../../../dfx/hitrace.md)抓取指定标签的trace内容。
+
+> **注意**：
+> 
+> 以下标签实际值由系统定义，可能随版本升级而发生改变，为避免升级后出现兼容性问题，在生产中应直接使用标签名称而非标签数值。
+
 **起始版本：** 12
 
 <!--Device-hidebug-namespace tags--><!--Device-hidebug-namespace tags-End-->

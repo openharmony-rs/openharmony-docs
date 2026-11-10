@@ -34,7 +34,7 @@ Sets the hotspot for a device.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [HotspotConfig](arkts-connectivity-wifi-hotspotconfig-i-sys.md) | Yes |  |
+| config | [HotspotConfig](arkts-connectivity-wifi-hotspotconfig-i-sys.md) | Yes | Indicates the Wi-Fi hotspot configuration. The SSID and `securityType` must be available and correct. If `securityType` is not `open`, `preSharedKey` must be available and correct. |
 
 **Return value:**
 

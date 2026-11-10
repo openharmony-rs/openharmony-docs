@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
 ```
 
-Remove a registered local P2P service added with the [addDnsSdLocalP2pService](arkts-connectivity-wifimanager-adddnssdlocalp2pservice-f.md) or [addUpnpLocalP2pService](arkts-connectivity-wifimanager-addupnplocalp2pservice-f.md).
+Removes a registered local service that was added through [addDnsSdLocalP2pService](arkts-connectivity-wifimanager-adddnssdlocalp2pservice-f.md) or [addUpnpLocalP2pService](arkts-connectivity-wifimanager-addupnplocalp2pservice-f.md).
 
 **Since:** 26.0.1
 
@@ -28,7 +28,7 @@ Remove a registered local P2P service added with the [addDnsSdLocalP2pService](a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| srvInfo | [WifiP2pServiceInfo](arkts-connectivity-wifimanager-wifip2pserviceinfo-i.md) | Yes | Service description consistent with the registered one. |
+| srvInfo | [WifiP2pServiceInfo](arkts-connectivity-wifimanager-wifip2pserviceinfo-i.md) | Yes | Service description consistent with the registered service. |
 
 **Error codes:**
 
@@ -36,7 +36,7 @@ Remove a registered local P2P service added with the [addDnsSdLocalP2pService](a
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [2801000](../errorcode-wifi.md#2801000-p2p-module-error) | The Wi-Fi service is not started properly, or there is an Wi-Fi service error. |
+| [2801000](../errorcode-wifi.md#2801000-p2p-module-error) | Operation failed. |
 | [2801001](../errorcode-wifi.md#2801001-p2p-module-error) | Wi-Fi STA disabled. |
 
 **Examples**

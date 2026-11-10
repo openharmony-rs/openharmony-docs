@@ -37,7 +37,9 @@ import { adminManager } from '@kit.MDMKit';
 | [setDelegatedPolicies](arkts-mdm-adminmanager-setdelegatedpolicies-f.md#setdelegatedpolicies-1) | Delegates other applications to set device management policies. The applications must request the permissions required. |
 | [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md#startadminprovision-1) | Enables the device administrator application to open a page for the BYOD administrator to perform activation. |
 | [subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md#subscribemanagedeventsync-1) | Subscribes to system management events. After the call is successful, the device administrator application will receive a notification when a subscribed system management event occurs. |
+| [subscribeSmsEvent](arkts-mdm-adminmanager-subscribesmsevent-f.md#subscribesmsevent-1) | Subscribe to SMS listening events. |
 | [unsubscribeManagedEventSync](arkts-mdm-adminmanager-unsubscribemanagedeventsync-f.md#unsubscribemanagedeventsync-1) | Unsubscribes from system management events. After the API is successfully called, no notifications for the unsubscribed system management events will be received. |
+| [unsubscribeSmsEvent](arkts-mdm-adminmanager-unsubscribesmsevent-f.md#unsubscribesmsevent-1) | Unsubscribe from SMS listening events. |
 
 <!--Del-->
 ### Functions(System API)

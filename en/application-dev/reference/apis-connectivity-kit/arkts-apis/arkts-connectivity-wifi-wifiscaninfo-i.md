@@ -4,7 +4,7 @@
 interface WifiScanInfo
 ```
 
-Describes the scanned Wi-Fi information.
+Represents the Wi-Fi hotspot information.
 
 **Since:** 6
 
@@ -28,7 +28,7 @@ import { wifi } from '@kit.ConnectivityKit';
 band: number
 ```
 
-Frequency band, 1: 2.4G, 2: 5G
+Frequency band of the Wi-Fi access point. The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.
 
 **Type:** number
 
@@ -48,7 +48,7 @@ Frequency band, 1: 2.4G, 2: 5G
 bssid: string
 ```
 
-Wi-Fi bssid(MAC): the length is 6
+Basic service set identifier (BSSID) of the hotspot, for example, **00:11:22:33:44:55**.
 
 **Type:** string
 
@@ -68,7 +68,7 @@ Wi-Fi bssid(MAC): the length is 6
 capabilities: string
 ```
 
-Hotspot capability
+Hotspot capabilities.
 
 **Type:** string
 
@@ -88,7 +88,7 @@ Hotspot capability
 channelWidth: number
 ```
 
-Channel width
+Bandwidth of the Wi-Fi access point.
 
 **Type:** number
 
@@ -108,7 +108,7 @@ Channel width
 frequency: number
 ```
 
-Frequency
+Frequency of the Wi-Fi access point, in MHz.
 
 **Type:** number
 
@@ -128,7 +128,7 @@ Frequency
 rssi: number
 ```
 
-Received signal strength indicator (RSSI)
+Received signal strength indicator (RSSI) of the hotspot, in dBm.
 
 **Type:** number
 
@@ -148,7 +148,7 @@ Received signal strength indicator (RSSI)
 securityType: WifiSecurityType
 ```
 
-Security type: reference definition of WifiSecurityType
+Wi-Fi encryption type.
 
 **Type:** [WifiSecurityType](arkts-connectivity-wifi-wifisecuritytype-e.md)
 
@@ -168,7 +168,7 @@ Security type: reference definition of WifiSecurityType
 ssid: string
 ```
 
-Wi-Fi SSID: the maximum length is 32
+Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.
 
 **Type:** string
 
@@ -188,7 +188,7 @@ Wi-Fi SSID: the maximum length is 32
 timestamp: number
 ```
 
-Time stamp
+Timestamp.
 
 **Type:** number
 

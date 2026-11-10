@@ -24,7 +24,7 @@ import { util } from '@kit.ArkTS';
 constructor()
 ```
 
-用于创建 **TextDecoder** 对象的构造函数。
+TextDecoder的构造函数，创建一个默认编码格式为'utf-8'的TextDecoder实例，fatal默认为false，ignoreBOM默认为false。
 
 **起始版本：** 9
 
@@ -49,7 +49,7 @@ console.info('retStr = ' + retStr);
 constructor(encoding?: string, options?: { fatal?: boolean; ignoreBOM?: boolean })
 ```
 
-用于创建 **TextDecoder** 对象的构造函数。
+TextDecoder的构造函数。
 
 **起始版本：** 7
 
@@ -65,8 +65,8 @@ constructor(encoding?: string, options?: { fatal?: boolean; ignoreBOM?: boolean 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| encoding | string | 否 | 编码格式。默认格式为 **'utf-8'**。 |
-| options | { fatal?: boolean; ignoreBOM?: boolean } | 否 | 解码相关的选项，包含 **fatal** 和 **ignoreBOM**。此参数不填时，对应各属性取其默认值 **false**。 |
+| encoding | string | 否 | 编码格式，默认值是'utf-8'。 |
+| options | { fatal?: boolean; ignoreBOM?: boolean } | 否 | 解码相关选项参数，存在两个属性fatal和ignoreBOM。此参数不填时，对应各属性取其默认值false。 |
 
 **示例**
 
@@ -80,7 +80,7 @@ let textDecoder = new util.TextDecoder("utf-8",{ignoreBOM: true});
 static create(encoding?: string, options?: TextDecoderOptions): TextDecoder
 ```
 
-创建一个 **TextDecoder** 对象。提供与已弃用的带参构造函数相同的功能。
+替代有参构造函数的功能。
 
 **起始版本：** 9
 
@@ -101,7 +101,7 @@ static create(encoding?: string, options?: TextDecoderOptions): TextDecoder
 
 | 类型 | 说明 |
 | --- | --- |
-| [TextDecoder](arkts-arkts-util-textdecoder-c.md) | 创建的 **TextDecoder** 对象。 |
+| [TextDecoder](arkts-arkts-util-textdecoder-c.md) | 返回一个用于将字节数组按指定编码格式解码为字符串的TextDecoder对象。 |
 
 **示例**
 
@@ -122,7 +122,11 @@ console.info('retStr = ' + retStr);
 decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 ```
 
-将输入内容解码为字符串。
+将输入参数解码后输出对应文本。
+
+> **说明：** 
+> 
+> 该接口会正常解析值为\0的字节，将其转换为Unicode字符\u0000（空字符），不会导致解码中断或错误。
 
 **起始版本：** 12
 
@@ -136,14 +140,14 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| input | Uint8Array | 是 | 要解码的 Uint8Array 对象。 |
-| options | [DecodeToStringOptions](arkts-arkts-util-decodetostringoptions-i.md) | 否 | 解码相关的选项。默认值为 **undefined**。 |
+| input | Uint8Array | 是 | 需要解码的数组。 |
+| options | [DecodeToStringOptions](arkts-arkts-util-decodetostringoptions-i.md) | 否 | 解码相关选项参数，用于控制解码行为。当需要以流式方式分块处理数据且保留不完整字节序列时传入此参数并设置stream为true；不传入时默认为undefined，即不保留不完整字节序列，直接在当前调用中解码。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 获取到的字符串。 |
+| string | 解码后的数据。 |
 
 **示例**
 
@@ -188,11 +192,7 @@ console.info("retJson = " + retJson);
 decode(input: Uint8Array, options?: { stream?: false }): string
 ```
 
-将输入内容解码为字符串。
-
-> **说明：** 
-> 
-> 该接口会正常解析值为\0的字节，将其转换为Unicode字符\u0000（空字符），不会导致解码中断或错误。
+通过输入参数解码后输出对应文本。
 
 **起始版本：** 7
 
@@ -208,14 +208,14 @@ decode(input: Uint8Array, options?: { stream?: false }): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| input | Uint8Array | 是 | 要解码的 Uint8Array 对象。 |
-| options | { stream?: false } | 否 | 解码相关的选项。 |
+| input | Uint8Array | 是 | 符合格式需要解码的数组。 |
+| options | { stream?: false } | 否 | 解码相关选项参数。不传此参数时，stream默认为false，即不跟随附加数据块。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 获取到的字符串。 |
+| string | 解码后的数据。 |
 
 **示例**
 
@@ -240,7 +240,7 @@ console.info("retStr = " + retStr);
 decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string
 ```
 
-将输入内容解码为字符串。如果 **input** 是空数组，则返回 **undefined**。
+将输入参数解码后输出对应文本。当input是一个空数组时，返回undefined。
 
 **起始版本：** 9
 
@@ -258,14 +258,14 @@ decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| input | Uint8Array | 是 | 要解码的 Uint8Array 对象。 |
+| input | Uint8Array | 是 | 符合格式需要解码的数组。 |
 | options | [DecodeWithStreamOptions](arkts-arkts-util-decodewithstreamoptions-i.md) | 否 | 解码相关的选项。<br>**适用版本：** 11 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 获取到的字符串。 |
+| string | 解码后的数据。 |
 
 **示例**
 

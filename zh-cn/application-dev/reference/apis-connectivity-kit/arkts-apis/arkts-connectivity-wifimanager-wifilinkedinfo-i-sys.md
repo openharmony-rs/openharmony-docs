@@ -124,7 +124,7 @@ suppState: SuppState
 wifiTxRxValid?: boolean
 ```
 
-。用于指示Wi-Fi的发送（Tx, Transmitting）和接收（Rx, Receiving）功能是否都在正常工作。
+Wi-Fi收发功能有效性标志。用于指示Wi-Fi的发送（Tx, Transmitting）和接收（Rx, Receiving）功能是否都在正常工作。
 
 **系统接口：** 此接口为系统接口。
 

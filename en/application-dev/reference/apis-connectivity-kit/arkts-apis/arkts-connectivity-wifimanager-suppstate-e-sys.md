@@ -4,7 +4,7 @@
 export enum SuppState
 ```
 
-The state of the supplicant enumeration.
+Enumerates the supplicant states.
 
 **Since:** 9
 
@@ -20,7 +20,7 @@ The state of the supplicant enumeration.
 ASSOCIATED
 ```
 
-The supplicant is associated with a specified AP.
+The supplicant is associated with an AP.
 
 **Since:** 9
 
@@ -36,7 +36,7 @@ The supplicant is associated with a specified AP.
 ASSOCIATING
 ```
 
-The supplicant is associating with a specified AP.
+The supplicant is being associated with an AP.
 
 **Since:** 9
 
@@ -52,7 +52,7 @@ The supplicant is associating with a specified AP.
 AUTHENTICATING
 ```
 
-The supplicant is authenticating with a specified AP.
+The supplicant is being authenticated.
 
 **Since:** 9
 
@@ -68,7 +68,7 @@ The supplicant is authenticating with a specified AP.
 COMPLETED
 ```
 
-All authentication is completed.
+The authentication is complete.
 
 **Since:** 9
 
@@ -84,7 +84,7 @@ All authentication is completed.
 DISCONNECTED
 ```
 
-The supplicant is not associated with or is disconnected from the AP.
+The supplicant is disconnected from the AP.
 
 **Since:** 9
 
@@ -100,7 +100,7 @@ The supplicant is not associated with or is disconnected from the AP.
 FOUR_WAY_HANDSHAKE
 ```
 
-The four-way handshake is ongoing.
+A four-way handshake is being performed for the supplicant.
 
 **Since:** 9
 
@@ -116,7 +116,7 @@ The four-way handshake is ongoing.
 GROUP_HANDSHAKE
 ```
 
-The group handshake is ongoing.
+A group handshake is being performed for the supplicant.
 
 **Since:** 9
 
@@ -132,7 +132,7 @@ The group handshake is ongoing.
 INACTIVE
 ```
 
-The supplicant is disabled.
+The supplicant is inactive.
 
 **Since:** 9
 
@@ -164,7 +164,7 @@ The network interface is disabled.
 INVALID
 ```
 
-The supplicant is in an unknown or invalid state.
+Invalid value.
 
 **Since:** 9
 
@@ -180,7 +180,7 @@ The supplicant is in an unknown or invalid state.
 SCANNING
 ```
 
-The supplicant is scanning for a Wi-Fi connection.
+The supplicant is scanning for a WLAN connection.
 
 **Since:** 9
 
@@ -196,7 +196,7 @@ The supplicant is scanning for a Wi-Fi connection.
 UNINITIALIZED
 ```
 
-Failed to establish a connection to the supplicant.
+The supplicant failed to set up the connection.
 
 **Since:** 9
 

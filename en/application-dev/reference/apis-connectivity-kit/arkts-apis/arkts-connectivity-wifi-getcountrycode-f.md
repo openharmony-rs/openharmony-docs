@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function getCountryCode(): string
 ```
 
-Obtains the country code of this device.
+Obtains the country code.
 
 **Since:** 7
 
@@ -30,7 +30,7 @@ Obtains the country code of this device.
 
 | Type | Description |
 | --- | --- |
-| string | Returns the country code of this device. |
+| string | Country code obtained. |
 
 **Examples**
 

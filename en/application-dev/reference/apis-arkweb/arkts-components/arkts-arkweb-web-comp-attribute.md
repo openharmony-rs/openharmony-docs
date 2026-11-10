@@ -3833,6 +3833,42 @@ Sets whether to display the vertical scrollbar, including the system default scr
 | --- | --- | --- | --- |
 | verticalScrollBar | boolean | Yes | Whether to display the vertical scrollbar. <br>The value **true** means to display, and **false** means not to display. <br>The default value is **false** when undefined or null is passed in. |
 
+## visitedLinkPersistEnabled
+
+```TypeScript
+visitedLinkPersistEnabled(enabled: boolean)
+```
+
+Sets whether to enable visited link persistence for the **Web** component.
+
+When enabled, visited link records are stored in database file. The records persist across app restarts, and the visited link coloring remains consistent after the app is restarted. When disabled, visited link records are stored only in shared memory and are lost when the app exits.
+
+> **NOTE:** 
+> The default value is `false`. When this attribute is not explicitly called,
+> visited links are stored only in shared memory.
+
+> When persistence is enabled, records are isolated per app,
+> with a maximum of 20,000 records and a retention period of 30 days.
+
+> Expired records and excess records are automatically cleaned up in background threads.
+
+> When the Web component is in incognito mode (via `incognitoMode:true`), this attribute
+> does not take effect. Visited link records are stored only in shared memory and are never persisted to disk.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebAttribute-visitedLinkPersistEnabled(enabled: boolean): WebAttribute--><!--Device-WebAttribute-visitedLinkPersistEnabled(enabled: boolean): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| enabled | boolean | Yes | Whether to enable visited link persistence. The default value is **false**. |
+
 ## webCursiveFont
 
 ```TypeScript

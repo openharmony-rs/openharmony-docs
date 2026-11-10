@@ -129,7 +129,7 @@ largeConvertToJSObject(xml: string, options?: ConvertOptions): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| xml | string | 是 | XML文本，需符合XML语法规范，若包含"&"字符，请使用实体引用"`&amp;`"替换。 |
+| xml | string | 是 | XML文本，需符合XML语法规范，若包含“&”字符，请使用实体引用“\&amp;”替换。 |
 | options | [ConvertOptions](arkts-arkts-xml-convertoptions-i.md) | 否 | 转换选项，用于自定义XML转换行为。不传入时使用ConvertOptions各属性的默认值。 |
 
 **返回值：**
@@ -221,7 +221,7 @@ convert(xml: string, options?: ConvertOptions): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| xml | string | 是 | XML文本，需符合XML语法规范，若包含"&"字符，请使用实体引用"`&amp;`"替换。 |
+| xml | string | 是 | XML文本，需符合XML语法规范，若包含“&”字符，请使用实体引用“\&amp;”替换。 |
 | options | [ConvertOptions](arkts-arkts-xml-convertoptions-i.md) | 否 | 转换选项，用于自定义XML转换行为。不传入时使用ConvertOptions各属性的默认值。 |
 
 **返回值：**
@@ -295,7 +295,7 @@ convertToJSObject(xml: string, options?: ConvertOptions): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| xml | string | 是 | XML文本，需符合XML语法规范，若包含"&"字符，请使用实体引用"`&amp;`"替换。 |
+| xml | string | 是 | XML文本，需符合XML语法规范，若包含“&”字符，请使用实体引用“\&amp;”替换。 |
 | options | [ConvertOptions](arkts-arkts-xml-convertoptions-i.md) | 否 | 转换选项，用于自定义XML转换行为。不传入时使用ConvertOptions各属性的默认值。 |
 
 **返回值：**

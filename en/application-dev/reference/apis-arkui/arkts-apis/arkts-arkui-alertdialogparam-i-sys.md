@@ -18,7 +18,13 @@ Enumerates the alert dialog box styles.
 distortionMode?: DistortionMode
 ```
 
-Sets the distortion animation Mode of the dialog.
+Sets the distortion animation mode of the dialog.
+
+> **NOTE:** 
+> 
+> This parameter takes effect only when **systemMaterial** is set to **ImmersiveMaterial**. **DISTORTION_AUTO**
+> takes effect on high- and mid-end devices and does not take effect on low-end devices. Enabling the distortion
+> animation increases the rendering overhead.
 
 **Type:** [DistortionMode](../arkts-components/arkts-arkui-common-comp-distortionmode-e-sys.md)
 
@@ -40,7 +46,13 @@ Sets the distortion animation Mode of the dialog.
 edgeLightMode?: EdgeLightMode
 ```
 
-Sets the edgeLight animation Mode of the dialog.
+Sets the edge light animation mode of the dialog.
+
+> **NOTE:** 
+> 
+> This parameter takes effect only when **systemMaterial** is set to **ImmersiveMaterial**. **EDGELIGHT_AUTO**
+> takes effect on high-end devices and does not take effect on mid- or low-end devices. Enabling the edge light
+> animation increases the rendering overhead.
 
 **Type:** [EdgeLightMode](../arkts-components/arkts-arkui-common-comp-edgelightmode-e-sys.md)
 

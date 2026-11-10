@@ -4,7 +4,7 @@
 interface WifiEapConfig
 ```
 
-Wi-Fi EAP config. @typedef WifiEapConfig
+Wi-Fi EAP config.
 
 **Since:** 10
 

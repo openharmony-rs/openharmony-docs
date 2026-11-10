@@ -32,4 +32,4 @@ Obtains a [ProxyInputMethodAbility](arkts-ime-inputmethodengine-proxyinputmethod
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 12800028 | The caller is an input method extension. |
+| 12800028 | The input method extension is not allowed. |

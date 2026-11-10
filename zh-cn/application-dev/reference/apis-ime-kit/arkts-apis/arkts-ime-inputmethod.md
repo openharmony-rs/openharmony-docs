@@ -4,10 +4,8 @@
 
 | Interface | 说明 |  
 |---|---|  
-| InputMethodController | 输入法控制器，编辑框应用与输入法交互的核心对象。提供绑定/解绑输入法（attach/detach）、显示/隐藏键盘（showTextInput/hideTextInput）、更新光标和编辑属性（updateCursor/updateAttribute/changeSelection）、监听输入法操作事件（insertText/deleteLeft/deleteRight/selectByRange/selectByMovement/moveCursor/sendFunctionKey/sendKeyboardStatus/handleExtendAction/setPreviewText/finishTextPreview）、自定义消息通信（sendMessage/recvMessage）、停止输入会话等能力。通过`getController()`获取实例。 |
-
-| InputMethodSetting | 输入法设置管理对象，提供输入法查询和管理能力。包括获取已启用/已禁用/全部输入法列表（getInputMethods/getAllInputMethods）、查询指定输入法的子类型列表（listInputMethodSubtype）、获取当前输入法及子类型、订阅输入法切换事件（on('imeChange')）、订阅面板显隐事件（on('imeShow')/on('imeHide')）、查询面板显示状态（isPanelShown）、启用/禁用输入法（enableInputMethod）、获取输入法自身启用状态（getInputMethodState）等。通过`getSetting()`获取实例。 | <br> <br>此外，本模块还定义了多个关键数据类型：<br>
-
+| InputMethodController | 输入法控制器，编辑框应用与输入法交互的核心对象。提供绑定/解绑输入法（attach/detach）、显示/隐藏键盘（showTextInput/hideTextInput）、更新光标和编辑属性（updateCursor/updateAttribute/changeSelection）、监听输入法操作事件（insertText/deleteLeft/deleteRight/selectByRange/selectByMovement/moveCursor/sendFunctionKey/sendKeyboardStatus/handleExtendAction/setPreviewText/finishTextPreview）、自定义消息通信（sendMessage/recvMessage）、停止输入会话等能力。通过`getController()`获取实例。 |  
+| InputMethodSetting | 输入法设置管理对象，提供输入法查询和管理能力。包括获取已启用/已禁用/全部输入法列表（getInputMethods/getAllInputMethods）、查询指定输入法的子类型列表（listInputMethodSubtype）、获取当前输入法及子类型、订阅输入法切换事件（on('imeChange')）、订阅面板显隐事件（on('imeShow')/on('imeHide')）、查询面板显示状态（isPanelShown）、启用/禁用输入法（enableInputMethod）、获取输入法自身启用状态（getInputMethodState）等。通过`getSetting()`获取实例。 | <br> <br>此外，本模块还定义了多个关键数据类型：<br>  
 | 类型 | 说明 |  
 |---|---|  
 | [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | 输入法属性信息，描述一个输入法的名称、ID、标签、图标、启用状态等。 |
@@ -83,6 +81,7 @@ import { inputMethod } from '@kit.IMEKit';
 | [InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md) | 输入法软键盘的窗口信息。 |
 | [MessageHandler](arkts-ime-inputmethod-messagehandler-i.md) | 自定义通信对象。<br> <br> |
 | [Movement](arkts-ime-inputmethod-movement-i.md) | 选中文本时，光标移动的方向。 |
+| [PreviewTextStyle](arkts-ime-inputmethod-previewtextstyle-i.md) | 预上屏文本的样式。 |
 | [Range](arkts-ime-inputmethod-range-i.md) | 文本的选中范围。 |
 | [TextConfig](arkts-ime-inputmethod-textconfig-i.md) | 编辑框的配置信息。 |
 
@@ -101,6 +100,7 @@ import { inputMethod } from '@kit.IMEKit';
 | 名称 | 说明 |
 | --- | --- |
 | [SetPreviewTextCallback](arkts-ime-inputmethod-setpreviewtextcallback-t.md) | 当输入法框架需要显示预览文本时触发的回调。 |
+| [SetPreviewTextWithStyleCallback](arkts-ime-inputmethod-setpreviewtextwithstylecallback-t.md) | 当输入法框架需要显示带样式的预览文本时触发的回调。 |
 
 <!--Del-->
 ### 类型（系统接口）
@@ -120,9 +120,11 @@ import { inputMethod } from '@kit.IMEKit';
 | [EnabledState](arkts-ime-inputmethod-enabledstate-e.md) | 输入法启用状态。 |
 | [EnterKeyType](arkts-ime-inputmethod-enterkeytype-e.md) | Enter键的功能类型。 |
 | [ExtendAction](arkts-ime-inputmethod-extendaction-e.md) | 编辑框中文本的扩展编辑操作类型，如剪切、复制等。 |
+| [InputCapabilityType](arkts-ime-inputmethod-inputcapabilitytype-e.md) | 系统输入能力类型。用于[requestSystemInputCapability](arkts-ime-inputmethod-inputmethodcontroller-i.md#requestsysteminputcapability)指定请求的系统输入能力类型。 |
 | [KeyboardStatus](arkts-ime-inputmethod-keyboardstatus-e.md) | 输入法软键盘状态。 |
 | [RequestKeyboardReason](arkts-ime-inputmethod-requestkeyboardreason-e.md) | 请求键盘输入的原因。 |
 | [TextInputType](arkts-ime-inputmethod-textinputtype-e.md) | 文本输入类型。 |
+| [UnderlineStyle](arkts-ime-inputmethod-underlinestyle-e.md) | 枚举预上屏文本的下划线样式。 |
 
 ### 常量
 

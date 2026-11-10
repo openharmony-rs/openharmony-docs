@@ -41,7 +41,7 @@ static add(typedArray: AtomicIntegerArray, index: number, value: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | typedArray | [AtomicIntegerArray](arkts-arkts-atomicintegerarray-t.md) | 是 | 包含目标元素的整数TypedArray。 |
-| index | number | 是 | 目标元素的索引。 |
+| index | number | 是 | 目标元素的索引。索引从0开始，应小于typedArray.length。 |
 | value | number | 是 | 要相加的值。 |
 
 **返回值：**
@@ -79,7 +79,7 @@ static and(typedArray: AtomicIntegerArray, index: number, value: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | typedArray | [AtomicIntegerArray](arkts-arkts-atomicintegerarray-t.md) | 是 | 包含目标元素的整数TypedArray。 |
-| index | number | 是 | 目标元素的索引。 |
+| index | number | 是 | 目标元素的索引。索引从0开始，应小于typedArray.length。 |
 | value | number | 是 | 用于按位与运算的值。 |
 
 **返回值：**
@@ -118,7 +118,7 @@ static compareExchange(typedArray: AtomicIntegerArray, index: number, expectedVa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | typedArray | [AtomicIntegerArray](arkts-arkts-atomicintegerarray-t.md) | 是 | 包含目标元素的整数TypedArray。 |
-| index | number | 是 | 目标元素的索引。 |
+| index | number | 是 | 目标元素的索引。索引从0开始，应小于typedArray.length。 |
 | expectedValue | number | 是 | 用于与目标元素比较的值。 |
 | replacementValue | number | 是 | 比较成功时存储的值。 |
 
@@ -157,7 +157,7 @@ static exchange(typedArray: AtomicIntegerArray, index: number, value: number): n
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | typedArray | [AtomicIntegerArray](arkts-arkts-atomicintegerarray-t.md) | 是 | 包含目标元素的整数TypedArray。 |
-| index | number | 是 | 目标元素的索引。 |
+| index | number | 是 | 目标元素的索引。索引从0开始，应小于typedArray.length。 |
 | value | number | 是 | 替换值。 |
 
 **返回值：**
@@ -194,7 +194,7 @@ static isLockFree(size: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | number | 是 | 原子操作的字节大小。 |
+| size | number | 是 | 要查询的元素字节大小，而非数组长度。该值按32位整数转换；转换后为1、2、4或8时返回true，其他值返回false。 |
 
 **返回值：**
 
@@ -225,7 +225,7 @@ static load(typedArray: AtomicIntegerArray, index: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | typedArray | [AtomicIntegerArray](arkts-arkts-atomicintegerarray-t.md) | 是 | 包含目标元素的整数TypedArray。 |
-| index | number | 是 | 目标元素的索引。 |
+| index | number | 是 | 目标元素的索引。索引从0开始，应小于typedArray.length。 |
 
 **返回值：**
 
@@ -247,6 +247,8 @@ static notify(typedArray: collections.Int32Array, index: number, count?: number)
 
 通知等待指定Int32元素的线程，并返回已通知的线程数。
 
+等待与通知必须针对同一底层缓冲区的同一字节位置；不同数组中相同的数值索引不代表同一等待位置。使用同一缓冲区的不同视图时，还需考虑byteOffset。此方法仅发送通知，不修改目标元素。通知只作用于当前已进入等待的线程，不会为后续wait调用保留。需要通知等待线程读取新值时，应先写入新值，再调用notify。
+
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -262,8 +264,8 @@ static notify(typedArray: collections.Int32Array, index: number, count?: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | typedArray | [collections.Int32Array](arkts-arkts-collections-int32array-c.md) | 是 | 包含目标元素的Int32Array。 |
-| index | number | 是 | 目标元素的索引。 |
-| count | number | 否 | 要通知的最大等待线程数，默认通知全部等待线程。 |
+| index | number | 是 | 目标元素的索引。索引从0开始，应小于typedArray.length。 |
+| count | number | 否 | 要通知的最大等待线程数。省略或传入正无穷时通知全部等待线程；为0或负数时不通知；非整数截去小数部分。 |
 
 **返回值：**
 
@@ -300,7 +302,7 @@ static or(typedArray: AtomicIntegerArray, index: number, value: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | typedArray | [AtomicIntegerArray](arkts-arkts-atomicintegerarray-t.md) | 是 | 包含目标元素的整数TypedArray。 |
-| index | number | 是 | 目标元素的索引。 |
+| index | number | 是 | 目标元素的索引。索引从0开始，应小于typedArray.length。 |
 | value | number | 是 | 用于按位或运算的值。 |
 
 **返回值：**
@@ -321,7 +323,9 @@ static or(typedArray: AtomicIntegerArray, index: number, value: number): number
 static store(typedArray: AtomicIntegerArray, index: number, value: number): number
 ```
 
-以原子方式存储值，并返回转换后的存储值。
+以原子方式将value整数化后写入目标元素，并返回整数化后的value。
+
+返回值是value整数化后的值，不包含写入目标元素时按位宽和符号进行的类型转换，因此不一定等于实际存入的元素值。例如向collections.Uint8Array写入257时返回257，但实际存入的元素值为1。
 
 **起始版本：** 26.1.0
 
@@ -338,14 +342,14 @@ static store(typedArray: AtomicIntegerArray, index: number, value: number): numb
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | typedArray | [AtomicIntegerArray](arkts-arkts-atomicintegerarray-t.md) | 是 | 包含目标元素的整数TypedArray。 |
-| index | number | 是 | 目标元素的索引。 |
-| value | number | 是 | 要存储的值。 |
+| index | number | 是 | 目标元素的索引。索引从0开始，应小于typedArray.length。 |
+| value | number | 是 | 要存储的值。先转换为整数，再按目标元素类型写入。超出目标元素类型表示范围时，按该类型的位宽和符号转换。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 存入目标元素的转换后值。 |
+| number | value整数化后的值，不包含按目标元素位宽和符号进行的类型转换。 |
 
 **错误码：**
 
@@ -376,7 +380,7 @@ static sub(typedArray: AtomicIntegerArray, index: number, value: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | typedArray | [AtomicIntegerArray](arkts-arkts-atomicintegerarray-t.md) | 是 | 包含目标元素的整数TypedArray。 |
-| index | number | 是 | 目标元素的索引。 |
+| index | number | 是 | 目标元素的索引。索引从0开始，应小于typedArray.length。 |
 | value | number | 是 | 要减去的值。 |
 
 **返回值：**
@@ -400,6 +404,8 @@ static wait(typedArray: collections.Int32Array, index: number, value: number,
 
 当指定Int32元素等于预期值时等待。
 
+当元素等于预期值时阻塞当前线程，直到收到notify通知或等待超时。值不相等时返回not-equal，不进入等待。仅修改目标元素的值不会自动唤醒等待线程。调用线程必须允许阻塞等待；接口先检查线程是否允许阻塞，再比较元素值，即使timeout为0或元素值不等也必须满足此要求。不允许阻塞时抛出参数错误。应在允许阻塞的Worker线程中调用，避免阻塞UI线程。
+
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -415,15 +421,15 @@ static wait(typedArray: collections.Int32Array, index: number, value: number,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | typedArray | [collections.Int32Array](arkts-arkts-collections-int32array-c.md) | 是 | 包含目标元素的Int32Array。 |
-| index | number | 是 | 目标元素的索引。 |
+| index | number | 是 | 目标元素的索引。索引从0开始，应小于typedArray.length。 |
 | value | number | 是 | 预期值。 |
-| timeout | number | 否 | 最长等待时间，单位为毫秒，默认值为正无穷。 |
+| timeout | number | 否 | 最长等待时间，单位为毫秒。省略、传入NaN或正无穷时，若元素值等于预期值，则持续等待直到收到通知；负数按0处理。为0且元素值等于预期值时，立即返回timed-out。需要限制等待时间时，传入有限的非负数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| 'ok' &#124; 'not-equal' &#124; 'timed-out' | 等待操作的结果。 |
+| 'ok' &#124; 'not-equal' &#124; 'timed-out' | 等待结果。ok表示被通知唤醒；not-equal表示目标元素不等于预期值，未进入等待；timed-out表示等待超时。 |
 
 **错误码：**
 
@@ -454,7 +460,7 @@ static xor(typedArray: AtomicIntegerArray, index: number, value: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | typedArray | [AtomicIntegerArray](arkts-arkts-atomicintegerarray-t.md) | 是 | 包含目标元素的整数TypedArray。 |
-| index | number | 是 | 目标元素的索引。 |
+| index | number | 是 | 目标元素的索引。索引从0开始，应小于typedArray.length。 |
 | value | number | 是 | 用于按位异或运算的值。 |
 
 **返回值：**

@@ -12,6 +12,24 @@ want的Params操作的常量。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
+## AGENT_TASK_ID
+
+```TypeScript
+AGENT_TASK_ID = 'ohos.aafwk.param.agent.taskId'
+```
+
+指示启动任务的TaskID
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Params-AGENT_TASK_ID = 'ohos.aafwk.param.agent.taskId'--><!--Device-Params-AGENT_TASK_ID = 'ohos.aafwk.param.agent.taskId'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+**系统接口：** 此接口为系统接口。
+
 ## ASSERT_FAULT_SESSION_ID
 
 ```TypeScript

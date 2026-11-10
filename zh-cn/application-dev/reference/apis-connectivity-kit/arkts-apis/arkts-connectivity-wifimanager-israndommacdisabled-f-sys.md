@@ -28,7 +28,7 @@ function isRandomMacDisabled(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true:禁用随机MAC地址; false:未禁用随机MAC地址。 |
+| boolean | true表示禁用随机MAC地址; false表示未禁用随机MAC地址。 |
 
 **错误码：**
 

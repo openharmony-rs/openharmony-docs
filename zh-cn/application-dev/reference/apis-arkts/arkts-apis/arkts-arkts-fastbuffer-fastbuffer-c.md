@@ -84,8 +84,6 @@ copy(target: FastBuffer | Uint8Array, targetStart?: number, sourceStart?: number
 
 将`this`实例中指定位置的数据复制到`target`的指定位置上，并返回复制的字节总长度。
 
-如果sourceEnd大于target的长度，则以target的长度为准，超出部分不会被覆盖。
-
 **起始版本：** 20
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
@@ -483,7 +481,7 @@ readBigInt64BE(offset?: number): bigint
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= this.length - 8，默认值：0。 |
+| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= this.length - 8。 |
 
 **返回值：**
 
@@ -707,7 +705,7 @@ readDoubleLE(offset?: number): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| offset | number | 否 | 偏移量。默认值：0。取值范围：0 &lt;= offset &lt;= this.length - 8。 |
+| offset | number | 否 | 偏移量。取值范围：0 &lt;= offset &lt;= this.length - 8，默认值：0。 |
 
 **返回值：**
 
@@ -1668,7 +1666,7 @@ toString(encoding?: string, start?: number, end?: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| encoding | string | 否 | 字符编码格式，支持的格式范围参考BufferEncoding。默认值：'utf8'。 |
+| encoding | string | 否 | 字符编码格式，支持的格式范围参考[BufferEncoding](arkts-arkts-fastbuffer-bufferencoding-t.md)。默认值：'utf8'。 |
 | start | number | 否 | 开始位置。默认值：0。 |
 | end | number | 否 | 结束位置。默认值：this.length。 |
 
@@ -1764,7 +1762,7 @@ write(str: string, offset?: number, length?: number, encoding?: string): number
 | str | string | 是 | 要写入FastBuffer的字符串。 |
 | offset | number | 否 | 偏移量。默认值：0。 |
 | length | number | 否 | 最大字节长度。默认值：(this.length - offset)。 |
-| encoding | string | 否 | 字符编码格式，支持的格式范围参考BufferEncoding。默认值：'utf8'。 |
+| encoding | string | 否 | 字符编码格式，支持的格式范围参考[BufferEncoding](arkts-arkts-fastbuffer-bufferencoding-t.md)。默认值：'utf8'。 |
 
 **返回值：**
 

@@ -763,7 +763,6 @@
   - [disableNetwork（系统接口）](arkts-connectivity-wifimanager-disablenetwork-f-sys.md)<!--DelEnd-->
   - [disableWifi](arkts-connectivity-wifimanager-disablewifi-f.md)
   - [disconnect](arkts-connectivity-wifimanager-disconnect-f.md)
-  - [disconnectFromCandidateConfig](arkts-connectivity-wifimanager-disconnectfromcandidateconfig-f.md)
   - [discoverServices](arkts-connectivity-wifimanager-discoverservices-f.md)
   <!--Del-->
   - [enableHiLinkHandshake（系统接口）](arkts-connectivity-wifimanager-enablehilinkhandshake-f-sys.md)<!--DelEnd-->

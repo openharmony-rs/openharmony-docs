@@ -12,7 +12,7 @@ import { power } from '@kit.BasicServicesKit';
 function getPowerMode(): DevicePowerMode
 ```
 
-Obtains the power mode of the current device. Different power modes correspond to different device behavior policies. Developers can adjust application behavior based on the returned mode value to adapt to the current mode. For the definition and description of each mode, see DevicePowerMode.
+Obtains the power mode of the current device. Different power modes correspond to different device behavior policies. Developers can adjust application behavior based on the returned mode value to adapt to the current mode. For the definition and description of each mode, see DevicePowerMode. To query the sub-mode, use [getPowerSubMode](arkts-basicservices-power-getpowersubmode-f.md).
 
 **Since:** 9
 

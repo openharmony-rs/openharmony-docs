@@ -12,7 +12,7 @@ import { wifi } from '@kit.ConnectivityKit';
 function getP2pLinkedInfo(): Promise<WifiP2pLinkedInfo>
 ```
 
-Obtains information about a P2P connection.
+Obtains P2P connection information. This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -30,7 +30,7 @@ Obtains information about a P2P connection.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[WifiP2pLinkedInfo](arkts-connectivity-wifi-wifip2plinkedinfo-i.md)&gt; | Returns the P2P connection information. |
+| Promise&lt;[WifiP2pLinkedInfo](arkts-connectivity-wifi-wifip2plinkedinfo-i.md)&gt; | Promise used to return the P2P link information. |
 
 **Examples**
 
@@ -57,7 +57,7 @@ wifi.getP2pLinkedInfo().then(data => {
 function getP2pLinkedInfo(callback: AsyncCallback<WifiP2pLinkedInfo>): void
 ```
 
-Obtains information about a P2P connection.
+Obtains P2P connection information. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -75,7 +75,7 @@ Obtains information about a P2P connection.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WifiP2pLinkedInfo](arkts-connectivity-wifi-wifip2plinkedinfo-i.md)&gt; | Yes |  |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WifiP2pLinkedInfo](arkts-connectivity-wifi-wifip2plinkedinfo-i.md)&gt; | Yes | Callback used to return the result. |
 
 **Examples**
 

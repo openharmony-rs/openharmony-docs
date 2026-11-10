@@ -298,7 +298,7 @@ forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList<T>) => void, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void | 是 | 对每个元素执行操作的回调函数。 |
+| callbackFn | (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void | 是 | 对每个元素执行操作的回调函数。 value是当前遍历的元素；index是当前下标，默认值为0；arrlist是当前调用的ArrayList实例，默认值为当前实例。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当回调函数需要引用外部对象作为this上下文时传入此参数，不传入时默认值为undefined。 |
 
 **错误码：**
@@ -331,7 +331,7 @@ arrayList.forEach((value: number, index?: number) => {
 getCapacity(): number
 ```
 
-返回当前实例的容量大小。
+获取当前实例的容量大小。
 
 **起始版本：** 8
 
@@ -730,7 +730,7 @@ console.info('result = ', result); // result = 5
 removeByRange(fromIndex: number, toIndex: number): void
 ```
 
-删除指定范围内的元素，即左闭右开区间[fromIndex, toIndex)。删除后，ArrayList的length减少对应的元素个数，toIndex之后的元素依次向前移动。如果fromIndex或toIndex超出范围，则抛出异常。
+删除指定范围内的元素，区间包含fromIndex，但不包含toIndex，即左闭右开区间[fromIndex, toIndex)。删除后，ArrayList的length减少对应的元素个数，toIndex之后的元素依次向前移动。
 
 **起始版本：** 8
 
@@ -786,7 +786,7 @@ replaceAllElements(callbackFn: (value: T, index?: number, arrlist?: ArrayList<T>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; T | 是 | 用于操作元素并返回替换值的回调函数。 |
+| callbackFn | (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; T | 是 | 用于操作元素并返回替换值的回调函数。 value是当前遍历的元素；index是当前下标，默认值为0；arrlist是当前调用的ArrayList实例，默认值为当前实例。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当回调函数需要引用外部对象作为this上下文时传入此参数，不传入时默认值为undefined。 |
 
 **错误码：**

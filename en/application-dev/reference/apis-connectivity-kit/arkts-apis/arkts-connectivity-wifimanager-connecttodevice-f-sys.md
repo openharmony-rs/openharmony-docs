@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function connectToDevice(config: WifiDeviceConfig): void
 ```
 
-Connect to Wi-Fi hotspot by WifiDeviceConfig.
+Connects to the specified network. If the device is already connected to a hotspot, disconnect it from the hotspot first.
 
 **Since:** 9
 
@@ -28,7 +28,7 @@ Connect to Wi-Fi hotspot by WifiDeviceConfig.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i.md) | Yes | Indicates the device configuration for connection to the Wi-Fi hotspot. |
+| config | [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i.md) | Yes | Wi-Fi configuration information. The value of **bssidType** is a random device address by default. |
 
 **Error codes:**
 

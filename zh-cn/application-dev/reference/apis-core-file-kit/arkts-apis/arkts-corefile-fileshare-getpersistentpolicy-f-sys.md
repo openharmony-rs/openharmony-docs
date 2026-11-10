@@ -46,8 +46,8 @@ function getPersistentPolicy(tokenID: number): Promise<Array<PolicyInfo>>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | 13900001 | Operation not permitted. |
-| 13900011 | Out of memory |
-| 13900020 | Invalid tokenID |
+| 13900011 | Out of memory. |
+| 13900020 | Invalid tokenID. |
 
 <!--Del-->
 **示例**

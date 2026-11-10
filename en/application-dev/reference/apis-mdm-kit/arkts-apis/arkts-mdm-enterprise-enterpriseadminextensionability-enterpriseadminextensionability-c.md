@@ -1079,6 +1079,28 @@ Callback for the password authentication failure event. This callback is trigger
 | cumulativeFailedCount | number | Yes | Cumulative number of failed password attempts. |
 | userId | number | Yes | ID of the user whose password authentication failed. |
 
+## onSmsReceived
+
+```TypeScript
+onSmsReceived(smsInfo: common.SmsReceiveInfo): void
+```
+
+Callback for SMS received event. This callback is triggered when an SMS is received. You should register the **MANAGED_EVENT_SMS_RECEIVED** event through the [adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md) API.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onSmsReceived(smsInfo: common.SmsReceiveInfo): void--><!--Device-EnterpriseAdminExtensionAbility-onSmsReceived(smsInfo: common.SmsReceiveInfo): void-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| smsInfo | [common.SmsReceiveInfo](arkts-mdm-common-smsreceiveinfo-i.md) | Yes | SMS received information, including slot ID, phone number, SMS count, and content. |
+
 ## onStart
 
 ```TypeScript

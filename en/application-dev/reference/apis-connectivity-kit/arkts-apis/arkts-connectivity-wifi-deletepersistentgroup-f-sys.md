@@ -32,7 +32,7 @@ Deletes the persistent P2P group with the specified network ID.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| netId | number | Yes |  |
+| netId | number | Yes | Indicates the network ID of the group to be deleted. |
 
 **Return value:**
 

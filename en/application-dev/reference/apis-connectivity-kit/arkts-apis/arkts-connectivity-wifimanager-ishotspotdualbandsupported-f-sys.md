@@ -12,7 +12,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 function isHotspotDualBandSupported(): boolean
 ```
 
-Check whether a device serving as a Wi-Fi hotspot supports both the 2.4 GHz and 5 GHz Wi-Fi.
+Checks whether the Wi-Fi hotspot function of the current device supports dual bands (both 2.4 GHz and 5 GHz).
 
 **Since:** 9
 
@@ -28,7 +28,7 @@ Check whether a device serving as a Wi-Fi hotspot supports both the 2.4 GHz and 
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if the method is called successfully, returns `false` otherwise. |
+| boolean | Whether the hotspot supports dual bands. The value **true** indicates dual bands are supported, and the value **false** indicates the opposite. |
 
 **Error codes:**
 

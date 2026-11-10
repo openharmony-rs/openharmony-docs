@@ -48,7 +48,7 @@ Subscribes to notifications based on the priority strategy. This API uses a prom
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
-| [1600022](../errorcode-notification.md#1600022-无效的包信息) | The application does not implement the NotificationSubscriberExtensionAbility. |
+| [1600023](../errorcode-notification.md#1600023-应用未实现notificationsubscriberextensionability) | The application does not implement the NotificationSubscriberExtensionAbility. |
 
 <!--Del-->
 **示例**

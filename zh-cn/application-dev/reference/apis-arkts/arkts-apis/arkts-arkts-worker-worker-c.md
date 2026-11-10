@@ -30,7 +30,7 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 constructor(scriptURL: string, options?: WorkerOptions)
 ```
 
-创建一个worker实例。
+Worker构造函数。
 
 **起始版本：** 7
 
@@ -46,8 +46,8 @@ constructor(scriptURL: string, options?: WorkerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scriptURL | string | 是 | scriptURL worker执行的脚本URL。 |
-| options | [WorkerOptions](arkts-arkts-worker-workeroptions-i.md) | 否 | 可为worker设置的选项。 |
+| scriptURL | string | 是 | Worker线程文件的路径，详细参考文件路径注意事项。 |
+| options | [WorkerOptions](arkts-arkts-worker-workeroptions-i.md) | 否 | Worker构造的选项。 |
 
 **示例**
 
@@ -67,7 +67,7 @@ const workerInstance = new worker.Worker('entry/ets/workers/worker.ets', {name: 
 off(type: string, listener?: EventListener): void
 ```
 
-移除Worker的事件监听。
+移除类型为type的事件监听，该接口与removeEventListener接口功能一致。
 
 **起始版本：** 7
 
@@ -83,8 +83,8 @@ off(type: string, listener?: EventListener): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 需要移除的事件类型。 |
-| listener | [EventListener](arkts-arkts-worker-eventlistener-i.md) | 否 | listener 要移除的事件监听的回调函数。 |
+| type | string | 是 | 需要删除的事件类型。事件类型通过on设置。 |
+| listener | [EventListener](arkts-arkts-worker-eventlistener-i.md) | 否 | 需要删除的特定监听器回调函数。如果未传入此参数，则会删除该类型的所有监听器。 |
 
 **示例**
 
@@ -103,7 +103,7 @@ workerInstance.off("alert");
 on(type: string, listener: EventListener): void
 ```
 
-向Worker添加一个事件监听。
+向Worker添加一个事件监听，该接口与addEventListener接口功能一致。
 
 **起始版本：** 7
 
@@ -119,8 +119,8 @@ on(type: string, listener: EventListener): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | type 向Worker添加一个事件监听。 |
-| listener | [EventListener](arkts-arkts-worker-eventlistener-i.md) | 是 | listener 当指定类型的事件发生时调用的回调函数。 |
+| type | string | 是 | 监听的事件类型。 |
+| listener | [EventListener](arkts-arkts-worker-eventlistener-i.md) | 是 | 事件触发时的回调函数。 |
 
 **示例**
 
@@ -157,7 +157,7 @@ once(type: string, listener: EventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 监听的事件类型。 |
-| listener | [EventListener](arkts-arkts-worker-eventlistener-i.md) | 是 | listener 当指定类型的事件发生时调用的回调函数。 |
+| listener | [EventListener](arkts-arkts-worker-eventlistener-i.md) | 是 | 事件触发时的回调函数。 |
 
 **示例**
 
@@ -273,7 +273,7 @@ onmessageerror?: (event: MessageEvent) => void
 postMessage(message: Object, transfer: ArrayBuffer[]): void
 ```
 
-向Worker线程发送消息。数据通过结构化克隆算法传递。
+宿主线程通过转移对象所有权的方式向Worker线程发送消息。
 
 **起始版本：** 7
 
@@ -289,8 +289,8 @@ postMessage(message: Object, transfer: ArrayBuffer[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Object | 是 | 发送至Worker的数据。 |
-| transfer | ArrayBuffer[] | 是 | transfer 可转移的ArrayBuffer实例对象。transferList数组不可包含null。 |
+| message | Object | 是 | 发送至Worker的数据对象必须是可序列化对象，序列化支持类型见序列化支持类型。 |
+| transfer | ArrayBuffer[] | 是 | 表示可转移的ArrayBuffer实例对象数组，所有权会转移到Worker线程，仅在该线程中可用。数组不可传入null。 |
 
 **示例**
 
@@ -310,7 +310,7 @@ workerInstance.postMessage(buffer, [buffer]);
 postMessage(message: Object, options?: PostMessageOptions): void
 ```
 
-向Worker线程发送消息。数据通过结构化克隆算法传递。
+宿主线程通过转移对象所有权或者拷贝数据的方式向Worker线程发送消息。
 
 **起始版本：** 7
 
@@ -326,8 +326,8 @@ postMessage(message: Object, options?: PostMessageOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| message | Object | 是 | 发送至Worker的数据。 |
-| options | [PostMessageOptions](arkts-arkts-worker-postmessageoptions-i.md) | 否 | 可为postMessage设置的选项。transferList数组不可包含null。 |
+| message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见序列化支持类型。 |
+| options | [PostMessageOptions](arkts-arkts-worker-postmessageoptions-i.md) | 否 | 当填入该参数时，与传入ArrayBuffer[]的作用一致，该数组中对象的所有权会被转移到Worker线程，在宿主线程中将变为不可用，仅在Worker线程中可用。若不填入该参数，默认设置为undefined，通过拷贝数据的方式传输信息到Worker线程。 |
 
 **示例**
 
@@ -349,7 +349,7 @@ workerInstance.postMessage(buffer, [buffer]);
 terminate(): void
 ```
 
-由宿主线程主动销毁Worker线程并停止Worker线程接收消息。
+销毁Worker线程，终止Worker接收消息。
 
 **起始版本：** 7
 

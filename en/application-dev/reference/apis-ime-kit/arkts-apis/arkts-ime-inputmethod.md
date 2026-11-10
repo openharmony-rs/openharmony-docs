@@ -71,6 +71,7 @@ import { inputMethod } from '@kit.IMEKit';
 | [InputWindowInfo](arkts-ime-inputmethod-inputwindowinfo-i.md) | Window information of the input method soft keyboard (system API extended properties). |
 | [MessageHandler](arkts-ime-inputmethod-messagehandler-i.md) | Represents a custom communication object. <br> <br> |
 | [Movement](arkts-ime-inputmethod-movement-i.md) | Describes the direction in which the cursor moves when the text is selected. |
+| [PreviewTextStyle](arkts-ime-inputmethod-previewtextstyle-i.md) | Style of the preview text. |
 | [Range](arkts-ime-inputmethod-range-i.md) | Describes the range of the selected text. |
 | [TextConfig](arkts-ime-inputmethod-textconfig-i.md) | Describes the configuration of the edit box. |
 
@@ -89,6 +90,7 @@ import { inputMethod } from '@kit.IMEKit';
 | Name | Description |
 | --- | --- |
 | [SetPreviewTextCallback](arkts-ime-inputmethod-setpreviewtextcallback-t.md) | Callback triggered when the input method framework needs to display the text preview. |
+| [SetPreviewTextWithStyleCallback](arkts-ime-inputmethod-setpreviewtextwithstylecallback-t.md) | Callback triggered when the input method framework needs to display the text preview with style. |
 
 <!--Del-->
 ### Types(System API)
@@ -108,9 +110,11 @@ import { inputMethod } from '@kit.IMEKit';
 | [EnabledState](arkts-ime-inputmethod-enabledstate-e.md) | Indicates whether the input method is enabled. |
 | [EnterKeyType](arkts-ime-inputmethod-enterkeytype-e.md) | Enumerates the function types represented by the Enter key of the input method. |
 | [ExtendAction](arkts-ime-inputmethod-extendaction-e.md) | Enumerates the types of extended edit actions on the edit box. |
+| [InputCapabilityType](arkts-ime-inputmethod-inputcapabilitytype-e.md) | Enumerates the input capability types. <br> <br>Used by [requestSystemInputCapability](arkts-ime-inputmethod-inputmethodcontroller-i.md#requestsysteminputcapability) to specify the system input capability to request. |
 | [KeyboardStatus](arkts-ime-inputmethod-keyboardstatus-e.md) | Enumerates the soft keyboard states of the input method. |
 | [RequestKeyboardReason](arkts-ime-inputmethod-requestkeyboardreason-e.md) | Enumerates the reasons for requesting the keyboard. |
 | [TextInputType](arkts-ime-inputmethod-textinputtype-e.md) | Enumerates the text input types. |
+| [UnderlineStyle](arkts-ime-inputmethod-underlinestyle-e.md) | Enumerates the underline styles for preview text. |
 
 ### Constants
 

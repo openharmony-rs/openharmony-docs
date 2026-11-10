@@ -14,9 +14,13 @@ function isWifiActive(): boolean
 
 Query the Wi-Fi status
 
-**Since:** 13
+**Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 13.
+**Required permissions:** 
+- API version 13 and later: N/A
+- API versions 9 to 12: ohos.permission.GET_WIFI_INFO
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-wifiManager-function isWifiActive(): boolean--><!--Device-wifiManager-function isWifiActive(): boolean-End-->
 
@@ -32,6 +36,7 @@ Query the Wi-Fi status
 
 | Error Code ID | Error Message |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 9 - 12 |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta-internal-error) | Operation failed. |
 

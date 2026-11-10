@@ -4,7 +4,7 @@
 interface StationInfo
 ```
 
-Wi-Fi station information. @typedef StationInfo
+Represents the station information. This information contains details about the device that is connected to Wi-Fi.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ipAddress: string
 ```
 
-The IP address of the Wi-Fi client
+IP address.
 
 **Type:** string
 
@@ -64,7 +64,7 @@ Whether the disconnection is initiated by the local device when the Wi-Fi client
 macAddress: string
 ```
 
-The MAC address of the Wi-Fi client
+MAC address.
 
 **Type:** string
 
@@ -82,7 +82,7 @@ The MAC address of the Wi-Fi client
 macAddressType?: DeviceAddressType
 ```
 
-The MAC address type of the Wi-Fi client
+MAC address type.
 
 **Type:** [DeviceAddressType](arkts-connectivity-wifimanager-deviceaddresstype-e.md)
 
@@ -100,7 +100,7 @@ The MAC address type of the Wi-Fi client
 name: string
 ```
 
-The network name of the Wi-Fi client
+Device name.
 
 **Type:** string
 

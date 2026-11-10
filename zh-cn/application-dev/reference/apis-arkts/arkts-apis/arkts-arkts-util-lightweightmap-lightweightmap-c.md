@@ -223,7 +223,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, th
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: V, key?: K, map?: LightWeightMap&lt;K, V&gt;) =&gt; void | 是 | 回调函数，用于遍历LightWeightMap实例中的元素及下标。 |
+| callbackFn | (value?: V, key?: K, map?: LightWeightMap&lt;K, V&gt;) =&gt; void | 是 | 回调函数，用于遍历LightWeightMap实例中的元素及下标。 value是当前键值对的值；key是当前键值对的键；map是当前调用的LightWeightMap实例，默认值为当前实例。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值。当需要回调函数中的this指向非当前实例对象时传入此参数，当不需要改变this指向时可不传入。不传入时，默认值为当前实例对象。 |
 
 **错误码：**

@@ -4,7 +4,7 @@
 enum AudioSuiteFeatureStatus
 ```
 
-Enumerates the status for audio suite feature.
+Enumerated value, indicating the status of the audio encoding feature.
 
 **Since:** 26.0.1
 
@@ -236,7 +236,7 @@ Uninstalling status.
 VERSION_CHECK_FAILED = 11
 ```
 
-Checking the version failed status.
+Check the version failure status.
 
 **Since:** 26.0.1
 
@@ -254,7 +254,7 @@ Checking the version failed status.
 VERSION_CHECK_SUCCEEDED = 12
 ```
 
-Checking the version succeeded status.
+Check version success status.
 
 **Since:** 26.0.1
 
@@ -272,7 +272,7 @@ Checking the version succeeded status.
 VERSION_CHECKING = 10
 ```
 
-Checking the version status.
+Feature is checking version.
 
 **Since:** 26.0.1
 

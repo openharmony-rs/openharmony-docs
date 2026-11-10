@@ -4,9 +4,9 @@
 interface WifiLinkedInfo
 ```
 
-Wi-Fi connection information. @typedef WifiLinkedInfo
+Wi-Fi connection information.
 
-**Since:** 12
+**Since:** 9
 
 <!--Device-wifiManager-interface WifiLinkedInfo--><!--Device-wifiManager-interface WifiLinkedInfo-End-->
 
@@ -24,7 +24,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 chload: number
 ```
 
-The load value of this Wi-Fi connection. A greater value indicates a higher load.
+Channel load. A larger value indicates a higher load.
 
 **Type:** number
 
@@ -42,7 +42,7 @@ The load value of this Wi-Fi connection. A greater value indicates a higher load
 isHiLinkProNetwork?: boolean
 ```
 
-Whether the Wi-Fi hotspot is HiLinkPro network.
+Whether the network is a HiLinkPro network. The value **true** indicates that the network is a HiLinkPro network, and the value **false** indicates the opposite.
 
 **Type:** boolean
 
@@ -60,7 +60,7 @@ Whether the Wi-Fi hotspot is HiLinkPro network.
 networkId: number
 ```
 
-The ID(uniquely identifies) of a Wi-Fi connection.
+Network configuration ID.
 
 **Type:** number
 
@@ -78,7 +78,7 @@ The ID(uniquely identifies) of a Wi-Fi connection.
 snr: number
 ```
 
-The signal-to-noise ratio (SNR) of this Wi-Fi connection.
+Signal-to-noise ratio (SNR), in dB.
 
 **Type:** number
 
@@ -96,7 +96,7 @@ The signal-to-noise ratio (SNR) of this Wi-Fi connection.
 suppState: SuppState
 ```
 
-The state of the supplicant of this Wi-Fi connection.
+Supplicant state.
 
 **Type:** [SuppState](arkts-connectivity-wifimanager-suppstate-e-sys.md)
 
@@ -114,7 +114,7 @@ The state of the supplicant of this Wi-Fi connection.
 wifiTxRxValid?: boolean
 ```
 
-Whether Wi-Fi Tx and Rx are both working properly
+Whether the Wi-Fi transmitting (Tx) and receiving (Rx) functions are working properly.
 
 **Type:** boolean
 

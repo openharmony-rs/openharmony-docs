@@ -46,7 +46,7 @@ Revoke all persistence permissions for the application.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 13900001 | Operation not permitted. |
-| 13900020 | Invalid tokenID |
+| 13900020 | Invalid tokenID. |
 
 <!--Del-->
 **Examples**
@@ -114,8 +114,8 @@ Revoke persistence permissions for the URI.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; 3.Invalid policy size. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 13900001 | Operation not permitted. |
-| 13900011 | Out of memory |
-| 13900020 | Invalid tokenID |
+| 13900011 | Out of memory. |
+| 13900020 | Invalid tokenID. |
 
 <!--Del-->
 **Examples**

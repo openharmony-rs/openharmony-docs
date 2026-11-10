@@ -94,7 +94,7 @@ export default class EntryAbility extends UIAbility {
 checkSpecialScenarioAuthResult(context: Context): Promise<UserAuthResult>
 ```
 
-查询用户是否授权能在后台长时间运行。使用Promise异步回调。当未授权时，返回授权结果[NOT_DETERMINED](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md)；当未配置特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)的长时任务时，返回授权结果为[NOT_SUPPORTED](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md)。
+查询用户是否授权能在后台长时间运行。使用Promise异步回调。当未授权时，返回授权结果[NOT_DETERMINED](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md#not_determined)；当未配置特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING] [MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md#mode_special_scenario_processing)的长时任务时，返回授权结果为[NOT_SUPPORTED](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md#not_supported)。
 
 **起始版本：** 26.0.0
 
@@ -123,8 +123,8 @@ checkSpecialScenarioAuthResult(context: Context): Promise<UserAuthResult>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [9800004](../errorcode-backgroundTaskMgr.md#9800004-系统服务失败) | 系统服务无响应 |
-| [9800005](../errorcode-backgroundTaskMgr.md#9800005-长时任务校验失败) | 长时任务校验错误 |
+| [9800004](../errorcode-backgroundTaskMgr.md#9800004-系统服务失败) | System service operation failed. |
+| [9800005](../errorcode-backgroundTaskMgr.md#9800005-长时任务校验失败) | Continuous task verification failed. |
 
 **示例**
 
@@ -211,7 +211,7 @@ export default class EntryAbility extends UIAbility {
 requestAuthFromUser(context: Context, callback: Callback<UserAuthResult>): void
 ```
 
-请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功后会发送带提示音的用户授权横幅通知。用户授权“本次允许”或“始终允许”后，再次请求授权时将直接回调上次授权结果，不再弹出横幅通知。建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)的长时任务。
+请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功后会发送带提示音的用户授权横幅通知。用户授权“本次允许”或“始终允许”后，再次请求授权时将直接回调上次授权结果，不再弹出横幅通知。建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING] [MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md#mode_special_scenario_processing)的长时任务。
 
 **起始版本：** 22
 
@@ -273,7 +273,7 @@ export default class EntryAbility extends UIAbility {
 requestAuthFromUserByDialog(context: Context, callback: Callback<UserAuthResult>): void
 ```
 
-请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功后会发送授权弹窗。用户授权“本次允许”、“始终允许”或“不允许”后，再次请求授权时将直接回调上次授权结果，不再弹出授权弹窗。建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md)的长时任务。
+请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功后会发送授权弹窗。用户授权“本次允许”、“始终允许”或“不允许”后，再次请求授权时将直接回调上次授权结果，不再弹出授权弹窗。建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING] [MODE_SPECIAL_SCENARIO_PROCESSING](arkts-backgroundtasks-backgroundtaskmanager-backgroundtaskmode-e.md#mode_special_scenario_processing)的长时任务。
 
 **起始版本：** 26.0.0
 
@@ -289,8 +289,8 @@ requestAuthFromUserByDialog(context: Context, callback: Callback<UserAuthResult>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | App running context. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[UserAuthResult](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md)&gt; | 是 | The callback of the function. |
+| context | Context | 是 | 应用运行的上下文。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[UserAuthResult](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md)&gt; | 是 | 用户操作后，返回授权结果。 |
 
 **错误码：**
 
@@ -451,7 +451,7 @@ continuousTaskId?: number
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-<!--Device-ContinuousTaskRequest-continuousTaskId?: number--><!--Device-ContinuousTaskRequest-continuousTaskId?: number-End-->
+<!--Device-ContinuousTaskRequest-continuousTaskId?: int--><!--Device-ContinuousTaskRequest-continuousTaskId?: int-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

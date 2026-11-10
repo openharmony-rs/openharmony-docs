@@ -24,9 +24,7 @@ import { xml } from '@kit.ArkTS';
 getAttributeCount(): number
 ```
 
-ArkTS-Sta: getAttributeCount(): int
-
-当前开始标记的属性数量，用于遍历和处理XML属性。
+获取当前开始标记的属性数量。
 
 **起始版本：** 8
 
@@ -67,8 +65,6 @@ console.info(str);
 ```TypeScript
 getColumnNumber(): number
 ```
-
-ArkTS-Sta: getColumnNumber(): int
 
 获取当前列号，从1开始计数。
 
@@ -111,8 +107,6 @@ console.info(str);
 ```TypeScript
 getDepth(): number
 ```
-
-ArkTS-Sta: getDepth(): int
 
 获取元素的当前深度。
 
@@ -163,8 +157,6 @@ console.info(str);
 ```TypeScript
 getLineNumber(): number
 ```
-
-ArkTS-Sta: getLineNumber(): int
 
 获取当前行号，从1开始。
 

@@ -112,7 +112,7 @@ preSharedKey: string
 
 当securityType为WIFI_SEC_TYPE_OPEN时该字段需为空串，其他加密类型不能为空串。
 
-当securityType为WIFI_SEC_TYPE_WEP时，该字段长度只允许为5、10、13、26、16和32字节其中之一，并且当字段长度为偶数时，该字段必须为纯十六进制数字构成。
+当securityType为WIFI_SEC_TYPE_WEP时，该字段长度只能为5、10、13、16、26或32字节之一，并且当字段长度为偶数时，该字段必须由纯十六进制数字构成。
 
 当securityType为WIFI_SEC_TYPE_SAE时，该字段最小长度为1字节。
 

@@ -36,13 +36,13 @@ isMuted(type: AudioHapticType): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [AudioHapticType](arkts-audio-audiohaptic-audiohaptictype-e.md) | 是 | 音振类型。 |
+| type | [AudioHapticType](arkts-audio-audiohaptic-audiohaptictype-e.md) | 是 | 音振类型，用于查询音频是否静音或振动是否禁止。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 表示查询的音振类型是否被静音。true表示静音，false表示非静音。 |
+| boolean | 表示查询的音振类型是否被静音。true表示音频被静音或振动被禁止，false表示音频未被静音或振动未被禁止。 |
 
 **错误码：**
 
@@ -77,7 +77,7 @@ off(type: 'endOfStream', callback?: Callback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'endOfStream' | 是 | 事件回调类型，支持的事件为'endOfStream'，当取消监听流结束事件时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数，无返回结果。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('endOfStream')](#onendofstream)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **示例**
 
@@ -227,7 +227,7 @@ on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioInterrupt' | 是 | 事件回调类型，支持的事件为'audioInterrupt'，当音频焦点状态发生变化时，触发该事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[audio.InterruptEvent](arkts-audio-audio-interruptevent-i.md)&gt; | 是 | 回调函数，返回中断事件信息。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[audio.InterruptEvent](arkts-audio-audio-interruptevent-i.md)&gt; | 是 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('audioInterrupt')](#onaudiointerrupt)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **示例**
 

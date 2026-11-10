@@ -12,7 +12,7 @@ import { wifiext } from '@kit.ConnectivityKit';
 function disableHotspot(): boolean
 ```
 
-Disables a Wi-Fi hotspot.
+Disables the Wi-Fi hotspot.
 
 **Since:** 8
 
@@ -30,4 +30,4 @@ Disables a Wi-Fi hotspot.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns `true` if this method is called successfully; returns `false` otherwise. |
+| boolean | Returns **true** if the operation is successful; returns **false** otherwise. |
