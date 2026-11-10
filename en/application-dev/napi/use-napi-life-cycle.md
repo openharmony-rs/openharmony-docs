@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes lifecycle management using Node-API, including managing napi_value lifecycles with scopes, extending object lifecycles with napi_ref references, and using garbage collection callbacks to prevent memory leaks and use-after-free."
+keywords: [Node-API, lifecycle, napi_value, napi_ref, handle_scope, scope management, reference management, garbage collection, escapable_scope]
+doctype: guide
+status: active
+---
+
 # Performing Lifecycle Management Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.389Z nl=1 -->
 
 ## Introduction
 
@@ -24,6 +33,7 @@ Node-API provides APIs for creating and manipulating ArkTS objects, managing ref
 - Reference management: Node-API provides APIs for creating, deleting, and managing object references to extend the lifecycle of objects and prevent the use-after-free issues. In addition, reference management also helps prevent memory leaks.
 - Escapable scope: used to return the values created within the **escapable_handle_scope** to a parent scope. It is created by **napi_open_escapable_handle_scope** and closed by **napi_close_escapable_handle_scope**.
 - GC callback: You can register GC callbacks to perform specific cleanup operations when ArkTS objects are garbage-collected.
+- **Global handle count monitoring**: Obtains the number of global handles in the current virtual machine environment. You can use this count for further processing, such as dumping the current heap snapshot to analyze memory usage. Note that this API requires traversal and may take a relatively long time, on the order of microseconds.
 
 Understanding these concepts helps you securely and effectively manipulate ArkTS objects in C/C++ and perform object lifecycle management.
 
@@ -39,6 +49,7 @@ The following table lists the APIs for ArkTS object lifecycle management.
 | napi_reference_ref<br>napi_reference_unref| Increments the reference count and decrements the reference count respectively.|
 | napi_get_reference_value | Obtains the ArkTS object associated with the reference.|
 | napi_add_finalizer | Adds a **napi_finalize** callback, which will be called to clean up or release resources before the ArkTS object is garbage-collected.|
+| napi_get_global_handle_count | Obtains the number of global handles in the current virtual machine environment. You can use this count for further processing, such as dumping the current heap snapshot to analyze memory usage. Note that this API requires traversal and may take a relatively long time, on the order of microseconds. |
 
 ## Example
 
@@ -58,7 +69,7 @@ import testNapi from 'libentry.so';
 
 ### napi_open_handle_scope<br>napi_close_handle_scope
 
-Use **napi_open_handle_scope** to create a context and use **napi_close_handle_scope** to close the context. You can use these two APIs to manage the **napi_value** lifecycle of an ArkTS object, which prevents the object from being incorrectly garbage-collected.  
+Use **napi_open_handle_scope** to create a **napi_handle_scope** and **napi_close_handle_scope** to close it. These APIs manage the lifecycle of ArkTS objects and their handles in Node-API code to prevent objects from being incorrectly garbage-collected.  
 
 Note that the API supports only the single-layer nested scope structure. There is only one active scope at any time, and all newly created handles will be associated with that scope. Scopes must be closed in the reverse order of opening. In addition, all scopes created in the native method must be closed before the method returns.
 
@@ -66,7 +77,7 @@ For details about the code of lifecycle management, see:
 
 [Lifecycle Management](napi-guidelines.md#lifecycle-management) 
 
-For details about the code of typical incorrect usage, see:
+For the code examples of typical incorrect usage, see the following link: 
 
 [Typical Error Scenarios](napi-faq-about-stability.md#what-are-the-typical-error-scenarios-of-lifecycle-related-development-between-napi_open_handle_scope-and-napi_close_handle_scope)
 
@@ -121,7 +132,6 @@ static napi_value HandleScope(napi_env env, napi_callback_info info)
 
 API declaration:
 
-index.d.ts
 <!-- @[napi_open_close_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
@@ -224,7 +234,6 @@ static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info
 
 API declaration:
 
-index.d.ts
 <!-- @[napi_open_close_escapable_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
@@ -311,7 +320,7 @@ static napi_value CreateWeakReference(napi_env env, napi_callback_info info)
 
 static napi_value GetWeakReferenceValue(napi_env env, napi_callback_info info)
 {
-    napi_value weakValue;
+    napi_value weakValue = nullptr;
     napi_status status = napi_get_reference_value(env, g_weakRef, &weakValue);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Failed to get reference value");
@@ -334,8 +343,6 @@ static napi_value GetWeakReferenceValue(napi_env env, napi_callback_info info)
 
 API declaration:
 
-// index.d.ts
-
 ``` TypeScript
 export const createWeakReference: () => void;
 
@@ -349,7 +356,7 @@ try {
     testNapi.createWeakReference();
     hilog.info(0x0000, 'testTag', 'reference test: %{public}s', testNapi.getWeakReferenceValue());
 } catch (error) {
-    hilog.error(0x0000, 'testTag', `Call error: ${error.message}`);
+    hilog.error(0x0000, 'testTag', `call error: ${error.message}`);
 }
 ```
 
@@ -423,8 +430,6 @@ static napi_value CleanupStrongReference(napi_env env, napi_callback_info info) 
 ```
 
 API declaration:
-
-// index.d.ts
 
 ``` TypeScript
 export const createStrongReference: () => void;
@@ -591,7 +596,6 @@ static napi_value DeleteReference(napi_env env, napi_callback_info info)
 
 API declaration:
 
-// index.d.ts
 <!-- @[napi_create_delete_reference_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
@@ -625,6 +629,63 @@ try {
   hilog.error(0x0000, 'testTag',
     'Test Node-API ReferenceTest errorCode: %{public}s, errorMessage: %{public}s', error.code,
     error.message);
+  // ...
+}
+```
+
+### napi_get_global_handle_count
+
+Obtains the number of global handles in the current virtual machine environment. You can use this count for further processing, such as dumping the current heap snapshot to analyze memory usage. Note that this API requires traversal and may take a relatively long time, on the order of microseconds.
+
+> **NOTE**
+>
+> This API counts only strong references (global handles), excluding weak references (WeakRef) and Sendable references (SendableRef). Weak references are stored in a separate weak reference linked list, and Sendable references are stored in separate Sendable global storage; neither is traversed by this API. Creating or deleting strong references affects the returned count. For example, napi_create_strong_reference and napi_delete_strong_reference increase and decrease the count, respectively, whereas napi_create_strong_sendable_reference and napi_delete_strong_sendable_reference do not affect it.
+>
+> Performance reference: With 4144 global handles, 1000 calls to this API take approximately 11726 us in total (an average of approximately 11.7 us per call). Execution time scales linearly with the number of handles. Avoid frequent calls on performance-sensitive hot paths.
+
+CPP code:
+
+<!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+// napi_get_global_handle_count
+static napi_value GetGlobalHandleCount(napi_env env, napi_callback_info info)
+{
+    size_t count = 0;
+    napi_status status = napi_get_global_handle_count(env, &count);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "Failed to get global handle count");
+        return nullptr;
+    }
+    OH_LOG_INFO(LOG_APP, "Test Node-API napi_get_global_handle_count, count = %{public}zu.", count);
+    // Convert the handle count to an ArkTS number and return it.
+    napi_value result = nullptr;
+    napi_create_double(env, static_cast<double>(count), &result);
+    return result;
+}
+```
+
+API declaration:
+
+<!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const getGlobalHandleCount: () => number;
+```
+
+ArkTS code:
+
+<!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+try {
+  hilog.info(0x0000, 'testTag', 'Test Node-API getGlobalHandleCount: %{public}s',
+    testNapi.getGlobalHandleCount().toString());
+  // ...
+} catch (error) {
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API getGlobalHandleCount errorCode: %{public}s, errorMessage: %{public}s',
+    error.code, error.message);
   // ...
 }
 ```
