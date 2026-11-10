@@ -95,7 +95,7 @@ MIDI功能的权限需求根据使用场景不同而有所区别。
 - onDeviceChange：当MIDI设备连接或断开时由系统自动调用。开发者在此回调中处理设备的接入和移除逻辑。
 - onError：当MIDI服务发生错误时调用。开发者在此回调中处理错误日志记录和异常恢复逻辑，如重新创建客户端。
 
-通过调用[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建MIDI客户端实例，传入回调结构体和用户数据。
+通过调用[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建MIDI客户端实例，传入回调结构体和用户数据。接口拉起MIDI服务会较为耗时，建议放在非主线程中运行。
 
 <!-- @[create_midi_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
 
@@ -521,7 +521,7 @@ static napi_value CloseOutputPort(napi_env env, napi_callback_info info)
 
 构造[OH_MIDIEvent](../../reference/apis-audio-kit/capi-ohmidi-oh-midievent.md)事件数组，通过[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口发送MIDI消息。
 
-<!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
+<!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value SendMIDI(napi_env env, napi_callback_info info)
@@ -560,14 +560,8 @@ static napi_value SendMIDI(napi_env env, napi_callback_info info)
 
     uint32_t eventsWritten = 0;
     OH_MIDIStatusCode status = OH_MIDIDevice_Send(it->second, portIndex, events.data(), eventCount, &eventsWritten);
-    napi_create_object(env, &result);
-    napi_value statusValue;
-    napi_create_int32(env, static_cast<int32_t>(status), &statusValue);
-    napi_set_named_property(env, result, "status", statusValue);
-    napi_value writtenValue;
-    napi_create_uint32(env, eventsWritten, &writtenValue);
-    napi_set_named_property(env, result, "eventsWritten", writtenValue);
-    return result;
+    // ...
+}
 ```
 
 **UMP格式说明**
@@ -882,21 +876,6 @@ static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t ev
     }
 }
 ```
-
-## 完整示例
-
-完整的示例代码可以在示例项目中查看：
-- 示例项目路径：`https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi`。
-
-示例项目展示了：
-- 创建和销毁MIDI客户端。
-- 设备枚举和设备变化回调。
-- 打开/关闭设备（USB和BLE）。
-- 获取端口信息。
-- 打开/关闭输入输出端口。
-- 发送MIDI消息（包括Note On/Off和SysEx）。
-- 接收MIDI消息回调。
-- 使用userData传递上下文数据。
 
 ## 相关参考
 
