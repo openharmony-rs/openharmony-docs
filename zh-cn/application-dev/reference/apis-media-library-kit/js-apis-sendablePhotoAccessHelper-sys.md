@@ -584,11 +584,11 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | width | number | 否 | 否 |  图片资产的像素宽度。单位为像素（px），取值应为≥0的整数。|
 | height | number | 否 | 否 | 图片资产的像素高度。单位为像素（px），取值应为≥0的整数。|
 | dateTaken | number | 否 | 否 | 图片资产拍照后存入本地时间。单位为毫秒（ms），取值应为≥0的整数。    |
-| orientation | number | 否 | 否 |图片资产的旋转角度。单位为度（deg），取值应为[0, 359]内的整数。|
+| orientation | number | 否 | 否 |图片资产的旋转角度。单位为度（°），取值应为[0, 359]内的整数。|
 | isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏，默认为false。|
 | title | string | 否 | 否 | 图片资产的标题。|
 | position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。|
-| dateTrashed | number | 否 | 否 | 图片资产是否在回收站中。 |
+| dateTrashed | number | 否 | 否 | 图片资产被移入回收站的时间戳。单位为毫秒（ms），取值应为≥0的整数。 |
 | hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏，默认为false。|
 | userComment | string | 否 | 否 | 图片资产的用户评论信息。|
 | cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。|
