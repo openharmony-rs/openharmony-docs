@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=7309d91550473d80535b32eca83cb9c0b600f845 translatedAt=2026-11-10T08:09:01.292Z pushedAt=2026-11-10T11:56:47.459Z nl=1 -->
 
 
 > **NOTE**
@@ -51,7 +52,7 @@ This error code is reported when the operations fails.
 
 Check the image and follow the instructions to decode it.
 
-## 62980097 PixelMap Serialization Failed
+## 62980097 PixelMap Serialization Transfer Failed
 
 **Error Message**
 
@@ -59,7 +60,7 @@ IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception
 
 **Symptom**
 
-This error code is reported when PixelMap serialization and transmission fails.
+PixelMap serialization transfer failed.
 
 **Possible Cause**
 
@@ -193,7 +194,7 @@ Change the image type and try again.
 
 **Error Message**
 
-Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap.
+Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty PixelMap.
 
 **Symptom**
 
@@ -492,7 +493,7 @@ Correct the input data or use another image.
 
 **Error Message**
 
-Add pixelmap out of range.
+Add PixelMap out of range.
 
 **Symptom**
 
@@ -1092,11 +1093,16 @@ This error code is reported if the DMA memory does not exist.
 
 **Possible Cause**
 
-The DMA memory is not used to decode HDR images.
+The current operation requires the PixelMap to use DMA memory, but the passed-in PixelMap does not use DMA memory. For example, reading or writing HDR metadata for a PixelMap in shared memory, or obtaining its underlying NativeBuffer.
 
 **Solution**
 
-Use a correct memory allocation type.
+Re-create a PixelMap that uses DMA memory, and call the original API with the new object. Choose a creation method based on the input data:
+
+- Decode an image: Starting from API version 15, you can call [createPixelMapUsingAllocator](arkts-apis-image-ImageSource.md#createpixelmapusingallocator15) and set allocatorType to image.AllocatorType.DMA; in the C API, call [OH_ImageSourceNative_CreatePixelmapUsingAllocator()](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator) and set allocator to IMAGE_ALLOCATOR_TYPE_DMA.
+- Create from pixel data: Starting from API version 20, you can call [image.createPixelMapUsingAllocator](arkts-apis-image-f.md#imagecreatepixelmapusingallocator20) and set allocatorType to image.AllocatorType.DMA; in the C API, call [OH_PixelmapNative_CreatePixelmapUsingAllocator()](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmapusingallocator) and set allocator to IMAGE_ALLOCATOR_MODE_DMA.
+
+For more information about DMA memory, see [Image Decoding Memory Optimization (ArkTS)](../../media/image/image-allocator-type.md) and [Image Decoding Memory Optimization (C/C++)](../../media/image/image-allocator-type-c.md).
 
 ## 7600174 DMA Operation Failed
 

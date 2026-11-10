@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-08T13:02:06.455Z pushedAt=2026-10-12T11:38:05.623Z -->
+<!-- md-trans-meta sourceCommit=50266c36d56733840f26c6f9da6f30cdad8ed3fe translatedAt=2026-11-10T07:56:21.702Z pushedAt=2026-11-10T11:14:25.964Z nl=1 -->
 
 **Focus** inherits from [FocusQuery](arkts-apis-camera-FocusQuery.md).
 
@@ -112,7 +112,7 @@ setFocusPoint(point: Point): void
 
 Sets the focal point. The focal point must be in the coordinate system (0-1), where the top-left corner is {0, 0} and the bottom-right corner is {1, 1}.
 
-The coordinate system is based on the horizontal device direction with the device's charging port on the right. If the layout of the preview screen of an application is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the touch point is {x, y}, then the coordinate point after conversion is {y/h, 1-x/w}.
+The coordinate system is based on the horizontal device direction with the device's charging port on the right. If the layout of the preview screen of an app is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the touch point is {x, y}, then the coordinate point after conversion is {y/h, 1-x/w}.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 

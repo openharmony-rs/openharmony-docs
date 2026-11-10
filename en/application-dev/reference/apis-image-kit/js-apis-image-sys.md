@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=49c00eae5d2ba15fc2b06ae68615eb6173800871 translatedAt=2026-11-10T08:09:24.733Z pushedAt=2026-11-10T11:57:46.522Z nl=1 -->
 
 The module provides APIs for image processing. You can use the APIs to create a PixelMap object with specified properties or read image pixel data (even in an area).
 
@@ -112,7 +113,7 @@ Creates a Picture object based on an HDR PixelMap and an SDR PixelMap. The syste
 
 For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
 
@@ -186,7 +187,7 @@ Creates a Picture object based on an HDR PixelMap and an SDR PixelMap. The syste
 
 For details about the error codes, see [Image Error Codes](errorcode-image.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
 |  202      | Non-system applications are not allowed to use system APIs. |
@@ -281,7 +282,7 @@ Decomposes an HDR PixelMap into a Picture object that contains an SDR PixelMap a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 202      | Non-system applications are not allowed to use system APIs.  |
 | 7600201  | Unsupported operation. hdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010\YCRCB_P010. |
@@ -353,7 +354,7 @@ Creates an SDR PixelMap object. When the image is an HDR image with a 3-channel 
 
 For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 7700101  | Bad source.                                                  |
 | 7700102  | Unsupported MIME type.                                       |
@@ -416,10 +417,10 @@ Checks whether a JPEG image is progressive. This API uses a promise to return th
 
 For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 7600201      | Bad source.|
-| 7600202      | Unsupported MIME type.|
+| 7700101    | Bad source.|
+| 7700102    | Unsupported MIME type.|
 
 **Example**
 ```ts
@@ -470,7 +471,7 @@ All Exif attributes except **JPEGInterchangeFormat**, **JPEGInterchangeFormatLen
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 202      | Non-system applications are not allowed to use system APIs.  |
 | 7700102  | Unsupported MIME type.                                       |

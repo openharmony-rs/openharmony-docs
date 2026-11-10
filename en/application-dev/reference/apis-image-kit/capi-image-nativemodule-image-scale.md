@@ -6,7 +6,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9329f19aa2995f079ff9cf109a20aad0033a91a3 translatedAt=2026-08-03T03:57:53.424Z pushedAt=2026-08-04T03:01:43.872Z -->
+<!-- md-trans-meta sourceCommit=0fd7a4a11ddfd226fa5fd7e273dd1b93d4f5d399 translatedAt=2026-11-10T08:06:20.676Z pushedAt=2026-11-10T11:47:29.830Z nl=1 -->
 
 ```c
 typedef struct Image_Scale {...} Image_Scale
@@ -28,5 +28,7 @@ The struct describes the image scale factor.
 
 | Name| Description|
 | -- | -- |
-| float x | Scale factor of the width. It must not be **0**.|
-| float y | Scale factor of the height. It must not be **0**.|
+| float x | Scale factor of the width.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
+| float y | Scale factor of the height.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
+
+

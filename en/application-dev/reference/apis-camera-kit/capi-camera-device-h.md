@@ -1,12 +1,11 @@
 # camera_device.h
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=7b5b0cb39f94db799420f13dcf4f3f8b2658983b translatedAt=2026-08-11T02:00:52.461Z pushedAt=2026-08-12T01:29:52.999Z -->
+<!-- md-trans-meta sourceCommit=c48c74437d83e6cc6a87a22788ef7d940cef51aa translatedAt=2026-11-10T07:58:01.701Z pushedAt=2026-11-10T11:15:07.174Z nl=1 -->
 
 ## Overview
 
@@ -69,7 +68,7 @@ Obtains the sensor direction of a camera device.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK: The operation is successful, and the sensor orientation attribute is returned.<br>     CAMERA_INVALID_ARGUMENT: A parameter is missing or incorrect.<br>         CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
 
 ### OH_CameraDevice_GetHostDeviceName()
 
@@ -94,7 +93,7 @@ Obtains the name of a remote device.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful, and the remote device name is returned.<br>         **CAMERA_CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK: The operation is successful, and the remote device name attribute is returned.<br>      CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter is incorrect.<br>         CAMERA_SERVICE_FATAL_ERROR: The camera service is abnormal. |
 
 ### OH_CameraDevice_GetHostDeviceType()
 
@@ -119,7 +118,7 @@ Obtains the type of a remote device.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful, and the remote device name is returned.<br>         **CAMERA_CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful, and the remote device type attribute is returned.<br>    **CAMERA_INVALID_ARGUMENT**: A parameter is missing or incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_CameraDevice_GetLensEquivalentFocalLengths()
 
@@ -427,3 +426,4 @@ Obtains the camera position on a car.
 | Type | Description |
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
+

@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-08T13:05:58.452Z pushedAt=2026-10-12T11:53:36.594Z -->
+<!-- md-trans-meta sourceCommit=c48c74437d83e6cc6a87a22788ef7d940cef51aa translatedAt=2026-11-10T07:57:09.225Z pushedAt=2026-11-10T11:14:40.126Z nl=1 -->
 
 **PhotoSession** inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), [Macro](arkts-apis-camera-Macro.md), [ManualExposure](arkts-apis-camera-ManualExposure.md), [ManualFocus](arkts-apis-camera-ManualFocus.md), [ManualIso](arkts-apis-camera-ManualIso.md), [OIS](arkts-apis-camera-OIS.md), and [Aperture](arkts-apis-camera-Aperture.md).
 
@@ -361,7 +361,7 @@ Unsubscribes from automatic camera switch status change events.
 **Example**
 
 ```ts
-function unregisterSmoothZoomInfo(photoSession: camera.PhotoSession): void {
+function unregisterAutoDeviceSwitchStatus(photoSession: camera.PhotoSession): void {
   photoSession.off('autoDeviceSwitchStatusChange');
 }
 ```

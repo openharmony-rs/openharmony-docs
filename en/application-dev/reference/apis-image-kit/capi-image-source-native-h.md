@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=bb8dffad20b6dfeef9edb224e6970710896e01f5 translatedAt=2026-11-10T08:08:32.948Z pushedAt=2026-11-10T11:56:03.124Z nl=1 -->
 
 ## Overview
 
@@ -61,8 +62,8 @@ The file declares the APIs for image decoding.
 | [Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float rotate)](#oh_decodingoptions_setrotate) | Sets the rotation angle.|
 | [Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)](#oh_decodingoptions_getdesiredsize) | Obtains the desired output dimensions.|
 | [Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)](#oh_decodingoptions_setdesiredsize) | Sets the desired output dimensions. The **desiredSize** parameter determines the dimensions of the PixelMap obtained after decoding, where both the width and height must be positive integers. If the aspect ratio is different from the original, the PixelMap will be stretched or scaled to the specified dimensions. The original dimensions are used by default.|
-| [Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)](#oh_decodingoptions_getdesiredregion) | Obtains the region to decode.<br> Since the corresponding **SetDesiredRegion** function cannot meet the regional decoding requirements, starting from API version 19, you are advised to use [OH_DecodingOptions_GetCropRegion](#oh_decodingoptions_getcropregion) instead.|
-| [Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)](#oh_decodingoptions_setdesiredregion) | Sets the region to decode.<br> The actual decoding will process the entire original image, without any regional decoding effect. Starting from API version 19, you are advised to use [OH_DecodingOptions_SetCropRegion](#oh_decodingoptions_setcropregion) instead.|
+| [Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)](#oh_decodingoptions_getdesiredregion) | Obtains the region to decode.<br> Since the corresponding **SetDesiredRegion** function cannot meet the regional decoding requirements, starting from API version 19, you are advised to use [OH_DecodingOptions_GetCropRegion()](#oh_decodingoptions_getcropregion) instead.|
+| [Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)](#oh_decodingoptions_setdesiredregion) | Sets the region to decode.<br> The actual decoding will process the entire original image, without any regional decoding effect. Starting from API version 19, you are advised to use [OH_DecodingOptions_SetCropRegion()](#oh_decodingoptions_setcropregion) instead.|
 | [Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *options, int32_t *desiredDynamicRange)](#oh_decodingoptions_getdesireddynamicrange) | Obtains the desired dynamic range configured during decoding.|
 | [Image_ErrorCode OH_DecodingOptions_SetDesiredDynamicRange(OH_DecodingOptions *options, int32_t desiredDynamicRange)](#oh_decodingoptions_setdesireddynamicrange) | Sets the desired dynamic range during decoding.|
 | [Image_ErrorCode OH_DecodingOptions_GetDesiredColorSpace(OH_DecodingOptions *options, int32_t *colorSpace)](#oh_decodingoptions_getdesiredcolorspace) | Obtains the color space set in the decoding options.|
@@ -78,7 +79,7 @@ The file declares the APIs for image decoding.
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength, OH_ImageSourceNative **imageSource)](#oh_imagesourcenative_createfromdatawithuserbuffer) | Creates an image source from data buffer. The data buffer is directly accessed by the image source object, and therefore the data buffer must remain accessible within the lifecycle of the image source object.|
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFile, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromrawfile) | Creates the pointer to an OH_ImageSourceNative object by using the raw file descriptor of an image resource file.|
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmap) | Creates the pointer to an OH_PixelmapNative object based on decoding options.|
-| [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source, OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmapusingallocator) | Creates an OH_PixelmapNative object based on decoding options and memory type, where **allocatorType** specifies the memory type of the PixelMap.<br> By default, the system selects an appropriate memory type based on the image type, image size, and platform capability. When processing the returned PixelMap object, consider the impact of stride.|
+| [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source, OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmapusingallocator) | Creates a PixelMap based on the decoding options, and specifies the memory type through allocator. When IMAGE_ALLOCATOR_TYPE_AUTO is passed, the system automatically selects shared memory or DMA memory. When you need to specify the memory type, pass IMAGE_ALLOCATOR_TYPE_DMA or IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY. When processing the PixelMap returned by this API, consider the impact of the stride. |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative *resVecPixMap[], size_t size)](#oh_imagesourcenative_createpixelmaplist) | Creates an array of OH_PixelmapNative objects based on decoding options.<br> This function decodes all frames at once. If the number of frames is high or the size of individual frames is large, it can lead to significant memory usage. In these cases, you are advised to use the **Image** component for displaying animations. The **Image** component decodes frames one by one, which uses less memory than this function.|
 | [Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source, OH_DecodingOptionsForPicture *options, OH_PictureNative **picture)](#oh_imagesourcenative_createpicture) | Creates the pointer to an OH_PictureNative object based on decoding options.|
 | [Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index, OH_PictureNative **picture)](#oh_imagesourcenative_createpictureatindex) | Creates the pointer to an OH_PictureNative object at the specified index.|
@@ -916,7 +917,7 @@ Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> 
 
 Usage scenario: This API is applicable for scenarios where the application has already obtained complete encoded image data (such as binary data in JPEG, PNG, or WebP formats) through a network, file, or other modules. The API creates an image source object, which can then be used to call [OH_ImageSourceNative_GetImageInfo](#oh_imagesourcenative_getimageinfo) to read image information, or [OH_ImageSourceNative_CreatePixelmap](#oh_imagesourcenative_createpixelmap) to decode the data into a PixelMap.
 
-Resource management: The successfully created OH_ImageSourceNative object is held by the caller and must be released through [OH_ImageSourceNative_Release](#oh_imagesourcenative_release) after use. The input data is managed by the caller and should not be decoded pixel data. 
+Resource management: The successfully created OH_ImageSourceNative object is held by the caller and must be released through [OH_ImageSourceNative_Release](#oh_imagesourcenative_release) after use. The input data is managed by the caller and should not be decoded pixel data.
 
 **Since**: 12
 
@@ -1000,6 +1001,8 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source
 
 Creates the pointer to an OH_PixelmapNative object based on decoding options.
 
+The system automatically selects shared memory or DMA memory. Since API version 15, when you need to specify the memory type, call [OH_ImageSourceNative_CreatePixelmapUsingAllocator()](#oh_imagesourcenative_createpixelmapusingallocator) and set the allocator to IMAGE_ALLOCATOR_TYPE_DMA or IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY. For details, see [System Default Memory Allocation Mode](../../media/image/image-allocator-type-c.md#default-system-memory-allocation).
+
 Usage scenario: This API is applicable for decoding encoded images such as JPEG, PNG, WebP, and single-frame GIF into PixelMaps that can be read, processed, or re-encoded. Before decoding, you can use OH_DecodingOptions to set parameters such as frame index, target pixel format, target size, crop region, and desired dynamic range.
 
 Restrictions: **source**, **options**, and **pixelmap** cannot be null pointers. Before calling this API, you need to create an OH_ImageSourceNative object. If you need to customize decoding options, create and set an OH_DecodingOptions object first. After the API is successfully called, **pixelmap** points to the newly created OH_PixelmapNative object. If the API fails to be executed, the object pointed to by **pixelmap** should not be used.
@@ -1031,7 +1034,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSource
 
 **Description**
 
-Creates an OH_PixelmapNative object based on decoding options and memory type, where **allocatorType** specifies the memory type of the PixelMap.<br> By default, the system selects an appropriate memory type based on the image type, image size, and platform capability. When processing the returned PixelMap object, consider the impact of stride.
+Creates a PixelMap based on decoding parameters and specifies the memory type through the allocator. When IMAGE_ALLOCATOR_TYPE_AUTO is passed, the system automatically selects shared memory or DMA memory; when you need to specify the memory type, pass IMAGE_ALLOCATOR_TYPE_DMA or IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY. When processing the PixelMap returned by this API, consider the impact of the stride.
 
 Usage scenario: This API is applicable for scenarios where the caller needs to explicitly specify the memory type of the PixelMap. For example, when the subsequent image processing pipeline requires DMA memory, IMAGE_ALLOCATOR_TYPE_DMA can be specified.
 
@@ -1048,7 +1051,7 @@ Resource management: The successfully created PixelMap must be released by calli
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to an OH_ImageSourceNative object.|
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to the decoding options.|
-| [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) allocator | Memory type used by the returned PixelMap.|
+| [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) allocator | Memory type of the PixelMap. When IMAGE_ALLOCATOR_TYPE_AUTO is passed in, the system automatically selects shared memory or DMA memory; to specify the memory type, pass in IMAGE_ALLOCATOR_TYPE_DMA or IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY. |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | Double pointer to the OH_PixelmapNative object created at the C++ local layer.|
 
 **Returns**
@@ -2238,4 +2241,3 @@ Resource management: This API only destroys the OH_ImageRawData object and its i
 | Type| Description|
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: The rawData object is invalid.|
-<!--no_check-->

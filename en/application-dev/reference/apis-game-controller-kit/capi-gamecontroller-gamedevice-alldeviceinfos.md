@@ -4,7 +4,8 @@
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
+<!--Adviser: @yuwenliang0514-->
+<!-- md-trans-meta sourceCommit=233eb431f8ea7c656c5b56931386bbeb010828c6 translatedAt=2026-11-10T08:02:23.772Z pushedAt=2026-11-10T11:21:22.830Z nl=1 -->
 
 ```c
 typedef struct GameDevice_AllDeviceInfos GameDevice_AllDeviceInfos
@@ -19,3 +20,4 @@ Defines the result returned by [OH_GameDevice_GetAllDeviceInfos](capi-game-devic
 **Related module:** [GameController](capi-gamecontroller.md)
 
 **Header file:** [game_device.h](capi-game-device-h.md)
+

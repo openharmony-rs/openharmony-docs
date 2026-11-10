@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-12T11:58:15.191Z pushedAt=2026-10-13T04:58:00.893Z -->
+<!-- md-trans-meta sourceCommit=c48c74437d83e6cc6a87a22788ef7d940cef51aa translatedAt=2026-11-10T07:57:14.331Z pushedAt=2026-11-10T11:14:55.690Z nl=1 -->
 
 VideoOutput implements output information used in a video session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
@@ -51,7 +51,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function startVideoOutput(videoOutput: camera.VideoOutput): void {
   videoOutput.start((err: BusinessError) => {
-    if (err.code) {
+    if (err) {
       console.error(`Failed to start the video output, error code: ${err.code}.`);
       return;
     }
@@ -467,7 +467,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function testGetActiveProfile(videoOutput: camera.VideoOutput): camera.Profile | undefined {
+function testGetActiveProfile(videoOutput: camera.VideoOutput): camera.VideoProfile | undefined {
   let activeProfile: camera.VideoProfile | undefined = undefined;
   try {
     activeProfile = videoOutput.getActiveProfile();
@@ -616,7 +616,7 @@ function testGetVideoRotationWithOutParam(videoOutput: camera.VideoOutput): came
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
-    console.error(`The videoOutput.testGetVideoRotationWithOutParam call failed. error code: ${err.code}`);
+    console.error(`The videoOutput.getVideoRotation call failed. error code: ${err.code}`);
   }
   return videoRotation;
 }

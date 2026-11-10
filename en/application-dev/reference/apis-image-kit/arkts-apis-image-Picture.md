@@ -1,12 +1,11 @@
 # Interface (Picture)
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a569cef255f0bfd2be482f42d11f341117248869 translatedAt=2026-08-03T03:56:57.248Z pushedAt=2026-08-04T03:21:17.349Z -->
+<!-- md-trans-meta sourceCommit=0e69f38feb9f0bcec6da6be8d5b55fe5597cf52d translatedAt=2026-11-10T08:05:02.960Z pushedAt=2026-11-10T11:46:45.000Z nl=1 -->
 
 An image that contains special information can be decoded into a picture object, which generally contains the main picture, auxiliary picture, and metadata. The main picture contains most information about the image and is mainly used to render the image. The auxiliary picture is used to store data related to but different from the main picture, revealing more comprehensive details. The metadata is generally used to store information about the image file. The picture object class is used to read or write picture objects. Before calling any API in Picture, you must use [image.createPicture](arkts-apis-image-f.md#imagecreatepicture13) to create a Picture object.
 
@@ -186,6 +185,7 @@ The Picture object on which this API is called must contain a main picture and a
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
+
 **Returns**
 
 | Type                          | Description                        |
@@ -232,7 +232,7 @@ Obtains the PixelMap object of the gain map.
 
 | Type                     | Description                                  |
 | ------------------------- | -------------------------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) \| null | PixelMap object obtained. If there is no PixelMap object, null is returned.|
+| [PixelMap](arkts-apis-image-PixelMap.md) \| null | PixelMap object, or null if none exists. |
 
 **Example**
 

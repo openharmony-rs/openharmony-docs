@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=baa6342393c04fcdac4db76418b040e6bcf63bed translatedAt=2026-11-10T08:04:08.628Z pushedAt=2026-11-10T11:43:49.151Z nl=1 -->
 
 The **ImagePacker** class provides APIs to compress and encode images.
 
@@ -163,6 +164,10 @@ async function PackToData() {
 packing(picture: Picture, options: PackingOption): Promise\<ArrayBuffer>
 
 Compresses or re-encodes an image. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> The encoding object of this interface is Picture, and only the image/jpeg and image/heic (or image/heif) formats are supported.
 
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
 

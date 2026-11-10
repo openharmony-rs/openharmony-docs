@@ -6,6 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=50266c36d56733840f26c6f9da6f30cdad8ed3fe translatedAt=2026-11-10T07:58:16.520Z pushedAt=2026-11-10T11:15:26.311Z nl=1 -->
 
 ## Overview
 
@@ -203,7 +204,7 @@ Opens the camera based on the specified concurrency type.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_CONFLICT_CAMERA**: The camera cannot be used due to a conflict.<br>         **CAMERA_DEVICE_DISABLED**: The camera is disabled due to security reasons.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | Returns CAMERA_OK if the method call is successful.<br>         Returns CAMERA_INVALID_ARGUMENT if a parameter is missing or the parameter type is incorrect.<br>         Returns CAMERA_CONFLICT_CAMERA if the camera is unavailable due to a conflict.<br>         Returns CAMERA_DEVICE_DISABLED if the camera is disabled due to security reasons.<br>         Returns CAMERA_SERVICE_FATAL_ERROR if the camera service is abnormal. |
 
 ### OH_CameraInput_Close()
 
@@ -396,3 +397,5 @@ Unregisters the callback used to check whether a camera lens is blocked or dirty
 | Type| Description|
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.|
+
+

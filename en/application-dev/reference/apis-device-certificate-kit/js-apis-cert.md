@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=1c13265ebab94c9783da6ea222ad5a373724f995 translatedAt=2026-11-10T08:02:06.733Z pushedAt=2026-11-10T11:20:39.637Z nl=1 -->
 
 The **cert** module provides APIs for performing certificate operations. For details about the APIs for implementing the basic algorithm capabilities based on the cryptographic (crypto) framework, see [@ohos.security.cryptoFramework (Crypto Framework)](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md).
 
@@ -34,7 +35,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_RUNTIME_ERROR                     | 19020002 | This error code is reported if an error occurs during running.<br> **Atomic service API:** This API can be used in atomic services since API version 12.             |
 | ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | Parameter check failed.<br> **Atomic service API:** This API can be used in atomic services since API version 20.              |
 | ERR_CRYPTO_OPERATION                  | 19030001 | An error occurs when the API of a third-party algorithm library is called.<br> **Atomic service API:** This API can be used in atomic services since API version 12.     |
-| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | The certificate signature verification failed.<br> **Atomic service API:** This API can be used in atomic services since API version 12.          |
+| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | The certificate signature verification failed.<br> **Atomic service API:** This API can be used in atomic services since API version 12.           |
 | ERR_CERT_NOT_YET_VALID                | 19030003 | The certificate has not taken effect.<br> **Atomic service API:** This API can be used in atomic services since API version 12.             |
 | ERR_CERT_HAS_EXPIRED                  | 19030004 | The certificate has expired.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                 |
 | ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | Failed to obtain the certificate issuer.<br> **Atomic service API:** This API can be used in atomic services since API version 12.      |
@@ -149,7 +150,7 @@ Describes the configuration parameters for generating a CSR, including the subje
 
 ## CertItemType<sup>10+</sup>
 
- Enumerates the certificate fields that can be obtained. 
+ Enumerates the certificate fields that can be obtained.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -285,7 +286,7 @@ Defines the parameters used to match a certificate. If no parameter is specified
 | authorityKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Key of the certificate authority (CA).<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | minPathLenConstraint<sup>12+</sup> | number | No | Yes|Path length of the CA certificate.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | extendedKeyUsage<sup>12+</sup> | Array\<string> | No | Yes|Usage of the extended key.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
-| nameConstraints<sup>12+</sup> | Uint8Array | No | Yes|Constraints on the subject names that can be included in certificates.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| nameConstraints<sup>12+</sup> | Uint8Array | No  | Yes | Name constraint entry to be matched, which is matched against the type and value of any name constraint entry in the nameConstraints extension of the certificate.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
 | certPolicy<sup>12+</sup> | Array\<string> | No | Yes|Certificate policy<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | privateKeyValid<sup>12+</sup> | string | No | Yes|Validity period of the certificate private key.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | subjectKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Public key identifier (Subject Key Identifier extension) of the certificate subject.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
@@ -483,7 +484,7 @@ Represents the parameters for certificate validation.
 | hostnames | Array\<string> | No  | Yes  | Host names. This parameter is used to check whether the subject alternative name (SAN) or common name (CN) of a certificate contains the specified host name. A maximum of 100 host names are supported. Each host name contains a maximum of 128 characters.<br>This parameter is applicable to scenarios such as HTTPS.<br>If one of the host names is matched, the verification is successful.|
 | emailAddresses | Array\<string> | No  | Yes  | Email addresses. This parameter is used to verify that the certificate contains the specified email address. A maximum of one email address is supported. The email address contains a maximum of 128 characters.|
 | keyUsage | Array\<[KeyUsageType](#keyusagetype12)> | No  | Yes  | Key usages. This parameter is used to check whether the key usage extension of the certificate contains the specified usage. Maximum number: 9.<br>The verification is successful only when the certificate contains all specified key usages.|
-| userId | Uint8Array | No  | Yes  | User ID. This parameter is used to specify the user ID required for signature verification when the SM2 certificate is verified. Maximum length: 128 characters.<br>This parameter is commonly set to **[0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38]** for SM certificates, which corresponds to the ASCII string of **1234567812345678** of 16 bytes.<br>After **userId** is set, certificate revocation check is not supported.|
+| userId | Uint8Array | No   | Yes   | User ID. This parameter is used to specify the user ID required for signature verification when the SM2 certificate is verified. Maximum length: 128 characters.<br>This parameter is commonly set to **[0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38]** for SM certificates, which corresponds to the ASCII string of **1234567812345678** of 16 bytes.<br>After **userId** is set, certificate revocation check is not supported. |
 | revokedParams | [X509CertRevokedParams](#x509certrevokedparams) | No  | Yes  | Certificate revocation check parameters, which are used to check whether a certificate is revoked. The parameters include the CRL list, OCSP response data, and whether to allow online check.|
 
 ## CertValidationResult
@@ -1151,8 +1152,9 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
     }).catch((error: BusinessError) => {
       console.error(`verify failed, errCode: ${error.code}, errMsg: ${error.message}`);
     });
-  } catch (error) {
-    console.error(`getPublicKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getPublicKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }).catch((error: BusinessError) => {
   console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -3296,7 +3298,7 @@ async function certToString() {
 
 toString(encodingType: EncodingType): string
 
-Converts this object into a string in the specified encoding format. 
+Converts this object into a string in the specified encoding format.  
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
@@ -11100,6 +11102,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function doTestParsePkcs12() {
   try {
@@ -11263,12 +11266,13 @@ function doTestParsePkcs12() {
       needsOtherCerts: false
     };
     let p12: cert.Pkcs12Data = cert.parsePkcs12(p12Cert, conf);
-    console.info('parsePKCS12 result: success.');
+    console.info('parsePkcs12 result: success.');
     if (p12.privateKey) {
       console.info('privateKey:' + p12.privateKey.toString());
     }
   } catch (error) {
-    console.error(`parsePKCS12 failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`parsePkcs12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11312,6 +11316,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function doTestParsePkcs12() {
   try {
@@ -11468,7 +11473,7 @@ async function doTestParsePkcs12() {
         0x7e, 0x02, 0x02, 0x08, 0x00]);
 
     let p12: cert.Pkcs12Data = await cert.parsePkcs12(p12Cert, '123456');
-    console.info('parsePKCS12 result: success.');
+    console.info('parsePkcs12 result: success.');
     if (p12.privateKey) {
       console.info('privateKey:' + p12.privateKey.toString());
     }
@@ -11484,7 +11489,8 @@ async function doTestParsePkcs12() {
       console.info('otherCerts is empty or not an array.');
     }
   } catch (err) {
-    console.error(`parsePKCS12 failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`parsePkcs12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11527,6 +11533,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9kBV6Cqd3vSi5\n' +
@@ -11622,7 +11629,8 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -11662,7 +11670,8 @@ async function doTestCreatePkcs12() {
     let p12 = await cert.createPkcs12(data, config);
     console.info('createPkcs12 result: success, p12 = ' + p12);
   } catch (err) {
-    console.error(`createPkcs12 failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createPkcs12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11705,6 +11714,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9kBV6Cqd3vSi5\n' +
@@ -11800,7 +11810,8 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -11840,7 +11851,8 @@ async function doTestCreatePkcs12Sync() {
     let p12 = cert.createPkcs12Sync(data, config);
     console.info('createPkcs12Sync result: success, p12 = ' + p12);
   } catch (err) {
-    console.error(`createPkcs12Sync failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createPkcs12Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11998,8 +12010,9 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${err.code}, errMsg: ${err.message}`);
   });
-} catch (error) {
-  console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${error.code}, errMsg: ${error.message}`);
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 
 ```
@@ -13295,7 +13308,7 @@ Provide APIs for generating messages in CMS format.
 
 ### addSigner<sup>18+</sup>
 
-addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
+addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void
 
 Adds a signer to the CMS **SIGNED_DATA** structure.
   
@@ -13532,6 +13545,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetRecipientEncryptionAlgorithm() {
   try {
@@ -13542,7 +13556,8 @@ function testSetRecipientEncryptionAlgorithm() {
     cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
     console.info(`setRecipientEncryptionAlgorithm result: success.`);
   } catch (err) {
-    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -13586,6 +13601,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
   'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
@@ -13660,7 +13676,8 @@ async function testAddRecipientInfo() {
     await cmsGenerator.addRecipientInfo(recipientInfo);
     console.info(`addRecipientInfo result: success.`);
   } catch (err) {
-    console.error(`testAddRecipientInfo failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testAddRecipientInfo failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -13960,6 +13977,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
   'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
@@ -14048,7 +14066,8 @@ async function testGetEncryptedContentData() {
     let data = await cmsGenerator.getEncryptedContentData();
     console.info(`getEncryptedContentData result: success, data = %s`, data);
   } catch (err) {
-    console.error(`testGetEncryptedContentData failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetEncryptedContentData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14082,6 +14101,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 **Example**
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14184,8 +14204,9 @@ async function testCmsVerifyTest() {
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14241,6 +14262,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14345,8 +14367,9 @@ async function testCmsVerifyTest() {
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14381,6 +14404,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14487,8 +14511,9 @@ async function testCmsVerifyTest() {
     console.info('contentType = ' + contentType);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14533,6 +14558,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14636,8 +14662,9 @@ async function testCmsVerifyTest() {
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14672,6 +14699,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14777,8 +14805,9 @@ async function testCmsVerifyTest() {
     console.info('verifySignedData result: success.');
     let contentData = await verify.getContentData();
     console.info('getContentData result: success, contentData = ' + contentData);
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14820,6 +14849,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14927,8 +14957,9 @@ async function testCmsVerifyTest() {
     let signerCerts: cert.X509Cert[] = await verify.getCerts(cert.CmsCertType.SIGNER_CERTS);
     console.info('getCerts result: success, signerCerts.length = ' + signerCerts.length);
     await verify.getContentData();
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14970,6 +15001,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUBKEY: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -15044,8 +15076,9 @@ async function testCmsDecryptTest() {
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
     console.info('[XTS] Decrypt result: success, decPlainText = ' + decPlainText);
     console.info('decryptEnvelopedData result: success.');
-  } catch (error) {
-    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`decryptEnvelopedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```

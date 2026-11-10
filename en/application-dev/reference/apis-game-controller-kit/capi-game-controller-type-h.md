@@ -4,7 +4,8 @@
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
+<!--Adviser: @yuwenliang0514-->
+<!-- md-trans-meta sourceCommit=233eb431f8ea7c656c5b56931386bbeb010828c6 translatedAt=2026-11-10T08:01:21.154Z pushedAt=2026-11-10T11:20:46.917Z nl=1 -->
 
 ## Overview
 
@@ -50,3 +51,5 @@ Defines error codes of the game controller.
 | GAME_CONTROLLER_PARAM_ERROR = 401 |  Invalid parameter.<br>**Since:** 21|
 | GAME_CONTROLLER_MULTIMODAL_INPUT_ERROR = 32200001 |  Failed to query all device information in multimodal input.<br>**Since:** 21|
 | GAME_CONTROLLER_NO_MEMORY = 32200002 |  Insufficient device memory.<br>**Since:** 21|
+
+

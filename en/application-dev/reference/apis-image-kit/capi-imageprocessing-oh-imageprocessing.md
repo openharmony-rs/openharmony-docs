@@ -2,11 +2,11 @@
 
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @aulight02-->
-<!--Designer: @XiaoYao555-->
-<!--Tester: @xchaosioda-->
+<!--Owner: @zy_194-->
+<!--Designer: @gongzheng92-->
+<!--Tester: @gongzheng92-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9329f19aa2995f079ff9cf109a20aad0033a91a3 translatedAt=2026-08-03T04:06:38.406Z pushedAt=2026-08-04T02:13:36.429Z -->
+<!-- md-trans-meta sourceCommit=4cd4cb90c88f953e1b5edbcf7d31625a056fa066 translatedAt=2026-11-10T08:08:05.290Z pushedAt=2026-11-10T11:56:17.007Z nl=1 -->
 
 ```c
 typedef struct OH_ImageProcessing OH_ImageProcessing
@@ -16,10 +16,11 @@ typedef struct OH_ImageProcessing OH_ImageProcessing
 
 The OH_ImageProcessing struct provides its declaration.
 
-To use it, first declare a null pointer of OH_ImageProcessing, and then initialize it by calling [OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create). This function creates an image processing instance. Multiple instances can be created for different image processing tasks.
+Defines an **OH_ImageProcessing** pointer initialized to null, and calls [OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create) to create an image processing instance. Before calling this API, ensure that the pointer passed in is null. You can create multiple image processing instances based on different image processing types.
 
 **Since**: 13
 
 **Related module**: [ImageProcessing](capi-imageprocessing.md)
 
 **Header file**: [image_processing_types.h](capi-image-processing-types-h.md)
+

@@ -1,12 +1,11 @@
 # Interface (AutoExposure)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-11T01:58:07.759Z pushedAt=2026-08-11T09:02:39.828Z -->
+<!-- md-trans-meta sourceCommit=c48c74437d83e6cc6a87a22788ef7d940cef51aa translatedAt=2026-11-10T07:55:54.640Z pushedAt=2026-11-10T11:13:59.597Z nl=1 -->
 
 **AutoExposure** inherits from [AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md).
 
@@ -397,7 +396,7 @@ function callback(exposureState: camera.ExposureState): void {
   console.info(`exposureState: ${exposureState}`);
 }
 
-function registerPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
+function registerExposureStateChange(captureSession: camera.PhotoSession): void {
   captureSession.onExposureStateChange(callback);
 }
 ```
@@ -431,11 +430,11 @@ function callback(exposureState: camera.ExposureState): void {
   console.info(`exposureState: ${exposureState}`);
 }
 
-function unregisterPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
+function unregisterExposureStateChange(captureSession: camera.PhotoSession): void {
   captureSession.offExposureStateChange(callback);
 }
 
-function unregisterPhotoOutputCaptureStartWithoutParam(captureSession: camera.PhotoSession): void {
+function unregisterExposureStateChangeWithoutParam(captureSession: camera.PhotoSession): void {
   captureSession.offExposureStateChange();
 }
 ```

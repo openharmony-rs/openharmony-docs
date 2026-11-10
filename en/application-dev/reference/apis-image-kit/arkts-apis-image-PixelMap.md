@@ -5,6 +5,7 @@
 <!--Designer: @yaozhupeng-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c7ed7b1570b8add7c59daef786c0417e09a73e79 translatedAt=2026-11-10T08:10:03.780Z pushedAt=2026-11-10T11:46:54.984Z nl=1 -->
 
 The PixelMap class is used for reading or writing image data and retrieving image information. It also supports image transformations (scaling, translation, rotation, flipping, and cropping), opacity setting, alpha channel extraction, and color space configuration. It is suitable for scenarios such as image processing, image editing, and image display that require pixel-level data operations. Before calling the methods of PixelMap, you need to create a PixelMap object via [image.createPixelMapFromPixels](arkts-apis-image-f.md#imagecreatepixelmapfrompixels) or [image.createPixelMapUsingAllocator](arkts-apis-image-f.md#imagecreatepixelmapusingallocator20) by passing pixel data. Alternatively, you can decode an image using [ImageSource](arkts-apis-image-ImageSource.md) to create a PixelMap object. The maximum serialized size of a PixelMap is currently 128 MiB. Exceeding this limit may cause rendering failures. The size of a PixelMap is calculated as: width × height × bytes per pixel (for details, see [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)).
 
@@ -255,8 +256,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -631,8 +632,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -1056,8 +1057,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -1330,8 +1331,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -1444,7 +1445,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  501    | Resource Unavailable |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -1544,7 +1545,11 @@ function getDensity(pixelMap: image.PixelMap) {
 
 setOpacity(value: number): Promise\<void\>
 
-Sets the opacity of an PixelMap. The specified opacity value is applied to all pixels and overrides the original opacity of the image. Setting opacity is not supported for images in YUV format. This API uses a promise to return the result.
+Sets the opacity of a PixelMap. The specified opacity value is applied to all pixels and is not affected by the opacity of the original image. This API uses a promise to return the result asynchronously.
+
+> **NOTE**
+>
+> Images in YUV format do not support setting the opacity.
 
 **Since:** 26.0.0
 
@@ -1560,7 +1565,7 @@ Sets the opacity of an PixelMap. The specified opacity value is applied to all p
 
 | Name  | Type                | Mandatory| Description                                                |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------------------- |
-| value    | number               | Yes  | Opacity value. The value range is (0.0, 1.0], where **1.0** indicates that the image is completely opaque. A value closer to **0.0** indicates higher transparency.                          |
+| value    | number               | Yes   | Opacity value. The value range is (0.0, 1.0], where 1.0 indicates fully opaque, and the closer the value is to 0.0, the higher the transparency.                           |
 
 **Return value**
 
@@ -1602,7 +1607,11 @@ function setOpacity(pixelMap: image.PixelMap) {
 
 setOpacitySync(value: number): void
 
-Sets the opacity of an PixelMap. The specified opacity value is applied to all pixels and overrides the original opacity of the image. Setting opacity is not supported for images in YUV format. This API returns the result synchronously.
+Sets the opacity of a PixelMap. The specified opacity value is applied to all pixels and is not affected by the opacity of the original image. This API returns the result synchronously.
+
+> **NOTE**
+>
+> Images in YUV format do not support setting the opacity.
 
 **Since:** 26.0.0
 
@@ -1618,7 +1627,7 @@ Sets the opacity of an PixelMap. The specified opacity value is applied to all p
 
 | Name  | Type                | Mandatory| Description                                                |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------------------- |
-| value    | number               | Yes  | Opacity value. The value range is (0.0, 1.0], where **1.0** indicates that the image is completely opaque. A value closer to **0.0** indicates higher transparency.                          |
+| value    | number               | Yes   | Opacity value. The value range is (0.0, 1.0]. 1.0 indicates fully opaque, and the closer the value is to 0.0, the higher the transparency.                           |
 
 **Error codes**
 
@@ -1654,11 +1663,12 @@ function setOpacitySync(pixelMap: image.PixelMap) {
 
 opacity(rate: number, callback: AsyncCallback\<void>): void
 
-Sets the opacity of an PixelMap. The specified opacity value is applied to all pixels and overrides the original opacity of the image. Setting opacity is not supported for images in YUV format. This API returns the result asynchronously through a callback.
+Sets the opacity of a PixelMap. The specified opacity value is applied to all pixels and is not affected by the opacity of the original image. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> Since API version 26.0.0, you are advised to use [setOpacity](#setopacity) instead for better exception handling.
+> - Images in YUV format do not support setting the opacity.
+> - Since API version 26.0.0, you are advised to use [setOpacity](#setopacity) instead for better exception handling.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1670,7 +1680,7 @@ Sets the opacity of an PixelMap. The specified opacity value is applied to all p
 
 | Name  | Type                | Mandatory| Description                          |
 | -------- | -------------------- | ---- | ------------------------------ |
-| rate     | number               | Yes  | Opacity value. The value range is (0, 1]. The value **1.0** indicates completely opaque. A value closer to **0.0** indicates higher transparency. |
+| rate     | number               | Yes   | Opacity value, ranging from (0.0, 1.0]. 1.0 indicates fully opaque, and the closer the value is to 0.0, the higher the transparency.  |
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
@@ -1694,11 +1704,12 @@ function opacity(pixelMap: image.PixelMap) {
 
 opacity(rate: number): Promise\<void>
 
-Sets the opacity of an PixelMap. The specified opacity value is applied to all pixels and overrides the original opacity of the image. Setting opacity is not supported for images in YUV format. This API uses a promise to return the result.
+Sets the opacity of the PixelMap. The specified opacity value is applied to all pixels and is not affected by the opacity of the original image. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
-> Since API version 26.0.0, you are advised to use [setOpacity](#setopacity) instead for better exception handling.
+> - Images in YUV format do not support setting the opacity.
+> - Since API version 26.0.0, you are advised to use [setOpacity](#setopacity) instead, which provides more comprehensive exception handling.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1710,7 +1721,7 @@ Sets the opacity of an PixelMap. The specified opacity value is applied to all p
 
 | Name| Type  | Mandatory| Description                       |
 | ------ | ------ | ---- | --------------------------- |
-| rate   | number | Yes  | Opacity value. The value range is (0, 1]. The value **1.0** indicates completely opaque. A value closer to **0.0** indicates higher transparency.|
+| rate   | number | Yes   | Opacity value. The value range is (0.0, 1.0]. 1.0 indicates full opacity, and the closer the value is to 0.0, the higher the transparency. |
 
 **Return value**
 
@@ -1737,11 +1748,12 @@ function opacity(pixelMap: image.PixelMap) {
 
 opacitySync(rate: number): void
 
-Sets the opacity of an PixelMap. The specified opacity value is applied to all pixels and overrides the original opacity of the image. Setting opacity is not supported for images in YUV format. This API returns the result synchronously.
+Sets the opacity of the PixelMap. The specified opacity value is applied to all pixels and is not affected by the opacity of the original image. This API returns the result synchronously.
 
 > **NOTE**
 >
-> Since API version 26.0.0, you are advised to use [setOpacitySync](#setopacitysync) instead for better exception handling.
+> - Images in YUV format do not support setting the opacity.
+> - Since API version 26.0.0, you are advised to use [setOpacitySync](#setopacitysync) instead, which provides more comprehensive exception handling.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1751,7 +1763,7 @@ Sets the opacity of an PixelMap. The specified opacity value is applied to all p
 
 | Name  | Type                | Mandatory| Description                          |
 | -------- | -------------------- | ---- | ------------------------------ |
-| rate     | number               | Yes  | Opacity value. The value range is (0, 1]. The value **1.0** indicates completely opaque. A value closer to **0.0** indicates higher transparency.  |
+| rate     | number               | Yes   | Opacity value. The value range is (0.0, 1.0]. 1.0 indicates full opacity, and the closer the value is to 0.0, the higher the transparency.   |
 
 **Error codes**
 
@@ -1759,8 +1771,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -1783,11 +1795,12 @@ function opacitySync(pixelMap: image.PixelMap) {
 
 extractAlphaPixelMap(): Promise\<PixelMap\>
 
-Extracts the Alpha channel data from the current PixelMap and generates a new PixelMap in the ALPHA_U8 format that contains only Alpha channel information. The newly generated PixelMap is non-editable and can be used for shadow effects. The YUV format is not supported by this API. This API uses a promise to return the result.
+Extracts the alpha channel data of the current PixelMap and generates a PixelMap in ALPHA_U8 format that contains only the alpha channel information. The generated PixelMap is not editable and can be used for shadow effects. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
-> If the original PixelMap format is ALPHA_F16, the newly generated PixelMap will retain the ALPHA_F16 format.
+> - This API is not supported for the YUV format.
+> - If the format of the original PixelMap is ALPHA_F16, the newly generated PixelMap retains the ALPHA_F16 format.
 
 **Since:** 26.0.0
 
@@ -1837,11 +1850,12 @@ function extractAlphaPixelMap(pixelMap: image.PixelMap) {
 
 extractAlphaPixelMapSync(): PixelMap
 
-Extracts the Alpha channel data from the current PixelMap and generates a new PixelMap in the ALPHA_U8 format that contains only Alpha channel information. The newly generated PixelMap is non-editable and can be used for shadow effects. The YUV format is not supported by this API. This API returns the result synchronously.
+Extracts the alpha channel data of the current PixelMap and generates a PixelMap in ALPHA_U8 format that contains only the alpha channel information. The generated PixelMap is not editable and can be used for shadow effects. This API returns the result synchronously.
 
 > **NOTE**
 >
-> If the original PixelMap format is ALPHA_F16, the newly generated PixelMap will retain the ALPHA_F16 format.
+> - This API is not supported for the YUV format.
+> - If the format of the original PixelMap is ALPHA_F16, the newly generated PixelMap retains the ALPHA_F16 format.
 
 **Since:** 26.0.0
 
@@ -1891,11 +1905,12 @@ function extractAlphaPixelMapSync(pixelMap: image.PixelMap) {
 
 createAlphaPixelmap(): Promise\<PixelMap>
 
-Generates a PixelMap in the ALPHA_8 format that contains only Alpha channel data based on the Alpha channel information. The newly generated PixelMap is non-editable and can be used for shadow effects. The YUV format is not supported by this API. This API uses a promise to return the result.
+Generates a PixelMap in ALPHA_8 format that contains only the alpha channel information based on the alpha channel information. The generated PixelMap is not editable and can be used for shadow effects. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
-> - If the original PixelMap format is ALPHA_F16, the newly generated PixelMap will retain the ALPHA_F16 format.
+> - This API does not support the YUV format.
+> - If the format of the original PixelMap is ALPHA_F16, the newly generated PixelMap retains the ALPHA_F16 format.
 > - Since API version 26.0.0, you are advised to use [extractAlphaPixelMap](#extractalphapixelmap) instead for better exception handling.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -1928,11 +1943,12 @@ function createAlphaPixelmap(pixelMap: image.PixelMap) {
 
 createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 
-Generates a PixelMap in the ALPHA_8 format that contains only Alpha channel data based on the Alpha channel information. The newly generated PixelMap is non-editable and can be used for shadow effects. The YUV format is not supported by this API. This API returns the result asynchronously through a callback.
+Generates a PixelMap in ALPHA_8 format that contains only alpha channel information based on the alpha channel information. The newly generated PixelMap cannot be edited and can be used for shadow effects. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> - If the original PixelMap format is ALPHA_F16, the newly generated PixelMap will retain the ALPHA_F16 format.
+> - This API does not support the YUV format.
+> - If the format of the original PixelMap is ALPHA_F16, the newly generated PixelMap retains the ALPHA_F16 format.
 > - Since API version 26.0.0, you are advised to use [extractAlphaPixelMap](#extractalphapixelmap) instead for better exception handling.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -1967,11 +1983,12 @@ function createAlphaPixelmap(pixelMap: image.PixelMap) {
 
 createAlphaPixelmapSync(): PixelMap
 
-Generates a PixelMap in the ALPHA_8 format that contains only Alpha channel data based on the Alpha channel information. The newly generated PixelMap is non-editable and can be used for shadow effects. The YUV format is not supported by this API. This API returns the result synchronously.
+Generates a PixelMap in ALPHA_8 format that contains only alpha channel information based on the alpha channel information. The newly generated PixelMap cannot be edited and can be used for shadow effects. This API returns the result synchronously.
 
 > **NOTE**
 >
-> - If the original PixelMap format is ALPHA_F16, the newly generated PixelMap will retain the ALPHA_F16 format.
+> - This API does not support the YUV format.
+> - If the format of the original PixelMap is ALPHA_F16, the newly generated PixelMap retains the ALPHA_F16 format.
 > - Since API version 26.0.0, you are advised to use [extractAlphaPixelMapSync](#extractalphapixelmapsync) instead for better exception handling.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -1990,8 +2007,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -2002,12 +2019,12 @@ function createAlphaPixelmapSync(pixelMap: image.PixelMap) {
   try {
     let pixelmap: image.PixelMap = pixelMap.createAlphaPixelmapSync();
     console.info('Succeeded in creating alpha PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+      } catch (e) {
+      const err = e as BusinessError;
     console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
+    }
   }
-}
-```
+    ```
 
 ## applyScale
 
@@ -2017,8 +2034,7 @@ Scales a PixelMap by the specified scaling factors for width and height, using t
 
 > **NOTE**
 >
-> - It is advised to use positive scaling factors for width and height; otherwise, a flipped image may result.
-> - The scaling factor is calculated as: scaled image size/original image size.
+> Scaling factor = image size after scaling / image size before scaling.
 
 **Since:** 26.0.0
 
@@ -2034,8 +2050,8 @@ Scales a PixelMap by the specified scaling factors for width and height, using t
 
 | Name  | Type                | Mandatory| Description                                          |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------- |
-| x        | number               | Yes  | Scale factor of the width. The value cannot be **0**.                               |
-| y        | number               | Yes  | Scale factor of the height. The value cannot be **0**.                               |
+| x        | number               | Yes   | Scaling factor of the width.<br>The value cannot be 0. A positive number is recommended; otherwise, a flip effect occurs.                                |
+| y        | number               | Yes   | Scaling factor of the height.<br>The value cannot be 0. A positive number is recommended; otherwise, a flip effect occurs.                                |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level. This parameter does not take effect for PixelMaps in ASTC format. The default value is **AntiAliasingLevel.NONE**.|
 
 **Return value**
@@ -2083,8 +2099,7 @@ Scales a PixelMap by the specified scaling factors for width and height, using t
 
 > **NOTE**
 >
-> - It is advised to use positive scaling factors for width and height; otherwise, a flipped image may result.
-> - The scaling factor is calculated as: scaled image size/original image size.
+> Scaling factor = image size after scaling / image size before scaling.
 
 **Since:** 26.0.0
 
@@ -2100,8 +2115,8 @@ Scales a PixelMap by the specified scaling factors for width and height, using t
 
 | Name  | Type                | Mandatory| Description                                          |
 | -------- | -------------------- | ---- | ---------------------------------------------------------------------------------------- |
-| x        | number               | Yes  | Scale factor of the width. The value cannot be **0**.                               |
-| y        | number               | Yes  | Scale factor of the height. The value cannot be **0**.                               |
+| x        | number               | Yes   | Scaling factor for the width.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs.                                |
+| y        | number               | Yes   | Scaling factor for the height.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs.                                |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level. This parameter does not take effect for PixelMaps in ASTC format. The default value is **AntiAliasingLevel.NONE**.|
 
 **Error codes**
@@ -2139,12 +2154,11 @@ function applyScaleSync(pixelMap: image.PixelMap) {
 
 scale(x: number, y: number, callback: AsyncCallback\<void>): void
 
-Scales this image based on the scale factors of the width and height. This API returns the result asynchronously through a callback.
+Scales the image based on the input width and height scaling factors. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> - It is advised to use positive scaling factors for width and height; otherwise, a flipped image may result.
-> - Scale factors of the width and height = Width and height of the resized image/Width and height of the original image
+> - The width and height scaling factors = image width and height after scaling / image width and height before scaling.
 > - Since API version 26.0.0, you are advised to use [applyScale](#applyscale) instead for better exception handling.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -2157,8 +2171,8 @@ Scales this image based on the scale factors of the width and height. This API r
 
 | Name  | Type                | Mandatory| Description                           |
 | -------- | -------------------- | ---- | ------------------------------- |
-| x        | number               | Yes  | Scale factor of the width. The value cannot be **0**.|
-| y        | number               | Yes  | Scale factor of the height. The value cannot be **0**.|
+| x        | number               | Yes   | Scaling factor of the width.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
+| y        | number               | Yes   | Scaling factor of the height.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
@@ -2183,12 +2197,11 @@ function scale(pixelMap: image.PixelMap) {
 
 scale(x: number, y: number): Promise\<void>
 
-Scales this image based on the scale factors of the width and height. This API uses a promise to return the result.
+Scales this image based on the scale factors for the width and height. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> - It is advised to use positive scaling factors for width and height; otherwise, a flipped image may result.
-> - Scale factors of the width and height = Width and height of the resized image/Width and height of the original image
+> - The scale factor for the width or height = the width or height of the image after scaling / the width or height of the image before scaling.
 > - Since API version 26.0.0, you are advised to use [applyScale](#applyscale) instead for better exception handling.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -2201,8 +2214,8 @@ Scales this image based on the scale factors of the width and height. This API u
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| x      | number | Yes  | Scale factor of the width. The value cannot be **0**.|
-| y      | number | Yes  | Scale factor of the height. The value cannot be **0**.|
+| x      | number | Yes   | Scaling factor for the width.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect will occur. |
+| y      | number | Yes   | Scaling factor for the height.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect will occur. |
 
 **Return value**
 
@@ -2230,12 +2243,11 @@ function scale(pixelMap: image.PixelMap) {
 
 scaleSync(x: number, y: number): void
 
-Scales this image based on the scale factors of the width and height. This API returns the result synchronously.
+Scales this image based on the scale factors for the width and height. This API returns the result synchronously.
 
 > **NOTE**
 >
-> - It is advised to use positive scaling factors for width and height; otherwise, a flipped image may result.
-> - Scale factors of the width and height = Width and height of the resized image/Width and height of the original image
+> - The scale factor for the width or height = the width or height of the image after scaling / the width or height of the image before scaling.
 > - Since API version 26.0.0, you are advised to use [applyScaleSync](#applyscalesync) instead for better exception handling.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -2246,8 +2258,8 @@ Scales this image based on the scale factors of the width and height. This API r
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| x      | number | Yes  | Scale factor of the width. The value cannot be **0**.|
-| y      | number | Yes  | Scale factor of the height. The value cannot be **0**.|
+| x      | number | Yes  | Scaling factor of the width.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
+| y      | number | Yes  | Scaling factor of the height.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
 
 **Error codes**
 
@@ -2255,8 +2267,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -2284,8 +2296,7 @@ Scales this image based on the specified anti-aliasing level and the scale facto
 
 > **NOTE**
 >
-> - It is advised to use positive scaling factors for width and height; otherwise, a flipped image may result.
-> - Scale factors of the width and height = Width and height of the resized image/Width and height of the original image
+> - The scale factor for the width or height = the width or height of the image after scaling / the width or height of the image before scaling.
 > - Since API version 26.0.0, you are advised to use [applyScale](#applyscale) instead for better exception handling.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -2298,8 +2309,8 @@ Scales this image based on the specified anti-aliasing level and the scale facto
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| x      | number | Yes  | Scale factor of the width. The value cannot be **0**.|
-| y      | number | Yes  | Scale factor of the height. The value cannot be **0**.|
+| x      | number | Yes  | Scaling factor of the width.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
+| y      | number | Yes  | Scaling factor of the height.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
 | level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | Yes  | Anti-aliasing level. This parameter does not take effect for PixelMaps in ASTC format.|
 
 **Return value**
@@ -2314,8 +2325,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -2341,8 +2352,7 @@ Scales this image based on the specified anti-aliasing level and the scale facto
 
 > **NOTE**
 >
-> - It is advised to use positive scaling factors for width and height; otherwise, a flipped image may result.
-> - Scale factors of the width and height = Width and height of the resized image/Width and height of the original image
+> - The scale factor for the width or height = the width or height of the image after scaling / the width or height of the image before scaling.
 > - Since API version 26.0.0, you are advised to use [applyScaleSync](#applyscalesync) instead for better exception handling.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -2353,8 +2363,8 @@ Scales this image based on the specified anti-aliasing level and the scale facto
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| x      | number | Yes  | Scale factor of the width. The value cannot be **0**.|
-| y      | number | Yes  | Scale factor of the height. The value cannot be **0**.|
+| x      | number | Yes  | Scaling factor of the width.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
+| y      | number | Yes  | Scaling factor of the height.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
 | level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | Yes  | Anti-aliasing level. This parameter does not take effect for PixelMaps in ASTC format.|
 
 **Error codes**
@@ -2363,8 +2373,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -2400,8 +2410,8 @@ Creates a new scaled PixelMap based on the current PixelMap, using the specified
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| x      | number | Yes  | Scale factor of the width. The value cannot be **0**.|
-| y      | number | Yes  | Scale factor of the height. The value cannot be **0**.|
+| x      | number | Yes   | Scaling factor of the width.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
+| y      | number | Yes   | Scaling factor of the height.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
 | level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level. The default value is **AntiAliasingLevel.NONE**. This parameter does not take effect for PixelMaps in ASTC format.|
 
 **Return value**
@@ -2416,8 +2426,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -2451,8 +2461,8 @@ Creates a new scaled PixelMap based on the current PixelMap, using the specified
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| x      | number | Yes  | Scale factor of the width. The value cannot be **0**.|
-| y      | number | Yes  | Scale factor of the height. The value cannot be **0**.|
+| x      | number | Yes   | Scaling factor of the width.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
+| y      | number | Yes   | Scaling factor of the height.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect occurs. |
 | level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level. The default value is **AntiAliasingLevel.NONE**. This parameter does not take effect for PixelMaps in ASTC format.|
 
 **Return value**
@@ -2467,8 +2477,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -2505,8 +2515,8 @@ Creates a new PixelMap that is cropped and scaled based on the current PixelMap,
 | Name  | Type                | Mandatory| Description                         |
 | -------- | ------------------- | ---- | ----------------------------- |
 | region   | [Region](arkts-apis-image-i.md#region8) | Yes  | Area to crop. The value must not exceed the width and height of the image. The unit is px.|
-| x        | number | Yes  | Scale factor of the width. The value cannot be **0**.|
-| y        | number | Yes  | Scale factor of the height. The value cannot be **0**.|
+| x        | number | Yes  | Scaling factor of the width.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect will occur. |
+| y        | number | Yes  | Scaling factor of the height.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect will occur. |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level. The default value is **AntiAliasingLevel.NONE**. This parameter does not take effect for PixelMaps in ASTC format.|
 
 **Return value**
@@ -2567,8 +2577,8 @@ Creates a new PixelMap that is cropped and scaled based on the current PixelMap,
 | Name  | Type                | Mandatory| Description                         |
 | -------- | ------------------- | ---- | ----------------------------- |
 | region   | [Region](arkts-apis-image-i.md#region8) | Yes  | Area to crop. The value must not exceed the width and height of the image. The unit is px.|
-| x        | number | Yes  | Scale factor of the width. The value cannot be **0**.|
-| y        | number | Yes  | Scale factor of the height. The value cannot be **0**.|
+| x        | number | Yes   | Scaling factor of the width.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect is produced. |
+| y        | number | Yes   | Scaling factor of the height.<br>The value cannot be 0. A positive value is recommended; otherwise, a flip effect is produced. |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level. The default value is **AntiAliasingLevel.NONE**. This parameter does not take effect for PixelMaps in ASTC format.|
 
 **Return value**
@@ -2941,8 +2951,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -2966,12 +2976,13 @@ function translateSync(pixelMap: image.PixelMap) {
 
 applyRotate(angle: number): Promise\<void\>
 
-Rotates a PixelMap by the specified angle. YUV formats support only rotation angles that are multiples of 90°. This API uses a promise to return the result.
+Rotates this PixelMap by the specified angle. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> - The valid rotation angle range is [0, 360]. If the value is outside this range, it is automatically adjusted based on a 360° cycle. For example, -100° and 260° produce the same effect.
-> - When the rotation angle is not a multiple of 90°, the image size expands to the bounding rectangle that accommodates the rotated content. For example, a square image rotated by 45° results in an output image with side lengths √2 times the original.
+> - The YUV format supports only rotation angles that are multiples of 90°.
+> - The rotation angle ranges from 0 to 360. If the value is out of this range, it is automatically corrected based on a full circle of 360°. For example, -100° has the same effect as 260°.
+> - When the rotation angle is not a multiple of 90°, the image size is expanded to the size of the bounding rectangle after rotation to accommodate the rotated image content. For example, after a square image is rotated by 45°, the size (side length) of the output image becomes √2 times that of the original image.
 
 **Since:** 26.0.0
 
@@ -3029,12 +3040,13 @@ function applyRotate(pixelMap: image.PixelMap) {
 
 applyRotateSync(angle: number): void
 
-Rotates a PixelMap by the specified angle. YUV formats support only rotation angles that are multiples of 90°. This API returns the result synchronously.
+Rotates this PixelMap by the specified angle. This API returns the result synchronously.
 
 > **NOTE**
 >
-> - The valid rotation angle range is [0, 360]. If the value is outside this range, it is automatically adjusted based on a 360° cycle. For example, -100° and 260° produce the same effect.
-> - When the rotation angle is not a multiple of 90°, the image size expands to the bounding rectangle that accommodates the rotated content. For example, a square image rotated by 45° results in an output image with side lengths √2 times the original.
+> - The YUV format supports only rotation angles that are multiples of 90°.
+> - The rotation angle ranges from 0 to 360. If the value is out of this range, it is automatically corrected based on a full circle of 360°. For example, -100° has the same effect as 260°.
+> - When the rotation angle is not a multiple of 90°, the image size is expanded to the size of the bounding rectangle after rotation to accommodate the rotated image content. For example, after a square image is rotated by 45°, the size (side length) of the output image becomes √2 times that of the original image.
 
 **Since:** 26.0.0
 
@@ -3086,12 +3098,13 @@ function applyRotateSync(pixelMap: image.PixelMap) {
 
 rotate(angle: number, callback: AsyncCallback\<void>): void
 
-Rotates an image by the specified angle. YUV formats support only rotation angles that are multiples of 90°. This API returns the result asynchronously through a callback.
+Rotates this image by the input angle. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> - The valid rotation angle range is [0, 360]. If the value is outside this range, it is automatically adjusted based on a 360° cycle. For example, -100° and 260° produce the same effect.
-> - If the rotation angle is not an integer multiple of 90 degrees, the image size will change after rotation.
+> - The YUV format supports only rotation angles that are multiples of 90°.
+> - The image rotation angle ranges from 0 to 360. If the value is out of this range, it is automatically corrected based on a full circle of 360°. For example, -100° has the same effect as 260°.
+> - If the image rotation angle is not an integer multiple of 90, the image size changes after rotation.
 > - Since API version 26.0.0, you are advised to use [applyRotate](#applyrotate) instead for better exception handling.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -3128,12 +3141,13 @@ function rotate(pixelMap: image.PixelMap) {
 
 rotate(angle: number): Promise\<void>
 
-Rotates an image by the specified angle. YUV formats support only rotation angles that are multiples of 90°. This API uses a promise to return the result.
+Rotates this image by the input angle. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> - The valid rotation angle range is [0, 360]. If the value is outside this range, it is automatically adjusted based on a 360° cycle. For example, -100° and 260° produce the same effect.
-> - If the rotation angle is not an integer multiple of 90 degrees, the image size will change after rotation.
+> - The YUV format supports only rotation angles that are multiples of 90°.
+> - The image rotation angle ranges from 0 to 360. If the value is out of this range, it is automatically corrected based on a full circle of 360°. For example, -100° has the same effect as 260°.
+> - If the image rotation angle is not an integer multiple of 90, the image size changes after rotation.
 > - Since API version 26.0.0, you are advised to use [applyRotate](#applyrotate) instead for better exception handling.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -3173,12 +3187,13 @@ function rotate(pixelMap: image.PixelMap) {
 
 rotateSync(angle: number): void
 
-Rotates an image by the specified angle. YUV formats support only rotation angles that are multiples of 90°. This API returns the result synchronously.
+Rotates the image by the specified angle. This API returns the result synchronously.
 
 > **NOTE**
 >
-> - The valid rotation angle range is [0, 360]. If the value is outside this range, it is automatically adjusted based on a 360° cycle. For example, -100° and 260° produce the same effect.
-> - If the rotation angle is not an integer multiple of 90 degrees, the image size will change after rotation.
+> - YUV format supports only rotation angles that are multiples of 90°.
+> - The rotation angle ranges from 0 to 360. If the value is out of this range, it is automatically corrected based on a full circle of 360°. For example, -100° has the same effect as 260°.
+> - If the rotation angle is not a multiple of 90, the size of the image changes after rotation.
 > - Since API version 26.0.0, you are advised to use [applyRotateSync](#applyrotatesync) instead for better exception handling.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -3197,8 +3212,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -3445,8 +3460,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -3598,7 +3613,7 @@ function applyCropSync(pixelMap: image.PixelMap) {
 
 crop(region: Region, callback: AsyncCallback\<void>): void
 
-Crops a PixelMap based on a given size. This API returns the result asynchronously through a callback.
+Crops the image based on the specified region. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -3638,7 +3653,7 @@ function crop(pixelMap: image.PixelMap) {
 
 crop(region: Region): Promise\<void>
 
-Crops a PixelMap based on a given size. This API uses a promise to return the result.
+Crops the image based on the specified region. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
@@ -3681,7 +3696,7 @@ function crop(pixelMap: image.PixelMap) {
 
 cropSync(region: Region): void
 
-Crops this image based on a given size. This API returns the result synchronously. This API returns the result synchronously.
+Crops the image based on the specified region. This API returns the result synchronously.
 
 > **NOTE**
 >
@@ -3703,8 +3718,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-|  501    | Resource Unavailable |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -3811,6 +3826,11 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback:
 
 Performs color space conversion on the pixel colors of an image according to the specified target color space. This API returns the result asynchronously through a callback.
 
+> **NOTE**
+>
+> - This interface performs only the mathematical conversion between color spaces and does not include tone mapping from HDR to SDR. When the source image is in an HDR color space (with the transfer function HLG or PQ, such as BT2020_HLG, BT2020_PQ, P3_HLG, and P3_PQ) and the target is an SDR color space (with the transfer function sRGB gamma, such as SRGB, DISPLAY_P3, DCI_P3, and ADOBE_RGB_1998), directly calling this interface causes the image to appear overly bright, washed out, and lose highlight details.
+> - Since API version 12, to convert an HDR color space to an SDR color space, call [toSdr](#tosdr12) first to complete the HDR-to-SDR conversion and tone mapping, and then call this interface as needed to convert between SDR color spaces.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
@@ -3826,7 +3846,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------------------|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 62980104| Failed to initialize the internal object. |
 | 62980108| Failed to convert the color space.       |
 | 62980115| Invalid image parameter.            |
@@ -3856,6 +3876,11 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\
 
 Performs color space conversion on the pixel colors of an image according to the specified target color space. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> - This interface only performs mathematical conversion between color spaces and does not include tone mapping from HDR to SDR. When the source image is in an HDR color space (the transfer function is HLG or PQ, for example, BT2020_HLG, BT2020_PQ, P3_HLG, P3_PQ) and the target is an SDR color space (the transfer function is sRGB gamma, for example, SRGB, DISPLAY_P3, DCI_P3, ADOBE_RGB_1998), directly calling this interface causes the image to be overly bright, washed out, and lose highlight details.
+> - Starting from API version 12, to convert an HDR color space to an SDR color space, call [toSdr](#tosdr12) first to complete the HDR-to-SDR conversion and tone mapping, and then call this interface as needed to convert between SDR color spaces.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
@@ -3876,7 +3901,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------------------|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 62980104| Failed to initialize the internal object. |
 | 62980108| Failed to convert the color space.       |
 | 62980115| Invalid image parameter.            |
@@ -4090,7 +4115,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  501    | Resource Unavailable |
+|  501    | Resource Unavailable. |
 
 **Example**
 
@@ -4206,10 +4231,7 @@ async function marshal() {
     size: { height: 4, width: 6 },
     alphaType: image.AlphaType.UNPREMUL
   };
-  let pixelMap: image.PixelMap | undefined = undefined;
-  await image.createPixelMap(color, opts).then((srcPixelMap: image.PixelMap) => {
-    pixelMap = srcPixelMap;
-  })
+  let pixelMap: image.PixelMap | undefined = await image.createPixelMap(color, opts);
   if (pixelMap != undefined) {
     // Implement serialization.
     let parcelable: MySequence = new MySequence(pixelMap);
@@ -4231,7 +4253,7 @@ Deserializes and obtains a PixelMap from the MessageSequence. This API uses a pr
 
 > **NOTE**
 >
-> To deserialize and create a PixelMap object in synchronous mode, use [createPixelMapFromParcel](arkts-apis-image-f.md#imagecreatepixelmapfromparcel11).
+> To deserialize and create a PixelMap synchronously, use [createPixelMapFromParcel](arkts-apis-image-f.md#imagecreatepixelmapfromparcel11).
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -4298,10 +4320,7 @@ async function unmarshal() {
     size: { height: 4, width: 6 },
     alphaType: image.AlphaType.UNPREMUL
   };
-  let pixelMap: image.PixelMap | undefined = undefined;
-  await image.createPixelMap(color, opts).then((srcPixelMap: image.PixelMap) => {
-    pixelMap = srcPixelMap;
-  })
+  let pixelMap: image.PixelMap | undefined = await image.createPixelMap(color, opts);
   if (pixelMap != undefined) {
     // Implement serialization.
     let parcelable: MySequence = new MySequence(pixelMap);
@@ -4434,8 +4453,8 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 | 62980111 | The image source data is incomplete. |
 | 62980115 | Invalid input parameter.              |
 | 62980178 | Failed to create the pixelmap. |
-| 62980274 | The conversion failed |
-| 62980276 | The type to be converted is an unsupported target pixel format|
+| 62980274 | The conversion failed. |
+| 62980276 | The type to be converted is an unsupported target pixel format.|
 
 **Example**
 
@@ -4459,13 +4478,17 @@ setMemoryNameSync(name: string): void
 
 Sets the memory identifier of a PixelMap to facilitate memory identification during debugging or issue troubleshooting.
 
+> **NOTE**
+>
+> Only PixelMaps of the DMA and SHARE_MEMORY memory types support setting the memory identifier.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
 
 | Name       | Type                            | Mandatory| Description            |
 | ------------- | -------------------------------- | ---- | ---------------- |
-| name | string | Yes  | PixelMap memory identifier. It can only be set for PixelMaps with DMA or SHARE_MEMORY memory types. For the DMA memory, the value length must be in the range [1, 255] bytes. For the SHARE_MEMORY memory, the value length must be in the range [1, 244] bytes.|
+| name | string | Yes | Memory identifier to set. The string length of a DMA memory identifier ranges from 1 to 255 bytes, and that of a SHARE_MEMORY memory identifier ranges from 1 to 244 bytes. |
 
 **Error codes**
 
