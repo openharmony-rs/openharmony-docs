@@ -16,8 +16,8 @@
 
 > **说明：**
 >
-> 对于API版本26.1.0及之后的版本，应用灰度支持多实例应用。
-> 对于API版本xxx之前的版本，应用灰度不支持多实例应用，若在多实例应用中调用[hiRetrieval.init()](../reference/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit)，会抛出错误码。
+> - 对于API版本26.1.0及之后的版本，应用灰度支持多实例应用。
+> - 对于API版本26.1.0之前的版本，应用灰度不支持多实例应用，若在多实例应用中调用[hiRetrieval.init()](../reference/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit)，会抛出错误码。
 
 ## 工作原理
 
