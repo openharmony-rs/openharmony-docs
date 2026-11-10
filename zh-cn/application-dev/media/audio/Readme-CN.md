@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 - [Audio Kit简介](audio-kit-intro.md)
-- [Audio Kit示例代码汇总](audio-kit-samples.md)
+- [Audio Kit指南配套示例代码](audio-kit-samples.md)
 - 音频焦点和音频会话管理<!--audio-session-->
   - [音频焦点和音频会话开发概述](audio-playback-concurrency-audio-session-overview.md)
   - [音频焦点介绍](audio-playback-concurrency.md)

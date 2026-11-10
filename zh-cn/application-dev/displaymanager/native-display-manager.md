@@ -6,7 +6,7 @@ doctype: guide
 status: active
 ---
 
-# 使用OH_DisplayManager实现屏幕基础信息查询和状态监听 (C/C++)
+# 实现屏幕属性查询及状态监听 (C/C++)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->

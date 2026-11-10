@@ -2351,6 +2351,60 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
+## verifyPhotoAssetUris
+
+verifyPhotoAssetUris(uris: string[]): Map&lt;string, boolean&gt;
+
+检查URI是否来自媒体库，如果是则返回true，否则返回false。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| uris | string[] | 是   | 待检查的URI数组，单次最多传入500条。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Map&lt;string, boolean&gt; | 返回Map结构。键为传入的URI，值为判断结果，即URI是否来自媒体库，true表示是，false表示不是。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The input uris list is empty.<br>2. The length of the input uris list exceeds 500. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('verifyPhotoAssetUrisDemo');
+  try {
+    let uris: string[] = [
+      'file://fileUriDemo1',
+      'file://fileUriDemo2'
+    ];
+    let resultMap: Map<string, boolean> = phAccessHelper.verifyPhotoAssetUris(uris);
+    resultMap.forEach((value, key) => {
+      console.info(`uri: ${key}, isFromMediaLibrary: ${value}`);
+    });
+  } catch (err) {
+    console.error(`verifyPhotoAssetUris failed, error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## onMediaLibraryAvailability
 
 onMediaLibraryAvailability(callback: Callback&lt;MediaLibraryAvailability&gt;): void

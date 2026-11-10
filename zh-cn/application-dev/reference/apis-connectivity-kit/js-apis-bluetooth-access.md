@@ -531,7 +531,7 @@ try {
 
 convertUuid(uuid: string): string
 
-将指定格式的的UUID转换为128bit的UUID。
+将指定格式的UUID转换为128bit的UUID。
 
 常用的UUID格式主要包括16bit、32bit和128bit三种格式。蓝牙协议定义的128bit格式的基准UUID为：00000000-0000-1000-8000-00805f9b34fb。若输入16bit或者32bit的UUID，将基于蓝牙基准UUID进行转换。若输入128bit的UUID，将不做转换直接输出该UUID。
 

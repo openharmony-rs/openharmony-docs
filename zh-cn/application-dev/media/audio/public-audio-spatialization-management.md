@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍如何通过AudioSpatializationManager查询设备是否支持空间音频渲染、获取当前发声设备的空间音频开关状态并订阅变化事件，用于适配Audio Vivid等音源的空间音频播放体验。"
+keywords: [空间音频, Audio Vivid, AudioSpatializationManager, 空间音频能力查询, 空间音频开关状态, 空间音频开关变化订阅, 怎么判断耳机是否支持空间音频]
+doctype: guide
+status: active
+---
+
 # 空间音频能力查询和状态订阅
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
