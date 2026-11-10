@@ -326,5 +326,7 @@ Allows an application to obtain the content on the screen.
 **Authorization mode**: user_grant
  
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
  
 **Since**: 26.0.0
