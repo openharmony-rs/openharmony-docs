@@ -52,7 +52,7 @@ HiTraceChain在ArkTS中的使用方法参考以下示例，开发者可参考[�
    ```
 
    定义测试方法：
-   <!-- @[TestHiTraceChain_TestFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[TestHiTraceChain_TestFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    function initTraceId() {
