@@ -180,6 +180,23 @@ FormComponent(value: FormInfo)
 | RECT                  | 1 | 方形卡片。|
 | CIRCLE                  | 2 | 圆形卡片。|
 
+## FormColorInfo
+
+卡片着色信息。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| color | string | 否 | 否 | 卡片着色使用的颜色值，格式为'#RRGGBB'或'#AARRGGBB'，例如'#FF0000'。 |
+| position | number | 否 | 否 | 该颜色在渐变色中的位置，取值范围为[0, 1]。 |
+
 ## 属性
 
 ### size<sup>18+</sup>
@@ -386,6 +403,26 @@ onUpdate(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 | 参数名      | 类型                                | 必填 | 说明       |
 |----------| ----------------------------------- | ---- | ---------- |
 | callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | 是   | 回调函数，获得FormCallbackInfo对象。 |
+
+### tintColor
+
+tintColor(colorInfo: Array&lt;FormColorInfo&gt;)
+
+设置卡片着色的颜色信息。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| colorInfo | Array&lt;[FormColorInfo](#formcolorinfo)&gt; | 是 | 卡片着色的颜色信息。数组长度为0时，表示取消卡片着色。 |
 
 ## 示例
 
