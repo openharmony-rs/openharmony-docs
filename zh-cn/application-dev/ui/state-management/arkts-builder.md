@@ -33,10 +33,12 @@ import { Builder } from '@kit.ArkUI';
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
 >
 > 从API version 22开始，该装饰器支持在ArkTS-Sta中使用。
+>
+> 从API version 26.1.0开始，\@Builder支持传入配置项。
 
 ## 装饰器使用说明
 
-\@Builder装饰器有多种使用方式，分别是定义在自定义组件内部的[私有自定义构建函数](#私有自定义构建函数)、定义在全局的[全局自定义构建函数](#全局自定义构建函数)和只适用于ArkTS-Sta的定义在对象或者接口的[成员自定义构建函数](#成员自定义构建函数)。
+\@Builder装饰器有多种使用方式，分别是定义在自定义组件内部的[私有自定义构建函数](#私有自定义构建函数)、定义在全局的[全局自定义构建函数](#全局自定义构建函数)和只适用于ArkTS-Sta的定义在对象或者接口的[成员自定义构建函数](#成员自定义构建函数)。从API version 26.1.0开始，全局自定义构建函数还支持传入配置项，详见[占位构建函数](#占位构建函数)。
 
 ### 私有自定义构建函数
 
@@ -233,6 +235,166 @@ struct BuilderDemo {
 - 成员自定义构建函数允许在自定义组件内、build函数和其他自定义构建函数中调用。
 
 - 在成员自定义构建函数中，`this`指代class对象，对象的状态变量可在自定义构建函数内访问。
+
+### 占位构建函数
+
+> **说明：**
+>
+> 从API version 26.1.0开始，\@Builder支持传入配置项：ArkTS-Dyn上下文详见[BuilderDecoratorConfig](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builderdecoratorconfig)，ArkTS-Sta上下文详见[\@Builder配置项](../../reference/apis-arkui/arkui-ts/ts-universal-builder-static.md#builder)。
+
+传入配置项的\@Builder可以将\@Builder函数声明为占位构建函数，用于在[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)创建真实列表项期间展示占位内容：List先渲染占位内容，真实列表项创建完成后再替换占位内容。占位构建函数需经[wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrapbuilder)包装后，通过[PlaceholderRegister](../../reference/apis-arkui/arkts-apis-placeholderregister.md#placeholderregister)的[register](../../reference/apis-arkui/arkts-apis-placeholderregister.md#register)方法注册，并通过List的[scrollPlaceholder](../../reference/apis-arkui/arkui-ts/ts-container-list.md#scrollplaceholder)属性引用。
+
+示例：
+
+**ArkTS-Dyn:**
+<!-- @[builder_placeholder_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderPlaceholderList.ets) -->
+
+``` TypeScript
+import { PlaceholderOptions } from '@kit.ArkUI';
+
+// 占位构建函数须为全局、无参，且仅执行不依赖状态变量的静态渲染
+@Builder({ isPlaceholder: true })
+function ItemPlaceholder() {
+  Column() {
+    Text('加载中...')
+      .fontSize(16)
+      .fontColor(0x999999)
+  }
+  .width('100%')
+  .height(100)
+  .justifyContent(FlexAlign.Center)
+}
+
+@Entry
+@ComponentV2
+struct BuilderPlaceholderList {
+  @Local data: number[] = [];
+
+  aboutToAppear(): void {
+    // 通过UIContext获取占位注册表，占位构建函数经wrapBuilder包装后注册，供scrollPlaceholder按id引用
+    this.getUIContext().getPlaceholderRegister()
+      .register('itemPlaceholder', wrapBuilder(ItemPlaceholder));
+    const list: number[] = [];
+    for (let i = 0; i < 10000; i++) {
+      list.push(i);
+    }
+    this.data = list;
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      List({ space: 10 }) {
+        Repeat<number>(this.data)
+          .each((repeatItem: RepeatItem<number>) => {
+            ListItem() {
+              Text(repeatItem.item.toString())
+                .fontSize(16)
+                .width('100%')
+                .height(100)
+                .textAlign(TextAlign.Center)
+            }
+          })
+      }
+      .width('90%')
+      .height(300)
+      // id对应已注册的占位构建函数，size为占位的建议尺寸，与真实列表项高度一致，减小替换时的视觉跳动
+      .scrollPlaceholder((index: number): PlaceholderOptions | undefined => {
+        return { id: 'itemPlaceholder', size: { height: 100 } };
+      })
+    }
+    .width('100%')
+    .padding({ top: 10 })
+    .backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+**ArkTS-Sta:**
+<!-- @[BuilderPlaceholderList](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderPlaceholderList.ets) -->
+``` TypeScript
+'use static'
+
+import { Entry, ComponentV2, Column, ColumnOptions, List, ListItem, Text, Builder, Local, Repeat,
+         RepeatItem, wrapBuilder, PlaceholderRegister, PlaceholderOptions, FlexAlign, TextAlign } from '@kit.ArkUI';
+
+// 占位构建函数须为全局、无参，且仅执行不依赖状态变量的静态渲染
+@Builder({ isPlaceholder: true })
+function ItemPlaceholder() {
+  Column() {
+    Text('加载中...')
+      .fontSize(16)
+      .fontColor(0x999999)
+  }
+  .width('100%')
+  .height(100)
+  .justifyContent(FlexAlign.Center)
+}
+
+@Entry
+@ComponentV2
+struct BuilderPlaceholderList {
+  @Local data: Array<number> = [];
+
+  aboutToAppear(): void {
+    // 通过UIContext获取占位注册表，占位构建函数经wrapBuilder包装后注册，供scrollPlaceholder按id引用
+    const register: PlaceholderRegister = this.getUIContext().getPlaceholderRegister();
+    register.register('itemPlaceholder', wrapBuilder(ItemPlaceholder));
+    let list: Array<number> = [];
+    for (let i = 0; i < 10000; i++) {
+      list.push(i);
+    }
+    this.data = list;
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      List({ space: 10 }) {
+        Repeat<number>(this.data)
+          .each((repeatItem: RepeatItem<number>) => {
+            ListItem() {
+              Text(repeatItem.item.toString())
+                .fontSize(16)
+                .width('100%')
+                .height(100)
+                .textAlign(TextAlign.Center)
+            }
+          })
+      }
+      .width('90%')
+      .height(300)
+      // id对应已注册的占位构建函数，size为占位的建议尺寸，与真实列表项高度一致，减小替换时的视觉跳动
+      .scrollPlaceholder((index: int): PlaceholderOptions | undefined => {
+        return { id: 'itemPlaceholder', size: { height: 100 } };
+      })
+    }
+    .width('100%')
+    .padding({ top: 10 })
+    .backgroundColor('#FFDCDCDC')
+  }
+}
+```
+示例效果图：
+
+![arkts-builder-placeholder](figures/arkts-builder-placeholder.gif)
+
+使用方法：
+
+- \@Builder的配置项为对象字面量，目前仅支持`isPlaceholder`属性，取值必须为显式的布尔字面量`true`或`false`，字面量中的其他属性会被忽略。
+
+- `isPlaceholder`设置为`true`时，该\@Builder为占位构建函数。占位构建函数必须为全局、无参数的函数，内部仅执行不依赖状态变量的静态渲染，不能注册手势或业务回调。
+
+- `isPlaceholder`的默认值为`false`。设置为`false`时，该\@Builder等价于未传入配置项的\@Builder；`@Builder()`与`@Builder({})`同样等价于未传入配置项的\@Builder。
+
+传入配置项的\@Builder需要注意如下限制条件：
+
+- 传入配置项的\@Builder仅支持装饰全局函数。在自定义组件的成员方法或成员变量上使用携带实参的\@Builder装饰器会编译报错：`Only global functions decorated with @Builder support parameter passing.`，错误码为[10905131](../../reference/apis-arkui/errorcode-arkui-compile.md#10905131-builder装饰器使用位置校验异常)。
+
+- 为全局\@Builder装饰器传入的实参不是单个对象字面量时，会编译报错：`The @Builder decorator supports passing only object literals.`，错误码为[10905132](../../reference/apis-arkui/errorcode-arkui-compile.md#10905132-builder装饰器实参校验异常)。
+
+- `isPlaceholder`的键拼写错误或取值不是显式布尔字面量（如变量、枚举值、undefined、null）会编译报错：`The 'isPlaceholder' option of the @Builder decorator only supports passing boolean literal.`，错误码为[10905133](../../reference/apis-arkui/errorcode-arkui-compile.md#10905133-builder配置项isplaceholder校验异常)。
+
+- `isPlaceholder`设置为`true`且函数声明了参数会编译报错：`An @Builder function with placeholder capabilities does not support parameter passing.`，错误码为[10905134](../../reference/apis-arkui/errorcode-arkui-compile.md#10905134-占位构建函数参数校验异常)。
+
 
 ## 参数传递规则
 
