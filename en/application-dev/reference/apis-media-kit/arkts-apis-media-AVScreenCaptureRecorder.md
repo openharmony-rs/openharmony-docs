@@ -5,6 +5,7 @@
 <!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=7938d317c00ead5ed43dc34638402f4d9dbdbe18 translatedAt=2026-11-10T08:36:40.367Z pushedAt=2026-11-10T10:41:24.928Z nl=1 -->
 
 **AVScreenCaptureRecorder** is a class for screen capture management. It provides APIs for screen capture, such as screen capture initialization, starting, pausing, resuming, or stopping recording, adding watermarks, privacy window exemption, microphone switch control, picker mode selection, and content auto-rotation. It is applicable to scenarios where the screen capture process needs to be controlled within an app, helping you flexibly manage the screen capture lifecycle, protect user privacy, and customize the recording output. Before calling any API in AVScreenCaptureRecorder, you must use [createAVScreenCaptureRecorder()](arkts-apis-media-f.md#mediacreateavscreencapturerecorder12) to create an AVScreenCaptureRecorder instance.
 
@@ -356,9 +357,11 @@ async function testAddWaterMark() {
 
 skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
-During screen capture, the application can exempt its privacy windows from security purposes. This API uses a promise to return the result.
+Exempts the specified privacy window list during screen capture. This API uses a promise to return the result.
 
-For example, if a user enters a password in this application during screen capture, the application will not display a black screen.
+> **NOTE**
+>
+> During screen capture, an app can only implement security exemption to its own privacy windows. For example, when a user enters a password in the app, the privacy window is masked by a black screen by default. After exemption, the window is displayed normally in the captured content.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 

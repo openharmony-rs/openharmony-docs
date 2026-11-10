@@ -1,16 +1,17 @@
 # HML
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dfb15c325281e5e789ea7ade45dfdd45876606ad translatedAt=2026-07-27T02:28:52.038Z pushedAt=2026-07-27T09:23:36.774Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-10T07:55:27.770Z pushedAt=2026-11-10T10:59:08.340Z nl=1 -->
 
 HML is an HTML-like language that allows you to build pages based on components and events. HML pages provide advanced capabilities such as data binding, event binding, loop rendering, conditional rendering, and logic control.
 
+
 ## Page Structure
+
 
 ```html
 <!-- xxx.hml -->
@@ -22,7 +23,9 @@ HML is an HTML-like language that allows you to build pages based on components 
 </div>
 ```
 
+
 ## Data Binding
+
 
 ```html
 <!-- xxx.hml -->
@@ -81,6 +84,7 @@ Declare the events for service widgets in the **actions** field in the JSON file
   | abilityName | string | -        | Name of the ability to redirect to.                             |
   | params      | Object | -        | Additional parameter passed during the redirection.                            |
 
+
   ```json
   {
     "data": {
@@ -102,6 +106,7 @@ Declare the events for service widgets in the **actions** field in the JSON file
   | ------ | ------ | ------- | ------------ |
   | action | string | message | Event type.<br/>- **"message"**: message event.      |
   | params | Object | -       | Additional parameter passed during the redirection.|
+
 
   ```json
   {
@@ -126,7 +131,9 @@ Declare the events for service widgets in the **actions** field in the JSON file
   </div>
   ```
 
+
 ## Loop Rendering
+
 
 ```html
 <!-- xxx.hml -->
@@ -146,6 +153,7 @@ Declare the events for service widgets in the **actions** field in the JSON file
   </div>
 </div>
 ```
+
 
 ```json
 {
@@ -177,11 +185,13 @@ The **tid** attribute accelerates the **for** loop and improves the re-rendering
 >
 >  - When you use the **for** loop, ensure that the objects contained in the array are of the same type.
 
+
 ## Conditional Rendering
 
 There are two ways to implement conditional rendering: **if-elif-else** or **show**.
 
 The **if-elif-else** statements must be used in sibling nodes. Otherwise, the compilation fails. The following example uses both ways to implement conditional rendering:
+
 
 ```html
 <!-- xxx.hml -->
@@ -191,6 +201,7 @@ The **if-elif-else** statements must be used in sibling nodes. Otherwise, the co
   <text else> Hello-World </text>
 </div>
 ```
+
 
 ```json
 {
@@ -203,10 +214,12 @@ The **if-elif-else** statements must be used in sibling nodes. Otherwise, the co
 
 If **show** is **true**, the node is rendered properly; if it is **false**, the display style will be **none**.
 
+
 ```html
 <!-- xxx.hml -->
 <text show="{{visible}}"> Hello World </text>
 ```
+
 
 ```json
 {
@@ -216,9 +229,11 @@ If **show** is **true**, the node is rendered properly; if it is **false**, the 
 }
 ```
 
+
 ## Logic Control Block
 
 **\<block>** makes loop rendering and conditional rendering more flexible. A **\<block>** will not be compiled as a real component. The **\<block>** supports the **if** attribute only.
+
 
 ```html
 <!-- xxx.hml --> 
@@ -229,6 +244,7 @@ If **show** is **true**, the node is rendered properly; if it is **false**, the 
   </block>
 </div>
 ```
+
 
 ```json
 { 

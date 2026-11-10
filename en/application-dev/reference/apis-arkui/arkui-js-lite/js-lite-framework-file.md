@@ -1,16 +1,17 @@
 # File Organization
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-10T07:54:23.740Z pushedAt=2026-11-10T10:56:44.714Z nl=1 -->
 
 ## Directory Structure
 
 The following figure shows the typical directory structure of the JavaScript module (**entry/src/main/js/module**) for an application with feature abilities (FA) using JavaScript APIs.
 
-  **Figure 1** Directory structure 
+  **Figure 1** Directory structure
 
 ![tableOfContents](figures/tableOfContents.png)
 

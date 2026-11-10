@@ -6,6 +6,7 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=16eef75e062f613eca9abc4e5dfa6ceab5ea3f1e translatedAt=2026-11-10T08:42:17.613Z pushedAt=2026-11-10T10:52:04.129Z nl=1 -->
 
 ## Overview
 
@@ -32,6 +33,11 @@ Provides model-related APIs for model creation and inference. These APIs are non
 | OH_AI_CallBackParam | [OH_AI_CallBackParam](capi-mindspore-oh-ai-callbackparam.md)         | Defines the operator information passed in a callback.                  |
 | void * | [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md)                                                | Defines the pointer to a model object.                               |
 | void * |[OH_AI_TrainCfgHandle](capi-mindspore-oh-ai-traincfghandle.md)                                             | Defines the pointer to a training configuration object.                               |
+
+### Macros
+| Name | Description |
+| -- | -- |
+| OH_AI_MAX_SHAPE_NUM 32 | Maximum number of tensor dimensions.<br>**Since:** 9 |
 
 ### Functions
 

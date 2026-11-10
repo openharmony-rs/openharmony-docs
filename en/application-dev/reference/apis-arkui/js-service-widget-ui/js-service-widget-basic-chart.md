@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-10-12T03:59:20.423Z pushedAt=2026-10-12T06:46:04.266Z -->
+<!-- md-trans-meta sourceCommit=60f493edae4433e65bb89c0ec1819f9960b71f65 translatedAt=2026-11-10T07:54:55.412Z pushedAt=2026-11-10T10:58:08.495Z nl=1 -->
 
 The **\<chart>** component displays line charts, gauge charts, and bar charts.
 
@@ -140,7 +140,7 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | ------------ | -------------- | -------------------------- | ---- | ---------------------------------------- |
 | stroke-width | &lt;length&gt; | 32px (**gauge** charts)<br>24px (**rainbow** charts)| No   | Width of the scale bar for **gauge** and **rainbow** charts.                     |
 | start-angle  | &lt;deg&gt;    | 240 (**gauge** charts)<br>0 (**rainbow** charts)    | No   | Start angle of the scale bar for **gauge** and **rainbow** charts, which starts from zero o'clock. The value ranges from 0 to 360.  |
-| total-angle  | &lt;deg&gt;    | 240 (**gauge** charts)<br>360 (**rainbow** charts)  | No   | Total length of the scale bar for **gauge** and **rainbow** charts. The value ranges from –360 to 360. A negative number indicates the anticlockwise direction.|
+| total-angle  | &lt;deg&gt;    | 240 (**gauge** charts)<br>360 (**rainbow** charts)   | No    | Total length of the scale bar for gauge and percentage circle charts. The value ranges from -360 to 360. A negative number indicates the anticlockwise direction from the start point to the end point. |
 | center-x     | &lt;length&gt; | -                          | No   | Center position of the scale bar for **gauge** charts. This style takes precedence over the **position** universal style and<br>must be used together with **center-y** and **radius**.|
 | center-y     | &lt;length&gt; | -                          | No   | Center position of the scale bar for **gauge** charts. This style takes precedence over the **position** universal style and<br>must be used together with **center-x** and **radius**.|
 | radius       | &lt;length&gt; | -                          | No   | Radius of the scale bar for **gauge** charts. This style takes precedence over the **width** and **height** universal style and<br>must be used together with **center-x** and **center-y**.|

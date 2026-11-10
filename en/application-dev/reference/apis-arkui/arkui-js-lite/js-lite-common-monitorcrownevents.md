@@ -1,12 +1,11 @@
 # Monitoring Rotating Crown Events
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dfb15c325281e5e789ea7ade45dfdd45876606ad translatedAt=2026-07-27T02:26:10.311Z pushedAt=2026-07-27T09:23:36.717Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-10T07:54:08.214Z pushedAt=2026-11-10T10:56:23.783Z nl=1 -->
 
 This module provides APIs to monitor rotating crown events for the current page, supporting the registration of page-level rotating crown event monitors. This module is applicable to scenarios where perception of rotating crown operations and page-level interactions are required. Only devices equipped with a rotating crown are supported.
 
@@ -38,6 +37,7 @@ This monitor is automatically removed when [page routing](../js-apis-router.md) 
 | -------- | -------- | -------- | -------- |
 | handler | Function | Mandatory | Callback executed after a rotating crown event occurs. The callback format is **(event)=>{ return false/true; }**.<br>If **true** is returned, the rotating crown event is no longer distributed to the focused component.<br>If **false** is returned,  the rotating crown event continues to be distributed to the focused component. If the callback returns an abnormal value, such as **undefined** or no return value, the default value **false** is used.<br>The rotating crown event information can be obtained through the input parameter. For event information, see **Table 1 Attributes of the CrownEvent object**. |
 
+
 **Table 1** Attributes of the CrownEvent object
 
 | Name                  | Type      | Read-Only   |  Optional  |  Description                                |
@@ -45,6 +45,7 @@ This monitor is automatically removed when [page routing](../js-apis-router.md) 
 | timestamp             | number   | No     | No    | Timestamp, in ns.                                  |
 | angularVelocity       | number   | No     | No    | Rotation angular velocity, indicating the angle rotated per second.<br>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br>Unit: deg/s      |
 | degree                | number   | No     | No    | Relative rotation angle.<br>The value is a positive number when the crown is rotated counterclockwise and a negative number when the crown is rotated clockwise.<br>Unit: deg.<br>Value range: [-360, 360]     |
+
 
 ## clearMonitorForCrownEvents
 
@@ -56,6 +57,7 @@ Clears the rotating crown event monitor for the page.
 
 **Model restriction:** This API can be used only in the FA model.
 
+
 ## Example
 
 ### Example 1 (Setting a Rotating Crown Event Monitor)
@@ -63,7 +65,6 @@ Clears the rotating crown event monitor for the page.
 This example shows how to set a rotating crown event monitor for a page using [setMonitorForCrownEvents](#setmonitorforcrownevents) and control whether the **Slider** component responds to rotating crown events  based on the return value of the monitor using a callback.
 
 Since API version 24, [setMonitorForCrownEvents](#setmonitorforcrownevents) and [clearMonitorForCrownEvents](#clearmonitorforcrownevents) are added.
-
 ```css
 /* xxx.css */
 .container {

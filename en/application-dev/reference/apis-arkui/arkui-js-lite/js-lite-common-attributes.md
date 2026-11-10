@@ -1,12 +1,11 @@
 # Universal Attributes
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dfb15c325281e5e789ea7ade45dfdd45876606ad translatedAt=2026-07-27T02:25:59.164Z pushedAt=2026-07-27T09:23:36.710Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-10T07:54:09.254Z pushedAt=2026-11-10T10:56:10.386Z nl=1 -->
 
 Common attributes are used to describe the basic configuration capabilities supported by components, including the component ID, style reference, reference relationships, and rendering control. They are applicable to scenarios where the basic appearance and display behavior of components need to be set in a unified manner, helping developers manage the basic attributes of components in a consistent way.
 
@@ -20,6 +19,7 @@ Common attributes are used to set component identities and appearance.
 | style | string | No| Style declaration of the component.|
 | class | string | No| Style class of the component, which is used to refer to a style table.|
 | ref | string | No| Reference information of child elements, which is registered with the parent component on **$refs**.|
+
 
 ## Rendering Attributes
 

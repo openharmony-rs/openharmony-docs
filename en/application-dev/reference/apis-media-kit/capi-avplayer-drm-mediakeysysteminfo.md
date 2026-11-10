@@ -2,10 +2,10 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:04:35.109Z pushedAt=2026-06-23T06:12:23.679Z -->
+<!-- md-trans-meta sourceCommit=2d56846da3109c6542705ceefa4aed0cf271c3b1 translatedAt=2026-11-10T08:37:12.887Z pushedAt=2026-11-10T10:44:41.934Z nl=1 -->
 
 ```c
 typedef struct DRM_MediaKeySystemInfo DRM_MediaKeySystemInfo
@@ -13,10 +13,11 @@ typedef struct DRM_MediaKeySystemInfo DRM_MediaKeySystemInfo
 
 ## Overview
 
-The DRM_MediaKeySystemInfo struct describes the media key system information.
+Defines the **DRM_MediaKeySystemInfo** struct, which is used to store and manage DRM media key system information.
 
 **Since**: 12
 
 **Related module**: [AVPlayer](capi-avplayer.md)
 
 **Header file**: [avplayer.h](capi-avplayer-h.md)
+

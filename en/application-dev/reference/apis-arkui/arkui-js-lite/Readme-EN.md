@@ -1,25 +1,26 @@
-# JavaScript-compatible Web-like Development Paradigm (ArkUI.Lite)<!--arkui-js-lite-comp-->
+# JS-compatible Web-like Development Paradigm (ArkUI.Lite)<!--arkui-js-lite-comp-->
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-10T07:54:50.336Z pushedAt=2026-11-10T10:57:45.485Z nl=1 -->
 
-- Framework Overview<!--js-lite-framework-overview-->
+- Framework Description<!--js-lite-framework-overview-->
   - [File Organization](js-lite-framework-file.md)
-  - ["js" Tag](js-lite-framework-js-tag.md)
+  - [js Tag Configuration](js-lite-framework-js-tag.md)
   - [app.js](js-lite-framework-js-file.md)
   - [Lifecycle](js-lite-framework-lifecycle.md)
   - [Multi-Language Capability](js-lite-framework-localization.md)
   - Syntax<!--js-lite-syntax-->
-    - [HML](js-lite-framework-syntax-hml.md)
-    - [CSS](js-lite-framework-syntax-css.md)
-    - [JavaScript](js-lite-framework-syntax-js.md)
-- Universal Components<!--js-lite-universal-comp-inform-->
-  - [Universal Events](js-lite-common-events.md)
-  - [Universal Attributes](js-lite-common-attributes.md)
-  - [Universal Styles](js-lite-common-styles.md)
+    - [HML Syntax Reference](js-lite-framework-syntax-hml.md)
+    - [CSS Syntax Reference](js-lite-framework-syntax-css.md)
+    - [JS Syntax Reference](js-lite-framework-syntax-js.md)
+- Component General Information<!--js-lite-universal-comp-inform-->
+  - [Common Events](js-lite-common-events.md)
+  - [Common Attributes](js-lite-common-attributes.md)
+  - [Common Styles](js-lite-common-styles.md)
   - [Animation Styles](js-lite-components-common-animation.md)
   - [Media Query](js-lite-components-common-mediaquery.md)
 - Container Components<!--js-lite-container-comp-->
@@ -41,6 +42,7 @@
   - [switch](js-lite-components-basic-switch.md)
   - [text](js-lite-components-basic-text.md)
 - Canvas Components<!--js-lite-canvas-comp-->
-  - [canvas](js-lite-components-canvas-canvas.md)
-  - [CanvasRenderingContext2D](js-lite-components-canvas-canvasrenderingcontext2d.md)
-  - [Monitoring Rotating Crown Events](js-lite-common-monitorcrownevents.md)
+  - [canvas component](js-lite-components-canvas-canvas.md)
+  - [CanvasRenderingContext2D object](js-lite-components-canvas-canvasrenderingcontext2d.md)
+- Global APIs<!--js-lite-global-interface-->
+  - [Rotating Crown Event Listening](js-lite-common-monitorcrownevents.md)

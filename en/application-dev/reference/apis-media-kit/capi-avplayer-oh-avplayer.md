@@ -2,10 +2,10 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:05:02.942Z pushedAt=2026-06-23T06:12:23.685Z -->
+<!-- md-trans-meta sourceCommit=2d56846da3109c6542705ceefa4aed0cf271c3b1 translatedAt=2026-11-10T08:38:01.400Z pushedAt=2026-11-10T10:45:40.571Z nl=1 -->
 
 ```c
 typedef struct OH_AVPlayer OH_AVPlayer
@@ -20,3 +20,4 @@ The struct initializes an AVPlayer.
 **Related module**: [AVPlayer](capi-avplayer.md)
 
 **Header file**: [avplayer_base.h](capi-avplayer-base-h.md)
+

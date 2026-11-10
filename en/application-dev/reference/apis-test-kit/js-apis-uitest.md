@@ -6,7 +6,7 @@
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
 <!--Adviser: @chen8281-->
-<!-- md-trans-meta sourceCommit=0aac5c07a75bbca4e339d2ef1a5a592663ce2891 translatedAt=2026-11-03T13:54:11.587Z pushedAt=2026-11-04T08:47:59.773Z nl=1 -->
+<!-- md-trans-meta sourceCommit=de9ad92df8441ca95d21ab7e9880ae800faa78d9 translatedAt=2026-11-10T08:46:48.108Z pushedAt=2026-11-10T10:55:15.746Z nl=1 -->
 
 
 The **UiTest** module provides UI automation test capabilities, such as component search and operation, coordinate clicking/sliding, key injections, screenshot, window management, multi-finger operations, and mouse/stylus/touchpad operations.
@@ -7833,7 +7833,7 @@ inputText(text: string): Promise\<void>
 Inputs text to a component. This API takes effect only for editable text components. This API uses a promise to return the result.
 
 > **NOTE**
-
+>
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputText<sup>9+</sup>](#inputtext9) instead.
 
 **System capability**: SystemCapability.Test.UiTest

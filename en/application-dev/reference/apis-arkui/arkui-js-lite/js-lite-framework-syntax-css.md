@@ -1,10 +1,11 @@
 # CSS
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-10T07:54:42.844Z pushedAt=2026-11-10T10:57:00.569Z nl=1 -->
 
 Cascading Style Sheets (CSS) is a language used to describe the HML page structure. All HML components have default styles. You can customize styles for these components using CSS to design various pages.
 
@@ -107,7 +108,7 @@ A CSS pseudo-class is a keyword added to a selector that specifies a special sta
 | :active  | input[type="button"]           | Selects the element activated by a user, for example, a pressed button. Only the **background-color** and **background-image** attributes can be set for the pseudo-class selector on lite wearables.|
 | :checked | input[type="checkbox", type="radio"]| Selects the element whose **checked** attribute is **true**. Only the **background-color** and **background-image** attributes can be set for the pseudo-class selector on lite wearables.|
 
-The following is an example for you to use the **:active** pseudo-class to control the style when a user presses the button. 
+The following is an example for you to use the **:active** pseudo-class to control the style when a user presses the button.
 
 
 ```html

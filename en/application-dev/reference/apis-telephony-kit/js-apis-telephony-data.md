@@ -6,12 +6,13 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=4d0c4fe124a429b89e6c66eb6b302d8501f24a1d translatedAt=2026-11-10T08:45:24.840Z pushedAt=2026-11-10T10:54:32.866Z nl=1 -->
 
 The **data** module provides basic mobile data management functions. With the APIs provided by this module, you can obtain the default slot of the SIM card used for mobile data, obtain the cellular data flow type and connection status, and check whether cellular data and roaming are enabled.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
 
 ## Modules to Import
 
@@ -644,7 +645,7 @@ Sets the APN corresponding to the specified **apnId** as the preferred APN. This
 
 > **NOTE**
 >
-> If the input APN ID is invalid, the default preferred APN configured by the carrier is used.
+> If the passed **apnId** is invalid, the system switches back to the preferred APN configured by the carrier by default.
 
 **Required permissions**: **ohos.permission.MANAGE_APN_SETTING** (Restricted permission used only when you need to connect to the mobile data private network for office tasks. For details, see [Restricted Permissions](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting).)
 
@@ -755,7 +756,7 @@ Opens the APN configuration page of the default SIM card. This API uses a promis
 
 **Example**
 
-> **NOTE**
+> **NOTE** 
 >
 > In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -773,7 +774,7 @@ data.showSystemApnSettings(context).then(() => {
 
 ## DataFlowType
 
-Defines the cellular data flow type.
+Defines the cellular data flow type. 
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -787,7 +788,7 @@ Defines the cellular data flow type.
 
 ## DataConnectState
 
-Describes the connection status of a cellular data link.
+Describes the connection status of a cellular data link. 
 
 **System capability**: SystemCapability.Telephony.CellularData
 

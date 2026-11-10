@@ -1,10 +1,11 @@
 # JavaScript Service Widget UI Components<!--arkui-card-comp-->
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-10T07:55:35.844Z pushedAt=2026-11-10T10:59:16.956Z nl=1 -->
 
 - Framework Overview<!--card-comp-framework-overview-->
   - [File Organization](js-service-widget-file.md)
