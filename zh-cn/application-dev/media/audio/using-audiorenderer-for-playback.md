@@ -400,6 +400,20 @@ async function enterStandby() {
 
 <!-- @[render_standby_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) --> 
 
+``` TypeScript
+async function exitStandby() {
+  if (audioRenderer !== undefined) {
+    // 退出standby状态。仅在standby状态下可调用。
+    audioRenderer.standby(false).then(() => {
+      console.info('Succeeded in exiting standby.');
+      // 数据回调恢复。
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to exit standby. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
 ### 选择正确的StreamUsage
 
 创建AudioRenderer实例时，开发者需要根据应用场景指定播放器的`StreamUsage`，选择正确的`StreamUsage`可以避免用户遇到不符合预期的行为。
