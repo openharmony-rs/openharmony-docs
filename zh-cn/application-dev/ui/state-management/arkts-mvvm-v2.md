@@ -209,7 +209,7 @@ Repeat支持两种场景：懒加载场景和非懒加载场景。
 - 懒加载场景适用于大量数据的场景，在滚动类容器中按需加载组件，极大节省内存和提升渲染效率。
 - 非懒加载场景适用于数据量较小的场景，一次性渲染所有组件，并在数据变化时仅更新需要变化的部分，避免整体重新渲染。
 
-在示例5中，由于任务量较少，使用Repeat非懒加载场景。新建任务数组tasks，并使用Repeat方法迭代数组中的每一项，动态生成并复用TaskItem组件。任务增删时，这种方式能高效复用已有组件，避免重复渲染，提高界面响应速度和性能。这种机制有效地提高了代码的复用性和渲染效率。
+在示例5中，由于任务量较少，使用Repeat非懒加载场景。新建任务数组tasks，并使用Repeat组件迭代数组中的每一项，动态生成并复用TaskItem组件。任务增删时，这种方式能高效复用已有组件，避免重复渲染，提高界面响应速度和性能。这种机制有效地提高了代码的复用性和渲染效率。
 
 **示例5**
 
@@ -284,7 +284,7 @@ struct TodoList {
 
 实现多个功能后，任务列表管理变得复杂。为了有效处理任务数据的变化，特别是在多层嵌套结构中，需要确保属性变化能够被深度观测并自动更新UI。为此，引入了\@ObservedV2和\@Trace装饰器。与仅能观测对象及其第一层变化的\@Local不同，\@ObservedV2和\@Trace适用于多层嵌套和继承等复杂场景。在\@ObservedV2装饰的类中，\@Trace装饰的属性变化时，会触发绑定的UI组件刷新。
 
-在示例6中，任务（Task）被抽象为一个类，并用\@ObservedV2标记该类，用\@Trace标记isFinish属性。TodoList组件嵌套了TaskItem，TaskItem又嵌套了Task。在最外层的TodoList中，添加了"全部完成"和"全部未完成"的按钮，每次点击这些按钮都会直接更新最内层Task类的isFinish属性。\@ObservedV2和\@Trace确保可以观察到对应isFinish UI组件的刷新，从而实现了对嵌套类属性的深度观测。
+在示例6中，任务（Task）被抽象为一个类，并用\@ObservedV2标记该类，用\@Trace标记isFinish属性。TodoList组件嵌套了TaskItem，TaskItem又嵌套了Task。在最外层的TodoList中，添加了“全部完成”和“全部未完成”的按钮，每次点击这些按钮都会直接更新最内层Task类的isFinish属性。\@ObservedV2和\@Trace确保可以观察到对应isFinish UI组件的刷新，从而实现了对嵌套类属性的深度观测。
 
 **示例6**
 
@@ -1252,7 +1252,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
   }
   ```
   
-- BottomView：负责提供与任务操作相关的按钮和输入框，如"全部完成"、"全部未完成"，"设置"三个按钮，以及添加新任务的输入框。点击"全部完成"和"全部未完成"时，通过TaskListViewModel更改所有任务的状态。点击"设置"按钮时，会导航到SettingAbility的设置页面。添加新任务时，通过TaskListViewModel新增任务到任务列表中。
+- BottomView：负责提供与任务操作相关的按钮和输入框，如“全部完成”、“全部未完成”和“设置”三个按钮，以及添加新任务的输入框。点击“全部完成”和“全部未完成”时，通过TaskListViewModel更改所有任务的状态。点击“设置”按钮时，会导航到SettingAbility的设置页面。添加新任务时，通过TaskListViewModel新增任务到任务列表中。
 
   <!-- @[View_BottomView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/BottomView.ets) --> 
   
