@@ -1,23 +1,21 @@
 # Attributes
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4180bb2e440d5dee76207e80672383a5f25809b4 translatedAt=2026-08-07T04:34:58.488Z pushedAt=2026-08-11T12:11:17.443Z -->
+<!-- md-trans-meta sourceCommit=e7451866ec81cfe11f5827c730c44d1d9f4d9394 translatedAt=2026-11-06T11:13:20.056Z pushedAt=2026-11-10T11:15:18.044Z nl=1 -->
 
 The supported universal attributes include [aspectRatio](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio), [backdropBlur](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backdropblur), [backgroundColor](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor), [bindContentCover](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover), [bindContextMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8), [bindMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu), [bindSheet](../apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet), [borderColor](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor), [borderRadius](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius), [borderStyle](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderstyle), [borderWidth](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth), [clip](../apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clip12), [constraintSize](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize), [defaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9), [focusable](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable), [tabIndex](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabindex9), [groupDefaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#groupdefaultfocus9), [displayPriority](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#displaypriority), [enabled](../apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled), [flexBasis](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis), [flexShrink](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink), [layoutWeight](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight), [id](../apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id), [gridOffset](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#attributes), [gridSpan](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#attributes), [useSizeType](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#attributes), [height](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#height), [touchable](../apis-arkui/arkui-ts/ts-universal-attributes-click.md#touchabledeprecated), [margin](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin), [markAnchor](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#markanchor), [offset](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset), [width](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#width), [zIndex](../apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex), [visibility](../apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility), [scale](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale), [translate](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate), [responseRegion](../apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion), [size](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#size), [opacity](../apis-arkui/arkui-ts/ts-universal-attributes-opacity.md#opacity), [shadow](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow), [sharedTransition](../apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md), [transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md), [position](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#position), and [direction](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#direction).
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > - The sample effect is subject to the actual device.
 
 ## Overview
-
 Web component attributes are used to configure the web page loading behavior, security policies, runtime environment, and interaction capabilities of the **Web** component through chain calls in the ArkUI declarative syntax. They serve as the primary entry point for customizing **Web** component behavior. For general style and layout attributes (such as size, margin, background, and visibility), see [Size Settings](../apis-arkui/arkui-ts/ts-universal-attributes-size.md). This chapter describes only attributes specific to the **Web** component. For runtime dynamic control capabilities (such as loading URLs, navigating forward/backward, registering/unregistering JS objects, running JavaScript, and injecting CSS), use them together with [WebviewController](./arkts-apis-webview-WebviewController.md).
 
 ## domStorageAccess
@@ -107,7 +105,6 @@ Sets whether to allow automatic loading of image resources. If this attribute is
 | imageAccess | boolean | Yes    | Whether to allow automatic loading of image resources.<br>The value **true** means allowed, and **false** means not allowed.<br>If **undefined** or **null** is passed, the value is **false**. |
 
 **Example**
-
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -516,7 +513,6 @@ Sets whether autoplay of audible videos requires a user tap. Muted video playbac
   ```
 
 HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -610,7 +606,6 @@ Sets whether to display the horizontal scrollbar, including the system default s
   ```
 
   HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -693,7 +688,6 @@ Sets whether to display the vertical scrollbar, including the system default scr
   ```
 
   HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -716,6 +710,94 @@ Sets whether to display the vertical scrollbar, including the system default scr
   </body>
   </html>
   ```
+
+## caretColor
+
+caretColor(value: ResourceColor)
+
+Sets the color of the text input cursor and text selection handle on the web page of the **Web** component.
+
+> **NOTE**
+>
+> - If this attribute is not set or is reset, the input cursor uses the result of the web page CSS `caret-color`; if the CSS is `auto` or not set, the kernel default cursor color (currently `#0A59F7`) is used. The selection handle uses the current theme color.
+> - The priority of a non-zero API color is higher than that of the web page CSS `caret-color`, including the CSS explicit color and `transparent`.
+> - The parsed exact color value `0x00000000` is used to reset the API color override and restore the default behavior of CSS and the theme. The string `#00000000` can be used for resetting; passing `undefined` or `null` also resets this attribute. The numeric value `0` is completed with transparency according to the color parsing rules and cannot be used for this reset operation.
+> - This attribute affects the input cursor, the outer ring and connecting line of the selection handle, and does not change the inner ring of the handle or the background of the text selection.
+> - The application needs to configure colors suitable for dark and light modes, for example, by providing color resources for the corresponding theme, or by resetting the color after listening for mode changes. This attribute does not automatically select an adaptive color or guarantee contrast.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| value | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | Yes | Color of the web page text input cursor and selection handle. A non-zero color overrides the web page CSS cursor color; the string `#00000000`, `undefined`, or `null` resets the color override. |
+
+**Example**
+
+After clicking the button to set the color, click the input box on the web page to observe the cursor, or long-press to select text to observe the handle. After clicking the reset button, the input cursor restores the blue color specified by the web page CSS, and the selection handle restores the current theme color.
+
+
+```ts
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State caretColorValue: ResourceColor = '#FFFF0000';
+
+  build() {
+    Column() {
+      Row() {
+        Button('Red')
+          .onClick(() => {
+            this.caretColorValue = '#FFFF0000';
+          })
+        Button('Green')
+          .onClick(() => {
+            this.caretColorValue = '#FF00FF00';
+          })
+        Button('Reset')
+          .onClick(() => {
+            this.caretColorValue = '#00000000';
+          })
+      }
+      Web({ src: $rawfile('caret_color_zh.html'), controller: this.controller })
+        .caretColor(this.caretColorValue)
+        .width('100%')
+        .layoutWeight(1)
+    }.width('100%').height('100%')
+  }
+}
+```
+
+The loaded HTML file is located at `entry/src/main/resources/rawfile/caret_color_zh.html`.
+
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    input {
+      width: 90%;
+      font-size: 24px;
+      caret-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <input value="Click to enter text, or long press to select this text">
+</body>
+</html>
+```
 
 ## cacheMode
 
@@ -899,9 +981,11 @@ Sets whether to block online downloads. When this attribute is not explicitly ca
 
 defaultFixedFontSize(size: number)
 
+
 Sets the default fixed font size for the web page. For HTML elements that use the **monospace** font and do not specify **font-size**, the font size is rendered based on this value.
 
 When this attribute is not explicitly called, the default fixed font size is **13**.
+
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -936,9 +1020,11 @@ When this attribute is not explicitly called, the default fixed font size is **1
 
 defaultFontSize(size: number)
 
+
 Sets the default font size for the web page. For HTML elements that use non-monospace fonts and do not specify **font-size**, the font size is rendered based on this value.
 
 When this attribute is not explicitly called, the default font size of the web page is **16**.
+
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -973,9 +1059,11 @@ When this attribute is not explicitly called, the default font size of the web p
 
 minFontSize(size: number)
 
+
 Sets the minimum font size for the web page. If the font size of HTML elements is smaller than the value set by this API, the font size is rendered based on the value set by this API.
 
 When no attribute is explicitly called, the default minimum font size of the web page is **8**.
+
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1010,15 +1098,16 @@ When no attribute is explicitly called, the default minimum font size of the web
 
 minLogicalFontSize(size: number)
 
+
 Sets the minimum logical font size for the web page.
 
 For HTML elements whose font size is not specified:
-
 1. If the font size of the element is smaller than the value set by this API, the font size is rendered based on the API value.
-
 2. If **minLogicalFontSize** and **minFontSize** are both set, the larger value of the two will be used for elements whose font size is not specified.
 
+
 When this attribute is not explicitly called, the default minimum logical font size of the web page is **8**.
+
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1053,9 +1142,11 @@ When this attribute is not explicitly called, the default minimum logical font s
 
 webFixedFont(family: string)
 
+
 Sets the fixed font family of the web page to render HTML elements that use the **monospace** font.
 
 When this attribute is not explicitly called, the default fixed font family of the web page is **monospace**.
+
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1090,9 +1181,11 @@ When this attribute is not explicitly called, the default fixed font family of t
 
 webSansSerifFont(family: string)
 
+
 Sets the sans-serif font family of the web page to render HTML elements that use the **sans-serif** font.
 
 When this attribute is not explicitly called, the sans-serif font family of the web page is **sans-serif** by default.
+
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1127,9 +1220,11 @@ When this attribute is not explicitly called, the sans-serif font family of the 
 
 webSerifFont(family: string)
 
+
 Sets the serif font family of the web page to render HTML elements that use the **serif** font.
 
 When this attribute is not explicitly called, the default serif font family of the web page is **serif**.
+
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1164,9 +1259,11 @@ When this attribute is not explicitly called, the default serif font family of t
 
 webStandardFont(family: string)
 
+
 Sets the standard font family of the web page to render HTML elements whose font style is not specified.
 
 When this attribute is not explicitly called, the default standard font family of the web page is **sans-serif**.
+
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1201,9 +1298,11 @@ When this attribute is not explicitly called, the default standard font family o
 
 webFantasyFont(family: string)
 
+
 Sets the fantasy font family of the web page to render HTML elements that use the **fantasy** font.
 
 When this attribute is not explicitly called, the default fantasy font family of the web page is **fantasy**.
+
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1237,9 +1336,11 @@ When this attribute is not explicitly called, the default fantasy font family of
 
 webCursiveFont(family: string)
 
+
 Sets the cursive font family of the web page to render HTML elements that use the **cursive** font.
 
 When this attribute is not explicitly called, the default cursive font family of the web page is **cursive**.
+
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1448,22 +1549,21 @@ struct WebComponent {
                         this.dialogController.close()
                     }
                     let popController: webview.WebviewController = new webview.WebviewController();
+                    // Return the WebviewController corresponding to the new window to the Web kernel.
+                    // If the event.handler.setWebController API is not called, the rendering process will be blocked.
+                    // If no new window is created, set it to null when calling the event.handler.setWebController API to notify Web that no new window has been created.
+                    event.handler.setWebController(popController);
                     this.dialogController = new CustomDialogController({
                         builder: NewWebViewComp({ webviewController1: popController }),
                         // Set isModal to false to prevent the new window from being destroyed, so that the onActivateContent callback can be triggered.
                         isModal: false
                     })
                     this.dialogController.open();
-                    // Return the WebviewController object corresponding to the new window to the web kernel.
-                    // If event.handler.setWebController is not called, the rendering process will be blocked.
-                    // If no new window is created, set the value of event.handler.setWebController to null to notify the Web component that no new window is created.
-                    event.handler.setWebController(popController);
                 })
         }
     }
 }
 ```
-
 **Example of the HTML file**
 
 ```html
@@ -1586,7 +1686,6 @@ Injects a JavaScript script into the **Web** component. When the specified page 
       }
   }
   ```
-
 **Example of the HTML file**
 
 ```html
@@ -1738,7 +1837,6 @@ Injects a JavaScript script into the **Web** component. When the specified page 
       }
   }
   ```
-
 **Example of the HTML file**
 
 ```html
@@ -1931,49 +2029,47 @@ Sets the layout mode of the **Web** component. If this attribute is not explicit
 
 **Example**
 
-  1. After specifying the **layoutMode** to **WebLayoutMode.FIT_CONTENT**, you need to explicitly specify the **renderMode** to **RenderMode.SYNC_RENDER**. Otherwise, rendering errors may occur when the viewport height exceeds 7680 px in the default **RenderMode.ASYNC_RENDER**.
+  1. Specify **layoutMode** as `WebLayoutMode.FIT_CONTENT`. To avoid rendering errors caused by the viewport height exceeding 7680px in the default rendering mode (`RenderMode.ASYNC_RENDER`), you need to explicitly specify the rendering mode (`RenderMode.SYNC_RENDER`).
+     ```ts
+     // xxx.ets
+     import { webview } from '@kit.ArkWeb';
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+     @Entry
+     @Component
+     struct WebComponent {
+       controller: webview.WebviewController = new webview.WebviewController();
+       mode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    mode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
+       build() {
+         Column() {
+           Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
+             .layoutMode(this.mode)
+         }
+       }
+     }
+     ```
 
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
-          .layoutMode(this.mode)
-      }
-    }
-  }
-  ```
+  2. Specify **layoutMode** as `WebLayoutMode.FIT_CONTENT`. To avoid the over-scroll rebound effect being triggered first when the Web scrolls to the edge in the nested scrolling scenario, which affects user experience, you are advised to specify [overScrollMode](#overscrollmode11) as `OverScrollMode.NEVER`.
+     ```ts
+     // xxx.ets
+     import { webview } from '@kit.ArkWeb';
 
-  2. After specifying the layoutMode to **WebLayoutMode.FIT_CONTENT**, you are advised to specify [overScrollMode](#overscrollmode11) to **OverScrollMode.NEVER**. Otherwise, when the web page scrolls to the edge in the nested scrolling scenario, the rebounding effect is triggered first, which affects user experience.
+     @Entry
+     @Component
+     struct WebComponent {
+       controller: webview.WebviewController = new webview.WebviewController();
+       layoutMode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
+       @State overScrollMode: OverScrollMode = OverScrollMode.NEVER;
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    layoutMode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
-    @State overScrollMode: OverScrollMode = OverScrollMode.NEVER;
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
-          .layoutMode(this.layoutMode)
-          .overScrollMode(this.overScrollMode)
-      }
-    }
-  }
-  ```
+       build() {
+         Column() {
+           Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
+             .layoutMode(this.layoutMode)
+             .overScrollMode(this.overScrollMode)
+         }
+       }
+     }
+     ```
 
 ## nestedScroll<sup>11+</sup>
 
@@ -2017,7 +2113,6 @@ Sets nested scrolling options.
     }
   }
   ```
-
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -2046,9 +2141,7 @@ Sets nested scrolling options.
     }
   }
   ```
-
   HTML file to be loaded:
-
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -2199,14 +2292,19 @@ Sets whether to enable the same-layer rendering feature. When this method is not
     }
   }
   ```
-
 ## forceDisplayScrollBar<sup>14+</sup>
 
 forceDisplayScrollBar(enabled: boolean)
 
+
 Sets whether the scroll bar is always visible. Under the always-visible settings, when the page size exceeds one page, the scroll bar appears and remains visible. When this attribute is not explicitly called, the scroll bar is not always visible by default.
 
 When **layoutMode** is set to **WebLayoutMode.FIT_CONTENT**, the **enabled** parameter is set to **false**.
+
+> **NOTE**
+>
+> - This API takes effect globally across all **Web** components in the current application. When multiple **Web** components are set with different values, the value set first takes effect.
+> - It is recommended to use [setScrollbarMode](./arkts-apis-webview-WebviewController.md#setscrollbarmode23) to set the scrollbar mode of all **Web** components in the current application. If the **setScrollbarMode** API is called at the same time, the setting of the **forceDisplayScrollBar** API does not take effect.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2215,6 +2313,7 @@ When **layoutMode** is set to **WebLayoutMode.FIT_CONTENT**, the **enabled** par
 | Name | Type| Mandatory| Description          |
 | ------- | -------- | ---- | ------------------ |
 | enabled | boolean | Yes | Whether the scroll bar is always displayed.<br>The value **true** indicates that the scroll bar is always displayed, and **false** indicates the opposite.<br>When layoutMode is set to WebLayoutMode.FIT_CONTENT, the enabled parameter is forcibly set to **false**, and setting it to **true** does not take effect.<br>If **undefined** or **null** is passed in, the attribute setting does not take effect. |
+
 
 **Example**
 
@@ -2237,7 +2336,6 @@ When **layoutMode** is set to **WebLayoutMode.FIT_CONTENT**, the **enabled** par
   ```
 
   HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -2260,7 +2358,6 @@ When **layoutMode** is set to **WebLayoutMode.FIT_CONTENT**, the **enabled** par
   </body>
   </html>
   ```
-
 ## registerNativeEmbedRule<sup>12+</sup>
 
 registerNativeEmbedRule(tag: string, type: string)
@@ -2386,7 +2483,6 @@ For details, see [Using Same-Layer Rendering](../../web/web-same-layer.md#render
   ```
 
   HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -2442,9 +2538,7 @@ Sets the default text encoding format for the web page. When this attribute is n
     }
   }
   ```
-
   HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -2458,7 +2552,6 @@ Sets the default text encoding format for the web page. When this attribute is n
   </body>
   </html>
   ```
-
 ## metaViewport<sup>12+</sup>
 
 metaViewport(enabled: boolean)
@@ -2498,9 +2591,7 @@ struct WebComponent {
   }
 }
 ```
-
 HTML file to be loaded:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -2559,7 +2650,6 @@ After automatic font sizing takes effect, any text smaller than 16 px is enlarge
     }
   }
   ```
-
 ## enableNativeMediaPlayer<sup>12+</sup>
 
 enableNativeMediaPlayer(config: NativeMediaPlayerConfig)
@@ -2674,7 +2764,6 @@ If the keyboard avoidance mode set in **UIContext** is [KeyboardAvoidMode.RESIZE
   ```
 
   HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -2822,7 +2911,6 @@ struct WebComponent {
 ```
 
  HTML file to be loaded:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -2881,7 +2969,6 @@ struct WebComponent {
 ```
 
  HTML file to be loaded:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -3137,7 +3224,6 @@ struct SelectionMenuLongPress {
 ```
 
  HTML file to be loaded:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -3267,7 +3353,6 @@ Sets the blur mode for **Web** elements when the soft keyboard is dismissed. If 
   ```
 
  HTML file to be loaded:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -3292,7 +3377,7 @@ Sets the blur mode for **Web** elements when the soft keyboard is dismissed. If 
 
 enableFollowSystemFontWeight(follow: boolean)
 
-Sets whether the **Web** component can change the font weight according to the system settings. When this attribute is not explicitly called, the **Web** component can change the font weight according to the system settings by default.
+Sets whether the **Web** component can change the font weight according to the system settings. When this attribute is not explicitly called, the **Web** component does not change the font weight according to the system settings by default.
 
 > **NOTE**
 >
@@ -3304,7 +3389,7 @@ Sets whether the **Web** component can change the font weight according to the s
 
 | Name      | Type                            | Mandatory| Description                               |
 | ------------ | ------------------------------- | ---- | ----------------------------------- |
-| follow | boolean | Yes   | Whether the **Web** component can change the font weight according to the system settings.<br>The value **true** means that the **Web** component can change the font weight according to the system settings, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **true**.|
+| follow | boolean | Yes    | Whether the **Web** component can change the font weight according to the system settings.<br>The value **true** means that the **Web** component can change the font weight according to the system settings, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **false**. |
 
 **Example**
 
@@ -3345,6 +3430,7 @@ When the FCP of a page is triggered, the default segment parsing logic is restor
 | ---------- | ------- | ---- | ---------------------- |
 | optimizeParserBudget | boolean | Yes   | Whether to enable segment-based HTML parsing optimization.<br>The value **true** means to use the number of parsed records instead of the parsing time as the segment point for HTML segment parsing, and reduce the upper limit of the number of parsed records in each segment. The value **false** means to use the parsing time as the segment point for HTML segment parsing.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
+
 **Example**
 
   ```ts
@@ -3369,6 +3455,10 @@ When the FCP of a page is triggered, the default segment parsing logic is restor
 enableWebAVSession(enabled: boolean)
 
 Sets whether to support an application to connect to media controller. If this attribute is not explicitly set, the application can connect to media controller by default.
+
+> **NOTE**
+>
+> - When **enabled** is **false**, Web audio and video are not connected to the media controller. If the application goes to the background and the webpage audio continues playing, the Web component applies for a continuous task of the AUDIO_PLAYBACK type on behalf of the application. In API version 26.0.0 and later, the system displays the corresponding [continuous task](../../task-management/continuous-task.md) notification in the notification panel. Deleting the notification stops the corresponding continuous task.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3398,7 +3488,6 @@ Sets whether to support an application to connect to media controller. If this a
   ```
 
   HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -3451,9 +3540,7 @@ Sets the same-layer rendering configuration. This attribute takes effect only wh
     }
   }
   ```
-
 HTML file to be loaded:
-
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -3468,7 +3555,6 @@ HTML file to be loaded:
   </body>
   </html>
   ```
-
 ## enableDataDetector<sup>20+</sup>
 
 enableDataDetector(enable: boolean)
@@ -3480,9 +3566,7 @@ Sets whether to recognize special entities of web texts, such as emails, phone n
 > Attributes such as [dataDetectorConfig](#datadetectorconfig20) and [enableSelectedDataDetector](#enableselecteddatadetector22) take effect only when this attribute is enabled.
 
 If **enableDataDetector** is set to **true** and [dataDetectorConfig](#datadetectorconfig20) is not set, all types of entities will be recognized, and the **color** and **decoration** attributes of the recognized entities will be changed to the following styles:
-
 <!--code_no_check-->
-
 ```ts
 color: '#ff0a59f7',
 decoration:{
@@ -3500,13 +3584,13 @@ For details about the application scenario, see [Using Smart Text Data Detector]
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | --------------------------------- |
 | enable  | boolean | Yes  | Whether to enable web text recognition. The value **true** means to enable web text recognition, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the attribute setting does not take effect.|
 
-> **NOTE**
+> **NOTE** 
 > 
 > Dynamically updating the **enableDataDetector** status does not affect the current page immediately. You need to refresh the page for the new configuration to take effect.
 
@@ -3529,9 +3613,7 @@ For details about the application scenario, see [Using Smart Text Data Detector]
     }
   }
   ```
-
 HTML file to be loaded:
-
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -3560,15 +3642,16 @@ When entities A and B overlap, the following rules are followed:
 
 2. If A is not a subset of B (A ⊄ B) and B is not a subset of A (B ⊄ A), and if the starting point of A is earlier than that of B (A.start < B.start), then A is retained; otherwise, B is retained.
 
+
 **System capability**: SystemCapability.Web.Webview.Core
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                       | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | config | [TextDataDetectorConfig](../apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11)| Yes  | Text recognition configuration.|
 
-> **NOTE**
+> **NOTE** 
 > 
 > The **onDetectResultUpdate** method in **TextDataDetectorConfig** is not supported in the **Web** component. The configured callback will not be called.
 >
@@ -3607,9 +3690,7 @@ When entities A and B overlap, the following rules are followed:
     }
   }
   ```
-
 HTML file to be loaded:
-
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -3639,13 +3720,13 @@ For details about the application scenario, see [Using Smart Text Data Detector]
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | --------------------------------- |
 | enable  | boolean | Yes  | Whether to enable web text recognition. The value **true** means to enable web text recognition, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the attribute is reset to the default value.|
 
-> **NOTE**
+> **NOTE** 
 >
 > If **enableSelectedDataDetector** is not set or is set to **true**, the **types** in [dataDetectorConfig](#datadetectorconfig20) are used. If **dataDetectorConfig** is not set, all types are recognized by default.
 > 
@@ -3670,9 +3751,7 @@ For details about the application scenario, see [Using Smart Text Data Detector]
     }
   }
   ```
-
 HTML file to be loaded:
-
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -3722,7 +3801,6 @@ Sets the gesture focus mode of the **Web** component, which controls the focus r
   ```
 
   HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -3771,7 +3849,6 @@ Sets how the final state of the **Web** component's content is rendered during i
   ```
 
   HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -3820,7 +3897,6 @@ Sets whether to enable the forcible zoom functionality for the **Web** component
   ```
 
   HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -3844,7 +3920,7 @@ Sets whether to enable the back-to-top feature for the **Web** component when th
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | --------------------------------- |
@@ -3871,7 +3947,6 @@ Sets whether to enable the back-to-top feature for the **Web** component when th
   ```
 
   HTML file to be loaded:
-
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -3958,13 +4033,56 @@ Sets the blank screen detection configuration, such as whether to enable the det
   }
   ```
 
+## enableBlankScreenMonitor
+
+enableBlankScreenMonitor(enable: boolean)
+
+Sets whether to enable blank screen detection. After blank screen detection is enabled, the Web component triggers the callback [onMonitoredBlankScreen](./arkts-basic-components-web-events.md#onmonitoredblankscreen) when a blank screen is detected. When the attribute has no explicit call, blank screen detection is disabled by default.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---------- | ------- | ---- | ------------- |
+| enable | boolean | Yes | Whether to enable blank screen detection. true indicates enabled, and false indicates disabled. |
+
+**Example**
+
+  ```ts
+  // enableBlankScreenMonitor.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableBlankScreenMonitor(true)
+          .onMonitoredBlankScreen((event: MonitoredBlankScreenEventInfo)=>{
+            console.info(`Monitored blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.reason}.`);
+            console.info(`The extra message is ${event.extraMsg}.`);
+          })
+      }
+    }
+  }
+  ```
+
 ## enableImageAnalyzer<sup>23+</sup>
 
 enableImageAnalyzer(enable: boolean)
 
 Sets whether to enable AI analysis of web page images. Currently, the image text recognition feature is supported. If this attribute is not explicitly called, this feature is enabled by default.
 
-> **NOTE**
+> **NOTE** 
 >
 > When you long-press or hover the mouse over the image text, AI analyzer is triggered and the text in the image can be selected. The specifications of images that can trigger analyzer are as follows:
 >
@@ -3974,7 +4092,7 @@ Sets whether to enable AI analysis of web page images. Currently, the image text
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | --------------------------------- |
@@ -4001,7 +4119,6 @@ Sets whether to enable AI analysis of web page images. Currently, the image text
   ```
 
   HTML file to be loaded:
-
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -4034,16 +4151,14 @@ enableAutoFill(value: boolean)
 Sets whether to enable web page autofill. By default, this feature is enabled.
 
 <!--RP1-->
-
 > **NOTE**
 >
 > The autofill feature of this API depends on SmartFill service and Password Autofill Service.
-
 <!--RP1End-->
 
 **System capability**: SystemCapability.Web.Webview.Core
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | --------------------------------- |
@@ -4070,7 +4185,6 @@ Sets whether to enable web page autofill. By default, this feature is enabled.
   ```
 
   HTML file to be loaded:
-
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -4176,7 +4290,6 @@ Sets whether to enable the drag function. If this attribute is not explicitly ca
   ```
 
  HTML file to be loaded.
-
 ```html
 <!--test.html-->
 <!DOCTYPE html>
@@ -4375,7 +4488,6 @@ The API only supports the selection of plain text; if the selected content conta
   ```
 
   HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -4427,7 +4539,6 @@ If this attribute is not explicitly called, zooming by pressing **Ctrl + '-/+'**
   ```
 
   HTML file to be loaded:
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -4514,7 +4625,6 @@ struct DemoPage {
 ```
 
 HTML file to be loaded
-
 ```html
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -4651,7 +4761,6 @@ Sets the keyboard appearance mode, which controls the appearance style of the ke
   ```
 
   HTML file to be loaded.
-
   ```html
   <!--index.html-->
   <!DOCTYPE html>
@@ -4747,6 +4856,47 @@ Sets whether to enable the media resource network request proxy feature for the 
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
         .enableMediaNetworkProxy(true)
+      }
+    }
+  }
+  ```
+
+## flingSpeedLimit
+
+flingSpeedLimit(speedLimit: number)
+
+Sets the upper limit of the inertial scrolling speed of the Web component, in vp/s. When this attribute has no explicit call, the default value is 9000 on PC devices and 17000 on non-PC devices.
+
+> **NOTE**
+>
+> - The value set through this API takes precedence over the value set through the frontend viewport max-fling-speed-x/y API.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| speedLimit | number | Yes | Upper limit of the inertial scrolling speed, in vp/s.<br>Value range: (0, +∞).<br>When a value outside the range, undefined, or null is passed in, the default value is used. |
+
+**Example**
+
+  ```ts
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .flingSpeedLimit(5000)
       }
     }
   }

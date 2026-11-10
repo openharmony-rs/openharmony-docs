@@ -1,12 +1,11 @@
 # @ohos.web.webNativeMessagingExtensionContext
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @csliutt-private-->
 <!--Designer: @ringking0-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=bcbbbedf2234f156fe3ad4387f2cc76834ae7941 translatedAt=2026-08-03T09:43:27.463Z pushedAt=2026-08-07T10:52:00.162Z -->
+<!-- md-trans-meta sourceCommit=67bc5dd8b985b714888e019822c519c0e98e511c translatedAt=2026-11-06T10:56:10.141Z pushedAt=2026-11-10T02:03:56.083Z nl=1 -->
 
 WebNativeMessagingExtensionContext is the runtime context of the native web message extension ([WebNativeMessagingExtensionAbility](./arkts-apis-web-webNativeMessagingExtensionAbility.md)). It inherits from ExtensionContext and provides lifecycle management, ability startup, and native message connection control capabilities for the extension ability. In an extension that inherits from WebNativeMessagingExtensionAbility, developers can obtain this context through `this.context` and then call [startAbility](#startability) to start another ability, call [startAbilityForResult](#startabilityforresult) to start a UIAbility and receive the return result, call [terminateSelf](#terminateself) to terminate the current extension, or call [stopNativeConnection](#stopnativeconnection) to stop a specified native web message connection.
 
@@ -25,6 +24,8 @@ import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb'
 ## WebNativeMessagingExtensionContext
 
 Represents the context of web native message extension, including the required interaction capabilities.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 ### startAbility
 
@@ -80,6 +81,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
+
 ```ts
 import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
 import { Want } from '@kit.AbilityKit';
@@ -96,8 +98,8 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
       context.startAbility(abilityWant).then(() => {
         console.info('Ability started successfully');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
-          Message: ${(err as BusinessError).message}`);
+        console.error(`Failed to start ability. Code: ${err.code},
+          Message: ${err.message}`);
       });
     } catch (err) {
       console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
@@ -114,11 +116,8 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityRes
 Starts a UIAbility. This API uses a promise to return the result when the started UIAbility exits.
 
 After the UIAbility is started, the following situations may occur:
-
  - Under normal circumstances, [terminateSelfWithResult](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) can be called to terminate the UIAbility and return the result to the caller.
-
  - In abnormal cases, such as when the UIAbility is destroyed, exception information is returned to the caller, with resultCode set to -1.
-
  - Only UIAbilities of the current app can be started.
 
 **Since**: 26.0.0
@@ -190,8 +189,8 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
           console.info(`Result data: ${JSON.stringify(result.want)}`);
         }
       }).catch((err: BusinessError) => {
-        console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
-        Message:${(err as BusinessError).message}`);
+        console.error(`Failed to start ability. Code: ${err.code},
+        Message:${err.message}`);
       });
     } catch (err) {
       console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
@@ -202,7 +201,6 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
 ```
 
 ### terminateSelf
-
 terminateSelf(): Promise&lt;void&gt;
 
 Destroys the current native web message extension. This method returns a promise for asynchronous processing. Calling this method automatically stops all native web message connections, so there is no need to call stopNativeConnection.
@@ -240,8 +238,8 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
         context.terminateSelf().then(() => {
           console.info('Extension terminated successfully');
         }).catch((err: BusinessError) => {
-          console.error(`Failed to terminate extension. Code: ${(err as BusinessError).code},
-          Message: ${(err as BusinessError).message}`);
+          console.error(`Failed to terminate extension. Code: ${err.code},
+          Message: ${err.message}`);
         });       
     } catch (err) {
         console.error(`Failed to terminate extension. Code: ${(err as BusinessError).code},

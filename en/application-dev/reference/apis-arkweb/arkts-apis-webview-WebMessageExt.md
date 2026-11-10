@@ -2,11 +2,14 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:06:06.975Z pushedAt=2026-11-10T02:24:49.384Z nl=1 -->
 
-Implements a **WebMessageExt** object that received and sent by the [WebMessagePort](./arkts-apis-webview-WebMessagePort.md) API.
+WebMessageExt is an extended data object used for receiving and sending in the [WebMessagePort](./arkts-apis-webview-WebMessagePort.md) interface. It supports multiple data types: string (STRING), number (NUMBER), boolean (BOOLEAN), binary data (ARRAY_BUFFER), array (ARRAY), and error object (ERROR). This class provides a structured data carrier for cross-language message communication between the ArkTS side and the HTML5 side. It sets and gets the data type through setType/getType, and then reads and writes specific data through the corresponding setter/getter methods.
+
+WebMessageExt is used together with WebMessagePort: WebMessagePort is responsible for establishing the message channel and sending and receiving messages, while WebMessageExt serves as the message payload transferred between different language runtimes. When using the extended interfaces [postMessageEventExt](./arkts-apis-webview-WebMessagePort.md#postmessageeventext10)/[onMessageEventExt](./arkts-apis-webview-WebMessagePort.md#onmessageeventext10), the message carrier is the WebMessageExt object.
 
 > **NOTE**
 >
@@ -28,7 +31,7 @@ Obtains the type of the data object. For details about the sample code, see [onM
 
 | Type          | Description                                                     |
 | --------------| --------------------------------------------------------- |
-| [WebMessageType](./arkts-apis-webview-e.md#webmessagetype10) | Data types supported by the [webMessagePort](./arkts-apis-webview-WebMessagePort.md) API.|
+| [WebMessageType](./arkts-apis-webview-e.md#webmessagetype10) | Enumerates the data types supported by the [WebMessagePort](./arkts-apis-webview-WebMessagePort.md) API. |
 
 ## getString<sup>10+</sup>
 
@@ -174,7 +177,7 @@ Sets the type for the data object. For details about the sample code, see [onMes
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| type  | [WebMessageType](./arkts-apis-webview-e.md#webmessagetype10) | Yes  | Data types supported by the [webMessagePort](./arkts-apis-webview-WebMessagePort.md) API.|
+| type  | [WebMessageType](./arkts-apis-webview-e.md#webmessagetype10) | Yes   | Enumerates the data types supported by the [WebMessagePort](./arkts-apis-webview-WebMessagePort.md) API. |
 
 **Error codes**
 

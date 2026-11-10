@@ -1,12 +1,11 @@
 # Interface (WebMessagePort)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:49:50.719Z pushedAt=2026-08-07T08:11:41.801Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:05:58.947Z pushedAt=2026-11-10T02:25:07.699Z nl=1 -->
 
 WebMessagePort is a message port interface in the Web component used for bidirectional communication between the app side (ArkTS) and the HTML5 side (JavaScript). A pair of associated ports is created through createWebMessagePorts, with one port sent to the HTML5 side and the other retained on the app side, enabling cross-runtime message passing. WebMessagePort supports two message protocols: the basic protocol uses WebMessage as the message carrier (postMessageEvent/onMessageEvent), and the extended protocol uses WebMessageExt to support richer data types (postMessageEventExt/onMessageEventExt).
 
@@ -415,7 +414,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -437,7 +435,6 @@ HTML file to be loaded:
 ```
 
 <!--code_no_check-->
-
 ```js
 //index.js
 var h5Port;

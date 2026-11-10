@@ -1,12 +1,11 @@
 # Class (WebSchemeHandlerResponse)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:49:33.631Z pushedAt=2026-08-07T08:11:48.954Z -->
+<!-- md-trans-meta sourceCommit=e6ab3f7be9d7726c1f565f4b61374350a7fba7d3 translatedAt=2026-11-06T11:07:20.147Z pushedAt=2026-11-10T02:26:36.657Z nl=1 -->
 
 WebSchemeHandlerResponse is a class used to construct HTTP response data in custom scheme interception scenarios. Developers use this class to create a Response object, set properties such as HTTP status code, status text, MIME type, character set, custom response headers, network error code, and redirection URL, and then return the custom response to the Web component through WebResourceHandler. This class is the core data carrier for custom resource interception.
 
@@ -58,6 +57,7 @@ struct WebComponent {
           response.setEncoding("utf-8")
           response.setHeaderByName("header1", "value1", false)
           response.setNetErrorCode(WebNetErrorList.NET_OK)
+          response.setCustomErrorCode(1001)
           console.info("[schemeHandler] getUrl:" + response.getUrl())
           console.info("[schemeHandler] getStatus:" + response.getStatus())
           console.info("[schemeHandler] getStatusText:" + response.getStatusText())
@@ -65,6 +65,7 @@ struct WebComponent {
           console.info("[schemeHandler] getEncoding:" + response.getEncoding())
           console.info("[schemeHandler] getHeaderByName:" + response.getHeaderByName("header1"))
           console.info("[schemeHandler] getNetErrorCode:" + response.getNetErrorCode())
+          console.info("[schemeHandler] getCustomErrorCode:" + response.getCustomErrorCode())
 
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -91,10 +92,6 @@ Sets the redirection URL or the URL changed due to HSTS for this response. After
 | --------| ------- | ---- | ---------------------------|
 | url | string | Yes | URL after redirection or change due to HSTS. |
 
-**Example**
-
-For details about the sample code, see [constructor](#constructor12).
-
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -102,6 +99,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                 |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Incorrect parameter types.    |
+
+**Example**
+
+For details about the sample code, see [constructor](#constructor12).
 
 ## setNetErrorCode<sup>12+</sup>
 
@@ -385,11 +386,56 @@ Obtains the value of a response header field by name.
 | ------- | ---------------- | ---- | -------------------- |
 | name     | string | Yes   | Name of the response header field to obtain.      |
 
+
 **Return value**
 
 | Type   | Description                                    |
 | ------- | --------------------------------------- |
 | string | Value of the response header field with the specified name. |
+
+**Example**
+
+For details about the sample code, see [constructor](#constructor12).
+
+## setCustomErrorCode
+
+setCustomErrorCode(customErrorCode: number): void
+
+Sets a custom error code for the current Response. For details, see [WebResourceError.getCustomErrorCode](arkts-basic-components-web-WebResourceError.md#getcustomerrorcode).
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name   | Type    |  Mandatory  | Description                       |
+| --------| ------- | ---- | ---------------------------|
+|  customErrorCode | number | Yes   | Custom error code of the response. |
+
+**Example**
+
+For details about the sample code, see [constructor](#constructor12).
+
+## getCustomErrorCode
+
+getCustomErrorCode(): number
+
+Gets the custom error code of the current Response.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type    | Description                                     |
+| ------- | --------------------------------------- |
+| number | Custom error code of the current Response.|
 
 **Example**
 
