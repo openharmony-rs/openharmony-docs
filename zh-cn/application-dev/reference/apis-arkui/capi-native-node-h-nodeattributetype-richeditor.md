@@ -914,19 +914,19 @@ NODE_TEXT_EDITOR_UNDERLINE_COLOR = 22039
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | typing下划线颜色，表示键入时的下划线颜色，0xARGB类型。 |
-| .value[1].u32 | normal下划线颜色，表示非特殊状态时下划线颜色，0xARGB类型。 |
-| .value[2].u32 | error下划线颜色，表示错误时下划线颜色，0xARGB类型。 |
-| .value[3].u32 | disable下划线颜色，表示禁用时下划线颜色，0xARGB类型。 |
+| .value[0].u32 | 表示键入时的下划线颜色，0xARGB类型。 |
+| .value[1].u32 | 表示非特殊状态时下划线颜色，0xARGB类型。 |
+| .value[2].u32 | 表示错误时下划线颜色，0xARGB类型。 |
+| .value[3].u32 | 表示禁用时下划线颜色，0xARGB类型。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | typing下划线颜色，表示键入时的下划线颜色，0xARGB类型。 |
-| .value[1].u32 | normal下划线颜色，表示非特殊状态时下划线颜色，0xARGB类型。 |
-| .value[2].u32 | error下划线颜色，表示错误时下划线颜色，0xARGB类型。 |
-| .value[3].u32 | disable下划线颜色，表示禁用时下划线颜色，0xARGB类型。 |
+| .value[0].u32 | 表示键入时的下划线颜色，0xARGB类型。 |
+| .value[1].u32 | 表示非特殊状态时下划线颜色，0xARGB类型。 |
+| .value[2].u32 | 表示错误时下划线颜色，0xARGB类型。 |
+| .value[3].u32 | 表示禁用时下划线颜色，0xARGB类型。 |
 
 ## NODE_TEXT_EDITOR_CARET_STYLE
 
