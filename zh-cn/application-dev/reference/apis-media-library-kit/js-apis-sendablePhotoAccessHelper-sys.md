@@ -578,8 +578,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。|
 | displayName | string | 否 | 否 | 图片资产的显示名称。|
 | size | number  | 否 | 否 | 图片资产文件大小。 单位为字节（Byte），取值应为≥0的整数。|
-| dateAdded | number | 否 | 否 | 添加图片资产数据。单位为毫秒（ms），取值应为≥0的整数。|
-| dateModified | number | 否 | 否 | 更改了图片资产数据。单位为毫秒（ms），取值应为≥0的整数。|
+| dateAdded | number | 否 | 否 | 图片资产创建时间。单位为毫秒（ms），取值应为≥0的整数。|
+| dateModified | number | 否 | 否 | 图片资产最后修改时间。单位为毫秒（ms），取值应为≥0的整数。|
 | duration | number | 否 | 否 | 视频类型的图片资产时长。单位为毫秒（ms），取值应为≥0的整数。|
 | width | number | 否 | 否 |  图片资产的像素宽度。单位为像素（px），取值应为≥0的整数。|
 | height | number | 否 | 否 | 图片资产的像素高度。单位为像素（px），取值应为≥0的整数。|
@@ -588,7 +588,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏，默认为false。|
 | title | string | 否 | 否 | 图片资产的标题。|
 | position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。|
-| dateTrashed | number | 否 | 否 | 图片资产被移入回收站的时间戳。单位为毫秒（ms），取值应为≥0的整数。 |
+| dateTrashed | number | 否 | 否 | 图片资产被移入回收站的时长。单位为毫秒（s），取值应为≥0的整数。 |
 | hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏，默认为false。|
 | userComment | string | 否 | 否 | 图片资产的用户评论信息。|
 | cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。|
@@ -597,7 +597,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | dateDay | string | 否 | 否 | 图片资产创建日时间。|
 | pending | boolean | 否 | 否 | 图片资产等待状态，true表示等待，false表示解除等待，默认为false。|
 | dateAddedMs | number | 否 | 否 | 图片资产数据添加后经过时间，单位为毫秒（ms），取值应为≥0的整数。|
-| dateTrashedMs | number | 否 | 否 | 图片资产数据进回收站后经过时间，单位为毫秒（ms），取值应为≥0的整数。|
+| dateTrashedMs | number | 否 | 否 | 图片资产被移入回收站的时长，单位为毫秒（ms），取值应为≥0的整数。|
 | subtype | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12) | 否 | 否 | 图片资产子类型。|
 | movingPhotoEffectMode | [MovingPhotoEffectMode](js-apis-photoAccessHelper-sys.md#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。|
 | dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | 否 | 否 | 媒体文件的动态范围类型。|
