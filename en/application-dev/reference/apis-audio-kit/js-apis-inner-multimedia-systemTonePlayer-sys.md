@@ -5,6 +5,7 @@
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=ce3658887ea37d337235e6ba158ecef52f692540 translatedAt=2026-11-09T10:29:28.695Z pushedAt=2026-11-09T11:37:21.546Z nl=1 -->
 
 The module provides APIs for playing and configuring SMS tones and notification tones and obtaining related information.
 
@@ -398,7 +399,7 @@ systemTonePlayer.getSupportedHapticsFeatures().then((features: Array<systemSound
   console.info('Succeeded in doing getSupportedHapticsFeatures.');
   if (features.length > 0) {
     let feature: systemSoundManager.ToneHapticsFeature = features[0];
-    systemTonePlayer.setHapticsFeature(feature);
+    systemTonePlayer?.setHapticsFeature(feature);
     console.info('Succeeded in doing setHapticsFeature.');
   }
 }).catch((err: BusinessError) => {

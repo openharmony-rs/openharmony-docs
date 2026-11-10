@@ -5,7 +5,7 @@
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4d1b3ad6de802e96ea2dba644ca7d60992013b31 translatedAt=2026-10-08T12:02:20.951Z pushedAt=2026-10-12T02:04:30.406Z -->
+<!-- md-trans-meta sourceCommit=affce141cf67a375eb8ecfcce168a00cc28e2575 translatedAt=2026-11-09T10:22:34.660Z pushedAt=2026-11-09T11:14:53.085Z nl=1 -->
 
 This interface provides APIs for audio capture.
 
@@ -1122,7 +1122,7 @@ audioCapturer.off('markReach', markReachCallback);
 
 on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
 
-Subscribes to the period reached event, which is triggered each time the number of frames captured reaches the value of the **frame** parameter. In other words, the information is reported periodically. This API uses an asynchronous callback to return the result.
+Listens for the period reach event (triggered when the captured frame count reaches the value of the **frame** parameter, that is, information is reported periodically). This API uses an asynchronous callback to return the result.
 
 If **frame** is set to **10**, information is reported every 10 frames collected (for example, the 10th frame, the 20th frame, the 30th frame, and so on).
 

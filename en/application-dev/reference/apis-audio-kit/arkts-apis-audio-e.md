@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=86ea8b97f1292b63df716c46ceb4a291cb4def98 translatedAt=2026-10-08T12:09:40.178Z pushedAt=2026-10-12T09:13:58.524Z -->
+<!-- md-trans-meta sourceCommit=8edfbd95328595ad49c5cd196b130507a344067b translatedAt=2026-11-09T10:23:06.849Z pushedAt=2026-11-09T11:21:54.888Z nl=1 -->
 
 > **NOTE**
 >
@@ -157,7 +157,7 @@ Enumerates the audio ring modes.
 | Name               |  Value   | Description      |
 | ------------------- | ------ | ---------- |
 | RINGER_MODE_SILENT  | 0      | Silent mode.|
-| RINGER_MODE_VIBRATE | 1      | Vibration mode.|
+| RINGER_MODE_VIBRATE | 1      | Vibration mode. |
 | RINGER_MODE_NORMAL  | 2      | Normal mode.|
 
 ## AudioSampleFormat<sup>8+</sup>
@@ -190,6 +190,9 @@ Enumerates the error codes available for audio management.
 | ERROR_TIMEOUT        | 6800105 | Processing timeout.        |
 | ERROR_STREAM_LIMIT   | 6800201 | Too many audio streams.|
 | ERROR_SYSTEM         | 6800301 | System error.    |
+| ERROR_SERVICE_DIED   | 6800302 | The system service process is terminated.<br>**Since:** 26.0.1<br>**Model restriction:** This interface is only available in the Stage model. |
+| ERROR_NETWORK_CONDITION_NOT_MET | 6800501 | The network condition is not met.<br>**Since:** 26.0.1<br>**Model restriction:** This interface is only available in the Stage model. |
+| ERROR_STORAGE_NOT_ENOUGH        | 6800502 | Insufficient storage space.<br>**Since:** 26.0.1<br>**Model restriction:** This interface is only available in the Stage model. |
 
 ## AudioChannel<sup>8+</sup>
 
@@ -403,11 +406,12 @@ Enumerates the audio interruption types.
 
 ## InterruptForceType<sup>9+</sup>
 
-Enumerates the types of force that causes audio interruption.
+Enumerates whether the operation corresponding to an audio interruption hint is forcibly executed by the system.
 
-The force type is obtained when an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received.
+This information is obtained when the user listens to an audio interruption event (that is, receives the [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) event).
 
-This type specifies whether audio interruption is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [InterruptHint](#interrupthint). For details about the audio interruption policy, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
+
+This type indicates whether the operation corresponding to the audio interruption hint [InterruptHint](#interrupthint) has been forcibly executed by the system. The specific operation information (such as audio pause and stop) can be obtained through [InterruptHint](#interrupthint). Among them, the [InterruptForceType](#interruptforcetype9) corresponding to INTERRUPT_HINT_RESUME must be INTERRUPT_SHARE, that is, the resume operation cannot be forcibly executed by the system and must be triggered by the application itself. For details about the audio interruption policy, see [Audio Focus Introduction](../../media/audio/audio-playback-concurrency.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -415,8 +419,8 @@ This type specifies whether audio interruption is forcibly performed by the syst
 
 | Name           |  Value   | Description                                |
 | --------------- | ------ | ------------------------------------ |
-| INTERRUPT_FORCE | 0      | The operation is forcibly performed by the system.  |
-| INTERRUPT_SHARE | 1      | The operation will not be performed by the system. [InterruptHint](#interrupthint) is used to provide recommended operations for the application, and the application can determine the next processing mode.|
+| INTERRUPT_FORCE | 0      | Forced execution type, that is, the operation corresponding to the interruption hint [InterruptHint](#interrupthint) has been forcibly executed by the system.   |
+| INTERRUPT_SHARE | 1      | Non-forced execution type, that is, the system does not execute the corresponding operation but only prompts the application through [InterruptHint](#interrupthint), and the application can decide the next processing method on its own. |
 
 ## InterruptHint
 
@@ -625,6 +629,7 @@ Enumerates the audio session scenes.
 | AUDIO_SESSION_SCENE_MEDIA | 0 | Media audio session.    |
 | AUDIO_SESSION_SCENE_GAME | 1 | Game audio session.    |
 | AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | VoIP voice call audio session.|
+| AUDIO_SESSION_SCENE_VOICE_MESSAGE  | 3 | Voice message audio session scene.<br>**Since:** 26.0.1 <br>**Model restriction:** This interface is only used in the Stage model. |
 
 ## AudioSessionStateChangeHint<sup>20+</sup>
 

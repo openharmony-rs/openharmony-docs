@@ -5,10 +5,10 @@
 <!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=231a0f852838e757ab03536e79d2ff209c5f5457 translatedAt=2026-10-08T12:39:54.035Z pushedAt=2026-10-13T05:56:11.033Z -->
+<!-- md-trans-meta sourceCommit=96f4a6288457dc7323c09f4157fef4291d5dc537 translatedAt=2026-11-09T10:26:30.633Z pushedAt=2026-11-09T11:28:48.584Z nl=1 -->
 
 ```c
-typedef struct OH_AudioAccessoryInfo {...} OH_AudioAccessoryInfo
+typedef struct {...} OH_AudioAccessoryInfo
 ```
 
 ## Overview

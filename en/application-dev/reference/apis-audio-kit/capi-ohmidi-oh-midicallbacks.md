@@ -2,9 +2,10 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=40b8574cf7284f42e60f2c280c655eafea0c92e5 translatedAt=2026-11-09T10:27:27.860Z pushedAt=2026-11-09T11:31:54.783Z nl=1 -->
 
 ```c
 typedef struct {...} OH_MIDICallbacks
@@ -12,7 +13,7 @@ typedef struct {...} OH_MIDICallbacks
 
 ## Overview
 
-This struct describes client callbacks, including the callback function for device changes and that for error handling.
+Client callback struct used to listen for hot-plug events of MIDI devices and critical service errors. It contains callback function pointers for device hot-plug and error handling, and is suitable for scenarios where an application needs to perceive MIDI device state changes in real time and handle exceptions.
 
 **Since:** 24
 
@@ -26,5 +27,7 @@ This struct describes client callbacks, including the callback function for devi
 
 | Name| Description|
 | -- | -- |
-| [OH_MIDICallback_OnDeviceChange](capi-native-midi-base-h.md#oh_midicallback_ondevicechange) onDeviceChange | Callback for processing device hot swap events.<br>**Since**: 24|
-| [OH_MIDICallback_OnError](capi-native-midi-base-h.md#oh_midicallback_onerror) onError | Callback for handling key service errors.<br>**Since**: 24|
+| [OH_MIDICallback_OnDeviceChange](capi-native-midi-base-h.md#oh_midicallback_ondevicechange) onDeviceChange | Pointer to the callback invoked to handle device hot-swap events.<br>**Since:** 24 |
+| [OH_MIDICallback_OnError](capi-native-midi-base-h.md#oh_midicallback_onerror) onError | Callback function pointer for handling critical errors that occur during service running.<br>**Since:** 24 |
+
+
