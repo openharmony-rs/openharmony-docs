@@ -103,7 +103,7 @@ Codec MIME类型枚举。
 | 名称            | 值                    | 说明                     |
 | --------------- | --------------------- | ------------------------ |
 | SDR             | 0                     | 表示转码为SDR（Standard Dynamic Range，标准动态范围）视频模式。      |
-| AUTO_HDR_VIVID  | 1                     | 表示HDR Vivid（菁彩HDR）自动转码模式。仅当源文件格式为HDR Vivid时，目标文件格式为HDRvivid，其他情况下目标文件格式为SDR。 |
+| AUTO_HDR_VIVID  | 1                     | 表示HDR Vivid（菁彩HDR）自动转码模式。仅当源文件格式为HDR Vivid时，目标文件格式为HDR Vivid，其他情况下目标文件格式为SDR。 |
 
 ## AacProfile<sup>22+</sup>
 
