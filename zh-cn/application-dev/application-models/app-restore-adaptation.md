@@ -79,13 +79,13 @@ export default class EntryAbility extends UIAbility {
 
 ### 判定恢复启动
 
-恢复场景下[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)取值为`APP_RECOVERY`。但**API版本26.0.0之前的系统版本中，从系统设置强行停止应用后的再次启动也会把launchReason误标为APP_RECOVERY**（被误当作内存或性能管控回收而触发栈恢复，但强行停止不应恢复）；API版本26.0.0起系统不再误标。因此API版本26.0.0之前不能单独依赖launchReason判定恢复，需要组合检查以下条件（按可靠性排序）：
+恢复场景下[launchParam.launchReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)取值为`APP_RECOVERY`。但API版本26.0.0之前的系统版本中，launchReason不能单独作为恢复启动的判定依据，需要组合检查以下条件（按可靠性排序）：
 
 | 判定条件 | 可靠性 | 说明 |
 | --- | --- | --- |
 | 系统设置的恢复重启标记`ohos.ability.params.abilityRecoveryRestart`为`true` | 全版本可靠 | 恢复启动时由系统合并进want.parameters，恢复启动一定为true |
 | want.parameters中带回了本应用保存的数据 | 高 | 这些数据只在恢复启动时由系统合并回来，API版本26.0.0之前最可靠的判断依据 |
-| launchReason === APP_RECOVERY | API版本26.0.0及以上可靠 | API版本26.0.0起可单独成立；之前版本存在强行停止误标场景，只能作为辅助条件，与前两个条件联合判定 |
+| launchReason === APP_RECOVERY | API版本26.0.0及以上可靠 | API版本26.0.0起可单独成立；之前版本只能作为辅助条件，与前两个条件联合判定 |
 
 示例工程把上述条件的组合判断封装成一个普通函数`isRestoreLaunch`（下方代码注释中的"系统键"即恢复重启标记，"恢复键"即本应用保存的数据的键名）：
 
