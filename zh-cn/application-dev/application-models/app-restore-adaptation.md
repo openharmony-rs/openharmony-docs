@@ -45,11 +45,6 @@
 - 应用正常关闭不触发备份；备份数据默认保存7天。
 - 备份恢复机制依赖任务保留机制：设置`removeMissionAfterTerminate`为true或设备不支持任务保留（如PC/2in1设备）时机制不生效；[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)不支持备份恢复。
 
-**数据与容量**
-
-- 备份数据存储在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)的parameters字段中，序列化后总大小上限为200KB。
-- Want parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组，函数、Map/Set、Date、类实例等无法保存。
-
 ## 适配准备
 
 ### 开启备份恢复
