@@ -2,11 +2,11 @@
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
-<!--Owner: @qiiiiiiian-->
+<!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=16a51cad246d07c6caba5c76444e9d073c5d43d6 translatedAt=2026-08-03T09:50:10.910Z pushedAt=2026-08-07T10:46:05.722Z -->
+<!-- md-trans-meta sourceCommit=b3705e4afba37476aadaf9a1df5606a3fb890cb1 translatedAt=2026-11-06T08:18:58.716Z pushedAt=2026-11-09T12:49:36.310Z nl=1 -->
 
 The **AccessibilityExtensionContext** module, inherited from **ExtensionContext**, provides context for **AccessibilityExtensionAbility**.
 
@@ -727,7 +727,6 @@ axContext.injectGesture(gesturePath).then(() => {
   console.error(`Failed to inject gesture. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
 ### injectGesture<sup>(deprecated)</sup>
 
 injectGesture(gesturePath: GesturePath, callback: AsyncCallback\<void>): void
@@ -776,7 +775,6 @@ axContext.injectGesture(gesturePath, (err: BusinessError) => {
   console.info(`Succeeded in injecting gesture,gesturePath is ${gesturePath}`);
 });
 ```
-
 ### injectGestureSync<sup>(deprecated)</sup>
 
 injectGestureSync(gesturePath: GesturePath): void
@@ -902,6 +900,7 @@ Obtains the attribute value based on the attribute name. This API uses a promise
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
+
 **Parameters**
 
 | Name          | Type  | Mandatory  | Description      |
@@ -922,6 +921,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ----------------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9300004 | This property does not exist. |
+
 
 **Example**
 

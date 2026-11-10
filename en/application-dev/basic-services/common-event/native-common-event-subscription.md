@@ -1,11 +1,11 @@
 # Subscribing to Common Events in C
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=3e6a64491cc90c6990b3231ac614d6d55ecbf6a5 translatedAt=2026-11-06T12:02:05.457Z pushedAt=2026-11-09T12:24:06.294Z nl=1 -->
 
 ## When to Use
 
@@ -13,7 +13,7 @@ A subscriber created using [OH_CommonEvent_CreateSubscriber](../../reference/api
 
 ## Available APIs
 
-For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md).
+For detailed API descriptions, see [oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md).
 
 | API                              | Description                                                            |
 | ------------------------------------ | ---------------------------------------------------------------- |
@@ -34,8 +34,6 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
    
    ``` C
    #include <cstdint>
-   #include <cstdio>
-   #include <cwchar>
    #include <cstring>
    #include "hilog/log.h"
    #include "BasicServicesKit/oh_commonevent.h"
@@ -59,19 +57,39 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
    <!-- @[event_subscriber_create_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
    
    ``` C++
+   static bool CheckRetAndDestroySub(CommonEvent_SubscribeInfo *info, int32_t ret, const char *apiName)
+   {
+       if (ret != COMMONEVENT_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "%{public}s failed, ret <%{public}d>.", apiName, ret);
+           OH_CommonEvent_DestroySubscribeInfo(info);
+           return true;
+       }
+       return false;
+   }
+   
    CommonEvent_SubscribeInfo *CreateSubscribeInfo(const char *events[], int32_t eventsNum, const char *permission,
                                                   const char *bundleName)
    {
        int32_t ret = -1;
        // Create subscriber information.
        CommonEvent_SubscribeInfo *info = OH_CommonEvent_CreateSubscribeInfo(events, eventsNum);
+       if (info == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "OH_CommonEvent_CreateSubscribeInfo failed, info is null.");
+           return nullptr;
+       }
    
        // Set the publisher permission.
        ret = OH_CommonEvent_SetPublisherPermission(info, permission);
+       if (CheckRetAndDestroySub(info, ret, "OH_CommonEvent_SetPublisherPermission")) {
+           return nullptr;
+       }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublisherPermission ret <%{public}d>.", ret);
    
        // Set the publisher bundle name.
        ret = OH_CommonEvent_SetPublisherBundleName(info, bundleName);
+       if (CheckRetAndDestroySub(info, ret, "OH_CommonEvent_SetPublisherBundleName")) {
+           return nullptr;
+       }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublisherBundleName ret <%{public}d>.", ret);
        return info;
    }

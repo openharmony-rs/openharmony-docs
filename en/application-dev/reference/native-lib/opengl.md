@@ -5,6 +5,8 @@
 <!--Designer: @shi-yang-2012-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=1ddcafcb59600960cb4fd576e6f8e6f5855e46b6 translatedAt=2026-11-06T12:17:22.584Z pushedAt=2026-11-09T11:50:39.902Z nl=2 -->
+
 [OpenGL](https://www.khronos.org/opengl/) is a cross-platform graphics API that specifies a standard software interface for 3D graphics processing hardware. OpenHarmony now supports OpenGL 4.2.
 
 ## Supported Capabilities and Devices
@@ -21,7 +23,7 @@ OpenGL is supported on PC devices starting from API version 20. Starting from AP
 
 ## Checking the Support for OpenGL
 
-Starting from API version 22, you can call the **OH_Graphics_QueryGL** API to check whether the device supports OpenGL and whether it needs to fall back to OpenGL ES.
+Starting from API version 22, the OH_Graphics_QueryGL API can be used to determine whether a device supports OpenGL and whether it is necessary to fall back to OpenGL ES.
 
 **Device behavior differences**: The **OH_Graphics_QueryGL** API works properly on PCs and tablets but returns null on other devices.
 
@@ -92,7 +94,7 @@ libEGL.so
 
 **Modifying the app.json5 Configuration File**
 
-```json
+```json5
 "appEnvironments": [
  {
    "name":"NEED_OPENGL",
@@ -103,7 +105,7 @@ libEGL.so
 
 ## References
 
-To use the OpenGL API in your application development, familiarize yourself with the NDK development process and the **XComponent** usage, which are described in the following topics:
+To use and develop with OpenGL, you need to understand the NDK development process and the use of components such as XComponent. For details, see:
 
 - [Getting Started with the NDK](../../napi/ndk-development-overview.md)
 

@@ -1,12 +1,11 @@
 # Class (ProxyController)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:45:12.270Z pushedAt=2026-08-07T10:36:46.751Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:04:20.523Z pushedAt=2026-11-09T11:17:41.322Z nl=1 -->
 
 ProxyController is a static class in the ArkWeb framework used to manage the proxy configuration of all Web components in an app. With ProxyController, developers can uniformly set or remove proxy configurations for all Web requests in the app, which is suitable for scenarios where Web traffic needs to be routed to a specific proxy server (such as enterprise network environments, content filtering, and traffic monitoring).
 

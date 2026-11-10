@@ -1,12 +1,11 @@
 # ArkWeb_ResourceHandler_
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:53:57.691Z pushedAt=2026-08-06T11:51:00.484Z -->
+<!-- md-trans-meta sourceCommit=9335f9431a5527342362c84e826071649d8c2b39 translatedAt=2026-11-06T11:49:16.726Z pushedAt=2026-11-09T11:45:10.940Z nl=1 -->
 
 ```c
 typedef struct ArkWeb_ResourceHandler_ ArkWeb_ResourceHandler
@@ -20,4 +19,7 @@ The ArkWeb_ResourceHandler struct is a resource handler for processing intercept
 
 **Related module**: [Web](capi-web.md)
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Header file**: [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
+

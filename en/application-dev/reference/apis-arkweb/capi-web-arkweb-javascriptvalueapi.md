@@ -1,12 +1,11 @@
 # ArkWeb_JavaScriptValueAPI
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:53:08.124Z pushedAt=2026-08-06T11:24:14.077Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:48:34.976Z pushedAt=2026-11-09T11:43:34.458Z nl=1 -->
 
 ```c
 typedef struct {...} ArkWeb_JavaScriptValueAPI
@@ -65,3 +64,4 @@ Creates a JavaScript value to be returned to HTML. This function performs type c
 | Type                           | Description|
 |-------------------------------|----|
 | [ArkWeb_JavaScriptValuePtr](capi-web-arkweb-javascriptvalue8h.md) | Created JavaScript value. NULL is returned when the input parameter is invalid or memory allocation fails. |
+

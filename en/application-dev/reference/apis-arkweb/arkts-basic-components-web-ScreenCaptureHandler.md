@@ -1,20 +1,19 @@
 # Class (ScreenCaptureHandler)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @qq_42700029-->
 <!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=472084219ddec4e130229fdadf57a5d9eb6e0be7 translatedAt=2026-08-07T04:26:46.756Z pushedAt=2026-08-12T03:41:44.993Z -->
+<!-- md-trans-meta sourceCommit=2856a1828db0f037542c1d2dac5790373aed9ff6 translatedAt=2026-11-06T11:23:12.042Z pushedAt=2026-11-09T11:40:57.440Z nl=1 -->
 
 **ScreenCaptureHandler** is a screen capture permission handling class provided by the **Web** component, used to respond to screen capture requests initiated by web pages. This class is applicable to scenarios such as online education, remote meetings, and screen recording where access to the user's screen content is required. It allows developers to control whether to grant screen capture permission to a web page through the **grant** or **deny** method, and to obtain request origin information through the **getOrigin** method. This helps developers flexibly handle screen capture access requests from web pages while protecting user privacy, thereby improving app security and user experience. For details about the sample code, see the [onScreenCaptureRequest](./arkts-basic-components-web-events.md#onscreencapturerequest10) event.
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 10.
+> - This class is supported since API version 10.
 >
 > - The sample effect is subject to the actual running on a real device.
 >
@@ -42,7 +41,7 @@ Denies the screen capture operation initiated by a web page. This method is call
 
 getOrigin(): string
 
-Obtains the origin of the web page. This method is used to verify the trustworthiness of the request origin, or to implement a trustlist mechanism to control which web pages can perform screen capture.
+Obtains the web page origin. Used to validate the origin of the web page initiating the request, allowing developers to control which web pages are permitted to initiate screen capture requests via an origin allowlist.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

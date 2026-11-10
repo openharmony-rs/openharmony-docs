@@ -1,12 +1,11 @@
 # Class (UserAgentBrandVersion)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:45:24.830Z pushedAt=2026-08-07T08:11:25.867Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:04:43.620Z pushedAt=2026-11-09T11:27:09.400Z nl=1 -->
 
 UserAgentBrandVersion is a data class in the ArkWeb framework used to configure the brand name and version number in User-Agent client hints, and is used together with [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md). In the User-Agent Client Hints mechanism, the browser reports brand and version information to the server through request headers such as Sec-CH-UA-Full-Version-List. UserAgentBrandVersion is used to define a single brand entry in it.
 
