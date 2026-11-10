@@ -23,8 +23,8 @@
 | 单页应用，需要恢复未持久化的临时数据 | 计算器历史记录、备忘录草稿 | 开启总开关 + onSaveState()保存数据 | [数据恢复](#数据恢复) |
 | 多页应用，页面可接受恢复启动后回到首页，但业务数据不能丢 | 编辑器（恢复启动后回首页但草稿不丢） | 同上：数据按[数据恢复](#数据恢复)的方法保存恢复，无需页面栈改造 | [数据恢复](#数据恢复) |
 | 使用Navigation组件实现页面导航的应用（以NavPathStack管理页面栈），页面栈层级较浅 | 出行码页、设置二级页 | 页面栈恢复三项配置 + 数据保存与恢复 + 参数为空降级 | [页面栈恢复：Navigation](#页面栈恢复navigation) |
-| 使用Navigation组件的应用，用户会进入更深层页面（系统默认只恢复较浅层级） | 阅读器逐章深跳、商品多级筛选 | 同上一行，另需保存路径快照，补齐未恢复的深层页面 | [深层栈补齐](#深层栈补齐) |
-| 使用Navigation组件的应用，页面名动态生成/加密或页面懒加载 | 页面名混淆、按需加载的工程 | 先把页面名改为静态、保证PageMap（页面名到页面组件构建器的映射）可解析，再做三项配置与参数为空降级（页面栈层级深的应用还需路径快照补齐） | [三项配置](#三项配置) |
+| 使用Navigation组件的应用，用户会进入更深层页面（系统默认只恢复较浅层级） | 阅读器逐章深跳、商品多级筛选 | 同上一行，另需保存页面路径，补齐未恢复的深层页面 | [深层栈补齐](#深层栈补齐) |
+| 使用Navigation组件的应用，页面名动态生成/加密或页面懒加载 | 页面名混淆、按需加载的工程 | 先把页面名改为静态、保证PageMap（页面名到页面组件构建器的映射）可解析，再做三项配置与参数为空降级（页面栈层级深的应用还需保存页面路径以补齐深层） | [三项配置](#三项配置) |
 | @ohos.router应用 | 使用router.pushUrl的工程 | 为无需恢复的页面设置recoverable属性为false，将其排除出恢复范围 | [页面栈恢复：Router](#页面栈恢复router) |
 | 三方路由框架（HMRouter等） | 基于三方框架路由的工程 | 保存路由信息（uri与参数），恢复启动后逐层重新执行跳转 | [页面栈恢复：三方路由](#页面栈恢复三方路由) |
 
@@ -50,11 +50,11 @@
 - 备份数据存储在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)的parameters字段中，序列化后总大小上限为200KB，不适合存放大数据（如长文本草稿、大段编辑内容），此类数据使用[超大数据分流](#超大数据分流)。
 - [onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)必须返回`ALL_AGREE`，否则数据不写入磁盘；若应用实现了[onSaveStateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestateasync20)（API版本20起），系统不再调用同步版onSaveState()，两者不要同时使用。
 - Want parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组，函数、Map/Set、Date、类实例不可直接传输，需先转换（详见[函数与类实例等字段的转换](#函数与类实例等字段的转换)）。
-- Navigation参数序列化有多项限制（嵌套深度、属性个数、字符串长度等，具体阈值由系统内部实现决定、可能变化，不在文档中给出），违规属性会被静默丢弃且无告警，恢复后的页面必须做[参数为空降级](#参数为空降级)，不应依赖任何具体阈值。
+- Navigation参数序列化对嵌套深度、属性个数、字符串长度等有上限（上限由系统内部实现决定、可能变化），超出的属性会被静默丢弃且无告警，恢复后的页面必须做[参数为空降级](#参数为空降级)。
 
 **功能与设备**
 
-- Navigation页面栈恢复不保证覆盖全部层级，更深层级需保存路径快照自行补齐（见[深层栈补齐](#深层栈补齐)）。
+- Navigation页面栈恢复不保证覆盖全部层级，更深层级需自行保存页面路径补齐（见[深层栈补齐](#深层栈补齐)）。
 - Navigation与router混用的应用，以主框架的方案为准——两套恢复同时开启会互相破坏，典型表现如页面被重复恢复、恢复出的栈顶页被另一套覆盖、返回栈顺序错乱；恢复后出现上述异常时，优先排查是否两套恢复同时开启。
 - 逐页评估可行性：页面参数可序列化且已做参数为空降级处理的页面才允许参与页面栈恢复，否则只恢复数据、不恢复页面栈——恢复出白屏页面比回到首页体验更差。
 
@@ -450,7 +450,7 @@ private handleParam(ctx: NavDestinationContext): void {
 
 Navigation页面栈恢复不保证覆盖全部层级，更深层级需应用自行补齐：从系统已恢复层级的下一层起，按保存的路径逐层重新执行页面跳转（pushPath），把缺失的页面压回导航栈。
 
-**路径快照补齐**——在导航栈每次变化后（进入、返回、替换，示例通过NavPathStack的[setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12)统一监听）把当前栈路径快照写入AppStorage（onSaveState()同步读取，方法见[数据恢复](#数据恢复)）；恢复启动后在首页`onPageShow()`按快照补齐缺失的更深层级。
+**按保存的页面路径补齐**——在导航栈每次变化后（进入、返回、替换，示例通过NavPathStack的[setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12)统一监听）把当前页面路径（从首页到当前页逐级记录的页面名序列）写入AppStorage（onSaveState()同步读取，方法见[数据恢复](#数据恢复)）；恢复启动后在首页`onPageShow()`按保存的路径补齐缺失的更深层级。
 
 补齐时机：**首页onPageShow()**——此时系统页面栈恢复已完成、页面已渲染。不要在loadContent()回调中补齐：回调执行时系统还没把恢复的页面压回栈里，应用先压入的页面会和系统随后恢复的页面叠在一起，用户可能看到页面重复或顺序错乱：
 
@@ -465,7 +465,7 @@ onPageShow(): void {
 }
 ```
 
-平时发布路径快照：
+平时发布页面路径：
 
 <!-- @[nav_snapshot_report](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/RestoreIndex.ets) -->
 
@@ -513,8 +513,8 @@ private replayDeepStack(): void {
 
 **使用要点**：
 
-- 补齐的页面param按空对象传入，页面数据按[数据恢复](#数据恢复)的方法恢复——路径快照只存页面名，各页数据在页面挂载后自行读取或重新加载，不要试图把原始param塞进快照；
-- 路径快照只存页面名、不带参数：跳转时把函数、类实例等放进param的页面，这些字段无法随快照保存，要先做[函数与类实例等字段的转换](#函数与类实例等字段的转换)。
+- 补齐的页面param按空对象传入，页面数据按[数据恢复](#数据恢复)的方法恢复——页面路径只存页面名，各页数据在页面挂载后自行读取或重新加载，不要试图把原始param一并保存；
+- 页面路径只存页面名、不带参数：跳转时把函数、类实例等放进param的页面，这些字段无法随页面路径保存，要先做[函数与类实例等字段的转换](#函数与类实例等字段的转换)。
 
 ## 页面栈恢复：Router
 
