@@ -1,10 +1,11 @@
-# Introduction to Common Events
+# Common Event Overview
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-11-06T11:59:16.172Z pushedAt=2026-11-09T13:29:27.591Z nl=1 -->
 
 Common Event Service (CES) is provided for applications to subscribe to, publish, and unsubscribe from common events.
 
@@ -12,7 +13,7 @@ Common Event Service (CES) is provided for applications to subscribe to, publish
 Common events are classified into system common events and custom common events.
 
 
-- System common events: defined in CES. Currently, only system applications and system services can publish system common events, such as HAP installation, update, and uninstall. For details about the supported system common events, see [System Common Events](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md).
+- System common events: common events defined within the CES. Currently, only system applications and system services are allowed to publish them, such as common events for HAP installation, update, and uninstallation. For the currently supported system common events, see [System-Defined Common Events](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md).
 - Custom common events: customized by applications to implement cross-process event communication.
 
 
@@ -34,7 +35,7 @@ The common event service provides two subscription modes: dynamic and static. Th
 - In static subscription mode, a subscriber subscribes to common events by configuring a declaration file and implementing a class that inherits from **StaticSubscriberExtensionAbility**. For details, see [Subscribing to Common Events in Static Mode](common-event-static-subscription-sys.md).
 <!--DelEnd-->
 
-**Figure 1** Common events 
+**Figure 1** Common events  
 ![common-event](figures/common-event.png)
 
 ## Safety Precautions
@@ -46,3 +47,5 @@ The common event service provides two subscription modes: dynamic and static. Th
   - Use the **publisherPermission** parameter of [CommonEventSubscribeInfo](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md) to specify the permissions required by the publisher.
   - Use the **publisherBundleName** parameter of [CommonEventSubscribeInfo](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md) to specify the bundle name of the publisher.
 - The name of a custom common event must be globally unique. Otherwise, this common event may conflict with other common events.
+
+<!--RP1--><!--RP1End-->

@@ -2,11 +2,11 @@
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
-<!--Owner: @qiiiiiiian-->
+<!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=16a51cad246d07c6caba5c76444e9d073c5d43d6 translatedAt=2026-08-03T09:36:54.833Z pushedAt=2026-08-07T02:30:54.465Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-06T08:14:45.696Z pushedAt=2026-11-09T09:19:44.881Z nl=1 -->
 
 AccessibilityExtensionAbility provides the accessibility extension service capability based on the ExtensionAbility framework.
 
@@ -36,6 +36,7 @@ Defines the accessibility event information. An accessibility event is generated
 | elementId<sup>12+</sup> | number | No | Yes | ID of the element that is actively focused. Active focus means that the app actively focuses on a specified element through the accessibility service, which is different from manual navigation focus by the user. The default value is **0**. |
 | textAnnouncedForAccessibility<sup>12+</sup> | string | No | Yes | Content actively announced. When the app needs to actively announce content, set the announcement content based on the actual scenario. There is no special restriction. The default value is an empty string. |
 | extraInfo<sup>20+</sup> | string | No | Yes | For TextArea, TextInput, SearchField, and RichEdit components, when text content is added or deleted, this carries the added or deleted text content. Set based on the actual scenario. There is no special restriction. The default value is an empty string. |
+
 
 ## AccessibilityElement<sup>10+</sup>
 
@@ -254,7 +255,7 @@ Enumerates the gesture event types. A gesture event is triggered by the accessib
 
 ## PageUpdateType
 
-type PageUpdateType = 'pageContentUpdate' | 'pageStateUpdate'
+type PageUpdateType = 'pageContentUpdate' | 'pageStateUpdate' | 'pageStatePreUpdate'
 
 Enumerates the page update types. A page update event is triggered by the accessibility service when the page content or state changes. The accessibility extension can receive and process the corresponding page update event through the **onAccessibilityEvent** callback.
 
@@ -264,6 +265,7 @@ Enumerates the page update types. A page update event is triggered by the access
 | ----------------- | ---------------- |
 | 'pageContentUpdate' | Page content updated. |
 | 'pageStateUpdate' | Page state updated. |
+| 'pageStatePreUpdate' | Indicates that the page state is about to be refreshed.<br>**Since:** 26.1.0 |
 
 ## TouchGuideType
 
@@ -413,4 +415,3 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   }
 }
 ```
-<!--no_check-->

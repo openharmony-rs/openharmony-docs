@@ -1,3 +1,11 @@
+---
+kits: ["ArkUI / 方舟UI框架"]
+description: "屏幕管理提供物理屏、虚拟屏和折叠屏的统一管理，支持查询分辨率、像素密度等属性，监听屏幕旋转、折叠等变化并广播给订阅服务，虚拟屏能力仅对系统应用开放。"
+keywords: [屏幕属性查询, 屏幕状态监听, 屏幕旋转, 虚拟屏, 物理屏]
+doctype: guide
+status: active
+---
+
 # 屏幕管理简介
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
@@ -14,7 +22,7 @@
 - 可监听屏幕发生的各种事件变化，包括屏幕旋转变化、屏幕分辨率变化、屏幕刷新率变化、折叠状态变化等。
 - 提供虚拟屏的创建和使用，此部分能力仅对系统应用开放。
 
-针对屏幕属性相关信息的查询和监听，可见[使用OH_DisplayManager实现屏幕基础信息查询和状态监听 (C/C++)](native-display-manager.md)和[使用Display实现屏幕属性查询及状态监听 (ArkTS)](screenProperty-guideline.md)<!--Del-->，虚拟屏的相关使用具体可见[虚拟屏的创建和使用 (ArkTS) (仅对系统应用开放)](virtualScreen-guideline-sys.md)<!--DelEnd-->。
+针对屏幕属性相关信息的查询和监听，可见[实现屏幕属性查询及状态监听 (C/C++)](native-display-manager.md)和[实现屏幕属性查询及状态监听 (ArkTS)](screenProperty-guideline.md)，扩展屏的显示模式查询及各显示模式下坐标系的使用可见[实现扩展屏的坐标转换](extend-coordinate-transformation-guideline.md)<!--Del-->，虚拟屏的相关使用具体可见[虚拟屏的创建和使用 (ArkTS) (仅对系统应用开放)](virtualScreen-guideline-sys.md)<!--DelEnd-->。
 
 ## 约束和限制
 

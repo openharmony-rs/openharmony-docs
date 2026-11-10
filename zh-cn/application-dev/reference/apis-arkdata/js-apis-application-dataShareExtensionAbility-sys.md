@@ -190,11 +190,9 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
     let recordOps : Record<string, Array<dataShare.UpdateOperation>> = operations;
     let results : Record<string, Array<number>> = {};
     let entries = Object.entries(recordOps);
-    for (let i = 0; i < entries.length; i++) {
-      let key = entries[i][0];
-      let values = entries[i][1];
+    entries.forEach(([key, values]) => {
       let result : number[] = [];
-      for (const value of values) {
+      values.forEach((value) => {
         rdbStore.update(TBL_NAME, value.values, value.predicates).then(async (rows) => {
           console.info('Update row count is ' + rows);
           result.push(rows);
@@ -202,9 +200,9 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
           console.error(`Failed to Update. Code: ${err.code}, message: ${err.message}`);
           result.push(-1)
         });
-      }
+      });
       results[key] = result;
-    }
+    });
     callback(null, results);
   }
 };

@@ -2,11 +2,11 @@
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
-<!--Owner: @qiiiiiiian-->
+<!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5afea8900a93c1d5d53117a86ba6b7c5d998328d translatedAt=2026-08-07T07:20:05.453Z pushedAt=2026-08-07T09:55:09.663Z -->
+<!-- md-trans-meta sourceCommit=bb8983a3596bcd892cba33e53c9546811f94fcd0 translatedAt=2026-11-06T08:15:33.082Z pushedAt=2026-11-09T12:49:15.769Z nl=1 -->
 
 The **AccessibilityExtensionContext** module, inherited from **ExtensionContext**, provides context for **AccessibilityExtensionAbility**.
 
@@ -75,6 +75,7 @@ Accessibility grid information. For details, see the property currentItem in [Ac
 | rowIndex             | number | No   |No |Grid row index.                 |
 | columnIndex          | number | No  | No|Grid column index.        |
 
+
 ## AccessibilitySpan<sup>20+</sup>
 
 Hyperlink text information for accessibility. For details, see the attribute spans in [AccessibilityElement](#accessibilityelement).
@@ -139,6 +140,7 @@ Return value type of the accessibility node query.
 | ------------------- | ------ | ---- | ----|--------------------------------- |
 | target | Array&lt;[AccessibilityElement](#accessibilityelement)&gt; | No | No | List of accessibility nodes returned by the query.|
 | result | [FocusMoveResultCode](./js-apis-accessibility-sys.md#focusmoveresultcode23)  | No | No | Result type of the accessibility node query.|
+
 
 ## AccessibilityExtensionContext
 
@@ -822,7 +824,6 @@ The active window refers to the foreground app window that currently gains focus
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
-
 | ID   | Error Message                                     |
 | ------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
@@ -903,7 +904,6 @@ Obtains the list of all accessibility-accessible windows on the current display 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
-
 | ID   | Error Message                                     |
 | ------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
@@ -1435,7 +1435,7 @@ export default class AccessibilityManager {
 }
 ```
 
-### findElement('elementId')
+### findElement('elementId')<sup>12+</sup>
 
 findElement(type: 'elementId', condition: number): Promise&lt;AccessibilityElement&gt;
 
@@ -1485,7 +1485,7 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 });
 ```
 
-### findElement('textType')
+### findElement('textType')<sup>12+</sup>
 
 findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>
 
@@ -1592,6 +1592,7 @@ rootElement.getCursorPosition((err: BusinessError, data: number) => {
   console.info(`succeeded in getting cursor position, ${data}`);
 });
 ```
+
 
 ### executeAction<sup>20+</sup>
 
@@ -1859,12 +1860,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // Page.ets
-  build() {
-    Text('Connect')
-        .id('connect')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
-// ...
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
+}
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
@@ -1890,7 +1891,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityEl
 
 Searches for an element based on the focus direction. This API uses a promise to return the result.
 
-Compared with [findElementsByCondition](#findelementsbycondition23), this method is mainly used to search for web components, while findElementsByCondition is mainly used to search for UI components.
+Compared with [findElementsByCondition](#findelementsbycondition23) (supported since API version 23), this method is used to search for Web components; findElementsByCondition is used to search for non-Web components. You can determine whether a component is a Web component by checking whether its supportedActionNames attribute contains 'nextHtmlItem' or 'previousHtmlItem'.
 
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1924,17 +1925,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // Page.ets
-// Click TextInput to make it the accessibility focus element. The next focus element in the upward direction is Text#connect.
-  build() {
-    Text('Connect')
-        .id('connect')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
+import { webview } from '@kit.ArkWeb';
+controller: webview.WebviewController = new webview.WebviewController();
 
-    TextInput({ placeholder: 'please input...' })
-        .id('text_input')
-        .fontSize($r('app.float.page_text_font_size'))
-// ...
+// Click "Link1" to make it the accessibility focus element. The next focus element in the upward direction is "Title1".
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
+
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
+
+  Web({ src: $rawfile("index.html"), controller: this.controller })
+}
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
@@ -1952,11 +1958,32 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 });
 ```
 
+```html
+// index.html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+<h3>Title1</h3>
+<div class="base-elements">
+    <a href="#link1">Link1</a>
+    <h4>Title2</h4> <a href="#link2">Link2</a>
+    <p>Description text3</p>
+</div>
+</body>
+</html>
+```
+
 ### findElementByFocusDirection
 
 findElementByFocusDirection(condition: FocusDirection, type: FocusRuleType): Promise\<AccessibilityElement>
 
 Searches for an element based on the focus direction and focus rule type. This API uses a promise to return the result.
+
+Compared with [findElementsByCondition](#findelementsbycondition), this method is used to search for Web components; findElementsByCondition is used to search for non-Web components. You can determine whether a component is a Web component by checking whether its supportedActionNames attribute contains 'nextHtmlItem' or 'previousHtmlItem'.
 
 **Since**: 26.0.0
 
@@ -1995,39 +2022,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // Page.ets
-// Click "Secondary Heading 1" to make it the accessibility focus element. The next focus type is a heading focus element, which is "Secondary Heading 2".
-  build() {
-    Text('Connect')
-        .id('connect')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
-        
-    SubHeader({
-      secondaryTitle: 'Secondary Heading 1',
-      operationType: OperationType.BUTTON,
-      operationItem: [{
-        value: 'Operation',
-        action: () => {
-          Prompt.showToast({ message: 'demo' });
-        }
-      }]
-    })
+import { webview } from '@kit.ArkWeb';
+controller: webview.WebviewController = new webview.WebviewController();
 
-    TextInput({ placeholder: 'please input...' })
-        .id('text_input')
-        .fontSize($r('app.float.page_text_font_size'))
+// Click "Title1" to make it the accessibility focus element. The next focus element whose focus type is title is "Title2".
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
 
-    SubHeader({
-      secondaryTitle: 'Secondary Heading 2',
-      operationType: OperationType.BUTTON,
-      operationItem: [{
-        value: 'Operation',
-        action: () => {
-          Prompt.showToast({ message: 'demo' });
-        }
-      }]
-    })
-  }
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
+
+  Web({ src: $rawfile("index.html"), controller: this.controller })
+}
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement, FocusRuleType } from '@kit.AccessibilityKit';
@@ -2042,6 +2052,25 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 }).catch((err: BusinessError) => {
   console.error(`Failed to getAccessibilityFocusedElement. Code: ${err.code}, message: ${err.message}`);
 });
+```
+
+```html
+// index.html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+<h3>Title1</h3>
+<div class="base-elements">
+    <a href="#link1">Link1</a>
+    <h4>Title2</h4> <a href="#link2">Link2</a>
+    <p>Description text3</p>
+</div>
+</body>
+</html>
 ```
 
 ### findElementsByAccessibilityHintText<sup>20+</sup>
@@ -2082,17 +2111,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // Page.ets
-  build() {
-    Text('Connect')
-        .id('connect')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
 
-    TextInput({ placeholder: 'please input...' })
-        .id('text_input')
-        .fontSize($r('app.float.page_text_font_size'))
-        .accessibilityTextHint('location')
-// ...
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
+      .accessibilityTextHint('location')
+}
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
@@ -2118,7 +2147,7 @@ findElementById(condition: number): Promise\<AccessibilityElement>
 
 Searches for a node element in the active window by element ID. This API uses a promise to return the result.
 
-This method is functionally equivalent to [findElement('elementId')](#findelementelementid) and is recommended for priority use.
+This method is functionally equivalent to [findElement('elementId')](#findelementelementid12) and is recommended for priority use.
 
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -2153,16 +2182,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // Page.ets
 // Tap TextInput to make it the accessibility focus element.
-  build() {
-    Text('Connect')
-        .id('connect')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
 
-    TextInput({ placeholder: 'please input...' })
-        .id('text_input')
-        .fontSize($r('app.float.page_text_font_size'))
-// ...
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
+}
 
 // AccessibilityExtAbility.ets
 import { AccessibilityElement } from '@kit.AccessibilityKit';
@@ -2186,7 +2215,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<Fo
 
 Queries focusable nodes that meet the conditions. This API uses a promise to return the result.
 
-Compared with [findElementByFocusDirection](#findelementbyfocusdirection20), this method is mainly used to find UI components, while findElementByFocusDirection is mainly used to find Web components.
+Compared with [findElementByFocusDirection](#findelementbyfocusdirection20) (supported since API version 20), this method is used to search for non-Web components; findElementByFocusDirection is used to search for Web components. You can determine whether a component is a Web component by checking whether its supportedActionNames attribute contains 'nextHtmlItem' or 'previousHtmlItem'.
 
 **System API**: This is a system API.
 
@@ -2219,6 +2248,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// Click "Text#connect" to make it the accessibility focus element. The next focus element is "TextInput".
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
+
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
+}
 
 import { AccessibilityElement, FocusMoveResult } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2240,6 +2280,8 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusRuleType): Promise\<FocusMoveResult>
 
 Searches for focusable nodes of the target type based on the rule and query condition. This API uses a promise to return the result.
+
+Compared with [findElementByFocusDirection](#findelementbyfocusdirection), this method is used to search for non-Web components; findElementByFocusDirection is used to search for Web components. You can determine whether a component is a Web component by checking whether its supportedActionNames attribute contains 'nextHtmlItem' or 'previousHtmlItem'.
 
 **Since**: 26.0.0
 
@@ -2278,38 +2320,39 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // Page.ets
-  build() {
-    Text('Connect')
-        .id('connect')
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
-        
-    SubHeader({
-      secondaryTitle: 'Secondary Title 1',
-      operationType: OperationType.BUTTON,
-      operationItem: [{
-        value: 'Operation',
-        action: () => {
-          Prompt.showToast({ message: 'demo' });
-        }
-      }]
-    })
+// Click "Secondary title 1" to make it the accessibility focus element. The next focus element whose focus type is title is "Secondary title 2".
+build() {
+  Text('Connect')
+      .id('connect')
+      .fontSize($r('app.float.page_text_font_size'))
+      .fontWeight(FontWeight.Bold)
+      
+  SubHeader({
+    secondaryTitle: 'Secondary title 1',
+    operationType: OperationType.BUTTON,
+    operationItem: [{
+      value: 'Operation',
+      action: () => {
+        Prompt.showToast({ message: 'demo' });
+      }
+    }]
+  })
 
-    TextInput({ placeholder: 'please input...' })
-        .id('text_input')
-        .fontSize($r('app.float.page_text_font_size'))
+  TextInput({ placeholder: 'please input...' })
+      .id('text_input')
+      .fontSize($r('app.float.page_text_font_size'))
 
-    SubHeader({
-      secondaryTitle: 'Secondary Title 2',
-      operationType: OperationType.BUTTON,
-      operationItem: [{
-        value: 'Operation',
-        action: () => {
-          Prompt.showToast({ message: 'demo' });
-        }
-      }]
-    })
-  }
+  SubHeader({
+    secondaryTitle: 'Secondary title 2',
+    operationType: OperationType.BUTTON,
+    operationItem: [{
+      value: 'Operation',
+      action: () => {
+        Prompt.showToast({ message: 'demo' });
+      }
+    }]
+  })
+}
 
 // AccessibilityExtAbility.ets
 
@@ -2351,6 +2394,7 @@ Provides attribute names and value types of a node element.
 | accessibilityVisible             | boolean              | No   | Yes   | Whether the element is accessibility visible. The value **true** means the element is accessibility visible, and **false** means the opposite. The default value is **true**.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 | navDestinationId             | number              | No   | Yes   | ID of the navigation destination associated with the element. The default value is **-1**.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 | customActions | Array\<string>                     | No   | Yes   | List of custom actions supported by the element.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+
 
 ## AccessibilityVirtualNode
 

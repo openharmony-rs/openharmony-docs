@@ -9819,6 +9819,34 @@ Allows an application to bind to the automotive ambient light engine service (Aa
 
 **Since**: 26.0.1
 
+## ohos.permission.vehicle.HIMA_COOPERATE
+
+Allows an application to call the device-cloud synergy API to query and download resources and configuration files.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.HIMA_DEVICE_AUTH
+ 
+Allows an application to call the genuine device authentication API to perform device authenticity verification.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
 ## ohos.permission.PROMPT_INJECT_DETECTION
 
 Allows an application to detect indirect prompt injection attacks.

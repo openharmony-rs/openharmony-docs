@@ -1,15 +1,17 @@
 # Module Description
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
-The collections module provides ArkTS containers for efficient data transfer in concurrency scenarios. The ArkTS containers provide similar functionalities as their JavaScript counterparts, except that their properties cannot be added or updated through `.` or `[]`.
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=71db7138e2704708b0a19c70a4e677ab1c2014cd translatedAt=2026-11-06T08:57:47.927Z pushedAt=2026-11-09T09:20:14.619Z nl=2 -->
 
-By default, ArkTS containers are passed by reference between concurrent instances. This means that multiple concurrent instances can simultaneously operate the same container instance. Pass-by-copy is also supported. In this mode, each concurrent instance holds an ArkTS container instance.
+The ArkTS container set provided by this module can be used for high-performance data transfer in concurrent scenarios. Its functions are similar to those of the corresponding built-in JavaScript containers, but an ArkTS container instance cannot add or update properties through `"."` or `"[]"`.
 
-ArkTS containers are not thread-safe. They adopt the fail-fast approach. An exception is thrown if multiple concurrent instances make structural changes to a container instance at the same time. Therefore, in multi-thread read/write scenarios, you must use the ArkTS asynchronous lock to ensure secure access to the ArkTS containers.
+When an ArkTS container is passed between multiple concurrent instances, the default behavior is reference passing, which allows multiple concurrent instances to operate on the same container instance at the same time. In addition, copy passing is also supported, that is, each concurrent instance holds an ArkTS container instance.
+
+ArkTS containers are not thread-safe. They internally use a fail-fast mechanism: when it is detected that multiple concurrent instances make structural changes to a container at the same time, an exception is triggered. Therefore, when reading from and writing to a container in multiple threads, the container user must use the asynchronous lock mechanism provided by ArkTS to ensure safe access to the ArkTS container.
 
 Currently, the following ArkTS containers are provided: [Array](arkts-apis-arkts-collections-Array.md), [Map](arkts-apis-arkts-collections-Map.md), [Set](arkts-apis-arkts-collections-Set.md), TypedArray ([Int8Array](arkts-apis-arkts-collections-Int8Array.md), [Uint8Array](arkts-apis-arkts-collections-Uint8Array.md), [Int16Array](arkts-apis-arkts-collections-Int16Array.md), [Uint16Array](arkts-apis-arkts-collections-Uint16Array.md), [Int32Array](arkts-apis-arkts-collections-Int32Array.md), [Uint32Array](arkts-apis-arkts-collections-Uint32Array.md), [Uint8ClampedArray](arkts-apis-arkts-collections-Uint8ClampedArray.md) and [Float32Array](arkts-apis-arkts-collections-Float32Array.md)), [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md), [BitVector](arkts-apis-arkts-collections-BitVector.md), and [ConcatArray](arkts-apis-arkts-collections-ConcatArray.md).
 

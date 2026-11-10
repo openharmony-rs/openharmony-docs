@@ -1,12 +1,13 @@
 # Class (ContextMenuController)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Armstrong15-->
+<!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=85a246303a3306c0a0ebfe5d53b17f767869db93 translatedAt=2026-11-02T12:38:29.472Z pushedAt=2026-11-05T07:11:42.979Z nl=1 -->
 
-Provides the capability to control the closing of context menus.
+Provides the capability to control menu closing. You can use this API to proactively close a menu in specific scenarios, such as timed closing and closing by tapping outside the area.
 
 > **NOTE**
 >
@@ -14,13 +15,17 @@ Provides the capability to control the closing of context menus.
 >
 > - The initial APIs of this class are supported since API version 12.
 >
+> - The APIs of this module can be used only in the stage model.
+>
 > - In the following API examples, you must first use [getContextMenuController()](./arkts-apis-uicontext-uicontext.md#getcontextmenucontroller12) in **UIContext** to obtain a **ContextMenuController** instance, and then call the APIs using the obtained instance.
 
 ## close<sup>12+</sup>
 
 close(): void
 
-Closes this context menu.
+Closes the menu currently displayed through **bindContextMenu**. If no menu is displayed, calling this API has no effect.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -52,21 +57,22 @@ struct Index {
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button("Start Timer").onClick(()=>
-      {
+      Button('Start timer').onClick(() => {
+        // Call the close method to close the menu after a 10-second delay.
         setTimeout(() => {
           this.menu.close();
         }, 10000);
       })
 
       Column() {
-        Text("Test ContextMenu close")
+        Text('Test ContextMenu close')
           .fontSize(20)
           .width('100%')
           .height(500)
           .backgroundColor(0xAFEEEE)
           .textAlign(TextAlign.Center)
       }
+      // Bind the custom menu, triggered by a long press.
       .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
     }
     .width('100%')
@@ -76,3 +82,4 @@ struct Index {
 ```
 
 ![contextMenuController_close](figures/contextMenuController_close.gif)
+

@@ -5,6 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=b6cec35f8eea96ca4adc319c41511324f4b753bc translatedAt=2026-11-09T06:23:30.867Z pushedAt=2026-11-09T08:02:41.438Z nl=1 -->
 
 
 The **AVRecorder** class is used to manage the entire audio and video recording process, including audio recording, video recording, and audio-video recording. It can be used to flexibly configure encoding parameters, add watermarks, set metadata, and listen for the recording status and error events. It can be used to record audio and video and saved them to files, including scenarios where recording continuity needs to be maintained when the audio is interrupted and audio amplitude needs to be monitored in real time. Before calling the methods of the AVRecorder class, you need to call the [createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9) API to create an **AVRecorder** instance. Typical recording process: [createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9) → [prepare](#prepare9) → [getInputSurface](#getinputsurface9) (for video-only or audio and video recording) → [start](#start9) → [pause](#pause9)/[resume](#resume9) → [stop](#stop9) → [release](#release9).
@@ -58,7 +59,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                               |
 | -------- | --------------------------------------- |
-| 201      | Permission denied. Return by callback.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. Return by callback.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.    |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400105  | Service died. Return by callback.       |
@@ -137,7 +138,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                              |
 | -------- | -------------------------------------- |
-| 201      | Permission denied. Return by promise.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. Return by promise.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.    |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400105  | Service died. Return by promise.       |
@@ -1395,9 +1396,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
-| 201      | Permission denied.     |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801      | Capability not supported. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 5400101  | No memory.             |
 | 5400102  | Operation not allowed. |
 | 5400103  | I/O error.             |

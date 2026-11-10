@@ -1,12 +1,11 @@
 # @ohos.arkui.uiMaterial (System Material) (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d09068c013deef462b1019892f5d3232cec8f4e1 translatedAt=2026-08-05T03:08:17.152Z pushedAt=2026-08-06T02:17:35.286Z -->
+<!-- md-trans-meta sourceCommit=3f351fc8648ac97a9ff826e6f679d8cc1612f837 translatedAt=2026-11-02T12:55:04.698Z pushedAt=2026-11-09T02:08:23.962Z nl=1 -->
 
 This module provides APIs for system materials. Different system materials correspond to different UI effects, including the background color ([backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)), border color ([borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)), border width ([borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)), and shadow ([shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)).
 
@@ -33,11 +32,11 @@ Enumerates the system material types. This section contains only the system APIs
 | Name     | Value | Description              |
 | ------ | --- | --------------- |
 | NONE | 0 | No system material effect. The corresponding effects are: [backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor) is transparent, [borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor) is transparent, [borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth) is 0, and no [shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow).<br>**Widget capability:** This API can be used in ArkTS widgets since API version 23.<br>**System API:** This is a system API.|
-| SEMI_TRANSPARENT | 1 | Semi-transparent system material effect. The corresponding effects are:<br>[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor): "#f2f1f3f5" in light mode and "#f2303131" in dark mode.<br>[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor): [token](../../ui/theme_skinning.md#system-default-token-color-values) value of theme.colors.compForegroundPrimary blended with 10% transparency (alpha value).<br>[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth): 1 vp.<br>[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow): ShadowStyle.OUTER_DEFAULT_SM.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 23.<br>**System API:** This is a system API.|
+| SEMI_TRANSPARENT | 1 | Semi-transparent system material effect. The corresponding effects are:<br>[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor): "#f2f1f3f5" in light mode and "#f2303131" in dark mode.<br>[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor): [token](../../ui/theme-skinning.md#system-default-token-color-values) value of **theme.colors.compForegroundPrimary** blended with 10% transparency (alpha value).<br>[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth): 1 vp.<br>[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow): **ShadowStyle.OUTER_DEFAULT_SM**.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 23.<br>**System API:** This is a system API.|
 
 ## ImmersiveStyle
 
-Enumerates the material styles. The enum values suffixed with EC are set on [EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md), and those suffixed with EC_SUB are set on the child components of EffectComponent. The two work together to achieve merged optimization of material effect rendering. The material blur set on EffectComponent will ultimately take effect on its child components. Different material styles correspond to different material parameters, mainly including the blur level and highlight effect of the material. For details, see [ImmersiveStyle](arkts-apis-uimaterial.md#immersivestyle).
+Enumerates the material styles. The enum values suffixed with EC are set on [EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md), and the enum values suffixed with EC_SUB are set on the child components of EffectComponent. The two work together to implement merge optimization of material effect rendering. If they are not set according to the preceding correspondence, the material effect may fail to take effect correctly or the merge optimization may not be achieved. The material blur set on EffectComponent ultimately takes effect on its child components. Different material styles correspond to different material parameters, mainly including the blur degree and highlight effect of the material. For details, see [ImmersiveStyle](arkts-apis-uimaterial.md#immersivestyle).
 
 **Since:** 26.0.0
 
@@ -51,22 +50,22 @@ Enumerates the material styles. The enum values suffixed with EC are set on [Eff
 
 | Name    | Value| Description             |
 | ------ | --- | --------------- |
-| ULTRA_THIN_EC | 5 | Ultra-thin style. The material layer is ultra-thin, providing a strong transparency effect.<br/>Applicable to [EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md). It must be used together with the corresponding EC_SUB suffix enum to achieve merged optimization of material effect rendering. |
-| THIN_EC | 6 | Thin style. The material layer is thin, providing a relatively strong transparency effect.<br/>Applicable to EffectComponent. |
-| REGULAR_EC | 7 | Regular style. The material layer has a moderate thickness, providing moderate transparency and blur effects.<br/>Applicable to EffectComponent. |
-| THICK_EC | 8 | Thick style, providing a strong blur effect.<br/>Applicable to EffectComponent. |
-| ULTRA_THICK_EC | 9 | Ultra-thick style, providing a very strong blur effect.<br/>Applicable to EffectComponent. |
-| ULTRA_THIN_EC_SUB | 10 | Ultra-thin style. The material layer is ultra-thin, providing a strong transparency effect.<br/>Applicable to the child components of EffectComponent. |
-| THIN_EC_SUB | 11 | Thin style. The material layer is thin, providing a relatively strong transparency effect.<br/>Applicable to the child components of EffectComponent. |
-| REGULAR_EC_SUB | 12 | Regular style. The material layer has a moderate thickness, providing moderate transparency and blur effects.<br/>Applicable to the child components of EffectComponent. |
-| THICK_EC_SUB | 13 | Thick style, providing a strong blur effect.<br/>Applicable to the child components of EffectComponent. |
-| ULTRA_THICK_EC_SUB | 14 | Ultra-thick style, providing a very strong blur effect.<br/>Applicable to the child components of EffectComponent. |
+| ULTRA_THIN_EC | 5 | Ultra-thin style. The material layer is ultra-thin and has a strong transparency effect.<br>Applicable to [EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md). Used together with the corresponding **ULTRA_THICK_EC_SUB** suffix style enum to implement merge optimization of material effect rendering. The material blur set on **EffectComponent** eventually takes effect on the child components. |
+| THIN_EC | 6 | Thin style. The material layer is thin and has a strong transparency effect.<br>Applicable to **EffectComponent**. Used together with the corresponding **THIN_EC_SUB** suffix style enum to implement merge optimization of material effect rendering. |
+| REGULAR_EC | 7 | Regular style. The material layer is of moderate thickness and has a moderate transparency and blur effect.<br>Applicable to **EffectComponent**. Used together with the corresponding **REGULAR_EC_SUB** suffix style enum to implement merge optimization of material effect rendering. |
+| THICK_EC | 8 | Thick style. The blur effect is strong.<br>Applicable to **EffectComponent**. Used together with the corresponding **THICK_EC_SUB** suffix style enum to implement merge optimization of material effect rendering. |
+| ULTRA_THICK_EC | 9 | Ultra-thick style. The blur effect is very strong.<br>Applicable to **EffectComponent**. Used together with the corresponding **ULTRA_THICK_EC_SUB** suffix style enum to implement merge optimization of material effect rendering. |
+| ULTRA_THIN_EC_SUB | 10 | Ultra-thin style. The material layer is ultra-thin and has a strong transparency effect.<br>Applicable to the child component of **EffectComponent**. Used together with the corresponding **ULTRA_THIN_EC** style enum to implement merge optimization of material effect rendering. |
+| THIN_EC_SUB | 11 | Thin style. The material layer is thin and has a strong transparency effect.<br>Applicable to the child component of **EffectComponent**. Used together with the corresponding **THIN_EC** style enum to implement merge optimization of material effect rendering. |
+| REGULAR_EC_SUB | 12 | Regular style. The material layer is of moderate thickness and has a moderate transparency and blur effect.<br>Applicable to the child component of **EffectComponent**. Used together with the corresponding **REGULAR_EC** style enum to implement merge optimization of material effect rendering. |
+| THICK_EC_SUB | 13 | Thick style. The blur effect is strong.<br>Applicable to the child component of **EffectComponent**. Used together with the corresponding **THICK_EC** style enum to implement merge optimization of material effect rendering. |
+| ULTRA_THICK_EC_SUB | 14 | Ultra-thick style. The blur effect is very strong.<br>Applicable to the child component of **EffectComponent**. Used together with the corresponding **ULTRA_THICK_EC** style enum to implement merge optimization of material effect rendering. |
 
 ## uiMaterial.convertToECMaterial
 
 convertToECMaterial(material: uiMaterial.ImmersiveMaterial): uiMaterial.ImmersiveMaterial
 
-Converts an [ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial) material into an ImmersiveMaterial material applicable to [EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md).
+Converts an [ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial) material into an **ImmersiveMaterial** material applicable to [EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md). Difference from **convertToECSubMaterial**: the material converted by this API applies to EffectComponent itself, and the **materialColor**, **applyShadow**, **interactive**, and **lightEffect** properties do not take effect; the material converted by **convertToECSubMaterial** applies to the child components of EffectComponent. The two are usually used together to implement merge optimization of material effect rendering.
 
 The [materialColor](arkts-apis-uimaterial.md#immersiveoptions), [applyShadow](arkts-apis-uimaterial.md#immersiveoptions), [interactive](arkts-apis-uimaterial.md#immersiveoptions), and [lightEffect](arkts-apis-uimaterial.md#immersiveoptions) properties in the material do not take effect on the EffectComponent. If a material converted through this API has these properties configured, they will also not take effect.
 
@@ -84,13 +83,13 @@ The [materialColor](arkts-apis-uimaterial.md#immersiveoptions), [applyShadow](ar
 
 | Name       | Type                                                       | Mandatory | Description                                                         |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-|  material      | [uiMaterial.ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial)                      | Yes   | Immersive material to convert.    |
+| material | [uiMaterial.ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial) | Yes | Immersive material to convert. Note: After conversion, the [materialColor](arkts-apis-uimaterial.md#immersiveoptions), [applyShadow](arkts-apis-uimaterial.md#immersiveoptions), [interactive](arkts-apis-uimaterial.md#immersiveoptions), and [lightEffect](arkts-apis-uimaterial.md#immersiveoptions) properties in the converted material will not take effect. |
 
 **Return value**
 
 | Type   | Description                     |
 | ------ | ------------------------ |
-| [uiMaterial.ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial) | Immersive material applicable to [EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md) after conversion. |
+| [uiMaterial.ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial) | Immersive material applicable to [EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md) after conversion. The [materialColor](arkts-apis-uimaterial.md#immersiveoptions), [applyShadow](arkts-apis-uimaterial.md#immersiveoptions), [interactive](arkts-apis-uimaterial.md#immersiveoptions), and [lightEffect](arkts-apis-uimaterial.md#immersiveoptions) properties do not take effect in the converted material. |
 
 ## uiMaterial.convertToECSubMaterial
 
@@ -112,7 +111,7 @@ Converts an [ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial) mate
 
 | Name       | Type                                                       | Mandatory | Description                                                         |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-|  material      | [uiMaterial.ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial)                      | Yes   | Immersive material to convert.    |
+| material | [uiMaterial.ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial) | Yes | Immersive material applicable to the child components of [EffectComponent](arkui-ts/ts-container-effectcomponent-sys.md) after conversion. This material is used together with **EffectComponent** to implement merge optimization of material effect rendering. |
 
 **Return value**
 
@@ -132,7 +131,7 @@ System material options.
 
 | Name      | Type                                                       | Read-Only| Optional| Description                                                    |
 | ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
-| type   | [MaterialType](#materialtype)                                   | No | Yes   | Material type. Select MaterialType.NONE when no material effect is needed, and MaterialType.SEMI_TRANSPARENT when a semi-transparent background effect is needed.<br/>Default value: MaterialType.NONE <br>**Widget capability:** This API can be used in ArkTS widgets since API version 23.|
+| type   | [MaterialType](#materialtype)                                   | No  | Yes   | Material type. Select **MaterialType.NONE** when no material effect is required, and **MaterialType.SEMI_TRANSPARENT** when a semi-transparent background effect is required.<br>Default value: **MaterialType.NONE** <br>**Widget capability:** This API can be used in ArkTS widgets since API version 23.|
 
 ## Material
 
@@ -152,17 +151,17 @@ A constructor used to create a **Material** object.
 
 **System API**: This is a system API.
 
-**Parameters**
+**Parameters** 
 
 | Name      | Type                                                      | Mandatory| Description                                                        |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-|  options      | [MaterialOptions](#materialoptions)                      | No   | System material configuration option, including the material type. Pass this parameter when a material type (such as translucency effect) needs to be specified. If not passed, the default material configuration `{type:MaterialType.NONE}` is used, that is, no system material effect.    |
+|  options      | [MaterialOptions](#materialoptions)                      | No   | System material configuration option, including the material type. Pass this parameter when a material type (such as semi-transparent effect) needs to be specified. If not passed, the default material configuration `{type:MaterialType.NONE}` is used, that is, no system material effect.    |
 
 ## Example
 
 ### Example 1: Setting the System Material
 
-This example shows how to apply the **Material** object of a semi-transparent material to a component using the [systemMaterial](arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23) attribute.
+This example shows how to apply the **Material** object of a semi-transparent material to a component using the [systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial) attribute.
 
 ``` ts
 import { uiMaterial } from '@kit.ArkUI';
