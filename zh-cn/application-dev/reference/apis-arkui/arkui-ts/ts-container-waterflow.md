@@ -4133,7 +4133,7 @@ struct WaterFlowPlaceholderExample {
   }
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       WaterFlow() {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
@@ -4171,7 +4171,7 @@ ArkTS-Sta示例：
 ```ts
 // xxx.ets
 import {
-  Entry, Component, Column, ColumnOptions, Text, TextAlign, WaterFlow,
+  Entry, Component, Column, Text, TextAlign, WaterFlow,
   FlowItem, LazyForEach, Builder, wrapBuilder, PlaceholderOptions, FlexAlign
 } from '@kit.ArkUI';
 import { WaterFlowDataSource } from './WaterFlowDataSource';
@@ -4200,7 +4200,7 @@ struct WaterFlowPlaceholderExample {
   }
 
   build() {
-    Column({ space: 10 } as ColumnOptions) {
+    Column() {
       WaterFlow() {
         LazyForEach<number>(this.dataSource, (item: number) => {
           FlowItem() {
