@@ -132,18 +132,18 @@
      }
      return Breakpoint.XL;
    }
-
+   
    // 统一入口：拿到宽度（vp）后同时更新宽度显示与断点（单一数据源）
    private applyWidth(widthVp: number): void {
      this.windowWidth = Math.round(widthVp);
      this.currentBp = this.calcBreakpoint(widthVp);
    }
-
+   
    // 断点转标签字符串，用于信息条展示
    private bpLabel(bp: Breakpoint): string {
      return ['XS', 'SM', 'MD', 'LG', 'XL'][bp];
    }
-
+   
    // 根据断点决定栅格列数（同时驱动信息展示与Grid.columnsTemplate，单一数据源）
    private getColumns(bp: Breakpoint): number {
      if (bp <= Breakpoint.SM) {
