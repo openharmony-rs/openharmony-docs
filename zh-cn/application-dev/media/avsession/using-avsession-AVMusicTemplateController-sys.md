@@ -1,7 +1,7 @@
 ---
 kits: ["AVSession Kit / 音视频播控服务"]
-description: "从API version 23开始介绍系统应用通过音频模板控制器对接入音频模板的媒体应用提供统一UI界面管理和播控操作的开发流程，涵盖创建控制器、查询媒体数据、下发操作指令及监听数据同步。"
-keywords: [音频模板控制器, AVMusicTemplateController, 查询媒体数据, 下发操作指令, createAVMusicTemplateController, 座舱音乐, 模板创建监听]
+description: "从API版本23开始介绍系统应用通过音频模板控制器对接入音频模板的媒体应用提供统一UI界面管理和播控操作的开发流程，涵盖创建控制器、查询媒体数据、下发操作指令及监听数据同步。"
+keywords: [音频模板控制器, AVMusicTemplateController, 查询媒体数据, 下发操作指令, createAVMusicTemplateController, 座舱媒体中心, 模板创建监听]
 doctype: guide
 status: active
 ---
@@ -14,7 +14,7 @@ status: active
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，支持通过创建音频模板控制器，实现对接入音频模板的其他媒体应用提供统一的UI界面管理（播放列表、收藏列表、媒体详情等）以及媒体播控操作（播放、暂停、搜索、收藏等）的功能。该文档介绍音频模板系统接口能力及开发基本流程，包括监听媒体应用接入音频模板、查询媒体应用业务数据、给媒体应用下发操作指令等，媒体应用接入请参考文档[使用音频模板](using-avsession-AVMusicTemplate.md)。
+从API版本23开始，支持通过创建音频模板控制器，实现对接入音频模板的其他媒体应用提供统一的UI界面管理（播放列表、收藏列表、媒体详情等）以及媒体播控操作（播放、暂停、搜索、收藏等）的功能。该文档介绍音频模板系统接口能力及开发基本流程，包括监听媒体应用接入音频模板、查询媒体应用业务数据、给媒体应用下发操作指令等，媒体应用接入请参考文档[使用音频模板](using-avsession-AVMusicTemplate.md)。
 
 音频模板同时支持音频和视频内容，且两者的接入方式相同。本文档以音频场景为例进行说明。
 
