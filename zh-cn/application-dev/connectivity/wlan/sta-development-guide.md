@@ -90,7 +90,7 @@ Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端�
 
 ### 建立Wi-Fi连接
 1. 导入需要的Wi-Fi模块。
-2. 开启设备的Wi-Fi。
+2. 开启设备Wi-Fi，开启之前您可以调用[wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.STA系统能力。
 4. 需要申请权限ohos.permission.GET_WIFI_INFO，ohos.permission.SET_WIFI_INFO。
 5. 示例代码：
