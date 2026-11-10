@@ -305,12 +305,12 @@ class MyDataSource extends BasicDataSource {
 
 @Entry
 @Component
-struct LazyforEachTest {
+struct LazyForEachTest {
   private data: MyDataSource = new MyDataSource();
   @State @Watch('onMessageUpdated') message: number = 0;
 
   onMessageUpdated() {
-    hilog.info(DOMAIN, TAG, `LazyforEach message callback func ${this.message}`);
+    hilog.info(DOMAIN, TAG, `LazyForEach message callback func ${this.message}`);
   }
 
   aboutToAppear() {
