@@ -218,7 +218,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 
 ### 等待音频数据场景的处理建议
 
-在音频播放过程中，应用可能因网络下载等待等原因暂时无法提供音频数据。此时可以调用[standby](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#standby)接口让音频流进入standby状态，暂停数据回调，避免空转。已写入系统的缓存数据会继续播放完毕。退出standby后，数据回调恢复。仅STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_GAME、STREAM_USAGE_AUDIOBOOK类型的播放流支持standby。
+在音频播放过程中，应用可能因网络下载等待等原因暂时无法提供音频数据。从API版本26.1.0开始，应用可以调用[standby](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#standby)接口让音频流进入standby状态，暂停数据回调，避免空转。已写入系统的缓存数据会继续播放完毕。退出standby后，数据回调恢复。仅STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_GAME、STREAM_USAGE_AUDIOBOOK类型的播放流支持standby。
 
 **进入standby状态：**
 
