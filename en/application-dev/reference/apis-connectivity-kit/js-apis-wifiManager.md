@@ -5,6 +5,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=929b1621cca198b113925cbe081f239f51ad1fcc translatedAt=2026-11-10T05:05:10.338Z pushedAt=2026-11-10T07:28:41.262Z nl=1 -->
 
 This module provides basic Wi-Fi functionalities (such as wireless access, wireless encryption, and wireless roaming), basic peer-to-peer (P2P) services, and Wi-Fi notification services. It allows applications to interact with other devices through Wi-Fi.
 
@@ -1068,7 +1069,7 @@ Connects to a candidate network. Custom parameters can be set.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -1103,10 +1104,15 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 **Example**
 ```ts
   import { wifiManager } from '@kit.ConnectivityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let setting:wifiManager.ConnectSettings = { networkId: 0 }; // Candidate network ID, which is generated when a candidate network is added.
-    wifiManager.connectToCandidateConfig(setting);
+    wifiManager.connectToCandidateConfig(setting).then(() => {
+      console.info("connect success");
+    }).catch((error: BusinessError) => {
+      console.error(`connectToCandidateConfig failed. Code: ${error.code}, message: ${error.message}`);
+    });
   }catch(error){
     console.error("failed:" + JSON.stringify(error));
   }
@@ -1445,7 +1451,7 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 Obtains Wi-Fi connection information. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+**Required permissions**: ohos.permission.GET_WIFI_INFO 
 
 > **NOTE**
 > - If **macType** is set to **1** (device MAC address), you also need to apply for the ohos.permission.GET_WIFI_LOCAL_MAC permission to obtain the value of **macAddress**. (For API versions 8 to 15, this permission is available only to system applications. For API version 16 and later, this permission is available to common applications on PCs/2-in-1 devices, and is available only to system applications on other devices.) If the ohos.permission.GET_WIFI_LOCAL_MAC permission is not granted, no value is returned for **macAddress**.
@@ -1489,7 +1495,7 @@ getLinkedInfoSync(): WifiLinkedInfo
 
 Obtains Wi-Fi connection information. This method returns the result synchronously.
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+**Required permissions**: ohos.permission.GET_WIFI_INFO 
 
 > **NOTE**
 > - If **macType** is set to **1** (device MAC address), you also need to apply for the ohos.permission.GET_WIFI_LOCAL_MAC permission to obtain the value of **macAddress**. (For API versions 8 to 15, this permission is available only to system applications. For API version 16 and later, this permission is available to common applications on PCs/2-in-1 devices, and is available only to system applications on other devices.) If the ohos.permission.GET_WIFI_LOCAL_MAC permission is not granted, no value is returned for **macAddress**.
@@ -2324,7 +2330,7 @@ getP2pLocalDevice(): Promise&lt;WifiP2pDevice&gt;
 
 Obtains the local device information in the P2P connection. This API uses a promise to return the result.
 
-**Required permissions**:
+**Required permissions**: 
 
 API version 11 and later: ohos.permission.GET_WIFI_INFO
 
@@ -2606,7 +2612,7 @@ p2pCancelConnect(): void
 
 Cancels the P2P connection being set up.
 
-**Required permissions**: ohos.permission.GET_WIFI_INFO
+**Required permissions**: ohos.permission.GET_WIFI_INFO 
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
@@ -2790,7 +2796,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-**WLAN states** 
+**WLAN states**
 
 | Value| Description|
 | -------- | -------- |

@@ -5,15 +5,17 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=be269217f26d60860ab36c5c04ebfa42dad4f573 translatedAt=2026-11-10T03:50:39.949Z pushedAt=2026-11-10T07:12:42.175Z nl=1 -->
 
-MediaAssetsChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
+The **MediaAssetsChangeRequest** class implements the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11) API.
 
 Represents a request for changing multiple media assets.
 
+**Since**: 26.0.0
+
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The initial APIs of this class are supported since API version 26.0.0.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -110,7 +112,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let photoAssetList: Array<photoAccessHelper.PhotoAsset> = await fetchResult.getAllObjects();
   let assetsChangeRequest: photoAccessHelper.MediaAssetsChangeRequest = new photoAccessHelper.MediaAssetsChangeRequest(photoAssetList);
   assetsChangeRequest.setFavorite(true);
-  phAccessHelper.applyChanges(assetsChangeRequest).then(() => {
+  phAccessHelper.applyChanges(assetsChangeRequest as Object as photoAccessHelper.MediaChangeRequest).then(() => {
     console.info('apply setFavorite successfully');
   }).catch((err: BusinessError) => {
     console.error(`apply setFavorite failed with error: ${err.code}, ${err.message}`);

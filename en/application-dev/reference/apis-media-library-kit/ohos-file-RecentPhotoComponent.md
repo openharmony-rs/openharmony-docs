@@ -1,14 +1,15 @@
 # @ohos.file.RecentPhotoComponent (RecentPhotoComponent)
-
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xuchangda-->
 <!--Designer: @guxinggang-->
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:35:18.775Z pushedAt=2026-06-23T09:25:46.756Z -->
+<!-- md-trans-meta sourceCommit=f6b40976e3ca6ec11fcf5b900e1446394d414d87 translatedAt=2026-11-10T03:55:28.067Z pushedAt=2026-11-10T07:20:00.571Z nl=1 -->
 
 The RecentPhotoComponent embedded in the UI of an application allows the application to access the recent image or video in the user directory without the required permission. This component grants the application only the read permission.
+
+Note that **RecentPhotoComponent** does not support nesting, and you should not overlay the overlay attribute or a higher-level component on it, as this may cause gesture events to become invalid.
 
 > **NOTE**
 >
@@ -85,7 +86,7 @@ Called to return the query result of the recent image or video.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Parameters**
+**Parameters** 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
@@ -101,13 +102,13 @@ Called when a recent photo is selected. No special processing is performed on th
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**Parameters**
+**Parameters** 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | recentPhotoInfo | [BaseItemInfo](ohos-file-PhotoPickerComponent.md#baseiteminfo) | Yes| Information about the recent image or video.|
 
-**Return value**
+**Return value** 
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |

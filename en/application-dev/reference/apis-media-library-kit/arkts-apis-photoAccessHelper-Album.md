@@ -5,8 +5,9 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c0250638e381b2a51b01480cf57b3bdaac78328c translatedAt=2026-11-10T03:50:15.637Z pushedAt=2026-11-10T07:11:40.608Z nl=1 -->
 
-Album extends [AbsAlbum](arkts-apis-photoAccessHelper-AbsAlbum.md).
+Album inherits from [AbsAlbum](arkts-apis-photoAccessHelper-AbsAlbum.md).
 
 Album provides APIs to manage albums.
 
@@ -161,7 +162,7 @@ addAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt;):
 
 Adds image and video assets to a user album. Before calling this API, ensure that the album object has been obtained and the resource file is ready. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [MediaAlbumChangeRequest.addAssets](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#addassets11) instead.
 
@@ -230,7 +231,7 @@ addAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
 Adds image and video assets to a user album. Before calling this API, ensure that the album object has been obtained and the resource file is ready. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [MediaAlbumChangeRequest.addAssets](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#addassets11) instead.
 
@@ -304,7 +305,7 @@ removeAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt
 
 Adds image and video assets to a user album. Before calling this API, ensure that the album object has been obtained and the resource file is ready. This API uses an asynchronous callback to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [MediaAlbumChangeRequest.removeAssets](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#removeassets11) instead.
 
@@ -373,7 +374,7 @@ removeAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
 Adds image and video assets to a user album. Before calling this API, ensure that the album object has been obtained and the resource file is ready. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [MediaAlbumChangeRequest.removeAssets](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md#removeassets11) instead.
 

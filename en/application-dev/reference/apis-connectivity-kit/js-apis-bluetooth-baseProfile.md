@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ab463549ba53ac7ad9c9f586570526c5d592d467 translatedAt=2026-10-09T12:42:40.347Z pushedAt=2026-10-10T07:03:26.544Z -->
+<!-- md-trans-meta sourceCommit=bc17de02628f54d763dc1051391108d567ab9ef5 translatedAt=2026-11-10T05:00:52.394Z pushedAt=2026-11-10T07:22:26.642Z nl=1 -->
 
 This module provides the basic common methods for different Bluetooth technology protocols. It offers common capabilities such as querying the connection status, subscribing to connection status updates, and unsubscribing from connection status updates for Bluetooth [profiles](../../connectivity/bluetooth/terminology.md#profile) such as [A2DP](../../connectivity/bluetooth/terminology.md#a2dp), [HFP](../../connectivity/bluetooth/terminology.md#hfp) and [PAN](../../connectivity/bluetooth/terminology.md#pan). This module is suitable for scenarios where the connection status of multiple Bluetooth profiles needs to be managed in a unified manner within an app.
 
@@ -91,9 +91,7 @@ getConnectedDevices(): Array&lt;string&gt;
 
 Obtains the list of peer devices that have connected to the profile of the local device. For example, in a Bluetooth audio playback app, you can use this method to obtain the list of connected A2DP audio devices for device display or management.
 
-**Required permissions**:
-- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -138,7 +136,9 @@ getConnectionState(deviceId: string): ProfileConnectionState
 
 Obtains the profile connection status between the local and peer devices. For example, in a Bluetooth app, you can use this API to determine whether a device is connected, and then decide whether to initiate data transfer or update the device connection status.
 
-- Starting from API version 21, this API can be used to obtain the profile connection status by using the actual MAC address of the peer device.
+- Starting from API version 21, this API can be used to obtain the A2DP profile connection status by using the actual MAC address of the peer device.
+- Starting from API version 26.0.0, this API can be used to obtain the HFP and PAN profile connection status by using the actual MAC address of the peer device.
+- Different profiles support the actual MAC address starting from different versions. Use it as required.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -192,9 +192,7 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 
 Subscribes to profile connection status change events. This API uses an asynchronous callback to return the result. For example, in a Bluetooth audio app, when the earphones are connected or disconnected, the playback screen status is updated in real time or a message is displayed to notify the user.
 
-**Required permissions**:
-- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 

@@ -5,6 +5,7 @@
 <!--Designer: @YanSanzo-->
 <!--Tester: @tinygreyy-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c0250638e381b2a51b01480cf57b3bdaac78328c translatedAt=2026-11-10T03:55:34.280Z pushedAt=2026-11-10T07:20:22.570Z nl=1 -->
 
 The **MovingPhotoView** component is used to play moving photos and control the playback status.
 
@@ -284,8 +285,6 @@ notifyMovingPhotoTransition(): void
 Notifies the component to execute the transition animation for the cover image.
 
 **System API**: This is a system API.
-
-**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 

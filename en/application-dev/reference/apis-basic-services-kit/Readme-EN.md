@@ -5,6 +5,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=f8433f9b5c73ddf62b842656befb5bd3b9f83c44 translatedAt=2026-11-10T04:17:48.238Z pushedAt=2026-11-10T07:10:54.239Z nl=1 -->
 
 - ArkTS APIs<!--basic-services-arkts-->
   - Account Management<!--account-management-arkts-->

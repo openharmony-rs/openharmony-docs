@@ -6,6 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=b026b3aeef31e5c2ac5c14f8507bb3fa0dee1101 translatedAt=2026-11-10T04:16:47.768Z pushedAt=2026-11-10T07:05:54.660Z nl=1 -->
 
 The **thermal** module provides thermal level-related callback and query APIs to obtain the information required for thermal control.
 
@@ -23,7 +24,12 @@ import {thermal} from '@kit.BasicServicesKit';
 
 registerThermalLevelCallback(callback: Callback&lt;ThermalLevel&gt;): void
 
-Subscribes to thermal level changes. This API uses an asynchronous callback to return the result.
+Registers a callback for thermal level changes. When the device temperature crosses a level threshold and causes the thermal level to change, the system automatically triggers a callback notification and returns the thermal level after the change through the callback. This API uses an asynchronous callback to return the result. This method is used in pairs with [thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9) which is used to unregister the callback for thermal level changes.
+ 
+- Only one callback can be resgistered for each process. If the callback is resgistered repeatedly, the previous one will be overwritten.
+- The callback function should return a result as soon as possible and must not perform time-consuming operations such as synchronous file I/O. Otherwise, it may block the delivery of system thermal level notifications.
+- After the thermal management service restarts abnormally, the registered callback automatically becomes invalid and no notification will be received. You need to call **registerThermalLevelCallback** again to restore the registration.
+- When the thermal management service is unavailable, the registration may fail silently without throwing an exception. You cannot determine whether the registration succeeds from the return value. You are advised to verify service availability through [thermal.getLevel](#thermalgetlevel9) after registration. If [thermal.getLevel](#thermalgetlevel9) returns **COOL** while the device is obviously heating up, the service may be unavailable.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -58,7 +64,7 @@ try {
 
 unregisterThermalLevelCallback(callback?: Callback\<void>): void
 
-Unsubscribes from thermal level changes. This API uses an asynchronous callback to return the result.
+Unregisters the callback notification for thermal level changes. This API uses an asynchronous callback to return the result. This method is used in pairs with [thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9). Unregistering a callback that is not registered does not report an error and is treated as no operation.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -66,7 +72,7 @@ Unsubscribes from thermal level changes. This API uses an asynchronous callback 
 
 | Name  | Type                | Mandatory| Description                                          |
 | -------- | -------------------- | ---- | ---------------------------------------------- |
-| callback | Callback&lt;void&gt; | No  | (Optional) Callback that returns no value.|
+| callback | Callback&lt;void&gt; | No | Callback invoked when unregistration is complete. It has no return value. This parameter is used only to receive the notification of unregistration completion. After the unregistration succeeds, this callback  is invoked. If this parameter is not passed, the unregistration still takes effect, but no callback notification is triggered. |
 
 **Error codes**
 

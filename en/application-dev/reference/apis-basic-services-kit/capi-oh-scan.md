@@ -1,11 +1,11 @@
 # OH_Scan
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
 <!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=f172f47675a58f89bb693013f28ad2465486c311 translatedAt=2026-10-09T11:47:19.301Z pushedAt=2026-10-10T04:43:59.505Z -->
+<!-- md-trans-meta sourceCommit=432796cf3e6a4be981f95a7796deb982eeaff362 translatedAt=2026-11-10T03:58:31.798Z pushedAt=2026-11-10T06:02:04.271Z nl=1 -->
 
 ## Overview
 

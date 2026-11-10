@@ -2,10 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
 <!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=add3e169fa80018895713094232dd9a40a5657a8 translatedAt=2026-11-10T04:06:44.239Z pushedAt=2026-11-10T06:55:36.627Z nl=1 -->
 
 This module provides APIs for printing-related operations, including file printing, print job event monitoring, printer discovery and management, and print job status update. It is applicable to scenarios where printing capabilities need to be integrated into an app.
 

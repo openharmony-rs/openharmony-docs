@@ -1,10 +1,11 @@
 # @ohos.file.cloudSync (Device-Cloud Sync)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @Hermits; @reminder2352-->
-<!--Designer: @oh_create_jiawei-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @reminder2352-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=eddb9facbece35c32783654e8873436b2f0807c2 translatedAt=2026-11-10T05:10:11.736Z pushedAt=2026-11-10T07:35:06.763Z nl=1 -->
 
 The **cloudSync** module provides the device-cloud sync capabilities for applications. You can use the APIs to start or stop device-cloud sync and start or stop the download of images.
 
@@ -33,7 +34,7 @@ Enumerates the device-cloud sync states.
 | UPLOAD_FAILED |  1 | Upload failed.|
 | DOWNLOADING |  2 | The file is being downloaded.|
 | DOWNLOAD_FAILED |  3 | Download failed.|
-| COMPLETED |  4 | Sync completed.|
+| COMPLETED |  4 | Returned when synchronization succeeds or when the sync status callback is registered for the first time. |
 | STOPPED |  5 | Sync stopped.|
 
 ## ErrorType<sup>12+</sup>
@@ -96,8 +97,8 @@ Represents information about the download progress of a cloud file.
 | Name    | Type  | Read-Only| Optional| Description|
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [State](#state11) | No  | No  | File download state.|
-| processed | number | No  | No  | Size of the downloaded data, in bytes. The value range is [0, 9223372036854775807].|
-| size | number | No  | No  | Size of the cloud file, in bytes. The value range is [0, 9223372036854775807].|
+| processed | number | No | No | Size of downloaded data, ranging from [0, 9223372036854775807] (unit: Byte). |
+| size | number | No | No | Current cloud file size, ranging from [0, 9223372036854775807] (unit: Byte). |
 | uri | string | No  | No  | URI of the cloud file.|
 | error | [DownloadErrorType](#downloaderrortype11) | No  | No  | Download error type.|
 
@@ -134,6 +135,8 @@ let fileSync = new cloudSync.FileSync()
 on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 Registers a listener for the device-cloud sync progress.
+
+During initial registration of a callback, **4** is returned for **SyncState** in **SyncProgress**, representing the sync state of **COMPLETED**. In subsequent registrations, this value reflects the actual sync result. For example, if the last upload failed, the return value is **1**, representing the sync state of **UPLOAD_FAILED**.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -455,7 +458,7 @@ Provides APIs for the file manager application to download files from the Drive 
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-### construct<sup>11+</sup>
+### constructor<sup>11+</sup>
 
 constructor()
 
@@ -683,7 +686,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13600001  | IPC error. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
-| 14000002 | Invalid URI. |
+| 14000002 | Invalid uri. |
 
 **Example**
 
@@ -736,7 +739,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13600001  | IPC error. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
-| 14000002 | Invalid URI. |
+| 14000002 | Invalid uri. |
 
 **Example**
 
@@ -830,7 +833,7 @@ When **stop()** is called, the current file download process terminates, and dow
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | uri | string | Yes  | URI of the file to download.|
-| needClean<sup>12+</sup> | boolean | No  | Whether to delete the downloaded files. The default value **false** means not to delete the downloaded files; the value **true** means the opposite.<br>This parameter is available since API version 12.|
+| needClean<sup>12+</sup> | boolean | No  | Whether to delete the downloaded file. The default value is **false**, which means not to delete; **true** means to delete.<br>This parameter is supported since API version 12. |
 
 **Return value**
 
@@ -847,7 +850,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
 | 13900002 | No such file or directory. |
-| 14000002 | Invalid URI. |
+| 14000002 | Invalid uri. |
 
 **Example**
 
@@ -892,7 +895,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
 | 13900002 | No such file or directory. |
-| 14000002 | Invalid URI. |
+| 14000002 | Invalid uri. |
 
 **Example**
 
@@ -995,8 +998,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012  | Permission denied by the file system. |
-| 13900020  | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 14000002  | Invalid URI. |
+| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 14000002  | Invalid uri. |
 | 22400005  | Inner error. Possible causes:1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
@@ -1015,6 +1018,90 @@ try {
   let error:BusinessError = err as BusinessError;
   console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
 }
+
+```
+
+### cleanAllFileCache
+
+cleanAllFileCache(): Promise&lt;void&gt;
+
+Deletes all cached files. Files not uploaded to the cloud, files opened for writing, and thumbnail files are not deleted. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**Return value**
+
+| Type | Description |
+| ------ | ---- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID                     | Error Message        |
+| ---------------------------- | ---------- |
+| 13900010 | Try again. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+
+fileCache.cleanAllFileCache().then(() => {
+  console.info("clean file cache successfully");
+}).catch((err: BusinessError) => {
+  console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
+});
+
+```
+
+### getCachedTotalSize
+
+getCachedTotalSize(): Promise&lt;number&gt;
+
+Obtains the total size of cached files, including locally added files not yet uploaded to the cloud, locally added files already uploaded to the cloud, and downloaded files. Thumbnail files are excluded. This API uses a promise to return the result asynchronously.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**Return value**
+
+| Type | Description |
+| ------ | ---- |
+| Promise&lt;number&gt; | Promise object that returns the total size of cached files. |
+
+**Error codes**
+
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID                     | Error Message        |
+| ---------------------------- | ---------- |
+| 13900010 | Try again. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+
+fileCache.getCachedTotalSize().then((totalDownloadSize: number) => {
+  console.info("totalDownloadSize: " + totalDownloadSize);
+}).catch((err: BusinessError) => {
+  console.error("get totalDownloadSize failed with error message: " + err.message + ", error code: " + err.code);
+});
 
 ```
 
@@ -1208,7 +1295,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13900001  | Operation not permitted. |
 | 13900002  | No such file or directory. |
 | 13900012  | Permission denied. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 
 **Example**
 
@@ -1253,7 +1340,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13900001  | Operation not permitted. |
 | 13900002  | No such file or directory. |
 | 13900012  | Permission denied. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 
 **Example**
 
@@ -1349,7 +1436,7 @@ Represents the download state and progress information of historical version fil
 
 Represents the device-cloud file version management class. It allows you to manage historical versions of client-cloud files, obtain the list of historical versions, download historical versions to the local device, replace the current local file with a historical version file, and query and remove conflict flags for version conflicts.
 
-### construct<sup>20+</sup>
+### constructor<sup>20+</sup>
 
 constructor()
 
@@ -1406,8 +1493,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 14000002 | Invalid URI. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 14000002 | Invalid uri. |
 | 22400002 | Network unavailable. |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
@@ -1424,9 +1511,9 @@ let uri = fileUri.getUriFromPath(path);
 let limit = 10;
 
 fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync.HistoryVersion>) => {
-  for(let i = 0, len = versionList.length; i < len; i++) {
-    console.info("get history versionId: " + versionList[i].versionId);
-  }
+  versionList.forEach((item) => {
+    console.info("get history versionId: " + item.versionId);
+  })
 }).catch((err: BusinessError) => {
   console.error("get history version failed with error message: " + err.message + ", error code: " + err.code);
 });
@@ -1464,8 +1551,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 14000002 | Invalid URI. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 14000002 | Invalid uri. |
 | 22400002 | Network unavailable. |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
@@ -1531,8 +1618,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900008 | Bad file descriptor. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 14000002 | Invalid URI. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 14000002 | Invalid uri. |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 | 22400007 | The version file specified to replace the original file does not exist. |
 
@@ -1604,8 +1691,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 14000002 | Invalid URI. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 14000002 | Invalid uri. |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
@@ -1656,8 +1743,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 14000002 | Invalid URI. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 14000002 | Invalid uri. |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
@@ -1716,9 +1803,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 13900004  | Interrupted system call. |
 | 13900010  | Try again. |
 | 13900012  | Permission denied by the file system. |
-| 13900020  | Invalid argument. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 13900031  | Function not implemented. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 | 22400005  | Inner error. Possible causes:1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**

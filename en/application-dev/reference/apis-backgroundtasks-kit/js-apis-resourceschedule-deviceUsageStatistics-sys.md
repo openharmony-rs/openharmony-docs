@@ -1,12 +1,11 @@
 # @ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)
-
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=cbf8346f66e41cef33ef9ad8bde72cb116377770 translatedAt=2026-08-11T01:58:07.591Z pushedAt=2026-08-11T06:55:49.530Z -->
+<!-- md-trans-meta sourceCommit=f34119a71fcdd451f375709e9b2c04660832cc24 translatedAt=2026-11-10T03:49:55.594Z pushedAt=2026-11-10T05:54:09.939Z nl=1 -->
 
 The **usageStatistics** module provides APIs for collecting statistics on device usage. For example, you can use the APIs to query whether an application is commonly used and an application's priority group, usage duration, system events (hibernation, wakeup, unlocking, and screen locking), application events (foreground, background, and start and end of continuous tasks), and the number of notifications.
 
@@ -56,7 +55,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 10000006   | Failed to get the application information.    |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { usageStatistics } from '@kit.BackgroundTasksKit';
@@ -120,7 +118,6 @@ usageStatistics.isIdleState('com.ohos.camera').then((res: boolean) => {
   console.error('BUNDLE_ACTIVE isIdleState promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
 ```
-
 ## usageStatistics.isIdleStateSync<sup>10+</sup>
 
 isIdleStateSync(bundleName: string): boolean
@@ -160,7 +157,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 10000006   | Failed to get the application information.    |
 
 **Example**
-
 ```ts
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 
@@ -842,7 +838,7 @@ Queries the application usage duration statistics in the specified time frame at
 
 **Required permissions**: ohos.permission.BUNDLE_ACTIVE_INFO
 
-**System capability**: SystemCapability.ResourceSchedule.UsageStatistics.App
+**System capability**: SystemCapability.ResourceSchedule.UsageStatistics.App 
 
 **Parameters**
 
@@ -1008,7 +1004,6 @@ usageStatistics.queryBundleEvents(0, 20000000000000, 100).then((res: Array<usage
   console.error('BUNDLE_ACTIVE queryBundleEvents promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
 ```
-
 ## usageStatistics.queryBundleEvents
 
 queryBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
@@ -1457,7 +1452,7 @@ This API uses a promise to return a maximum of 1000 FA usage records sorted by t
 
 | Type                                      | Description                                |
 | ---------------------------------------- | ---------------------------------- |
-| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise used to return the usage records of different HAP files (no more than 1000 records). |
+| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise used to return the usage records of different HAP packages of each application in the FA model (no more than 1000 records). |
 
 **Error codes**
 
@@ -1508,7 +1503,7 @@ Queries the usage records of different HAP files for each app in the FA model (n
 
 | Name     | Type                                      | Mandatory  | Description                                 |
 | -------- | ---------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Yes | Callback used to return the usage records of different HAP files (no more than 1000 records). |
+| callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Yes | Callback used to return the usage records of different HAP packages of each app in the FA model (no more than 1000 records). |
 
 **Error codes**
 
@@ -1566,7 +1561,7 @@ Queries a given number of usage records of different HAP files for each app in t
 
 | Type                                      | Description                                |
 | ---------------------------------------- | ---------------------------------- |
-| Promise used to return the usage records of different HAP files for each app in the FA model. The usage records returned does not exceed the value of **maxNum**. |
+| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise used to return the usage records of different HAP packages of each app in the FA model, with no more than **maxNum** records. |
 
 **Error codes**
 
@@ -1617,7 +1612,7 @@ Queries a given number of usage records of different HAP files for each app in t
 | Name     | Type                                      | Mandatory  | Description                                 |
 | -------- | ---------------------------------------- | ---- | ----------------------------------- |
 | maxNum   | number                                   | Yes   |  Number of usage records, in the range [1, 1000].|
-| callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Yes | Callback used to return the usage records of different HAP files for each app in the FA model. The usage records returned does not exceed the value of **maxNum**. |
+| callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Yes | Callback used to return the usage records of different HAP packages of each app in the FA model, with no more than **maxNum** records. |
 
 **Error codes**
 
@@ -1693,6 +1688,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 10000004   | Failed to access the device usage service.        |
 | 10100001   | Repeated operation on the application group. |
 
+
 **Example**
 
 ```ts
@@ -1746,6 +1742,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 10000003   | Failed to get system ability manager. |
 | 10000004   | Failed to access the device usage service.        |
 | 10100001   | Repeated operation on the application group. |
+
 
 **Example**
 

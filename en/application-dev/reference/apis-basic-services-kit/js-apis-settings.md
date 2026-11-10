@@ -6,12 +6,13 @@
 <!--Designer: @Kun_Wu-->
 <!--Tester: @dyx118186878-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=2366fa9c78692ef8906fe213d36ea6d8b60a6527 translatedAt=2026-11-10T04:13:55.508Z pushedAt=2026-11-10T07:04:47.781Z nl=1 -->
 
 The **settings** module provides APIs for setting data items.
 
 > **NOTE**
 >
->  - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>  - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
 > 
 >  - If no value is obtained for the accessed data item, it indicates that the current system app does not add the value of the data item to the database.
 
@@ -292,8 +293,8 @@ Sets the value for a data item. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-**Required permissions**: 
-- ohos.permission.MANAGE_SETTINGS for writing the DEVICE_SHARED and USER_PROPERTY fields (available only to system applications);
+**Required permissions**:  
+- ohos.permission.MANAGE_SETTINGS for writing the DEVICE_SHARED and USER_PROPERTY fields (available only to system applications); 
 - ohos.permission.MANAGE_SECURE_SETTINGS for writing the USER_SECURITY field (available only to system applications)
 
 **Parameters**
@@ -338,7 +339,7 @@ settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', set
 
 getValue(context: Context, name: string, callback: AsyncCallback\<string>): void
 
-Obtains the value of a data item in the **DEVICE_SHARD** domain of the database. This API uses an asynchronous callback to return the result.
+Obtains the value of a data item in the **DEVICE_SHARED** domain of the database. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -374,7 +375,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, valu
 
 getValue(context: Context, name: string): Promise\<string>
 
-Obtains the value of a data item in the **DEVICE_SHARD** domain of the database. This API uses a promise to return the result.
+Obtains the value of a data item in the **DEVICE_SHARED** domain of the database. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -417,7 +418,7 @@ Obtains the value of a data item in the database. This API uses a promise to ret
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-**Required permissions**:  
+**Required permissions**:   
 - ohos.permission.MANAGE_SECURE_SETTINGS for reading the USER_SECURITY field (available only to system applications)
 
 **Parameters**
@@ -441,7 +442,6 @@ Obtains the value of a data item in the database. This API uses a promise to ret
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// Update the value of SCREEN_BRIGHTNESS_STATUS. (As this data item exists in the database, the getValue API will update its value.)
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.domainName.DEVICE_SHARED).then((value) => {
@@ -480,7 +480,6 @@ Obtains the value of a data item in the **DEVICE_SHARED** domain of the database
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// Obtain the value of SCREEN_BRIGHTNESS_STATUS (this data item already exists in the database).
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '10');
@@ -496,7 +495,7 @@ Obtains the value of a data item. Unlike **getValue**, this API returns the resu
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-**Required permissions**:  
+**Required permissions**:   
 - ohos.permission.MANAGE_SECURE_SETTINGS for reading the USER_SECURITY field (available only to system applications)
 
 **Parameters**
@@ -522,7 +521,6 @@ Obtains the value of a data item. Unlike **getValue**, this API returns the resu
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// Update the value of SCREEN_BRIGHTNESS_STATUS (this data item already exists in the database).
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100',  settings.domainName.DEVICE_SHARED);
@@ -583,8 +581,8 @@ Sets the value for a data item. Unlike **setValue**, this API returns the result
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-**Required permissions**: 
-- ohos.permission.MANAGE_SETTINGS for writing the DEVICE_SHARED and USER_PROPERTY fields (available only to system applications); 
+**Required permissions**:  
+- ohos.permission.MANAGE_SETTINGS for writing the DEVICE_SHARED and USER_PROPERTY fields (available only to system applications);  
 - ohos.permission.MANAGE_SECURE_SETTINGS for writing the USER_SECURITY field (available only to system applications)
 
 **Parameters**
@@ -747,11 +745,15 @@ settings.openNetworkManagerSettings(context).then((status) => {
 });
 ```
 
-## settings.enableAirplaneMode
+## settings.enableAirplaneMode<sup>(deprecated)</sup>
 
 enableAirplaneMode(enable: boolean, callback: AsyncCallback\<void>): void
 
 Enables or disables airplane mode. This API uses an asynchronous callback to return the result. (Not supported yet.)
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 26.0.0. No substitute API is provided.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
@@ -775,11 +777,15 @@ settings.enableAirplaneMode(isEnabled, (err:Error) => {
 })
 ```
 
-## settings.enableAirplaneMode
+## settings.enableAirplaneMode<sup>(deprecated)</sup>
 
 enableAirplaneMode(enable: boolean): Promise\<void>
 
 Enables or disables airplane mode. This API uses a promise to return the result. (Not supported yet.)
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 26.0.0. No substitute API is provided.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
@@ -806,11 +812,15 @@ settings.enableAirplaneMode(isEnabled).then(() => {
 })
 ```
 
-## settings.canShowFloating
+## settings.canShowFloating<sup>(deprecated)</sup>
 
 canShowFloating(callback: AsyncCallback\<boolean>): void
 
 Checks whether the application can be displayed in a floating window. This API uses an asynchronous callback to return the result. (Not supported yet.)
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 26.0.0. No substitute API is provided.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
@@ -832,11 +842,15 @@ settings.canShowFloating((err:Error, status: boolean) => {
 });
 ```
 
-## settings.canShowFloating
+## settings.canShowFloating<sup>(deprecated)</sup>
 
 canShowFloating(): Promise\<boolean>
 
 Checks whether the application can be displayed in a floating window. This API uses a promise to return the result. (Not supported yet.)
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 26.0.0. No substitute API is provided.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
@@ -854,11 +868,15 @@ settings.canShowFloating().then((status:boolean) => {
 });
 ```
 
-## settings.getUriSync<sup>8+</sup>
+## settings.getUriSync<sup>(deprecated)</sup>
 
 getUriSync(name: string): string
 
 Obtains the URI of a data item. (Not supported yet.)
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 26.0.0. No substitute API is provided.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
@@ -946,7 +964,7 @@ settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => 
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string, callback: AsyncCallback\<object>): void
 
-Obtains the value of a data item in the **DEVICE_SHARD** domain of the database. This API uses an asynchronous callback to return the result.
+Obtains the value of a data item in the **DEVICE_SHARED** domain of the database. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -984,7 +1002,7 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, (err:Error,
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string): Promise\<object>
 
-Obtains the value of a data item in the **DEVICE_SHARD** domain of the database. This API uses a promise to return the result.
+Obtains the value of a data item in the **DEVICE_SHARED** domain of the database. This API uses a promise to return the result.
 
 > **NOTE**
 >

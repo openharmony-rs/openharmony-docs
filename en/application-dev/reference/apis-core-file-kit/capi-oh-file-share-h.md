@@ -1,14 +1,15 @@
 # oh_file_share.h
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie; @hongjin-li_admin-->
-<!--Designer: @chenxi0605; @JerryH1011-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=0547715d750965c950e08363cedf1ff726e5bd8a translatedAt=2026-11-10T05:07:04.601Z pushedAt=2026-11-10T07:29:48.490Z nl=1 -->
 
 ## Overview
 
-Provides APIs for persisting permissions, activating or deactivating persistent permissions, and checking the persistent permissions on files or directories based on their URIs.
+Provides URI-based methods for persistent authorization of files and directories, cancellation of persistent authorization, permission activation, and permission query, applicable to cross-application file sharing scenarios. Persistent authorization is used to save access policies, and permission activation is used to make the persisted permissions take effect.
 
 **File to include**: <filemanagement/fileshare/oh_file_share.h>
 
@@ -26,26 +27,26 @@ Provides APIs for persisting permissions, activating or deactivating persistent 
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) | FileShare_PolicyErrorResult | Represents the permission policy error result.|
-| [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) | FileShare_PolicyInfo | Represents the permission policy information.|
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) | FileShare_PolicyErrorResult | The URI policy result when permission granting or activation fails, used to record the failed URI, error code, and failure reason. |
+| [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) | FileShare_PolicyInfo | Policy information for granting or activating URI access permissions, used to describe the target URI and access mode in cross-application file sharing scenarios. |
 
 ### Enums
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [FileShare_OperationMode](#fileshare_operationmode) | FileShare_OperationMode | Enumerates the URI operation mode.|
-| [FileShare_PolicyErrorCode](#fileshare_policyerrorcode) | FileShare_PolicyErrorCode | Enumerates the error codes for a permission policy.|
+| [FileShare_PolicyErrorCode](#fileshare_policyerrorcode) | FileShare_PolicyErrorCode | Error code corresponding to the URI for which the grant or activation of the permission policy failed. |
 
 ### Functions
 
 | Name| Description|
 | -- | -- |
-| [FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_persistpermission) | Persists the permissions on files or directories.|
-| [FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_revokepermission) | Revokes the permissions from files or directories.|
-| [FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_activatepermission) | Activates the persistent permissions on files or directories.|
-| [FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_deactivatepermission) | Deactivates the persistent permissions on files or directories.|
-| [FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, bool **result, unsigned int *resultNum)](#oh_fileshare_checkpersistentpermission) | Checks the persistent permissions on files or directories.|
-| [void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorResult, unsigned int resultNum)](#oh_fileshare_releasepolicyerrorresult) | Releases the memory, to which **FileShare_PolicyErrorResult** points.|
+| [FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_persistpermission) | Persistently authorizes the URIs of multiple selected files or directories. After the persistent authorization is complete, call OH_FileShare_ActivatePermission() to activate the permission. |
+| [FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_revokepermission) | Cancels the persistent authorization for the selected multiple file or directory URIs. Before calling this interface, you must first complete the persistent authorization. |
+| [FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_activatepermission) | Activates multiple persistently authorized files or directories. Before calling this interface, call OH_FileShare_PersistPermission() to complete the persistent authorization. The permission takes effect after activation. |
+| [FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum)](#oh_fileshare_deactivatepermission) | Deactivates multiple persistently authorized files or directories. Before calling this interface, call OH_FileShare_ActivatePermission() to activate the permission. After deactivation, the persistent authorization is retained. |
+| [FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, bool **result, unsigned int *resultNum)](#oh_fileshare_checkpersistentpermission) | Verifies the persistent authorization of the selected multiple file or directory URIs. You can call this interface before activating the permission to confirm whether the target URI has completed persistent authorization. |
+| [void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorResult, unsigned int resultNum)](#oh_fileshare_releasepolicyerrorresult) | Releases the memory resources pointed to by the FileShare_PolicyErrorResult pointer. This resource is output through result by OH_FileShare_PersistPermission, OH_FileShare_RevokePermission, OH_FileShare_ActivatePermission, and OH_FileShare_DeactivatePermission. |
 
 ## Enum Description
 
@@ -63,8 +64,8 @@ Enumerates the URI operation mode.
 
 | Enum Item| Description|
 | -- | -- |
-| READ_MODE = 1 << 0 | Read.|
-| WRITE_MODE = 1 << 1 | Write.|
+| READ_MODE = 1 << 0 | Read permission. It can be used alone or combined with WRITE_MODE. |
+| WRITE_MODE = 1 << 1 | Write permission. It can be used alone or combined with READ_MODE. |
 
 ### FileShare_PolicyErrorCode
 
@@ -74,14 +75,14 @@ enum FileShare_PolicyErrorCode
 
 **Description**
 
-Enumerates the error codes for a permission policy.
+Error code corresponding to the URI for which the grant or activation of the permission policy failed.
 
 **Since**: 12
 
 | Enum Item| Description|
 | -- | -- |
-| PERSISTENCE_FORBIDDEN = 1 | The permission on the URI cannot be persisted.|
-| INVALID_MODE = 2 | Invalid mode.|
+| PERSISTENCE_FORBIDDEN = 1 | The URI is forbidden from being persisted, for example, a remote URI does not support persistence. |
+| INVALID_MODE = 2 | Invalid mode, for example, the permission mode value is not within the supported range. |
 | INVALID_PATH = 3 | Invalid path.|
 | PERMISSION_NOT_PERSISTED = 4 | The permission is not persisted.|
 
@@ -96,7 +97,7 @@ FileManagement_ErrCode OH_FileShare_PersistPermission(const FileShare_PolicyInfo
 
 **Description**
 
-Persists the permissions on files or directories.
+Persistently authorizes the URIs of multiple selected files or directories. After the persistent authorization is complete, call OH_FileShare_ActivatePermission() to activate the permission.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -106,10 +107,10 @@ Persists the permissions on files or directories.
 
 | Name| Description|
 | -- | -- |
-| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | Pointer to a **FileShare_PolicyInfo** instance.|
-| unsigned int policyNum | Number of policies in the **FileShare_PolicyInfo** array.|
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | Double pointer to the **FileShare_PolicyErrorResult** array. Use **OH_FileShare_ReleasePolicyErrorResult()** to release the memory allocated.|
-| unsigned int *resultNum | Pointer to the size of the **FileShare_PolicyErrorResult** array.|
+| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | Pointer to a FileShare_PolicyInfo instance array, indicating the URI policy information of the file or directory that requires persistence grant authorization. |
+| unsigned int policyNum | Number of elements in the FileShare_PolicyInfo instance array. The value range is [1, 500]. |
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | Output parameter, pointing to a FileShare_PolicyErrorResult array pointer. Please use OH_FileShare_ReleasePolicyErrorResult() to perform resource release. |
+| unsigned int *resultNum | Output parameter, indicating the number of elements in the FileShare_PolicyErrorResult array. |
 
 **Returns**
 
@@ -125,7 +126,7 @@ FileManagement_ErrCode OH_FileShare_RevokePermission(const FileShare_PolicyInfo 
 
 **Description**
 
-Revokes the permissions from files or directories.
+Cancels the persistent authorization for the selected multiple file or directory URIs. Before calling this interface, you must first complete the persistent authorization.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -135,16 +136,16 @@ Revokes the permissions from files or directories.
 
 | Name| Description|
 | -- | -- |
-| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | Pointer to a **FileShare_PolicyInfo** instance.|
-| unsigned int policyNum | Number of policies in the **FileShare_PolicyInfo** array.|
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | Double pointer to the **FileShare_PolicyErrorResult** array. Use **OH_FileShare_ReleasePolicyErrorResult()** to release the memory allocated.|
-| unsigned int *resultNum | Pointer to the size of the **FileShare_PolicyErrorResult** array.|
+| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | Pointer to the FileShare_PolicyInfo instance array, indicating the file or directory URI policy information for which persistent authorization needs to be canceled. |
+| unsigned int policyNum | Number of elements in the FileShare_PolicyInfo instance array. The value range is [1, 500]. |
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | Output parameter, pointing to a FileShare_PolicyErrorResult array pointer. Please use OH_FileShare_ReleasePolicyErrorResult() to perform resource release. |
+| unsigned int *resultNum | Output parameter, indicating the number of elements in the FileShare_PolicyErrorResult array. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_INVALID_PARAMETER 401 - The input parameter is invalid. Possible causes:<br>1. The **policies**, **result**, or **resultNum** parameter is a null pointer.<br>             2. The value of **policyNum** is **0** or exceeds the maximum length (500).<br>3. The value of **uri** in the **policies** parameter is empty, the value of **length** is **0**, or the value of **uri** is different from the value of **length**.<br>         ERR_DEVICE_NOT_SUPPORTED 801 - The device does not support this API.<br>         ERR_PERMISSION_ERROR 201 - The permission verification fails.<br>         ERR_ENOMEM 13900011 - The memory allocation or copy fails.<br>         ERR_EPERM 13900001 - The operation is not allowed.<br>         ERR_OK 0 - The API is called successfully.|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>         ERR_INVALID_PARAMETER 401 - The input parameter is invalid. Possible causes:<br>             1. The **policies**, **result**, or **resultNum** parameter is a null pointer.<br>             2. The value of **policyNum** is **0** or exceeds the maximum length (500).<br>             3. The value of **uri** in the **policies** parameter is empty, the value of **length** is **0**, or the value of **uri** is different from the value of **length**.<br>         ERR_DEVICE_NOT_SUPPORTED 801 - The device does not support this API.<br>         ERR_PERMISSION_ERROR 201 - The permission verification fails.<br>         ERR_ENOMEM 13900011 - The memory allocation or copy fails.<br>         ERR_EPERM 13900001 - The operation is not allowed.<br>         ERR_OK 0 - The API is called successfully. |
 
 ### OH_FileShare_ActivatePermission()
 
@@ -154,7 +155,7 @@ FileManagement_ErrCode OH_FileShare_ActivatePermission(const FileShare_PolicyInf
 
 **Description**
 
-Activates the persistent permissions on files or directories.
+Activates multiple files or directories that have been granted persistent authorization. Before calling this interface, you must first call [OH_FileShare_PersistPermission()](#oh_fileshare_persistpermission) to complete the persistent authorization. The permission takes effect after activation.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -164,10 +165,10 @@ Activates the persistent permissions on files or directories.
 
 | Name| Description|
 | -- | -- |
-| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | Pointer to a **FileShare_PolicyInfo** instance.|
-| unsigned int policyNum | Number of policies in the **FileShare_PolicyInfo** array.|
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | Double pointer to the **FileShare_PolicyErrorResult** array. Use **OH_FileShare_ReleasePolicyErrorResult()** to release the memory allocated.|
-| unsigned int *resultNum | Pointer to the size of the **FileShare_PolicyErrorResult** array.|
+| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | Pointer to the FileShare_PolicyInfo instance array, indicating the URI policy information of the file or directory for which permission needs to be activated. |
+| unsigned int policyNum | Number of elements in the FileShare_PolicyInfo instance array. The value range is [1, 500]. |
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | Output parameter, pointing to a FileShare_PolicyErrorResult array pointer. Please use OH_FileShare_ReleasePolicyErrorResult() to perform resource release. |
+| unsigned int *resultNum | Output parameter, indicating the number of elements in the FileShare_PolicyErrorResult array. |
 
 **Returns**
 
@@ -183,7 +184,7 @@ FileManagement_ErrCode OH_FileShare_DeactivatePermission(const FileShare_PolicyI
 
 **Description**
 
-Deactivates the persistent permissions on files or directories.
+Deactivates multiple files or directories that have been granted persistent authorization. Before calling this interface, you must first call [OH_FileShare_ActivatePermission()](#oh_fileshare_activatepermission) to activate the permission. After deactivation, the persistent authorization is still retained.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -193,10 +194,10 @@ Deactivates the persistent permissions on files or directories.
 
 | Name| Description|
 | -- | -- |
-| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | Pointer to a **FileShare_PolicyInfo** instance.|
-| unsigned int policyNum | Number of policies in the **FileShare_PolicyInfo** array.|
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | Double pointer to the **FileShare_PolicyErrorResult** array. Use **OH_FileShare_ReleasePolicyErrorResult()** to release the memory allocated.|
-| unsigned int *resultNum | Pointer to the size of the **FileShare_PolicyErrorResult** array.|
+| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | Pointer to the FileShare_PolicyInfo instance array, indicating the URI policy information of the file or directory for which the permission is to be deactivated. |
+| unsigned int policyNum | Number of elements in the FileShare_PolicyInfo instance array. The value range is [1, 500]. |
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) **result | Output parameter, pointing to a FileShare_PolicyErrorResult array pointer. Please use OH_FileShare_ReleasePolicyErrorResult() to perform resource release. |
+| unsigned int *resultNum | Output parameter, indicating the number of elements in the FileShare_PolicyErrorResult array. |
 
 **Returns**
 
@@ -212,7 +213,7 @@ FileManagement_ErrCode OH_FileShare_CheckPersistentPermission(const FileShare_Po
 
 **Description**
 
-Checks the persistent permissions on files or directories.
+Verifies the persistent authorization of the selected multiple file or directory URIs. You can call this interface before activating the permission to confirm whether the target URI has completed persistent authorization.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -222,10 +223,10 @@ Checks the persistent permissions on files or directories.
 
 | Name| Description|
 | -- | -- |
-| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | Pointer to a **FileShare_PolicyInfo** instance.|
-| unsigned int policyNum | Number of policies in the **FileShare_PolicyInfo** array.|
-| bool **result | Double pointer to the check result obtained. The value **true** means the permission is persistent; the value **false** means the opposite. You also need to include **malloc.h** and use **free()** to release the memory allocated.|
-| unsigned int *resultNum | Pointer to the size of the check result array.|
+| [const FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) *policies | Pointer to an array of FileShare_PolicyInfo instances, indicating the file or directory URI policy information for which persistent authorization needs to be verified. |
+| unsigned int policyNum | Number of elements in the FileShare_PolicyInfo instance array. The value range is [1, 500]. |
+| bool **result | Output parameter. Pointer to the authorization verification result array. The array elements correspond one-to-one with the elements of the policies array. true indicates that persistent authorization is granted; false indicates that persistent authorization is not granted. Use the free() method of the standard library to release the allocated resources. |
+| unsigned int *resultNum | Output parameter, indicating the number of elements in the verification result array. |
 
 **Returns**
 
@@ -241,7 +242,7 @@ void OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorRes
 
 **Description**
 
-Releases the memory, to which **FileShare_PolicyErrorResult** points.
+Releases the memory resources pointed to by the FileShare_PolicyErrorResult pointer. This resource is output through result by OH_FileShare_PersistPermission, OH_FileShare_RevokePermission, OH_FileShare_ActivatePermission, and OH_FileShare_DeactivatePermission.
 
 **Since**: 12
 
@@ -249,5 +250,5 @@ Releases the memory, to which **FileShare_PolicyErrorResult** points.
 
 | Name| Description|
 | -- | -- |
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) *errorResult | Pointer to a **FileShare_PolicyErrorResult** instance.|
-| unsigned int resultNum | Size of the **FileShare_PolicyErrorResult** array.|
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) *errorResult | Pointer to the FileShare_PolicyErrorResult instance array. |
+| unsigned int resultNum | Number of elements in the FileShare_PolicyErrorResult instance array. |

@@ -5,6 +5,7 @@
 <!--Designer: @hu-kai45-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=d048b0bafe3e0e15f26e9ac5f8f709f206e6bb17 translatedAt=2026-11-10T04:15:46.853Z pushedAt=2026-11-10T07:05:34.582Z nl=1 -->
 
 The **systemTime** module provides system time and time zone features. You can use the APIs of this module to set and obtain the system time and time zone.
 
@@ -59,8 +60,8 @@ try {
     }
     console.info(`Succeeded in getting currentTime: ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -104,8 +105,8 @@ try {
     }
     console.info(`Succeeded in getting currentTime : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -126,7 +127,7 @@ Obtains the time elapsed since the Unix epoch. This API uses a promise to return
 
 | Name| Type   | Mandatory| Description                    |
 | ------ | ------- | ---- | ------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>The default value is false.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
+| isNano | boolean | No | Whether the return result is in nanoseconds. The default value is false.<br>The default value is false.<br>- true: the return result is in nanoseconds (ns). <br>- false: the return result is in milliseconds (ms). |
 
 **Return value**
 
@@ -153,8 +154,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -175,7 +176,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 | Name  | Type                       | Mandatory| Description  |
 | -------- | ---------- | ---- | -------------------------- |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
+| isNano   | boolean                     | Yes   | Whether the return result is in nanoseconds.<br>- true: the return result is in nanoseconds (ns). <br>- false: the return result is in milliseconds (ms). |
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -199,8 +200,8 @@ try {
     }
     console.info(`Succeeded in getting real active time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -244,8 +245,8 @@ try {
     }
     console.info(`Succeeded in getting real active time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -266,7 +267,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | ----------------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
+| isNano | boolean | No | Whether the return result is in nanoseconds. The default value is **false**.<br>- **true**: The return result is in nanoseconds (ns).<br>- **false**: The return result is in milliseconds (ms). |
 
 **Return value**
 
@@ -293,8 +294,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -315,7 +316,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 | Name  | Type                       | Mandatory| Description  |
 | -------- | --------------- | ---- | ------------------------------- |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
+| isNano   | boolean                     | Yes  | Whether the return result is in nanoseconds.<br>- true: The return result is in nanoseconds (ns). <br>- false: The return result is in milliseconds (ms). |
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result.  |
 
 **Error codes**
@@ -339,8 +340,8 @@ try {
     }
     console.info(`Succeeded in getting real time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -384,8 +385,8 @@ try {
     }
     console.info(`Succeeded in getting real time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -406,7 +407,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ------------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>The default value is false.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
+| isNano | boolean | No   | Whether the return result is in nanoseconds. The default value is false.<br>The default value is false.<br>- true: the return result is in nanoseconds (ns). <br>- false: the return result is in milliseconds (ms). |
 
 **Return value**
 
@@ -433,8 +434,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -447,7 +448,7 @@ Obtains the current system date. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use the `new Date()` method instead. For details, see the document "How to Convert a Time-Format String to a Date Object".
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -478,8 +479,8 @@ try {
     }
     console.info(`Succeeded in getting date : ${date}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get date. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -492,7 +493,7 @@ Obtains the current system date. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use the `new Date()` method instead. For details, see the document "How to Convert a Time-Format String to a Date Object".
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -521,8 +522,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to get date. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get date. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -566,8 +567,8 @@ try {
     }
     console.info(`Succeeded in getting timezone : ${data}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -609,8 +610,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -659,8 +660,8 @@ try {
     }
     console.info(`Succeeded in setting time`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -712,8 +713,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -761,8 +762,8 @@ try {
     }
     console.info(`Succeeded in setting date.`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -813,8 +814,8 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -861,8 +862,8 @@ try {
     }
     console.info(`Succeeded in setting timezone.`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -912,15 +913,15 @@ try {
   }).catch((error: BusinessError) => {
     console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
+} catch (err) {
+  let error = err as BusinessError;
   console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
 
 ## Supported System Time Zones
 
-The following table lists the supported system time zones and the respective offset (unit: h) between each time zone and time zone 0.
+The following table lists the supported system time zones and the respective standard time offset (unit: h) between each time zone and time zone 0.
 
 | Time Zone                          | Offset        |
 | ------------------------------ | --------------------- |
@@ -930,9 +931,9 @@ The following table lists the supported system time zones and the respective off
 | America/Noronha                | -2                    |
 | America/St_Johns               | -3                    |
 | Africa/Kinshasa                | 1                     |
-| America/Santiago               | -3                    |
+| America/Santiago               | -4                    |
 | Asia/Shanghai                  | 8                     |
-| Asia/Nicosia                   | 3                     |
+| Asia/Nicosia                   | 2                     |
 | Europe/Berlin                  | 2                     |
 | America/Guayaquil              | -5                    |
 | Europe/Madrid                  | 2                     |
@@ -943,15 +944,15 @@ The following table lists the supported system time zones and the respective off
 | Asia/Almaty                    | 6                     |
 | Pacific/Majuro                 | 12                    |
 | Asia/Ulaanbaatar               | 8                     |
-| America/Mexico_City            | -5                    |
+| America/Mexico_City            | -6                    |
 | Asia/Kuala_Lumpur              | 8                     |
 | Pacific/Auckland               | 12                    |
 | Pacific/Tahiti                 | -10                   |
 | Pacific/Port_Moresby           | 10                    |
-| Asia/Gaza                      | 3                     |
-| Europe/Lisbon                  | 1                     |
+| Asia/Gaza                      | 2                     |
+| Europe/Lisbon                  | 0                     |
 | Europe/Moscow                  | 3                     |
-| Europe/Kiev                    | 3                     |
+| Europe/Kiev                    | 2                     |
 | Pacific/Wake                   | 12                    |
-| America/New_York               | -4                    |
+| America/New_York               | -5                    |
 | Asia/Tashkent                  | 5                     |

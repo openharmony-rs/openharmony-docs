@@ -6,6 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=4097822b4685d9c1380dccd41982c4cd22a04c2e translatedAt=2026-11-10T05:04:16.410Z pushedAt=2026-11-10T07:28:08.245Z nl=1 -->
 
 The **secureElement** module provides APIs for managing secure elements (SEs). SEs include the Embedded SE (eSE) and SIM on a device. The SE service mentioned in this topic is an **SEService** instance. For details, see [createService](#omapicreateservice12).
 
@@ -411,7 +412,7 @@ let seService : omapi.SEService;
 
 try {
     let version = seService.getVersion();
-    hilog.error(0x0000, 'testTag', 'version %{public}s', JSON.stringify(version));
+    hilog.info(0x0000, 'testTag', 'version %{public}s', JSON.stringify(version));
 } catch (error) {
     hilog.error(0x0000, 'testTag', 'getVersion error %{public}s', JSON.stringify(error));
 }

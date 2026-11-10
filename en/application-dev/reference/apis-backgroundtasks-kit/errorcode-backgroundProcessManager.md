@@ -6,6 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=0c9395586cbb7373fc0594168faccd9a26116ff7 translatedAt=2026-11-10T03:48:52.094Z pushedAt=2026-11-10T05:52:19.391Z nl=1 -->
 
 > **NOTE**
 >
@@ -35,7 +36,7 @@ Make sure all the mandatory parameters are passed in and the parameter types are
 
 **Error Message**
 
-Setup error, This setting is overridden by setting in Task Manager.
+Setup error, This setting is overridden by settings in Task Manager.
 
 **Description**
 

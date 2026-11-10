@@ -2,10 +2,11 @@
 
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25-->
-<!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
-<!--Tester: @liuhonggang123-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=0c20469e58610438940464085fdd62df82c5b560 translatedAt=2026-11-10T05:16:45.703Z pushedAt=2026-11-10T07:46:40.107Z nl=1 -->
 
 - ArkTS APIs<!--core-file-arkts-->
   - [@ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability)](js-apis-application-backupExtensionAbility.md)
@@ -77,13 +78,12 @@
     - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
     - [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md)
     - [OH_Archive_Stream_Config](capi-archive-oh-archive-stream-config.md)
-    - [ArchiveWriteCtx](capi-archive-archivewritectx.md)
-    - [ArchiveReadCtx](capi-archive-archivereadctx.md)
-    - [ArchiveStreamWriteCtx](capi-archive-archivestreamwritectx.md)
-    - [ArchiveStreamReadCtx](capi-archive-archivestreamreadctx.md)
+    - [ArchiveWriteCtx*](capi-archive-archivewritectx.md)
+    - [ArchiveReadCtx*](capi-archive-archivereadctx.md)
+    - [ArchiveStreamWriteCtx*](capi-archive-archivestreamwritectx.md)
+    - [ArchiveStreamReadCtx*](capi-archive-archivestreamreadctx.md)
 - Error Codes<!--core-file-arkts-errcode-->
   - [File Management Error Codes](errorcode-filemanagement.md)
   <!--Del-->
-  - [Cloud Disk Management Error Codes](errorcode-clouddiskmanager-sys.md)
+  - [Cloud Disk Management Error Codes (System API)](errorcode-clouddiskmanager-sys.md)
   <!--DelEnd-->
-  

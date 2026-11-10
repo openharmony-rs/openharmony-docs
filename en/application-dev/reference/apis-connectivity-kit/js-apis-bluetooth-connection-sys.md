@@ -3,16 +3,17 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=a30f8fc08f959fd082d474d718aa4941037cd2e4 translatedAt=2026-11-10T05:03:13.145Z pushedAt=2026-11-10T07:25:17.174Z nl=1 -->
 
-The **connection** module provides APIs for operating and managing Bluetooth.
+The connection module provides operations and management methods for Bluetooth device pairing, pairing cancellation, connection disconnection, device information query, device type management, out-of-band (OOB) pairing, car key DFX, and cloud device management. It is applicable to scenarios where system applications need to perform pairing management, connection control, and device information maintenance on Bluetooth devices.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.bluetooth.connection (Bluetooth Connection Module)](js-apis-bluetooth-connection.md).
+> This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.bluetooth.connection (Bluetooth connection Module)](js-apis-bluetooth-connection.md).
 
 
 ## Modules to Import
@@ -26,7 +27,7 @@ import { connection } from '@kit.ConnectivityKit';
 
 pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: AsyncCallback&lt;void&gt;): void
 
-Pairs a trusted device whose address is obtained in a non-Bluetooth scan mode (such as using NFC). This API uses an asynchronous callback to return the result.
+Initiates Bluetooth pairing with a trusted remote device. This API can be used to initiate pairing after the address of a peripheral device is obtained through a non-Bluetooth scanning method (for example, NFC). This API uses an asynchronous callback to return the result. The Bluetooth pairing status is obtained via the callback result of [on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange).
 
 **System API**: This is a system API.
 
@@ -79,7 +80,7 @@ try {
 
 pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;void&gt;
 
-Pairs a trusted device whose address is obtained in a non-Bluetooth scan mode (such as using NFC). This API uses a promise to return the result.
+Initiates Bluetooth pairing with a trusted remote device. This API can be used to initiate pairing after the address of a peripheral device is obtained through a non-Bluetooth scanning method (for example, NFC). This API uses a promise to return the result. The Bluetooth pairing status is obtained via the callback result of [on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange).
 
 **System API**: This is a system API.
 
@@ -98,7 +99,7 @@ Pairs a trusted device whose address is obtained in a non-Bluetooth scan mode (s
 
 | Type                                             | Description               |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -200,7 +201,7 @@ Cancels a paired device. This API uses a promise to return the result.
 
 | Type                 | Description           |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -238,7 +239,7 @@ try {
 
 cancelPairingDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Cancels the pairing of a device. This API uses an asynchronous callback to return the result.
+Deletes a remote device that is being paired. Unlike cancelPairedDevice (used to delete a paired device), this API is used to cancel an ongoing pairing process. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -283,7 +284,7 @@ try {
 
 cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 
-Cancels the pairing of a device. This API uses a promise to return the result.
+Deletes a remote device that is being paired. Unlike cancelPairedDevice (used to delete a paired device), this API is used to cancel an ongoing pairing process. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -301,7 +302,7 @@ Cancels the pairing of a device. This API uses a promise to return the result.
 
 | Type                 | Description           |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -391,7 +392,7 @@ Obtains the profile UUIDs of the local device. This API uses a promise to return
 
 | Type                 | Description           |
 | ------------------- | ------------- |
-|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Promise used to return the result.|
+|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Promise used to return the ProfileUuids array of the local device. |
 
 **Error codes**
 
@@ -440,7 +441,7 @@ Disconnects all connected profiles for a remote device. This API uses an asynchr
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | Yes   | Address of the remote device to disconnect, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the disconnection is initiated successfully, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -532,7 +533,10 @@ try {
 
 getRemoteProductId(deviceId: string): string
 
-Obtains the product ID of a remote Bluetooth device. Since API version 16, the **ohos.permission.ACCESS_BLUETOOTH** and **ohos.permission.MANAGE_BLUETOOTH** permissions are no longer verified.
+Obtains the product ID of the peer Bluetooth device.
+
+**Required permissions**:
+- API version 11 to 15: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **System API**: This is a system API.
 
@@ -577,7 +581,7 @@ try {
 
 setRemoteDeviceType(deviceId: string, type: DeviceType): Promise&lt;void&gt;
 
-Sets the type of a remote Bluetooth device. This API uses a promise to return the result.
+Sets a custom type for a remote Bluetooth device. This API is applicable to scenarios where Bluetooth settings or device management applications classify and display devices or perform differentiated processing by device type (such as car, headset, and hearing aid). This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -628,9 +632,12 @@ try {
 
 getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 
-Obtains the type of a remote Bluetooth device. This API uses a promise to return the result. Since API version 18, the **ohos.permission.ACCESS_BLUETOOTH** permission is no longer verified.
+Obtains the custom type of a remote Bluetooth device set by setRemoteDeviceType. This API uses a promise to return the result. Since API version 18, the ohos.permission.ACCESS_BLUETOOTH permission is no longer verified.
 
 **System API**: This is a system API.
+
+**Required permissions**:
+- API versions 12 to 17: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -644,7 +651,7 @@ Obtains the type of a remote Bluetooth device. This API uses a promise to return
 
 | Type                 | Description        |
 | ------------------- | ------------- |
-| Promise&lt;[DeviceType](#devicetype12)&gt; | Promise used to return the device type obtained.|
+| Promise&lt;[DeviceType](#devicetype12)&gt; | Promise used to return the result of obtaining the Bluetooth remote device type. The return value is the device type. |
 
 **Error codes**
 
@@ -694,7 +701,7 @@ Sends a control command to Bluetooth headsets during scanning. This API uses a p
 
 | Type                 | Description           |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -736,7 +743,7 @@ try {
 
 updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise&lt;void&gt;
 
-Updates cloud devices in Bluetooth settings. This API uses a promise to return the result.
+Updates cloud devices to the Bluetooth settings. This API is applicable to device replacement recovery or cross-device synchronization scenarios, where the paired device information in the cloud is synchronized to the local Bluetooth settings. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -818,7 +825,7 @@ try {
 
 pairDeviceOutOfBand(transport: BluetoothTransport, p192Data: OobData | null, p256Data: OobData | null): Promise&lt;void&gt;
 
-Initiates pairing with the peer Bluetooth device through the out-of-band (OOB) communication mechanism. This API uses a promise to return the result.
+Initiates the pairing process with the peer Bluetooth device through the out-of-band ([OOB](../../connectivity/bluetooth/terminology.md#oob)) communication mechanism. The OobData required by this API can be obtained by calling [generateLocalOobData](#connectiongeneratelocaloobdata23) to generate the local OOB data, which is then transmitted to the local end through the out-of-band channel. This API uses a promise to return the result.
 
 - You can obtain the Bluetooth pairing status from the callback of [on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange).
 
@@ -835,8 +842,8 @@ Initiates pairing with the peer Bluetooth device through the out-of-band (OOB) c
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
 | transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | Yes   | Transport mode used for pairing with a peer device.<br>- If BR/EDR is used, pass **TRANSPORT_BR_EDR**. If BLE is used, pass **TRANSPORT_LE**. Other [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) types are not supported.|
-| p192Data | [OobData](#oobdata23) \| null | Yes   | OOB data used during pairing. P-192 is an elliptic curve algorithm with a 192-bit key length. It was widely used in legacy pairing schemes of Bluetooth 4.1 and earlier versions.<br>- If this value is not used, pass null.<br>- At least one of **p192Data** and **p256Data** must be passed. If both of them are passed, **p256Data** takes effect whereas **p192Data** does not.|
-| p256Data | [OobData](#oobdata23) \| null | Yes   | OOB data used during pairing. P-256 is an elliptic curve algorithm with a 256-bit key length. It has been the core of secure connections since Bluetooth 4.2. Compared with P-192 OOB data, P-256 OOB data has stronger anti-attack capability and confidentiality. **p256Data** is recommended unless the device needs to be compatible with Bluetooth 4.1 or earlier.<br>- If this value is not used, pass null.<br>- At least one of **p192Data** and **p256Data** must be passed. If both of them are passed, **p256Data** takes effect whereas **p192Data** does not.|
+| p192Data | [OobData](#oobdata23) \| null | Yes    | OOB data used during pairing. P-192 refers to an elliptic curve algorithm with a key length of 192 bits, which is widely used in the legacy pairing scheme of Bluetooth 4.1 and earlier.<br>- If this value is not used, pass null.<br>- At least one valid value must be passed for p192Data and p256Data. If both are passed, p256Data takes effect and p192Data does not. |
+| p256Data | [OobData](#oobdata23) \| null | Yes    | OOB data used during pairing. P-256 refers to an elliptic curve algorithm with a key length of 256 bits, which has been the core foundation of secure connections since Bluetooth 4.2. Compared with P-192-based OOB data, P-256-based OOB data provides stronger attack resistance and confidentiality. Unless compatibility with legacy devices of Bluetooth 4.1 or earlier is required, p256Data is recommended.<br>- If this value is not used, pass null.<br>- At least one valid value must be passed for p192Data and p256Data. If both are passed, p256Data takes effect and p192Data does not. |
 
 **Return value**
 
@@ -892,7 +899,7 @@ try {
 
 generateLocalOobData(transport: BluetoothTransport): Promise&lt;OobData&gt;
 
-Obtains the out-of-band (OOB) communication data of the local device. This API uses a promise to return the result.
+Obtains the local out-of-band ([OOB](../../connectivity/bluetooth/terminology.md#oob)) communication data. After the generated OOB data is transmitted to the peer device through the out-of-band channel, the peer device can use the data to initiate the pairing process through [pairDeviceOutOfBand](#connectionpairdeviceoutofband23). This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -942,6 +949,90 @@ try {
 }
 ```
 
+## connection.setCarKeyDfxData
+
+setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void
+
+Notifies the Bluetooth module of the card opening or card deletion operation performed on the car key, so that the Bluetooth module records the corresponding DFX data for subsequent problem locating.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Parameter | Type | Mandatory | Description |
+| -------- | ------ | ---- | ----------------------------------- |
+| deviceId | string | Yes | MAC address of the remote device. For example: "XX:XX:XX:XX:XX:XX". |
+| action | [CarKeyActionType](#carkeyactiontype) | Yes | Operation performed on the car key, for example, card opening or card deletion. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID | Error Message |
+| -------- | ---------------------------- |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**Example**
+
+```js
+try {
+    connection.setCarKeyDfxData('11:22:33:44:55:66', connection.CarKeyActionType.CAR_KEY_ACTION_ADD);
+} catch (err) {
+    console.error(`Failed to set car key dfx data. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## connection.getCarKeyDfxData
+
+getCarKeyDfxData(): string
+
+Obtains car key DFX data, such as the DFX data of Bluetooth car key connection and pairing.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type | Description |
+| ------ | ------------- |
+| string | Car key DFX data returned in string format. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID | Error Message |
+| -------- | ---------------------------- |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**Example**
+
+```js
+try {
+    let dfxData = connection.getCarKeyDfxData();
+} catch (err) {
+    console.error(`Failed to get car key dfx data. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 
 ## PinRequiredParam
 
@@ -963,7 +1054,7 @@ Defines the configuration parameters of the control command.
 
 | Name      | Type  | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string | No   | No| Device ID.|
+| deviceId | string | No | No | Address of the device to control, for example, XX:XX:XX:XX:XX:XX. |
 | type | [ControlType](#controltype15) | No   | No   | Control type.|
 | typeValue | [ControlTypeValue](#controltypevalue15) | No| No| Control action.|
 | controlObject | [ControlObject](#controlobject15) | No| No| Control object.|
@@ -1097,7 +1188,7 @@ Defines the cloud device information.
 | hiLinkVersion  | string | No   | No   | HiLink version.  |
 | macAddress  | string | No   | No   | MAC address.  |
 | serviceType  | string | No   | No   | Service type.  |
-| serviceId  | string | No   | No   | Device ID.  |
+| serviceId  | string | No    | No    | Device ID.   |
 | deviceName  | string | No   | No   | Device name.  |
 | uuids  | string | No   | No   | Device UUID.  |
 | bluetoothClass  | number | No   | No   | Peer device type.  |
@@ -1127,7 +1218,7 @@ Represents the data object used for OOB pairing.
 
 ## DeviceRole<sup>23+</sup>
 
-Enumerates Bluetooth device roles during connection.
+Enumerates Bluetooth device [roles](../../connectivity/bluetooth/bluetooth-overview.md#device-roles) during connection.
 
 **System API**: This is a system API.
 
@@ -1141,3 +1232,20 @@ Enumerates Bluetooth device roles during connection.
 | DEVICE_ROLE_CENTRAL_ONLY      | 1    | The Bluetooth device can only be used as a central device.|
 | DEVICE_ROLE_BOTH_PREFER_PERIPHERAL | 2    | The Bluetooth device can be used as a central device or a peripheral device, but it is preferentially used as a peripheral device.|
 | DEVICE_ROLE_BOTH_PREFER_CENTRAL | 3    |  The Bluetooth device can be used as a central device or a peripheral device, but it is preferentially used as a central device. |
+
+## CarKeyActionType
+
+Enumerates the operations performed by a car key.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name           | Value   | Description                |
+| -------------- | ---- | -------------------- |
+| CAR_KEY_ACTION_ADD       | 0    | Indicates that the car key performs the card activation operation. |
+| CAR_KEY_ACTION_DELETE      | 1    | Indicates that the car key performs the card deletion operation. |

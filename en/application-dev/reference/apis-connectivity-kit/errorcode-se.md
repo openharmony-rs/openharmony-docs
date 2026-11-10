@@ -2,10 +2,11 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=67487829468179127107f74c0916ca5ae8660edf translatedAt=2026-11-10T05:00:28.544Z pushedAt=2026-11-10T07:22:14.698Z nl=1 -->
 
 > **NOTE**
 >
@@ -24,7 +25,7 @@ The SecureElement (SE) service is abnormal.
 **Possible Causes**
 
 1. The SE service is disconnected.
-2. If the application accesses an SIM card or SIM2 card, check whether the corresponding card is inserted into the card slot.
+2. If the application accesses a SIM card or SIM2 card, check whether the corresponding card is inserted into the card slot.
 
 **Solution**
 
@@ -64,11 +65,11 @@ The access rule cannot be obtained.
 
 **Possible Causes**
 
-1. There is no access rule for the application on the SE.
+The Secure Element does not contain the access control rule that the application depends on.
 
 **Solution**
 
-1. Write correct access rules to the SE.
+1. Write the correct access control rule to the Secure Element.
 2. Close the SE service and set up a connection with the SE service again.
 
 ## 3300104 SE Chip I/O Exception

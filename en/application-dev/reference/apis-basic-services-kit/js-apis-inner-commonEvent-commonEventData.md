@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=8b332ba8e6e72c2d885a38003986f27dfb7e99d3 translatedAt=2026-10-09T12:27:29.828Z pushedAt=2026-10-10T06:11:28.393Z -->
+<!-- md-trans-meta sourceCommit=a6874e5fd618adc18c14d574c22e8d39934482d4 translatedAt=2026-11-10T04:02:19.026Z pushedAt=2026-11-10T06:16:22.286Z nl=1 -->
 
 Describes the data of a common event. The **CommonEventData** module is used to carry the common event data received by subscribers in common event subscription scenarios. The data includes the event name, publisher bundle name, code, data, and additional parameters. This module is applicable to scenarios where apps subscribe to and process common events and parse the data carried in the events.
 

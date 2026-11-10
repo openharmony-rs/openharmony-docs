@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T12:09:39.526Z pushedAt=2026-10-10T01:37:36.505Z -->
+<!-- md-trans-meta sourceCommit=7193eed8f919652578d5c3263b3b31ef0fc9130a translatedAt=2026-11-10T04:19:45.908Z pushedAt=2026-11-10T05:57:58.188Z nl=1 -->
 
 This topic provides a list of common events defined by the system.
 
@@ -533,7 +533,7 @@ When a device receives an SMS message, the event notification service is trigger
 
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
-**Value:** usual.event.SMS_RECEIVED_COMPLETED
+**Value:** "usual.event.SMS_RECEIVE_COMPLETED"
 
 
 ### COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED<sup>10+</sup>
@@ -809,6 +809,19 @@ When an STK Alpha identifier is sent, the common event service is triggered to p
 
 **Value:** usual.event.STK_ALPHA_IDENTIFIER
 
+### COMMON_EVENT_DATA_VOLUME_STATUS_REPORT
+ 
+In PC scenarios with an extended data disk, this event indicates whether a specific volume is in a usable state. It is broadcast after the extended disk is mounted at startup or after the user unlocks the device.
+ 
+This event is supported only on PC/2-in-1 devices.
+ 
+**Since**: 26.0.0
+ 
+**System capability**: SystemCapability.Notification.CommonEvent
+ 
+**Required Permissions:** none
+ 
+**Value:** "usual.event.DATA_VOLUME_STATUS_REPORT"
 
 ### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+</sup>
 

@@ -5,8 +5,11 @@
 <!--Designer: @guxinggang-->
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=f6b40976e3ca6ec11fcf5b900e1446394d414d87 translatedAt=2026-11-10T03:55:24.678Z pushedAt=2026-11-10T07:19:43.369Z nl=1 -->
 
 The **AlbumPickerComponent** embedded in the UI of an application allows the application to access the albums in the user directory without any permission.
+
+Note that **AlbumPickerComponent** does not support nesting, and you should not overlay the overlay attribute or a higher-level component on it, to prevent gesture events from becoming invalid.
 
 This component must be used together with [PhotoPickerComponent](ohos-file-PhotoPickerComponent.md). When a user selects an album by using the **AlbumPickerComponent**, the **PhotoPickerComponent** is instructed to update the images and videos in the album.
 

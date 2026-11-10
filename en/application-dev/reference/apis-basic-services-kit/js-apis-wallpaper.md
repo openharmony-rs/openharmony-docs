@@ -2,10 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @dreamsky8023-->
-<!--Designer: @dreamsky8023-->
+<!--Owner: @gcw_jQMboB9m-->
+<!--Designer: @gcw_jQMboB9m-->
 <!--Tester: @murphy84-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=46fd65bb731b0371fd6a258a08447359214d2b38 translatedAt=2026-11-10T04:20:47.789Z pushedAt=2026-11-10T07:09:54.459Z nl=1 -->
 
 The **wallpaper** module provides APIs for switching between wallpapers. Since API version 9, the APIs of this module function as system APIs, and only system applications are allowed to switch between wallpapers. Applications that use the wallpaper, for example, the home screen, need to subscribe to wallpaper changes and update the wallpaper accordingly.
 
@@ -21,7 +22,7 @@ The **wallpaper** module provides APIs for switching between wallpapers. Since A
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
-## WallpaperType<sup>7+</sup>
+## WallpaperType
 
 Enumerates the wallpaper types.
 
@@ -73,13 +74,16 @@ Subscribes to the wallpaper color change event. Multi-thread concurrent calls ar
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
     let listener = (colors: Array<wallpaper.RgbaColor>, wallpaperType: wallpaper.WallpaperType): void => {
         console.info(`wallpaper color changed.`);
     };
     wallpaper.on('colorChange', listener);
 } catch (error) {
-    console.error(`failed to on because: ${JSON.stringify(error)}`);
+    let err = error as BusinessError;
+    console.error(`Failed to on. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -105,27 +109,32 @@ Unsubscribes from the wallpaper color change event. Multi-thread concurrent call
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let listener = (colors: Array<wallpaper.RgbaColor>, wallpaperType: wallpaper.WallpaperType): void => {
     console.info(`wallpaper color changed.`);
 };
 try {
     wallpaper.on('colorChange', listener);
 } catch (error) {
-    console.error(`failed to on because: ${JSON.stringify(error)}`);
+    let err = error as BusinessError;
+    console.error(`Failed to on. Code: ${error.code}, message: ${error.message}`);
 }
 
 try {
     // Unsubscribe from the listener.
     wallpaper.off('colorChange', listener);
 } catch (error) {
-    console.error(`failed to off because: ${JSON.stringify(error)}`);
+    let err = error as BusinessError;
+    console.error(`Failed to off. Code: ${err.code}, message: ${err.message}`);
 }
 
 try {
     // Unsubscribe from all subscriptions of the colorChange type.
     wallpaper.off('colorChange');
 } catch (error) {
-    console.error(`failed to off because: ${JSON.stringify(error)}`);
+    let err = error as BusinessError;
+    console.error(`Failed to off. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -133,7 +142,7 @@ try {
 
 getColors(wallpaperType: WallpaperType, callback: AsyncCallback&lt;Array&lt;RgbaColor&gt;&gt;): void
 
-Obtains the main color information of the wallpaper of the specified type.
+Obtains the dominant color information of the wallpaper of the specified type. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -145,8 +154,8 @@ Obtains the main color information of the wallpaper of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | Yes| Wallpaper type.|
-| callback | AsyncCallback&lt;Array&lt;[RgbaColor](#rgbacolordeprecated)&gt;&gt; | Yes| Callback used to return the main color information of the wallpaper.|
+| wallpaperType | [WallpaperType](#wallpapertype) | Yes | Wallpaper type. |
+| callback | AsyncCallback&lt;Array&lt;[RgbaColor](#rgbacolordeprecated)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the dominant color information of the wallpaper obtained; otherwise, **err** is an error object. |
 
 **Example**
 
@@ -155,7 +164,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: Array<wallpaper.RgbaColor>) => {
     if (error) {
-        console.error(`failed to getColors because: ${JSON.stringify(error)}`);
+        console.error(`Failed to getColors. Code: ${error.code}, message: ${error.message}`);
         return;
     }
     console.info(`success to getColors: ${JSON.stringify(data)}`);
@@ -166,7 +175,7 @@ wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessEr
 
 getColors(wallpaperType: WallpaperType): Promise&lt;Array&lt;RgbaColor&gt;&gt;
 
-Obtains the main color information of the wallpaper of the specified type.
+Obtains the dominant color information of the wallpaper of the specified type. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -178,13 +187,13 @@ Obtains the main color information of the wallpaper of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperType | [WallpaperType](#wallpapertype) | Yes | Wallpaper type. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;Array&lt;[RgbaColor](#rgbacolordeprecated)&gt;&gt; | Promise used to return the main color information of the wallpaper.|
+| Promise&lt;Array&lt;[RgbaColor](#rgbacolordeprecated)&gt;&gt; | Promise used to return the dominant color information of the wallpaper. |
 
 **Example**
 
@@ -194,7 +203,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: Array<wallpaper.RgbaColor>) => {
     console.info(`success to getColors: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`failed to getColors because: ${JSON.stringify(error)}`);
+    console.error(`Failed to getColors. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -202,7 +211,7 @@ wallpaper.getColors(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: Array<
 
 getId(wallpaperType: WallpaperType, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the ID of the wallpaper of the specified type.
+Obtains the ID of the wallpaper of the specified type. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -214,17 +223,17 @@ Obtains the ID of the wallpaper of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | Yes| Wallpaper type.|
-| callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the wallpaper ID. If the wallpaper of the specified type is configured, a number greater than or equal to **0** is returned. Otherwise, **-1** is returned. The value ranges from -1 to (2^31-1).|
+| wallpaperType | [WallpaperType](#wallpapertype) | Yes | Wallpaper type. |
+| callback | AsyncCallback&lt;number&gt; | Yes | Callback used to return the result. If the wallpaper ID is obtained successfully, **err** is **undefined** and **data** is the wallpaper ID obtained; otherwise, **err** is an error object. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: Number) => {
+wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: number) => {
     if (error) {
-        console.error(`failed to getId because: ${JSON.stringify(error)}`);
+        console.error(`Failed to getId. Code: ${error.code}, message: ${error.message}`);
         return;
     }
     console.info(`success to getId: ${JSON.stringify(data)}`);
@@ -235,7 +244,7 @@ wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError,
 
 getId(wallpaperType: WallpaperType): Promise&lt;number&gt;
 
-Obtains the ID of the wallpaper of the specified type.
+Obtains the ID of the wallpaper of the specified type. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -247,23 +256,23 @@ Obtains the ID of the wallpaper of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperType | [WallpaperType](#wallpapertype) | Yes | Wallpaper type. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the wallpaper ID. If this type of wallpaper is configured, a number greater than or equal to **0** is returned. Otherwise, **-1** is returned. The value ranges from -1 to (2^31-1).|
+| Promise&lt;number&gt; | Promise used to return the wallpaper ID. If wallpaper of this type is configured, a number greater than or equal to 0 is returned; otherwise, -1 is returned. The value ranges from -1 to (2^31-1). |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: Number) => {
+wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: number) => {
     console.info(`success to getId: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`failed to getId because: ${JSON.stringify(error)}`);
+    console.error(`Failed to getId. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -271,7 +280,7 @@ wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: Number) =>
 
 getMinHeight(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the minimum height of this wallpaper.
+Obtains the minimum height of the wallpaper. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -283,16 +292,16 @@ Obtains the minimum height of this wallpaper.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the minimum wallpaper height, in pixels. If the return value is **0**, no wallpaper is set. In this case, the default height should be used instead.|
+| callback | AsyncCallback&lt;number&gt; | Yes | Callback function. When the minimum height of the wallpaper (in pixels) is obtained successfully, err is undefined and data is the obtained minimum height; otherwise, it is an error object. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.getMinHeight((error: BusinessError, data: Number) => {
+wallpaper.getMinHeight((error: BusinessError, data: number) => {
     if (error) {
-        console.error(`failed to getMinHeight because: ${JSON.stringify(error)}`);
+        console.error(`Failed to getMinHeight. Code: ${error.code}, message: ${error.message}`);
         return;
     }
     console.info(`success to getMinHeight: ${JSON.stringify(data)}`);
@@ -303,7 +312,7 @@ wallpaper.getMinHeight((error: BusinessError, data: Number) => {
 
 getMinHeight(): Promise&lt;number&gt;
 
-Obtains the minimum height of this wallpaper.
+Obtains the minimum height of the wallpaper. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -315,17 +324,17 @@ Obtains the minimum height of this wallpaper.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the minimum wallpaper height, in pixels. If the return value is **0**, no wallpaper is set. In this case, the default height should be used instead.|
+| Promise&lt;number&gt; | Promise used to return the minimum wallpaper height, in pixels. If the return value is 0, no wallpaper is set. In this case, the default height should be used instead. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.getMinHeight().then((data: Number) => {
+wallpaper.getMinHeight().then((data: number) => {
     console.info(`success to getMinHeight: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
-    console.error(`failed to getMinHeight because: ${JSON.stringify(error)}`);
+    console.error(`Failed to getMinHeight. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -333,7 +342,7 @@ wallpaper.getMinHeight().then((data: Number) => {
 
 getMinWidth(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the minimum width of this wallpaper.
+Obtains the minimum width of the wallpaper. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -345,16 +354,16 @@ Obtains the minimum width of this wallpaper.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the minimum wallpaper width, in pixels. If the return value is **0**, no wallpaper is set. In this case, the default width should be used instead.|
+| callback | AsyncCallback&lt;number&gt; | Yes | Callback function. When the minimum width of the wallpaper (in pixels) is obtained successfully, err is undefined and data is the obtained minimum width of the wallpaper; otherwise, it is an error object. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.getMinWidth((error: BusinessError, data: Number) => {
+wallpaper.getMinWidth((error: BusinessError, data: number) => {
     if (error) {
-        console.error(`failed to getMinWidth because: ${JSON.stringify(error)}`);
+        console.error(`Failed to getMinWidth. Code: ${error.code}, message: ${error.message}`);
         return;
     }
     console.info(`success to getMinWidth: ${JSON.stringify(data)}`);
@@ -365,7 +374,7 @@ wallpaper.getMinWidth((error: BusinessError, data: Number) => {
 
 getMinWidth(): Promise&lt;number&gt;
 
-Obtains the minimum width of this wallpaper.
+Obtains the minimum width of the wallpaper. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -377,17 +386,17 @@ Obtains the minimum width of this wallpaper.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the minimum wallpaper width, in pixels. If the return value is **0**, no wallpaper is set. In this case, the default width should be used instead.|
+| Promise&lt;number&gt; | Promise used to return the minimum width of the wallpaper (in pixels). If the value returned is 0, no wallpaper is set, and the caller should use the default display width instead. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.getMinWidth().then((data: Number) => {
+wallpaper.getMinWidth().then((data: number) => {
     console.info(`success to getMinWidth: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`failed to getMinWidth because: ${JSON.stringify(error)}`);
+    console.error(`Failed to getMinWidth. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -395,7 +404,7 @@ wallpaper.getMinWidth().then((data: Number) => {
 
 getFile(wallpaperType: WallpaperType, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the wallpaper of the specified type.
+Obtains the wallpaper file of the specified type. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -409,8 +418,8 @@ Obtains the wallpaper of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
-| callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If the operation is successful, the file descriptor ID to the wallpaper is returned. Otherwise, error information is returned.|
+| wallpaperType | [WallpaperType](#wallpapertype) | Yes | Wallpaper type. |
+| callback | AsyncCallback&lt;number&gt; | Yes | Callback function. When the wallpaper file is obtained successfully, err is undefined and data is the ID of the obtained wallpaper file descriptor; otherwise, it is an error object. |
 
 **Example**
 
@@ -419,7 +428,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: number) => {
     if (error) {
-        console.error(`failed to getFile because: ${JSON.stringify(error)}`);
+        console.error(`Failed to getFile. Code: ${error.code}, message: ${error.message}`);
         return;
     }
     console.info(`success to getFile: ${JSON.stringify(data)}`);
@@ -430,7 +439,7 @@ wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErro
 
 getFile(wallpaperType: WallpaperType): Promise&lt;number&gt;
 
-Obtains the wallpaper of the specified type.
+Obtains the wallpaper file of the specified type. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -444,13 +453,13 @@ Obtains the wallpaper of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperType | [WallpaperType](#wallpapertype) | Yes | Wallpaper type. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the result. If the operation is successful, the file descriptor ID to the wallpaper is returned. Otherwise, error information is returned.|
+| Promise&lt;number&gt; | Promise that returns the file descriptor ID of the wallpaper. |
 
 **Example**
 
@@ -460,7 +469,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: number) => {
     console.info(`success to getFile: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`failed to getFile because: ${JSON.stringify(error)}`);
+    console.error(`Failed to getFile. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -468,7 +477,7 @@ wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: number) 
 
 isChangePermitted(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether to allow the application to change the wallpaper for the current user.
+Checks whether the application is allowed to change the wallpaper of the current user. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -480,16 +489,16 @@ Checks whether to allow the application to change the wallpaper for the current 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return whether to allow the application to change the wallpaper for the current user. The value **true** means that the operation is allowed, and **false** means the opposite.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback function. Returns true to indicate that the application is allowed to change the wallpaper of the current user; returns false to indicate that it is not allowed. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.isChangePermitted((error: BusinessError, data: Boolean) => {
+wallpaper.isChangePermitted((error: BusinessError, data: boolean) => {
     if (error) {
-        console.error(`failed to isChangePermitted because: ${JSON.stringify(error)}`);
+        console.error(`Failed to isChangePermitted. Code: ${error.code}, message: ${error.message}`);
         return;
     }
     console.info(`success to isChangePermitted: ${JSON.stringify(data)}`);
@@ -500,7 +509,7 @@ wallpaper.isChangePermitted((error: BusinessError, data: Boolean) => {
 
 isChangePermitted(): Promise&lt;boolean&gt;
 
-Checks whether to allow the application to change the wallpaper for the current user.
+Checks whether the application is allowed to change the wallpaper of the current user. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -512,17 +521,17 @@ Checks whether to allow the application to change the wallpaper for the current 
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return whether to allow the application to change the wallpaper for the current user. The value **true** means that the operation is allowed, and **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise object. Returns true to indicate that the application is allowed to change the wallpaper of the current user; returns false to indicate that it is not allowed. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.isChangePermitted().then((data: Boolean) => {
+wallpaper.isChangePermitted().then((data: boolean) => {
     console.info(`success to isChangePermitted: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
-    console.error(`failed to isChangePermitted because: ${JSON.stringify(error)}`);
+    console.error(`Failed to isChangePermitted. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -530,7 +539,7 @@ wallpaper.isChangePermitted().then((data: Boolean) => {
 
 isOperationAllowed(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether the user is allowed to set wallpapers.
+Checks whether the user is allowed to set the wallpaper. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -542,16 +551,16 @@ Checks whether the user is allowed to set wallpapers.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return whether the user is allowed to set wallpapers. The value **true** means that the operation is allowed, and **false** means the opposite.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback function. Returns true to indicate that the user is allowed to set the wallpaper; returns false to indicate that it is not allowed. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.isOperationAllowed((error: BusinessError, data: Boolean) => {
+wallpaper.isOperationAllowed((error: BusinessError, data: boolean) => {
     if (error) {
-        console.error(`failed to isOperationAllowed because: ${JSON.stringify(error)}`);
+        console.error(`Failed to isOperationAllowed. Code: ${error.code}, message: ${error.message}`);
         return;
     }
     console.info(`success to isOperationAllowed: ${JSON.stringify(data)}`);
@@ -562,7 +571,7 @@ wallpaper.isOperationAllowed((error: BusinessError, data: Boolean) => {
 
 isOperationAllowed(): Promise&lt;boolean&gt;
 
-Checks whether the user is allowed to set wallpapers.
+Checks whether the user is allowed to set the wallpaper. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -574,17 +583,17 @@ Checks whether the user is allowed to set wallpapers.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return whether the user is allowed to set wallpapers. The value **true** means that the operation is allowed, and **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the user is allowed to set the wallpaper, and **false** indicates the opposite. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-wallpaper.isOperationAllowed().then((data: Boolean) => {
+wallpaper.isOperationAllowed().then((data: boolean) => {
     console.info(`success to isOperationAllowed: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
-    console.error(`failed to isOperationAllowed because: ${JSON.stringify(error)}`);
+    console.error(`Failed to isOperationAllowed. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -592,7 +601,7 @@ wallpaper.isOperationAllowed().then((data: Boolean) => {
 
 reset(wallpaperType: WallpaperType, callback: AsyncCallback&lt;void&gt;): void
 
-Resets the wallpaper of the specified type to the default wallpaper.
+Resets the wallpaper of the specified type to the default wallpaper. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -606,8 +615,8 @@ Resets the wallpaper of the specified type to the default wallpaper.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | Yes| Wallpaper type.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the wallpaper is reset, **err** is **undefined**. Otherwise, **err** is an error object.|
+| wallpaperType | [WallpaperType](#wallpapertype) | Yes | Wallpaper type. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the wallpaper is removed successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Example**
 
@@ -616,7 +625,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
-        console.error(`failed to reset because: ${JSON.stringify(error)}`);
+        console.error(`Failed to reset. Code: ${error.code}, message: ${error.message}`);
         return;
     }
     console.info(`success to reset.`);
@@ -627,7 +636,7 @@ wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError)
 
 reset(wallpaperType: WallpaperType): Promise&lt;void&gt;
 
-Resets the wallpaper of the specified type to the default wallpaper.
+Resets the wallpaper of the specified type to the default wallpaper. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -641,13 +650,13 @@ Resets the wallpaper of the specified type to the default wallpaper.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperType | [WallpaperType](#wallpapertype) | Yes | Wallpaper type. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -657,7 +666,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.info(`success to reset.`);
 }).catch((error: BusinessError) => {
-    console.error(`failed to reset because: ${JSON.stringify(error)}`);
+    console.error(`Failed to reset. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -665,7 +674,7 @@ wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
 
 setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperType, callback: AsyncCallback&lt;void&gt;): void
 
-Sets a specified source as the wallpaper of a specified type.
+Sets a specified source as the wallpaper of a specified type. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -680,8 +689,8 @@ Sets a specified source as the wallpaper of a specified type.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes| URI of a JPEG or PNG file, or pixel map of a PNG file.|
-| wallpaperType | [WallpaperType](#wallpapertype7) | Yes| Wallpaper type.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the wallpaper is set, **err** is **undefined**. Otherwise, **err** is an error object.|
+| wallpaperType | [WallpaperType](#wallpapertype) | Yes | Wallpaper type. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result.<br> If the wallpaper is set successfully, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Example**
 
@@ -690,17 +699,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 // The source type is string.
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
 wallpaper.setWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
-        console.error(`failed to setWallpaper because: ${JSON.stringify(error)}`);
-       return;
-       }
+        console.error(`Failed to setWallpaper. Code: ${error.code}, message: ${error.message}`);
+        return;
+    }
     console.info(`success to setWallpaper.`);
 });
 
 // The source type is image.PixelMap.
-let imageSource = image.createImageSource("file://" + wallpaperPath);
+let imageSource = image.createImageSource('file://' + wallpaperPath);
 let opts: image.DecodingOptions = {
     desiredSize: {
         height: 3648,
@@ -710,13 +719,13 @@ let opts: image.DecodingOptions = {
 imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     wallpaper.setWallpaper(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setWallpaper because: ${JSON.stringify(error)}`);
+            console.error(`Failed to setWallpaper. Code: ${error.code}, message: ${error.message}`);
             return;
         }
         console.info(`success to setWallpaper.`);
     });
 }).catch((error: BusinessError) => {
-    console.error(`failed to createPixelMap because: ${JSON.stringify(error)}`);
+    console.error(`Failed to createPixelMap. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -724,7 +733,7 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
 
 setWallpaper(source: string | image.PixelMap, wallpaperType: WallpaperType): Promise&lt;void&gt;
 
-Sets a specified source as the wallpaper of a specified type.
+Sets a specified source as the wallpaper of a specified type. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -739,13 +748,13 @@ Sets a specified source as the wallpaper of a specified type.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes| URI of a JPEG or PNG file, or pixel map of a PNG file.|
-| wallpaperType | [WallpaperType](#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperType | [WallpaperType](#wallpapertype) | Yes | Wallpaper type. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -754,15 +763,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 // The source type is string.
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
 wallpaper.setWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.info(`success to setWallpaper.`);
   }).catch((error: BusinessError) => {
-    console.error(`failed to setWallpaper because: ${JSON.stringify(error)}`);
+    console.error(`Failed to setWallpaper. Code: ${error.code}, message: ${error.message}`);
 });
   
 // The source type is image.PixelMap.
-let imageSource = image.createImageSource("file://" + wallpaperPath);
+let imageSource = image.createImageSource('file://' + wallpaperPath);
 let opts: image.DecodingOptions = {
     desiredSize: {
         height: 3648,
@@ -773,9 +782,9 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     wallpaper.setWallpaper(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setWallpaper.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setWallpaper because: ${JSON.stringify(error)}`);
+        console.error(`Failed to setWallpaper. Code: ${error.code}, message: ${error.message}`);
     });
   }).catch((error: BusinessError) => {
-    console.error(`failed to createPixelMap because: ${JSON.stringify(error)}`);
+    console.error(`Failed to createPixelMap. Code: ${error.code}, message: ${error.message}`);
 });
 ```

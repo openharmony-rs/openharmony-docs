@@ -1,12 +1,11 @@
 # @ohos.update (Update) (System API)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Update-->
 <!--Owner: @RainyDay_005; @huangsiping3-->
 <!--Designer: @zhangzhengxue; @jackd320-->
 <!--Tester: @mamba-ting-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=dfb15c325281e5e789ea7ade45dfdd45876606ad translatedAt=2026-07-27T02:40:25.463Z pushedAt=2026-07-28T06:57:18.115Z -->
+<!-- md-trans-meta sourceCommit=8df4051aaae7dd255faa4bdc501769327d018b49 translatedAt=2026-11-10T04:17:25.415Z pushedAt=2026-11-10T07:08:24.908Z nl=1 -->
 
 The **@ohos.update** module provides the core capabilities of online update, local SD card update, and factory reset. Version management, update control, and equipment maintenance can be implemented for the Over-The-Air (OTA) clients and system apps using this module. APIs provided by this module can be used for system version update, offline update, and data clearing.
 
@@ -24,7 +23,7 @@ The update process is as follows:
 
 ```mermaid
 graph TD
-   A[The developer prepares the SD card and upgrade package.] --&gt; B[The system verifies the upgrade package.]
+    A[The developer prepares the SD card and upgrade package.] --&gt; B[The system verifies the upgrade package.]
     B --&gt; C[The system installs the upgrade package.]
     C --&gt; D[The system restarts to apply the new version.]
 ```
@@ -64,10 +63,10 @@ The following standard process must be followed for restoring the equipment to f
 ```mermaid
 graph TD
     A["System verification permission:&lt;\br&gt;
-    (Check whether the current caller has the permission to perform the restoration operation.)"] --&gt; B{Application developer selects the factory reset mode.}
+    (Check whether the current caller has the permission to perform the restoration operation.)"] --&gt; B{Application developer selects the factory reset mode.} 
     B --&gt;|factoryReset| C1[Common factory reset: Clear data in the user partition only.]
-   B --&gt;|forceFactoryReset| C2[Forcible factory reset: Clear data and file keys.]
-   B --&gt;|deepFactoryReset| C3[Deep factory reset: Overwrite data for multiple times and perform complete data destruction in the configurable range.]
+    B --&gt;|forceFactoryReset| C2[Forcible factory reset: Clear data and file keys.]
+    B --&gt;|deepFactoryReset| C3[Deep factory reset: Overwrite data for multiple times and perform complete data destruction in the configurable range.]
     C1 --&gt; D[The system performs the clearing operation.]
     C2 --> D
     C3 --> D
@@ -109,7 +108,7 @@ This API obtains an **OnlineUpdater** object through the system service interfac
 
 | Name        | Type                         | Mandatory  | Description    |
 | ----------- | --------------------------- | ---- | ------ |
-| upgradeInfo | [UpgradeInfo](#upgradeinfo) | Yes | **UpgradeInfo** is the upgrade object information, which is used to identify the caller and upgrade service type. **upgradeApp** is the package name of the caller. The value is a string of 1 to 255 characters in the format of **com.xxx.xxx.xxx**. The length of each segment ranges from 1 to 64 characters. Only letters, digits, and periods (.) are supported. Each segment must start with a letter and cannot contain consecutive periods (.) or start or end with a period (.). If the value is out of range or the format is incorrect, an exception is thrown. |
+| upgradeInfo | [UpgradeInfo](#upgradeinfo) | Yes | **UpgradeInfo** is the upgrade object information, which is used to identify the caller and upgrade service type. **upgradeApp** is the bundle name of the caller. The value is a string of 1 to 255 characters in the format of **com.xxx.xxx.xxx**. The length of each segment ranges from 1 to 64 characters. Only letters, digits, and periods (.) are supported. Each segment must start with a letter and cannot contain consecutive periods (.) or start or end with a period (.). If the value is out of range or the format is incorrect, an exception is thrown. |
 
 **Return value**
 
@@ -130,12 +129,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
     }
-  };
+  };  
   // Obtain an OnlineUpdater object.
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
 ```
@@ -147,9 +146,7 @@ getRestorer(): Restorer
 Obtains a **Restorer** object for restoring factory settings. After this API is called, the system returns the **Restorer** utility object. Three factory reset methods are provided:
 
 - **factoryReset**: Common factory reset. Only data in the user partition is cleared in this mode. For details, see [Upgrading Service Terms](../../basic-services/update/update-kit-term.md).
-
 - **forceFactoryReset**: Forcible factory reset. Both data in the user partition and file keys are cleared in this mode. For details, see [Upgrading Service Terms](../../basic-services/update/update-kit-term.md).
-
 - **deepFactoryReset**: Deep factory reset. Data in the scope specified by **scope** is cleared in this mode. **DATA**: Clear data in the user partition only; **DATA_AND_OS**: Clear data in both the user partition and OS partition. For details, see [Upgrading Service Terms](../../basic-services/update/update-kit-term.md).
 
 After obtaining the object, you can call the corresponding method to restore the device to its factory settings. The device will restart and restore to its initial factory settings.
@@ -161,15 +158,10 @@ This API obtains a **Restorer** object through the system service interface, and
 **Constraints**
 
 - Restoring factory settings is irreversible and will permanently delete user data. Therefore, remind users to back up important data in advance.
-
 - The **ohos.permission.FACTORY_RESET** permission is required for calling **factoryReset**, **deepFactoryReset**, and **getDeepFactoryResetInfo**.
-
 - The **ohos.permission.FORCE_FACTORY_RESET** permission is required for calling **forceFactoryReset**.
-
 - During the operation, the device automatically restarts. The app status needs to be saved.
-
 - **deepFactoryReset** takes a long time (1 to 4 hours depending on the device storage capacity). Ensure that the device has sufficient battery power (recommended battery level: > 50%).
-
 - You are advised to perform the factory reset operation after clicking the confirmation button in the dialog box or on the screen.
 
 **System API:** This is a system API.
@@ -212,13 +204,9 @@ This API obtains a **LocalUpdater** object and encapsulates the capabilities of 
 **Constraints**
 
 - The upgrade package must be downloaded from the official website of the vendor or from an official channel to ensure that the source is trusted.
-
 - Before the installation, you must verify the upgrade package by calling **verifyUpgradePackage**. An unverified package may damage the system.
-
 - During the upgrade, the device automatically restarts. The app status needs to be saved.
-
 - The **ohos.permission.UPDATE_SYSTEM** permission is required for calling **getLocalUpdater** APIs.
-
 - The upgrade package file path contains a maximum of 255 characters. If the value contains more than 255 characters, an exception is thrown.
 
 **System API:** This is a system API.
@@ -270,11 +258,8 @@ graph TD
 **Implementation mechanism**
 
 - Version check: Query requests about the new version information can be sent to the upgrade package management server.
-
 - Download management: Network type selection, pause/resume download, and resumable transfer are supported.
-
 - Installation mechanism: After the upgrade package is downloaded, it is unzipped and written to the system partition to prepare for restarting the app.
-
 - Status management: Maintain the upgrade task status, including querying task information, clearing abnormal status, and terminating the upgrade.
 
 ### checkNewVersion
@@ -340,7 +325,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -422,7 +407,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -461,23 +446,18 @@ This API sends requests to the upgrade package management server to query the co
 **Calling sequence**
 
 - You must first call **checkNewVersion** to check whether a new version is available.
-
 - This API can be called only when the value of **isExistNewVersion** is **true**.
 
 **Related methods**
 
 - **checkNewVersion()**: checks whether a new version is available (prerequisite method).
-
 - **getNewVersionInfo()**: obtains the technical information (version number and component details) of the new version, which is applicable to version management and diagnosis scenarios.
-
 - **getNewVersionDescription()**: obtains the description of the new version, which is used to display the updated content to users.
-
 - **download()**: downloads the upgrade package (subsequent method).
 
 **Constraints**
 
 - This method provides the online upgrade function, which depends on the upgrade package management server deployed by the vendor.
-
 - You must first call **checkNewVersion** to check whether a new version is available. This API can be called only when **isExistNewVersion** is **true**.
 
 **System API:** This is a system API.
@@ -515,7 +495,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -554,23 +534,18 @@ This API sends requests to the upgrade package management server to query the co
 **Calling sequence**
 
 - You must first call **checkNewVersion** to check whether a new version is available.
-
 - This API can be called to obtain details about the new version only when the value of **isExistNewVersion** is **true** by calling **checkNewVersion**.
 
 **Related methods**
 
 - **checkNewVersion()**: checks whether a new version is available (prerequisite method).
-
 - **getNewVersionInfo()**: obtains the technical information (version number and component details) of the new version, which is applicable to version management and diagnosis scenarios.
-
 - **getNewVersionDescription()**: obtains the description of the new version, which is used to display the updated content to users.
-
 - **download()**: downloads the upgrade package (subsequent method).
 
 **Constraints**
 
 - This method provides the online upgrade function, which depends on the upgrade package management server deployed by the vendor.
-
 - You must first call **checkNewVersion** to check whether a new version is available. This API can be called only when **isExistNewVersion** is **true**.
 
 **System API:** This is a system API.
@@ -602,7 +577,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -637,7 +612,6 @@ This API sends requests to the upgrade package management server to query the ve
 **Calling sequence**
 
 - You need to call **checkNewVersion** to check whether a new version is available and obtain the version digest information.
-
 - The value of **versionDigestInfo** is obtained from the result returned by calling **checkNewVersion**. **checkNewVersion** must be called first.
 
 **System API:** This is a system API.
@@ -684,7 +658,7 @@ const descriptionOptions: update.DescriptionOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -720,7 +694,6 @@ This API sends requests to the upgrade package management server to query the ve
 **Calling sequence**
 
 - You need to call **checkNewVersion** to check whether a new version is available and obtain the version digest information.
-
 - The value of **versionDigestInfo** is obtained from the result returned by calling **checkNewVersion**.
 
 **System API:** This is a system API.
@@ -773,7 +746,7 @@ const descriptionOptions: update.DescriptionOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -842,7 +815,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -908,7 +881,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -943,8 +916,8 @@ This API obtains the description of each component of the current version from t
 
 ```mermaid
 graph TD
-   A[Read the current version ID.] --> B[Send a request to the server to obtain the description.<br/>Specify the format and language by descriptionOptions.]
-   B --> C[The server queries the description based on the version ID.]
+    A[Read the current version ID.] --> B[Send a request to the server to obtain the description.<br/>Specify the format and language by descriptionOptions.]
+    B --> C[The server queries the description based on the version ID.]
     C --> D[Parse the description data<br/>and convert it to the target format and language.]
     D --> E[Return the description array.]
 ```
@@ -954,9 +927,7 @@ The description includes the function description and version features of each c
 **Related methods**
 
 - **getCurrentVersionInfo()**: obtains the current version information such as the version number and device name. This method can be called independently.
-
 - **getCurrentVersionDescription()**: obtains the description of the current version, which can be displayed to users.
-
 - The two methods can be used together. You can call **getCurrentVersionInfo** to obtain basic information and then call this method to obtain the detailed description for display.
 
 **System API:** This is a system API.
@@ -995,7 +966,7 @@ const descriptionOptions: update.DescriptionOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -1032,9 +1003,7 @@ This API obtains the description of each component of the current version from t
 **Related methods**
 
 - **getCurrentVersionInfo()**: obtains the current version information such as the version number and device name. This method can be called independently.
-
 - **getCurrentVersionDescription()**: obtains the description of the current version, which can be displayed to users.
-
 - The two methods can be used together. You can call **getCurrentVersionInfo** to obtain basic information and then call this method to obtain the detailed description for display.
 
 **System API:** This is a system API.
@@ -1078,7 +1047,7 @@ const descriptionOptions: update.DescriptionOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -1113,19 +1082,14 @@ This method queries the status of the current upgrade task from the system upgra
 **Related methods**
 
 - **download()**: downloads the upgrade package. (You can call **getTaskInfo** to query the download progress and status during download.)
-
 - **upgrade()**: installs the upgrade package. (You can call **getTaskInfo** to query the installation progress and status during installation.)
-
 - **pauseDownload()**: pauses download. (You can call **getTaskInfo** to query the pause status after download is paused.)
-
 - **terminateUpgrade()**: terminates upgrade. (You can call **getTaskInfo** to query the task cancellation status after upgrade is terminated.)
 
 **When to Call:**
 
 - You are advised to call **getTaskInfo** to query the task progress as required after calling **download** or **upgrade** to start the upgrade task.
-
 - During upgrade, you can obtain the progress in real time using an event listener registered by **on** or use **getTaskInfo** to query the current status.
-
 - In the case of an exception or interruption, you can call **getTaskInfo** to confirm the task status and determine the follow-up procedure.
 
 **System API:** This is a system API.
@@ -1158,7 +1122,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -1167,7 +1131,7 @@ try {
   // Obtain an OnlineUpdater object.
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
 
-  // Obtain the update task information and use a callback to receive the task status.
+  // Obtain the update task information and use a callback to receive the task status. 
   onlineUpdater.getTaskInfo((taskInfoError: BusinessError, taskInfo: update.TaskInfo) => {
     if (taskInfoError) {
       console.error(`getTaskInfo error, code:${taskInfoError.code}, message:${taskInfoError.message}.`);
@@ -1195,19 +1159,14 @@ This method queries the status of the current upgrade task from the system upgra
 **Related methods**
 
 - **download()**: downloads the upgrade package. (You can call **getTaskInfo** to query the download progress and status during download.)
-
 - **upgrade()**: installs the upgrade package. (You can call **getTaskInfo** to query the installation progress and status during installation.)
-
 - **pauseDownload()**: pauses download. (You can call **getTaskInfo** to query the pause status after download is paused.)
-
 - **terminateUpgrade()**: terminates upgrade. (You can call **getTaskInfo** to query the task cancellation status after upgrade is terminated.)
 
 **When to Call**
 
 - You are advised to call **getTaskInfo** to query the task progress periodically after calling **download** or **upgrade** to start the upgrade task.
-
 - During upgrade, you can obtain the progress in real time using an event listener registered by **on** or use **getTaskInfo** to query the current status.
-
 - In the case of an exception or interruption, you can call **getTaskInfo** to confirm the task status and determine the follow-up procedure.
 
 **System API:** This is a system API.
@@ -1240,7 +1199,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -1285,19 +1244,14 @@ Resumable transfer is supported. The number of bytes that have been downloaded a
 **Calling sequence**
 
 - You must call **checkNewVersion** to check whether a new version is available and obtain the version digest information.
-
 - You must first call **checkNewVersion** to check whether a new version is available. This API can be called to download the upgrade package only when **isExistNewVersion** is **true**.
-
 - If the value of **isExistNewVersion** is **false**, no new version is available. If this method is called, a message will be returned, indicating that the current version is the latest version.
 
 **Related methods**
 
 - **checkNewVersion()**: checks whether a new version is available (prerequisite method).
-
 - **resumeDownload()**: resumes download (called after the download is paused).
-
 - **pauseDownload()**: pauses download (called during download).
-
 - **upgrade()**: installs the upgrade package (called after the download is complete).
 
 **System API:** This is a system API.
@@ -1350,7 +1304,7 @@ const downloadOptions: update.DownloadOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -1400,19 +1354,14 @@ Resumable transfer is supported. The number of bytes that have been downloaded a
 **Calling sequence**
 
 - You must call **checkNewVersion** to check whether a new version is available and obtain the version digest information.
-
 - This method can be called to download the upgrade package only when the value of **isExistNewVersion** is **true** by calling **checkNewVersion**.
-
 - If the value of **isExistNewVersion** is **false**, no new version is available. If this method is called, a message will be returned, indicating that the current version is the latest version.
 
 **Related methods**
 
 - **checkNewVersion()**: checks whether a new version is available (prerequisite method).
-
 - **resumeDownload()**: resumes download (called after the download is paused).
-
 - **pauseDownload()**: pauses download (called during download).
-
 - **upgrade()**: installs the upgrade package (called after the download is complete).
 
 **System API:** This is a system API.
@@ -1464,7 +1413,7 @@ const downloadOptions: update.DownloadOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -1498,7 +1447,6 @@ The process is as follows: Read the progress status saved when the download is p
 **API called in pairs**
 
 - This API must be used in pairs with **pauseDownload()** to pause and resume the download process.
-
 - This API can be called to resume download only after **pauseDownload()** is called to pause download.
 
 **System API:** This is a system API.
@@ -1544,7 +1492,7 @@ const resumeDownloadOptions: update.ResumeDownloadOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -1581,7 +1529,6 @@ The process is as follows: Read the progress status saved when the download is p
 **API called in pairs**
 
 - This API must be used in pairs with **pauseDownload()** to pause and resume the download process.
-
 - This API can be called to resume download only after **pauseDownload()** is called to pause download.
 
 **System API:** This is a system API.
@@ -1632,7 +1579,7 @@ const resumeDownloadOptions: update.ResumeDownloadOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -1670,9 +1617,7 @@ The process is as follows: Disconnect from the network. Save the progress status
 **State transition description**
 
 - After the download is paused, you can call **resumeDownload()** to resume the download.
-
 - After the download is paused, you can call **getTaskInfo()** to query the current task status.
-
 - After the download is paused, you cannot directly call **upgrade()** to install the upgrade package. You must resume the download and complete the installation first.
 
 **System API:** This is a system API.
@@ -1718,7 +1663,7 @@ const pauseDownloadOptions: update.PauseDownloadOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -1759,9 +1704,7 @@ The process is as follows: Disconnect from the network. Save the progress status
 **State transition description**
 
 - After the download is paused, you can call **resumeDownload()** to resume the download.
-
 - After the download is paused, you can call **getTaskInfo()** to query the current task status.
-
 - After the download is paused, you cannot directly call **upgrade()** to install the upgrade package. You must resume the download and complete the installation first.
 
 **System API:** This is a system API.
@@ -1812,7 +1755,7 @@ const pauseDownloadOptions: update.PauseDownloadOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -1855,9 +1798,7 @@ This method is called in the installation phase of the online upgrade process. T
 **State transition description**
 
 - Call this method to install the upgrade package only after the download is complete.
-
 - During the installation process, you can call **terminateUpgrade()** to terminate the upgrade.
-
 - After the installation is complete, the device will restart to apply the new version.
 
 **Failure handling**
@@ -1913,7 +1854,7 @@ const upgradeOptions: update.UpgradeOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -1957,9 +1898,7 @@ Before calling this method to perform upgrade, you must call **checkNewVersion**
 **State transition description**
 
 - Call this method to install the upgrade package only after the download is complete.
-
 - During the installation process, you can call **terminateUpgrade()** to terminate the upgrade.
-
 - After the installation is complete, the device will restart to apply the new version.
 
 **Failure handling**
@@ -2014,7 +1953,7 @@ const upgradeOptions: update.UpgradeOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -2048,15 +1987,12 @@ The process is as follows: Verify the **clearOptions** parameter, and ensure tha
 **Constraints**
 
 - If the **upgrade** method fails (the status is **UPGRADE_FAIL**), you must call **clearError** to clear the abnormal status.
-
 - If **clearError** is not called to clear errors, the upgrade process cannot be restarted.
-
 - After errors are cleared, you can restart the upgrade process from the step of **checkNewVersion**.
 
 **Related methods**
 
 - **upgrade()**: installs the upgrade package. If the operation fails, call **clearError**.
-
 - **checkNewVersion()**: checks for a new version again. This API should be called after errors are cleared.
 
 **System API:** This is a system API.
@@ -2102,7 +2038,7 @@ const clearOptions: update.ClearOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -2140,15 +2076,12 @@ The process is as follows: Verify the **clearOptions** parameter, and ensure tha
 **Constraints**
 
 - If the **upgrade** method fails (the status is **UPGRADE_FAIL**), you must call **clearError** to clear the abnormal status.
-
 - If **clearError** is not called to clear errors, the upgrade process cannot be restarted.
-
 - After errors are cleared, you can restart the upgrade process from the step of **checkNewVersion**.
 
 **Related methods**
 
 - **upgrade()**: installs the upgrade package. If the operation fails, call **clearError**.
-
 - **checkNewVersion()**: checks for a new version again. This API should be called after errors are cleared.
 
 **System API:** This is a system API.
@@ -2199,7 +2132,7 @@ const clearOptions: update.ClearOptions = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -2207,7 +2140,7 @@ try {
   };
   // Obtain an OnlineUpdater object.
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Clear errors.
+  // Clear errors. 
   onlineUpdater.clearError(versionDigestInfo, clearOptions).then(() => {
     console.info(`clearError execute success`);
   }).catch((clearFailError: BusinessError) => {
@@ -2259,7 +2192,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -2322,7 +2255,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -2385,14 +2318,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const upgradePolicy: update.UpgradePolicy = {
-  downloadStrategy: false, // Disable automatic download.
+  downloadStrategy: false, // Disable automatic download. 
   autoUpgradeStrategy: false, // Disable automatic upgrade.
   autoUpgradePeriods: [ { start: 120, end: 240 }] // Automatic upgrade period, in minutes
 };
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -2400,7 +2333,7 @@ try {
   };
   // Obtain an OnlineUpdater object.
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Set the upgrade policy and use a call back to return the result.
+  // Set the upgrade policy and use a call back to return the result. 
   onlineUpdater.setUpgradePolicy(upgradePolicy, (setUpgradePolicyError: BusinessError) => {
     if (setUpgradePolicyError) {
       console.error(`setUpgradePolicy error, code:${setUpgradePolicyError.code}, message:${setUpgradePolicyError.message}.`);
@@ -2461,14 +2394,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const upgradePolicy: update.UpgradePolicy = {
-  downloadStrategy: false, // Disable automatic download.
+  downloadStrategy: false, // Disable automatic download. 
   autoUpgradeStrategy: false, // Disable automatic upgrade.
   autoUpgradePeriods: [{ start: 120, end: 240 }] // Automatic upgrade period, in minutes.
 };
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -2476,7 +2409,7 @@ try {
   };
   // Obtain an OnlineUpdater object.
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // Set the upgrade policy.
+  // Set the upgrade policy. 
   onlineUpdater.setUpgradePolicy(upgradePolicy).then(() => {
     console.info(`setUpgradePolicy success`);
   }).catch((setUpgradePolicyError: BusinessError) => {
@@ -2502,19 +2435,14 @@ The process is as follows: Check the current task status, and only download or i
 **State transition description**
 
 - This method can be called to terminate the upgrade only during the download or installation process.
-
 - After the task is terminated, the task status changes to canceled.
-
 - After the task is terminated, you can call **getTaskInfo** to query the current task status.
-
 - If you need to perform the upgrade again after the upgrade is terminated, you are advised to call **clearError** to clear errors and restart the upgrade.
 
 **Related methods**
 
 - **download()**/**upgrade()**: method that can be terminated.
-
 - **getTaskInfo()**: queries the task status.
-
 - **clearError()**: clears errors. Call this API if the upgrade needs to be restarted.
 
 **System API:** This is a system API.
@@ -2546,7 +2474,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -2582,19 +2510,14 @@ The process is as follows: Check the current task status, and only download or i
 **State transition description**
 
 - This method can be called to terminate the upgrade only during the download or installation process.
-
 - After the task is terminated, the task status changes to canceled.
-
 - After the task is terminated, you can call **getTaskInfo** to query the current task status.
-
 - If you need to perform the upgrade again after the upgrade is terminated, you are advised to call **clearError** to clear errors and restart the upgrade.
 
 **Related methods**
 
 - **download()**/**upgrade()**: method that can be terminated.
-
 - **getTaskInfo()**: queries the task status.
-
 - **clearError()**: clears errors. Call this API if the upgrade needs to be restarted.
 
 **System API:** This is a system API.
@@ -2626,7 +2549,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -2660,15 +2583,12 @@ This method registers an upgrade event listener. The process is as follows: Cons
 **API called in pairs**
 
 - After a listener is registered by calling **on()**, you are advised to call **off()** to unregister the listener when it is no longer needed.
-
 - If **off()** is not called to unregister the listener, memory leak occurs, affecting system performance.
-
 - You are advised to call **off()** after the upgrade process is complete or when the page is destroyed.
 
 **Suggestions**
 
 - Register a listener before performing long-time operations such as calling **download** or **upgrade**.
-
 - Unregister the listener after the operation is complete or the final event (such as **EVENT_DOWNLOAD_SUCCESS** or **EVENT_UPGRADE_SUCCESS**) is received.
 
 **Related methods**
@@ -2704,7 +2624,7 @@ const eventClassifyInfo: update.EventClassifyInfo = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -2736,9 +2656,7 @@ The process is as follows: Confirm the event type based on **eventClassifyInfo**
 **API called in pairs**
 
 - This API must be used in pairs with **on()** to unregister a registered event listener.
-
 - This API can be called only after a listener is registered using **on()**.
-
 - You are advised to call this method after the upgrade process is complete or when the page is destroyed to release resources in a timely manner.
 
 **System API:** This is a system API.
@@ -2770,7 +2688,7 @@ const eventClassifyInfo: update.EventClassifyInfo = {
 try {
   // Define an UpgradeInfo object.
   const upgradeInfo: update.UpgradeInfo = {
-    upgradeApp: 'com.ohos.ota.updateclient',  // App package name
+    upgradeApp: 'com.ohos.ota.updateclient',  // App bundle name
     businessType: {
       vendor: update.BusinessVendor.PUBLIC, // Vendor type
       subType: update.BusinessSubType.FIRMWARE // The update type is firmware.
@@ -2794,15 +2712,10 @@ Defines a tool class for restoring factory settings, such as clearing data in th
 > **Factory reset**
 
 - Call **getRestorer** to obtain a **Restorer** object.
-
 - Select a factory reset mode as required:
-
   1. **factoryReset**: Common factory reset. Only data in the user partition is cleared in this mode.
-
   2. **forceFactoryReset**: Forcible factory reset. Both data in the user partition and file keys are cleared in this mode.
-
   3. **deepFactoryReset**: Deep factory reset. Data in the scope specified by **scope** is cleared in this mode. **DATA**: Clear data in the user partition only; **DATA_AND_OS**: Clear data in both the user partition and OS partition.
-
 - After corresponding factory reset method is called, the device will clear data and restore to its factory settings.
 
 You are advised to select **factoryReset** for routine maintenance, **forceFactoryReset** when sensitive data or device handover is involved, and **deepFactoryReset** when devices are scrapped or data needs to be physically destroyed.
@@ -2850,11 +2763,8 @@ The process is as follows: Verify the permission to call APIs. Clear data in the
 **Constraints**
 
 - The operation is irreversible. Remind the user to back up important data and obtain explicit confirmation.
-
 - The system permission **ohos.permission.FACTORY_RESET** is required.
-
 - During the operation, the device automatically restarts. The app status needs to be saved.
-
 - You are advised to perform factory reset only after the user explicitly confirms the operation.
 
 **System API:** This is a system API.
@@ -2922,11 +2832,8 @@ The process is as follows: Verify the permission to call APIs. Clear data in the
 **Constraints**
 
 - The operation is irreversible. Remind the user to back up important data and obtain explicit confirmation.
-
 - The system permission **ohos.permission.FACTORY_RESET** is required.
-
 - During the operation, the device automatically restarts. The app status needs to be saved.
-
 - You are advised to perform factory reset only after the user explicitly confirms the operation.
 
 **System API:** This is a system API.
@@ -2985,15 +2892,10 @@ The difference between this method and **factoryReset** is that this method clea
 **Constraints**
 
 - The operation is irreversible and will permanently delete all user data and encryption keys. Therefore, remind users to back up important data in advance.
-
 - The system permission **ohos.permission.FORCE_FACTORY_RESET** is required.
-
 - Before calling this method, remind users to back up important data and confirm the operation.
-
 - You are advised to perform factory reset only after the user explicitly confirms the operation.
-
 - This method is applicable to scenarios with high security requirements, such as destruction of sensitive data and device handover.
-
 - During the operation, the device automatically restarts. The app status needs to be saved.
 
 **System API:** This is a system API.
@@ -3051,21 +2953,13 @@ This method provides data clearance of the highest security level. Unlike **fact
 **Constraints**
 
 - Data destruction is irreversible and cannot be restored by any technical means. Explicit authorization from the user must be obtained before performing this operation.
-
 - The system permission **ohos.permission.FACTORY_RESET** is required.
-
 - Deep data clearance takes a long time, which may last for hours. Ensure that the device has sufficient battery power. It is recommended the battery level be above 50%.
-
 - The APIs of this module can be used only in the stage model.
-
 - This method is applicable to extreme scenarios such as device scrapping and complete data destruction with high security requirements. It is not recommended for common factory reset scenarios.
-
 - Before performing the operation, you must clearly inform the user of the consequences and obtain the user's confirmation.
-
 - You are advised to perform factory reset only after the user explicitly confirms the operation.
-
 - You must call **getDeepFactoryResetInfo** to obtain the estimated time required for the operation and inform the user of the waiting time. Ensure that the device has sufficient battery power before performing the deep factory reset.
-
 - After the operation is complete, the device automatically restarts and restores to its factory settings. The app status needs to be saved in advance.
 
 **Since:** 26.0.0
@@ -3138,13 +3032,9 @@ This method calculates the time required by analyzing the data clearance scope a
 **Constraints**
 
 - The APIs of this module can be used only in the stage model.
-
 - The system permission **ohos.permission.FACTORY_RESET** is required.
-
 - The returned time is an estimated value. The actual time required may vary depending on the device status.
-
 - It is recommended that the device power be higher than 50%. When the device power is lower than that level, do not perform the deep factory reset. Otherwise, the operation may fail due to power-off.
-
 - This API must be called before **deepFactoryReset** is called to help users prepare for time and power.
 
 **Since:** 26.0.0
@@ -3186,7 +3076,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Create a FactoryResetStrategy object.
 let factoryResetStrategy: update.FactoryResetStrategy = {
-  scope: update.FactoryResetScope.DATA, // The reset scope is user data.
+  scope: update.FactoryResetScope.DATA, // The reset scope is user data. 
   strategy: 'getDeepFactoryResetInfo test' // Reset scope
 };
 try {
@@ -3226,9 +3116,7 @@ graph TD
 **Implementation mechanism**
 
 - Verification mechanism: Verify that the upgrade package is officially released and has not been tampered with by checking the signature, integrity, and version compatibility.
-
 - Installation mechanism: Decompress the upgrade package and and write its content to the system partition. Prepare for the device restart to apply the new version.
-
 - Security assurance: The upgrade package must be verified first to ensure that the source is trusted before installation.
 
 ### verifyUpgradePackage
@@ -3246,11 +3134,8 @@ The process is as follows: Read the upgrade package and certificate file. Use th
 **Calling sequence**
 
 - The upgrade package must be downloaded from the official website of the vendor or from an official channel to ensure that the source is trusted. Using update packages downloaded from non-official channels may pose security risks.
-
 - You must call **verifyUpgradePackage** to verify the upgrade package and pass the verification before calling **applyNewVersion** to install the upgrade package.
-
 - If you call **applyNewVersion** without verifying the upgrade package first, the installation may fail and the system may be damaged.
-
 - The upgrade package that passes the verification can be used in the subsequent installation process.
 
 **Related methods**
@@ -3291,7 +3176,7 @@ const upgradeFile: update.UpgradeFile = {
   fileType: update.ComponentType.OTA, // OTA package
   filePath: '/data/local/tmp/updater.zip' // Local update package path. The user needs to download the upgrade package from the official website of the vendor or an official channel and save it to an accessible storage path of the device, for example, /data/local/tmp/updater.zip.
 };
-// certsFile is the certificate file path, which needs to be downloaded from the official website of the vendor and saved to an accessible path on the device.
+// certsFile is the certificate file path, which needs to be downloaded from the official website of the vendor and saved to an accessible path on the device. 
 const certsFile = '/path/to/certificate.cert'; // Certificate file path, which needs to be downloaded from the official website of the vendor.
 
 try {
@@ -3326,11 +3211,8 @@ The process is as follows: Read the upgrade package and certificate file. Use th
 **Calling sequence**
 
 - The upgrade package must be downloaded from the official website of the vendor or from an official channel to ensure that the source is trusted. Using update packages downloaded from non-official channels may pose security risks.
-
 - You must call **verifyUpgradePackage** to verify the upgrade package and pass the verification before calling **applyNewVersion** to install the upgrade package.
-
 - If you call **applyNewVersion** without verifying the upgrade package first, the installation may fail and the system may be damaged.
-
 - The upgrade package that passes the verification can be used in the subsequent installation process.
 
 **System API:** This is a system API.
@@ -3373,7 +3255,7 @@ const upgradeFile: update.UpgradeFile = {
   filePath: '/data/local/tmp/updater.zip' // Local update package path. The user needs to download the upgrade package from the official website of the vendor or an official channel and save it to an accessible storage path of the device, for example, /data/local/tmp/updater.zip.
 };
 
-// certsFile is the certificate file path, which needs to be downloaded from the official website of the vendor and saved to an accessible path on the device.
+// certsFile is the certificate file path, which needs to be downloaded from the official website of the vendor and saved to an accessible path on the device. 
 const certsFile = '/path/to/certificate.cert'; // Certificate file path, which needs to be downloaded from the official website of the vendor.
 
 try {
@@ -3403,11 +3285,8 @@ The process is as follows: Read the upgrade package. Decompress the upgrade pack
 **Calling sequence**
 
 - You must call **verifyUpgradePackage** to verify the upgrade package and pass the verification before calling this method to install the upgrade package.
-
 - You must call **verifyUpgradePackage** to verify the upgrade package first. Failing to do so may cause installation failure or system damage.
-
 - After the API is successfully called, the system decompresses the upgrade package, writes its content to the system partition, and prepares for device restart to apply the new version. An event listener can be registered to track the installation progress.
-
 - You can install the upgrade package to update the system version.
 
 Use scenarios: This method is used to upgrade the system from a local storage device (such as an SD card).
@@ -3475,11 +3354,8 @@ The process is as follows: Read the upgrade package. Decompress the upgrade pack
 **Calling sequence**
 
 - You must call **verifyUpgradePackage** to verify the upgrade package and pass the verification before calling this method to install the upgrade package.
-
 - You must call **verifyUpgradePackage** to verify the upgrade package first. Failing to do so may cause installation failure or system damage.
-
 - After the API is successfully called, the system decompresses the upgrade package, writes its content to the system partition, and prepares for device restart to apply the new version. An event listener can be registered to track the installation progress.
-
 - You can install the upgrade package to update the system version.
 
 Use scenarios: This method is used to upgrade the system from a local storage device (such as an SD card).
@@ -3552,15 +3428,12 @@ This method registers a local upgrade event listener. The process is as follows:
 **API called in pairs**
 
 - After a listener is registered by calling **on()**, you are advised to call **off()** to unregister the listener when it is no longer needed.
-
 - If **off()** is not called to unregister the listener, memory leak occurs, affecting system performance.
-
 - You are advised to call **off()** after the upgrade process is complete or when the page is destroyed.
 
 **Suggestions**
 
 - Register a listener before performing long-time operations such as calling **applyNewVersion**.
-
 - Unregister the listener after the operation is complete or the final event is received.
 
 **System API:** This is a system API.
@@ -3619,9 +3492,7 @@ The process is as follows: Confirm the event type based on **eventClassifyInfo**
 **API called in pairs**
 
 - This API must be used in pairs with **on()** to unregister a registered event listener.
-
 - This API can be called only after a listener is registered using **on()**.
-
 - You are advised to call this method after the upgrade process is complete or when the page is destroyed to release resources in a timely manner.
 
 **System API:** This is a system API.
@@ -3673,10 +3544,10 @@ Represents upgrade information.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name       | Type                            | Attribute | Description   |
-| ------------ | ----------------------------- | -------- | ------ |
-| upgradeApp   | string                        | Read-only: No, Optional: No | Caller package name, used to identify the app identity that invokes this upgrade API. The format is com.xxx.xxx.xxx, consisting of multiple segments separated by periods. Length range: [1, 255], unit: character. Each segment length range: [1, 64], unit: character. Only letters, digits, and periods are supported. Each segment must start with a letter and cannot contain consecutive periods or start/end with a period. An exception is thrown when the value is out of range or the format is incorrect. |
-| businessType | [BusinessType](#businesstype) | Read-only: No, Optional: No | Upgrade service type. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| upgradeApp   | string                        | No | No | Caller bundle name, used to identify the app identity that invokes this upgrade API. The format is com.xxx.xxx.xxx, consisting of multiple segments separated by periods. Length range: [1, 255], unit: character. Each segment length range: [1, 64], unit: character. Only letters, digits, and periods are supported. Each segment must start with a letter and cannot contain consecutive periods or start/end with a period. An exception is thrown when the value is out of range or the format is incorrect.|
+| businessType | [BusinessType](#businesstype) | No | No | Represents an update service type. |
 
 ## BusinessType
 
@@ -3686,10 +3557,10 @@ Represents an update service type.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name       | Type                            | Attribute | Description   |
-| ------------ | ----------------------------- | -------- | ------ |
-| vendor  | [BusinessVendor](#businessvendor)   | Read-only: No, Optional: No | Vendor type, which is used to identify the vendor of the upgrade package.<br>Use scenarios: The system selects the upgrade package management server and verification policy based on the vendor type.<br>The value can be **PUBLIC**, indicating an open-source vendor, applicable to open-source version upgrade.<br>You are advised to select a vendor type based on the actual upgrade package source. Set **vendor** to **PUBLIC** for open-source version upgrade. |
-| subType | [BusinessSubType](#businesssubtype) | Read-only: No, Optional: No | Upgrade type, which is used to specify the target object to be upgraded.<br>Use scenarios: The system selects the upgrade package and upgrade process based on the upgrade type.<br>The value can be **FIRMWARE**, indicating firmware upgrade,which is applicable to upgrade of the system firmware instead of the app.<br>You are advised to set **subType** to **FIRMWARE** for system firmware upgrade. Other values should be selected for app upgrade. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| vendor  | [BusinessVendor](#businessvendor)   | No | No | Vendor type, used to identify the source vendor of the upgrade package.<br>Use case: The system selects the corresponding upgrade package management server and verification policy based on the vendor type.<br>Optional values: PUBLIC (open-source vendor, applicable to the upgrade scenario of the open-source version).<br>It is recommended to select the corresponding type based on the actual source of the upgrade package. Use PUBLIC for open-source version upgrades. |
+| subType | [BusinessSubType](#businesssubtype) | No | No | Upgrade type, used to specify the upgrade target.<br>Use case: The system selects the corresponding upgrade package and upgrade process based on the upgrade type.<br>Optional values: FIRMWARE (firmware upgrade, used to upgrade the system firmware rather than applications).<br>Recommendation: Use FIRMWARE for system firmware upgrade scenarios, and use other types for application upgrade scenarios. |
 
 ## CheckResult
 
@@ -3699,10 +3570,10 @@ Indicates the version check result.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| ----------------- | --------------------------------- | ------------ | ------ |
-| isExistNewVersion | boolean                              | Read-only: No, Optional: No | Whether a new version is available. The value **true** indicates that a new version is available, and **false** indicates the opposite. |
-| newVersionInfo    | [NewVersionInfo](#newversioninfo) | Read-only: No, Optional: No | Information about the new version. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| isExistNewVersion | boolean                              | No | No | Whether a new version exists. The value **true** indicates that a new version exists, and **false** indicates that no new version exists.|
+| newVersionInfo    | [NewVersionInfo](#newversioninfo) | No | No | Represents information about the new version. |
 
 ## NewVersionInfo
 
@@ -3712,10 +3583,10 @@ Represents information about the new version.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| ----------------- | ---------------------------------------- | --------- |---- |
-| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | Read-only: No, Optional: No | Version digest information. |
-| versionComponents | Array\<[VersionComponent](#versioncomponent)> | Read-only: No, Optional: No | Version components. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | No | No | Represents version digest information. |
+| versionComponents | Array\<[VersionComponent](#versioncomponent)> | No | No | Represents a version component. |
 
 ## VersionDigestInfo
 
@@ -3725,9 +3596,9 @@ Represents version digest information.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| versionDigest | string | Read-only: No, Optional: No | Version digest information. The value is a string of 1 to 128 characters. The value is obtained from the version check result and is used to identify a specific version. An exception is thrown if the value is out of range.|
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| versionDigest | string | No | No | Version summary. Length range: [1, 128], unit: character. Obtained from the version check result and used to identify a specific version. An exception is thrown when the value is out of range. |
 
 ## VersionComponent
 
@@ -3737,16 +3608,16 @@ Represents a version component.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| componentId     | string                              | Read-only: No, Optional: No | Component ID, which uniquely identifies a component in the upgrade package. The value is obtained from the **versionComponents** array in the version check result and is used for subsequent description query or component information display. |
-| componentType   | [ComponentType](#componenttype)     | Read-only: No, Optional: No | Component type. |
-| upgradeAction   | [UpgradeAction](#upgradeaction)     | Read-only: No, Optional: No | Upgrade action. The value **UPGRADE** indicates that the upgrade package is a differential package, which applies to incremental upgrade. The value **RECOVERY** indicates that the upgrade package is a repair package, which applies to system failure repair. |
-| displayVersion  | string                              | Read-only: No, Optional: No | Display version number.    |
-| innerVersion    | string                              | Read-only: No, Optional: No | Internal version number.      |
-| size            | int                              | Read-only: No, Optional: No | Size of the upgrade package, in bytes. The value range is [0, +∞]. An exception is thrown if the value is out of range. |
-| effectiveMode   | [EffectiveMode](#effectivemode)     | Read-only: No, Optional: No | Effective mode. The value **COLD** indicates the cold upgrade, which takes effect after the device is restarted; **LIVE** indicates the hot upgrade, which does not require restarting the device to take effect; **LIVE_AND_COLD** indicates the integrated upgrade, which combines the characteristics of **COLD** and **LIVE**. |
-| otaMode | [OtaMode](#otamode)                 | Read-only: No, Optional: Yes | OTA mode. Pass this parameter to specify a specific upgrade mode, which is applicable to special scenarios such as the upgrade with limited storage space, fast upgrade, and A/B partition device upgrade. The value **REGULAR_OTA** indicates a regular upgrade, which is applicable to most common upgrade scenarios. **STREAM_OTA** indicates a streaming upgrade, which is applicable to scenarios where the storage space is limited or a fast upgrade is required. **AB_REGULAR_OTA** indicates the normal A/B upgrade and applies to the A/B partition device. **AB_STREAM_OTA** indicates the A/B streaming upgrade and applies to the A/B partition device. If this parameter is not specified, the default value **REGULAR_OTA** is used, indicating that the regular upgrade mode is used. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| componentId     | string                              | No | No | Component ID, which uniquely identifies a component in the upgrade package. Obtained from the **versionComponents** array in the version check result, and used in scenarios such as subsequent description information query or component information display. |
+| componentType   | [ComponentType](#componenttype)     | No | No | Color component type.|
+| upgradeAction   | [UpgradeAction](#upgradeaction)     | No | No | Upgrade method. Value selection principle: UPGRADE is a differential package, applicable to incremental upgrade scenarios; RECOVERY is a repair package, applicable to system fault repair scenarios.|
+| displayVersion  | string                              | No | No | Display version number.    |
+| innerVersion    | string                              | No | No | Version number.      |
+| size            | number                              | No | No | Size of the upgrade package, in bytes. Value range: [0, +∞]. An exception is thrown when the value is out of range. |
+| effectiveMode   | [EffectiveMode](#effectivemode)     | No | No | Effective mode. Value selection principle: COLD is a cold upgrade, which requires a device restart to take effect; LIVE is a live upgrade, which takes effect without a restart; LIVE_AND_COLD is a combined upgrade that integrates the characteristics of both.|
+| otaMode | [OtaMode](#otamode)                 | No | Yes | Upgrade mode. Pass this parameter when a specific upgrade mode needs to be specified. It is applicable to special scenarios such as limited storage space, fast upgrade, or A/B partition devices. Value selection principle: REGULAR_OTA is a regular upgrade, applicable to most conventional upgrade scenarios; STREAM_OTA is a streaming upgrade, applicable to scenarios with limited storage space or requiring fast upgrade; AB_REGULAR_OTA is an A/B regular upgrade, applicable to A/B partition devices; AB_STREAM_OTA is an A/B streaming upgrade, applicable to A/B partition devices. If this parameter is not passed, REGULAR_OTA is used by default, that is, the regular upgrade mode is used.|
 
 ## DescriptionOptions
 
@@ -3756,10 +3627,10 @@ Defines the description options, which specifies the format and language of the 
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| format   | [DescriptionFormat](#descriptionformat) | Read-only: No, Optional: No | Format of the description file. The value **STANDARD** is applicable to the scenario where complete description is required; **SIMPLIFIED** is applicable to the scenario where only simplified description is required. |
-| language | string                                  | Read-only: No, Optional: No | Language of the description file. The value is a string of 2 to 10 characters, for example, **zh-cn** (Chinese), **en-us** (English), and **ja-jp** (Japanese). Valid characters include letters (case sensitive) and hyphens (-). Lowercase letters are recommended. An exception is thrown if the value is out of range or contains invalid characters. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| format   | [DescriptionFormat](#descriptionformat) | No | No | Description file format. Value selection principle: STANDARD is suitable for scenarios that require complete description information, and SIMPLIFIED is suitable for scenarios that require only simplified description information. |
+| language | string                                  | No | No | Language of the description file. The value is a string of 2 to 10 characters, for example, **zh-cn** (Chinese), **en-us** (English), and **ja-jp** (Japanese). Valid characters include letters (case sensitive) and hyphens (-). Lowercase letters are recommended. An exception is thrown if the value is out of range or contains invalid characters. |
 
 ## ComponentDescription
 
@@ -3769,10 +3640,10 @@ Represents a component description file.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| componentId     | string                              | Read-only: No, Optional: No | Component ID, which uniquely identifies a component in the upgrade package. Use scenarios: Pass this parameter to obtain the description of the corresponding component when calling **getNewVersionDescription**. Use this parameter to distinguish different components when displaying version details. How to obtain: Obtain the value of **componentId** of the corresponding component from the **versionComponents** array in the version check result. |
-| descriptionInfo | [DescriptionInfo](#descriptioninfo) | Read-only: No, Optional: No | Information about the description file. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| componentId     | string                              | No | No | Component ID, which uniquely identifies a component in the upgrade package. Use scenarios: Pass this parameter to obtain the description of the corresponding component when calling **getNewVersionDescription**. Use this parameter to distinguish different components when displaying version details. How to obtain: Obtain the value of **componentId** of the corresponding component from the **versionComponents** array in the version check result. |
+| descriptionInfo | [DescriptionInfo](#descriptioninfo) | No | No | Description file information. |
 
 ## DescriptionInfo
 
@@ -3782,10 +3653,10 @@ Represents information about the version description file.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| descriptionType | [DescriptionType](#descriptiontype) | Read-only: No, Optional: No | Description type. The value **CONTENT** indicates that the description is content, which is applicable to scenarios where the description content is short or needs to be displayed immediately. **URI** indicates that the description is a link, which is applicable to scenarios where the description content is long or needs to be obtained from external resources. Select a value based on the description length and display mode. |
-| content         | string                              | Read-only: No, Optional: No | Content of the description file. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| descriptionType | [DescriptionType](#descriptiontype) | No | No | Description file type. Value selection principle: CONTENT is content, applicable to scenarios where the description content is short or needs to be displayed immediately; URI is a link, applicable to scenarios where the description content is long or needs to be obtained from an external resource. Select based on the length of the description content and the display method. |
+| content         | string                              | No | No | Description file content. |
 
 ## CurrentVersionInfo
 
@@ -3795,11 +3666,11 @@ Represents information about the current version.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| osVersion         | string                                   | Read-only: No, Optional: No | System version number. |
-| deviceName        | string                                   | Read-only: No, Optional: No | Device name.   |
-| versionComponents | Array\<[VersionComponent](#versioncomponent)> | Read-only: No, Optional: No | Version components.  |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| osVersion         | string                                   | No | No | System version number. |
+| deviceName        | string                                   | No | No | Device name.   |
+| versionComponents | Array\<[VersionComponent](#versioncomponent)> | No | No | Represents a version component.  |
 
 ## DownloadOptions
 
@@ -3809,10 +3680,10 @@ Defines the download options, including the **allowNetwork** and **order** field
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| allowNetwork | [NetType](#nettype) | Read-only: No, Optional: No | Network type allowed for download. The value **CELLULAR** indicates that only download over the cellular network is allowed; **WiFi** indicates that only download using Wi-Fi is allowed; **CELLULAR_AND_WIFI** indicates that download over both the cellular network and Wi-Fi is allowed. You are advised to select a network type based on the upgrade package size and network environment. If the upgrade package is big, you are advised to set the network type to **WIFI** to reduce mobile data usage and improve the download speed. If you are in a mobile scenario or there is no Wi-Fi available, you can set the network type to **CELLULAR**. If the network environment is uncertain, you are advised to set the network type to **CELLULAR_AND_WIFI**. |
-| order        | [Order](#order)     | Read-only: No, Optional: No | The options are as follows: **DOWNLOAD**: download the upgrade package, which needs to be manually installed later; **INSTALL**: install the upgrade package that has been downloaded; **DOWNLOAD_AND_INSTALL**: download and install the upgrade package, which is the complete upgrade process; **APPLY**: apply the upgrade package that has been installed by restarting device; **INSTALL_AND_APPLY**: install the upgrade package and apply it immediately by restarting the device. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| allowNetwork | [NetType](#nettype) | No | No | Network type, which specifies the network types allowed for download. The value **CELLULAR** allows download only over the cellular network, **WIFI** allows download only over Wi-Fi, and **CELLULAR_AND_WIFI** allows download over both. Select a value based on the upgrade package size and network environment. For large upgrade packages, you are advised to use **WIFI** to avoid data consumption and improve the download speed. In mobile scenarios or when Wi-Fi is unavailable, use **CELLULAR**. When the network environment is uncertain, you are advised to use **CELLULAR_AND_WIFI**.|
+| order        | [Order](#order)     | No | No | The options are as follows: **DOWNLOAD**: download the upgrade package, which needs to be manually installed later; **INSTALL**: install the upgrade package that has been downloaded; **DOWNLOAD_AND_INSTALL**: download and install the upgrade package, which is the complete upgrade process; **APPLY**: apply the upgrade package that has been installed by restarting the device; **INSTALL_AND_APPLY**: install the upgrade package and apply it immediately by restarting the device. |
 
 ## ResumeDownloadOptions
 
@@ -3822,9 +3693,9 @@ Defines the resuming download options, which are used to specify the network typ
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| allowNetwork | [NetType](#nettype)                    | Read-only: No, Optional: No | Network type allowed for resuming download. This parameter is set only after the **pauseDownload** API is called to pause download. The value **CELLULAR** indicates that only download resumption over the cellular network is allowed; **WiFi** indicates that only download resumption using Wi-Fi is allowed; **CELLULAR_AND_WIFI** indicates download resumption over both the cellular network and Wi-Fi is allowed. You are advised to select a network type based on the upgrade package size and network environment. If the upgrade package exceeds 100 MB, you are advised to set the network type to **WIFI** to reduce mobile data usage and improve the download speed. If you are in a mobile scenario or there is no Wi-Fi available, you can set the network type to **CELLULAR**. If the network environment is uncertain, you are advised to set the network type to **CELLULAR_AND_WIFI**. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| allowNetwork | [NetType](#nettype)                    | No | No | Network type, which specifies the network types allowed for resuming the download. This parameter can be set only after **pauseDownload** is called to pause the download. The value **CELLULAR** allows resuming the download only over the cellular network, **WIFI** allows resuming the download only over Wi-Fi, and **CELLULAR_AND_WIFI** allows resuming the download over both. Select a value based on the upgrade package size and network environment. For an upgrade package larger than 100 MB, you are advised to use **WIFI** to avoid data consumption and improve the download speed. In mobile scenarios or when Wi-Fi is unavailable, use **CELLULAR**. When the network environment is uncertain, you are advised to use **CELLULAR_AND_WIFI**.|
 
 ## PauseDownloadOptions
 
@@ -3834,9 +3705,9 @@ Defines the pausing download options, which are used to control the pause behavi
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| isAllowAutoResume | boolean | Read-only: No, Optional: No | Whether to allow automatic resuming of download. This parameter is set only when there is an ongoing download task.<br>The value **true** indicates that automatically resuming download is allowed and the system may automatically resume the download. The value **false** indicates that automatically resuming download is not allowed and you need to manually call **resumeDownload** to resume the download.<br>You are advised to set this parameter to **true** when the network is unstable, improving the download success rate. You are advised to set this parameter to **false** when the download time needs to be precisely controlled or resuming download needs to be prevented in specific network environments. In this case, you can call **resumeDownload** to control when to resume the download. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| isAllowAutoResume | boolean | No | No | Whether to allow automatic resumption. This parameter can be set only when a download task is in progress.<br>The value **true** indicates that automatic resumption is allowed, and the system may resume the download automatically. The value **false** indicates that automatic resumption is not allowed, and you need to manually call **resumeDownload** to resume the download.<br>Usage suggestions: In scenarios with an unstable network, you are advised to set this parameter to **true** to enable automatic resumption and improve the download success rate. In scenarios where you need to precisely control the download timing or avoid resuming the download in a specific network environment, you are advised to set this parameter to **false** and control the resumption timing by manually calling **resumeDownload**.|
 
 ## UpgradeOptions
 
@@ -3846,9 +3717,9 @@ Defines the upgrade options, which are used to specify the upgrade operation typ
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | --------- | -------- |
-| order | [Order](#order) | Read-only: No, Optional: No | Upgrade command, which specifies the execution mode of the upgrade operation. The options are as follows: **DOWNLOAD**: download the upgrade package, which needs to be manually installed later; **INSTALL**: install the upgrade package that has been downloaded; **DOWNLOAD_AND_INSTALL**: download and install the upgrade package, which is the complete upgrade process; **APPLY**: apply the upgrade package that has been installed by restarting device; **INSTALL_AND_APPLY**: install the upgrade package and apply it immediately by restarting the device. Select a proper value based on the current upgrade status and service requirements. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| order | [Order](#order) | No | No | Upgrade instruction, which specifies how the upgrade operation is performed. The options are as follows: **DOWNLOAD**: download the upgrade package, which is applicable to scenarios where the package needs to be downloaded first and installed manually later; **INSTALL**: install the upgrade package that has been downloaded, which is applicable to scenarios where the package has been downloaded and needs to be installed directly; **DOWNLOAD_AND_INSTALL**: download and install the upgrade package, which is the complete upgrade process; **APPLY**: apply the upgrade package, which is applicable to scenarios where the package has been installed and needs to take effect after a restart; **INSTALL_AND_APPLY**: install the upgrade package and apply it, which is applicable to scenarios where the package takes effect immediately after installation and a restart. Select an appropriate instruction based on the current upgrade status and service requirements. |
 
 ## ClearOptions
 
@@ -3858,9 +3729,9 @@ Defines the clearing options, which specify the errors to be cleared.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | -------------- | -------- |
-| status | [UpgradeStatus](#upgradestatus) | Read-only: No, Optional: No | Exception status, which is used to specify the status to be cleared. This parameter can be set to **UPGRADE_FAIL** only when the **upgrade** method fails to be executed and its status is **UPGRADE_FAIL**.<br>Use scenarios: If the upgrade fails (with the status of **UPGRADE_FAIL**), the system retains the error state to prevent the upgrade from being performed again. In this case, you need to call **status** passed by clearError so that errors can be cleared, and the system can be restored to the initial state to restart the upgrade process.<br>A common value is **UPGRADE_FAIL**, including upgrade failure. Note: Only the **UPGRADE_FAIL** status can be cleared. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| status | [UpgradeStatus](#upgradestatus) | No | No | Exception status, which specifies the status to be cleared. This parameter can be set to **UPGRADE_FAIL** only after the **upgrade** method fails (with the status being **UPGRADE_FAIL**).<br>Use case: After an upgrade fails (with the status being **UPGRADE_FAIL**), the system retains the exception status to prevent a new upgrade. In this case, you need to call **clearError** and pass the **status** parameter to clear the exception status, so that the system returns to the initial state and the upgrade process can be restarted.<br>Common value: **UPGRADE_FAIL** (upgrade failed status). Note: Only the **UPGRADE_FAIL** status is supported for clearing.|
 
 ## UpgradePolicy
 
@@ -3869,9 +3740,7 @@ Sets the upgrade policy to control the upgrade behavior.
 ### Upgrade policy description
 
 - **downloadStrategy**: automatic download policy
-
 - **autoUpgradeStrategy**: automatic upgrade policy
-
 - **autoUpgradePeriods**: automatic upgrade period
 
 Construct an object based on actual requirements.
@@ -3880,11 +3749,11 @@ Construct an object based on actual requirements.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | ------------------- | -------- |
-| downloadStrategy    | boolean                        | Read-only: No, Optional: No | Automatic download policy.<br>The value **true** indicates that automatic download is enabled, which is applicable to scenarios where the system is expected to automatically detect and download the new version to reduce manual operations.<br>The value **false** indicates that automatic download is disabled, which is applicable to scenarios where users need to manually confirm the download, preventing using the mobile data or storage space in the background. Select a value based on user preferences and mobile data policies. |
-| autoUpgradeStrategy | boolean                        | Read-only: No, Optional: No | Automatic upgrade policy.<br>The value **true** indicates that automatic upgrade is enabled, which is applicable to scenarios where the system needs to automatically complete the upgrade process to improve user experience.<br>The value **false** indicates that automatic upgrade is disabled, which is applicable to scenarios where users need to manually confirm the upgrade to prevent unexpected upgrade or ensure that users are informed. Select a value based on user experience requirements and the upgrade control policy. |
-| autoUpgradePeriods  | Array\<[UpgradePeriod](#upgradeperiod)> | Read-only: No, Optional: Yes | Automatic upgrade periods. This parameter is optional and is used when the automatic upgrade needs to be performed in a specified period (for example, at night). If this parameter is not passed, the value is an empty array **[]** by default, indicating that the automatic upgrade period is not limited and the upgrade can be performed at any time. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| downloadStrategy    | boolean                        | No | No | Automatic download policy.<br>The value **true** indicates that automatic download is allowed, which is applicable to scenarios where you want the system to automatically detect and download a new version, reducing manual operations.<br>The value **false** indicates that automatic download is not allowed, which is applicable to scenarios where the user needs to manually confirm the download, avoiding background data or storage consumption. Select a value based on user preferences and the data policy.|
+| autoUpgradeStrategy | boolean                        | No | No | Automatic upgrade policy.<br>The value **true** indicates that automatic upgrade is allowed, which is applicable to scenarios where you want the system to automatically complete the upgrade process, improving user experience.<br>The value **false** indicates that automatic upgrade is not allowed, which is applicable to scenarios where the user needs to manually confirm the upgrade, avoiding unexpected upgrades or ensuring user awareness. Select a value based on user experience requirements and the upgrade control policy. |
+| autoUpgradePeriods  | Array\<[UpgradePeriod](#upgradeperiod)> | No | Yes | Automatic upgrade period. This parameter is passed when automatic upgrade needs to be performed within a specific period (for example, at night). This parameter is optional. If this parameter is not passed, it defaults to an empty array [], indicating that the automatic upgrade period is not restricted and the upgrade can be performed at any time. |
 
 ## UpgradePeriod
 
@@ -3894,10 +3763,10 @@ Represents an automatic update period.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name              | Type                              | Attribute         | Description   |
-| --------------- | ----------------------------------- | ------------------- | -------- |
-| start | int | Read-only: No, Optional: No | Start time, in minutes. The value ranges from 0 to 1440. This parameter indicates the number of minutes in a day. The value **0** indicates the time of 00:00, and the value **1440** indicates 24:00.<br>The value must be less than or equal to that of **end**. An exception is thrown if the value is out of range. |
-| end   | int | Read-only: No, Optional: No | End time, in minutes. The value ranges from 0 to 1440. This parameter indicates the number of minutes in a day. The value **0** indicates the time of 00:00, and the value **1440** indicates 24:00.<br>The value must be greater than or equal to that of **start**. An exception is thrown if the value is out of range. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| start | number | No | No | Start time, in minutes. The value ranges from 0 to 1440. This parameter indicates the number of minutes in a day. The value **0** indicates the time of 00:00, and the value **1440** indicates 24:00.<br>The value must be less than or equal to that of **end**. An exception is thrown if the value is out of range. |
+| end   | number | No | No | End time, in minutes. The value ranges from 0 to 1440. This parameter indicates the number of minutes in a day. The value **0** indicates the time of 00:00, and the value **1440** indicates 24:00.<br>The value must be greater than or equal to that of **start**. An exception is thrown if the value is out of range. |
 
 ## TaskInfo
 
@@ -3907,10 +3776,10 @@ Task information.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name       | Type                            | Attribute | Description   |
-| ------------ | ----------------------------- | -------- | ------ |
-| existTask |  boolean                  | Read-only: No, Optional: No | Whether an upgrade task exists, which is used to determine whether an upgrade task is in progress.<br>Use scenarios: Query the task status before the upgrade to avoid repeated operations. Monitor the task status change during the upgrade. The value **true** indicates that an upgrade task (for example, a download or installation task) is in progress. You need to wait until the task is complete or canceled before executing a new task. The value **false** indicates that no task is running and a new upgrade process can be started. |
-| taskBody  | [TaskBody](#taskbody) | Read-only: No, Optional: No | Task data. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| existTask |  boolean                  | No | No | Whether an upgrade task exists, which is used to determine whether there is an upgrade task in progress.<br>Use case: Query the task status before performing an upgrade operation to avoid duplicate operations, and monitor task status changes during the upgrade process. The value **true** indicates that an upgrade task is in progress (such as a download or installation task), and you need to wait for the task to complete or be canceled before starting a new task. The value **false** indicates that there is no task in progress, and a new upgrade process can be started. |
+| taskBody  | [TaskBody](#taskbody) | No | No | Represents task data. |
 
 ## EventInfo
 
@@ -3922,10 +3791,10 @@ Use scenarios: After an event listener is registered by calling **on**, the call
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name       | Type                            | Attribute | Description   |
-| ------------ | ----------------------------- | -------- | ------ |
-| eventId  | [EventId](#eventid)   | Read-only: No, Optional: No | Event ID, which identifies the upgrade event type. You can determine the specific event based on **eventId** and take corresponding actions. For example, **EVENT_DOWNLOAD_START** indicates that the download starts, and **EVENT_UPGRADE_SUCCESS** indicates that the upgrade is successful.<br>Common event types include download events (such as **EVENT_DOWNLOAD_START**), upgrade events (such as **EVENT_UPGRADE_START**), and completion events (such as **EVENT_UPGRADE_SUCCESS** and **EVENT_UPGRADE_FAIL**). You are advised to execute different service logic based on **eventId** in the event callback. |
-| taskBody | [TaskBody](#taskbody) | Read-only: No, Optional: No | Task data. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| eventId  | [EventId](#eventid)   | No | No | Event ID, which identifies the upgrade event type. You can determine the specific event based on **eventId** and take corresponding actions. For example, **EVENT_DOWNLOAD_START** indicates that the download starts, and **EVENT_UPGRADE_SUCCESS** indicates that the upgrade is successful.<br>Common event types include download events (such as **EVENT_DOWNLOAD_START**), upgrade events (such as **EVENT_UPGRADE_START**), and completion events (such as **EVENT_UPGRADE_SUCCESS** and **EVENT_UPGRADE_FAIL**). You are advised to execute different service logic based on **eventId** in the event callback. |
+| taskBody | [TaskBody](#taskbody) | No | No | Represents task data. |
 
 ## TaskBody
 
@@ -3935,15 +3804,15 @@ Represents task data.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name       | Type                            | Attribute | Description   |
-| ------------ | ----------------------------- | -------- | ------ |
-| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | Read-only: No, Optional: No | Version digest information. |
-| status            | [UpgradeStatus](#upgradestatus)          | Read-only: No, Optional: No | Upgrade status, which indicates the current execution phase of the upgrade task. The value can be a download status (from **WAITING_DOWNLOAD** to **DOWNLOAD_FAIL**), installation status (from **WAITING_INSTALL** to **UPDATING**), effective status (from **WAITING_APPLY** to **APPLYING**), or the final result (**UPGRADE_SUCCESS** or **UPGRADE_FAIL**). This parameter is used for status monitoring, progress display, and exception handling. |
-| subStatus         | int                                   | Read-only: No, Optional: No | Sub-status. For details about the value range, see [UpgradeStatus](#upgradestatus).  |
-| progress          | int                                   | Read-only: No, Optional: No | Progress, in percentage. The value range is [0, 100]. If the value is out of the range, an exception is thrown. |
-| installMode       | int                                   | Read-only: No, Optional: No | Install mode. The value range is [0, 2]. The value **0** indicates the regular upgrade, which is applicable to scenarios where users proactively trigger the upgrade. **1** indicates the upgrade at night, which is applicable to scenarios where automatic upgrade is performed at night. **2** indicates the automatic upgrade, which is applicable to scenarios where the system automatically detects and performs the upgrade. Select a value based on the upgrade policy and user experience requirements. An exception is thrown if the value is out of range. |
-| errorMessages     | Array\<[ErrorMessage](#errormessage)>    | Read-only: No, Optional: No | Error message. |
-| versionComponents | Array\<[VersionComponent](#versioncomponent)> | Read-only: No, Optional: No | Version components. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | No | No | Represents version digest information. |
+| status            | [UpgradeStatus](#upgradestatus)          | No | No | Upgrade status, which identifies the current execution phase of the upgrade task. It includes the download status (from **WAITING_DOWNLOAD** to **DOWNLOAD_FAIL**), installation status (from **WAITING_INSTALL** to **UPDATING**), activation status (from **WAITING_APPLY** to **APPLYING**), and the final result (**UPGRADE_SUCCESS** or **UPGRADE_FAIL**). It is used in scenarios such as task status monitoring, progress display, and exception handling. |
+| subStatus         | number                                   | No | No | Sub-status. For the value range, see the status codes in [UpgradeStatus](#upgradestatus).  |
+| progress          | number                                   | No | No | Progress, in percentage. The value ranges from 0 to 100. An exception is thrown if the value is out of range. |
+| installMode       | number                                   | No | No | Install mode. The value range is [0, 2]. The value **0** indicates the regular upgrade, which is applicable to scenarios where users proactively trigger the upgrade. **1** indicates the upgrade at night, which is applicable to scenarios where automatic upgrade is performed at night. **2** indicates the automatic upgrade, which is applicable to scenarios where the system automatically detects and performs the upgrade. Select a value based on the upgrade policy and user experience requirements. An exception is thrown if the value is out of range.|
+| errorMessages     | Array\<[ErrorMessage](#errormessage)>    | No | No | Error message. |
+| versionComponents | Array\<[VersionComponent](#versioncomponent)> | No | No | Represents a version component. |
 
 ## ErrorMessage
 
@@ -3953,10 +3822,10 @@ Represents an error message.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name       | Type                            | Attribute | Description   |
-| ------------ | ----------------------------- | -------- | ------ |
-| errorCode    | int | Read-only: No, Optional: No | Error code, which identifies an error type. You can quickly locate the cause of the upgrade failure based on **errorCode** and take corresponding measures. For example, **201** indicates the permission error, **401** indicates the parameter error, and **11500104** indicates the IPC error.<br>Use scenarios: In the callback of **EVENT_UPGRADE_FAIL**, use **errorCode** to determine the failure cause and handle the error or notify the user. You are advised to analyze and handle the error based on **errorMessage**. |
-| errorMessage | string | Read-only: No, Optional: No | Error message, which provides detailed description of the error. **errorMessage** provides detailed error description, such as 'Permission denied' and 'Parameter verification failed', to help developers understand the cause of the error and perform debugging.<br>Use scenarios: During error handling, **errorMessage** can be used for log recording, error message display, or error analysis. It is recommended that this parameter be used together with **errorCode**. The **errorCode** parameter defines the error type, and the **errorMessage** parameter provides detailed description. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| errorCode    | number | No | No | Error code, which identifies an error type. You can quickly locate the cause of the upgrade failure based on **errorCode** and take corresponding measures. For example, **201** indicates the permission error, **401** indicates the parameter error, and **11500104** indicates the IPC error.<br>Use scenarios: In the callback of **EVENT_UPGRADE_FAIL**, use **errorCode** to determine the failure cause and handle the error or notify the user. You are advised to analyze and handle the error based on **errorMessage**. |
+| errorMessage | string | No | No | Error message, which provides detailed description of the error. **errorMessage** provides detailed error description, such as 'Permission denied.' and 'Parameter verification failed', to help developers understand the cause of the error and perform debugging.<br>Use scenarios: During error handling, **errorMessage** can be used for log recording, error message display, or error analysis. It is recommended that this parameter be used together with **errorCode**. The **errorCode** parameter defines the error type, and the **errorMessage** parameter provides detailed description.|
 
 ## EventClassifyInfo
 
@@ -3966,10 +3835,10 @@ Describes event type information.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name       | Type                            | Attribute | Description   |
-| ------------ | ----------------------------- | -------- | ------ |
-| eventClassify | [EventClassify](#eventclassify) | Read-only: No, Optional: No | Event type, which specifies the type of event to listen for. The value can be **TASK**, indicating a task event. |
-| extraInfo     | string                          | Read-only: No, Optional: Yes | Additional information, which is used to transfer the extended data. The default value is an empty string, indicating that there is no additional information. The value is a string of 0 to 128 characters. The value can contain letters, digits, underscores (_), hyphens (-), and spaces. If the value is out of range or contains invalid characters, an exception is thrown. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| eventClassify | [EventClassify](#eventclassify) | No | No | Event type, which specifies the event category to listen for. The value can be TASK (task event). |
+| extraInfo     | string                          | No | Yes | Extra information, which is used to pass extended data. The default value is an empty string, indicating no extra information. The value is a string of 0 to 128 characters. The value can contain letters, digits, underscores (_), hyphens (-), and spaces. An exception is thrown if the value is out of range or contains invalid characters. |
 
 ## UpgradeFile
 
@@ -3979,10 +3848,10 @@ Represents the upgrade file, including the file type and file path, which are us
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name       | Type                            | Attribute | Description   |
-| ------------ | ----------------------------- | -------- | ------ |
-| fileType | [ComponentType](#componenttype) | Read-only: No, Optional: No | File type, which specifies the type of the upgrade package. If this parameter is set to **OTA**, the system performs the firmware upgrade based on the OTA type, including integrity check and system partition writing. |
-| filePath | string                          | Read-only: No, Optional: No | File path, which can be an absolute path or a relative path. The path length ranges from 1 to 255 characters. If the path length is out of the range, an exception is thrown. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| fileType | [ComponentType](#componenttype) | No | No | File type, which specifies the upgrade package type. The value OTA indicates an OTA upgrade package. The system performs the firmware upgrade process based on the OTA type, including integrity verification and system partition writing. |
+| filePath | string                          | No | No | File path, which can be an absolute path or a relative path. The path is a string of 1 to 255 characters. An exception is thrown if the value is out of range. |
 
 ## FactoryResetStrategy
 
@@ -3996,10 +3865,10 @@ Represents the factory reset strategy, which contains the **scope** (reset scope
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name       | Type                            | Attribute | Description   |
-| ------------ | ----------------------------- | -------- | ------ |
-| scope | [FactoryResetScope](#factoryresetscope) | Read-only: No, Optional: No | Reset scope. The value **DATA** indicates that only data in the user partition is cleared; **DATA_AND_OS** indicates that data in both the user partition and OS partition is cleared. |
-| strategy | string                          | Read-only: No, Optional: No | Reset strategy, which specifies the specific strategy for the reset operation. The value is a string of 0 to 64 characters. The value can contain letters, digits, underscores (_), hyphens (-), and spaces. An exception is thrown if the value is out of range or contains invalid characters. This parameter describes the reset operation. For example, quick erase indicates fast data erasure, and deep erase indicates deep erasure. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| scope | [FactoryResetScope](#factoryresetscope) | No | No | Reset scope. DATA clears only the user data partition and applies to scenarios where only data needs to be cleared. DATA_AND_OS clears both the user data partition and the operating system partition and applies to scenarios where both the system and data need to be cleared. |
+| strategy | string                          | No | No | Reset strategy, which specifies the specific strategy for the reset operation. The value is a string of 0 to 64 characters. The value can contain letters, digits, underscores (_), hyphens (-), and spaces. An exception is thrown if the value is out of range or contains invalid characters. This parameter describes the reset operation. For example, quick erase indicates fast data erasure, and deep erase indicates deep erasure. |
 
 ## FactoryResetInfo
 
@@ -4013,9 +3882,9 @@ Describes the information of restoring factory settings.
 
 **System capability:** SystemCapability.Update.UpdateService
 
-| Name       | Type                            | Attribute | Description   |
-| ------------ | ----------------------------- | -------- | ------ |
-| duration | int                          | Read-only: No, Optional: No | Duration required for restoring factory settings, in minutes. The value range is [0, +∞]. An exception is thrown if the value is out of range. |
+| Name        | Type                             | Read-Only | Optional | Description    |
+| ---------- | -------------------------------- | ---- | ---- | ------ |
+| duration | number                          | No | No | Duration required for the factory reset. The unit is min. The value ranges from 0 to +∞. An exception is thrown if the value is out of range.|
 
 ## FactoryResetScope
 
@@ -4039,8 +3908,6 @@ Describes the scope of restoring factory settings.
 type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 Represents an event callback.
-
-**Since:** 23
 
 **System API:** This is a system API.
 
@@ -4239,11 +4106,10 @@ Enumerates event IDs.
 | EVENT_DOWNLOAD_RESUME  | 0x01000007 | Download resumed.  |
 | EVENT_DOWNLOAD_SUCCESS | 0x01000008 | Download succeeded.  |
 | EVENT_DOWNLOAD_FAIL    | 0x01000009 | Download failed.  |
-| EVENT_UPGRADE_WAIT     | 0x0100000A | Waiting for upgrade.   |
-| EVENT_UPGRADE_START    | 0x0100000B | Upgrade started.  |
-| EVENT_UPGRADE_UPDATE   | 0x0100000C | Upgrade in progress.   |
-| EVENT_APPLY_WAIT       | 0x0100000D | Waiting for applying the upgrade.   |
-| EVENT_APPLY_START      | 0x0100000E | Applying the upgrade.  |
-| EVENT_UPGRADE_SUCCESS  | 0x0100000F | Upgrade succeeded.   |
+| EVENT_UPGRADE_WAIT     | 0x0100000a | Pending upgrade.    |
+| EVENT_UPGRADE_START    | 0x0100000b | Starts the upgrade.   |
+| EVENT_UPGRADE_UPDATE   | 0x0100000c | Upgrading.    |
+| EVENT_APPLY_WAIT       | 0x0100000d | Pending activation.    |
+| EVENT_APPLY_START      | 0x0100000e | Starts to take effect.   |
+| EVENT_UPGRADE_SUCCESS  | 0x0100000f | Update succeeded.   |
 | EVENT_UPGRADE_FAIL     | 0x01000010 | Upgrade failed.   |
-<!--no_check-->

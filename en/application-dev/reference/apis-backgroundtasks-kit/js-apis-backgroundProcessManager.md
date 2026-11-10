@@ -6,7 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=01c6962072a8f9dd5cda50c5dbc79464d7c5ca8a translatedAt=2026-08-11T01:56:10.042Z pushedAt=2026-08-11T03:04:32.211Z -->
+<!-- md-trans-meta sourceCommit=398bdda8db5d447775b730c53183f9dadbc9f04d translatedAt=2026-11-10T03:49:03.601Z pushedAt=2026-11-10T05:52:46.074Z nl=1 -->
 
 The **backgroundProcessManager** module provides APIs for background child process management. You can use these APIs to suppress and unsuppress child processes to prevent child processes from occupying too many system resources and causing system stuttering. The APIs take effect only for the child processes created through [OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess).
 
@@ -57,7 +57,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
 let childProcessPid = 33333;
 try {
-    await backgroundProcessManager.setProcessPriority(childProcessPid,
+    backgroundProcessManager.setProcessPriority(childProcessPid,
         backgroundProcessManager.ProcessPriority.PROCESS_INACTIVE);
 } catch (error) {
     console.error(`setProcessPriority failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -92,7 +92,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
 let childProcessPid = 33333;
 try {
-    await backgroundProcessManager.resetProcessPriority(childProcessPid); 
+    backgroundProcessManager.resetProcessPriority(childProcessPid); 
 } catch (error) {
     console.error(`resetProcessPriority failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
@@ -105,11 +105,8 @@ setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 Sets the power saving mode for a process. This API uses a promise to return the result.
 
 You can set to enter the power saving mode when:
-
 - The application is not focused, and there are no audio operations or UI updates.
-
 - The application cannot obtain the power lock through the system framework.
-
 - The application needs to perform time-consuming computing tasks, such as compression, decompression, and compilation, which are significantly restricted by CPU resources. (In this case, the power saving mode will be enabled forcibly.)
 
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
@@ -286,3 +283,4 @@ Specifies the power saving mode.
 |-----|----|-------|
 | EFFICIENCY_MODE | 1 | Efficiency mode. Applications set to this mode will not enter the power saving mode, where fewer CPU resources are available.|
 | DEFAULT_MODE | 2 | Default mode. Applications set to this mode may follow the system to enter the power saving mode.|
+

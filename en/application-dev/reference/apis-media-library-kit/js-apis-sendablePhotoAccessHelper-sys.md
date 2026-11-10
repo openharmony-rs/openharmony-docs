@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=ba49de2689ee413756c0baf6f779ea8ae571bc4c translatedAt=2026-11-10T03:51:01.764Z pushedAt=2026-11-10T07:18:53.650Z nl=1 -->
 
 The module provides APIs for album management, including creating an album and accessing and modifying media data in an album, based on a [Sendable](../../arkts-utils/arkts-sendable.md) object.
 
@@ -28,6 +29,8 @@ Obtains a PhotoAccessHelper instance for the specified user, letting you access 
 ​**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
+
+**Required Permission:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -5,6 +5,7 @@
 <!--Designer: @hu-kai45-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=d048b0bafe3e0e15f26e9ac5f8f709f206e6bb17 translatedAt=2026-11-10T03:59:48.376Z pushedAt=2026-11-10T06:07:18.750Z nl=1 -->
 
 > **NOTE**
 >
@@ -22,7 +23,7 @@ This error code is reported when the **create**, **uploadFile**, or **downloadFi
 
 **Possible Causes**
 
-The file permission is insufficient. For details, see the error message in [BusinessError](js-apis-base.md#businesserror).
+This error code indicates a file operation exception, possibly caused by insufficient file permissions. For details, see the error message in [BusinessError](js-apis-base.md#businesserror) and the method about how to handle error 13400001.
 
 **Solution**
 
@@ -76,11 +77,11 @@ This error code is reported when other error occurs in invoking the **uploadFile
 
 **Possible Causes**
 
-The task fails to be created.
+This error code indicates an undefined error other than the error codes listed above, possibly caused by an unknown exception or other system issue during task execution.
 
 **Solution**
 
-Verify the task settings.
+Please locate the specific cause based on the called API and the detailed error message returned, and then retry.
 
 
 ## 21900004 Application Task Queue Full

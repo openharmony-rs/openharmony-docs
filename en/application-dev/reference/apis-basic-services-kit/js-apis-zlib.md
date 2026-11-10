@@ -1,12 +1,13 @@
 # @ohos.zlib (Zip)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
-<!--Owner: @wanghang904-->
-<!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @fang-jinxu-->
+<!--Owner: @jsjzju-->
+<!--Designer: @jsjzju-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=b33c416f2dabc1fc4149b71a7ef553e301b3c3cc translatedAt=2026-11-10T04:27:57.038Z pushedAt=2026-11-10T07:10:14.413Z nl=1 -->
 
-The **Zip** module provides APIs for file compression and decompression.
+This module is developed based on the zlib library and provides file compression and decompression capabilities. It uses the DEFLATE algorithm and supports data processing in zlib, deflate, and gzip formats.
 
 > **NOTE**
 >
@@ -33,15 +34,15 @@ Zips a file. The execution result is returned after the compression is complete.
 
 | Name | Type               | Mandatory| Description                                                        |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile  | string              | Yes  | Path of the folder or file to zip. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md).|
-| outFile | string              | Yes  | Path of the zipped file. The file name extension is .zip.                 |
+| inFile  | string              | Yes   | Folder path or file path to be compressed. The path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md). |
+| outFile | string              | Yes   | File path of the compressed file (with the .zip extension). The path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md).                  |
 | options | [Options](#options) | Yes  | Optional parameters for the zip operation.                                            |
 
 **Return value**
 
 | Type          | Description                                                        |
 | -------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Example**
 
@@ -82,15 +83,15 @@ Unzips a file. The execution result is returned after the decompression is compl
 
 | Name | Type               | Mandatory| Description                                                        |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile  | string              | Yes  | Path of the file to unzip. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If the.zip file to be unzipped contains Chinese file names or folder names, use UTF-8 to encode them. Otherwise, garbled characters may be displayed after unzipping.|
-| outFile | string              | Yes  | Path of the unzipped file.                                        |
+| inFile  | string              | Yes   | File path of the file to be decompressed. The path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md). If the .zip file to be decompressed contains Chinese file names or directory names, use UTF-8 encoding to avoid garbled Chinese characters in the file names or directory names during decompression. |
+| outFile | string              | Yes   | Path of the decompressed file. The path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md).                                         |
 | options | [Options](#options) | Yes  | Optional parameters for the unzip operation.                                            |
 
 **Return value**
 
 | Type          | Description                                                        |
 | -------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Example**
 
@@ -131,8 +132,8 @@ Compresses a file. This API uses an asynchronous callback to return the result.
 
 | Name                 | Type               | Mandatory| Description                                                        |
 | ----------------------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile                  | string              | Yes  | Path of the folder or file to compress. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). The folder to compress cannot be empty. Otherwise, an error will be reported when [decompressFile](#zlibdecompressfile9) is used to decompress the folder.|
-| outFile                 | string              | Yes  | Path of the compressed file. When multiple threads compress files at the same time, the values of **outFile** must be different.                                          |
+| inFile                  | string              | Yes   | Folder path or file path to be compressed. The path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md). The folder to be compressed cannot be empty; otherwise, an error is reported when [decompressFile](#zlibdecompressfile9) is used to decompress the compressed file. |
+| outFile                 | string              | Yes   | File path of the compression result. The path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md). When multiple compression tasks are executed concurrently, the outFile of each task must be different; otherwise, compression may fail or the output file may be corrupted.                                             |
 | options                 | [Options](#options) | Yes  | Compression parameters.                                              |
 | callback | AsyncCallback\<void>            | Yes  | Callback used to return the result. If the operation is successful, **null** is returned; otherwise, a specific error code is returned.            |
 
@@ -162,7 +163,7 @@ let options: zlib.Options = {
 
 try {
   zlib.compressFile(inFile, outFile, options, (errData: BusinessError) => {
-    if (errData !== null) {
+    if (errData) {
       console.error(`compressFile errData is errCode:${errData.code}  message:${errData.message}`);
     } else {
       console.info(`compressFile success.`);
@@ -193,15 +194,15 @@ Compresses a file. This API uses a promise to return the result.
 
 | Name | Type               | Mandatory| Description                                                        |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile  | string              | Yes  | Path of the folder or file to compress. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). The folder to compress cannot be empty. Otherwise, an error will be reported when [decompressFile](#zlibdecompressfile9) is used to decompress the folder.|
-| outFile | string              | Yes  | Path of the compressed file. When multiple threads compress files at the same time, the values of **outFile** must be different.                                          |
+| inFile  | string              | Yes   | Folder path or file path to be compressed. The path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md). The folder to be compressed cannot be empty; otherwise, an error is reported when [decompressFile](#zlibdecompressfile9) is used to decompress the compressed file. |
+| outFile | string              | Yes   | File path of the compression result. The path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md). When multiple compression tasks are executed concurrently in multiple threads, the outFile of each task must be different; otherwise, compression may fail or the output file may be corrupted.                                           |
 | options | [Options](#options) | Yes  | Compression parameters.                                              |
 
 **Return value**
 
 | Type          | Description                   |
 | -------------- | ----------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -260,8 +261,8 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 
 | Name                 | Type               | Mandatory| Description                                                        |
 | ----------------------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile                  | string              | Yes  | Path of the file to decompress. The file name extension must be .zip. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If the.zip file to be unzipped contains Chinese file names or folder names, use UTF-8 to encode them. Otherwise, garbled characters may be displayed after unzipping.|
-| outFile                 | string              | Yes  | Path of the decompressed file. The path must exist in the system. Otherwise, the decompression fails. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If a file or folder with the same name already exists in the path, they will be overwritten. When multiple threads decompress files at the same time, the values of **outFile** must be different.|
+| inFile                  | string              | Yes   | File path of the file to decompress. The file name extension must be .zip. The file path must be a sandbox path, which can be obtained through the context. For details, see [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If the .zip file to decompress contains Chinese file names or directory names, encode them in UTF8 to avoid garbled Chinese characters in the file names or directory names after decompression. |
+| outFile                 | string              | Yes   | Path of the folder to which the file is decompressed. The folder path must exist in the system; otherwise, decompression fails. The path must be a sandbox path, which can be obtained through the context. For details, see [Context (Context Base Class of the Stage Model)](../apis-ability-kit/js-apis-inner-application-context.md) or [Context (Context Base Class of the FA Model)](../apis-ability-kit/js-apis-inner-app-context.md). If a file or folder to decompress already exists under the target path, the file with the same name or the file with the same name in the folder with the same name is overwritten. When multiple compression tasks are executed concurrently in multiple threads, the outFile of each task must be different; otherwise, compression may fail or the output file may be corrupted. |
 | options                 | [Options](#options) | Yes  | Decompression parameters.                                            |
 | callback | AsyncCallback\<void>            | Yes  | Callback used to return the result. If the operation is successful, **null** is returned; otherwise, a specific error code is returned.                                            |
 
@@ -274,7 +275,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001   | The input source file is invalid.      |
 | 900002   | The input destination file is invalid. |
-| 900003 | The input source file is not in ZIP format or is damaged. |
+| 900003 | The input source file is not in ZIP format or is damaged. <br>Applicable version: 10+ |
 
 **Example**
 
@@ -291,7 +292,7 @@ let options: zlib.Options = {
 
 try {
   zlib.decompressFile(inFile, outFileDir, options, (errData: BusinessError) => {
-    if (errData !== null) {
+    if (errData) {
       console.error(`decompressFile errData is errCode:${errData.code}  message:${errData.message}`);
     } else {
       console.info(`decompressFile success.`);
@@ -324,15 +325,15 @@ Decompresses a file. This API uses a promise to return the result.
 
 | Name | Type               | Mandatory| Description                                                        |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile  | string              | Yes  | Path of the file to decompress. The file name extension must be .zip. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If the.zip file to be unzipped contains Chinese file names or folder names, use UTF-8 to encode them. Otherwise, garbled characters may be displayed after unzipping.|
-| outFile | string              | Yes  | Path of the decompressed file. The path must exist in the system. Otherwise, the decompression fails. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If a file or folder with the same name already exists in the path, they will be overwritten. When multiple threads decompress files at the same time, the values of **outFile** must be different.|
-| options | [Options](#options) | No  | Decompression parameters.                                          |
+| inFile  | string              | Yes   | File path of the file to decompress. The file name extension must be .zip. The file path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md). If the .zip file to decompress contains Chinese file names or directory names, encode them in UTF-8 to avoid garbled Chinese characters in the file names or directory names after decompression. |
+| outFile | string              | Yes   | Path of the folder to which the file is decompressed. The folder directory path must exist in the system; otherwise, decompression fails. The path must be a sandbox path, which can be obtained through the context. For details, see [Context (base class of the context in the stage model)](../apis-ability-kit/js-apis-inner-application-context.md) or [Context (base class of the context in the FA model)](../apis-ability-kit/js-apis-inner-app-context.md). If a file or folder to decompress already exists in the decompression path, the file with the same name, or the file with the same name in the folder with the same name, is overwritten. When multiple threads decompress files at the same time, the outFile values must be different; otherwise, the decompressed data may overwrite each other or the files may be corrupted. When multiple threads concurrently execute multiple compression tasks, the outFile values of the tasks must be different; otherwise, compression may fail or the output files may be corrupted. |
+| options | [Options](#options) | No   | Configuration parameters for decompression. If this parameter is not passed, the default configuration is used.                                           |
 
 **Return value**
 
 | Type          | Description                   |
 | -------------- | ----------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -343,7 +344,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001 | The input source file is invalid.      |
 | 900002 | The input destination file is invalid. |
-| 900003 | The input source file is not in ZIP format or is damaged. |
+| 900003 | The input source file is not in ZIP format or is damaged. <br>Supported since: 10+ |
 
 **Example**
 
@@ -390,8 +391,8 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 
 | Name                 | Type               | Mandatory| Description                                                        |
 | ----------------------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile                  | string              | Yes  | Path of the file to decompress. The file name extension must be .zip. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If the.zip file to be unzipped contains Chinese file names or folder names, use UTF-8 to encode them. Otherwise, garbled characters may be displayed after unzipping.|
-| outFile                 | string              | Yes  | Path of the decompressed file. The path must exist in the system. Otherwise, the decompression fails. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If a file or folder with the same name already exists in the path, they will be overwritten. When multiple threads decompress files at the same time, the values of **outFile** must be different.|
+| inFile                  | string              | Yes   | File path of the file to decompress. The file name extension must be .zip. The file path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md). If the .zip file to decompress contains Chinese file names or directory names, encode them in UTF8 to avoid garbled Chinese characters in the file names or directory names after decompression. |
+| outFile                 | string              | Yes   | Path of the folder to which the file is decompressed. The folder directory path must exist in the system; otherwise, decompression fails. The path must be a sandbox path, which can be obtained through the context. For details, see [Context (base class of the Stage model context)](../apis-ability-kit/js-apis-inner-application-context.md) or [Context (base class of the FA model context)](../apis-ability-kit/js-apis-inner-app-context.md). If a file or folder to decompress already exists in the decompressed path, the file with the same name or the file with the same name in the folder with the same name is overwritten. When multiple threads decompress files at the same time, outFile must be different for each thread; otherwise, the decompressed data may overwrite each other or the files may be corrupted. When multiple threads concurrently execute multiple compression tasks, outFile must be different for each task; otherwise, compression may fail or the output files may be corrupted. |
 | callback | AsyncCallback\<void>            | Yes  | Callback used to return the result. If the operation is successful, **null** is returned; otherwise, a specific error code is returned.                                            |
 
 **Error codes**
@@ -416,7 +417,7 @@ let outFileDir = '/data/storage/el2/base/temp';
 
 try {
   zlib.decompressFile(inFile, outFileDir, (errData: BusinessError) => {
-    if (errData !== null) {
+    if (errData) {
       console.error(`decompressFile failed. code is ${errData.code}, message is ${errData.message}`);
     } else {
       console.info(`decompressFile success.`);
@@ -443,7 +444,7 @@ Obtains the original size of a compressed file. This API uses a promise to retur
 
 | Name | Type               | Mandatory| Description                                                        |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| compressedFile  | string              | Yes  | Specifies the path of the compressed file. Only .zip files are supported. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md).|
+| compressedFile  | string              | Yes   | File path of the specified compressed file. Only ZIP-format compressed files are supported. The file path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md). |
 
 **Return value**
 
@@ -496,15 +497,15 @@ Compresses multiple specified files. This API uses a promise to return the resul
 
 | Name | Type               | Mandatory| Description                                                        |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFiles | Array&lt;string&gt; | Yes  | Path of the folder or file to compress. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). The folder to compress cannot be empty. Otherwise, an error will be reported when [decompressFile](#zlibdecompressfile9) is used to decompress the folder.|
-| outFile | string              | Yes  | Path of the compressed file. When multiple threads compress files at the same time, the values of **outFile** must be different.|
+| inFiles | Array&lt;string&gt; | Yes | Folder path or file path to be compressed. The path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md). The folder to be compressed cannot be empty; otherwise, an error is reported when [decompressFile](#zlibdecompressfile9) is used to decompress the compressed file. |
+| outFile | string | Yes | File path of the compression result. The path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md). When multiple threads compress files at the same time, outFile cannot be the same; otherwise, the compressed data may overwrite each other or the file may be damaged. When multiple threads concurrently execute multiple compression tasks, outFile of each task cannot be the same; otherwise, compression may fail or the output file may be damaged. |
 | options | [Options](#options) | Yes  | Compression parameters.                                            |
 
 **Return value**
 
 | Type               | Description                   |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -523,7 +524,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
 let inFile = '/data/storage/el2/base/temp/filename.xxx';
-let pathDir = 'data/storage/el2/base/temp/xxx';
+let pathDir = '/data/storage/el2/base/temp/xxx';
 let outFile = '/data/storage/el2/base/temp/xxx.zip';
 let options: zlib.Options = {
   level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
@@ -532,11 +533,11 @@ let options: zlib.Options = {
 };
 
 try {
-  zlib.compressFiles([inFile, pathDir], outFile, options).then((data: void) => {
-    console.info('compressFiles success. data: ' + JSON.stringify(data));
+  zlib.compressFiles([inFile, pathDir], outFile, options).then(() => {
+    console.info('compressFiles success.');
   }).catch((errData: BusinessError) => {
     console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-  })
+  });
 } catch (errData) {
   let code = (errData as BusinessError).code;
   let message = (errData as BusinessError).message;
@@ -584,7 +585,7 @@ Creates this checksum object. A checksum instance is returned upon a success.
 
 | Type                   | Description          |
 | ----------------------- | -------------- |
-| [Checksum](#checksum12) | Checksum object instance.|
+| [Checksum](#checksum12) | Checksum object instance used to calculate and verify data checksums. |
 
 **Example**
 
@@ -665,7 +666,7 @@ Combines two Adler-32 checksums. This API uses a promise to return the result.
 | ------ | ------ | ---- | ------------------------------------ |
 | adler1 | number | Yes  | The first Adler-32 checksum to be combined.      |
 | adler2 | number | Yes  | The second Adler-32 checksum to be combined.      |
-| len2   | number | Yes  | Length of the data block of the second Adler-32 checksum.|
+| len2   | number | Yes   | Length of the second data block for the Adler-32 checksum, in bytes. |
 
 **Return value**
 
@@ -781,7 +782,7 @@ Combines two CRC-32 checksums. This API uses a promise to return the result.
 | ------ | ------ | ---- | -------------------------------- |
 | crc1 | number | Yes  | The first CRC-32 checksum to be combined.      |
 | crc2 | number | Yes  | The second CRC-32 checksum to be combined.      |
-| len2   | number | Yes  | Indicates the length of the second data block checked by CRC-32|
+| len2 | number | Yes | Length of the second data block for CRC-32 checksum, in bytes. |
 
 **Return value**
 
@@ -1001,7 +1002,7 @@ Defines the **Zip** instance. It provides APIs to zip or unzip data in Zlib, Def
 
 getZStream(): Promise&lt;ZStream&gt;
 
-Obtains this stream. This API uses a promise to return the result.
+Obtains and returns a ZStream stream object instance. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1011,7 +1012,7 @@ Obtains this stream. This API uses a promise to return the result.
 
 | Type                                | Description                     |
 | ------------------------------------ | ------------------------- |
-| Promise&lt;[ZStream](#zstream12)&gt; | Promise used to return the **ZStream** object.|
+| Promise&lt;[ZStream](#zstream12)&gt; | Promise used to return the data stream management object for compression and decompression, which is used to manage the data streams during compression and decompression. |
 
 **Example**
 
@@ -1085,7 +1086,7 @@ zip.zlibCompileFlags().then((data) => {
 
 compress(dest: ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&lt;ZipOutputInfo&gt;
 
-Compresses the source buffer into the destination buffer. This API uses a promise to return the result.
+Compresses the source buffer into the destination buffer. This API uses a promise to return the result. The compressed data can be decompressed using the uncompress method.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1097,7 +1098,7 @@ Compresses the source buffer into the destination buffer. This API uses a promis
 | --------- | ----------- | ---- | -------------- |
 | dest      | ArrayBuffer | Yes  | Destination buffer.  |
 | source    | ArrayBuffer | Yes  | Source buffer.|
-| sourceLen | number      | No  | Length of the source data. The default value is **0**.  |
+| sourceLen | number      | No   | Length of the source data, in bytes. Value range: [0, source.byteLength]. If this parameter is not passed, source.byteLength is used by default.   |
 
 **Return value**
 
@@ -1151,7 +1152,7 @@ Compresses the source buffer into the destination buffer. This API uses a promis
 | --------- | ------------- | ---- | --------------------------------------------- |
 | dest      | ArrayBuffer   | Yes  | Destination buffer.                                 |
 | source    | ArrayBuffer   | Yes  | Source buffer.                               |
-| level     | CompressLevel | Yes  | For details, see [CompressLevel](#compresslevel).|
+| level     | [CompressLevel](#compresslevel) | Yes   | Refer to [CompressLevel](#compresslevel). |
 | sourceLen | number        | No  | Length of the source data. The default value is **0**.                                 |
 
 **Return value**
@@ -1197,6 +1198,11 @@ uncompress(dest:ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&l
 
 Decompresses the compressed data into the raw data. This API uses a promise to return the result.
 
+
+> **NOTE**
+>
+> Compared with [uncompress2](#uncompress212), this API returns ZipOutputInfo, which contains the result status and the total size of the destination buffer. uncompress2 returns DecompressionOutputInfo, which additionally contains the source data length information, and is suitable for scenarios where the source data length needs to be obtained at the same time.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.BundleManager.Zlib
@@ -1207,7 +1213,7 @@ Decompresses the compressed data into the raw data. This API uses a promise to r
 | --------- | ----------- | ---- | -------------- |
 | dest      | ArrayBuffer | Yes  | Destination buffer.  |
 | source    | ArrayBuffer | Yes  | Source buffer.|
-| sourceLen | number      | No  | Length of the source data. The default value is **0**.  |
+| sourceLen | number      | No   | Length of the source data, in bytes. Value range: [0, source.byteLength]. If this parameter is not passed, source.byteLength is used by default.   |
 
 **Return value**
 
@@ -1268,7 +1274,7 @@ Decompresses the compressed data into the raw data. This API uses a promise to r
 | --------- | ----------- | ---- | -------------- |
 | dest      | ArrayBuffer | Yes  | Destination buffer.  |
 | source    | ArrayBuffer | Yes  | Source buffer.|
-| sourceLen | number      | No  | Length of the source data. The default value is **0**.  |
+| sourceLen | number      | No   | Length of the source data, in bytes. Value range: [0, source.byteLength]. If this parameter is not passed, source.byteLength is used by default.   |
 
 **Return value**
 
@@ -1353,7 +1359,7 @@ let arrayBufferIn = new ArrayBuffer(str.length);
 let byteArray = new Uint8Array(arrayBufferIn);
 
 for (let i = 0, j = str.length; i < j; i++) {
-  byteArray[i] = str.charCodeAt(i)
+  byteArray[i] = str.charCodeAt(i);
 }
 
 let zip = zlib.createZipSync();
@@ -1379,7 +1385,7 @@ Validates the checksum inside the compression stream. This API uses a promise to
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 | check  | number  | Yes  | Expected checksum.                 |
 
 **Return value**
@@ -1439,7 +1445,7 @@ Finds the synchronization point of a decompression stream. This API uses a promi
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -1498,7 +1504,7 @@ Skips invalid compressed data until a possible complete refresh point is found. 
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -1582,6 +1588,11 @@ inflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 Resets the state of the decompression stream to retain the allocated Huffman tree and preset dictionary. This API uses a promise to return the result.
 
+
+> **NOTE**
+>
+> Compared with [inflateReset](#inflatereset12) and [inflateReset2](#inflatereset212): this API retains the Huffman decoding tree and the preset dictionary, and is suitable for scenarios where the same decompression configuration needs to be maintained. inflateReset completely resets the decompression stream. inflateReset2 can set the window size and specify the data format.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.BundleManager.Zlib
@@ -1590,7 +1601,7 @@ Resets the state of the decompression stream to retain the allocated Huffman tre
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -1649,7 +1660,7 @@ Initializes the dictionary content of a decompression stream based on the given 
 
 | Name    | Type       | Mandatory| Description                           |
 | ---------- | ----------- | ---- | ------------------------------- |
-| strm       | ZStream     | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm       | [ZStream](#zstream12)     | Yes   | Data stream management object for zlib compression and decompression. |
 | dictionary | ArrayBuffer | Yes  | Dictionary data.                     |
 
 **Return value**
@@ -1682,7 +1693,7 @@ async function demo() {
   }
   let arrayBufferOut = new ArrayBuffer(100);
   let zip = zlib.createZipSync();
-  let dictionary = 'hello'
+  let dictionary = 'hello';
   let dictionarybuf = new ArrayBuffer(dictionary.length);
   let dictionarybufdata = new Uint8Array(dictionarybuf);
   for (let i = 0, j = dictionary.length; i < j; i++) {
@@ -1747,8 +1758,8 @@ Resets the status of the specified decompression stream and updates the window s
 
 | Name    | Type   | Mandatory| Description                           |
 | ---------- | ------- | ---- | ------------------------------- |
-| strm       | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
-| windowBits | number  | Yes  | Memory window size. The value is restricted in certain range based on the data formats. The options are as follows:<br>Zlib: [1, 15]<br>Gzip: (15, +∞)<br>Raw Deflate: [-15, -1]  |
+| strm       | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
+| windowBits | number  | Yes   | Controls the size of the memory window and specifies the data format (zlib, gzip, or raw deflate). The value range is as follows:<br>zlib format: [8, 15].<br>gzip format: [24, 31].<br>raw deflate format: [-15, -8].   |
 
 **Return value**
 
@@ -1807,7 +1818,7 @@ Resets the status of the specified decompression stream to the initial state to 
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -1866,9 +1877,9 @@ Sets the initial number of bits and bit value in the specified decompression str
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
-| bits   | number  | Yes  | Number of bits to be written to the bit buffer.                     |
-| value  | number  | Yes  | Bit value used to fill the bit buffer.                     |
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
+| bits   | number  | Yes   | Number of bits to write to the bit buffer. Value range: [0, 16].                      |
+| value  | number  | Yes   | Bit value used to fill the bit buffer. Value range: [0, 2^bits-1].                      |
 
 **Return value**
 
@@ -1927,7 +1938,7 @@ Marks the location of the input data for random access. This API uses a promise 
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -1985,8 +1996,8 @@ Initializes a decompression stream with the specified **windowBits**. This API u
 
 | Name    | Type   | Mandatory| Description                           |
 | ---------- | ------- | ---- | ------------------------------- |
-| strm       | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
-| windowBits | number  | Yes  | Memory window size. The value is restricted in certain range based on the data formats. The options are as follows:<br>Zlib: [1, 15]<br>Gzip: (15, +∞)<br>Raw Deflate: [-15, -1]  |
+| strm       | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
+| windowBits | number  | Yes   | Controls the size of the memory window and specifies the data format (zlib, gzip, or raw deflate). The value ranges are as follows:<br>zlib format: [8, 15].<br>gzip format: [24, 31].<br>raw deflate format: [-15, -8].   |
 
 **Return value**
 
@@ -2013,7 +2024,7 @@ let arrayBufferIn = new ArrayBuffer(str.length);
 let byteArray = new Uint8Array(arrayBufferIn);
 
 for (let i = 0, j = str.length; i < j; i++) {
-  byteArray[i] = str.charCodeAt(i)
+  byteArray[i] = str.charCodeAt(i);
 }
 
 let arrayBufferOut = new ArrayBuffer(100);
@@ -2031,7 +2042,7 @@ zip.inflateInit2({ nextIn: arrayBufferIn, availableIn: 1, nextOut: arrayBufferOu
 
 inflateInit(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-Initializes a decompression stream. This API uses a promise to return the result.
+Initializes a decompression stream. This API uses a promise to return the result. You need to call this API first to initialize the decompression stream, then call **inflate** to decompress, and finally call **inflateEnd** to release resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2041,7 +2052,7 @@ Initializes a decompression stream. This API uses a promise to return the result
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -2067,7 +2078,7 @@ let arrayBufferIn = new ArrayBuffer(str.length);
 let byteArray = new Uint8Array(arrayBufferIn);
 
 for (let i = 0, j = str.length; i < j; i++) {
-  byteArray[i] = str.charCodeAt(i)
+  byteArray[i] = str.charCodeAt(i);
 }
 
 let arrayBufferOut = new ArrayBuffer(100);
@@ -2095,7 +2106,7 @@ Obtains the header information of a gzip file before decompressing data. This AP
 
 | Name| Type                   | Mandatory| Description                            |
 | ------ | ----------------------- | ---- | -------------------------------- |
-| strm   | ZStream                 | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12). |
+| strm   | [ZStream](#zstream12)                 | Yes   | Data stream management object for zlib compression and decompression.  |
 | header | [GzHeader](#gzheader12) | Yes  | Header information of a gzip file extracted from the compressed data stream.|
 
 **Return value**
@@ -2155,7 +2166,7 @@ Obtains the content and length of the decompression dictionary used in a decompr
 
 | Name    | Type       | Mandatory| Description                           |
 | ---------- | ----------- | ---- | ------------------------------- |
-| strm       | ZStream     | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm       | [ZStream](#zstream12)     | Yes   | Data stream management object for zlib compression and decompression. |
 | dictionary | ArrayBuffer | Yes  | Receives the actual contents of the decompression dictionary.     |
 
 **Return value**
@@ -2215,7 +2226,7 @@ Releases all dynamically allocated data structs of a decompression stream. This 
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -2279,7 +2290,7 @@ Copies a decompression stream. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description                   |
 | ------ | ---- | ---- | ----------------------- |
-| source | Zip  | Yes  | For details, see [Zip<sup>12+</sup>](#zip12).|
+| source | [Zip](#zip12)  | Yes   | Instance of the object to compress or decompress. |
 
 **Return value**
 
@@ -2339,7 +2350,7 @@ Describes the number of Huffman trees used in a decompression stream. This API u
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -2397,8 +2408,8 @@ Initializes the internal stream state for decompression before using the **infla
 
 | Name    | Type       | Mandatory| Description                                         |
 | ---------- | ----------- | ---- | --------------------------------------------- |
-| strm       | ZStream     | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).              |
-| windowBits | number      | Yes  | Memory window size. The value is restricted in certain range based on the data formats. The options are as follows:<br>Zlib: [1, 15]<br>Gzip: (15, +∞)<br>Raw Deflate: [-15, -1]|
+| strm       | [ZStream](#zstream12)     | Yes   | Data stream management object for zlib compression and decompression.               |
+| windowBits | number      | Yes   | Controls the size of the memory window and specifies the data format (zlib, gzip, or raw deflate). The value ranges are as follows:<br>zlib format: [8, 15].<br>gzip format: [24, 31].<br>raw deflate format: [-15, -8]. |
 | window     | ArrayBuffer | Yes  | Preset window buffer.                           |
 
 **Return value**
@@ -2434,7 +2445,7 @@ Releases all memory allocated by the **inflateBackInit()** function. This API us
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -2469,10 +2480,10 @@ Implements decompression and uses callbacks to process input and output data. Th
 
 | Name | Type                     | Mandatory| Description                                                        |
 | ------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| strm    | ZStream                   | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).                             |
-| backIn  | InflateBackInputCallback  | Yes  | A function used to decompress data from the end of the array to read the original compressed data from the input source.|
+| strm    | [ZStream](#zstream12)                   | Yes   | Data stream management object for zlib compression and decompression.                              |
+| backIn  | [InflateBackInputCallback](#inflatebackinputcallback12)  | Yes   | Function used to read raw compressed data from the input source for decompressing data from the end. |
 | inDesc  | object                    | Yes  | Common object.                                                  |
-| backOut | InflateBackOutputCallback | Yes  | Writes the decompressed data to the destination buffer.                                |
+| backOut | [InflateBackOutputCallback](#inflatebackoutputcallback12) | Yes   | Writes the decompressed data to the target output.                                 |
 | outDesc | object                    | Yes  | Common object.                                                  |
 
 **Return value**
@@ -2687,8 +2698,8 @@ Inflates data. This API uses a promise to return the result.
 
 | Name| Type             | Mandatory| Description                                               |
 | ------ | ----------------- | ---- | --------------------------------------------------- |
-| strm   | ZStream           | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).                    |
-| flush  | CompressFlushMode | Yes  | For details, see [CompressFlushMode](#compressflushmode12).|
+| strm   | [ZStream](#zstream12)           | Yes   | Data stream management object for zlib compression and decompression.                     |
+| flush  | [CompressFlushMode](#compressflushmode12) | Yes   | Data flush strategy during compression or decompression. |
 
 **Return value**
 
@@ -2764,7 +2775,7 @@ async function demo() {
 
 deflateInit(strm: ZStream, level: CompressLevel): Promise&lt;ReturnStatus&gt;
 
-Initializes a compression stream with a specified compression level. This API uses a promise to return the result.
+Initializes a compression stream and sets the specified compression level. This API uses a promise to return the result. You need to call this API first to initialize the compression stream, then call **deflate** to compress, and finally call **deflateEnd** to release resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2774,8 +2785,8 @@ Initializes a compression stream with a specified compression level. This API us
 
 | Name| Type         | Mandatory| Description                                         |
 | ------ | ------------- | ---- | --------------------------------------------- |
-| strm   | ZStream       | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).              |
-| level  | CompressLevel | Yes  | For details, see [CompressLevel](#compresslevel).|
+| strm   | [ZStream](#zstream12)       | Yes   | Data stream management object for zlib compression and decompression.               |
+| level  | [CompressLevel](#compresslevel) | Yes   | See [CompressLevel enum definition](#compresslevel). |
 
 **Return value**
 
@@ -2834,12 +2845,12 @@ Initializes a compression stream with the specified compression level, compressi
 
 | Name    | Type            | Mandatory| Description                                               |
 | ---------- | ---------------- | ---- | --------------------------------------------------- |
-| strm       | ZStream          | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).                    |
-| level      | CompressLevel    | Yes  | For details, see [CompressLevel](#compresslevel).      |
-| method     | CompressMethod   | Yes  | For details, see [CompressMethod](#compressmethod12).  |
+| strm       | [ZStream](#zstream12)          | Yes   | Data stream management object for zlib compression and decompression.                     |
+| level      | [CompressLevel](#compresslevel)    | Yes   | For details, see [CompressLevel enum definition](#compresslevel).       |
+| method     | [CompressMethod](#compressmethod12)   | Yes   | Enum type of the compression algorithm, specifying the DEFLATED compression method.   |
 | windowBits | number           | Yes  | Memory window size. The value is restricted in certain range based on the data formats. The options are as follows:<br>Zlib: [1, 15]<br>Gzip: (15, +∞)<br>Raw Deflate: [-15, -1]                      |
-| memLevel   | MemLevel         | Yes  | For details, see [MemLevel](#memlevel).                |
-| strategy   | CompressStrategy | Yes  | For details, see [CompressStrategy](#compressstrategy).|
+| memLevel   | [MemLevel](#memlevel)         | Yes   | For details, see [MemLevel enum definition](#memlevel).                 |
+| strategy   | [CompressStrategy](#compressstrategy) | Yes   | For details, see [CompressStrategy enum definition](#compressstrategy). |
 
 **Return value**
 
@@ -2899,8 +2910,8 @@ Deflates data. This API uses a promise to return the result.
 
 | Name| Type             | Mandatory| Description                                               |
 | ------ | ----------------- | ---- | --------------------------------------------------- |
-| strm   | ZStream           | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).                    |
-| flush  | CompressFlushMode | Yes  | For details, see [CompressFlushMode](#compressflushmode12).|
+| strm   | [ZStream](#zstream12)           | Yes   | Data stream management object for zlib compression and decompression.                     |
+| flush  | [CompressFlushMode](#compressflushmode12) | Yes   | Data flush strategy during compression or decompression. |
 
 **Return value**
 
@@ -2965,7 +2976,7 @@ Releases all dynamically allocated data structs of a compression stream. This AP
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -3034,7 +3045,7 @@ Calculates the maximum size of the compressed data. This API uses a promise to r
 
 | Name   | Type   | Mandatory| Description                           |
 | --------- | ------- | ---- | ------------------------------- |
-| strm      | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm      | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 | sourceLength | number  | Yes  | Length of the source data.                   |
 
 **Return value**
@@ -3098,7 +3109,7 @@ Provides the header information of a gzip file when **deflateInit2()** requests 
 
 | Name| Type                   | Mandatory| Description                            |
 | ------ | ----------------------- | ---- | -------------------------------- |
-| strm   | ZStream                 | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12). |
+| strm   | [ZStream](#zstream12)                 | Yes   | Data stream management object for zlib compression and decompression.  |
 | head   | [GzHeader](#gzheader12) | Yes  | Header information of a gzip file extracted from the compressed data stream.|
 
 **Return value**
@@ -3164,7 +3175,7 @@ Copies a compression stream. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description                   |
 | ------ | ---- | ---- | ----------------------- |
-| source | Zip  | Yes  | For details, see [Zip<sup>12+</sup>](#zip12).|
+| source | [Zip](#zip12)  | Yes   | Instance of the object to compress or decompress. |
 
 **Return value**
 
@@ -3218,7 +3229,7 @@ async function demo() {
 
 deflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnStatus&gt;
 
-Initializes the compression dictionary from a given sequence of bytes. This API uses a promise to return the result.
+Initializes the compression dictionary from the given byte sequence. This API uses a promise to return the result. It must be called after the compression stream is initialized by **deflateInit** or **deflateInit2**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3228,7 +3239,7 @@ Initializes the compression dictionary from a given sequence of bytes. This API 
 
 | Name    | Type       | Mandatory| Description                           |
 | ---------- | ----------- | ---- | ------------------------------- |
-| strm       | ZStream     | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm       | [ZStream](#zstream12)     | Yes   | Data stream management object for zlib compression and decompression. |
 | dictionary | ArrayBuffer | Yes  | Dictionary data.                     |
 
 **Return value**
@@ -3283,7 +3294,7 @@ async function demo() {
 
 deflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;DictionaryOutputInfo&gt;
 
-Obtains the content and length of the decompression dictionary used in a compression stream. This API uses a promise to return the result.
+Obtains the content and length of the compression dictionary used in a compression stream. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3293,7 +3304,7 @@ Obtains the content and length of the decompression dictionary used in a compres
 
 | Name    | Type       | Mandatory| Description                           |
 | ---------- | ----------- | ---- | ------------------------------- |
-| strm       | ZStream     | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm       | [ZStream](#zstream12)     | Yes   | Data stream management object for zlib compression and decompression. |
 | dictionary | ArrayBuffer | Yes  | Buffer that receives the actual contents of the decompression dictionary.     |
 
 **Return value**
@@ -3353,7 +3364,7 @@ async function demo() {
 
 deflateTune(strm: ZStream, goodLength: number, maxLazy: number, niceLength: number, maxChain: number): Promise&lt;ReturnStatus&gt;
 
-Fine-tunes the internal compression parameters of **deflate**. This API uses a promise to return the result.
+Fine-tunes the internal compression parameters of deflate. This API uses a promise to return the result. It must be called after the compression stream is initialized by **deflateInit** or **deflateInit2**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3363,9 +3374,9 @@ Fine-tunes the internal compression parameters of **deflate**. This API uses a p
 
 | Name    | Type   | Mandatory| Description                           |
 | ---------- | ------- | ---- | ------------------------------- |
-| strm       | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm       | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 | goodLength | number  | Yes  | Matched length threshold.               |
-| maxLazy    | number  | Yes  | Delay matching strategy used when the compression algorithm builds a Huffman tree. The value is an integer ranging from 0 to 4. **1**–**4**: A larger value indicates a lazier algorithm, which performs a slower matching process but generates a better compression result. **0**: Lazy matching is disabled. The algorithm builds a Huffman tree as soon as possible. The compression speed is fast, but the compression ratio is low. |
+| maxLazy    | number  | Yes   | Delay matching strategy used when the compression algorithm builds a Huffman tree. The value is an integer ranging from 0 to 4. A larger value indicates a lazier algorithm, which performs a slower matching process but generates a better compression result. 0: Lazy matching is disabled. The algorithm builds a Huffman tree as soon as possible. The compression speed is fast, but the compression ratio is low.  |
 | niceLength | number  | Yes  | Appropriate delay length threshold.             |
 | maxChain   | number  | Yes  | Maximum chain length.                   |
 
@@ -3421,7 +3432,12 @@ async function demo() {
 
 deflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-Equivalent to call the **deflateEnd** API and then the **deflateInit** API. However, this API does not release or reallocate the internal decompression state. This API uses a promise to return the result.
+Equivalent to call the **deflateEnd** API and then the **deflateInit** API. However, this API does not release or reallocate the internal compression state. This API uses a promise to return the result.
+
+
+> **NOTE**
+>
+> Compared with [deflateResetKeep](#deflateresetkeep12), this API completely resets the compression stream without retaining any parameters. **deflateResetKeep** retains the compression parameters and dictionary, and is suitable for scenarios where recompression needs to be performed with the same compression configuration.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3431,7 +3447,7 @@ Equivalent to call the **deflateEnd** API and then the **deflateInit** API. Howe
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -3487,6 +3503,11 @@ deflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 Resets the initialized compression stream, but retains the compression parameters and dictionaries set by it. This API uses a promise to return the result.
 
+
+> **NOTE**
+>
+> Compared with [deflateReset](#deflatereset12), this API retains the compression parameters and dictionary, and is suitable for scenarios where recompression needs to be performed with the same compression configuration. **deflateReset** completely resets the compression stream without retaining any parameters.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.BundleManager.Zlib
@@ -3495,7 +3516,7 @@ Resets the initialized compression stream, but retains the compression parameter
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -3559,7 +3580,7 @@ Returns the number of bytes and bits of output that has been generated but not y
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
 
 **Return value**
 
@@ -3623,9 +3644,9 @@ Dynamically updates the compression level and compression strategy. This API use
 
 | Name  | Type            | Mandatory| Description                                               |
 | -------- | ---------------- | ---- | --------------------------------------------------- |
-| strm     | ZStream          | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).                    |
-| level    | CompressLevel    | Yes  | For details, see [CompressLevel](#compresslevel).      |
-| strategy | CompressStrategy | Yes  | For details, see [CompressStrategy](#compressstrategy).|
+| strm     | [ZStream](#zstream12)          | Yes   | Data stream management object for zlib compression and decompression.                     |
+| level    | [CompressLevel](#compresslevel)    | Yes   | See [CompressLevel enum definition](#compresslevel).       |
+| strategy | [CompressStrategy](#compressstrategy) | Yes   | See [CompressStrategy enum definition](#compressstrategy). |
 
 **Return value**
 
@@ -3679,7 +3700,7 @@ async function demo() {
 
 deflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatus&gt;
 
-Inserts bits and values into the compression stream. This API uses a promise to return the result.
+Inserts bits and a value into the compression stream. This API uses a promise to return the result. It must be called after the compression stream is initialized by **deflateInit** or **deflateInit2**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3689,9 +3710,9 @@ Inserts bits and values into the compression stream. This API uses a promise to 
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | Yes  | For details, see [ZStream<sup>12+</sup>](#zstream12).|
-| bits   | number  | Yes  | Number of bits to be inserted. The value ranges from 0 to 16. |
-| value  | number  | Yes  | Bit value corresponding to the number of bits.           |
+| strm   | [ZStream](#zstream12) | Yes   | Data stream management object for zlib compression and decompression. |
+| bits   | number  | Yes   | Number of bits to insert. Value range: [0, 16].  |
+| value  | number  | Yes   | Bit value corresponding to the number of bits. The value range is determined by bits.            |
 
 **Return value**
 
@@ -3749,11 +3770,12 @@ Defines options used to compress or decompress a ZIP file.
 
 | Name    | Type            | Read-Only| Optional| Description                                                      |
 | -------- | ---------------- | ---- | ---------------------------------------------------------- | ---- |
-| level    | [CompressLevel](#compresslevel)     | No  | Yes | Compression level specified for compression or decompression.<br>**Atomic service API**: This API can be used in atomic services since API version 11.      |
-| memLevel | [MemLevel](#memlevel)         | No  | Yes | Memory level specified for compression.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
-| strategy | [CompressStrategy](#compressstrategy) | No  | Yes | Compression strategy specified for compression.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
-| parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | No  | Yes | Serial or parallel strategy specified for compression or decompression.<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
-| pathSeparatorStrategy<sup>21+</sup> | [PathSeparatorStrategy](#pathseparatorstrategy21) | No  | Yes | Separator strategy for the file path in the compressed package specified for decompression.<br>**Atomic service API**: This API can be used in atomic services since API version 21.       |
+| level    | [CompressLevel](#compresslevel)     | No   | Yes  | Compression level specified during compression or decompression. The default value is COMPRESS_LEVEL_DEFAULT_COMPRESSION.<br>**Atomic service API:** This API is supported in atomic services since API version 11.       |
+| memLevel | [MemLevel](#memlevel)         | No   | Yes  | Memory level specified during compression. The default value is MEM_LEVEL_DEFAULT.<br>**Atomic service API:** This API is supported in atomic services since API version 11.                        |
+| strategy | [CompressStrategy](#compressstrategy) | No   | Yes  | Compression strategy specified during compression. The default value is COMPRESS_STRATEGY_DEFAULT_STRATEGY.<br>**Atomic service API:** This API is supported in atomic services since API version 11.        |
+| parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | No   | Yes  | Serial or parallel strategy specified during compression or decompression. The default value is PARALLEL_STRATEGY_SEQUENTIAL.<br>**Atomic service API:** This API is supported in atomic services since API version 18.        |
+| pathSeparatorStrategy<sup>21+</sup> | [PathSeparatorStrategy](#pathseparatorstrategy21) | No   | Yes  | Strategy for handling the separator in the file path within the archive during decompression. The default value is PATH_SEPARATOR_STRATEGY_DEFAULT.<br>**Atomic service API:** This API is supported in atomic services since API version 21.        |
+| keepTopLevelFolder | boolean | No   | Yes  | Whether to retain the top-level folder in the archive when compressing a folder. The value true means to retain the top-level folder, and false means not to retain it. The default value is false.<br/>**Since:** 26.0.0 <br/>**Atomic service API:** This API is supported in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model.        |
 
 ## CompressLevel
 
@@ -3763,10 +3785,10 @@ Defines options used to compress or decompress a ZIP file.
 
 | Name                              | Value  | Description             |
 | ---------------------------------- | ---- | ----------------- |
-| COMPRESS_LEVEL_NO_COMPRESSION      | 0    | Compress level 0 that indicates uncompressed.|
-| COMPRESS_LEVEL_BEST_SPEED          | 1    | Compression level 1 that gives the best speed. |
-| COMPRESS_LEVEL_BEST_COMPRESSION    | 9    | Compression level 9 that gives the best compression.     |
-| COMPRESS_LEVEL_DEFAULT_COMPRESSION | -1   | Default compression level.     |
+| COMPRESS_LEVEL_NO_COMPRESSION      | 0    | Compression level with a compression ratio of 0. It applies to scenarios where data is not compressed, such as already compressed images or video files. |
+| COMPRESS_LEVEL_BEST_SPEED          | 1    | Completes compression at the fastest speed with a lower compression ratio. It is suitable for scenarios with high real-time requirements.  |
+| COMPRESS_LEVEL_BEST_COMPRESSION    | 9    | Completes compression at the highest compression ratio with a slower compression speed. It is suitable for scenarios sensitive to storage space.      |
+| COMPRESS_LEVEL_DEFAULT_COMPRESSION | -1   | Default compression level, which balances compression speed and compression ratio. It is suitable for most scenarios.      |
 
 ## MemLevel
 
@@ -3776,9 +3798,9 @@ Defines options used to compress or decompress a ZIP file.
 
 | Name             | Value  | Description                            |
 | ----------------- | ---- | -------------------------------- |
-| MEM_LEVEL_MIN     | 1    | Minimum memory used by the **zlib** API during compression.|
-| MEM_LEVEL_MAX     | 9    | Maximum memory used by the **zlib** API during compression.|
-| MEM_LEVEL_DEFAULT | 8    | Default memory used by the **zlib** API during compression.|
+| MEM_LEVEL_MIN     | 1    | Uses the minimum memory for compression. It has the slowest compression speed but the lowest memory usage, and is suitable for memory-constrained scenarios. |
+| MEM_LEVEL_MAX     | 9    | Uses the maximum memory for compression. It has the fastest compression speed but the highest memory usage, and is suitable for scenarios with sufficient memory. |
+| MEM_LEVEL_DEFAULT | 8    | Default memory level. It strikes a balance between compression speed and memory usage, and is suitable for most scenarios. |
 
 ## CompressStrategy
 
@@ -3788,11 +3810,11 @@ Defines options used to compress or decompress a ZIP file.
 
 | Name                              | Value  | Description                    |
 | ---------------------------------- | ---- | ------------------------ |
-| COMPRESS_STRATEGY_DEFAULT_STRATEGY | 0    | Default compression strategy.            |
-| COMPRESS_STRATEGY_FILTERED         | 1    | Filtered compression strategy.|
-| COMPRESS_STRATEGY_HUFFMAN_ONLY     | 2    | Huffman coding compression strategy.  |
-| COMPRESS_STRATEGY_RLE              | 3    | RLE compression strategy.        |
-| COMPRESS_STRATEGY_FIXED            | 4    | Fixed compression strategy.          |
+| COMPRESS_STRATEGY_DEFAULT_STRATEGY | 0    | Default data strategy, applicable to most data types and providing balanced compression performance.             |
+| COMPRESS_STRATEGY_FILTERED         | 1    | Compression strategy for data produced by a filter. Applicable to preprocessed or filtered data, such as delta-encoded data. |
+| COMPRESS_STRATEGY_HUFFMAN_ONLY     | 2    | Huffman coding compression strategy. Uses only Huffman coding without string matching, applicable to scenarios that require fast compression.   |
+| COMPRESS_STRATEGY_RLE              | 3    | Run-length encoding compression strategy. Applicable to data containing a large number of repeated bytes, such as bitmap images.         |
+| COMPRESS_STRATEGY_FIXED            | 4    | Fixed compression strategy. Uses fixed Huffman coding, applicable to scenarios that require fixed encoded output.           |
 
 ## ParallelStrategy<sup>18+</sup>
 
@@ -3802,12 +3824,12 @@ Defines options used to compress or decompress a ZIP file.
 
 | Name                                    | Value  | Description                     |
 | ---------------------------------------- | ---- | ------------------------ |
-| PARALLEL_STRATEGY_SEQUENTIAL             | 0    | Serial compression/decompression strategy (default).|
-| PARALLEL_STRATEGY_PARALLEL_DECOMPRESSION | 1    | Parallel decompression strategy.           |
+| PARALLEL_STRATEGY_SEQUENTIAL             | 0    | Default value. Sequential compression/decompression strategy that processes files one by one in order, suitable for small files or single-core processor scenarios.|
+| PARALLEL_STRATEGY_PARALLEL_DECOMPRESSION | 1    | Parallel decompression strategy that uses multiple cores for parallel processing to improve the decompression speed of large files.            |
 
 ## PathSeparatorStrategy<sup>21+</sup>
 
-Defines **PathSeparatorStrategy**, a property of [Options](#options), used to specify the separator strategy for the file path in the compressed package specified for decompression.
+Enumerates the strategies for handling the separator in the file path of the target archive during decompression.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -3818,7 +3840,7 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 | PATH_SEPARATOR_STRATEGY_DEFAULT           | 0    | Default value, indicating that separators in the file path of the compressed package are not processed.   |
 | PATH_SEPARATOR_STRATEGY_REPLACE_BACKSLASH | 1    | Backslashes (\) in the file path of the package are replaced with slashes (/).|
 
-## ErrorCode<sup>(deprecated)<sup>
+## ErrorCode<sup>(deprecated)</sup>
 
 > **NOTE**
 >  
@@ -3840,10 +3862,10 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 | Name         | Value  | Description                                        |
 | ------------- | ---- | -------------------------------------------- |
 | NO_FLUSH      | 0    | Default value, indicating a normal operation.                      |
-| PARTIAL_FLUSH | 1    | Generates some refresh points in the stream.                      |
-| SYNC_FLUSH    | 2    | Forcibly outputs all compressed data while maintaining the compression stream state.|
-| FULL_FLUSH    | 3    | Resets the compression state.                              |
-| FINISH        | 4    | Ends the compression or decompression process.                      |
+| PARTIAL_FLUSH | 1    | Generates a partial flush point in the stream. This is applicable to scenarios where a synchronization point is required so that the decompression stream can be recovered.                       |
+| SYNC_FLUSH    | 2    | Forces all compressed data to be output while maintaining the state of the compression stream. This is applicable to scenarios where compressed data needs to be output in real time, such as network transmission. |
+| FULL_FLUSH    | 3    | Resets the compression state. This is applicable to scenarios where the compression stream needs to be completely reset, such as compressing multiple independent data blocks.                               |
+| FINISH        | 4    | Ends the compression or decompression process. This is applicable to the final step of the compression process to ensure that all data is completely output.                       |
 | BLOCK         | 5    | Allows more precise control.                          |
 | TREES         | 6    | Implements special purposes.                      |
 
@@ -3855,7 +3877,7 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 
 | Name    | Value  | Description      |
 | -------- | ---- | ---------- |
-| DEFLATED | 8    | Compression method.|
+| DEFLATED | 8 | Uses the DEFLATE algorithm for compression, which is the standard compression method of the zlib library. |
 
 ## ReturnStatus<sup>12+</sup>
 
@@ -3897,7 +3919,7 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 
 | Name   | Type        | Read-Only| Optional| Description                                         |
 | ------- | ------------ | ---- | ---- | --------------------------------------------- |
-| status  | ReturnStatus | No  | No  | For details, see [ReturnStatus](#returnstatus12).|
+| status  | [ReturnStatus](#returnstatus12) | No   | No   | Enum type of the result of the compression or decompression function, including the success status and various error codes. |
 | destLen | number       | No  | No  | Total length of the destination buffer.                         |
 
 ## DictionaryOutputInfo<sup>12+</sup>
@@ -3908,7 +3930,7 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 
 | Name            | Type        | Read-Only| Optional| Description                                         |
 | ---------------- | ------------ | ---- | ---- | --------------------------------------------- |
-| status           | ReturnStatus | No  | No  | For details, see [ReturnStatus](#returnstatus12).|
+| status           | [ReturnStatus](#returnstatus12) | No   | No   | Enum type of the result of the compression or decompression function, including the success status and various error codes. |
 | dictionaryLength | number       | No  | No  | Length of a dictionary.                                 |
 
 ## DecompressionOutputInfo<sup>12+</sup>
@@ -3919,7 +3941,7 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 
 | Name        | Type        | Read-Only| Optional| Description                                         |
 | ------------ | ------------ | ---- | ---- | --------------------------------------------- |
-| status       | ReturnStatus | No  | No  | For details, see [ReturnStatus](#returnstatus12).|
+| status       | [ReturnStatus](#returnstatus12) | No   | No   | Enum type of the result of the compression or decompression function, including the success status and various error codes. |
 | destLength   | number       | No  | No  | Length of the destination buffer.                           |
 | sourceLength | number       | No  | No  | Length of the source buffer.                             |
 
@@ -3931,7 +3953,7 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 
 | Name   | Type        | Read-Only| Optional| Description                                         |
 | ------- | ------------ | ---- | ---- | --------------------------------------------- |
-| status  | ReturnStatus | No  | No  | For details, see [ReturnStatus](#returnstatus12).|
+| status  | [ReturnStatus](#returnstatus12) | No   | No   | Enum type of the execution result of the compression or decompression function, including the success status and various error codes. |
 | pending | number       | No  | No  | Number of output bytes that have been generated.                         |
 | bits    | number       | No  | No  | Number of output bits that have been generated.                           |
 
@@ -3943,7 +3965,7 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 
 | Name    | Type       | Read-Only| Optional| Description                                |
 | -------- | ----------- | ---- | ---- | ------------------------------------ |
-| isText   | boolean     | No  | Yes  | Returns **True** if the compressed data is considered text.|
+| isText   | boolean     | No   | Yes   | Whether the compressed data is text. true indicates that the compressed data is considered text, and false indicates that it is not. |
 | os       | number      | No  | Yes  | Operating system.                          |
 | time     | number      | No  | Yes  | Modification time.                          |
 | xflags   | number      | No  | Yes  | Extra flag.                          |
@@ -3951,8 +3973,8 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 | extraLen | number      | No  | Yes  | Length of the extra field.                    |
 | name     | ArrayBuffer | No  | Yes  | File name.                            |
 | comment  | ArrayBuffer | No  | Yes  | Comment.                              |
-| hcrc     | boolean     | No  | Yes  | Returns **True** if the **crc** header exists.         |
-| done     | boolean     | No  | Yes  | Returns **True** after reading the gzip file header.              |
+| hcrc     | boolean     | No   | Yes   | Whether a CRC header exists. true indicates that a CRC header exists, and false indicates that it does not. |
+| done     | boolean     | No   | Yes   | Whether the gzip header has been read. true indicates that the gzip header has been read, and false indicates that it has not.    |
 
 ## zlib.createGZip<sup>12+</sup>
 
@@ -4029,7 +4051,7 @@ Associates gzip file with the file descriptor (fd) and opens the file for readin
 
 | Type               | Description                   |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -4083,7 +4105,7 @@ struct Index {
 
 gzbuffer(size: number):Promise&lt;number&gt;
 
-Sets the internal buffer size for the current library function. This API uses a promise to return the result.
+Sets the size of the internal buffer for the current library function. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4165,14 +4187,14 @@ Opens the .gz file in the specified path for reading and decompressing, or compr
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | Yes  | Path of the file to be opened.                                        |
+| path   | string | Yes  | File path to open. The path must be a sandbox path, which can be obtained through the context. For details, see [Stage model](../apis-ability-kit/js-apis-inner-application-context.md).                                         |
 | mode   | string | Yes  | Specifies a mode for opening a file.<br>Basic modes (one of the following must be selected):<br>- **"r"** or **"rb"**: read mode. The system automatically detects and decompresses the gzip file. If the file is not in gzip format, the original data is directly read.<br>- **"w"** or **"wb"**: write mode. The system creates a new file and compresses data.<br>- **"a"** or **"ab"**: append mode. The system appends a new gzip stream to the end of the existing file without verifying the format of the original file.<br>Optional function parameters (can be used together):<br>- Compression level: **0** (no compression) to **9** (maximum compression). The default compression level is **6**. This parameter must be used together with the write or append mode.<br>- Compression strategy: **"f"** (filtering strategy), **"h"** (Huffman coding strategy), **"R"** (RLE compression strategy), or **"F"** (fixed encoding strategy). You can only select one of the strategies.<br>- Transparent mode: **"T"**. In this mode, data is not compressed and no gzip header is generated during writing (a common file is generated). This parameter is mutually exclusive with the compression strategy parameter.<br>- Exclusive creation: **"x"**. The file fails to be opened if it already exists. This parameter must be used together with the write or append mode.<br>- Close-on-exec flag: **"e"**. This parameter is used to set the **FD_CLOEXEC** property of the file descriptor (system-dependent).<br>Examples:<br>- **"r"**: read mode. Data is read in binary format.<br>- **"rb"**: read mode. Data is read in binary format.<br>- **"wb6"**: write mode. Data is written in binary format with the compression level of 6.<br>- **"wb9f"**: write mode. Data is written in binary format with the maximum compression level and filtering strategy.<br>- **"wbT"**: write mode. Data is not compressed and a common file is generated.<br>- **"wbx"**: write mode. Data is written to the exclusively created file in binary format.<br>- **"abx"**: append mode. Data is appended and written to the exclusively created file in binary format.|
 
 **Return value**
 
 | Type               | Description                   |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -4418,7 +4440,7 @@ Clears the errors and end-of-file flags of a file. This API uses a promise to re
 
 | Type               | Description                   |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -4475,7 +4497,7 @@ struct Index {
 
 gzerror(): Promise&lt;GzErrorOutputInfo&gt;
 
-Describes the last error message that reported for the file. This API uses a promise to return the result.
+Obtains the error message and status message of the last error that occurred on the file. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4626,7 +4648,7 @@ Flushes all pending output into a compressed file. This API uses a promise to re
 
 | Name| Type             | Mandatory| Description                                                        |
 | ------ | ----------------- | ---- | ------------------------------------------------------------ |
-| flush  | CompressFlushMode | Yes  | Controls the flushing mode. For details, see [CompressFlushMode](#compressflushmode12).|
+| flush  | [CompressFlushMode](#compressflushmode12) | Yes   | Data flushing strategy during compression or decompression. |
 
 **Return value**
 
@@ -4688,6 +4710,11 @@ gzfwrite(buf: ArrayBuffer, size: number, nitems: number): Promise&lt;number&gt;
 
 Compresses data blocks that are declared with size and nitems from the buffer and writes the data blocks to a file. This API uses a promise to return the result.
 
+
+> **NOTE**
+>
+> Compared with [gzwrite](#gzwrite12), this API writes data in blocks and is suitable for writing fixed-size data blocks. gzwrite directly specifies the number of bytes to write and is suitable for writing data of any length.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.BundleManager.Zlib
@@ -4696,7 +4723,7 @@ Compresses data blocks that are declared with size and nitems from the buffer an
 
 | Name| Type       | Mandatory| Description                  |
 | ------ | ----------- | ---- | ---------------------- |
-| buf    | ArrayBuffer | Yes  | Buffer to which data is to be written.|
+| buf    | ArrayBuffer | Yes   | Buffer that contains the data to write. |
 | size   | number      | Yes  | Number of bytes in a single data block.|
 | nitems | number      | Yes  | Number of data blocks to be written.    |
 
@@ -4765,6 +4792,11 @@ gzfread(buf: ArrayBuffer, size: number, nitems: number): Promise&lt;number&gt;
 
 Decompresses and reads data from a gzip file. This API uses a promise to return the result.
 
+
+> **NOTE**
+>
+> Compared with [gzread](#gzread12), this API reads data in blocks and is suitable for reading fixed-size data blocks. gzread reads data of the buffer size and is suitable for reading data of any length.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.BundleManager.Zlib
@@ -4775,7 +4807,7 @@ Decompresses and reads data from a gzip file. This API uses a promise to return 
 | ------ | ----------- | ---- | ------------------------------ |
 | buf    | ArrayBuffer | Yes  | Destination buffer for storing read results.|
 | size   | number      | Yes  | Number of bytes in a single data block.        |
-| nitems | number      | Yes  | Number of data blocks to be written.            |
+| nitems | number | Yes | Number of data blocks to read. |
 
 **Return value**
 
@@ -4971,7 +5003,12 @@ struct Index {
 
 gzwrite(buf: ArrayBuffer, len: number): Promise&lt;number&gt;
 
-Compresses the uncompressed bytes of the declared length in the buffer and writes them to the file. This API uses a promise to return the result.
+Compresses the uncompressed bytes of the length specified by **len** in **buf** and writes them to a file. This API uses a promise to return the result. Note: This method can be used only in the write mode ("w" or "wb") of gzopen.
+
+
+> **NOTE**
+>
+> Compared with [gzfwrite](#gzfwrite12), this API directly specifies the number of bytes to write and is suitable for writing data of any length. gzfwrite writes data in blocks and is suitable for writing fixed-size data blocks.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4981,8 +5018,8 @@ Compresses the uncompressed bytes of the declared length in the buffer and write
 
 | Name| Type       | Mandatory| Description                        |
 | ------ | ----------- | ---- | ---------------------------- |
-| buf    | ArrayBuffer | Yes  | Data buffer pointed by an object to be written.|
-| len    | number      | Yes  | Length of uncompressed bytes.            |
+| buf    | ArrayBuffer | Yes   | Buffer to which data is written. |
+| len    | number      | Yes   | Length of the uncompressed data, in bytes. Value range: [0, min(buf.byteLength, 2147483647)).             |
 
 **Return value**
 
@@ -5130,7 +5167,7 @@ Returns the start position of the next **gzread** or **gzwrite** in the file. Th
 
 | Type                 | Description                                                    |
 | --------------------- | -------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.|
+| Promise&lt;number&gt; | Promise used to return the start position of the next gzread or gzwrite in the file. |
 
 **Error codes**
 
@@ -5193,8 +5230,8 @@ Dynamically updates the compression level and compression strategy of a file. Th
 
 | Name  | Type            | Mandatory| Description                                                        |
 | -------- | ---------------- | ---- | ------------------------------------------------------------ |
-| level    | CompressLevel    | Yes  | Compression level. For details, see [CompressLevel](#compresslevel).     |
-| strategy | CompressStrategy | Yes  | Compression strategy. For details, see [CompressStrategy](#compressstrategy).|
+| level    | [CompressLevel](#compresslevel)    | Yes   | Compression level. For details, see [CompressLevel](#compresslevel).      |
+| strategy | [CompressStrategy](#compressstrategy) | Yes   | Compression strategy. For details, see [CompressStrategy](#compressstrategy). |
 
 **Return value**
 
@@ -5265,8 +5302,8 @@ Sets the start position to the offset position relative to the next **gzread** o
 
 | Name| Type                | Mandatory| Description                                                        |
 | ------ | -------------------- | ---- | ------------------------------------------------------------ |
-| offset | number               | Yes  | Target offset position.                                              |
-| whence | OffsetReferencePoint | Yes  | Defines the reference point for the offset. For details, see [OffsetReferencePoint](#offsetreferencepoint12).|
+| offset | number               | Yes   | Target offset position, in bytes.                                               |
+| whence | [OffsetReferencePoint](#offsetreferencepoint12) | Yes   | Enum type of the starting position for file seeking. |
 
 **Return value**
 
@@ -5391,7 +5428,12 @@ struct Index {
 
 gzread(buf: ArrayBuffer): Promise&lt;number&gt;
 
-Reads a maximum of **len** uncompressed bytes from a file and decompresses them into the buffer. This API uses a promise to return the result.
+Reads uncompressed bytes from the file and decompresses them into **buf**. The number of bytes to read is determined by the length of the **buf** buffer. This API uses a promise to return the result. Note: This method can be used only in the read mode ("r" or "rb") of gzopen.
+
+
+> **NOTE**
+>
+> Compared with [gzfread](#gzfread12), this API reads data of the buffer size and is suitable for reading data of any length. gzfread reads data in blocks and is suitable for reading fixed-size data blocks.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5401,7 +5443,7 @@ Reads a maximum of **len** uncompressed bytes from a file and decompresses them 
 
 | Name| Type       | Mandatory| Description          |
 | ------ | ----------- | ---- | -------------- |
-| buf    | ArrayBuffer | Yes  | Target offset position.|
+| buf    | ArrayBuffer | Yes   | Target buffer used to store the read result. |
 
 **Return value**
 
@@ -5480,7 +5522,7 @@ Compresses the given null-terminated strings and writes them to the file, exclud
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| str    | string | Yes  | Format descriptors and plain text.|
+| str    | string | Yes   | String to write into the file. |
 
 **Return value**
 
@@ -5540,7 +5582,7 @@ struct Index {
 
 gzputc(ch: number): Promise&lt;number&gt;
 
-Compresses **char** converted to an unsigned character and writes it to a file. This API uses a promise to return the result.
+Compresses **ch** converted to an unsigned character and writes it to a file. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5745,7 +5787,7 @@ struct Index {
 
 gzgets(buf: ArrayBuffer): Promise&lt;string&gt;
 
-Reads bytes from a compressed file until len-1 characters are read, a newline character is read and transferred to a buffer, or an end-of-file condition is encountered. This API uses a promise to return the result.
+Reads bytes from a compressed file until a newline character is read and transferred to a buffer, or an end-of-file condition is encountered. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5823,7 +5865,7 @@ struct Index {
 
 | Name     | Type        | Read-Only| Optional| Description                                        |
 | --------- | ------------ | ---- | ---- | -------------------------------------------- |
-| status    | ReturnStatus | No  | No  | Zlib file status code. For details, see the definition of **ReturnStatus**.|
+| status    | [ReturnStatus](#returnstatus12) | No   | No   | Enum type of the result of the compression or decompression function, including the success status and various error codes. |
 | statusMsg | string       | No  | No  | The last status message reported on the zlib file.    |
 
 ## OffsetReferencePoint<sup>12+</sup>

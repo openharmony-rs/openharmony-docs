@@ -1,12 +1,11 @@
 # oh_archive.h
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @rl123567-->
 <!--Designer: @selina_jiang; @RainbowLLL-->
 <!--Tester: @zheng1368-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=bb49b7ed5e4e9e800a0691df554198c36528b3e0 translatedAt=2026-08-14T11:50:06.466Z pushedAt=2026-08-17T03:46:06.825Z -->
+<!-- md-trans-meta sourceCommit=49de9aa7fc48ddbb7ffb25c560e14f0dd20d9e39 translatedAt=2026-11-10T05:06:33.106Z pushedAt=2026-11-10T07:29:36.975Z nl=1 -->
 
 ## Overview
 
@@ -66,14 +65,14 @@ Defines APIs of the compression and decompression module, and provides native AP
 | [OH_Archive_StreamWrite_Ctx OH_Archive_StreamWrite_Create(OH_Archive_Stream_Config config)](#oh_archive_streamwrite_create) | - | Creates a context struct for streaming compression. |
 | [OH_Archive_ErrCode OH_Archive_StreamWrite_Start(OH_Archive_StreamWrite_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void* userData)](#oh_archive_streamwrite_start) | - | Starts a compression task and initializes the user callback function and user data. |
 | [OH_Archive_ErrCode OH_Archive_StreamWrite_SetCompressLevel(OH_Archive_StreamWrite_Ctx ctx, int32_t compressLevel)](#oh_archive_streamwrite_setcompresslevel) | - | Sets the compression level of streaming compression. |
-| [OH_Archive_ErrCode OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx)](#oh_archive_streamwrite_cancel) | - | Forcefully cancels the current compression operation. |
-| [OH_Archive_ErrCode OH_Archive_StreamWrite_Update(OH_Archive_StreamWrite_Ctx ctx, const uint8_t* data, uint64_t size)](#oh_archive_streamwrite_update) | - | Submits the compressed data. |
+| [OH_Archive_ErrCode OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx)](#oh_archive_streamwrite_cancel) | - | Force cancels the currently blocked compression operation and wakes up all waiting threads. |
+| [OH_Archive_ErrCode OH_Archive_StreamWrite_Update(OH_Archive_StreamWrite_Ctx ctx, const uint8_t* data, uint64_t size)](#oh_archive_streamwrite_update) | - | Submits compressed data. This interface blocks and waits when the memory pool is full. |
 | [OH_Archive_ErrCode OH_Archive_StreamWrite_End(OH_Archive_StreamWrite_Ctx ctx, OH_Archive_StreamInfo *streamInfo)](#oh_archive_streamwrite_end) | - | Stops compression and refreshes all remaining data. |
 | [void OH_Archive_StreamWrite_Destroy(OH_Archive_StreamWrite_Ctx ctx)](#oh_archive_streamwrite_destroy) | - | Destroys the compression instance and releases related resources. |
 | [OH_Archive_StreamRead_Ctx OH_Archive_StreamRead_Create(OH_Archive_Stream_Config config)](#oh_archive_streamread_create) | - | Creates a context struct for streaming decompression. |
 | [OH_Archive_ErrCode OH_Archive_StreamRead_Start(OH_Archive_StreamRead_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void* userData)](#oh_archive_streamread_start) | - | Starts a decompression task and initializes the user callback function and user data. |
-| [OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)](#oh_archive_streamread_cancel) | - | Forcefully cancels the current decompression operation. |
-| [OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, const uint8_t* data, uint64_t size)](#oh_archive_streamread_update) | - | Submits the decompressed data. |
+| [OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)](#oh_archive_streamread_cancel) | - | Force cancels the currently blocked decompression operation and wakes up all waiting threads. |
+| [OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, const uint8_t* data, uint64_t size)](#oh_archive_streamread_update) | - | Submits decompressed data. This interface blocks and waits when the memory pool is full. |
 | [OH_Archive_ErrCode OH_Archive_StreamRead_End(OH_Archive_StreamRead_Ctx ctx, OH_Archive_StreamInfo *streamInfo)](#oh_archive_streamread_end) | - | Stops decompression, refreshes all remaining data, and clears the memory. |
 | [void OH_Archive_StreamRead_Destroy(OH_Archive_StreamRead_Ctx ctx)](#oh_archive_streamread_destroy) | - | Destroys the decompression instance and releases related resources. |
 
@@ -162,6 +161,7 @@ Enumerates the Hash algorithms used to calculate the checksum.
 | OH_ARCHIVE_NO_CHECKSUM = 0 | No additional hash value is calculated.<br>**Since:** 26.0.0 |
 | OH_ARCHIVE_CRC32 = 1 | Use cyclic redundancy check (CRC32) to calculate the checksum.<br>**Since:** 26.0.0 |
 
+
 ## Function Description
 
 ### OH_Archive_ProgressHandlerWithData()
@@ -225,6 +225,10 @@ OH_Archive_Reader_Ctx OH_Archive_Reader_OpenFile(const char *infile)
 
 Opens a file and reads it.
 
+> **NOTE**
+>
+> The returned context must be released by calling [OH_Archive_Reader_Close()](#oh_archive_reader_close)().
+
 **Since**: 26.0.0
 
 **Parameters**
@@ -263,7 +267,7 @@ Sets a callback for the progress and user data of the file decompressor.
 
 | Type | Description |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | API execution result. If the operation is successful, **OH_ARCHIVE_OK** is returned. If the operation fails, an error code is returned. |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | Result code.<br>         OH_ARCHIVE_OK 0 - operation succeeded.<br>         OH_ARCHIVE_PARAM_ERROR 401 - invalid input parameter. |
 
 ### OH_Archive_Reader_ExtractAllFile()
 
@@ -324,6 +328,10 @@ OH_Archive_Writer_Ctx OH_Archive_Writer_OpenFile(const char *outfile, OH_Archive
 
 Creates and opens a compressed file.
 
+> **NOTE**
+>
+> The returned context must be released by calling [OH_Archive_Writer_Close()](#oh_archive_writer_close)().
+
 **Since**: 26.0.0
 
 **Parameters**
@@ -358,13 +366,13 @@ Sets the compression algorithm for a compressed file.
 | -- | -- |
 | [OH_Archive_Writer_Ctx](capi-archive-archivewritectx.md) arc | Context handle of the file compressor. |
 | [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | Compression algorithm. |
-| int32_t compressLevel | Compression level. For **OH_ARCHIVE_COMPRESS_DEFLATE**, the compression level ranges from 0 to 9. The default level is **6**. The value **0** indicates no compression. The higher the compression level, the higher the compression rate, and the slower the speed. |
+| int32_t compressLevel | Compression level. -1 indicates the default compression level. For OH_ARCHIVE_COMPRESS_DEFLATE, the compression level ranges from 0 to 9, with a default level of 6. 0 indicates no compression, 1 provides the fastest speed, and 9 provides the highest compression ratio. A higher compression level results in a higher compression ratio but a slower speed. |
 
 **Returns**
 
 | Type | Description |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | API execution result. If the operation is successful, **OH_ARCHIVE_OK** is returned. If the operation fails, an error code is returned. |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | Result code.<br>         OH_ARCHIVE_OK 0 - operation succeeded.<br>         OH_ARCHIVE_PARAM_ERROR 401 - invalid input parameter. |
 
 ### OH_Archive_Writer_SetProgressHandlerWithData()
 
@@ -390,7 +398,7 @@ Sets a callback for the progress and user data of the file compressor.
 
 | Type | Description |
 | -- | -- |
-| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | API execution result. If the operation is successful, **OH_ARCHIVE_OK** is returned. If the operation fails, an error code is returned. |
+| [OH_Archive_ErrCode](capi-oh-archive-errcode-h.md#oh_archive_errcode) | Result code.<br>         OH_ARCHIVE_OK 0 - operation succeeded.<br>         OH_ARCHIVE_PARAM_ERROR 401 - invalid input parameter. |
 
 ### OH_Archive_Writer_Add()
 
@@ -488,7 +496,7 @@ Writes data to the buffer and compresses the data.
 | const uint8_t *srcBuffer | Pointer to the source buffer that contains the data to be compressed. |
 | uint64_t srcSize | Size of the source buffer, in bytes. |
 | [OH_Archive_CompressMethod](capi-oh-archive-h.md#oh_archive_compressmethod) method | Compression algorithm type. Currently, only **OH_ARCHIVE_COMPRESS_DEFLATE** is supported. |
-| int32_t compressLevel | Compression level. For **OH_ARCHIVE_COMPRESS_DEFLATE**, the compression level ranges from 0 to 9. The default level is **6**. The value **0** indicates no compression. The higher the compression level, the higher the compression rate, and the slower the speed. |
+| int32_t compressLevel | Compression level. -1 indicates the default compression level. For OH_ARCHIVE_COMPRESS_DEFLATE, the compression level ranges from 0 to 9, with a default level of 6. 0 indicates no compression, 1 provides the fastest speed, and 9 provides the highest compression ratio. A higher compression level results in a higher compression ratio but a slower speed. |
 
 **Returns**
 
@@ -607,7 +615,7 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx)
 
 **Description**
 
-Forcibly cancels the current compression operation.
+Force cancels the currently blocked compression operation and wakes up all waiting threads.
 
 **Since**: 26.0.0
 
@@ -631,7 +639,7 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Update(OH_Archive_StreamWrite_Ctx ctx,
 
 **Description**
 
-Submits the compressed data.
+Submits compressed data. This interface blocks and waits when the memory pool is full.
 
 **Since**: 26.0.0
 
@@ -750,7 +758,7 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)
 
 **Description**
 
-Forcibly cancels the current decompression operation.
+Force cancels the currently blocked decompression operation and wakes up all waiting threads.
 
 **Since**: 26.0.0
 
@@ -774,7 +782,7 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, c
 
 **Description**
 
-Submits the decompressed data.
+Submits decompressed data. This interface blocks and waits when the memory pool is full.
 
 **Since**: 26.0.0
 
@@ -834,3 +842,5 @@ Destroys the decompression instance and releases related resources.
 | Name | Description |
 | -- | -- |
 | [OH_Archive_StreamRead_Ctx](capi-archive-archivestreamreadctx.md) ctx | Pointer to the context struct for streaming decompression. |
+
+

@@ -5,6 +5,7 @@
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=3a92205cc9780046c1bdb663591b0d459a42f3b1 translatedAt=2026-11-10T05:14:29.547Z pushedAt=2026-11-10T07:43:07.085Z nl=1 -->
 
 The **fileAccess** module provides a framework for accessing and operating user files based on [extension](../../application-models/extensionability-overview.md). This module interacts with a variety of file management services, such as the storage management service, and provides a set of unified file access and management APIs for system applications. The storage management service manages both the directories of the built-in storage and resources on external devices, such as shared disks, USB flash drives, and SD cards.
 
@@ -1453,7 +1454,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getFileInfoFromUri(uri: string) : Promise\<FileInfo>
 
-Obtains a **FileInfo** object based on a URI. This API returns the result asynchronously through a promise.
+Obtains a **FileInfo** object based on a URI. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1544,7 +1545,7 @@ Obtains a **FileInfo** object based on a URI. This API uses an asynchronous call
 
 getFileInfoFromRelativePath(relativePath: string) : Promise\<FileInfo>
 
-Obtains a **FileInfo** object based on a relative path. This API returns the result asynchronously through a promise.
+Obtains a **FileInfo** object based on a relative path. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1946,7 +1947,7 @@ Copies a file with an alternative file name. This API uses a promise to return t
 | --------- | ------- | ---- | ------------------------------------------------------------ |
 | sourceUri | string  | Yes  | URI of the source file or directory to copy. For example, **file://docs/storage/Users/currentUser/Download/1.txt**. |
 | destUri   | string  | Yes  | URI of the destination directory, to which the file or folder is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.       |
-| fileName  | string  | Yes  | File name to use if there is a file with the same name as the source file in the destination directory.|
+| fileName  | string  | Yes   | If 1.txt already exists in the target directory, use fileName as the file name for copying. |
 
 **Return value**
 
@@ -1999,7 +2000,7 @@ Copies a file with an alternative file name. This API uses an asynchronous callb
 | --------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | sourceUri | string                                           | Yes  | URI of the source file or directory to copy. For example, **file://docs/storage/Users/currentUser/Download/1.txt**. |
 | destUri   | string                                           | Yes  | URI of the destination directory, to which the file or folder is moved. For example, **file://docs/storage/Users/currentUser/Download/test**.        |
-| fileName  | string                                           | Yes  | File name to use if there is a file with the same name as the source file in the destination directory.|
+| fileName  | string                                           | Yes   | If 1.txt already exists in the target directory, use fileName as the file name for copying. |
 | callback  | AsyncCallback&lt;string&gt; | Yes  | URI of the file generated.|
 
 **Example**
@@ -2216,7 +2217,7 @@ Unregisters a callback that is used to listen for the specified URI.
 | Name  | Type                                             | Mandatory| Description                     |
 | -------- | ------------------------------------------------- | ---- | ------------------------- |
 | uri      | string                                            | Yes  | URI of the file or directory.          |
-| callback | Callback&lt;[NotifyMessage](#notifymessage10)&gt; | No  | Callback to unregister. If this parameter is not specified, all callbacks of the specified URI will be unregistered.|
+| callback | Callback&lt;[NotifyMessage](#notifymessage10)&gt; | No | Unregisters the callback corresponding to the URI. If this parameter is not specified, all callbacks are unregistered. |
 
 Example 1: Unregister a callback of the specified URI.
 
@@ -2385,7 +2386,7 @@ Currently, this API does not support moving files or folders across devices.
 
 | Type                                                   | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise&lt;Array&lt;[MoveResult](#moveresult11)&gt;&gt; | Promise used to return the result. If the operation is successful, no information is returned. If the operation fails, a **MoveResult** array is returned.|
+| Promise&lt;Array&lt;[MoveResult](#moveresult11)&gt;&gt; | Returns an array of MoveResult. moveResult is the return information for a failed move operation; no information is returned for a successful move. |
 
 **Error codes**
 
@@ -2783,7 +2784,7 @@ Represents the notification message.
 | Name| Type                       | Read-Only| Optional| Description                                                     |
 | ---- | --------------------------- | ---- | ---- | --------------------------------------------------------- |
 | type | [NotifyType](#notifytype10) | No  | No  | Notification type.                                           |
-| uris | Array&lt;string&gt;         | No  | No  | URIs of the changed files. Currently, only one notification is supported. A collection of multiple notifications will be supported in later versions.|
+| uris | Array&lt;string&gt;         | No   | No   | URI set of the changed files. Currently, only a single notification is supported, and multiple notifications will be supported later. |
 
 ## MoveResult<sup>11+</sup>
 

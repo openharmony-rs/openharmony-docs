@@ -1,12 +1,15 @@
 # @ohos.file.statvfs (File System Space Statistics)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=0c20469e58610438940464085fdd62df82c5b560 translatedAt=2026-11-10T05:13:14.462Z pushedAt=2026-11-10T07:41:06.213Z nl=1 -->
 
-This module provides ArkTS APIs for obtaining file system information, including the total size and free space of a file system, in bytes.
+This module provides ArkTS APIs for applications to obtain the total bytes and free bytes of a file system. With this module, developers can monitor the storage status of the file system in real time, avoid application crashes caused by insufficient storage space, and improve user experience and system stability.
+
+Usage scenarios include: checking storage space before file download, estimating disk space before application installation, and monitoring space in cache management.
 
 > **NOTE**
 >
@@ -20,9 +23,9 @@ import { statfs } from '@kit.CoreFileKit';
 
 ## statfs.getFreeSize
 
-getFreeSize(path:string): Promise&lt;number&gt;
+getFreeSize(path: string): Promise&lt;number&gt;
 
-Obtains the free size of the specified file system, in bytes. This API uses a promise to return the result.
+Obtains the free bytes of the file system where the specified file or directory is located. This API uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -30,13 +33,13 @@ Obtains the free size of the specified file system, in bytes. This API uses a pr
 
   | Name| Type  | Mandatory| Description                        |
   | ------ | ------ | ---- | ---------------------------- |
-  | path   | string | Yes  | File path of the file system.|
+  | path   | string | Yes   | App sandbox path of the file or directory. |
 
 **Return value**
 
   | Type                 | Description          |
   | --------------------- | -------------- |
-  | Promise&lt;number&gt; | Promise used to return the free size obtained, in bytes.|
+  | Promise&lt;number&gt; | Promise used to return the free bytes, in bytes. |
 
 **Error codes**
 
@@ -68,18 +71,18 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
-  statfs.getFreeSize(path).then((number: number) => {
-    console.info("getFreeSize succeed, Size: " + number);
+  statfs.getFreeSize(path).then((freeSize: number) => {
+    console.info("Succeeded in getting free size: " + freeSize);
   }).catch((err: BusinessError) => {
-    console.error("getFreeSize failed with error message: " + err.message + ", error code: " + err.code);
+    console.error("Failed to get free size. Code: " + err.code + ", message: " + err.message);
   });
   ```
 
 ## statfs.getFreeSize
 
-getFreeSize(path:string, callback:AsyncCallback&lt;number&gt;): void
+getFreeSize(path: string, callback:AsyncCallback&lt;number&gt;): void
 
-Obtains the free size of the specified file system, in bytes. This API uses an asynchronous callback to return the result.
+Obtains the free bytes of the file system where the specified file or directory is located. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -87,8 +90,8 @@ Obtains the free size of the specified file system, in bytes. This API uses an a
 
   | Name  | Type                       | Mandatory| Description                        |
   | -------- | --------------------------- | ---- | ---------------------------- |
-  | path     | string                      | Yes  | File path of the file system.|
-  | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the free size obtained, in bytes.|
+  | path     | string                      | Yes   | App sandbox path of the file or directory. |
+  | callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the free bytes. |
 
 **Error codes**
 
@@ -120,20 +123,20 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
-  statfs.getFreeSize(path, (err: BusinessError, number: number) => {
+  statfs.getFreeSize(path, (err: BusinessError, freeSize: number) => {
     if (err) {
-      console.error("getFreeSize failed with error message: " + err.message + ", error code: " + err.code);
+      console.error("Failed to get free size. Code: " + err.code + ", message: " + err.message);
     } else {
-      console.info("getFreeSize succeed, Size: " + number);
+      console.info("Succeeded in getting free size: " + freeSize);
     }
   });
   ```
 
 ## statfs.getFreeSizeSync<sup>10+</sup>
 
-getFreeSizeSync(path:string): number
+getFreeSizeSync(path: string): number
 
-Obtains the free size of the specified file system, in bytes. This API returns the result synchronously.
+Synchronously obtains the free bytes of the file system where the specified file or directory is located.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -141,13 +144,13 @@ Obtains the free size of the specified file system, in bytes. This API returns t
 
   | Name| Type  | Mandatory| Description                        |
   | ------ | ------ | ---- | ---------------------------- |
-  | path   | string | Yes  | File path of the file system.|
+  | path   | string | Yes   | App sandbox path of the file or directory. |
 
 **Return value**
 
   | Type                 | Description          |
   | --------------------- | -------------- |
-  | number | Free size obtained, in bytes.|
+  | number | Free bytes. |
 
 **Error codes**
 
@@ -178,15 +181,15 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
-  let number = statfs.getFreeSizeSync(path);
-  console.info("getFreeSizeSync succeed, Size: " + number);
+  let freeSize = statfs.getFreeSizeSync(path);
+  console.info("Succeeded in getting free size: " + freeSize);
   ```
 
 ## statfs.getTotalSize
 
 getTotalSize(path: string): Promise&lt;number&gt;
 
-Obtains the total size of the specified file system, in bytes. This API uses a promise to return the result.
+Obtains the total bytes of the file system where the specified file or directory is located. This API uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -194,13 +197,13 @@ Obtains the total size of the specified file system, in bytes. This API uses a p
 
   | Name| Type  | Mandatory| Description                        |
   | ---- | ------ | ---- | ---------------------------- |
-  | path | string | Yes  | File path of the file system.|
+  | path | string | Yes | App sandbox path of the file or directory. |
 
 **Return value**
 
   | Type                 | Description        |
   | --------------------- | ------------ |
-  | Promise&lt;number&gt; | Promise used to return the total size obtained, in bytes.|
+  | Promise&lt;number&gt; | Promise used to return the total bytes, in bytes. |
 
 **Error codes**
 
@@ -232,10 +235,10 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
-  statfs.getTotalSize(path).then((number: number) => {
-    console.info("getTotalSize succeed, Size: " + number);
+  statfs.getTotalSize(path).then((totalSize: number) => {
+    console.info("Succeeded in getting total size: " + totalSize);
   }).catch((err: BusinessError) => {
-    console.error("getTotalSize failed with error message: " + err.message + ", error code: " + err.code);
+    console.error("Failed to get total size. Code: " + err.code + ", message: " + err.message);
   });
   ```
 
@@ -243,7 +246,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 getTotalSize(path: string, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the total size of the specified file system, in bytes. This API uses an asynchronous callback to return the result.
+Obtains the total bytes of the file system where the specified file or directory is located. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -251,8 +254,8 @@ Obtains the total size of the specified file system, in bytes. This API uses an 
 
   | Name  | Type                       | Mandatory| Description                        |
   | -------- | --------------------------- | ---- | ---------------------------- |
-  | path     | string                      | Yes  | File path of the file system.|
-  | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the total size obtained, in bytes.  |
+  | path     | string                      | Yes   | App sandbox path of the file or directory. |
+  | callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the total bytes in bytes.   |
 
 **Error codes**
 
@@ -284,11 +287,11 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
-  statfs.getTotalSize(path, (err: BusinessError, number: number) => {
+  statfs.getTotalSize(path, (err: BusinessError, totalSize: number) => {
     if (err) {
-      console.error("getTotalSize failed with error message: " + err.message + ", error code: " + err.code);
+      console.error("Failed to get total size. Code: " + err.code + ", message: " + err.message);
     } else {
-      console.info("getTotalSize succeed, Size: " + number);
+      console.info("Succeeded in getting total size: " + totalSize);
     }
   });
   ```
@@ -297,7 +300,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 getTotalSizeSync(path: string): number
 
-Obtains the total size of the specified file system, in bytes. This API returns the result synchronously.
+Obtains the total bytes of the file system where the specified file or directory is located in synchronous mode.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -305,13 +308,13 @@ Obtains the total size of the specified file system, in bytes. This API returns 
 
   | Name| Type  | Mandatory| Description                        |
   | ---- | ------ | ---- | ---------------------------- |
-  | path | string | Yes  | File path of the file system.|
+  | path | string | Yes   | App sandbox path of the file or directory. |
 
 **Return value**
 
   | Type                 | Description        |
   | --------------------- | ------------ |
-  | number | Total size obtained, in bytes.|
+  | number | Total bytes. |
 
 **Error codes**
 
@@ -342,6 +345,6 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
-  let number = statfs.getTotalSizeSync(path);
-  console.info("getTotalSizeSync succeed, Size: " + number);
+  let totalSize = statfs.getTotalSizeSync(path);
+  console.info("Succeeded in getting total size: " + totalSize);
   ```

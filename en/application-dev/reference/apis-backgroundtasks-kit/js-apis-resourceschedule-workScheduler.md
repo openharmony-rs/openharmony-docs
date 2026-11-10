@@ -6,7 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=16406a28f1b526bb5e02cd6879fb66133d3852a7 translatedAt=2026-08-11T01:56:55.207Z pushedAt=2026-08-11T06:58:31.120Z -->
+<!-- md-trans-meta sourceCommit=8d6b627471b328c0e8b11f238ecc729e26fb6da0 translatedAt=2026-11-10T03:49:44.660Z pushedAt=2026-11-10T05:54:50.311Z nl=1 -->
 
 The **workScheduler** module provides the APIs for registering, canceling, and querying deferred tasks. You can use the APIs to register tasks that do not have high requirements on real-time performance as deferred tasks. The system schedules and executes the deferred tasks at an appropriate time, subject to the storage space, power consumption, and more. For details, see [Deferred Task Scheduling](../../task-management/work-scheduler.md).
 
@@ -31,7 +31,6 @@ Requests a deferred task. Upon successful request, the deferred task is added to
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
 **Parameters**
-
 | Name | Type                   | Mandatory  | Description            |
 | ---- | --------------------- | ---- | -------------- |
 | work | [WorkInfo](#workinfo) | Yes   | Deferred task information, such as the task ID and trigger condition.|
@@ -242,7 +241,7 @@ Obtains all the deferred tasks. This API uses an asynchronous callback to return
 | Type                             | Description                                      |
 | ------------------------------- | ---------------------------------------- |
 | Array\<[WorkInfo](#workinfo)> | List of deferred tasks. If deferred tasks have been added to the execution queue, the list of all deferred tasks in the current application is returned. Otherwise, an empty list is returned.|
-
+  
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [workScheduler Error Codes](errorcode-workScheduler.md).
@@ -387,7 +386,7 @@ Checks whether the last execution of a task timed out. This API uses an asynchro
 | Type                             | Description                                      |
 | ------------------------------- | ---------------------------------------- |
 |boolean| Whether the last execution of a deferred task timed out. If **workId** is valid, it returns whether the last execution of the task obtained from WorkSchedulerService timed out; otherwise, an exception is thrown. **true** indicates that the last execution of the deferred task corresponding to the **workId** timed out, while **false** indicates the opposite.|
-
+  
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [workScheduler Error Codes](errorcode-workScheduler.md).
@@ -549,7 +548,7 @@ Enumerates the charging types that trigger deferred task callback.
 | Name                       | Value | Description                  |
 | ------------------------- | ---- | -------------------- |
 | CHARGING_PLUGGED_ANY      | 0    | Any charging type.|
-| CHARGING_PLUGGED_AC       | 1    | DC charging.   |
+| CHARGING_PLUGGED_AC       | 1    | AC charging connected.    |
 | CHARGING_PLUGGED_USB      | 2    | USB charging.    |
 | CHARGING_PLUGGED_WIRELESS | 3    | Wireless charging.   |
 

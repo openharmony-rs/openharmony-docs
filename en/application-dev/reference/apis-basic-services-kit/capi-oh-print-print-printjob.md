@@ -1,10 +1,11 @@
 # Print_PrintJob
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=432796cf3e6a4be981f95a7796deb982eeaff362 translatedAt=2026-11-10T03:57:01.112Z pushedAt=2026-11-10T05:59:16.242Z nl=1 -->
 
 ```cpp
 typedef struct {...} Print_PrintJob
@@ -43,3 +44,5 @@ Represents a print job, which is used to configure the attributes of a print job
 | [Print_Quality](capi-ohprint-h.md#print_quality) printQuality | Print quality. The high-quality mode is suitable for final output or formal documents. The normal mode is suitable for daily printing. The draft mode is suitable for quick preview to save consumables.|
 | [Print_DocumentFormat](capi-ohprint-h.md#print_documentformat) documentFormat | MIME media type of the document, for example, PDF (application/pdf) or JPEG (image/jpeg).|
 | char *advancedOptions | Advanced options in JSON format.<br>The following keys are supported:<br>- **isReverse**: Boolean type, indicating whether to print in reverse order.<br>- **isCollate**: Boolean type, indicating whether to print copies one by one.<br>- **printPages**: integer type, indicating the number of pages to be printed. The value must be greater than or equal to 1. The default value is **1**.|
+
+

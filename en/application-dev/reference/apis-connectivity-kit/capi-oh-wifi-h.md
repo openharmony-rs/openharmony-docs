@@ -6,11 +6,11 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=8087b66eac59cdc7926e12a99168375d64ab4675 translatedAt=2026-08-03T02:10:11.472Z pushedAt=2026-08-03T03:03:48.288Z -->
+<!-- md-trans-meta sourceCommit=d06ef92503ddf1ae094571d4eeefc1087fd8cbdb translatedAt=2026-11-10T05:01:56.174Z pushedAt=2026-11-10T07:20:58.420Z nl=2 -->
 
 ## Overview
 
-Defines APIs for obtaining Wi-Fi switch state.
+Defines APIs for querying the WIFI status, obtaining the device MAC address, and obtaining the WIFI connection information.
 
 **File to include**: <ConnectivityKit/wifi/oh_wifi.h>
 
@@ -30,7 +30,7 @@ Defines APIs for obtaining Wi-Fi switch state.
 | -------- | -------- |
 | WIFI_MAX_SSID_LEN 33 | Length of the **ssid** array of the [OH_WifiLinkedInfo](capi-oh-wifi-h.md#oh_wifilinkedinfo) member variables. The value is 32 plus the terminator (\0).<br>**Since**: 24|
 | WIFI_MAC_LEN 18 | Lengths of the **macAddress** and **bssid** arrays of the [OH_WifiLinkedInfo](capi-oh-wifi-h.md#oh_wifilinkedinfo) member variables. The value is 17 plus the terminator (\0).<br>**Since**: 24|
-
+      
 ### Enums
 
 | Name| typedef Keyword| Description|
@@ -78,6 +78,7 @@ Enumerates the error codes returned by Wi-Fi APIs.
 | WIFI_NOT_SUPPORTED = 801 | Function not supported due to limited device capabilities.|
 | WIFI_OPERATION_FAILED = 2501000 | Operation failed.<br> Possible cause: The internal execution of the service fails.|
 | WIFI_STA_DISABLED = 2501001 | STA service not started.<br> Possible cause: Wi-Fi is disabled.<br>**Since**: 21|
+
 
 ### OH_WifiConnState
 
@@ -205,10 +206,10 @@ Provides the WLAN connection information. Information about the connected Wi-Fi 
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | char[] | No| No| Service set identifier (SSID) of the hotspot, which is used to obtain the public name (name of the wireless network) of the Wi-Fi hotspot connected to the current device. The encoding format is UTF-8.<br>The length is defined by **WIFI_MAX_SSID_LEN** whose value is **18**.|
-| bssid | char[] | No| No| Basic service set identifier (BSSID) of the hotspot, which is the MAC address of the wireless network. If the application has the ohos.permission.GET_WIFI_PEERS_MAC permission, **bssid** in the return value is a real BSSID; otherwise, **bssid** is a random device address.<br>The format is AA:BB:CC:DD:EE:FF.<br>The maximum length is defined by **WIFI_MAC_LEN** whose value is **33**.|
+| ssid | char[] | No | No | SSID (Service Set Identifier) of the hotspot, used to obtain the public name (that is, the name of the wireless network) of the Wi-Fi hotspot to which the current device is connected. The encoding format is UTF-8.<br>Length: WIFI_MAX_SSID_LEN = 33. |
+| bssid | char[] | No | No | BSSID (Basic Service Set Identifier) of the hotspot, that is, the MAC address of the wireless network. If the application has requested the ohos.permission.GET_WIFI_PEERS_MAC permission, the returned bssid is the real BSSID address; otherwise, it is a random device address.<br>Format: "AA:BB:CC:DD:EE:FF"<br>Maximum length: WIFI_MAC_LEN = 18. |
 | rssi | int32_t | No| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.|
-| band | int32_t | No| No| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
+| band | int32_t | No | No | Frequency band of the WLAN access point. The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz. |
 | linkSpeed | int32_t | No| No| Uplink speed of the WLAN AP, in Mbit/s.|
 | rxLinkSpeed | int32_t | No| No| Downlink speed of the WLAN AP, in Mbit/s.|
 | maxSupportedTxLinkSpeed | int32_t | No| No| Maximum uplink speed supported, in Mbit/s.|
@@ -250,7 +251,7 @@ Checks whether Wi-Fi is enabled.
 
 | Type| Description|
 | -- | -- |
-| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | Operation result, which is specified by [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode). The value can be:<br>     [WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode): The Wi-Fi switch status is obtained successfully.<br>     [WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode): The input parameter is a null pointer.<br>     [WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode): An internal error occurs during service execution.|
+| [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode) | Operation result. For details, see [Wifi_ResultCode](capi-oh-wifi-h.md#wifi_resultcode).<br>[WIFI_SUCCESS](capi-oh-wifi-h.md#wifi_resultcode): The Wi-Fi status is obtained successfully.<br>[WIFI_INVALID_PARAM](capi-oh-wifi-h.md#wifi_resultcode): The input parameter is a null pointer.<br>[WIFI_OPERATION_FAILED](capi-oh-wifi-h.md#wifi_resultcode): An internal error occurs during service execution. |
 
 ### OH_Wifi_GetDeviceMacAddress()
 
@@ -301,7 +302,7 @@ Obtains Wi-Fi connection information.
 
 | Name| Description|
 | -- | -- |
-| OH_WifiLinkedInfo *info | **OH_WifiLinkedInfo** struct.|
+| [OH_WifiLinkedInfo](capi-oh-wifi-h.md#oh_wifilinkedinfo) *info | Pointer to the OH_WifiLinkedInfo struct. |
 
 **Returns**
 

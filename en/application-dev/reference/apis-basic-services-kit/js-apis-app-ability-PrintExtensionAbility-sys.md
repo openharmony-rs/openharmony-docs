@@ -2,11 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
-<!--Tester: @guoshengbang-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=02b3587e911190b13ac6bc78e61c77d58159e033 translatedAt=2026-10-09T12:05:46.374Z pushedAt=2026-10-10T05:54:45.838Z -->
+<!-- md-trans-meta sourceCommit=432796cf3e6a4be981f95a7796deb982eeaff362 translatedAt=2026-11-10T04:00:44.972Z pushedAt=2026-11-10T06:11:10.782Z nl=1 -->
 
 This module provides APIs for calling the print extension ability. **PrintExtensionAbility** is the base class for print extensions. The system print service calls the extension methods implemented by developers in scenarios such as print preview. Developers need to inherit this class and implement related callbacks to provide custom print extension capabilities. For details about the printing framework, see [@ohos.print (Printing)](js-apis-print.md).
 
