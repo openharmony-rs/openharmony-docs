@@ -31,7 +31,9 @@ createOppServerProfile(): OppServerProfile
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**返回值：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
@@ -74,14 +76,16 @@ sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&gt;): Promise&lt;void&
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名     | 类型                          | 必填   | 说明                       |
 | ------- | --------------------------- | ---- | ------------------------ |
 | deviceId | string | 是    | 接收端的蓝牙MAC地址。 |
 | fileHolds | Array&lt;[FileHolder](#fileholder)&gt;| 是    | 发送的文件数据，依据插入Array的次序进行发送。 |
 
-**返回值：**
+**返回值**：
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
@@ -149,14 +153,16 @@ setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名     | 类型                          | 必填   | 说明                       |
 | ------- | --------------------------- | ---- | ------------------------ |
 | accept | boolean | 是    | 表示是否接受接收文件。true表示接受，false表示不接受。 |
 | fileFd | number| 是    | 接收的文件描述符，接收过程中需要保持开启。 |
 
-**返回值：**
+**返回值**：
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
@@ -215,7 +221,9 @@ on(type: 'transferStateChange', callback: Callback&lt;OppTransferInformation&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
@@ -272,7 +280,9 @@ off(type: 'transferStateChange', callback?: Callback&lt;OppTransferInformation&g
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
@@ -320,7 +330,9 @@ on(type: 'receiveIncomingFile', callback: Callback&lt;OppTransferInformation&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
@@ -377,7 +389,9 @@ off(type: 'receiveIncomingFile', callback?: Callback&lt;OppTransferInformation&g
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
@@ -424,7 +438,9 @@ cancelTransfer(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**返回值：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
@@ -473,7 +489,9 @@ getCurrentTransferInformation(): Promise&lt;[OppTransferInformation](#opptransfe
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**返回值：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
@@ -495,7 +513,7 @@ getCurrentTransferInformation(): Promise&lt;[OppTransferInformation](#opptransfe
 |2900099 | Failed to obtain the current transmission information.                        |
 |2903004 | Current Transfer Information is empty.                 |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -522,13 +540,15 @@ setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名     | 类型                          | 必填   | 说明                       |
 | ------- | --------------------------- | ---- | ------------------------ |
 | uri | string | 是    | 最后一个接收文件的URI。 |
 
-**返回值：**
+**返回值**：
 
 | 类型                                       | 说明                         |
 | ---------------------------------------- | -------------------------- |
@@ -572,6 +592,8 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 | 名称              | 类型                                     | 只读   | 可选   | 说明                                       |
 | --------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | filePath     | string                                   | 否    | 否    | 待传输文件的URI，例如：file://media/Photo/1/IMG_1739266559_000/test.jpg 。 |
@@ -585,6 +607,8 @@ try {
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称              | 类型                                     | 只读   | 可选   | 说明                                       |
 | --------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
@@ -607,6 +631,8 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 | 名称                    | 值  | 说明           |
 | --------------------- | ---- | ------------ |
 | OUTBOUND   | 0    | 表示本文件是发送方向。 |
@@ -619,6 +645,8 @@ try {
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称                    | 值  | 说明           |
 | --------------------- | ---- | ------------ |
@@ -633,6 +661,8 @@ try {
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称                    | 值  | 说明           |
 | --------------------- | ---- | ------------ |
