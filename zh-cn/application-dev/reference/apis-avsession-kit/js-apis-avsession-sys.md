@@ -3248,7 +3248,7 @@ aVCastController.offVideoSizeChange();
 | providerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备提供商。<br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：22   |
 | authenticationStatus<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备是否可信。默认为0。0代表设备不可信，1代表设备可信。<br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：22   |
 | networkId<sup>13+</sup> | string | 否   | 播放设备的网络ID。 <br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：13 <br>**ArkTS-Sta起始版本**：22|
-| brMacAddress | string | 否 | 分布式设备的蓝牙静态MAC地址。仅在分布式设备上报蓝牙MAC时可用。<br/>默认值为空。<br/>**需要权限：** `ohos.permission.USE_BLUETOOTH`<br>**系统接口：** 此接口为系统接口。<br> **系统能力：**  SystemCapability.Multimedia.AVSession.AVCast<br>**起始版本：** 26.1.0    |
+| brMacAddress | string | 否 | 分布式设备的蓝牙静态MAC地址。仅在分布式设备上报蓝牙MAC时可用。<br/>默认值为空。<br/>**需要权限：** `ohos.permission.USE_BLUETOOTH`<br>**系统接口：** 此接口为系统接口。<br> **系统能力：**  SystemCapability.Multimedia.AVSession.AVCast<br>**起始版本**： 26.1.0    |
 
 ## AVSessionDescriptor
 
