@@ -562,7 +562,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 }
 ```
 
-## SharedPhotoAsset<sup>13+</sup>
+## SharedPhotoAsset<sup>14+</sup>
 
 共享图片资产。
 
@@ -606,8 +606,8 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。true表示已准备好，false表示未准备好。|
 | lcdSize | string | 否 | 否 | 图片资产的lcd缩略图宽高信息。|
 | thmSize | string | 否 | 否 | 图片资产的thumb缩略图宽高信息。|
-| thumbnailModifiedMs<sup>14+</sup> | number | 否 | 是 | 图片资产的缩略图状态改变时间，单位：毫秒（ms）。|
-| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](js-apis-photoAccessHelper-sys.md#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。|
+| thumbnailModifiedMs | number | 否 | 是 | 图片资产的缩略图状态改变时间，单位：毫秒（ms）。|
+| thumbnailVisible | [ThumbnailVisibility](js-apis-photoAccessHelper-sys.md#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。|
 
 ## Album
 
