@@ -68,7 +68,7 @@
 4. 调用[OH_CaptureSession_SetSessionMode()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_setsessionmode)方法配置会话模式。
 
    <!-- @[set_session_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    Camera_ErrorCode NDKCamera::SetSessionMode(Camera_CaptureSession* captureSession)
    {
@@ -78,7 +78,7 @@
        }
        return ret;
    }
-      ```
+   ```
 
 5. 调用[OH_CaptureSession_BeginConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_beginconfig)方法配置会话。
 
