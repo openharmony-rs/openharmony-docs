@@ -9688,6 +9688,132 @@ async function example(context: Context, assetUri: string) {
 }
 ```
 
+### deleteLocalAssetsAndGetUris
+
+static deleteLocalAssetsAndGetUris(context: Context, assetUris: string[]): Promise&lt;Array&lt;AssetUriResult&gt;&gt;
+
+批量删除本地的媒体资产（照片或视频）到回收站，并返回每个资产的操作结果。使用Promise异步回调。
+
+> **说明：**
+>
+> - 对仅存在于本端设备的资产，直接删除到回收站，操作成功后resultUri为该资产在回收站中的新URI。
+> - 对仅存在于云端的资产，不做任何处理，操作结果中isSuccess为false，resultUri为空字符串。
+> - 对同时存储在本端设备和云端的资产，调用接口后仅保留云端资产，本地资产进入回收站，操作成功后resultUri为本地资产在回收站中的新URI。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 传入Ability实例的Context。 |
+| assetUris | string[] | 是    | 待删除的图片或者视频URI数组，数组中元素个数不超过500个。 |
+
+**返回值：**
+
+| 类型                  | 说明         |
+| ------------------- | ---------- |
+| Promise&lt;Array&lt;AssetUriResult&gt;&gt; | Promise对象，返回每个资产的操作结果数组，结果数组与入参assetUris数组一一对应。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: <br>1. The context is empty;<br>2. Asset uri array size is empty or bigger than 500. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted;<br>2. The file system is abnormal;<br>3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(context: Context, assetUris: string[]) {
+  console.info('deleteLocalAssetsAndGetUrisDemo');
+  try {
+    let results: Array<photoAccessHelper.AssetUriResult> =
+      await photoAccessHelper.MediaAssetChangeRequest.deleteLocalAssetsAndGetUris(context, assetUris);
+    for (const result of results) {
+      console.info(`originalUri: ${result.originalUri}, resultUri: ${result.resultUri}, isSuccess: ${result.isSuccess}`);
+    }
+  } catch (err) {
+    console.error(`deleteLocalAssetsAndGetUris failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### recoverAssetsAndGetUris
+
+static recoverAssetsAndGetUris(context: Context, assetUris: string[]): Promise&lt;Array&lt;AssetUriResult&gt;&gt;
+
+从回收站中批量恢复指定的URI字符串数组所对应的资产，并返回每个资产的操作结果。使用Promise异步回调。
+
+> **说明：**
+>
+> - 操作成功后，资产从回收站恢复到正常状态，resultUri为恢复后资产的新URI。
+>
+> - 操作失败时，isSuccess为false，resultUri为空字符串。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 传入Ability实例的Context。 |
+| assetUris | string[] | 是    | 待从回收站中恢复的资产URI数组，数组中元素个数不超过500个。 |
+
+**返回值：**
+
+| 类型                  | 说明         |
+| ------------------- | ---------- |
+| Promise&lt;Array&lt;AssetUriResult&gt;&gt; | Promise对象，返回每个资产的操作结果数组，结果数组与入参assetUris数组一一对应。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: <br>1. The context is empty;<br>2. Asset uri array size is empty or bigger than 500. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted;<br>2. The file system is abnormal;<br>3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(context: Context, assetUris: string[]) {
+  console.info('recoverAssetsAndGetUrisDemo');
+  try {
+    let results: Array<photoAccessHelper.AssetUriResult> =
+      await photoAccessHelper.MediaAssetChangeRequest.recoverAssetsAndGetUris(context, assetUris);
+    for (const result of results) {
+      console.info(`originalUri: ${result.originalUri}, resultUri: ${result.resultUri}, isSuccess: ${result.isSuccess}`);
+    }
+  } catch (err) {
+    console.error(`recoverAssetsAndGetUris failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### deleteCloudAssetsWithUri<sup>22+</sup>
 
 static deleteCloudAssetsWithUri(context: Context, assetUris: string[]): Promise&lt;void&gt;
@@ -14606,6 +14732,24 @@ async function example(context: Context) {
 | 名称                   | 类型                              | 只读 | 可选 | 说明                                              |
 | ---------------------- |---------------------------------| ---- |---- | ------------------------------------------------ |
 | sourceMode           | [SourceMode](#sourcemode11)     | 否  | 是   | 资源文件的读取类型，可以指定当前请求获取的是源文件或编辑后的文件。<br>**系统接口**：此接口为系统接口。 |
+
+## AssetUriResult
+
+媒体资产URI的操作结果信息。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| originalUri | string | 是 | 否 | 操作对应的原始资产URI。 |
+| resultUri | string | 是 | 否 | 操作结果对应的资产URI。操作失败时为空字符串。 |
+| isSuccess | boolean | 是 | 否 | 操作是否成功。true表示成功，false表示失败，失败时resultUri为空字符串。 |
 
 ## Progress
 
