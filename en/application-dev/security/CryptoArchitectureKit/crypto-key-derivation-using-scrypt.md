@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ccb2328b60eb675989566b23a830be06b8bbccad translatedAt=2026-11-10T01:09:16.872Z pushedAt=2026-11-10T02:43:58.340Z nl=1 -->
 
 For details about the corresponding algorithm specifications, see [Scrypt](crypto-key-derivation-overview.md#scrypt).
 
@@ -18,7 +19,7 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
    - **algName**: algorithm to use, which is **'SCRYPT'**.
    - **passphrase**: original password used to generate the derived key.
 
-      If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
+      If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or Base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
       
    - **salt**: salt value.
    - **n**: number of iterations. The value must be a positive integer.
@@ -132,3 +133,4 @@ For details about the corresponding algorithm specifications, see [Scrypt](crypt
     }
   }
   ```
+

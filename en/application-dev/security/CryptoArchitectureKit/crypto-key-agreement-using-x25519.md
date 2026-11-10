@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:54:13.096Z pushedAt=2026-10-10T02:38:54.115Z -->
+<!-- md-trans-meta sourceCommit=2abb6d40560bb8e1a9913751e42e44a0192e5f14 translatedAt=2026-11-10T01:08:09.555Z pushedAt=2026-11-10T02:43:58.327Z nl=1 -->
 
 For details about the algorithm specifications, see [X25519](crypto-key-agreement-overview.md#x25519).
 
@@ -14,7 +14,7 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator), [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1), and [AsyKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3) to generate an X25519 asymmetric key pair (**KeyPair**).
 
-   For guidance on generating an X25519 asymmetric key, refer to the following example, in conjunction with [Asymmetric Key Generation and Conversion Specifications: X25519](crypto-key-generation-conversion.md#x25519) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
+   For guidance on generating an X25519 asymmetric key pair, refer to the following example, in conjunction with [Asymmetric Key Generation and Conversion Specifications: X25519](crypto-key-generation-conversion.md#x25519) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createKeyAgreement](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekeyagreement) with the string parameter **'X25519'** to create a key agreement (**KeyAgreement**) that uses the X25519 key algorithm.
 
@@ -23,34 +23,40 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
 - Example (using asynchronous APIs):
 
   <!-- @[use_x25519a_for_key_negotiation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/X25519/X25519Async.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function x25519Await() {
-    // The public and private key pair data is transferred from an external system.
-    let pubKeyArray =
-      new Uint8Array([48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145, 147, 101,
-        139, 57, 74, 225, 119, 196, 207, 0, 50, 232, 93, 147, 188, 21, 225, 228, 54, 251, 230, 52]);
-    let priKeyArray =
-      new Uint8Array([48, 46, 2, 1, 0, 48, 5, 6, 3, 43, 101, 110, 4, 34, 4, 32, 112, 65, 156, 73, 65, 89, 183, 39, 119,
-        229, 110, 12, 192, 237, 186, 153, 21, 122, 28, 176, 248, 108, 22, 242, 239, 179, 106, 175, 85, 65, 214, 90]);
-    let keyGen = cryptoFramework.createAsyKeyGenerator('X25519');
-    // Key pair A passed from an external system.
-    let keyPairA = await keyGen.convertKey({ data: pubKeyArray }, { data: priKeyArray });
-    // Key pair B generated internally.
-    let keyPairB = await keyGen.generateKeyPair();
-    let keyAgreement = cryptoFramework.createKeyAgreement('X25519');
-    // Use the public key of A and the private key of B to perform key agreement.
-    let secret1 = await keyAgreement.generateSecret(keyPairB.priKey, keyPairA.pubKey);
-    // Use the private key of A and the public key of B to perform key agreement.
-    let secret2 = await keyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
-    // The two key agreement results should be the same.
-    if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('x25519 result: success.');
-      console.info('x25519 output: ' + secret1.data);
-    } else {
-      console.error('x25519 result is not equal.');
+    try {
+      // Assume that this public-private key pair data is passed in externally.
+      let pubKeyArray =
+        new Uint8Array([48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145, 147,
+          101, 139, 57, 74, 225, 119, 196, 207, 0, 50, 232, 93, 147, 188, 21, 225, 228, 54, 251, 230, 52]);
+      let priKeyArray =
+        new Uint8Array([48, 46, 2, 1, 0, 48, 5, 6, 3, 43, 101, 110, 4, 34, 4, 32, 112, 65, 156, 73, 65, 89, 183, 39, 119,
+          229, 110, 12, 192, 237, 186, 153, 21, 122, 28, 176, 248, 108, 22, 242, 239, 179, 106, 175, 85, 65, 214, 90]);
+      let keyGen = cryptoFramework.createAsyKeyGenerator('X25519');
+      // Public-private key pair A passed in externally
+      let keyPairA = await keyGen.convertKey({ data: pubKeyArray }, { data: priKeyArray });
+      // Public-private key pair B generated internally
+      let keyPairB = await keyGen.generateKeyPair();
+      let keyAgreement = cryptoFramework.createKeyAgreement('X25519');
+      // Perform key agreement using A's public key and B's private key.
+      let secret1 = await keyAgreement.generateSecret(keyPairB.priKey, keyPairA.pubKey);
+      // Perform key agreement using A's private key and B's public key.
+      let secret2 = await keyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
+      // The results of the two agreements should be consistent.
+      if (secret1.data.toString() === secret2.data.toString()) {
+        console.info('x25519 result: success.');
+        console.info('x25519 output: ' + secret1.data);
+      } else {
+        console.error('x25519 result is not equal.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -59,34 +65,40 @@ For details about the algorithm specifications, see [X25519](crypto-key-agreemen
 - Example (using synchronous APIs):
 
   <!-- @[use_x25519a_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/X25519/X25519Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function x25519Sync() {
-    // The public and private key pair data is transferred from an external system.
-    let pubKeyArray =
-      new Uint8Array([48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145, 147, 101,
-        139, 57, 74, 225, 119, 196, 207, 0, 50, 232, 93, 147, 188, 21, 225, 228, 54, 251, 230, 52]);
-    let priKeyArray =
-      new Uint8Array([48, 46, 2, 1, 0, 48, 5, 6, 3, 43, 101, 110, 4, 34, 4, 32, 112, 65, 156, 73, 65, 89, 183, 39, 119,
-        229, 110, 12, 192, 237, 186, 153, 21, 122, 28, 176, 248, 108, 22, 242, 239, 179, 106, 175, 85, 65, 214, 90]);
-    let keyGen = cryptoFramework.createAsyKeyGenerator('X25519');
-    // Key pair A passed from an external system.
-    let keyPairA = keyGen.convertKeySync({ data: pubKeyArray }, { data: priKeyArray });
-    // Key pair B generated internally.
-    let keyPairB = keyGen.generateKeyPairSync();
-    let keyAgreement = cryptoFramework.createKeyAgreement('X25519');
-    // Use the public key of A and the private key of B to perform key agreement.
-    let secret1 = keyAgreement.generateSecretSync(keyPairB.priKey, keyPairA.pubKey);
-    // Use the private key of A and the public key of B to perform key agreement.
-    let secret2 = keyAgreement.generateSecretSync(keyPairA.priKey, keyPairB.pubKey);
-    // The two key agreement results should be the same.
-    if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('x25519 result: success.');
-      console.info('x25519 output: ' + secret1.data);
-    } else {
-      console.error('x25519 result is not equal.');
+    try {
+      // Assume this public/private key pair data is passed in externally.
+      let pubKeyArray =
+        new Uint8Array([48, 42, 48, 5, 6, 3, 43, 101, 110, 3, 33, 0, 36, 98, 216, 106, 74, 99, 179, 203, 81, 145, 147,
+          101, 139, 57, 74, 225, 119, 196, 207, 0, 50, 232, 93, 147, 188, 21, 225, 228, 54, 251, 230, 52]);
+      let priKeyArray =
+        new Uint8Array([48, 46, 2, 1, 0, 48, 5, 6, 3, 43, 101, 110, 4, 34, 4, 32, 112, 65, 156, 73, 65, 89, 183, 39, 119,
+          229, 110, 12, 192, 237, 186, 153, 21, 122, 28, 176, 248, 108, 22, 242, 239, 179, 106, 175, 85, 65, 214, 90]);
+      let keyGen = cryptoFramework.createAsyKeyGenerator('X25519');
+      // Public/private key pair A passed in externally.
+      let keyPairA = keyGen.convertKeySync({ data: pubKeyArray }, { data: priKeyArray });
+      // Public/private key pair B generated internally.
+      let keyPairB = keyGen.generateKeyPairSync();
+      let keyAgreement = cryptoFramework.createKeyAgreement('X25519');
+      // Use A's public key and B's private key for key agreement.
+      let secret1 = keyAgreement.generateSecretSync(keyPairB.priKey, keyPairA.pubKey);
+      // Use A's private key and B's public key for key agreement.
+      let secret2 = keyAgreement.generateSecretSync(keyPairA.priKey, keyPairB.pubKey);
+      // The results of the two agreements should be consistent.
+      if (secret1.data.toString() === secret2.data.toString()) {
+        console.info('x25519 result: success.');
+        console.info('x25519 output: ' + secret1.data);
+      } else {
+        console.error('x25519 result is not equal.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:49:04.153Z pushedAt=2026-10-10T02:36:00.892Z -->
+<!-- md-trans-meta sourceCommit=2abb6d40560bb8e1a9913751e42e44a0192e5f14 translatedAt=2026-11-10T01:06:04.662Z pushedAt=2026-11-10T02:43:58.316Z nl=1 -->
 
 For details about the algorithm specifications, see [Supported Algorithms and Specifications](crypto-generate-message-digest-overview.md#supported-algorithms-and-specifications).
 
@@ -33,21 +33,27 @@ The following provides examples of MD operations with different data passing met
 - Example: Pass in the full data to generate an MD using **await**.
 
   <!-- @[message_digest_sha256_single_time_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/singleTime/SingleTimeAsync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function doMd() {
-    let mdAlgName = 'SHA256'; // Digest algorithm name.
-    let message = 'mdTestMessage'; // Message to be digested.
-    let md = cryptoFramework.createMd(mdAlgName);
-    // If there is a small amount of data to be processed, call update() to pass in all the data at a time. The data to be passed in by a single update() call is not limited.
-    await md.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
-    let mdResult = await md.digest();
-    console.info('Md result: ' + mdResult.data);
-    let mdLen = md.getMdLength();
-    console.info('md len: ' + mdLen);
+    try {
+      let mdAlgName = 'SHA256'; // Digest algorithm name.
+      let message = 'mdTestMessage'; // Data to be digested.
+      let md = cryptoFramework.createMd(mdAlgName);
+      // When the data volume is small, you can call update only once to pass in all the data. The API does not limit the input length.
+      await md.update({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
+      let mdResult = await md.digest();
+      console.info('Md result: ' + mdResult.data);
+      let mdLen = md.getMdLength();
+      console.info('md len: ' + mdLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
@@ -55,21 +61,27 @@ The following provides examples of MD operations with different data passing met
 - Example: Pass in the full data to generate an MD using a synchronous API.
 
   <!-- @[message_digest_sha256_single_time_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/singleTime/SingleTimeSync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function doMdBySync() {
-    let mdAlgName = 'SHA256'; // Digest algorithm name.
-    let message = 'mdTestMessage'; // Message to be digested.
-    let md = cryptoFramework.createMd(mdAlgName);
-    // If there is a small amount of data to be processed, call update() to pass in all the data at a time. The data to be passed in by a single update() call is not limited.
-    md.updateSync({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
-    let mdResult = md.digestSync();
-    console.info('[Sync]:Md result: ' + mdResult.data);
-    let mdLen = md.getMdLength();
-    console.info('md len: ' + mdLen);
+    try {
+      let mdAlgName = 'SHA256'; // Digest algorithm name.
+      let message = 'mdTestMessage'; // Data to be digested.
+      let md = cryptoFramework.createMd(mdAlgName);
+      // When the data volume is small, call update only once to pass in all the data. The API does not limit the input length.
+      md.updateSync({ data: new Uint8Array(buffer.from(message, 'utf-8').buffer) });
+      let mdResult = md.digestSync();
+      console.info('[Sync]:Md result: ' + mdResult.data);
+      let mdLen = md.getMdLength();
+      console.info('md len: ' + mdLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
@@ -86,27 +98,33 @@ The following provides examples of MD operations with different data passing met
 
 - Example: Pass in data by segment to generate an MD using **await**.
   <!-- @[message_digest_sha256_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/segmentation/SegmentationAsync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function doLoopMd() {
-    let mdAlgName = 'SHA256'; // Digest algorithm name.
-    let md = cryptoFramework.createMd(mdAlgName);
-    // In this example, the message is of 43 bytes. After decoded in UTF-8 format, the message is also of 43 bytes.
-    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
-    let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-    let updateLength = 20; // Pass in 20 bytes each time. You can set this parameter as required.
-    for (let i = 0; i < messageData.length; i += updateLength) {
-      let updateMessage = messageData.subarray(i, i + updateLength);
-      let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      await md.update(updateMessageBlob);
+    try {
+      let mdAlgName = 'SHA256'; // Digest algorithm name.
+      let md = cryptoFramework.createMd(mdAlgName);
+      // Assume the message is 43 bytes in total, and it is also 43 bytes after UTF-8 decoding.
+      let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
+      let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
+      let updateLength = 20; // Assume segmented update is performed in units of 20 bytes; there is no actual requirement for this.
+      for (let i = 0; i < messageData.length; i += updateLength) {
+        let updateMessage = messageData.subarray(i, i + updateLength);
+        let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
+        await md.update(updateMessageBlob);
+      }
+      let mdOutput = await md.digest();
+      console.info('md result: ' + mdOutput.data);
+      let mdLen = md.getMdLength();
+      console.info('md len: ' + mdLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let mdOutput = await md.digest();
-    console.info('md result: ' + mdOutput.data);
-    let mdLen = md.getMdLength();
-    console.info('md len: ' + mdLen);
   }
   ```
 
@@ -114,27 +132,33 @@ The following provides examples of MD operations with different data passing met
 - Example: Pass in data by segment to generate an MD using a synchronous API.
 
   <!-- @[message_digest_sha256_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/segmentation/SegmentationSync.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function doLoopMdBySync() {
-    let mdAlgName = 'SHA256'; // Digest algorithm name.
-    let md = cryptoFramework.createMd(mdAlgName);
-    // In this example, the message is of 43 bytes. After decoded in UTF-8 format, the message is also of 43 bytes.
-    let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
-    let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
-    let updateLength = 20; // Pass in 20 bytes each time. You can set this parameter as required.
-    for (let i = 0; i < messageData.length; i += updateLength) {
-      let updateMessage = messageData.subarray(i, i + updateLength);
-      let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
-      md.updateSync(updateMessageBlob);
+    try {
+      let mdAlgName = 'SHA256'; // Digest algorithm name
+      let md = cryptoFramework.createMd(mdAlgName);
+      // Assume the message is 43 bytes in total, and it is also 43 bytes after UTF-8 decoding.
+      let messageText = 'aaaaa.....bbbbb.....ccccc.....ddddd.....eee';
+      let messageData = new Uint8Array(buffer.from(messageText, 'utf-8').buffer);
+      let updateLength = 20; // Assume segmented update is performed in units of 20 bytes; there is no actual requirement for this.
+      for (let i = 0; i < messageData.length; i += updateLength) {
+        let updateMessage = messageData.subarray(i, i + updateLength);
+        let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
+        md.updateSync(updateMessageBlob);
+      }
+      let mdOutput = md.digestSync();
+      console.info('[Sync]:md result: ' + mdOutput.data);
+      let mdLen = md.getMdLength();
+      console.info('md len: ' + mdLen);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let mdOutput = md.digestSync();
-    console.info('[Sync]:md result: ' + mdOutput.data);
-    let mdLen = md.getMdLength();
-    console.info('md len: ' + mdLen);
   }
   ```

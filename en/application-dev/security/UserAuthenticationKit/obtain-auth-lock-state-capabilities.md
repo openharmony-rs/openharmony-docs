@@ -6,7 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=75b771e3d8d4dc0fc10b69d1fff999d4c300cda5 translatedAt=2026-10-10T03:30:17.618Z pushedAt=2026-10-10T03:40:47.117Z -->
+<!-- md-trans-meta sourceCommit=d1f17d49e5d09bf3ebcad50c6f0b4923e6e35648 translatedAt=2026-11-10T00:57:09.362Z pushedAt=2026-11-10T02:43:58.268Z nl=1 -->
 
 From API version 22, you can obtain the locking status of a specified authentication type, the number of remaining authentication attempts, or the remaining authentication locking time based on the following development guide.
 
@@ -49,4 +49,4 @@ async obtainingAuthLockState() : Promise<string> {
 
 ## Sample Code
 
-  - [Querying the Authentication Locking Status of a Specified Authentication Type](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) sample code.

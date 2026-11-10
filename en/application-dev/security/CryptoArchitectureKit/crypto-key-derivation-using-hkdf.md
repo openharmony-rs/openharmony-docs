@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=272d68dd445034a125b33915dfa7d6e1b2c27f73 translatedAt=2026-10-09T01:55:05.466Z pushedAt=2026-10-10T02:40:05.199Z -->
+<!-- md-trans-meta sourceCommit=2abb6d40560bb8e1a9913751e42e44a0192e5f14 translatedAt=2026-11-10T01:08:36.556Z pushedAt=2026-11-10T02:43:58.330Z nl=1 -->
 
 For details about the corresponding algorithm specifications, see [HKDF](crypto-key-derivation-overview.md#hkdf).
 
@@ -18,8 +18,8 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
    - **algName**: algorithm to use, which is **'HKDF'**.
    - **key**: original key material.
 
-      If **key** is of the string type, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
-
+      If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or Base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
+  
    - **salt**: salt value.
    - **info**: optional context and app-related information, which can be empty and is used to expand short keys.
    - **keySize**: length of the key to derive, in bytes. The value must be a positive integer.
@@ -39,33 +39,39 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
 - Return the result using **await**:
 
   <!-- @[use_hkdf_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Await.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function kdfAwait() {
-    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
-    let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
-    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
-    let spec: cryptoFramework.HKDFSpec = {
-      algName: 'HKDF',
-      key: keyData,
-      salt: saltData,
-      info: infoData,
-      keySize: 32
-    };
-    let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
-    let secret = await kdf.generateSecret(spec);
-    console.info('key derivation output: ' + secret.data);
+    try {
+      let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+      let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
+      let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
+      let spec: cryptoFramework.HKDFSpec = {
+        algName: 'HKDF',
+        key: keyData,
+        salt: saltData,
+        info: infoData,
+        keySize: 32
+      };
+      let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+      let secret = await kdf.generateSecret(spec);
+      console.info('key derivation output: ' + secret.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
 
 - Return the result using a promise:
   <!-- @[use_hkdf_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Promise.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -97,24 +103,30 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
 - Return the result synchronously:
 
   <!-- @[use_hkdf_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function kdfSync() {
-    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
-    let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
-    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
-    let spec: cryptoFramework.HKDFSpec = {
-      algName: 'HKDF',
-      key: keyData,
-      salt: saltData,
-      info: infoData,
-      keySize: 32
-    };
-    let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
-    let secret = kdf.generateSecretSync(spec);
-    console.info('[Sync]key derivation output: ' + secret.data);
+    try {
+      let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+      let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
+      let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
+      let spec: cryptoFramework.HKDFSpec = {
+        algName: 'HKDF',
+        key: keyData,
+        salt: saltData,
+        info: infoData,
+        keySize: 32
+      };
+      let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+      let secret = kdf.generateSecretSync(spec);
+      console.info('[Sync]key derivation output: ' + secret.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```

@@ -34,7 +34,7 @@
       - [\@BuilderParam Decorator: Referencing the \@Builder Function](state-management/arkts-builderparam.md)
       - [wrapBuilder: Encapsulating Global @Builder](state-management/arkts-wrapBuilder.md)
       - [mutableBuilder: Implementing Dynamic Update of Global @Builder](state-management/arkts-mutableBuilder.md) 
-      - [\@Styles Decorator: Defining Reusable Styles](state-management/arkts-style.md)
+      - [\@Styles Decorator: Defining Reusable Component Styles](state-management/arkts-style.md)
       - [\@Extend Decorator: Defining Extended Component Styles](state-management/arkts-extend.md)
       - [stateStyles: Applying Polymorphic Styles](state-management/arkts-statestyles.md)
       - [\@AnimatableExtend Decorator: Defining Animatable Properties](state-management/arkts-animatable-extend.md)
@@ -59,7 +59,7 @@
         - [Application State Management Overview](state-management/arkts-application-state-management-overview.md)
         - [LocalStorage: Storing Page-Level UI State](state-management/arkts-localstorage.md)
         - [AppStorage: Storing Application-wide UI State](state-management/arkts-appstorage.md)
-        - [PersistentStorage: Persisting Application State](state-management/arkts-persiststorage.md)
+        - [PersistentStorage: Persisting UI State](state-management/arkts-persiststorage.md)
         - [Environment: Querying the Device Environment](state-management/arkts-environment.md)
     - State Management V2<!--arkts-state-management-v2-->
       - Component State Management<!--arkts-v2-manage-component-state-->

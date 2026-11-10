@@ -6,7 +6,6 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=b359cf9c5bc0da61c21bcdbb8a09eb4ca4b31ef4 translatedAt=2026-10-31T02:48:35.699Z pushedAt=2026-10-31T02:59:40.643Z nl=1 -->
 
 All the permissions in this topic are available to all applications and granted by the system.
 

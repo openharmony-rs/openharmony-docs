@@ -6,7 +6,6 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=9d4329aa9b07ce81fc1a2c848fb4cea93e274a8e translatedAt=2026-08-13T03:17:41.501Z pushedAt=2026-08-13T06:53:21.783Z -->
 
 ## Overview
 
@@ -1163,7 +1162,7 @@ Two resources are declared. The index of the **record** array starts from 0. The
 
 **Solution**
 
-Check whether the **order** value of is consistent with the declaration sequence in the array.
+Check whether the **order** value is consistent with the declaration sequence in the array.
 <!--DelEnd-->
 
 ### 11211012 Duplicate IDs Defined in id_defined.json

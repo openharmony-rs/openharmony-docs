@@ -1,4 +1,4 @@
-# \@Require Decorator: Validating Constructor Input Parameters
+# \@Require Decorator: Validating Constructor Parameters
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @VictorS67-->
