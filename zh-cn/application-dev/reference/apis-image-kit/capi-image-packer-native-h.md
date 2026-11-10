@@ -888,7 +888,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromImageSource(OH_ImagePackerNat
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。<br>IMAGE_ALLOC_FAILED：申请内存失败。<br> IMAGE_TOO_LARGE：数据或图片过大。<br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：imagePacker为空，或者options为空，或者pixelmap为空，或者outData为空。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToDataFromPixelmap()
 
@@ -923,7 +923,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmap(OH_ImagePackerNative
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。<br>IMAGE_ALLOC_FAILED：申请内存失败。<br> IMAGE_TOO_LARGE：数据或图片过大。<br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：imagePacker为空，或者options为空，或者pixelmap为空，或者outData为空。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToDataFromPicture()
 
@@ -956,7 +956,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPicture(OH_ImagePackerNative 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：imagePacker为空，或者options为空，或者picture为空，或者size无效。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToDataFromPixelmapSequence()
 
@@ -992,7 +992,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmapSequence(OH_ImagePack
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：其中一个指针类型的参数是空，或者size/length无效。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToFileFromImageSource()
 
@@ -1026,7 +1026,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromImageSource(OH_ImagePackerNat
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。<br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：imagePacker为空，或者options为空，或者imageSource为空，或者fd无效。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToFileFromPixelmap()
 
@@ -1060,7 +1060,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmap(OH_ImagePackerNative
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。<br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：imagePacker为空，或者options为空，或者pixelmap为空，或者fd无效。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToFileFromPicture()
 
@@ -1092,7 +1092,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPicture(OH_ImagePackerNative 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。<br>IMAGE_UNKNOWN_ERROR：未知错误。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：imagePacker为空，或者picture为空，或者fd无效。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_PackToFileFromPixelmapSequence()
 
@@ -1125,7 +1125,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmapSequence(OH_ImagePack
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。<br>IMAGE_DECODE_FAILED：解码失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：其中一个指针类型的参数是空，或者length无效。<br>IMAGE_ENCODE_FAILED：编码失败。 |
 
 ### OH_ImagePackerNative_GetSupportedFormats()
 
