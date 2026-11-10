@@ -123,7 +123,7 @@ unregisterAutoDeviceSwitchStatus(photoSession: camera.PhotoSession): void {
 ``` TypeScript
 import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
 
 const TAG = 'AutoSwitchCameraDemo ';
 
@@ -165,7 +165,7 @@ struct Index {
   requestPermissionsFn(): void {
     let atManager = abilityAccessCtrl.createAtManager();
     atManager.requestPermissionsFromUser(this.mContext, ['ohos.permission.CAMERA'])
-      .then((result: abilityAccessCtrl.PermissionRequestResult): void => {
+      .then((result: PermissionRequestResult): void => {
         if (result.authResults[0] === 0) {
           this.isShow = true;
         } else {
