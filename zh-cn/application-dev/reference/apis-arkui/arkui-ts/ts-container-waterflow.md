@@ -4013,7 +4013,7 @@ struct WaterFlowSnapExample {
   private dataSource: WaterFlowDataSource = new WaterFlowDataSource();
 
   build() {
-    Column({ space: 10 }) {
+    Column() {
       Text('WaterFlow End Snapping')
         .fontSize(20)
       WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
@@ -4049,7 +4049,7 @@ ArkTS-Sta示例：
 ```ts
 // Index.ets
 import {
-  Entry, Component, Column, ColumnOptions, Text, TextAlign, WaterFlow,
+  Entry, Component, Column, Text, TextAlign, WaterFlow,
   WaterFlowOptions, WaterFlowLayoutMode, FlowItem, LazyForEach, ScrollSnapAlign
 } from '@kit.ArkUI';
 import { WaterFlowDataSource } from './WaterFlowDataSource';
@@ -4060,7 +4060,7 @@ struct WaterFlowSnapExample {
   private dataSource: WaterFlowDataSource = new WaterFlowDataSource();
 
   build() {
-    Column({ space: 10 } as ColumnOptions) {
+    Column() {
       Text('WaterFlow End Snapping')
         .fontSize(20)
       WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW } as WaterFlowOptions) {
