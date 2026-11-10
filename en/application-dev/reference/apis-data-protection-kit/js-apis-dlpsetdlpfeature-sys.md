@@ -5,11 +5,11 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=15f78d252b2330577b0a0df9613155368a97fc44 translatedAt=2026-08-31T01:15:01.068Z pushedAt=2026-09-01T01:40:25.751Z -->
+<!-- md-trans-meta sourceCommit=a6b2124cdc0046523f8f3439723b1a8784e8b330 translatedAt=2026-11-10T03:23:25.457Z pushedAt=2026-11-10T04:54:08.890Z nl=1 -->
 
 This module provides APIs for controlling the Data Loss Prevention (DLP) feature, including enabling or disabling the DLP feature and returning the DLP status. It helps enterprises meet data security compliance requirements and implement access control and encryption protection for confidential files.
 
-**Use scenarios**
+**Use scenarios** 
 - Data security compliance requirements must be met.
 - Access control and encryption protection are provided for confidential files.
 > **NOTE**
@@ -81,7 +81,7 @@ import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
 async function exampleFunction() {
   let statusInfoResult: dlpSetDlpFeature.StatusInfoResult =
     await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE);
-  console.info('setDlpFeature result: ', JSON.stringify(statusInfoResult));
+  console.info('setDlpFeature result: ', JSON.stringify(statusInfoResult)); 
 } // Set the DLP status.
 
 exampleFunction();
@@ -103,7 +103,7 @@ Describes the DLP settings.
 | -------- | -------- | -------- | -------- | -------- |
 | isSuccess | boolean | No| No| Whether the DLP setting is successful. The value **true** indicates that the setting is successful, and the value **false** indicates that the setting fails.|
 
-## DlpFeatureInfo
+## DLPFeatureInfo
 
 Sets the DLP status.
 

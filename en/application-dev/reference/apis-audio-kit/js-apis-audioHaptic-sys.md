@@ -1,10 +1,11 @@
 # @ohos.multimedia.audioHaptic (Audio-Haptic) (System API)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6482e1478c8300c06759225778677b39973d7297 translatedAt=2026-11-10T03:12:57.415Z pushedAt=2026-11-10T04:49:57.430Z nl=1 -->
 
 Audio-haptic enables users to get rhythmic auditory and haptic feedback while having incoming calls or messages.
 

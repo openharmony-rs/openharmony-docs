@@ -1,12 +1,11 @@
 # native_audio_session_manager.h
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @funny_sunix-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29c534c06e8886c79e4893a68977c0d74e48120b translatedAt=2026-08-10T01:23:52.167Z pushedAt=2026-08-10T03:30:15.512Z -->
+<!-- md-trans-meta sourceCommit=5842b36ab26c4e16173f014df59efb3144be354f translatedAt=2026-11-10T03:03:33.652Z pushedAt=2026-11-10T04:42:52.157Z nl=1 -->
 
 ## Overview
 
@@ -179,6 +178,7 @@ Enumerates the preferred device categories available for recording with Bluetoot
 | PREFERRED_DEFAULT = 1 | Prefers using Bluetooth or Nearlink devices for recording; whether to use low-latency or high-quality recording depends on the system.|
 | PREFERRED_LOW_LATENCY = 2 | Prefers using Bluetooth or NearLink devices in low-latency mode for recording.|
 | PREFERRED_HIGH_QUALITY = 3 | Prefers using Bluetooth or NearLink devices in high-quality mode for recording.|
+
 
 ## Function Description
 
@@ -506,12 +506,14 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSess
 
 **Description**
 
-Sets the default audio output device.
-
- >**NOTE** 
- > - This API is applicable to the following scenarios: If [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to VoIP, this API takes effect immediately after the audio session is activated. If [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to non-VoIP, this API does not take effect when the audio session is activated. It takes effect only when [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) of the started playback is a voice message, VoIP voice call, or VoIP video call. Supported devices include the earpiece, speaker, and system default device.
- > - This API can be called at any time after an [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) instance is created. The system records the device set by the application. However, the setting takes effect only after the AudioSession is activated. When the application starts playback, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.
-
+Sets the default audio output device. 
+ 
+ 
+ >**NOTE**  
+ > - This API is applicable to the following scenarios: If [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to VoIP, this API takes effect immediately after the audio session is activated. If [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to non-VoIP, this API does not take effect when the audio session is activated. It takes effect only when [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) of the started playback is a voice message, VoIP voice call, or VoIP video call. Supported devices include the earpiece, speaker, and system default device. 
+ > - This API can be called at any time after an [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) instance is created. The system records the device set by the application. However, the setting takes effect only after the AudioSession is activated. When the application starts playback, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound. 
+ 
+ 
  **Device behavior difference**: If the default audio output device is set to earpiece on a device without an earpiece, the speaker will still be used for audio output.
 
 **Since**: 20
@@ -653,7 +655,7 @@ Obtains the available audio devices.
 
 | Type| Description|
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is nullptr.<br>                                                        2. The **deviceUsage** parameter is invalid.<br>                                                        3. The **audioDeviceDescriptorArray** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: the function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**:<br>                                                        1. The **audioSessionManager** parameter is **nullptr**.<br>                                                        2. The **deviceUsage** parameter is invalid;<br>                                                        3. The **audioDeviceDescriptorArray** parameter is **nullptr**.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: system exception, for example, the system service exits unexpectedly. |
 
 ### OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback()
 
@@ -979,3 +981,5 @@ Configures audio session behavior parameters. (Multiple flags can be combined.) 
 | Type| Description|
 | -- | -- |
 | [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The parameter value is a null pointer or out of range.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: Invalid state.|
+
+

@@ -5,7 +5,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=213f49839bb0df5a68c6a506716431423e2e8a3e translatedAt=2026-08-31T01:16:23.286Z pushedAt=2026-09-01T02:23:48.517Z -->
+<!-- md-trans-meta sourceCommit=9aa504d73b71359b15976d29d3f238cc88b804ce translatedAt=2026-11-10T03:23:18.386Z pushedAt=2026-11-10T04:54:00.162Z nl=1 -->
 
 Data loss prevention (DLP) is a system solution provided to prevent data disclosure. This module provides APIs for cross-device file access management, encrypted storage, and access authorization. DLP protects sensitive files through encryption and generates encrypted files in .dlp format. When opening a DLP file, the system automatically creates an isolated DLP sandbox environment to ensure that the file content is not leaked to unauthorized environments. Fine-grained permission control is supported for enterprise DLP files, including management of permissions to view, edit, copy, print, and screen-record files.
 
@@ -1381,7 +1381,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 19100009 | Failed to operate the DLP file. |
 | 19100011 | The system ability works abnormally. |
 | 19100014 | Account not logged in. |
-
+  
 **Example**
 
 ```ts
@@ -1566,7 +1566,7 @@ Enumerates the actions to be executed after the permission time set for a file e
 | -------- | -------- | -------- |
 | NOT_OPEN | 0 | The user has no permission to open the DLP file after the permission control time expires. |
 | OPEN | 1 | The logged-in account can still open the DLP file with edit permission after the permission control time expires. |
-
+  
 ## AccountType<sup>21+</sup>
 
 Enumerates the authorized account types.
@@ -1589,7 +1589,7 @@ Represents a custom policy.
 | Name | Type | Readable | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
 | enterprise | string | No | No | JSON string of an enterprise custom policy. The value contains a maximum of 2<sup>22</sup> bytes. If the value is out of range, error code 401 is thrown. |
-| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | No | Yes | Query options about an enterprise DLP file. This parameter is left blank by default. **Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | No | Yes | Query options about an enterprise DLP file. This parameter is left empty by default.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## DLPProperty<sup>21+</sup>
 
@@ -1652,7 +1652,7 @@ This API can be used in scenarios such as enterprise account authentication and 
 **Required permissions:** From API version 26.0.0, ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE; for API versions 21 to 24, ohos.permission.ENTERPRISE_ACCESS_DLP_FILE.
 
 **System capability:** SystemCapability.Security.DataLossPrevention
-
+  
 **Parameters**
 
 | Name | Type | Mandatory | Description |
@@ -1669,7 +1669,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201 | Permission denied. |
 | 19100011 | The system ability works abnormally. |
-
+  
 **Example**
 
 ```ts
@@ -1691,9 +1691,9 @@ export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
 let plugin: dlpPermission.DlpConnPlugin = new DataCapsulePlugin();
 ```
 
-
+ 
 ## DlpConnManager<sup>21+</sup>
-
+  
 Used to call the registerPlugin and unregisterPlugin APIs to register or unregister callback capabilities in the SA (System Ability).
 
 > **NOTE**
@@ -1707,9 +1707,9 @@ Used to call the registerPlugin and unregisterPlugin APIs to register or unregis
 constructor()
 
 Constructor for instantiating [DlpConnManager](#dlpconnmanager21).
-
+ 
 **Required permissions:** From API version 26.0.0, ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE; for API versions 21 to 24, ohos.permission.ENTERPRISE_ACCESS_DLP_FILE.
-
+ 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Error codes:**
@@ -1719,7 +1719,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | error code ID | error message |
 | -------- | -------- |
 | 201 | Permission denied. |
-
+  
 **Example**
 
 ```ts
@@ -1730,7 +1730,7 @@ let dlpConnManager: dlpPermission.DlpConnManager = new dlpPermission.DlpConnMana
 
 ### registerPlugin<sup>21+</sup>
 static registerPlugin(plugin: DlpConnPlugin): number
-
+  
 Registers a callback with the SA (System Ability) side.
 
 > **NOTE**
@@ -1764,7 +1764,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
-
+  
 **Example**
 
 ```ts
@@ -1792,7 +1792,7 @@ let pluginId: number = dlpPermission.DlpConnManager.registerPlugin(new DataCapsu
 
 ### unregisterPlugin<sup>21+</sup>
 static unregisterPlugin(): void
-
+  
 Provides the capability to unregister callbacks from the SA (System Ability) side.
 
 This API unregisters a callback and releases resources when an application exits.
@@ -1800,7 +1800,7 @@ This API unregisters a callback and releases resources when an application exits
 > **NOTE**
 >
 > unregisterPlugin unregisters the plugin from the SA (System Ability) side.
-
+  
 **Required permissions:** From API version 26.0.0, ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE; for API versions 21 to 24, ohos.permission.ENTERPRISE_ACCESS_DLP_FILE.
 
 **System capability:** SystemCapability.Security.DataLossPrevention
@@ -1911,7 +1911,7 @@ Call this API when you need to batch close enterprise DLP files, clean up file r
 > **NOTE**
 >
 > This API can only close enterprise DLP files generated by the calling app through [generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21).
-
+  
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
@@ -1965,7 +1965,7 @@ dlpPermission.closeOpenedEnterpriseDlpFiles(options).then(() => {
 setControlledAppLists(appLists: Array&lt;string&gt;, userId?: number): Promise&lt;void&gt;
 
 Sets the list of apps controlled by enterprise DLP. This API uses a promise to return the result.
-
+  
 **Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.

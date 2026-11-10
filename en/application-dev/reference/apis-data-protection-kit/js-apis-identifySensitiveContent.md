@@ -5,7 +5,7 @@
 <!--Designer: @zhengdu_628-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=88b7d1a434c3781479c68e1ea5d6cdb038f89cd7 translatedAt=2026-08-31T01:19:20.186Z pushedAt=2026-09-01T01:54:59.321Z -->
+<!-- md-trans-meta sourceCommit=f24207369c3e4f572b17118803b93e64c99df68a translatedAt=2026-11-10T03:23:40.660Z pushedAt=2026-11-10T04:54:39.024Z nl=1 -->
 
 This module identifies sensitive information in a specified file based on the input [Policy](#policy). The system matches the file content against the provided [Policy](#policy) (including sensitive labels, keyword sets, and regular expressions) and returns the matched sensitive content.
 
@@ -46,8 +46,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | permission denied. |
-| 801 | Capability not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: The device type does not support the capability. |
 | 19110001 | Parameter error. Possible causes: 1. Incorrect policy format. 2. Invalid parameter range. |
 | 19110002 | Sensitive file content identification timed out. |
 | 19110003 | The file is not supported. Possible causes: 1. The file path does not exist. 2. The file type is not supported. 3. The file permission is not supported. |

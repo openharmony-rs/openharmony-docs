@@ -1,10 +1,11 @@
 # native_audio_session_base.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=3553df6e5d67007804f181f4e162c866c01a26ba translatedAt=2026-11-10T03:03:16.960Z pushedAt=2026-11-10T04:41:47.604Z nl=1 -->
 
 ## Overview
 
@@ -52,8 +53,8 @@ Enumerates the audio session behavior flags.
 | Enum Item| Description|
 | -- | -- |
 | DEFAULT_BEHAVIOR = 0x00000000 | Default behavior, which is used to clear the session behavior flag.<br>**Since**: 24|
-| VOIP_PRIVACY_TYPE_PUBLIC = 0x00000001 | Non-private VoIP, which can be recorded. Concurrent recording of VoIP streams and other application streams are supported.<br>**Since**: 26.0.0|
-| MUTE_WHEN_INTERRUPTED = 0x00000002 | Mute the audio stream when it is interrupted. You need to call [OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) to set the behavior and call [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) to make it take effect. An application will receive an [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_INTERRUPT_HINT_MUTE notification when playback is muted, and an [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_INTERRUPT_HINT_UNMUTE notification when the playback is unmuted.<br>**Since**: 24|
+| MUTE_WHEN_INTERRUPTED = 0x00000002 | Performs forced muting instead when the system needs to stop or pause the audio stream.<br>When calling [OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) to configure this behavior, you must also call [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene); otherwise, the configuration will not take effect.<br>In the audio session scenario, when the audio stream is muted or restored, the application receives the [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_MUTE and [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE notifications, respectively.<br>In the OH_AudioRenderer and OH_AudioCapturer scenarios, when the audio stream is muted or restored, the application receives the [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint).AUDIOSTREAM_INTERRUPT_HINT_MUTE and [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint).AUDIOSTREAM_INTERRUPT_HINT_UNMUTE notifications, respectively.<br/>**Note:** This flag cannot coexist with PAUSE_WHEN_INTERRUPTED. If both are set, only PAUSE_WHEN_INTERRUPTED takes effect.<br>**Since:** 24 |
+| PAUSE_WHEN_INTERRUPTED = 0x00000004 | Performs pausing instead when the system needs to stop the audio stream.<br>When calling [OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) to configure this behavior, you must also call [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene); otherwise, the configuration will not take effect.<br>In the audio session scenario, when the audio stream is paused or resumed, the application receives the [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE and [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_RESUME notifications, respectively.<br>In the OH_AudioRenderer and OH_AudioCapturer scenarios, when the audio stream is paused or resumed, the application receives the [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint).AUDIOSTREAM_INTERRUPT_HINT_PAUSE and [OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint).AUDIOSTREAM_INTERRUPT_HINT_RESUME notifications, respectively.<br/>**Note:** This flag cannot coexist with MUTE_WHEN_INTERRUPTED. If both are set, only this flag takes effect.<br>**Since:** 26.0.0 |
 
 ### OH_AudioSession_ConcurrencyMode
 
@@ -65,6 +66,10 @@ enum OH_AudioSession_ConcurrencyMode
 
 Enumerates the audio concurrency modes.
 
+Since API version 24, this enum has been moved from **native_audio_session_manager.h** to this header file.
+
+Before API version 24, use this enum only when **native_audio_session_manager.h** is referenced. Since API version 24, this enum can be used as long as **native_audio_session_manager.h** or **native_audio_session_base.h** is referenced.
+
 **Since**: 12
 
 | Enum Item| Description|
@@ -73,3 +78,5 @@ Enumerates the audio concurrency modes.
 | CONCURRENCY_MIX_WITH_OTHERS = 1 | The current application mixes audio with other applications during playback.|
 | CONCURRENCY_DUCK_OTHERS = 2 | The current application ducks the volume of other playing applications during playback.|
 | CONCURRENCY_PAUSE_OTHERS = 3 | The current application pauses other playing applications during playback.|
+
+

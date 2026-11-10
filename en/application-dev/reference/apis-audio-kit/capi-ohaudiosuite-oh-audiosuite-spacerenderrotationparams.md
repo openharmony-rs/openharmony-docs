@@ -1,13 +1,14 @@
 # OH_AudioSuite_SpaceRenderRotationParams
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=e9ec8701c87cf0327fd7aa17be40e1c4aeed0156 translatedAt=2026-11-10T03:09:52.165Z pushedAt=2026-11-10T04:48:19.720Z nl=1 -->
 
 ```c
-typedef struct {...} OH_AudioSuite_SpaceRenderRotationParams
+typedef struct OH_AudioSuite_SpaceRenderRotationParams {...} OH_AudioSuite_SpaceRenderRotationParams
 ```
 
 ## Overview
@@ -30,4 +31,4 @@ Defines the configuration parameters of the spatial rendering effect node in rot
 | float y | Y coordinate in the space. The value range is [-5.0, 5.0], in meters.|
 | float z | Z coordinate in the space. The value range is [-5.0, 5.0], in meters.|
 | int32_t surroundTime | Single-cycle rotation time. The value range is [2, 40], in seconds.|
-| [OH_AudioSuite_SurroundDirection](capi-native-audio-suite-base-h.md#oh_audiosuite_surrounddirection) surroundDirection | Single-cycle rotation direction. The value range is [0,1].|
+| [OH_AudioSuite_SurroundDirection](capi-native-audio-suite-base-h.md#oh_audiosuite_surrounddirection) surroundDirection | Surround direction. 0 indicates counterclockwise rotation, and 1 indicates clockwise rotation. |
