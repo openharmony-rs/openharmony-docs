@@ -769,11 +769,9 @@ scrollSnapStrategy(strategy: ScrollSnapAlign | ScrollSnapOffsetProvider | undefi
 
 scrollPlaceholder(provider?: PlaceholderProvider)
 
-设置WaterFlow组件的滚动占位提供者。当框架预测在剩余帧预算内创建下一个瀑布流子组件会导致超帧时，先为该项显示占位组件，真实瀑布流子组件在UI线程分帧创建，以减少快速滚动时的丢帧。
+设置WaterFlow组件的滚动占位提供者。当框架预测在剩余帧预算内创建下一个瀑布流子组件会导致丢帧时，先为该项显示占位组件，真实瀑布流子组件在UI线程分帧创建，以减少快速滚动时的丢帧。
 
 > **说明：**
->
-> - provider返回undefined，或返回的id为空、未注册时，使用系统默认占位，且滚动不中断。
 >
 > - 真实瀑布流子组件创建完成后，在[FlowItem](ts-container-flowitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
 
@@ -791,17 +789,15 @@ scrollPlaceholder(provider?: PlaceholderProvider)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| provider | [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) | 否   | 瀑布流子组件的占位提供者，返回undefined表示该瀑布流子组件不需要占位。未设置此属性时，关闭滚动占位，WaterFlow保持既有行为（含syncLoad语义）。 |
+| provider | [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) | 否   | 瀑布流子组件的占位提供者，返回undefined表示该瀑布流子组件不需要占位；provider返回undefined，或返回的id为空、未注册时，使用系统默认占位，且滚动不中断。未设置此属性时，关闭滚动占位，WaterFlow保持既有行为（含syncLoad语义）。 |
 
 ### scrollPlaceholder
 
 scrollPlaceholder(provider: PlaceholderProvider | undefined)
 
-设置WaterFlow组件的滚动占位提供者。当框架预测在剩余帧预算内创建下一个瀑布流子组件会导致超帧时，先为该项显示占位组件，真实瀑布流子组件在UI线程分帧创建，以减少快速滚动时的丢帧。
+设置WaterFlow组件的滚动占位提供者。当框架预测在剩余帧预算内创建下一个瀑布流子组件会导致丢帧时，先为该项显示占位组件，真实瀑布流子组件在UI线程分帧创建，以减少快速滚动时的丢帧。
 
 > **说明：**
->
-> - provider返回undefined，或返回的id为空、未注册时，使用系统默认占位，且滚动不中断。
 >
 > - 真实瀑布流子组件创建完成后，在[FlowItem](ts-container-flowitem.md)的正常布局约束下重新布局并替换占位，同时保持滚动锚点。
 
@@ -817,7 +813,7 @@ scrollPlaceholder(provider: PlaceholderProvider | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| provider | [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) \| undefined | 是   | 瀑布流子组件的占位提供者，返回undefined表示该瀑布流子组件不需要占位。未设置或设置为undefined时，关闭滚动占位，WaterFlow保持既有行为（含syncLoad语义）。 |
+| provider | [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) \| undefined | 是   | 瀑布流子组件的占位提供者，返回undefined表示该瀑布流子组件不需要占位；provider返回undefined，或返回的id为空、未注册时，使用系统默认占位，且滚动不中断。未设置或设置为undefined时，关闭滚动占位，WaterFlow保持既有行为（含syncLoad语义）。 |
 
 ## 事件
 
