@@ -37,7 +37,7 @@
 
    <!-- @[hiretrieval_import_sample_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiRetrieval/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-   ```ts
+   ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
    ```
