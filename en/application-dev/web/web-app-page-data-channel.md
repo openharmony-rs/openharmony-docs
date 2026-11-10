@@ -5,13 +5,13 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ef6db1718b2d3485b19f8944abcbd56a26449da9 translatedAt=2026-11-05T10:35:21.913Z pushedAt=2026-11-05T11:12:07.532Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ac5da3db077922920ad23333a9ce00569d12c98f translatedAt=2026-11-10T03:20:58.939Z pushedAt=2026-11-10T07:42:23.450Z nl=1 -->
 
 
 The [createWebMessagePorts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebmessageports) API allows you to create message ports to implement communication between the application and frontend page.
 
 
-In the following example, **createWebMessagePorts** is used to create two message ports on the application and [postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage) is used to forward one of the message ports to the frontend page so that the application and frontend page can exchange messages with each other over the port. After the port is used or before the WebView object is destroyed, the [close](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close) API is called to disable the port.
+In the following example, `createWebMessagePorts()` is used to create two message ports on the application, and [postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage) is used to forward one of the message ports to the frontend page so that the application and frontend page can exchange messages with each other. After the port is used or before the WebView object is destroyed, the [close()](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close) API is called to disable the port.
 
 
 - Application code:

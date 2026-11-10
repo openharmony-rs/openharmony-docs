@@ -6,12 +6,13 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=2c9ebd86afa99276b8b16071bfa8fe7adec020c4 translatedAt=2026-11-10T03:24:51.122Z pushedAt=2026-11-10T06:18:07.847Z nl=1 -->
 
 ## Overview
 
-restool is an application resource compilation tool. It parses application resource files to generate files such as resource index files and resource binary files. The generated artifacts are packed into the application package by the [packing tool](../tools/packing-tool.md). During application runtime, developers can use the [resource management](../reference/apis-localization-kit/js-apis-resource-manager.md) APIs to obtain resources from the application package.
+restool is an application resource compilation tool. It parses application resource files to generate artifacts such as resource index files and resource binary files. The generated artifacts are packed into the application package by the [packing tool](../tools/packing-tool.md). During the application running phase, developers can obtain resources in the application package through the [resource management](../reference/apis-localization-kit/js-apis-resource-manager.md) API.
 
-restool is stored in the **toolchains** folder under the SDK installation directory.
+The restool tool is stored in the toolchains folder under the SDK installation directory.
 
 ## Description
 
@@ -24,8 +25,8 @@ restool is stored in the **toolchains** folder under the SDK installation direct
 | -o/--outputPath | No| Yes| Output path of the compiled resource.|
 | -p/--packageName | No| Yes| Bundle name of the compiled resource.|
 | -r/--resHeader | No| Yes| Output path of the header file of the resource. The file contains the mapping between resource names and resource IDs. The file can be in **.txt**, **.js**, **.h**, or **.ts** format.<br>**NOTE**<br>- The **.txt**, **.js**, and **.h** files contain the resource mapping tables in all resource directories specified by **-i**.<br>- Since API version 23, the **.ts** format is supported. The file contains only the resource mapping table in the resource directory of the HAR build product specified by **-i**.|
-| -e/--startId | Yes| Yes| Start ID of the generated resource, for example, **0x01000000**. The value range is [0x01000000, 0x06FFFFFF) or [0x08000000, 0xFFFFFFFF).|
-| -f/--forceWrite | Yes| No| If the output path already exists, it will be forcibly deleted and regenerated.|
+| -e/--startId | Optional | Yes | Specifies the start ID value for generating resources, for example, 0x01000000, in the range [0x01000000, 0x06FFFFFF) or [0x08000000, 0xFFFFFFFF). |
+| -f/--forceWrite | Optional | Without parameters | If the output path already exists, forcibly delete it and regenerate. |
 | -h/--help | Yes| No| Help information.|
 | -m/--modules | Yes| Yes| Module name. During joint module compilation, multiple module names can be specified, separated by commas (,).|
 | -x/--append | Yes| Yes| Resource directory for generating intermediate files or a single resource path. The same command can run multiple times.|
@@ -52,11 +53,11 @@ Format: Use semicolons to separate different parameter configurations. Use squar
 
 **Locale** matching rules:
 
-1. The languages must be the same.
+1. The language must be the same.
 
-2. If the script (text) does not exist, it is matched by default. Otherwise, it must be the same.
+2. If a script (text) is not included, a match is found by default. If a script is included, it must be the same.
 
-3. If the country or region does not exist, the country or region is matched by default. Otherwise, the country or region must be the same.
+3. If a country/region is not included, a match is found by default. If a country/region is included, it must be the same.
 
 Example: Locale[zh_CN,en_US];Device[phone]. This configuration uses the languages zh_CN and en_US and the device phone as filter criteria. A match is found only when the resources use zh_CN and en_US as the languages and apply to phones. Other parameters (such as **MccMnc** and **Orientation**) are not configured and any values of them can match.
 
@@ -214,7 +215,7 @@ entry/src/main
 
 There are three resource compilation modes: full resource compilation, incremental resource compilation, and overlay resource compilation. Incremental compilation is available only in preview mode and is used to preview the component effect in the development phase. Full compilation is used to build resource files of a project. Overlay compilation allows resources in a project to be added to existing HAP template resources and compiled resource items to be reused.
 
-1. Run the following command to compile all resources:
+1. To compile all resources, run the following command:
 
    ```sh
    restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
@@ -236,7 +237,7 @@ There are three resource compilation modes: full resource compilation, increment
 3. To compile overlay resources, run the following command:
 
    ```sh
-   # hapResource is the path of the decompressed HAP file.
+   # hapResource is the path of the decompressed HAP package.
    restool -i entry/src/main -i hapResource -j entry/src/main/module.json -p com.ohos.demo -o out -r out/ResourceTable.txt -f
    ```
 
@@ -444,13 +445,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 **Solution**
 
-1. Check that the file path is correct.
-2. Check the file permission. If the file permission is read-only, change it to read and write. The procedure is as follows:
-   - Windows: Right-click the file, choose **Properties** from the shortcut menu, and deselect **Read-only**.
-   - Linux/MacOS: Run the **chmod 644 file path** command.
-    > **NOTE**
+1. Check whether the file path is accurate.
+2. Check the file permission. If the file permission is read-only, modify the file permission to readable and writable. The specific operation is as follows:
+   - Windows: Select the file, right-click, select Properties, and uncheck the "Read-only" attribute.
+   - Linux/MacOS: Run the chmod command "chmod 644 file path".
+    > **Note:**
     >
-    > If the error file path is under the **build** directory for compilation artifacts, you need to manually delete the file that caused the error first, and then modify the permissions of its corresponding source file. For example, if the error path is **entry\build\default\intermediates\res\default\resources\base\profile\form_config.json**, change the permission of the corresponding source file **entry\src\main\resources\base\profile\form_config.json**.
+    > If the reported file path is a path under the build directory of the compilation output, manually delete the reported file first, and then modify the permission of its corresponding source file. For example, if the reported path is "entry\build\default\intermediates\res\default\resources\base\profile\form_config.json", modify the permission of the corresponding source file "entry\src\main\resources\base\profile\form_config.json".
 
 ### 11204003 Failed to Delete the File
 
@@ -468,13 +469,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 **Solution**
 
-1. Check that the file path is correct.
-2. Check the file permission. If the file permission is read-only, change it to read and write. The procedure is as follows:
-   - Windows: Right-click the file, choose **Properties** from the shortcut menu, and deselect **Read-only**.
-   - Linux/MacOS: Run the **chmod 644 file path** command.
-    > **NOTE**
+1. Check whether the file path is accurate.
+2. Check the file permission. If the file permission is read-only, modify the file permission to readable and writable. The specific operation is as follows:
+   - Windows: Select the file, right-click, select Properties, and uncheck the "Read-only" attribute.
+   - Linux/MacOS: Run the chmod command "chmod 644 file path".
+    > **Note:**
     >
-    > If the error file path is under the **build** directory for compilation artifacts, you need to manually delete the file that caused the error first, and then modify the permissions of its corresponding source file. For example, if the error path is **entry\build\default\intermediates\res\default\resources\base\profile\form_config.json**, change the permission of the corresponding source file **entry\src\main\resources\base\profile\form_config.json**.
+    > If the reported file path is a path under the build directory of the compilation output, manually delete the reported file first, and then modify the permission of its corresponding source file. For example, if the reported path is "entry\build\default\intermediates\res\default\resources\base\profile\form_config.json", modify the permission of the corresponding source file "entry\src\main\resources\base\profile\form_config.json".
 
 ### 11204004 Failed to Copy the File
 
@@ -492,13 +493,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 **Solution**
 
-1. Check that the file path is correct.
-2. Check the file permission. If the file permission is read-only, change it to read and write. The procedure is as follows:
-   - Windows: Right-click the file, choose **Properties** from the shortcut menu, and deselect **Read-only**.
-   - Linux/MacOS: Run the **chmod 644 file path** command.
-    > **NOTE**
+1. Check whether the file path is accurate.
+2. Check the file permission. If the file permission is read-only, modify the file permission to readable and writable. The specific operation is as follows:
+   - Windows: Select the file, right-click, select Properties, and uncheck the "Read-only" attribute.
+   - Linux/MacOS: Run the chmod command "chmod 644 file path".
+    > **Note:**
     >
-    > If the error file path is under the **build** directory for compilation artifacts, you need to manually delete the file that caused the error first, and then modify the permissions of its corresponding source file. For example, if the error path is **entry\build\default\intermediates\res\default\resources\base\profile\form_config.json**, change the permission of the corresponding source file **entry\src\main\resources\base\profile\form_config.json**.
+    > If the reported file path is a path under the build directory of the compilation output, manually delete the reported file first, and then modify the permission of its corresponding source file. For example, if the reported path is "entry\build\default\intermediates\res\default\resources\base\profile\form_config.json", modify the permission of the corresponding source file "entry\src\main\resources\base\profile\form_config.json".
 
 ### 11204005 Failed to Open the File
 
@@ -516,13 +517,13 @@ The file path is incorrect or you do not have the permission to access the file.
 
 **Solution**
 
-1. Check that the file path is correct.
-2. Check the file permission. If the file permission is read-only, change it to read and write. The procedure is as follows:
-   - Windows: Right-click the file, choose **Properties** from the shortcut menu, and deselect **Read-only**.
-   - Linux/MacOS: Run the **chmod 644 file path** command.
-    > **NOTE**
+1. Check whether the file path is accurate.
+2. Check the file permission. If the file permission is read-only, modify the file permission to readable and writable. The specific operation is as follows:
+   - Windows: Select the file, right-click, select Properties, and uncheck the "Read-only" attribute.
+   - Linux/MacOS: Run the chmod command "chmod 644 file path".
+    > **Note:**
     >
-    > If the error file path is under the **build** directory for compilation artifacts, you need to manually delete the file that caused the error first, and then modify the permissions of its corresponding source file. For example, if the error path is **entry\build\default\intermediates\res\default\resources\base\profile\form_config.json**, change the permission of the corresponding source file **entry\src\main\resources\base\profile\form_config.json**.
+    > If the reported file path is a path under the build directory of the compilation output, manually delete the reported file first, and then modify the permission of its corresponding source file. For example, if the reported path is "entry\build\default\intermediates\res\default\resources\base\profile\form_config.json", modify the permission of the corresponding source file "entry\src\main\resources\base\profile\form_config.json".
 
 ### 11204006 Failed to Read the File
 
@@ -1024,7 +1025,7 @@ The output path already exists.
 
 **Possible Causes**
 
-The output path specified by **-o/--outputPath** already has files, and they cannot be overwritten.
+The output path specified by -o/--outputPath already has files, and they cannot be overwritten.
 
 **Solution**
 
@@ -1162,7 +1163,7 @@ Two resources are declared. The index of the **record** array starts from 0. The
 
 **Solution**
 
-Check whether the **order** value is consistent with the declaration sequence in the array.
+Check whether the **order** value of is consistent with the declaration sequence in the array.
 <!--DelEnd-->
 
 ### 11211012 Duplicate IDs Defined in id_defined.json

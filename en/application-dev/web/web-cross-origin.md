@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ad5469fbcda822087d5c238527a41ea4012361c4 translatedAt=2026-09-16T03:54:10.780Z pushedAt=2026-09-16T08:45:13.261Z -->
+<!-- md-trans-meta sourceCommit=ac5da3db077922920ad23333a9ce00569d12c98f translatedAt=2026-11-10T03:23:31.886Z pushedAt=2026-11-10T07:42:48.852Z nl=1 -->
 
 ## Background
 
@@ -24,7 +24,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   The following uses an example to describe how to use HTTP or HTTPS to access local cross-origin resources. The **index.html** and **js/script.js** files are stored in the **rawfile** folder of the project directory. When the resource protocol is used to access the **index.html** file, the **js/script.js** file is intercepted due to cross-origin access and cannot be loaded. In the example, the domain name **https:\//www\.example.com/** is used to replace the original resource protocol, and the **onInterceptRequest** API is used to replace the resource to ensure that the **js/script.js** file can be successfully loaded. In this way, the cross-origin interception problem is solved.
 
   <!-- @[cors_loccross_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_one.ets) -->    
-
+  
   ``` TypeScript
   // main/ets/pages/LocCrossOriginResAccSol_one.ets
   import { webview } from '@kit.ArkWeb';
@@ -101,7 +101,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   ```
   <!---->
   <!-- @[cors_script_raw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/rawfile/js/script.js)-->    
-
+  
   ``` JavaScript
   // main/resources/rawfile/js/script.js
   const body = document.body;
@@ -112,9 +112,9 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
 - Method 2
 
-  Use [setPathAllowingUniversalAccess](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setpathallowinguniversalaccess12) to set a path list. When resources in the list are accessed through the file protocol, cross-origin access to local files is allowed. In addition, once the path list is set, the file protocol can access only the resources in the list (in this case, the behavior of [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) is overridden by this API).
-
-  Removing the cross-origin access restriction on directories through setPathAllowingUniversalAccess is a high-risk operation. Based on the principle of least privilege, the paths opened for el1 and el2 are fixed, and the paths in the path list must conform to one of the following path formats:
+  Use [setPathAllowingUniversalAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setpathallowinguniversalaccess12) to set a path list. When resources in the list are accessed using the file protocol, cross-origin access to local files is allowed. In addition, once the path list is set, the file protocol is limited to accessing only the resources in the list (in this case, the behavior of [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) is overridden by the behavior of this API).
+  
+  Using setPathAllowingUniversalAccess() to open cross-origin access restrictions for directories is a high-risk operation. Based on the principle of least privilege, the paths opened for el1 and el2 are fixed, and the paths in the path list must conform to one of the following path formats:
 
   1. The app file directory is obtained through [Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties). Examples of its subdirectories are as follows:
 
@@ -140,7 +140,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   If a path is not any of the preceding paths, an error code 401 is reported and the path list fails to be set. If the path list is empty, the access scope of the file protocol complies with the [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) rule. The following is an example:
 
   <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->    
-
+  
   ``` TypeScript
   // main/ets/pages/LocCrossOriginResAccSol_two.ets
   import { webview } from '@kit.ArkWeb';
@@ -223,7 +223,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   ```
  <!---->
  <!-- @[cors_script](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/resfile/js/script.js) -->    
-
+ 
  ``` JavaScript
  // main/resources/resfile/js/script.js
  const body = document.body;
