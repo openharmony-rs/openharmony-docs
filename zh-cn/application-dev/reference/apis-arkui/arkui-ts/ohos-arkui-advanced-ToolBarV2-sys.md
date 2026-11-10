@@ -14,6 +14,8 @@
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[ToolBarV2](ohos-arkui-advanced-ToolBarV2.md)。
 
+**起始版本：** 26.1.0
+
 ## ToolbarV2StyleOptions
 
 用于构建[ToolbarV2StyleConfigs](ohos-arkui-advanced-ToolBarV2.md#toolbarv2styleconfigs)对象。本页仅说明其中的系统接口字段，其他公开字段参见[ToolbarV2StyleOptions](ohos-arkui-advanced-ToolBarV2.md#toolbarv2styleoptions)。
