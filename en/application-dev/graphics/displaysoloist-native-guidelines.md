@@ -1,11 +1,20 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how to control the frame rate with DisplaySoloist on an independent native thread and drive graphics drawing through VSync callbacks."
+keywords: [NativeDisplaySoloist, DisplaySoloist, frame rate control, per-frame callback, variable frame rate, expected frame rate]
+doctype: guide
+status: active
+---
+
 # Native DisplaySoloist Development (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @wh_qwe-->
 <!--Designer: @wh_qwe-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=75d1cbd602946398409aebc74f56a056610b7581 translatedAt=2026-10-19T01:21:03.910Z pushedAt=2026-10-19T07:33:56.907Z -->
+<!-- md-trans-meta sourceCommit=263f6d28c3a62b89d47845e6da97eea2212aedc9 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 To develop a native service that controls the frame rate in an independent thread, you use **DisplaySoloist** to implement the services, such as gaming and self-drawing UI framework interconnection.
 

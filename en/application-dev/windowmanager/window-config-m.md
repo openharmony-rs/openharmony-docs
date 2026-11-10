@@ -1,12 +1,11 @@
 # Window Metadata Configuration
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0c72915c041add8de6d718cf31c5103086e67730 translatedAt=2026-08-11T10:12:11.133Z pushedAt=2026-08-11T11:30:35.088Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T02:51:31.967Z pushedAt=2026-11-03T02:58:51.586Z nl=1 -->
 
 ## metadata
 
@@ -25,11 +24,8 @@ Below are several use cases and examples for the **metadata** tag. You can custo
 1. Use the **metadata** tag to configure the default size and position (in vp) of the main window. The following **name** options are available:
 
     * **ohos.ability.window.height**: specifies the default height of the main window. **value** indicates the height.
-
     * **ohos.ability.window.width**: specifies the default width of the main window. **value** indicates the width.
-
     * **ohos.ability.window.left**: specifies the default left position of the main window. **value** indicates the configuration format: alignment mode +/- offset. The alignment mode can be **center**, **left**, or **right**. The default value is **left**. It can be omitted when the offset is **0**.
-
     * **ohos.ability.window.top**: specifies the default top position of the main window. **value** indicates the configuration format: alignment mode +/- offset. The alignment mode can be **center**, **top**, or **bottom**. The default value is **top**. If both the alignment mode and offset are omitted, the default stacking specifications are used.
 
 2. Use the **metadata** tag to configure the enabled status of the [removeStartingWindow](../reference/apis-arkui/arkts-apis-window-WindowStage.md#removestartingwindow14) API. Set **name** to **enable.remove.starting.window**, and set **value** to **true** to enable the API, or to **false** to disable it. The default value is **false**.
@@ -37,28 +33,24 @@ Below are several use cases and examples for the **metadata** tag. You can custo
 3. Use the **metadata** tag to configure whether the main window is maximized upon startup. Set **name** to **ohos.ability.window.isMaximize**, and set **value** to **true** to maximize the main window upon startup, or to **false** to start in a non-maximized state. The default value is **false**. This configuration has the following restrictions:
 
     * The configuration takes effect only on PCs/2-in-1 devices.
-
     * If the **supportWindowModes** property in [startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md) is used, the **FULL_SCREEN** option must be configured. In this case, the **metadata** tag can be used to configure the main window to start in maximized mode; otherwise, it does not take effect.
-
     * If the **supportWindowMode** property in the [module.json5](../quick-start/module-configuration-file.md#abilities) file is used, the **fullscreen** option must be configured. In this case, the **metadata** tag can be used to configure the main window to start in maximized mode; otherwise, it does not take effect.
-
     * The priorities of the main window display settings are as follows: full-screen display > using [startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md) to specify the size and position > using [setWindowRectAutoSave()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setwindowrectautosave14) to enable window size memory > using the **metadata** tag to configure maximization > using the **metadata** tag to configure the size and position. You can configure full-screen display in any of the following ways:
-
         1. Set the **windowMode** property in [startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md) to **WINDOW_MODE_FULLSCREEN**.
-
         2. Set the **supportWindowModes** property in [startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md) only to **FULL_SCREEN**.
-
         3. Set the **supportWindowMode** property in [module.json5](../quick-start/module-configuration-file.md#abilities) only to **fullscreen**.
 
-4. Use the **metadata** tag to configure the supported window modes in [freeform window](window-terminology.md#freeform-window) mode. The configuration item is as follows: set **name** to **ohos.ability.window.supportWindowModeInFreeMultiWindow**, and set **value** to **fullscreen** (fullscreen mode), **split** (split screen mode), or **floating** (floating window mode). The value is a string and can contain multiple modes separated by commas (,), without spaces and in any order, for example, **fullscreen,split**. This configuration takes effect only on devices that support and are in [freeform window](window-terminology.md#freeform-window) mode. On devices that support but are not in [freeform window](window-terminology.md#freeform-window) mode, or on devices that do not support [freeform window](window-terminology.md#freeform-window) mode, the configuration neither takes effect nor reports an error.
+4. Use **metadata** to configure the supported window modes in [free window](window-terminology.md#freeform-window) mode. Set **name** to **ohos.ability.window.supportWindowModeInFreeMultiWindow**, and set **value** to **fullscreen** (full-screen mode), **split** (split-screen mode), or **floating** (free-floating window mode). The **value** is a string and can contain multiple modes separated by commas, without spaces and regardless of order, for example, **fullscreen,split**. This configuration takes effect only on devices that support and are in the [free window](window-terminology.md#freeform-window) state. On devices that support but are not in the [free window](window-terminology.md#freeform-window) state, or devices that do not support the [free window](window-terminology.md#freeform-window) state, the configuration neither takes effect nor reports an error.
 
-   In free windows mode, the supported window modes can be configured using multiple methods. The configuration priorities are as follows: using [SetSupportedWindowModes](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15) to configure the window modes > using **StartAbility** to configure the **SupportWindowMode** property in [StartOption](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions) > using the **metadata** tag to configure the window modes > configuring the **SupportWindowMode** property in the [abilities tag](../quick-start/module-configuration-file.md#abilities) of the **module.json5** file.
+   In free multi-window mode, the supported window modes can be configured using multiple methods. The configuration priorities are as follows: using [SetSupportedWindowModes](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15) to configure the window modes > using **StartAbility** to configure the **SupportWindowMode** property in [StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions) > using the **metadata** tag to configure the window modes > configuring the **SupportWindowMode** property in the [abilities tag](../quick-start/module-configuration-file.md#abilities) of the **module.json5** file.
 
-   In non-multi-window mode, the supported window modes can only be configured through the **SupportWindowMode** property under the **abilities** tag in the **module.json5** file. Other configuration methods do not take effect. <!--Del-->
+   In non-free-windows mode, the supported window modes can only be configured through the **SupportWindowMode** property under the **abilities** tag in the **module.json5** file. Other configuration methods do not take effect.
 
-5. Use the **metadata** tag to configure right-angle corners for the main window. The configuration item is as follows: set **name** to **ohos.ability.window.isRightAngle**, and set **value** to **true** for right-angle corners, or to **false** to use the system default rounded corners. The default value is **false** when not configured. The right-angle configuration for the main window takes effect only on PC/2-in-1 devices and is supported only for system apps.
+5. For devices running <!--RP1-->OpenHarmony 7.1<!--RP1End--> or later, **metadata** can be used to configure the performance-adaptive [simple startup page](launch-page-config.md#configuring-a-simple-starting-window) icon display switch. Set **name** to **enable.optional.starting.window**, and set **value** to **true** to enable it, or to **false** to disable it. The default value is **false**. When it is set to **true** and the application starts, if the current device has strong performance, the simple startup page icon is not displayed; if the current device has weak performance, the simple startup page icon is displayed to avoid a prolonged white screen. <!--Del-->
 
+6. Use the **metadata** tag to configure right-angle corners for the main window. The configuration item is as follows: set **name** to **ohos.ability.window.isRightAngle**, and set **value** to **true** for right-angle corners, or to **false** to use the system default rounded corners. The default value is **false** when not configured. The right-angle configuration for the main window takes effect only on PC/2-in-1 devices and is supported only for system apps.
 <!--DelEnd-->
+
 
 ```json5
 {
@@ -96,6 +88,10 @@ Below are several use cases and examples for the **metadata** tag. You can custo
       },
       {
         "name": "enable.remove.starting.window",
+        "value": "true"
+      },
+      {
+        "name": "enable.optional.starting.window",
         "value": "true"
       },
       {

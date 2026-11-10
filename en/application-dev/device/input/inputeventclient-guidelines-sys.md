@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:46.457Z pushedAt=2026-06-25T06:57:33.673Z -->
+<!-- md-trans-meta sourceCommit=2be014e373bedf99d253790d692100c932633b11 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## When to Use
 
@@ -30,7 +30,7 @@ The following table lists common APIs for event injection. For details, see [@oh
 
 ## How to Develop
 
-Assume that an application calls the Home key to return to the home screen. When the Home key is pressed, check whether [injectEvent](../../reference/apis-input-kit/js-apis-inputeventclient-sys.md#inputeventclientinjectevent) is called to inject the Home key to determine if the Home key takes effect.
+Assume that an application calls the Back key to return to the home screen. When the Back key is pressed, check whether [injectEvent](../../reference/apis-input-kit/js-apis-inputeventclient-sys.md#inputeventclientinjectevent) is called to inject the Back key to determine if the Back key takes effect.
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
@@ -48,28 +48,28 @@ struct Index {
               keyCode: 2,
               keyDownDuration: 0,
               isIntercepted: false
-            } // Home key pressing event.
+            } // Back key press event.
 
             class EventDown {
               KeyEvent: inputEventClient.KeyEvent | null = null
             }
 
             let eventDown: EventDown = { KeyEvent: backKeyDown }
-            inputEventClient.injectEvent(eventDown); // Inject the Home key pressing event.
+            inputEventClient.injectEvent(eventDown); // Inject the back key press event.
 
             let backKeyUp: inputEventClient.KeyEvent = {
               isPressed: false,
               keyCode: 2,
               keyDownDuration: 0,
               isIntercepted: false
-            }; // Home key release event.
+            }; // Back key release event.
 
             class EventUp {
               KeyEvent: inputEventClient.KeyEvent | null = null
             }
 
             let eventUp: EventUp = { KeyEvent: backKeyUp }
-            inputEventClient.injectEvent(eventUp); // Inject the Home key release event and check whether the Home key function takes effect and whether the application returns to the home screen.
+            inputEventClient.injectEvent(eventUp); // Inject the back key release event to check whether the back key function takes effect and whether the application returns to the home screen.
           } catch (error) {
             console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, ["code", "message"])}`);
           }

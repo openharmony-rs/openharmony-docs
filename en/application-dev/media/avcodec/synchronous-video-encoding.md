@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes synchronous video encoding by actively requesting buffers and submitting frames, with Surface and Buffer input modes for app-controlled encoder input timing."
+keywords: [video encoding, synchronous mode, Surface mode, Buffer mode, OH_VideoEncoder, active buffer requests, NV12, stride]
+doctype: guide
+status: active
+---
+
 # Synchronous Video Encoding
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=d8da44d9389782cf4839d2e77f3518c20aa1b228 translatedAt=2026-10-22T04:06:21.855Z pushedAt=2026-10-22T13:26:18.096Z nl=1 -->
+<!-- md-trans-meta sourceCommit=75a2c3e9f72396952a89950f3f36a78407fa2619 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 20, video encoding in synchronous mode is supported.
 

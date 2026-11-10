@@ -1,18 +1,18 @@
 # Using Toasts (Toast)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d331d662789003e8c3f7c6d67ef1c2e9a890c1fd translatedAt=2026-07-30T11:30:13.970Z pushedAt=2026-07-30T12:01:20.937Z -->
+<!-- md-trans-meta sourceCommit=dcaa2a7a2ec388b0a1d02d24edeb9ee83fc1791b translatedAt=2026-11-03T07:54:24.725Z pushedAt=2026-11-03T07:58:40.036Z nl=1 -->
 
 A toast is a temporary window that provides brief feedback or status information to users. It typically appears at the bottom or top of the screen for a short duration before automatically disappearing. The main purpose of a toast is to provide concise and non-intrusive information, avoiding disruption to the user's current workflow.
 
+
 You can use the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object associated with the current UI context, and then use the object to call [showToast](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast) to create and display a toast.
 
-> **NOTE**
+> **NOTE** 
 >
 > For security reasons, toasts can only be displayed within the current UI instance. When the application exits, toasts will not remain visible as separate elements on the home screen.
 
@@ -215,3 +215,5 @@ export struct OpenCloseToastExample {
 ```
 
 ![image](figures/UIToast.gif)
+
+

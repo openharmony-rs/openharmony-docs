@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T02:23:18.638Z pushedAt=2026-09-21T13:42:01.269Z -->
+<!-- md-trans-meta sourceCommit=95d2818bb09ee126bc2417fe2f2587d9e29fc623 translatedAt=2026-11-03T03:10:04.001Z pushedAt=2026-11-03T03:23:51.049Z nl=1 -->
 
 
 Page loading is a basic capability of the **Web** component. Depending on the data source, page loading falls into three types: loading of network pages, loading of local pages, and loading of HTML rich text data.
@@ -82,7 +82,7 @@ To reference a local CSS file when loading a local HTML file, perform the follow
 
 - Application code:
   <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingLocalPages.ets) -->
-
+  
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -139,7 +139,7 @@ Example of loading local page files in the sandbox:
 
 1. Obtain the sandbox path through the constructed singleton object **GlobalContext**. You need to enable the [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) permission of the file system in the application.
    <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/GlobalContext.ets) -->
-
+   
    ``` TypeScript
    export class GlobalContext {
      private constructor() {}
@@ -163,9 +163,9 @@ Example of loading local page files in the sandbox:
    }
    ```
    <!-- -->
-
+   
    <!-- @[load_local_page_file_in_sandbox_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_one.ets) -->
-
+   
    ``` TypeScript
    import { webview } from '@kit.ArkWeb';
    import { GlobalContext } from './GlobalContext';
@@ -191,21 +191,23 @@ Example of loading local page files in the sandbox:
 2. Modify the **EntryAbility.ets** file.
 
    The following uses **filesDir** as an example to describe how to obtain the path of the sandbox. For details about how to obtain other paths, see [Obtaining Application File Paths](../application-models/application-context-stage.md#obtaining-application-file-paths).
-
-   ```ts
-   // xxx.ets
-   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-   import { webview } from '@kit.ArkWeb';
-   import { GlobalContext } from '../GlobalContext';
-
-   export default class EntryAbility extends UIAbility {
-     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-       // Data synchronization between the UIAbility component and UI can be implemented by binding filesDir to the GlobalContext object.
-       GlobalContext.getContext().setObject("filesDir", this.context.filesDir);
-       console.info("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
-     }
-   }
-   ```
+  <!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { window } from '@kit.ArkUI';
+  import { GlobalContext } from '../pages/GlobalContext';
+  
+  export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {    
+         // Bind filesDir to the GlobalContext object to synchronize data between the UIAbility component and the UI.    
+         GlobalContext.getContext().setObject('filesDir', this.context.filesDir);    
+         console.info('Sandbox path is ' + GlobalContext.getContext().getObject('filesDir'));    
+       }
+    // ...
+  }
+  ```
 
    HTML file to be loaded:
 

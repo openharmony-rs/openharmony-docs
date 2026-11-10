@@ -4032,6 +4032,49 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
   }
   ```
 
+## enableBlankScreenMonitor
+
+enableBlankScreenMonitor(enable: boolean)
+
+设置是否开启白屏检测。开启白屏检测后，Web组件检测到白屏时会触发回调[onMonitoredBlankScreen](./arkts-basic-components-web-events.md#onmonitoredblankscreen)。当属性没有显式调用时，默认关闭白屏检测。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| enable | boolean | 是 | 是否开启白屏检测。true表示开启，false表示关闭。 |
+
+**示例：**
+
+  ```ts
+  // enableBlankScreenMonitor.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableBlankScreenMonitor(true)
+          .onMonitoredBlankScreen((event: MonitoredBlankScreenEventInfo)=>{
+            console.info(`Monitored blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.reason}.`);
+            console.info(`The extra message is ${event.extraMsg}.`);
+          })
+      }
+    }
+  }
+  ```
+
 ## enableImageAnalyzer<sup>23+</sup>
 
 enableImageAnalyzer(enable: boolean)
@@ -4812,6 +4855,47 @@ enableMediaNetworkProxy(enabled: boolean)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
         .enableMediaNetworkProxy(true)
+      }
+    }
+  }
+  ```
+
+## flingSpeedLimit
+
+flingSpeedLimit(speedLimit: number)
+
+设置Web组件惯性滚动的速度上限，单位为vp/s。该属性没有显式调用时，PC设备默认为9000，非PC设备默认为17000。
+
+> **说明：**
+>
+> - 通过本接口设置的值优先于通过前端viewport max-fling-speed-x/y接口设置的值。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| speedLimit | number | 是 | 惯性滚动的速度上限，单位为vp/s。<br>取值范围为(0, +∞)。<br>传入范围外的值、undefined或null时，使用默认值。 |
+
+**示例：**
+
+  ```ts
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .flingSpeedLimit(5000)
       }
     }
   }

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:29:39.761Z pushedAt=2026-08-10T09:17:32.443Z -->
+<!-- md-trans-meta sourceCommit=d72018541c8c2dd5dad395009d1fba92751f60f3 translatedAt=2026-10-30T03:43:27.727Z pushedAt=2026-10-30T07:22:49.900Z nl=1 -->
 
 > **NOTE**
 >
@@ -18,7 +18,7 @@ You can call APIs to:
 
 - Generate a secure random number of the specified length and use it to generate a key.
 
-- Generate a series of random sequences based on a seed.
+- Specify a random seed to generate a series of random sequences.
 
 It will be helpful if you have basic knowledge of encryption and decryption and understand the following basic concepts:
 
@@ -51,9 +51,8 @@ The random number generation algorithm uses the **RAND_priv_bytes** interface of
    The length of the random number to generate ranges from **1** to **INT_MAX**, in bytes.
 
 - Return the result using **await**:
-
   <!-- @[secure_hard_ware_random_number_generation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureRandomNumberGeneration/entry/src/main/ets/pages/Await.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -68,10 +67,10 @@ The random number generation algorithm uses the **RAND_priv_bytes** interface of
     }
   ```
 
+
 - Return the result synchronously:
-
   <!-- @[secure_hard_ware_random_number_generation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureRandomNumberGeneration/entry/src/main/ets/pages/Sync.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -93,3 +92,4 @@ The random number generation algorithm uses the **RAND_priv_bytes** interface of
     }
   }
   ```
+

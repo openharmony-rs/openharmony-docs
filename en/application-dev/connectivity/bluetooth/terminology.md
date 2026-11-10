@@ -6,6 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=49f24c886d067e0dbafd98944245465858166866 translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
 
 ## A
 ### A2DP

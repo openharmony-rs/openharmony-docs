@@ -1,14 +1,15 @@
 # About This Kit
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=188ff5fef3d90fc0078e4760b9813c31639f710c translatedAt=2026-10-30T03:21:54.378Z pushedAt=2026-10-30T03:21:54.378Z nl=1 -->
 
 ## Introduction
 
-MDM Kit provides APIs for enterprise-level Mobile Device Management (MDM) applications to manage and protect data and applications on enterprise devices. [MDM applications](./mdm-kit-term.md#mdm-application-device-administrator-application) ensure device and data security and stability through centralized management, remote configuration, and monitoring. They are widely used in enterprises and government agencies to ensure efficient management and secure use of devices and data.
+MDM Kit provides device management APIs for enterprise Mobile Device Management (MDM) apps to manage and protect data and applications on company devices. [MDM apps](./mdm-kit-term.md#mdm-app) use centralized management, remote configuration, and monitoring to ensure device and data security and stability. They are widely used in enterprises and government agencies to protect employee and customer devices and data, enabling efficient management and secure device use.
 
 ## Scenarios
 - Corporate-Owned, Personally Enabled (COPE): Enterprises centrally purchase and deploy devices such as laptops, tablets, and smartphones for employees. These devices are corporate-owned and subject to unified enterprise management.

@@ -18,7 +18,9 @@ Provides the API for querying whether a single system capability (SystemCapabili
 
 **Since:** 8
 
-**Related module:** [Init](init.md)
+**Library** libdeviceinfo_ndk.z.so
+
+**Related module:** [SyscapNdk](capi-syscap-ndk.md)
 
 ## Summary
 

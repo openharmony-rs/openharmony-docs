@@ -11,11 +11,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-> **注意：**
+>- 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap)。
+>- 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap)。
 
 ## 导入模块
 
@@ -360,7 +358,7 @@ isExtendedApduSupported(): Promise&lt;boolean&gt;
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -418,7 +416,7 @@ isExtendedApduSupported(callback: AsyncCallback\<boolean>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -445,7 +443,7 @@ function nfcTechDemo() {
             }
         });
     } catch (businessError) {
-        console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${(businessError as Business).code}, message: ${(businessError as Business).message}`);
+        console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 
@@ -596,7 +594,7 @@ readNdef(): Promise\<[NdefMessage](#ndefmessage9)>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -654,7 +652,7 @@ readNdef(callback: AsyncCallback\<[NdefMessage](#ndefmessage9)>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -720,7 +718,7 @@ writeNdef(msg: [NdefMessage](#ndefmessage9)): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -783,7 +781,7 @@ writeNdef(msg: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): vo
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -809,7 +807,7 @@ function nfcTechDemo() {
     try {
         ndefTag.writeNdef(ndefMessage, (err : BusinessError)=> {
             if (err) {
-                console.error("ndef writeNdef AsyncCallback Code: ${err.code}, message: ${err.message}");
+                console.error(`ndef writeNdef AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("ndef writeNdef AsyncCallback success.");
             }
@@ -884,7 +882,7 @@ setReadOnly(): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -907,7 +905,7 @@ function nfcTechDemo() {
         ndefTag.setReadOnly().then(() => {
             console.info("ndef setReadOnly Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("ndef setReadOnly Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`ndef setReadOnly Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`ndef setReadOnly Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
@@ -942,7 +940,7 @@ setReadOnly(callback: AsyncCallback\<void>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1066,7 +1064,7 @@ authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean): Promise
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1091,7 +1089,7 @@ function nfcTechDemo() {
         mifareClassic.authenticateSector(sectorIndex, key, true).then(() => {
             console.info("mifareClassic authenticateSector Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("mifareClassic authenticateSector Promise errCode: ${err.code}, " + "message: ${err.message}");
+            console.error(`mifareClassic authenticateSector Promise errCode: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`mifareClassic authenticateSector Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
@@ -1129,7 +1127,7 @@ authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean, callback
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 ```js
@@ -1196,7 +1194,7 @@ readSingleBlock(blockIndex: number): Promise\<number[]>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1256,7 +1254,7 @@ readSingleBlock(blockIndex: number, callback: AsyncCallback\<number[]>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1324,7 +1322,7 @@ writeSingleBlock(blockIndex: number, data: number[]): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1350,7 +1348,7 @@ function nfcTechDemo() {
         mifareClassic.writeSingleBlock(blockIndex, rawData).then(() => {
             console.info("mifareClassic writeSingleBlock Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("mifareClassic writeSingleBlock Promise errCode: ${err.code}, message: ${err.message}");
+            console.error(`mifareClassic writeSingleBlock Promise errCode: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`mifareClassic writeSingleBlock Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
@@ -1387,7 +1385,7 @@ writeSingleBlock(blockIndex: number, data: number[], callback: AsyncCallback\<vo
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1457,7 +1455,7 @@ incrementBlock(blockIndex: number, value: number): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1519,7 +1517,7 @@ incrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1588,7 +1586,7 @@ decrementBlock(blockIndex: number, value: number): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1612,8 +1610,8 @@ function nfcTechDemo() {
         let value = 0x20; // 将其更改为正确的数据
         mifareClassic.decrementBlock(blockIndex, value).then(() => {
             console.info("mifareClassic decrementBlock Promise success.");
-        }).catch((err : BusinessError)=> {
-            console.error("mifareClassic decrementBlock Promise errCode: ${err.code}, message: ${err.message}");
+        }).catch((err: BusinessError)=> {
+            console.error(`mifareClassic decrementBlock Promise errCode: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`mifareClassic decrementBlock Promise catch businessError: Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
@@ -1650,7 +1648,7 @@ decrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1672,10 +1670,9 @@ function nfcTechDemo() {
     try {
         let blockIndex = 1; // 将其更改为正确的 index
         let value = 0x20; // 将其更改为正确的数据
-        mifareClassic.decrementBlock(blockIndex, value, (err : BusinessError)=> {
+        mifareClassic.decrementBlock(blockIndex, value, (err: BusinessError)=> {
             if (err) {
-                console.error("mifareClassic decrementBlock AsyncCallback errCode:" + 
-                  "${err.code}, message: ${err.message}");
+                console.error(`mifareClassic decrementBlock AsyncCallback errCode: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareClassic decrementBlock AsyncCallback success.");
             }
@@ -1719,7 +1716,7 @@ transferToBlock(blockIndex: number): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1742,7 +1739,7 @@ function nfcTechDemo() {
         let blockIndex = 1; // 将其更改为正确的 index
         mifareClassic.transferToBlock(blockIndex).then(() => {
             console.info("mifareClassic transferToBlock Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error(`mifareClassic transferToBlock Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
@@ -1779,7 +1776,7 @@ transferToBlock(blockIndex: number, callback: AsyncCallback\<void>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1846,7 +1843,7 @@ restoreFromBlock(blockIndex: number): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1869,7 +1866,7 @@ function nfcTechDemo() {
         let blockIndex = 1; // 将其更改为正确的 index
         mifareClassic.restoreFromBlock(blockIndex).then(() => {
             console.info("mifareClassic restoreFromBlock Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error(`mifareClassic restoreFromBlock Promise errCode: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
@@ -1906,7 +1903,7 @@ restoreFromBlock(blockIndex: number, callback: AsyncCallback\<void>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1927,7 +1924,7 @@ function nfcTechDemo() {
 
     try {
         let blockIndex = 1; // 将其更改为正确的 index
-        mifareClassic.restoreFromBlock(blockIndex, (err : BusinessError)=> {
+        mifareClassic.restoreFromBlock(blockIndex, (err: BusinessError)=> {
             if (err) {
                 console.error(`mifareClassic restoreFromBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
@@ -2231,7 +2228,7 @@ readMultiplePages(pageIndex: number): Promise\<number[]>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2253,9 +2250,9 @@ function nfcTechDemo() {
 
     try {
         let pageIndex = 1; // 将其更改为正确的 index
-        mifareUltralight.readMultiplePages(pageIndex).then((data : number[]) => {
+        mifareUltralight.readMultiplePages(pageIndex).then((data: number[]) => {
             console.info("mifareUltralight readMultiplePages Promise data = " + data);
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error(`mifareUltralight readMultiplePages Promise Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
@@ -2292,7 +2289,7 @@ readMultiplePages(pageIndex: number, callback: AsyncCallback\<number[]>): void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2313,7 +2310,7 @@ function nfcTechDemo() {
 
     try {
         let pageIndex = 1; // 将其更改为正确的 index
-        mifareUltralight.readMultiplePages(pageIndex, (err : BusinessError, data : number[])=> {
+        mifareUltralight.readMultiplePages(pageIndex, (err: BusinessError, data: number[])=> {
             if (err) {
                 console.error(`mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
@@ -2360,7 +2357,7 @@ writeSinglePage(pageIndex: number, data: number[]): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2384,7 +2381,7 @@ function nfcTechDemo() {
         let rawData = [0x01, 0x02, 0x03, 0x04]; // 必须是4个字节，将其更改为正确的data
         mifareUltralight.writeSinglePage(pageIndex, rawData).then(() => {
             console.info("mifareUltralight writeSinglePage Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error(`mifareUltralight writeSinglePage Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
@@ -2422,7 +2419,7 @@ writeSinglePage(pageIndex: number, data: number[], callback: AsyncCallback\<void
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2444,7 +2441,7 @@ function nfcTechDemo() {
     try {
         let pageIndex = 1; // 将其更改为正确的 index
         let rawData = [0x01, 0x02, 0x03, 0x04];  // 必须是4个字节，将其更改为正确的data
-        mifareUltralight.writeSinglePage(pageIndex, rawData, (err : BusinessError)=> {
+        mifareUltralight.writeSinglePage(pageIndex, rawData, (err: BusinessError)=> {
         if (err) {
                 console.error(`mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
@@ -2526,7 +2523,7 @@ format(message: [NdefMessage](#ndefmessage9)): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2553,7 +2550,7 @@ function nfcTechDemo() {
 
         ndefFormatable.format(ndefMessage).then(() => {
             console.info("ndefFormatable format Promise success.");
-        }).catch((err : BusinessError)=> {
+        }).catch((err: BusinessError)=> {
             console.error(`ndefFormatable format Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
@@ -2590,7 +2587,7 @@ format(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): v
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2660,7 +2657,7 @@ formatReadOnly(message: [NdefMessage](#ndefmessage9)): Promise\<void>
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2724,7 +2721,7 @@ formatReadOnly(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<v
 | 201  | Permission denied. |
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The Tag I/O operation failed. |
+| 3100204 | The Tag I/O operation failed.<br>适用版本：12+ |
 
 **示例：**
 

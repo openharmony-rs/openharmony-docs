@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "汇总AVCodec Kit的音视频编解码及媒体数据封装、解封装格式支持情况，涵盖H.264、H.265、AAC、MP3等MIME类型及mp4、flv等封装格式，帮助开发者了解平台能力差异并选择合适的编解码格式。"
+keywords: [格式支持, MIME类型, 视频编解码格式, 音频编解码格式, 封装格式, 解封装格式, H.264, AAC, mp4]
+doctype: guide
+status: active
+---
+
 # AVCodec支持的格式
 
 <!--Kit: AVCodec Kit-->
@@ -120,7 +128,7 @@
 | 音视频     | 3gp<sup>22+</sup>                        |视频轨：H.263、AVC(H.264)、MPEG4<br>音频轨：AAC、AMR(amrnb、amrwb)|
 | 音视频     | 3g2<sup>22+</sup>                        |视频轨：H.263、AVC(H.264)、MPEG4<br>音频轨：AAC、AMR(amrnb、amrwb)|
 | 音视频     | m4v<sup>22+</sup>                        |<!--RP12-->视频轨：AVC(H.264)、MPEG4<!--RP12End--><br>音频轨：AAC、ALAC、AC3|
-| 音视频     | wmv<sup>22+</sup>                        |视频轨：AVC(H.264)、WMV3<br>音频轨：WMAV1、WMAV2、WMAPRO|
+| 音视频     | wmv<sup>22+</sup>                        |视频轨：AVC(H.264)、WMV3、WMV1（从API版本26.1.0开始支持）<br>音频轨：WMAV1、WMAV2、WMAPRO|
 | 音视频     | rm<sup>23+</sup>、rmvb<sup>23+</sup>                        |视频轨：RV30、RV40<br>音频轨：AAC、AC3、COOK|
 | 音频       | m4a                        |<!--RP9-->音频轨：AAC、ALAC<sup>22+</sup><!--RP9End-->|
 | 音频       | aac                        |音频轨：AAC|

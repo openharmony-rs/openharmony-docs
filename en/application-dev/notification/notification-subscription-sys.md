@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-29T11:12:38.621Z pushedAt=2026-09-30T09:38:13.193Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 To receive notifications, an application must subscribe to notifications first. The notification subsystem provides two types of subscription APIs, allowing applications to subscribe to notifications from all applications or notifications from a specific application.
 

@@ -161,7 +161,7 @@ getSkillInfo(bundleName: string, moduleName: string, skillName: string, flags: n
 
 **起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE 或 ohos.permission.MANAGE_SKILL
+**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE（该权限仅系统应用可申请） 或 ohos.permission.MANAGE_SKILL
 
 > **说明：**
 >
@@ -233,7 +233,7 @@ getSkillInfos(bundleName: string, flags: number, userId?: number): Promise\<Arra
 
 **起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE 或 ohos.permission.MANAGE_SKILL
+**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE（该权限仅系统应用可申请） 或 ohos.permission.MANAGE_SKILL
 
 > **说明：**
 >
@@ -299,7 +299,7 @@ getAllSkillInfos(flags: number, userId?: number): Promise\<Array\<[SkillInfo](js
 
 **起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE 或 ohos.permission.MANAGE_SKILL
+**需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE（该权限仅系统应用可申请） 或 ohos.permission.MANAGE_SKILL
 
 > **说明：**
 >

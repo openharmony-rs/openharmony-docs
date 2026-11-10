@@ -1,10 +1,11 @@
 # Using the Input Method in a Custom Edit Box (C/C++)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b3d483b49d1071ea35ea7373cd3db3058b2f8c7a translatedAt=2026-11-03T08:26:27.517Z pushedAt=2026-11-03T08:26:27.517Z nl=1 -->
 
 ## When to Use
 
@@ -20,6 +21,7 @@ Add the following library to **CMakeLists.txt**.
 
 ```txt
 libohinputmethod.so
+libhilog_ndk.z.so
 ```
 
 ## Including Header Files
@@ -48,7 +50,7 @@ When the text box is focused, you can call the [OH_InputMethodController_Attach]
    <!-- @[input_case_input_attachOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   // Create an InputMethod_AttachOptions instance. showKeyboard specifies whether to display the keyboard after the binding is successful. The following uses displaying the target keyboard as an example.
+   // Create an InputMethod_AttachOptions instance. Set showKeyboard to true to automatically display the keyboard after binding succeeds, or false to leave it hidden.
    bool showKeyboard = true;
    attachOptions = OH_AttachOptions_Create(showKeyboard);
    ```
@@ -95,15 +97,15 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 
    ```c
    // Implement the input method application event response function in InputMethod_TextEditorProxy.
-   void GetTextConfig(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_TextConfig *config)
+   void GetTextConfigFunc(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_TextConfig *config)
    {
        // Process the request sent by the input method for obtaining the input box configuration.
    }
-   void InsertText(InputMethod_TextEditorProxy *textEditorProxy, const char16_t *text, size_t length)
+   void InsertTextFunc(InputMethod_TextEditorProxy *textEditorProxy, const char16_t *text, size_t length)
    {
        // Process the text insertion request sent by the input method.
    }
-   void DeleteForward(InputMethod_TextEditorProxy *textEditorProxy, int32_t length)
+   void DeleteForwardFunc(InputMethod_TextEditorProxy *textEditorProxy, int32_t length)
    {
        // Process the text deletion request sent by the input method.
    }
@@ -156,7 +158,7 @@ The entry is the **InputMethodNdkDemo** function.
 
 > **NOTE**
 >
-> Dependencies of **libohinputmethod.so** and **libhilog_ndk.z.so** should be added to the **CMakeList.txt** file.
+> Dependencies of **libohinputmethod.so** and **libhilog_ndk.z.so** should be added to the **CMakeLists.txt** file.
 
    <!-- @[input_case_input_CPreview016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -180,7 +182,7 @@ The entry is the **InputMethodNdkDemo** function.
    InputMethod_AttachOptions *attachOptions = nullptr;
    InputMethod_InputMethodProxy *inputMethodProxy = nullptr;
    
-   void InputMethodDestroy();
+   static napi_value InputMethodDestroy(napi_env env, napi_callback_info info);
    
    void InitText()
    {
@@ -314,7 +316,7 @@ The entry is the **InputMethodNdkDemo** function.
    int32_t ReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, InputMethod_PrivateCommand *privateCommand[],
        size_t size)
    {
-       SetText("Process the extended edit request.");
+       SetText("Process the private command request.");
        return 0;
    }
    
@@ -366,7 +368,7 @@ The entry is the **InputMethodNdkDemo** function.
        // Set the implemented response processing function to InputMethod_TextEditorProxy.
        ConstructTextEditorProxy(textEditorProxy);
    
-       // Create an InputMethod_AttachOptions instance. showKeyboard specifies whether to display the keyboard after the binding is successful. The following uses displaying the target keyboard as an example.
+       // Create an InputMethod_AttachOptions instance. Set showKeyboard to true to automatically display the keyboard after binding succeeds, or false to leave it hidden.
        bool showKeyboard = true;
        attachOptions = OH_AttachOptions_Create(showKeyboard);
        if (attachOptions == nullptr) {

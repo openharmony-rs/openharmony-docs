@@ -28,7 +28,7 @@ import { browser } from '@kit.MDMKit';
 
 setPolicySync(admin: Want, appId: string, policyName: string, policyValue: string): void
 
-为指定的浏览器设置浏览器子策略，适用于企业统一管理员工浏览器行为的场景。<!--RP1--><!--RP1End-->
+通过appId为指定的浏览器设置浏览器策略，适用于企业统一管理员工浏览器行为的场景。<!--RP1--><!--RP1End-->设置成功自动生效。
 
 > **说明：**
 >
@@ -46,8 +46,8 @@ setPolicySync(admin: Want, appId: string, policyName: string, policyValue: strin
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | appId       | string                                                  | 是   | 应用appId，用于指定浏览器，表示应用的唯一标识，详情信息可参考[什么是appId](../../quick-start/common-problem-of-application.md#什么是appid)。                                                                |
-| policyName  | string                                                  | 是   | 浏览器子策略名，由接口调用方和指定浏览器约定。当此值为空字符串时，表示设置应用appId对应的浏览器策略。 |
-| policyValue | string                                                  | 是   | 浏览器子策略值，由接口调用方和指定浏览器约定。当此值为空字符串时，表示取消浏览器策略名对应浏览器子策略。 |
+| policyName  | string                                                  | 是   | 浏览器策略名，由接口调用方和指定浏览器约定。<!--RP2--><!--RP2End--><br/>policyName和policyValue的取值组合含义如下：<br/>- policyName不为空字符串、policyValue为空字符串：表示取消应用appId对应浏览器策略名的策略。<br/>- policyName和policyValue均为空字符串：表示取消通过该接口设置的应用appId对应浏览器的所有策略。 |
+| policyValue | string                                                  | 是   | 浏览器策略值，由接口调用方和指定浏览器约定。|
 
 **错误码**：
 
@@ -74,9 +74,9 @@ let wantTemp: Want = {
 
 // 此处参数appId的赋值应替换为开发者自己指定的浏览器的应用ID
 let appId: string = 'com.example.******_******/******5t5CoBM=';
-// 浏览器策略名称
+// 浏览器策略名称，替换成实际的浏览器策略名
 let policyName: string = 'InsecurePrivateNetworkRequestsAllowed';
-// 浏览器策略值
+// 浏览器策略值，替换成实际的浏览器策略值
 let policyValue: string = '{"level":"mandatory","scope":"machine","source":"platform","value":true}';
 
 try {
@@ -91,7 +91,7 @@ try {
 
 getPoliciesSync(admin: Want, appId: string): string
 
-通过appid获取指定浏览器设置的策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。<!--RP1--><!--RP1End-->
+通过appId获取指定浏览器通过[browser.setPolicySync](#browsersetpolicysync)设置的策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。
 
 本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[browser.getPoliciesSync](#browsergetpoliciessync-1)接口。
 
@@ -149,7 +149,7 @@ try {
 
 getPoliciesSync(admin: Want | null, appId: string): string
 
-通过appid获取指定浏览器设置的策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。<!--RP1--><!--RP1End-->
+通过appId获取指定浏览器通过[browser.setPolicySync](#browsersetpolicysync)设置的策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。
 
 **起始版本：** 26.0.0
 
@@ -203,6 +203,8 @@ setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, pol
 
 > **说明：**
 >
+> 通过本接口设置的浏览器策略需要浏览器进行适配。对应的浏览器需要监听[COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed)公共事件，并调用[browser.getSelfManagedBrowserPolicyVersion](#browsergetselfmanagedbrowserpolicyversion15)接口查询浏览器策略版本是否变化，若版本发生变化，再调用[browser.getSelfManagedBrowserPolicy](#browsergetselfmanagedbrowserpolicy15)接口获取最新的浏览器策略，由浏览器自身更新浏览器策略配置。
+>
 > 在多MDM应用场景下，针对同一浏览器的同一策略，一旦被首个Admin配置并生效，其他Admin将无法配置。
 >
 > 在多个MDM应用场景下，同一个浏览器应用的同一个策略[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)；不同浏览器、同一浏览器的不同策略[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
@@ -219,7 +221,7 @@ setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, pol
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | bundleName  | string                                                  | 是   | 应用包名，用于指定浏览器，表示应用的唯一标识。                                     |
-| policyName  | string                                                  | 是   | 浏览器策略名，由接口调用方和指定浏览器约定。 |
+| policyName  | string                                                  | 是   | 浏览器策略名，由接口调用方和指定浏览器约定。<!--RP2--><!--RP2End--> |
 | policyValue | string                                                  | 是   | 浏览器策略值。当此值为空字符串时，表示取消浏览器策略名对应浏览器子策略。 |
 
 **错误码**：
@@ -264,7 +266,7 @@ try {
 
 getManagedBrowserPolicy(admin: Want, bundleName: string): ArrayBuffer
 
-通过应用包名获取指定浏览器的浏览器策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。
+通过应用包名获取指定浏览器通过[browser.setManagedBrowserPolicy](#browsersetmanagedbrowserpolicy15)设置的浏览器策略，适用于查询当前浏览器策略配置的场景，例如在企业设备管理应用中展示策略详情、验证策略是否生效等。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -322,7 +324,7 @@ try {
 
 getSelfManagedBrowserPolicyVersion(): string
 
-获取当前设备浏览器策略版本。
+获取当前设备浏览器策略版本。适用于浏览器查询策略版本是否发生变化，配合[browser.getSelfManagedBrowserPolicy](#browsergetselfmanagedbrowserpolicy15)接口更新浏览器策略配置。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -351,7 +353,7 @@ try {
 
 getSelfManagedBrowserPolicy(): ArrayBuffer
 
-获取当前设备浏览器策略。
+获取当前设备浏览器策略。适用于浏览器查询通过[browser.setManagedBrowserPolicy](#browsersetmanagedbrowserpolicy15)设置的浏览器策略，浏览器可根据查询结果更新自身浏览器策略配置。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

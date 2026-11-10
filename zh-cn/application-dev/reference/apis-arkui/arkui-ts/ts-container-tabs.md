@@ -90,7 +90,7 @@ TabBar显示样式枚举。
 | BOTTOM | 0 | 底部页签栏样式。页签栏位置可通过Tabs的vertical、barPosition属性调整。 |
 | SIDEBAR | 1 | 侧边页签栏样式。页签栏显示为侧边栏。 |
 | SIDEBAR_ADAPTABLE | 2 | 自适应侧边页签栏样式。页签栏可根据Tabs容器大小在底部页签栏样式和侧边栏样式之间切换。 |
-| TOP | 3 | 顶部悬浮页签栏样式。页签栏始终以悬浮形式显示在顶部。使用该样式时，BarPosition设置不生效。<br/>**起始版本：** 26.2.0 |
+| TOP | 3 | 顶部悬浮页签栏样式。页签栏始终以悬浮形式显示在顶部。使用该样式时，BarPosition设置不生效。<br/>**起始版本：** 26.1.0 |
 
 ## 属性
 
@@ -574,11 +574,11 @@ topBarFloatingStyle(style: Optional\<TopFloatingTabBarStyle\>)
 
 设置TabBar的顶部悬浮样式。仅当[barStyle](#barstyle)设置为TabBarStyle.TOP时生效。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1045,6 +1045,26 @@ sidebarDisplayStyle(style: Optional\<TabsSidebarDisplayStyle\>)
 | ------ | ---- | ---- | ---- |
 | style | Optional<[TabsSidebarDisplayStyle](#tabssidebardisplaystyle)> | 是 | 侧边栏展示模式。<br/>设置undefined时，恢复默认展示模式。 |
 
+### showSidebarControlButton
+
+showSidebarControlButton(value: Optional\<boolean>)
+
+设置是否显示控制侧边页签栏展开或收起的按钮。点击该按钮可以控制侧边页签栏展开或收起。未通过该接口设置时，默认不显示按钮。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| value   | Optional\<boolean> | 是 | 侧边页签栏是否显示控制按钮。<br/>true表示显示按钮；false表示不显示按钮。<br/>设置undefined时，取默认值false。 |
+
 ## DividerStyle<sup>10+</sup>对象说明
 
 分割线样式对象。
@@ -1167,18 +1187,18 @@ TabBar悬浮样式。
 | maskHeight   | [Length](ts-types.md#length)           | 否 | 是    | 蒙层的高度。蒙层显示上边缘默认比TabBar上边缘高16vp。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | adaptToHandedness   | boolean           | 否 | 是    | 是否跟随操作手左右布局显示。<br/>true表示跟随操作手左右布局显示；false表示不跟随操作手左右布局显示。<br/>默认值：false<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | 否 | 是 | TabBar的背板沉浸式材质样式。仅当Tabs为横向布局且barPosition为BarPosition.End时，底部TabBar的沉浸光感效果生效。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| maxWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的最大宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**起始版本：** 26.2.0<br/>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
-| offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | 否 | 是 | TabBar的偏移量。<br/>单位：vp<br/>默认值为{ x: 0, y: 0 }。<br/>x、y的取值范围：(-∞, +∞)<br/>**起始版本：** 26.2.0<br/>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
+| maxWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的最大宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | 否 | 是 | TabBar的偏移量。<br/>单位：vp<br/>默认值为{ x: 0, y: 0 }。<br/>x、y的取值范围：(-∞, +∞)<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## TopFloatingTabBarStyle
 
 TabBar顶部悬浮样式的配置选项。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1368,7 +1388,7 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 | ------ | -- | ------  |
 | BOTTOM_TABBAR | 0 | 底部页签栏显示模式。可以通过[vertical](#vertical)和[barPosition](#barposition9)属性调整页签栏实际显示位置。 |
 | SIDEBAR | 1 | 侧边页签栏显示模式。可以通过[sidebarPosition](#sidebarposition)属性调整页签栏实际显示位置。 |
-| TOP_TABBAR | 2 | 顶部悬浮页签栏显示模式。页签栏以悬浮形式显示在顶部。<br/>**起始版本：** 26.2.0 |
+| TOP_TABBAR | 2 | 顶部悬浮页签栏显示模式。页签栏以悬浮形式显示在顶部。<br/>**起始版本：** 26.1.0 |
 
 ## TabsSidebarDisplayStyle
 
@@ -4062,7 +4082,7 @@ struct TabsExample {
 
 该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
-从API版本26.0.0开始，新增barFloatingStyle接口。从API版本26.2.0开始，[FloatingTabBarStyle](#floatingtabbarstyle)新增maxWidth、offset属性。
+从API版本26.0.0开始，新增barFloatingStyle接口。从API版本26.1.0开始，[FloatingTabBarStyle](#floatingtabbarstyle)新增maxWidth、offset属性。
 
 ```ts
 // xxx.ets
@@ -4114,9 +4134,9 @@ struct TabsFloatingStyleExample {
 
 ### 示例25（设置侧边页签栏样式）
 
-本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式。通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置，通过[sidebarHeader](#sidebarheader)接口在侧边页签栏头部设置自定义内容，通过[sidebarFooter](#sidebarfooter)接口在侧边页签栏页签列表尾部设置随页签列表滚动的自定义内容，通过[sidebarBottomBar](#sidebarbottombar)接口在侧边页签栏固定底部设置自定义内容。通过[sidebarSearchable](#sidebarsearchable)接口开启侧边页签栏的搜索功能，通过[onBarDisplayModeChange](#onbardisplaymodechange)接口注册显示模式切换的监听函数。
+本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式。通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置，通过[sidebarHeader](#sidebarheader)接口在侧边页签栏头部设置自定义内容，通过[sidebarFooter](#sidebarfooter)接口在侧边页签栏页签列表尾部设置随页签列表滚动的自定义内容，通过[sidebarBottomBar](#sidebarbottombar)接口在侧边页签栏固定底部设置自定义内容。通过[sidebarSearchable](#sidebarsearchable)接口开启侧边页签栏的搜索功能，通过[onBarDisplayModeChange](#onbardisplaymodechange)接口注册显示模式切换的监听函数，通过[showSidebarControlButton](#showsidebarcontrolbutton)接口设置是否在侧边页签栏头部显示用于控制展开或收起的按钮。
 
-从API版本26.0.1开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarSearchable、onBarDisplayModeChange接口。从API版本26.1.0开始，新增sidebarFooter、sidebarBottomBar接口。
+从API版本26.0.1开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarSearchable、onBarDisplayModeChange接口。从API版本26.1.0开始，新增sidebarFooter、sidebarBottomBar、showSidebarControlButton接口。
 
 ```ts
 // xxx.ets
@@ -4249,9 +4269,10 @@ struct TabsSidebarExample {
       .onBarDisplayModeChange((mode: TabBarDisplayMode) => {
         console.info(`testTag TabBarDisplayMode change to ${mode}`)
       })
+      .showSidebarControlButton(true)
     }
     .width('100%')
-    .height(600)
+    .height(700)
   }
 }
 ```
@@ -4534,7 +4555,7 @@ struct TabsSidebarBreakpointExample {
 
 本示例展示了如何通过[barStyle](#barstyle)接口设置TabBar为顶部悬浮页签栏样式（TabBarStyle.TOP），并通过[topBarFloatingStyle](#topbarfloatingstyle)接口设置TabBar的顶部悬浮样式，包括以下属性：页签栏宽度、左右边距、顶部边距、蒙层颜色、蒙层高度、最大宽度、偏移量。
 
-从API版本26.2.0开始，新增topBarFloatingStyle接口、[TabBarStyle](#tabbarstyle).TOP枚举值。
+从API版本26.1.0开始，新增topBarFloatingStyle接口、[TabBarStyle](#tabbarstyle).TOP枚举值。
 
 ```ts
 @Entry

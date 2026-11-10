@@ -5,9 +5,9 @@
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=fb5e4df3cbec2067fd516c5f6b4daf507a291430 translatedAt=2026-08-26T04:32:03.552Z pushedAt=2026-08-28T03:47:48.152Z -->
+<!-- md-trans-meta sourceCommit=1fe05d5a729f6df41da000f9c9c13ab036ad21a5 translatedAt=2026-10-29T10:30:53.793Z pushedAt=2026-10-29T10:30:53.793Z nl=1 -->
 
-The distributed file system provides applications the capability for accessing files across devices. If the same application has been installed on two devices, you can use the [ohos.file.fs APIs](app-file-access.md) to read and write the application files in the [distributed file directory](app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths) (**/data/storage/el2/distributedfiles/**) on the other device. For example, an application is installed on both device A and device B. After device A and device B are connected to form a Super Device, the application on device A can access the files in the distributed directory of the same application on device B.
+The distributed file system provides cross-device file access. When the same application is installed on two devices, you can use [basic file APIs](app-file-access.md) to read and write files in the application's [distributed directory](app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths) (**/data/storage/el2/distributedfiles/**) on the other device. For example, after devices A and B join a distributed network, the application on device A can access files in the same application's distributed directory on device B. To make an application file accessible to other devices, move it to the distributed directory.
 
 > **NOTE**
 >
@@ -16,20 +16,20 @@ The distributed file system provides applications the capability for accessing f
 
 ## How to Develop
 
-1. Connect the devices to form a Super Device.<br>
+1. Connect the devices to a distributed network.
 
-   Log in to the same account on two devices and ensure that Bluetooth and Wi-Fi are enabled. Bluetooth does not require a physical connection, and Wi-Fi does not need to be connected to the same LAN.
+   Log in to the same account on both devices and enable Bluetooth and Wi-Fi. The devices do not need to establish a Bluetooth connection or connect to the same Wi-Fi LAN.
 
 2. Grant the distributed data synchronization permission.
 
-   Use **requestPermissionsFromUser** to request user authorization for the ohos.permission.DISTRIBUTED_DATASYNC permission in the form of a dialog box. For details about how to obtain the application context, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+   The distributed data synchronization permission uses the **user_grant** authorization mode. Call **requestPermissionsFromUser()** to request user authorization through a dialog box. For details about obtaining the context used in the example, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
    ```ts
    import { common, abilityAccessCtrl } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
    <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
-
+   
    ``` TypeScript
    let atManager = abilityAccessCtrl.createAtManager();
    try {
@@ -58,7 +58,7 @@ The distributed file system provides applications the capability for accessing f
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
    <!--@[access_A_write_distributed_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
-
+   
    ``` TypeScript
    let pathDir: string = context.distributedFilesDir;
    // Obtain the file path of the distributed directory.
@@ -92,7 +92,7 @@ The distributed file system provides applications the capability for accessing f
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
    <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->         
-
+   
    ``` TypeScript
    // Obtain the network ID of device A by calling distributed device management APIs.
    // ...
@@ -149,7 +149,7 @@ The distributed file system provides applications the capability for accessing f
 4. Disconnect the link for device B.
 
    <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
-
+   
    ``` TypeScript
    // Obtain the network ID of device A.
    // ...

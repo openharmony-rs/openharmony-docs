@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes asynchronous audio decoding using Native API callbacks to decode AAC, MP3, and other bitstreams into PCM data for audio playback, rendering, and PCM-based editing."
+keywords: [audio decoding, asynchronous mode, PCM, AAC, MP3, audio playback, audio rendering, OH_AudioCodec]
+doctype: guide
+status: active
+---
+
 # Asynchronous Audio Decoding
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=66c49c549588a50aa036f806393d8098f913c4aa translatedAt=2026-10-22T03:50:49.250Z pushedAt=2026-10-22T10:44:33.335Z nl=1 -->
+<!-- md-trans-meta sourceCommit=75a2c3e9f72396952a89950f3f36a78407fa2619 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 You can call native APIs to perform audio decoding, which decodes media data into PCM streams.
 
@@ -75,7 +83,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    - Method 1: Create a decoder by MIME type.
 
-   <!-- @[AudioDecoder::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   <!-- @[AudioDecoder::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    
    ``` C++
    int32_t AudioDecoder::Create(const std::string &codecMime)
@@ -91,7 +99,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    - Method 2: Create a decoder by codec name.
 
-   <!-- @[AudioDecoder::CreateByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   <!-- @[AudioDecoder::CreateByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    
    ``` C++
    int32_t AudioDecoder::CreateByName(const std::string &codecMime)
@@ -123,7 +131,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    >
    > Do not call the decoder APIs or perform time-consuming operations in the callbacks.
 
-   <!-- @[SampleCallback::OnCodecError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
+   <!-- @[SampleCallback::OnCodecError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
    
    ``` C++
    void SampleCallback::OnCodecError(OH_AVCodec *codec, int32_t errorCode, void *userData)
@@ -137,7 +145,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    }
    ```
 
-   <!-- @[SampleCallback::OnCodecFormatChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
+   <!-- @[SampleCallback::OnCodecFormatChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
    
    ``` C++
    void SampleCallback::OnCodecFormatChange(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
@@ -174,7 +182,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    The sample functions serve both audio and video codecs. `UpdateVideoOutputInfo()` updates video information such as the width, height, and pixel format. `UpdateEncoderFirstInputDescription()` in `OnNeedInputBuffer()` obtains the information of the first video encoding frame (it internally calls `OH_VideoEncoder_GetInputDescription()`). Neither of these takes effect in the audio decoding scenario and can be ignored.
 
-   <!-- @[SampleCallback::OnNeedInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
+   <!-- @[SampleCallback::OnNeedInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
    
    ``` C++
    void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
@@ -194,7 +202,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    }
    ```
 
-   <!-- @[SampleCallback::OnNewOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
+   <!-- @[SampleCallback::OnNewOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
    
    ``` C++
    void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
@@ -233,7 +241,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    Configure the callbacks:
 
-   <!-- @[AudioDecoder::SetCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   <!-- @[AudioDecoder::SetCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    
    ``` C++
    int32_t AudioDecoder::SetCallback(CodecUserData *codecUserData)
@@ -323,7 +331,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    | Vorbis      | 8000 – 192000  |
    | APE         | 1 – 2147483647 |
 
-   <!-- @[AudioDecoder::Configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   <!-- @[AudioDecoder::Configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    
    ``` C++
    int32_t AudioDecoder::Configure(const SampleInfo &sampleInfo)
@@ -369,7 +377,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    In the sample project, `OH_AudioCodec_Prepare()` is wrapped in the `Config()` function. In `Config()`, `Configure()` is first called to complete the configuration and callback registration, and then `OH_AudioCodec_Prepare()` is called to make the decoder ready. The following shows the Prepare part of the code:
 
-   <!-- @[AudioDecoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   <!-- @[AudioDecoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    
    ``` C++
    {
@@ -381,7 +389,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 7. Call **OH_AudioCodec_Start()** to start the decoder.
 
-   <!-- @[AudioDecoder::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   <!-- @[AudioDecoder::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    
    ``` C++
    int32_t AudioDecoder::Start()
@@ -470,7 +478,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    When finished, set the flags to **AVCODEC_BUFFER_FLAGS_EOS**.
 
-   <!-- @[AudioDecoder::PushInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+   <!-- @[AudioDecoder::PushInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    
    ``` C++
    int32_t AudioDecoder::PushInputBuffer(CodecBufferInfo &info)
@@ -487,7 +495,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    In the sample, the data to be decoded is read from the demuxer module. The `pts`, `size`, and `flags` values are written to the buffer attributes by `OH_AVDemuxer_ReadSampleBuffer`. The following shows how the input thread consumes the buffer:
 
-   <!-- @[Player::AudioDecInputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/audio/PlayerAudioOutput.cpp) -->
+   <!-- @[Player::AudioDecInputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/PlayerAudioOutput.cpp) -->
    
    ``` C++
    void Player::AudioDecInputThread()
@@ -522,7 +530,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     Once you have retrieved the decoded PCM stream, call **OH_AudioCodec_FreeOutputBuffer()** to free up the data.
 
-    <!-- @[AudioDecoder::FreeOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    <!-- @[AudioDecoder::FreeOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
     
     ``` C++
     int32_t AudioDecoder::FreeOutputBuffer(uint32_t bufferIndex, bool render)
@@ -538,7 +546,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     The output thread retrieves decoded data from the output buffer queue, takes the PCM data, and releases the buffer in a timely manner. The following shows an example of output consumption:
 
-    <!-- @[AudioOutputPump::ProcessAsyncOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp) -->
+    <!-- @[AudioOutputPump::ProcessAsyncOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp) -->
     
     ``` C++
     bool AudioOutputPump::ProcessAsyncOutput()
@@ -576,7 +584,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     * To use the same decoder configuration after **AVCODEC_BUFFER_FLAGS_EOS** of the output buffer is set, call **OH_AudioCodec_Flush()** to refresh the decoder.
     * If a recoverable error occurs during the execution (**OH_AudioCodec_IsValid()** returns **true**), you can call **OH_AudioCodec_Flush()** to refresh the decoder and then call **OH_AudioCodec_Start()** to start decoding again.
 
-    <!-- @[AudioDecoder::Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    <!-- @[AudioDecoder::Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
     
     ``` C++
     int32_t AudioDecoder::Flush()
@@ -594,7 +602,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     After **OH_AudioCodec_Reset()** is called, the decoder returns to the initialized state. The input and output buffers obtained before the reset cannot be used. You must call **OH_AudioCodec_Configure()** to reconfigure the decoder and then call **OH_AudioCodec_Start()** to start decoding again. Obtain the input and output buffers again after the decoder is started.
 
-    <!-- @[AudioDecoder::Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    <!-- @[AudioDecoder::Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
     
     ``` C++
     int32_t AudioDecoder::Reset()
@@ -612,7 +620,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     After the decoder is stopped, you can call **OH_AudioCodec_Start()** to start it again. The input and output buffers obtained before the decoder is stopped cannot be reused. You must obtain them again after the decoder is started.
 
-    <!-- @[AudioDecoder::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    <!-- @[AudioDecoder::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
     
     ``` C++
     int32_t AudioDecoder::Stop()
@@ -631,7 +639,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     >
     > You only need to call this API once.
 
-    <!-- @[AudioDecoder::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
+    <!-- @[AudioDecoder::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
     
     ``` C++
     int32_t AudioDecoder::Release()

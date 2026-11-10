@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Lists the audio/video encoding, decoding, muxing, and demuxing formats supported by AVCodec Kit, including MIME types such as H.264, H.265, AAC, and MP3 and container formats such as mp4 and flv, to help you select suitable formats for different platform capabilities."
+keywords: [format support, MIME types, video codec formats, audio codec formats, container formats, demuxing formats, H.264, AAC, mp4]
+doctype: guide
+status: active
+---
+
 # AVCodec Supported Formats
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2e205e439bc0f41b94da84e35d75dd910dd5454c translatedAt=2026-10-22T03:58:18.520Z pushedAt=2026-10-22T12:49:15.443Z nl=1 -->
+<!-- md-trans-meta sourceCommit=75a2c3e9f72396952a89950f3f36a78407fa2619 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 The capabilities for encoding and decoding audio and video, as well as for multiplexing and demultiplexing file formats, vary across different platforms in terms of functionality and specifications. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
@@ -34,7 +42,7 @@ Currently, the following decoding capabilities are supported:
 | RAWVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
 | MPEG1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
 | Cinepak<sup>24+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_CINEPAK](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables) |
-<!--RP14--><!--RP14End-->
+<!--RP14--> <!--RP14End-->
 
 When you attempt to create a decoder using the MIME type, if the system supports hardware decoding, the system preferentially creates a hardware decoder instance. If the system does not support hardware decoding or the hardware decoder resources are insufficient, the system creates a software decoder instance.
 
@@ -134,6 +142,8 @@ The following formats are supported:
 | Audio      | wma<sup>22+</sup>                        |Audio track: AC3, WMAV1, WMAV2, Vorbis, Flac, AMR (amrnb, amrwb), AAC, MPEG (MP2, MP3), GSM_MS, G711mu, G711a, PCM, ADPCM_G722, ADPCM_G726, ADPCM_IMA_WAV, ADPCM_MS, ADPCM_YAMAHA, DVAUDIO<sup>23+</sup>, DTS<sup>23+</sup>|
 | Audio       | sunAU<sup>24+</sup>          |Audio track: PCM, ADPCM_G722, ADPCM_G726LE, G711mu, G711a|
 | Audio      | dts<sup>23+</sup>          |Audio track: DTS|
+| Audio | dsf<br>**Since:** 26.1.0 | Audio track: DSD |
+| Audio | dff<br>**Since:** 26.1.0 | Audio track: DSD |
 | External subtitle  | srt                        |Subtitle track: SRT|
 | External subtitle  | webvtt                     |Subtitle track: WEBVTT|
 

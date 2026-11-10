@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T06:51:40.004Z pushedAt=2026-11-04T03:11:19.929Z nl=1 -->
 
 The **formInfo** module provides types and enums related to the widget information and state.
 
@@ -57,6 +58,7 @@ Enumerates widget parameters.
 | TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | Template widget description.<br>**System API**: This is a system API. |
 | FORM_FONT_SIZE_SCALE_KEY    | 'ohos.extra.param.key.form_font_size_scale'   | Widget font size scaling key.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0 |
 | FORM_FONT_WEIGHT_SCALE_KEY    | 'ohos.extra.param.key.form_font_weight_scale'   | Widget font weight scaling key.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0 |
+| FORM_EDIT_COLOR_MODE_KEY    | 'ohos.extra.param.key.form_edit_color_mode'   | Key value of the color mode for the card editing capability. <br/>-1: Indicates automatic following of the system.<br/>0: Indicates dark mode.<br/>1: Indicates light mode. <br>**System API:** This API is a system API.<br>**Model Constraint:** This API is only available in the Stage model.<br/>**Since:** 26.1.0  |
 
 ## FormUsageState<sup>11+</sup>
 
@@ -166,8 +168,8 @@ Enumerates the result codes that may be used for the operation of adding a widge
 | NO_SPACE       | 1    | There is no space for adding widgets.          |
 | PARAM_ERROR    | 2    | Parameter check fails.              |
 | INTERNAL_ERROR | 3    | An internal error occurs during widget processing.|
-| NOT_SUPPORT    | 4    | The widget cannot be published.<br>**Since:** 26.0.1|
-| HOST_FORM_LIMIT | 5   | The number of widgets added to the host exceeds the upper limit.<br>**Since:** 26.0.1|
+| NOT_SUPPORT    | 4    | Indicates that the card does not support publishing.<br/>Applicable version: 26.0.1 |
+| HOST_FORM_LIMIT | 5   | Indicates that the number of cards added to the service of the user exceeds the upper limit.<br/>Applicable version: 26.0.1 |
 
 ## RenderingMode<sup>18+</sup>
 
@@ -221,7 +223,7 @@ Defines the parameters for a fun-based widget.
 | abilityName | string | No | Yes  | ExtensionAbility name of the interaction scenario. This parameter is left empty by default.|
 | targetBundleName  | string | No | No  | [Main package name](https://developer.huawei.com/consumer/en/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729).       |
 | subBundleName  | string | No | No  | [Independent subpackage name](https://developer.huawei.com/consumer/en/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729).|
-| keepStateDuration  | number | No | Yes  | Duration of the activated state when there is no interaction. The default value is **10000**, in ms. The value must be an integer within the range (0,60000]. If the value exceeds this range, it defaults to 60000.<br>**Note:** In versions earlier than API 26.0.0, the value must be an integer within the range (0,10000]. If the value exceeds this range, it defaults to 10000.|
+| keepStateDuration  | number | No  | Yes   | Duration for which the active state is retained when there is no interaction in the fun interaction scenario. Default value: 10000, in ms. The value is an integer in the range [0, 60000]. If the value exceeds the range, the maximum value 60000 is used.<br/>**Note:** Before API version 26.0.0, this field is an integer in the range (0, 10000]. If the value exceeds the range, the default value 10000 is used. |
 
 ## SceneAnimationParams<sup>20+</sup>
 
@@ -398,6 +400,40 @@ let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleContro
   };
 ```
 
+## GetLiveFormStatusCallback<sup>20+</sup>
+
+type GetLiveFormStatusCallback = () => Record&lt;string, string&gt;
+
+Obtains the callback for the status of an interactive card.
+
+**System capability:** SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Record&lt;string, string&gt; | Returns the status information of the card. The key is formID, and the value is the status information of the card. The status information includes "INACTIVE", "PAUSE", and "ACTIVE". |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                                                                  |
+|-------|-----------------------------------------------------------------------------------------------------------|
+| 202   | The application is not a system application.                                                              |
+
+**Example**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let GetLiveFormStatusCallback: formInfo.GetLiveFormStatusCallback = (): Record<string, string> => {
+  return { '1256444': 'ACTIVE' };
+};
+```
+
 ## SceneAnimationTriggerType
 
 Enumerates trigger types of the scene-based widget.
@@ -432,7 +468,7 @@ Callback for obtaining widget parameters.
 
 | Name| Type| Mandatory| Description|
 |------|------|----|------|
-| formInfo | Array&lt;[FormInfo](#forminfo)&gt; | Yes| Widget information list.|
+| formInfo | Array&lt;[formInfo.FormInfo](#forminfo)&gt; | Yes | List of card information. |
 
 **Returns**
 
@@ -560,7 +596,7 @@ Service information of the widget host.
 | serviceName | string | No| No| Service name.|
 | serviceDisplayName | string | No| No| Service display name.|
 | displayId | string | No| No| Display ID.|
-| customData | Record&lt;string, string&gt; | No| Yes| Custom data.|
+| customData | Record&lt;string, string&gt; | No | Yes | Custom data. The default value is empty. |
 
 ## PeerFormHostServiceInfo
 
@@ -579,10 +615,10 @@ Service information of the remote widget host.
 | serviceName | string | No| No| Name of the remote widget host service.|
 | serviceDisplayName | string | No| No| Display name of the remote widget host service.|
 | displayId | string | No| No| Display ID of the remote widget host service.|
-| customData | Record&lt;string, string&gt; | No| Yes| Custom data of the remote widget host service.|
+| customData | Record&lt;string, string&gt; | No | Yes | Custom data of the service of the remote card user. The default value is empty. |
 | deviceId | string | No| No| Device ID of the remote widget host service.|
 | networkId | string | No| No| Network ID of the remote widget host service.|
-| serviceId | string | No| No| Remote widget host service ID.|
+| serviceId | string | No | No | Service identifier of the service of the remote card user. |
 
 ## PublishFormCrossDeviceResult
 

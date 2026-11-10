@@ -5,7 +5,7 @@
 <!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=129e568b2e3d9e00a1a96f816f5b690da736d5ea translatedAt=2026-09-21T02:13:12.637Z pushedAt=2026-09-21T12:44:19.012Z -->
+<!-- md-trans-meta sourceCommit=a4932029d318973226050518cff47d00b7c21835 translatedAt=2026-11-03T03:07:02.150Z pushedAt=2026-11-03T03:22:16.859Z nl=1 -->
 
 ArkWeb provides events for entering and exiting the full-screen mode. An application can listen for these events to enter and exit the immersive full-screen mode.
 
@@ -20,7 +20,7 @@ The **Web** component can listen for the click event of the full-screen button t
 
 The [visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility) attribute is a common component attribute provided by ArkUI. You can control the visibility state of a component by setting different values of the component attribute visibility.
 
-<!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry1/src/main/ets/pages/Index.ets) -->
+<!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry1/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -30,6 +30,7 @@ import { webview } from '@kit.ArkWeb';
 struct ShortWebPage {
   controller: webview.WebviewController = new webview.WebviewController();
   CONSTANT_HEIGHT = 100;
+  @State marginTop: number = this.CONSTANT_HEIGHT;
   @State isVisible: boolean = true; // Define the custom flag isVisible to control whether the component is displayed.
 
   build() {
@@ -124,15 +125,15 @@ When customizing the swipe operation, determine whether the current video is in 
 
 ``` TypeScript
 onBackPress(): boolean | void {
-  if (this.isFullScreen) {
-    this.isFullScreen = false;
-    this.changeOrientation(false);
-    return true;
-  } else {
-    router.back();
-    return true;
+    if (this.isFullScreen) {
+      this.isFullScreen = false;
+      this.changeOrientation(false);
+      return true;
+    } else {
+      this.getUIContext().getRouter().back();
+      return true;
+    }
   }
-}
 ```
 
 Complete sample code:
@@ -141,7 +142,7 @@ Complete sample code:
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { window, router } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -168,7 +169,7 @@ struct WebVideo {
       this.changeOrientation(false);
       return true;
     } else {
-      router.back();
+      this.getUIContext().getRouter().back();
       return true;
     }
   }

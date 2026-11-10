@@ -1,10 +1,11 @@
 # About This Kit
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=82cd7d8df08f9f009907ab6dc8749110ae837884 translatedAt=2026-11-03T08:26:27.517Z pushedAt=2026-11-03T08:26:27.517Z nl=1 -->
 
 IME Kit is responsible for establishing a communication channel between the application in which the text input box is located and the input method application, to ensure that the two work together to provide text input, and also enables system applications to manage the input method application.
 

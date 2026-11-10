@@ -26,8 +26,6 @@ Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种�
 - print.html页面代码。
 
   示例一：
-
-  <!-- @[w3c_print_html_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/print.html) -->
   
   ``` HTML
   <!DOCTYPE html>
@@ -81,8 +79,6 @@ Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种�
   ```
   
   示例二（iframe嵌套页面的方式）：
-
-  <!-- @[w3c_print_html_iframe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/iframe.html) --> 
   
   ``` HTML
   <!DOCTYPE html>

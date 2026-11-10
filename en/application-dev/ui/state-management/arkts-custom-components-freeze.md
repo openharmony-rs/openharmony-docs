@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=29abf75806d89731e510ae841dd511df2f5b1e79 translatedAt=2026-09-21T10:50:57.107Z pushedAt=2026-09-23T07:42:53.971Z -->
+<!-- md-trans-meta sourceCommit=85829ecc69be975331761318a4754507166212af translatedAt=2026-10-28T03:54:09.669Z pushedAt=2026-10-28T07:21:32.587Z nl=1 -->
 
 Freezing a custom component is designed to optimize the performance of complex UI pages, especially for scenarios where multiple page stacks, long lists, or grid layouts are involved. When a state variable is bound to multiple UI components, the change of the state variable may trigger a large number of component updates. As a result, the page freezes and the response is delayed. To improve the refresh performance of such heavy-load UIs, you are advised to use the custom component freezing function.
 
@@ -206,7 +206,7 @@ In the preceding example:
 
 1. When `change message` is clicked, the value of message changes, and the @Watch decorated onMessageUpdated method of the TabContent component being displayed is called.
 
-2. When `tab1` is clicked to navigate to another TabContent component, the component switches from inactive to active, triggering the corresponding onMessageUpdated callback registered via @Watch.
+2. When `tab1` is clicked to navigate to another TabContent component, the component switches from inactive to active, triggering the corresponding onMessageUpdated callback registered via @Watch. 
 
 3. When `change message` is clicked again, the value of message changes, and only the @Watch decorated onMessageUpdated method of the TabContent child component being displayed is called.
 
@@ -594,7 +594,7 @@ In the preceding example:
 
 ### Component Reuse
 
-[Components reuse](./arkts-reusable.md) existing nodes in the cache pool instead of creating new nodes to optimize UI performance and improve application smoothness. Although the nodes in the reuse pool are not displayed in the UI component tree, the change of the state variable still triggers the UI re-render. To solve the problem that components in the reuse pool are re-rendered abnormally, you can perform component freezing.
+[Component reuse](./arkts-reusable.md) reuses existing nodes in the cache pool instead of creating new nodes to optimize UI performance and improve application smoothness. Although the nodes in the reuse pool are not displayed in the UI component tree, the change of the state variable still triggers the UI refresh. To solve the problem that components in the reuse pool are refreshed abnormally, you can use component freeze to prevent the components in the reuse pool from being refreshed.
 
 **Mixed Use of Component Reuse, if, and Component Freezing**
 
@@ -842,7 +842,7 @@ In the preceding example:
 3. Click **change desc** to trigger the change of the member variable **desc** of **Page**.
     - The change of \@State decorated **desc** will be notified to \@Link decorated **desc** of **ChildComponent**.
     - **ChildComponent** in the invisible area is in the inactive state, and the component freezing is enabled. Therefore, this change triggers the @Watch('descChange') callback of the 15 nodes in the visible area and re-renders these nodes. Nodes cached in **LazyForEach** and the reuse pool are not re-rendered, and the \@Watch callback is not triggered.
-
+    
 
 The diagram is as follows.
 
@@ -1044,7 +1044,7 @@ Trace for component freezing disabled
 
 ### Mixed Component Usage
 
-When scenarios that support component freezing are used together, the freezing behavior varies according to the API version. Set the component freezing flag for the parent component. In API version 17 or earlier, when the parent component is unfrozen, all nodes of its child components are unfrozen. Since API version 18, when the parent component is unfrozen, only the on-screen nodes of the child component are unfrozen. 
+When scenarios that support component freezing are used together, the freezing behavior varies according to the API version. Set the component freezing flag for the parent component. In API version 17 or earlier, when the parent component is unfrozen, all nodes of its child components are unfrozen. Since API version 18, when the parent component is unfrozen, only the on-screen nodes of the child component are unfrozen.
 
 **Mixed Use of Navigation and TabContent**
 
@@ -1230,7 +1230,7 @@ Final effect:
 
 Click `Next Page` to enter the pageOne page. The page contains two tabs, with the Update tab selected by default. When the component freeze feature is enabled, if a TabContent tab is not selected, its state variables will not be refreshed, as shown in the following operations.
 
-Click `Incr state`, and query Appmonitor in the log. Three records are displayed.
+Click `Incr state`, and query Appmonitor in the log. Three print entries are displayed.
 
 ![freeze](figures/freeze_tabcontent_update.png)
 

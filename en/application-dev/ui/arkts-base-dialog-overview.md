@@ -5,7 +5,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=2cc73d7d182d218c670a07a736f004753da3279f translatedAt=2026-09-21T02:37:39.125Z pushedAt=2026-09-21T09:33:12.907Z -->
+<!-- md-trans-meta sourceCommit=ccd5c8f94395aba51910aa4ddb2c3c20944fff03 translatedAt=2026-11-03T08:15:20.141Z pushedAt=2026-11-03T08:26:10.688Z nl=1 -->
 
 A dialog is a modal window that temporarily displays information requiring user attention or pending operations while maintaining the current context. A dialog does not need to be bound to any component, and its content typically consists of multiple components such as text, lists, input boxes, and images to achieve the desired layout. ArkUI currently provides two categories of dialog components: **custom** and **fixed style**.
 
@@ -28,6 +28,7 @@ A dialog is a modal window that temporarily displays information requiring user 
 | [Dialog controller](arkts-dialog-controller.md)| Used to bind the [DialogController](../reference/apis-arkui/js-apis-promptAction.md#dialogcontroller18) using the **controller** parameter, available since API version 18.|
 | [Dialog focus policy](arkts-dialog-focusable.md)| Used to control dialog focus acquisition using the [focusable](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) parameter, available since API version 19.|
 | [Dialog mask control](arkts-dialog-mask.md)| Used to customize the dialog mask by setting parameters such as **maskColor** and **maskRect**.|
+| [Popup Migration Guide](arkui-dialog-migration-guide.md) | Starting from API version 26.0.1, you can replace the legacy APIs ([CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller), [showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog), etc.) with the new APIs of [@ohos.arkui.dialog (Popup)](../reference/apis-arkui/js-apis-dialog.md) to implement a unified popup programming model and error code return capability. |
 
 ## Constraints
 

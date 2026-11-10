@@ -1,110 +1,130 @@
 ---
 kits: ["ArkTS Kit / 方舟编程语言"]
-description: "讲解ArkTS基于async/await与Promise的异步并发编程，涵盖异步函数、并发任务执行、生成器与异步迭代及并发控制等能力。"
-keywords: [异步并发, 多线程, worker, Promise, async, await, 异步函数, 生成器, 并发控制]
+description: "讲解ArkTS的异步与多线程并发编程，涵盖Promise、async/await、事件循环、TaskPool、Worker、Sendable及线程间通信等能力。"
+keywords: [ArkTS, 并发编程, 异步并发, Promise, async, await, TaskPool, Worker, Sendable]
 doctype: guide
 status: active
 ---
 
-# 异步并发
+# 并发编程
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-异步并发编程是现代应用程序开发的重要组成部分，能够提高程序的性能和响应能力。ArkTS基于TypeScript，继承了JavaScript的异步编程机制，提供了async/await、Promise等强大的异步处理工具。
+并发编程能够让程序同时推进多个任务而不阻塞UI主线程，是提升应用性能和响应能力的重要手段。ArkTS提供了异步并发（`Promise`、`async`/`await`）和多线程并发（`TaskPool`、`Worker`）两种并发能力：前者适用于单次I/O等轻量任务，后者适用于CPU密集型计算等耗时任务。
 
 ## 并发的基础概念
 
-并发让程序同时推进多个任务而不阻塞主线程，ArkTS通过async/await和Promise实现异步并发。
+并发指在同一时间内多个任务同时推进。在多核设备上，多个任务可以在不同CPU上并行执行；在单核设备上，CPU会在某个任务等待I/O或休眠时切换执行其他任务，从而提高资源利用率。合理使用并发的收益包括：
 
-### 并发的定义与核心价值
+- 充分利用计算资源，提升程序整体性能。
+- 避免耗时任务阻塞UI主线程，保持界面响应流畅。
+- 支持模块化、解耦的任务组织方式。
 
-并发让程序同时处理多个任务，从四个维度带来收益：充分利用计算资源避免阻塞以提升性能，保持响应性避免界面卡顿以改善体验，合理分配系统资源，并支持模块化、解耦的架构设计。
+关于并发能力的整体介绍，可参见[并发概述](../arkts-utils/concurrency-overview.md)。
 
-<!-- @[sync_vs_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+ArkTS针对不同任务特征提供两种并发处理策略：
+
+- **异步并发**：异步代码在执行到需要等待的位置时暂停，并在未来某个时间点继续执行，同一时间只有一段代码在执行。适用于网络请求、文件读写等单次I/O任务，ArkTS通过`Promise`和`async`/`await`提供该能力。
+- **多线程并发**：允许多段代码同时执行，UI主线程继续响应用户操作，后台线程执行耗时操作。适用于图片编解码、数据处理等计算密集型或长时间运行的任务，ArkTS通过`TaskPool`和`Worker`提供该能力。
+
+## 异步并发
+
+异步并发是一种编程语言特性，允许程序在执行某些操作时不必等待其完成，即可继续执行其他异步代码。ArkTS通过`Promise`和`async`/`await`提供异步并发能力。
+
+### 异步函数：async 和 await
+
+在`function`关键字前添加`async`即可声明异步函数，异步函数的返回值会被自动包装为`Promise`。`await`用于等待`Promise`完成并获取结果，只能用在异步函数内部；等待期间当前函数暂停执行、控制权交回事件循环，不会阻塞线程。`await`表达式中被拒绝的`Promise`会转为异常，可通过`try-catch`捕获处理。
+
+<!-- @[async_await_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Concurrency.ets) -->
 
 ``` TypeScript
-// 同步执行：阻塞等待
-function syncOperation(): void {
-  console.info('开始操作');
-  // 模拟耗时操作
-  let start = Date.now();
-  while (Date.now() - start < 1000) {
-    // 阻塞1秒
+// async函数：返回值自动包装为Promise
+async function fetchMessage(): Promise<string> {
+  return 'Hello ArkTS';
+}
+
+// await只能在async函数中使用，等待Promise完成并获取结果
+async function loadMessage(): Promise<void> {
+  try {
+    let message = await fetchMessage();
+    console.info(`${message}`); // 'Hello ArkTS'
+  } catch (error) {
+    // await将被拒绝的Promise转为异常，可用try-catch捕获
+    console.error(`加载失败: ${(error as Error).message}`);
   }
-  console.info('操作完成');
 }
 
-syncOperation();
-console.info('继续执行其他任务');
-// 输出顺序：开始操作 -> 操作完成 -> 继续执行其他任务
-
-// 异步执行：不阻塞
-function asyncOperation(): Promise<void> {
-  console.info('开始异步操作');
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.info('异步操作完成');
-      resolve();
-    }, 1000);
-  });
-}
-
-asyncOperation();
-console.info('立即继续执行其他任务');
-// 输出顺序：开始异步操作 -> 立即继续执行其他任务 -> 异步操作完成（1秒后）
+loadMessage();  // 顶层不能使用await，直接调用返回Promise，不等待完成
 ```
 
-### 并发与并行的区别
+示例末尾的`loadMessage()`没有加`await`：`await`只能用于`async`函数内部，模块顶层不支持`await`，因此顶层直接调用异步函数，其返回的`Promise`不被等待，程序不等待其完成即继续执行；而`await fetchMessage()`位于`loadMessage`内部，会等待`Promise`完成并取得结果后再继续执行。
 
-并发通过异步I/O交替推进多任务，并行通过多线程同时执行计算。
+关于`async`/`await`的更多用法与示例，可参见[异步并发 (Promise和async/await)](../arkts-utils/async-concurrency-overview.md#asyncawait)。
 
-<!-- @[concurrent_vs_parallel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ConcurrentVsParallel.ets) -->
+### Promise及其常用操作
+
+`Promise`是表示异步操作最终结果的对象。创建后处于`pending`（进行中）状态，异步操作完成后转换为`fulfilled`（已完成）或`rejected`（已拒绝）状态，且状态转换不可逆。通过`then`、`catch`方法可注册成功、失败回调，并支持链式调用串联多个异步步骤。
+
+<!-- @[promise_basic_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Concurrency.ets) -->
 
 ``` TypeScript
-import http from '@ohos.net.http';
-import { worker } from '@kit.ArkTS';
+// 通过构造函数创建Promise
+let basicPromise = new Promise<string>((resolve, reject) => {
+  let success = true;
+  if (success) {
+    resolve('操作成功');
+  } else {
+    reject(new Error('操作失败'));
+  }
+});
 
-// 并发示例：异步I/O操作
-async function concurrentExample(): Promise<void> {
-  console.info('开始并发任务');
-  
-  // 启动多个异步任务（不等待）
-  let task1 = http.createHttp().request('/api/users');
-  let task2 = http.createHttp().request('/api/products');
-  let task3 = http.createHttp().request('/api/orders');
-  
-  // 并发执行，等待所有任务完成
-  let responses = await Promise.all([task1, task2, task3]);
-  let users = responses[0];
-  let products = responses[1];
-  let orders = responses[2];
-  
-  console.info('所有并发任务完成');
-}
-
-// 并行示例：多线程计算
-function parallelExample(): void {
-  console.info('开始并行任务');
-  
-  // 创建Worker线程进行并行计算
-  let worker1 = new worker.ThreadWorker('entry/ets/workers/ComputeWorker.ets');
-  let worker2 = new worker.ThreadWorker('entry/ets/workers/ComputeWorker.ets');
-  
-  worker1.postMessage({ task: 'calculate1' });
-  worker2.postMessage({ task: 'calculate2' });
-  
-  worker1.onmessage = (e) => console.info(`Worker 1 完成: ${e.data}`);
-  worker2.onmessage = (e) => console.info(`Worker 2 完成: ${e.data}`);
-}
+// then注册成功回调，catch注册失败回调，支持链式调用
+basicPromise
+  .then((value: string): string => `${value}，继续处理`)
+  .then((value: string): void => console.info(`${value}`))
+  .catch((error: Error): void => console.error(`${error.message}`));
 ```
 
-### ArkTS并发的实现机制
+处理多个异步任务时，可以组合使用`Promise`的常用静态方法：`Promise.all`等待全部完成、任一失败则整体失败；`Promise.race`采用最先完成的结果；`Promise.allSettled`无论成败都收集全部结果；`Promise.any`采用第一个成功的结果。
 
-ArkTS的异步机制基于事件循环：同步代码先执行，微任务（Promise.then）在当前任务后执行，宏任务（setTimeout）在下一轮执行。
+<!-- @[promise_combinators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Concurrency.ets) -->
+
+``` TypeScript
+// Promise.all()：等待全部完成，任一失败则整体失败
+let allPromise = Promise.all([Promise.resolve(1), Promise.resolve(2)]);
+allPromise.then((values: number[]): void => console.info(`${values.join(', ')}`)); // 1, 2
+
+// Promise.race()：采用最先完成的Promise结果
+let fastPromise = new Promise<string>((resolve: (value: string) => void) => {
+  setTimeout(() => resolve('fast'), 100);
+});
+let slowPromise = new Promise<string>((resolve: (value: string) => void) => {
+  setTimeout(() => resolve('slow'), 200);
+});
+Promise.race([fastPromise, slowPromise])
+  .then((value: string): void => console.info(`${value}`)); // 'fast'
+
+// Promise.allSettled()：等待全部完成，无论成败都收集结果
+Promise.allSettled([Promise.resolve('ok'), Promise.reject(new Error('bad'))])
+  .then((results): void => {
+    results.forEach((result): void => {
+      console.info(`${result.status}`);
+    });
+  });
+// 输出两行日志：
+// 'fulfilled'
+// 'rejected'
+
+// Promise.any()：采用第一个成功的结果
+Promise.any([Promise.reject(new Error('A失败')), Promise.resolve('B成功')])
+  .then((value: string): void => console.info(`${value}`)); // 'B成功'
+```
+
+`Promise`回调的执行时机由事件循环决定：同步代码先执行，微任务（`Promise.then`）在当前任务后执行，宏任务（`setTimeout`）在下一轮执行。
 
 <!-- @[event_loop_mechanism](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
 
@@ -125,1163 +145,163 @@ Promise.resolve().then(() => {
 console.info('4. 同步代码结束');
 
 // 输出顺序：
-// 1. 开始
-// 4. 同步代码结束
-// 3. Promise（微任务）
-// 2. setTimeout（宏任务）
+// '1. 开始'
+// '4. 同步代码结束'
+// '3. Promise（微任务）'
+// '2. setTimeout（宏任务）'
 ```
 
-## 异步函数
+关于`Promise`状态、`then`/`catch`/`finally`回调与链式调用的详细介绍，可参见[异步并发 (Promise和async/await)](../arkts-utils/async-concurrency-overview.md#promise)。
 
-async函数自动将返回值包装为Promise，配合await实现同步风格的异步代码。
+## 多线程并发
 
-### 异步函数的声明语法
+多线程并发允许同时执行多段代码：UI主线程继续响应用户操作和更新界面，后台线程执行耗时操作，避免应用卡顿。ArkTS通过`TaskPool`和`Worker`提供多线程并发能力，两者均基于Actor并发模型实现，线程间内存隔离、通过消息传递通信。
 
-在function关键字前添加async即声明异步函数，也可用于箭头函数。
+多线程并发中`TaskPool`与`Worker`的特点差异和选型建议，可参见[TaskPool和Worker的对比](../arkts-utils/taskpool-vs-worker.md)。
 
-<!-- @[async_function_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+### Worker简介
+
+`Worker`为应用程序提供多线程运行环境，实现应用程序执行过程与宿主线程分离，适合与宿主线程长期交互、任务逻辑复杂、需要自行管理线程生命周期的场景。
+
+使用`Worker`的基本流程：宿主线程创建`Worker`实例后，通过`postMessage`向Worker线程发送消息，通过`onmessage`接收Worker线程返回的处理结果；任务完成后调用`terminate`销毁Worker线程，避免资源泄漏。
+
+<!-- @[worker_basic_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/WorkerUsage.ts) -->
 
 ``` TypeScript
-// 基本异步函数声明
-async function fetchData(): Promise<string> {
-  return 'Data loaded';
+// WorkerUsage.ets
+import { worker, MessageEvents } from '@kit.ArkTS';
+
+// 使用Worker在后台线程执行耗时任务
+function useWorker(): void {
+  // 创建Worker线程实例（Worker线程文件需位于模块的ets目录下）
+  const wk: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/MyWorker.ets');
+
+  // 接收Worker线程返回的消息
+  wk.onmessage = (e: MessageEvents): void => {
+    console.info(`收到Worker消息: ${e.data}`);
+    // 任务完成后销毁Worker线程，避免资源泄漏
+    wk.terminate();
+  };
+
+  // 向Worker线程发送消息，触发后台任务
+  wk.postMessage('hello world');
 }
 
-// 箭头函数形式的异步函数
-const fetchUserData = async (): Promise<User> => {
-  return { id: 1, name: 'Alice' };
-};
+// useWorker(); // 一般在按钮单击等UI事件回调中调用
+```
 
-// 类方法形式的异步函数
-class DataService {
-  async getData(): Promise<string> {
-    return 'Data from service';
+宿主线程引用的Worker线程文件（`entry/ets/workers/MyWorker.ets`）内容如下，Worker线程通过`workerPort`接收宿主线程消息，处理完成后将结果发回宿主线程：
+
+<!-- @[worker_thread_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/workers/MyWorker.ets) -->
+
+``` TypeScript
+// entry/src/main/ets/workers/MyWorker.ets
+import { worker, MessageEvents, ErrorEvent, ThreadWorkerGlobalScope } from '@kit.ArkTS';
+
+// Worker线程与宿主线程通信的端口
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+// 接收宿主线程通过postMessage发送的消息
+workerPort.onmessage = (e: MessageEvents): void => {
+  // 收到消息后在此执行耗时任务（如图片解码、数据压缩），示例省略具体任务实现；注意不能直接操作UI
+  if (e.data === 'hello world') {
+    // 处理结果通过postMessage发回宿主线程，由宿主线程处理并更新UI
+    workerPort.postMessage('success');
   }
 }
 
-interface User {
-  id: number;
-  name: string;
+// Worker线程发生错误时的回调
+workerPort.onerror = (err: ErrorEvent): void => {
+  console.error(`MyWorker error: ${err.message}`);
 }
-
-// 使用异步函数
-async function main(): Promise<void> {
-  let data = await fetchData();
-  console.info(`${data}`);
-  
-  let user = await fetchUserData();
-  console.info(`${user.name}`);
-  
-  let service = new DataService();
-  let serviceData = await service.getData();
-  console.info(`${serviceData}`);
-}
-
-main();
 ```
 
-### 异步函数的返回值特性
+Worker线程使用时需注意以下约束：
 
-async函数的返回值自动包装为Promise，return 'Hello'等价于return Promise.resolve('Hello')。
+- **不能操作UI**：UI操作必须在主线程中执行，在Worker线程中操作UI可能导致界面异常或崩溃；需要更新界面时，应通过`postMessage`将结果发回宿主线程处理。
+- **线程间内存隔离**：Worker线程与宿主线程拥有独立的运行环境和内存，不能直接访问宿主线程的对象；跨线程传递的数据需可序列化（基本类型、普通对象等）或为可共享的Sendable对象，不可传递函数、循环引用，以及`Promise`、`Error`等特殊对象（已完成状态的`Promise`除外）。
+- **启动开销与数量限制**：每个`Worker`的启动存在一定内存开销，应避免频繁创建和销毁、优先复用；在内存允许的情况下，同一进程下最多支持同时开启64个Worker线程，且与`napi_create_ark_runtime`创建的runtime总数不超过80，实际可运行数量会根据内存使用情况动态调整。
 
-<!-- @[async_function_return_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+`Worker`的运作机制、创建方式等详情，可参见[Worker简介](../arkts-utils/worker-introduction.md)。
 
-``` TypeScript
-// 异步函数自动将返回值包装为Promise
-async function returnString(): Promise<string> {
-  return 'Hello'; // 自动包装为Promise.resolve('Hello')
-}
+### TaskPool简介
 
-async function returnNumber(): Promise<number> {
-  return 42; // 自动包装为Promise.resolve(42)
-}
+`TaskPool`为应用程序提供由系统统一管理的多线程环境，无需开发者管理线程生命周期。工作线程数量由系统根据任务负载动态扩缩容，调度和资源利用率更优。
 
-interface ReturnObjectResult {
-  id: number;
-}
+使用`TaskPool`的基本流程：任务函数需要使用`@Concurrent`装饰器标注，通过`taskpool.execute`传入任务函数和参数后，任务被调度到后台线程执行，结果以`Promise`形式返回。相比`Worker`，`TaskPool`接口更易用、资源开销更低，是大多数耗时任务（如[耗时任务并发场景](../arkts-utils/time-consuming-task-overview.md)）的推荐选择。
 
-async function returnObject(): Promise<ReturnObjectResult> {
-  return { id: 1 }; // 自动包装为Promise.resolve({ id: 1 })
-}
-
-// 使用返回值
-returnString().then((data: string) => console.info(data)); // Hello
-returnNumber().then((num: number) => console.info(`${num}`));   // 42
-returnObject().then((obj: ReturnObjectResult) => console.info(`${obj.id}`)); // 1
-
-// 异步函数返回Promise
-async function returnPromise(): Promise<string> {
-  return Promise.resolve('Already a Promise');
-}
-
-returnPromise().then((data: string) => console.info(data)); // Already a Promise
-```
-
-### 异步函数与普通函数的区别
-
-普通函数同步执行，调用方等待结果返回；async函数异步执行，调用方立即获得Promise，不阻塞后续代码。
-
-<!-- @[sync_vs_async_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @[taskpool_basic_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TaskPoolUsage.ets) -->
 
 ``` TypeScript
-// 普通函数：同步执行
-function normalFunction(): string {
-  console.info('Normal function executing');
-  return 'Result';
+import { taskpool } from '@kit.ArkTS';
+
+// 任务函数需要使用@Concurrent装饰器标注
+@Concurrent
+function add(a: number, b: number): number {
+  return a + b; // 在TaskPool后台线程中执行
 }
 
-let result1 = normalFunction();
-console.info(`After normal function: ${result1}`);
-// 输出顺序：
-// Normal function executing
-// After normal function: Result
-
-// 异步函数：异步执行
-async function asyncFunction(): Promise<string> {
-  console.info('Async function executing');
-  return 'AsyncResult';
-}
-
-let result2 = asyncFunction();
-console.info(`After async function: ${result2}`);
-// 输出顺序：
-// Async function executing
-// After async function: Promise { 'AsyncResult' }
-
-// 异步函数需要await或 .then() 获取结果
-asyncFunction().then(result => console.info('Async result:', result));
-// 输出：Async result: AsyncResult
-```
-
-### 异步函数的错误处理
-
-在async函数中用try-catch包裹await表达式，捕获Promise rejection。
-
-<!-- @[async_function_error_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AsyncErrorHandling.ets) -->
-
-``` TypeScript
-import http from '@ohos.net.http';
-
-// 异步函数中的错误处理
-async function fetchDataWithError(): Promise<string> {
+async function useTaskPool(): Promise<void> {
   try {
-    // 模拟可能失败的异步操作
-    let response = await http.createHttp().request('/api/data');
-    
-    if (response.responseCode !== 200) {
-      throw new Error(`HTTP ${response.responseCode}`);
-    }
-    
-    let data = response.result;
-    return JSON.stringify(data);
+    // 传入任务函数和参数，任务被调度到后台线程执行
+    let result = await taskpool.execute(add, 2, 3);
+    console.info(`计算结果: ${result}`); // 5
   } catch (error) {
-    console.error('Fetch error:', (error as Error).message);
-    throw new Error((error as Error).message); // 重新抛出错误
+    console.error(`任务执行失败: ${(error as Error).message}`);
   }
 }
 
-// 使用try-catch处理异步函数的错误
-async function handleFetch(): Promise<void> {
-  try {
-    let data = await fetchDataWithError();
-    console.info(`Data: ${data}`);
-  } catch (error) {
-    console.error('Handler error:', (error as Error).message);
-  }
-}
-
-// 使用Promise.catch() 处理错误
-fetchDataWithError()
-  .then(data => console.info(`Success: ${data}`))
-  .catch((error: Error) => console.error(`Catch: ${error.message}`));
+useTaskPool();
 ```
 
-## await关键字
+`TaskPool`的运作机制、使用规范等详情，可参见[TaskPool简介](../arkts-utils/taskpool-introduction.md)。
 
-await等待异步操作完成，暂停函数执行直到Promise解决。
+### 线程间通信及Sendable对象共享
 
-### await的使用规则
+ArkTS的线程间通信基于Actor并发模型，线程间内存隔离，需要通过消息传递完成数据和命令的交互。
 
-`await`关键字用于等待Promise完成并获取其结果，只能在async函数内部使用。
+普通对象（包括普通类实例、数组等）采用标准的序列化（Structured Clone）方式传递：发送时将对象序列化为与引擎无关的数据，接收方反序列化后得到一个内容一致的新对象。因此传递过程相当于一次深拷贝——接收方拿到的是副本，对其修改不会影响原对象；序列化、反序列化和深拷贝的开销随对象大小和嵌套复杂度增长，传递大对象时需注意通信耗时。同时，函数、循环引用等无法序列化的内容不能以该方式传递。
 
-<!-- @[ts_await_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Async.ts) -->
+对于需要跨线程传递的大对象，可以使用Sendable对象：通过`@Sendable`装饰器标注的类可在线程间以引用方式传递，跨线程前后指向同一个对象，无需拷贝，能显著降低通信开销。使用`@Sendable`类需满足以下主要约束：
+
+- 类的父类和实现的接口必须也是Sendable的，成员属性的类型必须是Sendable支持的数据类型（基础类型、其他Sendable对象等）；
+- 不能使用对象字面量或数组字面量初始化Sendable对象，须通过`new`创建；
+- 类内部不能访问当前模块上下文环境中定义的变量；
+- 成员不支持类型别名、计算属性名和`!`断言。
+
+完整规则见[Sendable使用规则](../arkts-utils/sendable-constraints.md)。
+
+<!-- @[sendable_basic_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/SendableUsage.ets) -->
 
 ``` TypeScript
-async function example(): Promise<void> {
-  // await只能在async函数内使用
-  let result = await Promise.resolve('Hello');
-  console.info(`${result}`);
-}
+import { taskpool } from '@kit.ArkTS';
 
-// 错误示例：在普通函数中使用await
-function normalFunction() {
-    let result = await Promise.resolve('Hello'); // 编译错误
-}
+// @Sendable装饰器标注的类可在线程间以引用方式共享
+@Sendable
+class SharedCounter {
+  public count: number = 0;
 
-// await可以用于任何Promise
-async function awaitExample(): Promise<void> {
-  // 等待Promise.resolve()
-  let result1 = await Promise.resolve('Immediate');
-  console.info(`${result1}`);
-
-  // 等待Promise.reject()（需要错误处理）
-  try {
-    let result2 = await Promise.reject('Error');
-  } catch (error) {
-    console.error('Caught:', error);
+  increase(): void {
+    this.count++;
   }
-
-  // 等待setTimeout创建的Promise
-  let result3 = await new Promise<string>((resolve) => {
-    setTimeout(() => resolve('Delayed'), 1000);
-  });
-  console.info(`${result3}`);
 }
 
-awaitExample();
+// 任务函数使用@Concurrent装饰器标注，可接收Sendable对象参数
+@Concurrent
+function consumeSharedCounter(counter: SharedCounter): number {
+  counter.increase();
+  return counter.count;
+}
+
+async function useSendable(): Promise<void> {
+  let counter = new SharedCounter();
+  // Sendable对象引用传递，跨线程前后是同一个对象
+  let result = await taskpool.execute(consumeSharedCounter, counter);
+  console.info(`子线程返回的count: ${result}`); // 1
+  console.info(`宿主线程读取的count: ${counter.count}`); // 1，与子线程共享同一对象
+}
+
+useSendable();
 ```
 
-### await与Promise的关联
-
-await等待Promise完成并取出resolve的值，被reject时抛出异常由try-catch捕获。
-
-<!-- @[await_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AwaitPromise.ets) -->
-
-``` TypeScript
-import http from '@ohos.net.http';
-
-async function awaitPromise(): Promise<void> {
-  // await等待Promise完成，获取resolve的值
-  let promise1 = Promise.resolve(42);
-  let value1 = await promise1;
-  console.info(`Value 1: ${value1}`); // 42
-  
-  // await捕获Promise的错误
-  let promise2 = Promise.reject(new Error('Failed'));
-  try {
-    let value2 = await promise2;
-  } catch (error) {
-    console.error(`Error 2: ${(error as Error).message}`); // Failed
-  }
-  
-  // await等待fetch请求
-  try {
-    let response = await http.createHttp().request('/api/data');
-    let data = response.result;
-    console.info(`Data: ${data}`);
-  } catch (error) {
-    console.error(`Fetch failed: ${(error as Error).message}`);
-  }
-}
-
-awaitPromise();
-```
-
-### 多个await的串行执行
-
-多个await按顺序执行，前一个完成后才执行下一个，适用于依赖关系的异步任务。
-
-<!-- @[await_serial_execution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-async function serialExecution(): Promise<void> {
-  console.info('Start');
-  
-  // 串行执行：一个接一个
-  let result1 = await new Promise<string>((resolve) => {
-    setTimeout(() => {
-      console.info('Task 1 completed');
-      resolve('Result 1');
-    }, 1000);
-  });
-  
-  let result2 = await new Promise<string>((resolve) => {
-    setTimeout(() => {
-      console.info('Task 2 completed');
-      resolve('Result 2');
-    }, 1000);
-  });
-  
-  let result3 = await new Promise<string>((resolve) => {
-    setTimeout(() => {
-      console.info('Task 3 completed');
-      resolve('Result 3');
-    }, 1000);
-  });
-  
-  console.info(`All tasks completed: ${result1}, ${result2}, ${result3}`);
-}
-
-serialExecution();
-// 输出顺序：
-// Start
-// Task 1 completed（1秒后）
-// Task 2 completed（2秒后）
-// Task 3 completed（3秒后）
-// All tasks completed: Result 1 Result 2 Result 3
-```
-
-### await的非阻塞特性
-
-await暂停当前async函数的执行而非阻塞线程，控制权交回事件循环，Promise完成后恢复执行。
-
-<!-- @[await_non_blocking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-async function nonBlockingExample(): Promise<void> {
-  console.info('1. Async function start');
-  
-  // await等待Promise，但不阻塞外部代码
-  await new Promise<void>((resolve: () => void) => {
-    setTimeout(() => {
-      console.info('2. Promise resolved');
-      resolve();
-    }, 1000);
-  });
-  
-  console.info('3. Async function end');
-}
-
-nonBlockingExample();
-console.info('4. External code continues');
-
-// 输出顺序：
-// 1. Async function start
-// 4. External code continues（不等待）
-// 2. Promise resolved（1秒后）
-// 3. Async function end
-```
-
-## Promise对象
-
-Promise表示异步操作的结果，支持链式调用和错误处理。
-
-### Promise的三种状态
-
-Promise有pending、fulfilled、rejected三种状态，表示异步操作的进行、成功和失败。
-
-<!-- @[promise_states](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-// Pending状态
-let pendingPromise: Promise<void> = new Promise<void>((resolve: () => void, reject: (reason: Error) => void) => {
-  // 未调用resolve或reject，保持Pending状态
-});
-
-console.info('Promise 处于 Pending 状态'); // Promise { <pending> }
-
-// Fulfilled状态（成功）
-let fulfilledPromise: Promise<string> = new Promise<string>((resolve: (value: string) => void) => {
-  resolve('Success');
-});
-
-fulfilledPromise.then((value: string) => console.info(value)); // Success
-
-// Rejected状态（失败）
-let rejectedPromise: Promise<string> = new Promise<string>(
-  (resolve: (value: string) => void, reject: (reason: Error) => void) => {
-    reject(new Error('Failure'));
-  }
-);
-
-rejectedPromise.catch((error: Error) => console.error(error.message)); // Failure
-
-// 状态转换：只能从Pending -> Fulfilled或Pending -> Rejected
-let irreversiblePromise: Promise<string> = new Promise<string>(
-  (resolve: (value: string) => void, reject: (reason: Error) => void) => {
-    resolve('First resolve');
-    reject(new Error('Second reject')); // 无效，Promise状态已确定
-  }
-);
-
-irreversiblePromise.then((value: string) => console.info(value)); // First resolve
-```
-
-### Promise的创建方式
-
-Promise通过new Promise((resolve, reject) => {...})创建，也可用Promise.resolve和Promise.reject快捷创建已完成的Promise。
-
-<!-- @[promise_creation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-// 方式1：使用Promise构造函数
-let promise1 = new Promise<string>((resolve, reject) => {
-  // 异步操作
-  setTimeout(() => {
-    let success = true;
-    if (success) {
-      resolve('Operation succeeded');
-    } else {
-      reject(new Error('Operation failed'));
-    }
-  }, 1000);
-});
-
-// 方式2：使用Promise.resolve()
-let promise2 = Promise.resolve('Immediately resolved');
-
-// 方式3：使用Promise.reject()
-let promise3 = Promise.reject(new Error('Immediately rejected'));
-
-// 方式4：封装异步操作为Promise
-function delay(ms: number): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-}
-
-async function useDelay(): Promise<void> {
-  console.info('Waiting...');
-  await delay(1000);
-  console.info('Done waiting');
-}
-
-useDelay();
-```
-
-### Promise的链式调用
-
-Promise链式调用通过then方法串联多个异步操作，实现顺序执行。
-
-<!-- @[promise_chaining](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-// Promise链式调用
-Promise.resolve(1)
-  .then((value: number): number => {
-    console.info(`Step 1: ${value}`);
-    return value + 1;
-  })
-  .then((value: number): number => {
-    console.info(`Step 2: ${value}`);
-    return value * 2;
-  })
-  .then((value: number): string => {
-    console.info(`Step 3: ${value}`);
-    return `Final: ${value}`;
-  })
-  .then((result: string): void => {
-    console.info(`Final result: ${result}`);
-  });
-
-// 输出：
-// Step 1: 1
-// Step 2: 2
-// Step 3: 4
-// Final result: Final: 4
-
-// 错误处理链
-Promise.resolve(1)
-  .then((value: number): number => {
-    if (value < 10) {
-      throw new Error('Value too small');
-    }
-    return value;
-  })
-  .catch((error: Error): number => {
-    console.error(`Error caught: ${error.message}`);
-    return 10; // 恢复链式调用
-  })
-  .then((value: number): number => {
-    console.info(`Recovered value: ${value}`);
-    return value * 2;
-  })
-  .then((finalValue: number): void => {
-    console.info(`Final value: ${finalValue}`);
-  });
-
-// 输出：
-// Error caught: Value too small
-// Recovered value: 10
-// Final value: 20
-```
-
-### Promise的静态方法
-
-Promise提供resolve、reject、all、race等静态方法，用于创建和组合Promise实例。
-
-<!-- @[promise_static_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-// Promise.resolve() 和Promise.reject()
-let resolvedPromise: Promise<string> = Promise.resolve('Resolved value');
-let staticRejectedPromise: Promise<string> = Promise.reject(new Error('Rejected error'));
-
-resolvedPromise.then((value: string): void => console.info(value)); // Resolved value
-staticRejectedPromise.catch((error: Error): void => console.error(error.message)); // Rejected error
-
-// Promise.all()：等待所有Promise完成
-let staticPromise1: Promise<number> = Promise.resolve(1);
-let staticPromise2: Promise<number> = Promise.resolve(2);
-let staticPromise3: Promise<number> = Promise.resolve(3);
-
-Promise.all([staticPromise1, staticPromise2, staticPromise3])
-  .then((values: number[]): void => console.info(`All values: ${values.join(', ')}`)); // 1, 2, 3
-
-// Promise.all() 失败示例
-let failedPromise: Promise<number> = Promise.reject(new Error('Failed'));
-
-Promise.all([staticPromise1, failedPromise, staticPromise3])
-  .catch((error: Error): void => console.error(`One promise failed: ${error.message}`));
-
-// Promise.race()：返回最先完成的Promise
-let fastPromise: Promise<string> = new Promise<string>((resolve: (value: string) => void) => {
-  setTimeout(() => resolve('Fast'), 100);
-});
-
-let slowPromise: Promise<string> = new Promise<string>((resolve: (value: string) => void) => {
-  setTimeout(() => resolve('Slow'), 200);
-});
-
-Promise.race([fastPromise, slowPromise])
-  .then((value: string): void => console.info(`Race winner: ${value}`)); // Fast
-
-// Promise.allSettled()：返回所有Promise的结果（无论成功或失败）
-let successPromise: Promise<string> = Promise.resolve('Success');
-let failurePromise: Promise<string> = Promise.reject(new Error('Failure'));
-
-Promise.allSettled([successPromise, failurePromise])
-  .then((results): void => {
-    results.forEach((result): void => {
-      if (result.status === 'fulfilled') {
-        console.info(`Fulfilled: ${result.value}`);
-      } else {
-        console.info(`Rejected: ${result.reason}`);
-      }
-    });
-  });
-
-// Promise.any()：返回第一个成功的Promise（ES2021）
-let promiseA: Promise<string> = Promise.reject(new Error('A failed'));
-let promiseB: Promise<string> = Promise.resolve('B succeeded');
-let promiseC: Promise<string> = Promise.resolve('C succeeded');
-
-Promise.any([promiseA, promiseB, promiseC])
-  .then((value: string): void => console.info(`First success: ${value}`)) // B succeeded
-  .catch((_error: Error): void => console.error('All promises rejected'));
-```
-
-## 并发任务执行
-
-并发任务执行通过Promise.all、并发限制器等机制协调多个异步操作的执行顺序和资源占用，在保证吞吐量的同时避免资源耗尽。
-
-### Promise.all的使用
-
-`Promise.all`是一个并发执行多个Promise的方法，它接受一个Promise数组，返回一个新的Promise。
-
-<!-- @[promise_all_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/PromiseAllUsage.ets) -->
-
-``` TypeScript
-import http from '@ohos.net.http';
-
-// Promise.all：并行执行多个异步任务
-async function fetchAllData(): Promise<void> {
-  console.info('Fetching all data...');
-  
-  let startTime = Date.now();
-  
-  // 并行发起三个请求
-  let results = await Promise.all([
-    http.createHttp().request('/api/users').then(res => res.result),
-    http.createHttp().request('/api/products').then(res => res.result),
-    http.createHttp().request('/api/orders').then(res => res.result)
-  ]);
-  let users = results[0];
-  let products = results[1];
-  let orders = results[2];
-  
-  let endTime = Date.now();
-  console.info(`All requests completed in ${endTime - startTime}ms`);
-  
-  console.info(`Users: ${users}`);
-  console.info(`Products: ${products}`);
-  console.info(`Orders: ${orders}`);
-}
-
-fetchAllData();
-
-// Promise.all失败处理
-async function fetchAllWithErrorHandling(): Promise<void> {
-  try {
-    let results = await Promise.all([
-      http.createHttp().request('/api/data1').then(res => res.result),
-      http.createHttp().request('/api/data2').then(res => res.result),
-      http.createHttp().request('/api/data3').then(res => res.result)
-    ]);
-    let data1 = results[0];
-    let data2 = results[1];
-    let data3 = results[2];
-    
-    console.info(`All data fetched successfully: ${data1}, ${data2}, ${data3}`);
-  } catch (error) {
-    console.error(`At least one request failed: ${(error as Error).message}`);
-  }
-}
-```
-
-### Promise.race的使用
-
-`Promise.race`是一个竞赛执行多个Promise的方法，它返回最先完成（成功或失败）的Promise结果。
-
-<!-- @[promise_race_timeout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/PromiseRaceTimeout.ets) -->
-
-``` TypeScript
-import http from '@ohos.net.http';
-
-// Promise.race：竞赛模式，返回最先完成的Promise
-async function fetchWithTimeout(url: string, timeoutMs: number): Promise<string> {
-  // 创建超时Promise
-  let timeoutPromise: Promise<string> = new Promise<string>((_resolve, reject) => {
-    setTimeout(() => reject(new Error('Timeout')), timeoutMs);
-  });
-
-  // 创建请求Promise
-  let fetchPromise: Promise<string> = http.createHttp().request(url)
-    .then((res: http.HttpResponse) => res.result as string);
-
-  // 竞赛：超时或请求完成
-  try {
-    let result: string = await Promise.race<string>([fetchPromise, timeoutPromise]);
-    return result;
-  } catch (error) {
-    if ((error as Error).message === 'Timeout') {
-      console.error('Request timed out');
-    } else {
-      console.error(`Request failed: ${(error as Error).message}`);
-    }
-    throw new Error((error as Error).message);
-  }
-}
-
-// 使用示例
-async function testRace(): Promise<void> {
-  try {
-    let data = await fetchWithTimeout('/api/data', 5000);
-    console.info(`Data: ${data}`);
-  } catch (error) {
-    console.error('Failed to fetch data');
-  }
-}
-
-testRace();
-```
-
-### Promise.allSettled的使用
-
-`Promise.allSettled`是一个执行多个Promise并收集所有结果的方法，无论成功或失败都会等待所有Promise完成。
-
-<!-- @[promise_allsettled_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/PromiseAllSettledUsage.ets) -->
-
-``` TypeScript
-import http from '@ohos.net.http';
-
-interface FetchError {
-  error: string;
-}
-
-// Promise.allSettled：获取所有Promise的结果
-async function fetchMultipleUrls(urls: string[]): Promise<void> {
-  let fetchPromises = urls.map(url => 
-    http.createHttp().request(url)
-      .then(res => res.result)
-      .catch((error: Error): FetchError => ({ error: error.message }))
-  );
-  
-  let results = await Promise.allSettled(fetchPromises);
-  
-  // 统计成功和失败数量
-  let successCount = 0;
-  let failureCount = 0;
-  
-  results.forEach((result, index) => {
-    if (result.status === 'fulfilled') {
-      successCount++;
-      console.info(`URL ${index} success: ${result.value}`);
-    } else {
-      failureCount++;
-      console.error(`URL ${index} failed: ${result.reason}`);
-    }
-  });
-  
-  console.info(`Summary: ${successCount} successes, ${failureCount} failures`);
-}
-
-// 使用示例
-let urls = [
-  '/api/users',
-  '/api/products',
-  '/api/orders',
-  '/api/inventory'
-];
-
-fetchMultipleUrls(urls);
-```
-
-### Promise.any的使用
-
-`Promise.any`是一个执行多个Promise并返回第一个成功结果的方法，与Promise.race不同的是它只关心成功结果而忽略拒绝(reject)。
-
-<!-- @[promise_any_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/PromiseAnyUsage.ets) -->
-
-``` TypeScript
-import http from '@ohos.net.http';
-
-// Promise.any：返回第一个成功的Promise
-async function fetchFromMultipleSources(): Promise<Object> {
-  let sources = [
-    'EXAMPLE_API_URL_1',
-    'EXAMPLE_API_URL_2',
-    'EXAMPLE_API_URL_3'
-  ];
-  
-  let fetchPromises = sources.map((source: string): Promise<Object> => 
-    http.createHttp().request(source)
-      .then((res): Object => {
-        if (res.responseCode !== 200) {
-          throw new Error(`HTTP ${res.responseCode}`);
-        }
-        return res.result as Object;
-      })
-  );
-  
-  try {
-    // 使用第一个成功的响应
-    let data = await Promise.any(fetchPromises);
-    console.info(`Data from first successful source: ${data}`);
-    return data;
-  } catch (error) {
-    console.error(`All sources failed: ${(error as Error).message}`);
-    throw new Error((error as Error).message);
-  }
-}
-
-fetchFromMultipleSources();
-```
-
-## 生成器与异步迭代
-
-TypeScript支持`function*`、`yield`、异步生成器和`for await...of`。ArkTS不支持生成器函数，异步流程优先通过`Promise`、`async`/`await`、数组遍历和显式任务队列表达。
-
-### TypeScript生成器对照
-
-TypeScript的function*生成器在ArkTS中不支持，使用数组和普通函数替代。
-
-**TypeScript对照**
-
-<!-- @[ts_generator_note](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Async.ts) -->
-
-``` TypeScript
-// TypeScript对照写法，ArkTS不支持：
-function* numberGenerator() {
-    yield 1;
-    yield 2;
-    yield 3;
-}
-```
-
-### 使用数组和普通函数替代生成器
-
-当需要按需生成序列数据时，可用返回数组的普通函数替代生成器，如`createRange(start, end)`返回`number[]`。
-
-<!-- @[create_range](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-function createRange(start: number, end: number): number[] {
-  let result: number[] = [];
-  for (let i: number = start; i <= end; i++) {
-    result.push(i);
-  }
-  return result;
-}
-
-let rangeValues: number[] = createRange(1, 5);
-for (let value of rangeValues) {
-  console.info(`${value}`);
-}
-```
-
-### 使用Promise处理异步序列
-
-通过`for...of`配合`await`串行处理多个异步数据源，每次等待前一个完成后再处理下一个。
-
-<!-- @[async_data_sources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-async function fetchDataSource1(): Promise<string> {
-  return 'Data 1';
-}
-
-async function fetchDataSource2(): Promise<string> {
-  return 'Data 2';
-}
-
-async function fetchDataSource3(): Promise<string> {
-  return 'Data 3';
-}
-
-async function processAsyncSources(): Promise<void> {
-  let sources: Promise<string>[] = [
-    fetchDataSource1(),
-    fetchDataSource2(),
-    fetchDataSource3()
-  ];
-
-  for (let source of sources) {
-    try {
-      let data: string = await source;
-      console.info(`Processed: ${data}`);
-    } catch (error) {
-      console.error(`Source failed: ${(error as Error).message}`);
-    }
-  }
-}
-```
-
-### for await...of
-
-`for await...of`用于遍历可迭代对象，自动`await`每个元素。当数据源是`Promise`数组时，`for await...of`会依次等待每个`Promise`完成，适用于需要按顺序处理异步结果的场景。
-
-<!-- @[for_await_of](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-async function processAsyncItems(): Promise<void> {
-  let asyncItems: Promise<string>[] = [
-    Promise.resolve('item1'),
-    Promise.resolve('item2'),
-    Promise.resolve('item3')
-  ];
-
-  for await (const item of asyncItems) {
-    console.info(`${item}`); // item1, item2, item3
-  }
-}
-
-processAsyncItems();
-```
-
-也可以使用`for...of`遍历`Promise`数组并手动`await`，效果与`for await...of`等价：
-
-<!-- @[for_of_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-async function processAsyncItemsManually(): Promise<void> {
-  let asyncItems: Promise<string>[] = [
-    Promise.resolve('item1'),
-    Promise.resolve('item2'),
-    Promise.resolve('item3')
-  ];
-
-  for (let itemPromise of asyncItems) {
-    let item: string = await itemPromise;
-    console.info(`${item}`); // item1, item2, item3
-  }
-}
-
-processAsyncItemsManually();
-```
-
-## 并发控制
-
-并发限制器控制同时执行的异步任务数量，避免资源耗尽。
-
-### 限制并发请求数量
-
-并发限制器通过维护一个固定大小的执行池，确保同时运行的异步任务不超过设定阈值，典型实现使用计数器配合Promise队列。
-
-<!-- @[concurrency_limiter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-// 并发限制器
-class RequestConcurrencyLimiter {
-  private maxConcurrency: number;
-  private currentConcurrency: number = 0;
-  private queue: (() => Promise<void>)[] = [];
-  
-  constructor(maxConcurrency: number) {
-    this.maxConcurrency = maxConcurrency;
-  }
-  
-  async run<T>(task: () => Promise<T>): Promise<T> {
-    // 如果当前并发数已达上限，加入队列等待
-    if (this.currentConcurrency >= this.maxConcurrency) {
-      return new Promise<T>((resolve: (value: T) => void, reject: (reason: Error) => void) => {
-        this.queue.push(async (): Promise<void> => {
-          try {
-            let result: T = await this.executeTask<T>(task);
-            resolve(result);
-          } catch (error) {
-            reject(error as Error);
-          }
-        });
-      });
-    }
-    
-    return this.executeTask<T>(task);
-  }
-  
-  private async executeTask<T>(task: () => Promise<T>): Promise<T> {
-    this.currentConcurrency++;
-    
-    try {
-      let result: T = await task();
-      return result;
-    } finally {
-      this.currentConcurrency--;
-      
-      // 执行队列中的下一个任务
-      if (this.queue.length > 0) {
-        let nextTask: (() => Promise<void>) | undefined = this.queue.shift();
-        if (nextTask) {
-          nextTask();
-        }
-      }
-    }
-  }
-}
-
-function fetchWithLimitRequest(url: string): Promise<string> {
-  return Promise.resolve(`response from ${url}`);
-}
-
-// 使用示例
-async function fetchWithLimit(limiterUrls: string[], maxConcurrency: number): Promise<void> {
-  let limiter: RequestConcurrencyLimiter = new RequestConcurrencyLimiter(maxConcurrency);
-  
-  let tasks: Promise<string>[] = limiterUrls.map((url: string): Promise<string> => 
-    limiter.run<string>((): Promise<string> => fetchWithLimitRequest(url))
-  );
-  
-  let results: string[] = await Promise.all(tasks);
-  console.info(`All requests completed: ${results.length}`);
-}
-
-let limiterUrls: string[] = [];
-for (let i: number = 0; i < 20; i++) {
-  limiterUrls.push(`/api/data/${i}`);
-}
-fetchWithLimit(limiterUrls, 5); // 限制最多5个并发请求
-```
-
-### 任务队列的实现
-
-任务队列将异步任务排队串行执行，确保前一个完成后再启动下一个。
-
-<!-- @[task_queue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-// 任务队列
-class TaskQueue {
-  private tasks: (() => Promise<void>)[] = [];
-  private processing: boolean = false;
-  
-  addTask(task: () => Promise<void>): void {
-    this.tasks.push(task);
-    this.processQueue();
-  }
-  
-  private async processQueue(): Promise<void> {
-    if (this.processing || this.tasks.length === 0) {
-      return;
-    }
-    
-    this.processing = true;
-    
-    while (this.tasks.length > 0) {
-      let task: (() => Promise<void>) | undefined = this.tasks.shift();
-      if (task === undefined) {
-        continue;
-      }
-      try {
-        await task();
-      } catch (error) {
-        console.error(`Task failed: ${(error as Error).message}`);
-      }
-    }
-    
-    this.processing = false;
-  }
-}
-
-// 使用示例
-let taskQueue = new TaskQueue();
-
-taskQueue.addTask(async () => {
-  console.info('Task 1 started');
-  await new Promise<void>((resolve: () => void) => setTimeout(resolve, 1000));
-  console.info('Task 1 completed');
-});
-
-taskQueue.addTask(async () => {
-  console.info('Task 2 started');
-  await new Promise<void>((resolve: () => void) => setTimeout(resolve, 500));
-  console.info('Task 2 completed');
-});
-
-taskQueue.addTask(async () => {
-  console.info('Task 3 started');
-  await new Promise<void>((resolve: () => void) => setTimeout(resolve, 800));
-  console.info('Task 3 completed');
-});
-
-// 输出（串行执行）：
-// Task 1 started
-// Task 1 completed（1秒后）
-// Task 2 started
-// Task 2 completed（1.5秒后）
-// Task 3 started
-// Task 3 completed（2.3秒后）
-```
-
-### 信号量机制的模拟
-
-信号量通过计数器控制并发资源访问，限制同时执行的任务数量。
-
-<!-- @[semaphore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-// 信号量（Semaphore）
-class Semaphore {
-  private permits: number;
-  private waitQueue: ((permit: number) => void)[] = [];
-  
-  constructor(permits: number) {
-    this.permits = permits;
-  }
-  
-  async acquire(): Promise<number> {
-    if (this.permits > 0) {
-      this.permits--;
-      return this.permits;
-    }
-    
-    // 等待许可
-    return new Promise<number>((resolve) => {
-      this.waitQueue.push(resolve);
-    });
-  }
-  
-  release(): void {
-    this.permits++;
-    
-    // 通知等待队列中的第一个任务
-    if (this.waitQueue.length > 0) {
-      let nextWaiter: ((permit: number) => void) | undefined = this.waitQueue.shift();
-      if (nextWaiter !== undefined) {
-        this.permits--;
-        nextWaiter(this.permits);
-      }
-    }
-  }
-}
-
-// 使用示例
-async function limitedResourceAccess(semaphore: Semaphore): Promise<void> {
-  let permit = await semaphore.acquire();
-  
-  console.info('Accessing resource...');
-  await new Promise<void>((resolve: () => void) => setTimeout(resolve, 1000));
-  console.info('Resource access completed');
-  
-  semaphore.release();
-}
-
-let semaphore = new Semaphore(3); // 最多3个并发访问
-
-// 启动多个并发任务
-for (let i: number = 0; i < 10; i++) {
-  limitedResourceAccess(semaphore);
-}
-
-// 输出：最多同时3个任务访问资源
-```
-
-### 避免竞态条件的方案
-
-通过互斥锁或原子操作确保共享状态在并发访问时不被同时修改，防止竞态条件。
-
-<!-- @[race_condition_mutex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
-
-``` TypeScript
-interface SharedCounter {
-  value: number;
-}
-
-// 竞态条件示例
-let sharedData: SharedCounter = { value: 0 };
-
-async function incrementWithoutLock(): Promise<void> {
-  let current: number = sharedData.value;
-  await new Promise<void>((resolve: () => void) => setTimeout(resolve, 10)); // 模拟延迟
-  sharedData.value = current + 1;
-}
-
-// 不加锁：可能导致竞态条件
-async function raceConditionExample(): Promise<void> {
-  sharedData.value = 0;
-  
-  await Promise.all([
-    incrementWithoutLock(),
-    incrementWithoutLock(),
-    incrementWithoutLock()
-  ]);
-  
-  console.info(`Final value (race condition): ${sharedData.value}`); // 可能小于3
-}
-
-raceConditionExample();
-
-// 使用互斥锁（Mutex）避免竞态条件
-class Mutex {
-  private locked: boolean = false;
-  private queue: (() => void)[] = [];
-  
-  async lock(): Promise<void> {
-    if (!this.locked) {
-      this.locked = true;
-      return;
-    }
-    
-    return new Promise<void>((resolve: () => void) => {
-      this.queue.push(resolve);
-    });
-  }
-  
-  unlock(): void {
-    if (this.queue.length > 0) {
-      let nextWaiter: (() => void) | undefined = this.queue.shift();
-      if (nextWaiter) {
-        nextWaiter();
-      }
-    } else {
-      this.locked = false;
-    }
-  }
-}
-
-async function incrementWithLock(mutex: Mutex): Promise<void> {
-  await mutex.lock();
-  
-  try {
-    let current: number = sharedData.value;
-    await new Promise<void>((resolve: () => void) => setTimeout(resolve, 10));
-    sharedData.value = current + 1;
-  } finally {
-    mutex.unlock();
-  }
-}
-
-async function safeIncrementExample(): Promise<void> {
-  sharedData.value = 0;
-  let mutex: Mutex = new Mutex();
-  
-  await Promise.all([
-    incrementWithLock(mutex),
-    incrementWithLock(mutex),
-    incrementWithLock(mutex)
-  ]);
-  
-  console.info(`Final value (with lock): ${sharedData.value}`); // 3
-}
-
-safeIncrementExample();
-```
+关于线程间通信方式可参见[ArkTS线程间通信概述](../arkts-utils/interthread-communication-overview.md)；Sendable对象的使用约束和更多示例，可参见[Sendable对象简介](../arkts-utils/arkts-sendable.md)。

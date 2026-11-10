@@ -6,7 +6,7 @@
 <!--Designer: @wangxiayang-->
 <!--Tester: @lianxuanself; @laonie666; @panny060-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=906890335bf480362f63f05961ebc2618e5bb601 translatedAt=2026-07-02T12:58:08.159Z pushedAt=2026-07-03T10:42:31.355Z -->
+<!-- md-trans-meta sourceCommit=984fe39aae524bf4ef98b380133d62aecbb62a5e translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z -->
 
 ## G
 

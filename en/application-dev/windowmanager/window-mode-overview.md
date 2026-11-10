@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @yyuehao-->
 <!--Designer: @yyuehao-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e3c52b80ea412371fb2dea52b278788d7531f840 translatedAt=2026-07-16T06:47:37.140Z pushedAt=2026-07-16T10:53:50.881Z -->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T02:55:20.501Z pushedAt=2026-11-03T03:02:04.627Z nl=1 -->
 
 ## When to Use
 
@@ -29,7 +29,7 @@ Refer to the following sections for details on basic window mode capabilities, f
 Window modes are described by the [WindowStatusType](../reference/apis-arkui/arkts-apis-window-e.md#windowstatustype11) enum, which defines the display states of an app window in different scenarios. You can select an appropriate window mode based on app requirements, or dynamically listen for window mode changes to perform corresponding adaptation. The following sections detail the characteristics of each window mode, how to detect window mode changes, and how to configure window mode policies.
 
 > **NOTE**
->
+> 
 > Except that the **FULL_SCREEN** mode is always supported for the main window in non-[freeform window](freeform-window-overview.md#freeform-window) states, all other window modes must have their corresponding support policies configured in advance before they can be triggered.
 
 ### FULL_SCREEN
@@ -147,8 +147,8 @@ In the [freeform window](freeform-window-overview.md#freeform-window) state and 
   - In the [freeform window](freeform-window-overview.md#freeform-window) state, the window enters **FLOATING** display mode by default upon startup.
 
   - When the window is in full-screen mode or split-screen mode, the app calls the [recover()](../reference/apis-arkui/arkts-apis-window-Window.md#recover11) API.
-
-  - When the window is in full-screen mode or split-screen mode, the user taps the restore button in the system title bar.
+  
+  - When the window is in full-screen mode or split-screen mode, the user taps the restore button in the system title bar.  
 
 - **In non-freeform window state**
 
@@ -156,15 +156,15 @@ In the [freeform window](freeform-window-overview.md#freeform-window) state and 
 
   **Features:**
 
-- For the main window:
+  - For the main window:
 
-  - The main window enters freeform window mode only after entering the multi-window floating window or panoramic multi-window. For details, see [Introduction to Multi-Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro).
+    - The main window enters freeform window mode only after entering the multi-window floating window or panoramic multi-window. For details, see [Introduction to Multi-Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro).
 
-  - It does not support freely changing the window size and position through APIs such as [resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9) and [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1).
+    - It does not support freely changing the window size and position through APIs such as [resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9) and [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1).
 
-  - There is a limit on the maximum number of freeform windows on the same screen. When the limit is exceeded, opening a new freeform window replaces the freeform window that has been inactive the longest. The maximum number varies by product. For details, see the "Floating Windows" and "Multitask Views" sections in [Introduction to Multi-Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro).
+    - There is a limit on the maximum number of freeform windows on the same screen. When the limit is exceeded, opening a new freeform window replaces the freeform window that has been inactive the longest. The maximum number varies by product. For details, see the "Floating Windows" and "Multitask Views" sections in [Introduction to Multi-Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro).
 
-  - In freeform window mode, the main window always has a top bar. Users can drag the top bar to move the window, switch window modes, and perform other actions.
+    - In freeform window mode, the main window always has a top bar. Users can drag the top bar to move the window, switch window modes, and perform other actions.
 
     - Users can resize the window by dragging its edges.
 
@@ -325,5 +325,4 @@ The **supportWindowMode** attribute under the [abilities tag](../quick-start/mod
 - In the [freeform window](freeform-window-overview.md#freeform-window) state, this configuration method has the lowest priority compared with the other methods described above.
 
 - In the [freeform window](freeform-window-overview.md#freeform-window) state, when both **"fullscreen"** and **"split"** are configured, the window starts in floating window mode if the app's [targetAPIVersion](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) is earlier than 15, and starts in full-screen mode if the app's [targetAPIVersion](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) is 15 or later.
-
 <!--no_check-->

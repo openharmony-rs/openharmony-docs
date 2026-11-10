@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @ccllee1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=401e07b441128df94228166c78738543a33d077b translatedAt=2026-11-02T13:27:11.572Z pushedAt=2026-11-03T03:14:42.309Z nl=1 -->
 
 ## A
 
@@ -13,13 +14,21 @@
 
 [AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md) is a component manager at the [module](../quick-start/application-package-overview.md#multi-module-design-mechanism) level.
 
-### ArkTS Child Process
-
-An ArkTS child process is where the system automatically sets up an ArkTS runtime environment when it starts.
-
 ### App Linking
 
 App Linking is a technology that enables redirection between applications. It uses a URI (an HTTPS link) provided by the system to direct users to specific content within a target application. Users can access the content associated with the link regardless of whether the target application is installed. Compared to Deep Linking, this redirection method incorporates a domain verification mechanism, which helps prevent app spoofing and enhances security.
+
+### Application Continuation
+
+Application Continuation, also known as "cross-device migration", refers to the ability for a user to quickly switch from one device to another while operating an application, seamlessly continuing the application experience from the previous device. Specifically, during usage, when the usage scenario changes—the previously used device is no longer suitable for continuing the current task, or a more suitable device is available nearby—the user can choose to use a new device to continue the current task. After the continuation is complete, the application on the previous device can exit or remain, and the user can focus on the newly started device to continue executing the task.
+
+### ArkAF
+
+[ArkAF](./arkaf-overview.md) (Ark Agentic Framework) is an app capability development framework for the agent era. It provides three capability exposure mechanisms: the InsightIntent framework, the Skill framework, and the on-device A2A framework. These mechanisms help developers externalize app capabilities for system agents to invoke, enabling seamless collaboration between apps and agents.
+
+### ArkTS Child Process
+
+An ArkTS child process is where the system automatically sets up an ArkTS runtime environment when it starts.
 
 
 ## C
@@ -41,18 +50,34 @@ Within the Stage model, **Context** serves as the base class that defines the co
 
 Deep Linking is a technology that launches a specific application via a link. Its key characteristic is that it allows developers to define a scheme in any format. However, because it lacks a domain ownership verification mechanism, this approach carries the risk of being spoofed by other applications. This stands in clear contrast to App Linking, which uses standard HTTPS links and enforces domain verification to ensure uniqueness and security.
 
+### Distributed Ability Manager Service
+
+The Distributed Ability Manager Service (DAMS) is one of the core system services of the OpenHarmony Ability subsystem. Its process name is distributedsched, and it is a core component of the Distributed Task Scheduling subsystem. This service enables a local device to access or control components (Ability, that is, application components) on remote devices, providing underlying capability support for application continuation, application collaboration, and distributed intent in distributed scenarios. Within OpenHarmony, this service is also referred to as the Distributed Scheduler Service.
+
+### Multiton mode
+
+Multiton mode is a launch mode that allows multiple independent, concurrently running instances of the same application component (such as a UIAbility) to exist.
+
 
 ## F
 
 ### FA Model
 
-The FA model is an early application model that provides essential components and runtime mechanisms for applications. Each application component in this model has its own ArkTS engine instance, making it ideal for developing simple applications.
+The FA model is an early application model that provides essential components and runtime mechanisms for applications. In this model, each application component has its own ArkTS engine instance, making it suitable for developing simple applications. This model is no longer the primary recommendation, and it is advised to use the new Stage model for development.
 
 ## I
 
 ### Intent Provider Management
 
 [Intent provider management](../reference/apis-ability-kit/js-apis-app-ability-insightIntentProvider.md) enables an application to integrate its service functions into the InsightIntent framework by declaring standard or custom intents.
+
+
+## K
+
+### Cross-Device Migration
+
+Cross-device migration refers to migrating a UIAbility running on device A to device B. After the migration is complete, the UIAbility on device B continues the task, while the UIAbility on device A can decide whether to exit as needed.
+
 
 ## M
 
@@ -86,6 +111,17 @@ The stage model is the currently recommended application model, providing essent
 The stage model allows multiple application components to share a single ArkTS engine instance and supports state sharing and object invocation between components. This reduces memory overhead and enhances development efficiency, making it well-suited for complex application development.
 
 
+## T
+
+### Taihe
+
+A cross-language API programming model. Developers define business interfaces by writing IDL files (with the `ohidl` extension) and use the Taihe compiler tool to automatically generate interface glue code in the target language, simplifying the development process.
+
+### taihec
+
+The compiler tool of Taihe, used to parse `ohidl` files and generate target code.
+
+
 ## U
 
 ### UIAbility
@@ -102,28 +138,30 @@ A cold start occurs when a UIAbility instance is launched from a completely clos
 
 ### UIAbility Hot Start
 
-A hot start happens when a previously launched UIAbility instance, having been switched to the background, is started again. Since the instance does not need to be completely reconstructed, the system can quickly restore its previous state. The lifecycle skips the initial creation phases and directly triggers the **onNewWant** callback, after which the UIAbility moves to the foreground and triggers the **onForeground** callback.
+A hot start happens when a previously launched UIAbility instance, having been switched to the background, is started again. Since the instance does not need to be completely reconstructed, the system can quickly restore its previous state. The lifecycle skips the initial creation phases and directly triggers the onNewWant() callback, after which the UIAbility moves to the foreground and triggers the onForeground() callback.
 
 
-## Multiton Mode
+## X
 
-Multiton mode is a launch mode that allows multiple independent, concurrently running instances of the same application component (such as a UIAbility) to exist.
+### Explicit Want Launch
 
-
-## Cross-Device Migration
-
-Cross-device migration refers to the process where a UIAbility running on device A migrates to device B. After migration is complete, the UIAbility continues its task on device B, while the instance on device A can exit as needed.
-
-
-## Explicit Want Launch
-
-An explicit Want launch occurs when the caller specifies both the **abilityName** and **bundleName** in the [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) parameter when starting a target application component.
+Explicit Want launch refers to the case where, when launching a target application component, the caller specifies abilityName and bundleName in the [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) parameter. This is called explicit Want launch.
 
 Explicit Want launch is a straightforward and effective way to start a target application component when the specific object to handle the request is known.
 
+### System-Level so
 
-## Implicit Want Launch
+A so provided by the system, which is part of the operating system and released with the system image.
+
+
+## Y
+
+### Implicit Want Launch
 
 An implicit Want launch occurs when the caller does not specify the **abilityName** in the [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) parameter when starting a target application component.
 
 Implicit Want launch can be used when the target handler is not clearly defined. It allows the current application to directly invoke a capability provided by another application without needing to know which specific application provides that capability.
+
+### App-Level so
+
+An so independently developed by application developers through [Node-API](../napi/use-napi-process.md), which is part of the app and released with the app.

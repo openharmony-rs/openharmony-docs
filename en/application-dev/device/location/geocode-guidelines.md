@@ -6,7 +6,7 @@
 <!--Designer: @liu-binjun-->
 <!--Tester: @gcw_MslijYkf-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:19:01.350Z pushedAt=2026-06-30T02:08:22.609Z -->
+<!-- md-trans-meta sourceCommit=25047873a945112c1847d169e380e527e9af3ea2 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Scenario
 
@@ -47,8 +47,11 @@ The APIs used for conversion between latitude and longitude coordinates and geoc
       import { geoLocationManager } from '@kit.LocationKit';
       try {
           let isAvailable = geoLocationManager.isGeocoderAvailable();
+          if (!isAvailable) {
+              console.error("current device do not support geocoder");
+          }
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
@@ -59,32 +62,36 @@ The APIs used for conversion between latitude and longitude coordinates and geoc
       ```ts
       let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {"latitude": 31.12, "longitude": 121.11, "maxItems": 1};
       try {
-          geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err, data) => {
+          if (geoLocationManager.isGeocoderAvailable()) {
+            geoLocationManager.getAddressesFromLocation(reverseGeocodeRequest, (err,data) => {
               if (err) {
-                  console.error('getAddressesFromLocation err: ' + JSON.stringify(err));
+                console.error("getAddressesFromLocation errCode:" + err.code + ", message:"  + err.message);
               } else {
-                  console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
+                console.info('getAddressesFromLocation data: ' + JSON.stringify(data));
               }
-          });
+            });
+          }
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
    - Call **getAddressesFromLocationName** to convert geographic descriptions (i.e., location information) into coordinates.
 
       ```ts
-      let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "No. xx, xx Road, Pudong District, Shanghai", "maxItems": 1};
+      let geocodeRequest:geoLocationManager.GeoCodeRequest = {"description": "Zhangjiang Road, Pudong New Area, Shanghai", "maxItems": 1};
       try {
-          geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
+          if (geoLocationManager.isGeocoderAvailable()) {
+            geoLocationManager.getAddressesFromLocationName(geocodeRequest, (err, data) => {
               if (err) {
-                  console.error('getAddressesFromLocationName err: ' + JSON.stringify(err));
+                console.error("getAddressesFromLocationName errCode:" + err.code + ", message:"  + err.message);
               } else {
-                  console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
+                console.info('getAddressesFromLocationName data: ' + JSON.stringify(data));
               }
-          });
+            });
+          }
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 

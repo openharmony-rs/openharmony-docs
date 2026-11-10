@@ -1,12 +1,11 @@
 # Session Configuration Issues
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:21:05.769Z pushedAt=2026-07-21T07:36:03.646Z -->
+<!-- md-trans-meta sourceCommit=29523e2a8489d852406af99a8a760beda060b74a translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## Symptom
 
@@ -14,7 +13,7 @@ The camera fails to start normally, and errors are reported in session-related p
 
 ## Possible Causes
 
-The session configuration process consists of four main steps: `beginConfig`, `addInput`, `addOutput`, and `commitConfig`. The calling order of these steps cannot be changed, and all four steps must be configured successfully for the camera to function properly. The specific causes may include the following:
+The session configuration process consists of four steps: `beginConfig`, `addInput`, `addOutput`, and `commitConfig`. The calling sequence of these steps cannot be changed, and all four steps must be configured successfully for the camera to work properly. Possible causes include the following:
 
 1. [beginConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11) fails.
 

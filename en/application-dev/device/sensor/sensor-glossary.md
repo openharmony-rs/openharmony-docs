@@ -3,10 +3,10 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
+<!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=2cc3d788470dfc527ff67f0d956b9e3149129ee5 translatedAt=2026-08-20T06:25:09.110Z pushedAt=2026-08-20T13:23:34.462Z -->
+<!-- md-trans-meta sourceCommit=dbd6beaf49d9b240df66ac948d42843eb0eb17b4 translatedAt=2026-11-03T07:23:49.028Z pushedAt=2026-11-03T07:23:49.028Z -->
 
 ## C
 

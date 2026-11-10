@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes B-frame encoding, which uses bidirectional prediction from preceding and following frames to reduce temporal redundancy and improve compression for recording, export after editing, transcoding, and live streaming without low-latency requirements. B-frames increase end-to-end latency."
+keywords: [B-frame encoding, bidirectional prediction, maximum B-frame count, bitrate control modes]
+doctype: guide
+status: active
+---
+
 # High-Compression-Ratio B-Frame Encoding
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=78dc02e86b6783bd46329f5fd47839524773346f translatedAt=2026-10-22T04:08:52.362Z pushedAt=2026-10-22T13:29:50.825Z nl=1 -->
+<!-- md-trans-meta sourceCommit=908020b331b2d0fc8a0193a96bfbc54ad6afbbd3 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 B-frame video encoding is supported from API version 20.
 

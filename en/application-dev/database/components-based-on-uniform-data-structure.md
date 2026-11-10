@@ -1,12 +1,11 @@
 # Content Cards Based on Uniform Data Structs (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=bed4448494720f3be3d1109ceb94048202c4d1d7 translatedAt=2026-08-20T06:21:47.342Z pushedAt=2026-08-20T12:06:55.602Z -->
+<!-- md-trans-meta sourceCommit=00e8a691b2086a9b716dad517d6dbbefa0524493 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
 
 ## When to Use
 

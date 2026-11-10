@@ -1,10 +1,18 @@
+---
+kits: ["Media Kit / Media Services"]
+description: "Describes low-latency short audio playback using SoundPool, with one load supporting multiple playbacks, for brief sound effects such as camera shutters and system notifications."
+keywords: [SoundPool, short audio playback, low latency, ArkTS, sound effect playback, createSoundPool, loadComplete, playFinished, audio focus]
+doctype: guide
+status: active
+---
 # Using SoundPool to Play Short Sounds (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c54ee3c703f5cc7ef1444d6932d400b405f9ea74 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 The [SoundPool](media-kit-intro.md#soundpool) class provides APIs to implement low-latency playback of short sounds.
 
@@ -14,7 +22,9 @@ SoundPool currently supports playing of audio files that are under 1 MB in size 
 
 This topic walks you through on how to use the SoundPool APIs to implement low-latency playback. For details about the API declaration, see [SoundPool](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md).
 
-The full process includes creating a SoundPool instance, loading a sound (including decapsulation and decoding), setting playback parameters (loop mode, and playback priority), playing the sound, stopping the playback, and releasing the instance. (For details about the decoding formats, see [Audio Decoding](../avcodec/audio-decoding.md).)
+The process includes creating a SoundPool instance, loading audio resources (including demuxing and decoding), setting playback parameters such as loop mode and playback priority, controlling playback (play/stop), and releasing resources.
+
+For audio container formats supported during loading, see [Media Data Demuxing](../avcodec/avcodec-support-formats.md#media-data-demultiplexing). Demuxing mp4 audio is supported since API version 26.0.1. For supported decoding formats, see [Asynchronous Audio Decoding](../avcodec/audio-decoding.md).
 
 During application development, you must subscribe to playback state changes and call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.  
 
@@ -81,7 +91,7 @@ During application development, you must subscribe to playback state changes and
 
 5. Call **load()** to load a sound.
 
-    You can pass in a URI or an FD to load the sound. The following uses the FD as an example. For more methods, see [SoundPool](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#load).
+    You can load a sound by passing a URI or an fd. This example uses the fd method. For more methods, see [load](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#load).
 
     When the system finishes loading the sound, the **loadComplete** callback is invoked to notify the user that the loading is complete. Perform the subsequent play operation after the callback is received.
 

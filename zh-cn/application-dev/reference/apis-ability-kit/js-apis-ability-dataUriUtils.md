@@ -1,4 +1,10 @@
 # @ohos.ability.dataUriUtils (DataUriUtils模块)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @SKY2001-->
+<!--Designer: @yzkp-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
 
 DataUriUtils模块提供用于处理uri对象的能力，包括获取、绑定、删除和更新指定uri对象的路径末尾的ID。
@@ -18,6 +24,10 @@ import dataUriUtils from '@ohos.ability.dataUriUtils';
 getId(uri: string): number
 
 获取指定uri路径末尾的ID。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9废弃，建议使用[@ohos.app.ability.dataUriUtils](js-apis-app-ability-dataUriUtils.md)中的[dataUriUtils.getId](js-apis-app-ability-dataUriUtils.md#datauriutilsgetid)替代。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -49,6 +59,10 @@ attachId(uri: string, id: number): string
 
 将ID附加到uri的路径末尾。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9废弃，建议使用[@ohos.app.ability.dataUriUtils](js-apis-app-ability-dataUriUtils.md)中的[dataUriUtils.attachId](js-apis-app-ability-dataUriUtils.md#datauriutilsattachid)替代。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -72,7 +86,7 @@ import dataUriUtils from '@ohos.ability.dataUriUtils';
 let id = 1122;
 let uri = dataUriUtils.attachId(
     'com.example.dataUriUtils',
-	id,
+    id,
 );
 ```
 
@@ -83,6 +97,10 @@ let uri = dataUriUtils.attachId(
 deleteId(uri: string): string
 
 删除指定uri路径末尾的ID。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9废弃，建议使用[@ohos.app.ability.dataUriUtils](js-apis-app-ability-dataUriUtils.md)中的[dataUriUtils.deleteId](js-apis-app-ability-dataUriUtils.md#datauriutilsdeleteid)替代。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -114,6 +132,10 @@ updateId(uri: string, id: number): string
 
 更新指定uri中的ID。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9废弃，建议使用[@ohos.app.ability.dataUriUtils](js-apis-app-ability-dataUriUtils.md)中的[dataUriUtils.updateId](js-apis-app-ability-dataUriUtils.md#datauriutilsupdateid)替代。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -137,7 +159,7 @@ import dataUriUtils from '@ohos.ability.dataUriUtils';
 let id = 1122;
 let uri = dataUriUtils.updateId(
     'com.example.dataUriUtils/1221',
-	id
+    id
 );
 ```
 

@@ -1,10 +1,11 @@
 # UI Development (JavaScript-compatible Web-like Development Paradigm) Overview
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-10-29T08:55:05.490Z pushedAt=2026-10-30T03:09:22.854Z nl=1 -->
 
 The JavaScript-compatible web-like development paradigm uses the classical three-stage programming model, in which HML is used for building layouts, CSS for defining styles, and JavaScript for adding processing logic. UI components are associated with data through one-way data-binding. This means that when data changes, the UI automatically updates with the new data. This development paradigm has a low learning curve for frontend web developers, allowing them to quickly transform existing web applications into ArkUI applications. It could be helpful if you are developing small- and medium-sized applications with simple UIs.
 
@@ -21,7 +22,7 @@ ArkUI with the JavaScript-compatible web-like development paradigm consists of t
 
 - **Application Layer**
 
-  Contains applications with FAs you developed. The FA application in this document refers to the application with FAs developed using JavaScript.
+   Refers to FA applications you developed. Here, FA applications specifically refer to JS FA applications.
 
 - **Framework Layer**
 

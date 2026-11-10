@@ -39,8 +39,8 @@ target_link_libraries(entry PUBLIC
 
 **添加头文件**
 
+<!-- @[image_effect_include_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
 ```c++
-#include <hilog/log.h>
 #include <multimedia/image_effect/image_effect.h>
 #include <multimedia/image_effect/image_effect_filter.h>
 #include <multimedia/image_effect/image_effect_errors.h>
@@ -50,23 +50,19 @@ target_link_libraries(entry PUBLIC
 
 1. 创建ImageEffect实例。
 
-   ```c++
-   // 创建imageEffect实例，“ImageEdit”是imageEffect实例别名。
-   OH_ImageEffect *imageEffect = OH_ImageEffect_Create("ImageEdit");
+   <!-- @[image_effect_instance_creation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+   
+   ``` C++
+   OH_ImageEffect *imageEffect = OH_ImageEffect_Create("imageEdit");
    ```
 
 2. 添加EffectFilter滤镜。
 
-   ```c++
-   // 添加滤镜，获取OH_EffectFilter实例。多次调用该接口可以添加多个滤镜，组成滤镜链。
-   OH_EffectFilter *filter = OH_ImageEffect_AddFilter(imageEffect, OH_EFFECT_BRIGHTNESS_FILTER);
-   if (filter == nullptr) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_AddFilter fail!");
-       return;
-   }
-   // 设置滤镜参数, 例如：滤镜强度设置为50。
-   ImageEffect_Any value = { .dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT, .dataValue.floatValue = 50.f };
-   ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, OH_EFFECT_FILTER_INTENSITY_KEY, &value);
+   <!-- @[image_effect_add_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+   
+   ``` C++
+   OH_EffectFilter *filter = OH_ImageEffect_AddFilter(imageEffect, filterName);
+   CHECK_AND_RETURN_RET_LOG(filter != nullptr, filter, "OH_ImageEffect_AddFilter fail!");
    ```
 
 3. 设置处理数据。
@@ -75,57 +71,48 @@ target_link_libraries(entry PUBLIC
 
    OH_PixelmapNative的具体使用方法请参考[Pixelmap开发指导](image-pixelmap-operation-native.md)。
 
+   <!-- @[image_effect_pixelmap_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
-   // 设置输入的Pixelmap。
-   errorCode = OH_ImageEffect_SetInputPixelmap(imageEffect, inputPixelmap);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetInputPixelmap fail!");
-       return;
-   }
+   ImageEffect_ErrorCode errorCode = OH_ImageEffect_SetInputPixelmap(imageEffectPtr.get(), pixelmapNativePtr.get());
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetInputPixelMap fail! errorCode = %{public}d", errorCode);
 
    // 设置输出的Pixelmap（可选），不调用该接口时会在输入Pixelmap上直接生效滤镜效果。
-   errorCode = OH_ImageEffect_SetOutputPixelmap(imageEffect, outputPixelmap);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputPixelmap fail!");
-       return;
-   }
+   errorCode = OH_ImageEffect_SetOutputPixelmap(imageEffectPtr.get(), pixelmapNativePtr.get());
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetOutputPixelmap fail!");
    ```
 
    **场景二：设置OH_NativeBuffer输入类型。**
 
    OH_NativeBuffer的具体使用方法请参考[NativeBuffer开发指导](../../graphics/native-buffer-guidelines.md)。
 
+   <!-- @[image_effect_native_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // 设置输入的NativeBuffer。
-   errorCode = OH_ImageEffect_SetInputNativeBuffer(imageEffect, inputNativeBuffer);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetInputNativeBuffer fail!");
-       return;
-   }
+   ImageEffect_ErrorCode errorCode = OH_ImageEffect_SetInputNativeBuffer(imageEffect, inputNativeBuffer);
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetInputNativeBuffer fail!");
 
    // 设置输出的NativeBuffer（可选），不调用该接口时会在输入NativeBuffer上直接生效滤镜效果。
    errorCode = OH_ImageEffect_SetOutputNativeBuffer(imageEffect, outputNativeBuffer);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputNativeBuffer fail!");
-       return;
-   }
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetOutputNativeBuffer fail!");
    ```
 
    **场景三：设置URI输入类型。**
 
+   <!-- @[image_effect_url](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // 设置输入的URI。
-   errorCode = OH_ImageEffect_SetInputUri(imageEffect, inputUri);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetInputUri fail!");
-       return;
-   }
+   ImageEffect_ErrorCode errorCode = OH_ImageEffect_SetInputUri(imageEffectPtr.get(), path.c_str());
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetInputPixelMap fail! errorCode = %{public}d", errorCode);
+
    // 设置输出的URI（可选），不调用该接口时会在输入URI上直接生效滤镜效果。
-   errorCode = OH_ImageEffect_SetOutputUri(imageEffect, outputUri);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputUri fail!");
-       return;
-   }
+   errorCode = OH_ImageEffect_SetOutputUri(imageEffect, path.c_str());
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_SetOutputUri fail!");
    ```
 
    **场景四：设置纹理输入类型。**
@@ -223,46 +210,39 @@ target_link_libraries(entry PUBLIC
 
 4. 启动效果器。
 
+   <!-- @[image_effect_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
-   // 执行生效滤镜效果。
-   errorCode = OH_ImageEffect_Start(imageEffect);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_Start fail!");
-       return;
-   }
+   errorCode = OH_ImageEffect_Start(imageEffectPtr.get());
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_ImageEffect_Start fail! errorCode = %{public}d", errorCode);
    ```
 
 5. 停止生效效果（可选，仅在输入Surface场景下才有效）。
 
+   <!-- @[image_effect_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // 停止生效滤镜效果。
-   errorCode = OH_ImageEffect_Stop(imageEffect);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_Stop fail!");
-       return;
-   }
+   ImageEffect_ErrorCode errorCode = OH_ImageEffect_Stop(imageEffect);
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result, "OH_ImageEffect_Stop fail!");
    ```
 
 6. 序列化效果器（可选）。
 
+   <!-- @[image_effect_save](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
-   char *info = nullptr;
-   errorCode = OH_ImageEffect_Save(imageEffect, &info);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_Save fail!");
-       return;
-   }
+   // 序列化效果器(可选)。
+   char *imageinfo = nullptr;
+   errorCode = OH_ImageEffect_Save(imageEffect, &imageinfo);
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result, "OH_ImageEffect_Save fail!");
    ```
 
 7. 销毁效果器实例。
 
-   ```c++
-   // 释放imageEffect实例资源。
-   errorCode = OH_ImageEffect_Release(imageEffect);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_Release fail!");
-       return;
-   }
+   <!-- @[image_effect_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+   
+   ``` C++
+   ImageEffect_ErrorCode errorCode = OH_ImageEffect_Release(imageEffect);
+   CHECK_AND_RETURN_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, "OH_ImageEffect_Release fail!");
    ```
 
 ### 自定义滤镜
@@ -271,6 +251,7 @@ target_link_libraries(entry PUBLIC
 
 1. 定义 ImageEffect_FilterDelegate。
 
+   <!-- @[image_effect_buffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // 图像信息结构体。
    struct EffectBufferInfo {
@@ -280,61 +261,57 @@ target_link_libraries(entry PUBLIC
        int32_t rowSize = 0;
        ImageEffect_Format format = ImageEffect_Format::EFFECT_PIXEL_FORMAT_UNKNOWN;
    };
+   ```
 
+   <!-- @[image_effect_custom_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+   ```c++
    // 自定义滤镜具体实现。
-   ImageEffect_FilterDelegate filterDelegate = {
-       .setValue = [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) {
-           // 参数校验，校验成功时返回true，否则返回false。
-           // ...
-           return true;
-       },
-       .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData) {
-           return Render(filter, info, pushData);
-       },
-       .save = [](OH_EffectFilter *filter, char **info) {
-           // 获取自定义所设置的滤镜参数，其中"Brightness"为自定义滤镜的Key，由开发者自己任意指定。
-           ImageEffect_Any value;
-           ImageEffect_ErrorCode errorCode = OH_EffectFilter_GetValue(filter, "Brightness", &value);
-           if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_GetValue fail!");
-           return false;
-           }
-            
-           // 生成键值对信息。
-           json values;
-           values["Brightness"] = value.dataValue.floatValue;         
-           json root;
-           root["name"] = "CustomBrightness";
-           root["values"] = values;
-
-           // 将json对象转成字符串infoStr。
-           // ...
-
-           // 对*info赋值序列化字符串地址。
-           *info = infoStr;
-           return true;
-       },
-       .restore = [](const char *info) {
+   delegateBrightness = {
+       .setValue =
+           [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) {
+               // 参数校验，校验成功时返回true，否则返回false。
+               if (value->dataValue.floatValue >= DATA_VALUE_MIN && value->dataValue.floatValue <= DATA_VALUE_MAX) {
+                   return true;
+               } else {
+                   return false;
+               }
+           },
+       .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info,
+                    OH_EffectFilterDelegate_PushData pushData) { return RenderBrightness(filter, info, pushData); },
+       .save = SaveFilterBrightness,
+       .restore = [](const char *info) -> OH_EffectFilter * {
            // 创建OH_EffectFilter实例，其中"CustomBrightness"为自定义滤镜的滤镜名。
            OH_EffectFilter *filter = OH_EffectFilter_Create("CustomBrightness");
+           CHECK_AND_RETURN_RET_LOG(filter != nullptr, nullptr, "OH_EffectFilter_Create fail!");
            // 解析json字符串info获取key和value。
-           // ...
-
-           // 设置滤镜参数, value为info中按json解析出来的参数。
-           ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, "Brightness", &value);
-
-           // ...
+           std::map<std::string, std::string> parsedJson = Json::Parse(info);
+           if (parsedJson.find("values") != parsedJson.end()) {
+               std::string valuesStr = parsedJson["values"];
+               std::map<std::string, std::string> valuesJson = Json::Parse(valuesStr);
+               if (valuesJson.find("brightness") != valuesJson.end()) {
+                   float brightness =
+                       std::stof(valuesJson["brightness"].substr(1, valuesJson["brightness"].size() - 2));
+                   ImageEffect_Any value;
+                   value.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT;
+                   value.dataValue.floatValue = brightness;
+                   // 设置滤镜参数, value为info中按json解析出来的参数。
+                   LOG_E("brightness value: %{public}f ", value.dataValue.floatValue);
+                   ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, "brightness", &value);
+                   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, nullptr,
+                                            "OH_EffectFilter_SetValue fail!");
+               }
+           }
            return filter;
-       }
-   };
+       }};
    ```
 
    其中Render接口的实现分两种场景。
 
    **场景一：自定义算法可以直接修改info中的像素数据（比如：亮度调节滤镜）。**
 
+   <!-- @[image_effect_render_brightness](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
-   bool Render(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData)
+   bool RenderBrightness(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData)
    {
        // 获取图像信息具体参数。
        EffectBufferInfo inputBufferInfo;
@@ -345,7 +322,7 @@ target_link_libraries(entry PUBLIC
        OH_EffectBufferInfo_GetEffectFormat(info, &inputBufferInfo.format);
 
        // 调用自定义滤镜算法。
-       ApplyCustomAlgo(inputBufferInfo);
+       ApplyCustomBrightnessAlgo(filter, inputBufferInfo);
 
        // 编辑完成后调用pushData直接传递原图。
        pushData(filter, info);
@@ -355,8 +332,10 @@ target_link_libraries(entry PUBLIC
 
    **场景二：自定义算法不能直接修改info中的像素数据（比如：裁剪滤镜）。**
 
-   ```c++
-   bool Render(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData)
+   <!-- @[image_effect_render_crop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+   
+   ``` C++
+   bool RenderCrop(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData)
    {
        // 获取图像信息具体参数。
        EffectBufferInfo inputBufferInfo;
@@ -365,13 +344,13 @@ target_link_libraries(entry PUBLIC
        OH_EffectBufferInfo_GetHeight(info, &inputBufferInfo.height);
        OH_EffectBufferInfo_GetRowSize(info, &inputBufferInfo.rowSize);
        OH_EffectBufferInfo_GetEffectFormat(info, &inputBufferInfo.format);
-
+   
        // 创建输出像素信息。
-       EffectBufferInfo outputBufferInfo = CreateOutputBufferInfo(inputBufferInfo);
-
+       EffectBufferInfo outputBufferInfo;
+   
        // 调用自定义滤镜算法。
-       ApplyCustomAlgo(inputBufferInfo, outputBufferInfo);
-
+       ApplyCustomCropAlgo(filter, inputBufferInfo, outputBufferInfo);
+   
        // 生成outputOhInfo。
        OH_EffectBufferInfo *outputOhInfo = OH_EffectBufferInfo_Create();
        OH_EffectBufferInfo_SetAddr(outputOhInfo, outputBufferInfo.addr);
@@ -379,131 +358,140 @@ target_link_libraries(entry PUBLIC
        OH_EffectBufferInfo_SetHeight(outputOhInfo, outputBufferInfo.height);
        OH_EffectBufferInfo_SetRowSize(outputOhInfo, outputBufferInfo.rowSize);
        OH_EffectBufferInfo_SetEffectFormat(outputOhInfo, outputBufferInfo.format);
-
+   
        // 编辑完成后调用pushData传递outputOhInfo。
        pushData(filter, outputOhInfo);
-
+   
        // 释放资源。
        OH_EffectBufferInfo_Release(outputOhInfo);
-       ReleaseOutputBuffer(outputBufferInfo.addr);
-
+   
        return true;
    }
    ```
 
 2. 生成自定义滤镜信息。
 
-   ```c++
-   // 创建OH_EffectFilterInfo实例。
+   <!-- @[image_effect_create_custom_filter_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+   
+   ``` C++
+   // 创建 OH_EffectFilterInfo 实例。
    OH_EffectFilterInfo *customFilterInfo = OH_EffectFilterInfo_Create();
-   if (customFilterInfo ==nullptr) {
-       OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_GetValue fail!");
-       return;
-   }
-
+   CHECK_AND_RETURN_RET_LOG(customFilterInfo != nullptr, result, "OH_EffectFilterInfo_Create fail!");
    // 设置自定义滤镜名。
    OH_EffectFilterInfo_SetFilterName(customFilterInfo, "CustomBrightness");
-
    // 设置自定义滤镜所支持的内存类型。
-   ImageEffect_BufferType bufferTypeArray[] = { ImageEffect_BufferType::EFFECT_BUFFER_TYPE_PIXEL };
-   OH_EffectFilterInfo_SetSupportedBufferTypes(customFilterInfo, sizeof(bufferTypeArray) / sizeof(ImageEffect_BufferType), bufferTypeArray);
-
+   ImageEffect_BufferType bufferTypeArray[] = {ImageEffect_BufferType::EFFECT_BUFFER_TYPE_PIXEL};
+   OH_EffectFilterInfo_SetSupportedBufferTypes(customFilterInfo,
+       sizeof(bufferTypeArray) / sizeof(ImageEffect_BufferType), bufferTypeArray);
    // 设置自定义滤镜所支持的像素格式。
-   ImageEffect_Format formatArray[] = { ImageEffect_Format::EFFECT_PIXEL_FORMAT_RGBA8888 };
-   OH_EffectFilterInfo_SetSupportedFormats(customFilterInfo, sizeof(formatArray) / sizeof(ImageEffect_Format), formatArray);
+   ImageEffect_Format formatArray[] = {ImageEffect_Format::EFFECT_PIXEL_FORMAT_RGBA8888};
+   OH_EffectFilterInfo_SetSupportedFormats(customFilterInfo,
+       sizeof(formatArray) / sizeof(ImageEffect_Format), formatArray);
    ```
 
 3. 将 ImageEffect_FilterDelegate 注册到效果器。
 
-   ```c++
-   // 注册自定义滤镜。
-   ImageEffect_ErrorCode errorCode = OH_EffectFilter_Register(customFilterInfo, &filterDelegate);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_Register fail!");
-       return;
-   }
+   <!-- @[image_effect_custom_filter_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+   
+   ``` C++
+   ImageEffect_ErrorCode errorCode = OH_EffectFilter_Register(customFilterInfo, &delegateBrightness);
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_EffectFilter_Register fail! errorCode = %{public}d", errorCode);
    ```
 
 ### EffectFilter快速实现单个滤镜的处理效果
 
 1. 创建滤镜。
 
-   ```c++
+   <!-- @[image_effect_create_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+   
+   ``` C++
    // 创建滤镜。比如：创建对比度效果器。
-   OH_EffectFilter *filter = OH_EffectFilter_Create(OH_EFFECT_CONTRAST_FILTER);
+   OH_EffectFilter *filter = OH_EffectFilter_Create(filterName);
+   CHECK_AND_RETURN_LOG(filter != nullptr, "OH_EffectFilter_Create fail!");
    ```
 
 2. 设置滤镜参数。
 
-   ```c++
-   // 设置滤镜参数, 滤镜强度设置为50。
-   ImageEffect_Any value = {.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT, .dataValue.floatValue = 50.f};
+   <!-- @[image_effect_set_filter_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+   
+   ``` C++
+   // 设置滤镜参数, 滤镜强度设置为传入参数。
+   ImageEffect_Any value;
+   value.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT;
+   value.dataValue.floatValue = static_cast<float>(filterValue);
    ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, OH_EFFECT_FILTER_INTENSITY_KEY, &value);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_SetValue fail!");
-       return;
-   }
+   CHECK_AND_RETURN_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, "OH_EffectFilter_SetValue fail!");
    ```
 
 3. 生效滤镜。
 
-   ```c++
+   <!-- @[image_effect_filter_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+   
+   ``` C++
    // 生效滤镜效果。
    errorCode = OH_EffectFilter_Render(filter, inputPixelmap, outputPixelmap);
+   CHECK_AND_RETURN_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, "OH_EffectFilter_Render fail!");
    ```
 
 4. 销毁滤镜实例。
 
+   <!-- @[image_effect_filter_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // 销毁滤镜实例。
    errorCode = OH_EffectFilter_Release(filter);
+   CHECK_AND_RETURN_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, "OH_EffectFilter_Release fail!");
    ```
 
 ### 查询能力
 
 - 根据滤镜名查询滤镜信息。
 
+  <!-- @[image_effect_lookup_filter_info_by_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
   ```c++
-  // 创建OH_EffectFilterInfo实例。
   OH_EffectFilterInfo *filterInfo = OH_EffectFilterInfo_Create();
-  if (filterInfo == nullptr) {
-      OH_LOG_ERROR(LOG_APP, "OH_EffectFilterInfo_Create fail!");
-      return;
-  }
+  // 示例代码：传入nullptr的format，获取OH_Formats的size。
+  ImageEffect_ErrorCode errorCode = OH_EffectFilter_LookupFilterInfo(filterName.c_str(), filterInfo);
+  CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                           "OH_EffectFilter_LookupFilterInfo fail! errorCode = %{public}d", errorCode);
 
-  // 根据滤镜名查询滤镜能力信息。
-  ImageEffect_ErrorCode errorCode = OH_EffectFilter_LookupFilterInfo(OH_EFFECT_BRIGHTNESS_FILTER, filterInfo);
-  if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-      OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_LookupFilterInfo fail!");
-      return;
-  }
-
-  // 从滤镜能力信息中获取滤镜名。
   char *name = nullptr;
   OH_EffectFilterInfo_GetFilterName(filterInfo, &name);
 
-  // 获取支持的内存类型。
-  uint32_t supportedBufferTypesCnt = 0;
+  uint32_t supportedBufferTypesCount = 0;
   ImageEffect_BufferType *bufferTypeArray = nullptr;
-  OH_EffectFilterInfo_GetSupportedBufferTypes(filterInfo, &supportedBufferTypesCnt, &bufferTypeArray);
+  OH_EffectFilterInfo_GetSupportedBufferTypes(filterInfo, &supportedBufferTypesCount, &bufferTypeArray);
 
-  // 获取支持的像素类型信息。
-  uint32_t supportedFormatsCnt = 0;
+  uint32_t supportedFormatsCount = 0;
   ImageEffect_Format *formatArray = nullptr;
-  OH_EffectFilterInfo_GetSupportedFormats(filterInfo, &supportedFormatsCnt, &formatArray);
+  OH_EffectFilterInfo_GetSupportedFormats(filterInfo, &supportedFormatsCount, &formatArray);
 
-  // 销毁OH_EffectFilterInfo实例。
+  LOG_I("LookupFilterInfo: name=%{public}s, bufferTypesCount=%{public}d, formatsCount=%{public}d", name,
+        supportedBufferTypesCount, supportedFormatsCount);
+
+  std::string infoStr = CommonUtils::EffectInfoToString(filterInfo);
+  LOG_I("LookupFilterInfo:%{public}s", infoStr.c_str());
+  status = napi_create_string_utf8(env, infoStr.c_str(), strlen(infoStr.c_str()), &result);
+  CHECK_AND_RETURN_RET_LOG(status == napi_ok, result, "napi_create_string_utf8 fail!");
+
   OH_EffectFilterInfo_Release(filterInfo);
   ```
 
 - 根据条件查询满足条件的滤镜。
 
+  <!-- @[image_effect_lookup_filter_info_by_condition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
   ```c++
-  // 查询所有的Filter，需要主动进行资源释放。
-  ImageEffect_FilterNames *filterNames = OH_EffectFilter_LookupFilters("Default");
+  ImageEffect_FilterNames *filterNames = OH_EffectFilter_LookupFilters(key);
+  CHECK_AND_RETURN_RET_LOG(filterNames != nullptr, result, "OH_EffectFilter_LookupFilters fail!");
 
-  // ...
-
+  std::string res = "size: " + std::to_string(filterNames->size) + std::string(", name: ");
+  for (int i = 0; i < filterNames->size; i++) {
+      res += filterNames->nameList[i];
+      if (i < filterNames->size - 1) {
+          res += " | ";
+      }
+  }
+  status = napi_create_string_utf8(env, res.c_str(), res.size(), &result);
   // 释放FilterNames虚拟内存资源。
   OH_EffectFilter_ReleaseFilterNames();
   ```

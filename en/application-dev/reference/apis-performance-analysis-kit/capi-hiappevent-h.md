@@ -6,7 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=def5751db66d118154dbbdb9c9a83b1dcefa1e4c translatedAt=2026-09-16T09:58:38.232Z pushedAt=2026-09-20T09:01:52.216Z -->
+<!-- md-trans-meta sourceCommit=743022a8a2080f7f2ac5107125d4bd4cfe261860 translatedAt=2026-11-03T06:08:38.639Z pushedAt=2026-11-03T12:08:25.601Z nl=1 -->
 
 ## Overview
 
@@ -34,6 +34,7 @@ The **HiAppEvent** module provides event subscription and event logging function
 | [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md) | HiAppEvent_Watcher | Defines the event observer that receives application events. It is used to listen for and process application events. |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md) | HiAppEvent_Processor | Defines the processor for reporting application events. It is used for event reporting and management. Developers can customize data processing configurations to meet different data processing requirements. |
 | [HiAppEvent_Config](capi-hiappevent-hiappevent-config.md) | HiAppEvent_Config | Defines the configuration object for setting custom specifications of system events. It can be used to customize system event specification parameters. For parameter list settings, see [Macros](capi-hiappevent-param-h.md#macros) of application events. |
+| [OH_HiAppEvent_ExternalLog](capi-hiappevent-hiappevent-externallog.md) | OH_HiAppEvent_ExternalLog | Fault file information of external_log. This struct contains the file path, file generation timestamp, and file size. |
 
 ### Enums
 
@@ -42,6 +43,7 @@ The **HiAppEvent** module provides event subscription and event logging function
 | [HiAppEvent_ErrorCode](#hiappevent_errorcode) | HiAppEvent_ErrorCode | Enumerates the error codes used in the **HiAppEvent** module.|
 | [EventType](#eventtype) | - | Enumerates the event types. You are advised to select different event types based on application scenarios.|
 | [OH_HiAppEvent_FrameworkType](#oh_hiappevent_frameworktype) | - | Application framework type. You are advised to select an application framework type based on the actual application scenario.|
+| [OH_HiAppEvent_SysEvent](#oh_hiappevent_sysevent) | - | Enumerates the fault event types. |
 
 ### Functions
 
@@ -97,6 +99,8 @@ The **HiAppEvent** module provides event subscription and event logging function
 | [int OH_HiAppEvent_SetConfigItem(HiAppEvent_Config* config, const char* itemName, const char* itemValue)](#oh_hiappevent_setconfigitem) | - | Sets the items in the configuration object.|
 | [int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)](#oh_hiappevent_seteventconfig) | - | Sets event configuration parameters.<br> Configuration items vary depending on events. Currently, only the following events are supported:<br> **MAIN_THREAD_JANK**. (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-oh_hiappevent_seteventconfig).)<br> **MAIN_THREAD_JANK_V2**. (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-oh_hiappevent_seteventconfig).)<br> **EVENT_APP_CRASH**. (For details about the parameter configuration, see [Crash Event Overview](../../dfx/hiappevent-watcher-crash-events.md#oh_hiappevent_seteventconfig-parameter-settings).) This event is supported since API version 24.|
 | [int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)](#oh_hiappevent_reportframeworkmemanomaly) | - | Reports information about abnormal memory usage of the application framework.<br> The call frequency limit of this API is: it can be successfully called at most once per minute. If the frequency limit is exceeded, the error code HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED is returned.<br> When the application detects abnormal memory usage of the application framework and calling this API returns success:<br> 1. If the developer has subscribed to the application event whose event domain is "HIVIEWDFX" and whose event name is "FW_MEM_ANOMALY", the application receives a callback with the abnormal memory usage information of the application framework.<br> 2. If the developer has not subscribed to this application event, the application does not receive a callback with the abnormal memory usage information of the application framework. |
+| [typedef void (\*OH_HiAppEvent_ExternalLogCapacityReachedCallback)(OH_HiAppEvent_ExternalLog* externalLogArr, uint32_t arrLen)](#oh_hiappevent_externallogcapacityreachedcallback) | OH_HiAppEvent_ExternalLogCapacityReachedCallback | Defines a pointer to the callback invoked when the external_log fault file directory reaches the threshold, to pass the event content to the caller.<br>**Note:** The lifecycle of the object pointed to by the pointer in the callback is limited to within the callback function. Do not directly use the pointer outside the callback function. If caching is needed, perform a deep copy of the content pointed to by the pointer. |
+| [int OH_HiAppEvent_RegExternalLogCapacityReachedCallback(OH_HiAppEvent_ExternalLogCapacityReachedCallback callback)](#oh_hiappevent_regexternallogcapacityreachedcallback) | - | Registers the external_log log manager interface to notify the application to clean up and delete external_log files when the fault log sandbox directory capacity reaches the threshold. |
 
 ## Enum Description
 
@@ -160,6 +164,27 @@ Enumerates the application framework types. You are advised to select an applica
 | OH_FLUTTER_DART | Flutter_dart type.|
 | OH_REACT_NATIVE_HERMES | React_native_hermes type.|
 | OH_KMP_KOTLIN | Kmp_kotlin type.|
+
+### OH_HiAppEvent_SysEvent
+
+```c
+OH_HiAppEvent_SysEvent
+```
+
+**Description**
+
+Enumerates the system event types.
+
+**Since:** 26.0.1
+
+| Value | Description |
+| -- | -- |
+| OH_APP_CRASH = 1 | Crash event. |
+| OH_APP_FREEZE = 2 | Application freeze event. |
+| OH_RESOURCE_OVERLIMIT = 3 | Resource leak event. |
+| OH_ADDRESS_SANITIZER = 4 | Address out-of-bounds event. |
+| OH_APP_HICOLLIE = 5 | Task execution timeout event. |
+| OH_CPU_USAGE_HIGH = 6 | High CPU load event. |
 
 ## Function Description
 
@@ -1400,3 +1425,48 @@ Reports information about abnormal memory usage of the application framework.<br
 | Type| Description|
 | -- | -- |
 | int | **HIAPPEVENT_SUCCESS**: Operation succeeded.<br>         **HIAPPEVENT_INVALID_PARAM_VALUE**: Invalid parameter value.<br>         **HIAPPEVENT_OPERATE_FAILED**: Failed to write the system or application event, or obtain the timestamp.<br>**HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED**: The reporting frequency exceeds the limit.<br>         For details, see [HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode).|
+
+### OH_HiAppEvent_ExternalLogCapacityReachedCallback()
+
+```c
+typedef void (*OH_HiAppEvent_ExternalLogCapacityReachedCallback)(OH_HiAppEvent_ExternalLog* externalLogArr, uint32_t arrLen);
+```
+
+**Description**
+
+When the external_log fault file directory reaches the threshold, this callback is triggered to pass the event content to the caller.
+
+The lifecycle of the object pointed to by the pointer in the callback is limited to within the callback function. Do not directly use the pointer outside the callback function. If caching is needed, perform a deep copy of the content pointed to by the pointer.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_HiAppEvent_ExternalLog](capi-hiappevent-hiappevent-externallog.md)\* externalLogArr | Array of fault file information. |
+| uint32_t arrLen | Length of the fault file information array. |
+
+### OH_HiAppEvent_RegExternalLogCapacityReachedCallback()
+
+```c
+int OH_HiAppEvent_RegExternalLogCapacityReachedCallback(OH_HiAppEvent_ExternalLogCapacityReachedCallback callback)
+```
+
+**Description**
+
+Registers the manager interface for external_log fault files. Ensures that the application is notified to clean up and delete files when the capacity of the fault log sandbox directory reaches the threshold.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Parameter | Description |
+| -- | -- |
+| [OH_HiAppEvent_ExternalLogCapacityReachedCallback](#oh_hiappevent_externallogcapacityreachedcallback) callback | Callback invoked when the external_log fault file directory reaches the threshold. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| int | 0 if the manager is registered successfully; -100 otherwise. |

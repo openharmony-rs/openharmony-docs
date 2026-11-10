@@ -2,11 +2,11 @@
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
-<!--Owner: @qiiiiiiian-->
+<!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5afea8900a93c1d5d53117a86ba6b7c5d998328d translatedAt=2026-08-03T09:39:08.062Z pushedAt=2026-08-07T10:41:03.882Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-06T08:11:52.623Z pushedAt=2026-11-09T12:46:51.936Z nl=1 -->
 
 The **Accessibility** module provides accessibility event types and operations executable on accessibility nodes.
 
@@ -21,6 +21,7 @@ The **Accessibility** module provides accessibility event types and operations e
 import { accessibility } from '@kit.AccessibilityKit';
 ```
 
+
 ## AccessibilityEventType
 
 Enumerates accessibility event types.
@@ -28,6 +29,7 @@ Enumerates accessibility event types.
 **System API**: This is a system API.
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
 
 | Name                    | Value                   |Description|
 | ---------------------------------------- | ---- | ---------------------- |
@@ -105,6 +107,7 @@ Enumerates accessibility event types.
 | TYPE_FOCUS_INVISIBLE |71| Focus becomes invisible.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 | TYPE_ONE_FINGER_DOUBLE_TAP |72| Single-finger double tap gesture.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 | TYPE_TOUCH_GUIDE_GESTURE |73| Touch browsing gesture event.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| TYPE_PAGE_STATE_PRE_UPDATE |74| Indicates that the page state is about to be updated.<br>**Initial version:** 26.1.0<br>**Model constraint:** This API is only used under the Stage model. |
 
 ## AccessibilityAction
 
@@ -239,6 +242,7 @@ Enumerates the result types of operating virtual nodes for accessibility.
 | VIRTUAL_NODE_PARAMETER_IS_EMPTY    |  5 | The array of newly added virtual nodes is empty. |
 | INTERNAL_ERROR                     |  6 | System exception.            |
 | VIRTUAL_NODE_NOT_SUPPORTED         |  7 | Virtual node operations are not supported.   |
+
 
 ## AccessibilitySourceType
 

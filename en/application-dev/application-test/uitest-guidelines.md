@@ -5,7 +5,8 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-06T12:32:00.194Z pushedAt=2026-11-09T07:18:12.826Z nl=1 -->
 
 ## Overview
 
@@ -15,13 +16,12 @@ UITest provides UI search and operation simulation capabilities for key scenario
 
 UITest supports both ArkTS APIs and commands, providing flexible and efficient technical support for automated UI tests.
 
-**ArkTS script development**:
+**ArkTS script development**: 
 UITest provides simple and easy-to-use APIs for various test scenarios. It supports common UI interaction operations, such as tap, double-tap, long press, and swipe, helping you quickly develop automated test scripts based on UI interaction logic.
 
 **Command line testing**:
 UITest supports diversified test operations through commands, including obtaining the current screen screenshot, obtaining the component tree, recording the screen operation process, and easily injecting UI simulation events.
 
-![arkxtest-uitest](figures/Uitest.PNG)
 
 UITest consists of the client and server.
 
@@ -245,7 +245,7 @@ export default function abilityTest() {
     it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
       async (done: Function): Promise<void> => {
         let driver = Driver.create();
-        // Start the target application.     
+        // Start the target application.      
         await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then(result => {
         }).catch((err: Error) => {
           done();
@@ -334,7 +334,7 @@ export default function abilityTest() {
 
 > **Note**:
 > 1. You need to specify the path for saving screenshots to <!--RP6-->[the sandbox directory](../file-management/app-sandbox-directory.md)<!--RP6End--> of the application.
-> 2. The <!--RP7-->[Ability Privilege Level (APL)](../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism)<!--RP7End--> of the test HAP is **normal**. Therefore, the application sandbox path in the user-level encryption area must be used. In addition, the file should be saved in the subdirectory for saving the application's persistent data on the device. 
+> 2. The <!--RP7-->[Ability Privilege Level (APL)](../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism)<!--RP7End--> of the test HAP is **normal**. Therefore, the application sandbox path in the user-level encryption area must be used. In addition, the file should be saved in the subdirectory for saving the application's persistent data on the device.
 
 The following example shows how to capture a screenshot with the display ID and area specified and save the screenshot to a specified path. Before running the following code, implement the **Index.ets page** code by referring to "UI Test Example". In the multi-display scenario, to capture a screenshot of a specified display, you can call the API of the display module to <!--RP8-->[obtain the display object](../displaymanager/screenProperty-guideline.md#obtaining-a-display-object)<!--RP8End-->, and then <!--RP9-->[obtain display properties](../displaymanager/screenProperty-guideline.md#obtaining-display-properties)<!--RP9End-->.
 
@@ -617,7 +617,7 @@ The environment for OpenHarmony Device Connector (hdc) has been set up. For deta
 |---------------|---------------------------------|---------------------------------|
 | help          | - |  Displays the commands supported by the UITest tool.           |
 | screenCap       |[-p] [-d]| Captures a screenshot.<br>For details about the parameters, see [Obtaining a Screenshot](#obtaining-a-screenshot).|
-| dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>| Obtains the component tree.<br>For details about the parameters, see [Obtaining the Component Tree](#obtaining-the-component-tree).|
+| dumpLayout      |[-p] [-e] \<-i \| -a \| -b \| -w \| -m \| -d>| Get the control tree.<br>For the meaning of each parameter, see [Obtaining the Component Tree](#obtaining-the-component-tree).|
 | uiRecord        | \<record \| read>|Records UI operations.<br> **record**: starts recording the operations on the current page to **/data/local/tmp/record.csv**. To stop recording, press **Ctrl+C**.<br> **read**: reads and prints recorded data.<br>For details about the parameters, see [Recording UI Operations](#recording-ui-operations).|
 | uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| Injects UI simulation operations.<br>For details about the parameters, see [Injecting UI Simulation Operations](#injecting-ui-simulation-operations).|
 | --version | - |Obtains the version information about the current UITest tool.|
@@ -625,10 +625,10 @@ The environment for OpenHarmony Device Connector (hdc) has been set up. For deta
 
 ### Obtaining a Screenshot
 
-| Parameter   |   Level-2 Parameter  |Description      | 
+| Parameter   |   Level-2 Parameter  |Description      |
 |---------|---------|------------|
 | -p | \<savePath\> | Used to specify storage path and file name, which must be **/data/local/tmp/**. The default path is **/data/local/tmp**, and the file name format is **Timestamp+.png**.|
-| -d | \<displayId\> | Used to specify the ID of the display to capture in the multi-display scenario.<br> **Note**: This command is supported since API version 20.|
+| -d | \<displayId\> | In a multi-screen scenario, captures a screenshot of the screen with the specified ID. If this parameter is not specified, a screenshot of the screen with displayId 0 is captured by default.<br> **Note:** This command is supported since API version 20.|
 
 ```bash
 # Save the file in the format of Timestamp + .png in /data/local/tmp.
@@ -638,19 +638,24 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 ```
 
 ### Obtaining the Component Tree
-| Parameter   | Level-2 Parameter  |  Description      | 
+| Parameter   | Level-2 Parameter  |  Description      |
 |---------|---------|-----------|
 | -p | \<savePath\> | Used to specify storage path and file name, which must be **/data/local/tmp/**. The default path is **/data/local/tmp**, and the file name format is **Timestamp+.json**.|
 | -i | - | Used to disable filtering of invisible components and window merging.|
-| -a | - | Used to save the **BackgroundColor**, **Content**, **FontColor**, **FontSize**, and **extraAttrs** attributes of the component.<br>**Note**: By default, the preceding attributes are not saved. The **-a** and **-i** parameters cannot be used at the same time.| 
+| -a | - | Used to save the **BackgroundColor**, **Content**, **FontColor**, **FontSize**, and **extraAttrs** attributes of the component.<br>**Note**: By default, the preceding attributes are not saved. The **-a** and **-i** parameters cannot be used at the same time.|
 | -b | \<bundleName\> | Used to obtain the component tree information of the target window based on the specified bundle name.|
 | -w | \<windowId\>  | Used to obtain the component tree information of the target window based on the specified window ID.<br> **Note**:<br>You can use hidumper to obtain the window ID of an application. For details, see <!--RP11-->[Obtaining Application Window Information](../dfx/hidumper.md#obtaining-application-window-information)<!--RP11End-->.|
 | -m | \<true\|false\> | Used to specify whether to merge the window information when the component tree information is obtained. The value **true** means to merge window information, and **false** means the opposite. If this parameter is not set, the default value **true** is used.|
-| -d | \<displayId\>  | Used to specify the ID of the display whose component tree is to be obtained in the multi-display scenario.<br> **Note**:<br> 1. This command is supported since API version 20.<br>2. You can use hidumper to obtain the display ID of an application. For details, see <!--RP11-->[Obtaining Application Window Information](../dfx/hidumper.md#obtaining-application-window-information)<!--RP11End-->.|
+| -d | \<displayId\>  | In a multi-screen scenario, obtains the control tree on the screen with the specified ID. If this parameter is not specified, the control tree on the screen with displayId 0 is obtained by default.<br> **Note:**<br> 1. This command is supported since API version 20.<br>2. You can use the hidumper tool <!--RP11-->[to obtain application window information](../dfx/hidumper.md#obtaining-application-window-information)<!--RP11End-->, which includes the DisplayId of the window corresponding to the application.|
+| -e | \<attributeName\> | Extends the output with the specified attribute data. Multiple attributes are separated by commas (,). Value range: **uniqueId**, **accessibility**.<br>- **uniqueId**: outputs the unique identifier attribute of the control.<br>- **accessibility**: outputs the accessibility attribute data of the control.<br> **Note:**<br> 1. This command is supported since API version 23.<br>2. The accessibility value is supported since API version 26.1.0.|
 
 ```bash
 # Specify the file name and save the file in /data/local/tmp/.
 hdc shell uitest dumpLayout -p /data/local/tmp/1.json
+# Get the control tree and output the accessibility attribute data.
+hdc shell uitest dumpLayout -p /data/local/tmp/1.json -e accessibility
+# Get the control tree and output both the unique identifier and the accessibility attribute data.
+hdc shell uitest dumpLayout -p /data/local/tmp/1.json -e uniqueId,accessibility
 ```
 
 ### Recording UI Operations
@@ -783,7 +788,7 @@ hdc shell uitest uiInput fling 10 10 200 200 500
 # Execute the swipe operation.
 hdc shell uitest uiInput swipe 10 10 200 200 500
 
-# Execute the drag operation.
+# Execute the drag operation. 
 hdc shell uitest uiInput drag 10 10 100 100 500 
 ```
 
@@ -927,7 +932,7 @@ The UI test fails. The HiLog file contains the error message "uitest-api does no
 
 ### What should I do if the failure log contains "does not exist on current UI! Check if the UI has changed after you got the widget object"?
 
-**Symptom**
+**Symptom** 
 
 The UI test case fails. The HiLog file contains the error message "does not exist on current UI! Check if the UI has changed after you got the widget object".
 
@@ -941,7 +946,7 @@ Run the UI test case again to ensure that the component exists on the UI during 
 
 ### What should I do if the failure log contains "Cannot connect to AAMS, RET_ERR_CONNECTION_EXIST"?
 
-**Symptom**
+**Symptom** 
 
 The UI test case fails. The HiLog contains the error message "Cannot connect to AAMS, RET_ERR_CONNECTION_EXIST".
 
