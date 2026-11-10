@@ -187,7 +187,7 @@ setTransparentVideoLayoutMode(mode : SideBySideTransparentVideoLayoutMode): void
 
 > **说明：**
 >
-> - 透明视频是指每一帧画面都携带像素透明度信息的视频。如果入参非法设置，则当作普通视频播放。
+> 透明视频是指每一帧画面都携带像素透明度信息的视频。如果入参非法设置，则当作普通视频播放。
 
 **起始版本：** 26.1.0
 
