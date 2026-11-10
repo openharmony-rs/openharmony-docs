@@ -832,7 +832,7 @@ setFavorite(favoriteState: boolean): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 14000011       | System inner fail.         |
+| 14000011       | System inner fail. Possible causes: <br>This operation is not supported for assets in shared albums.         |
 
 **示例：**
 
