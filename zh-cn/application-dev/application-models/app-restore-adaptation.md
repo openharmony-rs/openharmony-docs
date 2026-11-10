@@ -47,9 +47,9 @@
 
 **数据与容量**
 
-- 备份数据存储在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)的parameters字段中，序列化后总大小上限为200KB，不适合存放大数据（如长文本草稿、大段编辑内容），此类数据使用[超大数据分流](#超大数据分流)。
+- 备份数据存储在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)的parameters字段中，序列化后总大小上限为200KB。
 - [onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)必须返回`ALL_AGREE`，否则数据不写入磁盘；若应用实现了[onSaveStateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestateasync20)（API版本20起），系统不再调用同步版onSaveState()，两者不要同时使用。
-- Want parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组，函数、Map/Set、Date、类实例不可直接传输，需先转换（详见[函数与类实例等字段的转换](#函数与类实例等字段的转换)）。
+- Want parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组，函数、Map/Set、Date、类实例等无法保存。
 - Navigation参数序列化对嵌套深度、属性个数、字符串长度等有上限（上限由系统内部实现决定、可能变化），超出的属性会被静默丢弃且无告警，恢复后的页面必须做[参数为空降级](#参数为空降级)。
 
 **页面栈恢复限制**
@@ -126,7 +126,7 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 
 ## 数据恢复
 
-适用：不需要恢复页面栈（可接受恢复启动后回到首页）、但有未持久化的临时数据（草稿、阅读进度、表单内容等）需要恢复的应用。系统不会恢复应用运行时状态（全局变量、用户数据、自定义业务数据），需要开发者通过[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)自行保存恢复。数据超出总大小限制时，结合[超大数据分流](#超大数据分流)分流。
+适用：不需要恢复页面栈（可接受恢复启动后回到首页）、但有未持久化的临时数据（草稿、阅读进度、表单内容等）需要恢复的应用。系统不会恢复应用运行时状态（全局变量、用户数据、自定义业务数据），需要开发者通过[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)自行保存恢复。
 
 ### 最小适配
 
