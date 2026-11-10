@@ -1101,7 +1101,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 ### onPasswordFailed
 
-onPasswordFailed(cumulativeFailedCount: number, userId: number): void
+onPasswordFailed(cumulativeFailedCount: number, accountId: number): void
 
 锁屏密码认证失败事件回调。当锁屏密码认证失败时触发此回调，指纹、人脸等生物识别认证失败不会触发。需要通过接口[adminManager.subscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_PASSWORD_FAILED事件。锁屏密码认证成功后累计失败次数重置为0，设备重启后累计失败次数不清零。累计失败次数达到200后，后续锁屏密码认证失败将不再触发此回调。
 
@@ -1118,7 +1118,7 @@ onPasswordFailed(cumulativeFailedCount: number, userId: number): void
 | 参数名                | 类型   | 必填 | 说明                                 |
 | -------------------- | ------ | ---- | ----------------------------------- |
 | cumulativeFailedCount | number | 是   | 锁屏密码认证失败的累计次数。取值范围：[0, 200]。             |
-| userId               | number | 是   | 发生锁屏密码认证失败的用户ID。           |
+| accountId            | number | 是   | 发生锁屏密码认证失败的用户ID。           |
 
 **示例：**
 
@@ -1143,8 +1143,8 @@ try {
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   // 回调实现
-  onPasswordFailed(cumulativeFailedCount: number, userId: number) {
-    console.info(`Password authentication failed, userId: ${userId}, cumulativeFailedCount: ${cumulativeFailedCount}.`);
+  onPasswordFailed(cumulativeFailedCount: number, accountId: number) {
+    console.info(`Password authentication failed, accountId: ${accountId}, cumulativeFailedCount: ${cumulativeFailedCount}.`);
   }
 }
 ```
