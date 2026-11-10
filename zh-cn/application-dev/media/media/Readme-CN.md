@@ -8,6 +8,7 @@
 <!--Adviser: @zzs911-->
 
 - [Media Kit简介](media-kit-intro.md)
+- [Media Kit指南配套示例代码](media-kit-samples.md)
 - 媒体开发指导(ArkTS)<!--media-kit-dev--arkts-->
   - 播放<!--media-playback-arkts-->
     - [使用AVPlayer播放音频(ArkTS)](using-avplayer-for-playback.md)

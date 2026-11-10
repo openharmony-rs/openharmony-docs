@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "从API版本23起提供空间渲染效果节点，支持固定摆位、旋转、扩展三种工作模式，基于左手坐标系在三维空间中对音频源进行定位、动态旋转和范围扩展，适用于构建沉浸式空间音频体验。"
+keywords: [OHAudioSuite, 空间音频渲染, EFFECT_NODE_TYPE_SPACE_RENDER, 固定摆位, 旋转模式, 扩展模式, 左手坐标系, 沉浸式音频, 3D音频]
+doctype: guide
+status: active
+---
+
 # 空间音频渲染(C/C++)
  <!--Kit: Audio Kit-->
  <!--Subsystem: Multimedia-->
@@ -44,8 +52,11 @@
 
 ### 在CMake脚本中链接动态库
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
+<!-- @[CMake_lib_suite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudio.so)
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
 
 ### 添加头文件

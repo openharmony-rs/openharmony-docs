@@ -706,7 +706,16 @@ struct PreInsertDemo {
 
 ### animateTo动效
 
-从API version 24开始，当父容器组件为[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)时，Repeat支持通过[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口为其显示区域内的子组件设置过渡动画效果。
+Repeat与动效一起使用时，Repeat的复用能力会与动效产生冲突，导致动效异常。
+
+从API version 24开始，当父容器组件为[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)时，Repeat会在动效过程中关闭复用能力，从而支持通过[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口为其显示区域内的子组件设置过渡动画效果。
+
+从API版本26.1.0开始，当父容器组件为[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)时，开发者可通过[RepeatOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatoptions)的allowReuseInAnimation属性设置Repeat在动效过程中的子组件复用策略，从而控制Repeat是否支持通过[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口为其显示区域内的子组件设置过渡动画效果。
+
+allowReuseInAnimation属性说明：
+- true：动效过程中复用能力仍保持开启。
+- false：动效过程中复用能力关闭，从而支持动效。
+- 默认值：Repeat的父容器组件为List时为false；父容器组件为Grid或WaterFlow时为true。
 
 Repeat子组件过渡动画的判定规则如下：
 1. 子组件从外部进入显示区域和预加载区域时，将被判定为插入组件。
@@ -717,7 +726,7 @@ Repeat子组件过渡动画的判定规则如下：
 
 > **说明：**
 >
-> - 仅支持与List配合使用，与其他容器组件配合使用时的动画效果为未定义行为。
+> - 仅支持与List、Grid、WaterFlow配合使用，与其他容器组件配合使用时的动画效果为未定义行为。
 > - 仅支持显示区域内子组件的动画效果，显示区域外子组件的动画效果为未定义行为。
 > - 过渡动画具体设置方式和动画效果请参考[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口。
 
@@ -817,7 +826,7 @@ class ItemInfo {
 
 Repeat在懒加载模式下具有复用池，从组件树中移除的子组件会被存入缓存池中备用，详见[节点更新/复用能力说明](#节点更新复用能力说明)。
 
-从API version 26.2.0开始，当开发者需要主动释放懒加载模式下复用池中的组件时，可以通过控制器[RepeatController](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatcontroller)实现。
+从API版本26.1.0开始，当开发者需要主动释放懒加载模式下复用池中的组件时，可以通过控制器[RepeatController](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatcontroller)实现。
 
 使用方式：创建RepeatController对象，并在创建Repeat组件时通过[RepeatOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatoptions)的controller字段完成绑定；需要清理缓存时，调用控制器上的[clearCache](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#clearcache)方法。
 
@@ -1765,7 +1774,7 @@ struct RepeatBuilderPage {
 }
 ```
 
-@Builder传参方式依次为makeBinding()、地址传递和值传递，界面展示如下图，进入页面后点击按钮改变数据。在@Builder构造函数中使用值传递传参不会引起函数内的UI刷新。
+@Builder传参方式依次为makeBinding()、引用传递和值传递，界面展示如下图，进入页面后点击按钮改变数据。在@Builder构造函数中使用值传递传参不会引起函数内的UI刷新。
 
 ![Repeat-Builder](figures/Repeat-Builder.png)
 

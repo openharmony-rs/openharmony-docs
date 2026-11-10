@@ -1356,6 +1356,138 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## ApplicationContext.onAppProcessStateChange
+
+onAppProcessStateChange(observer: AppProcessStateObserver): void
+
+注册应用内进程状态变化的监听，包括进程创建和终止。仅支持主线程调用。
+
+> **说明：**
+>
+> 单个应用最多支持有10个不同进程调用该接口进行注册；如果超过10个进程，调用该接口注册会返回16000165错误码；单个进程中注册数量没有限制。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| observer | [AppProcessStateObserver](js-apis-app-ability-appProcessStateObserver.md) | 是 | 进程创建或销毁时触发的观察者。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000050 | Connect to system server failed. |
+| 16000165 | The number of registered observers for the current application has reached the upper limit. |
+
+**示例：**
+
+```ts
+import { UIAbility, AppProcessStateObserver, appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let appProcessStateObserver: AppProcessStateObserver = {
+  onProcessCreated(processData: appManager.ProcessData) {
+    console.info(`onProcessCreated, processData: ${JSON.stringify(processData)}`);
+  },
+  onProcessDied(processData: appManager.ProcessData) {
+    console.info(`onProcessDied, processData: ${JSON.stringify(processData)}`);
+  }
+};
+
+export default class EntryAbility extends UIAbility {
+  onCreate(): void {
+    console.info('MyAbility onCreate');
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 注册应用内进程状态变化监听
+      applicationContext.onAppProcessStateChange(appProcessStateObserver);
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
+    console.info('Register appProcessStateObserver');
+  }
+
+  // 不再需要或应用退出时取消监听
+  onDestroy(): void {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.offAppProcessStateChange(appProcessStateObserver);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
+## ApplicationContext.offAppProcessStateChange
+
+offAppProcessStateChange(observer?: AppProcessStateObserver): void
+
+取消应用内进程状态变化的监听。仅支持主线程调用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| observer | [AppProcessStateObserver](js-apis-app-ability-appProcessStateObserver.md) | 否 | 通过[ApplicationContext.onAppProcessStateChange](#applicationcontextonappprocessstatechange)方法注册的观察者。<br/>-&nbsp;如果传入已定义的观察者，则取消该观察者的监听。<br/>-&nbsp;如果不传入参数，则取消当前进程注册的所有监听。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000050 | Connect to system server failed. |
+| 16300004 | The observer does not exist. |
+
+**示例：**
+
+假定已使用[ApplicationContext.onAppProcessStateChange](#applicationcontextonappprocessstatechange)方法注册名为appProcessStateObserver观察者，下面示例展示如何取消对应的事件监听。
+
+```ts
+import { UIAbility, AppProcessStateObserver, appManager} from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let appProcessStateObserver: AppProcessStateObserver = {
+  onProcessCreated(processData: appManager.ProcessData) {
+    console.info(`onProcessCreated, processData: ${JSON.stringify(processData)}`);
+  },
+  onProcessDied(processData: appManager.ProcessData) {
+    console.info(`onProcessDied, processData: ${JSON.stringify(processData)}`);
+  }
+};
+
+export default class EntryAbility extends UIAbility {
+  onDestroy(): void {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 如果传入已注册的观察者，则取消该监听
+      // 如果不传入参数，则取消当前进程注册的所有监听
+      applicationContext.offAppProcessStateChange(appProcessStateObserver);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
 ## ApplicationContext.getRunningProcessInformation
 
 getRunningProcessInformation(): Promise\<Array\<ProcessInformation>>
@@ -2152,6 +2284,113 @@ struct Index {
 }
 ```
 
+## ApplicationContext.setFont
+
+ArkTS-Dyn: setFont(font: string, enableAnimation: boolean): void
+
+ArkTS-Sta: setFont(font: string, enableAnimation: boolean): void
+
+设置应用的字体。仅支持在主线程调用。
+
+> **说明：**
+>
+> 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在[onWindowStageCreate()](js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期中通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法加载页面之后调用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| font | string | 是 | 字体，可以通过[UIContext.registerFont](../apis-arkui/arkts-apis-uicontext-font.md#registerfont)方法进行注册使用。 |
+| enableAnimation | boolean | 是 | 本次设置是否使用动画。true表示使用动画，false表示不使用动画。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000011 | The context does not exist. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  aboutToAppear() {
+    this.getUIContext().getFont().registerFont({
+      familyName: 'fontName',
+      familySrc: $rawfile('font/medium.ttf')  // 'font/medium.ttf'仅作为示例，实际使用时请替换为真实的字体资源文件。
+    });
+
+    // 设置应用使用注册的字体，不使用动画
+    this.context.getApplicationContext().setFont('fontName', false);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(50)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common } from '@kit.AbilityKit';
+import { Entry, Text, Column, Row, Component, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  aboutToAppear() {
+    this.getUIContext().getFont().registerFont({
+      familyName: 'fontName',
+      familySrc: 'font/medium.ttf'
+    })
+
+    // 设置应用使用注册的字体，不使用动画
+    this.context.getApplicationContext().setFont('fontName', false);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(50)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## ApplicationContext.setSupportedProcessCache<sup>12+</sup>
 
 setSupportedProcessCache(isSupported : boolean): void
@@ -2187,7 +2426,7 @@ setSupportedProcessCache(isSupported : boolean): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
@@ -2441,7 +2680,7 @@ enableDelayedProcessExit(): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                                    |
 | 16000050 | Internal error. Possible causes: Fail to connect system service. |
 | 16000150 | The current process has no UIAbility, and this API cannot be called. |
 
@@ -2498,7 +2737,7 @@ disableDelayedProcessExit(): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                                    |
 | 16000050 | Internal error. Possible causes: Fail to connect system service. |
 | 16000150 | The current process has no UIAbility, and this API cannot be called. |
 
@@ -2559,7 +2798,7 @@ startSelfUIAbility(want: Want): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported.                                    |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                                    |
 | 16000001 | The specified ability does not exist.                        |
 | 16000008 | The crowdtesting application expires.                        |
 | 16000009 | An ability cannot be started or stopped in Wukong mode.      |

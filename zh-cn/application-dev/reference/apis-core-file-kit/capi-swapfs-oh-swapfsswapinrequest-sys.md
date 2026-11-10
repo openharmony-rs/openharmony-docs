@@ -27,7 +27,7 @@ typedef struct OH_SwapfsSwapInRequest {...} OH_SwapfsSwapInRequest
 | 名称 | 描述 |
 | -- | -- |
 | uint64_t keyId | 由先前[OH_Swapfs_SwapOut](capi-oh-swapfs-h-sys.md#oh_swapfs_swapout)返回的keyId。用于唯一标识需要换入的数据。<br>**起始版本：** 26.0.0 |
-| void *buffer | 指向接收换入数据的缓冲区指针。不可为空指针。<br> 在Direct I/O模式下，缓冲区地址和大小必须对齐到SWAPFS_DIO_ALIGNMENT，且bufferSize必须大于等于occupiedSize。<br> 在缓冲模式下，bufferSize必须大于等于dataSize。<br> Direct I/O模式直接读写磁盘，不经过系统缓存；缓冲模式使用系统缓存。occupiedSize表示数据实际占用的存储大小，dataSize表示数据的逻辑大小。<br>**起始版本：** 26.0.0 |
-| uint64_t bufferSize | 接收缓冲区的大小，单位：Byte。<br> 在Direct I/O模式下必须大于等于occupiedSize且对齐到SWAPFS_DIO_ALIGNMENT。<br> 在缓冲模式下必须大于等于dataSize。建议根据实际数据大小设置合适的缓冲区大小以提升性能。<br> 取值范围：大于等于换入数据的大小，且必须大于0。超出范围或传入无效值时接口返回错误。<br>**起始版本：** 26.0.0 |
+| void *buffer | 指向接收换入数据的缓冲区指针。不可为空指针。<br> 在Direct I/O模式下，缓冲区地址和大小必须对齐到[SWAPFS_DIO_ALIGNMENT](capi-oh-swapfs-h-sys.md#宏定义)，且bufferSize必须大于等于occupiedSize。<br> 在缓冲模式下，bufferSize必须大于等于dataSize。<br> Direct I/O模式直接读写磁盘，不经过系统缓存；缓冲模式使用系统缓存。occupiedSize表示数据实际占用的存储大小，dataSize表示数据的逻辑大小。<br>**起始版本：** 26.0.0 |
+| uint64_t bufferSize | 接收缓冲区的大小，单位：Byte。<br> 在Direct I/O模式下必须大于等于occupiedSize且对齐到[SWAPFS_DIO_ALIGNMENT](capi-oh-swapfs-h-sys.md#宏定义)。<br> 在缓冲模式下必须大于等于dataSize。建议根据实际数据大小设置合适的缓冲区大小以提升性能。<br> 取值范围：大于等于换入数据的大小，且必须大于0。超出范围或传入无效值时接口返回错误。<br>**起始版本：** 26.0.0 |
 
 

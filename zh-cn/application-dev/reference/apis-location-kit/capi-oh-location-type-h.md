@@ -90,7 +90,7 @@ enum Location_UseScene
 
 | 枚举项 | 描述 |
 | -- | -- |
-| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | 导航场景。<br> 适用于在户外获取设备实时位置的场景，如车载、步行导航。<br> 主要使用GNSS定位技术提供定位服务，功耗较高。 |
+| LOCATION_USE_SCENE_NAVIGATION = 0x0401 | 表示导航场景。<br> 适用于在户外获取设备实时位置的场景，如车载、步行导航。<br> 主要使用GNSS定位技术提供定位服务，功耗较高。 |
 | LOCATION_USE_SCENE_SPORT = 0x0402 | 表示运动场景。<br> 适用于记录用户位置轨迹的场景，如运动类应用记录轨迹功能。<br> 主要使用GNSS定位技术提供定位服务，功耗较高。 |
 | LOCATION_USE_SCENE_TRANSPORT = 0x0403 | 表示出行场景。<br> 适用于用户出行场景，如打车、乘坐公共交通等场景。<br> 主要使用GNSS定位技术提供定位服务，功耗较高。 |
 | LOCATION_USE_SCENE_DAILY_LIFE_SERVICE = 0x0404 | 表示日常服务使用场景。<br> 适用于不需要定位用户精确位置的使用场景，如新闻资讯、网购、点餐类应用。<br> 该场景仅使用网络定位技术提供定位服务，功耗较低。 |

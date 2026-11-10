@@ -108,7 +108,7 @@ export default class EntryAbility extends UIAbility {
     } catch (e) {
       let code: number = (e as BusinessError).code;
       let message: string = (e as BusinessError).message;
-      console.error(`EventHub emit error, code: ${code}, message: ${message}`);
+      console.error(`EventHub on error, code: ${code}, message: ${message}`);
     }
   }
 
@@ -149,7 +149,7 @@ export default class EntryAbility extends UIAbility {
     } catch (e) {
       let code: number = (e as BusinessError).code;
       let message: string = (e as BusinessError).message;
-      console.error(`EventHub emit error, code: ${code}, message: ${message}`);
+      console.error(`EventHub on error, code: ${code}, message: ${message}`);
     }
   }
 
@@ -219,7 +219,7 @@ export default class EntryAbility extends UIAbility {
     } catch (e) {
       let code: number = (e as BusinessError).code;
       let message: string = (e as BusinessError).message;
-      console.error(`EventHub emit error, code: ${code}, message: ${message}`);
+      console.error(`EventHub off error, code: ${code}, message: ${message}`);
     }
   }
 

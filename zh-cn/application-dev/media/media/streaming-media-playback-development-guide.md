@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍使用AVPlayer在ArkTS环境播放流媒体直播与点播资源，覆盖HLS、DASH、HTTP-FLV等协议格式，以及缓冲状态监听、HLS码率切换、DASH起播策略与音视频轨道切换等核心开发能力。"
+keywords: [AVPlayer, 流媒体, HLS, DASH, HTTP-FLV, 码率切换, 起播策略, 音视频轨道切换]
+doctype: guide
+status: active
+---
+
 # 使用AVPlayer播放流媒体(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -71,44 +79,35 @@
 
 监听当前bufferingUpdate缓冲状态示例代码：
 
-<!-- @[bufferingUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
-  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}`);
-})
-```
-
-ArkTS-Sta:
-<!-- @[onBufferingUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-this.avPlayer?.onBufferingUpdate((infoType: media.BufferingInfoType, value: int) => {
-  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}`);
-})
-```
+   <!-- @[bufferingUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
+     console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}`);
+   })
+   ```
 
 ### HLS切换码率
 
 当前流媒体HLS协议流支持多码率播放，默认情况下，播放器会根据网络下载速度选择合适的码率。
 
 1. 通过[on('availableBitrates')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onavailablebitrates9)监听当前HLS协议流可用的码率。如果监听的码率列表长度为0，则不支持设置指定码率。
-   
+
    <!-- @[availableBitrates](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   this.avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
+   this.avPlayer?.on('availableBitrates', (bitrates: Array<number>) => {
      console.info('availableBitrates called, and availableBitrates length is: ' + bitrates.length);
-     this.bitrate = bitrates[0]; // 保存需要切换的码率
+     this.bitrate = bitrates[0]; // 保存需要切换的码率。
    })
    ```
 
 2. 通过[setBitrate](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setbitrate9)接口设置播放码率。若用户设置的码率不在可用码率中，播放器将选择最小且最接近的码率。该接口只能在prepared/playing/paused/completed状态下调用，可通过监听[bitrateDone](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onbitratedone9)事件确认是否生效。
 
    <!-- @[setBitrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-  
+   
    ``` TypeScript
-   // 设置播放码率
+   // 设置播放码率。
    try {
      this.avPlayer.setBitrate(bitrate);
    } catch (error) {
@@ -116,41 +115,33 @@ this.avPlayer?.onBufferingUpdate((infoType: media.BufferingInfoType, value: int)
    }
    ```
 
-    ArkTS-Sta:
-    <!-- @[onBitrateDone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    // 监听码率设置是否生效
-    this.avPlayer?.onBitrateDone((bitrate: int) => {
-      console.info('bitrateDone called, and bitrate value is: ' + bitrate);
-    })
-    ```
-
 ### DASH设置视频起播策略
 
 为了保证在弱网环境下的播放体验，AVPlayer将默认选择最低的视频分辨率开始播放，随后依据网络状况自动调整。开发者可以根据具体需求，自定义DASH视频的起播策略，包括设定视频的宽度、高度以及色彩格式等参数。
 
 下述示例代码描述了设置视频宽度1920px、高度1080px起播。AVPlayer会选择MPD资源中一路分辨率为1920x1080的视频资源进行播放。
 
-```ts
-import { media } from '@kit.MediaKit';
-
-let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://example/abc.mpd",  {"User-Agent" : "User-Agent-Value"});
-let playbackStrategy : media.PlaybackStrategy = {preferredWidth: 1920, preferredHeight: 1080};
-this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
-```
+   <!-- @[setMediaSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let mediaSource : media.MediaSource = media.createMediaSourceWithUrl('http://example/abc.mpd',  {'User-Agent' : 'User-Agent-Value'});
+   // 设置视频宽度1920px、高度1080px起播。
+   let playbackStrategy : media.PlaybackStrategy = {preferredWidth: 1920, preferredHeight: 1080};
+   // 为avPlayer设置媒体来源和播放策略。
+   this.avPlayer?.setMediaSource(mediaSource, playbackStrategy);
+   ```
 
 ### DASH切换音视频轨道
 
 DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格式的音频、视频及字幕资源。默认情况下，AVPlayer会依据网络状况自动切换不同码率的视频轨道。开发者可根据需求选择指定的音视频轨道播放，此时自适应码率切换策略将失效。
 
 1. 设置selectTrack生效的监听事件[trackChange](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#ontrackchange12)。
-   
-   <!-- @[trackChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
+   <!-- @[trackChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
-   console.info(`trackChange info, index: ${index}, isSelect: ${isSelect}`);
+     console.info(`trackChange info, index: ${index}, isSelect: ${isSelect}`);
    })
    ```
 
@@ -159,7 +150,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
    <!-- @[getTrackDescription](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
+   this.avPlayer?.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
      if (arrList != null) {
        for (let i = 0; i < arrList.length; i++) {
          let propertyIndex: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
@@ -177,37 +168,17 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
    ```
 
 3. 在音视频播放过程中调用[selectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#selecttrack12)选择对应的音视频轨道，或者调用[deselectTrack](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#deselecttrack12)取消选择的音视频轨道。
-   
+
    <!-- @[selectTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 切换至目标视频轨道
+   // 切换至目标视频轨道。
    try {
      this.avPlayer.selectTrack(track);
    } catch (error) {
      console.error(`${this.tag}: selectTrack failed, error message is = ${JSON.stringify(error.message)}`);
    }
    ```
-
-    ArkTS-Sta:
-    <!-- @[selectTrack](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) --> 
-    
-    ``` TypeScript
-    // 切换至目标视频轨道
-    try {
-      this.avPlayer!.selectTrack(track);
-    } catch (error) {
-      console.error(`${this.tag}: selectTrack failed, error message is = ${JSON.stringify(error.message)}`);
-    }
-    // 取消选择目标视频轨道
-    /*
-    try {
-      this.avPlayer.deselectTrack(track);
-    } catch (error) {
-      console.error(`${this.tag}: deselectTrack failed, error message is = ${JSON.stringify(error.message)}`);
-    }
-     */
-    ```
 
 ## 异常场景说明
 

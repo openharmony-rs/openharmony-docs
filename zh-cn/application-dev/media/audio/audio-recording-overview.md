@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "对比AudioCapturer、OHAudio与AVRecorder的录制能力，帮助按输出格式和开发语言选择方案，并了解权限、前台启动及后台录音要求。"
+keywords: [AudioCapturer, OHAudio, AVRecorder, 麦克风录音, 录音长时任务, 后台录制]
+doctype: guide
+status: active
+---
+
 # 音频录制开发概述
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

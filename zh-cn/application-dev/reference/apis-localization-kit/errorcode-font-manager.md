@@ -240,11 +240,11 @@ The font observer is already registered.
 
 **可能原因**
 
-同一应用重复调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册字体服务状态监听器。
+同一应用重复调用[fontManager.onFontObserver](js-apis-font-manager.md#fontmanageronfontobserver)注册字体服务状态监听器。
 
 **处理步骤**
 
-无需重复注册，如需更新字体服务状态监听器，请先调用[offFontObserver](js-apis-font-manager.md#offfontobserver)注销后再重新注册。
+无需重复注册，如需更新字体服务状态监听器，请先调用[fontManager.offFontObserver](js-apis-font-manager.md#fontmanagerofffontobserver)注销后再重新注册。
 
 ## 31100114 超过字体服务状态监听器最大数量
 
@@ -276,10 +276,10 @@ The font observer is not registered.
 
 **可能原因**
 
-1. 调用[installScopeFont](js-apis-font-manager.md#installscopefont)接口安装应用级字体时，未先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)接口注册字体服务状态变化监听器。
-2. 调用[offFontObserver](js-apis-font-manager.md#offfontobserver)接口注销字体服务状态变化监听器时，未注册监听器或监听器已被注销。
+1. 调用[fontManager.installScopeFont](js-apis-font-manager.md#fontmanagerinstallscopefont)接口安装应用级字体时，未先调用[fontManager.onFontObserver](js-apis-font-manager.md#fontmanageronfontobserver)接口注册字体服务状态变化监听器。
+2. 调用[fontManager.offFontObserver](js-apis-font-manager.md#fontmanagerofffontobserver)接口注销字体服务状态变化监听器时，未注册监听器或监听器已被注销。
 
 **处理步骤**
 
-1. 调用[installScopeFont](js-apis-font-manager.md#installscopefont)接口安装应用级字体前，需先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)接口注册字体服务状态变化监听器。
-2. 调用[offFontObserver](js-apis-font-manager.md#offfontobserver)接口注销字体服务状态变化监听器前，需确保已注册监听器且未被注销。
+1. 调用[fontManager.installScopeFont](js-apis-font-manager.md#fontmanagerinstallscopefont)接口安装应用级字体前，需先调用[fontManager.onFontObserver](js-apis-font-manager.md#fontmanageronfontobserver)接口注册字体服务状态变化监听器。
+2. 调用[fontManager.offFontObserver](js-apis-font-manager.md#fontmanagerofffontobserver)接口注销字体服务状态变化监听器前，需确保已注册监听器且未被注销。

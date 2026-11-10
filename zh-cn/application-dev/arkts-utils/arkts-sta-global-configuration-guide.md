@@ -6,7 +6,7 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-全局配置项通常指同一应用进程内需要被多个业务模块共享的运行时状态，例如登录状态、当前用户、网络开关、功能开关等。ArkTS-Sta可以通过模块级导出的单例对象保存这类配置，并由[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)任务或[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)任务在线程间共享。
+全局配置项通常指同一应用进程内需要被多个业务模块共享的运行时状态，例如登录状态、当前用户、网络开关、功能开关等。ArkTS-Sta可以通过模块级导出的单例对象保存这类配置，并由[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)任务或[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)任务在线程间共享。
 
 ArkTS-Sta采用共享内存模型，普通对象可以被TaskPool任务和宿主线程共享，不需要使用动态ArkTS中的"use shared"和@Sendable。但全局配置项通常是可变状态，如果宿主线程和后台任务可能同时读写，需要使用锁、原子类型或并发容器保证数据一致性。
 

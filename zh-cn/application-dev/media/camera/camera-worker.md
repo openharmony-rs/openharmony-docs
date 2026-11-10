@@ -159,10 +159,12 @@
      }
    }
    
-   workerPort.onmessageerror = (e: MessageEvents) => {
+   workerPort.onmessageerror = (error: MessageEvents) => {
+    console.error(`onmessage error is called, ${error}`);
    }
    
-   workerPort.onerror = (e: ErrorEvent) => {
+   workerPort.onerror = (error: ErrorEvent) => {
+    console.error(`onerror is called, ${error}`);
    }
    ```
 
@@ -180,10 +182,10 @@
      private workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/CameraWorker.ets');
      private uiContext: UIContext = this.getUIContext();
      private context: Context | undefined = this.uiContext.getHostContext();
-    private mXComponentOptions: XComponentOptions = {
-      type: XComponentType.SURFACE,
-      controller: this.mXComponentController
-    }
+     private mXComponentOptions: XComponentOptions = {
+       type: XComponentType.SURFACE,
+       controller: this.mXComponentController
+     }
    
      onPageShow(): void {
        if ('' !== this.surfaceId) {

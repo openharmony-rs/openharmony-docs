@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API定义JavaScript类并创建实例，通过Wrap机制封装和解包原生实例，实现C++与JavaScript类的交互。"
+keywords: [OH_JSVM_DefineClass, OH_JSVM_DefineClassWithOptions, OH_JSVM_NewInstance, OH_JSVM_GetNewTarget, OH_JSVM_Wrap, OH_JSVM_Unwrap, OH_JSVM_RemoveWrap, 类定义, 封装原生实例]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行class相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

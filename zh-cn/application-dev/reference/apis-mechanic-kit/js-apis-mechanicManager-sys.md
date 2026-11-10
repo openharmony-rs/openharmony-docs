@@ -1065,7 +1065,7 @@ onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;)
 
 订阅目标设备的电池电量变化信息。使用callback异步回调。
   
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -1106,7 +1106,7 @@ offBatteryLevelChange(mechId: number, callback?: Callback&lt;BatteryLevelInfo&gt
 
 取消订阅电池电量变化信息。使用callback异步回调。
   
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -1147,7 +1147,7 @@ getDeviceAdsorbState(mechId: number): AdsorbState
 
 获取对应的设备吸附状态。
   
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -1627,7 +1627,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 
 电量状态变化信息。
   
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -1643,7 +1643,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 
 设备吸附状态的枚举。
   
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 

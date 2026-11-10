@@ -41,7 +41,7 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 | eventType                     | [AccessibilityEventType](js-apis-accessibility-sys.md#accessibilityeventtype) | 否    | 否    | 无障碍事件类型。 |
 | target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement) | 否    | 是    | 发生事件的目标组件。当无障碍事件涉及具体组件时，此属性包含该组件信息。 |
 | timestamp                     | ArkTS-Dyn: number<br>ArkTS-Sta: long                         | 否    | 是    | 事件时间戳，单位为毫秒，默认值为0。 |
-| extraInfo                     | string                                   | 否    | 是    | 针对TextArea、TextInput、SearchField、RichEdit组件，当组件文本内容发生增删变化时，此属性表示增删的具体文本内容。默认值为空字符串。 |
+| extraInfo                     | string                                   | 否    | 是    | 默认值为空字符串。<br>事件附加信息，值为JSON字符串，根据实际事件场景设置，无对应信息时为空字符串。包含以下字段：<br>- addText：文本内容新增时，新增的具体文本内容。<br>- removeText：文本内容删除时，删除的具体文本内容。<br>- beforeText：文本内容发生变化前的文本内容。<br>- addedCount：文本内容新增的字符数量。<br>- removedCount：文本内容删除的字符数量。<br>- startIndex：列表滚动前后的索引项，或编辑框的起始索引。<br>- endIndex：列表滚动前后的索引项，或编辑框的结束索引。<br>- scrollX：滚动事件发生时水平方向的滚动偏移量，单位为像素（px）。<br>- scrollY：滚动事件发生时垂直方向的滚动偏移量，单位为像素（px）。<br>- scrollSource：滚动事件的触发来源。<br>- itemCounts：列表或翻页类组件的总项数。<br>- currentIndex：列表或翻页类组件当前项的索引。<br>- candidateIds：焦点不可见时事件携带的候选焦点ID。<br>- touchGuideGestureType：触摸浏览手势的类型。 |
 
 ## AccessibilityExtensionAbility
 

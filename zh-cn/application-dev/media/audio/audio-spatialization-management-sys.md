@@ -255,9 +255,9 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
     volumeGroupId : 1,
     displayName : ""
   };
-  let enable: boolean = true;
+  let enabled: boolean = true;
 
-  audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enable).then(() => {
+  audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enabled).then(() => {
     console.info('Succeeded in setting head tracking enabled');
   }).catch((err: BusinessError) => {
     console.error(`Result ERROR: ${err}`);

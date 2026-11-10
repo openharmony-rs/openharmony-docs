@@ -1,7 +1,7 @@
 # 逻辑组件错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangjunman1-->
+<!--Owner: @maorh-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->

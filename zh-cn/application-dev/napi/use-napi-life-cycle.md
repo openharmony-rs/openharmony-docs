@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行生命周期相关开发，包括scope管理napi_value生命周期、napi_ref引用管理延长对象生命周期、垃圾回收回调等，避免内存泄漏和use-after-free。"
+keywords: [Node-API, 生命周期, napi_value, napi_ref, handle_scope, 作用域管理, 引用管理, 垃圾回收, escapable_scope]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行生命周期相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

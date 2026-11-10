@@ -809,6 +809,76 @@ try {
 }
 ```
 
+### bundleResourceManager.getBundleResourceArchiveInfo
+
+ArkTS-Dyn: getBundleResourceArchiveInfo(filePath: string, resourceFlags?: number): Promise\<BundleResourceInfo>
+
+ArkTS-Sta: getBundleResourceArchiveInfo(filePath: string, resourceFlags?: int): Promise\<BundleResourceInfo>
+
+根据给定的包文件路径和resourceFlags获取应用的BundleResourceInfo。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_RESOURCES
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----------- | ------ | ---- | --------------------- |
+| filePath | string | 是 | 表示存储包文件的路径，支持当前应用程序的绝对路径和数据目录沙箱路径。 |
+| resourceFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 指定返回的BundleResourceInfo所包含的信息，取值为[ResourceFlag](#resourceflag)枚举值，默认值为GET_RESOURCE_INFO_ALL。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------------------------------------------------ | ------------------------------------- |
+| Promise\<[BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)> | Promise对象，返回指定应用的BundleResourceInfo。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------- |
+| 201 | Permission verification failed. |
+| 202 | Permission verification failed. A non-system application calls a system api. |
+| 17700022 | The filePath is invalid. |
+| 17700101 | Bundle manager service is excepted. |
+
+
+**示例：**
+
+```ts
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际要查询的应用的路径
+
+let filePath = "/data/storage/el2/base/files/entry.hap";
+let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  bundleResourceManager.getBundleResourceArchiveInfo(filePath, resourceFlag).then(data => {
+    hilog.info(0x0000, 'testTag', 'getBundleResourceArchiveInfo successfully. Data label: %{public}s',
+      JSON.stringify(data.label));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getBundleResourceArchiveInfo failed. err: %{public}s', err.message);
+  })
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleResourceArchiveInfo failed: %{public}s', message);
+}
+```
+
 ## BundleResourceInfo
 
 type BundleResourceInfo = _BundleResourceInfo

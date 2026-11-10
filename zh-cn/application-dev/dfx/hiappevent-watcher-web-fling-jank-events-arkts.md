@@ -80,14 +80,14 @@
    <!-- @[ArkWeb_Fling_Jank_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/ArkWebPage.ets) -->
    
    ``` TypeScript
-   import web_webview from '@ohos.web.webview';
+   import {webview} from '@kit.ArkWeb';
    
    // 用于存储web_id到url的映射
    export const webIdToUrlMap = new Map<number, string>();
    
    @Component
    export struct ArkWebPage {
-     controller = new web_webview.WebviewController();
+     controller = new webview.WebviewController();
    
      build() {
        NavDestination() {

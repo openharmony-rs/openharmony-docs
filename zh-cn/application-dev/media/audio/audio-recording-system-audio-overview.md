@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍系统音频内录与麦克风外录的区别，说明用户授权和播放流隐私保护，帮助按PCM采集或屏幕录制需求选择接口。"
+keywords: [内录, 外录, 会议音频共享, 内录授权, 播放流防内录, AudioCapturer, AVScreenCapture, 直播音频推流, 内录音频分析]
+doctype: guide
+status: active
+---
+
 # 录制系统音频概述与接口选择
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

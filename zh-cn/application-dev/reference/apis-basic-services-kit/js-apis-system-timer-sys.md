@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要由系统定时器功能组成，提供定时器的创建、启动、停止和销毁能力，支持创建系统启动时间定时器、唤醒定时器、精准定时器和IDLE模式定时器等多种类型。开发者可以使用定时功能实现定时服务，如闹钟等。定时器的典型使用流程为：先通过createTimer创建定时器，再通过startTimer启动定时器，可根据需要通过stopTimer停止定时器，最后通过destroyTimer销毁定时器以释放资源。
+本模块主要由系统定时器功能组成，提供定时器的创建、启动、停止和销毁能力，支持创建系统启动时间定时器、唤醒定时器、精准定时器和IDLE模式定时器等多种类型。此外，还支持按名称启用或禁用那些可在设备关机后启动的定时器。开发者可以使用定时功能实现定时服务，如闹钟等。定时器的典型使用流程为：先通过createTimer创建定时器，再通过startTimer启动定时器，可根据需要通过stopTimer停止定时器，最后通过destroyTimer销毁定时器以释放资源。
 
 > **说明：**
 >
@@ -799,3 +799,76 @@ try {
   console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
 }
 ```
+
+## systemTimer.setPowerOnTimerEnabled
+
+setPowerOnTimerEnabled(options?: PowerOnTimerEnabledOptions): Promise&lt;void&gt;
+
+启用或禁用与**options**中条件匹配的"可在关机后启动设备的定时器"。当启用状态设为**false**时，匹配的定时器不再在设备关机启动时触发，但定时器本身不被删除；当设为**true**时，匹配的定时器恢复在设备关机启动时触发，仅满足开机定时器条件的定时器被恢复。`options`缺省或`timerName`缺省时，操作应用于所有"可在关机后启动设备的定时器"；`options.enable`缺省时默认**true**（启用）。调用后立即重新计算RTC开机闹钟。
+
+> **说明：**
+> 本接口设置的状态仅在当前设备运行期间有效，设备重启后需重新设置。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.MiscServices.Time
+
+**参数：**
+
+| 名称    | 类型                                                       | 只读 | 可选 | 说明                |
+| ------- | ---------------------------------------------------------- | ---- | ---- | ------------------- |
+| options | [PowerOnTimerEnabledOptions](#powerontimerenabledoptions)  | 否   | 是   | 选项，包含匹配条件和启用状态。缺省时启用所有"可在关机后启动设备的定时器"。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                                                        |
+|-------|-------------------------------------------------------------------------------------------------------------|
+| 202   | Permission verification failed. A non-system application calls a system API.                                |
+| 401   | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: systemTimer.PowerOnTimerEnabledOptions = {
+  timerName: 'alarm_timer',
+  enable: false
+};
+systemTimer.setPowerOnTimerEnabled(options).then(() => {
+  console.info('Succeeded in setting power-on timer enabled.');
+}).catch((error: BusinessError) => {
+  console.error('Failed to set power-on timer enabled. Code: ' + error.code + ', message: ' + error.message);
+});
+```
+
+## PowerOnTimerEnabledOptions
+
+[systemTimer.setPowerOnTimerEnabled](#systemtimersetpowerontimerenabled) 的参数选项。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.MiscServices.Time
+
+| 名称      | 类型    | 只读 | 可选 | 说明                                       |
+| --------- | ------- | ---- | ---- | ------------------------------------------ |
+| timerName | string  | 否   | 是   | 定时器名称，非空字符串，长度不超过64字节。缺省时操作应用于所有power-on定时器；存在但为空或超过64字节时返回401。 |
+| enable    | boolean | 否   | 是   | true表示将该定时器加回power-on定时器列表，false表示将其从power-on定时器列表移除。缺省时默认true。 |

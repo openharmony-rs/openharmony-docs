@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "LLDB是新一代高性能调试器，支持断点设置、变量查看与修改、内存操作、线程控制、表达式计算、堆栈回溯等调试功能，并提供本地调试和远程调试两种方式，适用于OpenHarmony系统应用的C/C++代码调试场景。"
+keywords: [LLDB, 调试器, 断点设置, 观察点, 变量查看, 堆栈回溯, 远程调试, lldb-server, 汇编处理]
+doctype: guide
+status: active
+---
+
 # LLDB工具（仅对系统应用开放）
 
 <!--Kit: ArkTS-->
@@ -415,7 +423,7 @@ int main() {
     ```
 
 ## FAQ
-- 当在LLDB调试环境中执行run命令时，若控制台返回`error: 'A' packet returned an error: 8`或类似错误代码，此问题通常表明调试器无法创建调试进程。该异常现象通常表明调试器无法创建调试进程，主要原因是权限不足，建议通过以下步骤排查：
+- 当在LLDB调试环境中执行run命令时，若控制台返回`error: 'A' packet returned an error: 8`或类似错误代码，此问题通常表明调试器无法创建调试进程，主要原因是权限不足，建议通过以下步骤排查：
 
    1）验证目标设备是否已开启调试授权。
 

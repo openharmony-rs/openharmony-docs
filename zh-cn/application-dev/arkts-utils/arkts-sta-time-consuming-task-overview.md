@@ -6,7 +6,7 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-耗时任务是指执行时间较长、可能阻塞当前线程的任务。如果在UI主线程或关键业务线程直接执行，可能导致响应延迟、卡顿或掉帧。ArkTS-Sta中，耗时任务通常通过[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)或[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)放到后台线程执行。
+耗时任务是指执行时间较长、可能阻塞当前线程的任务。如果在UI主线程或关键业务线程直接执行，可能导致响应延迟、卡顿或掉帧。ArkTS-Sta中，耗时任务通常通过[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)或[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)放到后台线程执行。
 
 典型耗时任务包括CPU密集型任务、I/O密集型任务和同步任务。
 

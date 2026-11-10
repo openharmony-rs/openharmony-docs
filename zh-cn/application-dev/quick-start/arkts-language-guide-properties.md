@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS类属性的分类与用法，涵盖存储属性、计算属性、静态属性、访问控制、索引签名及declare仅类型字段声明。"
+keywords: [ArkTS, 属性, 存储属性, 计算属性, 静态属性, 访问控制, 索引签名, declare, getter]
+doctype: guide
+status: active
+---
+
 # 属性
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

@@ -59,15 +59,14 @@
 
 枚举，远端相机设备类型。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称                          | 值       | 说明      |
 | ---------------------------- | ----     |---------|
-| UNKNOWN_TYPE                 | 0        | 未知设备类型。 |
-| PHONE                        | 0x0E     | 手机设备。   |
-| TABLET                       | 0x11     | 平板设备。   |
+| UNKNOWN_TYPE                 | 0        | 未知设备类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。 |
+| PHONE                        | 0x0E     | 手机设备。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。   |
+| TABLET                       | 0x11     | 平板设备。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。 |
+| GLASSES                      | 0xA31    | 眼镜设备。<br>**起始版本：** 26.0.1<br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## CameraStatus
 

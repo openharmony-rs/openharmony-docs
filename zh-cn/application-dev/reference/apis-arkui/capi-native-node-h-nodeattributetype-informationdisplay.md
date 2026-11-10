@@ -90,7 +90,7 @@ NODE_PROGRESS_VALUE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_PROGRESS = 10000
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 进度条当前值，取值范围为[0, total]，默认值为0。 |
+| .value[0].f32 | 进度条当前值，取值范围为[0, total]。|
 
 ## NODE_PROGRESS_TOTAL
 
@@ -114,7 +114,7 @@ NODE_PROGRESS_TOTAL = 10001
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 进度条总长，取值范围为(0, +∞)，默认值为100。 |
+| .value[0].f32 | 进度条总长，取值范围为(0, +∞)。 |
 
 ## NODE_PROGRESS_COLOR
 

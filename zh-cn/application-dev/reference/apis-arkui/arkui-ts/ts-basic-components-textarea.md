@@ -437,11 +437,11 @@ ArkTS-Dyn: showCounter(value: boolean, options?: InputCounterOptions)
 
 ArkTS-Sta: showCounter(value: boolean | undefined, options?: InputCounterOptions)
 
-设置当通过InputCounterOptions输入的字符数超过阈值时显示计数器。未调用showCounter接口时，默认不显示计数器。
+设置当输入的字符数超过阈值时显示计数器，阈值通过[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)配置。未调用showCounter接口时，默认不显示计数器。
 
-参数value为true时，才能设置options，文本框开启计数器功能，需要配合maxLength（设置最大字符限制）一起使用，未设置maxLength时计数器功能不生效。字符计数器显示的效果是当前输入字符数/最大可输入字符数。
+参数value为true时，才能设置options，文本框开启计数器功能，需要配合[maxLength](#maxlength10)（设置最大字符限制）一起使用，未设置maxLength时计数器功能不生效。字符计数器显示的效果是当前输入字符数/最大可输入字符数。
 
-当输入字符数大于最大字符数乘百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数达到最大字符数时，边框和计数器下标将变为红色。若用户同时设置参数value为true和InputCounterOptions，当thresholdPercentage数值在有效区间内且输入字符数超过最大字符数时，边框和计数器下标将变为红色，框体抖动。计数器默认显示红色边框；highlightBorder设置为false时，则不显示红色边框。内联模式下字符计数器不显示。
+当输入字符数大于最大字符数乘以[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)中的thresholdPercentage百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数超过最大字符数时，边框和计数器下标将变为红色。用户同时设置参数value为true和[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)，当InputCounterOptions中的thresholdPercentage数值在有效区间[1, 100]内，且输入字符数超过最大字符数时，边框和计数器下标将变为红色，框体抖动；InputCounterOptions中的highlightBorder设置为false时，则不显示红色边框。内联模式下字符计数器不显示。
 
 [示例2（设置计数器）](#示例2设置计数器)展示了设置showCounter的效果。
 
@@ -1755,6 +1755,16 @@ ArkTS-Sta: includeFontPadding(include: boolean | undefined)
 
 设置是否在首行和尾行增加间距以避免文字截断。未通过该接口设置时，默认不增加间距。
 
+从API版本26.1.0开始，该接口与[fallbackLineSpacing](#fallbacklinespacing23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+```json
+"metadata": [
+  {
+    "name": "configTextStyleOptimizeFlagInArkUI",
+    "value": "true"
+  }
+]
+```
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1778,6 +1788,16 @@ ArkTS-Dyn: fallbackLineSpacing(enabled: Optional\<boolean>)
 ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 
 针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。未通过该接口设置时，默认行高不基于文字实际高度自适应。
+
+从API版本26.1.0开始，该接口与[includeFontPadding](#includefontpadding23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+```json
+"metadata": [
+  {
+    "name": "configTextStyleOptimizeFlagInArkUI",
+    "value": "true"
+  }
+]
+```
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 

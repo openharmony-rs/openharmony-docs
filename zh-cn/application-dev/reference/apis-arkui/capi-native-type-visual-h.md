@@ -134,7 +134,7 @@ enum OH_ArkUI_LinearGradientBlurDirection
 
 枚举线性渐变模糊的渐变方向。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -159,7 +159,7 @@ OH_ArkUI_LinearGradientBlurOptions* OH_ArkUI_NativeModule_LinearGradientBlurOpti
 
 创建线性渐变模糊选项对象。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **返回：**
 
@@ -177,7 +177,7 @@ void OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy(OH_ArkUI_LinearGrad
 
 销毁线性渐变模糊选项对象。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -195,7 +195,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetBlurRadius(OH
 
 设置线性渐变模糊选项的模糊半径。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -220,7 +220,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetBlurRadius(co
 
 获取线性渐变模糊选项的模糊半径。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -245,7 +245,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetFractionStops
 
 设置线性渐变模糊选项的渐变模糊分段。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -271,7 +271,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetFractionStops
 
 获取线性渐变模糊选项的渐变模糊分段。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -298,7 +298,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetDirection(OH_
 
 设置线性渐变模糊选项的渐变方向。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 
@@ -323,7 +323,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetDirection(con
 
 获取线性渐变模糊选项的渐变方向。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **参数：**
 

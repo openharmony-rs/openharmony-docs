@@ -1,3 +1,10 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍NativeImage将Surface与OpenGL外部纹理绑定、作为图形队列消费者端接收并更新Buffer的完整流程，需配合NativeWindow、NativeBuffer、EGL与GLES3使用，适用于C/C++图形渲染与视频画面上屏场景。"
+keywords: [NativeImage, 图形队列, 消费者, 纹理更新, NativeWindow, NativeBuffer, EGL, GLES3]
+doctype: guide
+status: active
+---
 # NativeImage开发指导 (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
@@ -220,6 +227,8 @@ libnative_buffer.so
 
 
 2. **创建OH_NativeImage实例**。
+
+    创建的nativeImage_为OH_NativeImage实例，将作为[OH_NativeImage_AcquireNativeWindow()](../reference/apis-arkgraphics2d/capi-native-image-h.md#oh_nativeimage_acquirenativewindow)接口的入参。
     <!-- @[nativeimage_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
     
     ``` C++
@@ -229,6 +238,8 @@ libnative_buffer.so
     ```
 
 3. **获取对应的数据生产者端NativeWindow**。
+    
+    传入image获取生产者端NativeWindow，image为使用[OH_NativeImage_Create()](../reference/apis-arkgraphics2d/capi-native-image-h.md#oh_nativeimage_create)创建的OH_NativeImage实例。
     <!-- @[nativeimage_acquire_nativewindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
     
     ``` C++
@@ -241,7 +252,7 @@ libnative_buffer.so
     ``` C++
     int32_t result = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow_, SET_BUFFER_GEOMETRY,
         static_cast<int32_t>(width_), static_cast<int32_t>(height_));
-    if (result != SUCCESS) {
+    if (result != NATIVE_ERROR_OK) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "OHNativeRender", "Failed to set buffer geometry.");
         return false;
     }
@@ -256,7 +267,7 @@ libnative_buffer.so
         OHNativeWindowBuffer *buffer = nullptr;
         int releaseFenceFd = INVALID_FD;
         int32_t result = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow_, &buffer, &releaseFenceFd);
-        if (result != SUCCESS || buffer == nullptr) {
+        if (result != NATIVE_ERROR_OK || buffer == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
                          "OHNativeRender", "Failed to request buffer, ret : %{public}d.", result);
             return;
@@ -347,7 +358,7 @@ libnative_buffer.so
         Region region{nullptr, 0};
         // 提交给消费者
         result = OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow_, buffer, NO_FENCE, region);
-        if (result != SUCCESS) {
+        if (result != NATIVE_ERROR_OK) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
                          "OHNativeRender", "Failed to flush buffer, result : %{public}d.", result);
         }

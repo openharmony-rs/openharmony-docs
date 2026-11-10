@@ -581,6 +581,8 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+<!--RP6--><!--RP6End-->
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -646,6 +648,8 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+<!--RP6--><!--RP6End-->
 
 **参数：**
 
@@ -720,6 +724,8 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 
 **系统能力：** SystemCapability.Security.AccessToken
 
+<!--RP6--><!--RP6End-->
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -789,6 +795,8 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+<!--RP6--><!--RP6End-->
 
 **参数：**
 
@@ -895,11 +903,11 @@ isPermissionSupported(permissionName: Permissions): boolean
 
 查询当前设备是否支持该权限，同步返回结果。调用成功后，返回该权限在当前设备上的支持状态。
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.2.0
+**ArkTS-Sta起始版本：** 26.1.0
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -959,6 +967,8 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;S
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
+
+<!--RP6--><!--RP6End-->
 
 **参数：**
 

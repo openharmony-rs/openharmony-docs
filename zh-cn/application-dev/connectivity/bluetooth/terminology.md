@@ -20,7 +20,7 @@ Asynchronous Connectionless Link，即异步无连接链路。在蓝牙子系统
 ### BLE
 Bluetooth Low Energy，即低功耗蓝牙。从蓝牙4.0开始支持的协议，相比于传统蓝牙，是支持低功耗、长续航的蓝牙通信技术。
 ### BR
-Basic Rate，即蓝牙基础率。是一种蓝牙无线通信技术，用来表示传统蓝牙，主要用于文件和音频流的传输场景。
+Basic Rate，即蓝牙基础速率。是一种蓝牙无线通信技术，用来表示传统蓝牙，主要用于文件和音频流的传输场景。
 ### Bluetooth SIG
 Bluetooth Special Interest Group，即蓝牙技术联盟，发布蓝牙技术规范的组织。开发者可以在其官网获取详细的蓝牙技术文档。
 ## C
@@ -31,7 +31,7 @@ Bluetooth Special Interest Group，即蓝牙技术联盟，发布蓝牙技术规
 [GATT](#gatt)特征值（[Characteristic](#characteristic)）的数据单元，用于描述特征值的附加信息和属性，可进行数据读写，通过[UUID](#uuid)标识。
 ## E
 ### EDR
-Enhanced Data Rate，即蓝牙增强数据率。是蓝牙[BR](#br)的增强版本，具有更高的数据传输速率，和BR统称为传统蓝牙。
+Enhanced Data Rate，即蓝牙增强数据速率。是蓝牙[BR](#br)的增强版本，具有更高的数据传输速率，和BR统称为传统蓝牙。
 ## G
 ### GATT
 Generic Attribute Profile，即通用属性协议。是[BLE](#ble)的核心协议，定义了基于服务（[Service](#service)）、特征值（[Characteristic](#characteristic)）和描述符（[Descriptor](#descriptor)）进行蓝牙通信和传输数据的机制。
@@ -96,6 +96,7 @@ Protocol/Service Multiplexer，即协议/服务多路复用器。作为[L2CAP](#
 Radio Frequency Communication，即射频通信协议。用于模拟传统的RS232串行通信（一种常见的有线数据传输标准），为上层应用提供一种简单可靠的数据传输方式，支持多个同时连接的通道。
 ### RSSI
 Received Signal Strength Indicator，即接收信号强度指示。通过一个相对值量化无线通信中接收端的信号强度，单位是dBm。可用于评估设备间距离和信号质量。
+## S
 ### SCO
 Synchronous Connection-Oriented，即同步面向连接链路。蓝牙协议栈中面向连接的同步数据链路，主要用于传输对时间敏感的音频数据，如语音通话等场景。
 ### SDP

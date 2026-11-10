@@ -1,4 +1,4 @@
-# USB控制传输
+# USB控制传输（ArkTS）
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
