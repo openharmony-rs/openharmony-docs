@@ -588,7 +588,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏，默认为false。|
 | title | string | 否 | 否 | 图片资产的标题。|
 | position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。|
-| dateTrashed | number | 否 | 否 | 图片资产被移入回收站的时长。单位为毫秒（s），取值应为≥0的整数。 |
+| dateTrashed | number | 否 | 否 | 图片资产被移入回收站的时长。单位为毫秒（ms），取值应为≥0的整数。 |
 | hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏，默认为false。|
 | userComment | string | 否 | 否 | 图片资产的用户评论信息。|
 | cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。|
