@@ -17,7 +17,7 @@ status: active
 
 低时延音频播放是一种通过软硬芯协同设计实现的音频渲染方案。其核心机制是通过减少buffer大小、优化读写数据架构，使该模式下音频播放具有更低的时延。
 
-从API version 26.1.0开始，在低时延模式的基础上新增超低时延（Ultra Fast）模式。超低时延模式为音频播放开辟独立的超低时延通路，通过更小的span与专用的pipe资源，进一步降低播放时延，适用于对播放时延极度敏感的场景。
+从API版本26.1.0开始，在低时延模式的基础上新增超低时延（Ultra Fast）模式。超低时延模式为音频播放开辟独立的超低时延通路，通过更小的span与专用的pipe资源，进一步降低播放时延，适用于对播放时延极度敏感的场景。
 
 ## 使用前提
 
@@ -88,7 +88,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ### 时延状态查询
 
 从API version 20开始，支持时延状态查询接口。
-- 可通过[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)来获取音频播放流是否正在低时延状态下工作。从API version 26.1.0起，OH_AudioRenderer_GetFastStatus()可返回AUDIOSTREAM_FASTSTATUS_ULTRA_FAST。
+- 可通过[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)来获取音频播放流是否正在低时延状态下工作。从API版本26.1.0起，OH_AudioRenderer_GetFastStatus()可返回AUDIOSTREAM_FASTSTATUS_ULTRA_FAST。
 - 在部分特殊场景（如：存在更高优先级流、当前连接设备不支持等）下，开发者可以通过调用[OH_AudioRenderer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_onfaststatuschange)来获取低时延状态改变事件。
 
 > **注意：**
