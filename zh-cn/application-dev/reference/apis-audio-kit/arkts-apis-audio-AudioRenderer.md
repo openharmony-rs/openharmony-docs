@@ -2810,9 +2810,11 @@ standby状态主要用于音频播放过程中短暂无数据的情况，如流�
 
 standby状态下也可以直接调用[pause](#pause8)、[stop](#stop8)、[release](#release8)停止播放，但不可调用[start](#start8)。
 
-注意，此接口并不会改变通过state获取的状态。
-
 使用Promise异步回调。
+
+> **注意：**
+>
+> 此接口并不会改变通过state获取的状态。
 
 **起始版本：** 26.1.0
 
