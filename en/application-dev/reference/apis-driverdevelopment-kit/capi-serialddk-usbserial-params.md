@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:49:08.527Z pushedAt=2026-06-22T11:21:11.417Z -->
+<!-- md-trans-meta sourceCommit=5bd79eab01cf38af26bab98453bcb9f96f6c3f3c translatedAt=2026-11-10T01:10:52.094Z pushedAt=2026-11-10T01:46:45.007Z nl=1 -->
 
 ```c
 typedef struct UsbSerial_Params {...} __attribute__((aligned(8))) UsbSerial_Params
@@ -13,7 +13,7 @@ typedef struct UsbSerial_Params {...} __attribute__((aligned(8))) UsbSerial_Para
 
 ## Overview
 
-Defines the USB serial port parameters for the USB Serial DDK.
+Defines the USB serial port parameters for the USB Serial DDK, which are used for configuring the communication parameters of the USB-to-serial device. The parameter configuration must be consistent with that of the target communication device. Otherwise, the communication may fail. It is commonly used in scenarios where communication with devices through the USB serial port is required, such as industrial control devices, debugging tools, and sensor data collection.
 
 **Since**: 18
 
@@ -27,7 +27,9 @@ Defines the USB serial port parameters for the USB Serial DDK.
 
 | Name| Description|
 | -- | -- |
-| uint32_t baudRate | Baud rate, in bauds.|
+| uint32_t baudRate | Baud rate, unit: baud. |
 | uint8_t nDataBits | Number of data bits.|
 | uint8_t nStopBits | Number of stop bits.|
-| uint8_t parity | Parity parameter setting. **0**: no parity; **1**: odd parity; **2**: even parity. |
+| uint8_t parity | Parity setting (0: no parity; 1: odd parity; 2: even parity). |
+
+

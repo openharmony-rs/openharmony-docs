@@ -1,18 +1,17 @@
 # @ohos.app.ability.DriverExtensionAbility (Driver Extension Ability)
-
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=80a690690bb3dbcda24d03e53bc7c3a287326f14 translatedAt=2026-07-28T07:01:46.933Z pushedAt=2026-07-28T08:40:44.023Z -->
+<!-- md-trans-meta sourceCommit=c219e6d6bb985d900e0d8d2208a7ad9da8c2634a translatedAt=2026-11-10T01:12:44.294Z pushedAt=2026-11-10T01:49:48.611Z nl=1 -->
 
 The **DriverExtensionAbility** module provides the ExtensionAbility related to drivers. It provides lifecycle callbacks to be invoked when a driver is created, destroyed, connected, or disconnected.
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.  
 
 ## Constraints
 
@@ -24,19 +23,21 @@ To ensure system security and stability and prevent **DriverExtensionAbility** f
 import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
 ```
 
+
 ## DriverExtensionAbility
 
 ### Properties
 
-**DriverExtensionAbility** class, which contains the definition of driver lifecycle callbacks.
+The DriverExtensionAbility class, which contains the context environment definition of the driver extension.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Driver.ExternalDevice
 
+
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| context | [DriverExtensionContext](js-apis-inner-application-driverExtensionContext.md)  | No| No| Context of the **DriverExtension**. This context is inherited from **ExtensionContext**.|
+| context | DriverExtensionContext  | No | No | Context of the DriverExtension. This context inherits from ExtensionContext. |
 
 ### onInit
 
@@ -61,7 +62,7 @@ Called when a DriverExtensionAbility is created to initialize the service logic.
   import { Want } from '@kit.AbilityKit';
 
   class DriverExt extends DriverExtensionAbility {
-    onInit(want : Want) {
+    onInit(want: Want) {
       console.info(`onInit, want: ${want.abilityName}`);
     }
   }
@@ -116,17 +117,17 @@ Called following [onCreate](../apis-ability-kit/js-apis-app-ability-abilityStage
   import { rpc } from '@kit.IPCKit';
   import { Want } from '@kit.AbilityKit';
 
-  class StubTest extends rpc.RemoteObject{
-      constructor(des : string) {
+  class StubTest extends rpc.RemoteObject {
+      constructor(des: string) {
           super(des);
       }
-      onRemoteMessageRequest(code : number, data : rpc.MessageSequence, reply : rpc.MessageSequence, option : rpc.MessageOption) {
+      onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
         // This interface must be overridden.
         return true;
       }
   }
   class DriverExt extends DriverExtensionAbility {
-    onConnect(want : Want) {
+    onConnect(want: Want) {
       console.info(`onConnect , want: ${want.abilityName}`);
       return new StubTest('test');
     }
@@ -140,21 +141,21 @@ If the returned [RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) obje
   import { rpc } from '@kit.IPCKit';
   import { Want } from '@kit.AbilityKit';
   
-  class StubTest extends rpc.RemoteObject{
-      constructor(des : string) {
+  class StubTest extends rpc.RemoteObject {
+      constructor(des: string) {
           super(des);
       }
-      onRemoteMessageRequest(code : number, data : rpc.MessageSequence, reply : rpc.MessageSequence, option : rpc.MessageOption) {
+      onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
         // This interface must be overridden.
         return true;
       }
   }
   async function getDescriptor() {
       // Call the asynchronous function.
-      return "asyncTest";
+      return 'asyncTest';
   }
   class DriverExt extends DriverExtensionAbility {
-    async onConnect(want : Want) {
+    async onConnect(want: Want) {
       console.info(`onConnect , want: ${want.abilityName}`);
       let descriptor = await getDescriptor();
       return new StubTest(descriptor);
@@ -191,7 +192,7 @@ Called when a client is disconnected from this **DriverExtensionAbility**.
   import { Want } from '@kit.AbilityKit';
 
   class DriverExt extends DriverExtensionAbility {
-    onDisconnect(want : Want) {
+    onDisconnect(want: Want) {
       console.info(`onDisconnect, want: ${want.abilityName}`);
     }
   }
@@ -204,7 +205,7 @@ After the **onDisconnect** lifecycle callback is executed, the application may e
   import { Want } from '@kit.AbilityKit';
 
   class DriverExt extends DriverExtensionAbility {
-    async onDisconnect(want : Want) {
+    async onDisconnect(want: Want) {
       console.info(`onDisconnect, want: ${want.abilityName}`);
       // Call the asynchronous function.
     }
@@ -225,19 +226,19 @@ Dumps client information. You are advised not to dump sensitive information.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| params | Array\<string> | Yes| Parameters in the form of a command.|
+| params | Array\<string> | Yes | List of parameters of the dump command. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Array\<string> | String array used to dump client information.|
+| Array\<string> | An array of strings containing the dumped client information. |
 
 **Example**
-
+    
   ```ts
   class DriverExt extends DriverExtensionAbility {
-      onDump(params : Array<string>) {
+      onDump(params: Array<string>) {
           console.info(`dump, params: ${JSON.stringify(params)}`);
           return ['params'];
       }
@@ -259,9 +260,8 @@ type DriverExtensionContext = _DriverExtensionContext;
 ## Appendix
 
 The following modules cannot be referenced in the **DriverExtensionAbility**.
-
 | Kit | Module |
-| -------- | -------- | 
+| -------- | -------- |
 | Ability Kit | [@ohos.abilityAccessCtrl (Application Access Control)](../apis-ability-kit/js-apis-abilityAccessCtrl.md)  |
 | Ability Kit | [@ohos.ability.particleAbility (ParticleAbility Module)](../apis-ability-kit/js-apis-ability-particleAbility.md)  |
 | Ability Kit | [@ohos.app.ability.abilityManager (Ability Information Management)](../apis-ability-kit/js-apis-app-ability-abilityManager.md)  |
@@ -297,7 +297,7 @@ The following modules cannot be referenced in the **DriverExtensionAbility**.
 |<!--DelRow-->AVSession Kit| [@ohos.multimedia.avsession (AVSession Management) (System API)](../apis-avsession-kit/js-apis-avsession-sys.md)  |
 | Background Tasks Kit| [@ohos.reminderAgent (Agent-powered Reminder)](../apis-backgroundtasks-kit/js-apis-reminderAgent.md)  |
 | Background Tasks Kit | [@ohos.reminderAgentManager (Agent-powered Reminder)](../apis-backgroundtasks-kit/js-apis-reminderAgentManager.md)  |
-| Background Tasks Kit | [@ohos.resourceschedule.backgroundTaskManager (Background Task Management)](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)  | 
+| Background Tasks Kit | [@ohos.resourceschedule.backgroundTaskManager (Background Task Management)](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)  |
 |<!--DelRow-->Background Tasks Kit | [@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](../apis-backgroundtasks-kit/js-apis-resourceschedule-deviceUsageStatistics-sys.md)  |
 | Background Tasks Kit | [@ohos.backgroundTaskManager (Background Task Management)](../apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md)  |
 | Background Tasks Kit | [@ohos.bundleState (Device Usage Statistics)](../apis-backgroundtasks-kit/js-apis-deviceUsageStatistics.md)  |
@@ -333,13 +333,13 @@ The following modules cannot be referenced in the **DriverExtensionAbility**.
 |<!--DelRow-->Form Kit | [@ohos.application.formHost (formHost) (System API)](../apis-form-kit/js-apis-application-formHost-sys.md)  |
 | IME Kit| [@ohos.inputMethod (Input Method Framework)](../apis-ime-kit/js-apis-inputmethod.md)  |
 |<!--DelRow-->Input Kit| [@ohos.multimodalInput.inputMonitor (Input Monitor) (System API)](../apis-input-kit/js-apis-inputmonitor-sys.md)  |
-| Location Kit | [@ohos.geolocation (Geolocation)](../apis-location-kit/js-apis-geolocation.md)  |
-| Location Kit | [@ohos.geoLocationManager (Geolocation Manager)](../apis-location-kit/js-apis-geoLocationManager.md)  |
-| MDM Kit| [@ohos.enterprise.adminManager (Administrator Permission Management)](../apis-mdm-kit/js-apis-enterprise-adminManager.md)  |
-|<!--DelRow-->MDM Kit | [@ohos.enterprise.dateTimeManager (System Time Management) (System API)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md)  |
-| MDM Kit | [@ohos.enterprise.deviceInfo (Device Information Management)](../apis-mdm-kit/js-apis-enterprise-deviceInfo.md)  |
+| Location Kit (Geolocation) | [@ohos.geolocation (Geolocation)](../apis-location-kit/js-apis-geolocation.md)  |
+| Location Kit (Geolocation) | [@ohos.geoLocationManager (Geolocation)](../apis-location-kit/js-apis-geoLocationManager.md)  |
+| MDM Kit (Enterprise Device Management Service)| [@ohos.enterprise.adminManager (Administrator Permission Management)](../apis-mdm-kit/js-apis-enterprise-adminManager.md)  |
+|<!--DelRow-->MDM Kit (Enterprise Device Management Service) | [@ohos.enterprise.dateTimeManager (System Time Management)(System API)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md)  |
+| MDM Kit (Enterprise Device Management Service) | [@ohos.enterprise.deviceInfo (Device Information Management)](../apis-mdm-kit/js-apis-enterprise-deviceInfo.md)  |
 |<!--DelRow-->Media Kit| [@ohos.multimedia.media (Media) (System API)](../apis-media-kit/js-apis-media-sys.md)  |
-| MultimediaKit | @ohos.multimedia.mediaLibrary (Media Library Management) |
+| Media Library Kit (Media File Management Service) | @ohos.multimedia.mediaLibrary [Module Description](../apis-media-library-kit/arkts-apis-photoAccessHelper.md) |
 | Network Kit| [@ohos.net.connection (Network Connection Management)](../apis-network-kit/js-apis-net-connection.md)  |
 | Network Kit| [@ohos.net.ethernet (Ethernet Connection Management)](../apis-network-kit/js-apis-net-ethernet.md)  |
 | Network Kit| [@ohos.net.http (Data Request)](../apis-network-kit/js-apis-http.md)  |
@@ -355,7 +355,7 @@ The following modules cannot be referenced in the **DriverExtensionAbility**.
 | Sensor Service Kit| [@ohos.vibrator (Vibrator)](../apis-sensor-service-kit/js-apis-vibrator.md)  |
 | Telephony Kit| [@ohos.telephony.call (Call)](../apis-telephony-kit/js-apis-call.md)  |
 | Telephony Kit | [@ohos.telephony.data (Cellular Data)](../apis-telephony-kit/js-apis-telephony-data.md)  |
-| Telephony Kit | [@ohos.telephony.observer (Observer)](../apis-telephony-kit/js-apis-observer.md)  |
+| Telephony Kit | [@ohos.telephony.observer (Telephony Service Status Listening)](../apis-telephony-kit/js-apis-observer.md)  |
 | Telephony Kit | [@ohos.telephony.radio (Network Search)](../apis-telephony-kit/js-apis-radio.md)  |
 | Telephony Kit | [@ohos.telephony.sim (SIM Card Management)](../apis-telephony-kit/js-apis-sim.md)  |
 | Telephony Kit | [@ohos.telephony.sms (SMS)](../apis-telephony-kit/js-apis-sms.md)  |

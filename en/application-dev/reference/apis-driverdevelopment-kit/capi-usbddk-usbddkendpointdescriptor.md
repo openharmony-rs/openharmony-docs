@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:49:39.564Z pushedAt=2026-06-22T11:21:11.433Z -->
+<!-- md-trans-meta sourceCommit=5bd79eab01cf38af26bab98453bcb9f96f6c3f3c translatedAt=2026-11-10T01:11:47.436Z pushedAt=2026-11-10T01:48:34.283Z nl=1 -->
 
 ```c
 typedef struct UsbDdkEndpointDescriptor {...} UsbDdkEndpointDescriptor
@@ -13,7 +13,7 @@ typedef struct UsbDdkEndpointDescriptor {...} UsbDdkEndpointDescriptor
 
 ## Overview
 
-Defines endpoint descriptors.
+Describes an endpoint descriptor, including the standard endpoint descriptor and unparsed descriptor information.
 
 **Since**: 10
 
@@ -27,6 +27,8 @@ Defines endpoint descriptors.
 
 | Name| Description|
 | -- | -- |
-| struct UsbEndpointDescriptor endpointDescriptor | Standard endpoint descriptor.|
-| const uint8_t* extra | Unresolved descriptor, including class- or vendor-specific descriptors.|
+| [struct UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) endpointDescriptor | Standard endpoint descriptor.|
+| const uint8_t* extra | Pointer to the unparsed descriptor, which contains class-specific or vendor-specific descriptors. |
 | uint32_t extraLength | Length of the unresolved descriptor.|
+
+
