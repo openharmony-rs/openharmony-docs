@@ -29,12 +29,14 @@
     
 3. 通过[enableMacro](../../reference/apis-camera-kit/arkts-apis-camera-Macro.md#enablemacro19)接口，开启或关闭微距能力。
 
-   ```ts
-   function EnableMacro(photoSession: camera.PhotoSession): void {
-      let isSupported: boolean = photoSession.isMacroSupported();
-      if (isSupported) {
-         photoSession.enableMacro(true);
-      }
+   <!-- @[camera_enableMacro](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
+   enableMacro(photoSession: camera.PhotoSession): void {
+     let isSupported: boolean = photoSession.isMacroSupported();
+     if (isSupported) {
+       photoSession.enableMacro(true);
+     }
    }
    ```
 
@@ -44,22 +46,25 @@
 从API version 20开始，支持监听微距能力是否发生改变。
 
 注册macroStatusChanged事件监听微距能力变化，事件监听可参考[on('macroStatusChanged')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onmacrostatuschanged20)。
-   ```ts
-   function callback(err: BusinessError, macroStatus: boolean): void {
-      if (err !== undefined && err.code !== 0) {
-         console.error(`Callback Error, errorCode: ${err.code}`);
-         return;
-      }
-      console.info(`Macro state: ${macroStatus}`);
-   }
 
+   <!-- @[camera_macroStatusChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+   ``` TypeScript
+   macroStatusCallback(err: BusinessError, macroStatus: boolean): void {
+     if (err !== undefined && err.code !== 0) {
+       console.error(`Callback Error, errorCode: ${err.code}`);
+       return;
+     }
+     console.info(`Macro state: ${macroStatus}`);
+   }
+ 
    // 注册回调函数。
-   function registerMacroStatusChanged(photoSession: camera.PhotoSession): void {
-      photoSession.on('macroStatusChanged', callback);
+   registerMacroStatusChanged(photoSession: camera.PhotoSession): void {
+     photoSession.on('macroStatusChanged', this.macroStatusCallback);
    }
-
+ 
    // 解注册。
-   function unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
-      photoSession.off('macroStatusChanged');
+   unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
+     photoSession.off('macroStatusChanged');
    }
    ```  
