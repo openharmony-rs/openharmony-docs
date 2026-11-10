@@ -98,28 +98,15 @@ export function isRestoreLaunch(want: Want, launchParam: AbilityConstant.LaunchP
 }
 ```
 
-判定为恢复启动后，本次启动按恢复流程处理：跳过正常冷启动的初始化逻辑，从want.parameters取回上次保存的数据，并跳过广告页、自动跳首页等自动跳转。
-
-``` TypeScript
-onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-  this.context.setRestoreEnabled(true);
-  if (isRestoreLaunch(want, launchParam, restoreKeys)) {
-    // 恢复启动：可跳过部分初始化、从 want.parameters 取临时状态
-    this.restoreFromRecovery(want);
-  } else {
-    // 正常冷启动：标准初始化
-    this.initForColdStart();
-  }
-}
-```
+判定为恢复启动后，本次启动按恢复流程处理：跳过正常冷启动的初始化逻辑，从want.parameters取回上次保存的数据（onCreate()中的完整写法见[数据恢复](#数据恢复)第3步），并按下一节的说明跳过广告页、自动跳首页等自动跳转。
 
 ### 跳过恢复期间的自动跳页
 
-应用里"启动后自动跳首页/自动切Tab/重定向登录/进广告页"等导航逻辑，在恢复启动时会覆盖系统恢复的页面栈。做法：用一个普通布尔变量记录恢复流程是否结束——`onCreate()`判定为恢复启动时把变量置为`false`；首页`onPageShow()`触发时（此时系统页面栈恢复已完成），等应用的补齐或重新跳转执行完毕再把变量置为`true`。上述自动跳转逻辑执行前先检查该变量：为`false`时本次跳过，为`true`后恢复正常导航。
+应用里"启动后自动跳首页/自动切Tab/重定向登录/进广告页"等导航逻辑，在恢复启动时会覆盖系统恢复的页面栈。做法：用一个布尔变量标记恢复流程是否结束——`onCreate()`判定为恢复启动时置为`false`；首页`onPageShow()`触发时系统页面栈恢复已完成，等应用的补齐或重新跳转执行完毕再置为`true`。自动跳转逻辑执行前先检查该变量，为`false`时本次跳过。
 
 ### 函数与类实例等字段的转换
 
-Want parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组。**函数、Map/Set、Date、类实例无法序列化，无法通过`onSaveState()`保存，须先按以下方式转换**（`onSaveState()`写入wantParam的数据与页面的param同理——param中这类字段在恢复时会被直接丢弃）：
+Want parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组。**函数、回调、Map/Set、Date、Proxy、类实例等复杂对象无法序列化，无法通过`onSaveState()`保存，须先按以下方式转换**（`onSaveState()`写入wantParam的数据与页面的param同理——param中这类字段在恢复时会被直接丢弃）：
 
 | 原字段类型 | 处理方式 |
 | --- | --- |
@@ -129,8 +116,6 @@ Want parameters的值只支持String/Number/Boolean等基本类型以及由它�
 | 类实例（MediaItem、PhotoAsset等） | 替换为uri、id等可重新查回数据的字段，页面挂载后重新查询 |
 | Map / Set / Date | 转换为普通对象或序列化字符串（如JSON.stringify后随字符串传输） |
 | 已持久化的数据（preferences/RDB/文件） | 不通过`onSaveState()`保存（进程重建后仍在），只存键名、文件名等能重新查回数据的轻量信息 |
-
-回调函数、Proxy对象等复杂对象同样无法通过`onSaveState()`保存，须按上表方式替换。
 
 ## 数据恢复
 
@@ -262,18 +247,12 @@ aboutToAppear(): void {
 
 **使用要点**：
 
-- onSaveState()在系统触发备份的短暂时间窗内被调用，**只做同步读取**，不能在这里才异步采集数据，也不要做耗时操作——超时或异常可能导致本次数据不保存；
-- onSaveState()必须返回`ALL_AGREE`，否则数据不写入磁盘；确有耗时数据采集需求时改用[onSaveStateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestateasync20)（API版本20起）——应用实现了异步版时系统不再调用同步版，两者不要同时实现；
-- 恢复数据仅随恢复启动的这一次Want带回，后续启动不再携带；应用读取后应即从AppStorage删除，防止重复读取；
-- 若数据已持久化（preferences/RDB/文件），不要通过`onSaveState()`保存——进程重建后持久化数据仍在，保存的数据里只存能重新查回完整数据的轻量信息（如uri、id、文件名）。
+- 保存侧——onSaveState()的执行约束：它在系统触发备份的短暂时间窗内被调用，**只做同步读取**（不能在这里才异步采集数据，也不要做耗时操作——超时或异常可能导致本次数据不保存），且必须返回`ALL_AGREE`（否则数据不写入磁盘）。确有异步采集需求时改用[onSaveStateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestateasync20)（API版本20起）——应用实现了异步版时系统不再调用同步版，两者不要同时实现。
+- 读取侧——恢复数据的生命周期：仅随恢复启动的这一次Want带回，后续启动不再携带；应用读取后应立即从AppStorage删除，防止重复读取。
 
 > **注意：multiton多实例需按实例隔离AppStorage数据**
 >
-> [AppStorage](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)由整个应用进程共用，multiton模式启动的多个UIAbility实例运行在同一进程，即共用同一份AppStorage：多个实例都用同一个名字（如`reader.state`）存数据时，后写入的会覆盖先写入的，保存的数据错乱。
->
-> 隔离做法：在数据名字前加上实例自己的标识，三处保持一致——页面写入、`onSaveState()`保存、`onCreate()`读回都用`` `${instanceKey}:reader.state` ``这个名字。标识直接使用启动该实例时在want参数中传入的实例名`instanceKey`（由应用自己定义并传入，创建实例与恢复启动时都能从want中拿到）。
->
-> 清理时机与单实例相同：实例读取完自己的恢复数据后，立即从AppStorage删除，避免下次误读旧数据。
+> [AppStorage](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)由整个应用进程共用，multiton模式启动的多个UIAbility实例运行在同一进程、共用同一份AppStorage：多个实例用同一个键名（如`reader.state`）存数据时，后写入的覆盖先写入的。隔离做法：键名前加实例自己的标识，页面写入、`onSaveState()`保存、`onCreate()`读回三处都用`` `${instanceKey}:reader.state` ``这个键名；标识使用启动实例时在want参数中传入的实例名`instanceKey`（由应用定义并传入，创建实例与恢复启动时都能从want中拿到）。实例读取完自己的恢复数据后，同样立即从AppStorage删除。
 
 ### 持久化优先
 
