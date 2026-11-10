@@ -3897,6 +3897,16 @@
 						"end_line":353,
 						"name":"render_release",
 						"start_line":51
+					},
+					{
+						"end_line":370,
+						"name":"render_standby_enter",
+						"start_line":358
+					},
+					{
+						"end_line":384,
+						"name":"render_standby_exit",
+						"start_line":372
 					}
 				]
 			},
@@ -33172,6 +33182,11 @@
 						"end_line":272,
 						"name":"Render_SetLatencyMode",
 						"start_line":268
+					},
+					{
+						"end_line":261,
+						"name":"Render_Standby",
+						"start_line":249
 					}
 				]
 			}
