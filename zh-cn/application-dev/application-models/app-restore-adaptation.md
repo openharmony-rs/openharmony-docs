@@ -80,10 +80,10 @@ export default class EntryAbility extends UIAbility {
 
 ``` TypeScript
 /**
- * 三信号合判是否恢复启动：系统键为 true（全版本可靠）/ want.parameters 中存在
- * 恢复键（仅恢复启动时由系统带回）/ launchReason 为 APP_RECOVERY（API版本26.0.0 起
- * 可信；之前版本从系统设置强行停止后的再次启动也会被误标，不能单独采信）。
- * restoreKeys：onSaveState 写入 want.parameters 的全部键名。
+ * 组合判断是否恢复启动：恢复重启标记为 true（全版本可靠）/ want.parameters 中
+ * 存在 onSaveState() 保存的数据（仅恢复启动时由系统带回）/ launchReason 为
+ * APP_RECOVERY（API版本26.0.0 起可信，之前版本不能单独采信）。
+ * restoreKeys：onSaveState() 写入 want.parameters 的全部键名。
  */
 export function isRestoreLaunch(want: Want, launchParam: AbilityConstant.LaunchParam,
   restoreKeys: string[]): boolean {
