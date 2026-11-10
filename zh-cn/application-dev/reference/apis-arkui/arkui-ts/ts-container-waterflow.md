@@ -4132,6 +4132,10 @@ struct WaterFlowPlaceholderExample {
     this.getUIContext().getPlaceholderRegister().register('itemPlaceholder', wrapBuilder(ItemPlaceholder));
   }
 
+  aboutToDisappear() {
+    this.getUIContext().getPlaceholderRegister().unregister('itemPlaceholder');
+  }
+
   build() {
     Column() {
       WaterFlow() {
@@ -4197,6 +4201,10 @@ struct WaterFlowPlaceholderExample {
   aboutToAppear(): void {
     // 通过UIContext获取占位注册表，占位模板经wrapBuilder包装后注册，供provider按id引用
     this.getUIContext().getPlaceholderRegister().register('itemPlaceholder', wrapBuilder(ItemPlaceholder));
+  }
+
+  aboutToDisappear(): void {
+    this.getUIContext().getPlaceholderRegister().unregister('itemPlaceholder');
   }
 
   build() {
