@@ -130,7 +130,7 @@
    // 获取主窗口、完成初始化，并注册尺寸变化监听
    aboutToAppear(): void {
      // ...
-
+   
        // 尺寸变化回调：把新宽高写回状态变量，驱动界面刷新
        this.sizeListener = (size: window.Size): void => {
          this.applySize(size.width, size.height);
@@ -145,7 +145,7 @@
        console.error(`getLastWindow failed: ${err.code} ${err.message}`);
      });
    }
-
+   
    // 注销尺寸变化监听并释放引用，避免内存泄漏
    aboutToDisappear(): void {
      if (this.mainWindow && this.sizeListener) {
