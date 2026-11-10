@@ -114,18 +114,8 @@ certmgr findUserCA -c 0 -p -z
 
 **输出格式**：
 
-查询成功时，首先输出匹配到的证书总数，随后逐本输出证书信息，多本证书之间以空行分隔：
-
-```
+```text
 certificate count: 2
-URI: oh:t=c;o=xxx;u=100;a=500
-certType: userCA
-scope: currentUser
-attributes:
-  "alias": my_ca
-  "subject": CN=My Test CA
-  "state": enable
-
 URI: oh:t=c;o=yyy;u=0;a=0
 certType: userCA
 scope: globalUser
@@ -133,22 +123,36 @@ attributes:
   "alias": global_ca
   "subject": CN=Global Test CA
   "state": disable
-```
+SHA-256 hash: A1B2C3D4E5F67890A1B2C3D4E5F67890A1B2C3D4E5F67890A1B2C3D4E5F67890
+SHA-1 hash: 1A2B3C4D5E6F7890A1B2C3D4E5F67890A1B2C3D4
+pem:
+-----BEGIN CERTIFICATE-----
+MIIBxxDCCAWygAwIBAgIUZm9vYmFyMjAyNjExMTAwMDAwMA0GCSqGSIb3DQEBCwUAMBQX
+...（PEM 编码内容，可多行）...
+-----END CERTIFICATE-----
 
-- `scope`取值为`currentUser`（当前用户目录）或`globalUser`（所有用户级目录）。
-- `state`取值为`enable`（已启用）或`disable`（已禁用）。
-- 指定`-z`时，在`attributes`之后额外输出`SHA-256 hash:`和`SHA-1 hash:`两行。
-- 指定`-p`时，在`attributes`之后额外输出`pem:`及证书的PEM编码内容。
-- 同时指定`-z`和`-p`时，先输出哈希值（`-z`），再输出PEM编码（`-p`）。
-
-> **说明：**
->
-> - 未指定`-g`或`-gu`时，默认仅查询当前用户目录。
-> - `-g`与`-gu`不能同时指定。
-> - `-c`限制的是查询结果的最大数量，并非强制返回数量。实际返回数量可能小于该值，例如匹配到的证书数量较少，或部分证书的证书文件不可读而被跳过。
-> - `-c`取值为负数时按`0`处理，即不限制数量。
-> - `-p`与`-z`可以同时使用。
-> - 查询结果按证书属性库中的记录顺序返回，该顺序不保证与安装顺序一致；如需稳定顺序，请结合`-n`过滤后自行排序。
+URI: oh:t=c;o=xxx;u=100;a=500
+certType: userCA
+scope: currentUser
+attributes:
+  "alias": my_ca
+  "subject": CN=My Test CA
+  "state": enable
+SHA-256 hash: B2C3D4E5F67890A1B2C3D4E5F67890A1B2C3D4E5F67890A1B2C3D4E5F6789A
+SHA-1 hash: 2B3C4D5E6F7890A1B2C3D4E5F67890A1B2C3D4E5
+pem:
+-----BEGIN CERTIFICATE-----
+MIIBxxDCCAWygAwIBAgIUdGVzdDIwMjYxMTEwMDAwMDAwMBQX
+...（PEM 编码内容，可多行）...
+-----END CERTIFICATE-----
+未指定-z时，不输出SHA-256 hash:和SHA-1 hash:两行；未指定-p时，不输出pem:及其后的PEM编码内容；同时指定-z和-p时，先输出哈希值（-z），再输出PEM编码（-p）。
+各字段说明：
+- certificate count: 始终输出，取值为有效证书数量（若部分证书文件不可读被跳过，则为跳过后的实际数量）。
+- certType: userCA 固定输出，当前命令仅查询用户CA证书。
+- scope 取值为currentUser（当前用户目录，userId 为当前用户）或globalUser（所有用户级目录，userId 为 0）。指定-gu时，每本证书按自身所属目录分别显示。
+- state 取值为enable（已启用）或disable（已禁用）。
+- SHA-256 hash:/SHA-1 hash: 仅在指定-z时输出，十六进制大写，按证书 DER 编码计算。
+- pem: 及其后的PEM内容仅在指定-p时输出，PEM 内容本身自带换行。
 
 ## 错误信息
 
