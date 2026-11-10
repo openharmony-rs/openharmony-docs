@@ -1039,6 +1039,24 @@ Updating static template-based floating balls is not supported.
 
 请删除已有的静态模板类型闪控球，然后创建新的闪控球。
 
+## 1300029 窗口类型无效
+
+**错误信息**
+
+This window type is invalid. Possible cause: A non-system window calls this API.
+
+**错误描述**
+
+窗口类型无效，例如非系统窗口调用仅支持系统窗口的接口时，会报此错误码。
+
+**可能原因**
+
+非系统窗口调用仅支持系统窗口的接口。
+
+**处理步骤**
+
+请使用系统窗口调用该接口。
+
 ## 1300030 重复操作闪控窗
 
 **错误信息**
