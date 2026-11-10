@@ -200,7 +200,7 @@
        console.error('Could not read system avoid areas:', String(err));
      }
    }
-
+   
    // 注意：该接口返回vp，避让区/矩形等其它接口返回px
    private readDecorHeight(win: window.Window): void {
      try {
