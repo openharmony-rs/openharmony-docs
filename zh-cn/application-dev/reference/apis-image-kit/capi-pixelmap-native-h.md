@@ -81,8 +81,10 @@
 | [Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeFromNapi(napi_env env, napi_value pixelmapNapi, OH_PixelmapNative **pixelmapNative)](#oh_pixelmapnative_convertpixelmapnativefromnapi) | 将PixelmapNapi对象转换为OH_PixelmapNative对象。 |
 | [Image_ErrorCode OH_PixelmapNative_ReadPixels(OH_PixelmapNative *pixelmap, uint8_t *destination, size_t *bufferSize)](#oh_pixelmapnative_readpixels) | 读取图像像素数据，并按照Pixelmap的像素格式存入缓冲区中。 |
 | [Image_ErrorCode OH_PixelmapNative_WritePixels(OH_PixelmapNative *pixelmap, uint8_t *source, size_t bufferSize)](#oh_pixelmapnative_writepixels) | 将缓冲区中的图像像素数据按照Pixelmap的像素格式写入Pixelmap。 |
+| [Image_ErrorCode OH_PixelmapNative_WritePixelsWithPixelFormat(OH_PixelmapNative *pixelmap, const uint8_t *source, uint32_t bufferSize, PIXEL_FORMAT sourcePixelFormat)](#oh_pixelmapnative_writepixelswithpixelformat) | 将缓冲区内指定像素格式的像素数据写入整个Pixelmap。支持的源像素格式为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
 | [Image_ErrorCode OH_PixelmapNative_ReadPixelsFromArea(OH_PixelmapNative *pixelmap, Image_PositionArea *area)](#oh_pixelmapnative_readpixelsfromarea) | 从Pixelmap的指定区域中读取像素数据并存入缓冲区。如果Pixelmap的像素格式为YUV类型，则会按照Pixelmap的像素格式存入缓冲区，否则会按照BGRA_8888格式存入缓冲区。 |
 | [Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap, Image_PositionArea *area)](#oh_pixelmapnative_writepixelstoarea) | 将缓冲区中的像素数据写入Pixelmap的指定区域。如果Pixelmap的像素格式为YUV类型，则数据源的格式需与Pixelmap相同，否则数据源需要为BGRA_8888格式。 |
+| [Image_ErrorCode OH_PixelmapNative_WritePixelsToAreaWithPixelFormat(OH_PixelmapNative *pixelmap, const Image_PositionArea *area, PIXEL_FORMAT sourcePixelFormat)](#oh_pixelmapnative_writepixelstoareawithpixelformat) | 将缓冲区内指定像素格式的像素数据写入Pixelmap的指定区域。支持的源像素格式为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
 | [Image_ErrorCode OH_PixelmapNative_GetArgbPixels(OH_PixelmapNative *pixelmap, uint8_t *destination, size_t *bufferSize)](#oh_pixelmapnative_getargbpixels) | 从Pixelmap中读取ARGB格式的数据。 |
 | [Image_ErrorCode OH_PixelmapNative_ToSdr(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_tosdr) | 将HDR的图像内容转换为SDR的图像内容。 |
 | [Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_Pixelmap_ImageInfo *imageInfo)](#oh_pixelmapnative_getimageinfo) | 获取图像像素信息。 |
@@ -97,10 +99,10 @@
 | [Image_ErrorCode OH_PixelmapNative_CreateAlphaPixelmap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_createalphapixelmap) | 从源Pixelmap创建一个仅包含Alpha通道的ALPHA_8格式的Pixelmap，生成的新Pixelmap不可编辑。<br>如果源Pixelmap的格式是ALPHA_F16，则新生成的Pixelmap将维持ALPHA_F16格式。 |
 | [Image_ErrorCode OH_PixelmapNative_Clone(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_clone) | 对源Pixelmap进行拷贝，生成一个新的Pixelmap。该接口不会拷贝原图像的EXIF信息。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateCroppedAndScaledPixelMap(OH_PixelmapNative *srcPixelmap, Image_Region *region, Image_Scale *scale, OH_PixelmapNative_AntiAliasingLevel level, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_createcroppedandscaledpixelmap) | 基于源Pixelmap创建一个裁剪并缩放的新Pixelmap。该接口不会拷贝原图像的EXIF信息。 |
-| [Image_ErrorCode OH_PixelmapNative_ApplyTranslate(OH_PixelmapNative *pixelmap, float x, float y)](#oh_pixelmapnative_applytranslate) | 根据指定的横向和纵向距离对Pixelmap进行水平或垂直方向的平移。<br>平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。 |
-| [Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x, float y)](#oh_pixelmapnative_translate) | 根据输入的平移距离对图片进行位置变换。<br>平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyTranslate](capi-pixelmap-native-h.md#oh_pixelmapnative_applytranslate)代替，以获得更完善的异常报错信息。 |
-| [Image_ErrorCode OH_PixelmapNative_ApplyRotate(OH_PixelmapNative *pixelmap, float angle)](#oh_pixelmapnative_applyrotate) | 根据指定的角度对Pixelmap进行旋转。YUV格式仅支持90°倍数的旋转角。 |
-| [Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angle)](#oh_pixelmapnative_rotate) | 根据输入的角度对图片进行旋转，YUV格式仅支持90°倍数的旋转角。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyRotate](capi-pixelmap-native-h.md#oh_pixelmapnative_applyrotate)代替，以获得更完善的异常报错信息。 |
+| [Image_ErrorCode OH_PixelmapNative_ApplyTranslate(OH_PixelmapNative *pixelmap, float x, float y)](#oh_pixelmapnative_applytranslate) | 根据指定的横向和纵向距离对Pixelmap进行水平或垂直方向的平移。<br>平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。<br>尺寸扩大后新增的区域（原图范围之外）以空白填充：非YUV格式填充为全0，YUV格式填充为白色（Y分量为255、UV分量为128）。 |
+| [Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x, float y)](#oh_pixelmapnative_translate) | 根据输入的平移距离对图片进行位置变换。<br>平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。<br>尺寸扩大后新增的区域（原图范围之外）以空白填充：非YUV格式填充为全0，YUV格式填充为白色（Y分量为255、UV分量为128）。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyTranslate](capi-pixelmap-native-h.md#oh_pixelmapnative_applytranslate)代替，以获得更完善的异常报错信息。 |
+| [Image_ErrorCode OH_PixelmapNative_ApplyRotate(OH_PixelmapNative *pixelmap, float angle)](#oh_pixelmapnative_applyrotate) | 根据指定的角度对Pixelmap进行旋转。<br>图像旋转角度的取值范围为[0, 360]，超出取值范围时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。 |
+| [Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angle)](#oh_pixelmapnative_rotate) | 根据输入的角度对图片进行旋转。<br>图像旋转角度的取值范围为[0, 360]，超出取值范围时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyRotate](capi-pixelmap-native-h.md#oh_pixelmapnative_applyrotate)代替，以获得更完善的异常报错信息。 |
 | [Image_ErrorCode OH_PixelmapNative_ApplyFlip(OH_PixelmapNative *pixelmap, bool shouldFlipHorizontally, bool shouldFlipVertically)](#oh_pixelmapnative_applyflip) | 根据指定的水平或垂直翻转条件对Pixelmap进行翻转。 |
 | [Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldFlipHorizontally, bool shouldFlipVertically)](#oh_pixelmapnative_flip) | 根据输入的条件对图片进行翻转。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyFlip](capi-pixelmap-native-h.md#oh_pixelmapnative_applyflip)代替，以获得更完善的异常报错信息。 |
 | [Image_ErrorCode OH_PixelmapNative_ApplyCrop(OH_PixelmapNative *pixelmap, Image_Region *region)](#oh_pixelmapnative_applycrop) | 根据指定的区域信息对Pixelmap进行裁剪。 |
@@ -1017,6 +1019,47 @@ Image_ErrorCode OH_PixelmapNative_WritePixels(OH_PixelmapNative *pixelmap, uint8
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：参数错误。<br>         IMAGE_UNSUPPORTED_OPERATION：操作不支持。<br>         IMAGE_UNKNOWN_ERROR：未知错误。 |
 
+### OH_PixelmapNative_WritePixelsWithPixelFormat()
+
+```c
+Image_ErrorCode OH_PixelmapNative_WritePixelsWithPixelFormat(OH_PixelmapNative *pixelmap, const uint8_t *source, uint32_t bufferSize, PIXEL_FORMAT sourcePixelFormat)
+```
+
+**描述**
+
+将缓冲区内指定像素格式的像素数据写入整个Pixelmap。支持的源像素格式为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。
+
+> **说明：**
+>
+> 所需的最小缓冲区大小（单位：字节）计算公式如下：
+>
+> `Pixelmap宽度 × Pixelmap高度 × 每像素字节数`
+>
+> 公式中每像素字节数取决于sourcePixelFormat：BGRA_8888、RGBA_8888为4；RGB_888为3；RGB_565为2；RGBA_F16为8。
+
+> **说明：**
+>
+> - 本接口仅支持被以下像素格式的PixelMap调用：PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_F16、PIXEL_FORMAT_RGBA_1010102。
+> - 如需写入与当前PixelMap像素格式相同的源数据（包括YUV格式），请使用[OH_PixelmapNative_WritePixels](#oh_pixelmapnative_writepixels)。
+> - 如需写入具有自定义行跨距或偏移量的源数据，请使用[OH_PixelmapNative_WritePixelsToAreaWithPixelFormat](#oh_pixelmapnative_writepixelstoareawithpixelformat)。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 待修改像素数据的Pixelmap指针，不能为空指针。 |
+| const uint8_t *source | 源像素数据缓冲区指针，不能为空指针，该缓冲区内的像素数据会被拷贝至Pixelmap。缓冲区内的像素数据必须至少包含整个PixelMap的像素数据，且不包含内存对齐填充字节。 |
+| uint32_t bufferSize | 缓冲区大小。单位：字节（Byte）。所需的最小缓冲区大小请参考上方说明中的计算公式。 |
+| [PIXEL_FORMAT](#pixel_format) sourcePixelFormat | 源数据的像素格式。支持的值为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_UNSUPPORTED_OPERATION：Pixelmap不可编辑或已锁定。<br>         IMAGE_UNSUPPORTED_CONVERSION：不支持从sourcePixelFormat转换为Pixelmap的像素格式。<br>         IMAGE_INVALID_PARAMETER：pixelmap或source为空指针、bufferSize不足，或者sourcePixelFormat无效或不受支持。<br>         IMAGE_COPY_FAILED：像素数据复制或转换失败。 |
+
 ### OH_PixelmapNative_ReadPixelsFromArea()
 
 ```c
@@ -1026,6 +1069,23 @@ Image_ErrorCode OH_PixelmapNative_ReadPixelsFromArea(OH_PixelmapNative *pixelmap
 **描述**
 
 从Pixelmap的指定区域中读取像素数据并存入缓冲区。如果Pixelmap的像素格式为YUV类型，则会按照Pixelmap的像素格式存入缓冲区，否则会按照BGRA_8888格式存入缓冲区。
+
+> **说明：**
+>
+> 所需的最小缓冲区大小（单位：字节）计算公式如下：
+>
+> - BGRA_8888格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - YUV格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
+>
+> 公式中各符号的含义如下：
+>
+> | 符号 | 含义 | 来源 |
+> | --- | --- | --- |
+> | `offset` | 缓冲区内首像素的字节偏移量 | `Image_PositionArea.offset` |
+> | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `Image_PositionArea.stride` |
+> | `width` | 读取区域的宽度，单位为像素 | `Image_PositionArea.region.size.width` |
+> | `height` | 读取区域的高度，单位为像素 | `Image_PositionArea.region.size.height` |
+> | 每像素字节数 | BGRA_8888为4（R、G、B、A通道各1字节）；8位YUV（NV12/NV21）为1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）；10位YUV（P010）为3（2倍Y分量 + 0.5倍U分量 + 0.5倍V分量） | — |
 
 **起始版本：** 22
 
@@ -1052,6 +1112,23 @@ Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap,
 
 将缓冲区中的像素数据写入Pixelmap的指定区域。如果Pixelmap的像素格式为YUV类型，则数据源的格式需与Pixelmap相同，否则数据源需要为BGRA_8888格式。
 
+> **说明：**
+>
+> 所需的最小缓冲区大小（单位：字节）计算公式如下：
+>
+> - BGRA_8888格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - YUV格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
+>
+> 公式中各符号的含义如下：
+>
+> | 符号 | 含义 | 来源 |
+> | --- | --- | --- |
+> | `offset` | 缓冲区内首像素的字节偏移量 | `Image_PositionArea.offset` |
+> | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `Image_PositionArea.stride` |
+> | `width` | 写入区域的宽度，单位为像素 | `Image_PositionArea.region.size.width` |
+> | `height` | 写入区域的高度，单位为像素 | `Image_PositionArea.region.size.height` |
+> | 每像素字节数 | BGRA_8888为4（R、G、B、A通道各1字节）；8位YUV（NV12/NV21）为1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）；10位YUV（P010）为3（2倍Y分量 + 0.5倍U分量 + 0.5倍V分量） | — |
+
 **起始版本：** 22
 
 **参数：**
@@ -1066,6 +1143,53 @@ Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap,
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：pixelmap或area有误。<br>         IMAGE_UNSUPPORTED_OPERATION：Pixelmap不可编辑。<br>         IMAGE_UNKNOWN_ERROR：未知的内部错误，例如：不支持的像素格式。 |
+
+### OH_PixelmapNative_WritePixelsToAreaWithPixelFormat()
+
+```c
+Image_ErrorCode OH_PixelmapNative_WritePixelsToAreaWithPixelFormat(OH_PixelmapNative *pixelmap, const Image_PositionArea *area, PIXEL_FORMAT sourcePixelFormat)
+```
+
+**描述**
+
+将缓冲区内指定像素格式的像素数据写入Pixelmap的指定区域。支持的源像素格式为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。
+
+> **说明：**
+>
+> 所需的最小缓冲区大小（单位：字节）计算公式如下：
+>
+> `offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+>
+> 公式中各符号的含义如下：
+>
+> | 符号 | 含义 | 来源 |
+> | --- | --- | --- |
+> | `offset` | 缓冲区内首像素的字节偏移量 | `Image_PositionArea.offset` |
+> | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `Image_PositionArea.stride` |
+> | `width` | 写入区域的宽度，单位为像素 | `Image_PositionArea.region.size.width` |
+> | `height` | 写入区域的高度，单位为像素 | `Image_PositionArea.region.size.height` |
+> | 每像素字节数 | 取决于sourcePixelFormat：BGRA_8888、RGBA_8888为4；RGB_888为3；RGB_565为2；RGBA_F16为8 | — |
+
+> **说明：**
+>
+> - 本接口仅支持被以下像素格式的PixelMap调用：PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_F16、PIXEL_FORMAT_RGBA_1010102。
+> - 如需向YUV格式的PixelMap中写入相同格式的像素数据，请使用[OH_PixelmapNative_WritePixelsToArea](#oh_pixelmapnative_writepixelstoarea)。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 待修改像素数据的Pixelmap指针，不能为空指针。 |
+| [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) *area | 写入的区域数据。<br>数据将从area->pixels拷贝至area->region指定的区域。 |
+| [PIXEL_FORMAT](#pixel_format) sourcePixelFormat | 源数据的像素格式。支持的值为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_UNSUPPORTED_OPERATION：Pixelmap不可编辑或已锁定。<br>         IMAGE_UNSUPPORTED_CONVERSION：不支持从sourcePixelFormat转换为Pixelmap的像素格式。<br>         IMAGE_INVALID_PARAMETER：pixelmap、area或area->pixels为空指针，缓冲区大小、偏移量、行跨距或区域无效，或者sourcePixelFormat无效或不受支持。<br>         IMAGE_COPY_FAILED：像素数据复制或转换失败。 |
 
 ### OH_PixelmapNative_GetArgbPixels()
 
@@ -1439,7 +1563,7 @@ Image_ErrorCode OH_PixelmapNative_ApplyTranslate(OH_PixelmapNative *pixelmap, fl
 
 **描述**
 
-根据指定的横向和纵向距离对Pixelmap进行水平或垂直方向的平移。<br>平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。
+根据指定的横向和纵向距离对Pixelmap进行水平或垂直方向的平移。<br>平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。<br>尺寸扩大后新增的区域（原图范围之外）以空白填充：非YUV格式填充为全0，YUV格式填充为白色（Y分量为255、UV分量为128）。
 
 **起始版本：** 26.0.0
 
@@ -1465,7 +1589,7 @@ Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x
 
 **描述**
 
-根据输入的平移距离对图片进行位置变换。<br>平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyTranslate](capi-pixelmap-native-h.md#oh_pixelmapnative_applytranslate)代替，以获得更完善的异常报错信息。
+根据输入的平移距离对图片进行位置变换。<br>平移后的图像尺寸将变为：宽度 = 原宽度 + x，高度 = 原高度 + y。<br>尺寸扩大后新增的区域（原图范围之外）以空白填充：非YUV格式填充为全0，YUV格式填充为白色（Y分量为255、UV分量为128）。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyTranslate](capi-pixelmap-native-h.md#oh_pixelmapnative_applytranslate)代替，以获得更完善的异常报错信息。
 
 **起始版本：** 12
 
@@ -1491,7 +1615,7 @@ Image_ErrorCode OH_PixelmapNative_ApplyRotate(OH_PixelmapNative *pixelmap, float
 
 **描述**
 
-根据指定的角度对Pixelmap进行旋转。YUV格式仅支持90°倍数的旋转角。
+根据指定的角度对Pixelmap进行旋转。<br>图像旋转角度的取值范围为[0, 360]，超出取值范围时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。
 
 **起始版本：** 26.0.0
 
@@ -1516,7 +1640,7 @@ Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angl
 
 **描述**
 
-根据输入的角度对图片进行旋转，YUV格式仅支持90°倍数的旋转角。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyRotate](#oh_pixelmapnative_applyrotate)代替，以获得更完善的异常报错信息。
+根据输入的角度对图片进行旋转。<br>图像旋转角度的取值范围为[0, 360]，超出取值范围时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ApplyRotate](#oh_pixelmapnative_applyrotate)代替，以获得更完善的异常报错信息。
 
 **起始版本：** 12
 
