@@ -36675,9 +36675,14 @@
 						"start_line":36
 					},
 					{
-						"end_line":62,
-						"name":"driver_hid_report_step2",
-						"start_line":45
+						"end_line":76,
+						"name":"driver_hid_report_step2_1",
+						"start_line":47
+					},
+					{
+						"end_line":92,
+						"name":"driver_hid_report_step2_2",
+						"start_line":78
 					}
 				]
 			},
