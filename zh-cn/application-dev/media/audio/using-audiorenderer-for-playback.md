@@ -381,6 +381,46 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
        });
    ```
 
+### 等待音频数据场景的处理建议
+
+在音频播放过程中，应用可能因网络下载等待等原因暂时无法提供音频数据。从API版本26.1.0开始，应用可以调用[standby](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#standby)接口让音频流进入standby状态，暂停数据回调，避免空转。已写入系统的缓存数据会继续播放完毕。退出standby后，数据回调恢复。仅STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_GAME、STREAM_USAGE_AUDIOBOOK类型的播放流支持standby。
+
+**进入standby状态：**
+
+<!-- @[render_standby_enter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) --> 
+
+``` TypeScript
+async function enterStandby() {
+  if (audioRenderer !== undefined) {
+    // 进入standby状态。仅在STATE_RUNNING状态下可调用。
+    audioRenderer.standby(true).then(() => {
+      console.info('Succeeded in entering standby.');
+      // 数据回调已暂停，已写入的缓存继续播放。
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to enter standby. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+**退出standby状态：**
+
+<!-- @[render_standby_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) --> 
+
+``` TypeScript
+async function exitStandby() {
+  if (audioRenderer !== undefined) {
+    // 退出standby状态。仅在standby状态下可调用。
+    audioRenderer.standby(false).then(() => {
+      console.info('Succeeded in exiting standby.');
+      // 数据回调恢复。
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to exit standby. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
 ### 选择正确的StreamUsage
 
 创建AudioRenderer实例时，开发者需要根据应用场景指定播放器的`StreamUsage`，选择正确的`StreamUsage`可以避免用户遇到不符合预期的行为。
