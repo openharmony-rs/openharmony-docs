@@ -78,7 +78,7 @@
    OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 100);
    ```
 
-6. 释放内存
+6. 释放内存。
 
    <!-- @[drawing_simple_text_c_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
