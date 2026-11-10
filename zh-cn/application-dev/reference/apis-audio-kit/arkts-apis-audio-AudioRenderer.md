@@ -2812,7 +2812,7 @@ standby状态下也可以直接调用[pause](#pause8)、[stop](#stop8)、[releas
 
 使用Promise异步回调。
 
->**注意：**
+> **注意：**
 >
 > 此接口并不会改变通过state获取的状态。
 
