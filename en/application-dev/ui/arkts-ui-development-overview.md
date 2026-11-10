@@ -5,6 +5,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=a306693f0f46e5633c549769b8338f6bd7c191f4 translatedAt=2026-11-05T11:27:02.258Z pushedAt=2026-11-09T10:02:18.777Z nl=1 -->
 
 Powered by the ArkTS-based declarative development paradigm, ArkUI is a simplified, high-performance UI development framework for cross-device applications. It provides the capabilities required for building the application UI, including:
 
@@ -59,7 +60,7 @@ Powered by the ArkTS-based declarative development paradigm, ArkUI is a simplifi
 
 ## Architecture
 
-  **Figure 1** Overall architecture 
+  **Figure 1** Overall architecture
 
 ![arkui-arkts-framework](figures/arkui-arkts-framework.png)
 
@@ -104,11 +105,11 @@ The table below lists the main tasks involved in UI development with ArkUI.
 | Use popup windows| Learn when and how to use popup windows.| - [Dialog Box Overview](arkts-base-dialog-overview.md)<br>- [Menu Overview](arkts-menu-overview.md)<br>- [Popup Overview](arkts-popup-overview.md)<br>- [Modal Page Overview](arkts-modal-overview.md)<br>- [Toast](arkts-create-toast.md)<br>- [OverlayManager](arkts-create-overlaymanager.md)|
 | Graph Drawing       | Understand how to draw custom geometry and make custom graphics on the canvas.  | -&nbsp;[Geometric Shape Drawing Overview](arkts-shape-overview.md)<br>- [Drawing Custom Graphics Using the Canvas](arkts-drawing-customization-on-canvas.md)|
 | Implement interactions| Implement interactions using basic mechanisms, input device events, and gesture response.| - [Interaction Mechanism Overview](arkts-interaction-basic-principles.md)<br>- [Input Devices and Events](arkts-interaction-development-guide-raw-input-event.md)<br>- [Adding Gesture Response](arkts-interaction-development-guide-support-gesture.md)|
-| Use animations       | Apply animations to components and pages for various visual effects.                 | - [Property Animation](arkts-attribute-animation-overview.md)<br>- [Transition Animation](arkts-transition-overview.md)<br>- [Particle Animation](arkts-particle-animation.md)<br>- [Component Animation](arkts-component-animation.md)<br>- [Traditional Curve](arkts-traditional-curve.md)<br>- [Animation Smoothing](arkts-animation-smoothing.md)<br>- [Dynamic Blur](arkts-blur-effect.md)<br>- [Frame Animation](arkts-animator.md)|
+| Using animation        | Describes typical scenarios for using animations on components and pages.                  | - [Property animation](arkts-attribute-animation-overview.md)<br>- [Transition animation](arkts-transition-overview.md)<br>- [Particle animation](arkts-particle-animation.md)<br>- [Component animation](arkts-component-animation.md)<br>- [Animation curve](arkts-traditional-curve.md)<br>- [Animation smoothing](arkts-animation-smoothing.md)<br>- [Motion blur](arkts-blur-effect.md)<br>- [Frame animation](arkts-animator.md) |
 | Use customization capabilities       | Learn the basic concepts of customization capabilities and how to apply them.      | - [Custom Composition](arkts-user-defined-composition.md)<br>- [Custom Node](arkts-user-defined-node.md)<br>- [Custom Extension](arkts-user-defined-modifier.md)|
 | Implement UI internationalization       | Implement an internationalized application UI, including resource configuration and support for right-to-left (RTL) layouts.      | - [Implementing UI Internationalization](arkts-internationalization.md)|
 | Implement accessibility and aging-friendly support     | Implement accessibility features and aging-friendly adaptations.  | <!--RP1-->- [Supporting Accessibility](arkts-universal-attributes-accessibility.md)<br>-&nbsp;<!--RP1End-->[Supporting Aging-Friendly Design](arkui-support-for-aging-adaptation.md)|
-| Set the theme      | Explore application-level and page-level theme setting capabilities.      | - [Implementing Dark and Light Mode Adaptation](ui-dark-light-color-adaptation.md)<br>- [Configuring In-Application Theme Skinning](theme_skinning.md)|
+| Theme settings       | Describes theme setting capabilities at the application and page levels.       | -&nbsp;[Application dark/light color adaptation](ui-dark-light-color-adaptation.md)<br/>-&nbsp;[In-app theme skinning](theme-skinning.md) |
 | Utilize UI contextual capabilities| Use **UIContext** APIs to access instance-bound objects and launch atomic services in full-screen mode.| - [Using the UI Context API for UI Operations](arkts-global-interface.md)<br>- [Atomic Service Full Screen Launch Component](arkts-FullScreenComponent.md) |
 
 ## General Rules
@@ -134,3 +135,4 @@ For ArkTS-based declarative development paradigms, refer to the following exampl
 - [Pixel Conversion (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/PixelConversion)
 
 - [Shopping (ArkTS) (API8)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/ShoppingEts)<!--DelEnd-->
+

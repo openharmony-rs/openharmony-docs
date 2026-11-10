@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=a306693f0f46e5633c549769b8338f6bd7c191f4 translatedAt=2026-11-05T11:50:20.531Z pushedAt=2026-11-09T10:02:18.981Z nl=1 -->
 
 ## Overview
 
@@ -181,7 +182,7 @@ To enhance user experience, applications should adapt to the system's dark and l
 
     Using [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md), you can set three [color modes](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#themecolormode): follow the system, light mode, and dark mode.
 
-    Within the scope of **WithTheme**, component styles adapt to the specified color mode by accessing the corresponding system and application resource values, ensuring components adjust their appearance based on the configured mode. For details, see [Setting a Custom Theme Style for Specific Application Pages](./theme_skinning.md#setting-a-custom-theme-style-for-specific-application-pages).
+    Within the scope of [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md), the style resource values of components are read from the corresponding dark/light mode system and application resources based on the specified mode. This indicates that, within the scope of WithTheme, the color scheme of components is adjusted according to the specified dark/light mode. For details, see [Setting the Color Mode for Application Pages](./theme-skinning.md#setting-the-color-mode-for-application-pages).
 
 ## Setting the Color Mode Independently
 

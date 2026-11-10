@@ -1,11 +1,11 @@
-# FAQs About Immersive Light Sense
+# FAQs About Immersive Lighting
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=30a0d7c059dff847820cd3847015731fe24ef1b1 translatedAt=2026-10-12T09:18:50.105Z pushedAt=2026-10-13T03:34:51.913Z -->
+<!-- md-trans-meta sourceCommit=e84ead30b494aca73bebfd2e4feede3629f019a1 translatedAt=2026-11-05T11:10:23.141Z pushedAt=2026-11-09T10:02:18.716Z nl=1 -->
 
 This document provides common issues and solutions encountered during the development of immersive light sense. For a complete introduction and development guide to immersive light sense, see [Immersive Light Sense Overview](arkts-immersive-light-sense-overview.md).
 
@@ -90,7 +90,11 @@ struct MaterialScopeAdaptExample {
           Row() {
             // Replace $r('app.string.content_area') with the actual resource file. In this example, the value of the resource file is "Content Area".
             Text($r('app.string.content_area'))
-
+				.fontColor('#182431')
+                .fontSize(30)
+                .lineHeight(41)
+                .fontWeight(700)
+                
             Blank()
 
             Column() {
@@ -110,7 +114,6 @@ struct MaterialScopeAdaptExample {
             }))
           }
           .width('100%')
-          .padding(16)
           .borderRadius(16)
         }
         .width('100%')

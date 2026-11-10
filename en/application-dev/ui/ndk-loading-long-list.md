@@ -6,16 +6,17 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=11a1dfa85450ea7b4e2ba6c6b3a5464b774af8b5 translatedAt=2026-11-05T11:48:00.742Z pushedAt=2026-11-09T10:02:18.977Z nl=1 -->
 
 The ArkUI development framework provides list components through NDK APIs, enabling efficient display of structured, scrollable content. List components allow you to control the scroll position, group display content, and use [NodeAdapter](#nodeadapter-overview) for lazy loading to improve list creation performance.
 
 ## Creating a List
 
-For details about how to create a list, see [Integrating with ArkTS Pages](../ui/ndk-access-the-arkts-page.md).
+For details about how to create a list, see [Integrating with ArkTS Pages](../ui/ndk-access-the-arkts-page.md). 
 
 ## Listening for Scroll Events
 
-For details about how to listen for list scrolling events, see [Adding an Event Listener](ndk-add-component-events.md).
+Refer to [Adding Event Listeners](ndk-add-component-events.md) to implement scroll event listening for the list. 
 
 ## Implementing Lazy Loading
 
@@ -24,7 +25,7 @@ The NDK provides the **NodeAdapter** object as an alternative to [LazyForEach](.
 
 - Child components cannot be added to a node where **NodeAdapter** is set by using APIs such as [addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild). Child components are managed entirely by **NodeAdapter**. If a parent component already has child nodes, setting **NodeAdapter** will fail and return an error code.
 
-- **NodeAdapter** notifies you of on-demand generation of components through relevant events. Similar to the component event mechanism, you need to register an event listener via [OH_ArkUI_NodeAdapter_RegisterEventReceiver](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_registereventreceiver) when using **NodeAdapter** and handle logic in the listener events. Relevant events are defined by [ArkUI_NodeAdapterEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype). **NodeAdapter** does not actively release off-screen component objects; you must release or cache and reuse component objects in the [NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype) event. The following image illustrates the event triggering mechanism in a typical list scrolling scenario.
+- **NodeAdapter** notifies you through related events to generate components on demand, similar to the component event mechanism. When using **NodeAdapter**, register an event listener through [OH_ArkUI_NodeAdapter_RegisterEventReceiver](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_registereventreceiver) and handle the logic in the listener events. The related events are defined by [ArkUI_NodeAdapterEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype). In addition, **NodeAdapter** does not proactively release component objects that are no longer displayed on the screen. You need to release the component objects in the [NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype) event, or cache and reuse them. The following figure shows the event triggering mechanism in a typical list scrolling scenario:
 
   ![en-us_image_0000001949769409](figures/NodeAdapter-Overview.png)
 
@@ -36,7 +37,7 @@ This example demonstrates how to implement an adapter for lazy loading.
 
 Use the **ArkUIListItemAdapter** class to manage the lazy loading adapter. Create a **NodeAdapter** object in the class constructor and set an event listener for the **NodeAdapter** object. In the class destructor, destroy the **NodeAdapter** object.
 
-The **ArkUIListItemAdapter** class is a custom general template class. The template parameter types can be customized based on the service data and node model. This template provides the child component creation callback for external use, which is used to create and mount the child components corresponding to each **ListItem** as required. This template also provides the callback for reusing list items, which is used to reset the status and reuse logic after nodes are recycled.
+The **ArkUIListItemAdapter** class is a custom generic template class. The template parameter types can be customized based on the business data and node model. This template exposes the "create child component" callback, which is used to create and mount the child component corresponding to each **ListItem** on demand. It also provides the "reuse ListItem" callback, which is used to perform state reset and reuse logic after a node is recycled.
 
 <!-- @[Lazy_loading_of_text_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
 
@@ -73,13 +74,13 @@ template <typename ItemType> class ArkUIListItemAdapterT : public IArkUIListItem
 public:
     // Callback type for creating a list item node.
     using CreateChildCallback = std::function<std::shared_ptr<ArkUIListItemNode>(const ItemType &item, int32_t index)>;
-    // Callback type for updating the content when a list item node is reused.
+    // Callback type for updating content when reusing a list item node.
     using ReuseListItemCallback =
         std::function<void(const std::shared_ptr<ArkUIListItemNode> &listItem, const ItemType &item, int32_t index)>;
-    // Callback type for generating a unique node ID.
+    // Callback type for generating the unique identifier of a node.
     using NodeIdCallback = std::function<int64_t(const ItemType &item, int32_t index)>;
 
-    // Create a NodeAdapter and initialize data and callbacks.
+    // Create a NodeAdapter and initialize the data and callbacks.
     explicit ArkUIListItemAdapterT(std::vector<ItemType> data, CreateChildCallback createChildCallback,
                                    ReuseListItemCallback reuseListItemCallback, NodeIdCallback nodeIdCallback = nullptr)
         : handle_(OH_ArkUI_NodeAdapter_Create()), data_(std::move(data)),
@@ -258,7 +259,7 @@ private:
         auto item = OH_ArkUI_NodeAdapterEvent_GetRemovedNode(event);
         auto iter = items_.find(item);
         if (iter != items_.end()) {
-            // Place the item in the cache pool for recycling and reuse.
+            // Place it into the cache pool for recycling and reuse.
             cachedItems_.push(iter->second);
             items_.erase(iter);
         }
@@ -270,9 +271,9 @@ private:
     ArkUI_NodeAdapterHandle handle_ = nullptr;
     // List data source.
     std::vector<ItemType> data_;
-    // Create a callback for the list item node.
+    // Callback for creating a list item node.
     CreateChildCallback createChildCallback_ = nullptr;
-    // Reuse the callback for the list item node.
+    // Callback for reusing a list item node.
     ReuseListItemCallback reuseListItemCallback_ = nullptr;
     // Callback for generating a node ID.
     NodeIdCallback nodeIdCallback_ = nullptr;
@@ -289,12 +290,12 @@ private:
 
 ### Applying the Lazy Loading Adapter in a List
 
-1. Add the **SetLazyAdapter** function to **ArkUIListNode**, set the [NODE_LIST_NODE_ADAPTER](../reference/apis-arkui/capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_node_adapter) property for the list node, and pass **NodeAdapter** as the input parameter.
+1. Add the `SetLazyAdapter` function to **ArkUIListNode**, set the [NODE_LIST_NODE_ADAPTER](../reference/apis-arkui/capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_node_adapter) attribute for the list node, and pass **NodeAdapter** as the attribute parameter.
    <!-- @[List_encapsulated_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListNode.h) -->
    
    ``` C
    // ArkUIListNode.h
-   // Provide encapsulation for the list component. 
+   // Provide encapsulation for the list component.
    #ifndef MYAPPLICATION_ARKUILISTNODE_H
    #define MYAPPLICATION_ARKUILISTNODE_H
    
@@ -410,7 +411,7 @@ private:
            (void)index;
            return BuildListItemNode(item, adapterWeakHolder);
        };
-       // 3. Callback for reusing ListItem.
+       // 3: Callback for reusing ListItem.
        auto reuseListItemCallback = [adapterWeakHolder](const std::shared_ptr<ArkUIListItemNode> &listItem,
                                                         const std::string &item, int32_t index) {
            (void)index;
@@ -419,7 +420,7 @@ private:
    
        auto adapter = std::make_shared<StringAdapter>(data, createChildCallback, reuseListItemCallback);
        *adapterWeakHolder = adapter;
-       // 4: Create a ListItem child component for lazy loading and mount it to the List component.
+       // 4: Create the ListItem lazy loading component and mount it to the List.
        list->SetLazyAdapter(adapter);
        return list;
    }
@@ -489,7 +490,7 @@ private:
    
    ``` C
    // ArkUIListNode.h
-   // Provide encapsulation for the list component. 
+   // Provide encapsulation for the list component.
    // ...
    class ArkUIListNode : public ArkUINode {
    public:
@@ -503,12 +504,12 @@ private:
        // ...
    };
    ```
-2. Control the list to scroll to a specified element.
+2. Control the list to scroll to a specified element. 
    <!-- @[ScrollToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListNode.h) -->
    
    ``` C
    // ArkUIListNode.h
-   // Provide encapsulation for the list component. 
+   // Provide encapsulation for the list component.
    // ...
    class ArkUIListNode : public ArkUINode {
    public:
@@ -528,7 +529,7 @@ private:
    
    ``` C
    // ArkUIListNode.h
-   // Provide encapsulation for the list component. 
+   // Provide encapsulation for the list component.
    // ...
    class ArkUIListNode : public ArkUINode {
    public:
@@ -544,7 +545,7 @@ private:
    ```
 ## Implementing Swipe-to-Delete for List Items
 
-1. Set the [NODE_LIST_ITEM_SWIPE_ACTION](../reference/apis-arkui/capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_item_swipe_action) attribute of [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) and pass the [ArkUI_ListItemSwipeActionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) object as the attribute parameter.
+1. Set the [NODE_LIST_ITEM_SWIPE_ACTION](../reference/apis-arkui/capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_item_swipe_action) attribute for [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md), and pass the [ArkUI_ListItemSwipeActionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) object as the attribute parameter.
    <!-- @[Provide_wrapper_class_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemNode.h) -->
    
    ``` C
@@ -593,12 +594,12 @@ private:
    } // namespace NativeModule
    #endif // MYAPPLICATION_ARKUILISTITEMNODE_H
    ```
-2. Set callbacks for creating and reusing a **ListItem**. When creating a [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md), create the swipe action item for it and bind the click event. In the click event, delete the data source. When reusing a **ListItem**, update the binding event of the swipe action item.
+2. Set the callback functions for creating and reusing **ListItem**. When a [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) is created, create the swipe-out component of the **ListItem** and bind a click event, in which the data source deletion operation is performed. When the **ListItem** is reused, update the bound event of the swipe-out component.
     <!-- @[SetCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/LazyTextListExample1.h) -->
 
    ``` C
    // LazyTextListExample
-   // Example code for a lazy loading text list.
+   // Lazy loading list example code.
 
    #ifndef MYAPPLICATION_LAZYTEXTLISTEXAMPLE1_H
    #define MYAPPLICATION_LAZYTEXTLISTEXAMPLE1_H
@@ -619,8 +620,8 @@ private:
    std::vector<std::string> BuildSampleData()
    {
        std::vector<std::string> data;
-       data.reserve(1000); // Pre-allocate space for 1000 data records in each group.
-       for (int32_t i = 0; i < 1000; i++) { // 1000: 1000 data records.
+       data.reserve(1000); // Preallocate space for 1000 data items per group.
+       for (int32_t i = 0; i < 1000; i++) { // 1000: space for 1000 data items
            data.emplace_back(std::to_string(i));
        }
        return data;
@@ -629,18 +630,18 @@ private:
    void RegisterDeleteClick(const std::shared_ptr<ArkUINode> &target, const AdapterWeakHolder &adapterWeakHolder,
        const std::string &item)
    {
-       // Register a click event for the deletion area. Obtain the adapter through a weak reference to avoid long-term strong reference holding in the callback.
+       // Register a click event for the delete area: obtain the adapter through a weak reference to prevent the callback from holding a strong reference for a long time.
        target->RegisterOnClick([adapterWeakHolder, item](ArkUI_NodeEvent *event) {
            (void)event;
            auto adapter = adapterWeakHolder->lock();
            if (!adapter) {
                return;
            }
-           // Search for the current item based on the current data to ensure that the latest bound item is deleted in the reuse scenario.
+           // Find the current item based on the current data to ensure that the latest bound item is deleted in reuse scenarios.
            const auto &currentData = adapter->GetData();
            auto it = std::find(currentData.begin(), currentData.end(), item);
            if (it != currentData.end()) {
-               // RemoveItem requires an index. Here, the iterator position is converted to size_t.
+               // RemoveItem requires an index, so convert the iterator position to size_t here.
                auto removeIndex = static_cast<size_t>(std::distance(currentData.begin(), it));
                adapter->RemoveItem(removeIndex);
            }
@@ -650,16 +651,16 @@ private:
    std::shared_ptr<ArkUIListItemNode> BuildListItemNode(const std::string &item,
        const AdapterWeakHolder &adapterWeakHolder)
    {
-       // Build a ListItem: main text area + swipe-to-delete area.
+       // Build a ListItem: a main text area plus a swipe-to-delete action area.
        auto listItem = std::make_shared<ArkUIListItemNode>();
 
-       // Main content text, which displays the current data item.
+       // Main content text that displays the current data item.
        auto textNode = std::make_shared<ArkUITextNode>();
        textNode->SetTextContent(item);
        // ...
        listItem->AddChild(textNode);
 
-       // Text in the swipe-to-delete area. Clicking the text triggers the deletion of the current item.
+       // Swipe action area text that triggers deletion of the current item when tapped.
        auto swipeNode = std::make_shared<ArkUITextNode>();
        swipeNode->SetTextContent("del");
        // ...
@@ -693,7 +694,7 @@ private:
    #endif // MYAPPLICATION_LAZYTEXTLISTEXAMPLE1_H
    ```
 
-3. When adding a new **ListItem**, preferentially reuse the cached [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) instance and update its content. If no cached instance is available, create a new **ListItem**. If the callback returns null, create a default **ListItem** as a fallback. Finally, the generated node handle is filled back to the [OH_ArkUI_NodeAdapterEvent_SetItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapterevent_setitem) event to complete the binding.
+3. When adding a new **ListItem**, preferentially reuse the cached [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) instance and update its content. If no cache is available, create a new **ListItem**. When the callback returns null, create a default **ListItem** as a fallback. Finally, fill the generated node handle back into the event through [OH_ArkUI_NodeAdapterEvent_SetItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapterevent_setitem) to complete the binding.
    <!-- @[Item_adapter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
    
    ``` C
@@ -732,7 +733,7 @@ private:
        // ...
    };
    ```
-4. Add **RemoveItem** to **ArkUIListItemAdapter** to delete data sources and call the [OH_ArkUI_NodeAdapter_RemoveItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_removeitem) API to instruct the framework to refresh the UI.
+4. Add `RemoveItem` to **ArkUIListItemAdapter** to delete the data source and call [OH_ArkUI_NodeAdapter_RemoveItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_removeitem) to notify the framework to refresh the UI.
    <!-- @[Remove_Item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
    
    ``` C
@@ -842,7 +843,7 @@ private:
    
    ``` C
    // ArkUIListNode.h
-   // Provide encapsulation for the list component. 
+   // Provide encapsulation for the list component.
    // ...
    class ArkUIListNode : public ArkUINode {
        // ...
@@ -907,13 +908,13 @@ private:
    std::shared_ptr<ArkUIBaseNode> CreateLazyTextListExample()
    {
        // Create and mount the component to the parent node.
-       // 1: Create a List component.
+       // 1: Create the List component.
        auto list = std::make_shared<ArkUIListNode>();
        list->SetPercentWidth(1); // 1: width
        list->SetPercentHeight(1); // 1: height
        list->SetSticky(ARKUI_STICKY_STYLE_BOTH);
    
-       // 2: Create a ListItemGroup and mount it to the List component.
+       // 2: Create a ListItemGroup and attach it to the List.
        for (int32_t i = 0; i < 3; i++) { // 3: number of groups
            list->AddChild(CreateListItemGroup());
        }
@@ -924,3 +925,4 @@ private:
    
    #endif // MYAPPLICATION_LAZYTEXTLISTEXAMPLE_H
    ```
+

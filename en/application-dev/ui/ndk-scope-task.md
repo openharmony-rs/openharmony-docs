@@ -1,12 +1,11 @@
-# Ensuring Multi-Instance Functionality in the NDK
-
+# NDK Multi-Instance Scenario Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d2d180bb8a8dbb27c5a12f721bbaa8fe745c322c translatedAt=2026-08-05T10:08:40.185Z pushedAt=2026-08-06T06:18:57.716Z -->
+<!-- md-trans-meta sourceCommit=bbe2a5a1904867294232227bd28ba5a89468d90c translatedAt=2026-11-05T11:47:51.181Z pushedAt=2026-11-09T10:02:18.956Z nl=1 -->
 
 Since API version 20, the ArkUI development framework provides the [OH_ArkUI_RunTaskInScope](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_runtaskinscope) API to address component operation challenges in multi-instance scenarios on the native side. This feature dynamically switches execution contexts to ensure the validity of component attribute settings across instances, preventing API call exceptions caused by instance context mismatches.
 
@@ -19,7 +18,9 @@ In NDK multi-window development scenarios requiring cross-instance attribute con
 >
 > - This feature complements APIs like [OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid) to prevent null pointer or permission exceptions resulting from cross-instance access.
 
+
 This example demonstrates the basic usage of the **OH_ArkUI_RunTaskInScope** API, using **OH_ArkUI_NodeUtils_GetAttachedNodeHandleById** to retrieve components from previous pages. For details, see [OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid). The **userData** parameter passes a component pointer for setting corresponding component attributes.
+
 
 <!-- @[runtaskinscopethree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->  
 

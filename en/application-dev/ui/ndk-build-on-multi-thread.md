@@ -1,10 +1,11 @@
-# Parallelizing UI Page Building Using Multi-threaded NDK APIs
+# NDK Multi-thread Component Creation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @liujiang077-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fea9145a485a564a4b5491fe0442142d2cac5a85 translatedAt=2026-11-05T11:42:51.548Z pushedAt=2026-11-09T10:02:18.824Z nl=1 -->
 
 ## Overview
 
@@ -262,11 +263,12 @@ export const createNodeTreeOnMultiThread: (content1: Object, content2: Object) =
 export const disposeNodeTreeOnMultiThread: (content1: Object) => void;
 ```
 
-``` cpp
-# CMakeLists.txt
+<!-- @[cmake_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBuildOnMultiThread/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
 # the minimum version of CMake.
 cmake_minimum_required(VERSION 3.5.0)
-project(ndk_build_on_multi_thread)
+project(myapp)
 
 set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -277,8 +279,12 @@ endif()
 include_directories(${NATIVERENDER_ROOT_PATH}
                     ${NATIVERENDER_ROOT_PATH}/include)
 
-add_library(entry SHARED napi_init.cpp NativeEntry.cpp NativeModule.h ArkUIBaseNode.h ArkUINode.h ArkUIListNode.h ArkUIListItemNode.h ArkUITextNode.h NormalTextListExample.h CreateNode.h CreateNode.cpp)
-target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so libhilog_ndk.z.so)
+add_library(entry SHARED
+    napi_init.cpp
+    node/NodeCreator.cpp
+    card/CardCreator.cpp
+    )
+target_link_libraries(entry PUBLIC libace_napi.z.so ace_ndk.z.so hilog_ndk.z.so)
 ```
 
 ``` cpp
@@ -390,7 +396,7 @@ struct AsyncData {
     std::string label = "";
 };
 
-// Save the mapping between the NodeContent pointer on the ArkTS side and the node tree root node on the native side.
+// Save the correspondence between the ArkTS-side NodeContent pointer and the root node of the native-side node tree.
 std::map<ArkUI_NodeContentHandle, std::shared_ptr<ArkUIBaseNode>> g_nodeMap;
 ArkUI_ContextHandle g_contextHandle = nullptr;
 
@@ -522,7 +528,7 @@ napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info) {
     napi_value args[2] = { nullptr, nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    // Obtain the mount point of the component on the ArkTS side.
+    // Obtain the ArkTS-side component mount point.
     ArkUI_NodeContentHandle contentHandle;
     int32_t result = OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
     if (result != ARKUI_ERROR_CODE_NO_ERROR) {
@@ -568,7 +574,7 @@ napi_value DisposeNodeTreeOnMultiThread(napi_env env, napi_callback_info info)
     napi_value args[1] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    // Obtain the mount point of the component on the ArkTS side.
+    // Obtain the ArkTS-side component mount point.
     ArkUI_NodeContentHandle contentHandle;
     int32_t result = OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
     if (result != ARKUI_ERROR_CODE_NO_ERROR) {
@@ -646,6 +652,3 @@ The following example demonstrates how to use multiâ€‘threaded NDK APIs in highâ
 <!--RP1-->
 [Building UI Components Using the Multi-threaded NDK APIs](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/NdkBuildOnMultiThread)
 <!--RP1End-->
-
-
-<!--no_check-->
