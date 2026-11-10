@@ -771,7 +771,7 @@ registerUploadProgress(callback: Callback&lt;UploadProgress&gt;): void
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13900010 | Try again. |
-| 13900020 | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit.|
+| 13900020 | Invalid argument. Possible causes: 1.Mandatory parameter are left unspecified. 2.The number of instances registered at the same time exceeds the upper limit.|
 
 **示例：**
 
