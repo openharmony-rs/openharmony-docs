@@ -149,6 +149,7 @@ MIIBxxDCCAWygAwIBAgIUdGVzdDIwMjYxMTEwMDAwMDAwMBQX
 ```
 未指定-z时，不输出SHA-256 hash:和SHA-1 hash:两行；未指定-p时，不输出pem:及其后的PEM编码内容；同时指定-z和-p时，先输出哈希值（-z），再输出PEM编码（-p）。
 各字段说明：
+
 - certificate count: 始终输出，取值为证书数量。
 - certType: userCA 固定输出，当前命令仅查询用户CA证书。
 - scope 取值为currentUser（当前用户目录，userId 为当前用户）或globalUser（所有用户级目录，userId 为 0）。指定-gu时，每本证书按自身所属目录分别显示。
