@@ -564,11 +564,11 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 ## SharedPhotoAsset<sup>14+</sup>
 
-共享图片资产。
+定义共享图片资产。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core。
 
 ### 属性
 
@@ -579,19 +579,19 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | data | string | 否 | 否 | 图片资产的路径数据。|
 | mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。|
 | displayName | string | 否 | 否 | 图片资产的显示名称。|
-| size | number  | 否 | 否 | 图片资产文件大小，单位：字节（Byte）。|
-| dateAdded | number | 否 | 否 | 添加图片资产数据的时间戳，单位：秒（s）。|
-| dateModified | number | 否 | 否 | 更改图片资产数据的时间戳，单位：秒（s）。|
-| duration | number | 否 | 否 | 视频类型的图片资产时长，单位：毫秒（ms）。|
-| width | number | 否 | 否 | 图片资产的像素宽度，单位：像素（px）。|
-| height | number | 否 | 否 | 图片资产的像素高度，单位：像素（px）。|
-| dateTaken | number | 否 | 否 | 图片资产的拍摄时间，单位：秒（s）。    |
-| orientation | number | 否 | 否 | 图片资产的旋转角度，单位：度（°）。|
-| isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏。|
+| size | number  | 否 | 否 | 图片资产文件大小。 单位为： Byte，取值应为≥0的整数。|
+| dateAdded | number | 否 | 否 | 添加图片资产数据。单位为： ms，取值应为≥0的整数。|
+| dateModified | number | 否 | 否 | 更改了图片资产数据。单位为： ms，取值应为≥0的整数。|
+| duration | number | 否 | 否 | 视频类型的图片资产时长。单位为： ms，取值应为≥0的整数。|
+| width | number | 否 | 否 |  图片资产的像素宽度。单位为： px，取值应为≥0的整数。|
+| height | number | 否 | 否 | 图片资产的像素高度。单位为： px，取值应为≥0的整数。|
+| dateTaken | number | 否 | 否 | 图片资产拍照后存入本地时间。单位为： ms，取值应为≥0的整数。    |
+| orientation | number | 否 | 否 |图片资产的旋转角度。单位为： deg，取值应为[0,359]内的整数。|
+| isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏（默认false）。|
 | title | string | 否 | 否 | 图片资产的标题。|
 | position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。|
-| dateTrashed | number | 否 | 否 | 图片资产进回收站的时间，单位：秒（s）。 |
-| hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏。|
+| dateTrashed | number | 否 | 否 | 图片资产是否在回收站中。 |
+| hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏（默认false）。|
 | userComment | string | 否 | 否 | 图片资产的用户评论信息。|
 | cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。|
 | dateYear | string | 否 | 否 | 图片资产创建年份时间。|
@@ -603,9 +603,9 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | subtype | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12) | 否 | 否 | 图片资产子类型。|
 | movingPhotoEffectMode | [MovingPhotoEffectMode](js-apis-photoAccessHelper-sys.md#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。|
 | dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | 否 | 否 | 媒体文件的动态范围类型。|
-| thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。true表示已准备好，false表示未准备好。|
-| lcdSize | string | 否 | 否 | 图片资产的lcd缩略图宽高信息。|
-| thmSize | string | 否 | 否 | 图片资产的thumb缩略图宽高信息。|
+| thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。true表示已准备好，false表示未准备好（默认false）。|
+| lcdSize | string | 否 | 否 | 图片资产的lcd缩略图(屏幕级缩略图)宽高信息。|
+| thmSize | string | 否 | 否 | 图片资产的thumb缩略图(网格列表、相册封面、瀑布流小格子用的极小缩略图)宽高信息。|
 | thumbnailModifiedMs | number | 否 | 是 | 图片资产的缩略图状态改变时间，单位：毫秒（ms）。|
 | thumbnailVisible | [ThumbnailVisibility](js-apis-photoAccessHelper-sys.md#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。|
 

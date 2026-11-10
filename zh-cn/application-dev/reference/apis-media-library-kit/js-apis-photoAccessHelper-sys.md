@@ -1767,7 +1767,7 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: The predicates invalid. |
-| 23800301     | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted.<br>2. The file system is abnormal.<br>3. The IPC request timed out. |
+| 23800301     | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted.<br>2. The file system is abnormal.<br>3. The IPC request timed out.<br>4. This operation is not supported for assets in shared albums. |
 
 **示例：**
 
