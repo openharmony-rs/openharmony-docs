@@ -32,7 +32,7 @@
 | [int32_t OH_TrafficFilter_AddRedirectRule(OH_TrafficFilter_Redirector* redirector, const OH_TrafficFilter_RedirectRule* rule)](#oh_trafficfilter_addredirectrule) | 添加TCP流量重定向规则，将匹配的流量重定向到指定的代理服务器。如需清除重定向规则，需要调用[OH_TrafficFilter_ClearRedirectRule](capi-net-trafficfilter-h.md#oh_trafficfilter_clearredirectrule)。 |
 | [int32_t OH_TrafficFilter_ClearRedirectRule(OH_TrafficFilter_Redirector* redirector)](#oh_trafficfilter_clearredirectrule) | 清除所有重定向规则。 |
 | [int32_t OH_TrafficFilter_QueryProcess(const OH_TrafficFilter_ConnectionInfo* connection_info, OH_TrafficFilter_ProcessInfo* process_info)](#oh_trafficfilter_queryprocess) | 根据网络连接信息查询对应的进程信息。通过源IP、目的IP、源端口、目的端口和协议类型组成的五元组连接信息，查询发起该连接的进程信息。 |
-| [int32_t OH_TrafficFilter_CreatePacketController(uint32_t group_id, uint32_t priority, const OH_TrafficFilter_Config* config, OH_TrafficFilter_PacketController** controller)](#oh_trafficfilter_createpacketcontroller) | 创建报文控制器实例，用于拦截和过滤网络报文。资源管理：必须调用[OH_TrafficFilter_DestroyPacketController](capi-net-trafficfilter-h.md#oh_trafficfilter_destroypacketcontroller)释放资源。如果该函数失败，不会返回有效的控制器。 |
+| [int32_t OH_TrafficFilter_CreatePacketController(uint32_t groupId, uint32_t priority, const OH_TrafficFilter_Config* config, OH_TrafficFilter_PacketController** controller)](#oh_trafficfilter_createpacketcontroller) | 创建报文控制器实例，用于拦截和过滤网络报文。资源管理：必须调用[OH_TrafficFilter_DestroyPacketController](capi-net-trafficfilter-h.md#oh_trafficfilter_destroypacketcontroller)释放资源。如果该函数失败，不会返回有效的控制器。 |
 | [int32_t OH_TrafficFilter_DestroyPacketController(OH_TrafficFilter_PacketController* controller)](#oh_trafficfilter_destroypacketcontroller) | 销毁报文控制器实例并释放相关资源（包括规则），调用后句柄将失效。 |
 | [int32_t OH_TrafficFilter_RegisterPacketCallback(OH_TrafficFilter_PacketController* controller, OH_TrafficFilter_PacketCallback callback, void* userData)](#oh_trafficfilter_registerpacketcallback) | 注册一个回调函数用于处理拦截到的报文，当报文匹配到过滤规则时，将触发该回调。 |
 | [int32_t OH_TrafficFilter_UnregisterPacketCallback(OH_TrafficFilter_PacketController* controller)](#oh_trafficfilter_unregisterpacketcallback) | 注销报文回调函数。 |
@@ -180,7 +180,7 @@ int32_t OH_TrafficFilter_QueryProcess(const OH_TrafficFilter_ConnectionInfo* con
 
 ```c
 int32_t OH_TrafficFilter_CreatePacketController(
-    uint32_t group_id,
+    uint32_t groupId,
     uint32_t priority,
     const OH_TrafficFilter_Config* config,
     OH_TrafficFilter_PacketController** controller
@@ -199,8 +199,8 @@ int32_t OH_TrafficFilter_CreatePacketController(
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t group_id | 过滤链标识符。同一应用内的多个控制器可以使用不同的group_id。不同应用的相同group_id会自动隔离。取值范围为[OH_TRAFFICFILTER_MIN_GROUP_ID, OH_TRAFFICFILTER_MAX_GROUP_ID]。 |
-| uint32_t priority | 优先级（决定不同group_id链之间的执行顺序，数值越小执行优先级越高）。取值范围为[OH_TRAFFICFILTER_MIN_PRIORITY, OH_TRAFFICFILTER_MAX_PRIORITY]。 |
+| uint32_t groupId | 过滤链标识符。同一应用内的多个控制器可以使用不同的groupId。不同应用的相同groupId会自动隔离。取值范围为[OH_TRAFFICFILTER_MIN_GROUP_ID, OH_TRAFFICFILTER_MAX_GROUP_ID]。 |
+| uint32_t priority | 优先级（决定不同groupId链之间的执行顺序，数值越小执行优先级越高）。取值范围为[OH_TRAFFICFILTER_MIN_PRIORITY, OH_TRAFFICFILTER_MAX_PRIORITY]。 |
 | [const OH_TrafficFilter_Config](capi-trafficfilter-oh-trafficfilter-config.md)* config | 配置参数（配置为NULL时表示使用默认配置）。 |
 | [OH_TrafficFilter_PacketController**](capi-trafficfilter-oh-trafficfilter-packetcontroller.md) controller | 出参，成功时为报文控制器句柄。失败时为NULL，句柄不可用。 |
 

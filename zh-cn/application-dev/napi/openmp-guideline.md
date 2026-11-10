@@ -1,8 +1,16 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "指导开发者在OpenHarmony NDK工程中集成和使用OpenMP并行化能力，涵盖静态链接（libomp.a）和动态链接（libomp.so）两种依赖添加方式、源文件修改（pragma omp指令）、DevEco Studio构建配置及运行校验的完整开发步骤。"
+keywords: [OpenMP, omp.h, libomp, -fopenmp, Tsan, 静态链接, 动态链接, pragma omp, DevEco Studio]
+doctype: guide
+status: active
+---
+
 # OpenMP应用构建和运行指南
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yangming4249-->
-<!--Designer: @ychen3--->
+<!--Owner: @da_wei_li11-->
+<!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -37,7 +45,7 @@ target_link_libraries(entry PUBLIC libomp.a libace_napi.z.so libhilog_ndk.z.so)
     "externalNativeOptions": {
       "path": "./src/main/cpp/CMakeLists.txt",
       "arguments": "",
-      "cppFlags": "-static-openmp -fopenmp",
+      "cppFlags": "-static-openmp -fopenmp"
     }
   }
 ```
@@ -57,7 +65,7 @@ target_link_libraries(entry PUBLIC libomp.so libace_napi.z.so libhilog_ndk.z.so)
     "externalNativeOptions": {
       "path": "./src/main/cpp/CMakeLists.txt",
       "arguments": "",
-      "cppFlags": "-fopenmp",
+      "cppFlags": "-fopenmp"
     }
   }
 ```

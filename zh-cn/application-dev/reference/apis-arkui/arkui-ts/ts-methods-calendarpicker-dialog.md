@@ -76,7 +76,8 @@ static show(options?: CalendarDialogOptions): void
 | enableHoverMode<sup>14+</sup>     | boolean | 否 | 是 | 是否响应悬停态。<br />- true：响应悬停态。<br/>- false：不响应悬停态。<br/>默认值：false<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否 | 是 | 悬停态下弹窗默认展示区域。<br />默认值：HoverModeAreaType.BOTTOM_SCREEN。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
 | markToday<sup>19+</sup>       | boolean | 否 | 是 | 设置日历选择器弹窗中系统当前日期是否保持高亮显示。<br/>- true：系统当前日期在日历选择器弹窗内保持高亮显示。<br/>- false：系统当前日期在日历选择器弹窗内不保持高亮显示。<br/>默认值：false<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
-| firstDayOfWeek | [CalendarFirstDayOfWeek](ts-basic-components-calendarpicker.md#calendarfirstdayofweek) | 否 | 是 | 设置日历选择器弹窗每周的起始日。<br/>默认值：CalendarFirstDayOfWeek.LOCAL（跟随系统区域变化）<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.2.0<br/>**ArkTS-Sta起始版本：** 26.2.0 |
+| firstDayOfWeek | [CalendarFirstDayOfWeek](ts-basic-components-calendarpicker.md#calendarfirstdayofweek) | 否 | 是 | 设置日历选择器弹窗每周的起始日。<br/>默认值：CalendarFirstDayOfWeek.LOCAL（跟随系统区域变化）<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0 |
+| adaptToHandedness | [HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | 否 | 是 | 弹窗是否以及如何适配握持习惯。<br>默认值：HandednessFollowMode.NONE<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
 
 > **说明：**
 >
@@ -500,7 +501,7 @@ struct CalendarPickerDialogExample {
 
 该示例通过配置[CalendarDialogOptions](#calendardialogoptions对象说明)的firstDayOfWeek，设置日历选择器弹窗每周的起始日为周一。
 
-从API版本26.2.0开始，[CalendarDialogOptions](#calendardialogoptions对象说明)新增了firstDayOfWeek属性。
+从API版本26.1.0开始，[CalendarDialogOptions](#calendardialogoptions对象说明)新增了firstDayOfWeek属性。
 
 ArkTS-Dyn示例：
 
@@ -589,3 +590,65 @@ struct CalendarPickerDialogExample {
 ```
 
 ![CalendarPickerDialog](figures/calendar-picker-dialog-first-day-of-week.png)
+
+### 示例10（设置弹窗适配握持习惯）
+
+该示例通过配置[CalendarDialogOptions](#calendardialogoptions对象说明)的adaptToHandedness，设置弹窗适配握持习惯，使弹窗跟随触发它的组件的位置偏移。
+
+从API版本26.1.0开始，在[CalendarDialogOptions](#calendardialogoptions对象说明)中新增了adaptToHandedness属性。
+
+ArkTS-Dyn示例：
+
+```ts
+// CalendarPickerDialogExampleDyn.ets
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CalendarPickerDialogExample {
+  private selectedDate: Date = new Date('2025-01-15');
+
+  build() {
+    Column() {
+      Button('Show CalendarPicker Dialog')
+        .margin(20)
+        .onClick(() => {
+          CalendarPickerDialog.show({
+            selected: this.selectedDate,
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// CalendarPickerDialogExampleSta.ets
+
+import { Entry, Component, Column, Button, CalendarPickerDialog } from '@ohos.arkui.component';
+import { HandednessFollowMode } from '@ohos.arkui.dialog';
+
+@Entry
+@Component
+struct CalendarPickerDialogExample {
+  private selectedDate: Date = new Date('2025-01-15');
+
+  build() {
+    Column() {
+      Button('Show CalendarPicker Dialog')
+        .margin(20)
+        .onClick(() => {
+          CalendarPickerDialog.show({
+            selected: this.selectedDate,
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }.width('100%')
+  }
+}
+```
+
+![设置弹窗适配握持习惯](figures/calendarpickerdialoghandedness.gif)

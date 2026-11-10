@@ -151,8 +151,6 @@ atm dump [-h] [-d [-p <permission-name>]] [-t [-i <token-id>] [-b <bundle-name>]
 
 示例：
 
-从API版本26.1.0开始，查询权限定义时，新增字段"binIndependentUsable"，表示该权限能否被弱沙箱内的BIN独立获取，无需父HAP声明该权限。
-
 ```bash
 #查询系统中所有的权限定义
 atm dump -d
@@ -169,7 +167,6 @@ atm dump -d -p *********
 #     "distributedSceneEnable": true,
 #     "isKernelEffect": true,
 #     "hasValue": true,
-#     "binIndependentUsable": false,
 # }
 
 #显示atm dump的帮助信息

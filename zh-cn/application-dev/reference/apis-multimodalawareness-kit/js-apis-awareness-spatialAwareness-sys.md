@@ -23,6 +23,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 提供输入信号的类型。接口根据输入信号类型，执行对应算法。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **ArkTS-Dyn起始版本：** 23
@@ -41,6 +45,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 测距接口执行完成后结果的上报模式。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **ArkTS-Dyn起始版本：** 23
@@ -55,6 +63,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 ## spatialAwareness.DistanceRank
 
 测距结果的距离档位，不同的档位对应不同的距离范围。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -73,6 +85,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 测距接口执行完成后的回调结果。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **ArkTS-Dyn起始版本：** 23
@@ -90,6 +106,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 门内外识别接口返回结果中表示门内或门外位置的枚举。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **ArkTS-Dyn起始版本：** 23
@@ -104,6 +124,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 ## spatialAwareness.DoorPositionResponse
 
 门内外识别接口执行完成后的回调结果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -121,6 +145,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 测距接口的输入参数配置。根据不同的参数配置，执行对应的算法。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **ArkTS-Dyn起始版本：** 23
@@ -134,13 +162,17 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 | reportMode         | ReportingMode         | 是         | 否  | 表示结果上报模式。|
 | reportFrequency    | int                   | 是         | 否  | 表示结果上报频率，单位：Hz，取值范围：[0,999999]。|
 
-## spatialAwareness.onDistanceMeasure<sup>23+</sup>
+## spatialAwareness.onDistanceMeasure
 
 onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
 订阅测距接口。触发测距算法执行，并返回测距结果。
 
 **需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -189,13 +221,17 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    }
 ```
 
-## spatialAwareness.offDistanceMeasure<sup>23+</sup>
+## spatialAwareness.offDistanceMeasure
 
 offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
 取消订阅测距接口。停止运行已订阅的测距算法。
 
 **需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -244,13 +280,17 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    }
 ```
 
-## spatialAwareness.onIndoorOrOutdoorIdentify<sup>23+</sup>
+## spatialAwareness.onIndoorOrOutdoorIdentify
 
 onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DoorPositionResponse&gt;): void;
 
 订阅门内外识别接口。触发门内外识别算法执行，并返回设备在门内还是门外的信息。
 
 **需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -299,13 +339,17 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    }
 ```
 
-## spatialAwareness.offIndoorOrOutdoorIdentify<sup>23+</sup>
+## spatialAwareness.offIndoorOrOutdoorIdentify
 
 offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DoorPositionResponse&gt;): void;
 
 取消订阅门内外识别接口。停止运行已订阅的门内外识别算法。
 
 **需要权限**：ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 

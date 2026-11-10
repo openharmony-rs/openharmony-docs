@@ -1163,7 +1163,7 @@ start(uri: string): Promise&lt;void&gt;
 | 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
-| 14000002 | Invalid URI. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -1245,7 +1245,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
-| 14000002 | Invalid URI. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -1410,7 +1410,7 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
-| 14000002 | Invalid URI. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -1477,7 +1477,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
-| 14000002 | Invalid URI. |
+| 14000002 | Invalid uri. |
 
 **示例：**
 
@@ -1636,8 +1636,8 @@ cleanFileCache(uri: string): void
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012  | Permission denied by the file system. |
-| 13900020  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000002  | Invalid URI. |
+| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 14000002  | Invalid uri. |
 | 22400005  | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
@@ -2072,7 +2072,7 @@ registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData
 | 13900001  | Operation not permitted. |
 | 13900002  | No such file or directory. |
 | 13900012  | Permission denied. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 
 **示例：**
 
@@ -2142,7 +2142,7 @@ unregisterChange(uri: string): void
 | 13900001  | Operation not permitted. |
 | 13900002  | No such file or directory. |
 | 13900012  | Permission denied. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 
 **示例：**
 
@@ -2347,7 +2347,7 @@ ArkTS-Sta: getHistoryVersionList(uri: string, versionNumLimit: int): Promise&lt;
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000002 | Invalid URI. |
+| 14000002 | Invalid uri. |
 | 22400002 | Network unavailable. |
 | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
@@ -2366,9 +2366,9 @@ let uri = fileUri.getUriFromPath(path);
 let limit = 10;
 
 fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync.HistoryVersion>) => {
-  for(let i = 0, len = versionList.length; i < len; i++) {
-    console.info("get history versionId: " + versionList[i].versionId);
-  }
+  versionList.forEach((item) => {
+    console.info("get history versionId: " + item.versionId);
+  })
 }).catch((err: BusinessError) => {
   console.error("get history version failed with error message: " + err.message + ", error code: " + err.code);
 });
@@ -2385,9 +2385,9 @@ let path: string = "/data/storage/el2/cloud/1.txt";
 let uri: string = fileUri.getUriFromPath(path);
 let limit: int = 10;
 fileVersion.getHistoryVersionList(uri, limit).then<Array<cloudSync.HistoryVersion>>((versionList: Array<cloudSync.HistoryVersion>): void => {
-  for(let i = 0, len = versionList.length; i < len; i++) {
-    console.info("get history versionId: " + versionList[i].versionId);
-  }
+  versionList.forEach((item) => {
+    console.info("get history versionId: " + item.versionId);
+  })
 }).catch((err: BusinessError<void>): void => {
   console.error("get history version failed with error message: " + err.message + ", error code: " + err.code);
 });
@@ -2429,8 +2429,8 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[Ve
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000002 | Invalid URI. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 14000002 | Invalid uri. |
 | 22400002 | Network unavailable. |
 | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
@@ -2528,8 +2528,8 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise&
 | 13900008 | Bad file descriptor. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000002 | Invalid URI. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 14000002 | Invalid uri. |
 | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 | 22400007 | The version file specified to replace the original file does not exist. |
 
@@ -2640,8 +2640,8 @@ isFileConflict(uri: string): Promise&lt;boolean&gt;
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000002 | Invalid URI. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 14000002 | Invalid uri. |
 | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
@@ -2714,8 +2714,8 @@ clearFileConflict(uri: string): Promise&lt;void&gt;
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000002 | Invalid URI. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 14000002 | Invalid uri. |
 | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
@@ -2805,7 +2805,7 @@ getCoreFileSyncState(uri: string): FileState
 | 13900012  | Permission denied by the file system. |
 | 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 13900031  | Function not implemented. |
-| 14000002  | Invalid URI. |
+| 14000002  | Invalid uri. |
 | 22400005  | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**

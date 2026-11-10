@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "AVCodec Kit提供音视频编解码、媒体文件封装与解封装等原子能力，支持硬件加速编解码与系统内数据零拷贝，仅提供C接口，适用于播放器、录制、视频通话等媒体应用开发。"
+keywords: [AVCodec Kit, 音视频编解码, 媒体封装, 媒体解封装, 硬件编解码, 零拷贝, AVBuffer, AVFormat, C API]
+doctype: guide
+status: active
+---
+
 # AVCodec Kit简介
 
 <!--Kit: AVCodec Kit-->
@@ -80,5 +88,5 @@ AVCodec Kit（Audio & Video Codec Kit，音视频编解码，封装，解封装�
   ![](figures/avcodec-muxer-demuxer-logic.png)
 
   具体开发指导请参考[媒体数据封装](audio-video-muxer.md)和[媒体数据解封装](audio-video-demuxer.md)。
-
+<!--RP2--> <!--RP2End-->
 <!--RP1--> <!--RP1End-->

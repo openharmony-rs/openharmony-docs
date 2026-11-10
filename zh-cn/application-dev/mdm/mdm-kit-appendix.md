@@ -52,6 +52,33 @@
 |disallow_unmute_device|[restrictions.setDisallowedPolicy](../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)：feature传入[FeatureForDevice.UNMUTE_DEVICE](../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md#featurefordevice24)，禁用/启用设备媒体播放声音能力。<br>[restrictions.getDisallowedPolicy](../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy24)：feature传入[FeatureForDevice.UNMUTE_DEVICE](../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md#featurefordevice24)，查询是否禁用设备媒体播放声音能力。|
 |disabled_hdc_remote|[restrictions.setDisallowedPolicy](../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)：feature传入[FeatureForDevice.HDC_REMOTE](../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md#featurefordevice24)，禁用/启用设备通过HDC调试其他设备的能力。<br>[restrictions.getDisallowedPolicy](../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy24)：feature传入[FeatureForDevice.HDC_REMOTE](../reference/apis-mdm-kit/js-apis-enterprise-restrictions.md#featurefordevice24)，查询是否禁用设备通过HDC调试其他设备的能力。|
 
+## 默认应用类型的判定要求
+通过[bundleManager.setDefaultApplication](../reference/apis-mdm-kit/js-apis-enterprise-bundleManager.md#bundlemanagersetdefaultapplication)设置默认应用时，被设置的应用必须能够打开对应类型的数据，否则无法设置为该类型的默认应用。系统按照应用的ability中`skills`的配置进行判定，各类型的判定要求如下。
+
+| 名称 | 判定要求 |
+| --- | --- |
+| BROWSER | `actions`包含`ohos.want.action.viewData`，`entities`包含`entity.system.browsable`，且`uris`中有一项仅声明`scheme`为`http`或`https`。该应用还需被授予`ohos.permission.DEFAULT_WEB_BROWSER`权限，系统预置的默认浏览器除外。 |
+| IMAGE | `actions`包含`ohos.want.action.viewData`，且`uris`的`type`支持`general.image`。 |
+| AUDIO | `actions`包含`ohos.want.action.viewData`，且`uris`的`type`支持`general.audio`。 |
+| VIDEO | `actions`包含`ohos.want.action.viewData`，且`uris`的`type`支持`general.video`。 |
+| PDF | `actions`包含`ohos.want.action.viewData`，且`uris`的`type`支持`com.adobe.pdf`。 |
+| WORD | `actions`包含`ohos.want.action.viewData`，且`uris`的`type`支持Word文档对应的任一文件类型标识，详见下表。 |
+| EXCEL | `actions`包含`ohos.want.action.viewData`，且`uris`的`type`支持Excel表格对应的任一文件类型标识，详见下表。 |
+| PPT | `actions`包含`ohos.want.action.viewData`，且`uris`的`type`支持PPT演示文稿对应的任一文件类型标识，详见下表。 |
+| EMAIL | `actions`包含`ohos.want.action.sendToData`，且`uris`中有一项仅声明`scheme`为`mailto`。 |
+
+各文档类型对应的文件类型标识（UTD）如下，ability声明其中任意一个即可。
+
+> **说明：**
+>
+> 文件类型标识需要配置在`skills`的`uris`的`type`字段中，配置在`utd`字段中不参与该判定。
+
+| 名称 | 文件类型标识 |
+| --- | --- |
+| WORD | `com.microsoft.word.doc`、`com.microsoft.word.dot`、`org.openxmlformats.wordprocessingml.document`、`org.openxmlformats.wordprocessingml.template`、`org.openxmlformats.wordprocessingml.document.macroenabled`、`org.openxmlformats.wordprocessingml.template.macroenabled` |
+| EXCEL | `com.microsoft.excel.xls`、`com.microsoft.excel.xlt`、`com.microsoft.excel.dif`、`org.openxmlformats.spreadsheetml.sheet`、`org.openxmlformats.spreadsheetml.template`、`org.openxmlformats.spreadsheetml.template.macroenabled`、`org.openxmlformats.spreadsheetml.addin.macroenabled`、`org.openxmlformats.spreadsheetml.binary.macroenabled`、`org.openxmlformats.spreadsheetml.sheet.macroenabled` |
+| PPT | `com.microsoft.powerpoint.ppt`、`com.microsoft.powerpoint.pps`、`com.microsoft.powerpoint.pot`、`org.openxmlformats.presentationml.presentation`、`org.openxmlformats.presentationml.template`、`org.openxmlformats.presentationml.slideshow`、`org.openxmlformats.presentationml.addin.macroenabled`、`org.openxmlformats.presentationml.presentation.macroenabled`、`org.openxmlformats.presentationml.slideshow.macroenabled`、`org.openxmlformats.presentationml.template.macroenabled` |
+
 ## 策略变更上报列表
 超级设备管理应用注册策略变更事件后，MDM调用以下策略变更上报列表中的接口时，系统会通知当前用户下的超级设备管理应用。
 |接口名称|策略变更事件[PolicyChangedEvent](../reference/apis-mdm-kit/js-apis-enterprise-common.md#policychangedevent)中parameters参数返回示例|
@@ -80,3 +107,5 @@
 |[setNTPServer](../reference/apis-mdm-kit/js-apis-enterprise-systemManager.md#systemmanagersetntpserver)|{"server":"ntpserver.com"}|
 |[setActivationLockDisabled](../reference/apis-mdm-kit/js-apis-enterprise-systemManager.md#systemmanagersetactivationlockdisabled24)|{"isAllowed":true}|
 |[setWifiProfileSync](../reference/apis-mdm-kit/js-apis-enterprise-wifiManager.md#wifimanagersetwifiprofilesync)|{"profile":{"ssid":"guest-Wi-Fi","bssid":"AA:BB:CC:DD:EE:FF"}}|
+
+<!--RP1--><!--RP1End-->

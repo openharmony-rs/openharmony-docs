@@ -1109,7 +1109,7 @@ NODE_CALENDAR_PICKER_FIRST_DAY_OF_WEEK = 16008
 设置日历选择器每周的起始日，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**

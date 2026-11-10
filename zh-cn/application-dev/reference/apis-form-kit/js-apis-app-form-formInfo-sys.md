@@ -61,7 +61,7 @@ import { formInfo } from '@kit.FormKit';
 | TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | 模板卡片描述。 <br>**系统接口：** 此接口为系统接口。  <br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23|
 | FORM_FONT_SIZE_SCALE_KEY    | 'ohos.extra.param.key.form_font_size_scale'   | 卡片字体大小缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
 | FORM_FONT_WEIGHT_SCALE_KEY    | 'ohos.extra.param.key.form_font_weight_scale'   | 卡片字重缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0  |
-| FORM_EDIT_COLOR_MODE_KEY    | 'ohos.extra.param.key.form_edit_color_mode'   | 卡片编辑能力颜色模式键值。 <br/>-1：表示自动跟随系统。<br/>0：表示深色模式。<br/>1：表示浅色模式。<br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.2.0 <br/>**ArkTS-Sta起始版本：** 26.2.0  |
+| FORM_EDIT_COLOR_MODE_KEY    | 'ohos.extra.param.key.form_edit_color_mode'   | 卡片编辑能力颜色模式键值。 <br/>-1：表示自动跟随系统。<br/>0：表示深色模式。<br/>1：表示浅色模式。<br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.1.0 <br/>**ArkTS-Sta起始版本：** 26.1.0  |
 
 ## FormUsageState<sup>11+</sup>
 
@@ -676,7 +676,7 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 | serviceName | string | 否 | 否 | 服务名称。 |
 | serviceDisplayName | string | 否 | 否 | 服务显示名称。 |
 | displayId | string | 否 | 否 | 显示标识。 |
-| customData | Record&lt;string, string&gt; | 否 | 是 | 自定义数据。 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 自定义数据。默认值为空。 |
 
 ## PeerFormHostServiceInfo
 
@@ -697,10 +697,10 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 | serviceName | string | 否 | 否 | 远端卡片使用方服务的服务名称。 |
 | serviceDisplayName | string | 否 | 否 | 远端卡片使用方服务的服务显示名称。 |
 | displayId | string | 否 | 否 | 远端卡片使用方服务的显示标识。 |
-| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片使用方服务的自定义数据。 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片使用方服务的自定义数据。默认值为空。 |
 | deviceId | string | 否 | 否 | 远端卡片使用方服务的设备标识。 |
 | networkId | string | 否 | 否 | 远端卡片使用方服务的网络标识。 |
-| serviceId | string | 否 | 否 | 远端卡片使用方服务的服务Id。 |
+| serviceId | string | 否 | 否 | 远端卡片使用方服务的服务标识。 |
 
 ## PublishFormCrossDeviceResult
 

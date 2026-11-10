@@ -98,6 +98,24 @@ taihe::array<int> arr5(taihe::copy_data, c_arr, 3);
 ```
 对于4和5的创建方式，可以使用`taihe::move_data`代替`taihe::copy_data`作为第一个参数，表示从源容器中移动数据，而不是复制数据。
 
+当已经知道结果数组的最大元素个数，但需要逐个生成元素时，可以使用`taihe::array_builder<T>`。它会先分配指定容量，再通过`push_back`或`emplace_back`写入元素，最后调用`finish()`得到`taihe::array<T>`。
+
+```cpp
+#include <taihe/array.hpp>
+
+taihe::array<taihe::string> makeNames()
+{
+    taihe::array_builder<taihe::string> builder(3);
+    builder.emplace_back("Alice", 5);
+    builder.emplace_back("Bob", 3);
+    builder.emplace_back("Carol", 5);
+    return std::move(builder).finish();
+}
+```
+
+创建`array_builder`时传入的是容量上限。写入元素数量不能超过该容量；超过时会抛出异常。`finish()`只能在构建完成后调用一次，调用后构建器不再持有数组数据。
+
+
 ### 访问和遍历
 
 Taihe的数组提供了多种访问和遍历方式，以下是一些常用操作：

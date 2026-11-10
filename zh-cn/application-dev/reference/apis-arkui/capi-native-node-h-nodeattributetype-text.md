@@ -1374,7 +1374,7 @@ NODE_TEXT_STROKE_WIDTH = 1057
 设置文本描边宽度，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -1398,7 +1398,7 @@ NODE_TEXT_STROKE_COLOR = 1058
 设置文本描边颜色，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**
@@ -1422,7 +1422,7 @@ NODE_TEXT_STROKE_JOIN_STYLE = 1059
 设置文本描边拐角样式，支持属性设置、属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 
 **参数：**

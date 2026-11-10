@@ -269,8 +269,10 @@ struct WebComponent {
 ```
 
 使用[DocumentViewPicker()](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)获取当前示例的默认下载目录，将该目录设置为下载目录。
-```ts
-// xxx.ets
+
+<!-- @[select_download_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/SelectDownloadDir.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker, fileUri } from  '@kit.CoreFileKit';
@@ -286,7 +288,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download.");
+              console.info('will start a download.');
               // 使用DocumentViewPicker()获取当前示例的默认下载目录，将该目录设置为下载目录
               getDownloadPathFromPicker().then((downloadPath) => {
                 webDownloadItem.start(downloadPath + '/' + webDownloadItem.getSuggestedFileName());
@@ -295,19 +297,19 @@ struct WebComponent {
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
               // 下载任务的唯一标识。
-              console.info("download update guid: " + webDownloadItem.getGuid());
+              console.info('download update guid: ' + webDownloadItem.getGuid());
               // 下载的进度。
-              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info('download update percent complete: ' + webDownloadItem.getPercentComplete());
               // 当前的下载速度。
-              console.info("download update speed: " + webDownloadItem.getCurrentSpeed())
+              console.info('download update speed: ' + webDownloadItem.getCurrentSpeed())
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.error("download failed guid: " + webDownloadItem.getGuid());
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
               // 下载任务失败的错误码。
-              console.error("download failed last error code: " + webDownloadItem.getLastErrorCode());
+              console.error('download failed last error code: ' + webDownloadItem.getLastErrorCode());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -350,11 +352,11 @@ function getDownloadPathFromPicker(): Promise<string> {
 
 > **说明：**
 >
->Web组件的下载功能要求应用通过调用[WebDownloadItem.start](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#start11)来指定下载文件的保存路径。
+>Web组件的下载功能要求应用通过调用[WebDownloadItem.start()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#start11)来指定下载文件的保存路径。
 >
->值得注意的是，WebDownloadItem.start并非启动下载，下载过程实际上在用户点击页面链接时即已开始。WebDownloadItem.start的作用是将已经下载到临时文件的部分移动到指定目标路径，后续未完成的下载的内容将直接保存到指定目标路径，临时目录位于`/data/storage/el2/base/cache/web/Temp/`。如果决定取消当前下载，应调用[WebDownloadItem.cancel](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#cancel11)，此时临时文件将被删除。
+>值得注意的是，WebDownloadItem.start()并非启动下载，下载过程实际上在用户点击页面链接时即已开始。WebDownloadItem.start()的作用是将已经下载到临时文件的部分移动到指定目标路径，后续未完成的下载的内容将直接保存到指定目标路径，临时目录位于`/data/storage/el2/base/cache/web/Temp/`。如果决定取消当前下载，应调用[WebDownloadItem.cancel()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#cancel11)，此时临时文件将被删除。
 >
->如果不希望在WebDownloadItem.start之前将文件下载到临时目录，可以通过WebDownloadItem.cancel中断下载，后续可通过[WebDownloadManager.resumeDownload](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11)恢复中断的下载。
+>如果不希望在WebDownloadItem.start()之前将文件下载到临时目录，可以通过WebDownloadItem.cancel()中断下载，后续可通过[WebDownloadManager.resumeDownload()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11)恢复中断的下载。
 
 ## 使用Web组件恢复进程退出时未下载完成的任务
 在Web组件启动时，可通过[resumeDownload()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11)接口恢复未完成的下载任务。

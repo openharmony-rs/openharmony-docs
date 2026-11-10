@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍JSVM-API的JavaScript对象操作能力，涵盖创建对象、获取原型、冻结与密封、类型判断及外部指针封装等常见场景。"
+keywords: [OH_JSVM_CreateObject, OH_JSVM_GetPrototype, OH_JSVM_ObjectFreeze, OH_JSVM_ObjectSeal, OH_JSVM_Typeof, OH_JSVM_Instanceof, OH_JSVM_CreateSymbol, OH_JSVM_CreateExternal, 对象类型判断]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行object相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -12,7 +20,7 @@
 
 ## 基本概念
 
-在JSVM接口开发中，经常需要定义和操作对象。例如，创建一个接口，该接口接受一个对象作为输入参数，对该对象执行某些操作，并返回一个结果对象。在这个过程中，需要确保接口的定义清晰、规范，并且与对象的属性和方法相兼容。
+在JSVM接口开发中，经常需要定义和操作对象。例如，创建一个接口，该接口接收一个对象作为输入参数，对该对象执行某些操作，并返回一个结果对象。在这个过程中，需要确保接口的定义清晰、规范，并且与对象的属性和方法相兼容。
 
 - **接口（API）**：接口定义了组件之间的交互协议，包括输入参数、输出结果以及可能的错误处理。通过接口，组件可以相互调用和交换数据，而无需了解对方的内部实现细节。
 - **对象（Object）**：在JavaScript中，对象是一种复合数据类型，允许存储多个不同类型的值作为一个单独的实体。对象是属性和方法的集合。属性是与对象相关联的值，而方法则是对象可以执行的操作。
@@ -159,7 +167,7 @@ cpp部分代码：
 const int FREEZE_TEST_VALUE = 111111;
 static JSVM_Value ObjectFreeze(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 接受一个JavaScript侧传入的object
+    // 接收一个JavaScript侧传入的object
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
@@ -212,7 +220,7 @@ cpp部分代码：
 const int TEST_VALUE = 111111;
 static JSVM_Value ObjectSeal(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 接受一个JavaScript侧传入的object
+    // 接收一个JavaScript侧传入的object
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);

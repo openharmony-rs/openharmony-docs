@@ -71,7 +71,7 @@
 
 5. 在CryptoAbility.ets文件中导入依赖包，自定义类继承[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)组件并按需实现其中的接口函数。此处给出实现参考，与底层驱动的调用对应关系参见下文。
 
-   ```ts
+   ``` TypeScript
    import { huks, huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionCertInfo, HuksCryptoExtensionResult, HuksCryptoExtensionResultCode } from '@kit.UniversalKeystoreKit';
    import { util } from '@kit.ArkTS';
    import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -148,7 +148,7 @@
 
 onOpenResource用于打开指定资源（如建立会话或连接），handle为资源句柄。当调用成功时，返回值中的resultCode成员需设置为0，handle成员非空；调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onOpenResource(resourceId: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -159,9 +159,19 @@ onOpenResource用于打开指定资源（如建立会话或连接），handle为
        return Promise.resolve(result);
      }
 
-     // 解析resource index，API版本不同解析方式也不同
+     // 解析resource index，API版本22需要解析index字段，在API版本26.0.0及以上可直接使用。
      const apiVersion = deviceInfo.sdkApiVersion;
-     const index = apiVersion >= 26 ? resourceId : JSON.parse(resourceId)['index'];
+     let index: string;
+     if (apiVersion >= 26) {
+       index = resourceId;
+     } else {
+       try {
+        index = JSON.parse(resourceId)['index'];
+       } catch (e) {
+        result.resultCode = HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL;
+        return Promise.resolve(result);
+       }
+     }
 
      let driverHandle: YourDriverHandle | null = null;
      try {
@@ -195,7 +205,7 @@ onOpenResource用于打开指定资源（如建立会话或连接），handle为
 
 onCloseResource用于关闭指定资源（如释放会话或连接）,handle为待关闭资源的句柄。当调用成功时，返回值中的resultCode成员需设置为0；调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onCloseResource(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -233,7 +243,7 @@ onGetProperty用于获取指定资源的属性信息，handle为资源句柄，p
 
 在onGetProperty中必须实现导出公钥功能，以便上游业务使用PIN加密传输并完成PIN码认证。加密算法支持RSA、SM2等。当入参propertyId为SKF_ExportPublicKey时，返回的公钥信息采用JSON格式，包含以下4个必选字段，分别是publicKey（公钥数据）、algo（算法类型及密钥长度）、transformation（密码学操作参数，如填充模式）、size（公钥数据长度）。具体实现可参考下方示例代码中onGetProperty接口的相关部分。
 
-   ```ts
+   ``` TypeScript
    onGetProperty(handle: string, propertyId: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -304,7 +314,7 @@ onAuthUkeyPin用于在使用私钥进行签名之前验证PIN码。加密后的P
 
 - **UKey锁住**：当重试次数为0时，resultCode设置为[HUKS_CRYPTO_EXTENSION_ERR_PIN_LOCKED](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensionresultcode)，authState设置为[HUKS_EXT_CRYPTO_PIN_LOCKED](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalpinauthstate)。
 
-   ```ts
+   ``` TypeScript
    onAuthUkeyPin(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -374,7 +384,7 @@ onAuthUkeyPin用于在使用私钥进行签名之前验证PIN码。加密后的P
 
 onGetUkeyPinAuthState用于查询PIN码认证状态。当调用成功时，返回值中的resultCode成员需设置为0，返回值中的authState设置为对应的认证状态。调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onGetUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -398,7 +408,7 @@ onGetUkeyPinAuthState用于查询PIN码认证状态。当调用成功时，返�
 
 onClearUkeyPinAuthState用于重置PIN码认证状态。当调用成功时，返回值中的resultCode成员需设置为0。调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onClearUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -421,7 +431,7 @@ onClearUkeyPinAuthState用于重置PIN码认证状态。当调用成功时，返
 
 onInitSession用于初始化密钥会话。当调用成功时，返回值中的resultCode成员需设置为0，handle成员非空。调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onInitSession(handle: string, params: huks.HuksOptions | HuksCryptoExtensionParams): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -479,7 +489,7 @@ onInitSession用于初始化密钥会话。当调用成功时，返回值中的r
 
 onUpdateSession用于分段传输大批量数据。当调用成功时，返回值中的resultCode成员需设置为0。调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onUpdateSession(initHandle: string, params: huks.HuksOptions | HuksCryptoExtensionParams): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -514,7 +524,7 @@ onUpdateSession用于分段传输大批量数据。当调用成功时，返回�
 
 onFinishSession用于传输最后一段明文，在验签操作中用于传输签名。当调用成功时，返回值中的resultCode成员需设置为0。调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onFinishSession(initHandle: string, params: huks.HuksOptions | HuksCryptoExtensionParams): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -552,7 +562,7 @@ onFinishSession用于传输最后一段明文，在验签操作中用于传输�
 
 onExportCertificate用于查询某个resourceId下的证书。可以通过解析参数[HUKS_EXT_CRYPTO_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)获取业务希望的证书类型。如未指定，密钥管理扩展应用实现方需设置默认类型（建议签名证书）。
 
-   ```ts
+   ``` TypeScript
    onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -581,7 +591,7 @@ onExportCertificate用于查询某个resourceId下的证书。可以通过解析
 
 onEnumCertificates用于枚举证书列表。当调用成功时，返回值中的resultCode成员需设置为0，返回值中的certs成员包含证书列表（类型为Array<[HuksCryptoExtensionCertInfo](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensioncertinfo)>）。调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onEnumCertificates(params?: Array<huksExternalCrypto.HuksExternalCryptoParam> | HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     let result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -610,7 +620,7 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
 
 从API版本26.0.0开始，onImportCertificate用于导入证书到密钥管理扩展服务中。certInfo包含待导入的证书信息，包括证书用途、资源ID和证书数据。当调用成功时，返回值中的resultCode成员设置为0。调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onImportCertificate(handle: string, params: HuksCryptoExtensionParam[], certInfo: HuksCryptoExtensionCertInfo): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -642,7 +652,7 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
 
 从API版本26.0.0开始，onSetProperty用于执行设置属性操作，handle为资源句柄，propertyId为待设置的属性标识，操作参数在params中传入。当调用成功时，返回值中的resultCode成员需设置为0，表示设置属性成功。调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onSetProperty(handle: string, propertyId: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     let result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -674,7 +684,7 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
 
 从API版本26.0.0开始，onGetResourceId用于获取密钥扩展能力的资源ID。当调用成功时，返回值中的resultCode成员需设置为0，resourceId成员非空。调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onGetResourceId(params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
      const result: HuksCryptoExtensionResult = {
        resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -711,7 +721,7 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
 
 从API版本26.0.0开始，onGenerateKeyItem用于在密钥管理扩展服务中生成密钥对。params中的参数为可选参数，由密钥管理扩展应用实现方定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。当调用成功时，返回值中的resultCode成员需设置为0；调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onGenerateKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -751,7 +761,7 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
 
 从API版本26.0.0开始，onExportKeyItem用于导出指定密钥的公钥。params中的参数为可选参数，由密钥管理扩展应用定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。推荐传入密钥用途（HUKS_TAG_PURPOSE）参数，以便导出指定用途的公钥。当调用成功时，返回值中的resultCode成员需设置为0，outData携带导出的公钥数据；调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onExportKeyItem(handle: string, params: HuksCryptoExtensionParam[]): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
@@ -789,7 +799,7 @@ onEnumCertificates用于枚举证书列表。当调用成功时，返回值中�
 
 从API版本26.0.0开始，onImportWrappedKeyItem用于导入加密封装的密钥对。params中的参数为可选参数，由密钥管理扩展应用实现方定义支持范围。如未传入相应参数，密钥管理扩展应用实现方需设置默认行为。wrappedHandle用于指定解封密钥的密钥资源句柄，wrappedKey为封装密钥数据。当调用成功时，返回值中的resultCode成员需设置为0；调用失败时，resultCode携带错误码信息。
 
-   ```ts
+   ``` TypeScript
    onImportWrappedKeyItem(handle: string, wrappingHandle: string, params: HuksCryptoExtensionParam[], wrappedKey: Uint8Array): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,

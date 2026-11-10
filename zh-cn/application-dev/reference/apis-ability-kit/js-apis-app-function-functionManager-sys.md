@@ -41,6 +41,7 @@ Function调用的可选参数。包含Function调用时的应用上下文信息�
 | context | [Context](js-apis-inner-application-context.md) | 否 | 执行Function调用时的应用上下文信息。<br>**说明**：目前仅支持[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)<br>默认值：undefined。 |
 | toolCallId | string | 否 | 表示工具调用的唯一标识符，由Agent分配。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
 | dmSessionId | string | 否 | 表示对话管理器（DM）的会话ID，用于唯一标识Agent会话。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
+| taskId | string | 否 | 表示任务ID，用于任务执行过程中调用意图拉起进程归因。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.1.0开始支持。 |
 
 ## InvokeResult
 

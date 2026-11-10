@@ -149,9 +149,9 @@ ArkTS-Sta: verifyAuthToken(authToken: Uint8Array, allowableDuration: int): Promi
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 201      | Permission denied.        |
-| 202      | Permission denied. Called by non-system application. |
-| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.       |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 401      | [Sync] Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.    |
 | 12500002 | General operation error.                |
 | 12500015 | AuthToken integrity check failed.     |
 | 12500016 | AuthToken has expired.                |

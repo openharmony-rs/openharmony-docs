@@ -6,7 +6,7 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-多线程并发是指在一个应用中使用多个线程并行或交替执行任务，以提升CPU利用率，避免耗时操作阻塞当前线程。ArkTS-Sta多线程并发基于任务调度能力实现，运行时将[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)任务调度到工作线程执行，也支持通过[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)创建独占工作线程。
+多线程并发是指在一个应用中使用多个线程并行或交替执行任务，以提升CPU利用率，避免耗时操作阻塞当前线程。ArkTS-Sta多线程并发基于任务调度能力实现，运行时将[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)任务调度到工作线程执行，也支持通过[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)创建独占工作线程。
 
 ArkTS-Sta提供TaskPool和EAWorker两类多线程并发能力。TaskPool面向短时、可拆分、可批量调度的后台任务，工作线程由运行时统一管理；EAWorker面向独占线程、长期驻留或固定线程语义的场景，开发者需要显式启动和退出EAWorker。
 

@@ -1831,19 +1831,7 @@ struct Index {
 
 下面通过示例介绍如何实现自定义干预事件和手势的收集结果。示例中构建了如下组件树。
 
-```mermaid
-graph TD
-    A((outerColumn))
-    B((innerColumn))
-    C((Row))
-    D((Button1))
-    E((Button2))
-
-    A --> B
-    A --> C
-    C --> D
-    C --> E
-```
+![custom-intervention-in-event-and-gesture-collection-results](figures/custom-intervention-in-event-and-gesture-collection-results.png)
 
 Button1未绑定点击事件，Button2绑定了点击事件。当用户点击Button2时，innerColumn上的`onGestureCollectIntercept`回调会对触摸识别器进行干预，阻止触摸事件继续向outerColumn透传；点击Button1时则允许正常透传。
 

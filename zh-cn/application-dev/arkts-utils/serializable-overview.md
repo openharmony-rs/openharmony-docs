@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "概述线程间通信对象的类型与特点：普通对象、容器类对象、ArrayBuffer、SharedArrayBuffer、Transferable与Sendable对象的传输方式及适用场景，并说明单次序列化16MB限制等约束，指导通信对象选型。"
+keywords: [线程间通信对象, 普通对象, 容器类对象, ArrayBuffer, SharedArrayBuffer, Transferable对象, Sendable对象, 序列化限制, 多线程]
+doctype: guide
+status: active
+---
+
 # 线程间通信对象概述
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

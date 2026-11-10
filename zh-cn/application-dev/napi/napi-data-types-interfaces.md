@@ -168,6 +168,10 @@ napi_critical_scope是Node-API中，用于创建临界接口执行环境的机�
 
 临界接口：需要在临界区作用域内执行的接口，通常接口名中含有`critical`关键字。
 
+**napi_microtask_scope（扩展能力）**
+
+napi_microtask_scope是OpenHarmony Node-API组件扩展能力，用于限制微任务执行的机制。它由napi_open_microtask_scope接口创建，由napi_close_microtask_scope接口关闭。作用域打开期间，微任务（如Promise回调）不会被触发执行，而是被保留在微任务队列中，待作用域关闭时同步执行。
+
 **napi_strong_ref（扩展能力）**
 
 指向napi_value，允许用户管理ArkTS对象的生命周期。
@@ -586,6 +590,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 |
 | napi_throw_business_error | 抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。 |
 | napi_get_global_handle_count | 遍历并获取global handle数量。 |
+| napi_open_microtask_scope | 打开微任务作用域，限制微任务的执行。 |
+| napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 |
  
 **napi_queue_async_work_with_qos**
 
@@ -604,7 +610,7 @@ napi_status napi_run_script_path(napi_env env,
                                  const char* abcPath,
                                  napi_value* result);
 ```
-**注：**使用限制说明文档：[使用napi_run_script_path接口执行包内abc文件的使用限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-65)
+**注**：使用限制说明文档：[使用napi_run_script_path接口执行包内abc文件的使用限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-65)
 **napi_load_module**
 
 ```c
@@ -917,6 +923,18 @@ napi_status napi_throw_business_error(napi_env env,
 
 ```c
 napi_status napi_get_global_handle_count(napi_env env, size_t* count);
+```
+
+**napi_open_microtask_scope**
+
+```c
+napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope);
+```
+
+**napi_close_microtask_scope**
+
+```c
+napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope);
 ```
 
 ### 其他实用工具

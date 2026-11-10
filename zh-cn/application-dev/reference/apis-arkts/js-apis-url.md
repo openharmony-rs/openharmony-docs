@@ -657,7 +657,7 @@ URLUtil是URL相关的工具类，提供URL查询参数序列化的辅助能力�
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
 ### toString
 
@@ -665,13 +665,13 @@ static toString(urlParams: URLParams): string
 
 将URLParams对象序列化为查询字符串，其中空格百分比编码为%20（而非'+'）。该接口不会修改入参urlParams及其所属URL对象的状态。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 26.2.0
+**ArkTS-Dyn起始版本：** 26.1.0
 
 **参数：**
 

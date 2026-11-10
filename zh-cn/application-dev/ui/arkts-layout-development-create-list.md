@@ -853,12 +853,12 @@ export struct GroupedList {
           List(
             // ...
           ) {
-            ListItemGroup({ header: this.itemHead('A') }) {
+            ListItemGroup({ header: () => { this.itemHead('A') }}) {
               // 循环渲染分组A的ListItem
               // ...
             }
 
-            ListItemGroup({ header: this.itemHead('B') }) {
+            ListItemGroup({ header: () => { this.itemHead('B') }}) {
               // 循环渲染分组B的ListItem
               // ...
             }
@@ -923,9 +923,11 @@ export class ContactsGroupDataSource implements IDataSource {
     return this.list[index];
   }
 
+  // 注册数据变化监听器，用于在数据源变化时通知LazyForEach刷新。本示例数据源为静态数据，数据不会发生变化，无需注册监听器，故此处为空实现。
   registerDataChangeListener(listener: DataChangeListener): void {
   }
 
+  // 注销数据变化监听器。本示例数据源为静态数据，未注册数据变化监听器，无需注销，故此处为空实现。
   unregisterDataChangeListener(listener: DataChangeListener): void {
   }
 }
@@ -1108,7 +1110,7 @@ export struct StickyHeaderList {
           List() {
             // 懒加载ListItemGroup，contactsGroups为多个分组联系人contacts和标题title的数据集合
             LazyForEach(contactsGroupsDataSource, (itemGroup: ContactsGroup) => {
-              ListItemGroup({ header: this.itemHead(itemGroup.title) }) {
+              ListItemGroup({ header: () => { this.itemHead(itemGroup.title) }}) {
                 // 循环渲染ListItem
                 if (itemGroup.contacts) {
                   LazyForEach(new ContactDataSource(itemGroup.contacts as Contact[]), (item: Contact) => {
@@ -2326,22 +2328,22 @@ List(
      ] as ItemGroupInfo[];
      @State expandedItems: boolean[] = [] as boolean[];
      @State selection: string | null = null;
-   
+
      aboutToAppear(): void {
        for (let i: int = 0; i < this.routes.length; i++) {
          this.expandedItems.push(false);
        }
      }
-   
+
      // ...
-   
+
      build(): void {
        // ...
              Column() {
                List({ space: 10 } as ListOptions) {
                  ForEach(this.routes, (itemGroup: ItemGroupInfo) => {
                    ListItemGroup({
-                     header: this.ListItemGroupHeader(itemGroup),
+                     header: () => { this.ListItemGroupHeader(itemGroup) },
                      style: ListItemGroupStyle.CARD,
                    }) {
                      if (this.expandedItems[itemGroup.index] && itemGroup.children) {
@@ -2967,6 +2969,122 @@ ListItem() {
 >- 建议使用列表项数据中不会随位置变化的唯一标识（例如消息ID）记录选择结果，不建议仅使用当前下标，避免动态增删数据后选中项错位。
 >- 当业务需要在退出编辑模式后保留选择结果时，可在[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-list.md#oneditmodechange)回调中保存选择结果。
 >- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过[DataChangeListener](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)通知组件刷新，确保滑动多选过程中列表项状态与数据源一致。
+
+## List手指从上往下滑时页面抖动
+
+**问题现象**
+
+在[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件中，当用户手指从上往下滑动列表时，如果此时在列表底部动态新增数据或追加内容，页面会出现抖动现象——列表内容短暂地向上跳动一下再恢复，视觉上表现为不稳定的闪烁/抖动。
+
+![List手指从上往下滑时页面抖动](figures/list-scroll-jitter.gif)
+
+**可能原因**
+
+抖动的根源在于List反向布局时，底部新增内容引起的偏移量变化方向与用户手指滑动方向存在冲突。其中，偏移量是通过[currentOffset](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#currentoffset)接口获取的滚动总偏移量，表示List内容相对于视口顶部的位移。
+
+List组件有两套布局路径：
+
+- 正向布局：从列表第一项开始，依次向下排列。当用户手指从下往上滑动时走此路径。由于布局锚定在顶部，在底部新增内容不会改变已有item的位置，偏移量保持不变，因此不会与手指滑动方向产生冲突。
+
+- 反向布局：从列表最后一项开始，依次向上排列。当用户手指从上往下滑动时走此路径。此时List的布局计算方向与正向相反——它从底部item开始，向上依次确定每个item的位置。
+
+此时在底部新增内容，反向布局认为应该将视口内的内容向上推，即偏移量应该增大（向底部滚动）；而用户手指从上往下滑动，期望内容跟随手指向下移动，即偏移量应该减小（向顶部滚动）。这两个方向正好相反，两个相反方向的偏移在同一帧内冲突，内容先被推向一个方向，又被拉回，导致视觉抖动。
+
+**解决措施**
+
+改用[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)+[LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)替代List，Scroll组件的滚动模型是纯粹的位移偏移，不存在正向/反向布局的分叉路径，内容尺寸变化时不会产生方向冲突。
+
+ArkTS-Dyn示例：
+
+<!-- @[ScrollLazyDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/scroll/ScrollLazyDemo/Index.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct ScrollLazyDemo {
+  @State items: string[] = ScrollLazyDemo.initItems()
+  private timer: number = -1
+
+  aboutToAppear() {
+    this.timer = setInterval(() => {
+      this.items[this.items.length - 1] += '0123456789\n'
+    }, 400)
+  }
+
+  aboutToDisappear() {
+    clearInterval(this.timer)
+  }
+
+  private static initItems(): string[] {
+    const arr: string[] = []
+    for (let i = 0; i < 50; i++) {
+      arr.push(`Item ${i + 1} \n`)
+    }
+    return arr
+  }
+
+  build() {
+    Scroll() {
+      LazyVGridLayout() {
+        ForEach(this.items, (item: string) => {
+          Text(item)
+            .width('100%')
+            .padding(12)
+            .backgroundColor('#fff4f4f4')
+            .borderRadius(8)
+            .margin({ top: 4, bottom: 4 })
+        })
+      }
+    }
+    .initialOffset({ yOffset: Infinity })
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[ScrollLazyDemo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/scroll/ScrollLazyDemo/Index.ets) -->
+
+``` TypeScript
+@Component
+export struct ScrollLazyDemo {
+  @State items: Array<string> = new Array<string>();
+  private timer: int = -1;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 50; i++) {
+      this.items.push(`Item ${i + 1} \n`);
+    }
+    this.timer = setInterval(() => {
+      this.items[this.items.length - 1] += '0123456789\n';
+    }, 400);
+  }
+
+  aboutToDisappear(): void {
+    clearInterval(this.timer);
+  }
+
+  build(): void {
+    Scroll() {
+      LazyVGridLayout() {
+        ForEach(this.items, (item: string) => {
+          Text(item)
+            .width('100%')
+            .padding(12)
+            .backgroundColor('#fff4f4f4')
+            .borderRadius(8)
+            .margin({ top: 4, bottom: 4 })
+        }, (item: string) => item)
+      }
+    }
+    .initialOffset({ yOffset: Infinity } as OffsetOptions)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## 相关实例
 

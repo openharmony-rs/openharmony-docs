@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "从API版本26.0.0起提供独立的PCM音频格式转换能力，支持采样率、声道布局、采样格式（位深）之间的相互转换，适用于纯音频转码等场景，包含流式数据处理的完整开发步骤与使用限制。"
+keywords: [OHAudioSuite, 音频格式转换, 采样率转换, 声道布局转换, 采样格式转换, 位深转换, OH_AudioConverter, OH_AudioConverter_Process, 纯音频转码]
+doctype: guide
+status: active
+---
+
 # 音频格式转换(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -14,9 +22,12 @@
 
 ### 在CMake脚本中链接动态库
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudiosuite.so)
+<!-- @[CMake_lib_suite_libohaudiosuite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
+
 ### 添加头文件
 开发者通过引入头文件<[native_audio_converter.h](../../reference/apis-audio-kit/capi-native-audio-converter-h.md)>，使用音频格式转换相关API。
 
@@ -122,7 +133,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    <!-- @[input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
    
    ``` C++
-   // 设置输出数据指针。
+   // 设置输入数据指针。
    // 注意：数据指针的值并不一定要从userData中获取，也可以是存储数据的缓存地址。
    // 例如：从文件中读取数据放入缓存，然后将该缓存地址赋值给输出数据指针。
    // 只要确保数据指针在OH_AudioConverter_Process()返回前保持有效即可。

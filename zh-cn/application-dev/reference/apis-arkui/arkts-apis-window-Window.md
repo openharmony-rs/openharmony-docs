@@ -6685,7 +6685,7 @@ try {
 
 on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
-开启模态窗口所遮罩区域的点击或触摸事件的监听，除模态窗口以外其他窗口调用此接口不生效。
+开启TYPE_DIALOG类型的窗口、模态子窗口（即使用[setSubWindowModal](#setsubwindowmodal12)启用了子窗口的模态属性）或模态主窗口（即使用[setWindowModal](arkts-apis-window-WindowStage.md#setwindowmodal14)启用了主窗口的模态属性）所遮罩区域的点击或触摸事件的监听，除此以外其他窗口调用此接口不生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6701,8 +6701,8 @@ on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                          |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type     | string              | 是   | 监听事件，固定为'dialogTargetTouch'，即模态窗口所遮罩区域的点击或触摸事件。 |
-| callback | Callback&lt;void&gt;| 是   | 回调函数。当点击或触摸事件发生在模态窗口所遮罩区域的回调。 |
+| type     | string              | 是   | 监听事件，固定为'dialogTargetTouch'，即TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的点击或触摸事件。 |
+| callback | Callback&lt;void&gt;| 是   | 回调函数。当点击或触摸事件发生在TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的回调。 |
 
 **错误码：**
 
@@ -6764,7 +6764,7 @@ try {
 
 off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 
-关闭模态窗口所遮罩区域的点击或触摸事件的监听。
+关闭TYPE_DIALOG类型的窗口、模态子窗口（即使用[setSubWindowModal](#setsubwindowmodal12)启用了子窗口的模态属性）或模态主窗口（即使用[setWindowModal](arkts-apis-window-WindowStage.md#setwindowmodal14)启用了主窗口的模态属性）所遮罩区域的点击或触摸事件的监听。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6780,8 +6780,8 @@ off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                          |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                 | 是   | 监听事件，固定为'dialogTargetTouch'，即模态窗口所遮罩区域的点击或触摸事件。 |
-| callback | Callback&lt;void&gt;      | 否   | 回调函数。当点击事件发生在模态窗口所遮罩区域的回调。若传入参数，则关闭该监听。若未传入参数，则关闭所有模态窗口所遮罩区域的点击事件的监听。 |
+| type     | string                 | 是   | 监听事件，固定为'dialogTargetTouch'，即TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的点击或触摸事件。 |
+| callback | Callback&lt;void&gt;      | 否   | 回调函数。当点击或触摸事件发生在TYPE_DIALOG类型的窗口、模态子窗口或模态主窗口所遮罩区域的回调。若传入参数，则关闭该监听。若未传入参数，则关闭该窗口所有遮罩区域的点击或触摸事件的监听。 |
 
 **错误码：**
 
@@ -11002,7 +11002,7 @@ ArkTS-Sta: setWindowBrightness(brightness: double, callback: AsyncCallback&lt;vo
 
 | 参数名 | 类型 | 必填 | 说明                                        |
 | ---------- | ------------------------- | -- |-------------------------------------------|
-| brightness | ArkTS-Dyn: number <br> ArkTS-Sta: double                    | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。1.0表示最亮，-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
+| brightness | ArkTS-Dyn: number <br> ArkTS-Sta: double                    | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。0.0表示最暗，1.0表示最亮，特殊值-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
 | callback   | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                     |
 
 **错误码：**
@@ -11134,7 +11134,7 @@ ArkTS-Sta: setWindowBrightness(brightness: double): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                     |
 | ---------- | ------ | -- |----------------------------------------|
-| brightness | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。1.0表示最亮，-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
+| brightness | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 屏幕亮度值。该参数为浮点数，取值范围为[0.0, 1.0]或-1.0。0.0表示最暗，1.0表示最亮，特殊值-1.0表示恢复成设置窗口亮度前的系统控制中心亮度。 |
 
 **返回值：**
 
@@ -12631,6 +12631,8 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 > **说明：**
 >
 > - 当窗口已创建且未处于前台状态时，调用该接口不生效不报错。建议在调用该接口前确保窗口已创建并处于前台状态。
+>
+> - 主窗口最小化后进入后台状态时，不同设备上UIAbility生命周期的行为存在差异，请参考[不同设备UIAbility生命周期的差异化行为](../../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -12703,6 +12705,8 @@ minimize(): Promise&lt;void&gt;
 > **说明：**
 >
 > - 当窗口已创建且未处于前台状态时，调用该接口不生效不报错。建议在调用该接口前确保窗口已创建并处于前台状态。
+>
+> - 主窗口最小化后进入后台状态时，不同设备上UIAbility生命周期的行为存在差异，请参考[不同设备UIAbility生命周期的差异化行为](../../windowmanager/window-lifecycle.md#不同设备uiability生命周期的差异化行为)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -13859,7 +13863,7 @@ try {
 
 setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;WindowLimits&gt;
 
-设置当前窗口的尺寸限制，使用Promise异步回调。
+设置当前窗口的尺寸限制，可通过参数isForcible设置是否强制生效，使用Promise异步回调。
 
 默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
 
@@ -13964,7 +13968,7 @@ ArkTS-Dyn: setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&
 
 ArkTS-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt;void&gt;
 
-设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗口和全局悬浮窗可用。
 
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
 
@@ -13990,7 +13994,7 @@ ArkTS-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt
 
 | 类型                                         | 说明                                |
 | :------------------------------------------- | :---------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -14071,7 +14075,7 @@ ArkTS-Dyn: setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, mas
 
 ArkTS-Sta: setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: int, maskHeight: int): Promise&lt;void&gt;
 
-通过按像素顺序排列的Alpha数组设置异形窗口的掩码，像素顺序以窗口左上角为像素起点，同行内从左到右依次排列，从上至下逐行排列。使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+通过按像素顺序排列的Alpha数组设置异形窗口的掩码，像素顺序以窗口左上角为像素起点，同行内从左到右依次排列，从上至下逐行排列。使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗口和全局悬浮窗可用。
 
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
 
@@ -14164,7 +14168,7 @@ try {
 
 clearWindowMask(): Promise&lt;void&gt;
 
-清除异形窗口的掩码使其恢复为矩形窗口，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+清除异形窗口的掩码使其恢复为矩形窗口，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗口和全局悬浮窗可用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

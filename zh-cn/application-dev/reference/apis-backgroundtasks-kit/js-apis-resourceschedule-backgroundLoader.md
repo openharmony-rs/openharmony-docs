@@ -171,7 +171,7 @@ ArkTS-Dyn示例：
           taskId: 1,
           abilityName: 'TestAppMainUIAbility'
         }
-        // 02.注册启动后台加载任务，系统将任务记录持久化保存，用于后续调度
+        // 02.取消注册后台加载任务，系统将删除注册记录
         backgroundLoader.unregisterTask(taskInfo);
         console.info('unregisterTask success');
       } catch (error) {
@@ -198,7 +198,7 @@ ArkTS-Sta示例：
                 taskId: 1,
                 abilityName: 'TestAppMainUIAbility'
             }
-            // 02.取消注册启动后台加载任务
+            // 02.取消注册后台加载任务，系统将删除注册记录
             backgroundLoader.unregisterTask(taskInfo);
             console.info('unregisterTask success');
         } catch (error) {
@@ -325,21 +325,21 @@ ArkTS-Dyn示例：
   import { backgroundLoader } from '@kit.BackgroundTasksKit';
   import { rpc } from '@kit.IPCKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-     
+
   // 根据需要定义ReplyParcelable返回类型
   class ReplyParcelable implements rpc.Parcelable {
     marshalling(dataOut: rpc.MessageSequence): boolean {
       return true;
     }
-    marshalling(dataIn: rpc.MessageSequence): boolean {
-       return true;
+    unmarshalling(dataIn: rpc.MessageSequence): boolean {
+      return true;
     }
   }
   // 01.定义后台加载的onStart回调方法
-  function BackgroundLoaderOnStart(pdata: rpc.MessageSequence) {
-    let taskInfo =  backgroundLoader.TaskInfo = {
-      taskId: pdata.readInt(),
-      abilityName: pdata.readString()
+  function BackgroundLoaderOnStart(pData: rpc.MessageSequence): rpc.Parcelable {
+    let taskInfo:  backgroundLoader.TaskInfo = {
+      taskId: pData.readInt(),
+      abilityName: pData.readString()
     };
 
     console.info(`background loader Task OnStart, taskInfo ${taskInfo.taskId}`);
@@ -351,15 +351,13 @@ ArkTS-Dyn示例：
   }
     
   // 02.定义后台加载的onStop回调方法
-  function BackgroundPrefetchOnStop(pdata: rpc.MessageSequence) {
-    let taskStopInfo = backgroundLoader.TaskStopInfo() = {
-      taskId: pdata.readInt(),
-      abilityName: pdata.readString(),
-      stopCode: pdata.readInt(),
-      stopMessage: ''
-    };
+  function BackgroundLoaderOnStop(pData: rpc.MessageSequence): rpc.Parcelable {
+    let taskId:number = pData.readInt();
+    let abilityName:string = pData.readString();
+    let stopCode:number = pData.readInt();
+    let stopMessage:string = pData.readString();
 
-    console.info(`background loader Task OnStop, taskInfo `${taskInfo.taskId});
+    console.info(`background loader Task OnStop, taskId ${taskId}`);
     return new ReplyParcelable();
   }
     
@@ -368,15 +366,15 @@ ArkTS-Dyn示例：
       console.info('Callee onCreate is called');
       try {
         // 03.声明后台加载的回调方法，参数名使用后台加载定义好的回调方法
-        this.callee.on(backgroundLoader.ON_START, BackgroundPrefetchOnStart);
-        this.callee.on(backgroundLoader.ON_STOP, BackgroundPrefetchOnStop);
+        this.callee.on(backgroundLoader.ON_START, BackgroundLoaderOnStart);
+        this.callee.on(backgroundLoader.ON_STOP, BackgroundLoaderOnStop);
 
         let taskInfo: backgroundLoader.TaskInfo = {
           taskId: 1,
           abilityName: 'TestAppMainUIAbility'
         }
  
-        // 04.注册启动后台加载任务，系统将任务记录持久化保存，用于后续调度
+        // 04.取消注册后台加载任务，系统将删除注册记录
         backgroundLoader.unregisterTask(taskInfo);
         console.info('unregisterTask success');
       } catch (error) {
@@ -405,10 +403,10 @@ ArkTS-Sta示例：
     }
   }
   // 01.定义后台加载的onStart回调方法
-  function BackgroundLoaderOnStart(pdata: rpc.MessageSequence): rpc.Parcelable {
+  function BackgroundLoaderOnStart(pData: rpc.MessageSequence): rpc.Parcelable {
     let taskInfo: backgroundLoader.TaskInfo = {
-        taskId: pdata.readInt(),
-        abilityName: pdata.readString()
+        taskId: pData.readInt(),
+        abilityName: pData.readString()
     };
 
     console.info(`background loader Task OnStart, taskInfo ${taskInfo.taskId}`);
@@ -420,11 +418,11 @@ ArkTS-Sta示例：
   }
 
   // 02.定义后台加载的onStop回调方法
-  function BackgroundPrefetchOnStop(pdata: rpc.MessageSequence): rpc.Parcelable {
+  function BackgroundPrefetchOnStop(pData: rpc.MessageSequence): rpc.Parcelable {
     let taskStopInfo: backgroundLoader.TaskStopInfo() = {
-        taskId: pdata.readInt(),
-        abilityName: pdata.readString(),
-        stopCode: pdata.readInt(),
+        taskId: pData.readInt(),
+        abilityName: pData.readString(),
+        stopCode: pData.readInt(),
         stopMessage: ''
     };
 
@@ -445,7 +443,7 @@ ArkTS-Sta示例：
                 abilityName: 'TestAppMainUIAbility'
             }
 
-            // 04.注册启动后台加载任务，系统将任务记录持久化保存，用于后续调度
+            // 04.取消注册启动后台加载任务，系统将删除注册记录
             backgroundLoader.unregisterTask(taskInfo);
             console.info('unregisterTask success');
         } catch (error) {

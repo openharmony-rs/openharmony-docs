@@ -50,12 +50,12 @@ testhelper分为命令行工具层和核心能力层两部分，依赖底层系�
 | [enable-location-mock](#testhelper-enable-location-mock) | - | 启用位置模拟功能。 |
 | [disable-location-mock](#testhelper-disable-location-mock) | - | 禁用位置模拟功能，恢复真实位置。 |
 | [set-mocked-locations](#testhelper-set-mocked-locations) | \<path\> [interval] | 从GPX文件设置模拟位置。 |
-| [enable-wifi](#testhelper-enable-wifi) | - | 开启设备WiFi。<br> **说明：** 从API version 26.2.0开始支持该命令。 |
-| [disable-wifi](#testhelper-disable-wifi) | - | 关闭设备WiFi。<br> **说明：** 从API version 26.2.0开始支持该命令。 |
-| [enable-cellular-data](#testhelper-enable-cellular-data) | - | 开启设备移动数据。<br> **说明：** 从API version 26.2.0开始支持该命令。 |
-| [disable-cellular-data](#testhelper-disable-cellular-data) | - | 关闭设备移动数据。<br> **说明：** 从API version 26.2.0开始支持该命令。 |
-| [enable-airplane-mode](#testhelper-enable-airplane-mode) | - | 开启设备飞行模式。<br> **说明：** 从API version 26.2.0开始支持该命令。 |
-| [disable-airplane-mode](#testhelper-disable-airplane-mode) | - | 关闭设备飞行模式。<br> **说明：** 从API version 26.2.0开始支持该命令。 |
+| [enable-wifi](#testhelper-enable-wifi) | - | 开启设备WiFi。<br> **说明：** 从API version 26.1.0开始支持该命令。 |
+| [disable-wifi](#testhelper-disable-wifi) | - | 关闭设备WiFi。<br> **说明：** 从API version 26.1.0开始支持该命令。 |
+| [enable-cellular-data](#testhelper-enable-cellular-data) | - | 开启设备移动数据。<br> **说明：** 从API version 26.1.0开始支持该命令。 |
+| [disable-cellular-data](#testhelper-disable-cellular-data) | - | 关闭设备移动数据。<br> **说明：** 从API version 26.1.0开始支持该命令。 |
+| [enable-airplane-mode](#testhelper-enable-airplane-mode) | - | 开启设备飞行模式。<br> **说明：** 从API version 26.1.0开始支持该命令。 |
+| [disable-airplane-mode](#testhelper-disable-airplane-mode) | - | 关闭设备飞行模式。<br> **说明：** 从API version 26.1.0开始支持该命令。 |
 
 ### testhelper help
 
@@ -548,7 +548,7 @@ testhelper支持标准的GPX 1.1格式，支持以下三种位置点类型：
 
 ### testhelper enable-wifi
 
-开启设备WiFi。从API version 26.2.0开始支持该命令。
+开启设备WiFi。从API version 26.1.0开始支持该命令。
 
 **使用示例：**
 
@@ -567,7 +567,7 @@ hdc shell testhelper enable-wifi
 
 ### testhelper disable-wifi
 
-关闭设备WiFi。从API version 26.2.0开始支持该命令。
+关闭设备WiFi。从API version 26.1.0开始支持该命令。
 
 **使用示例：**
 
@@ -586,7 +586,7 @@ hdc shell testhelper disable-wifi
 
 ### testhelper enable-cellular-data
 
-开启设备移动数据。要求设备已插入SIM卡且飞行模式处于关闭状态。从API version 26.2.0开始支持该命令。
+开启设备移动数据。要求设备已插入SIM卡且飞行模式处于关闭状态。从API version 26.1.0开始支持该命令。
 
 **使用示例：**
 
@@ -607,7 +607,7 @@ hdc shell testhelper enable-cellular-data
 
 ### testhelper disable-cellular-data
 
-关闭设备移动数据。从API version 26.2.0开始支持该命令。
+关闭设备移动数据。从API version 26.1.0开始支持该命令。
 
 **使用示例：**
 
@@ -626,7 +626,7 @@ hdc shell testhelper disable-cellular-data
 
 ### testhelper enable-airplane-mode
 
-开启设备飞行模式。开启后移动数据将关闭。从API version 26.2.0开始支持该命令。
+开启设备飞行模式。开启后移动数据将关闭。从API version 26.1.0开始支持该命令。
 
 **使用示例：**
 
@@ -645,7 +645,7 @@ hdc shell testhelper enable-airplane-mode
 
 ### testhelper disable-airplane-mode
 
-关闭设备飞行模式。从API version 26.2.0开始支持该命令。
+关闭设备飞行模式。从API version 26.1.0开始支持该命令。
 
 **使用示例：**
 

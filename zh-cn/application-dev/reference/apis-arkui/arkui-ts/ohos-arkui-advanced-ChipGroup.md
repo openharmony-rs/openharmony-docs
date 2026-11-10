@@ -83,7 +83,7 @@ ChipGroup({
 | backgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。设置自动反色的系统材质时，fontColor如果使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。当设置backgroundSystemMaterial时，应将backgroundColor设为Color.Transparent，否则会与系统材质冲突。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | selectedBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件选中状态的系统材质样式。不同材质具有不同的效果，能够影响组件选中时的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。设置自动反色的系统材质时，selectedFontColor如果使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。当设置selectedBackgroundSystemMaterial时，应将selectedBackgroundColor设为Color.Transparent，否则会与系统材质冲突。<br>默认值：undefined<br>值为undefined时，不应用选中状态的材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | onChange        | ArkTS-Dyn: [Callback](ts-types.md#callback12)\<Array\<number>> <br/> ArkTS-Sta: [Callback](ts-types.md#callback12)\<Array\<int>> | 否   | -  | Chip状态改变时的回调方法，用于监听Chip选中状态的变更。该回调在selectedIndexes属性更新后触发，开发者可在回调中获取最新的选中状态并执行相应操作，如更新UI、保存选中数据、触发业务逻辑等。当需要监听用户选择Chip的操作并执行相应业务逻辑时传入此参数。不传入时，无法接收Chip状态变化的通知。<br>若为undefined，不触发该回调。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| onItemsChange  | [Callback](ts-types.md#callback12)\<[ChipGroupItemOptions[]](#chipgroupitemoptions)\> | 否   | -  | 注册ChipItems的回调，用于监听items变化。触发场景：用户关闭[Chip](./ohos-arkui-advanced-Chip.md)导致Chip被删除时触发，开发者主动修改items时不会触发该回调。回调参数为当前生效的items数组，组件不修改开发者传入的items，仅通知生效的数组。当需要感知ChipGroup内容变化并同步业务数据时传入此参数。不传入时，无法接收items变化的通知。<br>值为undefined时，不触发该回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.2.0<br>**ArkTS-Sta起始版本：** 26.2.0 |
+| onItemsChange  | [Callback](ts-types.md#callback12)\<[ChipGroupItemOptions[]](#chipgroupitemoptions)\> | 否   | -  | 注册ChipItems的回调，用于监听items变化。触发场景：用户关闭[Chip](./ohos-arkui-advanced-Chip.md)导致Chip被删除时触发，开发者主动修改items时不会触发该回调。回调参数为当前生效的items数组，组件不修改开发者传入的items，仅通知生效的数组。当需要感知ChipGroup内容变化并同步业务数据时传入此参数。不传入时，无法接收items变化的通知。<br>值为undefined时，不触发该回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
 | suffix          | [Callback](ts-types.md#callback12)\<void\>                                        | 否   | [@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[IconGroupSuffix](#icongroupsuffix)接口。<br/>默认不传入时，没有suffix。<br>值为undefined时，没有suffix。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
 
 > **说明：**
@@ -380,10 +380,12 @@ type ChipGroupSuffixBuilder = () => void
 
 该示例实现了在没有最右侧builder时的效果。
 
+从API版本26.2.0开始，[ChipGroup](#chipgroup-1)新增onItemsChange属性。
+
 ArkTS-Dyn示例：
 
 ```typescript
-import { ChipSize, ChipGroup } from '@kit.ArkUI';
+import { ChipSize, ChipGroup, ChipGroupItemOptions } from '@kit.ArkUI';
 
 @Entry
 @Preview
@@ -536,10 +538,12 @@ struct Index {
 
 通过配置suffix实现最右侧的自定义组件效果。
 
+从API版本26.2.0开始，[ChipGroup](#chipgroup-1)新增onItemsChange属性。
+
 ArkTS-Dyn示例：
 
 ```typescript
-import { ChipSize, ChipGroup, IconGroupSuffix } from '@kit.ArkUI';
+import { ChipSize, ChipGroup, ChipGroupItemOptions, IconGroupSuffix } from '@kit.ArkUI';
 
 @Entry
 @Preview
@@ -737,10 +741,12 @@ struct Index {
 ### 示例3（设置Symbol类型图标）
 该示例实现了IconGroupSuffix和ChipGroup传入SymbolGlyph资源。
 
+从API版本26.2.0开始，[ChipGroup](#chipgroup-1)新增onItemsChange属性。
+
 ArkTS-Dyn示例：
 
 ```typescript
-import { ChipSize, ChipGroup, IconGroupSuffix, SymbolGlyphModifier } from '@kit.ArkUI';
+import { ChipSize, ChipGroup, ChipGroupItemOptions, IconGroupSuffix, SymbolGlyphModifier } from '@kit.ArkUI';
 
 @Entry     
 @Preview     

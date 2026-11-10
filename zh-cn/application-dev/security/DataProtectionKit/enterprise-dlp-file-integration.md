@@ -12,6 +12,8 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
 除此之外，Data Protection Kit为应用提供向SA（System Ability）侧注册通信插件的能力，应用注册通信插件后，系统SA可通过该插件向应用发起通信。涉及DLP文件的生成、还原等相关能力，均依赖企业预先注册该通信插件，系统SA通过该插件可实时向应用获取需要的信息。
 
+<!--RP1--><!--RP1End-->
+
 ## 开发步骤
 
 1. 导入模块。
@@ -143,4 +145,4 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
  
     6.1 具体开发步骤可以参考[单客户端订阅场景](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/devicesecurity-audit-subscribe-arkts-suevent)。 
 
-    6.2. DLP文件事件的eventId为0x00F000006。
+    6.2 DLP文件事件的eventId为0x00F000006。

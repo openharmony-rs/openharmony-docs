@@ -868,8 +868,8 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onErrorReceive((event) => {
             if (event) {
-              console.info('getErrorInfo:' + event.error.getErrorInfo());
-              console.info('getErrorCode:' + event.error.getErrorCode());
+              console.error('getErrorInfo:' + event.error.getErrorInfo());
+              console.error('getErrorCode:' + event.error.getErrorCode());
               console.info('url:' + event.request.getRequestUrl());
               console.info('isMainFrame:' + event.request.isMainFrame());
               console.info('isRedirect:' + event.request.isRedirect());
@@ -903,8 +903,8 @@ ArkTS-Sta示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onErrorReceive((event) => {
             if (event) {
-              console.info('getErrorInfo:' + event.error.getErrorInfo());
-              console.info('getErrorCode:' + event.error.getErrorCode());
+              console.error('getErrorInfo:' + event.error.getErrorInfo());
+              console.error('getErrorCode:' + event.error.getErrorCode());
               console.info('url:' + event.request.getRequestUrl());
               console.info('isMainFrame:' + event.request.isMainFrame());
               console.info('isRedirect:' + event.request.isRedirect());
@@ -2087,6 +2087,88 @@ ArkTS-Sta示例：
   }
   ```
 
+## onZoomChange
+
+ArkTS-Dyn: onZoomChange(callback: OnZoomChangeCallback)
+
+ArkTS-Sta: onZoomChange(callback: OnZoomChangeCallback | undefined)
+
+当网页的页面缩放倍率发生变化时触发该回调。
+
+> **说明：**
+>
+> - 通过[setZoomFactor](./arkts-apis-webview-WebviewController.md#setzoomfactor)设置，或[zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)为`true`时通过Ctrl组合键或鼠标滚轮/触摸板缩放，均会触发该回调。
+> - 在同一浏览数据上下文中，其他同Host Web组件改变页面缩放倍率后，如果当前Web组件的实际倍率随之变化，也会触发该回调。
+> - 页面缩放会缩放文字、图片并重新布局页面；CSS `zoom`不会触发该回调，捏合缩放导致的页面显示比例变化由[onScaleChange](#onscalechange9)通知。
+> - 当前Web组件导航至其他Host时，若实际倍率发生变化则触发回调；实际倍率不变时不会重复触发。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | ArkTS-Dyn: [OnZoomChangeCallback](./arkts-basic-components-web-t.md#onzoomchangecallback)<br>ArkTS-Sta: [OnZoomChangeCallback](./arkts-basic-components-web-t.md#onzoomchangecallback) \| undefined | 是 | 页面缩放倍率变化时触发的回调。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('set zoom factor to 1.5')
+        .onClick(() => {
+          this.controller.setZoomFactor(1.5);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onZoomChange((event) => {
+          console.info(`zoom factor: ${event.oldZoomFactor} -> ${event.newZoomFactor}`);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button, OnZoomChangeEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('set zoom factor to 1.5')
+        .onClick(() => {
+          this.controller.setZoomFactor(1.5);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onZoomChange((event: OnZoomChangeEvent): void => {
+          console.info(`zoom factor: ${event.oldZoomFactor} -> ${event.newZoomFactor}`);
+        })
+    }
+  }
+}
+```
+
 ## onInterceptRequest<sup>9+</sup>
 
 ArkTS-Dyn: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>)
@@ -2659,10 +2741,10 @@ ArkTS-Dyn示例：
         Web({ src: 'www.example.com', controller: this.controller })
           .onSslErrorEvent((event: SslErrorEvent) => {
             console.info("onSslErrorEvent url: " + event.url);
-            console.info("onSslErrorEvent error: " + event.error);
+            console.error("onSslErrorEvent error: " + event.error);
             console.info("onSslErrorEvent originalUrl: " + event.originalUrl);
             console.info("onSslErrorEvent referrer: " + event.referrer);
-            console.info("onSslErrorEvent isFatalError: " + event.isFatalError);
+            console.error("onSslErrorEvent isFatalError: " + event.isFatalError);
             console.info("onSslErrorEvent isMainFrame: " + event.isMainFrame);
             LogCertInfo(event.certChainData);
             this.uiContext.showAlertDialog({
@@ -2751,10 +2833,10 @@ struct WebComponent {
       Web({ src: 'www.example.com', controller: this.controller })
         .onSslErrorEvent((event: SslErrorEvent) => {
           console.info("onSslErrorEvent url: " + event.url);
-          console.info("onSslErrorEvent error: " + event.error);
+          console.error("onSslErrorEvent error: " + event.error);
           console.info("onSslErrorEvent originalUrl: " + event.originalUrl);
           console.info("onSslErrorEvent referrer: " + event.referrer);
-          console.info("onSslErrorEvent isFatalError: " + event.isFatalError);
+          console.error("onSslErrorEvent isFatalError: " + event.isFatalError);
           console.info("onSslErrorEvent isMainFrame: " + event.isMainFrame);
           LogCertInfo(event.certChainData  as Array<Uint8Array>);
           this.uiContext.showAlertDialog({
@@ -2867,7 +2949,7 @@ struct Index {
           event.handler.confirm(this.uri);
         })
         .onSslErrorEventReceive(e => {
-          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+          console.error(`onSslErrorEventReceive->${e.error.toString()}`);
         })
         .onErrorReceive((event) => {
           if (event) {
@@ -2875,8 +2957,8 @@ struct Index {
               message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
               alignment: Alignment.Center
             })
-            console.info('getErrorInfo:' + event.error.getErrorInfo());
-            console.info('getErrorCode:' + event.error.getErrorCode());
+            console.error('getErrorInfo:' + event.error.getErrorInfo());
+            console.error('getErrorCode:' + event.error.getErrorCode());
             console.info('url:' + event.request.getRequestUrl());
           }
         })
@@ -3073,7 +3155,7 @@ struct Index {
               })
             })
             .onSslErrorEventReceive(e => {
-              console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+              console.error(`onSslErrorEventReceive->${e.error.toString()}`);
             })
             .onErrorReceive((event) => {
               if (event) {
@@ -3081,8 +3163,8 @@ struct Index {
                   message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
                   alignment: Alignment.Center
                 })
-                console.info('getErrorInfo:' + event.error.getErrorInfo());
-                console.info('getErrorCode:' + event.error.getErrorCode());
+                console.error('getErrorInfo:' + event.error.getErrorInfo());
+                console.error('getErrorCode:' + event.error.getErrorCode());
                 console.info('url:' + event.request.getRequestUrl());
               }
             })
@@ -3181,12 +3263,12 @@ struct Index {
               event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
             }).catch((err: BusinessError) => {
             // 通知webPIN码认证失败
-            console.info(`onVerifyPin fail`);
+            console.error(`onVerifyPin fail`);
             event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
           })
         })
         .onSslErrorEventReceive(e => {
-          console.info(`onSslErrorEventReceive->${e.error.toString()}`);
+          console.error(`onSslErrorEventReceive->${e.error.toString()}`);
         })
         .onErrorReceive((event) => {
           if (event) {
@@ -3194,8 +3276,8 @@ struct Index {
               message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
               alignment: Alignment.Center
             })
-            console.info('getErrorInfo:' + event.error.getErrorInfo());
-            console.info('getErrorCode:' + event.error.getErrorCode());
+            console.error('getErrorInfo:' + event.error.getErrorInfo());
+            console.error('getErrorCode:' + event.error.getErrorCode());
             console.info('url:' + event.request.getRequestUrl());
           }
         })
@@ -3294,8 +3376,8 @@ struct Index {
               message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
               alignment: Alignment.Center
             })
-            console.info('RM001 getErrorInfo:' + event.error.getErrorInfo());
-            console.info('RM001 getErrorCode:' + event.error.getErrorCode());
+            console.error('RM001 getErrorInfo:' + event.error.getErrorInfo());
+            console.error('RM001 getErrorCode:' + event.error.getErrorCode());
             console.info('RM001 url:' + event.request.getRequestUrl());
           }
         })
@@ -3893,6 +3975,237 @@ ArkTS-Sta示例：
           .onContextMenuHide((): void => {
             console.info("onContextMenuHide callback");
           })
+      }
+    }
+  }
+  ```
+
+## onContextMenuUpdate
+
+onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
+
+注册回调，在内核异步更新上下文菜单项状态时调用。内核完成异步处理后触发该回调，通知应用更新菜单项的显示状态。
+
+[shouldOfferLinkToText](./arkts-basic-components-web-WebContextMenuParam.md#shouldofferlinktotext)方法返回的是同步初始值，而此回调提供的是异步最终值，两者互为补充。
+
+在单次上下文菜单会话期间，此回调可能被多次调用，每个被内核异步更新状态的菜单项各触发一次。回调绑定于Web组件生命周期，组件销毁时自动释放。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnContextMenuUpdateCallback](./arkts-basic-components-web-t.md#oncontextmenuupdatecallback) | 是 | 上下文菜单项状态更新时触发的回调函数，接收菜单项ID和选项信息。     |
+
+**示例：**
+
+  ArkTS-Dyn示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private result: WebContextMenuResult | undefined = undefined;
+    private param: WebContextMenuParam | undefined = undefined;
+    @State offsetX: number = 0;
+    @State offsetY: number = 0;
+    @State showMenu: boolean = false;
+
+    @Builder
+    // 构建自定义菜单及触发功能接口
+    MenuBuilder() {
+    // 以垂直列表形式显示的菜单。
+        Menu() {
+          // 展示菜单Menu中具体的item菜单项。
+          MenuItem({
+            content: 'copyLink',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.copyLinkToTextMenu();
+            console.info("isOverTextFragment=" + this.param?.isOverTextFragment());
+            console.info("getTextFragmentGeneratedLink=" + this.param?.getTextFragmentGeneratedLink());
+            this.showMenu = false;
+          })
+
+          MenuItem({
+            content: 'removeLink',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+              this.result?.removeFragments();
+              console.info("shouldOfferLinkToText=" + this.param?.shouldOfferLinkToText());
+              this.showMenu = false;
+            })
+      }
+      .width(150)
+      .height(450)
+    }
+
+    build() {
+      Column() {
+        Web({ src: 'https://www.baidu.com', controller: this.controller })
+        // 触发自定义弹窗
+          .onContextMenuShow((event) => {
+            if (event) {
+              this.result = event.result
+              this.param = event.param;
+            }
+            this.showMenu = true;
+            this.offsetX = 0;
+            this.offsetY = Math.max(px2vp(event?.param.y() ?? 0) - 0, 0);
+            return true;
+          })
+          .onContextMenuUpdate((menuItemId, options) => {
+            if (menuItemId === WebContextMenuItemId.MENU_COPY_LINK) {
+              console.info("onContextMenuUpdate enable = " + options?.enable);
+            }
+          })
+          .bindPopup(this.showMenu,
+            {
+              builder: this.MenuBuilder(),
+              enableArrow: false,
+              placement: Placement.LeftTop,
+              mask: false,
+              onStateChange: (e) => {
+                if (!e.isVisible) {
+                  this.showMenu = false;
+                  this.result!.closeContextMenu();
+                }
+              }
+            })
+          .height("70%")
+      }
+    }
+  }
+  ```
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Entry, Text, Component, Button, ClickEvent, Row, TextArea, Column } from '@ohos.arkui.component'
+  import { CustomPopupOptions, MenuItemOptions, PopupStateChangeParam, Placement, $rawfile } from '@ohos.arkui.component'
+  import { Builder, Menu, MenuItem, OnContextMenuShowEvent, WebContextMenuResult, WebContextMenuParam, WebContextMenuItemId, WebContextMenuOptions } from '@ohos.arkui.component'
+  import { State } from '@ohos.arkui.stateManagement'
+  import { webview } from '@kit.ArkWeb';
+  import { UIContext } from '@ohos.arkui.UIContext';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+    controller_2: webview.WebviewController = new webview.WebviewController(undefined);
+    private result: WebContextMenuResult | undefined = undefined;
+    private param: WebContextMenuParam | undefined = undefined;
+    @State offsetX: number = 0;
+    @State offsetY: number = 0;
+    @State showMenu: Boolean = false;
+    @State url:string = '';
+    @State url_2:string = '';
+    uiContext: UIContext = this.getUIContext();
+
+    @Builder
+    // 构建自定义菜单及触发功能接口
+    MenuBuilder() {
+      // 以垂直列表形式显示的菜单。
+      Menu() {
+        // 展示菜单Menu中具体的item菜单项。
+        MenuItem({
+          content: '粘贴',
+        })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.paste();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: 'copyLink',
+        })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.copyLinkToTextMenu();
+            console.info("isOverTextFragment=" + this.param?.isOverTextFragment());
+            console.info("getTextFragmentGeneratedLink=" + this.param?.getTextFragmentGeneratedLink());
+            this.showMenu = false;
+          })
+
+        MenuItem({
+          content: 'removeLink',
+        })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.removeFragments();
+            console.info("shouldOfferLinkToText=" + this.param?.shouldOfferLinkToText());
+            this.showMenu = false;
+          })
+      }
+      .width(150)
+      .height(450)
+    }
+
+    build() {
+      Column() {
+        TextArea().onChange((val:string)=>{
+          this.url = val;
+          console.info("onChange url = " + this.url);
+        }).height("5%")
+        Web({ src: 'https://www.baidu.com', controller: this.controller })
+        // 触发自定义弹窗
+          .onContextMenuShow((event) => {
+            if (event) {
+              this.result = event.result
+              this.param = event.param;
+            }
+            this.showMenu = true;
+            this.offsetX = 0;
+            this.offsetY = Math.max(Number(this.uiContext!.px2vp(event?.param.y() ?? 0) - 0.0), Number(0.0));
+            return true;
+          })
+          .onContextMenuUpdate((menuItemId:WebContextMenuItemId, options?:WebContextMenuOptions) => {
+            if (menuItemId === WebContextMenuItemId.MENU_COPY_LINK) {
+              console.info("onContextMenuUpdate enable = " + options?.enable);
+            }
+          })
+          .bindPopup(this.showMenu,
+            {
+              builder: this.MenuBuilder,
+              enableArrow: false,
+              placement: Placement.LeftTop,
+              offset: { x: this.offsetX, y: this.offsetY },
+              mask: false,
+              onStateChange: (e: PopupStateChangeParam) => {
+                if (!e.isVisible) {
+                  this.showMenu = false;
+                  this.result!.closeContextMenu();
+                }
+              }
+            } as CustomPopupOptions)
+          .height("50%")
+        Button('在下面的web loadUrl')
+          .onClick(() => {
+            try {
+              // 点击按钮时，通过loadUrl，跳转
+              this.url_2 = this.url;
+              this.controller_2.loadUrl(this.url_2);
+            } catch (error) {
+              console.error(`ErrorCode: ${error}`);
+            }
+          }).height("5%")
+        Web({ src: 'https://www.baidu.com', controller: this.controller_2 })
+          .height("40%")
       }
     }
   }
@@ -8478,7 +8791,9 @@ ArkTS-Sta示例：
   }
   ```
 
-> **示例说明：** 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
+> **示例说明：**
+>
+> 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
 
 ## onSslErrorReceive<sup>(deprecated)</sup>
 
@@ -8799,6 +9114,53 @@ ArkTS-Sta示例：
             detectionTiming:[2,4,6,8],
             detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN],
             contentfulNodesCountThreshold:17
+          })
+      }
+    }
+  }
+  ```
+
+## onMonitoredBlankScreen
+
+onMonitoredBlankScreen(callback: OnMonitorBlankScreenCallback)
+
+Web组件检测到白屏时会触发回调。
+
+> **说明：**
+>
+> - 需配合[enableBlankScreenMonitor](./arkts-basic-components-web-attributes.md#enableblankscreenmonitor)使用。未开启白屏检测时，不会触发本回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnMonitorBlankScreenCallback](./arkts-basic-components-web-t.md#onmonitorblankscreencallback) | 是 | 检测到白屏时触发。事件对象包含页面URL、白屏根因、归因详情等诊断信息。 |
+
+**示例：**
+
+  ```ts
+  // onMonitoredBlankScreen.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableBlankScreenMonitor(true)
+          .onMonitoredBlankScreen((event: MonitoredBlankScreenEventInfo)=>{
+            console.info(`Monitored blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.reason}.`);
+            console.info(`The extra message is ${event.extraMsg}.`);
           })
       }
     }

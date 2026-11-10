@@ -1787,7 +1787,7 @@ hdc shell "hidumper -s WindowManagerService -a '-w 5 -inspector'"
 | text | 组件的文本内容，字符串；启用无障碍分组时为按[accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup)规则拼接的合并文本，多项文本以", "分隔。 |
 | accessibilityText | 无障碍文本，对应[accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext)属性，未设置时为空。 |
 | accessibilityGroup | 是否启用无障碍分组，对应[accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup)属性。0表示未启用（默认），1表示启用。 |
-| accessibilityOptions | 无障碍分组配置选项，仅accessibilityGroup为1时输出，对应[AccessibilityOptions](../reference/apis-arkui/arkui-ts/ts-types.md#accessibilityoptions14对象说明)。其中accessibilityTextPreferred对应accessibilityPreferred，当accessibilityPreferred为false时为0，否则为1；stateControllerByType、actionControllerByType为角色字符串（如button），分别对应stateControllerRoleType、actionControllerRoleType；stateControllerByInspector、actionControllerByInspector为组件id字符串，分别对应stateControllerId、actionControllerId；未设置时为空。<br>**说明**：从API版本26.2.0开始，输出此字段。 |
+| accessibilityOptions | 无障碍分组配置选项，仅accessibilityGroup为1时输出，对应[AccessibilityOptions](../reference/apis-arkui/arkui-ts/ts-types.md#accessibilityoptions14对象说明)。其中accessibilityTextPreferred对应accessibilityPreferred，当accessibilityPreferred为false时为0，否则为1；stateControllerByType、actionControllerByType为角色字符串（如button），分别对应stateControllerRoleType、actionControllerRoleType；stateControllerByInspector、actionControllerByInspector为组件id字符串，分别对应stateControllerId、actionControllerId；未设置时为空。<br>**说明**：从API版本26.0.1开始，输出此字段。 |
 | accessibilityLevel | 无障碍重要性，对应[accessibilityLevel](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)属性。取值为auto（默认）、yes、no、no-hide-descendants。 |
 | accessibilityCustomRole | 无障碍组件类型（如button），为[accessibilityRole](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityrole18)属性设置的类型，未设置时为空。<br>**说明**：从API version 18开始，输出此字段。 |
 | top/left | 组件左上角的坐标位置，单位vp，由组件相对窗口的位置叠加窗口在屏幕上的偏移计算得到。 |
@@ -1801,8 +1801,8 @@ hdc shell "hidumper -s WindowManagerService -a '-w 5 -inspector'"
 | checked | 组件是否被选中。1表示选中，0表示未选中，参见[accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13)属性。 |
 | hint | 组件的提示文本，如输入框的placeholder文本，无为空。 |
 | childTree | 子无障碍树ID，Web、XComponent、卡片等内部使用独立无障碍树的组件为其树ID，无子树时为-1。 |
-| accessibilitySelected | 组件是否被单选选中。1表示选中，0表示未选中，对应[accessibilitySelected](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityselected13)属性。<br>**说明**：从API版本26.2.0开始，输出此字段。 |
-| accessibilityRole | 组件的无障碍角色，通过C API属性[NODE_ACCESSIBILITY_ROLE](../reference/apis-arkui/capi-native-node-h-nodeattributetype-accessibility.md#node_accessibility_role)设置，未设置时为空。<br>**说明**：从API版本26.2.0开始，输出此字段。 |
+| accessibilitySelected | 组件是否被单选选中。1表示选中，0表示未选中，对应[accessibilitySelected](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityselected13)属性。<br>**说明**：从API版本26.0.1开始，输出此字段。 |
+| accessibilityRole | 组件的无障碍角色，通过C API属性[NODE_ACCESSIBILITY_ROLE](../reference/apis-arkui/capi-native-node-h-nodeattributetype-accessibility.md#node_accessibility_role)设置，未设置时为空。<br>**说明**：从API版本26.0.1开始，输出此字段。 |
 
 ### 获取期望应用路由栈信息
 
