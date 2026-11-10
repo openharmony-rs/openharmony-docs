@@ -4901,6 +4901,11 @@
 						"end_line":82,
 						"name":"hiretrieval_sample_code",
 						"start_line":23
+					},
+					{
+						"end_line":21,
+						"name":"hiretrieval_import_sample_code",
+						"start_line":18
 					}
 				]
 			}
