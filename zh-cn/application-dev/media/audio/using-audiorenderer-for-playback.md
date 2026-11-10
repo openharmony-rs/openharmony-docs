@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导ArkTS开发者使用AudioRenderer播放PCM音频，包括创建渲染器、写入数据、状态监听等播放全流程。"
+keywords: [AudioRenderer, 音频播放, 音频渲染, 音频数据写入, StreamUsage, 音频采样率]
+doctype: guide
+status: active
+---
 # 使用AudioRenderer开发音频播放功能(ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

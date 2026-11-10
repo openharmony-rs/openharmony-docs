@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "说明StreamUsage播放流类型对音量、音频焦点、设备选择及播放通路的影响，指导开发者按业务场景选择合适的播放流类型。"
+keywords: [StreamUsage, 播放流类型, 音量管理, 焦点策略, 设备选择, 播放通路, 播放场景]
+doctype: guide
+status: active
+---
 # 选择合适的播放流类型
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
