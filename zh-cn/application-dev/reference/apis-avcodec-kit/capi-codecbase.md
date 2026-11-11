@@ -72,7 +72,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_AVCODEC_MIMETYPE_VIDEO_H263 | H.263视频编解码器的MIME类型。                     |
 | OH_AVCODEC_MIMETYPE_VIDEO_VC1 | VC-1视频编解码器的MIME类型。<br>从API version 22开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | MSVIDEO1（Microsoft Video 1）视频编解码器的MIME类型。<br>从API version 22开始支持。 |
-| OH_AVCODEC_MIMETYPE_VIDEO_WMV1 | WMV1视频编解码器的MIME类型。<br>**起始版本：** 26.2.0 |
+| OH_AVCODEC_MIMETYPE_VIDEO_WMV1 | WMV1视频编解码器的MIME类型。<br>**起始版本：** 26.1.0 |
 | OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | WMV3视频编解码器的MIME类型。<br>从API version 22开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | MJPEG（Motion JPEG）视频编解码器的MIME类型。<br>从API version 22开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG4 | MPEG4视频编码的MIME类型，仅用于封装MPEG4视频码流使用。<br>**起始版本：** 10<br>**废弃版本：** 11<br>**替代接口：** OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2 |
