@@ -36,7 +36,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_RUNTIME_ERROR                     | 19020002 | 运行时错误。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23            |
 | ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | 参数检查失败。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 23              |
 | ERR_CRYPTO_OPERATION                  | 19030001 | 调用三方算法库API出错。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23      |
-| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | 证书签名验证错误。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23          |
+| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | 证书验签错误。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23          |
 | ERR_CERT_NOT_YET_VALID                | 19030003 | 证书尚未生效。  <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。    <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23          |
 | ERR_CERT_HAS_EXPIRED                  | 19030004 | 证书过期。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23                  |
 | ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | 无法获取证书的颁发者。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23       |
@@ -52,11 +52,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_CRL_NOT_FOUND                | 19030015 | 无法获取证书吊销列表。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 | ERR_CRL_NOT_YET_VALID            | 19030016 | 证书吊销列表尚未生效。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 | ERR_CRL_HAS_EXPIRED              | 19030017 | 证书吊销列表已过期。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_CRL_SIGNATURE_FAILURE        | 19030018 | 证书吊销列表签名验证失败。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_CRL_SIGNATURE_FAILURE        | 19030018 | 证书吊销列表验签失败。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 | ERR_CRL_ISSUER_NOT_FOUND         | 19030019 | 无法获取证书吊销列表颁发者。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 | ERR_OCSP_RESPONSE_NOT_FOUND      | 19030020 | 无法获取在线证书状态协议（OCSP）响应。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 | ERR_OCSP_RESPONSE_INVALID        | 19030021 | OCSP响应无效。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
-| ERR_OCSP_SIGNATURE_FAILURE       | 19030022 | OCSP签名验证失败。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| ERR_OCSP_SIGNATURE_FAILURE       | 19030022 | OCSP验签失败。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 | ERR_OCSP_CERT_STATUS_UNKNOWN     | 19030023 | OCSP证书状态未知。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 | ERR_NETWORK_TIMEOUT              | 19030024 | 网络连接超时。 <br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 
@@ -567,7 +567,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 | hostnames | Array\<string> | 否   | 是   | 主机名列表。验证证书的主体备用名（SAN）或通用名（CN）是否包含指定的主机名。最大数量：100，每个主机名最大长度：128。<br>用于HTTPS等场景。<br>只要匹配其中一个主机名即校验成功。 |
 | emailAddresses | Array\<string> | 否   | 是   | 邮箱地址列表。验证证书是否包含指定的邮箱地址。最大数量：1，邮箱地址最大长度：128。 |
 | keyUsage | Array\<[KeyUsageType](#keyusagetype12)> | 否   | 是   | 密钥用途列表。验证证书的密钥用途扩展是否包含指定的用途。最大数量：9。<br>证书必须包含所有指定的密钥用途才校验成功。 |
-| userId | Uint8Array | 否   | 是   | 用户ID。用于验证国密SM2证书时设置签名验证所需的用户标识符。最大长度：128。<br>国密证书场景最常用的值为`[0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38]`（对应ASCII字符串为"1234567812345678"，16字节）。<br>设置userId后不支持证书吊销检查。 |
+| userId | Uint8Array | 否   | 是   | 用户ID。用于验证国密SM2证书时设置验签所需的用户标识符。最大长度：128。<br>国密证书场景最常用的值为`[0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38]`（对应ASCII字符串为"1234567812345678"，16字节）。<br>设置userId后不支持证书吊销检查。 |
 | revokedParams | [X509CertRevokedParams](#x509certrevokedparams) | 否   | 是   | 证书吊销检查参数。用于检查证书是否被吊销。包含CRL列表、OCSP响应数据、是否允许在线检查等配置。 |
 
 ## CertValidationResult
@@ -1449,8 +1449,9 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
     }).catch((error: BusinessError) => {
       console.error(`verify failed, errCode: ${error.code}, errMsg: ${error.message}`);
     });
-  } catch (error) {
-    console.error(`getPublicKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getPublicKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }).catch((error: BusinessError) => {
   console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -13003,7 +13004,7 @@ validateCert(cert: X509Cert, params: CertValidationParams): Promise&lt;CertValid
 2. 颁发者搜索顺序：系统首先从信任锚源中搜索颁发者。如果无法找到颁发者，系统将在不受信任的证书列表（untrustedCerts）中搜索。在线下载的中间CA证书即为不受信任的证书。
 3. 信任锚锁定：一旦在信任锚源中找到颁发者，后续的查找过程就不会回溯到不受信任的证书，即后续的证书必须来自信任锚源。
 4. 构建完成条件：如果partialChain为false（默认值），则仅当找到根证书（来自签名证书）时，构建才算完成。如果partialChain为true，则当在信任锚源中首次找到颁发者时，构建即完成。
-5. 后续验证：证书链构建完成后，执行其他验证操作，如证书签名验证和证书吊销检查。
+5. 后续验证：证书链构建完成后，执行其他验证操作，如证书验签和证书吊销检查。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -17122,6 +17123,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function doTestParsePkcs12() {
   try {
@@ -17285,12 +17287,13 @@ function doTestParsePkcs12() {
       needsOtherCerts: false
     };
     let p12: cert.Pkcs12Data = cert.parsePkcs12(p12Cert, conf);
-    console.info('parsePKCS12 result: success.');
+    console.info('parsePkcs12 result: success.');
     if (p12.privateKey) {
       console.info('privateKey:' + p12.privateKey.toString());
     }
   } catch (error) {
-    console.error(`parsePKCS12 failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`parsePkcs12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -17462,13 +17465,13 @@ function doTestParsePkcs12() {
       needsOtherCerts: false
     };
     let p12: cert.Pkcs12Data = cert.parsePkcs12(p12_cert, conf);
-    console.info("parsePKCS12 result: success.");
+    console.info("parsePkcs12 result: success.");
     if (p12 != undefined && p12.privateKey != undefined) {
       console.info("privateKey:" + p12?.privateKey?.toString());
     }
   } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error(`parsePKCS12 failed, ${e.code}, ${e.message}`);
+    console.error(`parsePkcs12 failed, ${e.code}, ${e.message}`);
   }
 }
 ```
@@ -17518,6 +17521,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function doTestParsePkcs12() {
   try {
@@ -17674,7 +17678,7 @@ async function doTestParsePkcs12() {
         0x7e, 0x02, 0x02, 0x08, 0x00]);
 
     let p12: cert.Pkcs12Data = await cert.parsePkcs12(p12Cert, '123456');
-    console.info('parsePKCS12 result: success.');
+    console.info('parsePkcs12 result: success.');
     if (p12.privateKey) {
       console.info('privateKey:' + p12.privateKey.toString());
     }
@@ -17690,7 +17694,8 @@ async function doTestParsePkcs12() {
       console.info('otherCerts is empty or not an array.');
     }
   } catch (err) {
-    console.error(`parsePKCS12 failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`parsePkcs12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -17856,7 +17861,7 @@ async function doTestParsePkcs12() {
         0x7e, 0x02, 0x02, 0x08, 0x00]);
 
     let p12: cert.Pkcs12Data = await cert.parsePkcs12(p12_cert, "123456");
-    console.info("parsePKCS12 result: success.");
+    console.info("parsePkcs12 result: success.");
     if (p12.privateKey) {
       console.info("privateKey:" + p12?.privateKey?.toString());
     }
@@ -17873,7 +17878,7 @@ async function doTestParsePkcs12() {
     }
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('parsePKCS12 failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error('parsePkcs12 failed, errCode: ' + e.code + ', errMsg: ' + e.message);
   }
 }
 ```
@@ -17922,6 +17927,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9kBV6Cqd3vSi5\n' +
@@ -18017,7 +18023,8 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -18057,7 +18064,8 @@ async function doTestCreatePkcs12() {
     let p12 = await cert.createPkcs12(data, config);
     console.info('createPkcs12 result: success, p12 = ' + p12);
   } catch (err) {
-    console.error(`createPkcs12 failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createPkcs12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -18255,6 +18263,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9kBV6Cqd3vSi5\n' +
@@ -18350,7 +18359,8 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -18390,7 +18400,8 @@ async function doTestCreatePkcs12Sync() {
     let p12 = cert.createPkcs12Sync(data, config);
     console.info('createPkcs12Sync result: success, p12 = ' + p12);
   } catch (err) {
-    console.error(`createPkcs12Sync failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createPkcs12Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -18702,8 +18713,9 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${err.code}, errMsg: ${err.message}`);
   });
-} catch (error) {
-  console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${error.code}, errMsg: ${error.message}`);
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 
 ```
@@ -21359,6 +21371,7 @@ setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): voi
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetRecipientEncryptionAlgorithm() {
   try {
@@ -21369,7 +21382,8 @@ function testSetRecipientEncryptionAlgorithm() {
     cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
     console.info(`setRecipientEncryptionAlgorithm result: success.`);
   } catch (err) {
-    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -21417,6 +21431,7 @@ addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
   'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
@@ -21491,7 +21506,8 @@ async function testAddRecipientInfo() {
     await cmsGenerator.addRecipientInfo(recipientInfo);
     console.info(`addRecipientInfo result: success.`);
   } catch (err) {
-    console.error(`testAddRecipientInfo failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testAddRecipientInfo failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -21998,6 +22014,7 @@ getEncryptedContentData(): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
   'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
@@ -22086,7 +22103,8 @@ async function testGetEncryptedContentData() {
     let data = await cmsGenerator.getEncryptedContentData();
     console.info(`getEncryptedContentData result: success, data = %s`, data);
   } catch (err) {
-    console.error(`testGetEncryptedContentData failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetEncryptedContentData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -22125,6 +22143,7 @@ createCmsParser(): CmsParser
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -22227,8 +22246,9 @@ async function testCmsVerifyTest() {
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -22292,6 +22312,7 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -22396,8 +22417,9 @@ async function testCmsVerifyTest() {
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -22436,6 +22458,7 @@ getContentType(): CmsContentType
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -22542,8 +22565,9 @@ async function testCmsVerifyTest() {
     console.info('contentType = ' + contentType);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -22592,6 +22616,7 @@ verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -22695,8 +22720,9 @@ async function testCmsVerifyTest() {
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -22735,6 +22761,7 @@ getContentData(): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -22840,8 +22867,9 @@ async function testCmsVerifyTest() {
     console.info('verifySignedData result: success.');
     let contentData = await verify.getContentData();
     console.info('getContentData result: success, contentData = ' + contentData);
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -22887,6 +22915,7 @@ getCerts(type: CmsCertType): Promise<Array\<X509Cert>>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -22994,8 +23023,9 @@ async function testCmsVerifyTest() {
     let signerCerts: cert.X509Cert[] = await verify.getCerts(cert.CmsCertType.SIGNER_CERTS);
     console.info('getCerts result: success, signerCerts.length = ' + signerCerts.length);
     await verify.getContentData();
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -23041,6 +23071,7 @@ decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUBKEY: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -23115,8 +23146,9 @@ async function testCmsDecryptTest() {
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
     console.info('[XTS] Decrypt result: success, decPlainText = ' + decPlainText);
     console.info('decryptEnvelopedData result: success.');
-  } catch (error) {
-    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`decryptEnvelopedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```

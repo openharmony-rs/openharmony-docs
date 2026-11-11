@@ -12,7 +12,6 @@
 
 **起始版本：** 26.0.0
 
-
 ## 导入模块
 
 ```typescript
@@ -29,6 +28,8 @@ type ConnectionState = nearlinkConstant.ConnectionState
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -48,6 +49,8 @@ createPort(uuid: string): void
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -101,6 +104,8 @@ destroyPort(uuid: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -151,6 +156,8 @@ connect(params: ConnectionParams): Promise&lt;void&gt;
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -215,6 +222,8 @@ disconnect(params: ConnectionParams): Promise&lt;void&gt;
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -282,6 +291,8 @@ onConnectionStateChanged(callback: Callback&lt;ConnectionResult&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：** 
@@ -327,6 +338,8 @@ offConnectionStateChanged(callback?: Callback&lt;ConnectionResult&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：** 
@@ -368,6 +381,8 @@ getConnectionState(params: ConnectionStateParams): ConnectionState
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -428,6 +443,8 @@ writeData(params: DataParams): Promise&lt;void&gt;
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -502,6 +519,8 @@ onReadData(callback: Callback&lt;DataParams&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：** 
@@ -547,6 +566,8 @@ offReadData(callback?: Callback&lt;DataParams&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：** 
@@ -585,6 +606,8 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -592,6 +615,7 @@ try {
 | address | string | 否 | 否 | 远端设备的星闪地址。地址格式参考：11:22:33:AA:BB:FF。 |
 | uuid | string | 否 | 否 | 星闪服务UUID，长度必须为36个字符，由32个十六进制数字和4个连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-000000001234，表示一个128位标识符。 不允许使用星闪标准UUID。 |
 | transferMode | [TransferMode](#transfermode) | 否 | 是 | 表示和远端设备的数据传输模式。默认值是BASIC。 |
+| frameType | [nearlinkConstant.FrameType](js-apis-nearlink-constant.md#frametype) | 否 | 是 | 无线帧类型。默认值为FRAME_TYPE_1。<br>**起始版本：** 26.1.0 |
 
 
 ## DataParams
@@ -601,6 +625,8 @@ try {
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -618,6 +644,8 @@ try {
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -637,6 +665,8 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -652,6 +682,8 @@ try {
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 

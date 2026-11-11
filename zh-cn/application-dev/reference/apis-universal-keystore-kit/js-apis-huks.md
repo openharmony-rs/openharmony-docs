@@ -748,7 +748,11 @@ attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 > 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认）。如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。
 <!--RP6End-->
 
-**需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
+**需要权限：**
+
+- API版本26.1.0+：ohos.permission.ATTEST_KEY或ohos.permission.ENTERPRISE_ATTEST_KEY
+
+- API版本11-26.0.1：ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -881,7 +885,11 @@ attestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 
 获取密钥证书。使用Promise异步回调。
 
-**需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
+**需要权限：**
+
+- API版本26.1.0+：ohos.permission.ATTEST_KEY或ohos.permission.ENTERPRISE_ATTEST_KEY
+
+- API版本11-26.0.1：ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 

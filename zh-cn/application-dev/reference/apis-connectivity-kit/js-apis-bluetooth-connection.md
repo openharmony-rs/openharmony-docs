@@ -155,7 +155,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // callback
 try {
     connection.pairDevice('11:22:33:44:55:66', (err: BusinessError) => {
-        console.info('pairDevice, device name err:' + JSON.stringify(err));
+        console.error('pairDevice, device name err:' + JSON.stringify(err));
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -396,8 +396,11 @@ getRemoteDeviceClass(deviceId: string): DeviceClass
 
 获取对端蓝牙设备的类别。
 
-- 从API version 18开始，此接口不再校验ohos.permission.ACCESS_BLUETOOTH权限。
-- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备类别信息。
+从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备类别信息。
+ 
+**需要权限**：
+- API版本10-17：ohos.permission.ACCESS_BLUETOOTH
+- API版本18+：N/A
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

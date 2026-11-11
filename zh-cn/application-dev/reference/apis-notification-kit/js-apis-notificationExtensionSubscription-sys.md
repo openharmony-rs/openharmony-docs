@@ -396,7 +396,7 @@ ArkTS-Dyn: subscribeNotification(priorityStrategy?: number): Promise\<void\>
 
 ArkTS-Sta: subscribeNotification(priorityStrategy?: int): Promise\<void\>
 
-根据[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)过滤条件订阅通知。使用Promise异步回调。
+根据优先通知过滤条件订阅通知。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

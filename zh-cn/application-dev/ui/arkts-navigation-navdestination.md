@@ -25,7 +25,7 @@ NavDestination提供了两种类型。
   <!-- @[PageDisplayType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayType.ets) -->
   
   ``` TypeScript
-  // Dialog NavDestination
+  // NavDestination弹窗类型
   @Entry
   @Component
   struct PageDisplayType {

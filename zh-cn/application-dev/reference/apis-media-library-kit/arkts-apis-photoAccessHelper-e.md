@@ -157,6 +157,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | ----- |  ---- |  ---- |
 | IMAGE_RESOURCE |  1 |  表示图片资源。 |
 | VIDEO_RESOURCE |  2 |  表示视频资源。 |
+| PRIVATE_MOVING_PHOTO_RESOURCE |  4 |  表示私有动态照片资源。**起始版本：** 26.1.0 |
 
 ## ImageFileType<sup>13+</sup>
 

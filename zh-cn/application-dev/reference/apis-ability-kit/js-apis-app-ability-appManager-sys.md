@@ -2052,7 +2052,7 @@ ArkTS-Sta: preloadApplication(bundleName: string, userId: int, mode: PreloadMode
 | bundleName | string | 是 | 预加载的应用包名。 |
 | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 预加载的用户Id。 |
 | mode | [PreloadMode](#appmanagerpreloadmode12) | 是 | 预加载模式。 |
-| appIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 预加载应用分身的appIndex，该参数只能传0，当前不支持预加载分身应用。 |
+| appIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 预加载应用分身的appIndex。 |
 
 **返回值：**
 

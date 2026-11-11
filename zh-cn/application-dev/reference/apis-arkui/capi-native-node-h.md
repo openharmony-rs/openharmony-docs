@@ -181,6 +181,8 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy policy)](#oh_arkui_nativemodule_setchildmountpolicy) | - | 设置目标节点的子节点挂载策略。<br>**起始版本：** 26.0.0 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy\* policy)](#oh_arkui_nativemodule_getchildmountpolicy) | - | 获取目标节点当前的子节点挂载策略。目标节点的默认子节点挂载策略为[OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE](./capi-native-type-h.md#oh_arkui_nodemountpolicy)。 <br>**起始版本：** 26.0.0 |
 | [ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context, bool enable)](#oh_arkui_nodeutils_setuidvsyncswitch) | - | 设置UI Dvsync开关。开启后系统会更及时地响应Vsync请求，更频繁执行渲染任务。通常在自渲染框架中动效开始时使能，结束后关闭，以确保动画效果更加流畅，同时避免频繁的Vsync影响其他业务。在非UI线程上调用此函数将导致应用退出。 <br>**起始版本：** 26.0.1  |
+| [int32_t OH_ArkUI_NativeModule_RegisterInspectorTreeGetter(ArkUI_NodeHandle node, void\* userData, void (\*getInspectorTree)(void\* userData, char\*\* inspectorTree))](#oh_arkui_nativemodule_registerinspectortreegetter) | - | 在指定节点上注册InspectorTreeGetter回调。该接口用于第三方框架（如Flutter、CMP）向ArkUI Inspector上报组件树信息。当Inspector遍历组件树并遇到已注册回调的节点时，会调用getInspectorTree回调获取外部组件子树，并将其合并到完整的Inspector树输出中。同一节点可以注册多个InspectorTreeGetter回调。<br>**起始版本：** 26.1.0 |
+| [int32_t OH_ArkUI_NativeModule_UnregisterInspectorTreeGetter(ArkUI_NodeHandle node, void (\*getInspectorTree)(void\* userData, char\*\* inspectorTree))](#oh_arkui_nativemodule_unregisterinspectortreegetter) | - | 注销指定节点上已注册的InspectorTreeGetter回调。注销后，Inspector遍历该节点时将不再调用该回调。本函数不会释放此前注册时传入的userData，其内存由调用方负责释放。<br>**起始版本：** 26.1.0 |
 
 ### 宏定义
 
@@ -3791,5 +3793,63 @@ ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果。  <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)成功。  <br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode)CAPI初始化错误。  <br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)函数参数异常。 |
+
+### OH_ArkUI_NativeModule_RegisterInspectorTreeGetter()
+
+```c
+int32_t OH_ArkUI_NativeModule_RegisterInspectorTreeGetter(ArkUI_NodeHandle node, void* userData, void (*getInspectorTree)(void* userData, char** inspectorTree))
+```
+**描述：**
+
+在指定节点上注册InspectorTreeGetter回调。该接口用于第三方框架（如Flutter、CMP）向ArkUI Inspector上报组件树信息。当Inspector遍历组件树并遇到已注册回调的节点时，会调用getInspectorTree回调获取外部组件子树，并将其合并到完整的Inspector树输出中。同一节点可以注册多个InspectorTreeGetter回调。
+
+> **说明：**
+>
+> 本接口会影响以下已有接口的返回值：注册回调后，回调上报的外部组件子树将合并到这些接口返回的组件树中，且不受"isWebEnable"过滤字段影响。
+> - [getInspectorTree](arkui-ts/ts-universal-attributes-component-id.md#getinspectortree9)：返回的组件树包含外部组件子树，不包含Web组件子树。
+> - [getFilteredInspectorTree](arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12)、[getFilteredInspectorTreeById](arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12)：返回的组件树包含外部组件子树；仅当filters参数中包含"isWebEnable"过滤字段时，返回的组件树才包含Web组件子树。
+> - DevEco Studio的Inspector树：包含外部组件子树，且默认包含Web组件子树。
+>
+> 其中，Web组件子树由ArkUI内置机制上报，不支持通过本接口注册。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | [入参] 第三方框架的宿主节点。仅支持[ARKUI_NODE_XCOMPONENT](#arkui_nodetype)、[ARKUI_NODE_CUSTOM](#arkui_nodetype)和[ARKUI_NODE_XCOMPONENT_TEXTURE](#arkui_nodetype)类型的节点。 |
+| void* userData |  [入参] 自定义数据指针。该值会在getInspectorTree回调被调用时作为userData参数回传。 |
+| void (\*getInspectorTree) (void* userData, char** inspectorTree) |  [入参] Inspector获取第三方框架组件子树的回调函数。inspectorTree输出应为与ArkUI Inspector输出格式一致的JSON字符串。该字符串的内存由回调实现分配，调用方需使用free()释放。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化错误。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常，或节点类型不是[ARKUI_NODE_XCOMPONENT](#arkui_nodetype)、[ARKUI_NODE_CUSTOM](#arkui_nodetype)或[ARKUI_NODE_XCOMPONENT_TEXTURE](#arkui_nodetype)，或getInspectorTree为空。 |
+
+### OH_ArkUI_NativeModule_UnregisterInspectorTreeGetter()
+
+```c
+int32_t OH_ArkUI_NativeModule_UnregisterInspectorTreeGetter(ArkUI_NodeHandle node, void (*getInspectorTree)(void* userData, char** inspectorTree))
+```
+**描述：**
+
+注销指定节点上已注册的InspectorTreeGetter回调。注销后，Inspector遍历该节点时将不再调用该回调。本函数不会释放此前注册时传入的userData，其内存由调用方负责释放。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node |  [入参] 目标节点。仅支持[ARKUI_NODE_XCOMPONENT](#arkui_nodetype)、[ARKUI_NODE_CUSTOM](#arkui_nodetype)和[ARKUI_NODE_XCOMPONENT_TEXTURE](#arkui_nodetype)类型的节点。 |
+| void (\*getInspectorTree) (void* userData, char** inspectorTree) |  [入参] 待注销的回调函数指针。必须与注册时通过[OH_ArkUI_NativeModule_RegisterInspectorTreeGetter](#oh_arkui_nativemodule_registerinspectortreegetter)传入的函数指针一致。若该指针与节点上已注册的回调不匹配，本操作不生效。若该指针为空，则注销该节点上已注册的全部回调。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化错误。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常，或节点类型不是[ARKUI_NODE_XCOMPONENT](#arkui_nodetype)、[ARKUI_NODE_CUSTOM](#arkui_nodetype)或[ARKUI_NODE_XCOMPONENT_TEXTURE](#arkui_nodetype)，或getInspectorTree未注册。 |
 
 ## 更多

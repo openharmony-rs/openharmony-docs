@@ -490,8 +490,7 @@ let link = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDat
 unifiedData.addRecord(link);
 
 let records = unifiedData.getRecords();
-for (let i = 0; i < records.length; i++) {
-  let record = records[i];
+records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
   let types = record.getTypes();
   if (types.includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
     let plainText = record.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as unifiedDataChannel.PlainText;
@@ -500,7 +499,7 @@ for (let i = 0; i < records.length; i++) {
     let hyperlink = record.getEntry(uniformTypeDescriptor.UniformDataType.HYPERLINK) as unifiedDataChannel.Hyperlink;
     console.info(`linkUrl: ${hyperlink.url}`);
   }
-}
+});
 ```
 
 ArkTS-Sta示例：

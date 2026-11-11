@@ -4256,7 +4256,7 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | caller is not a system app.                 |
+| 202      | caller is not system app.                 |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
 | 16501000 | An internal functional error occurred.                       |
@@ -5994,7 +5994,7 @@ try {
 
 onGetVisibleFormRect(callback: formInfo.GetFormRectInfoCallback): void
 
-订阅请求可见卡片位置和尺寸事件。使用callback异步回调。
+订阅请求可见卡片位置和尺寸事件。
 
 **ArkTS-Dyn起始版本：** 26.0.1
 
@@ -6058,7 +6058,7 @@ try {
 
 offGetVisibleFormRect(callback?: formInfo.GetFormRectInfoCallback): void
 
-取消订阅请求可见卡片位置和尺寸事件。使用callback异步回调。
+取消订阅请求可见卡片位置和尺寸事件。
 
 **ArkTS-Dyn起始版本：** 26.0.1
 

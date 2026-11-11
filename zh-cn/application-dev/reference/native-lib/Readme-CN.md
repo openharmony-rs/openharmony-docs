@@ -20,6 +20,7 @@
 - [musl 26.1.0 新增接口](musl-new-api-26-1-0.md)
 - [group_ipc.h](capi-group-ipc-h.md)
 - [qsort](capi-qsort-h.md)
+- [pthread key 迁移到 C++ thread_local 指南](pthread-key-to-thread-local.md)
 - Vulkan<!--vulkan-guide-->
   - Vulkan开发指导<!--vulkan-guides-->
     - [Vulkan开发概述](vulkan-overview.md)

@@ -3890,3 +3890,73 @@ let strategy: audio.AudioSessionStrategy = {
 let behavior = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioRenderer.setIndependentAudioSessionStrategy(strategy, behavior);
 ```
+
+## standby
+
+standby(on: boolean): Promise\<void>
+
+进入或退出音频standby状态。
+
+standby状态主要用于音频播放过程中短暂无数据的情况，如流媒体播放等待网络下载。
+
+进入standby状态后，音频通路保持不变，仅向应用请求数据的循环线程暂停，也不接收主动写入数据，已写入系统的数据会继续播放。
+
+只有在播放流状态为[AudioState](arkts-apis-audio-e.md#audiostate8).STATE_RUNNING时可以调用此接口进入standby状态。standby状态下才能再次调用接口退出。
+
+standby状态下也可以直接调用[pause](#pause8)、[stop](#stop8)、[release](#release8)停止播放，但不可调用[start](#start8)。
+
+使用Promise异步回调。
+
+> **注意：**
+>
+> 此接口并不会改变通过state获取的状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                      |
+| ------ | ------- | ---- | --------------------------------------------------------- |
+| on     | boolean | 是   | 进入或退出standby状态，true表示进入，false表示退出。         |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------ |
+| 6800103  | The operation is not allowed in the current state. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 进入standby状态。
+audioRenderer.standby(true).then(() => {
+  console.info('Succeeded in entering standby.');
+  // 数据回调已暂停，已写入的缓存继续播放。
+}).catch((err: BusinessError) => {
+  console.error(`Failed to enter standby. Code: ${err.code}, message: ${err.message}`);
+});
+
+// 退出standby状态。
+audioRenderer.standby(false).then(() => {
+  console.info('Succeeded in exiting standby.');
+  // 数据回调恢复。
+}).catch((err: BusinessError) => {
+  console.error(`Failed to exit standby. Code: ${err.code}, message: ${err.message}`);
+});
+```

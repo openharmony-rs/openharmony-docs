@@ -3272,7 +3272,7 @@ getSupportedAudioEffectProperty(): Array\<AudioEffectProperty>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let propertyArray: Array<audio.AudioEffectProperty> = audioStreamManager.getSupportedAudioEffectProperty();
+  let propertyArray: Array<audio.AudioEffectProperty> = audioEffectManager.getSupportedAudioEffectProperty();
   console.info(`The effect modes are: ${propertyArray}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -3647,7 +3647,7 @@ getSoundCardInfo(): Promise\<SoundCardInfo\>
 
 | 类型 | 说明 |
 | ------------------- | ------------------------------ |
-| Promise\<[SoundCardInfo](#soundcardinfo)\> | Promise对象，返回内置声卡信息。 |
+| Promise\<[SoundCardInfo](arkts-apis-audio-AudioDeviceEnhanceManager.md#soundcardinfo)\> | Promise对象，返回内置声卡信息。 |
 
 **错误码：**
 
@@ -4409,28 +4409,6 @@ try {
   console.error(`Failed to unsubscribe download status change. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-## SoundCardInfo
-
-描述声卡信息。
-
-**系统接口：** 此接口为系统接口。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| name | string | 否 | 否 | 声卡名称。 |
-| vendor | string | 否 | 否 | 声卡厂商。 |
-| model | string | 否 | 否 | 声卡型号。 |
-| busAddress | string | 否 | 否 | 声卡总线地址。 |
-| driver | string | 否 | 否 | 声卡驱动信息。 |
 
 ## AudioRoutingManager<sup>9+</sup>
 
@@ -7255,7 +7233,7 @@ audioSpatializationManager.off('headTrackingEnabledChangeForAnyDevice');
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let headTrackingEnabledChangeForAnyDeviceCallback = (audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
   console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
-  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+  console.info(`isHeadTrackingEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
 };
 
 audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', headTrackingEnabledChangeForAnyDeviceCallback);
