@@ -339,7 +339,6 @@ ArkTS-Sta: deactivateOsAccount(localId: int): Promise&lt;void&gt;
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
@@ -426,7 +425,6 @@ ArkTS-Sta: isOsAccountActivated(localId: int): Promise&lt;boolean&gt;
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
@@ -512,7 +510,6 @@ ArkTS-Sta: isOsAccountConstraintEnabled(localId: int, constraint: string): Promi
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
@@ -599,7 +596,6 @@ ArkTS-Sta: isOsAccountUnlocked(localId: int): Promise&lt;boolean&gt;
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
@@ -975,7 +971,6 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or constraints. |
 | 12300003 | Account not found. |
@@ -1069,7 +1064,6 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or constraints.    |
 | 12300003 | Account not found. |
@@ -1152,7 +1146,6 @@ ArkTS-Sta: setOsAccountName(localId: int, localName: string, callback: AsyncCall
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or localName. |
 | 12300003 | Account not found. |
@@ -1245,7 +1238,6 @@ ArkTS-Sta: setOsAccountName(localId: int, localName: string): Promise&lt;void&gt
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or localName.    |
 | 12300003 | Account not found. |
@@ -1419,7 +1411,6 @@ ArkTS-Sta: queryMaxOsAccountNumber(callback: AsyncCallback&lt;int&gt;): void
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1642,7 +1633,6 @@ ArkTS-Sta: getEnabledOsAccountConstraints(localId: int): Promise&lt;Array&lt;str
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
@@ -1719,7 +1709,6 @@ queryAllCreatedOsAccounts(callback: AsyncCallback&lt;Array&lt;OsAccountInfo&gt;&
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -2313,7 +2302,6 @@ ArkTS-Sta: queryOsAccountById(localId: int, callback: AsyncCallback&lt;OsAccount
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -2402,7 +2390,6 @@ ArkTS-Sta: queryOsAccountById(localId: int): Promise&lt;OsAccountInfo&gt;
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId. |
 | 12300003 | Account not found. |
@@ -2483,7 +2470,6 @@ ArkTS-Sta: getOsAccountProfilePhoto(localId: int, callback: AsyncCallback&lt;str
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -2572,7 +2558,6 @@ ArkTS-Sta: getOsAccountProfilePhoto(localId: int): Promise&lt;string&gt;
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -2654,7 +2639,6 @@ ArkTS-Sta: setOsAccountProfilePhoto(localId: int, photo: string, callback: Async
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or photo.    |
 | 12300003 | Account not found. |
@@ -2753,7 +2737,6 @@ ArkTS-Sta: setOsAccountProfilePhoto(localId: int, photo: string): Promise&lt;voi
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or photo.    |
 | 12300003 | Account not found. |
@@ -2844,7 +2827,6 @@ on(type: 'activate' | 'activating', name: string, callback: Callback&lt;number&g
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or name. |
 
@@ -2902,7 +2884,6 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback&lt;number
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or name. |
 
@@ -3283,7 +3264,6 @@ ArkTS-Sta: getBundleIdForUid(uid: int, callback: AsyncCallback&lt;int&gt;): void
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid. |
 
@@ -3367,7 +3347,6 @@ ArkTS-Sta: getBundleIdForUid(uid: int): Promise&lt;int&gt;
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid. |
 
@@ -3447,7 +3426,6 @@ ArkTS-Sta: getBundleIdForUidSync(uid: int): int
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300002 | Invalid uid. |
 
 **示例：**
@@ -3923,7 +3901,6 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -4236,7 +4213,6 @@ ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string, c
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name or constraint. |
 | 12300003 | Account not found. |
@@ -4324,7 +4300,6 @@ ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string): 
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name or constraint. |
 | 12300003 | Account not found. |
@@ -4408,7 +4383,6 @@ ArkTS-Sta: getOsAccountType(localId: int): Promise&lt;OsAccountType&gt;
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
@@ -6002,7 +5976,6 @@ ArkTS-Sta: getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType or authTrustLevel. |
 | 12300117 | PIN is expired. |
@@ -6390,7 +6363,6 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): v
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 
@@ -6482,7 +6454,6 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 
@@ -6992,7 +6963,6 @@ cancelAuth(contextID: Uint8Array): void
 | -------- | ------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid contextId. |
 
@@ -7106,7 +7076,6 @@ registerInputer(inputer: IInputer): void
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid inputer. |
 | 12300103 | The credential inputer already exists. |
@@ -7199,7 +7168,6 @@ static registerInputer(authType: AuthType, inputer: IInputer): void
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType or inputer. |
 | 12300103 | The credential inputer already exists. |
@@ -7256,7 +7224,6 @@ static unregisterInputer(authType: AuthType): void
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300002  | Invalid authType. |
 
 **示例：**
@@ -8683,7 +8650,6 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo or credential. |
@@ -9041,7 +9007,6 @@ hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;bool
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo. |
@@ -9135,7 +9100,6 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo. |
@@ -9222,7 +9186,6 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, call
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid token. |
 | 12300003 | Account not found. |
@@ -9316,7 +9279,6 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid token. |
 | 12300003 | Account not found. |
@@ -9401,7 +9363,6 @@ getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback&lt;
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -9497,7 +9458,6 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -9859,7 +9819,6 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Domain account not found. |
@@ -9969,7 +9928,6 @@ openSession(callback: AsyncCallback&lt;Uint8Array&gt;): void
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -10393,7 +10351,6 @@ ArkTS-Sta: closeSession(accountId?: int): void
 | -------- | --------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
@@ -10436,7 +10393,6 @@ cancel(challenge: Uint8Array): void
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge. |
 
@@ -10498,7 +10454,6 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300101 | The token is invalid. |
 
@@ -10572,7 +10527,6 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialId. |
 | 12300101 | The token is invalid. |
@@ -11189,7 +11143,6 @@ onSetData(authSubType: AuthSubType, data: Uint8Array): void
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300002 | Invalid pinSubType. |
 
 **示例：**
