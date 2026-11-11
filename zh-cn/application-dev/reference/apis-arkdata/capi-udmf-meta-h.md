@@ -158,7 +158,7 @@
 | UDMF_META_POSTSCRIPT_PFB_FONT "com.adobe.postscript-pfb-font" | PostScript Font Binary字体类型，归属类型为FONT。<br>**起始版本：** 12 |
 | UDMF_META_POSTSCRIPT_PFA_FONT "com.adobe.postscript-pfa-font" | Adobe Type 1 字体类型，归属类型为FONT。<br>**起始版本：** 12 |
 | UDMF_META_OPENHARMONY_HDOC "openharmony.hdoc"                | 系统定义的备忘录数据类型，归属类型为COMPOSITE_OBJECT。<br>**起始版本：** 12 |
-| UDMF_META_OPENHARMONY_HINOTE "openharmony.hinote"            | 系统定义的笔记数据类型，归属类型为COMPOSITE_OBJECT。         |
+| UDMF_META_OPENHARMONY_HINOTE "openharmony.hinote"            | 系统定义的笔记数据类型，归属类型为COMPOSITE_OBJECT。<br>**起始版本：** 12         |
 | UDMF_META_OPENHARMONY_STYLED_STRING "openharmony.styled-string" | 系统定义的样式字符串类型，归属类型为COMPOSITE_OBJECT。<br>**起始版本：** 12 |
 | UDMF_META_OPENHARMONY_WANT "openharmony.want"                | 系统定义的Want类型，归属类型为OBJECT。<br>**起始版本：** 12  |
 | UDMF_META_GENERAL_FILE_URI "general.file-uri"                | 文件地址类型，归属类型为TEXT。<br>**起始版本：** 13          |
