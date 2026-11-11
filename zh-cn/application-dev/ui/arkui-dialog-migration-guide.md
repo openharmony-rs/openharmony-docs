@@ -311,6 +311,7 @@
   ``` TypeScript
   import { DialogBaseAlignment, DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import resource from '../../common/resource';
   
   @Entry
   @Component
@@ -322,19 +323,19 @@
       NavDestination() {
         Row() {
           Column() {
-            Text('AlertDialog 迁移示例')
+            Text('AlertDialog' + resource.resourceToString($r('app.string.migrate_sample_zh')))
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
   
-            Button('旧接口：showAlertDialog')
+            Button(resource.resourceToString($r('app.string.old_interface_zh')) + '：showAlertDialog')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
                 this.result = $r('app.string.OldInterfaceAlertDialogOnClick');
               })
   
-            Button('新接口：DialogPresenter.present（固定样式弹窗）')
+            Button(resource.resourceToString($r('app.string.new_interface_zh')) + '：DialogPresenter.present')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
