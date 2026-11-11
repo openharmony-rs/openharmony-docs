@@ -411,7 +411,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 
 4. 卡片信息持久化。每次进入卡片编辑页，预览卡片都需要与被编辑卡片保持一致，所以需要持久化卡片信息。
    - 新增PreferencesUtil文件，主要是来封装[Preferences](../database/data-persistence-by-preferences.md)首选项，供业务做持久化数据使用。
-   <!-- @[FormEditDemo_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/common/PreferencesUtil.ets) --> 
+   <!-- @[FormEditDemo_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/common/PreferencesUtil.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/common/PreferencesUtil.ets
@@ -633,7 +633,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    - 实现编辑页面的Ability。
 
    ArkTS-Dyn示例：
-   <!-- @[FormEditUIAbility_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/entryability/EntryEditAbility.ets) -->
+   <!-- @[FormEditUIAbility_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/entryability/EntryEditAbility.ets) --> 
    
    ``` TypeScript
    // entry/src/main/ets/entryability/EntryEditAbility.ets
@@ -660,7 +660,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        } catch (err) {
          hilog.error(DOMAIN, 'testTag', `Failed to set colorMode. Code:${err.code}, message:${err.message}`);
        }
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+       hilog.info(DOMAIN, 'testTag', 'Ability onCreate');
      }
    
      onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -676,16 +676,16 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
      }
    
      onDestroy(): void {
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+       hilog.info(DOMAIN, 'testTag', 'Ability onDestroy');
      }
    
      onWindowStageCreate(windowStage: window.WindowStage): void {
        // Main window is created, set main page for this ability
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+       hilog.info(DOMAIN, 'testTag', 'Ability onWindowStageCreate');
    
        windowStage.loadContent('pages/FormEditIndex', (err) => {
          if (err.code) {
-           hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Code:${err.code}, message:${err.message}');
+           hilog.error(DOMAIN, 'testTag', `Failed to load the content. Code:${err.code}, message:${err.message}`);
            return;
          }
          hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
@@ -695,23 +695,23 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    
      onWindowStageDestroy(): void {
        // Main window is destroyed, release UI related resources
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+       hilog.info(DOMAIN, 'testTag', 'Ability onWindowStageDestroy');
      }
    
      onForeground(): void {
        // Ability has brought to foreground
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
+       hilog.info(DOMAIN, 'testTag', 'Ability onForeground');
      }
    
      onBackground(): void {
        // Ability has back to background
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
+       hilog.info(DOMAIN, 'testTag', 'Ability onBackground');
      }
    }
    ```
 
    ArkTS-Sta示例：
-   <!-- @[FormEditUIAbilitySta_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/entryability/EntryEditAbility.ets) -->
+   <!-- @[FormEditUIAbilitySta_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/entryability/EntryEditAbility.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/entryability/EntryEditAbility.ets
@@ -790,7 +790,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    - 新增EntryEditAbility需要在module.json5配置，配置如下。
 
    ArkTS-Dyn示例：
-   <!-- @[FormEditUIAbility_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/module.json5) --> 
+   <!-- @[FormEditUIAbility_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/module.json5) -->
    
    ``` JSON5
    "abilities": [
@@ -803,13 +803,13 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        "label": "$string:EntryAbility_label",
        "startWindowIcon": "$media:startIcon",
        "startWindowBackground": "$color:start_window_background",
-       "exported": true,
+       "exported": true
      }
    ],
    ```
 
    ArkTS-Sta示例：
-   <!-- @[FormEditUIAbilitySta_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/module.json5) --> 
+   <!-- @[FormEditUIAbilitySta_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/module.json5) -->
    
    ``` JSON5
    "abilities": [
@@ -856,7 +856,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 3. 新增FormEditIndex.ets文件实现全屏编辑页布局，通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口去刷新被编辑卡片的信息。
 
    ArkTS-Dyn示例：
-   <!-- @[FormEditUIAbility_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/pages/FormEditIndex.ets) --> 
+   <!-- @[FormEditUIAbility_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/pages/FormEditIndex.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/pages/FormEditIndex.ets
@@ -890,7 +890,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        try {
          formProvider.updateForm(formId, obj, (error: BusinessError) => {
            if (error) {
-             console.error(TAG, `callback error, code: ${error.code}, message: ${error.message})`);
+             console.error(TAG, `callback error, code: ${error.code}, message: ${error.message}`);
              return;
            }
            console.info(TAG, `formProvider updateForm success`);
@@ -929,8 +929,9 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    }
    ```
 
+
    ArkTS-Sta示例：
-   <!-- @[FormEditUIAbilitySta_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/pages/FormEditIndex.ets) --> 
+   <!-- @[FormEditUIAbilitySta_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/pages/FormEditIndex.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/pages/FormEditIndex.ets
@@ -939,6 +940,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    import { PreferencesUtil } from '../common/PreferencesUtil';
    import preferences from '@ohos.data.preferences';
    import hilog from '@ohos.hilog';
+   
    import {
      Entry,
      Column,
@@ -1114,14 +1116,14 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 4. 新增PreferencesUtil文件，主要是来封装[Preferences](../database/data-persistence-by-preferences.md)首选项，供业务做持久化数据使用。
 
    ArkTS-Dyn示例：
-   <!-- @[FormEditUIAbility_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/common/PreferencesUtil.ets) --> 
+   <!-- @[FormEditUIAbility_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/common/PreferencesUtil.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/common/PreferencesUtil.ets
    import { preferences } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
    
-   const TAG: string = 'PreferencesUtil';
+   const TAG: string = 'PreferencesUtil -->';
    const MY_STORE: string = 'myStore';
    const key: string = 'formID';
    
@@ -1199,8 +1201,8 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    }
    ```
 
-   ArkTS-Dyn示例：
-   <!-- @[FormEditUIAbilitySta_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/common/PreferencesUtil.ets) --> 
+   ArkTS-Sta示例：
+   <!-- @[FormEditUIAbilitySta_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/common/PreferencesUtil.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/common/PreferencesUtil.ets
