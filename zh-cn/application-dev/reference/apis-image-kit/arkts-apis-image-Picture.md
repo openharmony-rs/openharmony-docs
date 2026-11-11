@@ -593,15 +593,15 @@ release(): void
 ```ts
 async function Release(pictureObj : image.Picture) {
   let funcName = "Release";
-  if (pictureObj != null) {
+  if(pictureObj == null || pictureObj == undefined) {
+    console.error(funcName, 'Picture object is null.');
+    return;
+  }
+  try {
     pictureObj.release();
-    if (pictureObj.getMainPixelmap() == null) {
-      console.info(funcName, 'Succeeded in releasing a picture.');
-    } else {
-      console.error(funcName, 'Failed to release a picture.');
-    }
-  } else {
-    console.error('Picture object is null.');
+    console.info(funcName, 'Succeeded in releasing a picture.');
+  } catch(error) {
+    console.error(funcName, 'Failed to release a picture. error: ${JSON.stringify(error)}');
   }
 }
 ```
