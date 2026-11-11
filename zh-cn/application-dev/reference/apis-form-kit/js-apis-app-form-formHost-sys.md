@@ -6154,8 +6154,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: Array<string> = ['12400633174999288'];
 let colorInfo: Array<formInfo.FormColorInfo> = [
   { color: '#FFFFFFFF', position: 0 },
- 	{ color: '#FFFF6B6B', position: 0.5 },
- 	{ color: '#FF000000', position: 1 }
+  { color: '#FFFF6B6B', position: 0.5 },
+  { color: '#FF000000', position: 1 }
 ];
  
 try {
