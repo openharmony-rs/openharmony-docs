@@ -32,6 +32,9 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
+| [OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc](#oh_inputmethod_texteditorproxy_setpreviewtextwithstylefunc) | OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc | 输入法设置带样式预上屏文本时触发的回调。 |
+| [OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc()](#oh_inputmethod_texteditorproxy_setsetpreviewtextwithstylefunc) | - | 注册带样式预上屏回调。 |
+| [OH_InputMethod_TextEditorProxy_GetSetPreviewTextWithStyleFunc()](#oh_inputmethod_texteditorproxy_getsetpreviewtextwithstylefunc) | - | 获取已注册的带样式预上屏回调。 |
 | [typedef void (*OH_TextEditorProxy_GetTextConfigFunc)(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_TextConfig *config)](#oh_texteditorproxy_gettextconfigfunc) | OH_TextEditorProxy_GetTextConfigFunc | 输入法获取输入框配置时触发的函数。 |
 | [typedef void (*OH_TextEditorProxy_InsertTextFunc)(InputMethod_TextEditorProxy *textEditorProxy, const char16_t *text, size_t length)](#oh_texteditorproxy_inserttextfunc) | OH_TextEditorProxy_InsertTextFunc | 输入法应用插入文本时触发的函数。 |
 | [typedef void (*OH_TextEditorProxy_DeleteForwardFunc)(InputMethod_TextEditorProxy *textEditorProxy, int32_t length)](#oh_texteditorproxy_deleteforwardfunc) | OH_TextEditorProxy_DeleteForwardFunc | 输入法删除光标右侧文本时触发的函数。 |
@@ -97,7 +100,7 @@ typedef void (*OH_TextEditorProxy_GetTextConfigFunc)(InputMethod_TextEditorProxy
 
 使用后效果：回调返回后，输入法框架将读取config中的配置信息并据此调整键盘行为。config参数的内存将在回调返回后被释放，不可再访问。
 
-前置条件：须通过[OH_TextEditorProxy_SetGetTextConfigFunc](#oh_texteditorproxy_setgettextconfigfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。此回调的执行线程由调用Attach的线程决定，不受[OH_TextEditorProxy_SetCallbackInMainThread](#oh_texteditorproxy_setcallbackinmainthread)影响。
+前置条件：须通过[OH_TextEditorProxy_SetGetTextConfigFunc](#oh_texteditorproxy_setgettextconfigfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。此回调的执行线程由调用[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)的线程决定，不受[OH_TextEditorProxy_SetCallbackInMainThread](#oh_texteditorproxy_setcallbackinmainthread)影响。
 
 **起始版本：** 12
 
@@ -122,7 +125,7 @@ typedef void (*OH_TextEditorProxy_InsertTextFunc)(InputMethod_TextEditorProxy *t
 
 使用后效果：回调执行后，编辑框应在光标位置插入指定文本，并更新文本内容和光标位置。
 
-前置条件：须通过[OH_TextEditorProxy_SetInsertTextFunc](#oh_texteditorproxy_setinserttextfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetInsertTextFunc](#oh_texteditorproxy_setinserttextfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -148,7 +151,7 @@ typedef void (*OH_TextEditorProxy_DeleteForwardFunc)(InputMethod_TextEditorProxy
 
 使用后效果：回调执行后，编辑框应从光标位置向右删除指定数量的字符，并更新文本内容和光标位置。
 
-前置条件：须通过[OH_TextEditorProxy_SetDeleteForwardFunc](#oh_texteditorproxy_setdeleteforwardfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetDeleteForwardFunc](#oh_texteditorproxy_setdeleteforwardfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -173,7 +176,7 @@ typedef void (*OH_TextEditorProxy_DeleteBackwardFunc)(InputMethod_TextEditorProx
 
 使用后效果：回调执行后，编辑框应从光标位置向左删除指定数量的字符，并更新文本内容和光标位置。
 
-前置条件：须通过[OH_TextEditorProxy_SetDeleteBackwardFunc](#oh_texteditorproxy_setdeletebackwardfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetDeleteBackwardFunc](#oh_texteditorproxy_setdeletebackwardfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -198,7 +201,7 @@ typedef void (*OH_TextEditorProxy_SendKeyboardStatusFunc)(InputMethod_TextEditor
 
 使用后效果：回调执行后，编辑框应据此更新对键盘可见性的感知，例如调整避让策略或UI布局。
 
-前置条件：须通过[OH_TextEditorProxy_SetSendKeyboardStatusFunc](#oh_texteditorproxy_setsendkeyboardstatusfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetSendKeyboardStatusFunc](#oh_texteditorproxy_setsendkeyboardstatusfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -223,7 +226,7 @@ typedef void (*OH_TextEditorProxy_SendEnterKeyFunc)(InputMethod_TextEditorProxy 
 
 使用后效果：回调执行后，编辑框应据此执行对应的回车键行为（如搜索、发送、完成等）。
 
-前置条件：须通过[OH_TextEditorProxy_SetSendEnterKeyFunc](#oh_texteditorproxy_setsendenterkeyfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetSendEnterKeyFunc](#oh_texteditorproxy_setsendenterkeyfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -248,7 +251,7 @@ typedef void (*OH_TextEditorProxy_MoveCursorFunc)(InputMethod_TextEditorProxy *t
 
 使用后效果：回调执行后，编辑框应据此移动光标位置，并更新光标显示。
 
-前置条件：须通过[OH_TextEditorProxy_SetMoveCursorFunc](#oh_texteditorproxy_setmovecursorfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetMoveCursorFunc](#oh_texteditorproxy_setmovecursorfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -273,7 +276,7 @@ typedef void (*OH_TextEditorProxy_HandleSetSelectionFunc)(InputMethod_TextEditor
 
 使用后效果：回调执行后，编辑框应将start到end范围内的文本选中，并更新选中状态和UI显示。
 
-前置条件：须通过[OH_TextEditorProxy_SetHandleSetSelectionFunc](#oh_texteditorproxy_sethandlesetselectionfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetHandleSetSelectionFunc](#oh_texteditorproxy_sethandlesetselectionfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -299,7 +302,7 @@ typedef void (*OH_TextEditorProxy_HandleExtendActionFunc)(InputMethod_TextEditor
 
 使用后效果：回调执行后，编辑框应据此执行对应的扩展编辑动作。
 
-前置条件：须通过[OH_TextEditorProxy_SetHandleExtendActionFunc](#oh_texteditorproxy_sethandleextendactionfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetHandleExtendActionFunc](#oh_texteditorproxy_sethandleextendactionfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -324,7 +327,7 @@ typedef void (*OH_TextEditorProxy_GetLeftTextOfCursorFunc)(InputMethod_TextEdito
 
 使用后效果：回调返回后，输入法应用将读取text和length中的数据用于上下文分析。
 
-前置条件：须通过[OH_TextEditorProxy_SetGetLeftTextOfCursorFunc](#oh_texteditorproxy_setgetlefttextofcursorfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetGetLeftTextOfCursorFunc](#oh_texteditorproxy_setgetlefttextofcursorfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -351,7 +354,7 @@ typedef void (*OH_TextEditorProxy_GetRightTextOfCursorFunc)(InputMethod_TextEdit
 
 使用后效果：回调返回后，输入法应用将读取text和length中的数据用于上下文分析。
 
-前置条件：须通过[OH_TextEditorProxy_SetGetRightTextOfCursorFunc](#oh_texteditorproxy_setgetrighttextofcursorfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetGetRightTextOfCursorFunc](#oh_texteditorproxy_setgetrighttextofcursorfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -378,7 +381,7 @@ typedef int32_t (*OH_TextEditorProxy_GetTextIndexAtCursorFunc)(InputMethod_TextE
 
 使用后效果：回调返回后，输入法应用将读取返回的索引值用于定位上下文。
 
-前置条件：须通过[OH_TextEditorProxy_SetGetTextIndexAtCursorFunc](#oh_texteditorproxy_setgettextindexatcursorfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetGetTextIndexAtCursorFunc](#oh_texteditorproxy_setgettextindexatcursorfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -408,7 +411,7 @@ typedef int32_t (*OH_TextEditorProxy_ReceivePrivateCommandFunc)(InputMethod_Text
 
 使用后效果：回调返回后，输入法应用将根据返回值判断命令是否被成功处理。
 
-前置条件：须通过[OH_TextEditorProxy_SetReceivePrivateCommandFunc](#oh_texteditorproxy_setreceiveprivatecommandfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetReceivePrivateCommandFunc](#oh_texteditorproxy_setreceiveprivatecommandfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -440,7 +443,7 @@ typedef int32_t (*OH_TextEditorProxy_SetPreviewTextFunc)(InputMethod_TextEditorP
 
 使用后效果：回调执行后，编辑框应将text内容以预上屏样式显示在start到end范围内，并将返回值反馈给输入法。
 
-前置条件：须通过[OH_TextEditorProxy_SetSetPreviewTextFunc](#oh_texteditorproxy_setsetpreviewtextfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。编辑框需在TextConfig中设置支持预上屏（supported=true）。
+前置条件：须通过[OH_TextEditorProxy_SetSetPreviewTextFunc](#oh_texteditorproxy_setsetpreviewtextfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。编辑框需在TextConfig中设置支持预上屏（supported=true）。
 
 **起始版本：** 12
 
@@ -474,7 +477,7 @@ typedef void (*OH_TextEditorProxy_FinishTextPreviewFunc)(InputMethod_TextEditorP
 
 使用后效果：回调执行后，编辑框应清理预上屏显示状态，恢复到正常文本显示。
 
-前置条件：须通过[OH_TextEditorProxy_SetFinishTextPreviewFunc](#oh_texteditorproxy_setfinishtextpreviewfunc)将此回调设置到TextEditorProxy中，并通过Attach完成注册。
+前置条件：须通过[OH_TextEditorProxy_SetFinishTextPreviewFunc](#oh_texteditorproxy_setfinishtextpreviewfunc)将此回调设置到TextEditorProxy中，并通过[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)完成注册。
 
 **起始版本：** 12
 
@@ -540,11 +543,11 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetGetTextConfigFunc(InputMethod_TextEd
 
 **描述**
 
-将函数[OH_TextEditorProxy_GetTextConfigFunc](#oh_texteditorproxy_gettextconfigfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成，Attach后设置的回调不会被输入法调用。
+将函数[OH_TextEditorProxy_GetTextConfigFunc](#oh_texteditorproxy_gettextconfigfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成，[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)后设置的回调不会被输入法调用。
 
 使用场景：当应用需要注册GetTextConfigFunc回调以响应输入法获取配置请求时调用此函数。
 
-使用后效果：设置成功后，GetTextConfigFunc回调将被注册到TextEditorProxy中，Attach后当输入法请求获取配置时将自动触发此回调。
+使用后效果：设置成功后，GetTextConfigFunc回调将被注册到TextEditorProxy中，[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)后当输入法请求获取配置时将自动触发此回调。
 
 前置条件：proxy须先通过[OH_TextEditorProxy_Create](#oh_texteditorproxy_create)创建。
 
@@ -571,11 +574,11 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetInsertTextFunc(InputMethod_TextEdito
 
 **描述**
 
-将函数[OH_TextEditorProxy_InsertTextFunc](#oh_texteditorproxy_inserttextfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_InsertTextFunc](#oh_texteditorproxy_inserttextfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 使用场景：当应用需要注册InsertTextFunc回调以响应输入法插入文本请求时调用此函数。
 
-使用后效果：设置成功后，InsertTextFunc回调将被注册到TextEditorProxy中，Attach后当输入法请求插入文本时将自动触发此回调。
+使用后效果：设置成功后，InsertTextFunc回调将被注册到TextEditorProxy中，[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)后当输入法请求插入文本时将自动触发此回调。
 
 **起始版本：** 12
 
@@ -600,11 +603,11 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteForwardFunc(InputMethod_TextEd
 
 **描述**
 
-将函数[OH_TextEditorProxy_DeleteForwardFunc](#oh_texteditorproxy_deleteforwardfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_DeleteForwardFunc](#oh_texteditorproxy_deleteforwardfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 使用场景：当应用需要注册DeleteForwardFunc回调以响应输入法删除光标右侧文本请求时调用此函数。
 
-使用后效果：设置成功后，DeleteForwardFunc回调将被注册到TextEditorProxy中，Attach后当输入法请求删除光标右侧文本时将自动触发此回调。
+使用后效果：设置成功后，DeleteForwardFunc回调将被注册到TextEditorProxy中，[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)后当输入法请求删除光标右侧文本时将自动触发此回调。
 
 **起始版本：** 12
 
@@ -629,11 +632,11 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteBackwardFunc(InputMethod_TextE
 
 **描述**
 
-将函数[OH_TextEditorProxy_DeleteBackwardFunc](#oh_texteditorproxy_deletebackwardfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_DeleteBackwardFunc](#oh_texteditorproxy_deletebackwardfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 使用场景：当应用需要注册DeleteBackwardFunc回调以响应输入法删除光标左侧文本请求时调用此函数。
 
-使用后效果：设置成功后，DeleteBackwardFunc回调将被注册到TextEditorProxy中，Attach后当输入法请求删除光标左侧文本时将自动触发此回调。
+使用后效果：设置成功后，DeleteBackwardFunc回调将被注册到TextEditorProxy中，[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)后当输入法请求删除光标左侧文本时将自动触发此回调。
 
 **起始版本：** 12
 
@@ -658,7 +661,7 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetSendKeyboardStatusFunc(InputMethod_T
 
 **描述**
 
-将函数[OH_TextEditorProxy_SendKeyboardStatusFunc](#oh_texteditorproxy_sendkeyboardstatusfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_SendKeyboardStatusFunc](#oh_texteditorproxy_sendkeyboardstatusfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 **起始版本：** 12
 
@@ -683,7 +686,7 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetSendEnterKeyFunc(InputMethod_TextEdi
 
 **描述**
 
-将函数[OH_TextEditorProxy_SendEnterKeyFunc](#oh_texteditorproxy_sendenterkeyfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_SendEnterKeyFunc](#oh_texteditorproxy_sendenterkeyfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 **起始版本：** 12
 
@@ -708,7 +711,7 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetMoveCursorFunc(InputMethod_TextEdito
 
 **描述**
 
-将函数[OH_TextEditorProxy_MoveCursorFunc](#oh_texteditorproxy_movecursorfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_MoveCursorFunc](#oh_texteditorproxy_movecursorfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 **起始版本：** 12
 
@@ -733,7 +736,7 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetHandleSetSelectionFunc(InputMethod_T
 
 **描述**
 
-将函数[OH_TextEditorProxy_HandleSetSelectionFunc](#oh_texteditorproxy_handlesetselectionfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_HandleSetSelectionFunc](#oh_texteditorproxy_handlesetselectionfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 **起始版本：** 12
 
@@ -758,7 +761,7 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetHandleExtendActionFunc(InputMethod_T
 
 **描述**
 
-将函数[OH_TextEditorProxy_HandleExtendActionFunc](#oh_texteditorproxy_handleextendactionfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_HandleExtendActionFunc](#oh_texteditorproxy_handleextendactionfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 **起始版本：** 12
 
@@ -783,7 +786,7 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetGetLeftTextOfCursorFunc(InputMethod_
 
 **描述**
 
-将函数[OH_TextEditorProxy_GetLeftTextOfCursorFunc](#oh_texteditorproxy_getlefttextofcursorfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_GetLeftTextOfCursorFunc](#oh_texteditorproxy_getlefttextofcursorfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 **起始版本：** 12
 
@@ -808,7 +811,7 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetGetRightTextOfCursorFunc(InputMethod
 
 **描述**
 
-将函数[OH_TextEditorProxy_GetRightTextOfCursorFunc](#oh_texteditorproxy_getrighttextofcursorfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_GetRightTextOfCursorFunc](#oh_texteditorproxy_getrighttextofcursorfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 **起始版本：** 12
 
@@ -833,7 +836,7 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetGetTextIndexAtCursorFunc(InputMethod
 
 **描述**
 
-将函数[OH_TextEditorProxy_GetTextIndexAtCursorFunc](#oh_texteditorproxy_gettextindexatcursorfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_GetTextIndexAtCursorFunc](#oh_texteditorproxy_gettextindexatcursorfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 **起始版本：** 12
 
@@ -858,7 +861,7 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetReceivePrivateCommandFunc(InputMetho
 
 **描述**
 
-将函数[OH_TextEditorProxy_ReceivePrivateCommandFunc](#oh_texteditorproxy_receiveprivatecommandfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_ReceivePrivateCommandFunc](#oh_texteditorproxy_receiveprivatecommandfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 **起始版本：** 12
 
@@ -883,7 +886,7 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetSetPreviewTextFunc(InputMethod_TextE
 
 **描述**
 
-将函数[OH_TextEditorProxy_SetPreviewTextFunc](#oh_texteditorproxy_setpreviewtextfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_SetPreviewTextFunc](#oh_texteditorproxy_setpreviewtextfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 **起始版本：** 12
 
@@ -908,7 +911,7 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetFinishTextPreviewFunc(InputMethod_Te
 
 **描述**
 
-将函数[OH_TextEditorProxy_FinishTextPreviewFunc](#oh_texteditorproxy_finishtextpreviewfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在Attach之前完成。
+将函数[OH_TextEditorProxy_FinishTextPreviewFunc](#oh_texteditorproxy_finishtextpreviewfunc)设置到[InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)中。此设置须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。
 
 **起始版本：** 12
 
@@ -1308,13 +1311,13 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetCallbackInMainThread(InputMethod_Tex
 
 **描述**
 
-为InputMethod_TextEditorProxy的回调函数配置执行线程（主线程/IPC线程）。本接口仅控制InputMethod_TextEditorProxy中除[OH_TextEditorProxy_GetTextConfigFunc](#oh_texteditorproxy_gettextconfigfunc)之外的所有回调函数。[OH_TextEditorProxy_GetTextConfigFunc](#oh_texteditorproxy_gettextconfigfunc)的执行线程由调用[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)的线程决定，不受本接口影响。若需GetTextConfigFunc也在主线程执行，需确保Attach在主线程调用。
+为InputMethod_TextEditorProxy的回调函数配置执行线程（主线程/IPC线程）。本接口仅控制InputMethod_TextEditorProxy中除[OH_TextEditorProxy_GetTextConfigFunc](#oh_texteditorproxy_gettextconfigfunc)之外的所有回调函数。[OH_TextEditorProxy_GetTextConfigFunc](#oh_texteditorproxy_gettextconfigfunc)的执行线程由调用[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)的线程决定，不受本接口影响。若需GetTextConfigFunc也在主线程执行，需确保[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)在主线程调用。
 
 使用场景：当应用需要避免多线程并发问题时，可将回调切换到主线程执行；当应用对回调响应速度要求较高时，可保持IPC线程执行。
 
 使用后效果：设置为true后，除GetTextConfigFunc外的所有回调将在主线程执行，避免多线程并发但需注意避免在回调内执行耗时操作；设置为false后，回调在IPC线程执行，响应更快但可能存在并发问题。
 
-前置条件：proxy须先通过[OH_TextEditorProxy_Create](#oh_texteditorproxy_create)创建。建议在Attach之前调用此接口配置线程策略。
+前置条件：proxy须先通过[OH_TextEditorProxy_Create](#oh_texteditorproxy_create)创建。建议在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前调用此接口配置线程策略。
 
 **起始版本：** 22
 
@@ -1330,3 +1333,93 @@ InputMethod_ErrorCode OH_TextEditorProxy_SetCallbackInMainThread(InputMethod_Tex
 | 类型 | 说明 |
 | -- | -- |
 | [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>[IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 配置成功。<br>[IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 当proxy为NULL时返回。<br>具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
+
+### OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc
+
+```c
+typedef int32_t (*OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc)(
+    InputMethod_TextEditorProxy *textEditorProxy, const char16_t text[], uint32_t length, int32_t start, int32_t end,
+    const OH_InputMethod_PreviewTextStyle *style)
+```
+
+**描述**
+
+接收输入法设置带样式预上屏文本的请求。通过[OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc](#oh_inputmethod_texteditorproxy_setsetpreviewtextwithstylefunc)注册，并在完成其余必要回调设置后调用[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)。
+
+自绘编辑框收到回调后，应在返回前完成参数检查，并将界面更新调度到对应UI线程。更新时应用文本、维护预上屏范围并绘制样式。
+
+> **说明：**
+>
+> - 当输入法应用设置带有样式的预上屏文本时，会同时回调[OH_TextEditorProxy_SetPreviewTextFunc](#oh_texteditorproxy_setpreviewtextfunc)，开发者需要注意避免重复处理预上屏文本内容。
+> - 样式回调为可选回调，[OH_TextEditorProxy_SetPreviewTextFunc](#oh_texteditorproxy_setpreviewtextfunc)为必选回调。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| textEditorProxy | 接收请求的编辑器代理。 |
+| text | UTF-16编码的预上屏文本，仅在回调期间访问；需要异步使用时应按length复制。 |
+| length | text文本的长度。类型为uint32_t。 |
+| start | 预上屏文本替换范围的起点。 |
+| end | 预上屏文本替换范围的终点。 |
+| style | 预上屏文本样式，指向[OH_InputMethod_PreviewTextStyle](capi-inputmethod-oh-inputmethod-previewtextstyle.md)的只读指针。回调内读取属性，不能销毁或修改框架传入的对象。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 设置预上屏文本及样式的处理结果。0表示成功，其他值表示失败。 |
+
+### OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc()
+
+```c
+InputMethod_ErrorCode OH_InputMethod_TextEditorProxy_SetSetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy,
+    OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc setPreviewTextWithStyleFunc)
+```
+
+**描述**
+
+注册带样式预上屏回调，须在[OH_InputMethodController_Attach](capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)之前完成。原有[OH_TextEditorProxy_SetSetPreviewTextFunc](#oh_texteditorproxy_setsetpreviewtextfunc)注册仍为绑定的必要条件，不能只注册样式回调。其余编辑回调要求见[自绘编辑框开发指导](../../inputmethod/use-inputmethod-in-custom-edit-box-ndk.md)。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| proxy | 编辑器代理，不得为NULL。 |
+| setPreviewTextWithStyleFunc | [OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc](#oh_inputmethod_texteditorproxy_setpreviewtextwithstylefunc)回调，不得为NULL。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | IME_ERR_OK：成功。IME_ERR_NULL_POINTER：传入了非预期的空指针。 |
+
+### OH_InputMethod_TextEditorProxy_GetSetPreviewTextWithStyleFunc()
+
+```c
+InputMethod_ErrorCode OH_InputMethod_TextEditorProxy_GetSetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy,
+    OH_InputMethod_TextEditorProxy_SetPreviewTextWithStyleFunc *setPreviewTextWithStyleFunc)
+```
+
+**描述**
+
+获取已注册的带样式预上屏回调。成功时通过输出参数返回函数指针；未注册时输出NULL。该接口仅查询，不触发预上屏请求。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| proxy | 编辑器代理，不得为NULL。 |
+| setPreviewTextWithStyleFunc | 输出参数，保存注册的回调函数指针；输出参数地址不得为NULL。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | IME_ERR_OK：成功。IME_ERR_NULL_POINTER：传入了非预期的空指针。 |

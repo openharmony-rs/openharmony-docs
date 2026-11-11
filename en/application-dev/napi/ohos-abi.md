@@ -1,11 +1,22 @@
+---
+kits: ["ArkTS Kit"]
+description: "Defines the basic OHOS application binary interface (ABI) standards for OpenHarmony, including endianness and word size, procedure calling conventions, the C++ ABI, floating-point formats, executable file formats, and supported architectures (armeabi-v7a, arm64-v8a, and x86_64), to ensure application binary compatibility across OpenHarmony devices."
+keywords: ["ABI", "application binary interface", "ELF", "little-endian", "LP64", "Itanium C++ ABI", "IEEE754", "armeabi-v7a", "arm64-v8a"]
+doctype: guide
+status: active
+---
+
 # OpenHarmony ABIs
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @huang_huijin-->
-<!--Designer: @huang_huijin-->
+<!--Owner: @da_wei_li11-->
+<!--Designer: @liyiming13-->
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=eca66a0319f0c6395a34b0ae7a553ffcaa83c491 translatedAt=2026-11-09T08:52:17.316Z nl=2 -->
+
 <!--RP1-->
+
 OpenHarmony supports diverse device forms, instruction sets, and operating system kernels. To ensure application compatibility on different OpenHarmony devices, follow the basic OHOS Application Binary Interface (ABI) standards provided in this topic.
 <!--RP1End-->
 ## Byte Order and Word Width
@@ -84,7 +95,9 @@ In the C++ project of OpenHarmony, find the **buildOption/externalNativeOptions*
     }
 }
 ```
-Note: If the **abiFilters** field is not set in DevEco Studio, the default architecture is arm64-v8a.
+> **NOTE**
+>
+> If the **abiFilters** field is not set in DevEco Studio, the default architecture is arm64-v8a.
 ### Setting in .cmake
 
 When you develop native code using the SDK, some common environment variables for cross compilation of OpenHarmony are defined in **build/cmake/ohos.toolchain.cmake**. The **OHOS_ARCH** variable defines the target ABI for build, which can be **arm64-v8a**, **armeabi-v7a**, and **x86_64**.

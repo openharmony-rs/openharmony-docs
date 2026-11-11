@@ -762,7 +762,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
 3. 新增FormEditIndex.ets文件实现全屏编辑页布局，通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口去刷新被编辑卡片的信息。
-   <!-- @[FormEditUIAbility_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/pages/FormEditIndex.ets) --> 
+   <!-- @[FormEditUIAbility_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/pages/FormEditIndex.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/pages/FormEditIndex.ets
@@ -796,7 +796,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        try {
          formProvider.updateForm(formId, obj, (error: BusinessError) => {
            if (error) {
-             console.error(TAG, `callback error, code: ${error.code}, message: ${error.message})`);
+             console.error(TAG, `callback error, code: ${error.code}, message: ${error.message}`);
              return;
            }
            console.info(TAG, `formProvider updateForm success`);

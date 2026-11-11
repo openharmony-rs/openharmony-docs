@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes thread-safe development using Node-API, including creating thread-safe functions with napi_create_threadsafe_function to call ArkTS methods safely across multiple threads and avoid race conditions and deadlocks."
+keywords: [Node-API, thread safety, napi_create_threadsafe_function, multithreading, race conditions, deadlocks, inter-thread communication, asynchronous computing]
+doctype: guide
+status: active
+---
+
 # Thread Safety Development Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.394Z nl=1 -->
 
 
 ## When to Use
@@ -66,12 +75,14 @@
        CallbackData *callbackData = reinterpret_cast<CallbackData *>(data);
        std::promise<std::string> promise;
        auto future = promise.get_future();
+       napi_acquire_threadsafe_function(callbackData->tsfn);
        napi_call_threadsafe_function(callbackData->tsfn, &promise, napi_tsfn_nonblocking);
+       napi_release_threadsafe_function(callbackData->tsfn, napi_tsfn_release);
        try {
            auto result = future.get();
            OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", result.c_str());
        } catch (const std::exception &e) {
-           OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", e.what());
+           OH_LOG_ERROR(LOG_APP, "XXX, Result from JS %{public}s", e.what());
        }
    }
    
@@ -130,6 +141,7 @@
        napi_delete_async_work(env, callbackData->work);
        callbackData->tsfn = nullptr;
        callbackData->work = nullptr;
+       delete callbackData;
    }
    
    static napi_value StartThread(napi_env env, napi_callback_info info)
@@ -261,7 +273,7 @@
    void NativeThread(void* arg)
    {
        auto* data = static_cast<ThreadData*>(arg);
-       OH_LOG_INFO(LOG_APP, "[C++ SubThread] Received from Worker: %{public}s\n", data->inputStr.c_str());
+       OH_LOG_INFO(LOG_APP, "[C++ SubThread] Received from %{public}s\n", data->inputStr.c_str());
        std::string str = "Hello from C++!";
        std::string msg = "Echo of " + str;
        char* cstr = strdup(msg.c_str());
@@ -386,7 +398,7 @@
    
    port.onmessage = (e: MessageEvents) => {
      console.info('Worker thread received:' + e.data);
-     nativeModule.startWithCallback('Hello', (result: string) => {
+     nativeModule.startWithCallback('Worker', (result: string) => {
        console.info('[Worker] Got from native:', result);
        port.postMessage(result);
      });
@@ -422,9 +434,9 @@
    ``` txt
    Execution result:
    Worker thread received:Start
-   [C++ SubThread] Received from Worker: Hello
+   [C++ SubThread] Received from Worker
    [Worker] Got from native: Echo of Hello from C++!
-   [Main] Received: Echo of Hello from C++
+   [Main] Received: Echo of Hello from C++!
    ```
 
 ### C++ and ArkTS Child Thread Interaction Based on [Taskpool](../../application-dev/arkts-utils/taskpool-introduction.md)
@@ -439,8 +451,8 @@
 
    @Concurrent
    function nativeCall(input : string): void {
-     console.info('Taskpool thread received:%s', input);
-     nativeModule.startWithCallback('Hello', (result: string) => {
+     console.info('Taskpool thread received:', input);
+     nativeModule.startWithCallback('Taskpool', (result: string) => {
        console.info('[Taskpool] Got from native:', result);
      });
    }
@@ -465,6 +477,6 @@
    ``` txt
    Execution result:
    Taskpool thread received:Start
-   [C++ SubThread] Received from Worker: Hello
+   [C++ SubThread] Received from Taskpool
    [Taskpool] Got from native: Echo of Hello from C++!
    ```

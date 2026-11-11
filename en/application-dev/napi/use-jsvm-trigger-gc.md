@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "How to use OH_JSVM_AddHandlerForGC to register custom callbacks in the Prologue and Epilogue phases before and after garbage collection for performance monitoring and tuning."
+keywords: [OH_JSVM_AddHandlerForGC, OH_JSVM_RemoveHandlerForGC, garbage collection, GC callbacks, callback registration, Prologue, Epilogue, JSVM_CB_TRIGGER_BEFORE_GC, performance monitoring]
+doctype: guide
+status: active
+---
+
 # Triggering GC Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.358Z nl=1 -->
 
 ## Introduction
 
@@ -31,7 +40,7 @@ If you are just starting out with JSVM-API, see [JSVM-API Development Process](u
 
 You can call **OH_JSVM_AddHandlerForGC** multiple times to register callbacks with a JSVM, and all registered callbacks will take effect. During registration, the callback pointer and **native-data** are used as the key. If multiple registration behaviors have the same key, the registration will be considered invalid and the **JSVM_INVALID_ARG** error code will be returned. The order in which callbacks are invoked under the same triggering condition does not strictly follow the registration order.
 
-You can use **OH_JSVM_RemoveHandlerForGC** to remove a registered callback from a JSVM. Removing callbacks with the same key will be considered an invalid removal, and the **JSVM_INVALID_ARG** error will be returned.
+You can use **OH_JSVM_RemoveHandlerForGC** to remove a registered callback from a JSVM. Repeatedly removing a callback with the same key will be considered an invalid removal, and the **JSVM_INVALID_ARG** error will be returned.
 
 **CPP Code**
 
@@ -100,9 +109,9 @@ static JSVM_Value TriggerGC(JSVM_Env env, JSVM_CallbackInfo info)
     if (OH_JSVM_AddHandlerForGC(vm, JSVM_CB_TRIGGER_AFTER_GC, OnAfterGC2, JSVM_GC_TYPE_ALL, NULL) == JSVM_INVALID_ARG) {
         add_repeated = true;
     }
-    // Remove the OnAfter2 callback.
+    // Remove the OnAfterGC2 callback function.
     JSVM_CALL(OH_JSVM_RemoveHandlerForGC(vm, JSVM_CB_TRIGGER_AFTER_GC, OnAfterGC2, NULL));
-    // Repeated removal of OnAfter2 is invalid.
+    // Repeatedly removing OnAfterGC2 is invalid.
     if (OH_JSVM_RemoveHandlerForGC(vm, JSVM_CB_TRIGGER_AFTER_GC, OnAfterGC2, NULL) == JSVM_INVALID_ARG) {
         remove_repeated = true;
     }

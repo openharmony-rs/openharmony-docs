@@ -1,12 +1,21 @@
+---
+kits: ["ArkTS / Ark Programming Language"]
+description: "Introduces ASON parsing and generation capabilities: supports mutual conversion between JSON strings and Sendable objects. The resulting Sendable objects can be passed between concurrent tasks with high performance, suitable for development scenarios involving cross-thread transfer of structured data."
+keywords: [ASON, parsing and generation, serialization, deserialization, JSON string, Sendable object, cross-thread transfer, structured data]
+doctype: guide
+status: active
+---
+
 # ASON Parsing and Generation
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:24:38.065Z pushedAt=2026-11-09T09:08:04.736Z nl=1 -->
 
-The [ASON utility](../reference/apis-arkts/arkts-apis-arkts-utils-ASON.md) is similar to the JSON utility provided by JavaScript. JSON is used to serialize (via **stringify**) and deserialize (via **parse**) JavaScript objects. In contrast, ASON provides serialization and deserialization capabilities for [Sendable objects](arkts-sendable.md). The **ASON.stringify** method converts an object to a string, and **ASON.parse** converts a string back to a Sendable object. This enables high-performance pass-by-reference of these objects between concurrent tasks.
+The [ASON](../reference/apis-arkts/arkts-apis-arkts-utils-ASON.md) tool is similar to the JSON tool provided by JS. JSON is used to serialize (stringify) and deserialize (parse) JS objects. ASON provides the serialization and deserialization capabilities for [Sendable objects](arkts-sendable.md). You can use the ASON.stringify method to convert an object into a string, and use the ASON.parse method to convert a string into a Sendable object, thereby implementing high-performance reference passing of objects between concurrent tasks.
 
 The **ASON.stringify** method can also convert Map and Set objects into strings. These include Map, Set, [collections.Map](../reference/apis-arkts/arkts-apis-arkts-collections-Map.md), [collections.Set](../reference/apis-arkts/arkts-apis-arkts-collections-Set.md), [HashMap](../reference/apis-arkts/js-apis-hashmap.md#hashmap) and [HashSet](../reference/apis-arkts/js-apis-hashset.md#hashset).
 
@@ -17,20 +26,43 @@ The **ASON.stringify** method can also convert Map and Set objects into strings.
 ## Usage Example
 
 Use ASON interfaces to serialize and deserialize [Sendable objects](arkts-sendable.md).
+<!-- @[example_serialize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/AsonParsingGeneration.ets) --> 
 
-```ts
+``` TypeScript
 import { ArkTSUtils, collections } from '@kit.ArkTS';
 
-ArkTSUtils.ASON.parse("{}")
-ArkTSUtils.ASON.stringify(new collections.Array(1, 2, 3))
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
 
-let options2: ArkTSUtils.ASON.ParseOptions = {
-    bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
-    parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          console.info(`ASON parse object result is ${ArkTSUtils.ASON.parse('{}')}`)
+          console.info(ArkTSUtils.ASON.stringify(new collections.Array(1, 2, 3)));
+
+          let options2: ArkTSUtils.ASON.ParseOptions = {
+            bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
+            parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
+          }
+          let jsonText = '{"largeNumber":112233445566778899}';
+          let map = ArkTSUtils.ASON.parse(jsonText, undefined, options2);
+          // Execution result: {"largeNumber":112233445566778899}
+          console.info(ArkTSUtils.ASON.stringify(map));
+          this.message = 'success';
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
 }
-let jsonText = '{"largeNumber":112233445566778899}';
-let map = ArkTSUtils.ASON.parse(jsonText, undefined, options2);
-// Execution result: {"largeNumber":112233445566778899}
-console.info(ArkTSUtils.ASON.stringify(map));
 ```
-<!-- @[example_serialize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/AsonParsingGeneration.ets) -->

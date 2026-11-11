@@ -6,8 +6,9 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=940093aa12ae353d9b623701a3a33e4e71d06ce9 translatedAt=2026-11-06T01:37:20.410Z pushedAt=2026-11-09T03:31:22.794Z nl=1 -->
 
-The **battery** module allows you to query the charging status and remaining power of a device.
+This module provides APIs for querying the charging status and remaining battery level. It applies to scenarios where app behavior needs to be adjusted based on the device battery status, for example, reducing background activity frequency or reminding users to charge when the battery is low, helping you optimize the power consumption performance and user experience of apps.
 
 >  **NOTE**
 >
@@ -41,7 +42,7 @@ Obtains the current charging state and battery level.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [GetStatusOptions](#getstatusoptionsdeprecated) | No| Object that contains the API calling result. This parameter is optional and is left blank by default.|
+| options | [GetStatusOptions](#getstatusoptionsdeprecated) | No | Object containing the API call result, which is used to obtain the device charging status and remaining battery level through a callback. If this parameter is not passed, the battery information cannot be obtained and no callback is executed. |
 
 **Example**
 
@@ -112,15 +113,15 @@ export default {
 
 ## GetStatusOptions<sup>(deprecated)</sup>
 
-Object that contains the API calling result.
+Defines an object that contains the API call options, including success, failure, and completion.
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Lite
 
 | Name  | Type                                               | Mandatory| Description                                                        |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | success  | (data: [BatteryResponse](#batteryresponsedeprecated)) => void | No  | Called when an API call is successful. **data** is a return value of the [BatteryResponse](#batteryresponsedeprecated) type.|
-| fail     | (data: string, code: number) => void                | No  | Called when an API call has failed. **data** indicates the error information, and **code** indicates the error code.      |
-| complete | () => void                                          | No  | Called when an API call is complete.                                    |
+| fail     | (data: string, code: number) => void                | No  | Called invoked when the API call fails. **data** indicates the error message, and **code** indicates the error code.      |
+| complete | () => void | No | Callback invoked when the API call ends, regardless of whether the API call succeeds or fails. Pass this callback when cleanup or notification operations need to be performed after the API call is complete. If this callback is not passed, no end notification is provided. |
 
 ## BatteryResponse<sup>(deprecated)</sup>
 

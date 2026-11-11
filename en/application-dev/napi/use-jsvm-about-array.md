@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to use JSVM-API to create and manipulate JavaScript arrays, TypedArray objects, and DataView objects, enabling native-JavaScript interaction such as reading and writing elements, obtaining array lengths, and checking types."
+keywords: ["OH_JSVM_CreateArray","OH_JSVM_SetElement","OH_JSVM_GetElement","OH_JSVM_GetArrayLength","OH_JSVM_CreateTypedarray","OH_JSVM_CreateDataview","OH_JSVM_IsArray","TypedArray","DataView"]
+doctype: guide
+status: active
+---
+
 # Working with Arrays Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=23d7ff60c67cd3075712762902e4e8f21f8c70ac translatedAt=2026-11-09T08:52:17.322Z nl=1 -->
 
 ## Introduction
 
@@ -50,50 +59,52 @@ Use **OH_JSVM_CreateArray** to create a JS array object.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarray/src/main/cpp/hello.cpp) -->  
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Register the CreateArray callback.
-static int DIFF_VALUE_FIVE = 5;
-// Define OH_JSVM_CreateArray. 
+#include "hilog/log.h"
+
+// ...
+
+static int g_diffValueFive = 5;
+// Sample method for OH_JSVM_CreateArray
 static JSVM_Value CreateArray(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // Create an empty array.
     JSVM_Value array = nullptr;
     JSVM_Status status = OH_JSVM_CreateArray(env, &array);
+    // Assign values to the created array.
+    for (int i = 0; i < g_diffValueFive; i++) {
+        JSVM_Value element;
+        OH_JSVM_CreateInt32(env, i, &element);
+        OH_JSVM_SetElement(env, array, i, element);
+    }
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM CreateArray fail");
-        return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM CreateArray success");
     }
-    // Assign values to the created array.
-    for (int i = 0; i < DIFF_VALUE_FIVE; i++) {
-        JSVM_Value element;
-        JSVM_CALL(OH_JSVM_CreateInt32(env, i, &element));
-        JSVM_CALL(OH_JSVM_SetElement(env, array, i, element));
-    }
     return array;
 }
+// Register callback for CreateArray
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateArray},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named createArray and associate it with a callback. This allows the CreateArray callback to be called from JS.
+// CreateArray method alias for JS calls
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createArray", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+//  Sample JS for testing
+const char *SRC_CALL_NATIVE = R"JS(
   function testCreateArray() {
     return createArray();
   }
   testCreateArray();
 )JS";
 ```
-<!-- @[oh_jsvm_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarray/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -105,18 +116,22 @@ Use **OH_JSVM_CreateArrayWithLength** to create a JS array object of the specifi
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarraywithlength/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_CreateArrayWithLength.
+#include "hilog/log.h"
+// ...
+
+
+// Sample method for OH_JSVM_CreateArrayWithLength
 static JSVM_Value CreateArrayWithLength(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     JSVM_Value result = nullptr;
-    // Obtain the callback information.
+    // Parse the passed parameters with OH_JSVM_GetCbInfo.
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     // Obtain the array length passed.
     int32_t length = 0;
@@ -141,20 +156,19 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateArrayWithLength},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named createArrayWithLength and associate it with a callback. This allows the CreateArrayWithLength callback to be called from JS.
+// CreateArrayWithLength method alias for JS calls
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createArrayWithLength", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+//  Sample JS for testing
+const char *SRC_CALL_NATIVE = R"JS(
 let num = 7;
-function testCreateArrayWithLength(num){
+function testCreateArrayWithLength(num) {
     return createArrayWithLength(num);
 }
 testCreateArrayWithLength(num);
 )JS";
 ```
-<!-- @[oh_jsvm_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarraywithlength/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -162,17 +176,21 @@ JSVM CreateArrayWithLength success
 ```
 ### OH_JSVM_CreateTypedarray
 
-Use **OH_JSVM_CreateTypedarray** to create a JS **TypedArray** object based on an **ArrayBuffer**. The **TypedArray** object provides an array-like view over an underlying data buffer, where each element has the same underlying binary scalar data type.
+Creates a JavaScript TypedArray object on an existing ArrayBuffer. The TypedArray object provides an array-like view over the underlying data buffer, where each element has the same underlying binary scalar data type.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createtypedarray/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_CreateTypedarray.
-static int DIFF_VALUE_THREE = 3;
+#include "hilog/log.h"
+// ...
+
+
+// Sample method for OH_JSVM_CreateTypedarray
+static int g_diffValueThree = 3;
 static JSVM_Value CreateTypedArray(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -215,7 +233,7 @@ static JSVM_Value CreateTypedArray(JSVM_Env env, JSVM_CallbackInfo info)
             elementSize = sizeof(int8_t);
             break;
     }
-    size_t length = DIFF_VALUE_THREE;
+    size_t length = g_diffValueThree;
     JSVM_Value arrayBuffer = nullptr;
     JSVM_Value typedArray = nullptr;
     void *data;
@@ -235,12 +253,12 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateTypedArray},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named createTypedArray and associate it with a callback. This allows the CreateTypedArray callback to be called from JS.
+// CreateTypedArray method alias for JS calls
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createTypedArray", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+//  Sample JS for testing
+const char *SRC_CALL_NATIVE = R"JS(
 const type = {
     INT8_ARRAY: 0,
     UINT8_ARRAY: 1,
@@ -258,7 +276,6 @@ createTypedArray(type.INT8_ARRAY);
 createTypedArray(type.INT32_ARRAY);
 )JS";
 ```
-<!-- @[oh_jsvm_create_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createtypedarray/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -271,10 +288,18 @@ Use **OH_JSVM_CreateDataview** to create a JS **DataView** object based on an **
 
 CPP code:
 
-```cpp
-static int DIFF_VALUE_FOUR = 4;
-static int DIFF_VALUE_TWELVE = 12;
-// Define OH_JSVM_CreateDataview.
+<!-- @[oh_jsvm_create_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createdataview/src/main/cpp/hello.cpp) -->
+
+``` C++
+#include "napi/native_api.h"
+#include "ark_runtime/jsvm.h"
+#include "hilog/log.h"
+// ...
+
+static int g_diffValueFour = 4;
+static int g_diffValueTwelve = 12;
+
+// Sample method for OH_JSVM_CreateDataview
 static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // Obtain the two parameters passed from JS.
@@ -283,9 +308,9 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value arrayBuffer = nullptr;
     JSVM_Value result = nullptr;
     // Byte length of DataView.
-    size_t byteLength = DIFF_VALUE_TWELVE;
+    size_t byteLength = g_diffValueFour;
     // Offset of the byte.
-    size_t byteOffset = DIFF_VALUE_FOUR;
+    size_t byteOffset = g_diffValueTwelve;
     // Obtain the parameters of the callback.
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // Convert the parameter into the object type.
@@ -294,7 +319,6 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Status status = OH_JSVM_CreateDataview(env, byteLength, arrayBuffer, byteOffset, &result);
     // Obtain the pointer to the DataView object and the length.
     uint8_t *data = nullptr;
-    // Assign values to DataView.
     int32_t infoType = 0;
     OH_JSVM_GetValueInt32(env, args[1], &infoType);
     size_t returnLength = 0;
@@ -307,7 +331,7 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     switch (infoType) {
         case BYTE_LENGTH:
             {
-                JSVM_Value len;
+                JSVM_Value len = nullptr;
                 JSVM_CALL(OH_JSVM_CreateInt32(env, returnLength, &len));
                 returnResult = len;
                 if (status != JSVM_OK) {
@@ -321,8 +345,8 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
             {
                 bool isArraybuffer = false;
                 JSVM_CALL(OH_JSVM_IsArraybuffer(env, returnArrayBuffer, &isArraybuffer));
-                JSVM_Value isArray;
-                OH_JSVM_GetBoolean(env, isArraybuffer, &isArray);
+                JSVM_Value isArray = nullptr;
+                JSVM_CALL(OH_JSVM_GetBoolean(env, isArraybuffer, &isArray));
                 returnResult = isArray;
                 if (status != JSVM_OK) {
                     OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
@@ -333,7 +357,7 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
             }
         case BYTE_OFFSET:
             {
-                JSVM_Value offset;
+                JSVM_Value offset = nullptr;
                 JSVM_CALL(OH_JSVM_CreateInt32(env, returnOffset, &offset));
                 returnResult = offset;
                 if (status != JSVM_OK) {
@@ -353,12 +377,12 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateDataView},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named createDataView and associate it with a callback. This allows the CreateDataView callback to be called from JS.
+// Alias of the CreateDataView method, for JS to call.
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createDataView", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+//  Sample JS for testing
+const char *SRC_CALL_NATIVE = R"JS(
  let BYTE_LENGTH = 0;
  createDataView(new ArrayBuffer(16), BYTE_LENGTH);
  let IS_ARRAYBUFFER = 1;
@@ -367,11 +391,10 @@ const char *srcCallNative = R"JS(
  createDataView(new ArrayBuffer(16), BYTE_OFFSET);
 )JS";
 ```
-<!-- @[oh_jsvm_create_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createdataview/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
-CreateDataView success, returnLength: 12
+JSVM CreateDataView success, returnLength: 12
 JSVM CreateDataView success, isArraybuffer: 1
 JSVM CreateDataView success, returnOffset: 4
 ```
@@ -381,18 +404,21 @@ Use **OH_JSVM_GetArrayLength** to obtain the length of an array.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getarraylength/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_GetArrayLength.
+#include "hilog/log.h"
+// ...
+
+
+// Sample method for OH_JSVM_GetArrayLength
 static JSVM_Value GetArrayLength(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_Value result = nullptr;
-    // Initialize length.
     uint32_t length = 0;
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // Check whether the parameter is an array.
@@ -402,11 +428,6 @@ static JSVM_Value GetArrayLength(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_INFO(LOG_APP, "JSVM Argument must be an array");
         return nullptr;
     }
-    /*
-     * If the array length is successfully obtained, length is assigned to the actual JSArray length, and the API returns the JSVM_OK status code.
-     * If args[0] is not of the JSArray type, for example, args[0] is a proxy object, the length cannot be obtained.
-     * In this case, length remains unchanged, and the JSVM_ARRAY_EXPECTED status code is returned.
-     */
     JSVM_Status status = OH_JSVM_GetArrayLength(env, args[0], &length);
     if (status == JSVM_OK) {
         // Create a return value.
@@ -420,17 +441,16 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetArrayLength},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named getArrayLength and associate it with a callback. This allows the GetArrayLength callback to be called from JS.
+// GetArrayLength method alias for JS calls
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getArrayLength", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+//  Sample JS for testing
+const char *SRC_CALL_NATIVE = R"JS(
 let data = [0, 1, 2, 3, 4, 5];
 getArrayLength(data);
 )JS";
 ```
-<!-- @[oh_jsvm_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getarraylength/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -442,12 +462,16 @@ Use **OH_JSVM_GetTypedarrayInfo** to obtain information about a **TypedArray** o
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_typedarray_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/gettypedarrayinfo/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_GetTypedarrayInfo.
+#include "hilog/log.h"
+// ...
+
+
+// Sample method for OH_JSVM_GetTypedarrayInfo
 static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // Obtain and parse the parameters passed to a JS callback within a JSVM. The first parameter is the TypedArray type of the information to obtain, and the second parameter is the enums of the information type to obtain.
@@ -458,7 +482,7 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
     // Convert the second parameter to the int32 type for comparison.
     int32_t infoTypeParam = 0;
     OH_JSVM_GetValueInt32(env, args[1], &infoTypeParam);
-    // Define the infoType enums in the same sequence as those in ArkTS.
+    // Define an enum type whose order and meaning are consistent with the infoType enum on the ArkTS side.
     enum InfoType { INFO_TYPE, INFO_LENGTH, INFO_ARRAY_BUFFER, INFO_BYTE_OFFSET };
     void *data;
     JSVM_TypedarrayType type;
@@ -515,7 +539,7 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
                 // ArrayBuffer under TypedArray.
                 bool isArrayBuffer = false;
                 JSVM_CALL(OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer));
-                JSVM_Value isArray;
+                JSVM_Value isArray = nullptr;
                 OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
                 result = isArray;
                 if (status != JSVM_OK) {
@@ -535,23 +559,22 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetTypedArrayInfo},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named getTypedArrayInfo and associate it with a callback. This allows the GetTypedArrayInfo callback to be called from JS.
+// Alias of the GetTypedArrayInfo method, for JS to call.
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getTypedArrayInfo", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+//  Sample JS for testing
+const char *SRC_CALL_NATIVE = R"JS(
 // is JSVM_INT8_ARRAY
 getTypedArrayInfo(new Int8Array(3), 0);
-// Length
+// length
 getTypedArrayInfo(new Int8Array(5), 1);
 // is_arraybuffer
 getTypedArrayInfo(new Int8Array(5), 2);
-// Byte offset.
+// byteoffset
 getTypedArrayInfo(new Int8Array(1), 3);
 )JS";
 ```
-<!-- @[oh_jsvm_get_typedarray_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/gettypedarrayinfo/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -562,15 +585,17 @@ JSVM GetTypedArrayInfo success, byteOffset: 0
 ```
 ### OH_JSVM_GetDataviewInfo
 
-Use **OH_JSVM_GetDataviewInfo** to obtain information about a **DataView** object.
+Obtains information about a DataView object.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_dataview_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getdataviewinfo/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
 
 // Print a success or failure log based on the return status of OH_JSVM_GetDataviewInfo.
 static void LogGetDataViewInfo(JSVM_Status status, const char *name, int32_t value)
@@ -582,7 +607,7 @@ static void LogGetDataViewInfo(JSVM_Status status, const char *name, int32_t val
     OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, %{public}s: %{public}d", name, value);
 }
 
-// Define OH_JSVM_GetDataviewInfo.
+// Sample method for OH_JSVM_GetDataviewInfo
 static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // Obtain and parse the parameters passed to a JS callback within a JSVM. The first parameter is the DataView type of the information to obtain, and the second parameter is the enums of the information type to obtain.
@@ -630,29 +655,28 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetDataViewInfo},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named getDataViewInfo and associate it with a callback. This allows the GetDataViewInfo callback to be called from JS.
+// Alias of the GetDataViewInfo method, for JS to call.
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getDataViewInfo", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char *srcCallNative = R"JS(
-// Byte length.
-getDataViewInfo(new DataView(new Int8Array([2,5]).buffer), 0);
-// Check whether the data is an ArrayBuffer object.
+//  Sample JS for testing
+const char *SRC_CALL_NATIVE = R"JS(
+// bytelength
+getDataViewInfo(new DataView(new Int8Array([2, 5]).buffer), 0);
+// is arraybuffer
 let data = 'a';
 let isarraybuffer = 1;
 getDataViewInfo(data, isarraybuffer);
-// Check whether the data is an ArrayBuffer object.
-data = new DataView(new Int8Array([2,5,3]).buffer);
+// is arraybuffer
+data = new DataView(new Int8Array([2, 5, 3]).buffer);
 isarraybuffer = 1;
 getDataViewInfo(data, isarraybuffer);
 // byte_offset
-data = new DataView(new Int8Array([2,5,3]).buffer);
+data = new DataView(new Int8Array([2, 5, 3]).buffer);
 isarraybuffer = 2;
 getDataViewInfo(data, isarraybuffer);
 )JS";
 ```
-<!-- @[oh_jsvm_get_dataview_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getdataviewinfo/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -667,12 +691,16 @@ Use **OH_JSVM_IsArray** to check whether a JS object is an array.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isarray/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_IsArray.
+#include "hilog/log.h"
+// ...
+
+
+// Sample method for OH_JSVM_IsArray
 static JSVM_Value IsArray(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -694,17 +722,16 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = IsArray},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named isArray and associate it with a callback. This allows the IsArray callback to be called from JS.
+// IsArray method alias for TS calls
 static JSVM_PropertyDescriptor descriptor[] = {
     {"isArray", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
+//  Sample JS for testing
 const char *srcCallNative = R"JS(
 let data = [1, 2, 3, 4, 5];
 isArray(data);
 )JS";
 ```
-<!-- @[oh_jsvm_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isarray/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -716,16 +743,20 @@ Use **OH_JSVM_SetElement** to set an element at the specified index for a JS obj
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/setelement/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_SetElement.
-static int DIFF_VALUE_THREE = 3;
+#include "hilog/log.h"
+// ...
+
+
+// Sample method for OH_JSVM_SetElement
+static int g_diffValueThree = 3;
 static JSVM_Value SetElement(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = DIFF_VALUE_THREE;
+    size_t argc = g_diffValueThree;
     JSVM_Value args[3] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     int32_t index = 0;
@@ -743,17 +774,15 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = SetElement},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named setElement and associate it with a callback. This allows the SetElement callback to be called from JS.
+// SetElement method alias for JS calls
 static JSVM_PropertyDescriptor descriptor[] = {
     {"setElement", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char *srcCallNative = R"JS(
-let data = [1, 2, 3, 4, 5];
-setElement(data, 3, undefined);
+//  Sample JS for testing
+const char *SRC_CALL_NATIVE = R"JS(
+setElement(3);
 )JS";
 ```
-<!-- @[oh_jsvm_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/setelement/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -765,13 +794,18 @@ Use **OH_JSVM_GetElement** to obtain the element at the specified index of a JS 
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getelement/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_GetElement.
-static JSVM_Value GetElement(JSVM_Env env, JSVM_CallbackInfo info) {
+#include "hilog/log.h"
+// ...
+
+
+// Sample method for OH_JSVM_GetElement
+static JSVM_Value GetElement(JSVM_Env env, JSVM_CallbackInfo info)
+{
     // Obtain the two parameters passed from JS.
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
@@ -794,17 +828,16 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetElement},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named getElement and associate it with a callback. This allows the GetElement callback to be called from JS.
+// GetElement method alias for JS calls
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getElement", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+//  Sample JS for testing
+const char *SRC_CALL_NATIVE = R"JS(
 let arr = [10, 'hello', null, true];
 getElement(arr, 3);
 )JS";
 ```
-<!-- @[oh_jsvm_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getelement/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -816,13 +849,17 @@ Use **OH_JSVM_HasElement** to check whether a JS object has an element at the sp
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/haselement/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_HasElement.
-static JSVM_Value HasElement(JSVM_Env env, JSVM_CallbackInfo info) {
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_HasElement
+static JSVM_Value HasElement(JSVM_Env env, JSVM_CallbackInfo info)
+{
     // Obtain the two parameters passed from JS.
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
@@ -848,18 +885,17 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = HasElement},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named hasElement and associate it with a callback. This allows the HasElement callback to be called from JS.
+// HasElement method alias for JS calls
 static JSVM_PropertyDescriptor descriptor[] = {
     {"hasElement", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
+//  Sample JS for testing
 const char *srcCallNative = R"JS(
 let arr = [10, 'hello', null, true];
 hasElement(arr, 0);
 hasElement(arr, 4);
 )JS";
 ```
-<!-- @[oh_jsvm_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/haselement/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -872,13 +908,18 @@ Use **OH_JSVM_DeleteElement** to delete the element at the specified index from 
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/deleteelement/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_DeleteElement.
-static JSVM_Value DeleteElement(JSVM_Env env, JSVM_CallbackInfo info) {
+#include "hilog/log.h"
+// ...
+
+
+// Sample method for OH_JSVM_DeleteElement
+static JSVM_Value DeleteElement(JSVM_Env env, JSVM_CallbackInfo info)
+{
     // Obtain the two parameters passed from JS.
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
@@ -904,17 +945,16 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = DeleteElement},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named deleteElement and associate it with a callback. This allows the DeleteElement callback to be called from JS.
+// DeleteElement method alias for JS calls
 static JSVM_PropertyDescriptor descriptor[] = {
     {"deleteElement", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+//  Sample JS for testing
+const char *SRC_CALL_NATIVE = R"JS(
 let arr = [10, 'hello', null, true];
 deleteElement(arr, 0);
 )JS";
 ```
-<!-- @[oh_jsvm_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/deleteelement/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -922,17 +962,22 @@ JSVM DeleteElement: 1
 ```
 ### OH_JSVM_IsDataview
 
-Use **OH_JSVM_IsDataview** to check whether a JS object is a **DataView** object.
+Determines whether a JavaScript object is a DataView object.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_is_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isdataview/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_IsDataview.
-static JSVM_Value IsDataView(JSVM_Env env, JSVM_CallbackInfo info) {
+#include "hilog/log.h"
+// ...
+
+
+// Sample method for OH_JSVM_IsDataview
+static JSVM_Value IsDataView(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -953,18 +998,17 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = IsDataView},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named isDataView and associate it with a callback. This allows the IsDataView callback to be called from JS.
+// IsDataView method alias for TS calls
 static JSVM_PropertyDescriptor descriptor[] = {
     {"isDataView", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
+//  Sample JS for testing
 const char *srcCallNative = R"JS(
 let buffer = new ArrayBuffer(16);
 let dataView = new DataView(buffer);
 isDataView(dataView);
 )JS";
 ```
-<!-- @[oh_jsvm_is_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isdataview/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -972,17 +1016,22 @@ JSVM IsDataView: 1
 ```
 ### OH_JSVM_IsTypedarray
 
-Use **OH_JSVM_IsTypedarray** to check whether a JS object is an **TypedArray** object.
+Use **OH_JSVM_IsTypedarray** to check whether a JS object is a **TypedArray** object.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_is_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/istypedarray/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_IsTypedarray.
-static JSVM_Value IsTypedarray(JSVM_Env env, JSVM_CallbackInfo info) {
+#include "hilog/log.h"
+// ...
+
+
+// Sample method for OH_JSVM_IsTypedarray
+static JSVM_Value IsTypedarray(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -1002,16 +1051,15 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = IsTypedarray},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named isTypedarray and associate it with a callback. This allows the IsTypedarray callback to be called from JS.
+// IsTypedarray method alias for TS calls
 static JSVM_PropertyDescriptor descriptor[] = {
     {"isTypedarray", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
+//  Sample JS for testing
 const char *srcCallNative = R"JS(
 isTypedarray(new Uint16Array([1, 2, 3, 4]));
 )JS";
 ```
-<!-- @[oh_jsvm_is_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/istypedarray/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt

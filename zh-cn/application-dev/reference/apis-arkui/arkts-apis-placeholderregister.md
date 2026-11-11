@@ -147,7 +147,7 @@ isRegistered(id: string): boolean
 | 名称   | 类型                                       | 只读 | 可选 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ---- | ------------------------------------------ |
 | id     | string                                     | 否   | 是   | 占位模板的id。注册表通过UIContext的[getPlaceholderRegister()](./arkts-apis-uicontext-uicontext.md#getplaceholderregister)获取，占位builder通过其[register](#register)方法注册。<br/>未设置、设置为空字符串或未注册时，使用系统默认占位。<br/>默认值：undefined |
-| size   | [SizeOptions](arkui-ts/ts-types.md#sizeoptions) | 否   | 是   | 占位的建议尺寸，仅影响占位组件的测量，不影响真实列表项的布局。真实列表项创建完成后会按列表项的正常布局约束重新布局，建议尺寸越接近真实列表项的尺寸，替换时的视觉跳动越小。<br/>默认值：undefined。未设置时，不指定建议尺寸，占位组件按组件自身的估算尺寸测量。 |
+| size   | [SizeOptions](arkui-ts/ts-types.md#sizeoptions) | 否   | 是   | 占位的建议尺寸，仅影响占位组件的测量，不影响真实列表项的布局。真实列表项创建完成后会按列表项的正常布局约束重新布局，建议尺寸越接近真实列表项的尺寸，替换时的视觉跳动越小。宽高不建议大于当前滚动容器可视范围的宽高，否则可能导致性能劣化或AppFreeze。<br/>默认值：undefined。未设置时，不指定建议尺寸，占位组件按组件自身的估算尺寸测量。 |
 
 ## PlaceholderProvider
 

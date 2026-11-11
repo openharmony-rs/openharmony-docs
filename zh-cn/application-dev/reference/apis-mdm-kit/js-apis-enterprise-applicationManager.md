@@ -3394,7 +3394,7 @@ try {
 
 addHideLauncherIcon(admin: Want, bundleNames: Array\<string\>): void
 
-添加隐藏桌面应用图标名单。
+添加隐藏桌面应用图标名单。<!--RP9--><!--RP9End-->
 
 > **说明：**
 >

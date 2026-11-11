@@ -1,12 +1,11 @@
 # Class (GestureHandlingResolution)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:52:53.352Z pushedAt=2026-08-11T06:04:53.417Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-02T12:43:39.395Z pushedAt=2026-11-05T08:03:22.090Z nl=1 -->
 
 Declares the smart gesture handling result.
 

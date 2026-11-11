@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "配置VoIP播放和采集流类型，使用系统3A算法改善通话音质，并申请麦克风权限。"
+keywords: [VoIP, AudioRenderer, AudioCapturer, STREAM_USAGE_VOICE_COMMUNICATION, SOURCE_TYPE_VOICE_COMMUNICATION, 声学回声消除, 噪声抑制, 自动增益控制, 麦克风权限]
+doctype: guide
+status: active
+---
+
 # 开发音频通话功能
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

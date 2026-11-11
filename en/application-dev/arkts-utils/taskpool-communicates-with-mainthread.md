@@ -1,29 +1,29 @@
+---
+kits: ["ArkTS / ArkTS programming language"]
+description: "Describes the communication method between the TaskPool task and the host thread: the task sends messages to the host thread through sendData(), and the host thread receives them through onReceiveData(), implementing task status notification and data change reporting, and supporting returning large data in segments from scenarios such as databases."
+keywords: [host thread communication, sendData, onReceiveData, task status notification, return data in segments, TaskPool, real-time data reporting]
+doctype: guide
+status: active
+---
+
 # Communication Between the TaskPool Task and Host Thread
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:48:45.928Z pushedAt=2026-11-09T09:09:50.795Z nl=1 -->
 
 When a task needs to do more than just return a final result—such as periodically updating the host thread on its status, reporting data changes, or returning large volumes of data in segments (for example, fetching large datasets from a database)—you can use the approach described in this topic.
 
 The following example uses multiple image loading tasks that provide real-time updates to illustrate the process.
 
-1. Implement a method to receive messages sent by the task.
+In the Task to be executed, add the sendData() API to send messages to the host thread. On the host thread, receive messages through the onReceiveData() API. In this way, the host thread can receive the data sent by the Task through the notice() API.
 
-   ```ts
-   // TaskSendDataUsage.ets
-   export function notice(data: number): void {
-     console.info("Child thread task completed. Total images loaded:", data)
-   }
-   ```
-   <!-- @[receive_task_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
-
-2. Add **sendData()** to the task to enable the child thread to send messages to the host thread.
-
-   ```ts
-   // IconItemSource.ets
+   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IconItemSource.ets) -->
+   
+   ``` TypeScript
    export class IconItemSource {
      image: string | Resource = '';
      text: string | Resource = '';
@@ -34,21 +34,26 @@ The following example uses multiple image loading tasks that provide real-time u
      }
    }
    ```
-   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IconItemSource.ets) -->
 
-   ```ts
-   // TaskSendDataUsage.ets
+   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) --> 
+   
+   ``` TypeScript
    import { taskpool } from '@kit.ArkTS';
    import { IconItemSource } from './IconItemSource';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // Implement the method for receiving Task messages.
+   function notice(data: number): void {
+     console.info('The child thread has loaded data, total images loaded: ', data);
+   }
    
-   // Use sendData to notify the host thread of information in real time.
+   // Notify the host thread of information in real time through the Task's sendData method.
    @Concurrent
    export function loadPictureSendData(count: number): IconItemSource[] {
      let iconItemSourceList: IconItemSource[] = [];
-     // Add six IconItem data records.
+     // Traverse and add data of 6*count IconItems.
      for (let index = 0; index < count; index++) {
        const numStart: number = index * 6;
-       // Use six images in the loop.
+       // Use 6 image resources in a loop here.
        iconItemSourceList.push(new IconItemSource('$media:startIcon', `item${numStart + 1}`));
        iconItemSourceList.push(new IconItemSource('$media:background', `item${numStart + 2}`));
        iconItemSourceList.push(new IconItemSource('$media:foreground', `item${numStart + 3}`));
@@ -60,18 +65,6 @@ The following example uses multiple image loading tasks that provide real-time u
      }
      return iconItemSourceList;
    }
-   ```
-   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
-
-3. In the host thread, use **onReceiveData()** to receive messages.
-
-   This allows the host thread to receive data sent by the task through **notice()**.
-
-   ```ts
-   // Index.ets
-   import { taskpool } from '@kit.ArkTS';
-   import { IconItemSource } from './IconItemSource';
-   import { loadPictureSendData, notice } from './TaskSendDataUsage';
    
    @Entry
    @Component
@@ -84,13 +77,18 @@ The following example uses multiple image loading tasks that provide real-time u
            Text(this.message)
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
-             .onClick(async () => {
-               let iconItemSourceList: IconItemSource[] = [];
+             .onClick(() => {
+               let iconItemSourceList: IconItemSource[];
                let loadPictureTask: taskpool.Task = new taskpool.Task(loadPictureSendData, 30);
                // Use notice to receive messages from the task.
                loadPictureTask.onReceiveData(notice);
-               iconItemSourceList = await taskpool.execute(loadPictureTask) as IconItemSource[];
-               console.info("The length of iconItemSourceList is " + iconItemSourceList.length);
+               taskpool.execute(loadPictureTask).then((res: object) => {
+                 iconItemSourceList = res as IconItemSource[];
+                 this.message = 'success';
+               }).catch((e: BusinessError) => {
+                 this.message = 'failed';
+                 console.error(`taskpool: execute: Code: ${e.code}, message: ${e.message}`);
+               })
              })
          }
          .width('100%')
@@ -99,4 +97,3 @@ The following example uses multiple image loading tasks that provide real-time u
      }
    }
    ```
-   <!-- @[receive_task_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
