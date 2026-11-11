@@ -6102,3 +6102,68 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+## formHost.updateFormsColorInfo
+ 
+updateFormsColorInfo(formIds: Array&lt;string&gt;, colorInfo?: Array&lt;formInfo.FormColorInfo&gt;): Promise&lt;number&gt;
+ 
+批量更新指定卡片的颜色信息。使用Promise异步回调。
+ 
+**起始版本：** 26.1.0
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**需要权限：** ohos.permission.REQUIRE_FORM
+ 
+**系统能力：** SystemCapability.Ability.Form
+ 
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+ 
+**参数：**
+ 
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| formIds | Array&lt;string&gt; | 是 | 待更新的卡片标识列表。单次调用最多支持80个卡片标识。 |
+| colorInfo | Array&lt;[formInfo.FormColorInfo](js-apis-app-form-formInfo-sys.md#formcolorinfo)&gt; | 否 | 卡片着色的颜色信息。不填或数组长度为0时，表示取消卡片着色。单次调用最多支持80组颜色信息。 |
+ 
+**返回值：**
+ 
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;number&gt; | Promise对象，返回赋色成功的卡片数量。 |
+ 
+**错误码：**
+ 
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+ 
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+ 
+**示例：**
+ 
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+ 
+let formIds: Array<string> = ['12400633174999288'];
+let colorInfo: Array<formInfo.FormColorInfo> = [
+  { color: '#FF0000', position: 0 },
+  { color: '#0000FF', position: 1 }
+];
+ 
+try {
+  formHost.updateFormsColorInfo(formIds, colorInfo).then((successCount: number) => {
+    console.info(`updateFormsColorInfo success, count: ${successCount}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
