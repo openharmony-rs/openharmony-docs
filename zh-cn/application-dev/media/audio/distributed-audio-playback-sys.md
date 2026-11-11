@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "系统应用通过分布式音频播放能力，将全部音频或指定音频流投播到组网内远端设备，实现音频跨设备流转。"
+keywords: [分布式音频播放, 音频投播, 远端设备, 音频流转, selectOutputDevice, selectOutputDeviceByFilter, AudioRoutingManager]
+doctype: guide
+status: active
+---
+
 # 分布式音频播放（仅对系统应用开放）
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

@@ -12,6 +12,7 @@
 - [保存媒体库资源](photoAccessHelper-savebutton.md)<!--RP1--><!--RP1End-->
 - 动态照片<!--movingphoto-->
   - [访问和管理动态照片资源](photoAccessHelper-movingphoto.md)
+  - [使用合一动态照片](photoAccessHelper-singlefile-movingphoto.md)
   - [使用MovingPhotoView播放动态照片](movingphotoview-guidelines.md)<!--RP2--><!--RP2End-->
 - 受限开放能力<!--restricted-open-capabilities-->
   - [开发准备](photoAccessHelper-preparation.md)

@@ -226,7 +226,7 @@ Repeat数据源参数联合类型。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | controller | [RepeatController](#repeatcontroller) | 否 | 是 | 绑定到Repeat组件上的控制器。绑定后，需要清理缓存时可调用[clearCache](#clearcache)清理Repeat组件懒加载模式下缓存池中的组件。该控制器仅在创建Repeat时绑定，不支持动态修改。<br>默认值：undefined，即不绑定控制器。 |
-| allowReuseInAnimation | boolean | 否 | 是 | Repeat在[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)动效过程中更新时，是否允许复用子组件。仅在Repeat的父容器组件为[List](./ts-container-list.md)、[Grid](./ts-container-grid.md)、[WaterFlow](./ts-container-waterflow.md)时生效。<br>Repeat与动效一起使用时，Repeat的复用能力会与动效产生冲突，导致动效异常。在涉及动效的场景下，需将该参数设置为false，Repeat在动效过程中更新时将不复用子组件，从而支持动效。<br>true：动效过程中复用能力仍保持开启。<br>false：动效过程中复用能力关闭。<br>默认值：Repeat的父容器组件为List时为false；父容器组件为Grid或WaterFlow时为true。 |
+| allowReuseInAnimation | boolean | 否 | 是 | Repeat在[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)动效过程中更新时，是否允许复用子组件。仅在Repeat的父容器组件为[List](./ts-container-list.md)、[Grid](./ts-container-grid.md)、[WaterFlow](./ts-container-waterflow.md)时生效。<br>Repeat与动效一起使用时，Repeat的复用能力会与动效产生冲突，导致动效异常。在涉及动效的场景下，需将该参数设置为false，Repeat在动效过程中更新时将不复用子组件，从而支持动效。该参数在创建Repeat时设置，不支持动态修改。<br>true：动效过程中复用能力仍保持开启。<br>false：动效过程中复用能力关闭。<br>默认值：Repeat的父容器组件为List时为false；父容器组件为Grid或WaterFlow时为true。 |
 
 **示例：**
 

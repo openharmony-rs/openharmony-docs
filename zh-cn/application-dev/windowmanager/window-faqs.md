@@ -272,30 +272,30 @@ export default class EntryAbility extends UIAbility {
 示例代码如下所示：
 
 ```ts
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { ColorMetrics } from '@kit.ArkUI';
-import { window } from '@kit.ArkUI';
+import { ColorMetrics, window } from '@kit.ArkUI';
 
-let storage: LocalStorage = new LocalStorage();
-storage.setOrCreate('storageSimpleProp', 121);
-windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
-  let errCode: number = err.code;
-  if (errCode) {
-  console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
-  return;
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent("pages/Index", (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      const windowClass = windowStage.getMainWindowSync();
+      try {
+        // 采用ARGB方式
+        windowClass.setWindowBackgroundColor('#0000FF33');
+        // 采用ColorMetrics方式
+        windowClass.setWindowBackgroundColor(ColorMetrics.numeric(0x00112233));
+      } catch (exception) {
+        console.error(`Failed to set the background color. Cause code: ${exception.code}, message: ${exception.message}`);
+      };
+    });
   }
-  console.info('Succeeded in loading the content.');
-  // 采用ARGB方式
-  let color1: string = '#0000FF33'; 
-  // 采用ColorMetrics方式
-  let color2: ColorMetrics = ColorMetrics.numeric(0x00112233);  
-  try {
-    windowClass?.setWindowBackgroundColor(color1);
-    windowClass?.setWindowBackgroundColor(color2);
-  } catch (exception) {
-    console.error(`Failed to set the background color. Cause code: ${exception.code}, message: ${exception.message}`);
-  };
-});
+}
 ```
 
 ## 如何实现横竖屏切换

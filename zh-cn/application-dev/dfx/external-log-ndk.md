@@ -126,8 +126,8 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
         OH_LOG_INFO(LogType::LOG_APP, "[ExternalLogMgr_c] onCapacityReached triggered, log count: %{public}u", arrLen);
         for (uint32_t i = 0; i < arrLen; i++) {
             OH_HiAppEvent_ExternalLog* log = &externalLogArr[i];
-            OH_LOG_INFO(LogType::LOG_APP, "[ExternalLogMgr_c] filePath: %{public}s, %{public}lld, %{public}ld,
-                kb event: %{public}d", log->filePath, log->generationTs, log->fileSize, log->event);
+            OH_LOG_INFO(LogType::LOG_APP, "[ExternalLogMgr_c] filePath: %{public}s, %{public}lld, %{public}ld,"
+                "kb event: %{public}d", log->filePath, log->generationTs, log->fileSize, log->event);
             // 应用自行决定删除故障文件 删除返回的前5个文件
             if (i < 5) {
                 remove(log->filePath);
@@ -162,8 +162,8 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
         OH_LOG_INFO(LogType::LOG_APP, "[ExternalLogMgr_c] onCapacityReached triggered, log count: %{public}u", arrLen);
         for (uint32_t i = 0; i < arrLen; i++) {
             OH_HiAppEvent_ExternalLog* log = &externalLogArr[i];
-            OH_LOG_INFO(LogType::LOG_APP, "[ExternalLogMgr_c] filePath: %{public}s, %{public}lld, %{public}ld,
-                kb event: %{public}d", log->filePath, log->generationTs, log->fileSize, log->event);
+            OH_LOG_INFO(LogType::LOG_APP, "[ExternalLogMgr_c] filePath: %{public}s, %{public}lld, %{public}ld,"
+                "kb event: %{public}d", log->filePath, log->generationTs, log->fileSize, log->event);
             // 应用自行决定删除故障文件 删除返回的前5个文件
             if (i < 5) {
                 remove(log->filePath);
@@ -189,7 +189,9 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
    ArkTS-Dyn：
 
    编辑“napi_init.cpp”文件。
-   
+
+    <!-- @[ExternalLog_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
    ``` C++
    static napi_value Init(napi_env env, napi_value exports)
    {
@@ -229,9 +231,11 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
 
    编辑“index.d.ts”文件。
 
-   ``` TypeScript
-   export const registerExternalLogMgr: () => void;
-   ```
+    <!-- @[ExternalLog_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    
+    ``` TypeScript
+    export const registerExternalLogMgr: () => void;
+    ```
    ArkTS-Sta：
 
    编辑“EntryAbility.ets”文件。
@@ -246,9 +250,11 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
 
    ArkTS-Dyn：   
 
-   ``` TypeScript
-   import testNapi from 'libentry.so';
-   ```  
+    <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    import testNapi from 'libentry.so';
+    ```
 
    ``` TypeScript
    // 在onCreate()函数中添加C API接口调用

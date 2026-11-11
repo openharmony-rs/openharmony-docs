@@ -18,8 +18,8 @@
 | -------- | -------- |
 | OH_FileShare_PersistPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum) | 对所选择的多个文件或目录uri持久化授权。 |
 | OH_FileShare_RevokePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum) | 对所选择的多个文件或目录uri取消持久化授权。 |
-| OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum) | 使能多个已经持久化授权的文件或目录uri。 |
-| OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum) | 取消使能授权过的多个文件或目录uri。 |
+| OH_FileShare_ActivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum) | 激活多个已经持久化授权的文件或目录uri。 |
+| OH_FileShare_DeactivatePermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, FileShare_PolicyErrorResult **result, unsigned int *resultNum) | 取消激活持久化授权过的多个文件或目录uri。 |
 | OH_FileShare_CheckPersistentPermission(const FileShare_PolicyInfo *policies, unsigned int policyNum, bool **result, unsigned int *resultNum) | 校验所选择的多个文件或目录uri的持久化权限结果。 |
 | OH_FileShare_ReleasePolicyErrorResult(FileShare_PolicyErrorResult *errorResult, unsigned int resultNum) | 释放FileShare_PolicyErrorResult内存。 |
 
@@ -28,6 +28,8 @@
 - 使用文件分享的相关接口，需确认设备具有以下系统能力：SystemCapability.FileManagement.AppFileService.FolderAuthorization。
 
 - 在调用文件分享的相关接口前，需要申请权限："[ohos.permission.FILE_ACCESS_PERSIST](../security/AccessToken/restricted-permissions.md#ohospermissionfile_access_persist)"，申请方式请参考[选择申请权限的方式](../security/AccessToken/determine-application-mode.md)。
+
+- 从API版本26.0.1开始，新增外接存储介质授权保留机制。当外接存储介质（如U盘、TF卡等）拔出时，该介质下的临时授权会被清除，已持久化的授权记录会被保留（保留期限为30天）。当同一介质再次插入时，系统会自动恢复该介质下已保留的持久化授权至可用状态，无需用户重新授权。具体机制详见[外接存储介质授权保留机制](file-persistPermission.md#外接存储介质授权保留机制)。
 
 ## 开发步骤
 
