@@ -8,7 +8,7 @@
 <!--Adviser: @zengyawen-->
 
 ```c
-struct OH_Huks_Param {...}
+typedef struct OH_Huks_Param {...} OH_Huks_Param
 ```
 
 ## 概述
