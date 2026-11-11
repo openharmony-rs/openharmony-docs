@@ -49,7 +49,7 @@
 
 通过卡片组件的temporary字段配置卡片类型：`true`为临时卡片，`false`为常态卡片。
 
-- **常态卡片**：由卡片管理服务持久化保存的卡片。使用方进程退出时保留，卡片管理服务重启后从数据库恢复，如添加到桌面的卡片。使用方不再使用的卡片，需调用[formHost.deleteForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#formhostdeleteform)主动删除，否则将常驻在内存；
+- **常态卡片**：由卡片管理服务持久化保存的卡片。使用方进程退出时保留，卡片管理服务重启后从数据库恢复，如添加到桌面的卡片。使用方不再使用的卡片，需调用[formHost.deleteForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#formhostdeleteform)主动删除，否则将常驻在内存。
 
 - **临时卡片**：卡片管理服务不持久化保存的卡片。使用方进程退出时由卡片管理服务自动清理，卡片管理服务重启也自动清理。虽然以上情况会自动清理，但系统对添加卡片数量有一定限制，为防止数量达到上限无法添加卡片，推荐使用方调用[formHost.deleteForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#formhostdeleteform)主动删除不在使用的临时卡片。
 
