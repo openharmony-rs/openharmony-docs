@@ -465,7 +465,6 @@ import { bundleManager } from '@kit.MDMKit';
 
 try {
   // 参数需根据实际情况进行替换
-  // 参数需根据实际情况进行替换
   let result: Array<string> = bundleManager.getDisallowedInstallBundlesSync(null, 100);
   console.info(`Succeeded in getting disallowed install bundles, result : ${JSON.stringify(result)}`);
 } catch (err) {
@@ -692,7 +691,6 @@ getDisallowedUninstallBundlesSync(admin: Want | null, accountId?: number): Array
 import { bundleManager } from '@kit.MDMKit';
 
 try {
-  // 参数需根据实际情况进行替换
   // 参数需根据实际情况进行替换
   let result: Array<string> = bundleManager.getDisallowedUninstallBundlesSync(null, 100);
   console.info(`Succeeded in getting disallowed uninstall bundles, result : ${JSON.stringify(result)}`);

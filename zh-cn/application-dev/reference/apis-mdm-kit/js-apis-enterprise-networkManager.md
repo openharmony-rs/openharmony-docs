@@ -297,7 +297,6 @@ import { networkManager } from '@kit.MDMKit';
 
 try {
   // 参数需根据实际情况进行替换
-  // 参数需根据实际情况进行替换
   let result: boolean = networkManager.isNetworkInterfaceDisabledSync(null, 'eth0');
   console.info(`Succeeded in querying network interface is disabled or not, result : ${result}`);
 } catch (err) {
