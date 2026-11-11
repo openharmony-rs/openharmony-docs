@@ -2638,7 +2638,7 @@ localServer.offWebSocketServerError();
 | caPath<sup>11+</sup> | string |  否  |  是  | 如果设置了此参数，系统将使用用户指定路径的CA证书，(开发者需保证该路径下CA证书的可访问性)，否则将使用系统预设CA证书，系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。目前仅支持格式为pem的文本证书。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
 | clientCert<sup>11+</sup> | [ClientCert](#clientcert11) |   否  |  是   | 支持传输客户端证书。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
 | proxy<sup>12+</sup> | [ProxyConfiguration](#proxyconfiguration12) |  否  | 是 | 通信过程中的代理信息，默认使用系统网络代理。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
-| protocol<sup>12+</sup> | string |  否  | 是 | 自定义Sec-WebSocket-Protocol字段，默认为`""`。    <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23          |
+| protocol<sup>12+</sup> | string |  否  | 是 | 自定义Sec-WebSocket-Protocol字段，默认为空字符串。    <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23          |
 | skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 26.0.0     |
 | pingInterval<sup>21+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。<br>**ArkTS-Dyn起始版本：** 21  <br>**ArkTS-Sta起始版本：** 26.0.0 |
 | pongTimeout<sup>21+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。<br>**ArkTS-Dyn起始版本：** 21  <br>**ArkTS-Sta起始版本：** 26.0.0|
