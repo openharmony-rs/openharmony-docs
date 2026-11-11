@@ -29,7 +29,7 @@ OpenHarmony提供以下两种文件打印方式：
 - **Native 类型：** [Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/types/libentry/Index.d.ts) 声明 `libentry.so` 的函数和返回结构；[entry/oh-package.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/oh-package.json5) 通过 `"libentry.so": "file:./src/main/cpp/types/libentry"` 关联该类型包。类型声明须与 Native 导出及实际返回值保持一致。
 - **文件准备：** Sample 自带 `entry/src/main/resources/rawfile/printDemo.pdf` 和 `printSample.jpg`。[PrintFileUtils.openSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/print/utils/PrintFileUtils.ets) 先读取 rawfile 内容，写入 `context.filesDir` 中的同名文件，关闭写入描述符，再以只读方式打开文件供打印使用。打开失败返回 `undefined`，调用方在 `finally` 中调用 `PrintFileUtils.close` 回收只读描述符。
 
-1. 在`entry/src/main/cpp/napi_init.cpp`中引入打印、NAPI和日志头文件。示例使用互斥锁保护跨线程回调对象，并使用标准容器保存需要跨越C API调用边界的数据。
+步骤1：在`entry/src/main/cpp/napi_init.cpp`中引入打印、NAPI和日志头文件。示例使用互斥锁保护跨线程回调对象，并使用标准容器保存需要跨越C API调用边界的数据。
 
 <!-- @[print_native_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -52,7 +52,7 @@ OpenHarmony提供以下两种文件打印方式：
 #define LOGI(...) OH_LOG_INFO(LOG_APP, ##__VA_ARGS__)
 ```
 
-2. 在`entry/src/main/ets/pages/Index.ets`中引入NAPI模块、文件模块、数据模型和ArkUI组件。
+步骤2：在`entry/src/main/ets/pages/Index.ets`中引入NAPI模块、文件模块、数据模型和ArkUI组件。
 
 <!-- @[print_native_import_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
@@ -77,7 +77,7 @@ import {
 import { PrintFileUtils } from '../print/utils/PrintFileUtils';
 ```
 
-3. 在`entry/src/main/cpp/CMakeLists.txt`中链接NAPI、日志和打印动态库。
+步骤3：在`entry/src/main/cpp/CMakeLists.txt`中链接NAPI、日志和打印动态库。
 
 <!-- @[print_native_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/CMakeLists.txt) -->
 
@@ -92,7 +92,7 @@ add_library(entry SHARED napi_init.cpp)
 target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libohprint.so)
 ```
 
-4. 将打印机信息复制到应用自有数据结构后，再通过线程安全函数传递到ArkTS线程，避免在C API回调结束后继续访问`Print_PrinterInfo`中的指针。
+步骤4：将打印机信息复制到应用自有数据结构后，再通过线程安全函数传递到ArkTS线程，避免在C API回调结束后继续访问`Print_PrinterInfo`中的指针。
 
 <!-- @[print_native_declarations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -135,20 +135,20 @@ struct PrintJobStateEventData {
 
 ## 初始化与发现打印机
 
-1. 封装打印服务初始化和释放接口。释放时先停止发现并注销监听，回收对应线程安全函数，再释放打印服务并清理本地打印回调和文件描述符。线程安全函数的创建、传值及释放辅助实现见完整 Sample 的 [napi_init.cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp)。
+步骤1：封装打印服务初始化和释放接口。释放时先停止发现并注销监听，回收对应线程安全函数，再释放打印服务并清理本地打印回调和文件描述符。线程安全函数的创建、传值及释放辅助实现见完整 Sample 的 [napi_init.cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp)。
 
 <!-- @[print_native_lifecycle_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
 ```cpp
 napi_value NativeInit(napi_env env, napi_callback_info)
 {
-    std::lock_guard<std::mutex> lock(gServiceMutex);
-    if (gInitialized) {
+    std::lock_guard<std::mutex> lock(g_serviceMutex);
+    if (g_initialized) {
         return CreateInt32(env, PRINT_ERROR_NONE);
     }
     Print_ErrorCode code = OH_Print_Init();
     if (code == PRINT_ERROR_NONE) {
-        gInitialized = true;
+        g_initialized = true;
     }
     return CreateInt32(env, code);
 }
@@ -156,33 +156,33 @@ napi_value NativeInit(napi_env env, napi_callback_info)
 napi_value NativeRelease(napi_env env, napi_callback_info)
 {
     {
-        std::lock_guard<std::mutex> lock(gServiceMutex);
-        if (!gInitialized) {
+        std::lock_guard<std::mutex> lock(g_serviceMutex);
+        if (!g_initialized) {
             return CreateInt32(env, PRINT_ERROR_NONE);
         }
     }
-    if (gDiscoveryRunning) {
+    if (g_discoveryRunning) {
         OH_Print_StopPrinterDiscovery();
-        gDiscoveryRunning = false;
+        g_discoveryRunning = false;
     }
-    ReleaseTsfn(gDiscoveryMutex, gDiscoveryTsfn, napi_tsfn_abort);
-    if (gListenerRegistered) {
+    ReleaseTsfn(g_discoveryMutex, g_discoveryTsfn, napi_tsfn_abort);
+    if (g_listenerRegistered) {
         OH_Print_UnregisterPrinterChangeListener();
-        gListenerRegistered = false;
+        g_listenerRegistered = false;
     }
-    ReleaseTsfn(gPrinterChangeMutex, gPrinterChangeTsfn, napi_tsfn_abort);
+    ReleaseTsfn(g_printerChangeMutex, g_printerChangeTsfn, napi_tsfn_abort);
     Print_ErrorCode code = OH_Print_Release();
     ReleaseNativePrintTask(napi_tsfn_abort);
     ReleasePrintJobStateTask(napi_tsfn_abort);
     {
-        std::lock_guard<std::mutex> lock(gServiceMutex);
-        gInitialized = false;
+        std::lock_guard<std::mutex> lock(g_serviceMutex);
+        g_initialized = false;
     }
     return CreateInt32(env, code);
 }
 ```
 
-2. 将打印服务生命周期与页面生命周期绑定。页面只持有一条发现会话，添加打印机弹窗直接复用页面保存的发现结果。
+步骤2：将打印服务生命周期与页面生命周期绑定。页面只持有一条发现会话，添加打印机弹窗直接复用页面保存的发现结果。
 
 <!-- @[print_native_lifecycle_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
@@ -212,7 +212,7 @@ napi_value NativeRelease(napi_env env, napi_callback_info)
   }
 ```
 
-3. 在Native层注册发现回调并封装开始发现、停止发现和连接打印机接口。线程安全函数采用单会话管理，停止发现时同步释放。
+步骤3：在Native层注册发现回调并封装开始发现、停止发现和连接打印机接口。线程安全函数采用单会话管理，停止发现时同步释放。
 
 <!-- @[print_native_discovery_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -225,9 +225,9 @@ void PrinterDiscoveryCallback(Print_DiscoveryEvent event, const Print_PrinterInf
     PrinterEventData *data = new PrinterEventData;
     data->event = static_cast<uint32_t>(event);
     data->printerInfo = CopyPrinterInfo(printerInfo);
-    std::lock_guard<std::mutex> lock(gDiscoveryMutex);
-    if (gDiscoveryTsfn == nullptr ||
-        napi_call_threadsafe_function(gDiscoveryTsfn, data, napi_tsfn_nonblocking) != napi_ok) {
+    std::lock_guard<std::mutex> lock(g_discoveryMutex);
+    if (g_discoveryTsfn == nullptr ||
+        napi_call_threadsafe_function(g_discoveryTsfn, data, napi_tsfn_nonblocking) != napi_ok) {
         delete data;
     }
 }
@@ -237,21 +237,21 @@ napi_value NativeStartPrinterDiscovery(napi_env env, napi_callback_info info)
     size_t count = 1;
     napi_value args[1] = {nullptr};
     if (napi_get_cb_info(env, info, &count, args, nullptr, nullptr) != napi_ok || count != 1 ||
-        GetValueType(env, args[0]) != napi_function) {
+        GetValueType(env, args[ARG_FIRST]) != napi_function) {
         return CreateInt32(env, PRINT_ERROR_INVALID_PARAMETER);
     }
     {
-        std::lock_guard<std::mutex> lock(gDiscoveryMutex);
-        if (gDiscoveryTsfn != nullptr ||
-            !CreateTsfn(env, args[0], "PrinterDiscovery", CallPrinterEventJs, gDiscoveryTsfn)) {
+        std::lock_guard<std::mutex> lock(g_discoveryMutex);
+        if (g_discoveryTsfn != nullptr ||
+            !CreateTsfn(env, args[ARG_FIRST], "PrinterDiscovery", CallPrinterEventJs, g_discoveryTsfn)) {
             return CreateInt32(env, ERROR_GENERIC);
         }
     }
     Print_ErrorCode code = OH_Print_StartPrinterDiscovery(PrinterDiscoveryCallback);
     if (code != PRINT_ERROR_NONE) {
-        ReleaseTsfn(gDiscoveryMutex, gDiscoveryTsfn, napi_tsfn_abort);
+        ReleaseTsfn(g_discoveryMutex, g_discoveryTsfn, napi_tsfn_abort);
     } else {
-        gDiscoveryRunning = true;
+        g_discoveryRunning = true;
     }
     return CreateInt32(env, code);
 }
@@ -259,11 +259,11 @@ napi_value NativeStartPrinterDiscovery(napi_env env, napi_callback_info info)
 napi_value NativeStopPrinterDiscovery(napi_env env, napi_callback_info)
 {
     Print_ErrorCode code = PRINT_ERROR_NONE;
-    if (gDiscoveryRunning) {
+    if (g_discoveryRunning) {
         code = OH_Print_StopPrinterDiscovery();
-        gDiscoveryRunning = false;
+        g_discoveryRunning = false;
     }
-    ReleaseTsfn(gDiscoveryMutex, gDiscoveryTsfn, napi_tsfn_abort);
+    ReleaseTsfn(g_discoveryMutex, g_discoveryTsfn, napi_tsfn_abort);
     return CreateInt32(env, code);
 }
 
@@ -273,19 +273,28 @@ napi_value NativeConnectPrinter(napi_env env, napi_callback_info info)
     napi_value args[1] = {nullptr};
     std::string printerId;
     if (napi_get_cb_info(env, info, &count, args, nullptr, nullptr) != napi_ok || count != 1 ||
-        !GetString(env, args[0], printerId) || printerId.empty()) {
+        !GetString(env, args[ARG_FIRST], printerId) || printerId.empty()) {
         return CreateInt32(env, PRINT_ERROR_INVALID_PARAMETER);
     }
     return CreateInt32(env, OH_Print_ConnectPrinter(printerId.c_str()));
 }
 ```
 
-4. ArkTS侧分别处理`DISCOVERED`、`LOST`、`CONNECTING`和`CONNECTED`事件，只有收到`CONNECTED`事件后才将打印机设为当前打印机。
+步骤4：ArkTS侧分别处理`DISCOVERED`、`LOST`、`CONNECTING`和`CONNECTED`事件，只有收到`CONNECTED`事件后才将打印机设为当前打印机。
 
 <!-- @[print_native_discovery_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
 ```ts
   private startDiscovery(): void {
+    const addedPrinters: nativePrint.PrinterIdListResult = nativePrint.nativeQueryPrinterList();
+    if (addedPrinters.code === 0) {
+      for (const printerId of addedPrinters.printerIds) {
+        const result: nativePrint.PrinterInfoResult = nativePrint.nativeQueryPrinterInfo(printerId);
+        if (result.code === 0 && result.printerInfo !== undefined) {
+          this.upsertPrinter(PrinterInfoModel.fromNative(result.printerInfo));
+        }
+      }
+    }
     const code: number = nativePrint.nativeStartPrinterDiscovery(
       (event: number, printerInfo: nativePrint.PrinterInfo): void => {
         this.handleDiscoveryEvent(event, PrinterInfoModel.fromNative(printerInfo));
@@ -295,6 +304,13 @@ napi_value NativeConnectPrinter(napi_env env, napi_callback_info info)
 
   private handleDiscoveryEvent(event: number, printer: PrinterInfoModel): void {
     if (event === DiscoveryEvent.LOST) {
+      if (this.selectedPrinter.printerId === printer.printerId) {
+        const result: nativePrint.PrinterInfoResult = nativePrint.nativeQueryPrinterInfo(printer.printerId);
+        if (result.code === 0 && result.printerInfo !== undefined) {
+          this.selectPrinter(PrinterInfoModel.fromNative(result.printerInfo));
+          return;
+        }
+      }
       this.removePrinter(printer.printerId);
       return;
     }
@@ -303,7 +319,9 @@ napi_value NativeConnectPrinter(napi_env env, napi_callback_info info)
       return;
     }
     if (event === DiscoveryEvent.CONNECTING) {
-      this.operationResult = this.getResourceText($r('app.string.connecting')) + ': ' + printer.printerName;
+      if (this.selectedPrinter.printerId !== printer.printerId) {
+        this.operationResult = this.getResourceText($r('app.string.connecting')) + ': ' + printer.printerName;
+      }
       return;
     }
     if (event === DiscoveryEvent.CONNECTED) {
@@ -314,8 +332,29 @@ napi_value NativeConnectPrinter(napi_env env, napi_callback_info info)
   }
 
   private connectPrinter(printer: PrinterInfoModel): void {
+    const addedPrinters: nativePrint.PrinterIdListResult = nativePrint.nativeQueryPrinterList();
+    if (addedPrinters.code === 0 && addedPrinters.printerIds.includes(printer.printerId)) {
+      const existing: nativePrint.PrinterInfoResult = nativePrint.nativeQueryPrinterInfo(printer.printerId);
+      if (existing.code === 0 && existing.printerInfo !== undefined) {
+        const addedPrinter: PrinterInfoModel = PrinterInfoModel.fromNative(existing.printerInfo);
+        this.upsertPrinter(addedPrinter);
+        this.selectPrinter(addedPrinter);
+        this.setCodeResult('OH_Print_QueryPrinterInfo (added)', existing.code);
+        return;
+      }
+    }
     const code: number = nativePrint.nativeConnectPrinter(printer.printerId);
     this.setCodeResult('OH_Print_ConnectPrinter', code);
+    if (code !== 0) {
+      return;
+    }
+    const result: nativePrint.PrinterInfoResult = nativePrint.nativeQueryPrinterInfo(printer.printerId);
+    if (result.code === 0 && result.printerInfo !== undefined) {
+      const connectedPrinter: PrinterInfoModel = PrinterInfoModel.fromNative(result.printerInfo);
+      this.upsertPrinter(connectedPrinter);
+      this.selectPrinter(connectedPrinter);
+      this.operationResult = this.getResourceText($r('app.string.connected')) + ': ' + connectedPrinter.printerName;
+    }
   }
 ```
 
@@ -345,7 +384,7 @@ Native层使用`dup()`持有ArkTS传入的源文件描述符；系统请求写�
 
 本示例保留阻塞状态下的资源，收到其他上述状态后结束本地预览会话并释放回调。0、5、6只表示预览能力销毁，不能据此判断打印成功；该预览会话结束后，示例不再通过它持续追踪最终打印结果。
 
-1. 在Native层实现文件写入回调、任务状态回调和NAPI接口。
+步骤1：在Native层实现文件写入回调、任务状态回调和NAPI接口。
 
 <!-- @[print_native_preview_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -379,28 +418,29 @@ void NativeJobStateChanged(const char *jobId, uint32_t state)
 
 napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info)
 {
-    size_t count = 4;
-    napi_value args[4] = {nullptr};
+    size_t count = NATIVE_PRINT_ARGUMENT_COUNT;
+    napi_value args[NATIVE_PRINT_ARGUMENT_COUNT] = {nullptr};
     std::string jobName;
     int32_t sourceFd = -1;
     void *context = nullptr;
-    if (napi_get_cb_info(env, info, &count, args, nullptr, nullptr) != napi_ok || count != 4 ||
-        !GetString(env, args[0], jobName) || jobName.empty() || GetValueType(env, args[1]) != napi_number ||
-        napi_get_value_int32(env, args[1], &sourceFd) != napi_ok || sourceFd < 0 ||
-        napi_unwrap(env, args[2], &context) != napi_ok || context == nullptr ||
-        GetValueType(env, args[3]) != napi_function) {
+    if (napi_get_cb_info(env, info, &count, args, nullptr, nullptr) != napi_ok ||
+        count != NATIVE_PRINT_ARGUMENT_COUNT || !GetString(env, args[ARG_FIRST], jobName) || jobName.empty() ||
+        GetValueType(env, args[ARG_SECOND]) != napi_number ||
+        napi_get_value_int32(env, args[ARG_SECOND], &sourceFd) != napi_ok || sourceFd < 0 ||
+        napi_unwrap(env, args[ARG_THIRD], &context) != napi_ok || context == nullptr ||
+        GetValueType(env, args[ARG_FOURTH]) != napi_function) {
         return CreateInt32(env, PRINT_ERROR_INVALID_PARAMETER);
     }
     {
-        std::lock_guard<std::mutex> lock(gNativePrintMutex);
-        if (gNativePrintTsfn != nullptr ||
-            !CreateTsfn(env, args[3], "NativePrint", CallNativePrintEventJs, gNativePrintTsfn)) {
+        std::lock_guard<std::mutex> lock(g_nativePrintMutex);
+        if (g_nativePrintTsfn != nullptr ||
+            !CreateTsfn(env, args[ARG_FOURTH], "NativePrint", CallNativePrintEventJs, g_nativePrintTsfn)) {
             return CreateInt32(env, ERROR_GENERIC);
         }
-        gNativePrintSourceFd = dup(sourceFd);
-        if (gNativePrintSourceFd < 0) {
-            napi_threadsafe_function failed = gNativePrintTsfn;
-            gNativePrintTsfn = nullptr;
+        g_nativePrintSourceFd = dup(sourceFd);
+        if (g_nativePrintSourceFd < 0) {
+            napi_threadsafe_function failed = g_nativePrintTsfn;
+            g_nativePrintTsfn = nullptr;
             napi_release_threadsafe_function(failed, napi_tsfn_abort);
             return CreateInt32(env, PRINT_ERROR_FILE_IO);
         }
@@ -414,7 +454,7 @@ napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info)
 }
 ```
 
-2. ArkTS侧先检查所选文件为PDF，再临时打开文件。Native接口返回后立即关闭ArkTS持有的文件描述符，后续写入由Native层持有的副本完成。返回0表示本次接口调用成功；后续文件写入和预览状态通过回调分别观察。
+步骤2：ArkTS侧先检查所选文件为PDF，再临时打开文件。Native接口返回后立即关闭ArkTS持有的文件描述符，后续写入由Native层持有的副本完成。返回0表示本次接口调用成功；后续文件写入和预览状态通过回调分别观察。
 
 <!-- @[print_native_preview_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
@@ -457,7 +497,7 @@ napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info)
 
 直接打印需要使用已连接的打印机ID、文件描述符、纸张ID、分辨率、份数、颜色、单双面、方向、质量、边距和文档格式构造`Print_PrintJob`。此入口与状态回调打印均演示 JPEG / PDF 文件，格式由所选文件对应的 MIME 类型传入。
 
-1. 使用 `PrintJobStorage` 持有作业中的字符串和文件描述符数组，再由 `BuildPrintJob` 校验并映射 ArkTS 的四组参数。
+步骤1：使用 `PrintJobStorage` 持有作业中的字符串和文件描述符数组，再由 `BuildPrintJob` 校验并映射 ArkTS 的四组参数。
 
 <!-- @[print_native_job_storage_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -533,26 +573,26 @@ bool BuildPrintJob(napi_env env, napi_value printJobValue, napi_value pageSizeVa
 
 `Print_PrintJob` 中的字符串指针指向 `PrintJobStorage` 的字符串成员，`fdList` 指向其数组内存。绑定这些指针后，在 C API 返回前保持 `storage` 存活且不修改相应字符串或数组，避免地址失效。`storage.fdList` 仅保存描述符数值，不负责关闭文件；文件由 ArkTS 调用方持有并在接口返回后的 `finally` 中关闭。参数转换辅助函数及 MIME 类型映射见完整 Sample 的 [napi_init.cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp)。
 
-2. 在Native层构造打印任务并下发。
+步骤2：在Native层构造打印任务并下发。
 
 <!-- @[print_native_start_job_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
 ```cpp
 napi_value NativeStartPrintJob(napi_env env, napi_callback_info info)
 {
-    napi_value args[4] = {nullptr};
-    if (!GetPrintArguments(env, info, 4, args)) {
+    napi_value args[PRINT_JOB_ARGUMENT_COUNT] = {nullptr};
+    if (!GetPrintArguments(env, info, PRINT_JOB_ARGUMENT_COUNT, args)) {
         return CreateInt32(env, PRINT_ERROR_INVALID_PARAMETER);
     }
     PrintJobStorage storage;
-    if (!BuildPrintJob(env, args[0], args[1], args[2], args[3], storage)) {
+    if (!BuildPrintJob(env, args[ARG_FIRST], args[ARG_SECOND], args[ARG_THIRD], args[ARG_FOURTH], storage)) {
         return CreateInt32(env, PRINT_ERROR_INVALID_PARAMETER);
     }
     return CreateInt32(env, OH_Print_StartPrintJob(&storage.job));
 }
 ```
 
-3. ArkTS侧使用 `createPrintRequest` 将页面设置组合成请求。所用 [PrintModels.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/print/model/PrintModels.ets) 实现了 `.d.ts` 中的类型，Native层从下列四组字段中读取对应数据。
+步骤3：ArkTS侧使用 `createPrintRequest` 将页面设置组合成请求。所用 [PrintModels.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/print/model/PrintModels.ets) 实现了 `.d.ts` 中的类型，Native层从下列四组字段中读取对应数据。
 
 | 请求字段 | 来源及 Native 用途 |
 | --- | --- |
@@ -575,7 +615,7 @@ napi_value NativeStartPrintJob(napi_env env, napi_callback_info info)
   }
 ```
 
-4. 检查是否已选择打印机，在调用期间临时打开文件，并在`finally`中关闭文件描述符。
+步骤4：检查是否已选择打印机，在调用期间临时打开文件，并在`finally`中关闭文件描述符。
 
 <!-- @[print_native_start_job_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
@@ -626,7 +666,7 @@ napi_value NativeStartPrintJob(napi_env env, napi_callback_info info)
 
 示例每次只保留一个状态回调任务，使用 `jobId` 关联回调。接口返回0表示本次提交调用成功，任务是否完成需观察上述后续回调；实际出纸还需在目标打印机上确认。页面退出释放服务后，本地状态回调随之结束。
 
-1. 在Native层创建线程安全函数，调用带状态回调的打印接口，并在终态释放回调资源。
+步骤1：在Native层创建线程安全函数，调用带状态回调的打印接口，并在终态释放回调资源。
 
 <!-- @[print_native_job_state_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -637,9 +677,9 @@ void PrintJobStateChanged(const char *jobId, OH_Print_JobState state)
     data->jobId = SafeString(jobId);
     data->state = static_cast<uint32_t>(state);
     {
-        std::lock_guard<std::mutex> lock(gPrintJobStateMutex);
-        if (gPrintJobStateTsfn == nullptr ||
-            napi_call_threadsafe_function(gPrintJobStateTsfn, data, napi_tsfn_nonblocking) != napi_ok) {
+        std::lock_guard<std::mutex> lock(g_printJobStateMutex);
+        if (g_printJobStateTsfn == nullptr ||
+            napi_call_threadsafe_function(g_printJobStateTsfn, data, napi_tsfn_nonblocking) != napi_ok) {
             delete data;
         }
     }
@@ -650,18 +690,19 @@ void PrintJobStateChanged(const char *jobId, OH_Print_JobState state)
 
 napi_value NativeStartPrintWithJobStateCallback(napi_env env, napi_callback_info info)
 {
-    napi_value args[5] = {nullptr};
-    if (!GetPrintArguments(env, info, 5, args) || GetValueType(env, args[4]) != napi_function) {
+    napi_value args[PRINT_JOB_STATE_ARGUMENT_COUNT] = {nullptr};
+    if (!GetPrintArguments(env, info, PRINT_JOB_STATE_ARGUMENT_COUNT, args) ||
+        GetValueType(env, args[ARG_FIFTH]) != napi_function) {
         return CreateInt32(env, PRINT_ERROR_INVALID_PARAMETER);
     }
     PrintJobStorage storage;
-    if (!BuildPrintJob(env, args[0], args[1], args[2], args[3], storage)) {
+    if (!BuildPrintJob(env, args[ARG_FIRST], args[ARG_SECOND], args[ARG_THIRD], args[ARG_FOURTH], storage)) {
         return CreateInt32(env, PRINT_ERROR_INVALID_PARAMETER);
     }
     {
-        std::lock_guard<std::mutex> lock(gPrintJobStateMutex);
-        if (gPrintJobStateTsfn != nullptr ||
-            !CreateTsfn(env, args[4], "PrintJobState", CallPrintJobStateEventJs, gPrintJobStateTsfn)) {
+        std::lock_guard<std::mutex> lock(g_printJobStateMutex);
+        if (g_printJobStateTsfn != nullptr ||
+            !CreateTsfn(env, args[ARG_FIFTH], "PrintJobState", CallPrintJobStateEventJs, g_printJobStateTsfn)) {
             return CreateInt32(env, ERROR_GENERIC);
         }
     }
@@ -673,7 +714,7 @@ napi_value NativeStartPrintWithJobStateCallback(napi_env env, napi_callback_info
 }
 ```
 
-2. ArkTS侧复用直接打印的参数构造过程，并在回调中处理任务ID和状态。
+步骤2：ArkTS侧复用直接打印的参数构造过程，并在回调中处理任务ID和状态。
 
 <!-- @[print_native_job_state_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
@@ -742,6 +783,8 @@ napi_value NativeStartPrintWithJobStateCallback(napi_env env, napi_callback_info
         {"nativeStartPrintByNative", nullptr, NativeStartPrintByNative, nullptr, nullptr, nullptr, napi_default,
             nullptr},
         {"nativeStartPrintJob", nullptr, NativeStartPrintJob, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"nativeStartPrintJobWithDefaultSettings", nullptr, NativeStartPrintJobWithDefaultSettings, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
         {"nativeStartPrintWithJobStateCallback", nullptr, NativeStartPrintWithJobStateCallback, nullptr, nullptr,
             nullptr, napi_default, nullptr},
     };
