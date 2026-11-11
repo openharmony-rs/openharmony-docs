@@ -105,7 +105,7 @@
 
 相对坐标系是指以指定屏幕左上角为原点(0, 0)，屏幕右侧为x轴正方向，屏幕下侧为y轴正方向，仅在所指定屏幕范围内描述对象位置的坐标体系。
 
-区别于[全局坐标系](#global-coordinate-system全局坐标系)跨多块屏幕统一取值，相对坐标系只作用于单块屏幕：应用内UI组件的坐标、触摸或鼠标事件上报的坐标等，通常都是相对于应用所在屏幕的相对坐标，应用无需感知多屏连续显示空间。多屏场景下，同一个位置在两种坐标系中的坐标值不同，可通过坐标转换接口相互转换（仅支持主屏与扩展屏），具体可见[实现扩展屏坐标转换](../displaymanager/extend-coordinate-transformation-guideline.md)。
+区别于[全局坐标系](#global-coordinate-system全局坐标系)跨多块屏幕统一取值，相对坐标系只作用于单块屏幕：应用内UI组件的坐标、触摸或鼠标事件上报的坐标等，通常都是相对于应用所在屏幕的相对坐标，应用无需感知多屏连续显示空间。多屏场景下，同一个位置在两种坐标系中的坐标值不同，可通过坐标转换接口相互转换（仅支持主屏与扩展屏），具体可见[实现扩展屏坐标转换](../displaymanager/extended-coordinate-transformation-guideline.md)。
 
 ![relative-coordinate-system](figures/relative-coordinate-system.png)
 
