@@ -48,7 +48,6 @@ Declares the APIs of **NativeRender**, which allows you to create and manage ren
 | [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)               | ArkUI_RenderNodeClipOption                                | Defines a render node clipping option, which is used to describe the clipping area of a render node using a rectangle, rounded rectangle, circle, ellipse, or custom drawing path, and apply the clipping to the render node as the input parameter of [OH_ArkUI_RenderNodeUtils_SetClip](capi-native-render-h.md#oh_arkui_rendernodeutils_setclip).      |
 | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)               | ArkUI_RenderBlurStyleOption                                | Defines a blur style configuration.      |
 
-
 ### Functions
 
 <!--Table: 40%; 20%; 40%-->
@@ -205,7 +204,6 @@ Declares the APIs of **NativeRender**, which allows you to create and manage ren
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)](#oh_arkui_rendernodeutils_insertrendernodeat) | - | Inserts a child render node at a specified position under a parent custom node.|
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)](#oh_arkui_rendernodeutils_getrendernodechildrencount) | - | Obtains the number of all child nodes of a parent custom node in the mixed mount order.|
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)](#oh_arkui_rendernodeutils_getrendernodeat) | - | Obtains the render node handle corresponding to the child node at a specified position of a parent custom node in the mixed mount order.|
-
 
 ## Function Description
 
