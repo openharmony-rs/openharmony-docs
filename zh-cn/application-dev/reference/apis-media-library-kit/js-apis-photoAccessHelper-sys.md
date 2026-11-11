@@ -7814,6 +7814,7 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('getReadOnlyFdDemo');
@@ -7833,7 +7834,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let fd: number = await photoAsset.getReadOnlyFdWithCached();
     if (fd !== undefined) {
       console.info('File fd: ' + fd);
-      photoAsset.close(fd);
+      await fileIo.close(fd);
     } else {
       console.error('Failed To Get ReadOnlyFd With Cached fd: ' + fd);
     }
