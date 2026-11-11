@@ -52948,5 +52948,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/device/driver/usb-ddk-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp",
+				"functions":[
+					{
+						"end_line":492,
+						"name":"driver_usb_step8",
+						"start_line":489
+					},
+					{
+						"end_line":612,
+						"name":"driver_usb_step9",
+						"start_line":604
+					},
+					{
+						"end_line":514,
+						"name":"driver_usb_step10",
+						"start_line":506
+					},
+					{
+						"end_line":642,
+						"name":"driver_usb_step11",
+						"start_line":629
+					}
+				]
+			}
+		]
 	}
 ]
