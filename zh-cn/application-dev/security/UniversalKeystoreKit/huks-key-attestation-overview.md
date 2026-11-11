@@ -52,6 +52,8 @@ ApplicationIDType ::= SEQUENCE {
 | 1.3.6.1.4.1.2011.2.376.2.1.5 | OCT_STR | 保留字段，暂不使用 | 密钥来源，生成或者导入。 |
 |<!--DelRow--> 1.3.6.1.4.1.2011.2.376.2.1.2 | OCT_STR | 保留字段，暂不使用 | 密钥别名。 |
 | 1.3.6.1.4.1.2011.2.376.2.2.4.8 | UTF8_STR | 保留字段，暂不使用 | 产品型号Model。从API 20开始支持。 |
+| 1.3.6.1.4.1.2011.2.376.2.2.4.11 | UTF8_STR | 保留字段，暂不使用 | OS发行版本号（osDistVersion），例如"6.1.0"。从API版本26.1.0开始支持。 |
+| 1.3.6.1.4.1.2011.2.376.2.2.4.12 | UTF8_STR | 保留字段，暂不使用 | OS发行API版本号（osDistApiVersion），例如"260100"。从API版本26.1.0开始支持。 |
 
 <!--Del-->
 > **说明：**
@@ -76,7 +78,7 @@ ApplicationIDType类型取值说明：
 <!--RP2-->
 当前提供了两种密钥证明方式。
 - 匿名密钥证明：不会泄露设备信息，没有权限管理。面向所有应用开放。为了保护用户设备信息，三方应用开发者只能使用匿名密钥证明。默认情况下，每个应用调用匿名密钥证明接口的瞬时流量每秒不超过35次请求。<!--RP3--><!--RP3End-->
-- 非匿名密钥证明：可以看到调用方设备信息，有权限管控，需申请[ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key)权限。
+- 非匿名密钥证明：可以看到调用方设备信息，有权限管控。从API版本11开始，需申请[ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key)权限；从API版本26.1.0开始，新增[ohos.permission.ENTERPRISE_ATTEST_KEY](../AccessToken/permissions-for-mdm-apps.md#ohospermissionenterprise_attest_key)权限，允许设备管理应用使用非匿名密钥证明能力。两者具备其一即可。
 <!--RP2End-->
 
 当前模拟器<!--Del-->和开发板<!--DelEnd-->支持匿名证书，调试环境中使用的证书非真实设备证书，云侧需要区分该场景，避免误用。
