@@ -1,12 +1,11 @@
 # Interface (VideoSession)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-11T02:01:00.895Z pushedAt=2026-08-12T01:20:20.581Z -->
+<!-- md-trans-meta sourceCommit=c48c74437d83e6cc6a87a22788ef7d940cef51aa translatedAt=2026-11-10T07:57:37.465Z pushedAt=2026-11-10T11:15:01.496Z nl=1 -->
 
 **VideoSession** inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [Stabilization](arkts-apis-camera-Stabilization.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), [Macro](arkts-apis-camera-Macro.md), [ControlCenter](arkts-apis-camera-ControlCenter.md), [ManualExposure](arkts-apis-camera-ManualExposure.md), [ManualFocus](arkts-apis-camera-ManualFocus.md), [ManualIso](arkts-apis-camera-ManualIso.md), [OIS](arkts-apis-camera-OIS.md), and [Aperture](arkts-apis-camera-Aperture.md).
 
@@ -362,7 +361,7 @@ Unsubscribes from automatic camera switch status change events.
 **Example**
 
 ```ts
-function unregisterSmoothZoomInfo(videoSession: camera.VideoSession): void {
+function unregisterAutoDeviceSwitchStatus(videoSession: camera.VideoSession): void {
   videoSession.off('autoDeviceSwitchStatusChange');
 }
 ```
@@ -498,7 +497,6 @@ Subscribes to events indicating that the camera controller effect status changes
 | callback | AsyncCallback\<[ControlCenterStatusInfo](arkts-apis-camera-i.md#controlcenterstatusinfo20)\> | Yes| Callback used to return the effect status of the current controller.|
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -557,6 +555,7 @@ Subscribes to macro state change events. This API uses an asynchronous callback 
 | type     | string      | Yes  | Event type. The value is fixed at **'macroStatusChanged'**. The event can be listened for when a session is created.|
 | callback | AsyncCallback\<boolean\>     | Yes  | Callback used to return the macro state. **true** if enabled, **false** otherwise. |
 
+
 **Example**
 
 ```ts
@@ -592,6 +591,7 @@ Unsubscribes from macro state change events.
 | type     | string                   | Yes  | Event type. The value is fixed at **'macroStatusChanged'**. The event can be listened for when a session is created.                     |
 | callback | AsyncCallback\<boolean\> | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. If **true** is returned, the unsubscription is successful. If **false** is returned, the unsubscription fails. |
 
+
 **Example**
 
 ```ts
@@ -607,7 +607,7 @@ onIsoInfoChange(callback: Callback\<IsoInfo\>): void
 Subscribes to sensitivity (ISO) state change events and obtains the latest ISO value through a callback.
 
 **Model restriction**: This API can be used only in the stage model.
-
+ 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -617,6 +617,7 @@ Subscribes to sensitivity (ISO) state change events and obtains the latest ISO v
 | Name    | Type                                     | Mandatory| Description                      |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | Yes  | Callback used to obtain the current ISO value of the camera.|
+
 
 **Example**
 
@@ -648,6 +649,7 @@ Unsubscribes from ISO state change events.
 | Name    | Type                                     | Mandatory| Description                      |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
 | callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | No  | Callback used for unsubscription.<br>If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.)<br>Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+
 
 **Example**
 

@@ -1,12 +1,11 @@
 # Interface (PreviewOutput)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=e78a6cc17babc03b49d63c81464e0e9d7953f5bb translatedAt=2026-08-11T02:00:04.022Z pushedAt=2026-08-11T11:41:11.947Z -->
+<!-- md-trans-meta sourceCommit=c48c74437d83e6cc6a87a22788ef7d940cef51aa translatedAt=2026-11-10T07:57:10.590Z pushedAt=2026-11-10T11:14:48.845Z nl=1 -->
 
 PreviewOutput implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
@@ -348,9 +347,7 @@ getPreviewRotation(displayRotation?: number): ImageRotation
 Obtains the preview rotation angle.
 
 - Device' natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
-
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
-
 - [Screen Rotation](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-device-window-direction): indicates the clockwise rotation angle of the device screen.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -385,10 +382,10 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotation : camera.ImageRotation): camera.ImageRotation {
+function testGetPreviewRotation(previewOutput: camera.PreviewOutput, displayRotation: number): camera.ImageRotation {
   let previewRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
-    previewRotation = previewOutput.getPreviewRotation(imageRotation);
+    previewRotation = previewOutput.getPreviewRotation(displayRotation);
     console.info(`Preview rotation is: ${previewRotation}`);
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
@@ -406,7 +403,7 @@ function testGetPreviewRotationWithOutParam(previewOutput: camera.PreviewOutput)
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
-    console.error(`The previewOutput.testGetPreviewRotationWithOutParam call failed. error code: ${err.code}`);
+    console.error(`The previewOutput.getPreviewRotation call failed. error code: ${err.code}`);
   }
   return previewRotation;
 }
@@ -454,6 +451,7 @@ function testSetPreviewRotation(previewOutput: camera.PreviewOutput, previewRota
   return;
 }
 ```
+
 
 ## start<sup>(deprecated)</sup>
 
@@ -679,7 +677,6 @@ function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled
   }
 }
 ```
-
 ## addDeferredSurface<sup>24+</sup>
 
 addDeferredSurface(surfaceId: string): void

@@ -1,12 +1,11 @@
 # game_device_event.h
-
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
-<!-- md-trans-meta sourceCommit=77c72b42e08d6a4d9b4548171e0024968c7d2a99 translatedAt=2026-07-30T08:26:53.625Z pushedAt=2026-07-30T08:45:20.274Z -->
+<!--Adviser: @yuwenliang0514-->
+<!-- md-trans-meta sourceCommit=233eb431f8ea7c656c5b56931386bbeb010828c6 translatedAt=2026-11-10T08:01:25.236Z pushedAt=2026-11-10T11:20:52.636Z nl=1 -->
 
 ## Overview
 
@@ -93,6 +92,7 @@ Defines device types.
 | UNKNOWN = 0 | Unknown.<br>**Since:** 21|
 | GAME_PAD = 1 | Gamepad.<br>**Since:** 21|
 
+
 ## Function Description
 
 ### GameDevice_DeviceMonitorCallback()
@@ -113,7 +113,7 @@ Defines the callback function used in [OH_GameDevice_RegisterDeviceMonitor](capi
 
 | Name| Description|
 | -- | -- |
-| (const struct GameDevice_DeviceEvent* deviceEvent) | Output parameter. Device status change event [GameDevice_DeviceEvent](capi-gamecontroller-gamedevice-deviceevent.md).|
+| const struct GameDevice_DeviceEvent* deviceEvent | Input parameter, indicating a device status change event [GameDevice_DeviceEvent](capi-gamecontroller-gamedevice-deviceevent.md). |
 
 ### OH_GameDevice_DeviceEvent_GetChangedType()
 
@@ -356,3 +356,5 @@ Obtains the device type from the device information.
 | Type| Description|
 | -- | -- |
 | [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the **deviceInfo** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+
+

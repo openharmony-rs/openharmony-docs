@@ -1,12 +1,11 @@
 # Enums
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-11T01:59:05.208Z pushedAt=2026-08-11T09:51:38.381Z -->
+<!-- md-trans-meta sourceCommit=c48c74437d83e6cc6a87a22788ef7d940cef51aa translatedAt=2026-11-10T07:56:52.045Z pushedAt=2026-11-10T11:14:17.538Z nl=1 -->
 
 > **NOTE**
 >
@@ -428,7 +427,7 @@ Enumerates the effect types supported by the camera controller.
 |-----------|---|---------|
 | BEAUTY    | 0 | Beauty effect.<br> **Atomic service API**: This API can be used in atomic services since API version 20.  |
 | PORTRAIT  | 1 | Portrait blur effect.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| AUTO_FRAMING<sup>24+</sup> | 2 | Auto focus.<br> **Atomic service API**: This API can be used in atomic services since API version 24.|
+| AUTO_FRAMING<sup>24+</sup> | 2 | Automatic framing.<br> **Atomic service API**: This API can be used in atomic services since API version 24. |
 | COLOR_EFFECT | 3 | Color effect<br>**Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## PhotoQualityPrioritization<sup>21+</sup>

@@ -1,18 +1,19 @@
 # OH_AudioDataArray
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=e9ec8701c87cf0327fd7aa17be40e1c4aeed0156 translatedAt=2026-11-10T03:08:41.802Z pushedAt=2026-11-10T04:47:29.872Z nl=1 -->
 
 ```c
-typedef struct {...} OH_AudioDataArray
+typedef struct OH_AudioDataArray {...} OH_AudioDataArray
 ```
 
 ## Overview
 
-The struct describes the input data for the multi-output rendering interface. It is used to obtain processed audio data when multiple output effect nodes are present in the pipeline.
+Defines the output data description of the multi-output rendering interface. When there are multiple output effect nodes in the pipeline, the processed audio data is obtained through the multi-output rendering interface.
 
 **Since**: 22
 
@@ -26,6 +27,8 @@ The struct describes the input data for the multi-output rendering interface. It
 
 | Name| Description|
 | -- | -- |
-| void **audioDataArray | Double pointer to the addresses of the audio data to be output.|
-| int32_t arraySize | Size of the audio data array.|
-| int32_t requestFrameSize | Memory size (in bytes) allocated for each address in **audioDataArray**. Ensure that each address has sufficient memory allocated as specified by **requestFrameSize**.|
+| void **audioDataArray | Address of the output audio data. |
+| int32_t arraySize | Number of elements in the audioDataArray array. |
+| int32_t requestFrameSize | Size of the memory pointed to by each address in the audioDataArray array, in bytes. Ensure that the size of the memory pointed to by each address complies with the requestFrameSize field definition. |
+
+

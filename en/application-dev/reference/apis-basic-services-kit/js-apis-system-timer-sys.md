@@ -5,8 +5,9 @@
 <!--Designer: @hu-kai45-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=ab611c219b2bb1b484101433888e822b3807a11c translatedAt=2026-11-10T04:15:42.654Z pushedAt=2026-11-10T07:05:48.272Z nl=1 -->
 
-The **systemTimer** module provides system timer features. You can use the APIs of this module to implement the alarm clock and other timer services.
+This module mainly consists of the system timer functions. It provides the capabilities of creating, starting, stopping, and destroying timers, and supports creating multiple timer types such as the system startup time timer, wakeup timer, exact timer, and IDLE mode timer. Developers can use the timer functions to implement scheduled services, such as alarm clocks. The typical usage flow of a timer is as follows: first create a timer through createTimer, then start the timer through startTimer, stop the timer through stopTimer as needed, and finally destroy the timer through destroyTimer to release resources.
 
 > **NOTE**
 >
@@ -22,32 +23,32 @@ import { systemTimer } from '@kit.BasicServicesKit';
 
 ## Constants
 
-Provides the constants that define the supported timer types.
+Enumerates the timer types that can be created.
 
 **System capability**: SystemCapability.MiscServices.Time
 
-| Name               | Type  | Value  | Description                                         |
+| Name                | Type   | Value | Description                                          |
 | ------------------- | ------ | ---- |---------------------------------------------|
-| TIMER_TYPE_REALTIME | number | 1    | CPU time type. (The start time of the timer cannot be later than the current system time.)|
-| TIMER_TYPE_WAKEUP   | number | 2    | Wakeup type. (If the wakeup type is not set, the system does not wake up until it exits the sleep state.)|
-| TIMER_TYPE_EXACT    | number | 4    | Exact type. (If the system time is changed, the offset may be 1s at most.)|
-| TIMER_TYPE_IDLE     | number | 8    | Idle timer type (supported only for system services).|
+| TIMER_TYPE_REALTIME | number | 1    | System startup time timer (the timer start time cannot be later than the currently set system time).|
+| TIMER_TYPE_WAKEUP   | number | 2    | Wakeup timer (if it is not configured as a wakeup timer, it will not be triggered when the system is in sleep state until the system exits the sleep state).|
+| TIMER_TYPE_EXACT    | number | 4    | Exact timer (when the system time is changed, an offset error of up to 1s may occur).|
+| TIMER_TYPE_IDLE     | number | 8    | IDLE mode timer (supported only for system service configuration, not for application configuration).|
 
- ## TimerOptions
+## TimerOptions
 
-Defines the initialization options for the system timer.
+Defines the initialization options for creating a system timer.
 
 **System capability**: SystemCapability.MiscServices.Time
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 |------|------|------|------|-------------------------------|
-| type | number | No| No| Timer types. Multiple options can be separated by vertical bars (\|).<br>**1**: CPU time type. (The start time of the timer cannot be later than the current system time.)<br>**2**: wakeup type.<br>**4**: exact type. (If an application is frozen, the timer is also frozen. In addition, the timer is controlled by a unified heartbeat. Therefore, even a timer of the exact type cannot be triggered at specified time.)<br>**8**: idle timer type (supported only for system services, but not applications).|
-| repeat | boolean | No| No| Whether the timer is a repeating timer. The value **true** means that the timer is a repeating timer, and **false** means that the timer is a one-shot timer.|
-| autoRestore<sup>15+</sup> | boolean | No| Yes| Whether the timer is restored after the device is restarted.<br>The value **true** means that the timer is restored after the restart, and the value **false** means the opposite.<br>This parameter can be set to **true** only for timers that are not of the **TIMER_TYPE_REALTIME** type and have **wantAgent** configured.<br>The default value is **false**.|
-| name<sup>15+</sup> | string | No| Yes| Timer name, with a maximum length of 64 bytes.<br>A UID cannot contain two timers with the same name. If a timer with the same name as an existing timer is created, the existing timer is destroyed.<br>The default value is an empty string.|
-| interval | number | No| Yes| Interval between two consecutive timers, in milliseconds.<br>For a repeating timer, the minimum value of **interval** is 1s and the maximum value is 365 days. It is recommended that the value be greater than or equal to 5000 ms.<br>For a one-shot timer, the value is **0**.<br>Default value: **0**.|
-| wantAgent | WantAgent | No| Yes| **WantAgent** object of the notification to be sent when the timer expires. (An application **MainAbility** can be started, but not a **ServiceAbility**.)<br>The default value is empty.|
-| callback | function | No| Yes | Callback to be executed by the user.<br>The default value is empty.|
+| type | number | No | No | Timer type, which can be selected from multiple options using '\|'.<br>The value **1** indicates a system startup time timer (the timer start time cannot be later than the currently set system time).<br>The value **2** indicates a wakeup timer (if the timer is not configured as a wakeup timer, it will not be triggered while the system is in sleep state until the system exits the sleep state).<br>The value **4** indicates an exact timer (when the app is frozen, the timer is also frozen, and the timer is subject to unified heartbeat control; therefore, even an exact timer cannot be guaranteed to trigger at the specified time point; if the system time is changed, an offset error of up to 1s may occur).<br>The value **8** indicates an IDLE mode timer (supported only for system service configuration, not for application configuration). |
+| repeat | boolean | No | No | Whether the timer is a repeating timer. The value **true** indicates a repeating timer, and **false** indicates a one-shot timer. |
+| autoRestore<sup>15+</sup> | boolean | No | Yes | Whether to restore the timer after the device restarts.<br>The value **true** indicates that the timer is restored after restart, and **false** indicates that it is not restored after restart.<br>Only timers that are not of the `TIMER_TYPE_REALTIME` type and are configured with a wantAgent can be set to **true**. If this condition is not met, this parameter does not take effect.<br>The default value is **false**. |
+| name<sup>15+</sup> | string | No | Yes | Timer name, which cannot exceed 64 bytes. If the length limit is exceeded, timer creation fails and an error is returned.<br>Two timers with the same name cannot exist simultaneously under the same UID. If a timer is created with the same name as a previously created timer, the previously created timer will be destroyed.<br>The default value is an empty string. |
+| interval | number | No | Yes | Timer interval, in milliseconds.<br>For a repeating timer, the minimum value of **interval** is 1s and the maximum value is 365 days. It is recommended that the value of **interval** be no less than 5000 milliseconds. If the value is out of this range, timer creation fails and an error is returned.<br>For a one-shot timer, the value of **interval** is 0.<br>The default value is 0. |
+| wantAgent | WantAgent | No | Yes | WantAgent for setting the notification. After the timer expires, a notification is sent (starting the application MainAbility is supported, but starting ServiceAbility is not supported).<br>The default value is empty. |
+| callback | function | No | Yes | Callback function to be executed by the user, which is invoked when the timer is triggered. Pass this parameter when custom logic needs to be executed when the timer is triggered. If this parameter is not passed, it defaults to empty, and no user-defined logic is executed after the timer is triggered. |
 
 
 ## systemTimer.createTimer
@@ -58,25 +59,25 @@ Creates a timer. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
-> This API must be used together with [systemTimer.destroyTimer](#systemtimerdestroytimer). Otherwise, memory leakage occurs.
+> This API must be used together with [systemTimer.destroyTimer](#systemtimerdestroytimer). Otherwise, memory leaks may occur.
 
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
-| Name  | Type                         | Mandatory| Description                                                        |
-| -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| options  | [TimerOptions](#timeroptions) | Yes  | Timer initialization options, including the timer type, whether the timer is a repeating timer, interval, and **WantAgent** options.|
-| callback | AsyncCallback&lt;number>      | Yes  | Callback used to return the timer ID.                                  |
+| Name     | Type                          | Mandatory | Description                                                         |
+| -------- | ----------------------------- | --------- | ------------------------------------------------------------ |
+| options  | [TimerOptions](#timeroptions) | Yes       | Initialization options for creating a system timer, including the timer type, whether to trigger repeatedly, the interval, and the WantAgent notification mechanism. |
+| callback | AsyncCallback&lt;number>      | Yes       | Callback invoked to return the timer ID.                                   |
 
 **Error codes**
 
-For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
+For details about the following error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                                                        |
+| ID | Error Message                                                                                                                                         |
 |-------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                                                 |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **Example**
 
@@ -88,16 +89,16 @@ let options: systemTimer.TimerOptions = {
   repeat: false
 };
 try {
-  systemTimer.createTimer(options, (error: BusinessError, timerId: Number) => {
+  systemTimer.createTimer(options, (error: BusinessError, timerId: number) => {
     if (error) {
-      console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
       return;
     }
-    console.info(`Succeeded in creating a timer. timerId: ${timerId}`);
+    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -109,30 +110,30 @@ Creates a timer. This API uses a promise to return the timer ID.
 
 > **NOTE**
 > 
-> This API must be used together with [systemTimer.destroyTimer](#systemtimerdestroytimer). Otherwise, memory leakage occurs.
+> This API must be used together with [systemTimer.destroyTimer](#systemtimerdestroytimer). Otherwise, memory leaks may occur.
 
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
-| Name | Type                         | Mandatory| Description                                                        |
+| Name | Type                          | Mandatory | Description                                                         |
 | ------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| options | [TimerOptions](#timeroptions) | Yes  | Timer initialization options, including the timer type, whether the timer is a repeating timer, interval, and **WantAgent** options.|
+| options | [TimerOptions](#timeroptions) | Yes  | Initialization options for creating a system timer, including the timer type, whether to trigger repeatedly, interval, and WantAgent notification mechanism. |
 
 **Return value**
 
-| Type                 | Description                         |
+| Type                  | Description                          |
 | --------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise used to return the timer ID.|
+| Promise&lt;number&gt; | Promise used to return the timer ID. |
 
 **Error codes**
 
-For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
+For details about the following error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID | Error Message                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **Example**
 
@@ -144,14 +145,14 @@ let options: systemTimer.TimerOptions = {
   repeat:false
 };
 try {
-  systemTimer.createTimer(options).then((timerId: Number) => {
-    console.info(`Succeeded in creating a timer. timerId: ${timerId}`);
+  systemTimer.createTimer(options).then((timerId: number) => {
+    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -161,24 +162,28 @@ startTimer(timer: number, triggerTime: number, callback: AsyncCallback&lt;void&g
 
 Starts a timer. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> This API must be used together with [systemTimer.stopTimer](#systemtimerstoptimer) to stop the started timer. The typical calling sequence is createTimer → startTimer → stopTimer → destroyTimer.
+
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
-| Name     | Type                  | Mandatory| Description                                                                                                                                                                                                                                                          |
-| ----------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| timer       | number                 | Yes  | ID of the timer.                                                                                                                                                                                                                                                     |
-| triggerTime | number                 | Yes  | Time when the timer is triggered, in milliseconds.<br>If the timer type is set to **TIMER_TYPE_REALTIME**, the value of **triggerTime** is the system startup time, which can be obtained by calling [systemDateTime.getUptime()](js-apis-date-time.md#systemdatetimegetuptime10).<br>If **TIMER_TYPE_REALTIME** is not set, the value of **triggerTime** is the wall time, which can be obtained by calling [systemDateTime.getTime()](js-apis-date-time.md#systemdatetimegettime10).|
-| callback    | AsyncCallback&lt;void> | Yes  | Callback used to return the result.                                                                                                                                                                                                                                                       |
+| Name | Type                   | Mandatory | Description                                                                                                                                                                                                                                                           |
+| -------------- | ---------------------- | --------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| timer          | number                 | Yes       | ID of the timer.                                                                                                                                                                                                                                                      |
+| triggerTime    | number                 | Yes       | Trigger time of the timer, in milliseconds.<br>If the timer type includes TIMER_TYPE_REALTIME, this triggerTime should be the system startup time. It is recommended to obtain it through [systemDateTime.getUptime()](js-apis-date-time.md#systemdatetimegetuptime10); otherwise, the timer cannot be triggered at the expected time.<br>If the timer type does not include TIMER_TYPE_REALTIME, this triggerTime should be the wall clock time. It is recommended to obtain it through [systemDateTime.getTime()](js-apis-date-time.md#systemdatetimegettime10); otherwise, the timer cannot be triggered at the expected time. |
+| callback       | AsyncCallback&lt;void> | Yes       | Callback used to receive the timer start result. The callback parameter is err (an error object, which is undefined when the timer is started successfully).                                                                                                                                 |
 
 **Error codes**
 
-For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
+For details about the following error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID | Error Message                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
 
@@ -188,7 +193,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: systemTimer.TimerOptions = {
   type: systemTimer.TIMER_TYPE_REALTIME,
   repeat:false
-}
+};
 let triggerTime: number = new Date().getTime();
 triggerTime += 3000;
 
@@ -196,18 +201,18 @@ try {
   systemTimer.createTimer(options).then((timerId: number) => {
     systemTimer.startTimer(timerId, triggerTime, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to start timer. message: ${error.message}, code: ${error.code}`);
+        console.error(`Failed to start timer. Code: ${error.code}, message: ${error.message}`);
         return;
       }
-      console.info(`Succeeded in starting the timer.`);
+      console.info(`Succeeded in starting timer.`);
     });
-    console.info(`Succeeded in creating a timer. timerId: ${timerId}`);
+    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to start timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -215,31 +220,35 @@ try {
 
 startTimer(timer: number, triggerTime: number): Promise&lt;void&gt;
 
-Starts a timer. This API uses a promise to return the result.
+Starts the timer. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API must be used with [systemTimer.stopTimer](#systemtimerstoptimer) to stop the started timer. The typical calling sequence is createTimer → startTimer → stopTimer → destroyTimer.
 
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
-| Name     | Type  | Mandatory| Description                                                                                                                                                                                                                                                          |
-| ----------- | ------ | ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| timer       | number | Yes  | ID of the timer.                                                                                                                                                                                                                                                     |
-| triggerTime | number | Yes  | Time when the timer is triggered, in milliseconds.<br>If the timer type is set to **TIMER_TYPE_REALTIME**, the value of **triggerTime** is the system startup time, which can be obtained by calling [systemDateTime.getUptime()](js-apis-date-time.md#systemdatetimegetuptime10).<br>If **TIMER_TYPE_REALTIME** is not set, the value of **triggerTime** is the wall time, which can be obtained by calling [systemDateTime.getTime()](js-apis-date-time.md#systemdatetimegettime10).|
+| Name        | Type   | Mandatory | Description                                                                                                                                                                                                                                                           |
+| ----------- | ------ | --------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| timer       | number | Yes       | Timer ID.                                                                                                                                                                                                                                                      |
+| triggerTime | number | Yes       | Trigger time of the timer, in milliseconds.<br>If the timer type includes TIMER_TYPE_REALTIME, this triggerTime should be the system startup time. It is recommended to obtain it via [systemDateTime.getUptime()](js-apis-date-time.md#systemdatetimegetuptime10); otherwise the timer cannot be triggered at the expected time.<br>If the timer type does not include TIMER_TYPE_REALTIME, this triggerTime should be the wall clock time. It is recommended to obtain it via [systemDateTime.getTime()](js-apis-date-time.md#systemdatetimegettime10); otherwise the timer cannot be triggered at the expected time. |
 
 **Return value**
 
-| Type          | Description                     |
+| Type           | Description                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. resolve indicates that the timer is started successfully, and reject indicates that the timer fails to be started. |
 
 **Error codes**
 
-For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
+For details about the following error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID | Error Message                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
 
@@ -249,24 +258,24 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: systemTimer.TimerOptions = {
   type: systemTimer.TIMER_TYPE_REALTIME,
   repeat:false
-}
+};
 let triggerTime: number = new Date().getTime();
 triggerTime += 3000;
 
 try {
   systemTimer.createTimer(options).then((timerId: number) => {
     systemTimer.startTimer(timerId, triggerTime).then(() => {
-      console.info(`Succeeded in starting the timer.`);
+      console.info(`Succeeded in starting timer.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to start timer. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to start timer. Code: ${error.code}, message: ${error.message}`);
     });
-    console.info(`Succeeded in creating a timer. timerId: ${timerId}`);
+    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -274,25 +283,25 @@ try {
 
 stopTimer(timer: number, callback: AsyncCallback&lt;void&gt;): void
 
-Stops the timer. This API uses an asynchronous callback to return the result.
+Stops a timer. This API uses an asynchronous callback to return the result. It must be used with [systemTimer.startTimer](#systemtimerstarttimer) to stop a started timer. After the timer is stopped, you can call [systemTimer.destroyTimer](#systemtimerdestroytimer) to destroy the timer and release resources.
 
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
-| Name  | Type                  | Mandatory| Description        |
+| Name | Type                   | Mandatory | Description         |
 | -------- | ---------------------- | ---- | ------------ |
-| timer    | number                 | Yes  | ID of the timer.|
-| callback | AsyncCallback&lt;void> | Yes  | Callback used to return the result.  |
+| timer    | number                 | Yes   | Timer ID. |
+| callback | AsyncCallback&lt;void> | Yes   | Callback function used to receive the result of stopping the timer. The callback parameter err is an error object, which is undefined if the timer is stopped successfully.   |
 
 **Error codes**
 
-For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
+For details about the following error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID | Error Message                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
 
@@ -302,7 +311,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: systemTimer.TimerOptions = {
   type: systemTimer.TIMER_TYPE_REALTIME,
   repeat:false
-}
+};
 let triggerTime: number = new Date().getTime();
 triggerTime += 3000;
 
@@ -311,18 +320,18 @@ try {
     systemTimer.startTimer(timerId, triggerTime);
     systemTimer.stopTimer(timerId, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to stop timer. message: ${error.message}, code: ${error.code}`);
+        console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
         return;
       }
-    console.info(`Succeeded in stopping the timer.`);
+      console.info(`Succeeded in stopping timer.`);
     });
-    console.info(`Succeeded in creating a timer. timerId: ${timerId}`);
+    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -330,30 +339,30 @@ try {
 
 stopTimer(timer: number): Promise&lt;void&gt;
 
-Stops a timer. This API uses a promise to return the result.
+Stops a timer. This API uses a promise to return the result asynchronously. It must be used together with [systemTimer.startTimer](#systemtimerstarttimer) to stop a started timer. After the timer is stopped, you can call [systemTimer.destroyTimer](#systemtimerdestroytimer) to destroy the timer and release resources.
 
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description        |
+| Name | Type   | Mandatory | Description |
 | ------ | ------ | ---- | ------------ |
-| timer  | number | Yes  | ID of the timer.|
+| timer  | number | Yes  | Timer ID. |
 
 **Return value**
 
-| Type          | Description                     |
+| Type           | Description                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. The promise is resolved when the timer is stopped successfully and rejected when the timer fails to be stopped. |
 
 **Error codes**
 
-For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
+For details about the following error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID | Error Message                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
 
@@ -363,7 +372,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: systemTimer.TimerOptions = {
   type: systemTimer.TIMER_TYPE_REALTIME,
   repeat:false
-}
+};
 let triggerTime: number = new Date().getTime();
 triggerTime += 3000;
 
@@ -371,17 +380,17 @@ try {
   systemTimer.createTimer(options).then((timerId: number) => {
     systemTimer.startTimer(timerId, triggerTime);
     systemTimer.stopTimer(timerId).then(() => {
-      console.info(`Succeeded in stopping the timer.`);
+      console.info(`Succeeded in stopping timer.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to stop timer. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
     });
-    console.info(`Succeeded in creating a timer. timerId: ${timerId}`);
+    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -389,25 +398,29 @@ try {
 
 destroyTimer(timer: number, callback: AsyncCallback&lt;void&gt;): void
 
-Destroys a timer. This API uses an asynchronous callback to return the result.
+Destroys a timer. This API uses an asynchronous callback.
+
+> **NOTE**
+>
+> This API must be used with [systemTimer.createTimer](#systemtimercreatetimer) to destroy the timer created by createTimer and avoid memory leaks. It is recommended to call [systemTimer.stopTimer](#systemtimerstoptimer) to stop the timer before destroying it.
 
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
-| Name  | Type                  | Mandatory| Description        |
+| Name | Type                   | Mandatory | Description         |
 | -------- | ---------------------- | ---- | ------------ |
-| timer    | number                 | Yes  | ID of the timer.|
-| callback | AsyncCallback&lt;void> | Yes  | Callback used to return the result.  |
+| timer    | number                 | Yes   | Timer ID. |
+| callback | AsyncCallback&lt;void> | Yes   | Callback used to receive the timer destruction result. The callback parameter is err (an error object, which is undefined when the destruction succeeds).   |
 
 **Error codes**
 
-For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
+For details about the following error codes, see [Time and time zone service error codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID | Error Message                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
 
@@ -417,7 +430,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: systemTimer.TimerOptions = {
   type: systemTimer.TIMER_TYPE_REALTIME,
   repeat:false
-}
+};
 let triggerTime: number = new Date().getTime();
 triggerTime += 3000;
 
@@ -427,18 +440,18 @@ try {
     systemTimer.stopTimer(timerId);
     systemTimer.destroyTimer(timerId, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to destroy timer. message: ${error.message}, code: ${error.code}`);
+        console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
         return;
       }
-    console.info(`Succeeded in destroying the timer.`);
+      console.info(`Succeeded in destroying timer.`);
     });
-    console.info(`Succeeded in creating a timer. timerId: ${timerId}`);
+    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -446,30 +459,30 @@ try {
 
 destroyTimer(timer: number): Promise&lt;void&gt;
 
-Destroys a timer. This API uses a promise to return the result.
+Destroys a timer. This API uses a promise to perform asynchronous callback. It must be used together with [systemTimer.createTimer](#systemtimercreatetimer) to destroy the timer created by createTimer and avoid memory leaks. It is recommended to call [systemTimer.stopTimer](#systemtimerstoptimer) to stop the timer before destroying it.
 
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description        |
+| Name | Type   | Mandatory | Description |
 | ------ | ------ | ---- | ------------ |
-| timer  | number | Yes  | ID of the timer.|
+| timer  | number | Yes   | Timer ID. |
 
 **Return value**
 
-| Type          | Description                     |
+| Type           | Description                      |
 | -------------- | ------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. resolve indicates that the timer is destroyed successfully, and reject indicates that destruction fails. |
 
 **Error codes**
 
-For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
+For details about the following error codes, see [Time Zone Service Error Codes](./errorcode-time.md).
 
-| Error Code| Error Message                                                                                                       |
+| ID | Error Message                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
 
@@ -479,7 +492,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: systemTimer.TimerOptions = {
   type: systemTimer.TIMER_TYPE_REALTIME,
   repeat:false
-}
+};
 let triggerTime: number = new Date().getTime();
 triggerTime += 3000;
 
@@ -488,16 +501,16 @@ try {
     systemTimer.startTimer(timerId, triggerTime);
     systemTimer.stopTimer(timerId);
     systemTimer.destroyTimer(timerId).then(() => {
-      console.info(`Succeeded in destroying the timer.`);
+      console.info(`Succeeded in destroying timer.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to destroy timer. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
     });
-    console.info(`Succeeded in creating a timer. timerId: ${timerId}`);
+    console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```

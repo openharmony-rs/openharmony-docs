@@ -6,12 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=2d99b235700beb6fbf6e85916d19bb529b5ce6fc translatedAt=2026-11-10T08:00:44.168Z pushedAt=2026-11-10T11:18:49.132Z nl=1 -->
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module are deprecated since API version 9. You are advised to use [@ohos.security.cryptoFramework Cipher](js-apis-cryptoFramework.md#cipher).
+> The APIs of this module are deprecated since API version 9. You are advised to use [@ohos.security.cryptoFramework Cipher](js-apis-cryptoFramework.md#cipher) instead.
 
 ## Modules to Import
 
@@ -37,15 +38,15 @@ Defines the input parameters of **cipher.rsa()**.
 
 **System capability**: SystemCapability.Security.Cipher
 
-| Name        | Type                                | Mandatory| Description                                                        |
-| -------------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| action         | string                               | Yes  | Action to perform. The options are as follows:<br>1. **encrypt**: Encrypts data.<br>2. **decrypt**: Decrypts data.|
-| text           | string                               | Yes  | Text to be encrypted or decrypted.<br> The text to be encrypted must be a common text and cannot exceed the length calculated based on the formula (keySize/8 - 66). **keySize** indicates the key length. For example, if the key length is 1024 bytes, the text cannot exceed 62 bytes (1024/8 - 66 = 62). The text to be decrypted must be a binary value encoded in Base64. The default format is used for Base64 encoding.|
-| key            | string                               | Yes  | RSA key. It is a public key in encryption and a private key in decryption.     |
-| transformation | string                               | No  | RSA padding. The default value is **RSA/None/OAEPWithSHA256AndMGF1Padding**.|
-| success        | (data: [CipherResponse](#cipherresponse)) => void       | No  | Called when data is encrypted or decrypted successfully.                                    |
-| fail           | (data: string, code: number) => void | No  | Called when data fails to be encrypted or decrypted.                                    |
-| complete       | () => void                           | No  | Called when the execution is complete.                                    |
+| Name | Type | Read-Only | Optional | Description |
+| ---- | ---------- | ---- | ---- | ------ |
+| action | string | No | No | Type of the encryption/decryption operation. The options are as follows:<br/>1. encrypt: encrypts data;<br/>2. decrypt: decrypts data. |
+| text | string | No | No | Text to be encrypted or decrypted. The text to be encrypted must be a common text and cannot exceed the length calculated based on the formula (keySize/8 - 66). **keySize** indicates the key length. For example, if the key length is 1024 bytes, the text cannot exceed 62 bytes (1024/8 - 66 = 62). The text to be decrypted must be a binary value encoded in Base64. The default format is used for Base64 encoding. |
+| key | string | No | No | RSA key used for encryption/decryption. For encryption, **key** is the public key; for decryption, **key** is the private key. |
+| transformation | string | No | Yes | Padding mode of the RSA algorithm. The default value is RSA/None/OAEPWithSHA256AndMGF1Padding. |
+| success | (data: [CipherResponse](#cipherresponse)) => void | No | Yes | Callback invoked when the API call is successful. |
+| fail | (data: string, code: number) => void | No | Yes | Called when the operation fails. |
+| complete | () => void | No | Yes | Callback invoked when the API call is complete. |
 
 ## CipherAesOptions
 
@@ -53,18 +54,18 @@ Defines the input parameters of **cipher.aes()**.
 
 **System capability**: SystemCapability.Security.Cipher
 
-| Name        | Type                                | Mandatory| Description                                                        |
-| -------------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| action         | string                               | Yes  | Action to perform. The options are as follows:<br>1. **encrypt**: Encrypts data.<br>2. **decrypt**: Decrypts data.|
-| text           | string                               | Yes  | Text to be encrypted or decrypted.<br> The text to be encrypted must be common text. The text to be decrypted must be a binary value encoded in Base64. The default format is used for Base64 encoding.|
-| key            | string                               | Yes  | Key used for encryption or decryption. It is a Base64 encoded string.|
-| transformation | string                               | No  | Encryption mode and padding of the AES algorithm. The default value is **AES/CBC/PKCS5Padding**.         |
-| iv             | string                               | No  | Initialization vector (IV) for AES-based encryption and decryption. The value is a string encoded in Base64. The default value is the key value.|
-| ivOffset       | string                               | No  | Offset of the IV for AES-based encryption and decryption. The default value is **0**, which is the only value supported.                 |
-| ivLen          | string                               | No  | Length of the IV, in bytes. This field is reserved. The default value is **16**, which is the only value supported.|
-| success        | (data: [CipherResponse](#cipherresponse)) => void       | No  | Called when data is encrypted or decrypted successfully.                                    |
-| fail           | (data: string, code: number) => void | No  | Called when data fails to be encrypted or decrypted.                                    |
-| complete       | () => void                           | No  | Called when the execution is complete.                                    |
+| Name | Type | Read-Only | Optional | Description |
+| ---- | ---------- | ---- | ---- | ------ |
+| action | string | No | No | Type of the encryption/decryption operation. The options are as follows:<br/>1. encrypt: encrypts data;<br/>2. decrypt: decrypts data. |
+| text | string | No | No | Text to be encrypted or decrypted. The text to be encrypted must be a common text. The text to be decrypted must be a binary value encoded in Base64. The default format is used for Base64 encoding. |
+| key | string | No | No | Key used for encryption or decryption, which is a string generated after Base64 encoding. |
+| transformation | string | No | Yes | Encryption mode and padding mode of the AES algorithm. The default value is AES/CBC/PKCS5Padding. |
+| iv | string | No | Yes | Initialization vector for AES encryption/decryption, which is a string generated after Base64 encoding. The default value is the value of **key**. |
+| ivOffset | string | No | Yes | Offset of the initialization vector for AES encryption/decryption. The default value is 0, and only 0 is supported. |
+| ivLen | string | No | Yes | Byte length of the initialization vector for AES encryption/decryption. This is a reserved field. The default value is 16, and only 16 is supported. |
+| success | (data: [CipherResponse](#cipherresponse)) => void | No | Yes | Callback invoked when the API call is successful. |
+| fail | (data: string, code: number) => void | No | Yes | Called when the operation fails. |
+| complete | () => void | No | Yes | Callback invoked when the API call is complete. |
 
 ## cipher.rsa
 
@@ -86,11 +87,11 @@ Encrypts or decrypts data using RSA.
 export default {
   rsa() {
     cipher.rsa({
-      // Encrypt data.
+      // Encrypt.
       action: 'encrypt',
-      // Text to be encrypted.
+      // Text content to be encrypted.
       text: 'hello',
-      // Base64-encoded public key used for encryption.
+      // Public key for encryption, encoded in Base64.
       key:
      'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCx414QSP3RsYWYzf9mkBMiBAXo\n' +
      '6S7Lpva1fKlcuVxjoFC1iMnzD4mC0uiL4k5MNi43J64c7dbqi3qAJjdAtuwQ6NZJ\n' +
@@ -107,14 +108,14 @@ export default {
       }
       });
       cipher.rsa({
-        // Decrypt data.
+        // Decrypt:
         action: 'decrypt',
-        // Text to be decrypted, which is binary text encoded in Base64. The decrypted text is "hello".
+        // Content to be decrypted, which is a binary value encoded in Base64 and becomes the text content "hello" after decryption.
         text:
        'EPeCFPib6ayKbA0M6oSywARvFZ8dFYfjQv3nY8ikZGtS9UHq2sLPvAfpeIzggSiCxqbWeCftP1XQ\n' +
        'Sa+jEpzFlT1qoSTunBbrYzugPTajIJDTg6R1IRsF/J+mmakn0POVPvi4jCo9wqavB324Bx0Wipnc\n' +
        'EU5WO0oBHo5l4x6dTpU=',
-         // Base64-encoded private key used for decryption.
+         // Private key for decryption, encoded in Base64.
          key:
         'MIICXgIBAAKBgQCx414QSP3RsYWYzf9mkBMiBAXo6S7Lpva1fKlcuVxjoFC1iMnz\n' +
         'D4mC0uiL4k5MNi43J64c7dbqi3qAJjdAtuwQ6NZJ+Enz0RzmVFh/4yk6lmqRzuEF\n' +
@@ -164,11 +165,11 @@ Encrypts or decrypts data using AES.
 export default {
   aes() {
     cipher.aes({
-      // Encrypt data.
+      // Encrypt.
       action: 'encrypt',
-      // Text to be encrypted.
+      // Text content to be encrypted.
       text: 'hello',
-      // Base64-encoded key.
+      // Key encoded in Base64.
       key: 'NDM5Qjk2UjAzMEE0NzVCRjlFMkQwQkVGOFc1NkM1QkQ=',
       transformation: 'AES/CBC/PKCS5Padding',
       ivOffset: '0',
@@ -184,11 +185,11 @@ export default {
       }
     });
     cipher.aes({
-      // Decrypt data.
+      // Decrypt:
       action: 'decrypt',
-      // Text to be decrypted, which is binary text encoded in Base64.
+      // Content to be decrypted, which is a binary value encoded in Base64.
       text: '1o0kf2HXwLxHkSh5W5NhzA==',
-       // Base64-encoded key.
+       // Key encoded in Base64.
        key: 'NDM5Qjk2UjAzMEE0NzVCRjlFMkQwQkVGOFc1NkM1QkQ=',
        transformation: 'AES/CBC/PKCS5Padding',
        ivOffset: '0',
@@ -207,3 +208,4 @@ export default {
 }
 
 ```
+

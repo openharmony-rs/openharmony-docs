@@ -5,12 +5,13 @@
 <!--Designer: @hu-kai45-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=d048b0bafe3e0e15f26e9ac5f8f709f206e6bb17 translatedAt=2026-11-10T04:10:39.092Z pushedAt=2026-11-10T06:56:22.274Z nl=1 -->
 
 The **request** module provides applications with the basic capabilities of file upload and download and background transfer proxy.
 
 - The child component **cacheDownload** provides the basic capability of caching application resources in advance.
 
-- **cacheDownload** uses the HTTP to download data and caches data resources to the application memory or specified files in the application sandbox directory.
+- The **cacheDownload** component uses HTTP and HTTPS to download data and caches data resources to the application memory or specified files in the application sandbox directory.
 
 - The cached data can be used by specific ArkUI components (such as **Image**) to improve resource loading efficiency. Check whether the ArkUI components support this function by referring to the ArkUI component topics.
 
@@ -72,8 +73,8 @@ Enumerates the timeout configuration option of a task, including the timeout int
 
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
-| networkCheckTimeout | number | No | Yes| Timeout interval for checking the network availability, in seconds. The value ranges from 0 to 20. The default value is **20**.<br>The ohos.permission.GET_NETWORK_INFO permission is required to check the network availability. If the permission is not granted, the network check fails until timeout.|
-| httpTotalTimeout | number | No | Yes| Timeout interval for completing an HTTP request, in seconds. The default value is **60** and the minimum value is **1**.|
+| networkCheckTimeout | number | No | Yes | Timeout for checking network availability, in seconds. The default value is 20, the minimum value is 0 (a value of 0 means no network availability check is performed), and the maximum value is 20. An exception is thrown when the value is out of range.<br>Checking the network requires the permission **ohos.permission.GET_NETWORK_INFO**. Without the permission, the network check fails until timeout. |
+| httpTotalTimeout | number | No | Yes | Timeout for completing an HTTP request, in seconds. The default value is 60, the minimum value is 1, and the maximum value is 4294967 |
 
 ## RetryOptions
 
@@ -87,7 +88,7 @@ Enumerates retry options of a task, which is used to set the maximum number of r
 
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
-| maxRetryCount | number | No | Yes| Maximum number of retries when a task fails. The value ranges from 0 to 10. The default value is **1**.|
+| maxRetryCount | number | No  | Yes | Maximum number of retries when a task fails. The default value is 1, the minimum value is 0, and the maximum value is 10. An exception is thrown when the value is out of range. |
 
 ## CacheDownloadOptions
 
@@ -101,8 +102,8 @@ Provides configuration options for download and cache, including HTTP options, t
 | sslType<sup>21+</sup> | [SslType](#ssltype21) | No | Yes| Secure communication protocol, such as TLS or TLCP. TLS is used by default. Currently, TLS and TLCP do not support two-way authentication.|
 | caPath<sup>21+</sup> | string | No | Yes| CA certificate path. Currently, only the .pem certificate is supported. The CA certificate preset by the system is used by default.|
 | cacheStrategy<sup>23+</sup> | [CacheStrategy](#cachestrategy23) | No | Yes| Cache update strategies, including **FORCE** or **LAZY**. The **FORCE** policy is used by default.|
-| retry | [RetryOptions](#retryoptions) | No | Yes| Retry options of a task.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
-| timeout | [TimeoutOptions](#timeoutoptions) | No | Yes| Timeout options of a task.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+| retry | [RetryOptions](#retryoptions) | No | Yes | Retry configuration of a task, used to customize the retry behavior for a single task. Set this option when the retry count needs to be specified separately for the task; if not set, it falls back to the global retry configuration (setGlobalRetryOptions), and then to the default value (maxRetryCount defaults to 1).<br>**Since Version:** 26.0.0<br>**Model Constraint:** This API can be used only in the stage model. |
+| timeout | [TimeoutOptions](#timeoutoptions) | No | Yes | Timeout configuration of a task, used to customize the timeout behavior for a single task. Set this option when the network check timeout or HTTP request timeout needs to be specified separately for the task; if not set, it falls back to the global timeout configuration (setGlobalTimeoutOptions), and then to the default values (networkCheckTimeout defaults to 20 and httpTotalTimeout defaults to 60).<br>**Since Version:** 26.0.0<br>**Model Constraint:** This API can be used only in the stage model. |
 
 ## ResourceInfo<sup>20+</sup>
 
@@ -122,8 +123,8 @@ Describes the pre-downloaded network information.
 
 | Name        | Type      | Read-Only| Optional| Description               |
 |------------|----------|----|----|-------------------|
-| dnsServers | string[] | Yes | No | DNS servers used for downloading resources.|
-| ip<sup>23+</sup> | string | Yes | Yes | IP address of the URL used for downloading resources. When the DNS resolution fails, the IP address is undefined.|
+| dnsServers | string[] | Yes | No | List of DNS servers used when downloading resources. |
+| ip<sup>23+</sup> | string | Yes | Yes | IP address of the URL when downloading resources. When DNS resolution fails, the IP is undefined. |
 
 ## PerformanceInfo<sup>20+</sup>
 
@@ -133,9 +134,9 @@ Describes the pre-downloaded performance information.
 
 | Name              | Type    | Read-Only| Optional| Description                           |
 |------------------|--------|----|----|-------------------------------|
-| dnsTime          | number | Yes | No | Time taken from DNS startup to resolution completion, in milliseconds.  |
-| connectTime      | number | Yes | No | Time taken from TCP startup to connection completion, in milliseconds.  |
-| tlsTime          | number | Yes | No | Time taken from TLS startup to connection completion, in milliseconds.  |
+| dnsTime          | number | Yes  | No  | Time required from startup to DNS resolution completion, in milliseconds (ms).   |
+| connectTime      | number | Yes  | No  | Time required from startup to TCP connection completion, in milliseconds (ms).   |
+| tlsTime          | number | Yes  | No  | Time required from startup to TLS connection completion, in milliseconds (ms).   |
 | firstSendTime    | number | Yes | No | Time taken from startup to sending the first byte, in milliseconds.|
 | firstReceiveTime | number | Yes | No | Time taken from startup to receiving the first byte, in milliseconds.  |
 | totalTime        | number | Yes | No | Time taken from startup to request completion, in milliseconds.     |
@@ -172,7 +173,7 @@ Downloads a task from a specified URL. If the transfer is successful, the data i
 
 - After automatically decompressing during HTTP transmission, the size of the target resource cannot exceed 20971520 bytes (20 MB). Otherwise, the resource fails to store in the memory cache or file cache.
 
-- When caching the downloaded data, if the data already exists in the destination URL, the new data will overwrite the old one.
+- When downloading cached data, the cache refresh behavior is determined by **cacheStrategy**: when the FORCE (default) strategy is used, if cached content already exists under the URL, the new cached content overwrites the old cached content; when the LAZY strategy is used, the cache is updated only when no cache exists.
 
 - In addition, the system determines whether to store the target resource in a specified location based on each cache type's size limit in **cacheDownload**. By default, the LRU mode is used to replace the existing cached data.
 
@@ -219,7 +220,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory.
     cacheDownload.download("https://www.example.com", options);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -259,9 +261,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let options: cacheDownload.CacheDownloadOptions = {};
   
   try {
-    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
+    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory.  
     cacheDownload.download("https://www.example.com", options);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
 
@@ -270,7 +273,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   try {
     // Cancel the download task when it is not required. The cached data is not affected.
     cacheDownload.cancel("https://www.example.com");
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to cancel the task. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -281,7 +285,7 @@ setMemoryCacheSize(bytes: number): void
 
 Sets the upper limit of the memory cache size for the **cacheDownload** component.
 
-- When this API is used to adjust the cache size, the LRU mode is used by default to clear redundant cached data in the memory.
+- When the cache size is adjusted using this API, the LRU (Least Recently Used) mode is used by default to clear excess cached memory cache content. When this API is used, if **bytes** is set to 0, all cached memory cache content is cleared.
 
 - This API returns the result synchronously, without blocking the calling thread.
 
@@ -291,7 +295,7 @@ Sets the upper limit of the memory cache size for the **cacheDownload** componen
 
 | Name  | Type    | Mandatory| Description                                     |
 |-------|--------|----|-----------------------------------------|
-| bytes | number | Yes | Upper limit of the cache, in bytes. The default value is **0**, and the maximum value cannot exceed **1073741824** (1 GB).|
+| bytes | number | Yes | Cache storage limit set. The default value is 0B, the minimum value is 0, and the maximum value does not exceed 1073741824B (that is, 1GB). If bytes is set to 0, all cached memory cache content will be cleared. |
 
 **Error codes**
 
@@ -307,9 +311,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
   
   try {
-    // Set the upper limit of the memory cache size. 
+    // Set the upper limit of the memory cache size.  
     cacheDownload.setMemoryCacheSize(10 * 1024 * 1024);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to set memory cache size. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -332,7 +337,7 @@ Sets the upper limit of the file cache size for the **cacheDownload** component.
 
 | Name  | Type    | Mandatory| Description                                                        |
 |-------|--------|----|------------------------------------------------------------|
-| bytes | number | Yes | Upper limit of the cache, in bytes. The default value is **104857600** (100 MB), and the maximum value is **4294967296** (4 GB).|
+| bytes | number | Yes | Cache storage limit set. Default value: 104857600B (100MB); minimum value: 0; maximum value: no more than 4294967296B (4GB). |
 
 **Error codes**
 
@@ -348,9 +353,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
   
   try {
-    // Set the upper limit of the file cache size. 
+    // Set the upper limit of the file cache size.  
     cacheDownload.setFileCacheSize(100 * 1024 * 1024);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to set file cache size. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -371,7 +377,7 @@ Sets the size of the download information list.
 
 - Each pre-download generates a piece of download information with a unique URL. Only the latest download information is saved for the same URL.
 
-- If the list size is increased using this API, the original information in the list remains unchanged; if the list size is decreased, the LRU mode is used by default to clear excess cached data in the list.
+- When the list size is adjusted using this API, if **size** is increased, the original information in the list remains unchanged; if **size** is decreased, the LRU (Least Recently Used) mode is used by default to clear excess cached information.
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -379,7 +385,7 @@ Sets the size of the download information list.
 
 | Name | Type    | Mandatory| Description                                           |
 |------|--------|----|-----------------------------------------------|
-| size | number | Yes | Size of the download information list. The value ranges from 0 to 8192. The default value is **0**, indicating that no download information is stored.|
+| size | number | Yes | Size of the download information list to set. Value range: [0, 8192]. The default value is 0, which means no download information is stored. An exception is thrown when the value is out of range. |
 
 **Example**:
 
@@ -387,9 +393,10 @@ Sets the size of the download information list.
   import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
   
   try {
-    // Set the size of the download information list. 
+    // Set the size of the download information list.  
     cacheDownload.setDownloadInfoListSize(2048);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to set download information list size. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -398,7 +405,7 @@ Sets the size of the download information list.
 
 getDownloadInfo(url: string): DownloadInfo | undefined
 
-Obtains the download information based on the URL. The download information is stored in the download information list in memory and is cleared when the application exits.
+Obtains the pre-downloaded download information based on the URL. The information is stored in the download information list in the memory and is cleared when the application exits. The pre-download information is stored in the list only after [setDownloadInfoListSize](#cachedownloadsetdownloadinfolistsize20) is called to set the list size (greater than 0). Otherwise, the default list size is 0, no download information is stored, and **getDownloadInfo** returns undefined.
 
 - If the specified URL is found in the download information list, the latest [DownloadInfo](#downloadinfo20) corresponding to the URL is returned.
 
@@ -416,7 +423,7 @@ Obtains the download information based on the URL. The download information is s
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| url | string | Yes | URL to be queried, with a maximum length of 8192 bytes.|
+| url | string | Yes | URL to query. Supports HTTP and HTTPS. The maximum length is 8192 bytes. An exception is thrown when the length limit is exceeded. |
 
 **Return value**
 
@@ -432,13 +439,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |-------|--------------------|
 | 201   | permission denied. |
 
+**Example**
+
   ```ts
   import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
 
   try {
-    // Set the size of the download information list. 
+    // Set the size of the download information list.  
     cacheDownload.setDownloadInfoListSize(2048);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to set download information list size. err code: ${err.code}, err message: ${err.message}`);
   }
 
@@ -446,9 +456,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let options: cacheDownload.CacheDownloadOptions = {};
   
   try {
-    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
+    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory.  
     cacheDownload.download("https://www.example.com", options);
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
 
@@ -462,7 +473,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     } else {
       console.info(`CacheDownload get download info : ${JSON.stringify(downloadInfo)}`);
     }
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to get download info. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -503,7 +515,7 @@ cacheDownload.clearFileCache();
 
 onDownloadSuccess(url: string, callback: Callback&lt;void&gt;): void
 
-Subscribes to the pre-download completion events. This API uses an asynchronous callback to return the result.
+Subscribes to the pre-download completion event. This API uses an asynchronous callback. It is used together with the **offDownloadSuccess()** method. When the completion event no longer needs to be received, call **offDownloadSuccess()** to unsubscribe, so as to avoid unnecessary callback overhead.
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -511,23 +523,24 @@ Subscribes to the pre-download completion events. This API uses an asynchronous 
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| url | string | Yes | URL of the callback to register, with a maximum of 8,192 bytes.|
-| callback | Callback&lt;void&gt; | Yes| Callback used to return the result.|
+| url | string | Yes | URL of the callback to register. Both HTTP and HTTPS are supported. The maximum length of the URL string is 8192 bytes. An exception is thrown when the length limit is exceeded. |
+| callback | Callback&lt;void&gt; | Yes | Callback invoked when the download succeeds. No callback parameter is provided. |
 
 **Example**:
 
   ```ts
-  import { cacheDownload } from '@kit.BasicServicesKit';
+  import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
   
   try {
     const successCallback = () => {
       console.info("Succeeded in getting callback from cacheDownload");
     };
     // Subscribe to the pre-download completion events. Callback is invoked when the download is complete.
-    cacheDownload.onDownloadSuccess("https://www.example.com", successCallback)
-    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
+    cacheDownload.onDownloadSuccess("https://www.example.com", successCallback);
+    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory.  
     cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -536,7 +549,7 @@ Subscribes to the pre-download completion events. This API uses an asynchronous 
 
 onDownloadError(url: string, callback: Callback&lt;DownloadError&gt;): void
 
-Subscribes to the pre-download error events. This API uses an asynchronous callback to return the result.
+Subscribes to the pre-download error event. This API uses an asynchronous callback. It is used together with the **offDownloadError()** method. When the error event no longer needs to be received, call **offDownloadError()** to unsubscribe, so as to avoid unnecessary callback overhead.
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -544,23 +557,24 @@ Subscribes to the pre-download error events. This API uses an asynchronous callb
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| url | string | Yes | URL of the callback to register, with a maximum of 8,192 bytes.|
+| url | string | Yes | URL of the callback to register. Both HTTP and HTTPS are supported. The maximum length of the URL string is 8192 bytes. An exception is thrown when the length limit is exceeded. |
 | callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | Yes| Callback used to return the error information about the pre-download.|
 
 **Example**:
 
   ```ts
-  import { cacheDownload } from '@kit.BasicServicesKit';
+  import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
   
   try {
     const errorCallback = (error: cacheDownload.DownloadError) => {
-      console.info(`Error callback from cacheDownload.error code: ${error.errorCode}, error message: ${error.message}`);
+      console.error(`Error callback from cacheDownload. error code: ${error.errorCode}, error message: ${error.message}`);
     };
     // Subscribe to pre-download error events. When a download error occurs, the callback is invoked to return error information.
-    cacheDownload.onDownloadError("https://www.example.com", errorCallback)
-    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
+    cacheDownload.onDownloadError("https://www.example.com", errorCallback);
+    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory.  
     cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -569,7 +583,7 @@ Subscribes to the pre-download error events. This API uses an asynchronous callb
 
 offDownloadSuccess(url: string, callback?: Callback&lt;void&gt;): void
 
-Unsubscribes from the pre-download completion events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the pre-download completion event.
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -577,13 +591,13 @@ Unsubscribes from the pre-download completion events. This API uses an asynchron
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| url | string | Yes | URL of the callback to register, with a maximum of 8,192 bytes.|
-| callback | Callback&lt;void&gt; | No| Callback to unregister. If this parameter is left blank, all completion callback functions of the URL are unregistered.|
+| url | string | Yes | URL for which the callback is to be registered. Both HTTP and HTTPS are supported. The maximum length of the URL string is 8192 bytes. An exception is thrown when the length limit is exceeded. |
+| callback | Callback&lt;void&gt; | No | Callback to unsubscribe. If this parameter is not specified, all completion callbacks under the URL are unsubscribed. |
 
 **Example**:
 
   ```ts
-  import { cacheDownload } from '@kit.BasicServicesKit';
+  import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
   
   try {
     const successCallback = () => {
@@ -593,9 +607,10 @@ Unsubscribes from the pre-download completion events. This API uses an asynchron
     cacheDownload.onDownloadSuccess("https://www.example.com", successCallback);
     // Unsubscribe from the pre-download completion events.
     cacheDownload.offDownloadSuccess("https://www.example.com", successCallback);
-    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
+    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory.  
     cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -604,7 +619,7 @@ Unsubscribes from the pre-download completion events. This API uses an asynchron
 
 offDownloadError(url: string, callback?: Callback&lt;DownloadError&gt;): void
 
-Unsubscribes from the pre-download error events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the pre-download error event.
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -612,25 +627,26 @@ Unsubscribes from the pre-download error events. This API uses an asynchronous c
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| url | string | Yes | URL of the callback to unregister, with a maximum of 8,192 bytes.|
-| callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | No| Callback used to return the error information about the pre-download. If this parameter is left blank, all error callback functions of the URL are unregistered.|
+| url | string | Yes | URL of the callback to register. It supports HTTP and HTTPS. The maximum length of the URL string is 8192 bytes. An exception is thrown when the length limit is exceeded. |
+| callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | No | Callback for the error event to unsubscribe. If this parameter is not specified, all error callbacks under the URL are unsubscribed. |
 
 **Example**:
 
   ```ts
-  import { cacheDownload } from '@kit.BasicServicesKit';
+  import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
   
   try {
     const errorCallback = (error: cacheDownload.DownloadError) => {
-      console.info(`Error callback from cacheDownload.error code: ${error.errorCode}, error message: ${error.message}`);
+      console.error(`Error callback from cacheDownload. error code: ${error.errorCode}, error message: ${error.message}`);
     };
     // Subscribe to pre-download error events. When a download error occurs, the callback is invoked to return error information.
     cacheDownload.onDownloadError("https://www.example.com", errorCallback);
     // Unsubscribe from the pre-download error events.
     cacheDownload.offDownloadError("https://www.example.com", errorCallback);
-    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
+    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory.  
     cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
@@ -651,19 +667,22 @@ Sets the global retry options of a task. This configuration takes effect when no
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| options | [RetryOptions](#retryoptions) | No | Retry options of a task.|
+| options | [RetryOptions](#retryoptions) | No  | Task retry configuration, used to customize the retry behavior of global tasks. Pass this parameter when you need to adjust policies such as the global retry count; if it is not passed, the current global retry configuration remains unchanged. |
 
 **Example**:
 
   ```ts
+  import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
+
   try {
     // Set the maximum number of retries for a task globally.
     cacheDownload.setGlobalRetryOptions({
       maxRetryCount: 1
     });
     cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
-    console.error(`Failed to download the resource. err code: ${err?.code}, err message: ${err?.message}`);
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
 
@@ -683,19 +702,22 @@ Sets the global timeout options of a task. This configuration takes effect when 
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| options | [TimeoutOptions](#timeoutoptions) | No | Timeout options of a task.|
+| options | [TimeoutOptions](#timeoutoptions) | No | Task timeout configuration, used to customize the timeout behavior of global tasks. Pass this parameter when you need to adjust the global network check timeout or HTTP request timeout; if it is not passed, the current global timeout configuration remains unchanged. |
 
 **Example**:
 
   ```ts
+  import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
+  
   try {
     // Set the global timeout options of a task.
     cacheDownload.setGlobalTimeoutOptions({
       networkCheckTimeout: 20,
       httpTotalTimeout: 60,
-    })
+    });
     cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
-    console.error(`Failed to download the resource. err code: ${err?.code}, err message: ${err?.message}`);
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```

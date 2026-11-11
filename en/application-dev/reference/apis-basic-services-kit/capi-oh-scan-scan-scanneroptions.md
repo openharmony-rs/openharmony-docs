@@ -1,11 +1,11 @@
 # Scan_ScannerOptions
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
 <!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=bf611caa56efccbf7609e58b71abec1b4e33c1b6 translatedAt=2026-10-09T11:47:13.918Z pushedAt=2026-10-10T04:43:37.951Z -->
+<!-- md-trans-meta sourceCommit=432796cf3e6a4be981f95a7796deb982eeaff362 translatedAt=2026-11-10T03:58:25.143Z pushedAt=2026-11-10T06:01:59.223Z nl=1 -->
 
 ```cpp
 typedef struct {...} Scan_ScannerOptions
@@ -13,7 +13,7 @@ typedef struct {...} Scan_ScannerOptions
 
 ## Overview
 
-Defines the configurable parameters of a scanner. You can configure the title, description, value range, and number of options for each parameter. Each option includes the **titles**, **descriptions**, and **ranges** fields, which are stored as parallel arrays. The **optionCount** field indicates the total number of options. You can use the index i (which must be within the range of [0, **optionCount**)) to access **titles[i]**, **descriptions[i]**, and **ranges[i]** simultaneously to obtain the complete information about option i. Ensure that the array lengths of **titles**, **descriptions**, and **ranges** are the same and equal to the value of **optionCount**. Otherwise, the complete information about the options may not be obtained correctly.
+Represents the configurable parameter options of a scanner, used to configure scanner parameters, including the option titles, descriptions, configurable ranges, and the number of options. Each option consists of a set of titles, descriptions, and configurable ranges, which are stored as parallel arrays. optionCount indicates the total number of options. A developer can access titles[i], descriptions[i], and ranges[i] simultaneously by using the index i (where 0 ≤ i < optionCount) to obtain the complete information of the i-th option. Ensure that the lengths of the titles, descriptions, and ranges arrays are consistent and equal to optionCount; otherwise, the complete information of an option may not be obtained correctly.
 
 **Since**: 12
 

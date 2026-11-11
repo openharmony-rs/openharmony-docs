@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=1c13265ebab94c9783da6ea222ad5a373724f995 translatedAt=2026-11-10T08:03:07.554Z pushedAt=2026-11-10T11:18:39.341Z nl=1 -->
 
 The **cryptoFramework** module provides APIs for cryptographic operations, shielding the underlying hardware and algorithm library.
 
@@ -101,7 +102,7 @@ This class is applicable to block cipher modes that require an IV, such as CBC, 
 
 ## GcmParamsSpec
 
-Encapsulates the parameters for encryption or decryption using the GCM AEAD mode that requires **IV**, **AAD**, and the authentication label. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
+Encapsulates the [ParamsSpec](#paramsspec) parameters for encryption or decryption using the GCM AEAD mode that requires **IV**, **AAD**, and the authentication label. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
 **GcmParamsSpec** applies to the GCM mode.
 
@@ -124,7 +125,7 @@ Encapsulates the parameters for encryption or decryption using the GCM AEAD mode
 
 ## CcmParamsSpec
 
-Encapsulates the parameters for encryption or decryption using the CCM AEAD mode that requires **IV**, **AAD**, and the authentication label. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
+Encapsulates the [ParamsSpec](#paramsspec) parameters for encryption or decryption using the CCM AEAD mode that requires **IV**, **AAD**, and the authentication label. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
 **CcmParamsSpec** applies to the CCM mode.
 
@@ -146,7 +147,7 @@ Encapsulates the parameters for encryption or decryption using the CCM AEAD mode
 
 ## Poly1305ParamsSpec<sup>22+</sup>
 
-Encapsulates the parameters for encryption or decryption using the ChaCha20-Poly1305 AEAD mode that requires **Nonce**, **AAD**, and the authentication label. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
+Encapsulates the [ParamsSpec](#paramsspec) parameters for encryption or decryption using the ChaCha20-Poly1305 AEAD mode that requires **Nonce**, **AAD**, and the authentication label. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
 Applicable to the Poly1305 mode of [ChaCha20](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#chacha20).
 
@@ -361,7 +362,7 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 ## DSAPubKeySpec<sup>10+</sup>
 
-Defines a child class of [AsyKeySpec](#asykeyspec10) used to specify the parameters of the public key in the DSA algorithm. 
+Defines a child class of [AsyKeySpec](#asykeyspec10) used to specify the parameters of the public key in the DSA algorithm.
 
 To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10) to create a key generator.
 
@@ -494,7 +495,7 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 ## ECCKeyPairSpec<sup>10+</sup>
 
-Defines a child class of [AsyKeySpec](#asykeyspec10) used to specify full parameters of the public and private keys in the ECC algorithm. 
+Defines a child class of [AsyKeySpec](#asykeyspec10) used to specify full parameters of the public and private keys in the ECC algorithm.
 
 To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10) to create a key generator.
 
@@ -528,7 +529,7 @@ To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySp
 
 ## RSAPubKeySpec<sup>10+</sup>
 
-Defines a child class of [AsyKeySpec](#asykeyspec10) used to specify the parameters of the public key in the RSA algorithm. 
+Defines a child class of [AsyKeySpec](#asykeyspec10) used to specify the parameters of the public key in the RSA algorithm.
 
 To generate a key based on key parameters, pass it to [createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10) to create a key generator.
 
@@ -762,7 +763,7 @@ Defines the child class of [KdfSpec](#kdfspec11). It is used as a parameter for 
 
 > **NOTE**
 >
->  **password** is the original password. If **password** of the string type is used, pass in the actual data for key derivation, rather than a HexString or Base64-encoded value. In addition, the string must be encoded in UTF-8, as other encodings may alter the derivation outcome.
+> **password** is the original password. If **password** of the string type is used, pass in the actual data for key derivation, rather than a HexString or Base64-encoded value. In addition, the string must be encoded in UTF-8, as other encodings may alter the derivation outcome.
 
 ## HKDFSpec<sup>12+</sup>
 
@@ -800,8 +801,8 @@ Defines the child class of [KdfSpec](#kdfspec11). It is a parameter for scrypt k
 | passphrase | string \| Uint8Array | No  | No  | Original password entered by the user.|
 | salt | Uint8Array | No  | No  | Salt value.|
 | n | number | No  | No  | CPU/memory overhead. The value must be a positive integer.|
+| r | number | No | No | Block size. The value must be a positive integer. |
 | p | number | No  | No  | Parallelization parameter. The value must be a positive integer.|
-| r | number | No  | No  | Block size. The value must be a positive integer.|
 | maxMemory | number | No  | No  | Maximum memory size, in bytes. The value must be a positive integer.|
 | keySize | number | No  | No  | Length of the derived key, in bytes. The value must be a positive integer.|
 
@@ -985,12 +986,18 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateAesKey() {
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  let symKey = await symKeyGenerator.generateSymKey();
-  let encodedKey = symKey.getEncoded();
-  console.info('key hex: ' + encodedKey.data);
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+    let symKey = await symKeyGenerator.generateSymKey();
+    let encodedKey = symKey.getEncoded();
+    console.info('key hex: ' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateAesKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1028,12 +1035,18 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateAesKey() {
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  let symKey = await symKeyGenerator.generateSymKey();
-  let symKeyLen = symKey.getKeySize();
-  console.info('keysize is: ' + symKeyLen);
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+    let symKey = await symKeyGenerator.generateSymKey();
+    let symKeyLen = symKey.getKeySize();
+    console.info('keysize is: ' + symKeyLen);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateAesKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1059,15 +1072,21 @@ Clears the key data in memory. This API returns the result synchronously. Call t
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateAesKeyFun() {
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  let key = await symKeyGenerator.generateSymKey();
-  let encodedKey = key.getEncoded();
-  console.info('key blob: '+ encodedKey.data);
-  key.clearMem();
-  encodedKey = key.getEncoded();
-  console.info('key blob: ' + encodedKey.data);
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+    let key = await symKeyGenerator.generateSymKey();
+    let encodedKey = key.getEncoded();
+    console.info('key blob: '+ encodedKey.data);
+    key.clearMem();
+    encodedKey = key.getEncoded();
+    console.info('key blob: ' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateAesKeyFun failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1116,6 +1135,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Construct the EccCommonSpec struct, which defines the common parameters of the ECC public and private keys.
 function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
@@ -1141,12 +1161,17 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 }
 
 async function testGetAsyKeySpec() {
-  let commKeySpec = genEccCommonSpec(); // Construct the EccCommonSpec object.
-  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Create an AsyKeyGenerator instance based on the EccCommonSpec object.
-  let keyPair = await generatorBySpec.generateKeyPair();
-  let pubKey = keyPair.pubKey;
-  let eccPrimeP = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-  console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  try {
+    let commKeySpec = genEccCommonSpec(); // Use the parameter attributes to construct the public key parameter object for the ECC public and private keys.
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Use the key parameter object to create the generator.
+    let keyPair = await generatorBySpec.generateKeyPair();
+    let pubKey = keyPair.pubKey;
+    let eccPrimeP = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+    console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetAsyKeySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1193,15 +1218,21 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGetEncodedDer() {
-  let pkData = new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
-  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
-  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await generator.convertKey(pubKeyBlob, null);
-  let key = keyPair.pubKey;
-  let returnBlob = key.getEncodedDer('X509|UNCOMPRESSED');
-  console.info('returnBlob data: ' + returnBlob.data);
+  try {
+    let pkData = new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
+    let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
+    let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await generator.convertKey(pubKeyBlob, null);
+    let key = keyPair.pubKey;
+    let returnBlob = key.getEncodedDer('X509|UNCOMPRESSED');
+    console.info('returnBlob data: ' + returnBlob.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetEncodedDer failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1209,7 +1240,7 @@ async function testGetEncodedDer() {
 
 getEncodedPem(format: string): string
 
-Obtains the key data. This API returns the result synchronously. The key can be an RSA public or private key. The public key must comply with the X.509 and PKCS #1 specifications and be encoded in PEM.
+Obtains the key data in PEM encoding. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1241,6 +1272,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let publicPkcs1Str1024: string =
   '-----BEGIN RSA PUBLIC KEY-----\n'
@@ -1251,10 +1283,15 @@ let publicPkcs1Str1024: string =
 
 function testPubKeyPkcs1ToX509BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
-  let pubPemKey = keyPair.pubKey;
-  let pubString = pubPemKey.getEncodedPem('X509');
-  console.info('[sync]testPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
+  try {
+    let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
+    let pubPemKey = keyPair.pubKey;
+    let pubString = pubPemKey.getEncodedPem('X509');
+    console.info('[sync]testPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPubKeyPkcs1ToX509BySync1024 failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1299,12 +1336,18 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function eccGetKeyDataTest() {
-  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await eccGenerator.generateKeyPair();
-  let returnBlob = await keyPair.pubKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
-  console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  try {
+    let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await eccGenerator.generateKeyPair();
+    let returnBlob = await keyPair.pubKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
+    console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1349,12 +1392,18 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function eccGetKeyDataTest() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = eccGenerator.generateKeyPairSync();
-  let returnBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
-  console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  try {
+    let keyPair = eccGenerator.generateKeyPairSync();
+    let returnBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
+    console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1380,6 +1429,7 @@ Clear the key data in memory. This API returns the result synchronously.
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testClearMem() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
@@ -1390,6 +1440,8 @@ async function testClearMem() {
     let returnBlob = priKey.getEncodedDer('PKCS8');
     console.info('returnBlob data: ' + returnBlob.data);
     priKey.clearMem(); // For an asymmetric private key, clearMem() releases the internal key structure. After clearMem is executed, getEncoded() is not supported.
+  }).catch((error: BusinessError) => {
+    console.error(`generateKeyPair failed, ${error.code}, ${error.message}`);
   });
 }
 ```
@@ -1433,6 +1485,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // Construct the EccCommonSpec struct, which defines the common parameters of the ECC public and private keys.
 function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   let fieldFp: cryptoFramework.ECFieldFp = {
@@ -1457,12 +1510,17 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
 }
 
 async function testGetAsyKeySpec() {
-  let commKeySpec = genEccCommonSpec(); // Construct the EccCommonSpec object.
-  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Create an AsyKeyGenerator instance based on the EccCommonSpec object.
-  let keyPair = await generatorBySpec.generateKeyPair();
-  let priKey = keyPair.priKey;
-  let eccPrimeP = priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-  console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  try {
+    let commKeySpec = genEccCommonSpec(); // Construct the ECC public/private key common parameter object using the parameter attributes.
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Create the generator using the key parameter object.
+    let keyPair = await generatorBySpec.generateKeyPair();
+    let priKey = keyPair.priKey;
+    let eccPrimeP = priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+    console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetAsyKeySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 ### getEncodedDer<sup>12+</sup>
@@ -1507,6 +1565,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGetEncodedDer() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
@@ -1516,6 +1575,8 @@ async function testGetEncodedDer() {
     let priKey = keyPair.priKey;
     let returnBlob = priKey.getEncodedDer('PKCS8');
     console.info('returnBlob data: ' + returnBlob.data);
+  }).catch((error: BusinessError) => {
+    console.error(`generateKeyPair failed, ${error.code}, ${error.message}`);
   });
 }
 ```
@@ -1524,7 +1585,7 @@ async function testGetEncodedDer() {
 
 getEncodedPem(format: string): string
 
-Obtains the key data. This API returns the result synchronously. The key can be an RSA public or private key. The private key must comply with the PKCS #8 and PKCS #1 specifications and be encoded in PEM.
+Obtains the private key data in PEM encoding. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1557,6 +1618,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -1577,10 +1639,15 @@ let priKeyPkcs1Str1024: string =
 
 function testPriKeyPkcs1ToPkcs8BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
-  let priPemKey = keyPair.priKey;
-  let priString = priPemKey.getEncodedPem('PKCS8');
-  console.info('[sync]testPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
+  try {
+    let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
+    let priPemKey = keyPair.priKey;
+    let priString = priPemKey.getEncodedPem('PKCS8');
+    console.info('[sync]testPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPriKeyPkcs1ToPkcs8BySync1024 failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1588,7 +1655,7 @@ function testPriKeyPkcs1ToPkcs8BySync1024() {
 
 getEncodedPem(format: string, config: KeyEncodingConfig): string
 
-Obtains the key data. This API returns the result synchronously. The key can be an RSA public or private key. The private key must comply with PKCS #8 or PKCS #1 specifications and be encoded in PEM.
+Obtains the encrypted private key data in PEM encoding. This API returns the result synchronously. Currently, only RSA keys are supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1622,6 +1689,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -1642,14 +1710,19 @@ let priKeyPkcs1Str1024: string =
 
 function testPriKeyPkcs1Encoded() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
-  let options: cryptoFramework.KeyEncodingConfig = {
-    password: '123456',
-    cipherName: 'AES-128-CBC'
+  try {
+    let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
+    let options: cryptoFramework.KeyEncodingConfig = {
+      password: '123456',
+      cipherName: 'AES-128-CBC'
+    }
+    let priPemKey = keyPair.priKey;
+    let priString = priPemKey.getEncodedPem('PKCS1', options);
+    console.info('[sync]testPriKeyPkcs1Encoded priString output = ' + priString);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPriKeyPkcs1Encoded failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
-  let priPemKey = keyPair.priKey;
-  let priString = priPemKey.getEncodedPem('PKCS1', options);
-  console.info('[sync]testPriKeyPkcs1Encoded priString output = ' + priString);
 }
 ```
 
@@ -1684,6 +1757,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
   let buf1 = buffer.from(a);
@@ -1743,7 +1817,8 @@ async function generateAsyKey() {
     console.info('pk1 bin data ' + pkBlob.data);
     let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
     console.info('result = ' + ret);
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
   }
 }
@@ -1780,6 +1855,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
   let buf1 = buffer.from(a);
@@ -1839,7 +1915,8 @@ function generateAsyKey() {
     console.info('pk1 bin data' + pkBlob.data);
     let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
     console.info('result = ' + ret);
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
   }
 }
@@ -1886,12 +1963,18 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function eccGetKeyDataTest() {
-  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await eccGenerator.generateKeyPair();
-  let returnBlob = await keyPair.priKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
-  console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  try {
+    let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await eccGenerator.generateKeyPair();
+    let returnBlob = await keyPair.priKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
+    console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1936,12 +2019,18 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function eccGetKeyDataTest() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = eccGenerator.generateKeyPairSync();
-  let returnBlob = keyPair.priKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
-  console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  try {
+    let keyPair = eccGenerator.generateKeyPairSync();
+    let returnBlob = keyPair.priKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
+    console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -2009,8 +2098,14 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+try {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createSymKeyGenerator failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## SymKeyGenerator
@@ -2069,7 +2164,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   symKeyGenerator.generateSymKey((err, symKey) => {
-    console.info('Generate symKey result: success, algName: ' + symKey.algName);
+    if (err) {
+      console.error(`generateSymKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
+    console.info('generateSymKey result: success, algName: ' + symKey.algName);
   });
 ```
 
@@ -2152,14 +2251,20 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGenerateSymKeySync() {
   // Create a SymKeyGenerator instance.
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  // Use SymKeyGenerator to randomly generate a symmetric key.
-  let key = symKeyGenerator.generateSymKeySync();
-  let encodedKey = key.getEncoded();
-  console.info('key hex:' + encodedKey.data);
+  try {
+    // Use the key generator to randomly generate a symmetric key.
+    let key = symKeyGenerator.generateSymKeySync();
+    let encodedKey = key.getEncoded();
+    console.info('key hex:' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSymKeySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -2213,6 +2318,10 @@ function testConvertKey() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   let keyMaterialBlob = genKeyMaterialBlob();
   symKeyGenerator.convertKey(keyMaterialBlob, (err, symKey) => {
+    if (err) {
+      console.error(`convertKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     console.info('Convert symKey result: success, algName: ' + symKey.algName);
   });
 }
@@ -2320,6 +2429,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testConvertKeySync() {
   // The symmetric key length is 64 bytes (512 bits).
@@ -2328,9 +2438,14 @@ function testConvertKeySync() {
     data : new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
   }
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
-  let key = symKeyGenerator.convertKeySync(keyBlob);
-  let encodedKey = key.getEncoded();
-  console.info('key encoded data: ' + encodedKey.data);
+  try {
+    let key = symKeyGenerator.convertKeySync(keyBlob);
+    let encodedKey = key.getEncoded();
+    console.info('key encoded data: ' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testConvertKeySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -2374,8 +2489,14 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+try {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createAsyKeyGenerator failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## AsyKeyGenerator
@@ -2510,6 +2631,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 try {
@@ -2519,7 +2641,8 @@ try {
   } else {
     console.error('[Sync]: get key pair result: fail.');
   }
-} catch (e) {
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
@@ -2746,6 +2869,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let pubKeyArray =
   new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
@@ -2765,7 +2889,8 @@ try {
   } else {
     console.error('[Sync]: convert key pair result: fail.');
   }
-} catch (e) {
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
@@ -2966,6 +3091,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -2999,7 +3125,8 @@ function testConvertPemKeyBySync() {
     } else {
       console.error('[Sync]: convert pem key pair result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3046,6 +3173,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1EncodingStr: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -3075,7 +3203,8 @@ function testConvertPemKeyBySync() {
     } else {
       console.error('[Sync]: convert pem key pair result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3119,6 +3248,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
@@ -3146,7 +3276,12 @@ function genDsa1024KeyPairSpecBigE() {
 }
 
 let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+try {
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createAsyKeyGeneratorBySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## AsyKeyGeneratorBySpec<sup>10+</sup>
@@ -3382,7 +3517,7 @@ function testGenerateKeyPairSync() {
     }
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -3452,7 +3587,7 @@ function testGeneratePriKey() {
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
     if (err) {
-      console.error(`generateKeyPair failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      console.error(`generatePriKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
       return;
     }
     console.info('generatePriKey result: success.');
@@ -3565,6 +3700,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
@@ -3601,7 +3737,8 @@ function testGeneratePriKeySync() {
     } else {
       console.error('[Sync]: get pri key result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3785,6 +3922,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
@@ -3821,7 +3959,8 @@ function testGeneratePubKeySync() {
     } else {
       console.error('[Sync]: get pub key result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3883,7 +4022,7 @@ try {
 
 static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
-Converts the specified point data into a **Point** object based on the curve name (NID). Currently, compressed and uncompressed point data is supported. 
+Converts the specified point data into a **Point** object based on the curve name (NID). Currently, compressed and uncompressed point data is supported.  
 
 > **NOTE**
 >
@@ -3922,14 +4061,20 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Randomly generated uncompressed point data.
 let pkData =
   new Uint8Array([4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195,
     157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242,
     206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
-let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
-console.info('returnPoint: ' + returnPoint.x.toString(16));
+try {
+  let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
+  console.info('returnPoint: ' + returnPoint.x.toString(16));
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`convertPoint failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ### getEncodedPoint<sup>12+</sup>
@@ -3970,21 +4115,27 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function doTest() {
-  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await generator.generateKeyPair();
-  let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
-  let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
-  console.info('ECC_PK_X_BN 16: ' + eccPkX.toString(16));
-  console.info('ECC_PK_Y_BN 16: ' + eccPkY.toString(16));
-  // Place eccPkX.toString(16) in x and eccPkY.toString(16) in y.
-  let returnPoint: cryptoFramework.Point = {
-    x: BigInt('0x' + eccPkX.toString(16)),
-    y: BigInt('0x' + eccPkY.toString(16))
-  };
-  let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
-  console.info('returnData: ' + returnData);
+  try {
+    let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await generator.generateKeyPair();
+    let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
+    let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
+    console.info('ECC_PK_X_BN 16: ' + eccPkX.toString(16));
+    console.info('ECC_PK_Y_BN 16: ' + eccPkY.toString(16));
+    // Put the result of eccPkX.toString(16) into x, and the result of eccPkY.toString(16) into y.
+    let returnPoint: cryptoFramework.Point = {
+      x: BigInt('0x' + eccPkX.toString(16)),
+      y: BigInt('0x' + eccPkY.toString(16))
+    };
+    let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
+    console.info('returnData: ' + returnData);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`doTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -4133,6 +4284,8 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                    |
 | 17630001 | Crypto operation error.          |
+
+**Example**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -4386,7 +4539,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 
-Initializes a [cipher](#cipher) instance. This API returns the result synchronously. **initSync**, **updateSync**, and **doFinalSync** must be used together. **initSync** and **doFinalSync** are mandatory, and **updateSync** is optional.
+Initializes a [Cipher](#cipher) instance. This API returns the result synchronously. **initSync**, **updateSync**, and **doFinalSync** must be used together. **initSync** and **doFinalSync** are mandatory, and **updateSync** is optional.
 
 This API can be used only after a [Cipher](#cipher) instance is created by using [createCipher](#cryptoframeworkcreatecipher).
 
@@ -4424,7 +4577,7 @@ This API can be called only after the [Cipher](#cipher) instance is initialized 
 
 > **NOTE**
 >
-> 1. The results of **update()** and **doFinal()** may vary with the block mode used. If you are not familiar with the block modes, you are advised to check each **update()** and **doFinal()** result to ensure that the results are not **null**. When a valid result is returned, extract and concatenate the data to form a complete ciphertext or plaintext.  
+> 1. The results of **update()** and **doFinal()** may vary with the block mode used. If you are not familiar with the block modes, you are advised to check each **update()** and **doFinal()** result to ensure that the results are not **null**. When a valid result is returned, extract and concatenate the data to form a complete ciphertext or plaintext.
 >
 >    For example, in ECB and CBC modes, encryption and decryption are performed by block regardless of whether the data input by **update()** is an integer multiple of the block size, and **update()** returns the newly processed block data.
 >
@@ -4477,7 +4630,7 @@ This API can be called only after the [Cipher](#cipher) instance is initialized 
 
 > **NOTE**
 >
-> 1. The results of **update()** and **doFinal()** may vary with the block mode used. If you are not familiar with the block modes, you are advised to check each update() and doFinal() result to ensure that the results are not null. When a valid result is returned, extract and concatenate the data to form a complete ciphertext or plaintext.  
+> 1. The results of **update()** and **doFinal()** may vary with the block mode used. If you are not familiar with the block modes, you are advised to check each update() and doFinal() result to ensure that the results are not null. When a valid result is returned, extract and concatenate the data to form a complete ciphertext or plaintext.
 > <br>For example, in ECB and CBC modes, encryption and decryption are performed by block regardless of whether the data input by **update()** is an integer multiple of the block size, and **update()** returns the newly processed block data.<br>That is, data is returned as long as the data passed in by **update()** reaches the size of a block. Otherwise, **null** is returned and the data will be retained until a block is formed in the next **update()** or **doFinal()**.<br>In the final **doFinal()** operation, the remaining unprocessed data is padded based on the padding mode set in [createCipher](#cryptoframeworkcreatecipher) to the integer multiple of the block size to produce the final encrypted or decrypted data.<br>For block cipher modes that can be converted to stream mode, the ciphertext length may be the same as the plaintext length.
 > 2. You can call **update()** multiple times or skip calling **update()** (call **doFinal()** directly after **init()**), depending on the data volume.<br>
 >    The amount of the data to be passed in by **update()** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to pass data in multiple **update()** calls rather than processing it all at once.<br>
@@ -4519,7 +4672,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 updateSync(data: DataBlob): DataBlob
 
-Updates the data to encrypt or decrypt by segment. This API uses an asynchronous callback to return the encrypted or decrypted data.
+Updates the data for encryption or decryption in segments.
 
 This API can be called only after the [Cipher](#cipher) instance is initialized by using [initSync()](#initsync12).
 
@@ -4626,7 +4779,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>Applicable versions: 22+|
 | 17630001 | Crypto operation error. |
 
 **Example**
@@ -4636,11 +4789,18 @@ For more encryption and decryption examples, see [Using an AES Symmetric Key (GC
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function generateRandom(len: number) {
+function generateRandom(len: number): cryptoFramework.DataBlob {
   let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
+  try {
+    return rand.generateRandomSync(len);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateRandomSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    let dataBlob: cryptoFramework.DataBlob = { data: new Uint8Array(len) };
+    return dataBlob;
+  }
 }
 
 function genGcmParamsSpec() {
@@ -4667,11 +4827,27 @@ function cipherByCallback() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
   symKeyGenerator.generateSymKey((err, symKey) => {
+    if (err) {
+      console.error(`generateSymKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams, (err) => {
+      if (err) {
+        console.error(`init failed, errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       cipher.update(plainText, (err, encryptUpdate) => {
+        if (err) {
+          console.error(`update failed, errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         cipher.doFinal(null, (err, tag) => {
+          if (err) {
+            console.error(`doFinal failed, errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           gcmParams.authTag = tag;
           console.info('encryptUpdate plainText: ' + encryptUpdate.data);
         });
@@ -4777,11 +4953,18 @@ In addition, for more encryption and decryption examples, see [Using an AES Symm
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function generateRandom(len: number) {
+function generateRandom(len: number): cryptoFramework.DataBlob {
   let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
+  try {
+    return rand.generateRandomSync(len);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateRandomSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    let dataBlob: cryptoFramework.DataBlob = { data: new Uint8Array(len) };
+    return dataBlob;
+  }
 }
 
 function genGcmParamsSpec() {
@@ -4804,16 +4987,21 @@ function genGcmParamsSpec() {
 }
 
 async function cipherByPromise() {
-  let gcmParams = genGcmParamsSpec();
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
-  let symKey = await symKeyGenerator.generateSymKey();
-  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = 'This is a test';
-  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-  let encryptUpdate = await cipher.update(plainText);
-  gcmParams.authTag = await cipher.doFinal(null);
-  console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  try {
+    let gcmParams = genGcmParamsSpec();
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let symKey = await symKeyGenerator.generateSymKey();
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+    let message = 'This is a test';
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptUpdate = await cipher.update(plainText);
+    gcmParams.authTag = await cipher.doFinal(null);
+    console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`cipherByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -4821,7 +5009,7 @@ async function cipherByPromise() {
 
 doFinalSync(data: DataBlob | null): DataBlob
 
-(1) Processes the remaining data and the data passed in this time, and completes the encryption or decryption operation for symmetric encryption and decryption. This API returns the encrypted or decrypted data synchronously.
+1) In symmetric encryption/decryption, **doFinalSync** is used to process the remaining data and the data passed in this time, and finally ends the encryption or decryption operation. The encrypted or decrypted data is obtained synchronously.
 
 If a small amount of data is to be processed, you can pass in all the data at a time in **doFinalSync()** without using **updateSync()**. If data has been passed in by using [updateSync](#updatesync12) in the current encryption and decryption process, you can pass in **null** to the **data** parameter of **doFinalSync()**.
 
@@ -4860,7 +5048,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>Applicable versions: 22+|
 | 17630001 | Crypto operation error. |
 
 **Example**
@@ -4870,11 +5058,18 @@ In addition, for more encryption and decryption examples, see [Using an AES Symm
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function generateRandom(len: number) {
+function generateRandom(len: number): cryptoFramework.DataBlob {
   let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
+  try {
+    return rand.generateRandomSync(len);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateRandomSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    let dataBlob: cryptoFramework.DataBlob = { data: new Uint8Array(len) };
+    return dataBlob;
+  }
 }
 
 function genGcmParamsSpec() {
@@ -4897,16 +5092,21 @@ function genGcmParamsSpec() {
 }
 
 async function cipherBySync() {
-  let gcmParams = genGcmParamsSpec();
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
-  let symKey = await symKeyGenerator.generateSymKey();
-  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = 'This is a test';
-  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-  let encryptUpdate = cipher.updateSync(plainText);
-  gcmParams.authTag = cipher.doFinalSync(null);
-  console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  try {
+    let gcmParams = genGcmParamsSpec();
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let symKey = await symKeyGenerator.generateSymKey();
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+    let message = 'This is a test';
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptUpdate = cipher.updateSync(plainText);
+    gcmParams.authTag = cipher.doFinalSync(null);
+    console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`cipherBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -4938,18 +5138,24 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType. <br>Applicable version: 22+|
 | 17630001 | Crypto operation error. |
 
 **Example**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetCipherSpec() {
   let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
   let pSource = new Uint8Array([1, 2, 3, 4]);
-  cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+  try {
+    cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetCipherSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -4986,18 +5192,24 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
-| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType.|
+| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType. <br>Applicable version: 22+|
 | 17630001 | Crypto operation error. |
 
 **Example**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetCipherSpec() {
   let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
-  let mdName = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
-  console.info('getCipherSpec: mdName =' + mdName);
+  try {
+    let mdName = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+    console.info('getCipherSpec: mdName =' + mdName);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetCipherSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5038,16 +5250,18 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let signer1 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-
-let signer2 = cryptoFramework.createSign('RSA1024|PSS|SHA256|MGF1_SHA256');
-
-let signer3 = cryptoFramework.createSign('ECC224|SHA256');
-
-let signer4 = cryptoFramework.createSign('DSA2048|SHA256');
-
-let signer5 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256|OnlySign');
+try {
+  let signer1 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
+  let signer2 = cryptoFramework.createSign('RSA1024|PSS|SHA256|MGF1_SHA256');
+  let signer3 = cryptoFramework.createSign('ECC224|SHA256');
+  let signer4 = cryptoFramework.createSign('DSA2048|SHA256');
+  let signer5 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256|OnlySign');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createSign failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## Sign
@@ -5333,7 +5547,7 @@ For details about the error codes,see [Universal Error Codes](../errorcode-unive
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620003 | Parameter check failed. <br>Applicable versions: 26.0.0+|
-| 17630001 | crypto operation error. |
+| 17630001 | Crypto operation error. |
 
 ### sign<sup>10+</sup>
 
@@ -5400,7 +5614,7 @@ For details about the error codes,see [Universal Error Codes](../errorcode-unive
 | 17620001 | Memory operation failed.                                     |
 | 17620002 | Failed to obtain the native object or convert parameters.                                    |
 | 17620003 | Parameter check failed. <br>Applicable versions: 26.0.0+|
-| 17630001 | crypto operation error. |
+| 17630001 | Crypto operation error. |
 
 ### sign<sup>10+</sup>
 
@@ -5525,9 +5739,25 @@ function signByCallback() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
   rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     signer.init(keyPair.priKey, err => {
+      if (err) {
+        console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       signer.update(inputUpdate, err => {
+        if (err) {
+          console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         signer.sign(inputVerify, (err, signData) => {
+          if (err) {
+            console.error(`sign failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           console.info('sign output = ' + signData.data);
         });
       });
@@ -5543,6 +5773,7 @@ For more examples of signing and signature verification, see [Signing and Signat
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -5589,16 +5820,21 @@ async function signByPromise() {
       243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
       232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
       207, 254, 61, 71, 184, 167, 184]);
-  let keyPair = await genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
-  let inputSign: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
-  let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-  await signer.init(keyPair.priKey);
-  await signer.update(inputUpdate);
-  let signData = await signer.sign(inputSign);
-  console.info('signData result: ' + signData.data);
+  try {
+    let keyPair = await genKeyPairByData(pkData, skData);
+    let inputUpdate: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+    let inputSign: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
+    let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
+    await signer.init(keyPair.priKey);
+    await signer.update(inputUpdate);
+    let signData = await signer.sign(inputSign);
+    console.info('signData result: ' + signData.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`signByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5609,6 +5845,7 @@ For more examples of signing and signature verification, see [Signing and Signat
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -5661,10 +5898,15 @@ function signBySync() {
   let inputSign: cryptoFramework.DataBlob =
     { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-  signer.initSync(keyPair.priKey);
-  signer.updateSync(inputUpdate);
-  let signData = signer.signSync(inputSign);
-  console.info('signData result: ' + signData.data);
+  try {
+    signer.initSync(keyPair.priKey);
+    signer.updateSync(inputUpdate);
+    let signData = signer.signSync(inputSign);
+    console.info('signData result: ' + signData.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`signBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5741,11 +5983,17 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetSignSpec() {
   let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
-  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5786,10 +6034,16 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 **Example**
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetSignSpec() {
   let signer = cryptoFramework.createSign('ML-DSA');
-  signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5833,12 +6087,18 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetSignSpec() {
   let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
   let setN = 32;
-  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-  signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+    signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5858,7 +6118,7 @@ Creates a signature verification instance.
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | Signature verification algorithm to use. Currently, RSA, ECC, DSA, SM2<sup>10+</sup>, Ed25519<sup>11+</sup>, and ML-DSA<sup>26.0.0+</sup> are supported. If RSA PKCS1 is used, you must set the digest. If RSA PSS is used, you must set the digest and mask digest. When the RSA algorithm is used for signature verification, you can use **Recover** to verify and recover the signed data.<br>For details about the supported specifications, see [Signing and Signature Verification Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md).|
+| algName | string | Yes   | Signature verification algorithm to use. Currently, RSA, ECC, DSA, SM2<sup>10+</sup>, Ed25519<sup>11+</sup>, and ML-DSA<sup>26.0.0+</sup> are supported. If RSA PKCS #1 is used, you must set the digest. If RSA PSS is used, you must set the digest and mask digest. When the RSA algorithm is used for signature verification, you can use **Recover** to verify and recover the signed data.<br>For details about the supported specifications, see [Signing and Signature Verification Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md). |
 
 **Return value**
 
@@ -5880,12 +6140,16 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let verifier1 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-
-let verifier2 = cryptoFramework.createVerify('RSA1024|PSS|SHA256|MGF1_SHA256');
-
-let verifier3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
+try {
+  let verifier1 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
+  let verifier2 = cryptoFramework.createVerify('RSA1024|PSS|SHA256|MGF1_SHA256');
+  let verifier3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createVerify failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## Verify
@@ -6164,7 +6428,7 @@ For details about the error codes,see [Universal Error Codes](../errorcode-unive
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620003 | Parameter check failed. <br>Applicable versions: 26.0.0+|
-| 17630001 | crypto operation error. |
+| 17630001 | Crypto operation error. |
 
 ### verify<sup>10+</sup>
 
@@ -6233,7 +6497,7 @@ For details about the error codes,see [Universal Error Codes](../errorcode-unive
 | 17620001 | Memory operation failed.                                     |
 | 17620002 | Failed to obtain the native object or convert parameters.                                    |
 | 17620003 | Parameter check failed. <br>Applicable versions: 26.0.0+|
-| 17630001 | crypto operation error. |
+| 17630001 | Crypto operation error. |
 
 ### verify<sup>10+</sup>
 
@@ -6370,9 +6634,25 @@ function verifyByCallback() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
   rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     verifier.init(keyPair.pubKey, err => {
+      if (err) {
+        console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       verifier.update(inputUpdate, err => {
+        if (err) {
+          console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         verifier.verify(inputVerify, signMessageBlob, (err, res) => {
+          if (err) {
+            console.error(`verify failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           console.info('verify result = ' + res);
         });
       });
@@ -6388,6 +6668,7 @@ For more examples, see [Signing and Signature Verification with an RSA Key Pair]
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -6450,10 +6731,15 @@ async function verifyByPromise() {
       232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
   };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-  await verifier.init(keyPair.pubKey);
-  await verifier.update(inputUpdate);
-  let res = await verifier.verify(inputVerify, signMessageBlob);
-  console.info('verify result: ' + res);
+  try {
+    await verifier.init(keyPair.pubKey);
+    await verifier.update(inputUpdate);
+    let res = await verifier.verify(inputVerify, signMessageBlob);
+    console.info('verify result: ' + res);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifyByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6464,6 +6750,7 @@ For more examples of signing and signature verification, see [Signing and Signat
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -6526,10 +6813,15 @@ function verifyBySync() {
       232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
   };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-  verifier.initSync(keyPair.pubKey);
-  verifier.updateSync(inputUpdate);
-  let res = verifier.verifySync(inputVerify, signMessageBlob);
-  console.info('verify result: ' + res);
+  try {
+    verifier.initSync(keyPair.pubKey);
+    verifier.updateSync(inputUpdate);
+    let res = verifier.verifySync(inputVerify, signMessageBlob);
+    console.info('verify result: ' + res);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifyBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6763,11 +7055,17 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetVerifySpec() {
   let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6810,10 +7108,16 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetVerifySpec() {
   let verifier = cryptoFramework.createVerify('ML-DSA');
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.ML_DSA_MU_BOOL, false);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.ML_DSA_MU_BOOL, false);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`setVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6856,12 +7160,18 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetVerifySpec() {
   let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-  verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+    verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6903,8 +7213,14 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+try {
+  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createKeyAgreement failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## KeyAgreement
@@ -7027,18 +7343,24 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecret() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-  let globalKeyPair = await eccGen.generateKeyPair();
-  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
-    if (err) {
-      console.error(`keyAgreement failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      return;
-    }
-    console.info('keyAgreement output = ' + secret.data);
-  });
+  try {
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
+      if (err) {
+        console.error(`keyAgreement failed, errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
+      console.info('keyAgreement output = ' + secret.data);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSecret failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7050,14 +7372,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecret() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-  let globalKeyPair = await eccGen.generateKeyPair();
-  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  let keyAgreementPromise = keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
-  keyAgreementPromise.then(secret => {
-    console.info('keyAgreement output = ' + secret.data);
-  }).catch((error: BusinessError) => {
-    console.error(`keyAgreement failed: errCode: ${error.code}, errMsg: ${error.message}`);
-  });
+  try {
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    let keyAgreementPromise = keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
+    keyAgreementPromise.then(secret => {
+      console.info('keyAgreement output = ' + secret.data);
+    }).catch((error: BusinessError) => {
+      console.error(`keyAgreement failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSecret failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7065,13 +7392,19 @@ async function testGenerateSecret() {
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecretSync() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-  let globalKeyPair = await eccGen.generateKeyPair();
-  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  let secret = keyAgreement.generateSecretSync(globalKeyPair.priKey, globalKeyPair.pubKey);
-  console.info('[Sync]keyAgreement output = ' + secret.data);
+  try {
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    let secret = keyAgreement.generateSecretSync(globalKeyPair.priKey, globalKeyPair.pubKey);
+    console.info('[Sync]keyAgreement output = ' + secret.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSecretSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7298,7 +7631,15 @@ import { buffer } from '@kit.ArkTS';
 function mdByCallback() {
   let md = cryptoFramework.createMd('SHA256');
   md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) }, (err) => {
+    if (err) {
+      console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     md.digest((err, digestOutput) => {
+      if (err) {
+        console.error(`digest failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       console.info('[Callback]: MD result: ' + digestOutput.data);
       console.info('[Callback]: MD len: ' + md.getMdLength());
     });
@@ -7344,13 +7685,19 @@ ArkTS example:
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function mdByPromise() {
-  let md = cryptoFramework.createMd('SHA256');
-  await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
-  let mdOutput = await md.digest();
-  console.info('[Promise]: MD result: ' + mdOutput.data);
-  console.info('[Promise]: MD len: ' + md.getMdLength());
+  try {
+    let md = cryptoFramework.createMd('SHA256');
+    await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = await md.digest();
+    console.info('[Promise]: MD result: ' + mdOutput.data);
+    console.info('[Promise]: MD len: ' + md.getMdLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`mdByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7474,13 +7821,19 @@ ArkTS example:
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function mdBySync() {
   let md = cryptoFramework.createMd('SHA256');
-  md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
-  let mdOutput = md.digestSync();
-  console.info('[Sync]: MD result: ' + mdOutput.data);
-  console.info('[Sync]: MD len: ' + md.getMdLength());
+  try {
+    md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = md.digestSync();
+    console.info('[Sync]: MD result: ' + mdOutput.data);
+    console.info('[Sync]: MD len: ' + md.getMdLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`digestSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7537,12 +7890,16 @@ function StringToUint8Array(str) {
 function mdTestSync() {
     let mdAlgName = 'SHA256';
     let message = 'mdTestMessage';
-    let md = cryptoFramework.createMd(mdAlgName);
-    md.updateSync({ data: StringToUint8Array(message) });
-    let mdResult = md.digestSync();
-    console.info('Digest successfully. result:' + mdResult.data);
-    let mdLen = md.getMdLength();
-    console.info('Digest successfully. md len: ' + mdLen);
+    try {
+        let md = cryptoFramework.createMd(mdAlgName);
+        md.updateSync({ data: StringToUint8Array(message) });
+        let mdResult = md.digestSync();
+        console.info('Digest successfully. result:' + mdResult.data);
+        let mdLen = md.getMdLength();
+        console.info('Digest successfully. md len: ' + mdLen);
+    } catch (error) {
+        console.error(`mdTestSync failed. Code: ${error.code}, message: ${error.message}`);
+    }
 }
 
 export default {
@@ -7589,10 +7946,16 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function getLength() {
   let md = cryptoFramework.createMd('SHA256');
-  console.info('[Promise]: MD len: ' + md.getMdLength());
+  try {
+    console.info('[Promise]: MD len: ' + md.getMdLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getMdLength failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7696,7 +8059,7 @@ try {
   let mac = cryptoFramework.createMac(spec);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -7951,9 +8314,25 @@ function hmacByCallback() {
   let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   symKeyGenerator.convertKey(keyBlob, (err, symKey) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     mac.init(symKey, (err) => {
+      if (err) {
+        console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) }, (err) => {
+        if (err) {
+          console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         mac.doFinal((err, output) => {
+          if (err) {
+            console.error(`doFinal failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           console.info('[Callback]: HMAC result: ' + output.data);
           console.info('[Callback]: MAC len: ' + mac.getMacLength());
         });
@@ -7997,17 +8376,23 @@ For more HMAC operation examples, see [Generating an HMAC by Passing In Data by 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function hmacByPromise() {
-  let mac = cryptoFramework.createMac('SHA256');
-  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let symKey = await symKeyGenerator.convertKey(keyBlob);
-  await mac.init(symKey);
-  await mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
-  let macOutput = await mac.doFinal();
-  console.info('[Promise]: HMAC result: ' + macOutput.data);
-  console.info('[Promise]: MAC len: ' + mac.getMacLength());
+  try {
+    let mac = cryptoFramework.createMac('SHA256');
+    let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let symKey = await symKeyGenerator.convertKey(keyBlob);
+    await mac.init(symKey);
+    await mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
+    let macOutput = await mac.doFinal();
+    console.info('[Promise]: HMAC result: ' + macOutput.data);
+    console.info('[Promise]: MAC len: ' + mac.getMacLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`hmacByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8045,17 +8430,23 @@ For more HMAC operation examples, see [Generating an HMAC by Passing In Data by 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function hmacBySync() {
   let mac = cryptoFramework.createMac('SHA256');
   let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let symKey = symKeyGenerator.convertKeySync(keyBlob);
-  mac.initSync(symKey);
-  mac.updateSync({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
-  let macOutput = mac.doFinalSync();
-  console.info('[Sync]: HMAC result: ' + macOutput.data);
-  console.info('[Sync]: MAC len: ' + mac.getMacLength());
+  try {
+    let symKey = symKeyGenerator.convertKeySync(keyBlob);
+    mac.initSync(symKey);
+    mac.updateSync({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
+    let macOutput = mac.doFinalSync();
+    console.info('[Sync]: HMAC result: ' + macOutput.data);
+    console.info('[Sync]: MAC len: ' + mac.getMacLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`hmacBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -8616,8 +9007,14 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 - PBKDF2
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+try {
+  let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createKdf failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## Kdf<sup>11+</sup>
@@ -8859,7 +9256,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ## SignatureUtils<sup>20+</sup>
 
-Provides utilities for converting SM2 data.
+Provides a utility class for converting ECC/SM2 signature data.
 
 ### genEccSignatureSpec<sup>20+</sup>
 
@@ -8918,7 +9315,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ### genEccSignature<sup>20+</sup>
 
-static genEccSignature(spec: EccSignatureSpec): Uint8Array;
+static genEccSignature(spec: EccSignatureSpec): Uint8Array
 
 Converts an ECC/SM2 signature (r, s) to the ASN.1 DER format.
 

@@ -1,18 +1,17 @@
 # Interface (ImageReceiver)
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=791f15158a2551a4a160285457a793e77ffb08ff translatedAt=2026-08-03T03:56:14.320Z pushedAt=2026-08-04T03:27:12.539Z -->
+<!-- md-trans-meta sourceCommit=b581f405664d89fac4edff14f85b34a7f0bf2fc3 translatedAt=2026-11-10T08:04:36.946Z pushedAt=2026-11-10T11:43:58.685Z nl=1 -->
 
 The **ImageReceiver** class provides APIs to obtain the surface ID of a component, read the latest image, read the next image, and release the ImageReceiver instance. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
 
 Before calling any APIs in ImageReceiver, you must use [image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver11) to create an ImageReceiver instance.
 
-Since API version 23, you are advised to use [image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver23) to create an **ImageReceiver** instance based on the passed [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23). 
+Since API version 23, you are advised to use [image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver23) to create an **ImageReceiver** instance based on the passed [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23).
 
 Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](#release9) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -102,7 +101,8 @@ readLatestImage(callback: AsyncCallback\<Image>): void
 Reads the latest image from the ImageReceiver instance. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
-> This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+>
+> This API must be called after the [on](#on9) callback is triggered to receive data properly. After the [Image](arkts-apis-image-Image.md) object returned by this API is used, the [release](arkts-apis-image-Image.md#release9) method must be called to release it. Only after it is released can new data continue to be received.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -128,6 +128,7 @@ async function ReadLatestImage(receiver : image.ImageReceiver) {
       imgComponent: image.Component) => {
       if (err || imgComponent === undefined) {
         console.error('Failed to getComponent.');
+        return;
       }
       if (imgComponent.byteBuffer) {
         // Process the binary image data.
@@ -147,7 +148,8 @@ readLatestImage(): Promise\<Image>
 Reads the latest image from the ImageReceiver instance. This API uses a promise to return the result.
 
 > **NOTE**
->This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+>
+> This API must be called after the [on](#on9) callback is triggered to receive data properly. After the [Image](arkts-apis-image-Image.md) object returned by this API is used, the [release](arkts-apis-image-Image.md#release9) method must be called to release it. Only after it is released can new data continue to be received.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -169,6 +171,7 @@ async function ReadLatestImage(receiver : image.ImageReceiver) {
       imgComponent: image.Component) => {
       if (err || imgComponent === undefined) {
         console.error('Failed to getComponent.');
+        return;
       }
       if (imgComponent.byteBuffer) {
         // Process the binary image data.
@@ -190,7 +193,8 @@ readNextImage(callback: AsyncCallback\<Image>): void
 Reads the next image from the ImageReceiver instance. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+>
+> This API must be called after the [on](#on9) callback is triggered to receive data properly. After the [Image](arkts-apis-image-Image.md) object returned by this API is used, the [release](arkts-apis-image-Image.md#release9) method must be called to release it. Only after it is released can new data continue to be received.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -216,6 +220,7 @@ async function ReadNextImage(receiver : image.ImageReceiver) {
       imgComponent: image.Component) => {
       if (err || imgComponent === undefined) {
         console.error('Failed to getComponent.');
+        return;
       }
       if (imgComponent.byteBuffer) {
         // Process the binary image data.
@@ -235,7 +240,8 @@ readNextImage(): Promise\<Image>
 Reads the next image from the ImageReceiver instance. This API uses a promise to return the result.
 
 > **NOTE**
->This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+>
+> This API must be called after the [on](#on9) callback is triggered to receive data properly. After the [Image](arkts-apis-image-Image.md) object returned by this API is used, the [release](arkts-apis-image-Image.md#release9) method must be called to release it. Only after it is released can new data continue to be received.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -257,6 +263,7 @@ async function ReadNextImage(receiver : image.ImageReceiver) {
       imgComponent: image.Component) => {
       if (err || imgComponent === undefined) {
         console.error('Failed to getComponent.');
+        return;
       }
       if (imgComponent.byteBuffer) {
         // Process the binary image data.

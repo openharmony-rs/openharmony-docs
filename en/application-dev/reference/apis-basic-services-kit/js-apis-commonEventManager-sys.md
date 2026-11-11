@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=8b332ba8e6e72c2d885a38003986f27dfb7e99d3 translatedAt=2026-10-09T12:14:53.598Z pushedAt=2026-10-10T06:01:12.052Z -->
+<!-- md-trans-meta sourceCommit=a6874e5fd618adc18c14d574c22e8d39934482d4 translatedAt=2026-11-10T04:01:41.254Z pushedAt=2026-11-10T06:14:39.553Z nl=1 -->
 
 This module provides system APIs to publish common events to specified users, remove [sticky common events](../../basic-services/common-event/common-event-glossary.md#sticky-common-event), enable or disable [static subscription](../../basic-services/common-event/common-event-glossary.md#static-subscription) events.
 

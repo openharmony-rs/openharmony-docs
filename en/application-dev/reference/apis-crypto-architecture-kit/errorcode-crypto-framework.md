@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=2d99b235700beb6fbf6e85916d19bb529b5ce6fc translatedAt=2026-11-10T07:59:54.175Z pushedAt=2026-11-10T11:16:35.663Z nl=1 -->
 
 > **NOTE**
 >
@@ -28,7 +29,7 @@ The memory allocation failed.
 **Solution**
 
 1. Check whether the system is running properly.
-2. Check whether the service data is too long. 
+2. Check whether the service data is too long.
 
 ## 17620002 Failed to Obtain the Native Object or Convert Parameters
 
@@ -127,7 +128,7 @@ If **doFinal** fails, the tag verification fails because the input value of **ta
 2. If **iv** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
 3. If **aad** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
 4. If **ciphertext** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails. 
+5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
 
 **Solution**
 
@@ -254,7 +255,7 @@ If **doFinal** fails, the tag verification fails because the input value of **ta
 2. If **iv** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
 3. If **aad** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
 4. If **ciphertext** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails. 
+5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
 
 **Solution**
 
@@ -305,7 +306,7 @@ If **doFinal** fails, the tag verification fails because the input value of **ta
 2. If **nonce** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails. The **nonce** value should be of 12 bytes.
 3. If **aad** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
 4. If **ciphertext** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails. 
+5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
 
 **Solution**
 

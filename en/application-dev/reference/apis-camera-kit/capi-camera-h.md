@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1a90449abe56ae310254be96c4e5d2c7b281a047 translatedAt=2026-10-12T11:58:03.781Z pushedAt=2026-10-13T04:58:00.891Z -->
+<!-- md-trans-meta sourceCommit=c48c74437d83e6cc6a87a22788ef7d940cef51aa translatedAt=2026-11-10T07:58:51.326Z pushedAt=2026-11-10T11:15:12.603Z nl=1 -->
 
 ## Overview
 
@@ -523,7 +523,7 @@ Enumerates the system pressure levels.
 | SYSTEM_PRESSURE_NORMAL = 0 | The system pressure is normal.|
 | SYSTEM_PRESSURE_MILD = 1 | The system pressure is elevated but not actively managed by the system.|
 | SYSTEM_PRESSURE_SEVERE = 2 | The system pressure may affect the overall image quality and performance.|
-| SYSTEM_PRESSURE_CRITICAL = 3 | The system pressure has a significant impact on the image quality and performance.|
+| SYSTEM_PRESSURE_CRITICAL = 3 | The system pressure may significantly affect the image quality and performance. |
 | SYSTEM_PRESSURE_SHUTDOWN = 4 | The system pressure is too high, causing the system to shut down.|
 
 ### Camera_PreconfigType
@@ -540,9 +540,9 @@ Enumerates the preconfigured photo resolution types.
 
 | Enum Item| Description|
 | -- | -- |
-| PRECONFIG_720P = 0 | 720p resolution.|
-| PRECONFIG_1080P = 1 | 1080p resolution.|
-| PRECONFIG_4K = 2 | 4K resolution.|
+| PRECONFIG_720P = 0 | 720p resolution. |
+| PRECONFIG_1080P = 1 | 1080p resolution. |
+| PRECONFIG_4K = 2 | 4K resolution. |
 | PRECONFIG_HIGH_QUALITY = 3 | High-quality photos.|
 | PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | Resolution that supports HDR preview and GIF photography.<br>**Since**: 23|
 
@@ -675,7 +675,7 @@ Enumerates the effect types of a camera controller.
 | -- | -- |
 | CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | Beauty effect.|
 | CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | Portrait blur effect.|
-| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | Auto focus effect.<br>**Since**: 24|
+| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | Auto framing effect.<br>**Since**: 24 |
 | CONTROL_CENTER_EFFECT_TYPE_COLOR_EFFECT = 3 | Effect types of a camera controller, which is the XMAGE style.<br>**Since**: 26.0.0|
 
 ### Camera_PhotoQualityPrioritization

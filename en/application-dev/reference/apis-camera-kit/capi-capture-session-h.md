@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=c6192bd75595799f021fef3f65b9c91195c81960 translatedAt=2026-10-12T12:00:16.844Z pushedAt=2026-10-13T04:58:00.904Z -->
+<!-- md-trans-meta sourceCommit=50266c36d56733840f26c6f9da6f30cdad8ed3fe translatedAt=2026-11-10T07:58:16.181Z pushedAt=2026-11-10T11:15:36.041Z nl=1 -->
 
 ## Overview
 
@@ -3094,7 +3094,7 @@ Obtains the supported zoom range of the physical camera during shooting in RAW f
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed. The session or camera status may be abnormal.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed. The session or camera status may be abnormal.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured. |
 
 ### OH_CaptureSession_IsOISModeSupported()
 

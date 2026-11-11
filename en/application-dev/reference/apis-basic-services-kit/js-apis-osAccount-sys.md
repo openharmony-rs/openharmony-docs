@@ -4,8 +4,9 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=f6fecf5f724fa419302761d2bd634fd060f25f17 translatedAt=2026-11-10T04:07:42.359Z pushedAt=2026-11-10T06:17:27.634Z nl=1 -->
 
 The **osAccount** module provides basic capabilities for managing OS accounts, including adding, deleting, querying, setting, subscribing to, and enabling an OS account.
 
@@ -49,13 +50,13 @@ Activates an OS account. This API uses an asynchronous callback to return the re
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
-| 12300016 | The number of logged in accounts reaches the upper limit. |
+| 12300009 | Account has been activated. <br>Applicable Version: 7-11 |
+| 12300010 | Service busy. Possible causes: The target account is being operated. <br>Applicable Version: 12+ |
+| 12300016 | The number of logged in accounts reaches the upper limit. <br>Applicable Version: 12+ |
 
 **Example**
 
@@ -102,7 +103,7 @@ Activates an OS account. This API uses a promise to return the result.
 
 | Type               | Description                                 |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -110,13 +111,13 @@ Activates an OS account. This API uses a promise to return the result.
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
-| 12300016 | The number of logged in accounts reaches the upper limit. |
+| 12300009 | Account has been activated. <br>Applicable Version: 7-11 |
+| 12300010 | Service busy. Possible causes: The target account is being operated. <br>Applicable Version: 12+ |
+| 12300016 | The number of logged in accounts reaches the upper limit. <br>Applicable Version: 12+ |
 
 **Example**
 
@@ -227,7 +228,7 @@ Deactivates an OS account. This API uses a promise to return the result.
 
 | Type               | Description                                 |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -378,7 +379,7 @@ Check whether OS account 100 is forbidden to use Wi-Fi.
 
 isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
 
-Checks whether an OS account is unlocked. This API uses a promise to return the result.
+Checks whether the specified system account is unlocked. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -390,13 +391,13 @@ Checks whether an OS account is unlocked. This API uses a promise to return the 
 
 | Name | Type  | Mandatory| Description                                                             |
 | ------- | ------ | ---- | --------------------------------------------------------------- |
-| localId | number | Yes  | ID of the target OS account. If this parameter is not specified, this API checks whether the current OS account is unlocked.|
+| localId | number | Yes | System account ID. Used to specify the system account to check whether it is unlocked. |
 
 **Return value**
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the OS account is unlocked; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise object. true indicates that the current account is unlocked; false indicates that the current account is locked. |
 
 **Error codes**
 
@@ -505,7 +506,7 @@ Removes an OS account. This API uses a promise to return the result.
 
 | Type               | Description                                 |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -626,7 +627,7 @@ Sets or removes constraints for an OS account. This API uses an asynchronous cal
 | ----------- | ------------------------- | ---- | ----------------------------------------------- |
 | localId     | number                    | Yes  | ID of the target OS account.              |
 | constraints | Array&lt;string&gt;       | Yes  | [Constraints](js-apis-osAccount.md#constraints) to set or remove.       |
-| enable      | boolean                   | Yes  | Whether to set or remove constraints. The value **true** means to set constraints, and **false** means to remove constraints.                         |
+| enable      | boolean                   | Yes   | Whether to set (true) or delete (false).                          |
 | callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -687,9 +688,9 @@ Sets or removes constraints for an OS account. This API uses a promise to return
 
 **Return value**
 
-| Type               | Description                                |
-| :------------------ | :----------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                         |
+| ------------------ | ----------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -738,11 +739,11 @@ Sets the name of an OS account. This API uses an asynchronous callback to return
 
 **Parameters**
 
-| Name   | Type                     | Mandatory| Description                                            |
-| :-------- | ------------------------- | ---- | ----------------------------------------------- |
-| localId   | number                    | Yes  | ID of the target OS account.              |
-| localName | string                    | Yes  | Account name to set. The value cannot exceed 1024 characters.                         |
-| callback  | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
+| Name    | Type                      | Mandatory | Description                                             |
+| -------- | ------------------------- | ---- | ----------------------------------------------- |
+| localId   | number                    | Yes   | System account ID.               |
+| localName | string                    | Yes   | Account name, with a maximum length of 1024 characters.                          |
+| callback  | AsyncCallback&lt;void&gt; | Yes   | Callback invoked to return the result. If the setting is successful, err is null; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -803,7 +804,7 @@ Sets the name of an OS account. This API uses a promise to return the result.
 
 | Type               | Description                                 |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -1190,11 +1191,11 @@ Creates an OS account. This API uses an asynchronous callback to return the resu
 
 **Parameters**
 
-| Name   | Type                                                | Mandatory| Description                                                                        |
-| :-------- | ---------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
-| localName | string                                               | Yes  | Name of the OS account to create.                                                       |
-| type      | [OsAccountType](js-apis-osAccount.md#osaccounttype)                      | Yes  | Type of the OS account to create.                                                       |
-| callback  | AsyncCallback&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the created OS account. Otherwise, **err** is an error object.|
+| Name    | Type                                                 | Mandatory | Description                                                                         |
+| -------- | ---------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
+| localName | string                                               | Yes   | Name of the system account to create.                                                        |
+| type      | [OsAccountType](js-apis-osAccount.md#osaccounttype)                      | Yes   | Type of the system account to create.                                                        |
+| callback  | AsyncCallback&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | Yes   | Callback invoked to return the result. If the account is created successfully, err is null and data is the information about the newly created system account; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -1768,7 +1769,7 @@ Sets a profile photo for an OS account. This API uses a promise to return the re
 
 | Type               | Description                                |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -2219,6 +2220,7 @@ Obtains the bundle ID based on the specified UID. This API uses an asynchronous 
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid is the process UID. Obtain it from the application information.
   let testUid: number = 1000000;
   try {
     accountManager.getBundleIdForUid(testUid, (err: BusinessError, bundleId: number) => {
@@ -2346,7 +2348,7 @@ Checks whether the current process belongs to the main OS account. This API uses
 
 | Name  | Type                         | Mandatory| Description                                                              |
 | -------- | ---------------------------- | ---- | ----------------------------------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. If **true** is returned, the current process belongs to the main OS account. If **false** is returned, the current process does not belong to the main OS account.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback invoked to return whether the current account is the main account. |
 
 **Error codes**
 
@@ -2393,7 +2395,7 @@ Checks whether the current process belongs to the main OS account. This API uses
 
 | Type                  | Description                                                                 |
 | ---------------------- | --------------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. If **true** is returned, the current process belongs to the main OS account. If **false** is returned, the current process does not belong to the main OS account.|
+| Promise&lt;boolean&gt; | Promise object. The value true indicates that the current account is the primary account, and the value false indicates that the current account is not the primary account. |
 
 **Error codes**
 
@@ -2705,7 +2707,7 @@ Binds a domain account to an OS account. This API uses a promise to return the r
 
 | Name | Type  | Mandatory| Description        |
 | ------- | ------ | ---- | ------------ |
-| localId     | number | Yes  |  ID of the target OS account.|
+| localId     | number | Yes   |  System account ID. |
 | domainAccountInfo | [DomainAccountInfo](#domainaccountinfo8) | Yes  | Domain account information.         |
 
 **Return value**
@@ -2716,7 +2718,7 @@ Binds a domain account to an OS account. This API uses a promise to return the r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
 
 | Error Code| Error Message      |
 | -------- | ------------- |
@@ -2748,7 +2750,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     });
   } catch (e) {
     const err = e as BusinessError;
-    console.error(`bindDomainAccount error, errCode=${error.code}, errMsg=${error.message}`);
+    console.error(`bindDomainAccount error, errCode=${err.code}, errMsg=${err.message}`);
   }
   ```
 
@@ -2878,7 +2880,7 @@ Checks whether the current process has specified authorization.
 
 | Type| Description|
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the current process has specified authorization, and **false** indicates the opposite.|
+| Promise&lt;boolean&gt; | Promise object. The value true indicates that the specified privilege has been granted; the value false indicates that the specified privilege has not been granted. |
 
 **Error codes**
 
@@ -2979,7 +2981,7 @@ Defines the options for acquiring the authorization.
 | Name| Type| Read-Only| Optional| Description|
 | --- | --- | --- | --- | --- |
 | challenge | Uint8Array | No| Yes| Random challenge value, which prevents replay attacks. The value contains a maximum of 32 bytes. The default value is **undefined**.|
-| isReuseNeeded | boolean | No| Yes| Whether to reuse the previous authorization. The default value is **true**.<br>If the value is **true** and the authorization result is valid, the result will be reused. Otherwise, a new authorization will be executed.|
+| isReuseNeeded | boolean | No | Yes | Whether to reuse the previous authorization. The default value is true.<br/>If the value is true and a valid authorization result exists, the result is reused; otherwise, a new authorization is performed. |
 | isInteractionAllowed | boolean | No| Yes| Whether user interaction is allowed. The default value is **true**.<br>If the value is **true**, the authorization dialog box can be displayed in the interaction context. If the value is **false**, the authorization dialog box cannot be displayed.<br>Note: This option is valid only when the caller is in the foreground. If the caller is in the background, user interaction is not allowed.|
 | interactionContext | Context | No| Yes| User interaction context configuration. The default value is **undefined**.<br>- If no context is specified, the authorization dialog box is displayed in modal system mode.<br>- If [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) or [UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md) is specified, the authorization dialog box is displayed in modal application mode.<br> - If no valid context is provided, the authorization dialog box cannot be displayed.<br>Note: This parameter is valid only when **isInteractionAllowed** is set to **true**.|
 ## AuthorizationResultCode<sup>24+</sup>
@@ -3783,9 +3785,9 @@ Obtains this version number.
 
 **Return value**
 
-| Type  | Description        |
-| :----- | :----------- |
-| number | Version number obtained.|
+| Type   | Description         |
+| ----- | ----------- |
+| number | Version information. |
 
 **Error codes**
 
@@ -3933,9 +3935,9 @@ Obtains the executor property based on the request. This API uses a promise to r
 
 **Return value**
 
-| Type                                                             | Description                                                |
-| :---------------------------------------------------------------- | :-------------------------------------------------- |
-| Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise used to return the executor property.|
+| Type                                                              | Description                                                 |
+| ---------------------------------------------------------------- | -------------------------------------------------- |
+| Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise used to return the executor property information. |
 
 **Error codes**
 
@@ -3996,9 +3998,9 @@ Obtains the specified property information of the associated executor based on t
 
 **Return value**
 
-| Type                                                             | Description                                                |
-| :---------------------------------------------------------------- | :-------------------------------------------------- |
-| Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise used to return the executor attributes.|
+| Type                                                              | Description                                                 |
+| ---------------------------------------------------------------- | -------------------------------------------------- |
+| Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise used to return the executor property information. |
 
 **Error codes**
 
@@ -4124,9 +4126,9 @@ Sets the property for the initialization algorithm. This API uses a promise to r
 
 **Return value**
 
-| Type                 | Description                                                          |
-| :-------------------- | :------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                  | Description                                                           |
+| -------------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -4181,9 +4183,9 @@ Prepares for remote authentication. This API uses a promise to return the result
 
 **Return value**
 
-| Type                 | Description                                                          |
-| :-------------------- | :------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                  | Description                                                           |
+| -------------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -4226,7 +4228,7 @@ Prepares for remote authentication. This API uses a promise to return the result
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array
 
-Performs authentication of the current user. 
+Performs authentication of the current user.
 
 **System API**: This is a system API.
 
@@ -4405,7 +4407,7 @@ Authenticates a specified user. This API uses an asynchronous callback to return
 
 | Type       | Description              |
 | ---------- | ------------------ |
-| Uint8Array | ID of the context for canceling the authentication.|
+| Uint8Array | Authentication context ID, which can be used to cancel the authentication operation. |
 
 **Error codes**
 
@@ -4474,7 +4476,7 @@ Cancels an authentication.
 
 | Name   | Type      | Mandatory | Description                                       |
 | ----------| ---------- | ---- | ------------------------------------------ |
-| contextID | Uint8Array | Yes  | ID of the authentication context. The context ID is dynamically generated.|
+| contextID | Uint8Array | Yes | Authentication context ID, which is dynamically generated by the authentication process to identify the authentication operation. |
 
 **Error codes**
 
@@ -5237,7 +5239,6 @@ Registers a domain plug-in.
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300201 | The domain plugin has been registered. |
 
@@ -5471,7 +5472,6 @@ API version 10: ohos.permission.ACCESS_USER_AUTH_INTERNAL
 | Error Code| Error Message                    |
 | -------- | --------------------------- |
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | No domain account is bound. |
@@ -5523,7 +5523,7 @@ API version 10: ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 | Name     | Type                                   | Mandatory| Description            |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| localId   | number  | Yes  | Local ID of the OS account bound to the domain account.|
+| localId   | number  | Yes   | ID of the system account bound to the domain account.|
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | Yes  | Callback used to return the authentication result.|
 
 **Error codes**
@@ -5531,7 +5531,6 @@ API version 10: ohos.permission.ACCESS_USER_AUTH_INTERNAL
 | Error Code| Error Message                    |
 | -------- | --------------------------- |
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId. |
@@ -5642,9 +5641,9 @@ Checks whether a domain account exists. This API uses a promise to return the re
 
 **Return value**
 
-| Type                     | Description                    |
-| :------------------------ | ----------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the specified domain account exists; the value **false** means the opposite.|
+| Type                      | Description                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;boolean&gt; | Promise object. The value **true** indicates that the specified domain account exists; the value **false** indicates that the specified domain account does not exist. |
 
 **Error codes**
 
@@ -5760,9 +5759,9 @@ Updates the token of a domain account. An empty token means an invalid token. Th
 
 **Return value**
 
-| Type                     | Description                    |
-| :------------------------ | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                      | Description                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -5877,9 +5876,9 @@ Obtains information about a specified domain account. This API uses a promise to
 
 **Return value**
 
-| Type                     | Description                    |
-| :------------------------ | ----------------------- |
-| Promise&lt;DomainAccountInfo&gt; | Promise used to return the domain account information obtained.|
+| Type                      | Description                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;DomainAccountInfo&gt; | Promise object used to return the specified domain account information. |
 
 **Error codes**
 
@@ -5994,9 +5993,9 @@ Obtains the business access token of a domain account. This API uses a promise t
 
 **Return value**
 
-| Type                     | Description                    |
-| :------------------------ | ----------------------- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the business access token obtained.|
+| Type                      | Description                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;Uint8Array&gt; | Promise object used to return the service access token. |
 
 **Error codes**
 
@@ -6056,9 +6055,9 @@ Checks whether the authentication of a domain account has expired. This API uses
 
 **Return value**
 
-| Type                     | Description                    |
-| :------------------------ | ----------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the specified domain account has expired; the value **false** means the opposite.|
+| Type                      | Description                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;boolean&gt; | Promise object. The value **true** indicates that the specified domain account has expired; the value **false** indicates that the specified domain account has not expired. |
 
 **Error codes**
 
@@ -6185,9 +6184,9 @@ Opens a session. This API returns a challenge value, which can be used to determ
 
 **Return value**
 
-| Type                     | Description                    |
-| :------------------------ | ----------------------- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the challenge value obtained.|
+| Type                      | Description                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;Uint8Array&gt; | Promise object used to return the challenge value. |
 
 **Error codes**
 
@@ -6195,7 +6194,6 @@ Opens a session. This API returns a challenge value, which can be used to determ
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
@@ -6317,7 +6315,6 @@ Updates credentials. This API uses an asynchronous callback to return the result
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
@@ -6671,9 +6668,9 @@ Obtains authentication information. This API uses a promise to return the result
 
 **Return value**
 
-| Type                                        | Description                                                                    |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
-| Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise used to return the information about all the enrolled credentials of the specified type.|
+| Type                                         | Description                                                                     |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
+| Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise object used to return all enrolled credential information of the specified type for the current user. |
 
 **Error codes**
 
@@ -6723,9 +6720,9 @@ Obtains authentication information. This API uses a promise to return the result
 
 **Return value**
 
-| Type                                        | Description                                                                    |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
-| Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise used to return the information about all the enrolled credentials of the specified type.|
+| Type                                         | Description                                                                     |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
+| Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise object used to return all enrolled credential information of the specified type for the current user. |
 
 **Error codes**
 
@@ -6781,9 +6778,9 @@ Obtains the ID of the enrolled credential based on the credential type and accou
 
 **Return value**
 
-| Type                      | Description                                                                    |
-| :------------------------ | :----------------------------------------------------------------------- |
-| Promise&lt;Uint8Array&gt; | Promise used to return the credential ID obtained.|
+| Type                       | Description                                                                     |
+| ------------------------ | ----------------------------------------------------------------------- |
+| Promise&lt;Uint8Array&gt; | Promise object used to return the enrolled credential ID. |
 
 **Error codes**
 
@@ -7319,6 +7316,7 @@ Enumerates the authentication credential types.
 | RECOVERY_KEY<sup>12+</sup> | 8 | Key recovery type.|
 | PRIVATE_PIN<sup>14+</sup> | 16 | Private PIN type.|
 | COMPANION_DEVICE<sup>23+</sup> | 64 | Companion device authentication.|
+| CUSTOM | 128 | Custom authentication type.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 | DOMAIN<sup>9+</sup>  | 1024     | Domain authentication.|
 
 ## AuthSubType<sup>8+</sup>
@@ -7476,7 +7474,7 @@ Defines the constraint source type.
 
 | Name     | Type  | Read-Only | Optional | Description      |
 | ----------- | ------ | ---- | ---- | ---------- |
-| localId      | number | No| No | ID of the target OS account.    |
+| localId      | number | No | No  | System account ID.     |
 | type | [ConstraintSourceType](#constraintsourcetype9) | No| No | Type of the constraint source.|
 
 ## ConstraintSourceType<sup>9+</sup>
@@ -7678,6 +7676,7 @@ Represents a set of optional parameters for [auth](#auth12).
 | accountId          | number | No| Yes | OS account ID, which is **undefined** by default.|
 | authIntent         | [AuthIntent](#authintent12) | No| Yes | Authentication intent, which is **undefined** by default.|
 | remoteAuthOptions  | [RemoteAuthOptions](#remoteauthoptions12) | No| Yes | Remote authentication options, which is **undefined** by default.|
+| additionalInfo     | string | No | Yes  | Additional information for identity authentication. The default value is undefined.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.  |
 
 ## GetInputDataOptions<sup>12+</sup>
 

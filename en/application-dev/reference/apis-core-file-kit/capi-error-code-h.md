@@ -2,10 +2,11 @@
 
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=0c20469e58610438940464085fdd62df82c5b560 translatedAt=2026-11-10T05:05:37.204Z pushedAt=2026-11-10T07:28:52.512Z nl=1 -->
 
 ## Overview
 
@@ -53,3 +54,5 @@ Enumerates the error codes used in the **FileIO** module.
 | ERR_ENOENT = 13900002 | The file or folder does not exist.|
 | ERR_ENOMEM = 13900011 | A memory overflow occurs.|
 | ERR_UNKNOWN = 13900042 | Internal unknown error.|
+
+

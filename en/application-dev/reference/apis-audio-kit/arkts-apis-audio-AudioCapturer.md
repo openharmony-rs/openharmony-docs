@@ -5,7 +5,7 @@
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4d1b3ad6de802e96ea2dba644ca7d60992013b31 translatedAt=2026-10-08T12:02:20.951Z pushedAt=2026-10-12T02:04:30.406Z -->
+<!-- md-trans-meta sourceCommit=4dd4093bdab500acb01d54c3fbf7df30f22cb4c4 translatedAt=2026-11-10T03:01:54.461Z pushedAt=2026-11-10T04:37:47.994Z nl=1 -->
 
 This interface provides APIs for audio capture.
 

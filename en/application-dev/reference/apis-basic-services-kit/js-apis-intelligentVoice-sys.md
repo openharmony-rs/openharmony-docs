@@ -6,6 +6,7 @@
 <!--Designer: @jinjunwen-->
 <!--Tester: @gx1016-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=ce6dbe0fdd5dc3a4176506bd95c1dacad56eefce translatedAt=2026-11-10T04:05:11.248Z pushedAt=2026-11-10T06:16:57.575Z nl=1 -->
 
 The **intelligentVoice** module provides the intelligent voice enrollment and voice wakeup functions. <!--Del-->Currently, the features are related to chips and are not supported on OpenHarmony yet.<!--DelEnd-->
 
@@ -54,7 +55,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 202 | Not system application.                             |
 | 22700101 | No memory.                              |
 
-**Example**
+**Example** 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -138,7 +139,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 22700101 | No memory.                           |
 | 22700102 | Invalid parameter.                            |
 
-**Example**
+**Example** 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -192,7 +193,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 22700101 | No memory.                           |
 | 22700102 | Invalid parameter.                            |
 
-**Example**
+**Example** 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -239,7 +240,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 22700101 | No memory.                           |
 | 22700102 | Invalid parameter.                            |
 
-**Example**
+**Example** 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -293,7 +294,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 22700101 | No memory.                           |
 | 22700102 | Invalid parameter.                            |
 
-**Example**
+**Example** 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -854,7 +855,7 @@ Defines the HAP information for a wakeup application.
 | Name  | Type                           | Read-Only| Optional| Description      |
 | ------ | ----------------------------- |----|----| ---------- |
 | bundleName | string | No | No | Bundle name of the wakeup application.|
-| abilityName | string | No | No | Ability name of the wakeup application.|
+| abilityName | string | No  | No  | abilityName of the wakeup application. |
 
 ## WakeupIntelligentVoiceEventType
 
@@ -1134,7 +1135,7 @@ enrollForResult(isLast: boolean, callback: AsyncCallback&lt;EnrollCallbackInfo&g
 
 Obtains the enrollment result. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.MANAGE_INTELLIGENT_VOICE
+**Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE, ohos.permission.MICROPHONE
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
@@ -1180,7 +1181,7 @@ enrollForResult(isLast: boolean): Promise&lt;EnrollCallbackInfo&gt;
 
 Obtains the enrollment result. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.MANAGE_INTELLIGENT_VOICE
+**Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE, ohos.permission.MICROPHONE
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
@@ -2025,7 +2026,7 @@ if (wakeupIntelligentVoiceEngine != null) {
 
 setWakeupHapInfo(info: WakeupHapInfo): Promise\<void\>
 
-Sets the HAP information for the wakeup application. This API uses a promise to return the result.
+Sets the wakeup application HAP information. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_INTELLIGENT_VOICE
 
@@ -2397,7 +2398,7 @@ startCapturer(channels: number): Promise\<void\>
 
 Starts the capturer. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.MANAGE_INTELLIGENT_VOICE
+**Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE, ohos.permission.MICROPHONE
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
@@ -2421,7 +2422,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 22700102 | Invalid parameter.                         |
 | 22700105 | Start capturer failed.                          |
 | 22700107 | System error.                          |
@@ -2617,7 +2618,7 @@ Subscribes to wakeup events.
 
 | Name    | Type                             | Mandatory| Description                                         |
 | -------- | -------------------------------- | --- | ------------------------------------------- |
-| type     | string          | Yes  | Event type. This field has a fixed value of **wakeupIntelligentVoiceEvent**.|
+| type     | string          | Yes   | Wakeup intelligent voice event. The fixed value is 'wakeupIntelligentVoiceEvent', which indicates an intelligent voice wakeup event. |
 | callback     | Callback\<[WakeupIntelligentVoiceEngineCallbackInfo](#wakeupintelligentvoiceenginecallbackinfo)\>                           | Yes  | Callback for processing of the wakeup event.|
 
 **Error codes**
@@ -2655,7 +2656,7 @@ Unsubscribes from wakeup events.
 
 | Name    | Type                             | Mandatory| Description                                         |
 | -------- | -------------------------------- | --- | ------------------------------------------- |
-| type     |string           | Yes  | Event type. This field has a fixed value of **wakeupIntelligentVoiceEvent**.|
+| type     |string           | Yes   | Wakeup intelligent voice event. The fixed value is 'wakeupIntelligentVoiceEvent'. |
 | callback     | Callback\<[WakeupIntelligentVoiceEngineCallbackInfo](#wakeupintelligentvoiceenginecallbackinfo)\>                           | No  | Callback for processing of the wakeup event. If this parameter is specified, only the specified callback will be unsubscribed. Otherwise, all callbacks will be unsubscribed. |
 
 **Error codes**

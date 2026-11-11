@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1131f25f94c09b310a6e67ef6adb8c71963ba154 translatedAt=2026-10-08T13:05:48.469Z pushedAt=2026-10-12T11:50:52.936Z -->
+<!-- md-trans-meta sourceCommit=c48c74437d83e6cc6a87a22788ef7d940cef51aa translatedAt=2026-11-10T07:56:51.200Z pushedAt=2026-11-10T11:14:33.165Z nl=1 -->
 
 PhotoOutput implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
@@ -1196,7 +1196,7 @@ function testGetPhotoRotationWithOutParam(photoOutput: camera.PhotoOutput): came
   } catch (error) {
     // If the operation fails, error.code is returned and processed.
     let err = error as BusinessError;
-    console.error(`The photoOutput.testGetPhotoRotationWithOutParam call failed. error code: ${err.code}`);
+    console.error(`The photoOutput.getPhotoRotation call failed. error code: ${err.code}`);
   }
   return photoRotation;
 }

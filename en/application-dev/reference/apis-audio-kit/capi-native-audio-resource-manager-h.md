@@ -1,10 +1,11 @@
 # native_audio_resource_manager.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=1ff9e9cd1ebb6561090ad32be99073f8301559bf translatedAt=2026-11-10T03:02:31.470Z pushedAt=2026-11-10T04:39:11.023Z nl=1 -->
 
 ## Overview
 
@@ -60,7 +61,7 @@ Obtains an audio resource manager.<br> Before using the features related to the 
 
 | Name| Description|
 | -- | -- |
-| [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md) **resourceManager | Double pointer to an OH_AudioResourceManager instance, which is used to receive the created audio resource manager instance.|
+| [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md) **resourceManager | Address of the pointer to **OH_AudioResourceManager**, used to receive the created audio resource manager instance. |
 
 **Returns**
 
@@ -87,7 +88,7 @@ Creates an audio workgroup.
 | -- | -- |
 | [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md) *resourceManager | Pointer to an OH_AudioResourceManager instance, which is created by calling [OH_AudioManager_GetAudioResourceManager](capi-native-audio-resource-manager-h.md#oh_audiomanager_getaudioresourcemanager).|
 | const char *name | Pointer to the name of the audio workgroup.|
-| [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md) **group | Double pointer to an OH_AudioWorkgroup instance, which is used to receive the created audio workgroup instance.|
+| [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md) **group | Address of the pointer to **OH_AudioWorkgroup**, used to receive the pointer to the returned audio work group instance. |
 
 **Returns**
 
@@ -191,8 +192,8 @@ Notifies the system that an audio workgroup starts working and provides the expe
 | Name| Description|
 | -- | -- |
 | [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md) *group | Pointer to an OH_AudioWorkgroup instance, which is created by calling [OH_AudioResourceManager_CreateWorkgroup](capi-native-audio-resource-manager-h.md#oh_audioresourcemanager_createworkgroup).|
-| uint64_t startTime | Time when the audio workgroup starts working.|
-| uint64_t deadlineTime | Expected end time of the audio workgroup.|
+| uint64_t startTime | Time point at which the current audio work group starts, in milliseconds (ms). |
+| uint64_t deadlineTime | Time point at which the current audio work group is expected to complete, in milliseconds (ms). |
 
 **Returns**
 
@@ -224,3 +225,5 @@ Notifies the system that an audio workgroup finishes working.
 | Type| Description|
 | -- | -- |
 | [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **group** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system processing error occurs.|
+
+

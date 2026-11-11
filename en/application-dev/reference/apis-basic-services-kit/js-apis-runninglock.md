@@ -6,6 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=b026b3aeef31e5c2ac5c14f8507bb3fa0dee1101 translatedAt=2026-11-10T04:11:34.322Z pushedAt=2026-11-10T07:03:46.145Z nl=1 -->
 
 The **runningLock** module provides APIs for creating, querying, holding, and releasing running locks. A running lock enables the proximity sensor to turn on or off the screen, or prevents the device from entering sleep mode when the screen is off. For details about the running lock types, see [RunningLockType](#runninglocktype).
 
@@ -62,7 +63,7 @@ try {
 
 create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-Creates a **RunningLock** object. This API uses an asynchronous callback to return the result.
+Creates a **RunningLock** object. This API uses an asynchronous callback to return the result. After the lock object is created, call **hold()** to lock and hold the lock so that the lock takes effect. It is not recommended to call **create** concurrently in multiple Worker/TaskPool threads to create lock objects.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -102,7 +103,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-Creates a **RunningLock** object. This API uses a promise to return the result.
+Creates a **RunningLock** object. This API uses a promise to return the result. After the lock object is created, call **hold()** to lock and hold the lock so that the lock takes effect. It is not recommended to call **create** concurrently in multiple Worker/TaskPool threads to create lock objects.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -277,13 +278,17 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 ## RunningLock
 
-Defines a **RunningLock** object.
+Defines a lock that prevents the system from sleeping or turns on or off the screen by using the proximity sensor. Different lock types have different functions. For details, see [RunningLockType](#runninglocktype).
+ 
+This method must be used together with [create](#runninglockcreate9), [hold](#hold9), and [unhold](#unhold9). For details, see the example.
+ 
+A **RunningLock** object cannot be shared across multiple Worker/TaskPool threads. The **hold()**, **unhold()**, and **isHolding()** methods of the same **RunningLock** instance must be called in the same thread. Sharing the instance across threads may cause inconsistent lock states without reporting an error. After the power service restarts abnormally, the created **RunningLock** object remains valid, but the holding state of the lock may be lost. It is recommended to check the lock state using **isHolding()** in the service restart scenario and call **hold()** again if necessary. When the JS object of **RunningLock** is garbage collected, the lock held at the underlying layer is automatically released. To hold the lock for a long time, keep a reference to the **RunningLock** object.
 
 ### hold<sup>9+</sup>
 
 hold(timeout: number): void
 
-Locks and holds a **RunningLock** object.
+Locks and holds a **RunningLock** object. This API applies to scenarios where an app needs to run continuously in the background (such as background download and long-time location tracking) and needs to prevent the system from sleeping, or scenarios where proximity light control of screen on/off is required during a call. After this API is called, call **unhold()** to release the lock when it is no longer needed, or set a timeout release time so that the system releases the lock automatically upon timeout. This API is used in pair with **unhold()**. Failure to release the lock keeps the sleep prevention or screen on/off control in effect. Repeated calls to **hold()** do not report an error. Note: If **hold(-1)** (permanent lock) is called first and then **hold(timeout)** (timed lock) is called, the lock is released after timeout (in milliseconds), that is, the **timeout** parameter of the later call overrides the previous one. To update the timeout, you are advised to call **unhold()** to release the lock first and then call **hold(newTimeout)**.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -339,7 +344,7 @@ class RunningLockTest {
 
 unhold(): void
 
-Releases a **RunningLock** object.
+Releases a **RunningLock** object. This API is used in pair with **hold()**. After **hold()** is called to lock the object, call this API to release the object. Calling **unhold()** on a lock that is not held does not report an error and is treated as  no operation. You are advised to confirm the holding state of the lock using **isHolding()** before calling **unhold()**.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -520,4 +525,4 @@ Enumerates the types of **RunningLock** objects.
 | --------------------------------- | ---- | ------------------------------------------------------------ |
 | BACKGROUND<sup>(deprecated)</sup> | 1    | A lock that prevents the system from hibernating when the screen is off.<br>**NOTE**<br>This parameter is supported since API version 7 and deprecated since API version 10.|
 | PROXIMITY_SCREEN_CONTROL          | 2    | A lock that enables the proximity sensor and turns on or off the screen based on the distance between the sensor and the obstacle. |
-| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | A background lock that prevents the system from automatically entering sleep mode when the user is inactive for a period of time.<br>Note: This lock cannot prevent the system from entering the forced sleep state in scenarios such as closing the PC lid. The user must listen for the [COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) event and release this lock after receiving the event. The behavior of this lock varies with devices. For details about how to use this type of lock, see [Preventing the Idle System from Entering Sleep Mode](../../basic-services/powermgr/runningLock/runningLock-dev.md).|
+| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | Background idle task lock that prevents the system from entering sleep automatically. Holding the lock ensures that the system does not enter automatic sleep after a period of user inactivity.<br>**Note:** It cannot prevent the system from entering forced sleep in scenarios such as closing the lid of a PC. The user must listen for [COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) and release the lock after the event is received. The behavior of this lock type varies by device. For details, see [Preventing the System from Entering Sleep When Idle Development Guide](../../basic-services/powermgr/runningLock/runningLock-dev.md). When the device does not support the **BACKGROUND_USER_IDLE** type, **create()** still returns success, but the subsequent **hold()** call does not take effect and no error is reported. You are advised to call **isSupported()** after **create()** to check whether the device supports this type.|

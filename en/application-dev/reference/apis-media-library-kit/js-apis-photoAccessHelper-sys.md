@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4b7416609f32c252fb694747335d983b652664ad translatedAt=2026-11-10T03:55:14.047Z pushedAt=2026-11-10T07:18:40.559Z nl=1 -->
 
 The module provides APIs for album management, including creating an album and accessing and modifying media data in an album.
 
@@ -27,6 +28,8 @@ Obtains a PhotoAccessHelper instance for the specified user, letting you access 
 ​**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
+
+**Required Permission:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2448,7 +2451,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('removeGalleryFormInfoDemo');
   let info: photoAccessHelper.GalleryFormInfo = {
-    // formId is a string consisting of only digits. When removing a widget, leave assertUris empty.
+    // formId is a string consisting of digits only. When removing a card, assetUris is left empty.
     formId: "20230116123"
   }
 
@@ -2596,7 +2599,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
 }
 ```
 
-### on('hiddenPhotoChange')<sup>20+</sup> 
+### on('hiddenPhotoChange')<sup>20+</sup>
 
 on(type: 'hiddenPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2655,7 +2658,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### off('hiddenPhotoChange')<sup>20+</sup> 
+### off('hiddenPhotoChange')<sup>20+</sup>
 
 off(type: 'hiddenPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2717,7 +2720,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### on('trashedPhotoChange')<sup>20+</sup> 
+### on('trashedPhotoChange')<sup>20+</sup>
 
 on(type: 'trashedPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2754,11 +2757,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 ```ts
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2776,7 +2779,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### off('trashedPhotoChange')<sup>20+</sup> 
+### off('trashedPhotoChange')<sup>20+</sup>
 
 off(type: 'trashedPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2813,11 +2816,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 ```ts
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2838,7 +2841,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### onAnalysisPhotoChange<sup>23+</sup> 
+### onAnalysisPhotoChange<sup>23+</sup>
 
 onAnalysisPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2874,11 +2877,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 ```ts
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2896,7 +2899,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### offAnalysisPhotoChange<sup>23+</sup> 
+### offAnalysisPhotoChange<sup>23+</sup>
 
 offAnalysisPhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2932,11 +2935,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 ```ts
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2957,7 +2960,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### on('hiddenAlbumChange')<sup>20+</sup> 
+### on('hiddenAlbumChange')<sup>20+</sup>
 
 on(type: 'hiddenAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3016,7 +3019,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### off('hiddenAlbumChange')<sup>20+</sup> 
+### off('hiddenAlbumChange')<sup>20+</sup>
 
 off(type: 'hiddenAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3078,7 +3081,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### on('trashedAlbumChange')<sup>20+</sup> 
+### on('trashedAlbumChange')<sup>20+</sup>
 
 on(type: 'trashedAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3137,7 +3140,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### off('trashedAlbumChange')<sup>20+</sup> 
+### off('trashedAlbumChange')<sup>20+</sup>
 
 off(type: 'trashedAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3199,7 +3202,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### onAnalysisAlbumChange<sup>23+</sup> 
+### onAnalysisAlbumChange<sup>23+</sup>
 
 onAnalysisAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3257,7 +3260,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
 }
 ```
 
-### offAnalysisAlbumChange<sup>23+</sup> 
+### offAnalysisAlbumChange<sup>23+</sup>
 
 offAnalysisAlbumChange(callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -3368,7 +3371,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### getPhotoAlbums<sup>20+</sup> 
+### getPhotoAlbums<sup>20+</sup>
 
 getPhotoAlbums(options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
@@ -3434,7 +3437,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### getPhotoAlbumOrder<sup>20+</sup> 
+### getPhotoAlbumOrder<sup>20+</sup>
 
 getPhotoAlbumOrder(orderStyle: number, options?: FetchOptions): Promise&lt;FetchResult&lt;AlbumOrder&gt;&gt;
 
@@ -3500,7 +3503,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### setPhotoAlbumOrder<sup>20+</sup> 
+### setPhotoAlbumOrder<sup>20+</sup>
 
 setPhotoAlbumOrder(orderStyle: number, albumOrders: Array&lt;AlbumOrder&gt;): Promise&lt;void&gt;
 
@@ -3714,7 +3717,7 @@ To control the size of the database table space, the system automatically delete
 | --------------------- | --------------------------- |
 | Promise&lt;Map&lt;string, string&gt;&gt; | Promise used to return a map of URIs.|
 
-**Error codes**
+**Error codes** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
@@ -3725,7 +3728,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
-**Example**
+**Example** 
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
@@ -4845,7 +4848,7 @@ Creates assets in batches. You can also specify whether to specify an album and 
 
 | Type| Description|
 | ---- | ---- |
-| Promise\<string[]> | Promise used to return the array of URIs to the assets that are successfully created. If the creation fails, **null** is returned.|
+| Promise\<string[]> | Promise object, returns an array of URIs of successfully created assets, and returns an empty string when creation fails. |
 
 **Error codes**
 
@@ -10710,7 +10713,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### setSubTitle<sup>18+</sup> 
+### setSubTitle<sup>18+</sup>
 
 setSubTitle(title: string): void
 
@@ -10840,13 +10843,13 @@ async function example(context: Context) {
 }
 ```
 
-## MediaAnalysisAlbumChangeRequest<sup>18+</sup> 
+## MediaAnalysisAlbumChangeRequest<sup>18+</sup>
 
 Provides APIs for managing the analysis album change request.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-### constructor<sup>18+</sup> 
+### constructor<sup>18+</sup>
 
 constructor(album: Album)
 
@@ -10896,7 +10899,7 @@ async function example(context: Context) {
 }
 ```
 
-### setOrderPosition<sup>18+</sup> 
+### setOrderPosition<sup>18+</sup>
 
 setOrderPosition(assets: Array&lt;PhotoAsset&gt;, position: Array&lt;number&gt;): void
 
@@ -10970,7 +10973,7 @@ async function example(context: Context) {
 }
 ```
 
-### setRelationship<sup>21+</sup> 
+### setRelationship<sup>21+</sup>
 
 setRelationship(relationship: string): Promise&lt;void&gt;
 
@@ -11204,13 +11207,13 @@ async function example(context: Context) {
 }
 ```
 
-## MediaHighlightAlbumChangeRequest<sup>21+</sup> 
+## MediaHighlightAlbumChangeRequest<sup>21+</sup>
 
 Provides APIs for managing the media album change request. It inherits from [MediaAnalysisAlbumChangeRequest](#mediaanalysisalbumchangerequest18).
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-### constructor<sup>21+</sup> 
+### constructor<sup>21+</sup>
 
 constructor(album: Album)
 
@@ -11260,7 +11263,7 @@ async function example(context: Context) {
 }
 ```
 
-### setHighlightAttribute<sup>21+</sup> 
+### setHighlightAttribute<sup>21+</sup>
 
 setHighlightAttribute(attribute: HighlightAlbumChangeAttribute, value: string): void
 
@@ -11325,13 +11328,13 @@ async function example(context: Context) {
 }
 ```
 
-## AnalysisAlbum<sup>18+</sup> 
+## AnalysisAlbum<sup>18+</sup>
 
 Implements an **Analysis** album.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-### constructor<sup>18+</sup> 
+### constructor<sup>18+</sup>
 
 constructor(album: Album)
 
@@ -11380,7 +11383,7 @@ async function example(context: Context) {
 }
 ```
 
-### getOrderPosition<sup>18+</sup> 
+### getOrderPosition<sup>18+</sup>
 
 getOrderPosition(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
@@ -11453,7 +11456,7 @@ async function example(context: Context) {
 }
 ```
 
-### getRelationship<sup>21+</sup> 
+### getRelationship<sup>21+</sup>
 
 getRelationship(): Promise&lt;string&gt;
 
@@ -11960,7 +11963,7 @@ async function example(context: Context) {
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_FAILED) {
       let errCode = cloudEnhancementTaskState.statusCode;
       let message = `task is failed, errCode: ${errCode}`;
-      console.info(message);
+      console.error(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_COMPLETED) {
       console.info("task is completed");
     }
@@ -12771,7 +12774,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let onCallback = (changeData: photoAccessHelper.CloudAssetDownloadProgressInfo) => {
-  console.info('batchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
+  console.info('batchdownload downloadProgressChange onCallback success, changeData: ' + JSON.stringify(changeData));
 }
 async function example(context: Context) {
   console.info('OnDownloadProgressChangeDemo');

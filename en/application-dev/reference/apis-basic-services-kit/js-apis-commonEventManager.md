@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=8b332ba8e6e72c2d885a38003986f27dfb7e99d3 translatedAt=2026-10-09T12:15:26.275Z pushedAt=2026-10-10T06:01:52.525Z -->
+<!-- md-trans-meta sourceCommit=a6874e5fd618adc18c14d574c22e8d39934482d4 translatedAt=2026-11-10T04:01:43.980Z pushedAt=2026-11-10T06:15:14.799Z nl=1 -->
 
 This module provides APIs to publish, subscribe to, and unsubscribe from common events. This module provides a system-level event notification mechanism that allows an app to send notifications to other apps that have subscribed to the event when the system status changes (such as power-on completion, battery level change, and screen on/off) or a custom service event occurs. This mechanism enables transferring information across components and apps.
 
@@ -20,7 +20,7 @@ The event communication of this module involves three processes: subscription, p
 
 **Subscription process: Create a subscriber, subscribe to an event, receive the event, and cancel the subscription.**
 
-1. Configure the subscriber information, declare the name of the event to be subscribed to, and set the subscription priority, publisher permission, and package name as required.
+1. Configure the subscriber information, declare the name of the event to be subscribed to, and set the subscription priority, publisher permission, and bundle name as required.
 2. Create a subscriber object using **commonEventManager.createSubscriberSync**.
 3. Subscribe to an event using **commonEventManager.subscribe**. When an event is published, use a callback to receive **CommonEventData**, and process the event data in the callback.
 4. Unsubscribe from the event using **commonEventManager.unsubscribe** when it is no longer needed.

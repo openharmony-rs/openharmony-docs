@@ -1,11 +1,11 @@
 # Scan_ScannerDevice
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
 <!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=bf611caa56efccbf7609e58b71abec1b4e33c1b6 translatedAt=2026-10-09T11:46:50.377Z pushedAt=2026-10-10T04:43:31.545Z -->
+<!-- md-trans-meta sourceCommit=432796cf3e6a4be981f95a7796deb982eeaff362 translatedAt=2026-11-10T03:58:19.755Z pushedAt=2026-11-10T06:01:52.653Z nl=1 -->
 
 ```cpp
 typedef struct {...} Scan_ScannerDevice

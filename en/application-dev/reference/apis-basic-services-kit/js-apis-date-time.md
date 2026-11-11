@@ -5,8 +5,9 @@
 <!--Designer: @hu-kai45-->
 <!--Tester: @murphy1984-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=ab611c219b2bb1b484101433888e822b3807a11c translatedAt=2026-11-10T04:03:30.693Z pushedAt=2026-11-10T06:15:25.145Z nl=1 -->
 
-The **systemTime** module provides system time and time zone features. You can obtain the system time and time zone by using the following APIs.
+This module mainly consists of system time and system time zone functions. Developers can obtain the system time (including the Unix epoch time and system boot time), system date, system time zone, and the switch state of automatic time setting. Both synchronous and asynchronous methods are supported. It is applicable to scenarios where the current time needs to be displayed in an application, time calculation needs to be performed, or time zone related services need to be handled.
 
 > **NOTE**
 >
@@ -26,8 +27,8 @@ Enumerates the types of time to obtain.
 
 | Name   | Value  | Description                                            |
 | ------- | ---- | ------------------------------------------------ |
-| STARTUP | 0    | Number of milliseconds elapsed since system startup, including the deep sleep time.  |
-| ACTIVE  | 1    | Number of milliseconds elapsed since system startup, excluding the deep sleep time.|
+| STARTUP | 0    | Time elapsed since system boot, including deep sleep time.   |
+| ACTIVE  | 1    | Time elapsed since system boot, excluding deep sleep time. |
 
 ## systemDateTime.getCurrentTime<sup>(deprecated)</sup>
 
@@ -64,14 +65,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemDateTime.getCurrentTime(true, (error: BusinessError, time: number) => {
     if (error) {
-      console.error(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to get currentTime. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in getting currentTime : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get currentTime. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -109,14 +110,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemDateTime.getCurrentTime((error: BusinessError, time: number) => {
     if (error) {
-      console.error(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to get currentTime. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in getting currentTime : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get currentTime. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -136,7 +137,7 @@ Obtains the time elapsed since the Unix epoch. This API uses a promise to return
 
 | Name| Type   | Mandatory| Description                    |
 | ------ | ------- | ---- | ------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
+| isNano | boolean | No | Whether the return result is in nanoseconds. The default value is false.<br>- true: the result is in nanoseconds (ns). <br>- false: the result is in milliseconds (ms). |
 
 **Return value**
 
@@ -161,11 +162,11 @@ try {
   systemDateTime.getCurrentTime().then((time: number) => {
     console.info(`Succeeded in getting currentTime : ${time}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to get currentTime. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get currentTime. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get currentTime. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -185,7 +186,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 | Name  | Type                       | Mandatory| Description  |
 | -------- | ---------- | ---- | -------------------------- |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
+| isNano   | boolean                     | Yes   | Whether the return result is in nanoseconds.<br>- true: the return result is in nanoseconds (ns). <br>- false: the return result is in milliseconds (ms). |
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time.|
 
 **Error codes**
@@ -204,14 +205,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemDateTime.getRealActiveTime(true, (error: BusinessError, time: number) => {
     if (error) {
-      console.error(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in getting real active time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -249,14 +250,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemDateTime.getRealActiveTime((error: BusinessError, time: number) => {
     if (error) {
-      console.error(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in getting real active time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -276,7 +277,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | ----------------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
+| isNano | boolean | No | Whether the return result is in nanoseconds. The default value is **false**.<br>- **true**: The result is in nanoseconds (ns). <br>- **false**: The result is in milliseconds (ms). |
 
 **Return value**
 
@@ -301,11 +302,11 @@ try {
   systemDateTime.getRealActiveTime().then((time: number) => {
     console.info(`Succeeded in getting real active time : ${time}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get real active time. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real active time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -325,7 +326,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 | Name  | Type                       | Mandatory| Description  |
 | -------- | --------------- | ---- | ------------------------------- |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
+| isNano   | boolean                     | Yes   | Whether the return result is nanoseconds.<br>- true: the result is nanoseconds (ns). <br>- false: the result is milliseconds (ms). |
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time.  |
 
 **Error codes**
@@ -344,14 +345,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemDateTime.getRealTime(true, (error: BusinessError, time: number) => {
     if (error) {
-      console.error(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in getting real time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -389,14 +390,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemDateTime.getRealTime((error: BusinessError, time: number) => {
     if (error) {
-      console.error(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in getting real time : ${time}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -416,7 +417,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ------------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
+| isNano | boolean | No | Whether the return result is in nanoseconds. The default value is **false**.<br>- **true**: the return result is in nanoseconds (ns). <br>- **false**: the return result is in milliseconds (ms). |
 
 **Return value**
 
@@ -441,11 +442,11 @@ try {
   systemDateTime.getRealTime().then((time: number) => {
     console.info(`Succeeded in getting real time : ${time}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get real time. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get real time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -453,7 +454,7 @@ try {
 
 getTime(isNanoseconds?: boolean): number
 
-Obtains the time elapsed since the Unix epoch. This API returns the result synchronously.
+Obtains the time elapsed since the Unix epoch to the current system time. This API uses synchronous mode.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -475,10 +476,10 @@ Obtains the time elapsed since the Unix epoch. This API returns the result synch
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let time: number = systemDateTime.getTime(true)
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get time. message: ${error.message}, code: ${error.code}`);
+  let time: number = systemDateTime.getTime(true);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -486,7 +487,7 @@ try {
 
 getUptime(timeType: TimeType, isNanoseconds?: boolean): number
 
-Obtains the time elapsed since system startup. This API returns the result synchronously.
+Obtains the time elapsed since system boot in synchronous mode. Based on TimeType, you can obtain the total boot duration including deep sleep time (STARTUP, applicable to scenarios such as counting the total device running time) or the active running duration excluding deep sleep time (ACTIVE, applicable to scenarios such as performance monitoring and active duration statistics).
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -495,7 +496,7 @@ Obtains the time elapsed since system startup. This API returns the result synch
 | Name       | Type                   | Mandatory| Description                                                                               |
 | ------------- | ----------------------- | ---- |-----------------------------------------------------------------------------------|
 | timeType      | [TimeType](#timetype10) | Yes  | Type of the time to be obtained. The value can only be `STARTUP` or `ACTIVE`.                                                 |
-| isNanoseconds | boolean                 | No  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.<br>The default value is **false**.|
+| isNanoseconds | boolean | No | Whether the return result is in nanoseconds.<br>- true: the result is in nanoseconds (ns).<br>- false: the result is in milliseconds (ms).<br>Default value is false. |
 
 **Return value**
 
@@ -509,7 +510,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Error Code| Error Message                                                                                                          |
 | -------- |----------------------------------------------------------------------------------------------------------------|
-| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification<br> failed.This error code was added due to missing issues. |
+| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.<br>Applicable versions: 12 and later |
 
 **Example**
 
@@ -518,9 +519,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let time: number = systemDateTime.getUptime(systemDateTime.TimeType.ACTIVE, false);
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get uptime. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get uptime. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -531,8 +532,8 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 Obtains the current system date. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
+> 
+> Supported since API version 9 and deprecated since API version 10. It is recommended to use the `new Date()` method instead (for details, see the document "How to Convert a Time-Format String to a Date Object"). `new Date()` returns a `Date` instance.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -558,14 +559,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemDateTime.getDate((error: BusinessError, date: Date) => {
     if (error) {
-      console.error(`Failed to get date. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to get date. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in getting date : ${date}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get date. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get date. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -575,9 +576,7 @@ getDate(): Promise&lt;Date&gt;
 
 Obtains the current system date. This API uses a promise to return the result.
 
-> **NOTE**
->
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
+> **Note:** Supported since API version 9 and deprecated since API version 10. It is recommended to use the `new Date()` method instead (for details, see the document "How to Convert a Time-Format String to a Date Object"). `new Date()` returns a `Date` instance.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -604,11 +603,11 @@ try {
   systemDateTime.getDate().then((date: Date) => {
     console.info(`Succeeded in getting date : ${date}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get date. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to get date. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get date. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get date. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -632,16 +631,16 @@ Obtains the system time zone. This API uses an asynchronous callback to return t
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  systemDateTime.getTimezone((error: BusinessError, data: string) => {
+  systemDateTime.getTimezone((error: BusinessError, timezone: string) => {
     if (error) {
-      console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to get timezone. Code: ${error.code}, message: ${error.message}`);
       return;
     }
-    console.info(`Succeeded in get timezone : ${data}`);
+    console.info(`Succeeded in getting timezone: ${timezone}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get timezone. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -665,14 +664,14 @@ Obtains the system time zone. This API uses a promise to return the result.
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  systemDateTime.getTimezone().then((data: string) => {
-    console.info(`Succeeded in getting timezone: ${data}`);
+  systemDateTime.getTimezone().then((timezone: string) => {
+    console.info(`Succeeded in getting timezone: ${timezone}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to get timezone. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get timezone. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -697,15 +696,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let timezone: string = systemDateTime.getTimezoneSync();
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get timezone. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
 ## Supported System Time Zones
 
-The following table lists the supported system time zones and the respective offset (unit: h) between each time zone and time zone 0.
+The following table lists the supported system time zones and the respective standard time offset (unit: h) between each time zone and time zone 0.
 
 | Time Zone                          | Offset        |
 | ------------------------------ | --------------------- |
@@ -713,11 +712,11 @@ The following table lists the supported system time zones and the respective off
 | America/Argentina/Buenos_Aires | -3                    |
 | Australia/Sydney               | 10                    |
 | America/Noronha                | -2                    |
-| America/St_Johns               | -3                    |
+| America/St_Johns               | -3.5                  |
 | Africa/Kinshasa                | 1                     |
-| America/Santiago               | -3                    |
+| America/Santiago               | -4                    |
 | Asia/Shanghai                  | 8                     |
-| Asia/Nicosia                   | 3                     |
+| Asia/Nicosia                   | 2                     |
 | Europe/Berlin                  | 2                     |
 | America/Guayaquil              | -5                    |
 | Europe/Madrid                  | 2                     |
@@ -728,17 +727,17 @@ The following table lists the supported system time zones and the respective off
 | Asia/Almaty                    | 6                     |
 | Pacific/Majuro                 | 12                    |
 | Asia/Ulaanbaatar               | 8                     |
-| America/Mexico_City            | -5                    |
+| America/Mexico_City            | -6                    |
 | Asia/Kuala_Lumpur              | 8                     |
 | Pacific/Auckland               | 12                    |
 | Pacific/Tahiti                 | -10                   |
 | Pacific/Port_Moresby           | 10                    |
-| Asia/Gaza                      | 3                     |
-| Europe/Lisbon                  | 1                     |
+| Asia/Gaza                      | 2                     |
+| Europe/Lisbon                  | 0                     |
 | Europe/Moscow                  | 3                     |
-| Europe/Kiev                    | 3                     |
+| Europe/Kiev                    | 2                     |
 | Pacific/Wake                   | 12                    |
-| America/New_York               | -4                    |
+| America/New_York               | -5                    |
 | Asia/Tashkent                  | 5                     |
 
 ## systemDateTime.getAutoTimeStatus<sup>21+</sup>
@@ -753,7 +752,7 @@ Obtains the switch status of the automatic time setting. This API returns the re
 
 | Type  | Description                                                      |
 | ------ | ---------------------------------------------------------- |
-| boolean | Switch status of the automatic time setting.<br>- **true**: The automatic time setting is on.<br>- **false**: The automatic time setting is off.|
+| boolean | Switch status of the automatic time setting.<br>- true: The automatic time setting is on.<br>- false: The automatic time setting is off. |
 
 **Error codes**
 
@@ -770,8 +769,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let status: boolean = systemDateTime.getAutoTimeStatus();
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to get autotime status. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get autotime status. Code: ${error.code}, message: ${error.message}`);
 }
 ```

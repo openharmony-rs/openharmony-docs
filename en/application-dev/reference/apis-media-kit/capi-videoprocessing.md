@@ -1,10 +1,11 @@
 # VideoProcessing
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @liziliang-->
+<!--Designer: @dev_ZUT-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5119810a2f0fbe460792092c9311001a20976697 translatedAt=2026-11-10T08:41:21.952Z pushedAt=2026-11-10T10:48:54.389Z nl=1 -->
 
 ## Overview
 

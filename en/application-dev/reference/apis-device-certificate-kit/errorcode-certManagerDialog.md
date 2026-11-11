@@ -6,6 +6,7 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=2578eb0829d3a386b2f51d986913ff72d856d828 translatedAt=2026-11-10T08:00:44.937Z pushedAt=2026-11-10T11:19:25.267Z nl=1 -->
 
 > **NOTE**
 >
@@ -16,6 +17,10 @@
 **Error Message**
 
 Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.
+
+**Description**
+
+Internal error. Possible causes: 1. IPC failure. 2. Memory operation error. 3. File operation error.
 
 **Possible Causes**
 
@@ -31,6 +36,10 @@ Check for and rectify the internal error.
 
 The user cancels the installation operation.
 
+**Description**
+
+The user cancelled the operation in the certificate management dialog box.
+
 **Possible Causes**
 
 The user canceled the operation when the API was called.
@@ -44,6 +53,10 @@ No action is required.
 **Error Message**
 
 The user install certificate failed in the certificate manager dialog, such as the certificate is in an invalid format.
+
+**Description**
+
+The user fails to install a certificate in the certificate manager dialog box. For example, the certificate format is invalid.
 
 **Possible Causes**
 
@@ -59,6 +72,10 @@ Check for incorrect certificate format and data.
 
 The API is not supported on this device.
 
+**Description**
+
+The current device does not support this API.
+
 **Possible Causes**
 
 The API is available only for a PC application.
@@ -71,7 +88,11 @@ Ensure that the caller is running on a PC.
 
 **Error Message**
 
-The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.
+The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user.
+
+**Description**
+
+The operation does not comply with the device security policy. For example, the device does not allow users to manage the CA certificate of a global user.
 
 **Possible Causes**
 
@@ -87,6 +108,10 @@ Call the API on an enterprise device.
 
 The input parameters validation failed.
 
+**Description**
+
+Input parameter validation failed.
+
 **Possible Causes**
 
 The parameter format is abnormal or the parameter range is invalid.
@@ -99,7 +124,11 @@ Check the input parameter format or range of the API.
 
 **Error Message**
 
-No Available certificate for authorization
+No available certificate for authorization.
+
+**Description**
+
+No certificate is available for authorization.
 
 **Possible Causes**
 

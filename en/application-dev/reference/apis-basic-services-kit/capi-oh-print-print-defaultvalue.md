@@ -1,11 +1,11 @@
 # Print_DefaultValue
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=bf611caa56efccbf7609e58b71abec1b4e33c1b6 translatedAt=2026-10-09T11:41:08.460Z pushedAt=2026-10-10T03:41:40.671Z -->
+<!-- md-trans-meta sourceCommit=432796cf3e6a4be981f95a7796deb982eeaff362 translatedAt=2026-11-10T03:55:49.200Z pushedAt=2026-11-10T05:58:30.442Z nl=1 -->
 
 ```cpp
 typedef struct {...} Print_DefaultValue

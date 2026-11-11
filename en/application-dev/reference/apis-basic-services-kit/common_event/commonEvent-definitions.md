@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T12:08:53.091Z pushedAt=2026-10-10T01:36:15.837Z -->
+<!-- md-trans-meta sourceCommit=a6874e5fd618adc18c14d574c22e8d39934482d4 translatedAt=2026-11-10T04:19:25.554Z pushedAt=2026-11-10T05:57:44.066Z nl=1 -->
 
 This document provides indexes for predefined system common events.
 
@@ -22,7 +22,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use **COMMON_EVENT_BOOT_COMPLETED** instead.
+  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use COMMON_EVENT_BOOT_COMPLETED instead.
 
   - Value: **usual.event.BOOT_COMPLETED**
   - Required permissions: **ohos.permission.RECEIVER_STARTUP_COMPLETED** (for system applications only)
@@ -464,7 +464,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use **COMMON_EVENT_USER_SWITCHED** instead.
+  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use COMMON_EVENT_USER_SWITCHED instead.
 
   - Value: **usual.event.USER_SWITCHED**
   - Required permissions: **ohos.permission.MANAGE_LOCAL_ACCOUNTS** (for system applications only)
@@ -1094,7 +1094,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use **COMMON_EVENT_USER_ADDED** instead.
+  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use COMMON_EVENT_USER_ADDED instead.
 
   - Value: **usual.event.USER_ADDED**
   - Required permissions: **ohos.permission.MANAGE_LOCAL_ACCOUNTS** (for system applications only)
@@ -1104,7 +1104,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use **COMMON_EVENT_USER_REMOVED** instead.
+  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use COMMON_EVENT_USER_REMOVED instead.
 
   - Value: **usual.event.USER_REMOVED**
   - Required permissions: **ohos.permission.MANAGE_LOCAL_ACCOUNTS** (for system applications only)

@@ -5,6 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=b14ac3cf36ce096474879f8a233b4331a09dac0e translatedAt=2026-11-10T04:00:32.702Z pushedAt=2026-11-10T06:10:47.131Z nl=1 -->
 
 > **NOTE**
 >
@@ -22,13 +23,19 @@ This error code is reported when the source file passed in the **compressFile()*
 
 **Possible Causes**
 
-When the **compressFile()** API is called, the file to compress does not exist. When the **decompressFile()** API is called, the file to decompress does not exist.
+1. The input source file path is empty, contains a relative path, or is not a valid application sandbox path.
+2. The input source file does not exist, or the application does not have the access permission to the source file.
+3. When calling the decompressFile API, the source file cannot be opened.
 
 **Solution**
 
-1. Make sure the source file exists.
-2. Ensure that the source file is in ZIP format.
-3. Make sure the path of the source file exists and the path is the correct sandbox path.
+1. Check the source file path.
+
+   Ensure that the path is not empty, does not contain relative paths such as "../", and is located in the correct application sandbox path.
+
+2. Check whether the source file exists and whether the application has the read permission on the source file.
+
+3. When calling the decompressFile API, check whether the source file can be opened normally and ensure that the file extension is .zip.
 
 ## 900002 Invalid Destination File
 
@@ -42,13 +49,22 @@ This error code is reported when the destination file passed in the **compressFi
 
 **Possible Causes**
 
-1. When the **compressFile()** API is called, the passed destination file path is invalid, for example, a non-exist sandbox path.
-2. When the **decompressFile()** API is called, the destination folder does not exist.
+1. The input destination path is empty, contains a relative path, or is not a valid application sandbox path.
+2. When calling the decompressFile API, the input destination path does not exist or is not a directory.
+3. The application does not have the write permission on the destination directory.
+4. The output directory cannot be created, or the target file cannot be created or opened during decompression.
 
 **Solution**
 
-1. Check whether the destination file path is correct. If not, enter the correct sandbox path.
-2. Check whether the destination folder exists. If not, create the folder.
+1. Check the target path.
+
+   Ensure that the path is not empty, does not contain relative paths such as "../", and is located in the correct application sandbox path.
+
+2. Before calling the decompressFile API, check whether the target path is an existing directory. If the directory does not exist, create it first.
+
+3. Check whether the application has the write permission on the target directory.
+
+4. Check whether there are abnormal entries in the target directory that prevent the creation of a directory or file with the same name, and ensure that the target directory has sufficient available storage space.
 
 ## 900003 Source File in Incorrect Format or Damaged
 
@@ -60,16 +76,21 @@ The input source file is not in ZIP format or is damaged.
 
 This error code is reported when the format of the source file is incorrect or the source file is damaged when the **decompressFile** API is called.
 
-
 **Possible Causes**
 
-1. When the **decompressFile** API is called, the format of the source file is incorrect.
-2. When the **decompressFile** API is called, the source file is incomplete or damaged.
+1. The input source file is not in ZIP format, or the file is incomplete or corrupted.
+2. The entry paths in the ZIP file contain relative paths such as "../".
+3. The entry information or entry data of the ZIP file is corrupted, causing the entry to fail to be read or decompressed.
 
 **Solution**
 
-1. Check whether the source file is in ZIP format.
-2. Check whether the source file is complete. If the file is downloaded from the network, ensure that the file download is complete before calling the **decompressFile** API.
+1. Check whether the source file is a valid and complete ZIP file.
+
+   If the source file is downloaded over the network, ensure that the file download is complete before calling the decompressFile API. If the file is corrupted, regenerate or obtain the ZIP file.
+
+2. Check the entry paths in the ZIP file to ensure that the paths do not contain relative paths such as "../". If such entries exist, remove the related entries and regenerate the ZIP file.
+
+3. Check whether each entry in the ZIP file can be read and decompressed normally. If an entry is corrupted, regenerate or obtain the ZIP file.
 
 ## 17800002 Incorrect File or Access Mode
 

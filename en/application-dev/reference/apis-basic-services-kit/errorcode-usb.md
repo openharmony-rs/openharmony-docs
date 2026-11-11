@@ -6,12 +6,13 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=feaaacdac079d264228b6dc8fe98b7de6cf247a2 translatedAt=2026-11-10T04:00:22.108Z pushedAt=2026-11-10T06:10:33.529Z nl=1 -->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 14400001 USB Device Connection Denied
+## 14400001 USB Device Access Permission Denied
 
 **Error Message**
 
@@ -19,7 +20,7 @@ Access right denied. Call requestRight to get the USBDevicePipe access right fir
 
 **Description**
 
-This error code is reported if a certain API of the USB module is called but the required permission is not granted.
+When some APIs of the USB module are called, the requestRight method must be called first to request the permission. If the related permission is not available, this error code is reported.
 
 **Possible Causes**
 
@@ -91,7 +92,7 @@ Database operation exception.
 
 **Description**
 
-This error code is reported if the database operation is abnormal.
+A database operation exception occurs, possibly because of a database read/write conflict or because resources are not released correctly.
 
 **Solution**
 
@@ -175,7 +176,7 @@ This error code is reported if the requested resource is in use.
 
 **Solution**
 
-Check whether [usbManager.claimInterface](js-apis-usbManager.md#usbmanagerclaiminterface) is successfully called.
+1. If the transfer task has been submitted, wait until the current transfer is complete or canceled before performing the operation again.
 
 ## 14400008 No Device (Disconnected)
 
@@ -221,7 +222,7 @@ This error code is reported if an unknown error occurs.
 
 **Solution**
 
-Correct the error by referring to the related documentation, and try again.
+Refer to the USB device and API reference documents, and perform the operation that triggered the error again.
 
 ## 14400011 No Ongoing Transfer Found
 
@@ -249,7 +250,7 @@ This error code is reported when the read/write operation fails due to the abnor
 
 **Solution**
 
-Try again.
+Check whether the USB device connection status and the I/O channel are normal, and perform the read/write operation again after confirming that they are correct. If I/O errors persist, check whether the transfer parameter configuration is correct.
 
 ## 14400013 Parameter Validity Check Failed
 
@@ -288,7 +289,7 @@ The process exits due to a program exception.
 
 **Solution**
 
-Check whether the device is connected, and obtain the correct serial port number from the serial port list.
+Identify the cause of the program exception, restart the service, and then obtain the port number from the serial port list.
 
 ## 31400002 No Serial Port Device Access Permission
 
@@ -306,7 +307,7 @@ You have not applied for the permission to access the serial port device.
 
 **Solution**
 
-Call **requestSerialRight** to apply for the access permission.
+Call the requestSerialRight() method to request the access permission. Recommended calling sequence: call requestSerialRight to obtain the permission first, and then call the Open API to open the device.
 
 ## 31400003 Port Number Not Exist
 
@@ -326,7 +327,7 @@ The original port number becomes invalid because the device connection is abnorm
 
 Remove and insert the device, and try again.
 
-## 31400004 Port in Use
+## 31400004 Serial Device Is Occupied
 
 **Error Message**
 
@@ -338,7 +339,7 @@ This error code is reported if the serial port device is occupied.
 
 **Possible Causes**
 
-The serial port device is enabled repeatedly.
+The serial device is occupied by another application.
 
 **Solution**
 
@@ -384,11 +385,11 @@ Check whether the peer device initiates data transfer.
 
 **Error Message**
 
-I/O exception.Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed.
+I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed.
 
 **Description**
 
-This error code is reported if an I/O exception occurs.
+I/O exception.
 
 **Possible Causes**
 
@@ -398,4 +399,6 @@ This error code is reported if an I/O exception occurs.
 
 **Solution**
 
-Adjust the buffer size properly, and perform data transfer again.
+1. Check whether the transfer task was canceled abnormally, identify the cause of the cancellation, and then initiate the transfer again.
+
+2. Set a buffer size that meets the requirements of the transfer scenario, and then restart the transfer task.

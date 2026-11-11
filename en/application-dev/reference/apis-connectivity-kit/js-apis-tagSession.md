@@ -6,7 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=67487829468179127107f74c0916ca5ae8660edf translatedAt=2026-10-09T13:31:03.220Z pushedAt=2026-10-10T07:17:04.670Z -->
+<!-- md-trans-meta sourceCommit=88083dcb5b14d296520d59b6c53161eacb42338b translatedAt=2026-11-10T05:04:49.312Z pushedAt=2026-11-10T07:28:20.674Z nl=1 -->
 
 The **tagSession** module provides common APIs for establishing connections and transferring data.
 
@@ -630,7 +630,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Supported Since: 12+ |
 
 **Example**
 
@@ -695,7 +695,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed. |
+| 3100204 | The tag I/O operation failed.<br>Supported since: 12+ |
 
 **Example**
 

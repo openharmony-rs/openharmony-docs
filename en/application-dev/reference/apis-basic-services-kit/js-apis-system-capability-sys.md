@@ -5,6 +5,7 @@
 <!--Designer: @ringking0-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=7723421f3cd6590d3d48799b0e8f48feb3b59829 translatedAt=2026-11-10T04:13:59.588Z pushedAt=2026-11-10T07:05:00.223Z nl=1 -->
 
 System capability (SysCap) refers to a relatively independent feature in the operating system. Different devices provide different system capabilities, and multiple APIs implement a system capability. You can determine whether an API can be used based on system capabilities. This module provides APIs for querying the set of system capabilities.
 
@@ -63,7 +64,7 @@ Queries the system capabilities. This API uses a promise to return the result.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise used to return the result.|
+| Promise&lt;string&gt; | Promise used to return the result. |
 
 **Example**
 
@@ -83,3 +84,5 @@ try {
 > **NOTE**
 >
 > The system capabilities returned by the preceding APIs are in the form of an encoded numeric string.
+
+

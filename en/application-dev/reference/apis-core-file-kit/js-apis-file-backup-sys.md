@@ -1,12 +1,13 @@
 # @ohos.file.backup (Backup and Restore) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @chenxi0605-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=6f002100d9d50df496363687c5a5fc78401c92d7 translatedAt=2026-11-10T05:10:05.198Z pushedAt=2026-11-10T07:33:19.352Z nl=1 -->
 
-The **file.backup** module provides APIs for backing up and restoring data for applications.
+This module provides applications with the capability of backing up and restoring data, addressing data preservation and recovery in scenarios such as application data migration, system upgrade, and device replacement. A tool application can perform full backup through SessionBackup, perform restoration through SessionRestore, and perform incremental backup through IncrementalBackupSession. The backup service notifies applications of the backup/restore phase, file handle, progress, and result through GeneralCallbacks.
 
 > **NOTE**
 >
@@ -21,339 +22,172 @@ import { backup } from '@kit.CoreFileKit';
 
 ## FileMeta
 
-Defines a file metadata object, which includes the application name and file URI. **FileMeta** is an indispensable object for data backup and restore.
+Metadata of a file, including an application name and a file URI. FileMeta is an indispensable object when performing backup/restore.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name      | Type  | Read-Only| Optional| Description                                                                                               |
+| Name       | Type   | Read-Only | Optional | Description                                                                                                |
 | ---------- | ------ | ---- | ---- |--------------------------------------------------------------------------------------------------- |
-| bundleName | string | No  | No| Application name, which can be obtained from [bundleManager.BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md).|
-| uri        | string | No  | No| URI of the file in the application sandbox.<br>Currently, the URI is not in the uniform data format. It can consist of digits (0–9), letters (a–z and A–Z), underscores (_), and period (.) only.     |
+| bundleName | string | No   | No | Application name, which can be obtained through the method provided by [bundleManager.BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md). The backup service locates and processes the data of the corresponding application based on this name. |
+| uri        | string | No   | No | Name of the file to be transferred in the application sandbox. Currently, uri has not been upgraded to the standard format, and only names composed of 0-9a-zA-Z, underscores (_), and periods (.) are accepted. The backup service locates and processes the data of the corresponding application based on this name.      |
+| uris        | Array&lt;string&gt; | No   | Yes | Array of names of the files to be transferred in the application sandbox. Currently, uris has not been upgraded to the standard format, and only names composed of 0-9a-zA-Z, underscores (_), and periods (.) are accepted.<br>**Model Constraint**: This API can be used only in the stage model.<br>**Since Version**: 26.0.0      |
 
 ## FileData
 
-Defines a file data object, which includes the file descriptor (FD) of the file opened. **FileData** is an indispensable object for data backup and restore.
+Metadata of a file, including an opened file descriptor. FileData is an indispensable object when performing backup/restore.
 
 > **NOTE**
 >
-> The **FileData** must be closed after being used. Otherwise, memory leakage may occur. For details about how to close a **FileData** object, see [fileIo.closeSync](js-apis-file-fs.md#fileioclosesync) provided by [@ohos.file.fs](js-apis-file-fs.md).
+> FileData must be closed after use. Otherwise, a memory leak will occur. For the closing method, refer to the related closing APIs such as [fileIo.closeSync](js-apis-file-fs.md#fileioclosesync) provided by [@ohos.file.fs](js-apis-file-fs.md).
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name| Type  | Read-Only| Optional| Description                                    |
+| Name | Type   | Read-Only | Optional | Description                                     |
 | ---- | ------ | ---- | --- |---------------------------------------- |
-| fd   | number | No  | No|FD, which can be obtained through the backup service.|
+| fd   | number | No   | No | Opened file descriptor, obtained through the backup service, which can be used to read or write backup/restore file content. |
 
 ## FileManifestData<sup>12+</sup>
 
-Defines a file data object, which includes the file descriptor (FD) of the file opened. The file opened by **FileManifestData** provides basic information about the files involved in incremental backup or restore. **FileManifestData** is an indispensable object for incremental backup or restore.
+Metadata of a file, containing an already opened file descriptor. The content opened by FileManifestData is a manifest file, which is used to describe the basic information of the corresponding file during incremental backup/restore of an application. During incremental backup, the Backup Service reads the manifest file based on manifestFd, compares the last incremental time with the basic file information, and identifies the incremental files that need to be processed. FileManifestData is an indispensable object when performing incremental backup/restore.
 
 > **NOTE**
 >
-> For details about how to close **FileManifestData**, see [fileIo.closeSync](js-apis-file-fs.md#fileioclosesync).
+> FileManifestData must be closed after use. Otherwise, a memory leak will occur. For details about how to close it, see [fileIo.closeSync](js-apis-file-fs.md#fileioclosesync) and other close APIs.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name      | Type  | Read-Only| Optional| Description                                    |
-| ---------- | ------ | ---- | --- | ---------------------------------------- |
-| manifestFd | number | No  | No| FD, which can be obtained through the backup service.|
+| Name       | Type   | Read-Only | Optional | Description                                     |
+| ---------- | ------ | -------- | -------- | ----------------------------------------------- |
+| manifestFd | number | No       | No       | An already opened file descriptor, obtained through the Backup Service. |
 
 ## IncrementalBackupTime<sup>12+</sup>
 
-Represents the time of the last incremental backup.
+Used to record the time of the last incremental backup, describing the time point of the backup increment.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name               | Type  | Read-Only| Optional| Description                                                                                               |
-| ------------------- | ------ | ---- | --- | --------------------------------------------------------------------------------------------------- |
-| bundleName          | string | No  | No| Application name, which can be obtained from [bundleManager.BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md).|
-| lastIncrementalTime | number | No  | No| Time when the last incremental backup was performed.                                                                          |
+| Name                | Type   | Read-Only | Optional | Description                                                                                                |
+| ------------------- | ------ | --------- | -------- | --------------------------------------------------------------------------------------------------- |
+| bundleName          | string | No        | No       | Application name, which can be obtained through the method provided by [bundleManager.BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md). |
+| lastIncrementalTime | number | No        | No       | Time of the last incremental backup.                                                                           |
 
 ## BackupParams<sup>12+</sup>
 
-Represents optional parameters in JSON strings for backup and restore.
+Provides optional configuration parameters for backup and restore, in the form of a JSON-format string.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name      | Type  | Read-Only| Optional| Description                                              |
-| ---------- | ------ | ---- | ---- | -------------------------------------------------- |
-| parameters | string | No  | Yes| Optional parameters for backup or restore, in JSON strings. It is empty by default.|
+| Name       | Type   | Read-Only | Optional | Description                                        |
+| ---------- | ------ | --------- | -------- | -------------------------------------------------- |
+| parameters | string | No        | Yes      | A string with JSON-format configuration items, providing optional options for backup and restore. The fields are agreed upon by the backup and restore service. The default value is empty, indicating that no additional configuration is used. |
 
 ## BackupPriority<sup>12+</sup>
 
-Represents the backup priority.
+Provides priority configuration for backup and restore. When multiple applications are backed up or restored simultaneously, this configuration can be used to make applications with higher priority execute first.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name    | Type  | Read-Only| Optional| Description                                                  |
+| Name | Type | Read-Only | Optional | Description |
 | -------- | ------ | ---- | ---- | ------------------------------------------------------ |
-| priority | number | No  | Yes| Backup priority. A larger value indicates a higher priority. If the priorities are the same, the API called first is executed first. The default value is **0**.|
+| priority | number | No | Yes | A larger value indicates a higher priority. When the priorities are the same, the one called first is executed first. The default value is 0. |
 
 ## IncrementalBackupData<sup>12+</sup>
 
-Represents an incremental backup object, which inherits from [IncrementalBackupTime](#incrementalbackuptime12), [FileManifestData](#filemanifestdata12), [BackupParams](#backupparams12), and [BackupPriority](#backuppriority12).
+An object for a single incremental backup. It inherits [IncrementalBackupTime](#incrementalbackuptime12), [FileManifestData](#filemanifestdata12), [BackupParams](#backupparams12), and [BackupPriority](#backuppriority12).
 
 > **NOTE**
 >
-> This object provides information about the last incremental backup time and the FD of the file that contains a list of the files involved in the incremental backup. Optional parameters include backup and restore configuration and backup priority.
+> Records the last incremental time of the application and the file descriptor of the incremental backup manifest file. The manifest file records the information of files that have been backed up within the incremental time. The backup service determines the file range that requires incremental processing based on lastIncrementalTime and manifestFd. parameters is used to pass additional configurations agreed upon by the business, and priority is used to control the backup/restore execution order of multiple applications.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
 ## File
 
-Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](#filedata).
+A file object.
 
- 
+Inherits from [FileMeta](#filemeta) and [FileData](#filedata).
 
 > **NOTE**
 >
-> **file.backup.File** is different from [File](js-apis-file-fs.md#file) provided in @ohos.file.fs. The former is an object that inherits from [FileMeta](#filemeta) and [FileData](#filedata), while the latter has only one FD object. Pay attention to the difference between them.
+> The file.backup.File differs in meaning from the [File](js-apis-file-fs.md#file) provided in @ohos.file.fs. The former is an object that inherits from [FileMeta](#filemeta) and [FileData](#filedata), while the latter is an object that contains only a file descriptor. Pay attention to the distinction and do not confuse them.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
 ## File<sup>12+</sup>
 
-Defines a file object, which inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12).
+A file object.
 
- 
+Inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12).
 
 > **NOTE**
 >
-> **file.backup.File** is different from [File](js-apis-file-fs.md#file) provided in @ohos.file.fs. The former is an object that inherits from [FileMeta](#filemeta) and [FileData](#filedata), while the latter has only one FD object. Pay attention to the difference between them.
+> The file.backup.File differs in meaning from the [File](js-apis-file-fs.md#file) provided in @ohos.file.fs. The former is an object that inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12), while the latter is an object that contains only a file descriptor. Be sure to distinguish between them and avoid confusion.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
 ## FileSystemRequestConfig<sup>23+</sup>
 
-Configures the parameters required for the system to perform defragmentation.
+Configures the parameters required for the system to perform fragment cleanup.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.FileManagement.StorageService.backup
+**System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name       | Type  | Read-Only| Optional| Description                                                  |
+| Name        | Type   | Read-Only | Optional | Description                                                   |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
-| triggerType | number |  No |  No | Trigger type for defragmentation. Currently, only the value **0** is supported, which indicates the execution of device defragmentation.|
-| writeSize   | number |  No |  No | Target size for defragmentation. The expected available storage space that can be freed up is equal to this target value. The unit is MB. The value ranges from 0 to 2097152.|
-| waitTime    | number |  No |  No | Maximum duration for defragmentation. If the actual duration exceeds the value, the task times out. The unit is second. The value ranges from 0 to 180.|
+| triggerType | number |  No  |  No  | Specifies the trigger type of fragment cleanup. Currently, only trigger type 0 is supported, which indicates performing storage device fragment cleanup to free fragmented space and improve storage performance. Any other value returns a parameter error.|
+| writeSize   | number |  No  |  No  | Cleanup target of the fragment cleanup function, indicating the expected size of available storage units to be freed. Unit: MB. Value range: 0 to 2097152 MB. A value out of range returns a parameter error.|
+| waitTime    | number |  No  |  No  | Maximum allowed time for executing the fragment cleanup function. If this time is exceeded, the task is considered timed out. Unit: second. Value range: 0 to 300 seconds. A value out of range returns a parameter error.|
+
+## PathInfo
+
+Path information for file migration.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.StorageService.Backup
+
+**System API**: This is a system API.
+
+| Name | Type | Read-Only | Optional | Description |
+| ---------- | ------ | ---- | --- | ---------------------------------------- |
+| srcPath | string | No | No | Source path of the migration. The length is limited to 4096 characters. Relative paths and soft links are not supported. If the length limit is exceeded, a parameter error is returned. |
+| destPath | string | No | No | Destination path of the migration. The length is limited to 4096 characters. Relative paths and soft links are not supported. If the length limit is exceeded, a parameter error is returned. |
 
 ## GeneralCallbacks
 
-Provides callbacks to be used in the backup or restore process. The backup service uses these callbacks to notify the client of the backup/restore progress of the application.
+Common callbacks during the backup/restore process. The Backup Service uses these callbacks to notify the client of the backup/restore phase of its application.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-### Attributes
+### Properties
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name| Type| Read-Only| Optional| Description|
+**System API**: This is a system API.
+
+| Name | Type | Read-Only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| onBackupSizeReport<sup>18+</sup>  | [OnBackupSizeReport](#onbackupsizereport18) | No| Yes|  Size of the data to be backed up.|
-
-### onFileReady
-
-onFileReady : AsyncCallback&lt;File&gt;
-
-Called when the file is ready for sending to the client. If the callback is invoked successfully, [File](#file) is returned. Otherwise, an **err** object is returned.
-
-> **NOTE**
->
-> The **File** returned by **AsyncCallback** is the file.backup.[File](#file). The returned file belongs to the backup service. Once the file is closed, the backup service shall clear the resources used by the file. However, the client must close the file handle first.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.FileManagement.StorageService.Backup
-
-**Return value**
-
-| Name    | Type         | Mandatory| Description                                                       |
-| ---------- | ------------- | ---- | ----------------------------------------------------------- |
-| File | [File](#file)     | Yes  | [File](#file) content.                      |
-
-**Error codes**
-
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
-
-| ID| Error Message               |
-| -------- | ----------------------- |
-| 13600001 | IPC error.               |
-| 13900005 | I/O error.               |
-| 13900011 | Out of memory.           |
-| 13900020 | Invalid argument.        |
-| 13900025 | No space left on device. |
-| 13900042 | Unknown error.           |
-
-**Example**
-
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo, backup } from '@kit.CoreFileKit';
-
-  onFileReady: (err: BusinessError, file: backup.File) => {
-    if (err) {
-      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info(`onFileReady success with file: ${file.bundleName}, ${file.uri}`);
-    fileIo.closeSync(file.fd);
-  }
-  ```
-
-### onBundleBegin
-
-onBundleBegin: AsyncCallback&lt;string, void | string&gt;
-
-Called when the application backup or restore starts. If the callback is successfully invoked, **bundleName** is returned. Otherwise, an **err** object is returned. Since API version 12, **err** and **bundleName** are returned.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.FileManagement.StorageService.Backup
-
-**Return value**
-
-| Name    | Type         | Mandatory| Description                                                       |
-| ---------- | ------------- | ---- | ----------------------------------------------------------- |
-| bundleName | string        | Yes  | Application name.                                         |
-| err        | BusinessError | No  | Error returned if the operation fails. If the operation is successful, **err** is **undefined**, and **data** is the bundle name.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
-
-| ID| Error Message                                             |
-| -------- | ----------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-| 13500001 | The application is not added to the backup or restore. |
-| 13500002 | Failed to start application extension Procedure.       |
-| 13600001 | IPC error.                                             |
-| 13900005 | I/O error.                                             |
-| 13900011 | Out of memory.                                         |
-| 13900025 | No space left on device.                               |
-| 13900042 | Unknown error.                                         |
-
-**Example**
-
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  onBundleBegin: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleBegin success');
-  }
-  ```
-
-### onBundleEnd
-
-onBundleEnd: AsyncCallback&lt;string, void | string&gt;
-
-Called when the application backup or restore ends. If the callback is successfully invoked, **bundleName** is returned. Otherwise, an **err** object is returned. Since API version 12, **err** and **bundleName** are returned.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.FileManagement.StorageService.Backup
-
-**Return value**
-
-| Name    | Type         | Mandatory| Description                                                       |
-| ---------- | ------------- | ---- | ----------------------------------------------------------- |
-| bundleName | string        | Yes  | Application name.                                         |
-| err        | BusinessError | No  | Error returned if the operation fails. If the operation is successful, **err** is **undefined**, and **data** is the bundle name.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
-
-| ID| Error Message                       |
-| -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
-| 13500003 | Backup or restore timed out.     |
-| 13500004 | Application extension death.     |
-| 13600001 | IPC error.                       |
-| 13900005 | I/O error.                      |
-| 13900011 | Out of memory.                   |
-| 13900025 | No space left on device.         |
-| 13900042 | Unknown error.                   |
-
-**Example**
-
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  onBundleEnd: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onBundleEnd success');
-  }
-  ```
-
-### onAllBundlesEnd
-
-onAllBundlesEnd: AsyncCallback&lt;undefined&gt;
-
-Called when the backup or restore of all applications ends. If the callback fails to be invoked, an **err** object is returned.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.FileManagement.StorageService.Backup
-
-**Error codes**
-
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
-
-| ID| Error Message               |
-| -------- | ----------------------- |
-| 13600001 | IPC error.               |
-| 13900005 | I/O error.               |
-| 13900011 | Out of memory.           |
-| 13900020 | Invalid argument.        |
-| 13900025 | No space left on device. |
-| 13900042 | Unknown error.           |
-
-**Example**
-
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  onAllBundlesEnd: (err: BusinessError) => {
-    if (err) {
-      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onAllBundlesEnd success');
-  }
-  ```
-
-### onBackupServiceDied
-
-onBackupServiceDied: Callback&lt;undefined&gt;
-
-Called when the backup service is suspended. If this callback fails to be invoked, an **err** object is returned.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.FileManagement.StorageService.Backup
-
-**Example**
-
-  ```ts
-  onBackupServiceDied: () => {
-    console.info('onBackupServiceDied success');
-  }
-  ```
+| onFileReady | AsyncCallback&lt;[File](#file)&gt; | No | No | Callback for the server to send a file to the client. When the sending succeeds, err is undefined and data is [File](#file); otherwise, it is an error object. The File in the AsyncCallback belongs to the file.backup.[File](#file) type. The returned file is owned by the Backup Service, and the client must close the File Handle after the file operation is complete.<br>After the file handle is closed, the backup service cleans up the file in the subsequent process.<br>**Error Codes**:<br>For details about the following error codes, see [File Management Error Codes](errorcode-filemanagement.md).<br>- 13600001: IPC error.<br>- 13900005: I/O error.<br>- 13900011: Out of memory.<br>- 13900020: Invalid argument.<br>- 13900025: No space left on device.<br>- 13900042: Unknown error. |
+| onBundleBegin | AsyncCallback&lt;string, void \| string&gt; | No | No | Callback invoked when application backup/restore starts. When the operation succeeds, err is undefined and data is the bundle name of the application whose backup/restore starts; otherwise, err is an error object.<br>Since API version 12, when err is returned, the second string parameter bundleName is also returned.<br>Developers can use this return value to record the start state of the current application's backup/restore, initialize progress display, or prepare for subsequent processing.<br>**Error codes**<br>For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).<br>- 401: Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>- 13500001: The application is not added to the backup or restore.<br>- 13500002: Failed to start application extension Procedure.<br>- 13600001: IPC error.<br>- 13900005: I/O error.<br>- 13900011: Out of memory.<br>- 13900025: No space left on device.<br>- 13900042: Unknown error. |
+| onBundleEnd | AsyncCallback&lt;string, void \| string&gt; | No | No | Callback invoked when application backup/restore ends. When the operation succeeds, err is undefined and data is the bundle name of the application whose backup/restore ends; otherwise, err is an error object.<br>Since API version 12, when err is returned, the second string parameter bundleName is also returned.<br>Developers can use this return value to record the end state of the current application's backup/restore, update the result display, or clear the temporary state.<br>**Error codes**<br>For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).<br>- 401: Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>- 13500003: Backup or restore timed out.<br>- 13500004: Application extension death.<br>- 13600001: IPC error.<br>- 13900005: I/O error.<br>- 13900011: Out of memory.<br>- 13900025: No space left on device.<br>- 13900042: Unknown error. |
+| onAllBundlesEnd | AsyncCallback&lt;undefined&gt; | No | No | Callback triggered when the backup/restore process of all bundles ends. When the operation succeeds, err is undefined; otherwise, it is an error object. No return result.<br>**Error Codes**:<br>For details about the following error codes, see [File Management Error Codes](errorcode-filemanagement.md).<br>- 13600001: IPC error.<br>- 13900005: I/O error.<br>- 13900011: Out of memory.<br>- 13900020: Invalid argument.<br>- 13900025: No space left on device.<br>- 13900042: Unknown error. |
+| onBackupServiceDied | Callback&lt;undefined&gt; | No | No | Callback triggered when the Backup Service dies abnormally. No return result. |
+| onBackupSizeReport<sup>18+</sup>  | [OnBackupSizeReport](#onbackupsizereport18) | No | Yes | Used together with getBackupDataSize to return the information about the amount of data to be backed up. When this callback is not set, the data size scan result is not received. |
+| onMigrateResult | AsyncCallback&lt;string, void \| string&gt; | No | Yes | Callback invoked when the file migration process ends, returning the result information of the migrated file. When the migration operation succeeds, err is undefined and data is a string (application name); otherwise, err is an error object. If this callback is not set, the file migration result is not received.<br>**Since:** 26.0.0<br>**Model constraints:** This API can be used only in the stage model.<br>**Error codes**<br>For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).<br>- 202: Permission verification failed, application which is not a system application uses system API.<br>- 13600001: IPC error.<br>- 13900001: Operation not permitted.<br>- 13900005: I/O error.<br>- 13900011: Out of memory.<br>- 13900020: Invalid argument.<br>- 13900025: No space left on device. |
+| onFileReadyBatch | [OnFileReadyBatch](#onfilereadybatch) | No | Yes | Callback triggered when a batch of files is ready to be sent to the client.<br>**Since Version**: 26.0.0<br>**Model Constraint**: This API can be used only in the stage model.<br>**Error Codes**:<br>For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).<br>- 202: Permission verification failed, application which is not a system application uses system API.<br>- 13600001: IPC error.<br>- 13900005: I/O error.<br>- 13900011: Out of memory.<br>- 13900020: Invalid argument.<br>- 13900025: No space left on device. |
 
 ### onResultReport<sup>12+</sup>
 
-onResultReport (bundleName: string, result: string)
+onResultReport(bundleName: string, result: string): void
 
-Called when the backup or restore is complete. If the callback is invoked successfully, the application bundle name and backup or restore information (such as the number of backed up or restored records or exception information) are returned.
+Callback function. When application backup/restore ends, if the callback is successfully triggered, the application bundle name and application backup/restore information (backup/restore count or exception information, etc.) are returned.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -361,16 +195,16 @@ Called when the backup or restore is complete. If the callback is invoked succes
 
 **Parameters**
 
-| Name    | Type  | Mandatory| Description                           |
-| ---------- | ------ | ---- | ------------------------------- |
-| bundleName | string | Yes  | Bundle name of the application.                       |
-| result     | string | Yes  | Application backup/restore information returned in JSON format.|
+| Parameter       | Type   | Mandatory | Description                            |
+| ---------- | ------ | -------- | -------------------------------------- |
+| bundleName | string | Yes      | Bundle name of the application.               |
+| result     | string | Yes      | Application backup/restore information returned in JSON format, including backup/restore count or exception information, etc. It can be used to determine the backup/restore result and display it to users. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -393,9 +227,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### onProcess<sup>12+</sup>
 
-onProcess (bundleName: string, process: string)
+onProcess(bundleName: string, process: string): void
 
-Called to report the backup or restore progress information. If the callback is invoked successfully, the progress information or exception information are returned.
+Callback function. Reports progress information during the application backup/restore process, returning the progress information and exception information of the application's business execution.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -403,16 +239,16 @@ Called to report the backup or restore progress information. If the callback is 
 
 **Parameters**
 
-| Name    | Type  | Mandatory| Description                           |
-| ---------- | ------ | ---- | ------------------------------- |
-| bundleName | string | Yes  | Bundle name of the application.                       |
-| process     | string | Yes  | Backup/restore progress information in JSON format.|
+| Parameter       | Type   | Mandatory | Description                            |
+| ---------- | ------ | --------- | -------------------------------------- |
+| bundleName | string | Yes       | Bundle name of the application.               |
+| process    | string | Yes       | Returns the progress information of the application backup/restore in JSON format, which may include the progress percentage, the number of completed files, or exception information, for displaying the backup/restore progress. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -440,7 +276,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;number&gt;
 
-Sorts out the fragmented space of storage components to improve user experience. This API uses a promise to return the result.
+Defragments the fragmented space of a storage device to improve the user experience of lag. It is applicable to scenarios where storage space is tight, storage performance degrades, or proactive storage maintenance is required. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -451,21 +287,21 @@ Sorts out the fragmented space of storage components to improve user experience.
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
 **Parameters**
-| Name  | Type                                      | Mandatory| Description                                              |
+| Parameter   | Type                                       | Mandatory | Description                                               |
 | -------- | ------------------------------------------ | ---- | -------------------------------------------------- |
-|  config  | [FileSystemRequestConfig](#filesystemrequestconfig23)| Yes| Parameters required for the system to perform defragmentation.|
+|  config  | [FileSystemRequestConfig](#filesystemrequestconfig23)| Yes | Parameters required for the system to perform fragment cleanup. After being set, a fragment cleanup task is triggered, and the cleanup type, target size, and maximum execution time are controlled by triggerType, writeSize, and waitTime. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| Promise&lt;number&gt;  | Promise that returns the error code generated during defragmentation.|
+| Promise&lt;number&gt;  | Promise object that returns the error code generated when the fragment cleanup operation is executed. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -496,7 +332,7 @@ async function testFunction(size: number) {
 
 getBackupVersion(): string
 
-Obtains the backup or restore version information.
+Obtains the backup and restore version information, which can be used to confirm the current backup and restore framework version, perform version compatibility checks, or compare capabilities before and after an upgrade.
 
 **System API**: This is a system API.
 
@@ -506,15 +342,15 @@ Obtains the backup or restore version information.
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| string | Returns the backup or restore version information.<br>The version number is in the API version format. For example, the value **API16** means that the version number is 16.0.|
+| string | Returns the backup and restore version information.<br/>The version number is in the format of "API version.internal version". For example, the version number corresponding to API 16 is 16.0. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -546,7 +382,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getLocalCapabilities(callback: AsyncCallback&lt;FileData&gt;): void
 
-Obtains a JSON file that describes local capabilities. This API uses an asynchronous callback to return the result.
+Obtains a JSON file that describes local capabilities. It can be used to confirm whether an application supports backup before backup, verify capability matching before restore, or generate the capability file required for restore. This API uses an asynchronous callback.
 
 **System API**: This is a system API.
 
@@ -556,15 +392,15 @@ Obtains a JSON file that describes local capabilities. This API uses an asynchro
 
 **Parameters**
 
-| Name  | Type                                      | Mandatory| Description                                              |
-| -------- | ------------------------------------------ | ---- | -------------------------------------------------- |
-| callback | AsyncCallback&lt;[FileData](#filedata)&gt; | Yes  | Callback used to return the **FileData** object obtained.|
+| Parameter     | Type                                       | Mandatory | Description                                               |
+| -------- | ------------------------------------------ | --------- | -------------------------------------------------- |
+| callback | AsyncCallback&lt;[FileData](#filedata)&gt; | Yes       | Callback invoked after the local capability file is obtained asynchronously. Returns a FileData object. The file descriptor in it must be closed after use. |
 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 13600001 | IPC error.               |
 | 13900005 | I/O error.               |
@@ -594,7 +430,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   }
   ```
 
-The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fileiostat-1) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
+**The capability file can be obtained through related APIs such as [fileIo.stat](js-apis-file-fs.md#fileiostat) provided by [@ohos.file.fs](js-apis-file-fs.md). Example of the capability file content:**
 
  ```json
  {
@@ -617,7 +453,7 @@ The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fi
 
 getLocalCapabilities(): Promise&lt;FileData&gt;
 
-Obtains a JSON file that describes local capabilities. This API uses a promise to return the result.
+Obtains a JSON file that describes local capabilities. It can be used to confirm whether an application supports backup before backup, to verify capability matching before restore, or to generate the capability file required for restore. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -627,15 +463,15 @@ Obtains a JSON file that describes local capabilities. This API uses a promise t
 
 **Return value**
 
-| Type                                | Description                           |
+| Type                                 | Description                            |
 | ------------------------------------ | ------------------------------- |
-| Promise&lt;[FileData](#filedata)&gt; | Promise **FileData** object obtained.|
+| Promise&lt;[FileData](#filedata)&gt; | Promise object that returns a FileData object, which contains the file descriptor for reading the content of the local capability file. The file descriptor must be closed after use. |
 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 13600001 | IPC error.               |
 | 13900005 | I/O error.               |
@@ -662,7 +498,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   }
   ```
 
-  The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fileiostat) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
+  **The capability file can be obtained through related APIs such as [fileIo.stat](js-apis-file-fs.md#fileiostat) provided by [@ohos.file.fs](js-apis-file-fs.md). Example of the capability file content:**
 
  ```json
  {
@@ -685,7 +521,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getLocalCapabilities(dataList:Array&lt;IncrementalBackupTime&gt;): Promise&lt;FileData&gt;
 
-Obtains local capabilities. The local capabilities of an application are queried based on the **dataList** parameter passed in. This API uses a promise to return the result.
+Obtains a JSON file that describes local capabilities. Based on the parameters passed in dataList, it queries the local capability data of the corresponding application. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -695,21 +531,21 @@ Obtains local capabilities. The local capabilities of an application are queried
 
 **Parameters**
 
-| Name  | Type                                                          | Mandatory| Description                                          |
-| -------- | -------------------------------------------------------------- | ---- | ---------------------------------------------- |
-| dataList | Array&lt;[IncrementalBackupTime](#incrementalbackuptime12)&gt; | Yes  | List of the files involved in the incremental backup.|
+| Parameter     | Type                                                           | Mandatory | Description                                           |
+| -------- | -------------------------------------------------------------- | --------- | ---------------------------------------------- |
+| dataList | Array&lt;[IncrementalBackupTime](#incrementalbackuptime12)&gt; | Yes       | List of incremental backup data, used to describe the application to be queried and the last incremental backup time. |
 
 **Return value**
 
-| Type                                | Description                           |
+| Type                                 | Description                            |
 | ------------------------------------ | ------------------------------- |
-| Promise&lt;[FileData](#filedata)&gt; | Promise **FileData** object obtained.|
+| Promise&lt;[FileData](#filedata)&gt; | Promise object that returns a FileData object, which contains the file descriptor for reading the content of the local capability file. The file descriptor must be closed after use. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -729,8 +565,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   async function getLocalCapabilities() {
     try {
       let backupApps: backup.IncrementalBackupTime[] = [{
-        bundleName: "com.example.hiworld",
-        lastIncrementalTime: 1700107870 // Time of the last incremental backup.
+        bundleName: 'com.example.hiworld',
+        lastIncrementalTime: 1700107870 // The caller records the time of the last incremental backup.
       }];
       let fileData = await backup.getLocalCapabilities(backupApps);
       console.info('getLocalCapabilities success');
@@ -747,7 +583,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getBackupInfo(bundleToBackup: string): string
 
-Obtains information about the application to back up.
+Obtains the information of the application to be backed up. It can be used to confirm the application status before backup, obtain the backup details reported by the application, or troubleshoot backup issues.
 
 **System API**: This is a system API.
 
@@ -757,21 +593,21 @@ Obtains information about the application to back up.
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter          | Type     | Mandatory | Description                       |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleToBackup | string | Yes  | Name of the application to back up.|
+| bundleToBackup | string | Yes   | Application Name to be backed up. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| string | Application information obtained.|
+| string | Returns the backup information reported by the application. The specific content and format are customized by the application and can be used to describe the application status, backup scope, or other business information. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -785,7 +621,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   function getBackupInfo() {
     try {
-      let backupApp = "com.example.hiworld";
+      let backupApp = 'com.example.hiworld';
       let result = backup.getBackupInfo(backupApp);
       console.info('getBackupInfo success, result: ' + result);
     } catch (error) {
@@ -799,7 +635,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 updateTimer(bundleName: string, timeout: number): boolean
 
-Sets the duration of application backup or restoration. This method must be called after **onBundleBegin** and before **onBundleEnd**.
+Sets the duration for application backup or restore. The call timing is after onBundleBegin and before onBundleEnd. It is applicable to scenarios involving large-volume data backup or restore, unstable networks, or applications requiring longer processing time.
 
 **System API**: This is a system API.
 
@@ -809,22 +645,22 @@ Sets the duration of application backup or restoration. This method must be call
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter | Type | Mandatory | Description |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName | string | Yes  | Name of the application, for which you want to set the backup or restore duration.|
-| timeout | number | Yes  | Maximum backup or restore duration, in ms.<br>Value range: [0, 14400000]|
+| bundleName | string | Yes | Application name for which the backup or restore duration is to be set. |
+| timeout | number | Yes | Time limit for backup or restore. The input range is [0,14400000], in ms. A value out of range returns a parameter error. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type | Description |
 | ------------------- | ----------------------- |
-| boolean | A Boolean value indicating whether the backup or restore timeout is set successfully. The value **true** indicates that the setting is successful, and the value **false** indicates that the setting fails.|
+| boolean | Whether the timeout is set successfully. true indicates success, and false indicates failure. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -839,7 +675,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   function updateTimer() {
     try {
       let timeout = 30000;
-      let bundleName = "com.example.hiworld";
+      let bundleName = 'com.example.hiworld';
       let result = backup.updateTimer(bundleName, timeout);
       if (result) {
         console.info('updateTimer success');
@@ -857,7 +693,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 updateSendRate(bundleName: string, sendRate: number): boolean
 
-Updates the rate at which the backup application sends file descriptors (FDs). This method is called after **onBundleBegin** and before **onBundleEnd**.
+Updates the rate at which the backup application sends file descriptors. The call timing is after onBundleBegin and before onBundleEnd. It applies to scenarios where network bandwidth is limited, the server processing capability is insufficient, or system overload needs to be avoided.
 
 **System API**: This is a system API.
 
@@ -867,22 +703,22 @@ Updates the rate at which the backup application sends file descriptors (FDs). T
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter | Type | Mandatory | Description |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName|string | Yes  | Name of the target application.|
-| sendRate | number | Yes  | Send rate to set, in file descriptors (FDs) per second.<br>Value range: 0 to 800<br>Default value: 60 FDs/second <br>The value **0** means to stop transmission. If the value is greater than **800**, the send rate is 800 FDs/second.|
+| bundleName | string | Yes | Application name for which the rate needs to be controlled. |
+| sendRate | number | Yes | File descriptor sending rate to be set for the application, in units of items per second, ranging from 0 to 800, with a default of 60 items per second. When it is 0, sending stops and resumes only when a non-zero value is set. If the set value exceeds the maximum of 800, sending proceeds at 800 items per second. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type | Description |
 | ------------------- | ----------------------- |
-| boolean | A Boolean value indicating whether the send rate is set successfully. The value **true** indicates that the setting is successful, and the value **false** indicates that the setting fails.|
+| boolean | Whether the sending rate is set successfully. true indicates success, and false indicates failure. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -896,7 +732,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   function updateSendRate() {
     try {
-      let bundleName = "com.example.myApp";
+      let bundleName = 'com.example.myApp';
       let sendRate = 300;
       let result = backup.updateSendRate(bundleName, sendRate);
       if (result) {
@@ -915,15 +751,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 type OnBackupSizeReport = (reportInfo: string) => void
 
-Reports the size of the application data to be backed up.
+The size of the application data to be backed up, returned by the framework.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-| Name  | Type                                 | Mandatory| Description                |
+**Parameters**
+
+| Parameter   | Type                                  | Mandatory | Description                 |
 | -------- | ------------------------------------- | ---- | -------------------- |
-| reportInfo | string | Yes  | Size of the application data to be backed up.|
+| reportInfo | string | Yes   | Information about the size of the application data to be backed up obtained by the framework, in JSON format string, containing the scanned and scanning fields. scanned indicates the list of application data sizes that have been scanned this time, and scanning indicates the bundle name of the application currently being scanned. Developers can parse it with JSON.parse before use. |
 
 **Example**
 
@@ -936,15 +774,54 @@ Reports the size of the application data to be backed up.
   }
   ```
 
+## OnFileReadyBatch
+
+type OnFileReadyBatch = (error: BusinessError&lt;void&gt;, files: Array&lt;[File](#file)&gt;) => void
+
+Callback triggered when the server sends files back to the client.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.StorageService.Backup
+
+**Parameters**
+
+| Parameter | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| error | BusinessError&lt;void&gt; | Yes | When the file handle is obtained successfully, error is undefined; otherwise, it is an error object. |
+| files | Array&lt;[File](#file)&gt; | Yes | When the file handle is obtained successfully, returns the array of obtained file handles. |
+
+**Example**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
+
+  const onFileReadyBatch: backup.OnFileReadyBatch = (error: BusinessError<void>, files: Array<backup.File>): void => {
+    if (error) {
+      console.error(`onFileReadyBatch failed. Code: ${error.code}, message: ${error.message}`);
+      return;
+    }
+    for (let file of files) {
+      console.info(`onFileReadyBatch success with file: ${file.bundleName}, ${file.uri}`);
+      fileIo.closeSync(file.fd);
+    }
+  };
+  ```
+
 ## SessionBackup
 
-Provides a backup process object to support the application backup process. Before using the APIs of this class, you need to create a **SessionBackup** instance.
+A backup process object used to support the full backup process of applications. Before use, a SessionBackup instance must be created first. SessionBackup is suitable for scenarios where all application data needs to be backed up. IncrementalBackupSession is suitable for scenarios where only changed data is processed based on the last incremental backup time and the manifest file.
 
 ### constructor
 
 constructor(callbacks: GeneralCallbacks)
 
-A constructor used to create a **SessionBackup** instance.
+Constructor of the backup process, used to obtain an instance of the SessionBackup class. The typical process is as follows: create a SessionBackup instance, call appendBundles to add the applications to be backed up, wait for the callback to return the backup result, and call release to release resources after the process ends.
 
 **System API**: This is a system API.
 
@@ -954,9 +831,9 @@ A constructor used to create a **SessionBackup** instance.
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                |
-| -------- | ------------------------------------- | ---- | -------------------- |
-| callbacks | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the backup process.|
+| Parameter      | Type                                  | Mandatory | Description                          |
+| --------- | ------------------------------------- | --------- | ------------------------------------ |
+| callbacks | [GeneralCallbacks](#generalcallbacks) | Yes       | Callbacks required by the backup process. |
 
 **Example**
 
@@ -973,14 +850,14 @@ A constructor used to create a **SessionBackup** instance.
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.data}`);
+        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -1004,14 +881,14 @@ A constructor used to create a **SessionBackup** instance.
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let sessionBackup = new backup.SessionBackup(generalCallbacks); // Create a backup process.
+  let sessionBackup = new backup.SessionBackup(generalCallbacks); // Create the backup process.
   ```
 
 ### getLocalCapabilities<sup>18+</sup>
 
 getLocalCapabilities(): Promise&lt;FileData&gt;
 
-Obtains a JSON file that describes local capabilities in the backup service. This API uses a promise to return the result.
+Obtains a JSON file that describes local capabilities during a backup operation. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -1021,15 +898,15 @@ Obtains a JSON file that describes local capabilities in the backup service. Thi
 
 **Return value**
 
-| Type                                | Description                           |
+| Type                                 | Description                            |
 | ------------------------------------ | ------------------------------- |
-| Promise&lt;[FileData](#filedata)&gt; | Promise **FileData** object obtained.|
+| Promise&lt;[FileData](#filedata)&gt; | Promise object that returns a FileData object, which contains the file descriptor for reading the content of the local capability file. The file descriptor must be closed after use. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -1044,13 +921,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileIo, backup } from '@kit.CoreFileKit';
 
-  interface test { // Parse the capability file.
-    bundleInfos: [];
+  interface LocalCapabilities { // Parse the capability file.
+    bundleInfos: BundleInfo[];
     deviceType: string;
     systemFullName: string;
   }
 
-  interface BundleInfo { // Obtain the local capability information of an application.
+  interface BundleInfo { // Obtain the local capability information of a single application.
     name: string;
     appIndex: number;
     versionCode: number;
@@ -1062,10 +939,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     extensionName: string;
     restoreDeps: string;
     supportScene: string;
-    extraInfo: object;
+    extraInfo: Record<string, Object>;
   }
 
-  let generalCallbacks: backup.GeneralCallbacks = { // Define general callbacks to be used in the backup or restore process.
+  let generalCallbacks: backup.GeneralCallbacks = { // Define the general callbacks during backup/restore.
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
@@ -1074,14 +951,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -1106,9 +983,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
   };
   async function getLocalCapabilitiesTest() {
-    let sessionBackup = new backup.SessionBackup(generalCallbacks); // Create a backup process.
+    let sessionBackup = new backup.SessionBackup(generalCallbacks); // Create a backup session.
     let basePath = '/data/storage/el2/base/backup'; 
-    let path = basePath + '/localCapabilities.json'; // Local path for storing capability files.
+    let path = basePath + '/localCapabilities.json'; // Path for saving the capability file locally.
     try {
       let fileData = await sessionBackup.getLocalCapabilities(); // Obtain the local capability file.
       if (fileData) {
@@ -1118,7 +995,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
           fileIo.mkdirSync(basePath);
           console.info('create success' + basePath);
         }
-        fileIo.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
+        fileIo.copyFileSync(fileData.fd, path); // Save the obtained local capability file locally.
         fileIo.closeSync(fileData.fd);
       }
     } catch (error) {
@@ -1127,7 +1004,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
     let data = fileIo.readTextSync(path, 'utf8'); // Obtain information from the local capability file.
     try {
-      const jsonsObj: test | null = JSON.parse(data); // Parse the local capability file and print some information.
+      const jsonsObj: LocalCapabilities | null = JSON.parse(data); // Parse the local capability file and print part of the information.
       if (jsonsObj) {
         const infos:BundleInfo [] = jsonsObj.bundleInfos;
         for (let i = 0; i < infos.length; i++) {
@@ -1141,12 +1018,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('deviceType: ' + deviceType);
       }
     } catch (error) {
-      console.error(`parse failed. message: ${error.message}`);
+      let err: BusinessError = error as BusinessError;
+      console.error(`parse failed. Code: ${err.code}, message: ${err.message}`);
     }
   }
   ```
 
-The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fileiostat-1) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
+**The capability file can be obtained through related APIs such as [fileIo.stat](js-apis-file-fs.md#fileiostat) provided by [@ohos.file.fs](js-apis-file-fs.md). Example of the capability file content:**
 
  ```json
  {
@@ -1169,7 +1047,7 @@ The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fi
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-Obtains the amount of data to be backed up. This method is called before **appendBundles**. **getBackupDataSize** is used together with **onBackupSizeReport**. This API uses a promise to return the result.
+Obtains the amount of data to be backed up for an application. It is called before appendBundles. It is used together with onBackupSizeReport, and the scan result is returned through the onBackupSizeReport callback. A Promise is used to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -1179,22 +1057,22 @@ Obtains the amount of data to be backed up. This method is called before **appen
 
 **Parameters**
 
-| Name       | Type                                                    | Mandatory| Description                                                        |
-| ------------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isPreciseScan | boolean                                                  | Yes  | Whether to perform accurate scanning. The value **true** means to perform accurate scanning; the value **false** means to perform inaccurate scanning. Inaccurate scanning is fast and is used to estimate the data size. Accurate scanning is slow and returns more accurate result. However, the data to be backed up may change. Therefore, the precise scanning result may not match the actual backup data size.|
-| dataList      | Array<[IncrementalBackupTime](#incrementalbackuptime12)> | Yes  | Backup application list, which describes the application whose data size is to be obtained and the last backup time. For a full backup, set this parameter to **0**.|
+| Parameter          | Type                                                     | Mandatory | Description                                                         |
+| ------------- | -------------------------------------------------------- | --------- | ------------------------------------------------------------ |
+| isPreciseScan | boolean                                                  | Yes       | Whether to perform a precise scan. The value true indicates a precise scan, and false indicates a non-precise scan. A non-precise scan is fast and returns an estimated data amount. A precise scan is slow but returns a more accurate result. However, because the data to be backed up may change during the actual backup process, the precise scan result is not guaranteed to exactly match the actual backup data amount. |
+| dataList      | Array<[IncrementalBackupTime](#incrementalbackuptime12)> | Yes       | List of applications to be backed up, used to describe the applications whose data amount is to be obtained and the time of the last backup (enter 0 for a full backup). |
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -1210,18 +1088,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileIo, backup } from '@kit.CoreFileKit';
 
-  interface scannedInfos { // Parse the scanning result.
+  interface ScannedInfos { // Parse the scan result.
     scanned: [];
     scanning: string;
   }
 
-  interface ScannedInfo { // Parse the scanning result of an application.
+  interface ScannedInfo { // Parse the scan result of a single application.
     bundleName: string;
     dataSize: number;
     incDataSize: number;
   }
 
-  let generalCallbacks: backup.GeneralCallbacks = { // Define general callbacks to be used in the backup or restore process.
+  let generalCallbacks: backup.GeneralCallbacks = { // Define the general callbacks used during backup/restore.
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
@@ -1230,14 +1108,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -1260,9 +1138,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
-    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application whose data size is being retrieved. onBackupSizeReport in generalCallbacks returns the scan result every 5 seconds, or immediately if the data retrieval process is completed within 5 seconds, until all application data in dataList is returned.
+    // The callback is used together with getBackupDataSize to return the obtained data size of an application and the bundle name of the application whose data size is being obtained.
+    // onBackupSizeReport in generalCallbacks returns the scan result every 5 seconds (or immediately if the scan completes within 5 seconds), until the data sizes of all applications in dataList are returned.
+    onBackupSizeReport: (OnBackupSizeReport) => {
       console.info('dataSizeCallback success');
-      const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
+      const jsonObj: ScannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse the returned information and print it.
       if (jsonObj) {
         const infos: ScannedInfo [] = jsonObj.scanned;
         for (let i = 0; i < infos.length; i++) {
@@ -1278,26 +1158,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   let sessionBackup = new backup.SessionBackup(generalCallbacks); // Create a backup process.
   let backupApps: backup.IncrementalBackupTime[] = [{
-    bundleName: "com.example.hiworld",
-    lastIncrementalTime: 0 // The caller performs incremental backup based on the last recorded time. The value is 0 for full backup.
+    bundleName: 'com.example.hiworld',
+    lastIncrementalTime: 0 // The caller sets this based on the last recorded incremental backup time. It is 0 for a full backup.
   }];
   try {
-    sessionBackup.getBackupDataSize(false, backupApps); // Obtain the data to be backed up of a specified application in backupApps. The value false indicates that inaccurate scanning is used.
+    sessionBackup.getBackupDataSize(false, backupApps); // Obtain the size of the data to be backed up for the applications specified in backupApps. false indicates a non-precise scan.
   } catch (error) {
     let err: BusinessError = error as BusinessError;
     console.error(`getBackupDataSize failed. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
-**Example of a JSON string returned asynchronously:**
+**Example of the asynchronously returned JSON string:**
 
 ```json5
 {
- "scanned": [ // Scanned application. The result will not be returned in the next callback.
+ "scanned": [ // Applications scanned in this round. Applications whose results have been returned will not be returned again in the next callback.
      {
-         "name": "com.example.hiworld", // Application name.
-         "dataSize": 1006060, // Data size.
-         "incDataSize":-1 // Incremental data size. The value is -1 for full scan and inaccurate scan, and is the actual incremental data size for incremental accurate scan.
+         "name": "com.example.hiworld", // Application name
+         "dataSize": 1006060, // Data size
+         "incDataSize":-1 // Incremental data size. It is -1 for a full backup or a non-precise scan, and the actual incremental data size for a precise incremental scan.
      },
      {
          "name": "com.example.myAPP",
@@ -1305,7 +1185,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
          "incDataSize": -1
      }
  ],
- "scanning": "com.example.smartAPP" // Application that is being scanned. This field is empty when the last result is returned.
+ "scanning": "com.example.smartAPP" // Application being scanned. This field is empty when the last result is returned.
 }
 ```
 
@@ -1313,7 +1193,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 appendBundles(bundlesToBackup: string[], callback: AsyncCallback&lt;void&gt;): void
 
-Appends the applications whose data needs to be backed up. Currently, the obtained **SessionBackup** instance can be called only once in the entire backup process. This API uses an asynchronous callback to return the result.
+Adds applications to be backed up. In the entire current process, this method can be called only once after the SessionBackup instance is obtained. After the backup process ends, call release to release resources. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1323,24 +1203,24 @@ Appends the applications whose data needs to be backed up. Currently, the obtain
 
 **Parameters**
 
-| Name         | Type                     | Mandatory| Description                        |
-| --------------- | ------------------------- | ---- | ---------------------------- |
-| bundlesToBackup | string[]                  | Yes  | Array of the application names to append.  |
-| callback        | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| Parameter            | Type                      | Mandatory | Description                                                        |
+| --------------- | ------------------------- | --------- | ------------------------------------------------------------------ |
+| bundlesToBackup | string[]                  | Yes       | Array of application names to be backed up.                        |
+| callback        | AsyncCallback&lt;void&gt; | Yes       | Callback invoked after the applications to be backed up are added asynchronously. |
 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
-| 13600001 | IPC error               |
-| 13900001 | Operation not permitted |
-| 13900005 | I/O error               |
-| 13900011 | Out of memory           |
-| 13900020 | Invalid argument        |
-| 13900025 | No space left on device |
-| 13900042 | Unknown error           |
+| 13600001 | IPC error.               |
+| 13900001 | Operation not permitted. |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900020 | Invalid argument. |
+| 13900025 | No space left on device. |
+| 13900042 | Unknown error.           |
 
 **Example**
 
@@ -1357,14 +1237,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -1410,9 +1290,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 appendBundles(bundlesToBackup: string[], infos?: string[]): Promise&lt;void&gt;
 
-Appends the applications whose data needs to be backed up. Currently, the obtained **SessionBackup** instance can be called only once in the entire backup process. This API uses a promise to return the result.
+Adds the applications to be backed up. In the entire current process, this method can be called only once after an instance of the SessionBackup class is obtained. After the backup process is complete, call release to release resources. This API uses a promise to return the result asynchronously.
 
-From API version 12, the optional parameter **infos** is added to carry information about each application to be backed up. The mappings between **infos** and **bundlesToBackup** are identified by index.
+Since API version 12, the optional parameter infos is added, which can carry the extended information required by each application during backup. infos and bundlesToBackup correspond one-to-one by index.
 
 **System API**: This is a system API.
 
@@ -1422,30 +1302,30 @@ From API version 12, the optional parameter **infos** is added to carry informat
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter            | Type     | Mandatory | Description                       |
 | --------------- | -------- | ---- | -------------------------- |
-| bundlesToBackup | string[] | Yes  | Array of the application names to append.|
-| infos           | string[] | No  | Array of the information about each application to be backed up. The mappings between **infos** and **bundlesToBackup** are identified by index. It is left blank by default. This parameter is supported since API version 12.|
+| bundlesToBackup | string[] | Yes  | Array of application names to be backed up. |
+| infos           | string[] | No   | Array of extended information required by each application during backup, corresponding one-to-one with bundlesToBackup by index. The default value is empty. Supported since API version 12.|
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
-| 13600001 | IPC error               |
-| 13900001 | Operation not permitted |
-| 13900005 | I/O error               |
-| 13900011 | Out of memory           |
-| 13900020 | Invalid argument        |
-| 13900025 | No space left on device |
-| 13900042 | Unknown error           |
+| 13600001 | IPC error.               |
+| 13900001 | Operation not permitted. |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900020 | Invalid argument.        |
+| 13900025 | No space left on device. |
+| 13900042 | Unknown error.           |
 
 **Example**
 
@@ -1462,14 +1342,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -1502,7 +1382,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       ];
       await sessionBackup.appendBundles(backupApps);
       console.info('appendBundles success');
-      // Application information is carried. In the following, infos, details, and type are fixed parameters.
+      // Carry extended parameters, where infos, details, and the outer type node are fixed nodes.
       let infos: Array<string> = [
         `
         {
@@ -1556,7 +1436,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 release(): Promise&lt;void&gt;
 
-Releases the backup session when the backup process is complete. This API disconnects the application from the backup and restore service and exits the service. This API uses a promise to return the result.
+After the backup process ends, the application disconnects from the service, causing the backup and restore service to exit. A Promise is used to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -1566,15 +1446,15 @@ Releases the backup session when the backup process is complete. This API discon
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -1599,14 +1479,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -1631,15 +1511,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
   };
   let sessionBackup = new backup.SessionBackup(generalCallbacks); // Create a backup process.
-  sessionBackup.release(); // Release the backup session when the backup process is complete.
-  console.info('release success');
+  async function release() {
+    try {
+      await sessionBackup.release(); // Release the session after the backup service is complete.
+      console.info('release success');
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`release failed. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
   ```
 
 ### cancel<sup>18+</sup>
 
 cancel(bundleName: string): number
 
-Cancels the backup of an application when data exceptions occur.
+During a backup task, when the tool application detects data exceptions and needs to cancel the backup of an application, this API is called to terminate the backup task of that application. This API is called after the backup task of the corresponding application starts and before the task ends.
 
 **System API**: This is a system API.
 
@@ -1649,21 +1536,21 @@ Cancels the backup of an application when data exceptions occur.
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter | Type | Mandatory | Description |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName | string | Yes  | Application name.|
+| bundleName | string | Yes | Application name for which the backup is to be canceled. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type | Description |
 | ------------------- | ----------------------- |
-| number | Cancelled.<br>**0**: The task is successfully cancelled.<br> **13500011**: The task to be cancelled is not started.<br> **13500012**: The task to be cancelled does not exist.|
+| number | Returns the cancellation status.<br/>0: The cancellation task is delivered successfully.<br/> 13500011: The task to be canceled has not started.<br/> 13500012: The task to be canceled does not exist.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -1678,8 +1565,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
-        // If the FD fails to be passed, call the cancel API to cancel the backup task of the application.
-        let result = sessionBackup.cancel(err.name);
+        // If the file fd fails to be transferred, call the cancel API to cancel the backup task of this application.
+        let result = sessionBackup.cancel(file.bundleName);
         console.info('cancel result:' + result);
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -1687,14 +1574,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -1719,15 +1606,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
   };
   let sessionBackup = new backup.SessionBackup(generalCallbacks); // Create a backup process.
-  let backupBundles: Array<string> = ["com.example.helloWorld"];
-  sessionBackup.appendBundles(backupBundles);
+  async function cancelTest() {
+    let backupBundles: Array<string> = ['com.example.helloWorld'];
+    try {
+      await sessionBackup.appendBundles(backupBundles);
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
   ```
 
 ### cleanBundleTempDir<sup>20+</sup>
 
 cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
 
-Cleans up temporary application directories (backup and restore directories under the **./backup** directory) after the backup task is complete. This API uses a promise to return the result.
+After a backup task ends, this API is provided for tools to clean up the temporary directory data of the current application (the backup and restore directories under the ./backup directory). A Promise is used to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -1737,21 +1631,21 @@ Cleans up temporary application directories (backup and restore directories unde
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter          | Type     | Mandatory | Description                       |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName | string | Yes  | Bundle name of the application whose temporary directories need to be cleaned up.|
+| bundleName | string | Yes   | Application name whose temporary directory data needs to be cleaned up. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| Promise&lt;boolean&gt; | Promise that returns results. The value **true** means the data is cleaned up; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise object. Returning true indicates successful cleanup, and returning false indicates failed cleanup. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -1768,7 +1662,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       if (res) {
         console.info(`cleanBundleTempDir succeeded.`);
       } else {
-        console.info(`cleanBundleTempDir fail.`);
+        console.error(`cleanBundleTempDir failed.`);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
@@ -1776,8 +1670,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
   }
 
-  let generalCallbacks: backup.GeneralCallbacks = { // Define general callbacks to be used in the backup or restore process.
-    // Callback when the file is sent successfully.
+  let generalCallbacks: backup.GeneralCallbacks = { // Define the general callbacks during backup/restore.
+    // Callback invoked when a file is sent successfully.
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
@@ -1786,16 +1680,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info(`onFileReady succeeded.`);
       fileIo.closeSync(file.fd);
     },
-    // Callback when the application backup or restore starts.
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    // Callback invoked when application backup/restore starts.
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info(`onBundleBegin succeeded.`);
     },
-    // Callback when the application backup or restore is complete. cleanBundleTempDir is called for cleanup.
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    // Callback invoked when application backup/restore ends. Call cleanBundleTempDir here to perform cleanup.
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -1826,7 +1720,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
 
-Obtains the application's custom capabilities during backup. This API uses a promise to return the result.
+Obtains the application-defined capability description information in the backup service. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -1836,22 +1730,22 @@ Obtains the application's custom capabilities during backup. This API uses a pro
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter | Type | Mandatory | Description |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName | string | Yes  | Bundle name of the application to be queried.|
-| extInfo | string | Yes  | Extra information passed to the application. The implementation is determined by the application.|
+| bundleName | string | Yes | Application name whose capability information is to be queried. |
+| extInfo | string | Yes | Extended information to be passed to the application. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type | Description |
 | ------------------- | ----------------------- |
-| Promise&lt;string&gt; | Promise that returns the application's custom capabilities.|
+| Promise&lt;string&gt; | Promise object that returns the application-defined capability description information. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -1862,7 +1756,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { fileIo, backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let generalCallbacks: backup.GeneralCallbacks = { // Define general callbacks to be used in the backup or restore process.
+  let generalCallbacks: backup.GeneralCallbacks = { // Define the general callbacks during the backup/restore process.
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
@@ -1871,14 +1765,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info(`onFileReady succeeded.`);
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info(`onBundleBegin succeeded.`);
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -1906,7 +1800,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   async function getBackupCompatibilityInfo() {
     let sessionBackup = new backup.SessionBackup(generalCallbacks); // Create a backup process.
     let bundleName = "com.example.helloWorld";
-    let extInfo = ""; // An empty string means no extra information needs to be passed to the application.
+    let extInfo = ""; // An empty string indicates that no additional information needs to be passed to the application.
     try {
       let retInfo = await sessionBackup.getCompatibilityInfo(bundleName, extInfo);
       if (retInfo) {
@@ -1923,13 +1817,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## SessionRestore
 
-Provides an object to support the application restore process. Before using the APIs of this class, you need to create a **SessionRestore** instance.
+Restore process object, used to support the application restore process. Before use, a SessionRestore instance must be created first.
 
 ### constructor
 
 constructor(callbacks: GeneralCallbacks)
 
-A constructor used to create a **SessionRestore** instance.
+Constructor of the restore process, used to obtain an instance of the SessionRestore class.
+
+The typical process is as follows: create a SessionRestore instance, call appendBundles to add the applications to be restored, obtain the file handle through getFileHandle and write the restore data, call publishFile to publish the file when necessary, and call release to release resources after the process ends.
 
 **System API**: This is a system API.
 
@@ -1939,9 +1835,9 @@ A constructor used to create a **SessionRestore** instance.
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                |
-| -------- | ------------------------------------- | ---- | -------------------- |
-| callbacks | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the data restore process.|
+| Parameter      | Type                                  | Mandatory | Description                          |
+| --------- | ------------------------------------- | --------- | ------------------------------------ |
+| callbacks | [GeneralCallbacks](#generalcallbacks) | Yes       | Callbacks required by the restore process. |
 
 **Example**
 
@@ -1958,14 +1854,14 @@ A constructor used to create a **SessionRestore** instance.
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -1989,14 +1885,14 @@ A constructor used to create a **SessionRestore** instance.
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
+  let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create the restore process.
   ```
 
 ### getLocalCapabilities<sup>18+</sup>
 
 getLocalCapabilities(): Promise&lt;FileData&gt;
 
-Obtains a JSON file that describes local capabilities in the restore service. This API uses a promise to return the result.
+Obtains a JSON file that describes local capabilities during a restore operation. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -2006,15 +1902,15 @@ Obtains a JSON file that describes local capabilities in the restore service. Th
 
 **Return value**
 
-| Type                                | Description                           |
+| Type                                 | Description                            |
 | ------------------------------------ | ------------------------------- |
-| Promise&lt;[FileData](#filedata)&gt; | Promise **FileData** object obtained.|
+| Promise&lt;[FileData](#filedata)&gt; | Promise object that returns a FileData object, which contains the file descriptor for reading the content of the local capability file. The file descriptor must be closed after use. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -2029,13 +1925,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileIo, backup } from '@kit.CoreFileKit';
 
-  interface test { // Parse the capability file.
-    bundleInfos: [];
+  interface LocalCapabilities { // Used to parse the capability file.
+    bundleInfos: BundleInfo[];
     deviceType: string;
     systemFullName: string;
   }
 
-  interface BundleInfo { // Obtain the local capability information of an application.
+  interface BundleInfo { // Used to obtain the local capability information of a single application.
     name: string;
     appIndex: number;
     versionCode: number;
@@ -2047,10 +1943,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     extensionName: string;
     restoreDeps: string;
     supportScene: string;
-    extraInfo: object;
+    extraInfo: Record<string, Object>;
   }
 
-  let generalCallbacks: backup.GeneralCallbacks = { // Define general callbacks to be used in the backup or restore process.
+  let generalCallbacks: backup.GeneralCallbacks = { // Defines the general callbacks during backup/restore.
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
@@ -2059,14 +1955,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -2091,11 +1987,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
   };
   async function getLocalCapabilitiesTest() {
-    let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
+    let sessionRestore = new backup.SessionRestore(generalCallbacks); // Creates a restore process.
     let basePath = '/data/storage/el2/base/backup';
-    let path = basePath + '/localCapabilities.json'; // Local path for storing capability files.
+    let path = basePath + '/localCapabilities.json'; // Path for saving the capability file locally.
     try {
-      let fileData = await sessionRestore.getLocalCapabilities(); // Obtain the local capability file.
+      let fileData = await sessionRestore.getLocalCapabilities(); // Obtains the local capability file.
       if (fileData) {
         console.info('getLocalCapabilities success');
         console.info('fileData info:' + fileData.fd);
@@ -2103,7 +1999,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
           fileIo.mkdirSync(basePath);
           console.info('create success' + basePath);
         }
-        fileIo.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
+        fileIo.copyFileSync(fileData.fd, path); // Saves the obtained local capability file locally.
         fileIo.closeSync(fileData.fd);
       }
     } catch (error) {
@@ -2112,7 +2008,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
     let data = fileIo.readTextSync(path, 'utf8'); // Obtain information from the local capability file.
     try {
-      const jsonsObj: test | null = JSON.parse(data); // Parse the local capability file and print some information.
+      const jsonsObj: LocalCapabilities | null = JSON.parse(data); // Parse the local capability file and print part of the information.
       if (jsonsObj) {
         const infos:BundleInfo [] = jsonsObj.bundleInfos;
         for (let i = 0; i < infos.length; i++) {
@@ -2126,12 +2022,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('deviceType: ' + deviceType);
       }
     } catch (error) {
-      console.error(`parse failed with code: ${error.code}, message: ${error.message}`);
+      let err: BusinessError = error as BusinessError;
+      console.error(`parse failed with code: ${err.code}, message: ${err.message}`);
     }
   }
   ```
 
-The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fileiostat-1) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
+**The capability file can be obtained through related APIs such as [fileIo.stat](js-apis-file-fs.md#fileiostat) provided by [@ohos.file.fs](js-apis-file-fs.md). Example of the capability file content:**
 
  ```json
  {
@@ -2154,12 +2051,12 @@ The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fi
 
 appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], callback: AsyncCallback&lt;void&gt;): void
 
-Appends the applications whose data needs to be restored. Currently, the obtained **SessionRestore** instance can be called only once in the entire restore process. This API uses an asynchronous callback to return the result.
+Adds the applications to be restored. In the entire current process, this method can be called only once after the SessionRestore instance is obtained. After the restore process is complete, call release to release resources. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> - During the data restore, the capability file needs to be verified.
-> - Therefore, **remoteCapabilitiesFd** can be obtained by using the [getLocalCapabilities](#backupgetlocalcapabilities) API provided by the backup service. You can modify the parameters based on the actual situation of your application. You can also use the JSON file example provided by **getLocalCapabilities** to generate a capability file.
+> - During restoration, the service requires the capability file for related verification.
+> - Therefore, remoteCapabilitiesFd can be obtained through the [getLocalCapabilities](#backupgetlocalcapabilities) API provided by the backup-side service, and its content can be modified based on the actual status of the applications to be restored. You can also generate the capability file by yourself based on the JSON example provided by getLocalCapabilities.
 
 **System API**: This is a system API.
 
@@ -2169,17 +2066,17 @@ Appends the applications whose data needs to be restored. Currently, the obtaine
 
 **Parameters**
 
-| Name              | Type                     | Mandatory| Description                              |
-| -------------------- | ------------------------- | ---- | ---------------------------------- |
-| remoteCapabilitiesFd | number                    | Yes  | FD of the file containing the capabilities to be restored.|
-| bundlesToBackup      | string[]                  | Yes  | Array of the application names to append.        |
-| callback             | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| Parameter                 | Type                      | Mandatory | Description                                                        |
+| -------------------- | ------------------------- | --------- | ------------------------------------------------------------------ |
+| remoteCapabilitiesFd | number                    | Yes       | File descriptor of the capability file required for restoration.  |
+| bundlesToBackup      | string[]                  | Yes       | Array of application names to be restored.             |
+| callback             | AsyncCallback&lt;void&gt; | Yes       | Callback invoked after the applications to be restored are added asynchronously. |
 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 13600001 | IPC error.               |
 | 13900001 | Operation not permitted. |
@@ -2204,14 +2101,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -2266,15 +2163,15 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], infos?: string[]): Promise&lt;void&gt;
 
-Appends the applications whose data needs to be restored. From API version 12, the optional parameter **infos** is added to carry information about each application to be restored. The mappings between **infos** and **bundlesToBackup** are identified by index.
+Adds the applications to be restored. Starting from API version 12, the optional parameter infos is added, which can carry the information required for application restoration. infos and bundlesToBackup correspond one-to-one by index.
 
-Currently, the obtained **SessionRestore** instance can be called only once in the entire restore process. This API uses a promise to return the result.
+In the entire current process, this method can be called only once after an instance of the SessionRestore class is obtained. After the restore process ends, call release to release resources. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
-> - During the data restore, the capability file needs to be verified.
-> - You can use [getLocalCapabilities](#backupgetlocalcapabilities) to obtain **remoteCapabilitiesFd**,
-    and modify the parameters based on the application to be restored. You can also use the JSON file example provided by **getLocalCapabilities** to generate a capability file.
+> - The service requires its capability file for related verification during restoration.
+> - Therefore, remoteCapabilitiesFd can be obtained through the [getLocalCapabilities](#backupgetlocalcapabilities) API provided by the backup-side service,
+    and its content can be modified based on the actual status of the application to be restored. You can also generate a capability file by yourself based on the JSON example provided by getLocalCapabilities.
 
 **System API**: This is a system API.
 
@@ -2284,23 +2181,23 @@ Currently, the obtained **SessionRestore** instance can be called only once in t
 
 **Parameters**
 
-| Name              | Type    | Mandatory| Description                              |
-| -------------------- | -------- | ---- | ---------------------------------- |
-| remoteCapabilitiesFd | number   | Yes  | FD of the file containing the capabilities to be restored.|
-| bundlesToBackup      | string[] | Yes  | Array of the application names to append.      |
-| infos<sup>12+</sup>  | string[] | No  | Array of the information about each application to be restored. The mappings between **infos** and **bundlesToBackup** are identified by index. It is left blank by default. This parameter is supported since API version 12.|
+| Parameter                 | Type     | Mandatory | Description                                                        |
+| -------------------- | -------- | --------- | ------------------------------------------------------------------ |
+| remoteCapabilitiesFd | number   | Yes       | File descriptor of the capability file required for restoration.   |
+| bundlesToBackup      | string[] | Yes       | Array of package names of the applications to be restored.     |
+| infos<sup>12+</sup>  | string[] | No        | Array of extended information required by each application during restoration, corresponding one-to-one with bundlesToBackup by index. The default value is empty. Supported since API version 12. |
 
 **Return value**
 
-| Type               | Description                   |
-| ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                          |
+| ------------------- | ------------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 13600001 | IPC error.               |
 | 13900001 | Operation not permitted. |
@@ -2325,14 +2222,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -2369,7 +2266,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       ];
       await sessionRestore.appendBundles(fileData.fd, restoreApps);
       console.info('appendBundles success');
-      // Information of the applications to restore.
+      // Call with extended parameters.
       let infos: Array<string> = [
         `
          {
@@ -2379,8 +2276,8 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
                 {
                   "detail": [
                     {
-                      "source": "com.example.hiworld", // Old bundle name of the application.
-                      "target": "com.example.helloworld" // New bundle name of the application.
+                      "source": "com.example.hiworld", // Old system bundle name of the application.
+                      "target": "com.example.helloworld" // New system bundle name of the application.
                     }
                   ],
                   "type": "app_mapping_relation"
@@ -2407,15 +2304,15 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getFileHandle(fileMeta: FileMeta, callback: AsyncCallback&lt;void&gt;): void
 
-Obtains the handle to the shared file from the service. This API uses an asynchronous callback to return the result.
+Requests to obtain a shared file from the service. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
-> - Before using **getFileHandle**, you need to obtain a **SessionRestore** instance and add the applications with data to be restored by using **appendBundles**.
-> - You can use **onFileReady** to obtain the file handle. When file operations are completed at the client, you need to use **publishFile** to publish the file.
-> - **getFileHandle** can be called multiple times based on the number of files to be restored.
-> - File to be restored cannot be a relative path (../) or soft link.
+> - This API is part of the zero-copy feature (which reduces unnecessary memory copies and enables more efficient transfer). The server shares the file to be restored through a file descriptor. After the client obtains the file handle through onFileReady, it can use APIs such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) to copy data directly between file descriptors, avoiding reading data into application memory before writing it out.
+> - Before using getFileHandle, obtain an instance of the SessionRestore class and successfully add the applications to be restored through appendBundles.
+> - The developer can obtain the file handle through the onFileReady callback. When the client finishes file operations, it needs to use publishFile to publish the file.
+> - getFileHandle can be called multiple times based on the number of files to be restored.
+> - The files to be restored do not support relative paths (../) or soft links.
 
 **System API**: This is a system API.
 
@@ -2425,16 +2322,16 @@ Obtains the handle to the shared file from the service. This API uses an asynchr
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                            |
-| -------- | ------------------------- | ---- | -------------------------------- |
-| fileMeta | [FileMeta](#filemeta)     | Yes  | Metadata of the file to restore.              |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| Parameter     | Type                      | Mandatory | Description                              |
+| -------- | ------------------------- | --------- | ---------------------------------------- |
+| fileMeta | [FileMeta](#filemeta)     | Yes       | Metadata of the file to be restored.     |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback invoked after the file handle is asynchronously requested. |
 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 13600001 | IPC error.               |
 | 13900001 | Operation not permitted. |
@@ -2456,14 +2353,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -2489,7 +2386,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   };
   let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
   let fileMeta: backup.FileMeta = {
-    bundleName: "com.example.hiworld",
+    bundleName: 'com.example.hiworld',
     uri: "test.txt"
   }
   sessionRestore.getFileHandle(fileMeta, (err: BusinessError) => {
@@ -2504,15 +2401,15 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getFileHandle(fileMeta: FileMeta): Promise&lt;void&gt;
 
-Obtains the handle to the shared file from the service. This API uses a promise to return the result.
+Requests to obtain a shared file from the service. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
-> - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
-> - Before using **getFileHandle**, you need to obtain a **SessionRestore** instance and add the applications with data to be restored by using **appendBundles**.
-> - You can use **onFileReady** to obtain the file handle. When file operations are completed at the client, you need to use **publishFile** to publish the file.
-> - **getFileHandle** can be called multiple times based on the number of files to be restored.
-> - File to be restored cannot be a relative path (../) or soft link.
+> - This API is part of the zero-copy feature (which reduces unnecessary memory copies and achieves more efficient transfer). The server shares the file to be restored through a file descriptor. After the client obtains the file handle through onFileReady, it can use APIs such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) to copy data directly between file descriptors, avoiding reading data into application memory before writing it out.
+> - Before using getFileHandle, obtain an instance of the SessionRestore class and successfully add the applications to be restored through appendBundles.
+> - The developer can obtain the file handle through the onFileReady callback. When the client completes the file operation, it needs to use publishFile to publish the file.
+> - getFileHandle can be called multiple times based on the number of files to be restored.
+> - The files to be restored do not support relative paths (../) or soft links.
 
 **System API**: This is a system API.
 
@@ -2522,21 +2419,21 @@ Obtains the handle to the shared file from the service. This API uses a promise 
 
 **Parameters**
 
-| Name  | Type                 | Mandatory| Description              |
-| -------- | --------------------- | ---- | ------------------ |
-| fileMeta | [FileMeta](#filemeta) | Yes  | Metadata of the file to restore.|
+| Parameter     | Type                  | Mandatory | Description                    |
+| -------- | --------------------- | --------- | ------------------------------ |
+| fileMeta | [FileMeta](#filemeta) | Yes       | Metadata of the file to be restored. |
 
 **Return value**
 
-| Type               | Description                   |
-| ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 13600001 | IPC error.              |
 | 13900001 | Operation not permitted. |
@@ -2558,14 +2455,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -2593,7 +2490,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   async function getFileHandle() {
     try {
       let fileMeta: backup.FileMeta = {
-        bundleName: "com.example.hiworld",
+        bundleName: 'com.example.hiworld',
         uri: "test.txt"
       }
       await sessionRestore.getFileHandle(fileMeta);
@@ -2609,13 +2506,13 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 publishFile(fileMeta: FileMeta, callback: AsyncCallback&lt;void&gt;): void
 
-Publishes **FileMeta** to the backup service to indicate that the file content is ready. This API uses an asynchronous callback to return the result.
+Publishes FileMeta to the backup service so that the service knows the file content is ready. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
-> - After the server returns a file handle through **onFileReady**, the client can copy data to the file corresponding to the file handle provided by the server through zero-copy operations.
-> - This API can be called only after the caller has written all the data to be restored. The caller must ensure the consistency and integrity of the data to be written.
+> - This API is part of the zero-copy feature (which reduces unnecessary memory copies and achieves more efficient transfer). For zero-copy methods, refer to the zero-copy APIs such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
+> - After the server returns a file handle through onFileReady, the client can use zero-copy operations to copy the corresponding file content to the file handle provided by the server.
+> - This API can be called only after the caller completes the write operations of all data to be restored, and the caller must ensure the consistency and integrity of the data to be restored.
 
 **System API**: This is a system API.
 
@@ -2625,16 +2522,16 @@ Publishes **FileMeta** to the backup service to indicate that the file content i
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                        |
-| -------- | ------------------------- | ---- | ---------------------------- |
-| fileMeta | [FileMeta](#filemeta)     | Yes  | Metadata of the file to restore.            |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| Parameter     | Type                      | Mandatory | Description                                      |
+| -------- | ------------------------- | --------- | ------------------------------------------------ |
+| fileMeta | [FileMeta](#filemeta)     | Yes       | Metadata of the file to restore.             |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback invoked after the file is published asynchronously. |
 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 13600001 | IPC error.               |
 | 13900001 | Operation not permitted. |
@@ -2649,11 +2546,11 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   let g_session: backup.SessionRestore;
   let initMap = new Map<string, number>();
-  let testFileNum = 123; // Number of files required for the restore.
-  let testBundleName = 'com.example.myapplication'; // Test bundle name.
+  let testFileNum = 123; // 123: example of the number of files required for restoration
+  let testBundleName = 'com.example.myapplication'; // Test bundle name
   initMap.set(testBundleName, testFileNum);
   let countMap = new Map<string, number>();
-  countMap.set(testBundleName, 0); // Initialize the number of files written.
+  countMap.set(testBundleName, 0); // Initialize the number of files actually written
   function createSessionRestore() {
     let generalCallbacks: backup.GeneralCallbacks = {
       onFileReady: (err: BusinessError, file: backup.File) => {
@@ -2664,9 +2561,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         console.info('onFileReady success');
         fileIo.closeSync(file.fd);
         let cnt = countMap.get(file.bundleName) || 0;
-        countMap.set(file.bundleName, cnt + 1); // Update the number of written files.
-        // Called only when the number of files to be restored is the same as the number of files actually written. This ensures data consistency and integrity.
-        if (countMap.get(file.bundleName) == initMap.get(file.bundleName)) { // Trigger publishFile after all files are received.
+        countMap.set(file.bundleName, cnt + 1); // Update the number of files actually written
+        // Call this API when the number of files required for restoration equals the number of files actually written, to ensure data consistency and integrity
+        if (countMap.get(file.bundleName) == initMap.get(file.bundleName)) { // Trigger publishFile after all files of each bundle are received.
           let fileMeta: backup.FileMeta = {
             bundleName: file.bundleName,
             uri: ''
@@ -2680,14 +2577,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
           });
         }
       },
-      onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      onBundleBegin: (err: BusinessError, bundleName: string) => {
         if (err) {
           console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('onBundleBegin success');
       },
-      onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+      onBundleEnd: (err: BusinessError, bundleName: string) => {
         if (err) {
           console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
           return;
@@ -2711,7 +2608,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
        console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
       }
     };
-    let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
+    let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create the restore process.
     return sessionRestore;
   }
   g_session = createSessionRestore();
@@ -2721,13 +2618,13 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 publishFile(fileMeta: FileMeta): Promise&lt;void&gt;
 
-Publishes **FileMeta** to the backup service to indicate that the file content is ready. This API uses a promise to return the result.
+Publishes FileMeta to the backup service so that the service knows the file content is ready. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
-> - This interface is part of the zero-copy feature, which reduces unnecessary memory copies and increases transmission efficiency. For details about the zero-copy methods, see the zero-copy APIs such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
-> - After the server returns a file handle through **onFileReady**, the client can copy data to the file corresponding to the file handle provided by the server through zero-copy operations.
-> - This API can be called only after the caller has written all the data to be restored. The caller must ensure the consistency and integrity of the data to be written.
+> - This API is part of the zero-copy feature, which reduces unnecessary memory copies and achieves more efficient transfer. For zero-copy methods, refer to the zero-copy APIs such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile) provided by [@ohos.file.fs](js-apis-file-fs.md).
+> - After the server returns a file handle through onFileReady, the client can copy the corresponding file content to the file handle provided by the server through zero-copy operations.
+> - This API can be called only after the caller finishes writing all data to be restored, and the caller must ensure the consistency and integrity of the data to be written for restoration.
 
 **System API**: This is a system API.
 
@@ -2737,21 +2634,21 @@ Publishes **FileMeta** to the backup service to indicate that the file content i
 
 **Parameters**
 
-| Name  | Type                 | Mandatory| Description            |
-| -------- | --------------------- | ---- | ---------------- |
-| fileMeta | [FileMeta](#filemeta) | Yes  | Metadata of the file to restore.|
+| Parameter     | Type                  | Mandatory | Description                    |
+| -------- | --------------------- | --------- | ------------------------------ |
+| fileMeta | [FileMeta](#filemeta) | Yes       | Metadata of the file to restore. |
 
 **Return value**
 
-| Type               | Description                   |
-| ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                          |
+| ------------------- | ------------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message               |
+| ID | Error Message                |
 | -------- | ----------------------- |
 | 13600001 | IPC error.               |
 | 13900001 | Operation not permitted. |
@@ -2766,11 +2663,11 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   let g_session: backup.SessionRestore;
   let initMap = new Map<string, number>();
-  let testFileNum = 123; // Number of files required for the restore.
+  let testFileNum = 123; // 123: example of the number of files required for restoration.
   let testBundleName = 'com.example.myapplication'; // Test bundle name.
   initMap.set(testBundleName, testFileNum);
   let countMap = new Map<string, number>();
-  countMap.set(testBundleName, 0); // Initialize the number of files written.
+  countMap.set(testBundleName, 0); // Initialize the number of files actually written.
   async function publishFile(file: backup.FileMeta) {
     let fileMeta: backup.FileMeta = {
       bundleName: file.bundleName,
@@ -2788,21 +2685,21 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
         console.info('onFileReady success');
         fileIo.closeSync(file.fd);
         let cnt = countMap.get(file.bundleName) || 0;
-        countMap.set(file.bundleName, cnt + 1); // Update the number of written files.
-        // Called only when the number of files to be restored is the same as the number of files actually written. This ensures data consistency and integrity.
-        if (countMap.get(file.bundleName) == initMap.get(file.bundleName)) { // Trigger publishFile after all files are received.
+        countMap.set(file.bundleName, cnt + 1); // Update the number of files actually written.
+        // Call this API when the number of files to restore equals the number of files actually written, to ensure data consistency and integrity.
+        if (countMap.get(file.bundleName) == initMap.get(file.bundleName)) { // Trigger publishFile after all files of each bundle are received.
           publishFile(file);
         }
         console.info('publishFile success');
       },
-      onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      onBundleBegin: (err: BusinessError, bundleName: string) => {
         if (err) {
           console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('onBundleBegin success');
       },
-      onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+      onBundleEnd: (err: BusinessError, bundleName: string) => {
         if (err) {
           console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
           return;
@@ -2836,7 +2733,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 release(): Promise&lt;void&gt;
 
-Releases the restore session when the restore process is complete. This API disconnects the application from the backup and restore service and exits the service. This API uses a promise to return the result.
+After the restore process ends, the application disconnects from the service so that the backup and restore service exits. A Promise is used to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -2846,15 +2743,15 @@ Releases the restore session when the restore process is complete. This API disc
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -2872,11 +2769,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   let g_session: backup.SessionRestore;
   let initMap = new Map<string, number>();
-  let testFileNum = 123; // Number of files required for the restore.
+  let testFileNum = 123; // 123: example of the number of files required for restoration.
   let testBundleName = 'com.example.myapplication'; // Test bundle name.
   initMap.set(testBundleName, testFileNum);
   let countMap = new Map<string, number>();
-  countMap.set(testBundleName, 0); // Initialize the number of files written.
+  countMap.set(testBundleName, 0); // Initialize the number of files actually written.
   function createSessionRestore() {
     let generalCallbacks: backup.GeneralCallbacks = {
       onFileReady: (err: BusinessError, file: backup.File) => {
@@ -2887,9 +2784,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('onFileReady success');
         fileIo.closeSync(file.fd);
         let cnt = countMap.get(file.bundleName) || 0;
-        countMap.set(file.bundleName, cnt + 1); // Update the number of written files.
-        // Called only when the number of files to be restored is the same as the number of files actually written. This ensures data consistency and integrity.
-        if (countMap.get(file.bundleName) == initMap.get(file.bundleName)) { // Trigger publishFile after all files are received.
+        countMap.set(file.bundleName, cnt + 1); // Update the number of files actually written.
+        // Call this when the number of files required for restoration equals the number of files actually written, to ensure data consistency and integrity.
+        if (countMap.get(file.bundleName) == initMap.get(file.bundleName)) { // Trigger publishFile after all files of each bundle are received.
           let fileMeta: backup.FileMeta = {
             bundleName: file.bundleName,
             uri: ''
@@ -2903,14 +2800,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
           });
         }
       },
-      onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      onBundleBegin: (err: BusinessError, bundleName: string) => {
         if (err) {
           console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('onBundleBegin success');
       },
-      onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+      onBundleEnd: (err: BusinessError, bundleName: string) => {
         if (err) {
           console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
           return;
@@ -2938,15 +2835,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     return sessionRestore;
   }
   g_session = createSessionRestore();
-  g_session.release();
-  console.info('release success');
+  async function releaseSession() {
+    try {
+      await g_session.release();
+      console.info('release success');
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`release failed. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
   ```
 
 ### cancel<sup>18+</sup>
 
 cancel(bundleName: string): number
 
-Cancels the restoration of an application when data exceptions occur.
+During the restore process, when the tool application detects abnormal data and needs to cancel the restore of an application, it calls this API to terminate the restore task of that application. This API is called after the restore task of the corresponding application starts and before the task ends.
 
 **System API**: This is a system API.
 
@@ -2956,21 +2860,21 @@ Cancels the restoration of an application when data exceptions occur.
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter          | Type     | Mandatory | Description                       |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName | string | Yes  | Application name.|
+| bundleName | string | Yes   | Name of the application whose restore is to be canceled. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| number | Cancelled.<br>**0**: The task is successfully cancelled.<br> **13500011**: The task to be cancelled is not started.<br> **13500012**: The task to be cancelled does not exist.|
+| number | Returns the cancellation status.<br/>0: The cancellation task is delivered successfully.<br/> 13500011: The task to be canceled has not started.<br/> 13500012: The task to be canceled does not exist.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -2985,8 +2889,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
-        // If the FD fails to be passed, call the cancel API to cancel the restoration task of the application.
-        let result = sessionRestore.cancel(err.name);
+        // The file fd transfer fails. Call the cancel API to cancel the restore task of this application.
+        let result = sessionRestore.cancel(file.bundleName);
         console.info('cancel result:' + result);
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -2994,14 +2898,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -3030,9 +2934,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     let fileData: backup.FileData = {
       fd: -1
     }
-    fileData = await backup.getLocalCapabilities(); // Call getLocalCapabilities provided by the backup and restore framework to obtain the capability set file.
-    let backupBundles: Array<string> = ["com.example.helloWorld"];
-    sessionRestore.appendBundles(fileData.fd, backupBundles);
+    fileData = await backup.getLocalCapabilities(); // Obtain the capability file through the getLocalCapabilities API provided by the backup/restore framework.
+    let backupBundles: Array<string> = ['com.example.helloWorld'];
+    try {
+      await sessionRestore.appendBundles(fileData.fd, backupBundles);
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
+    } finally {
+      fileIo.closeSync(fileData.fd);
+    }
   }
   ```
 
@@ -3040,7 +2951,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
 
-Cleans up temporary application directories (backup and restore directories under the **./backup** directory) after the restore task is complete. This API uses a promise to return the result.
+After a restore task ends, this API is provided for tools to clean up the temporary directory data of the current application (the backup and restore directories under the ./backup directory). A Promise is used to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -3050,21 +2961,21 @@ Cleans up temporary application directories (backup and restore directories unde
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter          | Type     | Mandatory | Description                       |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName | string | Yes  | Bundle name of the application whose temporary directories need to be cleaned up.|
+| bundleName | string | Yes   | Application name whose temporary directory data needs to be cleaned up. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| Promise&lt;boolean&gt; | Promise that returns results. The value **true** means the data is cleaned up; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise object. Returning true indicates successful cleanup, and returning false indicates failed cleanup. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -3081,7 +2992,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       if (res) {
         console.info(`cleanBundleTempDir succeeded.`);
       } else {
-        console.info(`cleanBundleTempDir fail.`);
+        console.error(`cleanBundleTempDir failed.`);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
@@ -3089,8 +3000,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
   }
 
-  let generalCallbacks: backup.GeneralCallbacks = { // Define general callbacks to be used in the backup or restore process.
-    // Callback when the file is sent successfully.
+  let generalCallbacks: backup.GeneralCallbacks = { // Define the general callbacks during backup/restore.
+    // Callback invoked when a file is sent successfully.
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
@@ -3099,16 +3010,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info(`onFileReady succeeded.`);
       fileIo.closeSync(file.fd);
     },
-    // Callback when the application backup or restore starts.
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    // Callback invoked when application backup/restore starts.
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info(`onBundleBegin succeeded.`);
     },
-    // Callback when the application backup or restore is complete. cleanBundleTempDir is called for cleanup.
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    // Callback invoked when application backup/restore ends. Call cleanBundleTempDir here to perform cleanup.
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -3139,7 +3050,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
 
-Obtains the application's custom capabilities during restore. This API uses a promise to return the result.
+Obtains the application-defined capability description information during the restore process. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -3149,22 +3060,22 @@ Obtains the application's custom capabilities during restore. This API uses a pr
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter | Type | Mandatory | Description |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName | string | Yes  | Bundle name of the application to be queried.|
-| extInfo | string | Yes  | Extra information passed to the application. The implementation is determined by the application.|
+| bundleName | string | Yes | Application name whose capability information is to be queried. |
+| extInfo | string | Yes | Extended information to be passed to the application. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type | Description |
 | ------------------- | ----------------------- |
-| Promise&lt;string&gt; | Promise that returns the application's custom capabilities.|
+| Promise&lt;string&gt; | Promise object that returns the application-defined capability description information. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -3175,7 +3086,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { fileIo, backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let generalCallbacks: backup.GeneralCallbacks = { // Define general callbacks to be used in the backup or restore process.
+  let generalCallbacks: backup.GeneralCallbacks = { // Define the general callbacks during backup/restore.
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
@@ -3184,14 +3095,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info(`onFileReady succeeded.`);
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info(`onBundleBegin succeeded.`);
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -3219,7 +3130,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   async function getRestoreCompatibilityInfo() {
     let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
     let bundleName = "com.example.helloWorld";
-    let extInfo = ""; // An empty string means no extra information needs to be passed to the application.
+    let extInfo = ""; // An empty string indicates that no additional information needs to be passed to the application.
     try {
       let retInfo = await sessionRestore.getCompatibilityInfo(bundleName, extInfo);
       if (retInfo) {
@@ -3234,42 +3145,285 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-## IncrementalBackupSession<sup>12+</sup>
+### migrateFile
 
-An object used to implement the incremental backup of applications. Before using the APIs of this class, you need to create an **IncrementalBackupSession** instance.
+migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise&lt;void&gt;
 
-### constructor<sup>12+</sup>
+Used to migrate a file from the source path to the target path. Before using this API, you need to obtain a SessionRestore instance and successfully add the application to be restored through appendBundles. This API is used in scenarios where the file path needs to be adjusted, the storage location needs to be migrated, or data upgrade migration needs to be processed during the restore process. The execution result is returned through the onMigrateResult callback. A Promise is used for asynchronous callback.
 
-constructor(callbacks: GeneralCallbacks)
-
-A constructor used to create an **IncrementalBackupSession** instance.
-
-**System API**: This is a system API.
+**Since:** 26.0.0
 
 **Required permissions**: ohos.permission.BACKUP
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
+
+**System API**: This is a system API.
 
 **Parameters**
 
-| Name  | Type                                 | Mandatory| Description                    |
-| -------- | ------------------------------------- | ---- | ------------------------ |
-| callbacks | [GeneralCallbacks](#generalcallbacks) | Yes  | Callbacks to be invoked during the incremental backup process.|
+| Parameter     | Type   | Mandatory | Description                            |
+| ---------- | ------ | ---- | ------------------------------- |
+| pathInfo | [PathInfo](#pathinfo) | Yes   | Path information, including the source path and target path. For path length limits and restrictions on relative paths and symbolic links, see [PathInfo](#pathinfo). |
+| fileMeta | [FileMeta](#filemeta) | Yes   | File metadata, including bundleName and uri. |
+
+**Return value**
+
+| Type                | Description                    |
+| ------------------- | ----------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 13600001 | IPC error.               |
+| 13900001 | Operation not permitted.               |
+| 13900020 | Invalid argument. |
+
+**Example**
+
+```ts
+import { backup } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onFileReady succeeded.`);
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleBegin succeeded.`);
+  },
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleEnd succeeded.`);
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onAllBundlesEnd succeeded.`);
+  },
+  onBackupServiceDied: () => {
+    console.info(`service died.`);
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport succeeded, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess succeeded, bundleName: ${bundleName}, process: ${process}`);
+  },
+  onMigrateResult: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onMigrateResult failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onMigrateResult succeeded, bundleName: ' + bundleName);
+  }
+};
+
+async function testMigrateFile() {
+  let sessionRestore = new backup.SessionRestore(generalCallbacks);
+  try {
+    await sessionRestore.migrateFile(
+      {
+        srcPath: "/data/storage/el1/base/files/",
+        destPath: "/data/storage/el2/base/files/"
+      },
+      {
+        bundleName: 'com.example.app',
+        uri: "" // Set uri to an empty string when migrating files by directory.
+      }
+    );
+    console.info("migrateFile succeeded.");
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`migrateFile failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+### getApkFileHandle
+
+getApkFileHandle(path: string, fileName: string): Promise&lt;FileData&gt;
+
+Obtains the file handle of an APK file during the restore process. Before using this API, you must obtain a SessionRestore instance and successfully add the application to be restored through appendBundles. The returned FileData must be closed after use. This API uses a promise to return the result asynchronously.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.BACKUP
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.StorageService.Backup
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Parameter | Type | Mandatory | Description |
+| ---------- | ------ | ---- | ------------------------------- |
+| path | string | Yes | Path of the APK file. The total length of the path concatenated with fileName is limited to 4096 characters. Relative paths and symbolic links are not supported. If the length limit is exceeded, a parameter error is returned. |
+| fileName | string | Yes | Name of the APK file. The total length of the name concatenated with path is limited to 4096 characters. Relative paths and symbolic links are not supported. If the length limit is exceeded, a parameter error is returned. |
+
+**Return value**
+
+| Type | Description |
+| ------------------- | ----------------------- |
+| Promise&lt;[FileData](#filedata)&gt; | Promise object that returns a FileData object, which contains the file descriptor and file attributes. The returned file is a temporary file and is automatically deleted when closed. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID | Error Message                                                                                       |
+| -------- | ---------------------------------------------------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 13600001 | IPC error.               |
+| 13900001 | Operation not permitted.               |
+| 13900020 | Invalid argument. |
+
+**Example**
+
+```ts
+import { backup } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onFileReady succeeded.`);
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleBegin succeeded.`);
+  },
+  onBundleEnd: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleEnd succeeded.`);
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onAllBundlesEnd succeeded.`);
+  },
+  onBackupServiceDied: () => {
+    console.info(`service died`);
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport succeeded, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess succeeded, bundleName: ${bundleName}, process: ${process}`);
+  },
+  onMigrateResult: (err: BusinessError, bundleName: string) => {
+    if (err) {
+      console.error(`onMigrateResult failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onMigrateResult succeeded, bundleName: ' + bundleName);
+  }
+};
+
+async function testGetApkFileHandle() {
+  let sessionRestore = new backup.SessionRestore(generalCallbacks);
+  try {
+    let fileData: backup.FileData = await sessionRestore.getApkFileHandle("/data/storage/el1/base/files", "app.apk");
+    console.info("getApkFileHandle succeeded, fd: " + fileData.fd);
+    // Close the file descriptor after use.
+    fileIo.closeSync(fileData.fd);
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getApkFileHandle failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+### getFileHandles
+
+getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
+
+Obtains the handle of a shared file from the service. This API uses a promise to return the result asynchronously.
+
+> **NOTE**
+>
+> - This API is a zero-copy feature, which reduces unnecessary memory copies and improves transmission efficiency. For details about the zero-copy APIs, see the zero-copy APIs provided by [@ohos.file.fs](js-apis-file-fs.md), such as [fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile).
+> - Before using [getFileHandles](#getfilehandles), obtain a [SessionRestore](#sessionrestore) instance and call [appendBundles](#appendbundles-2) to add the applications whose data is to be restored.
+> - You can obtain file handles through [OnFileReadyBatch](#onfilereadybatch). After the client completes file operations, use [publishFile](#publishfile) to publish the files.
+> - You can call getFileHandles multiple times based on the number of files to be restored.
+> - The files to be restored cannot be relative paths (../) or soft links.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.BACKUP
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.StorageService.Backup
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Parameter | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| fileMeta | [FileMeta](#filemeta) | Yes | Metadata of the file to be sent. The file must come from the backup process or the [getLocalCapabilities](#getlocalcapabilities18-1) method. |
+
+**Return value**
+
+| Type | Description |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 13600001 | IPC error. |
+| 13900001 | Operation not permitted. |
+| 13900020 | Invalid argument. |
 
 **Example**
 
   ```ts
-  import { fileIo, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -3280,6 +3434,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       }
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
+    },
+    onFileReadyBatch: (error: BusinessError<void>, files: Array<backup.File>): void => {
+      if (error) {
+        console.error(`onFileReadyBatch failed. Code: ${error.code}, message: ${error.message}`);
+        return;
+      }
+      for (let file of files) {
+        console.info(`onFileReadyBatch success with file: ${file.bundleName}, ${file.uri}`);
+        fileIo.closeSync(file.fd);
+      }
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3312,14 +3476,111 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create a session for an incremental backup.
+  // Create a restore process instance.
+  let sessionRestore = new backup.SessionRestore(generalCallbacks);
+  async function getFileHandles() {
+    let testArray: string[] = ["test1", "test2"];
+    try {
+      let fileMeta: backup.FileMeta = {
+        bundleName: "com.example.hiworld",
+        uri: "test.txt",
+        uris: testArray
+      };
+      await sessionRestore.getFileHandles(fileMeta);
+      console.info('getFileHandles success');
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`getFileHandles failed. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
+  ```
+
+## IncrementalBackupSession<sup>12+</sup>
+
+An incremental backup process object used to support the application incremental backup process. Before use, an IncrementalBackupSession instance must be created first. This process identifies changed data based on the last incremental backup time and the manifest file, and is suitable for backing up application incremental data.
+
+### constructor<sup>12+</sup>
+
+constructor(callbacks: GeneralCallbacks)
+
+Constructor of the incremental backup process, used to obtain an instance of the IncrementalBackupSession class. The typical process is as follows: create an IncrementalBackupSession instance, call appendBundles to add the applications to be incrementally backed up, wait for the callback to return the incremental backup result, and call release to release resources after the process ends.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.BACKUP
+
+**System capability**: SystemCapability.FileManagement.StorageService.Backup
+
+**Parameters**
+
+| Parameter | Type | Mandatory | Description |
+| -------- | ------------------------------------- | ---- | ------------------------ |
+| callbacks | [GeneralCallbacks](#generalcallbacks) | Yes | Callbacks required by the incremental backup process. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                                                                       |
+| -------- | ---------------------------------------------------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+
+**Example**
+
+  ```ts
+  import { fileIo, backup} from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let generalCallbacks: backup.GeneralCallbacks = {
+    onFileReady: (err: BusinessError, file: backup.File) => {
+      if (err) {
+        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onFileReady success');
+      fileIo.closeSync(file.fd);
+    },
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
+      if (err) {
+        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onBundleBegin success');
+    },
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
+      if (err) {
+        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onBundleEnd success');
+    },
+    onAllBundlesEnd: (err: BusinessError) => {
+      if (err) {
+        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onAllBundlesEnd success');
+    },
+    onBackupServiceDied: () => {
+      console.info('service died');
+    },
+    onResultReport: (bundleName: string, result: string) => {
+      console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+    },
+    onProcess: (bundleName: string, process: string) => {
+      console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+    }
+  };
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create the incremental backup process.
   ```
 
 ### getLocalCapabilities<sup>18+</sup>
 
 getLocalCapabilities(): Promise&lt;FileData&gt;
 
-Obtains a JSON file that describes local capabilities in the incremental backup service. This API uses a promise to return the result.
+Obtains a JSON file that describes local capabilities in the incremental backup service. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -3329,15 +3590,15 @@ Obtains a JSON file that describes local capabilities in the incremental backup 
 
 **Return value**
 
-| Type                                | Description                           |
+| Type                                 | Description                            |
 | ------------------------------------ | ------------------------------- |
-| Promise&lt;[FileData](#filedata)&gt; | Promise **FileData** object obtained.|
+| Promise&lt;[FileData](#filedata)&gt; | Promise object that returns a FileData object, which contains the file descriptor for reading the content of the local capability file. The file descriptor must be closed after use. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -3352,13 +3613,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  interface test { // Parse the capability file.
-    bundleInfos: [];
+  interface LocalCapabilities { // Used to parse the capability file.
+    bundleInfos: BundleInfo[];
     deviceType: string;
     systemFullName: string;
   }
 
-  interface BundleInfo { // Obtain the local capability information of an application.
+  interface BundleInfo { // Used to obtain the local capability information of a single application.
     name: string;
     appIndex: number;
     versionCode: number;
@@ -3370,10 +3631,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     extensionName: string;
     restoreDeps: string;
     supportScene: string;
-    extraInfo: object;
+    extraInfo: Record<string, Object>;
   }
 
-  let generalCallbacks: backup.GeneralCallbacks = { // Define general callbacks to be used in the backup or restore process.
+  let generalCallbacks: backup.GeneralCallbacks = { // Defines the general callbacks during the backup/restore process.
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
@@ -3382,14 +3643,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -3414,11 +3675,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
   };
   async function getLocalCapabilitiesTest() {
-    let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create a session for an incremental backup.
+    let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Creates an incremental backup session.
     let basePath = '/data/storage/el2/base/backup';
-    let path = basePath + '/localCapabilities.json'; // Local path for storing capability files.
+    let path = basePath + '/localCapabilities.json'; // Path for saving the capability file locally.
     try {
-      let fileData = await incrementalBackupSession.getLocalCapabilities(); // Obtain the local capability file.
+      let fileData = await incrementalBackupSession.getLocalCapabilities(); // Obtains the local capability file.
       if (fileData) {
         console.info('getLocalCapabilities success');
         console.info('fileData info:' + fileData.fd);
@@ -3426,7 +3687,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
           fileIo.mkdirSync(basePath);
           console.info('create success' + basePath);
         }
-        fileIo.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
+        fileIo.copyFileSync(fileData.fd, path); // Saves the obtained local capability file locally.
         fileIo.closeSync(fileData.fd);
       }
     } catch (error) {
@@ -3435,7 +3696,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
     let data = fileIo.readTextSync(path, 'utf8'); // Obtain information from the local capability file.
     try {
-      const jsonsObj: test | null = JSON.parse(data); // Parse the local capability file and print some information.
+      const jsonsObj: LocalCapabilities | null = JSON.parse(data); // Parse the local capability file and print part of the information.
       if (jsonsObj) {
         const infos:BundleInfo [] = jsonsObj.bundleInfos;
         for (let i = 0; i < infos.length; i++) {
@@ -3449,12 +3710,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('deviceType: ' + deviceType);
       }
     } catch (error) {
-      console.error(`parse failed. Code: ${error.code}, message: ${error.message}`);
+      let err: BusinessError = error as BusinessError;
+      console.error(`parse failed. Code: ${err.code}, message: ${err.message}`);
     }
   }
   ```
 
-The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fileiostat-1) of the [@ohos.file.fs](js-apis-file-fs.md) module. The following is an example of the capability file.
+**The capability file can be obtained through related APIs such as [fileIo.stat](js-apis-file-fs.md#fileiostat) provided by [@ohos.file.fs](js-apis-file-fs.md). Example of the capability file content:**
 
  ```json
  {
@@ -3477,7 +3739,7 @@ The capability file can be obtained by using [fileIo.stat](js-apis-file-fs.md#fi
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-Obtains the amount of data to be backed up. This method is called before **appendBundles**. **getBackupDataSize** is used together with **onBackupSizeReport**. This API uses a promise to return the result.
+Obtains the amount of data to be backed up for an application. It is called before appendBundles. It is used together with onBackupSizeReport, and the scan result is returned through the onBackupSizeReport callback. A Promise is used to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -3487,22 +3749,22 @@ Obtains the amount of data to be backed up. This method is called before **appen
 
 **Parameters**
 
-| Name       | Type                                                    | Mandatory| Description                                                        |
-| ------------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isPreciseScan | boolean                                                  | Yes  | Whether to perform accurate scanning. The value **true** means to perform accurate scanning; the value **false** means to perform inaccurate scanning. Inaccurate scanning is fast and is used to estimate the data size. Accurate scanning is slow and returns more accurate result. However, the data to be backed up may change. Therefore, the precise scanning result may not match the actual backup data size.|
-| dataList      | Array<[IncrementalBackupTime](#incrementalbackuptime12)> | Yes  | Backup application list, which describes the application whose data size is to be obtained and the last backup time. For a full backup, set this parameter to **0**.|
+| Parameter          | Type                                                     | Mandatory | Description                                                         |
+| ------------- | -------------------------------------------------------- | --------- | ------------------------------------------------------------ |
+| isPreciseScan | boolean                                                  | Yes       | Whether to perform a precise scan. The value true indicates a precise scan, and false indicates a non-precise scan. A non-precise scan is fast and returns an estimated data amount. A precise scan is slow but returns a more accurate result. However, because the data to be backed up may change during the actual backup process, the precise scan result is not guaranteed to exactly match the actual backup data amount. |
+| dataList      | Array<[IncrementalBackupTime](#incrementalbackuptime12)> | Yes       | List of applications to be backed up, used to describe the applications whose data amount is to be obtained and the time of the last backup (enter 0 for a full backup). |
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -3518,19 +3780,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { fileIo, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  interface scannedInfos { // Parse the scanning result.
+  interface ScannedInfos { // Used to parse the scan result.
     scanned: [];
     scanning: string;
   }
 
-  interface ScannedInfo { // Parse the scanning result of an application.
+  interface ScannedInfo { // Used to parse the scan result of a single application.
     bundleName: string;
     dataSize: number;
     incDataSize: number;
   }
 
   let generalCallbacks: backup.GeneralCallbacks = {
-    onFileReady: (err: BusinessError, file: backup.File) => { // Define the universal callbacks to be used in the backup or restore process.
+    onFileReady: (err: BusinessError, file: backup.File) => { // Define the common callback used during the backup/restore process.
       if (err) {
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -3538,14 +3800,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -3568,9 +3830,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
-    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application whose data size is being retrieved. onBackupSizeReport in generalCallbacks returns the scan result every 5 seconds, or immediately if the data retrieval process is completed within 5 seconds, until all application data in dataList is returned.
+    // The callback is used together with getBackupDataSize to return the obtained data size of an application and the bundle name of the application whose data size is being obtained.
+    // The onBackupSizeReport callback in generalCallbacks returns the scan result every 5 seconds (or immediately if the data is obtained within 5 seconds), until the data sizes of all applications in dataList are returned.
+    onBackupSizeReport: (OnBackupSizeReport) => {
       console.info('dataSizeCallback success');
-      const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
+      const jsonObj: ScannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse the returned information and print it.
       if (jsonObj) {
         const infos: ScannedInfo [] = jsonObj.scanned;
         for (let i = 0; i < infos.length; i++) {
@@ -3584,25 +3848,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
   };
 
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create a session for an incremental backup.
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create an incremental backup session.
 
   let backupApps: backup.IncrementalBackupTime[] = [{
-    bundleName: "com.example.hiworld",
-    lastIncrementalTime: 1700107870 // Time of the last incremental backup.
+    bundleName: 'com.example.hiworld',
+    lastIncrementalTime: 1700107870 // The caller uses the last recorded incremental backup time.
   }];
   try {
-    incrementalBackupSession.getBackupDataSize(true, backupApps); // Obtain the amount of specified application data to be backed up in backupApps. The value true indicates that accurate scanning is used.
+    incrementalBackupSession.getBackupDataSize(true, backupApps); // Obtain the size of data to be backed up for the specified applications in backupApps. true indicates precise scanning.
   } catch (error) {
     let err: BusinessError = error as BusinessError;
     console.error(`getBackupDataSize failed. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
-**Example of a JSON string returned asynchronously:**
+**Example of the asynchronously returned JSON string:**
 
 ```json5
 {
- "scanned": [ // Scanned application. The result will not be returned in the next callback.
+ "scanned": [ // Applications scanned in this round. Applications whose results have been returned will not be returned again in the next callback.
      {
          "name": "com.example.hiworld", // Application name.
          "dataSize": 1006060, // Data size.
@@ -3614,7 +3878,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
          "incDataSize": 232344
      }
  ],
- "scanning" :"com.example.smartAPP" // Application that is being scanned. This field is empty when the last result is returned.
+ "scanning" :"com.example.smartAPP" // Application being scanned. This field is empty when the last result is returned.
 }
 ```
 
@@ -3622,7 +3886,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;void&gt;
 
-Appends applications that require incremental backup. In the current process, **appendBundles** can be called before **Release()** is called. This API uses a promise to return the result.
+Adds applications that require incremental backup. In the current entire process, appendBundles can be called at any time before the release API is triggered. A Promise is used to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -3632,21 +3896,21 @@ Appends applications that require incremental backup. In the current process, **
 
 **Parameters**
 
-| Name         | Type                                                          | Mandatory| Description                      |
-| --------------- | -------------------------------------------------------------- | ---- | -------------------------- |
-| bundlesToBackup | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | Yes  | Array of applications that require incremental backup.|
+| Parameter            | Type                                                           | Mandatory | Description                                    |
+| --------------- | -------------------------------------------------------------- | --------- | ---------------------------------------------- |
+| bundlesToBackup | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | Yes       | Array of applications that require incremental backup. |
 
 **Return value**
 
-| Type               | Description                   |
-| ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -3673,14 +3937,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -3704,25 +3968,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create a session for an incremental backup.
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create the incremental backup process.
   let incrementalBackupData: backup.IncrementalBackupData = {
-    bundleName: "com.example.hiworld",
-    lastIncrementalTime: 1700107870, // Timestamp of the last backup.
-    manifestFd:1 // FD of the manifest file of the last backed.
+    bundleName: 'com.example.hiworld',
+    lastIncrementalTime: 1700107870, // Timestamp of the last backup passed by the caller.
+    manifestFd: fileIo.openSync('/data/storage/el2/base/backup/manifest.json').fd // File handle of the manifest file of the last backup passed by the caller.
   }
   let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
   incrementalBackupSession.appendBundles(incrementalBackupDataArray).then(() => {
     console.info('appendBundles success');
   }).catch((err: BusinessError) => {
     console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-  }); // Appends the applications that require incremental backup.
+  }); // Add the applications that require incremental backup.
   ```
 
 ### appendBundles<sup>12+</sup>
 
 appendBundles(bundlesToAppend: Array&lt;IncrementalBackupData&gt;, infos: string[]): Promise&lt;void&gt;
 
-Appends applications that require incremental backup. In the current process, **appendBundles** can be called before **Release()** is called. This API uses a promise to return the result.
+Adds applications that require incremental backup. In the current entire process, appendBundles can be called at any time before the release API is triggered. A Promise is used to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -3732,22 +3996,22 @@ Appends applications that require incremental backup. In the current process, **
 
 **Parameters**
 
-| Name         | Type                                                          | Mandatory| Description                      |
+| Parameter | Type | Mandatory | Description |
 | --------------- | -------------------------------------------------------------- | ---- | -------------------------- |
-| bundlesToAppend | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | Yes  | Array of applications that require incremental backup.|
-| infos  | string[] | Yes  | Array of the information about each application to be backed up. The mappings between **infos** and **bundlesToBackup** are identified by index. This parameter is supported since API version 12.|
+| bundlesToAppend | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | Yes | Array of applications that require incremental backup. |
+| infos | string[] | Yes | Array of extended information required by each application during backup, corresponding to bundlesToAppend by index. Supported since API version 12. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type | Description |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -3774,14 +4038,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -3805,11 +4069,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create a session for an incremental backup.
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create an incremental backup process.
   let incrementalBackupData: backup.IncrementalBackupData = {
-    bundleName: "com.example.hiworld",
-    lastIncrementalTime: 1700107870, // Timestamp of the last backup.
-    manifestFd:1 // FD of the manifest file of the last backed.
+    bundleName: 'com.example.hiworld',
+    lastIncrementalTime: 1700107870, // Pass the timestamp of the last backup.
+    manifestFd: fileIo.openSync('/data/storage/el2/base/backup/manifest.json').fd // Pass the file handle of the manifest file from the last backup.
   }
       let infos: Array<string> = [
         `
@@ -3852,7 +4116,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       `
     ]
   let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
-  // Appends the applications that require incremental backup.
+  // Add the applications that require incremental backup.
   incrementalBackupSession.appendBundles(incrementalBackupDataArray, infos).then(() => {
     console.info('appendBundles success');
   }).catch((err: BusinessError) => {
@@ -3864,7 +4128,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 release(): Promise&lt;void&gt;
 
-Releases the session for the incremental backup. This API uses a promise to return the result.
+Ends the incremental backup process. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -3874,15 +4138,15 @@ Releases the session for the incremental backup. This API uses a promise to retu
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -3907,14 +4171,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -3938,16 +4202,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create a session for an incremental backup.
-  incrementalBackupSession.release(); // End the incremental backup process.
-  console.info('release success');
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create the incremental backup process.
+  async function release() {
+    try {
+      await incrementalBackupSession.release(); // End the incremental backup process.
+      console.info('release success');
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`release failed. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
   ```
 
 ### cancel<sup>18+</sup>
 
 cancel(bundleName: string): number
 
-Cancels the incremental backup of an application when data exceptions occur.
+During an incremental backup task, when the tool application detects data anomalies and needs to cancel the incremental backup of a specific application, it calls this API to terminate the incremental backup task of that application. This API is called after the incremental backup task of the corresponding application starts and before the task ends.
 
 **System API**: This is a system API.
 
@@ -3957,21 +4228,21 @@ Cancels the incremental backup of an application when data exceptions occur.
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter          | Type     | Mandatory | Description                       |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName | string | Yes  | Application name.|
+| bundleName | string | Yes   | Application name for which the incremental backup is to be canceled. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type                | Description                    |
 | ------------------- | ----------------------- |
-| number | Cancelled.<br>**0**: The task is successfully cancelled.<br> **13500011**: The task to be cancelled is not started.<br> **13500012**: The task to be cancelled does not exist.|
+| number | Returns the cancellation status.<br/>0: The cancellation task is delivered successfully.<br/> 13500011: The task to be canceled has not started.<br/> 13500012: The task to be canceled does not exist.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -3986,7 +4257,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let generalCallbacks: backup.GeneralCallbacks = {
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
-        // If the FD fails to be passed, call the cancel API to cancel the incremental backup task of the application.
+        // If the file fd fails to be transferred, call the cancellation API to cancel the incremental backup task of this application.
         let result = incrementalBackupSession.cancel(err.name);
         console.info('cancel result:' + result);
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
@@ -3995,14 +4266,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('onBundleBegin success');
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -4026,15 +4297,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create a session for an incremental backup.
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create an incremental backup process.
   let backupBundles: Array<backup.IncrementalBackupData> = [];
   let bundleData: backup.IncrementalBackupData = {
-    bundleName: "com.example.helloWorld",
-    lastIncrementalTime: 1700107870, // Timestamp of the last backup.
-    manifestFd: 1 // FD of the manifest file of the last backed.
+    bundleName: 'com.example.helloWorld',
+    lastIncrementalTime: 1700107870, // Pass the timestamp of the last backup.
+    manifestFd: fileIo.openSync('/data/storage/el2/base/backup/manifest.json').fd // Pass the file handle of the manifest file from the last backup.
   }
   backupBundles.push(bundleData);
-  incrementalBackupSession.appendBundles(backupBundles);
+  incrementalBackupSession.appendBundles(backupBundles).then(() => {
+    console.info('appendBundles success');
+  }).catch((err: BusinessError) => {
+    console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
+  });
 
   ```
 
@@ -4042,7 +4317,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
 
-Cleans up temporary application directories (backup and restore directories under the **./backup** directory) after the incremental backup task is complete. This API uses a promise to return the result.
+After an incremental backup task ends, this API is provided for tools to clean up the temporary directory data of the current application (the backup and restore directories under the ./backup directory). A Promise is used to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -4052,21 +4327,21 @@ Cleans up temporary application directories (backup and restore directories unde
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter | Type | Mandatory | Description |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName | string | Yes  | Bundle name of the application whose temporary directories need to be cleaned up.|
+| bundleName | string | Yes | Application name whose temporary directory data needs to be cleaned up. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type | Description |
 | ------------------- | ----------------------- |
-| Promise&lt;boolean&gt; | Promise that returns results. The value **true** means the data is cleaned up; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise object. Returning true indicates successful cleanup, and returning false indicates failed cleanup. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -4083,7 +4358,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       if (res) {
         console.info(`cleanBundleTempDir succeeded.`);
       } else {
-        console.info(`cleanBundleTempDir fail.`);
+        console.error(`cleanBundleTempDir failed.`);
       }
     } catch (error) {
       let err: BusinessError = error as BusinessError;
@@ -4091,8 +4366,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
   }
 
-  let generalCallbacks: backup.GeneralCallbacks = { // Define general callbacks to be used in the backup or restore process.
-    // Callback when the file is sent successfully.
+  let generalCallbacks: backup.GeneralCallbacks = { // Define the general callbacks during backup/restore.
+    // Callback invoked when a file is sent successfully.
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
@@ -4101,16 +4376,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info(`onFileReady succeeded.`);
       fileIo.closeSync(file.fd);
     },
-    // Callback when the application backup or restore starts.
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    // Callback invoked when application backup/restore starts.
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info(`onBundleBegin succeeded.`);
     },
-    // Callback when the application backup or restore is complete. cleanBundleTempDir is called for cleanup.
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    // Callback invoked when application backup/restore ends. Call cleanBundleTempDir here to perform cleanup.
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -4134,14 +4409,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create a session for an incremental backup.
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create an incremental backup process.
   ```
 
 ### getCompatibilityInfo<sup>20+</sup>
 
 getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
 
-Obtains the application's custom capabilities during incremental backup. This API uses a promise to return the result.
+Obtains the application-defined capability description information in the incremental backup service. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -4151,22 +4426,22 @@ Obtains the application's custom capabilities during incremental backup. This AP
 
 **Parameters**
 
-| Name         | Type    | Mandatory| Description                      |
+| Parameter | Type | Mandatory | Description |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName | string | Yes  | Bundle name of the application to be queried.|
-| extInfo | string | Yes  | Extra information passed to the application. The implementation is determined by the application.|
+| bundleName | string | Yes | Application name whose capability information is to be queried. |
+| extInfo | string | Yes | Extended information to be passed to the application. |
 
 **Return value**
 
-| Type               | Description                   |
+| Type | Description |
 | ------------------- | ----------------------- |
-| Promise&lt;string&gt; | Promise that returns the application's custom capabilities.|
+| Promise&lt;string&gt; | Promise object that returns the application-defined capability description information. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                      |
+| ID | Error Message                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
@@ -4177,7 +4452,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { fileIo, backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let generalCallbacks: backup.GeneralCallbacks = { // Define general callbacks to be used in the backup or restore process.
+  let generalCallbacks: backup.GeneralCallbacks = { // Define the general callbacks during the backup/restore process.
     onFileReady: (err: BusinessError, file: backup.File) => {
       if (err) {
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
@@ -4186,14 +4461,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.info(`onFileReady succeeded.`);
       fileIo.closeSync(file.fd);
     },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleBegin: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info(`onBundleBegin succeeded.`);
     },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    onBundleEnd: (err: BusinessError, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
@@ -4219,9 +4494,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   };
 
   async function getIncBackupCompatibilityInfo() {
-    let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create a session for an incremental backup.
+    let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // Create an incremental backup session.
     let bundleName = "com.example.helloWorld";
-    let extInfo = ""; // An empty string means no extra information needs to be passed to the application.
+    let extInfo = ""; // An empty string indicates that no extra information needs to be passed to the application.
     try {
       let retInfo = await incrementalBackupSession.getCompatibilityInfo(bundleName, extInfo);
       if (retInfo) {

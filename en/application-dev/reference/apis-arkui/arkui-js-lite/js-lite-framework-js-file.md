@@ -1,12 +1,11 @@
 # app.js
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dfb15c325281e5e789ea7ade45dfdd45876606ad translatedAt=2026-07-27T02:27:32.702Z pushedAt=2026-07-27T09:23:36.745Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-10T07:54:24.687Z pushedAt=2026-11-10T10:56:49.198Z nl=1 -->
 
 You can define app-level lifecycle functions and the app global data object in the **app.js** file. It enables initialization when the app is created or resource release when the app is destroyed, and supports sharing global data across different pages. This is suitable for scenarios where unified management of app state and lifecycle processing is required.
 
@@ -14,11 +13,15 @@ You can define app-level lifecycle functions and the app global data object in t
 
 You can customize the lifecycle implementation logic on an app-by-app basis in **app.js**, including:
 
+
 - **onCreate()**: called when an application is created
 
 - **onDestroy()**: called when an application is destroyed
 
+
 In the following example, logs are printed only in the lifecycle functions.
+
+
 
 ```js
 // app.js

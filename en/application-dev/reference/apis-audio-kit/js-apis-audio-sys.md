@@ -5,6 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=fe6cafc35b7c2ea1e5b32d816e822fcfb388d90d translatedAt=2026-11-10T03:13:48.313Z pushedAt=2026-11-10T04:49:54.710Z nl=1 -->
 
 The module provides basic audio management capabilities, including audio volume and audio device management, and audio data collection and rendering.
 
@@ -2362,7 +2363,7 @@ Sets an audio effect in use. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.Multimedia.Audio.core
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Parameters**
 
@@ -3227,6 +3228,8 @@ Cancels the listening for highest-priority input device change events under the 
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
+**Parameters**
+
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | No| Callback used to return the information about the input device with the highest priority.|
@@ -3369,6 +3372,8 @@ Unsubscribes from changes in the highest-priority output device based on specifi
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
 
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -3785,7 +3790,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 202 | Not system application. |
+| 202 | Not a system application. |
 
 **Example**
 
@@ -4778,7 +4783,7 @@ Enables or disables head tracking for a device. This API uses a promise to retur
 | Name                | Type                                                        | Mandatory| Description                     |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
 | deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | Yes  | Device descriptor.|
-| enable                | boolean                                                      | Yes  | Whether to enable or disable head tracking. **true** to enable, **false** otherwise. |
+| enabled                | boolean                                                      | Yes   | Whether to enable or disable head tracking. The value true means to enable it, and false means to disable it.  |
 
 **Return value**
 
@@ -4934,7 +4939,7 @@ try {
 
 on(type: 'headTrackingEnabledChange', callback: Callback<boolean\>): void
 
-Subscribes to the head tracking status change event, which is triggered when the head tracking status is changed. This API uses an asynchronous callback to return the result.
+Listens for head tracking switch state change events (triggered when the head tracking switch state changes). This API uses an asynchronous callback.
 
 > **NOTE**
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#onheadtrackingenabledchangeforanydevice12) instead.
@@ -4947,7 +4952,7 @@ Subscribes to the head tracking status change event, which is triggered when the
 
 | Name  | Type                                                | Mandatory| Description                                      |
 | :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
-| type     | string | Yes  | Event type. The event **'headTrackingEnabledChange'** is triggered when the head tracking status is changed.|
+| type     | string | Yes   | Event callback type. The supported event is 'headTrackingEnabledChange', which is triggered when the head tracking switch state changes. |
 | callback | Callback<boolean\> | Yes  | Callback used to return the result, indicating whether head tracking is enabled. **true** if enabled, **false** otherwise.|
 
 **Error codes**
@@ -4974,7 +4979,7 @@ audioSpatializationManager.on('headTrackingEnabledChange', (isHeadTrackingEnable
 
 on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void
 
-Subscribes to the head tracking status change event, which is triggered when the head tracking status is changed. This API uses an asynchronous callback to return the result.
+Listens for head tracking switch state change events (triggered when the head tracking switch state changes). This API uses an asynchronous callback.
 
 **System API**: This is a system API.
 
@@ -4984,7 +4989,7 @@ Subscribes to the head tracking status change event, which is triggered when the
 
 | Name  | Type                                                | Mandatory| Description                                      |
 | :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
-| type     | string | Yes  | Event type. The event **'headTrackingEnabledChangeForAnyDevice'** is triggered when the head tracking status is changed.|
+| type     | string | Yes   | Event callback type. The supported event is 'headTrackingEnabledChangeForAnyDevice', which is triggered when the head tracking switch state changes. |
 | callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | Yes  | Callback used to return the result, indicating whether head tracking is enabled. **true** if enabled, **false** otherwise.|
 
 **Error codes**
@@ -5695,9 +5700,9 @@ Checks whether the system supports collaborative audio. This API returns the res
 
 **Return value**
 
-| Type   | Mandatory| Description                                                   |
-| ------- |------|------------------------------------------------------- |
-| boolean |  Yes | Check result for the support of collaborative audio. **true** if supported, **false** otherwise.|
+| Type    | Description                                                    |
+| ------- |------------------------------------------------------- |
+| boolean | Whether the system supports the mobile panoramic sound capability. The value **true** means supported, and **false** means not supported. |
 
 **Error codes**
 
@@ -5753,7 +5758,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 201     | Not system application.                     |
+| 202     | Not system application.                     |
 | 6800101 | Parameter verification failed. Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
 | 801     | Capability not supported.                   |
 
@@ -5804,9 +5809,9 @@ Checks whether collaborative audio is enabled for a device. This API returns the
 
 **Return value**
 
-| Type   | Mandatory| Description                                                   |
-| ------- |------|------------------------------------------------------- |
-| boolean |  Yes | Check result for whether collaborative audio is enabled. **true** if enabled, **false** otherwise.  |
+| Type    | Description                                                    |
+| ------- |------------------------------------------------------- |
+| boolean | Whether mobile panoramic sound is enabled or disabled for the specified device. The value **true** means enabled, and **false** means disabled.   |
 
 **Error codes**
 

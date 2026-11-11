@@ -6,6 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e867f90caded9da5c56383d3d7daf1d463ab296e translatedAt=2026-11-10T03:48:57.854Z pushedAt=2026-11-10T05:52:28.687Z nl=1 -->
 
 > **NOTE**
 >
@@ -120,10 +121,10 @@ This error code is reported when continuous task verification fails.
 
 **Solution**
 
-1. Check the application code.
-2. Check whether the application has the system permissions.
-3. Check the type of the device where the application is located.
-4. Check the value of **backgroundModes**.
+1. Check the application code and logs to determine whether a duplicate request operation exists.
+2. Check the application code and logs to determine whether a duplicate cancellation operation exists.
+3. Check whether the application configuration property backgroundModes has the requested long-running task type configured, and whether it is configured in the UIAbility configuration item to which the requested long-running task belongs.
+4. Check the type of the device where the app is located.
 5. Check whether the main type and subtype of the continuous task are configured.
 6. Check whether the main type and subtype of the continuous task are of the same length or whether their types match.
 7. Check whether the main type and subtype of the continuous task are out of range.
@@ -165,7 +166,7 @@ Continuous task storage failed.
 
 **Description**
 
-This error code is reported when information storage in a continuous task fails. 
+This error code is reported when information storage in a continuous task fails.
 
 **Possible Causes**
 

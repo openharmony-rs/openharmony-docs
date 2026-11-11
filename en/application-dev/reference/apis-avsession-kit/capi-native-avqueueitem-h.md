@@ -5,6 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=52f81c024fca337af4449e46bc1cf29af49f82f6 translatedAt=2026-11-10T07:56:51.730Z pushedAt=2026-11-10T10:59:36.255Z nl=1 -->
 
 ## Overview
 
@@ -313,7 +314,7 @@ Sets the duration of a media resource.
 
 | Type| Description|
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | **AVQUEUEITEM_SUCCESS**: The function is executed successfully.<br>         **AVQUEUEITEM_ERROR_INVALID_PARAM**:<br>                                        1. The **builder** parameter is **nullptr**.<br>                                        2. The **duration** parameter is **nullptr**.|
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | **AVQUEUEITEM_SUCCESS**: The function is executed successfully.<br>         **AVQUEUEITEM_ERROR_INVALID_PARAM**:<br>                                        1. The **builder** parameter is **nullptr**.<br>                                        2. The **duration** parameter is invalid (less than 0). |
 
 ### OH_AVSession_AVMediaDescriptionBuilder_SetMediaUri()
 
@@ -813,3 +814,5 @@ Releases an **avMediaDescription** object.
 | Type| Description|
 | -- | -- |
 | [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | **AVQUEUEITEM_SUCCESS**: The function is executed successfully.<br>         **AVQUEUEITEM_ERROR_INVALID_PARAM**: The **avMediaDescription** parameter is **nullptr**.|
+
+

@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1d8db1cdc2ad3be11608ce78368076a964968e2c translatedAt=2026-10-09T13:30:17.214Z pushedAt=2026-10-10T07:16:56.677Z -->
+<!-- md-trans-meta sourceCommit=8e9dd338cfff7ac284a0c87878bfac55689817c0 translatedAt=2026-11-10T05:04:34.717Z pushedAt=2026-11-10T07:28:16.319Z nl=1 -->
 
 > **NOTE**
 >
@@ -126,7 +126,7 @@ Subscribes to the newly detected BLE device. If this API is called multiple time
       console.info('call bluetooth.subscribeBLEFound success, data: ${data}.');
     },
     fail(data, code) {
-      console.info('call bluetooth.startBLEScan failed, code:' + code + ', data:' + data);
+      console.info('call bluetooth.subscribeBLEFound failed, code:' + code + ', data:' + data);
     }
   });
   ```

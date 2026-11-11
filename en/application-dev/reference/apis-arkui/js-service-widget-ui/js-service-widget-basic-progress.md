@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-10-12T04:00:37.240Z pushedAt=2026-10-12T06:46:04.264Z -->
+<!-- md-trans-meta sourceCommit=60f493edae4433e65bb89c0ec1819f9960b71f65 translatedAt=2026-11-10T07:55:17.624Z pushedAt=2026-11-10T10:58:22.997Z nl=1 -->
 
 The **\<progress>** component is used to provide a progress bar that displays the progress of content loading or operation processing.
 
@@ -85,9 +85,9 @@ type=arc
 | stroke-width | &lt;length&gt; | - | No| Width of the arc progress bar.<br>A larger width value means that the progress bar is closer to the center of the circle. The width is always within the radius range.|
 | start-angle | &lt;deg&gt; | 240 | No| Start angle of the arc progress bar, which starts from the direction of zero o'clock. The value ranges from 0 to 360 degrees (clockwise).|
 | total-angle | &lt;deg&gt; | 240 | No| Total length of the arc progress bar. The value ranges from –360 to 360. A negative number indicates anticlockwise.|
-| center-x | &lt;length&gt; | - | No| Center of the arc progress bar (with the upper left corner of this widget as the coordinate origin). This style must be used together with **center-y** and **radius**.|
-| center-y | &lt;length&gt; | - | No| Center of the arc progress bar (with the upper left corner of this widget as the coordinate origin). This style must be used together with **center-x** and **radius**.|
-| radius | &lt;length&gt; | - | No| Radius of the arc progress bar. This style must be used together with **center-x** and **center-y**.|
+| center-x | &lt;length&gt; | - | No | Center of the arc progress bar (with the upper left corner of this widget as the coordinate origin). This style requires center-y and radius to be configured together to take effect. |
+| center-y | &lt;length&gt; | - | No | Center of the arc progress bar (with the upper left corner of this widget as the coordinate origin). This style requires center-x and radius to be configured together to take effect. |
+| radius | &lt;length&gt; | - | No | Radius of the arc progress bar. This style requires center-x and center-y to be configured together to take effect. |
 
 
 ## Events

@@ -2,10 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
-<!--Tester:@baozewei-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=432796cf3e6a4be981f95a7796deb982eeaff362 translatedAt=2026-11-10T04:12:17.247Z pushedAt=2026-11-10T07:04:27.867Z nl=1 -->
 
 This module provides JavaScript APIs of the scan framework, which support scanner discovery and management, scanning execution, and device event listening. It is applicable to scenarios where an app needs to integrate a scanner for digital document collection and device management.
 

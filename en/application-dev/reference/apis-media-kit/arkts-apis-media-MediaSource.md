@@ -1,10 +1,11 @@
 # Interface (MediaSource)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chennotfound-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=520474bffb29d40d930f94872f44686b8ebd5f22 translatedAt=2026-11-10T08:36:27.899Z pushedAt=2026-11-10T10:43:24.015Z nl=1 -->
 
 The MediaSource class defines the media data information, which is from [createMediaSourceWithUrl](arkts-apis-media-f.md#mediacreatemediasourcewithurl12).
 

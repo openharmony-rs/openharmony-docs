@@ -1,11 +1,11 @@
 # Print_Property
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=f172f47675a58f89bb693013f28ad2465486c311 translatedAt=2026-10-09T11:44:05.762Z pushedAt=2026-10-10T03:46:22.271Z -->
+<!-- md-trans-meta sourceCommit=432796cf3e6a4be981f95a7796deb982eeaff362 translatedAt=2026-11-10T03:57:18.078Z pushedAt=2026-11-10T05:59:24.809Z nl=1 -->
 
 ```cpp
 typedef struct {...} Print_Property

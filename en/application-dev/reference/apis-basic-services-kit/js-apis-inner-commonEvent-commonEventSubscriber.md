@@ -5,6 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=a6874e5fd618adc18c14d574c22e8d39934482d4 translatedAt=2026-11-10T04:03:55.933Z pushedAt=2026-11-10T06:16:46.918Z nl=1 -->
 
 > **NOTE**
 >

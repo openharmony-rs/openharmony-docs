@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=86ea8b97f1292b63df716c46ceb4a291cb4def98 translatedAt=2026-10-08T12:09:40.178Z pushedAt=2026-10-12T09:13:58.524Z -->
+<!-- md-trans-meta sourceCommit=bead1a6d3edc23d7114be1e74f679f8512152b63 translatedAt=2026-11-10T03:01:36.323Z pushedAt=2026-11-10T04:38:02.155Z nl=1 -->
 
 > **NOTE**
 >
@@ -157,7 +157,7 @@ Enumerates the audio ring modes.
 | Name               |  Value   | Description      |
 | ------------------- | ------ | ---------- |
 | RINGER_MODE_SILENT  | 0      | Silent mode.|
-| RINGER_MODE_VIBRATE | 1      | Vibration mode.|
+| RINGER_MODE_VIBRATE | 1      | Vibration mode. |
 | RINGER_MODE_NORMAL  | 2      | Normal mode.|
 
 ## AudioSampleFormat<sup>8+</sup>

@@ -1,10 +1,11 @@
 # @ohos.file.cloudSyncManager (Device-Cloud Sync Management)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @Hermits; @reminder2352-->
-<!--Designer: @oh_create_jiawei-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @reminder2352-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=f096bc3b15373d5fe430d0554dc0e2fddfaae597 translatedAt=2026-11-10T05:09:33.618Z pushedAt=2026-11-10T07:35:36.458Z nl=1 -->
 
 The **cloudSyncManager** module provides APIs for managing device-cloud sync for applications. You can use the APIs to manage the full download state, the reason why the full download stops, and number of local and cloud files.
 

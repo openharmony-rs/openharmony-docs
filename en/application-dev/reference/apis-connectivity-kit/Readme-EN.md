@@ -79,7 +79,7 @@
   - [Bluetooth Error Codes](errorcode-bluetoothManager.md)
   - [Wi-Fi Error Codes](errorcode-wifi.md)
   - [NFC Error Codes](errorcode-nfc.md)
-  - [SE Error Codes](errorcode-se.md)
+  - [SecureElement Error Codes](errorcode-se.md)
   - [Error Codes of the Converged Short-Range Service Subsystem](errorcode-fusionConnectivity.md)
   - [NearLink Error Codes](errorcode-nearlink-service.md)
 - APIs No Longer Maintained<!--connectivity-arkts-dep-->

@@ -6,12 +6,15 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=88083dcb5b14d296520d59b6c53161eacb42338b translatedAt=2026-11-10T05:03:32.609Z pushedAt=2026-11-10T07:26:37.904Z nl=1 -->
 
 The **connectedTag** module provides APIs for using active tags. You can use the APIs to initialize the active tag chip and read and write active tags.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> The active tag capabilities are available only to system applications.
 
 ## Modules to Import
 
@@ -340,7 +343,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 |201 | Permission denied.                 |
-|401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
+|401 | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
 |3200101 | Connected NFC tag running state is abnormal in service. |
 
@@ -418,7 +421,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 |201 | Permission denied.                 |
-|401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
+|401 | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
 |3200101 | Connected NFC tag running state is abnormal in service. |
 
@@ -439,7 +442,7 @@ connectedTag.write(rawData, (err)=> {
 
 ## connectedTag.on('notify')
 
-on(type: "notify", callback: Callback&lt;number&gt;): void
+on(type: 'notify', callback: Callback&lt;number&gt;): void
 
 Registers the NFC field strength state events.
 
@@ -456,7 +459,7 @@ Registers the NFC field strength state events.
 
 ## connectedTag.off('notify')
 
-off(type: "notify", callback?: Callback&lt;number&gt;): void
+off(type: 'notify', callback?: Callback&lt;number&gt;): void
 
 Unregisters the NFC field strength state events.
 
@@ -489,7 +492,7 @@ async function nfcTagTestOn(): Promise<void> {
         console.error("initialize error:" + error);
     }
     // Register a callback for NFC status change events.
-    connectedTag.on("notify", nfcStatusCb);
+    connectedTag.on('notify', nfcStatusCb);
     try {
         let tag = [3, 1, 0];
         console.info("connectedTag write: tag=" + tag);
@@ -504,7 +507,7 @@ async function nfcTagTestOn(): Promise<void> {
 // Unregister the callback for NFC status change events and uninitialize the NFC tag.
 async function nfcTagTestOff(): Promise<void> {
     // Unregister the callback for NFC status change events.
-    connectedTag.off("notify", nfcStatusCb);
+    connectedTag.off('notify', nfcStatusCb);
     try {
         console.info("connectedTag uninitialize");
         connectedTag.uninitialize();

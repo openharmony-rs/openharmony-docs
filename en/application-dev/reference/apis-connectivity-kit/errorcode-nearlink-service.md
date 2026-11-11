@@ -1,16 +1,17 @@
 # NearLink Error Codes
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=8a03c39231c24a89e7d2329d21e5c175c46ce77e translatedAt=2026-08-12T11:15:45.226Z pushedAt=2026-08-13T09:17:22.872Z -->
+<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-11-10T05:00:48.320Z pushedAt=2026-11-10T07:21:54.879Z nl=1 -->
+
 
 > **NOTE**
 > 
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+
 
 ## 36100003 NearLink Disabled
 
@@ -28,7 +29,8 @@ NearLink is turned off.
 
 **Solution**
 
-On the settings screen of the device, go to **Settings** &gt; **NearLink &amp; Bluetooth** &gt; **NearLink** (or **Settings** &gt; **More connectivity options** &gt; **NearLink** for different products or system versions) to turn on NearLink, and try again. Alternatively, [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
+On the settings screen of the device, turn on NearLink and try again (the typical path is **Settings** &gt; **NearLink &amp; Bluetooth** &gt; **NearLink**, or **Settings** &gt; **More connectivity options** &gt; **NearLink** for different products or system versions). Alternatively, submit an issue via [Online Ticket](https://developer.huawei.com/consumer/en/support/feedback/#/).
+
 
 ## 36100020 Duplicate Port Registration
 
@@ -48,6 +50,7 @@ The same UUID is used to create a port repeatedly.
 
 Call the [dataTransfer.destroyPort](js-apis-nearlink-data-transfer-api.md#datatransferdestroyport) API to destroy the port with the UUID, or [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
 
+
 ## 36100021 Number of Registered Ports Exceeds the Upper Limit
 
 **Error Message**
@@ -65,6 +68,7 @@ The number of ports allocated for data transfer reaches the upper limit.
 **Solution**
 
 Call [dataTransfer.destroyPort](js-apis-nearlink-data-transfer-api.md#datatransferdestroyport) to destroy other registered ports, or [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
+
 
 ## 36100022 Port Not Registered
 
@@ -84,6 +88,7 @@ An attempt is made to destroy an unregistered port.
 
 Ensure that the port to be destroyed has been registered, or [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
 
+
 ## 36100023 Data Transmission Congestion
 
 **Error Message**
@@ -102,6 +107,7 @@ Data transmission in reliable transmission mode fails due to congestion at the p
 
 Control data write traffic, or [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
 
+
 ## 36100040 Integer Out of Range
 
 **Error Message**
@@ -114,11 +120,12 @@ The integer is out of range.
 
 **Possible Causes**
 
-The integer is out of range.
+The input integer parameter is out of the value range defined by the API.
 
 **Solution**
 
-Change the parameter value and set it to an integer within the allowed range, or [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
+Change the integer parameter value to a valid value within the range defined by the API (for details about the value range, see the parameter description of the corresponding API). Alternatively, submit an issue via [Online Ticket](https://developer.huawei.com/consumer/en/support/feedback/#/).
+
 
 ## 36100041 Invalid URL
 
@@ -132,13 +139,14 @@ The URL is invalid.
 
 **Possible Causes**
 
-The URL is invalid.
+The input address parameter is in an incorrect format, for example, the length does not meet the requirement or the parameter contains invalid characters.
 
 **Solution**
 
 Change the URL to a correct format, or [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
 
 A correct URL is in the format similar to **11:22:33:AA:BB:FF**, which consists of 17 characters, including hexadecimal digits and colons (:).
+
 
 ## 36100042 Empty Array
 
@@ -152,11 +160,12 @@ The array is empty.
 
 **Possible Causes**
 
-The array is empty.
+The input array parameter is empty, or the array does not contain valid elements.
 
 **Solution**
 
 Fill in the array correctly, or [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
+
 
 ## 36100043 Invalid UUID
 
@@ -170,13 +179,14 @@ The UUID is invalid.
 
 **Possible Causes**
 
-The UUID is invalid.
+The input UUID parameter is in an incorrect format, for example, the length does not meet the requirement or the parameter contains invalid characters.
 
 **Solution**
 
 Change the UUID to a correct format, or [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
 
 A correct UUID is in the format similar to **FFFFFFFF-1234-5678-ABCD-000000001234**, which consists of 36 characters, including hexadecimal digits and hyphens (-), representing a 128-bit ID.
+
 
 ## 36100044 Standard NearLink Service UUID Not Allowed
 
@@ -190,17 +200,18 @@ The standard NearLink service UUID is not allowed.
 
 **Possible Causes**
 
-The standard service UUID is not allowed in the API parameters. It is not allowed in the following scenarios:
+The NearLink standard service UUID is not allowed in the API parameters. It is not allowed in the following scenarios:
 
-1. The standard service UUID cannot be directly passed as a parameter.
+1. The NearLink standard service UUID cannot be directly passed as a parameter.
 
-2. The standard service UUID cannot be included in service structures such as custom services, attributes, and methods.
+2. The NearLink standard service UUID cannot be included in service structures such as custom services, attributes, and methods.
 
 **Solution**
 
 Replace the standard service UUID in the API parameters with a custom service UUID, or [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
 
-The standard service UUID consists of **37BEA880-FC70-11EA-B720-000000000000** officially defined by the NearLink Alliance and a 16-bit UUID. The first 112 bits of the custom service UUID must be different from the basic ID.
+A standard service UUID is formed by concatenating the first 112 bits of the Base UUID (37BEA880-FC70-11EA-B720-000000000000), which is officially defined by the SparkLink Alliance, with a 16-bit standard identifier. A custom service UUID must not use the first 112 bits of the Base UUID as its prefix.
+
 
 ## 36100050 Coordinated Device Set Management Not Supported
 
@@ -214,11 +225,12 @@ The device does not support coordinated device set management.
 
 **Possible Causes**
 
-The device does not support coordinated device set management.
+The current device hardware does not support the coordinated device set management function.
 
 **Solution**
 
-To use the coordinated device set function, use a device that supports NearLink coordinated device set management, such as the phones and tablets that support NearLink audio. Alternatively, [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
+To use the coordinated device set management function, use a device that supports the NearLink coordinated device set management feature, such as the phones and tablets that support NearLink audio. You can also query the device capability API to check whether the device supports this feature, or [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
+
 
 ## 36100099 Operation Failed
 
@@ -238,4 +250,4 @@ If the device has been paired, this error code will be returned when you call [s
 
 **Solution**
 
-Try again or [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).
+Try again. If the problem persists, [submit a ticket online](https://developer.huawei.com/consumer/en/support/feedback/#/).

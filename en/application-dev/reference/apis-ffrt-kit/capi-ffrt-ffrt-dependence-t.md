@@ -2,10 +2,11 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=1c82fe64143ca179b80fafe272ca5a84323e9159 translatedAt=2026-11-10T03:15:32.437Z pushedAt=2026-11-10T04:55:48.037Z nl=1 -->
 
 ```c
 typedef struct {...} ffrt_dependence_t
@@ -13,7 +14,7 @@ typedef struct {...} ffrt_dependence_t
 
 ## Overview
 
-The **ffrt_dependence_t** struct describes dependency data.
+Defines the dependency data item struct, which is used to describe a single dependency relationship between tasks.
 
 **Since**: 10
 
@@ -27,5 +28,7 @@ The **ffrt_dependence_t** struct describes dependency data.
 
 | Name| Description|
 | -- | -- |
-| [ffrt_dependence_type_t](capi-type-def-h.md#ffrt_dependence_type_t) type | Dependency type.|
-| const void* ptr | Address of the dependency data.|
+| [ffrt_dependence_type_t](capi-type-def-h.md#ffrt_dependence_type_t) type | Dependency type. |
+| const void* ptr | Dependency pointer. Points to the data for a data dependency, and points to the task handle for a task dependency. |
+
+

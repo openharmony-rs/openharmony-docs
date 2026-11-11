@@ -1,11 +1,11 @@
 # Print_PrinterCapability
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=bf611caa56efccbf7609e58b71abec1b4e33c1b6 translatedAt=2026-10-09T11:43:08.590Z pushedAt=2026-10-10T03:42:41.394Z -->
+<!-- md-trans-meta sourceCommit=432796cf3e6a4be981f95a7796deb982eeaff362 translatedAt=2026-11-10T03:56:59.118Z pushedAt=2026-11-10T05:59:03.694Z nl=1 -->
 
 ```cpp
 typedef struct {...} Print_PrinterCapability
@@ -27,21 +27,21 @@ Describes the printer capabilities, including the supported colors, duplex modes
 
 | Name| Description|
 | -- | -- |
-| [Print_ColorMode](capi-ohprint-h.md#print_colormode) *supportedColorModes | Array of supported color modes. The array length is determined by **supportedColorModesCount**. |
-| uint32_t supportedColorModesCount | Number of supported color modes, which is the same as the actual number of elements in the **supportedColorModes** array. |
-| [Print_DuplexMode](capi-ohprint-h.md#print_duplexmode) *supportedDuplexModes | Array of supported duplex modes. The array length is determined by **supportedDuplexModesCount**. |
-| uint32_t supportedDuplexModesCount | Number of supported duplex modes, which is the same as the actual number of elements in the **supportedDuplexModes** array. |
-| [Print_PageSize](capi-oh-print-print-pagesize.md) *supportedPageSizes | Array of supported paper sizes. The array length is determined by **supportedPageSizesCount**. |
-| uint32_t supportedPageSizesCount | Number of supported paper sizes, which is the same as the actual number of elements in the **supportedPageSizes** array. |
+| [Print_ColorMode](capi-ohprint-h.md#print_colormode) *supportedColorModes | Array of supported color modes. The array length is determined by supportedColorModesCount. |
+| uint32_t supportedColorModesCount | Number of supported color modes, which is the same as the actual number of elements in the supportedColorModes array. |
+| [Print_DuplexMode](capi-ohprint-h.md#print_duplexmode) *supportedDuplexModes | Array of supported duplex modes. The array length is determined by supportedDuplexModesCount. |
+| uint32_t supportedDuplexModesCount | Number of supported duplex modes, which is the same as the actual number of elements in the supportedDuplexModes array. |
+| [Print_PageSize](capi-oh-print-print-pagesize.md) *supportedPageSizes | Array of supported paper sizes. The array length is determined by supportedPageSizesCount. |
+| uint32_t supportedPageSizesCount | Number of supported paper sizes, which is the same as the actual number of elements in the supportedPageSizes array. |
 | char *supportedMediaTypes | Supported print media types. The value is a string in JSON format and determined by the printer. |
-| [Print_Quality](capi-ohprint-h.md#print_quality) *supportedQualities | Array of supported print quality options. The array length is determined by **supportedQualitiesCount**. |
-| uint32_t supportedQualitiesCount | Number of supported print quality options, which is the same as the actual number of elements in the **supportedQualities** array. |
+| [Print_Quality](capi-ohprint-h.md#print_quality) *supportedQualities | Array of supported print quality options. The array length is determined by supportedQualitiesCount. |
+| uint32_t supportedQualitiesCount | Number of supported print quality options, which is the same as the actual number of elements in the supportedQualities array. |
 | char *supportedPaperSources | Supported paper sources. The value is a string in JSON array format and determined by the printer. |
 | uint32_t supportedCopies | Number of supported copies. The value is determined by the printer capability. |
-| [Print_Resolution](capi-oh-print-print-resolution.md) *supportedResolutions | Array of supported printer resolutions. The array length is determined by **supportedResolutionsCount**. |
-| uint32_t supportedResolutionsCount | Number of supported printer resolutions, which is the same as the actual number of elements in the **supportedResolutions** array. |
-| [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) *supportedOrientations | Array of supported print orientation modes. The array length is determined by **supportedOrientationsCount**. |
-| uint32_t supportedOrientationsCount | Number of supported print orientation modes, which is the same as the actual number of elements in the **supportedOrientations** array. |
+| [Print_Resolution](capi-oh-print-print-resolution.md) *supportedResolutions | Array of supported printer resolutions. The array length is determined by supportedResolutionsCount. |
+| uint32_t supportedResolutionsCount | Number of supported printer resolutions, which is the same as the actual number of elements in the supportedResolutions array. |
+| [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) *supportedOrientations | Array of supported print orientation modes. The array length is determined by supportedOrientationsCount. |
+| uint32_t supportedOrientationsCount | Number of supported print orientation modes, which is the same as the actual number of elements in the supportedOrientations array. |
 | char *advancedCapability | Advanced capability. The value is a string in JSON format. This parameter is used to describe printer features other than those described above. The specific field names and values of the JSON object are determined by the printer. You need to parse the JSON object based on the actual returned content. |
 
 

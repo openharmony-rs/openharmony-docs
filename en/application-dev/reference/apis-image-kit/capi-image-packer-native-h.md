@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d810e2f6c940ac074339c8f7bf02f455bb6f8ece translatedAt=2026-11-10T08:07:11.249Z pushedAt=2026-11-10T11:50:43.990Z nl=1 -->
 
 ## Overview
 
@@ -50,7 +51,7 @@ The file declares the APIs for image encoding.
 | [Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *options, bool needsPackProperties)](#oh_packingoptions_setneedspackproperties) | Sets the **needsPackProperties** parameter in the OH_PackingOptions struct.|
 | <!--DelRow--> [Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)](#oh_packingoptions_getneedspackdfxdata) | Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.|
 | <!--DelRow--> [Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)](#oh_packingoptions_setneedspackdfxdata) | Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.|
-| [Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions *options, int32_t* desiredDynamicRange)](#oh_packingoptions_getdesireddynamicrange) | Obtains the desired dynamic range during encoding.|
+| [Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions \*options, int32_t\* desiredDynamicRange)](#oh_packingoptions_getdesireddynamicrange) | Gets the expected dynamic range of the image during encoding. |
 | [Image_ErrorCode OH_PackingOptions_SetDesiredDynamicRange(OH_PackingOptions *options, int32_t desiredDynamicRange)](#oh_packingoptions_setdesireddynamicrange) | Sets the desired dynamic range during encoding.|
 | [Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)](#oh_packingoptions_release) | Releases the pointer to an OH_PackingOptions struct.|
 | [Image_ErrorCode OH_PackingOptionsForSequence_Create(OH_PackingOptionsForSequence **options)](#oh_packingoptionsforsequence_create) | Creates the pointer to an OH_PackingOptionsForSequence struct.|
@@ -1076,7 +1077,7 @@ Image_ErrorCode OH_ImagePackerNative_GetSupportedFormats(Image_MimeType **suppor
 
 Obtains the supported image formats that can be encoded.
 
-Application scenario: This API is applicable for dynamically querying the target formats supported by the current system before encoding, and setting the MIME type accordingly via OH_PackingOptions_SetMimeType.
+Application scenario: This API is applicable for dynamically querying the target formats supported by the current system before encoding, and setting the MIME type accordingly via [OH_PackingOptions_SetMimeType](#oh_packingoptions_setmimetype).
 
 Restrictions: **supportedFormats** and **length** cannot be null pointers. If the API returns a failure, the content of the output parameter should not be used.
 
@@ -1126,3 +1127,5 @@ Resource management: The objects successfully created through [OH_ImagePackerNat
 | Type| Description|
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+
+

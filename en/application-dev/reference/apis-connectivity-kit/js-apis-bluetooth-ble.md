@@ -6,19 +6,22 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-08-19T10:06:43.189Z pushedAt=2026-08-19T13:02:36.877Z -->
+<!-- md-trans-meta sourceCommit=e256b988bdac6d5937796fca1623134c3f23f4c0 translatedAt=2026-11-10T05:05:29.426Z pushedAt=2026-11-10T07:24:24.044Z nl=1 -->
 
-The **ble** module provides [Bluetooth Low Energy (BLE)](../../connectivity/bluetooth/terminology.md#ble) capabilities, including BLE scan, BLE advertising, and [Generic Attribute Profile (GATT)](../../connectivity/bluetooth/terminology.md#gatt)-based connection and data transmission.
+The **ble** module provides [Bluetooth Low Energy (BLE)](../../connectivity/bluetooth/terminology.md#ble) capabilities, including BLE scan, BLE advertising, and [Generic Attribute Profile (GATT)](../../connectivity/bluetooth/terminology.md#gatt)-based connection and data transmission. It applies to low-power, short-range wireless communication scenarios such as smart wearables, health monitoring, and IoT device interconnection, helping reduce device power consumption and extend battery life.
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - You can use [util.generateRandomUUID](../apis-arkts/js-apis-util.md#utilgeneraterandomuuid9) to generate a [UUID](../../connectivity/bluetooth/terminology.md#uuid) wherever necessary.
+
+
 
 ## Modules to Import
 
 ```js
 import { ble } from '@kit.ConnectivityKit';
 ```
+
 
 ## ProfileConnectionState
 
@@ -50,6 +53,7 @@ Defines the address information of a Bluetooth device, including the address and
 | ------------------- | ------------------- |
 | [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | Address information of the Bluetooth device.|
 
+
 ## BluetoothTransport
 
 type BluetoothTransport = connection.BluetoothTransport
@@ -68,12 +72,12 @@ Represents the transport type of the remote device.
 | ------------------- | ------------------- |
 | [connection.BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | Transport type of the remote device. |
 
+
 ## ble.createGattServer
 
 createGattServer(): GattServer
 
 Creates a [GattServer](#gattserver) instance, which represents the server in a GATT connection.
-
 - You can use this instance to operate the server, for example, call [addService](#addservice) to add a server and use [notifyCharacteristicChanged](#notifycharacteristicchanged) report characteristic changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -95,16 +99,14 @@ let gattServer: ble.GattServer = ble.createGattServer();
 console.info('gatt success');
 ```
 
+
 ## ble.createGattClientDevice
 
 createGattClientDevice(deviceId: string): GattClientDevice
 
 Creates a [GattClientDevice](#gattclientdevice) instance, which represents the client in a GATT connection.
-
 - This API supports only the BLE transport type. To customize the [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) type, use [createGattClientDevice](#blecreategattclientdevice-1).
-
 - You can use this instance to operate the client, for example, call [connect](#connect) to initiate a connection to the peer device and call [getServices](#getservices) to obtain all service capabilities supported by the peer device.
-
 - This API requires the device address of the server. You can obtain the device address of the server by calling [ble.startBLEScan](#blestartblescan) or [startScan](#startscan15) of [BleScanner](#blescanner15). Ensure that the BLE advertising of the server is enabled.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -144,17 +146,16 @@ try {
 }
 ```
 
+
 ## ble.createGattClientDevice
 
 createGattClientDevice(deviceId: string, setting: GattSetting): GattClientDevice
 
 Creates a [GattClientDevice](#gattclientdevice) instance, which represents the client in a GATT connection. You can use [GattSetting](#gattsetting) to set GATT connection parameters.
-
 - You can use this instance to operate the client, for example, call [connect](#connect) to initiate a connection to the peer device and call [getServices](#getservices) to obtain all service capabilities supported by the peer device.
-
 - This API requires the device address of the server. You can obtain the device address of the server by calling [ble.startBLEScan](#blestartblescan) or [startScan](#startscan15) of [BleScanner](#blescanner15). Ensure that the BLE advertising of the server is enabled.
-
 - When setting the transport type of the connection using [GattSetting](#gattsetting), if the [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) type of the device is unknown, the default value is [TRANSPORT_LE](js-apis-bluetooth-connection.md#bluetoothtransport). However, the value cannot be set to [TRANSPORT_UNKNOWN](js-apis-bluetooth-connection.md#bluetoothtransport) (unknown device transport type). Otherwise, the [GattClientDevice](#gattclientdevice) instance cannot be created.
+- If automatic connection when the remote device is available is supported, that is, when the **autoConnect** parameter in **GattSetting** is set to **true**, the [Bluetooth Device Address Type](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type) of the peer device must be a Public Address, a Static Random Address, or a Resolvable Private Address paired through [connection.pairDevice](js-apis-bluetooth-connection.md#connectionpairdevice). An unpaired Resolvable Private Address does not support automatic connection when the remote device is available, and calling **connect** cannot connect to the peer device.
 
 **Since:** 26.0.0
 
@@ -175,7 +176,7 @@ Creates a [GattClientDevice](#gattclientdevice) instance, which represents the c
 
 | Type                                    | Description                                   |
 | ------------------------------------- | ------------------------------------ |
-| [GattClientDevice](#gattclientdevice) | **GattClientDevice** instance created. Before using a method of the client, you must create a **GattClientDevice** instance. |
+| [GattClientDevice](#gattclientdevice) | **GattClientDevice** instance created. Before using an API of the client, you must create a **GattClientDevice** instance. |
 
 **Error codes**
 
@@ -200,19 +201,15 @@ try {
 }
 ```
 
+
 ## ble.getConnectedBLEDevices
 
 getConnectedBLEDevices(): Array&lt;string&gt;
 
 Obtains the BLE devices that have been connected to the local device via GATT.
-
 - It is recommended that this API be used on the server. If this API is used on the client, the returned device address is empty.
 
-**Required permissions**:
-
-- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-
-- API version 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -246,22 +243,17 @@ try {
 }
 ```
 
+
 ## ble.getConnectedBLEDevices<sup>21+</sup>
 
 getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
 
 Obtains the BLE devices that have been connected to the local device via GATT according to the specified profile type.
-
 - If the local device is specified as the client, the addresses of all servers that are connected to the local device are returned.
-
 - If the local device is specified as the server, the addresses of all clients that are connected to the local device are returned.
-
 - If the local device is specified as both the client and server, the addresses of all clients and servers that are connected to the local device are returned.
 
 **Required permissions**:
-
-- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-
 - API versions 21 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
@@ -278,7 +270,7 @@ Obtains the BLE devices that have been connected to the local device via GATT ac
 
 | Type                 | Description                 |
 | ------------------- | ------------------- |
-| Array&lt;string&gt; | Addresses of BLE devices that have been connected to the local device via GATT.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If a device is unpaired or Bluetooth is disabled, the virtual address will change after the device is paired again.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).|
+| Array&lt;string&gt; | Set of BLE device addresses that have established GATT connections with the local device.<br>For information security purposes, the device addresses obtained here are virtual MAC addresses.<br>- After pairing with the device address succeeds, the address does not change.<br>- After unpairing the device or turning off Bluetooth, if the address is obtained again, the virtual address changes. The Bluetooth Subsystem decides the subsequent change timing based on the actual usage of the address; if another application is using the address, it will not be changed immediately.<br>- To persist the address, use the [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16) method. |
 
 **Error codes**
 
@@ -302,16 +294,14 @@ try {
 }
 ```
 
+
 ## ble.startBLEScan
 
 startBLEScan(filters: Array&lt;ScanFilter&gt;, options?: ScanOptions): void
 
 Starts BLE scanning.
-
 - You can obtain the scan result through the callback of [ble.on('BLEDeviceFind')](#bleonbledevicefind). Only BLE devices can be discovered. You can call [ble.stopBLEScan](#blestopblescan) to stop the BLE scan.
-
 - This API supports only single-channel scans. That is, the application can call this API only once at a time. Before calling this API again, you need to call [ble.stopBLEScan](#blestopblescan) to stop the previous scan.
-
 - To use multi-channel scans, call [BleScanner](#blescanner15).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -326,8 +316,8 @@ Starts BLE scanning.
 
 | Name    | Type                                    | Mandatory  | Description                                 |
 | ------- | -------------------------------------- | ---- | ----------------------------------- |
-| filters | Array&lt;[ScanFilter](#scanfilter)&gt; | Yes   | Rules for filtering the scan result. Devices that meet the filtering rules will be retained.<br>If this parameter is set to **null**, all discoverable BLE devices nearby will be scanned. However, this method is not recommended as it may pick up unexpected devices and increase power consumption.|
-| options | [ScanOptions](#scanoptions)            | No   | Scan options.                    |
+| filters | Array&lt;[ScanFilter](#scanfilter)&gt; | Yes | Set of scan result filtering policies. Devices that meet the filtering conditions are retained.<br>-If this parameter is set to null, all discoverable nearby BLE devices are scanned. However, this approach is not recommended because unexpected devices may be scanned and power consumption increases. |
+| options | [ScanOptions](#scanoptions)            | No | Scan parameter configuration. The default configuration is used when this parameter is not set.                     |
 
 **Error codes**
 
@@ -373,16 +363,14 @@ try {
 }
 ```
 
+
 ## ble.stopBLEScan
 
 stopBLEScan(): void
 
 Stops BLE scanning.
-
 - You can call [ble.startBLEScan](#blestartblescan) to stop the BLE scan.
-
 - Call this API to stop the scanning if BLE device scanning is no longer needed.
-
 - Scan results will not be reported after this API is called. You need to start a BLE device scan again for device discovery.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -415,20 +403,18 @@ try {
 }
 ```
 
+
 ## ble.startAdvertising
 
 startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?: AdvertiseData): void
 
 Starts sending BLE advertising packets.
-
 - Call [ble.stopAdvertising](#blestopadvertising) if the application no longer needs to send BLE advertising packets.
-
 - This API works in synchronous mode. It cannot be used with [ble.stopAdvertising](#blestopadvertising11) of API version 11.
 
+
 **Required permissions**:
-
 - API version 23 and later: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME)
-
 - API version 10 to 22: ohos.permission.ACCESS_BLUETOOTH
 
 - When the application uses the **advertiseName** field in [AdvertiseData](#advertisedata), you need to apply for [ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name).
@@ -445,7 +431,7 @@ Starts sending BLE advertising packets.
 | ----------- | ------------------------------------- | ---- | -------------- |
 | setting     | [AdvertiseSetting](#advertisesetting) | Yes   | Settings related to BLE advertising.   |
 | advData     | [AdvertiseData](#advertisedata)       | Yes   | BLE advertising data.  |
-| advResponse | [AdvertiseData](#advertisedata)       | No   | BLE advertising response.|
+| advResponse | [AdvertiseData](#advertisedata)       | No    | BLE scan response broadcast packet. If not set, no scan response broadcast packet is carried. |
 
 **Error codes**
 
@@ -511,16 +497,14 @@ try {
 }
 ```
 
+
 ## ble.stopAdvertising
 
 stopAdvertising(): void
 
 Stops sending BLE advertising packets.
-
 - This API works for BLE advertising initiated by [ble.startAdvertising](#blestartadvertising).
-
 - This API cannot be used with [ble.startAdvertising](#blestartadvertising11) of API version 11.
-
 - Call this API if the application no longer needs to send BLE advertising packets.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -553,24 +537,19 @@ try {
 }
 ```
 
+
 ## ble.startAdvertising<sup>11+</sup>
 
 startAdvertising(advertisingParams: AdvertisingParams, callback: AsyncCallback&lt;number&gt;): void
 
 Starts sending BLE advertising packets for the first time. This API uses an asynchronous callback to return the result.
-
 - After this API is called, the Bluetooth subsystem allocates related resources and returns the advertising ID using an asynchronous callback.
-
 - If the advertising duration is specified, advertising will stop after the duration elapses, but the allocated advertising resources will remain. You can call [ble.enableAdvertising](#bleenableadvertising11) to enable advertising again.
-
 - Since API version 15, you can call this API multiple times to establish multiple advertising channels, each being identified by a unique ID.
-
 - Call [ble.stopAdvertising](#blestopadvertising11) (supported since API version 11) if advertising is no longer needed. Do not use this API with [ble.stopAdvertising](#blestopadvertising) (supported since API version 10).
 
 **Required permissions**:
-
 - API version 23 and later: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME)
-
 - API version 11 to 22: ohos.permission.ACCESS_BLUETOOTH
 
 - When the application uses the **advertiseName** field in [AdvertiseData](#advertisedata), you need to apply for [ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name).
@@ -584,7 +563,7 @@ Starts sending BLE advertising packets for the first time. This API uses an asyn
 | Name              | Type                                   | Mandatory | Description                            |
 | ------------------- | --------------------------------------- | ----- | ------------------------------- |
 | advertisingParams   | [AdvertisingParams](#advertisingparams11) | Yes   | Parameters for starting BLE advertising.          |
-| callback            | AsyncCallback&lt;number&gt;             | Yes   | Callback used to return the advertisement ID.|
+| callback            | AsyncCallback&lt;number&gt;             | Yes    | Callback invoked to return the result. If the broadcast is started successfully, err is undefined and data is the assigned broadcast ID; otherwise, an error object is returned. |
 
 **Error codes**
 
@@ -664,24 +643,19 @@ try {
 }
 ```
 
+
 ## ble.startAdvertising<sup>11+</sup>
 
 startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt;
 
 Starts sending BLE advertising packets for the first time. This API uses a promise to return the result.
-
 - After this API is called, the Bluetooth subsystem allocates related resources and returns the advertising ID using a promise.
-
 - If the advertising duration is specified, advertising will stop after the duration elapses, but the allocated advertising resources will remain. You can call [ble.enableAdvertising](#bleenableadvertising11) to enable advertising again.
-
 - Since API version 15, you can call this API multiple times to establish multiple advertising channels, each being identified by a unique ID.
-
 - Call [ble.stopAdvertising](#blestopadvertising11-1) (supported since API version 11) if advertising is no longer needed. Do not use this API with [ble.stopAdvertising](#blestopadvertising) (supported since API version 10).
 
 **Required permissions**:
-
 - API version 23 and later: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME)
-
 - API version 11 to 22: ohos.permission.ACCESS_BLUETOOTH
 
 - When the application uses the **advertiseName** field in [AdvertiseData](#advertisedata), you need to apply for [ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name).
@@ -776,18 +750,15 @@ try {
 }
 ```
 
+
 ## ble.enableAdvertising<sup>11+</sup>
 
 enableAdvertising(advertisingEnableParams: AdvertisingEnableParams, callback: AsyncCallback&lt;void&gt;): void
 
 Enables BLE advertising based on the specified **advertisingId**. This API uses an asynchronous callback to return the result.
-
 - The advertising resource corresponding to **advertisingId** in [AdvertisingEnableParams](#advertisingenableparams11) has been allocated when [ble.startAdvertising](#blestartadvertising11) is called to start BLE for the first time.
-
 - If the advertising duration is specified in [ble.startAdvertising](#blestartadvertising11), advertising will stop after the duration elapses. You can call this API to enable advertising again.
-
 - If advertising is disabled by calling [ble.disableAdvertising](#bledisableadvertising11), you can call this API to enable advertising again.
-
 - You can obtain the operation result through the callback of [ble.on('advertisingStateChange')](#bleonadvertisingstatechange11).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -801,7 +772,226 @@ Enables BLE advertising based on the specified **advertisingId**. This API uses 
 | Name                   | Type                                                | Mandatory | Description                            |
 | ------------------------- | --------------------------------------------------- | ----- | ------------------------------- |
 | advertisingEnableParams   | [AdvertisingEnableParams](#advertisingenableparams11) | Yes   | Parameters for temporarily enabling BLE advertising.       |
-| callback                  | AsyncCallback&lt;void&gt;                           | Yes   | Callback used to return the result.                       |
+| callback                  | AsyncCallback&lt;void&gt;                           | Yes    | Callback used to return the result. If the broadcast restart is successful, **err** is **undefined**. Otherwise, **err** is an error object.                        |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------- |
+|201     | Permission denied.                       |
+|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                     |
+|801     | Capability not supported.                |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+|2902055 | Invalid advertising id.<br>Applicable versions: 20+                        |
+
+**Example**
+
+```js
+let manufactureValueBuffer = new Uint8Array(4);
+manufactureValueBuffer[0] = 1;
+manufactureValueBuffer[1] = 2;
+manufactureValueBuffer[2] = 3;
+manufactureValueBuffer[3] = 4;
+
+let serviceValueBuffer = new Uint8Array(4);
+serviceValueBuffer[0] = 4;
+serviceValueBuffer[1] = 6;
+serviceValueBuffer[2] = 7;
+serviceValueBuffer[3] = 8;
+console.info('manufactureValueBuffer = '+ JSON.stringify(manufactureValueBuffer));
+console.info('serviceValueBuffer = '+ JSON.stringify(serviceValueBuffer));
+try {
+    let setting: ble.AdvertiseSetting = {
+        interval:150,
+        txPower:0,
+        connectable:true,
+        isExtended:false
+    };
+    let manufactureDataUnit: ble.ManufactureData = {
+        manufactureId:4567,
+        manufactureValue:manufactureValueBuffer.buffer
+    };
+    let serviceDataUnit: ble.ServiceData = {
+        serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+        serviceValue:serviceValueBuffer.buffer
+    };
+    let advData: ble.AdvertiseData = {
+        serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+        manufactureData:[manufactureDataUnit],
+        serviceData:[serviceDataUnit]
+    };
+    let advResponse: ble.AdvertiseData = {
+        serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+        manufactureData:[manufactureDataUnit],
+        serviceData:[serviceDataUnit]
+    };
+    let advertisingParams: ble.AdvertisingParams = {
+        advertisingSettings: setting,
+        advertisingData: advData,
+        advertisingResponse: advResponse,
+        duration: 0
+    }
+    let advHandle = 0xFF;
+    ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
+        if (err) {
+            return;
+        } else {
+            advHandle = outAdvHandle;
+            console.info("advHandle: " + advHandle);
+        }
+    });
+
+    let advertisingDisableParams: ble.AdvertisingDisableParams = {
+        advertisingId: advHandle
+    }
+    ble.disableAdvertising(advertisingDisableParams, (err) => {
+        if (err) {
+            return;
+        }
+    });
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+## ble.enableAdvertising<sup>11+</sup>
+
+enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Promise&lt;void&gt;
+
+Enables BLE advertising based on the specified **advertisingId**. This API uses a promise to return the result.
+- The advertising resource corresponding to **advertisingId** in [AdvertisingEnableParams](#advertisingenableparams11) has been allocated when [ble.startAdvertising](#blestartadvertising11) is called to start BLE for the first time.
+- If the advertising duration is specified in [ble.startAdvertising](#blestartadvertising11), advertising will stop after the duration elapses. You can call this API to enable advertising again.
+- If advertising is disabled by calling [ble.disableAdvertising](#bledisableadvertising11), you can call this API to enable advertising again.
+- You can obtain the operation result through the callback of [ble.on('advertisingStateChange')](#bleonadvertisingstatechange11).
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name                   | Type                                                | Mandatory | Description                            |
+| ------------------------- | --------------------------------------------------- | ----- | ------------------------------- |
+| advertisingEnableParams   | [AdvertisingEnableParams](#advertisingenableparams11) | Yes   | Parameters for temporarily enabling BLE advertising.       |
+
+**Return value**
+
+| Type                      | Description         |
+| -------------------------- | ------------ |
+| Promise&lt;void&gt;      | Promise that returns no value.    |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------- |
+|201     | Permission denied.                       |
+|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                   |
+|801     | Capability not supported.                |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+|2902055 | Invalid advertising id.<br>Applicable versions: 20+                        |
+
+**Example**
+
+```js
+let manufactureValueBuffer = new Uint8Array(4);
+manufactureValueBuffer[0] = 1;
+manufactureValueBuffer[1] = 2;
+manufactureValueBuffer[2] = 3;
+manufactureValueBuffer[3] = 4;
+
+let serviceValueBuffer = new Uint8Array(4);
+serviceValueBuffer[0] = 4;
+serviceValueBuffer[1] = 6;
+serviceValueBuffer[2] = 7;
+serviceValueBuffer[3] = 8;
+console.info('manufactureValueBuffer = '+ JSON.stringify(manufactureValueBuffer));
+console.info('serviceValueBuffer = '+ JSON.stringify(serviceValueBuffer));
+try {
+    let setting: ble.AdvertiseSetting = {
+        interval:150,
+        txPower:0,
+        connectable:true,
+        isExtended:false
+    };
+    let manufactureDataUnit: ble.ManufactureData = {
+        manufactureId:4567,
+        manufactureValue:manufactureValueBuffer.buffer
+    };
+    let serviceDataUnit: ble.ServiceData = {
+        serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+        serviceValue:serviceValueBuffer.buffer
+    };
+    let advData: ble.AdvertiseData = {
+        serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+        manufactureData:[manufactureDataUnit],
+        serviceData:[serviceDataUnit]
+    };
+    let advResponse: ble.AdvertiseData = {
+        serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+        manufactureData:[manufactureDataUnit],
+        serviceData:[serviceDataUnit]
+    };
+    let advertisingParams: ble.AdvertisingParams = {
+        advertisingSettings: setting,
+        advertisingData: advData,
+        advertisingResponse: advResponse,
+        duration: 0
+    }
+    let advHandle = 0xFF;
+    ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
+        if (err) {
+            return;
+        } else {
+            advHandle = outAdvHandle;
+            console.info("advHandle: " + advHandle);
+        }
+    });
+
+    let advertisingDisableParams: ble.AdvertisingDisableParams = {
+        advertisingId: advHandle
+    }
+    ble.disableAdvertising(advertisingDisableParams)
+        .then(() => {
+            console.info("enable success");
+    });
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+## ble.disableAdvertising<sup>11+</sup>
+
+disableAdvertising(advertisingDisableParams: AdvertisingDisableParams, callback: AsyncCallback&lt;void&gt;): void
+
+Disables BLE advertising based on the specified **advertisingId**. This API uses an asynchronous callback to return the result.
+- After this API is called, advertising will stop, but the allocated advertising resources will remain. You can call [ble.enableAdvertising](#bleenableadvertising11) to enable advertising again.
+- The advertising resource corresponding to **advertisingId** in [AdvertisingDisableParams](#advertisingdisableparams11) has been allocated when [ble.startAdvertising](#blestartadvertising11) is called to start BLE for the first time.
+- You can obtain the operation result through the callback of [ble.on('advertisingStateChange')](#bleonadvertisingstatechange11).
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name                   | Type                                                  | Mandatory | Description                            |
+| ------------------------- | ----------------------------------------------------- | ----- | ------------------------------- |
+| advertisingDisableParams  | [AdvertisingDisableParams](#advertisingdisableparams11) | Yes   | Parameters for temporarily disabling BLE advertising.       |
+| callback                  | AsyncCallback&lt;void&gt;                             | Yes    | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.                        |
 
 **Error codes**
 
@@ -890,18 +1080,14 @@ try {
 }
 ```
 
-## ble.enableAdvertising<sup>11+</sup>
 
-enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Promise&lt;void&gt;
+## ble.disableAdvertising<sup>11+</sup>
 
-Enables BLE advertising based on the specified **advertisingId**. This API uses a promise to return the result.
+disableAdvertising(advertisingDisableParams: AdvertisingDisableParams): Promise&lt;void&gt;
 
-- The advertising resource corresponding to **advertisingId** in [AdvertisingEnableParams](#advertisingenableparams11) has been allocated when [ble.startAdvertising](#blestartadvertising11) is called to start BLE for the first time.
-
-- If the advertising duration is specified in [ble.startAdvertising](#blestartadvertising11), advertising will stop after the duration elapses. You can call this API to enable advertising again.
-
-- If advertising is disabled by calling [ble.disableAdvertising](#bledisableadvertising11), you can call this API to enable advertising again.
-
+Disables BLE advertising based on the specified **advertisingId**. This API uses a promise to return the result.
+- After this API is called, advertising will stop, but the allocated advertising resources will remain. You can call [ble.enableAdvertising](#bleenableadvertising11) to enable advertising again.
+- The advertising resource corresponding to **advertisingId** in [AdvertisingDisableParams](#advertisingdisableparams11) has been allocated when [ble.startAdvertising](#blestartadvertising11) is called to start BLE for the first time.
 - You can obtain the operation result through the callback of [ble.on('advertisingStateChange')](#bleonadvertisingstatechange11).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -912,15 +1098,15 @@ Enables BLE advertising based on the specified **advertisingId**. This API uses 
 
 **Parameters**
 
-| Name                   | Type                                                | Mandatory | Description                            |
-| ------------------------- | --------------------------------------------------- | ----- | ------------------------------- |
-| advertisingEnableParams   | [AdvertisingEnableParams](#advertisingenableparams11) | Yes   | Parameters for temporarily enabling BLE advertising.       |
+| Name                   | Type                                                  | Mandatory | Description                            |
+| ------------------------- | ----------------------------------------------------- | ----- | ------------------------------- |
+| advertisingDisableParams  | [AdvertisingDisableParams](#advertisingdisableparams11) | Yes   | Parameters for temporarily disabling BLE advertising.       |
 
 **Return value**
 
 | Type                      | Description         |
 | -------------------------- | ------------ |
-| Promise&lt;void&gt;      | Promise used to return the result.   |
+| Promise&lt;void&gt;        | Promise that returns no value.    |
 
 **Error codes**
 
@@ -929,7 +1115,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------------- |
 |201     | Permission denied.                       |
-|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                   |
+|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                  |
 |801     | Capability not supported.                |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -1008,240 +1194,15 @@ try {
 }
 ```
 
-## ble.disableAdvertising<sup>11+</sup>
-
-disableAdvertising(advertisingDisableParams: AdvertisingDisableParams, callback: AsyncCallback&lt;void&gt;): void
-
-Disables BLE advertising based on the specified **advertisingId**. This API uses an asynchronous callback to return the result.
-
-- After this API is called, advertising will stop, but the allocated advertising resources will remain. You can call [ble.enableAdvertising](#bleenableadvertising11) to enable advertising again.
-
-- The advertising resource corresponding to **advertisingId** in [AdvertisingDisableParams](#advertisingdisableparams11) has been allocated when [ble.startAdvertising](#blestartadvertising11) is called to start BLE for the first time.
-
-- You can obtain the operation result through the callback of [ble.on('advertisingStateChange')](#bleonadvertisingstatechange11).
-
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
-
-**System capability**: SystemCapability.Communication.Bluetooth.Core
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Parameters**
-
-| Name                   | Type                                                  | Mandatory | Description                            |
-| ------------------------- | ----------------------------------------------------- | ----- | ------------------------------- |
-| advertisingDisableParams  | [AdvertisingDisableParams](#advertisingdisableparams11) | Yes   | Parameters for temporarily disabling BLE advertising.       |
-| callback                  | AsyncCallback&lt;void&gt;                             | Yes   | Callback used to return the result.                       |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
-
-| ID| Error Message|
-| ------- | -------------------------------------- |
-|201     | Permission denied.                       |
-|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                     |
-|801     | Capability not supported.                |
-|2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
-|2900099 | Operation failed.                        |
-|2902055 | Invalid advertising id.<br>Applicable versions: 20+                        |
-
-**Example**
-
-```js
-let manufactureValueBuffer = new Uint8Array(4);
-manufactureValueBuffer[0] = 1;
-manufactureValueBuffer[1] = 2;
-manufactureValueBuffer[2] = 3;
-manufactureValueBuffer[3] = 4;
-
-let serviceValueBuffer = new Uint8Array(4);
-serviceValueBuffer[0] = 4;
-serviceValueBuffer[1] = 6;
-serviceValueBuffer[2] = 7;
-serviceValueBuffer[3] = 8;
-console.info('manufactureValueBuffer = '+ JSON.stringify(manufactureValueBuffer));
-console.info('serviceValueBuffer = '+ JSON.stringify(serviceValueBuffer));
-try {
-    let setting: ble.AdvertiseSetting = {
-        interval:150,
-        txPower:0,
-        connectable:true,
-        isExtended:false
-    };
-    let manufactureDataUnit: ble.ManufactureData = {
-        manufactureId:4567,
-        manufactureValue:manufactureValueBuffer.buffer
-    };
-    let serviceDataUnit: ble.ServiceData = {
-        serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-        serviceValue:serviceValueBuffer.buffer
-    };
-    let advData: ble.AdvertiseData = {
-        serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-        manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
-    };
-    let advResponse: ble.AdvertiseData = {
-        serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-        manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
-    };
-    let advertisingParams: ble.AdvertisingParams = {
-        advertisingSettings: setting,
-        advertisingData: advData,
-        advertisingResponse: advResponse,
-        duration: 0
-    }
-    let advHandle = 0xFF;
-    ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
-        if (err) {
-            return;
-        } else {
-            advHandle = outAdvHandle;
-            console.info("advHandle: " + advHandle);
-        }
-    });
-
-    let advertisingDisableParams: ble.AdvertisingDisableParams = {
-        advertisingId: advHandle
-    }
-    ble.disableAdvertising(advertisingDisableParams, (err) => {
-        if (err) {
-            return;
-        }
-    });
-} catch (err) {
-    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
-}
-```
-
-## ble.disableAdvertising<sup>11+</sup>
-
-disableAdvertising(advertisingDisableParams: AdvertisingDisableParams): Promise&lt;void&gt;
-
-Disables BLE advertising based on the specified **advertisingId**. This API uses a promise to return the result.
-
-- After this API is called, advertising will stop, but the allocated advertising resources will remain. You can call [ble.enableAdvertising](#bleenableadvertising11) to enable advertising again.
-
-- The advertising resource corresponding to **advertisingId** in [AdvertisingDisableParams](#advertisingdisableparams11) has been allocated when [ble.startAdvertising](#blestartadvertising11) is called to start BLE for the first time.
-
-- You can obtain the operation result through the callback of [ble.on('advertisingStateChange')](#bleonadvertisingstatechange11).
-
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
-
-**System capability**: SystemCapability.Communication.Bluetooth.Core
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Parameters**
-
-| Name                   | Type                                                  | Mandatory | Description                            |
-| ------------------------- | ----------------------------------------------------- | ----- | ------------------------------- |
-| advertisingDisableParams  | [AdvertisingDisableParams](#advertisingdisableparams11) | Yes   | Parameters for temporarily disabling BLE advertising.       |
-
-**Return value**
-
-| Type                      | Description         |
-| -------------------------- | ------------ |
-| Promise&lt;void&gt;        | Promise used to return the result.   |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
-
-| ID| Error Message|
-| ------- | -------------------------------------- |
-|201     | Permission denied.                       |
-|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                  |
-|801     | Capability not supported.                |
-|2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
-|2900099 | Operation failed.                        |
-|2902055 | Invalid advertising id.<br>Applicable versions: 20+                        |
-
-**Example**
-
-```js
-let manufactureValueBuffer = new Uint8Array(4);
-manufactureValueBuffer[0] = 1;
-manufactureValueBuffer[1] = 2;
-manufactureValueBuffer[2] = 3;
-manufactureValueBuffer[3] = 4;
-
-let serviceValueBuffer = new Uint8Array(4);
-serviceValueBuffer[0] = 4;
-serviceValueBuffer[1] = 6;
-serviceValueBuffer[2] = 7;
-serviceValueBuffer[3] = 8;
-console.info('manufactureValueBuffer = '+ JSON.stringify(manufactureValueBuffer));
-console.info('serviceValueBuffer = '+ JSON.stringify(serviceValueBuffer));
-try {
-    let setting: ble.AdvertiseSetting = {
-        interval:150,
-        txPower:0,
-        connectable:true,
-        isExtended:false
-    };
-    let manufactureDataUnit: ble.ManufactureData = {
-        manufactureId:4567,
-        manufactureValue:manufactureValueBuffer.buffer
-    };
-    let serviceDataUnit: ble.ServiceData = {
-        serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-        serviceValue:serviceValueBuffer.buffer
-    };
-    let advData: ble.AdvertiseData = {
-        serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-        manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
-    };
-    let advResponse: ble.AdvertiseData = {
-        serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-        manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
-    };
-    let advertisingParams: ble.AdvertisingParams = {
-        advertisingSettings: setting,
-        advertisingData: advData,
-        advertisingResponse: advResponse,
-        duration: 0
-    }
-    let advHandle = 0xFF;
-    ble.startAdvertising(advertisingParams, (err, outAdvHandle) => {
-        if (err) {
-            return;
-        } else {
-            advHandle = outAdvHandle;
-            console.info("advHandle: " + advHandle);
-        }
-    });
-
-    let advertisingDisableParams: ble.AdvertisingDisableParams = {
-        advertisingId: advHandle
-    }
-    ble.disableAdvertising(advertisingDisableParams)
-        .then(() => {
-            console.info("enable success");
-    });
-} catch (err) {
-    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
-}
-```
 
 ## ble.stopAdvertising<sup>11+</sup>
 
 stopAdvertising(advertisingId: number, callback: AsyncCallback&lt;void&gt;): void
 
 Stops sending BLE advertising packets. This API uses an asynchronous callback to return the result.
-
 - If this API is used with [ble.startAdvertising](#blestartadvertising11) (supported since API version 11), the requested advertising resources will be released.
-
 - The **advertisingId** allocated when [ble.startAdvertising](#blestartadvertising11) is called to start advertising for the first time will also become invalid.
-
 - This API cannot be used with [ble.startAdvertising](#blestartadvertising) (supported since API version 10).
-
 - You can obtain the operation result through the callback of [ble.on('advertisingStateChange')](#bleonadvertisingstatechange11).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -1255,7 +1216,7 @@ Stops sending BLE advertising packets. This API uses an asynchronous callback to
 | Name                   | Type                         | Mandatory | Description                        |
 | ------------------------- | ---------------------------- | ----- | --------------------------- |
 | advertisingId             | number                       | Yes   | ID of the advertisement to stop.       |
-| callback                  | AsyncCallback&lt;void&gt;    | Yes   | Callback used to return the result.                  |
+| callback                  | AsyncCallback&lt;void&gt;    | Yes    | Callback used to return the result. If the broadcast is completely stopped, **err** is **undefined**; otherwise, **err** is an error object.                   |
 
 **Error codes**
 
@@ -1338,18 +1299,15 @@ try {
 }
 ```
 
+
 ## ble.stopAdvertising<sup>11+</sup>
 
 stopAdvertising(advertisingId: number): Promise&lt;void&gt;
 
 Stops sending BLE advertising packets. This API uses a promise to return the result.
-
 - If this API is used with [ble.startAdvertising](#blestartadvertising11) (supported since API version 11), the requested advertising resources will be released.
-
 - The **advertisingId** allocated when [ble.startAdvertising](#blestartadvertising11) is called to start advertising for the first time will also become invalid.
-
 - This API cannot be used with [ble.startAdvertising](#blestartadvertising) (supported since API version 10).
-
 - You can obtain the operation result through the callback of [ble.on('advertisingStateChange')](#bleonadvertisingstatechange11).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -1368,7 +1326,7 @@ Stops sending BLE advertising packets. This API uses a promise to return the res
 
 | Type                      | Description         |
 | -------------------------- | ------------ |
-| Promise&lt;void&gt;        | Promise used to return the result.   |
+| Promise&lt;void&gt;        | Promise that returns no value.    |
 
 **Error codes**
 
@@ -1450,6 +1408,7 @@ try {
 }
 ```
 
+
 ## ble.on('advertisingStateChange')<sup>11+</sup>
 
 on(type: 'advertisingStateChange', callback: Callback&lt;AdvertisingStateChangeInfo&gt;): void
@@ -1493,6 +1452,7 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## ble.off('advertisingStateChange')<sup>11+</sup>
 
@@ -1539,17 +1499,14 @@ try {
 }
 ```
 
+
 ## ble.on('BLEDeviceFind')
 
 on(type: 'BLEDeviceFind', callback: Callback&lt;Array&lt;ScanResult&gt;&gt;): void
 
 Subscribes to BLE scan result reporting events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**:
-
-- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-
-- API version 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1589,12 +1546,12 @@ try {
 }
 ```
 
+
 ## ble.off('BLEDeviceFind')
 
 off(type: 'BLEDeviceFind', callback?: Callback&lt;Array&lt;ScanResult&gt;&gt;): void
 
 Unsubscribes from BLE scan result reporting events.
-
 - After [ble.stopBLEScan](#blestopblescan) is called to stop the BLE scan, call this API to unsubscribe from scan result reporting events if device discovery is no longer needed.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -1615,6 +1572,7 @@ Unsubscribes from BLE scan result reporting events.
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
 
 | ID| Error Message|
 | -------- | ---------------------------- |
@@ -1638,15 +1596,14 @@ try {
 }
 ```
 
+
 ## GattServer
 
 Represents a GATT server.
-
 - You can use [ble.createGattServer](#blecreategattserver) to create a server instance.
-
 - You can use this instance to operate the server, for example, call [addService](#addservice) to add a server and use [notifyCharacteristicChanged](#notifycharacteristicchanged) report characteristic changes.
-
 - You can use [on('connectionStateChange')](#onconnectionstatechange) to subscribe to connection state change events and obtain the address of the client that initiates the connection.
+
 
 ### addService
 
@@ -1715,12 +1672,12 @@ try {
 }
 ```
 
+
 ### removeService
 
 removeService(serviceUuid: string): void
 
 Removes a service from the server.
-
 - The service has been added by calling [addService](#addservice).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -1792,7 +1749,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |2900099 | Operation failed.                        |
 
 **Example**
-
 ```js
 let server: ble.GattServer = ble.createGattServer();
 try {
@@ -1802,6 +1758,7 @@ try {
 }
 ```
 
+
 ### getService<sup>22+</sup>
 
 getService(serviceUuid: string): GattService
@@ -1809,7 +1766,6 @@ getService(serviceUuid: string): GattService
 Obtains the service capabilities of a specified server.
 
 - Valid values can be returned only after the service has been added by calling [addService](#addservice).
-
 - You can use [ble.createGattServer](#blecreategattserver) to create multiple [GattServer](#gattserver) instances. This method can only obtain the services that have been added to the current instance. It cannot obtain other instances created by the current application or services that have been added to instances created by other applications.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -1860,6 +1816,7 @@ try {
 }
 ```
 
+
 ### getServices<sup>22+</sup>
 
 getServices(): GattService[]
@@ -1908,6 +1865,7 @@ try {
 }
 ```
 
+
 ### close
 
 close(): void
@@ -1946,6 +1904,7 @@ try {
 }
 ```
 
+
 ### connect
 
 connect(deviceId: string, autoConnect?: boolean): void
@@ -1953,9 +1912,7 @@ connect(deviceId: string, autoConnect?: boolean): void
 The caller acts as a GATT client and initiates a connection to a remote BLE device. The **autoConnect** parameter specifies whether to directly connect to the remote device or automatically reconnect to the remote device when it is available.
 
 - To enable automatic reconnection when the remote device is available (that is, **[autoConnect](#gattsetting)** is set to **true**), ensure that the client calls **[createGattClientDevice](#blecreategattclientdevice-1)** to initiate a connection and sets **[autoConnect](#gattsetting)** to **true**.
-
-- The server can use [on('BLEConnectionStateChange')](#onbleconnectionstatechange) to subscribe to connection state change events.
-
+- The server can use [on('connectionStateChange')](#onconnectionstatechange) to subscribe to connection state change events.
 - The server can call [disconnect](#disconnect) to disconnect.
 
 **Since:** 26.0.0
@@ -2000,13 +1957,14 @@ try {
 }
 ```
 
+
 ### disconnect
 
 disconnect(deviceId: string): void
 
 The caller acts as a GATT client to disconnect from a remote device or stop an ongoing connection.
 
-You can use [on('BLEConnectionStateChange')](#onbleconnectionstatechange) to subscribe to connection state change events.
+You can use [on('connectionStateChange')](#onconnectionstatechange) to subscribe to connection state change events.
 
 **Since:** 26.0.0
 
@@ -2048,6 +2006,7 @@ try {
 }
 ```
 
+
 ### notifyCharacteristicChanged
 
 notifyCharacteristicChanged(deviceId: string, notifyCharacteristic: NotifyCharacteristic, callback: AsyncCallback&lt;void&gt;): void
@@ -2055,11 +2014,8 @@ notifyCharacteristicChanged(deviceId: string, notifyCharacteristic: NotifyCharac
 Sends a characteristic change notification or indication from the server to the client. This API uses an asynchronous callback to return the result.
 
 - You are advised to enable the notification or indication function for the Client Characteristic Configuration descriptor (UUID: 00002902-0000-1000-8000-00805f9b34fb) of the characteristic.
-
 - According to the Bluetooth protocol, the data length of the Client Characteristic Configuration descriptor is 2 bytes. Bit 0 and bit 1 indicate whether notification and indication are enabled, respectively. For example, **bit 0 = 1** indicates that notification is enabled.
-
 - This API is called when the properties of a GATT characteristic change.
-
 - By default, the data length of **characteristicValue** in [notifyCharacteristic](#notifycharacteristic) is limited to (MTU – 3) bytes. The MTU size can be obtained from the [on('BLEMtuChange')](#onblemtuchange) callback.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -2116,6 +2072,7 @@ try {
 }
 ```
 
+
 ### notifyCharacteristicChanged
 
 notifyCharacteristicChanged(deviceId: string, notifyCharacteristic: NotifyCharacteristic): Promise&lt;void&gt;
@@ -2123,10 +2080,9 @@ notifyCharacteristicChanged(deviceId: string, notifyCharacteristic: NotifyCharac
 Sends a characteristic change event from the server to the client. This API uses a promise to return the result.
 
 - You are advised to enable notification or indication for the Client Characteristic Configuration descriptor of the characteristic.
-
 - According to the Bluetooth protocol, the data length of the Client Characteristic Configuration descriptor is 2 bytes. Bit 0 and bit 1 indicate whether notification and indication are enabled, respectively. For example, **bit 0 = 1** indicates that notification is enabled.
-
 - This API is called when the properties of a GATT characteristic change.
+- By default, the data length of **characteristicValue** in [NotifyCharacteristic](#notifycharacteristic) is limited to (MTU – 3) bytes. The MTU size can be obtained from the [on('BLEMtuChange')](#onblemtuchange) callback.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -2183,6 +2139,7 @@ try {
 }
 ```
 
+
 ### sendResponse
 
 sendResponse(serverResponse: ServerResponse): void
@@ -2192,11 +2149,8 @@ Sends a response to a client request. This helps to prevent a connection from be
 A client request is received through the following APIs:
 
 - [on('characteristicRead')](#oncharacteristicread)
-
 - [on('characteristicWrite')](#oncharacteristicwrite) (Whether a response is needed is determined based on **needRsp** in [CharacteristicWriteRequest](#characteristicwriterequest)).
-
 - [on('descriptorRead')](#ondescriptorread)
-
 - [on('descriptorWrite')](#ondescriptorwrite) (Whether a response is needed is determined by **needRsp** in [DescriptorWriteRequest](#descriptorwriterequest)).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -2249,17 +2203,14 @@ try {
 }
 ```
 
+
 ### on('characteristicRead')
 
 on(type: 'characteristicRead', callback: Callback&lt;CharacteristicReadRequest&gt;): void
 
 Subscribes to characteristic read request events of the client. After receiving the event, the server needs to call [sendResponse](#sendresponse) to send a response to the client. This API uses an asynchronous callback to return the result.
 
-**Required permissions**:
-
-- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-
-- API version 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2309,6 +2260,7 @@ function ReadCharacteristicReq(characteristicReadRequest: ble.CharacteristicRead
 gattServer.on('characteristicRead', ReadCharacteristicReq);
 ```
 
+
 ### off('characteristicRead')
 
 off(type: 'characteristicRead', callback?: Callback&lt;CharacteristicReadRequest&gt;): void
@@ -2352,17 +2304,14 @@ try {
 }
 ```
 
+
 ### on('characteristicWrite')
 
 on(type: 'characteristicWrite', callback: Callback&lt;CharacteristicWriteRequest&gt;): void
 
 Subscribes to characteristic write request events of the client. After receiving such an event, the server determines whether to call [sendResponse](#sendresponse) to send a response to the client based on the **needRsp** in [CharacteristicWriteRequest](#characteristicwriterequest).
 
-**Required permissions**:
-
-- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-
-- API version 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2415,6 +2364,7 @@ function WriteCharacteristicReq(characteristicWriteRequest: ble.CharacteristicWr
 gattServer.on('characteristicWrite', WriteCharacteristicReq);
 ```
 
+
 ### off('characteristicWrite')
 
 off(type: 'characteristicWrite', callback?: Callback&lt;CharacteristicWriteRequest&gt;): void
@@ -2458,17 +2408,14 @@ try {
 }
 ```
 
+
 ### on('descriptorRead')
 
 on(type: 'descriptorRead', callback: Callback&lt;DescriptorReadRequest&gt;): void
 
 Subscribes to descriptor read request events of the client. After receiving the event, the server needs to call [sendResponse](#sendresponse) to send a response to the client.
 
-**Required permissions**:
-
-- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-
-- API version 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2518,6 +2465,7 @@ function ReadDescriptorReq(descriptorReadRequest: ble.DescriptorReadRequest) {
 gattServer.on('descriptorRead', ReadDescriptorReq);
 ```
 
+
 ### off('descriptorRead')
 
 off(type: 'descriptorRead', callback?: Callback&lt;DescriptorReadRequest&gt;): void
@@ -2561,17 +2509,14 @@ try {
 }
 ```
 
+
 ### on('descriptorWrite')
 
 on(type: 'descriptorWrite', callback: Callback&lt;DescriptorWriteRequest&gt;): void
 
 Subscribes to descriptor write request events of the client. After receiving such an event, the server determines whether to call [sendResponse](#sendresponse) to send a response to the client based on the **needRsp** in [DescriptorWriteRequest](#descriptorwriterequest).
 
-**Required permissions**:
-
-- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-
-- API version 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2624,6 +2569,7 @@ function WriteDescriptorReq(descriptorWriteRequest: ble.DescriptorWriteRequest) 
 gattServer.on('descriptorWrite', WriteDescriptorReq);
 ```
 
+
 ### off('descriptorWrite')
 
 off(type: 'descriptorWrite', callback?: Callback&lt;DescriptorWriteRequest&gt;): void
@@ -2667,17 +2613,14 @@ gattServer.off('descriptorWrite');
 }
 ```
 
+
 ### on('connectionStateChange')
 
 on(type: 'connectionStateChange', callback: Callback&lt;BLEConnectionChangeState&gt;): void
 
 Subscribes to GATT profile connection state change events on the server. This API uses an asynchronous callback to return the result.
 
-**Required permissions**:
-
-- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-
-- API version 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2718,6 +2661,7 @@ try {
     console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
 }
 ```
+
 
 ### off('connectionStateChange')
 
@@ -2762,6 +2706,7 @@ try {
 }
 ```
 
+
 ### on('BLEMtuChange')
 
 on(type: 'BLEMtuChange', callback: Callback&lt;number&gt;): void
@@ -2778,7 +2723,7 @@ Subscribes to MTU change events on the server. This API uses an asynchronous cal
 
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| type     | string                                   | Yes   | Event type. The value **BLEMtuChange** indicates an MTU change event.<br>This event is triggered when the client initiates an MTU negotiation request.|
+| type     | string                                   | Yes    | Event type. The value 'BLEMtuChange' indicates an MTU change event.<br>This event is triggered when the client initiates an MTU negotiation request. |
 | callback | Callback&lt;number&gt; | Yes   | Callback used to return the negotiated MTU, in bytes.|
 
 **Error codes**
@@ -2804,6 +2749,7 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### off('BLEMtuChange')
 
@@ -2902,20 +2848,19 @@ readPhy(deviceId: string): Promise&lt;PhyValue&gt;
 Obtains the physical channel type of the link between the server and a specified device. This API uses a promise to return the result.
 
 - This method can be called only after the client initiates a connection and the connection is successful.
-
 - **deviceId** indicates the Bluetooth device address on the client, which can be obtained from the [on('connectionStateChange')](#onconnectionstatechange) callback subscribed to on the server.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| deviceId     | string | Yes   | Bluetooth device address on the client that needs to transmit data. Example: XX:XX:XX:XX:XX:XX|
+| deviceId     | string | Yes    | Address of the client Bluetooth Device for which the physical channel type is to be read. For example: "XX:XX:XX:XX:XX:XX". |
 
 **Return value**
 
@@ -2956,20 +2901,20 @@ setPhy(deviceId: string, phyValue: PhyValue): Promise&lt;void&gt;
 Sets the physical channel type of the link between the server and a specified device. This API uses a promise to return the result.
 
 - This method can be called only after the client initiates a connection and the connection is successful.
-
 - After the server calls **setPhy** to set the physical channel type of the link between the server and a specified device, the underlying layer will perform negotiation and produce the physical channel type supported by both the server and device based on the capabilities of the device. For example, if the server supports and sets [BLE_PHY_2M](#blephy23), but the device supports only [BLE_PHY_1M](#blephy23), the final type remains [BLE_PHY_1M](#blephy23).
+- The final physical channel type after negotiation can be obtained by subscribing to the [onBlePhyUpdate](#onblephyupdate23) event.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| deviceId     | string | Yes   | Bluetooth device address on the client that needs to transmit data. Example: XX:XX:XX:XX:XX:XX|
+| deviceId     | string | Yes    | Bluetooth Device address of the client for which the physical channel type is to be set. For example: "XX:XX:XX:XX:XX:XX". |
 | phyValue     | [PhyValue](#phyvalue23) | Yes   | Physical channel type of the link.|
 
 **Return value**
@@ -3016,7 +2961,7 @@ Subscribes to physical channel type change events. This API uses an asynchronous
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -3057,7 +3002,7 @@ Unsubscribes from physical channel type change events. This API uses an asynchro
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -3088,12 +3033,12 @@ try {
 }
 ```
 
+
 ## GattClientDevice
 
 Represents a GATT client class. It provides APIs for connecting to and transmitting data with the server.
 
 - Before using the APIs of this class, you need to call [createGattClientDevice](#blecreategattclientdevice) to construct a GATT client instance.
-
 - You can create multiple instances of this class to manage multiple GATT connections.
 
 ### connect
@@ -3103,7 +3048,6 @@ connect(): void
 Initiates a GATT connection to the server.
 
 - The address of the peer device has been specified by the **deviceId** in [createGattClientDevice](#blecreategattclientdevice).
-
 - The client can use [on('BLEConnectionStateChange')](#onbleconnectionstatechange) to subscribe to connection state change events.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -3138,13 +3082,14 @@ try {
 }
 ```
 
+
 ### disconnect
 
 disconnect(): void
 
 Disconnects the GATT connection from the server.
 
-- The client can use [on('BLEConnectionStateChange')](#onbleconnectionstatechange) to subscribe to connection state change events.
+- The client can use [on('BLEConnectionStateChange')](#onbleconnectionstatechange) to subscribe to disconnection state change events.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3177,6 +3122,7 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### close
 
@@ -3216,11 +3162,14 @@ try {
 }
 ```
 
+
 ### getDeviceName
 
 getDeviceName(callback: AsyncCallback&lt;string&gt;): void
 
 Obtains the device name of the server. This API uses an asynchronous callback to return the result.
+
+You can call this API only after the GATT profile is connected by calling [connect](#connect).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3272,11 +3221,14 @@ try {
 }
 ```
 
+
 ### getDeviceName
 
 getDeviceName(): Promise&lt;string&gt;
 
-Obtains the name of the peer BLE device. This API uses a promise to return the result.
+Obtains the device name of the server. This API uses a promise to return the result.
+
+You can call this API only after the GATT profile is connected by calling [connect](#connect).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3328,24 +3280,21 @@ try {
 }
 ```
 
+
 ### getServices
 
 getServices(callback: AsyncCallback&lt;Array&lt;GattService&gt;&gt;): void
 
 Obtains the list of services supported by the server. This API uses an asynchronous callback to return the result.
 
-Before invoking characteristic or descriptor read and write APIs, call this API to obtain the services supported by the server and ensure that the services include the characteristics or descriptors to be operated. The related APIs include:
+- You can call this API only after the GATT profile is connected by calling [connect](#connect).
+- Before invoking characteristic or descriptor read and write APIs, call this API to obtain the services supported by the server and ensure that the services include the characteristics or descriptors to be operated. The related APIs include:
 
 - [readCharacteristicValue](#readcharacteristicvalue)
-
 - [readDescriptorValue](#readdescriptorvalue)
-
 - [writeCharacteristicValue](#writecharacteristicvalue)
-
 - [writeDescriptorValue](#writedescriptorvalue)
-
 - [setCharacteristicChangeNotification](#setcharacteristicchangenotification)
-
 - [setCharacteristicChangeIndication](#setcharacteristicchangeindication)
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -3407,11 +3356,14 @@ try {
 }
 ```
 
+
 ### getServices
 
 getServices(): Promise&lt;Array&lt;GattService&gt;&gt;
 
-Obtains all services of the peer BLE device. This API uses a promise to return the result.
+Obtains the list of services supported by the server. This API uses a promise to return the result.
+
+You can call this API only after the GATT profile is connected by calling [connect](#connect).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -3462,16 +3414,14 @@ try {
 }
 ```
 
+
 ### readCharacteristicValue
 
 readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallback&lt;BLECharacteristic&gt;): void
 
 Reads the value of the specified characteristic. This API uses an asynchronous callback to return the result.<br>
-
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included. Otherwise, the read operation will fail.<br>
-
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-
 - During characteristic reading, ensure that the **serviceUuid** and **characteristicUuid** in **[BLECharacteristic](#blecharacteristic)** are correct. The data length of **characteristicValue** can be customized, which does not affect the actually read characteristic value.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -3545,16 +3495,14 @@ try {
 }
 ```
 
+
 ### readCharacteristicValue
 
 readCharacteristicValue(characteristic: BLECharacteristic): Promise&lt;BLECharacteristic&gt;
 
 Reads the value of the specified characteristic. This API uses a promise to return the result.<br>
-
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included. Otherwise, the read operation will fail.<br>
-
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-
 - During characteristic reading, ensure that the **serviceUuid** and **characteristicUuid** in **[BLECharacteristic](#blecharacteristic)** are correct. The data length of **characteristicValue** can be customized, which does not affect the actually read characteristic value.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -3622,16 +3570,14 @@ try {
 }
 ```
 
+
 ### readDescriptorValue
 
 readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback&lt;BLEDescriptor&gt;): void
 
 Reads data from the specified descriptor. This API uses an asynchronous callback to return the result.<br>
-
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified descriptor is included. Otherwise, the read operation will fail.<br>
-
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
-
 - During descriptor reading, ensure that the **serviceUuid**, **characteristicUuid**, and **descriptorUuid** of **[BLEDescriptor](#bledescriptor)** are correct. The data length of **descriptorValue** can be customized, which does not affect the actually read descriptor value.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -3696,16 +3642,14 @@ try {
 }
 ```
 
+
 ### readDescriptorValue
 
 readDescriptorValue(descriptor: BLEDescriptor): Promise&lt;BLEDescriptor&gt;
 
 Reads data from the specified descriptor. This API uses a promise to return the result.<br>
-
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified descriptor is included. Otherwise, the read operation will fail.<br>
-
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-
 - During descriptor reading, ensure that the **serviceUuid**, **characteristicUuid**, and **descriptorUuid** of **[BLEDescriptor](#bledescriptor)** are correct. The data length of **descriptorValue** can be customized, which does not affect the actually read descriptor value.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -3766,16 +3710,14 @@ try {
 }
 ```
 
+
 ### writeCharacteristicValue
 
 writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWriteType, callback: AsyncCallback&lt;void&gt;): void
 
 Writes a value to the specified characteristic. This API uses an asynchronous callback to return the result.<br>
-
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included. Otherwise, the write operation will fail.<br>
-
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-
 - The length of the characteristic data that can be written by an application at a time is limited to (MTU – 3) bytes. You can call the [setBLEMtuSize](#setblemtusize) API to specify the MTU size as required, and then change the length of the characteristic data that can be written by an application at a time.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -3846,16 +3788,14 @@ try {
 }
 ```
 
+
 ### writeCharacteristicValue
 
 writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWriteType): Promise&lt;void&gt;
 
 Writes a value to the specified characteristic. This API uses a promise to return the result.<br>
-
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included. Otherwise, the write operation will fail.<br>
-
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-
 - The length of the characteristic data that can be written by an application at a time is limited to (MTU – 3) bytes. You can call the [setBLEMtuSize](#setblemtusize) API to specify the MTU size as required, and then change the length of the characteristic data that can be written by an application at a time.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -3925,18 +3865,15 @@ try {
 }
 ```
 
+
 ### writeDescriptorValue
 
 writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback&lt;void&gt;): void
 
 Writes data to the specified descriptor. This API uses an asynchronous callback to return the result.<br>
-
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified descriptor is included. Otherwise, the write operation will fail.<br>
-
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-
 - The length of the descriptor data that can be written by an application at a time is limited to (MTU – 3) bytes. You can call the [setBLEMtuSize](#setblemtusize) API to specify the MTU size as required, and then change the length of the descriptor that can be written by an application at a time.<br>
-
 - The Client Characteristic Configuration descriptor (UUID: 00002902-0000-1000-8000-00805f9b34fb) and Server Characteristic Configuration descriptor (UUID: 00002903-0000-1000-8000-00805f9b34fb) are exceptional cases. As per the Bluetooth standard, their data length is 2 bytes, and therefore the length of the content to be written must be set to 2 bytes.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -4000,18 +3937,15 @@ try {
 }
 ```
 
+
 ### writeDescriptorValue
 
 writeDescriptorValue(descriptor: BLEDescriptor): Promise&lt;void&gt;
 
 Writes data to the specified descriptor. This API uses a promise to return the result.<br>
-
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified descriptor is included. Otherwise, the write operation will fail.<br>
-
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).<br>
-
 - The length of the descriptor data that can be written by an application at a time is limited to (MTU – 3) bytes. You can call the [setBLEMtuSize](#setblemtusize) API to specify the MTU size as required, and then change the length of the descriptor that can be written by an application at a time.<br>
-
 - The Client Characteristic Configuration descriptor (UUID: 00002902-0000-1000-8000-00805f9b34fb) and Server Characteristic Configuration descriptor (UUID: 00002903-0000-1000-8000-00805f9b34fb) are exceptional cases. As per the Bluetooth standard, their data length is 2 bytes, and therefore the length of the content to be written must be set to 2 bytes.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -4076,12 +4010,12 @@ try {
 }
 ```
 
+
 ### getRssiValue
 
 getRssiValue(callback: AsyncCallback&lt;number&gt;): void
 
 Obtains the RSSI of a GATT connection. This API uses an asynchronous callback to return the result.<br>
-
 - You can call this API only after the GATT profile is connected by calling [connect](#connect).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -4128,12 +4062,12 @@ try {
 }
 ```
 
+
 ### getRssiValue
 
 getRssiValue(): Promise&lt;number&gt;
 
 Obtains the RSSI of a GATT connection. This API uses a promise to return the result.<br>
-
 - You can call this API only after the GATT profile is connected by calling [connect](#connect).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -4178,16 +4112,15 @@ try {
 }
 ```
 
+
 ### setBLEMtuSize
 
 setBLEMtuSize(mtu: number): void
 
 Negotiates the MTU size between the client and server. For details, see [MTU](../../connectivity/bluetooth/terminology.md#mtu).
-
 - You can call this API only after the GATT profile is connected by calling [connect](#connect).<br>
-
+- After this API is called, the local device initiates an MTU negotiation request to the peer device.<br>
 - You can call [on('BLEMtuChange')](#onblemtuchange-1) to subscribe to the MTU negotiation result.<br>
-
 - If no negotiation is performed, the MTU size is 23 bytes by default.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -4228,16 +4161,15 @@ try {
 }
 ```
 
+
 ### setBLEMtu
 
 setBLEMtu(mtu: number): Promise&lt;number&gt;
 
-The client negotiates the [MTU](../../connectivity/bluetooth/terminology.md#mtu) (maximum transmission unit) size with the server.<br>
-
+Negotiates the [MTU](../../connectivity/bluetooth/terminology.md#mtu) (maximum transmission unit) size with the server. Compared with [setBLEMtuSize](#setblemtusize), this API directly returns the negotiated MTU through a promise, without the need to subscribe to the [on('BLEMtuChange')](#onblemtuchange-1) event to obtain the negotiation result.<br>
 - You can call this API only after the GATT profile is connected by calling [connect](#connect-1).<br>
-
+- After this API is called, the local device initiates an MTU negotiation request to the peer device.
 - Ensure that the input parameter is within the value range. Otherwise, an exception will be returned.<br>
-
 - If no negotiation is performed, the MTU size defaults to 23 bytes.
 
 **Since:** 26.0.0
@@ -4262,6 +4194,7 @@ The client negotiates the [MTU](../../connectivity/bluetooth/terminology.md#mtu)
 | --------------------- | --------------------------------- |
 | Promise&lt;number&gt; | Promise used to return the MTU that is successfully negotiated, in bytes. |
 
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
@@ -4273,6 +4206,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |2900011 | The operation is busy. The last operation is not complete.                        |
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.                |
+
 
 **Example**
 
@@ -4287,24 +4221,18 @@ try {
 }
 ```
 
+
 ### setCharacteristicChangeNotification
 
 setCharacteristicChangeNotification(characteristic: BLECharacteristic, enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 Sets whether to enable the client to receive characteristic change notifications from the server. This API uses an asynchronous callback to return the result.<br>
-
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included.<br>
-
 - The server can send change notifications only if the specified characteristic contains the UUID (00002902-0000-1000-8000-00805f9b34fb) of the Client Characteristic Configuration descriptor.<br>
-
 - If **enable** is set to **true**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to enable the change notification function.<br>
-
 - If **enable** is set to **false**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to disable the change notification function.<br>
-
 - You can call [on('BLECharacteristicChange')](#onblecharacteristicchange) to subscribe to characteristic change notifications of the server.<br>
-
 - The client does not need to send a response when receiving a characteristic change notification from the server.
-
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -4368,24 +4296,18 @@ try {
 
 ```
 
+
 ### setCharacteristicChangeNotification
 
 setCharacteristicChangeNotification(characteristic: BLECharacteristic, enable: boolean): Promise&lt;void&gt;
 
 Sets whether to enable the client to receive characteristic change notifications from the server. This API uses a promise to return the result.<br>
-
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included.<br>
-
 - The server can send change notifications only if the specified characteristic contains the UUID (00002902-0000-1000-8000-00805f9b34fb) of the Client Characteristic Configuration descriptor.<br>
-
 - If **enable** is set to **true**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to enable the change notification function.<br>
-
 - If **enable** is set to **false**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to disable the change notification function.<br>
-
 - You can call [on('BLECharacteristicChange')](#onblecharacteristicchange) to subscribe to characteristic change notifications of the server.<br>
-
 - The client does not need to send a response when receiving a characteristic change notification from the server.
-
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -4448,24 +4370,18 @@ try {
 
 ```
 
+
 ### setCharacteristicChangeIndication
 
 setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 Sets whether to enable the client to receive characteristic change indications from the server. This API uses an asynchronous callback to return the result.<br>
-
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included.<br>
-
 - The server can send change indications only if the specified characteristic contains the UUID (00002902-0000-1000-8000-00805f9b34fb) of the Client Characteristic Configuration descriptor.<br>
-
 - If **enable** is set to **true**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to enable the change indication function.<br>
-
 - If **enable** is set to **false**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to disable the change indication function.<br>
-
 - You can call [on('BLECharacteristicChange')](#onblecharacteristicchange) to subscribe to characteristic change indications of the server.<br>
-
 - When receiving a characteristic change indication from the server, the client does not need to send a response as this will be done by the Bluetooth service.
-
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -4529,24 +4445,18 @@ try {
 
 ```
 
+
 ### setCharacteristicChangeIndication
 
 setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: boolean): Promise&lt;void&gt;
 
 Sets whether to enable the client to receive characteristic change indications from the server. This API uses a promise to return the result.<br>
-
 - You need to call [getServices](#getservices) to obtain all services supported by the server, and ensure that the UUID of the specified characteristic is included.<br>
-
 - The server can send change indications only if the specified characteristic contains the UUID (00002902-0000-1000-8000-00805f9b34fb) of the Client Characteristic Configuration descriptor.<br>
-
 - If **enable** is set to **true**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to enable the change indication function.<br>
-
 - If **enable** is set to **false**, the system Bluetooth service automatically writes the Client Characteristic Configuration descriptor to the server to disable the change indication function.<br>
-
 - You can call [on('BLECharacteristicChange')](#onblecharacteristicchange) to subscribe to characteristic change indications of the server.<br>
-
 - When receiving a characteristic change indication from the server, the client does not need to send a response as this will be done by the Bluetooth service.
-
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](#readcharacteristicvalue), [readDescriptorValue](#readdescriptorvalue), [writeCharacteristicValue](#writecharacteristicvalue), [writeDescriptorValue](#writedescriptorvalue), [setCharacteristicChangeNotification](#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](#setcharacteristicchangeindication).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -4609,12 +4519,12 @@ try {
 
 ```
 
+
 ### on('BLECharacteristicChange')
 
 on(type: 'BLECharacteristicChange', callback: Callback&lt;BLECharacteristic&gt;): void
 
 Subscribes to the characteristic change events of the server. This API uses an asynchronous callback to return the result.<br>
-
 -  You can receive characteristic change notifications or indications only after calling [setCharacteristicChangeNotification](#setcharacteristicchangenotification) or [setCharacteristicChangeIndication](#setcharacteristicchangeindication) to enable the notification or indication function.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -4659,6 +4569,7 @@ try {
 }
 ```
 
+
 ### off('BLECharacteristicChange')
 
 off(type: 'BLECharacteristicChange', callback?: Callback&lt;BLECharacteristic&gt;): void
@@ -4701,6 +4612,7 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### on('BLEConnectionStateChange')
 
@@ -4749,6 +4661,7 @@ try {
 }
 ```
 
+
 ### off('BLEConnectionStateChange')
 
 off(type: 'BLEConnectionStateChange', callback?: Callback&lt;BLEConnectionChangeState&gt;): void
@@ -4791,6 +4704,7 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### on('BLEMtuChange')
 
@@ -4837,6 +4751,7 @@ try {
 }
 ```
 
+
 ### off('BLEMtuChange')
 
 off(type: 'BLEMtuChange', callback?: Callback&lt;number&gt;): void
@@ -4880,14 +4795,13 @@ try {
 }
 ```
 
+
 ### on('serviceChange')<sup>22+</sup>
 
 on(type: 'serviceChange', callback: Callback&lt;void&gt;): void
 
 Subscribes to service change events of the server device on the client. This API uses an asynchronous callback to return the result.<br>
-
 - If the client has subscribed to the event, the client will receive a service change notification when the server adds or deletes a service.<br>
-
 - When the client receives a service change notification, you are advised to call [getServices](#getservices) again to obtain the latest service capabilities supported by the server device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -4929,12 +4843,12 @@ try {
 }
 ```
 
+
 ### off('serviceChange')<sup>22+</sup>
 
 off(type: 'serviceChange', callback?: Callback&lt;void&gt;): void
 
 Unsubscribes from service change events of the server device on the client.<br>
-
 - After the unsubscription, if the service of the server device changes, the client does not receive the event notification.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -4975,6 +4889,7 @@ try {
     console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
+
 
 ### getConnectedState<sup>22+</sup>
 
@@ -5023,9 +4938,7 @@ try {
 updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
 
 Initiates a connection parameter update request to the peer device. After this API is successfully called, the data transmission speed with the peer device can be switched. This API uses a promise to return the result.
-
 - You can call this API only after the GATT profile is connected by calling [connect](#connect).
-
 - If this API is not called, the default connection parameter type is [ble.ConnectionParam.BALANCED](#connectionparam22).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -5083,7 +4996,7 @@ Obtains the physical channel type of the link on the client. This API uses a pro
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -5123,14 +5036,14 @@ setPhy(phyValue: PhyValue): Promise&lt;void&gt;
 Sets the physical channel type of the link on the client. This API uses a promise to return the result.
 
 - This method can be called only after the [connect](#connect) method is called to initiate a connection and the connection is successful.
-
 - After the client calls **setPhy** to set the physical channel type, the underlying layer will perform negotiation and produce the physical channel type supported by both the client and device based on the capabilities of the device. For example, if the server supports and sets [BLE_PHY_2M](#blephy23), but the device supports only [BLE_PHY_1M](#blephy23), the final type remains [BLE_PHY_1M](#blephy23).
+- The final physical channel type after negotiation can be obtained by subscribing to the [onBlePhyUpdate](#onblephyupdate23-1) event.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -5181,7 +5094,7 @@ Subscribes to physical channel type change events. This API uses an asynchronous
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -5222,7 +5135,7 @@ Unsubscribes from physical channel type change events. This API uses an asynchro
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -5283,9 +5196,7 @@ console.info('create bleScanner success');
 ## BleScanner<sup>15+</sup>
 
 Represents the BLE scanner class, which provides scan-related APIs.<br>
-
 - Before using the APIs of this class, you need to call [createBleScanner](#blecreateblescanner15) to construct a BLE scanner instance.<br>
-
 - You can create multiple instances of this class to manage multiple scan processes.
 
 ### startScan<sup>15+</sup>
@@ -5293,11 +5204,8 @@ Represents the BLE scanner class, which provides scan-related APIs.<br>
 startScan(filters: Array&lt;ScanFilter&gt;, options?: ScanOptions): Promise&lt;void&gt;
 
 Starts BLE scanning. This API uses a promise to return the result.<br>
-
 - This API can be used to scan only BLE devices.<br>
-
 - You can obtain the scan result through the callback of [on('BLEDeviceFind')](#onbledevicefind15).<br>
-
 - You can call [stopScan](#stopscan15) to stop the BLE scan.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -5311,11 +5219,10 @@ Starts BLE scanning. This API uses a promise to return the result.<br>
 **Parameters**
 
 <!--Table: auto; auto; 10%; 50%-->
-
 | Name    | Type                                    | Mandatory  | Description                                 |
 | ------- | -------------------------------------- | ---- | ----------------------------------- |
 | filters | Array&lt;[ScanFilter](#scanfilter)&gt; | Yes   | Filter criteria for BLE advertising. Devices that meet the filter criteria will be reported.<br>- If this parameter is set to **null**, all discoverable BLE devices nearby will be scanned. However, this method is not recommended as it may pick up unexpected devices and increase power consumption.<br>- In geofence scan reporting mode (that is, [ScanReportMode](#scanreportmode15) is set to **FENCE_SENSITIVITY_LOW** or **FENCE_SENSITIVITY_HIGH**), this parameter cannot be set to **null**; that is, non-null filters must be passed.<br>- Filter resources are shared by all applications. It is recommended that an application use no more than three filters. If filter resources are exhausted, the scan will fail and error code 2900009 will be returned.|
-| options | [ScanOptions](#scanoptions)            | No   | Defines the scan configuration parameters.                    |
+| options | [ScanOptions](#scanoptions)            | No    | Scan configuration parameters. Default configuration is used if not specified.                     |
 
 **Return value**
 
@@ -5349,23 +5256,23 @@ function onReceiveEvent(scanReport: ble.ScanReport) {
 }
 async function startscan() {
     try {
-        bleScanner.on("BLEDeviceFind", onReceiveEvent);
-        let scanFilter: ble.ScanFilter = {
+    bleScanner.on("BLEDeviceFind", onReceiveEvent);
+            let scanFilter: ble.ScanFilter = {
             deviceId:"XX:XX:XX:XX:XX:XX",
             name:"test",
-            serviceUuid:"00001888-0000-1000-8000-00805f9b34fb"
-        };
+        serviceUuid:"00001888-0000-1000-8000-00805f9b34fb"
+    };
         let scanOptions: ble.ScanOptions = {
-            interval: 500,
-            dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
-            matchMode: ble.MatchMode.MATCH_MODE_AGGRESSIVE,
-            reportMode: ble.ScanReportMode.FENCE_SENSITIVITY_LOW
-        }
-        await bleScanner.startScan([scanFilter],scanOptions);
-        console.info('startScan success');
-    } catch (err) {
-        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+        interval: 500,
+        dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
+        matchMode: ble.MatchMode.MATCH_MODE_AGGRESSIVE,
+    reportMode: ble.ScanReportMode.FENCE_SENSITIVITY_LOW
     }
+    await bleScanner.startScan([scanFilter],scanOptions);
+console.info('startScan success');
+    } catch (err) {
+console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
 }
 startscan();
 ```
@@ -5375,9 +5282,7 @@ startscan();
 stopScan(): Promise&lt;void&gt;
 
 Stops an ongoing BLE scan. This API uses a promise to return the result.<br>
-
 - This API works for a scan initiated by calling [startScan](#startscan15).<br>
-
 - Call this API to stop the scanning if BLE device scanning is no longer needed.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -5414,11 +5319,11 @@ import { ble } from '@kit.ConnectivityKit';
 let bleScanner: ble.BleScanner = ble.createBleScanner();
 async function stopScan() {
     try {
-        await bleScanner.stopScan();
-        console.info('stopScan success');
+    await bleScanner.stopScan();
+console.info('stopScan success');
     } catch (err) {
-        console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-    }
+console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
 }
 stopScan();
 ```
@@ -5429,11 +5334,7 @@ on(type: 'BLEDeviceFind', callback: Callback&lt;ScanReport&gt;): void
 
 Subscribes to BLE scan result reporting events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**:
-
-- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-
-- API version 15 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -5480,7 +5381,6 @@ try {
 off(type: 'BLEDeviceFind', callback?: Callback&lt;ScanReport&gt;): void
 
 Unsubscribes from BLE scan result reporting events.<br>
-
 - After [stopScan](#stopscan15) is called to stop the BLE scan, call this API to unsubscribe from scan result reporting events if device discovery is no longer needed.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
@@ -5541,7 +5441,9 @@ Defines the structure of GATT service, which can contain multiple [BLECharacteri
 | serviceUuid     | string                                   | No| No   | UUID of the GATT service, for example, 00001888-0000-1000-8000-00805f9b34fb.|
 | isPrimary       | boolean                                  | No| No   | Whether the service is a primary service. The value **true** indicates that the service is a primary service, and the value **false** indicates the opposite.               |
 | characteristics | Array&lt;[BLECharacteristic](#blecharacteristic)&gt; | No| No   | Characteristics of the GATT service.                            |
-| includeServices | Array&lt;[GattService](#gattservice)&gt; | No| Yes   | Services on which the service depends.                            |
+| includeServices | Array&lt;[GattService](#gattservice)&gt; | No | Yes | Other services that the current service depends on. If this parameter is not set, the current service does not depend on other services by default. |
+
+
 
 ## BLECharacteristic
 
@@ -5557,9 +5459,10 @@ Defines the structure of GATT characteristic, which is the core data unit of [Ga
 | characteristicUuid  | string                  | No| No   | Characteristic UUID, for example, 00002a11-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | characteristicValue | ArrayBuffer                              | No| No   | Characteristic value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
 | descriptors         | Array&lt;[BLEDescriptor](#bledescriptor)&gt; | No| No   | Descriptors contained in the characteristic.<br>**Atomic service API**: This API can be used in atomic services since API version 12.               |
-| properties  | [GattProperties](#gattproperties) | No| Yes    | Properties supported by the characteristic.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
-| characteristicValueHandle<sup>18+</sup> | number                           | No   | Yes   | Unique handle of the characteristic. It can be used to distinguish characteristics if the BLE device that serves as the server provides multiple characteristics with the same UUID.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                     |
-| permissions<sup>20+</sup> | [GattPermissions](#gattpermissions20)   | No   | Yes   | Permissions required for characteristic read and write operations.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                 |
+| properties  | [GattProperties](#gattproperties) | No | Yes     | Properties supported by the characteristic value. If this parameter is not set, the default property value is used.<br>**Atomic Service API:** Since API version 12, this API is supported in atomic services.     |
+| characteristicValueHandle<sup>18+</sup> | number                           | No    | Yes    | Unique identifier handle of the characteristic value. When the server-side BLE Bluetooth device provides multiple characteristic values with the same UUID, this handle can be used to distinguish different characteristic values. If this parameter is not set, the value is undefined.<br>**Atomic Service API:** Since API version 18, this API is supported in atomic services.                      |
+| permissions<sup>20+</sup> | [GattPermissions](#gattpermissions20)   | No    | Yes    | Permissions required for read and write operations on the characteristic value. If this parameter is not set, the default permission value is used.<br>**Atomic Service API:** Since API version 20, this API is supported in atomic services.                  |
+
 
 ## BLEDescriptor
 
@@ -5575,8 +5478,9 @@ Defines the structure of GATT descriptor, which is the data unit of [BLECharacte
 | characteristicUuid | string      | No| No   | Characteristic UUID of the descriptor, for example, 00002a11-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | descriptorUuid     | string      | No| No   | Descriptor UUID, for example, 00002902-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | descriptorValue    | ArrayBuffer | No| No   | Descriptor value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                             |
-| descriptorHandle<sup>18+</sup> | number        | No   | Yes   | Unique handle of the descriptor. It can be used to distinguish descriptors if the BLE device that serves as the server provides multiple descriptors with the same UUID.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                     |
-| permissions<sup>20+</sup> | [GattPermissions](#gattpermissions20)       | No   | Yes   | Permissions required for descriptor read and write operations.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                 |
+| descriptorHandle<sup>18+</sup> | number        | No    | Yes    | Unique identifier handle of the descriptor. When the server-side BLE Bluetooth device provides multiple descriptors with the same UUID, this handle can be used to distinguish different descriptors. If this parameter is not set, the value is undefined.<br>**Atomic service API**: Since API version 18, this API is supported in atomic services.                      |
+| permissions<sup>20+</sup> | [GattPermissions](#gattpermissions20)       | No    | Yes    | Permission required for descriptor read and write operations. If this parameter is not set, the default permission value is used.<br>**Atomic service API**: Since API version 20, this API is supported in atomic services.                  |
+
 
 ## NotifyCharacteristic
 
@@ -5595,6 +5499,7 @@ Defines the structure of characteristic notification.
 | characteristicValue | ArrayBuffer | No| No   | Characteristic value.                              |
 | confirm             | boolean     | No| No   | Whether confirmation is required. The value **true** indicates that confirmation is required for an indication, and the value **false** indicates that confirmation is not required for a notification.|
 
+
 ## CharacteristicReadRequest
 
 Defines the structure of characteristic read request sent from the client.
@@ -5612,6 +5517,7 @@ Defines the structure of characteristic read request sent from the client.
 | offset             | number | No| No   | Read offset of the client. For example, **k** indicates that the read starts from the kth byte.<br>It must be the same as the **offset** in the response returned by the server.|
 | characteristicUuid | string | No| No   | Characteristic UUID, for example, 00002a11-0000-1000-8000-00805f9b34fb.|
 | serviceUuid        | string | No| No   | Service UUID of the characteristic, for example, 00001888-0000-1000-8000-00805f9b34fb.|
+
 
 ## CharacteristicWriteRequest
 
@@ -5634,6 +5540,7 @@ Defines the structure of characteristic write request sent from the client.
 | characteristicUuid | string | No| No   | Characteristic UUID, for example, 00002a11-0000-1000-8000-00805f9b34fb.|
 | serviceUuid        | string | No| No   | Service UUID of the characteristic, for example, 00001888-0000-1000-8000-00805f9b34fb.|
 
+
 ## DescriptorReadRequest
 
 Defines the structure of descriptor read request sent from the client.
@@ -5652,6 +5559,7 @@ Defines the structure of descriptor read request sent from the client.
 | descriptorUuid     | string | No| No   | Descriptor UUID, for example, 00002902-0000-1000-8000-00805f9b34fb.|
 | characteristicUuid | string | No| No   | Characteristic UUID of the descriptor, for example, 00002a11-0000-1000-8000-00805f9b34fb.|
 | serviceUuid        | string | No| No   | Service UUID of the characteristic, for example, 00001888-0000-1000-8000-00805f9b34fb.|
+
 
 ## DescriptorWriteRequest
 
@@ -5675,6 +5583,7 @@ Defines the structure of descriptor write request sent from the client.
 | characteristicUuid | string      | No| No   | Characteristic UUID of the descriptor, for example, 00002a11-0000-1000-8000-00805f9b34fb.|
 | serviceUuid        | string      | No| No   | Service UUID of the characteristic, for example, 00001888-0000-1000-8000-00805f9b34fb.|
 
+
 ## ServerResponse
 
 Defines the structure of server response to a read/write request from the client.
@@ -5693,6 +5602,7 @@ Defines the structure of server response to a read/write request from the client
 | offset   | number      | No| No   | Read/write offset. It must be the same as the **offset** in the read/write request sent from the client.|
 | value    | ArrayBuffer | No| No   | Response data.                         |
 
+
 ## BLEConnectionChangeState
 
 Defines the connection status of the GATT profile.
@@ -5708,6 +5618,7 @@ Defines the connection status of the GATT profile.
 | reason<sup>20+</sup>    | [GattDisconnectReason](#gattdisconnectreason20) | No| Yes  | Reason why the GATT connection is disconnected. This parameter is available only when the connection status is [STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate). Otherwise, the default value **undefined** is used.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 | reasonMessage    | string | No | Yes   | Reason why the GATT connection is disconnected. This parameter is available only when the connection status is [STATE_DISCONNECTED](js-apis-bluetooth-constant.md#profileconnectionstate). Otherwise, the default value **undefined** is used. For example, if the local end proactively disconnects the connection, **0X16_LOCAL_HOST** is returned. **Since**: 26.0.0 <br> **Atomic service API**: This API is supported in atomic services since API version 26.0.0.|
 
+
 ## ScanResult
 
 Defines the scan result to be reported upon scanning advertising packets that meet the filter criteria.
@@ -5717,11 +5628,10 @@ Defines the scan result to be reported upon scanning advertising packets that me
 **Model restriction**: This API can be used only in the stage model.
 
 <!--Table: auto; auto; 10%; 10%; 60%-->
-
 | Name      | Type       | Read-Only| Optional  | Description                                |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
 | deviceId | string      | No| No   | Bluetooth device address. Example: XX:XX:XX:XX:XX:XX<br>For information security purposes, if the [actual MAC address](./js-apis-bluetooth-common.md#bluetoothaddresstype) is not configured in [ScanFilter](#scanfilter) when the application starts scanning, the device address obtained here is the [virtual MAC address](./js-apis-bluetooth-common.md#bluetoothaddresstype).<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | No| Yes| Bluetooth device address information, including the address and address type.|
+| address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | No | Yes | Address information of the scanned Bluetooth device, including the address and address type. If this parameter is not set, the value is undefined.|
 | rssi     | number      | No| No   | Signal strength, in dBm.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | data     | ArrayBuffer | No| No   | Raw unresolved broadcast packets sent by the discovered device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | deviceName | string | No| No   | Name of the discovered device, which is parsed from the data field of the raw data. The broadcast data type in the Bluetooth protocol is 0x09.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -5730,8 +5640,9 @@ Defines the scan result to be reported upon scanning advertising packets that me
 | manufacturerDataMap<sup>22+</sup>  | Map\<number, Uint8Array> | No| Yes   | Collection of the discovered device manufacturer data, which is parsed from the data field of the raw data. The broadcast data type in the Bluetooth protocol is 0xFF. If the broadcast packet carries the device manufacturer data, this field has a value. Otherwise, the content is undefined.<br>- The key of the map indicates the manufacturer ID, and the value indicates the specific content of the corresponding manufacturer data.<br>**Atomic service API**: This API can be used in atomic services since API version 22. |
 | serviceDataMap<sup>22+</sup>  | Map\<string, Uint8Array> | No| Yes   | Collection of the discovered device service data, which is parsed from the data field of the raw data. The broadcast data type in the Bluetooth protocol is 0x16. If the broadcast packet carries the device service data, this field has a value. Otherwise, the content is undefined.<br>- The key of the map indicates the service UUID, and the value indicates the specific content of the corresponding UUID service.<br>**Atomic service API**: This API can be used in atomic services since API version 22.  |
 | serviceUuids<sup>22+</sup>  | string[] | No| Yes   | Collection of the discovered device service UUError Codes, which is parsed from the data field of the raw data. The broadcast data type of a 16-bit UUID is 0x03, that of a 32-bit UUID is 0x05, and that of a 128-bit UUID is 0x07. If the broadcast packet carries the device service UUID, this field has a value. Otherwise, the content is undefined.<br>**Atomic service API**: This API can be used in atomic services since API version 22.  |
-| txPowerLevel<sup>22+</sup>  | number | No| Yes   | Broadcast transmit power of the discovered device, which is parsed from the data field of the raw data. The broadcast data type in the Bluetooth protocol is 0x0A. If the broadcast packet carries the broadcast transmit power of the device, this field has a value. Otherwise, the content is undefined.<br>**Atomic service API**: This API can be used in atomic services since API version 22.  |
+| txPowerLevel<sup>22+</sup>  | number | No | Yes    | Transmit power level of the scanned device broadcast, in dBm. It is parsed from the raw data field, and the broadcast data type in the Bluetooth protocol is 0x0A. If the broadcast packet carries the device transmit power level, this field has a value; otherwise, the value is undefined.<br>**Atomic service API**: Since API version 22, this API is supported in atomic services.   |
 | advertisingDataMap<sup>22+</sup>  | Map\<number, Uint8Array> | No| Yes   | Broadcast data set of the discovered device, which is parsed from the data field of the raw data.<br>- The key of the map indicates the broadcast data type, and the value indicates the content of the corresponding data type. For example, in the advertisingDataMap field, the value corresponding to the key 0x0A indicates the txPowerLevel value.<br>- If the broadcast packet carries any broadcast data content, this field has a value. Otherwise, the content is undefined.<br>**Atomic service API**: This API can be used in atomic services since API version 22.   |
+
 
 ## AdvertiseSetting
 
@@ -5746,7 +5657,8 @@ Defines the BLE advertising parameters.
 | interval    | number  | No| Yes   | Advertising interval.<br>The value range is [32, 16777215], in slots. One slot represents 0.625 ms. The default value is **1600**.<br>The maximum value is **16384** for traditional advertising.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | txPower     | number  | No| Yes   | Transmit power. The value range is [–127, 1], in dBm. The default value is **–7**.<br>Considering performance and power consumption, the recommended parameter values are as follows: **1** for high level, **-7** for medium level, and **-15** for low level.<br>**Atomic service API**: This API can be used in atomic services since API version 12.  |
 | connectable | boolean | No| Yes   | Whether the advertising is connectable. The value **true** indicates that the advertising is connectable, and the value false indicates the opposite. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                  |
-| isExtended  | boolean | No | Yes    | Whether to use extended advertising. The value **false** indicates legacy advertising, with a maximum packet length of 31 bytes; **true** indicates extended advertising, with the maximum packet length determined by the Bluetooth chip capability. The default value is **false**.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API is supported in atomic services since API version 26.0.0.<br>**Model constraint:** This API can be used only in the stage model.                 |
+| isExtended  | boolean | No | Yes    | Whether to use extended advertising. The value **false** indicates legacy advertising, with a maximum packet length of 31 bytes; **true** indicates extended advertising, with the maximum packet length determined by the Bluetooth chip capability. The default value is **false**.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API is supported in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model.                 |
+
 
 ## AdvertiseData
 
@@ -5759,7 +5671,6 @@ Defines the BLE advertising packet data, which can also be used in the response 
 **Model restriction**: This API can be used only in the stage model.
 
 <!--Table: 15%; 15%; 8%; 8%; 54%-->
-
 | Name             | Type                                    | Read-Only| Optional  | Description                         |
 | --------------- | ---------------------------------------- | ---- | ---- | --------------------------- |
 | serviceUuids    | Array&lt;string&gt;                      | No| No   | Service UUID.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -5767,7 +5678,7 @@ Defines the BLE advertising packet data, which can also be used in the response 
 | serviceData     | Array&lt;[ServiceData](#servicedata)&gt; | No| No   | Service data.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
 | includeDeviceName | boolean     | No| Yes   | Whether to include the device name as the advertising name.<br>The value **true** means to include the Bluetooth device name, and the value **false** means the opposite. The default value is **false**.<br>If the application needs to customize an advertising name, **advertiseName** can be used. This parameter cannot be used with **advertiseName**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
 | includeTxPower<sup>18+</sup> | boolean     | No   | Yes   | Whether to include the transmit power.<br>The value **true** means to include the transmit power, and the value **false** means the opposite. The default value is **false**.<br>This parameter occupies three bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
-| advertiseName<sup>23+</sup> | string     | No   | Yes   | Custom advertising name.<br>This parameter cannot be used with **includeDeviceName**.<br>**Required permissions**: [ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name)<br>**Atomic service API**: This API can be used in atomic services since API version 23.     |
+| advertiseName<sup>23+</sup> | string     | No    | Yes    | Custom advertising name. If this parameter is not set, no custom advertising name is carried by default.<br>This parameter cannot be used with **includeDeviceName**.<br>**Required permissions**: [ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name)<br>**Atomic service API**: This API can be used in atomic services since API version 23.      |
 
 ## AdvertisingParams<sup>11+</sup>
 
@@ -5783,7 +5694,7 @@ According to the Bluetooth protocol, in extended advertising mode (that is, when
 | ------------------- | ------------------------------- | ----- | ----- | ------------------------ |
 | advertisingSettings<sup>11+</sup> | [AdvertiseSetting](#advertisesetting) | No| No   | Advertising settings.   |
 | advertisingData<sup>11+</sup>    | [AdvertiseData](#advertisedata) | No| No   | Advertising data.     |
-| advertisingResponse<sup>11+</sup> | [AdvertiseData](#advertisedata) | No| Yes   | Advertising response.|
+| advertisingResponse<sup>11+</sup> | [AdvertiseData](#advertisedata) | No | Yes    | Broadcast packet data content in response to a scan request. If this parameter is not set, no scan response broadcast packet is carried. In extended advertising mode (when isExtended is true), this parameter cannot coexist with connectable: when connectable is true, this parameter must be empty; when connectable is false, this parameter cannot be empty. |
 | duration<sup>11+</sup>    | number   | No| Yes   | Advertising duration. The value range is [1, 65535], in 10 ms.<br>If this parameter is not specified or set to **0**, advertising packets are sent continuously.   |
 
 ## AdvertisingEnableParams<sup>11+</sup>
@@ -5796,7 +5707,7 @@ Defines the parameters for enabling BLE advertising.
 
 | Name               | Type                  | Read-Only| Optional | Description                     |
 | ------------------- | --------------------- | ----- | ----- | ------------------------ |
-| advertisingId       | number                | No| No   | Advertising ID.    |
+| advertisingId       | number                | No | No    | ID of the advertising to be started. The value is assigned when advertising is started for the first time by [ble.startAdvertising](#blestartadvertising11).     |
 | duration            | number                | No| Yes   | Advertising duration. The value range is [1, 65535], in 10 ms.<br>If this parameter is not specified or set to **0**, advertising packets are sent continuously.  |
 
 ## AdvertisingDisableParams<sup>11+</sup>
@@ -5809,7 +5720,7 @@ Defines the parameters for disabling BLE advertising.
 
 | Name               | Type                  | Read-Only| Optional | Description                     |
 | ------------------- | --------------------- | ----- | ----- | ------------------------ |
-| advertisingId       | number                | No| No   | Advertising ID.    |
+| advertisingId       | number                | No | No    | Advertising ID to stop. This value is assigned by [ble.startAdvertising](#blestartadvertising11) when advertising is started for the first time.     |
 
 ## AdvertisingStateChangeInfo<sup>11+</sup>
 
@@ -5839,6 +5750,7 @@ Defines the manufacturer data in the BLE advertising packet data.
 | manufactureId    | number  | No| No   | Manufacturer ID allocated by the Bluetooth Special Interest Group (SIG).|
 | manufactureValue | ArrayBuffer         | No| No   | Manufacturer data.    |
 
+
 ## ServiceData
 
 Represents the service data in the BLE advertising packet data.
@@ -5854,6 +5766,7 @@ Represents the service data in the BLE advertising packet data.
 | serviceUuid  | string      | No | No   | Service UUID.|
 | serviceValue | ArrayBuffer | No | No   | Service data.   |
 
+
 ## ScanFilter
 
 Defines the scan filters for BLE advertising packet data. Only advertising packets that meet the filter criteria are reported.
@@ -5863,10 +5776,9 @@ Defines the scan filters for BLE advertising packet data. Only advertising packe
 **Model restriction**: This API can be used only in the stage model.
 
 <!--Table: 19%; 13%; 8%; 8%; 52%-->
-
 | Name                                    | Type   | Read-Only| Optional | Description                                                        |
 | ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
-| deviceId                                 | string      | No| Yes   | BLE device address. Example: XX:XX:XX:XX:XX:XX<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| deviceId                                 | string      | No  | Yes    | Broadcast Packet filtered by the BLE device address. For example: "XX:XX:XX:XX:XX:XX". If the address parameter is also set, the address parameter takes precedence and deviceId does not take effect.<br>**Atomic Service API**: Since API version 12, this API is supported in atomic services.  |
 | address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | No| Yes| BLE device address and address type.<br>Compared with **deviceId**, this parameter can be used to specify both the BLE device address and address type to filter BLE advertising packets.<br>If both this parameter and **deviceId** are specified, only this parameter takes effect.|
 | name                                     | string      | No| Yes   | BLE device name.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
 | serviceUuid                              | string      | No| Yes   | Service UUID. This parameter is usually carried in the broadcast packets of a peripheral device, indicating the service UUID supported by the peripheral device. for example, 00001888-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -5878,7 +5790,8 @@ Defines the scan filters for BLE advertising packet data. Only advertising packe
 | manufactureId               | number      | No| Yes    | Manufacturer ID, for example, 0x0006.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | manufactureData             | ArrayBuffer | No| Yes    | Manufacturer data. This parameter can be used with **manufactureId** to filter specific manufacturers. Example: [0x1F,0x2F,0x3F]<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | manufactureDataMask         | ArrayBuffer | No| Yes    | Manufacturer data mask. This parameter can be used with **manufactureData** to filter specific manufacturer data. Example: [0xFF,0xFF,0xFF]<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| rssiThreshold<sup>23+</sup>    | number      | No| Yes    | RSSI threshold. The value range can be [–128, 127] according to the Bluetooth protocol. You are advised to set a value in the range of [–90, 127].<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| rssiThreshold<sup>23+</sup>    | number      | No  | Yes     | Broadcast Packet filtered by a signal strength greater than or equal to this signal strength threshold. The Bluetooth protocol specifies a settable range of [-128, 127], in dBm. It is recommended to set a threshold within [-90, 127]. <br>**Atomic Service API**: Since API version 23, this API is supported in atomic services. |
+
 
 ## ScanOptions
 
@@ -5889,7 +5802,6 @@ Defines the scan options.
 **Model restriction**: This API can be used only in the stage model.
 
 <!--Table: auto; auto; 10%; 10%; 60%-->
-
 | Name       | Type                   | Read-Only| Optional  | Description                                    |
 | --------- | ----------------------- | ---- | ---- | -------------------------------------- |
 | interval  | number                  | No| Yes   | Delay for reporting the scan result, in ms. The default value is **0**. This parameter is used together with [ScanReportMode](#scanreportmode15).<br>- This parameter does not take effect in normal and geofence scan reporting modes. The advertising packets that meet the filtering criteria are reported immediately.<br>- This parameter takes effect in batch scan reporting mode. The advertising packets that meet the filtering criteria are stored in the cache queue and reported after the specified delay. If this parameter is not set or its value is in the range of [0, 5000), the Bluetooth subsystem sets the delay to **5000** by default. If the number of advertising packets that meet the filtering criteria exceeds the hardware's cache capability within the specified delay, the Bluetooth subsystem reports the scan result in advance.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
@@ -5897,7 +5809,8 @@ Defines the scan options.
 | matchMode | [MatchMode](#matchmode) | No| Yes   | Hardware match mode. The default value is **MATCH_MODE_AGGRESSIVE**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | phyType<sup>12+</sup> | [PhyType](#phytype12) | No| Yes   | Physical channel type. The default value is **PHY_LE_1M**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | reportMode<sup>15+</sup> | [ScanReportMode](#scanreportmode15) | No| Yes   | Reporting mode. The default value is **NORMAL**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| isExtended | boolean  | No | Yes    | Whether to use extended scanning. The value **false** indicates legacy scanning, and **true** indicates extended scanning. The default value is **false**.<br>**Since:** 26.0.0 <br>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services.<br>**Model constraint:** This API can be used only in the stage model.                 |
+| isExtended | boolean  | No | Yes    | Whether to use extended scanning. The value **false** indicates legacy scanning, and **true** indicates extended scanning. The default value is **false**.<br>**Since:** 26.0.0 <br>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model.                 |
+
 
 ## GattProperties
 
@@ -5908,7 +5821,6 @@ Describes the properties supported by a GATT characteristic. The properties dete
 **Model restriction**: This API can be used only in the stage model.
 
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
-
 | Name      | Type | Read-Only| Optional  | Description         |
 | -------- | ------ |---- |---- | ----------- |
 | write    | boolean | No| Yes | Whether the write operation is supported.<br>The value **true** indicates that the write operation is supported and a response is required, and the value **false** indicates that the write operation is not supported. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -5918,7 +5830,8 @@ Describes the properties supported by a GATT characteristic. The properties dete
 | indicate | boolean   | No| Yes   | Whether the indication operation is supported.<br>The value **true** indicates that the indication operation is supported with requiring a confirmation response, and the value **false** indicates the indication operation is not supported. false<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | broadcast<sup>20+</sup> | boolean   | No| Yes   | Whether the characteristic can be sent by the server in advertising packets.<br>The value **true** indicates that the characteristic can be sent by the server as [ServiceData](#servicedata) in advertising packets, and the value **false** indicates the opposite. false<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | authenticatedSignedWrite<sup>20+</sup> | boolean   | No| Yes   | Whether the characteristic can be written with a signature.<br>The value **true** indicates that the characteristic can be written with a signature, and the value **false** indicates the opposite. Set this parameter to **true** if you want to replace the encryption process with signature verification. Ensure that **writeSigned** or **writeSignedMitm** in [GattPermissions](#gattpermissions20) is also set to **true**. Otherwise, this parameter does not take effect. false<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| extendedProperties<sup>20+</sup> | boolean   | No| Yes   | Whether the characteristic has extended attributes.<br>The value **true** indicates that the characteristic has extended attributes, and the value **false** indicates the opposite. false<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| extendedProperties<sup>20+</sup> | boolean   | No | Yes    | Whether the characteristic has extended properties.<br>true indicates that extended properties exist; false indicates that they do not exist. The default value is false.<br>**Atomic service API**: Since API version 20, this API is supported in atomic services. |
+
 
 ## GattPermissions<sup>20+</sup>
 
@@ -5931,7 +5844,6 @@ Defines the permissions required for GATT characteristic or descriptor read/writ
 **Model restriction**: This API can be used only in the stage model.
 
 <!--Table: 19%; 10%; 8%; 8%; 55%-->
-
 | Name      | Type | Read-Only| Optional  | Description         |
 | -------- | ------ |---- |---- | ----------- |
 | read | boolean   | No|  Yes   | Whether reading characteristics or descriptors is allowed.<br>**true** to enable, **false** otherwise. The default value is **true**.|
@@ -5949,13 +5861,15 @@ Enumerates the physical channel types of the link.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 | Name      | Type | Read-Only| Optional  | Description         |
 | -------- | ------ |---- |---- | ----------- |
 | txPhy | [BlePhy](#blephy23)| No| No| Type of the physical channel on the sender.|
 | rxPhy | [BlePhy](#blephy23) | No | No | Type of the physical channel on the receiver. |
 | phyMode | [CodedPhyMode](#codedphymode23)| No| Yes| Encoding mode of the physical channel whose type is [BLE_PHY_CODED](#blephy23).<br>The default value is **0**, indicating that no specific encoding mode is specified and the Bluetooth subsystem determines the encoding mode.|
+
+
 
 ## GattWriteType
 
@@ -5972,6 +5886,7 @@ Enumerates GATT characteristic write modes.
 | WRITE               | 1 | The peer Bluetooth device needs to send a confirmation after the write operation is complete.  |
 | WRITE_NO_RESPONSE   | 2 | The peer Bluetooth device does not need to send a confirmation after the write operation is complete. |
 
+
 ## ScanDuty
 
 Enumerates scan modes.
@@ -5987,6 +5902,7 @@ Enumerates scan modes.
 | SCAN_MODE_LOW_POWER   | 0    | Low-power mode, which features lower power consumption but lower performance.|
 | SCAN_MODE_BALANCED    | 1    | Balanced mode, which features balanced performance and power consumption.     |
 | SCAN_MODE_LOW_LATENCY | 2    | Low-latency mode, which features high performance but high power consumption.    |
+
 
 ## MatchMode
 
@@ -6060,7 +5976,7 @@ Enumerates scan report types.
 | --------  | ---- | ------------------------------ |
 | ON_FOUND  | 1    | Triggers reporting when BLE advertising packets that meet the filter criteria are found. It applies to both the conventional and geofence reporting modes.<br> **Atomic service API**: This API can be used in atomic services since API version 15.     |
 | ON_LOST | 2    | Triggers reporting when no BLE advertising packets that meet the filter criteria are found. It applies only to the geofence reporting mode.<br> **Atomic service API**: This API can be used in atomic services since API version 15.   |
-| ON_BATCH<sup>19+</sup> | 3    | Triggers reporting when BLE advertising packets that meet the filter criteria are found. The reporting interval is the value of **interval** in [ScanOptions](#scanoptions).<br> **Atomic service API**: This API can be used in atomic services since API version 19.   |
+| ON_BATCH<sup>19+</sup> | 3    | When a BLE Broadcast Packet that meets the filter conditions is scanned, the report is triggered periodically at the interval specified by the interval field in [ScanOptions](#scanoptions). This mode is used only with the batch report mode ([BATCH](#scanreportmode15)). <br> **Atomic Service API:** Since API version 19, this API is supported in Atomic Service.    |
 
 ## GattDisconnectReason<sup>20+</sup>
 
@@ -6102,7 +6018,6 @@ Enumerates scan result reporting modes.
 **Model restriction**: This API can be used only in the stage model.
 
 <!--Table: 20%; 10%; 70%-->
-
 | Name     | Value   | Description                          |
 | --------  | ---- | ------------------------------ |
 | NORMAL  | 1    | Conventional reporting mode. The BLE advertising packets that meet the filter criteria are reported immediately after being scanned.<br>**Atomic service API**: This API can be used in atomic services since API version 15.      |
@@ -6130,7 +6045,7 @@ Enumerates the types of the physical channel of the BLE device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 | Name     | Value   | Description                          |
 | --------  | ---- | ------------------------------ |
@@ -6144,7 +6059,7 @@ Enumerates the coding modes for the physical channel whose type is **BLE_PHY_COD
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 | Name     | Value   | Description                          |
 | --------  | ---- | ------------------------------ |

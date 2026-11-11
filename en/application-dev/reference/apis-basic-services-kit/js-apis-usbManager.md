@@ -6,6 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=6f8dcb6ffa5789e48cef1896e610b623eb4290c0 translatedAt=2026-11-10T04:17:19.788Z pushedAt=2026-11-10T07:09:05.446Z nl=1 -->
 
 This module provides APIs for managing USB devices, including USB device list query, bulk data transfer, control transfer, and permission control on the host side as well as port management, and function switch and query on the device side. This module can be used to exchange data with USB devices, manage USB device permissions, and dynamically switch the USB device mode.
 
@@ -45,7 +46,9 @@ Obtains the list of USB devices connected to the host. After the API is called s
 
 > **NOTE**
 >
-> Third-party apps cannot directly obtain the device serial number from the **serial** field through the **getDevices()** API. This field is unavailable to third-party apps. To obtain the serial number, third-party apps need to request permissions to access the device and then initiate a control transfer.
+> A third-party application cannot directly obtain the device serial number in the **serial** field through the getDevices() API (this field is unavailable to third-party applications). To obtain the serial number, the application needs to request the device access permission and then initiate a control transfer on its own.
+>
+> If the device has been managed by an enterprise device management (EDM) restriction policy for USB (for example, disabling the USB capability, setting an trustlist of USB devices, or disabling specific USB device types), the obtained device list may be empty or contain only allowed devices. For details, see [@ohos.enterprise.restrictions (Restriction Policies)](../apis-mdm-kit/js-apis-enterprise-restrictions.md) and [@ohos.enterprise.usbManager (USB Management)](../apis-mdm-kit/js-apis-enterprise-usbManager.md).
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -67,7 +70,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-console.info(`devicesList = ${devicesList}`);
+console.info(`devicesList = ${JSON.stringify(devicesList)}`);
 /*
   The following is a simple example of the data structure for devicesList:
   [
@@ -795,7 +798,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 Performs bulk transfer. After the bulk transfer is complete, the size of the transferred or received data block is returned. This API uses a promise to return the result. Compared with **usbSubmitTransfer**, **bulkTransfer** is suitable for simple bulk transfer. It directly transfers data and endpoints through independent parameters and uses a promise to return the result. **usbSubmitTransfer** is suitable for scenarios that require more flexible control. It encapsulates parameters in the **UsbDataTransferParams** object, supports asynchronous callback, and allows you to cancel a transfer request using **usbCancelTransfer**.
 
-> **NOTE**
+> **NOTE** 
 >
 > The total size of data (including **pipe**, **endpoint**, **buffer**, and **timeout**) to be transferred in a single bulk transfer must be less than 200 KB. Otherwise, the transfer fails and **-1** is returned.
 >
@@ -829,7 +832,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-> **NOTE**
+> **NOTE** 
 >
 > The following sample code is only a basic process for calling the **bulkTransfer** API. When calling this API, you must comply with the protocol specifications of the target USB device to ensure proper data transfer and device compatibility. For details about the protocol requirements, see the technical documentation of the device.
 
@@ -916,7 +919,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-> **NOTE**
+> **NOTE** 
 >
 > The following sample code is only a basic process for calling the **usbSubmitTransfer** API. When calling this API, you must comply with the protocol specifications of the target USB device to ensure proper data transfer and device compatibility. For details about the protocol requirements, see the technical documentation of the device.
 
@@ -934,7 +937,7 @@ async function usbSubmitTransfer() {
   let device: usbManager.USBDevice = devicesList?.[0];
   await usbManager.requestRight(device.name);
   if (!usbManager.hasRight(device.name)) {
-    console.info(`request right fail`);
+    console.error(`request right fail`);
     return;
   }
   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
@@ -1019,7 +1022,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-> **NOTE**
+> **NOTE** 
 >
 > The following sample code is only a basic process for calling the **usbCancelTransfer** API. When calling this API, you must comply with the protocol specifications of the target USB device to ensure proper data transfer and device compatibility. For details about the protocol requirements, see the technical documentation of the device.
 

@@ -1,12 +1,11 @@
 # image_receiver_native.h
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1ac76e4bcc0baa77f2de408485e684e0024a2a1d translatedAt=2026-08-03T04:06:12.181Z pushedAt=2026-08-04T02:22:12.931Z -->
+<!-- md-trans-meta sourceCommit=0e69f38feb9f0bcec6da6be8d5b55fe5597cf52d translatedAt=2026-11-10T08:07:41.454Z pushedAt=2026-11-10T11:55:31.721Z nl=1 -->
 
 ## Overview
 
@@ -93,6 +92,7 @@ Creates an OH_ImageReceiverOptions object at the application layer.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -116,6 +116,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetSize(OH_ImageReceiverOptions* options
 Obtains the image size of an OH_ImageReceiverOptions object.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -142,6 +143,7 @@ Sets the image size of an OH_ImageReceiverOptions object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -166,6 +168,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* opt
 Obtains the image cache capacity of an OH_ImageReceiverOptions object.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -192,6 +195,7 @@ Sets the image cache capacity of an OH_ImageReceiverOptions object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -217,6 +221,7 @@ Releases an OH_ImageReceiverOptions object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -240,6 +245,7 @@ Image_ErrorCode OH_ImageReceiverNative_Create(OH_ImageReceiverOptions* options, 
 Creates an OH_ImageReceiverNative object at the application layer.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -265,6 +271,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetReceivingSurfaceId(OH_ImageReceiverNat
 Obtains the surface ID through an OH_ImageReceiverNative object.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -297,6 +304,7 @@ Obtains the latest image through an OH_ImageReceiverNative object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -326,7 +334,9 @@ Obtains the next image through an OH_ImageReceiverNative object.
 > - When **OH_ImageNative** returned by this API is no longer needed, call [OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release) to release it. Then new data can be received properly.
 > - This API requires a lock to ensure that the **OH_ImageReceiverNative** object is not released during use. For details, see [Using Image_NativeModule to Receive Images](../../media/image/image-receiver-c.md).
 
+
 **Since**: 12
+
 
 **Parameters**
 
@@ -355,6 +365,7 @@ This callback is triggered whenever a new image is received.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -382,6 +393,7 @@ The callback is registered by calling [OH_ImageReceiverNative_On](#oh_imagerecei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -405,6 +417,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetSize(OH_ImageReceiverNative* receiver,
 Obtains the size of an **ImageReceiver** using **OH_ImageReceiverNative**.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -430,6 +443,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetCapacity(OH_ImageReceiverNative* recei
 Obtains the capacity of an **OH_ImageReceiverNative**.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -460,6 +474,7 @@ Releases an OH_ImageReceiverNative object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -483,6 +498,7 @@ Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative *rec
 Registers the [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback) callback.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -510,15 +526,18 @@ Unregisters the [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagear
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md) *receiver | Pointer to an OH_ImageReceiverNative object that processes the callback.|
-| [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback) callback | Callback to unregister.|
+| [OH_ImageReceiver_ImageArriveCallback()](#oh_imagereceiver_imagearrivecallback) callback | Callback to be unregistered. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) |**IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_RECEIVER_INVALID_PARAMETER**: The **receiver** or **callback** parameter is not registered.|
+
+

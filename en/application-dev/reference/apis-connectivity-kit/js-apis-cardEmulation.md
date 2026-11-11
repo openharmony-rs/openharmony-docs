@@ -6,6 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=88083dcb5b14d296520d59b6c53161eacb42338b translatedAt=2026-11-10T05:02:54.184Z pushedAt=2026-11-10T07:26:21.655Z nl=1 -->
 
 The **cardEmulation** module implements Near-Field Communication (NFC) card emulation. You can use the APIs provided by this module to determine the card emulation type supported and implement Host Card Emulation (HCE).<br>
 HCE provides card emulation that does not depend on a secure element. It allows an application to emulate a card and communicate with an NFC card reader through the NFC service.
@@ -162,8 +163,8 @@ Enumerates the types of services used by the card emulation application.
 
 | Name     | Value        | Description               |
 | ------- | --------- | ----------------- |
-| PAYMENT | "payment" | Payment service.|
-| OTHER   | "other"   | Other services.|
+| PAYMENT | 'payment' | Payment service. |
+| OTHER   | 'other'   | Other services. |
 
 ## cardEmulation.isSupported<sup>(deprecated)</sup>
 
@@ -593,9 +594,9 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
 | ID| Error Message |
 | ------- | -------|
-|201 | Permission denied.                 |
-|401 | Invalid parameter.                 |
-|801 | Capability not supported.          |
+|201 | Permission denied.<br>Applicable versions: 12+                 |
+|401 | Invalid parameter.<br>Applicable versions: 12+                 |
+|801 | Capability not supported.<br>Applicable versions: 12+          |
 
 **Example**
 

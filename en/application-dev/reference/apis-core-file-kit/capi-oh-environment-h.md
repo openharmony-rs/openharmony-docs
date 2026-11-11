@@ -2,11 +2,11 @@
 
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=a0083316abd06ef63620124a45e41aff35eed47e translatedAt=2026-09-08T12:27:40.071Z pushedAt=2026-09-09T01:36:25.055Z -->
+<!-- md-trans-meta sourceCommit=334acd66186fa8cfa16121cfab922bad85986ea9 translatedAt=2026-11-10T05:06:24.741Z pushedAt=2026-11-10T07:29:43.243Z nl=1 -->
 
 ## Overview
 
@@ -61,7 +61,7 @@ Obtains the sandbox path of the **Download** root directory.
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns the FileManagement module error code [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).<br>ERR_INVALID_PARAMETER 401 - Invalid input parameter, pointer is null. <br>ERR_DEVICE_NOT_SUPPORTED 801 - Device not supported. <br>ERR_ENOMEM 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDesktopDir()
 
@@ -86,7 +86,7 @@ Obtains the sandbox path of the **Desktop** root directory.
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns the FileManagement module error code [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode). <br>ERR_INVALID_PARAMETER 401 - Invalid input parameter, pointer is null. <br>ERR_DEVICE_NOT_SUPPORTED 801 - Device not supported. <br>ERR_ENOMEM 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDocumentDir()
 
@@ -111,6 +111,6 @@ Obtains the sandbox path of the **Document** root directory.
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns the FileManagement module error code [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode). <br>ERR_INVALID_PARAMETER 401 - Invalid input parameter, pointer is null. <br>ERR_DEVICE_NOT_SUPPORTED 801 - Device not supported. <br>ERR_ENOMEM 13900011 - Failed to apply for memory. |
 
 

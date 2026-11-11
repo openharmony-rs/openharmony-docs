@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=7309d91550473d80535b32eca83cb9c0b600f845 translatedAt=2026-11-10T08:04:21.603Z pushedAt=2026-11-10T11:39:26.630Z nl=1 -->
 
 A collection of enumeration types provided by Image Kit, covering image pixel formats, image formats, alpha types, image metadata, image property information (Exif and format-specific properties), auxiliary image types, scaling modes, cropping and scaling strategies, dynamic range, HDR metadata, memory allocation, interpolation algorithms, image orientation, focus modes, color modes, XMP tag types, and more. These enumerations are used to specify various configuration parameters in image encoding, decoding, processing, and display scenarios.
 
@@ -118,6 +119,10 @@ Enumerates the Exchangeable image file format (Exif) image information.
 - The key in the format example is **image.PropertyKey.*XXX*** (where *XXX* is the name of an enumeration, for example, **NEW_SUBFILE_TYPE**).
 - The format example is used only to show how to modify values and read results. For details about how to use them, see [modifyImageProperty](arkts-apis-image-ImageSource.md#modifyimageproperty11) (to modify a single Exif field), [modifyImageProperties](arkts-apis-image-ImageSource.md#modifyimageproperties12) (to modify multiple Exif fields), [getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11) (to read a single Exif field), and [getImageProperties](arkts-apis-image-ImageSource.md#getimageproperties12) (to read multiple Exif fields).
 
+> **NOTE**
+>
+> Before an application queries media library images through [PhotoAccessHelper](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md) and reads GPS-related fields (such as GPS_LATITUDE, GPS_LONGITUDE, GPS_ALTITUDE, GPS_TIME_STAMP, and GPS_DATE_STAMP), it must declare and request the [ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location) permission from the user. If the preceding fields all return 0 or are empty, check whether this permission has been granted and whether the original image contains GPS information.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 | Name              |   Value                   |   Description                   |   Format Example              |
@@ -168,7 +173,7 @@ Enumerates the Exchangeable image file format (Exif) image information.
 | GPS_ALTITUDE<sup>12+</sup>               | "GPSAltitude"               | Altitude based on the reference in GPSAltitudeRef.<br>**Read/Write capability**: readable and writable.<br>| **How to modify the parameter**: Use a non-negative rational number as a string.<br>**Example of modification**: `imageSource.modifyImageProperty(key,'123.45');`<br>**Example of read result**: "123.45"|
 | GPS_TIME_STAMP<sup>10+</sup>              | "GPSTimeStamp"              | GPS timestamp.<br>**Read/Write capability**: readable and writable.<br>| **How to modify the parameter**: Use the format *HH:mm:ss.ddd*.<br>**Example of modification**: `imageSource.modifyImageProperty(key,'12:30:30.123');`<br>**Example of read result**: "12:30:30.123"|
 | GPS_SATELLITES<sup>12+</sup>             | "GPSSatellites"             | GPS satellites used for measurement.<br>**Read/Write capability**: readable and writable.<br>| **How to modify the parameter**: Use a string.<br>**Example of modification**: `imageSource.modifyImageProperty(key,'GPS Satellites');`<br>**Example of read result**: "GPSSatellites"|
-| GPS_STATUS<sup>12+</sup>                 | "GPSStatus"                 | Status of the GPS receiver when the image was recorded.<br>  'A': "Measurement in progress" (GPS is working, satellite signals are locked, and location data is trustworthy.)<br>'V': "Measurement interrupted" (GPS is not working, positioning is unavailable currently, and location data may be missing or incorrect.)<br>**Read/Write capability**: readable and writable.<br>| **How to modify the parameter**: Use letters or strings.<br>**Example of modification**: `imageSource.modifyImageProperty(key,'A');`<br>or `imageSource.modifyImageProperty(key,'Measurement in progress');`<br>**Example of read result**: "A"|
+| GPS_STATUS<sup>12+</sup>                 | "GPSStatus"                 | Status of the GPS receiver when recording an image.<br/>  'A': "Measurement in progress", the GPS is valid, satellite signals are successfully locked, and the location data is reliable;<br />'V': "Measurement interrupted", the GPS is invalid, positioning is currently unavailable, and the location data may be empty or inaccurate.<br />**Read/write capability:** Readable and writable.<br> | **Modify parameter format description** Pass the corresponding letter or string when modifying.<br />**Modification example** `imageSource.modifyImageProperty(key,'A');`<br />or `imageSource.modifyImageProperty(key,'Measurement in progress');`<br />**Read result example** "A" |
 | GPS_MEASURE_MODE<sup>12+</sup>           | "GPSMeasureMode"            | GPS measurement pmode. Whether the 2D (planar) or 3D (with height) measurement mode is used for GPS positioning.<br>2: "2-dimensional measurement" (Latitude+longitude)<br>3: "3-dimensional measurement" (Latitude + longitude + altitude)<br>**Read/Write capability**: readable and writable.<br>| **How to modify the parameter**: Use numbers or strings.<br>**Example of modification**: `imageSource.modifyImageProperty(key,'2');`<br>or `imageSource.modifyImageProperty(key,'2-dimensional measurement');`<br>**Example of read result**: "2"|
 | GPS_DOP<sup>12+</sup>                    | "GPSDOP"                    | GPS Dilution of Precision (DOP), which reflects the precision of GPS measurements taken when the photo was captured.<br>**Read/Write capability**: readable and writable.<br>| **How to modify the parameter**: Use a non-negative rational number as a string.<br>**Example of modification**: `imageSource.modifyImageProperty(key,'1.5');`<br>**Example of read result**: "1.5"|
 | GPS_SPEED_REF<sup>12+</sup>              | "GPSSpeedRef"               | Unit used to express the movement speed of the GPS receiver.<br>'K': "km/h"<br>'M': "mph"<br>'N': "knots"<br>**Read/Write capability**: readable and writable.| **How to modify the parameter**: Use letters or strings.<br>**Example of modification**: `imageSource.modifyImageProperty(key,'K');`<br>or `imageSource.modifyImageProperty(key,'km/h');`<br>**Example of read result**: "K"|
@@ -598,9 +603,9 @@ Enumerates image component types.
 | Name |   Value  | Description       |
 | ----- | ------ | ----------- |
 | YUV_Y | 1      | Luminance component. |
-| YUV_U | 2      | Chrominance component. |
-| YUV_V | 3      | Chrominance component. |
-| JPEG  | 4      | JPEG type.|
+| YUV_U | 2      | Blue chrominance component information.  |
+| YUV_V | 3      | Red chrominance component information.  |
+| JPEG  | 4      | JPEG. |
 
 ## DecodingDynamicRange<sup>12+</sup>
 

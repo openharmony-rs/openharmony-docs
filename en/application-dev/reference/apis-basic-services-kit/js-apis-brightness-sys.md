@@ -6,8 +6,9 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=25476a1a1eb8d4a9c259b5ea7ce60c9e5a03a4be translatedAt=2026-11-10T04:01:12.673Z pushedAt=2026-11-10T06:13:51.006Z nl=1 -->
 
-The **brightness** module provides an API for setting the screen brightness.
+This module provides the APIs for setting the screen brightness.
 
 > **NOTE**
 >
@@ -25,29 +26,29 @@ import {brightness} from '@kit.BasicServicesKit';
 
 setValue(value: number): void
 
-Sets the screen brightness.
+Sets the system screen brightness.
 
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.PowerManager.DisplayPowerManager
+**System capability:** SystemCapability.PowerManager.DisplayPowerManager
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                   |
+| Name | Type   | Mandatory | Description                    |
 | ------ | ------ | ---- | ----------------------- |
-| value  | number | Yes  | Brightness value. Value range: 0 to 255. The value of this parameter must be a number.|
+| value  | number | Yes   | Brightness value. The value ranges from 0 to 255 and must be of the number type. |
 
 **Error codes**
 
 For details about the error codes, see [Brightness Error Codes](errorcode-brightness.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID   | Error Message    |
 |---------|---------|
 | 4700101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example:**
+**Example**
 
 ```js
 try {
@@ -61,30 +62,30 @@ try {
 
 setValue(value: number, continuous: boolean): void
 
-Sets the screen brightness. This API is used for continuous brightness adjustment. To achieve a better performance, set **continuous** to **true** when you start, and set it to **false** after you finish.
+Sets the screen brightness of the system. This API is used in the scenario of continuous brightness adjustment. During continuous brightness adjustment, set **continuous** to **true**, and set it to **false** when the adjustment ends for better performance.
 
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.PowerManager.DisplayPowerManager
+**System capability:** SystemCapability.PowerManager.DisplayPowerManager
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                   |
+| Name | Type   | Mandatory | Description                    |
 | ------ | ------ | ---- | ----------------------- |
-| value  | number | Yes  | Brightness value. Value range: [0, 255]|
-| continuous  | boolean | Yes  | Whether the brightness adjustment is continuous. The value **true** indicates that the brightness adjustment is continuous; **false** indicates the opposite. Default value: **false**|
+| value  | number | Yes   | Brightness value. The value ranges from 0 to 255. |
+| continuous  | boolean | Yes   | Whether the brightness adjustment is continuous. The value **true** indicates continuous brightness adjustment, and **false** indicates non-continuous brightness adjustment. The default value is **false**. |
 
 **Error codes**
 
 For details about the error codes, see [Brightness Error Codes](errorcode-brightness.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID   | Error Message    |
 |---------|---------|
 | 4700101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
-**Example:**
+**Example**
 
 ```js
 try {

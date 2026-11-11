@@ -1,11 +1,11 @@
 # Print_PrintDocCallback
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=f172f47675a58f89bb693013f28ad2465486c311 translatedAt=2026-10-09T11:42:34.750Z pushedAt=2026-10-10T03:42:30.105Z -->
+<!-- md-trans-meta sourceCommit=432796cf3e6a4be981f95a7796deb982eeaff362 translatedAt=2026-11-10T03:56:37.322Z pushedAt=2026-11-10T05:58:56.307Z nl=1 -->
 
 ```cpp
 typedef struct {...} Print_PrintDocCallback

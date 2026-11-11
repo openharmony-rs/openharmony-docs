@@ -1,12 +1,11 @@
 # @system.file (File Storage)
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=5556925570c80a64b2b1b74564a6b2974cdc4f30 translatedAt=2026-08-14T11:50:38.766Z pushedAt=2026-08-17T08:43:51.396Z -->
+<!-- md-trans-meta sourceCommit=0c20469e58610438940464085fdd62df82c5b560 translatedAt=2026-11-10T05:15:41.153Z pushedAt=2026-11-10T07:45:21.338Z nl=1 -->
 
 > **NOTE**
 >
@@ -16,9 +15,7 @@
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 In the following ArkTS example, URI is described as follows:
-
   1. The URI must be in the format of **internal://app/xxx**.
-
   2. **internal://app/** is a fixed prefix, indicating the app root directory. **xxx** indicates the directory or file name created by the developer.
 
 ## Modules to Import
@@ -129,7 +126,6 @@ export default {
   }
 }
 ```
-
 ### copy
 
 static copy(options: FileCopyOption): void
@@ -428,7 +424,6 @@ export default {
   }
 }
 ```
-
 ### delete
 
 static delete(options: FileDeleteOption): void
@@ -527,6 +522,7 @@ export default {
   }
 }
 ```
+
 
 ### writeText
 
@@ -730,6 +726,7 @@ export default {
 }
 ```
 
+
 ### readText
 
 static readText(options: FileReadTextOption): void
@@ -828,6 +825,7 @@ export default {
   }
 }
 ```
+
 
 ### readArrayBuffer
 
@@ -932,6 +930,7 @@ export default {
 }
 ```
 
+
 ### access
 
 static access(options: FileAccessOption): void
@@ -1030,6 +1029,7 @@ export default {
   }
 }
 ```
+
 
 ### mkdir
 
@@ -1357,6 +1357,7 @@ Defines the options used in **writeText()**.
 | fail | (data: string, code: number) => void | No | Yes | Callback invoked when the API call fails.<br/>**data** indicates the error message.<br/>**code** indicates an error code returned:<br/>**202**: parameter error.<br/>**300**: I/O error. |
 | complete | () => void | No | Yes | Callback invoked when the API call is complete. |
 
+
 ## FileWriteArrayBufferOption
 
 Defines the options used in **writeArrayBuffer()**.
@@ -1417,6 +1418,7 @@ Defines the options used in **access()**.
 | fail | (data: string, code: number) => void | No | Yes | Callback invoked when the API call fails.<br/>**data** indicates the error message.<br/>**code** indicates an error code returned:<br/>**202**: parameter error.<br/>**300**: I/O error.<br/>**301**: file or directory not found. |
 | complete | () => void | No | Yes | Callback invoked when the API call is complete. |
 
+
 ## FileMkdirOption
 
 Defines the options used in **mkdir()**.
@@ -1430,6 +1432,7 @@ Defines the options used in **mkdir()**.
 | success | () => void | No | Yes | Callback invoked when the API call is successful. |
 | fail | (data: string, code: number) => void | No | Yes | Callback invoked when the API call fails.<br/>**data** indicates the error message.<br/>**code** indicates an error code returned:<br/>**202**: parameter error.<br/>**300**: I/O error. |
 | complete | () => void | No | Yes | Callback invoked when the API call is complete. |
+
 
 ## FileRmdirOption
 

@@ -5,13 +5,11 @@
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:04:22.957Z pushedAt=2026-06-23T06:12:23.677Z -->
+<!-- md-trans-meta sourceCommit=61468b3e72da2661ee1a6dc85313afd38ed9d78c translatedAt=2026-11-10T08:36:57.621Z pushedAt=2026-11-10T10:43:47.966Z nl=1 -->
 
 ## Overview
 
 Defines the struct and enum of **AVMedia**.
-
-**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 23
 

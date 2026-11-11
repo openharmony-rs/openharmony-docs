@@ -5,6 +5,7 @@
 <!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=f9d788d1c4b9cc677d31f0e27f7d5c76efa0a4cc translatedAt=2026-11-10T08:40:31.949Z pushedAt=2026-11-10T10:46:33.527Z nl=1 -->
 
 ## Overview
 
@@ -98,17 +99,15 @@ enum OH_CaptureMode
 
 Enumerates the screen capture modes.
 
-Select a proper mode based on the recording requirements. Capturing the home screen is suitable for full-screen recording scenarios. Capturing a specified screen is suitable for scenarios where a specific screen is selected in a multi-screen environment. Capturing a specified window is suitable for scenarios where only a single app window is recorded.
-
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 10
 
 | Enum Item| Description|
 | -- | -- |
-| OH_CAPTURE_HOME_SCREEN = 0 | Captures the home screen.|
-| OH_CAPTURE_SPECIFIED_SCREEN = 1 | Captures a specified screen. To use this mode, you need to specify **displayId** in **OH_AVScreenCaptureConfig**.|
-| OH_CAPTURE_SPECIFIED_WINDOW = 2 | Captures a specified window. To use this mode, you need to specify **windowId** in **OH_AVScreenCaptureConfig**.|
+| OH_CAPTURE_HOME_SCREEN = 0 | Records the home screen. This option is applicable to full-screen recording scenarios. |
+| OH_CAPTURE_SPECIFIED_SCREEN = 1 | Records a specified screen. This option is applicable to scenarios where a specific screen is selected in a multi-screen environment. To use this mode, specify **displayId** in **OH_AVScreenCaptureConfig**. |
+| OH_CAPTURE_SPECIFIED_WINDOW = 2 | Records a specified window. This option is applicable to scenarios where only a single app window is recorded. To use this mode, specify **windowId** in **OH_AVScreenCaptureConfig**. |
 | OH_CAPTURE_INVAILD = -1 | Invalid mode.|
 
 ### OH_AudioCaptureSourceType
@@ -628,5 +627,5 @@ Called when a privacy protection event occurs during the running of the [OH_AVSc
 | Parameter| Description|
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md)* capture | Pointer to the OH_AVScreenCapture instance.|
-| [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md)* privacyProtect | Pointer to the privacy protection information. Pointer to the structure that contains the detailed information about the privacy protection event. This parameter is used to process the privacy protection callback event during screen recording.|
+| [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md)* privacyProtect | Pointer to the privacy protection information, which points to the struct that contains the detailed information about the privacy protection event, which is used to process the privacy protection callback event during screen capture. |
 | void *userData | Pointer to the user-defined data carried in the function.|

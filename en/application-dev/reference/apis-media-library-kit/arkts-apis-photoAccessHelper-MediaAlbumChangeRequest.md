@@ -5,8 +5,9 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c0250638e381b2a51b01480cf57b3bdaac78328c translatedAt=2026-11-10T03:50:18.787Z pushedAt=2026-11-10T07:12:02.297Z nl=1 -->
 
-MediaAlbumChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
+The **MediaAlbumChangeRequest** class implements the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11) API.
 
 MediaAlbumChangeRequest provides APIs for managing the media album change request.
 

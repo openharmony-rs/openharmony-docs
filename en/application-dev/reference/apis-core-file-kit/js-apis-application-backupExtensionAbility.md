@@ -1,12 +1,11 @@
 # @ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability)
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @rainlost-->
 <!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=0547715d750965c950e08363cedf1ff726e5bd8a translatedAt=2026-08-17T09:27:56.352Z pushedAt=2026-08-18T09:00:33.700Z -->
+<!-- md-trans-meta sourceCommit=5add49bf54e753934fef59c3c47660825dd62d72 translatedAt=2026-11-10T05:07:27.206Z pushedAt=2026-11-10T07:32:43.875Z nl=1 -->
 
 The **BackupExtensionAbility** module provides the extension capability for the backup and restoration service. After an app integrates this capability, the system backup and restoration framework can schedule the backup, restoration, progress reporting, and secure exit logic to meet the requirements of app data migration, version compatibility processing, and temporary file cleanup. This improves data migration continuity and simplifies management of the backup and restoration process.
 
@@ -507,12 +506,11 @@ class BackupExt extends BackupExtensionAbility {
 | <!--DelRow--> Core File Kit | [@ohos.file.fileAccess (User File Access and Management) (System API)](js-apis-fileAccess-sys.md) |
 | <!--DelRow--> Form Kit | [@ohos.app.form.formHost (formHost) (System API)](../apis-form-kit/js-apis-app-form-formHost-sys.md) |
 | Form Kit | [@ohos.application.formError (formError)](../apis-form-kit/js-apis-application-formError.md) |
-| Form Kit | [@ohos.application.formError (formError)](../apis-form-kit/js-apis-application-formError.md) |
 | <!--DelRow--> Form Kit | [@ohos.application.formHost (formHost) (System API)](../apis-form-kit/js-apis-application-formHost-sys.md) |
 | IME Kit | [@ohos.inputMethod (Input Method Framework)](../apis-ime-kit/js-apis-inputmethod.md) |
 | <!--DelRow--> Input Kit | [@ohos.multimodalInput.inputMonitor (Input Monitor) (System API)](../apis-input-kit/js-apis-inputmonitor-sys.md) |
 | Location Kit | [@ohos.geolocation (Geolocation)](../apis-location-kit/js-apis-geolocation.md) |
 | MDM Kit | [@ohos.enterprise.adminManager (Administrator Permission Management)](../apis-mdm-kit/js-apis-enterprise-adminManager.md) |
-| <!--DelRow--> MDM Kit | [@ohos.enterprise.dateTimeManager (System Time Management) (System API)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
+| <!--DelRow--> MDM Kit | [@ohos.enterprise.dateTimeManager (System Time Management)(System API)](../apis-mdm-kit/js-apis-enterprise-dateTimeManager-sys.md) |
 | <!--DelRow--> Media Kit | [@ohos.multimedia.media (Media) (System API)](../apis-media-kit/js-apis-media-sys.md) |
 | Sensor Service Kit | [@ohos.sensor (Sensor)](../apis-sensor-service-kit/js-apis-sensor.md) |

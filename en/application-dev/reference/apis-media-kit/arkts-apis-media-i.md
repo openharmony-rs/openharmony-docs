@@ -5,6 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=08bce52de538b30706de30f30c1be6d19e762400 translatedAt=2026-11-10T08:36:42.569Z pushedAt=2026-11-10T10:43:18.543Z nl=1 -->
 
 > **NOTE**
 >
@@ -264,7 +265,7 @@ Defines the audio and video metadata.
 | dateTime | string | No| Yes| Time when the media asset is created. This property cannot be set for the AVRecorder.|
 | dateTimeFormat | string | No| Yes| Time when the media asset is created. The value is in the YYYY-MM-DD HH:mm:ss format. This property cannot be set for the AVRecorder.|
 | composer | string | No| Yes| Composer of the media asset. This property cannot be set for the AVRecorder.|
-| duration | string | No| Yes| Duration of the media asset. This property cannot be set for the AVRecorder.|
+| duration | string | No | Yes | Duration of the media resource, in milliseconds (ms). Setting this attribute is not supported for AVRecorder. |
 | genre | string | No| Yes| Type or genre of the media asset.|
 | hasAudio | string | No| Yes| Whether the media asset contains audio. This property cannot be set for the AVRecorder.|
 | hasVideo | string | No| Yes| Whether the media asset contains a video. This property cannot be set for the AVRecorder.|
@@ -418,7 +419,7 @@ Describes the playback strategy.
 | -------- | -------- | ---- | ---- | -------------------- |
 | preferredWidth| number | No  | Yes  | Preferred width, in px. The value is an integer greater than 0, for example, 1080.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | preferredHeight | number | No  | Yes  | Preferred height, in px. The value is an integer greater than 0, for example, 1920.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| preferredBufferDuration | number | No  | Yes  | Preferred buffer duration, in seconds. The value range is [1, 20].<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| preferredBufferDuration | number | No  | Yes  | Preferred buffer duration, in seconds. The value range is [1, 20].<br>For details, see [Minimizing Stuttering in Online Video Playback](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/online-video-playback-lags-optimize).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | preferredHdr | boolean | No  | Yes  | Whether HDR is preferred. **true** if preferred, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | enableSuperResolution<sup>18+</sup> | boolean | No  | Yes  | Whether to enable super resolution. **true** to enable, **false** otherwise. The default value is **false**.<br>If super resolution is disabled, super resolution APIs cannot be called. If super resolution is enabled, the default target resolution is 1920 × 1080, in px.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | showFirstFrameOnPrepare<sup>17+</sup> | boolean | No  | Yes  | Whether to show the first frame after **prepare** is called. **true** to show, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 17.|

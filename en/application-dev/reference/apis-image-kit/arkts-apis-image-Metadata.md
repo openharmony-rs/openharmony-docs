@@ -1,12 +1,11 @@
 # Interface (Metadata)
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a569cef255f0bfd2be482f42d11f341117248869 translatedAt=2026-08-03T03:56:17.415Z pushedAt=2026-08-04T03:23:13.940Z -->
+<!-- md-trans-meta sourceCommit=4dcbcc35130fe1ea1d91534a5817d2ebd508bd96 translatedAt=2026-11-10T08:04:49.993Z pushedAt=2026-11-10T11:46:37.488Z nl=1 -->
 
 The **Metadata** class provides APIs for storing image metadata. For details about the supported metadata types, see [MetadataType](arkts-apis-image-e.md#metadatatype13).
 
@@ -49,7 +48,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed; |
+| 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 7600202  | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
 
 **Example**

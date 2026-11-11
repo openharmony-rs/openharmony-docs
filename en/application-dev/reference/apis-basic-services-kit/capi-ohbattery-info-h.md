@@ -6,6 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=b026b3aeef31e5c2ac5c14f8507bb3fa0dee1101 translatedAt=2026-11-10T03:58:25.029Z pushedAt=2026-11-10T06:02:10.692Z nl=1 -->
 
 ## Overview
 
@@ -87,7 +88,7 @@ Obtains the current battery capacity, in percentage.
 
 | Type| Description|
 | -- | -- |
-| int32_t | A number in the range from 0 to 100.|
+| int32_t | Current battery level, in percentage. The value is an integer within the range of [0, 100]. If **-1** is returned, it indicates that the battery level fails to be obtained. |
 
 ### OH_BatteryInfo_GetPluggedType()
 
@@ -108,3 +109,5 @@ Obtains the battery plugged type.
 | Type| Description|
 | -- | -- |
 | [BatteryInfo_BatteryPluggedType](#batteryinfo_batterypluggedtype) | Returns [PLUGGED_TYPE_NONE](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is removed;<br>         returns [PLUGGED_TYPE_AC](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in AC charging mode;<br>         returns [PLUGGED_TYPE_USB](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in USB DC charging mode;<br>         returns [PLUGGED_TYPE_WIRELESS](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in wireless charging mode;<br>         returns [PLUGGED_TYPE_BUTT](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the battery plugged type is unknown.|
+
+

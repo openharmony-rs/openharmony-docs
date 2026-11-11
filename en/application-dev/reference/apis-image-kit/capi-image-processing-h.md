@@ -2,10 +2,11 @@
 
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xjtu_liushang-->
-<!--Designer: @yangwang01-->
-<!--Tester: @xchaosioda-->
+<!--Owner: @zy_194-->
+<!--Designer: @gongzheng92-->
+<!--Tester: @gongzheng92-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c88ce3ef682da122def7e2f79abebac3bc662d0f translatedAt=2026-11-10T08:07:28.171Z pushedAt=2026-11-10T11:55:23.431Z nl=1 -->
 
 ## Overview
 
@@ -75,7 +76,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_DeinitializeEnvironment(void)
 
 Deinitializes the global environment of the image processing module.
 
-This function must be called after [OH_ImageProcessing_InitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_initializeenvironment) is called. Generally, this function is called when the main process is about to exit. Do not call this function when an image processing instance exists or when [OH_ImageProcessing_InitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_initializeenvironment) is not called.
+This function must be called after [OH_ImageProcessing_InitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_initializeenvironment) is called. Generally, this function is called to deinitialize the global environment (initialized using [OH_ImageProcessing_InitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_initializeenvironment)) of the image processing module when the main process is about to exit. Do not call this function when an image processing instance exists or when [OH_ImageProcessing_InitializeEnvironment](capi-image-processing-h.md#oh_imageprocessing_initializeenvironment) is not called.
 
 **Since**: 13
 
@@ -103,7 +104,7 @@ Checks whether CSC is supported for an image.
 | Name| Description|
 | -- | -- |
 | const [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)* sourceImageInfo | Pointer to the color space information of the input image.|
-| const [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)* destinationImageInfo | Pointer to the color space information of the output image.|
+| const [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md)* destinationImageInfo | Pointer to the color space information of the output image. |
 
 **Returns**
 
@@ -428,3 +429,5 @@ Enhances the image definition and details. This function performs necessary scal
 | Type| Description|
 | -- | -- |
 | [ImageProcessing_ErrorCode](capi-image-processing-types-h.md#imageprocessing_errorcode) | **IMAGE_PROCESSING_SUCCESS**: Image processing is successful.<br> **IMAGE_PROCESSING_ERROR_INVALID_INSTANCE**: The instance is null or is not an image processing instance.<br> **IMAGE_PROCESSING_ERROR_INVALID_PARAMETER**: The image is empty.<br> **IMAGE_PROCESSING_ERROR_INVALID_VALUE**: An image property is invalid, for example, unsupported color space.<br> **IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING**: Image processing is not supported.<br> **IMAGE_PROCESSING_ERROR_PROCESS_FAILED**: An error occurs during image processing.<br> **IMAGE_PROCESSING_ERROR_NO_MEMORY**: Memory allocation fails.|
+
+

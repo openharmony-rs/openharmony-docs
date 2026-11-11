@@ -2,10 +2,11 @@
 
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=2d0178c862c0d6d4a93d279a0035106a0898052e translatedAt=2026-11-10T05:06:49.525Z pushedAt=2026-11-10T07:30:24.106Z nl=1 -->
 
 ## Overview
 
@@ -82,4 +83,6 @@ Obtains the location of a file.
 
 | Type| Description|
 | -- | -- |
-| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).|
+| [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns the **FileManagement** module error code [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).  <br>401 - Invalid input parameter, pointer is null. <br>ERR_ENOENT 13900002 - No such file or directory. <br>ERR_ENOMEM 13900011 - Failed to apply for memory. |
+
+
