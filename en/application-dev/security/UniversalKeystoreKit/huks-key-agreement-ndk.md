@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:53:28.515Z pushedAt=2026-10-13T03:11:11.514Z -->
+<!-- md-trans-meta sourceCommit=efdaa8692026153cc9460b1cea05429cf99c5cf6 translatedAt=2026-11-10T03:15:27.436Z pushedAt=2026-11-10T06:58:10.818Z nl=1 -->
 
 This topic uses X25519, DH, and ECDH as an example to demonstrate how to perform key agreement for HUKS-managed keys. For details about the scenarios and supported algorithm specifications, see [Supported Algorithms](huks-key-agreement-overview.md#supported-algorithms).
 
@@ -135,6 +135,21 @@ Perform key agreement.
 <!-- @[key_agreement_X25519_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/cpp/types/projects/napi_X25519.cpp) -->
 
 ``` C++
+static OH_Huks_Result MallocAndCheckBlobData(struct OH_Huks_Blob *blob, const uint32_t blobSize)
+{
+    struct OH_Huks_Result ret;
+    ret.errorCode = OH_HUKS_SUCCESS;
+    if (blobSize == 0 || blobSize > X25519_COMMON_SIZE) {
+        ret.errorCode = OH_HUKS_ERR_CODE_INTERNAL_ERROR;
+        return ret;
+    }
+    blob->data = (uint8_t *)malloc(blobSize);
+    if (blob->data == NULL) {
+        ret.errorCode = OH_HUKS_ERR_CODE_INTERNAL_ERROR;
+    }
+    return ret;
+}
+
 /* Export a key. */
 OH_Huks_Result HksX25519AgreeExport(const struct OH_Huks_Blob *keyAlias1, const struct OH_Huks_Blob *keyAlias2,
     struct OH_Huks_Blob *publicKey1, struct OH_Huks_Blob *publicKey2,

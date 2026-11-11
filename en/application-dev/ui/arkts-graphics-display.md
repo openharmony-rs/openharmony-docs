@@ -5,7 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=be3f767d9af1f0e99c8675696107ddad43c4a7e6 translatedAt=2026-11-05T11:08:02.278Z pushedAt=2026-11-09T10:02:18.711Z nl=1 -->
+<!-- md-trans-meta sourceCommit=42ae94e59363add3563e6887bfae30918f042a01 translatedAt=2026-11-09T10:57:02.334Z pushedAt=2026-11-09T11:02:16.361Z nl=1 -->
 
 More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. In such cases, the **Image** component is used, which supports multiple image formats (including PNG, JPG, and JPEG), excluding APNG and SVGA. For details about the supported formats and usage, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
 
@@ -141,12 +141,12 @@ Archived data sources can be classified into local resources, network resources,
             }).catch((err:Error) => {
               let message = (err as BusinessError).message;
               let code = (err as BusinessError).code;
-              hilog.info(DOMAIN, TAG,`PhotoViewPicker.select failed with. Code: ${code}, message: ${message}`);
+              hilog.error(DOMAIN, TAG,`PhotoViewPicker.select failed with. Code: ${code}, message: ${message}`);
             });
           } catch (err) {
             let message = (err as BusinessError).message;
             let code = (err as BusinessError).code;
-            hilog.info(DOMAIN, TAG,`PhotoViewPicker failed with. Code: ${code}, message: ${message}`);
+            hilog.error(DOMAIN, TAG,`PhotoViewPicker failed with. Code: ${code}, message: ${message}`);
           };
         };
     
@@ -227,6 +227,8 @@ struct HttpExample {
           imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
             this.image = pixelMap;
             imageSource.release();
+          }).catch((error: BusinessError) => {
+            hilog.error(DOMAIN, TAG, `Failed to create pixelMap: ${error.code}, ${error.message}`);
           });
         };
       });
@@ -834,7 +836,7 @@ By binding the **onComplete** event to the **Image** component, you can obtain n
             })
             // If loading fails, use onError to trigger the callback and obtain the result.
             .onError(() => {
-              hilog.info(DOMAIN, TAG, 'load image fail');
+              hilog.error(DOMAIN, TAG, 'load image fail');
             })
             // The overlay API does not support dark mode yet.
             .overlay('\nwidth: ' + String(this.widthValue) + ', height: ' + String(this.heightValue) + '\ncomponentWidth: ' + String(this.componentWidth) + '\ncomponentHeight: ' + String(this.componentHeight), {

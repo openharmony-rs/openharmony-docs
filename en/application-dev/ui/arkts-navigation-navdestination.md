@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=eab4216f10b2702ab78e3b75753de76f01c6e47b translatedAt=2026-11-09T10:58:32.580Z pushedAt=2026-11-10T01:03:14.397Z nl=1 -->
 
 [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) is the root container for **Navigation** subpages and is used to hold special attributes as well as lifecycles of subpages. You can set separate attributes such as the title bar and menu bar for **NavDestination**, in the same way you set attributes for **Navigation**. You can also set different display modes for **NavDestination** through the **mode** attribute to meet different page requirements.
 
@@ -23,7 +24,7 @@
   <!-- @[PageDisplayType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayType.ets) -->
   
   ``` TypeScript
-  // Dialog NavDestination
+  // NavDestination dialog type
   @Entry
   @Component
   struct PageDisplayType {
@@ -147,4 +148,3 @@ To facilitate the decoupling of components from pages, custom components within 
   You can register a listener for **NavDestination** lifecycle changes using the [observer.on('navDestinationUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationupdate) API.
 
   Alternatively, you can register a callback for page transition states through [observer.on('navDestinationSwitch')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationswitch12). This callback can be used to obtain page information during route changes using [NavDestinationSwitchInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12). This registration supports different scopes: [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) and [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md).
-  

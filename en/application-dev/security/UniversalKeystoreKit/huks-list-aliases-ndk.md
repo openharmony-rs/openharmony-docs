@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=efdaa8692026153cc9460b1cea05429cf99c5cf6 translatedAt=2026-11-10T03:16:10.647Z pushedAt=2026-11-10T06:58:15.545Z nl=1 -->
 
 This topic walks you through on how to query key aliases.
 
@@ -33,7 +34,6 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 #include "huks/native_huks_api.h"
 #include "huks/native_huks_param.h"
 #include "napi/native_api.h"
-#include <string.h>
 
 OH_Huks_Result InitParamSet(
    struct OH_Huks_ParamSet **paramSet,

@@ -5,15 +5,14 @@
 <!--Designer: @keerecles-->
 <!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:12:52.375Z pushedAt=2026-07-23T02:26:59.992Z -->
+<!-- md-trans-meta sourceCommit=d1305dae39cee2fda0e8aa85c3185d386d1604b7 translatedAt=2026-11-09T11:06:53.694Z pushedAt=2026-11-10T01:55:06.186Z nl=1 -->
 
 Custom components decorated by [\@Reusable](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-reusable.md#reusable) support component reuse. When a custom component is removed from the component tree, it is stored in a cache pool. When a component node of the same type is subsequently created, the component object in the cache pool is preferentially reused, thereby avoiding repeated creation and destruction and improving performance.
 
 > **NOTE**
 >
-> The \@Reusable decorator is supported since API version 10 and can be used in ArkTS.
->
-> For details about the principles, optimization methods, and use scenarios of component reuse, see [Component Reuse](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse).
+> Starting from API version 10, @Reusable is supported and can be used in ArkTS.
+<!--RP1--><!--RP1End-->
 
 ## Overview
 
@@ -478,7 +477,7 @@ struct ReusableChildB {
   }
 }
 ```
-
+  
 ### Unsupported ComponentContent
 
 **ComponentContent** does not support passing \@Reusable decorated custom components.
@@ -529,7 +528,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          // ComponentContent is based on BuilderNode, which does not support @Reusable decorated custom components.
+          // ComponentContent is based on BuilderNode, which does not support passing a custom component decorated with @Reusable.
           let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
           });
           this.uiContext.getPromptAction().openCustomDialog(contentNode);
@@ -982,7 +981,7 @@ In the following example, the @Reusable decorator is used to decorate the custom
 
 The **aboutToReuse** API is triggered when the component is obtained from the reuse cache and added to the component tree during grid scrolling. This allows you to update the component's state variables to display correct content.
 
-Note: There is no need to update state variables that automatically synchronize values (such as variables decorated with [\@Link](arkts-link.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@ObjectLink](arkts-observed-and-objectlink.md), or [\@Consume](arkts-provide-and-consume.md)) in **aboutToReuse**, as this may trigger unnecessary component re-renders.
+Note: There is no need to update state variables that automatically synchronize values (such as variables decorated with [\@Link](arkts-link.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@ObjectLink](arkts-observed-and-objectlink.md), or [\@Consume](arkts-provide-and-consume.md)) in **aboutToReuse**, otherwise unnecessary component re-renders may be triggered.
 
 <!-- @[reusable_for_grid_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForGridUsageScenario.ets) -->
 
@@ -1078,7 +1077,7 @@ struct ReusableChildComponent {
 - For **WaterFlow** scrolling scenarios where **FlowItem** and its child components are frequently created and destroyed, you can encapsulate components in **FlowItem** into a custom component and decorate it with \@Reusable to implement component reuse.
 
   <!-- @[reusable_for_water_flow_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForWaterFlowUsageScenario.ets) -->
-
+  
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
@@ -1225,7 +1224,7 @@ struct ReusableChildComponent {
 - For **Swiper** scrolling scenarios where child components are frequently created and destroyed, you can encapsulate the child components into a custom component and decorate it with \@Reusable to implement component reuse.
 
   <!-- @[reusable_for_swiper_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForSwiperUsageScenario.ets) --> 
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -1370,7 +1369,7 @@ struct ReusableChildComponent {
 - For list scrolling scenarios where the **ListItemGroup** component is used, you can encapsulate child components in **ListItem** that need to be destroyed and re-created into a custom component and decorate it with \@Reusable to implement component reuse.
 
   <!-- @[reusable_for_list_item_group_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForListItemGroupUsageScenario.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -1862,5 +1861,3 @@ struct ChildComponentD {
   }
 }
 ```
-
-<!--no_check-->

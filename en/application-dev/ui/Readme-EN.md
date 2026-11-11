@@ -34,7 +34,7 @@
       - [\@BuilderParam Decorator: Referencing the \@Builder Function](state-management/arkts-builderparam.md)
       - [wrapBuilder: Encapsulating Global @Builder](state-management/arkts-wrapBuilder.md)
       - [mutableBuilder: Implementing Dynamic Update of Global @Builder](state-management/arkts-mutableBuilder.md) 
-      - [\@Styles Decorator: Defining Reusable Styles](state-management/arkts-style.md)
+      - [\@Styles Decorator: Defining Reusable Component Styles](state-management/arkts-style.md)
       - [\@Extend Decorator: Defining Extended Component Styles](state-management/arkts-extend.md)
       - [stateStyles: Applying Polymorphic Styles](state-management/arkts-statestyles.md)
       - [\@AnimatableExtend Decorator: Defining Animatable Properties](state-management/arkts-animatable-extend.md)
@@ -59,7 +59,7 @@
         - [Application State Management Overview](state-management/arkts-application-state-management-overview.md)
         - [LocalStorage: Storing Page-Level UI State](state-management/arkts-localstorage.md)
         - [AppStorage: Storing Application-wide UI State](state-management/arkts-appstorage.md)
-        - [PersistentStorage: Persisting Application State](state-management/arkts-persiststorage.md)
+        - [PersistentStorage: Persisting UI State](state-management/arkts-persiststorage.md)
         - [Environment: Querying the Device Environment](state-management/arkts-environment.md)
     - State Management V2<!--arkts-state-management-v2-->
       - Component State Management<!--arkts-v2-manage-component-state-->
@@ -95,7 +95,7 @@
         - [Migration for Component Reuse](state-management/arkts-v1-v2-migration-reusable.md)
         - [Migration for Repeated Content Rendering](state-management/arkts-v1-v2-migration-rendering-control-repeat.md)
         - [Migration for Built-in Objects](state-management/arkts-v1-v2-migration-inner-object.md)
-        - [Widget State Variable Migration](state-management/arkts-v1-v2-migration-application.md)
+        - [Migration for Widget State Variables](state-management/arkts-v1-v2-migration-card.md)
         - [Migration for AnimateTo Usage](state-management/arkts-v1-v2-migration-animateTo.md)
       - Mixed Use of State Management V1 and V2<!--v1v2-mixing-->
         - [Mixed Use of State Management V1 and V2 (Before API Version 19)](state-management/arkts-v1-v2-mixusage-before-api-version.md)
@@ -105,7 +105,7 @@
       - [Data Object State Management FAQs](state-management/arkts-state-management-faq-inner-class.md)
       - [In-App State Management and Other FAQs](state-management/arkts-state-management-faq-application-and-others.md)
       - [Common Methods for Locating the Problem That Component Refresh Is Not Triggered When State Variables Change](state-management/troubleshooting-state-manage.md)
-    - [State Management Terms](state-management/arkts-state-management-glossary.md)
+    - [State Management Glossary](state-management/arkts-state-management-glossary.md)
   - UI Paradigm Rendering Control<!--arkts-rendering-control-->
     - [Rendering Control Overview](rendering-control/arkts-rendering-control-overview.md)
     - [if/else: Conditional Rendering](rendering-control/arkts-rendering-control-ifelse.md)

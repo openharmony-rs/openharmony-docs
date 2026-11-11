@@ -6,7 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=b359cf9c5bc0da61c21bcdbb8a09eb4ca4b31ef4 translatedAt=2026-10-31T02:48:35.699Z pushedAt=2026-10-31T02:59:40.643Z nl=1 -->
+<!-- md-trans-meta sourceCommit=c6147ec52d80ca5f0ca777b4f3eaa2d0baf3c9de translatedAt=2026-11-10T08:40:32.700Z pushedAt=2026-11-10T09:04:18.224Z nl=1 -->
 
 All the permissions in this topic are available to all applications and granted by the system.
 
@@ -31,7 +31,7 @@ including the Bluetooth name, Bluetooth device type, and switch status.
 
 **Authorization mode**: system_grant
 
-**Valid since**: 8
+**Since**: 8
 
 ## ohos.permission.GET_BUNDLE_INFO
 
@@ -41,7 +41,7 @@ Allows an application to obtain basic information about another application.
 
 **Authorization mode**: system_grant
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.PREPARE_APP_TERMINATE
 
@@ -53,7 +53,7 @@ For example, the application can confirm with the user whether to terminate it t
 
 **Authorization mode**: system_grant
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.PRINT
 
@@ -65,7 +65,7 @@ Allows an application to obtain the print framework capability.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.DISCOVER_BLUETOOTH
 
@@ -77,7 +77,7 @@ This permission allows the app to configure local Bluetooth (such as setting the
 
 **Authorization mode**: system_grant
 
-**Valid since**: 8
+**Since**: 8
 
 ## ohos.permission.ACCELEROMETER
 
@@ -91,7 +91,7 @@ Acceleration sensors include normal, uncalibrated, and linear acceleration senso
 
 **Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.ACCESS_BIOMETRIC
 
@@ -103,7 +103,7 @@ This permission allows the following operations: check the biometric recognition
 
 **Authorization mode**: system_grant
 
-**Valid since**: 6
+**Since**: 6
 
 ## ohos.permission.ACCESS_NOTIFICATION_POLICY
 
@@ -115,7 +115,7 @@ This permission is required only when the ringtone needs to be changed from mute
 
 **Authorization mode**: system_grant
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.GET_NETWORK_INFO
 
@@ -125,7 +125,7 @@ Allows an application to obtain network information.
 
 **Authorization mode**: system_grant
 
-**Valid since**: 8
+**Since**: 8
 
 ## ohos.permission.SET_NETWORK_INFO
 
@@ -137,7 +137,7 @@ With this permission, the application can activate or deactivate a network, and 
 
 **Authorization mode**: system_grant
 
-**Valid since**: 8
+**Since**: 8
 
 ## ohos.permission.GET_WIFI_INFO
 
@@ -151,7 +151,7 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 **Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
 
-**Valid since**: 8
+**Since**: 8
 
 **Changelog**: From API version 22, the support for the P2P capability is added to this permission.
 
@@ -167,7 +167,7 @@ Gyroscope sensors include normal and uncalibrated gyroscope sensors.
 
 **Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.INTERNET
 
@@ -179,7 +179,7 @@ With this permission, an application can obtain IP addresses, perform DNS resolu
 
 **Authorization mode**: system_grant
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -189,7 +189,7 @@ Allows a Service ability to keep running in the background.
 
 **Authorization mode**: system_grant
 
-**Valid since**: 8
+**Since**: 8
 
 ## ohos.permission.NFC_CARD_EMULATION
 
@@ -201,7 +201,7 @@ With this permission, the application can register the card emulation service an
 
 **Authorization mode**: system_grant
 
-**Valid since**: 8
+**Since**: 8
 
 ## ohos.permission.NFC_TAG
 
@@ -213,7 +213,7 @@ With this permission, the application can receive a tag, and read data from and 
 
 **Authorization mode**: system_grant
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.PRIVACY_WINDOW
 
@@ -223,7 +223,7 @@ Allows an application to set screens that cannot be captured or recorded.
 
 **Authorization mode**: system_grant
 
-**Valid since**: 9
+**Since**: 9
 
 **Changelog**: The permission level is system_basic in API versions 9 to 10 and changed to normal since API version 11.
 
@@ -235,7 +235,7 @@ Allows an application to use agent-powered reminders.
 
 **Authorization mode**: system_grant
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.SET_WIFI_INFO
 
@@ -249,7 +249,7 @@ including scanning, enabling/disabling, connecting, and disabling Wi-Fi, modifyi
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
-**Valid since**: 8
+**Since**: 8
 
 ## ohos.permission.VIBRATE
 
@@ -263,7 +263,7 @@ Vibration includes one-time vibration, preset vibration, or custom vibration.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
@@ -275,7 +275,7 @@ With this permission, the application can detect associated background tasks bas
 
 **Authorization mode**: system_grant
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.COMMONEVENT_STICKY
 
@@ -287,7 +287,7 @@ With this permission, the application can publish sticky common events, so that 
 
 **Authorization mode**: system_grant
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.RUNNING_LOCK
 
@@ -299,7 +299,7 @@ Allows an application to obtain a running lock to keep running in the background
 
 **Supported devices**: PCs/2-in-1 devices | tablets | cars | phones | TVs | wearables
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.ACCESS_CERT_MANAGER
 
@@ -309,7 +309,7 @@ Allows an application to query certificates and private credentials.
 
 **Authorization mode**: system_grant
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.RUN_DYN_CODE
 
@@ -321,7 +321,7 @@ The APIs related to this permission are system APIs, and this permission is avai
 
 **Authorization mode**: system_grant
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.READ_CLOUD_SYNC_CONFIG
 
@@ -333,7 +333,7 @@ Allows an application that has accessed the cloud to obtain its device-cloud syn
 
 **Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | lite wearables | smart locks
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.STORE_PERSISTENT_DATA
 
@@ -343,7 +343,7 @@ Allows an application to store persistent data. The persistent data will be clea
 
 **Authorization mode**: system_grant
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
@@ -353,7 +353,7 @@ Allows an application to use enhanced functions of the devices connected to this
 
 **Authorization mode**: system_grant
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.READ_ACCOUNT_LOGIN_STATE
 
@@ -363,7 +363,7 @@ Allows an application to read the login status of user accounts.
 
 **Authorization mode**: system_grant
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_SERVICE_NAVIGATION_INFO
 
@@ -377,7 +377,7 @@ With this permission, the application can set navigation information and process
 
 **Supported devices**: phones | tablets | cars
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.PROTECT_SCREEN_LOCK_DATA
 
@@ -389,7 +389,7 @@ After the application obtains this permission, a directory in **/el5** will be a
 
 **Authorization mode**: system_grant
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_CAR_DISTRIBUTED_ENGINE
 
@@ -403,7 +403,7 @@ With this permission, the application can obtain the connection information betw
 
 **Supported devices**: phones | tablets | cars
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.WINDOW_TOPMOST
 
@@ -415,7 +415,7 @@ Allows an application to set pinned windows.
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
@@ -427,7 +427,7 @@ With this permission, the application can obtain the maximum frequency supported
 
 **Authorization mode**: system_grant
 
-**Valid since**: 12
+**Since**: 12
 
 **Changelog**: This permission is available to system applications in API versions 12 to 15, and available to normal applications since API version 16.
 
@@ -441,7 +441,7 @@ With this permission, the application can turn on or off the function keys, such
 
 **Authorization mode**: system_grant
 
-**Valid since**: 15
+**Since**: 15
 
 ## ohos.permission.SET_ABILITY_INSTANCE_INFO
 
@@ -453,7 +453,7 @@ The configured icon and label information can be displayed in **Task Center** an
 
 **Authorization mode**: system_grant
 
-**Valid since**: 15
+**Since**: 15
 
 ## ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -467,7 +467,7 @@ This permission allows starting a UIAbility within the same application from the
 
 **Supported devices**: PCs/2-in-1 devices | tablets | phones
 
-**Valid since**: 15
+**Since**: 15
 
 ## ohos.permission.GET_FILE_ICON
 
@@ -479,7 +479,7 @@ With this permission, the application can obtain the icon of the specified file 
 
 **Authorization mode**: system_grant
 
-**Valid since**: 17
+**Since**: 17
 
 ## ohos.permission.DETECT_GESTURE
 
@@ -493,7 +493,7 @@ With this permission, the application can detect information such as the user's 
 
 **Supported devices**: general devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.kernel.NET_RAW
 
@@ -507,7 +507,7 @@ With this permission, the application can capture network data packets only afte
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.kernel.DEBUGGER
 
@@ -521,7 +521,7 @@ With this permission, the application can have the ptrace debugging capability a
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.kernel.ALLOW_DEBUG
 
@@ -535,7 +535,7 @@ With this permission, the C/C++ program in the application can be debugged. Howe
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
 
@@ -552,7 +552,7 @@ This permission can be requested when the application meets the following condit
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -566,7 +566,7 @@ With this permission, the application can set the background color and the shado
 
 **Supported devices**: PCs/2-in-1 devices | tablets
 
-**Valid since**: 20
+**Since**: 20
 
 **Changelog**: This permission is available only on PCs/2-in-1 devices from API versions 20 to 22. Since API version 23, this permission is also available on tablets.
 
@@ -596,7 +596,7 @@ This permission applies only to independent binary programs, not to HAPs.
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK
 
@@ -754,9 +754,9 @@ With this permission, the application can improve handwriting performance, ensur
 
 ## ohos.permission.QUERY_PUBLIC_CLI_TOOL
 
-Allows an application to query available CLI tools.
+Allows an app to query available CLI tools.
 
-With this permission, third-party agent applications can access the Claw function.
+After obtaining this permission, an app can help third-party agent applications integrate with the Claw feature.
 
 **Permission level**: normal
 
@@ -768,9 +768,9 @@ With this permission, third-party agent applications can access the Claw functio
 
 ## ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
-Allows an application to execute available CLI tools.
+Allows the application to execute available CLI tools.
 
-With this permission, third-party agent applications can access the Claw function.
+After obtaining this permission, the application can help third-party agent applications integrate with the Claw feature.
 
 **Permission level**: normal
 
@@ -792,7 +792,7 @@ With this permission, the application can obtain custom EDM configuration files,
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.ACCESS_CAR_AUDIO
 
@@ -838,21 +838,21 @@ With this permission, an application can call APIs to request local account auth
 
 ## ohos.permission.vehicle.ACCESS_CAR_SECURITY_PRIVACY
 
-Allows an application to access vehicle security and privacy service APIs.
+Allows applications to access the interfaces of the in-vehicle security and privacy service.
 
-With this permission, the application can query vehicle privacy agreements or policies, driver-seat privacy mode, and trace removal status.
+After obtaining this permission, applications can query the privacy-related agreements or policies of the entire vehicle, the driver privacy mode, the one-tap trace removal status, and so on.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
 
-**Supported devices**: cars
+**supported devices**: Car
 
 **Since**: 26.0.1
 
 ## ohos.permission.vehicle.HIMA_DATA_READ
  
-Allows an application to read data from the HIMA cloud.
+Allows an app to read HIMA cloud data.
  
 With this permission, the application can read vehicle-related data from the HIMA cloud.
  
@@ -860,29 +860,29 @@ With this permission, the application can read vehicle-related data from the HIM
  
 **Authorization mode**: system_grant
  
-**Supported devices**: cars
+**Supported devices**: Car
  
-**Valid since**: 26.0.1
+**Since**: 26.0.1
  
 ## ohos.permission.vehicle.HIMA_DATA_WRITE
  
-Allows an application to write data to the HIMA cloud.
+Allows the application to write data to the HIMA cloud.
  
-With this permission, the application can write vehicle-related data to the HIMA cloud.
+With this permission, the application program can write vehicle-related data to the HIMA cloud.
  
 **Permission level**: normal
  
 **Authorization mode**: system_grant
  
-**Supported devices**: cars
+**Supported devices**: Car
  
-**Valid since**: 26.0.1
+**Since**: 26.0.1
 
 ## ohos.permission.kernel.USB_CAPTURE
 
-Allows an application to capture USB data packets.
+Allows applications to capture USB data packets.
 
-With this permission, the application can capture USB packets only after being authenticated by the user.
+With this permission, the application can capture USB data packets only after being authenticated by the user. Without this permission, USB packet capture is not allowed.
 
 **Permission level**: normal
 
@@ -918,13 +918,13 @@ After obtaining this permission, applications can use the font management APIs t
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Valid since**: 26.0.1
+**Since**: 26.0.1
 
 ## ohos.permission.GET_STORAGE_VOLUME_INFO
  
-Allows an application to query basic storage device properties.
+Allows applications to query basic attribute information about storage devices.
  
-With this permission, an application can query physical disk information (such as disk ID, device type, vendor ID, and product ID) and volume information (such as volume ID, mount status, capacity, mount path, and file system type) of external storage devices. It also allows querying hardware information (such as physical path, model, brand, media type, operational status, and capacity) of local system and data disks.
+After obtaining this permission, applications can query the physical disk information of external storage devices (such as disk ID, device type, vendor ID, and product ID) and volume information (such as volume ID, mount status, capacity, mount path, and file system type), as well as the hardware information of the local system disk and data disk (such as physical path, model, brand, media type, running status, and capacity).
  
 **Permission level**: normal
  
@@ -932,4 +932,4 @@ With this permission, an application can query physical disk information (such a
  
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars | TVs
  
-**Valid since**: 26.0.1
+**Since**: 26.0.1

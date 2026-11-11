@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4f945590f61307c03472767556879a597fa3ab93 translatedAt=2026-11-05T10:42:08.376Z pushedAt=2026-11-06T00:41:13.474Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ac5da3db077922920ad23333a9ce00569d12c98f translatedAt=2026-11-10T03:29:00.863Z pushedAt=2026-11-10T07:43:39.229Z nl=1 -->
 
 When you browse web pages in incognito mode, data such as cookies and caches is not written to local persistent storage. After the Web component in incognito mode is destroyed, this data is cleared and will not be retained.
 
@@ -32,7 +32,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
   }
   ```
 
-- Use [isIncognitoMode](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#isincognitomode11) to determine whether incognito mode is enabled for the current **Web** component.
+- Use [isIncognitoMode()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#isincognitomode11) to determine whether the current **Web** component is in private mode.
   <!-- @[determine_whether_the_current_web_component_is_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_two.ets) -->
   
   ``` TypeScript
@@ -165,7 +165,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
   ```
 ## Clearing Web Data in Memory in Incognito Mode
 
-- Use [deleteAllData](../reference/apis-arkweb/arkts-apis-webview-WebStorage.md#deletealldata) to delete all data in the Web SQL Database.
+- Use [deleteAllData()](../reference/apis-arkweb/arkts-apis-webview-WebStorage.md#deletealldata) to clear all storage currently used by Web SQL in private mode.
   <!-- @[clear_all_storage_currently_used_by_web_sql_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteAllData.ets) -->
   
   ``` TypeScript
@@ -242,7 +242,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
 
 ## Managing Cookies in Incognito Mode
 
-- Use [fetchCookieSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#fetchcookiesync11) to obtain the cookie corresponding to the specified URL.
+- Use [fetchCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#fetchcookiesync11) to obtain the value of the cookie corresponding to the specified URL in private mode.
   <!-- @[obtain_the_value_of_the_cookie_corresponding_to_the_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/FetchCookieSync.ets) -->
   
   ``` TypeScript
@@ -273,7 +273,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
   }
   ```
 
-- Use [configCookieSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11) to set a cookie for the specified URL.
+- Use [configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11) to set the value of a single cookie for the specified URL in private mode.
   <!-- @[set_the_value_of_a_single_cookie_for_a_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ConfigCookieSync.ets) -->
   
   ``` TypeScript
@@ -303,7 +303,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
   }
   ```
 
-- Use [existCookie](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#existcookie) to check whether cookies exist.
+- Use [existCookie()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#existcookie) to check whether cookies exist in private mode.
   <!-- @[check_whether_cookies_exist_in_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ExistCookie.ets) -->
   
   ``` TypeScript
@@ -328,7 +328,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
   }
   ```
 
-- Use [clearAllCookiesSync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#clearallcookiessync11) to clear all cookies. 
+- Use [clearAllCookiesSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#clearallcookiessync11) to clear all cookies in private mode. 
   <!-- @[clear_all_cookies_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ClearAllCookiesSync.ets) -->
   
   ``` TypeScript

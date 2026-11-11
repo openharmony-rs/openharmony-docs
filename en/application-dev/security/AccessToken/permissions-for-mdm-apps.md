@@ -7,15 +7,19 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-The following permissions are available only to Mobile Device Management (MDM) applications. For details about MDM applications, see [Introduction to MDM Kit](../../mdm/mdm-kit-intro.md).
+The following permissions are available only to Mobile Device Management (MDM) applications.
+ 
+<!--RP2-->
+For details about MDM applications, see [Introduction to MDM Kit](../../mdm/mdm-kit-intro.md).
 
 > **NOTE**
 > 
 > The following permissions do not support automatic code signing. You must [manually sign the code](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual) during the debugging and release phases.
+<!--RP2End-->
 
 ## ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
-Allows an application to activate a device administrator application.
+Allows a device management application to obtain device information.
 
 With this permission, the application can read the device ID, hard disk serial number, operating system version, and device name.
 
@@ -28,7 +32,7 @@ With this permission, the application can read the device ID, hard disk serial n
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
@@ -45,7 +49,7 @@ With this permission, the application can query the network adapter settings, IP
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -60,7 +64,7 @@ Allows a device administrator application to install and uninstall applications.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
@@ -75,7 +79,7 @@ Allows a device administrator application to set application running policies.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_RESET_DEVICE
 
@@ -90,7 +94,7 @@ Allows a device administrator application to restore devices' factory settings.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -107,7 +111,7 @@ With this permission, the application can add accounts.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
@@ -124,7 +128,7 @@ With this permission, the application can set the bundle installation trustlist.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -141,7 +145,7 @@ With this permission, the application can set the system time and prohibit users
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.ENTERPRISE_SET_NETWORK
 
@@ -158,7 +162,7 @@ With this permission, the application can disable and enable network adapters.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_SET_WIFI
 
@@ -175,13 +179,13 @@ With this permission, the application can query whether Wi-Fi is disabled and se
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
-Allows a device administrator application to subscribe to management events,
+Allows a device administrator application to subscribe to management events.
 
-such as application installation, application uninstallation, and system update events. After the subscription is successful, the MDM app will be notified when the event is triggered.
+With this permission, the application can subscribe to the events such as application installation, application uninstallation, and system update events. After the subscription is successful, the MDM app will be notified when the event is triggered.
 
 <!--RP1--><!--RP1End-->
 
@@ -192,7 +196,7 @@ such as application installation, application uninstallation, and system update 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -209,7 +213,7 @@ With this permission, the application can disable HDC and direct printing servic
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_SET_SCREENOFF_TIME
 
@@ -224,7 +228,7 @@ Allows the device administrator application to set the screen off time.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -239,7 +243,7 @@ Allows a device administrator application to manage the USB.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -254,7 +258,7 @@ Allows a device administrator application to manage the network.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
@@ -269,7 +273,7 @@ Allows a device administrator application to manage certificates.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_GET_SETTINGS
 
@@ -284,7 +288,7 @@ Allows a device administrator application to obtain the **Settings** application
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
@@ -299,7 +303,7 @@ Allows the device to set or cancel browser policies.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.SET_ENTERPRISE_INFO
 
@@ -316,7 +320,7 @@ With this permission, the application, once activated, can set enterprise inform
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -331,7 +335,7 @@ Allows a device administrator application to set security management policies fo
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
@@ -346,7 +350,7 @@ Allows a device administrator application to set and query Bluetooth information
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -361,7 +365,7 @@ Allows a device administrator application to manage system parameters.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.ENTERPRISE_MANAGE_WIFI
 
@@ -376,7 +380,7 @@ Allows a device administrator application to set and query Wi-Fi information.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
@@ -391,7 +395,7 @@ Allows a device administrator application to manage restriction policies.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -406,7 +410,7 @@ Allows a device administrator application to manage application policies.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.ENTERPRISE_MANAGE_LOCATION
 
@@ -421,7 +425,7 @@ Allows a device administrator application to set and query location information.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.ENTERPRISE_REBOOT
 
@@ -436,7 +440,7 @@ Allows a device administrator application to shut down and restart devices.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.ENTERPRISE_LOCK_DEVICE
 
@@ -451,7 +455,7 @@ Allows a device administrator application to lock devices.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 
@@ -466,7 +470,7 @@ Allows a device administrator application to manage settings.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 11
+**Since**: 11
 
 ## ohos.permission.ENTERPRISE_OPERATE_DEVICE
 
@@ -481,7 +485,7 @@ Allows a device administrator application to operate devices.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ENTERPRISE_ADMIN_MANAGE
 
@@ -498,7 +502,7 @@ Allows an application to manage a device administrator application.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ENTERPRISE_RECOVERY_KEY
 
@@ -513,7 +517,7 @@ Allows an application to manage the enterprise recovery keys.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.ENTERPRISE_MANAGE_DELEGATED_POLICY
 
@@ -530,7 +534,7 @@ Allows a device administrator application to delegate other applications to set 
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Valid since**: 14
+**Since**: 14
 
 ## ohos.permission.ENTERPRISE_GET_ALL_BUNDLE_INFO
 
@@ -547,7 +551,7 @@ Allows a device administrator application to obtain information about all applic
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
@@ -564,7 +568,7 @@ Allows a device administrator application to restrict users from modifying syste
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.ENTERPRISE_MANAGE_APN
 
@@ -581,7 +585,7 @@ Allows a device administrator application to manage device APN policies.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
@@ -598,7 +602,7 @@ Allows a device administrator application to manage device telephony policies.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.ENTERPRISE_SET_KIOSK
 
@@ -615,7 +619,7 @@ Allows a device administrator application to set the Kiosk mode.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.ENTERPRISE_MANAGE_LOCAL_PUBLICSPACES
 
@@ -634,7 +638,7 @@ With this permission, the application can set the password-free login duration f
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.ENTERPRISE_FILE_TRANSFER_AUDIT_POLICY_MANAGEMENT
 
@@ -651,7 +655,7 @@ Allows an MDM application to manage file transfer policies and audit information
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.ENTERPRISE_SET_WALLPAPER
 
@@ -668,7 +672,7 @@ Allows a device administrator application to set wallpapers.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.MANAGE_PREINSTALLED_ANTIVIRUS
 
@@ -685,7 +689,7 @@ Allows an MDM application to manage pre-installed antivirus software.
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
@@ -704,7 +708,7 @@ With this permission, the MDM application can configure user_grant permission po
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Valid since**: 20
+**Since**: 20
 
 ## ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE
 
@@ -738,7 +742,7 @@ Allows MDM applications to generate and decrypt DLP files, and query DLP file po
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 20
+**Since**: 20
 
 **Changelog**: This permission is available only to system applications in API version 20. From API version 21, it's also available to MDM applications.
 
@@ -833,6 +837,8 @@ Allows an enterprise MDM application to activate itself.
 
 Allows the enterprise MDM application to manage local accounts.
 
+<!--RP1--><!--RP1End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -848,6 +854,8 @@ Allows the enterprise MDM application to manage local accounts.
 
 Allows the enterprise MDM application to perform operations on multiple users.
 
+<!--RP1--><!--RP1End-->
+
 **Permission level**: system_core
 
 **Authorization mode**: system_grant
@@ -860,17 +868,19 @@ Allows the enterprise MDM application to perform operations on multiple users.
 **Since**: 26.0.0
 
 ## ohos.permission.ENTERPRISE_VPN
-    
+
 Allows an MDM application to possess the VPN access permission by default.
 
 With this permission, an application can establish VPN connections by default without requiring user confirmation.
+
+<!--RP1--><!--RP1End-->
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
 <!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
+**Certificate-based authorization**: true<!--DelEnd-->
 
 **Supported devices**: PCs/2-in-1 devices
 

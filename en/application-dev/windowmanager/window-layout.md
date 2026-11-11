@@ -6,7 +6,7 @@
 <!--Designer: @yyuehao-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:53:38.387Z pushedAt=2026-11-06T01:44:46.998Z nl=1 -->
+<!-- md-trans-meta sourceCommit=d173cf451b7a5f1eac198f550e30fdc6348976ed translatedAt=2026-11-10T03:32:21.556Z pushedAt=2026-11-10T07:53:10.826Z nl=1 -->
 
 ## When to Use
 
@@ -169,7 +169,7 @@ After a window is created, you can dynamically adjust its position and size thro
 
   | API | Coordinate System Origin | Description |
   | -------- | -------- | -------- |
-  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [Freeform window](freeform-window-overview.md#freeform-window): The origin is the top-left vertex of the screen.<br/>Non-[freeform window](freeform-window-overview.md#freeform-window): when moving a subwindow or modal window, the origin is the top-left vertex of the parent window; when moving other windows, the origin is the top-left vertex of the screen | Moves the window position. The call returns upon success, and the final effective result cannot be obtained immediately after the return. |
+  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [freeform window](freeform-window-overview.md#freeform-window) state: the origin is the top-left vertex of the screen<br/>In the non-freeform window state: when a child window or modal window is moved, the origin is the top-left vertex of the parent window; when other windows are moved, the origin is the top-left vertex of the screen | Moves the window position. The call returns upon success, and the final effective result cannot be obtained immediately after the return. |
   | [moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync12) with input parameters **x** and **y**<br/>[moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync15) with input parameters **x**, **y**, **moveConfiguration** | [Freeform window](freeform-window-overview.md#freeform-window): The origin is the top-left vertex of the screen.<br/>Non-[freeform window](freeform-window-overview.md#freeform-window): The origin is the top-left vertex of the main window. | Moves the window position. The call returns after the operation takes effect. |
   | [moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15) with input parameters **x** and **y**<br/>[moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15) with input parameters **x**, **y**, and **moveConfiguration** | Top-left vertex of the target screen | Moves the window position based on screen coordinates. The call returns after the operation takes effect. |
   | [moveWindowToGlobalDisplay()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobaldisplay20) | Top-left vertex of the main screen (global coordinate system) | Moves the window position based on the [global coordinate system](window-terminology.md#global-coordinate-system). |
