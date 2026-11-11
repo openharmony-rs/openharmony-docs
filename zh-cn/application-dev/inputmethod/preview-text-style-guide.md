@@ -26,18 +26,20 @@
 
    ```shell
    # 启用本示例的输入法
-   hdc shell ime -e com.samples.previewstylejs
+   hdc shell ime -e com.samples.previewstylejs -f
    # 将当前输入法切换为本示例的输入法
    hdc shell ime -s com.samples.previewstylejs
    # 查询当前输入法，确认包名为com.samples.previewstylejs
    hdc shell ime -g
    ```
 
-   确认当前输入法为com.samples.previewstylejs后，继续以下步骤。
+   `-f`用于完整体验模式，运行设备需支持该模式。确认当前输入法为com.samples.previewstylejs后，继续以下步骤。
 
-2. 返回默认的编辑框页面，点击“绑定编辑器”。输入法通过[on('inputStart')](../reference/apis-ime-kit/js-apis-inputmethodengine.md#oninputstart9)监听绑定成功事件，并取得当前[InputClient](../reference/apis-ime-kit/js-apis-inputmethodengine.md#inputclient9)。输入法扩展从`app.string.preview_text`读取示例文本，交由`PreviewSender`保存。以下代码位于[PreviewInputMethod.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/keyboard/PreviewInputMethod.ets)的输入法扩展类中，previewSender为同工程PreviewSender模块导出的实例。
+2. 返回默认的编辑框页面，点击“绑定编辑器”。输入法通过[on('inputStart')](../reference/apis-ime-kit/js-apis-inputmethodengine.md#oninputstart9)监听绑定成功事件，并取得当前[InputClient](../reference/apis-ime-kit/js-apis-inputmethodengine.md#inputclient9)。输入法扩展从`app.string.preview_text`读取示例文本，交由`PreviewSender`保存。previewSender为同工程PreviewSender模块导出的实例。
 
-   ```ts
+   <!-- @[preview_style_js_input_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/keyboard/PreviewInputMethod.ets) -->
+   
+   ``` TypeScript
    onCreate(): void {
      previewSender.setPreviewText(this.context.resourceManager.getStringSync($r('app.string.preview_text').id));
      this.active = true;
@@ -58,7 +60,7 @@
 
    <!-- @[preview_style_js_send](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/keyboard/PreviewSender.ets) -->
 
-   ``` TypeScript
+   ```typescript
    async send(): Promise<void> {
      const client = this.client;
      if (client === undefined || this.busy) {
@@ -71,7 +73,7 @@
        underlineStyle: inputMethodEngine.UnderlineStyle.WAVY,
        underlineColor: 0x00FF0000
      };
-     // 省略 underlineColor 使用编辑器主题色；显式传入 0 表示黑色。
+     // 省略underlineColor使用编辑框主题色；显式传入0表示黑色。
      try {
        await client.setPreviewTextWithStyle(this.previewText, range, style);
        this.status($r('app.string.preview_displayed'));
@@ -90,7 +92,7 @@
 
    <!-- @[preview_style_js_send_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/keyboard/PreviewSender.ets) -->
 
-   ``` TypeScript
+   ```typescript
    // 同步调用的等价写法。页面使用上面的异步方法。
    sendSync(): void {
      const client = this.client;
@@ -119,7 +121,7 @@
 
    <!-- @[preview_style_js_finish](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/keyboard/PreviewSender.ets) -->
 
-   ``` TypeScript
+   ```typescript
    async finish(): Promise<void> {
      const client = this.client;
      if (client === undefined || this.busy) {
@@ -152,8 +154,8 @@ styledCallback保存文本、范围和下划线样式，并通过runScopedTask�
 
 <!-- @[preview_style_js_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/components/PreviewEditor.ets) -->
 
-``` TypeScript
-// 保留同一回调对象，用于解绑时取消本编辑器的订阅。
+```typescript
+// 保留同一回调对象，用于解绑时取消本编辑框的订阅。
 private styledCallback: inputMethod.SetPreviewTextWithStyleCallback =
   (text: string, range: inputMethod.Range, style: inputMethod.PreviewTextStyle): void => {
     if (!this.alive || !this.listening) {
@@ -176,7 +178,7 @@ private legacyCallback: inputMethod.SetPreviewTextCallback = (text: string, rang
     return;
   }
   this.getUIContext().runScopedTask((): void => {
-    // 本示例使用当前预上屏范围；旧回调不覆盖同一请求已经收到的样式。
+    // setPreviewText事件回调不覆盖同一请求已经收到的样式。
     if (text === this.styledText && range.start === this.styledRangeStart &&
       range.end === this.styledRangeEnd && this.previewStart >= 0) {
       return;
@@ -194,7 +196,7 @@ listening记录样式事件是否已订阅，防止重复注册；取消订阅�
 
 <!-- @[preview_style_js_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/components/PreviewEditor.ets) -->
 
-``` TypeScript
+```typescript
 private subscribeStyle(): void {
   if (!this.listening) {
     this.controller.onSetPreviewTextWithStyle(this.styledCallback);
@@ -216,7 +218,7 @@ private unsubscribeStyle(): void {
 
 <!-- @[preview_style_js_attach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/components/PreviewEditor.ets) -->
 
-``` TypeScript
+```typescript
 private async connectEditor(): Promise<void> {
   this.controller.on('setPreviewText', this.legacyCallback);
   this.legacyListening = true;
@@ -231,7 +233,7 @@ private async connectEditor(): Promise<void> {
     await this.disconnectEditor();
     return;
   }
-  // These callbacks require an established editor connection.
+  // 以下编辑回调需要在编辑框绑定成功后注册。
   this.controller.on('getTextIndexAtCursor', this.cursorCallback);
   this.cursorListening = true;
   this.controller.on('insertText', this.insertCallback);
@@ -252,7 +254,7 @@ PreviewTextStyleJS示例工程中的C页面包含一个自绘编辑框和绑定/
 
 <!-- @[preview_style_c_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C++
+```cpp
 int32_t SetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, uint32_t length,
     int32_t start, int32_t end, const OH_InputMethod_PreviewTextStyle *style)
 {
@@ -262,8 +264,8 @@ int32_t SetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, const ch
     OH_InputMethod_UnderlineStyle kind = OH_INPUTMETHOD_UNDERLINE_STYLE_NONE;
     uint32_t color = 0;
     bool hasColor = false;
-    // Read the borrowed object; its lifetime belongs to the input method framework.
-    // The C getters accept a mutable pointer but only read this framework-owned object.
+    // 读取框架传入的样式对象，其生命周期由输入法框架管理。
+    // C接口接收非const指针，但此处仅读取框架持有的对象。
     auto *readStyle = const_cast<OH_InputMethod_PreviewTextStyle *>(style);
     auto result = OH_InputMethod_PreviewTextStyle_GetUnderlineStyle(readStyle, &kind);
     if (result != IME_ERR_OK) {
@@ -289,7 +291,7 @@ int32_t SetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, const ch
 
 <!-- @[preview_style_c_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
 
-``` C++
+```cpp
 auto result = OH_TextEditorProxy_SetSetPreviewTextFunc(textEditorProxy, SetPreviewTextFunc);
 if (result != IME_ERR_OK) {
     return result;
