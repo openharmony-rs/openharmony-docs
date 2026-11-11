@@ -763,9 +763,9 @@
 						"start_line":989
 					},
 					{
-						"end_line":2232,
+						"end_line":2216,
 						"name":"AppEvent_C++_Init",
-						"start_line":2109
+						"start_line":2095
 					},
 					{
 						"end_line":1420,
@@ -12129,9 +12129,9 @@
 						"start_line":438
 					},
 					{
-						"end_line":2234,
+						"end_line":2218,
 						"name":"Sys_Native_Nullptr_Event_C++_Init",
-						"start_line":2107
+						"start_line":2093
 					}
 				]
 			},
@@ -12184,9 +12184,9 @@
 						"start_line":563
 					},
 					{
-						"end_line":2233,
+						"end_line":2217,
 						"name":"Sys_Crash_Event_C++_Init",
-						"start_line":2106
+						"start_line":2092
 					},
 					{
 						"end_line":916,
@@ -37015,9 +37015,9 @@
 						"start_line":1220
 					},
 					{
-						"end_line":2235,
+						"end_line":2219,
 						"name":"Pss_Leak_Init",
-						"start_line":2108
+						"start_line":2094
 					}
 				]
 			},
@@ -37060,9 +37060,9 @@
 						"start_line":1220
 					},
 					{
-						"end_line":2235,
+						"end_line":2219,
 						"name":"Pss_Leak_Init",
-						"start_line":2108
+						"start_line":2094
 					}
 				]
 			},
@@ -69643,9 +69643,9 @@
 						"start_line":1489
 					},
 					{
-						"end_line":2225,
+						"end_line":2209,
 						"name":"ExternalLog_C++_Init",
-						"start_line":2112
+						"start_line":2098
 					}
 				]
 			},
@@ -70567,9 +70567,9 @@
 						"start_line":1520
 					},
 					{
-						"end_line":1696,
+						"end_line":2172,
 						"name":"test_hicollie_set_timer",
-						"start_line":1692
+						"start_line":2169
 					}
 				]
 			},
@@ -70667,9 +70667,9 @@
 						"start_line":872
 					},
 					{
-						"end_line":1614,
+						"end_line":2208,
 						"name":"MainThreadJank_Init",
-						"start_line":1611
+						"start_line":2099
 					},
 					{
 						"end_line":1415,
@@ -72282,14 +72282,14 @@
 						"start_line":20
 					},
 					{
-						"end_line":1616,
+						"end_line":1615,
 						"name":"AppKillEvent_NativeLeak",
 						"start_line":1593
 					},
 					{
-						"end_line":2214,
+						"end_line":2211,
 						"name":"AppKillEvent_ArkTS_Init",
-						"start_line":2091
+						"start_line":2090
 					}
 				]
 			},
@@ -72342,14 +72342,14 @@
 						"start_line":20
 					},
 					{
-						"end_line":1616,
+						"end_line":1615,
 						"name":"AppKillEvent_NativeLeak",
 						"start_line":1593
 					},
 					{
-						"end_line":2213,
+						"end_line":2210,
 						"name":"AppKillEvent_Init",
-						"start_line":2090
+						"start_line":2089
 					},
 					{
 						"end_line":1558,
@@ -72437,9 +72437,9 @@
 						"start_line":406
 					},
 					{
-						"end_line":2215,
+						"end_line":2212,
 						"name":"AppFreezeWarning_Init",
-						"start_line":2092
+						"start_line":2091
 					},
 					{
 						"end_line":1525,
@@ -72537,9 +72537,9 @@
 						"start_line":985
 					},
 					{
-						"end_line":2223,
+						"end_line":2220,
 						"name":"FreezeEvent_Init",
-						"start_line":2097
+						"start_line":2096
 					},
 					{
 						"end_line":1431,
