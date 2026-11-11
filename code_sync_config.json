@@ -38375,6 +38375,16 @@
 						"end_line":356,
 						"name":"render_process",
 						"start_line":16
+					},
+					{
+						"end_line":370,
+						"name":"render_standby_enter",
+						"start_line":358
+					},
+					{
+						"end_line":384,
+						"name":"render_standby_exit",
+						"start_line":372
 					}
 				]
 			}
@@ -38445,6 +38455,11 @@
 						"end_line":402,
 						"name":"Render_callBackInit",
 						"start_line":49
+					},
+					{
+						"end_line":261,
+						"name":"Render_Standby",
+						"start_line":249
 					}
 				]
 			}
