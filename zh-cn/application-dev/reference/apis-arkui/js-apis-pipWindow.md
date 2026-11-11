@@ -596,7 +596,7 @@ startPiP(): Promise&lt;void&gt;
 
 | 错误码ID    | 错误信息                                                |
 |------------|--------------------------------------------------------|
-| 1300012    | The PiP window state is abnormal.Possible causes: 1.The PiP controller has been destroyed. 2.The PiP window is not created or has been destroyed.     |
+| 1300012    | The PiP window state is abnormal. Possible causes: 1. The PiP controller has been destroyed. 2. The PiP window is not created or has been destroyed.     |
 | 1300013    | Failed to create the PiP window. Possible causes: 1.PiP configuration parameters are invalid,  such as pipOption or context is null.  2.The XComponentController or main window is null.  3.The main window is not shown (non-auto-start scenario). 4.Navigation component operation failed.          |
 | 1300014    | PiP internal error. Possible cause: Internal error, failed to show the PiP window. Such as insufficient resources or abnormal window service.                             |
 | 1300015    | Repeated PiP operation.                                |
