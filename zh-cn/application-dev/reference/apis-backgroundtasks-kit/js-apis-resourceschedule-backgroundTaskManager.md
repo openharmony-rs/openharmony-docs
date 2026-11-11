@@ -72,7 +72,7 @@ try {
   // 回调函数。应用申请的短时任务即将超时，通过此函数回调应用，执行一些清理和标注工作，并取消短时任务
   // 此处回调与应用的业务功能不耦合，短时任务申请成功后，正常执行应用本身的业务
     console.info('Request suspension delay will time out.');
-  })
+  });
   let requestId = delayInfo.requestId;
   let time = delayInfo.actualDelayTime;
   console.info('The requestId is: ' + requestId);
@@ -122,7 +122,7 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 // 短时任务的请求ID，用于查询剩余时间
 let requestId = 1;
 backgroundTaskManager.getRemainingDelayTime(requestId, (error: BusinessError, res: number) => {
-  if(error) {
+  if (error) {
     console.error(`callback => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
   } else {
     console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
@@ -543,7 +543,7 @@ export default class EntryAbility extends UIAbility {
   // 从API版本26.0.1开始，可使用updateDataTransferProgress接口更新包含数据传输类型的长时任务通知。可选择通知是否带进度环，以及进度环为100时是否响铃。
   updateProcess(process: number) {
     // 定义通知类型，更新进度时的通知类型必须为实况窗
-    let downLoadTemplate: notificationManager.NotificationTemplate = {
+    let downloadTemplate: notificationManager.NotificationTemplate = {
       name: 'downloadTemplate', // 当前只支持downloadTemplate，保持不变
       data: {
         title: '文件下载：music.mp4', // 必填
@@ -563,17 +563,17 @@ export default class EntryAbility extends UIAbility {
       },
       id: this.notificationId, // 必须是申请长时任务返回的notificationId，否则应用更新通知失败
       notificationSlotType: notificationManager.SlotType.LIVE_VIEW, // 实况窗类型，保持不变
-      template: downLoadTemplate // 应用需要设置的模版名称
+      template: downloadTemplate // 应用需要设置的模版名称
     };
 
     try {
       notificationManager.publish(request).then(() => {
         console.info('publish success, id= ' + this.notificationId);
-      }).catch((err: BusinessError) => {
-        console.error(`publish fail: ${JSON.stringify(err)}`);
+      }).catch((error: BusinessError) => {
+        console.error(`publish fail. code is ${error.code} message is ${error.message}`);
       });
-    } catch (err) {
-      console.error(`publish fail: ${JSON.stringify(err)}`);
+    } catch (error) {
+      console.error(`publish fail. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
   }
 };
@@ -803,7 +803,7 @@ export default class EntryAbility extends UIAbility {
 
 stopBackgroundRunning(context: Context, callback: AsyncCallback&lt;void&gt;): void
 
-取消当前UIAbility（FA模型则为ServiceAbility）下所有长时任务，使用callback异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning21)接口取消指定Id的长时任务。适用于应用功能已完成、应用即将退出等场景。
+取消当前UIAbility（FA模型则为ServiceAbility）下所有长时任务，使用callback异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning21)接口取消指定ID的长时任务。适用于应用功能已完成、应用即将退出等场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -862,7 +862,7 @@ export default class EntryAbility extends UIAbility {
 
 stopBackgroundRunning(context: Context): Promise&lt;void&gt;
 
-取消当前UIAbility（FA模型则为ServiceAbility）下所有长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning21)接口取消指定Id的长时任务。适用于应用功能已完成、应用即将退出等场景。
+取消当前UIAbility（FA模型则为ServiceAbility）下所有长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning21)接口取消指定ID的长时任务。适用于应用功能已完成、应用即将退出等场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -922,7 +922,7 @@ export default class EntryAbility extends UIAbility {
 
 stopBackgroundRunning(context: Context, continuousTaskId: number): Promise&lt;void&gt;
 
-取消指定Id的长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning)取消当前UIAbility下所有长时任务。适用于应用功能已完成、应用即将退出等场景。
+取消指定ID的长时任务，使用Promise异步回调。也可以通过[stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning)取消当前UIAbility下所有长时任务。适用于应用功能已完成、应用即将退出等场景。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -1188,7 +1188,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-  continuousTaskId : number = -1; // 保存长时任务Id
+  continuousTaskId: number = -1; // 保存长时任务Id
   onCreate() {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
       // 点击通知后，将要执行的动作列表
@@ -1385,7 +1385,7 @@ on(type: 'continuousTaskCancel', callback: Callback&lt;ContinuousTaskCancelInfo&
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Register a exist callback type; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Register an existing callback type; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1433,7 +1433,7 @@ off(type: 'continuousTaskCancel', callback?: Callback&lt;ContinuousTaskCancelInf
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Unregister type has not register; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Unregister type has not been registered; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1701,8 +1701,8 @@ export default class EntryAbility extends UIAbility {
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | slotType       | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否    | 否    | 长时任务通知的渠道类型。<br/>**说明：** 长时任务申请或更新成功后不支持提示音。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | contentType | [notificationManager.ContentType](../apis-notification-kit/js-apis-notificationManager.md#contenttype) | 否    | 否    | 长时任务通知的内容类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| notificationId | number | 否    | 否    | 长时任务通知 Id。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| continuousTaskId<sup>15+</sup> | number | 否    | 是    | 长时任务 Id。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| notificationId | number | 否    | 否    | 长时任务通知ID。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| continuousTaskId<sup>15+</sup> | number | 否    | 是    | 长时任务ID。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## ContinuousTaskCancelInfo<sup>15+</sup>
 
@@ -1835,7 +1835,7 @@ export default class EntryAbility extends UIAbility {
 | SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE         | 16   | 申请AUDIO_PLAYBACK类型长时任务，但是一段时间内处于整机静音状态。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | SYSTEM_SUSPEND_NEARLINK_NOT_USED         | 17   | 申请星闪类型长时任务，但是一段时间没有星闪配对连接。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | SYSTEM_SUSPEND_NEARLINK_DATA_NOT_EXIST           | 18   | 申请星闪类型长时任务，但是一段时间没有星闪数据流。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| SYSTEM_SUSPEND_USER_UNAUTHORIZED           | 19   | 申请特殊类型长时任务，但是用户未授权。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SYSTEM_SUSPEND_USER_UNAUTHORIZED           | 19   | 申请特殊场景类型长时任务，但是用户未授权。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | SYSTEM_SUSPEND_USB_NOT_USED                | 20   | 申请USB类型长时任务，但是未使用USB设备。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | SYSTEM_SUSPEND_USB_ALREADY_OCCUPIED        | 21   | 申请USB类型长时任务，但是USB设备已经被占用。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
@@ -1864,9 +1864,9 @@ export default class EntryAbility extends UIAbility {
 | isFromWebView | boolean  | 否    | 否    | 是否通过Webview方式申请，即通过系统代理应用申请长时任务。true表示通过Webview方式申请，false表示不通过Webview方式申请。|
 | backgroundModes | string[] | 否    | 否    | [长时任务类型](#backgroundmode)。               |
 | backgroundSubModes | string[] | 否    | 否    | [长时任务子类型](#backgroundsubmode16)。              |
-| notificationId | number   | 否    | 否    | 通知 Id。                |
+| notificationId | number   | 否    | 否    | 通知ID。                |
 | continuousTaskId | number   | 否    | 否    | 长时任务ID。              |
-| abilityId | number   | 否    | 否    | UIAbility Id。         |
+| abilityId | number   | 否    | 否    | UIAbility ID。         |
 | wantAgentBundleName | string   | 否    | 否    |  [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) 配置的包名。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。        |
 | wantAgentAbilityName | string   | 否    | 否    |  [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) 配置的ability名称。WantAgent为通知参数，用于指定点击长时任务通知后跳转的界面，在申请长时任务时作为参数传入。 |
 | suspendState | boolean   | 否    | 否    | 申请的长时任务是否处于暂停状态。true表示处于暂停状态，false表示处于激活状态。|
@@ -1942,7 +1942,7 @@ export default class EntryAbility extends UIAbility {
       isModeSupported = continuousTaskRequest.isModeSupported();
       console.info(`Operation isModeSupported succeeded. isModeSupported is ${isModeSupported}`);
     } catch (error) {
-      console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+      console.error(`Operation isModeSupported failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
   }
 };
@@ -1966,7 +1966,7 @@ requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;):
 
 | 参数名      | 类型                                                  | 必填   | 说明           |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
 | callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 用户操作后，返回授权结果。 |
 
 **错误码：**
@@ -2027,7 +2027,7 @@ requestAuthFromUserByDialog(context: Context, callback: Callback&lt;UserAuthResu
 
 | 参数名      | 类型                                                  | 必填   | 说明           |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
 | callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 回调函数，返回用户授权结果。 |
 
 **错误码：**
@@ -2092,7 +2092,7 @@ checkSpecialScenarioAuth(context: Context): Promise&lt;UserAuthResult&gt;
 
 | 参数名      | 类型                                                  | 必填   | 说明           |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。|
 
 **返回值：**
 
@@ -2153,7 +2153,7 @@ checkSpecialScenarioAuthResult(context: Context): Promise&lt;UserAuthResult&gt;
 
 | 参数名      | 类型                                                  | 必填   | 说明           |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。|
 
 **返回值：**
 
