@@ -72714,5 +72714,25 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/using-ohaudio-for-audio-timestamp.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AudioMusicPlayer/entry/src/main/cpp/player/oh_audio_playing.cpp",
+				"functions":[
+					{
+						"end_line":417,
+						"name":"GetLatency",
+						"start_line":407
+					},
+					{
+						"end_line":1147,
+						"name":"GetAudioTimestampInfo",
+						"start_line":1135
+					}
+				]
+			}
+		]
 	}
 ]
