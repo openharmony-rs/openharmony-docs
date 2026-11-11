@@ -1,7 +1,7 @@
 ---
 kits: ["AVCodec Kit / 音视频编解码服务"]
 description: "AVCodec Kit提供音视频编解码、媒体文件封装与解封装等原子能力，支持硬件加速编解码与系统内数据零拷贝，仅提供C接口，适用于播放器、录制、视频通话等媒体应用开发。"
-keywords: [AVCodec Kit, 音视频编解码, 封装, 解封装, 硬件编解码, 零拷贝, AVBuffer, AVFormat,]
+keywords: [AVCodec Kit, 音视频编解码, 封装, 解封装, 硬件编解码, 零拷贝, AVBuffer, AVFormat]
 doctype: guide
 status: active
 ---
