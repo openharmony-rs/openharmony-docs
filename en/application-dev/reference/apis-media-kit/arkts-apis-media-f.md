@@ -5,6 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=9ad8d15db272a3353e931a12f68cc42914095c2e translatedAt=2026-11-09T06:24:21.620Z pushedAt=2026-11-09T08:19:16.413Z nl=1 -->
 
 > **NOTE**
 >
@@ -673,9 +674,11 @@ Creates a media source using a file descriptor.
 ```ts
 import { common } from '@kit.AbilityKit';
 
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let fdSrc = await context.resourceManager.getRawFd('xxx.mp4');
-let mediaSource : media.MediaSource | undefined = media.createMediaSourceWithFd(fdSrc);
+async test() {
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let fdSrc = await context.resourceManager.getRawFd('xxx.mp4');
+  let mediaSource : media.MediaSource | undefined = media.createMediaSourceWithFd(fdSrc);
+}
 ```
 
 ## media.createMediaSourceWithDataSource
@@ -710,24 +713,26 @@ Creates a media source using the custom data source.
 import { common } from '@kit.AbilityKit';
 import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
 
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
-let file = fs.openSync("xxx.mp4");
-let dataSrc: media.AVDataSrcDescriptor = {
-  fileSize: fileDescriptor.length,
-  callback: (buf: ArrayBuffer, length: number, pos?: number) => {
-    let readLen = 0;
-    if (pos) {
-      let option: ReadOptions = {
-        offset: pos,
-        length: length,
-      };
-      readLen = fs.readSync(file.fd, buf, option);
+async test() {
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
+  let file = fs.openSync("xxx.mp4");
+  let dataSrc: media.AVDataSrcDescriptor = {
+    fileSize: fileDescriptor.length,
+    callback: (buf: ArrayBuffer, length: number, pos?: number) => {
+      let readLen = 0;
+      if (pos) {
+        let option: ReadOptions = {
+          offset: pos,
+          length: length,
+        };
+        readLen = fs.readSync(file.fd, buf, option);
+      }
+      return readLen > 0 ? readLen : -1;
     }
-    return readLen > 0 ? readLen : -1;
   }
+  let mediaSource : media.MediaSource | undefined =  media.createMediaSourceWithDataSource(dataSrc);
 }
-let mediaSource : media.MediaSource | undefined =  media.createMediaSourceWithDataSource(dataSrc);
 ```
 
 ## media.createAudioPlayer<sup>(deprecated)</sup>
@@ -976,3 +981,4 @@ async function test() {
   });
 }
 ```
+

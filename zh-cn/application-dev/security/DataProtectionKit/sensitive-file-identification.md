@@ -14,6 +14,7 @@ Data Protection Kit为应用提供了识别文件中是否存在敏感内容的�
 
 1. 识别敏感内容支持的文件格式：txt、doc、docx、xls、xlsx、ppt、pptx。
 2. 识别敏感内容支持文件最大80MB。
+<!--RP1--><!--RP1End-->
  
 ## 开发步骤
  

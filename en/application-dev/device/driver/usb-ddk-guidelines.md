@@ -1,18 +1,17 @@
 # USB DDK Development
-
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=09d00a95d1d887d97b87c4ee8f0a2a7b0621646c translatedAt=2026-08-20T06:24:53.558Z pushedAt=2026-08-20T13:07:24.877Z -->
+<!-- md-trans-meta sourceCommit=f78ab21ce47ccf91f4a9260cbc609297b8e86f9f translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Overview
 
-The USB Driver Development Kit (UsbDdk) is a toolset that helps you develop USB device drivers at the application layer based on the user mode. It provides a series of device access APIs, for example, opening and closing USB interfaces, and performing non-isochronous transfer, isochronous transfer, control transfer, and interrupt transfer over USB pipes.
+The USB Driver Development Kit (UsbDdk) is a toolset that helps you develop USB device drivers at the application layer based on the user mode. It provides a series of device access APIs, for example, opening and closing USB interfaces, and performing synchronous and asynchronous read/write communication over pipes, control transfer, and interrupt transfer over USB pipes.
 
-The UsbDdk can be used to develop device drivers for all devices that use the USB protocol to transfer data over a USB bus. For the peripherals that are not supported by standard kernel drivers, you can use the peripheral driver application developed based on the UsbDdk to implement unique device capabilities.
+UsbDdk can be used to develop device drivers for all devices that use the USB protocol to transfer data over a USB bus. For the peripherals that are not supported by standard kernel drivers, you can use peripheral driver application developed based on UsbDdk to implement unique device capabilities.
 
 ### Basic Concepts
 
@@ -20,15 +19,15 @@ Before you get started, understand the following concepts:
 
 - **USB**
 
-  Universal Serial Bus (USB) is a widely used interface technology that connects a computer to various external devices, such as a keyboard, mouse, printer, storage device, and smartphone. The USB is designed to provide a standardized, efficient, and easy-to-use connection mode that replaces the traditional serial and parallel interface communication.
+  Universal Serial Bus (USB) is a widely used interface technology that connects a computer to various external devices, such as a keyboard, mouse, printer, storage device, and smartphone. USB is designed to provide a standardized, efficient, and easy-to-use connection mode that replaces the traditional serial and parallel interface communication.
 
 - **DDK**
 
-  DDK is a tool package provided by OpenHarmony for developing drivers for non-standard USB devices based on the peripheral framework.
+  DDK is a tool package provided by OpenHarmony for developing drivers for non-standard USB serial port devices based on the peripheral framework.
 
 ### Implementation Principles
 
-A non-standard peripheral application obtains the USB device ID by using the peripheral management service, and delivers the ID and the action to the USB driver application through RPC. The USB driver application can obtain the device descriptor and configuration descriptor and initiate a control transfer or interrupt transfer request by calling the UsbDdk API. Then, the DDK API uses the HDI service to deliver instructions to the kernel driver, and the kernel driver uses instructions to communicate with the device.
+A non-standard peripheral application obtains the USB device ID by using the peripheral management service, and delivers the ID and the action to the USB driver application through RPC. The USB driver application can obtain or set the device descriptor and send requests such as control transfer and interrupt transfer by calling the UsbDdk API. Then, the DDK API uses the HDI service to deliver instructions to the kernel driver, and the kernel driver uses instructions to communicate with the device.
 
 **Figure 1** Principle of invoking the UsbDdk
 
@@ -77,13 +76,11 @@ To develop a USB driver using the UsbDdk, perform the following steps:
 **Adding Dynamic Link Libraries**
 
 Add the following libraries to **CMakeLists.txt**.
-
 ```txt
 libusb_ndk.z.so
 ```
 
 **Including Header Files**
-
 ```c++
 #include <usb/usb_ddk_api.h>
 #include <usb/usb_ddk_types.h>
@@ -176,6 +173,7 @@ libusb_ndk.z.so
     auto ret = OH_Usb_SendControlReadRequest(g_interfaceHandle, &strDescSetup, UINT32_MAX, strDesc, &len);
     ```
 
+
     <!-- @[driver_usb_step4_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
 
     ``` C++
@@ -203,6 +201,7 @@ libusb_ndk.z.so
     // Create a buffer for storing data.
     int32_t ret = OH_Usb_CreateDeviceMemMap(g_devHandle, bufferLen, &devMmap);
     ```
+
 
     <!-- @[driver_usb_step5_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
 
@@ -249,4 +248,6 @@ libusb_ndk.z.so
     if (ret != USB_DDK_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "OH_Usb_GetDevices failed, ret=%{public}d", ret);
     }
+    // ... Logic for using deviceArray ...
+    delete[] deviceArray.deviceIds;
     ```

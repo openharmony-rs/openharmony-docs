@@ -6,7 +6,7 @@
 <!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=111816d7ef19f2d98b21b4e02b20c33665536af8 translatedAt=2026-09-16T11:16:21.146Z pushedAt=2026-09-20T09:01:52.277Z -->
+<!-- md-trans-meta sourceCommit=6b8dec305a219d4f3516b9159bf80e8d01c09f57 translatedAt=2026-11-03T06:16:49.826Z pushedAt=2026-11-03T12:08:25.611Z nl=1 -->
 
 HiChecker can be used as a detection tool in the application development phase to detect some easily overlooked issues during code running, such as time-consuming calls in application threads and Ability resource leakage in the application process. Developers can view specific issues through logs or process crashes and fix them to improve the application experience.
 
@@ -56,7 +56,7 @@ If the rule level of the passed-in rule is thread level, the rule takes effect o
 
 | ID | Error Message |
 | ------- | ----------------------------------------------------------------- |
-| 401 | the parameter check failed, only one bigint type parameter is needed  |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.  |
 
 **Example**
 
@@ -94,7 +94,7 @@ If the rule level of the passed-in rule is thread level, the rule is removed onl
 
 | ID | Error Message |
 | ------- | ----------------------------------------------------------------- |
-| 401 | the parameter check failed, only one bigint type parameter is needed  |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.  |
 
 **Example**
 
@@ -138,7 +138,7 @@ If the rule level of the passed-in rule is thread level, the query is performed 
 
 | ID | Error Message |
 | ------- | ----------------------------------------------------------------- |
-| 401 | the parameter check failed, only one bigint type parameter is needed  |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.  |
 
 **Example**
 

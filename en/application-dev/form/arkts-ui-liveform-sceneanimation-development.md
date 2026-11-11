@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=fcbe1b63c2ed8c88f39d64156d61061da7f22ee1 translatedAt=2026-08-26T04:42:53.975Z pushedAt=2026-08-28T08:17:24.705Z -->
+<!-- md-trans-meta sourceCommit=3bef641539163230930467cf43754c9df02e807a translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 Starting from API version 20, scene-based interactive widgets support triggering widget-specific effects in specific scenarios. For example, you can choose to extend the animation rendering area beyond the widget's own rendering area to create an "overflow" effect. This document provides development guidance for scene-based interactive widgets, including the concepts, constraints and limitations, development of the widget's inactive and active state UI, and development of the widget configuration file.
 
@@ -45,7 +45,7 @@ You can call the [formProvider.requestOverflow](../reference/apis-form-kit/js-ap
 
 ### Supported Scenarios
 1. Currently, the interactive widget animation takes effect only on a single widget with [FormLocation](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formlocation20) set to **DESKTOP**.
-2. Due to the impact on performance and power consumption, only some models are supported. If a model is not supported, the error code [801](../reference/errorcode-universal.md#801-api-not-supported) is reported.
+2. Due to the impact on performance and power consumption, only some models are supported. If a model is not supported, error [801 API Not Supported](../reference/errorcode-universal.md#801-api-not-supported-on-some-devices) is reported.
 
 ### Parameter Request
 1. The maximum valid animation duration that an interactive widget can request is 3500 ms. When the countdown ends, the widget switches back to the inactive state.<!--Del-->System applications additionally support long-time activated widgets, with no limit on the animation duration. For details, see [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md).<!--DelEnd-->
@@ -70,7 +70,7 @@ Example: On a device, a 2×2 widget measures 158vp × 158vp. Referring to the fi
 
 (2) Points I and A are horizontally 39.5vp apart and vertically 39.5vp apart.
 
-Thus, with A as the origin (X-axis positive to the right, Y-axis positive downward), the valid coordinates for point E in Figure 5 can be (-20, -20). The valid lengths for sides EF and EH can both be 200vp.
+Thus, with A as the origin (X-axis positive to the right, Y-axis positive downward), the valid coordinates for point E in Figure 6 can be (-20, -20). The valid lengths for sides EF and EH can both be 200vp.
 
 The interactive widget can call the [formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20) API to obtain its dimensions and relative coordinate position in the window. The widget provider uses this information to calculate the animation request range. When calculating coordinates, use point A in the figure above as the origin (0, 0) and calculate the corresponding parameters for rectangle EFGH, in vp.
 
@@ -467,13 +467,13 @@ The following table lists the key APIs for a scene-based widget.
             // Specify whether to use the default switching animation provided by the system.
             useDefaultAnimation: true,
           }).then(() => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'requestOverflow requestOverflow succeed');
+            hilog.info(DOMAIN_NUMBER, TAG, 'requestOverflow succeed');
           }).catch((error: BusinessError) => {
-            hilog.info(DOMAIN_NUMBER, TAG, `requestOverflow requestOverflow catch error` + `,
+            hilog.error(DOMAIN_NUMBER, TAG, `requestOverflow catch error` + `,
               code: ${error.code}, message: ${error.message}`);
           })
         } catch (e) {
-          hilog.info(DOMAIN_NUMBER, TAG, `requestOverflow call requestOverflow catch error` + `,
+          hilog.error(DOMAIN_NUMBER, TAG, `requestOverflow catch error` + `,
             code: ${e.code}, message: ${e.message}`);
         }
       }

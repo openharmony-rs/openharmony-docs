@@ -1,11 +1,20 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how to set expected drawing frame rates for property animations and explicit animations with ExpectedFrameRateRange."
+keywords: [property animation, explicit animation, drawing frame rate, expected frame rate, ExpectedFrameRateRange, animateTo]
+doctype: guide
+status: active
+---
+
 # Requesting Frame Rates for Animations
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @wh_qwe-->
 <!--Designer: @wh_qwe-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8274e2d7a391483e6c7c9de842768baf61c0596c translatedAt=2026-10-19T01:23:20.272Z pushedAt=2026-10-19T07:34:01.615Z -->
+<!-- md-trans-meta sourceCommit=263f6d28c3a62b89d47845e6da97eea2212aedc9 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 During application development, you can use the optional parameter [ExpectedFrameRateRange](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#expectedframeraterange11) to set an expected frame rate range for a [property animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md) or an [explicit animation](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md).
 

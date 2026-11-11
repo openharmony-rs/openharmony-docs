@@ -1,20 +1,20 @@
 # Interface (AudioRecordingManager)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
 <!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2fdda33ed977e9eb00b7b643ab233c994134ccf5 translatedAt=2026-08-10T06:25:11.711Z pushedAt=2026-08-10T07:24:43.897Z -->
+<!-- md-trans-meta sourceCommit=24d41a0bca6541c58a989fa09a384d3cf0eeb920 translatedAt=2026-11-03T03:35:00.305Z pushedAt=2026-11-04T03:11:46.914Z nl=1 -->
 
-Manages recording policies, and provides collaborative recording and recording control capabilities.
+AudioRecordingManager is the recording policy management module in the audio system. This module provides recording policy management capabilities, including collaborative recording and recording control. When you need to configure recording policies or manage the system recording control panel, use the APIs of this module to perform related operations.
 
 Before using the APIs of AudioRecordingManager, you need to first obtain an AudioRecordingManager instance through [getRecordingManager](arkts-apis-audio-AudioManager.md#getrecordingmanager).
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 26.0.0.
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this interface are supported since API version 26.0.0.
 > - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
@@ -72,6 +72,7 @@ let config: audio.SystemRecordControllerConfig = {
   sourceType: audio.SourceType.SOURCE_TYPE_MIC
 };
 
+// Enable the system recording control panel so that the user can select a recording device.
 audioRecordingManager.enableSystemRecordController(true, config).then(() => {
   console.info('Succeeded in enabling system record controller.');
 }).catch((err: BusinessError) => {

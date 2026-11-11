@@ -6,7 +6,7 @@
 <!--Designer: @jiayanhong-hw-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4c038a1d5da345aacbf8335a571bab67edf916cc translatedAt=2026-07-29T01:29:40.122Z pushedAt=2026-07-30T03:36:33.456Z -->
+<!-- md-trans-meta sourceCommit=9abb8457b230a737b4e708b27dfb1c20fc137015 translatedAt=2026-11-03T03:40:18.832Z pushedAt=2026-11-03T07:46:21.944Z nl=2 -->
 
 > **NOTE**
 >
@@ -30,6 +30,8 @@ The internal system processing is abnormal.
 
 A system error has occurred. Try again later.
 
+
+
 ## 16700002 Parameter Check Failed
 
 **Error Message**
@@ -52,8 +54,10 @@ Parameter verification failed.
 
 Please review the parameter specification constraints and perform troubleshooting based on the possible causes.
 
-## 16700003 Background Service Calling Prohibited
 
+
+## 16700003 Background Service Calling Prohibited
+ 
 **Error Message**
 
 Background usage is prohibited.
@@ -69,6 +73,8 @@ The service is called in the background.
 **Solution**
 
 Ensure that the caller is running in the foreground.
+
+
 
 ## 16700004 Number of Contacts Exceeds the Limit
 
@@ -88,6 +94,8 @@ The number of contacts passed in exceeds the upper limit.
 
 Check the number of contacts.
 
+
+
 ## 16700101 Database Query Failed
 
 **Error Message**
@@ -105,6 +113,8 @@ Database operation has failed.
 **Solution**
 
 Database access has failed. Try again later.
+
+
 
 ## 16700102 Database Data Addition, Deletion or Modification Failed
 
@@ -124,6 +134,8 @@ Database operation has failed.
 
 Database access has failed. Try again later.
 
+
+
 ## 16700103 Operation Canceled
 
 **Error Message**
@@ -142,25 +154,9 @@ The user cancels the operation.
 
 The user cancels the operation. Try again later.
 
-## 401 Failed to Open the Contact Portrait File
 
-**Error Message**
 
-Failed to open contact portrait file.
-
-**Description**
-
-The contact portrait file fails to be opened.
-
-**Possible Causes**
-
-The portrait file path is incorrect, the file does not exist, or the disk is damaged.
-
-**Solution**
-
-Check whether the file exists.
-
-## 401 Internal System Error
+## Error Code 401 Returned Upon Contacts Call Failure
 
 ### Invalid Internal Associated Contact ID
 
@@ -251,3 +247,21 @@ The internal system processing is abnormal.
 **Solution**
 
 A system error has occurred. Try again later.
+
+### Failed to Open Contact Portrait File
+
+**Error Message**
+
+Failed to open contact portrait file.
+
+**Description**
+
+The contact portrait file fails to be opened.
+
+**Possible Causes**
+
+The portrait file path is incorrect, the file does not exist, or the disk is damaged.
+
+**Solution**
+
+Check whether the file exists.

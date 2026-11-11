@@ -5,7 +5,8 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=153a2d56058c66354e11239cdb98b8313af7ef4e translatedAt=2026-11-06T12:10:52.513Z pushedAt=2026-11-09T12:39:35.458Z nl=1 -->
 
 ## Overview
 
@@ -36,26 +37,24 @@ For details, see [Preparing the Environment](usbSerial-overview.md#preparing-the
 
 You can read and write data as follows:
 
-> **NOTE**
+> **NOTE** 
 >
 > The following sample code shows only a basic process. You should execute the code in a specific method.
 
 1. Import the **usbManager** module.
 
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-   // Import the usbManager module.
-   import { serialManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit'
-   import { buffer } from '@kit.ArkTS';
-   import { JSON } from '@kit.ArkTS';
+   // Import the serialManager module.
+   import { serialManager, BusinessError } from '@kit.BasicServicesKit';
+   import { buffer, JSON } from '@kit.ArkTS';
    ```
 
 
 2. Obtain the USB device list.
 
-   <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // Obtain the list of USB devices connected to the host.
@@ -73,7 +72,7 @@ You can read and write data as follows:
 
 3. Obtain the device operation permissions.
 
-   <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.portList_ === undefined || this.portList_.length === 0) {
@@ -88,8 +87,8 @@ You can read and write data as follows:
        console.info('serial device request right result: ' + result);
        this.logInfo_ += '\n[INFO] serial device request right result: ' + JSON.stringify(result);
      }).catch((error: BusinessError) => {
-       console.error(`usb device request right failed : ${error}`);
-       this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+       console.error(`usb device request right failed : code=${error.code}, message=${error.message}`);
+       this.logInfo_ += '\n[ERROR] usb device request right failed: code=' + error.code + ', message=' + error.message;
      });
    } else {
      console.info('serial device already request right');
@@ -101,7 +100,7 @@ You can read and write data as follows:
 
 4. Open the device based on the serial port.
 
-   <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let portId: number = this.portId_;
@@ -110,26 +109,32 @@ You can read and write data as follows:
      console.info(`open usbSerial success, portId: ${portId}`);
      this.logInfo_ += '\n[INFO] open usbSerial success, portId: ' + JSON.stringify(portId);
    } catch (error) {
-     console.error(`open usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] open usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`open usbSerial error: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] open usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
 
 5. Read data through the serial port.
 
-   <!-- @[serialRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[serialRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let portId: number = this.portId_;
    // Read data asynchronously.
    let readBuffer: Uint8Array = new Uint8Array(64);
    serialManager.read(portId, readBuffer, 2000).then((size: number) => {
-     console.info(`readAsync usbSerial success, readAsyncBuffer: ${readBuffer}`);
-     this.logInfo_ += '\n[INFO] readAsync usbSerial success, readAsyncBuffer: ' + JSON.stringify(readBuffer);
-   }).catch((error: Error) => {
-     console.error(`readAsync usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] readAsync usbSerial error: ' + JSON.stringify(error);
+     if (size > 0) {
+       console.info(`readAsync usbSerial success, size: ${size}`);
+       this.logInfo_ += '\n[INFO] readAsync usbSerial success, size: ' + size;
+     } else {
+       console.warn('readAsync usbSerial failed, size is 0');
+       this.logInfo_ += '\n[WARN] readAsync usbSerial failed, size is 0';
+     }
+   }).catch((error: BusinessError) => {
+     console.error(`readAsync usbSerial error: code=${error.code}, message=${error.message}`);
+     this.logInfo_ += '\n[ERROR] readAsync usbSerial error: code=' + error.code + ', message=' + error.message;
    })
    
    // Read data synchronously.
@@ -139,44 +144,50 @@ You can read and write data as follows:
      console.info(`readSync usbSerial success, readSyncBuffer: ${readSyncBuffer}`);
      this.logInfo_ += '\n[INFO] readSync usbSerial success, readSyncBuffer: ' + JSON.stringify(readSyncBuffer);
    } catch (error) {
-     console.error(`readSync usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] readSync usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`readSync usbSerial error: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] readSync usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
 
 6. Write data through the serial port.
 
-   <!-- @[serialWrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[serialWrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let portId: number = this.portId_;
    // Write data asynchronously.
-   let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+   let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
    serialManager.write(portId, writeBuffer, 2000).then((size: number) => {
-     console.info(`writeAsync usbSerial success, writeAsyncBuffer: ${writeBuffer}`);
-     this.logInfo_ += '\n[INFO] writeAsync usbSerial success, writeAsyncBuffer: ' + JSON.stringify(writeBuffer);
-   }).catch((error: Error) => {
-     console.error(`writeAsync usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] writeAsync usbSerial error: ' + JSON.stringify(error);
+     if (size === writeBuffer.length) {
+       console.info(`writeAsync usbSerial success, writeAsyncBuffer: ${writeBuffer}`);
+       this.logInfo_ += '\n[INFO] writeAsync usbSerial success, writeAsyncBuffer: ' + JSON.stringify(writeBuffer);
+     } else {
+       console.warn(`writeAsync usbSerial incomplete, expected ${writeBuffer.length}, actual ${size}`);
+       this.logInfo_ += '\n[WARN] writeAsync usbSerial incomplete, expected ' + writeBuffer.length + ', actual ' + size;
+     }
+   }).catch((error: BusinessError) => {
+     console.error(`writeAsync usbSerial error: code=${error.code}, message=${error.message}`);
+     this.logInfo_ += '\n[ERROR] writeAsync usbSerial error: code=' + error.code + ', message=' + error.message;
    })
    
    // Write data synchronously.
-   let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+   let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
    try {
      serialManager.writeSync(portId, writeSyncBuffer, 2000);
      console.info(`writeSync usbSerial success, writeSyncBuffer: ${writeSyncBuffer}`);
      this.logInfo_ += '\n[INFO] writeSync usbSerial success, writeSyncBuffer: ' + JSON.stringify(writeSyncBuffer);
    } catch (error) {
-     console.error(`writeSync usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] writeSync usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`writeSync usbSerial error: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] writeSync usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
-
    
 7. Close a serial port device.
 
-   <!-- @[closeSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[closeSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let portId: number = this.portId_;
@@ -185,8 +196,9 @@ You can read and write data as follows:
      console.info(`close usbSerial success, portId: ${portId}`);
      this.logInfo_ += '\n[INFO] close usbSerial success, portId: ' + JSON.stringify(portId);
    } catch (error) {
-     console.error(`close usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] close usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`close usbSerial error: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] close usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 

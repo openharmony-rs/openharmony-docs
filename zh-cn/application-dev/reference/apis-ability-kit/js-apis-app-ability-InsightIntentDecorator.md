@@ -267,6 +267,7 @@ PageIntentDecoratorInfo继承自[IntentDecoratorInfo](#intentdecoratorinfo)，�
 | pagePath           | string        | 否          | 否   | 表示与意图绑定的页面路径，该页面需要是一个实际存在的文件。 |
 | navigationId       | string        | 否        | 是   | 表示与意图绑定的[Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md)组件的id属性。 |
 | navDestinationName | string         | 否       | 是   | 表示与意图绑定的[navDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)组件的名称。 |
+| permissions        | string[]       | 否       | 是   | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**起始版本：** 26.1.0 |
 
 ## @InsightIntentFunction
 
@@ -334,11 +335,15 @@ export class ClassForFuncDemo {
 
 ## FunctionIntentDecoratorInfo
 
-[@InsightIntentFunctionMethod](#insightintentfunctionmethod)装饰器的参数类型，当前全部属性均继承自[IntentDecoratorInfo](#intentdecoratorinfo)。
+[@InsightIntentFunctionMethod](#insightintentfunctionmethod)装饰器的参数类型，继承自[IntentDecoratorInfo](#intentdecoratorinfo)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+
+| 名称               | 类型         | 只读       | 可选 | 说明                                                         |
+| ------------------ | -------------| --------- | ---- | ------------------------------------------------------------ |
+| permissions        | string[]       | 否       | 是   | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**起始版本：** 26.1.0 |
 
 ## @InsightIntentEntry
 
@@ -431,6 +436,7 @@ EntryIntentDecoratorInfo继承自[IntentDecoratorInfo](#intentdecoratorinfo)，�
 | ------------------ | -------------| --------- | ---- | ------------------------------------------------------------ |
 | abilityName        | string       | 否        | 否   | 表示与意图绑定的Ability名称。                                  |
 | executeMode        | [insightIntent.ExecuteMode](./js-apis-app-ability-insightIntent.md#executemode)[]| 否        | 否   | 表示意图调用执行模式。即拉起绑定的Ability时支持的执行模式。 |
+| permissions        | string[]       | 否       | 是   | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**起始版本：** 26.1.0 |
 
 ## @InsightIntentForm
 

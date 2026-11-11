@@ -1,12 +1,11 @@
 # common_attributes.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @zhou-chaobo-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a982f9d9be2aa48466f66955fc58f87c03f60f05 translatedAt=2026-08-21T04:12:38.593Z pushedAt=2026-08-21T08:03:48.726Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:50:23.497Z pushedAt=2026-11-10T06:07:33.557Z nl=1 -->
 
 ## Overview
 
@@ -53,8 +52,8 @@ Defines the types of common attributes and events of **NativeModule**, used to s
 | [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | Creates a snapshot option object, which must be released using [OH_ArkUI_DestroySnapshotOptions](#oh_arkui_destroysnapshotoptions) when no longer in use.|
 | [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | Destroys the snapshot option object.|
 | [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | Sets the scale property in the snapshot options.|
-| [int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)](#oh_arkui_snapshotoptions_setcolormode) | Sets the color space in the screenshot options.|
-| [int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)](#oh_arkui_snapshotoptions_setdynamicrangemode) | Sets the dynamic range mode in the screenshot options.|
+| [int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)](#oh_arkui_snapshotoptions_setcolormode) | Sets the color space in the snapshot options.|
+| [int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)](#oh_arkui_snapshotoptions_setdynamicrangemode) | Sets the dynamic range mode in the snapshot options.|
 | [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | Creates an instance of the parameters for visible area change events. This API is used in scenarios such as list scrolling exposure statistics, lazy loading of images or videos, and triggering business logic when a component enters or leaves the screen. After successful creation, you must first complete the related parameter configuration and listener usage, and call [OH_ArkUI_VisibleAreaEventOptions_Dispose](#oh_arkui_visibleareaeventoptions_dispose) to release the parameter object after use. After calling **Dispose**, you must not continue to use the parameter object. |
 | [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | Disposes of the instance of the parameters for visible area change events.|
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)](#oh_arkui_visibleareaeventoptions_setratios) | Sets the threshold array used to determine the change in the visible ratio of a component. This API is applicable to scenarios such as exposure statistics, staged loading of components, and controlling media playback based on the visible ratio. |
@@ -73,6 +72,7 @@ enum ArkUI_HitTestMode
 ```
 
 **Description**
+
 
 Enumerates the hit test modes.
 
@@ -95,6 +95,7 @@ enum ArkUI_Visibility
 
 **Description**
 
+
 Enumerates the visibility values.
 
 **Since:** 12
@@ -112,6 +113,7 @@ enum ArkUI_HoverEffect
 ```
 
 **Description**
+
 
 Enumerates the hover effects when a component is hovered over.
 
@@ -132,6 +134,7 @@ enum ArkUI_FocusPriority
 
 **Description**
 
+
 Enumerates the priority levels for focus management within the application. These levels determine the sequence in which UI components receive focus during user interaction.
 
 **Since:** 23
@@ -150,6 +153,7 @@ enum ArkUI_UIState
 
 **Description**
 
+
 Enumerates the UI states of a component, used for handling state-specific styles.
 
 **Since:** 20
@@ -161,7 +165,7 @@ Enumerates the UI states of a component, used for handling state-specific styles
 | UI_STATE_FOCUSED = 1 << 1 | Focused state.|
 | UI_STATE_DISABLED = 1 << 2 | Disabled state.|
 | UI_STATE_SELECTED = 1 << 3 | Selected state. This state is supported only by specific component types: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, and **MenuItem**.|
-| UI_STATE_HOVERED = 1 << 4 | Hovered state.<br/>**Since:** 26 |
+| UI_STATE_HOVERED = 1 << 4 | Hovered state.<br/>**Since:** 26.0.0 |
 
 ### ArkUI_FocusMove
 
@@ -191,6 +195,7 @@ enum ArkUI_ResponseRegionSupportedTool
 ```
 
 **Description**
+
 
 Enumerates the input tool types supported for response region configuration.
 
@@ -230,6 +235,7 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 
 **Description**
 
+
 Creates a snapshot option object, which must be released using [OH_ArkUI_DestroySnapshotOptions](#oh_arkui_destroysnapshotoptions) when no longer in use.
 
 **Since:** 15
@@ -266,7 +272,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 
 **Description**
 
-Set the scale attribute in screenshot options, which is used to control the scale factor of the generated screenshot.
+Set the scale attribute in snapshot options, which is used to control the scale factor of the generated screenshot.
 
 **Since:** 15
 
@@ -282,7 +288,6 @@ Set the scale attribute in screenshot options, which is used to control the scal
 | Type | Description |
 | -- | -- |
 | int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Possible causes: The **snapshotOptions** parameter is null, or the **scale** value does not match the API requirements. To solve this issue, pass a valid screenshot option object pointer and ensure that the value of **scale** is a floating-point number greater than 0. |
-
 ### OH_ArkUI_SnapshotOptions_SetColorMode()
 
 ``` C++
@@ -291,7 +296,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 
 **Description**
 
-Sets the color space in the screenshot options.
+Sets the color space in the snapshot options.
 
 **Since:** 23
 
@@ -317,7 +322,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 
 **Description**
 
-Sets the dynamic range mode in the screenshot options.
+Sets the dynamic range mode in the snapshot options.
 
 **Since:** 23
 
@@ -344,7 +349,6 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 **Description**
 
 Creates an instance of the parameters for visible area change events. This API is used in scenarios such as list scrolling exposure statistics, lazy loading of images or videos, and triggering business logic when a component enters or leaves the screen. After successful creation, you must first complete the related parameter configuration such as the visible ratio threshold and update interval through related APIs, and then use the parameter object to register the visible area change listener. The system calculates the component visible ratio based on the configured parameters and triggers the corresponding listener event. After use, call [OH_ArkUI_VisibleAreaEventOptions_Dispose](#oh_arkui_visibleareaeventoptions_dispose) to release the parameter object. After **Dispose** is called, the parameter object must not be used again.
-
 
 **Since:** 17
 
@@ -497,6 +501,7 @@ Obtains the expected update interval for visible area changes.
 | Type| Description|
 | -- | -- |
 | int32_t | Expected update interval, in ms. Default value: 1000 ms. |
+
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport()
 

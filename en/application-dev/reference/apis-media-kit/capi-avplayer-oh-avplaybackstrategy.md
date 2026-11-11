@@ -2,10 +2,10 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b6dc5e5e7cc5cdd98e4b0593ece2e6c9d236388c translatedAt=2026-09-15T16:08:06.408Z pushedAt=2026-09-22T04:53:30.092Z -->
+<!-- md-trans-meta sourceCommit=cc48f97eabfc91efede35183124197c3434b661e translatedAt=2026-11-09T06:26:43.016Z pushedAt=2026-11-09T08:36:44.728Z nl=1 -->
 
 ```c
 typedef struct OH_AVPlaybackStrategy OH_AVPlaybackStrategy;
@@ -13,7 +13,7 @@ typedef struct OH_AVPlaybackStrategy OH_AVPlaybackStrategy;
 
 ## Overview
 
-Defines the audio and video playback strategy. This struct is used to configure the strategy parameter for the player to play audio and video content. It is applicable to scenarios where playback behavior needs to be precisely controlled. If this parameter is not set, the player uses the default playback strategy.
+Defines the struct type of the audio and video playback strategy, which is used to configure the strategy parameters of the player when playing audio and video content. Use scenarios: music player apps, online video playback, live streaming, and other scenarios that require fine-grained control over playback behavior. If this strategy parameter is not set, the player uses the default playback strategy.
 
 **Since**: 23
 

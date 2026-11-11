@@ -156,9 +156,9 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
 
     **方法二（解决本地资源跨域问题）：**
 
-    通过[setPathAllowingUniversalAccess](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setpathallowinguniversalaccess12)设置一个路径列表。当使用file协议访问该列表中的资源时，允许进行跨域访问本地文件。此外，一旦设置了路径列表，file协议将仅限于访问列表内的资源（此时，[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。
+    通过[setPathAllowingUniversalAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setpathallowinguniversalaccess12)设置一个路径列表。当使用file协议访问该列表中的资源时，允许进行跨域访问本地文件。此外，一旦设置了路径列表，file协议将仅限于访问列表内的资源（此时，[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。
     
-    setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
+    setPathAllowingUniversalAccess()放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1、el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
 
     1. 应用文件目录通过[Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
@@ -242,10 +242,10 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
                   const element = document.getElementById('text');
                   element.textContent = "load " + file + " success";
                 } else {
-                    // 如果ets侧不设置路径列表，则此处会触发CORS跨域检查错误
-                    const element = document.getElementById('text');
-                    element.textContent = "load " + file + " failed";
-                  }
+                  // 如果ets侧不设置路径列表，则此处会触发CORS跨域检查错误
+                  const element = document.getElementById('text');
+                  element.textContent = "load " + file + " failed";
+                }
               }
             }
             xmlHttpReq.open("GET", file);
@@ -325,4 +325,4 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
 
 ## Cookie常见问题定位
 * 若Cookie的SameSite属性未显式指定，默认值为Lax。此时，Cookie仅在用户顶级导航（如地址栏输入或链接点击）至源站点时发送，不会在跨站请求（如通过第三方链接跳转）中传递。若需允许跨站请求携带Cookie，需将SameSite设置为None，必须同时设置Secure属性，确保Cookie仅通过HTTPS协议加密传输，防止在HTTP明文连接中被窃取或篡改。
-* 排查[putAcceptThirdPartyCookieEnabled](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#putacceptthirdpartycookieenabled)是否使能。若未使能，需设置[putAcceptThirdPartyCookieEnabled](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#putacceptthirdpartycookieenabled)为true，使webCookieManager实例允许发送和接收第三方Cookie。Cookie每30s周期性保存到磁盘中，设置Cookie后，30s内退出应用可能会导致Cookie没有及时落盘而丢失。此时可以使用接口[saveCookieAsync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#savecookieasync)进行强制落盘（PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync，也不会将session cookie写入磁盘）。
+* 排查[putAcceptThirdPartyCookieEnabled()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#putacceptthirdpartycookieenabled)是否使能。若未使能，需设置[putAcceptThirdPartyCookieEnabled()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#putacceptthirdpartycookieenabled)为true，使webCookieManager实例允许发送和接收第三方Cookie。Cookie每30s周期性保存到磁盘中，设置Cookie后，30s内退出应用可能会导致Cookie没有及时落盘而丢失。此时可以使用接口[saveCookieAsync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#savecookieasync)进行强制落盘（PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieAsync()，也不会将session cookie写入磁盘）。

@@ -4405,6 +4405,8 @@ createRandomAccessFile(file: string | File, mode?: number, options?: RandomAcces
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
+**示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5347,6 +5349,7 @@ type ProgressListener = (progress: Progress) => void
 | mtimeNs<sup>15+</sup> | bigint | 是 | 是 | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的纳秒数。 |
 | ctimeNs<sup>15+</sup> | bigint | 是 | 是 | 最近改变文件状态的时间，表示距1970年1月1日0时0分0秒的纳秒数。 |
 | location<sup>11+</sup> | [LocationType](#locationtype11)| 是 |否| 文件的位置，表示该文件是本地文件或者云端文件。 |
+| blocks | number | 是 | 是 | 分配给文件的块数，以512字节为单位。<br>**起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 > **说明：**
 >

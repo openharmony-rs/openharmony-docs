@@ -1,12 +1,11 @@
 # Class (ClientAuthenticationHandler)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:48:46.992Z pushedAt=2026-08-07T08:11:55.148Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:13:12.696Z pushedAt=2026-11-10T13:11:56.543Z nl=1 -->
 
 ClientAuthenticationHandler is a class in the **Web** component that handles SSL client certificate authentication requests. When a server requests a client certificate for TLS mutual authentication, this handler is provided to the app through the `onClientAuthenticationRequest` event callback, allowing the app to select appropriate certificate credentials for response. For sample code, see [onClientAuthenticationRequest](./arkts-basic-components-web-events.md#onclientauthenticationrequest9).
 
@@ -14,7 +13,7 @@ ClientAuthenticationHandler is a class in the **Web** component that handles SSL
 >
 > - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 9.
+> - This class is supported since API version 9.
 >
 > - The sample effect is subject to the actual device.
 
@@ -47,7 +46,9 @@ confirm(authUri : string): void
 
 Instructs the **Web** component to use the specified credentials (obtained from the certificate management module).
 
-**Required permissions:** ohos.permission.ACCESS_CERT_MANAGER
+> **NOTE**
+>
+> The authUri parameter must be obtained from the system certificate manager, and the ohos.permission.ACCESS_CERT_MANAGER permission must be configured.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -58,7 +59,6 @@ Instructs the **Web** component to use the specified credentials (obtained from 
 | authUri | string | Yes   | Key value of the credentials.|
 
 The following table lists the supported certificate signature algorithms and key lengths.
-
 | Signing Algorithm     | Key Length   | 
 | ------- | ------ |
 | SSL_SIGN_RSA_PKCS1_SHA256 | 1024 (supported since API version 18), 2048, 3072, and 4096 | 
@@ -77,7 +77,9 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| strin
 
 Instructs the **Web** component to use the specified credential and credential type obtained from the certificate management module.
 
-**Required permissions:** ohos.permission.ACCESS_CERT_MANAGER
+> **NOTE**
+>
+> The identity parameter must be obtained from the system certificate manager, and the ohos.permission.ACCESS_CERT_MANAGER permission must be configured.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

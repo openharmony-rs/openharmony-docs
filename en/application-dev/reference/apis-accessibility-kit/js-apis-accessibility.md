@@ -2,11 +2,11 @@
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
-<!--Owner: @qiiiiiiian-->
+<!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=16a51cad246d07c6caba5c76444e9d073c5d43d6 translatedAt=2026-08-03T09:47:01.480Z pushedAt=2026-08-07T02:18:42.537Z -->
+<!-- md-trans-meta sourceCommit=ad9c80e205602db9b25166a60ab5860ae15c6059 translatedAt=2026-11-06T08:13:17.980Z pushedAt=2026-11-09T12:48:46.243Z nl=1 -->
 
 This module provides accessibility features, including obtaining the accessibility application list, obtaining the accessibility application enabling state, obtaining the captions configuration, sending accessibility events, and listening for accessibility application state changes.
 
@@ -124,7 +124,7 @@ Target actions supported by the app. Target actions that require configuration p
 | 'notificationCenter'<sup>12+</sup>      | Open the notification panel.   |
 | 'controlCenter'<sup>12+</sup>       | Open the control center.   |
 | 'setCursorPosition'<sup>12+</sup>     | Set the cursor position. The parameter **offset** must be configured, with the value being the character offset of the cursor.   |
-| 'injectAction'    | Inject an action. The parameter **injectActionType** must be configured, with the value being the type of the injected action.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+| 'injectAction'    | Indicates injecting an action. Parameter Configuration Required: injectActionType. Parameter Value Is: the type of the injected action.<br>**Since Version:** 26.0.0    |
 | 'executeCustomAction'     | Execute a custom action. The parameter **customAction** must be configured, with the value being the name of the custom action.<br>**Since:** 26.0.0   |
 
 ## Capability
@@ -292,6 +292,7 @@ Subscribes to captions style changes. This API uses an asynchronous callback to 
 > - The callback parameter for registering a listener must use a named function instead of an anonymous function. Otherwise, a new underlying object is created each time the function is called, causing memory leakage.
 > - After calling this method, ensure that [off('styleChange')](#offstylechangedeprecated) is used to unsubscribe before the component instance is destroyed (for example, in the **aboutToDisappear** lifecycle callback). Otherwise, a crash may occur.
 > - This API is supported since API version 8 and deprecated since API version 12.
+
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -505,7 +506,7 @@ Constructor, which is used to construct an EventInfo instance using a JSON objec
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 
-let eventInfo = new accessibility.EventInfo({
+let eventInfo: accessibility.EventInfo = ({
   type: 'click',
   bundleName: 'com.example.MyApplication',
   triggerAction: 'click',
@@ -2017,13 +2018,10 @@ To obtain information about accessibility applications in the system, you are ad
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Return value**
-
 <!--RP3-->
-
 | Type       | Description                                 |
 | ----------- | ------------------------------------- |
 | boolean | Whether any accessibility application has been enabled in the system. Returns **true** if one or more accessibility applications are enabled; returns **false** otherwise.|
-
 <!--RP3End-->
 
 **Example**
@@ -2741,7 +2739,6 @@ struct Index {
   }
 }
 ```
-
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2818,6 +2815,288 @@ struct Index {
   build() {
     Column() {
     }
+  }
+}
+```
+
+## UIRect
+
+Indicates a rectangular area. It is used only in [UIAccessibilityElement](#uiaccessibilityelement) to indicate the range of the rectangular area where a component is located.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+| Name   | Type   | Read-Only | Optional | Description        |
+| ------ | ------ | --------- | -------- | ------------------ |
+| left   | number | No        | No       | Left boundary of the rectangular area, in pixels (px). |
+| top    | number | No        | No       | Top boundary of the rectangular area, in pixels (px). |
+| width  | number | No        | No       | Width of the rectangular area, in pixels (px).  |
+| height | number | No        | No       | Height of the rectangular area, in pixels (px).  |
+
+## UIAccessibilityElement
+
+Information about the accessibility focus node element.
+
+The instance can be obtained through [accessibility.getFocusedUIAccessibilityElement](#accessibilitygetfocuseduiaccessibilityelement).
+ 
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+| Name                  | Type                                                             | Read-Only | Optional | Description             |
+|----------------------|--------------------------------------------------------------------|------|------|-------------------|
+| accessibilityFocused | boolean | Yes | Yes | Indicates whether the element obtains focus for accessibility purposes. true indicates that focus is obtained, and false indicates that focus is not obtained.<br>The default value is false.|
+| checkable | boolean | Yes | Yes | Whether the element is checkable. true indicates that the element is checkable, and false indicates that the element is not checkable.<br>The default value is false.|
+| isChecked | boolean | Yes | Yes | Whether the element is checked. true indicates that the element is checked, and false indicates that the element is not checked.<br>The default value is false.|
+| clickable | boolean | Yes | Yes | Whether the element is clickable. true indicates that the element is clickable, and false indicates that the element is not clickable.<br>The default value is false.|
+| componentId | number | Yes | Yes | ID of the component to which the element belongs.<br>The default value is -1. -1 indicates an invalid component ID.|
+| componentType | string | Yes  | Yes  | Type of the component to which the element belongs. The default value is empty.<br>For example:<br>- For an element of the Button type, the value of this attribute is 'Button'.<br>- For an element of the Image type, the value of this attribute is 'Image'.|
+| accessibilityDescription | string | Yes  | Yes  | Description of the element.|
+| editable | boolean | Yes | Yes | Whether the element is editable. true indicates that the element is editable, and false indicates that the element is not editable.<br>The default value is false.|
+| error | string | Yes  | Yes  | Error text displayed when the element is in the error state.|
+| focusable | boolean | Yes | Yes | Whether the element can obtain focus. true indicates that the element can obtain focus, and false indicates that the element cannot obtain focus.<br>The default value is false.|
+| hintText | string | Yes  | Yes  | Hint text displayed when there is no input in the input box.|
+| identifier | string | Yes  | Yes  | Element identifier field set by the developer.|
+| isActive | boolean | Yes | Yes | Whether the element is in the active state. true indicates the active state, and false indicates the inactive state.<br>The default value is true.|
+| isEnabled | boolean | Yes | Yes | Whether the element is enabled. true indicates that the element is enabled, and false indicates that the element is not enabled.<br>The default value is false.|
+| isFocused | boolean | Yes | Yes | Indicates whether the element has obtained focus. true indicates that focus is obtained, and false indicates that focus is not obtained.<br>The default value is false.|
+| isVisible | boolean | Yes | Yes | Whether the element is visible. true indicates that the element is visible, and false indicates that the element is invisible.<br>The default value is false.|
+| longClickable | boolean | Yes | Yes | Whether the element is long-clickable. true indicates that the element is long-clickable, and false indicates that the element is not long-clickable.<br>The default value is false.|
+| pageId | number | Yes | Yes | Page ID.<br>The default value is -1. -1 indicates an invalid page ID.|
+| rect                | [UIRect](#uirect)  | Yes  | Yes  | Area of the element.|
+| scrollable          | boolean | Yes  | Yes  | Whether the element is scrollable. true indicates that the element is scrollable, and false indicates that the element is not scrollable.<br>The default value is false.|
+| selected         | boolean | Yes | Yes  | Whether the element is selected. true indicates that the element is selected, and false indicates that the element is not selected.<br>The default value is false.|
+| text                 | string | Yes  | Yes  | Text content of the element.|
+| textLengthLimit      | number | Yes  | Yes  | Maximum text length of the element.<br>The default value is 0, in bytes.|
+| valueMax             | number | Yes  | Yes  | Maximum value of the slider component.<br>The default value is 0.|
+| valueMin            | number | Yes  | Yes  | Minimum value of the slider component.<br>The default value is 0.|
+| valueNow            | number | Yes  | Yes  | Current value of the slider component.<br>The default value is 0.|
+| offset            | number | Yes | Yes  | Pixel offset of the content area relative to the top coordinate of the scrollable component (such as List and Grid), in pixels (px).<br>The default value is 0.|
+| accessibilityText | string | Yes  | Yes  | Accessibility text information of the element.|
+| accessibilityStateDescription | string | Yes | Yes  | Custom accessibility state announcement text information of the element.|
+| accessibilityRole             | string  | Yes | Yes  | Custom component type.|
+| accessibilityNextFocusId            | number                | Yes | Yes  | ID of the component that will obtain focus next.<br>The default value is -1. -1 indicates that no component ID is set for the next focus.|
+| accessibilityPreviousFocusId             | number                | Yes | Yes  | ID of the component that obtained focus previously.<br>The default value is -1. -1 indicates that no component ID is set for the previous focus.|
+| accessibilityScrollable            | boolean                 | Yes | Yes  | Indicates whether the control element is scrollable in accessibility mode.<br>This attribute has a higher priority than scrollable. That is, when the values of this attribute and the scrollable attribute conflict, the value of this attribute takes effect first.<br>true indicates that the element is scrollable, and false indicates that the element is not scrollable.<br>The default value is true.|
+| accessibilityGroup  | boolean | Yes | Yes  | Whether the element is an accessibility group. true indicates that the element is an accessibility group, and false indicates that the element is not an accessibility group.<br>The default value is false.|
+| accessibilityLevel             | string | Yes | Yes  | Accessibility level of the component.<br>- `auto`: The accessibility grouping service and ArkUI jointly determine whether the component can be recognized by accessibility.<br>- `yes`: The component can be recognized by accessibility.<br>- `no`: The component cannot be recognized by accessibility.<br>- `no-hide-descendants`: The component and all its child components cannot be recognized by accessibility.|
+| accessibilityVisible  | boolean | Yes | Yes  | Whether the component is visible to accessibility. true indicates visible, and false indicates invisible.<br>Different from the isVisible attribute, this value is calculated based on the visibility of the component, screen coordinates, and the border in the accessibility scenario.<br>The default value is true.|
+| parentId             | number | Yes | Yes  | ID of the parent element of the component. -1 indicates that the current component has no parent element. The default value is -1.|
+| childrenIds             | Array\<number> | Yes | Yes  | List of child element IDs of the component.<br>The default value is an empty array.|
+| customActions             | Array\<string>  | Yes | Yes  | List of custom actions supported by the element.|
+
+## UIAccessibilityFocusChangeInfo
+ 
+Accessibility focus change information in an application.
+ 
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+ 
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+| Name | Type | Read-Only | Optional | Description |
+|----------------------|--------------------------------------------------------------------|------|------|-------------------|
+| focusedElement | [UIAccessibilityElement](#uiaccessibilityelement) | No | Yes | Information about the currently focused node. |
+| unfocusedElement | [UIAccessibilityElement](#uiaccessibilityelement) | No | Yes | Information about the previously focused node. |
+
+## accessibility.getFocusedUIAccessibilityElement
+
+getFocusedUIAccessibilityElement(): Promise&lt;UIAccessibilityElement | undefined&gt;
+
+Obtains the information about the node that has accessibility focus inside the current application. This API uses a promise to return the result asynchronously.
+
+**Since:** 26.0.1
+ 
+**Model restriction**: This API can be used only in the stage model.
+ 
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**Return value**
+
+| Type                                  | Description                     |
+| ----------------------------------- | ---------------------- |
+| Promise&lt;[UIAccessibilityElement](#uiaccessibilityelement)\| undefined&gt; | Promise object, which returns the information about the node that has accessibility focus inside the current application. If the result is undefined, no node has accessibility focus inside the current application. |
+
+**Error codes**
+
+For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+
+| ID   | Error Message                                     |
+| ------- | ---------------------------------------- |
+| 9300000 | System abnormality. Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer).|
+
+**Example**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+accessibility.getFocusedUIAccessibilityElement().then((data: UIAccessibilityElement) => {
+  console.info(`succeeded in getting focused accessibility elementInfo, ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to call getFocusedUIAccessibilityElement. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## accessibility.onUIAccessibilityFocusChanged
+
+onUIAccessibilityFocusChanged(callback: Callback&lt;UIAccessibilityFocusChangeInfo&gt;): void
+
+Registers a listener to listen for the event of accessibility focus changes in the application.
+
+> **NOTE**
+>
+> - The callback parameter for registering a listener must use a named function instead of an anonymous function. Otherwise, a new underlying object is created each time the function is called, causing memory leakage.
+> - After calling this method, ensure that [offUIAccessibilityFocusChanged()](#accessibilityoffuiaccessibilityfocuschanged) is used to unsubscribe before the component instance is destroyed (for example, in the **aboutToDisappear** lifecycle callback). Otherwise, a crash may occur.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | ------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[UIAccessibilityFocusChangeInfo](#uiaccessibilityfocuschangeinfo)&gt; | Yes | Callback function used to notify when the accessibility focus node changes. The return value is UIAccessibilityFocusChangeInfo. |
+
+**Error codes**
+
+For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+
+| ID   | Error Message                                     |
+| ------- | ---------------------------------------- |
+| 9300000 | System abnormality. Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer).|
+
+**Example**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  
+  // Listener callback.
+  static onFocusChanged(data: accessibility.UIAccessibilityFocusChangeInfo): void {
+    console.info(`focusedElement:  ${JSON.stringify(data.focusedElement)}`);
+    console.info(`unfocusedElement: ${JSON.stringify(data.focusedElement)}`);
+  }
+
+  aboutToAppear(): void {
+    try {
+      // Register the listener.
+      accessibility.onUIAccessibilityFocusChanged(Index.onFocusChanged);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to call onUIAccessibilityFocusChanged. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
+
+  aboutToDisappear(): void {
+    try {
+      // Unregister the listener.
+      accessibility.offUIAccessibilityFocusChanged(Index.onFocusChanged);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to call offUIAccessibilityFocusChanged. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## accessibility.offUIAccessibilityFocusChanged
+
+offUIAccessibilityFocusChanged(callback?: Callback&lt;UIAccessibilityFocusChangeInfo&gt;): void
+
+Unregisters the listener used to listen for the event of accessibility focus changes in the application.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | ------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[UIAccessibilityFocusChangeInfo](#uiaccessibilityfocuschangeinfo)&gt; | No | Callback function to unregister. Passing a null value cancels all listeners. |
+
+**Error codes**
+
+For details about the error codes, see [Accessibility Error Codes](errorcode-accessibility.md).
+
+| ID   | Error Message                                     |
+| ------- | ---------------------------------------- |
+| 9300000 | System abnormality. Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.The listener or observer is not registered.|
+
+**Example**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  // Listener callback.
+  static onFocusChanged(data: accessibility.UIAccessibilityFocusChangeInfo): void {
+    console.info(`focusedElement:  ${JSON.stringify(data.focusedElement)}`);
+    console.info(`unfocusedElement: ${JSON.stringify(data.focusedElement)}`);
+  }
+
+  aboutToAppear(): void {
+    try {
+      // Register the listener.
+      accessibility.onUIAccessibilityFocusChanged(Index.onFocusChanged);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to call onUIAccessibilityFocusChanged. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
+
+  aboutToDisappear(): void {
+    try {
+      // Unregister the listener.
+      accessibility.offUIAccessibilityFocusChanged(Index.onFocusChanged);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to call offUIAccessibilityFocusChanged. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('HelloWorld')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```

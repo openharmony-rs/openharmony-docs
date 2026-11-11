@@ -1,12 +1,11 @@
 # Using HiCollie to Detect Service Thread Stuck and Jank Events (C/C++)
-
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=6f162fd972111d385b01e8fc2c8b227f5d94c223 translatedAt=2026-08-21T03:19:52.457Z pushedAt=2026-08-21T09:33:58.287Z -->
+<!-- md-trans-meta sourceCommit=380302020c3e797188855ad9895a83c0437ababa translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## Overview
 
@@ -31,7 +30,7 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 1. For details about the fault specifications of service thread jank events detected by **OH_HiCollie_Init_JankDetection**, see [Main Thread Jank Event Detection Principles](hiappevent-watcher-mainthreadjank-events.md#detection-principles).
 
 2. Service thread stuck events:
-
+   
    (1) Principles of **OH_HiCollie_Init_StuckDetection**: The watchdog thread of the app periodically performs activation detection on service threads. If the activation detection is not executed for more than 3 seconds, a BUSSINESS_THREAD_BLOCK_3S thread alarm event is reported. If it remains unexecuted for more than 6 seconds, a BUSSINESS_THREAD_BLOCK_6S thread hang event is reported. The two events are matched according to system rules to generate an appfreeze fault log.
 
    (2) Principles of **OH_HiCollie_Init_StuckDetectionWithTimeout**: The watchdog thread of the app periodically performs activation detection on service threads. If the activation detection is not executed for more than the **stuckTimeout** duration, a BUSSINESS_THREAD_BLOCK_3S alarm event is reported. If it remains unexecuted for more than **stuckTimeout \* 2**, a BUSSINESS_THREAD_BLOCK_6S thread hang event is reported. The two events are matched to generate an appfreeze fault log.
@@ -64,7 +63,7 @@ The following demonstrates how to add a button to an app and click the button to
            - napi_init.cpp
          ets:
            entryability:
-             - EntryAbility.ts
+             - EntryAbility.ets
            pages:
              - Index.ets
    ```
@@ -293,11 +292,11 @@ The following demonstrates how to add a button to an app and click the button to
    #undef LOG_TAG
    #define LOG_TAG "StuckTest"
    
-   // Custom sleep time to simulate a hang scenario.
+   // Custom sleep time for simulating a hang scenario.
    const int64_t BLOCK_TIME = 5; 
-   // Flag indicating the app thread task execution status: true means normal, false means hung.
+   // Flag indicating the app thread task execution status. true: normal, false: hang.
    std::shared_ptr<std::atomic<bool>> appThreadIsAlive_ = std::make_shared<std::atomic<bool>>(true);
-   // Flag indicating whether to report an app thread hang event.
+   // Flag for reporting an app thread hang event.
    std::shared_ptr<std::atomic<bool>> isSixSecondEvent_ = std::make_shared<std::atomic<bool>>(false);
    
    void ReportEvent() {
@@ -325,10 +324,10 @@ The following demonstrates how to add a button to an app and click the button to
    // You can customize the periodic detection task.
    void Timer()
    {
-     // Check every 5s whether the app is executing tasks normally.
+     // Check whether the app is executing tasks normally every 5s.
      if (appThreadIsAlive_->load()) {
        OH_LOG_INFO(LogType::LOG_APP, "Check appThread isAlive.");
-       // Update appThreadIsAlive_. It is set to true when the next detection runs normally.
+       // Update appThreadIsAlive_. It is set to true for the next normal detection.
        appThreadIsAlive_->store(false);
        // Simulate a timeout scenario.
        SetTimeout();
@@ -337,18 +336,18 @@ The following demonstrates how to add a button to an app and click the button to
      ReportEvent();
    }
    
-   // Define the sub-thread callback function.
+   // Define the child thread callback function.
    void InitStuckDetectionWithTimeout()
    {
      // Initialize the thread hang monitoring function.
-     int initResult = OH_HiCollie_Init_StuckDetectionWithTimeout(Timer, BLOCK_TIME);
-     // Success: 0
+     int initResult = OH_HiCollie_Init_StuckDetectionWithTimeout(Timer, 5); // 5: hang detection threshold
+     // Success result: 0
      OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetectionWithTimeout: %{public}d", initResult);
    }
    
    static napi_value TestHiCollieStuckWithTimeoutNdk(napi_env env, napi_callback_info info)
    {
-     // Create a sub-thread.
+     // Create a child thread.
      std::thread threadObj(InitStuckDetectionWithTimeout);
      // Execute the task.
      threadObj.join();
@@ -381,9 +380,9 @@ The following demonstrates how to add a button to an app and click the button to
        napi_module_register(&demoModule);
    }
    ```
-
+ 
    - Starting from API version 24, **app thread hang detection with proactive reporting of input unresponsiveness faults** is supported: **OH_HiCollie_ReportInputBlock**. The sample code is as follows:
-
+ 
    ```c++
    #include "napi/native_api.h"
    #include "hilog/log.h"
@@ -495,7 +494,7 @@ The following demonstrates how to add a button to an app and click the button to
        napi_module_register(&demoModule);
    }
    ```
-
+   
    - Starting from API version 24, **app thread hang detection with custom log generation by third-party frameworks** is supported: **OH_HiCollie_SetFreezeCallback** and **OH_HiCollie_AssociateProcessReport**. The sample code is as follows:
 
    ```c++
@@ -505,10 +504,10 @@ The following demonstrates how to add a button to an app and click the button to
    #include <thread>
    #include <string>
    #include <unistd.h>
-   
+
    #undef LOG_TAG
    #define LOG_TAG "StuckTest"
-   
+
    static size_t UserCall(OH_HiCollie_Freeze_Type type, void* buffer, size_t size)
    {
       std::string source("Freeze is happened");
@@ -523,24 +522,24 @@ The following demonstrates how to add a button to an app and click the button to
       int needed = snprintf(buffer1, size, "UserCallback%s", source.c_str());
       return needed; 
    }
-   
+
    static napi_value TestHiCollieSetFreezeCallback(napi_env env, napi_callback_info info)
    {
       // Set the user callback.
       OH_HiCollie_SetFreezeCallback(UserCall);
       return 0;
    }
-   
+
    static napi_value TestHiCollieAssociateProcessReport(napi_env env, napi_callback_info info)
    {
-      // Report the BUSINESS_THREAD_BLOCK_3S event.
+      // Report the BUSSINESS_THREAD_BLOCK_3S event.
       OH_HiCollie_AssociateProcessReport(false);
       sleep(3);
-      // Report the BUSINESS_THREAD_BLOCK_6S event.
+      // Report the BUSSINESS_THREAD_BLOCK_6S event.
       OH_HiCollie_AssociateProcessReport(true);
       return 0;
    }
-   
+
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
    {
@@ -552,7 +551,7 @@ The following demonstrates how to add a button to an app and click the button to
        return exports;
    }
    EXTERN_C_END
-   
+
    static napi_module demoModule = {
        .nm_version = 1,
        .nm_flags = 0,
@@ -562,7 +561,7 @@ The following demonstrates how to add a button to an app and click the button to
        .nm_priv = ((void*)0),
        .reserved = { 0 },
    };
-   
+
    extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
    {
        napi_module_register(&demoModule);
@@ -570,7 +569,7 @@ The following demonstrates how to add a button to an app and click the button to
    ```
 
 4. Edit the **entry > src > main > cpp > types > libentry > Index.ets** file in the project to define the ArkTS APIs.
-
+   
    - Example for **OH_HiCollie_Init_JankDetection**:
 
    ```ts
@@ -602,7 +601,6 @@ The following demonstrates how to add a button to an app and click the button to
    export const testHiCollieSetFreezeCallback: () => void;
    export const testHiCollieAssociateProcessReport: () => void;
    ```
-
 5. Edit the **entry > src > main > ets > pages > Index.ets** file in the project:
 
    ```ts
@@ -666,7 +664,7 @@ The following demonstrates how to add a button to an app and click the button to
        .onClick(testNapi.testHiCollieStuckWithTimeoutNdk);
    }
    ```
-
+   
     - Add a click event to trigger the **OH_HiCollie_Init_StuckDetectionWithTimeout** method and the **OH_HiCollie_ReportInputBlock** method.
 
    ```ts
@@ -687,7 +685,6 @@ The following demonstrates how to add a button to an app and click the button to
        .onClick(testNapi.testHiCollieInputBlock);
    }
    ```
-
     - Add a click event to trigger the **OH_HiCollie_SetFreezeCallback** method and the **OH_HiCollie_AssociateProcessReport** method.
 
    ```ts
@@ -712,7 +709,7 @@ The following demonstrates how to add a button to an app and click the button to
 6. Click the **Run** button in DevEco Studio to run the project.
 
 7. At the bottom of DevEco Studio, switch to the **Log** tab and filter the custom **LOG_TAG**.
-
+   
    - Click the **testHiCollieJankNdk** button.
 
    The thread timeout information of the sampling stack obtained through **OH_HiCollie_Init_JankDetection()** is displayed. You can obtain the corresponding event by [subscribing to the main thread jank event](hiappevent-watcher-mainthreadjank-events-arkts.md).

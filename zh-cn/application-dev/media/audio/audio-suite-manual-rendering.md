@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者在非实时场景下使用OHAudioSuite离线编辑管线组合输入、效果、输出节点处理PCM音频数据，涵盖基础均衡器编辑、音源分离、多路混音与级联等场景的完整开发步骤。"
+keywords: [OHAudioSuite, 离线编辑, 均衡器, 混音, 级联, 音源分离, AUDIOSUITE_PIPELINE_EDIT_MODE, OH_AudioSuiteEngine_RenderFrame, OH_AudioSuiteEngine_MultiRenderFrame]
+doctype: guide
+status: active
+---
+
 # 离线编辑(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -14,9 +22,12 @@
 
 ### 在CMake脚本中链接动态库
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudiosuite.so)
+<!-- @[CMake_lib_suite_libohaudiosuite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
+
 ### 添加头文件
 开发者通过引入头文件<[native_audio_suite_base.h](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md)>和<[native_audio_suite_engine.h](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md)>，使用音频编创相关API。
 

@@ -818,7 +818,7 @@ setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: boolean): 
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
-| feature  | [FeatureForDevice](#featurefordevice24)                                                  | 是   | 指定要禁用或允许的设备特性。<br/> **说明：** 应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口设置以下特性：[FeatureForDevice.WIFI_P2P](#featurefordevice24)。 |
+| feature  | [FeatureForDevice](#featurefordevice24)                                                  | 是   | 指定要禁用或允许的设备特性。<br/> **说明：** 应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口设置以下特性：[FeatureForDevice.BLUETOOTH](#featurefordevice24)、[FeatureForDevice.HDC](#featurefordevice24)、[FeatureForDevice.MICROPHONE](#featurefordevice24)、[FeatureForDevice.USB](#featurefordevice24)、[FeatureForDevice.WIFI](#featurefordevice24)、[FeatureForDevice.TETHERING](#featurefordevice24)、[FeatureForDevice.CAMERA](#featurefordevice24)、[FeatureForDevice.SCREEN_SHOT](#featurefordevice24)、[FeatureForDevice.SCREEN_RECORD](#featurefordevice24)、[FeatureForDevice.NEAR_LINK](#featurefordevice24)、[FeatureForDevice.RESET_FACTORY](#featurefordevice24)、[FeatureForDevice.WIFI_P2P](#featurefordevice24)、[FeatureForDevice.MTP_SERVER](#featurefordevice24)。 |
 | disallow | boolean                                                 | 是   | true表示禁止使用，false表示允许使用。                        |
 
 **错误码**：
@@ -871,7 +871,7 @@ getDisallowedPolicy(admin: Want \| null, feature: FeatureForDevice): boolean
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
-| feature | [FeatureForDevice](#featurefordevice24)                                                  | 是   | 指定要查询的设备特性。 |
+| feature | [FeatureForDevice](#featurefordevice24)                                                  | 是   | 指定要查询的设备特性。<br/> **说明：** 应用申请权限ohos.permission.PERSONAL_MANAGE_RESTRICTIONS并通过[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为[BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)，可以使用此接口获取以下特性状态：[FeatureForDevice.BLUETOOTH](#featurefordevice24)、[FeatureForDevice.HDC](#featurefordevice24)、[FeatureForDevice.MICROPHONE](#featurefordevice24)、[FeatureForDevice.USB](#featurefordevice24)、[FeatureForDevice.WIFI](#featurefordevice24)、[FeatureForDevice.TETHERING](#featurefordevice24)、[FeatureForDevice.CAMERA](#featurefordevice24)、[FeatureForDevice.SCREEN_SHOT](#featurefordevice24)、[FeatureForDevice.SCREEN_RECORD](#featurefordevice24)、[FeatureForDevice.NEAR_LINK](#featurefordevice24)、[FeatureForDevice.RESET_FACTORY](#featurefordevice24)、[FeatureForDevice.WIFI_P2P](#featurefordevice24)、[FeatureForDevice.MTP_SERVER]。 |
 
 **返回值：**
 
@@ -1325,6 +1325,8 @@ try {
 | SYSTEM_ROLLBACK   | 51   | 系统回退能力，禁用后无法回退系统版本。当前仅支持手机、平板设备使用。<br>**起始版本：** 26.0.1 |
 | SATA_ODD_BURN   | 52   | 内置光驱刻录能力。禁用后无法通过内置光驱进行刻录。当前仅支持PC/2in1设备使用；其他设备调用设置接口返回801错误码，调用查询接口返回默认值。<br>**起始版本：** 26.0.1 |
 | SUPER_PRIVACY   | 53   | 超级隐私模式。禁用后无法打开超级隐私模式。当前仅支持手机、平板设备使用。<br>**起始版本：** 26.0.1 |
+| CONTROL_CENTER   | 59   | 控制中心。禁用后手机、平板设备无法通过屏幕右上方下滑手势打开控制中心，PC/2in1设备无法通过点击任务栏控制中心图标方式进入，也无法使用控制中心中的快捷开关（如Wi-Fi、蓝牙、音量、亮度调节等）功能。<br>**起始版本：** 26.1.0 |
+| NOTIFICATION_CENTER   | 60   | 通知中心。禁用后手机、平板设备无法通过屏幕左上方下滑手势打开通知中心，PC/2in1设备无法通过点击任务栏通知中心图标方式进入，也无法查看、清除通知中心的通知消息。<br>**起始版本：** 26.1.0 |
 
 ## FeatureForAccount
 
@@ -1347,7 +1349,7 @@ try {
 | USB_STORAGE_DEVICE_WRITE | 6    | USB存储设备写入能力，当前仅支持PC/2in1企业设备使用。<!--RP5--><!--RP5End--><br/>以下四种情况再禁用某用户USB存储设备写入能力，会报策略冲突。<br/>1）已禁用设备USB能力（[FeatureForDevice.USB](#featurefordevice24)）。<br/>2）通过[setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为只读/禁用。<br/>3）通过[addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14)接口添加了存储类型的USB设备禁用。<br/>4）通过[setExternalStorageInterceptEnable](js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable)接口启用了外置存储设备挂载拦截。 |
 | DISK_RECOVERY_KEY | 7    | 恢复[密钥导出](../../security/UniversalKeystoreKit/huks-export-key-arkts.md)能力，当前仅支持PC/2in1设备使用。 |
 | SUDO | 8    | superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。如果已经通过[setDisallowedPolicy](#restrictionssetdisallowedpolicy24)接口禁用设备级sudo能力，再调用本接口禁用用户级sudo能力，会发生策略冲突，抛出9200010错误码。 |
-| DISTRIBUTED_TRANSMISSION_OUTGOING | 9    | 设备间分布式单向传输数据的能力（仅包含向其他设备传输数据）。当已禁用分布式管理服务（[DISTRIBUTED_TRANSMISSION](#featureforaccount)），再禁用设备间分布式单向传输数据的能力，会报策略冲突。 |
+| DISTRIBUTED_TRANSMISSION_OUTGOING | 9    | 设备间分布式单向传输数据的能力（仅包含向其他设备传输数据），<!--RP8--><!--RP8End-->当已禁用分布式管理服务（[DISTRIBUTED_TRANSMISSION](#featureforaccount)），再禁用设备间分布式单向传输数据的能力，会报策略冲突。 |
 | OPEN_FILE_BOOST | 10    | <!--RP6-->文件打开加速能力<!--RP6End-->，为应用提供文件打开加速状态感知能力。应用可以通过接入对应API，感知文件的加速状态，进而应用可以实现对已加速文件给出独特的UI（user interface）标识等功能，优化用户文件打开体验，当前仅支持PC/2in1设备使用。 |
 
 ## SettingsForDevice

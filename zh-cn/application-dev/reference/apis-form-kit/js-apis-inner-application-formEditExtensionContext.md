@@ -149,3 +149,61 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
   }
 }
 ```
+
+### setWindowBackgroundColor
+
+setWindowBackgroundColor(color: string): Promise&lt;void&gt;
+
+设置卡片编辑页的背景色，使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                   |
+| ------ | ------ | ---- | ------------------------------------- |
+| color  | string | 是   | 要设置的背景颜色。该值是一个十六进制RGB或ARGB的颜色代码，不区分大小写，例如`#00FF00`或`#FF00FF00`。|
+
+**返回值：**
+
+| 类型 | 说明    |
+| ------ | ------ |
+| Promise&lt;void&gt;   |  Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 16500050 | An IPC connection error happened.                            |
+| 16501026 | Invalid color value.                           |
+
+**示例：**
+
+```ts
+import { FormEditExtensionAbility } from '@kit.FormKit';
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
+
+export default class ExampleFormEditAbility extends FormEditExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    try {
+      this.context.setWindowBackgroundColor("#00FFFFFF")
+        .then(() => {
+          console.info('Background color set successfully');
+        })
+        .catch((e) => {
+          console.error(`Failed to set background color: ${e.code} ${e.message}`);
+        })
+    } catch (e) {
+      console.error(`${TAG} Failed to set background color:, Code: ${e.code}, Message: ${e.message}`);
+    }
+  }
+}
+```

@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ddb6d958a436ed28224ab183195eb9a9304c854d translatedAt=2026-08-26T04:52:25.706Z pushedAt=2026-08-28T08:46:41.122Z -->
+<!-- md-trans-meta sourceCommit=9511ff140f03f11d940a78c7f29c9b0f6fab26d2 translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 When creating an ArkTS widget, you need to implement the [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) lifecycle APIs.
 
@@ -57,7 +57,7 @@ When creating an ArkTS widget, you need to implement the [FormExtensionAbility](
         };
         let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
         formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
-          hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
+          hilog.error(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
         });
       }
     
@@ -68,7 +68,7 @@ When creating an ArkTS widget, you need to implement the [FormExtensionAbility](
     
       onFormEvent(formId: string, message: string): void {
         // If the widget supports event triggering, override this method and implement the trigger.
-        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+        hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] onFormEvent, formId = ${formId}, message: ${message}`);
         class FormDataClass {
           title: string = 'Title Update.'; // Corresponds to the card layout.
           detail: string = 'Description update success.'; // Corresponds to the card layout.
@@ -78,7 +78,7 @@ When creating an ArkTS widget, you need to implement the [FormExtensionAbility](
         let formData = new FormDataClass();
         let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
         formProvider.updateForm(formId, formInfo).then(() => {
-          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+          hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm success.');
         }).catch((error: BusinessError) => {
           hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
         });

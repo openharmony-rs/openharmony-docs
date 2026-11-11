@@ -1,20 +1,19 @@
 # Class (JsResult)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ff3cdc7904576f258fd8d07326a4708bead0b2a0 translatedAt=2026-08-07T04:37:28.887Z pushedAt=2026-08-07T08:12:27.603Z -->
+<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-11-06T11:22:22.932Z pushedAt=2026-11-09T11:40:41.498Z nl=1 -->
 
 JsResult is a result handling object returned by the Web component when processing JavaScript dialog box events. It is used in scenarios where developers intercept and customize the handling of dialog boxes such as `window.alert`, `window.confirm`, and `window.prompt`. In event callbacks such as [onAlert](./arkts-basic-components-web-events.md#onalert), [onConfirm](./arkts-basic-components-web-events.md#onconfirm), or [onPrompt](./arkts-basic-components-web-events.md#onprompt9), developers can use this object to feed back the user's operation results, such as confirmation, cancellation, or input content, to the Web component, thereby controlling the subsequent behavior of the dialog box.
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 8.
+> - This class is supported since API version 8.
 >
 > - The sample effect is subject to the actual device.
 

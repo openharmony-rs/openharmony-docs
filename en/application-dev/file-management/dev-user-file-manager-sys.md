@@ -5,7 +5,7 @@
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=23fd3050bf417376fb6020b82cd43307338e4432 translatedAt=2026-08-26T04:31:05.571Z pushedAt=2026-08-28T03:34:40.216Z -->
+<!-- md-trans-meta sourceCommit=23fd3050bf417376fb6020b82cd43307338e4432 translatedAt=2026-10-29T10:30:53.781Z pushedAt=2026-10-29T10:30:53.781Z nl=1 -->
 
 OpenHarmony is prebuilt with the **FileManager** application. You can also develop your own file manager application as required.
 
@@ -13,15 +13,15 @@ OpenHarmony is prebuilt with the **FileManager** application. You can also devel
 
 For details about the APIs for developing the user file manager, see [User File Access and Management](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md).
 
-1. Request permissions required.
+1. Configure permissions and import modules.
 
    Request the ohos.permission.FILE_ACCESS_MANAGER and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permissions. For details, see [Requesting Permissions for System_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 
    > **NOTE**
    >
-   > - The ohos.permission.FILE_ACCESS_MANAGER permission allows your application to call the user file access framework APIs.
+   > The ohos.permission.FILE_ACCESS_MANAGER permission allows your application to call the user file access framework APIs.
    >
-   > - The ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permission allows your application to obtain information about file management server applications supported by the system.
+   > The ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permission allows your application to obtain information about file management server applications supported by the system.
 
 2. Import dependent modules.
 
@@ -34,7 +34,7 @@ For details about the APIs for developing the user file manager, see [User File 
 
 3. Query device information.
 
-   You can obtain attributes of the devices managed by all file management servers in the system, or attributes of the devices managed by a specific file management server.
+   You can obtain the attributes of devices managed by all file management servers in the current system or by a specific server, and filter devices as needed.
 
    In the user file access framework, **RootInfo** indicates the attribute information of a device. For example, obtain **RootInfo** of all devices.
 
@@ -177,15 +177,15 @@ For details about the APIs, see [User File Access and Management](../reference/a
 
 You can use **notify()** to observe not only the changes of directories, but also the device online/offline status.
 
-1. Request permissions required.
+1. Configure permissions and import modules.
 
    Request the ohos.permission.FILE_ACCESS_MANAGER and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permissions. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
    > **NOTE**
    >
-   > - The ohos.permission.FILE_ACCESS_MANAGER permission allows your application to call the user file access framework APIs.
+   > The ohos.permission.FILE_ACCESS_MANAGER permission allows your application to call the user file access framework APIs.
    >
-   > - The ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permission allows your application to obtain information about file management server applications supported by the system.
+   > The ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permission allows your application to obtain information about file management server applications supported by the system.
 
 2. Import dependent modules.
 
@@ -208,7 +208,7 @@ You can use **notify()** to observe not only the changes of directories, but als
    }
    ```
 
-4. Observe devices.
+4. Register and unregister device listeners.
 
    To listen for the device online/offline status, pass in [DEVICES_URI](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md#constant) to **registerObserver**. To cancel the listening for the device online/offline status, pass in **DEVICES_URI** to **unregisterObserver()**.
 

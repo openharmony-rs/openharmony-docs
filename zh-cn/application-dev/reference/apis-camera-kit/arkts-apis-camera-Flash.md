@@ -53,11 +53,11 @@ setFlashMode(flashMode: FlashMode): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 function setFlashMode(photoSession: camera.PhotoSession): void {
   try {
-    photoSession.setFlashMode(camera.FlashMode.FLASH_MODE_AUTO);
+    if (photoSession.hasFlash() && photoSession.isFlashModeSupported(camera.FlashMode.FLASH_MODE_AUTO)) {
+      photoSession.setFlashMode(camera.FlashMode.FLASH_MODE_AUTO);
+    }
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
@@ -71,6 +71,8 @@ function setFlashMode(photoSession: camera.PhotoSession): void {
 getFlashMode(): FlashMode
 
 获取当前设备的闪光灯模式。
+
+在获取之前，需要先使用方法[hasFlash](arkts-apis-camera-FlashQuery.md#hasflash11)检查设备是否支持闪光灯。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -98,7 +100,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function getFlashMode(photoSession: camera.PhotoSession): camera.FlashMode | undefined {
   let flashMode: camera.FlashMode | undefined = undefined;
   try {
-    flashMode = photoSession.getFlashMode();
+    if (photoSession.hasFlash()) {
+      flashMode = photoSession.getFlashMode();
+    }
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;

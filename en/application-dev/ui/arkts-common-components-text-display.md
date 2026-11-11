@@ -5,10 +5,10 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8aa8522c1582655206875d9c89c21656113a2dda translatedAt=2026-09-21T02:42:59.101Z pushedAt=2026-09-21T10:10:19.826Z -->
+<!-- md-trans-meta sourceCommit=023ee412a70b9a86b7573cb27618090c6d5d5134 translatedAt=2026-11-03T08:18:20.742Z pushedAt=2026-11-03T08:28:14.511Z nl=1 -->
 
 
-Text is a component used to display content in the user view, such as the text of an article. This component supports binding custom text selection menus, allowing users to choose different functions as needed. In addition, you can extend custom menus to enrich available options and further improve the user experience. Span is used to display inline text.
+Text is a component used to display content in the user view, such as the text of an article. This component supports binding custom text selection menus, allowing users to choose different functions as needed. In addition, you can extend custom menus to enrich available options and further improve the user experience. Span is used to display inline text.  
 
 For details, see the API documentation for [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) and [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md).
 
@@ -22,7 +22,7 @@ Text can be created in the following two ways:
 - A string.
 
   <!-- @[create_a_text_in_one_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
-
+  
   ``` TypeScript
   Text('I am a text segment.')
   ```
@@ -47,7 +47,7 @@ Text can be created in the following two ways:
   ```
 
   <!-- @[create_a_text_in_another_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
-
+  
   ``` TypeScript
   // Replace $r('app.string.module_desc') with the actual resource file. In this example, the value of the resource file is "Module description".
   Text($r('app.string.module_desc'))
@@ -67,7 +67,7 @@ The Text component supports universal events. You can bind events such as [onCli
 The following example binds events to text, so that the content displayed below the text is refreshed when an event is triggered.
 
   <!-- @[General_Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/GeneralEvents.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -150,7 +150,7 @@ The following examples illustrate the commonly used APIs.
 - Set the text alignment style via [textAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textalign).
 
   <!-- @[custom_text_align](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
-
+  
   ``` TypeScript
   // Replace $r('app.string.TextAlign_Start') with the actual resource file. In this example, the value of the resource file is "left-aligned".
   Text($r('app.string.TextAlign_Start'))
@@ -177,7 +177,7 @@ The following examples illustrate the commonly used APIs.
 - Use the [textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow) attribute to control text overflow handling. textOverflow must be used together with [maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines) (by default, text wraps automatically). Starting from API version 18, when text overflow is displayed in marquee mode, you can set marquee configuration items, such as the switch, step length, number of cycles, and direction.
 
   <!-- @[custom_text_overflow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
-
+  
   ``` TypeScript
   Text('This is the setting of textOverflow to Clip text content This is the setting of textOverflow ' +
     'to None text content. This is the setting of textOverflow to Clip text content This is the setting ' +
@@ -228,12 +228,12 @@ The following examples illustrate the commonly used APIs.
     })
   ```
 
-![text-custom-style](figures/text-custom-style.gif)
+  ![text-custom-style](figures/text-custom-style.gif)
 
 - Set the text line height via the [lineHeight](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#lineheight) attribute.
 
   <!-- @[custom_line_height](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
-
+  
   ``` TypeScript
   Text('This is the text with the line height set. This is the text with the line height set.')
     .width(300).fontSize(12).border({ width: 1 }).padding(10)
@@ -250,7 +250,7 @@ The following examples illustrate the commonly used APIs.
 - Set the text decoration line style, color, and thickness via the [decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#decoration) attribute.
 
   <!-- @[custom_text_line_and_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
-
+  
   ``` TypeScript
   Text('This is the text')
     .decoration({
@@ -306,7 +306,7 @@ The following examples illustrate the commonly used APIs.
 - Set the offset of the text baseline via the [baselineOffset](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#baselineoffset) attribute.
 
   <!-- @[custom_text_baseline_offset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
-
+  
   ``` TypeScript
   Text('This is the text content with baselineOffset 0.')
     .baselineOffset(0)
@@ -336,7 +336,7 @@ The following examples illustrate the commonly used APIs.
 - Set the text character spacing via the [letterSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#letterspacing) attribute.
 
   <!-- @[custom_text_letter_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
-
+  
   ``` TypeScript
   Text('This is the text content with letterSpacing 0.')
     .letterSpacing(0)
@@ -368,7 +368,7 @@ The following examples illustrate the commonly used APIs.
   minFontSize is used to set the minimum display font size of the text, and maxFontSize is used to set the maximum display font size of the text. These two attributes must be set together to take effect, and must be used in conjunction with the [maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines) attribute or layout size constraints. Setting either attribute alone will not produce any effect.
 
   <!-- @[custom_the_size_of_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
-
+  
   ``` TypeScript
   /*  Replace $r('app.string.CustomTextStyle_textContent_one_style') with the actual resource file.
    * In this example, the value of this resource file is "My maximum font size is 30, minimum font size is 5, width is 250, and maxLines is 1".
@@ -405,22 +405,22 @@ The following examples illustrate the commonly used APIs.
     .margin(5)
   /*Replace $r('app.string.CustomTextStyle_textContent_high') with the actual resource file.
    * In this example, the value of this resource file is "My maximum font size is 30, minimum font size is 15, width is 250, and height is 100".*/
-  Text($r('app.string.CustomTextStyle_textContent_high'))
-    .width(250)
+   Text($r('app.string.CustomTextStyle_textContent_high'))
+  .width(250)
     .height(100)
     .maxFontSize(30)
     .minFontSize(15)
     .border({ width: 1 })
     .padding(10)
     .margin(5)
-  ```
+    ```
 
-![radio-styled](figures/radio-styled.png)
+  ![radio-styled](figures/radio-styled.png)
 
 - Set the text case via the [textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textcase) attribute.
 
   <!-- @[custom_the_text_by_text_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
-
+  
   ``` TypeScript
   Text('This is the text content with textCase set to Normal.')
     .textCase(TextCase.Normal)
@@ -442,13 +442,13 @@ The following examples illustrate the commonly used APIs.
     .padding(10)
     .margin(5)
   ```
-
+  
   ![text-styled-span3](figures/text-styled-span3.png)
 
 - Via the [copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9) attribute, set whether the text can be copied and pasted.
 
   <!-- @[custom_the_text_by_copy_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
-
+  
   ``` TypeScript
   // Replace $r('app.string.CustomTextStyle_textContent_incopy') with the actual resource file. In this example, the value of the resource file is "This is a piece of copyable text."
   Text($r('app.string.CustomTextStyle_textContent_incopy'))
@@ -461,7 +461,7 @@ The following examples illustrate the commonly used APIs.
 - Via the [fontFamily](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontfamily) attribute, set the text font family. The app currently supports the 'HarmonyOS Sans' font and [custom font registration](../reference/apis-arkui/js-apis-font.md).
 
   <!-- @[custom_the_text_fontFamily](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
-
+  
   ``` TypeScript
   Text('This is the text content with fontFamily')
     .fontSize(30)
@@ -473,7 +473,7 @@ The following examples illustrate the commonly used APIs.
 - Starting from API version 20, you can set a number flip effect via the [contentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#contenttransition20) attribute.
 
   <!-- @[Content_Transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ContentTransition.ets) -->
-
+  
   ``` TypeScript
   
   @Entry
@@ -508,7 +508,7 @@ The following examples illustrate the commonly used APIs.
 - Starting from API version 20, you can set whether to optimize trailing spaces during text layout via the [optimizeTrailingSpace](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#optimizetrailingspace20) attribute, which resolves the issue of trailing spaces affecting alignment display.
 
   <!-- @[Last_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
-
+  
   ``` TypeScript
   Column() {
     // Enable the trailing space optimization feature.
@@ -533,7 +533,7 @@ The following examples illustrate the commonly used APIs.
 - Starting from API version 20, you can set the text line spacing via [lineSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#linespacing20). When [LineSpacingOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#linespacingoptions20) is not configured, line spacing is applied by default above the first line and below the last line. When onlyBetweenLines is set to true, line spacing applies only between lines, with no extra spacing above the first line.
 
   <!-- @[Line_Spacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LineSpacing.ets) -->
-
+  
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
   
@@ -567,7 +567,7 @@ The following examples illustrate the commonly used APIs.
 - Starting from API version 20, you can set whether to enable automatic spacing between Chinese and Western characters via [enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enableautospacing20).
 
   <!-- @[Enable_AutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/EnableAutoSpacing.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -601,28 +601,28 @@ The following examples illustrate the commonly used APIs.
   
         // Set whether to apply automatic spacing between Chinese and Western text.
         /*Replace $r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing') with the actual resource file. In this example, the value of the resource file is "中西文Auto Spacing自动间距".*/
-        Text($r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing'))
-          .fontSize(24)
-          .padding(15)
+         Text($r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing'))
+         .fontSize(24)
+        .padding(15)
           .backgroundColor('#F5F5F5')
           .width('90%')
           .enableAutoSpacing(this.enableSpacing)
-      }
-      .width('100%')
+          }
+          .width('100%')
       .height('100%')
       .padding(20)
       }
       // ...
-    }
-  }
-  ```
+      }
+      }
+    ```
 
   ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
 
 - Starting from API version 20, you can set gradient colors via [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20).
 
   <!-- @[Shader_Style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ShaderStyle.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -660,7 +660,7 @@ The following examples illustrate the commonly used APIs.
 - Starting from API version 20, the Text component supports vertical alignment of text paragraphs via the [textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20) attribute. The following example shows how to set the text vertical center alignment effect via the textVerticalAlign attribute.
 
     <!-- @[text_VerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
-
+    
     ``` TypeScript
     // Replace $r('app.media.startIcon') with the actual resource file.
     Text() {
@@ -734,7 +734,7 @@ Text() {
 Via [textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#textcase), set the text to always remain in uppercase or lowercase.
 
   <!-- @[create_span_with_upper_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
-
+  
   ``` TypeScript
   Text() {
     Span('I am Upper-span').fontSize(12)
@@ -752,7 +752,7 @@ Since the Span component has no size information, it only supports adding the ta
 
 
   <!-- @[textspan_onhover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpanOnHover.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -811,7 +811,7 @@ When Text is selected, a menu containing **Copy**, **Translate**, and **Search**
 The Text component must have the [copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9) attribute set to be selectable.
 
   <!-- @[copy_Option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
-
+  
   ``` TypeScript
   // Replace $r('app.string.selected_menu') with the actual resource file. In this example, the value of the resource file is "This is a text used to demonstrate the selection menu."
   Text($r('app.string.selected_menu'))
@@ -824,7 +824,7 @@ The Text component must have the [copyOption](../reference/apis-arkui/arkui-ts/t
 You can tap an empty area within the Text component area to close the selection state and menu normally. To close the selection menu by tapping an empty area outside the Text component area, you need to set the [selection](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11) attribute. The following example shows how to do this.
 
   <!-- @[Selection_Change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionChange.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   @Entry
@@ -871,7 +871,7 @@ You can tap an empty area within the Text component area to close the selection 
 The Text component extends the custom selection menu via the [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) attribute settings. You can set the text content, icon, and callback method for the extension items.
 
   <!-- @[set_selection_menu_with_editmenuoptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
-
+  
   ``` TypeScript
   // Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value of this resource file is "This is a piece of text used to demonstrate the selection menu."
   Text($r('app.string.show_selected_menu'))
@@ -883,7 +883,7 @@ The Text component extends the custom selection menu via the [editMenuOptions](.
   ```
 
     <!-- @[onCreate_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
-
+    
     ``` TypeScript
     // Define onCreateMenu and onMenuItemClick.
     // Replace $r('app.media.app_icon') with the actual resource file.
@@ -931,12 +931,12 @@ The Text component extends the custom selection menu via the [editMenuOptions](.
     };
     ```
 
-![text_editmenuoptions](figures/text_editmenuoptions.gif)
+    ![text_editmenuoptions](figures/text_editmenuoptions.gif)
 
 - Starting from API version 20, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#properties-1) callback is triggered when the text selection area changes, before the menu is displayed. You can configure menu data in this callback, providing the ability to customize and refresh the system menu.
 
   <!-- @[Prepare_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets) -->  
-
+  
   ``` TypeScript
   // Replace $r('app.media.xxx') with the actual resource file.
   // xxx.ets
@@ -1023,7 +1023,7 @@ The Text component extends the custom selection menu via the [editMenuOptions](.
 Starting from API version 20, you can use [disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) to hide all system service menu items in the text selection menu. For details, see the API documentation for [disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20). The following example is only one example from a complete sample project. To avoid affecting other page examples in the project, system service menus are disabled and restored only in the page's appear and disappear lifecycle callbacks. In actual scenarios, you can choose other timing, such as [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) and [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy) of [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md).
 
   <!-- @[Service_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ServiceMenuItems.ets) -->
-
+  
   ``` TypeScript
   import { TextMenuController } from '@kit.ArkUI';
   // xxx.ets
@@ -1073,7 +1073,7 @@ Starting from API version 20, you can use [disableSystemServiceMenuItems](../ref
 - Starting from API version 20, you can use [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) to disable specified system service menu items in the text selection menu. For details, see the API documentation for [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20). The following example is only one example in the complete sample project. To avoid affecting other page examples in the project, system service menus are disabled and restored only in the page's appearing and disappearing lifecycle. In actual scenarios, you can choose other timings, such as [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) and [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy) of [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md).
 
   <!-- @[Disable_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisableMenuItems.ets) -->
-
+  
   ``` TypeScript
   import { TextMenuController } from '@kit.ArkUI';
   
@@ -1125,7 +1125,7 @@ Starting from API version 20, you can use [disableSystemServiceMenuItems](../ref
 - Starting from API version 12, you can use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) to disable system menu callbacks and customize extended menu items. 
 
   <!-- @[Custom_Block_Menus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomAndBlockMenus.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   @Entry
@@ -1272,7 +1272,7 @@ The Text component implements AI menu display via the [enableDataDetector](../re
 
 - To enable the entity recognition options that pop up when tapping an AI entity, set [enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enabledatadetector11) to `true`. The following example shows this:
   <!-- @[set_ai_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/AIMenu.ets) --> 
-
+  
   ``` TypeScript
   // The value of the 'app.string.AIMenu_Text_One' resource is 'Phone number: (86) (755) ********  \n \n Link: www.********.com
   // \n \n Email: ***@example.com\n \n Address: XX District, XX City, XX Province, XXXX \n \n Time: XX/XX/XXXX XXXX'
@@ -1291,7 +1291,7 @@ The Text component implements AI menu display via the [enableDataDetector](../re
 
 
 - If needed, to adjust the recognized styles, you can use [dataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#datadetectorconfig11). For details, see the [TextDataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11) configuration item.
-- If needed, to adjust the menu position, you can use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12). For details, see [Setting Custom Menu Extensions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#example-12-setting-custom-menu-extensions).
+- If needed, to adjust the menu position, you can use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12). For details, see [Setting Custom Menu Extensions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#example-12-setting-custom-menu-extensions). 
 <!--RP2--><!--RP2End-->
 
 ### Setting a Custom Menu
@@ -1299,14 +1299,14 @@ The Text component implements AI menu display via the [enableDataDetector](../re
 The Text component binds a custom selection menu via the [bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11) attribute.
 
   <!-- @[set_selection_menu_with_bindselectionmenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
-
+  
   ``` TypeScript
   controller: TextController = new TextController();
   options: TextOptions = { controller: this.controller };
   ```
 
   <!-- @[set_selection_menu_with_bindselectionmenu_sec](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
-
+  
   ``` TypeScript
   // Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value of this resource file is "This is a text used to demonstrate the selection menu."
   Text($r('app.string.show_selected_menu'), this.options)
@@ -1329,7 +1329,7 @@ The Text component binds a custom selection menu via the [bindSelectionMenu](../
   ```
 
   <!-- @[Right_Click_Text_CustomMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
-
+  
   ``` TypeScript
   // Define menu items.
   @Builder
@@ -1358,7 +1358,7 @@ The Text component binds a custom selection menu via the [bindSelectionMenu](../
 The Text component controls the window in which the text menu is rendered via [TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenushowmode16). In main window mode, the menu node is mounted to the root node of the main window, and the menu may be obscured by page content or affected by page scrolling. In subwindow mode, the menu node is mounted to the root node of an independent subwindow, and the menu floats above the main window, unaffected by the page layout.
 
   <!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets) -->
-
+  
   ``` TypeScript
   this.getUIContext()
     .getTextMenuController()
@@ -1370,7 +1370,7 @@ The Text component controls the window in which the text menu is rendered via [T
   ```
 
   <!-- @[textmenushowmode_create_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets) -->
-
+  
   ``` TypeScript
   // Replace $r('app.string.Service_MenuItems_Text') with the actual resource file. In this example, the value of the resource file is "This is a piece of text. Long press to bring up the text selection menu."
   Text($r('app.string.Service_MenuItems_Text'))
@@ -1381,12 +1381,472 @@ The Text component controls the window in which the text menu is rendered via [T
 
   ![Text-menu-subwindow](figures/Text-menu-subwindow.gif)
 
+## Cross-Node Selection
+
+In scenarios such as article reading, product details, and agreement terms, the body content is usually carried by independent Text components such as titles, subtitles, and multiple paragraphs. If continuous selection cannot cross the boundaries of multiple text components, the selection experience in multi-Text scenarios becomes fragmented.
+
+Starting from API version 26.0.0, you can use the [SelectionContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md) component to provide unified cross-node text selection, copying, and menu extension capabilities for multiple Text child components. After a long press, the user can drag across different Text nodes to continuously select text. The selected text is concatenated in the visual order of the Text components and copied as a whole. It also supports unified configuration of the selection handle color, highlight color, text concatenation strategy, and custom menus. SelectionContainer uses the [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md) layout by default. If a linear layout is required, place container components such as Column or Row inside SelectionContainer.
+
+### Implementing Cross-Node Text Selection and Copying
+
+Place multiple Text components inside a SelectionContainer, and set the copyable range through [copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#copyoption) to implement continuous selection and copying across Text components. You can uniformly set the selection handle and highlight colors through [caretColor](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#caretcolor) and [selectedBackgroundColor](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#selectedbackgroundcolor), and listen to selection changes and the copying process through [onTextSelectionChange](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#ontextselectionchange), [onWillCopy](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#onwillcopy), and [onCopy](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#oncopy).
+
+  <!-- @[cross_node_selection_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerDemo.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerTextJoinStyle
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerDemo {
+    @State selectedParts: string = '';
+    @State copiedText: string = '';
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Text('Please select text across nodes in the area below')
+            .fontSize(16)
+            .fontColor('#999999')
+  
+          SelectionContainer() {
+            Column({ space: 12 }) {
+              Text('Cross-node selection sample article')
+                .fontSize(24)
+                .fontWeight(FontWeight.Bold)
+              Text('In article reading scenarios, the title and body are usually carried by multiple Text components. Users expect to select text continuously across paragraphs.')
+                .fontSize(16)
+              Text('The SelectionContainer component provides cross-node selection, copy, and menu extension capabilities for multiple text nodes, improving the interaction experience in complex text layouts.')
+                .fontSize(16)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .textJoinStyle(SelectionContainerTextJoinStyle.NEWLINE)
+          .caretColor(Color.Red)
+          .selectedBackgroundColor('#33007DFF')
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedParts = value.join(' | ');
+          })
+          .onWillCopy((value: string) => {
+            this.copiedText = `Ready to copy: ${value}`;
+            return true;
+          })
+          .onCopy((value: string) => {
+            this.copiedText = `Copy succeeded: ${value}`;
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Text(`Selected content: ${this.selectedParts}`)
+            .fontSize(14)
+            .fontColor('#666666')
+          Text(this.copiedText)
+            .fontSize(14)
+            .fontColor('#666666')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  }
+  ```
+
+ <!--Del-->   <!--DelEnd-->
+
+### Configuring Cross-Node Text Concatenation
+
+When cross-node selection involves multiple Text components, the text copied to the clipboard must be concatenated in visual order. You can set the concatenation method through [textJoinStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#textjoinstyle): [SelectionContainerTextJoinStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#selectioncontainertextjoinstyle).NEWLINE inserts a line break between different text nodes, while .DIRECT concatenates them directly without adding a separator.
+
+  <!-- @[cross_node_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerJoinStyle.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerTextJoinStyle
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerJoinStyle {
+    @State joinStyle: SelectionContainerTextJoinStyle = SelectionContainerTextJoinStyle.NEWLINE;
+    @State selectedText: string = '';
+    @State copiedText: string = '';
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Row({ space: 12 }) {
+            Button('Join with line break')
+              .type(ButtonType.Capsule)
+              .backgroundColor(this.joinStyle === SelectionContainerTextJoinStyle.NEWLINE ? '#007DFF' : '#E0E0E0')
+              .fontColor(this.joinStyle === SelectionContainerTextJoinStyle.NEWLINE ? Color.White : Color.Black)
+              .onClick(() => {
+                this.joinStyle = SelectionContainerTextJoinStyle.NEWLINE;
+              })
+            Button('Join directly')
+              .type(ButtonType.Capsule)
+              .backgroundColor(this.joinStyle === SelectionContainerTextJoinStyle.DIRECT ? '#007DFF' : '#E0E0E0')
+              .fontColor(this.joinStyle === SelectionContainerTextJoinStyle.DIRECT ? Color.White : Color.Black)
+              .onClick(() => {
+                this.joinStyle = SelectionContainerTextJoinStyle.DIRECT;
+              })
+          }
+  
+          SelectionContainer() {
+            Column({ space: 12 }) {
+              Text('First paragraph: The joining method used after selection and copying is determined by textJoinStyle.')
+                .fontSize(18)
+              Text('Second paragraph: When joining with a line break, a line break character is inserted between the two paragraphs; when joining directly, no separator is inserted.')
+                .fontSize(18)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .textJoinStyle(this.joinStyle)
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedText = value.join(' | ');
+          })
+          .onWillCopy((value: string) => {
+            this.copiedText = value;
+            return true;
+          })
+          .onCopy((value: string) => {
+            this.copiedText = value;
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Text(`Selected content: ${this.selectedText}`)
+            .fontSize(14)
+            .fontColor('#666666')
+          Text('Copied content (showing the difference in joining methods):')
+            .fontSize(14)
+            .fontColor('#666666')
+          Text(this.copiedText)
+            .fontSize(14)
+            .fontColor('#333333')
+            .backgroundColor('#F5F5F5')
+            .padding(8)
+            .borderRadius(4)
+            .width('100%')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  }
+  ```
+
+ <!--Del-->   <!--DelEnd-->
+
+### Binding a Custom Selection Menu
+
+When the system default menu cannot meet business requirements, you can bind a fully custom selection menu through [bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#bindselectionmenu). Unlike the system menu, the content, style, and trigger conditions of a custom menu are all defined by the developer.
+
+  <!-- @[cross_node_custom_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerCustomMenu.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerMenuOptions,
+    SelectionContainerTextJoinStyle
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerCustomMenu {
+    @State selectedText: string = '';
+    @State menuLog: string = '';
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Text('Please select text in the area below to experience the custom menu')
+            .fontSize(16)
+            .fontColor('#999999')
+  
+          SelectionContainer() {
+            Column({ space: 12 }) {
+              Text('First paragraph: After cross-node selection, long press to pop up a fully customized selection menu.')
+                .fontSize(18)
+              Text('Second paragraph: Bind a custom menu through bindSelectionMenu to replace the system default menu.')
+                .fontSize(18)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .textJoinStyle(SelectionContainerTextJoinStyle.DIRECT)
+          .bindSelectionMenu(
+            TextSpanType.TEXT,
+            this.menuBuilder,
+            TextResponseType.DEFAULT,
+            {
+              onAppear: (text: string) => {
+                this.menuLog = `Menu appeared, selected text: ${text}`;
+              },
+              onDisappear: () => {
+                this.menuLog = 'Menu disappeared';
+              }
+            } as SelectionContainerMenuOptions
+          )
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedText = value.join(' | ');
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Text(`Selected content: ${this.selectedText}`)
+            .fontSize(14)
+            .fontColor('#666666')
+          Text(this.menuLog)
+            .fontSize(14)
+            .fontColor('#999999')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  
+    @Builder
+    menuBuilder() {
+      Column() {
+        Menu() {
+          MenuItemGroup() {
+            MenuItem({ content: 'Custom copy', labelInfo: '' })
+              .onClick(() => {
+                this.menuLog = 'Custom copy clicked';
+              })
+            MenuItem({ content: 'Custom share', labelInfo: '' })
+              .onClick(() => {
+                this.menuLog = 'Custom share clicked';
+              })
+            MenuItem({ content: 'Custom translate', labelInfo: '' })
+              .onClick(() => {
+                this.menuLog = 'Custom translate clicked';
+              })
+          }
+        }
+        .radius($r('sys.float.ohos_id_corner_radius_card'))
+        .clip(true)
+        .backgroundColor('#F0F0F0')
+      }
+    }
+  }
+  ```
+
+<!--Del-->   <!--DelEnd-->
+
+### Extending System Menu Options
+
+To add custom options while retaining the system menu items, you can use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#editmenuoptions). This approach supports adding custom menu items and removing specified system menu items, and intercepting or allowing the system default behavior through the return value in the [onMenuItemClick](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#onmenuitemclickwithtextcallback) callback.
+
+  <!-- @[cross_node_extend_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerExtendMenu.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    OnMenuItemClickWithTextCallback,
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerEditMenuOptions,
+    SelectionContainerTextJoinStyle
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerExtendMenu {
+    @State selectedText: string = '';
+    @State menuClickLog: string = '';
+  
+    onCreateMenu = (menuItems: Array<TextMenuItem>): Array<TextMenuItem> => {
+      let targetIndex: number = menuItems.findIndex((item: TextMenuItem) => item.id.equals(TextMenuItemId.TRANSLATE));
+      if (targetIndex !== -1) {
+        menuItems.splice(targetIndex, 1);
+      }
+      targetIndex = menuItems.findIndex((item: TextMenuItem) => item.id.equals(TextMenuItemId.SEARCH));
+      if (targetIndex !== -1) {
+        menuItems.splice(targetIndex, 1);
+      }
+      let highlightItem: TextMenuItem = {
+        content: 'Annotate',
+        id: TextMenuItemId.of('highlight')
+      };
+      let bookmarkItem: TextMenuItem = {
+        content: 'Favorite',
+        id: TextMenuItemId.of('bookmark')
+      };
+      let commentItem: TextMenuItem = {
+        content: 'Comment',
+        id: TextMenuItemId.of('comment')
+      };
+      menuItems.push(highlightItem);
+      menuItems.push(bookmarkItem);
+      menuItems.push(commentItem);
+      return menuItems;
+    }
+  
+    onMenuItemClick: OnMenuItemClickWithTextCallback = (menuItem: TextMenuItem, text: string): boolean => {
+      this.menuClickLog = `Menu item clicked: ${menuItem.content}, selected text: ${text}`;
+      if (menuItem.id.equals(TextMenuItemId.COPY)) {
+        this.selectedText = `Copied: ${text}`;
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+        this.selectedText = `Select all operation: ${text}`;
+        return false;
+      }
+      if (menuItem.id.equals(TextMenuItemId.of('highlight'))) {
+        this.selectedText = `Annotated: ${text}`;
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.of('bookmark'))) {
+        this.selectedText = `Favorited: ${text}`;
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.of('comment'))) {
+        this.selectedText = `Commented: ${text}`;
+        return true;
+      }
+      return false;
+    }
+  
+    @State editMenuOptions: SelectionContainerEditMenuOptions = {
+      onCreateMenu: this.onCreateMenu,
+      onMenuItemClick: this.onMenuItemClick
+    };
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Text('Please select text in the area below to experience the extended menu')
+            .fontSize(16)
+            .fontColor('#999999')
+  
+          SelectionContainer() {
+            Column({ space: 12 }) {
+              Text('First paragraph: Through editMenuOptions, custom items can be extended on top of the system menu.')
+                .fontSize(18)
+              Text('Second paragraph: You can remove unnecessary system menu items and add custom items such as annotate, favorite, and comment.')
+                .fontSize(18)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .textJoinStyle(SelectionContainerTextJoinStyle.DIRECT)
+          .editMenuOptions(this.editMenuOptions)
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedText = value.join(' | ');
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Text(this.selectedText)
+            .fontSize(14)
+            .fontColor('#666666')
+          Text(this.menuClickLog)
+            .fontSize(14)
+            .fontColor('#999999')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  }
+  ```
+
+ <!--Del-->   <!--DelEnd-->
+
+### Closing the Menu and Clearing the Selection Through the Controller
+
+In scenarios such as page navigation and pop-up window overlay, you need to proactively close the selection menu or clear the selection state. You can close the menu through [closeSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#selectioncontainercontroller) of [SelectionContainerController](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#closeselectionmenu), and clear the selection state through [clearTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#cleartextselection).
+
+  <!-- @[cross_node_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerControllerDemo.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerController
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerControllerDemo {
+    private controller: SelectionContainerController = new SelectionContainerController();
+    @State selectedText: string = '';
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Text('Please select text across nodes in the area below, then click the button to operate')
+            .fontSize(16)
+            .fontColor('#999999')
+  
+          SelectionContainer({ controller: this.controller }) {
+            Column({ space: 12 }) {
+              Text('First paragraph: After selection, you can close the selection menu or clear the selected text through the controller.')
+                .fontSize(18)
+              Text('Second paragraph: closeSelectionMenu only closes the menu, while clearTextSelection also clears the selection state.')
+                .fontSize(18)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedText = value.join(' | ');
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Row({ space: 12 }) {
+            Button('Close selection menu')
+              .type(ButtonType.Capsule)
+              .onClick(() => {
+                this.controller.closeSelectionMenu();
+              })
+            Button('Clear text selection')
+              .type(ButtonType.Capsule)
+              .onClick(() => {
+                this.controller.clearTextSelection();
+                this.selectedText = '';
+              })
+          }
+  
+          Text(`Selected content: ${this.selectedText}`)
+            .fontSize(14)
+            .fontColor('#666666')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  }
+  ```
+
+ <!--Del-->   <!--DelEnd-->
+
 ## Implementing a Trending Searches List
 
 This example demonstrates the trending searches list effect using the [maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines), [textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow), [textAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textalign), and [constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize) attributes.
 
   <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -1490,9 +1950,8 @@ This example demonstrates the trending searches list effect using the [maxLines]
     }
   }
   ```
-
+  
 
 ![text-hot-search](figures/text-hot-search.png)
 <!--RP1--><!--RP1End-->
-
 <!--no_check-->

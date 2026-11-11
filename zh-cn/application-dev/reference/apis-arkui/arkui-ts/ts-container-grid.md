@@ -715,13 +715,14 @@ enableEditMode(enabled: boolean | undefined)
 
 scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
-设置Grid的限位滚动策略，使Grid在滚动结束时按指定方式对齐item，或停在自定义的吸附位置。使用方法参考[示例23](#示例23设置滚动吸附对齐)。
+设置Grid的限位滚动策略，使Grid在滚动结束时按指定方式对齐item，或停在自定义的吸附位置。内置对齐方式参考[示例23](#示例23设置滚动吸附对齐)，自定义吸附位置参考[示例24](#示例24自定义滚动吸附位置)。
 
-包含跨行或跨列（不规则）GridItem的布局不支持本接口。
+包含跨列（不规则）GridItem的布局不支持本接口。
 
 > **说明：**
 >
-> 最终吸附位置始终在合法滚动范围内。
+> - 最终吸附位置始终在合法滚动范围内。
+> - 启用限位滚动后，拖拽或鼠标框选操作结束时也会触发限位滚动。
 
 **起始版本：** 26.1.0
 
@@ -809,6 +810,8 @@ onItemDragStart(event: OnItemDragStartCallback)
 拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](#示例16实现griditem自定义拖拽)。
 
 不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现GridItem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口实现该效果，参考[示例22（使用OnMove进行拖拽）](#示例22使用onmove进行拖拽)。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
+
+使用onMove实现拖拽排序时，不建议在onMove回调中新增数据。onMove上报的起始索引号与目标索引号基于拖拽开始时的数据源，框架按同一批数据仅发生顺序变化的前提完成落位与布局推演；若在回调中增加数据条数，应用侧索引会与框架内部的拖拽顺序不一致，可能导致排序结果错位或落位动画异常。如确需新增数据，建议在拖拽流程结束、onMove回调执行完成后再进行。数据源修改的通用约束参考[onMove](./ts-universal-attributes-drag-sorting.md#onmove)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3681,3 +3684,85 @@ struct GridSnapExample {
 ```
 
 ![scrollSnapStrategy-grid](figures/scrollSnapStrategy-grid.gif)
+
+### 示例24（自定义滚动吸附位置）
+
+本示例通过实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口，自定义Grid的吸附位置。每两行（240vp）一组，抛滑后沿原方向吸附。
+
+从API版本26.1.0开始，新增ScrollSnapOffsetProvider接口。
+
+```ts
+// xxx.ets
+const ITEM_HEIGHT: number = 100;
+const ROW_GAP: number = 20;
+const SNAP_INTERVAL: number = 2 * (ITEM_HEIGHT + ROW_GAP);
+
+class GridSnapProvider implements ScrollSnapOffsetProvider {
+  private scroller: Scroller;
+
+  constructor(scroller: Scroller) {
+    this.scroller = scroller;
+  }
+
+  calculateApproachOffset(velocity: number, decayOffset: number): number {
+    // 返回距离大小，滚动方向由组件根据速度处理。
+    return velocity === 0 ? 0 : Math.min(decayOffset, SNAP_INTERVAL);
+  }
+
+  calculateSnapOffset(velocity: number): number {
+    const offset = this.scroller.currentOffset().yOffset;
+    const group = offset / SNAP_INTERVAL;
+    let targetGroup = Math.round(group);
+    if (velocity > 0) {
+      targetGroup = Math.ceil(group);
+    } else if (velocity < 0) {
+      targetGroup = Math.floor(group);
+    }
+    return Math.max(0, targetGroup * SNAP_INTERVAL);
+  }
+}
+
+@Entry
+@Component
+struct GridSnapProviderExample {
+  private scroller: Scroller = new Scroller();
+  private provider: ScrollSnapOffsetProvider = new GridSnapProvider(this.scroller);
+  private numbers: number[] = [];
+
+  aboutToAppear(): void {
+    for (let index = 0; index < 40; index++) {
+      this.numbers.push(index);
+    }
+  }
+
+  build() {
+    Column({ space: 8 }) {
+      Text('Grid').fontColor(0x000000).fontSize(16)
+      Grid(this.scroller) {
+        ForEach(this.numbers, (item: number) => {
+          GridItem() {
+            Text(item.toString())
+              .fontSize(20)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .height(ITEM_HEIGHT)
+          .backgroundColor(0xF9CF93)
+        }, (item: number) => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(ROW_GAP)
+      .width('100%')
+      .height(400)
+      .backgroundColor(0xFAEEE0)
+      .scrollSnapStrategy(this.provider)
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![scrollSnapStrategy-provider-grid](figures/scrollSnapStrategy-provider-grid.gif)

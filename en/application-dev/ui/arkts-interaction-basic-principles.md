@@ -1,48 +1,47 @@
 # Interaction Mechanism Overview
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c8954d33bacbdec6df88d8586db7cc9b9d8a799e translatedAt=2026-08-01T00:29:17.838Z pushedAt=2026-08-01T06:13:03.643Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T08:27:04.538Z pushedAt=2026-11-03T09:10:33.778Z nl=1 -->
 
 For pointer-based interactions including [touch events](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md), [mouse events](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md), and [axis events](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md), the interaction framework determines event and gesture targets through coordinate-based hit testing. This process assembles a response chain by identifying components within the interaction area. The system then dispatches events to appropriate UI components by correlating touch coordinates, event types, and layout information. Multiple events can combine to trigger gestures or features, for example, long press, click, and drag.
 
-## Event Interaction Pipeline
+## Event Interaction Process
 
 The event interaction pipeline describes the end-to-end process where ArkUI receives touch-type or mouse-type input events from upstream systems, collects event response chains based on developer-configured parameters, and dispatches them to components to trigger callbacks. This pipeline consists of three key phases:
 
-1. Event Generation
+1. Event generation
 
    Hardware input devices report events to target ArkUI instances through drivers and multi-mode modules. The rendering pipeline of ArkUI performs unified event processing.
 
-2. Event Response Chain Formation and Event Dispatch
+2. Event response chain formation and event dispatch
 
    The event response chain forms the core of the event interaction pipeline. After receiving an event, the pipeline performs hit testing to construct an event response chain, which drives decision-making for event dispatch and gesture recognition.
 
-   (1) Hit Testing
-
+   (1) Hit testing
+   
     After receiving an initial touch event, the pipeline performs spatial hit testing using event coordinates and component positions and constructs an event response chain. You can configure attributes to affect the formation of the event response chain.
 
-   (2) Dispatch to the Touch Event Response Chain
-
+   (2) Dispatch to the touch event response chain
+   
     Through the constructed touch response chain, the system delivers the touch event to target components.
 
-   (3) Dispatch to the Gesture Response Chain and Gesture Recognition
-
+   (3) Dispatch to the gesture response chain and gesture recognition
+   
     Components with registered gestures form a gesture response chain. The system combines events to detect gestures, resolves gesture conflicts through competition logic, and triggers the callback of the winning gesture.
 
-   (4) Event Interception
-
+   (4) Event interception
+   
     Before the event response chain is established, you can configure hit test attributes to influence the formation of the event response chain. Once the event response chain is established, you can use the provided APIs to intercept events, thereby altering the event dispatch flow.
 
     During event dispatch to the touch event response chain, you can block touch event propagation using touch interceptors.
 
     During dispatch to the gesture response chain, you can suppress gesture recognition using gesture interceptors.
 
-3. Callback Execution
+3. Callback execution
 
    During response chain formation, registered callbacks are synchronously collected. Then, after response chain formation and event dispatch, callbacks are executed for qualifying events and gestures.
 
@@ -98,6 +97,7 @@ Applications can intervene in hit test results through the following methods to 
 | Hit test control  | Intervenes in the collection results of the component itself and other components.        | [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)  | **hitTestBehavior** works similarly to **onTouchIntercept**, but it is statically configured.                                                                                                                                                                                                                                                                              |
 | Custom event interception| Intervenes in the collection results of the component itself and other components.        | [onTouchIntercept](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md#ontouchintercept) | This callback is triggered when the user triggers a press event and the system begins collecting all components that need to participate in event processing at the current position. Applications can return a **HitTestMode** value through this callback to influence the system's behavior in collecting child or sibling nodes. This enables dynamic control over interaction responses, such as allowing certain components to participate in interactions only under specific service conditions.<br>**onTouchIntercept** works similarly to **hitTestBehavior**, but it is a dynamic callback.|
 
+
 1. Response Region Setting
 
    By default, a component's response region matches its own position and size, ensuring maximum consistency between user actions and visual feedback. In rare cases, an application may need to adjust the size of the response region to limit or expand the scope of operations that a component can respond to.
@@ -121,9 +121,8 @@ Applications can intervene in hit test results through the following methods to 
    > Percentage values are calculated relative to the component's own width and height.
 
    The following is an example of binding multiple response regions:
-
    <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
-
+   
    ``` TypeScript
    @Entry
    @Component
@@ -199,7 +198,7 @@ Applications can intervene in hit test results through the following methods to 
 
    When a user performs a press action, the callback for [custom event interception](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md) bound to the component is triggered. You can dynamically adjust the **hitTestBehavior** attribute of the component based on the application status to affect the hit test process.
 
-## Enable/Disable Control
+## Disabling Control
 
 [Disabled](../reference/apis-arkui/arkui-ts/ts-universal-attributes-enable.md) components, including their children, do not initiate the hit test process; instead, they pass the events back to the parent to continue the hit test.
 

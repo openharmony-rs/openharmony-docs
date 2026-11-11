@@ -133,6 +133,59 @@ avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((de
 });
 ```
 
+## avSession.getSessionDescriptorsForAudioZone
+ 
+getSessionDescriptorsForAudioZone(userId: number): Promise\<Array\<Readonly\<AVSessionDescriptor>>> 
+ 
+获取userId用户所属音区的会话描述信息。使用Promise异步回调。<br> 音区指音频输出区域，不同音区可独立播放媒体。
+
+**起始版本：** 26.0.1
+ 
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+ 
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统接口：** 该接口为系统接口。 
+ 
+**参数：** 
+ 
+| 参数名        | 类型           | 必填 | 说明 |
+| ------------ | -------------- |------|------|
+| userId       | number            | 是   | 指定用户userId。 |
+ 
+**返回值：**
+ 
+| 类型                                                                        | 说明                                   |
+| --------------------------------------------------------------------------- | -------------------------------------- |
+| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Promise对象。返回对应音区的会话描述的只读对象。 |
+ 
+**错误码：** 
+ 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
+ 
+| 错误码ID | 错误信息 | 
+| -------- | ---------------------------------------- | 
+| 201 |  Permission verification failed. The application does not have the permission required to call the API.  | 
+| 202 |  Permission verification failed. A non-system application calls a system API.  |
+| 6700101  |  Session service is not running.  | 
+ 
+**示例：** 
+ 
+```ts
+avSession.getSessionDescriptorsForAudioZone(100).then((descriptors: avSession.AVSessionDescriptor[]) => {
+    console.info(`Succeeded in getting session descriptors for userId, length: ${descriptors.length}`);
+    if (descriptors.length > 0 ) {
+      console.info(`Succeeded in getting session descriptors for userId, isActive: ${descriptors[0].isActive}`);
+      console.info(`Succeeded in getting session descriptors for userId, type: ${descriptors[0].type}`);
+      console.info(`Succeeded in getting session descriptors for userId, sessionTag: ${descriptors[0].sessionTag}`);
+      console.info(`Succeeded in getting session descriptors for userId, sessionId: ${descriptors[0].sessionId}`);
+      console.info(`Succeeded in getting session descriptors for userId, bundleName: ${descriptors[0].elementName.bundleName}`);
+    }
+});
+```
+
 ## avSession.getHistoricalSessionDescriptors<sup>10+</sup>
 
 getHistoricalSessionDescriptors(maxSize?: number): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
@@ -526,6 +579,59 @@ import { avSession } from '@kit.AVSessionKit';
 
 avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
   console.info('Succeeded in starting AV playback.');
+});
+```
+
+## avSession.startAVPlaybackForAudioZone
+ 
+startAVPlaybackForAudioZone(userId: number, bundleName: string, assetId: string, info?: CommandInfo, extraInfo?: ExtraInfo): Promise\<void\>
+ 
+启动指定用户的媒体播放应用程序。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+ 
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+ 
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统接口：** 该接口为系统接口。
+ 
+**参数：**
+ 
+| 参数名        | 类型           | 必填 | 说明 |
+| ------------ | -------------- |------|------|
+| userId       | number            | 是   | 指定用户userId。 |
+| bundleName   | string         | 是   | 指定应用包名。   |
+| assetId      | string         | 是   | 指定媒体ID。    |
+| info         | [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)    | 否   | 发送到会话的命令信息。 |
+| extraInfo |  [ExtraInfo](arkts-apis-avsession-t.md#extrainfo18)    |  否  |  冷启动扩展信息。 |
+ 
+**返回值：**
+ 
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象。当播放成功，无返回结果，否则返回错误对象。 |
+ 
+**错误码：**
+ 
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+ 
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes:  1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| 6700101  | Session service is not running. |
+ 
+**示例：**
+ 
+```ts
+import { avSession } from '@kit.AVSessionKit';
+ 
+avSession.startAVPlaybackForAudioZone(100, "com.example.myapplication", "121278").then(() => {
+  console.info('Succeeded in starting AV playback for audio zone.');
 });
 ```
 
@@ -2549,12 +2655,13 @@ struct Index {
 
 | 名称       | 类型           | 只读 | 可选 | 说明                   |
 | ---------- | -------------- | ---- | ----|------------------ |
-| ipAddress | string | 否 | 是  | 播放设备的IP地址。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
-| providerId | number | 否    | 是 | 播放设备提供商。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
-| authenticationStatus<sup>11+</sup> | number | 否  | 是 | 播放设备是否可信。默认为0。0代表设备不可信，1代表设备可信。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
-| networkId<sup>13+</sup> | string | 否  |是 | 播放设备的网络ID。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
-|isLegacy<sup>13+</sup> | boolean | 否 | 是 | 表示当前设备是否为旧版设备。 true表示是，false表示不是。 <br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
-|mediumTypes<sup>13+</sup>| number | 否  | 是  |用于发现设备的介质类型。<br>1：蓝牙低功耗（BLE），用于蓝牙设备的发现和链接。 <br> 2：受限应用协议（COAP），用于局域网内的设备发现。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：**  SystemCapability.Multimedia.AVSession.AVCast        |
+| ipAddress | string | 否 | 是  | 播放设备的IP地址。<br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
+| providerId | number | 否    | 是 | 播放设备提供商。<br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
+| authenticationStatus<sup>11+</sup> | number | 否  | 是 | 播放设备是否可信。默认为0。0代表设备不可信，1代表设备可信。<br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
+| networkId<sup>13+</sup> | string | 否  |是 | 播放设备的网络ID。<br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
+|isLegacy<sup>13+</sup> | boolean | 否 | 是 | 表示当前设备是否为旧版设备。 true表示是，false表示不是。 <br/>**系统接口：** 此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
+|mediumTypes<sup>13+</sup>| number | 否  | 是  |用于发现设备的介质类型。<br>1：蓝牙低功耗（BLE），用于蓝牙设备的发现和连接。 <br> 2：受限应用协议（COAP），用于局域网内的设备发现。<br/>**系统接口：** 此接口为系统接口。<br> **系统能力：**  SystemCapability.Multimedia.AVSession.AVCast        |
+| brMacAddress | string | 否 | 是  | 分布式设备的蓝牙静态MAC地址。仅在分布式设备上报蓝牙MAC时可用。<br/>默认值为空。<br/>**需要权限：** `ohos.permission.USE_BLUETOOTH`<br>**系统接口：** 此接口为系统接口。<br> **系统能力：**  SystemCapability.Multimedia.AVSession.AVCast<br>**起始版本：** 26.1.0    |
 
 ## AVSessionDescriptor
 

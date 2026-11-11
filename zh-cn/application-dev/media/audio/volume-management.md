@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍播放音量管理能力，分别说明系统音量、应用音量与音频流音量的获取、调节与监听方法，并介绍音量面板调节、根据UID调节应用音量及监听活跃流变化等能力。"
+keywords: [系统音量, 应用音量, 音频流音量, 媒体音量, 通话音量, AudioVolumeManager, getVolumeByStream, setAppVolumePercentage, 音量面板, 音量键, 静音]
+doctype: guide
+status: active
+---
 # 播放音量管理
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -227,7 +234,7 @@ let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 
-let uid: number = 20010041; // 应用ID。
+let uid: number = 20010041; // 应用UID。
 let audioManager = audio.getAudioManager();
 let audioVolumeManager = audioManager.getVolumeManager();
 
@@ -319,3 +326,10 @@ audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback)
 audioVolumeManager.off('activeVolumeTypeChange');
 ```
 <!--DelEnd-->
+
+## 相关主题推荐
+
+- [音频播放开发概述](audio-playback-overview.md)
+- [使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)
+- [选择合适的播放流类型](using-right-streamusage-for-playback.md)
+- [音量变化回调类问题定位指导](audio-stream-volume-callback-debugging.md)

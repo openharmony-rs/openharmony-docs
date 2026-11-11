@@ -1,10 +1,11 @@
 # ringtonePlayer (Ringtone Player) (System API)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a6eec775118fc5e58546921f3fc2ac2f79d1ca47 translatedAt=2026-11-03T04:36:43.441Z pushedAt=2026-11-04T03:11:47.064Z nl=1 -->
 
 The ringtonePlayer module provides APIs for playing, configuring, and obtaining ringtones.
 
@@ -506,7 +507,7 @@ systemRingtonePlayer.on('audioInterrupt', async(interruptEvent: audio.InterruptE
 });
 ```
 
-### off('audioInterrupt') <sup>10+</sup>
+### off('audioInterrupt')
 
 off(type: 'audioInterrupt'): void
 

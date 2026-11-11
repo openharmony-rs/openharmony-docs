@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how NativeWindow requests, fills, and submits buffers as a graphics queue producer, including buffer attribute configuration and memory mapping for C/C++ graphics applications."
+keywords: [NativeWindow, producer, graphics queue, buffer request, mmap, memory mapping, XComponent, graphics rendering, camera preview]
+doctype: guide
+status: active
+---
+
 # NativeWindow Development (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
@@ -5,7 +13,8 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=e5b7b841c52892ad8a5c0485c944bdcf557ee966 translatedAt=2026-10-19T01:28:58.810Z pushedAt=2026-10-19T10:18:46.131Z -->
+<!-- md-trans-meta sourceCommit=f6a29bb7b5e04ec485b4b13e6a2eda953b1edd57 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 ## Overview
 
@@ -55,7 +64,7 @@ libnative_window.so
         <!-- @[create_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/ets/pages/Index.ets) -->
         
         ``` TypeScript
-        XComponent({ id: 'xcomponentId', type: 'texture', libraryname: 'nativerender' })
+        XComponent({ id: 'xcomponentId', type: XComponentType.TEXTURE, libraryname: 'nativerender' })
           .margin({ bottom: 26 })
           .onLoad((nativeWindowContext) => {
             this.nativeWindowContext = nativeWindowContext as NativeWindowContext;

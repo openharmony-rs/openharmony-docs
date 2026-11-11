@@ -6,6 +6,7 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=2a6c15d2a447a4992ae289de55299bb9d89f4c4a translatedAt=2026-11-09T06:22:09.837Z pushedAt=2026-11-09T07:53:34.344Z nl=1 -->
 
 This module provides the capabilities to access application resources and system resources. It allows applications to obtain the best-matching application or system resources based on the current [configuration](#configuration), supporting internationalization resource matching and multi-device adaptation. For details about the matching rules, see [Matching Resources](../../quick-start/resource-categories-and-access.md#matching-resources).
 
@@ -54,7 +55,7 @@ Obtains the **ResourceManager** object of the current application. This API uses
 
 **Model restriction**: This API can be used only in the FA model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                      | Mandatory  | Description                           |
 | -------- | ---------------------------------------- | ---- | ----------------------------- |
@@ -97,7 +98,7 @@ Obtains the **ResourceManager** object of the specified application. This API us
 
 **Model restriction**: This API can be used only in the FA model.
 
-**Parameters**
+**Parameters** 
 
 | Name       | Type                                      | Mandatory  | Description                           |
 | ---------- | ---------------------------------------- | ---- | ----------------------------- |
@@ -182,7 +183,7 @@ Obtains the **ResourceManager** object of the specified application. This API us
 
 **Model restriction**: This API can be used only in the FA model.
 
-**Parameters**
+**Parameters** 
 
 | Name       | Type    | Mandatory  | Description           |
 | ---------- | ------ | ---- | ------------- |
@@ -292,8 +293,8 @@ Enumerates the device types.
 | DEVICE_TYPE_TABLET   | 0x01 | Tablet  |
 | DEVICE_TYPE_CAR      | 0x02 | Head unit  |
 | DEVICE_TYPE_TV       | 0x04 | Smart TV |
-| DEVICE_TYPE_WEARABLE | 0x06 | Wearable  |
-| DEVICE_TYPE_2IN1<sup>11+</sup>     | 0x07 | PC/2-in-1 device  |
+| DEVICE_TYPE_WEARABLE | 0x06 | Wearable   |
+| DEVICE_TYPE_2IN1<sup>11+</sup>     | 0x07 | 2-in-1 device.   |
 <!--RP1End-->
 
 ## ScreenDensity
@@ -414,7 +415,7 @@ Obtains the string corresponding to the specified resource ID. This API returns 
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -479,7 +480,7 @@ Obtains the string corresponding to the specified resource ID, and replaces the 
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -546,7 +547,7 @@ Obtains the string corresponding to the specified resource name. This API return
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
@@ -611,7 +612,7 @@ Obtains the string corresponding to the specified resource name, and replaces th
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
@@ -678,7 +679,7 @@ Obtains the string corresponding to the specified resource ID. This API uses an 
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                         | Mandatory  | Description             |
 | -------- | --------------------------- | ---- | --------------- |
@@ -696,7 +697,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.         |
 
-**Example (stage)**
+**Example (stage)** 
 ```json5
 // Resource file path: src/main/resources/base/element/string.json
 {
@@ -737,7 +738,7 @@ Obtains the string corresponding to the specified resource ID. This API uses a p
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -920,7 +921,7 @@ Obtains the string array corresponding to the specified resource ID. This API re
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -989,7 +990,7 @@ Obtains the string array corresponding to the specified resource name. This API 
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -1058,7 +1059,7 @@ Obtains the string array corresponding to the specified resource ID. This API us
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                      | Mandatory  | Description               |
 | -------- | ---------------------------------------- | ---- | ----------------- |
@@ -1122,7 +1123,7 @@ Obtains the string array corresponding to the specified resource ID. This API us
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -1254,7 +1255,7 @@ Obtains the string array corresponding to the specified resource name. This API 
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
@@ -1328,7 +1329,7 @@ Obtains the [plural](../../internationalization/l10n-singular-plural.md) string 
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                   | Mandatory| Description                                                        |
 | ------- | ----------------------- | ---- | ------------------------------------------------------------ |
@@ -1412,7 +1413,7 @@ Obtains the [plural](../../internationalization/l10n-singular-plural.md) string 
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                   | Mandatory| Description                                                        |
 | ------- | ----------------------- | ---- | ------------------------------------------------------------ |
@@ -1496,7 +1497,7 @@ Obtains the [plural](../../internationalization/l10n-singular-plural.md) string 
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                   | Mandatory| Description                                                        |
 | ------- | ----------------------- | ---- | ------------------------------------------------------------ |
@@ -1580,7 +1581,7 @@ Obtains the [plural](../../internationalization/l10n-singular-plural.md) string 
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                   | Mandatory| Description                                                        |
 | ------- | ----------------------- | ---- | ------------------------------------------------------------ |
@@ -1780,7 +1781,7 @@ Obtains the content of the media file corresponding to the specified resource ID
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                             | Mandatory  | Description                |
 | -------- | ------------------------------- | ---- | ------------------ |
@@ -1833,7 +1834,7 @@ Obtains the media file content for the specified screen density based on the spe
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                             | Mandatory  | Description                |
 | -------- | ------------------------------- | ---- | ------------------ |
@@ -1886,7 +1887,7 @@ Obtains the content of the media file corresponding to the specified resource ID
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -1941,7 +1942,7 @@ Obtains the media file content for the specified screen density based on the spe
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -1997,7 +1998,7 @@ Obtains the content of the media file corresponding to the specified resource na
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                             | Mandatory  | Description                |
 | -------- | ------------------------------- | ---- | ------------------ |
@@ -2049,7 +2050,7 @@ Obtains the media file content for the specified screen density based on the spe
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                             | Mandatory  | Description                |
 | -------- | ------------------------------- | ---- | ------------------ |
@@ -2102,7 +2103,7 @@ Obtains the content of the media file corresponding to the specified resource na
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
@@ -2157,7 +2158,7 @@ Obtains the media file content for the specified screen density based on the spe
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
@@ -2213,7 +2214,7 @@ Obtains an image's Base64 encoding for the default or specified screen density b
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -2274,7 +2275,7 @@ Obtains an image's Base64 encoding for the default or specified screen density b
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -2387,7 +2388,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                         | Mandatory  | Description                      |
 | -------- | --------------------------- | ---- | ------------------------ |
@@ -2440,7 +2441,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -2495,7 +2496,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -2551,7 +2552,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                         | Mandatory  | Description                      |
 | -------- | --------------------------- | ---- | ------------------------ |
@@ -2603,7 +2604,7 @@ Obtains the Base64 encoding of the image resource for the specified screen densi
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                         | Mandatory  | Description                      |
 | -------- | --------------------------- | ---- | ------------------------ |
@@ -2656,7 +2657,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
@@ -2711,7 +2712,7 @@ Obtains the Base64 encoding of the image resource for the specified screen densi
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
@@ -2907,7 +2908,7 @@ Obtains a Boolean value based on the specified resource ID. This API returns the
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -2972,7 +2973,7 @@ Obtains a Boolean value based on the specified resource name. This API returns t
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
@@ -3037,7 +3038,7 @@ Obtains an integer or float number based on the specified resource ID. This API 
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -3129,7 +3130,7 @@ Obtains an integer or float number based on the specified resource name. This AP
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type    | Mandatory  | Description  |
 | ------- | ------ | ---- | ---- |
@@ -3648,7 +3649,7 @@ Obtain the content of a rawfile in the **resources/rawfile** directory. This API
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                             | Mandatory  | Description                     |
 | -------- | ------------------------------- | ---- | ----------------------- |
@@ -3699,7 +3700,7 @@ Obtain the content of a rawfile in the **resources/rawfile** directory. This API
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
@@ -3790,7 +3791,7 @@ export default class EntryAbility extends UIAbility {
             // Replace "" with the actual file path in the rawfile directory.
             let fileList: Array<string> = this.context.resourceManager.getRawFileListSync("");
             console.info(`getRawFileListSync, result: ${JSON.stringify(fileList)}`);
-            // Print the output result: getRawFileListSync, result: ["test.txt"]
+            // Print the output result: getRawFileListSync, result: ["test.txt"] 
         } catch (error) {
             let code = (error as BusinessError).code;
             let message = (error as BusinessError).message;
@@ -3814,7 +3815,7 @@ Obtains the list of directories and files in the specified subdirectory under **
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                             | Mandatory  | Description                     |
 | -------- | ------------------------------- | ---- | ----------------------- |
@@ -3865,7 +3866,7 @@ Obtains the list of directories and files in the specified subdirectory under **
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
@@ -3915,7 +3916,7 @@ Obtains the file descriptor (fd) of the HAP where the rawfile file in the resour
 
 > **NOTE**
 >
-> To prevent resource leakage, call [closeRawFdSync](#closerawfdsync10) or [closeRawFd](#closerawfd9) to close the fd after use.
+> After the file descriptor (FD) is used, call [closeRawFdSync](#closerawfdsync10) or [closeRawFd](#closerawfd9) to close the FD to avoid resource leaks.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3969,13 +3970,13 @@ Obtains the file descriptor (fd) of the HAP where a specific rawfile in the **re
 
 > **NOTE**
 >
-> To prevent resource leakage, call [closeRawFdSync](#closerawfdsync10) or [closeRawFd](#closerawfd9) to close the fd after use.
+> After the FD is used, call [closeRawFdSync](#closerawfdsync10) or [closeRawFd](#closerawfd9) to close the FD to avoid resource leaks.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                      | Mandatory  | Description                              |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
@@ -4027,13 +4028,13 @@ Obtains the file descriptor (fd) of the HAP where a specific rawfile in the **re
 
 > **NOTE**
 >
-> To prevent resource leakage, call [closeRawFdSync](#closerawfdsync10) or [closeRawFd](#closerawfd9) to close the fd after use.
+> After the FD is used, call [closeRawFdSync](#closerawfdsync10) or [closeRawFd](#closerawfd9) to close the FD to avoid resource leaks.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
@@ -4138,7 +4139,7 @@ Closes the file descriptor (fd) of the HAP where a specific rawfile in the **res
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                       | Mandatory  | Description         |
 | -------- | ------------------------- | ---- | ----------- |
@@ -4191,7 +4192,7 @@ Closes the file descriptor (fd) of the HAP where a specific rawfile in the **res
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
@@ -4277,7 +4278,7 @@ Obtains the configuration of a device. This API uses an asynchronous callback to
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                      | Mandatory  | Description                       |
 | -------- | ---------------------------------------- | ---- | ------------------------- |
@@ -4388,7 +4389,7 @@ Obtains the device capabilities of a device. This API uses an asynchronous callb
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                      | Mandatory  | Description                          |
 | -------- | ---------------------------------------- | ---- | ---------------------------- |
@@ -4946,7 +4947,7 @@ Obtains the resource name corresponding to the specified resource ID.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -5033,7 +5034,7 @@ Obtains the string corresponding to the specified resource ID. This API uses an 
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                         | Mandatory  | Description             |
 | -------- | --------------------------- | ---- | --------------- |
@@ -5066,7 +5067,7 @@ Obtains the string corresponding to the specified resource ID. This API uses a p
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -5106,7 +5107,7 @@ Obtains a string based on the specified resource object. This API returns the re
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
@@ -5177,7 +5178,7 @@ Obtains the string corresponding to the specified resource object, and replaces 
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
@@ -5249,7 +5250,7 @@ Obtains the string corresponding to the specified resource object. This API uses
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                         | Mandatory  | Description             |
 | -------- | --------------------------- | ---- | --------------- |
@@ -5369,7 +5370,7 @@ Obtains the string array corresponding to the specified resource ID. This API us
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                      | Mandatory  | Description               |
 | -------- | ---------------------------------------- | ---- | ----------------- |
@@ -5402,7 +5403,7 @@ Obtains the string array corresponding to the specified resource ID. This API us
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -5443,7 +5444,7 @@ Obtains a string array based on the specified resource object. This API returns 
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -5517,7 +5518,7 @@ Obtains the string array corresponding to the specified resource object. This AP
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                      | Mandatory  | Description               |
 | -------- | ---------------------------------------- | ---- | ----------------- |
@@ -5586,7 +5587,7 @@ Obtains the string array corresponding to the specified resource object. This AP
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
@@ -5656,7 +5657,7 @@ Obtains the content of the media file corresponding to the specified resource ID
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                             | Mandatory  | Description                |
 | -------- | ------------------------------- | ---- | ------------------ |
@@ -5688,7 +5689,7 @@ Obtains the content of the media file corresponding to the specified resource ID
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -5796,7 +5797,7 @@ Obtains the content of the media file corresponding to the specified resource ob
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                             | Mandatory  | Description                |
 | -------- | ------------------------------- | ---- | ------------------ |
@@ -5854,7 +5855,7 @@ Obtains the media file content for the specified screen density based on the spe
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                             | Mandatory  | Description                |
 | -------- | ------------------------------- | ---- | ------------------ |
@@ -5913,7 +5914,7 @@ Obtains the content of the media file corresponding to the specified resource ob
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
@@ -5974,7 +5975,7 @@ Obtains the media file content for the specified screen density based on the spe
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
@@ -6032,7 +6033,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                         | Mandatory  | Description                      |
 | -------- | --------------------------- | ---- | ------------------------ |
@@ -6065,7 +6066,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -6105,7 +6106,7 @@ Obtains an image's Base64 encoding for the default or specified screen density b
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -6287,7 +6288,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
@@ -6348,7 +6349,7 @@ Obtains the Base64 encoding of the image resource corresponding to the specified
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
@@ -6485,7 +6486,7 @@ Obtains the [plural](../../internationalization/l10n-singular-plural.md) string 
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                   | Mandatory| Description                                                        |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
@@ -6572,7 +6573,7 @@ Obtains the [plural](../../internationalization/l10n-singular-plural.md) string 
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                   | Mandatory| Description                                                        |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
@@ -6633,7 +6634,7 @@ try {
   // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is other is obtained.
   let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync(resource, 2.1, 2, "basket", 0.6);
   console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
-  // Print the output result: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
+  // Print the output result: getDoublePluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
 } catch (error) {
   let code = (error as BusinessError).code;
   let message = (error as BusinessError).message;
@@ -6657,7 +6658,7 @@ Obtains singular/plural strings based on the specified resource ID and quantity.
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -6736,7 +6737,7 @@ Obtains singular/plural strings based on the specified quantity and resource obj
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
@@ -6819,7 +6820,7 @@ Obtains singular/plural strings based on the specified quantity and resource nam
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
@@ -6896,7 +6897,7 @@ Obtains the plural string based on the specified resource ID and the specified r
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                       | Mandatory| Description                                                        |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
@@ -6968,7 +6969,7 @@ Obtains the plural string based on the specified resource ID and the specified r
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -7046,7 +7047,7 @@ Obtains the plural string based on the specified resource information and the sp
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                       | Mandatory| Description                                                        |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
@@ -7126,7 +7127,7 @@ Obtains the plural string based on the specified resource information and the sp
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
@@ -7208,7 +7209,7 @@ Obtains the plural string based on the specified resource name and the specified
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                       | Mandatory| Description                                                        |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
@@ -7279,7 +7280,7 @@ Obtains the plural string based on the specified resource name and the specified
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
@@ -7353,7 +7354,7 @@ Obtains the plural string based on the specified resource ID and the specified r
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Mandatory  | Description   |
 | ----- | ------ | ---- | ----- |
@@ -7395,7 +7396,7 @@ Obtains the plural string based on the specified resource ID and the specified r
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                         | Mandatory  | Description                             |
 | -------- | --------------------------- | ---- | ------------------------------- |
@@ -7434,7 +7435,7 @@ Obtains a Boolean value based on the specified resource object. This API returns
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
@@ -7504,7 +7505,7 @@ Obtains an integer or float number based on the specified resource object. This 
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                    | Mandatory  | Description  |
 | -------- | ---------------------- | ---- | ---- |
@@ -7835,7 +7836,7 @@ Obtain the content of a rawfile in the **resources/rawfile** directory. This API
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                             | Mandatory  | Description                     |
 | -------- | ------------------------------- | ---- | ----------------------- |
@@ -7870,7 +7871,7 @@ Obtain the content of a rawfile in the **resources/rawfile** directory. This API
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
@@ -7908,7 +7909,7 @@ Obtains the file descriptor (fd) of a specific rawfile in the **resources/rawfil
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                      | Mandatory  | Description                              |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
@@ -7944,7 +7945,7 @@ Obtains the file descriptor (fd) of a specific rawfile in the **resources/rawfil
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
@@ -7983,7 +7984,7 @@ Closes the file descriptor (fd) of a specific rawfile in the **resources/rawfile
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                       | Mandatory  | Description         |
 | -------- | ------------------------- | ---- | ----------- |
@@ -8015,7 +8016,7 @@ Closes the file descriptor (fd) of a specific rawfile in the **resources/rawfile
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
@@ -8103,7 +8104,7 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                        |
 | ---- | ------------------------------------------------------------ | ---- | ---------------------------- |
@@ -8250,4 +8251,3 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
     ]
   }
   ```
-<!--no_check-->

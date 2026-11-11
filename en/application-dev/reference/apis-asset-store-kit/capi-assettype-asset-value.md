@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=878a214020b090430fbfc011fb9e9d5b26ec4594 translatedAt=2026-11-06T11:54:19.021Z pushedAt=2026-11-09T11:48:07.086Z nl=1 -->
 
 ```c
 typedef union {...} Asset_Value
@@ -13,7 +14,7 @@ typedef union {...} Asset_Value
 
 ## Overview
 
-Defines the value of the asset attribute.
+The value (content) of a key asset attribute.
 
 **Since**: 11
 
@@ -27,6 +28,8 @@ Defines the value of the asset attribute.
 
 | Name| Description|
 | -- | -- |
-| bool boolean | Asset attribute value of the Boolean type.|
-| uint32_t u32 | Asset attribute value of the uint32 type.|
-| [Asset_Blob](capi-assettype-asset-blob.md) blob | Asset attribute value in an array of bytes.|
+| bool boolean | This field is used to pass a bool-type attribute value. |
+| uint32_t u32 | This field is used to pass a uint32-type attribute value. |
+| [Asset_Blob](capi-assettype-asset-blob.md) blob | This field is used to pass a bytes-type attribute value. |
+
+

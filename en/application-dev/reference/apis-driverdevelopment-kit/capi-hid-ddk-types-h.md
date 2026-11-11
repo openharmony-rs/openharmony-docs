@@ -171,7 +171,7 @@ Enumerates the key codes, including the key codes and event codes of input devic
 | HID_KEY_7 = 8 | Key 7|
 | HID_KEY_8 = 9 | Key 8|
 | HID_KEY_9 = 10 | Key 9|
-| HID_KEY_GRAVE = 41 | Key `.|
+| HID_KEY_GRAVE = 41 | Key `|
 | HID_KEY_MINUS = 12 | Key -|
 | HID_KEY_EQUALS = 13 | Key =|
 | HID_KEY_BACKSPACE = 14 | Key Backspace|
@@ -202,7 +202,7 @@ Enumerates the key codes, including the key codes and event codes of input devic
 | HID_KEY_NUMPAD_SUBTRACT = 74 | Key - on the numeric keyboard|
 | HID_KEY_NUMPAD_ADD = 78 | Key + on the numeric keyboard|
 | HID_KEY_NUMPAD_DOT = 83 | Key . on the numeric keyboard|
-| HID_KEY_SYSRQ = 99 | SYSRQ key|
+| HID_KEY_SYSRQ = 99 | Key Print Screen|
 | HID_KEY_DELETE = 111 | Delete key|
 | HID_KEY_MUTE = 113 | Mute key|
 | HID_KEY_VOLUME_DOWN = 114 | Volume Down key|
@@ -310,7 +310,7 @@ Enumerates the relative coordinates.
 | HID_REL_DIAL = 0x07 | Knob or scale, indicating the rotation direction and distance of the knob or scale plate. It is used to adjust the volume, brightness, or other adjustable parameters.|
 | HID_REL_WHEEL = 0x08 | Vertical scroll wheel, indicating the scroll direction and distance of the mouse vertical scroll wheel. It is used for vertical scrolling operations.|
 | HID_REL_MISC = 0x09 | Miscellaneous relative coordinate events, which are used to identify miscellaneous relative coordinate events that do not fit into the preceding categories.|
-| HID_REL_RESERVED = 0x0a | Reserved|
+| HID_REL_RESERVED = 0x0a | Reserved. |
 | HID_REL_WHEEL_HI_RES = 0x0b | High-resolution scroll wheel, indicating the scroll direction and distance of the mouse high-resolution scroll wheel. It provides higher resolution and precision than a common scroll wheel.|
 | HID_REL_HWHEEL_HI_RES = 0x0c | High-resolution horizontal scroll wheel, indicating the scroll direction and distance of the mouse high-resolution horizontal scroll wheel. It provides higher resolution and precision than a common horizontal scroll wheel.|
 
@@ -331,7 +331,7 @@ Enumerates miscellaneous input events.
 | HID_MSC_SERIAL = 0x00 | Serial number.|
 | HID_MSC_PULSE_LED = 0x01 | Pulse.|
 | HID_MSC_GESTURE = 0x02 | Gesture.|
-| HID_MSC_RAW = 0x03 | Original events.|
+| HID_MSC_RAW = 0x03 | Raw events.|
 | HID_MSC_SCAN = 0x04 | Scanning.|
 | HID_MSC_TIMESTAMP = 0x05 | Timestamp.|
 

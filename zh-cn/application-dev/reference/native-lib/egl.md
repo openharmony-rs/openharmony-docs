@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @samhu1989-->
 <!--Designer: @shi-yang-2012-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 [EGL](https://registry.khronos.org/EGL/sdk/docs/man/) 是Khronos官方提供的渲染API (如[OpenGLES](https://registry.khronos.org/OpenGL-Refpages/es3/) 或 OpenVG) 与底层窗口系统之间的接口。OpenHarmony 现已支持 EGL。
 
@@ -32,7 +32,7 @@ EGL_EGLEXT_PROTOTYPES
 
 **eglGetNativeClientBufferANDROID**
 
-从API version 23开始，支持使用EGL扩展接口eglGetNativeClientBufferANDROID，将[OH_NativeBuffer](../apis-arkgraphics2d/capi-native-buffer-h.md)转换为EGLClientBuffer类型，以实现纹理的绑定并进行GPU采样。具体使用方法请参考如下示例代码：
+从API version 23开始，支持使用EGL扩展接口eglGetNativeClientBufferANDROID，将[OH_NativeBuffer](../apis-arkgraphics2d/capi-oh-nativebuffer.md)转换为EGLClientBuffer类型，以实现纹理的绑定并进行GPU采样。具体使用方法请参考如下示例代码：
 
 ```c++
 // 在EGLCore成员变量中已经定义好了如下变量

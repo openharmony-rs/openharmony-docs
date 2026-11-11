@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "概述ArkTS多线程并发能力：介绍耗时、长时、常驻三类业务场景，对比内存共享模型与Actor并发模型的差异，说明TaskPool和Worker均基于Actor模型实现，并给出并发注意事项。"
+keywords: [多线程并发, Actor模型, 内存共享模型, 消息传递, TaskPool, Worker, 并发模型对比, 并发注意事项]
+doctype: guide
+status: active
+---
+
 # 多线程并发概述
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -262,7 +270,7 @@ ArkTS提供了TaskPool和Worker两种并发能力供开发者选择，各自的�
 
 - 数据传递需支持序列化/反序列化
 
-  并发任务间传递数据时，对象必须是可序列化的（如基本类型、普通对象等），或者可共享的（Sendable对象），不可传递函数、循环引用、特殊对象（如Promise、Error）等。已完成（fulfilled或rejected）状态的 Promise可以被传递，因为其结果是可序列化的。
+  并发任务间传递数据时，对象必须是可序列化的（如基本类型、普通对象等），或者可共享的（Sendable对象），不可传递函数、循环引用、特殊对象（如Promise、Error）等。已完成（fulfilled或rejected）状态的Promise可以被传递，因为其结果是可序列化的。
 
 - 合理控制并发粒度
 

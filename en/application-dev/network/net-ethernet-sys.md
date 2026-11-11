@@ -1,17 +1,18 @@
-# Ethernet Connection Management (For System Applications Only)
+# Ethernet Connection Management (for System Applications Only)
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=c33290f86c4a896f90eff1ee86d78748f13424d1 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T06:41:24.028Z nl=1 -->
 
 ## Overview
 
-The Ethernet Connection module allows a device to access the Internet through a network cable. After a device is connected to the Ethernet through a network cable, the device can obtain a series of network attributes, such as the dynamically allocated IP address, subnet mask, gateway, and DNS. You can manually configure and obtain the network attributes of the device in static mode.
+The Ethernet connection function provides the capability for a device to access the Internet through a hardware interface by inserting a network cable. After a device is connected to the network cable, it can obtain a series of dynamically assigned network attributes, such as the IP address, subnet mask, gateway, and DNS. In static mode, you can manually configure and obtain the network attributes of the device.
 
 > **NOTE**
-> To maximize the application running efficiency, most API calls are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-ethernet-sys.md).
+> To maximize the app running efficiency, most API calls are asynchronous. For asynchronous API calls, both callback and promise modes are provided. The following examples use the promise mode. For details about more modes, see [@ohos.net.ethernet (Ethernet Connection Management)](../reference/apis-network-kit/js-apis-net-ethernet-sys.md).
 
 ## Constraint
 
@@ -22,8 +23,8 @@ The Ethernet Connection module allows a device to access the Internet through a 
 
 Typical application scenarios of Ethernet connection are as follows:
 
-- Dynamically assigning a series of network attributes, such as the IP address, subnet mask, gateway, and DNS in DHCP mode to enable network access
-- Configuring a series of network attributes, such as the IP address, subnet mask, gateway, and DNS, in static mode to enable network access.
+- In DHCP mode, dynamically assigning a series of network attributes, such as the IP address, subnet mask, gateway, and DNS, to enable network access.
+- In static mode, statically configuring a series of network attributes, such as the IP address, subnet mask, gateway, and DNS, to enable network access.
 
 The following describes the development procedure specific to each application scenario.
 
@@ -31,14 +32,14 @@ The following describes the development procedure specific to each application s
 
 For the complete list of APIs and example code, see [Ethernet Connection](../reference/apis-network-kit/js-apis-net-ethernet-sys.md).
 
-| Type| API| Description|
-| ---- | ---- | ---- |
-| setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallback\<void>): void | Configures the network attributes of the specified Ethernet network. This API uses an asynchronous callback to return the result.| Sets the network interface configuration.|
-| getIfaceConfig(iface: string, callback: AsyncCallback\<InterfaceConfiguration>): void | Obtains the network attributes of the specified Ethernet network. This API uses an asynchronous callback to return the result.| Obtains the network interface configuration.|
-| isIfaceActive(iface: string, callback: AsyncCallback\<number>): void | Checks whether the specified network port is active. This API uses an asynchronous callback to return the result.| Checks whether the specified network port is active.|
-| getAllActiveIfaces(callback: AsyncCallback\<Array\<string>>): void | Obtains the list of all active network ports. This API uses an asynchronous callback to return the result.| Obtains the list of all active network ports.|
-| on(type: 'interfaceStateChange', callback: Callback\<{ iface: string, active: boolean }\>): void | Subscribes to interface state change events.| Subscribes to NIC hot swap events.|
-| off(type: 'interfaceStateChange', callback?: Callback\<{ iface: string, active: boolean }\>): void | Unsubscribes from interface state change events.| Unsubscribes from NIC hot swap events.|
+| Name | Description |
+| ---- | ---- |
+| setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallback\<void>): void | Configures network attributes of the specified Ethernet interface. **iface** is the interface name, **ic** contains the configuration, and the result is returned through **callback**. |
+| getIfaceConfig(iface: string, callback: AsyncCallback\<InterfaceConfiguration>): void | Obtains network attributes of the specified Ethernet interface. **iface** is the interface name, and the result is returned through **callback**. |
+| isIfaceActive(iface: string, callback: AsyncCallback\<number>): void | Checks whether the specified network interface is active. **iface** is the interface name; if omitted, checks whether any interface is active. The result is returned through **callback**. |
+| getAllActiveIfaces(callback: AsyncCallback\<Array\<string>>): void | Obtains all active network interfaces and returns the result through **callback**. |
+| on(type: 'interfaceStateChange', callback: Callback\<{ iface: string, active: boolean }\>): void | Registers a network interface state change listener. |
+| off(type: 'interfaceStateChange', callback?: Callback\<{ iface: string, active: boolean }\>): void | Unregisters a network interface state change listener. |
 
 ## Ethernet Connection – DHCP Mode
 

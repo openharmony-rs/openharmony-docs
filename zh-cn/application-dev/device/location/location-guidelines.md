@@ -61,7 +61,7 @@
       try {
           let location = geoLocationManager.getLastLocation();
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
@@ -91,7 +91,7 @@
             console.error('promise, getCurrentLocation: error=' + JSON.stringify(error));
          });
        } catch (err) {
-         console.error("errCode:" + JSON.stringify(err));
+         console.error("errCode:" + err.code + ", message:"  + err.message);
        }
       ```
    通过本模块获取到的坐标均为WGS-84坐标系坐标点，如需使用其它坐标系类型的坐标点，请进行坐标系转换后再使用。
@@ -119,11 +119,15 @@
    try {
       geoLocationManager.on('locationChange', request, locationCallback);
    } catch (err) {
-      console.error("errCode:" + JSON.stringify(err));
+      console.error("errCode:" + err.code + ", message:"  + err.message);
    }
    ```
    如果不主动结束定位可能导致设备功耗高，耗电快；建议在不需要获取定位信息时及时结束定位。
    ```ts
    // 该回调函数需要与on接口传入的回调函数保持一致。
-   geoLocationManager.off('locationChange', locationCallback);
+   try {
+      geoLocationManager.off('locationChange', locationCallback);
+   } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+   }
    ```

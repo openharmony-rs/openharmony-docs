@@ -204,6 +204,9 @@
       - [布局约束](arkui-ts/ts-universal-attributes-layout-constraints.md)
       - [Flex布局](arkui-ts/ts-universal-attributes-flex-layout.md)
       - [安全区域](arkui-ts/ts-universal-attributes-expand-safe-area.md)
+      <!--Del-->
+      - [安全区域 (系统接口)](arkui-ts/ts-universal-attributes-expand-safe-area-sys.md)
+      <!--DelEnd-->
       - [组件级像素取整](arkui-ts/ts-universal-attributes-pixelRoundForComponent.md)
       - [页面级像素取整](arkui-ts/ts-universal-attributes-pixelRoundForPage.md)
       - [边框设置](arkui-ts/ts-universal-attributes-border.md)
@@ -594,6 +597,9 @@
     - [advanced.Counter](arkui-ts/ohos-arkui-advanced-Counter.md)
     - [CounterV2](arkui-ts/ohos-arkui-advanced-CounterV2.md)
     - [DatePickerComponent](arkui-ts/ohos-arkui-advanced-DatePickerComponent.md)
+    <!--Del-->
+    - [ToolBarV2 (系统接口)](arkui-ts/ohos-arkui-advanced-ToolBarV2-sys.md)
+    <!--DelEnd-->
   - 状态管理与渲染控制<!--state-management-and-rendering-control-->
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
@@ -833,7 +839,7 @@
     - [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md)
     - [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)
     - [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)
-    - [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
+    - [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
     - [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)
     - [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)
     - [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)

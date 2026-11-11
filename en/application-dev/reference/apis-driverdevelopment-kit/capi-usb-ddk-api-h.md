@@ -40,8 +40,8 @@ Declares the USB DDK APIs used by the host to access the device. These APIs prov
 | [int32_t OH_Usb_SendControlWriteRequest(uint64_t interfaceHandle, const struct UsbControlRequestSetup *setup, uint32_t timeout, const uint8_t *data, uint32_t dataLen)](#oh_usb_sendcontrolwriterequest) | Sends a control write transfer request. This API works in a synchronous manner.|
 | [int32_t OH_Usb_SendPipeRequest(const struct UsbRequestPipe *pipe, UsbDeviceMemMap *devMmap)](#oh_usb_sendpiperequest) | Sends a pipe request. This API works in a synchronous manner. It applies to interrupt transfer and bulk transfer.|
 | [int32_t OH_Usb_SendPipeRequestWithAshmem(const struct UsbRequestPipe *pipe, DDK_Ashmem *ashmem)](#oh_usb_sendpiperequestwithashmem) | Sends a pipe request based on the shared memory. This API returns the result synchronously. It applies to interrupt transfer and bulk transfer.|
-| [int32_t OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMap **devMmap)](#oh_usb_createdevicememmap) | Creates a buffer. To prevent memory leak, use [OH_Usb_DestroyDeviceMemMap](#oh_usb_destroydevicememmap) to destroy a buffer after use.|
-| [void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)](#oh_usb_destroydevicememmap) | Destroys a buffer. To prevent memory leak, use this API to destroy a buffer after use.|
+| [int32_t OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMap **devMmap)](#oh_usb_createdevicememmap) | Creates a buffer. To prevent resource leaks, use [OH_Usb_DestroyDeviceMemMap](#oh_usb_destroydevicememmap) to destroy a buffer after use.|
+| [void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)](#oh_usb_destroydevicememmap) | Destroys a buffer. To prevent resource leaks, use this API to destroy a buffer after use.|
 | [int32_t OH_Usb_GetDevices(struct Usb_DeviceArray *devices)](#oh_usb_getdevices) | Obtains the USB device ID list. Ensure that the pointer parameters passed in are valid. To avoid excessive memory usage, the size of the requested device ID array is recommended not to exceed 128. After using the struct, release the memory of its members; otherwise, resource leaks may occur. Besides, make sure that the obtained USB device ID has been filtered by **vid** in the driver configuration information.|
 | [int32_t OH_Usb_ControlTransfer(uint64_t deviceID, const struct UsbControlRequestSetup *setupPacket, uint8_t *data, uint32_t timeout)](#oh_usb_controltransfer) | Performs USB control transfer. This API returns the result synchronously.|
 | [int32_t OH_Usb_GetNonRootHubs(struct Usb_NonRootHubArray *nonRootHub)](#oh_usb_getnonroothubs) | Queries and returns the non-root hub list. Ensure that the input pointer is valid. It is recommended that the number of non-root hub IDs do not exceed 128 to prevent excessive memory usage. After using the struct, release the memory of its members; otherwise, resource leaks may occur.|
@@ -418,7 +418,7 @@ int32_t OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMa
 
 **Description**
 
-Creates a buffer. To prevent memory leak, use [OH_Usb_DestroyDeviceMemMap](#oh_usb_destroydevicememmap) to destroy a buffer after use.
+Creates a buffer. To prevent resource leaks, use [OH_Usb_DestroyDeviceMemMap](#oh_usb_destroydevicememmap) to destroy a buffer after use.
 
 **Required permissions**: ohos.permission.ACCESS_DDK_USB
 
@@ -447,7 +447,7 @@ void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)
 
 **Description**
 
-Destroys a buffer. To prevent memory leak, use this API to destroy a buffer after use.
+Destroys a buffer. To prevent resource leaks, use this API to destroy a buffer after use.
 
 **Required permissions**: ohos.permission.ACCESS_DDK_USB
 
@@ -479,7 +479,7 @@ Obtains the USB device ID list. Ensure that the pointer parameters passed in are
 
 | Name| Description|
 | -- | -- |
-| [struct Usb_DeviceArray](capi-usbddk-usb-devicearray.md) *devices | Device memory address, which is used to store the obtained device ID list and quantity. After using it, release the memory of its members; otherwise, resource leak may occur.|
+| [struct Usb_DeviceArray](capi-usbddk-usb-devicearray.md) *devices | Device memory address, which is used to store the obtained device ID list and quantity. After using it, release the memory of its members; otherwise, resource leaks may occur.|
 
 **Returns**
 
@@ -536,7 +536,7 @@ Queries and returns the non-root hub list. Ensure that the input pointer is vali
 
 | Name| Description|
 | -- | -- |
-| [struct Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) *nonRootHub | Requested non-root hub memory address, which is used to store the queried non-root hub ID list and quantity. After using it, release the memory of its members; otherwise, resource leak may occur.|
+| [struct Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) *nonRootHub | Requested non-root hub memory address, which is used to store the queried non-root hub ID list and quantity. After using it, release the memory of its members; otherwise, resource leaks may occur.|
 
 **Returns**
 

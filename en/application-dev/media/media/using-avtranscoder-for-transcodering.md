@@ -1,10 +1,18 @@
-# Using AVTranscoder to Transcode Videos (ArkTS)
+---
+kits: ["Media Kit / Media Services"]
+description: "Describes the complete audio/video transcoding workflow using AVTranscoder ArkTS APIs, including instance creation, callbacks, transcoding control, and resource release, for format conversion."
+keywords: [AVTranscoder, audio/video transcoding, ArkTS, transcoding workflow, complete event, error event, progressUpdate, fdSrc, fdDst]
+doctype: guide
+status: active
+---
+# Using AVTranscoder for Audio/Video Transcoding (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c54ee3c703f5cc7ef1444d6932d400b405f9ea74 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 You can use the [AVTranscoder](media-kit-intro.md#avtranscoder) to implement video transcoding. <!--RP1--><!--RP1End--> You can check whether the current device supports the AVTranscoder by calling [canIUse](../../reference/common/js-apis-syscap.md#caniuse). If the return value of **canIUse("SystemCapability.Multimedia.Media.AVTranscoder")** is **true**, the transcoding capability can be used.
 
@@ -75,9 +83,17 @@ For details about the APIs, see [AVTranscoder](../../reference/apis-media-kit/ar
        if (this.avTranscoder != undefined) {
          // 1. Release the AVTranscoder instance.
          await this.avTranscoder.release();
+         let lastFdDst = this.avTranscoder.fdDst;
+         let lastFdSrc = this.avTranscoder.fdSrc;
          this.avTranscoder = undefined;
          // 2. Close the FD of the output file.
-         fileIo.closeSync(this.avTranscoder!.fdDst);
+         if (lastFdDst != undefined) {
+           fileIo.closeSync(lastFdDst);
+         }
+         // 3. Close the transcoding source file fd.
+         if (lastFdSrc != undefined) {
+           fileIo.closeSync(lastFdSrc.fd);
+         }
        }
      }
    }
@@ -88,13 +104,13 @@ For details about the APIs, see [AVTranscoder](../../reference/apis-media-kit/ar
 3. Set the FD of the source video file.
    > **NOTE**
    >
-   > The **fdSrc** value in the code snippet below is for reference only. You need to check the media asset validity and set **fdSrc** based on service requirements.
-   > 
-   > - If local files are used for transcoding, ensure that the files are available and the application sandbox path is used for access. For details about how to obtain the application sandbox path, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths). For details about the application sandbox and how to push files to the application sandbox directory, see [File Management](../../file-management/app-sandbox-directory.md).
-   > 
-   > - To obtain the application file path, you should use the **Context** property. You are advised to use **getUIContext** to obtain a **UIContext** instance and use **getHostContext** to call **getContext** of the bound instance. For details, see [getHostContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12).
+   > The **fdSrc** in the following code example is for reference only. You need to verify resource availability and set it based on the actual situation:
    >
-   > - You can also use **ResourceManager.getRawFd()** to obtain the FD of a file packed in the HAP file. For details, see [ResourceManager API Reference](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9).
+   > - If you use a local resource for transcoding, ensure that the resource file is available and use the app sandbox path to access the corresponding resource. For details, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths). For an introduction to the app sandbox and how to push files to it, see [Application Sandbox](../../file-management/app-sandbox-directory.md).
+   >
+   > - Obtain the app file path through the **Context** property. You are advised to use **getUIContext** to obtain a **UIContext** instance and use **getHostContext** to call **getContext** of the bound instance. For details, see [getHostContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12).
+   >
+   > - To use **ResourceManager.getRawFd()** to open a HAP resource file descriptor, see [getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9) in ResourceManager.
 
    ```ts
    // Import the ets/transcoder/AVTranscoderManager.ets file.
@@ -139,7 +155,7 @@ For details about the APIs, see [AVTranscoder](../../reference/apis-media-kit/ar
    private context: Context | undefined;
    constructor(context: Context | undefined) {
      if (context != undefined) {
-       this.context = context; // this.getUIContext().getHostContext();
+       this.context = context; // this.getUIContext().getHostContext();.
      }
    }
 
@@ -167,7 +183,7 @@ For details about the APIs, see [AVTranscoder](../../reference/apis-media-kit/ar
    private context: Context | undefined;
    constructor(context: Context | undefined) {
      if (context != undefined) {
-       this.context = context; // this.getUIContext().getHostContext();
+       this.context = context; // this.getUIContext().getHostContext();.
      }
    }
 
@@ -185,7 +201,7 @@ For details about the APIs, see [AVTranscoder](../../reference/apis-media-kit/ar
    }
    ```
 
-5. Set video transcoding parameters and call **prepare()**.
+5. Configure audio/video transcoding parameters and call prepare().
 
    > **NOTE**
    >
@@ -272,15 +288,15 @@ For details about the APIs, see [AVTranscoder](../../reference/apis-media-kit/ar
      }
    }
    ```
-10. A complete example of starting, pausing, resuming, and exiting transcoding.
+10. Complete workflow: start transcoding, pause, resume, and complete.
 
-    ```ts
-    async avTranscoderDemo() {
-      await this.startTranscoderingProcess(); // Start transcoding.
-      await this.pauseTranscoderingProcess(); // Pause transcoding.
-      await this.resumeTranscoderingProcess(); // Resume transcoding.
-    }
-    ```
+   ```ts
+   async avTranscoderDemo() {
+     await this.startTranscoderingProcess(); // Start transcoding.
+     await this.pauseTranscoderingProcess(); // Pause transcoding.
+     await this.resumeTranscoderingProcess(); // Resume transcoding.
+   }
+   ```
 
 ## Running the Sample Project
 

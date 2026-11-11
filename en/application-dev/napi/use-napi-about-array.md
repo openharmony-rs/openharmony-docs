@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes array operations using Node-API, including creating, accessing, modifying, and traversing ArkTS arrays, and working with TypedArray and DataView for binary data processing."
+keywords: [Node-API, array, array operations, TypedArray, DataView, ArrayBuffer, napi_create_array, array traversal]
+doctype: guide
+status: active
+---
+
 # Working with Arrays Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.360Z nl=1 -->
 
 ## Introduction
 
@@ -25,24 +34,24 @@ Node-API can be used to create, access, modify, and traverse arrays. Before usin
 The following table describes the APIs for managing ArkTS arrays.
 | API| Description|
 | -------- | -------- |
-| [napi_create_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array) | Creates an ArkTS array.|
-| [napi_create_array_with_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array_with_length) | Creates an ArkTS array object of the specified length.|
-| [napi_get_array_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_array_length) | Obtains the length of an ArkTS array.|
-| [napi_is_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_array) | Checks whether the given **napi_value** is an array.|
-| [napi_set_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_set_element) | Sets an element at the specified index in the given ArkTS array.|
-| [napi_get_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_element) | Obtains the element at the specified index in the given ArkTS array.|
-| [napi_has_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_has_element) | Checks whether the element at the specified index exists.|
-| [napi_delete_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_delete_element) | Deletes the element at the specified index of the given ArkTS array.|
-| [napi_create_typedarray](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_typedarray) | Creates an ArkTS **TypedArray** object of the specified type, such as **Uint8Array** or **Int32Array**. You can use this API to convert a native value into a **TypedArray** object for performant data processing.  |
-| [napi_is_typedarray](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_typedarray) | Checks whether the given **napi_value** is a **TypedArray** object.|
-| [napi_get_typedarray_info](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_typedarray_info) | Obtains the properties of a **TypedArray** object.|
-| [napi_create_dataview](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_dataview) |  Creates a **DataView** object, which allows access to binary data.|
-| [napi_is_dataview](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_dataview) | Checks whether the given **napi_value** is a **DataView** object in ArkTS.|
-| [napi_get_dataview_info](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_dataview_info) | Obtains the properties of a **DataView** object.|
+| napi_create_array | Creates an ArkTS array.|
+| napi_create_array_with_length | Creates an ArkTS array object of the specified length.|
+| napi_get_array_length | Obtains the length of an ArkTS array.|
+| napi_is_array | Checks whether the given **napi_value** is an array.|
+| napi_set_element | Sets an element at the specified index in the given ArkTS array.|
+| napi_get_element | Obtains the element at the specified index in the given ArkTS array.|
+| napi_has_element | Checks whether the element at the specified index exists.|
+| napi_delete_element | Deletes the element at the specified index of the given ArkTS array.|
+| napi_create_typedarray | Creates an ArkTS **TypedArray** object of the specified type, such as **Uint8Array** or **Int32Array**. You can use this API to convert a native value into a **TypedArray** object for performant data processing.  |
+| napi_is_typedarray | Checks whether the given **napi_value** is a **TypedArray** object.|
+| napi_get_typedarray_info | Obtains the properties of a **TypedArray** object.|
+| napi_create_dataview |  Creates a **DataView** object, which allows access to binary data.|
+| napi_is_dataview | Checks whether the given **napi_value** is a **DataView** object in ArkTS.|
+| napi_get_dataview_info | Obtains the properties of a **DataView** object.|
 
 ## Example
 
-If you are just starting out with Node-API, see [Node-API Development Process](use-napi-process.md). The following demonstrates only the C++ and ArkTS code for array management APIs.  
+If you are just starting out with Node-API, see [Node-API Development Process](use-napi-process.md). The following demonstrates only the C++ and ArkTS code for array management APIs.
 
 The following header files are required for the C++ code:
 ```cpp
@@ -423,7 +432,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[3]: %{public}s
   testNapi.napiGetElement<number | string | null | Object>(arr, 3));
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[4]: %{public}s',
   JSON.stringify(testNapi.napiGetElement(arr, 4)));
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[null]: %{public}s',
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[5]: %{public}s',
   testNapi.napiGetElement<number | string | null | Object>(arr, 5));
 ```
 
@@ -524,7 +533,7 @@ export const napiDeleteElement: <T>(arr: Array<T>,
 
 ArkTS code:
 
-Import **napiHasElement** and **napiGetElement** in the preceding sample code to **index.d.ts**.
+Import **napiHasElement()** and **napiGetElement()** in the preceding sample code to **index.d.ts**.
 
 <!-- @[ark_napi_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
@@ -781,7 +790,7 @@ static napi_value GetTypedarrayInfo(napi_env env, napi_callback_info info)
             result = int8_type;
             break;
         case INFO_LENGTH:
-            // Byte length of elements in TypedArray.
+            // Number of elements in the TypedArray
             napi_value napiLength;
             napi_create_int32(env, length, &napiLength);
             result = napiLength;
@@ -823,7 +832,7 @@ ArkTS code:
 ``` TypeScript
 // Use napi_get_typedarray_info to develop arrays.
 // Pass in the TypedArray type. TypedArray is a class array data view used to describe binary data. It does not have a constructor and can be constructed from its child class.
-// The child classes of TypedArray include Int8Array, Uint8Array, Uint8ClampedArray, Int16Array, and Int32Array. 
+// The child classes of TypedArray include Int8Array, Uint8Array, Uint8ClampedArray, Int16Array, and Int32Array.
 let int8Array = new Int8Array([15, 7]);
 // Define the InfoType enums, which are the properties of TypedArray.
 enum InfoType {
@@ -837,7 +846,7 @@ try {
   // Convert arraybuffer to an array.
   let arr = new Array(new Int8Array(arrBuffer));
   hilog.info(0x0000, 'Node-API', 'get_typedarray_info_arraybuffer: %{public}s', arr.toString());
-  hilog.info(0x0000, 'Node-API', 'get_typedarray_info_isIn8Array: %{public}s', testNapi.getTypedarrayInfo(int8Array, InfoType.TYPE).toString());
+  hilog.info(0x0000, 'Node-API', 'get_typedarray_info_isInt8Array: %{public}s', testNapi.getTypedarrayInfo(int8Array, InfoType.TYPE).toString());
   hilog.info(0x0000, 'Node-API', 'get_typedarray_info_length: %{public}d', testNapi.getTypedarrayInfo(int8Array, InfoType.LENGTH));
   hilog.info(0x0000, 'Node-API', 'get_typedarray_info_byte_offset: %{public}d', testNapi.getTypedarrayInfo(int8Array, InfoType.BYTE_OFFSET));
 } catch (error) {
@@ -948,10 +957,10 @@ API declaration:
 
 index.d.ts
 
-<!-- @[napi_is_data_view_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_is_data_view_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
 
 ``` TypeScript
-export const isDataView: (date: DataView | string) => boolean | undefined; // Use napi_is_dataview to develop arrays.
+export const isDataView: (data: DataView | string) => boolean | undefined; // Use the Node-API to perform array-related development. napi_is_dataview
 ```
 
 ArkTS code:

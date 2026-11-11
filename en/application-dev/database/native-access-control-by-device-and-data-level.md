@@ -3,8 +3,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 <!-- md-trans-meta sourceCommit=ae2ed455b894c8b152459324388420bed24b2da8 translatedAt=2026-08-20T06:22:09.131Z pushedAt=2026-08-20T12:06:58.919Z -->
 

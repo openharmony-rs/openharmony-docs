@@ -1,10 +1,11 @@
 # OH_AudioSuiteEngineStruct
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6482e1478c8300c06759225778677b39973d7297 translatedAt=2026-11-03T04:29:04.166Z pushedAt=2026-11-04T03:11:47.041Z nl=1 -->
 
 ```c
 typedef struct OH_AudioSuiteEngineStruct OH_AudioSuiteEngine

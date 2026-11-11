@@ -6,13 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:26:51.872Z pushedAt=2026-08-10T08:08:58.707Z -->
+<!-- md-trans-meta sourceCommit=54563f4d762a79828d807de44c3263058eb36558 translatedAt=2026-10-30T03:36:37.384Z pushedAt=2026-10-30T07:01:30.896Z nl=1 -->
 
 This topic walks you through on how to convert a string in PEM format into an RSA asymmetric key pair (**KeyPair**).
 
 > **NOTE**
 >
-> The **convertPemKey** operation must comply with the following requirements: 
+> The **convertPemKey** operation must comply with the following requirements:
 >
 > - The public key must comply with X.509 specifications, PKCS\#1 specifications, and PEM encoding format.
 >
@@ -27,15 +27,14 @@ For the corresponding algorithm specifications, see [Asymmetric Key Generation a
    The default number of primes for creating an RSA asymmetric key is **2**. The **PRIMES_2** parameter is omitted in the string parameter here.
 
 2. Call [AsyKeyGenerator.convertPemKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpemkey12) to convert the binary data into an asymmetric key pair (**KeyPair**).
-
 3. Call [AsyKeyGenerator.getEncodedPem](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpem12) to convert the public key in the asymmetric key object into PKCS #1 or X.509 format, and the private key into PKCS #1 or PKCS #8 format.
 
 - Example: Convert a string into an RSA key pair (using promise-based APIs).
-
   <!-- @[specify_pem_string_convert_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSpecifiedPEMAsymmetricKeyPair/entry/src/main/ets/pages/Promise.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   let priKeyPkcs1Str1024: string =
     '-----BEGIN RSA PRIVATE KEY-----\n' +
@@ -61,21 +60,27 @@ For the corresponding algorithm specifications, see [Asymmetric Key Generation a
       '-----END RSA PUBLIC KEY-----\n';
   
   async function testPkcs1ToPkcs8ByPromise() {
-    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-    let keyPair = await asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024);
-    let priPemKey = keyPair.priKey;
-    let pubPemKey = keyPair.pubKey;
-    let priString = priPemKey.getEncodedPem('PKCS8');
-    let pubString = pubPemKey.getEncodedPem('X509');
-    console.info('[promise]TestPkcs1ToPkcs8ByPromise priString output: ' + priString);
-    console.info('[promise]TestPkcs1ToPkcs8ByPromise pubString output: ' + pubString);
+    try {
+      let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+      let keyPair = await asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024);
+      let priPemKey = keyPair.priKey;
+      let pubPemKey = keyPair.pubKey;
+      let priString = priPemKey.getEncodedPem('PKCS8');
+      let pubString = pubPemKey.getEncodedPem('X509');
+      console.info('[promise]TestPkcs1ToPkcs8ByPromise priString output: ' + priString);
+      console.info('[promise]TestPkcs1ToPkcs8ByPromise pubString output: ' + pubString);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`testPkcs1ToPkcs8ByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
+
 
 - Example: Synchronously return the result (using the synchronous API [convertPemKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpemkeysync12)).
 
   <!-- @[specify_pem_string_convert_rsa_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSpecifiedPEMAsymmetricKeyPair/entry/src/main/ets/pages/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -123,4 +128,3 @@ For the corresponding algorithm specifications, see [Asymmetric Key Generation a
   }
   ```
 
-  <!--no_check-->

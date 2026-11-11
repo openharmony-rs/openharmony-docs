@@ -119,12 +119,22 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          try {
-            let frequencies = infraredEmitter.getInfraredFrequencies();
-            console.info(`Succeeded in getting infrared frequencies, frequencies: ${JSON.stringify(frequencies)}.`);
-          } catch (error) {
-            console.error(`Failed to get infrared frequencies, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
+          // 查询是否有红外发射器
+          infraredEmitter.hasIrEmitter().then((result: boolean) => {
+            if (result) {
+              try {
+                // 获取红外信号的频率范围
+                let frequencies = infraredEmitter.getInfraredFrequencies();
+                console.info(`Succeeded in getting infrared frequencies, frequencies: ${JSON.stringify(frequencies)}.`);
+              } catch (error) {
+                console.error(`Failed to get infrared frequencies, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              }
+            } else {
+              console.info('The current device does not support IR emitter.');
+            }
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to query infrared emitter, Code: ${error.code}, message: ${error.message}.`);
+          });
         })
     }
   }

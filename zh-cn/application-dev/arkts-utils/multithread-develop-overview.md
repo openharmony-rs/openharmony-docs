@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "概述应用多线程开发的任务分类与选型：业务分为耗时任务、长时任务、常驻任务三类，耗时任务又细分为CPU密集型、I/O密集型和同步任务，指导开发者按场景选择TaskPool或Worker。"
+keywords: [多线程开发概述, 耗时任务, 长时任务, 常驻任务, CPU密集型, I/O密集型, 同步任务, 并发选型]
+doctype: guide
+status: active
+---
+
 # 应用多线程开发概述
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

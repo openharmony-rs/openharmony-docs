@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "汇总Media Kit指南配套示例代码，按音频/视频播放、录制、屏幕录制、转码、元数据提取等场景归类ArkTS与C/C++（NDK）示例，供开发者对照指南实践。"
+keywords: [Media Kit, 示例代码, AVPlayer, AVRecorder, SoundPool, AVScreenCapture, AVTranscoder, AVMetadataExtractor]
+doctype: guide
+status: active
+---
+
 # Media Kit指南配套示例代码
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia--> 

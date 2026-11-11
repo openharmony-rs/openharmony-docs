@@ -1,6 +1,20 @@
-# Overdraw Debugging
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how to use overdraw debugging to identify overdrawn components and optimize layouts to reduce rendering load."
+keywords: [overdraw, Overdraw, debugging, flattened layout, rendering load]
+doctype: guide
+status: active
+---
 
-<!-- md-trans-meta sourceCommit=b6a9d350d597e5a7ebd15d61bba2ace5e5dcfa1c translatedAt=2026-10-19T01:29:28.740Z pushedAt=2026-10-19T10:19:11.218Z -->
+# Overdraw Debugging
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=b198751f959187d961be2d97d979e89ceaddf056 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
+
 
 When an app page layout is deeply nested, the drawing instructions of some components may be partially or completely covered by those of other components during rendering, resulting in redundant consumption of CPU, GPU, and other computing resources. This situation, where pixels on a screen are drawn multiple times, is called overdraw. You can use the overdraw debugging commands provided by the system to identify the locations and hierarchy of components that cause overdraw, thereby reducing the rendering load of the app.
 
@@ -14,7 +28,7 @@ You can use the shell commands to enable or disable the overdraw debugging featu
 
 - Enable overdraw debugging.
 
-  ```
+  ``` bash
   param set debug.graphic.overdraw true
   ```
 
@@ -22,7 +36,7 @@ You can use the shell commands to enable or disable the overdraw debugging featu
 
 - Disable overdraw debugging.
 
-  ```
+  ``` bash
   param set debug.graphic.overdraw false
   ```
 
@@ -32,7 +46,7 @@ You can use the shell commands to enable or disable the overdraw debugging featu
 
   The value **true** means that the feature is enabled, and **false** means the opposite.
 
-  ```
+  ``` bash
   param get debug.graphic.overdraw
   ```
 

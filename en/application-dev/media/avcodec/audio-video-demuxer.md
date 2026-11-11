@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes demuxing audio, video, subtitle samples, and DRM information from media files such as mp4, mkv, and mpeg-ts or network streams. Supports fd and HTTP input for playback, audio/video editing, and remuxing."
+keywords: [media data demuxing, demuxer, OH_AVSource, OH_AVDemuxer, sample, DRM, fd, network streams, track information]
+doctype: guide
+status: active
+---
+
 # Media Data Demultiplexing
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=d8da44d9389782cf4839d2e77f3518c20aa1b228 translatedAt=2026-10-22T03:52:07.391Z pushedAt=2026-10-22T12:22:28.419Z nl=1 -->
+<!-- md-trans-meta sourceCommit=75a2c3e9f72396952a89950f3f36a78407fa2619 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 You can call native APIs to demultiplex media data. The demultiplexing involves extracting media samples such as audio, video, and subtitles from bit stream data, and obtaining information related to Digital Rights Management (DRM).
 
@@ -126,18 +134,18 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       std::ifstream infile(g_filePath, std::ofstream::binary);
       if (!infile.is_open()) {
          printf("AVSourceReadAt : open file failed! file:%s\n", g_filePath.c_str());
-         return MediaDataSourceError::SOURCE_ERROR_IO; // Failed to open the file.
+         return MediaDataSourceError::SOURCE_ERROR_IO;  // Failed to open the file.
       }
 
       infile.seekg(0, std::ios::end);
       int64_t fileSize = infile.tellg();
       if (pos >= fileSize) {
          printf("AVSourceReadAt : pos over or equals file size!\n");
-         return MediaDataSourceError::SOURCE_ERROR_EOF; // pos is already at the end of the file and cannot be read.
+         return MediaDataSourceError::SOURCE_ERROR_EOF;  // pos is already at the end of the file and cannot be read.
       }
 
       if (pos + length > fileSize) {
-         length of length = fileSize - pos; // When the sum of pos and length exceeds the file size, the data from pos to the end of the file is read.
+         length = fileSize - pos;    // When the sum of pos and length exceeds the file size, the data from pos to the end of the file is read.
       }
 
       infile.seekg(pos, std::ios::beg);
@@ -297,7 +305,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
             printf("get track codecConfig from track format failed");
             return;
          }
-         printf(" track width%d, track height: %d, track bitRate: %ld, track frameRate: %f, track mimetype: %s\n", w, h, bitRate, frameRate, mimetype);
+         printf(" track width%d, track height:%d, track bitRate:%ld, track frameRate:%f, track mimetype:%s\n", w, h, bitRate, frameRate, mimetype);
       }
       OH_AVFormat_Destroy(trackFormat);
       trackFormat = nullptr;

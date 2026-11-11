@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:16:48.223Z pushedAt=2026-10-08T09:16:30.532Z -->
+<!-- md-trans-meta sourceCommit=097d84c08b6dd34c7fea7675d84d753092b8a960 translatedAt=2026-10-28T11:23:35.483Z pushedAt=2026-10-28T12:15:40.118Z nl=1 -->
 
 ## Overview
 
@@ -47,6 +47,6 @@ Checks whether the notification of the specified application is enabled.
 
 | Type| Description|
 | -- | -- |
-| bool | **true** - Notification is enabled for the specified application.<br>         **false** - Notification is not enabled for the specified application.|
+| bool | **true**  - The notification of the application is enabled.<br>         **false** - The notification of the application is not enabled, or the query operation failed (for example, the IPC request failed or the notification service is not running). |
 
 

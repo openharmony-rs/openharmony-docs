@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍不同应用间并发播放、录制被打断时的常见场景以及对应的处理方案，帮助开发者选择合适的音频并发处理方案。"
+keywords: [音频焦点, 音频会话, 音频并发, 录音失败, 无法恢复, VoIP通话]
+doctype: guide
+status: active
+---
 # 音频焦点和音频会话开发概述
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -89,7 +96,6 @@
 | 默认场景 | 启动通话 | 开启录制 | 录制失败 | - |
 | 方案一 | 无需配置 | 使用[setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)接口 | 录制可以启动，录制数据为静音流 | - |
 | 方案二 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 录制可以启动，录制数据为静音流 | 与方案一效果相当，推荐方案二 |
-| 方案三 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 录制被暂停，应用A通话结束后，应用B收到RESUME事件恢复录制 | - |
 
 ### 场景4：音乐播放过程中开启录制，打断音乐播放
 

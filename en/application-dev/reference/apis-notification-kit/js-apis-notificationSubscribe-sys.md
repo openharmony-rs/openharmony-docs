@@ -5,15 +5,17 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:30:17.167Z pushedAt=2026-10-08T09:55:25.303Z -->
+<!-- md-trans-meta sourceCommit=ce919b09dc218b03af61a5d7e1fe5707dcea8ddd translatedAt=2026-10-28T11:24:06.829Z pushedAt=2026-10-28T12:15:40.120Z nl=1 -->
 
 This module provides [notification subscription](../../notification/notification-glossary.md#notification-subscription), unsubscription, notification removal, and other capabilities. Generally, only system applications have the permissions for these operations.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 9. New APIs will be marked with a superscript to indicate their earliest API version.
 >
 > The APIs provided by this module are system APIs.
+>
+> When subscribing in a worker thread, call **unsubscribe** to cancel the subscription before the thread exits. If the thread environment is destroyed without canceling the subscription, the system automatically cancels the subscription. Before the cancellation takes effect, events delivered by the server are discarded and do not trigger the subscriber callback. After **unsubscribe** is called, in-transit events that have not been dispatched are also discarded and do not trigger the subscriber callback.
 
 ## Modules to Import
 
@@ -395,7 +397,7 @@ Unsubscribes from a notification. This API uses an asynchronous callback to retu
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+**Required permissions**: For API versions 9 to 19, the ohos.permission.NOTIFICATION_CONTROLLER permission is required.
 
 **System API**: This is a system API.
 
@@ -448,7 +450,7 @@ Unsubscribes from a notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+**Required permissions**: For API versions 9 to 19, the ohos.permission.NOTIFICATION_CONTROLLER permission is required.
 
 **System API**: This is a system API.
 

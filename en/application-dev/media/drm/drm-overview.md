@@ -1,4 +1,19 @@
+---
+kits: ["Drm Kit / Digital Rights Management Services"]
+description: "DRM Kit provides digital rights management capabilities, including DRM plugin management, certificate management, license management, content authorization, and decryption for playback of encrypted, copyright-protected content."
+keywords: [DRM, digital rights management, DRM plugin, MediaKeySystem, MediaKeySession, secure video path, DRM certificate, license, pssh]
+doctype: guide
+status: active
+---
 # About This Kit
+
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=92b708fb842b7fe0ab4ee9b86fb422e92c237d46 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Digital Rights Management (DRM) Kit provides digital rights protection services, offering capabilities for authorizing and decrypting DRM-encrypted content. It includes features such as DRM plugin management, certificate management, license management, content authorization, and content decryption, enabling the integration of DRM solutions, certificate provisioning, and content authorization and decryption.
 
@@ -39,7 +54,6 @@ Before you start, understand the following key concepts:
 
   A DRM solution driver integrated into the system. It implements the DRM HDI interfaces to provide DRM-related functionality.
   
-
 <!--RP1--><!--RP1End-->
 
 - MediaKeySystem
@@ -79,6 +93,7 @@ Before you start, understand the following key concepts:
 DRM plugin management is typically implemented by DRM solution integrators.<!--Del--> For details, see[DRM Solution Development](drm-solution-dev-guide.md).<!--DelEnd-->
 
 The following figure illustrates the workflow for integrating DRM Kit into an application.
+
 ![Drm Development Model](figures/drm-development-model.png)
 
 The workflow includes:
@@ -92,3 +107,7 @@ The workflow includes:
 4. DRM content decryption: The application sets the MediaKeySession in Media Kit or AVCodec Kit to support DRM content decryption. When using AVCodec Kit, the application can set the cencInfo for audio/video data frames in AVBuffer, enabling decryption and decoding when calling **PushInputBuffer**.
 
 5. License update or expiration: During playback, if a license needs updating, MediaKeySession triggers a license update event (**keyRequired**), requiring the application to request a new DRM license. If MediaKeySession triggers a license expiration event (**keyExpired**), DRM content playback must be stopped.
+
+<!--RP4--><!--RP4End-->
+
+<!--RP3--><!--RP3End-->

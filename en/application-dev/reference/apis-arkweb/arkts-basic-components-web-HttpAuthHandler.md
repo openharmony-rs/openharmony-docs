@@ -1,20 +1,19 @@
 # Class (HttpAuthHandler)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-07T04:49:06.367Z pushedAt=2026-08-07T08:12:22.388Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:21:40.538Z pushedAt=2026-11-09T11:40:30.503Z nl=1 -->
 
 HttpAuthHandler is a handler class used by the Web component to process HTTP authentication requests. When the server returns 401 Unauthorized to request authentication, the Web component obtains an HttpAuthHandler instance through the onHttpAuthRequest event callback, and the app decides whether to provide authentication credentials. For sample code, see [onHttpAuthRequest](./arkts-basic-components-web-events.md#onhttpauthrequest9).
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 9.
+> - This class is supported since API version 9.
 >
 > - The sample effect is subject to the actual device.
 
@@ -53,7 +52,7 @@ Performs HTTP authentication with the user name and password provided by the use
 
 | Type     | Description                   |
 | ------- | --------------------- |
-| boolean | Returns **true** if authentication succeeds; returns **false** otherwise. |
+| boolean | The return value only indicates the API call status, not the authentication result. true indicates that the call is successful, and false indicates that the call fails. |
 
 ## isHttpAuthInfoSaved<sup>9+</sup>
 

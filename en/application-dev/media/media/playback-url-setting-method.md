@@ -1,10 +1,20 @@
+---
+kits: ["Media Kit / Media Services"]
+description: "Describes setting AVPlayer playback URLs for HTTP/HTTPS, HLS live and on-demand streams, custom HTTP headers, local raw files, and app sandbox files."
+keywords: [AVPlayer, URL settings, playback URL, HTTP request headers, HLS, streaming media, app sandbox, raw files, m3u8]
+doctype: guide
+status: active
+---
+
 # Using AVPlayer to Set Playback URLs (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Owner: @chennotfound-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d14b2c7a45c50a915ec878b22f98f961a1264b59 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=2 -->
+
 This topic describes how to use the AVPlayer to set URLs in different playback scenarios.
 
 This guide focuses only on the methods for setting playback URLs. For other scenarios and comprehensive sample code, see [Video Playback](video-playback.md).
@@ -231,7 +241,7 @@ If an application needs to play an online streaming media asset by parsing an M3
     ```
 3. Comment out or uncomment the above examples in the **entry/src/main/ets/pages/Index.ets** file, and compile and run the application.
 
-4. After installing the application, you can add **/entry/src/main/resources/rawfile/test.m3u8** from the sample project to the application sandbox using the following command, and then run the related sandbox examples. `<FILESDIR>` refers to the physical path. In the sample project, you can obtain the application sandbox path by printing **this.context.filesDir** using **console.info**. Then, refer to the `mapping table between application sandbox paths and physical paths` in the [application sandbox guide](../../file-management/app-sandbox-directory.md) to locate the corresponding physical path.
+4. After installing the app, you can add the sample project's **/entry/src/main/resources/rawfile/test.m3u8** to the application sandbox using the following command to run the application sandbox-related examples: (```<FILESDIR>``` is the physical path. Taking the sample project as an example, you can obtain the application sandbox path by printing **this.context.filesDir** using **console.info**, and then find the physical path based on the ```application sandbox path and physical path mapping table``` in the [application sandbox guide](../../file-management/app-sandbox-directory.md)).
     ```txt
     hdc file send "[Directory]\test.m3u8" <FILESDIR>
     hdc file send "[Directory]\test_01.mp3" <FILESDIR>

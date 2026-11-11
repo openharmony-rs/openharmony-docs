@@ -1,12 +1,13 @@
 # @ohos.file.cloudSync (Device-Cloud Sync)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @Hermits; @reminder2352-->
-<!--Designer: @oh_create_jiawei-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @reminder2352-->
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=d47585cfa2fedd0fe34539c0e05ad348897c0133 translatedAt=2026-11-03T04:18:35.803Z pushedAt=2026-11-04T03:11:33.508Z nl=1 -->
 
-The **cloudSync** module provides the device-cloud sync capabilities for applications. You can use the APIs to start or stop device-cloud sync and start or stop the download of images.
+This module provides cloud sync capabilities for applications, including starting/stopping cloud sync and starting/stopping the download of original files. It applies to scenarios where local files and cloud files need to be synchronized, sync progress needs to be monitored, cloud file cache needs to be managed, and file version conflicts need to be handled.
 
 > **NOTE**
 >
@@ -29,11 +30,11 @@ Enumerates the device-cloud sync states.
 
 | Name|  Value|  Description|
 | ----- |  ---- |  ---- |
-| UPLOADING |  0 | The file is being uploaded.|
+| UPLOADING |  0 | Uploading in progress, indicating that local files are being synced to the cloud. |
 | UPLOAD_FAILED |  1 | Upload failed.|
-| DOWNLOADING |  2 | The file is being downloaded.|
+| DOWNLOADING |  2 | Downloading in progress, indicating that cloud files are being synced to the local device. |
 | DOWNLOAD_FAILED |  3 | Download failed.|
-| COMPLETED |  4 | Sync completed.|
+| COMPLETED |  4 | Returned when synchronization succeeds or when the sync status callback is registered for the first time. |
 | STOPPED |  5 | Sync stopped.|
 
 ## ErrorType<sup>12+</sup>
@@ -96,8 +97,8 @@ Represents information about the download progress of a cloud file.
 | Name    | Type  | Read-Only| Optional| Description|
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [State](#state11) | No  | No  | File download state.|
-| processed | number | No  | No  | Size of the downloaded data, in bytes. The value range is [0, 9223372036854775807].|
-| size | number | No  | No  | Size of the cloud file, in bytes. The value range is [0, 9223372036854775807].|
+| processed | number | No   | No   | Size of downloaded data, ranging from [0, 9223372036854775807] (unit: Byte). |
+| size | number | No   | No   | Current cloud file size, ranging from [0, 9223372036854775807] (unit: Byte). |
 | uri | string | No  | No  | URI of the cloud file.|
 | error | [DownloadErrorType](#downloaderrortype11) | No  | No  | Download error type.|
 
@@ -121,7 +122,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
+| 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
 
 **Example**
 
@@ -133,7 +134,9 @@ let fileSync = new cloudSync.FileSync()
 
 on(event: 'progress', callback: Callback\<SyncProgress>): void
 
-Registers a listener for the device-cloud sync progress.
+Adds a listener for sync process events to the cloud drive sync object. It applies to scenarios where the sync progress needs to be displayed on the UI or where processing is required based on the sync failure type.
+
+During initial registration of a callback, **4** is returned for **SyncState** in **SyncProgress**, representing the sync state of **COMPLETED**. In subsequent registrations, this value reflects the actual sync result. For example, if the last upload failed, the return value is **1**, representing the sync state of **UPLOAD_FAILED**.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -142,7 +145,7 @@ Registers a listener for the device-cloud sync progress.
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | event | string | Yes  | Event type. The value is **progress**, which indicates the sync progress event.|
-| callback | Callback\<[SyncProgress](#syncprogress12)> | Yes  | Callback used to return the sync progress.|
+| callback | Callback\<[SyncProgress](#syncprogress12)> | Yes | Callback function. Synchronization process event. The current synchronization state is returned upon first registration. |
 
 **Error codes**
 
@@ -151,14 +154,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **Example**
 
 ```ts
 let fileSync = new cloudSync.FileSync();
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state: " + pg.state + "error type: " + pg.error);
+  console.info(`file sync state: ${pg.state}, error type: ${pg.error}`);
 }
 
 fileSync.on('progress', callback);
@@ -168,7 +171,7 @@ fileSync.on('progress', callback);
 
 off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
-Removes the specified callback from the device-cloud sync progress.
+Removes the callback of the specified 'progress' type from the cloud drive sync object. The callback function registered through [on('progress')](#onprogress12) must be passed in.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -177,7 +180,7 @@ Removes the specified callback from the device-cloud sync progress.
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | event | string | Yes  | Event type. The value is **progress**, which indicates the sync progress event.|
-| callback | Callback\<[SyncProgress](#syncprogress12)> |  No  | Callback used to return the sync progress. The default value is null.|
+| callback | Callback\<[SyncProgress](#syncprogress12)> | No | Callback function. Sync process event. When specified, cancels the specified callback; when not specified, cancels all registered sync process event callbacks. The default value is null. |
 
 **Error codes**
 
@@ -186,7 +189,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **Example**
 
@@ -194,7 +197,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let fileSync = new cloudSync.FileSync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state: " + pg.state + "error type: " + pg.error);
+  console.info(`file sync state: ${pg.state}, error type: ${pg.error}`);
 }
 
 fileSync.on('progress', callback);
@@ -206,7 +209,9 @@ fileSync.off('progress', callback);
 
 start(): Promise&lt;void&gt;
 
-Starts device-cloud sync of a file. This API uses a promise to return the result.
+Asynchronously starts cloud drive sync. It applies to scenarios where synchronization between local and cloud files needs to be actively triggered. A Promise is used to return the result asynchronously.
+
+In non-charging scenarios, if the device battery level is lower than 10%, sync is not allowed to be triggered.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -222,8 +227,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 22400001  | Cloud status not ready. |
 | 22400002  | Network unavailable. |
 | 22400003  | Low battery level. |
@@ -269,7 +274,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 22400001  | Cloud status not ready. |
 | 22400002  | Network unavailable. |
 | 22400003  | Low battery level. |
@@ -312,8 +317,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **Example**
 
@@ -352,7 +357,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **Example**
 
@@ -390,8 +395,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **Example**
 
@@ -430,7 +435,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **Example**
 
@@ -455,7 +460,7 @@ Provides APIs for the file manager application to download files from the Drive 
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-### construct<sup>11+</sup>
+### constructor<sup>11+</sup>
 
 constructor()
 
@@ -469,7 +474,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
+| 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
 
 **Example**
 
@@ -499,7 +504,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **Example**
 
@@ -541,7 +546,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | ID| Error Message|
 | -------- | -------- |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
@@ -588,7 +593,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **Example**
 
@@ -632,7 +637,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | ID| Error Message|
 | -------- | -------- |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
@@ -657,7 +662,7 @@ try {
 
 start(uri: string): Promise&lt;void&gt;
 
-Starts downloading a file from the Drive Kit to the local device. This API uses a promise to return the result.
+Asynchronously starts cloud file caching. This is applicable to scenarios where a specified cloud file needs to be downloaded to the local cache. A Promise is used to return the result asynchronously.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -665,7 +670,7 @@ Starts downloading a file from the Drive Kit to the local device. This API uses 
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| uri | string | Yes  | URI of the file to download.|
+| uri | string | Yes | URI of the cloud file to be cached. |
 
 **Return value**
 
@@ -680,7 +685,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
 | 14000002 | Invalid URI. |
@@ -723,7 +728,7 @@ Starts downloading a file from the Drive Kit to the local device. This API uses 
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| uri | string | Yes  | URI of the file to download.|
+| uri | string | Yes | URI of the cloud file to be cached. |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to start downloading a cloud file asynchronously.|
 
 **Error codes**
@@ -733,7 +738,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
 | 14000002 | Invalid URI. |
@@ -761,7 +766,7 @@ fileCache.start(uri, (err: BusinessError) => {
 
 startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;number&gt;
 
-Starts the batch download of a file from the Drive Kit. This API uses a promise to return the result.
+Starts batch caching of cloud files. This is applicable to scenarios where multiple cloud files need to be cached at once. A Promise is used to return the result asynchronously.
 
 Different batch download tasks can be distinguished by the task ID returned.
 
@@ -786,11 +791,11 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID| Error Message|
 | -------- | -------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service.                                                                                              |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service.                                                                                              |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
 | 14000002 | Invalid uri. |
 | 22400004 | Exceed the maximum limit.                                                                                                                                                         |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
@@ -829,8 +834,8 @@ When **stop()** is called, the current file download process terminates, and dow
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| uri | string | Yes  | URI of the file to download.|
-| needClean<sup>12+</sup> | boolean | No  | Whether to delete the downloaded files. The default value **false** means not to delete the downloaded files; the value **true** means the opposite.<br>This parameter is available since API version 12.|
+| uri | string | Yes | URI of the cloud file for which caching is to be stopped. |
+| needClean<sup>12+</sup> | boolean | No | Whether to delete the downloaded file. The default value is **false**, which means the cached file is retained and calling the **start** API again can restart the download. The value **true** means the cached file is deleted and re-caching is required for the next download.<br>This parameter is supported since API version 12. |
 
 **Return value**
 
@@ -845,7 +850,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 14000002 | Invalid URI. |
 
@@ -880,7 +885,7 @@ When **stop()** is called, the current file download process terminates, and dow
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| uri | string | Yes  | URI of the file to download.|
+| uri | string | Yes | URI of the cloud file whose cache is to be stopped. |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to stop downloading a cloud file asynchronously.|
 
 **Error codes**
@@ -890,7 +895,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 14000002 | Invalid URI. |
 
@@ -942,9 +947,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID| Error Message|
 | -------- | -------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service.                                                                                              |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service.                                                                                              |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
@@ -975,7 +980,7 @@ if (needStop && taskId > 0) {
 
 cleanFileCache(uri: string): void
 
-Deletes a cache file. This API returns the result synchronously.
+Synchronously deletes the file cache. This is applicable to scenarios where the local cache space of a specified file needs to be released.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -991,13 +996,13 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes:1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012  | Permission denied by the file system. |
-| 13900020  | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002  | Invalid URI. |
-| 22400005  | Inner error. Possible causes:1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005  | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
@@ -1012,9 +1017,93 @@ let uri = fileUri.getUriFromPath(path);
 try {
   fileCache.cleanFileCache(uri);
 } catch (err) {
-  let error:BusinessError = err as BusinessError;
-  console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
+  let error: BusinessError = err as BusinessError;
+  console.error(`clean file cache failed with error message: ${error.message}, error code: ${error.code}`);
 }
+
+```
+
+### cleanAllFileCache
+
+cleanAllFileCache(): Promise&lt;void&gt;
+
+Deletes all cached files. This is applicable to scenarios where you need to release local cloud file cache space. Files that have not been uploaded to the cloud, files opened for writing, and thumbnail files are not deleted. This API uses a promise to return the result asynchronously.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**Return value**
+
+| Type  | Description |
+| ------ | ---- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID                     | Error Message        |
+| ---------------------------- | ---------- |
+| 13900010 | Try again. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+
+fileCache.cleanAllFileCache().then(() => {
+  console.info("clean file cache successfully");
+}).catch((err: BusinessError) => {
+  console.error(`clean file cache failed with error message: ${err.message}, error code: ${err.code}`);
+});
+
+```
+
+### getCachedTotalSize
+
+getCachedTotalSize(): Promise&lt;number&gt;
+
+Obtains the total size of cached files, including locally added files not yet uploaded to the cloud, locally added files already uploaded to the cloud, and downloaded files. Thumbnail files are excluded. This API uses a promise to return the result asynchronously.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**Return value**
+
+| Type  | Description |
+| ------ | ---- |
+| Promise&lt;number&gt; | Promise object that returns the total size of cached files, in bytes. |
+
+**Error codes**
+
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID                     | Error Message        |
+| ---------------------------- | ---------- |
+| 13900010 | Try again. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+
+fileCache.getCachedTotalSize().then((totalDownloadSize: number) => {
+  console.info("totalDownloadSize: " + totalDownloadSize);
+}).catch((err: BusinessError) => {
+  console.error("get totalDownloadSize failed with error message: " + err.message + ", error code: " + err.code);
+});
 
 ```
 
@@ -1096,7 +1185,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID| Error Message|
 | -------- | -------- |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
@@ -1150,7 +1239,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID| Error Message|
 | -------- | -------- |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
@@ -1186,7 +1275,7 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 
 registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData&gt;): void
 
-Subscribes to the change of a file. The callback returns the changed data.
+Subscribes to change notifications for a specified file. This is suitable for scenarios where the business state needs to be updated in real time when a specified file or directory changes. The callback returns the changed data.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1194,7 +1283,7 @@ Subscribes to the change of a file. The callback returns the changed data.
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| uri | string | Yes  | URI of the file to download.|
+| uri | string | Yes | URI of the file or directory to listen to. |
 | recursion | boolean | Yes  | Whether to listen for the change of the URI, subfiles, and subdirectories. The value **true** means to listen for the change of the URI, subfiles, and subdirectories; the value **false** means to only listen for the change of the URI.|
 | callback | Callback&lt;[ChangeData](#changedata12)&gt; | Yes  | Callback used to return the changed data.|
 
@@ -1233,7 +1322,7 @@ cloudSync.unregisterChange(uri);
 
 unregisterChange(uri: string): void
 
-Unsubscribes from the change of a file.
+Unsubscribes from change notifications for a specified file. After unsubscribing, change notifications corresponding to the URI will no longer be received.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1241,7 +1330,7 @@ Unsubscribes from the change of a file.
 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
-| uri | string | Yes  | URI of the file to download.|
+| uri | string | Yes | URI of the file or directory for which the listener is to be unregistered. |
 
 **Error codes**
 
@@ -1349,7 +1438,7 @@ Represents the download state and progress information of historical version fil
 
 Represents the device-cloud file version management class. It allows you to manage historical versions of client-cloud files, obtain the list of historical versions, download historical versions to the local device, replace the current local file with a historical version file, and query and remove conflict flags for version conflicts.
 
-### construct<sup>20+</sup>
+### constructor<sup>20+</sup>
 
 constructor()
 
@@ -1363,7 +1452,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
@@ -1402,14 +1491,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
 | 22400002 | Network unavailable. |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
@@ -1460,14 +1549,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
 | 22400002 | Network unavailable. |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
@@ -1525,15 +1614,15 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900005 | I/O error. |
 | 13900008 | Bad file descriptor. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 | 22400007 | The version file specified to replace the original file does not exist. |
 
 **Example**
@@ -1600,13 +1689,13 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
@@ -1630,7 +1719,7 @@ fileVersion.isFileConflict(uri).then((isConflict: boolean) => {
 
 clearFileConflict(uri: string): Promise&lt;void&gt;
 
-Clears the version conflict flag of the local file. If a conflict occurs, you need to call this API to clear the conflict flag after the conflict is resolved locally and trigger automatic synchronization. This API uses a promise to return the result.
+Clears the local file version conflict flag. This method takes effect only after the application configures manual conflict resolution. If a conflict occurs, after resolving the conflict locally, you need to call this method to clear the conflict flag so that the automatic sync mechanism can be triggered later to stay consistent with the cloud. This API uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1652,13 +1741,13 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 
@@ -1711,15 +1800,15 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes:1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002  | No such file or directory. |
 | 13900004  | Interrupted system call. |
 | 13900010  | Try again. |
 | 13900012  | Permission denied by the file system. |
-| 13900020  | Invalid argument. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 13900031  | Function not implemented. |
 | 14000002  | Invalid URI. |
-| 22400005  | Inner error. Possible causes:1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005  | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Example**
 

@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "介绍ArkGraphics 3D中PBR标准材质与自定义Shader材质的创建与使用方法，涵盖金属度、粗糙度、法线、清漆、自发光等属性配置，以及通过Shader材质实现描边、高光等个性化视觉效果。"
+keywords: [ArkGraphics 3D, PBR, Shader材质, 清漆层, 环境光遮蔽]
+doctype: guide
+status: active
+---
+
 # 创建并使用材质资源
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
@@ -305,6 +313,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
    import { Scene, Camera, Material, Node, Image, SceneResourceFactory, Geometry, EnvironmentBackgroundType,
      PostProcessSettings, ToneMappingType, MetallicRoughnessMaterial, Vec4 } from '@kit.ArkGraphics3D';
    import {lookAt, OrbitCameraHelper } from '../common/utils';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 加载场景资源。
@@ -325,6 +334,9 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
          let rf: SceneResourceFactory = scene.getResourceFactory();
    
          // ...
+       })
+       .catch((err: BusinessError): void => {
+         console.error('Failed to load scene, code is %{public}d, message is %{public}s', err.code, err.message);
        });
    }
    ```

@@ -32,15 +32,11 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 ## 接口
 
-## FormComponent
-
-加载卡片内容和布局。
-
-### (value: FormInfo)
+### FormComponent
 
 FormComponent(value: FormInfo)
 
-创建卡片组件，用于显示提供的卡片。
+创建卡片组件，并加载卡片内容和布局用于显示。
 
 **系统接口：** 此接口为系统接口。
 
@@ -133,10 +129,10 @@ FormComponent(value: FormInfo)
 | Dimension_2_4              | 2 | 2*4 卡片 |
 | Dimension_4_4              | 3 | 4*4 卡片 |
 | Dimension_2_1<sup>(deprecated)</sup> | 4 | 2*1 卡片 <br>**说明:** 该字段从API version 9开始支持，从API version 20开始废弃。|
-| Dimension_1_1<sup>11+</sup> | 6 | 1*1 卡片 |
-| Dimension_6_4<sup>12+</sup> | 7 | 6*4 卡片 |
-| Dimension_2_3<sup>18+</sup> | 8 | 2*3 卡片为穿戴设备使用 |
-| Dimension_3_3<sup>18+</sup> | 9 | 3*3 卡片为穿戴设备使用 |
+| DIMENSION_1_1<sup>11+</sup> | 6 | 1*1 卡片 |
+| DIMENSION_6_4<sup>12+</sup> | 7 | 6*4 卡片 |
+| DIMENSION_2_3<sup>18+</sup> | 8 | 2*3 卡片为穿戴设备使用 |
+| DIMENSION_3_3<sup>18+</sup> | 9 | 3*3 卡片为穿戴设备使用 |
 
 ## FormRenderingMode<sup>11+</sup>
 

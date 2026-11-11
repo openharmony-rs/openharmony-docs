@@ -1,10 +1,20 @@
+---
+kits: ["ArkGraphics 3D"]
+description: "Introduces ArkGraphics 3D capabilities, architecture, and core features, including glTF model loading, custom scene nodes, resource creation, animation control, and post-processing."
+keywords: [ArkGraphics 3D, 3D rendering, glTF, 3D engine]
+doctype: guide
+status: active
+---
+
 # About This Kit
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=bfc96144fd212df11635a7acc693723c4ad0b55f translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 ArkGraphics 3D provides basic 3D scene rendering capabilities based on the lightweight 3D engine and render pipelines. With this service, you can efficiently build and render a 3D scene.
 
@@ -32,6 +42,9 @@ The ArkGraphics 3D service consists of three key parts: graphics backend, engine
 - Interface layer: processes data based on the ECS framework through the NAPI layer, and exposes 3D rendering interfaces.
 
 
+<!--RP1-->
 ## Constraints
 
 To use the ArkGraphics 3D service, the device must support the GPU driver of OpenGL ES 3.2 or later or Vulkan 1.0 or later.
+
+<!--RP1End-->

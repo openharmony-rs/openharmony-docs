@@ -1,4 +1,4 @@
-# Applying Constraints for System Accounts (for System Applications Only)
+# Applying Constraints for System Accounts (Open Only to System Applications)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Account-->
@@ -6,12 +6,13 @@
 <!--Designer: @JiDong-CS1-->
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=59edb11f36a94982be51a04819a08ffc4ccba2e6 translatedAt=2026-11-06T11:56:05.713Z pushedAt=2026-11-09T13:28:27.252Z nl=1 -->
 
 The **account** module provides a role-based access control mechanism. You can set constraints for system accounts to restrict their behaviors.
 
 ## Constraints
 
-For details about the predefined account constraints, see [Constraints](../../reference/apis-basic-services-kit/js-apis-osAccount.md#constraints).
+For details about the predefined account constraints, see [Constraints](../../reference/apis-basic-services-kit/js-apis-osAccount.md).
 
 ## Getting Started
 
@@ -19,20 +20,15 @@ For details about the predefined account constraints, see [Constraints](../../re
 
 2. Import the **osAccount** module.
 
-   <!-- @[import_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
-
-``` TypeScript
-import { osAccount, BusinessError } from '@kit.BasicServicesKit';
-```
-
+   ```ts
+   import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 3. Obtain an **AccountManager** instance.
 
-   <!-- @[obtain_account_single_instance_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
-
-``` TypeScript
-let accountManager = osAccount.getAccountManager();
-```
+   ```ts
+   let accountManager = osAccount.getAccountManager();
+   ```
 
 
 ## Setting Constraints for a System Account
@@ -43,29 +39,24 @@ The user can set constraints to restrict the system account behaviors. For examp
 
 1. Specify the system account ID and the constraints.
 
-   <!-- @[constraint_collections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
-
-``` TypeScript
+   ```ts
     let localId: number = 100;
     let constraint: string[] = [ 'constraint.wifi.set' ];
-```
-
+   ```
 
 2. Use [setOsAccountConstraints](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountconstraints) to enable the constraints for the system account.
 
-   <!-- @[system_account_constraint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
-
-``` TypeScript
+   ```ts
     try {
       accountManager.setOsAccountConstraints(localId, constraint, true);
       console.info('setOsAccountConstraints successfully');
-	// ···
+      // ···
     } catch (e) {
       const err = e as BusinessError;
       console.error(`setOsAccountConstraints failed, error: code is ${err.code}, message is ${err.message}`);
-	// ···
+      // ···
     }
-```
+   ```
 
 
 ## Checking Whether a Constraint Can be Enabled for a System Account
@@ -76,23 +67,19 @@ Before a constraint is enabled for a system account, the application needs to ch
 
 1. Set the system account ID and constraint.
 
-   <!-- @[specify_the_system_account_id_and_constraint_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
-
-``` TypeScript
+   ``` ts
     let localId: number = 100;
     let constraint: string = 'constraint.wifi.set';
-```
-
+   ```
 
 2. Use [isOsAccountConstraintEnabled](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#isosaccountconstraintenabled11) to check whether the constraint can be enabled for the system account.
 
-   <!-- @[check_whether_the_specified_constraint_is_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/UseConstraintManagementSystemAccount.ets) -->
-
-``` TypeScript
+   ``` ts
     accountManager.isOsAccountConstraintEnabled(localId, constraint).then((isEnabled: boolean) => {
       if (isEnabled) {
         // your business logic
-		// ···
+        // ···
       }
     });
-```
+   ```
+

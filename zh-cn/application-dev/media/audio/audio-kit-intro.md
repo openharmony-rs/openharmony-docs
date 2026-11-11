@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "Audio Kit（音频服务）提供场景化的音频播放和录制接口，支持低时延播放、音效模式、音振协同等能力，并介绍从应用到HAL的音频架构分层。"
+keywords: [Audio Kit, 音频服务, 低时延播放, 音效模式, 音振协同, 空间音频, 音频架构, 音频播放, 音频录制]
+doctype: guide
+status: active
+---
 # Audio Kit简介
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

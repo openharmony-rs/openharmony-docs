@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-hdc（OpenHarmony Device Connector）是提供给开发人员的命令行调试工具，用于与设备进行交互调试、数据传输、日志查看以及应用安装等操作。该工具支持在Windows/Linux/MacOS系统上运行，为开发者提供高效、便捷的设备调试能力。
+hdc（OpenHarmony Device Connector）是提供给开发人员的命令行调试工具，用于与设备进行交互调试、数据传输、日志查看以及应用安装等操作。该工具支持在Windows/Linux/MacOS/OpenHarmony系统上运行，为开发者提供高效、便捷的设备调试能力。
 
 hdc包含三部分：
 
@@ -31,7 +31,7 @@ hdc包含三部分：
 
 hdc可以选择以下任意一种方式获取：
 
-1. 通过OpenHarmony SDK获取hdc工具。OpenHarmony SDK已嵌入[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)中，无需额外下载配置。hdc默认安装在DevEco Studio/sdk/default/openharmony/toolchains路径下，MacOS系统的sdk位于DevEco Studio/Contents目录下。
+1. 通过OpenHarmony SDK获取hdc工具。OpenHarmony SDK已嵌入[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)中，无需额外下载配置。hdc默认安装在DevEco Studio/sdk/default/openharmony/toolchains路径下，MacOS系统的sdk位于DevEco Studio/Contents目录下，hdc全路径可以在DevEco Studio的终端中执行where/which hdc查看。
 
 2. 通过[Command Line Tools](https://developer.huawei.com/consumer/cn/download/)工具中的sdk目录获取相关工具。hdc程序默认安装在Command Line Tools/sdk/default/openharmony/toolchains路径下。
 
@@ -53,7 +53,7 @@ hdc支持USB和无线两种连接调试方式。在设备的设置>系统>开发
 
    - 在搜索栏中搜索“查看高级系统设置”。在环境变量>系统变量>Path>编辑中，将hdc.exe所在目录添加到Path。环境变量配置完成后，请重启电脑，即可在命令行窗口执行hdc命令。
 
-2. Linux/MacOS系统：
+2. Linux/MacOS/OpenHarmony系统：
 
    - 打开终端工具，执行以下命令，根据输出结果分别执行不同的命令。
 
@@ -150,6 +150,7 @@ hdc -t connect-key shell echo "Hello world"
 | [start](#启动服务) | 启动hdc服务进程。 |
 | [kill](#终止服务) | 终止hdc服务进程。 |
 | [reconnect](#重连usb设备) | 对已连接的USB设备重置会话并触发USB重新枚举。<br/>**说明**：从API版本26.0.0开始，支持该命令。 |
+| [server loglevel](#动态调整服务进程日志等级) | 查询或动态调整服务进程运行时的日志等级。<br/>**说明**：从API版本26.1.0开始，支持该命令。 |
 | [hilog](#打印设备端日志) | 打印设备端的日志信息。 |
 | [jpid](#显示设备已打开应用的进程pid) | 显示设备上已打开应用的进程pid。 |
 | [track-jpid](#实时显示设备已打开应用的进程pid和应用名) | 实时显示设备上已打开应用的进程pid和应用名。 |
@@ -1019,6 +1020,7 @@ Remove forward ruler success, ruler:tcp:1234 tcp:1080
 | start [-r] | 启动hdc服务进程，使用-r参数触发服务进程重新启动。 |
 | kill [-r] | 终止hdc服务进程，使用-r参数触发服务进程重新启动。 |
 | reconnect connect-key | 对已通过USB连接且由本机服务进程管理的目标设备重置会话并触发USB重新枚举。<br>connect-key为设备USB标识符，可通过`hdc list targets`查询。 |
+| server loglevel [level] | 查询或动态调整服务进程运行时的日志等级，无需重启服务进程。 |
 | -p | 绕过对服务进程的查询步骤，用于快速执行客户端命令。 |
 | -m | 使用前台启动模式启动服务进程。<br/>前台启动模式（添加-m参数）：实时打印服务日志到客户端窗口。<br/>后台启动模式（不添加-m参数）：客户端不打印服务日志，日志内容写入本地磁盘文件，具体文件存放路径可参考[服务器进程日志](#服务器进程日志)。 |
 | -e |  指定在TCP端口转发时，本地监听的IP地址，默认是127.0.0.1。该参数必须和-m一起使用。|
@@ -1106,6 +1108,66 @@ connect-key
 $ hdc reconnect connect-key
 Reconnecting connect-key ...
 ```
+
+### 动态调整服务进程日志等级
+
+查询或动态调整已运行的服务进程日志等级，无需终止并重启服务进程。命令格式如下：
+
+```shell
+hdc server loglevel [level]
+```
+
+**参数**：
+
+| 参数 | 说明 |
+| -------- | -------- |
+| level | 缺省`level`参数时，执行查询功能，返回服务进程当前的日志等级。<br>指定`level`参数时，执行设置功能，将服务进程日志等级调整为指定值，立即生效。取值范围为0~6，仅支持单个数字，详情见下表。 |
+
+**日志等级取值**：
+
+| 取值 | 说明 |
+| -------- | -------- |
+| 0 | LOG_OFF：关闭日志输出。 |
+| 1 | LOG_FATAL：仅输出致命错误日志。 |
+| 2 | LOG_WARN：输出警告及致命错误日志。 |
+| 3 | LOG_INFO：输出提示、警告及致命错误日志。 |
+| 4 | LOG_DEBUG：输出调试及以下级别日志。 |
+| 5 | LOG_ALL：输出全部等级日志。 |
+| 6 | LOG_VERBOSE：输出最详细日志（即LOG_LIBUSB），同时开启libusb增量日志。 |
+
+**返回信息**：
+
+| 返回信息 | 说明 |
+| -------- | -------- |
+| Current server log level: *level* (*name*) | 查询成功，*level*为当前日志等级数字，*name*为对应的等级名称。 |
+| Server log level changed: *oldLevel* (*oldName*) -> *newLevel* (*newName*) | 设置成功，返回调整前后的日志等级。 |
+| [Fail]Usage: server loglevel [0-6] | 参数非法，例如超出0~6范围、包含多个字符或多余内容。 |
+
+**使用方法**：
+
+```shell
+# 查询服务进程当前日志等级。
+$ hdc server loglevel
+Current server log level: 3 (info)
+
+# 将服务进程日志等级调整为LOG_DEBUG，立即生效。
+$ hdc server loglevel 4
+Server log level changed: 3 (info) -> 4 (debug)
+
+# 参数非法时返回用法提示。
+$ hdc server loglevel 7
+[Fail]Usage: server loglevel [0-6]
+```
+
+> **说明：**
+>
+> 1. 该命令仅调整服务进程（server）运行时的日志等级，不影响客户端进程（client）和设备端守护进程（daemon）的日志等级。
+>
+> 2. 调整结果仅在当前服务进程生命周期内有效。服务进程重启后，日志等级恢复为启动时配置的值，配置优先级参见[服务器进程日志](#服务器进程日志)和[OHOS_HDC_LOG_LEVEL](#ohos_hdc_log_level)。
+>
+> 3. 当等级设置为6（LOG_VERBOSE）时，服务进程同时开启libusb相关的增量日志输出，便于定位USB相关异常。
+>
+> 4. 该命令无需指定目标设备，直接作用于本机服务进程。
 
 ### 快速执行命令
 
@@ -1458,7 +1520,7 @@ hdc -l [level] [command]
 >
 > 1. 当配置运行时日志级别为6（LOG_LIBUSB）时，将激活libusb相关的增量日志输出，增量日志级别的详细程度高、数据量大，有助于准确诊断服务进程中与USB相关的异常情况，建议开发者按需使用。USB相关操作主要由服务进程执行，因此，只有服务进程具备打印增量日志的功能。相应地，客户端侧的日志几乎不包含增量日志信息。
 >
-> 2. 指定运行日志等级仅适用于当前进程（包括客户端与服务进程），无法更改已存在的进程日志等级。
+> 2. 指定运行日志等级仅适用于当前进程（包括客户端与服务进程），无法更改已存在的进程日志等级。如需在不重启服务进程的情况下调整其日志等级，可执行[hdc server loglevel](#动态调整服务进程日志等级)命令。
 
 **返回信息**：
 
@@ -1509,6 +1571,7 @@ hdc -l 5 start
 | Windows | %temp%\ | 实际路径参考：C:\\Users\用户名\AppData\Local\Temp<br/>（实际使用请替换用户名变量）。 |
 | Linux | /tmp/ | - |
 | MacOS | $TMPDIR/ | 实际路径可通过echo $TMPDIR查看，执行cd $TMPDIR命令可直接跳转至相应目录。 |
+| OpenHarmony | $TMPDIR/ | 实际路径参考：/storage/media/{currentUserId}/local/files/Docs/.hdc<br/>（实际使用请替换用户id）。 |
 
 日志文件类型包括：
 
@@ -1617,7 +1680,9 @@ Kill subservers finish
 
 默认值：3。
 
-用于设置服务进程日志记录级别，日志级别详情参考：[服务器进程日志](#服务器进程日志)指定运行时日志等级章节。
+用于设置服务进程启动时的日志记录级别，日志级别详情参考：[服务器进程日志](#服务器进程日志)指定运行时日志等级章节。
+
+该环境变量仅在服务进程启动时生效。服务进程运行期间如需变更日志等级，可执行[hdc server loglevel](#动态调整服务进程日志等级)命令动态调整。
 
 ### OHOS_HDC_HEARTBEAT
 
@@ -1648,6 +1713,7 @@ Kill subservers finish
 | Windows | %temp%\hdc_cmd\ | 实际路径参考：C:\\Users\用户名\AppData\Local\Temp\hdc_cmd\<br/>（实际使用请替换用户名变量）。 |
 | Linux | /tmp/hdc_cmd/ | - |
 | MacOS | $TMPDIR/hdc_cmd/ | - |
+| OpenHarmony | $TMPDIR/hdc_cmd/ | 实际路径参考：/storage/media/{currentUserId}/local/files/Docs/hdc_cmd<br/>（实际使用请替换用户id）。|
 
 ### OHOS_HDC_ENCRYPT_CHANNEL
 
@@ -1686,6 +1752,7 @@ Kill subservers finish
 | Windows | 在电脑设置中搜索“查看高级系统设置”，在环境变量>系统变量>Path>编辑中，添加环境变量名称为OHOS_HDC_LOG_LEVEL，变量值为5。配置完毕后点击确认。环境变量配置完成后，关闭并重启命令行或其他使用到OpenHarmony SDK的软件，以生效新配置的环境变量。 |
 | Linux | 在~/.bash_profile文件末尾追加内容export OHOS_HDC_LOG_LEVEL=5并保存后，执行source ~/.bash_profile生效当前环境变量。 |
 | MacOS | 在~/.zshrc文件末尾追加内容export OHOS_HDC_LOG_LEVEL=5并保存后，执行source ~/.zshrc生效当前环境变量。环境变量配置完成后，关闭并重启命令行或其他使用到OpenHarmony SDK的软件，以生效新配置的环境变量。 |
+| OpenHarmony | 在~/.zshrc文件末尾追加内容export OHOS_HDC_LOG_LEVEL=5并保存后，执行source ~/.zshrc生效当前环境变量。环境变量配置完成后，关闭并重启命令行或其他使用到OpenHarmony SDK的软件，以生效新配置的环境变量。 |
 
 ## hdc版本配套表
 
@@ -1695,6 +1762,8 @@ Kill subservers finish
 | 3.1.0e | 15及以上版本 | - file send命令支持-b参数：详细说明参见[文件传输](#文件传输)。<br/>- file recv命令支持-b参数：详细说明参见[文件传输](#文件传输)。<br/>- shell命令支持-b参数：详细说明参见[执行交互命令](#执行交互命令)。 |
 | 3.2.0b | 20 | - 端口转发任务支持监听远端主机IP：详细说明参见[创建正向端口转发任务](#创建正向端口转发任务)。 |
 | 3.2.0e | 26.0.0及以上版本 | - shell命令支持-b参数缺省command参数进入交互式shell会话：详细说明参见[执行交互命令](#执行交互命令)。 |
+| 3.2.0g | 26.1.0及以上版本 | - 新增server loglevel命令，支持动态调整服务进程运行时日志等级：详细说明参见[动态调整服务进程日志等级](#动态调整服务进程日志等级)。 |
+
 > **注意：**
 >
 > 如果开发者当前运行的hdc版本较低，某些功能存在兼容性问题，需要根据功能特性提升版本时，可参考对应API版本说明下载最新版本。
