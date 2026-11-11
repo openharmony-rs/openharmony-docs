@@ -478,6 +478,7 @@
   ``` TypeScript
   import { DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import resource from '../../common/resource';
   
   @Entry
   @Component
@@ -489,19 +490,19 @@
       NavDestination() {
         Row() {
           Column() {
-            Text('ActionSheet 迁移示例')
+            Text('ActionSheet' + resource.resourceToString($r('app.string.migrate_sample_zh')))
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
   
-            Button('旧接口：showActionSheet')
+            Button(resource.resourceToString($r('app.string.old_interface_zh')) + '：showActionSheet')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
                 this.result = $r('app.string.OldInterfaceActionSheetOnClick');
               })
   
-            Button('新接口：DialogPresenter.present（列表选择弹窗）')
+            Button(resource.resourceToString($r('app.string.new_interface_zh')) + '：DialogPresenter.present')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
