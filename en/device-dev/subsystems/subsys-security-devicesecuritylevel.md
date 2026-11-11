@@ -90,7 +90,7 @@ All the APIs are native C interfaces for implementing underlying capabilities an
     DeviceSecurityInfo *info = NULL;
 
     // Call RequestDeviceSecurityInfo to obtain the device security level information of the peer device.
-    int32_t ret = RequestDeviceSecurityInfo(device, DEFAULT_OPTION, &info);
+    int32_t ret = RequestDeviceSecurityInfo(device, option, &info);
 
     int32_t level = 0;
     // Obtain the device security level from the device security level information.
@@ -202,7 +202,7 @@ The credential file consists of four Base64-encoded strings, separated by period
 <base64-header>.<base64-payload>.<base64-signature>.<base64-attestation>
 ```
 
-#### 1. Construct the `header`.
+#### Construct the `header`.
 
 The header is a fixed JSON string in the following format:
 
@@ -218,7 +218,7 @@ Encode the header string to Base64 format to obtain `<base64-header>`.
 eyJ0eXAiOiAiRFNMIn0=
 ```
 
-#### 2. Construct the `payload`.
+#### Construct the `payload`.
 
 Construct the payload in a JSON string. The following is an example:
 
@@ -256,28 +256,28 @@ The fields in the `payload` are described as follows:
 |       sn        |    Device SN.   |      No     |    string [0..128]    |
 |      udid       |   Device UDID.  |      No     |    string [0..128]    |
 
-#### 3. Construct the `signature`.
+#### Construct the `signature`.
 
 Construct the signature of the header and payload.
 
-##### 3.1 Construct the raw data to be signed.
+##### Construct the raw data to be signed.
 
 Combine the Base64-encoded header and payload with a period (.) in between to obtain `<base64-head>.<base64-payload>`.
+
 Example:
 
 ```undefined
 eyJ0eXAiOiAiRFNMIn0=.eyJ0eXBlIjogImRlYnVnIiwgIm1hbnVmYWN0dXJlIjogIm9ob3MiLCAiYnJhbmQiOiAicmszNTY4IiwgIm1vZGVsIjogInJrMzU2OCIsICJzb2Z0d2FyZVZlcnNpb24iOiAiMy4yLjIiLCAic2VjdXJpdHlMZXZlbCI6ICJTTDEiLCAic2lnblRpbWUiOiAiMjAyMjAyMDkxNTAyNTkiLCAidmVyc2lvbiI6ICIxLjAuMSJ9
 ```
 
-##### 3.2 Generate a private key for signing data.
+##### Generate a private key for signing data.
 
 The Elliptic Curve Digital Signature algorithm (ECDSA) is used to sign the raw data in the credential file. Generate an ECDSA key pair `<ecc-l3-pk>` and `<ecc-l3-sk>` first.
 
-> ![notice](../public_sys-resources/icon-notice.gif)**NOTICE**
->
+> **NOTICE**
 > This step must be performed in a secure and reliable environment, for example, a cryptographic machine that meets related security requirements, to ensure that the key generated is not disclosed.
 
-##### 3.3 Sign the raw data.
+##### Sign the raw data.
 
 Use the ECC private key `<ecc-l3-sk>` to sign `<base64-head>.<base64-payload>`, and encode the signature to Base64 format to obtain `<base64-signature>`.
 
@@ -285,14 +285,13 @@ Use the ECC private key `<ecc-l3-sk>` to sign `<base64-head>.<base64-payload>`, 
 MGUCMDb9xoiFzTWVkHDU3VWSVQ59gLyw4TchZ0+eQ3vUfQsLt3Hkg0r7a/PmhkNr3X/mTgIxAIywIRE6vRTRs0xk6xKp8A0XwMMiIyjZlujPJfasCvFonpsvXLAqCAIYbe1J0k4Zfg==
 ```
 
-#### 4. Construct the `attestation`.
+#### Construct the `attestation`.
 
-> ![notice](../public_sys-resources/icon-notice.gif)**NOTICE**
->
+> **NOTICE**
 > This step must be performed in a secure and reliable environment, for example, a cryptographic machine that meets related security requirements, to ensure that the key used for signature is not disclosed.
 > The key pairs involved in this step do not need to be generated each time. Secure key pairs can be reused.
 
-##### 4.1 Generate verification information for an end-entity certificate signature.
+##### Generate verification information for an end-entity certificate signature.
 
 1. Generate an ECDSA key pair `<ecc-l2-pk>` and `<ecc-l2-sk>` for an intermediate CA certificate signature.
 2. Use `<ecc-l2-sk>` to sign `<ecc-l3-pk>` (generated in step 3.2) to obtain `<ecc-l3-pk-signature>`.
@@ -305,11 +304,11 @@ MGUCMDb9xoiFzTWVkHDU3VWSVQ59gLyw4TchZ0+eQ3vUfQsLt3Hkg0r7a/PmhkNr3X/mTgIxAIywIRE6
 }
 ```
 
-##### 4.2 Generate verification information for an intermediate CA certificate signature.
+##### Generate verification information for an intermediate CA certificate signature.
 
 1. Generate an ECDSA key pair `<ecc-root-pk>` and `<ecc-root-sk>` for a root certificate signature.
 2. Use `<ecc-root-sk>` to sign `<ecc-l2-pk>` (generated in step 4.1) to obtain `<ecc-l2-pk-signature>`.
-3. Combine `<ecc-l3-pk>` and `<ecc-l3-pk-signature>` into a JSON string. 
+3. Combine `<ecc-l2-pk>` and `<ecc-l2-pk-signature>` into a JSON string. 
 The following is an example:
 
 ``` json
@@ -319,7 +318,7 @@ The following is an example:
 }
 ```
 
-##### 4.3 Generate root signature verification information.
+##### Generate root signature verification information.
 
 1. Use `<ecc-root-sk>` to sign the `<ecc-root-pk>` (generated in step 4.2) to obtain `<ecc-root-pk-self-signature>` (a self-signature).
 2. Combine `<ecc-root-pk>` and `<ecc-root-pk-self-signature>` into a JSON string. The following is an example: 
@@ -331,7 +330,7 @@ The following is an example:
 }
 ```
 
-##### 4.4 Generate the `attestation`.
+##### Generate the `attestation`.
 
 1. Combine the preceding three pieces of signature information into a JSON array.
 
@@ -358,7 +357,7 @@ The following is an example:
     W3sidXNlclB1YmxpY0tleSI6ICJNSG93RkFZSEtvWkl6ajBDQVFZSkt5UURBd0lJQVFFTEEySUFCREdOMU9xYWZrWFc2a0l1SEZrMVQ0TS84RVJUY3p0eWRDaGtramFROEkzNEc2Q3E1aTNJcnczVnRhQS9KTTF2a0lHOUZDVWRUaHZFUlJFUTFUdG9xemdxZW9SUzVwQW1EYUUyalEwYzdDem8rOHVUWTRIYW1weXZ1TENtenlYUXFnPT0iLCAic2lnbmF0dXJlIjogIk1HTUNMeHVjUnoyZndKZ092QkxyU1U3K1hlVTA3R0EyVXhZbDFMbEJLUnVIUS9wZlNWVHBEd0ZHSTNTb3h5ODR3NThIQWpBeGRtNEY3b3YvYUtEL0NFZi9QZlZDWHVlbE1mQys1L3pkUExXUUJEVnlGdWQrNVdYL3g4U083VXM5UGFhRW1mZz0ifSwgeyJ1c2VyUHVibGljS2V5IjogIk1Ib3dGQVlIS29aSXpqMENBUVlKS3lRREF3SUlBUUVMQTJJQUJHMWU3TDJVd1AyWWxTajB2RWViUGJpNVpLMDh5NS9UeHRWb3VrRFpIUGtSNlRtb2JoVGpyMVRVNzZpUkU4bDlWQlhuU1h1QVB6cjBuSHdKVkdVZVJMdmp4MVh0YUZReE9QNjhjNlIvRTdFWkZ2STdRUFg1N0tvRkhYdkEvVlJaNnc9PSIsICJzaWduYXR1cmUiOiAiTUdRQ01FUVdFNnk0Rm42SFg1ekFvTzNkYzl5cG1Sd2lBclplc2o5aVBROTZEaEhuNXJkRTdNaGFMdWNRZ0MvaXhjSWJsZ0l3QkN5aFBvRUg2RjFITFlwM2xqbWVncVlZQ1E5NHEyZm1kbDB6dHhrWEVTOVpPOVRNSUZQRVpKYlpmUnU5ZHcyOSJ9LCB7InVzZXJQdWJsaWNLZXkiOiAiTUhvd0ZBWUhLb1pJemowQ0FRWUpLeVFEQXdJSUFRRUxBMklBQkZRUUlDWmpWUTV4bkE0c2RMbUJzUmVaMzRJeWdkSmZhanA3SnRReFBzU2RwWTJXV0FneXp6Rm40OFFRRWhoU1BtdzhJYUU3VlJKRENBT3FYRnhGektJbFBFTDFvcFJDUmhhWmJrRzc5Y3ZrWC9HVVhlaFVYc2V2ZGhyb2VRVERFdz09IiwgInNpZ25hdHVyZSI6ICJNR1FDTUdQRndvSDJLbHhwbVZhWXRWV1ViMHpDSUJxYXFXY2F6czFqOVp4YklLUmVkR2tJY0VJdHN0UFoxdnVTanYvNDJnSXdSeGZPcTRoQTdNMHlGV2ZPSndqRTlTc2JsYXhvRDNiRTZCYzN2QjUyMmsyQ0ZJNWJqelpkeUFTVW04d2J2TW5WIn1d
     ```
 
-#### 5. Construct a complete credential.
+#### Construct a complete credential.
 
 Put the four pieces of data together with a period (.) in between to obtain `<base64-header>.<base64-payload>.<base64-signature>.<base64-attestation>`. The following is an example:
 
@@ -422,6 +421,7 @@ The fields in the response message are described as follows:
 ### Tool
 
 The DSLM module provides a [credential tool](https://gitcode.com/openharmony/security_device_security_level/blob/master/oem_property/ohos/standard/dslm_cred_tool.py) to help you better understand the issuing and verification of credentials. This tool is a Python script encapsulated with OpenSSL commands.
+
 You can use the tool as follows:
 
 1. Initialize the signature key.

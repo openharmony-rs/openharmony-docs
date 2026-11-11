@@ -90,7 +90,7 @@ OpenHarmony设备的默认安全等级为SL1，设备制造商可以根据设备
     DeviceSecurityInfo *info = NULL;
 
     // 调用RequestDeviceSecurityInfo接口获取对端设备的设备安全等级信息：
-    int32_t ret = RequestDeviceSecurityInfo(device, DEFAULT_OPTION, &info);
+    int32_t ret = RequestDeviceSecurityInfo(device, option, &info);
 
     int32_t level = 0;
     // 从设备安全等级信息中提取设备安全等级字段
@@ -171,7 +171,7 @@ void DeviceSecurityInfoCallback(const DeviceIdentify *identify, struct DeviceSec
 
 void CheckDestDeviceSecurityLevelAsync(const DeviceIdentify *device, RequestOption *option)
 {
-    // 调用异步接口获取设备设备的安全等级等级信息
+    // 调用异步接口获取设备的安全等级信息
     int ret = RequestDeviceSecurityInfoAsync(device, option, DeviceSecurityInfoCallback);
     if (ret != SUCCESS) {
         // 获取信息失败，此场景建议开发者根据实际情况进行重试
@@ -202,7 +202,7 @@ OpenHarmony的设备安全等级管理模块提供了安全等级信息同步与
 <base64-header>.<base64-payload>.<base64-signature>.<base64-attestation>
 ```
 
-#### 1. 构造header
+#### 构造header
 
 当前header为固定的json字符串，其格式化显示如下：
 
@@ -218,7 +218,7 @@ OpenHarmony的设备安全等级管理模块提供了安全等级信息同步与
 eyJ0eXAiOiAiRFNMIn0=
 ```
 
-#### 2. 构造payload
+#### 构造payload
 
 根据设备实际情况构造payload的json字符串，示例如下：
 
@@ -256,27 +256,28 @@ payload中各字段说明如下：
 |       sn        |    设备SN序列号    |      否      |    string [0..128]    |
 |      udid       |   设备UDID序列号   |      否      |    string [0..128]    |
 
-#### 3. 构造signature
+#### 构造signature
 
 signature是对前面header和payload的签名
 
-##### 3.1 构造构建待签名的原始数据
+##### 构造构建待签名的原始数据
 
 将BASE64编码后的header和payload合并，中间用符号"."连接，得到`<base64-head>.<base64-payload>`
+
 示例如下：
 
 ```undefined
 eyJ0eXAiOiAiRFNMIn0=.eyJ0eXBlIjogImRlYnVnIiwgIm1hbnVmYWN0dXJlIjogIm9ob3MiLCAiYnJhbmQiOiAicmszNTY4IiwgIm1vZGVsIjogInJrMzU2OCIsICJzb2Z0d2FyZVZlcnNpb24iOiAiMy4yLjIiLCAic2VjdXJpdHlMZXZlbCI6ICJTTDEiLCAic2lnblRpbWUiOiAiMjAyMjAyMDkxNTAyNTkiLCAidmVyc2lvbiI6ICIxLjAuMSJ9
 ```
 
-##### 3.2 生成签名私钥
+##### 生成签名私钥
 
 凭据文件使用ECDSA签名算法对原始数据进行签名，首先生成签名用ECDSA密钥对：`<ecc-l3-pk>`和`<ecc-l3-sk>`
 
-> ![notice](../public_sys-resources/icon-notice.gif)**注意：**
+> **注意：**
 > 本流程需要在安全可靠的环境中执行，例如符合相关安全要求的服务器密码机中，以确保用于签名的密钥不被泄露。
 
-##### 3.3 对原始数据进行签名
+##### 对原始数据进行签名
 
 将`<base64-head>.<base64-payload>`作为参数，使用刚刚生成的ECC私钥`<ecc-l3-sk>`对其进行签名，并对签名结果进行BASE64编码，得到签名结果值`<base64-signature>`：
 
@@ -284,13 +285,13 @@ eyJ0eXAiOiAiRFNMIn0=.eyJ0eXBlIjogImRlYnVnIiwgIm1hbnVmYWN0dXJlIjogIm9ob3MiLCAiYnJ
 MGUCMDb9xoiFzTWVkHDU3VWSVQ59gLyw4TchZ0+eQ3vUfQsLt3Hkg0r7a/PmhkNr3X/mTgIxAIywIRE6vRTRs0xk6xKp8A0XwMMiIyjZlujPJfasCvFonpsvXLAqCAIYbe1J0k4Zfg==
 ```
 
-#### 4. 构造attestation
+#### 构造attestation
 
-> ![notice](../public_sys-resources/icon-notice.gif)**注意：**
+> **注意：**
 > 本流程需要在安全可靠的环境中执行，例如符合相关安全要求的服务器密码机中，以确保用于签名的密钥不被泄露。
 > 本流程涉及到的各密钥对不需要每次都重复生成，在确保密钥安全的前提下，后续可以直接复用。
 
-##### 4.1 生成三级签名验证信息
+##### 生成三级签名验证信息
 
 1. 首先生成二级签名用ECDSA密钥对：`<ecc-l2-pk>`和`<ecc-l2-sk>`
 2. 使用`<ecc-l2-sk>` 对3.2章节生成的`<ecc-l3-pk>`进行签名，得到`<ecc-l3-pk-signature>`
@@ -303,11 +304,11 @@ MGUCMDb9xoiFzTWVkHDU3VWSVQ59gLyw4TchZ0+eQ3vUfQsLt3Hkg0r7a/PmhkNr3X/mTgIxAIywIRE6
 }
 ```
 
-##### 4.2 生成二级签名验证信息
+##### 生成二级签名验证信息
 
 1. 生成一级签名用ECDSA密钥对：`<ecc-root-pk>`和`<ecc-root-sk>`
 2. 使用`<ecc-root-sk>` 对4.1章节生成的`<ecc-l2-pk>`进行签名，得到`<ecc-l2-pk-signature>`
-3. 将`<ecc-l3-pk>`和`<ecc-l3-pk-signature>`组合成json字符串示例如下：
+3. 将`<ecc-l2-pk>`和`<ecc-l2-pk-signature>`组合成json字符串示例如下：
 
 ``` json
 {
@@ -316,7 +317,7 @@ MGUCMDb9xoiFzTWVkHDU3VWSVQ59gLyw4TchZ0+eQ3vUfQsLt3Hkg0r7a/PmhkNr3X/mTgIxAIywIRE6
 }
 ```
 
-##### 4.3 生成根签名验证信息
+##### 生成根签名验证信息
 
 1. 使用`<ecc-root-sk>` 对4.2章节生成的`<ecc-root-pk>`进行签名（即自签名），得到`<ecc-root-pk-self-signature>`
 2. 将`<ecc-root-pk>`和`<ecc-root-pk-self-signature>`组合成json字符串示例如下：
@@ -328,7 +329,7 @@ MGUCMDb9xoiFzTWVkHDU3VWSVQ59gLyw4TchZ0+eQ3vUfQsLt3Hkg0r7a/PmhkNr3X/mTgIxAIywIRE6
 }
 ```
 
-##### 4.4 合并生成attestation
+##### 合并生成attestation
 
 1. 将上述三组签名信息合并到一个json数组中:
 
@@ -355,7 +356,7 @@ MGUCMDb9xoiFzTWVkHDU3VWSVQ59gLyw4TchZ0+eQ3vUfQsLt3Hkg0r7a/PmhkNr3X/mTgIxAIywIRE6
     W3sidXNlclB1YmxpY0tleSI6ICJNSG93RkFZSEtvWkl6ajBDQVFZSkt5UURBd0lJQVFFTEEySUFCREdOMU9xYWZrWFc2a0l1SEZrMVQ0TS84RVJUY3p0eWRDaGtramFROEkzNEc2Q3E1aTNJcnczVnRhQS9KTTF2a0lHOUZDVWRUaHZFUlJFUTFUdG9xemdxZW9SUzVwQW1EYUUyalEwYzdDem8rOHVUWTRIYW1weXZ1TENtenlYUXFnPT0iLCAic2lnbmF0dXJlIjogIk1HTUNMeHVjUnoyZndKZ092QkxyU1U3K1hlVTA3R0EyVXhZbDFMbEJLUnVIUS9wZlNWVHBEd0ZHSTNTb3h5ODR3NThIQWpBeGRtNEY3b3YvYUtEL0NFZi9QZlZDWHVlbE1mQys1L3pkUExXUUJEVnlGdWQrNVdYL3g4U083VXM5UGFhRW1mZz0ifSwgeyJ1c2VyUHVibGljS2V5IjogIk1Ib3dGQVlIS29aSXpqMENBUVlKS3lRREF3SUlBUUVMQTJJQUJHMWU3TDJVd1AyWWxTajB2RWViUGJpNVpLMDh5NS9UeHRWb3VrRFpIUGtSNlRtb2JoVGpyMVRVNzZpUkU4bDlWQlhuU1h1QVB6cjBuSHdKVkdVZVJMdmp4MVh0YUZReE9QNjhjNlIvRTdFWkZ2STdRUFg1N0tvRkhYdkEvVlJaNnc9PSIsICJzaWduYXR1cmUiOiAiTUdRQ01FUVdFNnk0Rm42SFg1ekFvTzNkYzl5cG1Sd2lBclplc2o5aVBROTZEaEhuNXJkRTdNaGFMdWNRZ0MvaXhjSWJsZ0l3QkN5aFBvRUg2RjFITFlwM2xqbWVncVlZQ1E5NHEyZm1kbDB6dHhrWEVTOVpPOVRNSUZQRVpKYlpmUnU5ZHcyOSJ9LCB7InVzZXJQdWJsaWNLZXkiOiAiTUhvd0ZBWUhLb1pJemowQ0FRWUpLeVFEQXdJSUFRRUxBMklBQkZRUUlDWmpWUTV4bkE0c2RMbUJzUmVaMzRJeWdkSmZhanA3SnRReFBzU2RwWTJXV0FneXp6Rm40OFFRRWhoU1BtdzhJYUU3VlJKRENBT3FYRnhGektJbFBFTDFvcFJDUmhhWmJrRzc5Y3ZrWC9HVVhlaFVYc2V2ZGhyb2VRVERFdz09IiwgInNpZ25hdHVyZSI6ICJNR1FDTUdQRndvSDJLbHhwbVZhWXRWV1ViMHpDSUJxYXFXY2F6czFqOVp4YklLUmVkR2tJY0VJdHN0UFoxdnVTanYvNDJnSXdSeGZPcTRoQTdNMHlGV2ZPSndqRTlTc2JsYXhvRDNiRTZCYzN2QjUyMmsyQ0ZJNWJqelpkeUFTVW04d2J2TW5WIn1d
     ```
 
-#### 5. 构造完整的凭据
+#### 构造完整的凭据
 
 用符号"."连接上述四段数据，最终得到 `<base64-header>.<base64-payload>.<base64-signature>.<base64-attestation>`，其示例如下：
 
@@ -419,6 +420,7 @@ eyJ0eXAiOiAiRFNMIn0=.eyJ0eXBlIjogImRlYnVnIiwgIm1hbnVmYWN0dXJlIjogIm9ob3MiLCAiYnJ
 ### 工具使用介绍
 
 为方便开发者对于“凭据文件”的进一步理解，设备安全等级管理模块提供了凭据工具，该工具是一个python脚本，基于OPENSSL命令行的简单封装，可以便捷的提供凭据文件的签发和验证功能。
+
 其使用方法如下：
 
 1. 签名密钥初始化：
