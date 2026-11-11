@@ -13,13 +13,7 @@
 
 本机制自API版本14起支持，涉及的接口与属性（setRestoreEnabled()、Navigation/NavDestination/router的recoverable）均自API版本14起提供
 
-[UIAbility备份恢复](ability-recover-guideline.md)介绍了通过[setRestoreEnabled()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled14)开启备份恢复、通过[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)保存临时数据的基本用法：应用切后台时系统调用onSaveState()并把页面栈序列化后写入磁盘；应用被回收后恢复启动时，系统把保存的数据合并进本次启动Want的parameters字段带回，页面栈由系统恢复。
-
-> **说明：**
->
-> 页面栈恢复不保证覆盖全部层级（更深层级见[深层栈补齐](#深层栈补齐)）；恢复的页面参数可能为空，需做[参数为空降级](#参数为空降级)处理。
-
-按下表选择适配方法：先在"路由形态"列找到应用所属的行组，再在"应用特征"列匹配具体行。所有方案的第一步均为开启备份恢复。
+按下表选择适配方法：先在"路由形态"列找到应用所属的行组，再在"应用特征"列匹配具体行。
 
 | 路由形态 | 应用特征 | 典型场景 | 适配方法 | 详见 |
 | --- | --- | --- | --- | --- |
