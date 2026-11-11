@@ -56,7 +56,11 @@ HUKS在密钥管理扩展场景下提供一组“通用操作”接口，覆盖�
 
 **ArkTS接口**
 
-```ts
+打开资源：
+
+<!-- @[open_resource_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/OpenResource.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -69,70 +73,75 @@ const resourceId = JSON.stringify({
   } as ESObject
 });
 
-// 打开资源
+const openResourceParams: huksExternalCrypto.HuksExternalCryptoParam[] = [];
+
 async function openResource(): Promise<void> {
   try {
-    await huksExternalCrypto.openResource(resourceId, []);
-    console.info('promise: openResource success.');
+    await huksExternalCrypto.openResource(resourceId, openResourceParams)
+      .then(() => {
+        console.info('promise: openResource success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: openResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: openResource failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: openResource input arg invalid.');
   }
 }
+```
 
-// 关闭资源
+关闭资源：
+
+<!-- @[close_resource_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/CloseResource.ets) -->
+
+``` TypeScript
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const resourceId = JSON.stringify({
+  providerName: 'testProviderName',
+  bundleName: 'com.example.cryptoapplication',
+  abilityName: 'CryptoExtension',
+  index: {
+    key: 'testKey'
+  } as ESObject
+});
+
+const closeResourceParams: huksExternalCrypto.HuksExternalCryptoParam[] = [];
+
 async function closeResource(): Promise<void> {
   try {
-    await huksExternalCrypto.closeResource(resourceId, []);
-    console.info('promise: closeResource success.');
+    await huksExternalCrypto.closeResource(resourceId, closeResourceParams)
+      .then(() => {
+        console.info('promise: closeResource success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: closeResource failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: closeResource failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: closeResource input arg invalid.');
   }
 }
 ```
 
 **C++接口**
 
+打开资源：
+
+<!-- @[open_resource_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
 ```c++
-#include "huks/native_huks_external_crypto_api.h"
-#include "huks/native_huks_param.h"
-#include "napi/native_api.h"
-#include <string.h>
-
-OH_Huks_Result InitParamSet(
-    struct OH_Huks_ExternalCryptoParamSet **paramSet,
-    const struct OH_Huks_ExternalCryptoParam *params,
-    uint32_t paramCount)
-{
-    OH_Huks_Result ret = OH_Huks_InitExternalCryptoParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        return ret;
-    }
-    ret = OH_Huks_AddExternalCryptoParams(*paramSet, params, paramCount);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeExternalCryptoParamSet(paramSet);
-        return ret;
-    }
-    ret = OH_Huks_BuildExternalCryptoParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeExternalCryptoParamSet(paramSet);
-        return ret;
-    }
-    return ret;
-}
-
-static const char *g_resourceId = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\",\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
+static const char *OPEN_RESOURCE_ID =
+    "{\"providerName\":\"testProviderName\","
+    "\"abilityName\":\"CryptoExtension\","
+    "\"bundleName\":\"com.example.cryptoapplication\","
+    "\"index\":{\"key\":\"testKey\"}}";
 
 static struct OH_Huks_ExternalCryptoParam g_openResourceParamsTest[] = {};
-static struct OH_Huks_ExternalCryptoParam g_closeResourceParamsTest[] = {};
 
-// 打开资源
-static napi_value OpenResource(napi_env env, napi_callback_info info) 
+static napi_value OpenResource(napi_env env, napi_callback_info info)
 {
     struct OH_Huks_Blob resourceId = {
-        (uint32_t)strlen(g_resourceId),
-        (uint8_t *)g_resourceId
+        (uint32_t)strlen(OPEN_RESOURCE_ID),
+        (uint8_t *)OPEN_RESOURCE_ID
     };
     struct OH_Huks_ExternalCryptoParamSet *openResourceParamSet = nullptr;
     OH_Huks_Result ohResult;
@@ -148,18 +157,32 @@ static napi_value OpenResource(napi_env env, napi_callback_info info)
         }
     } while (0);
     OH_Huks_FreeExternalCryptoParamSet(&openResourceParamSet);
-    
+
     napi_value ret;
     napi_create_int32(env, ohResult.errorCode, &ret);
     return ret;
 }
+```
 
-// 关闭资源
-static napi_value CloseResource(napi_env env, napi_callback_info info) 
+关闭资源：
+
+<!-- @[close_resource_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
+```c++
+static const char *CLOSE_RESOURCE_ID =
+    "{\"providerName\":\"testProviderName\","
+    "\"abilityName\":\"CryptoExtension\","
+    "\"bundleName\":\"com.example.cryptoapplication\","
+    "\"userid\":100,"
+    "\"index\":{\"key\":\"testKey\"}}";
+
+static struct OH_Huks_ExternalCryptoParam g_closeResourceParamsTest[] = {};
+
+static napi_value CloseResource(napi_env env, napi_callback_info info)
 {
     struct OH_Huks_Blob resourceId = {
-        (uint32_t)strlen(g_resourceId),
-        (uint8_t *)g_resourceId
+        (uint32_t)strlen(CLOSE_RESOURCE_ID),
+        (uint8_t *)CLOSE_RESOURCE_ID
     };
     struct OH_Huks_ExternalCryptoParamSet *closeResourceParamSet = nullptr;
     OH_Huks_Result ohResult;
@@ -175,7 +198,7 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
         }
     } while (0);
     OH_Huks_FreeExternalCryptoParamSet(&closeResourceParamSet);
-    
+
     napi_value ret;
     napi_create_int32(env, ohResult.errorCode, &ret);
     return ret;
@@ -215,12 +238,14 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
 
 ### 开发示例
 
-```ts
+<!-- @[get_resource_id_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/GetResourceId.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { util } from '@kit.ArkTS';
 
 let providerName: string = 'testProviderName';
-let abilityName: string = 'CryptoExtensionAbility1';
+let abilityName: string = 'CryptoExtension';
 let bundleName: string = 'com.example.cryptoapplication';
 // 资源信息，格式和内容由密钥管理扩展服务实现方定义
 let resourceInfo: string = 'vendor_defined_resource_info';
@@ -230,7 +255,7 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 async function getResourceId(): Promise<string> {
-  const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
+  const extProperties: huksExternalCrypto.HuksExternalCryptoParam[] = [
     {
       tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
       value: stringToUint8Array(abilityName),
@@ -296,7 +321,9 @@ async function getResourceId(): Promise<string> {
 
 **ArkTS接口**
 
-```ts
+<!-- @[get_property_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/GetProperty.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -313,7 +340,7 @@ async function getDeviceInfo(): Promise<void> {
 
   // 设置propertyId
   const propertyId = 'SKF_GetDevInfo';
-  const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
+  const extProperties: huksExternalCrypto.HuksExternalCryptoParam[] = [];
 
   // 调用getProperty获取属性信息
   try {
@@ -331,41 +358,37 @@ async function getDeviceInfo(): Promise<void> {
 
 **C++接口**
 
-```c++
-#include "huks/native_huks_external_crypto_api.h"
-#include "huks/native_huks_external_crypto_type.h"
-#include "napi/native_api.h"
-#include <string.h>
+<!-- @[get_property_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
 
-OH_Huks_Result InitExternalCryptoParamSet(
-    OH_Huks_ExternalCryptoParamSet **paramSet,
-    const OH_Huks_ExternalCryptoParam *params,
-    uint32_t paramCount)
+```c++
+static void ExtractPropertyResult(OH_Huks_ExternalCryptoParamSet *paramSetOut)
 {
-    OH_Huks_Result ret = OH_Huks_InitExternalCryptoParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        return ret;
+    if (paramSetOut == nullptr || paramSetOut->paramsCnt == 0) {
+        return;
     }
-    ret = OH_Huks_AddExternalCryptoParams(*paramSet, params, paramCount);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeExternalCryptoParamSet(paramSet);
-        return ret;
+    for (uint32_t i = 0; i < paramSetOut->paramsCnt; i++) {
+        OH_Huks_ExternalCryptoParam *param = &paramSetOut->params[i];
+        if (param->tag != OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA) {
+            continue;
+        }
+        char *outStr = static_cast<char *>(malloc(param->blob.size + 1));
+        if (outStr == nullptr) {
+            continue;
+        }
+        if (memcpy_s(outStr, param->blob.size + 1, param->blob.data, param->blob.size) == EOK) {
+            outStr[param->blob.size] = '\0';
+        }
+        free(outStr);
     }
-    ret = OH_Huks_BuildExternalCryptoParamSet(paramSet);
-    if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeExternalCryptoParamSet(paramSet);
-        return ret;
-    }
-    return ret;
 }
 
-static napi_value GetProperty(napi_env env, napi_callback_info info) 
+static napi_value GetProperty(napi_env env, napi_callback_info info)
 {
     /* 1.假设已经打开了resourceId */
     const char *resourceIdStr = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\","
                               "\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
-    const char *propertyIdStr = "SKF_GetDevInfo"; // 定义在GMT 0016-2023标准中的属性函数名称
-    
+    const char *propertyIdStr = "SKF_GetDevInfo";
+
     struct OH_Huks_Blob resourceId = {
         (uint32_t)strlen(resourceIdStr),
         (uint8_t *)resourceIdStr
@@ -374,54 +397,35 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
         (uint32_t)strlen(propertyIdStr),
         (uint8_t *)propertyIdStr
     };
-    
+
     /* 2.构造输入参数 */
     OH_Huks_ExternalCryptoParam params[] = {};
     OH_Huks_ExternalCryptoParamSet *paramSetIn = nullptr;
     OH_Huks_ExternalCryptoParamSet *paramSetOut = nullptr;
     OH_Huks_Result ohResult;
-    
+
     do {
         /* 3.初始化并构建输入参数集 */
-        ohResult = InitExternalCryptoParamSet(&paramSetIn, params,
+        ohResult = InitParamSet(&paramSetIn, params,
             sizeof(params) / sizeof(OH_Huks_ExternalCryptoParam));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        
+
         /* 4.调用OH_Huks_GetProperty获取属性 */
         ohResult = OH_Huks_GetProperty(&resourceId, &propertyId, paramSetIn, &paramSetOut);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        
-        /* 5.从输出参数集中提取结果
-         * 输出参数集由函数内部分配，查询到的属性数据放在OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA TAG中。
-         * 下面展示如何遍历返回的params并安全提取返回的属性字符串（示例）。
-         */
-        if (paramSetOut != nullptr && paramSetOut->paramsCnt > 0) {
-            for (uint32_t i = 0; i < paramSetOut->paramsCnt; i++) {
-                OH_Huks_ExternalCryptoParam *param = &paramSetOut->params[i];
-                /* 返回数据约定：GetProperty的结果放在OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA TAG中（示例使用JSON文本） */
-                if (param->tag == OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA) {
-                    /* 注意：param->blob.data可能不是以'\0'结尾，需拷贝并手动添加终止符 */
-                    char *outStr = (char *)malloc(param->blob.size + 1);
-                    if (outStr != NULL) {
-                        memcpy(outStr, param->blob.data, param->blob.size);
-                        outStr[param->blob.size] = '\0';
-                        // 解析outStr（例如使用JSON解析库），示例：
-                        // parse_json(outStr);
-                        free(outStr);
-                    }
-                }
-            }
-        }
+
+        /* 5.从输出参数集中提取结果 */
+        ExtractPropertyResult(paramSetOut);
     } while (0);
-    
+
     /* 6.释放资源 */
     OH_Huks_FreeExternalCryptoParamSet(&paramSetIn);
     OH_Huks_FreeExternalCryptoParamSet(&paramSetOut);
-    
+
     napi_value ret;
     napi_create_int32(env, ohResult.errorCode, &ret);
     return ret;
@@ -450,16 +454,19 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
 
 ### 开发示例
 
-```ts
+<!-- @[set_property_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/SetProperty.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function setProperty(resourceId: string, propertyId: string): Promise<void> {
   try {
     await huksExternalCrypto.setProperty(resourceId, propertyId)
-      .then(() => console.info('promise: setProperty success.'))
-      .catch((error: BusinessError) => {
-        console.error(`promise: setProperty failed, errCode: ${error.code}, errMsg: ${error.message}`);
+      .then(() => {
+        console.info('promise: setProperty success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: setProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
   } catch (error) {
     console.error('promise: setProperty input arg invalid.');
@@ -499,7 +506,9 @@ getErrorInfo接口返回值类型为[HuksExternalErrorInfo](../../reference/apis
 
 ### 开发示例
 
-```ts
+<!-- @[extension_error_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/ExtensionError.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { util } from '@kit.ArkTS';
 
@@ -519,8 +528,8 @@ async function testExtensionError(): Promise<void> {
   });
 
   /* 2.构造参数 */
-  const pin = "123456";
-  const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
+  const pin = '123456';
+  const params: huksExternalCrypto.HuksExternalCryptoParam[] = [
     {
       tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
       value: stringToUint8Array(pin)

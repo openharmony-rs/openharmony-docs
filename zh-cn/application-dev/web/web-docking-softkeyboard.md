@@ -102,6 +102,8 @@ ArkTS-Dyn示例：
 // Index.ets
 import { webview } from '@kit.ArkWeb';
 import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -115,6 +117,8 @@ struct WebComponent {
             setTimeout(() => {
               inputMethod.getController().showTextInput();
             }, 10);
+          }).catch((error: BusinessError) => {
+            hilog.error(0x0000, 'testTag', 'Failed to run JavaScript. Cause: %{public}s', JSON.stringify(error));
           });
         });
     }
@@ -131,6 +135,8 @@ ArkTS-Sta示例：
 import { $rawfile, TextAlign, Color, Web, Row, Text, ColumnOptions, Entry, Component, Column, Button, WebKeyboardAvoidMode } from '@ohos.arkui.component';
 import webview from '@ohos.web.webview';
 import inputMethod from '@ohos.inputMethod'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -144,6 +150,8 @@ struct WebComponent {
             setTimeout(() => {
               inputMethod.getController().showTextInput();
             }, 10);
+          }).catch((error: BusinessError) => {
+            hilog.error(0x0000, 'testTag', 'Failed to run JavaScript. Cause: %{public}s', JSON.stringify(error));
           });
         });
     }

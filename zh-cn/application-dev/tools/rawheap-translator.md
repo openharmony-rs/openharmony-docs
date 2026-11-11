@@ -1,7 +1,7 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "将 ArkTS 原始堆快照转换为 heapsnapshot，用于 OOM 后的离线内存分析与故障排查。"
-keywords: [rawheap_translator, ArkTS内存OOM, rawheap, heapsnapshot, 离线内存分析, 双文件混合模式, 环境变量配置, 堆快照裁剪级别, 工具版本匹配, 文件写入权限]
+keywords: [rawheap_translator, ArkTS内存OOM, rawheap, heapsnapshot, 离线内存分析, 双文件混合模式, 堆快照裁剪级别]
 doctype: guide
 status: active
 ---
@@ -49,10 +49,10 @@ rawheap_translator 工具提供以下解析能力：
 | 检查项 | 要求与不满足时的影响 |
 | --- | --- |
 | 格式与版本 | 工具必须支持输入快照的格式版本。版本不匹配可能导致解析失败，请使用与快照生成环境匹配的 SDK 工具。 |
-| 文件配对 | 双文件模式使用 ArkTS-Dyn 和 ArkTS-Sta 的配套快照。使用 hidumper 获取时，应选择同一进程、同一次转储生成的动态和静态快照，并核对进程号和时间戳一致。不能仅凭`.rawheap`后缀判断类型。 |
-| 输入顺序 | 双文件模式先传入动态快照，再传入静态快照。顺序错误会导致文件格式检查或解析失败。 |
+| 文件配对 | 双文件混合模式使用 ArkTS-Dyn 和 ArkTS-Sta 的配套快照。使用 hidumper 获取时，应选择同一进程、同一次转储生成的动态和静态快照，并核对进程号和时间戳一致。不能仅凭`.rawheap`后缀判断类型。使用不配套的快照可能导致引用无法解析或合并结果异常。 |
+| 输入顺序 | 双文件混合模式先传入动态快照，再传入静态快照。顺序错误会导致文件格式检查或解析失败。 |
 | 文件权限 | 输入文件必须可读，输出文件所在目录必须存在且可写。路径或权限不满足要求时，可能无法打开输入或保存输出。 |
-| 输出名称 | 建议显式指定以`.heapsnapshot`结尾的输出文件名。对于其他名称，自动补全后缀的工具会在原名称后追加`.heapsnapshot`，例如，`out.txt`会生成`out.txt.heapsnapshot`。不要把输出名写成`.rawheap`，以免被识别为双文件模式的第二个输入。 |
+| 输出名称 | 建议显式指定以`.heapsnapshot`结尾的输出文件名。对于其他名称，自动补全后缀的工具会在原名称后追加`.heapsnapshot`，例如，`out.txt`会生成`out.txt.heapsnapshot`。不要把输出名写成`.rawheap`，以免被识别为双文件混合模式的第二个输入。 |
 
 例如，在动静态混合场景下，一次转储生成动态快照`jsheap-64949-64950-1751075546050.rawheap`和静态快照`static_jsheap-64949-1751075546050.rawheap`，两份文件的进程号均为`64949`，时间戳均为`1751075546050`。快照命名和获取方式请参见[hidumper 查询虚拟机堆内存][hidumper]。
 
@@ -223,22 +223,22 @@ rawheap_translator dynamic.rawheap static.rawheap merged.heapsnapshot
 
 ### 验证并查看结果
 
-1. 检查本次日志，确认没有解析或保存错误，并记录工具报告的输出路径。双文件模式还需检查是否存在引用未解析等合并提示。
+1. 检查本次日志，确认没有解析或保存错误，并记录工具报告的输出路径。双文件混合模式还需检查是否存在引用未解析等合并提示。
 2. 确认对应`.heapsnapshot`文件已由本次命令生成或更新，且文件非空。Windows 可执行`dir myapplication-7979-7979.heapsnapshot`；Linux 和 macOS 可执行`ls -l myapplication-7979-7979.heapsnapshot`。静态快照单独解析示例应检查`static.heapsnapshot`，双文件示例应检查`merged.heapsnapshot`。
 3. 通过 DevEco Studio 的[Snapshot 模板基本操作][snapshot-operations]页面，参照“离线导入内存快照文件”小节导入文件，或使用 Chrome 开发者工具的内存面板导入文件。检查对象与引用关系。文件存在并不代表转换结果一定完整；若合并存在引用未解析提示，应重新核对文件配对和工具版本。
 
 ## 文件参考规格
 
-rawheap 文件的大小和生成耗时与当前 ArkTS 堆内存大小及存活对象数量呈强正相关。当 ArkTS 堆内存占用较大、存活对象数量较多时，生成的文件会更大，耗时也会更长。开发者可以订阅[资源泄漏事件][resource-leak-events]，自定义事件处理逻辑。
+rawheap 文件的大小和生成耗时与当前 ArkTS 堆内存大小及存活对象数量呈强正相关。当 ArkTS 堆内存占用较大、存活对象数量较多时，生成的文件会更大，耗时也会更长。如需在应用发生 JS 内存 OOM 时获取快照，可参考[资源泄漏事件][resource-leak-events]配置堆快照采集，并使用 rawheap_translator 解析实际获取到的 rawheap 文件。
 
-从 API version 20 开始，虚拟机支持两种规格的 HeapDump。开发者可调用[hidebug.setJsRawHeapTrimLevel][set-rawheap-trim-level]接口，设置当前进程转储虚拟机原始堆快照的裁剪级别。设置`TRIM_LEVEL_2`时，需使用支持该格式的解析工具；旧版工具可能转换失败。
+从 API version 20 开始，虚拟机支持两种规格的 HeapDump。开发者可调用[hidebug.setJsRawHeapTrimLevel][set-rawheap-trim-level]接口，设置当前进程转储虚拟机原始堆快照的裁剪级别。设置`TRIM_LEVEL_2`时，请使用与快照生成环境匹配的 SDK 工具，并参照该接口说明中的工具兼容性要求；不支持该格式的工具可能转换失败。
 
-从 API version 22 开始，`TRIM_LEVEL_1`模式新增对象属性名解析能力。生成的 rawheap 文件相对于原先会变大，具体增长大小与对象属性名数量和字符串大小有关。
+从 API version 22 开始，`TRIM_LEVEL_1`规格新增对象属性名解析能力。生成的 rawheap 文件相对于原先会变大，具体增长大小与对象属性名数量和字符串大小有关。
 
 | 规格 | 特点 |
 | --- | --- |
-| `TRIM_LEVEL_1` | dump 速度快，生成的 rawheap 文件大。API version 20 之前版本，虚拟机默认为此规格。 |
-| `TRIM_LEVEL_2` | dump 速度稍慢，生成的 rawheap 文件大小相比`TRIM_LEVEL_1`缩小 40% 左右。 |
+| `TRIM_LEVEL_1` | HeapDump 速度快，生成的 rawheap 文件大。此规格为默认裁剪级别；从 API version 20 开始，可通过[hidebug.setJsRawHeapTrimLevel][set-rawheap-trim-level]切换裁剪级别。 |
+| `TRIM_LEVEL_2` | HeapDump 速度稍慢，生成的 rawheap 文件大小相比`TRIM_LEVEL_1`缩小 40% 左右。 |
 
 下表给出不同堆大小下，rawheap 文件大小、生成耗时及解析耗时的示例，供评估文件上报的性能和流量开销时参考。实际数据会随应用、设备和工具版本变化。
 
@@ -315,7 +315,7 @@ rawheap 文件的大小和生成耗时与当前 ArkTS 堆内存大小及存活�
 
 **原因与处理**：工具版本过低可能导致转换失败。可使用[DevEco Studio 6.1.1 Release][deveco-studio]及以上版本配套的工具重试，并核对输入快照的格式版本。若升级后仍失败，请检查输入文件是否完整。
 
-### 双文件模式不可用或合并结果异常
+### 双文件混合模式不可用或合并结果异常
 
 **问题现象**：执行`rawheap_translator --help`后未显示双文件用法，或双文件转换时出现引用未解析提示、合并结果缺失。
 

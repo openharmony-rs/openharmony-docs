@@ -219,6 +219,7 @@ ArkTS-Dyn示例：
 import { mediaquery } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -258,9 +259,15 @@ struct MediaQueryExample {
     // 获取UIAbility实例的上下文信息
     let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // 调用该接口手动改变设备横竖屏状态
-    window.getLastWindow(context).then((lastWindow) => {
-      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
-    });
+    try {
+      window.getLastWindow(context).then((lastWindow) => {
+        lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`)
+      });
+    } catch (exception) {
+      console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`)
+    }
   }
 
   build() {
@@ -278,6 +285,7 @@ struct MediaQueryExample {
     .width('100%').height('100%')
   }
 }
+
 ```
 
 ArkTS-Sta示例：
@@ -378,6 +386,7 @@ ArkTS-Dyn示例：
 ``` TypeScript
 import { LengthMetrics, mediaquery, window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -425,9 +434,15 @@ struct MediaQueryFlex {
     // 获取UIAbility实例的上下文信息
     let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // 调用该接口手动改变设备横竖屏状态
-    window.getLastWindow(context).then((lastWindow) => {
-      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
-    });
+    try {
+      window.getLastWindow(context).then((lastWindow) => {
+        lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`)
+      });
+    } catch (exception) {
+      console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`)
+    }
   }
 
   build() {
@@ -463,6 +478,7 @@ struct MediaQueryFlex {
     .width('100%').height('100%')
   }
 }
+
 ```
 
 ArkTS-Sta示例：

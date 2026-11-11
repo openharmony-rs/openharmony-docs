@@ -45,12 +45,14 @@ status: active
 
 1. 调用createAVPlayer()创建AVPlayer实例，初始化进入idle状态。
 
-    ```ts
-    import { media } from '@kit.MediaKit';
-
-    // 创建avPlayer实例对象。
-    let avPlayer = await media.createAVPlayer();
-    ```
+   <!-- @[createAVPlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { media } from '@kit.MediaKit';
+   // ...
+       // 创建avPlayer实例对象。
+       this.avPlayer = await media.createAVPlayer();
+   ```
 
 2. 设置业务需要的监听事件，搭配全流程场景使用。支持的监听事件包括：
    | 事件类型 | 说明 |

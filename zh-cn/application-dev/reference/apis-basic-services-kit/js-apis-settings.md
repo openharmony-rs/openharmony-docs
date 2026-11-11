@@ -441,7 +441,6 @@ getValue(context: Context, name: string, domainName: string): Promise\<string>
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// 更新数据项亮度的值(该数据项在数据库中已存在，故getValue方法将更新该数据项的值)。
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.domainName.DEVICE_SHARED).then((value) => {
@@ -480,7 +479,6 @@ getValueSync(context: Context, name: string, defValue: string): string
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// 获取数据项亮度的值(该数据项在数据库中已存在)。
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '10');
@@ -522,7 +520,6 @@ getValueSync(context: Context, name: string, defValue: string, domainName: strin
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// 更新数据项亮度的值(该数据项在数据库中已存在)。
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100',  settings.domainName.DEVICE_SHARED);

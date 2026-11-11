@@ -512,7 +512,7 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 
 > **说明：**
 >
-> 单个场景中所有光源的数量上限为64。当光源数量超过64时，超出该上限后添加的光源将被直接舍弃，不参与场景渲染。
+> 单个场景中所有使能的光源数量上限为64，超过该上限后添加的光源将被直接舍弃，不参与场景渲染。
 
 ## SpotLight
 

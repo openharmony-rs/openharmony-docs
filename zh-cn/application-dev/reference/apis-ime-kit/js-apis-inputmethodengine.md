@@ -5145,6 +5145,42 @@ keyboardController.exitCurrentInputType().then(() => {
 | CURSOR_LEFT  | 3 |向左。 |
 | CURSOR_RIGHT  | 4 |向右。 |
 
+## UnderlineStyle
+
+枚举，预上屏文本的下划线样式。
+
+**ArkTS-Dyn起始版本:** 26.1.0
+
+**ArkTS-Sta起始版本:** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -- | -- | -- |
+| NONE | 0 | 无下划线。 |
+| SOLID | 1 | 实线下划线。 |
+| WAVY | 2 | 波浪线下划线。 |
+| DASHED | 3 | 虚线下划线。 |
+
+## PreviewTextStyle
+
+预上屏文本的样式。
+
+**ArkTS-Dyn起始版本:** 26.1.0
+
+**ArkTS-Sta起始版本:** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -- | -- | -- | -- | -- |
+| underlineStyle | [UnderlineStyle](#underlinestyle) | 否 | 否 | 下划线样式。 |
+| underlineColor | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 颜色格式为0xRRGGBB。透明度通道无效，由编辑框忽略。未设置时默认跟随光标颜色，显式设置0时为黑色。ArkTS-Sta使用undefined表示未设置颜色。 |
+
 ## Range<sup>10+</sup>
 
 选中的文本范围。
@@ -7234,6 +7270,126 @@ inputClient.getCallingWindowInfo().then((windowInfo: inputMethodEngine.WindowInf
 }).catch((err: BusinessError) => {
   console.error(`Failed to getCallingWindowInfo. Code is ${err.code}, message is ${err.message}`);
 });
+```
+
+### setPreviewTextWithStyle
+
+setPreviewTextWithStyle(text: string, range: Range, style: PreviewTextStyle): Promise&lt;void&gt;
+
+设置预上屏文本及其样式。使用Promise异步返回结果。编辑框须支持预上屏，且已与当前输入法绑定并获得焦点。自绘编辑框需接收样式回调并自行绘制下划线。
+
+颜色省略时默认跟随光标颜色。显式传入0表示黑色。
+
+**ArkTS-Dyn起始版本:** 26.1.0
+
+**ArkTS-Sta起始版本:** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -- | -- | -- | -- |
+| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。 |
+| range | [Range](#range10) | 是 | 替换范围，遵循[setPreviewText](#setpreviewtext12)的范围约束。传入{ start: -1, end: -1 }表示替换当前预上屏文本；无预上屏文本时按当前编辑位置处理。除该组合外，起止位置均须非负且start不大于end，范围不得超出当前允许替换的文本区域。 |
+| style | [PreviewTextStyle](#previewtextstyle) | 是 | 预上屏文本的下划线样式及可选的下划线颜色。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
+
+**错误码：**
+
+详细说明请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -- | -- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800011 | text preview not supported. |
+
+**示例：**
+
+以下调用方式适用于ArkTS-Dyn与ArkTS-Sta；ArkTS-Sta源文件需使用'use static'指令，client由onInputStart事件提供。
+
+```ts
+import { inputMethodEngine } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// client由输入法inputStart事件提供，须已与当前获焦编辑框绑定。
+async function setStyledPreview(client: inputMethodEngine.InputClient): Promise<void> {
+  const range: inputMethodEngine.Range = { start: -1, end: -1 };
+  const style: inputMethodEngine.PreviewTextStyle = {
+    underlineStyle: inputMethodEngine.UnderlineStyle.WAVY,
+    underlineColor: 0xFF0000
+  };
+  try {
+    await client.setPreviewTextWithStyle('预上屏文本', range, style);
+  } catch (err) {
+    const error = err as BusinessError;
+    console.error(`Failed to set preview text style, code=${error.code}, message=${error.message}`);
+  }
+}
+```
+
+### setPreviewTextWithStyleSync
+
+setPreviewTextWithStyleSync(text: string, range: Range, style: PreviewTextStyle): void
+
+设置预上屏文本及其样式。同步接口，失败时抛出异常。编辑框须支持预上屏，且已与当前输入法绑定并获得焦点。自绘编辑框需接收样式回调并自行绘制下划线。
+
+颜色省略时默认跟随光标颜色。显式传入0表示黑色。
+
+**ArkTS-Dyn起始版本:** 26.1.0
+
+**ArkTS-Sta起始版本:** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -- | -- | -- | -- |
+| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。 |
+| range | [Range](#range10) | 是 | 替换范围，遵循[setPreviewText](#setpreviewtext12)的范围约束。传入{ start: -1, end: -1 }表示替换当前预上屏文本；无预上屏文本时按当前编辑位置处理。除该组合外，起止位置均须非负且start不大于end，范围不得超出当前允许替换的文本区域。 |
+| style | [PreviewTextStyle](#previewtextstyle) | 是 | 预上屏文本的下划线样式及可选的下划线颜色。 |
+
+**错误码：**
+
+详细说明请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -- | -- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800011 | text preview not supported. |
+
+**示例：**
+
+以下调用方式适用于ArkTS-Dyn与ArkTS-Sta；ArkTS-Sta源文件需使用'use static'指令，client由onInputStart事件提供。
+
+```ts
+import { inputMethodEngine } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// client由输入法inputStart事件提供，须已与当前获焦编辑框绑定。
+function setStyledPreviewSync(client: inputMethodEngine.InputClient): void {
+  const range: inputMethodEngine.Range = { start: -1, end: -1 };
+  const style: inputMethodEngine.PreviewTextStyle = {
+    underlineStyle: inputMethodEngine.UnderlineStyle.WAVY,
+    underlineColor: 0xFF0000
+  };
+  try {
+    client.setPreviewTextWithStyleSync('预上屏文本', range, style);
+  } catch (err) {
+    const error = err as BusinessError;
+    console.error(`Failed to set preview text style, code=${error.code}, message=${error.message}`);
+  }
+}
 ```
 
 ### setPreviewText<sup>12+</sup>

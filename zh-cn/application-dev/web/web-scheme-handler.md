@@ -41,7 +41,7 @@ ArkTS：[onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHan
 > **注意：**
 >
 > - 需要在Web组件初始化之后设置SchemeHandler，否则会设置失败。 
-> - 若想要拦截Web组件发出的第一个请求，可以通过[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)方法提前进行Web组件初始化，再设置SchemeHandler实现拦截。详细代码请参考[完整示例](#完整示例)。
+> - 若想要拦截Web组件发出的第一个请求，可以通过[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)方法提前进行Web组件初始化，再设置SchemeHandler实现拦截。详细代码请参考[完整示例](#完整示例)。
 
 在C++中，通过NDK接口为Web组件设置SchemeHandler：
 
@@ -77,9 +77,9 @@ ArkTS：[onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHan
 
 如果要拦截自定义scheme的请求，需要在Web组件初始化之前将自定义scheme注册到Web内核，初始化后再注册会失败。
 
-Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initializeWebEngine接口，用于单独进行Web初始化。
+Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initializeWebEngine()接口，用于单独进行Web初始化。
 
-在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化Web内核，示例如下：
+在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化Web内核，示例如下：
 
 ArkTS-Dyn示例：
 <!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->    

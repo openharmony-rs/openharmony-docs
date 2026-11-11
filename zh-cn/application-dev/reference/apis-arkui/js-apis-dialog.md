@@ -399,3 +399,23 @@ Dialog状态的枚举。
 | APPEARED      | 3    | 表示已出现。           |
 | DISAPPEARING  | 4    | 表示正在消失。         |
 | DISAPPEARED   | 5    | 表示已消失。           |
+
+## HandednessFollowMode
+ 
+弹出框适配握持习惯的模式的枚举。
+ 
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+ 
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
+**ArkTS-Sta起始版本：** 26.1.0
+ 
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| NONE | 0 | 不适配。弹出框保持当前布局。 |
+| FOLLOW_ANCHOR | 1 | 弹出框跟随触发它的组件（最近交互的组件）的位置。 |
+| FOLLOW_GRIP_HAND | 2 | 弹出框跟随握持手（持握设备的手，区别于与屏幕交互的操作手）。 |

@@ -36,7 +36,7 @@ HiDebug可用于获取整机内存、应用进程内存占用、应用线程内�
 | hidebug.getAppNativeMemInfoAsync | 异步方式获取应用进程内存信息。<br/>**说明**：从API version 20开始，支持该接口。 |
 | hidebug.getAppNativeMemInfoWithCache | 获取应用进程内存信息（该接口存在缓存机制以提高接口性能）。<br/>**说明**：从API version 20开始，支持该接口。 |
 | hidebug.getSystemMemInfo | 获取系统内存信息。读取/proc/meminfo节点的数据。 |
-| hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中rsslimit由getrlimit 接口获取到的RLIMIT_RSS资源值，vsslimit由getrlimit接口获取到的RLIMIT_AS资源值。 |
+| hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中rsslimit由getrlimit接口获取到的RLIMIT_RSS资源值，vsslimit由getrlimit接口获取到的RLIMIT_AS资源值。 |
 | hidebug.getRssInfo | 获取应用进程使用的物理内存信息。读取/proc/{pid}/status节点的数据。<br/>与hidebug.getAppNativeMemInfo相比，该接口开销小更加轻量。<br/>**说明**：从API version 24开始，支持该接口。 |
 
 ### 接口说明（C/C++）
@@ -46,7 +46,7 @@ HiDebug可用于获取整机内存、应用进程内存占用、应用线程内�
 | OH_HiDebug_GetSystemMemInfo | 获取系统内存信息。读取/proc/meminfo节点的数据。 |
 | OH_HiDebug_GetAppNativeMemInfo | 获取应用进程内存信息。读取/proc/{pid}/smaps_rollup和/proc/{pid}/statm节点的数据。 |
 | OH_HiDebug_GetAppNativeMemInfoWithCache | 获取应用程序进程的内存信息，该接口存在缓存机制以提高性能。<br/>**说明**：从API version 20开始，支持该接口。 |
-| OH_HiDebug_GetAppMemoryLimit | 获取应用程序进程内存限制，其中rsslimit由getrlimit 接口获取到的RLIMIT_RSS资源值，vsslimit由getrlimit接口获取到的RLIMIT_AS资源值。 |
+| OH_HiDebug_GetAppMemoryLimit | 获取应用程序进程内存限制，其中rsslimit由getrlimit接口获取到的RLIMIT_RSS资源值，vsslimit由getrlimit接口获取到的RLIMIT_AS资源值。 |
 
 ## 获取显存信息
 
@@ -81,7 +81,7 @@ hiview进程每10秒获取一次当前CPU的运行数据并缓存，作为CPU使
 
 1. 系统CPU使用数据：
 
-   /proc/stat节点包含了自系统启动以来CPU 运行数据的统计信息，可在终端中使用以下命令查看该节点信息：
+   /proc/stat节点包含了自系统启动以来CPU运行数据的统计信息，可在终端中使用以下命令查看该节点信息：
 
    ``` text
    cat  /proc/stat
@@ -89,7 +89,7 @@ hiview进程每10秒获取一次当前CPU的运行数据并缓存，作为CPU使
    ...
    ```
 
-   CPU 指标字段含义：
+   CPU指标字段含义：
 
    CPU的统计信息从左到右分别代表以下含义（其中cpu为所有cpu运行数据的总和，单位：jiffies）：
 

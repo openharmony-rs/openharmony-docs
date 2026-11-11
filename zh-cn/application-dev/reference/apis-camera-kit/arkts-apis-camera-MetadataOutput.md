@@ -755,7 +755,7 @@ setInFrameMetadataForEncoderEnabled(enable: boolean): void
 
 > **说明：**
 >
-> 调用此方法前，需先调用[isInFrameMetadataForEncoderSupported](#isinframemetadataforencodersupported)确认相机设备是否支持编码器帧内元数据下发能力。若设备不支持该能力，调用本接口会抛出801错误码。
+> 调用此方法前，需先调用[isInFrameMetadataForEncoderSupported](#isinframemetadataforencodersupported)确认相机设备是否支持编码器帧内元数据下发能力。若设备不支持该能力，调用本接口会抛出801错误码。帧内元数据内容说明及解析请参见[实现指定区域更清晰的ROI编码](../../media/avcodec/video-encoding-ROI.md)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

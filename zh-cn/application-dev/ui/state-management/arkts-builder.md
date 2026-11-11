@@ -36,7 +36,7 @@ import { Builder } from '@kit.ArkUI';
 
 ## 装饰器使用说明
 
-\@Builder装饰器有两种使用方式，分别是定义在自定义组件内部的[私有自定义构建函数](#私有自定义构建函数)和定义在全局的[全局自定义构建函数](#全局自定义构建函数)。
+\@Builder装饰器有多种使用方式，分别是定义在自定义组件内部的[私有自定义构建函数](#私有自定义构建函数)、定义在全局的[全局自定义构建函数](#全局自定义构建函数)和只适用于ArkTS-Sta的定义在对象或者接口的[成员自定义构建函数](#成员自定义构建函数)。
 
 ### 私有自定义构建函数
 
@@ -181,6 +181,58 @@ struct BuilderDemo {
 
 - 全局自定义构建函数允许在build函数和其他自定义构建函数中调用。
 
+### 成员自定义构建函数
+
+在ArkTS-Sta环境中，@Builder装饰器可以装饰class和interface的成员函数。该规则不适用于ArkTS-Dyn。
+
+示例：
+
+<!-- @[BuilderClassInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderClassInterface.ets) -->
+
+``` TypeScript
+import { Entry, Component, Column, Text, Builder, FontWeight, Button, ObservedV2, Trace } from '@kit.ArkUI';
+
+interface TextBuilderInterface {
+  // @Builder装饰interface成员函数
+  @Builder showTextBuilder(): void;
+}
+
+@ObservedV2
+class TextBuilder implements TextBuilderInterface {
+  @Trace text: string = 'Hello World';
+  // @Builder装饰class成员函数
+  @Builder showTextBuilder() {
+    //绑定class内声明的状态变量
+    Text(this.text)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+
+@Entry
+@Component
+struct BuilderDemo {
+  textBuilder: TextBuilder = new TextBuilder();
+  build() {
+    Column() {
+      // 在build()中调用@Builder函数
+      this.textBuilder.showTextBuilder()
+      Button('Change text')
+        .onClick(() => {
+          this.textBuilder.text += '!';
+        })
+    }.width('100%')
+  }
+}
+```
+
+示例效果图：
+
+![arkts-builder-usage-class-interface](figures/arkts-builder-usage-class-interface.gif)
+
+- 成员自定义构建函数允许在自定义组件内、build函数和其他自定义构建函数中调用。
+
+- 在成员自定义构建函数中，`this`指代class对象，对象的状态变量可在自定义构建函数内访问。
 
 ## 参数传递规则
 

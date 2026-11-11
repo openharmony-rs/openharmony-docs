@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 组件截图依赖UI上下文，需要在具备明确上下文的环境中调用，因此请优先使用UIContext的getComponentSnapshot接口返回的[ComponentSnapshot](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md)对象的接口，不建议直接使用从`@kit.ArkUI`导入的`componentSnapshot`接口。
+> 组件截图依赖UI上下文，需要在具备明确上下文的环境中调用，因此请优先使用UIContext的[getComponentSnapshot()](../reference/apis-arkui//arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)接口返回的[ComponentSnapshot](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md)对象的接口，不建议直接使用从`@kit.ArkUI`导入的`componentSnapshot`接口。
 
 
 ### 对挂树组件截图

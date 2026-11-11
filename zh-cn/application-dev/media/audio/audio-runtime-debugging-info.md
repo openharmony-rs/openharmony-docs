@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍音频快照能力，通过获取播放、录音、耳返、会话、编创等模块的运行状态快照，帮助开发者定位无声、音量异常、焦点丢失等问题。"
+keywords: [音频快照, 音频调试, 音频运行状态, 播放无声, 焦点丢失]
+doctype: faq
+status: active
+---
 # 使用音频快照获取问题定位信息
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -414,7 +421,6 @@ audioCapturer {
 | 流状态信息 | uplinkStreamState、downlinkStreamState | 上行采集流和下行播放流状态 |
 
 > 详细字段信息见下方输出示例。
-
 > **说明：**
 >
 > 调用该方法前，需要先创建AudioLoopback实例。耳返的创建及使用方式可参考[实现低时延耳返](audio-ear-monitor-loopback.md)。耳返处于可用状态（AVAILABLE_IDLE或AVAILABLE_RUNNING）时，可查询到完整的快照信息。
@@ -523,7 +529,6 @@ audioLoopback {
 | 关联流信息 | streamInfos（streamId、focusState、streamType） | 会话关联的音频流列表 |
 
 > 详细字段信息见下方输出示例。
-
 > **说明：**
 >
 > 调用该方法前，需要先创建并激活音频会话。音频会话的创建及使用方式可参考[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)或[音频会话管理(ArkTS)](audio-session-management.md)。

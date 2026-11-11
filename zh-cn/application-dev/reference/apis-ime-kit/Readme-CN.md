@@ -30,6 +30,7 @@
     - [inputmethod_cursor_info_capi.h](capi-inputmethod-cursor-info-capi-h.md)
     - [inputmethod_inputmethod_proxy_capi.h](capi-inputmethod-inputmethod-proxy-capi-h.md)
     - [inputmethod_private_command_capi.h](capi-inputmethod-private-command-capi-h.md)
+    - [inputmethod_preview_text_style_capi.h](capi-inputmethod-preview-text-style-capi-h.md)
     - [inputmethod_text_avoid_info_capi.h](capi-inputmethod-text-avoid-info-capi-h.md)
     - [inputmethod_text_config_capi.h](capi-inputmethod-text-config-capi-h.md)
     - [inputmethod_text_editor_proxy_capi.h](capi-inputmethod-text-editor-proxy-capi-h.md)
@@ -42,6 +43,7 @@
     - [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md)
     - [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)
     - [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)
+    - [OH_InputMethod_PreviewTextStyle](capi-inputmethod-oh-inputmethod-previewtextstyle.md)
 - 错误码<!--ime-arkts-errcode-->
   - [输入法框架错误码](errorcode-inputmethod-framework.md)
   

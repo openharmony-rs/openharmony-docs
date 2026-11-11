@@ -7920,9 +7920,9 @@ export default class EntryAbility extends UIAbility {
       let deviceIds: string[] = [];
       if (devManager != null) {
         let devices = devManager.getAvailableDeviceListSync();
-        for (let i = 0; i < devices.length; i++) {
-          deviceIds[i] = devices[i].networkId as string;
-        }
+        devices.forEach((device, i) => {
+          deviceIds[i] = device.networkId as string;
+        });
       }
       try {
         if (kvStore != null) {
@@ -7974,9 +7974,9 @@ class EntryAbility extends UIAbility {
       let deviceIds: string[] = [];
       if (devManager != null) {
         let devices = devManager.getAvailableDeviceListSync();
-        for (let i = 0; i < devices.length; i++) {
-          deviceIds[i] = devices[i].networkId as string;
-        }
+        devices.forEach((device, i) => {
+          deviceIds[i] = device.networkId as string;
+        });
       }
       try {
         kvStore!.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, (err: BusinessError | null): void => {
@@ -8057,9 +8057,9 @@ export default class EntryAbility extends UIAbility {
       let deviceIds: string[] = [];
       if (devManager != null) {
         let devices = devManager.getAvailableDeviceListSync();
-        for (let i = 0; i < devices.length; i++) {
-          deviceIds[i] = devices[i].networkId as string;
-        }
+        devices.forEach((device, i) => {
+          deviceIds[i] = device.networkId as string;
+        });
       }
       try {
         if (kvStore != null) {
@@ -8114,9 +8114,9 @@ class EntryAbility extends UIAbility {
       let deviceIds: string[] = [];
       if (devManager != null) {
         let devices = devManager.getAvailableDeviceListSync();
-        for (let i = 0; i < devices.length; i++) {
-          deviceIds[i] = devices[i].networkId as string;
-        }
+        devices.forEach((device, i) => {
+          deviceIds[i] = device.networkId as string;
+        });
       }
       try {
         kvStore!.put(KEY_TEST_SYNC_ELEMENT + 'testSync101', VALUE_TEST_SYNC_ELEMENT, (err: BusinessError | null): void => {

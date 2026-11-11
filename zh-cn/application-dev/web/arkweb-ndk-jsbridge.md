@@ -27,7 +27,7 @@
 ## 使用Native接口实现JSBridge通信（推荐）
 原先，Native同步接口不支持返回值，其返回类型固定为void。然而，为满足业务扩展需求，自API version 18起，引入了替代接口，支持bool、string类型的返回值。
 
-另外针对同步接口[registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex)和异步接口[registerAsyncJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerasyncjavascriptproxyex)，新增了参数[permission](#前端页面调用应用侧函数)字段，用于调用权限控制。
+另外针对同步接口[registerJavaScriptProxyEx()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex)和异步接口[registerAsyncJavaScriptProxyEx()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerasyncjavascriptproxyex)，新增了参数[permission](#前端页面调用应用侧函数)字段，用于调用权限控制。
 
 ### 接口替代关系
 
@@ -158,7 +158,7 @@
 
 ### 前端页面调用应用侧函数
 
-通过[registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex)将应用侧函数注册至前端页面，注册后在下次加载或者重新加载后生效。
+通过[registerJavaScriptProxyEx()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex)将应用侧函数注册至前端页面，注册后在下次加载或者重新加载后生效。
 
   <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/hello.cpp) -->
   
@@ -238,7 +238,7 @@
 
 ### 应用侧调用前端页面函数
 
-使用[runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#runjavascript)调用前端页面函数。
+使用[runJavaScript()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#runjavascript)调用前端页面函数。
 
   ```c++
   // 构造runJS执行的结构体
@@ -964,7 +964,7 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
 
 ### 前端页面调用应用侧函数
 
-通过[registerJavaScriptProxy](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxy)将应用侧函数注册至前端页面，注册后在下次加载或者重新加载后生效。
+通过[registerJavaScriptProxy()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxy)将应用侧函数注册至前端页面，注册后在下次加载或者重新加载后生效。
 
   <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/hello.cpp) -->
   
@@ -983,7 +983,7 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
 
 ### 应用侧调用前端页面函数
 
-通过[runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#runjavascript)调用前端页面函数。
+通过[runJavaScript()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#runjavascript)调用前端页面函数。
 
   ```c++
   // 构造runJS执行的结构体

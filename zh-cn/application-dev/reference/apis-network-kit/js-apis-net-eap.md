@@ -11,7 +11,7 @@
 
 > **说明：** 
 >
-> 本模块仅适用于ArkTS-Dyn。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -28,6 +28,10 @@ regCustomEapHandler(netType: number, eapCode: number, eapType: number, callback:
 用于指定需要定制化处理的EAP报文类型和对应的处理callback。使用callback异步回调。
 
 系统会将符合条件的EAP报文送入callback函数中供企业应用获取。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -75,6 +79,10 @@ console.info('regCustomEapHandler success');
 unregCustomEapHandler(netType:number, eapCode: number, eapType: number, callback: Callback\<EapData\>): void
 
 用于指定需要取消定制化处理的EAP报文类型和对应的处理callback。使用callback异步回调。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -128,6 +136,10 @@ replyCustomEapData(result: CustomResult, data: EapData): void
  >- 若用于处理收EAP数据包(rx)时的callback，传给系统的EAP数据需要剥离服务器添加的定制部分。
  >- 若用于处理发EAP数据包(tx)时的callback，传给系统的EAP数据为经过添加定制部分后的EAP数据。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
@@ -173,6 +185,10 @@ try {
 startEthEap(netId: number, profile: EthEapProfile): void
 
 该接口用于指定一个以太网卡发起EAP认证。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -235,6 +251,10 @@ logOffEthEap(netId: number): void
 
 该接口用于指定一个以太网卡从EAP已认证状态退出。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限**：ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
@@ -279,7 +299,9 @@ setEthEapConfig(config: EthEapConfig): void
 
 多次调用本接口时，若config参数中任意字段发生变化，会触发一次自动认证流程。如果802.1X功能或自动认证已禁用，则保存配置并停止自动认证；如果当前认证由企业应用通过[eap.startEthEap](#eapstartetheap)发起，则仅保存配置，不触发自动认证，企业应用仍保留认证控制权。认证结果通过[eap.onStateChange](#eaponstatechange)注册的回调返回，本接口调用返回不代表认证成功。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -349,7 +371,9 @@ getEthEapConfig(): Promise\<EthEapConfig\>
 
 返回配置中profile的敏感字段password、certPassword始终为空字符串，certEntry始终为空数组。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -395,7 +419,9 @@ deleteEthEapConfig(): Promise\<void\>
 
 删除已持久化保存的以太网802.1X EAP配置。若当前存在正在进行的自动认证，则会停止本次认证流程。使用Promise异步回调。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -441,7 +467,9 @@ getEthEapStateInfo(): EthEapStateInfo
 
 同步获取当前以太网802.1X认证状态信息，包括认证状态、重试次数和补充信息。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -484,7 +512,9 @@ onStateChange(callback: Callback\<EthEapStateInfo\>): void
 
 订阅以太网802.1X认证状态变化。使用callback异步回调。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -531,7 +561,9 @@ offStateChange(callback?: Callback\<EthEapStateInfo\>): void
 
 取消订阅以太网802.1X认证状态变化。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -586,7 +618,9 @@ connect(action: EthEapConnectAction): Promise\<void\>
 
 当action为ACTION_DISCONNECT时，停止自动认证及重试，退出当前以太网802.1X认证，并将认证状态重置为[STATE_IDLE](#etheapstate)。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **需要权限**：ohos.permission.ENTERPRISE_MANAGE_EAP
 
@@ -638,6 +672,10 @@ try {
 
 EAP信息。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 ​**系统能力​**：SystemCapability.Communication.NetManager.Eap
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
@@ -650,6 +688,10 @@ EAP信息。
 
 表示EAP认证处理结果的枚举。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 ​**系统能力​**：SystemCapability.Communication.NetManager.Eap
 
 | **名称** | **值** | **说明** |
@@ -661,6 +703,10 @@ EAP信息。
 ## EapMethod
 
 表示EAP认证方式的枚举。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -680,6 +726,10 @@ EAP信息。
 
 表示第二阶段认证方式的枚举。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
 | 名称 | 值 | 说明 |
@@ -696,6 +746,10 @@ EAP信息。
 ## EthEapProfile
 
 可扩展身份验证协议配置信息。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Communication.NetManager.Eap
 
@@ -721,7 +775,9 @@ EAP信息。
 
 以太网802.1X认证配置，包括EAP配置信息和功能开关。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -738,7 +794,9 @@ EAP信息。
 
 以太网802.1X认证状态枚举。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -756,7 +814,9 @@ EAP信息。
 
 以太网802.1X认证状态信息，可通过[eap.getEthEapStateInfo](#eapgetetheapstateinfo)获取，也可通过[eap.onStateChange](#eaponstatechange)注册的回调返回。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 
@@ -765,14 +825,16 @@ EAP信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | state | [EthEapState](#etheapstate) | 否 | 否 | 当前认证状态。 |
-| retryCount | number | 否 | 否 | 当前重试次数，取值为整数，认证成功后重置为0。 |
+| retryCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 当前重试次数，取值为整数，认证成功后重置为0。 |
 | message | string | 否 | 是 | 补充信息，例如认证失败原因。认证成功时为空。 |
 
 ## EthEapConnectAction
 
 以太网802.1X认证操作枚举，用于[eap.connect](#eapconnect)。
 
-**起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Communication.NetManager.Eap
 

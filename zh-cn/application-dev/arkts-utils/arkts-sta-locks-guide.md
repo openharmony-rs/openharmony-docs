@@ -297,6 +297,8 @@ Panda call stack:
 以下为错误示例。任务持有读锁后，在读锁尚未释放时申请同一个RWLock的写锁。写锁需要等待所有读锁释放，但当前任务只有在获得写锁后才能继续执行到`finally`释放读锁，因而可能一直等待。示例会使TaskPool任务一直处于等待状态，仅用于独立调试进程，输出快照后需要结束进程，请勿在业务代码中使用。
 
 ```ts
+let rwLockWriteRequested = new AtomicBoolean(false);
+
 class VersionedConfig {
   private version: int = 0;
   private lock: RWLock = new RWLock();
@@ -307,6 +309,7 @@ class VersionedConfig {
     try {
       if (this.version == 0) {
         let writeLock = this.lock.writeLock();
+        rwLockWriteRequested.store(true);
         writeLock.lock(); // 错误：持有读锁时申请同一个RWLock的写锁。
         try {
           this.version = 1;
@@ -324,44 +327,55 @@ function updateVersionedConfig(config: VersionedConfig): void {
   config.updateIfNeeded();
 }
 
-function reproduceAndDumpRWLockUpgrade(): void {
+function reproduceRWLockUpgrade(): void {
   let config = new VersionedConfig();
   taskpool.execute(updateVersionedConfig, config);
 
-  // 等待任务进入RWLock写锁等待队列。
-  let rwWriteWaitFound = false;
-  while (!rwWriteWaitFound) {
-    let states: CoroutineDumpInfo[] = CoroutineDump.dumpCoroutineInfo();
-    for (let i = 0; i < states.length; i++) {
-      if (states[i].status == 'BLOCKED' && states[i].waitReason == 'RWLOCK_WRITE') {
-        rwWriteWaitFound = true;
-        break;
-      }
-    }
+  // 等待任务持有读锁并开始申请写锁。
+  while (!rwLockWriteRequested.load()) {
   }
 
-  // 调用前文辅助函数，再采集并打印当前锁等待快照。
-  printLockWaitSnapshot();
+  // 保持当前阻塞现场，从调试终端向当前进程发送SIGQUIT。
 }
 
-reproduceAndDumpRWLockUpgrade();
+reproduceRWLockUpgrade();
 ```
 
-该任务的状态快照可能包含以下关键内容：
+确认任务开始申请写锁后，按照前文命令向目标进程发送SIGQUIT。为便于说明，以下日志展示主Worker和与问题相关的Worker，实际任务名称、Worker名称、记录顺序和调用栈地址以运行结果为准：
 
 ```text
-Task: updateIfNeeded
+-> Dump ArkTS coroutine info
+==========
+StackfullCoroutineStateInfoTable
+==========
+Worker: [main] worker 0
+IsMain: Yes
+----------
+Coroutine: [fiber_sch] [main] worker 0
+Status: RUNNABLE
+Type: SCHEDULER
+Panda call stack:
+----------
+==========
+Worker: worker 1
+IsMain: No
+----------
+Coroutine: lock_guide.ETSGLOBAL::updateVersionedConfig
+Status: BLOCKED
+Type: MUTATOR
 WaitReason: RWLOCK_WRITE
 WaitMode: WRITELOCK
 Readers: 1
 Writers: 1
-CallStack:
 Panda call stack:
    0: 0x7e41acfc0080 in std.core.WriteLock::lock (managed)
    1: 0x7e41acfc0000 in lock_guide.VersionedConfig::updateIfNeeded (managed)
    2: 0x7e41acfbe000 in lock_guide.ETSGLOBAL::updateVersionedConfig (managed)
 ----------
+==========
 ```
+
+SIGQUIT日志中，`==========`用于分隔状态快照标题和不同的Worker，并标记当前Worker输出结束；`----------`用于分隔Worker基本信息和任务列表，并标记每条任务记录结束。一个Worker上包含多个任务时，这些任务会依次输出，并通过`----------`分隔。
 
 `RWLOCK_WRITE`和`WRITELOCK`说明任务正在等待写锁，`Readers`和`Writers`是任务进入等待时记录的数量，不代表采集完成后的实时状态。调用栈同时显示该任务停在`updateIfNeeded()`中的`WriteLock.lock()`，应进一步检查该路径是否仍持有读锁。
 

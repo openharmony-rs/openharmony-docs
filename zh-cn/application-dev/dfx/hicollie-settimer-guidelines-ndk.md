@@ -135,7 +135,7 @@
 
    在Index页面新增触发TestHiCollieTimerNdk方法的按钮。
 
-   <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[hicollie_timer_interface_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 添加点击事件，触发TestHiCollieTimerNdk方法。

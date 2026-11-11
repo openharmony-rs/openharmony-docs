@@ -1967,7 +1967,7 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 | 12300007 | The number of accounts has reached the upper limit. |
 | 12300015 | The short name already exists. |
 | 12300023 | The number of accounts of the specified type has reached the upper limit. |
-| 12300024 | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>适用版本：26.2.0+ |
+| 12300024 | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -2158,7 +2158,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 | 12300007 | The number of accounts has reached the upper limit. |
 | 12300015 | The short name already exists. |
 | 12300023 | The number of accounts of the specified type has reached the upper limit. |
-| 12300024 | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>适用版本：26.2.0+ |
+| 12300024 | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -10260,6 +10260,7 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | 12300109 | The authentication, enrollment, or update operation is canceled. |
 | 12300111 | The operation time out. |
 | 12300116 | Credential complexity verification failed. |
+| 12300121 | The credential has been used recently and cannot be reused.<br>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -12016,7 +12017,7 @@ ArkTS-Sta示例：
 | disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用禁止名单，名单中的应用不可被安装在设备上，默认为空列表。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23|
 | allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用允许名单，仅名单中的应用可以被安装在设备上，默认为std::nullopt。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23|
 | token<sup>24+</sup> | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
-| localId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 是 | 表示要创建的系统账号ID。如果不指定该参数，系统将自动分配一个localId。取值限定为整数。<br>**起始版本：** 26.2.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| localId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 是 | 表示要创建的系统账号ID。如果不指定该参数，系统将自动分配一个localId。取值限定为整数。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CreateOsAccountForDomainOptions<sup>12+</sup>
 
