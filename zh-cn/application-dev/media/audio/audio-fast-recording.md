@@ -10,7 +10,7 @@
 
 低时延音频录制是一种通过软硬芯协同设计实现的音频采集方案。其核心机制是通过减少buffer大小、优化读写数据架构，使该模式下音频录制具有更低的时延。
 
-从API version 26.1.0开始，在低时延模式的基础上新增超低时延模式。该模式相比低时延模式，可以进一步降低录制时延，但是对应用处理时长和系统资源要求更高，可能会增加卡顿率，所以建议仅在下文描述的场景使用。该模式需在开发者网站申请ACL权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`。
+从API版本26.1.0开始，在低时延模式的基础上新增超低时延模式。该模式相比低时延模式，可以进一步降低录制时延，但是对应用处理时长和系统资源要求更高，可能会增加卡顿率，所以建议仅在下文描述的场景使用。该模式需在开发者网站申请ACL权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`。
 
 ## 使用前提
 
@@ -46,7 +46,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 ### 设置超低时延模式
 
-从API version 26.1.0开始，开发者可按以下流程使用超低时延模式进行录制：
+从API版本26.1.0开始，开发者可按以下流程使用超低时延模式进行录制：
 
 1. 起流前，通过[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)查询当前设备及流参数是否支持超低时延录制。
 2. 将[OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)设置为AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST，并创建录制流。
