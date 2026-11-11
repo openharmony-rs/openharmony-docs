@@ -3879,7 +3879,7 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | instanceName | string | 否 | 否 | 已发现Bonjour（苹果零配置网络协议）服务的实例名。 |
-| registrationType | string | 否 | 否 | 已发现Bonjour服务的注册类型。取值前缀与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的serviceType入参相同，并在末尾追加".local"。 |
+| registrationType | string | 否 | 否 | 已发现Bonjour服务的注册类型。取值前缀与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的serviceType入参相同，并在末尾追加".local"。例如serviceType为"_http._tcp"时，取值为"_http._tcp.local"。 |
 | device | [WifiP2pDevice](#wifip2pdevice) | 否 | 否 | 返回该服务响应的对端设备。 |
 
 ## P2pDnsSdTxtInfo
@@ -3894,7 +3894,7 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| wholeDomainName | string | 否 | 否 | TXT记录的完整域名。格式为instanceName + "." + serviceType + ".local"。 |
+| wholeDomainName | string | 否 | 否 | TXT记录的完整域名。格式为instanceName + "." + serviceType + ".local"。例如instanceName为"instanceName"、serviceType为"_http._tcp"时，取值为"instanceName._http._tcp.local"。 |
 | txtRecord | Map&lt;string, string&gt; | 否 | 否 | 包含键值对的TXT记录。 |
 | device | [WifiP2pDevice](#wifip2pdevice) | 否 | 否 | 返回该TXT记录的对端设备。 |
 
@@ -3966,8 +3966,8 @@ addDnsSdServiceRequest(serviceType?: string, instanceName?: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| serviceType | string | 否 | 服务类型，用于对端服务发现。格式为"_&lt;ServiceName&gt;._&lt;Protocol&gt;"，例如"_http._tcp"。与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的serviceType入参对应。未指定时默认为空字符串。 |
-| instanceName | string | 否 | 实例名，用于发现对端服务。与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的instanceName入参对应。未指定时默认为空字符串。 |
+| serviceType | string | 否 | 服务类型，用于对端服务发现，最大长度为63字符。格式为"_&lt;ServiceName&gt;._&lt;Protocol&gt;"，例如"_http._tcp"。与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的serviceType入参对应。未指定时默认为空字符串。 |
+| instanceName | string | 否 | 实例名，用于发现对端服务，最大长度为63字符。与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的instanceName入参对应。未指定时默认为空字符串。 |
 
 **错误码：**
 
@@ -4009,7 +4009,7 @@ addUpnpServiceRequest(searchTarget?: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| searchTarget | string | 否 | UPnP搜索目标。未指定时默认为空字符串。入参类型示例：<br>- 搜索所有UPnP设备和服务："ssdp:all"<br>- 搜索特定根设备："upnp:rootdevice"<br>- 搜索特定设备类型（urn:schemas-upnp-org:device:...），例如"urn:schemas-upnp-org:device:MediaServer:2"<br>- 搜索特定服务类型（urn:schemas-upnp-org:service:...），例如"urn:schemas-upnp-org:service:ContentDirectory:2"<br>- 搜索特定UUID，例如"uuid:6859dede-8574-59ab-9332-123456789012" |
+| searchTarget | string | 否 | UPnP搜索目标。未指定时默认为空字符串。搜索设备类型时建议不超过255字节，搜索服务类型时不得超过512字节。入参类型示例：<br>- 搜索所有UPnP设备和服务："ssdp:all"<br>- 搜索特定根设备："upnp:rootdevice"<br>- 搜索特定设备类型（urn:schemas-upnp-org:device:...），例如"urn:schemas-upnp-org:device:MediaServer:2"<br>- 搜索特定服务类型（urn:schemas-upnp-org:service:...），例如"urn:schemas-upnp-org:service:ContentDirectory:2"<br>- 搜索特定UUID，例如"uuid:6859dede-8574-59ab-9332-123456789012" |
 
 **错误码：**
 
