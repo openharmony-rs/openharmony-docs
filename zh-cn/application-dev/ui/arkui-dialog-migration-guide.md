@@ -636,6 +636,7 @@
   ``` TypeScript
   import { DialogPresenter, DialogResult } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import resource from '../../common/resource';
   
   @Entry
   @Component
@@ -647,19 +648,19 @@
       NavDestination() {
         Row() {
           Column() {
-            Text('showDialog 迁移示例')
+            Text('showDialog' + resource.resourceToString($r('app.string.migrate_sample_zh')))
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
   
-            Button('旧接口：promptAction.showDialog')
+            Button(resource.resourceToString($r('app.string.old_interface_zh')) + '：promptAction.showDialog')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
                 this.result = $r('app.string.OldInterfaceShowDialogOnClick');
               })
   
-            Button('新接口：DialogPresenter.present（对话框）')
+            Button(resource.resourceToString($r('app.string.new_interface_zh')) + '：DialogPresenter.present')
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
