@@ -279,13 +279,13 @@ function readPixelsToBufferSync(pixelMap: image.PixelMap) {
 
 readPixelsToArea(area: PositionArea): Promise\<void\>
 
-读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。使用Promise异步回调。
+读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。使用Promise异步回调。
 
 > **说明：**
 >
 > 所需的最小缓冲区大小（单位：字节）计算公式如下：
 >
-> - BGRA_8888格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 >
 > 公式中各符号的含义如下：
@@ -296,7 +296,7 @@ readPixelsToArea(area: PositionArea): Promise\<void\>
 > | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `PositionArea.stride` |
 > | `width` | 读取区域的宽度，单位为像素 | `PositionArea.region.size.width` |
 > | `height` | 读取区域的高度，单位为像素 | `PositionArea.region.size.height` |
-> | 每像素字节数 | BGRA_8888为4（R、G、B、A通道各1字节）；8位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（NV12/NV21）为1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）；10位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（P010）为3（2倍Y分量 + 0.5倍U分量 + 0.5倍V分量） | — |
+> | 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。RGB格式对应BGRA_8888；YUV格式包括NV12、NV21（8位）和YCBCR_P010、YCRCB_P010（10位）。 | - |
 
 **起始版本：** 26.0.0
 
@@ -312,7 +312,7 @@ readPixelsToArea(area: PositionArea): Promise\<void\>
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | ------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
+| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
 
 **返回值：**
 
@@ -386,13 +386,13 @@ function readPixelsToAreaYUV(pixelMap: image.PixelMap) {
 
 readPixelsToAreaSync(area: PositionArea): void
 
-读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。同步返回结果。
+读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。同步返回结果。
 
 > **说明：**
 >
 > 所需的最小缓冲区大小（单位：字节）计算公式如下：
 >
-> - BGRA_8888格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 >
 > 公式中各符号的含义如下：
@@ -403,7 +403,7 @@ readPixelsToAreaSync(area: PositionArea): void
 > | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `PositionArea.stride` |
 > | `width` | 读取区域的宽度，单位为像素 | `PositionArea.region.size.width` |
 > | `height` | 读取区域的高度，单位为像素 | `PositionArea.region.size.height` |
-> | 每像素字节数 | BGRA_8888为4（R、G、B、A通道各1字节）；8位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（NV12/NV21）为1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）；10位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（P010）为3（2倍Y分量 + 0.5倍U分量 + 0.5倍V分量） | — |
+> | 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。RGB格式对应BGRA_8888；YUV格式包括NV12、NV21（8位）和YCBCR_P010、YCRCB_P010（10位）。 | - |
 
 **起始版本：** 26.0.0
 
@@ -419,7 +419,7 @@ readPixelsToAreaSync(area: PositionArea): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | ------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
+| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
 
 **错误码：**
 
@@ -487,13 +487,13 @@ function readPixelsToAreaSyncYUV(pixelMap: image.PixelMap) {
 
 readPixels(area: PositionArea): Promise\<void>
 
-读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。使用Promise异步回调。
+读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。使用Promise异步回调。
 
 > **说明：**
 >
 > 所需的最小缓冲区大小（单位：字节）计算公式如下：
 >
-> - BGRA_8888格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 >
 > 公式中各符号的含义如下：
@@ -504,7 +504,7 @@ readPixels(area: PositionArea): Promise\<void>
 > | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `PositionArea.stride` |
 > | `width` | 读取区域的宽度，单位为像素 | `PositionArea.region.size.width` |
 > | `height` | 读取区域的高度，单位为像素 | `PositionArea.region.size.height` |
-> | 每像素字节数 | BGRA_8888为4（R、G、B、A通道各1字节）；8位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（NV12/NV21）为1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）；10位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（P010）为3（2倍Y分量 + 0.5倍U分量 + 0.5倍V分量） | — |
+> | 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。RGB格式对应BGRA_8888；YUV格式包括NV12、NV21（8位）和YCBCR_P010、YCRCB_P010（10位）。 | - |
 
 > **说明：**
 >
@@ -520,7 +520,7 @@ readPixels(area: PositionArea): Promise\<void>
 
 | 参数名 | 类型                           | 必填 | 说明                     |
 | ------ | ------------------------------ | ---- | ------------------------ |
-| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
+| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
 
 **返回值：**
 
@@ -568,13 +568,13 @@ function readPixelsYUV(pixelMap: image.PixelMap) {
 
 readPixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
-读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。使用callback异步回调。
+读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。使用callback异步回调。
 
 > **说明：**
 >
 > 所需的最小缓冲区大小（单位：字节）计算公式如下：
 >
-> - BGRA_8888格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 >
 > 公式中各符号的含义如下：
@@ -585,7 +585,7 @@ readPixels(area: PositionArea, callback: AsyncCallback\<void>): void
 > | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `PositionArea.stride` |
 > | `width` | 读取区域的宽度，单位为像素 | `PositionArea.region.size.width` |
 > | `height` | 读取区域的高度，单位为像素 | `PositionArea.region.size.height` |
-> | 每像素字节数 | BGRA_8888为4（R、G、B、A通道各1字节）；8位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（NV12/NV21）为1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）；10位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（P010）为3（2倍Y分量 + 0.5倍U分量 + 0.5倍V分量） | — |
+> | 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。RGB格式对应BGRA_8888；YUV格式包括NV12、NV21（8位）和YCBCR_P010、YCRCB_P010（10位）。 | - |
 
 > **说明：**
 >
@@ -601,7 +601,7 @@ readPixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                           | 必填 | 说明                           |
 | -------- | ------------------------------ | ---- | ------------------------------ |
-| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
+| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
 | callback | AsyncCallback\<void>           | 是   |  回调函数。当读取区域内的图片数据成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -648,13 +648,13 @@ function readPixelsYUV(pixelMap: image.PixelMap) {
 
 readPixelsSync(area: PositionArea): void
 
-读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。同步返回结果。
+读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。同步返回结果。
 
 > **说明：**
 >
 > 所需的最小缓冲区大小（单位：字节）计算公式如下：
 >
-> - BGRA_8888格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 >
 > 公式中各符号的含义如下：
@@ -665,7 +665,7 @@ readPixelsSync(area: PositionArea): void
 > | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `PositionArea.stride` |
 > | `width` | 读取区域的宽度，单位为像素 | `PositionArea.region.size.width` |
 > | `height` | 读取区域的高度，单位为像素 | `PositionArea.region.size.height` |
-> | 每像素字节数 | BGRA_8888为4（R、G、B、A通道各1字节）；8位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（NV12/NV21）为1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）；10位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（P010）为3（2倍Y分量 + 0.5倍U分量 + 0.5倍V分量） | — |
+> | 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。RGB格式对应BGRA_8888；YUV格式包括NV12、NV21（8位）和YCBCR_P010、YCRCB_P010（10位）。 | - |
 
 > **说明：**
 >
@@ -679,7 +679,7 @@ readPixelsSync(area: PositionArea): void
 
 | 参数名 | 类型                           | 必填 | 说明                     |
 | ------ | ------------------------------ | ---- | ------------------------ |
-| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
+| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 读取的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，获取的像素数据会被拷贝至[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则获取的像素数据格式与PixelMap相同，否则会被转换为BGRA_8888格式。 |
 
 **错误码：**
 
@@ -716,13 +716,13 @@ function readPixelsSync(pixelMap: image.PixelMap) {
 
 writePixelsFromArea(area: PositionArea): Promise\<void\>
 
-将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。使用Promise异步回调。
+将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。使用Promise异步回调。
 
 > **说明：**
 >
 > 所需的最小缓冲区大小（单位：字节）计算公式如下：
 >
-> - BGRA_8888格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 >
 > 公式中各符号的含义如下：
@@ -733,7 +733,7 @@ writePixelsFromArea(area: PositionArea): Promise\<void\>
 > | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `PositionArea.stride` |
 > | `width` | 写入区域的宽度，单位为像素 | `PositionArea.region.size.width` |
 > | `height` | 写入区域的高度，单位为像素 | `PositionArea.region.size.height` |
-> | 每像素字节数 | BGRA_8888为4（R、G、B、A通道各1字节）；8位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（NV12/NV21）为1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）；10位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（P010）为3（2倍Y分量 + 0.5倍U分量 + 0.5倍V分量） | — |
+> | 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。RGB格式对应BGRA_8888；YUV格式包括NV12、NV21（8位）和YCBCR_P010、YCRCB_P010（10位）。 | - |
 
 > **说明：**
 >
@@ -753,7 +753,7 @@ writePixelsFromArea(area: PositionArea): Promise\<void\>
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | ------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
+| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
 
 **返回值：**
 
@@ -842,13 +842,13 @@ function writePixelsFromAreaYUV(pixelMap: image.PixelMap) {
 
 writePixelsFromAreaSync(area: PositionArea): void
 
-将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。同步返回结果。
+将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。同步返回结果。
 
 > **说明：**
 >
 > 所需的最小缓冲区大小（单位：字节）计算公式如下：
 >
-> - BGRA_8888格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 >
 > 公式中各符号的含义如下：
@@ -859,7 +859,7 @@ writePixelsFromAreaSync(area: PositionArea): void
 > | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `PositionArea.stride` |
 > | `width` | 写入区域的宽度，单位为像素 | `PositionArea.region.size.width` |
 > | `height` | 写入区域的高度，单位为像素 | `PositionArea.region.size.height` |
-> | 每像素字节数 | BGRA_8888为4（R、G、B、A通道各1字节）；8位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（NV12/NV21）为1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）；10位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（P010）为3（2倍Y分量 + 0.5倍U分量 + 0.5倍V分量） | — |
+> | 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。RGB格式对应BGRA_8888；YUV格式包括NV12、NV21（8位）和YCBCR_P010、YCRCB_P010（10位）。 | - |
 
 > **说明：**
 >
@@ -879,7 +879,7 @@ writePixelsFromAreaSync(area: PositionArea): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                                                                  |
 | -------- | ------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
-| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
+| area     | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
 
 **错误码：**
 
@@ -978,7 +978,7 @@ writePixelsFromArea(area: PositionArea, sourcePixelFormat: PixelMapFormat): Prom
 > | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `PositionArea.stride` |
 > | `width` | 写入区域的宽度，单位为像素 | `PositionArea.region.size.width` |
 > | `height` | 写入区域的高度，单位为像素 | `PositionArea.region.size.height` |
-> | 每像素字节数 | 取决于sourcePixelFormat：BGRA_8888、RGBA_8888为4；RGB_888为3；RGB_565为2；RGBA_F16为8 | — |
+> | 每像素字节数 | 取决于sourcePixelFormat，各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | - |
 
 > **说明：**
 >
@@ -1073,7 +1073,7 @@ writePixelsFromAreaSync(area: PositionArea, sourcePixelFormat: PixelMapFormat): 
 > | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `PositionArea.stride` |
 > | `width` | 写入区域的宽度，单位为像素 | `PositionArea.region.size.width` |
 > | `height` | 写入区域的高度，单位为像素 | `PositionArea.region.size.height` |
-> | 每像素字节数 | 取决于sourcePixelFormat：BGRA_8888、RGBA_8888为4；RGB_888为3；RGB_565为2；RGBA_F16为8 | — |
+> | 每像素字节数 | 取决于sourcePixelFormat，各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | - |
 
 > **说明：**
 >
@@ -1146,13 +1146,13 @@ function writePixelsFromAreaSync(pixelMap: image.PixelMap) {
 
 writePixels(area: PositionArea): Promise\<void>
 
-将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。使用Promise异步回调。
+将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。使用Promise异步回调。
 
 > **说明：**
 >
 > 所需的最小缓冲区大小（单位：字节）计算公式如下：
 >
-> - BGRA_8888格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 >
 > 公式中各符号的含义如下：
@@ -1163,7 +1163,7 @@ writePixels(area: PositionArea): Promise\<void>
 > | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `PositionArea.stride` |
 > | `width` | 写入区域的宽度，单位为像素 | `PositionArea.region.size.width` |
 > | `height` | 写入区域的高度，单位为像素 | `PositionArea.region.size.height` |
-> | 每像素字节数 | BGRA_8888为4（R、G、B、A通道各1字节）；8位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（NV12/NV21）为1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）；10位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（P010）为3（2倍Y分量 + 0.5倍U分量 + 0.5倍V分量） | — |
+> | 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。RGB格式对应BGRA_8888；YUV格式包括NV12、NV21（8位）和YCBCR_P010、YCRCB_P010（10位）。 | - |
 
 > **说明：**
 >
@@ -1179,7 +1179,7 @@ writePixels(area: PositionArea): Promise\<void>
 
 | 参数名 | 类型                           | 必填 | 说明                 |
 | ------ | ------------------------------ | ---- | -------------------- |
-| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
+| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
 
 **返回值：**
 
@@ -1233,13 +1233,13 @@ function writePixelsYUV(pixelMap: image.PixelMap) {
 
 writePixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
-将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。使用callback异步回调。
+将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。使用callback异步回调。
 
 > **说明：**
 >
 > 所需的最小缓冲区大小（单位：字节）计算公式如下：
 >
-> - BGRA_8888格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 >
 > 公式中各符号的含义如下：
@@ -1250,7 +1250,7 @@ writePixels(area: PositionArea, callback: AsyncCallback\<void>): void
 > | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `PositionArea.stride` |
 > | `width` | 写入区域的宽度，单位为像素 | `PositionArea.region.size.width` |
 > | `height` | 写入区域的高度，单位为像素 | `PositionArea.region.size.height` |
-> | 每像素字节数 | BGRA_8888为4（R、G、B、A通道各1字节）；8位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（NV12/NV21）为1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）；10位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（P010）为3（2倍Y分量 + 0.5倍U分量 + 0.5倍V分量） | — |
+> | 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。RGB格式对应BGRA_8888；YUV格式包括NV12、NV21（8位）和YCBCR_P010、YCRCB_P010（10位）。 | - |
 
 > **说明：**
 >
@@ -1266,7 +1266,7 @@ writePixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
 | 参数名    | 类型                           | 必填 | 说明                           |
 | --------- | ------------------------------ | ---- | ------------------------------ |
-| area      | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
+| area      | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
 | callback  | AsyncCallback\<void>           | 是   | 回调函数，当写入成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -1319,13 +1319,13 @@ function writePixelsYUV(pixelMap: image.PixelMap) {
 
 writePixelsSync(area: PositionArea): void
 
-将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。同步返回结果。
+将缓冲区内的像素数据写入PixelMap的指定区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则缓冲区内的数据会按照PixelMap的像素格式解析，否则按照BGRA_8888格式解析。同步返回结果。
 
 > **说明：**
 >
 > 所需的最小缓冲区大小（单位：字节）计算公式如下：
 >
-> - BGRA_8888格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 >
 > 公式中各符号的含义如下：
@@ -1336,7 +1336,7 @@ writePixelsSync(area: PositionArea): void
 > | `stride` | 内存中每行像素（含行末填充字节）所占的字节数 | `PositionArea.stride` |
 > | `width` | 写入区域的宽度，单位为像素 | `PositionArea.region.size.width` |
 > | `height` | 写入区域的高度，单位为像素 | `PositionArea.region.size.height` |
-> | 每像素字节数 | BGRA_8888为4（R、G、B、A通道各1字节）；8位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（NV12/NV21）为1.5（1倍Y分量 + 0.25倍U分量 + 0.25倍V分量）；10位[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)（P010）为3（2倍Y分量 + 0.5倍U分量 + 0.5倍V分量） | — |
+> | 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。RGB格式对应BGRA_8888；YUV格式包括NV12、NV21（8位）和YCBCR_P010、YCRCB_P010（10位）。 | - |
 
 > **说明：**
 >
@@ -1352,7 +1352,7 @@ writePixelsSync(area: PositionArea): void
 
 | 参数名 | 类型                           | 必填 | 说明                 |
 | ------ | ------------------------------ | ---- | -------------------- |
-| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)类型，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
+| area   | [PositionArea](arkts-apis-image-i.md#positionarea7) | 是   | 写入的区域数据。<br>该区域由[PositionArea](arkts-apis-image-i.md#positionarea7).region指定，[PositionArea](arkts-apis-image-i.md#positionarea7).pixels缓冲区内的像素数据会被写入PixelMap的该区域。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则缓冲区内的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
 
 **错误码：**
 
@@ -1529,7 +1529,7 @@ writeAllPixelsFromBuffer(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat): P
 >
 > `PixelMap宽度 × PixelMap高度 × 每像素字节数`
 >
-> 公式中每像素字节数取决于sourcePixelFormat：BGRA_8888、RGBA_8888为4；RGB_888为3；RGB_565为2；RGBA_F16为8。
+> 公式中每像素字节数取决于sourcePixelFormat，各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。
 
 > **说明：**
 >
@@ -1608,7 +1608,7 @@ writeAllPixelsFromBufferSync(src: ArrayBuffer, sourcePixelFormat: PixelMapFormat
 >
 > `PixelMap宽度 × PixelMap高度 × 每像素字节数`
 >
-> 公式中每像素字节数取决于sourcePixelFormat：BGRA_8888、RGBA_8888为4；RGB_888为3；RGB_565为2；RGBA_F16为8。
+> 公式中每像素字节数取决于sourcePixelFormat，各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。
 
 > **说明：**
 >
@@ -3439,7 +3439,7 @@ applyRotate(angle: number): Promise\<void\>
 
 > **说明：**
 >
-> - 图像旋转角度的取值范围为[0, 360]，超出取值范围时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。
+> - 旋转角度入参无限制，超出[0, 360]时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。
 > - 当旋转角度不是90°的倍数时，图像的尺寸会扩大为旋转后的外接矩形尺寸，以容纳旋转后的图像内容。例如：正方形图像旋转45°后，输出图像的尺寸（边长）变为原图像的√2倍。
 
 **起始版本：** 26.0.0
@@ -3502,7 +3502,7 @@ applyRotateSync(angle: number): void
 
 > **说明：**
 >
-> - 图像旋转角度的取值范围为[0, 360]，超出取值范围时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。
+> - 旋转角度入参无限制，超出[0, 360]时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。
 > - 当旋转角度不是90°的倍数时，图像的尺寸会扩大为旋转后的外接矩形尺寸，以容纳旋转后的图像内容。例如：正方形图像旋转45°后，输出图像的尺寸（边长）变为原图像的√2倍。
 
 **起始版本：** 26.0.0
@@ -3559,7 +3559,7 @@ rotate(angle: number, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> - 图像旋转角度的取值范围为[0, 360]，超出取值范围时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。
+> - 旋转角度入参无限制，超出[0, 360]时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。
 > - 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
 > - 从API版本26.0.0开始，建议使用[applyRotate](#applyrotate)代替，以获得更完善的异常处理能力。
 
@@ -3601,7 +3601,7 @@ rotate(angle: number): Promise\<void>
 
 > **说明：**
 >
-> - 图像旋转角度的取值范围为[0, 360]，超出取值范围时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。
+> - 旋转角度入参无限制，超出[0, 360]时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。
 > - 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
 > - 从API版本26.0.0开始，建议使用[applyRotate](#applyrotate)代替，以获得更完善的异常处理能力。
 
@@ -3646,7 +3646,7 @@ rotateSync(angle: number): void
 
 > **说明：**
 >
-> - 图像旋转角度的取值范围为[0, 360]，超出取值范围时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。
+> - 旋转角度入参无限制，超出[0, 360]时将根据圆周360°自动矫正（例如，-100°与260°效果相同）；YUV格式仅支持90°倍数的旋转角。
 > - 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
 > - 从API版本26.0.0开始，建议使用[applyRotateSync](#applyrotatesync)代替，以获得更完善的异常处理能力。
 
