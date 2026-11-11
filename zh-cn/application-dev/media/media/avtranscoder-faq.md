@@ -26,3 +26,10 @@ status: active
    当前转码能力支持情况：[AVTranscoder支持的格式](media-kit-intro.md#avtranscoder)、[AVCodec支持的格式](../avcodec/avcodec-support-formats.md)<!--RP1--><!--RP1End-->。
 
 2. 应用在收到error事件后，建议发送原视频；应用在收到complete事件后，建议先调用release再对转码后的视频做发送、上云等操作。
+
+## 转码参数对输出分辨率、画质与文件大小的影响
+
+- 未设置视频分辨率时，输出分辨率与源视频一致。
+- 相同分辨率下，视频码率设置越高，输出画质越清晰，文件体积也越大。
+- 未设置视频码率时，默认码率由视频分辨率决定，详细规格参见[AVTranscoderConfig](../../reference/apis-media-kit/arkts-apis-media-i.md#avtranscoderconfig12)。
+- 通常情况下，实际输出码率与设置值一致；但在极端场景下（如分辨率很高、码率很低且画面变化频繁），受编码器率控策略限制，实际输出码率可能与设置值偏差较大。
