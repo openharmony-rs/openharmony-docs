@@ -1257,17 +1257,17 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":121,
+						"end_line":122,
 						"name":"module_hnpPackages",
 						"start_line":16
 					},
 					{
-						"end_line":120,
+						"end_line":121,
 						"name":"module_definePermissions",
 						"start_line":17
 					},
 					{
-						"end_line":119,
+						"end_line":120,
 						"name":"module_executableBinaryPaths",
 						"start_line":18
 					}
