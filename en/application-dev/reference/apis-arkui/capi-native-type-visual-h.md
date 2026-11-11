@@ -5,6 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-04T08:55:34.562Z pushedAt=2026-11-05T06:59:46.761Z nl=1 -->
 
 ## Overview
 
@@ -36,6 +37,7 @@ Defines the visual types for the native module.
 | [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)|ArkUI_Matrix4ScaleOptions|Defines the configuration options for 4 x 4 matrix scaling. For details about the parameters and their value settings, see the member variable description.|
 | [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)|ArkUI_Matrix4TranslationOptions|Defines the configuration options for matrix translation.|
 | [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md) | OH_ArkUI_ShadowOptions | Defines shadow options.|
+| [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) | OH_ArkUI_LinearGradientBlurOptions | Defines the options for a linear gradient blur effect. |
 
 ### Enums
 
@@ -59,6 +61,10 @@ Defines the visual types for the native module.
 | [ArkUI_RenderFit](#arkui_renderfit)                                 | ArkUI_RenderFit   | Enumerates the sizing and positioning behaviors of animated content in its final state.|
 | [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | Enumerates animation playback directions.                          |
 | [ArkUI_AnimationFillMode](#arkui_animationfillmode)                 | ArkUI_AnimationFillMode         | Enumerates the states before and after execution of the frame-by-frame animation.            |
+| [OH_ArkUI_AnimationPropertyType](#oh_arkui_animationpropertytype)   | OH_ArkUI_AnimationPropertyType  | Enumerates the animatable property types of a property animation, keyframe animation, and path animation.             |
+| [OH_ArkUI_AnimationGroupState](#oh_arkui_animationgroupstate)       | OH_ArkUI_AnimationGroupState    | Enumerates the playback states of an animation group.                          |
+| [OH_ArkUI_AnimationFinishMode](#oh_arkui_animationfinishmode)       | OH_ArkUI_AnimationFinishMode    | Enumerates the finish modes of an animation group.                          |
+| [OH_ArkUI_LinearGradientBlurDirection](#oh_arkui_lineargradientblurdirection) | OH_ArkUI_LinearGradientBlurDirection | Enumerates the gradient directions of a linear gradient blur effect. |
 
 ### Function
 
@@ -98,8 +104,8 @@ Defines the visual types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetY(const ArkUI_Matrix4TranslationOptions* options, float* y)](#oh_arkui_matrix4translationoptions_gety) | - | Obtains the translation value of a translation object on the y-axis for matrix operations, in px. If the value of **y** has never been set, the default value is **0**.|
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetZ(ArkUI_Matrix4TranslationOptions* options, const float z)](#oh_arkui_matrix4translationoptions_setz) | - | Sets the translation value of a translation object on the z-axis for matrix operations, in px.|
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetZ(const ArkUI_Matrix4TranslationOptions* options, float* z)](#oh_arkui_matrix4translationoptions_getz) | - | Obtains the translation value of a translation object on the z-axis for matrix operations, in px. If the value of **z** has never been set, the default value is **0**.|
-| [ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateIdentity()](#oh_arkui_matrix4_createidentity) | - | Creates a fourth-order identity matrix object. When the object is no longer used, call [OH_ArkUI_Matrix4_Dispose](#oh_arkui_matrix4_dispose) to dispose of it.|
-| [ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateByElements(const float* elements)](#oh_arkui_matrix4_createbyelements) | - | Creates a fourth-order matrix object by specifying each element of the matrix. When the object is no longer used, call [OH_ArkUI_Matrix4_Dispose](#oh_arkui_matrix4_dispose) to dispose of it.|
+| [ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateIdentity()](#oh_arkui_matrix4_createidentity) | - | Creates a fourth-order identity matrix object. When the object is no longer used, call [OH_ArkUI_Matrix4_Dispose()](#oh_arkui_matrix4_dispose) to dispose of it.|
+| [ArkUI_Matrix4* OH_ArkUI_Matrix4_CreateByElements(const float* elements)](#oh_arkui_matrix4_createbyelements) | - | Creates a fourth-order matrix object by specifying each element of the matrix. When the object is no longer used, call [OH_ArkUI_Matrix4_Dispose()](#oh_arkui_matrix4_dispose) to dispose of it.|
 | [void OH_ArkUI_Matrix4_Dispose(ArkUI_Matrix4* matrix)](#oh_arkui_matrix4_dispose) | - | Disposes of the pointer to the matrix object.|
 | [ArkUI_Matrix4* OH_ArkUI_Matrix4_Copy(const ArkUI_Matrix4* matrix)](#oh_arkui_matrix4_copy) | - | Creates a copy of a fourth-order matrix object, which is used to perform operations on the same matrix to obtain different matrix objects.|
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_Invert(ArkUI_Matrix4* matrix)](#oh_arkui_matrix4_invert) | - | Performs an inverse matrix transformation on the input matrix. The input matrix object will be modified after the transformation. This API will modify the input matrix object.|
@@ -111,7 +117,7 @@ Defines the visual types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_TransformPoint(const ArkUI_Matrix4* matrix, const ArkUI_PointF* oriPoint, ArkUI_PointF* result)](#oh_arkui_matrix4_transformpoint) | - | Calculates the new coordinates of a point after matrix transformation.|
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_SetPolyToPoly(ArkUI_Matrix4* matrix, const ArkUI_PointF* src, const ArkUI_PointF* dst, const uint32_t pointCount)](#oh_arkui_matrix4_setpolytopoly) | - | Maps the vertex coordinates of a polygon to those of another polygon and calculates the required matrix. The value of **pointCount** determines the type of transformation to be calculated: The value **0** indicates an identity matrix transformation, **1** indicates translation, **2** indicates rotation or scaling, **3** indicates an affine transformation, and **4** indicates a perspective transformation. If any other value is passed, [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_GetElements(const ArkUI_Matrix4* matrix, float* result)](#oh_arkui_matrix4_getelements) | - | Obtains the 16 elements of a fourth-order matrix. The array is stored in row-major order. The length must be greater than or equal to 16. Otherwise, undefined behavior occurs.|
-| [ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()](#oh_arkui_motionpathoptions_create) | - | Create a motion path option for path animation. When the object is no longer used, call [OH_ArkUI_MotionPathOptions_Dispose](#oh_arkui_motionpathoptions_dispose) to dispose of it.|
+| [ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()](#oh_arkui_motionpathoptions_create) | - | Creates a motion path option for path animation. When the object is no longer used, call [OH_ArkUI_MotionPathOptions_Dispose()](#oh_arkui_motionpathoptions_dispose) to dispose of it.|
 | [void OH_ArkUI_MotionPathOptions_Dispose(ArkUI_MotionPathOptions* options)](#oh_arkui_motionpathoptions_dispose) | - | Disposes of a motion path option of path animation.|
 | [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* options, const char* svgPath)](#oh_arkui_motionpathoptions_setpath) | - | Sets the motion path of path animation.|
 | [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions* options, char* svgPathBuffer, const int32_t bufferSize, int32_t* writeLength)](#oh_arkui_motionpathoptions_getpath) | - | Obtains the motion path string stored in the motion path configuration item of the path animation.|
@@ -121,7 +127,7 @@ Defines the visual types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetTo(const ArkUI_MotionPathOptions* options, float* to)](#oh_arkui_motionpathoptions_getto) | - | Obtains the end progress of the path animation.|
 | [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetRotatable(ArkUI_MotionPathOptions* options, const bool rotatable)](#oh_arkui_motionpathoptions_setrotatable) | - | Sets whether a component rotates along the motion path.|
 | [ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOptions* options, bool* rotatable)](#oh_arkui_motionpathoptions_getrotatable) | - | Obtains whether a component rotates along the motion path.|
-| [OH_ArkUI_ShadowOptions* OH_ArkUI_ShadowOptions_Create()](#oh_arkui_shadowoptions_create) | - | Creates a shadow option object. In the newly created object, the default value of the blur radius (**radius**) is 0, the default value of the shadow type (**type**) is **ARKUI_SHADOW_TYPE_COLOR**, the default value of the shadow color (**color**) is **0xFF000000**, the default value of the x-axis offset (**offsetX**) is 0, the default value of the y-axis offset (**offsetY**) is 0, and the default value of **isFill** is **false**. If the object is no longer used, call [OH_ArkUI_ShadowOptions_Destroy](#oh_arkui_shadowoptions_destroy) to destroy it.|
+| [OH_ArkUI_ShadowOptions* OH_ArkUI_ShadowOptions_Create()](#oh_arkui_shadowoptions_create) | - | Creates a shadow option object. In the newly created object, the default value of the blur radius (**radius**) is 0, the default value of the shadow type (**type**) is **ARKUI_SHADOW_TYPE_COLOR**, the default value of the shadow color (**color**) is **0xFF000000**, the default value of the x-axis offset (**offsetX**) is 0, the default value of the y-axis offset (**offsetY**) is 0, and the default value of **isFill** is **false**. If the object is no longer used, call [OH_ArkUI_ShadowOptions_Destroy()](#oh_arkui_shadowoptions_destroy) to destroy it.|
 | [void OH_ArkUI_ShadowOptions_Destroy(OH_ArkUI_ShadowOptions* options)](#oh_arkui_shadowoptions_destroy) | - | Destroys the shadow option object.|
 | [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetRadius(OH_ArkUI_ShadowOptions* options, float radius)](#oh_arkui_shadowoptions_setradius) | - | Sets the blur radius for the shadow options. The value range is [0, +∞), in vp. If a negative value is passed, [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned.|
 | [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetRadius(OH_ArkUI_ShadowOptions* options, float* radius)](#oh_arkui_shadowoptions_getradius) | - | Obtains the blur radius of the shadow options.|
@@ -135,6 +141,14 @@ Defines the visual types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetOffsetY(OH_ArkUI_ShadowOptions* options, float* offsetY)](#oh_arkui_shadowoptions_getoffsety) | - | Obtains the shadow offset on the y-axis.|
 | [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_SetFill(OH_ArkUI_ShadowOptions* options, bool isFill)](#oh_arkui_shadowoptions_setfill) | - | Sets whether to fill a component with a shadow.|
 | [ArkUI_ErrorCode OH_ArkUI_ShadowOptions_GetFill(OH_ArkUI_ShadowOptions* options, bool* isFill)](#oh_arkui_shadowoptions_getfill) | - | Obtains whether a component is filled with a shadow.|
+| [OH_ArkUI_LinearGradientBlurOptions* OH_ArkUI_NativeModule_LinearGradientBlurOptions_Create()](#oh_arkui_nativemodule_lineargradientbluroptions_create) | - | Creates an object for linear gradient blur options. |
+| [void OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy(OH_ArkUI_LinearGradientBlurOptions *options)](#oh_arkui_nativemodule_lineargradientbluroptions_destroy) | - | Destroys the object for linear gradient blur options. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetBlurRadius(OH_ArkUI_LinearGradientBlurOptions *options, float blurRadius)](#oh_arkui_nativemodule_lineargradientbluroptions_setblurradius) | - | Sets the blur radius in linear gradient blur options. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetBlurRadius(const OH_ArkUI_LinearGradientBlurOptions *options, float *blurRadius)](#oh_arkui_nativemodule_lineargradientbluroptions_getblurradius) | - | Obtains the blur radius in linear gradient blur options. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetFractionStops(OH_ArkUI_LinearGradientBlurOptions *options, const float *fractionStops, int32_t stopsLength)](#oh_arkui_nativemodule_lineargradientbluroptions_setfractionstops) | - | Sets the gradient blur fraction stops in linear gradient blur options. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetFractionStops(const OH_ArkUI_LinearGradientBlurOptions *options, float *fractionStops, int32_t stopsSize, int32_t *writeLength)](#oh_arkui_nativemodule_lineargradientbluroptions_getfractionstops) | - | Obtains the gradient blur fraction stops in linear gradient blur options. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetDirection(OH_ArkUI_LinearGradientBlurOptions *options, OH_ArkUI_LinearGradientBlurDirection direction)](#oh_arkui_nativemodule_lineargradientbluroptions_setdirection) | - | Sets the gradient direction in linear gradient blur options. |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetDirection(const OH_ArkUI_LinearGradientBlurOptions *options, OH_ArkUI_LinearGradientBlurDirection *direction)](#oh_arkui_nativemodule_lineargradientbluroptions_getdirection) | - | Obtains the gradient direction in linear gradient blur options. |
 
 ## Enum Description
 
@@ -552,6 +566,102 @@ Enumerates the states before and after execution of the frame-by-frame animation
 | ARKUI_ANIMATION_FILL_MODE_FORWARDS = 1 | The target component retains the state set by the last keyframe encountered during execution of the animation.|
 | ARKUI_ANIMATION_FILL_MODE_BACKWARDS = 2 | The animation applies the values defined in the first keyframe once it is applied to the target component, and retains the values during the period set by [delay](capi-native-animate-h.md#oh_arkui_animateoption_setdelay).|
 | ARKUI_ANIMATION_FILL_MODE_BOTH = 3 | The animation follows the rules of [ARKUI_ANIMATION_FILL_MODE_FORWARDS](#arkui_animationfillmode) and [ARKUI_ANIMATION_FILL_MODE_BACKWARDS](#arkui_animationfillmode) to extend the animation properties in both directions.|
+
+### OH_ArkUI_AnimationPropertyType
+
+```c
+enum OH_ArkUI_AnimationPropertyType
+```
+
+**Description**
+
+
+Enumerates the animatable property types of a property animation, keyframe animation, and path animation.
+
+**Since:** 26.0.1
+
+| Value | Description |
+| -- | -- |
+| OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION = 0 | Translation along the x and y axes. When this property value is set or obtained, two [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) elements of the f32 type are required, which indicate the translation amounts along the x and y axes in sequence, in px. |
+| OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_X = 1 | Translation along the x-axis. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the f32 type is required, in px. |
+| OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_Y = 2 | Translation along the y-axis. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the f32 type is required, in px. |
+| OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION_Z = 3 | Translation along the z-axis. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the f32 type is required, in px. |
+| OH_ARKUI_ANIMATION_PROPERTY_SCALE = 4 | Scaling along the x and y axes. When this property value is set or obtained, two [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) elements of the f32 type are required, which indicate the scale factors along the x and y axes in sequence. |
+| OH_ARKUI_ANIMATION_PROPERTY_SCALE_X = 5 | Scaling along the x-axis. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the f32 type is required. |
+| OH_ARKUI_ANIMATION_PROPERTY_SCALE_Y = 6 | Scaling along the y-axis. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the f32 type is required. |
+| OH_ARKUI_ANIMATION_PROPERTY_ROTATION = 7 | Rotation around all axes. When this property value is set or obtained, three [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) elements of the f32 type are required, which indicate the rotation angles of the x, y, and z axes in sequence, in degrees. |
+| OH_ARKUI_ANIMATION_PROPERTY_ROTATION_X = 8 | Rotation around the x-axis. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the f32 type is required, in degrees. |
+| OH_ARKUI_ANIMATION_PROPERTY_ROTATION_Y = 9 | Rotation around the y-axis. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the f32 type is required, in degrees. |
+| OH_ARKUI_ANIMATION_PROPERTY_ROTATION_Z = 10 | Rotation around the z-axis. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the f32 type is required, in degrees. |
+| OH_ARKUI_ANIMATION_PROPERTY_OPACITY = 11 | Opacity of the component. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the f32 type is required. Value range: [0, 1]. |
+| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS = 12 | Bounds (position and size). When this property value is set or obtained, four [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) elements of the i32 type are required, which indicate the x-coordinate, y-coordinate, width, and height in sequence, in px. The value range of the width and height is greater than or equal to 0. |
+| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_X = 13 | X-coordinate of the upper-left corner of the bounds. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the i32 type is required, in px. |
+| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_Y = 14 | Y-coordinate of the upper-left corner of the bounds. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the i32 type is required, in px. |
+| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_WIDTH = 15 | Width of the bounds. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the i32 type is required, in px. The value range is greater than or equal to 0. |
+| OH_ARKUI_ANIMATION_PROPERTY_BOUNDS_HEIGHT = 16 | Height of the bounds. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the i32 type is required, in px. The value range is greater than or equal to 0. |
+| OH_ARKUI_ANIMATION_PROPERTY_BACKGROUND_COLOR = 17 | Background color of the component. When this property value is set or obtained, one [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) element of the u32 type is required. |
+
+### OH_ArkUI_AnimationGroupState
+
+```c
+enum OH_ArkUI_AnimationGroupState
+```
+
+**Description**
+
+
+Enumerates the playback states of an animation group.
+
+**Since:** 26.0.1
+
+| Value | Description |
+| -- | -- |
+| OH_ARKUI_ANIMATION_GROUP_STATE_RUNNING = 0 | The animation group is running. |
+| OH_ARKUI_ANIMATION_GROUP_STATE_PAUSED = 1 | The animation group is paused. |
+| OH_ARKUI_ANIMATION_GROUP_STATE_INACTIVE = 2 | The animation group is inactive, for example, the animation has ended or the animation group is in an invalid state. |
+
+### OH_ArkUI_AnimationFinishMode
+
+```c
+enum OH_ArkUI_AnimationFinishMode
+```
+
+**Description**
+
+
+Enumerates the finish modes of an animation group.
+
+**Since:** 26.0.1
+
+| Value | Description |
+| -- | -- |
+| OH_ARKUI_ANIMATION_FINISH_TO_START = 0 | Ends the animation group and jumps to the start state. |
+| OH_ARKUI_ANIMATION_FINISH_TO_CURRENT = 1 | Ends the animation group and stays at the current value. |
+| OH_ARKUI_ANIMATION_FINISH_TO_END = 2 | Ends the animation group and jumps to the end state. |
+
+### OH_ArkUI_LinearGradientBlurDirection
+
+```c
+enum OH_ArkUI_LinearGradientBlurDirection
+```
+
+**Description**
+
+
+Enumerates the gradient directions of a linear gradient blur effect.
+
+**Since:** 26.1.0
+
+| Value | Description |
+| -- | -- |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT = 0 | Linear gradient blur from right to left. |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_TOP = 1 | Linear gradient blur from bottom to top. |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT = 2 | Linear gradient blur from left to right. |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_BOTTOM = 3 | Linear gradient blur from top to bottom. |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_TOP = 4 | Linear gradient blur from lower-right to upper-left. |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_LEFT_BOTTOM = 5 | Linear gradient blur from upper-right to lower-left. |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_TOP = 6 | Linear gradient blur from lower-left to upper-right. |
+| OH_ARKUI_LINEAR_GRADIENT_BLUR_DIRECTION_RIGHT_BOTTOM = 7 | Linear gradient blur from upper-left to lower-right. |
 
 ## Function Description
 
@@ -1683,7 +1793,7 @@ ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()
 
 **Description**
 
-Create a motion path option for path animation. When the object is no longer used, call [OH_ArkUI_MotionPathOptions_Dispose](#oh_arkui_motionpathoptions_dispose) to dispose of it.
+Creates a motion path option for path animation. When the object is no longer used, call [OH_ArkUI_MotionPathOptions_Dispose](#oh_arkui_motionpathoptions_dispose) to dispose of it.
 
 **Since**: 23
 
@@ -2259,3 +2369,192 @@ Obtains whether a component is filled with a shadow.
 | Type| Description|
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_NativeModule_LinearGradientBlurOptions_Create()
+
+```c
+OH_ArkUI_LinearGradientBlurOptions* OH_ArkUI_NativeModule_LinearGradientBlurOptions_Create(void)
+```
+
+**Description**
+
+Creates an object for linear gradient blur options.
+
+**Since:** 26.1.0
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md)* | Pointer to the [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) object. The caller owns the returned object and must call [OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy()](#oh_arkui_nativemodule_lineargradientbluroptions_destroy) to destroy it when it is no longer needed. |
+
+### OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy()
+
+```c
+void OH_ArkUI_NativeModule_LinearGradientBlurOptions_Destroy(OH_ArkUI_LinearGradientBlurOptions *options)
+```
+
+**Description**
+
+Destroys the object for linear gradient blur options.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) *options | [Input parameter] Pointer to the [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) object returned by [OH_ArkUI_NativeModule_LinearGradientBlurOptions_Create()](#oh_arkui_nativemodule_lineargradientbluroptions_create). Passing **NULL** has no effect. After this API is called on a non-**NULL** parameter, the object pointer becomes invalid and must not be used or destroyed again. |
+
+### OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetBlurRadius()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetBlurRadius(OH_ArkUI_LinearGradientBlurOptions *options, float blurRadius)
+```
+
+**Description**
+
+Sets the blur radius in linear gradient blur options.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) *options | [Input parameter] Pointer to the [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) object. |
+| float blurRadius | [Input parameter] Blur radius, in px. The value range is [0, +∞). The value cannot be **NaN**. A larger value indicates a higher degree of blur, and **0** indicates no blur. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if **options** is a null pointer, the value of **blurRadius** is a negative number, or the value of **blurRadius** is **NaN**. |
+
+### OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetBlurRadius()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetBlurRadius(const OH_ArkUI_LinearGradientBlurOptions *options, float *blurRadius)
+```
+
+**Description**
+
+Obtains the blur radius in linear gradient blur options.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) *options | [Input parameter] Pointer to the [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) object. |
+| float *blurRadius | [Output parameter] Pointer to the blur radius, in px. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if **options** or **blurRadius** is a null pointer. |
+
+### OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetFractionStops()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetFractionStops(OH_ArkUI_LinearGradientBlurOptions *options, const float *fractionStops, int32_t stopsLength)
+```
+
+**Description**
+
+Sets the gradient blur fraction stops in linear gradient blur options.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) *options | [Input parameter] Pointer to the [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) object. |
+| const float *fractionStops | [Input parameter] Pointer to the flattened float array of (blur value, position) pairs. Every two elements (fractionStops[i], fractionStops[i+1]) indicates a segment. The blur value (fractionStops[i]) indicates the blur radius ratio applied at that position, where **0.0** means no blur and **1.0** means full blur according to **blurRadius**. The position (fractionStops[i+1]) indicates the relative position along the gradient direction, where **0.0** means the start point and **1.0** means the end point. The position values must be strictly monotonically increasing. Each element must not be **NaN** and must be within the range [0.0, 1.0]. |
+| int32_t stopsLength | [Input parameter] Number of float elements in the **fractionStops** array. It must be an even number and not less than 4. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if **options** or **fractionStops** is a null pointer, the value of **stopsLength** is odd, the value of **stopsLength** is less than 4, the position values are not strictly monotonically increasing, or **fractionStops** contains **NaN** or elements outside the range [0.0, 1.0]. |
+
+### OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetFractionStops()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetFractionStops(const OH_ArkUI_LinearGradientBlurOptions *options, float *fractionStops, int32_t stopsSize, int32_t *writeLength)
+```
+
+**Description**
+
+Obtains the gradient blur fraction stops in linear gradient blur options.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) *options | [Input parameter] Pointer to the [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) object. |
+| float *fractionStops | [Output parameter] Pointer to the buffer used to receive the flattened float array of (blur value, position) pairs. |
+| int32_t stopsSize | [Input parameter] Size of the buffer allocated by the caller for the **fractionStops** array (number of float elements). If the buffer is insufficient to hold all gradient blur segment data, [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned and **writeLength** is set to the required size. |
+| int32_t *writeLength | [Output parameter] Pointer to the number of float elements actually written to the **fractionStops** buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned; pointer to the minimum buffer size required to hold **fractionStops** when [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if **options**, **writeLength**, or **fractionStops** is a null pointer.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the value of **stopsSize** is smaller than the actual number in **fractionStops**. |
+
+### OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetDirection()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_SetDirection(OH_ArkUI_LinearGradientBlurOptions *options, OH_ArkUI_LinearGradientBlurDirection direction)
+```
+
+**Description**
+
+Sets the gradient direction in linear gradient blur options.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) *options | [Input parameter] Pointer to the [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) object. |
+| [OH_ArkUI_LinearGradientBlurDirection](#oh_arkui_lineargradientblurdirection) direction | [Input parameter] Direction of the linear gradient blur. The parameter type is [OH_ArkUI_LinearGradientBlurDirection](#oh_arkui_lineargradientblurdirection). |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if **options** is a null pointer or the value of **direction** is not a valid enumerated value. |
+
+### OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetDirection()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_NativeModule_LinearGradientBlurOptions_GetDirection(const OH_ArkUI_LinearGradientBlurOptions *options, OH_ArkUI_LinearGradientBlurDirection *direction)
+```
+
+**Description**
+
+Obtains the gradient direction in linear gradient blur options.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) *options | [Input parameter] Pointer to the [OH_ArkUI_LinearGradientBlurOptions](capi-arkui-nativemodule-oh-arkui-lineargradientbluroptions.md) object. |
+| [OH_ArkUI_LinearGradientBlurDirection](#oh_arkui_lineargradientblurdirection) *direction | [Output parameter] Pointer to the gradient direction of the linear gradient blur. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if **options** or **direction** is a null pointer. |

@@ -2,25 +2,22 @@
 
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
-<!--Owner: @liule_123-->
+<!--Owner: @OningO-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=cc8fe8b0f1b2859346994908b98ebf9b3df1ff9d translatedAt=2026-07-17T00:24:29.342Z pushedAt=2026-07-17T10:11:25.291Z -->
+<!-- md-trans-meta sourceCommit=9a2ea5deb06973638c274d5e6fdbf00364a7ecc9 translatedAt=2026-11-09T06:19:53.428Z pushedAt=2026-11-09T07:35:54.066Z nl=1 -->
 
-This module provides system applications with the capabilities to install and uninstall third-party fonts and migrate font data. Specifically:
-
-- Installing font files from a specified path (.ttf and .ttc formats are supported).
-
-- Uninstalling installed fonts by font name.
-
-- Starting a font data migration task during device upgrades, and providing callbacks for migration progress and results.
+This module provides APIs for installing and uninstalling third-party fonts and migrating font data by system apps. Specifically:
+- Installs a font file from a specified path. The .ttf, .ttc, and .otf formats are supported.
+- Uninstalls an installed font by its name.
+- Starts a font data migration task during device upgrade, and provides callbacks for the migration progress and result.
 
 >  **NOTE**
 >  
 >  - The initial APIs of this module are supported since API version 19. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - The APIs provided by this module are system APIs.
+>  - This topic describes only the system APIs provided by this module. For details about its public APIs, see [@ohos.fontManager (Font Management)](js-apis-font-manager.md).
 
 ## Modules to Import
 
@@ -28,41 +25,38 @@ This module provides system applications with the capabilities to install and un
 import { fontManager } from '@kit.LocalizationKit';
 ```
 
-## installFont
+## fontManager.installFont
 
 installFont(path: string): Promise&lt;number&gt;
 
-Installs a font file from a specified path into the system font library. This API uses a promise to return the result.
-
-After successful installation, applications can use the font by its font name.
-
+Installs the font file at the specified path into the system font library. This API uses a promise to return the result.
 > **NOTE**
 >
-> - The same font path cannot be installed repeatedly.
+> - After the installation is successful, the app can use the font by its font name. The same font path cannot be installed repeatedly.
 >
-> - The maximum number of font files that can be installed is 200. From version 26.0.1, the maximum number of font files that can be installed on PC/2in1 and Tablet is 800.
+> - A maximum of 200 font files can be installed. Since version 26.0.1, a maximum of 800 font files can be installed on PCs/2-in-1 devices and tablets .
 
 **Required permissions**: ohos.permission.UPDATE_FONT
 
 **System capability**: SystemCapability.Global.FontManager
 
-**Parameters**
+**Parameters** 
 
-| Name  | Type    | Mandatory  | Description   |
+| Name | Type | Mandatory | Description |
 | ----- | ------ | ---- | ----- |
-| path | string | Yes | Path to the font file to be installed. Only .ttf and .ttc font files are supported. |
+| path | string | Yes | Path of the font file to be installed. Only font files in .ttf, .ttc, and .otf formats are supported. |
 
 **Return value**
 
-| Type                   | Description                    |
+| Type | Description |
 | --------------------- | ---------------------- |
-| Promise&lt;number&gt; | Promise used to return the installation result.<br>- The value **0** indicates that the installation is successful and the font has been added to the system font library.<br>- Any other value indicates that the installation failed. Troubleshoot based on the error code. |
+| Promise&lt;number&gt; | Promise used to return the installation result.<br>- Returns 0: the installation is successful, and the font has been added to the system font library.<br>- Returns other values: the installation fails. Check the error code to identify the cause. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Font Management Error Codes](errorcode-font-manager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -71,10 +65,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 31100103 | Failed to copy the font file. |
 | 31100104 | The font file is installed.   |
 | 31100105 | Exceeded the maximum number of installed files. |
-| 31100106 | The system capability works abnormally. |
+| 31100106 | The system ability works abnormally. |
 
-**Example:**
-
+**Example**
   ```ts
   import { fontManager } from '@kit.LocalizationKit';
 
@@ -89,33 +82,33 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-## uninstallFont
+## fontManager.uninstallFont
 
 uninstallFont(fullName: string): Promise&lt;number&gt;
 
-Uninstalls an installed font file from the system font library by font name. This API uses a promise to return the result.
+Uninstalls the installed font file from the system font library by font name. This API uses a promise to return the result asynchronously.
 
 **Required permissions**: ohos.permission.UPDATE_FONT
 
 **System capability**: SystemCapability.Global.FontManager
 
-**Parameters**
+**Parameters** 
 
-| Name  | Type    | Mandatory  | Description   |
+| Name | Type | Mandatory | Description |
 | ----- | ------ | ---- | ----- |
-| fullName | string | Yes    | Name of the font to be uninstalled. You can open the .ttf or .ttc font file to obtain the name.<br>The font name is case-sensitive. Ensure that it exactly matches the actual font name. |
+| fullName | string | Yes | Name of the font to be uninstalled, which can be obtained by opening the .ttf, .ttc, and .otf font files.<br>The font name is case-sensitive. Ensure that it is exactly the same as the actual font name. |
 
 **Return value**
 
-| Type                   | Description                    |
+| Type | Description |
 | --------------------- | ---------------------- |
-| Promise&lt;number&gt; | Promise used to return the uninstallation result.<br>- The value **0** indicates that the uninstallation is successful and the font has been removed from the system font library.<br>- Any other value indicates that the uninstallation failed. Troubleshoot based on the error code. |
+| Promise&lt;number&gt; | Promise used to return the uninstall result.<br>- Returns 0 if the uninstall is successful and the font has been removed from the system font library.<br>- Returns another value if the uninstall fails. Check the error code to identify the cause. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Font Management Error Codes](errorcode-font-manager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -123,8 +116,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 31100108 | Failed to delete the font file. |
 | 31100109 | The system ability works abnormally. |
 
-**Example:**
-
+**Example**
   ```ts
   import { fontManager } from '@kit.LocalizationKit';
 
@@ -139,41 +131,40 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-## dataMigration<sup>23+</sup>
+## fontManager.dataMigration<sup>23+</sup>
 
 dataMigration(callback: DataMigrationCallback): number
 
-Data migration API used during device upgrades to start a migration task, providing real-time feedback on migration progress and results through a callback function.
+Data migration interface used during device upgrade. It starts a migration task and provides real-time feedback on the migration progress and result through a callback function.
 
 **Required permissions**: ohos.permission.UPDATE_FONT
 
 **System capability**: SystemCapability.Global.FontManager
 
-**Parameters**
+**Parameters** 
 
-| Name  | Type    | Mandatory  | Description   |
+| Name | Type | Mandatory | Description |
 | ----- | ------ | ---- | ----- |
-| callback | [DataMigrationCallback](#datamigrationcallback23) | Yes   | Callback function for data migration.|
+| callback | [DataMigrationCallback](#datamigrationcallback23) | Yes | Callback function for data migration. |
 
 **Return value**
 
-| Type                   | Description                    |
+| Type | Description |
 | --------------------- | ---------------------- |
-| number | Result of the migration task startup.<br>- **0**: The migration task is started successfully. The migration task will be executed in the background and the progress and result will be notified through the callback.<br>- Other values: The migration task failed to start. Troubleshoot based on the error code. |
+| number | Result of starting the migration task.<br>- 0: The migration task is started successfully and will be executed in the background, with the progress and result notified through the callback.<br>- Other values: The migration task fails to start. Troubleshoot the cause based on the error code. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Font Management Error Codes](errorcode-font-manager.md).
 
-| ID| Error Message|
+| ID | Error Message |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 31100110 | Call failed due to system error. |
 | 31100111 | Data migration is in progress. |
 
-**Example:**
-
+**Example**
   ```ts
   import { fontManager } from '@kit.LocalizationKit';
 
@@ -200,18 +191,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## DataMigrationCallback<sup>23+</sup>
 
-Callback API type used during data migration, defining the callback methods for the data migration process. You must implement all methods of this API to receive heartbeat notifications, progress updates, and the final result during migration.
+Callback interface type used during data migration. It defines the callback methods in the data migration process. Developers must implement all methods of this interface to receive heartbeat notifications, progress updates, and the final result during migration.
 
 ### onHeartBeat<sup>23+</sup>
 
 onHeartBeat(): void
 
-Callback function that is periodically invoked during the execution of the data migration task to notify you that the migration task is still running normally. You can use it to update UI prompts or execute other business logic.
+Callback function invoked periodically during the execution of a data migration task to notify developers that the migration task is still running normally. Developers can update the UI prompt or execute other business logic accordingly.
 
 **System capability**: SystemCapability.Global.FontManager
 
-**Example:**
-
+**Example**
   ```ts
   import { fontManager } from '@kit.LocalizationKit';
 
@@ -240,18 +230,17 @@ Callback function that is periodically invoked during the execution of the data 
 
 onProgress(progress : DataMigrationProgress): void
 
-Callback function that is periodically invoked during the execution of the data migration task to notify you of the current migration progress and estimated remaining time. This callback can be used when progress bars, remaining time, and other information need to be displayed on the UI.
+Callback function invoked periodically during the execution of a data migration task to notify developers of the current migration progress and estimated remaining time. Use this callback when the progress bar, remaining time, and other information need to be displayed on the UI.
 
 **System capability**: SystemCapability.Global.FontManager
 
 **Parameters**
 
-| Name | Type  | Mandatory| Description                              |
+| Name | Type | Mandatory | Description |
 | ------- | ------ | ---- | ---------------------------------- |
-| progress | [DataMigrationProgress](#datamigrationprogress23) | Yes  | Data migration progress.|
+| progress | [DataMigrationProgress](#datamigrationprogress23) | Yes | Data migration progress. |
 
-**Example:**
-
+**Example**
   ```ts
   import { fontManager } from '@kit.LocalizationKit';
 
@@ -280,18 +269,17 @@ Callback function that is periodically invoked during the execution of the data 
 
 onResult(result : number): void
 
-Callback function that is invoked after the data migration task is completed (whether successful or failed) to notify you of the final migration result. This callback can be used when subsequent operations (such as updating the UI, logging, notifying users, etc.) need to be performed after migration is complete.
+Callback function invoked after a data migration task is completed (regardless of success or failure) to notify developers of the final migration result. Use this callback when subsequent operations need to be performed after migration is completed, such as updating the UI, recording logs, and notifying users.
 
 **System capability**: SystemCapability.Global.FontManager
 
 **Parameters**
 
-| Name | Type  | Mandatory| Description                              |
+| Name | Type | Mandatory | Description |
 | ------- | ------ | ---- | ---------------------------------- |
-| result | number | Yes | Data migration result.<br>**0**: Data migration succeeded.<br>**1**: No data migration is required.<br>**2**: Failed to obtain the user ID.<br>**3**: Failed to check the directory.<br>**4**: Failed to initialize the cache directory.<br>**5**: Failed to open the source file.<br>**6**: Copy failed.<br>**7**: File rename failed.<br>**8**: File deletion failed.|
+| result | number | Yes | Data migration result.<br>**0**: Data migration succeeded.<br>**1**: No data migration required.<br>**2**: Failed to obtain the user ID.<br>**3**: Failed to check the directory.<br>**4**: Failed to initialize the cache directory.<br>**5**: Failed to open the source file.<br>**6**: Copy failed.<br>**7**: File rename failed.<br>**8**: File deletion failed.|
 
-**Example:**
-
+**Example**
   ```ts
   import { fontManager } from '@kit.LocalizationKit';
 
@@ -318,11 +306,11 @@ Callback function that is invoked after the data migration task is completed (wh
 
 ## DataMigrationProgress<sup>23+</sup>
 
-Describes the progress information of data migration, including the progress percentage and estimated remaining time. This API is the parameter type of the `onProgress` API in the data migration callback.
+Describes the progress information of data migration, including the progress percentage and estimated remaining time. This interface is the parameter type of the onProgress method of the data migration callback.
 
 **System capability**: SystemCapability.Global.FontManager
 
-| Name    | Type| Read-Only| Optional   | Description |
+| Name     | Type | Read-Only | Optional    | Description  |
 | -------- | ---------------|--------|---------|-------------------------------- |
-| timeRemaining | number  | Yes | No | Estimated remaining time, which may vary depending on factors such as device performance, file size, and system load.<br>The value must be a non-negative integer, with a minimum value of 0.<br>The unit is seconds.    |
-| progressPercentage | number | Yes | No | Data migration progress percentage, which is calculated based on the number or size of migrated font files and may not increase evenly. When `progressPercentage` reaches `100`, the migration task is about to complete and the `onResult` callback is about to be invoked.<br>The value range is [0, 100].|
+| timeRemaining | number  |Yes | No | Estimated remaining time, which may vary depending on factors such as device performance, file size, and system load.<br>The value is a non-negative integer, with a minimum value of 0.<br>The unit is s.    |
+| progressPercentage | number |Yes | No | Percentage progress of data migration. The progress value is calculated based on the number or size of migrated font files and may not increase evenly. When progressPercentage is 100, the migration task is about to complete and the onResult callback is about to be invoked.<br>The value ranges from 0 to 100.|

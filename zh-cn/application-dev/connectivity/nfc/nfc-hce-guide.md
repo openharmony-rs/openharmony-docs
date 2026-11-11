@@ -50,8 +50,8 @@ HCE应用开发者根据业务需要，可以选择实现前台刷卡或者后�
 2. HCE应用的刷卡页面退出时，需要显式调用[stop](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#stop9)来释放动态注册的AID刷卡配置项。
 - HCE应用后台刷卡<br>
 1. 在配置文件module.json5中，需要静态声明NFC读卡器选择的应用ID（AID）。根据业务选择， 选择声明的AID是属于Payment类型，还是Other类型。
-2. 如果选择Payment类型，该HCE应用会在系统设置页面的NFC"默认付款应用"里出现。用户选择该HCE应用作为默认支付应用后，可实现后台无冲突刷卡功能。由于提供了默认支付应用的选项， 因此Payment类型的HCE应用，不会出现多个冲突的情况。
-3. 如果选择Other类型，该HCE应用不会出现在系统设置页面的NFC"默认付款应用"里，但是多个HCE应用如果都声明了相同的Other类型的AID时，会出现冲突的可能。
+2. 如果选择Payment类型，该HCE应用会在系统设置页面的NFC“默认付款应用”里出现。用户选择该HCE应用作为默认支付应用后，可实现后台无冲突刷卡功能。由于提供了默认支付应用的选项， 因此Payment类型的HCE应用，不会出现多个冲突的情况。
+3. 如果选择Other类型，该HCE应用不会出现在系统设置页面的NFC“默认付款应用”里，但是多个HCE应用如果都声明了相同的Other类型的AID时，会出现冲突的可能。
 4. HCE应用后台刷卡的实现，不需要调用接口start和stop。
 5. HCE应用后台刷卡建议使用单独专用的HceAbility实现，以减少[onCreate](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)函数耗时。
 6. HceAbility的OnCreate函数中除了[hceService.on](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#on8)外，尽量减少其它操作。
@@ -253,9 +253,8 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 import { cardEmulation, nfcController } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { AsyncCallback } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
 
 let hceElementName: bundleManager.ElementName;

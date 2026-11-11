@@ -1,11 +1,20 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes in detail the data types and composition structure of the Ark Bytecode File, covering the field definitions and storage methods of the Header, Class, Method, Code, IndexSection, and other parts, to guide the analysis and modification of bytecode files."
+keywords: [Ark Bytecode, Bytecode File Format, abc file]
+doctype: guide
+status: active
+---
+
 # Ark Bytecode File Format
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @huyunhui1; @oh-rgx1; @zmw1-->
-<!--Designer: @ctw-ian; @hufeng20-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @oatuwwutao; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f2cb5494a82278dc546d60569b7e6ff61b7065a7 translatedAt=2026-11-06T10:13:00.282Z pushedAt=2026-11-09T08:37:36.252Z nl=1 -->
 
 This topic describes the Ark bytecode file format in detail, aiming to help you understand its structure and facilitate the analysis and modification of bytecode files.
 
@@ -35,7 +44,9 @@ The Ark bytecode uses a variety of basic and composite data types. Below are the
 | **Name**| **Format**| **Description**                                              |
 | -------------- | -------------- | ------------------------------------------------------------ |
 | `utf16_length`   | `uleb128`  | The value is **`len << 1 \| is_ascii`**, where **len** is the length of a string encoded by UTF-16, and **is_ascii** specifies whether the string contains only ASCII characters.|
-| `data`           | `uint8_t[]` | Null-terminated sequence of characters encoded in MUTF-8 format. |
+| `data`           | `uint8_t[]` | MUTF-8 (Modified UTF-8) encoded character sequence ending with '\0'.  |
+
+> **Note:**<br>MUTF-8 is a variant of standard UTF-8. The main differences are: it uses a two-byte sequence to encode the U+0000 null character, and it uses surrogate pairs to encode supplementary characters greater than U+FFFF.
 
 
 ### TaggedValue
@@ -56,7 +67,7 @@ Represents [class](#class) names in the format of `L_ClassName;`, where `ClassNa
 ## Bytecode File Layout
 The bytecode file begins with the [Header](#header) structure, from which all other structures can be accessed directly or indirectly. References within the file use offsets (32-bit) and indexes (16-bit). The byte offsets indicate the position relative to the file header, starting from 0. Indexes point to specific entries within index regions. More details are provided in [IndexSection](#indexsection).
 
-All multi-byte values (such as u16, u32, and i32) in bytecode files are stored in little-endian format.
+All multi-byte numeric types in the bytecode file (such as uint16_t, uint32_t, etc.) are stored in little-endian byte order.
 
 
 ### Header
@@ -294,6 +305,8 @@ A 32-bit unsigned integer, divided into three parts.
 | `length`         | `uleb128`        | Size of the **TryBlock** object to create, in bytes.                              |
 | `num_catches`    | `uleb128`        | Number of [CatchBlocks](#catchblock) associated with **TryBlock**. The value is 1.|
 | `catch_blocks`   | `CatchBlock[]`   | Array of **CatchBlocks** associated with **TryBlock**. The array contains one **CatchBlock** that can capture all types of exceptions.|
+
+> **Note:**<br>The reason `num_catches` is fixed to 1 is that in the exception handling mechanism of the ArkTS/TS/JS languages, a `try-catch` statement supports only a single `catch` block to catch all types of exceptions, and does not support catching exceptions separately by exception type. Therefore, each TryBlock needs to be associated with only one CatchBlock.
 
 
 ### CatchBlock

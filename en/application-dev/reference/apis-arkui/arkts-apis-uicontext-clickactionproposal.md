@@ -1,14 +1,13 @@
 # Class (ClickActionProposal)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:52:44.346Z pushedAt=2026-08-11T06:04:51.583Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-02T12:36:17.532Z pushedAt=2026-11-05T03:24:36.669Z nl=1 -->
 
-Smart gesture click action handling. When dynamically customizing smart gesture behavior through the [registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor) API, setting the selectedProposal of the return value [Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md) to an object of this type triggers a click operation on the target component.
+Smart gesture click action handling. Inherits from [TargetedGestureProposal](arkts-apis-uicontext-targetedgestureproposal.md). When dynamically customizing smart gesture behavior through the [registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor) API, setting the selectedProposal of the return value [Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md) to an object of this type triggers a click operation on the target component. When the target node has not been selected yet, this handling prioritizes establishing the selected state and does not immediately trigger the click.
 
 > **NOTE**
 >
@@ -47,6 +46,7 @@ import {
   ClickActionProposal,
   GestureHandlingResolution,
   TargetedGestureProposal,
+  GestureShortcut,
 } from '@kit.ArkUI';
 
 @Entry

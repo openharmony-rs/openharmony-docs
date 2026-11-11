@@ -1,12 +1,11 @@
 # Class (FrameCallback)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=6b08011c092d34059e19744a8f7cabfbde4edcb7 translatedAt=2026-08-05T03:10:13.383Z pushedAt=2026-08-05T06:43:04.568Z -->
+<!-- md-trans-meta sourceCommit=ea507e85db28b5cada938786a1476316bd919f17 translatedAt=2026-11-02T12:43:23.746Z pushedAt=2026-11-05T08:02:55.968Z nl=1 -->
 
 Defines a frame callback task that can be executed during the rendering phase of the next frame or in the idle phase after the frame rendering task is completed.
 

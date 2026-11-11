@@ -2,11 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin; @liyi0903; @mayaolll-->
+<!--Owner: @zhou-chaobo; @liyi0903; @huangxiaolinabc-->
 <!--Designer: @piggyguy; @liyi0903; @fangzhiyuan1-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4cffd417ce4153840a6f1321b4778e89f34ef96c translatedAt=2026-08-05T03:09:16.081Z pushedAt=2026-08-06T01:03:36.547Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-02T12:44:47.521Z pushedAt=2026-11-05T08:14:49.006Z nl=1 -->
 
 This section summarizes other ArkUI UIContext-related interfaces, which are used to describe component target nodes, page information, OverlayManager initialization parameters, gesture trigger information, Swiper content area information, and more.
 
@@ -40,8 +40,8 @@ Represents the page information of the router or navigation destination. If ther
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- |-------- | -------- |
-| routerPageInfo | observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) | No|Yes| Router information.|
-| navDestinationInfo | observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo) | No|Yes| Navigation destination information.|
+| routerPageInfo | observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) | No | Yes | Router page information, including the routing state and page information of the current Router page. When the page is a Router page, the corresponding Router page information can be obtained through this attribute; if the current page is not a Router page, this attribute is undefined. If there is no corresponding Router page information, this attribute is undefined. |
+| navDestinationInfo | observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo) | No | Yes | NavDestination page information, including the navigation state and page information of the current NavDestination page. When the page is a NavDestination page, the corresponding NavDestination page information can be obtained through this attribute; if the current page is not a NavDestination page, this attribute is undefined. If there is no corresponding NavDestination page information, this attribute is undefined. |
 
 ## OverlayManagerOptions<sup>15+</sup>
 
@@ -84,7 +84,7 @@ Specifies the gesture callback phases to listen for (passing an empty array mean
 
 ## SwiperContentInfo<sup>22+</sup>
 
-Provides content area information of the **Swiper** component.
+Defines the content area information of the **Swiper** component, including the **Swiper** component identifier, unique ID, and information about the child components currently displayed, used to obtain the content area state of **Swiper** at runtime.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -92,13 +92,13 @@ Provides content area information of the **Swiper** component.
 
 | Name     | Type| Read-Only | Optional| Description                   |
 | --------- | ---- | ----- | ---- | ----------------------- |
-| id        | string  | No| No| ID of the **Swiper** component.|
+| id        | string  | No | No | ID set for the **Swiper** component through the universal attribute **id**, which is specified by you. |
 | uniqueId  | number  | No| No| Unique ID of the **Swiper** component.|
 | swiperItemInfos   | Array\<[SwiperItemInfo](#swiperiteminfo22)\> | No| No| Information about the currently visible child components within the **Swiper** container.|
 
 ## SwiperItemInfo<sup>22+</sup>
 
-Provides information about **Swiper** child components.
+Defines the information about a child component of **Swiper**, including the unique ID and index of the child component, which can be obtained through **SwiperContentInfo**.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -107,4 +107,4 @@ Provides information about **Swiper** child components.
 | Name     | Type| Read-Only | Optional| Description                   |
 | --------- | ---- | ----- | ---- | -----------------------|
 | uniqueId  | number | No| No| Unique ID of the **Swiper** child component.  |
-| index     | number | No| No| Index of the child component in the **Swiper** container.|
+| index     | number | No | No | Index of the child component of **Swiper**, starting from 0 and up to the number of child components of **Swiper** minus 1. |

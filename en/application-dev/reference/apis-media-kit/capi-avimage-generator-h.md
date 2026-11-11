@@ -5,7 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=bea8fb0022cefc82abde107c0df33efa9455c886 translatedAt=2026-09-15T15:44:10.760Z pushedAt=2026-09-22T06:09:01.387Z -->
+<!-- md-trans-meta sourceCommit=1fec3b62fbf5a59d81a89ab1b9d984a58ea26ade translatedAt=2026-11-09T06:25:20.077Z pushedAt=2026-11-09T08:29:56.723Z nl=1 -->
 
 ## Overview
 
@@ -58,7 +58,7 @@ Creates an OH_AVImageGenerator instance, which is used to generate video frames 
 
 | Type| Description|
 | -- | -- |
-| [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)* | Pointer to the OH_AVImageGenerator instance created if the operation is successful; nullptr otherwise.<br>         Possible cause of failures: HstEngineFactory fails to create an AVMetadataHelperEngine.|
+| [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)* | Pointer to the **OH_AVImageGenerator** instance created if the operation is successful; a null pointer otherwise.<br>         Possible cause of failures: **HstEngineFactory** fails to create an **AVImageGeneratorEngine** instance. |
 
 ### OH_AVImageGenerator_SetFDSource()
 

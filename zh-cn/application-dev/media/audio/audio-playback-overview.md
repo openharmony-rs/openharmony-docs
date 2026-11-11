@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍Audio Kit的多种音频播放接口（OHAudio、AudioRenderer、AudioHaptic等）及适用场景，帮助开发者按业务需求选择合适的播放方案。"
+keywords: [音频播放, OHAudio, AudioRenderer, AudioHaptic, 播放接口选择, 后台播放, 短音播放]
+doctype: guide
+status: active
+---
 # 音频播放开发概述
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

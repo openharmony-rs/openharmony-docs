@@ -1,12 +1,11 @@
 # Class (PrefetchOptions)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:44:12.760Z pushedAt=2026-08-07T08:11:13.358Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:03:32.725Z pushedAt=2026-11-09T11:17:31.628Z nl=1 -->
 
 PrefetchOptions is a configuration class in the ArkWeb framework for customizing web page prefetch behavior. It is set through the prefetch-related API of [prefetchPage](./arkts-apis-webview-WebviewController.md#prefetchpage21), and the customizable settings include whether to ignore Cache-Control: no-store in the response header and the minimum time interval between two prefetches.
 
