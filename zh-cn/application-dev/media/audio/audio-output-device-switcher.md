@@ -679,4 +679,4 @@ C/C++示例：
 
 - [查询和监听音频输出设备](audio-output-device-management.md)
 - [实现音频输入设备路由切换](audio-input-device-switcher.md)
-- [选择合适的播放流类型](using-right-streamusage-for-playback.md
+- [选择合适的播放流类型](using-right-streamusage-for-playback.md)
