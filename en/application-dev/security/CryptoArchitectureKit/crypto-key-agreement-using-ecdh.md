@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e80025ed82ed281bac11c255d720292d542f564f translatedAt=2026-10-09T01:53:25.412Z pushedAt=2026-10-10T02:38:41.392Z -->
+<!-- md-trans-meta sourceCommit=2abb6d40560bb8e1a9913751e42e44a0192e5f14 translatedAt=2026-11-10T01:07:52.241Z pushedAt=2026-11-10T02:43:58.326Z nl=1 -->
 
 For details about the algorithm specifications, see [ECDH](crypto-key-agreement-overview.md#ecdh).
 
@@ -23,36 +23,43 @@ For details about the algorithm specifications, see [ECDH](crypto-key-agreement-
 - Example: Perform key agreement using **await**.
 
   <!-- @[use_ecdh_for_key_negotiation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/ECDHAsync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function ecdhAwait() {
-    // The public and private key pair data is transferred from an external system.
-    let pubKeyArray =
-      new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
-        83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26,
-        105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92,
-        235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
-    let priKeyArray =
-      new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171,
-        57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
-    let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-    // Key pair A passed from an external system.
-    let keyPairA = await eccGen.convertKey({ data: pubKeyArray }, { data: priKeyArray });
-    // Key pair B generated internally.
-    let keyPairB = await eccGen.generateKeyPair();
-    let eccKeyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-    // Use the public key of A and the private key of B to perform key agreement.
-    let secret1 = await eccKeyAgreement.generateSecret(keyPairB.priKey, keyPairA.pubKey);
-    // Use the private key of A and the public key of B to perform key agreement.
-    let secret2 = await eccKeyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
-    // The two key agreement results should be the same.
-    if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('ecdh result: success.');
-      console.info('ecdh output: ' + secret1.data);
-    } else {
-      console.error('ecdh result is not equal.');
+    try {
+      // Assume this public-private key pair data is passed in externally.
+      let pubKeyArray =
+        new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0,
+          4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121,
+          26, 105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99,
+          92, 235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
+      let priKeyArray =
+        new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171,
+          57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1,
+          7]);
+      let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
+      // Externally passed-in public-private key pair A.
+      let keyPairA = await eccGen.convertKey({ data: pubKeyArray }, { data: priKeyArray });
+      // Internally generated public-private key pair B.
+      let keyPairB = await eccGen.generateKeyPair();
+      let eccKeyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+      // Use A's public key and B's private key for key agreement.
+      let secret1 = await eccKeyAgreement.generateSecret(keyPairB.priKey, keyPairA.pubKey);
+      // Use A's private key and B's public key for key agreement.
+      let secret2 = await eccKeyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
+      // The results of the two agreements should be consistent.
+      if (secret1.data.toString() === secret2.data.toString()) {
+        console.info('ecdh result: success.');
+        console.info('ecdh output: ' + secret1.data);
+      } else {
+        console.error('ecdh result is not equal.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -61,14 +68,14 @@ For details about the algorithm specifications, see [ECDH](crypto-key-agreement-
 - Example (using synchronous APIs):
 
   <!-- @[use_ecdh_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/ECDHSync.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
   function ecdhSync() {
-    // The public and private key pair data is transferred from an external system.
+    // The public-private key pair data is passed from an external system.
     let pubKeyArray =
       new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
         83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26,

@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=0ef6b2e715d0a4700aedd77cf2d338efa6171255 translatedAt=2026-10-31T02:53:05.501Z pushedAt=2026-10-31T06:05:02.268Z nl=1 -->
+<!-- md-trans-meta sourceCommit=efdaa8692026153cc9460b1cea05429cf99c5cf6 translatedAt=2026-11-10T03:00:06.682Z pushedAt=2026-11-10T06:21:17.924Z nl=1 -->
 
 This topic uses AES-256, RSA-1024, SM2, and DES64 as examples to describe the encryption and decryption workflows. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
 
@@ -319,7 +319,7 @@ static const uint32_t NONCE_SIZE = 12;
 static const uint32_t AAD_SIZE = 16;
 static const uint32_t AE_TAG_SIZE = 16;
 static char AEAD[AE_TAG_SIZE] = {0};
-static char AAD[AAD_SIZE] = "cdcdcdcdcdcdcdc"; // this is a test value, for real use it should be different every time
+static char AAD[AAD_SIZE] = "cdcdcdcdcdcdcdc"; // This is a test value only. Use a different value each time in actual use.
 static uint8_t NONCE[NONCE_SIZE] = {0};
 static OH_Crypto_ErrCode ret = genRandomNumber(NONCE_SIZE, NONCE);
 static struct OH_Huks_Param g_genEncDecParams[] = {
@@ -338,12 +338,12 @@ static struct OH_Huks_Param g_encryptParams[] = {
     {.tag = OH_HUKS_TAG_NONCE,
      .blob = {
          .size = NONCE_SIZE,
-         .data = (uint8_t *)NONCE // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)NONCE // This is a test value only. Use a different value each time in actual use.
      }},
     {.tag = OH_HUKS_TAG_ASSOCIATED_DATA,
      .blob = {
          .size = AAD_SIZE,
-         .data = (uint8_t *)AAD // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)AAD // This is a test value only. Use a different value each time in actual use.
      }}};
 
 static struct OH_Huks_Param g_decryptParams[] = {
@@ -355,17 +355,17 @@ static struct OH_Huks_Param g_decryptParams[] = {
     {.tag = OH_HUKS_TAG_NONCE,
      .blob = {
          .size = NONCE_SIZE,
-         .data = (uint8_t *)NONCE // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)NONCE // This is a test value only. Use a different value each time in actual use.
      }},
     {.tag = OH_HUKS_TAG_ASSOCIATED_DATA,
      .blob = {
          .size = AAD_SIZE,
-         .data = (uint8_t *)AAD // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)AAD // This is a test value only. Use a different value each time in actual use.
      }},
     {.tag = OH_HUKS_TAG_AE_TAG,
      .blob = {
          .size = AE_TAG_SIZE,
-         .data = (uint8_t *)AEAD // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)AEAD // This is a test value only. Use a different value each time in actual use.
      }}};
 
 static const uint32_t AES_GCM_SIZE = 1024;
@@ -490,7 +490,7 @@ napi_value TestAesGcm(napi_env env, napi_callback_info info)
 
 static const uint32_t IV_SIZE = 16;
 static const uint32_t AEAD_TAG_LEN = 14;
-static char IV[IV_SIZE] = { 0 }; // this is a test value, for real use the iv should be different every time.
+static char IV[IV_SIZE] = { 0 }; // This is a test value. In actual use, the IV should be different each time.
 static char AEAD[AEAD_TAG_LEN] = { 0 };
 static char NONCE[OH_HUKS_AE_NONCE_LEN] = { 0 };
 static struct OH_Huks_Param g_genEncDecParams[] = {
@@ -531,7 +531,7 @@ static struct OH_Huks_Param g_encryptParams[] = {
         .tag = OH_HUKS_TAG_IV,
         .blob = {
             .size = IV_SIZE,
-            .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time.
+            .data = (uint8_t *)IV // This is a test value. In actual use, the IV should be different each time.
         }
     }, {
         .tag = OH_HUKS_TAG_NONCE,
@@ -564,7 +564,7 @@ static struct OH_Huks_Param g_decryptParams[] = {
         .tag = OH_HUKS_TAG_IV,
         .blob = {
             .size = IV_SIZE,
-            .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time. 
+            .data = (uint8_t *)IV // This is a test value. In actual use, the IV should be different each time.
         }
     }, {
         .tag = OH_HUKS_TAG_NONCE,
@@ -1279,7 +1279,7 @@ static struct OH_Huks_Param g_encryptParams[] = {
     {.tag = OH_HUKS_TAG_IV,
      .blob = {
          .size = IV_SIZE,
-         .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)IV // This is a test value only. Use a different value each time in actual use.
      }}};
 
 static struct OH_Huks_Param g_decryptParams[] = {
@@ -1291,7 +1291,7 @@ static struct OH_Huks_Param g_decryptParams[] = {
     {.tag = OH_HUKS_TAG_IV,
      .blob = {
          .size = IV_SIZE,
-         .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)IV // This is a test value only. Use a different value each time in actual use.
      }}};
 
 static const uint32_t DES_CBC_SIZE = 1024;

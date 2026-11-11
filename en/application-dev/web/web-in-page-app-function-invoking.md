@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=72bbc0c0544d33f8e63055267fe026c0f977638a translatedAt=2026-11-05T10:41:33.904Z pushedAt=2026-11-06T00:41:09.560Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ac5da3db077922920ad23333a9ce00569d12c98f translatedAt=2026-11-10T03:27:58.348Z pushedAt=2026-11-10T07:43:36.072Z nl=1 -->
 
 You can use the Web component to register application-side code with the frontend page. After registration, the frontend page can call methods on the application side by using the registered object name.
 

@@ -5,7 +5,7 @@
 <!--Designer: @chenxi0605; @JerryH1011-->
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=9ba5cc8a5a6376c01d21ba01049967807da4bf5c translatedAt=2026-11-05T00:54:18.360Z pushedAt=2026-09-16T06:59:30.854Z nl=2 -->
+<!-- md-trans-meta sourceCommit=dac703c25b72f2c4249f676cf2addd00c46c1537 translatedAt=2026-11-09T07:44:11.904Z pushedAt=2026-11-09T07:47:36.503Z nl=1 -->
 
 ## When to Use
 
@@ -19,7 +19,7 @@ When you select a file or folder through Picker for temporary authorization, the
 
 2. If an app needs long-term access to a file or directory, it can use a Picker to select the file or directory and obtain temporary access, and then call persistPermission ([ohos.fileshare.persistPermission](../reference/apis-core-file-kit/js-apis-fileShare.md#filesharepersistpermission11)) to persist the permission, provided that the grantor allows the permission to be persisted. For example, when a file is selected using a Picker, the Picker grants the permission to the current app, allowing the app to persist the permission. This is useful for scenarios such as a document editing app that needs to reopen a previously edited file directly from the history list without invoking the Picker again for authorization.
 
-    You can use canIUse to check whether the device supports the following system capability: SystemCapability.FileManagement.AppFileService.FolderAuthorization.
+    You can use **canIUse()** to check whether the device supports the following system capability: SystemCapability.FileManagement.AppFileService.FolderAuthorization.
 
     ```ts
     if (!canIUse('SystemCapability.FileManagement.AppFileService.FolderAuthorization')) {
@@ -33,12 +33,11 @@ When you select a file or folder through Picker for temporary authorization, the
 
     **Example**
 
-    <!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->
-
+    <!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->  
+    
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
-    import { picker } from '@kit.CoreFileKit';
-    import { fileShare } from '@kit.CoreFileKit';
+    import { picker, fileShare } from '@kit.CoreFileKit';
     import { common } from '@kit.AbilityKit';
     import { preferences } from '@kit.ArkData';
     
@@ -81,9 +80,9 @@ When you select a file or folder through Picker for temporary authorization, the
 
     > **NOTE**
     >
-    > 1. It is recommended that the app store the persisted authorization file information locally for later activation of the persisted file as needed.
-    > 2. The persisted authorization data is stored in the system database. After the app or device restarts, you must activate the persisted authorization before you can use it normally. For details, see [Activating a Persisted Permission](#activating-a-persistent-permission-for-accessing-a-file-or-folder).
-    > 3. For the persistent permission API, you can use the **canIUse** API to check whether the capability is available, and you need to request the corresponding permission.
+    > 1. It is recommended that you store the persistent authorization file information locally in the app for later activation of the persistent files as needed.
+    > 2. The persistent authorization data is stored in the system database. After the app or device restarts, you need to activate the persisted authorization before you can use it normally. For details, see [Activating a Persistent Permission for Accessing a File or Folder](#activating-a-persistent-permission-for-accessing-a-file-or-folder).
+    > 3. For the persistent permission API, you can use **canIUse()** to check whether the capability is available, and you need to request the corresponding permission.
     > 4. When the app is uninstalled, all previous authorization data is cleared. After the app is reinstalled, you need to request authorization again.
     > 5. You can only persist a temporary permission that has already been obtained. Otherwise, an error is reported.
 
@@ -96,12 +95,11 @@ When you select a file or folder through Picker for temporary authorization, the
 
     **Example**
 
-    <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->
-
+    <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->  
+    
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
-    import { picker } from '@kit.CoreFileKit';
-    import { fileShare } from '@kit.CoreFileKit';
+    import { picker, fileShare } from '@kit.CoreFileKit';
     import { common } from '@kit.AbilityKit';
     import { preferences } from '@kit.ArkData';
     
@@ -144,7 +142,7 @@ When you select a file or folder through Picker for temporary authorization, the
     >
     > 1. The URI in the example comes from the persistent data stored by the app.
     > 2. You can only revoke a persistent permission that has already been obtained. It is recommended that you revoke the corresponding persistent permission based on your usage requirements.
-    > 3. For the persistent permission API, you can use the **canIUse** API to check whether the capability is available, and you need to request the corresponding permission.
+    > 3. For the persistent permission API, you can use **canIUse()** to check whether the capability is available, and you need to request the corresponding permission.
 
     **Note:** For details about how to revoke a persistent permission using C/C++ APIs, see [OH_FileShare_RevokePermission](native-fileshare-guidelines.md).
 
@@ -157,12 +155,11 @@ ohos.permission.FILE_ACCESS_PERSIST. For details about how to request the permis
 
 **Example**
 
-<!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->
+<!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->  
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-import { picker } from '@kit.CoreFileKit';
-import { fileShare } from '@kit.CoreFileKit';
+import { picker, fileShare } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { preferences } from '@kit.ArkData';
 
@@ -204,7 +201,7 @@ export async function activatePermissionExample(context: common.UIAbilityContext
 > 1. The URI in the example comes from the persistent data stored by the app.
 > 2. It is recommended that you activate the corresponding persistent permissions based on your usage requirements. Do not blindly activate all of them.
 > 3. If activation fails and indicates that the permission is not persisted, you can persist it by following the example.
-> 4. For the persistent permission API, you can use the **canIUse** API to check whether the capability is available, and you need to request the corresponding permission.
+> 4. For the persistent permission API, you can use **canIUse()** to check whether the capability is available, and you need to request the corresponding permission.
 
 For details about how to activate a persistent permission using C/C++ APIs, see [OH_FileShare_ActivatePermission](native-fileshare-guidelines.md).
 

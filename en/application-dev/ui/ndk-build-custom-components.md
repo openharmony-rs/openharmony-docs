@@ -5,21 +5,23 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1f32bcbdd4ae62e5f571fb73a9473dd94b7e4c93 translatedAt=2026-08-05T01:28:02.914Z pushedAt=2026-08-05T06:50:13.671Z -->
+<!-- md-trans-meta sourceCommit=418c5b149e7f7c21fb898dbb9ec1c84ca99bc94a translatedAt=2026-11-09T10:59:52.103Z pushedAt=2026-11-10T01:06:05.450Z nl=1 -->
 
 The ArkUI development framework provides capabilities for creating custom UI components through NDK APIs, including custom measurement, layout, and drawing. You can integrate into ArkUI's layout and rendering process by registering custom callback events using the [registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent) function and adding custom event listeners for components with the [addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver) function. The logic for custom measurement, layout, and drawing is handled within the callback functions of these listeners.
+
 
 > **NOTE**
 >
 > - Custom component event registration requires [addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver) to declare listener registration and [registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent) to declare the required custom event types. A listener can only listen for declared events.
->
+> 
 > - Pay attention to the unregistration logic for events. For example, call [removeNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodecustomeventreceiver) to remove the event listener before the component is destroyed, and call [unregisterNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodecustomevent) to notify the ArkUI framework that the listened custom component events no longer need to be monitored.
->
+> 
 > - [addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver) can add multiple function pointers, each of which is triggered when the corresponding event fires. The corresponding [removeNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodecustomeventreceiver) must pass the corresponding function pointer to remove the listener.
->
+> 
 > - [registerNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomeventreceiver) is a global listener function. Unlike [addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver), [registerNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomeventreceiver) can listen for custom event triggers of all native components, but it accepts only one function pointer. If called multiple times, the last function pointer is used for the callback. Use `unregisterNodeCustomEventReceiver` to unregister when releasing.
->
+> 
 > - Custom component related APIs ([measureNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#measurenode), [layoutNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#layoutnode), [setMeasuredSize](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setmeasuredsize), [setLayoutPosition](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlayoutposition)) are only allowed to be used in the corresponding custom event callbacks (`ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE`, `ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT`; see [ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-node-attributes-custom-attributes-h.md#arkui_nodecustomeventtype)).
+
 
 ## Custom Layout Container
 
@@ -272,7 +274,7 @@ The following example creates a custom container that uses the maximum size of i
 The following example creates a custom drawing component that can draw a custom rectangle and uses the aforementioned custom container for layout arrangement.
 
 **Figure 2** Custom drawing component
-
+ 
 ![customNode](figures/customNode.png)
 
 1. Prepare a project as instructed in [Custom Layout Container](#custom-layout-container).
@@ -282,7 +284,7 @@ The following example creates a custom drawing component that can draw a custom 
    
    ``` C
    // ArkUICustomNode.h
-   // Example of a custom drawing component
+   // Custom drawing component example
    
    #ifndef MYAPPLICATION_ARKUICUSTOMNODE_H
    #define MYAPPLICATION_ARKUICUSTOMNODE_H
@@ -297,7 +299,7 @@ The following example creates a custom drawing component that can draw a custom 
    
        class ArkUICustomNode : public ArkUINode {
        public:
-           // Create the component using the custom component type ARKUI_NODE_CUSTOM.
+           // Create a component using the custom component type ARKUI_NODE_CUSTOM.
            ArkUICustomNode()
                : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_CUSTOM))
            {
@@ -311,21 +313,21 @@ The following example creates a custom drawing component that can draw a custom 
            {
                // Unregister the custom event listener.
                nativeModule_->removeNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-               // Remove the declaration of the custom event.
+               // Cancel the custom event declaration.
                nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW);
            }
    
            void SetRectColor(uint32_t color)
            {
                color_ = color;
-               // Custom drawing property changes require proactive notification to the framework.
+               // Notify the framework proactively when custom drawing properties change.
                nativeModule_->markDirty(handle_, NODE_NEED_RENDER);
            }
    
        private:
            static void OnStaticCustomEvent(ArkUI_NodeCustomEvent *event)
            {
-               // Obtain the component instance object and call the related instance method.
+               // Obtain the component instance object and call the related instance methods.
                auto customNode = reinterpret_cast<ArkUICustomNode *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
                auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
                switch (type) {
@@ -337,7 +339,7 @@ The following example creates a custom drawing component that can draw a custom 
                }
            }
    
-           // Custom drawing logic
+           // Custom drawing logic.
            void OnDraw(ArkUI_NodeCustomEvent *event)
            {
                auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
@@ -345,7 +347,7 @@ The following example creates a custom drawing component that can draw a custom 
                auto drawCanvas = reinterpret_cast<OH_Drawing_Canvas *>(OH_ArkUI_DrawContext_GetCanvas(drawContext));
                // Obtain the component size.
                auto size = OH_ArkUI_DrawContext_GetSize(drawContext);
-               // Draw custom content.
+               // Draw the custom content.
                auto path = OH_Drawing_PathCreate();
                const float kQuarter = 0.25f;
                const float kThreeQuarters = 0.75f;
@@ -497,7 +499,7 @@ The following example creates an irregular grid layout container that supports g
 
 1. Prepare the prerequisite project according to the [Custom Layout Container](#custom-layout-container) section.
 
-2. Create the irregular grid layout container component encapsulation object.
+2. Create the irregular grid layout container component encapsulated object.
    <!-- @[irregular-grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/ArkUIIrregularGridNode.h) -->  
    
    ``` C
@@ -714,8 +716,8 @@ The following example creates an irregular grid layout container that supports g
     #endif // MYAPPLICATION_ARKUIIRREGULARGRIDNODE_H
    ```
 
-3. Use the irregular grid layout container to create a sample UI.
 
+3. Use the irregular grid layout container to create a sample UI.
    <!-- @[irregular-grid-entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/NativeEntry.cpp) -->  
    
    ``` C++
@@ -860,5 +862,3 @@ The following example creates an irregular grid layout container that supports g
 
     } // namespace NativeModule
    ```
-
-   <!--no_check-->

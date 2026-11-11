@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=fa50beec0bdde9987a26860c8712dd96954b9a92 translatedAt=2026-11-05T10:35:24.832Z pushedAt=2026-11-05T11:11:37.985Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ac5da3db077922920ad23333a9ce00569d12c98f translatedAt=2026-11-10T03:20:01.183Z pushedAt=2026-11-10T07:42:20.659Z nl=1 -->
 
 The native **PostWebMessage** is provided to implement communication between the frontend page and the application, which reduces unnecessary switching to the ArkTS environment and allows messages and callbacks to be reported in non-UI threads to avoid UI blocking. Currently, only the string and buffer can be sent.
 
@@ -61,7 +61,7 @@ To invoke the native APIs, obtain the API structs on the ArkWeb native side firs
 
 ### Sample Code
 
-Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums) to check whether the function struct has the corresponding pointer before calling an API to avoid crashes caused by mismatch between the SDK and the device ROM. [createWebMessagePorts](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports), [postWebMessage](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage) and [close](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close) must run in the UI thread.
+Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer before calling an API to avoid crashes caused by mismatch between the SDK and the device ROM. [createWebMessagePorts()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports), [postWebMessage()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage) and [close()](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close) must run in the UI thread.
 
 * Frontend page code:
   

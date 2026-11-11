@@ -1,10 +1,11 @@
 # @ohos.multimedia.audioHaptic (Audio-Haptic) (System API)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6482e1478c8300c06759225778677b39973d7297 translatedAt=2026-11-09T10:29:02.222Z pushedAt=2026-11-09T11:35:49.541Z nl=1 -->
 
 Audio-haptic enables users to get rhythmic auditory and haptic feedback while having incoming calls or messages.
 
@@ -44,7 +45,7 @@ Checks whether the device supports adjusting the intensity of haptic feedback.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                             |
+| ID  | Error Message                             |
 |---------|-----------------------------------|
 | 202 | Caller is not a system application. |
 
@@ -74,7 +75,7 @@ Checks whether the device supports gradually adjusting the intensity of haptic f
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                             |
+| ID  | Error Message                             |
 |---------|-----------------------------------|
 | 202 | Caller is not a system application. |
 
@@ -108,7 +109,7 @@ Enables the audio-haptic player to provide haptic feedback even when the device 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
 
-| Error Code | Error Message                            |
+| ID | Error Message                            |
 |---------|-----------------------------------|
 | 202      | Caller is not a system application. |
 | 5400102  | Operate not permit in current state. |
@@ -149,7 +150,7 @@ Sets the intensity of haptic feedback for this audio-haptic player. This API use
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
 
-| Error Code  | Error Message                             |
+| ID  | Error Message                             |
 |---------|-----------------------------------|
 | 202      | Caller is not a system application. |
 | 801      | Function is not supported in current device. |
@@ -201,7 +202,7 @@ Sets the haptic ramp for this audio-haptic player. This API uses a promise to re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](../apis-media-kit/errorcode-media.md).
 
-| Error Code  | Error Message                             |
+| ID  | Error Message                             |
 |---------|-----------------------------------|
 | 202      | Caller is not a system application. |
 | 801      | Function is not supported in current device. |

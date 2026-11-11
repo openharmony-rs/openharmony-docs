@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=1bbf26e7bb701c6461fa0633febf3bfb3938deda translatedAt=2026-11-05T10:39:19.598Z pushedAt=2026-11-05T11:31:23.351Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ac5da3db077922920ad23333a9ce00569d12c98f translatedAt=2026-11-10T03:26:02.888Z pushedAt=2026-11-10T07:43:24.417Z nl=1 -->
 
 To download files on the web page, you can use the following method to invoke the web APIs.
 
@@ -237,11 +237,11 @@ function getDownloadPathFromPicker(): Promise<string> {
 
 > **NOTE**
 >
->Call [WebDownloadItem.start](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#start11) to specify the path for storing downloaded files.
+> The download capability of the Web component requires the application to specify the save path of the downloaded file by calling [WebDownloadItem.start()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#start11).
 >
->Note that **WebDownloadItem.start** does not start the download. The download process starts when the user clicks the page link. **WebDownloadItem.start** is used to move the content that has been downloaded to the temporary directory (**/data/storage/el2/base/cache/web/Temp/**) to the specified path, and directly save the remaining content to the specified path. Call[WebDownloadItem.cancel](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#cancel11) to cancel the current download task. In this case, the temporary file is deleted.
+> Note that WebDownloadItem.start() does not start the download. The download actually begins when the user taps a link on the page. The role of WebDownloadItem.start() is to move the portion already downloaded to a temporary file to the specified target path. The remaining content of the download is then saved directly to the specified target path. The temporary directory is located at `/data/storage/el2/base/cache/web/Temp/`. If you decide to cancel the current download, call [WebDownloadItem.cancel()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#cancel11), which deletes the temporary file.
 >
->If you do not want to download the file to the temporary directory before **WebDownloadItem.start**, you can also use **WebDownloadItem.cancel** to interrupt the download. In addition, the interrupted download can be resumed using [WebDownloadManager.resumeDownload](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11).
+> If you do not want the file to be downloaded to the temporary directory before WebDownloadItem.start() is called, you can interrupt the download by calling WebDownloadItem.cancel(). You can later resume the interrupted download by calling [WebDownloadManager.resumeDownload()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11).
 
 ## Resuming Unfinished Download Tasks Due to Process Exit
 When the **Web** component is started, you can resume the unfinished download task through the [resumeDownload()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11) API.

@@ -1,20 +1,26 @@
 # Building a Rendering Node
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1f32bcbdd4ae62e5f571fb73a9473dd94b7e4c93 translatedAt=2026-08-05T01:28:36.263Z pushedAt=2026-08-05T07:04:14.046Z -->
+<!-- md-trans-meta sourceCommit=2ca19f6dfc5532ebaaac6e2aca35dfd9efce007b translatedAt=2026-11-05T11:51:53.791Z pushedAt=2026-11-09T10:02:18.999Z nl=1 -->
 
-Since API version 20, the ArkUI development framework provides NDK APIs for directly building rendering nodes. These capabilities include rendering node tree operations, attribute configuration, and custom drawing with animations. By leveraging rendering node capabilities, you can bypass the measurement and layout processes associated with [registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent), directly draw nodes, and adjust their sizes and positions.
 
-- **Rendering node tree operations**: APIs such as [OH_ArkUI_RenderNodeUtils_AddRenderNode](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addrendernode) and [OH_ArkUI_RenderNodeUtils_AddChild](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addchild) are used to modify the structure of the rendering node tree. Rendering nodes can only be mounted to custom nodes of the ARKUI_NODE_CUSTOM type that have no other child nodes (linked to native nodes). Only one rendering node can be mounted per custom node. Specifically, the rendering node is attached as a subtree to a leaf custom node of the ARKUI_NODE_CUSTOM type.
+Since API version 20, the ArkUI development framework provides NDK APIs for directly building render nodes. These capabilities include render node tree operations, attribute configuration, and custom drawing with animations. By leveraging render node capabilities, you can bypass the measurement and layout processes associated with [registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent), directly draw nodes, and adjust their sizes and positions.
 
-- **Rendering node attribute configuration**: For details about APIs used to set rendering node attributes, see [Functions](../reference/apis-arkui/capi-native-render-h.md#functions). 
+Since API version 26.0.1, the ArkUI development framework provides a performance optimization solution for scrollable components developed based on render nodes. You can enable the Dvsync switch to improve the smoothness of render nodes in fling scenarios.
 
-- **Custom drawing**: For implementation details, see [OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_setcontentmodifierondraw) and its associated APIs. You can also use ContentModifier bound APIs (for example, [OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_setfloatpropertyvalue)) to dynamically modify the content to be drawn.
+
+- [Render node tree operations](#mounting-nodes-and-setting-basic-attributes): APIs such as [OH_ArkUI_RenderNodeUtils_AddRenderNode](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addrendernode) and [OH_ArkUI_RenderNodeUtils_AddChild](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addchild) are used to modify the structure of the render node tree. Render nodes can only be mounted to custom nodes of the ARKUI_NODE_CUSTOM type that have no other child nodes, and at most one render node can be mounted per custom node. Specifically, the render node is attached as a subtree to a leaf custom node of the ARKUI_NODE_CUSTOM type.
+
+- [Render node attribute configuration](#mounting-nodes-and-setting-basic-attributes): For details about APIs used to set render node attributes, see [Functions](../reference/apis-arkui/capi-native-render-h.md#functions).
+
+- [Custom drawing](#custom-drawing-and-animation): For implementation details, see [OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_setcontentmodifierondraw) and its associated APIs. You can also use ContentModifier bound APIs (for example, [OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_setfloatpropertyvalue)) to dynamically modify the content to be drawn.
+
+- [Using Dvsync to Optimize Render Node Performance](#using-dvsync-to-optimize-render-node-performance): See [OH_ArkUI_NodeUtils_SetUiDvsyncSwitch](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_setuidvsyncswitch) to enable the Dvsync switch and improve the scrolling smoothness of render nodes in fling scenarios. For details about the principles, functions, and usage restrictions of Dvsync, see the following sections.
+
 
 ## Mounting Nodes and Setting Basic Attributes
 
@@ -23,7 +29,6 @@ The following example demonstrates how to create a rendering node, mount it to a
 1. Follow the instructions in [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md) to create a project.
 
 2. Create a rendering node capability object.
-
    ```c
    // NativeEntry.cpp
    // Example of a custom container component
@@ -42,7 +47,10 @@ The following example demonstrates how to create a rendering node, mount it to a
    #include <native_drawing/drawing_path.h>
    #include <native_drawing/drawing_pen.h>
    
-   ArkUI_NodeHandle testRenderNode(ArkUI_NativeNodeAPI_1 *nodeAPI) {
+   #include "ArkUINode.h"
+   #include "NativeEntry.h"
+   
+   std::shared_ptr<ArkUIBaseNode> testRenderNode(ArkUI_NativeNodeAPI_1 *nodeAPI) {
        //Create the original container logic of the NDK.
        ArkUI_NodeHandle scroll = nodeAPI->createNode(ARKUI_NODE_SCROLL);
        ArkUI_NumberValue valueWidth[] = {400};
@@ -76,7 +84,7 @@ The following example demonstrates how to create a rendering node, mount it to a
        auto result = OH_ArkUI_RenderNodeUtils_AddRenderNode(Custom, renderRootNode);
        if (result != ARKUI_ERROR_CODE_NO_ERROR) {
            // Check whether the root node is successfully mounted based on the error code.
-           return scroll;
+           return std::make_shared<ArkUINode>(scroll);
        }
        
        OH_ArkUI_RenderNodeUtils_AddChild(renderRootNode, firstChildRenderNode);
@@ -129,7 +137,7 @@ The following example demonstrates how to create a rendering node, mount it to a
        colorOption = nullptr;
    
        nodeAPI->addChild(scroll, column);
-       return scroll;
+       return std::make_shared<ArkUINode>(scroll);
    }
 
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info) {
@@ -138,11 +146,22 @@ The following example demonstrates how to create a rendering node, mount it to a
    
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
+       // Obtain NodeContent.
+       ArkUI_NodeContentHandle contentHandle;
+       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       if (contentHandle == nullptr) {
+           return nullptr;
+       }
+       NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+
        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-       ArkUI_NodeHandle testNode = nullptr;
+       std::shared_ptr<ArkUIBaseNode> testNode = nullptr;
        if (nodeAPI != nullptr) {
             testNode = testRenderNode(nodeAPI);
+       }
+       if (testNode == nullptr) {
+           return nullptr;
        }
    
        NativeEntry::GetInstance()->SetRootNode(testNode);
@@ -151,17 +170,17 @@ The following example demonstrates how to create a rendering node, mount it to a
    
    ```
 
+
 ## Custom Drawing and Animation
 
 The following example demonstrates how to create a rendering node, implement custom drawing, and add animation effects.
 
 1. Follow the instructions in [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md) to create a project.
 
-2. Create a rendering node capability object.
-
+2. Create a rendering node capability object. When calling createNativeRoot, you need to pass an additional UIContext object (for example, this.getUIContext()) after the NodeContent object to execute animations.
    ```c
    // NativeEntry.cpp
-   // Example of a custom container component
+   // Example of a custom container component.
    #include <arkui/native_animate.h>
    #include <arkui/native_render.h>
    #include <arkui/native_type.h>
@@ -176,8 +195,11 @@ The following example demonstrates how to create a rendering node, implement cus
    #include <native_drawing/drawing_color.h>
    #include <native_drawing/drawing_path.h>
    #include <native_drawing/drawing_pen.h>
-   
-   ArkUI_NodeHandle testRenderNode2(ArkUI_NativeNodeAPI_1 *nodeAPI, ArkUI_ContextHandle context) {
+
+   #include "ArkUINode.h"
+   #include "NativeEntry.h"
+
+   std::shared_ptr<ArkUIBaseNode> testRenderNode2(ArkUI_NativeNodeAPI_1 *nodeAPI, ArkUI_ContextHandle context) {
    
        ArkUI_NodeHandle scroll = nodeAPI->createNode(ARKUI_NODE_COLUMN);
        ArkUI_NumberValue valueWidth[] = {400};
@@ -186,12 +208,13 @@ The following example demonstrates how to create a rendering node, implement cus
        ArkUI_NumberValue valueHeight[] = {600};
        ArkUI_AttributeItem itemHeight = {valueHeight, sizeof(valueHeight) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(scroll, NODE_HEIGHT, &itemHeight);
-       valueHeight[0].u32 = 0xff00F100;
-       nodeAPI->setAttribute(scroll, NODE_BACKGROUND_COLOR, &itemHeight);
+       ArkUI_NumberValue bgColor[] = {{.u32 = 0xff00F100}};
+       ArkUI_AttributeItem bgItem = {bgColor, sizeof(bgColor) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(scroll, NODE_BACKGROUND_COLOR, &bgItem);
    
        ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
        ArkUI_NodeHandle text = nodeAPI->createNode(ARKUI_NODE_TEXT);
-       ArkUI_AttributeItem content = {.string = "This is the C API page."};
+       ArkUI_AttributeItem content = {.string = "This is a C-API page"};
    
        nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &content);
    
@@ -200,7 +223,7 @@ The following example demonstrates how to create a rendering node, implement cus
        OH_ArkUI_RenderNodeUtils_AddRenderNode(Custom, renderNode);
        OH_ArkUI_RenderNodeUtils_SetSize(renderNode, 1000, 1000);
    
-       // The Property is used to trigger set updates and synchronously update the Draw method of the modifier.
+       // Property triggers the set update and synchronously updates the Draw method of the modifier.
        struct AnimatableUserData {
            ArkUI_FloatAnimatablePropertyHandle width;
            ArkUI_FloatAnimatablePropertyHandle height;
@@ -208,7 +231,7 @@ The following example demonstrates how to create a rendering node, implement cus
            ArkUI_ColorAnimatablePropertyHandle color;
        };
    
-       // Set base values.
+       // Set the base value.
        AnimatableUserData *userData1 = new AnimatableUserData;
        auto widthAnimProperty = OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty(1000);
        userData1->width = widthAnimProperty;
@@ -219,16 +242,16 @@ The following example demonstrates how to create a rendering node, implement cus
        auto colorAnimP = OH_ArkUI_RenderNodeUtils_CreateColorAnimatableProperty(0xFFFF11FF);
        userData1->color = colorAnimP;
    
-       // Associate the component with modifiers.
+       // Associate the component with multiple modifiers.
        auto animModifier = OH_ArkUI_RenderNodeUtils_CreateContentModifier();
        OH_ArkUI_RenderNodeUtils_AttachContentModifier(renderNode, animModifier);
-       // Bind properties to the modifier.
+       // Associate the modifier with the property.
        OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(animModifier, widthAnimProperty);
        OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(animModifier, heightAnimProperty);
        OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(animModifier, vectorAnimP);
        OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(animModifier, colorAnimP);
    
-       // Implement custom drawing logic.
+       // Set the custom drawing content.
        OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(
            animModifier, userData1, [](ArkUI_DrawContext *context, void *userData) {
                AnimatableUserData *data = (AnimatableUserData *)userData;
@@ -236,7 +259,7 @@ The following example demonstrates how to create a rendering node, implement cus
                float height = 0;
                uint32_t color = 0;
                ArkUI_Vector2AnimatablePropertyHandle v2 = data->v2;
-               // Obtain the animatable property (x and y values used as the width and height here). Custom properties can be defined to pass required parameters.
+               // The property is mainly used for passing values. Here, x and y are used instead of width. In actual use, you can customize the required parameters through the property.
                OH_ArkUI_RenderNodeUtils_GetVector2AnimatablePropertyValue(v2, &width, &height);
                ArkUI_ColorAnimatablePropertyHandle cp = data->color;
                OH_ArkUI_RenderNodeUtils_GetColorAnimatablePropertyValue(cp, &color);
@@ -303,7 +326,7 @@ The following example demonstrates how to create a rendering node, implement cus
        nodeAPI->addChild(column, text);
        nodeAPI->addChild(column, Custom);
        nodeAPI->addChild(scroll, column);
-       return scroll;
+       return std::make_shared<ArkUINode>(scroll);
    }
 
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info) {
@@ -312,18 +335,29 @@ The following example demonstrates how to create a rendering node, implement cus
    
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
+       // Obtain NodeContent.
+       ArkUI_NodeContentHandle contentHandle;
+       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       if (contentHandle == nullptr) {
+           return nullptr;
+       }
+       NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+
        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-       ArkUI_NodeHandle testNode = nullptr;
+       std::shared_ptr<ArkUIBaseNode> testNode = nullptr;
        if (nodeAPI != nullptr) {
             // Obtain the context passed from the ETS side.
             ArkUI_ContextHandle context = nullptr;
-            // Use code to check whether the context is successfully obtained.
+            // Determine whether the retrieval is successful based on the code.
             auto code = OH_ArkUI_GetContextFromNapiValue(env, args[1], &context);
             if (code != ARKUI_ERROR_CODE_NO_ERROR) {
                 return nullptr;
             }
             testNode = testRenderNode2(nodeAPI, context);
+       }
+       if (testNode == nullptr) {
+           return nullptr;
        }
    
        NativeEntry::GetInstance()->SetRootNode(testNode);
@@ -334,24 +368,19 @@ The following example demonstrates how to create a rendering node, implement cus
 
 ## Mixing and Mounting Native Components and Rendering Nodes
 
-Since API version 22, you can efficiently mix and mount native components and rendering nodes. To be specific, you can obtain the rendering node corresponding to a native component and mount it to that of a non-native component. In this way, the rendering nodes of both the native and non-native components are mixed.
+Since API version 22, you can efficiently mix and mount native components and render nodes. To be specific, you can obtain the render node corresponding to a native component and mount it to that of a non-native component. In this way, the render nodes of both the native and non-native components are mixed.
 
 Before mixing and mounting, you need to accept the native components. After the parent node accepts the target child node, the child node becomes an auxiliary node of the parent node. Only the auxiliary node can obtain the rendering node and mount it to another position in the rendering node tree.
 
 ### Accepting a Child Node as an Auxiliary Node
 
 A node that meets the following conditions can be used as the parent node in the [OH_ArkUI_NativeModule_AdoptChild](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nativemodule_adoptchild) API to accept other nodes:
-
 1. The node is an imperative node created on the C-API side.
-
 2. The node is an imperative node created on the ArkTS side.
 
 A node that meets the following conditions can be used as a child node in the **OH_ArkUI_NativeModule_AdoptChild** API to be accepted by other parent nodes:
-
 1. The node is an imperative node created on the C-API side.
-
 2. The node is an imperative node created on the ArkTS side.
-
 3. The child node is the root node under BuilderNode.
 
 After a child node is accepted as an auxiliary node, it cannot be mounted to other nodes as a regular child node. Otherwise, an error code will be thrown. However, the child node can be accepted by other parent nodes again. In this case, the child node will become a new auxiliary node of the other parent nodes. The accepted child node is not the real child node of its parent node, and cannot be found by the child component query API. It cannot be operated like a regular child node, and does not receive the measurement layout and event transfer from the parent node. It only receives the [lifecycle](../application-models/uiability-lifecycle.md#overview) propagation from the parent node.
@@ -362,10 +391,10 @@ When an auxiliary node is accepted, you can call [OH_ArkUI_RenderNodeUtils_GetRe
 
 When you call the [disposeNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) API of [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md) to destroy the parent node, call [OH_ArkUI_RenderNodeUtils_DisposeNode](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode) to release the rendering node. Otherwise, a memory leak will occur.
 
+
 ### Operating a Rendering Node from an Auxiliary Node
 
 After obtaining a rendering node from an accepted auxiliary node, you can use it for layout. The constraints are as follows:
-
 1. A rendering node from an auxiliary node must be mounted to another rendering node.
 
    A rendering node from an auxiliary node can only be mounted to another rendering node as a child node or unmounted from another rendering node. Any other operations will fail and an error code will be returned. After the rendering node is mounted, the auxiliary node will be drawn in the target position corresponding to the rendering node.
@@ -380,12 +409,14 @@ After obtaining a rendering node from an accepted auxiliary node, you can use it
 
 Before developing the following code, create a project by referring to [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
 
-<!--RP1-->For the complete code, see [native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample).<!--RP1End-->
+<!--RP1-->
+For a complete example, refer to [native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample).
+<!--RP1End-->
 
 1. Initialize the component environment using the NDK and create the root node of the corresponding rendering node.
 
-   <!-- @[Create_RootNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->  
-
+   <!-- @[Create_RootNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->        
+   
    ``` C++
    
    std::shared_ptr<ArkUIBaseNode> custom_ = nullptr;
@@ -453,8 +484,8 @@ Before developing the following code, create a project by referring to [Integrat
 
 2. Create a node on the ArkTS side and pass the node to the C-API.
 
-   <!-- @[Create_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/ets/pages/GetNode.ets) -->  
-
+   <!-- @[Create_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/ets/pages/GetNode.ets) -->        
+   
    ``` TypeScript
    
    import { BuilderNode, FrameNode, NodeContent, NodeController, typeNode } from '@kit.ArkUI';
@@ -464,7 +495,6 @@ Before developing the following code, create a project by referring to [Integrat
    // Define the API for passing parameters.
    interface ParamsInterface {
      text: string;
-     func: Function;
    }
    class MyNodeController extends NodeController {
      private imperativeNode: FrameNode | null = null;
@@ -483,27 +513,25 @@ Before developing the following code, create a project by referring to [Integrat
        let buildNode = new BuilderNode<[ParamsInterface]>(uiContext);
        // Create a node tree.
        buildNode.build(wrapBuilder<[ParamsInterface]>(buildText), {
-         text: message, func: () => {
-           return 'FUNCTION';
-         }
+         text: message
        }, { nestingBuilderSupported: true });
        this.buildNode = buildNode.getFrameNode();
        entry.adopt(buildNode);
      }
-     removeAdoptedNode(uiContext:UIContext):void {
+     removeAdoptedNode(): void {
        entry.removeAdopt();
      }
    }
    
    @Builder
-   function buildTextWithFunc(fun: Function) {
+   function buildTextWithFunc() {
      Web({ src: 'https://www.example.com', controller: new webview.WebviewController() })
    }
    
    @Builder
    function buildText(params: ParamsInterface) {
      Column() {
-       buildTextWithFunc(params.func)
+       buildTextWithFunc()
      }
    }
    
@@ -553,7 +581,7 @@ Before developing the following code, create a project by referring to [Integrat
              Button(this.adoptmsg)
                .onClick(() => {
                  if (this.isAdopt) {
-                   this.myNodeController.removeAdoptedNode(this.getUIContext());
+                   this.myNodeController.removeAdoptedNode();
                    this.adoptmsg = 'adopt web component';
                  } else {
                    this.myNodeController.adoptNode(this.getUIContext(),this.message);
@@ -572,8 +600,8 @@ Before developing the following code, create a project by referring to [Integrat
 
 3. Obtain and accept the node, and obtain the corresponding rendering node on the C-API side.
 
-   <!-- @[Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->  
-
+   <!-- @[Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->        
+   
    ``` C++
    
    napi_value Adopt(napi_env env, napi_callback_info info)
@@ -581,31 +609,67 @@ Before developing the following code, create a project by referring to [Integrat
        size_t argc = 1;
        napi_value args[1] = {nullptr};
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-       // Obtain the mount point of the component on the ArkTS side.
+       // Obtain the node handle on the ArkTS side.
        int32_t result = OH_ArkUI_GetNodeHandleFromNapiValue(env, args[0], &nodeHandle_);
        if (result != ARKUI_ERROR_CODE_NO_ERROR) {
            return nullptr;
        }
        result = OH_ArkUI_NativeModule_AdoptChild(custom_->GetHandle(), nodeHandle_);
-       OH_ArkUI_RenderNodeUtils_GetRenderNode(nodeHandle_, &renderHandle_);
-       OH_ArkUI_RenderNodeUtils_AddChild(render_->GetHandle(), renderHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
+       result = OH_ArkUI_RenderNodeUtils_GetRenderNode(nodeHandle_, &renderHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
+           return nullptr;
+       }
+       result = OH_ArkUI_RenderNodeUtils_AddChild(render_->GetHandle(), renderHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           OH_ArkUI_RenderNodeUtils_DisposeNode(renderHandle_);
+           renderHandle_ = nullptr;
+           OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
+           return nullptr;
+       }
        return nullptr;
    }
    ```
 
 4. Cancel the accepted state of the node and release the corresponding rendering node on the C-API side.
 
-   <!-- @[Remove_Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->
-
+   <!-- @[Remove_Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->       
+   
    ``` C++
    
    napi_value RemoveAdopt(napi_env env, napi_callback_info info)
    {
-       OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
+       int32_t result = OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
        // After the node is released, you need to call OH_ArkUI_RenderNodeUtils_DisposeNode to release the corresponding rendering node. Otherwise, a memory leak occurs.
-       OH_ArkUI_RenderNodeUtils_DisposeNode(renderHandle_);
+       result = OH_ArkUI_RenderNodeUtils_DisposeNode(renderHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
        nodeHandle_ = nullptr;
        renderHandle_ = nullptr;
        return nullptr;
    }
    ```
+
+## Using Dvsync to Optimize Render Node Performance
+
+Starting from API version 26.0.1, when developing a scrollable custom component, you can enable the Dvsync switch through [OH_ArkUI_NodeUtils_SetUiDvsyncSwitch](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_setuidvsyncswitch) to interpolate frames for the fling scenario of a render node, thereby improving the scrolling smoothness of fling.
+
+Dvsync is short for Decoupled Vsync, which is a frame timing management strategy decoupled from hardware Vsync. You can enable Dvsync through [OH_ArkUI_NodeUtils_SetUiDvsyncSwitch](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_setuidvsyncswitch). After Dvsync is enabled, the system responds to Vsync requests more promptly and executes rendering tasks more frequently, which helps reduce frame drops and improve animation smoothness.
+
+Currently, Dvsync is used only in the fling scenario of render nodes. If you enable the Dvsync switch through [OH_ArkUI_NodeUtils_SetUiDvsyncSwitch](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_setuidvsyncswitch) in other scenarios, Dvsync does not take effect. Do not enable Dvsync in scenarios other than render node fling. Before using Dvsync, make sure that the current application and window meet the following conditions. If any of the following conditions is not met during use, Dvsync is automatically disabled, and you need to call the API again to enable Dvsync.
+
+| Check Item | Rule |
+| --- | --- |
+| Window state. | Only foreground applications can enable Dvsync. After the application moves to the background, Dvsync is automatically disabled. |
+| Window Focus | After the window with Dvsync enabled loses focus, Dvsync is automatically disabled. |
+
+<!--RP2--><!--RP2End-->
+
+<!--no_check-->

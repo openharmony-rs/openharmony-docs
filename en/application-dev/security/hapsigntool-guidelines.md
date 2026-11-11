@@ -1,4 +1,11 @@
 # hapsigner Guide
+<!--Kit: Common-->
+<!--Subsystem: Security-->
+<!--Owner: @scuteehuangjun-->
+<!--Designer: @scuteehuangjun; @liuchibin-->
+<!--Tester: @wwrongs-->
+<!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=17de53ed6b4083b21ef2240eb4e57f0d38e1aaef translatedAt=2026-11-10T01:01:21.961Z pushedAt=2026-11-10T02:43:58.312Z nl=1 -->
 
 ## Build
 
@@ -6,11 +13,11 @@
 
 1. Check that Maven 3 of the correct version has been installed and configured.
   
-        mvn -version
+   mvn -version
 
 2. Download the code, open **developtools_hapsigner/hapsigntool**, and run the following command to build the package:
             
-        mvn package
+   mvn package
 
 3. You can find the binary file generated in the **./hap_sign_tool/target** directory.
 
@@ -18,11 +25,11 @@
 
 1. Build a signing tool for ohos-sdk.
 
-   Release version (default): Run the following command to build the signing tool for the release version.
+   Release version (default): Run the following command to build the signing tool for the release version. 
 
-   Debug version: In the **hapsigntool_cpp/BUILD.gn** file, add **defines = [ "SIGNATURE_LOG_DEBUG" ]**, and then run the build command.
+   Debug version: In the **hapsigntool_cpp/BUILD.gn** file, add **defines = [ "SIGNATURE_LOG_DEBUG" ]**, and then run the build command. 
 
-   Build command: **./build.sh --*product-name* ohos-sdk**
+   Build command: **./build.sh --*product-name* ohos-sdk** 
 
 2. Decompress **out/sdk/packages/ohos-sdk/ohos/toolchains-ohos-x64-xxx.zip**.
 
@@ -34,199 +41,211 @@
 
 The OpenHarmony system has a built-in KeyStore (KS) file named **OpenHarmony.p12**. This file contains the root CA certificate, intermediate CA certificate, and entity certificate information. The hapsigner tool signs OpenHarmony apps based on this file.
 
-The usage of hapsigner varies depending on whether an app signing certificate is available. 
-
-1. If no signing certificate is available for your app,
-   you can use this tool to generate a key pair for signing, generate an app signing certificate, sign the profile, and sign the app.
-2. If a signing certificate is available for your app,
-   you can directly sign the profile, and use the app signing certificate and the local KS file (containing the corresponding key) to sign your app.
-
-### Command Description
+The usage of hapsigner varies depending on whether an app signing certificate is available.
 
 1. Display command help information.
 
-     ```
-     -help     # If no parameter is specified, the command help information is displayed by default.
-     ```
+   ```log
+   -help     # Output command help information (help information is output by default when no parameter is entered)
+   ```
 
 2. Display version information
 
-     ```
-     -version  # Display the tool version information.
-     ```
+   ```log
+   -version  # Output version information.
+   ```
 
 3. Generate a key pair.
 
-     ```
-     generate-keypair: Generate a key pair.
-         ├── -keyAlias          # Key alias. It is mandatory.
-         ├── -keyPwd            # Key password. It is optional.
-         ├── -keyAlg            # Key algorithm, which can be RSA or ECC. It is mandatory.
-         ├── -keySize           # Key length. It is mandatory. The key length is 2048, 3072, or 4096 bits for an RSA key and is NIST-P-256 or NIST-P-384 for an ECC key.
-         ├── -keystoreFile      # Keystore file, which is mandatory.
-         ├── -keystorePwd       # KS password. It is optional.
-     ```
+   ```log
+   generate-keypair : Generate a key pair
+       ├── -keyAlias          # Key alias, mandatory
+       ├── -keyPwd            # Key password, optional
+       ├── -keyAlg            # Key algorithm, mandatory, including RSA/ECC
+       ├── -keySize           # Key length, mandatory. The length for the RSA algorithm is 2048/3072/4096, and the length for the ECC algorithm is NIST-P-256/NIST-P-384
+       ├── -keystoreFile      # Keystore file, mandatory
+       ├── -keystorePwd       # Keystore password, optional
+   ```
 
 4. Generate a CSR.
-     ```
-     generate-csr: Generate a CSR.
-         ├── -keyAlias          # Key alias. It is mandatory.
-         ├── -keyPwd            # Key password. It is optional.
-         ├── -subject           # Certificate subject. It is mandatory.
-         ├── -signAlg           # Signing algorithm, which can be SHA256withRSA, SHA384withRSA, SHA256withECDSA, or SHA384withECDSA. It is mandatory.
-         ├── -keystoreFile      # Keystore file, which is mandatory.
-         ├── -keystorePwd       # KS password. It is optional.
-         ├── -outFile           # CSR to generate. It is optional. If you do not specify this parameter, the CSR is output to the console.
-     ```
-     
+  
+   ```log
+   generate-csr : Generate a certificate signing request
+       ├── -keyAlias          # Key alias, required
+       ├── -keyPwd            # Key password, optional
+       ├── -subject           # Certificate subject, required
+       ├── -signAlg           # Signature algorithm, required, including SHA256withRSA / SHA384withRSA / SHA256withECDSA / SHA384withECDSA
+       ├── -keystoreFile      # Keystore file, required
+       ├── -keystorePwd       # Keystore password, optional
+       ├── -outFile           # Output file, optional; if not specified, output directly to the console
+   ```
+  
 5. Generate a root CA or intermediate CA certificate.
 
-     ```
-     generate-ca: Generate a root CA or intermediate CA certificate. If there is no key, generate a key together with the certificate.
-         ├── -keyAlias                        # Key alias. It is mandatory.
-         ├── -keyPwd                          # Key password. It is optional.
-         ├── -keyAlg                          # Key algorithm, which can be RSA or ECC. It is mandatory.
-         ├── -keySize                         # Key length. It is mandatory. The key length is 2048, 3072, or 4096 bits for an RSA key and is NIST-P-256 or NIST-P-384 for an ECC key.
-         ├── -issuer                          # Issuer of the certificate. It is optional. It indicates a root CA certificate if not specified.
-         ├── -issuerKeyAlias                  # Key alias of the issuer. It is optional. It indicates a root CA certificate if not specified.
-         ├── -issuerKeyPwd                    # Key password of the issuer. It is optional.
-         ├── -subject                         # Certificate subject. It is mandatory.
-         ├── -validity                        # Validity period of the certificate. It is optional. The default value is 3650 days.
-         ├── -signAlg                         # Signing algorithm, which can be SHA256withRSA, SHA384withRSA,  SHA256withECDSA, or SHA384withECDSA. It is mandatory.
-         ├── -basicConstraintsPathLen         # Path length. It is optional. The default value is 0.
-         ├── -keystoreFile      # Keystore file, which is mandatory.
-         ├── -keystorePwd                     # KS password. It is optional.
-         ├── -issuerKeystoreFile              # Issuer keystore file, which is optional.
-         ├── -issuerKeystorePwd               # KS password of the issuer. It is optional. 
-         ├── -outFile                         # File to generate. It is optional. The file is output to the console if this parameter is not specified.
-     ```
+   ```log
+   generate-ca : Generates a root CA/intermediate CA certificate. If the key does not exist, the key is generated together.
+       ├── -keyAlias                        # Key alias, mandatory.
+       ├── -keyPwd                          # Key password, optional.
+       ├── -keyAlg                          # Key algorithm, mandatory, including RSA/ECC.
+       ├── -keySize                         # Key size, mandatory. The size for the RSA algorithm is 2048/3072/4096, and the size for the ECC algorithm is NIST-P-256/NIST-P-384.
+       ├── -issuer                          # Subject of the issuer, optional. If not specified, it indicates a root CA.
+       ├── -issuerKeyAlias                  # Key alias of the issuer, optional. If not specified, it indicates a root CA.
+       ├── -issuerKeyPwd                    # Key password of the issuer, optional.
+       ├── -subject                         # Certificate subject, mandatory.
+       ├── -validity                        # Certificate validity period, optional. The default value is 3650 days.
+       ├── -signAlg                         # Signature algorithm, mandatory, including SHA256withRSA / SHA384withRSA / SHA256withECDSA / SHA384withECDSA.
+       ├── -basicConstraintsPathLen         # Path length, optional. The default value is 0.
+       ├── -keystoreFile                    # Keystore file, mandatory.
+       ├── -keystorePwd                     # Keystore password, optional.
+       ├── -issuerKeystoreFile              # Keystore file of the issuer, optional.
+       ├── -issuerKeystorePwd               # Keystore password of the issuer, optional.
+       ├── -outFile                         # Output file, optional. If not specified, the output is directly printed to the console.
+   ```
 
 6. Generate a debug or release certificate for an app.
 
-     ```
-     generate-app-cert: Generate a debug or release certificate for an app.
-         ├── -keyAlias                        # Key alias. It is mandatory.
-         ├── -keyPwd                          # Key password. It is optional.
-         ├── -issuer                          # Issuer of the certificate. It is mandatory.
-         ├── -issuerKeyAlias                  # Key alias of the issuer. It is mandatory.
-         ├── -issuerKeyPwd                    # Key password of the issuer. It is optional.
-         ├── -subject                         # Certificate subject. It is mandatory.
-         ├── -validity                        # Validity period of the certificate. It is optional. The default value is 3650 days.
-         ├── -signAlg                         # Signing algorithm, which can be SHA256withECDSA or SHA384withECDSA.
-         ├── -issuerKeystoreFile              # KS file of the issuer, in JKS or P12 format. It is optional.
-         ├── -issuerKeystorePwd               # KS password of the issuer. It is optional. 
-         ├── -keystoreFile      # Keystore file, which is mandatory.
-         ├── -keystorePwd                     # KS password. It is optional.
-         ├── -outForm                         # Format of the certificate to generate. It is optional. The value can be cert or certChain. The default value is certChain.
-         ├── -rootCaCertFile                  # Root CA certificate, which is mandatory when outForm is certChain.
-         ├── -subCaCertFile                   # Intermediate CA certificate file, which is mandatory when outForm is certChain.
-         ├── -outFile                         # Certificate file (certificate or certificate chain) to generate. It is optional. The file is output to the console if this parameter is not specified.
-     ```
+   ```log
+   generate-app-cert : Generate application debug/release certificate
+       ├── -keyAlias                        # Key alias, required
+       ├── -keyPwd                          # Key password, optional
+       ├── -issuer                          # Subject of the issuer, required
+       ├── -issuerKeyAlias                  # Key alias of the issuer, required
+       ├── -issuerKeyPwd                    # Key password of the issuer, optional
+       ├── -subject                         # Certificate subject, required
+       ├── -validity                        # Certificate validity period, optional, defaulting to 3650 days
+       ├── -signAlg                         # Signature algorithm, required, including SHA256withECDSA / SHA384withECDSA;
+       ├── -issuerKeystoreFile              # Issuer keystore file, optional, in JKS or P12 format
+       ├── -issuerKeystorePwd               # Issuer keystore password, optional
+       ├── -keystoreFile                    # Keystore file, required
+       ├── -keystorePwd                     # Keystore password, optional
+       ├── -outForm                         # Format of the output certificate file, including cert / certChain, optional, defaulting to certChain
+       ├── -rootCaCertFile                  #  Required when outForm is certChain, root CA certificate file
+       ├── -subCaCertFile                   #  Required when outForm is certChain, intermediate CA certificate file
+       ├── -outFile                         #  Output certificate file (certificate or certificate chain), optional; if not specified, output directly to the console
+   ```
 
 7. Generate a debug or release certificate for a profile.
 
-     ```
-     generate-profile-cert: Generate a debug or release certificate for a profile.
-         ├── -keyAlias                        # Key alias. It is mandatory.
-         ├── -keyPwd                          # Key password. It is optional.
-         ├── -issuer                          # Issuer of the certificate. It is mandatory.
-         ├── -issuerKeyAlias                  # Key alias of the issuer. It is mandatory.
-         ├── -issuerKeyPwd                    # Key password of the issuer. It is optional.
-         ├── -subject                         # Certificate subject. It is mandatory.
-         ├── -validity                        # Validity period of the certificate. It is optional. The default value is 3650 days.
-         ├── -signAlg                         # Signing algorithm, which can be SHA256withECDSA or SHA384withECDSA.
-         ├── -issuerKeystoreFile              # KS file of the issuer, in JKS or P12 format. It is optional.
-         ├── -issuerKeystorePwd               # KS password of the issuer. It is optional. 
-         ├── -keystoreFile      # Keystore file, which is mandatory.
-         ├── -keystorePwd                     # KS password. It is optional.
-         ├── -outForm                         # Format of the certificate to generate. It is optional. The value can be cert or certChain. The default value is certChain.
-         ├── -rootCaCertFile                  # Root CA certificate, which is mandatory when outForm is certChain.
-         ├── -subCaCertFile                   # Intermediate CA certificate file, which is mandatory when outForm is certChain.
-         ├── -outFile                         # Certificate file (certificate or certificate chain) to generate. It is optional. The file is output to the console if this parameter is not specified.
-     ```
+   ```log
+   generate-profile-cert : Generate a profile debug/release certificate
+       ├── -keyAlias                        # Key alias, mandatory
+       ├── -keyPwd                          # Key password, optional
+       ├── -issuer                          # Subject of the issuer, mandatory
+       ├── -issuerKeyAlias                  # Key alias of the issuer, mandatory
+       ├── -issuerKeyPwd                    # Key password of the issuer, optional
+       ├── -subject                         # Certificate subject, mandatory
+       ├── -validity                        # Certificate validity period, optional, defaulting to 3650 days
+       ├── -signAlg                         # Signature algorithm, mandatory, including SHA256withECDSA / SHA384withECDSA;
+       ├── -issuerKeystoreFile              # Issuer keystore file, optional, in JKS or P12 format
+       ├── -issuerKeystorePwd               # Issuer keystore password, optional
+       ├── -keystoreFile                    # Keystore file, mandatory
+       ├── -keystorePwd                     # Keystore password, optional
+       ├── -outForm                         # Format of the output certificate file, including cert / certChain, optional, defaulting to certChain
+       ├── -rootCaCertFile                  #  Mandatory when outForm is certChain, root CA certificate file
+       ├── -subCaCertFile                   #  Mandatory when outForm is certChain, intermediate CA certificate file
+       ├── -outFile                         #  Output certificate file (certificate or certificate chain), optional; if not specified, output directly to the console
+   ```
 
 8. Generate a common certificate, which can be used to generate a custom certificate.
 
-     ```
-     generate-cert: Generate a common certificate, which can be used to generate a custom certificate.
-         ├── -keyAlias                          # Key alias. It is mandatory.
-         ├── -keyPwd                            # Key password. It is optional.
-         ├── -issuer                            # Issuer of the certificate. It is mandatory.
-         ├── -issuerKeyAlias                    # Key alias of the issuer. It is mandatory.
-         ├── -issuerKeyPwd                     # Key password of the issuer. It is optional.
-         ├── -subject                          # Certificate subject. It is mandatory.
-         ├── -validity                         # Validity period of the certificate. It is optional. The default value is 1095 days.
-         ├── -keyUsage                          # Usages of the key. It is mandatory. The value can be one or more of digitalSignature, nonRepudiation, keyEncipherment,
-         ├                                        dataEncipherment, keyAgreement, certificateSignature, crlSignature,
-         ├                                        encipherOnly, and decipherOnly. Use a comma (,) to separate multiple values.
-         ├── -keyUsageCritical                  # Whether keyUsage is a critical option. It is optional. The default value is true.
-         ├── -extKeyUsage                       # Extended key usages. It is optional. The extended key usages include clientAuthentication, serverAuthentication,
-         ├                                        codeSignature, emailProtection, smartCardLogin, timestamp, and ocspSignature.
-         ├── -extKeyUsageCritical               # Whether extKeyUsage is a critical option. It is optional. The default value is false.
-         ├── -signAlg                         # Signing algorithm, which can be SHA256withRSA, SHA384withRSA,  SHA256withECDSA, or SHA384withECDSA. It is mandatory.
-         ├── -basicConstraints                  # Whether basicConstraints is contained. It is optional. The default value is false.
-         ├── -basicConstraintsCritical          # Whether basicConstraints is a critical option. It is optional. The default value is false.
-         ├── -basicConstraintsCa                # Whether it is CA. It is optional. The default value is false.
-         ├── -basicConstraintsPathLen          # Path length. It is optional. The default value is 0.
-         ├── -issuerKeystoreFile              # Issuer keystore file, which is optional.
-         ├── -issuerKeystorePwd               # KS password of the issuer. It is optional. 
-         ├── -keystoreFile      # Keystore file, which is mandatory.
-         ├── -keystorePwd                     # KS password. It is optional.
-         ├── -outFile                           # Certificate file to generate. It is optional. The file is output to the console if this parameter is not specified.
-     ```
+   ```log
+   generate-cert : General certificate generation, which can generate a custom certificate
+       ├── -keyAlias                          # Key alias, mandatory
+       ├── -keyPwd                            # Key password, optional
+       ├── -issuer                            # Subject of the issuer, mandatory
+       ├── -issuerKeyAlias                    # Key alias of the issuer, mandatory
+       ├── -issuerKeyPwd                      # Key password of the issuer, optional
+       ├── -subject                           # Certificate subject, mandatory
+       ├── -validity                          # Certificate validity period, optional, defaulting to 1095 days
+       ├── -keyUsage                          # Key usage, mandatory, including digitalSignature, nonRepudiation, keyEncipherment,
+       ├                                        dataEncipherment, keyAgreement, certificateSignature, crlSignature,
+       ├                                        encipherOnly and decipherOnly. If the certificate includes multiple key usages, separate them with commas
+       ├── -keyUsageCritical                  # Whether keyUsage is critical, optional, defaulting to yes
+       ├── -extKeyUsage                       # Extended key usage, optional, including clientAuthentication, serverAuthentication,
+       ├                                        codeSignature, emailProtection, smartCardLogin, timestamp, ocspSignature
+       ├── -extKeyUsageCritical               # Whether extKeyUsage is critical, optional, defaulting to no
+       ├── -signAlg                           # Signature algorithm, mandatory, including SHA256withRSA/SHA384withRSA/SHA256withECDSA/SHA384withECDSA 
+       ├── -basicConstraints                  # Whether to include basicConstraints, optional, defaulting to no
+       ├── -basicConstraintsCritical          # Whether basicConstraints is included as critical, optional, defaulting to no
+       ├── -basicConstraintsCa                # Whether it is a CA, optional, defaulting to no
+       ├── -basicConstraintsPathLen           # Path length, optional, defaulting to 0
+       ├── -issuerKeystoreFile                # Keystore file of the issuer, optional
+       ├── -issuerKeystorePwd                 # Keystore password of the issuer, optional
+       ├── -keystoreFile                      # Keystore file, mandatory
+       ├── -keystorePwd                       # Keystore password, optional
+       ├── -outFile                           # Output certificate file, optional. If not specified, the certificate is output directly to the console
+   ```
 
 9. Sign a profile.
 
-     ```
-     sign-profile: Sign a profile.
-         ├── -mode            # Signing mode, which can be localSign or remoteSign. It is mandatory.
-         ├── -keyAlias        # Key alias. It is mandatory.
-         ├── -keyPwd          # Key password. It is optional.
-         ├── -profileCertFile # Profile signing certificate (certificate chain, in the entity certificate, intermediate CA certificate, and root certificate order). It is mandatory.
-         ├── -inFile          # Profile to be signed, in JSON format (developtools_hapsigner/autosign/UnsgnedReleasedProfileTemplate.json). It is mandatory.
-         ├── -signAlg         # Signing algorithm, which can be SHA256withECDSA or SHA384withECDSA. It is mandatory.
-         ├── -keystoreFile    # Keystore file, which is mandatory when mode is localSign.
-         ├── -keystorePwd     # KS password. It is optional.
-         ├── -outFile         # Signed profile to generate, in p7b format. This parameter is mandatory.
-     ```
+   ```log
+   sign-profile : Sign the profile file
+       ├── -mode            # Signing mode, mandatory, including localSign and remoteSign
+       ├── -keyAlias        # Key alias, mandatory
+       ├── -keyPwd          # Key password, optional
+       ├── -profileCertFile # Profile signing certificate (certificate chain, in the order of end-entity certificate - intermediate CA certificate - root certificate), mandatory
+       ├── -inFile          # Input the original template profile file, in JSON format, located at developtools_hapsigner/autosign/UnsgnedReleasedProfileTemplate.json, mandatory
+       ├── -signAlg         # Signing algorithm, mandatory, including SHA256withECDSA / SHA384withECDSA
+       ├── -keystoreFile    # Keystore file, mandatory in localSign mode
+       ├── -keystorePwd     # Keystore password, optional
+       ├── -outFile         # Output the signed profile file, in p7b format, mandatory
+   ```
 
 10. Verify the signature of a profile.
 
-     ```
-     verify-profile: Verify the profile signature.
-         ├── -inFile       # Signed profile in p7b format. This parameter is mandatory.
-         ├── -outFile       # Verification result file (including the verification result and profile content), in json format. It is optional. The verification result is output to the console if this parameter is not specified.
-     ```
+    ```log
+    verify-profile : profile file signature verification
+        ├── -inFile       # Signed profile file, p7b format, required
+        ├── -outFile      # Verification result file (containing the verification result and profile content), json format, optional; if not specified, the result is output directly to the console
+    ```
 
 11. Sign an app package or a debug tool.
 
-      ```
-     sign-app: Sign an app package or a binary tool.
-          ├── -mode          # Signing mode, which can be localSign, remoteSign, or remoteResign. It is mandatory.
-          ├── -keyAlias      # Key alias. It is mandatory.
-          ├── -keyPwd         # Key password. It is optional.
-          ├── -appCertFile       # App signing certificate (certificate chain, in the entity certificate, intermediate CA certificate, and root certificate order). It is mandatory.
-          ├── -profileFile   # Name of the signed provisioning profile. When profileSigned is 1, the file is in p7b format. When profileSigned is 0, the file is in JSON format. This parameter is mandatory if an app package is to be signed, and optional if a binary tool is to be signed.
-          ├── -profileSigned # Whether to sign the profile. The value 1 means to sign the profile, and value 0 means the opposite. The default value is 1. This parameter is optional.
-          ├── -inForm            # Format of the file to be signed. The value is zip for an app package in ZIP format, elf for a binary tool, and bin for an app package in BIN format. The default value is zip. This parameter is optional.
-          ├── -inFile            # File to be signed, which can be an app package, an elf file, or a bin file. This parameter is mandatory.
-          ├── -signAlg       # Signing algorithm, which can be SHA256withECDSA or SHA384withECDSA. It is mandatory.
-          ├── -keystoreFile  #  Keystore file, which is mandatory when mode is localSign.
-          ├── -keystorePwd   # KS password. It is optional.
-          ├── -outFile       # Signed app package to generate. It is mandatory.
-          ├── -signCode          # Whether to enable code signing. The value 1 means to enable code signing, and the value 0 means the opposite. This parameter is optional. By default, code signing is enabled for .hap, .hsp, .hqf, and .elf files. To disable code signing, set this parameter to 0.
-
-      ```
+    ```log
+    sign-app : Signs application packages and binary tools
+        ├── -mode          # Signing mode, required. Options include localSign, remoteSign, and remoteResign
+        ├── -keyAlias      # Key alias, required
+        ├── -keyPwd        # Key password, optional
+        ├── -appCertFile   # Application signing certificate file (certificate chain, in the order of entity certificate - intermediate CA certificate - root certificate), required
+        ├── -profileFile   # File name of the signed Provision Profile. It is in p7b format when profileSigned is 1, and in json format when profileSigned is 0. Required for application package signing, optional for binary tool signing
+        ├── -profileSigned # Indicates whether the profile file is signed. 1 means signed, 0 means unsigned. The default value is 1. Optional
+        ├── -inForm        # Format of the input original file. Enumerated values: zip, elf, or bin. zip corresponds to application packages, elf corresponds to binary tools, and bin corresponds to bin application packages. The default value is zip. Optional
+        ├── -inFile        # Input original file, which can be an application package, an elf file, or a bin file. Required
+        ├── -signAlg       # Signing algorithm, required. Options include SHA256withECDSA / SHA384withECDSA
+        ├── -keystoreFile  # Keystore file, required in localSign mode
+        ├── -keystorePwd   # Keystore password, optional
+        ├── -outFile       # Output signed package file, required
+        ├── -signCode      # Whether to enable code signing. 1 means enabled, 0 means disabled. Optional. By default, code signing is enabled for hap, hsp, hqf, and elf, and can be disabled by setting this parameter to 0.
+        ├── -permSign      # Whether to enable permission signing. 1 means enabled, 0 means disabled. Optional. Permission signing is enabled by default and can be disabled by setting this parameter to 0. This parameter is supported from API version 26.0.0.
+    ```
 
 12. Verify the signature of an app package or a debug tool.
 
-      ```
-      verify-app: Verify the signature of an app package or a binary tool.
-         ├── -inFile          # Signed file, which can be an app package, an elf file, or a bin file. This parameter is mandatory.
-         ├── -outCertchain    # Signed certificate chain file. It is mandatory.
-         ├── -outProfile      # Profile of the app. It is mandatory.
-         ├── -inForm            # Format of the file to be verified. The value is zip for an app package in ZIP format, elf for a binary tool, and bin for an app package in BIN format. The default value is zip. This parameter is optional.
-      ```
+    ```log
+    verify-app : Verify the signature of an app package and binary tool files
+        ├── -inFile          # Signed file, app package, elf, or bin file; required
+        ├── -outCertChain    # Signed certificate chain file; required
+        ├── -outProfile      # Profile file in the app package; required
+        ├── -inForm          # Format of the input original file, enumerated values: zip, elf, or bin; zip for zip app packages, elf for binary tools, bin for bin app packages; default is zip; optional
+    ```
+
+13. Re-sign an enterprise application package.
+
+    ```log
+    resign-enterprise-app : Re-sign an enterprise app package
+        ├── -mode          # Signing mode, mandatory, including localSign and remoteSign
+        ├── -keyAlias      # Key alias, mandatory
+        ├── -keyPwd        # Key password, mandatory in localSign mode
+        ├── -appCertFile   # App signing certificate file (certificate chain, in the order of entity certificate - intermediate CA certificate - root certificate), mandatory
+        ├── -inForm        # Format of the input original file, enumerated value: zip; currently only zip app packages are supported; optional
+        ├── -inFile        # Input original file, a signed enterprise app package, mandatory
+        ├── -signAlg       # Signing algorithm, mandatory, including SHA256withECDSA / SHA384withECDSA
+        ├── -keystoreFile  # Keystore file, mandatory in localSign mode
+        ├── -keystorePwd   # Keystore password, mandatory in localSign mode
+        ├── -outFile       # Output package file after re-signing, mandatory
+        ├── -pwdInputMode  # Password input mode, 0 means the password is obtained from command-line parameters, 1 means the password is entered interactively through the console, default is 0, optional
+        ├── -permSign      # Whether to enable permission signing, 1 means enable permission signing, 0 means disable permission signing. Optional. Permission signing is enabled by default and can be disabled by configuring this parameter to 0. This parameter is supported starting from API version 26.0.0.
+    ```
 
 ### Signing Procedure
 The process of signing an app package is as follows:
@@ -264,13 +283,13 @@ The process of signing an app package is as follows:
 
    The command parameters are described as follows:
 
-   ```
+   ```log
    generate-keypair: Generate a key pair for the app signing certificate.
        ├── -keyAlias         # Alias of the key used to generate the app signing certificate. It is stored in the OpenHarmony.p12 file. This parameter is mandatory.
        ├── -keyAlg           # Key algorithm. It is mandatory. ECC is recommended.
        ├── -keySize          # Key length. It is NIST-P-256 or NIST-P-384 for an ECC key. This parameter is mandatory.
        ├── -keyStoreFile     # Keystore file, which is mandatory. You are advised to use OpenHarmony.p12. The Java version supports two formats: PKCS#12 and JKS. The C++ version supports PKCS#12 only.
-       ├── -keyStorePwd      # KS password. It is mandatory. The default password is 123456 for OpenHarmony.p12.
+       ├── -keyStorePwd      # Keystore password. It is mandatory. The default password is 123456 for OpenHarmony.p12.
        ├── -keyPwd           # Key password. It is optional. If this parameter is not specified, the generated key pair has no password.
    ```
 
@@ -292,20 +311,20 @@ The process of signing an app package is as follows:
 
    The command parameters are described as follows:
 
-   ```
+   ```log
    generate-app-cert: Generate an app signing certificate.
        ├── -keyAlias         # Key alias, which must be the same as that in the previous step.
        ├── -signAlg         # Signing algorithm, which can be SHA256withECDSA or SHA384withECDSA. It is mandatory.
        ├── -issuer           #  Issuer of the certificate. Enter the issuer of the intermediate CA certificate. It is mandatory and cannot be changed.
-       ├── -issuerKeyAlias   #Alias of the issuer key. Enter the alias of the intermediate CA certificate key. This parameter is mandatory and cannot be changed.
+       ├── -issuerKeyAlias   # Alias of the issuer key. Enter the alias of the intermediate CA certificate key. This parameter is mandatory and cannot be changed.
        ├── -subject          # Subject of the certificate. Enter the subject in the same sequence specified in the command. This parameter is mandatory.
-       ├── -issuerKeyPwd     # Key password of the issuer. Enter the key password of the intermediate CA certificate. It is mandatory and cannot be changed. In this example, it is 123456. 
+       ├── -issuerKeyPwd     # Key password of the issuer. Enter the key password of the intermediate CA certificate. It is mandatory and cannot be changed. In this example, it is 123456.
        ├── -keystoreFile     # Keystore file, which is mandatory and cannot be changed. You are advised to use OpenHarmony.p12. The Java version supports two formats: PKCS#12 and JKS. The C++ version supports PKCS#12 only.
        ├── -rootCaCertFile   # Root CA certificate. It is mandatory and cannot be changed.
        ├── -subCaCertFile    # Intermediate CA certificate provided. This parameter is mandatory and cannot be modified.
        ├── -outForm          # Format of the certificate file to generate. certChain is recommended.
        ├── -outFile          # File to generate. It is optional. The file is output to the console if this parameter is not specified.
-       ├── -keyPwd           # Key password. It is optional. It is the key password set when the key pair is generated. 
+       ├── -keyPwd           # Key password. It is optional. It is the key password set when the key pair is generated.
        ├── -keystorePwd      # KS password. The default value is 123456.
        ├── -validity         # Validity period of the certificate. It is optional. The default value is 3650 days.
    ```
@@ -328,7 +347,7 @@ The process of signing an app package is as follows:
 
    The command parameters are described as follows:
 
-   ```
+   ```log
    sign-profile: Sign a profile.
        ├── -keyAlias         # Alias of the key for generating the profile certificate. It is mandatory and cannot be changed.
        ├── -signAlg          # Signing algorithm, which can be SHA256withECDSA or SHA384withECDSA. It is mandatory.
@@ -368,7 +387,7 @@ The process of signing an app package is as follows:
 
    The command parameters are described as follows:
 
-   ```
+   ```log
    sign-app: Sign an app package.
        ├──-keyAlias          # Key alias, which must be the same as the alias of the key pair generated. This parameter is mandatory.
        ├── -signAlg          # Signing algorithm, which can be SHA256withECDSA or SHA384withECDSA. It is mandatory.
@@ -379,7 +398,7 @@ The process of signing an app package is as follows:
        ├──  -keystoreFile     # Keystore file, which is mandatory and cannot be changed. The value must be the same as that in step 1. The Java version supports two formats: PKCS#12 and JKS. The C++ version supports PKCS#12 only.
        ├── -outFile          # Signed file to generate. It is mandatory.
        ├── -keyPwd           # Key password, which must be the actual key password.
-       ├── -keystorePwd      # KS password, which must be the actual KS password. 
+       ├── -keystorePwd      # KS password, which must be the actual KS password.
    ```
 
 ## FAQs (Java)
@@ -388,7 +407,7 @@ The process of signing an app package is as follows:
 
    - **Symptom**
 
-     When the tool is used to generate an app signing certificate, the certificate content is displayed on the console but no certificate is generated.  
+     When the tool is used to generate an app signing certificate, the certificate content is displayed on the console but no certificate is generated.   
 
    - **Possible Causes**
    
@@ -570,7 +589,7 @@ The process of signing an app package is as follows:
 
      (1) When a .json file of the release or debug type is used to sign and install a HAP, the following information is displayed: device type is not supports
 
-     (2) When a .json file of the debug type is used to install a HAP, the following information is displayed: verify pkcs7 info failed
+     (2) When a HAP is installed using a .json file of the debug type, the installation fails and the following error is reported: verify pkcs7 info failed
 
      (3) When a HAP is installed on an OpenHarmony system of an earlier version, the following information is displayed: install sign info inconsistent
 
@@ -578,7 +597,7 @@ The process of signing an app package is as follows:
 
    - **Possible Causes**
 
-     (1) The OpenHarmony system configuration file does not support the device type of the HAP.
+     (1) The configuration file of the OpenHarmony system does not support the device type of the application package.
 
      (2) The **device-ids** field in the .json file of the debug type does not contain your device **udid**.
 

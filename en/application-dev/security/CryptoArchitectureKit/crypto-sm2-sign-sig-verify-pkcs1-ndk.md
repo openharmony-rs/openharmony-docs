@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e80025ed82ed281bac11c255d720292d542f564f translatedAt=2026-10-09T02:03:09.833Z pushedAt=2026-10-10T02:48:36.672Z -->
+<!-- md-trans-meta sourceCommit=ccb2328b60eb675989566b23a830be06b8bbccad translatedAt=2026-11-10T01:11:23.039Z pushedAt=2026-11-10T02:43:58.351Z nl=1 -->
 
 For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify-overview.md#sm2).
 

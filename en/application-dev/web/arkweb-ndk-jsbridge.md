@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=fa50beec0bdde9987a26860c8712dd96954b9a92 translatedAt=2026-11-05T10:36:35.913Z pushedAt=2026-11-05T11:10:37.933Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ac5da3db077922920ad23333a9ce00569d12c98f translatedAt=2026-11-10T03:19:04.138Z pushedAt=2026-11-10T07:42:17.798Z nl=1 -->
 
 This guide applies to the communication between ArkWeb applications and frontend pages. You can use the ArkWeb native APIs to conduct the service communication mechanism (native JSBridge for short) based on the application architecture.
 
@@ -28,7 +28,7 @@ If an application is developed using a mix of ArkTS and C++, or if the applicati
 ## Using Native APIs to Implement JSBridge Communication (Recommended)
 In the previous version, the return value of native synchronization APIs is fixed to void. However, to meet service requirements, alternative APIs are introduced since API version 18 to support return values of the Boolean and string types.
 
-In addition, the [permission](#invoking-application-functions-on-the-frontend-page) field is added for the synchronous API [registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex) and asynchronous API [registerAsyncJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerasyncjavascriptproxyex) to control the invoking permission.
+In addition, the [permission](#invoking-application-functions-on-the-frontend-page) field is added for the synchronous API [registerJavaScriptProxyEx()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex) and asynchronous API [registerAsyncJavaScriptProxyEx()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerasyncjavascriptproxyex) to control the invoking permission.
 
 ### Substitute APIs
 
@@ -136,7 +136,7 @@ Register the component lifecycle callback using [ArkWeb_ComponentAPI](../referen
 
 ### Invoking Application Functions on the Frontend Page
 
-Register the application functions with the frontend page through [registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex). The registration takes effect after the next loading or reloading.
+Register the application functions with the frontend page through [registerJavaScriptProxyEx()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex). The registration takes effect after the next loading or reloading.
 
   <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/hello.cpp) -->
   
@@ -216,7 +216,7 @@ Register the application functions with the frontend page through [registerJavaS
 
 ### Invoking Frontend Page Functions on the Application
 
-Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#runjavascript) to call the frontend page function.
+Use [runJavaScript()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#runjavascript) to call the frontend page function.
 
   ```c++
   // Construct a struct executed in runJS.
@@ -942,7 +942,7 @@ Register the component lifecycle callback using [ArkWeb_ComponentAPI](../referen
 
 ### Invoking Application Functions on the Frontend Page
 
-Register the application functions with the frontend page through [registerJavaScriptProxy](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxy). The registration takes effect after the next loading or reloading.
+Register the application functions with the frontend page through [registerJavaScriptProxy()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxy). The registration takes effect after the next loading or reloading.
 
   <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/hello.cpp) -->
   
@@ -961,7 +961,7 @@ Register the application functions with the frontend page through [registerJavaS
 
 ### Invoking Frontend Page Functions on the Application
 
-Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#runjavascript) to call the frontend page function.
+Use [runJavaScript()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#runjavascript) to call the frontend page function.
 
   ```c++
   // Construct a struct executed in runJS.

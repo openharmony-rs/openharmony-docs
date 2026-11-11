@@ -784,6 +784,8 @@ onItemDragStart(event: OnItemDragStartCallback)
 
 不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现GridItem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。从API版本26.0.0开始，可以使用[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)的[onMove](./ts-universal-attributes-drag-sorting.md#onmove)接口实现该效果，参考[示例22（使用OnMove进行拖拽）](#示例22使用onmove进行拖拽)。它同时支持跨行跨列的GridItem的拖拽，但需注意Grid必须是可滚动的。
 
+使用onMove实现拖拽排序时，不建议在onMove回调中新增数据。onMove上报的起始索引号与目标索引号基于拖拽开始时的数据源，框架按同一批数据仅发生顺序变化的前提完成落位与布局推演；若在回调中增加数据条数，应用侧索引会与框架内部的拖拽顺序不一致，可能导致排序结果错位或落位动画异常。如确需新增数据，建议在拖拽流程结束、onMove回调执行完成后再进行。数据源修改的通用约束参考[onMove](./ts-universal-attributes-drag-sorting.md#onmove)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -1,14 +1,14 @@
 # "js" Tag
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=857c0cf28fe353452da96535373d5d9536ab1775 translatedAt=2026-08-05T01:25:29.326Z pushedAt=2026-08-05T02:52:22.329Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:36:39.397Z pushedAt=2026-11-09T10:02:18.799Z nl=1 -->
 
 The "js" tag contains the instance name, window style, and page route information.
+
 
 | Tag | Data Type | Default Value | Mandatory | Description |
 | ------ | ------ | ------- | ---- | ------------------------------- |
@@ -16,9 +16,11 @@ The "js" tag contains the instance name, window style, and page route informatio
 | pages  | Array  | -       | Yes   | Route information. For details, see ["pages"](#pages).  |
 | window | Object | -       | No   | Window information. For details, see ["window"](#window).|
 
+
 > **NOTE**
 >
 > The **"name"**, **"window"**, and **"pages"** tags are configured in the **"js"** tag of the **config.json** file.
+
 
 ## pages
 
@@ -56,14 +58,12 @@ The "js" tag contains the instance name, window style, and page route informatio
   > 2. Values of **autoDesignWidth** and **designWidth** do not affect how the default **\<length>** value is calculated and the final effect.
 
 <!--Table: 20%; 10%; 10%; 10%; 50%-->
-
 | Attribute             | Type     | Mandatory  | Default Value      | Description                                      |
 | --------------- | ------- | ---- | -------- | ---------------------------------------- |
 | designWidth     | number  | No   | 720<br>| Logical screen width, which is a reference value for page design. The actual display width is scaled at the ratio of the value to the device width.  |
 | autoDesignWidth | boolean | No   | false    | Whether to automatically calculate the baseline width for page design.<br>The value **true** means to automatically calculate the baseline width for page design, and **false** means the opposite.<br>If it is set to **true**, the **designWidth** attribute becomes invalid. The baseline width is calculated based on the device width and screen density.|
 
 The following is an example.
-
 ```json5
 {
     // ...
@@ -74,6 +74,7 @@ The following is an example.
     // ...
 }
 ```
+
 
 ## Example
 

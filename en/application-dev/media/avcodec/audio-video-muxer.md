@@ -6,7 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b0fb52367b19727869b4489b82765b2c38e26be translatedAt=2026-11-05T00:59:45.672Z pushedAt=2026-08-07T03:26:19.176Z nl=2 -->
+<!-- md-trans-meta sourceCommit=8edc9bc0a2cabc0f28ab37f9be848d5c11ab3bbc translatedAt=2026-11-09T07:44:51.825Z pushedAt=2026-11-09T08:09:58.220Z nl=1 -->
 
 You can call native APIs to multiplex audio and video streams, that is, to store encoded audio and video data to a file in a certain format.
 
@@ -17,11 +17,11 @@ For details about the currently supported multiplexing capabilities, see [Media 
 **When to Use**
 
 - Video and audio recording
-
+  
   After you encode audio and video streams, multiplex them into files.
 
 - Audio and video editing
-
+  
   After you edit audio and video, multiplex them into files.
 
 - Audio and video transcoding
@@ -34,7 +34,9 @@ For details about the APIs, see [native_avmuxer.h](../../reference/apis-avcodec-
 
 > **NOTE**
 >
-> To call the AVMuxer module to write a local file, request the ohos.permission.READ_MEDIA and ohos.permission.WRITE_MEDIA permissions by following the instructions provided in [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
+> - The output file descriptor (fd) for muxing must be opened in read/write mode and closed by the caller. For details, see [OH_AVMuxer_Create()](../../reference/apis-avcodec-kit/capi-native-avmuxer-h.md#oh_avmuxer_create).
+>
+> - To save the muxing result to the media library (Gallery) and obtain a writable fd, see [Saving Media Assets](../medialibrary/photoAccessHelper-savebutton.md). If you create the media asset through a security control or an authorization dialog box, the **ohos.permission.WRITE_IMAGEVIDEO** permission is not required.
 
 ### Linking the Dynamic Libraries in the CMake Script
 
@@ -182,7 +184,6 @@ For details about the keys to be configured for different container formats, see
    ```
 
 6. Add a video track.
-
    > **NOTE**
    >
    > - When you need to set color information, you must ensure that the values of `OH_MD_KEY_COLOR_PRIMARIES`, `OH_MD_KEY_TRANSFER_CHARACTERISTICS`, and `OH_MD_KEY_MATRIX_COEFFICIENTS` all fall within their respective parameter ranges. Otherwise, the system will not recognize the data as valid color information. For details about the parameter ranges, see [OH_ColorPrimary](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_colorprimary), [OH_TransferCharacteristic](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_transfercharacteristic), and [OH_MatrixCoefficient](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_matrixcoefficient).
@@ -255,7 +256,6 @@ For details about the keys to be configured for different container formats, see
    ```
 
 7. Add an auxiliary track.
-
    > **NOTE**
    >
    > When setting **OH_MD_KEY_TRACK_TYPE**, set the value to **MEDIA_TYPE_AUXILIARY** to add an auxiliary track.<br>
@@ -521,7 +521,7 @@ For details about the keys to be configured for FLV format multiplexing, see [Me
    > **NOTE**
    >
    > When the audio codec type is HE-AAC (AAC_PROFILE_HE or AAC_PROFILE_HE_V2), only sample rates greater than or equal to 16000 Hz are supported.
-
+   
    ```c++
    int audioTrackId = -1;
    // Example: multiplexing AAC-LC audio with a 44100 Hz sample rate and 2 channels.

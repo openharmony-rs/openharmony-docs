@@ -1,11 +1,11 @@
 # Interface (AudioSessionManager)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=59c3fabc0701f94b960b606856aa3cc084316830 translatedAt=2026-10-08T12:05:04.414Z pushedAt=2026-10-12T03:44:40.021Z -->
+<!-- md-trans-meta sourceCommit=e4a562ef6d9593b7adca32a1cb00cbbb662acea7 translatedAt=2026-11-09T10:22:37.716Z pushedAt=2026-11-09T11:21:22.971Z nl=1 -->
 
 **AudioSessionManager** is a session management module in the audio system. This module provides APIs for audio session management, including activating and deactivating audio sessions, controlling audio focus, selecting and switching audio devices, and setting audio scenes. When you need to coordinate the audio playback behavior of multiple apps and resolve audio focus conflicts, use the APIs provided by this module to complete related operations. This module is applicable to scenarios that require refined audio management, such as media playback, VoIP calls, and games.
 
@@ -179,7 +179,7 @@ Unsubscribes from the audio session deactivation event.
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string | Yes   | Event type. This field has a fixed value of **'audioSessionDeactivated'**. |
-| callback |Callback<[AudioSessionDeactivatedEvent](arkts-apis-audio-i.md#audiosessiondeactivatedevent12)> | No   | Callback function. When a callback function is passed in, only the listening event corresponding to this callback is unregistered, and the same callback function must be bound as in [on('audioSessionDeactivated')](#onaudiosessiondeactivated12); when no parameter is passed, all subscribed listening events of this event type are unregistered. |
+| callback |Callback<[AudioSessionDeactivatedEvent](arkts-apis-audio-i.md#audiosessiondeactivatedevent12)> | No   | Callback used to return the result. When a callback is passed in, only the listener corresponding to this callback is unregistered, and the same callback must be bound as in [on('audioSessionDeactivated')](#onaudiosessiondeactivated12); when no parameter is passed, all listeners of this event type are unregistered. |
 
 **Error codes**
 
@@ -282,7 +282,7 @@ Unregisters the listener for the audio session state change event.
 | Name  | Type                                                                       | Mandatory| Description                                                        |
 | -------- |---------------------------------------------------------------------------| ---- | ------------------------------------------------------------ |
 | type     | string | Yes   | Event type. This field has a fixed value of **'audioSessionStateChanged'**. |
-| callback | Callback<[AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20)> | No | Callback function. When a callback function is passed in, only the listening event corresponding to this callback is unregistered, and the same callback function must be bound as in [on('audioSessionStateChanged')](#onaudiosessionstatechanged20); when no parameter is passed, all subscribed listening events of this event type are unregistered.  |
+| callback | Callback<[AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20)> | No | Callback used to return the result. When a callback is passed in, only the listener corresponding to this callback is unregistered, and the same callback must be bound as in [on('audioSessionStateChanged')](#onaudiosessionstatechanged20); when no parameter is passed, all listeners of this event type are unregistered.  |
 
 **Error codes**
 
@@ -317,9 +317,9 @@ Sets the default audio output device. This API uses a promise to return the resu
 
 > **NOTE**
 >
-> - This API applies to the following scenario: when the set [AudioSessionScene](arkts-apis-audio-e.md#audiosessionscene20) is a VoIP scenario, it takes effect immediately after the AudioSession is activated. If [AudioSessionScene](arkts-apis-audio-e.md#audiosessionscene20) is a non-VoIP scenario, it does not take effect upon AudioSession activation, and only takes effect when [StreamUsage](arkts-apis-audio-e.md#streamusage) of the started playback is voice message, VoIP voice call, or VoIP video call. The earpiece, speaker, and system default device are supported.
-> - This API can be called at any time after the AudioSessionManager is created. The system records the default built-in output device set by the app. However, it takes effect only after the AudioSession is activated. When the app starts playback, if an external device such as a Bluetooth headset or wired headset is connected, the system prioritizes audio output from the external device. Otherwise, the system uses the default built-in output device set by the app.
-> - Since AudioSessionManager is an app-level setting, calling this API to set the default audio output device applies to all audio streams within the applicable scope of the current app, and overrides the default audio output device information set by the [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12) API of AudioRenderer.
+> - This API applies to the following scenarios: when the [AudioSessionScene](arkts-apis-audio-e.md#audiosessionscene20) is set to the VoIP or voice message scene, the setting takes effect immediately after the AudioSession is activated. If the [AudioSessionScene](arkts-apis-audio-e.md#audiosessionscene20) is set to another scene, the setting does not take effect when the AudioSession is activated; it takes effect only when the [StreamUsage](arkts-apis-audio-e.md#streamusage) of the playback to be started is voice message, VoIP voice call, or VoIP video call. The earpiece, speaker, and system default device are supported.
+> - This API can be called at any time after the AudioSessionManager is created. The system records the default built-in sound-producing device set by the application. However, the setting takes effect only after the AudioSession is activated. When the application starts playback, if an external device such as a Bluetooth headset or a wired headset is connected, the system gives priority to producing sound from the external device. Otherwise, the system follows the default built-in sound-producing device set by the application.
+> - Since AudioSessionManager is an application-level setting, calling this API to set the default audio output device takes effect on all audio streams of the current application within the applicable scope, and overrides the default audio output device information set by the [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12) API of AudioRenderer.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -489,7 +489,7 @@ Unsubscribes from the current output device change event.
 | Name  | Type                                                | Mandatory| Description                                                     |
 | :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
 | type     | string | Yes   | Event type. This field has a fixed value of **'currentOutputDeviceChanged'**. |
-| callback | Callback<[CurrentOutputDeviceChangedEvent](arkts-apis-audio-i.md#currentoutputdevicechangedevent20)> | No | Callback function. When a callback function is passed in, only the listening event corresponding to this callback is unregistered, and the same callback function must be bound as in [on('currentOutputDeviceChanged')](#oncurrentoutputdevicechanged20); when no parameter is passed, all subscribed listening events of this event type are unregistered.  |
+| callback | Callback<[CurrentOutputDeviceChangedEvent](arkts-apis-audio-i.md#currentoutputdevicechangedevent20)> | No | Callback used to return the result. When a callback is passed in, only the listener corresponding to this callback is unregistered, and the same callback must be bound as in [on('currentOutputDeviceChanged')](#oncurrentoutputdevicechanged20); when no parameter is passed, all listeners of this event type are unregistered.  |
 
 **Error codes**
 
@@ -605,7 +605,7 @@ Unsubscribes from the event indicating that the connection status of an availabl
 | Name  | Type                                               | Mandatory| Description                                      |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
 | type     | string | Yes   | Event type. This field has a fixed value of **'availableDeviceChange'**. |
-| callback | Callback\<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)\> | No   | Callback function. When a callback function is passed in, only the listening event corresponding to this callback is unregistered, and the same callback function must be bound as in [on('availableDeviceChange')](#onavailabledevicechange21); when no parameter is passed, all subscribed listening events of this event type are unregistered.  |
+| callback | Callback\<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)\> | No   | Callback used to return the result. When a callback is passed in, only the listener corresponding to this callback is unregistered, and the same callback must be bound as in [on('availableDeviceChange')](#onavailabledevicechange21); when no parameter is passed, all listeners of this event type are unregistered.  |
 
 **Error codes**
 
@@ -894,7 +894,7 @@ Unsubscribes from the current input device change event.
 | Name  | Type                                                | Mandatory| Description                                                     |
 | :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
 | type     | string | Yes   | Event type. This field has a fixed value of **'currentInputDeviceChanged'**. |
-| callback | Callback<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)> | No | Callback function. When a callback function is passed in, only the listening event corresponding to this callback is unregistered, and the same callback function must be bound as in [on('currentInputDeviceChanged')](#oncurrentinputdevicechanged21); when no parameter is passed, all subscribed listening events of this event type are unregistered.  |
+| callback | Callback<[CurrentInputDeviceChangedEvent](arkts-apis-audio-i.md#currentinputdevicechangedevent21)> | No | Callback used to return the result. When a callback is passed in, only the listener corresponding to this callback is unregistered, and the same callback must be bound as in [on('currentInputDeviceChanged')](#oncurrentinputdevicechanged21); when no parameter is passed, all listeners of this event type are unregistered.  |
 
 **Error codes**
 

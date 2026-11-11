@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ffc5e2859dca1ab6a17f6a8a1c145390f67cf1d5 translatedAt=2026-10-10T03:28:19.760Z pushedAt=2026-10-10T03:30:37.055Z -->
+<!-- md-trans-meta sourceCommit=39815d040555efa480022a8a2ab48b3872b91195 translatedAt=2026-11-10T03:11:35.266Z pushedAt=2026-11-10T06:58:01.867Z nl=1 -->
 
 The [digital envelope](huks-key-import-overview.md#digital-envelope-import) feature is supported since API version 23.
 
@@ -116,7 +116,7 @@ let enOption: huks.HuksOptions = {
 let cipherData: Uint8Array;
 let handle: number;
 
-async function EnvelopRsaTest()
+async function envelopRsaTest()
 {
   let wrappingKeyAlias = "WrappedKey";
   await huks.generateKeyItem(wrappingKeyAlias, option)

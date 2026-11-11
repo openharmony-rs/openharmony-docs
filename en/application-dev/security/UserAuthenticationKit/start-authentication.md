@@ -6,7 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=3b4926e6f34dace532417e6a6198ccbed01b1edf translatedAt=2026-10-31T02:55:06.344Z pushedAt=2026-10-31T06:08:51.579Z nl=1 -->
+<!-- md-trans-meta sourceCommit=d1f17d49e5d09bf3ebcad50c6f0b4923e6e35648 translatedAt=2026-11-10T00:58:38.758Z pushedAt=2026-11-10T02:43:58.278Z nl=1 -->
 
 A user authentication is required before an application accesses a critical functionality or sensitive data. This topic walks you through the process.
 
@@ -303,4 +303,4 @@ initiatingUserAuthentication4() {
 
 ## Sample Code
 
-  - [Initiating Authentication](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) sample code.

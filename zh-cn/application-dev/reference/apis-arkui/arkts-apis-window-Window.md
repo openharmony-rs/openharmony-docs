@@ -6325,7 +6325,7 @@ try {
 
 setWindowBackgroundColor(color: string | ColorMetrics): void
 
-设置窗口的背景色。
+设置窗口内容区域的背景色。
 
 未调用该接口时，窗口在浅色模式默认背景色为`'#FFF0F0F0'`，在深色模式默认背景色为`'#FF1A1A1A'`。
 

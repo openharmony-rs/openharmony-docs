@@ -6,7 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4df20884379aac255f1543b2903732709a7e9dcf translatedAt=2026-09-14T08:24:52.209Z pushedAt=2026-09-14T11:08:57.046Z -->
+<!-- md-trans-meta sourceCommit=2b68c6fd641ee47bdd457324034b8fb138048bb6 translatedAt=2026-11-09T07:43:43.294Z pushedAt=2026-11-09T07:45:27.455Z nl=1 -->
 
 ## Introduction
 Near Field Communication (NFC) is a short-range, high-frequency radio technology that operates at a frequency of 13.56 MHz, with a typical communication range of within 10 centimeters. Host Card Emulation (HCE) provides card emulation that does not depend on a secure element. It allows an application to emulate a card and communicate with an NFC card reader to complete NFC card swiping. Off Host Card Emulation (OFFHOST) is supported since API version 22. It simulates a card using a separate chip (called the secure element or SE) on the device. Some SIM cards of wireless carriers contain SEs.
@@ -112,9 +112,8 @@ HCE application developers can choose to implement either foreground or backgrou
 
 ```ts
 import { cardEmulation, nfcController } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { AsyncCallback } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
 
 let hceElementName: bundleManager.ElementName;
@@ -255,9 +254,8 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 import { cardEmulation, nfcController } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { AsyncCallback } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
 
 let hceElementName: bundleManager.ElementName;

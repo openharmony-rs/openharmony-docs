@@ -52,7 +52,9 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
 
 2. 编辑“CMakeLists.txt”文件，添加所需的源文件和动态库。
 
-   ```cmake
+   <!-- @[eventsub_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` Text
    set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
    set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
    # 检查是否存在entry/build目录
@@ -62,6 +64,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
        WORKING_DIRECTORY ${DEST_DIR})
 
    add_library(entry SHARED napi_init.cpp)
+   // ...
    # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
@@ -123,6 +126,8 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
 
 2. 编辑“napi_init.cpp”文件，通过RegisterExternalLogMgr()方法，将注册external_log日志管理者为ArkTS接口：
 
+    <!-- @[ExternalLog_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+
     ``` C++
     static napi_value Init(napi_env env, napi_value exports)
     {
@@ -138,15 +143,19 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
 
 3. 编辑“index.d.ts”文件，定义ArkTS接口：   
 
-    ``` ts
+    <!-- @[ExternalLog_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    
+    ``` TypeScript
     export const registerExternalLogMgr: () => void;
     ```
 
 4. 编辑“EntryAbility.ets”文件，在onCreate()函数中添加接口调用：   
-   
-   ``` ts
-   import testNapi from 'libentry.so';
-   ``` 
+
+    <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    import testNapi from 'libentry.so';
+    ```
 
    ``` ts
    // 在onCreate()函数中添加C API接口调用

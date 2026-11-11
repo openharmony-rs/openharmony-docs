@@ -1,12 +1,11 @@
 # \@Styles Decorator: Defining Reusable Component Styles
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @BlYynNe-->
 <!--Designer: @VictorS67-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @BIYynNe-->
-<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:21:40.398Z pushedAt=2026-07-24T03:22:46.829Z -->
+<!-- md-trans-meta sourceCommit=a2e0e11ceac2b876e291069907dfed39c889e37e translatedAt=2026-11-09T11:11:00.912Z pushedAt=2026-11-10T01:43:06.046Z nl=1 -->
 
 If the style of each component needs to be set individually, a large amount of repetitive style code will appear during development. While you can copy and paste, to keep the code concise and easier to maintain, we provide the [\@Styles](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-styles.md#styles) decorator, which allows you to extract common styles for reuse.
 
@@ -24,15 +23,16 @@ If the style of each component needs to be set individually, a large amount of r
 
 - Currently, \@Styles supports only [universal attributes](../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md) and [universal events](../../reference/apis-arkui/arkui-ts/ts-component-general-events.md).
 
-- \@Styles can be defined either within a component or globally. When it is defined globally, the **function** keyword must precede the method name. When it is defined within a component, the **function** keyword does not need to be added. For details, see [Using Component-Local and Global \@Styles](#using-component-local-and-global-styles).
+- \@Styles can be defined within a component or globally. When it is defined globally, the **function** keyword must precede the method name. When it is defined within a component, the **function** keyword is not required. For details, see [Using Component-Local and Global \@Styles](#using-component-local-and-global-styles).
 
 - The priority of \@Styles defined inside a component declaration is higher than that of \@Styles defined outside a component declaration. The framework preferentially searches for \@Styles within the current component.
 
 > **NOTE**
 >
-> \@Styles can be used only in the current file and cannot be exported for cross-file reuse.
+> \@Styles can only be used within the current file and does not support export.
 >
-> For styles requiring cross-file reuse, you are advised to use [AttributeModifier](../../ui/arkts-user-defined-extension-attributeModifier.md).
+> If you need to export styles, you are advised to use [AttributeModifier](../../ui/arkts-user-defined-extension-attributeModifier.md).
+
 
 \@Styles defined within a component can access the component's constants and state variables through **this**, and can change the values of state variables through events in \@Styles. The following is an example:
 
@@ -64,7 +64,6 @@ struct FancyUse {
   }
 }
 ```
-
 ![](figures/arkts-style-1.gif)
 
 ## Constraints
@@ -80,17 +79,17 @@ struct FancyUse {
 
 ```
 
-<!-- @[style_not_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) -->
+<!-- @[style_not_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) --> 
 
 ``` TypeScript
 // Correct usage.
   @Styles
-  function globalFancy () {
+  function globalFancy() {
     .width(100)
   }
 ```
 
-- Logical components are not supported inside \@Styles methods. Properties within logic components do not take effect.
+- Conditional rendering statements are not supported in the \@Styles method. Attributes within conditional rendering statements do not take effect.
 
 ``` TypeScript
   // Incorrect usage.
@@ -159,7 +158,4 @@ struct GlobalFancy {
   }
 }
 ```
-
 ![](figures/arkts-style-2.gif)
-
-<!--no_check-->

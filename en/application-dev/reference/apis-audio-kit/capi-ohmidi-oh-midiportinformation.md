@@ -2,9 +2,10 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=796e657e124d093b7b780c5062bd98704309a4ca translatedAt=2026-11-09T10:27:52.203Z pushedAt=2026-11-09T11:32:35.913Z nl=1 -->
 
 ```c
 typedef struct {...} OH_MIDIPortInformation
@@ -12,7 +13,7 @@ typedef struct {...} OH_MIDIPortInformation
 
 ## Overview
 
-This struct defines the port information, which is used to enumerate ports, including port names.
+Defines a port information structure used to enumerate and identify MIDI device ports. It contains key information such as the displayable port name, port index, owning device ID, and port direction (input or output), helping developers manage and operate each port in MIDI applications.
 
 **Since**: 24
 
@@ -30,3 +31,5 @@ This struct defines the port information, which is used to enumerate ports, incl
 | int64_t deviceId | ID of the MIDI device to which a port belongs.<br>**Since**: 24|
 | [OH_MIDIPortDirection](capi-native-midi-base-h.md#oh_midiportdirection) direction | Port direction (input or output).<br>**Since**: 24|
 | char name[64] | Port name.<br>**Since**: 24|
+
+

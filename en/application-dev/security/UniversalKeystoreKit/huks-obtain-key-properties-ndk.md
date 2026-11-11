@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=efdaa8692026153cc9460b1cea05429cf99c5cf6 translatedAt=2026-11-10T03:16:45.394Z pushedAt=2026-11-10T07:29:56.203Z nl=1 -->
 
 This topic describes how to obtain properties of a key. Before the operation, ensure that the key exists in HUKS.
 >**NOTE**<br>
@@ -36,7 +37,6 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 #include "huks/native_huks_param.h"
 #include "napi/native_api.h"
 #include <cstring>
-
 OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
                             uint32_t paramCount)
 {
@@ -74,7 +74,7 @@ static OH_Huks_Result GenerateKeyHelper(const char *alias)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        /* 1. Generate a key. */
+        /* 2. Generate the key. */
         ohResult = OH_Huks_GenerateKeyItem(&aliasBlob, testGenerateKeyParamSet, nullptr);
     } while (0);
     OH_Huks_FreeParamSet(&testGenerateKeyParamSet);

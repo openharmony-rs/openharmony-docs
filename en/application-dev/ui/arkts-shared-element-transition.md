@@ -1,12 +1,11 @@
 # Shared Element Transition
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @ge-yafang; @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7fab30e14d973fa66ccdb0a1cd82a35dfc757e46 translatedAt=2026-08-04T06:39:55.113Z pushedAt=2026-08-04T08:28:14.532Z -->
+<!-- md-trans-meta sourceCommit=aaaa3c4e370052176765bce0b19a8ea31aee1d62 translatedAt=2026-11-05T11:25:25.012Z pushedAt=2026-11-09T10:02:18.771Z nl=1 -->
 
 Shared element transition is a type of transition achieved by animating the size and position between styles of the same or similar elements during page switching.
 
@@ -24,11 +23,11 @@ Below is a comparison of the various methods available.
 | ------ | ---- | ---- |
 | Implement direct transformation without new containers| No route transitions occur, and you need to implement both expanded and collapsed states within a single component. The component hierarchy remains unchanged after the expansion.| Ideal for simple transitions with minimal overhead, such as opening a page that does not involve loading extensive data or components.|
 | New Container with Cross-Container Component Migration | By using [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md), a component is migrated from one container to another. At the start of migration, translation and scaling are applied to the component based on the position and size information of both the source and target layouts, ensuring that the component aligns with the source layout at the beginning of migration and avoiding visual jumps. An animation is then added to reset the translation and scaling attributes, achieving a one-shot animation transition effect from the source layout to the target layout. | Suitable for scenarios where creating new objects incurs high overhead, such as a video live streaming component transitioning to full screen upon tap. |
-| Using geometryTransition for Shared Element Transition | By leveraging system capabilities, the two components before and after the transition call the [geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md) API to bind the same ID, and the transition logic is placed within an [animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md) animation closure, so that the system automatically applies a one-shot animation transition effect to both components. | The system adjusts the width, height, and position of the two bound components to the same values and switches their opacity to achieve the one-shot animation transition effect. Therefore, to achieve a smooth animation effect, it is necessary to ensure that no visual jumps occur when adding width and height animations to nodes bound with geometryTransition. This method is suitable for scenarios where the overhead of creating new nodes is low. |
+| Using geometryTransition for Shared Element Transition | By leveraging system capabilities, the two components before and after the transition call the [implicit shared element transition within a component (geometryTransition)](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md) API to bind the same ID, and the transition logic is placed within an [explicit animation (animateTo)](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md) animation closure, so that the system automatically applies a seamless transition effect to both components. | The system adjusts the width, height, and position of the two bound components to the same values and switches their opacity to achieve the one-shot animation transition effect. Therefore, to achieve a smooth animation effect, it is necessary to ensure that no visual jumps occur when adding width and height animations to nodes bound with geometryTransition. This method is suitable for scenarios where the overhead of creating new nodes is low. |
 
 ## Implement Direct Transformation Without New Containers
 
-This method does not create new containers. Instead, it triggers [transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md) by adding or removing components on an existing container and pairs it with the [property animation](./arkts-attribute-animation-apis.md) of components.
+This method does not create new containers. Instead, it triggers [component transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md) by adding or removing components on an existing container and pairs it with the component property animation (see [Implementing Property Animation](./arkts-attribute-animation-apis.md)) to achieve a seamless transition.
 
 This example implements a shared element transition for the scenario where, as a component is expanded, sibling components in the same container disappear or appear. Specifically, property animations are applied to width and height changes of a component before and after the expansion; enter/exit animations are applied to the sibling components as they disappear or appear. The basic procedure is as follows:
 
@@ -587,7 +586,7 @@ export const deleteNode = (id: string) => {
 
 ### Using with Navigation
 
-You can use the [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) (see [Example 3](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#example-3-setting-an-interactive-transition-animation)) capability of [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) to implement shared element transition, during which, the component is migrated from the disappearing page to the appearing page.
+You can use the custom navigation transition animation capability ([customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11), see [Example 3 (Setting an Interactive Transition Animation)](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#example-3-setting-an-interactive-transition-animation)) of [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) to implement a seamless transition animation. During the shared element transition, the component is migrated from the disappearing page to the appearing page.
 
 The following is the procedure for implementing the expanding and collapsing of a thumbnail:
 
@@ -950,7 +949,6 @@ export class CustomTransition {
 ```
 
 <!-- -->
-
 ```ts
 // Configure {"routerMap": "$profile:route_map"} in the project configuration file module.json5.
 // route_map.json
@@ -1385,7 +1383,7 @@ To implement a shared element transition to a sheet when an image is clicked:
 
 - Mount both a sheet and a full-modal transition on the initial screen: Design the sheet as required, and place only the necessary components for the shared element transition on the full-modal page. Capture layout information to position it over the image on the initial screen. When the image is clicked, trigger both the sheet and full-modal pages to appear, with the full-modal set to **SheetMode.EMBEDDED** for the highest layer.
 
-- Place an invisible placeholder image on the sheet: This will be the final position for the image after the shared element transition. Use a [layout callback](../reference/apis-arkui/js-apis-arkui-inspector.md) to listen for when the placeholder image's layout is complete, then obtain its position and start the shared element transition with property animation from the full-modal page's image.
+- Place an invisible placeholder image on the semi-modal page as the final position of the image when the seamless transition animation ends. Use [@ohos.arkui.inspector (Layout Callback)](../reference/apis-arkui/js-apis-arkui-inspector.md) to listen for when the placeholder image's layout is complete, then execute a callback to obtain the placeholder image's position information. After that, the image on the full-modal page starts the shared element transition using property animation.
 
 - End the animation on the full-modal page: When the animation ends, trigger a callback to close the full-modal page and migrate the shared element image node to the sheet, replacing the placeholder.
 
@@ -1933,17 +1931,23 @@ export default class EntryAbility extends UIAbility {
 
 ## Using geometryTransition
 
-[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md) facilitates implicit shared element transitions within components, offering a smooth transition experience during view state changes.
+[Component implicit shared element transition (geometryTransition)](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md) provides a smooth context-inheritance transition experience during view state switching.
 
 To use **geometryTransition**, assign the same ID to both components that require the shared element transition. This sets up a seamless animation between them as one component disappears and the other appears.
 
 This method is ideal for shared element transitions between two distinct objects.
 
+> **NOTE**
+>
+> 1. Components bound with the same ID through the geometryTransition API must not be nested within each other. That is, a component bound with an ID must not contain another component bound with the same ID; otherwise, the transition animation will be abnormal.
+>
+> 2. It is recommended that you clear the bound ID in the animation end callback ([onFinish](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam)) to prevent the shared element transition from being triggered unexpectedly in unintended scenarios (such as rapid consecutive taps on a page or state variable changes). Set the ID back to the required value before triggering the transition next time.
+
 ### Simple Use of geometryTransition
 
 Below is a simple example of using **geometryTransition** to implement shared element transition for two elements on the same page:
 
-<!-- @[geometry_transition_simple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template6/IfElseGeometryTransition.ets) -->
+<!-- @[geometry_transition_simple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template6/IfElseGeometryTransition.ets) --> 
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -1952,6 +1956,8 @@ import { curves } from '@kit.ArkUI';
 @Component
 struct IfElseGeometryTransition {
   @State isShow: boolean = false;
+  // Use a state variable to manage the geometryTransition ID, and clear it after the animation ends to prevent accidental triggering.
+  @State geometryId: string = 'picture';
 
   build() {
     Stack({ alignContent: Alignment.Center }) {
@@ -1963,7 +1969,7 @@ struct IfElseGeometryTransition {
           .width(200)
           .height(200)
           .borderRadius(100)
-          .geometryTransition('picture')
+          .geometryTransition(this.geometryId)
           .transition(TransitionEffect.OPACITY)
           // If a new transition is triggered during the animation, ghosting occurs when id is not specified.
           // With id specified, the new spring image reuses the previous spring image node instead of creating a new node. Therefore, ghosting does not occur.
@@ -1986,7 +1992,7 @@ struct IfElseGeometryTransition {
         // In other words, corner radius settings of the container are synchronized, and those of the child components are not.
         .borderRadius(50)
         .clip(true)
-        .geometryTransition('picture')
+        .geometryTransition(this.geometryId)
         // transition ensures that the component is not destroyed immediately when it exits. You can customize the transition effect.
         .transition(TransitionEffect.OPACITY)
         .position({ x: 40, y: 40 })
@@ -1994,8 +2000,14 @@ struct IfElseGeometryTransition {
       }
     }
     .onClick(() => {
+      // Ensure the ID is set before the animation starts.
+      this.geometryId = 'picture';
       this.getUIContext()?.animateTo({
-        curve: curves.springMotion()
+        curve: curves.springMotion(),
+        onFinish: () => {
+          // Clear the ID after the animation ends to prevent accidental triggering.
+          this.geometryId = '';
+        }
       }, () => {
         this.isShow = !this.isShow;
       })
@@ -2030,6 +2042,8 @@ struct Index {
   @State isPersonalPageShow: boolean = false;
   @State selectedIndex: number = 0;
   @State alphaValue: number = 1;
+  // Use a state variable to manage the geometryTransition id, and clear it after the animation ends to prevent accidental triggering.
+  @State geometryId: string = '';
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   // Customize the image resource paths in the array as needed.
@@ -2067,9 +2081,15 @@ struct Index {
 
   private onAvatarClicked(index: number): void {
     this.selectedIndex = index;
+    // Set the shared element transition id before the animation starts.
+    this.geometryId = index.toString();
     this.getUIContext()?.animateTo({
       duration: 350,
-      curve: Curve.Friction
+      curve: Curve.Friction,
+      onFinish: () => {
+        // Clear the id after the animation ends to prevent accidental triggering.
+        this.geometryId = '';
+      }
     }, () => {
       this.isPersonalPageShow = !this.isPersonalPageShow;
       this.alphaValue = 0;
@@ -2077,9 +2097,15 @@ struct Index {
   }
 
   private onPersonalPageBack(index: number): void {
+    // Set the shared element transition id before the animation starts.
+    this.geometryId = index.toString();
     this.getUIContext()?.animateTo({
       duration: 350,
-      curve: Curve.Friction
+      curve: Curve.Friction,
+      onFinish: () => {
+        // Clear the id after the animation ends to prevent accidental triggering.
+        this.geometryId = '';
+      }
     }, () => {
       this.isPersonalPageShow = !this.isPersonalPageShow;
       this.alphaValue = 1;
@@ -2093,7 +2119,7 @@ struct Index {
         .size({ width: 200, height: 200 })
         .borderRadius(100)
         // Apply a shared element transition to the profile picture by its ID.
-        .geometryTransition(index.toString())
+        .geometryTransition(this.geometryId)
         .clip(true)
         .transition(TransitionEffect.opacity(0.99))
 
@@ -2132,7 +2158,11 @@ struct Index {
       ForEach(this.allPostData, (postData: PostData, index: number) => {
         Column() {
           Post({
-            data: postData, index: index, onAvatarClicked: (index: number) => {
+            data: postData,
+            index: index,
+            geometryId: this.geometryId,
+            selectedIndex: this.selectedIndex,
+            onAvatarClicked: (index: number) => {
               this.onAvatarClicked(index);
             }
           })
@@ -2152,6 +2182,8 @@ struct Index {
 export default struct Post {
   @Prop data: PostData;
   @Prop index: number;
+  @Prop geometryId: string = '';
+  @Prop selectedIndex: number = -1;
   @State expandImageSize: number = 100;
   @State avatarSize: number = 50;
   private onAvatarClicked: (index: number) => void = (index: number) => { };
@@ -2167,7 +2199,10 @@ export default struct Post {
             this.onAvatarClicked(this.index);
           })
           // ID of the shared element transition bound to the profile picture.
-          .geometryTransition(this.index.toString(), { follow: true })
+          .geometryTransition(
+            (this.index === this.selectedIndex && this.geometryId !== '') ? this.geometryId : '',
+            { follow: true }
+          )
           .transition(TransitionEffect.OPACITY.animation({ duration: 350, curve: Curve.Friction }))
 
         Text(this.data.name)

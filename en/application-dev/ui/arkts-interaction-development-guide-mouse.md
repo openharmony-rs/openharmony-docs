@@ -1,23 +1,23 @@
 # Handling Mouse Input Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=98a49c777434ab983631836cbaa90097e1af2227 translatedAt=2026-10-12T09:20:27.337Z pushedAt=2026-10-13T07:57:40.437Z -->
+<!-- md-trans-meta sourceCommit=2a058c2b0cfcdeaf9ab5cf0b4796fa46db1e1dff translatedAt=2026-11-05T11:16:24.854Z pushedAt=2026-11-09T10:02:18.742Z nl=1 -->
 
 ![mouse](figures/device_mouse.png)
 
 A mouse is an essential input device for PC/2in1 and tablet devices. It allows click and swipe operations through buttons, scrolling through the scroll wheel, and also provides additional buttons. These events are reported to the app through [MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent) and [AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent), respectively.
 
->**NOTE**
+> **NOTE**
 >
->All single-finger touch events and gesture events can be triggered and responded to using a left mouse click.
-> - For example, to implement a feature where clicking a [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) navigates to another page, supporting both finger tap and left mouse click, you can achieve this by simply binding a single [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) event.
-> - If you want to implement different effects for the finger touch and the left mouse click, use the **source** parameter in the **onClick** callback to determine whether the current event is triggered by a finger touch or a mouse device.
+> All touch events and gesture events that can be responded to with a single finger can also be operated and responded to with the mouse left button.
+> - For example, to implement the feature of tapping [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) to navigate to another page, and to support both finger taps and mouse left-button clicks, you only need to bind a single click event ([onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)).
+> - If you need to implement different effects for finger taps and mouse left-button clicks, you can use the `source` field in the callback parameter of `onClick` to determine whether the current trigger event originates from a finger or a mouse.
 
-In addition, for apps on PC/2in1 and tablet devices that have not been adapted for mouse operations, the system provides a fallback mechanism that converts left mouse button clicks, swipes, and scroll wheel events into touch events. The system also allows you to control whether to convert events through a configuration file.
+In addition, for applications on PC/2in1 and tablet devices that are not adapted for mouse operations, you can use a configuration file to control whether to convert events. Specifically, you can convert mouse left-button clicks, swipes, and scroll wheel events into touch events, and convert mouse right-button events into long press events.
 
 ## Processing Mouse Movement
 
@@ -502,35 +502,27 @@ struct MouseWheel {
 ![ListAxis](figures/listAxis.gif)
 
 ## Mouse Event Conversion
-If you only implement touch operation scenarios during app development without adapting to mouse operations on PC/2in1 and tablet devices, the app may behave unexpectedly or even become inoperable when a mouse is used. To address this scenario, the system provides a fallback mechanism that converts left mouse button events and axis events into touch events by default before sending them to the app, thereby delivering an operation experience similar to that on a phone.
 
-In addition, if you want to control the conversion behavior described above, the system provides custom configuration capabilities. You can control whether mouse events are converted into touch events by adding a configuration file to the app.
+If you only consider touch operation scenarios when developing an application and do not adapt it for mouse operations on PC/2in1 and tablet devices, the actual behavior of the application under mouse operations may be inconsistent with expectations, or the application may even become inoperable. To address this, you can add a configuration file to the application to control whether to convert mouse left-button clicks, swipes, and scroll wheel events into touch events, or convert mouse right-button events into long press events.
 
-### How to Develop
-**1. Add a configuration file**
-
-Create a configuration file named easy_go.json (the file name is an example; you can name it as needed) in the entry/src/main/resources/base/profile directory of the app. Add the easyGo field in the [module.json5](../quick-start/module-configuration-file.md) configuration file and point it to the referenced easy_go.json configuration file.
+### Adding a Configuration File
+Create the configuration file `easy_go.json` in the `entry/src/main/resources/base/profile` directory of the application (this is a sample file name; you can name it as needed). In the [module.json5](../quick-start/module-configuration-file.md) configuration file, add the `easyGo` field and point it to the referenced `easy_go.json` configuration file. `easy_go.json` is a standard Object-type JSON file whose overall structure consists of two levels. The first level configures the [device types on which mouse event conversion takes effect](#configuring-mouse-left-button-or-axis-event-to-touch-conversion); the second level configures the related parameters of [mouse left button or axis event-to-touch](#configuring-mouse-left-button-or-axis-event-to-touch-conversion) and [mouse right-button-to-long-press](#configuring-right-click-to-long-press) under the corresponding device type.
 
 ![easy_go](figures/easy_go.png)
 
-**2. Add event conversion configuration**
+### Device Types Where the Configuration Takes Effect
 
-In the easy_go.json configuration file, configure the attributes related to event conversion.
+Via the first-level configuration in `easy_go.json`, select the device types on which mouse event conversion takes effect.
 
-### Configuration Description
-easy_go.json is a standard Object-type JSON file with a two-layer structure. The first layer configures device types, and the second layer configures the mouse event conversion mode for the corresponding device type.
-
-**1. Device type**
-
-The first-layer configuration sets the behavior of mouse event conversion on different device types.
 ``` json
-{ 
+{
   "common": {},
   "phone": {},
   "2in1": {},
   "tablet": {}
 }
 ```
+
 | Value | Description | Optional |
 | --- | --- | --- |
 | common | Common device configuration, providing the basic default configuration for all device types. | No |
@@ -538,31 +530,81 @@ The first-layer configuration sets the behavior of mouse event conversion on dif
 | 2in1 | Configuration that takes effect on PC/2in1-type devices. After configuration, the common configuration no longer takes effect on PC/2in1-type devices. | Yes |
 | tablet | Configuration that takes effect on tablet-type devices. After configuration, the common configuration no longer takes effect on tablet-type devices. | Yes |
 
-**2. Multi-modal input options**
+### Configuring Mouse Left-Button or Axis Event-to-Touch Conversion
 
-The second-layer configuration uses the multiModalInputOptions field to set event input options. The internal fields are described as follows:
-| Name | Description | Optional |
-| --- | --- | --- |
-| mouse2TouchEventMode | Configures the mode for converting mouse events to touch events. | Yes |
+By configuring the second-level `multiModalInputOptions` field in `easy_go.json`, you can convert the mouse left-button events and axis events of the corresponding device type into touch events and send them to the application, achieving an effect similar to tapping and swiping on a phone screen.
 
-Configurable fields of mouse2TouchEventMode:
+The following example configures mouse left-button events not to be converted into touch events on `PC/2in1` devices.
 
-| Value | Description |
-| --- | --- |
-| all | All mouse events are converted into touch events. |
-| xcomponentAndWebOnly | Mouse events are converted into touch events only within XComponent and Web components. |
-| disabled | No mouse events are converted into touch events. |
-
-**3. Configuration example**
-
-The following example shows how to configure a PC/2in1 device so that mouse events are not converted into touch events:
 ``` json
 {
   "common": {},
   "2in1": {
-    "multiModalInputOptions": {
-      "mouse2TouchEventMode": "disabled"
+      "multiModalInputOptions": {
+         "mouse2TouchEventMode": "disabled"
+      }
+  }
+}
+```
+
+The first-level `2in1` indicates that on `PC/2in1` devices, mouse left-button events or axis events can be converted into touch events. The second-level `multiModalInputOptions` field under `2in1` is used to set the event input options. The internal fields are described as follows.
+
+| Field           | Type   | Description                                      | Optional |
+| -------------------- | ------ | ------------------------------------------------ | -------- |
+| mouse2TouchEventMode | string | Configures the mode for converting mouse left-button events into touch events. | Yes      |
+
+The configurable fields of `mouse2TouchEventMode` are described as follows.
+
+| Enum Value            | Description                                                          |
+| --------------------- | -------------------------------------------------------------------- |
+| "all"                 | Indicates that all mouse left-button events are converted into touch events. |
+| "xcomponentAndWebOnly" | Indicates that mouse left-button events are converted into touch events in XComponent and Web components. |
+| "disabled"            | Indicates that no mouse left-button events are converted into touch events. |
+
+### Configuring Right-Click-to-Long-Press
+
+Starting from API version 26.0.1, the `contextMenuOptions` field is supported. By configuring the second-level `contextMenuOptions` field in `easy_go.json`, you can convert the mouse right-button event of the corresponding device type into a long-press event and send it to the application, achieving an effect similar to a finger long-press on a phone.
+
+On PC/2-in-1 devices, configure the mouse right-button events of all ArkUI components to be converted into long-press events. The following is an example.
+
+``` json
+{
+  "common": {},
+  "2in1": {
+    "contextMenuOptions": {
+      "rightMouse2LongPress": true,
+      "needTransferComponent": ["All"]
     }
   }
 }
 ```
+
+The first-level `2in1` indicates that on PC/2-in-1 devices, the mouse right button can be converted into a long-press event. The second-level `contextMenuOptions` field under `2in1` is used to configure the rules for the right-button-to-long-press conversion. Because only PC/2-in-1 devices and Tablet devices support right-button-to-long-press, the second level of `common` and `phone` cannot be configured with the `contextMenuOptions` field. The internal fields of `contextMenuOptions` are described as follows.
+
+| Field | Type | Description | Optional |
+| -------------------- | ---- | ---------------------------- | ---- |
+| rightMouse2LongPress | boolean | Whether to enable the right-button-to-long-press policy. Value range: `true` indicates that the right-button-to-long-press policy is enabled, and the right-click event is converted into a long-press event; `false` indicates that it is not enabled, and the right-click event is processed according to the default system behavior. When the value is `false`, the `needTransferComponent` configuration does not take effect. | No |
+| needTransferComponent | string[] | Specifies the list of components that take effect, determining which components' right-button events are converted into long-press events. The array can be empty, indicating that no component's right-button event is converted. Each array element must be one of the following enum values. If not configured, it defaults to an empty array. When `needTransferComponent` is an empty array, no component's right-button event is converted even if `rightMouse2LongPress` is `true`. | Yes |
+
+The following describes the optional enum types in the `needTransferComponent` array.
+| Enum Value | Description |
+| ----------------- | -------------- |
+| "TextInput" | Text input box |
+| "TextArea" | Multi-line text input box |
+| "RichEditor" | Rich text editor |
+| "RichText" | Rich text |
+| "Text" | Text |
+| "RenderNode" | Rendering node |
+| "XComponent" | Self-drawn component |
+| "Image" | Image |
+| "RelativeContainer" | Relative layout container |
+| "All" | All ArkUI components |
+
+Additional description of the `needTransferComponent` field.
+| Rule | Description |
+| ------------------ | ------------------------------------------------------------ |
+| All take effect | Setting `"needTransferComponent": ["All"]` indicates that all ArkUI components take effect. |
+| Case sensitivity | Component names are case-sensitive and must be filled in exactly as listed above; otherwise, a compilation error occurs. |
+| No duplicates | Duplicate component names are not allowed in the component list; otherwise, a compilation error occurs. |
+| "All" coexisting with other components | When the list contains both specific component names and "All", the specific component names are ignored, which is equivalent to configuring only "All". It is recommended to use only "All" to simplify the configuration. |
+| Valid values | The values in the list can only be the above 9 component names plus "All" (10 in total). Filling in other values causes a compilation error. |
