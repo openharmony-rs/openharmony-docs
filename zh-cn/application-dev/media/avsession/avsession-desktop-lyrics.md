@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "从API版本23开始介绍应用接入系统桌面歌词组件的开发步骤，涵盖歌词组件能力判断、启用、显示隐藏、锁定解锁及状态变化监听等操作。"
+keywords: [歌词组件, 桌面歌词, enableDesktopLyric, LRC格式歌词, 歌词可见性控制, 歌词锁定, 歌词状态监听, 悬浮窗歌词]
+doctype: guide
+status: active
+---
+
 # 应用接入歌词组件
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
@@ -6,7 +14,7 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，系统提供歌词组件功能。歌词组件以悬浮窗形式显示于系统桌面，支持歌词内容展示、组件隐藏、组件锁定等操作。暂不支持应用对组件进行自定义样式设置。本文将说明应用接入歌词组件的开发步骤。
+从API版本23开始，系统提供歌词组件功能。歌词组件以悬浮窗形式显示于系统桌面，支持歌词内容展示、组件隐藏、组件锁定等操作。暂不支持应用对组件进行自定义样式设置。本文将说明应用接入歌词组件的开发步骤。
 
 ## 具体步骤
 
@@ -119,3 +127,9 @@
      }
    }
    ```
+
+## 相关主题推荐
+
+- [媒体会话提供方(ArkTS)](using-avsession-developer.md)
+- [应用接入AVSession场景介绍](avsession-access-scene.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)

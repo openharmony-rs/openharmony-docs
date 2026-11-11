@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "介绍通过AVCastPicker和AVInputCastPicker组件接入实现通话输出设备与输入设备切换功能的开发步骤，涵盖默认样式与自定义样式两种实现方式。"
+keywords: [通话设备切换, AVCastPicker, AVInputCastPicker, voice_call, 通话输出设备, 通话输入设备, 投播组件自定义样式, 默认样式, 设备切换监听]
+doctype: guide
+status: active
+---
+
 # 使用组件切换通话设备
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
@@ -454,3 +462,9 @@
    ```
 
 2. 实现通话功能，请参考[开发音频通话功能](../audio/audio-call-development.md)。
+
+## 相关主题推荐
+
+- [应用接入AVSession场景介绍](avsession-access-scene.md)
+- [AVSession Kit简介](avsession-overview.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)
