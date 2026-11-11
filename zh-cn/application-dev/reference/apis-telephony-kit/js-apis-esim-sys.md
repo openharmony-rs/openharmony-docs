@@ -13,7 +13,6 @@
 > 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.telephony.esim (eSIM卡管理)](js-apis-esim.md)。
 
-
 ## 导入模块
 
 ```ts
@@ -85,7 +84,7 @@ getOsuStatus\(slotId: number\): Promise\<OsuStatus\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br>取值限定为整数。|
 
 **返回值：**
 
@@ -135,7 +134,7 @@ startOsu\(slotId: number\): Promise\<OsuStatus\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br>取值限定为整数。|
 
 **返回值：**
 
@@ -185,8 +184,8 @@ getDownloadableProfileMetadata\(slotId: number, portIndex: number, profile: Down
 
 | 参数名 | 类型 | 必填 | 说明                                                                                                   |
 | ------ | ------ | ----- |------------------------------------------------------------------------------------------------------|
-| slotId              | number                                        | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                                                                      |
-| portIndex           | number                                        | 是 | 插槽的端口索引。                                                                                             |
+| slotId              | number                                        | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br>取值限定为整数。|
+| portIndex           | number                                        | 是 | 插槽的端口索引。<br/>- 0：端口1。<br/>- 1：端口2。<br>取值限定为整数。|
 | profile             | [DownloadableProfile](./js-apis-esim.md#downloadableprofile) | 是 | 可下载的配置文件信息。                                                                                          |
 | forceDisableProfile | boolean | 是 | 是否可直接去激活配置文件。true表示切换配置文件时，如果需要去激活当前的配置文件，则可以直接操作。false表示如果需要去激活当前的配置文件，则会返回错误，并得到用户授权后再继续调用该接口，执行切换配置文件操作。 |
 
@@ -421,7 +420,7 @@ getEuiccInfo\(slotId: number\): Promise\<EuiccInfo\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
-| slotId | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br>取值限定为整数。|
 
 **返回值：**
 
@@ -471,7 +470,7 @@ deleteProfile\(slotId: number, iccid: string\): Promise\<ResultCode\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
-| slotId | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br>取值限定为整数。|
 | iccid  | string | 是 | 配置文件的ID。 |
 
 **返回值：**
@@ -627,7 +626,7 @@ resetMemory\(slotId: number, options?: ResetOption\): Promise\<ResultCode\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
-| slotId  | number                        | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId  | number                        | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br>取值限定为整数。|
 | options | [ResetOption](#resetoption) | 否 | 重置状态。 |
 
 **返回值：**
@@ -678,7 +677,7 @@ reserveProfilesForFactoryRestore\(slotId: number\): Promise\<ResultCode\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
-| slotId | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br>取值限定为整数。|
 
 **返回值：**
 
@@ -728,7 +727,7 @@ setDefaultSmdpAddress\(slotId: number, address: string\): Promise\<ResultCode\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
-| slotId  | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId  | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br>取值限定为整数。|
 | address | string | 是 | 要设置的默认SM-DP+地址。 |
 
 **返回值：**
@@ -829,7 +828,7 @@ cancelSession\(slotId: number, transactionId: string, cancelReason: CancelReason
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
-| slotId        | number                          | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId        | number                          | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br>取值限定为整数。|
 | transactionId | string                          | 是 | 业务ID。|
 | cancelReason  | [CancelReason](#cancelreason) | 是 | 取消会话的原因。|
 
@@ -884,7 +883,7 @@ getSupportedPkids\(slotId: number\): Promise\<string\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。   |
+| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br>取值限定为整数。|
 
 **返回值：**
 
@@ -933,7 +932,7 @@ getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<st
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。   |
+| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br>取值限定为整数。|
 | requestData | [ContractRequestData](./js-apis-esim-sys.md#contractrequestdata20)| 是   | 用来加密的信息。   |
 
 **返回值：**
