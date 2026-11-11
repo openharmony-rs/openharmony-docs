@@ -1,12 +1,11 @@
 # @ohos.web.netErrorList (The List of ArkWeb Network Protocol Stack Errors)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-03T09:56:06.433Z pushedAt=2026-08-04T12:26:05.827Z -->
+<!-- md-trans-meta sourceCommit=e6ab3f7be9d7726c1f565f4b61374350a7fba7d3 translatedAt=2026-11-06T10:55:46.834Z pushedAt=2026-11-10T02:03:25.411Z nl=1 -->
 
 Error list of the ArkWeb network protocol stack. The error codes are directly mapped to the Chromium error codes in <!--RP1-->net_error_list.h<!--RP1End-->, allowing you to quickly locate issues based on standardized error codes when network requests encounter exceptions, implement unified error handling, and improve troubleshooting efficiency.
 
@@ -34,14 +33,14 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_ABORTED | -3 | The operation is aborted.|
 |ERR_INVALID_ARGUMENT | -4 | The parameter is invalid.|
 |ERR_INVALID_HANDLE | -5 | The handle of the file descriptor is invalid.|
-|ERR_FILE_NOT_FOUND | -6 | The file is not found.|
+|ERR_FILE_NOT_FOUND | -6 | The file or directory cannot be found. |
 |ERR_TIMED_OUT | -7 | The operation times out.|
 |ERR_FILE_TOO_LARGE | -8 | The file is too large.|
 |ERR_UNEXPECTED | -9 | An unexpected or unhandled issue was encountered. |
 |ERR_ACCESS_DENIED | -10 | The access to resources other than the network is denied.|
 |ERR_NOT_IMPLEMENTED | -11 | The operation fails because the function is not implemented.|
 |ERR_INSUFFICIENT_RESOURCES | -12 | The resources required for system or program execution are insufficient.|
-|ERR_OUT_OF_MEMORY | -13 | A memory overflow occurs.|
+|ERR_OUT_OF_MEMORY | -13 | Memory allocation failed. |
 |ERR_UPLOAD_FILE_CHANGED | -14 | Upload failed because the file modification time did not match the expected value. |
 |ERR_SOCKET_NOT_CONNECTED | -15 | The socket is disconnected.|
 |ERR_FILE_EXISTS | -16 | The file already exists.|
@@ -94,7 +93,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_PROXY_CERTIFICATE_INVALID | -136 |  The certificate provided by the HTTPS proxy is invalid.|
 |ERR_NAME_RESOLUTION_FAILED | -137 | The domain name resolution (DNS) failed.|
 |ERR_NETWORK_ACCESS_DENIED | -138 | The network is disabled.|
-|ERR_TEMPORARILY_THROTTLED | -139 | This request was canceled due to throttling to avoid DDoS.|
+|ERR_TEMPORARILY_THROTTLED | -139 | The request was canceled due to throttling to avoid DDoS. |
 |ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT | -140 |  The request for creating an SSL tunnel connection through the HTTPS proxy receives 302. (The response may contain the description of the request failure cause.)|
 |ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED | -141 | The private key of the client certificate cannot be used to sign the CertificateVerify data in SSL handshake process.|
 |ERR_MSG_TOO_BIG | -142 | The message is too large to be transmitted. (For example, UDP messages exceed the size threshold).|
@@ -259,7 +258,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_CERT_VERIFIER_CHANGED | -716 | The certificate verifier configuration is changed.|
 |ERR_DNS_MALFORMED_RESPONSE | -800 | The DNS resolver receives a response that the format is incorrect.|
 |ERR_DNS_SERVER_REQUIRES_TCP | -801 | The DNS server requires TCP.|
-|ERR_DNS_SERVER_FAILED | -802 | The DNS server failed. This error code is returned for all the following cases: 1-Incorrect format: The name server cannot interpret the query with an incorrect format. 2-Server failure: The name server cannot process the query due to its own problems. 3-Not Implemented: The name server does not support the query type of the request. 4-Rejection: The name server refuses to perform the specified operation for policy reasons.|
+|ERR_DNS_SERVER_FAILED | -802 | The DNS server failed. This error code is returned for all the following cases: 1-Incorrect format: The name server cannot interpret the query. 2-Server failure: The name server cannot process the query due to its own problems. 4-Not Implemented: The name server does not support the query type of the request. 5-Rejection: The name server refuses to perform the specified operation for policy reasons.|
 |ERR_DNS_TIMED_OUT | -803 | The DNS transaction times out.|
 |ERR_DNS_CACHE_MISS | -804 | The entry is not found in the cache or other local sources.|
 |ERR_DNS_SEARCH_EMPTY | -805 | The suffix search list rule prevents the resolution of a given host name.|
@@ -268,4 +267,3 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_DNS_NAME_HTTPS_ONLY | -809 | DNS has identified that the request was blocked due to an insecure connection (HTTP/WS). The app should handle this error like an HTTP redirect, redirecting the connection to secure HTTPS or WSS.|
 |ERR_DNS_REQUEST_CANCELED | -810 | All DNS requests related to this task are canceled.|
 |ERR_DNS_NO_MATCHING_SUPPORTED_ALPN | -811 | The hostname resolution of the HTTPS record failed to resolve using ALPN values of supported protocols.|
-<!--no_check-->
