@@ -1350,7 +1350,8 @@ executableBinaryPaths示例：
     // ...
     "executableBinaryPaths": [
       {
-        "path": "libs/arm64-v8a/test.bin"
+        "path": "libs/arm64-v8a/test.bin",
+        "permissionControlMode": "independent"
       }
     ],
     // ...
