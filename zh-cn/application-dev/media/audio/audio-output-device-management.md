@@ -52,7 +52,7 @@ let audioRoutingManager = audioManager.getRoutingManager();
 
 ### 支持的音频输出设备类型
 
-目前支持的输出设备如下表所示：
+目前支持的常用输出设备如下表所示：
 
 | 名称 | 值 | 说明 | 
 | -------- | -------- | -------- |
@@ -64,6 +64,20 @@ let audioRoutingManager = audioManager.getRoutingManager();
 | BLUETOOTH_A2DP | 8 | 蓝牙设备A2DP（Advanced&nbsp;Audio&nbsp;Distribution&nbsp;Profile）连接。 | 
 | USB_HEADSET | 22 | USB耳机，带麦克风。 | 
 | NEARLINK | 31 | 星闪设备。 | 
+
+上表为常用音频输出设备类型，其中听筒（EARPIECE）仅手机、平板等形态具备。在PC/2in1设备上，还支持以下音频外设作为输出设备：
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DISPLAY_PORT | 23 | DP（DisplayPort）显示设备（如外接显示器）的音频输出。 |
+| USB_DEVICE | 25 | USB音频设备（如USB音箱、USB声卡等非耳机类设备）的音频输出。 |
+| HDMI | 27 | HDMI设备（如外接显示器、电视）的音频输出。 |
+| LINE_DIGITAL | 28 | 数字音频接口（如光纤、同轴）的音频输出。 |
+
+**PC/2in1设备的音频输出设备差异：**
+1. **外设类型更丰富**：PC/2in1设备常通过DP、HDMI外接显示器，通过USB连接音箱等外设，因而额外支持上表四类输出设备，而手机形态一般仅有USB耳机、蓝牙、星闪、有线耳机等外设。
+2. **无听筒设备**：PC/2in1设备没有听筒（EARPIECE），通话、语音等音频默认从扬声器或外接设备输出。
+3. **多设备并发场景更常见**：PC/2in1设备经常同时连接多路输出设备（如内置扬声器+外接显示器+USB音箱）。从API版本26.0.0开始，应用可通过[AudioDeviceEnhanceManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md)按应用级或音频流级精确指定输出设备，满足多设备场景下对声音输出去向的控制需求。具体可参考[PC/2in1设备输出设备切换](audio-output-device-switcher.md#pc2in1设备输出设备切换)。
 
 ### 获取输出设备信息
 
