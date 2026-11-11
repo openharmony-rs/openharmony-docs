@@ -244,7 +244,8 @@
      }
      let settings: camera.PhotoCaptureSetting = {
        quality: camera.QualityLevel.QUALITY_LEVEL_HIGH,  // 设置图片质量高。
-       rotation: camera.ImageRotation.ROTATION_0,  // 设置图片旋转角度的camera.ImageRotation.ROTATION_0是通过说明中获取拍照角度的getPhotoRotation方法获取的值进行设置。
+       // 设置图片旋转角度的camera.ImageRotation.ROTATION_0是通过说明中获取拍照角度的getPhotoRotation方法获取的值进行设置。
+       rotation: camera.ImageRotation.ROTATION_0,
        location: captureLocation,  // 设置图片地理位置。
        mirror: false  // 设置镜像使能开关(默认关)。
      };
@@ -505,7 +506,7 @@
   
   ``` TypeScript
   // 监听拍照异常。
-  photoOutput.on('error', (data: BusinessError): void => {
-    Logger.info(TAG, `photoOutput data: ${JSON.stringify(data)}`);
+  photoOutput.on('error', (err: BusinessError): void => {
+    console.error(`photoOutput error, err code: ${err.code}`);
   });
   ```

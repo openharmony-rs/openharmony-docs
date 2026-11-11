@@ -365,7 +365,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
            console.error(`photoAssetAvailable error: ${err.code}.`);
            return;
          }
-         console.info(`photoOutPutCallBack photoAssetAvailable`);
+         console.info(`photoOutputCallBack photoAssetAvailable`);
          // 开发者可通过photoAsset调用媒体库相关接口，自定义处理图片。
          // 调用媒体库落盘接口保存一阶段图，二阶段图就绪后媒体库会主动帮应用替换落盘图片。
          let accessHelper: photoAccessHelper.PhotoAccessHelper =
