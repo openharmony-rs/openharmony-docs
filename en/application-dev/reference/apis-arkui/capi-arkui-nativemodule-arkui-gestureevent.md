@@ -1,12 +1,11 @@
 # ArkUI_GestureEvent
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f8ecdb82f3ec053eb7dde21e27a6f047d194898a translatedAt=2026-07-17T09:23:55.278Z pushedAt=2026-07-17T10:45:30.797Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:42:18.005Z pushedAt=2026-11-10T02:18:54.389Z nl=1 -->
 
 ```c
 typedef struct ArkUI_GestureEvent ArkUI_GestureEvent
@@ -21,3 +20,4 @@ Defines the object of gesture event data, which is used to carry and transfer ge
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [native_gesture.h](capi-native-gesture-h.md)
+

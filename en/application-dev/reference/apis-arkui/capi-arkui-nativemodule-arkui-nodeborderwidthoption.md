@@ -1,12 +1,11 @@
-# ArkUI_NodeBorderWidthOption
-
+# ArkUI_NodeBorderWidth
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7fabd52bae7140eadd5a67f7598648fef13cb50e translatedAt=2026-08-19T08:26:32.987Z pushedAt=2026-08-20T03:55:30.560Z -->
+<!-- md-trans-meta sourceCommit=1e574c3201e96cfe7f2709f4dc19e462d9daf562 translatedAt=2026-11-09T11:47:14.832Z pushedAt=2026-11-10T03:35:49.354Z nl=1 -->
 
 ```c
 typedef struct ArkUI_NodeBorderWidth ArkUI_NodeBorderWidthOption
