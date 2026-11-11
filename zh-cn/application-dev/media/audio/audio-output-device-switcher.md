@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者实现音频输出设备路由切换，覆盖媒体流与通话流切换、设置默认输出设备、连接外设强制切换及PC/2in1场景，说明AVCastPicker与路由切换接口的用法。"
+keywords: [输出设备切换, AVCastPicker, setDefaultOutputDevice, setMediaOutputDevice, AudioDeviceEnhanceManager, 听筒, 扬声器, 外放, 蓝牙耳机, 有线耳机, 通话设备, PC/2in1, 媒体播放]
+doctype: guide
+status: active
+---
 # 实现音频输出设备路由切换
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -667,3 +674,9 @@ C/C++示例：
       // ...
   }
   ```
+
+## 相关主题推荐
+
+- [查询和监听音频输出设备](audio-output-device-management.md)
+- [实现音频输入设备路由切换](audio-input-device-switcher.md)
+- [选择合适的播放流类型](using-right-streamusage-for-playback.md)
