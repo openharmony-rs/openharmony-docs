@@ -2,11 +2,11 @@
 
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
-<!--Tester: @chenwan188; @logic42-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=ae2ed455b894c8b152459324388420bed24b2da8 translatedAt=2026-08-20T06:23:58.609Z pushedAt=2026-08-20T12:07:04.830Z -->
+<!-- md-trans-meta sourceCommit=77f9df231e75231e4f4bf58708492308887c6fa8 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
 
 ## When to Use
 
@@ -156,6 +156,7 @@ The following walks you through on how to share an RDB store.
    | scope | Scope of the database.<br>1. **module** indicates that the database is located in this module.<br>2. **application** indicates that the database is located in this application.| No   |
    | allowLists          | Consists of two fields: **appIdentifier** and **onlyMain**.<br>It specifies the list of apps that are allowed to access the data, with a maximum of 256 authorization records. During cross-app data access, this configuration is used to verify whether the data accessor is in the list configured by the data provider. If not, the access is denied. If **allowLists** is not configured, allowlist verification is skipped. Regardless of whether **allowLists** is configured, the read and write permissions in [Table 1](#data-provider-application-development) are still verified as usual.<br>**- appIdentifier**: a string representing the unique identifier of the app, allocated by the cloud. The data provider should obtain it from the data accessor.<br>For details about **appIdentifier**, see [SignatureInfo](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo).<br>**- onlyMain**: a Boolean value indicating whether only the main app is supported. The value **true** means only the main app can access the data, and clone apps cannot. The value **false** means both the main app and clone apps can access the data. This feature is available only for silent access. | No   |
    | accountIsolation          | Indicates whether data is isolated by account. A Boolean value. The value **true** means data is isolated by account, that is, different accounts access different data. The value **false** means data is not isolated by account, that is, different accounts access the same data. The default value is **false** when not configured.<br>This parameter can be configured and used on devices running OpenHarmony 7.0.0 or later. It is supported only on Car devices.<br>For devices running versions earlier than this, this parameter configuration does not take effect. | No   |
+   | accessStatistics          | Configures silent access statistics with the **enable** and **reportInterval** fields.<br>**- enable:** A Boolean value indicating whether to enable statistics collection. The default is **false**. When enabled, the system counts how many times each accessing application calls this URI through silent access to insert, update, delete, or query data during each reporting interval. It periodically reports the **DATA_SHARE_ACCESS_STATISTIC** HiSysEvent in the **DISTDATAMGR** domain. The event includes the accessing application identifier and call counts for each API; the URI is anonymized. When disabled, no statistics collection overhead is incurred.<br>**- reportInterval:** The reporting interval in hours. The default is **24**, and the valid range is **[1, 48]**. Values outside this range are treated as **24**. Statistics are tracked independently for each URI, and its reporting interval starts when that URI is first accessed.<br>This parameter is supported on devices running OpenHarmony 7.1.0 or later. On earlier versions, the configuration does not take effect. | No   |
 
    **my_config.json example**
 
@@ -165,6 +166,10 @@ The following walks you through on how to share an RDB store.
       "type": "rdb",
       "scope": "application",
       "accountIsolation": true,
+      "accessStatistics": {
+        "enable": true,
+        "reportInterval": 24
+      },
       "allowLists":[
             {"appIdentifier": "appIdentifier1", "onlyMain": false},
             {"appIdentifier": "appIdentifier2", "onlyMain": true}
@@ -299,6 +304,7 @@ In the **module.json5** file, set the data to be hosted in **proxyData**. For de
 > **NOTE**
 >
 > - The configuration of **proxyData** is optional.
+>
 > - If **proxyData** is not configured, the hosted data cannot be accessed by other applications.
 
 **Table 3** proxyData in module.json5
@@ -399,8 +405,11 @@ The data provider calls the **enableSilentProxy** API to dynamically enable sile
 > **NOTE**
 >
 > - The configuration of the **isSilentProxyEnable** field is optional. The default value is **true**, indicating that silent access is enabled.
+>
 > - To verify whether silent access is enabled, the system first checks the silent access status set by the **enableSilentProxy** or **disableSilentProxy** API called, and then checks the value of **isSilentProxyEnable** in the **data_share_config.json** file.
+>
 > - If **enableSilentProxy** or **disableSilentProxy** has not been called, the value of **isSilentProxyEnable** in the **data_share_config.json** file is preferentially checked.
+>
 > - Silent access is enabled by default if **enableSilentProxy** or **disableSilentProxy** has not been called and **isSilentProxyEnable** in the **data_share_config.json** file is not configured.
 
 1. Import dependencies.

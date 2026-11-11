@@ -204,6 +204,9 @@
       - [布局约束](arkui-ts/ts-universal-attributes-layout-constraints.md)
       - [Flex布局](arkui-ts/ts-universal-attributes-flex-layout.md)
       - [安全区域](arkui-ts/ts-universal-attributes-expand-safe-area.md)
+      <!--Del-->
+      - [安全区域 (系统接口)](arkui-ts/ts-universal-attributes-expand-safe-area-sys.md)
+      <!--DelEnd-->
       - [组件级像素取整](arkui-ts/ts-universal-attributes-pixelRoundForComponent.md)
       - [页面级像素取整](arkui-ts/ts-universal-attributes-pixelRoundForPage.md)
       - [边框设置](arkui-ts/ts-universal-attributes-border.md)
@@ -594,6 +597,9 @@
     - [advanced.Counter](arkui-ts/ohos-arkui-advanced-Counter.md)
     - [CounterV2](arkui-ts/ohos-arkui-advanced-CounterV2.md)
     - [DatePickerComponent](arkui-ts/ohos-arkui-advanced-DatePickerComponent.md)
+    <!--Del-->
+    - [ToolBarV2 (系统接口)](arkui-ts/ohos-arkui-advanced-ToolBarV2-sys.md)
+    <!--DelEnd-->
   - 状态管理与渲染控制<!--state-management-and-rendering-control-->
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
@@ -722,7 +728,7 @@
     - [custom_attributes.h](capi-native-node-node-attributes-custom-attributes-h.md)
     - [native_node_napi.h](capi-native-node-napi-h.md)
     - [native_render.h](capi-native-render-h.md)
-    - [node_grid.h](capi-grid-h.md)
+    - [grid.h](capi-grid-h.md)
     - [list.h](capi-list-h.md)
     - [list_item.h](capi-list-item-h.md)
     - [native_type.h](capi-native-type-h.md)
@@ -744,7 +750,7 @@
     - [text_input.h](capi-text-input-h.md)
     - [text_area.h](capi-text-area-h.md)
     - [swiper.h](capi-swiper-h.md)
-    - [node_water_flow.h](capi-water-flow-h.md)
+    - [water_flow.h](capi-water-flow-h.md)
     - [ui_event_injection.h](capi-ui-event-injection-h.md)
     - [ui_info_collection.h](capi-ui-info-collection-h.md)
     - [ui_json_wrapper.h](capi-ui-json-wrapper-h.md)

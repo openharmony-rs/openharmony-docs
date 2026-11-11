@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes temporal scalability video encoding using long-term reference frames or global temporal scalability to produce layered bitstreams. Supports frame rate scaling by dropping layers to improve resistance to packet loss on poor networks for video conferences, live streaming, and other real-time transmission scenarios."
+keywords: [temporal scalability encoding, long-term reference frames, LTR, TGOP, frame rate scaling, packet loss resilience on poor networks, video conferencing, real-time transmission, layered bitstreams]
+doctype: guide
+status: active
+---
+
 # Temporal Scalable Encoding with Packet Loss Resilience in Poor Network Conditions
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=ca1c227bf699aa702c444e7bab72be6c06210075 translatedAt=2026-10-22T04:13:09.371Z pushedAt=2026-10-22T13:50:08.532Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2ad293edae36fdd9e0da20f8f6b6d2798fbf3d07 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## Basic Concepts
 

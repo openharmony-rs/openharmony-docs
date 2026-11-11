@@ -5,7 +5,8 @@
 <!--Designer: @KejiePeng-->
 <!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=5284e30f06236fe06b1ce39618ec19c1d67b8d4a translatedAt=2026-10-19T01:33:12.202Z pushedAt=2026-10-19T10:23:07.735Z -->
+<!-- md-trans-meta sourceCommit=719ae6736ab444a57c3922ea0a3f332f58dba438 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 ## Overview
 
@@ -251,8 +252,8 @@ In some use cases, you may want to use only custom fonts to ensure font consiste
    OH_Drawing_TextStyle *textStyle = OH_Drawing_CreateTextStyle();
    // Possible cases when the system fonts are disabled:
    // Case 1: If the custom font is used, the text is displayed properly.
-   // This path is the path of the custom font file to be registered on the application device. Ensure that the custom font file is properly placed in this path.
-   // The font family name is required when the custom font is used.
+   // This is the path to a system font file on the device. Register the system font file with the font collection for use here.
+   // Use this font family name when selecting the registered font.
    // Case 2: If OH_Drawing_SetTextStyleFontFamilies is not called or an empty parameter is passed, the text uses the system default font by default. However, since the system font is disabled, the text cannot be displayed.
    const char* fontFamily = "HarmonyOS_Sans"; 
    const char* fontPath = "/system/fonts/HarmonyOS_Sans.ttf"; 

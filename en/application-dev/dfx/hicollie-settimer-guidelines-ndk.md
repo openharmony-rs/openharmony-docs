@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=d4a3014b60954a245f0691e344257dd59a0109fc translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
+<!-- md-trans-meta sourceCommit=380302020c3e797188855ad9895a83c0437ababa translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## Overview
 
@@ -45,7 +45,7 @@ The following demonstrates how to add a button in the app and click the button t
            - napi_init.cpp
          ets:
            entryability:
-             - EntryAbility.ts
+             - EntryAbility.ets
            pages:
              - Index.ets
    ```

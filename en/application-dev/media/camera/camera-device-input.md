@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=03da8d98875c99278437bdd28f12d4fdb3efd8f7 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -12,7 +13,7 @@ A camera application invokes and controls a camera device to perform basic opera
 
 ## How to Develop
 
-Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
+For detailed API descriptions, refer to [@ohos.multimedia.camera (Camera Management)](../../reference/apis-camera-kit/arkts-apis-camera.md).
 
 1. Import the camera module, which provides camera-related properties and methods.
 
@@ -80,12 +81,12 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
       }
       console.info("outputCapability: " + JSON.stringify(cameraOutputCapability));
       // The following uses the NORMAL_PHOTO mode as an example. You need to add the preview stream and photo stream.
-      // previewProfiles is the preview output streams supported by the current camera device.
+      // The previewProfiles property contains the preview output stream supported by the current device.
       let previewProfilesArray: Array<camera.Profile> = cameraOutputCapability.previewProfiles;
       if (!previewProfilesArray) {
         console.error("createOutput previewProfilesArray == null || undefined");
       }
-      // photoProfiles is the photo output streams supported by the current camera device.
+      // The photoProfiles property contains the photo output stream supported by the current device.
       let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
       if (!photoProfilesArray) {
         console.error("createOutput photoProfilesArray == null || undefined");

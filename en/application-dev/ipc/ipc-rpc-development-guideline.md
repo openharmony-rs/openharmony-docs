@@ -5,6 +5,7 @@
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1c43df1ef85762ef8c3e72af951abb72e0ea7c1d translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 ## When to Use
 
@@ -16,7 +17,7 @@ IPC/RPC is used to implement object communication across processes (one-to-one m
 >
 > - Before performing IPC & RPC inter-process communication, you need to obtain the proxy object of the server through Ability Kit.
 >
-> - Third-party applications do not support implementing inter-process communication on their own. A third-party application can only connect to the **ServiceExtensionAbility** provided by the system through [connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability), and communicate with the [ServiceExtensionAbility](../application-models/extensionability-overview.md) through the returned proxy, thereby achieving communication between the third-party application and the system service.
+> - Third-party applications do not support implementing inter-process communication on their own. A third-party application can only connect to the **ServiceExtensionAbility** provided by the system through [connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability), and communicate with the [ServiceExtensionAbility](../application-models/extensionability-overview.md) through the returned proxy object, thereby achieving communication between the third-party application and the system service.
 >
 > - Starting from API version 20, on 2-in-1 devices, you can use the **AppServiceExtensionAbility** component to provide background service capabilities for applications. Third-party applications can connect to **AppServiceExtensionAbility** through [connectAppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20), and communicate with [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) through the returned proxy object, thereby achieving communication between two third-party applications. For detailed development steps, see [AppServiceExtensionAbility](../application-models/app-service-extension-ability.md#connecting-to-a-background-service).
 >
@@ -137,7 +138,7 @@ Create a ServiceExtensionAbility as follows:
   // Death notification
   class MyDeathRecipient implements rpc.DeathRecipient {
     onRemoteDied() {
-      hilog.info(0x0000, 'testTag', 'server is died');
+      hilog.info(0x0000, 'testTag', 'server is dead');
     }
   }
   let deathRecipient = new MyDeathRecipient();
@@ -275,7 +276,7 @@ Create a ServiceExtensionAbility as follows:
   // Death notification
   class MyDeathRecipient implements rpc.DeathRecipient {
     onRemoteDied() {
-      hilog.info(0x0000, 'testTag', 'server is died');
+      hilog.info(0x0000, 'testTag', 'server is dead');
     }
   };
   let deathRecipient = new MyDeathRecipient();

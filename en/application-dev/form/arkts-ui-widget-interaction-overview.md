@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a08d450b4f575e3d4749ddeef9dd32275ec0a19e translatedAt=2026-08-26T04:51:37.087Z pushedAt=2026-08-28T08:46:05.596Z -->
+<!-- md-trans-meta sourceCommit=ee1cb6c6f360cedf54db5b7a957fb7a242919c1f translatedAt=2026-11-03T08:37:12.927Z pushedAt=2026-11-03T08:37:12.927Z -->
 
 Both the widget host (for example, the home screen) and the widget provider can trigger updates to the widget page. Moreover, the widget framework notifies the widget provider of updates according to the scheduled information. Therefore, widget updates include active updates initiated by the widget provider, active updates initiated by the widget host, and interval-based or time-specific updates. In all these update modes, the widget provider is responsible for pushing the widget data to be updated.
 
@@ -57,4 +57,6 @@ Based on the scheduled update information configured by the widget provider, the
 
 1. The widget provider is only allowed to update its own widgets.
 2. The widget host is only allowed to update the widgets added to it.
-3. Starting from API version 20, if the widget refresh data is updated through shared memory, the total refresh data size must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier, the maximum number of image files is 5, with each image limited to 2 MB of memory. Images exceeding the limit may display abnormally.
+3. If the widget refresh data is updated through shared memory, the total refresh data size must not exceed 10 MB. When [createFormBindingData](../reference/apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdatacreateformbindingdata) is used, the number of refreshed images must not exceed 20 (for API version 19 and earlier, the limit is 5 images, each limited to 2 MB). When [createFormBindingDataEx](../reference/apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdatacreateformbindingdataex) is used, the number of refreshed images must not exceed 30. Images that exceed these limits are displayed incorrectly.
+
+<!--no_check-->

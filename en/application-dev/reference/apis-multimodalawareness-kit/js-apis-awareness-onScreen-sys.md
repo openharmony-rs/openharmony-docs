@@ -5,7 +5,7 @@
 <!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=417f502e638a0076ecc77fba99d31577589d7d54 translatedAt=2026-09-14T02:10:30.510Z pushedAt=2026-09-14T10:03:33.580Z -->
+<!-- md-trans-meta sourceCommit=b6e5aee706258315d9808fa5605c66fc1e23c7b9 translatedAt=2026-11-03T06:04:50.083Z pushedAt=2026-11-03T12:08:25.587Z nl=1 -->
 
 This module provides the capability of apperceiving on-screen content, including obtaining page content, links, screenshots, and other information, identifying application scenarios such as reading and short video, providing entity information such as article titles and body text, as well as interaction information such as clicks and scrolling.
 
@@ -116,7 +116,7 @@ On-screen awareness capabilities (including but not limited to reading scenario 
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API:** This is a system API.
-
+ 
 **Model restriction:** This API can be used only in the stage model.
 
 | Name | Type   | Read Only | Optional | Description                                     |
@@ -165,7 +165,7 @@ On-Screen Awareness parameter list, used to obtain on-screen information in spec
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API:** This is a system API.
-
+ 
 **Model restriction:** This API can be used only in the stage model.
 
 | Name | Type   | Read Only | Optional | Description                                     |
@@ -179,7 +179,7 @@ Page information collection strategy.
 **System capability**: SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API**: This is a system API.
-
+ 
 **Model restriction:** This API can be used only in the stage model.
 
 | Name                | Value   | Description                   |
@@ -205,7 +205,7 @@ Provides page information. Including:
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API**: This is a system API.
-
+ 
 **Model restriction:** This API can be used only in the stage model.
 
 | Name | Type | Read Only | Optional | Description |
@@ -219,7 +219,7 @@ Provides the apperceived entity information, including content, links, images, a
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API:** This is a system API.
-
+ 
 **Model restriction:** This API can be used only in the stage model.
 
 | Name | Type | Read Only | Optional | Description |
@@ -234,7 +234,7 @@ List of information returned by on-screen awareness.
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API:** This is a system API.
-
+ 
 **Model restriction:** This API can be used only in the stage model.
 
 | Name | Type | Read Only | Optional | Description |
@@ -264,7 +264,7 @@ Permission status for reading screen information.
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API:** This is a system API.
-
+ 
 **Model restriction:** This API can be used only in the stage model.
 
 | Name | Type | Read Only | Optional | Description |
@@ -290,6 +290,12 @@ Obtains the on-screen content when the window whose content is to be captured is
 | Name | Type | Mandatory | Description |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
 | options | [ContentOptions](#contentoptions) | No | Options for obtaining the on-screen content. By default, no window ID is specified and all other options are set to **false**. |
+
+**Return value**
+
+| Type | Description |
+| ------------------------------------------ | -------------------------------- |
+| Promise&lt;[PageContent](#pagecontent)&gt; | Promise object that carries the obtained page content. |
 
 **Error codes**
 
@@ -412,7 +418,7 @@ Enables proactive awareness of on-screen content and subscribes to the on-screen
 **Device behavior differences:** This API can be properly called on Phone and Tablet devices. If it is called on other device types, error code 801 is returned.
 
 **System API**: This is a system API.
-
+ 
 **Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
@@ -544,7 +550,7 @@ Actively triggers on-screen content awareness to obtain the current on-screen aw
   | Type                           | Description         |
   | ---------------------------- | ---------- |
   | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | Promise object used to return the screen awareness result. |
-
+  
 **Error Code**
 
 For details about the error codes, see [Onscreen Awareness Error Codes](errorcode-onScreen.md) and [Universal Error Codes](../errorcode-universal.md).
@@ -619,7 +625,7 @@ The capList capability list supported by the capture API is as follows:
   | Type                           | Description         |
   | ---------------------------- | ---------- |
   | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise object used to return the on-screen awareness result. The returned awareness information list OnscreenAwarenessInfo[] contains at most two awareness information items at a time.|
-
+ 
 **Error codes:**
 
 For details about the error codes, see [Onscreen Awareness Error Codes](errorcode-onScreen.md) and [Universal Error Codes](../errorcode-universal.md).
@@ -936,7 +942,7 @@ Enables monitoring of the screen content access permission and returns the permi
 **Device behavior differences:** This API can be properly called on Phone and Tablet devices. If it is called on other device types, error code 801 is returned.
 
 **System API**: This is a system API.
-
+ 
 **Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
@@ -998,7 +1004,7 @@ For details about the error codes, see [Onscreen Awareness Error Codes](errorcod
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
-| 202      | Permission check failed. A non-system application uses the system API. |
+| 202      | Permission check failed. A nonsystem application uses the system API. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 | 34000001 | Service exception. |
 

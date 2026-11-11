@@ -1,12 +1,11 @@
 # ArkUI_NativeGestureAPI_1
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a982f9d9be2aa48466f66955fc58f87c03f60f05 translatedAt=2026-08-20T07:25:35.052Z pushedAt=2026-08-21T04:13:42.648Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:44:19.958Z pushedAt=2026-11-10T03:54:23.231Z nl=1 -->
 
 ```c
 typedef struct {...} ArkUI_NativeGestureAPI_1
@@ -32,6 +31,7 @@ When using this module to configure gestures, it is recommended to follow the pr
 | -- | -- |
 | int32_t version | The struct version is 1. |
 
+
 ### Member Functions
 
 | Name | Description |
@@ -40,13 +40,13 @@ When using this module to configure gestures, it is recommended to follow the pr
 | [ArkUI_GestureRecognizer* (\*createLongPressGesture)(int32_t fingersNum, bool repeatResult, int32_t durationNum)](#createlongpressgesture) | Creates a long press gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. 1. This API is used to trigger a long press gesture, which requires one or more fingers with a minimum 500 ms hold-down time. 2. In components that support drag actions by default, such as **Text**, **TextInput**, **TextArea**, **HyperLink**, **Image**, and **RichEditor**, the long press gesture may conflict with the drag action. If this occurs, the event priority is determined as follows: If the duration of the long press gesture is less than 500 ms, the long press gesture receives a higher response priority than the drag action. If the duration of the long press gesture is greater than or equal to 500 ms, the drag action receives a higher response priority than the long press gesture. 3. If a finger moves more than 15 px after being pressed, the gesture recognition fails. |
 | [ArkUI_GestureRecognizer* (\*createPanGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double distanceNum)](#createpangesture) | Creates a pan gesture. Different from [createSwipeGesture](#createswipegesture) (swipe gesture), the pan gesture is triggered based on the minimum drag distance, while the swipe gesture is triggered based on the minimum swipe speed. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. 1. This API is used to trigger a pan gesture when the movement distance of a finger on the screen exceeds the minimum value. 2. If a swipe on the **Tabs** component and this pan gesture event occur at the same time, set **distanceNum** to **1** to make dragging more sensitive and avoid response conflicts between the **Tabs** component swipe event and this pan gesture event. |
 | [ArkUI_GestureRecognizer* (\*createPinchGesture)(int32_t fingersNum, double distanceNum)](#createpinchgesture) | Creates a pinch gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. 1. This API is used to trigger a pinch gesture, which requires two to five fingers with a minimum pinch distance of pixels specified by **distanceNum**. 2. The number of fingers triggering the gesture can be greater than the value of **fingersNum**, but only the first fingers equal to the value of **fingersNum** participate in the gesture calculation. |
-| [ArkUI_GestureRecognizer* (\*createRotationGesture)(int32_t fingersNum, double angleNum)](#createrotationgesture) | Creates a rotation gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. 1. This API is used to trigger a rotation gesture, which requires two to five fingers with a minimum 1-degree rotation angle (specified by **angleNum**). 2. The number of fingers triggering the gesture can be greater than the value of **fingersNum**, but only the first two fingers that are pressed participate in the gesture calculation. |
+| [ArkUI_GestureRecognizer* (\*createRotationGesture)(int32_t fingersNum, double angleNum)](#createrotationgesture) | Creates a rotation gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. 1. This API is used to trigger a rotation gesture, which requires two to five fingers with a minimum 1-degree rotation angle (specified by **angleNum**). 2. The number of fingers triggering the gesture can be greater than the value of **fingersNum**, but only the first fingers equal to the value of **fingersNum** participate in the gesture calculation. |
 | [ArkUI_GestureRecognizer* (\*createSwipeGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double speedNum)](#createswipegesture) | Creates a swipe gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. This API is used to implement a swipe gesture, which can be recognized when the swipe speed (px/s) is higher than that specified by **speedNum**. |
 | [ArkUI_GestureRecognizer* (\*createGroupGesture)(ArkUI_GroupGestureMode gestureMode)](#creategroupgesture) | Creates a gesture group. After it is created successfully, call **addChildGesture()** to add child gestures to the gesture group, and then bind the gesture group to a node through **addGestureToNode()**. When a child gesture is no longer used, call **removeChildGesture()** as needed to remove the child gesture, and call **dispose()** to release the resources. After the release, the gesture group must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. |
 | [void (\*dispose)(ArkUI_GestureRecognizer* recognizer)](#dispose) | Disposes of the gesture created through **createTapGesture()**, **createLongPressGesture()**, **createPanGesture()**, **createPinchGesture()**, **createRotationGesture()**, **createSwipeGesture()**, **createGroupGesture()**, or **createTapGestureWithDistanceThreshold()** to release the resources. If the gesture has been added to a node through **addGestureToNode()**, it is recommended to call **removeGestureFromNode()** to unbind the node before calling **dispose()**. After **dispose()** is called, the gesture pointer must not be used again. |
 | [int32_t (\*addChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecognizer* child)](#addchildgesture) | Adds a child gesture to the gesture group created through **createGroupGesture()**. You need to create the gesture group and the child gesture first, and then call **addChildGesture()** to establish the association. After the child gesture is added, it participates in the recognition process of the gesture group. When the child gesture no longer needs to participate in the gesture group recognition, call **removeChildGesture()** to remove the association. |
 | [int32_t (\*removeChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecognizer* child)](#removechildgesture) | Removes the child gesture that has been added through **addChildGesture()** from the gesture group. After the call, the child gesture no longer participates in the gesture group recognition as a child gesture of the gesture group. |
-| [int32_t (\*setGestureEventTarget)(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureEventActionTypeMask actionTypeMask, void* extraParams,void (\*targetReceiver)(ArkUI_GestureEvent* event, void* extraParams))](#setgestureeventtarget) | Sets the gesture association callback, for scenarios where you need to listen for events such as gesture triggering, updating, or ending and perform business processing. You need to create a gesture recognizer through APIs such as **createTapGesture()** and **createLongPressGesture()** first, call **setGestureEventTarget()** to set the event callback, and bind the gesture to a node through **addGestureToNode()**. It is recommended to call **setGestureEventTarget()** before **addGestureToNode()** to ensure that the gesture can respond to events immediately after being bound to the node. |
+| [int32_t (\*setGestureEventTarget)(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureEventActionTypeMask actionTypeMask, void* extraParams,void (\*targetReceiver)(ArkUI_GestureEvent* event, void* extraParams))](#setgestureeventtarget) | Sets the gesture association callback, for scenarios where you need to listen for events such as gesture triggering, updating, or ending and perform service processing. You need to create a gesture recognizer through APIs such as **createTapGesture()** and **createLongPressGesture()** first, call **setGestureEventTarget()** to set the event callback, and bind the gesture to a node through **addGestureToNode()**. It is recommended to call **setGestureEventTarget()** before **addGestureToNode()** to ensure that the gesture can respond to events immediately after being bound to the node. |
 | [int32_t (\*addGestureToNode)(ArkUI_NodeHandle node, ArkUI_GestureRecognizer* recognizer, ArkUI_GesturePriority mode, ArkUI_GestureMask mask)](#addgesturetonode) | Adds the gesture created through APIs such as **createTapGesture()** and **createLongPressGesture()** to a UI component. You should create a gesture recognizer first, and then call **addGestureToNode()** to bind the gesture to the node. When the node no longer needs to respond to the gesture, call **removeGestureFromNode()** to unbind it, and call **dispose()** when releasing resources. |
 | [int32_t (\*removeGestureFromNode)(ArkUI_NodeHandle node, ArkUI_GestureRecognizer* recognizer)](#removegesturefromnode) | Removes the gesture that has been added through **addGestureToNode()** from the node. After the call, the node no longer responds to the gesture. If you need to release the gesture resources, it is recommended to call **removeGestureFromNode()** to unbind the node first, and then call **dispose()**. |
 | [int32_t (\*setGestureInterrupterToNode)(ArkUI_NodeHandle node, ArkUI_GestureInterruptResult (\*interrupter)(ArkUI_GestureInterruptInfo* info))](#setgestureinterruptertonode) | Sets the node gesture interruption callback, for scenarios where you need to determine whether the gesture continues to be recognized based on service conditions, such as handling gesture conflicts between parent and child nodes or dynamically controlling gesture responses. This callback applies to gestures added to the node through **addGestureToNode()** and built-in gestures of the component. It is triggered during gesture recognition, and you can determine whether the gesture continues to be recognized or is interrupted through the callback result. |
@@ -65,15 +65,10 @@ ArkUI_GestureRecognizer* (*createTapGesture)(int32_t countNum, int32_t fingersNu
 **Description**
 
 Creates a tap gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
-
 1. This API is used to trigger a tap gesture with one, two, or more taps.
-
 2. When multi-tap is configured, the timeout between the last finger up of the previous tap and the first finger down of the next tap is 300 ms.
-
 3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.
-
 4. When multiple fingers are configured for a gesture, the recognition fails if the number of fingers touching the screen within 300 ms of the first finger's being pressed is less than the required count, or if the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required count.
-
 5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.
 
 **Parameters**
@@ -98,17 +93,14 @@ ArkUI_GestureRecognizer* (*createLongPressGesture)(int32_t fingersNum, bool repe
 **Description**
 
 Creates a long press gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
-
-1. This API is used to trigger a long press gesture, which requires one or more fingers with a minimum 500 ms hold-down time.
-
+1. This API is used to trigger a long press gesture, which requires at least one finger with a hold-down time specified by **durationNum**. When the value of **durationNum** is less than or equal to 0, the default value of 500 ms is used.
 2. In components that support drag actions by default, such as **Text**, **TextInput**, **TextArea**, **HyperLink**, **Image**, and **RichEditor**, the long press gesture may conflict with the drag action.
 
-   If this occurs, the event priority is determined as follows: 
+   If this occurs, the event priority is determined as follows:
 
    If the duration of the long press gesture is less than 500 ms, the long press gesture receives a higher response priority than the drag action.
 
    If the duration of the long press gesture is greater than or equal to 500 ms, the drag action receives a higher response priority than the long press gesture.
-
 3. If a finger moves more than 15 px after being pressed, the gesture recognition fails.
 
 **Parameters**
@@ -134,9 +126,7 @@ ArkUI_GestureRecognizer* (*createPanGesture)(int32_t fingersNum, ArkUI_GestureDi
 **Description**
 
 Creates a pan gesture. Different from [createSwipeGesture](#createswipegesture) (swipe gesture), the pan gesture is triggered based on the minimum drag distance, while the swipe gesture is triggered based on the minimum swipe speed. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
-
 1. This API is used to trigger a pan gesture when the movement distance of a finger on the screen exceeds the minimum value.
-
 2. If a swipe on the **Tabs** component and this pan gesture event occur at the same time, set **distanceNum** to **1** to make dragging more sensitive and avoid response conflicts between the **Tabs** component swipe event and this pan gesture event.
 
 **Parameters**
@@ -162,9 +152,7 @@ ArkUI_GestureRecognizer* (*createPinchGesture)(int32_t fingersNum, double distan
 **Description**
 
 Creates a pinch gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
-
 1. This API is used to trigger a pinch gesture, which requires two to five fingers with a minimum pinch distance of pixels specified by **distanceNum**.
-
 2. The number of fingers triggering the gesture can be greater than the value of **fingersNum**, but only the first fingers equal to the value of **fingersNum** participate in the gesture calculation.
 
 **Parameters**
@@ -189,10 +177,8 @@ ArkUI_GestureRecognizer* (*createRotationGesture)(int32_t fingersNum, double ang
 **Description**
 
 Creates a rotation gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
-
 1. This API is used to trigger a rotation gesture, which requires two to five fingers with a minimum 1-degree rotation angle (specified by **angleNum**).
-
-2. The number of fingers triggering the gesture can be greater than the value of **fingersNum**, but only the first two fingers that are pressed participate in the gesture calculation.
+2. The number of fingers triggering the gesture can be greater than the value of **fingersNum**, but only the first fingers equal to the value of **fingersNum** participate in the gesture calculation.
 
 **Parameters**
 
@@ -216,8 +202,8 @@ ArkUI_GestureRecognizer* (*createSwipeGesture)(int32_t fingersNum, ArkUI_Gesture
 **Description**
 
 Creates a swipe gesture. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
-
 This API is used to implement a swipe gesture, which can be recognized when the swipe speed (px/s) is higher than that specified by **speedNum**.
+1. This API is used to implement a swipe gesture, which can be recognized when the swipe speed (px/s) is higher than that specified by **speedNum**.
 
 **Parameters**
 
@@ -241,6 +227,7 @@ ArkUI_GestureRecognizer* (*createGroupGesture)(ArkUI_GroupGestureMode gestureMod
 
 **Description**
 
+
 Creates a gesture group. After it is created successfully, call **addChildGesture()** to add child gestures to the gesture group, and then bind the gesture group to a node through **addGestureToNode()**. When a child gesture is no longer used, call **removeChildGesture()** as needed to remove the child gesture, and call **dispose()** to release the resources. After the release, the gesture group must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
 
 **Parameters**
@@ -253,7 +240,7 @@ Creates a gesture group. After it is created successfully, call **addChildGestur
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* | Pointer to the created gesture group, which can be used to add, remove, or manage child gestures in group. |
+| [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* | Pointer to the created gesture group, which can be used to add, remove, or manage child gestures in the group. |
 
 ### dispose()
 
@@ -262,6 +249,7 @@ void (*dispose)(ArkUI_GestureRecognizer* recognizer)
 ```
 
 **Description**
+
 
 Disposes of the gesture created through **createTapGesture()**, **createLongPressGesture()**, **createPanGesture()**, **createPinchGesture()**, **createRotationGesture()**, **createSwipeGesture()**, **createGroupGesture()**, or **createTapGestureWithDistanceThreshold()** to release the resources. If the gesture has been added to a node through **addGestureToNode()**, it is recommended to call **removeGestureFromNode()** to unbind the node before calling **dispose()**. After **dispose()** is called, the gesture pointer must not be used again.
 
@@ -278,6 +266,7 @@ int32_t (*addChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecogniz
 ```
 
 **Description**
+
 
 Adds a child gesture to the gesture group created through **createGroupGesture()**. You need to create the gesture group and the child gesture first, and then call **addChildGesture()** to establish the association. After the child gesture is added, it participates in the recognition process of the gesture group. When the child gesture no longer needs to participate in the gesture group recognition, call **removeChildGesture()** to remove the association.
 
@@ -302,6 +291,7 @@ int32_t (*removeChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecog
 
 **Description**
 
+
 Removes the child gesture that has been added through **addChildGesture()** from the gesture group. After the call, the child gesture no longer participates in the gesture group recognition as a child gesture of the gesture group.
 
 **Parameters**
@@ -325,7 +315,8 @@ int32_t (*setGestureEventTarget)(ArkUI_GestureRecognizer* recognizer, ArkUI_Gest
 
 **Description**
 
-Sets the gesture association callback, for scenarios where you need to listen for events such as gesture triggering, updating, or ending and perform business processing. You need to create a gesture recognizer through APIs such as **createTapGesture()** and **createLongPressGesture()** first, call **setGestureEventTarget()** to set the event callback, and bind the gesture to a node through **addGestureToNode()**. It is recommended to call **setGestureEventTarget()** before **addGestureToNode()** to ensure that the gesture can respond to events immediately after being bound to the node.
+
+Sets the gesture association callback, for scenarios where you need to listen for events such as gesture triggering, updating, or ending and perform service processing. You need to create a gesture recognizer through APIs such as **createTapGesture()** and **createLongPressGesture()** first, call **setGestureEventTarget()** to set the event callback, and bind the gesture to a node through **addGestureToNode()**. It is recommended to call **setGestureEventTarget()** before **addGestureToNode()** to ensure that the gesture can respond to events immediately after being bound to the node.
 
 **Parameters**
 
@@ -334,7 +325,7 @@ Sets the gesture association callback, for scenarios where you need to listen fo
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Pointer to the gesture recognizer to which the callback event is bound. |
 | [ArkUI_GestureEventActionTypeMask](capi-native-gesture-h.md#variables) actionTypeMask | Set of gesture event types to respond to. Multiple event types can be registered at a time, and the callback event type is distinguished in the callback. Example: **actionTypeMask = GESTURE_EVENT_ACTION_ACCEPT \| GESTURE_EVENT_ACTION_UPDATE;** |
 | void* extraParams | Pointer to the context data passed when **targetReceiver** is called. Pass the corresponding data pointer when custom service data needs to be accessed in the callback. |
-| targetReceiver | Gesture event callback function, with the signature **void (\*targetReceiver)(ArkUI_GestureEvent* event, void* extraParams)**, used to process events of the registered gesture types. Here, **event** indicates the gesture callback data, and **extraParams** indicates the context data passed during registration. No value is returned. |
+| void (\*targetReceiver)(ArkUI_GestureEvent* event, void* extraParams)                 | Pointer to the gesture event callback function, which is used to process the events of the registered gesture types. **event** indicates the gesture callback data, and **extraParams** indicates the context data passed during registration. No value is returned. |
 
 **Returns**
 
@@ -349,6 +340,7 @@ int32_t (*addGestureToNode)(ArkUI_NodeHandle node, ArkUI_GestureRecognizer* reco
 ```
 
 **Description**
+
 
 Adds the gesture created through APIs such as **createTapGesture()** and **createLongPressGesture()** to a UI component. You should create a gesture recognizer first, and then call **addGestureToNode()** to bind the gesture to the node. When the node no longer needs to respond to the gesture, call **removeGestureFromNode()** to unbind it, and call **dispose()** when releasing resources.
 
@@ -375,6 +367,7 @@ int32_t (*removeGestureFromNode)(ArkUI_NodeHandle node, ArkUI_GestureRecognizer*
 
 **Description**
 
+
 Removes the gesture that has been added through **addGestureToNode()** from the node. After the call, the node no longer responds to the gesture. If you need to release the gesture resources, it is recommended to call **removeGestureFromNode()** to unbind the node first, and then call **dispose()**.
 
 **Parameters**
@@ -397,6 +390,7 @@ int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, ArkUI_GestureInter
 ```
 
 **Description**
+
 
 Sets the node gesture interruption callback, for scenarios where you need to determine whether the gesture continues to be recognized based on service conditions, such as handling gesture conflicts between parent and child nodes or dynamically controlling gesture responses. This callback applies to gestures added to the node through **addGestureToNode()** and built-in gestures of the component. It is triggered during gesture recognition, and you can determine whether the gesture continues to be recognized or is interrupted through the callback result.
 
@@ -421,6 +415,7 @@ ArkUI_GestureRecognizerType (*getGestureType)(ArkUI_GestureRecognizer* recognize
 
 **Description**
 
+
 Obtains the gesture type.
 
 **Parameters**
@@ -443,9 +438,10 @@ int32_t (*setInnerGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkU
 
 **Description**
 
+
 Sets the parallel inner gesture event callback, for scenarios where internal gestures of a component and external custom gestures need to be recognized in parallel. You need to create a custom gesture recognizer through APIs such as **createPanGesture()** first, bind the gesture to the node through **addGestureToNode()**, and call **setInnerGestureParallelTo()** to set the parallel inner gesture event callback. The gesture recognizer returned by the callback function **parallelInnerGesture** should be a custom gesture recognizer created through the **create** series APIs, used for parallel recognition with the inner gestures of the component.
 
-> **NOTE**
+> **NOTE** 
 > This callback is triggered only when the gestures bound to the node include a pan gesture (created by **createPanGesture**). If the node has no pan gesture bound, this callback is not triggered.
 
 **Parameters**
@@ -454,7 +450,7 @@ Sets the parallel inner gesture event callback, for scenarios where internal ges
 |------------------------------------------------------------------| -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the ArkUI node for which the parallel inner gesture event callback is to be set. |
 | void* userData | Pointer to the user-defined data, which is passed through as the context data of the parallel inner gesture event callback after being set, for you to use when processing the callback. Pass **nullptr** when no additional context needs to be passed. |
-| parallelInnerGesture                                             | Parallel inner gesture event callback, with the signature ArkUI_GestureRecognizer* (\*parallelInnerGesture)(ArkUI_ParallelInnerGestureEvent* event), used to return the pointer to the gesture recognizer that needs to be recognized in parallel with the inner gesture based on the parallel inner gesture event data. Here, **event** indicates the parallel inner gesture event data, and the return value is the pointer to the gesture recognizer that needs to be recognized in parallel. |
+| ArkUI_GestureRecognizer* (\*parallelInnerGesture)(ArkUI_ParallelInnerGestureEvent* event) | Pointer to the parallel inner gesture event callback, used to return the pointer to the gesture recognizer that needs to be recognized in parallel with the inner gesture based on the parallel inner gesture event data. Here, **event** indicates the parallel inner gesture event data, and the return value is the pointer to the gesture recognizer that needs to be recognized in parallel. |
 
 **Returns**
 
@@ -470,18 +466,12 @@ ArkUI_GestureRecognizer* (*createTapGestureWithDistanceThreshold)(int32_t countN
 
 **Description**
 
-Creates a tap gesture with a movement range limit. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**. 
-
+Creates a tap gesture with a movement range limit. The gesture recognizer returned after the gesture is created successfully can be added to a node through **addGestureToNode()**. When the gesture is no longer used, call **dispose()** to release the resources. After the release, the gesture recognizer must not be used again. If you need to unbind the node first, call **removeGestureFromNode()** before **dispose()**.
 1. This API is used to trigger a tap gesture with one, two, or more taps.
-
 2. If multi-tap is configured, the timeout between the last finger up of the previous tap and the first finger down of the next tap is 300 ms.
-
 3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.
-
 4. When multiple fingers are configured for a gesture, the recognition fails if the number of fingers touching the screen within 300 ms of the first finger's being pressed is less than the required count, or if the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required count.
-
 5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.
-
 6. If the finger moves beyond the preset distance limit, gesture recognition fails.
 
 **Parameters**
@@ -497,3 +487,5 @@ Creates a tap gesture with a movement range limit. The gesture recognizer return
 | Type | Description |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* | Pointer to the created tap gesture recognizer with a movement range limit. It can be used to bind a node, register a callback, or manage tap gesture recognition. |
+
+

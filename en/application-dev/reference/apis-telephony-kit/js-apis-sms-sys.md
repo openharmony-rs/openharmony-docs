@@ -5,6 +5,7 @@
 <!--Designer: @wnazgul-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=d24d003a07db9ee1ded2d51b1a31fb4eb823af5f translatedAt=2026-11-03T04:04:22.651Z pushedAt=2026-11-03T10:29:27.300Z nl=1 -->
 
 The **sms** module provides basic SMS management functions. With the APIs provided by this module, you can create and send SMS messages, obtain the ID of the default SIM card used to send and receive SMS messages, and obtain and set the SMSC address.
 
@@ -50,7 +51,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.                           |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                            |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
@@ -105,7 +106,7 @@ import { window } from '@kit.ArkUI';
 const sandBoxPath = '/data/storage/el2/base/files/';
 let filePath  = sandBoxPath + 'SendReq.mms';
 
-// Configure the MMS user agent and profile. The default values are ua and uaprof, respectively. The configuration is subject to the carrier's requirements. 
+// Configure the MMS user agent and profile. The default values are ua and uaprof, respectively. The configuration is subject to the carrier's requirements.
 let mmsConf: sms.MmsConfig = {
   userAgent:'ua',
   userAgentProfile: 'uaprof'
@@ -219,7 +220,7 @@ import { window } from '@kit.ArkUI';
 const sandBoxPath = '/data/storage/el2/base/files/';
 let filePath  = sandBoxPath + 'SendReq.mms';
 
-// Configure the MMS user agent and profile. The default values are ua and uaprof, respectively. The configuration is subject to the carrier's requirements. 
+// Configure the MMS user agent and profile. The default values are ua and uaprof, respectively. The configuration is subject to the carrier's requirements.
 let mmsConf: sms.MmsConfig = {
   userAgent:'ua',
   userAgentProfile: 'uaprof'
@@ -334,7 +335,7 @@ let filePath  = sandBoxPath + 'RetrieveConf.mms';
 // Parse the MMS URL from the WAP Push message.
 let wapPushUrl  = 'URL';
 
-// Configure the MMS user agent and profile. The default values are ua and uaprof, respectively. The configuration is subject to the carrier's requirements. 
+// Configure the MMS user agent and profile. The default values are ua and uaprof, respectively. The configuration is subject to the carrier's requirements.
 let mmsConf: sms.MmsConfig = {
   userAgent:'ua',
   userAgentProfile: 'uaprof'
@@ -378,13 +379,13 @@ Downloads an MMS message. This API uses a promise to return the result.
 | Name  | Type                       | Mandatory| Description                                    |
 | -------- | --------------------------- | ---- | ---------------------------------------- |
 | context | Context          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
-| mmsParams | [MmsParams](#mmsparams11) | Yes  | Parameters (including the callback) for sending MMS messages. For details, see [MmsParams](#mmsparams11).|
+| mmsParams | [MmsParams](#mmsparams11) | Yes | Parameters and callback for downloading MMS. For details, see [MmsParams](#mmsparams11). |
 
 **Return value**
 
 | Type           | Description                                                        |
 | --------------- | ------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise used to return the result of downloading the MMS. |
 
 **Error codes**
 
@@ -454,7 +455,7 @@ let filePath  = sandBoxPath + 'RetrieveConf.mms';
 // Parse the MMS URL from the WAP Push message.
 let wapPushUrl  = 'URL';
 
-// Configure the MMS user agent and profile. The default values are ua and uaprof, respectively. The configuration is subject to the carrier's requirements. 
+// Configure the MMS user agent and profile. The default values are ua and uaprof, respectively. The configuration is subject to the carrier's requirements.
 let mmsConf: sms.MmsConfig = {
   userAgent:'ua',
   userAgentProfile: 'uaprof'
@@ -849,7 +850,7 @@ Splits an SMS message into multiple segments. This API uses a promise to return 
 
 | Type                   | Description                               |
 | ----------------------- | ----------------------------------- |
-| Promise<Array<string\>> | Promise used to return the result.|
+| Promise\<Array<string\>> | Promise used to return the results of multiple segments. |
 
 **Error codes**
 
@@ -1412,6 +1413,62 @@ promise.then(() => {
 });
 ```
 
+## sms.setCBConfigList<sup>23+</sup>
+
+setCBConfigList\(configs: CBConfigListConfigs\): Promise\<void\>
+
+Opens the cell broadcast list.
+
+**System API**: This is a system API.
+
+**Required permissions:** ohos.permission.RECEIVE_SMS
+
+**System capability:** SystemCapability.Telephony.SmsMms
+
+**Parameters**
+
+| Name  | Type                                 | Mandatory | Description         |
+| ------- | ------------------------------------ | ---- | ------------ |
+| configs | [CBConfigListConfigs](#cbconfiglistconfigs23) | Yes   | Cell broadcast configuration list configs. |
+
+**Return value**
+
+| Type                | Description                          |
+| ------------------- | ----------------------------- |
+| Promise&lt;void&gt; | Promise used to return the result of the setting. |
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID |                  Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**Example**
+
+```ts
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let cbConfigListConfigs: sms.CBConfigListConfigs = {
+    slotId: 0,
+    messageIds: [100, 200, 300],
+    ranType: sms.RanType.TYPE_GSM
+};
+let promise = sms.setCBConfigList(cbConfigListConfigs);
+promise.then(() => {
+    console.info('setCBConfigList success.');
+}).catch((err: BusinessError) => {
+    console.error('setCBConfigList failed, code: ${err.code}, message: ${err.message}');
+})
+```
+
 ## sms.getSmsSegmentsInfo<sup>8+</sup>
 
 getSmsSegmentsInfo\(slotId: number, message: string, force7bit: boolean, callback: AsyncCallback\<SmsSegmentsInfo\>\): void
@@ -1429,7 +1486,7 @@ Obtains SMS message segment information. This API uses an asynchronous callback 
 | slotId    | number                                                       | Yes  | SIM card slot ID. <br>- **0**: card slot 1<br>- **1**: card slot 2|
 | message   | string                                                       | Yes  | SMS message.                                     |
 | force7bit | boolean                                                      | Yes  | Whether to use 7-bit encoding. The default value is **false**.<br>- **true**: yes<br>- **false**: no                         |
-| callback  | AsyncCallback&lt;[SmsSegmentsInfo](#smssegmentsinfo8)&gt; | Yes  | Callback used to return the result. |
+| callback  | AsyncCallback&lt;[SmsSegmentsInfo](#smssegmentsinfo8)&gt; | Yes   | Callback used to obtain the SMS segment information.  |
 
 **Error codes**
 
@@ -1898,6 +1955,57 @@ sms.encodeMms(mmsInformation).then((data: number[]) => {
 ```
 
 
+## sms.getSmsShortCodeType<sup>23+</sup>
+
+getSmsShortCodeType\(slotId: number, destAddr: string\): Promise\<SmsShortCodeType\>
+
+Obtains the short code type of the destination address of the SMS to be sent. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.SEND_MESSAGES
+
+**System capability**: SystemCapability.Telephony.SmsMms
+
+**Parameters**
+
+| Name     | Type                                | Mandatory | Description       |
+| -------- | ----------------------------------- | --------- | ----------------- |
+| slotId   | number                              | Yes       | ID of the slot where the SIM card used for sending SMS is located.<br>- **0**: slot 1<br>- **1**: slot 2 |
+| destAddr | string                              | Yes       | Destination address of the SMS.<br>Value range :\[0,+∞\) |
+
+**Error codes**
+
+For details about the error codes, see [Telephony Subsystem Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID |                 Error Message                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.    |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300004  | Do not have sim card.                       |
+| 8300999  | Unknown error code.                          |
+
+**Example**
+
+```ts
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+let destAddr: string = '10086';
+
+sms.getSmsShortCodeType(slotId, destAddr)
+    .then((type: sms.SmsShortCodeType) => {
+        console.info('getSmsShortCodeType succeed, type: ${type}');
+    }).catch((err: BusinessError) => {
+        console.error('getSmsShortCodeType failed, code: ${err.code}, message: ${err.message}');
+    });
+```
+
+
 ## MmsParams<sup>11+</sup>
 
 Defines the parameters for sending SMS messages.
@@ -2255,7 +2363,7 @@ RAN type.
 |   Name   | Value  | Description|
 | --------- | ---- | ---- |
 | TYPE_GSM  | 1    | GSM  |
-| TYPE_CDMA | 2    | CMDA |
+| TYPE_CDMA | 2    | CDMA |
 
 ## SmsEncodingScheme<sup>8+</sup>
 
@@ -2271,6 +2379,20 @@ Enumerates SMS encoding schemes.
 | SMS_ENCODING_7BIT    | 1    | 7-digit code. |
 | SMS_ENCODING_8BIT    | 2    | 8-digit code. |
 | SMS_ENCODING_16BIT   | 3    | 16-digit code.|
+
+## CBConfigListConfigs<sup>23+</sup>
+
+Defines the cell broadcast list configuration.
+
+**System API**: This is a system API.
+
+**System capability:** SystemCapability.Telephony.SmsMms
+
+| Name | Type | Read-Only | Optional | Description |
+| ------ | -------------------------------------- | ---- | ---- | -------------- |
+| slotId | number | No | No | SIM card slot corresponding to the current cell broadcast configuration list. |
+| messageIds | number[] | No | No | Message IDs of the current cell broadcast list. |
+| ranType | [RanType](#rantype7) | No | No | Radio access network type of the current cell broadcast list. |
 
 ## SimMessageOptions<sup>7+</sup>
 
@@ -2362,3 +2484,17 @@ Defines the SMS message segment information.
 | encodeCount          | number                                   | Yes  | Encoding count.    |
 | encodeCountRemaining | number                                   | Yes  | Remaining encoding count.|
 | scheme               | [SmsEncodingScheme](#smsencodingscheme8) | Yes  | Encoding scheme.|
+
+## SmsShortCodeType<sup>23+</sup>
+
+Enumerates the SMS short code types.
+
+**System API**: This is a system API.
+
+**System capability:** SystemCapability.Telephony.SmsMms
+
+|        Name         | Value   | Description         |
+| -------------------- | ---- | ------------ |
+| SMS_SHORT_CODE_TYPE_UNKNOWN | -1    | Unknown SMS encoding. |
+| SMS_SHORT_CODE_TYPE_NOT_PREMIUM    | 0    | Non-premium short code type. |
+| SMS_SHORT_CODE_TYPE_POSSIBLE_PREMIUM    | 1    | Possible premium short code type. |

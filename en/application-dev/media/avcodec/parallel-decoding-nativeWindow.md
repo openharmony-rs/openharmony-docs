@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes using NativeImage to create a temporary Surface and start a video decoder before XComponent or OpenGL post-processing is ready, then redirecting output when the actual consumer is ready to remove decoder creation dependencies."
+keywords: [NativeWindow, NativeImage, temporary Surface, parallel decoder creation, XComponent, SetSurface, playback startup optimization, OpenGL post-processing]
+doctype: faq
+status: active
+---
+
 # Concurrently Creating a Video Decoder and Initializing NativeWindow
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2e205e439bc0f41b94da84e35d75dd910dd5454c translatedAt=2026-10-22T04:00:15.817Z pushedAt=2026-10-22T12:51:19.094Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2c04b527b6f2d3c7497499a7f8545dfbe8374945 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## When to Use
 

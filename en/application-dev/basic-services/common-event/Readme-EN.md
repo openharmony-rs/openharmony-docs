@@ -2,10 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-23T03:05:49.219Z pushedAt=2026-09-23T03:24:20.819Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-11-06T12:02:53.612Z pushedAt=2026-11-09T09:11:48.923Z nl=1 -->
 
 - Using Common Events for IPC<!--common-event-communication-->
     - [Common Event Overview](common-event-overview.md)

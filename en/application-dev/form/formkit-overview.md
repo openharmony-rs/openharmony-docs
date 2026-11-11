@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=62c367e25c754253033ba0b2b60ba0a06413a197 translatedAt=2026-08-26T04:56:00.225Z pushedAt=2026-08-28T08:51:22.215Z -->
+<!-- md-trans-meta sourceCommit=f24779815c61dc6c7687b87c7545a9c01d10eeb9 translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 Form Kit provides a development framework and APIs for embedding app information on the home screen<!--RP3--><!--RP3End-->. It allows you to extract important information or frequently used operations from an app into service widgets (widgets for short). By adding widgets to the home screen<!--RP3--><!--RP3End-->, you can achieve convenient information display and direct service access.
 
@@ -61,6 +61,20 @@ ArkTS widgets and JS widgets have different implementation principles and featur
 | Custom animation  | Not supported   | Supported      |
 | Custom drawing  | Not supported   | Supported      |
 | Logic code execution| Not supported   | Supported      |
+
+## Constraints
+
+<!--RP4--><!--RP4End-->
+<!--Del-->
+### Widget Quantity Limits
+
+The system limits the number of widgets that can be added. The default limits for normal and temporary widgets are as follows:
+
+| Scope | Default Limit | Description |
+| --- | --- | --- |
+| Per device | 512 normal widgets and 256 temporary widgets | Maximum total number of widgets on a device. |
+| Per host | 256 | Maximum number of normal widgets for a single host. |
+<!--DelEnd-->
 
 ## Related Kits
 

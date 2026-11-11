@@ -5,7 +5,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=b3f9fa443100fc2340155a1690202b8adbbfdba6 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
+<!-- md-trans-meta sourceCommit=5595ff4f7a29dcda3f60b183b37e1e9faf57e87d translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## Overview
 
@@ -160,7 +160,7 @@ let policy: hiAppEvent.EventPolicy = {
     extendPcLrPrinting: true, // Enable extended printing of memory values near the PC and LR registers. Supported from API version 26.0.0.
     logFileCutoffSzBytes: 102400, // Truncate the crash log to 100 KB. Supported from API version 26.0.0.
     simplifyVmaPrinting: true, // Enable simplified maps printing. Supported from API version 26.0.0.
-    collectMinidump: true // In native crash scenarios, enable minidump. Supported from API version 26.0.0.
+    collectMinidump: true, // In native crash scenarios, enable minidump. Supported from API version 26.0.0.
     publishOnNextLaunch: true // Enable callback delivery only after restart. This parameter is supported starting from API version 26.1.0.
   }
 };

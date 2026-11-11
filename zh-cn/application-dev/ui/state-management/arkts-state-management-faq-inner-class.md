@@ -21,7 +21,7 @@ UIUtils.getTarget(value) === value
 
 ## 类的构造函数中通过捕获this修改变量无法观察
 
-当在构造函数中初始化修改`isSuccess`的[箭头函数](../../quick-start/arkts-language-guide-functions.md#闭包与箭头函数)时，`TestModel`实例尚未被代理封装，`this`指向`TestModel`实例本身。因此，后续触发`query`事件时，状态管理无法观测到变化。
+当在构造函数中初始化修改`isSuccess`的[箭头函数](../../quick-start/arkts-language-guide-functions.md#箭头函数与函数类型)时，`TestModel`实例尚未被代理封装，`this`指向`TestModel`实例本身。因此，后续触发`query`事件时，状态管理无法观测到变化。
 
 当开发者将修改`isSuccess`的箭头函数放在`query`中时，已完成`TestModel`对象初始化和代理封装。通过`this.viewModel.query()`调用`query`时，`query`函数中的`this`指向`viewModel`代理对象，对代理对象成员属性`isSuccess`的更改能够被观测到，因此触发`query`事件可以被状态管理观测到变化。
 
@@ -1270,7 +1270,7 @@ public loadData() {
 ```
 
 
-但是由于这里的childList实际上是被@State装饰了，根据当前状态管理的观测能力，尽管右边赋值的是一个Child[]类型的数据，它并没有被@Observed装饰，这里的childList却依然具备了被观测的能力，所以能够正常地触发UI的刷新。当去掉childList的@State的装饰器后，不去重置数据源，也无法通过点击“X”按钮触发刷新。
+但是由于这里的childList实际上是被@State装饰了，根据当前状态管理的观测能力，尽管右边赋值的是一个Child[]类型的数据，它并没有被@Observed装饰，这里的childList却依然具备了被观测的能力，所以能够正常地触发UI的刷新。当去掉childList的@State的装饰器后，不去重置数据源，也无法通过点击"X"按钮触发刷新。
 
 因此，需要将具有观测能力的类对象绑定组件，来确保当改变这些类对象的内容时，UI能够正常地刷新。
 

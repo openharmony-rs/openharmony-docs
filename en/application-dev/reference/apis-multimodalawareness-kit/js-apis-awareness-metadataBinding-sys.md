@@ -5,9 +5,9 @@
 <!--Designer: @yuxiaoyang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=c1a62f522b0781bacc654afa2e6ddc8bc5fd9dfc translatedAt=2026-09-14T01:56:35.662Z pushedAt=2026-09-14T10:03:33.574Z -->
+<!-- md-trans-meta sourceCommit=90eae0e1dd0d2aef1aeb47289475ddd733345d62 translatedAt=2026-11-03T05:59:47.241Z pushedAt=2026-11-03T12:08:25.580Z nl=1 -->
 
-This module provides metadata binding capability invocation for embedding metadata into images and parsing metadata from images to implement information transfer. It applies to scenarios where metadata needs to be stored in and transferred through images, such as anti-counterfeiting and copyright protection, providing you with a flexible mechanism for embedding and parsing information.
+This module provides metadata binding capabilities for embedding metadata into images and parsing metadata from images to implement information transfer. It is applicable to scenarios where metadata needs to be stored in and transferred through images, such as anti-counterfeiting and copyright protection, providing developers with flexible information embedding and parsing mechanisms.
 
 > **NOTE**
 >
@@ -26,7 +26,7 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelM
 
 Embeds information into an image. This API embeds metadata into the image using a specific encoding algorithm. The encoding process has minimal impact on the visual presentation of the image, and the embedded information can be parsed through the **decodeImage** API. It can be used in scenarios such as anti-counterfeiting and copyright protection. This API uses a promise to return the result asynchronously.
 
-**System capability**: SystemCapability.MultimodalAwareness.metadataBinding
+**System capability:** SystemCapability.MultimodalAwareness.MetadataBinding
 
 **System API**: This is a system API.
 
@@ -45,7 +45,7 @@ Embeds information into an image. This API embeds metadata into the image using 
 
 **Error Code**
 
-For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Common Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -76,11 +76,11 @@ decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
 Parses the information carried in an image. This API extracts the embedded metadata from the image using the corresponding decoding algorithm. This API uses a promise to return the result asynchronously.
 
-**System capability**: SystemCapability.MultimodalAwareness.metadataBinding
+**System capability:** SystemCapability.MultimodalAwareness.MetadataBinding
 
 **System API**: This is a system API.
 
-**Parameters** 
+**Parameters**  
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
@@ -92,9 +92,9 @@ Parses the information carried in an image. This API extracts the embedded metad
   | ---------------------------- | ---------- |
   | Promise&lt;string&gt; | Promise object, which is used to return the encoded metadata of the image.|
 
-**Error codes** 
+**Error codes**  
 
-For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Common Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -102,7 +102,7 @@ For details about the error codes, see [Metadata Binding Error Codes](errorcode-
 | 32100001 | Internal handling failed. |
 | 32100003 | Decode process fail. Possible causes: 1. Image is not an encoded Image; 2. Image destroyed, decoding failed. |
 
-**Example** 
+**Example**  
 ```ts
 import { image } from '@kit.ImageKit';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
@@ -124,11 +124,11 @@ notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
 Pushes the metadata to be embedded to the application or service that calls the encoding API. The system pushes the information to the application with the specified bundle name and returns the applink information of the current page for subsequent encoding. This API uses a promise to return the result asynchronously.
 
-**System capability**: SystemCapability.MultimodalAwareness.metadataBinding
+**System capability:** SystemCapability.MultimodalAwareness.MetadataBinding
 
 **System API**: This is a system API.
 
-**Parameters** 
+**Parameters**  
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
@@ -142,7 +142,7 @@ Pushes the metadata to be embedded to the application or service that calls the 
 
 **Error Code**
 
-For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md) and [Common Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |

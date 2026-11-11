@@ -37,7 +37,9 @@
 
 2. 导入相关模块。
 
-   ```ts
+   <!-- @[certificate_management_development_guidance_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets) -->
+   
+   ``` TypeScript
    import { certificateManager } from '@kit.DeviceCertificateKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { util } from '@kit.ArkTS';
@@ -81,7 +83,7 @@
 
 ## 样例代码
 
-<!-- @[certificate_management_development_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets) -->
+<!-- @[certificate_management_development_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets)  -->
 
 ``` TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';

@@ -5,6 +5,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=c326644408696bb87ca33c9577f097bac39e5947 translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
 
 In an NDK project, you can use the CMake syntax to import and use prebuilt libraries. When prebuilt libraries are referenced, both those in the module's **libs** directory and those declared in the **CMakeLists.txt** build script are packaged.
 

@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f66217a374191afa08e6502e3cd59173c85fd1ac translatedAt=2026-08-26T04:56:30.862Z pushedAt=2026-08-28T08:52:27.569Z -->
+<!-- md-trans-meta sourceCommit=7a6d398221af0c0954de71a28d5d895ba00d5b2f translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 A JS widget is a widget whose pages are developed using the web-like paradigm (HML+CSS+JSON). It now supports both the FA model and the stage model [app models](../application-models/stage-model-development-overview.md). For development guides, see [Developing a JS Widget (Stage Model)](js-ui-widget-development.md) and [Developing a JS Widget (FA Model)](widget-development-fa.md). When developing a new widget, you are advised to use ArkTS declarative development to build the UI. For differences between the declarative and web-like paradigms, see [ArkUI Overview](../ui/arkui-overview.md).
 
@@ -31,7 +31,7 @@ The Widget Manager consists of the following modules:
 
 - Lifecycle manager: suspends update when a widget is switched to the background or is blocked, and updates and/or clears widget data during upgrade and deletion.
 
-- Object manager: manages RPC objects of the widget host. It is used to verify requests from the widget host and process callbacks after the widget update.
+- Object manager: manages RPC proxy objects of the widget host to validate host requests and notify the host through callbacks after widget data is updated.
 
 - Communication adapter: communicates with the widget host and provider through RPCs.
 

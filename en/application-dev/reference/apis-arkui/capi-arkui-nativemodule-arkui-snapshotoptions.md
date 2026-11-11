@@ -1,12 +1,11 @@
 # ArkUI_SnapshotOptions
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-21T01:42:37.976Z pushedAt=2026-08-21T02:14:32.864Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:48:22.162Z pushedAt=2026-11-10T03:36:39.021Z nl=1 -->
 
 ```c
 typedef struct ArkUI_SnapshotOptions ArkUI_SnapshotOptions
@@ -23,3 +22,4 @@ To use this struct, first call [OH_ArkUI_CreateSnapshotOptions](capi-common-attr
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [common_attributes.h](capi-common-attributes-h.md)
+

@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes querying supported codecs and their capabilities through AVCapability, including creation by name, hardware/software-specific configuration, multiple codec instances, profile and level queries, and DRM secure decoder selection."
+keywords: [encoding capability query, decoding capability query, codec parameter query, codec property query, DRM secure decoder query, OH_AVCapability]
+doctype: guide
+status: active
+---
+
 # Obtaining Supported Codecs
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a2b090193a559ff260c3b6cee5e38b0ac409f889 translatedAt=2026-10-22T03:57:45.494Z pushedAt=2026-10-22T12:51:00.554Z nl=1 -->
+<!-- md-trans-meta sourceCommit=30796e72f994ce36bee3cc88511bea76ba0af426 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Due to differences in sources, codec protocols, and device capabilities, the available codecs and their capabilities vary across different devices.
 

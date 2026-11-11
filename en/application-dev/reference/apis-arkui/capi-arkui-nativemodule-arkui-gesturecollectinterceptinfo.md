@@ -1,12 +1,11 @@
 # ArkUI_GestureCollectInterceptInfo
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T04:18:00.407Z pushedAt=2026-08-19T07:41:00.830Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:42:11.529Z pushedAt=2026-11-10T02:18:43.902Z nl=1 -->
 
 ```c
 typedef struct ArkUI_GestureCollectInterceptInfo ArkUI_GestureCollectInterceptInfo
@@ -21,3 +20,4 @@ Defines gesture collection interception information. During gesture collection i
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [native_type.h](capi-native-type-h.md)
+

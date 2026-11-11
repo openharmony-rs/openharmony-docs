@@ -22,7 +22,7 @@
       - [Using Custom Fonts in ArkTS Widgets](arkts-ui-widget-load-custom-font.md)
     - ArkTS Widget Page Refresh<!--arkts-ui-widget-interaction-->
       - [Overview of ArkTS Widget Update](arkts-ui-widget-interaction-overview.md)
-      - [ArkTS Widget Active Refresh](arkts-ui-widget-active-refresh.md)
+      - [Active Update of ArkTS Widgets](arkts-ui-widget-active-refresh.md)
       - [Passive Update of ArkTS Widgets](arkts-ui-widget-passive-refresh.md)
       <!--Del-->
       - [Updating Widget Content Through a Proxy (for System Applications Only)](arkts-ui-widget-update-by-proxy-sys.md)

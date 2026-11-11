@@ -6,6 +6,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6a96f2b8f99f158608ec5045488b853b4cc6044f translatedAt=2026-11-03T07:14:35.821Z pushedAt=2026-11-04T03:11:19.984Z nl=1 -->
 
 ## Overview
 
@@ -54,7 +55,7 @@ Creates an **OH_MediaAssetManager** instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* | Pointer to the **OH_MediaAssetManager** instance created.|
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* | Returns a pointer to an OH_MediaAssetManager instance, which is used to request and manage media library resources. |
 
 ### OH_MediaAssetManager_RequestImageForPath()
 
@@ -77,7 +78,7 @@ Requests an image in the specified directory.
 | -- | -- |
 | [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an **OH_MediaAssetManager** instance.|
 | const char* uri | Pointer to the URI of the requested image.|
-| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | Options related to the media asset quality and delivery mode.|
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | Request policy mode configuration item. Used to specify the specific policy for resource requests, such as the cache policy and network loading policy. |
 | const char* destPath | Pointer to the destination directory of the requested image.|
 | [OH_MediaLibrary_OnDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_ondataprepared) callback | Callback to be invoked when the requested image is ready.|
 
@@ -85,7 +86,7 @@ Requests an image in the specified directory.
 
 | Type| Description|
 | -- | -- |
-| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | Request ID.|
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | Returns the request ID, which identifies the image resource request and can be used to cancel the request later. |
 
 ### OH_MediaAssetManager_RequestVideoForPath()
 
@@ -108,7 +109,7 @@ Requests a video in the specified directory.
 | -- | -- |
 | [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an **OH_MediaAssetManager** instance.|
 | const char* uri | Pointer to the URI of the requested video.|
-| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | Options related to the media asset quality and delivery mode.|
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | Configuration item of the request policy mode. Used to specify the specific policies for resource requests, such as the cache policy and network loading policy. |
 | const char* destPath | Pointer to the destination directory of the requested video.|
 | [OH_MediaLibrary_OnDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_ondataprepared) callback | Callback to be invoked when the requested video is ready.|
 
@@ -116,7 +117,7 @@ Requests a video in the specified directory.
 
 | Type| Description|
 | -- | -- |
-| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | Request ID.|
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | Returns the request ID, which is used to identify the video resource request and can be used to cancel the request later. |
 
 ### OH_MediaAssetManager_CancelRequest()
 
@@ -138,7 +139,7 @@ Cancels a request based on the request ID.
 | Parameter| Description|
 | -- | -- |
 | [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an **OH_MediaAssetManager** instance.|
-| const [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | ID of the request to cancel.|
+| const [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId       | ID of the request to be canceled. |
 
 **Return value**
 
@@ -165,11 +166,11 @@ Requests a moving photo based on different policies.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) instance.|
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to the [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) instance. |
 | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | Pointer to the [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance to be requested.|
 | [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | Options related to the media asset quality and delivery mode. The options are specified by [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md).|
-| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)* requestId | Pointer to the request ID, which is specified by [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md).|
-| [OH_MediaLibrary_OnMovingPhotoDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onmovingphotodataprepared) callback | Callback to be invoked when the requested moving photo is ready. The callback is specified by [OH_MediaLibrary_OnMovingPhotoDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onmovingphotodataprepared).|
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)* requestId | Output parameter, which is the [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) of this request. This ID can be used to cancel the request or track the request status. |
+| [OH_MediaLibrary_OnMovingPhotoDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onmovingphotodataprepared) callback | Callback invoked when the requested moving photo is ready. |
 
 **Return value**
 
@@ -196,11 +197,11 @@ Requests an image based on different policies.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) instance.|
+| [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to the [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) instance. |
 | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | Pointer to the [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) instance to be requested.|
 | [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | Options related to the media asset quality and delivery mode. The options are specified by [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md).|
-| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)* requestId | Pointer to the request ID, which is specified by [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md).|
-| [OH_MediaLibrary_OnImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onimagedataprepared) callback | Callback to be invoked when the requested image is ready. The callback is specified by [OH_MediaLibrary_OnImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onimagedataprepared).|
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)* requestId | Output parameter, pointer to the requested [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md). This ID can be used to cancel the request or track the request status. |
+| [OH_MediaLibrary_OnImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onimagedataprepared) callback | Callback invoked when the requested image source is ready. |
 
 **Return value**
 
@@ -253,12 +254,13 @@ Requests an image based on different policies.
 | -- | -- |
 | [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)* manager | Pointer to an **OH_MediaAssetManager** instance.|
 | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | Pointer to the **OH_MediaAsset** instance to be requested.|
-| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | **MediaLibrary_RequestOptions** used for the image request policy mode.|
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) requestOptions | Configuration item for the image request policy mode. |
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)* requestId | Pointer to the **MediaLibrary_RequestId** instance of the request. This parameter is an output parameter.|
-| [OH_MediaLibrary_OnQuickImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onquickimagedataprepared) callback | The **OH_MediaLibrary_OnQuickImageDataPrepared** method called when the requested source data is ready.|
+| [OH_MediaLibrary_OnQuickImageDataPrepared](capi-media-asset-base-capi-h.md#oh_medialibrary_onquickimagedataprepared) callback | Callback invoked when the requested image source data is ready. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
 | [MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode) | **MEDIA_LIBRARY_OK**: operation success.<br>         **MEDIA_LIBRARY_OPERATION_NOT_SUPPORTED**: unsupported operation.<br>         **MEDIA_LIBRARY_PERMISSION_DENIED**: no access permission.<br>         **MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR**: internal system error.|
+

@@ -1,14 +1,23 @@
+---
+kits: ["ArkTS Kit"]
+description: "Introduces general JSVM optimization practices, analyzes engine-side and native-side startup overhead, explains eagerCompile and code cache tradeoffs for cold and warm starts, and describes efficient API usage such as replacing TypeOf with IsXXX and creating references directly."
+keywords: ["JSVM","performance optimization","startup speed","cold start","warm start","code cache","eagerCompile","OH_JSVM_CompileScript","OH_JSVM_IsFunction"]
+doctype: guide
+status: active
+---
+
 # JSVM Tuning Practices
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.300Z nl=1 -->
 
 ## JSVM Call Invocation
 
-The process of executing JavaScript (JS) code on a JavaScript virtual machine (JSVM) can be divided into the following layers:
+The process in which a mini-program uses JSVM to execute JS code can be divided into three layers: Native, JSVM-API, and JSVM.
 
 - Native: logic layer for the application to run JS code. In this layer, the APIs provided by the JSVM are used to compile and run JS code and create a code cache.
 - JSVM-API: intermediate layer between C/C++ and V8 JS engine. This layer ensures compatibility with JS engines of different versions and provides standardized practices of JS engines.
@@ -55,7 +64,7 @@ To create a code cache with adequate code, set **eagerCompile** to **true** for 
 
 This approach, however, causes extra compilation time, which may increase the cold startup time used. Read on to learn the ways to optimize the cold startup in the native layer.
 
-**Cold Startup: Disabling eagerCompile**
+**Cold Startup: Using Lazy Compile Instead of Eager Compile**
 
 Enabling **eagerCompile** increases the compilation time for cold startup. To reduce the compilation time, you can use V8 lazy compile, which delays the compilation of JS code until it is executed.
 

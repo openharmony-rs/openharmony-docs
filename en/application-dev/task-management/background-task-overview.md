@@ -6,10 +6,11 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=5190a496e705e7a7abad7605c46f720b1c829b58 translatedAt=2026-11-02T07:47:30.899Z pushedAt=2026-11-02T11:29:07.414Z nl=1 -->
 
 ## Introduction
 
-When you return to the home screen, lock the screen, or switch to another application, the current application is switched to the background. If the application continues to run in the background, the power consumption of the device may be high and the UI may freeze. To reduce the power consumption and deliver a positive user experience, the system manages the application running in the background, including suspending and terminating [processes](../application-models/process-model-overview.md). Typically, the application process is suspended after the application runs in the background for a while. If resources are inadequate, some processes will be terminated (that is, recycling all resources of the processes). After being suspended, the application process cannot use software resources (such as common events and timers) or hardware resources (such as CPU, network, GPS, and Bluetooth).<!--RP2--><!--RP2End-->
+Operations such as returning to the home screen, locking the screen, and switching applications cause an application to move to the background. If an application continues running in the background after moving to the background, it may cause the device to consume power quickly and the user interface to lag. To reduce power consumption and ensure smooth user experience, the system manages applications that have moved to the background, including [process](../application-models/process-model-overview.md) suspension and process termination. Typical scenarios include: an application process is suspended after the application has been in the background for a period of time, and the system terminates some application processes when resources are insufficient (that is, reclaims all resources of the process). After an application process is suspended, it cannot use software resources (such as common events and timers) or hardware resources (such as the CPU, network, GPS, and Bluetooth).<!--RP2--><!--RP2End-->
 
 To ensure that background functionalities such as music playback and calendar reminders can be used properly, Background Tasks Kit provides some background tasks within the specifications, extending the running time of applications in the background. <!--Del-->For system applications, Background Tasks Kit also supports [device usage statistics](../device-usage-statistics/device-usage-statistics-overview-sys.md), including statistics on the application usage duration.<!--DelEnd-->
 
@@ -23,18 +24,18 @@ Background Tasks Kit provides the following types of constrained background task
 
 You can select a proper background task type to ensure that your application can continue running after switching to the background.
 
-- **Transient tasks**: suitable for tasks that require high real‑time performance and are short in duration, for example, quickly saving a note that the user is editing.
+- **Transient tasks:** suitable for tasks that require high real-time performance and are short in duration, for example, quickly saving a note that the user is editing.
 
-- **Continuous task**: suitable for user‑perceivable tasks that need to run for an extended period in the background, such as background music playback, navigation, and device connection. These tasks prevent the application process from being suspended.
+- **Continuous task:** suitable for user-perceivable tasks that need to run for an extended period in the background, such as background music playback, navigation, and device connection. These tasks prevent the application process from being suspended.
 
-- **Deferred tasks**: suitable for tasks that do not have high requirements on real-time performance and can be executed at a later time. The system enqueues these tasks and schedules them in a unified manner based on the memory and power consumption.
+- **Deferred tasks:** suitable for tasks that do not have high requirements on real-time performance and can be executed at a later time. The system enqueues these tasks and schedules them in a unified manner based on the memory and power consumption.
 
-- **Agent-powered reminders**: After an application is switched to the background or an application process is terminated, the system sends a reminder on behalf of the application. You can create scheduled reminders for countdown timers, calendar events, and alarm clocks.
+- **Agent reminders:** An agent-based reminder means that after an application is switched to the background or its process is terminated, the system sends a reminder on behalf of the application. It is suitable for scheduled reminder services. The currently supported reminder types include countdown timers, calendar events, and alarm clocks.
 
 <!--Del-->
 For system applications that provide basic capabilities, the system provides an API for [energy resource request](efficiency-resource-request-sys.md). After an application calls the API, the system exempts the application from management.<!--DelEnd-->
 
-  **Figure 1** Selecting a type of background task 
+  **Figure 1** Selecting a type of background task
 ![bgtask_choice](figures/bgtask_choice.png)
 
 

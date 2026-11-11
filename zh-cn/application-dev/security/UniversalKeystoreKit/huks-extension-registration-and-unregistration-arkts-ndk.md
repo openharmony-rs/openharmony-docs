@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API版本22开始，huksExternalCrypto提供Provider注册和注销功能接口，包括ArkTS接口和C++接口。
+从API版本22开始，huksExternalCrypto提供Provider注册和注销功能接口，包括ArkTS接口和C++接口。开发者需先实现CryptoExtensionAbility，再通过注册接口接入HUKS后方可使用能力，使用完毕后注销即可断开连接。
 
 ## 注册CryptoExtensionAbility
 
@@ -61,40 +61,44 @@
 
 **ArkTS接口**
 
-```ts
+<!-- @[register_provider_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/RegisterProvider.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { util } from '@kit.ArkTS';
 
-// 字符串 → UTF-8字节流
-function stringToUint8Array(str: string): Uint8Array {
-    return new util.TextEncoder().encodeInto(str);
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
 }
 
-// 注册Provider（仅注册CryptoExtensionAbility，不注册自定义PIN弹窗）
 async function registerProvider(): Promise<void> {
-  // providerName建议包含厂商+产品信息以保证全局唯一
-  const providerName = 'VendorA_ProductX';
-  // abilityName须与module.json5中extensionAbilities.name保持一致
-  const abilityName = 'CryptoExtensionAbility1';
-
-  const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
-    {
-       tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-       value: stringToUint8Array(abilityName),
-    },
-  ];
-
   try {
-    await huksExternalCrypto.registerProvider(providerName, extProperties);
-    console.info('promise: registerProvider success.');
+    /* 1.构造注册参数 */
+    const providerName = 'testProvider';
+    const extProperties: huksExternalCrypto.HuksExternalCryptoParam[] = [
+      {
+        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
+        value: stringToUint8Array('CryptoExtension')
+      }
+    ];
+
+    /* 2.调用registerProvider */
+    await huksExternalCrypto.registerProvider(providerName, extProperties)
+      .then(() => {
+        console.info('promise: registerProvider success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: registerProvider failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: registerProvider failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: registerProvider input arg invalid.');
   }
 }
 
-async function testRegisterProvider(): Promise<void> {
+async function testRegisterProvider() {
   await registerProvider();
 }
 ```
@@ -110,7 +114,6 @@ async function testRegisterProvider(): Promise<void> {
 #include "huks/native_huks_param.h"
 #include "huks/native_huks_external_crypto_api.h"
 #include "huks/native_huks_external_crypto_type.h"
-#include <cstring>
 #include <string>
 
 // 初始化参数集
@@ -143,25 +146,40 @@ struct OH_Huks_Blob StringToBlob(const std::string &str)
 
 注册CryptoExtensionAbility：
 
+<!-- @[register_provider_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
 ```c++
-static napi_value RegisterProvider(napi_env env, napi_callback_info info)
+static struct OH_Huks_Blob g_abilityName = {
+    (uint32_t)strlen("testAbility"),
+    (uint8_t *)"testAbility"
+};
+
+static struct OH_Huks_Blob g_providerName = {
+    (uint32_t)strlen("testProviderName"),
+    (uint8_t *)"testProviderName"
+};
+
+static struct OH_Huks_ExternalCryptoParam g_abilityParams[] = {
+    {
+        .tag = OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
+        .blob = g_abilityName
+    },
+};
+
+static napi_value registerProvider(napi_env env, napi_callback_info info)
 {
-    // providerName建议包含厂商+产品信息以保证全局唯一
-    auto providerName = StringToBlob("VendorA_ProductX");
-    // abilityName须与module.json5中extensionAbilities.name保持一致
-    auto abilityName = StringToBlob("CryptoExtensionAbility1");
-
-    struct OH_Huks_ExternalCryptoParam params[] = {
-        { .tag = OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME, .blob = abilityName }
-    };
-
     struct OH_Huks_ExternalCryptoParamSet *providerParamSet = nullptr;
     OH_Huks_Result ohResult;
     do {
-        ohResult = InitParamSet(&providerParamSet, params, sizeof(params) / sizeof(OH_Huks_ExternalCryptoParam));
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) break;
-        ohResult = OH_Huks_RegisterProvider(&providerName, providerParamSet);
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) break;
+        ohResult = InitParamSet(&providerParamSet, g_abilityParams,
+            sizeof(g_abilityParams) / sizeof(OH_Huks_ExternalCryptoParam));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        ohResult = OH_Huks_RegisterProvider(&g_providerName, providerParamSet);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
     } while (0);
     OH_Huks_FreeExternalCryptoParamSet(&providerParamSet);
 
@@ -241,56 +259,58 @@ static napi_value RegisterProvider(napi_env env, napi_callback_info info)
 
 ### 开发示例
 
-```ts
+<!-- @[register_provider_with_auth_ui_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/RegisterProviderWithAuthUI.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
-import { BusinessError, deviceInfo } from '@kit.BasicServicesKit';
-import { util } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-// 字符串 → UTF-8字节流
-function stringToUint8Array(str: string): Uint8Array {
-  return new util.TextEncoder().encodeInto(str);
-}
-
-// 定制化认证UI信息
 interface AbilityInfo {
   abilityName: string;
   index: string;
-  abilityType?: number; // 从API版本26.0.1开始：0=UIAbility, 1=UkeyAuthExtensionAbility，不传则默认0
 }
 
-// 注册Provider并注册自定义PIN弹窗UIAbility
-async function registerProvider(): Promise<void> {
-  const providerName = "testProvider";
-  const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
-    {
-      tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-      value: stringToUint8Array("CryptoExtension")
-    }
-  ];
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
 
-  // API版本26.0.0开始，支持自定义PIN弹窗注册
-  if (deviceInfo.sdkApiVersion >= 26) {
+async function registerProvider(): Promise<void> {
+  try {
+    /* 1.构造注册参数 ability name */
+    const providerName = 'testProvider';
+    /* 2.构造 ability info */
     const abilityInfoList: AbilityInfo[] = [
       { abilityName: 'UiAbility1', index: '' },
       { abilityName: 'UiAbility2', index: 'string2' },
     ];
+    const abilityInfo = JSON.stringify(abilityInfoList);
+    const extProperties: huksExternalCrypto.HuksExternalCryptoParam[] = [
+      {
+        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
+        value: stringToUint8Array('CryptoExtension')
+      }, {
+        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_INFO,
+        value: stringToUint8Array(abilityInfo)
+      }
+    ];
 
-    extProperties.push({
-      tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_INFO,
-      value: stringToUint8Array(JSON.stringify(abilityInfoList)),
-    });
-  }
-
-  try {
-    await huksExternalCrypto.registerProvider(providerName, extProperties);
-    console.info('promise: registerProvider success.');
+    /* 3.调用registerProvider */
+    await huksExternalCrypto.registerProvider(providerName, extProperties)
+      .then(() => {
+        console.info('promise: registerProvider success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: registerProvider failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: registerProvider failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: registerProvider input arg invalid.');
   }
 }
 
-async function testRegisterProvider(): Promise<void> {
+async function testRegisterProvider() {
   await registerProvider();
 }
 ```
@@ -299,7 +319,7 @@ async function testRegisterProvider(): Promise<void> {
 
 从API版本26.0.1开始，开发者可注册UkeyAuthExtensionAbility，使用自行实现的UI布局。注册时abilityType字段需设置为1。
 
-```ts
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError, deviceInfo } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
@@ -382,67 +402,76 @@ async function testRegisterProviderWithUkeyAuthExtension(): Promise<void> {
 **ArkTS接口**
 
 **注销单个ability**
-```ts
+
+<!-- @[unregister_single_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/UnregisterSingleAbility.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { util } from '@kit.ArkTS';
 
-// 字符串 → UTF-8字节流
-function stringToUint8Array(str: string): Uint8Array {
-  return new util.TextEncoder().encodeInto(str);
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
 }
 
-// 注销单个Ability：精确注销指定providerName+abilityName的CryptoExtensionAbility
 async function unregisterProvider(): Promise<void> {
-  // providerName须与注册时使用的名称一致
-  const providerName = 'testProvider';
-  // abilityName须与module.json5中extensionAbilities.name保持一致
-  const abilityName = 'CryptoExtensionAbility1';
-
-  const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
-    {
-       tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-       value: stringToUint8Array(abilityName),
-    },
-  ];
-
   try {
-    await huksExternalCrypto.unregisterProvider(providerName, extProperties);
-    console.info('promise: unregisterProvider success.');
+    /* 1.构造注销参数 */
+    const providerName = 'testProvider';
+    const extProperties: huksExternalCrypto.HuksExternalCryptoParam[] = [
+      {
+        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
+        value: stringToUint8Array('CryptoExtension')
+      }
+    ];
+
+    /* 2.调用unregisterProvider */
+    await huksExternalCrypto.unregisterProvider(providerName, extProperties)
+      .then(() => {
+        console.info('promise: unregisterProvider success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: unregisterProvider failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: unregisterProvider failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: unregisterProvider input arg invalid.');
   }
 }
 
-async function testUnregisterProvider(): Promise<void> {
+async function testRegisterProvider() {
   await unregisterProvider();
 }
 ```
 
 **批量注销**
-```ts
+
+<!-- @[unregister_all_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/UnregisterAllAbilities.ets) -->
+
+``` TypeScript
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 批量注销：注销providerName下的所有CryptoExtensionAbility
 async function unregisterProvider(): Promise<void> {
-  // providerName 须与注册时使用的名称一致
-  const providerName = 'testProvider';
-
-  // 批量注销：extProperties留空或不指定HUKS_EXT_CRYPTO_TAG_ABILITY_NAME
-  const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
-
   try {
-    await huksExternalCrypto.unregisterProvider(providerName, extProperties);
-    console.info('promise: unregisterProvider success.');
+    /* 1.构造注销参数 */
+    const providerName = 'testProvider';
+    const extProperties: huksExternalCrypto.HuksExternalCryptoParam[] = [];
+
+    /* 2.调用unregisterProvider */
+    await huksExternalCrypto.unregisterProvider(providerName, extProperties)
+      .then(() => {
+        console.info('promise: unregisterProvider success.');
+      }).catch((error: BusinessError) => {
+        console.error(`promise: unregisterProvider failed, errCode : ${error.code}, errMsg : ${error.message}`);
+      });
   } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: unregisterProvider failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    console.error('promise: unregisterProvider input arg invalid.');
   }
 }
 
-async function testUnregisterProvider(): Promise<void> {
+async function testRegisterProvider() {
   await unregisterProvider();
 }
 ```
@@ -458,7 +487,6 @@ async function testUnregisterProvider(): Promise<void> {
 #include "huks/native_huks_param.h"
 #include "huks/native_huks_external_crypto_api.h"
 #include "huks/native_huks_external_crypto_type.h"
-#include <cstring>
 #include <string>
 
 // 初始化参数集
@@ -490,24 +518,23 @@ struct OH_Huks_Blob StringToBlob(const std::string &str)
 
 **注销单个ability：**
 
+<!-- @[unregister_single_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
 ```c++
-static napi_value UnregisterSingleAbility(napi_env env, napi_callback_info info)
+static napi_value unregisterSingleProvider(napi_env env, napi_callback_info info)
 {
-    auto providerName = StringToBlob("VendorA_ProductX");
-    auto abilityName = StringToBlob("CryptoExtensionAbility1");
-
-    struct OH_Huks_ExternalCryptoParam params[] = {
-        { .tag = OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME, .blob = abilityName }
-    };
-
     struct OH_Huks_ExternalCryptoParamSet *providerParamSet = nullptr;
     OH_Huks_Result ohResult;
     do {
-        ohResult = InitParamSet(&providerParamSet, params,
-            sizeof(params) / sizeof(OH_Huks_ExternalCryptoParam));
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) break;
-        ohResult = OH_Huks_UnregisterProvider(&providerName, providerParamSet);
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) break;
+        ohResult = InitParamSet(&providerParamSet, g_abilityParams,
+            sizeof(g_abilityParams) / sizeof(OH_Huks_ExternalCryptoParam));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        ohResult = OH_Huks_UnregisterProvider(&g_providerName, providerParamSet);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
     } while (0);
     OH_Huks_FreeExternalCryptoParamSet(&providerParamSet);
 
@@ -519,21 +546,25 @@ static napi_value UnregisterSingleAbility(napi_env env, napi_callback_info info)
 
 **批量注销：**
 
+<!-- @[unregister_all_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
 ```c++
-static napi_value UnregisterAllAbilities(napi_env env, napi_callback_info info)
+static struct OH_Huks_ExternalCryptoParam g_emptyAbilityParams[] = {};
+
+static napi_value unregisterAllProvider(napi_env env, napi_callback_info info)
 {
-    auto providerName = StringToBlob("VendorA_ProductX");
-
-    // 批量注销：extProperties留空
-    struct OH_Huks_ExternalCryptoParam params[] = {};
-
     struct OH_Huks_ExternalCryptoParamSet *providerParamSet = nullptr;
     OH_Huks_Result ohResult;
     do {
-        ohResult = InitParamSet(&providerParamSet, params, 0);
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) break;
-        ohResult = OH_Huks_UnregisterProvider(&providerName, providerParamSet);
-        if (ohResult.errorCode != OH_HUKS_SUCCESS) break;
+        ohResult = InitParamSet(&providerParamSet, g_emptyAbilityParams,
+            sizeof(g_emptyAbilityParams) / sizeof(OH_Huks_ExternalCryptoParam));
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
+        ohResult = OH_Huks_UnregisterProvider(&g_providerName, providerParamSet);
+        if (ohResult.errorCode != OH_HUKS_SUCCESS) {
+            break;
+        }
     } while (0);
     OH_Huks_FreeExternalCryptoParamSet(&providerParamSet);
 

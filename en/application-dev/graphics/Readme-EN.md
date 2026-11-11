@@ -4,9 +4,9 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @oh_wangxk; @hangmengxin-->
 <!--Designer: @KejiePeng; @wanyanglan-->
-<!--Tester: @LiTongguan2026; @nobuggers-->
+<!--Tester: @LiTongguan2026; @nobuggers; @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=5284e30f06236fe06b1ce39618ec19c1d67b8d4a translatedAt=2026-10-19T11:08:20.502Z pushedAt=2026-10-19T11:13:07.750Z -->
+<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
 
 - [About This Kit](arkgraphics2D-introduction.md)
 - Using Variable Frame Rates<!--displaysync-->

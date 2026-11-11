@@ -5,59 +5,50 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=bbcc2e37e8129d97ee49fdfc327c495aa2406a09 translatedAt=2026-10-31T07:11:29.180Z pushedAt=2026-11-02T06:08:44.482Z nl=1 -->
 
-The Data Loss Prevention (DLP) service is a system-level solution provided to prevent data disclosure. It provides capabilities for cross-device file access management, encrypted storage, and access authorization. The data owner can grant the permission (read only, edit, or full control, etc.) on a confidential file based on account authentication. The confidential file is encrypted and stored in ciphertext. Only the user who has passed the device-cloud authentication using a DLP-capable device can access or modify the file.
+Data Protection Kit provides a system-level data protection foundation for enterprise data security scenarios. It enables you to build end-to-end solutions around the full file lifecycle, covering sensitive content identification, file data encryption, permission-based access control, dynamic sandbox reclamation, and user operation recording. By deeply integrating with the system's underlying permission control and file encryption mechanisms, you can achieve transparent protection and compliance governance of enterprise data on devices without building a complex security system from scratch. This effectively prevents data leakage risks and meets the complex and ever-changing security control requirements of enterprises.
 
-DLP is a system solution. You can implement complete DLP capabilities with little or no adaptation.
+## Capability Scope
 
-The DLP solution consists of the following components:
+**For Enterprise Security Applications: Quickly Build Data Control and Leak Prevention Solutions**
 
-- DLP permission management service
+This Kit is suitable for MDM applications, enterprise secure cloud drives, and internal security control applications. You can use it to implement full-process management from sensitive data discovery and file encryption control to file operation recording.
 
-  Implements functionalities, such as creating a sandbox application and exchanging credentials.
+**Highlights:**
 
-- DLP permission manager application
+- Sensitive content identification: Identifies sensitive content in specified files based on the scanning policies you configure and returns the matching results. You can use this capability to determine whether a file contains sensitive information, providing a trigger basis for subsequent encryption or interception.
 
-  Implements functionalities of setting and verifying permissions and rejecting access requests locally. It implements the controlled share that can be perceived by users.
+- Encrypted file generation and policy control: Generates an encrypted file (DLP file) from the original file based on the authorized user list and permission control policies you configure. When a user opens the file, the system determines whether to allow the user to open it and what permissions the user has, such as screen capture, copy, and print. You do not need to define or maintain encrypted file formats themselves. Instead, they only need to use the system-level data protection mechanism (DLP system) to perform system-level encryption on sensitive files. This mechanism also supports collaboration with enterprise-side servers to dynamically grant file permissions.
 
-- Cloud module (implemented by developers)
+- Dynamic file sandbox reclamation: Enterprise security applications can reclaim specified sandbox applications based on the file (sandbox) level set when the file was generated, thereby closing all files of the same level. When detecting that a device is in a risky state, you can proactively close highly sensitive files to prevent employees from leaking confidential company data in risky environments.
 
-  Sends DLP certificates to the cloud for account-based authentication, certificate generation, and decryption of DLP files.
+- User operation and file flow record reporting: When a user accesses a file or performs copy or modification operations on file content, the system proactively generates event records and publishes information through a special event ID. You can proactively subscribe to this event ID to obtain operation information related to encrypted files. In addition, when a user creates, copies, saves, or downloads an encrypted file, the system publishes file creation information and file flow information to help you reconstruct the file flow path.
 
-## Working Principles
+**For General Office Applications: Adapt to Controlled Access to Encrypted Files**
 
-![](figures/dlp-intro.png)
+It applies to ordinary applications such as document editors, file managers, and system preview. You can use this Kit together with the system security mechanisms to adapt the controlled access experience for encrypted files.
 
-**Generating a DLP File**
+**Highlights:**
 
-1. The file owner adds the accounts that can access the confidential file and sets the permissions for the file through the DLP permission manager application.
+- **Encrypted file awareness and controlled opening:** An application can determine whether a specified file is a system-level encrypted file, listen for encrypted file open events, and obtain the current application's access permission to the file (for example, read-only or editable), so that the application can parse and display the file content within the authorized scope and complete the necessary UI adaptation.
 
-2. The DLP permission manager application sends the user permission configuration to the DLP permission management service, which encapsulates the configuration into policy information.
+- **Sandbox status query and collaboration:** An application can query the running status of the current application sandbox and cooperate with the system to retain and configure the sandbox environment.
 
-3. The DLP permission management service sends the policy information to the cloud module. The cloud module sends the policy information for device-cloud synergy authentication, checks the policy, and generates and issues the credential.
+- **Basic information query and format adaptation:** An application can obtain the original file name associated with an encrypted file to learn the file's actual original format (for example, whether it was originally Word or PDF), so as to open and display the file correctly. It also supports querying the protected file extension types supported by the system and the status of related system capabilities, which can be used for making preliminary judgments before the application processes a file.
 
-4. The cloud module sends the credential to the DLP permission management service through the DLP permission manager application.
+## Basic Concepts
 
-5. The DLP permission manager application encrypts the file and packages the credential and ciphertext into a DLP file.
+**DLP file:** A file generated in a system-defined protected file format. Its file name suffix is "original file name (including the original file extension).dlp", for example, `test.docx.dlp`. A DLP file consists of file general information, an authorization policy, and the ciphertext of the original file.
 
-**Sending a DLP File**
+**DLP sandbox:** A controlled mechanism provided by the system for DLP file access scenarios. When a DLP file is opened, the system installs and starts the corresponding sandbox application for the target application, and imposes capability restrictions on the running identity corresponding to that application instance, so as to reduce the risk of data leakage during file use.
 
-6. The DLP files can be sent to target users in any way. The ciphertext ensures file confidentiality.
+**Sensitive file identification:** The capability to detect sensitive content in specified files based on the scanning policy configured by the developer and return the matching results.
 
-**Opening a DLP File**
+## Architecture
 
-7. The authorized user opens the DLP file on the remote device (for example, using the file manager).
+The DLP architecture is divided into two categories: one for enterprise security applications and the other for general office applications, as shown in the following figure.
 
-8. The DLP permission manager application parses the DLP file, obtains the encrypted credential, and sends it to the DLP permission management service.
-
-9. The DLP permission management service sends the encrypted credential to the cloud module. The cloud module sends the credential to the cloud for identity authentication, credential verification, and policy parsing, and obtains the authorization policy and encryption key.
-
-10. The cloud module sends the permission policy and encryption key to the DLP permission manager application through the DLP permission management service.
-
-11. The DLP permission manager application invokes the DLP permission management service to install a DLP sandbox application for the application and perform access control based on the authorization.
-
-12. The DLP permission manager application uses a link mechanism to map the plaintext and ciphertext. Based on the open-source Filesystem in Userspace (FUSE), the link mechanism creates a virtual link file (which is mapped to the DLP file) and shares the link file to the application. The application can access and edit the plaintext file, and the operations are synchronized to the DLP file in real time.
-
-13. When the DLP permission manager application is ready, it starts the sandbox application and transfers the file descriptor to the link file. The sandbox application starts, and the application process opens the link file.
+![](figures/architecture-overview.png)
 
 <!--RP1--><!--RP1End-->

@@ -7,6 +7,6 @@
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
 - ArkTS API<!--contacts-arkts-->
-  - [@ohos.contact (Contacts)](js-apis-contact.md)
+  - [@ohos.contact (Contact)](js-apis-contact.md)
 - Error Codes<!--contacts-arkts-errcode-->
   - [Contact Error Codes](errorcode-contacts.md)

@@ -1,10 +1,11 @@
 # @ohos.multimedia.systemSoundManager (System Sound Management) (System API)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=daefa119b292efd58a4a0d6a5121804b0c99c0a5 translatedAt=2026-11-03T04:44:59.716Z pushedAt=2026-11-04T03:11:47.073Z nl=1 -->
 
 The systemSoundManager module provides basic capabilities for managing system sounds, including setting and obtaining ringtones and obtaining a player to play the ringtones.
 
@@ -31,7 +32,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 | TONE_CATEGORY_TEXT_MESSAGE<sup>12+</sup> | number | 2   | SMS tone.|
 | TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | number | 4   | Notification tone.|
 | TONE_CATEGORY_ALARM<sup>12+</sup>        | number | 8   | Alarm tone.|
-| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | number | 16  | Contacts tone.|
+| TONE_CATEGORY_CONTACTS<sup>20+</sup>     | number | 16  | Contact ringtone category.<br>**Model restriction:** This API can be used only in the stage model. |
 | TONE_CATEGORY_NOTIFICATION_APP<sup>22+</sup>     | number | 32  | Application-level notification tone.|
 
 ## RingtoneType
@@ -45,10 +46,11 @@ Enumerates the ringtone types.
 | Name                           | Value | Description                                                                    |
 | ------------------------------- |----|------------------------------------------------------------------------|
 | RINGTONE_TYPE_DEFAULT<sup>(deprecated)</sup>           | 0  | Default ringtone type.<br> This enumerated value is deprecated since API version 11. You are advised to use **RINGTONE_TYPE_SIM_CARD_0** instead.|
-| RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | Ringtone of SIM card 1.                                                             |
+| RINGTONE_TYPE_SIM_CARD_0<sup>11+</sup> | 0  | Ringtone of SIM card 1.                                                              |
 | RINGTONE_TYPE_MULTISIM<sup>(deprecated)</sup>          | 1  | Multi-SIM ringtone type.<br> This enumerated value is deprecated since API version 11. You are advised to use **RINGTONE_TYPE_SIM_CARD_1** instead.|
-| RINGTONE_TYPE_SIM_CARD_1<sup>11+</sup> | 1  | Ringtone of SIM card 2.                                                             |
-
+| RINGTONE_TYPE_SIM_CARD_1<sup>11+</sup> | 1  | Ringtone of SIM card 2.                                                              |
+| RINGTONE_TYPE_ESIM_CARD_0 | 2  | Ringtone of ESIM card 1.<br>**Since Version:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| RINGTONE_TYPE_ESIM_CARD_1 | 3  | Ringtone of ESIM card 2.<br>**Since Version:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 ## SystemToneType<sup>11+</sup>
 
 Enumerates the system tone types.
@@ -59,8 +61,10 @@ Enumerates the system tone types.
 
 | Name                           | Value  | Description        |
 | ------------------------------- |-----|------------|
-| SYSTEM_TONE_TYPE_SIM_CARD_0     | 0   | SMS tone of SIM card 1.|
-| SYSTEM_TONE_TYPE_SIM_CARD_1     | 1   | SMS tone of SIM card 2.|
+| SYSTEM_TONE_TYPE_SIM_CARD_0     | 0   | SMS alert tone for SIM card 1. |
+| SYSTEM_TONE_TYPE_SIM_CARD_1     | 1   | SMS alert tone for SIM card 2. |
+| SYSTEM_TONE_TYPE_ESIM_CARD_0     | 2   | SMS alert tone for eSIM card 1.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| SYSTEM_TONE_TYPE_ESIM_CARD_1     | 3   | SMS alert tone for eSIM card 2.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 | SYSTEM_TONE_TYPE_NOTIFICATION   | 32  | Notification tone.    |
 
 ## MediaType<sup>20+</sup>
@@ -409,7 +413,7 @@ Obtains the media type of this tone.
 
 | Type   | Description    |
 |--------|--------|
-| [MediaType](#mediatype20) | Media type. If the application has not called **setMediaType** to set the media type, the default value **AUDIO** is returned.|
+| [MediaType](#mediatype20) | Media type. If the application has not called setMediaType to set the media type, the default value returned by this function is AUDIO. |
 
 **Error codes**
 
@@ -490,10 +494,14 @@ Enumerates the haptics types for different tones.
 
 | Name                    | Value| Description        |
 | ------------------------|----|--------|
-| CALL_SIM_CARD_0         | 0  | Haptic feedback for ringtone on SIM card 1.|
-| CALL_SIM_CARD_1         | 1  | Haptic feedback for ringtone on SIM card 2.|
-| TEXT_MESSAGE_SIM_CARD_0 | 20 | Haptic feedback for SMS tone on SIM card 1.|
-| TEXT_MESSAGE_SIM_CARD_1 | 21 | Haptic feedback for SMS tone on SIM card 2.|
+| CALL_SIM_CARD_0         | 0  | Vibration of the incoming call ringtone of SIM card 1. |
+| CALL_SIM_CARD_1         | 1  | Vibration of the incoming call ringtone of SIM card 2. |
+| CALL_ESIM_CARD_0         | 2  | Vibration of the incoming call ringtone of eSIM card 1. <br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| CALL_ESIM_CARD_1         | 3  | Vibration of the incoming call ringtone of eSIM card 2. <br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| TEXT_MESSAGE_SIM_CARD_0 | 20 | Vibration of the text message notification tone of SIM card 1. |
+| TEXT_MESSAGE_SIM_CARD_1 | 21 | Vibration of the text message notification tone of SIM card 2. |
+| TEXT_MESSAGE_ESIM_CARD_0 | 22 | Vibration of the text message notification tone of eSIM card 1.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| TEXT_MESSAGE_ESIM_CARD_1 | 23 | Vibration of the text message notification tone of eSIM card 2.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 | NOTIFICATION            | 40 | Haptic feedback for notification tone.|
 
 ## ToneHapticsMode<sup>14+</sup>
@@ -630,7 +638,7 @@ Obtains the URI of the gentle haptics resource.
 
 | Type   | Description |
 |--------|-----|
-| string \| null | URI of the gentle haptics resource (for example, '/data/storage/el2/base/haptics/synchronized/alarms/test.json'). If no gentle haptics resource exists, null is returned. A gentle haptic effect has a weaker motor vibration than the standard one.|
+| string \| null | URI of the gentle vibration (for example, '/data/storage/el2/base/haptics/synchronized/alarms/test.json'). If no gentle vibration exists, the URI is empty. Gentle vibration means that the motor vibration intensity is weaker than the standard vibration.|
 
 **Error codes**
 
@@ -690,7 +698,7 @@ Obtains the file name of the gentle haptics resource.
 
 | Type   | Description |
 |--------|-----|
-| string \| null | File name of the gentle haptics resource, in JSON format. If no gentle haptics resource exists, null is returned.|
+| string \| null | Name of the gentle vibration file. The vibration file is in JSON format. If no gentle vibration exists, the vibration file name is empty. |
 
 **Error codes**
 
@@ -1076,7 +1084,7 @@ Obtains the URI of a ringtone. This API uses a promise to return the result.
 | Name  | Type                            | Mandatory| Description                    |
 | -------- | -------------------------------| ---- | ------------------------ |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)| Yes  | Application context.        |
-| type     | [RingtoneType](#ringtonetype)  | Yes  | Type of the ringtone.  |
+| type     | [RingtoneType](#ringtonetype)  | Yes   | Type of the system ringtone to obtain.   |
 
 **Return value**
 
@@ -1144,13 +1152,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Caller is not a system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
-**Example**
+**Example:**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+// Obtain the context in the component, and ensure that this.getUIContext().getHostContext() returns UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 let systemRingtonePlayer: systemSoundManager.RingtonePlayer | undefined = undefined;
@@ -1161,6 +1169,136 @@ systemSoundManagerInstance.getRingtonePlayer(context, type).then((value: systemS
   systemRingtonePlayer = value;
 }).catch((err: BusinessError) => {
   console.error(`Failed to getRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getMockHapticRingtonePlayer
+
+getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise&lt;RingtonePlayer | null&gt;
+
+Obtains a mock haptic ringtone player to play the vibration file and its corresponding mock haptic sound file based on the specified haptic file URI. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - Before calling this API, ensure that the hapticUri passed in exists in the system; otherwise, exceptions and errors may occur, for example, the matching haptic sound file cannot be played.
+> - After obtaining an instance through this API, call [release](js-apis-inner-multimedia-ringtonePlayer-sys.md#release) of RingtonePlayer to release the player resources when the service is terminated.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.SystemSound.Core
+
+**Parameters**
+
+| Name   | Type                              | Mandatory | Description                         |
+| -------- | --------------------------------| ---- | --------------------------- |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes   | Context of the current application.            |
+| hapticUri     | string  | Yes   | URI of the haptic file, which must be a JSON file that actually exists in the system files. |
+
+**Return value**
+
+| Type                | Description                            |
+| ------------------- | ------------------------------- |
+| Promise&lt;[RingtonePlayer](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneplayer) \| null&gt; | Promise object. Returns the mock haptic ringtone player instance on success, or null if an error occurs. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md), [Ringtone Error Codes](./errorcode-audio-ringtone-sys.md), and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+
+| Error Code ID | Error Message              |
+| -------- | --------------------- |
+| 202 |Caller is not a system application.|
+| 20700002 |Parameter verification failed. The hapticUri does not exist or is incorrectly formatted. Ensure it is a JSON file and that it exists in the system's file system.|
+| 5400103  |I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context in the component, and ensure that this.getUIContext().getHostContext() returns UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let systemRingtonePlayer: systemSoundManager.RingtonePlayer | null = null;
+let hapticUri = 'file://data/test.json'; // Change to the target haptic file URI.
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getMockHapticRingtonePlayer(context, hapticUri).then((value: systemSoundManager.RingtonePlayer | null) => {
+  if (value != null) {
+    console.info('Succeeded in doing getMockHapticRingtonePlayer.');
+    systemRingtonePlayer = value;
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getMockHapticRingtonePlayer
+
+getMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise&lt;RingtonePlayer | null&gt;
+
+Obtains a mock haptic ringtone player, which plays the vibration file and the mock haptic sound file corresponding to the specified ringtone type and ringtone file URI. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - Before calling this API, ensure that the passed **ringtoneUri** exists in the system; otherwise, exceptions and errors may occur, for example, the matching haptic sound file cannot be played.
+> - After obtaining an instance through this API, call [release](js-apis-inner-multimedia-ringtonePlayer-sys.md#release) of **RingtonePlayer** to release the player resources when the service is terminated.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.SystemSound.Core
+
+**Parameters**
+
+| Name   | Type                              | Mandatory | Description                         |
+| -------- | --------------------------------| ---- | --------------------------- |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes   | Context of the current application.            |
+| type     | [RingtoneType](#ringtonetype)   | Yes   | Ringtone type of the player to be obtained. |
+| ringtoneUri     | string  | Yes   | URI of the ringtone file, which must actually exist in the system file.<br>For a customized ringtone, use the **ringtoneUri** returned by [addCustomizedTone](#addcustomizedtone12) to ensure that the ringtone file URI exists in the ringtone library. |
+
+**Return value**
+
+| Type                | Description                            |
+| ------------------- | ------------------------------- |
+| Promise&lt;[RingtonePlayer](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneplayer) \| null&gt; | Promise that returns the mock haptic ringtone player instance on success, or null if an error occurs. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md), [Ringtone Error Codes](./errorcode-audio-ringtone-sys.md), and [Media Error Codes](../apis-media-kit/errorcode-media.md).
+
+| Error Code ID | Error Message              |
+| -------- | --------------------- |
+| 202 |Caller is not a system application.|
+| 20700002 |Parameter verification failed. Possible causes: 1. The type exceeds the valid range, please use the RingtoneType enum for input. 2. The ringtoneUri does not exist or is incorrectly formatted, please use the ringtoneUri returned by the [addCustomizedTone](#addcustomizedtone12).|
+| 5400103  |I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
+let systemRingtonePlayer: systemSoundManager.RingtonePlayer | null = null;
+let ringtoneUri = 'file://data/test.json'; // Change to the target ringtone file URI.
+
+let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
+systemSoundManagerInstance.getMockHapticRingtonePlayer(context, type, ringtoneUri).then((value: systemSoundManager.RingtonePlayer | null) => {
+  if (value != null) {
+    console.info('Succeeded in doing getMockHapticRingtonePlayer.');
+    systemRingtonePlayer = value;
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1180,7 +1318,7 @@ Sets a URI for a system tone. This API uses a promise to return the result.
 | -------- |-------------------------------------| ---- | ------------------------ |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Application context.        |
 | uri      | string                              | Yes  | URI of the system tone. For details about supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).|
-| type     | [SystemToneType](#systemtonetype11) | Yes  | Type of the system tone.  |
+| type     | [SystemToneType](#systemtonetype11) | Yes   | Type of the system tone to obtain.   |
 
 **Return value**
 
@@ -1862,9 +2000,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. System sound manager service error.|
-| 20700004 | Data size exceeds the limit. Note:This error is returned when the file size is between 200MB and 2GB.|
-| 20700005 | The number of files exceeds the limit. |
-| 20700006 | Insufficient ROM space. |
+| 20700004 | Data size exceeds the limit. Note:This error is returned when the file size is between 200MB and 2GB.<br>Applicable version: 20+ |
+| 20700005 | The number of files exceeds the limit.<br>Applicable version: 20+ |
+| 20700006 | Insufficient ROM space.<br>Applicable version: 20+ |
 
 **Example**
 
@@ -1932,9 +2070,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. Ringtone library error. 4. System sound manager service error.|
-| 20700004 | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.|
-| 20700005 | The number of files exceeds the limit. |
-| 20700006 | Insufficient ROM space. |
+| 20700004 | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.<br>Applicable version: 20+ |
+| 20700005 | The number of files exceeds the limit.<br>Applicable version: 20+ |
+| 20700006 | Insufficient ROM space.<br>Applicable version: 20+ |
 
 **Example**
 
@@ -2277,7 +2415,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json'; // Change it to the URI of the target haptics resource.
+let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json'; // Change it to the vibration URI of the target system ringtone.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: number) => {
@@ -2337,7 +2475,7 @@ systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((value: system
 
 openToneList(uriList: Array\<string>): Promise\<Array\<[string, number, SystemSoundError]>>
 
-Obtains an array of attributes of ringtones. This API uses a promise to return the result.
+Opens ringtone files in batches. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -2493,3 +2631,6 @@ Defines the configuration of a system tone player.
 | Type             | Description           |
 |-----------------|---------------|
 | [_SystemToneOptions](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneoptions) | Configuration of a system tone player.|
+
+
+

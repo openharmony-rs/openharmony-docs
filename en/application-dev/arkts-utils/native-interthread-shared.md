@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / Ark Programming Language"]
+description: "Introduces the development method for C++ inter-thread data sharing scenarios: supports invoking ArkTS capabilities on C++ threads, and operating Sendable shared objects between C++ threads, applicable to data interaction scenarios in hybrid development of Native multithreading and ArkTS."
+keywords: [C++ thread, inter-thread data sharing, Sendable shared object, Native thread, cross-language invocation, ArkTS capability invocation, hybrid development, multithreading]
+doctype: guide
+status: active
+---
+
 # C++ Inter-Thread Data Sharing
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:41:01.455Z pushedAt=2026-11-09T09:09:08.285Z nl=1 -->
 
 When performing multithreaded computations at the C++ layer, an ArkTS execution environment must be created for each C++ thread to enable direct API calls. This prevents non-UI main threads from waiting for API results from the UI main thread when executing callbacks. Additionally, Sendable objects must be shared and manipulated across C++ threads.
 
@@ -24,8 +33,12 @@ ArkTS file definition
 ``` TypeScript
 @Sendable
 export class SendableObjTest {
-  static newSendable() {
-    return 1024;
+  private value: number = 1024;
+  static newSendable(): SendableObjTest {
+    return new SendableObjTest();
+  }
+  public getValue(): number {
+    return this.value;
   }
 }
 ```
@@ -38,6 +51,8 @@ Native implementation to load ArkTS modules
 #include <thread>
 
 #include "napi/native_api.h"
+// Used to compare and confirm the value of the obtained sendable object.
+const int SENDABLE_VALUE = 1024;
 
 static void* g_serializationData = nullptr;
 static void* CreateEnvAndSendSendable(void*)
@@ -79,6 +94,7 @@ static void* CreateEnvAndSendSendable(void*)
     if (ret != napi_ok) {
         std::abort();
     }
+    napi_destroy_ark_runtime(&env);
     return nullptr;
 }
 ```
@@ -98,8 +114,12 @@ ArkTS file definition
 ``` TypeScript
 @Sendable
 export class SendableObjTest {
-  static newSendable() {
-    return 1024;
+  private value: number = 1024;
+  static newSendable(): SendableObjTest {
+    return new SendableObjTest();
+  }
+  public getValue(): number {
+    return this.value;
   }
 }
 ```
@@ -112,6 +132,8 @@ Native implementation for serialization and deserialization of Sendable objects
 #include <thread>
 
 #include "napi/native_api.h"
+// Used to compare and confirm the value of the obtained sendable object's value
+const int SENDABLE_VALUE = 1024;
 
 static void* g_serializationData = nullptr;
 static void* CreateEnvAndSendSendable(void*)
@@ -153,6 +175,7 @@ static void* CreateEnvAndSendSendable(void*)
     if (ret != napi_ok) {
         std::abort();
     }
+    napi_destroy_ark_runtime(&env);
     return nullptr;
 }
 
@@ -175,24 +198,40 @@ static void* CreateEnvAndReceiveSendable(void*)
     if (ret != napi_ok) {
         std::abort();
     }
+    // 4. Obtain the getValue method from the result object
+    napi_value getValueFunc = nullptr;
+    ret = napi_get_named_property(env, result, "getValue", &getValueFunc);
+    if (ret != napi_ok) {
+        std::abort();
+    }
+    // 5. Call the getValue method with result as this, and store the return value in valueResult
+    napi_value valueResult = nullptr;
+    ret = napi_call_function(env, result, getValueFunc, 0, nullptr, &valueResult);
+    if (ret != napi_ok) {
+        std::abort();
+    }
+    // 6. Confirm that valueResult is of the number type
     napi_valuetype valuetype0;
-    napi_typeof(env, result, &valuetype0);
+    napi_typeof(env, valueResult, &valuetype0);
     if (valuetype0 != napi_number) {
         std::abort();
     }
+    // 7. 1024 is used to determine whether the result returned by ArkTS is correct
     int value0;
-    napi_get_value_int32(env, result, &value0);
-    // 1024 means the result is correct.
-    if (value0 != 1024) {
+    napi_get_value_int32(env, valueResult, &value0);
+    if (value0 != SENDABLE_VALUE) {
         std::abort();
     }
+    napi_destroy_ark_runtime(&env);
     return nullptr;
 }
 
 static napi_value TestSendSendable([[maybe_unused]] napi_env env, [[maybe_unused]] napi_callback_info info)
 {
+    // The UI main thread creates the t1 thread
     std::thread t1(CreateEnvAndSendSendable, nullptr);
     t1.join();
+    // The UI main thread creates the t2 thread
     std::thread t2(CreateEnvAndReceiveSendable, nullptr);
     t2.join();
     return nullptr;
@@ -232,8 +271,9 @@ export const testSendSendable: () => void;
 
 UI main thread invocation
 
-```ts
-// Index.ets
+<!-- @[main_thread_init_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 import { SendableObjTest } from './SendableObjTest'
@@ -254,6 +294,7 @@ struct Index {
             hilog.info(0x0000, 'testTag', 'Test send Sendable begin');
             testNapi.testSendSendable();
             hilog.info(0x0000, 'testTag', 'Test send Sendable end');
+            this.message = 'success';
           })
       }
       .width('100%')
@@ -262,13 +303,12 @@ struct Index {
   }
 }
 ```
-<!-- @[main_thread_init_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/Index.ets) -->
 
 The logic implementation of the entire process is as follows:
 
-1. In the UI main thread, create an ArkTS runtime environment and initiate a C++child thread to create a Sendable object and store the object in **result**. Serialize the Sendable object referenced by **result** into global serialization data **serializationData**.
+1. The UI main thread creates a C++ child thread t1, creates the ArkTS runtime environment and loads the ArkTS module, creates a Sendable object and saves it to result, and then serializes the Sendable object referenced by result into the global serialization data serializationData.
 
-2. After the preceding steps are complete, initiate another C++ child thread. In this new thread, create the ArkTS runtime environment. Then, deserialize the Sendable object created in the UI main thread from **serializationData** using the deserialization interface and store it in **result**. This enables the transfer of Sendable objects across C++ thread. After deserialization, the deserialization data must be destroyed to prevent memory leaks. In this case, both the UI main thread and the child thread hold the Sendable object, which can be manipulated via Node-API, such as reading/writing or passing it to the ArkTS layer.
+2. After these processes are complete, the UI main thread creates a C++ child thread t2 and creates an ArkTS runtime environment in this new thread. It then deserializes the Sendable object created by thread t1 from serializationData through the deserialization interface and saves it to result, thereby implementing cross-C++-thread transfer of the Sendable object. After deserialization is complete, the serialized data must be destroyed to avoid memory leaks.
 
    > **NOTE**
    >

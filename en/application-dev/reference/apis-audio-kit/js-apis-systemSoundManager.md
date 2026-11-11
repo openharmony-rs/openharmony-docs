@@ -1,12 +1,13 @@
 # @ohos.multimedia.systemSoundManager (System Sound Management)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b5fe0cac2b0db55ec3b49d3a0cb6550f91c97849 translatedAt=2026-11-03T04:45:16.009Z pushedAt=2026-11-04T03:11:47.075Z nl=1 -->
 
-This module provides basic capabilities for managing system sound effects, including defining system sound effect types and obtaining system sound effect players.
+This module provides system sound management capabilities, including the definition of system sound effect types and the acquisition of system sound effect players. When you need to play system sound effects in an application to unify the use of system preset sound effects and deliver a consistent user experience, use the APIs of this module to complete the related operations.
 
 > **Note**:
 >
@@ -22,7 +23,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 Enumerates the system sound effect types.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
@@ -38,13 +39,18 @@ createSystemSoundPlayer(): Promise&lt;SystemSoundPlayer | null&gt;
 
 Creates a **SystemSoundPlayer** object. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> - After calling createSystemSoundPlayer() to create a player, you must call release() to release the player resources when the player is no longer used.
+> - For details about the usage and the relationship between methods, see [SystemSoundPlayer (System Sound Player)](js-apis-inner-multimedia-systemSoundPlayer.md).
+
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
 **Return value**
 
 | Type                         | Description        |
 | ----------------------------- | ------------ |
-| Promise&lt;[SystemSoundPlayer](js-apis-inner-multimedia-systemSoundPlayer.md#systemsoundplayer) \| null&gt; | Returns the **SystemSoundPlayer** object on success, null on failure.|
+| Promise&lt;[SystemSoundPlayer](js-apis-inner-multimedia-systemSoundPlayer.md#systemsoundplayer) \| null&gt; | The system sound player object, used to play system sound effects such as the camera shutter sound and video recording sound; null is returned on failure. |
 
 **Error codes**
 
@@ -62,8 +68,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let systemSoundPlayer: systemSoundManager.SystemSoundPlayer | null = null;
 
 systemSoundManager.createSystemSoundPlayer().then((systemSoundPlayerInstance) => {
-  console.info('Succeeded in creating the system sound player.');
   systemSoundPlayer = systemSoundPlayerInstance;
+  console.info('Succeeded in creating the system sound player.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to create the system sound player. Code: ${err.code}, message: ${err.message}`);
 });
@@ -73,7 +79,7 @@ systemSoundManager.createSystemSoundPlayer().then((systemSoundPlayerInstance) =>
 
 type SystemSoundPlayer = _SystemSoundPlayer
 
-Represents the system sound effect player object.
+Defines a system sound effect player object, which is used to play system sound effects such as the camera shutter sound and the video recording sound.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 

@@ -748,7 +748,11 @@ attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 > 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认）。如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。
 <!--RP6End-->
 
-**需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
+**需要权限：**
+
+- API版本26.1.0+：ohos.permission.ATTEST_KEY或ohos.permission.ENTERPRISE_ATTEST_KEY
+
+- API版本11-26.0.1：ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -881,7 +885,11 @@ attestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 
 获取密钥证书。使用Promise异步回调。
 
-**需要权限：** ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
+**需要权限：**
+
+- API版本26.1.0+：ohos.permission.ATTEST_KEY或ohos.permission.ENTERPRISE_ATTEST_KEY
+
+- API版本11-26.0.1：ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -3769,17 +3777,11 @@ async function testListAliases() {
 
 表示安全导入密钥的算法套件。
 
-**系统能力：**
-
-- API版本12+：SystemCapability.Security.Huks.Core
-
-- API版本9-11：SystemCapability.Security.Huks.Extension
-
 | 名称                                           | 值   | 说明                                                  |
 | ---------------------------------------------- | ---- | ----------------------------------------------------- |
-| HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING | 1    | 安全导入密钥时，X25519密钥协商后使用AES-256 GCM解密。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING   | 2    | 安全导入密钥时，ECDH密钥协商后使用AES-256 GCM解密。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING<sup>23+</sup> | 5    | 安全导入密钥时，使用临时SM4密钥加密导入密钥，使用已导入HUKS的SM2密钥加密SM4密钥。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING | 1    | 安全导入密钥时，X25519密钥协商后使用AES-256 GCM解密。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** <br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本9-11：SystemCapability.Security.Huks.Extension |
+| HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING   | 2    | 安全导入密钥时，ECDH密钥协商后使用AES-256 GCM解密。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** <br>- API版本12+：SystemCapability.Security.Huks.Core<br>- API版本9-11：SystemCapability.Security.Huks.Extension |
+| HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING<sup>23+</sup> | 5    | 安全导入密钥时，使用临时SM4密钥加密导入密钥，使用已导入HUKS的SM2密钥加密SM4密钥。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Security.Huks.Core |
 
 ## HuksImportKeyType<sup>9+</sup>
 

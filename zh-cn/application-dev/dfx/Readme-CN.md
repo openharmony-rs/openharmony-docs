@@ -18,11 +18,11 @@
   - [任务超时检测](apptask-timeout-guidelines.md)
   - [App Killed（应用终止）检测](appkilled-guidelines.md)
   - 通用日志<!--general-log-->
-    - [页面切换日志](pageswitch-log.md)<!--RP2--><!--RP2End-->
+    - [页面切换日志](pageswitch-log.md)
     - external_log日志<!--external_log-->
       - [external_log日志介绍](external-log.md)
       - [external_log日志清理（ArkTS）](external-log-arkts.md)
-      - [external_log日志清理（C/C++）](external-log-ndk.md)
+      - [external_log日志清理（C/C++）](external-log-ndk.md)<!--RP2--><!--RP2End-->
 - 日志打印<!--hilog-dev-->
   - [使用HiLog打印日志（ArkTS）](hilog-guidelines-arkts.md)
   - [使用HiLog打印日志（C/C++）](hilog-guidelines-ndk.md)

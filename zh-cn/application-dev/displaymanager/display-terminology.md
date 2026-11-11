@@ -1,3 +1,11 @@
+---
+kits: ["ArkUI / 方舟UI框架"]
+description: "介绍屏幕管理开发的核心术语，阐明逻辑屏与物理屏的概念及映射关系，涵盖主屏、镜像屏、扩展屏、异源屏及内置屏、外接屏和虚拟屏等分类，帮助开发者理解多屏开发概念。"
+keywords: [逻辑屏, 物理屏, 主屏, 镜像屏, 扩展屏, 异源屏, 虚拟屏]
+doctype: glossary
+status: active
+---
+
 # 屏幕管理开发术语
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->

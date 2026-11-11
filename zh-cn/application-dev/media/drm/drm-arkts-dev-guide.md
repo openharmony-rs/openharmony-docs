@@ -24,7 +24,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 1. 导入DRM Kit接口。
 
-   <!-- @[arkts_import_drm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_import_drm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { drm } from '@kit.DrmKit';
@@ -32,7 +32,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 2. 导入BusinessError模块抛出DRM Kit接口的错误码。
 
-   <!-- @[arkts_import_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_import_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -40,7 +40,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 3. （可选）调用[getMediaKeySystems](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmgetmediakeysystems12)，获取设备支持的DRM解决方案名称和唯一标识的列表。
 
-   <!-- @[arkts_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    const descriptions: drm.MediaKeySystemDescription[] = drm.getMediaKeySystems();
@@ -50,7 +50,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 4. （可选）调用[isMediaKeySystemSupported](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmismediakeysystemsupported)，查询设备是否支持对应DRM解决方案名称、媒体类型、安全保护级别的DRM解决方案。
 
-   <!-- @[arkts_isMediaKeySystemSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_isMediaKeySystemSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    const byName = drm.isMediaKeySystemSupported(DRM_SOLUTION_NAME);
@@ -66,7 +66,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 5. 调用[createMediaKeySystem](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem)，创建MediaKeySystem实例。
 
-   <!-- @[arkts_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    mediaKeySystem = drm.createMediaKeySystem(DRM_SOLUTION_NAME);
@@ -78,7 +78,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
    通过注册keySystemRequired回调函数监听设备DRM证书请求事件。该事件在需要设备DRM证书时触发，此时建议完成设备DRM证书请求与处理流程。
 
-   <!-- @[arkts_onKeySystemRequired](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_onKeySystemRequired](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
@@ -89,7 +89,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 7. （可选）调用[getCertificateStatus](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#getcertificatestatus)，获取设备DRM证书状态。
 
-   <!-- @[arkts_getCertificateStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_getCertificateStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    const certificateStatus = mediaKeySystem.getCertificateStatus();
@@ -99,13 +99,13 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
    如果设备DRM证书状态不是drm.CertificateStatus.CERT_STATUS_PROVISIONED，可以生成设备DRM证书请求，处理设备DRM证书响应。
 
-   <!-- @[arkts_generateKeySystemRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_generateKeySystemRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    const provisionRequest = await mediaKeySystem.generateKeySystemRequest();
    ```
 
-   <!-- @[arkts_processKeySystemResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_processKeySystemResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 将设备DRM证书请求返回的provisionRequest.data通过网络请求发送给DRM证书服务获取设备DRM证书响应，并处理。
@@ -117,7 +117,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
    创建该DRM解决方案默认内容保护级别的MediaKeySession实例。
 
-   <!-- @[arkts_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    mediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -129,7 +129,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
     - 使用[on('keyRequired')](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#onkeyrequired)接口监听媒体密钥请求事件，此时建议完成媒体密钥请求与处理流程。
 
-      <!-- @[arkts_onKeyRequired](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+      <!-- @[arkts_onKeyRequired](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
       
       ``` TypeScript
       mediaKeySession.on('keyRequired', (eventInfo: drm.EventInfo) => {
@@ -140,7 +140,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
     - 使用[on('keyExpired')](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#onkeyexpired)接口监听媒体密钥过期事件。
 
-      <!-- @[arkts_onKeyExpired](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+      <!-- @[arkts_onKeyExpired](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
       
       ``` TypeScript
       mediaKeySession.on('keyExpired', (eventInfo: drm.EventInfo) => {
@@ -150,7 +150,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
     - 使用[on('expirationUpdate')](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#onexpirationupdate)接口监听媒体密钥有效期更新事件。
 
-      <!-- @[arkts_onExpirationUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+      <!-- @[arkts_onExpirationUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
       
       ``` TypeScript
       mediaKeySession.on('expirationUpdate', (eventInfo: drm.EventInfo) => {
@@ -160,7 +160,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
     - 使用[on('keysChange')](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#onkeyschange)接口监听媒体密钥变换事件。
 
-      <!-- @[arkts_onKeysChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+      <!-- @[arkts_onKeysChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
       
       ``` TypeScript
       mediaKeySession.on('keysChange', (keyInfo: drm.KeysInfo[], newKeyAvailable: boolean) => {
@@ -172,7 +172,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 11. （可选）调用[requireSecureDecoderModule](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#requiresecuredecodermodule)，查询是否需要安全解码。
 
-    <!-- @[arkts_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[arkts_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     const needSecureDecoder = mediaKeySession.requireSecureDecoderModule(MIME_TYPE);
@@ -182,7 +182,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
     获取到DRM节目中的DRM信息时，可以生成媒体密钥请求，处理媒体密钥响应，以请求许可证完成DRM节目授权。
 
-    <!-- @[arkts_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[arkts_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     // 实际应用中initData应从媒体内容的PSSH box中提取。
@@ -196,7 +196,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
       MIME_TYPE, initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionalData);
     ```
 
-    <!-- @[arkts_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[arkts_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     // 将媒体密钥请求返回的mediaKeyRequest.data通过网络请求发送给DRM服务获取媒体密钥响应，并处理。
@@ -206,7 +206,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 13. （可选）调用[restoreOfflineMediaKeys](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#restoreofflinemediakeys)，恢复离线媒体密钥。
 
-    <!-- @[arkts_restoreOfflineMediaKeys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[arkts_restoreOfflineMediaKeys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     await mediaKeySession.restoreOfflineMediaKeys(offlineMediaKeyId);
@@ -214,7 +214,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 14. （可选）调用[checkMediaKeyStatus](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#checkmediakeystatus)，检查媒体密钥状态。
 
-    <!-- @[arkts_checkMediaKeyStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[arkts_checkMediaKeyStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     const keyStatus = mediaKeySession.checkMediaKeyStatus();
@@ -224,7 +224,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
     媒体密钥标识用于对离线媒体密钥的管理。
 
-    <!-- @[arkts_offlineMediaKeyManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[arkts_offlineMediaKeyManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     const offlineMediaKeyIds = mediaKeySystem.getOfflineMediaKeyIds();
@@ -238,7 +238,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
     完成加密媒体解密，MediaKeySession实例不再使用时，销毁MediaKeySession实例。
 
-    <!-- @[arkts_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[arkts_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     mediaKeySession.destroy();
@@ -248,7 +248,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
     完成DRM功能使用，MediaKeySystem实例不再使用，销毁MediaKeySystem实例。
 
-    <!-- @[arkts_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[arkts_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmArkTS/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     mediaKeySystem.destroy();

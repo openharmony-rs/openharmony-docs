@@ -20,7 +20,7 @@
 1. 将待跳转的应用安装到设备，在其对应UIAbility的[module.json5配置文件](../quick-start/module-configuration-file.md)中配置skills标签的entities字段、actions字段和uri字段：
     - "actions"列表中包含"ohos.want.action.viewData"。
     - "entities"列表中包含"entity.system.browsable"。
-    - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。uri的匹配规则参考[uri匹配](explicit-implicit-want-mappings.md#uri匹配规则)，domainVerify为true代表开启域名检查，通过App Linking匹配该应用时需经过配置的域名校验后才能匹配到。
+    - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。uri的匹配规则参考[uri匹配规则](explicit-implicit-want-mappings.md#uri匹配规则)，domainVerify为true代表开启域名检查，通过App Linking匹配该应用时需经过配置的域名校验后才能匹配到。
 
     <!-- @[domainVerify_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
     
@@ -57,7 +57,7 @@
     }
     ```
 
-2. 调用方通过[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口执行跳转，需要传入link和[options](../reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md)，不再需要传入bundleName、moduleName和abilityName。系统会根据传入的link匹配到符合skills配置的应用。
+2. 调用方通过[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口执行跳转，需要传入link和[OpenLinkOptions](../reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md#openlinkoptions)，不再需要传入bundleName、moduleName和abilityName。系统会根据传入的link匹配到符合skills配置的应用。
     - 当options中的appLinkingOnly为true时，匹配到的应用会经过<!--RP1--><!--RP1End-->域名检查（需联网）返回域名校验检查的唯一匹配项或未匹配结果。
     - 当options中的appLinkingOnly为false时，会优先尝试以App Linking的方式拉起，如果没有匹配的应用则跳转默认浏览器打开网页。
 
@@ -110,7 +110,7 @@
 
     - "actions"列表中包含"ohos.want.action.viewData"。
     - "entities"列表中包含"entity.system.browsable"。
-    - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。uri的匹配规则参考[uri匹配](explicit-implicit-want-mappings.md#uri匹配规则)，domainVerify为true代表开启域名检查，通过App Linking匹配该应用时需经过配置的域名校验后才能匹配到。
+    - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。uri的匹配规则参考[uri匹配规则](explicit-implicit-want-mappings.md#uri匹配规则)，domainVerify为true代表开启域名检查，通过App Linking匹配该应用时需经过配置的域名校验后才能匹配到。
 
     <!-- @[pull_results](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
     
@@ -147,7 +147,7 @@
     }
     ```
 
-2. 调用方通过[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口执行跳转，需要传入link和[options](../reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md)，不再需要传入bundleName、moduleName和abilityName。系统会根据传入的link匹配到符合skills配置的应用。AbilityResult回调结果通过入参传入回调函数，在被启动的UIAbility停止自身后返回给调用方。启动成功和失败结果仍通过Promise返回。<br>
+2. 调用方通过[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口执行跳转，需要传入link和[OpenLinkOptions](../reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md#openlinkoptions)，不再需要传入bundleName、moduleName和abilityName。系统会根据传入的link匹配到符合skills配置的应用。AbilityResult回调结果通过入参传入回调函数，在被启动的UIAbility停止自身后返回给调用方。启动成功和失败结果仍通过Promise返回。<br>
     - 当options中的appLinkingOnly为true时，匹配到的应用会经过<!--RP2--><!--RP2End-->域名检查（需联网）返回域名校验检查的唯一匹配项或未匹配结果。
     - 当options中的appLinkingOnly为false时，会优先尝试以App Linking的方式拉起，如果没有匹配的应用则跳转默认浏览器打开网页。
 

@@ -603,6 +603,59 @@ async function test() {
 }
 ```
 
+## checkSupportPlaybackCommand
+
+checkSupportPlaybackCommand(command: PlaybackCommand): Promise\<boolean>
+
+查询当前播放源下是否可以执行指定的播控命令。该函数必须在[prepare()](#prepare9)执行成功后才能被调用。使用Promise异步回调。
+
+使用场景：播放前查询当前片源是否支持seek或调整播放速率等播控操作，以便应用决定是否展示或启用对应的播控入口。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                 |
+| -------- | -------- | ---- | -------------------- |
+| command | [PlaybackCommand](arkts-apis-media-e.md#playbackcommand) | 是   | 需要查询的播控指令的枚举值。取值约束请参阅[PlaybackCommand](arkts-apis-media-e.md#playbackcommand)。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<boolean> | Promise对象。返回true表示可以执行该命令；返回false表示不可以执行该命令。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. If this function is invoked before Prepare(), it is returned. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  let player = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared状态后才能调用。
+  player.checkSupportPlaybackCommand(media.PlaybackCommand.PLAYBACK_COMMAND_SEEK).then((isSupported: boolean) => {
+    console.info(`Succeeded in checking support playback command: ${isSupported}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to checkSupportPlaybackCommand. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
 ## advanceToNextMediaSource
 
 advanceToNextMediaSource(): Promise\<void>

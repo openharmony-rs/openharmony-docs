@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to create and destroy ArkTS runtime environments using Node-API, including creating an independent runtime on a new thread with napi_create_ark_runtime and loading ArkTS modules for scenarios requiring multiple runtimes."
+keywords: [Node-API, ArkTS runtime, napi_create_ark_runtime, napi_destroy_ark_runtime, runtime environment, thread creation, module loading]
+doctype: guide
+status: active
+---
+
 # Creating an ArkTS Runtime Environment Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=cafe730c03f95c1273b115a81e96d29ade5b9ef8 translatedAt=2026-11-09T08:52:17.386Z nl=1 -->
 
 ## When to Use
 
@@ -14,7 +23,7 @@ After creating a thread using **pthread_create**, you can use **napi_create_ark_
 
 A maximum of 64 runtime environments can be created for a process.
 
-### Sample Code
+## Sample Code
 
 - API declaration
 
@@ -49,13 +58,15 @@ A maximum of 64 runtime environments can be created for a process.
   <!-- @[napi_ark_runtime_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5) -->
   
   ``` JSON5
-  "buildOption": {
-    "arkOptions" : {
-      "runtimeOnly" : {
-        "sources": [
-          "./src/main/ets/pages/ObjectUtils.ets"
-        ]
-      }
+    "buildOption": {
+      "arkOptions" : {
+        "runtimeOnly" : {
+          "sources": [
+            "./src/main/ets/pages/ObjectUtils.ets"
+          ]
+        }
+      },
+  // ...
     },
   ```
 
@@ -90,8 +101,9 @@ A maximum of 64 runtime environments can be created for a process.
   }
   ```
 
-- Functionality implementation 
-  Create a thread and an ArkTS runtime environment, and load the module. For details about how to load a custom module, see [Loading a Module Using Node-API](use-napi-load-module-with-info.md).
+- Functionality implementation
+
+  Create a thread and an ArkTS runtime environment, and load the module. For details about how to load a custom module, see [Loading a Module Using Node-API](./use-napi-load-module-with-info.md).
 
   <!-- @[napi_ark_runtime_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
   
@@ -102,35 +114,51 @@ A maximum of 64 runtime environments can be created for a process.
   static void *CreateArkRuntimeFunc(void *arg)
   {
       // 1. Create the ArkTS runtime environment.
-      napi_env env;
+      napi_env env = nullptr;
       napi_status ret = napi_create_ark_runtime(&env);
       if (ret != napi_ok) {
           return nullptr;
       }
   
-      napi_handle_scope scope;
-      napi_open_handle_scope(env, &scope);
+      napi_handle_scope scope = nullptr;
+      if (napi_open_handle_scope(env, &scope) != napi_ok) {
+          napi_destroy_ark_runtime(&env);
+          return nullptr;
+      }
   
       // 2. Load custom modules.
-      napi_value objUtils;
+      napi_value objUtils = nullptr;
       ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/ObjectUtils", "com.example.myapplication/entry",
                                        &objUtils);
       if (ret != napi_ok) {
+          OH_LOG_ERROR(LOG_APP, "Failed to load module");
+          napi_close_handle_scope(env, scope);
+          napi_destroy_ark_runtime(&env);
           return nullptr;
       }
   
       // 3. Use the logger in ArkTS.
-      napi_value logger;
+      napi_value logger = nullptr;
       ret = napi_get_named_property(env, objUtils, "Logger", &logger);
       if (ret != napi_ok) {
+          napi_close_handle_scope(env, scope);
+          napi_destroy_ark_runtime(&env);
           return nullptr;
       }
       ret = napi_call_function(env, objUtils, logger, 0, nullptr, nullptr);
+      if (ret != napi_ok) {
+          napi_close_handle_scope(env, scope);
+          napi_destroy_ark_runtime(&env);
+          return nullptr;
+      }
   
       napi_close_handle_scope(env, scope);
   
       // 4. Destroy the ArkTS runtime environment.
       ret = napi_destroy_ark_runtime(&env);
+      if (ret != napi_ok) {
+          OH_LOG_ERROR(LOG_APP, "Failed to destroy ark runtime");
+      }
   
       return nullptr;
   }

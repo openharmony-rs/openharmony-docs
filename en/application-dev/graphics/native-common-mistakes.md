@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Explains common NativeWindow, NativeImage, and NativeBuffer stability issues caused by mismatched reference counts, including memory leaks, crashes, and freezes, and shows how to resolve them."
+keywords: [memory leak, reference count, crash, freeze, NativeWindow, NativeImage, NativeWindowBuffer, lifecycle management, buffer return]
+doctype: faq
+status: active
+---
+
 # Common Stability Issues with Graphics Buffers (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
@@ -5,7 +13,8 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1a755f49a4e8ec2f895bdf9639e37312a95f38cf translatedAt=2026-10-19T01:27:22.748Z pushedAt=2026-10-19T09:57:33.931Z -->
+<!-- md-trans-meta sourceCommit=f6a29bb7b5e04ec485b4b13e6a2eda953b1edd57 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 This section describes common issues that may arise during development with **NativeWindow**, **NativeBuffer**, and **NativeImage**, helping you avoid or locate these issues in a timely manner and improve app stability.
 

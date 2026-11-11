@@ -1,10 +1,11 @@
 # Enums
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8a783fd685a93780fa3974e7fa207f2ddf4cfafd translatedAt=2026-11-02T13:00:40.154Z pushedAt=2026-11-03T07:30:37.251Z nl=1 -->
 
 > **NOTE**
 >
@@ -21,16 +22,30 @@ Enumerates the window types.
 | Name                                 | Value| Description                                                                                    |
 |-------------------------------------| ------ |----------------------------------------------------------------------------------------|
 | TYPE_APP                            | 0      | Child window of an application.<br>**Model restriction**: This API can be used only in the FA model.                                                  |
-| TYPE_SYSTEM_ALERT<sup>(deprecated)</sup>               | 1     | System alert window.<br>**Note**: This API has been deprecated since API version 11,<br>and was supported since API version 7.                          |
-| TYPE_FLOAT<sup>9+</sup>             | 8      | Global floating window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| TYPE_DIALOG<sup>10+</sup>           | 16      | Modal window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| TYPE_SYSTEM_ALERT<sup>(deprecated)</sup>               | 1     | System alert window.<br>**Note**: This API is deprecated since API version 11.<br>It is supported since API version 7.                          |
+| TYPE_FLOAT<sup>9+</sup>             | 8      | Global floating window.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| TYPE_DIALOG<sup>10+</sup>           | 16      | Modal window.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | TYPE_MAIN<sup>18+</sup>             | 32      | Main window of an application.<br>This window type cannot be used during window creation.                              |
+
+## WindowPostureMode
+
+Enumerates the window posture modes.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name | Value | Description |
+| ---- | ---- | ---- |
+| DESKTOP_MODE | 0 | Desktop mode. The device is in desktop mode when all the following conditions are met:<br>1. The current device is in the half-folded state ([FoldStatus.FOLD_STATUS_HALF_FOLDED](js-apis-display.md#foldstatus10)).<br>2. The width of **creaseRects** obtained through [getLiveCreaseRegion()](js-apis-display.md#getlivecreaseregion20) on the screen where the window is located is greater than the height.<br>3. The window mode is full-screen mode ([WindowStatusType.FULL_SCREEN](#windowstatustype11)) or maximized mode ([WindowStatusType.MAXIMIZE](#windowstatustype11)).<br>4. The screen crease region is within the window display area. |
 
 ## AvoidAreaType<sup>7+</sup>
 
 Enumerates the types of areas to avoid for window content.
 
-When adapting window content for an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout), you should adjust the content based on the corresponding [AvoidArea](arkts-apis-window-i.md#avoidarea7) specified by **AvoidAreaType**.
+When adapting window content for an [immersive layout](../../windowmanager/immersive-window-feature.md#immersive-layout), you should adjust the content based on the corresponding [AvoidArea](arkts-apis-window-i.md#avoidarea7) specified by **AvoidAreaType**.
 
 | Name                            | Value  | Description                                                        |
 | -------------------------------- | ---- | ------------------------------------------------------------ |
@@ -38,12 +53,30 @@ When adapting window content for an [immersive layout](../../windowmanager/windo
 | TYPE_CUTOUT                      | 1    | Cutout area.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
 | TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | Side return gesture area. Currently, no devices support this type of avoid area.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
 | TYPE_KEYBOARD<sup>9+</sup>       | 3    | Fixed soft keyboard area.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
-| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | Bottom navigation bar. <!--Del-->OpenHarmony devices do not support this capability.<!--DelEnd--> <br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
-| TYPE_FLOAT_NAVIGATION | 5    | Three-button navigation bar. <!--RP12-->OpenHarmony devices do not support this capability.<!--RP12End--> <br>**System capability**: SystemCapability.Window.SessionManager<br> **Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | Bottom navigation bar<!--Del-->or toolbar. Currently, the toolbar is supported only on cars<!--DelEnd-->. When a three-button navigation bar is displayed, the bottom navigation bar avoid area always exists. <br> **System capability:** SystemCapability.WindowManager.WindowManager.Core <br> **Atomic service API:** This API can be used in atomic services since API version 11.|
+| TYPE_FLOAT_NAVIGATION | 5    | Three-key navigation bar. <!--RP12-->OpenHarmony devices do not support this capability. <!--RP12End--> <br>**System capability:** SystemCapability.Window.SessionManager<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API:** This API can be used in atomic services since API version 26.0.0.|
 
-<!--RP13-->
+<!--RP13--><!--RP13End-->
 
-<!--RP13End-->
+## SplitRatioPreference
+
+Enumerates the split ratio types of a window.
+
+<!--Del-->Currently, OpenHarmony devices do not support this capability.<!--DelEnd-->
+
+<!--RP1--><!--RP1End-->
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+| Name                             | Value | Description                                                         |
+| -------------------------------- | ---- | ------------------------------------------------------------ |
+| EQUAL                            | 0    | The system allocates the same window ratio to the primary and secondary split-screen windows.<br>This is the default value when no field value is specified. |
+| PRIMARY_DOMINANT                 | 1    | The system allocates the larger available ratio allowed by the current device to the primary split-screen window. |
+| SECONDARY_DOMINANT               | 2    | The system allocates the larger available ratio allowed by the current device to the secondary split-screen window. |
 
 ## Orientation<sup>9+</sup>
 
@@ -51,24 +84,41 @@ Enumerates the window orientations. <!--Del-->For details of the differences bet
 
 | Name                                 | Value  | Description                         |
 | ------------------------------------- | ---- | ----------------------------- |
-| UNSPECIFIED                           | 0    | Unspecified. The orientation is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
+| UNSPECIFIED                           | 0    | Unspecified. The orientation is determined by the system.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br> **System capability:** SystemCapability.WindowManager.WindowManager.Core|
 | PORTRAIT                              | 1    | Portrait.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
 | LANDSCAPE                             | 2    | Landscape.<br> **Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
 | PORTRAIT_INVERTED                     | 3    | Reverse portrait.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | LANDSCAPE_INVERTED                    | 4    | Reverse landscape.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| AUTO_ROTATION                         | 5    | Automatically rotates with the sensor to four orientations: portrait, landscape, reverse portrait, and reverse landscape. This rotation is not controlled by the rotation switch in Control Panel.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
-| AUTO_ROTATION_PORTRAIT                | 6    | Automatically rotates with the sensor to two orientations: portrait and reverse portrait. This rotation is not controlled by the rotation switch in Control Panel.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
-| AUTO_ROTATION_LANDSCAPE               | 7    | Automatically rotates with the sensor to two orientations: landscape and reverse landscape. This rotation is not controlled by the rotation switch in Control Panel.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| AUTO_ROTATION_RESTRICTED              | 8    | Automatically rotates with the sensor to four orientations: portrait, landscape, reverse portrait, and reverse landscape. This rotation is controlled by the rotation switch in Control Panel.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| AUTO_ROTATION_PORTRAIT_RESTRICTED     | 9    | Automatically rotates with the sensor to two orientations: portrait and reverse portrait. This rotation is controlled by the rotation switch in Control Panel.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
-| AUTO_ROTATION_LANDSCAPE_RESTRICTED    | 10   | Automatically rotates with the sensor to two orientations: landscape and reverse landscape. This rotation is controlled by the rotation switch in Control Panel.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
-| LOCKED                                | 11   | Locked mode, where the window orientation is consistent with the current screen orientation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core|
-| AUTO_ROTATION_UNSPECIFIED<sup>12+</sup>        | 12   | Automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a certain device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| USER_ROTATION_PORTRAIT<sup>12+</sup>           | 13   | Temporarily rotates to portrait mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| USER_ROTATION_LANDSCAPE<sup>12+</sup>          | 14   | Temporarily rotates to landscape mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| USER_ROTATION_PORTRAIT_INVERTED<sup>12+</sup>  | 15   | Temporarily rotates to reverse portrait mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| USER_ROTATION_LANDSCAPE_INVERTED<sup>12+</sup> | 16   | Temporarily rotates to reverse landscape mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
-| FOLLOW_DESKTOP<sup>12+</sup>                   | 17   | Follows the orientation of the home screen, where the window will rotate if the home screen rotates and will not rotate if the home screen does not.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Window.SessionManager|
+| AUTO_ROTATION                         | 5    | Automatically rotates with the sensor to four orientations: portrait, landscape, reverse portrait, and reverse landscape. This rotation is not controlled by the rotation switch in Control Panel.<br> **System capability:** SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API:** This API can be used in atomic services since API version 11.|
+| AUTO_ROTATION_PORTRAIT                | 6    | Automatically rotates with the sensor to two orientations: portrait and reverse portrait. This rotation is not controlled by the rotation switch in Control Panel.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br> **System capability:** SystemCapability.WindowManager.WindowManager.Core|
+| AUTO_ROTATION_LANDSCAPE               | 7    | Automatically rotates with the sensor to two orientations: landscape and reverse landscape. This rotation is not controlled by the rotation switch in Control Panel.<br> **System capability:** SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| AUTO_ROTATION_RESTRICTED              | 8    | Automatically rotates with the sensor to four orientations: portrait, landscape, reverse portrait, and reverse landscape. This rotation is controlled by the rotation switch in Control Panel.<br> **System capability:** SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| AUTO_ROTATION_PORTRAIT_RESTRICTED     | 9    | Automatically rotates with the sensor to two orientations: portrait and reverse portrait. This rotation is controlled by the rotation switch in Control Panel.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br> **System capability:** SystemCapability.WindowManager.WindowManager.Core|
+| AUTO_ROTATION_LANDSCAPE_RESTRICTED    | 10   | Automatically rotates with the sensor to two orientations: landscape and reverse landscape. This rotation is controlled by the rotation switch in Control Panel.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br> **System capability:** SystemCapability.WindowManager.WindowManager.Core|
+| LOCKED                                | 11   | Locked mode, where the window orientation is consistent with the current screen orientation.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br> **System capability:** SystemCapability.WindowManager.WindowManager.Core|
+| AUTO_ROTATION_UNSPECIFIED<sup>12+</sup>        | 12   | Automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a bar-type phone.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br> **System capability:** SystemCapability.Window.SessionManager|
+| USER_ROTATION_PORTRAIT<sup>12+</sup>           | 13   | Temporarily rotates to portrait mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a bar-type phone. <br>**Atomic service API:** This API can be used in atomic services since API version 12.<br> **System capability:** SystemCapability.Window.SessionManager|
+| USER_ROTATION_LANDSCAPE<sup>12+</sup>          | 14   | Temporarily rotates to landscape mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a bar-type phone.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br> **System capability:** SystemCapability.Window.SessionManager|
+| USER_ROTATION_PORTRAIT_INVERTED<sup>12+</sup>  | 15   | Temporarily rotates to reverse portrait mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a bar-type phone.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br> **System capability:** SystemCapability.Window.SessionManager|
+| USER_ROTATION_LANDSCAPE_INVERTED<sup>12+</sup> | 16   | Temporarily rotates to reverse landscape mode, and then automatically rotates with the sensor, under the restriction of the rotation switch in Control Panel. The orientation that can be rotated to is determined by the system. For example, the window can rotate to portrait, landscape, or reverse landscape, but not reverse portrait, on a bar-type phone.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br> **System capability:** SystemCapability.Window.SessionManager|
+| FOLLOW_DESKTOP<sup>12+</sup>                   | 17   | Follows the orientation of the home screen, where the window will rotate if the home screen rotates and will not rotate if the home screen does not.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br> **System capability:** SystemCapability.Window.SessionManager|
+
+## WindowPosition
+
+Enumerates the window levels (z-order) to which the main window can be adjusted.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name        | Value | Description                                  |
+| ----------- | ---- | ------------------------------------------------------------ |
+| NOT_TOPMOST | -3   | Cancels topmost. After cancellation, the main window is no longer displayed above other application windows.<br>If the main window is currently topmost, the [ohos.permission.WINDOW_TOPMOST](../../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost) permission is required for cancellation. If a non-topmost window is set to cancel topmost, this permission is not required, and the setting takes no effect.|
+| TOPMOST     | -2   | Topmost. Places the main window above other application windows to ensure it is not obscured, and keeps it topmost until topmost is canceled. When multiple main windows are topmost at the same time, the window set to topmost later is displayed above other topmost windows.<br>The [ohos.permission.WINDOW_TOPMOST](../../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost) permission is required when setting this value.|
+| BOTTOM      | -1   | Places the main window at the bottom of all application main windows.|
+| TOP         | 0    | Places the main window at the top of all application main windows. This adjustment takes effect only once and does not keep the window topmost. A topmost (**TOPMOST**) window is always at the top layer, so if another main window is already topmost, the main window set with this value is placed below all topmost windows.|
 
 ## RectChangeReason<sup>12+</sup>
 
@@ -80,13 +130,28 @@ Enumerates the reasons for window rectangle (position and size) changes.
 
 | Name                 | Value  | Description                                                        |
 | --------------------- | ---- | ------------------------------------------------------------ |
-| UNDEFINED                 | 0    | Default value.                                                  |
-| MAXIMIZE                | 1    | The window is maximized.                                                  |
-| RECOVER              | 2    | The window is restored to the previous state.                                                  |
+| UNDEFINED                 | 0    | Default value, indicating that the reason for the window rectangle change is undefined.      |
+| MAXIMIZE                | 1    | The window enters maximization or full-screen mode. |
+| RECOVER              | 2    | The window restores from maximization mode, full-screen mode, or split-screen mode to the floating window mode.    |
 | MOVE | 3    | The window is moved.|
 | DRAG  | 4    | The window is zoomed in or out by dragging.|
 | DRAG_START  | 5    | The window starts zooming in or out.|
 | DRAG_END  | 6    | The window finishes zooming in or out.|
+
+## FocusChangeReason
+
+Enumerates the reasons for window focus state changes.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name | Value | Description |
+| ---- | ---- | ---- |
+| DEFAULT | 0 | The focus state changes due to a default reason other than a user click. |
+| CLICK | 1 | The focus state changes because the user clicks the window. |
 
 ## ColorSpace<sup>8+</sup>
 
@@ -125,18 +190,18 @@ Enumerates the window modes.
 
 | Name      | Value  | Description                         |
 | ---------- | ---- | ----------------------------- |
-| UNDEFINED  | 0    | The window mode is not defined by the application.      |
+| UNDEFINED  | 0    | The window mode is not defined by the application.       |
 | FULL_SCREEN | 1    | The application is displayed in full screen.<br>In [freeform window](../../windowmanager/window-terminology.md#freeform-window) state, the window occupies the entire screen with no dock, title bar, or status bar displayed by default.<br>You can use [maximize()](arkts-apis-window-Window.md#maximize12) and [setTitleAndDockHoverShown()](arkts-apis-window-Window.md#settitleanddockhovershown14) to configure whether to display the title bar and dock upon hovering over the hot zone.<br>The last call takes precedence when both the **maximize()** and **setTitleAndDockHoverShown()** APIs are called.<br>In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) state, the window occupies the entire screen with no title bar or dock displayed. You can use [setSpecificSystemBarEnabled()](arkts-apis-window-Window.md#setspecificsystembarenabled11) to configure whether to display the status bar.|
 | MAXIMIZE    | 2    | The application window is maximized. In [freeform window](../../windowmanager/window-terminology.md#freeform-window) state, the window occupies the entire screen, and the dock, status bar, and title bar are displayed without requiring a hover. This state is unavailable in non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) state.|
-| MINIMIZE    | 3    | The application window is minimized.  |
-| FLOATING    | 4    | The application is displayed in a floating window.  |
-| SPLIT_SCREEN  | 5    | The application is displayed in split-screen mode.  |
+| MINIMIZE    | 3    | The application window is minimized. |
+| FLOATING    | 4    | The application is displayed in a floating window. The window can be moved and resized freely, which is suitable for scenarios where multiple windows are used simultaneously.   |
+| SPLIT_SCREEN  | 5    | The application is displayed in split-screen mode. The screen displays two application windows at the same time, each occupying half of the screen, which is suitable for scenarios where multiple tasks are processed in parallel.   |
 
 ## PixelUnit<sup>22+</sup>
 
 Enumerates the pixel units.
 
-You can use [px2vp](./arkts-apis-uicontext-uicontext.md#px2vp12) and [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert between physical pixels and virtual pixels.
+You can use [px2vp](arkts-apis-uicontext-uicontext.md#px2vp12) and [vp2px](arkts-apis-uicontext-uicontext.md#vp2px12) to convert between physical pixels and virtual pixels.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -153,10 +218,26 @@ Enumerates the layout when the window is maximized.
 
 | Name      | Value  | Description                         |
 | ---------- | ---- | ----------------------------- |
-| FOLLOW_APP_IMMERSIVE_SETTING  | 0    | The window, when maximized, follows the application's full-screen mode.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
-| EXIT_IMMERSIVE | 1    | The window, when maximized, exits full-screen mode if it is set to full-screen.<br>**Atomic service API**: This API can be used in atomic services since API version 12.            |
-| ENTER_IMMERSIVE    | 2    | The window, when maximized, transitions into the full-screen mode, and the window title bar and dock bar are displayed when the cursor hovers over the hot zone.<br>**Atomic service API**: This API can be used in atomic services since API version 12.  |
-| ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER<sup>14+</sup>    | 3    | The window, when maximized, transitions into the full-screen mode, and the window title bar and dock bar are not displayed when the cursor hovers over the hot zone.<br>**Atomic service API**: This API can be used in atomic services since API version 14.  |
+| FOLLOW_APP_IMMERSIVE_SETTING  | 0    | The window, when maximized, follows the application's full-screen mode.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
+| EXIT_IMMERSIVE | 1    | The window, when maximized, exits full-screen mode if it is set to full-screen.<br>**Atomic service API**: This API can be used in atomic services since API version 12.             |
+| ENTER_IMMERSIVE    | 2    | The window, when maximized, transitions into the full-screen mode, and the window title bar and dock bar are displayed when the cursor hovers over the hot zone.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
+| ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER<sup>14+</sup>    | 3    | The window, when maximized, transitions into the full-screen mode, and the window title bar and dock bar are not displayed when the cursor hovers over the hot zone.<br>**Atomic service API**: This API can be used in atomic services since API version 14.   |
+
+## AcrossDisplayPresentation
+
+Enumerates the cross-display presentation policies of a foldable device, used to control the waterfall-mode behavior when the main window is maximized in the hover state of a foldable 2-in-1 device.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name       | Value   | Description                          |
+| ---------- | ---- | ----------------------------- |
+| FOLLOW_ACROSS_DISPLAY_SETTING  | 0    | Follows the current cross-display presentation policy setting. If no cross-display presentation policy has been set, the system default policy is used: in the hover state, the window enters single-screen maximization (that is, when maximized, the window is displayed only on the upper half or the lower half); in the unfolded state, the window is maximized and remains in waterfall mode when folded back to the hover state (that is, the window is displayed across the upper and lower halves).     |
+| ENTER_ACROSS_DISPLAY_MODE | 1    | In the hover state, the window directly enters waterfall mode; in the unfolded state, the window is maximized and remains in waterfall mode when folded back to the hover state.             |
+| EXIT_ACROSS_DISPLAY_MODE    | 2    | In the hover state, the window exits waterfall mode and enters single-screen maximization; in the unfolded state, the window is maximized and exits waterfall mode when folded back to the hover state.   |
 
 ## WindowAnimationCurve<sup>20+</sup>
 
@@ -250,7 +331,7 @@ Enumerates the window modes.
 | ------ | --- | ------------------------ |
 | FULLSCREEN | 1 | Full-screen window. The first binary bit from right to left is 1. |
 | SPLIT  | 1 << 1 | Split-screen window. The second binary bit from right to left is 1.|
-| FLOAT   | 1 << 2  | Floating window. The third binary bit from right to left is 1.|
+| FLOAT   | 1 << 2  | Floating window. The third binary bit from right to left is 1. |
 | PIP   | 1 << 3  | PiP window. The fourth binary bit from right to left is 1.|
 
 ## OcclusionState<sup>22+</sup>
@@ -310,7 +391,7 @@ Enumerates the modality types of the child window.
 | Name                | Value     | Description      |
 | -------------------- | ------ | ---------- |
 | WINDOW_MODALITY      | 0      | Select this value when only the parent window should not respond to user operations.|
-| APPLICATION_MODALITY | 1      |  Select this value when other instances of the application should also not respond to user operations.<br> **Device behavior differences**: This enumeration can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.|
+| APPLICATION_MODALITY | 1      |  Select this value when other instances of the application should also not respond to user operations.<br> **Device behavior differences**: This enumeration can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows, this API returns error code 801. |
 
 ## ScreenshotEventType<sup>20+</sup>
 

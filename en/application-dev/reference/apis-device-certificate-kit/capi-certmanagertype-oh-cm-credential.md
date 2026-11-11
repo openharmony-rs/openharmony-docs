@@ -6,7 +6,7 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=a6d1ecf9e75b8b70f5a7c31d0a647870288e2f5c translatedAt=2026-10-30T06:35:05.148Z pushedAt=2026-10-30T08:50:59.703Z nl=1 -->
+<!-- md-trans-meta sourceCommit=aaa6335d8ea5457389eca6d8980e9573be997e97 translatedAt=2026-11-03T06:42:07.937Z pushedAt=2026-11-04T03:11:19.890Z nl=1 -->
 
 ```c
 typedef struct {...} OH_CM_Credential
@@ -29,8 +29,8 @@ Defines a struct for the certificate credential details.
 | Name| Description|
 | -- | -- |
 | uint32_t isExist | Whether the certificate data exists. The value **0** indicates that it does not exist, and **1** indicates that it exists. |
-| char type[OH_CM_MAX_LEN_TYPE_NAME] | Type of a credential. The value contains up to 8 bytes, including the terminator **'\0'**.|
-| char alias[OH_CM_MAX_LEN_CERT_ALIAS] | Alias of a credential. The value contains up to 128 bytes, including the terminator **'\0'**.|
+| char type[OH_CM_MAX_LEN_TYPE_NAME] | Type of a credential. The value contains up to 1025 bytes, including the terminator **'\0'**. |
+| char alias[OH_CM_MAX_LEN_CERT_ALIAS] | Alias of a credential. The value contains up to 129 bytes, including the terminator **'\0'**. |
 | char keyUri[OH_CM_MAX_LEN_URI] | URI of a credential. The value contains up to 256 bytes, including the terminator **'\0'**.|
 | uint32_t certNum | Number of certificates contained in the credential.|
 | uint32_t keyNum | Number of keys contained in the credential. |
