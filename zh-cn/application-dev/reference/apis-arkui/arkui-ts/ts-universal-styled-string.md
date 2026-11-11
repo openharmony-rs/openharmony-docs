@@ -318,12 +318,13 @@ static toHtml(styledString: StyledString): string
 
 继承于[StyledString](#styledstring)类。
 
->  **以下接口异常入参处理统一说明：**
+> **说明：**
 >
-> 当start和length越界或者必填传入undefined时，会抛出异常；
+> 以下接口异常入参统一处理：
 >
-> 当styledKey和styledValue传入异常值或者两者对应关系不匹配时，会抛出异常。
+> - 当start和length越界或者必填传入undefined时，会抛出异常；
 >
+> - 当styledKey和styledValue传入异常值或者两者对应关系不匹配时，会抛出异常。
 
 ### constructor<sup>23+</sup>
 
@@ -1753,7 +1754,7 @@ abstract getLeadingMargin(): LengthMetrics
 
 | 名称           | 类型              | 只读   | 可选  | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
-| textBackgroundStyle  |  [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明)  |  是  | 否 | 获取属性字符串的文本背景颜色。<br>默认值：<br>{<br> color: Color.Transparent,<br>  radius: 0<br>} |
+| textBackgroundStyle  |  [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明)  |  是  | 否 | 获取属性字符串的文本背景样式。<br>默认值：<br>{<br> color: Color.Transparent,<br>  radius: 0,<br>  borderWidth: 0,<br>  borderColor: 跟随字体颜色<br>} <br/>从API版本26.1.0开始，新增borderWidth和borderColor属性。 |
 
 ### constructor<sup>14+</sup>
 
@@ -2084,7 +2085,9 @@ struct StyledStringBindEventsDemo {
 
 ### 示例3（设置文本样式）
 
-从API version 12开始，该示例通过[getStyles](#getstyles)、[setStyle](#setstyle)接口实现属性字符串查询和设置样式。
+该示例通过[getStyles](#getstyles)、[setStyle](#setstyle)接口实现属性字符串查询和设置样式；通过borderWidth和borderColor属性设置文本边框。
+
+从API version 12开始，新增[getStyles](#getstyles)、[setStyle](#setstyle)接口；从API版本26.1.0开始，[BackgroundColorStyle](#backgroundcolorstyle14)新增borderWidth和borderColor属性。
 
 ```ts
 // xxx.ets
@@ -2111,7 +2114,7 @@ struct StyledStringSetTextStyleDemo {
     superscript: SuperscriptStyle.SUBSCRIPT
   });
   // 创建多重TextStyle样式的对象mutableStyledString1
-  mutableStyledString1: MutableStyledString = new MutableStyledString('运动45分钟', [{
+  mutableStyledString1: MutableStyledString = new MutableStyledString('运动45分钟 Text Border', [{
     start: 0,
     length: 2,
     styledKey: StyledStringKey.FONT,
@@ -2121,6 +2124,11 @@ struct StyledStringSetTextStyleDemo {
     length: 2,
     styledKey: StyledStringKey.FONT,
     styledValue: this.fontStyleAttr2
+  }, {
+    start: 7,
+    length: 11,
+    styledKey: StyledStringKey.BACKGROUND_COLOR,
+    styledValue: new BackgroundColorStyle({ color: '#33007DFF', radius: 5, borderWidth: 2, borderColor: Color.Blue })
   }
   ]);
   // 创建有多种样式组合对象mutableStyledString2
