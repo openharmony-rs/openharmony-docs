@@ -140,8 +140,8 @@ import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.Ab
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 
-const DOMAIN = 0x0000;
-const TAG = 'SPC_EntryAbility';
+const DOMAIN = 0xF811;
+const TAG = '[menuuiabilitydemo_EntryAbility]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -156,7 +156,6 @@ export default class EntryAbility extends UIAbility {
       hilog.info(DOMAIN, TAG, 'Succeeded in loading the content.');
     });
   }
-}
 ```
 
 ## 配置Ability页面（以ExtensionAbility方式接入）
@@ -171,8 +170,8 @@ export default class EntryAbility extends UIAbility {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
-const DOMAIN = 0x0000;
-const TAG: string = 'SPC_EntryUIExtensionAbility'
+const DOMAIN = 0xF811;
+const TAG: string = '[menuuecdemo_EntryUIExtensionAbility]';
 
 export default class EntryUIExtensionAbility extends UIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
@@ -198,17 +197,16 @@ export default class EntryUIExtensionAbility extends UIExtensionAbility {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { common } from '@kit.AbilityKit';
 
-const DOMAIN = 0x0000;
-const TAG = 'SPC_EntryAbility';
+const DOMAIN = 0xF811;
+const TAG = '[menuuiabilitydemo_Index]';
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
 
   build() {
     RelativeContainer() {
-      Button('click to back')
+      Button($r('app.string.back_button_title'))
         .onClick(() => {
           (this.getUIContext().getHostContext() as common.UIAbilityContext).terminateSelf().catch((err: Error) => {
             hilog.error(DOMAIN, TAG, 'error: %{public}s', JSON.stringify(err));
@@ -233,8 +231,8 @@ struct Index {
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const DOMAIN = 0x0000;
-const TAG: string = 'SPC_UECPage'
+const DOMAIN = 0xF811;
+const TAG: string = '[menuuecdemo_UECPage]'
 
 @Entry
 @Component
@@ -245,7 +243,7 @@ struct UECPage {
   build() {
     Row() {
       Column() {
-        Button('click to back')
+        Button($r('app.string.back_button'))
           .onClick(() => {
             try {
               this.session.sendData({ 'action': 'exit' })
