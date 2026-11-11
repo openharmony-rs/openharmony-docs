@@ -46,4 +46,4 @@ When the following APIs are called, error code 11500104 (IPC error) may be retur
 - `verifyUpgradePackage`
 - `applyNewVersion`
 
-For details, see [@ohos.update (Update) (System API)](../apis-basic-services-kit/js-apis-update-sys.md).
+For details, see **@ohos.update (Update) (System API)**.

@@ -393,7 +393,7 @@ type ISendable = [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)
 
 | Type               | Description                    |
 | ------------------ | ------------------------ |
-| [[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)](../apis-arkts/js-apis-arkts-lang.md#isendable)  | Parent type of all sendable types.               |
+| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#isendable)  | Parent type of all sendable types.               |
 
 ## PixelMap
 
