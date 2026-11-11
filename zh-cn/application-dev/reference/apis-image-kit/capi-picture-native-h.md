@@ -28,9 +28,9 @@
 | -- | -- | -- |
 | [OH_PictureNative_AuxiliaryPictureCopyItem](capi-image-nativemodule-oh-picturenative-auxiliarypicturecopyitem.md) | OH_PictureNative_AuxiliaryPictureCopyItem | 此结构体用于在创建PictureNative对象的深拷贝时指定辅助图的拷贝规则。描述如何将辅助图从一种类型拷贝到另一种类型。 |
 | [OH_PictureNative_MetadataCopyItem](capi-image-nativemodule-oh-picturenative-metadatacopyitem.md) | OH_PictureNative_MetadataCopyItem | 此结构体用于在创建PictureNative对象的深拷贝时指定元数据的拷贝规则。描述如何将元数据从一种类型拷贝到另一种类型。 |
-| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) | - | Picture结构体类型，用于执行picture相关操作。<br> Picture为多图对象结构体，包含主图、辅助图和元数据。<br> 主图包含图像的大部分信息，主要用于显示图像内容。<br> 辅助图用于存储与主图相关但不同的数据，展示图像更丰富的信息。<br> 元数据一般用来存储关于图像文件的信息。 |
-| [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) | - | AuxiliaryPicture结构体类型，用于执行AuxiliaryPicture相关操作。 |
-| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) | - | AuxiliaryPictureInfo结构体类型，用于执行AuxiliaryPictureInfo相关操作。 |
+| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) | OH_PictureNative | Picture结构体类型，用于执行picture相关操作。<br> Picture为多图对象结构体，包含主图、辅助图和元数据。<br> 主图包含图像的大部分信息，主要用于显示图像内容。<br> 辅助图用于存储与主图相关但不同的数据，展示图像更丰富的信息。<br> 元数据一般用来存储关于图像文件的信息。 |
+| [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) | OH_AuxiliaryPictureNative | AuxiliaryPicture结构体类型，用于执行AuxiliaryPicture相关操作。 |
+| [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) | OH_AuxiliaryPictureInfo | AuxiliaryPictureInfo结构体类型，用于执行AuxiliaryPictureInfo相关操作。 |
 | [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) | OH_ComposeOptions | OH_ComposeOptions是native层封装的合成HDR选项参数结构体，用于设置合成选项参数。用于指定合成HDR所用的参数，例如目标像素格式。 |
 | <!--DelRow-->[OH_DecomposeOptions](#oh_decomposeoptions) | OH_DecomposeOptions | OH_DecomposeOptions是native层封装的HDR分解选项参数结构体，用于指定HDR分解所用的参数，包括增益图尺寸和目标像素格式。 |
 
