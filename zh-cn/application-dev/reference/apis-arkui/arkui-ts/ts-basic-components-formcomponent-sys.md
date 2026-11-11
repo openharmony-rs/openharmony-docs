@@ -50,7 +50,7 @@ FormComponent(value: FormInfo)
 
 > **说明：**
 >
-> - 该组件不同于其他ArkUI组件在下树时自动回收内存，不使用该组件需要主动删除，调用接口[formHost.deleteForm](../../apis-form-kit/js-apis-app-form-formHost-sys.md#formhostdeleteform)，否则会造成内存泄露。
+> - 使用该组件会创建一个卡片实例，通过formId标识。不使用该实例需要主动删除，调用接口[formHost.deleteForm](../../apis-form-kit/js-apis-app-form-formHost-sys.md#formhostdeleteform)，否则会造成泄露。
 
 ## FormInfo<sup>12+</sup>
 
