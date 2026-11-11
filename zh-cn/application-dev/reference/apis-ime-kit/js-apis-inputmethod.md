@@ -344,7 +344,7 @@ inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) 
 ## inputMethod.switchInputMethod<sup>9+</sup>
 switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
-切换输入法，使用promise异步回调。
+切换输入法，使用Promise异步回调。
 
 > **说明：**
 >
@@ -500,7 +500,7 @@ inputMethod.switchCurrentInputMethodSubtype({
 
 switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&gt;
 
-切换当前输入法的子类型。使用promise异步回调。
+切换当前输入法的子类型。使用Promise异步回调。
 
 **需要权限：**
 - API版本9-10：ohos.permission.CONNECT_IME_ABILITY
@@ -645,7 +645,7 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: Busi
 
 switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype): Promise&lt;boolean&gt;
 
-切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用promise异步回调。
+切换至指定输入法的指定子类型，适用于跨输入法切换子类型。使用Promise异步回调。
 
 **需要权限：**
 - API版本9-10：ohos.permission.CONNECT_IME_ABILITY
@@ -1284,7 +1284,7 @@ inputMethod.getController().attach(true, textConfig, (err: BusinessError) => {
 
 attach(showKeyboard: boolean, textConfig: TextConfig): Promise&lt;void&gt;
 
-自绘控件绑定输入法。使用promise异步回调。
+自绘控件绑定输入法。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1338,7 +1338,7 @@ inputMethod.getController().attach(true, textConfig).then(() => {
 
 attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: RequestKeyboardReason): Promise&lt;void&gt;
 
-自绘控件绑定输入法。使用promise异步回调。
+自绘控件绑定输入法。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1395,7 +1395,7 @@ inputMethod.getController().attach(true, textConfig, requestKeyboardReason).then
 
 attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?: AttachOptions): Promise&lt;void&gt;
 
-自绘控件绑定输入法。使用promise异步回调。
+自绘控件绑定输入法。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1452,7 +1452,7 @@ inputMethod.getController().attachWithUIContext(uiContext, textConfig, attachOpt
 
 discardTypingText(): Promise&lt;void&gt;
 
-编辑框应用发送“清空正在输入的文字”命令到输入法。使用promise异步回调。
+编辑框应用发送“清空正在输入的文字”命令到输入法。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1492,7 +1492,7 @@ inputMethod.getController().discardTypingText().then(() => {
 
 requestSystemInputCapability(type: InputCapabilityType): Promise&lt;void&gt;
 
-请求系统输入能力。使用promise异步回调。
+请求系统输入能力。使用Promise异步回调。
 
 当type为TRANSLATION时，当前输入法须为系统配置的默认输入法，否则请求被拒绝。
 
@@ -1599,7 +1599,7 @@ inputMethod.getController().showTextInput((err: BusinessError) => {
 
 showTextInput(): Promise&lt;void&gt;
 
-进入文本编辑状态。使用promise异步回调。
+进入文本编辑状态。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1639,7 +1639,7 @@ inputMethod.getController().showTextInput().then(() => {
 
 showTextInput(requestKeyboardReason: RequestKeyboardReason): Promise&lt;void&gt;
 
-进入文本编辑状态。使用promise异步回调。
+进入文本编辑状态。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1746,7 +1746,7 @@ inputMethod.getController().hideTextInput((err: BusinessError) => {
 
 hideTextInput(): Promise&lt;void&gt;
 
-退出文本编辑状态。使用promise异步回调。
+退出文本编辑状态。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1833,7 +1833,7 @@ inputMethod.getController().detach((err: BusinessError) => {
 
 detach(): Promise&lt;void&gt;
 
-自绘控件解除与输入法的绑定。使用promise异步回调。
+自绘控件解除与输入法的绑定。使用Promise异步回调。
 
 含义/功能：解除自绘控件与输入法应用之间的绑定关系，释放相关资源。
 
@@ -1923,7 +1923,7 @@ inputMethod.getController().setCallingWindow(windowId, (err: BusinessError) => {
 
 setCallingWindow(windowId: number): Promise&lt;void&gt;
 
-设置要避让软键盘的窗口。使用promise异步回调。
+设置要避让软键盘的窗口。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2022,7 +2022,7 @@ inputMethod.getController().updateCursor(cursorInfo, (err: BusinessError) => {
 
 updateCursor(cursorInfo: CursorInfo): Promise&lt;void&gt;
 
-当编辑框内的光标信息发生变化时，调用该接口使输入法感知到光标变化。使用promise异步回调。
+当编辑框内的光标信息发生变化时，调用该接口使输入法感知到光标变化。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2121,7 +2121,7 @@ inputMethod.getController().changeSelection('text', 0, 5, (err: BusinessError) =
 
 changeSelection(text: string, start: number, end: number): Promise&lt;void&gt;
 
-当编辑框内被选中的文本信息内容或文本范围发生变化时，可调用该接口更新文本信息，使输入法应用感知到变化。使用promise异步回调。
+当编辑框内被选中的文本信息内容或文本范围发生变化时，可调用该接口更新文本信息，使输入法应用感知到变化。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2211,7 +2211,7 @@ inputMethod.getController().updateAttribute(inputAttribute, (err: BusinessError)
 
 updateAttribute(attribute: InputAttribute): Promise&lt;void&gt;
 
-更新编辑框属性信息。使用promise异步回调。
+更新编辑框属性信息。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2314,7 +2314,7 @@ inputMethod.getController().stopInputSession((err: BusinessError, result: boolea
 
 stopInputSession(): Promise&lt;boolean&gt;
 
-结束输入会话。使用promise异步回调。
+结束输入会话。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2694,7 +2694,7 @@ inputMethod.getController().stopInput((err: BusinessError, result: boolean) => {
 
 stopInput(): Promise&lt;boolean&gt;
 
-结束输入会话。使用promise异步回调。
+结束输入会话。使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -3842,7 +3842,7 @@ inputMethodSetting.listInputMethodSubtype(inputMethodProperty,
 
 listInputMethodSubtype(inputMethodProperty: InputMethodProperty): Promise&lt;Array&lt;InputMethodSubtype&gt;&gt;
 
-获取指定输入法应用的所有子类型。使用promise异步回调。
+获取指定输入法应用的所有子类型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3932,7 +3932,7 @@ inputMethodSetting.listCurrentInputMethodSubtype((err: BusinessError, data: Arra
 
 listCurrentInputMethodSubtype(): Promise&lt;Array&lt;InputMethodSubtype&gt;&gt;
 
-查询当前输入法应用的所有子类型。使用promise异步回调。
+查询当前输入法应用的所有子类型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4016,7 +4016,7 @@ inputMethod.getSetting().getInputMethods(true, (err: BusinessError, data: Array<
 
 getInputMethods(enable: boolean): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
-获取已激活/未激活的输入法应用列表。使用promise异步回调。
+获取已激活/未激活的输入法应用列表。使用Promise异步回调。
 
 > **说明：**
 > 
@@ -4146,7 +4146,7 @@ inputMethod.getSetting().getAllInputMethods((err: BusinessError, data: Array<inp
 
 getAllInputMethods(): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
-获取所有输入法应用列表。使用promise异步回调。
+获取所有输入法应用列表。使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4257,7 +4257,7 @@ inputMethod.getSetting().showOptionalInputMethods((err: BusinessError, result: b
 
 showOptionalInputMethods(): Promise&lt;boolean&gt;
 
-显示输入法选择对话框。使用promise异步回调。
+显示输入法选择对话框。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4331,7 +4331,7 @@ inputMethod.getSetting().listInputMethod((err: BusinessError, data: Array<inputM
 
 listInputMethod(): Promise&lt;Array&lt;InputMethodProperty&gt;&gt;
 
-查询已安装的输入法列表。使用promise异步回调。
+查询已安装的输入法列表。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4393,7 +4393,7 @@ inputMethod.getSetting().displayOptionalInputMethod((err: BusinessError) => {
 
 displayOptionalInputMethod(): Promise&lt;void&gt;
 
-显示输入法选择对话框。使用promise异步回调。
+显示输入法选择对话框。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4423,7 +4423,7 @@ inputMethod.getSetting().displayOptionalInputMethod().then(() => {
 
 getInputMethodState(): Promise&lt;EnabledState&gt;
 
-查询输入法的启用状态。使用promise异步回调。
+查询输入法的启用状态。使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
