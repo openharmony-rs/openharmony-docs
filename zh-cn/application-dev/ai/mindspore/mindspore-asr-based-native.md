@@ -15,7 +15,7 @@
 
 ## 环境配置
 
-若需要使用模拟器运行该示例，请参考：[使用模拟器运行应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-emulator)
+若需要使用模拟器运行该示例，请参考：[使用模拟器运行应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-emulator)。
 
 ## 开发流程
 
