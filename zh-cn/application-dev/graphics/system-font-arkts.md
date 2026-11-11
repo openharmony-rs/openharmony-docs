@@ -19,7 +19,7 @@
 
 | 接口名 | 描述 | 
 | -------- | -------- |
-| getUIFontConfig() : UIFontConfig | 获取系统字体配置。 | 
+| getUIFontConfig(): UIFontConfig | 获取系统字体配置。 | 
 
 ## 获取系统字体信息
 
