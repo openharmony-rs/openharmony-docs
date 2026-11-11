@@ -37,3 +37,4 @@ want的Params操作的常量。
 | HIDE_SENSITIVE_TYPE<sup>15+</sup>     | ohos.media.params.hideSensitiveType | 指示隐藏敏感信息的类型。 <br>**系统接口**：此接口为系统接口。 |
 | ASSERT_FAULT_SESSION_ID<sup>12+</sup>  | ohos.ability.params.asssertFaultSessionId      | 指示AssertFault的会话ID。 <br>**系统接口**：此接口为系统接口。 |
 | UI_EXTENSION_ROOT_TOKEN | ohos.param.uiExtension.rootHostToken | 指示UIExtensionAbility的原始宿主Token。 <br>**模型约束**：此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。<br>**起始版本**：26.0.0。|
+| AGENT_TASK_ID | ohos.aafwk.param.agent.taskId | 指示启动任务的TaskID。 <br>**模型约束**：此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。<br>**起始版本**：26.1.0。|

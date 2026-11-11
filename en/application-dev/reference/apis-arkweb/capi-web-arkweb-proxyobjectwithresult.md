@@ -1,12 +1,11 @@
 # ArkWeb_ProxyObjectWithResult
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:53:59.849Z pushedAt=2026-08-06T11:45:59.430Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:49:04.967Z pushedAt=2026-11-09T11:44:48.217Z nl=1 -->
 
 ```c
 typedef struct {...} ArkWeb_ProxyObjectWithResult
@@ -31,3 +30,5 @@ ArkWeb_ProxyObjectWithResult is a JavaScript proxy object struct with a return v
 | const char* objName | Name of the injected object, used for referencing the object in JavaScript calls. The name must follow JavaScript identifier rules and cannot contain special characters. |
 | const [ArkWeb_ProxyMethodWithResult](capi-web-arkweb-proxymethodwithresult.md)* methodList | Array of method structs carried by the injected object. The array length is specified by the **size** parameter. Each method in the array is registered to the web page, and JavaScript can call it in the format of "objectName.methodName". |
 | size_t size | Length of the method struct array, that is, the number of elements in the array. This value must be consistent with the actual length of the **methodList** array. The minimum value is 0, and the maximum value depends on system resource limits. |
+
+

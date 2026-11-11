@@ -194,7 +194,7 @@
           console.info(`data: ${JSON.stringify(data)}, status: ${status}`);
           await that.handleFormStatus(status);
         } catch (e) {
-          console.info(`sth wrong when handleMessage, code: ${e.code}, message: ${e.message}`);
+          console.error(`sth wrong when handleMessage, code: ${e.code}, message: ${e.message}`);
         }
       }
 
@@ -474,11 +474,11 @@
           formProvider.activateSceneAnimation(formId).then(() => {
             console.info('activateSceneAnimation succeed');
           }).catch((error: BusinessError) => {
-            console.info(`activateSceneAnimation catch error` +
+            console.error(`activateSceneAnimation catch error` +
               `, code: ${error.code}, message: ${error.message}`);
           })
         } catch (e) {
-          console.info(`activateSceneAnimation call requestOverflow catch error` +
+          console.error(`activateSceneAnimation call catch error` +
             `, code: ${e.code}, message: ${e.message}`);
         }
       }

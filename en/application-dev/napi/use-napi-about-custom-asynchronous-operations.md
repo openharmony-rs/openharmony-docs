@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes custom asynchronous operations using Node-API, supporting Promise and Callback asynchronous models for non-blocking processing of I/O-intensive or compute-intensive tasks."
+keywords: [Node-API, custom asynchronous operations, Promise, Callback, asynchronous models, I/O-intensive, compute-intensive, non-blocking]
+doctype: guide
+status: active
+---
+
 # Customizing Asynchronous Operations Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.369Z nl=1 -->
 
 ## Introduction
 
@@ -31,7 +40,7 @@ The following table lists the APIs provided by the Node-API module for customizi
 
 If you are just starting out with Node-API, see [Node-API Development Process](use-napi-process.md). The following demonstrates only the C++ and ArkTS code involved in the APIs for customizing async operations.
 
-### napi_async_init and napi_async_destroy
+### napi_async_init, napi_async_destroy
 
 Use **napi_async_init** to create an async context, and use **napi_async_destroy** to destroy an async context. Note that these APIs do not support capabilities related to **async_hook**.
 
@@ -92,6 +101,8 @@ static napi_value AsynchronousWork(napi_env env, napi_callback_info info)
     if (funcType == napi_function) {
         napi_make_callback(env, context, recv, func, 1, argv, &result);
     } else {
+        napi_async_destroy(env, context);
+        napi_close_callback_scope(env, scope);
         napi_throw_error(env, nullptr, "Unexpected argument type");
         return nullptr;
     }

@@ -759,11 +759,11 @@ Repeated PiP operation.
 **处理步骤**<br>
 不要重复启动/停止画中画。<br>
 
-## 1300016 参数校验错误
+## 1300016 参数错误
 
 **错误信息**
 
-Parameter validation error.
+Parameter error.
 
 **错误描述**
 
@@ -1160,6 +1160,24 @@ This operation conflicts with other floating windows.
 **处理步骤**
 
 启动闪控窗前，请先停止闪控球窗口和画中画窗口。
+
+## 1300035 不允许创建子窗口
+
+**错误信息**
+
+ Creating a subwindow is not allowed in the current context.
+
+**错误描述**
+
+当前上下文不允许创建子窗口。
+
+**可能原因**
+
+应用Ability继承自AgentUIExtensionAbility。
+
+**处理步骤**
+
+创建子窗口前，检查应用Ability是否继承自AgentUIExtensionAbility。
 
 ## 1001 窗口空指针异常<sup>(deprecated)</sup>
 **错误信息**<br>

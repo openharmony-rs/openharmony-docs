@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=330b06588843f46c9bd90648f10e5c574cf1a509 translatedAt=2026-08-27T08:35:14.245Z pushedAt=2026-08-27T11:11:24.086Z -->
+<!-- md-trans-meta sourceCommit=d0e7d4684d02e20ec3894e48c9decc21705d1cde translatedAt=2026-11-09T11:49:30.485Z pushedAt=2026-11-10T03:42:00.336Z nl=1 -->
 
 ```c
 typedef struct OH_ArkUI_NativeModule_LineSpacingOptions OH_ArkUI_NativeModule_LineSpacingOptions

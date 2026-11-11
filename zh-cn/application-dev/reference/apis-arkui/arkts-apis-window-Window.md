@@ -8447,7 +8447,7 @@ try {
 
 setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;WindowLimits&gt;
 
-设置当前窗口的尺寸限制，使用Promise异步回调。
+设置当前窗口的尺寸限制，可通过参数isForcible设置是否强制生效，使用Promise异步回调。
 
 默认存在一个系统尺寸限制，系统尺寸限制由产品配置决定，不可修改。
 

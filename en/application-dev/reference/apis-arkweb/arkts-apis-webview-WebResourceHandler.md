@@ -1,12 +1,11 @@
 # Class (WebResourceHandler)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:48:06.185Z pushedAt=2026-08-07T08:11:43.257Z -->
+<!-- md-trans-meta sourceCommit=55df9c11d6d7c450cc6d9d1ac7b0b998394459f6 translatedAt=2026-11-06T11:06:37.116Z pushedAt=2026-11-10T02:26:04.451Z nl=1 -->
 
 WebResourceHandler is a handler used to return the result of an intercepted request to the **Web** component in custom scheme interception scenarios. After **WebSchemeHandler** decides to intercept a request, the developer uses **WebResourceHandler** to provide a custom response header (**didReceiveResponse**) and response body data (**didReceiveResponseBody**) to the **Web** component, and notifies the request of completion (**didFinish**) or failure (**didFail**). **didFail** supports an overloaded method (API version 20+) to simplify the error handling process. This API enables the app layer to fully customize the response to network requests.
 
@@ -123,6 +122,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 17100021 | The resource handler is invalid. |
 
+
 **Example**
 
 For details about the example, see [OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart12).
@@ -199,7 +199,7 @@ struct WebComponent {
               }
 
               try {
-                // Directly calls didFail(WebNetErrorList.ERR_FAILED, true). If didReceiveResponse was not called before this, the system automatically generates a response header, and the network error code is -104 (corresponding to ERR_CONNECTION_FAILED).
+                // Directly call didFail(WebNetErrorList.ERR_FAILED, true). If didReceiveResponse was not called before, the system automatically generates the response header.
                 resourceHandler.didFail(WebNetErrorList.ERR_FAILED, true);
               } catch (error) {
                 // When error.code is 17100101(The errorCode is either ARKWEB_NET_OK or outside the range of error codes in WebNetErrorList)
@@ -224,3 +224,84 @@ struct WebComponent {
   }
 }
 ```
+
+## didFail
+
+didFail(code: WebNetErrorList, completeIfNoResponse: boolean, customErrorCode: number): void
+
+Notifies the ArkWeb kernel that the intercepted request should return a failure and carries a custom error code.
+
+**Since:** 26.0.1
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --------| ------- | ---- | ---------------------------|
+| code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | Yes | Network error code. |
+| completeIfNoResponse | boolean | Yes | When the value is true, if [didReceiveResponse](#didreceiveresponse12) has not been called before, a response is automatically generated to complete this network request. When the value is false, if [didReceiveResponse](#didreceiveresponse12) has not been called before, the application waits for [didReceiveResponse](#didreceiveresponse12) to be called and a response to be passed in, and this network request is not completed directly. |
+| customErrorCode | number | Yes | The custom error code of this request, which is directly passed to the application through the [onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive) event. For details, see [WebResourceError.getCustomErrorCode](arkts-basic-components-web-WebResourceError.md#getcustomerrorcode). |
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID | Error Message                              |
+| -------- | ------------------------------------- |
+| 17100021 | The resource handler is invalid. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler();
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+              console.info("[schemeHandler] onRequestStart");
+              try {
+                console.info("[schemeHandler] onRequestStart url:" + request.getRequestUrl());
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+
+              if (request.getRequestUrl().endsWith("example.com")) {
+                return false;
+              }
+
+              try {
+                resourceHandler.didFail(WebNetErrorList.ERR_FAILED, true, 1001);
+              } catch (error) {
+                console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              return true;
+            })
+
+            this.schemeHandler.onRequestStop((request: webview.WebSchemeHandlerRequest) => {
+              console.info("[schemeHandler] onRequestStop");
+            });
+
+            this.controller.setWebSchemeHandler('https', this.schemeHandler);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+        .javaScriptAccess(true)
+        .domStorageAccess(true)
+    }
+  }
+}
+```
+<!--no_check-->

@@ -1,12 +1,11 @@
 # AIPageCommand
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=dcc0abdade92c0b802a40194e56aabc12b399ebe translatedAt=2026-08-07T04:42:33.598Z pushedAt=2026-08-07T11:04:36.136Z -->
+<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-11-06T10:59:30.875Z pushedAt=2026-11-10T02:04:43.610Z nl=1 -->
 
 `AIPageCommand` defines the JSON command protocol supported by [executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand), including the input parameter format and response format of different commands. Before calling this API, the app needs to serialize the command object into a JSON string.
 
@@ -758,15 +757,10 @@ Clears existing page annotations, obtains element positions based on the node id
 ### Execution Rules
 
 - During annotation, one or more layout rectangles of the element in the current viewport are obtained. If the element has no layout rectangle with a positive area, the element's bounding rectangle is used instead.
-
 - Hit testing uses the horizontal center point of the rectangle and a sampling point at `3/5` of its height. The element hit by the sampling point must be the target element or its descendant; otherwise, the rectangle is not drawn.
-
 - Elements in embedded frames are drawn after their coordinates are converted to the top-level page viewport coordinates.
-
 - Rectangles are clipped to the current viewport. An element is not drawn and is counted in `missingElementIds` if it is completely outside the viewport, its total visible area after clipping is less than `20px²`, it is occluded, the element cannot be found, or its coordinates cannot be converted.
-
 - An element may correspond to multiple rectangles. Annotation boxes are drawn per rectangle, while numeric labels are drawn per element. The text indicates the actual drawing order, starting from `1`.
-
 - `maxMarks` limits the number of rectangles, not the number of elements. After the limit is reached, `truncated` is returned as `true`. Elements that are not further processed are not guaranteed to be included in `missingElementIds`.
 
 ### PageAnnotationResult
@@ -881,7 +875,6 @@ Common failure results are as follows:
 | 11 | The current page does not have an annotation layer that can be cleaned, or the annotation cleanup command failed. |
 | 130 | The annotation cleanup command timed out. |
 | 132 | The browser, main page frame, or ArkWeb page frame is empty. |
-
 ## screenCapture
 
 Obtains a screenshot of the current web page viewport, a target element within the viewport, or a target area within the viewport, and returns the image data in Base64 encoding.
@@ -915,6 +908,7 @@ Obtains a screenshot of the current web page viewport, a target element within t
 | code | number | Execution result code. For details, see [Command Execution Result Code Description](./arkts-apis-webview-AIPageResult.md#command-execution-result-code-description). |
 | message | string | Execution result description. `"success"` if successful; error description if failed. |
 | data | string | Base64-encoded string in PNG format. Returned when successful. |
+
 
 When the command is executed successfully, `{"code":10,"message":"success","data":"Base64-encoded string in PNG format"}` is returned; when failed, an error code JSON is returned. Common error codes are listed in the table below:
 
@@ -1008,7 +1002,6 @@ On failure:
 ```
 
 ### Sample Code
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -1121,6 +1114,7 @@ struct Index {
 }
 ```
 
+
 ## getZoomLevel
 
 Obtains the scale ratio of the current web page. This command is a pure query operation and is not restricted by [zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22).
@@ -1199,4 +1193,4 @@ On failure:
   "message": "browser or host is null"
 }
 ```
-<!--no_check-->
+

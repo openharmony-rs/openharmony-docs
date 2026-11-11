@@ -1728,7 +1728,7 @@ struct Index {
             .fontSize(30)
             .bindContextMenu(this.MyMenu, ResponseType.LongPress,
               {
-                maxHeight: LengthMetrics.percent(50)
+                maxHeight: LengthMetrics.percent(0.5)
               })
             .backgroundColor('#ff7fcdff')
         }

@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes ArrayBuffer operations using Node-API, including creating, inspecting, detaching, and identifying ArrayBuffer objects for binary data processing such as file I/O and network transmission."
+keywords: [Node-API, ArrayBuffer, binary data, napi_create_arraybuffer, napi_detach_arraybuffer, buffers, data pointers]
+doctype: guide
+status: active
+---
+
 # Working with ArrayBuffer Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.361Z nl=1 -->
 
 ## Introduction
 

@@ -562,6 +562,51 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 }
 ```
 
+## SharedPhotoAsset<sup>14+</sup>
+
+定义共享图片资产。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | --- | ---- | ---- | --- |
+| fileId | number | 否 | 否 | 图片资产标识ID。|
+| uri | string | 否 | 否 | 图片资产URI。|
+| data | string | 否 | 否 | 图片资产的路径数据。|
+| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。|
+| displayName | string | 否 | 否 | 图片资产的显示名称。|
+| size | number  | 否 | 否 | 图片资产文件大小。 单位为字节（Byte），取值应为≥0的整数。|
+| dateAdded | number | 否 | 否 | 图片资产创建时间。单位为毫秒（ms），取值应为≥0的整数。|
+| dateModified | number | 否 | 否 | 图片资产最后修改时间。单位为毫秒（ms），取值应为≥0的整数。|
+| duration | number | 否 | 否 | 视频类型的图片资产时长。单位为毫秒（ms），取值应为≥0的整数。|
+| width | number | 否 | 否 |  图片资产的像素宽度。单位为像素（px），取值应为≥0的整数。|
+| height | number | 否 | 否 | 图片资产的像素高度。单位为像素（px），取值应为≥0的整数。|
+| dateTaken | number | 否 | 否 | 图片资产拍照后存入本地时间。单位为毫秒（ms），取值应为≥0的整数。    |
+| orientation | number | 否 | 否 |图片资产的旋转角度。单位为度（°），取值应为[0, 359]内的整数。|
+| isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏，默认为false。|
+| title | string | 否 | 否 | 图片资产的标题。|
+| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。|
+| dateTrashed | number | 否 | 否 | 图片资产被移入回收站的时长。单位为秒（s），取值应为≥0的整数。 |
+| hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏，默认为false。|
+| userComment | string | 否 | 否 | 图片资产的用户评论信息。|
+| cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。|
+| dateYear | string | 否 | 否 | 图片资产创建年份时间。|
+| dateMonth | string | 否 | 否 | 图片资产创建月份时间。|
+| dateDay | string | 否 | 否 | 图片资产创建日时间。|
+| pending | boolean | 否 | 否 | 图片资产等待状态，true表示等待，false表示解除等待，默认为false。|
+| dateAddedMs | number | 否 | 否 | 图片资产数据添加后经过时间，单位为毫秒（ms），取值应为≥0的整数。|
+| dateTrashedMs | number | 否 | 否 | 图片资产被移入回收站的时长，单位为毫秒（ms），取值应为≥0的整数。|
+| subtype | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12) | 否 | 否 | 图片资产子类型。|
+| movingPhotoEffectMode | [MovingPhotoEffectMode](js-apis-photoAccessHelper-sys.md#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。|
+| dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | 否 | 否 | 媒体文件的动态范围类型。|
+| thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。true表示已准备好，false表示未准备好，默认为false。|
+| lcdSize | string | 否 | 否 | 图片资产的lcd（Liquid Crystal Display）缩略图宽高信息。|
+| thmSize | string | 否 | 否 | 图片资产的缩略图（Thumb）宽高信息。|
+| thumbnailModifiedMs | number | 否 | 是 | 图片资产的缩略图状态改变时间，单位为毫秒（ms），取值应为≥0的整数。|
+| thumbnailVisible | [ThumbnailVisibility](js-apis-photoAccessHelper-sys.md#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。|
+
 ## Album
 
 实体相册。

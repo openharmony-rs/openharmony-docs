@@ -1,46 +1,47 @@
 # FAQs About Memory Leaks
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=cafe730c03f95c1273b115a81e96d29ade5b9ef8 translatedAt=2026-11-09T08:52:17.306Z nl=1 -->
 
 ## Is there any mechanism to check whether napi_ref leaks
 
-- Question: When **napi_create_reference** is used to create a reference to a JS object, **napi_delete_reference** needs to be used to release the JS object. If **napi_delete_reference** is not used, the JS object memory may leak. Is there any mechanism to check or test whether **napi_ref** leaks? 
-- Answer:
+- Question: When **napi_create_reference** is used to create a reference to a JS object, **napi_delete_reference** needs to be used to release the JS object. If **napi_delete_reference** is not used, the JS object memory may leak. Is there any mechanism to check or test whether **napi_ref** leaks?  
+- Answer: 
  
-Use Allocation provided by DevEco Studio. 
+Use Allocation provided by DevEco Studio.  
 
-For details, see [Memory Analysis: Allocation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-allocations). 
+For details, see [Memory Analysis: Allocation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-allocations).  
 
-The internal implementation of the **napi_create_reference** API creates a C++ object. Therefore, if you forget to use the **napi_delete_reference** API, the new C++ object will leak. In this case, you can use Allocation to print the allocation stack of the unreleased objects, where you can check whether **napi_ref** leaks. 
+The internal implementation of the **napi_create_reference** API creates a C++ object. Therefore, if you forget to use the **napi_delete_reference** API, the new C++ object will leak. In this case, you can use Allocation to print the allocation stack of the unreleased objects, where you can check whether **napi_ref** leaks.  
 
 ## How do I locate and resolve memory leaks during Node-API development
 
 The memory usage increases when the button is clicked, and the memory cannot be reclaimed even if GC is triggered. How do I locate and resolve memory leaks during Node-API development?
 
-- Answer: 
+- Answer:  
 
-You need to understand the Node-API lifecycle mechanism. The references are as follows:
+You need to understand the Node-API lifecycle mechanism. The references are as follows: 
 
-[Performing Lifecycle Management Using Node-API](use-napi-life-cycle.md) 
+[Performing Lifecycle Management Using Node-API](use-napi-life-cycle.md)  
 
-Common causes of memory leaks during Node-API development: 
+Common causes of memory leaks during Node-API development:  
 1. **napi_value** is not managed by **napi_handle_scope**. As a result, the ArkTS object held by **napi_value** cannot be released. This problem often occurs in [direct use of uv_queue_work](napi-guidelines.md#asynchronous-tasks). To solve this problem, add the **napi_open_handle_scope** and **napi_close_handle_scope** APIs.
 
-    You can analyze the snapshot to locate the cause of the leak. If the **distance** of the leaked ArkTS object is **1**, the object may be held by native (**napi_value** is a pointer to the native owner), and **napi_value** is not within the range of **napi_handle_scope**.  
+    You can analyze the snapshot to locate the cause of the leak. If the **distance** of the leaked ArkTS object is **1**, the object may be held by native (**napi_value** is a pointer to the native owner), and **napi_value** is not within the range of **napi_handle_scope**. For details, see [Guidelines for Error-Prone APIs](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615).   
 
-2. A strong reference (with the **initial_refcount** parameter greater than 0) is created for the ArkTS object using **napi_create_reference**, and the reference is not deleted. As a result, the ArkTS object cannot be reclaimed. The **napi_create_reference** API creates a C++ object internally. Therefore, both the ArkTS object and native object are leaked. You can use Allocation to capture the native object leak stack and check whether stack frames related to **napi_create_reference** exist. 
+2. A strong reference (with the **initial_refcount** parameter greater than 0) is created for the ArkTS object using **napi_create_reference**, and the reference is not deleted. As a result, the ArkTS object cannot be reclaimed. The **napi_create_reference** API creates a C++ object internally. Therefore, both the ArkTS object and native object are leaked. You can use Allocation to capture the native object leak stack and check whether stack frames related to **napi_create_reference** exist.  
 
-    For details, see [Memory Analysis: Allocation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-allocations). 
+    For details, see [Memory Analysis: Allocation](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-allocations).  
 
-3. The leaked object is held by another active ArkTS object. In this case, check the owner of the leaked object using snapshot. 
+3. The leaked object is held by another active ArkTS object. In this case, check the owner of the leaked object using snapshot.  
 
 ## What should I do if memory leaks when napi_threadsafe_function is used
 
-When **napi_threadsafe_function** (tsfn for short) is used, **napi_acquire_threadsafe_function** is often called to change the reference count of tsfn to ensure that tsfn is not released unexpectedly. When all the tsfn calls are complete, **napi_release_threadsafe_function** should be called in **napi_tsfn_release** mode in a timely manner to ensure that the reference count returns to the value before **napi_acquire_threadsafe_function** is called. tsfn can be correctly released only when the reference count is **0**.
+When **napi_threadsafe_function** (hereinafter referred to as tsfn) is used, **napi_acquire_threadsafe_function** is often called to modify the reference count of tsfn, ensuring that tsfn is not accidentally released. However, after use, **napi_release_threadsafe_function** must be called in **napi_tsfn_release** mode in a timely manner to ensure that the reference count returns to the level before **napi_acquire_threadsafe_function** was called, after all callbacks have been executed. tsfn can be properly released only when its reference count reaches zero.
 
 When **env** is about to exit but the reference count of tsfn is not 0, **napi_release_threadsafe_function** should be called in **napi_tsfn_abort** mode to ensure that tsfn is not held or used by **env** after **env** is released. If **env** continues to hold tsfn after exiting, the application may crash.
 
@@ -60,10 +61,10 @@ The following code shows how to register **env_cleanup** to ensure that tsfn is 
 #define LOG_TAG "MY_TSFN_DEMO"
 
 /*
-  To construct a scenario in which the env lifecycle is shorter than the native lifecycle,
-  the following uses worker, taskpool, and napi_create_ark_runtime
-  to create an ArkTS running environment for a worker thread and manually stop the thread in advance.
-*/
+ * To construct a scenario where the lifetime of env is shorter than that of native resources,
+ * this example uses worker, taskpool, or napi_create_ark_runtime to
+ * create an ArkTS runtime environment on a non-main thread and terminates the thread early.
+ */
 
 
 // Define a struct to simulate the scenario where tsfn is stored.
@@ -76,7 +77,7 @@ MyTsfnContext(napi_env env, napi_value workName) {
     // Create a thread-safe function.
     if (napi_create_threadsafe_function(env, nullptr, nullptr, workName, 1, 1, this,
             TsfnFinalize, this, TsfnCallJs, &tsfn_) != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "tsfn is created failed");
+        OH_LOG_ERROR(LOG_APP, "tsfn is created failed");
         return;
     };
 };
@@ -149,7 +150,7 @@ static void TsfnCallJs(napi_env env, napi_value func, void *context, void *data)
 // Register the myTsfnDemo method with the module Index.d.ts. The myTsfnDemo method is defined as follows:
 // export const myTsfnDemo: () => void;
 napi_value MyTsfnDemo(napi_env env, napi_callback_info info) {
-    OH_LOG_ERROR(LOG_APP, "MyTsfnDemo is called");
+    OH_LOG_INFO(LOG_APP, "MyTsfnDemo is called");
     napi_value workName = nullptr;
     napi_create_string_utf8(env, "MyTsfnWork", NAPI_AUTO_LENGTH, &workName);
     MyTsfnContext *myContext = new MyTsfnContext(env, workName);
@@ -160,7 +161,7 @@ napi_value MyTsfnDemo(napi_env env, napi_callback_info info) {
     };
     char *data0 = new char[]{"Im call in ArkTS Thread"};
     if (!myContext->Call(data0)) {
-        OH_LOG_INFO(LOG_APP, "call tsfn failed");
+        OH_LOG_ERROR(LOG_APP, "call tsfn failed");
     };
 
     // Create a thread to simulate an asynchronous operation.

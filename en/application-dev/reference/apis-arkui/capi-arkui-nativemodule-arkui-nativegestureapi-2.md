@@ -1,12 +1,11 @@
 # ArkUI_NativeGestureAPI_2
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T08:26:06.852Z pushedAt=2026-08-20T03:46:43.711Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:43:57.642Z pushedAt=2026-11-10T03:34:33.118Z nl=1 -->
 
 ```c
 typedef struct {...} ArkUI_NativeGestureAPI_2
@@ -30,6 +29,7 @@ Defines a collection of gesture APIs. Based on [ArkUI_NativeGestureAPI_1](capi-a
 |-------------------------------------------| -- |
 | [ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)* gestureApi1 | Pointer to the **ArkUI_NativeGestureAPI_1** struct.|
 
+
 ### Member Functions
 
 | Name| Description|
@@ -46,6 +46,7 @@ int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData, Ar
 
 **Description**
 
+
 Sets the callback function for gesture interruption events. It is applicable to scenarios where you need to decide, based on the current interaction state during gesture recognition, whether the gesture continues to respond or is interrupted.
 
 **Parameters**
@@ -61,3 +62,4 @@ Sets the callback function for gesture interruption events. It is applicable to 
 | Type| Description|
 | -- | -- |
 | int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+

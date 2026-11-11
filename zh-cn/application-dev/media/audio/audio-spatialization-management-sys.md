@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍面向系统应用的空间音频管理：通过AudioSpatializationManager查询、设置和监听空间音频渲染、自适应空间音频渲染、头动跟踪的开关状态，更新空间化设备状态并设置渲染场景类型。"
+keywords: [空间音频管理, AudioSpatializationManager, 头动跟踪, 自适应空间音频渲染, 空间音频渲染场景类型, 空间化设备状态更新, 空间音频源类型, 空间音频开关设置, 怎么开启头动跟踪]
+doctype: guide
+status: active
+---
+
 # 空间音频管理（仅对系统应用开放）
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -247,9 +255,9 @@ enabled：布尔值类型，用于控制指定设备的头动跟踪开关。入�
     volumeGroupId : 1,
     displayName : ""
   };
-  let enable: boolean = true;
+  let enabled: boolean = true;
 
-  audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enable).then(() => {
+  audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enabled).then(() => {
     console.info('Succeeded in setting head tracking enabled');
   }).catch((err: BusinessError) => {
     console.error(`Result ERROR: ${err}`);

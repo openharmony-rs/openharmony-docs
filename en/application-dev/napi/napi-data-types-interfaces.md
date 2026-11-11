@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes the data types and APIs supported by Node-API, including the napi_status enum, napi_value type, and extension APIs, providing a complete reference for Node-API data types and APIs."
+keywords: [Node-API, data types, napi_value, napi_status, API reference, extensions, napi_env, callbacks]
+doctype: guide
+status: active
+---
+
 # Node-API Data Types and APIs
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=e1179fcf9f901221cede77c428024df1bad69e0a translatedAt=2026-11-09T08:52:17.303Z nl=1 -->
 
 ## Data Types
 
@@ -98,7 +107,7 @@ napi_release_threadsafe_function(napi_threadsafe_function func,
 
 ### napi_threadsafe_function_call_mode
 
-Defines an enum for whether the call should be blocked when the queue associated with the thread-safe function is full.
+Defines two constants used to specify the call mode of the thread-safe function.
 
 The data struct is as follows:
 
@@ -160,11 +169,19 @@ A mechanism used in Node-API to create the execution environment of critical API
 
 Critical API: An API that needs to be executed within the critical scope. Specifically, the API name contains the keyword **critical**.
 
+**napi_microtask_scope (Extension)**
+
+**napi_microtask_scope** is an OpenHarmony Node-API extension mechanism for restricting microtask execution. It is created by **napi_open_microtask_scope** and closed by **napi_close_microtask_scope**. While the scope is open, microtasks (such as Promise callbacks) are not executed. Instead, they remain in the microtask queue and are executed synchronously when the scope is closed.
+
 **napi_strong_ref (Extended Capability)**
 
 Reference to **napi_value**, which allows you to manage the lifecycle of ArkTS objects.
 
 Note: Compared with **napi_ref**, **napi_strong_ref** is more efficient in creation but supports limited functionalities (for example, strong and weak reference conversion is not supported).
+
+**napi_callsite_info (Extended Capability)**
+
+A callsite info handle used to cache object structure information for property access, accelerating subsequent property reads and writes. A separate `napi_callsite_info` handle must be created for each distinct callsite. The same handle can be reused across multiple calls but must not be used across threads.
 
 **napi_sendable_ref (Extended Capability)**
 
@@ -273,7 +290,7 @@ typedef enum {
 | -------- | -------- |
 | napi_priority_immediate | Highest priority.|
 | napi_priority_high | Priority lower than **napi_priority_immediate**.|
-| napi_priority_low | Priority lower than **napi_priority_high**.|
+| napi_priority_low | Priority lower than **napi_priority_immediate** and **napi_priority_high**.|
 | napi_priority_idle | Lowest priority.|
 
 ## APIs
@@ -378,7 +395,7 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_has_element | Checks whether the given object has an element at the specified index.|
 | napi_delete_element | Deletes the element at the specified index of the given **Object**.|
 | napi_create_typedarray | Creates an ArkTS TypedArray from an existing ArrayBuffer.|
-| napi_is_typedarray | Checks whether an ArkTS value is a TypeArray object.|
+| napi_is_typedarray | Checks whether the given ArkTS value is a TypedArray. |
 | napi_get_typedarray_info | Obtains the properties of a TypedArray, such as the type, length, byte offset, and ArrayBuffer.|
 | napi_create_dataview | Creates an ArkTS **DataView** from an existing ArrayBuffer.|
 | napi_is_dataview | Checks whether an ArkTS value is a **DataView** object.|
@@ -459,8 +476,8 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_throw_range_error | Throws an ArkTS range error with text information.|
 | napi_is_error | Checks whether **napi_value** indicates an error object.|
 | napi_create_error | Creates an ArkTS error object with text information.|
-| napi_create_type_error | Creates an ArkTS error object with text information.|
-| napi_create_range_error | Creates an ArkTS error object with text information.|
+| napi_create_type_error | Creates an ArkTS TypeError object with text information.|
+| napi_create_range_error | Creates an ArkTS RangeError object with text information.|
 | napi_get_and_clear_last_exception | Obtains and clears the latest exception.|
 | napi_is_exception_pending | Checks whether an exception occurs.|
 | napi_fatal_error | Raises a fatal error to terminate the process immediately.|
@@ -476,7 +493,7 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_get_property | Obtains the requested property of an object.|
 | napi_has_property | Checks whether an object has the specified property.|
 | napi_delete_property | Deletes a property from an object.|
-| napi_has_own_property | Checks whether an object has the own property specified by **key**.|
+| napi_has_own_property | Behaves the same as **napi_has_property**. Checks whether the given object has the given property. |
 | napi_set_named_property | Sets a property with the specified name for an object.|
 | napi_get_named_property | Obtains the property with the specified name in an object.|
 | napi_has_named_property | Checks whether an object has the property with the specified name.|
@@ -562,7 +579,7 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_wrap_sendable | Wraps a native instance into an ArkTS object.|
 | napi_wrap_sendable_with_size | Wraps a native instance into an ArkTS object with the specified size.|
 | napi_unwrap_sendable | Unwraps the native instance from an ArkTS object.|
-| napi_remove_wrap_sendable | Removes and obtains the native instance wrapped by an ArkTS object. After removal, the callback will no longer be triggered and must be manually deleted to free memory.|
+| napi_remove_wrap_sendable | Removes and retrieves the native instance wrapped in an ArkTS object. After removal, the callback is automatically triggered later. Be careful to avoid double-free issues. |
 | napi_wrap_enhance | Wraps a native instance of the specified size into an ArkTS object. During runtime, the instance size is counted and accumulated. When the accumulated size reaches the GC triggering threshold, the garbage collection process is started. You can specify whether to execute the registered callback asynchronously (if asynchronous, it must be thread-safe).|
 | napi_create_ark_context| Creates a context.|
 | napi_switch_ark_context| Switches to the specified runtime context environment.|
@@ -576,7 +593,14 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_create_strong_sendable_reference | Creates a Sendable strong reference to a Sendable ArkTS object.|
 | napi_delete_strong_sendable_reference | Deletes a Sendable strong reference.|
 | napi_get_strong_sendable_reference_value | Obtains the ArkTS object value associated with a Sendable strong reference.|
-| napi_throw_business_error | Throws an ArkTS error with the text information, where the code property of the error object is of the number type.|
+| napi_throw_business_error | Throws an ArkTS error with text information whose code property is of the number type. |
+| napi_create_callsite_info | Creates a callsite information handle for caching property access information. |
+| napi_delete_callsite_info | Deletes a callsite information handle and releases the associated cached resources. |
+| napi_get_property_with_callsite_info | Quickly retrieves an object property value using callsite information. |
+| napi_set_property_with_callsite_info | Quickly sets an object property value using callsite information. |
+| napi_get_global_handle_count | Traverses and counts global handles. |
+| napi_open_microtask_scope | Opens a microtask scope to restrict microtask execution. |
+| napi_close_microtask_scope | Closes a microtask scope and synchronously executes the microtasks accumulated while the scope was open. |
  
 **napi_queue_async_work_with_qos**
 
@@ -902,6 +926,58 @@ napi_status napi_get_strong_sendable_reference_value(napi_env env,
 napi_status napi_throw_business_error(napi_env env,
                                       int32_t errorCode,
                                       const char* msg);
+```
+
+**napi_create_callsite_info**
+
+```c
+napi_status napi_create_callsite_info(napi_env env, napi_callsite_info* result);
+```
+
+**napi_delete_callsite_info**
+
+```c
+napi_status napi_delete_callsite_info(napi_env env, napi_callsite_info info);
+```
+
+**napi_get_property_with_callsite_info**
+
+```c
+napi_status napi_get_property_with_callsite_info(napi_env env,
+                                                 napi_value object,
+                                                 napi_value key,
+                                                 napi_callsite_info info,
+                                                 napi_value* result,
+                                                 bool* hit);
+```
+
+**napi_set_property_with_callsite_info**
+
+```c
+napi_status napi_set_property_with_callsite_info(napi_env env,
+                                                 napi_value object,
+                                                 napi_value key,
+                                                 napi_value value,
+                                                 napi_callsite_info info,
+                                                 bool* hit);
+```
+
+**napi_get_global_handle_count**
+
+```c
+napi_status napi_get_global_handle_count(napi_env env, size_t* count);
+```
+
+**napi_open_microtask_scope**
+
+```c
+napi_status napi_open_microtask_scope(napi_env env, napi_microtask_scope* scope);
+```
+
+**napi_close_microtask_scope**
+
+```c
+napi_status napi_close_microtask_scope(napi_env env, napi_microtask_scope scope);
 ```
 
 ### Other Utilities

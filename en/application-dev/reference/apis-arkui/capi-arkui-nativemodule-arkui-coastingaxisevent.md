@@ -1,12 +1,11 @@
 # ArkUI_CoastingAxisEvent
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T04:17:05.353Z pushedAt=2026-08-19T07:01:26.010Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:40:20.867Z pushedAt=2026-11-10T01:58:38.160Z nl=1 -->
 
 ```c
 typedef struct ArkUI_CoastingAxisEvent ArkUI_CoastingAxisEvent
@@ -25,3 +24,4 @@ You can receive this event only when the following conditions are met: The user 
 **Related module**: [ArkUI_EventModule](capi-arkui-eventmodule.md)
 
 **Header file**: [ui_input_event.h](capi-ui-input-event-h.md)
+

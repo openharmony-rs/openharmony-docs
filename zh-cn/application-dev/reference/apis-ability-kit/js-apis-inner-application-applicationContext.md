@@ -1530,6 +1530,8 @@ setFont(font: string, enableAnimation: boolean): void
 
 **起始版本：** 26.1.0
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -1538,14 +1540,6 @@ setFont(font: string, enableAnimation: boolean): void
 | ------ | ---- | ---- | ---- |
 | font | string | 是 | 字体，可以通过[UIContext.registerFont](../apis-arkui/arkts-apis-uicontext-font.md#registerfont)方法进行注册使用。 |
 | enableAnimation | boolean | 是 | 本次设置是否使用动画。true表示使用动画，false表示不使用动画。 |
-
-**错误码：**
-
-以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------- |
-| 16000011 | The context does not exist. |
 
 **示例：**
 

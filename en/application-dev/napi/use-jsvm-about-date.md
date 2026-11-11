@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to use JSVM-API to create Date objects, obtain their UTC time values in milliseconds, and check whether objects are of the Date type for native-side date and time processing."
+keywords: ["OH_JSVM_CreateDate","OH_JSVM_GetDateValue","OH_JSVM_IsDate","Date object","milliseconds","time value","UTC time"]
+doctype: guide
+status: active
+---
+
 # Working with Date Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.327Z nl=1 -->
 
 ## Introduction
 
@@ -36,12 +45,19 @@ Use **OH_JSVM_CreateDate** to create a **Date** object representing the given nu
 
 CPP code:
 
-```cpp
-#include <time.h>
+<!-- @[oh_jsvm_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/createdate/src/main/cpp/hello.cpp) -->
+
+``` C++
+#include "napi/native_api.h"
+#include "hilog/log.h"
+#include "ark_runtime/jsvm.h"
+#include <ctime>
+// ...
 // Define OH_JSVM_CreateDate.
-static JSVM_Value CreateDate(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value CreateDate(JSVM_Env env, JSVM_CallbackInfo info)
+{
     // Obtain the number of seconds elapsed since the Unix epoch using the C function and convert the value into milliseconds.
-    double value = static_cast<double>(static_cast<uint64_t>(time(NULL)) * 1000ULL);
+    double value = static_cast<double>(time(nullptr) * 1000);
     // Call OH_JSVM_CreateDate to convert the double value into a JS value indicating the date and time.
     JSVM_Value returnValue = nullptr;
 
@@ -74,15 +90,13 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createDate", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(createDate())JS";
+const char *SRC_CALL_NATIVE = R"JS(createDate())JS";
 ```
 
 Expected result:
-```
+```txt
 JSVM CreateDate success:Mon Jul 7 10:42:34 2025
 ```
-
-<!-- @[oh_jsvm_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/createdate/src/main/cpp/hello.cpp) -->
 
 ### OH_JSVM_GetDateValue
 
@@ -90,46 +104,48 @@ Use **OH_JSVM_GetDateValue** to obtain the C double primitive of the time value 
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/getdatevalue/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include <ctime>
+// ...
 // Define OH_JSVM_GetDateValue.
-static JSVM_Value GetDateValue(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value GetDateValue(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr));
     // Obtain the Unix timestamp passed in.
     double value = 0;
-    JSVM_CALL(OH_JSVM_GetDateValue(env, args[0], &value)); 
-   
+    JSVM_CALL(OH_JSVM_GetDateValue(env, args[0], &value));
+
     // Convert the obtained Unix Time Stamp time into a date string for printing.
     uint64_t time = static_cast<uint64_t>(value) / 1000;
     char *date = ctime(reinterpret_cast<time_t *>(&time));
     OH_LOG_INFO(LOG_APP, "JSVM GetDateValue success:%{public}s", date);
-   
+
     JSVM_Value returnValue = nullptr;
     JSVM_CALL(OH_JSVM_CreateDouble(env, value, &returnValue));
     return returnValue;
 }
 
-// Register the CreateDate callback.
+// Register the GetDateValue callback.
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetDateValue},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named createDate and associate it with a callback. This allows the createDate callback to be called from JS.
+// Alias of the GetDateValue method for JS invocation.
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getDateValue", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(getDateValue(new Date(Date.now())))JS";
+const char *SRC_CALL_NATIVE = R"JS(getDateValue(new Date(Date.now())))JS";
 ```
 
 Expected result:
-```
+```txt
 JSVM GetDateValue success:Mon Jul 7 10:47:08 2025
 ```
-
-<!-- @[oh_jsvm_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/getdatevalue/src/main/cpp/hello.cpp) -->
 
 ### OH_JSVM_IsDate
 
@@ -137,36 +153,37 @@ Use **OH_JSVM_IsDate** to check whether a JS object is a date.
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/isdate/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Define OH_JSVM_IsDate.
-static JSVM_Value IsDate(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value IsDate(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr));
     bool isDate = false;
     JSVM_CALL(OH_JSVM_IsDate(env, args[0], &isDate));
     OH_LOG_INFO(LOG_APP, "JSVM IsDate success:%{public}d", isDate);
-    
+
     JSVM_Value result = nullptr;
     JSVM_CALL(OH_JSVM_GetBoolean(env, isDate, &result));
     return result;
 }
-// Register the CreateDate callback.
+// Register the IsDate callback.
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = IsDate},
 };
 static JSVM_CallbackStruct *method = param;
-// Set a property descriptor named createDate and associate it with a callback. This allows the createDate callback to be called from JS.
+// Alias of the IsDate method for JS calls.
 static JSVM_PropertyDescriptor descriptor[] = {
     {"isDate", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(isDate(new Date(Date.now())))JS";
+const char *SRC_CALL_NATIVE = R"JS(isDate(new Date(Date.now())))JS";
 ```
 
 Expected result:
-```
+```txt
 JSVM IsDate success:1
 ```
-
-<!-- @[oh_jsvm_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/isdate/src/main/cpp/hello.cpp) -->
