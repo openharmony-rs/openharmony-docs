@@ -38,7 +38,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[@ohos.multimedia.camera(相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 1. 导入camera接口，接口中提供相机相关的属性和方法。
 
