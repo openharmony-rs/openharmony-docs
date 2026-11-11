@@ -332,7 +332,6 @@ cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-// promise
 try {
     connection.cancelPairedDevice('11:22:33:44:55:66').then(() => {
         console.info('cancelPairedDevice');
