@@ -6,7 +6,7 @@
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=07c0fbf7970bf9b1b4d8dfa133922b828e96d1c8 translatedAt=2026-09-15T17:03:55.843Z pushedAt=2026-09-21T02:39:12.415Z -->
+<!-- md-trans-meta sourceCommit=f639ec0e8ba9607828f21f451876341bf5ee8fe1 translatedAt=2026-11-09T06:28:24.160Z pushedAt=2026-11-09T08:41:38.926Z nl=1 -->
 
 ## Overview
 
@@ -28,8 +28,8 @@ Defines the structs and enums of the LowPowerAudioSink.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) | OH_LowPowerAudioSink | Describes the declaration for the LowPowerAudioSink.|
-| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | OH_LowPowerAudioSinkCallback | Contains a set of callback function pointers for the LowPowerAudioSink.<br> To ensure the normal running of the LowPowerAudioSink, you must register the instance of this struct with the [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) instance and process the information reported by the callback functions.|
+| [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) | OH_LowPowerAudioSink | **OH_LowPowerAudioSink** is a data structure used in low-power audio output scenarios. You can use this structure to implement the low-power audio output function. |
+| [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | OH_LowPowerAudioSinkCallback | Contains a set of callback function pointers for the **OH_LowPowerAudioSink**.<br> To ensure the normal running of the **LowPowerAudioSink**, you must register the instance of this struct with the [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) instance and process the information reported by the callback functions. |
 
 ### Functions
 

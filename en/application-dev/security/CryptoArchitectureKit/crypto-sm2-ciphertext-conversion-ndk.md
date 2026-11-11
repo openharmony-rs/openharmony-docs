@@ -1,4 +1,4 @@
-# Converting SM2 Ciphertext (C/C++)
+# SM2 Ciphertext Format Conversion (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,11 +6,16 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:33:35.089Z pushedAt=2026-08-10T09:59:04.261Z -->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T04:02:37.339Z pushedAt=2026-10-30T07:31:41.251Z nl=1 -->
 
 The currently supported SM2 ciphertext format is the ASN.1 format defined by the national cryptographic standard, where the parameters are arranged in the order of C1C3C2. For details about the parameters, see [SM2](crypto-encryption-decryption.md#sm2) in the asymmetric key encryption and decryption algorithm specifications.
 
 You can convert the SM2 ciphertext into ASN.1 format based on the SM2 parameters specified or obtain SM2 parameters from the SM2 ciphertext in ASN.1 format.
+
+## Adding the Dynamic Library in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 **Generating Ciphertext in ASN.1 Format**
 
@@ -155,4 +160,3 @@ EXIT:
 }
 ```
 
-  <!--no_check-->

@@ -487,5 +487,5 @@ This callback is triggered when the input method is detected to be successfully 
 
 **Example**
 
-For the complete example, see [onInputmethodAttached](./arkts-basic-components-web-events.md#oninputmethodattached).
+For the complete example, see [onInputmethodAttached](./arkts-basic-components-web-events.md).
 <!--no_check-->

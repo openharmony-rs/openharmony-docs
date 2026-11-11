@@ -128,7 +128,7 @@ status: active
 | 音视频     | 3gp<sup>22+</sup>                        |视频轨：H.263、AVC(H.264)、MPEG4<br>音频轨：AAC、AMR(amrnb、amrwb)|
 | 音视频     | 3g2<sup>22+</sup>                        |视频轨：H.263、AVC(H.264)、MPEG4<br>音频轨：AAC、AMR(amrnb、amrwb)|
 | 音视频     | m4v<sup>22+</sup>                        |<!--RP12-->视频轨：AVC(H.264)、MPEG4<!--RP12End--><br>音频轨：AAC、ALAC、AC3|
-| 音视频     | wmv<sup>22+</sup>                        |视频轨：AVC(H.264)、WMV3<br>音频轨：WMAV1、WMAV2、WMAPRO|
+| 音视频     | wmv<sup>22+</sup>                        |视频轨：AVC(H.264)、WMV3、WMV1（从API版本26.1.0开始支持）<br>音频轨：WMAV1、WMAV2、WMAPRO|
 | 音视频     | rm<sup>23+</sup>、rmvb<sup>23+</sup>                        |视频轨：RV30、RV40<br>音频轨：AAC、AC3、COOK|
 | 音频       | m4a                        |<!--RP9-->音频轨：AAC、ALAC<sup>22+</sup><!--RP9End-->|
 | 音频       | aac                        |音频轨：AAC|

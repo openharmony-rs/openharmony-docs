@@ -3,12 +3,12 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @lizihao_73-->
-<!--Designer: @wambers584-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @zhoulin_-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=eb297c120685014d3e534d0011425fa2c96518e7 translatedAt=2026-08-11T10:12:49.868Z pushedAt=2026-08-12T02:49:08.103Z -->
+<!-- md-trans-meta sourceCommit=a38582b6814e039c17cfc51499915c7af3568e78 translatedAt=2026-11-03T02:57:12.055Z pushedAt=2026-11-03T03:02:30.244Z nl=1 -->
 
-Window rotation provides a rich set of rotation policies, enabling apps to adapt their orientation in various scenarios.
+Window rotation is an important capability for adapting an app to different device forms and usage scenarios. It allows the app to automatically adjust its UI layout based on the device orientation, improving the user experience.
 
 When developing an app, developers need to consider the rotation policy experience across multiple device types. To help developers get started quickly, adaptation examples are provided for the following typical scenarios.
 
@@ -16,18 +16,18 @@ When developing an app, developers need to consider the rotation policy experien
 
 Currently, there is a wide variety of device forms, including bar phones, foldables, tri-fold devices, wide-fold devices, and more. If an app's rotation policy is adapted for only one type of device, the experience on other devices may be degraded. To eliminate the extra adaptation effort caused by new device types, a device-type-independent approach must be adopted for configuring rotation policies.
 
-You can analyze the rotation requirements across different device forms based on your service requirements. If a single policy (such as **FOLLOW_DESKTOP** or **AUTO_ROTATION_UNSPECIFIED**) meets the requirements, it is recommended to use a single policy. If a single policy is insufficient, the breakpoint mechanism can be referenced to achieve differentiated adaptation.
+Developers can sort out the rotation requirements for different device forms based on their own business. If a single strategy (for example, FOLLOW_DESKTOP or AUTO_ROTATION_UNSPECIFIED) can meet the requirements, it is recommended to use a single strategy. If a single strategy cannot meet the requirements, refer to the [breakpoint mechanism](../ui/arkts-layout-development-grid-layout.md#breakpoints) (a responsive design mechanism that divides device sizes into different ranges based on thresholds such as window width and aspect ratio, and adopts different adaptation strategies in different ranges) to implement differentiated adaptation.
 
-For example, on a tri-fold device, portrait display is expected in the folded state, portrait display in the M state, and landscape display in the G state; on a tablet, landscape display is expected; on a bar phone, portrait display is expected. In this scenario, the [WidthBreakpoint](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#widthbreakpoint13) breakpoint mechanism can be used to achieve differentiated adaptation.
+For example, on a tri-fold device, it is expected that the F state (fully folded state, showing only one outer screen) displays in portrait mode, the M state (intermediate unfolded state, showing only two inner screens) displays in portrait mode, and the G state (fully unfolded state, showing all three inner screens) displays in landscape mode (for the fold status enums of tri-fold devices, see [FoldStatus](../reference/apis-arkui/js-apis-display.md#foldstatus10)); on a tablet, it is expected to display in landscape mode; on a bar phone, it is expected to display in portrait mode. In this scenario, [WidthBreakpoint](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#widthbreakpoint13) and [HeightBreakpoint](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#heightbreakpoint13) can be used to implement differentiated adaptation.
 
 The sample code is as follows:
 
-<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-import { window } from '@kit.ArkUI'
-import common from '@ohos.app.ability.common';
-import { Callback } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+import { Callback, BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
 
 @Entry
@@ -36,42 +36,60 @@ struct Index {
   @State currentOrientation: string = 'UNSPECIFIED';
   private stage: window.WindowStage = (this.getUIContext().getHostContext() as common.UIAbilityContext).windowStage;
   private foldDisplayModeCallback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
-    console.info(`Listening enabled. Data: ${data}`);
+    console.info(`Succeeded in listening fold display mode change, data is ${data}`);
     this.getBreakPointAndSetOrientation();
   };
 
   aboutToAppear() {
-    const ret = display.isFoldable();
-    if (ret) {
-      display.on('foldDisplayModeChange', this.foldDisplayModeCallback);
-    } else {
-      this.getBreakPointAndSetOrientation();
+    try {
+      const ret = display.isFoldable();
+      if (ret) {
+        display.on('foldDisplayModeChange', this.foldDisplayModeCallback);
+      } else {
+        this.getBreakPointAndSetOrientation();
+      }
+    } catch (err) {
+      console.error(`aboutToAppear error: ${(err as BusinessError).message}`);
     }
   }
 
   aboutToDisappear() {
-    display.off('foldDisplayModeChange', this.foldDisplayModeCallback);
+    try {
+      display.off('foldDisplayModeChange', this.foldDisplayModeCallback);
+    } catch (err) {
+      console.error(`aboutToDisappear error: ${(err as BusinessError).message}`);
+    }
   }
 
   private getBreakPointAndSetOrientation(): void {
-    let displayInfo = display.getDefaultDisplaySync();
-    let displayWidth = displayInfo.width;
-    let displayHeight = displayInfo.height;
-    let heightBp = displayHeight / displayWidth;
-    if (displayWidth > displayHeight) {
-      let temp = displayWidth;
-      displayWidth = displayHeight;
-      displayHeight = temp;
-    }
-    // It is recommended to use a single policy such as "FOLLOW_DESKTOP" to handle device differentiation. If a single policy cannot meet the requirements, refer to the breakpoint mechanism to mask device differences.
-    // This is a special example. In principle, for an app that supports landscape mode, the rotation policy should allow rotation in all four directions. This example is provided solely to illustrate how to use breakpoints.
-    // 600 is a boundary value of the width breakpoint enum, and 0.8 is a boundary value of the aspect ratio breakpoint enum.
-    if (displayWidth >= 600 && heightBp < 0.8) {
-      this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.LANDSCAPE);
-      this.currentOrientation = 'LANDSCAPE';
-    } else {
-      this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.PORTRAIT);
-      this.currentOrientation = 'PORTRAIT';
+    try {
+      let displayInfo = display.getDefaultDisplaySync();
+      let displayWidth = displayInfo.width;
+      let displayHeight = displayInfo.height;
+      let heightBp = displayHeight / displayWidth;
+      if (displayWidth > displayHeight) {
+        let temp = displayWidth;
+        displayWidth = displayHeight;
+        displayHeight = temp;
+      }
+      // It is recommended to prioritize a single strategy (such as "FOLLOW_DESKTOP") to handle device differences. If a single strategy cannot meet the requirements, the breakpoint mechanism can be used to mask device differences.
+      // This is a special example. In principle, for applications that support landscape orientation, the rotation strategy should support rotation in four directions. This example is provided only to illustrate how to use breakpoints.
+      // 600 is one of the boundary values of the width breakpoint enumeration, and 0.8 is one of the boundary values of the aspect ratio breakpoint enumeration.
+      if (displayWidth >= 600 && heightBp < 0.8) {
+        this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.LANDSCAPE)
+          .catch((err: BusinessError) => {
+            console.error(`setPreferredOrientation error: ${err.message}`);
+          });
+        this.currentOrientation = 'LANDSCAPE';
+      } else {
+        this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.PORTRAIT)
+          .catch((err: BusinessError) => {
+            console.error(`setPreferredOrientation error: ${err.message}`);
+          });
+        this.currentOrientation = 'PORTRAIT';
+      }
+    } catch (err) {
+      console.error(`getBreakPointAndSetOrientation error: ${(err as BusinessError).message}`);
     }
   }
 
@@ -90,6 +108,7 @@ struct Index {
 }
 ```
 
+
 ## Landscape/Portrait Switching for Video Apps
 
 Landscape/portrait switching for video apps refers to the scenario where the details page of the playback UI is displayed in portrait mode, and users can switch the page to landscape mode via a full-screen button for a better viewing experience.
@@ -100,13 +119,17 @@ You can implement landscape/portrait switching for the video playback UI in the 
 
 - Set the video window orientation by navigating to a page with a different display orientation. For implementation details, see [Implementing Landscape/Portrait Mode Switching Through Page Redirection](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-landscape-and-portrait-development#section161651074615).
 
+> **Note:**
+>
+> Before calling [setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1), ensure that a valid main window instance has been obtained through [getMainWindowSync()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#getmainwindowsync9).
+
 ## Converting Between Screen Orientation and Window Orientation
 
 There are three related but distinct concepts: screen [orientation](../reference/apis-arkui/js-apis-display.md#attributes), screen [rotation](../reference/apis-arkui/js-apis-display.md#attributes), and window [orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19).
 
-In multi-device and multi-form-factor scenarios (such as foldable phones, tablets, and external displays), the screen rotation (physical angle) and screen orientation (logical portrait/landscape state) do not always have a one-to-one correspondence.
+In multi-device and multi-form scenarios (for example, foldable phones, tablets, and external monitors), the screen [rotation](../reference/apis-arkui/js-apis-display.md#attributes) (physical angle) and the screen [orientation](../reference/apis-arkui/js-apis-display.md#attributes) (logical landscape/portrait state) do not always correspond one-to-one.
 
-The following table shows the mapping among screen angle, screen orientation, and window orientation for a bar phone:
+Correspondence between screen angle, screen orientation, and window orientation for bar phones and the dual-fold unfolded state:
 
 | Screen Angle | Screen Orientation | Window Orientation |
 | -------- | -------- | -------- |
@@ -115,7 +138,7 @@ The following table shows the mapping among screen angle, screen orientation, an
 | 180 | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
 | 270 | LANDSCAPE_INVERTED | LANDSCAPE |
 
-Correspondence between screen angle, screen orientation, and window orientation in the tri-fold fully expanded state (under certain features, the actual behavior may differ from the table below; refer to the actual performance):
+Correspondence between screen angle, screen orientation, and window orientation in the wide-fold unfolded state and the tri-fold fully unfolded state (under certain features, the actual behavior may differ from the table below; refer to the actual performance):
 
 | Screen Angle | Screen Orientation | Window Orientation |
 | -------- | -------- | -------- |
@@ -124,7 +147,7 @@ Correspondence between screen angle, screen orientation, and window orientation 
 | 270 | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
 | 0 | LANDSCAPE_INVERTED | LANDSCAPE |
 
-The definitions of screen orientation and window orientation in the landscape direction are not consistent. For example, on a bar phone, the landscape window orientation corresponds to the inverted landscape screen orientation, while the inverted landscape window orientation corresponds to the landscape screen orientation. Screen angle and screen orientation are also not always in a one-to-one correspondence. For instance, in the tri-fold fully expanded state, when the screen angle is **0**, the screen orientation is not portrait but inverted landscape. If you directly use [display.rotation](../reference/apis-arkui/js-apis-display.md#attributes) or [display.orientation](../reference/apis-arkui/js-apis-display.md#attributes) to determine the actual display direction of a window, app display orientation misalignment may occur. Therefore, the window orientation cannot be determined simply by the screen orientation or rotation.
+The definitions of screen orientation and window orientation in the landscape direction are not consistent. For example, on a bar phone, the landscape window orientation corresponds to the inverted landscape screen orientation; the inverted landscape window orientation corresponds to the landscape screen orientation. The screen angle and screen orientation also do not always correspond one-to-one. For example, in the tri-fold fully unfolded state, when the screen angle is 0, the screen orientation is not portrait but inverted landscape. If developers directly use [display.rotation](../reference/apis-arkui/js-apis-display.md#attributes) or [display.orientation](../reference/apis-arkui/js-apis-display.md#attributes) to determine the actual display orientation of the window, the app display orientation may be misaligned. Therefore, the window [orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19) cannot be determined simply through the screen [orientation](../reference/apis-arkui/js-apis-display.md#attributes) or [rotation](../reference/apis-arkui/js-apis-display.md#attributes).
 
 If you want to accurately know the current window orientation to select a rotation policy (for example, locking the current orientation on a video playback page), it is recommended to first obtain [display.rotation](../reference/apis-arkui/js-apis-display.md#attributes) or [display.orientation](../reference/apis-arkui/js-apis-display.md#attributes), and then use [convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23) to convert the screen orientation to the window orientation. The following is a specific example:
 
@@ -132,26 +155,37 @@ If you want to accurately know the current window orientation to select a rotati
 
 2. Convert the screen orientation to the window orientation. Call [convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23) to convert [display.orientation](../reference/apis-arkui/js-apis-display.md#attributes) to the window [orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19).
 
-3. Convert the window orientation to a rotation policy. The window orientation must be further converted to the window [orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9), which represents the rotation policy recognized by the system, before it can be passed to **setPreferredOrientation()**.
+3. Convert the window orientation to a rotation strategy. The window orientation must be further converted to the system-recognizable rotation strategy window [Orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9) before it can be passed to [setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1).
 
 4. Call [setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1) to set the rotation policy and lock the display orientation.
 
-<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { display, window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct SpecificSceneSetOrientationIndex {
-  mainWindow: window.Window = AppStorage.get('mainWindow_SetOrientation') as window.Window;
+  mainWindow: window.Window | undefined;
+
+  aboutToAppear() {
+    // Save the main window through windowStage.getMainWindowSync() in EntryAbility.ets.
+    this.mainWindow = AppStorage.get('mainWindow_SetOrientation') as window.Window;
+  }
+
   setOrientationByDisplay() {
+    if (!this.mainWindow) {
+      console.error('Main window is not available.');
+      return;
+    }
     try {
       // 1. Obtain the current default Display.
       const disp = display.getDefaultDisplaySync();
       const displayOrientation = disp.orientation; // Current screen orientation (0/1/2/3).
 
-      console.info('Current display orientation = ' + displayOrientation);
+      console.info(`Succeeded in getting display orientation, orientation is ${displayOrientation}`);
       // 2. Convert displayOrientation to windowOrientation.
       let windowOrientation: number =
         this.mainWindow.convertOrientationAndRotation(
@@ -179,13 +213,14 @@ struct SpecificSceneSetOrientationIndex {
           throw new Error('Invalid orientation value');
       }
       // 4. Set the rotation policy to lock the window orientation.
-      this.mainWindow.setPreferredOrientation(orientation, (err) => {
-        if (err && err.code) {
-          console.error('setPreferredOrientation failed: ' + JSON.stringify(err));
-        }
+      this.mainWindow.setPreferredOrientation(orientation).then(() => {
+        console.info('Succeeded in setting preferred orientation.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to set preferred orientation. Code is ${err.code}, message is ${err.message}`);
       });
-    } catch (exception) {
-      console.error('Exception in setOrientationByDisplay: ' + JSON.stringify(exception));
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      console.error(`Failed to set orientation by display. Code is ${err.code}, message is ${err.message}`);
     }
   }
   build() {
@@ -206,3 +241,4 @@ struct SpecificSceneSetOrientationIndex {
   }
 }
 ```
+

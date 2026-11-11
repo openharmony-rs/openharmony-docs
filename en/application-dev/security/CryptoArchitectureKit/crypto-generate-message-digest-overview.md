@@ -1,4 +1,4 @@
-# MD Overview and Algorithm Specifications
+# Message Digest Calculation
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-10-30T03:38:54.658Z pushedAt=2026-10-30T07:17:20.096Z nl=1 -->
 
 The message digest (MD) algorithm allows a fixed-length digest to be generated from data of arbitrary size by using the hash algorithm. The MD algorithm is also referred to as a hash algorithm or a one-way hash algorithm.
 
@@ -34,3 +35,5 @@ The **Supported Type** column in the following table lists the algorithm to be u
 | HASH | SHA3-256 | 32 | 22+ |
 | HASH | SHA3-384 | 48 | 22+ |
 | HASH | SHA3-512 | 64 | 22+ |
+| HASH | SHAKE128 | 32~65536 (variable) | 26.1.0+ |
+| HASH | SHAKE256 | 64~65536 (variable) | 26.1.0+ |

@@ -1,7 +1,7 @@
 # $$语法：系统组件双向同步
 <!--Kit: ArkUI--> 
 <!--Subsystem: ArkUI--> 
-<!--Owner: @Cuecuexiaoyu--> 
+<!--Owner: @BIYynNe--> 
 <!--Designer: @VictorS67--> 
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->

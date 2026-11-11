@@ -27,7 +27,7 @@ HUKS提供了接口供应用查询密钥别名集。
 /*
  * 以下查询密钥别名集Promise操作使用为例
  */
-import { huks } from '@kit.UniversalKeystoreKit'
+import { huks } from '@kit.UniversalKeystoreKit';
 
 async function testListAliases() {
   /* 1.初始化密钥属性集 */
@@ -44,7 +44,7 @@ async function testListAliases() {
   try {
     /* 2.查询密钥别名集 */
     let result: huks.HuksListAliasesReturnResult = await huks.listAliases(queryOptions);
-    console.info(`promise: listAliases success`);
+    console.info(`promise: listAliases success, result = ${JSON.stringify(result)}`);
   } catch (error) {
     console.error(`promise: listAliases fail`);
     throw (error as Error);

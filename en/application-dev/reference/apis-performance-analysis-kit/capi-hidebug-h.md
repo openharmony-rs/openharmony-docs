@@ -6,7 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=84353019be74445db688505d629309aad08705e1 translatedAt=2026-09-16T10:32:12.489Z pushedAt=2026-09-20T09:01:52.237Z -->
+<!-- md-trans-meta sourceCommit=ef738dc10e0fdb85225ec9b6422012922e819978 translatedAt=2026-11-03T06:10:01.955Z pushedAt=2026-11-03T12:08:25.608Z nl=1 -->
 
 ## Overview
 
@@ -77,6 +77,7 @@ Defines the debugging capabilities of the HiDebug module, providing CPU usage ra
 | [HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions* opts, uint32_t depth)](#oh_hidebug_setmaxstackdepth) | - | Sets the maximum stack depth. |
 | [HiDebug_ErrorCode OH_HiDebug_SetFilterSize(OH_HiDebug_ProfilerOptions* opts, uint32_t size)](#oh_hidebug_setfiltersize) | - | Sets the memory allocation filter size. |
 | [HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions* opts, uint32_t seconds)](#oh_hidebug_setmaxdurationsec) | - | Sets the maximum collection duration, in seconds. |
+| [HiDebug_ErrorCode OH_HiDebug_SetStackTraceMode(OH_HiDebug_ProfilerOptions *opts, OH_HiDebug_ProfilerStackTraceMode mode)](#oh_hidebug_setstacktracemode) | - | Sets the call stack tracing mode. |
 | [HiDebug_ErrorCode OH_HiDebug_StartProfilerWithOptions(OH_HiDebug_ResourceType type, OH_HiDebug_ProfilerOptions* opts, OH_HiDebug_ProfilingCallback callback)](#oh_hidebug_startprofilerwithoptions) | - | Starts the resource allocation stack information collection for the current process based on the specified resource type and configuration. |
 
 ## Function Description
@@ -1043,6 +1044,31 @@ Sets the maximum collection duration, in seconds.
 | -- | -- |
 | [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Return result code:<br>         **HIDEBUG_SUCCESS**: The operation is successful.<br>         **HIDEBUG_RES_PROF_INVALID_ARG**: opts is a null pointer.<br>         **HIDEBUG_RES_PROF_INVALID_MAX_DURATION**: The maximum duration parameter is invalid. |
 
+### OH_HiDebug_SetStackTraceMode()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_SetStackTraceMode(OH_HiDebug_ProfilerOptions *opts, OH_HiDebug_ProfilerStackTraceMode mode)
+```
+
+**Description**
+
+Sets the call stack tracing mode.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | Pointer to the **OH_HiDebug_ProfilerOptions** structure, which cannot be NULL. |
+| [OH_HiDebug_ProfilerStackTraceMode](capi-hidebug-type-h.md#oh_hidebug_profilerstacktracemode) mode | Call stack tracing mode. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code:<br>         HIDEBUG_SUCCESS: The operation is successful.<br>         HIDEBUG_RES_PROF_INVALID_ARG: opts is a null pointer.<br>         HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE: Invalid call stack tracing mode. |
+
 ### OH_HiDebug_StartProfilerWithOptions()
 
 ```c
@@ -1067,6 +1093,6 @@ Starts the resource allocation stack information collection for the current proc
 
 | Type | Description |
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Return result code:<br>         HIDEBUG_RES_PROF_SUCCESS: Resource collection started successfully.<br>         HIDEBUG_RES_PROF_INVALID_ARG: **opts** or **callback** is a null pointer.<br>         HIDEBUG_RES_PROF_INVALID_MAX_DURATION: The maximum collection duration parameter is invalid.<br>         HIDEBUG_RES_PROF_INVALID_FILTER_SIZE: The filter size parameter is invalid.<br>         HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH: The maximum stack depth parameter is invalid.<br>         HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL: The statistics interval parameter is invalid.<br>         HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL: The sampling interval parameter is invalid.<br>         HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH: The asynchronous nesting depth parameter for resource collection is invalid.<br>         HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH: The asynchronous task stack depth parameter for resource collection is invalid.<br>         HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE: The resource collection type parameter is invalid.<br>         HIDEBUG_RES_PROF_PERMISSION_DENIED: Insufficient permission for resource collection.<br>         HIDEBUG_RES_PROF_ALREADY_STARTED: Resource collection has already been started.<br>         HIDEBUG_RES_PROF_PROCESS_OVERLIMIT: The number of processes performing resource collection in parallel exceeds the limit. A maximum of 4 different applications can collect in parallel on the entire device, and a maximum of 2 processes can collect in parallel within an application.<br>         HIDEBUG_RES_PROF_CONFLICT: Resource collection conflicts with a command-line tool or a system collection task.<br>         HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED: The daily quota for resource collection is exceeded. A maximum of 4 collections are allowed per day on the entire device, and a maximum of 2 collections are allowed per day for an application.<br>         HIDEBUG_RES_PROF_CPU_OVERLOADED: The CPU usage rate of the entire device exceeds 70%.<br>         HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL: The available memory of the entire device is less than 2 GB.<br>         HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL: The available storage space of the entire device is below the storage threshold, which is the larger of 3% of the total storage capacity and 15 GB.<br>         HIDEBUG_RES_PROF_FAILURE: Failed to start resource collection. |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code.<br>         Returns HIDEBUG_RES_PROF_SUCCESS if resource collection is started successfully.<br>         Returns HIDEBUG_RES_PROF_INVALID_ARG if opts or callback is a null pointer.<br>         Returns HIDEBUG_RES_PROF_INVALID_MAX_DURATION if the maximum collection duration parameter is invalid.<br>         Returns HIDEBUG_RES_PROF_INVALID_FILTER_SIZE if the filter size parameter is invalid.<br>         Returns HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH if the maximum stack depth parameter is invalid.<br>         Returns HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL if the statistics interval parameter is invalid.<br>         Returns HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL if the sampling interval parameter is invalid.<br>         Returns HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH if the asynchronous nesting depth parameter of resource collection is invalid.<br>         Returns HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH if the stack depth parameter of asynchronous tasks in resource collection is invalid.<br>         Returns HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE if the call stack tracing mode is invalid.<br>         Returns HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE if the resource collection type parameter is invalid.<br>         Returns HIDEBUG_RES_PROF_PERMISSION_DENIED if the permission for resource collection is insufficient.<br>         Returns HIDEBUG_RES_PROF_ALREADY_STARTED if resource collection is started repeatedly.<br>         Returns HIDEBUG_RES_PROF_PROCESS_OVERLIMIT if the number of parallel processes for resource collection exceeds the limit. A maximum of 4 different applications can collect in parallel on the entire device, and a maximum of 2 processes can collect in parallel within an application.<br>         Returns HIDEBUG_RES_PROF_CONFLICT if resource collection conflicts with a command-line tool or a system collection task.<br>         Returns HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED if the daily quota of resource collection is exceeded. A maximum of 4 times per day on the entire device and 2 times per day per application are allowed.<br>         Returns HIDEBUG_RES_PROF_CPU_OVERLOADED if the CPU usage rate of the entire device exceeds 70%.<br>         Returns HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL if the available memory of the entire device is less than 2 GB.<br>         Returns HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL if the available storage space of the entire device is below the storage threshold, which is the larger of 3% of the total storage capacity and 15 GB.<br>         Returns HIDEBUG_RES_PROF_FAILURE if resource collection fails to start. |
 
 

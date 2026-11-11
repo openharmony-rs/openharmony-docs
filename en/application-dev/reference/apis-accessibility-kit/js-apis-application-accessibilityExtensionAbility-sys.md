@@ -2,11 +2,11 @@
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
-<!--Owner: @qiiiiiiian-->
+<!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=99f3a25c59b421571c24fff3c5fcfaa67986a20e translatedAt=2026-08-03T09:35:56.109Z pushedAt=2026-08-07T02:23:51.454Z -->
+<!-- md-trans-meta sourceCommit=bb39966feaa0eb2bb100f2870d5ac4317b98024f translatedAt=2026-11-06T08:13:06.694Z pushedAt=2026-11-09T09:19:26.550Z nl=1 -->
 
 AccessibilityExtensionAbility provides accessibility extension capabilities based on the ExtensionAbility framework, including connecting to and disconnecting from accessibility services, processing accessibility events, and processing accessibility key events.
 
@@ -22,7 +22,6 @@ AccessibilityExtensionAbility provides accessibility extension capabilities base
 ```ts
 import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 ```
-
 ## AccessibilityEventInfo
 
 Describes the accessibility event information.
@@ -37,8 +36,8 @@ Describes the accessibility event information.
 | ----------------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | eventType                     | [AccessibilityEventType](js-apis-accessibility-sys.md#accessibilityeventtype) | No    | No    | Accessibility event type. |
 | target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement) | No    | Yes    | Target component where the event occurs. When the accessibility event involves a specific component, this property contains the component information. |
-| timeStamp                     | number                                   | No    | Yes    | Event timestamp, in milliseconds. The default value is **0**. |
-| extraInfo                     | string                                   | No    | Yes    | For TextArea, TextInput, SearchField, and RichEdit components, when text content is added or deleted, this property indicates the specific text content added or deleted. The default value is an empty string. |
+| timestamp                     | number                                   | No    | Yes    | Event timestamp, in milliseconds. The default value is 0. |
+| extraInfo                     | string                                   | No    | Yes    | The default value is an empty string.<br>Additional event information, which is a JSON string. It is set based on the actual event scenario, and is an empty string when there is no corresponding information. It contains the following fields:<br>- addText: the specific text content added when text content is added.<br>- removeText: the specific text content removed when text content is deleted.<br>- beforeText: the text content before the text content changes.<br>- addedCount: the number of characters added to the text content.<br>- removedCount: the number of characters removed from the text content.<br>- startIndex: the index item before and after list scrolling, or the start index of the edit box.<br>- endIndex: the index item before and after list scrolling, or the end index of the edit box.<br>- scrollX: the horizontal scroll offset when a scroll event occurs, in pixels (px).<br>- scrollY: the vertical scroll offset when a scroll event occurs, in pixels (px).<br>- scrollSource: the trigger source of the scroll event.<br>- itemCounts: the total number of items in a list or page-turning component.<br>- currentIndex: the index of the current item in a list or page-turning component.<br>- candidateIds: the candidate focus IDs carried by the event when the focus is invisible.<br>- touchGuideGestureType: the type of the touch browsing gesture. |
 
 ## AccessibilityExtensionAbility
 

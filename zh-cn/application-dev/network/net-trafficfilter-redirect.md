@@ -379,7 +379,7 @@ static std::string BuildQueryConnectionInfo(
         connectionInfo.srcIp.addr)) {
         return "ERROR: Invalid source IP address";
     }
-    connectionInfo.src_port = static_cast<uint16_t>(queryArgs.srcPort);
+    connectionInfo.srcPort = static_cast<uint16_t>(queryArgs.srcPort);
 
     connectionInfo.dstIp.family = DetectIPFamilyFromAddr(queryArgs.dstIp);
     if (!ParseIPAddressByFamily(queryArgs.dstIp, connectionInfo.dstIp.family,

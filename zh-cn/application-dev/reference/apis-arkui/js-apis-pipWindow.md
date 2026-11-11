@@ -1201,7 +1201,7 @@ on(type: 'pipWindowSizeChange', callback: Callback&lt;PiPWindowSize&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Params error. Possible causes: Callback is already registered. |
 | 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
-| 1300014    | PiP internal error.                                    |
+| 1300014    | PiP internal error. Possible cause: The PiP controller has been destroyed. |
 
 **示例：**
 

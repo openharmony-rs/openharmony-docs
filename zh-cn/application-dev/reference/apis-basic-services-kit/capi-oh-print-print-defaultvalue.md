@@ -16,7 +16,7 @@ typedef struct {...} Print_DefaultValue
 
 **起始版本：** 12
 
-**相关模块：** [OH_Print](capi-oh-print.md)
+**相关模块：** [Print](capi-oh-print.md)
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 

@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5b3ab60fe000eb4bad70440a3e7f30019a2671f9 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 This sample demonstrates the complete process for transitioning a camera application from the background to the foreground, providing you with a clear understanding of the entire sequence of API calls.
 
@@ -118,7 +119,7 @@ During the transition of the camera application from the background to the foreg
         return;
       }
 
-      // Create a preview output stream. For details about the surfaceId parameter, see the XComponent. The preview stream uses the surface provided by the XComponent.
+      // Create a preview output stream. The surfaceId parameter is provided by the XComponent component described above. The preview stream uses the surface provided by the XComponent component.
       let previewOutput: camera.PreviewOutput | undefined = undefined;
       try {
         previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId);

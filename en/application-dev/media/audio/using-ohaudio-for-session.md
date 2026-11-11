@@ -1,11 +1,11 @@
 # Using OHAudio for Audio Session (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @LauJianghu-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=d2da5b49a40bf13cd0859a784a35f0b0e97bc829 translatedAt=2026-10-22T03:46:36.884Z pushedAt=2026-10-22T07:34:50.463Z nl=1 -->
+<!-- md-trans-meta sourceCommit=155a37b301f9617552fd06df23d4e3691597be8a translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 In the scenario where multiple audio streams are concurrently playing, the system has preset a [default audio focus strategy](audio-playback-concurrency.md#audio-focus-strategy) for unified audio focus management of all streams (including playback and recording).
 
@@ -321,7 +321,20 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
 
 Starting from API version 24, you can set audio session behavior parameters through [OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) to achieve a better audio focus experience in specific scenarios.
 
-In a live streaming scenario, when another app starts an audio stream (for example, using a keyboard for speech-to-text) that interrupts the live stream, the audio and video of the live stream are paused, degrading the viewing experience. A live streaming app can set the [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED session behavior so that the live stream remains in muted playback instead of pausing when interrupted, thereby avoiding video interruption.
+| Enum Value | API Version | Recommended Scenario |
+| -------- | -------- | -------- |
+| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED | 24 | Live streaming audio interrupted by another stream. |
+| [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).PAUSE_WHEN_INTERRUPTED | 26.0.0 | Media audio that needs to resume after interruption by short-duration media audio, such as an audio advertisement. |
+
+When another app starts an audio stream, such as keyboard speech-to-text recording, it can interrupt a live stream and pause both its audio and video, disrupting the viewing experience. If the live streaming app sets [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED, the live stream continues playing while muted rather than pausing, keeping the video uninterrupted. Audio is automatically unmuted when the interruption ends.
+
+When media audio is interrupted by other short-duration media audio, the system does not normally notify the app to resume playback. Setting [OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).PAUSE_WHEN_INTERRUPTED makes the system notify the app to resume, preventing playback from remaining paused after a short interruption. This behavior does not take effect if the interruption exceeds the specified duration, that is, if the interrupting audio is long-duration media audio.
+
+> **NOTE**
+>
+> - PAUSE_WHEN_INTERRUPTED and MUTE_WHEN_INTERRUPTED cannot take effect together. If both are set, only PAUSE_WHEN_INTERRUPTED takes effect.
+> - When configuring this behavior through [OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior), also call [OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene). Otherwise, the configuration does not take effect.
+> - If [OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) is called while the audio session is active, call [OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) again for the configuration to take effect.
 
 If your app does not use audio session management, you can also set independent audio session behavior for individual audio streams. For playback streams, see [OH_AudioRenderer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setindependentaudiosessionstrategy). For recording streams, see [OH_AudioCapturer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_setindependentaudiosessionstrategy).
 

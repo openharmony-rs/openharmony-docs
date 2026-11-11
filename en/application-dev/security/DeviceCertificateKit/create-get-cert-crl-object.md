@@ -6,12 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=78d27a16851062ae03d6a51de8b99e33aec772a0 translatedAt=2026-11-03T05:09:26.475Z pushedAt=2026-11-03T06:48:22.930Z nl=1 -->
 
 This topic walks you through on how to filter certificates or CRLs based on a **CertCRLCollection** object.
 
 ## How to Develop
 
-1. Import the [certFramework](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';

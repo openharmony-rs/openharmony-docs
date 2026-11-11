@@ -1206,7 +1206,7 @@ isStorageTypeSupported(type: StorageType): boolean
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
 
 **示例：**
@@ -1387,7 +1387,6 @@ getAll(callback: AsyncCallback&lt;Object&gt;): void
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.|
 | 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
@@ -1922,7 +1921,6 @@ flush(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
@@ -2033,7 +2031,6 @@ clear(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
@@ -2244,7 +2241,7 @@ on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
+| 401      | [Sync] Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 15500000 | Inner error.                   |
 
 **示例：**

@@ -6325,6 +6325,7 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | 12300109 | The authentication, enrollment, or update operation is canceled. |
 | 12300111 | The operation time out. |
 | 12300116 | Credential complexity verification failed. |
+| 12300121 | The credential has been used recently and cannot be reused.<br>适用版本：26.1.0+ |
 
 **示例：**
 

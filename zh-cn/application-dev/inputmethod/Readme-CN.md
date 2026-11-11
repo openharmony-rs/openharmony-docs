@@ -16,4 +16,5 @@
 - [输入法应用沉浸模式](inputmethod-immersive-mode-guide.md)
 - [Ime工具](inputmethod-hdc-commands-guide.md)
 - [不可获焦窗口中输入框与输入法交互指南](use-inputmethod-in-not-focusable-window.md)
+- [设置预上屏文本样式](preview-text-style-guide.md)
 - [输入法开发服务术语](ime-kit-glossary.md)

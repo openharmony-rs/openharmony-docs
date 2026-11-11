@@ -6,7 +6,7 @@
 <!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=e82880fc1b3fb82c03ab5c9c350aff1a7e98d202 translatedAt=2026-07-13T07:23:16.587Z pushedAt=2026-07-13T09:27:05.611Z -->
+<!-- md-trans-meta sourceCommit=fe89c3544789f691387f018ef98efa3ea115d096 translatedAt=2026-11-03T08:26:27.517Z pushedAt=2026-11-03T08:26:27.517Z -->
 
 - [About This Kit](ime-kit-intro.md)
 
@@ -24,7 +24,7 @@
 
 - [Immersive Mode of the Input Method Application](inputmethod-immersive-mode-guide.md)
 
-- [Managing the Input Method Using hdc Commands](inputmethod-hdc-commands-guide.md)
+- [IME Tool](inputmethod-hdc-commands-guide.md)
 
 - [Input Box and Input Method Interaction in Non-Focusable Windows](use-inputmethod-in-not-focusable-window.md)
 

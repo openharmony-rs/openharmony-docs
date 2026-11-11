@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / Ark Programming Language"]
+description: "Describes how to generate XML using XmlSerializer: build a well-formed XML document by writing tags, attributes, and text, covering development steps and precautions, applicable to XML content generation scenarios such as configuration files and data exchange messages."
+keywords: [XML generation, XmlSerializer, tag writing, attribute setting, document building, data exchange]
+doctype: guide
+status: active
+---
+
 # XML Generation
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:54:27.828Z pushedAt=2026-11-09T09:10:02.998Z nl=1 -->
 
 
 XML is a widely supported data exchange format used by various systems and applications. For example, web services often transmit structured data in XML format.

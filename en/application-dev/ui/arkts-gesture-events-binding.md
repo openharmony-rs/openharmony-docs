@@ -1,10 +1,11 @@
 # Gesture Binding
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T08:28:19.137Z pushedAt=2026-11-03T08:29:11.377Z nl=1 -->
 
 
 You can bind to each component different gesture events and design the logic for responding to these events. When a gesture is successfully recognized, the ArkUI framework notifies the component of the gesture recognition result through event callback.

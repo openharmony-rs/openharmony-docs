@@ -53,7 +53,7 @@
       ```
 
 3. 获取转化结果。
-   - 调用getAddressesFromLocation，把经纬度坐标转化为地理编码（即位置信息）。应用可以获得与此坐标匹配的[GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress)（地理编码地址信息）列表，应用可以根据实际使用需求，读取相应的参数数据。
+   - 调用getAddressesFromLocation，把经纬度坐标转化为与此坐标匹配的[GeoAddress](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geoaddress)（地理编码地址信息）列表。
      
       ```ts
       let reverseGeocodeRequest:geoLocationManager.ReverseGeoCodeRequest = {"latitude": 31.12, "longitude": 121.11, "maxItems": 1};

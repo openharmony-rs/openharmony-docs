@@ -1,12 +1,11 @@
 # Class (MarqueeDynamicSyncScene)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=89682c631d1be2b78acdb9477c9eda01133e0baf translatedAt=2026-08-05T03:08:38.468Z pushedAt=2026-08-05T07:48:40.035Z -->
+<!-- md-trans-meta sourceCommit=08942777370a0b90b1f82affd44908847b9279aa translatedAt=2026-11-02T12:45:23.076Z pushedAt=2026-11-05T08:18:09.473Z nl=1 -->
 
 Provides the dynamic frame rate configuration capability for the Marquee component, supporting dynamic frame rate adjustment during Marquee animation to optimize performance and power consumption. It is applicable to scenarios where animation smoothness and system resource consumption need to be balanced in marquee contexts.
 
@@ -81,7 +80,7 @@ struct MarqueeExample {
           this.start = true;
           this.controller.start();
           this.scenes.forEach((scene: MarqueeDynamicSyncScene) => {
-            if (scene.type == MarqueeDynamicSyncSceneType.ANIMATION) {
+            if (scene.type === MarqueeDynamicSyncSceneType.ANIMATION) {
               scene.setFrameRateRange(this.frameRateRange);
             }
           });

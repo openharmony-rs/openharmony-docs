@@ -1,14 +1,23 @@
+---
+kits: ["ArkTS"]
+description: "Introduces the ArkTS asynchronous lock (AsyncLock) capability, which is used to resolve data race issues between concurrent instances in multithreading, prevents blocking locks from causing deadlocks in asynchronous scenarios, supports cross-thread reference passing, and protects the data security of Sendable shared objects."
+keywords: [asynchronous lock, AsyncLock, data race, multithreaded concurrency, non-blocking lock, cross-thread reference passing, Sendable, lockAsync, deadlock]
+doctype: guide
+status: active
+---
+
 # Asynchronous Lock
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @dwhuawei-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=d802165dde49a731f0fcacc5a6108aec607634d1 translatedAt=2026-11-06T10:06:54.452Z pushedAt=2026-11-09T08:31:35.542Z nl=1 -->
 
 To address data race issues in concurrent multithreading instances, ArkTS introduces asynchronous locks. These locks can be held by class objects. To simplify access across concurrent instances, the [AsyncLock object](../reference/apis-arkts/arkts-apis-arkts-utils-locks.md#asynclock) supports pass-by-reference across threads.
 
-Given that ArkTS supports asynchronous operations, blocking locks are prone to deadlocks. Therefore, ArkTS only supports asynchronous locks (non-blocking locks). In addition, asynchronous locks can ensure the temporal consistency of asynchronous tasks within a single thread, preventing synchronization issues caused by uncertain task timing.
+Because the ArkTS language supports asynchronous operations, blocking locks are prone to deadlocks. Therefore, ArkTS supports only asynchronous locks (non-blocking locks). In addition, asynchronous locks can be used to ensure the timing consistency of asynchronous tasks within a single thread, preventing data race issues caused by the uncertain execution order of asynchronous tasks.
 
 For more details about asynchronous lock APIs, see [ArkTSUtils.locks](../reference/apis-arkts/arkts-apis-arkts-utils-locks.md).
 
@@ -19,16 +28,17 @@ For more details about asynchronous lock APIs, see [ArkTSUtils.locks](../referen
 ## Usage Example
 
 To prevent data races when modifying shared variables across threads with [@Sendable objects](arkts-sendable.md), asynchronous locks can be used for data protection. The sample code is as follows:
+<!-- @[example_protect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/ArktsAsyncLockIntroduction.ets) -->  
 
-```ts
+``` TypeScript
 import { ArkTSUtils, taskpool } from '@kit.ArkTS';
 
 @Sendable
 export class A {
   private count_: number = 0;
-  lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+  public lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
 
-  public getCount(): Promise<number> {
+  public async getCount(): Promise<number> {
     // Add an asynchronous lock to protect the data.
     return this.lock_.lockAsync(() => {
       return this.count_;
@@ -45,8 +55,8 @@ export class A {
 
 @Concurrent
 async function printCount(a: A) {
-  a.increaseCount();
-  console.info("InputModule: count is:" + await a.getCount());
+  await a.increaseCount();
+  console.info(`InputModule: count is: ${await a.getCount()}`);
 }
 
 @Entry
@@ -69,6 +79,7 @@ struct Index {
           let a: A = new A();
           // Pass object a to a child thread.
           await taskpool.execute(printCount, a);
+          this.message = 'success';
         })
     }
     .height('100%')
@@ -76,4 +87,3 @@ struct Index {
   }
 }
 ```
-<!-- @[example_protect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/ArktsAsyncLockIntroduction.ets) -->

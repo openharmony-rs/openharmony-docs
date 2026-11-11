@@ -1,11 +1,20 @@
+---
+kits: ["ArkGraphics 2D"]
+description: "Describes how to obtain system VSync signals."
+keywords: [VSync, NativeVsync, system VSync signal, VSync thread, VSync callback]
+doctype: guide
+status: active
+---
+
 # NativeVSync Development (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @alexci-->
+<!--Owner: @opasser; @zlGiteelz-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=574bca74c85b86210e4b29506bdfdfa5f4442af5 translatedAt=2026-10-19T01:28:43.132Z pushedAt=2026-10-19T10:18:12.693Z -->
+<!-- md-trans-meta sourceCommit=f9311d06decbb5388534c6858502139576c0387b translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 ## Overview
 

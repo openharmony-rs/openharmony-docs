@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=4fb6f7085a2b27227581a6e58080be17259dc2dd translatedAt=2026-11-03T06:49:04.707Z pushedAt=2026-11-04T03:11:19.924Z nl=1 -->
 
 The **FormExtensionAbility** module provides lifecycle callbacks invoked when a widget is created, destroyed, or updated. This module is applicable to scenarios where you need to implement widget functions in your application. It helps you quickly build a widget data update mechanism, improving user experience in interacting with your application.
 
@@ -286,7 +287,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onConfigurationUpdate(newConfig: Configuration): void
 
-Called when system configuration items change. The **onConfigurationUpdate** callback is triggered only when the FormExtensionAbility is alive. <!--Del-->Since API version 20, for system applications, the **onConfigurationUpdate** callback within the FormExtensionAbility will be triggered when the system language changes.<!--DelEnd-->
+Called when the system configuration changes. The onConfigurationUpdate callback is triggered only when the FormExtensionAbility is alive.<!--Del-->In addition, starting from API version 20, for system applications, when the system language changes, the FormExtensionAbility is started and then the onConfigurationUpdate callback is triggered.<!--DelEnd-->Starting from API version 26.1.0, for card applications that have enabled automatic refresh when switching between dark and light modes, the onConfigurationUpdate callback in the FormExtensionAbility is triggered when the dark/light mode changes.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -308,8 +309,6 @@ import { Configuration } from '@kit.AbilityKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onConfigurationUpdate(newConfig: Configuration) {
-    // This lifecycle callback is triggered only when the configuration is updated while the FormExtensionAbility is alive.
-    // If no operation is performed within 10 seconds after a FormExtensionAbility instance is created, the instance will be deleted.
     console.info(`onConfigurationUpdate, config: ${newConfig?.language}`);
   }
 }

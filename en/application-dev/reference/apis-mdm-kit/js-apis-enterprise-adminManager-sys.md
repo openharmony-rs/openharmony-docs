@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=5df4fc8b04ef26eabb172a74a5eb1f185b790e69 translatedAt=2026-11-03T04:43:33.340Z pushedAt=2026-11-03T12:08:25.505Z nl=1 -->
 
 The **adminManager** module provides administrator permission management capabilities for enterprise MDM applications, including enabling or disabling administrator permissions, subscribing to events, delegating applications, and granting permissions.
 
@@ -1469,7 +1470,7 @@ Delegates other applications to set device management policies. The applications
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| bundleName | String                  | Yes   | Bundle name of the app to be delegated. The distribution type of the delegated app must be **enterprise_normal** or **enterprise_mdm**. You can call the [bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) API to query the app **BundleInfo**. **BundleInfo.appInfo.appDistributionType** indicates the app distribution type.       |
+| bundleName | string                  | Yes    | Bundle name of the management application to be delegated. The distribution type of the delegated application must be enterprise_normal or enterprise_mdm. You can call the [bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) API to query the application's own BundleInfo, where BundleInfo.appInfo.appDistributionType is the distribution type of the application.        |
 | accountId         | number                              | Yes   | User ID, which must be greater than or equal to 0. You can use [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) to obtain the user ID.|
 | policies |  Array&lt;string&gt;                   | Yes  | [Delegable policy list](../../mdm/mdm-kit-appendix.md#delegable-policy-list).|
 
@@ -1481,7 +1482,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | ------- | ----------------------------------------------------- |
 | 9200009 | Failed to grant the permission to the application. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -1502,6 +1503,45 @@ try {
 }
 ```
 
+## adminManager.getEnterpriseManagedTips<sup>23+</sup>
+
+getEnterpriseManagedTips(): Promise&lt;string&gt;
+
+Obtains the device management prompt on the lock screen. This API uses a promise to return the result.
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API is only used under the Stage model.
+
+**System API:** This API is a system API.
+
+**Return value**
+
+| Type   | Description                                  |
+| ----- | ----------------------------------- |
+| Promise&lt;string&gt; | Promise object that returns the device management prompt on the lock screen. If obtaining the device management prompt on the lock screen fails, an error object is thrown. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code ID | Error Information                                     |
+| ------------- | ----------------------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**Example**
+
+```ts
+import { adminManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+adminManager.getEnterpriseManagedTips().then((result) => {
+  console.info(`Succeeded in getting enterprise managed tips: ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get enterprise managed tips. Code: ${err.code}, message: ${err.message}`);
+})
+```
+
 ## EnterpriseInfo
 
 Represents the enterprise information of a device administrator application.
@@ -1517,7 +1557,7 @@ Represents the enterprise information of a device administrator application.
 
 ## AdminType
 
-Enumerates the types of device administrator applications.
+Enumerates the types of device administrator applications. 
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1530,7 +1570,7 @@ Enumerates the types of device administrator applications.
 
 ## RunningMode<sup>19+</sup>
 
-Represents the running mode of a device administrator application.
+Represents the running mode of a device administrator application. 
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1540,3 +1580,4 @@ Represents the running mode of a device administrator application.
 | ----------------- | ---- | ----- |
 | DEFAULT  | 0 | Default user running mode, indicating that the application runs under the default user (user after the first device powered-on).|
 | MULTI_USER   | 1 | Multi-user running mode, indicating that the application runs under multiple users at the same time.|
+

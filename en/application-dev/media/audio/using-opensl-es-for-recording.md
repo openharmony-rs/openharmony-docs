@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=265e72e95b4ab2b0df2c69b59bb92195368f4f3a translatedAt=2026-10-22T03:47:14.987Z pushedAt=2026-10-22T07:36:53.724Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e277884332d5908f94bb407856ab25b3b62d56fa translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 OpenSL ES, short for Open Sound Library for Embedded Systems, is an embedded, cross-platform audio processing library that is free of charge. It provides high-performance and low-latency APIs for you to develop applications running on embedded mobile multimedia devices. OpenHarmony has implemented certain native APIs based on [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specifications developed by the [Khronos Group](https://www.khronos.org/). You can use these APIs through &lt;OpenSLES.h&gt; and &lt;OpenSLES_OpenHarmony.h&gt;.
 
@@ -115,7 +115,7 @@ Refer to the sample code below to record an audio file.
    SLDataFormat_PCM format_pcm = {
        SL_DATAFORMAT_PCM,           // Input audio format.
        1,                           // Mono channel.
-       SL_SAMPLINGRATE_44_1,        // Sampling rate, 44100 Hz.
+       SL_SAMPLINGRATE_44_1,        // Sampling rate: 44100 Hz.
        SL_PCMSAMPLEFORMAT_FIXED_16, // Audio sampling format, a signed 16-bit integer in little-endian format.
        16,
        SL_SPEAKER_FRONT_LEFT,

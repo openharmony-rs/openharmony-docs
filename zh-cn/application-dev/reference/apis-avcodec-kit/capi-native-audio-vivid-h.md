@@ -70,8 +70,9 @@ Audio Vivid编码器信号格式枚举。
 | -- | -- |
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_MONO = 0 | Audio Vivid信号格式为单声道，编码器接收单声道数据，内部标记声道布局为[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_MONO。 |
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_STEREO = 1 | Audio Vivid信号格式为立体声，编码器接收双声道数据，内部标记声道布局为[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO。 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_MC = 2 | Audio Vivid信号格式为多声道，编码器支持声道布局[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT4。 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX = 4 | Audio Vivid信号格式为混合模式，包含声床（Bed）和对象（object）。声床的声道布局支持[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT4。 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_MC = 2 | Audio Vivid信号格式为多声道，编码器支持声道布局[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2。 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_HOA = 3 | Audio Vivid编码HOA（Higher Order Ambisonics）类型标识。该编码模式编码要配置声道类型，支持的声道类型如下：[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_SN3D、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_SN3D。声道类型需在编码器配置阶段，通过[OH_AudioCodec_Configure](./capi-native-avcodec-audiocodec-h.md#oh_audiocodec_configure)设置。<br>如果配置不支持的声道类型，则返回AV_ERR_INVALID_VAL。<br>**起始版本：** 26.0.1 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX = 4 | Audio Vivid信号格式为混合模式，包含声床（Bed）和对象（object）。声床的声道布局支持[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1、[OH_AudioChannelLayout](./capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2。 |
 
 
 ## 函数说明
@@ -277,7 +278,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *b
 > **说明：** 
 > 
 > 约束条件：
-> - 基础元数据内音频的声床声道数 + 对象数必须小于等于16个。
+>
+> 基础元数据内音频的声床声道数 + 对象数必须小于等于11个。
 
 **起始版本：** 26.0.0
 
@@ -293,7 +295,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *b
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：参数builder、format为空指针或无效。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：参数builder为空指针或无效，参数buffer为空指针或参数len无效。 |
 
 ### OH_AudioVividMetaBuilder_AddObject()
 
@@ -307,8 +309,9 @@ Audio Vivid元数据构造器内添加一个音频对象。添加音频对象后
 
 > **说明：** 
 >
-> 约束条件： 
-> - 音频的声床声道数 + 对象数必须小于等于16个。
+> 约束条件：
+>
+> 音频的声床声道数 + 对象数必须小于等于11个。
 
 **起始版本：** 26.0.0
 

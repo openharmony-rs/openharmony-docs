@@ -46,7 +46,7 @@ HiDumper命令行工具使用常见问题汇总在[常见问题](#常见问题)�
 | [--cpuusage [pid]](#查询进程cpu使用率) | 获取CPU使用率，取值范围(0, CPU核数]，按进程和类别分类；如果指定pid，则获取指定pid的CPU使用率。 |
 | [--cpufreq](#查询cpu频率) | 获取CPU每个核的真实频率，单位：kHz。 |
 | [--mem [--prune]](#查询整机内存) | 获取总内存使用情况。如果指定--prune，只导出精简的内存使用情况。<br />**说明**：从API version 20开始，支持--prune参数。 |
-| <!--RP11-->[--mem pid [--show-ashmem] [--show-dmabuf] [--show-arktsheap]](#查询进程内存) | 获取指定pid的进程内存使用情况。<br />指定--show-ashmem，则补充打印该进程的ashmem使用详细信息。<br />指定--show-dmabuf，则补充打印DMA内存使用详情信息。<br />指定--show-arktsheap，则补充打印PID中主线程的arkts heap使用情况。<br />**说明**：<br />从API version 20开始，支持--show-ashmem、应用进程的--show-dmabuf参数。<br/>从API version 23开始，支持系统服务进程的--show-dmabuf参数。<br/>从API版本26.0.1开始，支持系统服务进程的--show-arktsheap参数。<!--RP11End--> |
+| <!--RP11-->[--mem pid [--show-ashmem] [--show-dmabuf] [--show-arktsheap] [--show-leakthread]](#查询进程内存) | 获取指定pid的进程内存使用情况。<br />指定--show-ashmem，则补充打印该进程的ashmem使用详细信息。<br />指定--show-dmabuf，则补充打印DMA内存使用详情信息。<br />指定--show-arktsheap，则补充打印PID中主线程的arkts heap使用情况。<br />指定--show-leakthread，则补充打印该应用进程的线程栈泄漏信息。<br />**说明**：<br />从API version 20开始，支持--show-ashmem、应用进程的--show-dmabuf参数。<br/>从API version 23开始，支持系统服务进程的--show-dmabuf参数。<br/>从API版本26.0.1开始，支持系统服务进程的--show-arktsheap参数。<br/>从API版本26.1.0开始，支持应用进程的--show-leakthread参数。<!--RP11End--> |
 | [--zip](#导出信息压缩存储) | 保存命令输出到 /data/log/hidumper 下的压缩文件，压缩格式为 ZIP。 |
 | [--ipc [pid]/-a --start-stat/stat/--stop-stat](#获取进程间通信信息) | 统计一段时间进程IPC信息。如果使用-a，则统计所有进程IPC数据。使用--start-stat开始统计，使用--stat获取统计数据，使用--stop-stat结束统计。 |
 | [--mem-smaps pid [-v]](#查询进程内存) | 获取pid内存统计信息，数据来源于/proc/pid/smaps，使用-v指定更多详细信息。（仅支持导出[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)）<br />**说明**：从API version 20开始，支持该参数。 |
@@ -364,6 +364,85 @@ tid               thread name                   arkts_heap(KB)
 | tid | 指定PID中主线程ID。 |
 | thread name | 指定PID中主线程的名称。 |
 | arkts_heap(KB) | 指定PID中主线程的arkts heap大小。 |
+
+使用hidumper --mem pid --show-leakthread命令可获取指定应用进程的线程栈泄漏信息（仅支持[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)导出）。线程退出后其线程栈未被释放（如线程既未被join也未被detach），则判定为线程栈泄漏。
+
+使用样例：
+
+```shell
+$ hidumper --mem 14329 --show-leakthread
+
+-------------------------------[memory]-------------------------------
+
+                             Pss         Shared         Shared        Private        Private           Swap        SwapPss           Heap           Heap           Heap
+                           Total          Clean          Dirty          Clean          Dirty          Total          Total           Size          Alloc           Free
+                          ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )         ( kB )
+                 ------------------------------------------------------------------------------------------------------------------------------------------------------
+               GL              0              0              0              0              0              0              0              0              0              0
+            Graph          10800              0              0              0          10800              0              0              0              0              0
+      ark ts heap           3446              0           9276              0           1764              0              0              0              0              0
+arkts-static heap             37              0            232              0              0              0              0              0              0              0
+            guard              0              0              0              0              0              0              0              0              0              0
+      native heap          21887              0          25616              0          17632              0              0              0              0              0
+             .hap             48              8              0             44              0              0              0              0              0              0
+   AnonPage other            992              4           3844              0            500              0              0              0              0              0
+            stack            464              0              0              0            464              0              0              0              0              0
+              .so          21552          89344          14112           4232            516              0              0              0              0              0
+              dev             12              0            244             12              0              0              0              0              0              0
+             .ttf            429            244              0            348              0              0              0              0              0              0
+   FilePage other            426           1652              4              4              4              0              0              0              0              0
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            Total          60093          91252          53328           4640          31680              0              0              0              0              0
+
+native heap:
+           heap:           524              0            464              0            404              0              0              0              0              0
+       brk heap:         19685              0          22892              0          15920              0              0              0              0              0
+      mmap heap:          1678              0           2260              0           1308              0              0              0              0              0
+
+Purgeable:
+        PurgSum:0 kB
+        PurgPin:0 kB
+
+DMA:
+            Dma:10800 kB
+
+leakthread:
+total thread count: 38, leak thread stack count: 1
+tid:11819
+#00 pc 000064d0 /data/storage/el1/bundle/libs/arm/libentry.so
+#01 pc 0007d218 /lib/ld-musl-arm.so.1
+#02 pc 0011687c /lib/ld-musl-arm.so.1
+#03 pc 0011697c /lib/ld-musl-arm.so.1
+#04 pc 00115378 /lib/ld-musl-arm.so.1
+#05 pc 0010c3ec /lib/ld-musl-arm.so.1
+#06 pc 000ffdc8 /lib/ld-musl-arm.so.1
+#07 pc 00100dd4 /lib/ld-musl-arm.so.1
+#08 pc 00103608 /lib/ld-musl-arm.so.1
+```
+字段说明：
+
+| 字段 | 说明 |
+| -------- | -------- |
+| total thread count | 指定PID进程中当前存活的线程总数。 |
+| leak thread stack count | 指定PID进程中泄漏的线程栈数量。 |
+| tid | 泄漏线程栈对应的线程ID，该线程已退出。 |
+
+> **说明：**
+>
+> 1. 仅支持检测[anon:stack:NNN]命名映射的线程栈，非该命名的线程栈无法检测。
+>
+> 2. 精度限制：
+>    1. pc值为启发式扫描结果：通过扫描栈内存中落在可执行内存映射的值来识别pc，可能存在误判（栈上存储的其他指针值恰好落在可执行区域）。
+>
+>    2. 栈内容可能被覆盖：线程退出后，若栈内存被重用或清零，无法提取有效pc。
+>
+>    3. 每个泄漏线程栈最多展示64帧：深层调用链（超过64帧）只能展示部分帧。
+>
+>    4. 最多输出10个泄漏线程栈：超过10个泄漏线程栈时，仅处理前10个。
+>
+>    5. 无函数参数信息：仅能解出返回地址（pc），无法获取函数参数。
+>
+>    6. 栈的层次关系不一定表示实际的函数调用关系。
 
 可使用hidumper --mem-smaps pid命令获取指定进程的详细内存使用情况，该命令会累加相同内存段的内存值。
 

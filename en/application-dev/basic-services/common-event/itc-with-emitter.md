@@ -1,11 +1,11 @@
 # Using Emitter for Inter-Thread Communication
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=3e6a64491cc90c6990b3231ac614d6d55ecbf6a5 translatedAt=2026-11-06T12:01:38.215Z pushedAt=2026-11-09T12:21:38.555Z nl=1 -->
 
 Emitter is an event processing mechanism used in a process. It provides the capabilities of subscribing to, publishing, and unsubscribing from events for applications.
 
@@ -19,7 +19,7 @@ Emitter distributes tasks by maintaining an internal event queue. An application
 ![emitter](figures/emitter.png)
 
 ## Available APIs
-For details, see [@ohos.events.emitter (Emitter)](../../reference/apis-basic-services-kit/js-apis-emitter.md).
+For details, see [@ohos.events.emitter](../../reference/apis-basic-services-kit/js-apis-emitter.md).
 | API | Capability  | Description    |
 | ------- | ------ | -------- |
 | on | Event subscription| Continuously subscribes to an event until the event is unsubscribed from.|
@@ -33,7 +33,7 @@ To enable Emitter's capabilities mentioned above, perform the following steps:
 
 1. Import the related modules.
 
-   <!-- @[emitter_imp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[emitter_imp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { emitter, Callback } from '@kit.BasicServicesKit';
@@ -44,7 +44,7 @@ To enable Emitter's capabilities mentioned above, perform the following steps:
    Use **on()** for continuous subscription or **once()** for one-time subscription. Set the events to subscribe to and the callback function after the events are received.
    
      <!-- @[emitter_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
-
+     
      ``` TypeScript
      // Define an event with eventId 1.
      let event: emitter.InnerEvent = {
@@ -52,10 +52,12 @@ To enable Emitter's capabilities mentioned above, perform the following steps:
      };
      // Define a callback for an event.
      let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
-       this.messageOn = eventData.data!.content
+       if (eventData.data) {
+         this.messageOn = eventData.data.content
+       }
        console.info(`eventData: ${JSON.stringify(eventData)}`);
      }
-     // ···
+     // ...
      // Execute the callback after receiving the event whose eventId is 1.
      emitter.on(event, callback);
      ```
@@ -109,3 +111,4 @@ To enable Emitter's capabilities mentioned above, perform the following steps:
    // Unsubscribe from the event with eventId 1.
    emitter.off(1);
    ```
+

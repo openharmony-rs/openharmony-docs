@@ -1,12 +1,11 @@
 # Class (TextMenuController)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=2eb91adacc6fee38616b0c2fc5e06efd616c5471 translatedAt=2026-08-05T03:00:33.346Z pushedAt=2026-08-06T03:42:37.278Z -->
+<!-- md-trans-meta sourceCommit=87f36412b9792c0776f707878176294c4360c8f0 translatedAt=2026-10-30T11:31:42.185Z pushedAt=2026-10-31T03:12:28.519Z nl=1 -->
 
 The TextMenuController class is used to control the behavior of the text selection menu. It supports setting menu display options (such as displaying in a separate window with priority), disabling system service menu items or specific menu items. It is applicable to app scenarios where the text selection menu display mode needs to be customized or specific menu functions need to be restricted, such as disabling translation, search, and other functions in specific business scenarios.
 
@@ -34,7 +33,8 @@ Sets menu options. For example, when the text selection menu needs to be display
 
 | Name     | Type        | Mandatory  | Description  |
 | -------- | ---------- | ---- | ---- |
-| options | [TextMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#textmenuoptions16-object-description)| Yes    | Menu options for controlling the display mode of the text selection menu. |
+| options | [TextMenuOptions](../apis-arkui/arkui-ts/ts-text-common.md#textmenuoptions16)| Yes    | Menu options for controlling the display mode of the text selection menu. |
+
 
 **Example**
 
@@ -44,7 +44,7 @@ Sets menu options. For example, when the text selection menu needs to be display
 @Component
 struct Index {
   aboutToAppear(): void {
-    // Set the UIContext to preferentially display the context menu on selection in a separate window.
+    // Set the UIContext to preferentially display the text selection menu in a separate window.
     this.getUIContext()
       .getTextMenuController()
       .setMenuOptions(
@@ -76,7 +76,6 @@ struct Index {
   }
 }
 ```
-
 ## disableSystemServiceMenuItems<sup>20+</sup>
 
 static disableSystemServiceMenuItems(disable: boolean): void
@@ -127,7 +126,7 @@ import { TextMenuController } from '@kit.ArkUI';
 @Component
 struct Index {
   aboutToAppear(): void {
-    // Disable all system service menu items.
+    // Disable all system service menu items except copy, cut, select all, and paste.
     TextMenuController.disableSystemServiceMenuItems(true);
   }
 
@@ -161,7 +160,6 @@ struct Index {
   }
 }
 ```
-
 ## disableMenuItems<sup>20+</sup>
 
 static disableMenuItems(items: Array\<TextMenuItemId>): void
@@ -250,4 +248,4 @@ struct Index {
   }
 }
 ```
-<!--no_check-->
+

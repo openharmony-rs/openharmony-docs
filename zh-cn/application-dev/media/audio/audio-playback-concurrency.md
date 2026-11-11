@@ -164,8 +164,8 @@ import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
 
-let isPlaying: boolean; // 是否正在播放，实际开发中，对应与音频播放状态相关的模块。
-let isDucked: boolean; // 是否降低音量，实际开发中，对应与音频音量相关的模块。
+let isPlaying: boolean; // 是否正在播放，实际开发中，对应于音频播放状态相关的模块。
+let isDucked: boolean; // 是否降低音量，实际开发中，对应于音频音量相关的模块。
 let started: boolean; // 标识符，记录“开始播放（start）”操作是否成功。
 
 async function onAudioInterrupt(): Promise<void> {

@@ -251,7 +251,7 @@ Toast的选项。
 | onWillDisappear<sup>20+</sup> | Callback&lt;void&gt; | 否 | 是 | 菜单退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br /> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | onDidDisappear<sup>20+</sup> | Callback&lt;void&gt; | 否 | 是 | 菜单消失后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | systemMaterial  | [SystemUiMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗的系统材质。<br/>默认值：[ImmersiveOptions](arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。不同的材质具有不同的效果，可以影响弹窗的背景色、边框、阴影等视觉属性。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
-| adaptToHandedness | [HandednessFollowMode](js-apis-dialog.md#handednessfollowmode) | 否 | 是 | 弹窗是否以及如何适配握持习惯。<br/>默认值：HandednessFollowMode.NONE<br/>**说明：**<br/>当alignment不为DialogAlignment.Default，或者offset值不为0时，该接口不生效。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| adaptToHandedness | [HandednessFollowMode](js-apis-dialog.md#handednessfollowmode) | 否 | 是 | 弹窗是否以及如何适配握持习惯。<br/>默认值：HandednessFollowMode.NONE<br/>**起始版本：** 26.1.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## ActionMenuSuccessResponse
 

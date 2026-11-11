@@ -6,7 +6,7 @@
 <!--Designer: @pxlstrong-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=0eccf7ebed426c6515856583f4203fa316300125 translatedAt=2026-07-30T02:58:14.500Z pushedAt=2026-07-30T07:31:13.833Z -->
+<!-- md-trans-meta sourceCommit=b45a6d10766d29796ae7d51305b393c30437f297 translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## Introduction
 
@@ -82,15 +82,15 @@ The following walks you through on how to subscribe to the ArkWeb fling jank eve
    <!-- @[ArkWeb_Fling_Jank_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/ArkWebPage.ets) -->
 
    ``` TypeScript
-   import web_webview from '@ohos.web.webview';
-   
+   import {webview} from '@kit.ArkWeb';
+
    // Used to store the mapping between web_id and URL.
    export const webIdToUrlMap = new Map<number, string>();
-   
+
    @Component
    export struct ArkWebPage {
-     controller = new web_webview.WebviewController();
-   
+     controller = new webview.WebviewController();
+
      build() {
        NavDestination() {
          Column() {

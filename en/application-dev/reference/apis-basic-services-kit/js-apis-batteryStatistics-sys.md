@@ -6,8 +6,9 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=6dc527860f3765d2a9feee01626042c27a272bab translatedAt=2026-11-06T01:40:11.068Z pushedAt=2026-11-09T02:05:02.430Z nl=1 -->
 
-The **batteryStatistics** module provides APIs for querying software and hardware power consumption statistics.
+This module provides APIs for querying the battery statistics of software and hardware. It supports querying the power consumption and power consumption percentage of apps and hardware units. It can be used to monitor and analyze the power consumption of devices, helping identify apps or hardware components with high power consumption and optimize the energy consumption performance of apps accordingly.
 
 > **NOTE**
 >
@@ -18,14 +19,14 @@ The **batteryStatistics** module provides APIs for querying software and hardwar
 ## Modules to Import
 
 ```js
-import {batteryStats} from '@kit.BasicServicesKit';
+import { batteryStats, BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## batteryStats.getBatteryStats
 
 getBatteryStats(): Promise<Array&lt;BatteryStatsInfo&gt;>
 
-Obtains the power consumption information list. This API uses a promise to return the result.
+Obtains an array of the power consumption information. This method can be used by battery monitoring apps to view the power consumption of each app and hardware unit. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -53,8 +54,8 @@ batteryStats.getBatteryStats()
 .then((data: batteryStats.BatteryStatsInfo[]) => {
     console.info('battery statistics info: ' + data);
 })
-.catch((err: Error) => {
-    console.error('get battery statistics failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to get battery statistics. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -62,7 +63,7 @@ batteryStats.getBatteryStats()
 
 getBatteryStats(callback: AsyncCallback<Array&lt;BatteryStatsInfo&gt;>): void
 
-Obtains the power consumption information list. This API uses an asynchronous callback to return the result.
+Obtains an array of the power consumption information. This method can be used by battery monitoring apps to view the power consumption of each app and hardware unit. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -81,17 +82,17 @@ For details about the error codes, see [Power Consumption Statistics Error Codes
 | ID  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
 **Example**
 
 ```js
-batteryStats.getBatteryStats((err: Error, data : batteryStats.BatteryStatsInfo[]) => {
-    if (typeof err === 'undefined') {
-        console.info('battery statistics info: ' + data);
+batteryStats.getBatteryStats((err: BusinessError, data: batteryStats.BatteryStatsInfo[]) => {
+    if (err) {
+        console.error(`Failed to get battery statistics. Code: ${err.code}, message: ${err.message}`);
     } else {
-        console.error('get battery statistics failed, err: ' + err);
+        console.info('battery statistics info: ' + data);
     }
 });
 ```
@@ -100,7 +101,7 @@ batteryStats.getBatteryStats((err: Error, data : batteryStats.BatteryStatsInfo[]
 
 getAppPowerValue(uid: number): number
 
-Obtains the power consumption of an application, in mAh.
+Obtains the power consumption of an app, in mAh. This API is applicable to scenarios where precise power consumption values are required. To compare the power consumption proportions of different apps, use **getAppPowerPercent** to obtain the relative percentage.
 
 **System API**: This is a system API.
 
@@ -110,7 +111,7 @@ Obtains the power consumption of an application, in mAh.
 
 | Name| Type  | Mandatory| Description       |
 | ------ | ------ | ---- | ----------- |
-| uid    | number | Yes  | Application UID.|
+| uid    | number | Yes   | App UID, which specifies the target app whose power consumption is to be queried. It can be obtained using [bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself). |
 
 **Return value**
 
@@ -126,16 +127,16 @@ For details about the error codes, see [Power Consumption Statistics Error Codes
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
 
 ```js
 try {
-    let value = batteryStats.getAppPowerValue(10021);
+    let value = batteryStats.getAppPowerValue(10021); // 10021 is a sample UID. In actual use, obtain the application UID through APIs such as bundleManager.getBundleInfoForSelf.
     console.info('battery statistics value of app is: ' + value);
-} catch(err) {
-    console.error('get battery statistics value of app failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to get battery statistics value of app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -143,7 +144,7 @@ try {
 
 getAppPowerPercent(uid: number): number
 
-Obtains the proportion of the power consumption of an application.
+Obtains the power consumption percentage of an app. This percentage indicates the proportion of the power consumption by this app to the total power consumption.
 
 **System API**: This is a system API.
 
@@ -153,13 +154,13 @@ Obtains the proportion of the power consumption of an application.
 
 | Name| Type  | Mandatory| Description       |
 | ------ | ------ | ---- | ----------- |
-| uid    | number | Yes  | Application UID.|
+| uid    | number | Yes   | UID of the app, which specifies the target app whose power consumption percentage is to be queried. The app UID can be obtained using APIs such as [bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself). |
 
 **Return value**
 
 | Type  | Description                     |
 | ------ | ------------------------- |
-| number | Proportion of the power consumption for an application with this UID. The value ranges from 0.00 to 1.00.|
+| number | Proportion of the power consumption by the app with the specified UID. The value range is [0.00, 1.00]. |
 
 **Error codes**
 
@@ -169,16 +170,16 @@ For details about the error codes, see [Power Consumption Statistics Error Codes
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
 
 ```js
 try {
-    let percent = batteryStats.getAppPowerPercent(10021);
+    let percent = batteryStats.getAppPowerPercent(10021); // 10021 is a sample UID. In actual use, obtain the app UID using APIs such as bundleManager.getBundleInfoForSelf.
     console.info('battery statistics percent of app is: ' + percent);
-} catch(err) {
-    console.error('get battery statistics percent of app failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to get battery statistics percent of app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -186,7 +187,7 @@ try {
 
 getHardwareUnitPowerValue(type: ConsumptionType): number
 
-Obtains the power consumption of a hardware unit according to the consumption type, in mAh.
+Obtains the power consumption of a hardware unit based on the consumption type, in mAh. This API is applicable to scenarios where precise power consumption values are required. To compare the power consumption proportions of different hardware units, use **getHardwareUnitPowerPercent** to obtain the relative percentage.
 
 **System API**: This is a system API.
 
@@ -196,7 +197,7 @@ Obtains the power consumption of a hardware unit according to the consumption ty
 
 | Name| Type                               | Mandatory| Description          |
 | ------ | ----------------------------------- | ---- | -------------- |
-| type   | [ConsumptionType](#consumptiontype) | Yes  | Power consumption type. The value must be an enum.|
+| type   | [ConsumptionType](#consumptiontype) | Yes   | Power consumption type, which specifies the hardware power consumption type to query. For the available values, see [ConsumptionType](#consumptiontype). For example, **CONSUMPTION_TYPE_SCREEN** queries the screen power consumption, **CONSUMPTION_TYPE_BLUETOOTH** queries the Bluetooth power consumption, and **CONSUMPTION_TYPE_WIFI** queries the Wi-Fi power consumption. |
 
 **Return value**
 
@@ -211,17 +212,17 @@ For details about the error codes, see [Power Consumption Statistics Error Codes
 | ID  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 
 **Example**
 
 ```js
 try {
-    let value = batteryStats.getHardwareUnitPowerValue(batteryStats.ConsumptionType.CONSUMPTION_TYPE_SCREEN);
-    console.info('battery statistics value of hardware is: ' + value);
-} catch(err) {
-    console.error('get battery statistics percent of hardware failed, err: ' + err);
+    let powerValue = batteryStats.getHardwareUnitPowerValue(batteryStats.ConsumptionType.CONSUMPTION_TYPE_SCREEN);
+    console.info('battery statistics value of hardware is: ' + powerValue);
+} catch (err) {
+    console.error(`Failed to get battery statistics value of hardware. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -229,7 +230,7 @@ try {
 
 getHardwareUnitPowerPercent(type: ConsumptionType): number
 
-Obtains the proportion of the power consumption of a hardware unit according to the power consumption type.
+Obtains the power consumption percentage of a hardware unit based on the consumption type. This percentage indicates the proportion of the power consumption by the specified hardware unit to the total power consumption.
 
 **System API**: This is a system API.
 
@@ -239,13 +240,13 @@ Obtains the proportion of the power consumption of a hardware unit according to 
 
 | Name| Type                               | Mandatory| Description          |
 | ------ | ----------------------------------- | ---- | -------------- |
-| type   | [ConsumptionType](#consumptiontype) | Yes  | Power consumption type. The value must be an enum.|
+| type   | [ConsumptionType](#consumptiontype) | Yes   | Power consumption type of the hardware unit to query. For the available values, see [ConsumptionType](#consumptiontype). For example, **CONSUMPTION_TYPE_SCREEN** queries the screen power consumption percentage, **CONSUMPTION_TYPE_BLUETOOTH** queries the Bluetooth power consumption percentage, and **CONSUMPTION_TYPE_WIFI** queries the Wi-Fi power consumption percentage. |
 
 **Return value**
 
 | Type  | Description                              |
 | ------ | ---------------------------------- |
-| number | Proportion of the power consumption for the hardware unit corresponding to the power consumption type. The value ranges from 0.00 to 1.00.|
+| number | Proportion of the power consumption by the hardware unit with the specified power consumption type. The value range is [0.00, 1.00]. |
 
 **Error codes**
 
@@ -254,7 +255,7 @@ For details about the error codes, see [Power Consumption Statistics Error Codes
 | ID  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
@@ -263,14 +264,14 @@ For details about the error codes, see [Power Consumption Statistics Error Codes
 try {
     let percent = batteryStats.getHardwareUnitPowerPercent(batteryStats.ConsumptionType.CONSUMPTION_TYPE_SCREEN);
     console.info('battery statistics percent of hardware is: ' + percent);
-} catch(err) {
-    console.error('get battery statistics percent of hardware failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to get battery statistics percent of hardware. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ## BatteryStatsInfo
 
-Describes the device power consumption information.
+Describes the battery statistics information of the device software and hardware.
 
 **System API**: This is a system API.
 
@@ -280,8 +281,8 @@ Describes the device power consumption information.
 
 | Name | Type                               | Read-Only| Optional| Description                  |
 | ----- | ----------------------------------- | ---- | ---- | ---------------------- |
-| uid   | number                              | No  | No  | UID related to power consumption information.   |
-| type  | [ConsumptionType](#consumptiontype) | No  | No  | Power consumption type.  |
+| uid   | number                              | No   | No   | UID of the app with the specified power consumption.  |
+| type  | [ConsumptionType](#consumptiontype) | No   | No   | Power consumption type.   |
 | power | number                              | No  | No  | Power consumption, in unit of mAh.|
 
 ## ConsumptionType
@@ -298,8 +299,8 @@ Enumerates power consumption types.
 | CONSUMPTION_TYPE_APP       | -16  | Power consumption of an application.     |
 | CONSUMPTION_TYPE_BLUETOOTH | -15  | Power consumption of Bluetooth.     |
 | CONSUMPTION_TYPE_IDLE      | -14  | Power consumption when the CPU is idle.|
-| CONSUMPTION_TYPE_PHONE     | -13  | Power consumption of a phone call. |
-| CONSUMPTION_TYPE_RADIO     | -12  | Power consumption of wireless communication. |
+| CONSUMPTION_TYPE_PHONE     | -13  | Power consumption of a phone call.  |
+| CONSUMPTION_TYPE_RADIO     | -12  | Power consumption of cellular communication.  |
 | CONSUMPTION_TYPE_SCREEN    | -11  | Power consumption of the screen.     |
 | CONSUMPTION_TYPE_USER      | -10  | Power consumption of the user.     |
 | CONSUMPTION_TYPE_WIFI      | -9   | Power consumption of Wi-Fi.   |

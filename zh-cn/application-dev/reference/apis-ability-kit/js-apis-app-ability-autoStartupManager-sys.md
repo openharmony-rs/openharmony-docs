@@ -34,7 +34,6 @@ on(type: 'systemAutoStartup', callback: AutoStartupCallback): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 21开始，该接口仅在Phone、2in1、Tablet和Wearable设备中正常调用，在其他设备上返回16000050错误码。
 - 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。
 - 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
@@ -92,7 +91,6 @@ off(type: 'systemAutoStartup', callback?: AutoStartupCallback): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 21开始，该接口仅在Phone、2in1、Tablet和Wearable设备中正常调用，在其他设备上返回16000050错误码。
 - 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。
 - 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
@@ -148,7 +146,6 @@ setApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback\<void\>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 21开始，该接口仅在Phone、2in1、Tablet和Wearable设备中正常调用，在其他设备上返回16000050错误码。
 - 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。
 - 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
@@ -209,7 +206,6 @@ setApplicationAutoStartup(info: AutoStartupInfo): Promise\<void\>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 21开始，该接口仅在Phone、2in1、Tablet和Wearable设备中正常调用，在其他设备上返回16000050错误码。
 - 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。
 - 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
@@ -273,7 +269,6 @@ cancelApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback\<voi
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 21开始，该接口仅在Phone、2in1、Tablet和Wearable设备中正常调用，在其他设备上返回16000050错误码。
 - 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。
 - 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
@@ -333,7 +328,6 @@ cancelApplicationAutoStartup(info: AutoStartupInfo): Promise\<void\>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 21开始，该接口仅在Phone、2in1、Tablet和Wearable设备中正常调用，在其他设备上返回16000050错误码。
 - 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。
 - 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
@@ -396,7 +390,6 @@ queryAllAutoStartupApplications(callback: AsyncCallback\<Array\<AutoStartupInfo\
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 21开始，该接口仅在Phone、2in1、Tablet和Wearable设备中正常调用，在其他设备上返回16000050错误码。
 - 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。
 - 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
@@ -450,7 +443,6 @@ try {
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 21开始，该接口仅在Phone、2in1、Tablet和Wearable设备中正常调用，在其他设备上返回16000050错误码。
 - 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。
 - 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 

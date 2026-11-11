@@ -2,11 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=972ffdace65f823e918481b5e955b2eb18ffaa1a translatedAt=2026-08-05T03:07:27.258Z pushedAt=2026-08-06T01:56:51.149Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-02T12:51:38.023Z pushedAt=2026-11-06T10:52:32.606Z nl=1 -->
 
 This section introduces ArkUI UIContext-related types, including custom component building, UIObserver event listening callbacks, node identifier, cursor style, and context.
 
@@ -32,7 +32,7 @@ Defines a type that can be used for component attributes and method parameters t
 | -------- | -------- | -------- | -------- |
 | id | number | Yes| Component ID.|
 
-## ClickEventListenerCallback<sup>12+</sup>
+## ClickEventListenerCallback
 
 type ClickEventListenerCallback = (event: ClickEvent, node?: FrameNode) => void
 
@@ -71,7 +71,7 @@ Defines the callback type for pan gesture event listening. It can be used in sce
 | current | [GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12) | Yes  | Information about the gesture recognizer that triggers the listener. |
 | node | [FrameNode](js-apis-arkui-frameNode.md) | No | Component to which the gesture event that triggers the event listener is bound. If this parameter is not passed, the default value is **undefined**. |
 
-## GestureEventListenerCallback<sup>12+</sup>
+## GestureEventListenerCallback
 
 type GestureEventListenerCallback = (event: GestureEvent, node?: FrameNode) => void
 
@@ -144,7 +144,7 @@ Defines the callback type for listening for specific gesture trigger information
 | ------- | ----------------- | ---- | --------------------------------- |
 | info   | [GestureTriggerInfo](arkts-apis-uicontext-i.md#gesturetriggerinfo20)     | Yes  |  Details of the gesture triggered by the interaction.|
 
-## PointerStyle<sup>12+</sup>
+## PointerStyle
 
 type PointerStyle = pointer.PointerStyle
 
@@ -158,7 +158,7 @@ Defines the pointer style.
 | -- | -- |
 |[pointer.PointerStyle](../apis-input-kit/js-apis-pointer.md#pointerstyle) |Pointer style.|
 
-## Context<sup>12+</sup>
+## Context
 
 type Context = common.Context
 

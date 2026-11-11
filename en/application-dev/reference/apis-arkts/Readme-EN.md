@@ -1,12 +1,13 @@
 # ArkTS
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025; @xliu-huanwei-->
-<!--Designer: @weng-changcheng; @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @weng-changcheng; @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=5e21320b086cc38c3f22d99f159dd89d7a573108 translatedAt=2026-11-03T13:49:30.139Z pushedAt=2026-11-04T06:58:49.020Z nl=1 -->
 
-- ArkTS APIs<!--arkts-arkts--> 
+- ArkTS APIs<!--arkts-arkts-->
   - @arkts.collections (ArkTS Collections)<!--js-apis-arkts-collections-->
     - [Module Description](arkts-apis-arkts-collections.md)
     - [Class (Array)](arkts-apis-arkts-collections-Array.md)
@@ -25,15 +26,16 @@
     - [Interface (ConcatArray)](arkts-apis-arkts-collections-ConcatArray.md)
     - [Types](arkts-apis-arkts-collections-Types.md)
   - [@arkts.lang (ArkTS Base Capability)](js-apis-arkts-lang.md)
-  - [@arkts.math.Decimal (High-Precision Math Library Decimal)](js-apis-arkts-decimal.md)
+  - [@arkts.math.Decimal (Arbitrary-Precision Math Library Decimal)](js-apis-arkts-decimal.md)
   - @arkts.utils (ArkTS Utils)<!--js-apis-arkts-utils-->
     - [Module Description](arkts-apis-arkts-utils.md)
     - [Functions](arkts-apis-arkts-utils-f.md)
-    - [ArkTSUtils.locks](arkts-apis-arkts-utils-locks.md)
-    - [ArkTSUtils.ASON](arkts-apis-arkts-utils-ASON.md)
-    - [SendableLruCache<K, V>](arkts-apis-arkts-utils-SendableLruCache.md)
+    - [namespace (locks)](arkts-apis-arkts-utils-locks.md)
+    - [namespace (ASON)](arkts-apis-arkts-utils-ASON.md)
+    - [Class (SendableLruCache)](arkts-apis-arkts-utils-SendableLruCache.md)
+    - [Class (Atomics)](arkts-apis-arkts-utils-Atomics.md)
   - [@ohos.buffer (Buffer)](js-apis-buffer.md)
-  - [@ohos.convertxml (XML-to-JavaScript Conversion)](js-apis-convertxml.md)
+  - [@ohos.convertxml (XML to JavaScript Conversion)](js-apis-convertxml.md)
   - [@ohos.fastbuffer (FastBuffer)](js-apis-fastbuffer.md)
   - [@ohos.process (Obtaining Process Information)](js-apis-process.md)
   - [@ohos.taskpool (Starting the Task Pool)](js-apis-taskpool.md)
@@ -60,11 +62,11 @@
   - [@ohos.worker (Starting the Worker) (System API)](js-apis-worker-sys.md)
   <!--DelEnd-->
   - [@ohos.xml (XML Parsing and Generation)](js-apis-xml.md)
-  - APIs No Longer Maintained<!--arkts-arkts-dep--> 
+  - APIs No Longer Maintained<!--arkts-arkts-dep-->
     - [@ohos.util.Vector (Linear Container Vector)](js-apis-vector.md)
 - Error Codes<!--arkts-arkts-errcode-->
   - [Utils Error Codes](errorcode-utils.md)
-  - [TypeScript Compiler Error Codes](errorcode-tsc.md)
+  - [TSC Error Code Introduction](errorcode-tsc.md)
   - [Compilation Toolchain Error Codes](errorcode-ets-loader.md)
   - [es2abc Compiler Error Codes](errorcode-es2abc.md)
   - [Source Code Obfuscation Error Codes](errorcode-source-obfuscation.md)

@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=d6e3485e64d5c7dffe8f60477342d4ee168896f9 translatedAt=2026-11-03T05:41:14.759Z pushedAt=2026-11-03T07:40:21.449Z nl=1 -->
 
 This topic provides signing and signature verification development cases with the following algorithms:
 
@@ -814,7 +815,7 @@ static OH_Huks_Result GenerateKey(const struct OH_Huks_Blob *keyAlias, const str
     return OH_Huks_GenerateKeyItem(keyAlias, genParamSet, nullptr);
 }
 
-/* 2. Verify the signature. */
+/* 2. Signature */
 static OH_Huks_Result SignData(const struct OH_Huks_Blob *keyAlias,
                                const struct OH_Huks_ParamSet *signParamSet,
                                const struct OH_Huks_Blob *inData,

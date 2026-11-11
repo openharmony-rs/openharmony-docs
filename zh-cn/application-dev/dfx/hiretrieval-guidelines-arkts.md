@@ -34,6 +34,8 @@
 
 1. 导入所需的依赖模块，以EntryAbility.ets为例。 
 
+   <!-- @[hiretrieval_import_sample_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiRetrieval/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hiRetrieval } from '@kit.PerformanceAnalysisKit';

@@ -12,7 +12,7 @@
 
 > **说明：**
 >
-> 从API version 7 开始支持，从API version 9 开始废弃，建议使用[系统定义的公共事件](commonEventManager-definitions.md)替代。
+> 从API版本7开始支持，从API版本9开始废弃，建议使用[系统定义的公共事件](commonEventManager-definitions.md)替代。
 
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -21,7 +21,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用COMMON_EVENT_BOOT_COMPLETED替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用COMMON_EVENT_BOOT_COMPLETED替代。
 
   - 值：usual.event.BOOT_COMPLETED
   - 订阅者所需权限：ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
@@ -30,7 +30,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_LOCKED_BOOT_COMPLETED](commonEventManager-definitions.md#common_event_locked_boot_completed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_LOCKED_BOOT_COMPLETED](commonEventManager-definitions.md#common_event_locked_boot_completed)替代。
 
   - 值：usual.event.LOCKED_BOOT_COMPLETED
   - 订阅者所需权限：无
@@ -39,7 +39,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_SHUTDOWN](commonEventManager-definitions.md#common_event_shutdown)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_SHUTDOWN](commonEventManager-definitions.md#common_event_shutdown)替代。
 
   - 值：usual.event.SHUTDOWN
   - 订阅者所需权限：无
@@ -48,7 +48,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BATTERY_CHANGED](commonEventManager-definitions.md#common_event_battery_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BATTERY_CHANGED](commonEventManager-definitions.md#common_event_battery_changed)替代。
 
   - 值：usual.event.BATTERY_CHANGED
   - 订阅者所需权限：无
@@ -57,7 +57,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BATTERY_LOW](commonEventManager-definitions.md#common_event_battery_low)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BATTERY_LOW](commonEventManager-definitions.md#common_event_battery_low)替代。
 
   - 值：usual.event.BATTERY_LOW
   - 订阅者所需权限：无
@@ -66,7 +66,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BATTERY_OKAY](commonEventManager-definitions.md#common_event_battery_okay)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BATTERY_OKAY](commonEventManager-definitions.md#common_event_battery_okay)替代。
 
   - 值：usual.event.BATTERY_OKAY
   - 订阅者所需权限：无
@@ -75,7 +75,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_POWER_CONNECTED](commonEventManager-definitions.md#common_event_power_connected)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_POWER_CONNECTED](commonEventManager-definitions.md#common_event_power_connected)替代。
 
   - 值：usual.event.POWER_CONNECTED
   - 订阅者所需权限：无
@@ -85,7 +85,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_POWER_DISCONNECTED](commonEventManager-definitions.md#common_event_power_disconnected)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_POWER_DISCONNECTED](commonEventManager-definitions.md#common_event_power_disconnected)替代。
 
   - 值：usual.event.POWER_DISCONNECTED
   - 订阅者所需权限：无
@@ -95,7 +95,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_SCREEN_OFF](commonEventManager-definitions.md#common_event_screen_off)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_SCREEN_OFF](commonEventManager-definitions.md#common_event_screen_off)替代。
 
   - 值：usual.event.SCREEN_OFF
   - 订阅者所需权限：无
@@ -105,7 +105,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_SCREEN_ON](commonEventManager-definitions.md#common_event_screen_on)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_SCREEN_ON](commonEventManager-definitions.md#common_event_screen_on)替代。
 
   - 值：usual.event.SCREEN_ON
   - 订阅者所需权限：无
@@ -115,7 +115,7 @@
 
   > **说明：**
   >
-  > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_THERMAL_LEVEL_CHANGED](commonEventManager-definitions.md#common_event_thermal_level_changed)替代。
+  > 从API版本8开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_THERMAL_LEVEL_CHANGED](commonEventManager-definitions.md#common_event_thermal_level_changed)替代。
 
   - 值：usual.event.THERMAL_LEVEL_CHANGED
   - 订阅者所需权限：无
@@ -125,7 +125,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USER_PRESENT](commonEventManager-definitions.md#common_event_user_presentdeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_USER_PRESENT](commonEventManager-definitions.md#common_event_user_presentdeprecated)替代。
 
   - 值：usual.event.USER_PRESENT
   - 订阅者所需权限：无
@@ -135,7 +135,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_TIME_TICK](commonEventManager-definitions.md#common_event_time_tick)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_TIME_TICK](commonEventManager-definitions.md#common_event_time_tick)替代。
 
   - 值：usual.event.TIME_TICK
   - 订阅者所需权限：无
@@ -145,7 +145,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_TIME_CHANGED](commonEventManager-definitions.md#common_event_time_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_TIME_CHANGED](commonEventManager-definitions.md#common_event_time_changed)替代。
 
   - 值：usual.event.TIME_CHANGED
   - 订阅者所需权限：无
@@ -155,7 +155,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_DATE_CHANGED](commonEventManager-definitions.md#common_event_date_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_DATE_CHANGED](commonEventManager-definitions.md#common_event_date_changed)替代。
 
   - 值：usual.event.DATE_CHANGED
   - 订阅者所需权限：无
@@ -165,7 +165,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_TIMEZONE_CHANGED](commonEventManager-definitions.md#common_event_timezone_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_TIMEZONE_CHANGED](commonEventManager-definitions.md#common_event_timezone_changed)替代。
 
   - 值：usual.event.TIMEZONE_CHANGED
   - 订阅者所需权限：无
@@ -175,7 +175,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_CLOSE_SYSTEM_DIALOGS](commonEventManager-definitions.md#common_event_close_system_dialogs)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_CLOSE_SYSTEM_DIALOGS](commonEventManager-definitions.md#common_event_close_system_dialogs)替代。
 
   - 值：usual.event.CLOSE_SYSTEM_DIALOGS
   - 订阅者所需权限：无
@@ -185,7 +185,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_PACKAGE_ADDED](commonEventManager-definitions.md#common_event_package_added)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_PACKAGE_ADDED](commonEventManager-definitions.md#common_event_package_added)替代。
 
   - 值：usual.event.PACKAGE_ADDED
   - 订阅者所需权限：无
@@ -194,7 +194,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_PACKAGE_REPLACED](commonEventManager-definitions.md#common_event_package_replaced)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_PACKAGE_REPLACED](commonEventManager-definitions.md#common_event_package_replaced)替代。
 
   - 值：usual.event.PACKAGE_REPLACED
   - 订阅者所需权限：无
@@ -204,7 +204,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_MY_PACKAGE_REPLACED](commonEventManager-definitions.md#common_event_my_package_replaced)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_MY_PACKAGE_REPLACED](commonEventManager-definitions.md#common_event_my_package_replaced)替代。
 
   - 值：usual.event.MY_PACKAGE_REPLACED
   - 订阅者所需权限：无
@@ -213,7 +213,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_PACKAGE_REMOVED](commonEventManager-definitions.md#common_event_package_removed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_PACKAGE_REMOVED](commonEventManager-definitions.md#common_event_package_removed)替代。
 
   - 值：usual.event.PACKAGE_REMOVED
   - 订阅者所需权限：无
@@ -223,7 +223,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BUNDLE_REMOVED](commonEventManager-definitions.md#common_event_bundle_removed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BUNDLE_REMOVED](commonEventManager-definitions.md#common_event_bundle_removed)替代。
 
   - 值：usual.event.BUNDLE_REMOVED
   - 订阅者所需权限：无
@@ -233,7 +233,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_PACKAGE_FULLY_REMOVED](commonEventManager-definitions.md#common_event_package_fully_removed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_PACKAGE_FULLY_REMOVED](commonEventManager-definitions.md#common_event_package_fully_removed)替代。
 
   - 值：usual.event.PACKAGE_FULLY_REMOVED
   - 订阅者所需权限：无
@@ -243,7 +243,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_PACKAGE_CHANGED](commonEventManager-definitions.md#common_event_package_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_PACKAGE_CHANGED](commonEventManager-definitions.md#common_event_package_changed)替代。
 
   - 值：usual.event.PACKAGE_CHANGED
   - 订阅者所需权限：无
@@ -253,7 +253,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_PACKAGE_RESTARTED](commonEventManager-definitions.md#common_event_package_restarted)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_PACKAGE_RESTARTED](commonEventManager-definitions.md#common_event_package_restarted)替代。
 
   - 值：usual.event.PACKAGE_RESTARTED
   - 订阅者所需权限：无
@@ -263,7 +263,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_PACKAGE_DATA_CLEARED](commonEventManager-definitions.md#common_event_package_data_cleared)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_PACKAGE_DATA_CLEARED](commonEventManager-definitions.md#common_event_package_data_cleared)替代。
 
   - 值：usual.event.PACKAGE_DATA_CLEARED
   - 订阅者所需权限：无
@@ -273,7 +273,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_PACKAGES_SUSPENDED](commonEventManager-definitions.md#common_event_packages_suspended)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_PACKAGES_SUSPENDED](commonEventManager-definitions.md#common_event_packages_suspended)替代。
 
   - 值：usual.event.PACKAGES_SUSPENDED
   - 订阅者所需权限：无
@@ -283,7 +283,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_PACKAGES_UNSUSPENDED](commonEventManager-definitions.md#common_event_packages_unsuspended)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_PACKAGES_UNSUSPENDED](commonEventManager-definitions.md#common_event_packages_unsuspended)替代。
 
   - 值：usual.event.PACKAGES_UNSUSPENDED
   - 订阅者所需权限：无
@@ -293,7 +293,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_MY_PACKAGE_SUSPENDED](commonEventManager-definitions.md#common_event_my_package_suspended)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_MY_PACKAGE_SUSPENDED](commonEventManager-definitions.md#common_event_my_package_suspended)替代。
 
   - 值：usual.event.MY_PACKAGE_SUSPENDED
   - 订阅者所需权限：无
@@ -303,7 +303,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_MY_PACKAGE_UNSUSPENDED](commonEventManager-definitions.md#common_event_my_package_unsuspended)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_MY_PACKAGE_UNSUSPENDED](commonEventManager-definitions.md#common_event_my_package_unsuspended)替代。
 
   - 值：usual.event.MY_PACKAGE_UNSUSPENDED
   - 订阅者所需权限：无
@@ -313,7 +313,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_UID_REMOVED](commonEventManager-definitions.md#common_event_uid_removed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_UID_REMOVED](commonEventManager-definitions.md#common_event_uid_removed)替代。
 
   - 值：usual.event.UID_REMOVED
   - 订阅者所需权限：无
@@ -323,7 +323,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_PACKAGE_FIRST_LAUNCH](commonEventManager-definitions.md#common_event_package_first_launch)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_PACKAGE_FIRST_LAUNCH](commonEventManager-definitions.md#common_event_package_first_launch)替代。
 
   - 值：usual.event.PACKAGE_FIRST_LAUNCH
   - 订阅者所需权限：无
@@ -333,7 +333,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION](commonEventManager-definitions.md#common_event_package_needs_verification)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_PACKAGE_NEEDS_VERIFICATION](commonEventManager-definitions.md#common_event_package_needs_verification)替代。
 
   - 值：usual.event.PACKAGE_NEEDS_VERIFICATION
   - 订阅者所需权限：无
@@ -343,7 +343,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_PACKAGE_VERIFIED](commonEventManager-definitions.md#common_event_package_verified)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_PACKAGE_VERIFIED](commonEventManager-definitions.md#common_event_package_verified)替代。
 
   - 值：usual.event.PACKAGE_VERIFIED
   - 订阅者所需权限：无
@@ -353,7 +353,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE](commonEventManager-definitions.md#common_event_external_applications_available)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE](commonEventManager-definitions.md#common_event_external_applications_available)替代。
 
   - 值：usual.event.EXTERNAL_APPLICATIONS_AVAILABLE
   - 订阅者所需权限：无
@@ -363,7 +363,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE](commonEventManager-definitions.md#common_event_external_applications_unavailable)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE](commonEventManager-definitions.md#common_event_external_applications_unavailable)替代。
 
   - 值：usual.event.EXTERNAL_APPLICATIONS_UNAVAILABLE
   - 订阅者所需权限：无
@@ -373,7 +373,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_CONFIGURATION_CHANGED](commonEventManager-definitions.md#common_event_configuration_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_CONFIGURATION_CHANGED](commonEventManager-definitions.md#common_event_configuration_changed)替代。
 
   - 值：usual.event.CONFIGURATION_CHANGED
   - 订阅者所需权限：无
@@ -383,7 +383,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_LOCALE_CHANGED](commonEventManager-definitions.md#common_event_locale_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_LOCALE_CHANGED](commonEventManager-definitions.md#common_event_locale_changed)替代。
 
   - 值：usual.event.LOCALE_CHANGED
   - 订阅者所需权限：无
@@ -393,7 +393,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_MANAGE_PACKAGE_STORAGE](commonEventManager-definitions.md#common_event_manage_package_storage)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_MANAGE_PACKAGE_STORAGE](commonEventManager-definitions.md#common_event_manage_package_storage)替代。
 
   - 值：usual.event.MANAGE_PACKAGE_STORAGE
   - 订阅者所需权限：无
@@ -403,7 +403,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_DRIVE_MODE](commonEventManager-definitions.md#common_event_drive_mode)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_DRIVE_MODE](commonEventManager-definitions.md#common_event_drive_mode)替代。
 
   - 值：common.event.DRIVE_MODE
   - 订阅者所需权限：无
@@ -413,7 +413,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_HOME_MODE](commonEventManager-definitions.md#common_event_home_mode)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_HOME_MODE](commonEventManager-definitions.md#common_event_home_mode)替代。
 
   - 值：common.event.HOME_MODE
   - 订阅者所需权限：无
@@ -423,7 +423,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_OFFICE_MODE](commonEventManager-definitions.md#common_event_office_mode)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_OFFICE_MODE](commonEventManager-definitions.md#common_event_office_mode)替代。
 
   - 值：common.event.OFFICE_MODE
   - 订阅者所需权限：无
@@ -433,7 +433,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USER_STARTED](commonEventManager-definitions.md#common_event_user_started)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_USER_STARTED](commonEventManager-definitions.md#common_event_user_started)替代。
 
   - 值：usual.event.USER_STARTED
   - 订阅者所需权限：无
@@ -443,7 +443,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USER_BACKGROUND](commonEventManager-definitions.md#common_event_user_background)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_USER_BACKGROUND](commonEventManager-definitions.md#common_event_user_background)替代。
 
   - 值：usual.event.USER_BACKGROUND
   - 订阅者所需权限：无
@@ -453,7 +453,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USER_FOREGROUND](commonEventManager-definitions.md#common_event_user_foreground)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_USER_FOREGROUND](commonEventManager-definitions.md#common_event_user_foreground)替代。
 
   - 值：usual.event.USER_FOREGROUND
   - 订阅者所需权限：无
@@ -463,7 +463,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用COMMON_EVENT_USER_SWITCHED替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用COMMON_EVENT_USER_SWITCHED替代。
 
   - 值：usual.event.USER_SWITCHED
   - 订阅者所需权限：ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
@@ -473,7 +473,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USER_STARTING](commonEventManager-definitions.md#common_event_user_starting)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_USER_STARTING](commonEventManager-definitions.md#common_event_user_starting)替代。
 
   - 值：usual.event.USER_STARTING
   - 订阅者所需权限：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
@@ -483,7 +483,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USER_UNLOCKED](commonEventManager-definitions.md#common_event_user_unlocked)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_USER_UNLOCKED](commonEventManager-definitions.md#common_event_user_unlocked)替代。
 
   - 值：usual.event.USER_UNLOCKED
   - 订阅者所需权限：无
@@ -493,7 +493,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USER_STOPPING](commonEventManager-definitions.md#common_event_user_stopping)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_USER_STOPPING](commonEventManager-definitions.md#common_event_user_stopping)替代。
 
   - 值：usual.event.USER_STOPPING
   - 订阅者所需权限：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
@@ -503,7 +503,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USER_STOPPED](commonEventManager-definitions.md#common_event_user_stopped)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_USER_STOPPED](commonEventManager-definitions.md#common_event_user_stopped)替代。
 
   - 值：usual.event.USER_STOPPED
   - 订阅者所需权限：无
@@ -513,7 +513,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_POWER_STATE](commonEventManager-definitions.md#common_event_wifi_power_state)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_POWER_STATE](commonEventManager-definitions.md#common_event_wifi_power_state)替代。
 
   - 值：usual.event.wifi.POWER_STATE
   - 订阅者所需权限：无
@@ -523,7 +523,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_SCAN_FINISHED](commonEventManager-definitions.md#common_event_wifi_scan_finished)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_SCAN_FINISHED](commonEventManager-definitions.md#common_event_wifi_scan_finished)替代。
 
   - 值：usual.event.wifi.SCAN_FINISHED
   - 订阅者所需权限：ohos.permission.LOCATION
@@ -533,7 +533,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_RSSI_VALUE](commonEventManager-definitions.md#common_event_wifi_rssi_value)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_RSSI_VALUE](commonEventManager-definitions.md#common_event_wifi_rssi_value)替代。
 
   - 值：usual.event.wifi.RSSI_VALUE
   - 订阅者所需权限：ohos.permission.GET_WIFI_INFO
@@ -543,7 +543,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_CONN_STATE](commonEventManager-definitions.md#common_event_wifi_conn_state)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_CONN_STATE](commonEventManager-definitions.md#common_event_wifi_conn_state)替代。
 
   - 值：usual.event.wifi.CONN_STATE
   - 订阅者所需权限：无
@@ -553,7 +553,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_HOTSPOT_STATE](commonEventManager-definitions.md#common_event_wifi_hotspot_state)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_HOTSPOT_STATE](commonEventManager-definitions.md#common_event_wifi_hotspot_state)替代。
 
   - 值：usual.event.wifi.HOTSPOT_STATE
   - 订阅者所需权限：无
@@ -563,7 +563,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_AP_STA_JOIN](commonEventManager-definitions.md#common_event_wifi_ap_sta_join)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_AP_STA_JOIN](commonEventManager-definitions.md#common_event_wifi_ap_sta_join)替代。
 
   - 值：usual.event.wifi.WIFI_HS_STA_JOIN
   - 订阅者所需权限：ohos.permission.GET_WIFI_INFO
@@ -573,7 +573,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_AP_STA_LEAVE](commonEventManager-definitions.md#common_event_wifi_ap_sta_leave)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_AP_STA_LEAVE](commonEventManager-definitions.md#common_event_wifi_ap_sta_leave)替代。
 
   - 值：usual.event.wifi.WIFI_HS_STA_LEAVE
   - 订阅者所需权限：ohos.permission.GET_WIFI_INFO
@@ -583,7 +583,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE](commonEventManager-definitions.md#common_event_wifi_mplink_state_change)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE](commonEventManager-definitions.md#common_event_wifi_mplink_state_change)替代。
 
   - 值：usual.event.wifi.mplink.STATE_CHANGE
   - 订阅者所需权限：无
@@ -593,7 +593,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_P2P_CONN_STATE](commonEventManager-definitions.md#common_event_wifi_p2p_conn_state)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_P2P_CONN_STATE](commonEventManager-definitions.md#common_event_wifi_p2p_conn_state)替代。
 
   - 值：usual.event.wifi.p2p.CONN_STATE_CHANGE
   - 订阅者所需权限：ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
@@ -603,7 +603,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_P2P_STATE_CHANGED](commonEventManager-definitions.md#common_event_wifi_p2p_state_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_P2P_STATE_CHANGED](commonEventManager-definitions.md#common_event_wifi_p2p_state_changed)替代。
 
   - 值：usual.event.wifi.p2p.STATE_CHANGE
   - 订阅者所需权限：ohos.permission.GET_WIFI_INFO
@@ -613,7 +613,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED](commonEventManager-definitions.md#common_event_wifi_p2p_peers_state_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED](commonEventManager-definitions.md#common_event_wifi_p2p_peers_state_changed)替代。
 
   - 值：usual.event.wifi.p2p.DEVICES_CHANGE
   - 订阅者所需权限：ohos.permission.GET_WIFI_INFO
@@ -623,7 +623,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED](commonEventManager-definitions.md#common_event_wifi_p2p_peers_discovery_state_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED](commonEventManager-definitions.md#common_event_wifi_p2p_peers_discovery_state_changed)替代。
 
   - 值：usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE
   - 订阅者所需权限：ohos.permission.GET_WIFI_INFO
@@ -633,7 +633,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED](commonEventManager-definitions.md#common_event_wifi_p2p_current_device_state_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED](commonEventManager-definitions.md#common_event_wifi_p2p_current_device_state_changed)替代。
 
   - 值：usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE
   - 订阅者所需权限：ohos.permission.GET_WIFI_INFO
@@ -643,7 +643,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED](commonEventManager-definitions.md#common_event_wifi_p2p_group_state_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_WIFI_P2P_GROUP_STATE_CHANGED](commonEventManager-definitions.md#common_event_wifi_p2p_group_state_changed)替代。
 
   - 值：usual.event.wifi.p2p.GROUP_STATE_CHANGED
   - 订阅者所需权限：ohos.permission.GET_WIFI_INFO
@@ -653,7 +653,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfree_ag_connect_state_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfree_ag_connect_state_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.handsfree.ag.CONNECT_STATE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -663,7 +663,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfree_ag_current_device_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfree_ag_current_device_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.handsfree.ag.CURRENT_DEVICE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -673,7 +673,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfree_ag_audio_state_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfree_ag_audio_state_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.handsfree.ag.AUDIO_STATE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -683,7 +683,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsource_connect_state_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CONNECT_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsource_connect_state_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.a2dpsource.CONNECT_STATE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -693,7 +693,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsource_current_device_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsource_current_device_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.a2dpsource.CURRENT_DEVICE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -703,7 +703,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsource_playing_state_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsource_playing_state_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.a2dpsource.PLAYING_STATE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -713,7 +713,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsource_avrcp_connect_state_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsource_avrcp_connect_state_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.a2dpsource.AVRCP_CONNECT_STATE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -723,7 +723,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsource_codec_value_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsource_codec_value_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.a2dpsource.CODEC_VALUE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -733,7 +733,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_discovereddeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_discovereddeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.DISCOVERED
   - 订阅者所需权限：ohos.permission.LOCATION and ohos.permission.USE_BLUETOOTH
@@ -743,7 +743,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_class_value_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_class_value_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.CLASS_VALUE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -753,7 +753,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_acl_connecteddeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_acl_connecteddeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.ACL_CONNECTED
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -763,7 +763,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_acl_disconnecteddeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_acl_disconnecteddeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.ACL_DISCONNECTED
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -773,7 +773,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_name_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_name_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.NAME_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -783,7 +783,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_pair_statedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_pair_statedeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.PAIR_STATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -793,7 +793,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_battery_value_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_battery_value_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.BATTERY_VALUE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -803,7 +803,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_sdp_resultdeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_sdp_resultdeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.SDP_RESULT
   - 订阅者所需权限：无
@@ -813,7 +813,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_uuid_valuedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_uuid_valuedeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.UUID_VALUE
   - 订阅者所需权限：ohos.permission.DISCOVER_BLUETOOTH
@@ -823,7 +823,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_pairing_reqdeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_pairing_reqdeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.PAIRING_REQ
   - 订阅者所需权限：ohos.permission.DISCOVER_BLUETOOTH
@@ -833,7 +833,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_pairing_canceldeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_pairing_canceldeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.PAIRING_CANCEL
   - 订阅者所需权限：无
@@ -843,7 +843,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_connect_reqdeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_connect_reqdeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.CONNECT_REQ
   - 订阅者所需权限：无
@@ -853,7 +853,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_connect_replydeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_connect_replydeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.CONNECT_REPLY
   - 订阅者所需权限：无
@@ -863,7 +863,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_connect_canceldeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL](commonEventManager-definitions.md#common_event_bluetooth_remotedevice_connect_canceldeprecated)替代。
 
   - 值：usual.event.bluetooth.remotedevice.CONNECT_CANCEL
   - 订阅者所需权限：无
@@ -873,7 +873,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_connect_state_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_connect_state_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.handsfreeunit.CONNECT_STATE_UPDATE
   - 订阅者所需权限：无
@@ -883,7 +883,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_audio_state_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_audio_state_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.handsfreeunit.AUDIO_STATE_UPDATE
   - 订阅者所需权限：无
@@ -893,7 +893,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_ag_common_eventdeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_ag_common_eventdeprecated)替代。
 
   - 值：usual.event.bluetooth.handsfreeunit.AG_COMMON_EVENT
   - 订阅者所需权限：无
@@ -903,7 +903,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_ag_call_state_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_handsfreeunit_ag_call_state_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.handsfreeunit.AG_CALL_STATE_UPDATE
   - 订阅者所需权限：无
@@ -913,7 +913,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_host_state_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_host_state_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.host.STATE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -923,7 +923,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE](commonEventManager-definitions.md#common_event_bluetooth_host_req_discoverabledeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_REQ_DISCOVERABLE](commonEventManager-definitions.md#common_event_bluetooth_host_req_discoverabledeprecated)替代。
 
   - 值：usual.event.bluetooth.host.REQ_DISCOVERABLE
   - 订阅者所需权限：无
@@ -933,7 +933,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE](commonEventManager-definitions.md#common_event_bluetooth_host_req_enabledeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_REQ_ENABLE](commonEventManager-definitions.md#common_event_bluetooth_host_req_enabledeprecated)替代。
 
   - 值：usual.event.bluetooth.host.REQ_ENABLE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -943,7 +943,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE](commonEventManager-definitions.md#common_event_bluetooth_host_req_disabledeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_REQ_DISABLE](commonEventManager-definitions.md#common_event_bluetooth_host_req_disabledeprecated)替代。
 
   - 值：usual.event.bluetooth.host.REQ_DISABLE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -953,7 +953,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_host_scan_mode_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_host_scan_mode_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.host.SCAN_MODE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -963,7 +963,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED](commonEventManager-definitions.md#common_event_bluetooth_host_discovery_starteddeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED](commonEventManager-definitions.md#common_event_bluetooth_host_discovery_starteddeprecated)替代。
 
   - 值：usual.event.bluetooth.host.DISCOVERY_STARTED
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -973,7 +973,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED](commonEventManager-definitions.md#common_event_bluetooth_host_discovery_finisheddeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED](commonEventManager-definitions.md#common_event_bluetooth_host_discovery_finisheddeprecated)替代。
 
   - 值：usual.event.bluetooth.host.DISCOVERY_FINISHED
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -983,7 +983,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_host_name_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_host_name_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.host.NAME_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -993,7 +993,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsink_connect_state_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsink_connect_state_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.a2dpsink.CONNECT_STATE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -1003,7 +1003,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsink_playing_state_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsink_playing_state_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.a2dpsink.PLAYING_STATE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -1013,7 +1013,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsink_audio_state_updatedeprecated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE](commonEventManager-definitions.md#common_event_bluetooth_a2dpsink_audio_state_updatedeprecated)替代。
 
   - 值：usual.event.bluetooth.a2dpsink.AUDIO_STATE_UPDATE
   - 订阅者所需权限：ohos.permission.USE_BLUETOOTH
@@ -1023,7 +1023,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED](commonEventManager-definitions.md#common_event_nfc_action_adapter_state_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED](commonEventManager-definitions.md#common_event_nfc_action_adapter_state_changed)替代。
 
   - 值：usual.event.nfc.action.ADAPTER_STATE_CHANGED
   - 订阅者所需权限：无
@@ -1033,7 +1033,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED](commonEventManager-definitions.md#common_event_nfc_action_rf_field_on_detected)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED](commonEventManager-definitions.md#common_event_nfc_action_rf_field_on_detected)替代。
 
   - 值：usual.event.nfc.action.RF_FIELD_ON_DETECTED
   - 订阅者所需权限：ohos.permission.MANAGE_SECURE_SETTINGS（该权限仅系统应用可申请）
@@ -1043,7 +1043,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED](commonEventManager-definitions.md#common_event_nfc_action_rf_field_off_detected)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED](commonEventManager-definitions.md#common_event_nfc_action_rf_field_off_detected)替代。
 
   - 值：usual.event.nfc.action.RF_FIELD_OFF_DETECTED
   - 订阅者所需权限：ohos.permission.MANAGE_SECURE_SETTINGS（该权限仅系统应用可申请）
@@ -1053,7 +1053,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_DISCHARGING](commonEventManager-definitions.md#common_event_discharging)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_DISCHARGING](commonEventManager-definitions.md#common_event_discharging)替代。
 
   - 值：usual.event.DISCHARGING
   - 订阅者所需权限：无
@@ -1063,7 +1063,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_CHARGING](commonEventManager-definitions.md#common_event_charging)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_CHARGING](commonEventManager-definitions.md#common_event_charging)替代。
 
   - 值：usual.event.CHARGING
   - 订阅者所需权限：无
@@ -1073,7 +1073,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED](commonEventManager-definitions.md#common_event_device_idle_mode_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED](commonEventManager-definitions.md#common_event_device_idle_mode_changed)替代。
 
   - 值：usual.event.DEVICE_IDLE_MODE_CHANGED
   - 订阅者所需权限：无
@@ -1083,7 +1083,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_POWER_SAVE_MODE_CHANGED](commonEventManager-definitions.md#common_event_power_save_mode_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_POWER_SAVE_MODE_CHANGED](commonEventManager-definitions.md#common_event_power_save_mode_changed)替代。
 
   - 值：usual.event.POWER_SAVE_MODE_CHANGED
   - 订阅者所需权限：无
@@ -1093,7 +1093,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用COMMON_EVENT_USER_ADDED替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用COMMON_EVENT_USER_ADDED替代。
 
   - 值：usual.event.USER_ADDED
   - 订阅者所需权限：ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
@@ -1103,7 +1103,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用COMMON_EVENT_USER_REMOVED替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用COMMON_EVENT_USER_REMOVED替代。
 
   - 值：usual.event.USER_REMOVED
   - 订阅者所需权限：ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
@@ -1113,7 +1113,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_ABILITY_ADDED](commonEventManager-definitions.md#common_event_ability_added)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_ABILITY_ADDED](commonEventManager-definitions.md#common_event_ability_added)替代。
 
   - 值：usual.event.ABILITY_ADDED
   - 订阅者所需权限：ohos.permission.LISTEN_BUNDLE_CHANGE
@@ -1123,7 +1123,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_ABILITY_REMOVED](commonEventManager-definitions.md#common_event_ability_removed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_ABILITY_REMOVED](commonEventManager-definitions.md#common_event_ability_removed)替代。
 
   - 值：usual.event.ABILITY_REMOVED
   - 订阅者所需权限：ohos.permission.LISTEN_BUNDLE_CHANGE
@@ -1133,7 +1133,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_ABILITY_UPDATED](commonEventManager-definitions.md#common_event_ability_updated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_ABILITY_UPDATED](commonEventManager-definitions.md#common_event_ability_updated)替代。
 
   - 值：usual.event.ABILITY_UPDATED
   - 订阅者所需权限：ohos.permission.LISTEN_BUNDLE_CHANGE
@@ -1143,7 +1143,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_LOCATION_MODE_STATE_CHANGED](commonEventManager-definitions.md#common_event_location_mode_state_changed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_LOCATION_MODE_STATE_CHANGED](commonEventManager-definitions.md#common_event_location_mode_state_changed)替代。
 
   - 值：usual.event.location.MODE_STATE_CHANGED
   - 订阅者所需权限：无
@@ -1153,7 +1153,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_IVI_SLEEP](commonEventManager-definitions.md#common_event_ivi_sleep)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_IVI_SLEEP](commonEventManager-definitions.md#common_event_ivi_sleep)替代。
 
   - 值：common.event.IVI_SLEEP
   - 订阅者所需权限：无
@@ -1163,7 +1163,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_IVI_PAUSE](commonEventManager-definitions.md#common_event_ivi_pause)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_IVI_PAUSE](commonEventManager-definitions.md#common_event_ivi_pause)替代。
 
   - 值：common.event.IVI_PAUSE
   - 订阅者所需权限：无
@@ -1173,7 +1173,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_IVI_STANDBY](commonEventManager-definitions.md#common_event_ivi_standby)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_IVI_STANDBY](commonEventManager-definitions.md#common_event_ivi_standby)替代。
 
   - 值：common.event.IVI_STANDBY
   - 订阅者所需权限：无
@@ -1183,7 +1183,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_IVI_LASTMODE_SAVE](commonEventManager-definitions.md#common_event_ivi_lastmode_save)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_IVI_LASTMODE_SAVE](commonEventManager-definitions.md#common_event_ivi_lastmode_save)替代。
 
   - 值：common.event.IVI_LASTMODE_SAVE
   - 订阅者所需权限：无
@@ -1193,7 +1193,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_IVI_VOLTAGE_ABNORMAL](commonEventManager-definitions.md#common_event_ivi_voltage_abnormal)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_IVI_VOLTAGE_ABNORMAL](commonEventManager-definitions.md#common_event_ivi_voltage_abnormal)替代。
 
   - 值：common.event.IVI_VOLTAGE_ABNORMAL
   - 订阅者所需权限：无
@@ -1203,7 +1203,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_IVI_HIGH_TEMPERATURE](commonEventManager-definitions.md#common_event_ivi_high_temperature)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_IVI_HIGH_TEMPERATURE](commonEventManager-definitions.md#common_event_ivi_high_temperature)替代。
 
   - 值：common.event.IVI_HIGH_TEMPERATURE
   - 订阅者所需权限：无
@@ -1213,7 +1213,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_IVI_EXTREME_TEMPERATURE](commonEventManager-definitions.md#common_event_ivi_extreme_temperature)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_IVI_EXTREME_TEMPERATURE](commonEventManager-definitions.md#common_event_ivi_extreme_temperature)替代。
 
   - 值：common.event.IVI_EXTREME_TEMPERATURE
   - 订阅者所需权限：无
@@ -1223,7 +1223,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL](commonEventManager-definitions.md#common_event_ivi_temperature_abnormal)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL](commonEventManager-definitions.md#common_event_ivi_temperature_abnormal)替代。
 
   - 值：common.event.IVI_TEMPERATURE_ABNORMAL
   - 订阅者所需权限：无
@@ -1233,7 +1233,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_IVI_VOLTAGE_RECOVERY](commonEventManager-definitions.md#common_event_ivi_voltage_recovery)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_IVI_VOLTAGE_RECOVERY](commonEventManager-definitions.md#common_event_ivi_voltage_recovery)替代。
 
   - 值：common.event.IVI_VOLTAGE_RECOVERY
   - 订阅者所需权限：无
@@ -1243,7 +1243,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_IVI_TEMPERATURE_RECOVERY](commonEventManager-definitions.md#common_event_ivi_temperature_recovery)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_IVI_TEMPERATURE_RECOVERY](commonEventManager-definitions.md#common_event_ivi_temperature_recovery)替代。
 
   - 值：common.event.IVI_TEMPERATURE_RECOVERY
   - 订阅者所需权限：无
@@ -1253,7 +1253,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_IVI_ACTIVE](commonEventManager-definitions.md#common_event_ivi_active)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_IVI_ACTIVE](commonEventManager-definitions.md#common_event_ivi_active)替代。
 
   - 值：common.event.IVI_ACTIVE
   - 订阅者所需权限：无
@@ -1262,7 +1262,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USB_DEVICE_ATTACHED](commonEventManager-definitions.md#common_event_usb_device_attached)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_USB_DEVICE_ATTACHED](commonEventManager-definitions.md#common_event_usb_device_attached)替代。
 
   - 值：usual.event.hardware.usb.action.USB_DEVICE_ATTACHED
   - 订阅者所需权限：无
@@ -1272,7 +1272,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USB_DEVICE_DETACHED](commonEventManager-definitions.md#common_event_usb_device_detached)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_USB_DEVICE_DETACHED](commonEventManager-definitions.md#common_event_usb_device_detached)替代。
 
   - 值：usual.event.hardware.usb.action.USB_DEVICE_DETACHED
   - 订阅者所需权限：无
@@ -1282,7 +1282,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USB_ACCESSORY_ATTACHED](commonEventManager-definitions.md#common_event_usb_accessory_attached)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_USB_ACCESSORY_ATTACHED](commonEventManager-definitions.md#common_event_usb_accessory_attached)替代。
 
   - 值：usual.event.hardware.usb.action.USB_ACCESSORY_ATTACHED
   - 订阅者所需权限：无
@@ -1292,7 +1292,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USB_ACCESSORY_DETACHED](commonEventManager-definitions.md#common_event_usb_accessory_detached)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_USB_ACCESSORY_DETACHED](commonEventManager-definitions.md#common_event_usb_accessory_detached)替代。
 
   - 值：usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED
   - 订阅者所需权限：无
@@ -1302,7 +1302,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_DISK_REMOVED](commonEventManager-definitions.md#common_event_disk_removed)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_DISK_REMOVED](commonEventManager-definitions.md#common_event_disk_removed)替代。
 
   - 值：usual.event.data.DISK_REMOVED
   - 订阅者所需权限：ohos.permission.STORAGE_MANAGER，该权限仅系统应用可申请。
@@ -1312,7 +1312,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_DISK_UNMOUNTED](commonEventManager-definitions.md#common_event_disk_unmounted)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_DISK_UNMOUNTED](commonEventManager-definitions.md#common_event_disk_unmounted)替代。
 
   - 值：usual.event.data.DISK_UNMOUNTED
   - 订阅者所需权限：ohos.permission.STORAGE_MANAGER，该权限仅系统应用可申请。
@@ -1322,7 +1322,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_DISK_MOUNTED](commonEventManager-definitions.md#common_event_disk_mounted)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_DISK_MOUNTED](commonEventManager-definitions.md#common_event_disk_mounted)替代。
 
   - 值：usual.event.data.DISK_MOUNTED
   - 订阅者所需权限：ohos.permission.STORAGE_MANAGER，该权限仅系统应用可申请。
@@ -1332,7 +1332,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_DISK_BAD_REMOVAL](commonEventManager-definitions.md#common_event_disk_bad_removal)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_DISK_BAD_REMOVAL](commonEventManager-definitions.md#common_event_disk_bad_removal)替代。
 
   - 值：usual.event.data.DISK_BAD_REMOVAL
   - 订阅者所需权限：ohos.permission.STORAGE_MANAGER，该权限仅系统应用可申请。
@@ -1342,7 +1342,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_DISK_UNMOUNTABLE](commonEventManager-definitions.md#common_event_disk_unmountable)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_DISK_UNMOUNTABLE](commonEventManager-definitions.md#common_event_disk_unmountable)替代。
 
   - 值：usual.event.data.DISK_UNMOUNTABLE
   - 订阅者所需权限：ohos.permission.STORAGE_MANAGER，该权限仅系统应用可申请。
@@ -1352,7 +1352,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_DISK_EJECT](commonEventManager-definitions.md#common_event_disk_eject)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_DISK_EJECT](commonEventManager-definitions.md#common_event_disk_eject)替代。
 
   - 值：usual.event.data.DISK_EJECT
   - 订阅者所需权限：ohos.permission.STORAGE_MANAGER，该权限仅系统应用可申请。
@@ -1362,7 +1362,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED](commonEventManager-definitions.md#common_event_visible_accounts_updated)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED](commonEventManager-definitions.md#common_event_visible_accounts_updated)替代。
 
   - 值：usual.event.data.VISIBLE_ACCOUNTS_UPDATED
   - 订阅者所需权限：ohos.permission.GET_APP_ACCOUNTS，该权限仅系统应用可申请。
@@ -1372,7 +1372,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_ACCOUNT_DELETED](commonEventManager-definitions.md#common_event_account_deleted)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_ACCOUNT_DELETED](commonEventManager-definitions.md#common_event_account_deleted)替代。
 
   - 值：usual.event.data.ACCOUNT_DELETED
   - 订阅者所需权限：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
@@ -1382,7 +1382,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_FOUNDATION_READY](commonEventManager-definitions.md#common_event_foundation_ready)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_FOUNDATION_READY](commonEventManager-definitions.md#common_event_foundation_ready)替代。
 
   - 值：usual.event.data.FOUNDATION_READY
   - 订阅者所需权限：ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
@@ -1392,7 +1392,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_AIRPLANE_MODE_CHANGED](commonEventManager-definitions.md#common_event_airplane_mode_changed10)替代。
+  > 从API版本7开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_AIRPLANE_MODE_CHANGED](commonEventManager-definitions.md#common_event_airplane_mode_changed10)替代。
 
   - 值：usual.event.AIRPLANE_MODE
   - 订阅者所需权限：无
@@ -1401,4 +1401,4 @@
 
   > **说明：**
   >
-  > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_SPLIT_SCREEN](commonEventManager-definitions.md#common_event_split_screen)替代。
+  > 从API版本8开始支持，从API版本9开始废弃，建议使用[COMMON_EVENT_SPLIT_SCREEN](commonEventManager-definitions.md#common_event_split_screen)替代。

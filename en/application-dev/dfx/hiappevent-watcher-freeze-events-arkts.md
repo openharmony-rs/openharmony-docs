@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-07-30T02:53:40.062Z pushedAt=2026-07-31T08:45:58.658Z -->
+<!-- md-trans-meta sourceCommit=e583fec974e107bc6dbb438ccf5c4913ad892697 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## Overview
 
@@ -200,7 +200,6 @@ Set the event name to **hiAppEvent.event.APP_FREEZE** and event domain to **hiAp
 You can distinguish different application freeze events based on the **name** field of the **exception** field in [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params).
 
 The following table shows the mapping between [FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo) and [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params).
-
 | FaultLogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | Description |
 | --- | --- | --- |
 | pid | pid | None. |
@@ -215,6 +214,3 @@ The following table shows the mapping between [FaultLogInfo](../reference/apis-p
 Both [FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9) (using callback) and [FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1) (using promise) can be replaced with [hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher) to achieve the same functionality.
 
 For details about how to use HiAppEvent to subscribe to app freeze events (ArkTS), see [How to Develop](#how-to-develop) and [Verifying the Subscription](#verifying-the-subscription).
-
-<!--RP1-->
-<!--RP1End-->

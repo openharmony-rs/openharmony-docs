@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=25ffb887f2919e16c03fcbf1b003b994b365d387 translatedAt=2026-08-26T04:43:24.528Z pushedAt=2026-08-28T08:20:16.850Z -->
+<!-- md-trans-meta sourceCommit=1aad096882786044bed77c51eb3f6e2ec78d5ef2 translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 ## Using V2 Decorators for State Management in ArkTS Widgets
 

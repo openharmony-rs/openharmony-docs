@@ -5,7 +5,7 @@
 <!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6db95933f92c36be892f64316b822565946ecf49 translatedAt=2026-09-03T09:03:12.600Z pushedAt=2026-09-03T09:04:52.955Z -->
+<!-- md-trans-meta sourceCommit=2d7c0840b22a5c80fdee0a1d247ab75398886cf3 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 An audio and video application needs to access the AVSession service as a provider in order to display media information in the controller (for example, Media Controller) and respond to playback control commands delivered by the controller.
 
@@ -49,7 +49,7 @@ To enable an audio and video application to access the AVSession service as a pr
    > The sample code below demonstrates only the API call for creating an AVSession object. When actually using it, the application must ensure that the AVSession object remains throughout the application's background playback activities. This prevents the system from reclaiming or releasing it, which could lead to playback being controlled by the system.
 
    <!-- @[createAVSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/CreateAVSession.ets) -->
-
+      
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    // ...
@@ -93,9 +93,9 @@ To enable an audio and video application to access the AVSession service as a pr
    - AVPlaybackState
 
    The controller will call an API in the **AVSessionController** class to obtain the information and display or process the information.
-
-   <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetAVSessionInformation.ets) -->
-
+     
+   <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetAVSessionInformation.ets) --> 
+   
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -113,24 +113,24 @@ To enable an audio and video application to access the AVSession service as a pr
          Text(this.message)
            .onClick(async () => {
              let context = this.getUIContext().getHostContext() as Context;
-             // Assume that a session has been created. For details about how to create a session, see the previous example.
+             // It is assumed that an AVSession object has been created. For details about how to create an AVSession object, see the node snippet in step 1.
              let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
-             // Player logic... triggers changes to the media information and playback state.
-             // Set the required media information.
+             // The player logic that triggers changes in the session metadata and playback state is omitted here.
+             // Set necessary AVSession metadata.
              let metadata: AVSessionManager.AVMetadata = {
-               assetId: '0', // Specified by the application to identify the media in the application media library.
+               assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
                title: 'TITLE',
                mediaImage: 'IMAGE',
                artist: 'ARTIST'
              };
              session.setAVMetadata(metadata).then(() => {
-               console.info(`SetAVMetadata successfully`);
+               console.info(`setAVMetadata successfully`);
                // ...
              }).catch((err: BusinessError) => {
                console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
                // ...
              });
-             // Simply set a playback state - paused and not favorited.
+             // Set the playback state to paused and set isFavorite to false.
              let playbackState: AVSessionManager.AVPlaybackState = {
                state: AVSessionManager.PlaybackState.PLAYBACK_STATE_PAUSE,
                isFavorite: false
@@ -140,7 +140,7 @@ To enable an audio and video application to access the AVSession service as a pr
                  console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
                  // ...
                } else {
-                 console.info(`SetAVPlaybackState successfully`);
+                 console.info(`setAVPlaybackState successfully`);
                  // ...
                }
              });
@@ -177,7 +177,7 @@ To enable an audio and video application to access the AVSession service as a pr
                console.error(`Failed to set AVQueueItem, error code: ${err.code}, error message: ${err.message}`);
                // ...
              });
-             // Set the name of the media playlist.
+             // Set a name for the playlist.
              let queueTitle = 'QUEUE_TITLE';
              session.setAVQueueTitle(queueTitle).then(() => {
                console.info(`SetAVQueueTitle successfully`);
@@ -201,7 +201,7 @@ To enable an audio and video application to access the AVSession service as a pr
    The UIAbility is set through the **WantAgent** API. For details, see [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md).
 
    <!-- @[wantAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/WantAgent.ets) -->
-
+   
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    import { wantAgent } from '@kit.AbilityKit';
@@ -245,14 +245,14 @@ To enable an audio and video application to access the AVSession service as a pr
      }
    }
    ```
-
+    
 4. Send an immediate custom session event so that the controller performs a corresponding operation after receiving the event.
 
    > **NOTE**<br>
    > The data sent via the **dispatchSessionEvent** method is not saved in the session object or the AVSession service.
 
    <!-- @[dispatchSessionEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DispatchSessionEvent.ets) -->
-
+   
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -296,7 +296,7 @@ To enable an audio and video application to access the AVSession service as a pr
    > The data set by using **setExtras** is stored in the AVSession service. The data lifecycle is the same as that of the AVSession object, and the controller corresponding to the object can use **getExtras** to obtain the data.
 
    <!-- @[setExtras](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetExtras.ets) -->
-
+   
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -332,11 +332,11 @@ To enable an audio and video application to access the AVSession service as a pr
      }
    }
    ```
-
+    
 6. Listen for playback control commands or events delivered by the controller, for example, Media Controller.
-
+    
    Both fixed playback control commands and advanced playback control events can be listened for.
-
+    
    6.1 Listen for fixed playback control commands.
    > **NOTE**
    >
@@ -345,9 +345,9 @@ To enable an audio and video application to access the AVSession service as a pr
    Fixed playback control commands on the session side include basic operation commands such as play, pause, previous, and next. For details, see [AVControlCommand](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avcontrolcommand10).
 
    Control scenarios include tapping the Media Controller, removing notifications from the Media Controller, wearing Bluetooth earphones, pressing buttons on Bluetooth or wired earphones, and using voice assistant controls.
-
-   <!-- @[fixedPlaybackControlCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/FixedPlaybackControlCommands.ets) -->
-
+     
+   <!-- @[fixedPlaybackControlCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/FixedPlaybackControlCommands.ets) --> 
+   
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    // ...
@@ -364,76 +364,76 @@ To enable an audio and video application to access the AVSession service as a pr
          Text(this.message)
            .onClick(async () => {
              let context = this.getUIContext().getHostContext() as Context;
-             // Assume that a session has been created. For details about how to create a session, see the previous example.
+             // It is assumed that an AVSession object has been created. For details about how to create an AVSession object, see the node snippet in step 1.
              let type: AVSessionManager.AVSessionType = 'audio';
              let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
              // ...
-             // Generally, perform the corresponding logic on the player in the listener.
-             // Do not forget to synchronize the playback information via the set API after processing. For details, see the example above.
+             // Generally, logic processing on the player is implemented in the listener.
+             // After the processing is complete, use the setter to synchronize the playback information. For details, see the code snippet above.
              session.on('play', () => {
                console.info(`on play , do play task`);
                // ...
-               // If the command is not supported yet, do not register it. If it is registered but not used temporarily, cancel the listener via session.off('play').
-               // After processing, use SetAVPlaybackState to report the playback state.
+               // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('play') to cancel listening.
+               // After processing, use setAVPlaybackState to report the playback state.
              });
              session.on('pause', () => {
                console.info(`on pause , do pause task`);
                // ...
-               // If the command is not supported yet, do not register it. If it is registered but not used temporarily, cancel the listener via session.off('pause').
-               // After processing, use SetAVPlaybackState to report the playback state.
+               // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('pause') to cancel listening.
+               // After processing, use setAVPlaybackState to report the playback state.
              });
              session.on('stop', () => {
                console.info(`on stop , do stop task`);
                // ...
-               // If this command is not supported yet, do not register it; or if it is registered but not used for the time being, unregister it via session.off('stop').
-               // After processing, use SetAVPlaybackState to report the playback state.
+               // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('stop') to cancel listening.
+               // After processing, use setAVPlaybackState to report the playback state.
              });
              session.on('playNext', () => {
                console.info(`on playNext , do playNext task`);
                // ...
-               // If this command is not supported yet, do not register it; or if it is registered but not used for the time being, unregister it via session.off('playNext').
-               // After processing, use SetAVPlaybackState to report the playback state and use SetAVMetadata to report the media information.
+               // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('playNext') to cancel listening.
+               // After processing, call setAVPlaybackState to report the playback state and setAVMetadata to report the media metadata.
              });
              session.on('playPrevious', () => {
                console.info(`on playPrevious , do playPrevious task`);
                // ...
-               // If this command is not supported yet, do not register it; or if it is registered but not used for the time being, unregister it via session.off('playPrevious').
-               // After processing, use SetAVPlaybackState to report the playback state and use SetAVMetadata to report the media information.
+               // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('playPrevious') to cancel listening.
+               // After processing, call setAVPlaybackState to report the playback state and setAVMetadata to report the media metadata.
              });
              session.on('fastForward', () => {
                console.info(`on fastForward , do fastForward task`);
                // ...
-               // If this command is not supported yet, do not register it; or if it is registered but not used for the time being, unregister it via session.off('fastForward').
-               // After processing, use SetAVPlaybackState to report the playback state and the playback position.
+               // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('fastForward') to cancel listening.
+               // After processing, call setAVPlaybackState to report the playback state and position.
              });
              session.on('rewind', () => {
                console.info(`on rewind , do rewind task`);
                // ...
-               // If this command is not supported yet, do not register it; or if it is registered but not used for the time being, unregister it via session.off('rewind').
-               // After processing, use SetAVPlaybackState to report the playback state and the playback position.
+               // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('rewind') to cancel listening.
+               // After processing, call setAVPlaybackState to report the playback state and position.
              });
              session.on('seek', (time: number) => {
                console.info(`on seek , the time is ${time}`);
                // ...
-               // If this command is not supported yet, do not register it. If it is registered but not in use, cancel the listener via session.off('seek').
-               // After processing, use SetAVPlaybackState to report the playback state and position.
+               // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('seek') to cancel listening.
+               // After processing, call setAVPlaybackState to report the playback state and position.
              });
              session.on('setSpeed', (speed) => {
                console.info(`on setSpeed , the speed is ${speed}`);
                // ...
-               // Implement the specific function.
+               // Implement the specific feature.
              });
              session.on('setLoopMode', (mode) => {
                console.info(`on setLoopMode , the loop mode is ${mode}`);
                // ...
-               // If this command is not supported yet, do not register it. If it is registered but not in use, cancel the listener via session.off('setLoopMode').
-               // The application defines the next mode. After processing, use SetAVPlaybackState to report the switched LoopMode.
+               // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('setLoopMode') to cancel listening.
+               // Define the next mode in the app. After processing, call setAVPlaybackState to report the new LoopMode.
              });
              session.on('toggleFavorite', (assetId) => {
                console.info(`on toggleFavorite , the target asset Id is ${assetId}`);
                // ...
-               // If this command is not supported yet, do not register it. If it is registered but not in use, cancel the listener via session.off('toggleFavorite').
-               // After processing, use SetAVPlaybackState to report the favorite result isFavorite.
+               // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('toggleFavorite') to cancel listening.
+               // After processing, call setAVPlaybackState to report the favorite status isFavorite.
              });
              // ...
            })
@@ -454,7 +454,7 @@ To enable an audio and video application to access the AVSession service as a pr
    - **commonCommand**: triggered when a custom playback control command changes.
 
    <!-- @[advancedPlayback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/AdvancedPlaybackControlEvents.ets) -->
-
+   
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    // ...
@@ -514,9 +514,9 @@ To enable an audio and video application to access the AVSession service as a pr
    ```
 
 7. Obtain an AVSessionController object for this AVSession object for interaction.
-
+     
    <!-- @[getController](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/GetController.ets) -->
-
+   
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    // ...
@@ -571,7 +571,7 @@ To enable an audio and video application to access the AVSession service as a pr
    The code snippet below is used for canceling the listener for playback control commands:
 
    <!-- @[off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/Off.ets) -->
-
+   
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    
@@ -609,9 +609,9 @@ To enable an audio and video application to access the AVSession service as a pr
    ```
 
    The code snippet below is used for destroying the AVSession object:
-
+     
    <!-- @[destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/Destroy.ets) -->
-
+   
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    // ...

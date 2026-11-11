@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "AVCodec Kit provides basic capabilities for audio/video encoding and decoding and media muxing and demuxing, with hardware acceleration and zero-copy data transfer within the system. It provides C APIs only for media apps such as players, recorders, and video calling apps."
+keywords: [AVCodec Kit, audio/video encoding and decoding, media muxing, media demuxing, hardware encoding and decoding, zero copy, AVBuffer, AVFormat, C API]
+doctype: guide
+status: active
+---
+
 # About This Kit
 
 <!--Kit: AVCodec Kit-->
@@ -6,7 +14,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee; @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2e205e439bc0f41b94da84e35d75dd910dd5454c translatedAt=2026-10-22T03:54:15.541Z pushedAt=2026-10-22T12:43:30.243Z nl=1 -->
+<!-- md-trans-meta sourceCommit=6136f6dd5a04d5bfa1dcf3ad8147be28b4eccbe6 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Audio and Video Codec (AVCodec) Kit provides atomic capabilities in the media system, including audio and video encoding/decoding, media file multiplexing and demultiplexing, and media data input.
 
@@ -81,5 +89,5 @@ For performance reasons, AVCodec Kit provides only C APIs.
   ![](figures/avcodec-muxer-demuxer-logic.png)
 
   For details about the development guide, see [Media Data Multiplexing](audio-video-muxer.md) and [Media Data Demultiplexing](audio-video-demuxer.md).
-
+<!--RP2--> <!--RP2End-->
 <!--RP1--> <!--RP1End-->

@@ -1,14 +1,30 @@
+---
+kits: ["ArkGraphics 3D"]
+description: "Describes how to create 3D texture image resources from JPEG, PNG, and KTX files, load an image with SceneResourceFactory.createImage(), and bind it to the BASE_COLOR_Image input of a Shader material."
+keywords: [ArkGraphics 3D, 3D rendering, texture, texture mapping]
+doctype: guide
+status: active
+---
+
 # Creating and Using Image Resources
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=bfc96144fd212df11635a7acc693723c4ad0b55f translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 Image is essentially a two-dimensional buffer for storing information required for 3D rendering calculation, such as basic colors and normals.
 
-ArkGraphics 3D provides the capability of creating image resources in PNG, JPG, and KTX formats and customizing image resources.
+ArkGraphics 3D supports creating custom image resources from JPEG, PNG, and KTX files. Support for each format is as follows:
+
+| Format | Support |
+|------|----------|
+| JPEG (.jpg/.jpeg) | Supports JPEG files with JFIF, Exif, or ICC Profile markers in the header.<br>On devices running OpenHarmony 7.0.0 or later, also supports JPEG files with DQT, XMP, MPF, or Adobe markers in the header. |
+| PNG (.png) | Supports standard PNG files. |
+| KTX (.ktx) | Supports KTX files. KTX (Khronos Texture) is a texture container format defined by the Khronos Group for storing texture data that a GPU can read directly. |
 
 ## How to Develop
 1. Import the required modules.
@@ -53,7 +69,7 @@ ArkGraphics 3D provides the capability of creating image resources in PNG, JPG, 
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
-   this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+   this.cam = await this.rf.createCamera({ name: 'Camera1' });
    this.cam.enabled = true;
    this.cam.position.z = 5;
    ```

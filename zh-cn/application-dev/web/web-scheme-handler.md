@@ -41,7 +41,7 @@ ArkTS：[onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHan
 > **注意：**
 >
 > - 需要在Web组件初始化之后设置SchemeHandler，否则会设置失败。 
-> - 若想要拦截Web组件发出的第一个请求，可以通过[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)方法提前进行Web组件初始化，再设置SchemeHandler实现拦截。详细代码请参考[完整示例](#完整示例)。
+> - 若想要拦截Web组件发出的第一个请求，可以通过[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)方法提前进行Web组件初始化，再设置SchemeHandler实现拦截。详细代码请参考[完整示例](#完整示例)。
 
 在C++中，通过NDK接口为Web组件设置SchemeHandler：
 
@@ -77,9 +77,9 @@ ArkTS：[onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHan
 
 如果要拦截自定义scheme的请求，需要在Web组件初始化之前将自定义scheme注册到Web内核，初始化后再注册会失败。
 
-Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initializeWebEngine接口，用于单独进行Web初始化。
+Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initializeWebEngine()接口，用于单独进行Web初始化。
 
-在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化Web内核，示例如下：
+在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化Web内核，示例如下：
 
 <!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->    
 
@@ -262,8 +262,8 @@ ArkTS：[@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](../referenc
 
 在ArkTS中，为被拦截的请求提供自定义的响应信息：
 
-   ```ts
-   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+  ```ts
+  this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
     let response = new webview.WebSchemeHandlerResponse();
     try {
       // 设置网络错误代码为OK，表示请求成功。
@@ -296,8 +296,8 @@ ArkTS：[@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](../referenc
       console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     return true;
-   })
-   ```
+  })
+  ```
 
 网络拦截支持流式请求，可以通过多次调用[didReceiveResponseBody](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponsebody12)或者[OH_ArkWebResourceHandler_DidReceiveData](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceivedata)，分块构造返回响应体。最后一次返回响应体时，再调用[didFinish](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfinish12)或者[OH_ArkWebResourceHandler_DidFinish](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfinish)通知Web组件被拦截的请求已经完成。
 

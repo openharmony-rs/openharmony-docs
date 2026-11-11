@@ -188,7 +188,7 @@ getInputMethodEngine(): InputMethodEngine
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.getInputMethodAbility()](#inputmethodenginegetinputmethodability9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.getInputMethodAbility()](#inputmethodenginegetinputmethodability9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -213,7 +213,7 @@ createKeyboardDelegate(): KeyboardDelegate
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.getKeyboardDelegate()](#inputmethodenginegetkeyboarddelegate9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.getKeyboardDelegate()](#inputmethodenginegetkeyboarddelegate9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -262,7 +262,7 @@ type SizeChangeCallback = (size: window.Size, keyboardArea?: KeyboardArea) => vo
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 23开始废弃。建议使用[InputMethodAbility](#inputmethodability)替代。
+> 从API version 8开始支持，从API version 23开始废弃。建议使用[InputMethodAbility](#inputmethodability)替代。
 
 下列API均需使用[getInputMethodEngine](js-apis-inputmethodengine.md#inputmethodenginegetinputmethodenginedeprecated)获取到InputMethodEngine实例后，通过实例调用。
 
@@ -2526,7 +2526,7 @@ panel.updateRegion(inputRegion);
 
 on(type: 'show', callback: () => void): void
 
-监听当前面板显示状态，使用 callback 异步回调。
+监听当前面板显示状态，使用callback异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3079,7 +3079,7 @@ hideKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.KeyboardController.hide](#hide9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.KeyboardController.hide](#hide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3111,7 +3111,7 @@ hideKeyboard(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.KeyboardController.hide](#hide9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.KeyboardController.hide](#hide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3241,6 +3241,38 @@ keyboardController.exitCurrentInputType().then(() => {
 | CURSOR_DOWN  | 2 |向下。 |
 | CURSOR_LEFT  | 3 |向左。 |
 | CURSOR_RIGHT  | 4 |向右。 |
+
+## UnderlineStyle
+
+枚举，预上屏文本的下划线样式。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -- | -- | -- |
+| NONE | 0 | 无下划线。 |
+| SOLID | 1 | 实线下划线。 |
+| WAVY | 2 | 波浪线下划线。 |
+| DASHED | 3 | 虚线下划线。 |
+
+## PreviewTextStyle
+
+预上屏文本的样式。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -- | -- | -- | -- | -- |
+| underlineStyle | [UnderlineStyle](#underlinestyle) | 否 | 否 | 下划线样式。 |
+| underlineColor | number | 否 | 是 | 颜色格式为0xRRGGBB。透明度通道无效，由编辑框忽略。未设置时默认跟随光标颜色，显式设置0时为黑色。 |
 
 ## Range<sup>10+</sup>
 
@@ -4853,6 +4885,118 @@ inputClient.getCallingWindowInfo().then((windowInfo: inputMethodEngine.WindowInf
 });
 ```
 
+### setPreviewTextWithStyle
+
+setPreviewTextWithStyle(text: string, range: Range, style: PreviewTextStyle): Promise&lt;void&gt;
+
+设置预上屏文本及其样式。使用Promise异步返回结果。编辑框须支持预上屏，且已与当前输入法绑定并获得焦点。自绘编辑框需接收样式回调并自行绘制下划线。
+
+颜色省略时默认跟随光标颜色。显式传入0表示黑色。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -- | -- | -- | -- |
+| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。 |
+| range | [Range](#range10) | 是 | 替换范围，遵循[setPreviewText](#setpreviewtext12)的范围约束。传入{ start: -1, end: -1 }表示替换当前预上屏文本；无预上屏文本时按当前编辑位置处理。除该组合外，起止位置均须非负且start不大于end，范围不得超出当前允许替换的文本区域。 |
+| style | [PreviewTextStyle](#previewtextstyle) | 是 | 预上屏文本的下划线样式及可选的下划线颜色。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
+
+**错误码：**
+
+详细说明请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -- | -- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800011 | text preview not supported. |
+
+**示例：**
+
+```ts
+import { inputMethodEngine } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// client由输入法inputStart事件提供，须已与当前获焦编辑框绑定。
+async function setStyledPreview(client: inputMethodEngine.InputClient): Promise<void> {
+  const range: inputMethodEngine.Range = { start: -1, end: -1 };
+  const style: inputMethodEngine.PreviewTextStyle = {
+    underlineStyle: inputMethodEngine.UnderlineStyle.WAVY,
+    underlineColor: 0xFF0000
+  };
+  try {
+    await client.setPreviewTextWithStyle('预上屏文本', range, style);
+  } catch (err) {
+    const error = err as BusinessError;
+    console.error(`Failed to set preview text style, code=${error.code}, message=${error.message}`);
+  }
+}
+```
+
+### setPreviewTextWithStyleSync
+
+setPreviewTextWithStyleSync(text: string, range: Range, style: PreviewTextStyle): void
+
+设置预上屏文本及其样式。同步接口，失败时抛出异常。编辑框须支持预上屏，且已与当前输入法绑定并获得焦点。自绘编辑框需接收样式回调并自行绘制下划线。
+
+颜色省略时默认跟随光标颜色。显式传入0表示黑色。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -- | -- | -- | -- |
+| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。 |
+| range | [Range](#range10) | 是 | 替换范围，遵循[setPreviewText](#setpreviewtext12)的范围约束。传入{ start: -1, end: -1 }表示替换当前预上屏文本；无预上屏文本时按当前编辑位置处理。除该组合外，起止位置均须非负且start不大于end，范围不得超出当前允许替换的文本区域。 |
+| style | [PreviewTextStyle](#previewtextstyle) | 是 | 预上屏文本的下划线样式及可选的下划线颜色。 |
+
+**错误码：**
+
+详细说明请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -- | -- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800011 | text preview not supported. |
+
+**示例：**
+
+```ts
+import { inputMethodEngine } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// client由输入法inputStart事件提供，须已与当前获焦编辑框绑定。
+function setStyledPreviewSync(client: inputMethodEngine.InputClient): void {
+  const range: inputMethodEngine.Range = { start: -1, end: -1 };
+  const style: inputMethodEngine.PreviewTextStyle = {
+    underlineStyle: inputMethodEngine.UnderlineStyle.WAVY,
+    underlineColor: 0xFF0000
+  };
+  try {
+    client.setPreviewTextWithStyleSync('预上屏文本', range, style);
+  } catch (err) {
+    const error = err as BusinessError;
+    console.error(`Failed to set preview text style, code=${error.code}, message=${error.message}`);
+  }
+}
+```
+
 ### setPreviewText<sup>12+</sup>
 
 setPreviewText(text: string, range: Range): Promise&lt;void&gt;
@@ -5131,7 +5275,7 @@ getAttachOptions(): AttachOptions
 
 > **注意：**
 >
-> 从API version 20 开始，错误码`801 Capability not supported.`被移除。
+> 从API version 20开始，错误码`801 Capability not supported.`被移除。
 
 **示例：**
 
@@ -5165,7 +5309,7 @@ on(type: 'attachOptionsDidChange', callback: Callback\<AttachOptions>): void
 
 > **注意：**
 >
-> 从API version 20 开始，错误码`801 Capability not supported.`被移除。
+> 从API version 20开始，错误码`801 Capability not supported.`被移除。
 
 **示例：**
 
@@ -5896,7 +6040,7 @@ inputMethodEngine.getInputMethodAbility()!
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[InputClient](#inputclient9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[InputClient](#inputclient9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5912,7 +6056,7 @@ getForward(length:number, callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getForward](#getforward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getForward](#getforward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5946,7 +6090,7 @@ getForward(length:number): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getForward](#getforward9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getForward](#getforward9-1)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5983,7 +6127,7 @@ getBackward(length:number, callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6017,7 +6161,7 @@ getBackward(length:number): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6058,7 +6202,7 @@ deleteForward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteForward](#deleteforward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteForward](#deleteforward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6096,7 +6240,7 @@ deleteForward(length:number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteForward](#deleteforward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteForward](#deleteforward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6141,7 +6285,7 @@ deleteBackward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteBackward](#deletebackward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteBackward](#deletebackward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6179,7 +6323,7 @@ deleteBackward(length:number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteBackward](#deletebackward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteBackward](#deletebackward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6219,7 +6363,7 @@ sendKeyFunction(action: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.sendKeyFunction](#sendkeyfunction9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.sendKeyFunction](#sendkeyfunction9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6257,7 +6401,7 @@ sendKeyFunction(action: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.sendKeyFunction](#sendkeyfunction9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.sendKeyFunction](#sendkeyfunction9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6302,7 +6446,7 @@ insertText(text:string, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.insertText](#inserttext9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.insertText](#inserttext9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6339,7 +6483,7 @@ insertText(text:string): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.insertText](#inserttext9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.insertText](#inserttext9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6383,7 +6527,7 @@ getEditorAttribute(callback: AsyncCallback&lt;EditorAttribute&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getEditorAttribute](#geteditorattribute9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getEditorAttribute](#geteditorattribute9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -6418,7 +6562,7 @@ getEditorAttribute(): Promise&lt;EditorAttribute&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getEditorAttribute](#geteditorattribute9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getEditorAttribute](#geteditorattribute9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

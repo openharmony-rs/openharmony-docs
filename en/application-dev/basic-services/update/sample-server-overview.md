@@ -4,7 +4,8 @@
 <!--Owner: @RainyDay_005; @huangsiping3-->
 <!--Designer: @zhangzhengxue; @jackd320-->
 <!--Tester: @mamba-ting-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=ed1caafb45357aa980ce242d8f0e108215e96f57 translatedAt=2026-11-06T12:08:00.496Z pushedAt=2026-11-09T12:34:19.141Z nl=1 -->
 
 The sample server provides a simple server instance for deploying update packages. It can be used as an auxiliary test environment for the UpdateService subsystem.
 
@@ -51,3 +52,4 @@ The sample server supports update service testing and secondary development func
     }]
 }
 ```
+

@@ -1,14 +1,13 @@
 # Class (PageSwitchActionProposal)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:53:25.107Z pushedAt=2026-08-11T06:04:58.888Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-02T12:47:09.709Z pushedAt=2026-11-06T09:12:37.290Z nl=1 -->
 
-Handles the smart gesture page turning action. The default direction is forward page turning, including rightward and downward. When dynamically customizing the smart gesture behavior through the [registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor) API, setting **selectedProposal** of the return value [Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md) to an object of this type triggers the page turning operation of the target component.
+Handles the smart gesture page turning action. The default direction is forward page turning, including rightward and downward. It inherits from [TargetedGestureProposal](arkts-apis-uicontext-targetedgestureproposal.md). When dynamically customizing the smart gesture behavior through the [registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor) API, setting **selectedProposal** of the return value [Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md) to an object of this type triggers the page turning operation of the target component.
 
 **Since**: 26.0.0
 

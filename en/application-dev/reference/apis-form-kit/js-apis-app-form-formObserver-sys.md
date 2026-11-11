@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=cf2cb165decd48d84d7a723412e384906aba9d24 translatedAt=2026-09-15T01:46:52.106Z pushedAt=2026-09-15T07:47:27.067Z -->
+<!-- md-trans-meta sourceCommit=3d88c7ae24e860f42daeed81a30fca056541e740 translatedAt=2026-11-03T06:54:14.358Z pushedAt=2026-11-04T03:11:19.933Z nl=1 -->
 
 The **formObserver** module provides APIs related to widget listeners. You can use the APIs to subscribe to and unsubscribe from widget addition, removal, and visibility change events, and obtain information about running widgets.
 
@@ -101,7 +101,7 @@ formObserver.on('formAdd', bundleName, callback);
 
 ## formObserver.off('formAdd')
 
-off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void;
+off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void
 
 Unsubscribes from widget addition events. This API uses an asynchronous callback to return the result.
 
@@ -786,6 +786,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000  | An internal functional error occurred. |
 
+**Example**
 
 ```ts
 import { formInfo, formObserver } from '@kit.FormKit';
@@ -1430,4 +1431,3 @@ let callback = (data: formInfo.RunningFormInfo) => {
 };
 formObserver.off('call', hostBundleName, callback);
 ```
-<!--no_check-->

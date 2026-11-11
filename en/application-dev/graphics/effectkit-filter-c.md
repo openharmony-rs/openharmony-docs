@@ -4,9 +4,9 @@
 <!--Subsystem: Multimedia-->
 <!--Owner: @hanamaru-->
 <!--Designer: @chensiyi_CE-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=c271abe0bfb01eb9db1d3add3baa3b6c0b3d1e5f translatedAt=2026-10-19T01:25:22.737Z pushedAt=2026-10-19T07:38:57.643Z -->
+<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
 
 ## When to Use
 

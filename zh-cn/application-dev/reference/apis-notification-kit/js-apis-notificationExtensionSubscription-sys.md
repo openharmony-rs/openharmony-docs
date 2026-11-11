@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API版本22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本页面仅包含本模块的系统接口，其他公开接口参见[notificationExtensionSubscription](js-apis-notificationExtensionSubscription.md)。
 
@@ -281,7 +281,7 @@ notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enable
 
 subscribeNotification(priorityStrategy?: number): Promise\<void\>
 
-根据[优先通知](../../notification/notification-glossary.md#priority-notification优先通知)过滤条件订阅通知。使用Promise异步回调。
+根据优先通知过滤条件订阅通知。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 

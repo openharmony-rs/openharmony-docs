@@ -5,7 +5,7 @@
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=efdc6a6056235cd3aa9a7162f9e2331d94abb117 translatedAt=2026-09-18T03:07:14.530Z pushedAt=2026-09-18T10:02:40.380Z -->
+<!-- md-trans-meta sourceCommit=3cf80c1b48e5c1e01dde005074a0b3835e7ffa20 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 26.0.0, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides Pulse Code Modulation (PCM) audio format conversion capabilities. In scenarios such as pure audio transcoding, you can use the format conversion APIs to convert PCM audio data from one format to another, including conversion of sample rate, channel layout, and sample format (bit depth).
 
@@ -15,9 +15,12 @@ To use the PCM audio format conversion capability provided by [OHAudioSuite](../
 
 ### Linking the Dynamic Library in the CMake Script
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudiosuite.so)
+<!-- @[CMake_lib_suite_libohaudiosuite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
+
 ### Including the Header File
 Include the header file &lt;[native_audio_converter.h](../../reference/apis-audio-kit/capi-native-audio-converter-h.md)&gt; to use audio format conversion APIs.
 
@@ -88,7 +91,7 @@ The format conversion APIs support the following PCM audio formats:
 ### Creating a Format Converter
 
    <!-- @[converter_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
-
+   
    ``` C++
    // Set the input format based on the actual situation.
    OH_AudioConverter_Format inputFormat = {
@@ -121,17 +124,17 @@ The format conversion APIs support the following PCM audio formats:
    Set the input data callback.
 
    <!-- @[input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
-
+   
    ``` C++
-   // Set the output data pointer.
-   // Note: The value of the data pointer does not necessarily have to be obtained from userData; it can also be the address of a buffer where data is stored.
+   // Set the input data pointer.
+   // Note: The value of the data pointer does not necessarily have to come from userData; it can also be the address of a buffer that stores data.
    // For example, read data from a file into a buffer, and then assign the buffer address to the output data pointer.
    // Just ensure that the data pointer remains valid until OH_AudioConverter_Process() returns.
    *outInputData = dataInfo->buffer + dataInfo->readDataOffset;
    
-   // Calculate the amount of data that can be provided this time (a single callback returns at most 400 KB).
-   // bufferSize: total number of bytes in the file
-   // readDataOffset: offset of bytes already read
+   // Calculate the data size available this time (a single callback returns at most 400 KB).
+   // bufferSize: total number of bytes in the file.
+   // readDataOffset: byte offset of the data already read.
    int32_t remainingSize = dataInfo->bufferSize - dataInfo->readDataOffset;
    if (remainingSize < 0) {
        return -1;
@@ -153,7 +156,7 @@ The format conversion APIs support the following PCM audio formats:
    Set the input data callback.
 
    <!-- @[set_input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
-
+   
    ``` C++
    // Set the input callback.
    result = OH_AudioConverter_SetInputCallback(converter, AudioConverterRequestDataCallback, dataInfo);
@@ -177,10 +180,10 @@ The format conversion APIs support the following PCM audio formats:
    > - In the `AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA` and `AUDIOCONVERTER_INPUT_DATA_FINISHED` states, `OH_AudioConverter_Process()` returns [AUDIOCONVERTER_SUCCESS](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result) and `outputSize = 0`. Therefore, you cannot determine that data processing is complete based solely on `outputSize = 0` or `result = AUDIOCONVERTER_SUCCESS`. The caller must also ensure that all data input has ended.
 
    <!-- @[converter_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
-
+   
    ``` C++
    // Allocate the processing buffer.
-   const int32_t processBufferSize = 4096 * 4; // 16 KB
+   const int32_t processBufferSize = 4096 * 4; // 16 KB.
    uint8_t *processBuffer = new uint8_t[processBufferSize];
    int32_t outputSize = 0;
    int32_t totalOutputSize = 0;
@@ -217,11 +220,11 @@ The format conversion APIs support the following PCM audio formats:
 ### Destroying the Format Converter
 
    <!-- @[converter_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
-
+   
    ``` C++
    OH_AudioConverter_Destroy(converter);
    ```
-
+   
 <!--RP1-->
 ## Samples
 

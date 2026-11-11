@@ -5,7 +5,7 @@
 <!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=953722e58014d7dac9f3953a9dc9a4da7bdd386e translatedAt=2026-10-22T03:43:10.560Z pushedAt=2026-10-22T07:24:06.739Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8d61f9389486586313e9f62eb27036f4b3e66308 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Starting from API version 22, [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md) provides offline audio editing capability, allowing you to process audio data in non-real-time preview scenarios. You can combine multiple audio nodes to implement complex audio processing pipelines.
 
@@ -15,9 +15,12 @@ To use the offline editing capabilities provided by [OHAudioSuite](../../referen
 
 ### Linking the Dynamic Library in the CMake Script
 
-``` cmake
-target_link_libraries(sample PUBLIC libohaudiosuite.so)
+<!-- @[CMake_lib_suite_libohaudiosuite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(entry PUBLIC libohaudiosuite.so)
 ```
+
 ### Adding Header Files
 To use APIs related to audio creation, include the <[native_audio_suite_base.h](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md)> and <[native_audio_suite_engine.h](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md)> header files.
 
@@ -56,7 +59,7 @@ Use an effect node (such as an equalizer effect node) to process the input PCM (
    <!-- @[audioSuite_CreateEngineAndPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
    
    ``` C++
-   // The sample API does not include return value validation. Be sure to add validation logic when using it in practice.
+   // The sample interface does not include return value validation. Be sure to add validation logic in actual use.
    // Create an engine.
    OH_AudioSuiteEngine *audioSuiteEngine = nullptr;
    OH_AudioSuiteEngine_Create(&audioSuiteEngine);
@@ -78,7 +81,7 @@ Use an effect node (such as an equalizer effect node) to process the input PCM (
        uint8_t *buffer = nullptr;   // Audio data.
        int32_t bufferSize = 0;      // Total size of the audio data.
        int32_t totalWriteSize = 0;  // Total size of the processed audio data.
-       int32_t totalReadSize = 0;  // Total size of the audio data that has been read.
+       int32_t totalReadSize = 0;  // Total size of the read audio data.
    };
    ```
    <!-- @[audioSuite_InputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
@@ -268,7 +271,7 @@ The sample code is as follows:
        uint8_t *buffer = nullptr;   // Audio data.
        int32_t bufferSize = 0;      // Total size of the audio data.
        int32_t totalWriteSize = 0;  // Total size of the processed audio data.
-       int32_t totalReadSize = 0;  // Total size of the audio data that has been read.
+       int32_t totalReadSize = 0;  // Total size of the read audio data.
    };
    ```
    <!-- @[audioSuite_InputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->

@@ -1,5 +1,13 @@
 # Accessing the Security & Privacy Framework
 
+<!--Kit: Common-->
+<!--Subsystem: Security-->
+<!--Owner: @feibuzhide-->
+<!--Designer: @gcw_AzEdve8G-->
+<!--Tester: @weixin_48873925-->
+<!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=0a92e0f893abec58a65d906b552279929e2fd950 translatedAt=2026-11-03T05:43:40.694Z pushedAt=2026-11-03T06:53:40.993Z nl=1 -->
+
 The Security & Privacy framework allows access via a UIAbility or an ExtensionAbility.
 
 In the Security & Privacy Center, the accessed applications are displayed by **bundleName** in alphabetical order.
@@ -37,7 +45,7 @@ The following shows the configuration of the **security_privacy.json** file.
 
 ## Modifying the Application Configuration File
 
-The **module.json5** file of each module contains the configuration of the UIAbility and ExtensionAbility components of the module and the permissions required for application running. To access the Security & Privacy framework, you need to configure the following fields in **module.json5**.
+The module.json5 file of each module contains the configuration of the UIAbility and ExtensionAbility components of the module and the permissions required for application running. To access the Security & Privacy framework, you need to configure the following fields in module.json5.
 
 ### Setting actions
 
@@ -117,7 +125,7 @@ The following example provides only the settings for accessing the Security & Pr
 
 The caller must have the [ohos.permission.ACCESS_SECURITY_PRIVACY_CENTER](../AccessToken/permissions-for-system-apps.md#ohospermissionaccess_security_privacy_center) permission.
 
-For details about how to request the permission, see [Workflow for Requesting Permissions](../AccessToken/determine-application-mode.md).
+For details about how to request the permission, see [Access Control Development Guide](../AccessToken/determine-application-mode.md).
 
 ## Accessing the Security & Privacy Framework via a UIAbility
 
@@ -173,14 +181,15 @@ export default class EntryAbility extends ExtensionAbility {
 
 ## Exiting the Security & Privacy Framework (UIAbility)
 
-If the caller (which accessed the Security & Privacy Framework via a UIAbility) needs to exit actively, for example, there is a return button on the page, call **router.back()** or **terminateSelf()** to destroy the page.
+If the framework is accessed through a UIAbility and the access party needs to exit proactively, for example, when the page has a back button and the application page needs to be destroyed, call terminateSelf() to destroy the current page.
 
 Example:
 
 ```typescript
-import router from '@ohos.router';
+import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-@Entry()
+@Entry
 @Component
 struct Index {
  
@@ -189,7 +198,11 @@ struct Index {
       Column() {
         Button("click to back")
           .onClick(() => {
-            router.back()
+            try {
+              (this.getUIContext().getHostContext() as common.UIAbilityContext).terminateSelf();
+            } catch (err) {
+              hilog.info(0x0000, 'testTag', 'error: %{public}s', JSON.stringify(err));
+            }
           })
       }
       .width('100%')
@@ -208,12 +221,11 @@ Example:
 ```typescript
 import UIExtensionContentSession from '@ohos.app.ability.UIExtensionContentSession'
 
-let storage = LocalStorage.getShared()
-
-@Entry(storage)
+@Entry
 @Component
 struct Index {
-  private session: UIExtensionContentSession = storage.get<UIExtensionContentSession>('session') as UIExtensionContentSession
+  private session = this.getUIContext().getSharedLocalStorage()?.get<UIExtensionContentSession>('session') as UIExtensionContentSession;
+
   build() {
     Row() {
       Column() {

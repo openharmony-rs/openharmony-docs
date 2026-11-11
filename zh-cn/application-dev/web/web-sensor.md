@@ -115,8 +115,6 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
    ```
 
 2. 在前端页面代码中，利用JavaScript调用传感器相关的W3C标准协议接口。
-
-   <!-- @[the_type_of_resource_for_which_permission_is_requested_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/resources/rawfile/index.html) --> 
    
    ``` HTML
    <!DOCTYPE HTML>
@@ -138,7 +136,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
            function getAccelerometer() {
                let acc = new Accelerometer({frequency: 60});
                acc.addEventListener('activate', () => console.info('Ready to measure.'));
-               acc.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               acc.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                acc.addEventListener('reading', () => {
                    console.info(`Accelerometer ${acc.timestamp}, ${acc.x}, ${acc.y}, ${acc.z}.`);
                });
@@ -149,7 +147,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
            function getGyroscope() {
                let gyr = new Gyroscope({frequency: 60});
                gyr.addEventListener('activate', () => console.info('Ready to measure.'));
-               gyr.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               gyr.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                gyr.addEventListener('reading', () => {
                    console.info(`Gyroscope ${gyr.timestamp}, ${gyr.x}, ${gyr.y}, ${gyr.z}.`);
                });
@@ -160,7 +158,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
            function getAbsoluteOrientationSensor() {
                let aos = new AbsoluteOrientationSensor({frequency: 60});
                aos.addEventListener('activate', () => console.info('Ready to measure.'));
-               aos.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               aos.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                aos.addEventListener('reading', () => {
                    console.info(`AbsoluteOrientationSensor data: ${aos.timestamp}, ${aos.quaternion}`);
                });

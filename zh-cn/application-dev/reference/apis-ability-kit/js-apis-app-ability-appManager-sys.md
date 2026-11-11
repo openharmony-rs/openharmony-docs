@@ -1533,7 +1533,7 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 | bundleName | string | 是 | 预加载的应用包名。 |
 | userId | number | 是 | 预加载的用户ID。 |
 | mode | [PreloadMode](#appmanagerpreloadmode12) | 是 | 预加载模式。 |
-| appIndex | number | 否 | 预加载应用分身的appIndex，该参数只能传0，当前不支持预加载分身应用。 |
+| appIndex | number | 否 | 预加载应用分身的appIndex。 |
 
 **返回值：**
 

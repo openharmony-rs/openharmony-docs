@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "How to use JSVM-API to set, get, query, and delete JavaScript object properties, including named properties, batch property definitions, and enumerable property names."
+keywords: [OH_JSVM_SetProperty, OH_JSVM_GetProperty, OH_JSVM_HasProperty, OH_JSVM_DeleteProperty, OH_JSVM_SetNamedProperty, OH_JSVM_DefineProperties, OH_JSVM_GetPropertyNames, OH_JSVM_HasOwnProperty, enumerable properties]
+doctype: guide
+status: active
+---
+
 # Setting JS Object Properties Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=23d7ff60c67cd3075712762902e4e8f21f8c70ac translatedAt=2026-11-09T08:52:17.336Z nl=1 -->
 
 ## Introduction
 
@@ -45,7 +54,9 @@ Call **OH_JSVM_GetPropertyNames** to obtain names of all enumerable properties o
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getpropertynames/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Define OH_JSVM_GetPropertyNames.
 static JSVM_Value GetPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -57,7 +68,7 @@ static JSVM_Value GetPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_GetPropertyNames(env, args[0], &result);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "Failed to get propertynames");
+        OH_JSVM_ThrowError(env, nullptr, "Failed to get property names");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_GetPropertyNames success");
@@ -75,12 +86,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world"};
     let script = getPropertyNames(obj);
 )JS";
 ```
-<!-- @[oh_jsvm_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getpropertynames/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -93,7 +103,9 @@ Call **OH_JSVM_SetProperty** to set a property for an object.
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_set_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Define OH_JSVM_SetProperty.
 static JSVM_Value SetProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -106,7 +118,10 @@ static JSVM_Value SetProperty(JSVM_Env env, JSVM_CallbackInfo info)
         return nullptr;
     }
     // Call OH_JSVM_SetProperty to set the property name and value to the object. If the operation fails, an error is thrown.
-    status = OH_JSVM_SetProperty(env, args[0], args[1], args[2]);
+    constexpr size_t TARGET_OBJECT_INDEX = 0;
+    constexpr size_t PROPERTY_NAME_INDEX = 1;
+    constexpr size_t PROPERTY_VALUE_INDEX = 2;
+    status = OH_JSVM_SetProperty(env, args[TARGET_OBJECT_INDEX], args[PROPERTY_NAME_INDEX], args[PROPERTY_VALUE_INDEX]);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_SetProperty fail");
         return nullptr;
@@ -114,7 +129,7 @@ static JSVM_Value SetProperty(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_SetProperty success");
     }
     // Return the object that is successfully set.
-    return args[0];
+    return args[TARGET_OBJECT_INDEX];
 }
 // Register the SetProperty callback.
 static JSVM_CallbackStruct param[] = {
@@ -127,12 +142,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     setProperty(obj, "code", "hi")
 )JS";
 ```
-<!-- @[oh_jsvm_set_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setproperty/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -145,7 +159,9 @@ Call **OH_JSVM_GetProperty** to obtain a property value of a JS object based on 
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_get_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Define OH_JSVM_GetProperty.
 static JSVM_Value GetProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -153,7 +169,7 @@ static JSVM_Value GetProperty(JSVM_Env env, JSVM_CallbackInfo info)
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
-    // The first parameter specifies the target object, and the second specifies the property name. Call OH_JSVM_GetProperty to obtain the value of the property.
+    // The first parameter passed in is the object to check, and the second parameter is the property to check. Obtain the corresponding value by calling the OH_JSVM_GetProperty API.
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_GetProperty(env, args[0], args[1], &result);
     if (status != JSVM_OK) {
@@ -175,12 +191,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     getProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_get_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getproperty/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -193,7 +208,9 @@ Call **OH_JSVM_HasProperty** to check whether an object has the specified proper
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Define OH_JSVM_HasProperty.
 static JSVM_Value HasProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -226,13 +243,12 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     hasProperty(obj, "data")
     hasProperty(obj, 0)
 )JS";
 ```
-<!-- @[oh_jsvm_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasproperty/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -250,7 +266,9 @@ If the object is a non-extensible object or the property is not configurable, th
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_delete_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/deleteproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Define OH_JSVM_DeleteProperty.
 static JSVM_Value DeleteProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -273,7 +291,7 @@ static JSVM_Value DeleteProperty(JSVM_Env env, JSVM_CallbackInfo info)
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_DeleteProperty success:%{public}d", result);
     }
-    // Convert the bool value to JSVM_value and return JSVM_value.
+    // Convert the bool value to JSVM_Value and return JSVM_value.
     JSVM_Value ret;
     OH_JSVM_GetBoolean(env, result, &ret);
     return ret;
@@ -289,12 +307,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     deleteProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_delete_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/deleteproperty/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -307,7 +324,9 @@ Call **OH_JSVM_HasOwnProperty** to check whether a JS object has its own propert
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_has_own_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasownproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Define OH_JSVM_HasOwnProperty.
 static JSVM_Value HasOwnProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -325,7 +344,7 @@ static JSVM_Value HasOwnProperty(JSVM_Env env, JSVM_CallbackInfo info)
     // Check whether the second parameter is a string.
     JSVM_ValueType valuetype2;
     OH_JSVM_Typeof(env, args[1], &valuetype2);
-    if (valuetype2 != JSVM_STRING ) {
+    if (valuetype2 != JSVM_STRING) {
         OH_JSVM_ThrowError(env, nullptr, "Second argument must be a string.");
         return nullptr;
     }
@@ -354,13 +373,12 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     hasOwnProperty(obj, "message")
     hasOwnProperty(obj, "__defineGetter__")
 )JS";
 ```
-<!-- @[oh_jsvm_has_own_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasownproperty/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -373,22 +391,25 @@ JSVM OH_JSVM_HasOwnProperty success:0
 
 ### OH_JSVM_SetNamedProperty
 
-Call **OH_JSVM_SetNamedProperty** to set a property for a JS object.
+Call **OH_JSVM_SetNamedProperty** to set a named property for a JS object.
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_set_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setnamedproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Define OH_JSVM_SetNamedProperty.
+const size_t STR_KEY_LEN = 32;
 static JSVM_Value SetNamedProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // Obtain the parameter passed from JS.
     size_t argc = 1;
     JSVM_Value str;
-    char strKey[32] = "";
+    char strKey[STR_KEY_LEN] = "";
     OH_JSVM_GetCbInfo(env, info, &argc, &str, nullptr, nullptr);
     // Obtain the string passed in and store it in strKey.
-    size_t keyLength = 0;
-    OH_JSVM_GetValueStringUtf8(env, str, strKey, 32, &keyLength);
+    size_t keyLength;
+    OH_JSVM_GetValueStringUtf8(env, str, strKey, STR_KEY_LEN, &keyLength);
     // Create an object.
     JSVM_Value newObj;
     OH_JSVM_CreateObject(env, &newObj);
@@ -418,11 +439,10 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     setNamedProperty("message")
 )JS";
 ```
-<!-- @[oh_jsvm_set_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setnamedproperty/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -431,22 +451,25 @@ JSVM OH_JSVM_SetNamedProperty success
 
 ### OH_JSVM_GetNamedProperty
 
-Call **OH_JSVM_GetNamedProperty** to obtain the value of the specified property from a JS object.
+Call **OH_JSVM_GetNamedProperty** to obtain the value of the specified named property from a JS object.
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_get_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getnamedproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Define OH_JSVM_GetNamedProperty.
+const size_t MAX_KEY_LENGTH = 32;
 static JSVM_Value GetNamedProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // Obtain the two parameters passed from JS.
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
-    char strKey[32] = "";
+    char strKey[MAX_KEY_LENGTH] = "";
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // Obtain the name of the property to obtain.
-    size_t keyLength = 0;
-    OH_JSVM_GetValueStringUtf8(env, args[1], strKey, 32, &keyLength);
+    size_t keyLength;
+    OH_JSVM_GetValueStringUtf8(env, args[1], strKey, MAX_KEY_LENGTH, &keyLength);
     // Obtain the value of the property and store it in result.
     JSVM_Value result;
     JSVM_Status status = OH_JSVM_GetNamedProperty(env, args[0], strKey, &result);
@@ -469,12 +492,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     getNamedProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_get_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getnamedproperty/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -483,22 +505,25 @@ JSVM OH_JSVM_GetNamedProperty success
 
 ### OH_JSVM_HasNamedProperty
 
-Call **OH_JSVM_HasNamedProperty** to check whether a JS object contains the specified property.
+Call **OH_JSVM_HasNamedProperty** to check whether a JS object contains the specified named property.
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_has_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasnamedproperty/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Define OH_JSVM_HasNamedProperty.
+const size_t STR_KEY_LEN = 32;
 static JSVM_Value HasNamedProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // Obtain the two parameters passed from JS.
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
-    char strKey[32] = "";
+    char strKey[STR_KEY_LEN] = "";
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // Obtain the property name.
     size_t keyLength = 0;
-    OH_JSVM_GetValueStringUtf8(env, args[1], strKey, 32, &keyLength);
+    OH_JSVM_GetValueStringUtf8(env, args[1], strKey, STR_KEY_LEN, &keyLength);
     // Check whether the object has the specified property. The result is in hasProperty.
     bool hasProperty = false;
     JSVM_Status status = OH_JSVM_HasNamedProperty(env, args[0], strKey, &hasProperty);
@@ -524,12 +549,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     hasNamedProperty(obj, "message")
 )JS";
 ```
-<!-- @[oh_jsvm_has_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasnamedproperty/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -542,9 +566,9 @@ Call **OH_JSVM_DefineProperties** to customize one or more properties for an obj
 
 CPP code:
 
-```cpp
-#include <fstream>
-#include <string>
+<!-- @[oh_jsvm_define_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/defineproperties/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Callback for defineMethodPropertiesExample in the property descriptor list.
 static JSVM_Value DefineMethodPropertiesExample(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -565,7 +589,8 @@ static JSVM_Value GetterCallback(JSVM_Env env, JSVM_CallbackInfo info)
 }
 
 // Function to execute a JS string.
-static JSVM_Value RunScriptAndLogResult(JSVM_Env env, const std::string &srcCode) {
+static JSVM_Value RunScriptAndLogResult(JSVM_Env env, const std::string &srcCode)
+{
     JSVM_Value sourceCodeValue;
     OH_JSVM_CreateStringUtf8(env, srcCode.c_str(), srcCode.size(), &sourceCodeValue);
     JSVM_Script script;
@@ -578,8 +603,9 @@ static JSVM_Value RunScriptAndLogResult(JSVM_Env env, const std::string &srcCode
 }
 
 // Define OH_JSVM_DefineProperties.
-static JSVM_Value DefineProperties(JSVM_Env env, JSVM_CallbackInfo info) {
-    // Obtain an empty object passed from JS.
+static JSVM_Value DefineProperties(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    // Accept an empty object passed from the JavaScript side.
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
@@ -599,18 +625,19 @@ static JSVM_Value DefineProperties(JSVM_Env env, JSVM_CallbackInfo info) {
         // Define the property value of the string type.
         {"defineStringPropertiesExample", nullptr, nullptr, nullptr, nullptr, stringValue, JSVM_DEFAULT},
         // Define the property value of the getter type.
-        {"getterCallback", nullptr, nullptr, &param[1], nullptr, nullptr,JSVM_DEFAULT}};
+        {"getterCallback", nullptr, nullptr, &param[1], nullptr, nullptr, JSVM_DEFAULT}};
     // Create properties for the obj object based on the property descriptor list.
-    JSVM_Status statusProperty;
-    statusProperty = OH_JSVM_DefineProperties(env, *argv, sizeof(descriptor) / sizeof(descriptor[0]), descriptor);
+    JSVM_Status statusProperty = OH_JSVM_DefineProperties(env,
+                                                          *argv,
+                                                          sizeof(descriptor) / sizeof(descriptor[0]),
+                                                          descriptor);
     if (statusProperty != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "JSVM DefineProperties fail");
         return nullptr;
     }
     // Call the properties added to the obj object.
     // Run obj.defineMethodPropertiesExample() and return the result to JS.
-    static std::string srcMethod;
-    srcMethod = R"JS(obj.defineMethodPropertiesExample();)JS";
+    std::string srcMethod = R"JS(obj.defineMethodPropertiesExample();)JS";
     JSVM_Value jsVmResult = RunScriptAndLogResult(env, srcMethod);
     if (jsVmResult != nullptr) {
         int32_t number;
@@ -618,35 +645,32 @@ static JSVM_Value DefineProperties(JSVM_Env env, JSVM_CallbackInfo info) {
         OH_LOG_INFO(LOG_APP, "JSVM DefineMethodPropertiesExample success:%{public}d", number);
     }
     // Run obj.defineStringPropertiesExample() and return the result to JS.
-    static std::string srcString;
-    srcString = R"JS(obj.defineStringPropertiesExample;)JS";
+    static std::string srcString = R"JS(obj.defineStringPropertiesExample;)JS";
     JSVM_Value jsVmResult1 = RunScriptAndLogResult(env, srcString);
     if (jsVmResult1 != nullptr) {
         size_t length = 0;
         OH_JSVM_GetValueStringUtf8(env, jsVmResult1, nullptr, 0, &length);
-        char *buf = (char *)malloc(length + 1);
-        if (buf == nullptr) {
-            OH_LOG_ERROR(LOG_APP, "malloc failed");
-            return nullptr;
+        if (length == 0 || length > MAX_MALLOC_SIZE) {
+            OH_LOG_ERROR(LOG_APP, "Invalid string length: %{public}zu", length);
+            return jsVmResult;
         }
-        memset(buf, 0, length + 1);
+        char *buf = (char *)malloc(length + 1);
         OH_JSVM_GetValueStringUtf8(env, jsVmResult1, buf, length + 1, &length);
         OH_LOG_INFO(LOG_APP, "JSVM defineStringPropertiesExample success:%{public}s", buf);
         free(buf);
     }
     // Call getterCallback() of obj and return the result string to JS.
-    static std::string srcGetter;
-    srcGetter = R"JS(obj.getterCallback;)JS";
+    static std::string srcGetter = R"JS(obj.getterCallback;)JS";
     JSVM_Value jsVmResult2 = RunScriptAndLogResult(env, srcGetter);
     if (jsVmResult2 != nullptr) {
         size_t length = 0;
         OH_JSVM_GetValueStringUtf8(env, jsVmResult2, nullptr, 0, &length);
-        char *buf = (char *)malloc(length + 1);
-        if (buf == nullptr) {
-            OH_LOG_ERROR(LOG_APP, "malloc failed");
-            return nullptr;
+        OH_JSVM_GetValueStringUtf8(env, jsVmResult1, nullptr, 0, &length);
+        if (length == 0 || length > MAX_MALLOC_SIZE) {
+            OH_LOG_ERROR(LOG_APP, "Invalid string length: %{public}zu", length);
+            return jsVmResult;
         }
-        memset(buf, 0, length + 1);
+        char *buf = (char *)malloc(length + 1);
         OH_JSVM_GetValueStringUtf8(env, jsVmResult2, buf, length + 1, &length);
         OH_LOG_INFO(LOG_APP, "JSVM getterCallback success:%{public}s", buf);
         free(buf);
@@ -665,12 +689,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = {};
     defineProperties(obj)
 )JS";
 ```
-<!-- @[oh_jsvm_define_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/defineproperties/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts
@@ -685,7 +708,9 @@ Call **OH_JSVM_GetAllPropertyNames** to obtain the names of all enumerable prope
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getallpropertynames/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Define OH_JSVM_GetAllPropertyNames.
 static JSVM_Value GetAllPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -696,11 +721,11 @@ static JSVM_Value GetAllPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
     // Obtain names of all properties (own properties) of the specified object.
     JSVM_Value result;
     JSVM_Status status = OH_JSVM_GetAllPropertyNames(env, args[0],
-                                         JSVM_KeyCollectionMode::JSVM_KEY_OWN_ONLY,
-                                         JSVM_KeyFilter::JSVM_KEY_WRITABLE,
-                                         JSVM_KeyConversion::JSVM_KEY_NUMBERS_TO_STRINGS, &result);
+                                                     JSVM_KeyCollectionMode::JSVM_KEY_OWN_ONLY,
+                                                     JSVM_KeyFilter::JSVM_KEY_WRITABLE,
+                                                     JSVM_KeyConversion::JSVM_KEY_NUMBERS_TO_STRINGS, &result);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "Failed to get allpropertynames");
+        OH_JSVM_ThrowError(env, nullptr, "Failed to get all property names");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_GetAllPropertyNames success");
@@ -718,12 +743,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
-    let obj = '{ data: 0, message: "hello world", 50: 1}';
+const char *SRC_CALL_NATIVE = R"JS(
+    let obj = { data: 0, message: "hello world", 50: 1};
     let script = getAllPropertyNames(obj);
 )JS";
 ```
-<!-- @[oh_jsvm_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getallpropertynames/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts

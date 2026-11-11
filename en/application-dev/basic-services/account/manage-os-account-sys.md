@@ -6,6 +6,7 @@
 <!--Designer: @JiDong-CS1-->
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e43d49169dd3f741bbf5c2ef0eb847bd5df959d5 translatedAt=2026-11-06T11:58:40.694Z pushedAt=2026-11-09T12:19:09.781Z nl=1 -->
 
 The system provides APIs for managing system accounts. After applying for required permissions for your system application, you can use the APIs to create, activate, modify, and delete system accounts. For third-party applications, you can use the APIs to query basic information about system accounts to develop service logic related to system accounts.
 
@@ -32,19 +33,15 @@ For details about complete system account information, see [OsAccountInfo](../..
 
 2. Import the **osAccount** module.
 
-   <!-- @[import_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
-import { osAccount, BusinessError } from '@kit.BasicServicesKit';
-```
+   ```ts
+   import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 3. Obtain an **AccountManager** instance.
 
-   <!-- @[obtain_account_management_single_instance_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
-let accountManager = osAccount.getAccountManager();
-```
+   ```ts
+   let accountManager = osAccount.getAccountManager();
+   ```
 
 
 ## Creating a System Account
@@ -55,9 +52,7 @@ The default system account is created during the system initialization. The user
 
 Use [createOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#createosaccount) to create a system account with the specified name and type.
 
-<!-- @[specify_nickname_and_type_information_to_create_system_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     let name: string = 'Bob';
     let type: osAccount.OsAccountType = osAccount.OsAccountType.NORMAL;
 
@@ -65,11 +60,10 @@ Use [createOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-
       if (err) {
         console.error(`createOsAccount code is ${err.code}, message is ${err.message}`);
       } else {
-        this.createLocalId = osAccountInfo.localId;
         console.info('createOsAccount osAccountInfo:' + JSON.stringify(osAccountInfo));
       }
     });
-```
+   ```
 
 ## Obtaining All System Accounts
 
@@ -77,19 +71,17 @@ The account management page may need to display information about all the system
 
 **Procedure**
 
-Use [queryAllCreatedOsAccounts](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#queryallcreatedosaccounts) to obtain informatory about all system accounts. 
+Use [queryAllCreatedOsAccounts](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#queryallcreatedosaccounts) to obtain information about all system accounts.
 
-<!-- @[query_the_full_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     accountManager.queryAllCreatedOsAccounts((err: BusinessError, accountArr: osAccount.OsAccountInfo[])=>{
       if (err) {
-        console.info(`queryAllCreatedOsAccounts code is ${err.code}, message is ${err.message}`);
+        console.error(`queryAllCreatedOsAccounts code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('queryAllCreatedOsAccounts accountArr:' + JSON.stringify(accountArr));
       }
     });
-```
+   ```
 
 ## Obtaining Information of a System Account
 
@@ -99,9 +91,7 @@ Detailed information about a system account can be obtained based on the account
 
 Use [queryOsAccountById](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#queryosaccountbyid) to obtain detailed information about a system account.
 
-<!-- @[query_information_of_the_specified_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     let localId: number = 100;
     accountManager.queryOsAccountById(localId, (err: BusinessError, accountInfo: osAccount.OsAccountInfo)=>{
       if (err) {
@@ -110,7 +100,7 @@ Use [queryOsAccountById](../../reference/apis-basic-services-kit/js-apis-osAccou
         console.info('queryOsAccountById accountInfo:' + JSON.stringify(accountInfo));
       }
     });
-```
+   ```
 
 ## Changing the ProfilePhoto and Nickname of a System Account
 
@@ -120,9 +110,7 @@ Change the profile photo and nickname of a system account as required.
 
 1. Use [setOsAccountProfilePhoto](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountprofilephoto) to change the profile picture of a system account.
 
-   <!-- @[change_system_account_avatar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     let localId: number = 100;
     let newPhoto: string = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAAXNSR0IArs4c6QAAAARnQU1BAA'+
       'Cxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACwSURBVDhPvZLBDYMwDEV/ugsXRjAT0EHCOuFIBwkbdIRewi6unbiAyoGgSn1SFH85+Y'+
@@ -136,26 +124,24 @@ Change the profile photo and nickname of a system account as required.
         console.info('Successfully updated system account avatar');
       }
     });
-```
+   ```
 
 2. Use [setOsAccountName](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountname) to change the system account name.
 
-   <!-- @[change_system_account_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     let localId: number = 100;
-	// ···
+    // ···
     let newName: string = 'Tom';
     accountManager.setOsAccountName(localId, newName, (err: BusinessError) => {
       if (err) {
         console.error(`setOsAccountName failed, code is ${err.code}, message is ${err.message}`);
-		// ···
+    // ···
       } else {
         console.info('setOsAccountName successfully');
-		// ···
+    // ···
       }
     });
-```
+   ```
 
 
 ## Activating a System Account
@@ -166,21 +152,19 @@ System accounts are not activated by default. A system account can be used only 
 
 Use [activateOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#activateosaccount) to activate a system account.
 
-<!-- @[activate_system_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     let localId: number = 101;
-	// ···
+    // ···
     accountManager.activateOsAccount(localId, (err: BusinessError)=>{
       if (err) {
         console.error(`activateOsAccount failed, code is ${err.code}, message is ${err.message}`);
-		// ···
+    // ···
       } else {
         console.info('activateOsAccount successfully');
-		// ···
+    // ···
       }
     });
-```
+   ```
 
 
 ## Removing a System Account
@@ -191,18 +175,17 @@ Remove a system account when it is no longer used.
 
 Use [removeOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#removeosaccount) to remove a system account.
 
-<!-- @[delete_the_specified_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     let localId: number = 101;
-	// ···
+    // ···
     accountManager.removeOsAccount(localId, (err: BusinessError)=>{
       if (err) {
         console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
-		// ···
+    // ···
       } else {
         console.info('removeOsAccount successfully');
-		// ···
+    // ···
       }
     });
-```
+   ```
+

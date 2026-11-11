@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1160b503457fd64270d561fc02b4ca184d668154 translatedAt=2026-09-29T11:13:41.817Z pushedAt=2026-09-30T09:44:07.420Z -->
+<!-- md-trans-meta sourceCommit=f4b0b1a001caf34f5d75823aa27a6e5e4d4a8c95 translatedAt=2026-11-03T09:36:31.446Z pushedAt=2026-11-03T09:36:31.446Z -->
 
 The progress notification is a commonly used notification type, mainly used to display the progress of an ongoing operation, such as file downloading. When publishing a progress notification through the notification subsystem, you can use the readily available template by specifying the related attributes, such as the template name and template data.
 
@@ -13,7 +13,7 @@ Currently, the system template supports only the progress bar template. The `dat
 
 > **NOTE**
 >
-> Starting from API version 26.0.1, for progress notifications in data transfer scenarios such as upload and download, you are advised to use the API [`backgroundTaskManager.updateDataTransferProgress`](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress) provided by continuous tasks to update the notification progress, without calling `notificationManager.publish`. Before using this API, apply for a continuous task of the data transfer type. For details about the development guide, see [Continuous Task (ArkTS)](../task-management/continuous-task.md).
+> Starting from API version 26.0.1, for progress notifications in data transfer scenarios such as upload and download, you are advised to use the API [backgroundTaskManager.updateDataTransferProgress](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress) provided by continuous tasks to update the notification progress, without calling `notificationManager.publish`. Before using this API, apply for a continuous task of the data transfer type. For details about the development guide, see [Continuous Task (ArkTS)](../task-management/continuous-task.md).
 >
 > Compared with calling `notificationManager.publish`, this API offers the following advantages:
 > - Flexibly set the reminder mode for notifications in transfer scenarios: when the progress reaches 100%, you can use the isMute field of [ProgressInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#progressinfo) to choose between silent mode or ringtone plus vibration.
@@ -21,7 +21,7 @@ Currently, the system template supports only the progress bar template. The `dat
 
 ## Available APIs
 
-[`isSupportTemplate()`](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerissupporttemplate) checks whether a specific notification template is supported. Currently, only the progress bar template is supported.
+[isSupportTemplate()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerissupporttemplate) checks whether a specific notification template is supported. Currently, only the progress bar template is supported.
 
 | Name| Description|
 | -------- | -------- |
@@ -43,7 +43,7 @@ Currently, the system template supports only the progress bar template. The `dat
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-2. Check whether a specific template is supported. In this example, the template of the **downloadTemplate** type is checked.
+2. Query whether the system supports the progress bar template. The result indicates whether notifications of the **downloadTemplate** type are supported.
 
    <!-- @[check_progress_template_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
    

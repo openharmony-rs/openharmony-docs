@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=716304dd0f214493c61a62f4ca83a3f10fd2771c translatedAt=2026-11-03T05:51:17.704Z pushedAt=2026-11-03T12:08:25.570Z nl=1 -->
 
 - ArkTS APIs<!--mdm-arkts-->
   - [@ohos.enterprise.accountManager (Account Management)](js-apis-enterprise-accountManager.md)
@@ -24,7 +25,7 @@
   - [@ohos.enterprise.systemManager (System Management)](js-apis-enterprise-systemManager.md)
   - [@ohos.enterprise.usbManager (USB Management)](js-apis-enterprise-usbManager.md)
   - [@ohos.enterprise.wifiManager (Wi-Fi Management)](js-apis-enterprise-wifiManager.md)
-  - [@ohos.enterprise.EnterpriseAdminExtensionAbility (EnterpriseAdminExtensionAbility)](js-apis-EnterpriseAdminExtensionAbility.md)
+  - [@ohos.enterprise.EnterpriseAdminExtensionAbility (Enterprise Device Management Extension Ability)](js-apis-EnterpriseAdminExtensionAbility.md)
   - [@ohos.enterprise.telephonyManager (Telephony Management)](js-apis-enterprise-telephonyManager.md)
   <!--Del-->
   - [@ohos.enterprise.accountManager (Account Management) (System API)](js-apis-enterprise-accountManager-sys.md)
@@ -44,6 +45,6 @@
   - [@ohos.enterprise.wifiManager (Wi-Fi Management) (System API)](js-apis-enterprise-wifiManager-sys.md)
   <!--DelEnd-->
   - application<!--mdm-arkts-application-->
-    - [EnterpriseAdminExtensionContext](js-apis-application-EnterpriseAdminExtensionContext.md)
+    - [EnterpriseAdminExtensionContext (Enterprise Device Management Extension Context)](js-apis-application-EnterpriseAdminExtensionContext.md)
 - Error Codes<!--mdm-arkts-errcode-->
   - [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md)

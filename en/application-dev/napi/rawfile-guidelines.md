@@ -6,6 +6,7 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=1cb9abae30133c2b18932c01f2118311b21bd314 translatedAt=2026-11-09T08:52:17.318Z nl=1 -->
 
 ## When to Use
 
@@ -26,7 +27,7 @@ The APIs ended with **64** are new APIs. These APIs can be used to open rawfiles
 | int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t length) | Reads a raw file.                   |
 | void OH_ResourceManager_CloseRawFile(RawFile *rawFile)       | Closes a raw file to release resources.               |
 | void OH_ResourceManager_CloseRawDir(RawDir *rawDir)          | Closes a raw file directory to release resources.               |
-| bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDescriptor &descriptor) | Obtains the file descriptor (FD) of a raw file.                       |
+| bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFileDescriptor *descriptor) | Obtains the file descriptor (FD) of a raw file.                       |
 | void OH_ResourceManager_ReleaseNativeResourceManager(NativeResourceManager *resMgr) | Releases the native resource manager.   |
 | bool OH_ResourceManager_IsRawDir(const NativeResourceManager *mgr, const char *path) | Checks whether a path is a subdirectory in the **rawfile** directory.   |
 
@@ -36,11 +37,11 @@ For details about the APIs, see [rawfile](../reference/apis-localization-kit/cap
 
    The following uses the ArkTS as an example to describe how to obtain the rawfile list, rawfile content, rawfile descriptor (**fd**, **offset**, and **length**), and determine whether the path of a rawfile is a subdirectory in the **rawfile** directory.
 
-1. Create a project on DevEco Studio.
+**1. Create a project on DevEco Studio.**
 
 ![Creating a C++ application](figures/rawfile1.png)
 
-2. Add dependencies.
+**2. Add dependencies.**
 
 After the project is created, the **cpp** directory is created in the project directory. In the **cpp** directory, there are files such as **libentry/index.d.ts**, **hello.cpp**, and **CMakeLists.txt**.
 
@@ -62,7 +63,7 @@ After the project is created, the **cpp** directory is created in the project di
     export const isRawDir: (resMgr: resourceManager.ResourceManager, path: string) => boolean;
     ```
 
-3. Modify the source file.
+**3. Modify the source file.**
 
 1. Open the **src/main/cpp/hello.cpp** file, and add the mapping between ArkTS APIs and C++ APIs in the **Init** method. The ArkTS APIs **getFileList**, **getRawFileContent**, **getRawFileDescriptor**, and **isRawDir** map to the C++ APIs **GetFileList**, **GetRawFileContent**, **GetRawFileDescriptor**, and **IsRawDir**, respectively.
 
@@ -315,7 +316,7 @@ After the project is created, the **cpp** directory is created in the project di
         }
         // Obtain the FD of the rawfile, that is, RawFileDescriptor {fd, offset, length}.
         RawFileDescriptor descriptor;
-        OH_ResourceManager_GetRawFileDescriptor(rawFile, descriptor);
+        OH_ResourceManager_GetRawFileDescriptorData(rawFile, &descriptor);
         // Close the rawDir pointer object.
         OH_ResourceManager_CloseRawFile(rawFile);
         OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
@@ -377,7 +378,7 @@ After the project is created, the **cpp** directory is created in the project di
 
    Example: Obtain a **resourceManager** object for intra-package resources within the application.
 
-	<!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { util } from '@kit.ArkTS';
@@ -444,8 +445,8 @@ After the project is created, the **cpp** directory is created in the project di
     }
     ```
 
-##  
+## Samples
 
- 
+The following sample is provided to help you develop raw file resource management:
 
 - [Native Rawfile](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkRawfile)

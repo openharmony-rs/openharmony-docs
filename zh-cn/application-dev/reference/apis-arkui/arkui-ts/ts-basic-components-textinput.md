@@ -729,7 +729,7 @@ showCounter(value: boolean, options?: InputCounterOptions)
 
 参数value为true时，才能设置options，输入框开启计数器下标功能，需要配合[maxLength](#maxlength)（设置最大输入字符数）一起使用。字符计数器显示的效果是当前输入字符数/最大可输入字符数。
 
-当输入字符数大于最大输入字符数乘以thresholdPercentage百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数超过最大输入字符数时，边框和计数器下标将变为红色。用户同时设置参数value为true和[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)，当thresholdPercentage数值在有效区间[1, 100]内，且输入字符数超过最大输入字符数时，边框和计数器下标将变为红色，框体抖动。highlightBorder设置为false，则不显示红色边框，计数器默认显示红色，框体抖动。
+当输入字符数大于最大输入字符数乘以[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)中的thresholdPercentage百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数超过最大输入字符数时，边框和计数器下标将变为红色。用户同时设置参数value为true和[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)，当InputCounterOptions中的thresholdPercentage数值在有效区间[1, 100]内，且输入字符数超过最大输入字符数时，边框和计数器下标将变为红色，框体抖动；InputCounterOptions中的highlightBorder设置为false时，则不显示红色边框。
 
 [TextInputStyle](#textinputstyle9枚举说明)的内联模式、[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)下字符计数器不显示。
 

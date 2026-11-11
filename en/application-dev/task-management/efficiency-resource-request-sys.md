@@ -1,4 +1,4 @@
-# Efficiency Resource Request (ArkTS) (for Privileged System Applications Only)
+# Energy Efficiency Resource Request (ArkTS) (for Privileged System Applications Only)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -6,6 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=0db69d14daf5d8b4019d1f571a81d747d58ee65e translatedAt=2026-11-02T07:50:34.234Z pushedAt=2026-11-02T11:43:16.483Z nl=1 -->
 
 ## Overview
 
@@ -15,10 +16,26 @@ Some system applications need to run for an extended period of time to provide b
 
 ### Basic Concepts
 
-- **APIs for requesting efficiency resources**: APIs used by a system application to request energy resources for its processes. An application or process can request CPU resources to prevent itself from being suspended.
+- **APIs for requesting energy efficiency resources**: APIs used by a system application to request energy efficiency resources for its processes. An application or process can request CPU resources to prevent itself from being suspended.
 
-- **Privileged system application**: a system application that is configured with the [runningResourcesApply privilege](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#device-specific-application-privileges).
+- **Privileged system applications**: System applications configured with the [runningResourcesApply privilege](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#how-to-configure), which must be configured in [install_list_capability.json](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_capability.json). The following is an example:
 
+  ```json5
+  {
+      "install_list": [
+          {
+              "bundleName": "com.ohos.devicetest", // Replace with the actual application bundle name.
+              "app_signature": ["8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"], // Replace with the actual application signature.
+              "resourcesApply": [
+                  0 // Use the actual energy efficiency resource type applied for.
+              ]
+              // Other settings such as associatedWakeUp.
+          }
+          // Other application bundle names.
+      ]
+  }
+  ```
+  
 ### Constraints
 
 - Efficiency resources can be used only by privileged system applications.
@@ -29,36 +46,52 @@ Some system applications need to run for an extended period of time to provide b
 
 **Table 1** Main APIs for efficiency resources
 
-The table below lists the main APIs used for efficient resources. For details about more APIs and their usage, see [Background Task Management](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md).
+The following are the APIs used for energy efficiency resource development. For more APIs and their usage, see [@ohos.resourceschedule.backgroundTaskManager (Background Task Management) (System API)](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md).
 
 | API| Description|
 | -------- | -------- |
-| applyEfficiencyResources(request: EfficiencyResourcesRequest): void | Requests efficiency resources.|
-| resetAllEfficiencyResources(): void | Releases all efficiency resources.|
+| applyEfficiencyResources(request: EfficiencyResourcesRequest): void | Applies for or releases energy efficiency resources. The release operation takes effect only on the resources applied for in this request. |
+| resetAllEfficiencyResources(): void | Releases all energy efficiency resources. |
 
 **Table 2** Parameters for requesting efficiency resources
-| Name| Type| Mandatory| Description|
+| API | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| resourceTypes | number | Yes| Type of the resource to request.|
-| isApply | boolean | Yes| Whether the request is used to apply for resources.<br>- **true**: The request is used to apply for resources.<br>- **false**: The request is used to release resources.|
-| timeOut | number | Yes| Duration for which the resource will be used, in milliseconds.|
-| isPersist | boolean | No| Whether the resource is permanently held. The default value is **false**.<br>- **true**: The resource is permanently held.<br>- **false**: The resource is held for a limited period of time.|
-| isProcess | boolean | No| Whether the request is initiated by a process. The default value is **false**.<br>- **true**: The request is initiated by a process.<br>- **false**: The request is initiated by an application.|
-| reason | string | Yes| Reason for requesting the resource.|
-| cpuLevel | [EfficiencyResourcesCpuLevel](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md#efficiencyresourcescpulevel23)  | No| CPU level. If **resourceTypes** is set to **CPU**, this parameter specifies the CPU resource size. The system allocates the specified CPU resources to the application during the idle time of load (for example, when the screen is off). This parameter is supported since API version 23.|
+| resourceTypes | number | Yes | Type of the resource to request. |
+| isApply | boolean | Yes | Whether to apply for or release resources.<br/>- **true**: Apply for resources.<br/>- **false**: Release some resources. |
+| timeOut | number | Yes | Duration for which the resource is used, in ms. After this duration, the energy efficiency resource is automatically released. This field does not take effect when `isPersist` is **true**. |
+| isPersist | boolean | No | Whether the resource is permanently held. The default value is **false**.<br>- **true**: The resource is permanently held.<br>- **false**: The resource is held for a limited period of time. |
+| isProcess | boolean | No | Whether the resource is requested by a process or an application. The default value is **false**.<br>- **true**: The resource is requested by a process and takes effect only for the current process.<br>- **false**: The resource is requested by an application and takes effect for all processes of the application. |
+| reason | string | Yes | Reason for requesting the resource. |
+| cpuLevel | [EfficiencyResourcesCpuLevel](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md#efficiencyresourcescpulevel23)  | No | CPU level. If **resourceTypes** is set to **CPU**, this parameter specifies the CPU resource size. The system allocates the specified CPU resources to the application during the idle time of load (for example, when the screen is off). This parameter is supported since API version 23. |
+
+> **NOTE**
+>
+> When using the `cpuLevel` parameter, complete the configuration in `config.json`. The following is an example:
+
+```json5
+{
+    "cpu_efficiency_resource_allow_apply_bundle_infos": [
+        {
+            "bundleName": "com.ohos.devicetest", // Replace with the actual application bundle name.
+            "app_signature": ["8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"], // Replace with the actual application signature.
+            "cpuLevel": 2 // Use the actual cpuLevel applied for.
+        }
+    ]
+}
+```
 
 **Table 3** Efficiency resource types
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| CPU | 1 | CPU resource. Such type of resource prevents an application from being suspended.|
-| COMMON_EVENT | 2 | Common event resource. Such type of resource ensures that an application in the suspended state can receive common events.|
-| TIMER | 4 | Timer resource. Such type of resource ensures that an application in the suspended state can be woken up by system timers.|
-| WORK_SCHEDULER | 8 | Deferred task resource. Such type of resource provides a loose control policy for an application.|
-| BLUETOOTH | 16 | Bluetooth resource. Such type of resource ensures that an application in the suspended state can be woken up by Bluetooth-related events.|
-| GPS | 32 | GPS resource. Such type of resource ensures that an application in the suspended state can be woken up by GPS-related events.|
-| AUDIO | 64 | Audio resource. Such type of resource prevents an application from being suspended when the application has an audio being played.|
-| RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK resource. Such type of resources prevents locks running in the background from being temporarily released when the application is suspended.|
-| SENSOR<sup>10+</sup> | 256 | Sensor resource. Such type of resources prevents sensor callbacks from being intercepted.|
+| CPU | 1 | CPU resource. Such type of resource prevents an application from being suspended. |
+| COMMON_EVENT | 2 | Common event resource. Such type of resource ensures that an application in the suspended state can receive common events. |
+| TIMER | 4 | Timer. Such type of resource ensures that an application in the suspended state can be woken up by the timer. |
+| WORK_SCHEDULER | 8 | Deferred task resource. Such type of resource provides a loose control policy for an application. |
+| BLUETOOTH | 16 | Bluetooth resource. Such type of resource ensures that an application in the suspended state can be woken up by Bluetooth-related events. |
+| GPS | 32 | GPS resource. Such type of resource ensures that an application in the suspended state can be woken up by GPS-related events. |
+| AUDIO | 64 | Audio resource. Such type of resource prevents an application from being suspended when the application has an audio being played. |
+| RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK resource. Such type of resources prevents locks running in the background from being temporarily released when the application is suspended. |
+| SENSOR<sup>10+</sup> | 256 | Sensor resource. Such type of resources prevents sensor callbacks from being intercepted. |
 
 ## How to Develop
 
@@ -100,7 +133,7 @@ The table below lists the main APIs used for efficient resources. For details ab
    } catch (error) {
      console.error(`Operation resetAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
    }
-   // The application releases some efficiency resources.
+   // After the application finishes its work in the background, partially release the energy efficiency resources.
    let request: backgroundTaskManager.EfficiencyResourcesRequest = {
      resourceTypes: backgroundTaskManager.ResourceType.CPU,
      isApply: false, // The request is used to release resources.

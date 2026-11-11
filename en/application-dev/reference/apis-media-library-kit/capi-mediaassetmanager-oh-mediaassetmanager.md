@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6a96f2b8f99f158608ec5045488b853b4cc6044f translatedAt=2026-11-03T07:17:03.525Z pushedAt=2026-11-04T03:11:19.986Z nl=1 -->
 
 ```c
 typedef struct OH_MediaAssetManager OH_MediaAssetManager
@@ -16,10 +17,11 @@ The struct describes the media asset manager.
 
 You can use this struct to create a media asset manager instance.
 
-If the creation fails, nullptr is returned.
+A null pointer is returned if the struct instance fails to be created.
 
 **Since**: 12
 
 **Related module**: [MediaAssetManager](capi-mediaassetmanager.md)
 
 **Header file**: [media_asset_base_capi.h](capi-media-asset-base-capi-h.md)
+

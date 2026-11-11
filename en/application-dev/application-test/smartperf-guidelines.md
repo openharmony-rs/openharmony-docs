@@ -1,10 +1,11 @@
-# SmartPerf Device User Guide
+# SmartPerf User Guide
 <!--Kit: Test Kit-->
 <!--Subsystem: Test-->
-<!--Owner: @niu-guoliang-->
-<!--Designer: @niu-guoliang-->
+<!--Owner: @zhzhchuai-->
+<!--Designer: @zhzhchuai-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
+<!-- md-trans-meta sourceCommit=ebd657d8f7b9c259e6bda7197d2f50e9ebac1845 translatedAt=2026-11-06T12:31:01.659Z pushedAt=2026-11-09T13:27:00.699Z nl=1 -->
 
 ## Introduction
 
@@ -101,29 +102,27 @@ Touch **Report** to access the report list. Touch a report to view its details.
    Usage: SP_daemon [options] [arguments]
     
    options:
-    -N              set the collection times(default value is 0) range[1,2147483647], for example: -N 10
+    -N              set the collection times, range[1,2147483647], for example: -N 10
     -PKG            set package name, must add, for example: -PKG ohos.samples.ecg
     -PID            set process pid, must add, for example: -PID 3568
-    -threads        get threads, must add -PID or -PKG for example:
+    -threads        get threads, must add -PID or -PKG,  for example:
                     -threads -PID 3568 or -threads -PKG ohos.samples.ecg
-    -fds            get file descriptor, must add -PID or -PKG for example:
-                    -fds -PID 3568 or -fds -PKG ohos.samples.ecg
-    -c              get device CPU frequency and CPU usage, process CPU usage and CPU load ..
-    -ci             get cpu instructions and cycles
+    -c              get device cpu frequency and cpu usage, process cpu usage and cpu load ...
+    -ci             get cpu instructions and cycles  (only supported for root)
     -g              get device GPU frequency and GPU load
-    -f              get app refresh fps(frames per second) and fps jitters and refreshrate
+    -f              get app refresh fps (frames per second) and fps jitters and refreshrate
     -profilerfps    get refresh fps and timestamp
-    -sections       set collection time period(using with profilerfps)
-    -t              get remaining battery power and temperature..
-    -p              get battery power consumption and voltage(Not supported by some devices)
+    -sections       set collection time period (used with profilerfps)
+    -t              get the temperature of the gpu and soc ...
+    -p              get battery power consumption and voltage (Not supported by some devices)
     -print          start mode print log
     -r              get process memory and total memory
     -snapshot       get screen capture
     -net            get uplink and downlink traffic
     -start          collection start command
     -stop           collection stop command
-    -VIEW           set layler, for example: -VIEW DisplayNode
-    -OUT            set csv output path.
+    -VIEW           set layer, for example: -VIEW ScreenNode
+    -OUT            set csv output path
     -d              get device DDR information
     -screen         get screen resolution
     -deviceinfo     get device information
@@ -131,7 +130,7 @@ Touch **Report** to access the report list. Touch a report to view its details.
     -clear          clear the process ID
     -ohtestfps      used by the validator to obtain the fps, the collection times can be set
     -editorServer   start a process to listen to the socket message of the editor
-    -recordcapacity get the battery level difference
+    -recordcapacity get current battery level
     --version       get version
     --help          get help
     -editor         scenario-based collection identifier, parameter configuration items can be added later
@@ -395,7 +394,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
  
     order:0 timestamp=1741415257059
     order:1 arktsHeapPss=44835
-    order:2 childCarktsHeapPss=NA
+    order:2 childArktsHeapPss=NA
     order:3 childGpuPss=NA
     order:4 childGraphicPss=NA
     order:5 childHeapAlloc=NA
@@ -441,7 +440,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
  
     order:0 timestamp=1741415293198
     order:1 arktsHeapPss=45011
-    order:2 childCarktsHeapPss=NA
+    order:2 childArktsHeapPss=NA
     order:3 childGpuPss=NA
     order:4 childGraphicPss=NA
     order:5 childHeapAlloc=NA
@@ -485,27 +484,27 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 - Collect the number of CPU instructions of the system once.
 
   ```shell
-    $ SP_daemon -N 1 -ci
+    # SP_daemon -N 1 -ci
 
     order:0 cycles per instruction=4.098151
     order:1 hw-cpu-cycles=190604622.000000
     order:2 hw-instructions=46509906.000000
     order:3 timestamp=1609502927840
     command exec finished!
-    $
+    #
   ```
 
 - Collect the number of CPU instructions of the system and specified application once based on the bundle name.
 
   ```shell
-    $ SP_daemon -N 1 -PKG ohos.samples.ecg -ci
+    # SP_daemon -N 1 -PKG ohos.samples.ecg -ci
 
     order:0 cycles per instruction=4.121963
     order:1 hw-cpu-cycles=190092457.000000
     order:2 hw-instructions=46116973.000000
     order:3 timestamp=1609502995191
     command exec finished!
-    $
+    #
   ```
   >**NOTE**
   >
@@ -530,7 +529,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
   >
   >- Screenshots are obtained every 2 seconds.
   >
-  >-  
+  >-
   >
   >- When the collection is complete, you can view the screenshots in **data/local/tmp/capture**.
   >
@@ -576,7 +575,7 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
 - Collect the frame rate of the specified view layer 10 times.
 
   ```shell
-    $ SP_daemon -N 10 -VIEW DisplayNode -f
+    $ SP_daemon -N 10 -VIEW ScreenNode -f
     order:0 timestamp=1705306822850
     order:1 fps=15
     order:2 fpsJitters=876291843;;8314062;;8308334;;8314583;;8310417;;8308333;;8326042;;8314583;;8292708;;8492709;;8143750;;8340104;;8294271;;8302604;;8297396
@@ -591,13 +590,13 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
     command exec finished!
     $
   ```
-  >**NOTE**
+  >**Note**
   >
-  >- **DisplayNode** indicates the name of the specified layer.
+  >- ScreenNode is the specified layer name.
   >
-  >- When using this command to collect data, you need to operate the page on the specified layer.
+  >- When using this command for collection, you must operate the page on the specified layer.
   >
-  >- This command cannot be used together with the commands used to collect frame rate of a specified application, such as the **SP_daemon -N 20 -PKG ohos.samples.ecg -f** or **SP_daemon -N 20 -VIEW DisplayNode -f** commands.
+  >- This command cannot be used together with specified application frame rate collection (SP_daemon -N 20 -PKG ohos.samples.ecg -f or SP_daemon -N 20 -VIEW ScreenNode -f).
 
 - Collect DDR information once.
 
@@ -912,19 +911,19 @@ Run the **start** command to start the collection. After operating the device or
     command exec finished!
     $
    ```
-   >**NOTE**
+   >**Note**
    >
-   >- Example 1: Run the **SP_daemon -start -c -g -t -r -d -net -snapshot** command to collect the CPU, GPU, temperature, frame rate, memory, DDR, network rate, and screenshot information of the system.
+   >- Start collection example 1 (collect whole-device CPU, GPU, temperature, memory information, DDR information, network rate, and screen capture): SP_daemon -start -c -g -t -r -d -net -snapshot.
    >
-   >- Example 2: Run the **SP_daemon -start -PKG ohos.samples.ecg -c -g -t -f -r -d -net -snapshot -threads -fds** command to collect the CPU load, GPU, temperature, frame rate, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the system and processes.
+   >- Start collection example 2 (collect whole-device and process CPU load, GPU, temperature, FPS, memory information, DDR information, network rate, screen capture, and thread count): SP_daemon -start -PKG ohos.samples.ecg -c -g -t -f -r -d -net -snapshot -threads.
    >
-   >- Example 3: Run the **SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads -fds** command to collect the CPU load, GPU, temperature, frame rate, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the system and processes.
+   >- Start collection example 3 (collect whole-device and process CPU load, GPU, temperature, FPS, memory information, DDR information, network rate, screen capture, and thread count): SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads.
    >
-   >- Example 4: Run the **SP_daemon -start -c -g -t -r -d -net -snapshot -threads -fds -print** command to collect and print the CPU, GPU, temperature, frame rate, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the system.
+   >- Start collection example 4 (collect whole-device CPU, GPU, temperature, memory information, DDR information, network rate, screen capture, and thread count, and print the collection information): SP_daemon -start -c -g -t -r -d -net -snapshot -threads -print.
    >
-   >- Example 5: Run the **SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads -fds -print** command to collect and print the CPU load, GPU, temperature, frame rate, memory, DDR, network rate, screenshot, number of threads, and file descriptor information of the system and processes.
+   >- Start collection example 5 (collect whole-device and process CPU load, GPU, temperature, FPS, memory information, DDR information, network rate, screen capture, and thread count, and print the collection information): SP_daemon -start -PID 18847 -c -g -t -f -r -d -net -snapshot -threads -print.
    >
-   >- The service start and stop file is stored in **data/local/tmp/smartperf/1/t_index_info.csv**. You can run the **hdc file recv** command to export the report. For details, see CSV output.
+   >- The start/stop service file output path is: data/local/tmp/smartperf/1/t_index_info.csv. You can export and view the report via hdc file recv. For details, see the CSV collection results.
 
 **3. CSV output**
 
@@ -958,35 +957,33 @@ If the collection result is saved in a CSV file, perform the following steps to 
     | :-----| :--------------------- |:-----|
     | threadsNum              | Total number of threads.             |-|
     | tids                    | Thread ID.               |-|
-    | fdTotal                 | Total number of file descriptors.        |-|
-    | fds                     | File descriptor.            |Unit: Hz|
     | cpuFrequency            | CPU core frequency.       |Unit: Hz|
     | cpuUsage                | CPU core usage.         |%|
-    | cpuidleUsage            | CPU usage in idle state.       |%| 
+    | cpuidleUsage            | CPU usage in idle state.       |%|
     | cpuioWaitUsage          | CPU usage of I/O wait.       |%|
-    | cpuirqUsage             | CPU usage of hardware interrupts.        |%|  
+    | cpuirqUsage             | CPU usage of hardware interrupts.        |%|
     | cpuniceUsage            | CPU usage of user level processes with lower scheduling priority.   |%|
-    | cpusoftIrqUsage         | CPU usage of software interrupts.        |%| 
+    | cpusoftIrqUsage         | CPU usage of software interrupts.        |%|
     | cpusystemUsage          | CPU usage in kernel mode.     |%|
-    | cpuuserUsage            | CPU usage in user mode.          |%| 
+    | cpuuserUsage            | CPU usage in user mode.          |%|
     | ProcId                  | Process ID.               |-|
     | ChildProcId             | Child process ID.               |-|
-    | ProcAppName             | Application bundle name.               |-| 
+    | ProcAppName             | Application bundle name.               |-|
     | ProcCpuLoad             | Process CPU load.       |%|
     | ChildProcCpuLoad        | CPU load of the child process.       |%|
-    | ProcCpuUsage            | CPU usage of the process.         |%| 
-    | ChildProcCpuUsage       | CPU usage of the child process.         |%| 
+    | ProcCpuUsage            | CPU usage of the process.         |%|
+    | ChildProcCpuUsage       | CPU usage of the child process.         |%|
     | ProcUCpuUsage           | CPU usage of the process in user mode.    |%|
-    | ChildProcCpuUsage       | CPU usage of the child process in user mode.         |%| 
-    | ProcSCpuUsage           | CPU usage of the process in kernel mode.    |%| 
+    | ChildProcUCpuUsage       | Child process user-mode CPU usage rate.          |%|
+    | ProcSCpuUsage           | CPU usage of the process in kernel mode.    |%|
     | ChildProcSCpuUsage      | CPU usage of the child process in kernel mode.    |%|
-    | gpuFrequency            | GPU frequency of the system.         |%|
+    | gpuFrequency            | Whole-device GPU frequency.          |Unit: Hz|
     | gpuLoad                 | GPU load of the system.     |%|
-    | hw-instructions         | Number of executed instructions.         |-|
-    | cycles per instruction  | Average number of cycles per instruction.   |Unit: ns|
-    | hw-cpu-cycles           | Number of CPU clock cycles.         |Unit: ns|
-    | currentNow              | Current value.      |Unit: mA| 
-    | voltageNow              | Voltage value.      |Unit: μV| 
+    | hw-instructions         | Number of instructions executed by the CPU.          |Unit: cycles|
+    | cycles per instruction  | Number of cycles consumed per instruction.    |Unit: cycles/instruction|
+    | hw-cpu-cycles           | Number of CPU cycles.          |Unit: cycles|
+    | currentNow              | Current value.      |Unit: mA|
+    | voltageNow              | Voltage value.      |Unit: μV|
     | fps                     | Number of frames per second.             |Unit: FPS|
     | fpsJitters              | Frame interval.       |Unit: ns|
     | refreshrate             | Screen refresh rate.           |Unit: Hz|
@@ -999,36 +996,36 @@ If the collection result is saved in a CSV file, perform the following steps to 
     | memFree                 | Free memory of the system.        |Unit: KB|
     | memTotal                | Total memory of the system.          |Unit: KB|
     | pss                     | Proportional set size (PSS) of the process.     |Unit: KB|
-    | Childpss                | Proportional set size (PSS) of the child process.     |Unit: KB|
+    | childPss                | Memory actually used by the child process.      |Unit: KB|
     | sharedClean             | Shared unwritten pages of the process.     |Unit: KB|
-    | ChildsharedClean        | Shared unwritten pages of the child process.     |Unit: KB|
+    | childSharedClean        | Shared unmodified pages of the child process.      |Unit: KB|
     | sharedDirty             | Shared rewritten pages of the process.     |Unit: KB|
-    | ChildsharedDirty        | Shared rewritten pages of the child process.     |Unit: KB|
+    | childSharedDirty        | Shared modified pages of the child process.      |Unit: KB|
     | privateClean           | Private unwritten pages of the process.     |Unit: KB|
-    | ChildprivateClean      | Private unwritten pages of the child process.     |Unit: KB|
+    | childPrivateClean      | Private unmodified pages of the child process.      |Unit: KB|
     | privateDirty            | Private rewritten pages of the process.     |Unit: KB|
-    | ChildprivateDirty       | Private rewritten pages of the child process.     |Unit: KB|
-    | swapTotal               | Total swap memory of the process.         |Unit: KB|
-    | ChildswapTotal          | Total swap memory of the child process.         |Unit: KB|
+    | childPrivateDirty       | Private modified pages of the child process.      |Unit: KB|
+    | swap               | Total swap memory of the process.          |Unit: KB|
+    | childSwap          | Total swap memory of the child process.          |Unit: KB|
     | swapPss                 | Swapped PSS of the process.       |Unit: KB|
-    | ChildswapPss            | Swapped PSS of the child process.       |Unit: KB|
-    | HeapSize                | Heap size of the process.          |Unit: KB|
-    | ChildHeapSize           | Heap size of the child process.          |Unit: KB|
-    | HeapAlloc               | Heap size that can be allocated of the process.   |Unit: KB|
-    | ChildHeapAlloc          | Heap size that can be allocated of the child process.   |Unit: KB|
-    | HeapFree                | Remaining heap size of the process.     |Unit: KB|
-    | ChildHeapFree           | Remaining heap size of the child process.     |Unit: KB|
+    | childSwapPss            | PSS memory swapped by the child process.        |Unit: KB|
+    | heapSize                | Heap memory size of the process.           |Unit: KB|
+    | childHeapSize           | Heap memory size of the child process.           |Unit: KB|
+    | heapAlloc               | Allocatable heap memory size of the process.    |Unit: KB|
+    | childHeapAlloc          | Allocatable heap memory size of the child process.    |Unit: KB|
+    | heapFree                | Remaining heap memory size of the process.      |Unit: KB|
+    | childHeapFree           | Remaining heap memory size of the child process.      |Unit: KB|
     | gpuPss                  | Used GPU size of the process.    |Unit: KB|
-    | ChildgpuPss             | Used GPU size of the child process.    |Unit: KB|
+    | childGpuPss             | GPU memory size used by the child process.     |Unit: KB|
     | graphicPss              | Used graphics memory size of the process.    |Unit: KB|
-    | ChildgraphicPss         | Used graphics memory size of the child process.    |Unit: KB|
+    | childGraphicPss         | Graphics memory size used by the child process.     |Unit: KB|
     | arktsHeapPss            | Used ArkTS memory size of the process.   |Unit: KB|
-    | ChildarktsHeapPss       | Used ArkTS memory size of the child process.   |Unit: KB|
+    | childArktsHeapPss       | ArkTS memory size used by the child process.    |Unit: KB|
     | nativeHeapPss           | Used native memory size of the process.  |Unit: KB|
-    | ChildnativeHeapPss      | Used native memory size of the child process.  |Unit: KB|
+    | childNativeHeapPss      | Native memory size used by the child process.   |Unit: KB|
     | stackPss                | Used stack memory size of the process.      |Unit: KB|
-    | ChildstackPss           | Used stack memory size of the child process.      |Unit: KB|
-    | timeStamp               | Timestamp.           |Collection time.| 
+    | childStackPss           | Stack memory size used by the child process.       |Unit: KB|
+    | timeStamp               | Timestamp.           |Collection time.|
 
 ### Scenario Collection
 
@@ -1224,9 +1221,9 @@ The power collection result of the current device can be written into the **data
     SP_daemon exec finished!
     $
   ```
-  >**NOTE**
+  >**Note**
   >
-  >- In this command, **100** indicates the number of collection times (collection is performed every second). You can set it to a positive integer.
+  >- The 10 in this command indicates the number of collections (one-second collection), and can be set to other positive integers.
 
 - Collect the frame rate by time segment.
 
@@ -1254,6 +1251,6 @@ The power collection result of the current device can be written into the **data
     SP_daemon exec finished!
     $
   ```
-  >**NOTE**
+  >**Note**
   >
-  >- In this command, **100** indicates the number of collection times (collection is performed every second) and can be set to a positive integer. **10** indicates collection by segment. Currently, the number of collection segments can be set to a positive integer ranging from 1 to 10.
+  >- The 100 in this command indicates the number of collections (one-second collection), and can be set to other positive integers. The 10 indicates segmentation: currently supports setting 1 to 10 (positive integer) segments for collection.

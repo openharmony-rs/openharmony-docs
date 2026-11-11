@@ -3,18 +3,17 @@
 <!--Subsystem: Multimedia-->
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
+
+This topic describes how to use native image APIs to implement image transformation.
 
 > **NOTE**
 >
-> This guide uses the APIs provided by the [Image](../../reference/apis-image-kit/capi-image.md) module, which supports basic functionalities such as image encoding/decoding, image receiver operations, and image data processing. These APIs are introduced prior to API version 11, and no additional features will be included in later versions. Therefore, these APIs are not recommended.
->
-> You can also use the C APIs provided by the [Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md) module, which includes all the foundational features of the Image module while adding new capabilities like multi-image encoding/decoding. For details about the development guide, see [Using Image_NativeModule to Decode Images (C/C++)](image-source-c.md). These APIs are available since API version 12 and are expected to keep evolving. You are encouraged to use them.
->
-> You are not advised to use both sets of C APIs in your code. It may cause compatibility issues in some scenarios.
-
-This topic describes how to use native image APIs to implement image transformation.
+> The APIs used in this development guide are C APIs provided by the [Image](../../reference/apis-image-kit/capi-image.md) module, which support image encoding/decoding, image receivers, and image data processing. These APIs were released before API version 11 and will not receive new features in later versions. They are **no longer recommended**.<br>
+> You can use the C APIs provided by the [Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md) module, which not only offer the basic image framework capabilities mentioned above but also support new features such as multi-image encoding/decoding. For related development instructions, see [Using Image_NativeModule to Decode Images](image-source-c.md). These APIs are available from API version 12 and will continue to evolve. They are **recommended**.<br>
+> Using both sets of C APIs at the same time is not recommended, as they may be incompatible in certain scenarios.
 
 ## How to Develop
 
@@ -76,7 +75,7 @@ Open **src/main/cpp/hello.cpp**, and add the reference file.
         OHOS::Media::OH_GetImageInfo(env, argValue[0], &pixelMapInfo);
         return result;
     }
-   ```
+    ```
 
 2. Obtain the memory address of a PixelMap object and lock the memory.
 
@@ -119,18 +118,19 @@ Open **src/main/cpp/hello.cpp**, and add the reference file.
 
 **Calling APIs on the JS Side**
 
-1. Open **src\main\cpp\types\*libentry*\index.d.ts** (where **libentry** varies according to the project name), and import the following files:
+1. Open src\main\cpp\types\libentry\index.d.ts (where libentry is generated based on the project name) and import the following reference:
 
-    ```js
-    import { image } from '@kit.ImageKit';
-    export const add:(a: number, b: number) => image.PixelMap;
-    export const transform: (a: image.PixelMap) => image.PixelMap;
-    export const testGetImageInfo: (a: image.PixelMap) => image.PixelMap;
-    export const testAccessPixels: (a: image.PixelMap) => image.PixelMap;
-    export const testUnAccessPixels: (a: image.PixelMap) => image.PixelMap;
-    ```
+   <!-- @[ndk_pixelmap_js_export_image_transformation_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/NdkPixelMap_js/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const testGetImageInfo: (a: image.PixelMap) => image.PixelMap;
+   
+   export const testAccessPixels: (a: image.PixelMap) => image.PixelMap;
+   
+   export const testUnAccessPixels: (a: image.PixelMap) => image.PixelMap;
+   ```
 
-2. Open **src\main\ets\pages\index.ets**, import ***libentry*.so** (where **libentry** varies according to the project name), call the native APIs, and pass in the JS resource object. The sample code is as follows:
+2. Open src\main\ets\pages\index.ets, import "libentry.so" (generated based on the project name), and call the native API with the JS resource object. Example:
 
     ```js
     import testNapi from 'libentry.so';
@@ -139,20 +139,24 @@ Open **src/main/cpp/hello.cpp**, and add the reference file.
     @Entry
     @Component
     struct Index {
-    @State message: string = 'IMAGE';
-    @State _PixelMap : image.PixelMap | undefined = undefined;
+      @State message: string = 'IMAGE';
+      @State _PixelMap: image.PixelMap | undefined = undefined;
 
-    build() {
+      build() {
         Row() {
-        Column() {
+          Column() {
             Button(this.message)
-            .fontSize(50)
-            .fontWeight(FontWeight.Bold)
-            .onClick(() => {
-                const color : ArrayBuffer = new ArrayBuffer(96);
-                let opts: image.InitializationOptions = { alphaType: 0, editable: true, pixelFormat: 4, scaleMode: 1, size: { height: 4, width: 6 } };
+              .fontSize(50)
+              .fontWeight(FontWeight.Bold)
+              .onClick(() => {
+                const color: ArrayBuffer = new ArrayBuffer(96);
+                let opts: image.InitializationOptions = {
+                  editable: true,
+                  pixelFormat: image.PixelMapFormat.BGRA_8888,
+                  size: { height: 4, width: 6 }
+                };
                 image.createPixelMap(color, opts)
-                .then( (pixelmap : image.PixelMap) => {
+                  .then((pixelmap: image.PixelMap) => {
                     this._PixelMap = pixelmap;
                     testNapi.testGetImageInfo(this._PixelMap);
                     console.info("Test GetImageInfo success");
@@ -162,12 +166,14 @@ Open **src/main/cpp/hello.cpp**, and add the reference file.
 
                     testNapi.testUnAccessPixels(this._PixelMap);
                     console.info("Test UnAccessPixels success");
-                })
-            })
-        }
-        .width('100%')
+                  });
+              })
+          }
+          .width('100%')
+          Image(this._PixelMap)
+            .width('100%')
         }
         .height('100%')
-    }
+      }
     }
     ```

@@ -5,7 +5,7 @@
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
 <!--Adviser: @yuwenliang0514-->
-<!-- md-trans-meta sourceCommit=0e9631a82844cd7c7c6929f54a07acb1f1b31933 translatedAt=2026-08-26T05:04:12.704Z pushedAt=2026-08-28T08:59:15.603Z -->
+<!-- md-trans-meta sourceCommit=651ce9a015ccb0a7fedbe7ff38277a5e01ee88b9 translatedAt=2026-11-03T08:12:16.817Z pushedAt=2026-11-03T08:12:16.817Z -->
 
 > **NOTE**<br>
 > You need to develop [device online/offline status monitoring](game-controller-monitor-device.md) before registering listeners for gamepad axis and button events.
@@ -40,6 +40,7 @@ For detailed API descriptions, see [GameController](../reference/apis-game-contr
 | OH_GamePad_ButtonX_RegisterButtonInputMonitor | Registers a listener for the X button event.| 
 | OH_GamePad_ButtonY_RegisterButtonInputMonitor | Registers a listener for the Y button event.| 
 | OH_GamePad_ButtonC_RegisterButtonInputMonitor | Registers a listener for the C button event.| 
+| OH_GamePad_ButtonNonstandard_RegisterButtonInputMonitor | Registers a listener for nonstandard button events. |
 | OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor | Registers a listener for the Left Directional button event.| 
 | OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor | Registers a listener for the Right Directional button event.| 
 | OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor | Registers a listener for the Up Directional button event.| 
@@ -58,15 +59,19 @@ For detailed API descriptions, see [GameController](../reference/apis-game-contr
 
 ### Linking the Dynamic Library
 
-```c
+<!-- @[link_game_controller_libs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
 target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 ```
 
 
 ### Importing the Module
 
-```c
-#include <GameControllerKit/game_pad.h>
+<!-- @[header_include_game_pad](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/game_pad_api.cpp) -->
+
+``` C++
+#include "GameControllerKit/game_pad.h"
 ```
 
 
@@ -86,112 +91,39 @@ The following table lists the physical axes and the APIs for obtaining their val
 
 The following uses the Left Thumbstick axis event as an example.
 
-```c
-// Register the LeftThumbstick axis event listener.
-napi_value GamePad::LeftThumbstick_RegisterAxisInputMonitor(napi_env env, napi_callback_info info) {
-    napi_value result;
+<!-- @[button_input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/game_pad_api.cpp) -->
+
+``` C++
+int32_t GamePad::LeftShoulderRegisterButtonInputMonitor()
+{
     GameController_ErrorCode errorCode =
-        OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor(GamePad::LeftThumbstick_OnAxisEvent);
-    if (errorCode != GameController_ErrorCode::GAME_CONTROLLER_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "LeftThumbstick_RegisterAxisInputMonitor Failed, %{public}d", errorCode);
-        napi_create_double(env, errorCode, &result);
-        return result;
-    }
-    OH_LOG_INFO(LOG_APP, "LeftThumbstick_RegisterAxisInputMonitor Success");
-    napi_create_double(env, 0, &result);
-    return result;
-}
-
-// Unregister the LeftThumbstick axis event listener.
-napi_value GamePad::LeftThumbstick_UnregisterAxisInputMonitor(napi_env env, napi_callback_info info) {
-    napi_value result;
-    GameController_ErrorCode errorCode = OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor();
-    if (errorCode != GameController_ErrorCode::GAME_CONTROLLER_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "LeftThumbstick_UnregisterAxisInputMonitor Failed, %{public}d", errorCode);
-        napi_create_double(env, errorCode, &result);
-        return result;
-    }
-    OH_LOG_INFO(LOG_APP, "LeftThumbstick_UnregisterAxisInputMonitor Success");
-    napi_create_double(env, 0, &result);
-    return result;
-}
-
-void GamePad::LeftThumbstick_OnAxisEvent(const struct GamePad_AxisEvent *axisEvent) {
-    std::string val = "X";
-    double xAxisValue;
-    OH_GamePad_AxisEvent_GetXAxisValue(axisEvent, &xAxisValue);
-    val.append(std::to_string(xAxisValue)).append("_Y");
-    double yAxisValue;
-    OH_GamePad_AxisEvent_GetYAxisValue(axisEvent, &yAxisValue);
-    val.append(std::to_string(yAxisValue));
-    OnAxisEvent(axisEvent, "LeftThumbstick_OnAxisEvent", val);
-}
-```
-
-
-### Registering and Unregistering a Listener for the Button Event
-
-Call the corresponding APIs to register or unregister button event callbacks and obtain the button value from the callback functions.
-
-The following table lists the button names and their values.
-
-| Button| Value| 
-| -------- | -------- |
-| LeftShoulder | 2307 | 
-| RightShoulder | 2308 | 
-| LeftTrigger | 2309 | 
-| RightTrigger | 2310 | 
-| LeftThumbstick | 2314 | 
-| RightThumbstick | 2315 | 
-| ButtonHome | 2311 | 
-| ButtonMenu | 2312 | 
-| ButtonA | 2301 | 
-| ButtonB | 2302 | 
-| ButtonC | 2303 | 
-| ButtonX | 2304 | 
-| ButtonY | 2305 | 
-| Dpad_UpButton | 2012 | 
-| Dpad_DownButton | 2013 | 
-| Dpad_LeftButton | 2014 | 
-| Dpad_RightButton | 2015 | 
-
-The following uses the Left Shoulder button event as an example.
-
-```c
-// Register the LeftShoulder key event listener.
-napi_value GamePad::LeftShoulder_RegisterButtonInputMonitor(napi_env env, napi_callback_info info) {
-    napi_value result;
-    GameController_ErrorCode errorCode =
-        OH_GamePad_LeftShoulder_RegisterButtonInputMonitor(GamePad::LeftShoulder_OnButtonEvent);
+        OH_GamePad_LeftShoulder_RegisterButtonInputMonitor(GamePad::LeftShoulderOnButtonEvent);
     if (errorCode != GameController_ErrorCode::GAME_CONTROLLER_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "LeftShoulder_RegisterButtonInputMonitor Failed, %{public}d", errorCode);
-        napi_create_double(env, errorCode, &result);
-        return result;
+        return static_cast<int32_t>(errorCode);
     }
     OH_LOG_INFO(LOG_APP, "LeftShoulder_RegisterButtonInputMonitor Success");
-    napi_create_double(env, 0, &result);
-    return result;
+    return 0;
 }
 
-// Unregister the LeftShoulder key event listener.
-napi_value GamePad::LeftShoulder_UnregisterButtonInputMonitor(napi_env env, napi_callback_info info) {
-    napi_value result;
+int32_t GamePad::LeftShoulderUnregisterButtonInputMonitor()
+{
     GameController_ErrorCode errorCode = OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor();
     if (errorCode != GameController_ErrorCode::GAME_CONTROLLER_SUCCESS) {
         OH_LOG_ERROR(LOG_APP, "LeftShoulder_UnregisterButtonInputMonitor Failed, %{public}d", errorCode);
-        napi_create_double(env, errorCode, &result);
-        return result;
+        return static_cast<int32_t>(errorCode);
     }
     OH_LOG_INFO(LOG_APP, "LeftShoulder_UnregisterButtonInputMonitor Success");
-    napi_create_double(env, 0, &result);
-    return result;
+    return 0;
 }
 
-void GamePad::LeftShoulder_OnButtonEvent(const struct GamePad_ButtonEvent *buttonEvent) {
+void GamePad::LeftShoulderOnButtonEvent(const struct GamePad_ButtonEvent *buttonEvent)
+{
     OnButtonEvent(buttonEvent, "LeftShoulder_OnButtonEvent");
 }
 
-void GamePad::OnButtonEvent(const struct GamePad_ButtonEvent *buttonEvent, const std::string &buttonName) {
+void GamePad::OnButtonEvent(const struct GamePad_ButtonEvent *buttonEvent, const std::string &buttonName)
+{
     std::string temp;
     temp.append("OnButtonEvent:").append(buttonName);
     char *deviceId;
@@ -232,5 +164,76 @@ void GamePad::OnButtonEvent(const struct GamePad_ButtonEvent *buttonEvent, const
     temp.append(" ,pressedButtonCodes:").append(pressedButtonCodes);
     OH_LOG_INFO(LOG_APP, "%{public}s", temp.c_str());
     Log::GetInstance()->PrintLog(temp);
+}
+```
+
+
+### Registering and Unregistering a Listener for the Button Event
+
+Call the corresponding APIs to register or unregister button event callbacks and obtain the button value from the callback functions.
+
+The following table lists the button names and their values.
+
+| Button| Value|
+| -------- | -------- |
+| LeftShoulder | 2307 |
+| RightShoulder | 2308 |
+| LeftTrigger | 2309 |
+| RightTrigger | 2310 |
+| LeftThumbstick | 2314 |
+| RightThumbstick | 2315 |
+| ButtonHome | 2311 |
+| ButtonMenu | 2312 |
+| ButtonA | 2301 |
+| ButtonB | 2302 |
+| ButtonC | 2303 |
+| ButtonX | 2304 |
+| ButtonY | 2305 |
+| Dpad_UpButton | 2012 |
+| Dpad_DownButton | 2013 |
+| Dpad_LeftButton | 2014 |
+| Dpad_RightButton | 2015 |
+
+> **NOTE**<br/>
+> For the key codes of nonstandard buttons, see [KeyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode).
+
+The following uses the Left Shoulder button event as an example.
+
+<!-- @[axis_input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/game_pad_api.cpp) -->
+
+``` C++
+int32_t GamePad::LeftThumbstickRegisterAxisInputMonitor()
+{
+    GameController_ErrorCode errorCode =
+        OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor(GamePad::LeftThumbstickOnAxisEvent);
+    if (errorCode != GameController_ErrorCode::GAME_CONTROLLER_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "LeftThumbstick_RegisterAxisInputMonitor Failed, %{public}d", errorCode);
+        return static_cast<int32_t>(errorCode);
+    }
+    OH_LOG_INFO(LOG_APP, "LeftThumbstick_RegisterAxisInputMonitor Success");
+    return 0;
+}
+
+int32_t GamePad::LeftThumbstickUnregisterAxisInputMonitor()
+{
+    GameController_ErrorCode errorCode = OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor();
+    if (errorCode != GameController_ErrorCode::GAME_CONTROLLER_SUCCESS) {
+        OH_LOG_ERROR(LOG_APP, "LeftThumbstick_UnregisterAxisInputMonitor Failed, %{public}d", errorCode);
+        return static_cast<int32_t>(errorCode);
+    }
+    OH_LOG_INFO(LOG_APP, "LeftThumbstick_UnregisterAxisInputMonitor Success");
+    return 0;
+}
+
+void GamePad::LeftThumbstickOnAxisEvent(const struct GamePad_AxisEvent *axisEvent)
+{
+    std::string val = "X";
+    double xAxisValue;
+    OH_GamePad_AxisEvent_GetXAxisValue(axisEvent, &xAxisValue);
+    val.append(std::to_string(xAxisValue)).append("_Y");
+    double yAxisValue;
+    OH_GamePad_AxisEvent_GetYAxisValue(axisEvent, &yAxisValue);
+    val.append(std::to_string(yAxisValue));
+    OnAxisEvent(axisEvent, "LeftThumbstick_OnAxisEvent", val);
 }
 ```

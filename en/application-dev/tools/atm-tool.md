@@ -6,7 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=2845f22b3a6c7c573421bce7ff3e32f73246613d translatedAt=2026-07-20T10:51:34.900Z pushedAt=2026-07-21T07:51:44.679Z -->
+<!-- md-trans-meta sourceCommit=a90357cf8c366c16c3d0667bcce925e70718e96d translatedAt=2026-11-02T07:54:04.322Z pushedAt=2026-11-03T01:25:17.439Z nl=1 -->
 
 Access Token Manager (atm) is a tool used to query and set the information such as permission and usage type of an application process. It provides the capability of access control based on the token ID, bundle name, and process name.
 
@@ -152,6 +152,10 @@ In the following table, **-d**<!--Del-->, **-r**, **-v**,<!--DelEnd--> and **-t*
 
 Example:
 
+Starting from API version 26.1.0, the following changes are introduced:
+- When querying permission definitions, a new field `binIndependentUsable` is added to the result, indicating whether the permission can be obtained independently by a BIN in a weak sandbox without the parent HAP declaring the permission.
+- When querying permission information, a new field `uid` is added to the result, indicating the uid of the system service or application.
+
 ```bash
 #Query all permission definitions in the system.
 atm dump -d
@@ -164,9 +168,11 @@ atm dump -d -p *********
 #     "grantMode": "SYSTEM_GRANT",
 #     "availableLevel": "SYSTEM_CORE",
 #     "availableType": "SYSTEM",
+#     "provisionEnable": true,
 #     "distributedSceneEnable": true,
 #     "isKernelEffect": true,
 #     "hasValue": true,
+#     "binIndependentUsable": false,
 # }
 
 #Display the help information about the atm dump command.
@@ -182,6 +188,7 @@ atm dump -t -i *********
 #   "tokenId": 672078897,
 #   "processName": "samgr",
 #   "apl": 2,
+#   "uid": 5555,
 #   "permStateList": [
 #     {
 #       "permissionName": "ohos.permission.DISTRIBUTED_DATASYNC",
@@ -199,6 +206,7 @@ atm dump -t -b ohos.telephony.resources
 #   "tokenAttr": 1,
 #   "ver": 1,
 #   "userId": 100,
+#   "uid": 20010042,
 #   "bundleName": "ohos.telephony.resources",
 #   "instIndex": 0,
 #   "dlpType": 0,

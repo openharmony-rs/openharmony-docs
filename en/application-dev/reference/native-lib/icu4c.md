@@ -6,6 +6,7 @@
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=2b333db4a26635350969ecafddbb86ad363ebb70 translatedAt=2026-11-06T12:14:33.863Z pushedAt=2026-11-09T11:50:17.291Z nl=1 -->
 
 In today's software market, applications need to support multiple languages for efficient development and maintenance. The International Components for Unicode (ICU) library provides powerful and complete multilingual cultural information processing capability to address this demand.
 
@@ -37,7 +38,7 @@ If you need to use ICU4C internationalization capabilities, add the correspondin
 #include <unicode/uloc.h>
 ```
 
-Add the following dynamic library to CMakeLists.txt:
+Add the following dynamic link library to **CMakeLists.txt**:
 ```c
 libicu.so
 ```
@@ -45,3 +46,4 @@ libicu.so
 ## Symbols Exported from the Standard Library
 
 [ICU4C Symbols Exported from Native APIs](icu4c-symbol.md)
+
