@@ -434,7 +434,7 @@ dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrat
 
 dispatchKeyEvent(event: KeyEvent): boolean
 
-向当前FrameNode派发按键事件。
+向当前FrameNode派发按键事件。[onKeyPreIme](./arkui-ts/ts-universal-events-key.md#onkeypreime12)不会触发该事件。
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
