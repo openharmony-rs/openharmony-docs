@@ -208,7 +208,7 @@ struct Index {
 
   build() {
     RelativeContainer() {
-      Button("click to back")
+      Button('click to back')
         .onClick(() => {
           (this.getUIContext().getHostContext() as common.UIAbilityContext).terminateSelf().catch((err: Error) => {
             hilog.error(DOMAIN, TAG, 'error: %{public}s', JSON.stringify(err));
@@ -245,10 +245,10 @@ struct UECPage {
   build() {
     Row() {
       Column() {
-        Button("click to back")
+        Button('click to back')
           .onClick(() => {
             try {
-              this.session.sendData({ 'action': "exit" })
+              this.session.sendData({ 'action': 'exit' })
             } catch (error) {
               hilog.error(DOMAIN, TAG, 'sendData error');
             }
