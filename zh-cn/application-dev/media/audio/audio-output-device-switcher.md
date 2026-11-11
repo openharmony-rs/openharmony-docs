@@ -695,7 +695,7 @@ C/C++示例：
   - **可能原因**：如果同时通过`AudioSessionManager.setDefaultOutputDevice`和`AudioRenderer.setDefaultOutputDevice`设置了默认输出设备，`AudioSessionManager`的应用级设置会覆盖流级设置，`AudioRenderer`的流级设置将不生效。
   - **解决措施**：检查是否同时设置了应用级与流级默认输出设备，确认[设置默认输出设备](#设置默认输出设备)中两种方式的优先级，按需移除其一。
 - **设备无听筒**：
-  - **可能原因**：在无听筒（EARPIECE）的设备（如智慧屏、部分平板）上，将默认输出设备设置为听筒不会生效，系统将继续使用扬声器或其他可用设备播放。
+  - **可能原因**：在无听筒（EARPIECE）的设备（如TV、部分平板）上，将默认输出设备设置为听筒不会生效，系统将继续使用扬声器或其他可用设备播放。
   - **解决措施**：先通过[getDevicesSync](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevicessync10)查询确认设备是否支持听筒，若不支持则改用扬声器或其他可用设备作为目标设备。
 
 ### 通话时无法切换到听筒或扬声器
