@@ -48,11 +48,6 @@ Declares the APIs of **NativeRender**, which allows you to create and manage ren
 | [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)               | ArkUI_RenderNodeClipOption                                | Defines a render node clipping option, which is used to describe the clipping area of a render node using a rectangle, rounded rectangle, circle, ellipse, or custom drawing path, and apply the clipping to the render node as the input parameter of [OH_ArkUI_RenderNodeUtils_SetClip](capi-native-render-h.md#oh_arkui_rendernodeutils_setclip).      |
 | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)               | ArkUI_RenderBlurStyleOption                                | Defines a blur style configuration.      |
 
-### Enums
-
-| Name | Description |
-| -- | -- |
-| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) | Defines the attach policy for a child render node, specifying whether the child and its entire render node subtree inherit the parent render node's instance. |
 
 ### Functions
 
@@ -67,8 +62,6 @@ Declares the APIs of **NativeRender**, which allows you to create and manage ren
 | [int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_disposenode) | - | Destroys the render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_addchild) | - | Adds a child node to the target parent render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling)](#oh_arkui_rendernodeutils_insertchildafter) | - | Adds a child node after the target child node of the parent node.|
-| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, OH_ArkUI_RenderNodeAttachPolicy policy)](#oh_arkui_rendernodeutils_addchildwithpolicy) | - | Adds a child render node to the target parent and, when required by the policy, migrates the child and its entire render node subtree to the parent instance. |
-| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling, OH_ArkUI_RenderNodeAttachPolicy policy)](#oh_arkui_rendernodeutils_insertchildafterwithpolicy) | - | Inserts a child render node after the target child of the parent and, when required by the policy, migrates the child and its entire render node subtree to the parent instance. |
 | [int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_removechild) | - | Removes a child node from the specified render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_clearchildren) | - | Clears all child nodes of the specified render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t index, ArkUI_RenderNodeHandle* child)](#oh_arkui_rendernodeutils_getchild) | - | Obtains the child node at the specified index.|
@@ -213,27 +206,6 @@ Declares the APIs of **NativeRender**, which allows you to create and manage ren
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)](#oh_arkui_rendernodeutils_getrendernodechildrencount) | - | Obtains the number of all child nodes of a parent custom node in the mixed mount order.|
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)](#oh_arkui_rendernodeutils_getrendernodeat) | - | Obtains the render node handle corresponding to the child node at a specified position of a parent custom node in the mixed mount order.|
 
-## Enum Description
-
-### OH_ArkUI_RenderNodeAttachPolicy
-
-```c
-typedef enum {
-    OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_NOT_INHERIT_PARENT_INSTANCE = 0,
-    OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE = 1,
-} OH_ArkUI_RenderNodeAttachPolicy;
-```
-
-**Description**
-
-Defines the attach policy for a child render node, specifying whether the child and its entire render node subtree inherit the parent render node's instance.
-
-**Since**: 26.1.0
-
-| Value | Description |
-| -- | -- |
-| OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_NOT_INHERIT_PARENT_INSTANCE = 0 | The child and its render node subtree do not inherit the parent instance. |
-| OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE = 1 | The child and its render node subtree inherit the parent instance. |
 
 ## Function Description
 
@@ -412,7 +384,6 @@ int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, A
 **Description**
 Adds a child node after the target child node of the parent node.
 
-
 **Since**: 20
 
 **Parameters**
@@ -428,59 +399,6 @@ Adds a child node after the target child node of the parent node.
 | Type| Description|
 | -- | -- |
 | int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if C API initialization failed.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the target node originates from a **FrameNode**. This specification is supported since API version 22.<br>         Returns [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the current render node originates from a **FrameNode** that has been either detached as a child node or destroyed. This specification is supported since API version 22.|
-
-### OH_ArkUI_RenderNodeUtils_AddChildWithPolicy()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, OH_ArkUI_RenderNodeAttachPolicy policy)
-```
-
-**Description**
-
-Adds a child render node to the target parent and, when required by the policy, migrates the child and its entire render node subtree to the parent instance.
-
-**Since**: 26.1.0
-
-**Parameters**
-
-| Name | Description |
-| -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target parent render node. |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) child | Child render node to attach. Detach it from its existing parent before calling this API. |
-| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) policy | Attach policy specifying whether the child and its render node subtree inherit the parent instance. |
-
-**Returns**
-
-| Type | Description |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) Success.<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) A parameter error occurs.<br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) C API initialization failed.<br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) The target node originates from a FrameNode.<br>[ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) The render node originates from a FrameNode that has been detached as an auxiliary child or destroyed. |
-
-### OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling, OH_ArkUI_RenderNodeAttachPolicy policy)
-```
-
-**Description**
-
-Inserts a child render node after the target child of the parent and, when required by the policy, migrates the child and its entire render node subtree to the parent instance.
-
-**Since**: 26.1.0
-
-**Parameters**
-
-| Name | Description |
-| -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target parent render node. |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) child | Child render node to attach. Detach it from its existing parent before calling this API. |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) sibling | Reference sibling used to determine the insertion position. If this valid node is not in the current child list of node, child is appended to the end. |
-| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) policy | Attach policy specifying whether the child and its render node subtree inherit the parent instance. |
-
-**Returns**
-
-| Type | Description |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) Success.<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) A parameter error occurs.<br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) C API initialization failed.<br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) The target node or child originates from a FrameNode.<br>[ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) The render node originates from a FrameNode that has been detached as an auxiliary child or destroyed. |
 
 ### OH_ArkUI_RenderNodeUtils_RemoveChild()
 
