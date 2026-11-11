@@ -118,7 +118,7 @@ void CheckDestDeviceSecurityLevel(const DeviceIdentify *device, RequestOption *o
 {
     // 设备安全等级信息指针
     DeviceSecurityInfo *info = NULL;
-    // 调用同步接口获取设备的安全等级等级信息
+    // 调用同步接口获取设备的安全等级信息
     int32_t ret = RequestDeviceSecurityInfo(device, option, &info);
     if (ret != SUCCESS) {
         // 获取信息失败。此场景建议开发者根据实际情况进行重试
