@@ -236,3 +236,24 @@ type OnOverlayBackPressCallback = () => boolean
 | 类型 | 说明 |
 | -------- | -------- |
 | boolean | 是否拦截返回事件。<br/>返回true表示拦截返回事件，事件不会向下层组件传递；返回false表示不拦截，事件将向下层组件透传。 |
+
+## NodeSensitiveInputCallback
+
+type NodeSensitiveInputCallback = (info: NodeSensitiveInputInfo, node?: FrameNode) => void
+
+定义监听指定节点输入事件的回调类型，用于[onNodeSensitiveInput](arkts-apis-uicontext-uiobserver.md#onnodesensitiveinput)和[offNodeSensitiveInput](arkts-apis-uicontext-uiobserver.md#offnodesensitiveinput)接口。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| info | [NodeSensitiveInputInfo](arkts-apis-uicontext-i.md#nodesensitiveinputinfo) | 是 | 分发到节点的输入事件信息。 |
+| node | [FrameNode](js-apis-arkui-frameNode.md#framenode-1) | 否 | 接收输入事件的组件；若组件已释放，则返回null。不设置该参数时，默认值为undefined，表示无需指定接收输入事件的组件。 |

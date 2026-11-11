@@ -238,6 +238,7 @@
       - [悬浮态效果](arkui-ts/ts-universal-attributes-hover-effect.md)
       - [点击音效](arkui-ts/ts-universal-attributes-click-sound.md)
       - [智慧手势响应](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md)
+      - [Agent输入管控](arkui-ts/ts-universal-attributes-agent-control-mode.md)
       - 触摸交互控制<!--touch-interactions-->
         - [触摸热区设置](arkui-ts/ts-universal-attributes-touch-target.md)
         - [触摸测试控制](arkui-ts/ts-universal-attributes-hit-test-behavior.md)

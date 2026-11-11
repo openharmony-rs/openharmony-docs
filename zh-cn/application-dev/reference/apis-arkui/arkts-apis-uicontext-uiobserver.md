@@ -4871,3 +4871,45 @@ offWindowSizeLayoutBreakpointChange(callback?: Callback\<observer.WindowSizeLayo
 **示例：**
 
 参考[onWindowSizeLayoutBreakpointChange](#onwindowsizelayoutbreakpointchange24)接口示例。
+
+## onNodeSensitiveInput
+
+onNodeSensitiveInput(nodeIdentity: NodeIdentity, callback: NodeSensitiveInputCallback): void
+
+监听指定节点自身的触摸、鼠标或按键输入，在事件分发前触发回调。用户输入、Agent输入及被[agentControlMode](arkui-ts/ts-universal-attributes-agent-control-mode.md#agentcontrolmode)阻止的Agent输入均可触发监听；命中测试目标为子节点的事件不上报。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| nodeIdentity | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | 是 | 需要监听的节点标识。节点不存在时，注册不生效。 |
+| callback | [NodeSensitiveInputCallback](arkts-apis-uicontext-t.md#nodesensitiveinputcallback) | 是 | 事件分发前执行的回调。同一节点可注册多个回调。 |
+
+## offNodeSensitiveInput
+
+offNodeSensitiveInput(nodeIdentity: NodeIdentity, callback?: NodeSensitiveInputCallback): void
+
+注销指定节点的敏感输入事件监听。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| nodeIdentity | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | 是 | 节点标识。 |
+| callback | [NodeSensitiveInputCallback](arkts-apis-uicontext-t.md#nodesensitiveinputcallback) | 否 | 待注销的目标回调。不传时，注销该节点的全部敏感输入事件监听器。 |
