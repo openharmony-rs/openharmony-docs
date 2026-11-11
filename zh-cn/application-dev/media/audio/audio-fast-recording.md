@@ -10,17 +10,16 @@
 
 低时延音频录制是一种通过软硬芯协同设计实现的音频采集方案。其核心机制是通过减少buffer大小、优化读写数据架构，使该模式下音频录制具有更低的时延。
 
-从API version 26.1.0开始，在低时延模式的基础上新增超低时延（Ultra Fast）模式。超低时延模式为音频录制开辟独立的超低时延通路，进一步降低录制时延。该模式需申请受限权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`（需在开发者网站申请ACL权限）。
+从API version 26.1.0开始，在低时延模式的基础上新增超低时延模式。该模式相比低时延模式，可以进一步降低录制时延，但是对应用处理时长和系统资源要求更高，可能会增加卡顿率，所以建议仅在下文描述的场景使用。该模式需在开发者网站申请ACL权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`。
 
 ## 使用前提
 
 - 支持低时延模式的音频输入设备。
 - 可通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)验证当前设备是否支持低时延模式。
 - 使用超低时延模式还需满足：
-  - 应用已申请麦克风权限`ohos.permission.MICROPHONE`与超低时延音频流权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`（需要在开发者网站申请ACL权限）。
-  - 设备支持超低时延录制，可通过[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)查询指定流参数与输入源类型下是否支持。
-
-超低时延模式的实际运行态可通过[注册状态变化回调](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerfaststatuschangecallback)监听确定。
+  - 应用已申请超低时延音频流权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`。
+  - 设备支持超低时延录制，可通过[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)查询是否支持。
+  - 超低时延模式的实际运行态可通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)获取，同时可通过注册[状态变化回调](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerfaststatuschangecallback)监听获取能力变化时的通知。
 
 ## 开发指导
 
@@ -94,11 +93,7 @@ OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(builder, MyOnUltraFast
 - 系统低时延资源已被全部占用。
 - 当前系统中存在更高优先级流（如：VOIP通话）。
 
-超低时延模式的限制与上述低时延模式类似，超出限制时系统会回落到低时延模式或普通模式。开发者可通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)查询实际工作状态：返回AUDIOSTREAM_FASTSTATUS_ULTRA_FAST表示正处于超低时延模式，返回AUDIOSTREAM_FASTSTATUS_FAST或AUDIOSTREAM_FASTSTATUS_NORMAL表示发生了回落。
-
-### 超低时延模式并发限制
-
-超低时延录制流占用专用pipe资源，存在并发数量限制，超出限额后起流将回落到低时延或普通模式。
+超低时延模式与上述低时延模式存在类似限制，超出限制时系统会回落到低时延模式或普通模式。开发者可通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)查询实际工作状态：返回AUDIOSTREAM_FASTSTATUS_ULTRA_FAST表示正处于超低时延模式，返回AUDIOSTREAM_FASTSTATUS_FAST或AUDIOSTREAM_FASTSTATUS_NORMAL表示发生了回落。
 
 从API version 20开始，支持低时延相关查询接口。
 - 开发者通过调用[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)来获取音频录制流是否正在低时延状态下工作。
@@ -107,7 +102,7 @@ OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(builder, MyOnUltraFast
 
 ### 使用低时延流的场景
 - k歌、直播等对时延要求较高的场景，建议使用低时延模式。
-- 当应用内的业务场景对时延指标要求极高，当常规的低时延模式无法满足基础用户体验的时延要求时，可使用超低时延模式，如K歌实时耳返、乐器弹奏等场景。
+- 如果使用低时延模式后，时延指标依然无法满足用户体验要求，并且与目标时延差距在10ms左右时，可以考虑使用超低时延模式，如K歌实时耳返场景。
 - 普通录音、录像、录屏等没有实时要求的场景，不建议使用低时延模式或超低时延模式。
 
 ### 确保数据及时读入
