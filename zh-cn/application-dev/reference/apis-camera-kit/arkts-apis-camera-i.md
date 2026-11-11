@@ -522,7 +522,7 @@
 
 ## C2PASignatureConfig
 
-C2PA签名信息，包括作者姓名和作者ID。
+C2PA（Coalition for Content Provenance and Authenticity）签名信息，包括作者姓名和作者ID。
 
 **起始版本：** 26.0.1
 

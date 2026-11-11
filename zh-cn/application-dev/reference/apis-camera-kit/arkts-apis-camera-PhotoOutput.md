@@ -1554,7 +1554,7 @@ function setAutoAuxiliaryPhotosDeliveryEnabled(photoOutput: camera.PhotoOutput):
 
 isC2PASignatureSupported(): boolean
 
-判断设备是否支持C2PA签名功能。
+判断设备是否支持C2PA（Coalition for Content Provenance and Authenticity）签名功能。
 
 **起始版本：** 26.0.1
 

@@ -95,7 +95,7 @@ async function demo(context: Context) {
 | cameraPosition       | [camera.CameraPosition](arkts-apis-camera-e.md#cameraposition) | 否   | 否   | 相机的位置。   |
 | saveUri        | string                            | 否   | 是   | 保存配置信息的uri，默认值请参考[constructor](../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。当前saveUri参数为可选参数，若未配置该参数，则拍摄的照片和视频会默认存入媒体库中；若不想将照片和视频存入媒体库中，请自行配置应用沙箱内的文件资源路径，如自行传入资源路径时请确保该文件存在且具备写入权限，否则会保存失败。|
 | videoDuration  | number                            | 否   | 是   | 录制的最大时长（单位：秒）。默认为0，不设置最大录制时长。|
-| enableC2PA  | boolean | 否   | 是   | 是否启用C2PA签名功能。true表示启用，false表示不启用。  |
+| enableC2PA  | boolean | 否   | 是   | 是否启用C2PA（Coalition for Content Provenance and Authenticity）签名功能。true表示启用，false表示不启用。  |
 | c2PASignatureConfig  | [C2PASignatureConfig](#c2pasignatureconfig)  | 否   | 是   | C2PA签名信息。若签名时不想加上相关信息，可不传此参数。|
 
 
