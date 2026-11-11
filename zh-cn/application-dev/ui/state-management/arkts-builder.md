@@ -192,13 +192,13 @@ struct BuilderPlaceholderList {
 
 传入配置项的\@Builder需要注意如下限制条件：
 
-- 传入配置项的\@Builder仅支持装饰全局函数。在自定义组件的成员方法或成员变量上使用携带实参的\@Builder装饰器会编译报错：`The '@Builder' decorator can only pass arguments when decorating a global function`，错误码为[10905131](../../reference/apis-arkui/errorcode-arkui-compile.md#10905131-builder装饰器使用位置校验异常)。
+- 传入配置项的\@Builder仅支持装饰全局函数。在自定义组件的成员方法或成员变量上使用携带实参的\@Builder装饰器会编译报错：`Only global functions decorated with @Builder support parameter passing.`，错误码为[10905131](../../reference/apis-arkui/errorcode-arkui-compile.md#10905131-builder装饰器使用位置校验异常)。
 
-- 为全局\@Builder装饰器传入的实参不是单个对象字面量时，会编译报错：`The '@Builder' decorator only supports passing a single object literal`，错误码为[10905132](../../reference/apis-arkui/errorcode-arkui-compile.md#10905132-builder装饰器实参校验异常)。
+- 为全局\@Builder装饰器传入的实参不是单个对象字面量时，会编译报错：`The @Builder decorator supports passing only object literals.`，错误码为[10905132](../../reference/apis-arkui/errorcode-arkui-compile.md#10905132-builder装饰器实参校验异常)。
 
-- `isPlaceholder`的键拼写错误或取值不是显式布尔字面量（如变量、枚举值、undefined、null）会编译报错：`The 'isPlaceholder' option of the '@Builder' decorator only supports passing true/false`，错误码为[10905133](../../reference/apis-arkui/errorcode-arkui-compile.md#10905133-builder配置项isplaceholder校验异常)。
+- `isPlaceholder`的键拼写错误或取值不是显式布尔字面量（如变量、枚举值、undefined、null）会编译报错：`The 'isPlaceholder' option of the @Builder decorator only supports passing boolean literal.`，错误码为[10905133](../../reference/apis-arkui/errorcode-arkui-compile.md#10905133-builder配置项isplaceholder校验异常)。
 
-- `isPlaceholder`设置为`true`且函数声明了参数会编译报错：`The '@Builder' function cannot have parameters when it serves as a placeholder`，错误码为[10905134](../../reference/apis-arkui/errorcode-arkui-compile.md#10905134-占位构建函数参数校验异常)。
+- `isPlaceholder`设置为`true`且函数声明了参数会编译报错：`An @Builder function with placeholder capabilities does not support parameter passing.`，错误码为[10905134](../../reference/apis-arkui/errorcode-arkui-compile.md#10905134-占位构建函数参数校验异常)。
 
 
 ## 参数传递规则
