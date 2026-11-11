@@ -114,11 +114,10 @@ checkMultiOsAccountEnabled(callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -209,7 +208,6 @@ checkOsAccountActivated(localId: number, callback: AsyncCallback&lt;boolean&gt;)
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -271,7 +269,6 @@ checkOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -320,11 +317,10 @@ isOsAccountConstraintEnabled(constraint: string): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -377,7 +373,6 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: A
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or constraint.    |
 | 12300003 | Account not found. |
@@ -441,7 +436,6 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or constraint.    |
 | 12300003 | Account not found. |
@@ -485,11 +479,10 @@ checkOsAccountTestable(callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -710,7 +703,6 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;):
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -770,7 +762,6 @@ checkOsAccountVerified(localId: number): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -818,7 +809,6 @@ getOsAccountCount(callback: AsyncCallback&lt;number&gt;): void
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -900,11 +890,10 @@ getOsAccountLocalId(callback: AsyncCallback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -984,11 +973,10 @@ getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息         |
 | -------- | --------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid.    |
 
@@ -1038,11 +1026,10 @@ getOsAccountLocalIdForUid(uid: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid. |
 
@@ -1090,11 +1077,10 @@ getOsAccountLocalIdForUidSync(uid: number): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300002 | Invalid uid. |
 
 **示例：**
@@ -1187,7 +1173,6 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallb
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainInfo. |
 | 12300003 | Domain account not found. |
@@ -1242,7 +1227,6 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;number&g
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainInfo. |
 | 12300003 | Domain account not found. |
@@ -1294,7 +1278,6 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;str
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -1356,7 +1339,6 @@ getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -1399,11 +1381,10 @@ getActivatedOsAccountLocalIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1581,11 +1562,10 @@ getOsAccountType(callback: AsyncCallback&lt;OsAccountType&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1671,7 +1651,6 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1754,11 +1733,10 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number, callback: AsyncCallback
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid serialNumber. |
 | 12300003 | The account indicated by serialNumber does not exist. |
@@ -1809,11 +1787,10 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid serialNumber. |
 | 12300003 | The account indicated by serialNumber does not exist. |
@@ -1857,11 +1834,10 @@ getSerialNumberForOsAccountLocalId(localId: number, callback: AsyncCallback&lt;n
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -1912,11 +1888,10 @@ getSerialNumberForOsAccountLocalId(localId: number): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -3309,7 +3284,6 @@ getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | OS account not found. |
 
