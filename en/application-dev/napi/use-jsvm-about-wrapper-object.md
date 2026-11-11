@@ -1,14 +1,23 @@
+---
+kits: ["ArkTS Kit"]
+description: "How to use JSVM-API functions such as OH_JSVM_IsNumberObject to identify Number, Boolean, BigInt, String, and Symbol wrapper objects on the native side."
+keywords: [OH_JSVM_IsNumberObject, OH_JSVM_IsBooleanObject, OH_JSVM_IsBigIntObject, OH_JSVM_IsStringObject, OH_JSVM_IsSymbolObject, wrapper types, Wrapper object, type checking]
+doctype: guide
+status: active
+---
+
 # Working with Wrapper Objects Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.343Z nl=1 -->
 
 ## Introduction
 
-This topic walks you through on how to use JSVM-API to quickly determine the wrapper object.
+JSVM-API provides APIs for quickly determining the wrapper type of an object.
 
 ## Basic Concepts
 
@@ -74,6 +83,6 @@ const char *srcCallNative = R"JS(wrapperObject();)JS";
 ```
 
 Expected result:
-```
+```txt
 JSVM OH_JSVM_IsNumberObject: 1
 ```

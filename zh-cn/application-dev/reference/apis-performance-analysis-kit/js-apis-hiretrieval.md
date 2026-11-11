@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lyj_love_code-->
+<!--Owner: @buzhenwang-->
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -44,14 +44,6 @@ init(): void
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
-
-**错误码：**
-
-以下错误码的详细介绍请参见[应用灰度错误码](errorcode-hiviewdfx-hiretrieval.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| 36000002 | Multi-instance applications not supported error. Possibly caused by invoking this function in a multi-instance application.         |
 
 **示例：**
 

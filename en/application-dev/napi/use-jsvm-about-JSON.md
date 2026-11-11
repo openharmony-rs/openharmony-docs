@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to use JSVM-API to parse JSON strings and stringify JavaScript objects for native-side JSON parsing and generation."
+keywords: ["OH_JSVM_JsonParse","OH_JSVM_JsonStringify","JSON parsing","stringification","JSON object","JSON string","data interchange format"]
+doctype: guide
+status: active
+---
+
 # Performing JSON Operations Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=23d7ff60c67cd3075712762902e4e8f21f8c70ac translatedAt=2026-11-09T08:52:17.320Z nl=1 -->
 
 ## Introduction
 
@@ -18,8 +27,8 @@ This topic walks you through on how to use JSVM-API to manipulate data in JavaSc
 
 | API                      | Description                      |
 |----------------------------|--------------------------------|
-| OH_JSVM_JsonParse          | Parses a JSON string and stores the result in a JSON object.|
-| OH_JSVM_JsonStringify      | Converts a JS object into a JSON string stores the result in a JSVM string object.|
+| OH_JSVM_JsonParse          | Parses a JSON string and stores the result in a JSON object. |
+| OH_JSVM_JsonStringify      | Stringifies an object and stores the result in a JSVM string object. |
 
 ## Example
 
@@ -31,10 +40,9 @@ Use **OH_JSVM_JsonParse** to parse a JSON object and **OH_JSVM_JsonStringify** t
 
 CPP code:
 
-```cpp
-// hello.cpp
-#include <string>
+<!-- @[oh_jsvm_json_parse_and_json_stringify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/aboutjson/src/main/cpp/hello.cpp) -->
 
+``` C++
 // Parse a JSON number.
 static JSVM_Value JsonParseNumber(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -82,18 +90,17 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-JSVM_PropertyDescriptor descriptor[] = {
-    {"jsonParseNumber", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
-    {"jsonParseObject", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+static JSVM_PropertyDescriptor descriptor[] = {
+    {"jsonParseNumber", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"jsonParseObject", nullptr, method + 1, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
 // JS code to be executed.
-static const char *srcCallNative = R"JS(jsonParseNumber();jsonParseObject();)JS";
+static const char *STR_TASK = R"JS(jsonParseNumber();jsonParseObject();)JS";
 ```
-<!-- @[oh_jsvm_json_parse_and_json_stringify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/aboutjson/src/main/cpp/hello.cpp) -->
 
-## Expected result:
-```cpp
+### Expected result:
+``` C++
 Test JSVM jsonParseNumber: 10.555000
 
 Test JSVM jsonParseObject: {"first":"one","second":"two","third":"three"}

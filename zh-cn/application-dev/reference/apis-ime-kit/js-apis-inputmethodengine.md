@@ -6,13 +6,11 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
-@ohos.inputMethodEngine模块是面向输入法应用（包括系统输入法和第三方输入法）的服务端API模块，提供了输入法应用与系统输入法框架之间的交互能力。
+@ohos.inputMethodEngine模块是同时面向输入法应用（系统输入法和第三方输入法）和普通应用（应用内代理输入法）的输入法服务端API模块，提供与系统输入法框架交互、操作编辑框、监听物理键盘按键与编辑框变化等能力。
 
-本模块是输入法应用的服务端接口，定义了输入法应用在运行期间所需的全部开放能力，包括输入法生命周期管理、软键盘面板的创建与控制、文本编辑操作（插入、删除、选中文本）、光标控制、物理键盘事件监听、安全模式管理、私有数据通信等。
+通过本模块，输入法应用可以：1）订阅输入法绑定/解绑事件，感知编辑框的连接与断开；2）创建和管理软键盘面板（固定态、悬浮态、候选态）及状态栏面板，控制面板的显示、隐藏、大小调整、位置移动、沉浸模式等；3）通过InputClient对编辑框进行文本插入、删除、选中文本、移动光标、发送功能键和扩展编辑动作等操作；4）通过KeyboardDelegate监听物理键盘按键事件、光标位置变化、文本选择变化、文本内容变化、编辑框属性变化等；5）管理安全模式（基础模式/完全访问模式），支持隐私面板设置；6）与编辑框应用进行私有数据通信和自定义消息通信。
 
-输入法应用通过本模块可以：1）订阅输入法绑定/解绑事件，感知编辑框的连接与断开；2）创建和管理软键盘面板（固定态、悬浮态、候选态）及状态栏面板，控制面板的显示、隐藏、大小调整、位置移动、沉浸模式等；3）通过InputClient对编辑框进行文本插入、删除、选中文本、移动光标、发送功能键和扩展编辑动作等操作；4）通过KeyboardDelegate监听物理键盘按键事件、光标位置变化、文本选择变化、文本内容变化、编辑框属性变化等；5）管理安全模式（基础模式/完全访问模式），支持隐私面板设置；6）与编辑框应用进行私有数据通信和自定义消息通信。
-
-当开发输入法应用时使用本模块。本模块需在InputMethodExtensionAbility中使用，适用于系统输入法开发、第三方输入法开发、自定义键盘布局等场景。
+从API版本26.1.0开始，普通应用可通过应用内代理输入法接口注册代理，自行绘制键盘组件并操作同进程内类型匹配的编辑框。代理侧以ProxyInputMethodAbility为核心入口，提供代理事件订阅，并通过ProxyTextInputClient进行文本编辑、ProxyKeyboardDelegate监听物理键盘按键与编辑框变化、ProxyKeyboardController通知框架自定义键盘已隐藏。开发步骤见[实现应用内自定义键盘](../../inputmethod/in-app-custom-keyboard-guide.md)。
 
 > **说明：**
 >
@@ -28,6 +26,8 @@
 | KeyboardController | 键盘控制器对象，提供隐藏键盘、退出当前输入类型等能力。通过订阅`inputStart`事件在回调中获取实例。 |
 | Panel | 输入法面板对象，提供面板页面内容加载、大小调整、位置移动、显示/隐藏、面板状态切换、隐私模式设置、沉浸模式与效果设置、面板矩形区域预设置、热区更新等能力。通过`createPanel()`获取实例。 |
 | MessageHandler | 自定义通信对象，用于接收编辑框应用发送的自定义通信数据，并提供终止通知回调。通过`InputClient.recvMessage()`注册。 |
+
+以上接口面向输入法应用，需在InputMethodExtensionAbility中使用。
 
 输入法应用的典型使用流程涉及多个API的组合调用，核心流程为：获取InputMethodAbility实例 -> 订阅inputStart事件 -> 在回调中获取KeyboardController和InputClient -> 创建Panel -> 加载面板页面内容 -> 通过InputClient操作编辑框文本 -> 通过KeyboardController控制键盘显隐。
 
@@ -78,6 +78,15 @@ inputMethodAbility.on('inputStop', () => {
 });
 ```
 
+以下接口供普通Stage模型应用使用，输入法Extension不能使用。
+
+| Interface/Class | 说明 |
+|---|---|
+| [ProxyInputMethodAbility](#proxyinputmethodability) | 应用内代理输入法能力对象，是代理输入法的核心入口。提供绑定、键盘显示、键盘隐藏和被动注销等事件的订阅能力。通过[getProxyInputMethodAbility()](#inputmethodenginegetproxyinputmethodability)获取实例。 |
+| [ProxyTextInputClient](#proxytextinputclient) | 代理文本客户端对象，提供插入文本、删除文本、获取光标前后文本、移动光标、选中文本、发送功能键等能力。通过[onInputStart()](#oninputstart)订阅绑定事件，在回调中获取实例。 |
+| [ProxyKeyboardController](#proxykeyboardcontroller) | 应用内代理输入法的键盘控制器对象，提供在应用隐藏自定义键盘后通知框架和编辑框的能力。通过[onInputStart()](#oninputstart)订阅绑定事件，在回调中获取实例。 |
+| [ProxyKeyboardDelegate](#proxykeyboarddelegate) | 应用内代理输入法的事件监听对象，提供物理键盘按键、光标位置、文本选区、文本内容及编辑框属性变化事件的监听能力。通过[getProxyKeyboardDelegate()](#inputmethodenginegetproxykeyboarddelegate)获取实例。 |
+
 ## 导入模块
 
 ```ts
@@ -99,6 +108,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | 名称 | 类型 | 值 | 说明 |
 | -------- | -------- | -------- | -------- |
 | ENTER_KEY_TYPE_UNSPECIFIED | number | 0 | 无功能键。 |
+| ENTER_KEY_TYPE_NONE | number | 1 | “无特定行为”功能键。<br>**起始版本：** 26.1.0 |
 | ENTER_KEY_TYPE_GO | number | 2 | “前往”功能键。 |
 | ENTER_KEY_TYPE_SEARCH| number | 3 | “搜索”功能键。 |
 | ENTER_KEY_TYPE_SEND | number | 4 | “发送”功能键。 |
@@ -108,6 +118,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | ENTER_KEY_TYPE_NEWLINE<sup>12+</sup> | number | 8 | “换行”功能键。 |
 | PATTERN_NULL | number | -1 | 无特殊性编辑框。 |
 | PATTERN_TEXT | number | 0 | 文本编辑框。 |
+| PATTERN_MULTILINE | number | 1 | 多行编辑框。<br>**起始版本：** 26.1.0 |
 | PATTERN_NUMBER | number | 2 | 数字编辑框。 |
 | PATTERN_PHONE | number | 3 | 电话号码编辑框。 |
 | PATTERN_DATETIME | number | 4 | 日期编辑框。 |
@@ -945,7 +956,7 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback\<Panel>):
 
 > **说明：**
 >
-> 单个输入法应用仅允许创建一个[软键盘类型](#paneltype10)和一个[状态栏类型](#paneltype10)的面板。<br>
+> 单个输入法应用仅允许创建一个软键盘面板（[SOFT_KEYBOARD](#paneltype10)）和一个状态栏面板（[STATUS_BAR](#paneltype10)）。<br>
 > 输入法面板不支持创建子窗口。例如：不支持使用window.createWindow[设置应用子窗口](../../windowmanager/application-window-fa.md#设置应用子窗口)、[bindContextMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)、[CustomDialog](../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如[弹出框](../apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[bindMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)或设置showInSubwindow为false。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -1007,7 +1018,7 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise&lt;Panel&gt;
 
 > **说明：**
 >
-> 单个输入法应用仅允许创建一个[软键盘类型](#paneltype10)和一个[状态栏类型](#paneltype10)的面板。<br>
+> 单个输入法应用仅允许创建一个软键盘面板（[SOFT_KEYBOARD](#paneltype10)）和一个状态栏面板（[STATUS_BAR](#paneltype10)）。<br>
 > 输入法面板不支持创建子窗口。例如：不支持使用window.createWindow[设置应用子窗口](../../windowmanager/application-window-fa.md#设置应用子窗口)、[bindContextMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)、[CustomDialog](../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如[弹出框](../apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[bindMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)或设置showInSubwindow为false。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -1191,6 +1202,7 @@ if (inputPanel) {
 ## KeyboardDelegate
 
 KeyboardDelegate是键盘事件监听代理对象，用于输入法应用监听物理键盘按键事件和编辑框文本/光标/选区变化事件。输入法应用通过[getKeyboardDelegate](#inputmethodenginegetkeyboarddelegate9)获取该实例。
+
 核心功能概述：
 - 物理键盘按键事件：通过on('keyDown'|'keyUp')订阅物理按键的按下/抬起事件，通过on('keyEvent')订阅更完整的按键事件（含组合键信息）。callback返回true表示按键事件被消费，返回false表示不消费。
 - 光标与选区变化事件：通过on('cursorContextChange')订阅光标位置变化事件，通过on('selectionChange')订阅文本选区变化事件。输入法应用可根据这些事件调整候选词位置或输入策略。
@@ -2813,7 +2825,7 @@ let mode: inputMethodEngine.ImmersiveMode = panel.getImmersiveMode();
 setImmersiveEffect(effect: ImmersiveEffect): void
 
 设置输入法应用的沉浸效果。
-- 只有在[启用沉浸式模式](#setimmersivemode15)时，才能使用渐变模式和流光模式。
+- 只有在通过[setImmersiveMode](#setimmersivemode15)启用沉浸式模式时，才能使用渐变模式和流光模式。
 - 只有在启用渐变模式时，才能使用流光模式。
 - 未启用渐变模式时，渐变高度必须为0px。
 - 只有系统应用才能设置流光模式。
@@ -3497,7 +3509,9 @@ inputClient.sendKeyFunction(action).then((result: boolean) => {
 getForward(length:number, callback: AsyncCallback&lt;string&gt;): void
 
 获取光标前固定长度的文本。使用callback异步回调。
+
 使用场景：分析已输入文本内容以提供智能补全建议、检查文本格式、实现文本预测功能、实现文本语义分析等。
+
 使用后效果：成功时返回光标前指定长度的文本字符串，输入法应用可据此更新候选词或输入建议。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -5909,8 +5923,8 @@ inputMethodEngine.getInputMethodAbility()!
 
 | 名称      | 类型 | 只读 | 可选 | 说明         |
 | --------- | -------- | ---- | ---- | ------------ |
-| type   	| [PanelType](#paneltype10)   | 否   | 否   | 面板的类型。 |
-| flag	    | [PanelFlag](#panelflag10)   | 否   | 是   | 面板的状态类型。 |
+| type    | [PanelType](#paneltype10)   | 否   | 否   | 面板的类型。 |
+| flag     | [PanelFlag](#panelflag10)   | 否   | 是   | 面板的状态类型。 |
 
 ## PanelRect<sup>12+</sup>
 
@@ -6584,4 +6598,1632 @@ textInputClient.getEditorAttribute().then((editorAttribute: inputMethodEngine.Ed
   console.error(`Failed to getEditorAttribute. Code is ${err.code}, message is ${err.message}`);
 });
 ```
-<!--no_check-->
+
+## RegisterOptions
+
+应用内代理输入法的注册选项。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| inputPatternTypes | Array&lt;number&gt; | 否 | 是 | 需要代理的编辑框类型，每个元素须为[常量](#常量)中的PATTERN_*值。省略该字段时，代理全部编辑框类型。指定数组时，数组不能为空，不能包含非法值。 |
+
+**示例：**
+
+```ts
+let options: inputMethodEngine.RegisterOptions = {
+  inputPatternTypes: [inputMethodEngine.PATTERN_TEXT, inputMethodEngine.PATTERN_NUMBER]
+};
+```
+
+## inputMethodEngine.registerInAppProxyIme
+
+registerInAppProxyIme(options?: RegisterOptions): Promise&lt;void&gt;
+
+注册应用内代理输入法。使用Promise异步回调。重复注册时，以本次选项替换之前的选项。
+
+使用场景：普通应用需要在自身界面中提供自定义键盘组件（如安全密码键盘、符号面板等），替代系统输入法对同进程内类型匹配的编辑框提供输入能力。
+
+使用后效果：注册成功后，同进程内类型匹配的编辑框获焦时触发onInputStart回调，应用在回调中获取ProxyTextInputClient和ProxyKeyboardController实例进行文本操作和键盘控制。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | [RegisterOptions](#registeroptions) | 否 | 注册选项。省略时代理全部编辑框类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800027 | The caller is not a focused application. |
+| 12800028 | The input method extension is not allowed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: inputMethodEngine.RegisterOptions = {
+  inputPatternTypes: [inputMethodEngine.PATTERN_TEXT]
+};
+inputMethodEngine.registerInAppProxyIme(options).then(() => {
+  console.info('Succeeded in registering in-app proxy ime.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to registerInAppProxyIme. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## inputMethodEngine.unregisterInAppProxyIme
+
+unregisterInAppProxyIme(): Promise&lt;void&gt;
+
+注销应用内代理输入法。使用Promise异步回调。未注册代理或已完成注销时，再次调用也返回成功。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethodEngine.unregisterInAppProxyIme().then(() => {
+  console.info('Succeeded in unregistering in-app proxy ime.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to unregisterInAppProxyIme. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## inputMethodEngine.getProxyInputMethodAbility
+
+getProxyInputMethodAbility(): ProxyInputMethodAbility | null
+
+普通应用获取[ProxyInputMethodAbility](#proxyinputmethodability)实例。输入法Extension不能调用此接口。使用返回对象前须检查是否为null。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [ProxyInputMethodAbility](#proxyinputmethodability) \| null | ProxyInputMethodAbility对象；未获取到对象时为null。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800028 | The input method extension is not allowed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let proxyAbility: inputMethodEngine.ProxyInputMethodAbility | null = inputMethodEngine.getProxyInputMethodAbility();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getProxyInputMethodAbility. Code is ${error.code}, message is ${error.message}`);
+}
+```
+
+## inputMethodEngine.getProxyKeyboardDelegate
+
+getProxyKeyboardDelegate(): ProxyKeyboardDelegate | null
+
+普通应用获取[ProxyKeyboardDelegate](#proxykeyboarddelegate)实例。输入法Extension不能调用此接口。使用返回对象前须检查是否为null。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [ProxyKeyboardDelegate](#proxykeyboarddelegate) \| null | ProxyKeyboardDelegate对象；未获取到对象时为null。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800028 | The input method extension is not allowed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getProxyKeyboardDelegate. Code is ${error.code}, message is ${error.message}`);
+}
+```
+
+## ProxyInputStartCallback
+
+type ProxyInputStartCallback = (inputClient: ProxyTextInputClient, keyboardController: ProxyKeyboardController) => void
+
+编辑框与应用内代理输入法绑定时触发的回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| inputClient | [ProxyTextInputClient](#proxytextinputclient) | 是 | 文本客户端实例，用于操作当前绑定的编辑框，如插入文本、删除文本和获取文本。 |
+| keyboardController | [ProxyKeyboardController](#proxykeyboardcontroller) | 是 | 键盘控制器实例，用于在应用隐藏自定义键盘后通知框架和编辑框。 |
+
+## ProxyTextInputClient
+
+ProxyTextInputClient提供对当前绑定编辑框的文本操作能力，包括插入、删除、获取文本、移动光标、选中文本、发送功能键和扩展编辑动作等。实例通过调用[ProxyInputMethodAbility](#proxyinputmethodability)的[onInputStart](#oninputstart)方法在回调中获取，每次绑定对应一个ProxyTextInputClient实例。
+
+- 文本获取：通过[getForward](#getforward)获取光标前的文本，通过[getBackward](#getbackward)获取光标后的文本，用于分析已输入内容并提供智能补全。
+- 文本编辑：通过[insertText](#inserttext)插入文本，通过[deleteForward](#deleteforward)删除光标前的文本，通过[deleteBackward](#deletebackward)删除光标后的文本。
+- 功能键与光标：通过[sendKeyFunction](#sendkeyfunction)发送功能键（如回车键），通过[moveCursor](#movecursor)移动光标。
+- 选区操作：通过[selectByRange](#selectbyrange)按范围选中文本，通过[selectByMovement](#selectbymovement)按方向选中文本。
+- 编辑框属性：通过[getEditorAttribute](#geteditorattribute)获取编辑框属性信息（输入类型、回车键类型等），据此调整键盘布局。
+- 光标索引：通过[getTextIndexAtCursor](#gettextindexatcursor)获取光标在文本中的索引。
+- 扩展动作：通过[sendExtendAction](#sendextendaction)发送扩展编辑动作（如复制、粘贴等）。
+
+注意事项：
+- ProxyTextInputClient实例与当前绑定的编辑框关联，当编辑框失去焦点或代理输入法解绑时，该实例可能失效。
+- 仅提供异步接口，无Sync同步接口。
+
+下列API均需使用[onInputStart](#oninputstart)获取到ProxyTextInputClient实例后，通过实例调用。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+以下方法示例共用下列初始化代码，依赖[导入模块](#导入模块)中的导入。应在编辑框绑定后调用相应方法。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let currentInputClient: inputMethodEngine.ProxyTextInputClient | null = null;
+let proxyAbility: inputMethodEngine.ProxyInputMethodAbility | null = null;
+try {
+  proxyAbility = inputMethodEngine.getProxyInputMethodAbility();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getProxyInputMethodAbility. Code is ${error.code}, message is ${error.message}`);
+}
+if (proxyAbility !== null) {
+  proxyAbility.onInputStart((inputClient: inputMethodEngine.ProxyTextInputClient,
+    keyboardController: inputMethodEngine.ProxyKeyboardController) => {
+    currentInputClient = inputClient;
+  });
+}
+```
+
+### sendKeyFunction
+
+sendKeyFunction(action: number): Promise&lt;void&gt;
+
+发送功能键。使用Promise异步回调。
+
+使用场景：向编辑框发送功能键（如回车键），触发编辑框的对应行为（如搜索、发送、完成等）。
+
+使用后效果：调用成功后，编辑框将执行对应的功能键行为。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| action | number | 是 | 功能键键值，取值须为[常量](#常量)中的ENTER_KEY_TYPE_*值，如ENTER_KEY_TYPE_UNSPECIFIED或ENTER_KEY_TYPE_DONE。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800016 | input method client is not editable. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let action: number = inputMethodEngine.ENTER_KEY_TYPE_DONE;
+if (currentInputClient !== null) {
+  currentInputClient.sendKeyFunction(action).then(() => {
+    console.info('Succeeded in sending key function.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to sendKeyFunction. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+### deleteForward
+
+deleteForward(length: number): Promise&lt;void&gt;
+
+删除光标前指定长度的文本。使用Promise异步回调。
+
+使用场景：实现退格键功能、逐字删除输入、删除错误的输入、实现自定义删除逻辑等。
+
+使用后效果：调用成功后，编辑框中光标前指定长度的文本被删除。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| length | number | 是 | 删除长度，取值为大于或等于0的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800016 | input method client is not editable. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let length: number = 1;
+if (currentInputClient !== null) {
+  currentInputClient.deleteForward(length).then(() => {
+    console.info('Succeeded in deleting forward.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to deleteForward. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+### deleteBackward
+
+deleteBackward(length: number): Promise&lt;void&gt;
+
+删除光标后指定长度的文本。使用Promise异步回调。
+
+使用场景：实现删除键功能、删除光标后的字符、快速修正输入、实现自定义删除逻辑等。
+
+使用后效果：调用成功后，编辑框中光标后指定长度的文本被删除。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| length | number | 是 | 删除长度，取值为大于或等于0的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800016 | input method client is not editable. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let length: number = 1;
+if (currentInputClient !== null) {
+  currentInputClient.deleteBackward(length).then(() => {
+    console.info('Succeeded in deleting backward.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to deleteBackward. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+### insertText
+
+insertText(text: string): Promise&lt;void&gt;
+
+在当前编辑框的光标位置插入文本。使用Promise异步回调。
+
+使用场景：插入候选词、插入特殊符号、实现文本自动补全、快速插入常用短语等。
+
+使用后效果：调用成功后，文本已插入到编辑框光标位置。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 待插入的文本。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800016 | input method client is not editable. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (currentInputClient !== null) {
+  currentInputClient.insertText('test').then(() => {
+    console.info('Succeeded in inserting text.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to insertText. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+### getForward
+
+getForward(length: number): Promise&lt;string&gt;
+
+获取光标前指定长度的文本。使用Promise异步回调。
+
+使用场景：分析已输入文本内容以提供智能补全建议、检查文本格式、实现文本预测功能、实现文本语义分析等。
+
+使用后效果：成功时返回光标前指定长度的文本，应用可据此更新候选词或输入建议。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| length | number | 是 | 获取长度，取值为大于或等于0的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;string&gt; | Promise对象，返回获取到的文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800016 | input method client is not editable. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let length: number = 1;
+if (currentInputClient !== null) {
+  currentInputClient.getForward(length).then((text: string) => {
+    console.info('Succeeded in getting forward.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to getForward. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+### getBackward
+
+getBackward(length: number): Promise&lt;string&gt;
+
+获取光标后指定长度的文本。使用Promise异步回调。
+
+使用场景：分析光标后的文本内容以提供上下文相关的输入建议、检查文本格式、实现文本预测功能等。
+
+使用后效果：成功时返回光标后指定长度的文本。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| length | number | 是 | 获取长度，取值为大于或等于0的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;string&gt; | Promise对象，返回获取到的文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800016 | input method client is not editable. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let length: number = 1;
+if (currentInputClient !== null) {
+  currentInputClient.getBackward(length).then((text: string) => {
+    console.info('Succeeded in getting backward.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to getBackward. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+### getEditorAttribute
+
+getEditorAttribute(): Promise&lt;EditorAttribute&gt;
+
+获取当前编辑框的属性。使用Promise异步回调。
+
+使用场景：根据编辑框类型调整自定义键盘界面、根据编辑框配置提供不同的输入建议、适配不同类型的输入框等。
+
+使用后效果：返回编辑框属性信息（包括inputPattern输入类型和enterKeyType回车键类型），应用据此调整键盘布局。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[EditorAttribute](#editorattribute)&gt; | Promise对象，返回当前编辑框属性。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (currentInputClient !== null) {
+  currentInputClient.getEditorAttribute().then((editorAttribute: inputMethodEngine.EditorAttribute) => {
+    console.info(`editorAttribute.inputPattern:  ${editorAttribute.inputPattern}`);
+    console.info(`editorAttribute.enterKeyType:  ${editorAttribute.enterKeyType}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to getEditorAttribute. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+### moveCursor
+
+moveCursor(direction: Direction): Promise&lt;void&gt;
+
+按指定方向移动光标。使用Promise异步回调。
+
+使用场景：实现光标移动到特定位置、实现上下左右移动光标功能、实现快速定位、实现自定义光标控制等。
+
+使用后效果：调用成功后，编辑框中的光标按指定方向移动一步。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| direction | [Direction](#direction10) | 是 | 光标移动方向，取值参见[光标常量](#常量)。<br/>- 1：向上<br/>- 2：向下<br/>- 3：向左<br/>- 4：向右 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800016 | input method client is not editable. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (currentInputClient !== null) {
+  currentInputClient.moveCursor(inputMethodEngine.Direction.CURSOR_UP).then(() => {
+    console.info('Succeeded in moving cursor.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to moveCursor. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+### selectByRange
+
+selectByRange(range: Range): Promise&lt;void&gt;
+
+按指定范围选择文本。使用Promise异步回调。
+
+使用场景：根据索引范围选中文本，用于实现文本选择、复制、剪切等功能。
+
+使用后效果：调用成功后，编辑框中指定范围的文本被选中。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| range | [Range](#range10) | 是 | 选中文本的起止索引。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let range: inputMethodEngine.Range = { start: 0, end: 1 };
+if (currentInputClient !== null) {
+  currentInputClient.selectByRange(range).then(() => {
+    console.info('Succeeded in selecting by range.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to selectByRange. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+### selectByMovement
+
+selectByMovement(movement: Movement): Promise&lt;void&gt;
+
+按指定的光标移动方向选择文本。使用Promise异步回调。
+
+使用场景：根据光标移动方向选中文本，用于实现方向键选择文本、扩展选区等功能。
+
+使用后效果：调用成功后，编辑框中按指定方向选中的文本被选中。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| movement | [Movement](#movement10) | 是 | 选中文本时光标移动的方向。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let movement: inputMethodEngine.Movement = { direction: 1 };
+if (currentInputClient !== null) {
+  currentInputClient.selectByMovement(movement).then(() => {
+    console.info('Succeeded in selecting by movement.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to selectByMovement. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+### getTextIndexAtCursor
+
+getTextIndexAtCursor(): Promise&lt;number&gt;
+
+获取当前光标在文本中的索引。使用Promise异步回调。
+
+使用场景：获取光标在文本中的精确位置，用于定位上下文、实现文本分析、辅助选区操作等。
+
+使用后效果：成功时返回光标在文本中的字符索引位置。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;number&gt; | Promise对象，返回光标在文本中的索引。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800016 | input method client is not editable. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (currentInputClient !== null) {
+  currentInputClient.getTextIndexAtCursor().then((index: number) => {
+    console.info('Succeeded in getTextIndexAtCursor: ' + index);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to getTextIndexAtCursor. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+### sendExtendAction
+
+sendExtendAction(action: ExtendAction): Promise&lt;void&gt;
+
+发送扩展编辑动作。使用Promise异步回调。
+
+使用场景：向编辑框发送扩展编辑操作，如剪切（CUT）、复制（COPY）、粘贴（PASTE）、全选（SELECT_ALL）等。
+
+使用后效果：调用成功后，编辑框将执行对应的扩展编辑动作。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| action | [ExtendAction](#extendaction10) | 是 | 需要执行的扩展编辑动作。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800016 | input method client is not editable. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (currentInputClient !== null) {
+  currentInputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY).then(() => {
+    console.info('Succeeded in sending extend action.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to sendExtendAction. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+## ProxyKeyboardController
+
+ProxyKeyboardController是应用内代理输入法的键盘控制器对象，用于在应用隐藏自定义键盘组件后，通过[hideSelf](#hideself)通知框架和编辑框键盘已隐藏。
+
+实例通过调用[ProxyInputMethodAbility](#proxyinputmethodability)的[onInputStart](#oninputstart)方法在回调中获取，每次绑定对应一个ProxyKeyboardController实例。该实例与当前绑定的编辑框关联，当编辑框失去焦点或代理输入法解绑时，可能失效。
+
+下列API均需使用[onInputStart](#oninputstart)获取到ProxyKeyboardController实例后，通过实例调用。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### hideSelf
+
+hideSelf(): Promise&lt;void&gt;
+
+应用隐藏自定义键盘组件后，调用此接口通知系统自定义键盘已隐藏。使用Promise异步回调。
+
+使用场景：应用主动触发自定义键盘组件隐藏后（如用户点击键盘上的收起按钮），需要通知系统自定义键盘已隐藏。
+
+使用后效果：调用成功后，系统将感知到自定义键盘已隐藏。若应用仅隐藏自定义键盘组件而未调用此接口，系统将认为自定义键盘仍处于显示状态，可能导致后续编辑框获焦时无法正确拉起输入法。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let currentKeyboardController: inputMethodEngine.ProxyKeyboardController | null = null;
+let proxyAbility: inputMethodEngine.ProxyInputMethodAbility | null = null;
+try {
+  proxyAbility = inputMethodEngine.getProxyInputMethodAbility();
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getProxyInputMethodAbility. Code is ${error.code}, message is ${error.message}`);
+}
+if (proxyAbility !== null) {
+  proxyAbility.onInputStart((inputClient: inputMethodEngine.ProxyTextInputClient,
+    keyboardController: inputMethodEngine.ProxyKeyboardController) => {
+    currentKeyboardController = keyboardController;
+  });
+}
+
+if (currentKeyboardController !== null) {
+  currentKeyboardController.hideSelf().then(() => {
+    console.info('Succeeded in hiding self.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to hideSelf. Code is ${err.code}, message is ${err.message}`);
+  });
+}
+```
+
+## ProxyInputMethodAbility
+
+ProxyInputMethodAbility是应用内代理输入法的核心能力对象，提供代理输入法生命周期事件订阅功能。普通应用通过[getProxyInputMethodAbility](#inputmethodenginegetproxyinputmethodability)获取该实例。
+
+核心功能概述：
+- 绑定事件订阅：通过[onInputStart](#oninputstart)订阅编辑框绑定事件，在回调中获取[ProxyTextInputClient](#proxytextinputclient)和[ProxyKeyboardController](#proxykeyboardcontroller)实例，用于后续文本操作和键盘控制。
+- 键盘显示/隐藏事件：通过[onKeyboardShow](#onkeyboardshow)/[onKeyboardHide](#onkeyboardhide)订阅自定义键盘的显示/隐藏请求事件，应用据此加载或隐藏自定义键盘组件。
+- 注销事件：通过[onUnregister](#onunregister)订阅代理被框架被动注销的事件，应用收到回调后可根据需要重新注册。
+
+使用注意事项：
+- 应在注册应用内代理输入法前完成回调订阅。
+- 实例可能为null，使用前须判空。
+- 输入法Extension不能调用此接口。
+
+下列API均需使用[getProxyInputMethodAbility](#inputmethodenginegetproxyinputmethodability)获取到ProxyInputMethodAbility实例后，通过实例调用。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### onInputStart
+
+onInputStart(callback: ProxyInputStartCallback): void
+
+订阅inputStart事件，在编辑框请求绑定时触发回调。回调参数依次为文本客户端、键盘控制器。使用callback异步回调。
+
+使用场景：应用需要在编辑框请求绑定时获取[ProxyTextInputClient](#proxytextinputclient)和[ProxyKeyboardController](#proxykeyboardcontroller)实例，以进行后续的文本操作和键盘控制。
+
+使用后效果：当编辑框请求绑定代理输入法时触发回调，返回ProxyTextInputClient和ProxyKeyboardController实例。应用可在回调中保存实例引用、加载自定义键盘组件等。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [ProxyInputStartCallback](#proxyinputstartcallback) | 是 | 回调函数，在编辑框与代理输入法绑定时触发，返回用于操作当前编辑框的文本客户端和键盘控制器实例。 |
+
+**示例：**
+
+```ts
+let proxyAbility: inputMethodEngine.ProxyInputMethodAbility | null = inputMethodEngine.getProxyInputMethodAbility();
+if (proxyAbility !== null) {
+  proxyAbility.onInputStart((inputClient: inputMethodEngine.ProxyTextInputClient,
+    keyboardController: inputMethodEngine.ProxyKeyboardController) => {
+    console.info('inputMethodEngine inputStart.');
+  });
+}
+```
+
+### offInputStart
+
+offInputStart(callback?: ProxyInputStartCallback): void
+
+取消订阅inputStart事件。使用callback异步回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [ProxyInputStartCallback](#proxyinputstartcallback) | 否 | 需要取消订阅的inputStart事件回调函数。省略时取消该事件的全部回调。 |
+
+**示例：**
+
+```ts
+let proxyAbility: inputMethodEngine.ProxyInputMethodAbility | null = inputMethodEngine.getProxyInputMethodAbility();
+let callback: inputMethodEngine.ProxyInputStartCallback =
+  (inputClient: inputMethodEngine.ProxyTextInputClient, keyboardController: inputMethodEngine.ProxyKeyboardController) => {
+    console.info('inputMethodEngine inputStart.');
+  };
+if (proxyAbility !== null) {
+  proxyAbility.offInputStart(callback);
+  proxyAbility.offInputStart();
+}
+```
+
+### onKeyboardShow
+
+onKeyboardShow(callback: Callback&lt;void&gt;): void
+
+订阅keyboardShow事件，在需要显示自定义键盘时触发回调。使用callback异步回调。
+
+使用场景：应用需要在收到键盘显示请求时加载并显示自定义键盘组件。
+
+使用后效果：当需要显示自定义键盘时触发回调，应用应在回调中加载并显示自定义键盘组件。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，在需要显示自定义键盘时触发，无返回参数。 |
+
+**示例：**
+
+```ts
+let proxyAbility: inputMethodEngine.ProxyInputMethodAbility | null = inputMethodEngine.getProxyInputMethodAbility();
+if (proxyAbility !== null) {
+  proxyAbility.onKeyboardShow(() => {
+    console.info('inputMethodEngine keyboardShow.');
+  });
+}
+```
+
+### offKeyboardShow
+
+offKeyboardShow(callback?: Callback&lt;void&gt;): void
+
+取消订阅keyboardShow事件。使用callback异步回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;void&gt; | 否 | 需要取消订阅的keyboardShow事件回调函数。省略时取消该事件的全部回调。 |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let proxyAbility: inputMethodEngine.ProxyInputMethodAbility | null = inputMethodEngine.getProxyInputMethodAbility();
+let callback: Callback<void> = () => {
+  console.info('inputMethodEngine keyboardShow.');
+};
+if (proxyAbility !== null) {
+  proxyAbility.offKeyboardShow(callback);
+  proxyAbility.offKeyboardShow();
+}
+```
+
+### onKeyboardHide
+
+onKeyboardHide(callback: Callback&lt;void&gt;): void
+
+订阅keyboardHide事件，在需要隐藏自定义键盘时触发回调。使用callback异步回调。
+
+使用场景：应用需要在收到键盘隐藏请求时隐藏自定义键盘组件。
+
+使用后效果：当需要隐藏自定义键盘时触发回调，应用应在回调中隐藏自定义键盘组件。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，在需要隐藏自定义键盘时触发，无返回参数。 |
+
+**示例：**
+
+```ts
+let proxyAbility: inputMethodEngine.ProxyInputMethodAbility | null = inputMethodEngine.getProxyInputMethodAbility();
+if (proxyAbility !== null) {
+  proxyAbility.onKeyboardHide(() => {
+    console.info('inputMethodEngine keyboardHide.');
+  });
+}
+```
+
+### offKeyboardHide
+
+offKeyboardHide(callback?: Callback&lt;void&gt;): void
+
+取消订阅keyboardHide事件。使用callback异步回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;void&gt; | 否 | 需要取消订阅的keyboardHide事件回调函数。省略时取消该事件的全部回调。 |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let proxyAbility: inputMethodEngine.ProxyInputMethodAbility | null = inputMethodEngine.getProxyInputMethodAbility();
+let callback: Callback<void> = () => {
+  console.info('inputMethodEngine keyboardHide.');
+};
+if (proxyAbility !== null) {
+  proxyAbility.offKeyboardHide(callback);
+  proxyAbility.offKeyboardHide();
+}
+```
+
+### onUnregister
+
+onUnregister(callback: Callback&lt;void&gt;): void
+
+订阅unregister事件，在代理被框架被动注销时触发回调。例如，达到注册数量限制时可能发生被动注销。收到回调后，若应用当前获焦且仍需使用代理，应立即重新注册；否则应在再次获焦后重新注册。使用callback异步回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，在代理输入法被框架被动注销时触发，无返回参数。 |
+
+**示例：**
+
+```ts
+let proxyAbility: inputMethodEngine.ProxyInputMethodAbility | null = inputMethodEngine.getProxyInputMethodAbility();
+if (proxyAbility !== null) {
+  proxyAbility.onUnregister(() => {
+    console.info('inputMethodEngine unregister.');
+  });
+}
+```
+
+### offUnregister
+
+offUnregister(callback?: Callback&lt;void&gt;): void
+
+取消订阅unregister事件。使用callback异步回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;void&gt; | 否 | 需要取消订阅的unregister事件回调函数。省略时取消该事件的全部回调。 |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let proxyAbility: inputMethodEngine.ProxyInputMethodAbility | null = inputMethodEngine.getProxyInputMethodAbility();
+let callback: Callback<void> = () => {
+  console.info('inputMethodEngine unregister.');
+};
+if (proxyAbility !== null) {
+  proxyAbility.offUnregister(callback);
+  proxyAbility.offUnregister();
+}
+```
+
+## InputKeyEventCallback
+
+type InputKeyEventCallback = (event: KeyEvent) => boolean
+
+物理键盘按键事件的回调类型。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| event | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | 是 | 物理键盘按键事件信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 是否消费该按键事件。true表示消费，false表示不消费。 |
+
+## CursorContextChangeCallback
+
+type CursorContextChangeCallback = (x: number, y: number, height: number) => void
+
+光标位置变化事件的回调类型。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| x | number | 是 | 光标左侧位置，单位为px。 |
+| y | number | 是 | 光标顶部位置，单位为px。 |
+| height | number | 是 | 光标高度，单位为px。 |
+
+## SelectionChangeCallback
+
+type SelectionChangeCallback = (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => void
+
+文本选区变化事件的回调类型。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| oldBegin | number | 是 | 变化前选区的起始索引。 |
+| oldEnd | number | 是 | 变化前选区的结束索引。 |
+| newBegin | number | 是 | 变化后选区的起始索引。 |
+| newEnd | number | 是 | 变化后选区的结束索引。 |
+
+## ProxyKeyboardDelegate
+
+ProxyKeyboardDelegate是应用内代理输入法的事件监听对象，用于监听编辑框文本/光标/选区/属性变化事件及物理键盘按键事件。普通应用通过[getProxyKeyboardDelegate](#inputmethodenginegetproxykeyboarddelegate)获取该实例。
+
+核心功能概述：
+- 物理键盘按键事件：通过[onKeyEvent](#onkeyevent)订阅物理按键事件。callback返回true表示按键事件被消费，返回false表示不消费。
+- 光标与选区变化事件：通过[onCursorContextChange](#oncursorcontextchange-1)订阅光标位置变化事件，通过[onSelectionChange](#onselectionchange-1)订阅文本选区变化事件。应用可根据这些事件调整自定义键盘的候选词位置或输入策略。
+- 文本变化事件：通过[onTextChange](#ontextchange-1)订阅编辑框文本内容变化事件，应用可据此更新候选词或输入建议。
+- 编辑框属性变化事件：通过[onEditorAttributeChanged](#oneditorattributechanged)订阅编辑框属性变化事件，应用可根据编辑框属性变化动态调整键盘布局。
+
+使用注意事项：
+- 应在注册应用内代理输入法前完成回调订阅。
+- 实例可能为null，使用前须判空。
+- 输入法Extension不能调用此接口。
+
+下列API均需使用[getProxyKeyboardDelegate](#inputmethodenginegetproxykeyboarddelegate)获取到ProxyKeyboardDelegate实例后，通过实例调用。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### onKeyEvent
+
+onKeyEvent(callback: InputKeyEventCallback): void
+
+订阅keyEvent事件，在物理按键事件发生时触发回调。回调返回true表示消费该按键事件，返回false表示不消费。使用callback异步回调。
+
+使用场景：需要处理组合键（如Ctrl+C、Shift+Enter等）或拦截特定按键的场景。
+
+使用后效果：当物理按键事件触发时回调被调用。若按键事件被事件订阅者消费，则callback应返回true，否则返回false。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [InputKeyEventCallback](#inputkeyeventcallback) | 是 | 回调函数，返回物理按键事件。回调的返回值表示是否消费该按键事件，true表示消费，false表示不消费。 |
+
+**示例：**
+
+```ts
+import type { KeyEvent } from '@kit.InputKit';
+
+let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
+if (proxyDelegate !== null) {
+  proxyDelegate.onKeyEvent((event: KeyEvent) => {
+    console.info(`inputMethodEngine keyEvent.action:${event.action}`);
+    return false;
+  });
+}
+```
+
+### offKeyEvent
+
+offKeyEvent(callback?: InputKeyEventCallback): void
+
+取消订阅keyEvent事件。使用callback异步回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [InputKeyEventCallback](#inputkeyeventcallback) | 否 | 需要取消订阅的keyEvent事件回调函数。省略时取消该事件的全部回调。 |
+
+**示例：**
+
+```ts
+import type { KeyEvent } from '@kit.InputKit';
+
+let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
+let callback: inputMethodEngine.InputKeyEventCallback = (event: KeyEvent) => {
+  console.info(`inputMethodEngine keyEvent.action:${event.action}`);
+  return false;
+};
+if (proxyDelegate !== null) {
+  proxyDelegate.offKeyEvent(callback);
+  proxyDelegate.offKeyEvent();
+}
+```
+
+### onCursorContextChange
+
+onCursorContextChange(callback: CursorContextChangeCallback): void
+
+订阅cursorContextChange事件，在光标位置发生变化时触发回调。使用callback异步回调。
+
+使用场景：实时更新候选词显示位置、根据光标位置调整自定义键盘界面、实现跟随光标的浮动菜单等。
+
+使用后效果：当编辑框光标位置发生变化时触发回调，返回光标的x坐标、y坐标和高度信息，应用可据此调整自定义键盘或候选词窗口的定位。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [CursorContextChangeCallback](#cursorcontextchangecallback) | 是 | 回调函数，返回光标左侧位置、顶部位置和高度，单位为px。 |
+
+**示例：**
+
+```ts
+let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
+if (proxyDelegate !== null) {
+  proxyDelegate.onCursorContextChange((x: number, y: number, height: number) => {
+    console.info('inputMethodEngine cursorContextChange x:' + x);
+    console.info('inputMethodEngine cursorContextChange y:' + y);
+    console.info('inputMethodEngine cursorContextChange height:' + height);
+  });
+}
+```
+
+### offCursorContextChange
+
+offCursorContextChange(callback?: CursorContextChangeCallback): void
+
+取消订阅cursorContextChange事件。使用callback异步回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [CursorContextChangeCallback](#cursorcontextchangecallback) | 否 | 需要取消订阅的cursorContextChange事件回调函数。省略时取消该事件的全部回调。 |
+
+**示例：**
+
+```ts
+let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
+let callback: inputMethodEngine.CursorContextChangeCallback = (x: number, y: number, height: number) => {
+  console.info('inputMethodEngine cursorContextChange x:' + x);
+  console.info('inputMethodEngine cursorContextChange y:' + y);
+  console.info('inputMethodEngine cursorContextChange height:' + height);
+};
+if (proxyDelegate !== null) {
+  proxyDelegate.offCursorContextChange(callback);
+  proxyDelegate.offCursorContextChange();
+}
+```
+
+### onSelectionChange
+
+onSelectionChange(callback: SelectionChangeCallback): void
+
+订阅selectionChange事件，在文本选区发生变化时触发回调。使用callback异步回调。
+
+使用场景：监听用户选中文本以提供剪切、复制、粘贴等快捷操作、根据选择文本显示相关建议、实现文本编辑辅助功能等。
+
+使用后效果：当编辑框中文本选择范围发生变化时触发回调，返回变化前后的选区起始和终止索引。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [SelectionChangeCallback](#selectionchangecallback) | 是 | 回调函数，返回选区变化前后的起止索引。 |
+
+**示例：**
+
+```ts
+let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
+if (proxyDelegate !== null) {
+  proxyDelegate.onSelectionChange((oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => {
+    console.info('selectionChange oldBegin:' + oldBegin);
+    console.info('selectionChange oldEnd:' + oldEnd);
+    console.info('selectionChange newBegin:' + newBegin);
+    console.info('selectionChange newEnd:' + newEnd);
+  });
+}
+```
+
+### offSelectionChange
+
+offSelectionChange(callback?: SelectionChangeCallback): void
+
+取消订阅selectionChange事件。使用callback异步回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [SelectionChangeCallback](#selectionchangecallback) | 否 | 需要取消订阅的selectionChange事件回调函数。省略时取消该事件的全部回调。 |
+
+**示例：**
+
+```ts
+let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
+let callback: inputMethodEngine.SelectionChangeCallback =
+  (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => {
+    console.info('selectionChange oldBegin:' + oldBegin);
+    console.info('selectionChange oldEnd:' + oldEnd);
+    console.info('selectionChange newBegin:' + newBegin);
+    console.info('selectionChange newEnd:' + newEnd);
+  };
+if (proxyDelegate !== null) {
+  proxyDelegate.offSelectionChange(callback);
+  proxyDelegate.offSelectionChange();
+}
+```
+
+### onTextChange
+
+onTextChange(callback: Callback&lt;string&gt;): void
+
+订阅textChange事件，在文本内容发生变化时触发回调。使用callback异步回调。
+
+使用场景：应用需要根据编辑框文本内容变化更新候选词、提供智能输入建议、实现联想输入等。
+
+使用后效果：当编辑框文本内容发生变化时触发回调，返回当前编辑框的完整文本内容。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;string&gt; | 是 | 回调函数，返回编辑框变化后的文本内容。 |
+
+**示例：**
+
+```ts
+let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
+if (proxyDelegate !== null) {
+  proxyDelegate.onTextChange((text: string) => {
+    console.info('inputMethodEngine textChange event received.');
+  });
+}
+```
+
+### offTextChange
+
+offTextChange(callback?: Callback&lt;string&gt;): void
+
+取消订阅textChange事件。使用callback异步回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;string&gt; | 否 | 需要取消订阅的textChange事件回调函数。省略时取消该事件的全部回调。 |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
+let callback: Callback<string> = (text: string) => {
+  console.info('inputMethodEngine textChange event received.');
+};
+if (proxyDelegate !== null) {
+  proxyDelegate.offTextChange(callback);
+  proxyDelegate.offTextChange();
+}
+```
+
+### onEditorAttributeChanged
+
+onEditorAttributeChanged(callback: Callback&lt;EditorAttribute&gt;): void
+
+订阅editorAttributeChanged事件，在编辑框属性发生变化时触发回调。使用callback异步回调。
+
+使用场景：应用需要根据编辑框属性变化（如输入类型从文本切换到数字、回车键类型从"搜索"切换到"发送"等）动态调整自定义键盘布局。
+
+使用后效果：当编辑框属性发生变化时触发回调，返回变化后的编辑框属性信息（包括inputPattern和enterKeyType），应用可据此重新调整键盘布局。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;[EditorAttribute](#editorattribute)&gt; | 是 | 回调函数，返回变化后的编辑框属性。 |
+
+**示例：**
+
+```ts
+let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
+if (proxyDelegate !== null) {
+  proxyDelegate.onEditorAttributeChanged((attribute: inputMethodEngine.EditorAttribute) => {
+    console.info(`editorAttribute.inputPattern:  ${attribute.inputPattern}`);
+  });
+}
+```
+
+### offEditorAttributeChanged
+
+offEditorAttributeChanged(callback?: Callback&lt;EditorAttribute&gt;): void
+
+取消订阅editorAttributeChanged事件。使用callback异步回调。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;[EditorAttribute](#editorattribute)&gt; | 否 | 需要取消订阅的editorAttributeChanged事件回调函数。省略时取消该事件的全部回调。 |
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let proxyDelegate: inputMethodEngine.ProxyKeyboardDelegate | null = inputMethodEngine.getProxyKeyboardDelegate();
+let callback: Callback<inputMethodEngine.EditorAttribute> = (attribute: inputMethodEngine.EditorAttribute) => {
+  console.info(`editorAttribute.inputPattern:  ${attribute.inputPattern}`);
+};
+if (proxyDelegate !== null) {
+  proxyDelegate.offEditorAttributeChanged(callback);
+  proxyDelegate.offEditorAttributeChanged();
+}
+```
