@@ -634,3 +634,20 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |-----|-----|------|----|------|
 | formId | string | 否 | 否 | 添加到远端卡片使用方服务的卡片标识。 |
+
+## FormColorInfo
+
+卡片着色的颜色信息。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| color | string | 否 | 否 | 卡片赋色使用的颜色值，格式为'#RRGGBB'或'#AARRGGBB'，例如'#FF0000'。 |
+| position | number | 否 | 否 | 该颜色在渐变色中的位置，取值范围为[0, 1]。 |

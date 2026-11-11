@@ -4107,6 +4107,7 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
 ## formHost.updateFormsColorInfo
 
 updateFormsColorInfo(formIds: Array&lt;string&gt;, colorInfo?: Array&lt;formInfo.FormColorInfo&gt;): Promise&lt;number&gt;
@@ -4117,24 +4118,24 @@ updateFormsColorInfo(formIds: Array&lt;string&gt;, colorInfo?: Array&lt;formInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口：** 此接口为系统接口。
-
 **需要权限：** ohos.permission.REQUIRE_FORM
 
-**系统能力**：SystemCapability.Ability.Form
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
-| ------ | ------ | ---- | ------- |
-| formIds | Array&lt;string&gt; | 是 | 待更新着色的卡片标识列表。单次调用最多支持80个卡片标识。 |
+| ------ | ---- | ---- | ---- |
+| formIds | Array&lt;string&gt; | 是 | 待更新的卡片标识列表。单次调用最多支持80个卡片标识。 |
 | colorInfo | Array&lt;[formInfo.FormColorInfo](js-apis-app-form-formInfo-sys.md#formcolorinfo)&gt; | 否 | 卡片着色的颜色信息。不填或数组长度为0时，表示取消卡片着色。单次调用最多支持80组颜色信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，返回着色成功的卡片数量。 |
+| ---- | ---- |
+| Promise&lt;number&gt; | Promise对象，返回赋色成功的卡片数量。 |
 
 **错误码：**
 
@@ -4160,11 +4161,12 @@ let colorInfo: Array<formInfo.FormColorInfo> = [
 ];
 
 try {
-  formHost.updateFormsColorInfo(formIds, colorInfo).then((data: number) => {
-    console.info(`formHost updateFormsColorInfo success, success count: ${data}`);
+  formHost.updateFormsColorInfo(formIds, colorInfo).then((successCount: number) => {
+    console.info(`updateFormsColorInfo success, count: ${successCount}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
+```
