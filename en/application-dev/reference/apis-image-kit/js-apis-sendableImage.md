@@ -359,7 +359,7 @@ type ISendable = lang.ISendable
 
 | Type               | Description                    |
 | ------------------ | ------------------------ |
-| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable)  | Parent type of all sendable types.              |
+| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#isendable)  | Parent type of all sendable types.              |
 
 ## PixelMap
 
