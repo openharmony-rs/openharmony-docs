@@ -323,9 +323,9 @@ cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
-|2900013 | The user does not respond.<br>**起始版本**： 26.1.0 |
-|2900014 | User refuse the action.<br>**起始版本**： 26.1.0 |
-|2900016 | Device unpaired.<br>**起始版本**： 26.1.0 |
+|2900013 | The user does not respond.<br>适用版本：26.1.0+ |
+|2900014 | User refuse the action.<br>适用版本：26.1.0+ |
+|2900016 | Device unpaired.<br>适用版本：26.1.0+ |
 |2900099 | Operation failed.                        |
 
 **示例：**
