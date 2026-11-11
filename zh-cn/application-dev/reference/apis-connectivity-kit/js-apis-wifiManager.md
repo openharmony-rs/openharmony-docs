@@ -4689,9 +4689,9 @@ isWlanSupported(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4709,9 +4709,9 @@ isWlanSupported(): boolean
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4731,9 +4731,9 @@ addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Ma
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4780,9 +4780,9 @@ addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&g
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4830,9 +4830,9 @@ removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4879,9 +4879,9 @@ getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4919,9 +4919,9 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4954,9 +4954,9 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4972,9 +4972,9 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4989,9 +4989,9 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5009,9 +5009,9 @@ type P2pServiceDiscoveryInfo = P2pDnsSdInfo | P2pDnsSdTxtInfo | P2pUpnpInfo | P2
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5032,9 +5032,9 @@ addDnsSdServiceRequest(serviceType?: string, instanceName?: string): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5077,9 +5077,9 @@ addUpnpServiceRequest(searchTarget?: string): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5121,9 +5121,9 @@ getP2pServiceRequest(): Promise&lt;Array&lt;WifiP2pServiceRequest&gt;&gt;
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5166,9 +5166,9 @@ removeP2pServiceRequest(request: WifiP2pServiceRequest): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5213,9 +5213,9 @@ removeAllP2pServiceRequests(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5251,9 +5251,9 @@ discoverServices(): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5290,9 +5290,9 @@ onP2pServiceDiscovery(callback: Callback&lt;P2pServiceDiscoveryInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5333,9 +5333,9 @@ offP2pServiceDiscovery(callback?: Callback&lt;P2pServiceDiscoveryInfo&gt;): void
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.1.0
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
