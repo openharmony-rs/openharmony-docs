@@ -151,6 +151,57 @@ The following example demonstrates how to create a rendering node, mount it to a
    
    ```
 
+
+## Attaching Render Nodes Across Instances
+
+Since version 26.1.0, [OH_ArkUI_RenderNodeUtils_AddChildWithPolicy](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addchildwithpolicy) and [OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_insertchildafterwithpolicy) let you specify whether a child render node and its entire subtree inherit the target parent instance.
+
+For example, when a render node subtree created in instance A needs to be attached in instance B, select the attach policy using [OH_ArkUI_RenderNodeAttachPolicy](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeattachpolicy).
+
+| Attach method | Instance ownership | Use case |
+| -- | -- | -- |
+| AddChild or InsertChildAfter | Preserves existing behavior without adding instance migration. | Use the existing attachment behavior. |
+| New API with NOT_INHERIT_PARENT_INSTANCE | Keeps the child and its subtree in the original instance. | Preserve the original instance without requiring additional cross-instance display support. |
+| New API with INHERIT_PARENT_INSTANCE | Moves the child and its entire render node subtree to the target parent instance. | Display, update, and manage the migrated subtree in the target instance. |
+
+Observe the following constraints:
+
+- Create each instance's render nodes in the corresponding UIContext scope and invoke node operations on the UI thread. Initialize NativeNodeAPI before creating nodes.
+- Detach child from its existing parent before calling a new attach API. For insertion, sibling must be valid; if it is not a child of the target parent, child is appended to the end.
+- Attaching within the same instance does not change instance ownership. RemoveChild and ClearChildren do not restore the original instance after migration. To migrate again, detach the subtree and attach it to the next parent with INHERIT.
+- After a successful call, verify the display, property updates, and custom drawing of the entire subtree. A successful return or a single drawing callback alone does not prove correct presentation.
+
+The following snippets show two separate paths for moving and inserting a subtree. The caller supplies valid handles and checks the return values. Creating the UIContexts and nodes in distinct instances is outside these snippets.
+
+```cpp
+#include <arkui/native_render.h>
+
+// The three handles are valid. child is initially attached to parentInA.
+// parentInB belongs to the target instance. Run on the UI thread.
+int32_t MoveRenderSubtree(ArkUI_RenderNodeHandle parentInA,
+    ArkUI_RenderNodeHandle parentInB, ArkUI_RenderNodeHandle child,
+    OH_ArkUI_RenderNodeAttachPolicy policy)
+{
+    int32_t result = OH_ArkUI_RenderNodeUtils_RemoveChild(parentInA, child);
+    if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+        return result;
+    }
+    return OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(parentInB, child, policy);
+}
+
+// child has no parent. sibling is a valid reference node in the target instance.
+int32_t InsertRenderSubtree(ArkUI_RenderNodeHandle parentInB,
+    ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling)
+{
+    return OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(parentInB, child, sibling,
+        OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE);
+}
+```
+
+Pass `OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE` to MoveRenderSubtree to migrate the subtree, or `OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_NOT_INHERIT_PARENT_INSTANCE` to retain its original instance. Use independently created subtrees when comparing the two policies to avoid a previous migration affecting the next result.
+
+RemoveChild and the subsequent attachment are separate operations. If removal succeeds but attachment fails, child remains detached; the caller decides whether to retry or release it. It is not automatically reattached to the original parent. InsertRenderSubtree takes an already detached subtree; do not call it directly after a successful Add for the same child.
+
 ## Custom Drawing and Animation
 
 The following example demonstrates how to create a rendering node, implement custom drawing, and add animation effects.

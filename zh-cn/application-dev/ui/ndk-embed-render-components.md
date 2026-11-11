@@ -169,6 +169,60 @@
    
    ```
 
+<<<<<<< HEAD
+=======
+
+## 跨实例挂载渲染节点
+
+从26.1.0开始，可以通过[OH_ArkUI_RenderNodeUtils_AddChildWithPolicy](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addchildwithpolicy)和[OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_insertchildafterwithpolicy)，指定子渲染节点及其完整子树是否继承目标父节点的实例。
+
+例如，在实例A创建的渲染节点子树需要挂载到实例B时，使用[OH_ArkUI_RenderNodeAttachPolicy](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeattachpolicy)选择挂载策略。
+
+| 挂载方式 | 实例归属 | 适用场景 |
+| -- | -- | -- |
+| AddChild、InsertChildAfter | 保持原有接口行为，不增加实例迁移。 | 使用既有挂载能力。 |
+| 新接口，NOT_INHERIT_PARENT_INSTANCE | 子节点及其子树保持原实例归属。 | 保留原实例，不要求新增跨实例显示能力。 |
+| 新接口，INHERIT_PARENT_INSTANCE | 子节点及其完整渲染节点子树继承目标父节点实例。 | 在目标实例中显示、更新和管理迁移后的子树。 |
+
+使用时遵循以下约束：
+
+- 在对应UIContext的作用域中创建各实例的渲染节点，并在UI线程调用节点操作接口；完成NativeNodeAPI初始化后再创建节点。
+- 已有父节点的child必须先解除父子关系，再调用新接口。Insert的sibling必须是有效节点；若不属于目标父节点，则追加到末尾。
+- 同实例挂载不改变实例归属。迁移后调用RemoveChild或ClearChildren不会自动恢复原实例；如需再次迁移，应解除挂载后以INHERIT策略挂到新的父节点。
+- 接口返回成功后，检查整棵子树的显示、属性更新和自定义绘制结果。不要将一次绘制回调或返回成功单独作为界面正确的判断依据。
+
+以下片段演示迁移和插入两个独立调用路径。调用方负责提供有效句柄并检查返回值；创建不同实例的UIContext和节点的过程不包含在片段中。
+
+```cpp
+#include <arkui/native_render.h>
+
+// The three handles are valid. child is initially attached to parentInA.
+// parentInB belongs to the target instance. Run on the UI thread.
+int32_t MoveRenderSubtree(ArkUI_RenderNodeHandle parentInA,
+    ArkUI_RenderNodeHandle parentInB, ArkUI_RenderNodeHandle child,
+    OH_ArkUI_RenderNodeAttachPolicy policy)
+{
+    int32_t result = OH_ArkUI_RenderNodeUtils_RemoveChild(parentInA, child);
+    if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+        return result;
+    }
+    return OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(parentInB, child, policy);
+}
+
+// child has no parent. sibling is a valid reference node in the target instance.
+int32_t InsertRenderSubtree(ArkUI_RenderNodeHandle parentInB,
+    ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling)
+{
+    return OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(parentInB, child, sibling,
+        OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE);
+}
+```
+
+调用MoveRenderSubtree时，传入`OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE`执行迁移，传入`OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_NOT_INHERIT_PARENT_INSTANCE`保留原实例。比较两种策略时，应使用独立创建的子树，避免前一次迁移影响后一次结果。
+
+RemoveChild与后续挂载是两次操作。如果解除挂载成功但新挂载失败，child仍处于未挂载状态，由调用方决定重试或释放；不会自动重新挂回原父节点。InsertRenderSubtree用于已经解除挂载的子树，不应紧接在同一child的成功Add之后直接调用。
+
+>>>>>>> 2753ce992794f242274b299724800aa861461bc6
 ## 自定义绘制及动画
 
 以下示例创建了一个渲染节点，调用自定义绘制能力并附加动画功能。
