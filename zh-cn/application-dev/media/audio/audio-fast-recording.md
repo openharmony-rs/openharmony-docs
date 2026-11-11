@@ -46,9 +46,12 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 ### 设置超低时延模式
 
-从API version 26.1.0开始，开发者可将[OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)设置为AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST，使用独立的超低时延通路进行录制。
+从API version 26.1.0开始，开发者可按以下流程使用超低时延模式进行录制：
 
-可通过[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)查询当前设备是否支持超低时延录制。
+1. 起流前，通过[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)查询当前设备及流参数是否支持超低时延录制。
+2. 将[OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)设置为AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST，并创建录制流。
+3. 起流后，通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)获取录制流的实际运行能力。
+4. 通过注册状态变化回调，获取实际运行能力变化时的通知。
 
 设置超低时延模式开发示例：
 
@@ -57,8 +60,6 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ``` C++
 OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST);
 ```
-
-起流后可通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)查询当前流的运行状态。
 
 超低时延状态变化回调开发示例：
 
