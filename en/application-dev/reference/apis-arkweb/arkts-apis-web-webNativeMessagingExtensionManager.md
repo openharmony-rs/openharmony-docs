@@ -1,11 +1,11 @@
-# @ohos.web.webNativeMessagingExtensionManager
+# @ohos.web.webNativeMessagingExtensionManager (Web Native Messaging Extension Manager)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @csliutt-private-->
 <!--Designer: @ringking0-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=e320fda153794b0a01059c498ff032329a9af05c translatedAt=2026-11-06T10:56:43.386Z pushedAt=2026-11-10T02:04:09.308Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e320fda153794b0a01059c498ff032329a9af05c translatedAt=2026-11-06T10:56:43.386Z pushedAt=2026-11-11T02:19:23.121Z nl=1 -->
 
 The webNativeMessagingExtensionManager module is a Web native message extension management module provided by ArkWeb. It is used to initiate and manage connections from the app side (caller) to [WebNativeMessagingExtensionAbility](./arkts-apis-web-webNativeMessagingExtensionAbility.md). Developers can call [connectNative](#webnativemessagingextensionmanagerconnectnative) to specify the target extension Ability and establish a connection, use the returned connection ID and [WebExtensionConnectionCallback](#webextensionconnectioncallback) to listen for connection establishment, disconnection, and failure events, and call [disconnectNative](#webnativemessagingextensionmanagerdisconnectnative) to actively release the connection. This module is suitable for scenarios where browser extensions communicate with apps. Before using it, you need to request the [ohos.permission.WEB_NATIVE_MESSAGING](../../security/AccessToken/restricted-permissions.md#ohospermissionweb_native_messaging) permission, and it is available only under the Stage model.
 

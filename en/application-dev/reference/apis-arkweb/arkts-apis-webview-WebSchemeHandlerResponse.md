@@ -440,3 +440,4 @@ Gets the custom error code of the current Response.
 **Example**
 
 For details about the sample code, see [constructor](#constructor12).
+<!--no_check-->

@@ -1,11 +1,11 @@
-# @ohos.web.webNativeMessagingExtensionContext
+# @ohos.web.WebNativeMessagingExtensionContext (Web Native Messaging Extension Context)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @csliutt-private-->
 <!--Designer: @ringking0-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=67bc5dd8b985b714888e019822c519c0e98e511c translatedAt=2026-11-06T10:56:10.141Z pushedAt=2026-11-10T02:03:56.083Z nl=1 -->
+<!-- md-trans-meta sourceCommit=67bc5dd8b985b714888e019822c519c0e98e511c translatedAt=2026-11-06T10:56:10.141Z pushedAt=2026-11-11T02:17:09.992Z nl=1 -->
 
 WebNativeMessagingExtensionContext is the runtime context of the native web message extension ([WebNativeMessagingExtensionAbility](./arkts-apis-web-webNativeMessagingExtensionAbility.md)). It inherits from ExtensionContext and provides lifecycle management, ability startup, and native message connection control capabilities for the extension ability. In an extension that inherits from WebNativeMessagingExtensionAbility, developers can obtain this context through `this.context` and then call [startAbility](#startability) to start another ability, call [startAbilityForResult](#startabilityforresult) to start a UIAbility and receive the return result, call [terminateSelf](#terminateself) to terminate the current extension, or call [stopNativeConnection](#stopnativeconnection) to stop a specified native web message connection.
 
