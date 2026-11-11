@@ -2395,6 +2395,26 @@
 						"end_line":432,
 						"name":"input_case_input_CPreview208",
 						"start_line":242
+					},
+					{
+						"end_line":29,
+						"name":"preview_style_c_headers",
+						"start_line":17
+					},
+					{
+						"end_line":377,
+						"name":"preview_style_c_show_keyboard",
+						"start_line":374
+					},
+					{
+						"end_line":258,
+						"name":"preview_style_c_hide_keyboard",
+						"start_line":256
+					},
+					{
+						"end_line":162,
+						"name":"preview_style_c_edit_callbacks",
+						"start_line":37
 					}
 				]
 			}
@@ -71930,6 +71950,16 @@
 						"end_line":232,
 						"name":"preview_style_c_register",
 						"start_line":213
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/ets/keyboard/PreviewInputMethod.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"preview_style_js_input_start",
+						"start_line":29
 					}
 				]
 			}
