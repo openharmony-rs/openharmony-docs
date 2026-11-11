@@ -199,6 +199,7 @@
     - [Immersive Light Sense Overview](arkts-immersive-light-sense-overview.md)
     - Immersive Light Sense Development<!--arkts-immersive-light-sense-development-->
       - [Enabling Immersive Light Sensing](arkts-immersive-light-sense-enable.md)
+      - [Adapting Components to Immersive Lighting](arkts-immersive-light-sense-component-adaptation.md)
       - [Immersive System Material Visual Effects](arkts-immersive-light-sense-common-capability.md)
     - [Immersive Lighting Power Consumption Optimization](arkts-immersive-light-sense-constraints.md)
     - [FAQs About Immersive Light Sensing](arkts-immersive-light-sense-faq.md)
