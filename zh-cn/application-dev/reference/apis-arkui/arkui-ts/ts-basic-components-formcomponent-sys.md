@@ -194,8 +194,8 @@ FormComponent(value: FormInfo)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| color | string | 否 | 否 | 卡片着色使用的颜色值，格式为'#RRGGBB'或'#AARRGGBB'，例如'#FF0000'。 |
-| position | number | 否 | 否 | 该颜色在渐变色中的位置，取值范围为[0, 1]。 |
+| color | string | 否 | 否 | 卡片赋色使用的颜色值，格式为'#RRGGBB'或'#AARRGGBB'，例如'#FF0000'。 |
+| position | number | 否 | 否 | 该颜色值在渐变色中的位置，取值范围为[0, 1]。 |
 
 ## 属性
 

@@ -4129,7 +4129,7 @@ updateFormsColorInfo(formIds: Array&lt;string&gt;, colorInfo?: Array&lt;formInfo
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
 | formIds | Array&lt;string&gt; | 是 | 待更新的卡片标识列表。单次调用最多支持80个卡片标识。 |
-| colorInfo | Array&lt;[formInfo.FormColorInfo](js-apis-app-form-formInfo-sys.md#formcolorinfo)&gt; | 否 | 卡片着色的颜色信息。不填或数组长度为0时，表示取消卡片着色。单次调用最多支持80组颜色信息。 |
+| colorInfo | Array&lt;[formInfo.FormColorInfo](js-apis-app-form-formInfo-sys.md#formcolorinfo)&gt; | 否 | 卡片赋色的颜色信息。不填或数组长度为0时，表示取消卡片赋色。 |
 
 **返回值：**
 
@@ -4156,8 +4156,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let formIds: Array<string> = ['12400633174999288'];
 let colorInfo: Array<formInfo.FormColorInfo> = [
-  { color: '#FF0000', position: 0 },
-  { color: '#0000FF', position: 1 }
+  { color: '#FFFFFFFF', position: 0 },
+  { color: '#FFFF6B6B', position: 0.5 },
+  { color: '#FF000000', position: 1 }
 ];
 
 try {
