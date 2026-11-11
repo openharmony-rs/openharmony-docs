@@ -72734,5 +72734,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/camera/camera-device-management.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets",
+				"functions":[
+					{
+						"end_line":514,
+						"name":"camera_getCameraManager",
+						"start_line":499
+					},
+					{
+						"end_line":541,
+						"name":"camera_getSupportedCameras",
+						"start_line":519
+					},
+					{
+						"end_line":572,
+						"name":"camera_getCameraDevices",
+						"start_line":546
+					},
+					{
+						"end_line":1000,
+						"name":"on_camera_status",
+						"start_line":965
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/camera/native-camera-device-management.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp",
+				"functions":[
+					{
+						"end_line":1603,
+						"name":"get_camera_manager",
+						"start_line":1593
+					},
+					{
+						"end_line":1623,
+						"name":"get_supported_cameras",
+						"start_line":1605
+					},
+					{
+						"end_line":1661,
+						"name":"get_camera_devices",
+						"start_line":1625
+					},
+					{
+						"end_line":1682,
+						"name":"register_camera_status_callback",
+						"start_line":1663
+					}
+				]
+			}
+		]
 	}
 ]
