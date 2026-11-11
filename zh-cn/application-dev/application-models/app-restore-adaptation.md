@@ -96,20 +96,29 @@ export function isRestoreLaunch(want: Want, launchParam: AbilityConstant.LaunchP
 
 ### 跳过恢复期间的自动跳页
 
-应用里"启动后自动跳首页/自动切Tab/重定向登录/进广告页"等导航逻辑，在恢复启动时会覆盖系统恢复的页面栈。做法：用一个布尔变量标记恢复流程是否结束——`onCreate()`判定为恢复启动时置为`false`；首页`onPageShow()`触发时系统页面栈恢复已完成，等应用的补齐或重新跳转执行完毕再置为`true`。自动跳转逻辑执行前先检查该变量，为`false`时本次跳过。
+应用里“启动后自动跳首页/自动切Tab/重定向登录/进广告页”等导航逻辑，在恢复启动时会覆盖系统恢复的页面栈，须在恢复流程结束前跳过。
 
-### 函数与类实例等字段的转换
+用一个布尔变量标记恢复流程是否结束：
 
-Want parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组。**函数、回调、Map/Set、Date、Proxy、类实例等复杂对象无法序列化，无法通过`onSaveState()`保存，须先按以下方式转换**（`onSaveState()`写入wantParam的数据与页面的param同理——param中这类字段在恢复时会被直接丢弃）：
+1. `onCreate()`判定为恢复启动时，将该变量置为`false`；
+2. 自动跳转逻辑执行前先检查该变量，为`false`时本次跳过；
+3. 首页`onPageShow()`触发时系统页面栈恢复已完成，等应用的补齐或重新跳转执行完毕后再置为`true`，恢复正常导航。
+
+### 处理无法序列化的字段
+
+Want.parameters的值只支持String/Number/Boolean等基本类型以及由它们组成的对象和数组。函数、回调、Map/Set、Date、Proxy、类实例等复杂对象无法序列化，无法通过`onSaveState()`保存，须先按以下方式处理。`onSaveState()`写入wantParam的数据与页面的param同理，param中这类字段在恢复时会被直接丢弃。
 
 | 原字段类型 | 处理方式 |
 | --- | --- |
 | string / number / boolean | 直接保留 |
 | 由基本类型组成的普通对象 | 直接保留 |
-| Function / Callback | 删除；页面改为从AppStorage重新获取，或改为按名字从应用启动时注册的"名字到函数"映射表中取回 |
+| Function / Callback | 删除；页面改为从AppStorage重新获取，或按名字从应用启动时注册的"名字到函数"映射表取回 |
 | 类实例（MediaItem、PhotoAsset等） | 替换为uri、id等可重新查回数据的字段，页面挂载后重新查询 |
 | Map / Set / Date | 转换为普通对象或序列化字符串（如JSON.stringify后随字符串传输） |
-| 已持久化的数据（preferences/RDB/文件） | 不通过`onSaveState()`保存（进程重建后仍在），只存键名、文件名等能重新查回数据的轻量信息 |
+
+> **说明：**
+>
+> 已持久化的数据（preferences/RDB/文件）不通过`onSaveState()`保存——进程重建后持久化数据仍在，快照中只存键名、文件名等能重新查回数据的轻量信息。
 
 ## 数据恢复
 
@@ -124,7 +133,7 @@ Want parameters的值只支持String/Number/Boolean等基本类型以及由它�
 - 可序列化：只含string、number、boolean及由它们组成的对象、数组。含Function、Callback、Proxy、类实例、Map/Set等无法序列化的字段时，这些字段会被静默丢弃且系统不报错，须先替换为字符串、uri等可序列化形式，见[函数与类实例等字段的转换](#函数与类实例等字段的转换)。
 - 总量远低于200KB上限：单项数据接近或超过上限时，按[超大数据分流](#超大数据分流)保存到文件。
 
-第1步：页面在数据变化时把需要保存的数据写入AppStorage。数据用字面量对象即可，只放可序列化的轻量字段：
+1. 页面在数据变化时把需要保存的数据写入AppStorage。数据用字面量对象即可，只放可序列化的轻量字段：
 
 <!-- @[reader_state_report](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/ReaderPage.ets) -->
 
@@ -141,7 +150,7 @@ private reportState(): void {
 }
 ```
 
-第2步：`onSaveState()`同步读取AppStorage写入wantParam，返回`ALL_AGREE`
+2. `onSaveState()`同步读取AppStorage写入wantParam，返回`ALL_AGREE`
 
 <!-- @[restore_on_save_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/RestoreAbility.ets) -->
 
@@ -170,7 +179,7 @@ onSaveState(reason: AbilityConstant.StateType,
 }
 ```
 
-第3步：恢复启动时，`onCreate()`把`want.parameters`中的数据写入AppStorage，供页面挂载后读取：
+3. 恢复启动时，`onCreate()`把`want.parameters`中的数据写入AppStorage，供页面挂载后读取：
 
 <!-- @[restore_on_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/RestoreAbility.ets) -->
 
@@ -210,7 +219,7 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 }
 ```
 
-第4步： 页面挂载后先读取恢复数据，**读取先于正常初始化、恢复路径直接return**，防止正常初始化把恢复数据覆盖回默认值：
+4.  页面挂载后先读取恢复数据，**读取先于正常初始化、恢复路径直接return**，防止正常初始化把恢复数据覆盖回默认值：
 
 <!-- @[page_consume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/restore/ReaderPage.ets) -->
 
@@ -237,16 +246,11 @@ aboutToAppear(): void {
 }
 ```
 
-> **说明：** 上例只展示了恢复分支——`if`内处理完恢复数据即`return`，不再执行正常初始化。正常冷启动时`restored`为undefined，`if`不成立，方法继续向下执行按业务加载默认数据（本示例的默认数据在onReady的handleParam中处理）。即恢复启动与正常冷启动走同一方法的不同分支，并不是该方法只处理恢复。
-
-**使用要点**：
-
-- 保存侧——onSaveState()的执行约束：它在系统触发备份的短暂时间窗内被调用，**只做同步读取**（不能在这里才异步采集数据，也不要做耗时操作——超时或异常可能导致本次数据不保存），且必须返回`ALL_AGREE`（否则数据不写入磁盘）。确有异步采集需求时改用[onSaveStateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestateasync20)（API版本20起）——应用实现了异步版时系统不再调用同步版，两者不要同时实现。
-- 读取侧——恢复数据的生命周期：仅随恢复启动的这一次Want带回，后续启动不再携带；应用读取后应立即从AppStorage删除，防止重复读取。
-
-> **注意：multiton多实例需按实例隔离AppStorage数据**
+> **说明：**
 >
-> [AppStorage](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)由整个应用进程共用，multiton模式启动的多个UIAbility实例运行在同一进程、共用同一份AppStorage：多个实例用同一个键名（如`reader.state`）存数据时，后写入的覆盖先写入的。隔离做法：键名前加实例自己的标识，页面写入、`onSaveState()`保存、`onCreate()`读回三处都用`` `${instanceKey}:reader.state` ``这个键名；标识使用启动实例时在want参数中传入的实例名`instanceKey`（由应用定义并传入，创建实例与恢复启动时都能从want中拿到）。实例读取完自己的恢复数据后，同样立即从AppStorage删除。
+> - `onSaveState()`在系统触发备份的短暂时间窗内被调用，只做同步读取、必须返回`ALL_AGREE`（否则数据不落盘）；不要在这里异步采集或做耗时操作，超时或异常可能导致本次数据不保存。确有异步需求时改用[onSaveStateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestateasync20)（API版本20起，实现了异步版后系统不再调用同步版）。
+> - 恢复数据仅随恢复启动的这一次Want带回，后续启动不再携带；读取后立即从AppStorage删除，防止重复读取。
+> - multiton模式下多个UIAbility实例共用进程级[AppStorage](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)，同一键名（如`reader.state`）后写覆盖先写，页面写入、`onSaveState()`保存、`onCreate()`读回统一使用`${instanceKey}:reader.state`带实例标识的键名（`instanceKey`为应用自定义、经want参数传入的实例名，创建与恢复启动时均可获取）。
 
 ### 持久化优先
 
