@@ -1482,7 +1482,7 @@ setDefaultApplication(type: DefaultApplicationType, bundleName: string, abilityN
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200006  | The specified user ID is invalid.                            |
+| 9200006  | The specified account ID is invalid.                         |
 | 9200012  | Parameter verification failed.                               |
 | 9200016  | Service timeout.                                             |
 
@@ -1545,7 +1545,7 @@ getDefaultApplicationBundleName(type: DefaultApplicationType, accountId: number)
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200006  | The specified user ID is invalid.                            |
+| 9200006  | The specified account ID is invalid.                         |
 | 9200012  | Parameter verification failed.                               |
 | 9200016  | Service timeout.                                             |
 
