@@ -1,10 +1,19 @@
+---
+kits: ["NDK"]
+description: "Describes how to load modules using napi_load_module_with_info in a newly created ArkTS runtime environment, including cross-bundle module loading through the module_info parameter."
+keywords: [Node-API, module loading, napi_load_module_with_info, ArkTS runtime, module_info, cross-bundle, dynamic loading]
+doctype: guide
+status: active
+---
+
 # Loading a Module Using Node-API
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.390Z nl=1 -->
 
 You can use **napi_load_module_with_info** to load a module. After the module is loaded, you can use **napi_get_property** to obtain the variables of the module or use **napi_get_named_property** to obtain the functions of the module. The **napi_load_module_with_info** API can be used in a [new ArkTS runtime environment](use-napi-ark-runtime.md) created by the **napi_create_ark_runtime** API.
 
@@ -92,7 +101,7 @@ export {value, test};
     > 2. The file path must start with **packageName**, which is the value of **name** in the **oh-package.json5** file of the module.
 
 
-    ~~~c++
+    ``` C++
     static napi_value loadModule(napi_env env, napi_callback_info info) {
         napi_value result;
         // 1. Call napi_load_module_with_info to load the module from the Test.ets file.
@@ -115,7 +124,7 @@ export {value, test};
         napi_get_property(env, result, key, &value);
         return result;
     }
-    ~~~
+    ```
 
 - **Loading a source code HAR module**
 

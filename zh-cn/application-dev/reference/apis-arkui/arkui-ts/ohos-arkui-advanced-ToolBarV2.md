@@ -6,9 +6,9 @@
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
 
-工具栏用于展示针对当前界面内容的操作选项，在界面底部显示，适用于需要为用户提供快速操作入口的场景。底部最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。适用于需要对当前页面内容进行快捷操作的场景，可帮助用户快速访问常用功能，提升操作效率。<br />
+工具栏用于展示针对当前界面内容的操作选项，适用于需要为用户提供快速操作入口的场景。普通工具栏最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。适用于需要对当前页面内容进行快捷操作的场景，可帮助用户快速访问常用功能，提升操作效率。<br />
 该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制工具栏的数据和状态，实现更高效的用户界面刷新。<br>
-从API版本26.1.0开始，当ToolBarV2设置[AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier)参数时，可使用高级工具栏功能，支持通过[AdvancedToolbarV2Item](#advancedtoolbarv2item)（继承自[ToolBarV2Item](#toolbarv2item)）配置高级工具栏子项。配置了高级子项的工具栏更为灵活，支持设置工具栏标题、溢出菜单、子项分组，并可根据工具栏可用空间自适应布局。<br>
+从API版本26.1.0开始，当ToolBarV2设置[AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier)参数时，可使用高级工具栏功能，支持通过[AdvancedToolbarV2Item](#advancedtoolbarv2item)（继承自[ToolBarV2Item](#toolbarv2item)）配置高级工具栏子项。配置了高级子项的工具栏更为灵活，支持设置工具栏标题、溢出菜单、子项分组，并可根据工具栏可用空间自适应布局。高级工具栏支持水平（默认）和垂直两种布局方向，可通过[direction](#direction)接口设置。<br>
 
 > **说明：**
 >
@@ -448,9 +448,9 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 
 | 名称      | 值 | 说明                                                   |
 | --------- | - | ------------------------------------------------------ |
-| MAIN      | 0 | 中间区域（默认）。适用于主内容区域显示的主要工具栏操作。 |
-| LEADING   | 1 | 前导半区。适用于在主内容之前放置的主要操作。           |
-| TRAILING  | 2 | 尾随半区。适用于在主内容之后放置的次要或溢出操作。      |
+| MAIN      | 0 | 中间区域（默认）。适用于主内容区域显示的主要工具栏操作。水平布局时对应中间区域，垂直布局时对应中间区域。 |
+| LEADING   | 1 | 前导半区。适用于在主内容之前放置的主要操作。水平布局时对应左侧区域，垂直布局时对应顶部区域。           |
+| TRAILING  | 2 | 尾随半区。适用于在主内容之后放置的次要或溢出操作。水平布局时对应右侧区域，垂直布局时对应底部区域。      |
 
 **示例：**
 
@@ -460,7 +460,7 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 
 定义高级工具栏子项，继承自[ToolBarV2Item](#toolbarv2item)，在其基础上扩展了高级布局能力，支持自定义构造器、放置位置、显示优先级、激活背景色、子项尺寸、分割线、文本可见性、标题配置、溢出菜单按钮、子项分组等。
 
-具有相同非空groupID的子项构成一个分组。分组级别的配置（放置位置）从数组中携带该groupID的第一个子项读取。
+具有相同非空[groupID](#advancedtoolbarv2itemoptions)的子项构成一个分组。分组级别的配置（放置位置）从数组中携带该groupID的第一个子项读取。
 
 **起始版本：** 26.1.0
 
@@ -496,10 +496,11 @@ ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 | id                       | string                                            | 否   | 是   | 工具栏子项的唯一标识。<br />默认值：undefined。<br />值为undefined时，不设置唯一标识。<br />装饰器类型：@Trace                                                                                                                                                                        |
 | itemSize                 | [Size](../js-apis-arkui-graphics.md#size)          | 否   | 是   | 工具栏子项的尺寸（宽×高）。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。<br />装饰器类型：@Trace                                                              |
 | isShowSeparator          | boolean                                           | 否   | 是   | 是否在该子项后显示分割线。true表示在该子项后显示分割线（工具栏最后一个子项后不显示）；false表示在该子项后不显示分割线。<br />默认值：false。<br />装饰器类型：@Trace                                                                                          |
-| isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。true表示显示子项的文本内容；false表示不显示content指定的文本，但content仍用于无障碍和溢出菜单识别，适用于纯图标子项仍需在溢出菜单中通过文本识别的场景。<br />默认值：true。<br />装饰器类型：@Trace                                   |
+| isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。true表示显示子项的文本内容；false表示不显示content指定的文本，但content仍用于无障碍和溢出菜单识别。在纯图标显示的场景使用。<br />默认值：true。<br />装饰器类型：@Trace                                   |
 | titleConfigs             | [ToolbarV2TitleConfigs](#toolbarv2titleconfigs) | 否   | 是   | 高级工具栏标题配置。设置后，该子项作为工具栏标题渲染，不再显示为普通子项，仅在水平布局时生效。<br />多个子项同时设置时，标题内容与样式以数组中第一个配置为准，建议仅在一个子项上设置。<br />默认值：undefined。<br />值为undefined时，该子项不渲染为标题。<br />装饰器类型：@Trace |
 | isShowOverflowMenu       | boolean                                           | 否   | 是   | 是否将该子项作为工具栏的溢出菜单按钮。true表示该子项作为溢出菜单按钮，当存在被折叠的子项时显示，点击后弹出溢出菜单；false表示不作为溢出菜单按钮。<br />该子项的icon为[ToolBarV2SymbolGlyph](#toolbarv2symbolglyph)时作为按钮图标，否则显示默认的更多图标。作为溢出菜单按钮时，该子项的action不生效。<br />建议仅在一个[ToolbarV2ItemPlacement](#toolbarv2itemplacement)为TRAILING的子项上设置。<br />默认值：false。<br />装饰器类型：@Trace |
 | groupID                  | string                                            | 否   | 是   | 分组标识。具有相同非空groupID的子项将作为一个可视分组渲染。分组级别的配置从数组中携带该groupID的第一个子项读取。<br />默认值：undefined。<br />值为undefined时，该子项不参与分组。<br />装饰器类型：@Trace                                                              |
+| groupStyle               | [ToolbarV2ItemGroupStyle](#toolbarv2itemgroupstyle) | 否   | 是   | 该子项所属分组的样式配置。相同groupID的第一个设置groupStyle的子项上的值生效，后续具有相同groupID的子项上的值将被忽略。<br />默认值：undefined。<br />值为undefined时，不设置分组样式配置。<br />装饰器类型：@Trace                                                                                  |
 
 ### constructor
 
@@ -628,10 +629,11 @@ struct Index {
 | id                       | string                                            | 否   | 是   | 工具栏子项的唯一标识。<br />默认值：undefined。<br />值为undefined时，不设置唯一标识。                                                                                                                                                                       |
 | itemSize                 | [Size](../js-apis-arkui-graphics.md#size)          | 否   | 是   | 工具栏子项的尺寸（宽×高）。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。                                                                                  |
 | isShowSeparator          | boolean                                           | 否   | 是   | 是否在该子项后显示分割线。true表示在该子项后显示分割线（工具栏最后一个子项后不显示）；false表示在该子项后不显示分割线。<br />默认值：false。                                                                                                            |
-| isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。true表示显示子项的文本内容；false表示不显示content指定的文本，但content仍用于无障碍和溢出菜单识别，适用于纯图标子项仍需在溢出菜单中通过文本识别的场景。<br />默认值：true。                                                |
+| isShowText               | boolean                                           | 否   | 是   | 是否显示子项的文本内容。true表示显示子项的文本内容；false表示不显示content指定的文本，但content仍用于无障碍和溢出菜单识别。<br />默认值：true。                                                |
 | titleConfigs             | [ToolbarV2TitleConfigs](#toolbarv2titleconfigs) | 否   | 是   | 高级工具栏标题配置。设置后，该子项作为工具栏标题渲染，不再显示为普通子项，仅在水平布局时生效。<br />多个子项同时设置时，标题内容与样式以数组中第一个配置为准，建议仅在一个子项上设置。<br />默认值：undefined。<br />值为undefined时，该子项不渲染为标题。 |
 | isShowOverflowMenu       | boolean                                           | 否   | 是   | 是否将该子项作为工具栏的溢出菜单按钮。true表示该子项作为溢出菜单按钮，当存在被折叠的子项时显示，点击后弹出溢出菜单；false表示不作为溢出菜单按钮。<br />该子项的icon为[ToolBarV2SymbolGlyph](#toolbarv2symbolglyph)时作为按钮图标，否则显示默认的更多图标。作为溢出菜单按钮时，该子项的action不生效。<br />建议仅在一个[ToolbarV2ItemPlacement](#toolbarv2itemplacement)为TRAILING的子项上设置。<br />默认值：false。 |
 | groupID                  | string                                            | 否   | 是   | 分组标识。具有相同非空groupID的子项将作为一个可视分组渲染。分组级别的配置从数组中携带该groupID的第一个子项读取。<br />默认值：undefined。<br />值为undefined时，该子项不参与分组。                                                                                                                                   |
+| groupStyle               | [ToolbarV2ItemGroupStyle](#toolbarv2itemgroupstyle) | 否   | 是   | 该子项所属分组的样式配置。相同groupID的第一个设置groupStyle的子项上的值生效，后续具有相同groupID的子项上的值将被忽略。<br />默认值：undefined。<br />值为undefined时，不设置分组样式配置。                                                                                  |
 
 ## ToolbarV2TitleConfigs
 
@@ -815,7 +817,7 @@ ToolbarV2TitleStyle的构造函数。
 
 ## AdvancedToolBarV2Modifier
 
-AdvancedToolBarV2Modifier是ToolBarV2的高级modifier，将布局属性、样式配置和溢出菜单样式合并至单个modifier类中，提供设置工具栏主轴长度（mainAxisLength）、交叉轴长度（crossAxisLength）、布局方向（direction）、溢出菜单样式（overflowMenuStyle）的方法，方法支持链式调用。
+AdvancedToolBarV2Modifier是ToolBarV2的高级modifier，将布局属性、样式配置和溢出菜单样式合并至单个modifier类中，提供设置工具栏主轴长度（mainAxisLength）、交叉轴长度（crossAxisLength）、布局方向（direction）、样式配置（style）、溢出菜单样式（overflowMenuStyle）的方法，方法支持链式调用。
 
 **起始版本：** 26.1.0
 
@@ -909,7 +911,7 @@ direction(value: Axis): AdvancedToolBarV2Modifier
 
 | 参数名 | 类型                               | 必填 | 说明                           |
 | ------ | ---------------------------------- | :--- | ------------------------------ |
-| value  | [Axis](ts-appendix-enums.md#axis) | 是   | 布局方向。 |
+| value  | [Axis](ts-appendix-enums.md#axis) | 是   | 布局方向。水平布局（Axis.Horizontal）时子项按行排列，垂直布局（Axis.Vertical）时子项按列排列。 |
 
 **返回值：**
 
@@ -948,6 +950,251 @@ overflowMenuStyle(menuStyle: ToolbarV2OverflowMenuStyle): AdvancedToolBarV2Modif
 **示例：**
 
 请参考[AdvancedToolbarV2Item](#advancedtoolbarv2item)接口的示例。
+
+
+### style
+
+style(styleConfigs: ToolbarV2StyleConfigs): AdvancedToolBarV2Modifier
+
+设置工具栏样式配置的接口。可控制背景、内边距、分组间距、边框、子项激活态/禁用态颜色等。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**参数：**
+
+| 参数名       | 类型                                              | 必填 | 说明                 |
+| :----------- | :------------------------------------------------ | :--- | :------------------- |
+| styleConfigs | [ToolbarV2StyleConfigs](#toolbarv2styleconfigs)   | 是   | 样式配置对象。 |
+
+**返回值：**
+
+| 类型                                                     | 说明                                       |
+| -------------------------------------------------------- | ------------------------------------------ |
+| [AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier) | 返回该modifier对象，可用于链式调用其他方法。 |
+
+## BarBackgroundVisibility
+
+工具栏背景可见性枚举。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称     | 值 | 说明                                   |
+| -------- | - | -------------------------------------- |
+| VISIBLE  | 0 | 正常显示工具栏背景（默认）。     |
+| HIDDEN   | 1 | 隐藏工具栏背景。                 |
+
+## ToolbarV2PaddingOptions
+
+工具栏沿主轴方向的内边距配置。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称           | 类型                                                            | 只读 | 可选 | 说明                                                                   |
+| :------------- | :-------------------------------------------------------------- | :--- | :--- | :--------------------------------------------------------------------- |
+| mainAxisStart  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 主轴起始端的内边距。水平方向时为左侧内边距，垂直方向时为顶部内边距。   |
+| mainAxisEnd    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 主轴结束端的内边距。水平方向时为右侧内边距，垂直方向时为底部内边距。   |
+
+## ToolbarV2ItemGroupStyleOptions
+
+用于构建ToolbarV2ItemGroupStyle对象。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称             | 类型                                                            | 只读 | 可选 | 说明                                                                                                                       |
+| :--------------- | :-------------------------------------------------------------- | :--- | :--- | :------------------------------------------------------------------------------------------------------------------------- |
+| placement        | [ToolbarV2ItemPlacement](#toolbarv2itemplacement)              | 否   | 是   | 分组在工具栏中的放置位置。分组placement优先于分组内单个子项的placement。<br />默认值：ToolbarV2ItemPlacement.MAIN。          |
+| space            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组内子项之间的间距。<br />默认值：0vp。                                                                                   |
+| backgroundColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 分组容器的背景色。<br />默认值：$r('sys.color.comp_background_primary')。                                                   |
+| padding          | [ToolbarV2PaddingOptions](#toolbarv2paddingoptions)             | 否   | 是   | 分组容器的内边距。<br />默认值：undefined。<br />值为undefined时，不设置分组内边距。                                                                                 |
+| borderRadius     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组容器的圆角半径。<br />默认值：undefined。<br />值为undefined时，不设置分组圆角半径。                                                                               |
+| borderWidth      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组容器的边框宽度。<br />默认值：undefined。<br />值为undefined时，不设置分组边框宽度。                                                                               |
+| borderColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 分组容器的边框颜色。<br />默认值：undefined。<br />值为undefined时，不设置分组边框颜色。                                                                               |
+| stateEffect      | boolean                                                         | 否   | 是   | 是否显示分组内子项的按压态效果。true表示显示按压态效果；false表示不显示按压态效果。<br />默认值：true。                                                                        |
+
+## ToolbarV2ItemGroupStyle
+
+工具栏子项分组的样式配置。
+
+**起始版本：** 26.1.0
+
+**装饰器类型：** @ObservedV2
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+### 属性
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称             | 类型                                                            | 只读 | 可选 | 说明                                                                                                                       |
+| :--------------- | :-------------------------------------------------------------- | :--- | :--- | :------------------------------------------------------------------------------------------------------------------------- |
+| placement        | [ToolbarV2ItemPlacement](#toolbarv2itemplacement)              | 否   | 是   | 分组在工具栏中的放置位置。分组placement优先于分组内单个子项的placement。<br />默认值：ToolbarV2ItemPlacement.MAIN。<br />装饰器类型：@Trace |
+| space            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组内子项之间的间距。<br />默认值：0vp。<br />装饰器类型：@Trace                                                          |
+| backgroundColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 分组容器的背景色。<br />默认值：$r('sys.color.comp_background_primary')。<br />装饰器类型：@Trace                          |
+| padding          | [ToolbarV2PaddingOptions](#toolbarv2paddingoptions)             | 否   | 是   | 分组容器的内边距。<br />默认值：undefined。<br />值为undefined时，不设置分组内边距。<br />装饰器类型：@Trace                                                        |
+| borderRadius     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组容器的圆角半径。<br />默认值：undefined。<br />值为undefined时，不设置分组圆角半径。<br />装饰器类型：@Trace                                                      |
+| borderWidth      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组容器的边框宽度。<br />默认值：undefined。<br />值为undefined时，不设置分组边框宽度。<br />装饰器类型：@Trace                                                      |
+| borderColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 分组容器的边框颜色。<br />默认值：undefined。<br />值为undefined时，不设置分组边框颜色。<br />装饰器类型：@Trace                                                      |
+| stateEffect      | boolean                                                         | 否   | 是   | 是否显示分组内子项的按压态效果。true表示显示按压态效果；false表示不显示按压态效果。<br />默认值：true。<br />装饰器类型：@Trace                                               |
+
+### constructor
+
+constructor(options?: ToolbarV2ItemGroupStyleOptions)
+
+ToolbarV2ItemGroupStyle的构造函数。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**参数：**
+
+| 参数名   | 类型                                                            | 必填 | 说明               |
+| :------- | :-------------------------------------------------------------- | :--- | :----------------- |
+| options  | [ToolbarV2ItemGroupStyleOptions](#toolbarv2itemgroupstyleoptions) | 否   | 分组样式配置信息。         |
+
+## ToolbarV2StyleOptions
+
+用于构建ToolbarV2StyleConfigs对象。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称                  | 类型                                                            | 只读 | 可选 | 说明                                                                                                                                                                                                                  |
+| :-------------------- | :-------------------------------------------------------------- | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| padding               | [ToolbarV2PaddingOptions](#toolbarv2paddingoptions)             | 否   | 是   | 工具栏内边距。各边可独立设置。<br />默认值：undefined。<br />值为undefined时，不设置工具栏内边距。                                                                                                                                                                 |
+| backgroundVisibility  | [BarBackgroundVisibility](#barbackgroundvisibility)             | 否   | 是   | 工具栏背景是否可见。<br />默认值：BarBackgroundVisibility.VISIBLE。                                                                                                                                                    |
+| backgroundColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 工具栏背景色。<br />默认值：$r('sys.color.comp_background_primary')。                                                                                                                                                  |
+| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)   | 否   | 是   | 工具栏背景模糊样式。                                                                                                                                                                                                  |
+| groupSpace            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组之间的间距。<br />默认值：12vp，取值范围[8vp, 20vp]，超出范围时钳制到边界值。                                                                                                                                       |
+| itemSize              | [Size](../js-apis-arkui-graphics.md#size)                       | 否   | 是   | 工具栏子项的尺寸。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。                                                                                       |
+| fontSize              | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏子项文本的字体大小。<br />默认值：$r('sys.float.ohos_id_text_size_caption')。                                                                                                                                    |
+| borderWidth           | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏边框宽度。<br />默认值：undefined。<br />值为undefined时，不设置工具栏边框宽度。                                                                                                                                                                              |
+| borderColor           | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 工具栏边框颜色。<br />默认值：undefined。<br />值为undefined时，不设置工具栏边框颜色。                                                                                                                                                                              |
+| borderRadius          | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏圆角半径。<br />默认值：undefined。<br />值为undefined时，不设置工具栏圆角半径。                                                                                                                                                                              |
+| stateEffect           | boolean                                                         | 否   | 是   | 是否启用按压态效果。true表示启用按压态效果；false表示不启用按压态效果。<br />默认值：true。                                                                                                                                                                               |
+
+## ToolbarV2StyleConfigs
+
+工具栏样式配置。
+
+**起始版本：** 26.1.0
+
+**装饰器类型：** @ObservedV2
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+### 属性
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称                  | 类型                                                            | 只读 | 可选 | 说明                                                                                                                                                                                                                  |
+| :-------------------- | :-------------------------------------------------------------- | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| padding               | [ToolbarV2PaddingOptions](#toolbarv2paddingoptions)             | 否   | 是   | 工具栏内边距。各边可独立设置。<br />默认值：undefined。<br />值为undefined时，不设置工具栏内边距。<br />装饰器类型：@Trace                                                                                                                                        |
+| backgroundVisibility  | [BarBackgroundVisibility](#barbackgroundvisibility)             | 否   | 是   | 工具栏背景是否可见。<br />默认值：BarBackgroundVisibility.VISIBLE。<br />装饰器类型：@Trace                                                                                                                            |
+| backgroundColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 工具栏背景色。<br />默认值：$r('sys.color.comp_background_primary')。<br />装饰器类型：@Trace                                                                                                                          |
+| backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)   | 否   | 是   | 工具栏背景模糊样式。<br />默认值：undefined。<br />值为undefined时，不设置背景模糊样式。<br />装饰器类型：@Trace                                                                                                                                                  |
+| groupSpace            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组之间的间距。<br />默认值：12vp，取值范围[8vp, 20vp]，超出范围时钳制到边界值。<br />装饰器类型：@Trace                                                                                                               |
+| itemSize              | [Size](../js-apis-arkui-graphics.md#size)                       | 否   | 是   | 工具栏子项的尺寸。<br />水平方向：56vp（宽）× 48vp（高）；垂直方向：48vp（宽）× 56vp（高）。<br />默认值：主轴56vp × 交叉轴48vp。<br />装饰器类型：@Trace                                                                 |
+| fontSize              | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏子项文本的字体大小。<br />默认值：$r('sys.float.ohos_id_text_size_caption')。<br />装饰器类型：@Trace                                                                                                            |
+| borderWidth           | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏边框宽度。<br />默认值：undefined。<br />值为undefined时，不设置工具栏边框宽度。<br />装饰器类型：@Trace                                                                                                                                                      |
+| borderColor           | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 工具栏边框颜色。<br />默认值：undefined。<br />值为undefined时，不设置工具栏边框颜色。<br />装饰器类型：@Trace                                                                                                                                                      |
+| borderRadius          | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 工具栏圆角半径。<br />默认值：undefined。<br />值为undefined时，不设置工具栏圆角半径。<br />装饰器类型：@Trace                                                                                                                                                      |
+| stateEffect           | boolean                                                         | 否   | 是   | 是否启用按压态效果。true表示启用按压态效果；false表示不启用按压态效果。<br />默认值：true。<br />装饰器类型：@Trace                                                                                                                                                       |
+
+### constructor
+
+constructor(options?: ToolbarV2StyleOptions)
+
+ToolbarV2StyleConfigs的构造函数。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明               |
+| :------- | :-------------------------------------------------- | :--- | :----------------- |
+| options  | [ToolbarV2StyleOptions](#toolbarv2styleoptions)     | 否   | 工具栏样式配置信息。         |
 
 ## 示例
 

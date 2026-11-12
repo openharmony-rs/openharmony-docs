@@ -1779,6 +1779,39 @@ With this permission, the application can assist users in detecting whether hidd
 
 **Valid since**: 26.0.1
 
+## ohos.permission.ALLOW_CROSS_APP_IPC
+
+Allows IPC communication between applications of the same developer.
+
+<!--RP121-->
+The application must modify the "app-services-capabilities" field in the HarmonyAppProvision configuration file to add ipcGroupId. Only applications configured with the same ipcGroupId can perform cross-application IPC communication.
+
+Configuration example:
+
+```json5
+{
+  // ...
+  "acls":{
+    "allowed-acls":[
+      "ohos.permission.ALLOW_CROSS_APP_IPC"
+    ]
+  },
+  "app-services-capabilities": {
+    "ohos.permission.ALLOW_CROSS_APP_IPC": {"ipcGroupIds": ["ipcGroupId0000", "ipcGroupId1000"]}
+  }
+}
+```
+
+<!--RP121End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
 ## ohos.permission.INPUT_RECORDING
 
 Allows an application to listen for input events.
@@ -1836,5 +1869,19 @@ With this permission, the application can mark specified components as restricte
 **Authorization mode**: system_grant
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0
+
+## ohos.permission.HOOK_INPUT_EVENT
+
+Allows an application to intercept input events.
+
+<!--RP122--><!--RP122End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.1.0

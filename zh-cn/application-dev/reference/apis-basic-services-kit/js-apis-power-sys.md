@@ -200,6 +200,8 @@ setPowerMode(mode: DevicePowerMode, callback: AsyncCallback&lt;void&gt;): void
 
 设置当前设备的电源模式，不同的电源模式会影响设备的性能与功耗策略。使用callback异步回调。
 
+如需同时设置电源模式和子模式，请使用[power.setPowerMode](#powersetpowermode)。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.POWER_OPTIMIZATION
@@ -243,6 +245,8 @@ setPowerMode(mode: DevicePowerMode): Promise&lt;void&gt;
 
 设置当前设备的电源模式，不同的电源模式会影响设备的性能与功耗策略。使用Promise异步回调。
 
+如需同时设置电源模式和子模式，请使用[power.setPowerMode](#powersetpowermode)。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.POWER_OPTIMIZATION
@@ -279,6 +283,73 @@ setPowerMode(mode: DevicePowerMode): Promise&lt;void&gt;
 power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
 .then(() => {
     console.info('set power mode to MODE_PERFORMANCE');
+})
+.catch((err: BusinessError) => {
+    console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## power.setPowerMode
+
+setPowerMode(mode: DevicePowerMode, subMode?: DevicePowerSubMode): Promise&lt;void&gt;
+
+设置当前设备的电源模式及其子模式。使用 Promise 异步回调。
+
+如仅需设置电源模式，请使用[power.setPowerMode](#powersetpowermode9)。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.POWER_OPTIMIZATION
+
+**系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mode | [DevicePowerMode](js-apis-power.md#devicepowermode9) | 是 | 电源模式。各模式含义请参见[DevicePowerMode](js-apis-power.md#devicepowermode9)枚举说明。 |
+| subMode | [DevicePowerSubMode](js-apis-power.md#devicepowersubmode) | 否 | 电源模式子模式。各模式含义请参见[DevicePowerSubMode](js-apis-power.md#devicepowersubmode)枚举说明。仅 603 搭配 SUB_MODE_SUPER_POWER_SAVE 或 SUB_MODE_EMERGENCY，非 603 模式不支持子模式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[系统电源管理错误码](errorcode-power.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| 4900301 | Failed to set the power mode. Possible causes:<br>1. The power mode switching constraint is not met;<br>2. The power mode does not support the sub-mode, or the sub-mode does not match the power mode. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 203 | This function is prohibited by enterprise management policies. |
+| 4900101 | Failed to connect to the service. |
+
+**示例：**
+
+```js
+// 设置 603 + 超级省电子模式
+power.setPowerMode(power.DevicePowerMode.MODE_EXTREME_POWER_SAVE,
+    power.DevicePowerSubMode.SUB_MODE_SUPER_POWER_SAVE)
+.then(() => {
+    console.info('setPowerMode succeeded');
+})
+.catch((err: BusinessError) => {
+    console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
+});
+
+// 设置 603 + 应急子模式
+power.setPowerMode(power.DevicePowerMode.MODE_EXTREME_POWER_SAVE,
+    power.DevicePowerSubMode.SUB_MODE_EMERGENCY)
+.then(() => {
+    console.info('setPowerMode succeeded');
 })
 .catch((err: BusinessError) => {
     console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);

@@ -66,6 +66,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_AVCODEC_MIMETYPE_AUDIO_DVAUDIO | DVAUDIO（Digital Video Audio）音频解码器的MIME类型。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_AUDIO_DTS | DTS（Digital Theater Systems）音频解码器的MIME类型。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_AUDIO_COOK | COOK（RealAudio Cook）音频解码器的MIME类型。<br>从API version 23开始支持。 |
+| OH_AVCODEC_MIMETYPE_AUDIO_DSD | DSD（Direct Stream Digital）音频解码器的MIME类型。<br>从API版本26.1.0开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_VVC | VVC（H.266）视频编解码器的MIME类型。                    |
 | OH_AVCODEC_MIMETYPE_VIDEO_HEVC | HEVC（H.265）视频编解码器的MIME类型。                    |
 | OH_AVCODEC_MIMETYPE_VIDEO_AVC | AVC（H.264）视频编解码器的MIME类型。                     |
@@ -210,6 +211,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_AUDIO_MAX_INPUT_BUFFER_SIZE | 设置或查询音频编解码器最大输入缓冲区大小的键，值类型为int32_t，单位为字节。实际缓冲区大小受编解码器实现限制，超出上限的值不生效。该键是可选的。 |
 | OH_MD_KEY_AUDIO_ENCODER_PTS_MODE | 配置音频编码器输出PTS模式的键，值类型为int32_t，请参见[OH_AudioEncoderPTSMode](capi-native-avcodec-base-h.md#oh_audioencoderptsmode)。该键是可选的，不设置时默认为OH_AUDIO_ENCODER_PTS_MODE_DEFAULT。 |
 | OH_MD_KEY_AUDIO_ENCODER_ENABLE_SAMPLE_FORMAT_CONVERT | 使能音频编码器采样格式转换的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。使能后支持的输入采样格式为：SAMPLE_U8、SAMPLE_S16LE、SAMPLE_S24LE、SAMPLE_S32LE、SAMPLE_F32LE。该键是可选的。 |
+| OH_MD_KEY_AUDIO_DSD_CODEC_TYPE | DSD解码类型的键，值类型为int32_t，请参见[OH_AVCodec_DSDCodecType](capi-native-avcodec-audiobase-h.md#oh_avcodec_dsdcodectype)。该键是可选的，只用来标记DSD解码类型，默认值为OH_AVCODEC_DSD_CODEC_LSBF_PLANAR(0)。<br>该键从API版本26.1.0开始支持。 |
 
 ### 封装/解封装专有的键值对
 

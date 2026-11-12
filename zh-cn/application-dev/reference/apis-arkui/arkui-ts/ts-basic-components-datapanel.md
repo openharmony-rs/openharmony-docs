@@ -207,6 +207,8 @@ constructor(colorStops: ColorStop[])
 
 线性渐变颜色描述。
 
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -223,6 +225,8 @@ constructor(colorStops: ColorStop[])
 ## ColorStop<sup>10+</sup>
 
 颜色断点类型，用于描述渐变色颜色断点。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

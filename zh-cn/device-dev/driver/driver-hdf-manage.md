@@ -22,11 +22,40 @@ HCS（HDF Configuration Source）是HDF驱动框架的配置描述源码，内�
 
 ### 驱动模型
 
-HDF框架将一类设备驱动放在同一个Host（设备容器）里面，用于管理一组设备的启动加载等过程。在划分Host时，驱动程序是部署在一个Host还是部署在不同的Host，主要考虑驱动程序之间是否存在耦合性，如果两个驱动程序之间存在依赖，可以考虑将这部分驱动程序部署在一个Host里面，否则部署到独立的Host中是更好的选择。Device对应一个真实的物理设备。DeviceNode是设备的一个部件，Device至少有一个DeviceNode。每个DeviceNode可以发布一个设备服务。驱动即驱动程序，每个DevicdNode唯一对应一个驱动，实现和硬件的功能交互。HDF驱动模型如下图所示：
+HDF框架将一类设备驱动放在同一个Host（设备容器）里面，用于管理一组设备的启动加载等过程。在划分Host时，驱动程序是部署在一个Host还是部署在不同的Host，主要考虑驱动程序之间是否存在耦合性，如果两个驱动程序之间存在依赖，可以考虑将这部分驱动程序部署在一个Host里面，否则部署到独立的Host中是更好的选择。Device对应一个真实的物理设备。DeviceNode是设备的一个部件，Device至少有一个DeviceNode。每个DeviceNode可以发布一个设备服务。驱动即驱动程序，每个DeviceNode唯一对应一个驱动，实现和硬件的功能交互。HDF驱动模型如下图所示：
 
 **图1** HDF驱动模型
 
 ![](figures/HDF驱动模型.png)
+
+### HDF驱动整体架构（标准系统）
+
+在标准系统上，HDF由用户态的设备管理服务、设备容器（Host）进程和一套配置/工具链共同组成，相关代码分布在以下几个仓（目录）中：
+
+**表0** HDF相关代码仓（目录）及职责
+
+| 目录 | 职责 |
+| ---- | ---- |
+| drivers/hdf_core | HDF驱动框架核心：devhost/设备管理器/服务管理的核心实现（framework/core）、平台驱动 inner API 头文件（framework/include）、HCS解析与工具（hc-gen、hdi-gen、idl-gen，位于framework/tools）、系统适配层（adapter/khdf内核态、adapter/uhdf/uhdf2用户态）。组件名为 hdf_core。 |
+| drivers/interface | HDI（Hardware Device Interface）接口定义仓：按外设子系统分目录（audio、camera、display、input、sensor、wlan、usb等），每个目录下按版本（v1_0、v1_1…）存放 .idl 接口文件，由 hdi() 编译模板生成客户端 proxy 和服务端 stub 代码。 |
+| drivers/interface/tools | 工具仓：主要包含 hc-gen（HCS配置编译器，同时负责从 device_info.hcs 生成 host 进程的 init 启动配置），组件名为 drivers_tools。 |
+| drivers/peripheral | 外设 HDI 驱动实现仓：按外设分目录（audio、camera、display、input、sensor、wlan、usb、codec、devhost等），实现各外设的 HDI 服务端（hdi_service 目录），并以 libxxx_driver.z.so 的形式部署到对应 host 进程中加载。 |
+
+标准系统下用户态驱动的加载链路为：
+
+1. init 启动 hdf_devmgr（设备管理服务进程，配置见 drivers/hdf_core/adapter/uhdf2/manager/hdf_devmgr.cfg）；
+2. hdf_devmgr 解析板级 hdf.hcs 编译生成的 HCB 配置树，枚举 device_info.hcs 中定义的所有 host；
+3. 对每个 host，hdf_devmgr 通过 init 的服务控制接口（host 名即 init 服务名，对应的 hdf_devhost.cfg 由 hc-gen 从 device_info.hcs 自动生成）拉起 host 进程。所有用户态 host 进程共用同一个可执行文件 hdf_devhost（源码位于 drivers/peripheral/devhost/host/devhost.c），以 host 名为参数区分；
+4. host 进程按 deviceNode 的 moduleName 动态加载驱动（用户态为 dlopen .so 文件，内核态为静态链接的 HdfDriverEntry 表匹配），并依次调用驱动的 Bind、Init 接口完成驱动加载和服务发布。
+
+内核态（KHDF）驱动则由内核启动时直接加载，配置同样来源于板级 hdf_config 下的 khdf 目录（编译进内核镜像），无需上述进程拉起过程。
+
+基于以上分工，drivers/peripheral 下外设驱动的适配方式分为两类：
+
+- HDI接口类驱动（用户态）：在 drivers/interface 下定义 .idl 接口，由 hdi() 模板（drivers/hdf_core/adapter/uhdf2/hdi.gni）生成 proxy/stub；在 drivers/peripheral 对应模块的 hdi_service 目录实现服务端，编译产物为 shlib_type = "hdi" 的 libxxx_driver.z.so，由 device_info.hcs 中对应 host 的 deviceNode 以 moduleName = "libxxx_driver.z.so" 方式加载（如 sensor 的 libsensor_driver.z.so、camera 的 libcamera_host_service_1.0.z.so、wlan 的 libwifi_hdi_c_device.z.so）。
+- 纯HDF驱动（多见于内核态）：直接实现 HdfDriverEntry 并 HDF_INIT 注册，编译进内核（KHDF），由 khdf 的 device_info.hcs 加载（如平台驱动 linux_gpio_adapter、音频 CODEC_RK809、传感器 HDF_SENSOR_ALS 等）。
+
+板级配置位于 vendor/<厂商>/<开发板>/hdf_config 目录，以 vendor/hihope/rk3568/hdf_config 为例：khdf/ 子目录为内核态配置（hdf.hcs 为入口，经 hc-gen 编译为 C 数组编入内核），uhdf/ 子目录为用户态配置（hdf.hcs 为入口，经 hc-gen 生成 hdf_default.hcb 供 hdf_devmgr 解析，host 的 init 启动配置 hdf_devhost.cfg 也由其生成）。
 
 ## 功能描述
 
@@ -163,7 +192,7 @@ HCS主要分为属性（Attribute）和节点（Node）两种结构。
 
 属性即最小的配置单元，是一个独立的配置项。语法如下：
 
-```
+```text
   attribute_name = value;
 ```
 
@@ -178,7 +207,7 @@ HCS主要分为属性（Attribute）和节点（Node）两种结构。
 
 节点是一组属性的集合，语法如下：
 
-```
+```text
   node_name {
       module = "sample";
       ...
@@ -212,7 +241,7 @@ HCS主要分为属性（Attribute）和节点（Node）两种结构。
 
 数组元素支持整型、字符串，不支持混合类型。整型数组中uint32_t uint64_t混用会向上转型为uint64_t数组。整型数组与字符串数组示例如下：
 
-```
+```text
 attr_foo = [0x01, 0x02, 0x03, 0x04];
 attr_bar = ["hello", "world"];
 ```
@@ -227,7 +256,7 @@ bool类型中**true**表示真，**false**表示假。
 
 用于导入其他HCS文件。语法示例如下：
 
-```
+```text
 #include "foo.hcs"
 #include "../bar.hcs"
 ```
@@ -241,32 +270,32 @@ bool类型中**true**表示真，**false**表示假。
 
 -   单行注释。
 
-    ```
+    ```text
     // comment
     ```
 
 -   多行注释。
 
-    ```
+    ```text
     /*
     comment
     */
     ```
 
-    >   ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+    >   **说明：**
     >   多行注释不支持嵌套。
 
 ##### 引用修改
 
 引用修改的作用是在当前节点中修改另外任意一个节点的内容，语法为：
 
-```
+```text
  node :& source_node
 ```
 
 上述语句表示node中的内容是对source_node节点内容的修改。示例如下：
 
-```
+```text
 root {
     module = "sample";
     foo {
@@ -289,7 +318,7 @@ root {
 
 最终生成配置树为：
 
-```
+```text
 root {
     module = "sample";
     foo {
@@ -312,13 +341,13 @@ root {
 
 节点复制可以实现在节点定义时从另一个节点先复制内容，用于定义内容相似的节点。语法为：
 
-```
+```text
  node : source_node
 ```
 
 上述语句表示在定义"node"节点时将另一个节点"source_node"的属性复制过来。示例如下：
 
-```
+```text
 root {
     module = "sample";
     foo {
@@ -332,7 +361,7 @@ root {
 
 上述代码的最终生成配置树为：
 
-```
+```text
 root {
     module = "sample";
     foo {
@@ -353,7 +382,7 @@ root {
 
 要对include导入的base配置树中不需要的节点或属性进行删除，可以使用delete关键字。下面的举例中sample1.hcs通过include导入了sample2.hcs中的配置内容，并使用delete删除了sample2.hcs中的attribute2属性和foo_2节点，示例如下：
 
-```
+```text
 // sample2.hcs
 root {
     attr_1 = 0x1;
@@ -374,26 +403,26 @@ root {
 
 上述代码在生成过程中将会删除root.foo_2节点与attr_2，最终生成配置树为：
 
-```
+```text
 root {
     attr_1 = 0x1;
 }
 ```
 
->   ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+>   **说明：**
 >   在同一个HCS文件中不允许使用delete，建议直接删除不需要的属性。
 
 ##### 属性引用
 
 为了在解析配置时快速定位到关联的节点，可以把节点作为属性的右值，通过读取属性查找到对应节点。语法为：
 
-```
+```text
  attribute = &node；
 ```
 
 上述语句表示attribute的值是一个节点node的引用，在解析时可以用这个attribute快速定位到node，便于关联和查询其他node。示例如下：
 
-```
+```text
 node1 {
     attributes;
 }
@@ -404,7 +433,7 @@ node2 {
 
 或
 
-```
+```text
 node2 {
     node1 {
         attributes;
@@ -417,7 +446,7 @@ node2 {
 
 模板的用途在于生成严格一致的node结构，以便对同类型node进行遍历和管理。使用template关键字定义模板node，子node通过双冒号“::”声明继承关系。子节点可以改写或新增但不能删除template中的属性，子节点中没有定义的属性将使用template中的定义作为默认值。示例如下：
 
-```
+```text
 root {
     module = "sample";
     template foo {
@@ -436,7 +465,7 @@ root {
 
 ​        生成配置树如下：
 
-```
+```text
 root {
     module = "sample";
     bar {
@@ -460,7 +489,7 @@ root {
 
 ​        hc-gen参数说明：
 
-```
+```shell
 Usage: hc-gen [Options] [File]
 options:
   -o <file>   output file name, default same as input
@@ -478,27 +507,34 @@ options:
 
 生成.c/.h配置文件方法：
 
-```
+```shell
 hc-gen -o [OutputCFileName] -t [SourceHcsFileName]
 ```
 
 生成HCB配置文件方法：
 
-```
+```shell
 hc-gen -o [OutputHcbFileName] -b [SourceHcsFileName]
 ```
 
 生成宏定义配置文件方法：
 
-```
+```shell
 hc-gen -o [OutputMacroFileName] -m [SourceHcsFileName]
 ```
 
 反编译HCB文件为HCS方法：
 
-```
+```shell
 hc-gen -o [OutputHcsFileName] -d [SourceHcbFileName]
 ```
+
+除了上述配置格式转换能力外，在标准系统的编译构建中，hc-gen还会结合构建模板（hdf_hcb、hdf_cfg等GN模板，定义在drivers/hdf_core/adapter/uhdf2下）完成两件事：
+
+- 将板级hdf.hcs编译为HCB文件（如rk3568的hdf_default.hcb），安装后由hdf_devmgr加载解析，作为用户态驱动加载的配置来源。
+- 从device_info.hcs中提取host信息，自动生成各host进程的init启动配置（hdf_devhost.cfg），host名即init服务名，供hdf_devmgr请求init拉起host进程使用。
+
+因此开发者在device_info.hcs中新增host或deviceNode后，无需手工维护对应的进程启动配置，重新编译即可自动生成。
 
 ## 开发指导
 
@@ -575,7 +611,7 @@ hc-gen -o [OutputHcsFileName] -d [SourceHcbFileName]
         MODULE_NAME :=        #生成的结果文件
         LOCAL_INCLUDE :=      #本驱动的头文件目录
         LOCAL_SRCS :=         #本驱动的源代码文件
-        LOCAL_CFLAGS ：=      #自定义的编译选项
+        LOCAL_CFLAGS :=       #自定义的编译选项
         include $(HDF_DRIVER) #导入Makefile模板完成编译
         ```
 
@@ -590,7 +626,7 @@ hc-gen -o [OutputHcsFileName] -d [SourceHcbFileName]
 
         添加模块BUILD.gn，可参考如下示例：
 
-        ```
+        ```text
         import("//build/lite/config/component/lite_component.gni")
         import("//drivers/hdf_core/adapter/khdf/liteos/hdf.gni")
         module_switch = defined(LOSCFG_DRIVERS_HDF_xxx)
@@ -610,7 +646,7 @@ hc-gen -o [OutputHcsFileName] -d [SourceHcbFileName]
 
         把新增模块的BUILD.gn所在的目录添加到**/drivers/hdf_core/adapter/khdf/liteos/BUILD.gn**里面：
 
-        ```
+        ```text
         group("liteos") {
             public_deps = [ ":$module_name" ]
             deps = [
@@ -623,7 +659,7 @@ hc-gen -o [OutputHcsFileName] -d [SourceHcbFileName]
 
     如果需要定义模块控制宏，需要在模块目录xxx里面添加Kconfig文件，并把Kconfig文件路径添加到**drivers/hdf_core/adapter/khdf/linux/Kconfig**里面：
 
-    ```
+    ```text
     source "drivers/hdf/khdf/xxx/Kconfig" #目录为hdf模块软链接到kernel里面的目录
     ```
 
@@ -649,7 +685,7 @@ HDF使用HCS作为配置描述源码，HCS详细介绍[配置管理](#配置概�
 
     HDF框架加载驱动所需要的信息来源于HDF框架定义的驱动设备描述，因此基于HDF框架开发的驱动必须要在HDF框架定义的device_info.hcs配置文件中添加对应的设备描述。驱动的设备描述填写如下所示：
 
-    ```
+    ```text
     root {
         device_info {
             match_attr = "hdf_manager";
@@ -659,6 +695,9 @@ HDF使用HCS作为配置描述源码，HCS详细介绍[配置管理](#配置概�
                 uid = "";         // 用户态进程uid，缺省为空，会被配置为hostName的定义值，即普通用户。
                 gid = "";         // 用户态进程gid，缺省为空，会被配置为hostName的定义值，即普通用户组。
                 caps = [""];      // 用户态进程Linux capabilities配置，缺省为空，需要业务模块按照业务需要进行配置。
+                critical = [];    // 用户态host进程是否为关键进程，缺省为非关键进程。
+                processPriority = 0;  // 用户态host进程的进程调度优先级（nice值），缺省为0。需要实时性保障的host可配置，如composer_host配置为-8。
+                threadPriority = 0;   // 用户态host进程内驱动线程的调度优先级，缺省为0。
                 template device {
                     template deviceNode {
                         policy = 0;
@@ -691,7 +730,7 @@ HDF使用HCS作为配置描述源码，HCS详细介绍[配置管理](#配置概�
     }
     ```
 
-    >   ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+    >   **说明：**
     >
     >   -   uid、gid、caps等配置项是用户态驱动的启动配置，内核态不用配置。
     >   -   根据进程权限最小化设计原则，业务模块uid、gid不用配置，如上面的sample_host，使用普通用户权限，即uid和gid被定义为hostName的定义值。
@@ -699,12 +738,14 @@ HDF使用HCS作为配置描述源码，HCS详细介绍[配置管理](#配置概�
     >   -   进程的uid在文件**base/startup/init/services/etc/passwd**中配置，进程的gid在文件**base/startup/init/services/etc/group**中配置，进程uid和gid配置参考：[系统服务用户组添加方法](https://gitee.com/openharmony/startup_init_lite/wikis)。
     >   -   caps值：格式为caps = ["xxx"]，如果要配置CAP_DAC_OVERRIDE，此处需要填写caps = ["DAC_OVERRIDE"]，不能填写为caps = ["CAP_DAC_OVERRIDE"]。
     >   -   preload：驱动按需加载字段。
-
+    >   -   hostName：字符串长度不超过23。用户态host进程的hostName同时作为init服务名（hdf_devhost.cfg中配置），受init服务名长度限制，超过23个字符无法正常显示。
+    >   -   processPriority、threadPriority：用户态host进程和进程内驱动线程的调度优先级配置，仅对有实时性要求的host进程生效，一般无需配置。
+    >   -   moduleName的取值与驱动的部署形态有关：内核态驱动填写驱动入口结构中moduleName的值；标准系统用户态驱动以独立.so文件（如libsample_driver.z.so，编译时配置shlib_type = "hdi"）部署在host进程中，此时moduleName直接填写.so文件名，host进程按文件名加载驱动（如rk3568的sensor_host中moduleName = "libsensor_driver.z.so"）。
 -   驱动私有配置信息（可选）
 
     如果驱动有私有配置，则可以添加一个驱动的配置文件，用来填写一些驱动的默认配置信息。HDF框架在加载驱动的时候，会将对应的配置信息获取并保存在HdfDeviceObject中的property里面，通过Bind和Init（参考[驱动实现](#驱动实现)）传递给驱动。驱动的配置信息示例如下：
 
-    ```
+    ```text
     root {
         SampleDriverConfig {
             sample_version = 1;
@@ -716,7 +757,7 @@ HDF使用HCS作为配置描述源码，HCS详细介绍[配置管理](#配置概�
 
     配置信息定义之后，需要将该配置文件添加到板级配置入口文件hdf.hcs，示例如下：
 
-    ```
+    ```text
     #include "device_info/device_info.hcs"
     #include "sample/sample_config.hcs"
     ```
@@ -725,7 +766,7 @@ HDF使用HCS作为配置描述源码，HCS详细介绍[配置管理](#配置概�
 
 1.  将驱动配置信息中服务策略policy字段设置为2（SERVICE_POLICY_CAPACITY，[policy定义](#驱动服务管理)）。
 
-    ```
+    ```text
     device_sample :: Device {
         policy = 2;
         ...
@@ -803,7 +844,7 @@ HDF使用HCS作为配置描述源码，HCS详细介绍[配置管理](#配置概�
         }
     out:
         HdfSbufRecycle(data);
-        HdfSbbufRecycle(reply);
+        HdfSbufRecycle(reply);
         HdfIoServiceRecycle(serv);
         return ret;
     }
@@ -975,7 +1016,7 @@ int32_t TestDriverInit(struct HdfDeviceObject *deviceObject)
 
 在HDF框架的配置文件（例如vendor/hisilicon/xxx/hdf_config/device_info）中添加该驱动的配置信息，如下所示：
 
-```
+```text
 root {
     device_info {
         match_attr = "hdf_manager";
@@ -1194,7 +1235,7 @@ int main()
 }
 ```
 
->   ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+>   **说明：**
 >   用户态应用程序使用了HDF框架中的消息发送接口，因此在编译用户态程序的过程中需要依赖HDF框架对外提供的hdf_core和osal的动态库，在gn编译文件中添加如下依赖项：
 >
 >   deps = [
@@ -1204,3 +1245,35 @@ int main()
 >   ​        "//drivers/hdf_core/adapter/uhdf/posix:hdf_posix_osal",
 >
 >   ]
+
+## 外设驱动适配参考（以rk3568为例）
+
+标准系统下 drivers/peripheral 中的外设驱动普遍采用"HDI接口类驱动"的适配方式，整体分三层：
+
+1. 接口层：在 drivers/interface/<外设>/ 下按版本定义 .idl 接口文件，通过对应版本的BUILD.gn调用 hdi() 模板生成跨进程调用的客户端 proxy 与服务端 stub。
+2. 实现层：在 drivers/peripheral/<外设>/hdi_service（或interfaces/hdi_service等目录）实现服务端逻辑，包含一个 HDF_INIT 注册的服务驱动（负责接收调用并转发给 IDL stub）和具体业务实现，编译产物为 libxxx_driver.z.so（shlib_type = "hdi"）。部分模块另有 vdi_base / primary_impl 等目录用于承载芯片厂商的差异化实现（VDI：Vendor Device Interface）。
+3. 配置层：在 vendor/<厂商>/<开发板>/hdf_config/uhdf/device_info.hcs 的对应 host 节点下添加 deviceNode，moduleName 填写 .so 文件名，serviceName 填写对外发布的服务名。
+
+以 sensor（传感器）为例：
+
+- 接口：drivers/interface/sensor/v1_0/ 下的 ISensorInterface.idl 等接口文件；
+- 实现：drivers/peripheral/sensor/hdi_service/sensor_if_driver.cpp 中的服务驱动（moduleName = "sensor_service"，HDF_INIT 注册），hdi_impl 为接口实现，内核侧配合 hdf_core 的传感器驱动模型（framework/model/sensor）和板级传感器私有配置（vendor/hihope/rk3568/hdf_config/khdf/sensor/ 下各传感器 hcs）；
+- 配置：vendor/hihope/rk3568/hdf_config/uhdf/device_info.hcs 的 sensor :: host 节点（hostName = "sensor_host"）下配置 moduleName = "libsensor_driver.z.so"、serviceName = "sensor_interface_service"。
+
+rk3568 用户态 device_info.hcs 中的主要 host 及其加载的典型驱动如下表（节选）：
+
+| host节点 | hostName | 典型deviceNode（moduleName → serviceName） |
+| -------- | -------- | ------------------------------------------ |
+| audio | audio_host | libhdi_audio_primary_server.z.so → audio_hdi_service、libaudio_primary_driver.z.so → audio_manager_service、libeffect_model_service.z.so → effect_model_service |
+| hdi_server | camera_host | libcamera_host_service_1.0.z.so → camera_service |
+| display_composer | composer_host | libdisplay_composer_driver_1.0.z.so → display_composer_service（另有 processPriority = -8、caps = ["SYS_NICE"]等实时性配置） |
+| input_hal | input_user_host | libinput_driver.z.so → input_interfaces_service、libhid_ddk_driver.z.so → hid_ddk_service |
+| sensor | sensor_host | libsensor_driver.z.so → sensor_interface_service |
+| wlan | wifi_host | libwifi_hdi_c_device.z.so → wlan_interface_service、libchip_hdi_driver.z.so → chip_interface_service |
+| usb | usb_host | libusb_driver.z.so → usb_interface_service、libusb_ddk_driver.z.so → usb_ddk_service 等 |
+| codec | codec_host | libcodec_driver.z.so → codec_component_manager_service 等（codec能力描述由media_codec/*.hcs私有配置提供） |
+
+内核态（KHDF）侧的适配方式为：驱动实现 HdfDriverEntry 并 HDF_INIT 注册后编入内核，在 vendor/hihope/rk3568/hdf_config/khdf/device_info/device_info.hcs 对应 host（如 sensor_host、audio_host、network_host、platform_host 等）中添加 deviceNode，moduleName 填写驱动入口结构中的 moduleName 值，私有配置放在 hdf_config/khdf/ 下各外设目录（如 audio/、sensor/、wifi/），由 hdf.hcs 入口文件统一 include。
+
+>   **说明：**
+>   新增或修改外设驱动配置后，编译命令形如：./build.sh --product-name rk3568 --ccache --build-target hdf_core（部件名，见bundle.json中component -> name），或指定具体模块名（见BUILD.gn中的ohos_executable/ohos_shared_library等目标名）。

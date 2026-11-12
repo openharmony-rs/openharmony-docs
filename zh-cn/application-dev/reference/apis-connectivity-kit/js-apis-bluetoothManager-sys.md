@@ -32,7 +32,7 @@ cancelPairedDevice(deviceId: string): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[connection.cancelPairedDevice](js-apis-bluetooth-connection-sys.md#connectioncancelpaireddevice)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[connection.cancelPairedDevice](js-apis-bluetooth-connection.md#connectioncancelpaireddevice)替代。
 
 **系统接口**：此接口为系统接口。
 

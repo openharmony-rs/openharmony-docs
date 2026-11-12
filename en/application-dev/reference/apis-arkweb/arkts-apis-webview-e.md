@@ -1,12 +1,11 @@
 # Enums
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=595dfecd254e3797b40fd02681ac1055f9439da2 translatedAt=2026-08-07T04:26:21.387Z pushedAt=2026-08-07T07:52:02.478Z -->
+<!-- md-trans-meta sourceCommit=a33bf13ff8c8d3cf6424c77b7a18a34f79511763 translatedAt=2026-11-06T11:01:56.365Z pushedAt=2026-11-10T02:05:29.291Z nl=1 -->
 
 The ArkWeb Enums module is a collection of enum type definitions for ArkWeb (Web subsystem), providing unified type constraints and state description capabilities for the WebView component and its associated API classes. This module defines enum types covering multiple domains such as web page interaction, security status, DNS configuration, download tasks, media playback control, kernel version, process mode, memory management, offline resources, no-white-screen loading, site isolation, soft keyboard behavior, cookie policy, scroll control, and device form factor, serving as the foundational type support layer for the entire WebView API system.
 
@@ -371,7 +370,7 @@ Enumerates the error codes of the blankless loading.
 | SUCCESS | 0 | Operation successful.|
 | ERR_UNKNOWN   | -1 | Unknown error or internal status error.|
 | ERR_INVALID_PARAM   | -2 | Invalid parameter.|
-| ERR_CONTROLLER_NOT_INITED   | -3 | **WebViewController** is not bound to any component.|
+| ERR_CONTROLLER_NOT_INITED   | -3 | WebviewController is not bound to a component. |
 | ERR_KEY_NOT_MATCH   | -4 | No key value is matched. [setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20) must be used with [getBlanklessInfoWithKey](./arkts-apis-webview-WebviewController.md#getblanklessinfowithkey20) and their key values must be the same. Otherwise, this error code is returned.|
 | ERR_SIGNIFICANT_CHANGE   | -5 | The similarity is low, and the system determines that the scene change is too large. As a result, the [setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20) API does not enable frame interpolation.|
 | ERR_DURATION_OUT_OF_RANGE<sup>23+</sup>   | -6 | The frame interpolation duration set in [BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23) is out of range.<br>**Model restriction**: This API can be used only in the stage model.|
@@ -412,6 +411,7 @@ For ArkWeb kernel versions, see [Adaptation Guide for the M114 Kernel on OpenHar
 | Evergreen kernel    | EVERGREEN WebCore | Latest Web kernel of the system, based on which the complete functionalities are implemented. This kernel is recommended for applications.|
 | Legacy kernel    | LEGACY WebCore    | A previous-release kernel that receives only security and PR-related fixes, used solely for compatibility rollback, and is supported for a fixed duration only.|
 
+
 ## SiteIsolationMode<sup>21+</sup>
 
 The site isolation mechanism isolates websites from different origins in different renderer subprocesses, reducing the cross-origin attack surface. For example, in the original process model on PC, each tab corresponds to one renderer subprocess. After site isolation is enabled, iframes from different origins run in independent renderer subprocesses.
@@ -422,6 +422,7 @@ The site isolation mechanism isolates websites from different origins in differe
 | ------------------------------- | - | ---------- |
 | PARTIAL | 0 | Partial site isolation, that is, new sites are loaded in the same renderer process. |
 | STRICT  | 1 | Strict site isolation. Iframes from different sites are switched to new render processes.|
+
 
 ## WebSoftKeyboardBehaviorMode<sup>22+</sup>
 
@@ -463,3 +464,14 @@ Enumerates the user device forms.
 | TABLET | 'Tablet' |Tablet, which is a string.|
 | WATCH        | 'Watch' |Watch, a string type.|
 | XR        | 'XR' |VR+AR device, a string type.|
+
+## ControllerAttachState<sup>20+</sup>
+
+Binding state between WebviewController and the Web component.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name | Value | Description |
+| ------------------------------- | - | ---------- |
+| UNATTACHED | 0 | Unattached state. |
+| ATTACHED   | 1 | Attached state. |

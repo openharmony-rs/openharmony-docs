@@ -1,16 +1,15 @@
 # native_interface_accessibility.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b7479db6de085f0941251c421a48b8115ce3990d translatedAt=2026-08-21T12:08:14.476Z pushedAt=2026-08-24T07:18:52.394Z -->
+<!-- md-trans-meta sourceCommit=68ec98dcb0816277bd95993e62f8b8334c9a7e7e translatedAt=2026-11-09T11:56:50.126Z pushedAt=2026-11-10T10:50:29.202Z nl=1 -->
 
 ## Overview
 
-Declares the APIs for accessing Native Accessibility features, providing accessibility-related capabilities. It supports third-party frameworks in integrating their UI components into the ArkUI accessibility service system, including registering accessibility callbacks, setting and querying accessibility node information, proactively reporting accessibility events, and adapting to multi-instance scenarios. This enables the system accessibility service to recognize and operate UI components of third-party frameworks, making it suitable for scenarios where third-party UI frameworks need to interact with system accessibility capabilities.
+Declares the APIs for accessing Native Accessibility features, providing accessibility-related capabilities. It supports third-party platforms in integrating their UI components into the ArkUI accessibility service system, including registering accessibility callbacks, setting and querying accessibility node information, actively reporting accessibility events, and adapting to multi-instance scenarios. This enables the system accessibility service to recognize and operate the UI components of third-party platforms, making it suitable for scenarios where third-party UI frameworks need to interact with system accessibility capabilities.
 
 **File to include**: <arkui/native_interface_accessibility.h>
 
@@ -35,14 +34,14 @@ Declares the APIs for accessing Native Accessibility features, providing accessi
 | [ArkUI_AccessibleRangeInfo](capi-arkui-accessibility-arkui-accessiblerangeinfo.md) | ArkUI_AccessibleRangeInfo | Represents the range value information of a specific component (such as [Slider](arkui-ts/ts-basic-components-slider.md), [Rating](arkui-ts/ts-basic-components-rating.md), or [Progress](arkui-ts/ts-basic-components-progress.md)), including the current value, maximum value, and minimum value, for the accessibility service to read and announce to users with disabilities. |
 | [ArkUI_AccessibleGridInfo](capi-arkui-accessibility-arkui-accessiblegridinfo.md) | ArkUI_AccessibleGridInfo | Describes the overall layout attributes of a grid component. This struct is used to provide information such as the number of rows, number of columns, and selection mode of a grid component to the accessibility service, enabling it to obtain the overall layout information of the grid. |
 | [ArkUI_AccessibleGridItemInfo](capi-arkui-accessibility-arkui-accessiblegriditeminfo.md) | ArkUI_AccessibleGridItemInfo | Describes the accessibility attributes of a grid item within a grid component. This struct is used to provide information such as the position, span, and selected state of a grid item to the accessibility service, enabling it to obtain the layout information of the grid item. |
-| [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) | ArkUI_AccessibilityProviderCallbacks | Defines the callback functions for a third-party operation [provider](capi-arkui-accessibility-arkui-accessibilityprovider.md). These functions need to be implemented by the third-party platform and registered to the system through [OH_ArkUI_AccessibilityProviderRegisterCallback](capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback). It is applicable to accessibility assistance scenarios such as screen readers, voice control, and switch control, where the third-party platform responds to system accessibility queries and operation requests by implementing these callbacks. |
-| [ArkUI_AccessibilityProviderCallbacksWithInstance](capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) | ArkUI_AccessibilityProviderCallbacksWithInstance | Defines the callback functions for a third-party operation [provider](capi-arkui-accessibility-arkui-accessibilityprovider.md) in multi-instance scenarios, including accessibility-related callback functions such as node information query, focus search and clearing, operation execution, and cursor position retrieval. This struct must be implemented by the third-party platform and registered to the system through [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance), to support the third-party platform in integrating with the system accessibility service. |
+| [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) | ArkUI_AccessibilityProviderCallbacks | Defines callback functions of a third-party [provider](capi-arkui-accessibility-arkui-accessibilityprovider.md). The functions that need to be implemented by the third-party platform are registered with the system through [OH_ArkUI_AccessibilityProviderRegisterCallback](capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback). This struct is applicable to accessibility scenarios such as screen readers, voice control, and switch control. The third-party platform responds to the system's accessibility query and action requests by implementing these callbacks. All callback functions are executed on the IPC thread, not the UI thread. |
+| [ArkUI_AccessibilityProviderCallbacksWithInstance](capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) | ArkUI_AccessibilityProviderCallbacksWithInstance | Defines callback functions of a third-party action [provider](capi-arkui-accessibility-arkui-accessibilityprovider.md) in multi-instance scenarios, including node information query, focus search and clearing, action execution, and cursor position obtaining. The functions that need to be implemented by the third-party platform are registered with the system through [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance) to support the third-party platform in integrating with the system accessibility service. All callback functions are executed on the IPC thread, not the UI thread. |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) | Defines accessibility element information, used to pass element attributes, operations, positions, text, and other information to the accessibility service and applications (such as screen readers). It is applicable to assistance scenarios where the accessibility service obtains and operates UI elements. |
 | [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) | [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) | Defines accessibility event information. When the accessibility service or an accessibility application requests a control to perform an operation, the system or application needs to send an execution success event to notify the operation result. It is applicable to scenarios where the operation execution status needs to be fed back to the accessibility service. |
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) | Defines a provider for third-party accessibility operations, which is used to implement callback functions. You can register and manage accessibility-related callbacks through this struct to implement custom accessibility interaction logic. It is applicable to scenarios where ArkUI accessibility capabilities need to be extended or customized. |
 | [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md) | [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md) | Defines the parameters of accessibility actions. When performing an accessibility operation, you can use this struct to pass additional context information required by the operation to the accessibility service. It is applicable to scenarios where you need to precisely describe the details of accessibility operations to the accessibility service, such as accessibility screen reader announcements for custom controls, operation parameter passing in the accessibility service, and accessibility interactions triggered by voice assistants. |
 | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md) | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md) | Provides a **List** instance of encapsulated [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md), used for batch storage and management of accessibility element information. It is applicable to scenarios where multiple accessibility element information items need to be obtained at once. |
-| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer to an ArkUI native component instance object, used to identify and pass component instances in ArkUI native APIs, such as creating, mounting, removing, or destroying component nodes.<br>**Since:** 23 |
+| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer to an ArkUI native component instance object, which is used to identify and pass component instances in ArkUI native APIs, such as creating, mounting, removing, or destroying component nodes.<br>**Since:** 12  |
 
 ### Enums
 
@@ -70,7 +69,7 @@ Declares the APIs for accessing Native Accessibility features, providing accessi
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementInfo* elementInfo, const char* hintText)](#oh_arkui_accessibilityelementinfosethinttext) | Sets the hint text for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityText)](#oh_arkui_accessibilityelementinfosetaccessibilitytext) | Sets the accessibility-specific alternative text for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityDescription)](#oh_arkui_accessibilityelementinfosetaccessibilitydescription) | Sets the accessibility description for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElementInfo* elementInfo, int32_t childCount, int64_t* childNodeIds)](#oh_arkui_accessibilityelementinfosetchildnodeids) | Sets the number of child nodes and the child node ID array for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElementInfo* elementInfo, int32_t childCount, int64_t* childNodeIds)](#oh_arkui_accessibilityelementinfosetchildnodeids) | Sets the number of child nodes and the child node ID array for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md). |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_AccessibilityElementInfo* elementInfo,int32_t operationCount, ArkUI_AccessibleAction* operationActions)](#oh_arkui_accessibilityelementinfosetoperationactions) | Sets the list of accessibility operations supported by the component for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).<br>**Note:** **operationActions** is used to configure the set of accessibility operations supported by the component. Each call to this API replaces all previously set operation actions (update by overwriting but not appending). The value of **operationCount** must be greater than 0, and the **operationActions** array must contain at least **operationCount** valid elements. It is recommended to register the corresponding action types based on the interaction attributes of the component: clickable components should include **ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK**, and long-pressable components should include **ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_LONG_CLICK**. |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRect* screenRect)](#oh_arkui_accessibilityelementinfosetscreenrect) | Sets the rectangle area of the component on the screen for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElementInfo* elementInfo, bool checkable)](#oh_arkui_accessibilityelementinfosetcheckable) | Sets whether the component is checkable for **ArkUI_AccessibilityElementInfo**.|
@@ -104,8 +103,8 @@ Declares the APIs for accessing Native Accessibility features, providing accessi
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundColor)](#oh_arkui_accessibilityelementinfosetbackgroundcolor) | Sets the background color for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundImage)](#oh_arkui_accessibilityelementinfosetbackgroundimage) | Sets the background image for **ArkUI_AccessibilityElementInfo**.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo* elementInfo, const char* blur)](#oh_arkui_accessibilityelementinfosetblur) | Sets the blur effect for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)](#oh_arkui_accessibilityelementinfosethittestbehavior) | Sets the response logic and node blocking rules for hit testing for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md). The value can be **"Default"** (no blocking by default), **"Block"** (blocks the node itself and its child components), **"Transparent"** (the node itself does not respond but child components can respond), or **"None"** (neither the node itself nor its child components respond). The value cannot be a null pointer. |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo* elementInfo, const char* identifier)](#oh_arkui_accessibilityelementinfosetcomponentidentifier) | Sets the component identifier for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md), which can be used to identify a specific component during automated testing.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)](#oh_arkui_accessibilityelementinfosethittestbehavior) | Sets the response logic and node blocking rules for hit testing for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md). The value can be **"Default"** (default behavior, in which the node itself and its child nodes respond to the touch test, but sibling nodes are blocked from the touch test and ancestor nodes are not affected), **"Block"** (the node itself responds to the touch test and blocks child nodes, sibling nodes, and ancestor nodes from the touch test), **"Transparent"** (both the node itself and its child nodes respond to the touch test and do not block sibling nodes or ancestor nodes from the touch test), or **"None"** (the node itself does not respond to the touch test and does not block child nodes, sibling nodes, or ancestor nodes from the touch test). The value cannot be a null pointer. |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo* elementInfo, const char* identifier)](#oh_arkui_accessibilityelementinfosetcomponentidentifier) | Sets the component identifier for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md), which can be used to identify a specific component during automation testing.|
 | [ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)](#oh_arkui_createaccessibilityelementinfo) | Creates an [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) object. After the object is created, call [OH_ArkUI_DestoryAccessibilityElementInfo](#oh_arkui_destoryaccessibilityelementinfo) to destroy it.|
 | [void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_destoryaccessibilityelementinfo) | Destroys an [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) object.|
 | [ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)](#oh_arkui_createaccessibilityeventinfo) | Creates an [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) object. After the object is created, call [OH_ArkUI_DestoryAccessibilityEventInfo](#oh_arkui_destoryaccessibilityeventinfo) to destroy it.|
@@ -115,7 +114,11 @@ Declares the APIs for accessing Native Accessibility features, providing accessi
 | [int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo,  int32_t requestFocusId)](#oh_arkui_accessibilityeventsetrequestfocusid) | Sets the element ID of the accessibility node that requests focus for [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md). When sending an accessibility event (such as [ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_REQUEST_ACCESSIBILITY_FOCUS](#arkui_accessibilityeventtype)), you can use this API to specify the ID of the node that needs to gain focus, so that the accessibility service moves the accessibility focus to the specified node when processing the event. This is suitable for scenarios where the user needs to be proactively guided to focus on a specific element, such as guiding the focus to the first interactive element on a new page after page navigation. |
 | [int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_accessibilityeventsetelementinfo) | Sets the associated accessibility node information (**elementInfo**) for [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md), which is used to specify the accessibility node corresponding to the event. |
 | [int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)](#oh_arkui_findaccessibilityactionargumentbykey) | Obtains the value of a specified key in [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md).|
-| [int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)](#oh_arkui_nativemodule_getnativeaccessibilityprovider) | Obtains the double-pointer variable of the pointer to an [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) object.<br>The [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) object has a one-to-one correspondence with the instance of the passed-in [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).<br>A third-party framework maps its own UI components as [RenderNodes](js-apis-arkui-renderNode.md) of the [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) type and obtains [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).<br>Then, it calls the **OH_ArkUI_NativeModule_GetNativeAccessibilityProvider** API to obtain the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) pointer, and registers accessibility callbacks through [OH_ArkUI_AccessibilityProviderRegisterCallback](#oh_arkui_accessibilityproviderregistercallback) or [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](#oh_arkui_accessibilityproviderregistercallbackwithinstance).<br>Finally, the ArkUI accessibility service can identify the UI of the third-party framework and trigger events.<br>This API takes effect only when the third-party framework maps its own UI components as [RenderNodes](js-apis-arkui-renderNode.md) of the [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) type. Otherwise, an error code will be reported.<br>This API uses [RenderNode](js-apis-arkui-renderNode.md) to implement the access of the third-party framework. Only [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) can access the accessibility service to obtain the accessibility control tree.<br>Multi-thread concurrency is not supported. The third-party framework ensures thread security during the API calling. |
+| [int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)](#oh_arkui_nativemodule_getnativeaccessibilityprovider) | Obtains the double-pointer variable of the pointer to an [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) object.<br>The [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) object has a one-to-one correspondence with the instance of the passed-in [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).<br>A third-party platform maps its own UI components as [RenderNodes](js-apis-arkui-renderNode.md) of the [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) type and obtains [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).<br>Then, it calls **OH_ArkUI_NativeModule_GetNativeAccessibilityProvider** to obtain the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) pointer, and registers accessibility callbacks through [OH_ArkUI_AccessibilityProviderRegisterCallback](#oh_arkui_accessibilityproviderregistercallback) or [OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](#oh_arkui_accessibilityproviderregistercallbackwithinstance).<br>Finally, the ArkUI accessibility service can identify the UI of the third-party platform and trigger events.<br>This API takes effect only when the third-party platform maps its own UI components as [RenderNodes](js-apis-arkui-renderNode.md) of [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype). Otherwise, an error code will be reported.<br>This API uses [RenderNode](js-apis-arkui-renderNode.md) to implement the access of the third-party platform. Only [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) can access the accessibility service to obtain the accessibility control tree.<br>Multi-thread concurrency is not supported. The third-party platform ensures thread safety during the API calling.|
+| [int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bindId, ArkUI_NodeHandle exportedRoot)](#oh_arkui_accessibility_bindexporttree) | Binds an external ArkUI subtree to a specified placeholder node in the accessibility tree of a third-party framework.<br>When a third-party framework (such as CMP) uses a RenderNode to render a page and ArkUI native components are mixed into the RenderNode tree, these ArkUI native components form an external subtree that is invisible to the accessibility service by default. This API binds the external ArkUI subtree to a placeholder node in the accessibility tree of the third-party framework, so that accessibility focus traversal can enter the mixed ArkUI subtree, traverse its internal components, and then return to the accessibility tree of the third-party framework to continue traversal.<br>This API must be called on the UI main thread. The call is executed synchronously and does not call back the caller. Do not call it in a signal handler. If the accessibility tree of the third-party framework has not been registered with the accessibility service when this API is called, the binding takes effect asynchronously after registration is complete.<br>The binding relationship is identified by the (owner, bindId) pair. The same owner supports multiple bindings with different **bindId** values, and each exported subtree can have at most one valid binding. Calling this API repeatedly with the same (owner, bindId) pair neither replaces nor merges the existing binding: the original binding remains unchanged, and [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned. Establishing a binding for **exportedRoot** that already has a valid binding is rejected, and [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned. After [OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree) is executed, the bound subtree is completely detached from the accessibility tree and all binding resources are released. Binding the same (owner, bindId) pair again will execute the complete registration process.<br>**Since:** 26.0.1  |
+| [int32_t OH_ArkUI_Accessibility_UnbindExportTree(ArkUI_NodeHandle owner, int64_t bindId)](#oh_arkui_accessibility_unbindexporttree) | Unbinds the external ArkUI subtree previously bound to the accessibility tree of a third-party framework.<br>When the mixed ArkUI subtree is destroyed or replaced, call this API to remove the binding relationship established by [OH_ArkUI_Accessibility_BindExportTree](#oh_arkui_accessibility_bindexporttree). After unbinding, the accessibility service no longer traverses the previously bound ArkUI subtree.<br>This API must be called on the UI main thread. The call is executed synchronously and does not call back the caller. Do not call it in a signal handler. This API removes only the binding identified by the (owner, bindId) pair, and other bindings on the same owner are not affected. Unbinding an unknown or already unbound (owner, bindId) pair is an idempotent operation and returns success. When the binding exists, after this API returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode), the bound subtree is completely detached from the accessibility tree and all binding resources are released. The same (owner, bindId) pair can be bound again through [OH_ArkUI_Accessibility_BindExportTree](#oh_arkui_accessibility_bindexporttree), in which case the complete registration process will be executed.<br>**Since:** 26.0.1  |
+| [int32_t OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler(ArkUI_NodeHandle node, void *userData, void (\*handleAccessibilityHoverEvent)(void *userData, int32_t x, int32_t y, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo))](#oh_arkui_accessibility_registeraccessibilityhovereventhandler) | Registers an accessibility hover event handling callback for the host node of a third-party framework.<br>When screen reading is enabled and the user touches the host node area, ArkUI synchronously calls the registered callback and passes the coordinates relative to the host node. The third-party framework performs hit testing on its own and fills the information of the hit node into the output parameter **elementInfo** before the callback returns. ArkUI then reports the corresponding accessibility hover event to screen reading, so that screen reading focuses on the returned node. The third-party framework does not report this event on its own. Hover event types such as enter, move, and exit are maintained by ArkUI and are not passed as callback parameters.<br>After the callback is registered, the hover hit testing of the host subtree uses the result returned by the third-party framework, replacing the hit testing result of the system node tree. The swipe focus wrap rules remain unchanged, and nodes without a registered callback retain their existing hover behavior.<br>Registering repeatedly for the same node overwrites the previous callback and **userData**, and returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode). Subsequently, only the new registration information is used to call the callback. The callback can be unregistered through [OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler](#oh_arkui_accessibility_unregisteraccessibilityhovereventhandler).<br>This API is not thread-safe. The callback is executed synchronously on the UI main thread and should return as soon as possible to avoid blocking touch event handling.<br>**Since:** 26.1.0 |
+| [int32_t OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler(ArkUI_NodeHandle node)](#oh_arkui_accessibility_unregisteraccessibilityhovereventhandler) | Unregisters the accessibility hover event handling callback of the specified host node.<br>After unregistration, ArkUI no longer calls the callback registered through [OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler](#oh_arkui_accessibility_registeraccessibilityhovereventhandler), and the node restores its existing hover behavior. Calling this API for a node of a supported type that has no registered callback returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode), and the hover behavior of the node remains unchanged.<br>ArkUI does not release the memory pointed to by **userData** passed during registration. Its lifecycle is managed by the caller.<br>This API is not thread-safe.<br>**Since:** 26.1.0 |
 
 ## Enum Description
 
@@ -126,6 +129,7 @@ enum ArkUI_Accessibility_ActionType
 ```
 
 **Description**
+
 
 Enumerates accessibility action types.
 
@@ -139,7 +143,7 @@ Enumerates accessibility action types.
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS = 0x00000040 | Gains accessibility focus for the component.                                                                                                            |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS = 0x00000080 | Clears accessibility focus from the component.                                                                                                                   |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD = 0x00000100 | Initiates forward scrolling in scrollable containers.                                                                                                                    |
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD = 0x00000200 | Initiates backward scrolling in scrollable containers.                                                                                                                    |
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD = 0x00000200 | Initiates backward scrolling in scrollable containers. |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_COPY = 0x00000400 | Copies the current text selection.                                                                                                                     |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PASTE = 0x00000800 | Pastes content to the text component.                                                                                                                     |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CUT = 0x00001000 | Cuts the current text selection to the pasteboard.                                                                                                                     |
@@ -156,6 +160,7 @@ enum ArkUI_AccessibilityEventType
 ```
 
 **Description**
+
 
 Enumerates accessibility event types.
 
@@ -187,6 +192,7 @@ enum ArkUI_AcessbilityErrorCode
 
 **Description**
 
+
 Enumerates accessibility error codes.
 
 **Since**: 13
@@ -206,6 +212,7 @@ enum ArkUI_AccessibilitySearchMode
 
 **Description**
 
+
 Enumerates accessibility search modes.
 
 **Since**: 13
@@ -215,8 +222,8 @@ Enumerates accessibility search modes.
 | ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_CURRENT = 0 | Searches the current node.|
 | ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_PREDECESSORS = 1 << 0 | Searches parent nodes.|
 | ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_SIBLINGS = 1 << 1 | Searches sibling nodes.|
-| ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_CHILDREN = 1 << 2 | Searches immediate child nodes.|
-| ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_RECURSIVE_CHILDREN = 1 << 3 | Searches all child nodes.|
+| ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_CHILDREN = 1 << 2 | Searches immediate child nodes. |
+| ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_RECURSIVE_CHILDREN = 1 << 3 | Searches all child nodes. |
 
 ### ArkUI_AccessibilityFocusType
 
@@ -225,6 +232,7 @@ enum ArkUI_AccessibilityFocusType
 ```
 
 **Description**
+
 
 Enumerates accessibility focus types.
 
@@ -244,6 +252,7 @@ enum ArkUI_AccessibilityFocusMoveDirection
 
 **Description**
 
+
 Enumerates accessibility focus movement directions.
 
 **Since**: 13
@@ -258,6 +267,7 @@ Enumerates accessibility focus movement directions.
 | ARKUI_ACCESSIBILITY_NATIVE_DIRECTION_FORWARD = 0x00000010 | Moves focus to the next focusable node (relative to the reference node in query).|
 | ARKUI_ACCESSIBILITY_NATIVE_DIRECTION_BACKWARD = 0x00000020 | Moves focus to the previous focusable node (relative to the reference node in query).|
 
+
 ## Function Description
 
 ### OH_ArkUI_AccessibilityProviderRegisterCallback()
@@ -268,9 +278,11 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvid
 
 **Description**
 
+
 Registers the callback functions of a third-party operation provider with the system. These functions are implemented by the third-party platform.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -293,9 +305,11 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* i
 
 **Description**
 
+
 Registers callback functions with the system for third-party platforms in accessibility multi-instance scenarios.
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -319,19 +333,17 @@ void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider,
 
 **Description**
 
+
 Proactively sends an event to notify the accessibility service.
 
 **Usage flow:**
-
 1. Create an event information object using [OH_ArkUI_CreateAccessibilityEventInfo](#oh_arkui_createaccessibilityeventinfo).
-
 2. Configure the event type and related information using APIs such as [OH_ArkUI_AccessibilityEventSetEventType](#oh_arkui_accessibilityeventseteventtype) and [OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility](#oh_arkui_accessibilityeventsettextannouncedforaccessibility).
-
 3. Call this API to send the event.
-
 4. After sending, release the event information object using [OH_ArkUI_DestoryAccessibilityEventInfo](#oh_arkui_destoryaccessibilityeventinfo).
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -349,6 +361,7 @@ ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI
 
 **Description**
 
+
 Adds an **ArkUI_AccessibilityElementInfo** member to the specified list and returns the **ArkUI_AccessibilityElementInfo** struct.
 
 > **NOTE**
@@ -356,6 +369,7 @@ Adds an **ArkUI_AccessibilityElementInfo** member to the specified list and retu
 > The **ArkUI_AccessibilityElementInfo** object returned by this API is uniformly managed by the passed-in **ArkUI_AccessibilityElementInfoList**, and its lifecycle is bound to the list. There is no need to call **OH_ArkUI_DestoryAccessibilityElementInfo** separately to release the object.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -382,10 +396,11 @@ Sets the unique ID (**elementId**) of an accessibility element for [ArkUI_Access
 > **NOTE**
 > 
 > - **elementId** indicates the unique identifier of a node in the accessibility component tree, which is used by the accessibility service to locate and reference the specific node. The accessibility service relies on this identifier when searching for node information, performing operations, and moving focus.
-> - A third-party framework must ensure that **elementId** of each node in the same component tree is globally unique. Otherwise, the accessibility service may fail to find the node.
-> - The value of **elementId** is allocated and maintained by the third-party framework. You are advised to use an incremental integer or a stable component ID.
+> - A third-party platform must ensure that **elementId** of each node in the same component tree is globally unique. Otherwise, the accessibility service may fail to find the node.
+> - The value of **elementId** is allocated and maintained by the third-party platform. You are advised to use an incremental integer or a stable component ID.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -418,6 +433,7 @@ Sets the accessibility ID (**parentId**) of the parent element for [ArkUI_Access
 
 **Since**: 13
 
+
 **Parameters**
 
 | Name| Description|
@@ -444,10 +460,11 @@ Sets the component type for [ArkUI_AccessibilityElementInfo](capi-arkui-accessib
 > **NOTE**
 > 
 > - **componentType** is used to identify the component type of an accessibility node, such as **Button**, **Text**, **Image**, and **List**.
-> - The accessibility service (such as an accessibility application) determines how to describe and interact with the node for users based on the component type. For example, the **Button** type is read as a button, and the **Text** type is read as text. A third-party framework can use its own component type name. You are advised to use the character string that is the same as the ArkUI component name to achieve the best reading effect.
-> - The recommended component type names include: [Button](arkui-ts/ts-basic-components-button.md), [Text](arkui-ts/ts-basic-components-text.md), [Image](arkui-ts/ts-basic-components-image.md), [List](arkui-ts/ts-container-list.md), [TextInput](arkui-ts/ts-basic-components-textinput.md), [Slider](arkui-ts/ts-basic-components-slider.md), [Rating](arkui-ts/ts-basic-components-rating.md), [Progress](arkui-ts/ts-basic-components-progress.md), [CheckBox](arkui-ts/ts-basic-components-checkbox.md), [Toggle](arkui-ts/ts-basic-components-toggle.md), [Grid](arkui-ts/ts-container-grid.md), [Swiper](arkui-ts/ts-container-swiper.md), [Select](arkui-ts/ts-basic-components-select.md), and [Tab](arkui-ts/ts-container-tabs.md).
+> - The accessibility service (such as an accessibility application) determines how to describe and interact with the node for users based on the component type. For example, the **Button** type is read as a button, and the **Text** type is read as text. A third-party platform can use its own component type name. You are advised to use the character string that is the same as the ArkUI component name to achieve the best reading effect.
+> - The recommended component type names include: [Button](arkui-ts/ts-basic-components-button.md), [Text](arkui-ts/ts-basic-components-text.md), [Image](arkui-ts/ts-basic-components-image.md), [List](arkui-ts/ts-container-list.md), [TextInput](arkui-ts/ts-basic-components-textinput.md), [Slider](arkui-ts/ts-basic-components-slider.md), [Rating](arkui-ts/ts-basic-components-rating.md), [Progress](arkui-ts/ts-basic-components-progress.md), [Checkbox](arkui-ts/ts-basic-components-checkbox.md), [Toggle](arkui-ts/ts-basic-components-toggle.md), [Grid](arkui-ts/ts-container-grid.md), [Swiper](arkui-ts/ts-container-swiper.md), [Select](arkui-ts/ts-basic-components-select.md), and [Tabs](arkui-ts/ts-container-tabs.md).
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -483,6 +500,7 @@ Sets the component text for [ArkUI_AccessibilityElementInfo](capi-arkui-accessib
 
 **Since**: 13
 
+
 **Parameters**
 
 | Name| Description|
@@ -504,6 +522,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementI
 
 **Description**
 
+
 Sets the hint text for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -513,6 +532,7 @@ Sets the hint text for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility
 > - A null pointer cannot be passed to **hintText**. If a null pointer is passed, [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) is returned.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -535,6 +555,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_Accessibilit
 
 **Description**
 
+
 Sets the accessibility-specific alternative text for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -545,6 +566,7 @@ Sets the accessibility-specific alternative text for [ArkUI_AccessibilityElement
 > - A null pointer cannot be passed to **accessibilityText**. If a null pointer is passed, [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) is returned.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -576,6 +598,7 @@ Sets the accessibility description for [ArkUI_AccessibilityElementInfo](capi-ark
 > - A null pointer cannot be passed to **accessibilityDescription**. If a null pointer is passed, [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) is returned.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -609,13 +632,14 @@ Sets the number of child nodes and the child node ID array for [ArkUI_Accessibil
 
 **Since**: 13
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
-| int32_t childCount | Number of child nodes, which must be greater than 0.|
-| int64_t* childNodeIds | Pointer to the child node ID array. Each ID must point to an existing **elementId** of a child node. The value cannot be a null pointer.|
+| int32_t childCount | Number of child nodes, which must be greater than 0. |
+| int64_t* childNodeIds | Pointer to the child node ID array. Each ID must point to an existing **elementId** of a child node. The value cannot be a null pointer. |
 
 **Returns**
 
@@ -631,6 +655,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_Accessibility
 
 **Description**
 
+
 Sets the list of accessibility actions supported by the component for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -639,6 +664,7 @@ Sets the list of accessibility actions supported by the component for [ArkUI_Acc
 
 **Since**: 13
 
+
 **Parameters**
 
 | Name| Description|
@@ -646,6 +672,7 @@ Sets the list of accessibility actions supported by the component for [ArkUI_Acc
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
 | int32_t operationCount | Number of actions supported by the component. The value must be greater than 0. When 0 or a negative number is passed in, **ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER** is returned. |
 | [ArkUI_AccessibleAction](capi-arkui-accessibility-arkui-accessibleaction.md)* operationActions | Pointer to the array of actions supported by the component. The array must contain at least **operationCount** valid elements and cannot be a null pointer. For details about the supported action types, see [ArkUI_Accessibility_ActionType](#arkui_accessibility_actiontype). |
+
 
 **Returns**
 
@@ -672,6 +699,7 @@ Sets the rectangle area of the component on the screen for [ArkUI_AccessibilityE
 
 **Since**: 13
 
+
 **Parameters**
 
 | Name| Description|
@@ -693,15 +721,17 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElement
 
 **Description**
 
+
 Sets whether the component is checkable for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
 > 
-> - This API applies to components that have checkable semantics, such as [CheckBox](arkui-ts/ts-basic-components-checkbox.md), [Toggle](arkui-ts/ts-basic-components-toggle.md), and [Radio](arkui-ts/ts-basic-components-radio.md) in ArkUI.
+> - This API applies to components that have checkable semantics, such as [Checkbox](arkui-ts/ts-basic-components-checkbox.md), [Toggle](arkui-ts/ts-basic-components-toggle.md), and [Radio](arkui-ts/ts-basic-components-radio.md) in ArkUI.
 > - Accessibility applications will announce the "checkable" prompt to users based on the checkable state and inform the users that they can perform an operation to change the checkable state.
 > - When setting **checkable** to **true**, you need to use [OH_ArkUI_AccessibilityElementInfoSetChecked](#oh_arkui_accessibilityelementinfosetchecked) to set **checked** to indicate the current checked state.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -724,6 +754,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementIn
 
 **Description**
 
+
 Sets the current checked state for the component for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -733,6 +764,7 @@ Sets the current checked state for the component for [ArkUI_AccessibilityElement
 > - If only **checked** is set and the **checkable** attribute is not set to **true**, the checked state will not be displayed in accessibility applications.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -755,6 +787,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElement
 
 **Description**
 
+
 Sets whether the component is focusable for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -765,6 +798,7 @@ Sets whether the component is focusable for [ArkUI_AccessibilityElementInfo](cap
 > - The difference between **focusable** and **accessibilityFocused** lies in: **focusable** indicates the input focus capability, and **accessibilityFocused** indicates the current status of the accessibility focus.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -787,6 +821,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementIn
 
 **Description**
 
+
 Sets whether the component has been focused for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -796,6 +831,7 @@ Sets whether the component has been focused for [ArkUI_AccessibilityElementInfo]
 > - The difference between **isFocused** and **accessibilityFocused** lies in: **isFocused** indicates the input focus state, while **accessibilityFocused** (set by [OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused](#oh_arkui_accessibilityelementinfosetaccessibilityfocused)) indicates the accessibility focus state.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -827,6 +863,7 @@ Sets whether the component is visible on the screen for [ArkUI_AccessibilityElem
 
 **Since**: 13
 
+
 **Parameters**
 
 | Name| Description|
@@ -854,10 +891,11 @@ Sets the current accessibility focus status for [ArkUI_AccessibilityElementInfo]
 > 
 > - When users browse UIs by focus movement of accessibility applications, the value of **accessibilityFocused** for the focused nodes should be **true**.
 > - Accessibility applications announce the content of the nodes whose **accessibilityFocused** is set to **true** and draw focus highlight boxes on the screen.
-> - When the accessibility service performs the [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS](#arkui_accessibility_actiontype) and [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS](#arkui_accessibility_actiontype) actions, a third-party framework should update the status accordingly and notify the system by sending the [ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED](#arkui_accessibilityeventtype) or [ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUS_CLEARED](#arkui_accessibilityeventtype) event.
+> - When the accessibility service performs the [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS](#arkui_accessibility_actiontype) and [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS](#arkui_accessibility_actiontype) actions, a third-party platform should update the status accordingly and notify the system by sending the [ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED](#arkui_accessibilityeventtype) or [ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUS_CLEARED](#arkui_accessibilityeventtype) event.
 > - The difference between **accessibilityFocused** and **isFocused** lies in: **accessibilityFocused** indicates the accessibility focus state, and **isFocused** indicates the input focus (keyboard focus) state.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -880,15 +918,17 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementI
 
 **Description**
 
+
 Sets whether the component is selected for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
 > 
-> - This API applies to components that have the selected semantics, such as [Tab](arkui-ts/ts-container-tabs.md) and [ListItem](arkui-ts/ts-container-listitem.md) in ArkUI.
-> - Accessibility applications will announce "selected" or "deselected" based on the selected state. For [Tab](arkui-ts/ts-container-tabs.md), the tab whose **selected** is set to **true** will be announced as the current active tab.
+> - This API applies to components that have the selected semantics, such as [Tabs](arkui-ts/ts-container-tabs.md) and [ListItem](arkui-ts/ts-container-listitem.md) in ArkUI.
+> - Accessibility applications will announce "selected" or "deselected" based on the selected state. For [Tabs](arkui-ts/ts-container-tabs.md), the tab whose **selected** is set to **true** will be announced as the current active tab.
 > - In list scenarios, **selected** can be used together with **accessibilityGroup** (set by [OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup](#oh_arkui_accessibilityelementinfosetaccessibilitygroup)) to mark the currently activated list item.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -911,15 +951,17 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElement
 
 **Description**
 
+
 Sets whether the component is clickable for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
 > 
-> - Accessibility applications will notify users that the component is clickable. When the users perform click actions through the accessibility applications, the system will use the **executeAccessibilityAction** callback in [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) to notify third-party frameworks.
+> - Accessibility applications will notify users that the component is clickable. When the users perform click actions through the accessibility applications, the system will use the **executeAccessibilityAction** callback in [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) to notify third-party platforms.
 > - When setting **clickable** to **true**, you need to add [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK](#arkui_accessibility_actiontype) to **operationActions** through [OH_ArkUI_AccessibilityElementInfoSetOperationActions](#oh_arkui_accessibilityelementinfosetoperationactions). Otherwise, users cannot click the component through accessibility applications.
 > - **clickable** must be used together with **enabled** (set by [OH_ArkUI_AccessibilityElementInfoSetEnabled](#oh_arkui_accessibilityelementinfosetenabled)). When **clickable** is set to **true** but **enabled** is set to **false**, accessibility applications will announce "disabled", indicating that the component is clickable but currently unavailable.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -942,15 +984,17 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityEle
 
 **Description**
 
+
 Sets whether the component can be long-pressed for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
 > 
-> - Accessibility applications will notify users that the component can be long-pressed. When the users perform long-pressing actions through the accessibility applications, the system will use the **executeAccessibilityAction** callback in [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) to notify third-party frameworks.
+> - Accessibility applications will notify users that the component can be long-pressed. When the users perform long-pressing actions through the accessibility applications, the system will use the **executeAccessibilityAction** callback in [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) to notify third-party platforms.
 > - When setting **longClickable** to **true**, you need to add [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_LONG_CLICK](#arkui_accessibility_actiontype) to **operationActions** through [OH_ArkUI_AccessibilityElementInfoSetOperationActions](#oh_arkui_accessibilityelementinfosetoperationactions).
 > - Otherwise, users cannot long-press the component through accessibility applications.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -973,6 +1017,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementIn
 
 **Description**
 
+
 Sets whether the component is in the enabled state for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -983,6 +1028,7 @@ Sets whether the component is in the enabled state for [ArkUI_AccessibilityEleme
 > - **isEnabled** must be explicitly set to **true** for all components with which users need to interact.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1005,6 +1051,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElemen
 
 **Description**
 
+
 Sets whether the component is a password text box for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1014,6 +1061,7 @@ Sets whether the component is a password text box for [ArkUI_AccessibilityElemen
 > - If this attribute is not set or is set to **false**, accessibility applications may directly read the password content, posing a security risk.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1036,6 +1084,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElemen
 
 **Description**
 
+
 Sets whether the component is scrollable for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1045,6 +1094,7 @@ Sets whether the component is scrollable for [ArkUI_AccessibilityElementInfo](ca
 > - When setting **scrollable** to **true**, you need to add scrolling actions to **operationActions** through [OH_ArkUI_AccessibilityElementInfoSetOperationActions](#oh_arkui_accessibilityelementinfosetoperationactions), including [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD](#arkui_accessibility_actiontype) and [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD](#arkui_accessibility_actiontype). Otherwise, users cannot scroll the content of the component through the auxiliary applications.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1067,6 +1117,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementI
 
 **Description**
 
+
 Sets whether the text content is editable for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1077,6 +1128,7 @@ Sets whether the text content is editable for [ArkUI_AccessibilityElementInfo](c
 > - If both **editable** and **isPassword** (set by [OH_ArkUI_AccessibilityElementInfoSetIsPassword](#oh_arkui_accessibilityelementinfosetispassword)) are set to **true**, accessibility applications will announce "password edit box". The default value is **false**.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1099,6 +1151,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInf
 
 **Description**
 
+
 Sets whether the component is in the hint text state for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1109,6 +1162,7 @@ Sets whether the component is in the hint text state for [ArkUI_AccessibilityEle
 > - If **isHint** is set to **true** but **hintText** is not set, accessibility applications may announce empty content.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1131,6 +1185,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElement
 
 **Description**
 
+
 Sets the range information for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1142,6 +1197,7 @@ Sets the range information for [ArkUI_AccessibilityElementInfo](capi-arkui-acces
 > - A null pointer cannot be passed to **rangeInfo** or **elementInfo**. Otherwise, [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) is returned.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1164,6 +1220,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementI
 
 **Description**
 
+
 Sets the grid information for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1174,6 +1231,7 @@ Sets the grid information for [ArkUI_AccessibilityElementInfo](capi-arkui-access
 > - A null pointer cannot be passed to **gridInfo** and **elementInfo**. Otherwise, [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) is returned.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1196,6 +1254,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElem
 
 **Description**
 
+
 Sets the attribute information of subitems in the grid container for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1206,6 +1265,7 @@ Sets the attribute information of subitems in the grid container for [ArkUI_Acce
 > - A null pointer cannot be passed to **gridItem** and **elementInfo**. Otherwise, [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) is returned.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1228,17 +1288,18 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_Accessibilit
 
 **Description**
 
+
 Sets the start position of the selected text for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
 >
 > - **selectedTextStart** is used for editable text components to mark the start character index position (counting from 0) of the currently selected text.
 > - Auxiliary applications, such as accessibility applications, announce the currently selected text range based on **selectedTextStart** and **selectedTextEnd**.
-> - When a user performs an [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT](#arkui_accessibility_actiontype) action through an accessibility application, a third-party framework should obtain the start position.
-> - You can obtain the start position through **selectTextBegin** in [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md).
+> - When a user performs an [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT](#arkui_accessibility_actiontype) action through an accessibility application, a third-party platform should obtain the start position through the **selectTextBegin** parameter in [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md).
 > - **selectedTextStart** must be used together with **selectedTextEnd** (set by [OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd](#oh_arkui_accessibilityelementinfosetselectedtextend)), and the value of **selectedTextStart** must not be greater than that of **selectedTextEnd**.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1261,6 +1322,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityE
 
 **Description**
 
+
 Sets the end position of the selected text for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1271,6 +1333,7 @@ Sets the end position of the selected text for [ArkUI_AccessibilityElementInfo](
 > - When no text is selected, **selectedTextStart** and **selectedTextEnd** can be set to the same value (that is, the cursor position).
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1293,23 +1356,25 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_Accessibility
 
 **Description**
 
+
 Sets the position index of the currently focused or highlighted subitem for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
 > 
-> - **currentItemIndex** is used for container components, such as [List](arkui-ts/ts-container-list.md), [Select](arkui-ts/ts-basic-components-select.md), [Swiper](arkui-ts/ts-container-swiper.md), and [Tab](arkui-ts/ts-container-tabs.md), and it indicates the position index (starting from 0) of the currently focused or active subitem in the container.
+> - **currentItemIndex** is used for container components, such as [List](arkui-ts/ts-container-list.md), [Select](arkui-ts/ts-basic-components-select.md), [Swiper](arkui-ts/ts-container-swiper.md), and [Tabs](arkui-ts/ts-container-tabs.md), and it indicates the position index (starting from 0) of the currently focused or active subitem in the container.
 > - Accessibility applications will announce the position of the current item, for example, "item 3 of 10".
 > - **currentItemIndex** must be used together with **itemCount** (set by [OH_ArkUI_AccessibilityElementInfoSetItemCount](#oh_arkui_accessibilityelementinfosetitemcount)) so that accessibility applications can announce the complete information, that is, "item X of Y".
 > - The value of **currentItemIndex** must be within the range of 0 to **itemCount** – 1.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
-| int32_t currentItemIndex | Position index (starting from 0) of the currently focused component, with a value range of [0, itemCount - 1]. It must be used together with **itemCount**. This parameter is applicable to container components such as [List](arkui-ts/ts-container-list.md), [Select](arkui-ts/ts-basic-components-select.md), [Swiper](arkui-ts/ts-container-swiper.md), and [Tab](arkui-ts/ts-container-tabs.md). |
+| int32_t currentItemIndex | Position index (starting from 0) of the currently focused component, with a value range of [0, itemCount - 1]. It must be used together with **itemCount**. This parameter is applicable to container components such as [List](arkui-ts/ts-container-list.md), [Select](arkui-ts/ts-basic-components-select.md), [Swiper](arkui-ts/ts-container-swiper.md), and [Tabs](arkui-ts/ts-container-tabs.md). |
 
 **Returns**
 
@@ -1325,22 +1390,24 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityEl
 
 **Description**
 
+
 Sets the position index of the first element in the visible area of the current screen for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
 > 
-> - **startItemIndex** is used for scrollable container components, such as [List](arkui-ts/ts-container-list.md), [Select](arkui-ts/ts-basic-components-select.md), [Swiper](arkui-ts/ts-container-swiper.md), and [Tab](arkui-ts/ts-container-tabs.md), and it indicates the position index (starting from 0) of the first subitem in the visible area of the current screen.
+> - **startItemIndex** is used for scrollable container components, such as [List](arkui-ts/ts-container-list.md), [Select](arkui-ts/ts-basic-components-select.md), [Swiper](arkui-ts/ts-container-swiper.md), and [Tabs](arkui-ts/ts-container-tabs.md), and it indicates the position index (starting from 0) of the first subitem in the visible area of the current screen.
 > - Auxiliary applications, such as accessibility applications, determine the visible area based on **startItemIndex** and **endItemIndex** (set by [OH_ArkUI_AccessibilityElementInfoSetEndItemIndex](#oh_arkui_accessibilityelementinfosetenditemindex)) to optimize focus movement and announcement.
 > - The value of **startItemIndex** must be less than or equal to that of **endItemIndex**, and both values must be within the range of 0 to **itemCount** – 1.
 
 **Since**: 13
+
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
-| int32_t startItemIndex | Position index (starting from 0) of the first element in the visible area of the current screen. This parameter is used for container components such as **List**, **Select**, **Swiper**, and [Tab](arkui-ts/ts-container-tabs.md). |
+| int32_t startItemIndex | Position index (starting from 0) of the first element in the visible area of the current screen. This parameter is used for container components such as **List**, **Select**, **Swiper**, and [Tabs](arkui-ts/ts-container-tabs.md). |
 
 **Returns**
 
@@ -1356,22 +1423,24 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElem
 
 **Description**
 
+
 Sets the position index of the last element in the visible area of the current screen for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
 > 
-> - **endItemIndex** is used for scrollable container components, such as [List](arkui-ts/ts-container-list.md), [Select](arkui-ts/ts-basic-components-select.md), [Swiper](arkui-ts/ts-container-swiper.md), and [Tab](arkui-ts/ts-container-tabs.md), and it indicates the position index (starting from 0) of the last subitem in the visible area of the current screen.
+> - **endItemIndex** is used for scrollable container components, such as [List](arkui-ts/ts-container-list.md), [Select](arkui-ts/ts-basic-components-select.md), [Swiper](arkui-ts/ts-container-swiper.md), and [Tabs](arkui-ts/ts-container-tabs.md), and it indicates the position index (starting from 0) of the last subitem in the visible area of the current screen.
 > - Auxiliary applications, such as accessibility applications, determine the visible area based on **startItemIndex** (set by [OH_ArkUI_AccessibilityElementInfoSetStartItemIndex](#oh_arkui_accessibilityelementinfosetstartitemindex)) and **endItemIndex**, so that the applications can announce scrolling progress based on these values when users perform scrolling actions.
 > - The value of **endItemIndex** must be greater than or equal to that of **startItemIndex**, and both values must be within the range of 0 to **itemCount** – 1.
 
 **Since**: 13
+
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
-| int32_t endItemIndex | Position index (starting from 0) of the last element in the visible area on the current screen. The value range is [0, itemCount - 1], and the value must be greater than or equal to that of **startItemIndex**. This parameter is used for container components such as **List**, **Select**, **Swiper**, and [Tab](arkui-ts/ts-container-tabs.md). |
+| int32_t endItemIndex | Position index (starting from 0) of the last element in the visible area on the current screen. The value range is [0, itemCount - 1], and the value must be greater than or equal to that of **startItemIndex**. This parameter is used for container components such as **List**, **Select**, **Swiper**, and [Tabs](arkui-ts/ts-container-tabs.md). |
 
 **Returns**
 
@@ -1387,23 +1456,25 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElement
 
 **Description**
 
+
 Sets the total number of subitems in the container for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
 > 
-> - **itemCount** is used for container components, such as [List](arkui-ts/ts-container-list.md), [Select](arkui-ts/ts-basic-components-select.md), [Swiper](arkui-ts/ts-container-swiper.md), and [Tab](arkui-ts/ts-container-tabs.md), and it indicates the total number of subitems in the container.
+> - **itemCount** is used for container components, such as [List](arkui-ts/ts-container-list.md), [Select](arkui-ts/ts-basic-components-select.md), [Swiper](arkui-ts/ts-container-swiper.md), and [Tabs](arkui-ts/ts-container-tabs.md), and it indicates the total number of subitems in the container.
 > - Auxiliary applications, such as accessibility applications, will announce the position of the current item based on **currentItemIndex** (set by [OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex](#oh_arkui_accessibilityelementinfosetcurrentitemindex)) and **itemCount**, for example, "item 3 of 10".
 > - The value of **itemCount** should be the total number of subitems in the container (including both visible and invisible items), not just the number of subitems currently visible on the screen.
 > - The value of **itemCount** must be a non-negative integer. The value **0** indicates that the container is empty.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
-| int32_t itemCount | Total number of subitems (including visible and invisible ones) in the container, which is used by auxiliary applications to announce "item X of Y". The value must be a non-negative integer, with **0** indicating an empty container. This parameter is used for container components such as [List](arkui-ts/ts-container-list.md), [Select](arkui-ts/ts-basic-components-select.md), [Swiper](arkui-ts/ts-container-swiper.md), and [Tab](arkui-ts/ts-container-tabs.md). |
+| int32_t itemCount | Total number of subitems (including visible and invisible ones) in the container. The value must be a non-negative integer, with **0** indicating an empty container. It is used by auxiliary applications to announce "item X of Y". This parameter is used for container components such as [List](arkui-ts/ts-container-list.md), [Select](arkui-ts/ts-basic-components-select.md), [Swiper](arkui-ts/ts-container-swiper.md), and [Tabs](arkui-ts/ts-container-tabs.md). |
 
 **Returns**
 
@@ -1419,16 +1490,18 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_Accessibil
 
 **Description**
 
+
 Sets the scroll offset for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
 > 
 > - **offset** is used for scrollable container components, such as [List](arkui-ts/ts-container-list.md), [Grid](arkui-ts/ts-container-grid.md), and [Scroll](arkui-ts/ts-container-scroll.md), and it indicates the scrolling pixel offset of the content area relative to the top coordinates of the element.
 > - The accessibility service uses **offset** to determine the scrolling position, and auxiliary applications use it to announce the scrolling progress.
-> - After a user performs an [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD](#arkui_accessibility_actiontype) or [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD](#arkui_accessibility_actiontype) action, a third-party framework should update the **offset** value in the updated node information.
+> - After a user performs an [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_FORWARD](#arkui_accessibility_actiontype) or [ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SCROLL_BACKWARD](#arkui_accessibility_actiontype) action, a third-party platform should synchronously update the **offset** value in the updated node information.
 > - If the value of **offset** is **0**, the content area is not scrolled (at the initial position). A positive value indicates the pixel distance for scrolling down or right.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1451,6 +1524,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_Accessibili
 
 **Description**
 
+
 Sets the accessibility group for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1461,6 +1535,7 @@ Sets the accessibility group for [ArkUI_AccessibilityElementInfo](capi-arkui-acc
 > - If **accessibilityGroup** is set to **false**, accessibility applications traverse child nodes one by one.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1483,6 +1558,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_Accessibili
 
 **Description**
 
+
 Sets the accessibility importance level for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1497,6 +1573,7 @@ Sets the accessibility importance level for [ArkUI_AccessibilityElementInfo](cap
 > - A null pointer cannot be passed to **accessibilityLevel**. If a null pointer is passed, [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) is returned.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1519,6 +1596,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInf
 
 **Description**
 
+
 Sets the component Z-index for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1528,6 +1606,7 @@ Sets the component Z-index for [ArkUI_AccessibilityElementInfo](capi-arkui-acces
 > - The accessibility service may also use **zIndex** to determine the focus movement direction.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1550,6 +1629,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_Accessibi
 
 **Description**
 
+
 Sets the opacity for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1559,12 +1639,13 @@ Sets the opacity for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-a
 
 **Since**: 13
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
-| float opacity | Opacity. The value range is [0, 1], where **1** indicates fully opaque and **0** indicates fully transparent. Values out of range are truncated to the boundary values. This parameter is required for [UiTest](../apis-test-kit/js-apis-uitest.md). |
+| float opacity | Opacity. The value range is [0, 1], where **1** indicates fully opaque and **0** indicates fully transparent. Values out of the range from 0 to 1 are not automatically corrected. It is recommended that you always pass a valid value between 0 and 1. This parameter is required for [UiTest](../apis-test-kit/js-apis-uitest.md). |
 
 **Returns**
 
@@ -1580,6 +1661,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityE
 
 **Description**
 
+
 Sets the background color for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1589,6 +1671,7 @@ Sets the background color for [ArkUI_AccessibilityElementInfo](capi-arkui-access
 > - A null pointer cannot be passed to **backgroundColor**. If a null pointer is passed, [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) is returned.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1611,6 +1694,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityE
 
 **Description**
 
+
 Sets the background image for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1619,6 +1703,7 @@ Sets the background image for [ArkUI_AccessibilityElementInfo](capi-arkui-access
 > - A null pointer cannot be passed to **backgroundImage**. If a null pointer is passed, [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) is returned.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1641,6 +1726,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo*
 
 **Description**
 
+
 Sets the blur effect for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
@@ -1649,6 +1735,7 @@ Sets the blur effect for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibili
 > - A null pointer cannot be passed to **blur**. If a null pointer is passed, [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) is returned.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1671,26 +1758,28 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityE
 
 **Description**
 
+
 Sets the response logic and node blocking rule for the hit test for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 > **NOTE**
 > 
 > - **hitTestBehavior** is used to control the response behavior of a component during the hit test and determine whether the touch event can pass through the component.
-> - This attribute is mainly used by the **UiTest** automation framework. For details about the value range, see **HitTestMode**. The options are as follows:
-> - **Default**: The default behavior is used, which does not block the touch event.
-> - **Block**: The touch event of the component and its child components is blocked.
-> - **Transparent**: The component does not respond to the touch event, but its child components can respond.
-> - **None**: Neither the component nor its child components respond to the touch event.
+> - This attribute is mainly used by the **UiTest** automation testing framework. For details about the value range, see **HitTestMode**. The options are as follows:
+> - **"Default"**: The default behavior is used. The component itself and its child nodes respond to the hit test, but block the hit test of sibling nodes and do not affect the hit test of ancestor nodes.
+> - **"Block"**: The component itself responds to the hit test and blocks the hit test of child nodes, sibling nodes, and ancestor nodes.
+> - **"Transparent"**: Both the component itself and its child nodes respond to the hit test, and do not block the hit test of sibling nodes and ancestor nodes.
+> - **"None"**: The component itself does not respond to the hit test, and does not block the hit test of child nodes, sibling nodes, and ancestor nodes.
 > - A null pointer cannot be passed to **hitTestBehavior**. If a null pointer is passed, [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) is returned.
 
 **Since**: 13
+
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).|
-| const char* hitTestBehavior | Pointer to the response mode for hit testing. The value can be **"Default"** (default behavior, indicating no blocking), **"Block"** (blocks touch events of the component itself and its child components), **"Transparent"** (The component itself does not respond to the touch event, but its child components can respond to), or **"None"** (neither the component itself nor its child components respond to the touch event). The value cannot be a null pointer. |
+| const char* hitTestBehavior | Pointer to the hit test response mode. The value cannot be a null pointer and can be one of the following:<br>- **"Default"**: default behavior. The node itself and its child nodes respond to the hit test, but sibling nodes are blocked from the hit test, and ancestor nodes are not affected.<br>- **"Block"**: The node itself responds to the hit test, and child nodes, sibling nodes, and ancestor nodes are blocked from the hit test.<br>- **"Transparent"**: Both the node itself and its child nodes respond to the hit test, and sibling nodes and ancestor nodes are not blocked from the hit test.<br>- **"None"**: The node itself does not respond to the hit test, and child nodes, sibling nodes, and ancestor nodes are not blocked from the hit test. |
 
 **Returns**
 
@@ -1706,9 +1795,11 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_Accessibil
 
 **Description**
 
-Sets the component identifier for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md), which can be used to identify a specific component during automated testing.
+
+Sets the component identifier for [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md), which can be used to identify a specific component during automation testing.
 
 **Since**: 24
+
 
 **Parameters**
 
@@ -1731,6 +1822,7 @@ ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)
 
 **Description**
 
+
 Creates an [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) object. After the object is created, call [OH_ArkUI_DestoryAccessibilityElementInfo](#oh_arkui_destoryaccessibilityelementinfo) to destroy it.
 
 **Since**: 13
@@ -1749,9 +1841,11 @@ void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* el
 
 **Description**
 
+
 Destroys an [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) object.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1766,6 +1860,7 @@ ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)
 ```
 
 **Description**
+
 
 Creates an [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) object. After the object is created, call [OH_ArkUI_DestoryAccessibilityEventInfo](#oh_arkui_destoryaccessibilityeventinfo) to destroy it.
 
@@ -1785,9 +1880,11 @@ void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventI
 
 **Description**
 
+
 Destroys an [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) object.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1803,9 +1900,11 @@ int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* ev
 
 **Description**
 
+
 Sets the event type for [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md).
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1828,9 +1927,11 @@ int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_Access
 
 **Description**
 
+
 Sets the content to be proactively announced for [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md).
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1853,9 +1954,11 @@ int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInf
 
 **Description**
 
+
 Sets the focus request ID for [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md).
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1878,9 +1981,11 @@ int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* 
 
 **Description**
 
+
 Sets **elementInfo** for [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md).
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1903,9 +2008,11 @@ int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionA
 
 **Description**
 
+
 Obtains the value of a specified key in [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md).
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -1933,17 +2040,17 @@ Obtains the level-2 pointer variable of the pointer to the [ArkUI_AccessibilityP
 
 The [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) object corresponds to the [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) instance passed.
 
-A third-party framework maps its UI components as [RenderNode](js-apis-arkui-renderNode.md) of the [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) type to obtain [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).
+A third-party platform maps its UI components as [RenderNodes](js-apis-arkui-renderNode.md) of the [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) type to obtain [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).
 
 Then, it calls **OH_ArkUI_NativeModule_GetNativeAccessibilityProvider** to obtain the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) pointer and register an accessibility callback.
 
-Finally, the ArkUI accessibility service can identify the UI of the third-party framework and trigger events.
+Finally, the ArkUI accessibility service can identify the UI of the third-party platform and trigger events.
 
-This API takes effect only when the third-party framework maps its UI components as [RenderNode](js-apis-arkui-renderNode.md) of the [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) type. Otherwise, an error code will be reported.
+This API takes effect only when the third-party platform maps its UI components as [RenderNodes](js-apis-arkui-renderNode.md) of the [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) type. Otherwise, an error code will be reported.
 
-This API uses [RenderNode](js-apis-arkui-renderNode.md) to implement the access of the third-party framework. Only [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) can access the accessibility service to obtain the accessibility control tree.
+This API uses [RenderNode](js-apis-arkui-renderNode.md) to implement the access of the third-party platform. Only [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) can access the accessibility service to obtain the accessibility control tree.
 
-Multi-thread concurrency is not supported. The third-party framework ensures thread security during the API calling.
+Multi-thread concurrency is not supported. The third-party platform ensures thread safety during the API calling.
 
 **Since**: 23
 
@@ -1959,3 +2066,128 @@ Multi-thread concurrency is not supported. The third-party framework ensures thr
 | Type| Description|
 | -- | -- |
 | int32_t | Status code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>Parameter error: 1. The input parameter **node** or **provider** is a null pointer.<br>2. The **ArkUI_NodeHandle** type corresponding to **node** is not **ARKUI_NODE_CUSTOM**.|
+
+### OH_ArkUI_Accessibility_BindExportTree()
+
+```c
+int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bindId, ArkUI_NodeHandle exportedRoot)
+```
+
+**Description**
+
+Binds an external ArkUI subtree to a specified placeholder node in the accessibility tree of a third-party framework.
+
+When a third-party framework (such as CMP) uses a RenderNode to render a page and ArkUI native components are mixed into the RenderNode tree, these ArkUI native components form an external subtree that is invisible to the accessibility service by default. This API binds the external ArkUI subtree to a placeholder node in the accessibility tree of the third-party framework, so that accessibility focus traversal can enter the mixed ArkUI subtree, traverse its internal components, and then return to the accessibility tree of the third-party framework to continue traversal.
+
+This API must be called on the UI main thread. The call is executed synchronously and does not call back the caller. Do not call it in a signal handler. If the accessibility tree of the third-party framework has not been registered with the accessibility service when this API is called, the binding takes effect asynchronously after registration is complete.
+
+The binding relationship is identified by the (owner, bindId) pair. The same owner supports multiple bindings with different **bindId** values, and each exported subtree can have at most one valid binding. Calling this API repeatedly with the same (owner, bindId) pair neither replaces nor merges the existing binding: the original binding remains unchanged, and [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned. Establishing a binding for **exportedRoot** that already has a valid binding is rejected, and [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) is returned. After [OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree) is executed, the bound subtree is completely detached from the accessibility tree and all binding resources are released. Binding the same (owner, bindId) pair again will execute the complete registration process.
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) owner | [Input parameter] Pointer to the ArkUI host node of the third-party framework, that is, the node on the RenderNode tree that mounts the third-party framework (for example, an **XComponent** or **Custom** node). It must be a valid **ArkUI_NodeHandle**. This handle is borrowed rather than held: this API does not take over the ownership of the node, nor does it extend its lifecycle. If the node is destroyed or replaced while the binding exists, the binding immediately becomes invalid (the accessibility service no longer traverses into the bound subtree), and its remaining internal resources are released when the host window is destroyed. To keep the binding valid, the node must remain valid until [OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree) is called. |
+| int64_t bindId | [Input parameter] Accessibility ID of the placeholder node in the internal accessibility tree of the third-party framework, that is, the node in the accessibility tree of the third-party framework used to mount the mixed ArkUI subtree. When the accessibility service traverses to this node, it enters the bound ArkUI subtree. This value is the accessibility ID assigned by the third-party framework to the node. Any such ID is accepted, and there is no reserved value. The ID must identify a node that already exists in the accessibility tree of the third-party framework, but the node does not need to have been reported to the accessibility service when this API is called, and the binding takes effect after the accessibility tree of the third-party framework is registered. The ID must be unique among multiple valid bindings of the same owner. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) exportedRoot | [Input parameter] Pointer to the root node of the mixed ArkUI subtree to be bound. This node and its descendant nodes are registered as a subtree under the placeholder node specified by **bindId** in the accessibility tree. The parent node of **exportedRoot** must be the node passed as the **child** parameter when [OH_ArkUI_NativeModule_AdoptChild](capi-native-node-h.md#oh_arkui_nativemodule_adoptchild) is called, that is, the mixed ArkUI subtree is connected to the render tree by adopting its parent node (rather than **exportedRoot** itself) under the host node. This handle is borrowed rather than held: this API does not take over the ownership of the node, nor does it extend its lifecycle. If the node is destroyed or replaced while the binding exists, the binding immediately becomes invalid; its remaining internal resources are released when [OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree) is called with the same (owner, bindId) pair or when the host window is destroyed. To keep the binding valid, the node and its subtree must remain valid until [OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree) is called. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| int32_t | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>Parameter error: 1. The passed parameter **owner** or **exportedRoot** is a null pointer or an invalid handle.<br>2. **exportedRoot** already has a valid binding. The above errors are deterministic validation results with no side effects: no binding is created, and no existing binding is modified. After correcting the parameters (for error 2, call [OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree) first, or use another subtree), the call can be safely retried. |
+
+### OH_ArkUI_Accessibility_UnbindExportTree()
+
+```c
+int32_t OH_ArkUI_Accessibility_UnbindExportTree(ArkUI_NodeHandle owner, int64_t bindId)
+```
+
+**Description**
+
+Unbinds the external ArkUI subtree previously bound to the accessibility tree of a third-party framework.
+
+When the mixed ArkUI subtree is destroyed or replaced, call this API to remove the binding relationship established by [OH_ArkUI_Accessibility_BindExportTree](#oh_arkui_accessibility_bindexporttree). After unbinding, the accessibility service no longer traverses the previously bound ArkUI subtree.
+
+This API must be called on the UI main thread. The call is executed synchronously and does not call back the caller. Do not call it in a signal handler. This API removes only the binding identified by the (owner, bindId) pair, and other bindings on the same owner are not affected. Unbinding an unknown or already unbound (owner, bindId) pair is an idempotent operation and returns success. When the binding exists, after this API returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode), the bound subtree is completely detached from the accessibility tree and all binding resources are released. The same (owner, bindId) pair can be bound again through [OH_ArkUI_Accessibility_BindExportTree](#oh_arkui_accessibility_bindexporttree), in which case the complete registration process will be executed.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) owner | [Input parameter] Pointer to the ArkUI host node of the third-party framework. It must be the same node passed to [OH_ArkUI_Accessibility_BindExportTree](#oh_arkui_accessibility_bindexporttree) when the binding is created, and must be a valid **ArkUI_NodeHandle**. This handle is used only to identify the binding in this call. It is no longer held after the call returns and does not need to remain valid afterward. If the node has been destroyed, its binding has automatically become invalid and does not need to be explicitly unbound; its remaining internal resources are released when the host window is destroyed. |
+| int64_t bindId | [Input parameter] Accessibility ID of the placeholder node in the internal accessibility tree of the third-party framework. It must be the same **bindId** passed to [OH_ArkUI_Accessibility_BindExportTree](#oh_arkui_accessibility_bindexporttree) when the binding is created. There is no reserved value. Unbinding a (owner, bindId) pair for which no valid binding exists is an idempotent operation and returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode). |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| int32_t | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.<br>Parameter error: 1. The input parameter **owner** is a null pointer or an invalid handle.<br>This error is a deterministic validation result with no side effects: it does not remove the binding or modify the existing binding. After correcting the parameter, you can safely retry. |
+
+### OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler()
+
+```c
+int32_t OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler(ArkUI_NodeHandle node, void *userData, void (*handleAccessibilityHoverEvent)(void *userData, int32_t x, int32_t y, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo))
+```
+
+**Description**
+
+Registers an accessibility hover event handling callback for the host node of a third-party framework.
+
+When screen reading is enabled and the user touches the host node area, ArkUI synchronously calls the registered callback and passes the coordinates relative to the host node. The third-party framework performs hit testing on its own and fills the information of the hit node into the output parameter **elementInfo** before the callback returns. ArkUI then reports the corresponding accessibility hover event to screen reading, so that screen reading focuses on the returned node. The third-party framework does not report this event on its own. Hover event types such as enter, move, and exit are maintained by ArkUI and are not passed as callback parameters.
+
+After the callback is registered, the hover hit testing of the host subtree uses the result returned by the third-party framework, replacing the hit testing result of the system node tree. The swipe focus wrap rules remain unchanged, and nodes without a registered callback retain their existing hover behavior.
+
+Registering repeatedly for the same node overwrites the previous callback and **userData**, and returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode). Subsequently, only the new registration information is used to call the callback. The callback can be unregistered through [OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler](#oh_arkui_accessibility_unregisteraccessibilityhovereventhandler).
+
+This API is not thread-safe. The callback is executed synchronously on the UI main thread and should return as soon as possible to avoid blocking touch event handling.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | [Input parameter] Host node of the third-party framework. Only nodes of the [ARKUI_NODE_XCOMPONENT](capi-native-node-h.md#arkui_nodetype), [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype), and [ARKUI_NODE_XCOMPONENT_TEXTURE](capi-native-node-h.md#arkui_nodetype) types are supported. It cannot be a null pointer. |
+| void *userData | [Input parameter] Pointer to the custom data, which is passed back as is when the callback is invoked. Its lifecycle is managed by the caller, and ArkUI does not release the memory pointed to by **userData**. |
+| void (\*handleAccessibilityHoverEvent)(void *userData, int32_t x, int32_t y, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo) | [Input parameter] Pointer to the callback used to determine the hit node. This parameter cannot be a null pointer. The callback parameters are as follows:<br> - **userData** [Input parameter]: custom data provided during registration.<br> - **x** [Input parameter]: X-coordinate relative to the host node, in px.<br> - **y** [Input parameter]: Y-coordinate relative to the host node, in px.<br> - **requestId** [Input parameter]: ID of the current hover request, provided by ArkUI.<br> - **elementInfo** [Output parameter]: pointer to the [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) object provided by ArkUI. The third-party platform uses the setting APIs of **elementInfo** to fill the information of the hit node into this object. ArkUI is responsible for allocating and releasing this object. This pointer is valid only during callback execution, and the third-party platform must not retain or release it. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| int32_t | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if **node** is a null pointer.<br>Returns [ARKUI_ERROR_CODE_PARAM_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if **handleAccessibilityHoverEvent** is a null pointer.<br>Returns [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the node type is not **ARKUI_NODE_XCOMPONENT**, **ARKUI_NODE_CUSTOM**, or **ARKUI_NODE_XCOMPONENT_TEXTURE**. |
+
+### OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler()
+
+```c
+int32_t OH_ArkUI_Accessibility_UnregisterAccessibilityHoverEventHandler(ArkUI_NodeHandle node)
+```
+
+**Description**
+
+Unregisters the accessibility hover event handling callback of the specified host node.
+
+After unregistration, ArkUI no longer calls the callback registered through [OH_ArkUI_Accessibility_RegisterAccessibilityHoverEventHandler](#oh_arkui_accessibility_registeraccessibilityhovereventhandler), and the node restores its existing hover behavior. Calling this API for a node of a supported type that has no registered callback returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode), and the hover behavior of the node remains unchanged.
+
+ArkUI does not release the memory pointed to by **userData** passed during registration. Its lifecycle is managed by the caller.
+
+This API is not thread-safe.
+
+**Since:** 26.1.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | [Input parameter] Host node whose accessibility hover event handling callback is to be unregistered. It must be the same node passed in during registration. Only nodes of the [ARKUI_NODE_XCOMPONENT](capi-native-node-h.md#arkui_nodetype), [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype), and [ARKUI_NODE_XCOMPONENT_TEXTURE](capi-native-node-h.md#arkui_nodetype) types are supported. It cannot be a null pointer. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| int32_t | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful, including the case where the node has no registered callback.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if **node** is a null pointer.<br>Returns [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the type of node is not **ARKUI_NODE_XCOMPONENT**, **ARKUI_NODE_CUSTOM**, or **ARKUI_NODE_XCOMPONENT_TEXTURE**. |

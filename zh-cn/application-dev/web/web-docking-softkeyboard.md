@@ -100,6 +100,8 @@
 // Index.ets
 import { webview } from '@kit.ArkWeb';
 import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -113,6 +115,8 @@ struct WebComponent {
             setTimeout(() => {
               inputMethod.getController().showTextInput();
             }, 10);
+          }).catch((error: BusinessError) => {
+            hilog.error(0x0000, 'testTag', 'Failed to run JavaScript. Cause: %{public}s', JSON.stringify(error));
           });
         });
     }
@@ -309,8 +313,8 @@ struct WebComponent {
     ])
 
     /**
-      * 自定义键盘组件Builder
-      */
+     * 自定义键盘组件Builder
+     */
     @Builder
     customKeyboardBuilder() {
     // 这里实现自定义键盘组件，对接WebKeyboardController实现输入、删除、关闭等操作。

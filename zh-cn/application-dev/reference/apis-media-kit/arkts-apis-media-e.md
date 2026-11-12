@@ -86,6 +86,23 @@ Codec MIME类型枚举。
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/AMR-NB类型。 |
 | AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | 表示音频/AMR-WB类型。 |
 
+## DestHDRMode
+
+表示转码目标文件的HDR（High Dynamic Range，高动态范围）格式枚举。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+| 名称            | 值                    | 说明                     |
+| --------------- | --------------------- | ------------------------ |
+| SDR             | 0                     | 表示转码为SDR（Standard Dynamic Range，标准动态范围）视频模式。      |
+| AUTO_HDR_VIVID  | 1                     | 表示HDR Vivid（菁彩HDR）自动转码模式。仅当源文件格式为HDR Vivid时，目标文件格式为HDR Vivid，其他情况下目标文件格式为SDR。 |
+
 ## AacProfile<sup>22+</sup>
 
 高级音频编码（AAC）类型枚举。
@@ -127,6 +144,7 @@ Codec MIME类型枚举。
 | MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | 表示轨道的mime_type类型，其对应键值类型为string。对于音视频轨道，该值与MD_KEY_CODEC_MIME相同。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | 表示此轨道与其他轨道的引用关系，其对应键值类型为string，以逗号分隔。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | 表示此轨道作为辅助轨的辅助类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| MD_KEY_TRACK_PLAYABLE  | 'is_playable'  | 表示此轨道是否可以正常播放，其对应键值类型为boolean。true表示可以正常播放，false表示不可以正常播放。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 ## FetchResult<sup>23+</sup>
 
 表示批量获取缩略图操作结果的枚举。
@@ -498,6 +516,44 @@ Codec MIME类型枚举。
 | PLAYLIST_LOOP_MODE_SHUFFLE | 3    | 随机循环模式。 |
 | PLAYLIST_LOOP_MODE_NONE | 4    | 关闭循环模式。 |
 
+## PlaybackCommand
+
+表示可执行的播控指令枚举。用于应用在[prepare()](arkts-apis-media-AVPlayer.md#prepare9)完成后，查询该片源是否可以执行对应的播放控制操作。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+| 名称                       | 值   | 说明                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| PLAYBACK_COMMAND_SEEK | 0    | 表示视频跳转操作。可通过[checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand)查询当前片源是否支持该操作。 |
+| PLAYBACK_COMMAND_RATE | 1    | 表示调整播放速率的操作。可通过[checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand)查询当前片源是否支持该操作。 |
+
+## SideBySideTransparentVideoLayoutMode
+
+表示并排（Side-by-Side）模式下透明视频布局模式的枚举。
+
+> **说明：**
+>
+> 用于指定透明视频的Alpha数据在图像中的位置，以便播放器正确合成透明视频。Alpha是描述像素不透明度的标量数据。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 名称                       | 值   | 说明                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| SIDE_BY_SIDE_LAYOUT_HORIZONTAL | 0    | 表示透明视频为左右布局，左边数据为Alpha数据。 |
+| SIDE_BY_SIDE_LAYOUT_VERTICAL | 1    | 表示透明视频为上下布局，上边数据为Alpha数据。 |
+| SIDE_BY_SIDE_LAYOUT_HORIZONTAL_REVERSE | 2    | 表示透明视频为左右布局，右边数据为Alpha数据。 |
+| SIDE_BY_SIDE_LAYOUT_VERTICAL_REVERSE | 3    | 表示透明视频为上下布局，下边数据为Alpha数据。 |
+
 ## AudioEncoder<sup>(deprecated)</sup>
 
 > **说明：**
@@ -553,3 +609,4 @@ Codec MIME类型枚举。
 | MSERR_SERVICE_DIED         | 7    | 表示服务端失效。                       |
 | MSERR_INVALID_STATE        | 8    | 表示在当前状态下，不允许执行此操作。   |
 | MSERR_UNSUPPORTED          | 9    | 表示在当前版本下，不支持此操作。       |
+

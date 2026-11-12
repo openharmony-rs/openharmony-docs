@@ -6,7 +6,7 @@ doctype: guide
 status: active
 ---
 
-# 使用Display实现屏幕属性查询及状态监听 (ArkTS)
+# 实现屏幕属性查询及状态监听 (ArkTS)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->

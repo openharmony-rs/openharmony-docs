@@ -153,7 +153,7 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -188,7 +188,7 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -227,7 +227,7 @@ start(): Promise&lt;void&gt;
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 22400001  | Cloud status not ready. |
 | 22400002  | Network unavailable. |
 | 22400003  | Low battery level. |
@@ -273,7 +273,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 22400001  | Cloud status not ready. |
 | 22400002  | Network unavailable. |
 | 22400003  | Low battery level. |
@@ -317,7 +317,7 @@ stop(): Promise&lt;void&gt;
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -356,7 +356,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -395,7 +395,7 @@ getLastSyncTime(): Promise&lt;number&gt;
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -434,7 +434,7 @@ getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -503,7 +503,7 @@ on(event: 'progress', callback: Callback\<DownloadProgress>): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -592,7 +592,7 @@ off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -684,7 +684,7 @@ start(uri: string): Promise&lt;void&gt;
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
 | 14000002 | Invalid uri. |
@@ -737,7 +737,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
 | 14000002 | Invalid uri. |
@@ -849,7 +849,7 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 13900002 | No such file or directory. |
 | 14000002 | Invalid uri. |
 
@@ -894,7 +894,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
+| 13600001  | IPC error. |
 | 13900002 | No such file or directory. |
 | 14000002 | Invalid uri. |
 

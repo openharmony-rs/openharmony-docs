@@ -24,18 +24,22 @@
 
 以订阅应用冻屏告警事件为例，说明开发步骤。
 
-1. 在DevEco Studio中，新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
+1. 在DevEco Studio中，新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
 
-   ```ts
+   <!-- @[AppFreezeWarning_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
-2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
+2. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
 
-   ```ts
+   <!-- @[AppFreezeWarning_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
    hiAppEvent.addWatcher({
      // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
-     name: "watcher",
+     name: 'appFreezeWarningWatcher',
      // 开发者可以订阅感兴趣的系统事件，此处是订阅了应用冻屏告警事件
      appEventFilters: [
        {
@@ -90,32 +94,24 @@
    });
    ```
 
-3. 编辑工程中的“entry > src > main > ets > pages> Index.ets”文件，新增按钮触发冻屏告警事件。示例代码如下：
+3. 编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，新增按钮触发冻屏告警事件。示例代码如下：
 
-   ```ts
-     @Entry
-     @Component
-     struct Index {
-       build() {
-         RelativeContainer() {
-           Column() {
-             Button("appFreezeWarning", { stateEffect:true, type: ButtonType.Capsule})
-               .width('75%')
-               .height(50)
-               .margin(15)
-               .fontSize(20)
-               .fontWeight(FontWeight.Bold)
-               .onClick(() => {
-                // 在按钮点击函数中构造一个appFreezeWarning场景，触发应用冻屏告警事件
-                 const t = Date.now();
-                 while (Date.now() - t <= 6500) {}
-               })
-           }.width('100%')
-         }
-         .height('100%')
-         .width('100%')
-       }
-     }
+   <!-- @[AppFreezeWarning_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   Button("appFreezeWarning")
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       // 在按钮点击函数中构造一个appFreezeWarning场景，触发应用冻屏告警事件
+       const t = Date.now();
+       while (Date.now() - t <= 6500) {}
+     })
    ```
 
 4. 点击DevEco Studio界面中的运行按钮，运行应用工程，然后在应用界面中点击按钮“appFreezeWarning”，触发一次应用冻屏告警事件。
@@ -124,7 +120,7 @@
 
 等待约一分钟后，可以在Log窗口看到对系统事件数据的处理日志：
 
-```text
+``` Text
 HiAppEvent onReceive: domain=OS
 HiAppEvent eventName=APPFREEZE_WARNING
 HiAppEvent eventInfo.domain=OS

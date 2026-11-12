@@ -4,23 +4,28 @@
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
 <!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=d93ede978cd820aea5b393e18fa43fd07b755e7c translatedAt=2026-11-06T12:06:11.908Z pushedAt=2026-11-09T12:31:33.480Z nl=1 -->
 
 This topic describes how to upload an application file to a network server and download a network resource file from a network server to a local application file directory.
+
+> **Description**
+>
+> · When using the upload and download module, it is recommended that you use [request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10) to create upload and download tasks.
+>
+> · To use the upload and download module, you need to [declare the permission](../../security/AccessToken/declare-permissions.md): ohos.permission.INTERNET.
+>
+> · The upload and download module does not support proxy packet capture tools such as Charles and Fiddler.
+>
+> · The upload and download module APIs currently do not support invocation from subthreads, such as [TaskPool](../../arkts-utils/taskpool-introduction.md).
 
 ## Uploading Application Files
 
 You can use **uploadFile()** in [ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md) to upload local files. The system service proxy implements the upload. In API version 12, the parameter for setting the custom proxy address is added to the **request.agent.create** API.
 
-> **NOTE**
+> **Description**
 >
-> · Currently, only files in the **cacheDir** directory can be uploaded using **request.uploadFile**; user public files and files in the **cacheDir** directory can be uploaded together using **request.agent**.
->
-> · The ohos.permission.INTERNET permission is required for using **ohos.request**. For details about how to request the permission, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
->
-> · The **ohos.request** module does not support proxy packet capture tools such as Charles and Fiddler.
->
-> · Currently, APIs of the **ohos.request** module cannot be called in sub-threads, such as [TaskPool](../../arkts-utils/taskpool-introduction.md).
+> · For the current application file upload feature, the request.uploadFile method supports uploading only files under the application cache file path (cacheDir), while the request.agent method supports uploading user public files and files under the application cache file path.
 
 The following sample code shows how to upload cache files to the server in two ways:
 
@@ -36,9 +41,9 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
   // Create an application file locally.
   try {
-    let file = fs.openSync(cacheDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    fs.writeSync(file.fd, 'upload file test');
-    fs.closeSync(file);
+    let file = fileIo.openSync(cacheDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    fileIo.writeSync(file.fd, 'upload file test');
+    fileIo.closeSync(file);
   } catch (error) {
     let err: BusinessError = error as BusinessError;
     logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
@@ -46,7 +51,7 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
   // Configure the upload task.
   let files: request.File[] = [
-  // "internal://cache" in uri corresponds to the cacheDir directory.
+  // URI prefix internal://cache corresponds to the cacheDir directory
     {
       filename: fileName,
       name: 'test',
@@ -145,13 +150,15 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 
 You can use **downloadFile()** in [ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md) to download network resource files to a local application directory. You can use the [ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) APIs to access the downloaded files. For details, see [Accessing Application Files](../../file-management/app-file-access.md). The system service agent downloads the files. In API version 12, you can set the address of the agent in **request.agent.create()**.
 
-> **NOTE**
+> **Description**
 >
-> Currently, network resource files can be downloaded only to the application file directory.
+> Starting from API version 20, downloading network resource files to user files is supported.
 >
-> To use **uploadFile()** in **ohos.request**, you need to [declare permissions](../../security/AccessToken/declare-permissions.md): ohos.permission.INTERNET.
+> To use the upload and download module, you need to [declare the permission](../../security/AccessToken/declare-permissions.md): ohos.permission.INTERNET.
+>
+> A download task does not delete the generated files. If you need to clean up the files, you must do so manually.
 
-The following sample code shows how to download network resource files to the internal application file directory in two ways (you can click the link in the lower right corner of the code block to view the **clearExistFile** method in **requestDownloadFile**):
+The following example shows two methods for downloading network resource files to the application internal file directory (for the clearExistFile() method in the requestDownloadFile example, click the link in the lower right corner of the code block to view it):
 
 <!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 
@@ -229,11 +236,13 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 ```
 
 ## Downloading Network Resource Files to the User File
-You can use the [request.agent](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10) API of [ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md) to download network resource files to the specified user file directory.
+Developers can use the [request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10) API of [ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md) to download network resource files to a specified user file directory.
 
-> **NOTE**
+> **Description**
 >
-> Since API version 20, network resource files can be downloaded to the user file directory.
+> Starting from API version 20, downloading network resource files to user files is supported.
+>
+> A download task does not delete the generated files. If you need to clean up the files, you must do so manually.
 
 ### Downloading Documents
 
@@ -561,7 +570,7 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 
 ### Intercepting HTTP
 
-You can set the configuration file to intercept HTTP. After HTTP is disabled for the **ohos.request** module, upload and download tasks using plaintext HTTP cannot be created. The configuration file is stored in the **src/main/resources/base/profile/network_config.json** directory of the application. For details about the parameters to be configured, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-network-ca-security#section5454123841911).
+Developers can implement the HTTP interception feature by configuring a configuration file. After HTTP is disabled in the application configuration file, the upload and download module cannot create upload and download tasks that transmit data over plaintext HTTP. The path of the configuration file in the APP is: `src/main/resources/base/profile/network_config.json`. For details about the specific parameters to configure, see the network management module configuration file [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/network-connection-security-configuration).
 
 The sample configuration file is as follows:
 
@@ -584,7 +593,7 @@ The sample configuration file is as follows:
             "include-subdomains": true,
             "name": "*.example.com"
           }
-        ],
+        ]
       }
     ]
   }
@@ -679,15 +688,15 @@ async wantAgentDownload(url: string, fileName: string, callback: (progress: numb
         logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
         callback(100, true);
         // This method requires the user to manage the task lifecycle. After the task is complete, call the remove method to release the task object.
-        request.agent.remove(task.tid);
-      })
-    }).catch((err: BusinessError) => {
-      logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
-    });
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
+      request.agent.remove(task.tid);
+    })
+      }).catch((err: BusinessError) => {
     logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
-  }
+  });
+    } catch (error) {
+    let err: BusinessError = error as BusinessError;
+  logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
+}
 }
 ```
 
@@ -710,3 +719,4 @@ In the preceding sample code, we implement redirection from the notification bar
 - Ensure that the correct bundle name and ability name are used when configuring **wantAgentInfo**.
 - **wantAgent** must be used together with **notification** to implement the redirection feature in a notification.
 - In actual applications, you are advised to adjust the title, description, visibility, and other related parameters of a notification based on service requirements.
+
