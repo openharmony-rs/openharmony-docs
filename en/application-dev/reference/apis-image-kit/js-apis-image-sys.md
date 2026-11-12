@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=55df9c11d6d7c450cc6d9d1ac7b0b998394459f6 translatedAt=2026-11-06T02:25:22.278Z pushedAt=2026-11-12T11:53:30.604Z nl=1 -->
 
 The module provides APIs for image processing. You can use the APIs to create a PixelMap object with specified properties or read image pixel data (even in an area).
 
@@ -112,7 +113,7 @@ Creates a Picture object based on an HDR PixelMap and an SDR PixelMap. The syste
 
 For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
 
@@ -186,7 +187,7 @@ Creates a Picture object based on an HDR PixelMap and an SDR PixelMap. The syste
 
 For details about the error codes, see [Image Error Codes](errorcode-image.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
 |  202      | Non-system applications are not allowed to use system APIs. |
@@ -281,7 +282,7 @@ Decomposes an HDR PixelMap into a Picture object that contains an SDR PixelMap a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 202      | Non-system applications are not allowed to use system APIs.  |
 | 7600201  | Unsupported operation. hdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010\YCRCB_P010. |
@@ -314,6 +315,58 @@ async function DecomposeToPictureTest(context: Context) {
   } else {
     console.error('Decompose to picture with options failed');
   }
+}
+```
+
+## SourceOptions<sup>9+</sup>
+
+Defines image source initialization options.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name              | Type                               | Read-Only | Optional | Description               |
+| ----------------- | ---------------------------------- | ---- | ---- | ------------------ |
+| svgResourceLimitLevel | [SVGResourceLimitLevel](#svgresourcelimitlevel)   | No   | Yes   | Resource limit used when parsing and drawing Scalable Vector Graphics (SVG) images. This limit does not apply to non-SVG images. It takes effect before SVG metadata parsing, and therefore also applies to image information retrieval.<br>The default value is **NONE**, which uses the system-defined default resource limit and does not disable SVG resource protection.<br>**Since:** 26.0.1 |
+
+## SVGResourceLimitLevel
+
+Enumerates the SVG resource limit levels.
+
+A higher level allows fewer resources to be used when parsing and drawing SVG images. Regardless of the specified level, the system resource limit is always enforced.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name                         | Value      | Description       |
+| ---------------------------- | ------ | ---------- |
+| NONE    | 0     | Default SVG resource limit of the system. This level does not disable SVG resource protection.|
+| LOW     | 1     | Low-level limit, allowing a larger SVG resource budget. This level is suitable for complex SVG images.|
+| MEDIUM  | 2     | Medium-level limit, allowing a moderate SVG resource budget. This level balances SVG compatibility and resource consumption, and is suitable for most SVG images.|
+| HIGH    | 3     | High-level limit, allowing a smaller SVG resource budget. This level is suitable for simple SVG images, such as icons and basic UI resources.|
+
+**Example**
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+
+async function CreateImageSource(context : Context) {
+  let sourceOptions: image.SourceOptions = { sourceDensity: 120, svgResourceLimitLevel: image.SVGResourceLimitLevel.MEDIUM};
+  // Replace test.jpg with your own image. Otherwise, imageSource creation fails and subsequent operations cannot be performed.
+  const filePath: string = context.filesDir + "/test.jpg";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  const imageSourceObj: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
 }
 ```
 
@@ -353,7 +406,7 @@ Creates an SDR PixelMap object. When the image is an HDR image with a 3-channel 
 
 For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 7700101  | Bad source.                                                  |
 | 7700102  | Unsupported MIME type.                                       |
@@ -416,10 +469,10 @@ Checks whether a JPEG image is progressive. This API uses a promise to return th
 
 For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 7600201      | Bad source.|
-| 7600202      | Unsupported MIME type.|
+| 7700101    | Bad source.|
+| 7700102    | Unsupported MIME type.|
 
 **Example**
 ```ts
@@ -470,7 +523,7 @@ All Exif attributes except **JPEGInterchangeFormat**, **JPEGInterchangeFormatLen
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 202      | Non-system applications are not allowed to use system APIs.  |
 | 7700102  | Unsupported MIME type.                                       |
@@ -491,3 +544,13 @@ async function ModifyImageAllProperties(imageSource: image.ImageSource) {
   }
 }
 ```
+
+## PackingOption
+
+Describes the options for image encoding.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
+| Name | Type | Read-Only | Optional | Description |
+| ------------ | ---- | ---- | ---- | ------------------------------------------------------------ |
+| c2paDataSize | number | No | Yes | C2PA data space reserved during encoding according to the C2PA 2.4 embedding specification.<br>The unit is byte, the value range is [0, 4194304], and the default value is **0**, indicating that no reserved space is added.<br>This parameter takes effect only for JPEG and HEIF. For JPEG, it complies with ISO/IEC 18477-3 (JPEG XT) and ISO/IEC 19566-5:2023, and reserves space using consecutive APP11 segments identified by **JP** and **c2pa**, filled with 0. For HEIF, it complies with ISO/IEC 14496-12 (ISO BMFF), and reserves space using a top-level UUID box with the **Extended UUID** of **D8FEC3D6-1B0E-483C-9297-5828877EC481**, filled with 0.<br>If a non-zero value is set but the reservation cannot be completed, encoding fails.<br>**Since:** 26.0.1<br>**Model restriction:** This API can be used only in the stage model.<br>**System API:** This API is a system API. |

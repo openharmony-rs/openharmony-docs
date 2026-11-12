@@ -5,7 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=74febd75f3a8ada5f76e4f78791dddfc21d8b56a translatedAt=2026-11-06T01:52:15.989Z pushedAt=2026-11-12T02:09:20.070Z nl=1 -->
+<!-- md-trans-meta sourceCommit=74febd75f3a8ada5f76e4f78791dddfc21d8b56a translatedAt=2026-11-06T01:52:15.989Z pushedAt=2026-11-12T11:44:15.862Z nl=1 -->
 
 This module provides image processing capabilities, including creating image objects such as PixelMap, Picture, ImageSource, ImagePacker, and ImageReceiver. It supports image decoding, encoding, pixel data manipulation, and image transformation. These capabilities are suitable for scenarios such as image editing, image processing, and camera preview frame capturing.
 
@@ -772,7 +772,7 @@ function createPixelMapUsingAllocatorSync() {
 
 createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap
 
-Deserializes and obtains a PixelMap from the MessageSequence.
+Unmarshals a **MessageSequence** object to obtain a **PixelMap** object.
 
 > **NOTE**
 >
