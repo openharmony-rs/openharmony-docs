@@ -1,7 +1,7 @@
 # OH_AudioSuite_DownloadStatusInfo(System API)
 
 ```c
-struct OH_AudioSuite_DownloadStatusInfo {...}
+typedef struct OH_AudioSuite_DownloadStatusInfo {...} OH_AudioSuite_DownloadStatusInfo
 ```
 
 ## Overview

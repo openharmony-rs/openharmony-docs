@@ -1,7 +1,7 @@
 # DRM_MediaKeySystemDescription
 
 ```c
-struct DRM_MediaKeySystemDescription {...}
+typedef struct DRM_MediaKeySystemDescription {...} DRM_MediaKeySystemDescription
 ```
 
 ## Overview

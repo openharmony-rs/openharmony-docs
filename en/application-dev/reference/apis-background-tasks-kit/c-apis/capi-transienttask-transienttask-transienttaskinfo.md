@@ -1,7 +1,7 @@
 # TransientTask_TransientTaskInfo
 
 ```c
-struct TransientTask_TransientTaskInfo {...}
+typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTaskInfo
 ```
 
 ## Overview

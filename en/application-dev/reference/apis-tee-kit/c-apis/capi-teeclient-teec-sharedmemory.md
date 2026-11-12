@@ -31,6 +31,6 @@ Defines a shared memory block, which can be registered or allocated.
 | bool is_allocated | Indicates whether the memory has been allocated. |
 | head | Linked list head for shared memory-related data. |
 | imp | Implementation-specific data. |
-| TEEC_Context *context | Pointer to the TEEC context associated with the shared memory. |
+| [TEEC_Context](capi-teeclient-teec-context.md) *context | Pointer to the TEEC context associated with the shared memory. |
 
 

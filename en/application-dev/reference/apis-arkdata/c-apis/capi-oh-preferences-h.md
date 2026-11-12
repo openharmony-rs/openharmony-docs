@@ -14,13 +14,13 @@ Provides APIs and structs for accessing the **Preferences** object.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Preferences](capi-preferences-oh-preferences.md) | OH_Preferences | Represents a **Preferences** object. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

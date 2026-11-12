@@ -14,7 +14,7 @@ Declares the ArkWeb network protocol stack error codes. This enumeration defines
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

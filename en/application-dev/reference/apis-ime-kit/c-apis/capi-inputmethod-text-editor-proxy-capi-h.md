@@ -16,13 +16,13 @@ Provides a set of methods that enable self‑drawn input boxes implemented by an
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) | InputMethod_TextEditorProxy | Represents the proxy class for the input method text editor. It handles the interaction between the input method app and the text editor, provides methods for receiving input method requests and notifications, and is suitable for scenarios requiring bidirectional communication between the input method and the editor. This struct is an opaque type. You cannot directly access its internal members and can only operate on it through the functions provided by this module. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

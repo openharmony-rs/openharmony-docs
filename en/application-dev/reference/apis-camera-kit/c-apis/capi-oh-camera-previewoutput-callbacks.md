@@ -1,7 +1,7 @@
 # PreviewOutput_Callbacks
 
 ```c
-struct PreviewOutput_Callbacks {...}
+typedef struct PreviewOutput_Callbacks {...} PreviewOutput_Callbacks
 ```
 
 ## Overview

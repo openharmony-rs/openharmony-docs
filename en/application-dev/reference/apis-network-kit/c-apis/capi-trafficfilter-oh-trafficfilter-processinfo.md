@@ -1,7 +1,7 @@
 # OH_TrafficFilter_ProcessInfo
 
 ```c
-struct OH_TrafficFilter_ProcessInfo {...}
+typedef struct OH_TrafficFilter_ProcessInfo {...} OH_TrafficFilter_ProcessInfo
 ```
 
 ## Overview

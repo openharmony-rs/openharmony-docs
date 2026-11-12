@@ -14,7 +14,7 @@ Provide C interface for the data network connection module of network management
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

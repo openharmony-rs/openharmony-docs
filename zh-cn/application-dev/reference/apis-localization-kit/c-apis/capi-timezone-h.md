@@ -16,14 +16,14 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [DateTimeRule](capi-i18n-datetimerule.md) | 时间日期规则。 |
-| [InitialTimeZoneRule](capi-i18n-initialtimezonerule.md) | 起始时区规则。 |
-| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md) | 起始时间戳数组定义的时区规则。 |
-| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md) | 每年生效的时区规则。 |
-| [TimeZoneRules](capi-i18n-timezonerules.md) | 完整的时区规则，包括起始时区规则、起始时间戳数组定义的时区规则和每年生效的时区规则，能够全面描述时区的历史和未来规则。 |
-| [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md) | 用于传入查询的信息，并接收查询的结果。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [DateTimeRule](capi-i18n-datetimerule.md) | DateTimeRule | 时间日期规则。 |
+| [InitialTimeZoneRule](capi-i18n-initialtimezonerule.md) | InitialTimeZoneRule | 起始时区规则。 |
+| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md) | TimeArrayTimeZoneRule | 起始时间戳数组定义的时区规则。 |
+| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md) | AnnualTimeZoneRule | 每年生效的时区规则。 |
+| [TimeZoneRules](capi-i18n-timezonerules.md) | TimeZoneRules | 完整的时区规则，包括起始时区规则、起始时间戳数组定义的时区规则和每年生效的时区规则，能够全面描述时区的历史和未来规则。 |
+| [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md) | TimeZoneRuleQuery | 用于传入查询的信息，并接收查询的结果。 |
 
 ### 枚举
 

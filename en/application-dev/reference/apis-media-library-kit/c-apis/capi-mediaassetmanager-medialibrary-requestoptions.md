@@ -1,7 +1,7 @@
 # MediaLibrary_RequestOptions
 
 ```c
-struct MediaLibrary_RequestOptions {...}
+typedef struct MediaLibrary_RequestOptions {...} MediaLibrary_RequestOptions
 ```
 
 ## Overview

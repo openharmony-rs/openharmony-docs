@@ -14,7 +14,7 @@ Declares the APIs of **NativeGesture**, supporting capabilities such as gesture 
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -31,7 +31,7 @@ Declares the APIs of **NativeGesture**, supporting capabilities such as gesture 
 | [ArkUI_GestureRecognizer*](capi-arkui-nativemodule-arkui-gesturerecognizer8h.md) | ArkUI_GestureRecognizerHandle | Defines the gesture recognizer handle, which is an alias wrapper of the **ArkUI_GestureRecognizer** pointer type and is used to represent a gesture recognizer object in the ArkUI native gesture APIs. This handle can be used as an object reference in scenarios such as gesture recognizer creation, property configuration, and event callback listening, facilitating unified passing, management, and operation of gesture recognizers at the native layer. For details about how to obtain and use it, see native_gesture.h. |
 | [ArkUI_TouchRecognizer*](capi-arkui-nativemodule-arkui-touchrecognizer8h.md) | ArkUI_TouchRecognizerHandle | Defines a touch recognizer handle, which is used to represent a touch recognizer object and pass the object in APIs such as gesture interruption and gesture collection interception. For details about the APIs, see native_gesture.h. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -45,7 +45,7 @@ Declares the APIs of **NativeGesture**, supporting capabilities such as gesture 
 | [ArkUI_GestureRecognizerState](#arkui_gesturerecognizerstate) | ArkUI_GestureRecognizerState | Enumerates the gesture recognizer states. |
 | [OH_ArkUI_GestureCollectIntervention](#oh_arkui_gesturecollectintervention) | OH_ArkUI_GestureCollectIntervention | Defines the intervention types for gesture and event collection. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -112,7 +112,7 @@ Declares the APIs of **NativeGesture**, supporting capabilities such as gesture 
 | [bool OH_ArkUI_TouchRecognizer_IsHostBelongsTo(const ArkUI_TouchRecognizerHandle recognizer, int32_t uniqueId)](#oh_arkui_touchrecognizer_ishostbelongsto) | - | Checks whether the node bound to the touch recognizer is a descendant node of the passed component. |
 | [bool OH_ArkUI_GestureRecognizer_IsHostBelongsTo(const ArkUI_GestureRecognizer* recognizer, int32_t uniqueId)](#oh_arkui_gesturerecognizer_ishostbelongsto) | - | Checks whether the node bound to the gesture recognizer is a descendant node of the passed component. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

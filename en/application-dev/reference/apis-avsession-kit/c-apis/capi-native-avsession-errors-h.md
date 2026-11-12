@@ -14,7 +14,7 @@ Declare avsession related error.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

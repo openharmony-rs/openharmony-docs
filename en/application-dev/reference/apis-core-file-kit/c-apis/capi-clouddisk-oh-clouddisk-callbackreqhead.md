@@ -1,7 +1,7 @@
 # OH_CloudDisk_CallbackReqHead
 
 ```c
-struct OH_CloudDisk_CallbackReqHead {...}
+typedef struct OH_CloudDisk_CallbackReqHead {...} OH_CloudDisk_CallbackReqHead
 ```
 
 ## Overview

@@ -16,7 +16,7 @@ Declares the APIs for querying device information. This module provides the capa
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

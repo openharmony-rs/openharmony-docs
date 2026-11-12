@@ -14,7 +14,7 @@ Declares the APIs for the sensor service, including obtaining sensor information
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

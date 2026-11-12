@@ -1,7 +1,7 @@
 # Http_ClientCert
 
 ```c
-struct Http_ClientCert {...}
+typedef struct Http_ClientCert {...} Http_ClientCert
 ```
 
 ## 概述

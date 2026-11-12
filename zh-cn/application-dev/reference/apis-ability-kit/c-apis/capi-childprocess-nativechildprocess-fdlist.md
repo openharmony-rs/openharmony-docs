@@ -1,7 +1,7 @@
 # NativeChildProcess_FdList
 
 ```c
-struct NativeChildProcess_FdList {...}
+typedef struct NativeChildProcess_FdList {...} NativeChildProcess_FdList
 ```
 
 ## 概述

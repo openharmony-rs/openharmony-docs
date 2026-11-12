@@ -14,7 +14,7 @@ Provides the enums, structs, macros, and error codes used by **CertManager** API
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -23,14 +23,14 @@ Provides the enums, structs, macros, and error codes used by **CertManager** API
 | [OH_CM_CredentialDetailList](capi-certmanagertype-oh-cm-credentialdetaillist.md) | OH_CM_CredentialDetailList | Defines a struct for the certificate credential detail list. |
 | [OH_CM_UkeyInfo](capi-certmanagertype-oh-cm-ukeyinfo.md) | OH_CM_UkeyInfo | Defines a struct for the USB certificate credential information. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_CM_ErrorCode](#oh_cm_errorcode) | OH_CM_ErrorCode | Enumerates error codes. |
 | [OH_CM_CertificatePurpose](#oh_cm_certificatepurpose) | OH_CM_CertificatePurpose | Enumerates the certificate credential purposes. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

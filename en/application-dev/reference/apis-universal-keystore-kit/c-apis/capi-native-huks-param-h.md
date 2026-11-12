@@ -16,7 +16,7 @@ Provides APIs for constructing, using, and destroying a parameter set.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

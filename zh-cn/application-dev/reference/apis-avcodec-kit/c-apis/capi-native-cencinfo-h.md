@@ -20,7 +20,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [DrmSubsample](capi-multimedia-drm-drmsubsample.md) | - | Subsample结构类型定义。 |
+| [DrmSubsample](capi-multimedia-drm-drmsubsample.md) | DrmSubsample | Subsample结构类型定义。 |
 | [OH_AVBuffer](capi-multimedia-drm-oh-avbuffer.md) | OH_AVBuffer | AVBuffer结构。 |
 | [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md) | OH_AVCencInfo | 该结构体用于描述音视频通用加密方案（CENC）信息。 |
 
@@ -173,7 +173,7 @@ OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlg
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md) *cencInfo | 指向OH_AVCencInfo实例的指针。 |
-| enum DrmCencAlgorithm algo | 加密算法模式。 |
+| enum [DrmCencAlgorithm](capi-native-cencinfo-h.md#drmcencalgorithm) algo | 加密算法模式。 |
 
 **返回值：**
 
@@ -267,7 +267,7 @@ OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md) *cencInfo | 指向OH_AVCencInfo实例的指针。 |
-| enum DrmCencInfoMode mode | cencInfo模式，指示是否设置了keyId/iv/subsample。 |
+| enum [DrmCencInfoMode](capi-native-cencinfo-h.md#drmcencinfomode) mode | cencInfo模式，指示是否设置了keyId/iv/subsample。 |
 
 **返回值：**
 

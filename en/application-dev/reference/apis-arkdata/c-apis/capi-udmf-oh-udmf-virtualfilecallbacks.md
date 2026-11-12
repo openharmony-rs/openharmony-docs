@@ -1,7 +1,7 @@
 # OH_UDMF_VirtualFileCallbacks
 
 ```c
-struct OH_UDMF_VirtualFileCallbacks {...}
+typedef struct OH_UDMF_VirtualFileCallbacks {...} OH_UDMF_VirtualFileCallbacks
 ```
 
 ## Overview

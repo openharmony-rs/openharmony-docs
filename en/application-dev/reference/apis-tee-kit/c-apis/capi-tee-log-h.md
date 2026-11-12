@@ -14,13 +14,13 @@ Provides TEE log APIs.<br> Reference of TEE log APIs and internal definitions.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [LOG_LEVEL](#log_level) | LOG_LEVEL | Enumerates the levels of the log. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -53,7 +53,7 @@ Provides TEE log APIs.<br> Reference of TEE log APIs and internal definitions.
 | tloge(fmt, args...) printf("[%s] %s %d:" fmt " ", g_debug_prefix, TAG_ERROR, \_\_LINE\_\_, ##args) | Defines the API to print TEE log at the ERROR level.<br>**Since**: 20 |
 | tloge(fmt, args...)  do {                     } while (0) | Defines the API to print TEE log at the ERROR level.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -62,7 +62,7 @@ Provides TEE log APIs.<br> Reference of TEE log APIs and internal definitions.
 | [void tee_print(LOG_LEVEL log_level, const char *fmt, ...)](#tee_print) | Provides to print TEE logs. |
 | [void tee_print_driver(LOG_LEVEL log_level, const char *log_tag, const char *fmt, ...)](#tee_print_driver) | Provides to print TEE driver logs. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -89,11 +89,11 @@ Enumerates the levels of the log.
 | Enum item | Description |
 | -- | -- |
 | LOG_LEVEL_ERROR = 0 | Error level log. |
-| LOG_LEVEL_WARN  = 1 | Warning level log. |
-| LOG_LEVEL_INFO  = 2 | Information level log. |
+| LOG_LEVEL_WARN = 1 | Warning level log. |
+| LOG_LEVEL_INFO = 2 | Information level log. |
 | LOG_LEVEL_DEBUG = 3 | Debug level log. |
 | LOG_LEVEL_VERBO = 4 | Verbose level log. |
-| LOG_LEVEL_ON    = 5 | On level log. |
+| LOG_LEVEL_ON = 5 | On level log. |
 
 
 ## Function description

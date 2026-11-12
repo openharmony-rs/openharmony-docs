@@ -14,7 +14,7 @@ Declares the shared mutex interfaces in C.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

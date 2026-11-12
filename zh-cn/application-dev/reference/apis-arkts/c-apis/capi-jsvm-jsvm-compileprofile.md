@@ -8,7 +8,7 @@ typedef const struct {...} JSVM_CompileProfile
 
 与JSVM_COMPILE_COMPILE_PROFILE一起传递的编译采样文件
 
-<!--Device-typedef const struct {...} JSVM_CompileProfile--><!--Device-typedef const struct {...} JSVM_CompileProfile-End-->
+<!--Device-typedef struct JSVM_CompileProfile {...} JSVM_CompileProfile--><!--Device-typedef struct JSVM_CompileProfile {...} JSVM_CompileProfile-End-->
 
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 

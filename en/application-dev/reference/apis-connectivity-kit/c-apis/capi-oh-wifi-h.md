@@ -14,13 +14,13 @@ Define interfaces for querying wifi switch status.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_WifiLinkedInfo](capi-wifi-oh-wifilinkedinfo.md) | OH_WifiLinkedInfo | Represents the Wi-Fi connection information.<br> This structure describes the hotspot information of the current station connection. The information can be obtained by calling [OH_Wifi_GetLinkedInfo](capi-oh-wifi-h.md#oh_wifi_getlinkedinfo). |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -31,14 +31,14 @@ Define interfaces for querying wifi switch status.
 | [OH_WifiCategory](#oh_wificategory) | OH_WifiCategory | Wi-Fi categories. |
 | [OH_WifiStandard](#oh_wifistandard) | OH_WifiStandard | Enumerates Wi-Fi standards. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | WIFI_MAX_SSID_LEN 33 // 32 +0 | Indicates the maximum length of a Wi-Fi SSID.<br>**Since**: 24 The maximum length is 32, and the last bit is reserved and set to <b>\0</b>. \n |
 | WIFI_MAC_LEN 18 | Indicates the maximum length of a Wi-Fi MAC address or a Wi-Fi BSSID.<br>**Since**: 24 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

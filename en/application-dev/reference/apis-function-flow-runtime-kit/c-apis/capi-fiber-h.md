@@ -14,7 +14,7 @@ Declares the fiber interfaces in C.<br> A fiber is a lightweight user-mode threa
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

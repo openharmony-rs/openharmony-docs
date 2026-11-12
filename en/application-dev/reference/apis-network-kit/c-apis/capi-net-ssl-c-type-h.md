@@ -14,15 +14,15 @@ Defines the data structures for the C APIs of the SSL/TLS certificate chain veri
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [NetStack_CertBlob](capi-netstack-netstack-certblob.md) | Defines the certificate data structure. |
-| [NetStack_CertificatePinning](capi-netstack-netstack-certificatepinning.md) | Defines certificate pinning information. |
-| [NetStack_Certificates](capi-netstack-netstack-certificates.md) | Define certificate information. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [NetStack_CertBlob](capi-netstack-netstack-certblob.md) | - | Defines the certificate data structure. |
+| [NetStack_CertificatePinning](capi-netstack-netstack-certificatepinning.md) | NetStack_CertificatePinning | Defines certificate pinning information. |
+| [NetStack_Certificates](capi-netstack-netstack-certificates.md) | NetStack_Certificates | Define certificate information. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

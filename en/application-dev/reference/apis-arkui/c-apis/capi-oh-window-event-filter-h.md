@@ -14,7 +14,7 @@ The file declares the APIs for a window to filter multimodal key events. When a 
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

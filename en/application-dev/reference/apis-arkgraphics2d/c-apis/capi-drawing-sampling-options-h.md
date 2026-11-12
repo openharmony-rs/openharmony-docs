@@ -14,14 +14,14 @@ This file declares the functions related to sampling in the drawing module. It i
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_FilterMode](#oh_drawing_filtermode) | OH_Drawing_FilterMode | Defines an enum for the filter modes. |
 | [OH_Drawing_MipmapMode](#oh_drawing_mipmapmode) | OH_Drawing_MipmapMode | Defines an enum for the mipmap modes. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

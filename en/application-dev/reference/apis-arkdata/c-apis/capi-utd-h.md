@@ -14,13 +14,13 @@ Defines APIs and structs related to the Uniform Type Descriptors (UTDs). If the 
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Utd](capi-udmf-oh-utd.md) | OH_Utd | Describes the unified data type descriptor. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

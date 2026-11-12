@@ -16,11 +16,11 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [NetStack_CertBlob](capi-netstack-netstack-certblob.md) | Defines the certificate data structure. |
-| [NetStack_CertificatePinning](capi-netstack-netstack-certificatepinning.md) | Defines certificate pinning information. |
-| [NetStack_Certificates](capi-netstack-netstack-certificates.md) | Define certificate information. |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [NetStack_CertBlob](capi-netstack-netstack-certblob.md) | - | Defines the certificate data structure. |
+| [NetStack_CertificatePinning](capi-netstack-netstack-certificatepinning.md) | NetStack_CertificatePinning | Defines certificate pinning information. |
+| [NetStack_Certificates](capi-netstack-netstack-certificates.md) | NetStack_Certificates | Define certificate information. |
 
 ### 枚举
 

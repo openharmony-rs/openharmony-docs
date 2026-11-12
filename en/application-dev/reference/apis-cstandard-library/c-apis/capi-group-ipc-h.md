@@ -16,7 +16,7 @@ Declares interfaces for shared memory and named semaphores in group-specific dir
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

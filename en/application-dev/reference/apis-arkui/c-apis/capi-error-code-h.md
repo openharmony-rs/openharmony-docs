@@ -16,7 +16,7 @@ Defines the error code for the native module.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

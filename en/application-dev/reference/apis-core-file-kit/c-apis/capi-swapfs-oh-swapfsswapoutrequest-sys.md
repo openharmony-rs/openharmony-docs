@@ -1,7 +1,7 @@
 # OH_SwapfsSwapOutRequest(System API)
 
 ```c
-struct OH_SwapfsSwapOutRequest {...}
+typedef struct OH_SwapfsSwapOutRequest {...} OH_SwapfsSwapOutRequest
 ```
 
 ## Overview

@@ -1,7 +1,7 @@
 # OH_CloudDisk_FetchRangeDataRequest
 
 ```c
-struct OH_CloudDisk_FetchRangeDataRequest {...}
+typedef struct OH_CloudDisk_FetchRangeDataRequest {...} OH_CloudDisk_FetchRangeDataRequest
 ```
 
 ## 概述
@@ -27,6 +27,6 @@ struct OH_CloudDisk_FetchRangeDataRequest {...}
 | [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePath | 同步根内相对文件路径。<br>**起始版本：** 26.1.0 |
 | uint64_t offset | 获取范围数据的起始偏移，以字节为单位。<br>**起始版本：** 26.1.0 |
 | uint64_t size | 获取范围数据的大小，以字节为单位。<br>**起始版本：** 26.1.0 |
-| OH_CloudDisk_DataBuf *data | 需要读取的数据。<br>**起始版本：** 26.1.0 |
+| [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) *data | 需要读取的数据。<br>**起始版本：** 26.1.0 |
 
 

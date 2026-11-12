@@ -14,13 +14,13 @@ Provides the data structures for the C APIs of the the telephony radio.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [Telephony_NetworkState](capi-telephony-telephony-networkstate.md) | Telephony_NetworkState | Defines network status information. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -29,7 +29,7 @@ Provides the data structures for the C APIs of the the telephony radio.
 | [Telephony_RadioTechnology](#telephony_radiotechnology) | Telephony_RadioTechnology | RAT type of the device. |
 | [Telephony_NsaState](#telephony_nsastate) | Telephony_NsaState | NSA network registration status of the device. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -56,12 +56,12 @@ Result codes.
 
 | Enum item | Description |
 | -- | -- |
-| TEL_RADIO_SUCCESS = 0 | @error success |
-| TEL_RADIO_PERMISSION_DENIED = 201 | @error permission denied |
-| TEL_RADIO_ERR_INVALID_PARAM = 401 | @error invalid parameter |
-| TEL_RADIO_ERR_MARSHALLING_FAILED = 8300001 | @error marshalling failed, this is a low probability error, try again later when get this error |
-| TEL_RADIO_ERR_SERVICE_CONNECTION_FAILED = 8300002 | @error unable to connect to telephony service, try again later when get this error |
-| TEL_RADIO_ERR_OPERATION_FAILED = 8300003 | @error operation failed in telephony service, try again later when get this error |
+| TEL_RADIO_SUCCESS = 0 | &nbsp;success |
+| TEL_RADIO_PERMISSION_DENIED = 201 | &nbsp;permission denied |
+| TEL_RADIO_ERR_INVALID_PARAM = 401 | &nbsp;invalid parameter |
+| TEL_RADIO_ERR_MARSHALLING_FAILED = 8300001 | &nbsp;marshalling failed, this is a low probability error, try again later when get this error |
+| TEL_RADIO_ERR_SERVICE_CONNECTION_FAILED = 8300002 | &nbsp;unable to connect to telephony service, try again later when get this error |
+| TEL_RADIO_ERR_OPERATION_FAILED = 8300003 | &nbsp;operation failed in telephony service, try again later when get this error |
 
 ### Telephony_RegState
 

@@ -14,7 +14,7 @@ Defines key operation functions for publishing, subscribing to, and unsubscribin
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -22,13 +22,13 @@ Defines key operation functions for publishing, subscribing to, and unsubscribin
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md) | CommonEvent_PublishInfo | Defines the property object used for publishing a common event. This object encapsulates the property configuration required for publishing a common event. It is applicable to scenarios where an app needs to publish a custom common event and specify the publishing parameters. |
 | [CommonEvent_RcvData](capi-oh-commonevent-commonevent-rcvdata.md) | CommonEvent_RcvData | Defines a struct for the common event data. When a common event triggers a callback, this struct is used to pass the received event data to the developer. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [CommonEvent_ErrCode](#commonevent_errcode) | CommonEvent_ErrCode | Enumerates the error codes. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -88,7 +88,7 @@ Defines key operation functions for publishing, subscribing to, and unsubscribin
 | [const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_getdatafromsubscriber) | - | Obtains the result data (string type) of an ordered common event. |
 | [bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, const char* data, size_t length)](#oh_commonevent_setdatatosubscriber) | - | Sets the result data (string type) of an ordered common event. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

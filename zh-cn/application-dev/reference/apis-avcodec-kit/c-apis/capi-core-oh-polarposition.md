@@ -1,7 +1,7 @@
 # OH_PolarPosition
 
 ```c
-struct OH_PolarPosition {...}
+typedef struct OH_PolarPosition {...} OH_PolarPosition
 ```
 
 ## 概述

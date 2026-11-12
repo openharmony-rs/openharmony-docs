@@ -1,7 +1,7 @@
 # OH_MultiDisplayCapability
 
 ```c
-struct OH_MultiDisplayCapability {...}
+typedef struct OH_MultiDisplayCapability {...} OH_MultiDisplayCapability
 ```
 
 ## 概述

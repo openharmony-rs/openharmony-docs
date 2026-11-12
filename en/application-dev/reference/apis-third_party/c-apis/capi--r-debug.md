@@ -11,7 +11,7 @@
 | Name | Description |
 | -- | -- |
 | int r_version |  |
-| struct link_map *r_map |  |
+| [struct link_map](capi--link-map.md) *r_map |  |
 | ElfW(Addr) r_brk |  |
 | r_state |  |
 | r_state.RT_CONSISTENT, |  |

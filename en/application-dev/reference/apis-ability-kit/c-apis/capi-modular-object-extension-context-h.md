@@ -14,13 +14,13 @@ Declares the context APIs of ModularObjectExtensionAbility, including starting a
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AbilityRuntime_ModularObjectExtensionContext*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md) | OH_AbilityRuntime_ModObjExtensionContextHandle | Represents the handle to the ModularObjectExtensionAbility context. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

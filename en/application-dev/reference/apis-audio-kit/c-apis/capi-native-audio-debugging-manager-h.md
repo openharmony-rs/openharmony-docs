@@ -14,13 +14,13 @@ Declare audio debugging manager related interfaces.<br> This file interfaces are
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) | OH_AudioDebuggingManager | Declare the audio debugging manager. Audio debugging manager provides many functions for developer to get the information about audio system runtime info. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

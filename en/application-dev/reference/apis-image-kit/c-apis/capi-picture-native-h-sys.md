@@ -16,13 +16,13 @@ The file declares the APIs for obtaining picture data and information.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_DecomposeOptions(System API)](capi-image-nativemodule-oh-decomposeoptions-sys.md) | OH_DecomposeOptions | **OH_DecomposeOptions** is the HDR decomposition option struct encapsulated at the native layer. It is used to specify parameters used for HDR decomposition, such as the target pixel format.<br>**System API:** This is a system API. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

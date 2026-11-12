@@ -14,7 +14,7 @@ Defines basic data types and data structures.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

@@ -16,20 +16,20 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) | 存放网络ID。 |
-| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) | 网络能力集。 |
-| [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md) | 网络地址。 |
-| [NetConn_Route](capi-netconnection-netconn-route.md) | 路由配置信息。 |
-| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) | 代理配置信息。 |
-| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) | 网络连接信息。 |
-| [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) | 网络列表。 |
-| [NetConn_NetSpecifier](capi-netconnection-netconn-netspecifier.md) | 网络的特征集。 |
-| [NetConn_NetConnCallback](capi-netconnection-netconn-netconncallback.md) | 网络状态监听回调集合，所有回调事件需全部注册，无需关注的回调可以设为空实现。 |
-| [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) | 定义探测结果信息。 |
-| [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) | 定义网络跟踪路由选项。 |
-| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) | 定义跟踪路由信息。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) | NetConn_NetHandle | 存放网络ID。 |
+| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) | NetConn_NetCapabilities | 网络能力集。 |
+| [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md) | NetConn_NetAddr | 网络地址。 |
+| [NetConn_Route](capi-netconnection-netconn-route.md) | NetConn_Route | 路由配置信息。 |
+| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) | NetConn_HttpProxy | 代理配置信息。 |
+| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) | NetConn_ConnectionProperties | 网络连接信息。 |
+| [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) | NetConn_NetHandleList | 网络列表。 |
+| [NetConn_NetSpecifier](capi-netconnection-netconn-netspecifier.md) | NetConn_NetSpecifier | 网络的特征集。 |
+| [NetConn_NetConnCallback](capi-netconnection-netconn-netconncallback.md) | NetConn_NetConnCallback | 网络状态监听回调集合，所有回调事件需全部注册，无需关注的回调可以设为空实现。 |
+| [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) | NetConn_ProbeResultInfo | 定义探测结果信息。 |
+| [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) | NetConn_TraceRouteOption | 定义网络跟踪路由选项。 |
+| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) | NetConn_TraceRouteInfo | 定义跟踪路由信息。 |
 
 ### 枚举
 

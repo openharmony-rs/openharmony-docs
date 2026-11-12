@@ -1,7 +1,7 @@
 # peration_src_dest
 
 ```c
-struct peration_src_dest {...}
+typedef struct peration_src_dest {...} operation_src_dest
 ```
 
 ## Overview

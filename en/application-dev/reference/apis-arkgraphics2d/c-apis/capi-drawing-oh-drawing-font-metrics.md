@@ -1,7 +1,7 @@
 # OH_Drawing_Font_Metrics
 
 ```c
-struct OH_Drawing_Font_Metrics {...}
+typedef struct OH_Drawing_Font_Metrics {...} OH_Drawing_Font_Metrics
 ```
 
 ## Overview

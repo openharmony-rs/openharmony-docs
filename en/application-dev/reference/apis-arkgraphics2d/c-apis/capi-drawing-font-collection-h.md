@@ -14,7 +14,7 @@ Defines functions related to font collections in the drawing module, which are u
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

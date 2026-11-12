@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) | - | 相机输入错误事件的回调。 |
+| [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) | CameraInput_Callbacks | 相机输入错误事件的回调。 |
 | [Camera_Input](capi-oh-camera-camera-input.md) | Camera_Input | 相机输入对象。可以使用[OH_CameraManager_CreateCameraInput](capi-camera-manager-h.md#oh_cameramanager_createcamerainput)方法创建指针。 |
 
 ### 函数

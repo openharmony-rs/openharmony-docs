@@ -14,13 +14,13 @@ Declares the interfaces of a ModularObjectExtensionAbility instance, including t
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AbilityRuntime_ModularObjectExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md) | OH_AbilityRuntime_ModObjExtensionInstance | Defines the OH_AbilityRuntime_ModularObjectExtensionInstance struct, whose type alias is OH_AbilityRuntime_ModObjExtensionInstance, representing an instance of ModularObjectExtensionAbility. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -35,7 +35,7 @@ Declares the interfaces of a ModularObjectExtensionAbility instance, including t
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetContextFromInstance(OH_AbilityRuntime_ModObjExtensionInstanceHandle instance, OH_AbilityRuntime_ModObjExtensionContextHandle* context)](#oh_abilityruntime_modobjextensionability_getcontextfrominstance) | - | Gets the extension context from the modular object extension instance. |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetInstanceFromBase(AbilityRuntime_ExtensionInstanceHandle baseExtensionInstance, OH_AbilityRuntime_ModObjExtensionInstanceHandle* modObjExtensionInstance)](#oh_abilityruntime_modobjextensionability_getinstancefrombase) | - | Gets the modular object extension instance from a base extension instance. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

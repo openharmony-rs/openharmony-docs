@@ -14,13 +14,13 @@ Reference of TEE object api definitions.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [Pseudo_PropSetHandle](#pseudo_propsethandle) | Pseudo_PropSetHandle | Enumerates the types of the property set. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -38,7 +38,7 @@ Reference of TEE object api definitions.
 | [TEE_Result TEE_GetPropertyName(TEE_PropSetHandle enumerator, void *nameBuffer, size_t *nameBufferLen)](#tee_getpropertyname) | Obtains the name of this property in an enumerator. |
 | [TEE_Result TEE_GetNextProperty(TEE_PropSetHandle enumerator)](#tee_getnextproperty) | Obtains the next property in an enumerator. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -65,10 +65,10 @@ Enumerates the types of the property set.
 
 | Enum item | Description |
 | -- | -- |
-| TEE_PROPSET_UNKNOW             = 0 | Unknown property set type. |
+| TEE_PROPSET_UNKNOW = 0 | Unknown property set type. |
 | TEE_PROPSET_TEE_IMPLEMENTATION = 0xFFFFFFFD | Property set type for TEE implementation. |
-| TEE_PROPSET_CURRENT_CLIENT     = 0xFFFFFFFE | Property set type for the current client. |
-| TEE_PROPSET_CURRENT_TA         = 0xFFFFFFFF | Property set type for the current Trusted Application (TA). |
+| TEE_PROPSET_CURRENT_CLIENT = 0xFFFFFFFE | Property set type for the current client. |
+| TEE_PROPSET_CURRENT_TA = 0xFFFFFFFF | Property set type for the current Trusted Application (TA). |
 
 
 ## Function description
@@ -247,7 +247,7 @@ Obtains a property from a property set and converts its value to the <b>TEE_UUID
 | -- | -- |
 | TEE_PropSetHandle propsetOrEnumerator | Indicates one of the TEE_PROPSET_XXX pseudo-handles or a handle on a property enumerator. |
 | const char *name | Indicates the pointer to the zero-terminated string containing the name of the property to obtain. |
-| TEE_UUID *value | Indicates the pointer to the variable that holds the property value obtained. |
+| [TEE_UUID](capi-teetrusted-tee-uuid.md) *value | Indicates the pointer to the variable that holds the property value obtained. |
 
 **Returns**:
 

@@ -14,13 +14,13 @@ Provides functions and enumerations related to cryptographic parameters of the r
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) | OH_Rdb_CryptoParam | Specifies the cryptographic parameters used when opening an encrypted database. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -28,7 +28,7 @@ Provides functions and enumerations related to cryptographic parameters of the r
 | [Rdb_HmacAlgo](#rdb_hmacalgo) | Rdb_HmacAlgo | Enumerates the supported HMAC algorithm when opening a database. |
 | [Rdb_KdfAlgo](#rdb_kdfalgo) | Rdb_KdfAlgo | Enumerates the supported KDF algorithm when opening a database. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

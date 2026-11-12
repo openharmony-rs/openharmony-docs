@@ -14,31 +14,31 @@ The file declares the common structs, character constants, and enums used for ru
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) | - | The struct describes the audio capture information. |
-| [OH_AudioEncInfo](capi-avscreencapture-oh-audioencinfo.md) | - | The struct describes the audio encoding information. |
-| [OH_AudioInfo](capi-avscreencapture-oh-audioinfo.md) | - | The struct describes the audio information. |
-| [OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md) | - | The struct describes the video capture information. When **videoFrameWidth** and **videoFrameHeight** are both **0**, video-related parameters are ignored and screen data is not recorded. |
-| [OH_VideoEncInfo](capi-avscreencapture-oh-videoencinfo.md) | - | The struct describes the video encoding information. |
-| [OH_VideoInfo](capi-avscreencapture-oh-videoinfo.md) | - | The struct describes the video information. |
-| [OH_RecorderInfo](capi-avscreencapture-oh-recorderinfo.md) | - | The struct describes the recording file information. |
-| [OH_AVScreenCaptureConfig](capi-avscreencapture-oh-avscreencaptureconfig.md) | - | The struct describes the screen capture configuration. |
-| [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md) | - | Defines the privacy protection information. |
-| [OH_AVScreenCaptureCallback](capi-avscreencapture-oh-avscreencapturecallback.md) | - | Defines all the asynchronous callback function pointers of an **OH_AVScreenCapture** instance. To ensure the normal running of **OH_AVScreenCapture**, you must register the instance of this struct with the **<br>OH_AVScreenCapture** instance to process the information reported by the callback functions. |
-| [OH_Rect](capi-avscreencapture-oh-rect.md) | - | The struct describes the width, height, and image information of the rectangle used for screen capture. |
-| [OH_AudioBuffer](capi-avscreencapture-oh-audiobuffer.md) | - | The struct describes the configuration such as the size, type, and timestamp of audio data. |
-| [OH_AVScreenCaptureHighlightConfig](capi-avscreencapture-oh-avscreencapturehighlightconfig.md) | - | The struct describes the style of the highlight border shown during screen capture, including its shape, thickness, and color. |
-| [OH_MultiDisplayCapability](capi-avscreencapture-oh-multidisplaycapability.md) | - | Defines a struct for the multi-screen recording capability. It includes whether the multi-screen supports joint recording and the width and height of the screen for joint recording. |
+| [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) | OH_AudioCaptureInfo | The struct describes the audio capture information. |
+| [OH_AudioEncInfo](capi-avscreencapture-oh-audioencinfo.md) | OH_AudioEncInfo | The struct describes the audio encoding information. |
+| [OH_AudioInfo](capi-avscreencapture-oh-audioinfo.md) | OH_AudioInfo | The struct describes the audio information. |
+| [OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md) | OH_VideoCaptureInfo | The struct describes the video capture information. When **videoFrameWidth** and **videoFrameHeight** are both **0**, video-related parameters are ignored and screen data is not recorded. |
+| [OH_VideoEncInfo](capi-avscreencapture-oh-videoencinfo.md) | OH_VideoEncInfo | The struct describes the video encoding information. |
+| [OH_VideoInfo](capi-avscreencapture-oh-videoinfo.md) | OH_VideoInfo | The struct describes the video information. |
+| [OH_RecorderInfo](capi-avscreencapture-oh-recorderinfo.md) | OH_RecorderInfo | The struct describes the recording file information. |
+| [OH_AVScreenCaptureConfig](capi-avscreencapture-oh-avscreencaptureconfig.md) | OH_AVScreenCaptureConfig | The struct describes the screen capture configuration. |
+| [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md) | OH_PrivacyProtectInfo | Defines the privacy protection information. |
+| [OH_AVScreenCaptureCallback](capi-avscreencapture-oh-avscreencapturecallback.md) | OH_AVScreenCaptureCallback | Defines all the asynchronous callback function pointers of an **OH_AVScreenCapture** instance. To ensure the normal running of **OH_AVScreenCapture**, you must register the instance of this struct with the **<br>OH_AVScreenCapture** instance to process the information reported by the callback functions. |
+| [OH_Rect](capi-avscreencapture-oh-rect.md) | OH_Rect | The struct describes the width, height, and image information of the rectangle used for screen capture. |
+| [OH_AudioBuffer](capi-avscreencapture-oh-audiobuffer.md) | OH_AudioBuffer | The struct describes the configuration such as the size, type, and timestamp of audio data. |
+| [OH_AVScreenCaptureHighlightConfig](capi-avscreencapture-oh-avscreencapturehighlightconfig.md) | OH_AVScreenCaptureHighlightConfig | The struct describes the style of the highlight border shown during screen capture, including its shape, thickness, and color. |
+| [OH_MultiDisplayCapability](capi-avscreencapture-oh-multidisplaycapability.md) | OH_MultiDisplayCapability | Defines a struct for the multi-screen recording capability. It includes whether the multi-screen supports joint recording and the width and height of the screen for joint recording. |
 | [OH_NativeBuffer](capi-avscreencapture-oh-nativebuffer.md) | OH_NativeBuffer | The struct describes the native video stream class for screen capture. |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) | OH_AVScreenCapture | Defines all the asynchronous callback function pointers of an **OH_AVScreenCapture** instance. To ensure the normal running of **OH_AVScreenCapture**, you must register the instance of this struct with the **<br>OH_AVScreenCapture** instance to process the information reported by the callback functions. |
 | [OH_AVScreenCapture_ContentFilter](capi-avscreencapture-oh-avscreencapture-contentfilter.md) | OH_AVScreenCapture_ContentFilter | The OH_AVScreenCapture_ContentFilter struct describes the filter used to filter audio and video content. |
 | [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md) | OH_AVScreenCapture_CaptureStrategy | The OH_AVScreenCapture_CaptureStrategy struct describes the screen capture strategy. |
 | [OH_AVScreenCapture_UserSelectionInfo](capi-avscreencapture-oh-avscreencapture-userselectioninfo.md) | OH_AVScreenCapture_UserSelectionInfo | The OH_AVScreenCapture_UserSelectionInfo struct describes the parameters selected by the user on the authorization UI (selection UI). |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -58,7 +58,7 @@ The file declares the common structs, character constants, and enums used for ru
 | [OH_CapturePickerMode](#oh_capturepickermode) | OH_CapturePickerMode | Enumerates the display modes of the picker. |
 | [typedef  OH_AVScreenCapture_AutoPauseCaptureSceneEnum](#typedef  oh_avscreencapture_autopausecapturesceneenum) | - | Scene Enumeration for Auto Pause Screen Capture. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -73,7 +73,7 @@ The file declares the common structs, character constants, and enums used for ru
 | [typedef void (\*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectionInfo* selections, void *userData)](#oh_avscreencapture_onuserselected) | OH_AVScreenCapture_OnUserSelected | Called to return the parameters selected by the user on the authorization UI to the application. |
 | [typedef void (\*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture, OH_PrivacyProtectInfo* privacyProtect, void *userData)](#oh_avscreencapture_onprivacyprotect) | OH_AVScreenCapture_OnPrivacyProtect | Called when a privacy protection event occurs during the running of the [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) instance. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -105,6 +105,7 @@ Enumerates the screen capture modes.
 | OH_CAPTURE_SPECIFIED_SCREEN = 1 | capture a specified screen |
 | OH_CAPTURE_SPECIFIED_WINDOW = 2 | capture a specified window |
 | OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3 | Create a virtual extended screen and capture the contents of that screen<br>**Since**: 26.0.1 |
+| OH_CAPTURE_INVAILD = -1 |  |
 
 ### OH_AudioCaptureSourceType
 
@@ -199,6 +200,7 @@ Enumerates the data types of screen capture streams.
 | OH_ORIGINAL_STREAM = 0 | YUV/RGBA/PCM, etc. original stream |
 | OH_ENCODED_STREAM = 1 | h264/AAC, etc. encoded stream |
 | OH_CAPTURE_FILE = 2 | mp4 file |
+| OH_INVAILD = -1 |  |
 
 ### OH_VideoSourceType
 

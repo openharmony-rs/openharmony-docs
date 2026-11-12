@@ -14,13 +14,13 @@ The file declares the camera photo concepts.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_PhotoNative](capi-oh-camera-oh-photonative.md) | OH_PhotoNative | The struct describes the photo object, which is a full-quality image object. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

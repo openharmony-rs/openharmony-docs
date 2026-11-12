@@ -14,13 +14,13 @@ The file declares the APIs for obtaining the following ability resource informat
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | Description |
 | -- | -- |
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md) | Represents the ability resource information, which is used to store and pass the basic configuration information of an ability, including attributes such as name and type. It is applicable to scenarios where the native layer queries and manages ability resources. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -1,7 +1,7 @@
 # Rdb_ChangeInfo
 
 ```c
-struct Rdb_ChangeInfo {...}
+typedef struct Rdb_ChangeInfo {...} Rdb_ChangeInfo
 ```
 
 ## Overview

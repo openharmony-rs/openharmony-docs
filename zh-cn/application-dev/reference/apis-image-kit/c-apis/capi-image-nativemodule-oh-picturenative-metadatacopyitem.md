@@ -1,7 +1,7 @@
 # OH_PictureNative_MetadataCopyItem
 
 ```c
-struct OH_PictureNative_MetadataCopyItem {...}
+typedef struct OH_PictureNative_MetadataCopyItem {...} OH_PictureNative_MetadataCopyItem
 ```
 
 ## 概述

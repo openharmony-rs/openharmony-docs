@@ -1,7 +1,7 @@
 # OH_AudioSuite_DownloadStatusInfo（系统接口）
 
 ```c
-struct OH_AudioSuite_DownloadStatusInfo {...}
+typedef struct OH_AudioSuite_DownloadStatusInfo {...} OH_AudioSuite_DownloadStatusInfo
 ```
 
 ## 概述

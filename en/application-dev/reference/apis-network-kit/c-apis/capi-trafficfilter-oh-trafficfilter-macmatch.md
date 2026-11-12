@@ -1,7 +1,7 @@
 # OH_TrafficFilter_MACMatch
 
 ```c
-struct OH_TrafficFilter_MACMatch {...}
+typedef struct OH_TrafficFilter_MACMatch {...} OH_TrafficFilter_MACMatch
 ```
 
 ## Overview

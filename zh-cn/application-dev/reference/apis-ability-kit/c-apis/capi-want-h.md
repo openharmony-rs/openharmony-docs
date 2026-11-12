@@ -18,7 +18,7 @@ Want是对象间信息传递的载体，可以用于应用组件间的信息传�
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) | - | 声明Want中Element结构体。 |
+| [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) | AbilityBase_Element | 声明Want中Element结构体。 |
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md) | AbilityBase_Want | 声明元能力Want结构。 |
 
 ### 函数

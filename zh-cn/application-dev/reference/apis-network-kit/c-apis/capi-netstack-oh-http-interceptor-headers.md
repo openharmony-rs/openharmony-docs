@@ -1,7 +1,7 @@
 # OH_Http_Interceptor_Headers
 
 ```c
-struct OH_Http_Interceptor_Headers {...}
+typedef struct OH_Http_Interceptor_Headers {...} OH_Http_Interceptor_Headers
 ```
 
 ## 概述
@@ -25,6 +25,6 @@ struct OH_Http_Interceptor_Headers {...}
 | 名称 | 描述 |
 | -- | -- |
 | char *data | 拦截器请求/响应头信息。<br>**起始版本：** 24 |
-| struct OH_Http_Interceptor_Headers *next | 指向下一个头信息的指针。<br>**起始版本：** 24 |
+| [struct OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md) *next | 指向下一个头信息的指针。<br>**起始版本：** 24 |
 
 

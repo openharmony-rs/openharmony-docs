@@ -1,7 +1,7 @@
 # OhosPixelMapInfos
 
 ```c
-struct OhosPixelMapInfos {...}
+typedef struct OhosPixelMapInfos {...} OhosPixelMapInfos
 ```
 
 ## 概述

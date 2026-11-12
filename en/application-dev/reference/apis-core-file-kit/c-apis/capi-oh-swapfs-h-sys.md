@@ -16,31 +16,31 @@ Defines the native APIs for swapfs.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_SwapfsConfig(System API)](capi-swapfs-oh-swapfsconfig-sys.md) | - | Configuration for creating a swapfs manager.<br>**System API:** This is a system API. |
-| [OH_SwapfsSwapOutRequest(System API)](capi-swapfs-oh-swapfsswapoutrequest-sys.md) | - | Request parameters for swap-out operation.<br>**System API:** This is a system API. |
-| [OH_SwapfsSwapInRequest(System API)](capi-swapfs-oh-swapfsswapinrequest-sys.md) | - | Request parameters for swap-in operation.<br>**System API:** This is a system API. |
-| [OH_SwapfsDataInfo(System API)](capi-swapfs-oh-swapfsdatainfo-sys.md) | - | Information about a single swap key.<br>**System API:** This is a system API. |
-| [OH_SwapfsStats(System API)](capi-swapfs-oh-swapfsstats-sys.md) | - | Statistics of the current swapfs manager.<br>**System API:** This is a system API. |
+| [OH_SwapfsConfig(System API)](capi-swapfs-oh-swapfsconfig-sys.md) | OH_SwapfsConfig | Configuration for creating a swapfs manager.<br>**System API:** This is a system API. |
+| [OH_SwapfsSwapOutRequest(System API)](capi-swapfs-oh-swapfsswapoutrequest-sys.md) | OH_SwapfsSwapOutRequest | Request parameters for swap-out operation.<br>**System API:** This is a system API. |
+| [OH_SwapfsSwapInRequest(System API)](capi-swapfs-oh-swapfsswapinrequest-sys.md) | OH_SwapfsSwapInRequest | Request parameters for swap-in operation.<br>**System API:** This is a system API. |
+| [OH_SwapfsDataInfo(System API)](capi-swapfs-oh-swapfsdatainfo-sys.md) | OH_SwapfsDataInfo | Information about a single swap key.<br>**System API:** This is a system API. |
+| [OH_SwapfsStats(System API)](capi-swapfs-oh-swapfsstats-sys.md) | OH_SwapfsStats | Statistics of the current swapfs manager.<br>**System API:** This is a system API. |
 | [OH_SwapfsManager(System API)](capi-swapfs-oh-swapfsmanager-sys.md) | OH_SwapfsManager | The struct is used to perform operations related to swapfs manager.<br>**System API:** This is a system API. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_SwapfsKeyStatus(System API)](#oh_swapfskeystatus) | OH_SwapfsKeyStatus | Defines the status of a swap key.<br>**System API:** This is a system API. |
 | [OH_SwapfsDisableReason(System API)](#oh_swapfsdisablereason) | OH_SwapfsDisableReason | Defines the reason why the swap-out feature is disabled.<br>**System API:** This is a system API. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | SWAPFS_DIO_ALIGNMENT 4096U(System API) | Minimum alignment requirement for Direct IO buffers.<br>**Since**: 26.0.0<br>**System API:** This is a system API. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

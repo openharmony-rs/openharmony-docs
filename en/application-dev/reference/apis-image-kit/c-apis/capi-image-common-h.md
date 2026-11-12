@@ -14,7 +14,7 @@ The file declares the common enums and structs used by the image interface.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -23,7 +23,7 @@ The file declares the common enums and structs used by the image interface.
 | [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | OH_PictureMetadata | Define a PictureMetadata struct type, used for picture metadata. |
 | [Image_String](capi-image-nativemodule-image-string.md) | Image_String | Defines the property string (in key-value format) of the image source. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -31,7 +31,7 @@ The file declares the common enums and structs used by the image interface.
 | [Image_MetadataType](#image_metadatatype) | Image_MetadataType | Enumerates the metadata types. |
 | [IMAGE_ALLOCATOR_MODE](#image_allocator_mode) | IMAGE_ALLOCATOR_MODE | Type of allocator used to allocate memory of a PixelMap. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -73,8 +73,8 @@ Enumerates the return values that may be used by the interface.
 | IMAGE_TOO_LARGE = 7600103 | too large data or image |
 | IMAGE_GET_IMAGE_DATA_FAILED = 7600104 | &nbsp;Failed to get image data.<br>**Since**: 23 |
 | IMAGE_PIXELMAP_RELEASED = 7600105 | &nbsp;PixelMap has been released.<br>**Since**: 26.0.0 |
-| IMAGE_DMA_NOT_EXIST = 7600173 | @error DMA memory does not exist |
-| IMAGE_DMA_OPERATION_FAILED = 7600174 | @error DMA operation failed |
+| IMAGE_DMA_NOT_EXIST = 7600173 | &nbsp;DMA memory does not exist |
+| IMAGE_DMA_OPERATION_FAILED = 7600174 | &nbsp;DMA operation failed |
 | IMAGE_UNSUPPORTED_OPERATION = 7600201 | unsupported operations |
 | IMAGE_UNSUPPORTED_METADATA = 7600202 | unsupported metadata |
 | IMAGE_UNSUPPORTED_CONVERSION = 7600203 | unsupported conversion |

@@ -1,7 +1,7 @@
 # OH_AudioRenderer_Callbacks_Struct
 
 ```c
-struct OH_AudioRenderer_Callbacks_Struct {...}
+typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callbacks
 ```
 
 ## 概述

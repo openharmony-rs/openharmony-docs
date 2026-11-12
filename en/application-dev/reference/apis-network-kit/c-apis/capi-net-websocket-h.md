@@ -14,7 +14,7 @@ Defines the APIs for the websocket client module.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

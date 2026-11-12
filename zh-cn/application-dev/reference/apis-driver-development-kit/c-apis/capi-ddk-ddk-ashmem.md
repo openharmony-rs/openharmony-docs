@@ -1,7 +1,7 @@
 # DDK_Ashmem
 
 ```c
-struct DDK_Ashmem {...}
+typedef struct DDK_Ashmem {...} DDK_Ashmem
 ```
 
 ## 概述

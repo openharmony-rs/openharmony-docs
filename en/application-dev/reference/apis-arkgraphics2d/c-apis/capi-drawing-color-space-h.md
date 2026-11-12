@@ -14,7 +14,7 @@ This file declares the functions related to the color space in the drawing modul
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -12,21 +12,21 @@ Provides model-related APIs for model creation and inference.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) | Defines a pointer to a training configuration object. |
-| [OH_AI_ShapeInfo](capi-mindspore-oh-ai-shapeinfo.md) |  |
-| [OH_AI_CallBackParam](capi-mindspore-oh-ai-callbackparam.md) |  |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) | OH_AI_TensorHandleArray | Defines a pointer to a training configuration object. |
+| [OH_AI_ShapeInfo](capi-mindspore-oh-ai-shapeinfo.md) | OH_AI_ShapeInfo |  |
+| [OH_AI_CallBackParam](capi-mindspore-oh-ai-callbackparam.md) | OH_AI_CallBackParam |  |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | MINDSPORE_INCLUDE_C_API_MODEL_C_H | Provides model-related APIs for model creation and inference.<br>**Since**: 9 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -62,7 +62,7 @@ Provides model-related APIs for model creation and inference.
 | [OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char *config_path)](#oh_ai_modelloadconfig) | Load the config file of the model. |
 | [OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)](#oh_ai_modelpredictwithconfig) | Run model inference with configuration. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -138,7 +138,7 @@ Build the model from model file buffer so that it can run on a device.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_ModelBuildFromFile()
 
@@ -167,7 +167,7 @@ Load and build the model from model path so that it can run on a device.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_ModelResize()
 
@@ -196,7 +196,7 @@ Resizes the shapes of inputs.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_ModelPredict()
 
@@ -226,7 +226,7 @@ Inference model.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_ModelGetInputs()
 
@@ -252,7 +252,7 @@ Obtains all input tensor handles of the model.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_TensorHandleArray | The array that includes all input tensor handles. |
+| OH_AI_API [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) | The array that includes all input tensor handles. |
 
 ### OH_AI_ModelGetOutputs()
 
@@ -278,7 +278,7 @@ Obtains all output tensor handles of the model.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_TensorHandleArray | The array that includes all output tensor handles. |
+| OH_AI_API [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) | The array that includes all output tensor handles. |
 
 ### OH_AI_ModelGetInputByTensorName()
 
@@ -499,7 +499,7 @@ Build the train model from model buffer so that it can run on a device. Only val
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_TrainModelBuildFromFile()
 
@@ -529,7 +529,7 @@ Build the train model from model file buffer so that it can run on a device. Onl
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_RunStep()
 
@@ -557,7 +557,7 @@ Train model by step. Only valid for Lite Train.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_ModelSetLearningRate()
 
@@ -583,7 +583,7 @@ Sets the Learning Rate of the training. Only valid for Lite Train.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status of operation. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status of operation. |
 
 ### OH_AI_ModelGetLearningRate()
 
@@ -635,7 +635,7 @@ Obtains all weights tensors of the model. Only valid for Lite Train.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_TensorHandleArray | The vector that includes all gradient tensors. |
+| OH_AI_API [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) | The vector that includes all gradient tensors. |
 
 ### OH_AI_ModelUpdateWeights()
 
@@ -661,7 +661,7 @@ update weights tensors of the model. Only valid for Lite Train.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status |
 
 ### OH_AI_ModelGetTrainMode()
 
@@ -714,7 +714,7 @@ Set the model running mode. Only valid for Lite Train.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_ModelSetupVirtualBatch()
 
@@ -743,7 +743,7 @@ Setup training with virtual batches. Only valid for Lite Train.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_ExportModel()
 
@@ -775,7 +775,7 @@ Export training model from file. Only valid for Lite Train.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_ExportModelBuffer()
 
@@ -808,7 +808,7 @@ Export training model from buffer. Only valid for Lite Train.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_ExportWeightsCollaborateWithMicro()
 
@@ -840,7 +840,7 @@ Export model's weights, which can be used in micro only. Only valid for Lite Tra
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_ModelLoadConfig()
 
@@ -867,7 +867,7 @@ Load the config file of the model.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 ### OH_AI_ModelPredictWithConfig()
 
@@ -898,6 +898,6 @@ Run model inference with configuration.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_Status. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_Status. |
 
 

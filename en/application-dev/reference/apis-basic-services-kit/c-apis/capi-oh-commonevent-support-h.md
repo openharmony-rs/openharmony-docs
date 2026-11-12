@@ -14,7 +14,7 @@ Provides common event constants defined by the system.
 
 ## Summary
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

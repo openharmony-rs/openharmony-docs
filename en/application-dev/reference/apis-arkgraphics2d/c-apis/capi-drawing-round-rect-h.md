@@ -14,13 +14,13 @@ This file declares the functions related to the rounded rectangle in the drawing
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_CornerPos](#oh_drawing_cornerpos) | OH_Drawing_CornerPos | Defines an enum for the corner positions of a rounded rectangle. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

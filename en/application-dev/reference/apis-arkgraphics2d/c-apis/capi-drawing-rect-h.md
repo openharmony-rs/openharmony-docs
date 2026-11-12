@@ -14,7 +14,7 @@ This file declares the functions related to the rectangle in the drawing module.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

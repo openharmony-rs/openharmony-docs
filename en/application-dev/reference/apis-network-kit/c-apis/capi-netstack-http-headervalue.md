@@ -1,7 +1,7 @@
 # Http_HeaderValue
 
 ```c
-struct Http_HeaderValue {...}
+typedef struct Http_HeaderValue {...} Http_HeaderValue
 ```
 
 ## Overview
@@ -25,6 +25,6 @@ Defines the type of a mapped value in a request or response header.
 | Name | Description |
 | -- | -- |
 | char *value | Value of a key-value pair in the header. |
-| struct Http_HeaderValue *next | Pointer to Pointer to the next **Http_HeaderValue**. |
+| [struct Http_HeaderValue](capi-netstack-http-headervalue.md) *next | Pointer to Pointer to the next **Http_HeaderValue**. |
 
 

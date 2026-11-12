@@ -14,7 +14,7 @@ Defines common types used in **OsAccount** APIs.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

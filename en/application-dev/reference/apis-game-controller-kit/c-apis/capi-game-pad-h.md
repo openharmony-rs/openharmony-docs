@@ -14,7 +14,7 @@ Defines APIs for gamepads.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -1,7 +1,7 @@
 # CameraManager_Callbacks
 
 ```c
-struct CameraManager_Callbacks {...}
+typedef struct CameraManager_Callbacks {...} CameraManager_Callbacks
 ```
 
 ## 概述

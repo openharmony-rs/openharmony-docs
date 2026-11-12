@@ -14,28 +14,28 @@ This file declares the C APIs provided by Quality of Service (QoS) for setting, 
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_QoS_GewuCreateSessionResult](capi-qos-oh-qos-gewucreatesessionresult.md) | OH_QoS_GewuCreateSessionResult | Return result of the **OH_QoS_GewuCreateSession()** API, used to encapsulate the execution status of the Gewu session creation operation. This struct supports unified handling of both success and failure scenarios. Upon success, the `session` field contains the handle to the created session. Upon failure, the `error` field stores the error code, helping you locate and handle exceptions. |
 | [OH_QoS_GewuSubmitRequestResult](capi-qos-oh-qos-gewusubmitrequestresult.md) | OH_QoS_GewuSubmitRequestResult | Return result of the **OH_QoS_GewuSubmitRequest()** API, used to obtain the submission status and result of a Gewu inference request. (The Gewu service is an on-device AI inference acceleration service.) Upon successful submission, the `request` field contains the created request handle, which can be used to cancel the request later. Upon failure, the `error` field stores the error code, helping you take appropriate action based on the specific error cause. This struct is applicable in scenarios where you need to determine whether a submitted on-device AI inference request has been successfully admitted into the session and obtain the request handle. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [QoS_Level](#qos_level) | QoS_Level | Enumerates the QoS levels. |
 | [OH_QoS_GewuErrorCode](#oh_qos_gewuerrorcode) | OH_QoS_GewuErrorCode | Enumerates the Gewu error codes. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | OH_QOS_GEWU_INVALID_SESSION_ID ((OH_QoS_GewuSession)(0xffffffffU)) | Indicates an invalid session handle, which is used for error return.<br>**Since**: 20 |
 | OH_QOS_GEWU_INVALID_REQUEST_ID ((OH_QoS_GewuRequest)(0xffffffffU)) | Indicates an invalid request handle, which is used for error return.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -48,7 +48,7 @@ This file declares the C APIs provided by Quality of Service (QoS) for setting, 
 | [OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_GewuRequest request)](#oh_qos_gewuabortrequest) | - | Stops a specified request. This function requests the Gewu service to abort the ongoing inference computation and cleans up the state associated with the request. Before calling this API, ensure that the passed session handle is valid (not destroyed via **OH_QoS_GewuDestroySession**) and that the request handle is valid (already submitted via **OH_QoS_GewuSubmitRequest**). Typical use cases include: a user actively cancels an ongoing inference request; the application needs to release resources and terminate unnecessary requests in advance. After this function is successfully called, the client will no longer receive any reply for the request, and the request handle can no longer be used. |
 | [OH_QoS_GewuSubmitRequestResult OH_QoS_GewuSubmitRequest(OH_QoS_GewuSession session, const char* request, OH_QoS_GewuOnResponse callback, void* context)](#oh_qos_gewusubmitrequest) | - | Submits a request. This function submits an inference request to a specified session, which is then scheduled and executed by the Gewu service. Before calling this API, ensure that the input session handle is valid (already created via **OH_QoS_GewuCreateSession** and not destroyed via **OH_QoS_GewuDestroySession**). The **request**<br>parameter is a JSON string that supports the following fields: <br>- **messages: array** (mandatory): Array of messages, where each element supports the following fields: <br>&nbsp;&nbsp;&nbsp;&nbsp;- **role: string**: role type of the message. The options are as follows: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **"developer"**: instruction provided by the developer or system. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **"user"**: user input. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- **"assistant"**: model generation result. <br>&nbsp;&nbsp;&nbsp;&nbsp;- **content: string**: message content. <br>- **stream: boolean or null** (optional): whether to enable streaming inference. If **true** is passed, streaming inference is enabled. This is suitable for scenarios that require step-by-step reception of generated content and lower time-to-first-token latency. In this case, the callback function will be called multiple times. If **false** or **null** is passed, non-streaming inference is used. This is suitable for scenarios where you need to obtain the complete result in a single response, and the callback function will be called only once. If no value is passed, non-streaming inference is used by default. Example of the JSON string: <br>{ <br>&nbsp;&nbsp;&nbsp;&nbsp;"messages": [ <br>&nbsp;&nbsp;&nbsp;&nbsp;{ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"role": "developer", <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"content": "You are a helpful assistant." <br>&nbsp;&nbsp;&nbsp;&nbsp;}, <br>&nbsp;&nbsp;&nbsp;&nbsp;{ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"role": "user", <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"content": "What is OpenHarmony" <br>&nbsp;&nbsp;&nbsp;&nbsp;} <br>&nbsp;&nbsp;&nbsp;&nbsp;], <br>&nbsp;&nbsp;&nbsp;&nbsp;"stream": true <br>} |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -100,14 +100,14 @@ Enumerates the Gewu error codes.
 
 | Enum item | Description |
 | -- | -- |
-| OH_QOS_GEWU_OK     = 0 | Success.<br>**Since**: 20 |
+| OH_QOS_GEWU_OK = 0 | Success.<br>**Since**: 20 |
 | OH_QOS_GEWU_NOPERM = 201 | Permission error. Possible cause: The caller does not have the required permission. Solution: Ensure that the caller has the required permission.<br>**Since**: 20 |
-| OH_QOS_GEWU_NOMEM  = 203 | Memory error. Possible cause: The system memory is insufficient. Solution: Release the resources and try again.<br>**Since**: 20 |
-| OH_QOS_GEWU_INVAL  = 401 | Parameter error. Possible cause: The parameter type is incorrect or the parameter value is invalid. Solution: Verify the parameter type and value range.<br>**Since**: 20 |
-| OH_QOS_GEWU_EXIST  = 501 | The handle already exists. Possible cause: An attempt was made to create an existing session or request. Solution: Do not create the session or request repeatedly, or destroy the existing handle first.<br>**Since**: 20 |
-| OH_QOS_GEWU_NOENT  = 502 | Handle not found. Possible cause: The input session or request handle is invalid or has been destroyed. Solution: Ensure that the handle is valid.<br>**Since**: 20 |
-| OH_QOS_GEWU_NOSYS  = 801 | Subsystem not found. Possible cause: The target device does not support this feature. Solution: Use a device that supports this feature.<br>**Since**: 20 |
-| OH_QOS_GEWU_FAULT  = 901 | Other errors. Possible cause: An uncovered internal system error occurs. Solution: Check the system logs for detailed error information or contact technical support.<br>**Since**: 20 |
+| OH_QOS_GEWU_NOMEM = 203 | Memory error. Possible cause: The system memory is insufficient. Solution: Release the resources and try again.<br>**Since**: 20 |
+| OH_QOS_GEWU_INVAL = 401 | Parameter error. Possible cause: The parameter type is incorrect or the parameter value is invalid. Solution: Verify the parameter type and value range.<br>**Since**: 20 |
+| OH_QOS_GEWU_EXIST = 501 | The handle already exists. Possible cause: An attempt was made to create an existing session or request. Solution: Do not create the session or request repeatedly, or destroy the existing handle first.<br>**Since**: 20 |
+| OH_QOS_GEWU_NOENT = 502 | Handle not found. Possible cause: The input session or request handle is invalid or has been destroyed. Solution: Ensure that the handle is valid.<br>**Since**: 20 |
+| OH_QOS_GEWU_NOSYS = 801 | Subsystem not found. Possible cause: The target device does not support this feature. Solution: Use a device that supports this feature.<br>**Since**: 20 |
+| OH_QOS_GEWU_FAULT = 901 | Other errors. Possible cause: An uncovered internal system error occurs. Solution: Check the system logs for detailed error information or contact technical support.<br>**Since**: 20 |
 
 
 ## Function description

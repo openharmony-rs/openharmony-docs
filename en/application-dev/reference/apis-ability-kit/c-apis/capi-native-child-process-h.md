@@ -14,24 +14,24 @@ This module supports creating Native child processes and establishing IPC channe
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [NativeChildProcess_Fd](capi-childprocess-nativechildprocess-fd.md) | - | The struct describes the information about the file descriptor passed to the child process. |
-| [NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) | - | Defines the list of file descriptor information passed to the child process. The number of file descriptor records must not exceed 16; exceeding the limit will cause the child process creation to fail. |
-| [NativeChildProcess_Options](capi-childprocess-nativechildprocess-options.md) | - | The struct describes the options used for starting a child process. |
-| [NativeChildProcess_Args](capi-childprocess-nativechildprocess-args.md) | - | The struct describes the parameters passed to the child process. |
+| [NativeChildProcess_Fd](capi-childprocess-nativechildprocess-fd.md) | NativeChildProcess_Fd | The struct describes the information about the file descriptor passed to the child process. |
+| [NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) | NativeChildProcess_FdList | Defines the list of file descriptor information passed to the child process. The number of file descriptor records must not exceed 16; exceeding the limit will cause the child process creation to fail. |
+| [NativeChildProcess_Options](capi-childprocess-nativechildprocess-options.md) | NativeChildProcess_Options | The struct describes the options used for starting a child process. |
+| [NativeChildProcess_Args](capi-childprocess-nativechildprocess-args.md) | NativeChildProcess_Args | The struct describes the parameters passed to the child process. |
 | [Ability_ChildProcessConfigs](capi-childprocess-ability-childprocessconfigs.md) | Ability_ChildProcessConfigs | Configuration information for starting a child process, including the process name of the child process, the isolation mode (used to configure whether the data sandbox and network environment are shared or isolated), and whether the UID of the main process and the child process are isolated. Developers can use [OH_Ability_ChildProcessConfigs_SetProcessName](capi-native-child-process-h.md#oh_ability_childprocessconfigs_setprocessname), [OH_Ability_ChildProcessConfigs_SetIsolationMode](capi-native-child-process-h.md#oh_ability_childprocessconfigs_setisolationmode), and [OH_Ability_ChildProcessConfigs_SetIsolationUid](capi-native-child-process-h.md#oh_ability_childprocessconfigs_setisolationuid) to modify the corresponding configuration information. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [Ability_NativeChildProcess_ErrCode](#ability_nativechildprocess_errcode) | Ability_NativeChildProcess_ErrCode | Defines an enum for the error codes used by the native child process module. |
 | [NativeChildProcess_IsolationMode](#nativechildprocess_isolationmode) | NativeChildProcess_IsolationMode | Enumerates the sharing modes available for the data sandbox and network environment of a native child process. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

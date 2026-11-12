@@ -1,7 +1,7 @@
 # OH_AVSession_AVQueueItem
 
 ```c
-struct OH_AVSession_AVQueueItem {...}
+typedef struct OH_AVSession_AVQueueItem {...} OH_AVSession_AVQueueItem
 ```
 
 ## 概述
@@ -25,6 +25,6 @@ struct OH_AVSession_AVQueueItem {...}
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t itemId | 资源ID。 |
-| OH_AVSession_AVMediaDescription *description | 媒体项信息。 |
+| [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md) *description | 媒体项信息。 |
 
 

@@ -16,10 +16,10 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) | Vibrator_Attribute结构体用于描述马达的属性信息。开发者使用该结构体可以指定马达ID和振动场景。具体使用场景和实现机制请参见Vibrator模块文档。 |
-| [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md) | 振动文件描述。用于描述自定义振动序列的文件信息，支持使用自定义振动文件实现精确振动控制。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) | Vibrator_Attribute | Vibrator_Attribute结构体用于描述马达的属性信息。开发者使用该结构体可以指定马达ID和振动场景。具体使用场景和实现机制请参见Vibrator模块文档。 |
+| [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md) | Vibrator_FileDescription | 振动文件描述。用于描述自定义振动序列的文件信息，支持使用自定义振动文件实现精确振动控制。 |
 
 ### 枚举
 
@@ -33,7 +33,7 @@
 ### Vibrator_ErrorCode
 
 ```c
-enum Vibrator_ErrorCode
+enum Vibrator_ErrorCode : int32_t
 ```
 
 **描述：**
@@ -80,5 +80,6 @@ enum Vibrator_Usage
 | VIBRATOR_USAGE_MEDIA = 6 | 媒体。用于音乐、视频等媒体应用场景，振动与媒体内容同步，增强沉浸体验。 |
 | VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | 物理反馈。用于游戏、模拟等需要物理反馈的场景，提供物理按键反馈、触觉力反馈等物理交互体验，振动模式可自定义，模拟真实触感。 |
 | VIBRATOR_USAGE_SIMULATED_REALITY = 8 | 模拟现实。用于VR/AR等沉浸式场景的触觉反馈，振动强度和模式精确可控，提供逼真的环境反馈。 |
+| VIBRATOR_USAGE_MAX |  |
 
 

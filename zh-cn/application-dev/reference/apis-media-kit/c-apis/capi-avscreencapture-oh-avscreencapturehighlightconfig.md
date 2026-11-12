@@ -1,7 +1,7 @@
 # OH_AVScreenCaptureHighlightConfig
 
 ```c
-struct OH_AVScreenCaptureHighlightConfig {...}
+typedef struct OH_AVScreenCaptureHighlightConfig {...} OH_AVScreenCaptureHighlightConfig
 ```
 
 ## 概述

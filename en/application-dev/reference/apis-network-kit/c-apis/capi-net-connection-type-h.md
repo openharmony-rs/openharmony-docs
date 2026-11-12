@@ -14,24 +14,24 @@ Defines the data structures for the C APIs of the network connection module.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) | Defines network handles for network IDs. |
-| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) | Defines network capability sets. |
-| [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md) | Defines network addresses. |
-| [NetConn_Route](capi-netconnection-netconn-route.md) | Defines the route configuration. |
-| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) | Defines the proxy configuration. |
-| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) | Defines the network connection properties. |
-| [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) | Defines the network list. |
-| [NetConn_NetSpecifier](capi-netconnection-netconn-netspecifier.md) | Defines network feature sets. |
-| [NetConn_NetConnCallback](capi-netconnection-netconn-netconncallback.md) | Defines a struct for the network status listener callback collection. All callback events must be registered; those not requiring attention can be set to empty. |
-| [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) | Defines the probe result. |
-| [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) | Defines the network trace route options. |
-| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) | Defines the trace route information. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) | NetConn_NetHandle | Defines network handles for network IDs. |
+| [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) | NetConn_NetCapabilities | Defines network capability sets. |
+| [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md) | NetConn_NetAddr | Defines network addresses. |
+| [NetConn_Route](capi-netconnection-netconn-route.md) | NetConn_Route | Defines the route configuration. |
+| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) | NetConn_HttpProxy | Defines the proxy configuration. |
+| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) | NetConn_ConnectionProperties | Defines the network connection properties. |
+| [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) | NetConn_NetHandleList | Defines the network list. |
+| [NetConn_NetSpecifier](capi-netconnection-netconn-netspecifier.md) | NetConn_NetSpecifier | Defines network feature sets. |
+| [NetConn_NetConnCallback](capi-netconnection-netconn-netconncallback.md) | NetConn_NetConnCallback | Defines a struct for the network status listener callback collection. All callback events must be registered; those not requiring attention can be set to empty. |
+| [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) | NetConn_ProbeResultInfo | Defines the probe result. |
+| [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) | NetConn_TraceRouteOption | Defines the network trace route options. |
+| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) | NetConn_TraceRouteInfo | Defines the trace route information. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -40,7 +40,7 @@ Defines the data structures for the C APIs of the network connection module.
 | [NetConn_ErrorCode](#netconn_errorcode) | NetConn_ErrorCode | Enumerates network connection error codes. |
 | [NetConn_PacketsType](#netconn_packetstype) | NetConn_PacketsType | Enumerates trace route packet types. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -53,7 +53,7 @@ Defines the data structures for the C APIs of the network connection module.
 | NETCONN_MAX_STR_LEN 256 | Length of the host array of the NetConn_HttpProxy member variable.<br>**Since**: 11 |
 | NETCONN_MAX_RTT_NUM 4 | Length of the rtts array in the NetConn_ProbeResultlnfo member variable.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

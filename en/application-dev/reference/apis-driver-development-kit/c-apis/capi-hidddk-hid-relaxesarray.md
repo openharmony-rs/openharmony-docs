@@ -1,7 +1,7 @@
 # Hid_RelAxesArray
 
 ```c
-struct Hid_RelAxesArray {...}
+typedef struct Hid_RelAxesArray {...} Hid_RelAxesArray
 ```
 
 ## Overview
@@ -24,7 +24,7 @@ Defines an array of relative coordinate attribute codes, which stores the relati
 
 | Name | Description |
 | -- | -- |
-| Hid_RelAxes *hidRelAxes | Pointer to the array of relative coordinate attribute codes, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length. |
+| [Hid_RelAxes](capi-hid-ddk-types-h.md#hid_relaxes) *hidRelAxes | Pointer to the array of relative coordinate attribute codes, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length. |
 | uint16_t length | Valid length of the array, which cannot exceed the actual length of the **hidEventType** array. |
 
 

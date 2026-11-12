@@ -14,7 +14,7 @@ Defines the APIs for accessing and managing OS account information.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

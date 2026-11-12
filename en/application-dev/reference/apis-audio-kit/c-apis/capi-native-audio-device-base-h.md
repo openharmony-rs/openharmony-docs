@@ -14,14 +14,14 @@ Declare audio device related interfaces for audio device descriptor.<br> Defines
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) | - | Declaring the audio device descriptor array. |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) | OH_AudioDeviceDescriptorArray | Declaring the audio device descriptor array. |
 | [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) | OH_AudioDeviceDescriptor | Declaring the audio device descriptor. The instance is used to get more audio device detail attributes. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -32,7 +32,7 @@ Declare audio device related interfaces for audio device descriptor.<br> Defines
 | [OH_AudioDevice_Usage](#oh_audiodevice_usage) | OH_AudioDevice_Usage | Defines the audio device usage. |
 | [OH_AudioDevice_BlockStatus](#oh_audiodevice_blockstatus) | OH_AudioDevice_BlockStatus | Declaring the audio device blocked status. By default, the audio device is considered as unblocked. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -14,7 +14,7 @@ This file declares the functions related to the canvas in the drawing module. By
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,7 +24,7 @@ This file declares the functions related to the canvas in the drawing module. By
 | [OH_Drawing_CanvasShadowFlags](#oh_drawing_canvasshadowflags) | OH_Drawing_CanvasShadowFlags | Enumerates the shadow flags. |
 | [OH_Drawing_VertexMode](#oh_drawing_vertexmode) | OH_Drawing_VertexMode | Enumerates the modes of interpreting the geometry of a given vertex. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

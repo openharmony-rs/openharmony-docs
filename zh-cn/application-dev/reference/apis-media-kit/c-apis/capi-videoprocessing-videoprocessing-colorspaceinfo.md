@@ -1,7 +1,7 @@
 # VideoProcessing_ColorSpaceInfo
 
 ```c
-struct VideoProcessing_ColorSpaceInfo {...}
+typedef struct VideoProcessing_ColorSpaceInfo {...} VideoProcessing_ColorSpaceInfo
 ```
 
 ## 概述

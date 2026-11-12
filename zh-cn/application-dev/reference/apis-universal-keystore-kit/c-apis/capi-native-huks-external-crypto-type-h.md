@@ -18,10 +18,10 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [OH_Huks_ExternalCryptoParam](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparam.md) | 定义参数集合中单个参数的结构体。 |
-| [OH_Huks_ExternalCryptoParamSet](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparamset.md) | 定义外部加密参数集合的结构体。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [OH_Huks_ExternalCryptoParam](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparam.md) | OH_Huks_ExternalCryptoParam | 定义参数集合中单个参数的结构体。 |
+| [OH_Huks_ExternalCryptoParamSet](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparamset.md) | OH_Huks_ExternalCryptoParamSet | 定义外部加密参数集合的结构体。 |
 
 ### 枚举
 

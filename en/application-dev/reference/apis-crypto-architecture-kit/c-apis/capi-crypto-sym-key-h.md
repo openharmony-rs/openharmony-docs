@@ -16,14 +16,14 @@ Defines the symmetric key interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_CryptoSymKey](capi-cryptosymkeyapi-oh-cryptosymkey.md) | OH_CryptoSymKey | Symmetric key structure, representing a symmetric key. |
 | [OH_CryptoSymKeyGenerator](capi-cryptosymkeyapi-oh-cryptosymkeygenerator.md) | OH_CryptoSymKeyGenerator | Symmetric key generator structure, representing a symmetric key generator. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

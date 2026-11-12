@@ -18,9 +18,9 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) | 加解密数据结构体。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) | Crypto_DataBlob | 加解密数据结构体。 |
 
 ### 枚举
 

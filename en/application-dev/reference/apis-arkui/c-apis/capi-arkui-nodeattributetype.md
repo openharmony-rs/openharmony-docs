@@ -12,7 +12,7 @@ Enumerates the attribute types that can be set by ArkUI on the native side.
 
 ## Summary
 
-### Enum
+### Enums
 
 
 <!--Del-->

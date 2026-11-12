@@ -14,7 +14,7 @@ Declares functions related to system font management, used to match and obtain f
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

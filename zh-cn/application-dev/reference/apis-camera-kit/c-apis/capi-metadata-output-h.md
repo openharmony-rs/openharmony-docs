@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md) | - | 元数据输出的回调。 |
+| [MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md) | MetadataOutput_Callbacks | 元数据输出的回调。 |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md) | Camera_MetadataOutput | 元数据输出对象。<br> 可以使用[OH_CameraManager_CreateMetadataOutput](capi-camera-manager-h.md#oh_cameramanager_createmetadataoutput) 方法与OH_CameraManager_CreateMetadataOutputWithObjectTypes方法（从API version 23开始支持）创建指针。 |
 
 ### 函数
@@ -442,7 +442,7 @@ Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes (Camera_MetadataOutput
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) OH_MetadataOutput_AddMetadataObjectTypes | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### ()
 
@@ -472,7 +472,7 @@ Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes (Camera_MetadataOut
 
 | 类型 | 说明 |
 | -- | -- |
-| Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) OH_MetadataOutput_RemoveMetadataObjectTypes | CAMERA_OK：方法调用成功。<br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_MetadataOutput_IsLockMetadataObjectTrackingSupported()
 

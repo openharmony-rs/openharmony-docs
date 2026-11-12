@@ -16,13 +16,13 @@ The file declares the native APIs used for audio and video multiplexing.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVMuxer](capi-avmuxer-oh-avmuxer.md) | OH_AVMuxer | The struct describes a native object for the muxer interface. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

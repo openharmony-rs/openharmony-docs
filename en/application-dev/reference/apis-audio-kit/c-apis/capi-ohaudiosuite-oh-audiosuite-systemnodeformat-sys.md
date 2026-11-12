@@ -1,7 +1,7 @@
 # OH_AudioSuite_SystemNodeFormat(System API)
 
 ```c
-struct OH_AudioSuite_SystemNodeFormat {...}
+typedef struct OH_AudioSuite_SystemNodeFormat {...} OH_AudioSuite_SystemNodeFormat
 ```
 
 ## Overview

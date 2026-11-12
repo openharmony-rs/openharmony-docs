@@ -14,14 +14,14 @@ Want is a carrier for information transfer between objects (application componen
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) | - | The struct describes the Element in Want. |
+| [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) | AbilityBase_Element | The struct describes the Element in Want. |
 | [AbilityBase_Want](capi-abilitybase-abilitybase-want.md) | AbilityBase_Want | Want data structure. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

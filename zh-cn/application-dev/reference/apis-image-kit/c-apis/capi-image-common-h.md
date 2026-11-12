@@ -73,8 +73,8 @@ enum Image_ErrorCode
 | IMAGE_TOO_LARGE = 7600103 | 过大的数据或图片。 |
 | IMAGE_GET_IMAGE_DATA_FAILED = 7600104 | &nbsp;Failed to get image data.<br>**起始版本：** 23 |
 | IMAGE_PIXELMAP_RELEASED = 7600105 | &nbsp;PixelMap has been released.<br>**起始版本：** 26.0.0 |
-| IMAGE_DMA_NOT_EXIST = 7600173 | @error DMA memory does not exist |
-| IMAGE_DMA_OPERATION_FAILED = 7600174 | @error DMA operation failed |
+| IMAGE_DMA_NOT_EXIST = 7600173 | &nbsp;DMA memory does not exist |
+| IMAGE_DMA_OPERATION_FAILED = 7600174 | &nbsp;DMA operation failed |
 | IMAGE_UNSUPPORTED_OPERATION = 7600201 | 不支持的操作。 |
 | IMAGE_UNSUPPORTED_METADATA = 7600202 | 不支持的metadata。 |
 | IMAGE_UNSUPPORTED_CONVERSION = 7600203 | 不支持的转换。 |

@@ -14,7 +14,7 @@ Defines APIs for notification services.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -14,21 +14,21 @@ Defines APIs for game device events.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [GameDevice_DeviceInfo](capi-gamecontroller-gamedevice-deviceinfo.md) | GameDevice_DeviceInfo | Defines the device information. |
 | [GameDevice_DeviceEvent](capi-gamecontroller-gamedevice-deviceevent.md) | GameDevice_DeviceEvent | Defines device status change events. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) | GameDevice_StatusChangedType | Defines status change types of devices. |
 | [GameDevice_DeviceType](#gamedevice_devicetype) | GameDevice_DeviceType | Defines device types. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

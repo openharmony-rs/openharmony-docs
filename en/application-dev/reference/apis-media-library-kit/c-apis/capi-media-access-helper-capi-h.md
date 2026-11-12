@@ -14,7 +14,7 @@ The file declares the APIs for album management.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

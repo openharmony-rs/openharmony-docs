@@ -14,7 +14,7 @@ Provides the attr about TA multi-thread.
 
 ## Summary
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -24,7 +24,7 @@ Provides the attr about TA multi-thread.
 | TEESMP_THREAD_ATTR_HAS_SHADOW 0x1 | Defines that the thread attribute has a shadow.<br>**Since**: 20 |
 | TEESMP_THREAD_ATTR_NO_SHADOW 0x0 | Defines that the thread attribute does not have a shadow.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

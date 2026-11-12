@@ -14,21 +14,21 @@ Provides URI-based file and directory authorization and persistence, permission 
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) | Define the FileShare_PolicyErrorResult structure type.<br> Failed policy result on URI. |
-| [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) | Define the FileShare_PolicyInfo structure type.<br> Policy information to manager permissions on a URI. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) | FileShare_PolicyErrorResult | Define the FileShare_PolicyErrorResult structure type.<br> Failed policy result on URI. |
+| [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) | FileShare_PolicyInfo | Define the FileShare_PolicyInfo structure type.<br> Policy information to manager permissions on a URI. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [FileShare_OperationMode](#fileshare_operationmode) | FileShare_OperationMode | Enumerates the uri operate mode types. |
 | [FileShare_PolicyErrorCode](#fileshare_policyerrorcode) | FileShare_PolicyErrorCode | Enumerates the error code of the permission policy for the URI operation. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

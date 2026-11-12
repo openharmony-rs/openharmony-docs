@@ -14,7 +14,7 @@ Defines the Neural Network Core APIs. The AI inference framework uses the Native
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

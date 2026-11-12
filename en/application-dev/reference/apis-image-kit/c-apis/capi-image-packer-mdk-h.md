@@ -14,14 +14,14 @@ Declares APIs for encoding image into data or file.<br> The packing image data m
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ImagePacker_Opts_](capi-image-imagepacker-opts-.md) | ImagePacker_Opts | Defines the image packing options. |
 | [ImagePacker_Native_](capi-image-imagepacker-native-.md) | ImagePacker_Native | Defines an image packer object at the native layer for the image packer interface. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -14,13 +14,13 @@ Declares audio device enhancement manager related interfaces.<br> The interfaces
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AudioDeviceEnhanceManager](capi-ohaudio-oh-audiodeviceenhancemanager.md) | OH_AudioDeviceEnhanceManager | Defines the handle type of the audio device enhancement manager, which is used for enhanced audio device management functions. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

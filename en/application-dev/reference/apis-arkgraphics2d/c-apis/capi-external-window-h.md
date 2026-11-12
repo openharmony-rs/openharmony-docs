@@ -14,20 +14,20 @@ Defines the functions for obtaining and using a native window.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [Region](capi-nativewindow-region.md) | - | indicates a dirty region where content is updated. |
-| [OH_NativeWindow_ScreenInfoRect](capi-nativewindow-oh-nativewindow-screeninforect.md) | - | Describes a rectangle with int32_t coordinates and dimensions.<br> Used by SET_SCREEN_INFO and GET_SCREEN_INFO operation codes of [OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt) to carry per-frame offset/size and original-in-screen offset/size. |
+| [Region](capi-nativewindow-region.md) | Region | indicates a dirty region where content is updated. |
+| [OH_NativeWindow_ScreenInfoRect](capi-nativewindow-oh-nativewindow-screeninforect.md) | OH_NativeWindow_ScreenInfoRect | Describes a rectangle with int32_t coordinates and dimensions.<br> Used by SET_SCREEN_INFO and GET_SCREEN_INFO operation codes of [OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt) to carry per-frame offset/size and original-in-screen offset/size. |
 | [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md) | OHHDRMetaData | Defines the HDR metadata. |
-| [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md) | - | Defines the ExtData Handle |
+| [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md) | OHExtDataHandle | Defines the ExtData Handle |
 | [OH_NativeBuffer](capi-nativewindow-oh-nativebuffer.md) | OH_NativeBuffer | Provides native buffer capability. |
 | [OHIPCParcel](capi-nativewindow-ohipcparcel.md) | OHIPCParcel | Defines the ipc parcel. |
 | [NativeWindow](capi-nativewindow-nativewindow.md) | - | native window. |
 | [NativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) | - | native window buffer. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -37,7 +37,7 @@ Defines the functions for obtaining and using a native window.
 | [OHHDRMetadataKey](#ohhdrmetadatakey) | OHHDRMetadataKey | Enumerates the HDR metadata keys.(Deprecated in API10) |
 | [OHSurfaceSource](#ohsurfacesource) | OHSurfaceSource | Indicates the source type of surface. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -199,6 +199,20 @@ Enumerates the HDR metadata keys.
 
 | Enum item | Description |
 | -- | -- |
+| OH_METAKEY_RED_PRIMARY_X = 0 |  |
+| OH_METAKEY_RED_PRIMARY_Y = 1 |  |
+| OH_METAKEY_GREEN_PRIMARY_X = 2 |  |
+| OH_METAKEY_GREEN_PRIMARY_Y = 3 |  |
+| OH_METAKEY_BLUE_PRIMARY_X = 4 |  |
+| OH_METAKEY_BLUE_PRIMARY_Y = 5 |  |
+| OH_METAKEY_WHITE_PRIMARY_X = 6 |  |
+| OH_METAKEY_WHITE_PRIMARY_Y = 7 |  |
+| OH_METAKEY_MAX_LUMINANCE = 8 |  |
+| OH_METAKEY_MIN_LUMINANCE = 9 |  |
+| OH_METAKEY_MAX_CONTENT_LIGHT_LEVEL = 10 |  |
+| OH_METAKEY_MAX_FRAME_AVERAGE_LIGHT_LEVEL = 11 |  |
+| OH_METAKEY_HDR10_PLUS = 12 |  |
+| OH_METAKEY_HDR_VIVID = 13 |  |
 
 ### OHSurfaceSource
 
@@ -508,7 +522,7 @@ Sets or obtains the attributes of a native window, including the width, height, 
 | -- | -- |
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | Indicates the pointer to a <b>OHNativeWindow</b> instance. |
 | int code | Indicates the operation code, pointer to <b>NativeWindowOperation</b>. |
-| [](capi-nativewindow-region.md).[](capi-nativewindow-region.md).[](capi-nativewindow-region.md).[](capi-nativewindow-region.md) | variable parameter, must correspond to code one-to-one. |
+| [](capi-nativewindow-nativewindow.md).[](capi-nativewindow-nativewindow.md).[](capi-nativewindow-nativewindow.md).[](capi-nativewindow-nativewindow.md) | variable parameter, must correspond to code one-to-one. |
 
 **Returns**:
 

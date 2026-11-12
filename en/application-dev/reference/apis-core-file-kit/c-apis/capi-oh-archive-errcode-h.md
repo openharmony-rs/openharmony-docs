@@ -14,13 +14,13 @@ Declares the error codes of Archive module.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Archive_ErrCode](#oh_archive_errcode) | OH_Archive_ErrCode | Error codes for the Archive. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

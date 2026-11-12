@@ -1,7 +1,7 @@
 # Hid_EventTypeArray
 
 ```c
-struct Hid_EventTypeArray {...}
+typedef struct Hid_EventTypeArray {...} Hid_EventTypeArray
 ```
 
 ## Overview
@@ -24,7 +24,7 @@ Defines an array of event type codes, which stores information about the event t
 
 | Name | Description |
 | -- | -- |
-| Hid_EventType *hidEventType | Pointer to the array of event type codes, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length. |
+| [Hid_EventType](capi-hid-ddk-types-h.md#hid_eventtype) *hidEventType | Pointer to the array of event type codes, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length. |
 | uint16_t length | Valid length of the array, which cannot exceed the actual length of the **hidEventType** array. |
 
 

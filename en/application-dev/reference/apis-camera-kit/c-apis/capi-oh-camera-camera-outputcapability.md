@@ -1,7 +1,7 @@
 # Camera_OutputCapability
 
 ```c
-struct Camera_OutputCapability {...}
+typedef struct Camera_OutputCapability {...} Camera_OutputCapability
 ```
 
 ## Overview
@@ -30,7 +30,7 @@ The struct describes the camera output capability.
 | uint32_t photoProfilesSize | Size of the photo profiles. |
 | [Camera_VideoProfile*](capi-oh-camera-camera-videoprofile.md)* videoProfiles | Double pointer to the list of video profiles. |
 | uint32_t videoProfilesSize | Size of the video profiles. |
-| Camera_MetadataObjectType** supportedMetadataObjectTypes | Double pointer to the list of the metadata object types supported. |
+| [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)** supportedMetadataObjectTypes | Double pointer to the list of the metadata object types supported. |
 | uint32_t metadataProfilesSize | Size of the metadata profiles. |
 
 

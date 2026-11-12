@@ -1,7 +1,7 @@
 # OH_UsbManager_UsbConfig
 
 ```c
-struct OH_UsbManager_UsbConfig {...}
+typedef struct OH_UsbManager_UsbConfig {...} OH_UsbManager_UsbConfig
 ```
 
 ## 概述
@@ -30,7 +30,7 @@ struct OH_UsbManager_UsbConfig {...}
 | const char *name | 配置名称，可以为空。<br>**起始版本：** 26.0.1 |
 | bool isRemoteWakeup | 是否支持远程唤醒。true表示支持远程唤醒；false表示不支持。<br>**起始版本：** 26.0.1 |
 | bool isSelfPowered | 是否支持独立供电。true表示支持独立供电；false表示不支持。<br>**起始版本：** 26.0.1 |
-| OH_UsbManager_UsbInterface *interfaces | 支持的接口属性。<br>**起始版本：** 26.0.1 |
+| [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md) *interfaces | 支持的接口属性。<br>**起始版本：** 26.0.1 |
 | uint32_t interfaceCount | 配置中的接口数量。<br>**起始版本：** 26.0.1 |
 
 

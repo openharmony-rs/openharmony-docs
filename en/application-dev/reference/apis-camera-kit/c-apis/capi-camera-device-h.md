@@ -14,7 +14,7 @@ Defines the basic APIs of the camera device.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

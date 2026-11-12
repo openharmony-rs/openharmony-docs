@@ -24,8 +24,8 @@ Represents the Wi-Fi connection information.<br> This structure describes the ho
 
 | Name | Description |
 | -- | -- |
-| char ssid[WIFI_MAX_SSID_LEN] | Service set identifier (SSID).<br> For the length, see [WIFI_MAX_SSID_LEN](capi-oh-wifi-h.md#宏定义).<br>**Since**: 24 |
-| char bssid[WIFI_MAC_LEN] | Basic service set identifier (BSSID). If the application has requested the ohos.permission.GET_WIFI_PEERS_MAC permission, the bssid . in the returned result will be the real BSSID address; otherwise, it will be a randomized device address. format: "AA:BB:CC:DD:EE:FF" For the length, see [WIFI_MAC_LEN](capi-oh-wifi-h.md#宏定义).<br>**Since**: 24 |
+| char ssid[WIFI_MAX_SSID_LEN] | Service set identifier (SSID).<br> For the length, see [WIFI_MAX_SSID_LEN](capi-oh-wifi-h.md#macros).<br>**Since**: 24 |
+| char bssid[WIFI_MAC_LEN] | Basic service set identifier (BSSID). If the application has requested the ohos.permission.GET_WIFI_PEERS_MAC permission, the bssid . in the returned result will be the real BSSID address; otherwise, it will be a randomized device address. format: "AA:BB:CC:DD:EE:FF" For the length, see [WIFI_MAC_LEN](capi-oh-wifi-h.md#macros).<br>**Since**: 24 |
 | int32_t rssi | Received signal strength indicator (RSSI).<br>**Since**: 24 |
 | int32_t band | Wi-Fi band information of the hotspot. 1 indicates 2.4GHZ; 2 indicates 5GHZ<br>**Since**: 24 |
 | int32_t linkSpeed | Wi-Fi link speed, in Mbps.<br>**Since**: 24 |
@@ -36,7 +36,7 @@ Represents the Wi-Fi connection information.<br> This structure describes the ho
 | bool isHidden | Indicates whether the SSID is hidden.<br>**Since**: 24 |
 | bool isRestricted | Indicates whether data access is restricted.<br>**Since**: 24 |
 | int32_t macType | MAC address type. 0 indicates random MAC address; 1 indicates device MAC address<br>**Since**: 24 |
-| char macAddress[WIFI_MAC_LEN] | MAC address of the device. When macType is 1 require ohos.permission.GET_WIFI_LOCAL_MAC permission format: "AA:BB:CC:DD:EE:FF" For the maximum length, see [WIFI_MAC_LEN](capi-oh-wifi-h.md#宏定义).<br>**Since**: 24 |
+| char macAddress[WIFI_MAC_LEN] | MAC address of the device. When macType is 1 require ohos.permission.GET_WIFI_LOCAL_MAC permission format: "AA:BB:CC:DD:EE:FF" For the maximum length, see [WIFI_MAC_LEN](capi-oh-wifi-h.md#macros).<br>**Since**: 24 |
 | uint32_t ipAddress | IP address of the connected network.<br>**Since**: 24 |
 | [OH_WifiConnState](capi-oh-wifi-h.md#oh_wificonnstate) connState | Wi-Fi connection state. For details, see [OH_WifiConnState](capi-oh-wifi-h.md#oh_wificonnstate).<br>**Since**: 24 |
 | [OH_WifiChannelWidth](capi-oh-wifi-h.md#oh_wifichannelwidth) channelWidth | Current AP channel width. For details, see [OH_WifiChannelWidth](capi-oh-wifi-h.md#oh_wifichannelwidth).<br>**Since**: 24 |

@@ -1,7 +1,7 @@
 # Hid_EmitItem
 
 ```c
-struct Hid_EmitItem {...}
+typedef struct Hid_EmitItem {...} Hid_EmitItem
 ```
 
 ## 概述

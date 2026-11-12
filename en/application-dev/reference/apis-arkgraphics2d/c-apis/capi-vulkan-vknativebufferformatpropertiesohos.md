@@ -1,7 +1,7 @@
 # VkNativeBufferFormatPropertiesOHOS
 
 ```c
-struct VkNativeBufferFormatPropertiesOHOS {...}
+typedef struct VkNativeBufferFormatPropertiesOHOS {...} VkNativeBufferFormatPropertiesOHOS
 ```
 
 ## Overview

@@ -1,7 +1,7 @@
 # Ethernet_MacAddressInfo
 
 ```c
-struct Ethernet_MacAddressInfo {...}
+typedef struct Ethernet_MacAddressInfo {...} Ethernet_MacAddressInfo
 ```
 
 ## Overview

@@ -16,20 +16,20 @@ Defines the asymmetric cipher interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_CryptoAsymCipher](capi-cryptoasymcipherapi-oh-cryptoasymcipher.md) | OH_CryptoAsymCipher | Asymmetric cipher structure, representing an asymmetric cipher context. |
 | [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) | OH_CryptoSm2CiphertextSpec | SM2 ciphertext specification structure, representing an SM2 ciphertext specification. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [CryptoSm2CiphertextSpec_item](#cryptosm2ciphertextspec_item) | CryptoSm2CiphertextSpec_item | Defines SM2 ciphertext specification item types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

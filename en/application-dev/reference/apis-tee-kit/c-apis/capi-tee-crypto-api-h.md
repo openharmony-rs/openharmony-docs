@@ -14,7 +14,7 @@ Provides APIs for cryptographic operations.<br> You can use these APIs to implem
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,11 +24,11 @@ Provides APIs for cryptographic operations.<br> You can use these APIs to implem
 | [TEE_OperationInfoMultiple](capi-teetrusted-tee-operationinfomultiple.md) | TEE_OperationInfoMultiple | Defines information about an operation. |
 | [\_\_TEE_OperationHandle](capi-teetrusted---tee-operationhandle.md) | TEE_OperationHandleVar | Defines the cryptographic operation handle. |
 | [crypto_uint2uint](capi-teetrusted-crypto-uint2uint.md) | crypto_uint2uint | Defines the data used for conversion of integers. |
-| [peration_src_dest](capi-teetrusted-peration-src-dest.md) | - | Defines a structure to hold the input and output data. |
-| [peration_ae_init](capi-teetrusted-peration-ae-init.md) | - | Defines the AE initialization data. |
+| [peration_src_dest](capi-teetrusted-peration-src-dest.md) | operation_src_dest | Defines a structure to hold the input and output data. |
+| [peration_ae_init](capi-teetrusted-peration-ae-init.md) | operation_ae_init | Defines the AE initialization data. |
 | [\_\_TEE_ObjectHandle](capi-teetrusted---tee-objecthandle.md) | TEE_ObjectHandleVar | Defines the <b>\_\_TEE_ObjectHandle</b> struct. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -42,7 +42,7 @@ Provides APIs for cryptographic operations.<br> You can use these APIs to implem
 | [\_\_TEE_OperationMode](#\_\_tee_operationmode) | - | Enumerates the cryptographic operation modes. |
 | [tee_operation_state](#tee_operation_state) | - | Enumerates the cryptographic operation states. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -55,7 +55,7 @@ Provides APIs for cryptographic operations.<br> You can use these APIs to implem
 | RSA_PUBKEY_MAXSIZE sizeof(CRYS_RSAUserPubKey_t) | Defines the maximum length of an RSA public key.<br>**Since**: 20 |
 | RSA_PRIVKEY_MAXSIZE sizeof(CRYS_RSAUserPrivKey_t) | Defines the maximum length of an RES private key.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -89,7 +89,7 @@ Provides APIs for cryptographic operations.<br> You can use these APIs to implem
 | [TEE_Result TEE_GetOperationInfoMultiple(TEE_OperationHandle operation, TEE_OperationInfoMultiple *operationInfoMultiple, const size_t *operationSize)](#tee_getoperationinfomultiple) | Obtains information about the operation involving multiple keys. |
 | [TEE_Result TEE_IsAlgorithmSupported(uint32_t algId, uint32_t element)](#tee_isalgorithmsupported) | Checks whether the algorithm is supported. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -116,14 +116,14 @@ Enumerates the cryptographic operation handles.
 
 | Enum item | Description |
 | -- | -- |
-| TEE_OPERATION_CIPHER               = 0x1 | Cipher |
-| TEE_OPERATION_MAC                  = 3 | MAC |
-| TEE_OPERATION_AE                   = 4 | AE |
-| TEE_OPERATION_DIGEST               = 5 | Digest |
-| TEE_OPERATION_ASYMMETRIC_CIPHER    = 6 | Asymmetric Cipher |
+| TEE_OPERATION_CIPHER = 0x1 | Cipher |
+| TEE_OPERATION_MAC = 3 | MAC |
+| TEE_OPERATION_AE = 4 | AE |
+| TEE_OPERATION_DIGEST = 5 | Digest |
+| TEE_OPERATION_ASYMMETRIC_CIPHER = 6 | Asymmetric Cipher |
 | TEE_OPERATION_ASYMMETRIC_SIGNATURE = 7 | Asymmetric Signature |
-| TEE_OPERATION_KEY_DERIVATION       = 8 | Key Derivation |
-| TEE_OPERATION_KDF_KEY_DERIVATION   = 9 | KDF Key Derivation |
+| TEE_OPERATION_KEY_DERIVATION = 8 | Key Derivation |
+| TEE_OPERATION_KDF_KEY_DERIVATION = 9 | KDF Key Derivation |
 
 ### __tee_crypto_algorithm_id
 
@@ -143,107 +143,107 @@ Enumerates the cryptographic algorithms.
 
 | Enum item | Description |
 | -- | -- |
-| TEE_ALG_INVALID                      = 0x0 | Invalid algorithm |
-| TEE_ALG_AES_ECB_NOPAD                = 0x10000010 | AES_ECB_NOPAD |
-| TEE_ALG_AES_CBC_NOPAD                = 0x10000110 | AES_CBC_NOPAD |
-| TEE_ALG_AES_CTR                      = 0x10000210 | AES_CTR |
-| TEE_ALG_AES_CTS                      = 0x10000310 | AES_CTS |
-| TEE_ALG_AES_XTS                      = 0x10000410 | AES_XTS |
-| TEE_ALG_AES_CBC_MAC_NOPAD            = 0x30000110 | AES_CBC_MAC_NOPAD |
-| TEE_ALG_AES_CBC_MAC_PKCS5            = 0x30000510 | AES_CBC_MAC_PKCS5 |
-| TEE_ALG_AES_CMAC                     = 0x30000610 | AES_CMAC |
-| TEE_ALG_AES_GMAC                     = 0x30000810 | AES_GMAC |
-| TEE_ALG_AES_CCM                      = 0x40000710 | AES_CCM |
-| TEE_ALG_AES_GCM                      = 0x40000810 | AES_GCM |
-| TEE_ALG_DES_ECB_NOPAD                = 0x10000011 | DES_ECB_NOPAD |
-| TEE_ALG_DES_CBC_NOPAD                = 0x10000111 | DES_CBC_NOPAD |
-| TEE_ALG_DES_CBC_MAC_NOPAD            = 0x30000111 | DES_CBC_MAC_NOPAD |
-| TEE_ALG_DES_CBC_MAC_PKCS5            = 0x30000511 | DES_CBC_MAC_PKCS5 |
-| TEE_ALG_DES3_ECB_NOPAD               = 0x10000013 | DES3_ECB_NOPAD |
-| TEE_ALG_DES3_CBC_NOPAD               = 0x10000113 | DES3_CBC_NOPAD |
-| TEE_ALG_DES3_CBC_MAC_NOPAD           = 0x30000113 | DES3_CBC_MAC_NOPAD |
-| TEE_ALG_DES3_CBC_MAC_PKCS5           = 0x30000513 | DES3_CBC_MAC_PKCS5 |
-| TEE_ALG_RSASSA_PKCS1_V1_5_MD5        = 0x70001830 | RSASSA_PKCS1_V1_5_MD5 |
-| TEE_ALG_RSASSA_PKCS1_V1_5_SHA1       = 0x70002830 | RSASSA_PKCS1_V1_5_SHA1 |
-| TEE_ALG_RSASSA_PKCS1_V1_5_SHA224     = 0x70003830 | RSASSA_PKCS1_V1_5_SHA224 |
-| TEE_ALG_RSASSA_PKCS1_V1_5_SHA256     = 0x70004830 | RSASSA_PKCS1_V1_5_SHA256 |
-| TEE_ALG_RSASSA_PKCS1_V1_5_SHA384     = 0x70005830 | RSASSA_PKCS1_V1_5_SHA384 |
-| TEE_ALG_RSASSA_PKCS1_V1_5_SHA512     = 0x70006830 | RSASSA_PKCS1_V1_5_SHA512 |
-| TEE_ALG_RSASSA_PKCS1_V1_5_SM3        = 0xF0007830 | RSASSA_PKCS1_V1_5_SM3 |
-| TEE_ALG_RSASSA_PKCS1_V1_5_MD5_SHA1   = 0xF0008830 | RSASSA_PKCS1_V1_5_MD5_SHA1 |
-| TEE_ALG_RSASSA_PKCS1_PSS_MGF1_MD5    = 0x70111930 | RSASSA_PKCS1_PSS_MGF1_MD5 |
-| TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA1   = 0x70212930 | RSASSA_PKCS1_PSS_MGF1_SHA1 |
+| TEE_ALG_INVALID = 0x0 | Invalid algorithm |
+| TEE_ALG_AES_ECB_NOPAD = 0x10000010 | AES_ECB_NOPAD |
+| TEE_ALG_AES_CBC_NOPAD = 0x10000110 | AES_CBC_NOPAD |
+| TEE_ALG_AES_CTR = 0x10000210 | AES_CTR |
+| TEE_ALG_AES_CTS = 0x10000310 | AES_CTS |
+| TEE_ALG_AES_XTS = 0x10000410 | AES_XTS |
+| TEE_ALG_AES_CBC_MAC_NOPAD = 0x30000110 | AES_CBC_MAC_NOPAD |
+| TEE_ALG_AES_CBC_MAC_PKCS5 = 0x30000510 | AES_CBC_MAC_PKCS5 |
+| TEE_ALG_AES_CMAC = 0x30000610 | AES_CMAC |
+| TEE_ALG_AES_GMAC = 0x30000810 | AES_GMAC |
+| TEE_ALG_AES_CCM = 0x40000710 | AES_CCM |
+| TEE_ALG_AES_GCM = 0x40000810 | AES_GCM |
+| TEE_ALG_DES_ECB_NOPAD = 0x10000011 | DES_ECB_NOPAD |
+| TEE_ALG_DES_CBC_NOPAD = 0x10000111 | DES_CBC_NOPAD |
+| TEE_ALG_DES_CBC_MAC_NOPAD = 0x30000111 | DES_CBC_MAC_NOPAD |
+| TEE_ALG_DES_CBC_MAC_PKCS5 = 0x30000511 | DES_CBC_MAC_PKCS5 |
+| TEE_ALG_DES3_ECB_NOPAD = 0x10000013 | DES3_ECB_NOPAD |
+| TEE_ALG_DES3_CBC_NOPAD = 0x10000113 | DES3_CBC_NOPAD |
+| TEE_ALG_DES3_CBC_MAC_NOPAD = 0x30000113 | DES3_CBC_MAC_NOPAD |
+| TEE_ALG_DES3_CBC_MAC_PKCS5 = 0x30000513 | DES3_CBC_MAC_PKCS5 |
+| TEE_ALG_RSASSA_PKCS1_V1_5_MD5 = 0x70001830 | RSASSA_PKCS1_V1_5_MD5 |
+| TEE_ALG_RSASSA_PKCS1_V1_5_SHA1 = 0x70002830 | RSASSA_PKCS1_V1_5_SHA1 |
+| TEE_ALG_RSASSA_PKCS1_V1_5_SHA224 = 0x70003830 | RSASSA_PKCS1_V1_5_SHA224 |
+| TEE_ALG_RSASSA_PKCS1_V1_5_SHA256 = 0x70004830 | RSASSA_PKCS1_V1_5_SHA256 |
+| TEE_ALG_RSASSA_PKCS1_V1_5_SHA384 = 0x70005830 | RSASSA_PKCS1_V1_5_SHA384 |
+| TEE_ALG_RSASSA_PKCS1_V1_5_SHA512 = 0x70006830 | RSASSA_PKCS1_V1_5_SHA512 |
+| TEE_ALG_RSASSA_PKCS1_V1_5_SM3 = 0xF0007830 | RSASSA_PKCS1_V1_5_SM3 |
+| TEE_ALG_RSASSA_PKCS1_V1_5_MD5_SHA1 = 0xF0008830 | RSASSA_PKCS1_V1_5_MD5_SHA1 |
+| TEE_ALG_RSASSA_PKCS1_PSS_MGF1_MD5 = 0x70111930 | RSASSA_PKCS1_PSS_MGF1_MD5 |
+| TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA1 = 0x70212930 | RSASSA_PKCS1_PSS_MGF1_SHA1 |
 | TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA224 = 0x70313930 | RSASSA_PKCS1_PSS_MGF1_SHA224 |
 | TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA256 = 0x70414930 | RSASSA_PKCS1_PSS_MGF1_SHA256 |
 | TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA384 = 0x70515930 | RSASSA_PKCS1_PSS_MGF1_SHA384 |
 | TEE_ALG_RSASSA_PKCS1_PSS_MGF1_SHA512 = 0x70616930 | RSASSA_PKCS1_PSS_MGF1_SHA512 |
-| TEE_ALG_RSAES_PKCS1_V1_5             = 0x60000130 | RSAES_PKCS1_V1_5 |
-| TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA1   = 0x60210230 | RSAES_PKCS1_OAEP_MGF1_SHA1 |
+| TEE_ALG_RSAES_PKCS1_V1_5 = 0x60000130 | RSAES_PKCS1_V1_5 |
+| TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA1 = 0x60210230 | RSAES_PKCS1_OAEP_MGF1_SHA1 |
 | TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA224 = 0x60211230 | RSAES_PKCS1_OAEP_MGF1_SHA224 |
 | TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA256 = 0x60212230 | RSAES_PKCS1_OAEP_MGF1_SHA256 |
 | TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA384 = 0x60213230 | RSAES_PKCS1_OAEP_MGF1_SHA384 |
 | TEE_ALG_RSAES_PKCS1_OAEP_MGF1_SHA512 = 0x60214230 | RSAES_PKCS1_OAEP_MGF1_SHA512 |
-| TEE_ALG_RSA_NOPAD                    = 0x60000030 | RSA_NOPAD |
-| TEE_ALG_DSA_SHA1                     = 0x70002131 | DSA_SHA1 |
-| TEE_ALG_DSA_SHA224                   = 0x70003131 | DSA_SHA224 |
-| TEE_ALG_DSA_SHA256                   = 0x70004131 | DSA_SHA256 |
-| TEE_ALG_DH_DERIVE_SHARED_SECRET      = 0x80000032 | DH_DERIVE_SHARED_SECRET |
-| TEE_ALG_MD5                          = 0x50000001 | MD5 |
-| TEE_ALG_SHA1                         = 0x50000002 | SHA1 |
-| TEE_ALG_SHA224                       = 0x50000003 | SHA224 |
-| TEE_ALG_SHA256                       = 0x50000004 | SHA256 |
-| TEE_ALG_SHA384                       = 0x50000005 | SHA384 |
-| TEE_ALG_SHA512                       = 0x50000006 | SHA512 |
-| TEE_ALG_HMAC_MD5                     = 0x30000001 | HMAC_MD5 |
-| TEE_ALG_HMAC_SHA1                    = 0x30000002 | HMAC_SHA1 |
-| TEE_ALG_HMAC_SHA224                  = 0x30000003 | HMAC_SHA224 |
-| TEE_ALG_HMAC_SHA256                  = 0x30000004 | HMAC_SHA256 |
-| TEE_ALG_HMAC_SHA384                  = 0x30000005 | HMAC_SHA384 |
-| TEE_ALG_HMAC_SHA512                  = 0x30000006 | HMAC_SHA512 |
-| TEE_ALG_HMAC_SM3                     = 0x30000007 | HMAC_SM3 |
-| TEE_ALG_AES_ECB_PKCS5                = 0x10000020 | AES_ECB_PKCS5 |
-| TEE_ALG_AES_CBC_PKCS5                = 0x10000220 | AES_CBC_PKCS5 |
-| TEE_ALG_AES_CBC_ISO_PADDING          = 0x10000330 | AES_CBC_ISO_PADDING |
-| TEE_ALG_ECDSA_SHA1                   = 0x70001042 | ECDSA_SHA1 |
-| TEE_ALG_ECDSA_SHA224                 = 0x70002042 | ECDSA_SHA224 |
-| TEE_ALG_ECDSA_SHA256                 = 0x70003042 | ECDSA_SHA256 |
-| TEE_ALG_ECDSA_SHA384                 = 0x70004042 | ECDSA_SHA384 |
-| TEE_ALG_ECDSA_SHA512                 = 0x70005042 | ECDSA_SHA512 |
-| TEE_ALG_ED25519                      = 0x70005043 | ED25519 |
-| TEE_ALG_ECDH_DERIVE_SHARED_SECRET    = 0x80000042 | ECDH_DERIVE_SHARED_SECRET |
-| TEE_ALG_X25519                       = 0x80000044 | X25519 |
-| TEE_ALG_ECC                          = 0x80000001 | ECC |
-| TEE_ALG_ECDSA_P192                   = 0x70001042 | ECDSA_P192 |
-| TEE_ALG_ECDSA_P224                   = 0x70002042 | ECDSA_P224 |
-| TEE_ALG_ECDSA_P256                   = 0x70003042 | ECDSA_P256 |
-| TEE_ALG_ECDSA_P384                   = 0x70004042 | ECDSA_P384 |
-| TEE_ALG_ECDSA_P521                   = 0x70005042 | ECDSA_P521 |
-| TEE_ALG_ECDH_P192                    = 0x80001042 | ECDH_P192 |
-| TEE_ALG_ECDH_P224                    = 0x80002042 | ECDH_P224 |
-| TEE_ALG_ECDH_P256                    = 0x80003042 | ECDH_P256 |
-| TEE_ALG_ECDH_P384                    = 0x80004042 | ECDH_P384 |
-| TEE_ALG_ECDH_P521                    = 0x80005042 | ECDH_P521 |
-| TEE_ALG_SIP_HASH                     = 0xF0000002 | SIP_HASH |
-| TEE_ALG_SM2_DSA_SM3                  = 0x70006045 | SM2_DSA_SM3 |
-| TEE_ALG_SM2_PKE                      = 0x80000045 | SM2_PKE |
-| TEE_ALG_SM3                          = 0x50000007 | SM3 |
-| TEE_ALG_SM4_ECB_NOPAD                = 0x10000014 | SM4_ECB_NOPAD |
-| TEE_ALG_SM4_ECB_PKCS7                = 0x10000024 | SM4_ECB_PKCS7 |
-| TEE_ALG_SM4_CBC_NOPAD                = 0x10000114 | SM4_CBC_NOPAD |
-| TEE_ALG_SM4_CBC_PKCS7                = 0xF0000003 | SM4_CBC_PKCS7 |
-| TEE_ALG_SM4_CTR                      = 0x10000214 | SM4_CTR |
-| TEE_ALG_SM4_CFB128                   = 0xF0000000 | SM4_CFB128 |
-| TEE_ALG_SM4_XTS                      = 0x10000414 | SM4_XTS |
-| TEE_ALG_SM4_OFB                      = 0x10000514 | SM4_OFB |
-| TEE_ALG_AES_OFB                      = 0x10000510 | AES_OFB |
-| TEE_ALG_AES_CFB128                   = 0xF0000610 | AES_CFB128 |
-| TEE_ALG_SM4_GCM                      = 0xF0000005 | SM4_GCM |
-| TEE_ALG_PBKDF2_HMAC_SHA1_DERIVE_KEY  = 0x800020C2 | PBKDF2_HMAC_SHA1_DERIVE_KEY |
+| TEE_ALG_RSA_NOPAD = 0x60000030 | RSA_NOPAD |
+| TEE_ALG_DSA_SHA1 = 0x70002131 | DSA_SHA1 |
+| TEE_ALG_DSA_SHA224 = 0x70003131 | DSA_SHA224 |
+| TEE_ALG_DSA_SHA256 = 0x70004131 | DSA_SHA256 |
+| TEE_ALG_DH_DERIVE_SHARED_SECRET = 0x80000032 | DH_DERIVE_SHARED_SECRET |
+| TEE_ALG_MD5 = 0x50000001 | MD5 |
+| TEE_ALG_SHA1 = 0x50000002 | SHA1 |
+| TEE_ALG_SHA224 = 0x50000003 | SHA224 |
+| TEE_ALG_SHA256 = 0x50000004 | SHA256 |
+| TEE_ALG_SHA384 = 0x50000005 | SHA384 |
+| TEE_ALG_SHA512 = 0x50000006 | SHA512 |
+| TEE_ALG_HMAC_MD5 = 0x30000001 | HMAC_MD5 |
+| TEE_ALG_HMAC_SHA1 = 0x30000002 | HMAC_SHA1 |
+| TEE_ALG_HMAC_SHA224 = 0x30000003 | HMAC_SHA224 |
+| TEE_ALG_HMAC_SHA256 = 0x30000004 | HMAC_SHA256 |
+| TEE_ALG_HMAC_SHA384 = 0x30000005 | HMAC_SHA384 |
+| TEE_ALG_HMAC_SHA512 = 0x30000006 | HMAC_SHA512 |
+| TEE_ALG_HMAC_SM3 = 0x30000007 | HMAC_SM3 |
+| TEE_ALG_AES_ECB_PKCS5 = 0x10000020 | AES_ECB_PKCS5 |
+| TEE_ALG_AES_CBC_PKCS5 = 0x10000220 | AES_CBC_PKCS5 |
+| TEE_ALG_AES_CBC_ISO_PADDING = 0x10000330 | AES_CBC_ISO_PADDING |
+| TEE_ALG_ECDSA_SHA1 = 0x70001042 | ECDSA_SHA1 |
+| TEE_ALG_ECDSA_SHA224 = 0x70002042 | ECDSA_SHA224 |
+| TEE_ALG_ECDSA_SHA256 = 0x70003042 | ECDSA_SHA256 |
+| TEE_ALG_ECDSA_SHA384 = 0x70004042 | ECDSA_SHA384 |
+| TEE_ALG_ECDSA_SHA512 = 0x70005042 | ECDSA_SHA512 |
+| TEE_ALG_ED25519 = 0x70005043 | ED25519 |
+| TEE_ALG_ECDH_DERIVE_SHARED_SECRET = 0x80000042 | ECDH_DERIVE_SHARED_SECRET |
+| TEE_ALG_X25519 = 0x80000044 | X25519 |
+| TEE_ALG_ECC = 0x80000001 | ECC |
+| TEE_ALG_ECDSA_P192 = 0x70001042 | ECDSA_P192 |
+| TEE_ALG_ECDSA_P224 = 0x70002042 | ECDSA_P224 |
+| TEE_ALG_ECDSA_P256 = 0x70003042 | ECDSA_P256 |
+| TEE_ALG_ECDSA_P384 = 0x70004042 | ECDSA_P384 |
+| TEE_ALG_ECDSA_P521 = 0x70005042 | ECDSA_P521 |
+| TEE_ALG_ECDH_P192 = 0x80001042 | ECDH_P192 |
+| TEE_ALG_ECDH_P224 = 0x80002042 | ECDH_P224 |
+| TEE_ALG_ECDH_P256 = 0x80003042 | ECDH_P256 |
+| TEE_ALG_ECDH_P384 = 0x80004042 | ECDH_P384 |
+| TEE_ALG_ECDH_P521 = 0x80005042 | ECDH_P521 |
+| TEE_ALG_SIP_HASH = 0xF0000002 | SIP_HASH |
+| TEE_ALG_SM2_DSA_SM3 = 0x70006045 | SM2_DSA_SM3 |
+| TEE_ALG_SM2_PKE = 0x80000045 | SM2_PKE |
+| TEE_ALG_SM3 = 0x50000007 | SM3 |
+| TEE_ALG_SM4_ECB_NOPAD = 0x10000014 | SM4_ECB_NOPAD |
+| TEE_ALG_SM4_ECB_PKCS7 = 0x10000024 | SM4_ECB_PKCS7 |
+| TEE_ALG_SM4_CBC_NOPAD = 0x10000114 | SM4_CBC_NOPAD |
+| TEE_ALG_SM4_CBC_PKCS7 = 0xF0000003 | SM4_CBC_PKCS7 |
+| TEE_ALG_SM4_CTR = 0x10000214 | SM4_CTR |
+| TEE_ALG_SM4_CFB128 = 0xF0000000 | SM4_CFB128 |
+| TEE_ALG_SM4_XTS = 0x10000414 | SM4_XTS |
+| TEE_ALG_SM4_OFB = 0x10000514 | SM4_OFB |
+| TEE_ALG_AES_OFB = 0x10000510 | AES_OFB |
+| TEE_ALG_AES_CFB128 = 0xF0000610 | AES_CFB128 |
+| TEE_ALG_SM4_GCM = 0xF0000005 | SM4_GCM |
+| TEE_ALG_PBKDF2_HMAC_SHA1_DERIVE_KEY = 0x800020C2 | PBKDF2_HMAC_SHA1_DERIVE_KEY |
 | TEE_ALG_PBKDF2_HMAC_SHA256_DERIVE_KEY = 0x800040C2 | PBKDF2_HMAC_SHA256_DERIVE_KEY |
 | TEE_ALG_PBKDF2_HMAC_SHA384_DERIVE_KEY = 0x800050C2 | PBKDF2_HMAC_SHA384_DERIVE_KEY |
 | TEE_ALG_PBKDF2_HMAC_SHA512_DERIVE_KEY = 0x800060C2 | PBKDF2_HMAC_SHA512_DERIVE_KEY |
-| TEE_ALG_HKDF                         = 0x80000047 | HKDF |
-| TEE_ALG_PRF                          = 0xF0000006 | PRF |
+| TEE_ALG_HKDF = 0x80000047 | HKDF |
+| TEE_ALG_PRF = 0xF0000006 | PRF |
 
 ### TEE_ECC_CURVE
 
@@ -268,8 +268,8 @@ Enumerates the Elliptic-Curve Cryptography (ECC) curves supported.
 | TEE_ECC_CURVE_NIST_P256 = 0x00000003 | CURVE_NIST_P256 |
 | TEE_ECC_CURVE_NIST_P384 = 0x00000004 | CURVE_NIST_P384 |
 | TEE_ECC_CURVE_NIST_P521 = 0x00000005 | CURVE_NIST_P521 |
-| TEE_ECC_CURVE_SM2       = 0x00000300 | CURVE_SM2 256 bits |
-| TEE_ECC_CURVE_25519     = 0x00000200 | CURVE_25519 256 bits |
+| TEE_ECC_CURVE_SM2 = 0x00000300 | CURVE_SM2 256 bits |
+| TEE_ECC_CURVE_25519 = 0x00000200 | CURVE_25519 256 bits |
 
 ### TEE_DH_HASH_Mode
 
@@ -289,7 +289,7 @@ Enumerates the Mask Generation Function (MGF1) modes.
 
 | Enum item | Description |
 | -- | -- |
-| TEE_DH_HASH_SHA1_mode   = 0 | SHA1 mode for DH hashing. |
+| TEE_DH_HASH_SHA1_mode = 0 | SHA1 mode for DH hashing. |
 | TEE_DH_HASH_SHA224_mode = 1 | SHA224 mode for DH hashing. |
 | TEE_DH_HASH_SHA256_mode = 2 | SHA256 mode for DH hashing. |
 | TEE_DH_HASH_SHA384_mode = 3 | SHA384 mode for DH hashing. |
@@ -412,7 +412,7 @@ Enumerates the cryptographic operation states.
 | Enum item | Description |
 | -- | -- |
 | TEE_OPERATION_STATE_INITIAL = 0x00000000 | Initial |
-| TEE_OPERATION_STATE_ACTIVE  = 0x00000001 | Active |
+| TEE_OPERATION_STATE_ACTIVE = 0x00000001 | Active |
 
 
 ## Function description

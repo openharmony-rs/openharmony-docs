@@ -14,14 +14,14 @@ The file declares the camera input concepts.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) | - | The struct describes the callbacks used to listen for camera input errors. |
+| [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) | CameraInput_Callbacks | The struct describes the callbacks used to listen for camera input errors. |
 | [Camera_Input](capi-oh-camera-camera-input.md) | Camera_Input | The struct describes the camera input object. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

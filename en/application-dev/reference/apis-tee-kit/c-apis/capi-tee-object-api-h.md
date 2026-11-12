@@ -14,14 +14,14 @@ Provides trusted storage APIs.<br> You can use these APIs to implement trusted s
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | Description |
 | -- | -- |
 | [Usage_Constants](#usage_constants) | Enumerates the usages of the key of the <b>TEE_ObjectHandle</b>. |
 | [Handle_Flag_Constants](#handle_flag_constants) | Defines information about the object pointed to by the flag of the <b>TEE_ObjectHandle</b>, for example, whether the object is a persistent object or is initialized. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -33,7 +33,7 @@ Provides trusted storage APIs.<br> You can use these APIs to implement trusted s
 | TEE_ATTR_IS_PROTECTED(attribute_id) ((((attribute_id) << 3) >> 31) == 0) | Check whether the attribute is protected.<br>**Since**: 20 |
 | TEE_ATTR_IS_PUBLIC(attribute_id)    ((((attribute_id) << 3) >> 31) == 1) | Check whether the attribute is public.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -73,13 +73,13 @@ Enumerates the usages of the key of the <b>TEE_ObjectHandle</b>.
 | Enum item | Description |
 | -- | -- |
 | TEE_USAGE_EXTRACTABLE = 0x00000001 | The object's key is extractable. |
-| TEE_USAGE_ENCRYPT     = 0x00000002 | Used for encryption. |
-| TEE_USAGE_DECRYPT     = 0x00000004 | Used for decryption. |
-| TEE_USAGE_MAC         = 0x00000008 | Used for hash calculation. |
-| TEE_USAGE_SIGN        = 0x00000010 | Used for creating a signature. |
-| TEE_USAGE_VERIFY      = 0x00000020 | Used for signature verification. |
-| TEE_USAGE_DERIVE      = 0x00000040 | Used for key derivation. |
-| TEE_USAGE_DEFAULT     = 0xFFFFFFFF | Used for object initialization, with all permissions assigned by default. |
+| TEE_USAGE_ENCRYPT = 0x00000002 | Used for encryption. |
+| TEE_USAGE_DECRYPT = 0x00000004 | Used for decryption. |
+| TEE_USAGE_MAC = 0x00000008 | Used for hash calculation. |
+| TEE_USAGE_SIGN = 0x00000010 | Used for creating a signature. |
+| TEE_USAGE_VERIFY = 0x00000020 | Used for signature verification. |
+| TEE_USAGE_DERIVE = 0x00000040 | Used for key derivation. |
+| TEE_USAGE_DEFAULT = 0xFFFFFFFF | Used for object initialization, with all permissions assigned by default. |
 
 ### Handle_Flag_Constants
 
@@ -99,9 +99,9 @@ Defines information about the object pointed to by the flag of the <b>TEE_Object
 
 | Enum item | Description |
 | -- | -- |
-| TEE_HANDLE_FLAG_PERSISTENT      = 0x00010000 | The object is a persistent object. |
-| TEE_HANDLE_FLAG_INITIALIZED     = 0x00020000 | The object is initialized. |
-| TEE_HANDLE_FLAG_KEY_SET         = 0x00040000 | The object is a key set. |
+| TEE_HANDLE_FLAG_PERSISTENT = 0x00010000 | The object is a persistent object. |
+| TEE_HANDLE_FLAG_INITIALIZED = 0x00020000 | The object is initialized. |
+| TEE_HANDLE_FLAG_KEY_SET = 0x00040000 | The object is a key set. |
 | TEE_HANDLE_FLAG_EXPECT_TWO_KEYS = 0x00080000 | The object is expected to have two keys. |
 
 

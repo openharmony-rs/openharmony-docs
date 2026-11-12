@@ -1,7 +1,7 @@
 # ResourceManager_Configuration
 
 ```c
-struct ResourceManager_Configuration {...}
+typedef struct ResourceManager_Configuration {...} ResourceManager_Configuration
 ```
 
 ## Overview

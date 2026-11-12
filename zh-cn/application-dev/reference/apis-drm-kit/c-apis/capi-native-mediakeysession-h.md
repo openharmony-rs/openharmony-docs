@@ -18,10 +18,10 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) | MediaKeySession_Callback结构体，用于监听密钥过期、密钥更改等事件，不返回媒体密钥会话实例，适用于单媒体密钥会话解密场景。 |
-| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) | OH_MediaKeySession_Callback结构体，用于监听密钥过期、密钥更改等事件，返回媒体密钥会话实例，适用于多个媒体密钥会话的解密场景。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) | OH_MediaKeySession_Callback | MediaKeySession_Callback结构体，用于监听密钥过期、密钥更改等事件，不返回媒体密钥会话实例，适用于单媒体密钥会话解密场景。 |
+| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) | OH_MediaKeySession_Callback | OH_MediaKeySession_Callback结构体，用于监听密钥过期、密钥更改等事件，返回媒体密钥会话实例，适用于多个媒体密钥会话的解密场景。 |
 
 ### 函数
 
@@ -490,7 +490,7 @@ Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession, OH_
 | 参数项 | 描述 |
 | -- | -- |
 | [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | MediaKeySession实例。 |
-| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) *callback | 输入参数，MediaKeySession的回调结构体。 |
+| [OH_MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) *callback | 输入参数，MediaKeySession的回调结构体。 |
 
 **返回值：**
 

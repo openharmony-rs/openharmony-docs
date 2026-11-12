@@ -1,7 +1,7 @@
 # OH_Huks_ExternalCryptoParamSet
 
 ```c
-struct OH_Huks_ExternalCryptoParamSet {...}
+typedef struct OH_Huks_ExternalCryptoParamSet {...} OH_Huks_ExternalCryptoParamSet
 ```
 
 ## Overview

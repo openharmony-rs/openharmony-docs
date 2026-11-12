@@ -14,7 +14,7 @@ Defines the enums, structs, and error codes used in the asset store service.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -25,7 +25,7 @@ Defines the enums, structs, and error codes used in the asset store service.
 | [Asset_ResultSet](capi-assettype-asset-resultset.md) | Asset_ResultSet | Represents the query result of multiple assets. |
 | [Asset_SyncResult](capi-assettype-asset-syncresult.md) | Asset_SyncResult | Represents the sync result of an asset. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -40,7 +40,7 @@ Defines the enums, structs, and error codes used in the asset store service.
 | [Asset_ReturnType](#asset_returntype) | Asset_ReturnType | Type of the asset query result to return. |
 | [Asset_OperationType](#asset_operationtype) | Asset_OperationType | Enumerates the additional asset operation types. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

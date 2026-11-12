@@ -14,7 +14,7 @@ Declared the common media types definition.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

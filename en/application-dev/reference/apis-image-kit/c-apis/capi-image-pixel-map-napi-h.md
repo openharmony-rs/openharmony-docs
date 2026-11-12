@@ -14,13 +14,13 @@ Declares the APIs that can lock, access, and unlock a pixel map. Need link <b>li
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | Description |
 | -- | -- |
 | [OhosPixelMapInfo](capi-image-ohospixelmapinfo.md) | Defines the pixel map information. |
 
-### Enum
+### Enums
 
 | Name | Description |
 | -- | -- |
@@ -28,7 +28,7 @@ Declares the APIs that can lock, access, and unlock a pixel map. Need link <b>li
 | [anonymous1](#anonymous1) | Enumerates the pixel formats.(Deprecated in API10) |
 | [anonymous2](#anonymous2) | Enumerates the pixel map scale modes. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

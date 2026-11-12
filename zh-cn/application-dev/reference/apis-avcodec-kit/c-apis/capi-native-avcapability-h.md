@@ -22,7 +22,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AVRange](capi-avcapability-oh-avrange.md) | - | 范围包含最小值和最大值。 |
+| [OH_AVRange](capi-avcapability-oh-avrange.md) | OH_AVRange | 范围包含最小值和最大值。 |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) | OH_AVCapability | 为OH_AVCapability接口定义native层对象。 |
 
 ### 枚举

@@ -14,7 +14,7 @@ Declares APIs for acquiring the set of system capabilities .
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

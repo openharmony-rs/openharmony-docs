@@ -1,7 +1,7 @@
 # OH_CloudDisk_CallbackContext
 
 ```c
-union OH_CloudDisk_CallbackContext {...}
+typedef union OH_CloudDisk_CallbackContext {...} OH_CloudDisk_CallbackContext
 ```
 
 ## Overview
@@ -24,9 +24,9 @@ A union that encapsulates callback request context information.
 
 | Name | Description |
 | -- | -- |
-| OH_CloudDisk_FetchDataRequest *fetchData | Fetch data request. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
-| CloudDisk_PathInfo *cancelFetchData | Cancel fetch data request. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_CANCEL_FETCH_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
-| OH_CloudDisk_DehydrateInfo *dehydrateData | Dehydrate authorization request. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_DEHYDRATE](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
-| OH_CloudDisk_FetchRangeDataRequest *fetchRangeData | Fetch range data request. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_RANGE_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.1.0 |
+| [OH_CloudDisk_FetchDataRequest](capi-clouddisk-oh-clouddisk-fetchdatarequest.md) *fetchData | Fetch data request. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) *cancelFetchData | Cancel fetch data request. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_CANCEL_FETCH_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
+| [OH_CloudDisk_DehydrateInfo](capi-clouddisk-oh-clouddisk-dehydrateinfo.md) *dehydrateData | Dehydrate authorization request. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_DEHYDRATE](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
+| [OH_CloudDisk_FetchRangeDataRequest](capi-clouddisk-oh-clouddisk-fetchrangedatarequest.md) *fetchRangeData | Fetch range data request. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_RANGE_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.1.0 |
 
 

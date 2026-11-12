@@ -16,7 +16,7 @@ Provides C interface for the telephony radio.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

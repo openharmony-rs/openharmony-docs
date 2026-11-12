@@ -1,7 +1,7 @@
 # VkPhysicalDevicePresentationPropertiesOHOS
 
 ```c
-struct VkPhysicalDevicePresentationPropertiesOHOS {...}
+typedef struct VkPhysicalDevicePresentationPropertiesOHOS {...} VkPhysicalDevicePresentationPropertiesOHOS
 ```
 
 ## Overview

@@ -1,7 +1,7 @@
 # OH_AudioSession_Strategy
 
 ```c
-struct OH_AudioSession_Strategy {...}
+typedef struct OH_AudioSession_Strategy {...} OH_AudioSession_Strategy
 ```
 
 ## Overview

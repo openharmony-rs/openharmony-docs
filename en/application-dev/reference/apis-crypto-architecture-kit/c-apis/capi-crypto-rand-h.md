@@ -16,13 +16,13 @@ Defines the random number generator interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_CryptoRand](capi-cryptorandapi-oh-cryptorand.md) | OH_CryptoRand | Random number generator structure, representing a random number generator context. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

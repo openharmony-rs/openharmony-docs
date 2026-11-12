@@ -18,10 +18,10 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Region](capi-nativewindow-region.md) | - | 表示本地窗口OHNativeWindow需要更新内容的矩形区域（脏区）。 |
-| [OH_NativeWindow_ScreenInfoRect](capi-nativewindow-oh-nativewindow-screeninforect.md) | - | 定义一个包含坐标和尺寸信息的矩形描述屏幕信息<br> 该结构体用于 [OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt) 接口的 SET_SCREEN_INFO 和 GET_SCREEN_INFO 操作码， 用来承载当前帧的偏移/尺寸以及 原始内容在屏幕中的偏移/尺寸 |
+| [Region](capi-nativewindow-region.md) | Region | 表示本地窗口OHNativeWindow需要更新内容的矩形区域（脏区）。 |
+| [OH_NativeWindow_ScreenInfoRect](capi-nativewindow-oh-nativewindow-screeninforect.md) | OH_NativeWindow_ScreenInfoRect | 定义一个包含坐标和尺寸信息的矩形描述屏幕信息<br> 该结构体用于 [OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt) 接口的 SET_SCREEN_INFO 和 GET_SCREEN_INFO 操作码， 用来承载当前帧的偏移/尺寸以及 原始内容在屏幕中的偏移/尺寸 |
 | [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md) | OHHDRMetaData | HDR元数据结构体定义。 |
-| [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md) | - | 扩展数据句柄结构体定义。 |
+| [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md) | OHExtDataHandle | 扩展数据句柄结构体定义。 |
 | [OH_NativeBuffer](capi-nativewindow-oh-nativebuffer.md) | OH_NativeBuffer | 提供对OH_NativeBuffer的访问功能。 |
 | [OHIPCParcel](capi-nativewindow-ohipcparcel.md) | OHIPCParcel | 提供对IPC序列化对象的访问功能。 |
 | [NativeWindow](capi-nativewindow-nativewindow.md) | - | 提供对OHNativeWindow的访问功能。 |
@@ -199,6 +199,20 @@ enum OHHDRMetadataKey
 
 | 枚举项 | 描述 |
 | -- | -- |
+| OH_METAKEY_RED_PRIMARY_X = 0 |  |
+| OH_METAKEY_RED_PRIMARY_Y = 1 |  |
+| OH_METAKEY_GREEN_PRIMARY_X = 2 |  |
+| OH_METAKEY_GREEN_PRIMARY_Y = 3 |  |
+| OH_METAKEY_BLUE_PRIMARY_X = 4 |  |
+| OH_METAKEY_BLUE_PRIMARY_Y = 5 |  |
+| OH_METAKEY_WHITE_PRIMARY_X = 6 |  |
+| OH_METAKEY_WHITE_PRIMARY_Y = 7 |  |
+| OH_METAKEY_MAX_LUMINANCE = 8 |  |
+| OH_METAKEY_MIN_LUMINANCE = 9 |  |
+| OH_METAKEY_MAX_CONTENT_LIGHT_LEVEL = 10 |  |
+| OH_METAKEY_MAX_FRAME_AVERAGE_LIGHT_LEVEL = 11 |  |
+| OH_METAKEY_HDR10_PLUS = 12 |  |
+| OH_METAKEY_HDR_VIVID = 13 |  |
 
 ### OHSurfaceSource
 
@@ -508,7 +522,7 @@ int32_t OH_NativeWindow_NativeWindowHandleOpt(OHNativeWindow *window, int code, 
 | -- | -- |
 | [OHNativeWindow](capi-nativewindow-nativewindow.md) *window | 一个OHNativeWindow的结构体实例的指针。 |
 | int code | 表示操作码，详见NativeWindowOperation。 |
-| [](capi-nativewindow-region.md).[](capi-nativewindow-region.md).[](capi-nativewindow-region.md).[](capi-nativewindow-region.md) | 可变参数，必须与操作码对应的数据类型保持一致，且入参数量严格按照操作码提示传入，否则会存在未定义行为。 |
+| [](capi-nativewindow-nativewindow.md).[](capi-nativewindow-nativewindow.md).[](capi-nativewindow-nativewindow.md).[](capi-nativewindow-nativewindow.md) | 可变参数，必须与操作码对应的数据类型保持一致，且入参数量严格按照操作码提示传入，否则会存在未定义行为。 |
 
 **返回值：**
 

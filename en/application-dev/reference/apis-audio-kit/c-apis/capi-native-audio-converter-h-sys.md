@@ -16,7 +16,7 @@ Declare underlying data structure.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

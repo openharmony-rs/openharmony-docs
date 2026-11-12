@@ -16,7 +16,7 @@ Provides data structure, enum types, and APIs for accessing the system pasteboar
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -25,7 +25,7 @@ Provides data structure, enum types, and APIs for accessing the system pasteboar
 | [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md) | OH_PasteboardObserver | Defines the pasteboard observer. |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md) | OH_Pasteboard | Defines the pasteboard object to operate the system pasteboard. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -33,7 +33,7 @@ Provides data structure, enum types, and APIs for accessing the system pasteboar
 | [Pasteboard_FileConflictOptions](#pasteboard_fileconflictoptions) | Pasteboard_FileConflictOptions | Enumerates the options used to resolve file copy conflicts. |
 | [Pasteboard_ProgressIndicator](#pasteboard_progressindicator) | Pasteboard_ProgressIndicator | Enumerates the progress indicator options. You can use the default progress indicator as required. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -43,7 +43,7 @@ Provides data structure, enum types, and APIs for accessing the system pasteboar
 | PASTEBOARD_MIMETYPE_PIXELMAP "pixelMap" | MIME type of PixelMap.<br>**Since**: 22 |
 | PASTEBOARD_MIMETYPE_TEXT_WANT "text/want" | MIME type of want.<br>**Since**: 22 |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

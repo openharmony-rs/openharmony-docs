@@ -66,7 +66,7 @@ FFRT_C_API ffrt_loop_t ffrt_loop_create(ffrt_queue_t queue)
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_loop_t | loop创建成功时返回非空的loop句柄；否则返回空指针。 |
+| FFRT_C_API [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) | loop创建成功时返回非空的loop句柄；否则返回空指针。 |
 
 ### ffrt_loop_destroy()
 

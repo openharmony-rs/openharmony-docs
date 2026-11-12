@@ -1,7 +1,7 @@
 # CloudDisk_DisplayNameInfo
 
 ```c
-struct CloudDisk_DisplayNameInfo {...}
+typedef struct CloudDisk_DisplayNameInfo {...} CloudDisk_DisplayNameInfo
 ```
 
 ## 概述

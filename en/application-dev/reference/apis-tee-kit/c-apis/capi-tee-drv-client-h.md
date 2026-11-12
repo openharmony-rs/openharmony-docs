@@ -14,7 +14,7 @@ Declare tee driver client API.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

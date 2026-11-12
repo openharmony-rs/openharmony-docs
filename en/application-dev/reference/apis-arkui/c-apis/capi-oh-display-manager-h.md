@@ -14,7 +14,7 @@ The file declares the functions for basic display management. You can call the f
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

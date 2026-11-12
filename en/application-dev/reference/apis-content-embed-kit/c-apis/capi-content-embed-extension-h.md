@@ -14,7 +14,7 @@ Defines the data structures and operation APIs related to the OE Extension of th
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -26,7 +26,7 @@ Defines the data structures and operation APIs related to the OE Extension of th
 | [ContentEmbed_Object](capi-contentembed-contentembed-object.md) | ContentEmbed_Object | Declares the ContentEmbed_Object structure. Points to the program object (server-side OE object for short) for embedding and editing the OE document encapsulated by the server. |
 | [ContentEmbed_Object*](capi-contentembed-contentembed-object8h.md) | ContentEmbed_ObjectHandle | Declares the pointer type of the ContentEmbed_Object object. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

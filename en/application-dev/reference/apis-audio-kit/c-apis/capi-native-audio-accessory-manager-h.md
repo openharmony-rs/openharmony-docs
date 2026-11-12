@@ -14,7 +14,7 @@ Declare audio accessory manager related interfaces.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

@@ -14,7 +14,7 @@ This file declares the functions related to the color filter in the drawing modu
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

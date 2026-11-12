@@ -14,13 +14,13 @@ Provides functions and enumerations related to the data values.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Data_Values](capi-rdb-oh-data-values.md) | OH_Data_Values | Define the OH_Data_Values structure type. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -14,14 +14,14 @@ Provides the error code definitions for the ContentEmbed module and the type enu
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ContentEmbed_ErrorCode](#contentembed_errorcode) | ContentEmbed_ErrorCode | Defines the error codes of the Content Embed Kit. |
 | [ContentEmbed_CapabilityCode](#contentembed_capabilitycode) | ContentEmbed_CapabilityCode | Enumerates the functions supported by embedded document objects. Multiple capability values can be combined using bit masks. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

@@ -14,13 +14,13 @@ Provides trusted storage APIs.<br> You can use these APIs to implement trusted s
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | Description |
 | -- | -- |
 | [\_\_TEE_ObjectEnumHandle](capi-teetrusted---tee-objectenumhandle.md) | Defines the handle for enumerating objects. |
 
-### Enum
+### Enums
 
 | Name | Description |
 | -- | -- |
@@ -30,7 +30,7 @@ Provides trusted storage APIs.<br> You can use these APIs to implement trusted s
 | [TEE_DATA_Size](#tee_data_size) | Defines the maximum number of bytes that can be held in a data stream. |
 | [Data_Flag_Constants](#data_flag_constants) | Defines the <b>handleFlags</b> of a <b>TEE_ObjectHandle</b>. The <b>handleFlags</b> determines the access permissions to the data stream associated with the object. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -44,7 +44,7 @@ Provides trusted storage APIs.<br> You can use these APIs to implement trusted s
 | [TEE_Result TEE_RenamePersistentObject(TEE_ObjectHandle object, void *newObjectID, size_t newObjectIDLen)](#tee_renamepersistentobject) | Changes the object identifier.<br> The <b>TEE_ObjectHandle</b> must have been opened with the <b>TEE_DATA_FLAG_ACCESS_WRITE_META</b> permission. |
 | [TEE_Result TEE_CloseAndDeletePersistentObject1(TEE_ObjectHandle object)](#tee_closeanddeletepersistentobject1) | Closes a <b>TEE_ObjectHandle</b> and deletes the object.<br> The object must be a persistent object, and the object handle must have been opened with the <b>TEE_DATA_FLAG_ACCESS_WRITE_META</b> permission. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -94,10 +94,10 @@ Defines the storage ID, which identifies the storage space of the application.
 | Enum item | Description |
 | -- | -- |
 | TEE_OBJECT_STORAGE_PRIVATE = 0x00000001 | Separate private storage space for each application. |
-| TEE_OBJECT_STORAGE_PERSO   = 0x00000002 | Separate personal storage space for application. |
-| TEE_OBJECT_SEC_FLASH       = 0x80000000 | Space for secure flash storage. |
-| TEE_OBJECT_STORAGE_RPMB    = 0x80000001 | Space for RPMB storage. |
-| TEE_OBJECT_STORAGE_CE      = 0x80000002 | Credential encrypted storage space. |
+| TEE_OBJECT_STORAGE_PERSO = 0x00000002 | Separate personal storage space for application. |
+| TEE_OBJECT_SEC_FLASH = 0x80000000 | Space for secure flash storage. |
+| TEE_OBJECT_STORAGE_RPMB = 0x80000001 | Space for RPMB storage. |
+| TEE_OBJECT_STORAGE_CE = 0x80000002 | Credential encrypted storage space. |
 | TEE_OBJECT_STORAGE_ANTIROLLBACK = 0x80000003 | Anti-rollback storage space. |
 
 ### Miscellaneous_Constants
@@ -139,6 +139,7 @@ Defines the maximum number of bytes that can be held in a data stream.
 
 | Enum item | Description |
 | -- | -- |
+| TEE_DATA_OBJECT_MAX_SIZE = 0xFFFFFFFF |  |
 
 ### Data_Flag_Constants
 
@@ -168,10 +169,10 @@ Defines the <b>handleFlags</b> of a <b>TEE_ObjectHandle</b>. The <b>handleFlags<
 | TEE_DATA_FLAG_OVERWRITE = 0x00000400 | Protect the existing file with the same name. Throw an error if the file with the same name exists; create a data file otherwise. |
 | TEE_DATA_FLAG_GID = 0x02000000 | If the bit25 is set to 1, it means deriving TA root key by using gid |
 | TEE_DATA_FLAG_HUK2 = 0x04000000 | If the bit26 is set to 1, it means deriving TA root key by using huk2 |
-| TEE_DATA_FLAG_DERIVE_32BYTES_KEY_ONCE =  0x08000000 | If the bit27 is set to 1, it means deriving the 32-bytes TA root key at one time, if it is 0, it means deriving TA root keys and combined them together. |
-| TEE_DATA_FLAG_AES256 =  0x10000000 | Use AES256 if bit 28 is 1; use AES128 if bit 28 is 0. |
+| TEE_DATA_FLAG_DERIVE_32BYTES_KEY_ONCE = 0x08000000 | If the bit27 is set to 1, it means deriving the 32-bytes TA root key at one time, if it is 0, it means deriving TA root keys and combined them together. |
+| TEE_DATA_FLAG_AES256 = 0x10000000 | Use AES256 if bit 28 is 1; use AES128 if bit 28 is 0. |
 | TEE_DATA_FLAG_OPEN_AESC = 0x20000000 | If bit 29 is set to 1, open the earlier version preferentially. |
-| TEE_DATA_FLAG_GM =  0x40000000 | If bit30 is set to 1, it means use GM algorithm to protect data |
+| TEE_DATA_FLAG_GM = 0x40000000 | If bit30 is set to 1, it means use GM algorithm to protect data |
 
 
 ## Function description

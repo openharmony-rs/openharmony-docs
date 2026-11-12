@@ -1,7 +1,7 @@
 # OH_CloudDisk_DataBuf
 
 ```c
-struct OH_CloudDisk_DataBuf {...}
+typedef struct OH_CloudDisk_DataBuf {...} OH_CloudDisk_DataBuf
 ```
 
 ## 概述

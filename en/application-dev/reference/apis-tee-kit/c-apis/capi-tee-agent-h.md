@@ -14,7 +14,7 @@ Provides the API about TA agent.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -16,13 +16,13 @@ Defines the key agreement interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_CryptoKeyAgreement](capi-cryptokeyagreementapi-oh-cryptokeyagreement.md) | OH_CryptoKeyAgreement | Key agreement structure, representing a key agreement context. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

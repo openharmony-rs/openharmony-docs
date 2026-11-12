@@ -14,13 +14,13 @@ Provides the capability of obtaining resources in the resource management native
 
 ## Summary
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | GLOBAL_OH_RESMGR_H | Provides the capability of obtaining resources in the resource management native layer.<br>**Since**: 12<br>**System capability**: SystemCapability.Global.ResourceManager |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -1,7 +1,7 @@
 # ScsiPeripheral_InquiryRequest
 
 ```c
-struct ScsiPeripheral_InquiryRequest {...}
+typedef struct ScsiPeripheral_InquiryRequest {...} ScsiPeripheral_InquiryRequest
 ```
 
 ## Overview

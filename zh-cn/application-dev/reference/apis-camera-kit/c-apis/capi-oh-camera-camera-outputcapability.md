@@ -1,7 +1,7 @@
 # Camera_OutputCapability
 
 ```c
-struct Camera_OutputCapability {...}
+typedef struct Camera_OutputCapability {...} Camera_OutputCapability
 ```
 
 ## 概述
@@ -30,7 +30,7 @@ struct Camera_OutputCapability {...}
 | uint32_t photoProfilesSize | 拍照配置文件列表的大小。 |
 | [Camera_VideoProfile*](capi-oh-camera-camera-videoprofile.md)* videoProfiles | 录像配置文件列表。 |
 | uint32_t videoProfilesSize | 录像配置文件列表的大小。 |
-| Camera_MetadataObjectType** supportedMetadataObjectTypes | 元数据对象类型列表。 |
+| [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)** supportedMetadataObjectTypes | 元数据对象类型列表。 |
 | uint32_t metadataProfilesSize | 元数据对象类型列表的大小。 |
 
 

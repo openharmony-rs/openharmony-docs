@@ -1,7 +1,7 @@
 # peration_ae_init
 
 ```c
-struct peration_ae_init {...}
+typedef struct peration_ae_init {...} operation_ae_init
 ```
 
 ## Overview

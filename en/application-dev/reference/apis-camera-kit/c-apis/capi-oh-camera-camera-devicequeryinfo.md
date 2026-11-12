@@ -1,7 +1,7 @@
 # Camera_DeviceQueryInfo
 
 ```c
-struct Camera_DeviceQueryInfo {...}
+typedef struct Camera_DeviceQueryInfo {...} Camera_DeviceQueryInfo
 ```
 
 ## Overview
@@ -24,7 +24,7 @@ Camera device query information.
 
 | Name | Description |
 | -- | -- |
-| Camera_Type* cameraType | List of camera types. |
+| [Camera_Type](capi-camera-h.md#camera_type)* cameraType | List of camera types. |
 | uint32_t cameraTypeSize | Size of the camera type list. |
 | [Camera_Position](capi-camera-h.md#camera_position) cameraPosition | Camera position. |
 | [Camera_Connection](capi-camera-h.md#camera_connection) connectionType | Camera connection type. |

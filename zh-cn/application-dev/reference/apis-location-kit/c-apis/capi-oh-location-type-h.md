@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Location_BasicInfo](capi-location-location-basicinfo.md) | - | 定义位置基本信息的结构体。 |
+| [Location_BasicInfo](capi-location-location-basicinfo.md) | Location_BasicInfo | 定义位置基本信息的结构体。 |
 | [Location_Info](capi-location-location-info.md) | Location_Info | 定义位置信息的结构体。 |
 | [Location_RequestConfig](capi-location-location-requestconfig.md) | Location_RequestConfig | 定义位置请求参数的结构体。 |
 

@@ -1,7 +1,7 @@
 # Hid_Device
 
 ```c
-struct Hid_Device {...}
+typedef struct Hid_Device {...} Hid_Device
 ```
 
 ## Overview
@@ -29,7 +29,7 @@ Describes basic device information, including the name, vendor ID, and product I
 | uint16_t productId | Product ID. |
 | uint16_t version | Version. |
 | uint16_t bustype | Bus type. For details about the value, see the bus type definition in the standard HID protocol. |
-| Hid_DeviceProp *properties | Device properties. Before using this pointer, check whether it is null. This pointer is valid only when the **Hid_Device** object is valid and should not be manually released. |
+| [Hid_DeviceProp](capi-hid-ddk-types-h.md#hid_deviceprop) *properties | Device properties. Before using this pointer, check whether it is null. This pointer is valid only when the **Hid_Device** object is valid and should not be manually released. |
 | uint16_t propLength | Number of device properties, indicating the number of valid elements in the properties array. Note: When traversing the array, use this value as the boundary condition. The value may be **0**. |
 
 

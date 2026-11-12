@@ -16,7 +16,7 @@ The file declares the common enums and structs used by the image interface.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

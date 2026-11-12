@@ -22,11 +22,11 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_SwapfsConfig（系统接口）](capi-swapfs-oh-swapfsconfig-sys.md) | - | 用于配置swapfs管理器的初始化参数，包括数据存储路径、空间限制和IO方式等。<br>**系统接口：** 此接口为系统接口。 |
-| [OH_SwapfsSwapOutRequest（系统接口）](capi-swapfs-oh-swapfsswapoutrequest-sys.md) | - | 换出操作的请求参数。用于在应用需要释放内存时，主动触发数据换出到交换分区的场景，例如内存紧张时将部分数据临时换出。<br>**系统接口：** 此接口为系统接口。 |
-| [OH_SwapfsSwapInRequest（系统接口）](capi-swapfs-oh-swapfsswapinrequest-sys.md) | - | 换入操作的请求参数。该结构体用于描述换入操作所需的参数，包括换出时返回的keyId、接收换入数据的缓冲区及其大小。 开发者需通过[OH_Swapfs_SwapOut](capi-oh-swapfs-h.md#oh_swapfs_swapout)获取keyId，再使用本结构体中的参数调用换入接口将数据换入内存。<br>**系统接口：** 此接口为系统接口。 |
-| [OH_SwapfsDataInfo（系统接口）](capi-swapfs-oh-swapfsdatainfo-sys.md) | - | 单个key的信息。用于在应用需要精确管理换出数据条目的元信息时（如查询换出状态、监控换出大小等）。<br>**系统接口：** 此接口为系统接口。 |
-| [OH_SwapfsStats（系统接口）](capi-swapfs-oh-swapfsstats-sys.md) | - | OH_SwapfsStats用于获取swapfs管理器的统计信息，包括活跃key数量、数据大小、空间使用情况等。 适用于需要监控swapfs状态、分析存储使用情况的场景，帮助开发者了解系统的交换空间使用情况。<br>**系统接口：** 此接口为系统接口。 |
+| [OH_SwapfsConfig（系统接口）](capi-swapfs-oh-swapfsconfig-sys.md) | OH_SwapfsConfig | 用于配置swapfs管理器的初始化参数，包括数据存储路径、空间限制和IO方式等。<br>**系统接口：** 此接口为系统接口。 |
+| [OH_SwapfsSwapOutRequest（系统接口）](capi-swapfs-oh-swapfsswapoutrequest-sys.md) | OH_SwapfsSwapOutRequest | 换出操作的请求参数。用于在应用需要释放内存时，主动触发数据换出到交换分区的场景，例如内存紧张时将部分数据临时换出。<br>**系统接口：** 此接口为系统接口。 |
+| [OH_SwapfsSwapInRequest（系统接口）](capi-swapfs-oh-swapfsswapinrequest-sys.md) | OH_SwapfsSwapInRequest | 换入操作的请求参数。该结构体用于描述换入操作所需的参数，包括换出时返回的keyId、接收换入数据的缓冲区及其大小。 开发者需通过[OH_Swapfs_SwapOut](capi-oh-swapfs-h.md#oh_swapfs_swapout)获取keyId，再使用本结构体中的参数调用换入接口将数据换入内存。<br>**系统接口：** 此接口为系统接口。 |
+| [OH_SwapfsDataInfo（系统接口）](capi-swapfs-oh-swapfsdatainfo-sys.md) | OH_SwapfsDataInfo | 单个key的信息。用于在应用需要精确管理换出数据条目的元信息时（如查询换出状态、监控换出大小等）。<br>**系统接口：** 此接口为系统接口。 |
+| [OH_SwapfsStats（系统接口）](capi-swapfs-oh-swapfsstats-sys.md) | OH_SwapfsStats | OH_SwapfsStats用于获取swapfs管理器的统计信息，包括活跃key数量、数据大小、空间使用情况等。 适用于需要监控swapfs状态、分析存储使用情况的场景，帮助开发者了解系统的交换空间使用情况。<br>**系统接口：** 此接口为系统接口。 |
 | [OH_SwapfsManager（系统接口）](capi-swapfs-oh-swapfsmanager-sys.md) | OH_SwapfsManager | 该结构体用于执行与swapfs管理器交互相关的操作。使用前需通过[OH_Swapfs_CreateManager](capi-oh-swapfs-h.md#oh_swapfs_createmanager)函数创建有效的管理器实例。 该结构体用于管理swapfs的生命周期和配置，提供交换分区的创建、销毁、扩展等管理能力。<br>**系统接口：** 此接口为系统接口。 |
 
 ### 枚举

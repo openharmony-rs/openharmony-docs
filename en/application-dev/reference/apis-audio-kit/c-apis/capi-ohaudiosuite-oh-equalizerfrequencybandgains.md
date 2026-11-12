@@ -1,7 +1,7 @@
 # OH_EqualizerFrequencyBandGains
 
 ```c
-struct OH_EqualizerFrequencyBandGains {...}
+typedef struct OH_EqualizerFrequencyBandGains {...} OH_EqualizerFrequencyBandGains
 ```
 
 ## Overview

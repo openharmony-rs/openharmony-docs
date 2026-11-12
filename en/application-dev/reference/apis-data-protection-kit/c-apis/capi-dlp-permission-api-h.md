@@ -14,14 +14,14 @@ Defines the APIs for cross-device file access management, encrypted storage, and
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [DLP_ErrCode](#dlp_errcode) | DLP_ErrCode | Enumerates the DLP error codes. |
 | [DLP_FileAccess](#dlp_fileaccess) | DLP_FileAccess | Enumerates the permissions on a DLP file. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

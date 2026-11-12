@@ -11,7 +11,7 @@
 | Name | Description |
 | -- | -- |
 | void *\_\_x |  |
-| struct \_\_ptcb *\_\_next |  |
+| [struct \_\_ptcb](capi----ptcb.md) *\_\_next |  |
 
 
 ### Member functions

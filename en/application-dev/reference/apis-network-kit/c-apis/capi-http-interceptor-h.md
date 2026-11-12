@@ -14,7 +14,7 @@ Defines the APIs of the HTTP global interceptor module. With interceptors, you c
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

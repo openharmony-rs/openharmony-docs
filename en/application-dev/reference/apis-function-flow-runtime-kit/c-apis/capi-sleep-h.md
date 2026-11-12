@@ -14,7 +14,7 @@ Declares the [ffrt_usleep](capi-sleep-h.md#ffrt_usleep) and [ffrt_yield](capi-sl
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

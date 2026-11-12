@@ -14,7 +14,7 @@ This file declares the functions related to the memory stream in the drawing mod
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

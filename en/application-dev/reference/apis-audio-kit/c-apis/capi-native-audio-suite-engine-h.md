@@ -14,7 +14,7 @@ Declare audio suite engine related interfaces.<br> This file provides interfaces
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

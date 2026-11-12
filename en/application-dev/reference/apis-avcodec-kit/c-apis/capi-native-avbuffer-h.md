@@ -14,14 +14,14 @@ The file declares the functions of the media struct AVBuffer.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVBuffer](capi-core-oh-avbuffer.md) | OH_AVBuffer | Describes a native object for the media memory interface. |
 | [OH_NativeBuffer](capi-core-oh-nativebuffer.md) | OH_NativeBuffer | Describes a native object for the graphics memory interface. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

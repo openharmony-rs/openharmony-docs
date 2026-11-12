@@ -14,14 +14,14 @@ Defines the child process info type and accessor functions.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AbilityRuntime_ChildProcessInfos](capi-abilityruntime-oh-abilityruntime-childprocessinfos.md) | *OH_AbilityRuntime_ChildProcessInfosHandle | Defines the pointer to OH_AbilityRuntime_ChildProcessInfos. |
 | [OH_AbilityRuntime_ChildProcessInfo](capi-abilityruntime-oh-abilityruntime-childprocessinfo.md) | *OH_AbilityRuntime_ChildProcessInfoHandle | Defines the pointer to OH_AbilityRuntime_ChildProcessInfo. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

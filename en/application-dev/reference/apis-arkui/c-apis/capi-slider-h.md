@@ -14,7 +14,7 @@ Provides Slider node type definitions for <b>NativeNode</b> APIs.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

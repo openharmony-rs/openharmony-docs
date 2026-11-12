@@ -16,7 +16,7 @@ Defines the asymmetric key interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -29,7 +29,7 @@ Defines the asymmetric key interfaces.
 | [OH_CryptoAsymKeyGeneratorWithSpec](capi-cryptoasymkeyapi-oh-cryptoasymkeygeneratorwithspec.md) | OH_CryptoAsymKeyGeneratorWithSpec | Specification-based asymmetric key generator structure, representing a specification-based asymmetric key generator. |
 | [OH_CryptoEcPoint](capi-cryptoasymkeyapi-oh-cryptoecpoint.md) | OH_CryptoEcPoint | Elliptic curve point structure, representing a point on the elliptic curve. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -38,7 +38,7 @@ Defines the asymmetric key interfaces.
 | [CryptoPrivKeyEncoding_ParamType](#cryptoprivkeyencoding_paramtype) | CryptoPrivKeyEncoding_ParamType | Defines private key encoding parameter types. |
 | [CryptoAsymKeySpec_Type](#cryptoasymkeyspec_type) | CryptoAsymKeySpec_Type | Defines asymmetric key specification types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

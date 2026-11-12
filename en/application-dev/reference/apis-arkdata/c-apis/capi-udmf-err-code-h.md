@@ -14,7 +14,7 @@ Declares the error codes used in the UDMF.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

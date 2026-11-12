@@ -14,7 +14,7 @@ This file declares the functions related to a recording command object.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -14,7 +14,7 @@ The file declares the MediaKeySystem APIs for DRM operations. The APIs can be us
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

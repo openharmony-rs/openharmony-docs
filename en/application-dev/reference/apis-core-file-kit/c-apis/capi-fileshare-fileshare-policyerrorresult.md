@@ -1,7 +1,7 @@
 # FileShare_PolicyErrorResult
 
 ```c
-struct FileShare_PolicyErrorResult {...}
+typedef struct FileShare_PolicyErrorResult {...} FileShare_PolicyErrorResult
 ```
 
 ## Overview

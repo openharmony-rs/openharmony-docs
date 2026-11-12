@@ -1,7 +1,7 @@
 # NetStack_Certificates
 
 ```c
-struct NetStack_Certificates {...}
+typedef struct NetStack_Certificates {...} NetStack_Certificates
 ```
 
 ## 概述

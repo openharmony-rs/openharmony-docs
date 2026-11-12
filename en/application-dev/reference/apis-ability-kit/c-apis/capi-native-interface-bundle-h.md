@@ -14,22 +14,22 @@ The file declares the APIs for obtaining the application information, including 
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_NativeBundle_ApplicationInfo](capi-native-bundle-oh-nativebundle-applicationinfo.md) | OH_NativeBundle_ApplicationInfo | The struct describes the application information, including the bundle name and fingerprint information. |
 | [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md) | OH_NativeBundle_ElementName | The struct describes the elementName information. |
-| [OH_NativeBundle_Metadata](capi-native-bundle-oh-nativebundle-metadata.md) | - | The struct describes the metadata information. |
-| [OH_NativeBundle_ModuleMetadata](capi-native-bundle-oh-nativebundle-modulemetadata.md) | - | The struct describes the metadata of a module. |
+| [OH_NativeBundle_Metadata](capi-native-bundle-oh-nativebundle-metadata.md) | OH_NativeBundle_Metadata | The struct describes the metadata information. |
+| [OH_NativeBundle_ModuleMetadata](capi-native-bundle-oh-nativebundle-modulemetadata.md) | OH_NativeBundle_ModuleMetadata | The struct describes the metadata of a module. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | FOUNDATION_APPEXECFWK_STANDARD_KITS_APPKIT_NATIVE_BUNDLE_INCLUDE_NATIVE_INTERFACE_BUNDLE_H | The file declares the APIs for obtaining the application information, including the bundle name, fingerprint information, and appId.<br>**Since**: 9<br>**System capability**: SystemCapability.BundleManager.BundleFramework.Core |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

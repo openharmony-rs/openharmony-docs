@@ -167,7 +167,7 @@ int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struc
 | -- | -- |
 | uint64_t deviceId | 设备ID，可通过[OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices)获取，代表要获取配置描述符的设备。 |
 | uint8_t configIndex | 配置索引，对应USB协议配置描述符中的bConfigurationValue字段。 |
-| struct UsbDdkConfigDescriptor ** const config | 输出参数，用于接收获取到的配置描述符，包含USB协议中定义的标准配置描述符，以及与其关联的接口描述符和端点描述符。 |
+| struct [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) ** const config | 输出参数，用于接收获取到的配置描述符，包含USB协议中定义的标准配置描述符，以及与其关联的接口描述符和端点描述符。 |
 
 **返回值：**
 
@@ -197,7 +197,7 @@ void OH_Usb_FreeConfigDescriptor(struct UsbDdkConfigDescriptor * const config)
 
 | 参数项 | 描述 |
 | -- | -- |
-| struct UsbDdkConfigDescriptor * const config | 配置描述符，通过[OH_Usb_GetConfigDescriptor](capi-usb-ddk-api-h.md#oh_usb_getconfigdescriptor)获得的配置描述符。 |
+| struct [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) * const config | 配置描述符，通过[OH_Usb_GetConfigDescriptor](capi-usb-ddk-api-h.md#oh_usb_getconfigdescriptor)获得的配置描述符。 |
 
 ### OH_Usb_ClaimInterface()
 

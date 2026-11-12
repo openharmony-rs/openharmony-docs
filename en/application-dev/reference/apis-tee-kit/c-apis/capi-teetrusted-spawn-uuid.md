@@ -1,7 +1,7 @@
 # spawn_uuid
 
 ```c
-struct spawn_uuid {...}
+typedef struct spawn_uuid {...} spawn_uuid_t
 ```
 
 ## Overview
@@ -25,6 +25,6 @@ Defines the type of spawn UUID.
 | Name | Description |
 | -- | -- |
 | uint64_t uuid_valid | Indicates if the UUID is valid. |
-| TEE_UUID uuid | The spawn UUID. |
+| [TEE_UUID](capi-teetrusted-tee-uuid.md) uuid | The spawn UUID. |
 
 

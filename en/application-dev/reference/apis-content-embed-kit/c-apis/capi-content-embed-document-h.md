@@ -14,7 +14,7 @@ Provides the data structures and corresponding operation APIs related to the emb
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,13 +24,13 @@ Provides the data structures and corresponding operation APIs related to the emb
 | [ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md) | ContentEmbed_StorageElements | Declares the ContentEmbed_StorageElements structure. Use [OH_ContentEmbed_Storage_GetElements](capi-content-embed-document-h.md#oh_contentembed_storage_getelements) to retrieve the collection of all [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) and [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) objects under a specific [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) object, with each object encapsulated as a [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) struct. Use [OH_ContentEmbed_StorageElements_GetCount](capi-content-embed-document-h.md#oh_contentembed_storageelements_getcount) to get the number of elements in the current query, and [OH_ContentEmbed_StorageElements_GetElement](capi-content-embed-document-h.md#oh_contentembed_storageelements_getelement) to obtain the [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) instance object at a specified index position. |
 | [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) | ContentEmbed_Stream | Declares the stream structure type of an OE document. Similar to a file in the file system, a stream can be read or written. A stream object can exist only in the storage object. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | MAX_PATH_LENGTH (4 * 1024) | Indicates the maximum length of a file path.<br>**Since**: 24 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -95,7 +95,7 @@ Creates a new [ContentEmbed_Document](capi-contentembed-contentembed-document.md
 
 | Parameter | Description |
 | -- | -- |
-| const char *oeid | Identifier of the OE document, which is used to uniquely identify the OE document. It is recommended that the array length be [MAX_OEID_LENGTH](capi-content-embed-common-h.md#宏定义). |
+| const char *oeid | Identifier of the OE document, which is used to uniquely identify the OE document. It is recommended that the array length be [MAX_OEID_LENGTH](capi-content-embed-common-h.md#macros). |
 | [ContentEmbed_Document](capi-contentembed-contentembed-document.md) **document | Output parameter. This pointer points to the newly created OE document object. |
 
 **Returns**:
@@ -222,7 +222,7 @@ Obtains the identifier OEID from the OE document object.
 | Parameter | Description |
 | -- | -- |
 | [const ContentEmbed_Document](capi-contentembed-contentembed-document.md) *document | Pointer to the OE document object. |
-| char *oeid | Output parameter. Character array for storing the OEID value. The recommended array length is [MAX_OEID_LENGTH](capi-content-embed-common-h.md#宏定义). |
+| char *oeid | Output parameter. Character array for storing the OEID value. The recommended array length is [MAX_OEID_LENGTH](capi-content-embed-common-h.md#macros). |
 
 **Returns**:
 
@@ -280,7 +280,7 @@ Obtains the embedded source file path stored in the client sandbox directory fro
 | Parameter | Description |
 | -- | -- |
 | [const ContentEmbed_Document](capi-contentembed-contentembed-document.md) *document | Pointer to the OE document object. |
-| char *nativeFilePath | Output parameter. Character array for storing the source file path. It is recommended that the array length be [MAX_PATH_LENGTH](capi-content-embed-document-h.md#宏定义). |
+| char *nativeFilePath | Output parameter. Character array for storing the source file path. It is recommended that the array length be [MAX_PATH_LENGTH](capi-content-embed-document-h.md#macros). |
 
 **Returns**:
 
@@ -786,7 +786,7 @@ Obtains the identifier (OEID) of the storage object of an OE document.
 | Parameter | Description |
 | -- | -- |
 | [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *storage | Pointer to the storage object of an OE document. |
-| char *oeid | Output parameter. Character array for storing the identifier OEID. It is recommended that the array length be [MAX_OEID_LENGTH](capi-content-embed-common-h.md#宏定义). |
+| char *oeid | Output parameter. Character array for storing the identifier OEID. It is recommended that the array length be [MAX_OEID_LENGTH](capi-content-embed-common-h.md#macros). |
 | size_t oeidSize | Length of the OEID array, in bytes. |
 
 **Returns**:
@@ -816,7 +816,7 @@ Sets the identifier of the storage object in an OE document.
 | Parameter | Description |
 | -- | -- |
 | [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *storage | Pointer to the storage object in an OE document. |
-| char *oeid | Character array of the identifier OEID to be set. It is recommended that the array length be [MAX_OEID_LENGTH](capi-content-embed-common-h.md#宏定义). |
+| char *oeid | Character array of the identifier OEID to be set. It is recommended that the array length be [MAX_OEID_LENGTH](capi-content-embed-common-h.md#macros). |
 | size_t oeidSize | Length of the OEID array, in bytes. |
 
 **Returns**:

@@ -1,7 +1,7 @@
 # NetConn_NetCapabilities
 
 ```c
-struct NetConn_NetCapabilities {...}
+typedef struct NetConn_NetCapabilities {...} NetConn_NetCapabilities
 ```
 
 ## 概述

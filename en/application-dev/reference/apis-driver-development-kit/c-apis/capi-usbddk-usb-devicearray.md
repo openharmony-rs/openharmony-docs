@@ -1,7 +1,7 @@
 # Usb_DeviceArray
 
 ```c
-struct Usb_DeviceArray {...}
+typedef struct Usb_DeviceArray {...} Usb_DeviceArray
 ```
 
 ## Overview

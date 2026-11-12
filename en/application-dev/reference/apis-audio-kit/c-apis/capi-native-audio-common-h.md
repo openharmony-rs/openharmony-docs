@@ -14,7 +14,7 @@ Declare the audio common base data structure.<br> Defines the types of public re
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

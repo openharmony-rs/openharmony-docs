@@ -1,7 +1,7 @@
 # CloudDisk_ChangesResult
 
 ```c
-struct CloudDisk_ChangesResult {...}
+typedef struct CloudDisk_ChangesResult {...} CloudDisk_ChangesResult
 ```
 
 ## 概述

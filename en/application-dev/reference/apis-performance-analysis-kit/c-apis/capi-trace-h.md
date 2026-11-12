@@ -14,13 +14,13 @@ Defines APIs of the **HiTraceMeter** and **HiTraceChain** modules for performanc
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [HiTraceId](capi-hitrace-hitraceid.md) | Defines a **HiTraceId** instance. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [HiTraceId](capi-hitrace-hitraceid.md) | HiTraceId | Defines a **HiTraceId** instance. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -31,16 +31,16 @@ Defines APIs of the **HiTraceMeter** and **HiTraceChain** modules for performanc
 | [HiTrace_Communication_Mode](#hitrace_communication_mode) | HiTrace_Communication_Mode | Enumerates the trace communication types. |
 | [HiTrace_Output_Level](#hitrace_output_level) | HiTrace_Output_Level | Enumerates the HiTrace output levels. The trace output level lower than the threshold does not take effect. The threshold for the log version is [HITRACE_LEVEL_INFO](capi-trace-h.md#hitrace_output_level), and that for the no-log version is [HITRACE_LEVEL_COMMERCIAL](capi-trace-h.md#hitrace_output_level). |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [typedef void (\*OH_HiTrace_TraceEventListener)(bool traceStatus)](#oh_hitrace_traceeventlistener) | OH_HiTrace_TraceEventListener | Defines a callback to listen for whether the trace capture is enabled. |
 | [HiTraceId OH_HiTrace_BeginChain(const char *name, int flags)](#oh_hitrace_beginchain) | - | Starts tracing. If the current thread's TLS does not contain a valid HiTrace ID, this function generates one, stores it in TLS, and returns it. If the current thread's TLS already contains a valid HiTrace ID, this function does not start tracing and returns an invalid HiTrace ID with all property values being 0. |
 | [void OH_HiTrace_EndChain()](#oh_hitrace_endchain) | - | Stops tracing. Stops tracing and sets the HiTrace ID in the TLS of the current thread to invalid. |
-| [HiTraceId OH_HiTrace_GetId()](#oh_hitrace_getid) | - | @brief Obtains the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread. |
-| [void OH_HiTrace_SetId(const HiTraceId *id)](#oh_hitrace_setid) | - | @brief Sets the given [HiTraceId](capi-hitrace-hitraceid.md) to the TLS of the current thread. If the input parameter is invalid, no operation is performed. |
-| [void OH_HiTrace_ClearId(void)](#oh_hitrace_clearid) | - | @brief Sets the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread to invalid. |
+| [HiTraceId OH_HiTrace_GetId()](#oh_hitrace_getid) | - | Obtains the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread. |
+| [void OH_HiTrace_SetId(const HiTraceId *id)](#oh_hitrace_setid) | - | Sets the given [HiTraceId](capi-hitrace-hitraceid.md) to the TLS of the current thread. If the input parameter is invalid, no operation is performed. |
+| [void OH_HiTrace_ClearId(void)](#oh_hitrace_clearid) | - | Sets the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread to invalid. |
 | [HiTraceId OH_HiTrace_CreateSpan(void)](#oh_hitrace_createspan) | - | Creates a trace span. Creates a [HiTraceId](capi-hitrace-hitraceid.md), uses the **chainId** and **spanId** in the TLS of the current thread to initialize its **chainId** and **parentSpanId**, and generates a new **spanId** for it. |
 | [void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_Type type, const HiTraceId *id, const char *fmt, ...)](#oh_hitrace_tracepoint) | - | Adds a trace point for the HiTraceMeter logging. When **type** is set to [HITRACE_TP_CS](capi-trace-h.md#hitrace_tracepoint_type) (client sending) or [HITRACE_TP_SR](capi-trace-h.md#hitrace_tracepoint_type) (server receiving), the synchronous HiTraceMeter logging starts. When type is set to [HITRACE_TP_CR](capi-trace-h.md#hitrace_tracepoint_type) (client receiving) or [HITRACE_TP_SS](capi-trace-h.md#hitrace_tracepoint_type) (server sending), the synchronous HiTraceMeter logging ends. When **type** is set to [HITRACE_TP_GENERAL](capi-trace-h.md#hitrace_tracepoint_type), HiTraceMeter logging is not performed. The trace points must be used in pairs: [HITRACE_TP_CS](capi-trace-h.md#hitrace_tracepoint_type) with [HITRACE_TP_CR](capi-trace-h.md#hitrace_tracepoint_type), and [HITRACE_TP_SR](capi-trace-h.md#hitrace_tracepoint_type) with [HITRACE_TP_SS](capi-trace-h.md#hitrace_tracepoint_type). Otherwise, the start and end trace points of HiTraceMeter cannot match each other. |
 | [void OH_HiTrace_InitId(HiTraceId *id)](#oh_hitrace_initid) | - | Initializes a [HiTraceId](capi-hitrace-hitraceid.md). |
@@ -290,7 +290,7 @@ HiTraceId OH_HiTrace_GetId()
 
 **Description**
 
-@brief Obtains the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread.
+Obtains the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread.
 
 <!--Device-HiTraceId OH_HiTrace_GetId()--><!--Device-HiTraceId OH_HiTrace_GetId()-End-->
 
@@ -312,7 +312,7 @@ void OH_HiTrace_SetId(const HiTraceId *id)
 
 **Description**
 
-@brief Sets the given [HiTraceId](capi-hitrace-hitraceid.md) to the TLS of the current thread. If the input parameter is invalid, no operation is performed.
+Sets the given [HiTraceId](capi-hitrace-hitraceid.md) to the TLS of the current thread. If the input parameter is invalid, no operation is performed.
 
 <!--Device-void OH_HiTrace_SetId(const HiTraceId *id)--><!--Device-void OH_HiTrace_SetId(const HiTraceId *id)-End-->
 
@@ -334,7 +334,7 @@ void OH_HiTrace_ClearId(void)
 
 **Description**
 
-@brief Sets the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread to invalid.
+Sets the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread to invalid.
 
 <!--Device-void OH_HiTrace_ClearId(void)--><!--Device-void OH_HiTrace_ClearId(void)-End-->
 

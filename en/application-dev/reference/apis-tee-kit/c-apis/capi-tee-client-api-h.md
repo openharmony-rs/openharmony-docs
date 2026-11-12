@@ -14,14 +14,14 @@ Defines APIs for CAs to access TAs.<br> <p> Example: <p>1. Initialize a TEE: Cal
 
 ## Summary
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | TEEC_PARAM_TYPES(param0Type, param1Type, param2Type, param3Type)  ((param3Type) << 12 \| (param2Type) << 8 \| (param1Type) << 4 \| (param0Type)) | Defines the values of the parameters transmitted between the REE and TEE.<br>**Since**: 20 |
 | TEEC_PARAM_TYPE_GET(paramTypes, index)  (((paramTypes) >> (4*(index))) & 0x0F) | Defines the value of the parameter specified by <b>paramTypes</b> and <b>index</b>.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

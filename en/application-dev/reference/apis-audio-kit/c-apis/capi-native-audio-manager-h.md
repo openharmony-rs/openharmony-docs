@@ -14,13 +14,13 @@ Declare audio manager related interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AudioManager](capi-ohaudio-oh-audiomanager.md) | OH_AudioManager | Declare the audio manager. The handle of audio manager is used for audio management related functions. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

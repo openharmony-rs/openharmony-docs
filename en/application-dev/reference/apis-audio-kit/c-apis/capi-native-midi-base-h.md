@@ -14,7 +14,7 @@ Declares the underlying data structure for MIDI module.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -26,7 +26,7 @@ Declares the underlying data structure for MIDI module.
 | [OH_MIDIClientStruct](capi-ohmidi-oh-midiclientstruct.md) | OH_MIDIClient | Declares a MIDI client. |
 | [OH_MIDIDeviceStruct](capi-ohmidi-oh-mididevicestruct.md) | OH_MIDIDevice | Declares a MIDI device. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -36,7 +36,7 @@ Declares the underlying data structure for MIDI module.
 | [OH_MIDIDeviceType](#oh_mididevicetype) | OH_MIDIDeviceType | MIDI Device type. |
 | [OH_MIDIDeviceChangeAction](#oh_mididevicechangeaction) | OH_MIDIDeviceChangeAction | Device connection state change action. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

@@ -16,7 +16,7 @@ Defines the common types for the native module.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -37,7 +37,7 @@ Defines the common types for the native module.
 | [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) | OH_ArkUI_LinearGradientOptions | Defines the linear gradient effect options, which describe the linear color gradient configuration of a UI component. It supports setting the gradient direction, angle, and color, helping you implement flexible linear gradient effects and improve the visual presentation of the UI. It is applicable to scenarios where a linear gradient style needs to be applied to a component. |
 | [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) | OH_ArkUI_RadialGradientOptions | Defines the radial gradient options for implementing radial gradient effects in UI components, helping you enrich the visual hierarchy of the UI. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -65,7 +65,7 @@ Defines the common types for the native module.
 | [OH_ArkUI_NodeMountPolicy](#oh_arkui_nodemountpolicy) | OH_ArkUI_NodeMountPolicy | Enumerates the child node mounting policy types. |
 | [OH_ArkUI_ArcDirection](#oh_arkui_arcdirection) | OH_ArkUI_ArcDirection | Enumerates arc directions. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

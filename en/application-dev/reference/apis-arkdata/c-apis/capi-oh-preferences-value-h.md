@@ -14,20 +14,20 @@ Provides APIs, enums, and structs for accessing the **PreferencesValue** object.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) | OH_PreferencesPair | Defines a struct for the **Preferences** data in KV format. |
 | [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) | OH_PreferencesValue | Defines the struct for a **PreferencesValue** object. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [Preference_ValueType](#preference_valuetype) | Preference_ValueType | Enumerates the data types of **PreferencesValue**. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

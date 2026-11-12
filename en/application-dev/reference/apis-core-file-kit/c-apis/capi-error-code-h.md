@@ -14,7 +14,7 @@ Declare the error codes of file management module.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

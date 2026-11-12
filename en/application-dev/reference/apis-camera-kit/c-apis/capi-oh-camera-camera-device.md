@@ -1,7 +1,7 @@
 # Camera_Device
 
 ```c
-struct Camera_Device {...}
+typedef struct Camera_Device {...} Camera_Device
 ```
 
 ## Overview

@@ -1,7 +1,7 @@
 # HiDebug_GraphicsMemorySummary
 
 ```c
-struct HiDebug_GraphicsMemorySummary {...}
+typedef struct HiDebug_GraphicsMemorySummary {...} HiDebug_GraphicsMemorySummary
 ```
 
 ## Overview

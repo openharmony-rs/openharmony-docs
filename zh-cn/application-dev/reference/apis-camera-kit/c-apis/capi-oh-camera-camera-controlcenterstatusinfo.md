@@ -1,7 +1,7 @@
 # Camera_ControlCenterStatusInfo
 
 ```c
-struct Camera_ControlCenterStatusInfo {...}
+typedef struct Camera_ControlCenterStatusInfo {...} Camera_ControlCenterStatusInfo
 ```
 
 ## 概述

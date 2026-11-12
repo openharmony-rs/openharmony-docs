@@ -16,25 +16,25 @@ Provides the enumeration types and structures used in USB DDK APIs, including co
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) | Setup data for control transfer. It corresponds to <b>Setup Data</b> in the USB protocol. |
-| [UsbDeviceDescriptor](capi-usbddk-usbdevicedescriptor.md) | Defines standard device descriptors, which correspond to **Standard Device Descriptor** in the USB protocol. |
-| [UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) | Defines standard configuration descriptors, which correspond to **Standard Configuration Descriptor** in the USB protocol. |
-| [UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) | Defines standard interface descriptors, which correspond to **Standard Interface Descriptor** in the USB protocol. |
-| [UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) | Defines standard endpoint descriptors, which correspond to **Standard Endpoint Descriptor** in the USB protocol. |
-| [UsbDdkEndpointDescriptor](capi-usbddk-usbddkendpointdescriptor.md) | Defines endpoint descriptors, including standard endpoint descriptors and descriptors that are not parsed. |
-| [UsbDdkInterfaceDescriptor](capi-usbddk-usbddkinterfacedescriptor.md) | Defines interface descriptors, including standard interface descriptors and endpoint descriptors. |
-| [UsbDdkInterface](capi-usbddk-usbddkinterface.md) | Defines a USB DDK API, which is a collection of alternate settings for a particular USB interface. |
-| [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) | Defines configuration descriptors, including standard configuration descriptors and interface descriptors. |
-| [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | Defines a request pipe, which is actually a USB data transfer request. It describes the basic configuration parameters for USB data transfer, including the interface handle, endpoint address, and timeout interval. This API applies to scenarios where USB data transfer is required. |
-| [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md) | Defines the device memory map created by calling [OH_Usb_CreateDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_createdevicememmap). A buffer using the device memory map can provide better data transfer performance. |
-| [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | Defines the device ID array, which is used to store the device IDs and device quantity obtained using [OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices). After using the structure, you must release the memory allocated for the device ID array. Otherwise, resource leaks may occur. |
-| [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) | Defines the non-root hub array, which is used to store the non-root hub IDs and quantity obtained using [OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#oh_usb_getnonroothubs). After using the structure, you must release the memory allocated for the non-root hub ID array. Otherwise, resource leaks may occur. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) | - | Setup data for control transfer. It corresponds to <b>Setup Data</b> in the USB protocol. |
+| [UsbDeviceDescriptor](capi-usbddk-usbdevicedescriptor.md) | - | Defines standard device descriptors, which correspond to **Standard Device Descriptor** in the USB protocol. |
+| [UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) | - | Defines standard configuration descriptors, which correspond to **Standard Configuration Descriptor** in the USB protocol. |
+| [UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) | - | Defines standard interface descriptors, which correspond to **Standard Interface Descriptor** in the USB protocol. |
+| [UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) | - | Defines standard endpoint descriptors, which correspond to **Standard Endpoint Descriptor** in the USB protocol. |
+| [UsbDdkEndpointDescriptor](capi-usbddk-usbddkendpointdescriptor.md) | UsbDdkEndpointDescriptor | Defines endpoint descriptors, including standard endpoint descriptors and descriptors that are not parsed. |
+| [UsbDdkInterfaceDescriptor](capi-usbddk-usbddkinterfacedescriptor.md) | UsbDdkInterfaceDescriptor | Defines interface descriptors, including standard interface descriptors and endpoint descriptors. |
+| [UsbDdkInterface](capi-usbddk-usbddkinterface.md) | UsbDdkInterface | Defines a USB DDK API, which is a collection of alternate settings for a particular USB interface. |
+| [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) | UsbDdkConfigDescriptor | Defines configuration descriptors, including standard configuration descriptors and interface descriptors. |
+| [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | - | Defines a request pipe, which is actually a USB data transfer request. It describes the basic configuration parameters for USB data transfer, including the interface handle, endpoint address, and timeout interval. This API applies to scenarios where USB data transfer is required. |
+| [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md) | UsbDeviceMemMap | Defines the device memory map created by calling [OH_Usb_CreateDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_createdevicememmap). A buffer using the device memory map can provide better data transfer performance. |
+| [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | Usb_DeviceArray | Defines the device ID array, which is used to store the device IDs and device quantity obtained using [OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices). After using the structure, you must release the memory allocated for the device ID array. Otherwise, resource leaks may occur. |
+| [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) | Usb_NonRootHubArray | Defines the non-root hub array, which is used to store the non-root hub IDs and quantity obtained using [OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#oh_usb_getnonroothubs). After using the structure, you must release the memory allocated for the non-root hub ID array. Otherwise, resource leaks may occur. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

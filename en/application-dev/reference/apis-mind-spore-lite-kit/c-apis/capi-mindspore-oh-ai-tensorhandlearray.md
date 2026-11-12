@@ -1,7 +1,7 @@
 # OH_AI_TensorHandleArray
 
 ```c
-struct OH_AI_TensorHandleArray {...}
+typedef struct OH_AI_TensorHandleArray {...} OH_AI_TensorHandleArray
 ```
 
 ## Overview

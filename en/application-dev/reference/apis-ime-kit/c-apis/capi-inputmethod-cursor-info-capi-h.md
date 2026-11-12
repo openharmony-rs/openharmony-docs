@@ -16,13 +16,13 @@ Provides methods for creating, destroying, reading, and writing cursor informati
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [InputMethod_CursorInfo](capi-inputmethod-inputmethod-cursorinfo.md) | InputMethod_CursorInfo | Represents the cursor information, Coordinates, width, and height of the cursor. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

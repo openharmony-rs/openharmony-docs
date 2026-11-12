@@ -14,15 +14,15 @@ Declare avqueueitem related interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md) | - | Declaring the avqueue item. The instance of AVQueueItem. |
+| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md) | OH_AVSession_AVQueueItem | Declaring the avqueue item. The instance of AVQueueItem. |
 | [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md) | OH_AVSession_AVMediaDescription | Declaring the AVMediaDescription. The instance of AVMediaDescription set by application for current resource. |
 | [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md) | OH_AVSession_AVMediaDescriptionBuilder | Declaring the AVMediaDescription builder. The instance of builder is used for creating AVMediaDescription. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

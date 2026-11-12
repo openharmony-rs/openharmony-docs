@@ -16,7 +16,7 @@ Defines enumerations related to **TextInput**, which supports multiple input typ
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

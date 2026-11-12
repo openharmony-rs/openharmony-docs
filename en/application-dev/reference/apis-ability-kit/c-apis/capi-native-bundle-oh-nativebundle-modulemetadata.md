@@ -1,7 +1,7 @@
 # OH_NativeBundle_ModuleMetadata
 
 ```c
-struct OH_NativeBundle_ModuleMetadata {...}
+typedef struct OH_NativeBundle_ModuleMetadata {...} OH_NativeBundle_ModuleMetadata
 ```
 
 ## Overview

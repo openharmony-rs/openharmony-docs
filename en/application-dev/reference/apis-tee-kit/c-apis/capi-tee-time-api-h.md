@@ -14,7 +14,7 @@ Provides APIs for managing the Trusted Execution Environment (TEE) time.<br> You
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

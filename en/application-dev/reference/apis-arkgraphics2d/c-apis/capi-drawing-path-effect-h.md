@@ -14,13 +14,13 @@ This file declares the functions related to the path effect in the drawing modul
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_PathDashStyle](#oh_drawing_pathdashstyle) | OH_Drawing_PathDashStyle | Enumerates the drawing styles for path effects. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

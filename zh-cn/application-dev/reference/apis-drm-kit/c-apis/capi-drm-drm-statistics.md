@@ -1,7 +1,7 @@
 # DRM_Statistics
 
 ```c
-struct DRM_Statistics {...}
+typedef struct DRM_Statistics {...} DRM_Statistics
 ```
 
 ## 概述

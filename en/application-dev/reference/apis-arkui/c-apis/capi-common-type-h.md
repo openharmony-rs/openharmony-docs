@@ -16,7 +16,7 @@ Defines the common types for ArkUI native APIs.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

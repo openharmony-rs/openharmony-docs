@@ -1,7 +1,7 @@
 # OHExtDataHandle
 
 ```c
-struct OHExtDataHandle {...}
+typedef struct OHExtDataHandle {...} OHExtDataHandle
 ```
 
 ## Overview

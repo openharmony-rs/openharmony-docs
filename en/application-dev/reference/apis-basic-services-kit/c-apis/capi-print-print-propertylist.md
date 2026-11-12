@@ -25,6 +25,6 @@ Defines a printer property list, which is used to store and manage printer prope
 | Name | Description |
 | -- | -- |
 | uint32_t count | Number of properties. The value must be the same as the actual number of elements in the property array to which **list** points. |
-| Print_Property *list | Pointer to the property array, which is used to store printer properties. This parameter must be used together with **count**. The array length is specified by **count**. |
+| [Print_Property](capi-print-print-property.md) *list | Pointer to the property array, which is used to store printer properties. This parameter must be used together with **count**. The array length is specified by **count**. |
 
 

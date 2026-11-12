@@ -16,7 +16,7 @@ Defines common text enumerations and APIs, covering text alignment, decoration l
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -29,7 +29,7 @@ Defines common text enumerations and APIs, covering text alignment, decoration l
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | ArkUI_TextSelectionMenuOptions | Defines the options of a custom text selection menu, supporting custom configuration of menu content, styles, and behavior. It is applicable to scenarios where the text selection menu interaction needs to be customized. |
 | [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) | OH_ArkUI_DecorationStyleOptions | Defines decoration style options, which are used to add decorative line effects to text. You can set the type (such as underline, strikethrough, and overline), style (such as solid, dashed, and wavy), and color of the decorative line. Typical use cases include adding an underline to link text, adding a strikethrough to deleted content, and adding an overline to important text. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -52,7 +52,7 @@ Defines common text enumerations and APIs, covering text alignment, decoration l
 | [ArkUI_TextSpanType](#arkui_textspantype) | ArkUI_TextSpanType | Enumerates the recognition types of a custom text selection menu. |
 | [ArkUI_TextResponseType](#arkui_textresponsetype) | ArkUI_TextResponseType | Enumerates the response types of a custom text selection menu. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

@@ -16,14 +16,14 @@ This file declares the functions for obtaining and using native vertical synchro
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_NativeVSync_ExpectedRateRange](capi-nativevsync-oh-nativevsync-expectedraterange.md) | OH_NativeVSync_ExpectedRateRange | Provides the expected frame rate range. |
 | [OH_NativeVSync](capi-nativevsync-oh-nativevsync.md) | OH_NativeVSync | Provides the declaration of an **OH_NativeVSync** struct. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

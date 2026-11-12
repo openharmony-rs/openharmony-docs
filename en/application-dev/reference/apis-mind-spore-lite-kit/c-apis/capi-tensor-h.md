@@ -12,13 +12,13 @@ Provides APIs for creating and modifying tensor information.
 
 ## Summary
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | MINDSPORE_INCLUDE_C_API_TENSOE_C_H | Provides APIs for creating and modifying tensor information.<br>**Since**: 9 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -42,7 +42,7 @@ Provides APIs for creating and modifying tensor information.
 | [OH_AI_API OH_AI_AllocatorHandle OH_AI_TensorGetAllocator(OH_AI_TensorHandle tensor)](#oh_ai_tensorgetallocator) | Get allocator for the tensor.<br> The main purpose of this interface is providing a way of getting memory allocator of the tensor. |
 | [OH_AI_API OH_AI_Status OH_AI_TensorSetAllocator(OH_AI_TensorHandle tensor, OH_AI_AllocatorHandle allocator)](#oh_ai_tensorsetallocator) | Set allocator to the tensor.<br> The main purpose of this interface is providing a way of setting memory allocator, so tensor's memory will be allocated by this allocator. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -220,7 +220,7 @@ Obtain the data type of the tensor.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_DataType | The date type of the tensor. |
+| OH_AI_API [OH_AI_DataType](capi-data-type-h.md#oh_ai_datatype) | The date type of the tensor. |
 
 ### OH_AI_TensorSetShape()
 
@@ -316,7 +316,7 @@ Obtain the format of the tensor.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Format | The format of the tensor. |
+| OH_AI_API [OH_AI_Format](capi-format-h.md#oh_ai_format) | The format of the tensor. |
 
 ### OH_AI_TensorSetData()
 
@@ -469,7 +469,7 @@ Set the data for the tensor with user-allocated data buffer.<br> The main purpos
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_STATUS_SUCCESS if success, or detail error code if failed. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_STATUS_SUCCESS if success, or detail error code if failed. |
 
 ### OH_AI_TensorGetAllocator()
 
@@ -522,6 +522,6 @@ Set allocator to the tensor.<br> The main purpose of this interface is providing
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_STATUS_SUCCESS if success, or detail error code if failed. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_STATUS_SUCCESS if success, or detail error code if failed. |
 
 

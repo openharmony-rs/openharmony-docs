@@ -1,7 +1,7 @@
 # OH_Camera_ZoomPointInfo
 
 ```c
-struct OH_Camera_ZoomPointInfo {...}
+typedef struct OH_Camera_ZoomPointInfo {...} OH_Camera_ZoomPointInfo
 ```
 
 ## Overview

@@ -14,13 +14,13 @@ This file declares the functions related to the text blob in the drawing module.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_RunBuffer](capi-drawing-oh-drawing-runbuffer.md) | OH_Drawing_RunBuffer | This struct describes a run, which provides storage for glyphs and positions. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

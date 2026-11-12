@@ -1,7 +1,7 @@
 # OH_HiDebug_ProfilingResult
 
 ```c
-struct OH_HiDebug_ProfilingResult {...}
+typedef struct OH_HiDebug_ProfilingResult {...} OH_HiDebug_ProfilingResult
 ```
 
 ## Overview

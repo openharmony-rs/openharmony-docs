@@ -14,20 +14,20 @@ Provides the type declaration of the ExtensionAbility callback function and the 
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [AbilityRuntime_ExtensionInstance](capi-abilityruntime-abilityruntime-extensioninstance.md) | - | Define the AbilityRuntime_ExtensionInstance structure type. |
 | [AbilityRuntime_ExtensionInstance*](capi-abilityruntime-abilityruntime-extensioninstance8h.md) | AbilityRuntime_ExtensionInstanceHandle | Defines the pointer to AbilityRuntime_ExtensionInstance. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
 | [typedef void AbilityRuntime_Extension_CreateFunc(AbilityRuntime_ExtensionInstanceHandle handle, const char *abilityName)](#abilityruntime_extension_createfunc) | Defines the callback function type for ExtensionAbility creation. Callback function that must be implemented in the ExtensionAbility, which is used to instantiate the ExtensionAbility. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

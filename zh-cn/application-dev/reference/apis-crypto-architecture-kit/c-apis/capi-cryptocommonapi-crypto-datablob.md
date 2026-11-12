@@ -1,7 +1,7 @@
 # Crypto_DataBlob
 
 ```c
-struct Crypto_DataBlob {...}
+typedef struct Crypto_DataBlob {...} Crypto_DataBlob
 ```
 
 ## 概述

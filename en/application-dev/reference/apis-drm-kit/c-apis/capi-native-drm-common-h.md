@@ -14,23 +14,23 @@ The file declares the DRM data types.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [DRM_MediaKeyRequestInfo](capi-drm-drm-mediakeyrequestinfo.md) | - | The struct describes the information about a media key request. |
-| [DRM_MediaKeyRequest](capi-drm-drm-mediakeyrequest.md) | - | The struct describes a media key request. |
-| [DRM_Statistics](capi-drm-drm-statistics.md) | - | The struct describes the metrics for a media key system. |
-| [DRM_OfflineMediakeyIdArray](capi-drm-drm-offlinemediakeyidarray.md) | - | The struct describes an array of offline media key IDs. |
-| [DRM_KeysInfo](capi-drm-drm-keysinfo.md) | - | The struct describes the information about media keys. |
-| [DRM_MediaKeyStatus](capi-drm-drm-mediakeystatus.md) | - | The struct describes the media key status. |
-| [DRM_PsshInfo](capi-drm-drm-psshinfo.md) | - | The struct describes the Protection System Specific Header (PSSH) data for a DRM system. |
-| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) | - | The struct describes the DRM information for encrypted content. |
-| [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) | - | The struct describes the DRM solution name and UUID list. |
+| [DRM_MediaKeyRequestInfo](capi-drm-drm-mediakeyrequestinfo.md) | DRM_MediaKeyRequestInfo | The struct describes the information about a media key request. |
+| [DRM_MediaKeyRequest](capi-drm-drm-mediakeyrequest.md) | DRM_MediaKeyRequest | The struct describes a media key request. |
+| [DRM_Statistics](capi-drm-drm-statistics.md) | DRM_Statistics | The struct describes the metrics for a media key system. |
+| [DRM_OfflineMediakeyIdArray](capi-drm-drm-offlinemediakeyidarray.md) | DRM_OfflineMediakeyIdArray | The struct describes an array of offline media key IDs. |
+| [DRM_KeysInfo](capi-drm-drm-keysinfo.md) | DRM_KeysInfo | The struct describes the information about media keys. |
+| [DRM_MediaKeyStatus](capi-drm-drm-mediakeystatus.md) | DRM_MediaKeyStatus | The struct describes the media key status. |
+| [DRM_PsshInfo](capi-drm-drm-psshinfo.md) | DRM_PsshInfo | The struct describes the Protection System Specific Header (PSSH) data for a DRM system. |
+| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | The struct describes the DRM information for encrypted content. |
+| [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) | DRM_MediaKeySystemDescription | The struct describes the DRM solution name and UUID list. |
 | [MediaKeySystem](capi-drm-mediakeysystem.md) | MediaKeySystem | The struct describes a media key system. |
 | [MediaKeySession](capi-drm-mediakeysession.md) | MediaKeySession | The struct describes a media key session. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -41,7 +41,7 @@ The file declares the DRM data types.
 | [DRM_OfflineMediaKeyStatus](#drm_offlinemediakeystatus) | DRM_OfflineMediaKeyStatus | Enumerates the statuses of offline media keys. |
 | [DRM_CertificateStatus](#drm_certificatestatus) | DRM_CertificateStatus | Enumerates the device certificate statuses. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -69,7 +69,7 @@ The file declares the DRM data types.
 | MAX_MEDIA_KEY_SYSTEM_NAME_LEN 128 | Maximum length of a MediaKeySystem instance name.<br>**Since**: 12 |
 | MAX_MEDIA_KEY_SYSTEM_NUM 8 | Maximum number of MediaKeySystem instances.<br>**Since**: 12 |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

@@ -1,7 +1,7 @@
 # DrmSubsample
 
 ```c
-struct DrmSubsample {...}
+typedef struct DrmSubsample {...} DrmSubsample
 ```
 
 ## Overview

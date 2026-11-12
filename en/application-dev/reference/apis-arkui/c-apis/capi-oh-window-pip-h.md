@@ -14,13 +14,13 @@ The file declares the APIs related to the Picture in Picture (PiP) feature, incl
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [PictureInPicture_PipConfig](capi-windowmanager-pictureinpicture-pipconfig.md) | PictureInPicture_PipConfig | Picture in picture config. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -30,7 +30,7 @@ The file declares the APIs related to the Picture in Picture (PiP) feature, incl
 | [PictureInPicture_PipControlStatus](#pictureinpicture_pipcontrolstatus) | PictureInPicture_PipControlStatus | Enumerates the statuses of components displayed on the PiP controller. |
 | [PictureInPicture_PipState](#pictureinpicture_pipstate) | PictureInPicture_PipState | Enumerates the PiP lifecycle states. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -69,7 +69,7 @@ The file declares the APIs related to the Picture in Picture (PiP) feature, incl
 | [int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)](#oh_pictureinpicture_unregisterallresizelisteners) | - | Unregisters all the callbacks used to listen for PiP window size changes. |
 | [int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enabled)](#oh_pictureinpicture_setautostartenabled) | - | Sets whether to automatically start a PiP window when the user returns to the home screen. By default, no PiP window is started. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

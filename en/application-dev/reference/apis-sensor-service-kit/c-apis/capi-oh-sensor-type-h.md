@@ -14,7 +14,7 @@ Declares the common sensor attributes.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,7 +24,7 @@ Declares the common sensor attributes.
 | [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) | Sensor_SubscriptionAttribute | Defines a struct for the sensor subscription attribute, including the sensor type, sampling rate, and data reporting interval. This attribute is applicable to sensor data subscription scenarios, helping developers configure the subscription mode based on service requirements and providing flexible capabilities for obtaining sensor data. This attribute can be used for step count and heart rate data subscription in health and fitness apps, real-time collection of temperature and humidity data in environment monitoring apps, and status change monitoring in device control apps. |
 | [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) | Sensor_Subscriber | Defines a struct for the sensor subscriber, including the subscription callback function and user data. You can use this struct to specify the parameters of a sensor subscriber. After the subscription is successful, the sensor data updates will be received. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -32,7 +32,7 @@ Declares the common sensor attributes.
 | [Sensor_Result](#sensor_result) | Sensor_Result | Enumerates the sensor result codes. |
 | [Sensor_Accuracy](#sensor_accuracy) | Sensor_Accuracy | Enumerates the accuracy levels of data reported by a sensor. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

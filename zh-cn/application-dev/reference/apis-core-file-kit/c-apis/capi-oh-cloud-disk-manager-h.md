@@ -18,24 +18,24 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) | - | 文件路径信息。 |
-| [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md) | - | 文件的同步状态。 |
-| [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md) | - | 定义了同步根路径下单个文件变更事件的数据结构。该结构包含有关文件变更的详细信息，包括唯一ID、父目录的唯一ID、相对路径、变更类型、文件大小和时间戳。 |
-| [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) | - | 查询同步根路径中文件变更的结果。该结构体包含同步根路径中文件的变更数据，包括下一个更新序列号、结尾标志以及变更数据项数组。 |
-| [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md) | - | 同步操作中失败的文件列表信息。该结构包含文件路径信息以及失败的具体错误原因。 |
-| [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md) | - | 表示一个文件同步操作的结果。该结构体包含文件的绝对路径、同步结果，以及同步状态或失败原因。 |
-| [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) | - | 定义同步根路径的显示名称信息。 |
-| [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md) | - | 同步根属性信息。 |
-| [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) | - | 定义带占位符支持的云盘同步文件夹。 必须将版本字段设置为有效的版本宏(例如[OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1](capi-oh-cloud-disk-manager-h.md#宏定义))，然后才能传递结构到任何API。 运行时使用版本来确定字段有效；当指定低版本时，在较高版本中引入的字段将被忽略。 |
-| [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) | - | 占位符文件的元数据信息。 |
-| [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) | - | 云盘数据缓冲区信息。 |
-| [OH_CloudDisk_CallbackReqHead](capi-clouddisk-oh-clouddisk-callbackreqhead.md) | - | 云盘回调请求头信息。 |
-| [OH_CloudDisk_DehydrateInfo](capi-clouddisk-oh-clouddisk-dehydrateinfo.md) | - | 脱水授权信息。 |
-| [OH_CloudDisk_FetchRangeDataRequest](capi-clouddisk-oh-clouddisk-fetchrangedatarequest.md) | - | 获取范围数据请求信息。 |
-| [OH_CloudDisk_FetchDataRequest](capi-clouddisk-oh-clouddisk-fetchdatarequest.md) | - | 获取数据请求信息。 |
-| [OH_CloudDisk_CallbackContext](capi-clouddisk-oh-clouddisk-callbackcontext.md) | - | 回调请求上下文信息联合体。 |
-| [OH_CloudDisk_FetchData](capi-clouddisk-oh-clouddisk-fetchdata.md) | - | 云端文件数据获取结果。 |
-| [OH_CloudDisk_CallbackResponse](capi-clouddisk-oh-clouddisk-callbackresponse.md) | - | 回调响应信息联合体。 |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) | CloudDisk_PathInfo | 文件路径信息。 |
+| [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md) | CloudDisk_FileSyncState | 文件的同步状态。 |
+| [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md) | CloudDisk_ChangeData | 定义了同步根路径下单个文件变更事件的数据结构。该结构包含有关文件变更的详细信息，包括唯一ID、父目录的唯一ID、相对路径、变更类型、文件大小和时间戳。 |
+| [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) | CloudDisk_ChangesResult | 查询同步根路径中文件变更的结果。该结构体包含同步根路径中文件的变更数据，包括下一个更新序列号、结尾标志以及变更数据项数组。 |
+| [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md) | CloudDisk_FailedList | 同步操作中失败的文件列表信息。该结构包含文件路径信息以及失败的具体错误原因。 |
+| [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md) | CloudDisk_ResultList | 表示一个文件同步操作的结果。该结构体包含文件的绝对路径、同步结果，以及同步状态或失败原因。 |
+| [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) | CloudDisk_DisplayNameInfo | 定义同步根路径的显示名称信息。 |
+| [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md) | CloudDisk_SyncFolder | 同步根属性信息。 |
+| [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) | OH_CloudDisk_SyncFolderEx | 定义带占位符支持的云盘同步文件夹。 必须将版本字段设置为有效的版本宏(例如[OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1](capi-oh-cloud-disk-manager-h.md#宏定义))，然后才能传递结构到任何API。 运行时使用版本来确定字段有效；当指定低版本时，在较高版本中引入的字段将被忽略。 |
+| [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) | OH_CloudDisk_PlaceholderInfo | 占位符文件的元数据信息。 |
+| [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) | OH_CloudDisk_DataBuf | 云盘数据缓冲区信息。 |
+| [OH_CloudDisk_CallbackReqHead](capi-clouddisk-oh-clouddisk-callbackreqhead.md) | OH_CloudDisk_CallbackReqHead | 云盘回调请求头信息。 |
+| [OH_CloudDisk_DehydrateInfo](capi-clouddisk-oh-clouddisk-dehydrateinfo.md) | OH_CloudDisk_DehydrateInfo | 脱水授权信息。 |
+| [OH_CloudDisk_FetchRangeDataRequest](capi-clouddisk-oh-clouddisk-fetchrangedatarequest.md) | OH_CloudDisk_FetchRangeDataRequest | 获取范围数据请求信息。 |
+| [OH_CloudDisk_FetchDataRequest](capi-clouddisk-oh-clouddisk-fetchdatarequest.md) | OH_CloudDisk_FetchDataRequest | 获取数据请求信息。 |
+| [OH_CloudDisk_CallbackContext](capi-clouddisk-oh-clouddisk-callbackcontext.md) | OH_CloudDisk_CallbackContext | 回调请求上下文信息联合体。 |
+| [OH_CloudDisk_FetchData](capi-clouddisk-oh-clouddisk-fetchdata.md) | OH_CloudDisk_FetchData | 云端文件数据获取结果。 |
+| [OH_CloudDisk_CallbackResponse](capi-clouddisk-oh-clouddisk-callbackresponse.md) | OH_CloudDisk_CallbackResponse | 回调响应信息联合体。 |
 
 ### 枚举
 
@@ -111,7 +111,7 @@ enum CloudDisk_SyncState
 | IDLE = 0 | 目前处于空闲状态，未执行任何同步操作。<br>**起始版本：** 21 |
 | SYNCING = 1 | 文件正在同步。<br>**起始版本：** 21 |
 | SYNC_SUCCEEDED = 2 | 文件同步成功。<br>**起始版本：** 21 |
-| SYNC_FAILED = 3 |  文件同步失败。<br>**起始版本：** 21 |
+| SYNC_FAILED = 3 | 文件同步失败。<br>**起始版本：** 21 |
 | SYNC_CANCELED = 4 | 文件同步取消。<br>**起始版本：** 21 |
 | SYNC_CONFLICTED = 5 | 文件同步冲突。<br>**起始版本：** 21 |
 

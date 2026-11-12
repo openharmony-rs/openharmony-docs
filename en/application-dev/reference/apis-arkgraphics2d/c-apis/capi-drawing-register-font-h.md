@@ -14,7 +14,7 @@ Defines functions related to the font manager in the drawing module, providing c
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

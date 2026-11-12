@@ -1,7 +1,7 @@
 # Hid_EventProperties
 
 ```c
-struct Hid_EventProperties {...}
+typedef struct Hid_EventProperties {...} Hid_EventProperties
 ```
 
 ## Overview

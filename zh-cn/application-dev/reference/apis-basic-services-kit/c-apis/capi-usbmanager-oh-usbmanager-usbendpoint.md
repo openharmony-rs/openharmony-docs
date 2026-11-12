@@ -1,7 +1,7 @@
 # OH_UsbManager_UsbEndpoint
 
 ```c
-struct OH_UsbManager_UsbEndpoint {...}
+typedef struct OH_UsbManager_UsbEndpoint {...} OH_UsbManager_UsbEndpoint
 ```
 
 ## 概述

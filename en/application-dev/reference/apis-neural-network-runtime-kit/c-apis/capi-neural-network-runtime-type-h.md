@@ -14,14 +14,14 @@ Defines the structure and enumeration.<br> include "neural_network_runtime/neura
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_NN_UInt32Array](capi-neuralnetworkruntime-oh-nn-uint32array.md) | - | This structure is used to store a 32-bit unsigned integer array. |
-| [OH_NN_QuantParam](capi-neuralnetworkruntime-oh-nn-quantparam.md) | - | Quantization information.<br> In quantization scenarios, the 32-bit floating-point data type is quantized into the fixed-point data type according to the following formula: \f[ q = clamp(round(\frac{r}{s}+z), q_{min}, q_{max}) \f] s and z are quantization parameters, which are stored by <b>scale</b> and <b>zeroPoint</b> in [OH_NN_QuantParam](capi-neuralnetworkruntime-oh-nn-quantparam.md). r is a floating point number, q is the quantization result, q_min is the lower bound of the quantization result, and q_max is an upper bound of a quantization result. The calculation method is as follows:<br> \f[ \text{clamp}(x,min,max) = \begin{cases} q_{min} = -(1 << (numBits - 1)) \ q_{max} = (1 << (numBits - 1)) \ \end{cases}<br> \f] The clamp function is defined as follows: \f[ \text{clamp}(x,min,max) = \begin{cases} \text{max} & \text{ if } x > \text{ max } \ \text{min} & \text{ if } x < \text{ min } \ x & \text{ otherwise } \ \end{cases}<br> \f] |
-| [OH_NN_Tensor](capi-neuralnetworkruntime-oh-nn-tensor.md) | - | Defines the tensor structure.<br> It is usually used to construct data nodes and operator parameters in a model graph. When constructing a tensor, you need to specify the data type, number of dimensions, dimension information, and quantization information. |
-| [OH_NN_Memory](capi-neuralnetworkruntime-oh-nn-memory.md) | - | Defines the memory structure. |
+| [OH_NN_UInt32Array](capi-neuralnetworkruntime-oh-nn-uint32array.md) | OH_NN_UInt32Array | This structure is used to store a 32-bit unsigned integer array. |
+| [OH_NN_QuantParam](capi-neuralnetworkruntime-oh-nn-quantparam.md) | OH_NN_QuantParam | Quantization information.<br> In quantization scenarios, the 32-bit floating-point data type is quantized into the fixed-point data type according to the following formula: \f[ q = clamp(round(\frac{r}{s}+z), q_{min}, q_{max}) \f] s and z are quantization parameters, which are stored by <b>scale</b> and <b>zeroPoint</b> in [OH_NN_QuantParam](capi-neuralnetworkruntime-oh-nn-quantparam.md). r is a floating point number, q is the quantization result, q_min is the lower bound of the quantization result, and q_max is an upper bound of a quantization result. The calculation method is as follows:<br> \f[ \text{clamp}(x,min,max) = \begin{cases} q_{min} = -(1 << (numBits - 1)) \ q_{max} = (1 << (numBits - 1)) \ \end{cases}<br> \f] The clamp function is defined as follows: \f[ \text{clamp}(x,min,max) = \begin{cases} \text{max} & \text{ if } x > \text{ max } \ \text{min} & \text{ if } x < \text{ min } \ x & \text{ otherwise } \ \end{cases}<br> \f] |
+| [OH_NN_Tensor](capi-neuralnetworkruntime-oh-nn-tensor.md) | OH_NN_Tensor | Defines the tensor structure.<br> It is usually used to construct data nodes and operator parameters in a model graph. When constructing a tensor, you need to specify the data type, number of dimensions, dimension information, and quantization information. |
+| [OH_NN_Memory](capi-neuralnetworkruntime-oh-nn-memory.md) | OH_NN_Memory | Defines the memory structure. |
 | [OH_NNModel](capi-neuralnetworkruntime-oh-nnmodel.md) | OH_NNModel | Defines the handles of models. |
 | [OH_NNCompilation](capi-neuralnetworkruntime-oh-nncompilation.md) | OH_NNCompilation | Defines the compilation handle. |
 | [OH_NNExecutor](capi-neuralnetworkruntime-oh-nnexecutor.md) | OH_NNExecutor | Defines the executor handle. |
@@ -29,7 +29,7 @@ Defines the structure and enumeration.<br> include "neural_network_runtime/neura
 | [NN_TensorDesc](capi-neuralnetworkruntime-nn-tensordesc.md) | NN_TensorDesc | Defines the tensor descriptor handle. |
 | [NN_Tensor](capi-neuralnetworkruntime-nn-tensor.md) | NN_Tensor | Defines the tensor handle. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -43,7 +43,7 @@ Defines the structure and enumeration.<br> include "neural_network_runtime/neura
 | [OH_NN_OperationType](#oh_nn_operationtype) | OH_NN_OperationType | Defines operator types. |
 | [OH_NN_TensorType](#oh_nn_tensortype) | OH_NN_TensorType | Enumerates the tensor data types.<br> Tensors are usually used to set the input, output, and operator parameters of a model. When a tensor is used as the input or output of a model (or operator), set the tensor type to [OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype). When the tensor is used as an operator parameter, select an enumerated value other than [OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype) as the tensor type. Assume that the <b>pad</b> parameter of the [OH_NN_OPS_CONV2D](capi-neural-network-runtime-type-h.md#oh_nn_operationtype) operator is being set. You need to set the <b>type</b> attribute of the [OH_NN_Tensor](capi-neuralnetworkruntime-oh-nn-tensor.md) instance to [OH_NN_CONV2D_PAD](capi-neural-network-runtime-type-h.md#oh_nn_tensortype). The settings of other operator parameters are similar. The enumerated values are named in the format OH_NN_{<i>Operator name</i>}_{<i>Attribute name</i>}. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -136,7 +136,7 @@ Defines error codes.
 ### OH_NN_FuseType
 
 ```c
-enum OH_NN_FuseType
+enum OH_NN_FuseType : int8_t
 ```
 
 **Description**

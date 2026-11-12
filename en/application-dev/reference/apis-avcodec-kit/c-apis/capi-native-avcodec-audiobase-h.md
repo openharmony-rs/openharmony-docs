@@ -16,13 +16,13 @@ Declare the Native API used for basic audio encoding and decoding functions, as 
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVCodec_DSDCodecType](#oh_avcodec_dsdcodectype) | OH_AVCodec_DSDCodecType | DSD codec type. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

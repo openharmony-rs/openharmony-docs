@@ -1,7 +1,7 @@
 # OH_Pixelmap_HdrDynamicMetadata
 
 ```c
-struct OH_Pixelmap_HdrDynamicMetadata {...}
+typedef struct OH_Pixelmap_HdrDynamicMetadata {...} OH_Pixelmap_HdrDynamicMetadata
 ```
 
 ## 概述

@@ -14,7 +14,7 @@ Defines the functions for obtaining and using a native buffer.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,14 +24,14 @@ Defines the functions for obtaining and using a native buffer.
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) | OH_NativeBuffer |  |
 | [OHIPCParcel](capi-oh-nativebuffer-ohipcparcel.md) | OHIPCParcel | Defines the ipc parcel. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_NativeBuffer_Usage](#oh_nativebuffer_usage) | OH_NativeBuffer_Usage | Indicates the usage of a native buffer. |
 | [OH_NativeBuffer_ColorGamut](#oh_nativebuffer_colorgamut) | OH_NativeBuffer_ColorGamut | Indicates the color gamut of a native buffer. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

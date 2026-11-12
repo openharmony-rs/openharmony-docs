@@ -14,7 +14,7 @@ Declares the APIs used to obtain details of specific certificates.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

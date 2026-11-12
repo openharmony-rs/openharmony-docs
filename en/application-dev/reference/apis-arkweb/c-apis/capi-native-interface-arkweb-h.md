@@ -14,19 +14,19 @@ native_interface_arkweb.h is the core entry header file of ArkWeb Native API. It
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md) | ArkWeb_BlanklessInfo | Describes the first-screen loading prediction information, including the predicted first-screen similarity value, predicted first-screen loading time, and error code. The app uses this information to decide whether to enable the blankless loading frame insertion solution, which reduces the blank screen time by inserting pre-rendered frames during page loading. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkWebEngineVersion](#arkwebengineversion) | ArkWebEngineVersion | For ArkWeb kernel versions, see Adaptation Guide for the M114 Kernel on OpenHarmony 6.0 and Adaptation Guide for the M132 Kernel on OpenHarmony 7.0. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

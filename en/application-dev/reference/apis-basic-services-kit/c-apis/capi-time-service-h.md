@@ -14,13 +14,13 @@ Declares the APIs for obtaining the time zone information.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [TimeService_ErrCode](#timeservice_errcode) | TimeService_ErrCode | Enumerates the error codes. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

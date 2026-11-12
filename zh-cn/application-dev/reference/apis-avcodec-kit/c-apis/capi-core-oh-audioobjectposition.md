@@ -1,7 +1,7 @@
 # OH_AudioObjectPosition
 
 ```c
-struct OH_AudioObjectPosition {...}
+typedef struct OH_AudioObjectPosition {...} OH_AudioObjectPosition
 ```
 
 ## 概述

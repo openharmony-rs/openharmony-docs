@@ -16,7 +16,7 @@ Declares the BASE DDK APIs used by the host and provides APIs for creating, mapp
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -14,19 +14,19 @@ Provides functions related to `rawfile` directory operations, including director
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [RawDir](capi-rawfile-rawdir.md) | RawDir | `RawDir` represents an opened rawfile directory object, which can be used to traverse the directory and files within it. It is obtained through [OH_ResourceManager_OpenRawDir](capi-raw-file-manager-h.md#oh_resourcemanager_openrawdir), and must be closed and released through [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir) after use. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | GLOBAL_RAW_DIR_H | Provides functions related to `rawfile` directory operations, including directory traversal, file count retrieval, file name retrieval, and directory closing.<br>**Since**: 8<br>**System capability**: SystemCapability.Global.ResourceManager |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

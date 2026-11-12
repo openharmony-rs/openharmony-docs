@@ -14,7 +14,7 @@ Provides  APIs for developers to apply for shared memory.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -1,7 +1,7 @@
 # OH_TrafficFilter_InterfaceMatch
 
 ```c
-struct OH_TrafficFilter_InterfaceMatch {...}
+typedef struct OH_TrafficFilter_InterfaceMatch {...} OH_TrafficFilter_InterfaceMatch
 ```
 
 ## 概述

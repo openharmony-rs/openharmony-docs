@@ -1,7 +1,7 @@
 # OH_Pixelmap_HdrMetadataValue
 
 ```c
-struct OH_Pixelmap_HdrMetadataValue {...}
+typedef struct OH_Pixelmap_HdrMetadataValue {...} OH_Pixelmap_HdrMetadataValue
 ```
 
 ## 概述

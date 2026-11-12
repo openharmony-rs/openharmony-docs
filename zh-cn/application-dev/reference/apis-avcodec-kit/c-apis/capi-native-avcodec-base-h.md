@@ -22,10 +22,10 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AVCodecAsyncCallback](capi-codecbase-oh-avcodecasynccallback.md) | - | OH_AVCodec中所有异步回调函数指针的集合。将该结构体的实例注册到OH_AVCodec实例中， 并处理回调上报的信息，以保证OH_AVCodec的正常运行。 |
-| [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md) | - | OH_AVCodec中所有异步回调函数指针的集合。将该结构体的实例注册到OH_AVCodec实例中， 并处理回调上报的信息，以保证OH_AVCodec的正常运行。 |
-| [OH_AVDataSource](capi-codecbase-oh-avdatasource.md) | - | 用户自定义数据源。 |
-| [OH_AVDataSourceExt](capi-codecbase-oh-avdatasourceext.md) | - | 用户自定义数据源，回调支持通过userData传递用户自定义数据。 |
+| [OH_AVCodecAsyncCallback](capi-codecbase-oh-avcodecasynccallback.md) | OH_AVCodecAsyncCallback | OH_AVCodec中所有异步回调函数指针的集合。将该结构体的实例注册到OH_AVCodec实例中， 并处理回调上报的信息，以保证OH_AVCodec的正常运行。 |
+| [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md) | OH_AVCodecCallback | OH_AVCodec中所有异步回调函数指针的集合。将该结构体的实例注册到OH_AVCodec实例中， 并处理回调上报的信息，以保证OH_AVCodec的正常运行。 |
+| [OH_AVDataSource](capi-codecbase-oh-avdatasource.md) | OH_AVDataSource | 用户自定义数据源。 |
+| [OH_AVDataSourceExt](capi-codecbase-oh-avdatasourceext.md) | OH_AVDataSourceExt | 用户自定义数据源，回调支持通过userData传递用户自定义数据。 |
 | [NativeWindow](capi-codecbase-nativewindow.md) | OHNativeWindow | 为图形接口定义native层对象。 |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) | OH_AVCodec | 为音视频编解码接口定义native层对象。 |
 
@@ -418,8 +418,8 @@ MPEG2档次。
 | 枚举项 | 描述 |
 | -- | -- |
 | MPEG2_PROFILE_SIMPLE = 0 | 简单档次。<br>**起始版本：** 17 |
-| MPEG2_PROFILE_MAIN  = 1 | 主档次。<br>**起始版本：** 17 |
-| MPEG2_PROFILE_SNR_SCALABLE  = 2 | 信噪比可分级档次。<br>**起始版本：** 17 |
+| MPEG2_PROFILE_MAIN = 1 | 主档次。<br>**起始版本：** 17 |
+| MPEG2_PROFILE_SNR_SCALABLE = 2 | 信噪比可分级档次。<br>**起始版本：** 17 |
 | MPEG2_PROFILE_SPATIALLY_SCALABLE = 3 | 空间可分级档次。<br>**起始版本：** 17 |
 | MPEG2_PROFILE_HIGH = 4 | 高级档次。<br>**起始版本：** 17 |
 | MPEG2_PROFILE_422 = 5 | 4:2:2档次。<br>**起始版本：** 17 |
@@ -446,7 +446,7 @@ MPEG4档次。
 | MPEG4_PROFILE_SIMPLE_SCALABLE = 1 | 简单可分级档次。<br>**起始版本：** 17 |
 | MPEG4_PROFILE_CORE = 2 | 核心档次。<br>**起始版本：** 17 |
 | MPEG4_PROFILE_MAIN = 3 | 主档次。<br>**起始版本：** 17 |
-| MPEG4_PROFILE_N_BIT  = 4 | N位档次。<br>**起始版本：** 17 |
+| MPEG4_PROFILE_N_BIT = 4 | N位档次。<br>**起始版本：** 17 |
 | MPEG4_PROFILE_HYBRID = 5 | 混合档次。<br>**起始版本：** 17 |
 | MPEG4_PROFILE_BASIC_ANIMATED_TEXTURE = 6 | 基本动画纹理档次。<br>**起始版本：** 17 |
 | MPEG4_PROFILE_SCALABLE_TEXTURE = 7 | 可分级纹理档次。<br>**起始版本：** 17 |
@@ -938,16 +938,16 @@ MPEG4级别。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MPEG4_LEVEL_0  = 0 | 级别0。<br>**起始版本：** 17 |
+| MPEG4_LEVEL_0 = 0 | 级别0。<br>**起始版本：** 17 |
 | MPEG4_LEVEL_0B = 1 | 级别0B。<br>**起始版本：** 17 |
-| MPEG4_LEVEL_1  = 2 | 级别1。<br>**起始版本：** 17 |
-| MPEG4_LEVEL_2  = 3 | 级别2。<br>**起始版本：** 17 |
-| MPEG4_LEVEL_3  = 4 | 级别3。<br>**起始版本：** 17 |
+| MPEG4_LEVEL_1 = 2 | 级别1。<br>**起始版本：** 17 |
+| MPEG4_LEVEL_2 = 3 | 级别2。<br>**起始版本：** 17 |
+| MPEG4_LEVEL_3 = 4 | 级别3。<br>**起始版本：** 17 |
 | MPEG4_LEVEL_3B = 5 | 级别3B。<br>**起始版本：** 17 |
-| MPEG4_LEVEL_4  = 6 | 级别4。<br>**起始版本：** 17 |
+| MPEG4_LEVEL_4 = 6 | 级别4。<br>**起始版本：** 17 |
 | MPEG4_LEVEL_4A = 7 | 级别4A。<br>**起始版本：** 17 |
-| MPEG4_LEVEL_5  = 8 | 级别5。<br>**起始版本：** 17 |
-| MPEG4_LEVEL_6  = 9 | 级别6。<br>**起始版本：** 17 |
+| MPEG4_LEVEL_5 = 8 | 级别5。<br>**起始版本：** 17 |
+| MPEG4_LEVEL_6 = 9 | 级别6。<br>**起始版本：** 17 |
 
 ### OH_H263Level
 

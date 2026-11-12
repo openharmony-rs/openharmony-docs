@@ -1,7 +1,7 @@
 # Hid_RawDevInfo
 
 ```c
-struct Hid_RawDevInfo {...}
+typedef struct Hid_RawDevInfo {...} Hid_RawDevInfo
 ```
 
 ## 概述

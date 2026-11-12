@@ -14,7 +14,7 @@ The file declares the APIs related to media asset change requests. You can use t
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

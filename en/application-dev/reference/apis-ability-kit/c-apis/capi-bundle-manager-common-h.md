@@ -14,7 +14,7 @@ The file declares the error codes defined by BundleManager.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

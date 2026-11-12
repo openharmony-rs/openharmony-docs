@@ -14,7 +14,7 @@ Defines public data and constants.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | Description |
 | -- | -- |
@@ -24,7 +24,7 @@ Defines public data and constants.
 | [TEEC_ParamType](#teec_paramtype) | Defines the parameter types. |
 | [TEEC_LoginMethod](#teec_loginmethod) | Defines the login methods. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

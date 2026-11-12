@@ -14,19 +14,19 @@ Provides APIs and structs for accessing the **PreferencesOption** object.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) | OH_PreferencesOption | Defines a struct for **Preferences** configuration. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [Preferences_StorageType](#preferences_storagetype) | Preferences_StorageType | Enumerates the preferences storage types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

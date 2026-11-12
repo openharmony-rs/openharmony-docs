@@ -14,13 +14,13 @@ Provides APIs for cryptographic operations.<br> You can use these APIs to implem
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | Description |
 | -- | -- |
 | [CRYPTO_ENGINE](#crypto_engine) | Enumerates the types of the crypto engine. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

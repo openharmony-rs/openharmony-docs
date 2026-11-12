@@ -14,7 +14,7 @@ Provides the client application with the API for querying the OE Extension infor
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,14 +24,14 @@ Provides the client application with the API for querying the OE Extension infor
 | [ContentEmbed_Document](capi-contentembed-contentembed-document.md) | ContentEmbed_Document | Declares the structure type of an OE document. Encapsulates the metadata, content, and storage structure of the embedded document. |
 | [ContentEmbed_Capability](capi-contentembed-contentembed-capability.md) | ContentEmbed_Capability | Declares the ContentEmbed_Capability structure. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | MAX_NAME_LENGTH (1 * 1024) | Defines the maximum number of characters allowed in the name field in [ContentEmbed_Format](capi-contentembed-contentembed-format.md).<br>**Since**: 24 |
 | MAX_DESCRIPTION_LENGTH (1 * 1024) | Defines the maximum number of characters allowed in the description field in [ContentEmbed_Format](capi-contentembed-contentembed-format.md).<br>**Since**: 24 |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -326,7 +326,7 @@ Obtains the OEID of the [ContentEmbed_Format](capi-contentembed-contentembed-for
 | Parameter | Description |
 | -- | -- |
 | [const ContentEmbed_Format](capi-contentembed-contentembed-format.md) *format | Pointer to the [ContentEmbed_Format](capi-contentembed-contentembed-format.md) object. |
-| char *oeid | Output parameter. Character array for storing the identifier string of the OEID. The recommended array length is [MAX_OEID_LENGTH](capi-content-embed-common-h.md#宏定义). |
+| char *oeid | Output parameter. Character array for storing the identifier string of the OEID. The recommended array length is [MAX_OEID_LENGTH](capi-content-embed-common-h.md#macros). |
 
 **Returns**:
 
@@ -355,8 +355,8 @@ Obtains the localized display name and description from a [ContentEmbed_Format](
 | Parameter | Description |
 | -- | -- |
 | [const ContentEmbed_Format](capi-contentembed-contentembed-format.md) *format | Pointer to the [ContentEmbed_Format](capi-contentembed-contentembed-format.md) object. |
-| char *name | Output parameter. Character array for storing the name. The recommended array length is [MAX_NAME_LENGTH](capi-content-embed-proxy-h.md#宏定义). |
-| char *description | Output parameter. Character array for storing the description. The recommended array length is [MAX_DESCRIPTION_LENGTH](capi-content-embed-proxy-h.md#宏定义). |
+| char *name | Output parameter. Character array for storing the name. The recommended array length is [MAX_NAME_LENGTH](capi-content-embed-proxy-h.md#macros). |
+| char *description | Output parameter. Character array for storing the description. The recommended array length is [MAX_DESCRIPTION_LENGTH](capi-content-embed-proxy-h.md#macros). |
 
 **Returns**:
 

@@ -226,7 +226,10 @@ UI输入事件类型定义。
 
 | 枚举项 | 描述 |
 | -- | -- |
+| ARKUI_UIINPUTEVENT_TYPE_UNKNOWN = 0 |  |
+| ARKUI_UIINPUTEVENT_TYPE_TOUCH = 1 |  |
 | ARKUI_UIINPUTEVENT_TYPE_MOUSE = 3 | 鼠标事件。 |
+| ARKUI_UIINPUTEVENT_TYPE_AXIS = 2 |  |
 | ARKUI_UIINPUTEVENT_TYPE_KEY = 4 | 按键事件。<br>**起始版本：** 20 |
 | ARKUI_UIINPUTEVENT_TYPE_DIGITAL_CROWN = 5 | 表冠事件。<br>**起始版本：** 24 |
 
@@ -3207,7 +3210,7 @@ ArkUI_ErrorCode OH_ArkUI_PointerEvent_CreatePointerEvent(ArkUI_UIInputEvent** ev
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)** event | 指向新的ArkUI_UIInputEvent对象的指针。 |
-| [ArkUI_UIInputEvent_Type](capi-ui-input-event-h.md#arkui_uiinputevent_type) type | ArkUI_UIInputEvent的事件类型。支持取值ARKUI_UIINPUTEVENT_TYPE_TOUCH、ARKUI_UIINPUTEVENT_TYPE_AXIS和 [ARKUI_UIINPUTEVENT_TYPE_MOUSE](capi-ui-input-event-h.md#arkui_uiinputevent_type)。 |
+| [ArkUI_UIInputEvent_Type](capi-ui-input-event-h.md#arkui_uiinputevent_type) type | ArkUI_UIInputEvent的事件类型。支持取值[ARKUI_UIINPUTEVENT_TYPE_TOUCH](capi-ui-input-event-h.md#arkui_uiinputevent_type)、[ARKUI_UIINPUTEVENT_TYPE_AXIS](capi-ui-input-event-h.md#arkui_uiinputevent_type)和 [ARKUI_UIINPUTEVENT_TYPE_MOUSE](capi-ui-input-event-h.md#arkui_uiinputevent_type)。 |
 
 **返回值：**
 

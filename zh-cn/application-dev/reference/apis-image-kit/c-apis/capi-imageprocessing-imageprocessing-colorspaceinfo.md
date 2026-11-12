@@ -1,7 +1,7 @@
 # ImageProcessing_ColorSpaceInfo
 
 ```c
-struct ImageProcessing_ColorSpaceInfo {...}
+typedef struct ImageProcessing_ColorSpaceInfo {...} ImageProcessing_ColorSpaceInfo
 ```
 
 ## 概述

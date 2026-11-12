@@ -14,7 +14,7 @@ Defines C APIs for cellular data module.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

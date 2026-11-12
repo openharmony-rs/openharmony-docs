@@ -14,7 +14,7 @@ The file declares the native APIs provided by the OH_LowPowerAudioSink instance.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -14,14 +14,14 @@ Declare audio stream manager related interfaces.<br> This file interfaces are us
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AudioResourceManager](capi-ohaudio-oh-audioresourcemanager.md) | OH_AudioResourceManager | Declare the audio resource manager. Audio resource manager provides many functions for developer to manage system resources to avoid underrun or overrun in audio playback and recording. |
 | [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md) | OH_AudioWorkgroup | Declare the audio workgroup. The handle of audio workgroup is used for workgroup related functions. The system will manage cpu resources on a workgroup basis instead of thread. For parallel task threads, you can add them into one workgroup, and for asynchronous task threads, use one workgroup for each thread. There is an upper limit to the total number of workgroups for each process, so application should release the workgroup which is no longer in use. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

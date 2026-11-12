@@ -14,7 +14,7 @@ Declares the uniform data type information.
 
 ## Summary
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

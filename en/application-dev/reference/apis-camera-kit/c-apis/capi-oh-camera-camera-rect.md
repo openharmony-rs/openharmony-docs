@@ -1,7 +1,7 @@
 # Camera_Rect
 
 ```c
-struct Camera_Rect {...}
+typedef struct Camera_Rect {...} Camera_Rect
 ```
 
 ## Overview

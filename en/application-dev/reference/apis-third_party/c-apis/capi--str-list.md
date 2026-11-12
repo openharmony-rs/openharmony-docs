@@ -11,6 +11,6 @@
 | Name | Description |
 | -- | -- |
 | int sl_nmods |  |
-| struct str_mlist *sl_modlist |  |
+| [struct str_mlist](capi--str-mlist.md) *sl_modlist |  |
 
 

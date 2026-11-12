@@ -14,7 +14,7 @@ This file declares the functions related to the coordinate point in the drawing 
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -16,7 +16,7 @@ Defines enumerations related to **TextArea**. The **TextArea** component is used
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

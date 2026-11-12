@@ -1,7 +1,7 @@
 # OH_HiDebug_RequestTraceConfig
 
 ```c
-struct OH_HiDebug_RequestTraceConfig {...}
+typedef struct OH_HiDebug_RequestTraceConfig {...} OH_HiDebug_RequestTraceConfig
 ```
 
 ## Overview

@@ -1,7 +1,7 @@
 # OH_Camera_ZoomRange
 
 ```c
-struct OH_Camera_ZoomRange {...}
+typedef struct OH_Camera_ZoomRange {...} OH_Camera_ZoomRange
 ```
 
 ## 概述

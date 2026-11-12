@@ -16,7 +16,7 @@ Provides type definitions for <b>NativeNode</b> APIs.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -30,7 +30,7 @@ Provides type definitions for <b>NativeNode</b> APIs.
 | [ArkUI_NodeAdapterEvent](capi-arkui-nativemodule-arkui-nodeadapterevent.md) | ArkUI_NodeAdapterEvent | Defines a component adapter event object, used to pass information such as the event type, host node, and data item index in the event callback of the node adapter. |
 | [ArkUI_NodeContentEvent](capi-arkui-nativemodule-arkui-nodecontentevent.md) | ArkUI_NodeContentEvent | Defines a node content event. This is a general struct type. It is used as the event parameter of the node content event callback to obtain the event type and the node content object that triggers the event. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -43,14 +43,14 @@ Provides type definitions for <b>NativeNode</b> APIs.
 | [ArkUI_InspectorErrorCode](#arkui_inspectorerrorcode) | ArkUI_InspectorErrorCode | Enumerates inspector error codes. |
 | [OH_ArkUI_AdoptPolicy](#oh_arkui_adoptpolicy) | OH_ArkUI_AdoptPolicy | Enumerates the policy for adopting a child node. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | MAX_NODE_SCOPE_NUM 1000 | Define components max function size.<br>**Since**: 12 |
 | MAX_COMPONENT_EVENT_ARG_NUM 12 | Define component event max args size.<br>**Since**: 12 |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

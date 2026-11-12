@@ -1,7 +1,7 @@
 # OH_CloudDisk_FetchDataRequest
 
 ```c
-struct OH_CloudDisk_FetchDataRequest {...}
+typedef struct OH_CloudDisk_FetchDataRequest {...} OH_CloudDisk_FetchDataRequest
 ```
 
 ## 概述

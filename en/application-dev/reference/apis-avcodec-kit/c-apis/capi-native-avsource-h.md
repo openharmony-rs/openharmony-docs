@@ -14,13 +14,13 @@ The file declares the APIs for parsing audio and video media data.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVSource](capi-avsource-oh-avsource.md) | OH_AVSource | The struct describes a native object for the media resource interface. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

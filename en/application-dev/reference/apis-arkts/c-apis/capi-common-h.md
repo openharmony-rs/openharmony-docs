@@ -14,7 +14,7 @@ Defines common enum types of ArkTS native module.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -42,6 +42,10 @@ Defines common enum types of ArkTS native module.
 
 | Enum item | Description |
 | -- | -- |
+| napi_qos_background = 0 |  |
+| napi_qos_utility = 1 |  |
+| napi_qos_default = 2 |  |
+| napi_qos_user_initiated = 3 |  |
 
 ### napi_event_mode
 

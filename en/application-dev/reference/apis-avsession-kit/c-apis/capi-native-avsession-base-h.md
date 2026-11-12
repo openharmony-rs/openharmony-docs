@@ -14,7 +14,7 @@ Declare avsession base info.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

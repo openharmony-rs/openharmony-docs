@@ -14,14 +14,14 @@ The file declares the video output concepts.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) | - | The struct describes the callbacks related to video output. |
+| [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) | VideoOutput_Callbacks | The struct describes the callbacks related to video output. |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md) | Camera_VideoOutput | The struct describes the video output object. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

@@ -14,14 +14,14 @@ The file declares the basic dependencies for OH_LowPowerAudioSink and OH_LowPowe
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md) | OH_AVSamplesBuffer | The struct describes the input data of the LowPowerAVSink. After receiving the DataNeeded callback, the application must pack data into an OH_AVSamplesBuffer instance and pass it to the corresponding LowPowerAVSink. |
 | [OH_LowPowerAVSink_Capability](capi-avsinkbase-oh-lowpoweravsink-capability.md) | OH_LowPowerAVSink_Capability | Forward declaration of OH_LowPowerAVSink_Capability. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

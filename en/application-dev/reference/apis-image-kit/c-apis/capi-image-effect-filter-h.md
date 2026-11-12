@@ -14,7 +14,7 @@ Declares the functions for setting filter parameters, registering custom filter 
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -22,7 +22,7 @@ Declares the functions for setting filter parameters, registering custom filter 
 | [OH_EffectFilterInfo](capi-imageeffect-oh-effectfilterinfo.md) | OH_EffectFilterInfo | Define the new type name OH_EffectFilterInfo for struct OH_EffectFilterInfo |
 | [OH_EffectBufferInfo](capi-imageeffect-oh-effectbufferinfo.md) | OH_EffectBufferInfo | Define the new type name OH_EffectBufferInfo for struct OH_EffectBufferInfo |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -30,7 +30,7 @@ Declares the functions for setting filter parameters, registering custom filter 
 | [ImageEffect_Format](#imageeffect_format) | ImageEffect_Format | Enumerates the pixel format type |
 | [ImageEffect_BufferType](#imageeffect_buffertype) | ImageEffect_BufferType | Enumerates the effect buffer type |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -40,7 +40,7 @@ Declares the functions for setting filter parameters, registering custom filter 
 | OH_EFFECT_FILTER_INTENSITY_KEY "FilterIntensity" | Define the key that means intensity<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
 | OH_EFFECT_FILTER_REGION_KEY "FilterRegion" | Define the key that means region and matches the value ref to ImageEffect_Any contain the data type of [EFFECT_DATA_TYPE_PTR](capi-image-effect-filter-h.md#imageeffect_datatype) for ImageEffect_Region<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.ImageEffect.Core |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -1008,7 +1008,7 @@ Create an OH_EffectFilter instance. It should be noted that the life cycle of th
 
 | Parameter | Description |
 | -- | -- |
-| const char *name | Indicates the filter name. For example, see [OH_EFFECT_BRIGHTNESS_FILTER](capi-image-effect-filter-h.md#宏定义) |
+| const char *name | Indicates the filter name. For example, see [OH_EFFECT_BRIGHTNESS_FILTER](capi-image-effect-filter-h.md#macros) |
 
 **Returns**:
 
@@ -1037,7 +1037,7 @@ Set the filter parameter. It can be set multiple parameters by invoking this fun
 | Parameter | Description |
 | -- | -- |
 | [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | Encapsulate OH_EffectFilter structure instance pointer |
-| const char *key | Indicates the key of the filter. For example, see [OH_EFFECT_FILTER_INTENSITY_KEY](capi-image-effect-filter-h.md#宏定义) |
+| const char *key | Indicates the key of the filter. For example, see [OH_EFFECT_FILTER_INTENSITY_KEY](capi-image-effect-filter-h.md#macros) |
 | const ImageEffect_Any *value | Indicates the value corresponding to the key of the filter |
 
 **Returns**:

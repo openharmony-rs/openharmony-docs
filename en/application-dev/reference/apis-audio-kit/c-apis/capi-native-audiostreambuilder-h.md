@@ -14,7 +14,7 @@ Declare audio stream builder related interfaces.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -370,7 +370,7 @@ Set the callbacks for the renderer client
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | Reference provided by OH_AudioStreamBuilder_Create() |
-| OH_AudioRenderer_Callbacks callbacks | Callbacks to the functions that will process renderer stream. |
+| [OH_AudioRenderer_Callbacks](capi-ohaudio-oh-audiorenderer-callbacks-struct.md) callbacks | Callbacks to the functions that will process renderer stream. |
 | void* userData | Pointer to an application data structure that will be passed to the callback functions. |
 
 **Returns**:
@@ -463,7 +463,7 @@ Set the callbacks for the capturer client
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | Reference provided by OH_AudioStreamBuilder_Create() |
-| OH_AudioCapturer_Callbacks callbacks | Callbacks to the functions that will process capturer stream. |
+| [OH_AudioCapturer_Callbacks](capi-ohaudio-oh-audiocapturer-callbacks-struct.md) callbacks | Callbacks to the functions that will process capturer stream. |
 | void* userData | Pointer to an application data structure that will be passed to the callback functions. |
 
 **Returns**:

@@ -16,14 +16,14 @@ The **background_process_manager.h** file declares the APIs for background child
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [BackgroundProcessManager_ProcessPriority](#backgroundprocessmanager_processpriority) | BackgroundProcessManager_ProcessPriority | Enumerates child process priorities. |
 | [BackgroundProcessManager_ErrorCode](#backgroundprocessmanager_errorcode) | BackgroundProcessManager_ErrorCode | Enumerates the error codes used by the background child process management. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

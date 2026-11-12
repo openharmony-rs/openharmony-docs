@@ -40,8 +40,8 @@ i18n错误码
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SUCCESS = 0 | @error 成功 |
-| ERROR_INVALID_PARAMETER = 8900001 | @error 当接口传入非法的参数值时，系统会产生此错误码。 |
-| UNEXPECTED_ERROR = 8900050 | @error 预期之外的错误，例如内存错误 |
+| SUCCESS = 0 | &nbsp;成功 |
+| ERROR_INVALID_PARAMETER = 8900001 | &nbsp;当接口传入非法的参数值时，系统会产生此错误码。 |
+| UNEXPECTED_ERROR = 8900050 | &nbsp;预期之外的错误，例如内存错误 |
 
 

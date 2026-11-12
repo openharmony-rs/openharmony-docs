@@ -16,7 +16,7 @@ Provides APIs to obtain information about trusted devices and local devices.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

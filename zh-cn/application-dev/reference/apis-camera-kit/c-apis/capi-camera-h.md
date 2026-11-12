@@ -18,34 +18,34 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Camera_Size](capi-oh-camera-camera-size.md) | - | 大小参数。 |
-| [Camera_Profile](capi-oh-camera-camera-profile.md) | - | 相机流的配置文件。 |
-| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md) | - | 帧速率范围。 |
-| [Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md) | - | 录像配置文件。 |
-| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md) | - | 相机输出能力。 |
-| [Camera_Device](capi-oh-camera-camera-device.md) | - | 相机设备对象。 |
-| [Camera_StatusInfo](capi-oh-camera-camera-statusinfo.md) | - | 相机状态信息。 |
-| [Camera_Point](capi-oh-camera-camera-point.md) | - | 点参数。 |
-| [Camera_Location](capi-oh-camera-camera-location.md) | - | 拍照位置。 |
-| [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | - | 要设置的拍照捕获选项。 |
-| [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | - | 帧快门回调信息。 |
-| [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | - | 捕获结束信息。 |
-| [Camera_Rect](capi-oh-camera-camera-rect.md) | - | 相机矩形。用于各类检测对象的矩形框绘制。<br> 检测点坐标系以设备横向位置（充电口朝右）为基准。<br> 坐标系原点位于左上角 (0, 0)，右下角对应相机预览流的像素分辨率。<br> 所有参数均为整型像素值， 其中topLeftX与topLeftY表示矩形左上角坐标，width与height分别表示矩形的宽高。 |
-| [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md) | - | 元数据对象基础。 |
-| [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md) | - | 手电筒状态信息。 |
-| [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md) | - | 平滑变焦参数信息。 |
-| [Camera_CaptureStartInfo](capi-oh-camera-camera-capturestartinfo.md) | - | 拍照开始信息。 |
-| [Camera_FrameShutterEndInfo](capi-oh-camera-camera-frameshutterendinfo.md) | - | 拍照曝光结束信息。 |
-| [Camera_FoldStatusInfo](capi-oh-camera-camera-foldstatusinfo.md) | - | 折叠状态信息。 |
-| [Camera_AutoDeviceSwitchStatusInfo](capi-oh-camera-camera-autodeviceswitchstatusinfo.md) | - | 自动设备切换状态信息。 |
-| [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | - | 相机并发能力信息。 |
-| [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | - | 控制器效果激活状态信息。 |
-| [Camera_DeviceQueryInfo](capi-oh-camera-camera-devicequeryinfo.md) | - | 相机设备的查询信息。 |
-| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | - | 相机镜头遮挡、脏污检测结果。 |
-| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) | - | 变焦范围配置。 |
-| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | - | 物理光圈配置。 |
-| [OH_Camera_ZoomPointInfo](capi-oh-camera-oh-camera-zoompointinfo.md) | - | 描述变焦点信息。 |
-| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md) | - | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)，返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
+| [Camera_Size](capi-oh-camera-camera-size.md) | Camera_Size | 大小参数。 |
+| [Camera_Profile](capi-oh-camera-camera-profile.md) | Camera_Profile | 相机流的配置文件。 |
+| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md) | Camera_FrameRateRange | 帧速率范围。 |
+| [Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md) | Camera_VideoProfile | 录像配置文件。 |
+| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md) | Camera_OutputCapability | 相机输出能力。 |
+| [Camera_Device](capi-oh-camera-camera-device.md) | Camera_Device | 相机设备对象。 |
+| [Camera_StatusInfo](capi-oh-camera-camera-statusinfo.md) | Camera_StatusInfo | 相机状态信息。 |
+| [Camera_Point](capi-oh-camera-camera-point.md) | Camera_Point | 点参数。 |
+| [Camera_Location](capi-oh-camera-camera-location.md) | Camera_Location | 拍照位置。 |
+| [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | Camera_PhotoCaptureSetting | 要设置的拍照捕获选项。 |
+| [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | Camera_FrameShutterInfo | 帧快门回调信息。 |
+| [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | Camera_CaptureEndInfo | 捕获结束信息。 |
+| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | 相机矩形。用于各类检测对象的矩形框绘制。<br> 检测点坐标系以设备横向位置（充电口朝右）为基准。<br> 坐标系原点位于左上角 (0, 0)，右下角对应相机预览流的像素分辨率。<br> 所有参数均为整型像素值， 其中topLeftX与topLeftY表示矩形左上角坐标，width与height分别表示矩形的宽高。 |
+| [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md) | Camera_MetadataObject | 元数据对象基础。 |
+| [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md) | Camera_TorchStatusInfo | 手电筒状态信息。 |
+| [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md) | Camera_SmoothZoomInfo | 平滑变焦参数信息。 |
+| [Camera_CaptureStartInfo](capi-oh-camera-camera-capturestartinfo.md) | Camera_CaptureStartInfo | 拍照开始信息。 |
+| [Camera_FrameShutterEndInfo](capi-oh-camera-camera-frameshutterendinfo.md) | Camera_FrameShutterEndInfo | 拍照曝光结束信息。 |
+| [Camera_FoldStatusInfo](capi-oh-camera-camera-foldstatusinfo.md) | Camera_FoldStatusInfo | 折叠状态信息。 |
+| [Camera_AutoDeviceSwitchStatusInfo](capi-oh-camera-camera-autodeviceswitchstatusinfo.md) | Camera_AutoDeviceSwitchStatusInfo | 自动设备切换状态信息。 |
+| [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | Camera_ConcurrentInfo | 相机并发能力信息。 |
+| [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | Camera_ControlCenterStatusInfo | 控制器效果激活状态信息。 |
+| [Camera_DeviceQueryInfo](capi-oh-camera-camera-devicequeryinfo.md) | Camera_DeviceQueryInfo | 相机设备的查询信息。 |
+| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | Camera_OcclusionDetectionResult | 相机镜头遮挡、脏污检测结果。 |
+| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) | OH_Camera_ZoomRange | 变焦范围配置。 |
+| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | OH_Camera_PhysicalAperture | 物理光圈配置。 |
+| [OH_Camera_ZoomPointInfo](capi-oh-camera-oh-camera-zoompointinfo.md) | OH_Camera_ZoomPointInfo | 描述变焦点信息。 |
+| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md) | OH_Camera_Rect_Ext | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br> 例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)，返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
 | [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | 相机管理器对象。<br> 可以使用[OH_Camera_GetCameraManager](capi-camera-h.md#oh_camera_getcameramanager)方法创建指针。 |
 
 ### 枚举
@@ -815,7 +815,7 @@ enum Camera_ConcurrentType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CAMERA_CONCURRENT_TYPE_LIMITED_CAPABILITY  = 0 | 相机限制并发。 |
+| CAMERA_CONCURRENT_TYPE_LIMITED_CAPABILITY = 0 | 相机限制并发。 |
 | CAMERA_CONCURRENT_TYPE_FULL_CAPABILITY = 1 | 相机全量并发。 |
 
 ### Camera_SystemPressureLevel

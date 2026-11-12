@@ -14,7 +14,7 @@ The file declares the APIs related to moving photos. You can use the APIs to obt
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -16,13 +16,13 @@ Provides methods for creating, destroying, reading, and writing the text box con
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) | InputMethod_TextConfig | A struct that configures input behaviors of text boxes. It is used to pass core input rules to the input method framework for input behavior adaptation. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

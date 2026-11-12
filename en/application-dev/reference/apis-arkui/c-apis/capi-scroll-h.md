@@ -14,7 +14,7 @@ Defines the enumerations related to the **Scroll** component, such as the scroll
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

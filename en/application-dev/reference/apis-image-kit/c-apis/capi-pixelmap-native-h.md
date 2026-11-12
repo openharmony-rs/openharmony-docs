@@ -14,21 +14,21 @@ Declares the APIs that can access a pixel map.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) | - | Value for HDR_STATIC_METADATA. |
-| [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) | - | Value for HDR_DYNAMIC_METADATA. |
-| [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) | - | Value for HDR_GAINMAP_METADATA. |
-| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) | - | Value for HDR_METADATA_KEY. Corresponding relationship with HDR_METADATA_KEY. |
+| [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) | OH_Pixelmap_HdrStaticMetadata | Value for HDR_STATIC_METADATA. |
+| [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) | OH_Pixelmap_HdrDynamicMetadata | Value for HDR_DYNAMIC_METADATA. |
+| [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) | OH_Pixelmap_HdrGainmapMetadata | Value for HDR_GAINMAP_METADATA. |
+| [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) | OH_Pixelmap_HdrMetadataValue | Value for HDR_METADATA_KEY. Corresponding relationship with HDR_METADATA_KEY. |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) | - | Define a Pixelmap struct type, used for pixelmap pointer controls. |
 | [OH_NativeBuffer](capi-image-nativemodule-oh-nativebuffer.md) | - | Define a native buffer type, used for retrieving a native buffer. |
 | [OH_NativeColorSpaceManager](capi-image-nativemodule-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | Define a native ColorSpaceManager type, used for retrieving a native ColorSpaceManager. |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) | - | Defines the options used for creating a pixel map. |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) | - | Defines the pixel map information. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -38,7 +38,7 @@ Declares the APIs that can access a pixel map.
 | [OH_Pixelmap_HdrMetadataKey](#oh_pixelmap_hdrmetadatakey) | OH_Pixelmap_HdrMetadataKey | Enumerates the HDR metadata types that need to be stored in Pixelmap. |
 | [OH_Pixelmap_HdrMetadataType](#oh_pixelmap_hdrmetadatatype) | OH_Pixelmap_HdrMetadataType | Value for HDR_METADATA_TYPE. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

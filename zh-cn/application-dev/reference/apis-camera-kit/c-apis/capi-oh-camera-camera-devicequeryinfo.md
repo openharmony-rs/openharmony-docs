@@ -1,7 +1,7 @@
 # Camera_DeviceQueryInfo
 
 ```c
-struct Camera_DeviceQueryInfo {...}
+typedef struct Camera_DeviceQueryInfo {...} Camera_DeviceQueryInfo
 ```
 
 ## 概述
@@ -24,7 +24,7 @@ struct Camera_DeviceQueryInfo {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| Camera_Type* cameraType | 相机类型属性列表。 |
+| [Camera_Type](capi-camera-h.md#camera_type)* cameraType | 相机类型属性列表。 |
 | uint32_t cameraTypeSize | 相机类型属性列表的大小。 |
 | [Camera_Position](capi-camera-h.md#camera_position) cameraPosition | 相机位置属性。 |
 | [Camera_Connection](capi-camera-h.md#camera_connection) connectionType | 相机连接类型属性。 |

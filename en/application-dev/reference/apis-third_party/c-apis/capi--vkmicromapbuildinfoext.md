@@ -18,7 +18,7 @@
 | VkMicromapEXT dstMicromap |  |
 | uint32_t usageCountsCount |  |
 | [const VkMicromapUsageEXT*](capi--vkmicromapusageext.md) pUsageCounts |  |
-| const VkMicromapUsageEXT* const* ppUsageCounts |  |
+| const [VkMicromapUsageEXT](capi--vkmicromapusageext.md)* const* ppUsageCounts |  |
 | [VkDeviceOrHostAddressConstKHR](capi--vkdeviceorhostaddressconstkhr.md) data |  |
 | [VkDeviceOrHostAddressKHR](capi--vkdeviceorhostaddresskhr.md) scratchData |  |
 | [VkDeviceOrHostAddressConstKHR](capi--vkdeviceorhostaddressconstkhr.md) triangleArray |  |

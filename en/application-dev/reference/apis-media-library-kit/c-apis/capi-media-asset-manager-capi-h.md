@@ -14,7 +14,7 @@ The file declares the APIs of the media asset manager. You can use the functions
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

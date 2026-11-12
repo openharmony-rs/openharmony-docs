@@ -16,13 +16,13 @@ The file declares the APIs for image decoding.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_ImageSource_SVGResourceLimitLevel(System API)](#oh_imagesource_svgresourcelimitlevel) | OH_ImageSource_SVGResourceLimitLevel | Indicates the enumeration of SVG resource restriction levels. Higher levels allow fewer resources to be used when parsing and rendering SVG images. System resource limits are enforced regardless of the level specified.<br>**System API:** This is a system API. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

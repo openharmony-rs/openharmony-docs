@@ -1,7 +1,7 @@
 # VkSwapchainImageCreateInfoOHOS
 
 ```c
-struct VkSwapchainImageCreateInfoOHOS {...}
+typedef struct VkSwapchainImageCreateInfoOHOS {...} VkSwapchainImageCreateInfoOHOS
 ```
 
 ## Overview

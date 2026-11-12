@@ -14,7 +14,7 @@ Declare audio accessory input stream manager related interfaces.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

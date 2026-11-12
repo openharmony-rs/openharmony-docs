@@ -1,7 +1,7 @@
 # VkImportNativeBufferInfoOHOS
 
 ```c
-struct VkImportNativeBufferInfoOHOS {...}
+typedef struct VkImportNativeBufferInfoOHOS {...} VkImportNativeBufferInfoOHOS
 ```
 
 ## Overview

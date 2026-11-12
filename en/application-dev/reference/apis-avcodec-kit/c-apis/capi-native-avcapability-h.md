@@ -14,14 +14,14 @@ Declare the Native API used for querying encoding and decoding capabilities.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AVRange](capi-avcapability-oh-avrange.md) | - | Range contain min and max value |
+| [OH_AVRange](capi-avcapability-oh-avrange.md) | OH_AVRange | Range contain min and max value |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) | OH_AVCapability | Forward declaration of OH_AVCapability. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -29,7 +29,7 @@ Declare the Native API used for querying encoding and decoding capabilities.
 | [OH_AVCodecType](#oh_avcodectype) | OH_AVCodecType | The codec type |
 | [OH_AVCapabilityFeature](#oh_avcapabilityfeature) | OH_AVCapabilityFeature | The enum of optional features that can be used in specific codec seenarios. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -87,6 +87,8 @@ The codec category
 
 | Enum item | Description |
 | -- | -- |
+| HARDWARE = 0 |  |
+| SOFTWARE |  |
 
 ### OH_AVCodecType
 

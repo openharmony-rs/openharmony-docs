@@ -12,13 +12,13 @@ Provides the model file types and device types supported by MindSpore Lite.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [NNRTDeviceDesc](capi-mindspore-nnrtdevicedesc.md) | NNRTDeviceDesc | Defines the device descriptor of NNRT. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -30,7 +30,7 @@ Provides the model file types and device types supported by MindSpore Lite.
 | [OH_AI_OptimizationLevel](#oh_ai_optimizationlevel) | OH_AI_OptimizationLevel | optimization level for train model. |
 | [OH_AI_QuantizationType](#oh_ai_quantizationtype) | OH_AI_QuantizationType | quantization type |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

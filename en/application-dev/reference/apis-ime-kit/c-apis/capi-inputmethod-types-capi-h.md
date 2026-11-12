@@ -16,7 +16,7 @@ Defines the types related to the input method.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -31,7 +31,7 @@ Defines the types related to the input method.
 | [OH_InputMethod_UnderlineStyle](#oh_inputmethod_underlinestyle) | OH_InputMethod_UnderlineStyle | Pre-screen text underline style enumeration. |
 | [OH_InputMethod_InputCapabilityType](#oh_inputmethod_inputcapabilitytype) | OH_InputMethod_InputCapabilityType | Input capability type enumeration. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

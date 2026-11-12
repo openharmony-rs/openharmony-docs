@@ -25,6 +25,6 @@ typedef struct Print_PropertyList {...} Print_PropertyList
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t count | 属性数量。与list指向的属性数组实际元素数一致。 |
-| Print_Property *list | 指向属性数组的指针，用于存储打印机属性信息。须与count配合使用，数组长度由count指定。 |
+| [Print_Property](capi-print-print-property.md) *list | 指向属性数组的指针，用于存储打印机属性信息。须与count配合使用，数组长度由count指定。 |
 
 

@@ -16,16 +16,16 @@ Declare audio download manager related interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AudioSuite_DownloadStatusInfo(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) | - | Define download status information structure.<br>**System API:** This is a system API. |
-| [OH_AudioSuite_DownloadStatusInfoArray(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) | - | Define download status information array structure.<br>**System API:** This is a system API. |
-| [OH_AudioSuite_FeatureVersionInfo(System API)](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md) | - | Define feature version information structure.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_DownloadStatusInfo(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) | OH_AudioSuite_DownloadStatusInfo | Define download status information structure.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_DownloadStatusInfoArray(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) | OH_AudioSuite_DownloadStatusInfoArray | Define download status information array structure.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_FeatureVersionInfo(System API)](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md) | OH_AudioSuite_FeatureVersionInfo | Define feature version information structure.<br>**System API:** This is a system API. |
 | [OH_AudioSuite_DownloadManagerStruct(System API)](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) | OH_AudioSuite_DownloadManager | Declare the audio download manager. The handle of audio download manager is used for download related functions.<br>**System API:** This is a system API. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

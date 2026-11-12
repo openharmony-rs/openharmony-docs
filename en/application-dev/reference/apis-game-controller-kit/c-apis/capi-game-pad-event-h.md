@@ -14,7 +14,7 @@ Defines APIs for gamepad events.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -22,14 +22,14 @@ Defines APIs for gamepad events.
 | [GamePad_AxisEvent](capi-gamecontroller-gamepad-axisevent.md) | GamePad_AxisEvent | Defines gamepad axis events. |
 | [GamePad_PressedButton](capi-gamecontroller-gamepad-pressedbutton.md) | GamePad_PressedButton | Defines pressed buttons. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [GamePad_AxisSourceType](#gamepad_axissourcetype) | GamePad_AxisSourceType | Defines source types of gamepad axis events. |
 | [GamePad_Button_ActionType](#gamepad_button_actiontype) | GamePad_Button_ActionType | Defines action types of gamepad button events. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

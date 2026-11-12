@@ -14,7 +14,7 @@ Provides C APIs for the Ethernet NIC module.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

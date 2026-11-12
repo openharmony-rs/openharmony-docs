@@ -16,20 +16,20 @@ Defines the key derivation interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_CryptoKdf](capi-cryptokdfapi-oh-cryptokdf.md) | OH_CryptoKdf | KDF structure, representing a KDF context. |
 | [OH_CryptoKdfParams](capi-cryptokdfapi-oh-cryptokdfparams.md) | OH_CryptoKdfParams | KDF parameters structure, representing KDF parameters. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [CryptoKdf_ParamType](#cryptokdf_paramtype) | CryptoKdf_ParamType | Defines KDF parameter types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

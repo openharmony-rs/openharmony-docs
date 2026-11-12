@@ -20,9 +20,9 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) | 定义OH_AVCodec的缓冲区描述信息。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) | OH_AVCodecBufferAttr | 定义OH_AVCodec的缓冲区描述信息。 |
 
 ### 枚举
 

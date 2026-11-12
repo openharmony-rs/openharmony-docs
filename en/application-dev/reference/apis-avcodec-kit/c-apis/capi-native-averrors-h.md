@@ -14,7 +14,7 @@ The file declares the error codes used by the media framework.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

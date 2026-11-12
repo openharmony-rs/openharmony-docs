@@ -56,12 +56,12 @@ enum Telephony_RadioResult
 
 | 枚举项 | 描述 |
 | -- | -- |
-| TEL_RADIO_SUCCESS = 0 | @error success |
-| TEL_RADIO_PERMISSION_DENIED = 201 | @error permission denied |
-| TEL_RADIO_ERR_INVALID_PARAM = 401 | @error invalid parameter |
-| TEL_RADIO_ERR_MARSHALLING_FAILED = 8300001 | @error marshalling failed, this is a low probability error, try again later when get this error |
-| TEL_RADIO_ERR_SERVICE_CONNECTION_FAILED = 8300002 | @error unable to connect to telephony service, try again later when get this error |
-| TEL_RADIO_ERR_OPERATION_FAILED = 8300003 | @error operation failed in telephony service, try again later when get this error |
+| TEL_RADIO_SUCCESS = 0 | &nbsp;success |
+| TEL_RADIO_PERMISSION_DENIED = 201 | &nbsp;permission denied |
+| TEL_RADIO_ERR_INVALID_PARAM = 401 | &nbsp;invalid parameter |
+| TEL_RADIO_ERR_MARSHALLING_FAILED = 8300001 | &nbsp;marshalling failed, this is a low probability error, try again later when get this error |
+| TEL_RADIO_ERR_SERVICE_CONNECTION_FAILED = 8300002 | &nbsp;unable to connect to telephony service, try again later when get this error |
+| TEL_RADIO_ERR_OPERATION_FAILED = 8300003 | &nbsp;operation failed in telephony service, try again later when get this error |
 
 ### Telephony_RegState
 

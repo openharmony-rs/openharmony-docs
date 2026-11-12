@@ -14,20 +14,20 @@ Declares the battery APIs that are used to obtain the current battery capacity a
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [BatteryInfo_BatteryPluggedType](#batteryinfo_batterypluggedtype) | BatteryInfo_BatteryPluggedType | Enumerates the battery plugged types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
 | [int32_t OH_BatteryInfo_GetCapacity()](#oh_batteryinfo_getcapacity) | Obtains the current battery capacity in percent. |
 | [BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()](#oh_batteryinfo_getpluggedtype) | Obtains the battery plugged type. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

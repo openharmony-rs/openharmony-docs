@@ -1,7 +1,7 @@
 # OH_AudioSuite_FeatureVersionInfo（系统接口）
 
 ```c
-struct OH_AudioSuite_FeatureVersionInfo {...}
+typedef struct OH_AudioSuite_FeatureVersionInfo {...} OH_AudioSuite_FeatureVersionInfo
 ```
 
 ## 概述

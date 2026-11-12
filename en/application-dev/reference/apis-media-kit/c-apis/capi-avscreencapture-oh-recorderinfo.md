@@ -1,7 +1,7 @@
 # OH_RecorderInfo
 
 ```c
-struct OH_RecorderInfo {...}
+typedef struct OH_RecorderInfo {...} OH_RecorderInfo
 ```
 
 ## Overview

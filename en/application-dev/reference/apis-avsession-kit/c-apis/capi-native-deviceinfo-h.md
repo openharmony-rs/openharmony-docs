@@ -14,14 +14,14 @@ Declare device info interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) | - | Declaring the target Device Information. |
+| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) | AVSession_OutputDeviceInfo | Declaring the target Device Information. |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) | AVSession_DeviceInfo | Declaring the device information. The instance is used to get more device information detail attributes. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

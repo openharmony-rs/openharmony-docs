@@ -1,7 +1,7 @@
 # DRM_OfflineMediakeyIdArray
 
 ```c
-struct DRM_OfflineMediakeyIdArray {...}
+typedef struct DRM_OfflineMediakeyIdArray {...} DRM_OfflineMediakeyIdArray
 ```
 
 ## 概述

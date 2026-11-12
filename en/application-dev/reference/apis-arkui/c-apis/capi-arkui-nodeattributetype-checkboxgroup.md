@@ -13,7 +13,7 @@ Enumerates the attribute types that can be set by ArkUI on the native side.
 ### NODE_CHECKBOX_GROUP_NAME
 
 ```c
-NODE_CHECKBOX_GROUP_NAME  = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CHECKBOX_GROUP
+NODE_CHECKBOX_GROUP_NAME = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CHECKBOX_GROUP
 ```
 
 **Description**

@@ -16,7 +16,7 @@ The file declares the native APIs used for audio encoding.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

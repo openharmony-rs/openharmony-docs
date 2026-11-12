@@ -1,7 +1,7 @@
 # Rdb_ProgressDetails
 
 ```c
-struct Rdb_ProgressDetails {...}
+typedef struct Rdb_ProgressDetails {...} Rdb_ProgressDetails
 ```
 
 ## 概述

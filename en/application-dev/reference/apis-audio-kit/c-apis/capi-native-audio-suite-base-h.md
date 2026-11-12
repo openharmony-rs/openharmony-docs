@@ -14,23 +14,23 @@ Declare underlying data structure.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md) | - | Define the audio format info structure, used to describe basic audio format. |
-| [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md) | - | Define the audio data array structure. This structure is used to get the processed audio data after acquisition processing during multi-channel rendering. |
-| [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) | - | Specify equalizer frequency band gains. |
-| [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md) | - | Definition of the parameter structure for fixed position mode in 3D spatial rendering. Left-hand coordinate system: Extend your left hand, forming an "L" shape with your thumb and index finger. Point the thumb to the right, the index finger upward, and the remaining fingers forward. This establishes a left-hand coordinate system. In this system, the thumb, index finger, and other fingers represent the positive directions of the x, y, and z axes, respectively. |
-| [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md) | - | Space rendering dynamic mode parameters. |
-| [OH_AudioSuite_SpaceRenderExtensionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md) | - | Space rendering extension mode parameters. |
-| [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md) | - | Define change voice option. |
+| [OH_AudioFormat](capi-ohaudiosuite-oh-audioformat.md) | OH_AudioFormat | Define the audio format info structure, used to describe basic audio format. |
+| [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md) | OH_AudioDataArray | Define the audio data array structure. This structure is used to get the processed audio data after acquisition processing during multi-channel rendering. |
+| [OH_EqualizerFrequencyBandGains](capi-ohaudiosuite-oh-equalizerfrequencybandgains.md) | OH_EqualizerFrequencyBandGains | Specify equalizer frequency band gains. |
+| [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md) | OH_AudioSuite_SpaceRenderPositionParams | Definition of the parameter structure for fixed position mode in 3D spatial rendering. Left-hand coordinate system: Extend your left hand, forming an "L" shape with your thumb and index finger. Point the thumb to the right, the index finger upward, and the remaining fingers forward. This establishes a left-hand coordinate system. In this system, the thumb, index finger, and other fingers represent the positive directions of the x, y, and z axes, respectively. |
+| [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md) | OH_AudioSuite_SpaceRenderRotationParams | Space rendering dynamic mode parameters. |
+| [OH_AudioSuite_SpaceRenderExtensionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md) | OH_AudioSuite_SpaceRenderExtensionParams | Space rendering extension mode parameters. |
+| [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md) | OH_AudioSuite_PureVoiceChangeOption | Define change voice option. |
 | [OH_AudioSuiteEngineStruct](capi-ohaudiosuite-oh-audiosuiteenginestruct.md) | OH_AudioSuiteEngine | Declare the audio engine. The handle of audio suite engine is used for audio suite engine related functions. |
 | [OH_AudioSuitePipelineStruct](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md) | OH_AudioSuitePipeline | Declare the audio pipeline. The handle of audio suite pipeline is used for audio pipeline related functions. |
 | [OH_AudioNodeStruct](capi-ohaudiosuite-oh-audionodestruct.md) | OH_AudioNode | Declare the audio node. The handle of audio suite node is used for audio suite node related functions. |
 | [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md) | OH_AudioNodeBuilder | Declare the audio node builder. The handle of audio node builder is used for audio node create. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -49,14 +49,14 @@ Declare underlying data structure.
 | [OH_AudioSuite_PureVoiceChangeType](#oh_audiosuite_purevoicechangetype) | OH_AudioSuite_PureVoiceChangeType | Define voice type in change voice option |
 | [OH_AudioSuite_GeneralVoiceChangeType](#oh_audiosuite_generalvoicechangetype) | OH_AudioSuite_GeneralVoiceChangeType | Define voice type in general voice change. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | EQUALIZER_BAND_NUM (10) | Define the number of equalizer frequency bands<br>**Since**: 22 |
 | OH_PURE_VOICE_DEFAULT_PITCH (0.0f) | Use system recommended pitch. Use in [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md).<br>**Since**: 23 |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

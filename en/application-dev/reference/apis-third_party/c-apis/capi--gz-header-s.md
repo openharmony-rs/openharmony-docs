@@ -22,7 +22,7 @@
 | uInt comm_max | pointer to zero-terminated comment or Z_NULL |
 | int hcrc | space at comment (only when reading header) |
 | int done | true if there was or will be a header crc |
-| [](capi--z-stream-s.md) | true when done reading gzip header (not used when writing a gzip file) |
+| [](capi--gzfile-s.md) | true when done reading gzip header (not used when writing a gzip file) |
 | int text |  |
 
 

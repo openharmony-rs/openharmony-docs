@@ -14,25 +14,25 @@ This file declares the functions related to typography in the drawing module.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_PlaceholderSpan](capi-drawing-oh-drawing-placeholderspan.md) | OH_Drawing_PlaceholderSpan | This struct describes the placeholder that acts as a span. |
-| [OH_Drawing_FontFallbackInfo](capi-drawing-oh-drawing-fontfallbackinfo.md) | - | This struct describes the information about a font fallback. |
-| [OH_Drawing_FontFallbackGroup](capi-drawing-oh-drawing-fontfallbackgroup.md) | - | This struct describes the information about a font fallback group. |
-| [OH_Drawing_FontAdjustInfo](capi-drawing-oh-drawing-fontadjustinfo.md) | - | This struct describes the information about a font weight mapping. |
-| [OH_Drawing_FontAliasInfo](capi-drawing-oh-drawing-fontaliasinfo.md) | - | This struct describes the information about a font alias. |
-| [OH_Drawing_FontGenericInfo](capi-drawing-oh-drawing-fontgenericinfo.md) | - | This struct describes the information about generic fonts supported by the system. |
-| [OH_Drawing_FontConfigInfo](capi-drawing-oh-drawing-fontconfiginfo.md) | - | This struct describes the information about a system font configuration. |
-| [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) | - | This struct describes the detailed information about a system font. |
-| [OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md) | - | This struct describes the measurement information about a line of text. |
-| [OH_Drawing_FontStyleStruct](capi-drawing-oh-drawing-fontstylestruct.md) | - | This struct describes a font style. |
+| [OH_Drawing_FontFallbackInfo](capi-drawing-oh-drawing-fontfallbackinfo.md) | OH_Drawing_FontFallbackInfo | This struct describes the information about a font fallback. |
+| [OH_Drawing_FontFallbackGroup](capi-drawing-oh-drawing-fontfallbackgroup.md) | OH_Drawing_FontFallbackGroup | This struct describes the information about a font fallback group. |
+| [OH_Drawing_FontAdjustInfo](capi-drawing-oh-drawing-fontadjustinfo.md) | OH_Drawing_FontAdjustInfo | This struct describes the information about a font weight mapping. |
+| [OH_Drawing_FontAliasInfo](capi-drawing-oh-drawing-fontaliasinfo.md) | OH_Drawing_FontAliasInfo | This struct describes the information about a font alias. |
+| [OH_Drawing_FontGenericInfo](capi-drawing-oh-drawing-fontgenericinfo.md) | OH_Drawing_FontGenericInfo | This struct describes the information about generic fonts supported by the system. |
+| [OH_Drawing_FontConfigInfo](capi-drawing-oh-drawing-fontconfiginfo.md) | OH_Drawing_FontConfigInfo | This struct describes the information about a system font configuration. |
+| [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) | OH_Drawing_FontDescriptor | This struct describes the detailed information about a system font. |
+| [OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md) | OH_Drawing_LineMetrics | This struct describes the measurement information about a line of text. |
+| [OH_Drawing_FontStyleStruct](capi-drawing-oh-drawing-fontstylestruct.md) | OH_Drawing_FontStyleStruct | This struct describes a font style. |
 | [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md) | OH_Drawing_FontFeature | This struct describes a font feature. |
 | [OH_Drawing_StrutStyle](capi-drawing-oh-drawing-strutstyle.md) | OH_Drawing_StrutStyle | This struct describes a strut style. The strut style determines the line spacing, baseline alignment mode, and other properties related to the line height when drawing text. |
-| [OH_Drawing_RectSize](capi-drawing-oh-drawing-rectsize.md) | - | Defines a text rectangle structure. |
+| [OH_Drawing_RectSize](capi-drawing-oh-drawing-rectsize.md) | OH_Drawing_RectSize | Defines a text rectangle structure. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -60,7 +60,7 @@ This file declares the functions related to typography in the drawing module.
 | [OH_Drawing_TextBadgeType](#oh_drawing_textbadgetype) | OH_Drawing_TextBadgeType | Enumerates the text badge styles. |
 | [OH_Drawing_TextVerticalAlignment](#oh_drawing_textverticalalignment) | OH_Drawing_TextVerticalAlignment | Enumerates the vertical alignment modes. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

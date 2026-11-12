@@ -1,7 +1,7 @@
 # NetConn_TraceRouteOption
 
 ```c
-struct NetConn_TraceRouteOption {...}
+typedef struct NetConn_TraceRouteOption {...} NetConn_TraceRouteOption
 ```
 
 ## 概述

@@ -1,7 +1,7 @@
 # Camera_Point
 
 ```c
-struct Camera_Point {...}
+typedef struct Camera_Point {...} Camera_Point
 ```
 
 ## 概述

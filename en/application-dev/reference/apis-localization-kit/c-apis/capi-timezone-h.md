@@ -14,31 +14,31 @@ Provides the capability of obtaining time zone information.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [DateTimeRule](capi-i18n-datetimerule.md) | Defines the date and time rules to specify a date and time. |
-| [InitialTimeZoneRule](capi-i18n-initialtimezonerule.md) | Defines the initial rule of a timezone which has no clear start time. |
-| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md) | Defines time zone rule defined by the start timestamp array. |
-| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md) | Defines the time zone rule that takes effect annually. |
-| [TimeZoneRules](capi-i18n-timezonerules.md) | A complete time zone rule includes the start time zone rule, time zone rule defined by the start timestamp array, and time zone rule that takes effect every year. It can comprehensively describe both the historical and future rules of a time zone. |
-| [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md) | Used to input the query information and receive the query result. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [DateTimeRule](capi-i18n-datetimerule.md) | DateTimeRule | Defines the date and time rules to specify a date and time. |
+| [InitialTimeZoneRule](capi-i18n-initialtimezonerule.md) | InitialTimeZoneRule | Defines the initial rule of a timezone which has no clear start time. |
+| [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md) | TimeArrayTimeZoneRule | Defines time zone rule defined by the start timestamp array. |
+| [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md) | AnnualTimeZoneRule | Defines the time zone rule that takes effect annually. |
+| [TimeZoneRules](capi-i18n-timezonerules.md) | TimeZoneRules | A complete time zone rule includes the start time zone rule, time zone rule defined by the start timestamp array, and time zone rule that takes effect every year. It can comprehensively describe both the historical and future rules of a time zone. |
+| [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md) | TimeZoneRuleQuery | Used to input the query information and receive the query result. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [DateRuleType](#dateruletype) | DateRuleType | Enumerates the types of rules for defining dates. |
 | [TimeRuleType](#timeruletype) | TimeRuleType | Enumerates the types of rules for defining time. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | MAX_YEAR_IN_ANNUAL_TIMEZONE_RULE 0x7fffffff | Indicates the maximum year when the rule takes effective in AnnualTimeZoneRule.<br>**Since**: 22 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

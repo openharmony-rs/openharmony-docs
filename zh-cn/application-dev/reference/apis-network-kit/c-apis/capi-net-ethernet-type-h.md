@@ -16,17 +16,17 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [Ethernet_MacAddressInfo](capi-netethernet-ethernet-macaddressinfo.md) | 以太网网卡MAC地址信息。 |
-| [Ethernet_MacAddrInfoList](capi-netethernet-ethernet-macaddrinfolist.md) | 以太网网卡MAC地址信息列表。 |
-| [Ethernet_NetAddr](capi-netethernet-ethernet-netaddr.md) | 网络地址。 |
-| [Ethernet_NetAddrInfo](capi-netethernet-ethernet-netaddrinfo.md) | 以太网网卡网络地址信息，包含以太网网卡名称及网络地址信息。 |
-| [Ethernet_NetAddrList](capi-netethernet-ethernet-netaddrlist.md) | 以太网网卡网络地址列表。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [Ethernet_MacAddressInfo](capi-netethernet-ethernet-macaddressinfo.md) | Ethernet_MacAddressInfo | 以太网网卡MAC地址信息。 |
+| [Ethernet_MacAddrInfoList](capi-netethernet-ethernet-macaddrinfolist.md) | Ethernet_MacAddrInfoList | 以太网网卡MAC地址信息列表。 |
+| [Ethernet_NetAddr](capi-netethernet-ethernet-netaddr.md) | Ethernet_NetAddr | 网络地址。 |
+| [Ethernet_NetAddrInfo](capi-netethernet-ethernet-netaddrinfo.md) | Ethernet_NetAddrInfo | 以太网网卡网络地址信息，包含以太网网卡名称及网络地址信息。 |
+| [Ethernet_NetAddrList](capi-netethernet-ethernet-netaddrlist.md) | Ethernet_NetAddrList | 以太网网卡网络地址列表。 |
 
 ### 宏定义
 
 | 名称 | 描述 |
 | -- | -- |
-| ETHERNET_MAX_NET_SIZE 32 |  |
+| ETHERNET_MAX_NET_SIZE 32 | **起始版本：** 26.0.0 |
 

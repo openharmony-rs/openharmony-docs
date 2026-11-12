@@ -16,7 +16,7 @@ Provides methods for binding and unbinding input methods.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

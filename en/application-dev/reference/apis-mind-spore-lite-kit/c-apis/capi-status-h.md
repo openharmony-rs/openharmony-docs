@@ -12,14 +12,14 @@ Provides the status codes of MindSpore Lite.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AI_CompCode](#oh_ai_compcode) | - | Defines the component code enumeration for MindSpore Lite.<br> Used to identify the component module to which a status code belongs. Each status code contains a component code part. Component codes are used to distinguish error codes from different modules. |
 | [OH_AI_Status](#oh_ai_status) | OH_AI_Status | Defines the status code enumeration for MindSpore Lite.<br> Used to indicate the return status of MindSpore Lite API calls, including success and various error conditions. Status codes are divided into different ranges, each corresponding to a specific type of error or status. Common error code ranges: (-100,-1] for general errors, (-200,-100] for executor errors, (-300,-200] for graph errors, (-400,-300] for operator errors, (-500,-400] for tensor errors, (-600,-500] for shape inference errors, (-700,-600] for user input parameter errors, (-800,-700] for AIPP module errors. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -77,17 +77,17 @@ Defines the status code enumeration for MindSpore Lite.<br> Used to indicate the
 | OH_AI_STATUS_LITE_THREADPOOL_ERROR = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -8) | Error occurred in thread pool. |
 | OH_AI_STATUS_LITE_UNINITIALIZED_OBJ = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -9) | Object is not initialized. |
 | OH_AI_STATUS_LITE_OUT_OF_TENSOR_RANGE = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -100) | Failed to check tensor range. |
-| OH_AI_STATUS_LITE_INPUT_TENSOR_ERROR = | Failed to check input tensor. |
+| OH_AI_STATUS_LITE_INPUT_TENSOR_ERROR = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -101) | Failed to check input tensor. |
 | OH_AI_STATUS_LITE_REENTRANT_ERROR = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -102) | Executor is already running. |
 | OH_AI_STATUS_LITE_GRAPH_FILE_ERROR = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -200) | Failed to verify graph file. |
 | OH_AI_STATUS_LITE_NOT_FIND_OP = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -300) | Failed to find operator. |
 | OH_AI_STATUS_LITE_INVALID_OP_NAME = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -301) | Invalid operator name. |
 | OH_AI_STATUS_LITE_INVALID_OP_ATTR = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -302) | Invalid operator attribute. |
-| OH_AI_STATUS_LITE_OP_EXECUTE_FAILURE = | Failed to execute operator. |
+| OH_AI_STATUS_LITE_OP_EXECUTE_FAILURE = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -303) | Failed to execute operator. |
 | OH_AI_STATUS_LITE_FORMAT_ERROR = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -400) | Failed to check tensor format. |
 | OH_AI_STATUS_LITE_INFER_ERROR = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -500) | Failed to infer shape. |
-| OH_AI_STATUS_LITE_INFER_INVALID = | Invalid shape inference before runtime. |
-| OH_AI_STATUS_LITE_INPUT_PARAM_INVALID = | Invalid input parameter from user. |
+| OH_AI_STATUS_LITE_INFER_INVALID = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -501) | Invalid shape inference before runtime. |
+| OH_AI_STATUS_LITE_INPUT_PARAM_INVALID = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -600) | Invalid input parameter from user. |
 | OH_AI_STATUS_LITE_AIPP_NOT_SUPPORTED = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -700) | AIPP is not supported.<br>**Since**: 23 |
 | OH_AI_STATUS_LITE_AIPP_INFER_ERROR = OH_AI_COMPCODE_LITE \| (0x0FFFFFFF & -701) | Failed to infer with AIPP.<br>**Since**: 23 |
 

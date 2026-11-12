@@ -14,16 +14,16 @@ The file declares the photo output concepts.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) | - | The struct describes the callbacks related to photo output. |
+| [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) | PhotoOutput_Callbacks | The struct describes the callbacks related to photo output. |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md) | Camera_PhotoOutput | The struct describes the photo output object. |
 | [OH_Camera_C2PASignatureConfig](capi-oh-camera-oh-camera-c2pasignatureconfig.md) | OH_Camera_C2PASignatureConfig | Defines the C2PA signature configuration. |
 | [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-oh-camera-photocapturesettingext.md) | OH_Camera_PhotoCaptureSettingExt | The struct describes the photo capture setting ext. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

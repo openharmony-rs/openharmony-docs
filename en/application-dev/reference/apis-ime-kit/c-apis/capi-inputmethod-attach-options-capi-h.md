@@ -16,13 +16,13 @@ Provides methods for creating, destroying, reading, and writing input method att
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) | InputMethod_AttachOptions | Options for binding the input method. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -14,14 +14,14 @@ Define interfaces for querying bluetooth switch status.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [Bluetooth_SwitchState](#bluetooth_switchstate) | Bluetooth_SwitchState | Enumeration state of bluetooth switch. |
 | [Bluetooth_ResultCode](#bluetooth_resultcode) | Bluetooth_ResultCode | Enumeration the bluetooth result codes. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

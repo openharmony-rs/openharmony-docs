@@ -14,7 +14,7 @@ Provides the capabilities to operate on rawfiles, including reading files, obtai
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -23,13 +23,13 @@ Provides the capabilities to operate on rawfiles, including reading files, obtai
 | [RawFile](capi-rawfile-rawfile.md) | RawFile | `RawFile` represents an opened rawfile object. It is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile), and must be closed and released through [OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile) after use. |
 | [RawFile64](capi-rawfile-rawfile64.md) | RawFile64 | `RawFile64` represents an opened rawfile object, which is used for accessing large files of 2 GB and above. It is obtained through [OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64), and must be closed and released through [OH_ResourceManager_CloseRawFile64](capi-raw-file-h.md#oh_resourcemanager_closerawfile64) after use. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | GLOBAL_RAW_FILE_H | Provides the capabilities to operate on rawfiles, including reading files, obtaining the file length, obtaining the current offset, seeking to a specific position, obtaining the file descriptor, and closing the file descriptor.<br>**Since**: 8<br>**System capability**: SystemCapability.Global.ResourceManager |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

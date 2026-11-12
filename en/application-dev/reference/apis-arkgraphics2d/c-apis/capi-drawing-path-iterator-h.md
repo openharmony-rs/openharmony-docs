@@ -14,13 +14,13 @@ This file declares the functions related to the path operation iterator object.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_PathIteratorVerb](#oh_drawing_pathiteratorverb) | OH_Drawing_PathIteratorVerb | Enumerates the path operation types contained in an iterator. It is used to read path operation instructions. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

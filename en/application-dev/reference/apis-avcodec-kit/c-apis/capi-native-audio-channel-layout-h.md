@@ -16,7 +16,7 @@ The file declares the functions related to the speaker layout during recording a
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -169,6 +169,6 @@ Enumerates the layouts of audio channels.<br> Int64 integers are used to indicat
 | CH_LAYOUT_AMB_ORDER3_ACN_N3D = AMB_MODE \| AMB_ORD_3 \| AMB_COM_ACN \| AMB_NOR_N3D | Third-order HOA layout in ACN_N3D (ITU standards); 16 audio channels in total.<br>**Since**: 11 |
 | CH_LAYOUT_AMB_ORDER3_ACN_SN3D = AMB_MODE \| AMB_ORD_3 \| AMB_COM_ACN \| AMB_NOR_SN3D | Third-order HOA layout in ACN_SN3D (ITU standards); 16 audio channels in total.<br>**Since**: 11 |
 | CH_LAYOUT_AMB_ORDER3_FUMA = AMB_MODE \| AMB_ORD_3 \| AMB_COM_FUMA | Third-order HOA layout in FUMA (ITU standards); 16 audio channels in total.<br>**Since**: 11 |
-| CH_LAYOUT_22POINT2 = CH_LAYOUT_7POINT1POINT4 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER \| CH_SET_BACK_CENTER \| CH_SET_TOP_CENTER \| CH_SET_TOP_FRONT_CENTER \| CH_SET_TOP_BACK_CENTER \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT \| CH_SET_BOTTOM_FRONT_LEFT \| CH_SET_BOTTOM_FRONT_RIGHT \| CH_SET_BOTTOM_FRONT_CENTER \| CH_SET_LOW_FREQUENCY_2 } OH_AudioChannelLayout; | 22.2 layout; 24 audio channels in total.<br>**Since**: 11 |
+| CH_LAYOUT_22POINT2 = CH_LAYOUT_7POINT1POINT4 \| CH_SET_FRONT_LEFT_OF_CENTER \| CH_SET_FRONT_RIGHT_OF_CENTER \| CH_SET_BACK_CENTER \| CH_SET_TOP_CENTER \| CH_SET_TOP_FRONT_CENTER \| CH_SET_TOP_BACK_CENTER \| CH_SET_TOP_SIDE_LEFT \| CH_SET_TOP_SIDE_RIGHT \| CH_SET_BOTTOM_FRONT_LEFT \| CH_SET_BOTTOM_FRONT_RIGHT \| CH_SET_BOTTOM_FRONT_CENTER \| CH_SET_LOW_FREQUENCY_2 | 22.2 layout; 24 audio channels in total.<br>**Since**: 11 |
 
 

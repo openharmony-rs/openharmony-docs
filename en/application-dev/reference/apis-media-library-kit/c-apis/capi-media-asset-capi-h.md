@@ -14,7 +14,7 @@ The file declares the APIs related to media assets. You can use the APIs to obta
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

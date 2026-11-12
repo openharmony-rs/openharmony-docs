@@ -1,7 +1,7 @@
 # OH_TrafficFilter_PacketDesc
 
 ```c
-struct OH_TrafficFilter_PacketDesc {...}
+typedef struct OH_TrafficFilter_PacketDesc {...} OH_TrafficFilter_PacketDesc
 ```
 
 ## 概述

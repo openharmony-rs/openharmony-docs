@@ -1,7 +1,7 @@
 # OH_Rect
 
 ```c
-struct OH_Rect {...}
+typedef struct OH_Rect {...} OH_Rect
 ```
 
 ## Overview

@@ -14,31 +14,31 @@ This file defines the APIs for the cloud disk management module.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) | - | A struct that encapsulates the file path information. |
-| [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md) | - | A struct that encapsulates the file sync state. |
-| [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md) | - | A struct that encapsulates the event data generated when a single file under the sync root path is changed. It includes the file's unique ID, the parent directory's unique ID, relative path, change type, file size, and timestamp. |
-| [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) | - | A struct that encapsulates the file change result under the sync root path. It includes the next change sequence number, end flag, and an array of change data items. |
-| [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md) | - | A struct that encapsulates the list of files that failed to synchronize. It includes the file path information and the specific failure cause. |
-| [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md) | - | A struct that encapsulates the file sync result. It includes the absolute path of the file, sync result, and sync state or failure cause. |
-| [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) | - | A struct that encapsulates the display name of the sync root path. |
-| [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md) | - | A struct that encapsulates the sync root property information. |
-| [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) | - | Defines the sync folder of cloud disk with placeholder support.<br> The version field must be set to a valid version macro (e.g. [OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1](capi-oh-cloud-disk-manager-h.md#宏定义)) before passing this structure to any API. The runtime uses version to determine which fields are valid; fields introduced in a later version are ignored when a lower version is specified. |
-| [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) | - | Metadata information for the placeholder file. |
-| [OH_CloudDisk_PlaceholderCustomInfo](capi-clouddisk-oh-clouddisk-placeholdercustominfo.md) | - | Opaque custom information associated with a placeholder. |
-| [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) | - | A struct that encapsulates the cloud disk data buffer. |
-| [OH_CloudDisk_CallbackReqHead](capi-clouddisk-oh-clouddisk-callbackreqhead.md) | - | A struct that encapsulates the cloud disk callback request header. |
-| [OH_CloudDisk_DehydrateInfo](capi-clouddisk-oh-clouddisk-dehydrateinfo.md) | - | A struct that encapsulates the dehydrate authorization information. |
-| [OH_CloudDisk_FetchRangeDataRequest](capi-clouddisk-oh-clouddisk-fetchrangedatarequest.md) | - | A struct that encapsulates the fetch range data request information. |
-| [OH_CloudDisk_FetchDataRequest](capi-clouddisk-oh-clouddisk-fetchdatarequest.md) | - | A struct that encapsulates the fetch data request information. |
-| [OH_CloudDisk_CallbackContext](capi-clouddisk-oh-clouddisk-callbackcontext.md) | - | A union that encapsulates callback request context information. |
-| [OH_CloudDisk_FetchData](capi-clouddisk-oh-clouddisk-fetchdata.md) | - | A struct that encapsulates fetched cloud file data. |
-| [OH_CloudDisk_CallbackResponse](capi-clouddisk-oh-clouddisk-callbackresponse.md) | - | A union that encapsulates callback response information. |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) | CloudDisk_PathInfo | A struct that encapsulates the file path information. |
+| [CloudDisk_FileSyncState](capi-clouddisk-clouddisk-filesyncstate.md) | CloudDisk_FileSyncState | A struct that encapsulates the file sync state. |
+| [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md) | CloudDisk_ChangeData | A struct that encapsulates the event data generated when a single file under the sync root path is changed. It includes the file's unique ID, the parent directory's unique ID, relative path, change type, file size, and timestamp. |
+| [CloudDisk_ChangesResult](capi-clouddisk-clouddisk-changesresult.md) | CloudDisk_ChangesResult | A struct that encapsulates the file change result under the sync root path. It includes the next change sequence number, end flag, and an array of change data items. |
+| [CloudDisk_FailedList](capi-clouddisk-clouddisk-failedlist.md) | CloudDisk_FailedList | A struct that encapsulates the list of files that failed to synchronize. It includes the file path information and the specific failure cause. |
+| [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md) | CloudDisk_ResultList | A struct that encapsulates the file sync result. It includes the absolute path of the file, sync result, and sync state or failure cause. |
+| [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) | CloudDisk_DisplayNameInfo | A struct that encapsulates the display name of the sync root path. |
+| [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md) | CloudDisk_SyncFolder | A struct that encapsulates the sync root property information. |
+| [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) | OH_CloudDisk_SyncFolderEx | Defines the sync folder of cloud disk with placeholder support.<br> The version field must be set to a valid version macro (e.g. [OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1](capi-oh-cloud-disk-manager-h.md#macros)) before passing this structure to any API. The runtime uses version to determine which fields are valid; fields introduced in a later version are ignored when a lower version is specified. |
+| [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) | OH_CloudDisk_PlaceholderInfo | Metadata information for the placeholder file. |
+| [OH_CloudDisk_PlaceholderCustomInfo](capi-clouddisk-oh-clouddisk-placeholdercustominfo.md) | OH_CloudDisk_PlaceholderCustomInfo | Opaque custom information associated with a placeholder. |
+| [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) | OH_CloudDisk_DataBuf | A struct that encapsulates the cloud disk data buffer. |
+| [OH_CloudDisk_CallbackReqHead](capi-clouddisk-oh-clouddisk-callbackreqhead.md) | OH_CloudDisk_CallbackReqHead | A struct that encapsulates the cloud disk callback request header. |
+| [OH_CloudDisk_DehydrateInfo](capi-clouddisk-oh-clouddisk-dehydrateinfo.md) | OH_CloudDisk_DehydrateInfo | A struct that encapsulates the dehydrate authorization information. |
+| [OH_CloudDisk_FetchRangeDataRequest](capi-clouddisk-oh-clouddisk-fetchrangedatarequest.md) | OH_CloudDisk_FetchRangeDataRequest | A struct that encapsulates the fetch range data request information. |
+| [OH_CloudDisk_FetchDataRequest](capi-clouddisk-oh-clouddisk-fetchdatarequest.md) | OH_CloudDisk_FetchDataRequest | A struct that encapsulates the fetch data request information. |
+| [OH_CloudDisk_CallbackContext](capi-clouddisk-oh-clouddisk-callbackcontext.md) | OH_CloudDisk_CallbackContext | A union that encapsulates callback request context information. |
+| [OH_CloudDisk_FetchData](capi-clouddisk-oh-clouddisk-fetchdata.md) | OH_CloudDisk_FetchData | A struct that encapsulates fetched cloud file data. |
+| [OH_CloudDisk_CallbackResponse](capi-clouddisk-oh-clouddisk-callbackresponse.md) | OH_CloudDisk_CallbackResponse | A union that encapsulates callback response information. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -50,13 +50,13 @@ This file defines the APIs for the cloud disk management module.
 | [OH_CloudDisk_CallbackType](#oh_clouddisk_callbacktype) | OH_CloudDisk_CallbackType | Enumerates the cloud disk callback types. |
 | [OH_CloudDisk_HydratePriority](#oh_clouddisk_hydratepriority) | OH_CloudDisk_HydratePriority | Enumerates the hydrate priorities. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | OH_CLOUD_DISK_SYNC_FOLDER_EX_VERSION_1 1 | Indicates the version 1 of OH_CloudDisk_SyncFolderEx.<br> When the structure is extended, a new version macro will be defined. The runtime uses the version field to determine which fields are valid.<br>**Since**: 26.0.1 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -87,7 +87,7 @@ This file defines the APIs for the cloud disk management module.
 | [CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderEx(const OH_CloudDisk_SyncFolderEx *syncFolder)](#oh_clouddisk_registersyncfolderex) | Registers a sync folder with placeholder support info. |
 | [CloudDisk_ErrorCode OH_CloudDisk_GetSyncFoldersEx(OH_CloudDisk_SyncFolderEx **syncFolders, size_t *count)](#oh_clouddisk_getsyncfoldersex) | Gets the sync folders with placeholder support info. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

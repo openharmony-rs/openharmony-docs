@@ -1,7 +1,7 @@
 # OH_Drawing_FontAliasInfo
 
 ```c
-struct OH_Drawing_FontAliasInfo {...}
+typedef struct OH_Drawing_FontAliasInfo {...} OH_Drawing_FontAliasInfo
 ```
 
 ## Overview

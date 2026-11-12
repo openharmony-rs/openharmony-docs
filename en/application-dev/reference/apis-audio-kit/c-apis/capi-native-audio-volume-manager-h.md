@@ -14,13 +14,13 @@ Declare audio volume manager related interfaces.<br> This file interfaces are us
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) | OH_AudioVolumeManager | Declare the audio volume manager. Audio volume manager provides many functions for developer to get the information about system volume. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
