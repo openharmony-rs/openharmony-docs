@@ -47,7 +47,7 @@ constexpr uint64_t HITRACE_TAG_ACE = (1ULL << 39); // ACE development framework 
 constexpr uint64_t HITRACE_TAG_NOTIFICATION = (1ULL << 40); // Notification module tag.
 constexpr uint64_t HITRACE_TAG_MISC = (1ULL << 41); // Notification module tag.
 constexpr uint64_t HITRACE_TAG_MULTIMODALINPUT = (1ULL << 42); // Multi modal module tag.
-constexpr uint64_t HITRACE_TAG_SENSORS = (1ULL << 43); // Sensors mudule tag.
+constexpr uint64_t HITRACE_TAG_SENSORS = (1ULL << 43); // Sensors module tag.
 constexpr uint64_t HITRACE_TAG_MSDP = (1ULL << 44); // Multimodal Sensor Data Platform module tag.
 constexpr uint64_t HITRACE_TAG_DSOFTBUS = (1ULL << 45); // Distributed Softbus tag.
 constexpr uint64_t HITRACE_TAG_RPC = (1ULL << 46); // RPC and IPC tag.
@@ -240,7 +240,7 @@ C++接口仅系统开发者使用，JS（目前暂未开放js接口）应用开�
    
    ```shell
    hitrace --trace_begin ohos
-   hitrace_exampe
+   hitrace_example
    hitrace --trace_dump
    ```
    
