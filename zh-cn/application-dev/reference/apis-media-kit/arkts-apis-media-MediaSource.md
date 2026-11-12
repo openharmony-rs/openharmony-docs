@@ -199,3 +199,25 @@ getTrackSelectionFilter(): TrackSelectionFilter | undefined
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
 | [TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter) \| undefined | 如果TrackSelectionFilter对象存在，则返回该TrackSelectionFilter对象；否则返回undefined。 |
+
+## setTransparentVideoLayoutMode
+ 
+setTransparentVideoLayoutMode(mode : SideBySideTransparentVideoLayoutMode): void
+ 
+设置并排（Side-by-Side）模式下视频源的布局信息，用于引导播放器合成正确的透明视频。
+ 
+> **说明：**
+>
+> 透明视频是指每一帧画面都携带像素透明度信息的视频。如果入参非法设置，则当作普通视频播放。
+ 
+**起始版本：** 26.1.0
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+ 
+**参数：**
+ 
+| 参数名   | 类型     | 必填 | 说明                 |
+| -------- | -------- | ---- | -------------------- |
+| mode | [SideBySideTransparentVideoLayoutMode](arkts-apis-media-e.md#sidebysidetransparentvideolayoutmode) | 是   | 透明视频的布局模式值。 |
