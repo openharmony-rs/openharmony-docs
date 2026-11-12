@@ -25,72 +25,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 5. 调用[OH_CryptoSign_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy)释放内存。
 
-```c++
-#include "CryptoArchitectureKit/crypto_common.h"
-#include "CryptoArchitectureKit/crypto_asym_key.h"
-#include "CryptoArchitectureKit/crypto_signature.h"
-
-static OH_Crypto_ErrCode doSm2Test() {
-   OH_CryptoAsymKeyGenerator *keyCtx = nullptr;
-   OH_CryptoKeyPair *keyPair = nullptr;
-   OH_CryptoSign *sign = nullptr;
-
-   uint8_t plainText[] = {
-      0x96, 0x46, 0x2e, 0xde, 0x3f, 0x47, 0xbf, 0xd6, 0x87, 0x48, 0x36, 0x1d, 0x75, 0x35, 0xbd, 0xbc,
-      0x6b, 0x06, 0xe8, 0xb3, 0x68, 0x91, 0x53, 0xce, 0x76, 0x5d, 0x24, 0xda, 0xdc, 0xc4, 0x9f, 0x94,
-   };
-   Crypto_DataBlob msgBlob = {
-      .data = reinterpret_cast<uint8_t *>(plainText),
-      .len = sizeof(plainText)};
-
-   OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create((const char *)"SM2_256", &keyCtx);
-   if (ret != CRYPTO_SUCCESS) {
-      return ret;
-   }
-   ret = OH_CryptoAsymKeyGenerator_Generate(keyCtx, &keyPair);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      return ret;
-   }
-
-   OH_CryptoPrivKey *privKey = OH_CryptoKeyPair_GetPrivKey(keyPair);
-   ret = OH_CryptoSign_Create((const char *)"SM2_256|SM3", &sign);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      return ret;
-   }
-   ret = OH_CryptoSign_Init(sign, privKey);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      return ret;
-   }
-
-   ret = OH_CryptoSign_Update(sign, &msgBlob);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      return ret;
-   }
-
-   Crypto_DataBlob signBlob = {.data = nullptr, .len = 0};
-   ret = OH_CryptoSign_Final(sign, nullptr, &signBlob);
-   if (ret != CRYPTO_SUCCESS) {
-      OH_CryptoSign_Destroy(sign);
-      OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-      OH_CryptoKeyPair_Destroy(keyPair);
-      return ret;
-   }
-   OH_CryptoSign_Destroy(sign);
-   OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-   OH_CryptoKeyPair_Destroy(keyPair);
-   OH_Crypto_FreeDataBlob(&signBlob);
-   return CRYPTO_SUCCESS;
-}
-```
+<!-- @[sign_with_sm2_key_pair_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/sm2_sign.cpp) -->
 
 
 ## 验签开发步骤
