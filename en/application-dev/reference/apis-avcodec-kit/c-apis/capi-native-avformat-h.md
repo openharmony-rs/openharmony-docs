@@ -14,19 +14,19 @@ The file declares the functions and enums related to OH_AVFormat.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVFormat](capi-core-oh-avformat.md) | OH_AVFormat | Describes a native object for the OH_AVFormat interface. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVPixelFormat](#oh_avpixelformat) | OH_AVPixelFormat | Enumerates the video pixel formats. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

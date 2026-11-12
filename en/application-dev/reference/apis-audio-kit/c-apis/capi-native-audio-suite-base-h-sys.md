@@ -16,14 +16,14 @@ Declare underlying data structure.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [OH_AudioSuite_SystemNodeFormat(System API)](capi-ohaudiosuite-oh-audiosuite-systemnodeformat-sys.md) | Define the audio format info structure, used to describe basic audio format for system node.<br>**System API:** This is a system API. |
-| [OH_AudioSuite_MetaFrame(System API)](capi-ohaudiosuite-oh-audiosuite-metaframe-sys.md) | Define the audio meta data frame structure. This structure is used to pass audio data and meta data together.<br>**System API:** This is a system API. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [OH_AudioSuite_SystemNodeFormat(System API)](capi-ohaudiosuite-oh-audiosuite-systemnodeformat-sys.md) | OH_AudioSuite_SystemNodeFormat | Define the audio format info structure, used to describe basic audio format for system node.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_MetaFrame(System API)](capi-ohaudiosuite-oh-audiosuite-metaframe-sys.md) | OH_AudioSuite_MetaFrame | Define the audio meta data frame structure. This structure is used to pass audio data and meta data together.<br>**System API:** This is a system API. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

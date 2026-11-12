@@ -14,7 +14,7 @@ Declare video processing functions.<br> Provides SDR content processing for vide
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -30,7 +30,7 @@ Declare video processing functions.<br> Provides SDR content processing for vide
 | [VideoProcessing_ErrorCode OH_VideoProcessing_SetParameter(OH_VideoProcessing* videoProcessor, const OH_AVFormat* parameter)](#oh_videoprocessing_setparameter) | Set parameter for video processing.<br> Add parameter identified by the specified parameter key. |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_GetParameter(OH_VideoProcessing* videoProcessor, OH_AVFormat* parameter)](#oh_videoprocessing_getparameter) | Get parameter of video processing.<br> Get parameter identified by the specified parameter key. |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_Start(OH_VideoProcessing* videoProcessor)](#oh_videoprocessing_start) | Start video processing instance.<br> After successfully calling this function, the state [VIDEO_PROCESSING_STATE_RUNNING](capi-video-processing-types-h.md#videoprocessing_state) is reported by callback function [OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate). |
-| [VideoProcessing_ErrorCode OH_VideoProcessing_Stop(OH_VideoProcessing* videoProcessor)](#oh_videoprocessing_stop) | To stop video processing instance.<br> After the video processing instance is stopped successfully, the state [VIDEO_PROCESSING_STATE_STOPPED](capi-video-processing-types-h.md#videoprocessing_state) is reported by callback function OH_VideoProcessing_OnState. |
+| [VideoProcessing_ErrorCode OH_VideoProcessing_Stop(OH_VideoProcessing* videoProcessor)](#oh_videoprocessing_stop) | To stop video processing instance.<br> After the video processing instance is stopped successfully, the state [VIDEO_PROCESSING_STATE_STOPPED](capi-video-processing-types-h.md#videoprocessing_state) is reported by callback function [OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate). |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_RenderOutputBuffer(OH_VideoProcessing* videoProcessor, uint32_t index)](#oh_videoprocessing_renderoutputbuffer) | Send the output buffer out.<br> If the callback function [OH_VideoProcessingCallback_OnNewOutputBuffer](capi-video-processing-types-h.md#oh_videoprocessingcallback_onnewoutputbuffer) is set, the buffer's index is reported to user by the callback function when an output buffer is ready. |
 | [VideoProcessing_ErrorCode OH_VideoProcessingCallback_Create(VideoProcessing_Callback** callback)](#oh_videoprocessingcallback_create) | Create a video processing callback object. |
 | [VideoProcessing_ErrorCode OH_VideoProcessingCallback_Destroy(VideoProcessing_Callback* callback)](#oh_videoprocessingcallback_destroy) | Destroy the callback object.<br> The callback object can be destroyed after it is registered to video processing instance. |
@@ -383,7 +383,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Stop(OH_VideoProcessing* videoProce
 
 **Description**
 
-To stop video processing instance.<br> After the video processing instance is stopped successfully, the state [VIDEO_PROCESSING_STATE_STOPPED](capi-video-processing-types-h.md#videoprocessing_state) is reported by callback function OH_VideoProcessing_OnState.
+To stop video processing instance.<br> After the video processing instance is stopped successfully, the state [VIDEO_PROCESSING_STATE_STOPPED](capi-video-processing-types-h.md#videoprocessing_state) is reported by callback function [OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate).
 
 <!--Device-VideoProcessing_ErrorCode OH_VideoProcessing_Stop(OH_VideoProcessing* videoProcessor)--><!--Device-VideoProcessing_ErrorCode OH_VideoProcessing_Stop(OH_VideoProcessing* videoProcessor)-End-->
 
@@ -631,7 +631,7 @@ Specifies whether the type effect is required in the XComponent named name that 
 
 | Type | Description |
 | -- | -- |
-| [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode) | <ul><li>[VIDEO_PROCESSING_SUCCESS](capi-video-processing-types-h.md#videoprocessing_errorcode) if the operation is successful.</li> <li>[VIDEO_PROCESSING_ERROR_INVALID_VALUE](capi-video-processing-types-h.md#videoprocessing_errorcode) if type is not [VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR](capi-video-processing-types-h.md#变量) or name is null.</li> <li>[VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED](capi-video-processing-types-h.md#videoprocessing_errorcode) if [OH_VideoProcessing_IsAutoEffectSupported](capi-video-processing-h.md#oh_videoprocessing_isautoeffectsupported) returns false for the type, or the same name has already been registered by calling this function.</li></ul> |
+| [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode) | <ul><li>[VIDEO_PROCESSING_SUCCESS](capi-video-processing-types-h.md#videoprocessing_errorcode) if the operation is successful.</li> <li>[VIDEO_PROCESSING_ERROR_INVALID_VALUE](capi-video-processing-types-h.md#videoprocessing_errorcode) if type is not [VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR](capi-video-processing-types-h.md#variables) or name is null.</li> <li>[VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED](capi-video-processing-types-h.md#videoprocessing_errorcode) if [OH_VideoProcessing_IsAutoEffectSupported](capi-video-processing-h.md#oh_videoprocessing_isautoeffectsupported) returns false for the type, or the same name has already been registered by calling this function.</li></ul> |
 
 ### OH_VideoProcessing_SetAutoEffectParam()
 

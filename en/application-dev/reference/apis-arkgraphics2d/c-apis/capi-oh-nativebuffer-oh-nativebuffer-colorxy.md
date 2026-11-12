@@ -1,7 +1,7 @@
 # OH_NativeBuffer_ColorXY
 
 ```c
-struct OH_NativeBuffer_ColorXY {...}
+typedef struct OH_NativeBuffer_ColorXY {...} OH_NativeBuffer_ColorXY
 ```
 
 ## Overview

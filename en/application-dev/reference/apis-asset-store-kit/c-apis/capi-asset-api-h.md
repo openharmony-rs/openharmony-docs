@@ -14,7 +14,7 @@ Declares the APIs for accessing assets.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

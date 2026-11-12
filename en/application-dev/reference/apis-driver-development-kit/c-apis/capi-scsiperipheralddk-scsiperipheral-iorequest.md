@@ -1,7 +1,7 @@
 # ScsiPeripheral_IORequest
 
 ```c
-struct ScsiPeripheral_IORequest {...}
+typedef struct ScsiPeripheral_IORequest {...} ScsiPeripheral_IORequest
 ```
 
 ## Overview
@@ -29,7 +29,7 @@ Defines the read/write operation request. This struct defines the request parame
 | uint8_t control | Control** field, which specifies the control flags of a SCSI command, such as the priority and linked command. |
 | uint8_t byte1 | First byte of the SCSI command descriptor block (CDB), which usually contains the operation code and operation group information. |
 | uint8_t byte6 | Sixth byte of the SCSI CDB, which contains different parameters or flag information based on the command type. |
-| ScsiPeripheral_DeviceMemMap *data | Buffer for data transmission. |
+| [ScsiPeripheral_DeviceMemMap](capi-scsiperipheralddk-scsiperipheral-devicememmap.md) *data | Buffer for data transmission. |
 | uint32_t timeout | Timeout interval, in milliseconds. |
 
 

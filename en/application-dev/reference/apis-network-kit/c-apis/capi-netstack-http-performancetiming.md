@@ -1,7 +1,7 @@
 # Http_PerformanceTiming
 
 ```c
-struct Http_PerformanceTiming {...}
+typedef struct Http_PerformanceTiming {...} Http_PerformanceTiming
 ```
 
 ## Overview

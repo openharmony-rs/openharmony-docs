@@ -1,7 +1,7 @@
 # Rdb_DataObserver
 
 ```c
-struct Rdb_DataObserver {...}
+typedef struct Rdb_DataObserver {...} Rdb_DataObserver
 ```
 
 ## Overview

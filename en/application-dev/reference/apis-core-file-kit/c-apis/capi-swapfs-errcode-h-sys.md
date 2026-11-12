@@ -16,7 +16,7 @@ Declare the error codes of swapfs module.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

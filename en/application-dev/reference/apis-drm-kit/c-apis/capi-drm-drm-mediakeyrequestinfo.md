@@ -1,7 +1,7 @@
 # DRM_MediaKeyRequestInfo
 
 ```c
-struct DRM_MediaKeyRequestInfo {...}
+typedef struct DRM_MediaKeyRequestInfo {...} DRM_MediaKeyRequestInfo
 ```
 
 ## Overview

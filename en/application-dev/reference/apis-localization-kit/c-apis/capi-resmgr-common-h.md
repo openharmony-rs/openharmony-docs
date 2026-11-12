@@ -14,13 +14,13 @@ Provides the enumeration and structure definitions required by the `resourcemana
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) | Structure of the device status. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) | ResourceManager_Configuration | Structure of the device status. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -30,7 +30,7 @@ Provides the enumeration and structure definitions required by the `resourcemana
 | [ResourceManager_DeviceType](#resourcemanager_devicetype) | ResourceManager_DeviceType | Enumerates device types. |
 | [ScreenDensity](#screendensity) | ScreenDensity | Enumerates the screen density types. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

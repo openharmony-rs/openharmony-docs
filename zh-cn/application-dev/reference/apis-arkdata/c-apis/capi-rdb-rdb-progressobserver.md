@@ -1,7 +1,7 @@
 # Rdb_ProgressObserver
 
 ```c
-struct Rdb_ProgressObserver {...}
+typedef struct Rdb_ProgressObserver {...} Rdb_ProgressObserver
 ```
 
 ## 概述

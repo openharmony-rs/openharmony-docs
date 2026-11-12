@@ -16,7 +16,7 @@ Axis event enums of input devices. The axis type defines the physical behavior c
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

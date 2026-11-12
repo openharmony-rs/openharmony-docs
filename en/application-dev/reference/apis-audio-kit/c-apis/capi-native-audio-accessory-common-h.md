@@ -14,7 +14,7 @@ Declare common types for external audio accessory device interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -25,7 +25,7 @@ Declare common types for external audio accessory device interfaces.
 | [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) | OH_AudioAccessory | Declare the audio accessory. |
 | [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) | OH_AudioAccessoryInputStream | Declare the audio accessory input stream. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

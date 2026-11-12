@@ -12,16 +12,16 @@ The file declares the structs and enums of the AVPlayer.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [AVPlayerCallback](capi-avplayer-avplayercallback.md) | - | The struct contains the set of the **OH_AVPlayerOnInfo** and **OH_AVPlayerOnError** callback function pointers. To ensure the normal running of OH_AVPlayer, you must register the instance of this struct with the OH_AVPlayer instance and process the information reported by the callback functions. |
+| [AVPlayerCallback](capi-avplayer-avplayercallback.md) | AVPlayerCallback | The struct contains the set of the **OH_AVPlayerOnInfo** and **OH_AVPlayerOnError** callback function pointers. To ensure the normal running of OH_AVPlayer, you must register the instance of this struct with the OH_AVPlayer instance and process the information reported by the callback functions. |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) | OH_AVPlayer | Defines a struct for the AVPlayer. |
 | [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md) | OH_AVSeiMessageArray | Defines a struct for the SEI message array. |
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) | OH_AVPlaybackStrategy | Defines a struct for the audio and video playback strategy. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -33,7 +33,7 @@ The file declares the structs and enums of the AVPlayer.
 | [AVPlayerTrackSwitchMode](#avplayertrackswitchmode) | AVPlayerTrackSwitchMode | Enumerates the track switching modes. |
 | [OH_VideoOutputResult](#oh_videooutputresult) | OH_VideoOutputResult | Result of Video output. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -46,7 +46,7 @@ The file declares the structs and enums of the AVPlayer.
 | [typedef void (\*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)](#oh_avplayerpcmoutputcallback) | OH_AVPlayerPCMOutputCallback | Describes the handle used to obtain the decoded audio PCM data. |
 | [typedef void (\*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)](#oh_avplayerpcmprocessorcallback) | OH_AVPlayerPCMProcessorCallback | This callback provides a PCM buffer for processing. AVPlayer needs to use the processed data for audio playback, and processing must be completed in a timely manner, otherwise it will block playback. Do not change sampling rate, channels, or sampling format. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

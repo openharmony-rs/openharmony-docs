@@ -19,7 +19,7 @@
 | VkAccelerationStructureKHR dstAccelerationStructure |  |
 | uint32_t geometryCount |  |
 | [const VkAccelerationStructureGeometryKHR*](capi--vkaccelerationstructuregeometrykhr.md) pGeometries |  |
-| const VkAccelerationStructureGeometryKHR* const* ppGeometries |  |
+| const [VkAccelerationStructureGeometryKHR](capi--vkaccelerationstructuregeometrykhr.md)* const* ppGeometries |  |
 | [VkDeviceOrHostAddressKHR](capi--vkdeviceorhostaddresskhr.md) scratchData |  |
 
 

@@ -14,14 +14,14 @@ Provides the context data structure [AbilityRuntime_Context](capi-abilityruntime
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [AbilityRuntime_Context](capi-abilityruntime-abilityruntime-context.md) | - | Define the AbilityRuntime_Context structure type. |
 | [AbilityRuntime_Context*](capi-abilityruntime-abilityruntime-context8h.md) | AbilityRuntime_ContextHandle | Defines the pointer to AbilityRuntime_Context. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

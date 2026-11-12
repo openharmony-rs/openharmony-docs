@@ -1,7 +1,7 @@
 # OH_TrafficFilter_PortRange
 
 ```c
-struct OH_TrafficFilter_PortRange {...}
+typedef struct OH_TrafficFilter_PortRange {...} OH_TrafficFilter_PortRange
 ```
 
 ## Overview

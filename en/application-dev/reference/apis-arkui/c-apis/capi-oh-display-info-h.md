@@ -14,7 +14,7 @@ The file declares the common enums and definitions of the display.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -26,7 +26,7 @@ The file declares the common enums and definitions of the display.
 | [NativeDisplayManager_DisplayInfo](capi-oh-displaymanager-nativedisplaymanager-displayinfo.md) | NativeDisplayManager_DisplayInfo | The struct describes the information about a display. |
 | [NativeDisplayManager_DisplaysInfo](capi-oh-displaymanager-nativedisplaymanager-displaysinfo.md) | NativeDisplayManager_DisplaysInfo | The struct describes the information about displays of a device with multiple screens. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -37,7 +37,7 @@ The file declares the common enums and definitions of the display.
 | [NativeDisplayManager_DisplayState](#nativedisplaymanager_displaystate) | NativeDisplayManager_DisplayState | Enumerates the states of a display. |
 | [NativeDisplayManager_SourceMode](#nativedisplaymanager_sourcemode) | NativeDisplayManager_SourceMode | Enumerates the source modes of a device. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

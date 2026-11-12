@@ -12,7 +12,7 @@ The file declares the native APIs provided by the AVTranscoder. You can use the 
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

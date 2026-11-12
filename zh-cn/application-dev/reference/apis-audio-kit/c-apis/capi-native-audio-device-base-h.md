@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) | - | 声明音频设备描述符数组的结构体，该结构体表示一组音频设备描述符，通过每个描述符可查询设备详细信息。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) | OH_AudioDeviceDescriptorArray | 声明音频设备描述符数组的结构体，该结构体表示一组音频设备描述符，通过每个描述符可查询设备详细信息。 |
 | [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) | OH_AudioDeviceDescriptor | 声明音频设备描述结构体，该结构体用于查询音频设备详细信息。 |
 
 ### 枚举

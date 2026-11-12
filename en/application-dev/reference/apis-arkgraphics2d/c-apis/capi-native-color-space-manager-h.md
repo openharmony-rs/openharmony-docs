@@ -14,7 +14,7 @@ This file declares the functions for creating and using a color space.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -22,13 +22,13 @@ This file declares the functions for creating and using a color space.
 | [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | WhitePointArray | Provides a white point array structure. The white point is the coordinate that represents white in the current color space. |
 | [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | Provides the declaration of an **OH_NativeColorSpaceManager** struct. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ColorSpaceName](#colorspacename) | ColorSpaceName | Defines an enum for the color space names. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

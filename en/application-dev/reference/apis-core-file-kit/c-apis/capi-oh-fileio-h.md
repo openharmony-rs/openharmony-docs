@@ -14,13 +14,13 @@ Defines the native APIs used to obtain the location of a file.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [FileIO_FileLocation](#fileio_filelocation) | FileIO_FileLocation | Enumerates the file location. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

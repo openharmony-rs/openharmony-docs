@@ -14,7 +14,7 @@ Declares APIs for decoding an image source into a pixel map.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -30,7 +30,7 @@ Declares APIs for decoding an image source into a pixel map.
 | [OhosImageSourceUpdateData](capi-image-ohosimagesourceupdatedata.md) | - | Defines the update data of the image source. It is obtained by calling [OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata). |
 | [ImageSourceNative_](capi-image-imagesourcenative-.md) | - | Defines a native image source object for the image source APIs. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -53,7 +53,7 @@ Declares APIs for decoding an image source into a pixel map.
 | [int32_t OH_ImageSource_UpdateData(const ImageSourceNative* native, struct OhosImageSourceUpdateData* data)](#oh_imagesource_updatedata) | Updates the data of an <b>ImageSource</b> object. |
 | [int32_t OH_ImageSource_Release(ImageSourceNative* native)](#oh_imagesource_release) | Releases an <b>ImageSourceNative</b> object. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

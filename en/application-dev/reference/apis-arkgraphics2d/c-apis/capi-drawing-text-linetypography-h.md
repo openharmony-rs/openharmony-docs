@@ -14,7 +14,7 @@ Provides APIs related to typography lines, such as obtaining the number of chara
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

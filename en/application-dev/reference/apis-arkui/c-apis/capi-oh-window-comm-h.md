@@ -14,7 +14,7 @@ The file declares the common enums and definitions of the window manager.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -27,7 +27,7 @@ The file declares the common enums and definitions of the window manager.
 | [OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) | OH_WindowManager_FrameMetrics | Defines a frame metric data object. |
 | [OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md) | OH_WindowManager_DensityInfo | Window density information, including the system display size scaling factor, system default display size scaling factor, and custom display size scaling factor of the screen where the window is located. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -35,7 +35,7 @@ The file declares the common enums and definitions of the window manager.
 | [WindowManager_AvoidAreaType](#windowmanager_avoidareatype) | WindowManager_AvoidAreaType | Enumerates the avoid area types. |
 | [WindowManager_WindowType](#windowmanager_windowtype) | WindowManager_WindowType | Enumerates the window types. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

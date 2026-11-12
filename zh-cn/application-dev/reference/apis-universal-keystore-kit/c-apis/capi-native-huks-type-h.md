@@ -18,21 +18,21 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 表示状态返回数据，包括返回码和消息。 |
-| [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) | 定义存放数据的结构体类型。 |
-| [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) | 定义参数集中的参数结构体类型。 |
-| [OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) | 定义参数集的结构体类型。 |
-| [OH_Huks_CertChain](capi-hukstypeapi-oh-huks-certchain.md) | 定义证书链的结构体类型。 |
-| [OH_Huks_KeyInfo](capi-hukstypeapi-oh-huks-keyinfo.md) | 定义密钥信息的结构体类型。 |
-| [OH_Huks_PubKeyInfo](capi-hukstypeapi-oh-huks-pubkeyinfo.md) | 定义公钥信息的结构体类型。 |
-| [OH_Huks_KeyMaterialRsa](capi-hukstypeapi-oh-huks-keymaterialrsa.md) | 定义RSA密钥的结构体类型。 |
-| [OH_Huks_KeyMaterialEcc](capi-hukstypeapi-oh-huks-keymaterialecc.md) | 定义ECC密钥的结构体类型。 |
-| [OH_Huks_KeyMaterialDsa](capi-hukstypeapi-oh-huks-keymaterialdsa.md) | 定义DSA密钥的结构体类型。 |
-| [OH_Huks_KeyMaterialDh](capi-hukstypeapi-oh-huks-keymaterialdh.md) | 定义DH密钥的结构体类型。 |
-| [OH_Huks_KeyMaterial25519](capi-hukstypeapi-oh-huks-keymaterial25519.md) | 定义25519类型密钥的结构体类型。 |
-| [OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) | 定义密钥别名集的结构体类型。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | OH_Huks_Result | 表示状态返回数据，包括返回码和消息。 |
+| [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) | OH_Huks_Blob | 定义存放数据的结构体类型。 |
+| [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) | OH_Huks_Param | 定义参数集中的参数结构体类型。 |
+| [OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) | OH_Huks_ParamSet | 定义参数集的结构体类型。 |
+| [OH_Huks_CertChain](capi-hukstypeapi-oh-huks-certchain.md) | OH_Huks_CertChain | 定义证书链的结构体类型。 |
+| [OH_Huks_KeyInfo](capi-hukstypeapi-oh-huks-keyinfo.md) | OH_Huks_KeyInfo | 定义密钥信息的结构体类型。 |
+| [OH_Huks_PubKeyInfo](capi-hukstypeapi-oh-huks-pubkeyinfo.md) | OH_Huks_PubKeyInfo | 定义公钥信息的结构体类型。 |
+| [OH_Huks_KeyMaterialRsa](capi-hukstypeapi-oh-huks-keymaterialrsa.md) | OH_Huks_KeyMaterialRsa | 定义RSA密钥的结构体类型。 |
+| [OH_Huks_KeyMaterialEcc](capi-hukstypeapi-oh-huks-keymaterialecc.md) | OH_Huks_KeyMaterialEcc | 定义ECC密钥的结构体类型。 |
+| [OH_Huks_KeyMaterialDsa](capi-hukstypeapi-oh-huks-keymaterialdsa.md) | OH_Huks_KeyMaterialDsa | 定义DSA密钥的结构体类型。 |
+| [OH_Huks_KeyMaterialDh](capi-hukstypeapi-oh-huks-keymaterialdh.md) | OH_Huks_KeyMaterialDh | 定义DH密钥的结构体类型。 |
+| [OH_Huks_KeyMaterial25519](capi-hukstypeapi-oh-huks-keymaterial25519.md) | OH_Huks_KeyMaterial25519 | 定义25519类型密钥的结构体类型。 |
+| [OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) | OH_Huks_KeyAliasSet | 定义密钥别名集的结构体类型。 |
 
 ### 枚举
 

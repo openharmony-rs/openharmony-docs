@@ -16,7 +16,7 @@ Declares the USB DDK APIs used by the host to access the device. These APIs prov
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -167,7 +167,7 @@ Obtains the configuration descriptor. To prevent memory leak, use [OH_Usb_FreeCo
 | -- | -- |
 | uint64_t deviceId | Device ID, which can be obtained by calling [OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices). It identifies the device whose configuration descriptor is to be obtained. |
 | uint8_t configIndex | Configuration index, which corresponds to the **bConfigurationValue** field in the USB configuration descriptor. |
-| struct UsbDdkConfigDescriptor ** const config | Output parameter, which is used to receive the configuration descriptor, including the standard configuration descriptor defined in the USB protocol and the associated interface descriptor and endpoint descriptor. |
+| struct [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) ** const config | Output parameter, which is used to receive the configuration descriptor, including the standard configuration descriptor defined in the USB protocol and the associated interface descriptor and endpoint descriptor. |
 
 **Returns**:
 
@@ -197,7 +197,7 @@ Releases the configuration descriptor. To prevent memory leak, use this API to r
 
 | Parameter | Description |
 | -- | -- |
-| struct UsbDdkConfigDescriptor * const config | Configuration descriptor obtained by calling [OH_Usb_GetConfigDescriptor](capi-usb-ddk-api-h.md#oh_usb_getconfigdescriptor). |
+| struct [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) * const config | Configuration descriptor obtained by calling [OH_Usb_GetConfigDescriptor](capi-usb-ddk-api-h.md#oh_usb_getconfigdescriptor). |
 
 ### OH_Usb_ClaimInterface()
 

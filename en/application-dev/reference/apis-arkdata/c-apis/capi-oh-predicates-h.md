@@ -14,19 +14,19 @@ Declared predicate related functions and enumerations.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) | OH_Predicates | Define the OH_Predicates structure type. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_OrderType](#oh_ordertype) | OH_OrderType | Result set sort type. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

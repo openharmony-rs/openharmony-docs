@@ -14,13 +14,13 @@ Provides functions and enumerations related to the data value buckets.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) | OH_Data_VBuckets | Define the OH_Data_VBuckets structure type. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

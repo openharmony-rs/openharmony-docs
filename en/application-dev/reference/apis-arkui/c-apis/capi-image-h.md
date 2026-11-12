@@ -14,7 +14,7 @@ Defines **Image** node types for **NativeNode** APIs, which are used to create a
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

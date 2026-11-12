@@ -14,7 +14,7 @@ Defines the error code used in ImageEffect.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

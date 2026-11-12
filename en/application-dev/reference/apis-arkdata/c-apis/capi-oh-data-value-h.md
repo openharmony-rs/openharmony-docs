@@ -14,19 +14,19 @@ Provides functions and enumerations related to the data value.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) | OH_Data_Value | Define the OH_Data_Value structure type. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_ColumnType](#oh_columntype) | OH_ColumnType | Indicates the column type. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

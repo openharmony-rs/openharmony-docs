@@ -1,7 +1,7 @@
 # Camera_OcclusionDetectionResult
 
 ```c
-struct Camera_OcclusionDetectionResult {...}
+typedef struct Camera_OcclusionDetectionResult {...} Camera_OcclusionDetectionResult
 ```
 
 ## Overview

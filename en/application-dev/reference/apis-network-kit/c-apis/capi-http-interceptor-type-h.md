@@ -14,16 +14,16 @@ Defines the data structures for the C APIs of the global HTTP interceptor module
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md) | Defines a struct for the request/response header information of the interceptor. |
-| [OH_Http_Interceptor_Request](capi-netstack-oh-http-interceptor-request.md) | Defines a struct for the HTTP request data packet of the interceptor. |
-| [OH_Http_Interceptor_Response](capi-netstack-oh-http-interceptor-response.md) | Defines a struct for the HTTP response data packet of the interceptor. |
-| [OH_Http_Interceptor](capi-netstack-oh-http-interceptor.md) | Defines a struct for the configuration information of the global HTTP interceptor. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md) | OH_Http_Interceptor_Headers | Defines a struct for the request/response header information of the interceptor. |
+| [OH_Http_Interceptor_Request](capi-netstack-oh-http-interceptor-request.md) | OH_Http_Interceptor_Request | Defines a struct for the HTTP request data packet of the interceptor. |
+| [OH_Http_Interceptor_Response](capi-netstack-oh-http-interceptor-response.md) | OH_Http_Interceptor_Response | Defines a struct for the HTTP response data packet of the interceptor. |
+| [OH_Http_Interceptor](capi-netstack-oh-http-interceptor.md) | OH_Http_Interceptor | Defines a struct for the configuration information of the global HTTP interceptor. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -31,7 +31,7 @@ Defines the data structures for the C APIs of the global HTTP interceptor module
 | [OH_Interceptor_Type](#oh_interceptor_type) | OH_Interceptor_Type | Defines an enum for the interceptor types. |
 | [OH_Interceptor_Result](#oh_interceptor_result) | OH_Interceptor_Result | Defines an enum for the interceptor results. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

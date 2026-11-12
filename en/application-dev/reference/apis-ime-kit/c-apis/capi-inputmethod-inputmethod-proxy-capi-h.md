@@ -16,13 +16,13 @@ Provides methods for using the input method, allowing requests and notifications
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [InputMethod_InputMethodProxy](capi-inputmethod-inputmethod-inputmethodproxy.md) | InputMethod_InputMethodProxy | Provides an interaction proxy object between the app and the input method service. The app can call relevant APIs of the input method service and receive event callbacks from the input method service through this object. This struct is an opaque type. Its internal members shall not be accessed directly. Operations can only be performed through the function interfaces provided by this module. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

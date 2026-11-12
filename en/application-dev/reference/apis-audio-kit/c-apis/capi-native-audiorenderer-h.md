@@ -14,7 +14,7 @@ Declare audio stream related interfaces for output type.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

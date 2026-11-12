@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) | - | 拍照输出的回调。 |
+| [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) | PhotoOutput_Callbacks | 拍照输出的回调。 |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md) | Camera_PhotoOutput | 拍照输出对象。<br> 可以使用[OH_CameraManager_CreatePhotoOutput](capi-camera-manager-h.md#oh_cameramanager_createphotooutput)方法创建指针。 |
 | [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-oh-camera-photocapturesettingext.md) | OH_Camera_PhotoCaptureSettingExt | 扩展拍照设置对象（提供镜像、旋转等基础拍照配置，支持连续调节图片压缩质量）。 |
 

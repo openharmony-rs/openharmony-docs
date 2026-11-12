@@ -16,9 +16,9 @@ HiTraceMeter和HiTraceChain模块接口定义，通过这些接口实现性能�
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [HiTraceId](capi-hitrace-hitraceid.md) | 用于标识调用链的结构体。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [HiTraceId](capi-hitrace-hitraceid.md) | HiTraceId | 用于标识调用链的结构体。 |
 
 ### 枚举
 
@@ -38,9 +38,9 @@ HiTraceMeter和HiTraceChain模块接口定义，通过这些接口实现性能�
 | [typedef void (\*OH_HiTrace_TraceEventListener)(bool traceStatus)](#oh_hitrace_traceeventlistener) | OH_HiTrace_TraceEventListener | 定义应用trace捕获开关状态切换时的回调函数类型。 |
 | [HiTraceId OH_HiTrace_BeginChain(const char *name, int flags)](#oh_hitrace_beginchain) | - | 开始跟踪。 当前线程TLS（Thread Local Storage，线程本地存储）中不存在有效的HiTraceId时，生成有效的HiTraceId并设置到当前线程TLS中，返回该HiTraceId； 当前线程TLS中已存在有效的HiTraceId时，不会开始新的跟踪，返回各属性值均为0的无效HiTraceId。 |
 | [void OH_HiTrace_EndChain()](#oh_hitrace_endchain) | - | 结束跟踪。 结束跟踪并将当前线程TLS中的HiTraceId设置为无效。 |
-| [HiTraceId OH_HiTrace_GetId()](#oh_hitrace_getid) | - | @brief Obtains the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread. |
-| [void OH_HiTrace_SetId(const HiTraceId *id)](#oh_hitrace_setid) | - | @brief Sets the given [HiTraceId](capi-hitrace-hitraceid.md) to the TLS of the current thread. If the input parameter is invalid, no operation is performed. |
-| [void OH_HiTrace_ClearId(void)](#oh_hitrace_clearid) | - | @brief Sets the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread to invalid. |
+| [HiTraceId OH_HiTrace_GetId()](#oh_hitrace_getid) | - | Obtains the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread. |
+| [void OH_HiTrace_SetId(const HiTraceId *id)](#oh_hitrace_setid) | - | Sets the given [HiTraceId](capi-hitrace-hitraceid.md) to the TLS of the current thread. If the input parameter is invalid, no operation is performed. |
+| [void OH_HiTrace_ClearId(void)](#oh_hitrace_clearid) | - | Sets the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread to invalid. |
 | [HiTraceId OH_HiTrace_CreateSpan(void)](#oh_hitrace_createspan) | - | 创建跟踪分支。 创建一个[HiTraceId](capi-hitrace-hitraceid.md)，使用当前线程TLS中的chainId、spanId初始化其chainId、parentSpanId，并为其生成一个新的spanId。 |
 | [void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_Type type, const HiTraceId *id, const char *fmt, ...)](#oh_hitrace_tracepoint) | - | HiTraceMeter跟踪信息埋点。 type为客户端发送[HITRACE_TP_CS](capi-trace-h.md#hitrace_tracepoint_type)和服务端接收[HITRACE_TP_SR](capi-trace-h.md#hitrace_tracepoint_type)时，进行同步HiTraceMeter开始打点；type为客户端接收 [HITRACE_TP_CR](capi-trace-h.md#hitrace_tracepoint_type)和服务端发送[HITRACE_TP_SS](capi-trace-h.md#hitrace_tracepoint_type)时，进行同步HiTraceMeter结束打点；type为通用类型 [HITRACE_TP_GENERAL](capi-trace-h.md#hitrace_tracepoint_type)时，不会进行HiTraceMeter打点。 type为客户端发送[HITRACE_TP_CS](capi-trace-h.md#hitrace_tracepoint_type)和客户端接收 [HITRACE_TP_CR](capi-trace-h.md#hitrace_tracepoint_type)的信息埋点需配套使用；type为服务端接收[HITRACE_TP_SR](capi-trace-h.md#hitrace_tracepoint_type)和服务端发送[HITRACE_TP_SS](capi-trace-h.md#hitrace_tracepoint_type)的信息埋点需 配套使用。否则，HiTraceMeter开始与结束打点无法正常匹配。 |
 | [void OH_HiTrace_InitId(HiTraceId *id)](#oh_hitrace_initid) | - | 初始化[HiTraceId](capi-hitrace-hitraceid.md)。 |
@@ -290,7 +290,7 @@ HiTraceId OH_HiTrace_GetId()
 
 **描述：**
 
-@brief Obtains the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread.
+Obtains the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread.
 
 <!--Device-HiTraceId OH_HiTrace_GetId()--><!--Device-HiTraceId OH_HiTrace_GetId()-End-->
 
@@ -312,7 +312,7 @@ void OH_HiTrace_SetId(const HiTraceId *id)
 
 **描述：**
 
-@brief Sets the given [HiTraceId](capi-hitrace-hitraceid.md) to the TLS of the current thread. If the input parameter is invalid, no operation is performed.
+Sets the given [HiTraceId](capi-hitrace-hitraceid.md) to the TLS of the current thread. If the input parameter is invalid, no operation is performed.
 
 <!--Device-void OH_HiTrace_SetId(const HiTraceId *id)--><!--Device-void OH_HiTrace_SetId(const HiTraceId *id)-End-->
 
@@ -334,7 +334,7 @@ void OH_HiTrace_ClearId(void)
 
 **描述：**
 
-@brief Sets the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread to invalid.
+Sets the [HiTraceId](capi-hitrace-hitraceid.md) in the TLS of the current thread to invalid.
 
 <!--Device-void OH_HiTrace_ClearId(void)--><!--Device-void OH_HiTrace_ClearId(void)-End-->
 

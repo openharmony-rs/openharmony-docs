@@ -1,7 +1,7 @@
 # OH_AudioSuite_ConverterInputInfo
 
 ```c
-struct OH_AudioSuite_ConverterInputInfo {...}
+typedef struct OH_AudioSuite_ConverterInputInfo {...} OH_AudioSuite_ConverterInputInfo
 ```
 
 ## 概述

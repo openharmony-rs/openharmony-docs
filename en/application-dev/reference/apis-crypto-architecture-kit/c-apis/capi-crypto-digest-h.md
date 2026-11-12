@@ -16,13 +16,13 @@ Defines the digest algorithm interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) | OH_CryptoDigest | Digest structure, representing a digest context. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

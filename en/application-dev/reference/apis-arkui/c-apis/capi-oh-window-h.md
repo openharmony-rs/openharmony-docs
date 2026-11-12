@@ -14,7 +14,7 @@ The file declares the window management APIs. You can use the APIs to set and ob
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

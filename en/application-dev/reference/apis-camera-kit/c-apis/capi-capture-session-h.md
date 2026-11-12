@@ -14,14 +14,14 @@ The file declares the capture session concepts.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [CaptureSession_Callbacks](capi-oh-camera-capturesession-callbacks.md) | - | The struct describes the callbacks related to a capture session. |
+| [CaptureSession_Callbacks](capi-oh-camera-capturesession-callbacks.md) | CaptureSession_Callbacks | The struct describes the callbacks related to a capture session. |
 | [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md) | Camera_CaptureSession | The struct describes the capture session object. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

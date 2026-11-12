@@ -14,14 +14,14 @@ Declare the interface for parsing audio and video media data.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVDemuxer](capi-avdemuxer-oh-avdemuxer.md) | OH_AVDemuxer | The struct describes a native object for the OH_AVDemuxer interface. |
 | [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | The struct describes a native object for the DRM_MediaKeySystemInfo interface. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

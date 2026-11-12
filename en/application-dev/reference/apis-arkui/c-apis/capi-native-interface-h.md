@@ -14,7 +14,7 @@ Provides a unified entry for the native module APIs.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -22,13 +22,13 @@ Provides a unified entry for the native module APIs.
 | [OH_ArkUI_NativeModule_RuntimeCheckType](#oh_arkui_nativemodule_runtimechecktype) | OH_ArkUI_NativeModule_RuntimeCheckType | Defines the runtime check types for ArkUI C APIs.<br> Each check type corresponds to a specific improper usage scenario of ArkUI C APIs, used to detect misuse at runtime (such as cross-thread calls, accessing destroyed objects, etc.). You can use [OH_ArkUI_NativeModule_SetRuntimeCheckMode](capi-native-interface-h.md#oh_arkui_nativemodule_setruntimecheckmode) to independently configure a runtime check mode for each check type. The behavior upon check failure is determined by the configured runtime check mode. For available modes, see [OH_ArkUI_NativeModule_RuntimeCheckMode](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode). |
 | [OH_ArkUI_NativeModule_RuntimeCheckMode](#oh_arkui_nativemodule_runtimecheckmode) | OH_ArkUI_NativeModule_RuntimeCheckMode | Defines the runtime check modes for ArkUI C APIs.<br> All runtime check types use the same set of modes (DISABLED, LOG, CRASH) defined in this enum to determine the behavior upon check failure. That is, each check type can be independently set to one of the following three modes. The default mode depends on the application's build type: For applications compiled in debug mode (Debug build in DevEco Studio, used for development and debugging), the default is [OH_ARKUI_NATIVEMODULE_CHECK_MODE_CRASH](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode). For applications compiled in release mode (Release build in DevEco Studio, used for production release), the default is [OH_ARKUI_NATIVEMODULE_CHECK_MODE_DISABLED](capi-native-interface-h.md#oh_arkui_nativemodule_runtimecheckmode). |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                      do {                                                                                              void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType);  if (anyNativeAPI) {                                                                           structPtr = (structType*)(anyNativeAPI);                                                  }                                                                                             } while (0) | Initializes the C API environment and obtains the corresponding struct pointer based on the struct type.<br> It applies to the scenario where the native API set type and the API struct type have been determined, and a specific native API struct pointer needs to be obtained to call ArkUI native C APIs. This macro function receives the enumeration parameter <b>nativeAPIVariantKind</b> of the [ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind) type, the struct type parameter <b>structType</b>, and the struct pointer variable <b>structPtr</b>. <b>structPtr</b> must match <b>structType</b>. This macro function calls [OH_ArkUI_QueryModuleInterfaceByName](capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname) to initialize the C API environment and obtain the abstract pointer of the native API, converts it to the <b>structType*</b> type, and assigns it to <b>structPtr</b>.<br>**Since**: 12 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

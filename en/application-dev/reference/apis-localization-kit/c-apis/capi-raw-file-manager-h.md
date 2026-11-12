@@ -14,19 +14,19 @@ This module allows you to create and release `NativeResourceManager` objects, an
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) | NativeResourceManager | Represents a `ResourceManager` object at the Native layer. `NativeResourceManager` encapsulates the Native implementation of JavaScript ResourceManager, and can be obtained through [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager). |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | GLOBAL_NATIVE_RESOURCE_MANAGER_H | This module allows you to create and release `NativeResourceManager` objects, and open rawfiles and directories.<br>**Since**: 8<br>**System capability**: SystemCapability.Global.ResourceManager |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

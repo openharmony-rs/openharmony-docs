@@ -14,7 +14,7 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -35,7 +35,7 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [OH_ArkUI_PathAnimation](capi-arkui-nativemodule-oh-arkui-pathanimation.md) | *OH_ArkUI_PathAnimationHandle | Defines the handle to a path animation. |
 | [OH_ArkUI_AnimationGroup](capi-arkui-nativemodule-oh-arkui-animationgroup.md) | *OH_ArkUI_AnimationGroupHandle | Defines the handle to an animation group. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

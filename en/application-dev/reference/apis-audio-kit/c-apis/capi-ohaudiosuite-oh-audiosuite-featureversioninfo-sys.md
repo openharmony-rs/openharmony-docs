@@ -1,7 +1,7 @@
 # OH_AudioSuite_FeatureVersionInfo(System API)
 
 ```c
-struct OH_AudioSuite_FeatureVersionInfo {...}
+typedef struct OH_AudioSuite_FeatureVersionInfo {...} OH_AudioSuite_FeatureVersionInfo
 ```
 
 ## Overview

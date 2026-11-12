@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OhosPixelMapInfos](capi-image-ohospixelmapinfos.md) | - | 用于描述PixelMap的基本属性信息，包括图片宽高、内存行字节数和像素格式。<br> 开发者在调用PixelMap属性查询相关接口时，可通过该结构体获取PixelMap的宽、高、行字节数及像素格式等信息， 便于统一读取和管理图片属性。适用于需要查询并使用PixelMap属性信息的场景。 |
+| [OhosPixelMapInfos](capi-image-ohospixelmapinfos.md) | OhosPixelMapInfos | 用于描述PixelMap的基本属性信息，包括图片宽高、内存行字节数和像素格式。<br> 开发者在调用PixelMap属性查询相关接口时，可通过该结构体获取PixelMap的宽、高、行字节数及像素格式等信息， 便于统一读取和管理图片属性。适用于需要查询并使用PixelMap属性信息的场景。 |
 | [OhosPixelMapCreateOps](capi-image-ohospixelmapcreateops.md) | - | 用于定义创建PixelMap的设置选项，包含图片宽高、像素格式、是否可编辑、透明度类型及缩放类型信息， 适用于在Native层创建PixelMap时指定初始化属性的场景。 |
 | [NativePixelMap_](capi-image-nativepixelmap-.md) | - | 定义Native层PixelMap数据类型名称。作为Native层操作PixelMap的句柄类型， 适用于在C/C++层对PixelMap进行像素读写、属性查询、图像变换等操作的场景。 |
 

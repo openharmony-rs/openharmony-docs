@@ -14,7 +14,7 @@ Declares the APIs for Transient task management.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

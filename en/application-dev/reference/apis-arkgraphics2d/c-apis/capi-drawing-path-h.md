@@ -14,7 +14,7 @@ This file declares the functions related to the path in the drawing module.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,7 +24,7 @@ This file declares the functions related to the path in the drawing module.
 | [OH_Drawing_PathOpMode](#oh_drawing_pathopmode) | OH_Drawing_PathOpMode | Enumerates the operation modes available for a path. |
 | [OH_Drawing_PathMeasureMatrixFlags](#oh_drawing_pathmeasurematrixflags) | OH_Drawing_PathMeasureMatrixFlags | Enumerates the types of matrix information obtained during path measurement. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

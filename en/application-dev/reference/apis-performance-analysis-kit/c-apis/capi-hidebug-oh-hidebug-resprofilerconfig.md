@@ -1,7 +1,7 @@
 # OH_HiDebug_ResProfilerConfig
 
 ```c
-struct OH_HiDebug_ResProfilerConfig {...}
+typedef struct OH_HiDebug_ResProfilerConfig {...} OH_HiDebug_ResProfilerConfig
 ```
 
 ## Overview

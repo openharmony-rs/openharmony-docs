@@ -14,7 +14,7 @@ Defines native api of ArkTS native module.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,7 +24,7 @@ Defines native api of ArkTS native module.
 | [napi_microtask_scope\_\_*](capi-arkts-napi-nativemodule-napi-microtask-scope--8h.md) | napi_microtask_scope | Microtask scope provides a scope to pause the execution of microtasks in the runtime. |
 | [napi_sendable_ref\_\_*](capi-arkts-napi-nativemodule-napi-sendable-ref--8h.md) | napi_sendable_ref | Native strong sendable reference of an sendable ArkTS object. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -2401,7 +2401,7 @@ Registers a native module.
 
 | Parameter | Description |
 | -- | -- |
-| napi_module* mod | Native module of type 'napi_module' to be registered. |
+| [napi_module](../../apis-third_party/c-apis/capi--api-module.md)* mod | Native module of type 'napi_module' to be registered. |
 
 ### napi_get_last_error_info()
 
@@ -5933,6 +5933,6 @@ To register a native sendable module which will be utilized in different threads
 
 | Parameter | Description |
 | -- | -- |
-| napi_module* mod | [in] Native module of type 'napi_module' to be registered. |
+| [napi_module](../../apis-third_party/c-apis/capi--api-module.md)* mod | [in] Native module of type 'napi_module' to be registered. |
 
 

@@ -14,7 +14,7 @@ The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -26,14 +26,14 @@ The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for
 | [ArkWeb_HttpBodyStream_](capi-web-arkweb-httpbodystream-.md) | ArkWeb_HttpBodyStream | Defines the uploaded data of the request. You can use the **OH_ArkWebHttpBodyStream_** API to read the uploaded data. |
 | [ArkWeb_ErrorInfo_](capi-web-arkweb-errorinfo-.md) | ArkWeb_ErrorInfo | ArkWeb_ErrorInfo is a structure that details response errors, used to set error information for responses in custom scheme request interception scenarios. Developers can use this structure to configure the error code, custom error code, and whether to automatically generate a response when no response is received. This structure is typically used in conjunction with ArkWeb_ResourceHandler to pass error information via OH_ArkWebResourceHandler_DidFailWithErrorInfo when a request fails. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkWeb_CustomSchemeOption](#arkweb_customschemeoption) | ArkWeb_CustomSchemeOption | Enumerates the custom scheme options. |
 | [ArkWeb_ResourceType](#arkweb_resourcetype) | ArkWeb_ResourceType | Enumerates the resource types of the request. The resource types match the corresponding items of **ResourceType** in Chromium and should not be renumbered. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

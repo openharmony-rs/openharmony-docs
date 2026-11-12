@@ -18,9 +18,9 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [DDK_Ashmem](capi-ddk-ddk-ashmem.md) | 定义通过接口[OH_DDK_CreateAshmem](capi-ddk-api-h.md#oh_ddk_createashmem)创建的共享内存。共享内存的缓冲区提供更好的性能，适用于多个模块之间高效共享大数据量、驱动程序与应用程序之间快速数据交换等需要高性能数据共享的场景。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [DDK_Ashmem](capi-ddk-ddk-ashmem.md) | DDK_Ashmem | 定义通过接口[OH_DDK_CreateAshmem](capi-ddk-api-h.md#oh_ddk_createashmem)创建的共享内存。共享内存的缓冲区提供更好的性能，适用于多个模块之间高效共享大数据量、驱动程序与应用程序之间快速数据交换等需要高性能数据共享的场景。 |
 
 ### 枚举
 

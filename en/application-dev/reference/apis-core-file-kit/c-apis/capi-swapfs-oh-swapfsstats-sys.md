@@ -1,7 +1,7 @@
 # OH_SwapfsStats(System API)
 
 ```c
-struct OH_SwapfsStats {...}
+typedef struct OH_SwapfsStats {...} OH_SwapfsStats
 ```
 
 ## Overview

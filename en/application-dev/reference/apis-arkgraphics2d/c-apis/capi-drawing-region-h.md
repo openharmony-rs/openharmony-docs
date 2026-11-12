@@ -14,13 +14,13 @@ This file declares the functions related to the region in the drawing module, in
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_RegionOpMode](#oh_drawing_regionopmode) | OH_Drawing_RegionOpMode | Enumerates the operation modes available for a region. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

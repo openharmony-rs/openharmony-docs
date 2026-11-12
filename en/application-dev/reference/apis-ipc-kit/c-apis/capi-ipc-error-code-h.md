@@ -16,7 +16,7 @@ Defines the IPC error codes, which are used to identify and handle various error
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

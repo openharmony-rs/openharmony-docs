@@ -12,13 +12,13 @@ The file declares the AVImageGenerator APIs. You can use the APIs to extract vid
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md) | OH_AVImageGenerator | The OH_AVImageGenerator struct describes the type used for generating video frames at specified timestamps. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

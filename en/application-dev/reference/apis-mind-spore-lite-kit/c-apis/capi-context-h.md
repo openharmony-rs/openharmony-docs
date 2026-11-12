@@ -12,13 +12,13 @@ Provides **Context** APIs for configuring runtime information.
 
 ## Summary
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | MINDSPORE_INCLUDE_C_API_CONTEXT_C_H | Provides **Context** APIs for configuring runtime information.<br>**Since**: 9 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -944,6 +944,6 @@ Add extension of key/value format to device info, Only valid for NNRT.
 
 | Type | Description |
 | -- | -- |
-| OH_AI_API OH_AI_Status | OH_AI_STATUS_SUCCESS if success, or detail error code if failed. |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | OH_AI_STATUS_SUCCESS if success, or detail error code if failed. |
 
 

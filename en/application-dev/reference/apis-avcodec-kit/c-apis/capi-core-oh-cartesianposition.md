@@ -1,7 +1,7 @@
 # OH_CartesianPosition
 
 ```c
-struct OH_CartesianPosition {...}
+typedef struct OH_CartesianPosition {...} OH_CartesianPosition
 ```
 
 ## Overview

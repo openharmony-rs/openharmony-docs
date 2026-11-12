@@ -1,7 +1,7 @@
 # OH_NativeBuffer_StaticMetadata
 
 ```c
-struct OH_NativeBuffer_StaticMetadata {...}
+typedef struct OH_NativeBuffer_StaticMetadata {...} OH_NativeBuffer_StaticMetadata
 ```
 
 ## 概述

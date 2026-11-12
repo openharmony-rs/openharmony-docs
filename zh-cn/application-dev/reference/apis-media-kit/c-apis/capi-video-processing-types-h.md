@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [VideoProcessing_ColorSpaceInfo](capi-videoprocessing-videoprocessing-colorspaceinfo.md) | - | 视频颜色空间信息数据结构。 |
+| [VideoProcessing_ColorSpaceInfo](capi-videoprocessing-videoprocessing-colorspaceinfo.md) | VideoProcessing_ColorSpaceInfo | 视频颜色空间信息数据结构。 |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md) | OH_VideoProcessing | 定义视频处理对象。 <br>定义一个OH_VideoProcessing空指针，调用[OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create)创建视频处理实例，该指针在创建实例之前必须为空。 用户可以对不同的处理类型创建不同的视频处理实例。 |
 | [NativeWindow](capi-videoprocessing-nativewindow.md) | OHNativeWindow | 定义NativeWindow对象。 |
 | [OH_AVFormat](capi-videoprocessing-oh-avformat.md) | OH_AVFormat | 定义OH_AVFormat对象。 |
@@ -128,16 +128,16 @@ enum VideoProcessing_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| VIDEO_PROCESSING_SUCCESS | @error 处理成功。 |
+| VIDEO_PROCESSING_SUCCESS | &nbsp;处理成功。 |
 | VIDEO_PROCESSING_ERROR_INVALID_PARAMETER = 401 | &nbsp;输入参数无效。以下情况都会返回该错误码： <br>1. 无效的输入或输出视频buffer，视频buffer为空。 <br>2. 无效的参数，参数为空。 <br>3. 无效的处理类型。 |
-| VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001 | @error 未知错误，比如GPU计算失败或memcpy失败。 |
+| VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001 | &nbsp;未知错误，比如GPU计算失败或memcpy失败。 |
 | VIDEO_PROCESSING_ERROR_INITIALIZE_FAILED | &nbsp;视频处理全局环境初始化失败，比如初始化GPU环境失败。 请检查设备是否支持GPU加速，或尝试重启应用后重试。 |
-| VIDEO_PROCESSING_ERROR_CREATE_FAILED | @error 创建视频处理实例失败，比如实例总数超出上限。可调用[OH_VideoProcessing_Destroy](capi-video-processing-h.md#oh_videoprocessing_destroy)释放不再使用的实例后重试。 |
-| VIDEO_PROCESSING_ERROR_PROCESS_FAILED | @error 处理过程失败，比如处理时间超时。 |
+| VIDEO_PROCESSING_ERROR_CREATE_FAILED | &nbsp;创建视频处理实例失败，比如实例总数超出上限。可调用[OH_VideoProcessing_Destroy](capi-video-processing-h.md#oh_videoprocessing_destroy)释放不再使用的实例后重试。 |
+| VIDEO_PROCESSING_ERROR_PROCESS_FAILED | &nbsp;处理过程失败，比如处理时间超时。 |
 | VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | &nbsp;不支持的处理类型，比如试图创建不支持的视频处理实例。 目前可对两种视频处理功能检查支持情况：[OH_VideoProcessing_IsColorSpaceConversionSupported](capi-video-processing-h.md#oh_videoprocessing_iscolorspaceconversionsupported), [OH_VideoProcessing_IsMetadataGenerationSupported](capi-video-processing-h.md#oh_videoprocessing_ismetadatagenerationsupported)。 |
-| VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | @error 不允许的操作，比如不满足调用接口所需的运行状态下调用该接口。 |
-| VIDEO_PROCESSING_ERROR_NO_MEMORY | @error 内存不足。请释放不再使用的资源后重试，或减少视频处理的分辨率。 |
-| VIDEO_PROCESSING_ERROR_INVALID_INSTANCE | @error 视频处理实例无效，比如视频处理实例为空实例。 |
+| VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | &nbsp;不允许的操作，比如不满足调用接口所需的运行状态下调用该接口。 |
+| VIDEO_PROCESSING_ERROR_NO_MEMORY | &nbsp;内存不足。请释放不再使用的资源后重试，或减少视频处理的分辨率。 |
+| VIDEO_PROCESSING_ERROR_INVALID_INSTANCE | &nbsp;视频处理实例无效，比如视频处理实例为空实例。 |
 | VIDEO_PROCESSING_ERROR_INVALID_VALUE | &nbsp;输入值无效，以下情况都会造成这种错误： <br>1. 视频buffer宽高太大或者颜色空间错误。 <br>2. 参数包含无效的值，比如细节增强的质量等级错误。 |
 
 ### VideoProcessing_State

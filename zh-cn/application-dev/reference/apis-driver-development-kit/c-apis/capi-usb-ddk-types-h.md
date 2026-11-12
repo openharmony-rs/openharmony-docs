@@ -18,21 +18,21 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) | 控制传输setup包，对应USB协议中的Setup Data。 |
-| [UsbDeviceDescriptor](capi-usbddk-usbdevicedescriptor.md) | 标准设备描述符，对应USB协议中Standard Device Descriptor。 |
-| [UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) | 标准配置描述符，对应USB协议中Standard Configuration Descriptor。 |
-| [UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) | 标准接口描述符，对应USB协议中Standard Interface Descriptor。 |
-| [UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) | 标准端点描述符，对应USB协议中Standard Endpoint Descriptor。 |
-| [UsbDdkEndpointDescriptor](capi-usbddk-usbddkendpointdescriptor.md) | 端点描述符，包含标准端点描述符和未做解析的描述符信息。 |
-| [UsbDdkInterfaceDescriptor](capi-usbddk-usbddkinterfacedescriptor.md) | 接口描述符，包含标准接口描述符和端点描述符等信息。 |
-| [UsbDdkInterface](capi-usbddk-usbddkinterface.md) | USB接口，是特定接口下备用设置的集合。 |
-| [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) | 配置描述符，包含标准配置描述符和接口描述符等信息。 |
-| [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | 请求管道，是USB数据传输请求的抽象，用于描述USB数据传输的基本配置参数，包括接口句柄、端点地址和超时时间。适用于需要进行USB数据传输的场景。 |
-| [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md) | 设备内存映射，通过[OH_Usb_CreateDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_createdevicememmap)创建，使用映射后的缓冲区可提升数据传输性能。 |
-| [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | 设备ID数组，用于存放[OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices)接口获取到的设备ID列表和设备数量。开发者申请设备ID数组，使用完结构体后需释放申请的内存，否则会造成资源泄漏。 |
-| [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) | 非根集线器数组，用于存放[OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#oh_usb_getnonroothubs)接口获取到的非根集线器设备ID数组和数量。开发者申请非根集线器ID数组，使用完结构体后需释放申请的内存，否则会造成资源泄漏。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) | - | 控制传输setup包，对应USB协议中的Setup Data。 |
+| [UsbDeviceDescriptor](capi-usbddk-usbdevicedescriptor.md) | - | 标准设备描述符，对应USB协议中Standard Device Descriptor。 |
+| [UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) | - | 标准配置描述符，对应USB协议中Standard Configuration Descriptor。 |
+| [UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) | - | 标准接口描述符，对应USB协议中Standard Interface Descriptor。 |
+| [UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) | - | 标准端点描述符，对应USB协议中Standard Endpoint Descriptor。 |
+| [UsbDdkEndpointDescriptor](capi-usbddk-usbddkendpointdescriptor.md) | UsbDdkEndpointDescriptor | 端点描述符，包含标准端点描述符和未做解析的描述符信息。 |
+| [UsbDdkInterfaceDescriptor](capi-usbddk-usbddkinterfacedescriptor.md) | UsbDdkInterfaceDescriptor | 接口描述符，包含标准接口描述符和端点描述符等信息。 |
+| [UsbDdkInterface](capi-usbddk-usbddkinterface.md) | UsbDdkInterface | USB接口，是特定接口下备用设置的集合。 |
+| [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) | UsbDdkConfigDescriptor | 配置描述符，包含标准配置描述符和接口描述符等信息。 |
+| [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | - | 请求管道，是USB数据传输请求的抽象，用于描述USB数据传输的基本配置参数，包括接口句柄、端点地址和超时时间。适用于需要进行USB数据传输的场景。 |
+| [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md) | UsbDeviceMemMap | 设备内存映射，通过[OH_Usb_CreateDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_createdevicememmap)创建，使用映射后的缓冲区可提升数据传输性能。 |
+| [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | Usb_DeviceArray | 设备ID数组，用于存放[OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices)接口获取到的设备ID列表和设备数量。开发者申请设备ID数组，使用完结构体后需释放申请的内存，否则会造成资源泄漏。 |
+| [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) | Usb_NonRootHubArray | 非根集线器数组，用于存放[OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#oh_usb_getnonroothubs)接口获取到的非根集线器设备ID数组和数量。开发者申请非根集线器ID数组，使用完结构体后需释放申请的内存，否则会造成资源泄漏。 |
 
 ### 枚举
 

@@ -14,13 +14,13 @@ Define the type of stored key value pairs.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_VBucket](capi-rdb-oh-vbucket.md) | OH_VBucket | Define the OH_VBucket structure type. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

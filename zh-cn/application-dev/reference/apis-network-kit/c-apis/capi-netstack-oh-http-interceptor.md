@@ -1,7 +1,7 @@
 # OH_Http_Interceptor
 
 ```c
-struct OH_Http_Interceptor {...}
+typedef struct OH_Http_Interceptor {...} OH_Http_Interceptor
 ```
 
 ## 概述

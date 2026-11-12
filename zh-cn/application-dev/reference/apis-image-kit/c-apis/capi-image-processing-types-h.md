@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md) | - | 色彩空间信息，用于色彩空间转换能力查询。 |
+| [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md) | ImageProcessing_ColorSpaceInfo | 色彩空间信息，用于色彩空间转换能力查询。 |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md) | OH_ImageProcessing | 提供OH_ImageProcessing结构体声明。<br>定义一个初始化为空的OH_ImageProcessing指针，并调用[OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create)来创建图片处理实例。 调用该接口前，应确保传入的指针为空。用户可根据不同的图片处理类型，分别创建多个图片处理实例。 |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md) | OH_PixelmapNative | OH_PixelmapNative是Native层封装的图像解码后无压缩的位图格式结构体，支持像素数据读写、不透明度设置、缩放、平移、旋转、翻转、裁剪等操作， 适用于需要在Native层对Pixelmap进行像素级处理与变换的场景。<br>创建OH_PixelmapNative需要使用[OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)系列函数， 该函数在未指定源像素格式时，会默认按BGRA_8888格式解析源像素数据。使用完毕后，必须调用[OH_PixelmapNative_Release](capi-pixelmap-native-h.md#oh_pixelmapnative_release)函数释放资源，两者需配对使用，否则会导致内存泄漏。<br> OH_PixelmapNative结构体的部分相关函数和操作方式如下： |
 | [OH_AVFormat](capi-imageprocessing-oh-avformat.md) | OH_AVFormat | 为OH_AVFormat接口定义native层对象。 |
@@ -89,16 +89,16 @@ enum ImageProcessing_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IMAGE_PROCESSING_SUCCESS | @error 成功。 |
+| IMAGE_PROCESSING_SUCCESS | &nbsp;成功。 |
 | IMAGE_PROCESSING_ERROR_INVALID_PARAMETER = 401 | &nbsp;输入参数无效。 <br>在以下错误条件下返回该错误码： <br>1. 输入或输出buffer无效，例如图片buffer为空。 <br>2. 参数无效，例如参数为空。<br>3. 类型无效，例如在创建函数中传入的类型不存在。 |
-| IMAGE_PROCESSING_ERROR_UNKNOWN = 29200001 | @error 未知错误，例如GPU计算失败或memcpy失败。 |
-| IMAGE_PROCESSING_ERROR_INITIALIZE_FAILED | @error 全局环境初始化失败，例如GPU环境初始化失败。 |
-| IMAGE_PROCESSING_ERROR_CREATE_FAILED | @error 创建图片处理实例失败，例如实例数量超过上限。 |
-| IMAGE_PROCESSING_ERROR_PROCESS_FAILED | @error 处理图片buffer失败，例如处理超时。 |
-| IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | @error 当前处理不支持，可以通过“OH_ImageProcessing_IsXXXSupported”接口查询是否支持该能力。 |
-| IMAGE_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | @error 无权限操作，可能由于状态不正确导致。 |
-| IMAGE_PROCESSING_ERROR_NO_MEMORY | @error 内存不足。 |
-| IMAGE_PROCESSING_ERROR_INVALID_INSTANCE | @error 无效的图片处理实例，可能由于实例为空导致。 |
+| IMAGE_PROCESSING_ERROR_UNKNOWN = 29200001 | &nbsp;未知错误，例如GPU计算失败或memcpy失败。 |
+| IMAGE_PROCESSING_ERROR_INITIALIZE_FAILED | &nbsp;全局环境初始化失败，例如GPU环境初始化失败。 |
+| IMAGE_PROCESSING_ERROR_CREATE_FAILED | &nbsp;创建图片处理实例失败，例如实例数量超过上限。 |
+| IMAGE_PROCESSING_ERROR_PROCESS_FAILED | &nbsp;处理图片buffer失败，例如处理超时。 |
+| IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | &nbsp;当前处理不支持，可以通过“OH_ImageProcessing_IsXXXSupported”接口查询是否支持该能力。 |
+| IMAGE_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | &nbsp;无权限操作，可能由于状态不正确导致。 |
+| IMAGE_PROCESSING_ERROR_NO_MEMORY | &nbsp;内存不足。 |
+| IMAGE_PROCESSING_ERROR_INVALID_INSTANCE | &nbsp;无效的图片处理实例，可能由于实例为空导致。 |
 | IMAGE_PROCESSING_ERROR_INVALID_VALUE | &nbsp;输入值无效。<br>在以下错误条件下返回该错误码： <br>1. 输入或输出图片buffer无效，例如图片buffer的宽度（高度）过大或颜色空间不正确。 <br>2. 参数无效，例如参数不包括有效信息，例如细节增强的质量级别不正确。 |
 
 

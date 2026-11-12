@@ -14,13 +14,13 @@ This file declares the functions related to the bitmap in the drawing module.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_BitmapFormat](capi-drawing-oh-drawing-bitmapformat.md) | OH_Drawing_BitmapFormat | This struct describes the pixel format of a bitmap, including the color type and alpha type. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

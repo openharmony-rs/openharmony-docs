@@ -12,26 +12,26 @@ The file declares the struct and enums used by the AVTranscoder.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) | OH_AVTranscoder | The struct initializes an AVTranscoder. |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) | OH_AVTranscoder_Config | The struct initializes an AVTranscoder_Config. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVTranscoder_State](#oh_avtranscoder_state) | OH_AVTranscoder_State | Enumerates the transcoding states. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | MULTIMEDIA_PLAYER_FRAMEWORK_AVTRANSCODER_BASE_H | The file declares the struct and enums used by the AVTranscoder.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

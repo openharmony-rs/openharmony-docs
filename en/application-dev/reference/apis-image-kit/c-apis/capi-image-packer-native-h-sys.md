@@ -16,7 +16,7 @@ The file declares the APIs for image encoding.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

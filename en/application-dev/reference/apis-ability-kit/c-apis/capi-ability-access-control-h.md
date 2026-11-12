@@ -16,7 +16,7 @@ Declares the APIs for implementing application access control.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

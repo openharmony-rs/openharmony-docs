@@ -1,7 +1,7 @@
 # OH_SwapfsSwapOutRequest（系统接口）
 
 ```c
-struct OH_SwapfsSwapOutRequest {...}
+typedef struct OH_SwapfsSwapOutRequest {...} OH_SwapfsSwapOutRequest
 ```
 
 ## 概述

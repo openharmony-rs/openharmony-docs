@@ -1,7 +1,7 @@
 # VkNativeBufferUsageOHOS
 
 ```c
-struct VkNativeBufferUsageOHOS {...}
+typedef struct VkNativeBufferUsageOHOS {...} VkNativeBufferUsageOHOS
 ```
 
 ## Overview

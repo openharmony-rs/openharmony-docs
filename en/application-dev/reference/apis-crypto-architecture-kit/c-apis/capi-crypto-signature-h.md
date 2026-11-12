@@ -16,7 +16,7 @@ Defines the signing and verification interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,13 +24,13 @@ Defines the signing and verification interfaces.
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) | OH_CryptoSign | Signing structure, representing a signing context. |
 | [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) | OH_CryptoEccSignatureSpec | ECC signature specification structure, representing an ECC signature specification. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [CryptoSignature_ParamType](#cryptosignature_paramtype) | CryptoSignature_ParamType | Defines signature parameter types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -19,7 +19,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md) | OH_Drawing_TypefaceFallbackInfo | 定义字体回退信息结构体，包含一组使用相同回退字体的字形数组。 |
-| [OH_Drawing_Font_Metrics](capi-drawing-oh-drawing-font-metrics.md) | - | 定义字体度量信息的结构体。 |
+| [OH_Drawing_Font_Metrics](capi-drawing-oh-drawing-font-metrics.md) | OH_Drawing_Font_Metrics | 定义字体度量信息的结构体。 |
 
 ### 枚举
 

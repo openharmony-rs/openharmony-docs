@@ -1,7 +1,7 @@
 # OH_Http_Interceptor_Request
 
 ```c
-struct OH_Http_Interceptor_Request {...}
+typedef struct OH_Http_Interceptor_Request {...} OH_Http_Interceptor_Request
 ```
 
 ## 概述
@@ -26,7 +26,7 @@ struct OH_Http_Interceptor_Request {...}
 | -- | -- |
 | [Http_Buffer](capi-netstack-http-buffer.md) url | 请求URL，详情请参考[Http_Buffer](capi-netstack-http-buffer.md)定义。<br>**起始版本：** 24 |
 | [Http_Buffer](capi-netstack-http-buffer.md) method | 请求方法，详情请参考[Http_Buffer](capi-netstack-http-buffer.md)定义。<br>**起始版本：** 24 |
-| OH_Http_Interceptor_Headers *headers | HTTP请求头信息，详情请参考[OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md)定义。<br>**起始版本：** 24 |
+| [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md) *headers | HTTP请求头信息，详情请参考[OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md)定义。<br>**起始版本：** 24 |
 | [Http_Buffer](capi-netstack-http-buffer.md) body | 请求体内容，详情请参考[Http_Buffer](capi-netstack-http-buffer.md)定义。<br>**起始版本：** 24 |
 
 

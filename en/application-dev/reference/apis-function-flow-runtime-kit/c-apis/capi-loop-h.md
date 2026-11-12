@@ -14,13 +14,13 @@ Declares the event loop interfaces in C.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) | ffrt_loop_t | Loop handle, which identifies different loops. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -32,7 +32,7 @@ Declares the event loop interfaces in C.
 | [FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)](#ffrt_loop_timer_start) | Starts a timer on ffrt loop.<br> The callback is invoked after the timeout elapses, and is repeated if `repeat` is `true`. |
 | [FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)](#ffrt_loop_timer_stop) | Stops a timer on ffrt loop.<br> After this call, the timer no longer fires. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -66,7 +66,7 @@ Creates a loop on the specified queue for running an event loop.
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API ffrt_loop_t | A non-null loop handle if the loop is created; a null pointer otherwise. |
+| FFRT_C_API [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) | A non-null loop handle if the loop is created; a null pointer otherwise. |
 
 ### ffrt_loop_destroy()
 

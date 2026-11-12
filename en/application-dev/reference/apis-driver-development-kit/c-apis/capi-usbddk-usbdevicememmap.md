@@ -1,7 +1,7 @@
 # UsbDeviceMemMap
 
 ```c
-struct UsbDeviceMemMap {...}
+typedef struct UsbDeviceMemMap {...} UsbDeviceMemMap
 ```
 
 ## Overview

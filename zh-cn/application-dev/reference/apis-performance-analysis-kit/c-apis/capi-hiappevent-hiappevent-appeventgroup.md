@@ -1,7 +1,7 @@
 # HiAppEvent_AppEventGroup
 
 ```c
-struct HiAppEvent_AppEventGroup {...}
+typedef struct HiAppEvent_AppEventGroup {...} HiAppEvent_AppEventGroup
 ```
 
 ## 概述

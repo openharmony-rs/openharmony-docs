@@ -16,25 +16,25 @@ Defines enums, structs, macros, and error codes in HUKS.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | Defines the returned data, including a status code and related description. |
-| [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) | Defines the struct of a binary large object (BLOB). |
-| [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) | Defines the types of the parameters in a parameter set. |
-| [OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) | Defines the struct of a parameter set. |
-| [OH_Huks_CertChain](capi-hukstypeapi-oh-huks-certchain.md) | Defines the struct of a certificate chain. |
-| [OH_Huks_KeyInfo](capi-hukstypeapi-oh-huks-keyinfo.md) | Defines the struct of key information. |
-| [OH_Huks_PubKeyInfo](capi-hukstypeapi-oh-huks-pubkeyinfo.md) | Defines the struct of a public key. |
-| [OH_Huks_KeyMaterialRsa](capi-hukstypeapi-oh-huks-keymaterialrsa.md) | Defines the struct for an RSA key. |
-| [OH_Huks_KeyMaterialEcc](capi-hukstypeapi-oh-huks-keymaterialecc.md) | Defines the struct for an ECC key. |
-| [OH_Huks_KeyMaterialDsa](capi-hukstypeapi-oh-huks-keymaterialdsa.md) | Defines the struct for a DSA key. |
-| [OH_Huks_KeyMaterialDh](capi-hukstypeapi-oh-huks-keymaterialdh.md) | Defines the struct for a DH key. |
-| [OH_Huks_KeyMaterial25519](capi-hukstypeapi-oh-huks-keymaterial25519.md) | Defines a struct of a 25519 key. |
-| [OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) | Defines the struct of a key alias set. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | OH_Huks_Result | Defines the returned data, including a status code and related description. |
+| [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) | OH_Huks_Blob | Defines the struct of a binary large object (BLOB). |
+| [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) | OH_Huks_Param | Defines the types of the parameters in a parameter set. |
+| [OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) | OH_Huks_ParamSet | Defines the struct of a parameter set. |
+| [OH_Huks_CertChain](capi-hukstypeapi-oh-huks-certchain.md) | OH_Huks_CertChain | Defines the struct of a certificate chain. |
+| [OH_Huks_KeyInfo](capi-hukstypeapi-oh-huks-keyinfo.md) | OH_Huks_KeyInfo | Defines the struct of key information. |
+| [OH_Huks_PubKeyInfo](capi-hukstypeapi-oh-huks-pubkeyinfo.md) | OH_Huks_PubKeyInfo | Defines the struct of a public key. |
+| [OH_Huks_KeyMaterialRsa](capi-hukstypeapi-oh-huks-keymaterialrsa.md) | OH_Huks_KeyMaterialRsa | Defines the struct for an RSA key. |
+| [OH_Huks_KeyMaterialEcc](capi-hukstypeapi-oh-huks-keymaterialecc.md) | OH_Huks_KeyMaterialEcc | Defines the struct for an ECC key. |
+| [OH_Huks_KeyMaterialDsa](capi-hukstypeapi-oh-huks-keymaterialdsa.md) | OH_Huks_KeyMaterialDsa | Defines the struct for a DSA key. |
+| [OH_Huks_KeyMaterialDh](capi-hukstypeapi-oh-huks-keymaterialdh.md) | OH_Huks_KeyMaterialDh | Defines the struct for a DH key. |
+| [OH_Huks_KeyMaterial25519](capi-hukstypeapi-oh-huks-keymaterial25519.md) | OH_Huks_KeyMaterial25519 | Defines a struct of a 25519 key. |
+| [OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) | OH_Huks_KeyAliasSet | Defines the struct of a key alias set. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -63,7 +63,7 @@ Defines enums, structs, macros, and error codes in HUKS.
 | [OH_Huks_KeyWrapType](#oh_huks_keywraptype) | OH_Huks_KeyWrapType | Enumerates the wrap type of the key generated or imported. |
 | [OH_Huks_Tag](#oh_huks_tag) | OH_Huks_Tag | Enumerates the tags contained in a parameter set. <br>1 to 200: key parameter tag values. <br>301 to 500: tag values related to access control and authentication of key usage. <br>501 to 600: tag values related to key authentication. <br>601 to 1000: reserved values for other types of tag values. <br>1001 to 9999: extended tag values. <br>11000 to 12000: reserved values. <br>20001 to N: reserved tag values. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

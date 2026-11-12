@@ -14,13 +14,13 @@ This file declares the functions related to the rectangular lattice object.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_LatticeRectType](#oh_drawing_latticerecttype) | OH_Drawing_LatticeRectType | Enumerates the types of rectangles used to fill the lattices. It is applicable only to rectangular lattice objects. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

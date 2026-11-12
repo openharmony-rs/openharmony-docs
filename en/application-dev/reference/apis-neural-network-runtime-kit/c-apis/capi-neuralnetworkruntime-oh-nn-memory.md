@@ -1,7 +1,7 @@
 # OH_NN_Memory
 
 ```c
-struct OH_NN_Memory {...}
+typedef struct OH_NN_Memory {...} OH_NN_Memory
 ```
 
 ## Overview

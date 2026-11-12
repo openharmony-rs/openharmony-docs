@@ -29,6 +29,6 @@ Defines the session between a CA and a TA.
 | uint32_t ops_cnt | The number of operations associated with the session. |
 | head | Linked list head for session-related data. |
 | imp | Implementation-specific data. |
-| TEEC_Context *context | Pointer to the TEEC context associated with the session. |
+| [TEEC_Context](capi-teeclient-teec-context.md) *context | Pointer to the TEEC context associated with the session. |
 
 

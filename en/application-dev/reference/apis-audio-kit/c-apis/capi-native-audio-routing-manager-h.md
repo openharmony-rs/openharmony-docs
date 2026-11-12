@@ -14,13 +14,13 @@ Declare audio routing manager related interfaces.<br> This file interface is use
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) | OH_AudioRoutingManager | Declaring the audio routing manager. The handle of audio routing manager used for routing and device related functions. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

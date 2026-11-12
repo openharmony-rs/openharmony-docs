@@ -1,7 +1,7 @@
 # OH_TrafficFilter_TCPFlagsMatch
 
 ```c
-struct OH_TrafficFilter_TCPFlagsMatch {...}
+typedef struct OH_TrafficFilter_TCPFlagsMatch {...} OH_TrafficFilter_TCPFlagsMatch
 ```
 
 ## Overview

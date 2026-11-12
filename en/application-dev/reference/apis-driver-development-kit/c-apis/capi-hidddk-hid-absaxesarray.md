@@ -1,7 +1,7 @@
 # Hid_AbsAxesArray
 
 ```c
-struct Hid_AbsAxesArray {...}
+typedef struct Hid_AbsAxesArray {...} Hid_AbsAxesArray
 ```
 
 ## Overview
@@ -24,7 +24,7 @@ Defines an array of absolute coordinate attributes, which stores attributes abou
 
 | Name | Description |
 | -- | -- |
-| Hid_AbsAxes *hidAbsAxes | Pointer to the first element of the array of absolute coordinate codes. This parameter must be used together with **length**. The pointer must be valid and cannot be null. |
+| [Hid_AbsAxes](capi-hid-ddk-types-h.md#hid_absaxes) *hidAbsAxes | Pointer to the first element of the array of absolute coordinate codes. This parameter must be used together with **length**. The pointer must be valid and cannot be null. |
 | uint16_t length | Valid length of the array, which cannot exceed the actual length of the **hidEventType** array. |
 
 

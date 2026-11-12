@@ -14,13 +14,13 @@ The file declares the attribute definition of the media struct AVBuffer.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) | The struct describes the description information about the buffer of an OH_AVCodec instance. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md) | OH_AVCodecBufferAttr | The struct describes the description information about the buffer of an OH_AVCodec instance. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

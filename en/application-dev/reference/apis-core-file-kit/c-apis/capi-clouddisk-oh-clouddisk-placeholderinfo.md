@@ -1,7 +1,7 @@
 # OH_CloudDisk_PlaceholderInfo
 
 ```c
-struct OH_CloudDisk_PlaceholderInfo {...}
+typedef struct OH_CloudDisk_PlaceholderInfo {...} OH_CloudDisk_PlaceholderInfo
 ```
 
 ## Overview

@@ -16,20 +16,20 @@ Defines the symmetric key cipher interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_CryptoSymCipher](capi-cryptosymcipherapi-oh-cryptosymcipher.md) | OH_CryptoSymCipher | Symmetric cipher structure, representing a symmetric cipher context. |
 | [OH_CryptoSymCipherParams](capi-cryptosymcipherapi-oh-cryptosymcipherparams.md) | OH_CryptoSymCipherParams | Symmetric cipher parameters structure, representing symmetric cipher parameters. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [CryptoSymCipher_ParamsType](#cryptosymcipher_paramstype) | CryptoSymCipher_ParamsType | Defines the cipher parameter types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

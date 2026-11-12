@@ -14,7 +14,7 @@ Defines the APIs, data structs, and enums for accessing the UDMF. If the paramet
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -29,7 +29,7 @@ Defines the APIs, data structs, and enums for accessing the UDMF. If the paramet
 | [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) | OH_UdmfDataLoadInfo | Defines a struct for the data loading information. |
 | [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md) | OH_UDMF_Summary | Summarizes the data information of the **unifiedData** object, including the data type and size. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -39,13 +39,13 @@ Defines the APIs, data structs, and enums for accessing the UDMF. If the paramet
 | [Udmf_ProgressIndicator](#udmf_progressindicator) | Udmf_ProgressIndicator | Describe the types of progress indicator when getting data from the udmf. |
 | [Udmf_Visibility](#udmf_visibility) | Udmf_Visibility | Describe the visibility range of data |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | UDMF_KEY_BUFFER_LEN (512) | Minimum space length of the unique identifier of a unified data object.<br>**Since**: 12 |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -2504,7 +2504,7 @@ Set [OH_UdmfData](capi-udmf-oh-udmfdata.md) data to database.
 | -- | -- |
 | [Udmf_Intention](capi-udmf-h.md#udmf_intention) intention | Represents data type [Udmf_Intention](capi-udmf-h.md#udmf_intention). |
 | [OH_UdmfData](capi-udmf-oh-udmfdata.md)* unifiedData | Represents a pointer to an instance of [OH_UdmfData](capi-udmf-oh-udmfdata.md). |
-| char* key | Represents return value after set data to database successfully, it's memory size not less than [UDMF_KEY_BUFFER_LEN](capi-udmf-h.md#宏定义). |
+| char* key | Represents return value after set data to database successfully, it's memory size not less than [UDMF_KEY_BUFFER_LEN](capi-udmf-h.md#macros). |
 | unsigned int keyLen | Represents size of key param. |
 
 **Returns**:
@@ -2540,7 +2540,7 @@ Set [OH_UdmfData](capi-udmf-oh-udmfdata.md) data to database with options.
 | -- | -- |
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)* options | Represents a pointer to an instance of [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md). |
 | [OH_UdmfData](capi-udmf-oh-udmfdata.md)* unifiedData | Represents a pointer to an instance of [OH_UdmfData](capi-udmf-oh-udmfdata.md). |
-| char* key | Represents return value after set data to database successfully, it's memory size not less than [UDMF_KEY_BUFFER_LEN](capi-udmf-h.md#宏定义). |
+| char* key | Represents return value after set data to database successfully, it's memory size not less than [UDMF_KEY_BUFFER_LEN](capi-udmf-h.md#macros). |
 | unsigned int keyLen | Represents size of key param. |
 
 **Returns**:

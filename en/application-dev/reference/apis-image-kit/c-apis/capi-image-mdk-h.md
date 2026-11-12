@@ -14,7 +14,7 @@ Declares functions that access the image rectangle, size, format, and component 
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -22,14 +22,14 @@ Declares functions that access the image rectangle, size, format, and component 
 | [OhosImageComponent](capi-image-ohosimagecomponent.md) | - | Defines the image composition information. |
 | [ImageNative_](capi-image-imagenative-.md) | ImageNative | Defines an image object at the native layer for the image interface. |
 
-### Enum
+### Enums
 
 | Name | Description |
 | -- | -- |
 | [anonymous0](#anonymous0) | Enumerates the image formats. |
 | [anonymous1](#anonymous1) | Enumerates the image components. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

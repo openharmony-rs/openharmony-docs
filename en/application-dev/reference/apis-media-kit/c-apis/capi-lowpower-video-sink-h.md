@@ -14,7 +14,7 @@ The file declares the native APIs provided by the LowPowerVideoSink. You can use
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

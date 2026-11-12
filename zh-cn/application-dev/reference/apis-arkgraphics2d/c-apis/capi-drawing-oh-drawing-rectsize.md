@@ -1,7 +1,7 @@
 # OH_Drawing_RectSize
 
 ```c
-struct OH_Drawing_RectSize {...}
+typedef struct OH_Drawing_RectSize {...} OH_Drawing_RectSize
 ```
 
 ## 概述

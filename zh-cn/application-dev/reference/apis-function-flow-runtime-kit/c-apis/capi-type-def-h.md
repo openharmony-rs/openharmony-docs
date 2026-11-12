@@ -140,7 +140,9 @@ enum ffrt_storage_size_t
 | ffrt_cond_storage_size = 64 | 条件变量存储大小，单位是字节。 |
 | ffrt_queue_attr_storage_size = 128 | 队列属性存储大小，单位是字节。 |
 | ffrt_rwlock_storage_size = 64 | 读写锁存储大小，单位是字节。<br>**起始版本：** 18 |
-| ffrt_fiber_storage_size = 22 | 纤程存储大小，单位是字节。<br> 该常量定义纤程存储大小。实际值取决于目标架构： - `\_\_aarch64\_\_`：22 - `\_\_arm\_\_`：64 - `\_\_x86_64\_\_`：8<br>**起始版本：** 20 |
+| ffrt_fiber_storage_size = 8 | 纤程存储大小，单位是字节。<br> 该常量定义纤程存储大小。实际值取决于目标架构： - `\_\_aarch64\_\_`：22 - `\_\_arm\_\_`：64 - `\_\_x86_64\_\_`：8<br>**起始版本：** 20 |
+| ffrt_fiber_storage_size = 8 | 纤程存储大小，单位是字节。<br> 该常量定义纤程存储大小。实际值取决于目标架构： - `\_\_aarch64\_\_`：22 - `\_\_arm\_\_`：64 - `\_\_x86_64\_\_`：8<br>**起始版本：** 20 |
+| ffrt_fiber_storage_size = 8 | 纤程存储大小，单位是字节。<br> 该常量定义纤程存储大小。实际值取决于目标架构： - `\_\_aarch64\_\_`：22 - `\_\_arm\_\_`：64 - `\_\_x86_64\_\_`：8<br>**起始版本：** 20 |
 
 ### ffrt_function_kind_t
 

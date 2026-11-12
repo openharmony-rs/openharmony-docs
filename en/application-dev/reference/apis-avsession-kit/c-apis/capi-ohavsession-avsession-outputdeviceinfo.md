@@ -1,7 +1,7 @@
 # AVSession_OutputDeviceInfo
 
 ```c
-struct AVSession_OutputDeviceInfo {...}
+typedef struct AVSession_OutputDeviceInfo {...} AVSession_OutputDeviceInfo
 ```
 
 ## Overview
@@ -25,6 +25,6 @@ Declaring the target Device Information.
 | Name | Description |
 | -- | -- |
 | uint32_t size | Array size of device information. |
-| AVSession_DeviceInfo **deviceInfos | Arrays of device information. |
+| [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) **deviceInfos | Arrays of device information. |
 
 

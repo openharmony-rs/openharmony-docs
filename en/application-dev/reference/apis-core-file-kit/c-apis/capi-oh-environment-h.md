@@ -14,7 +14,7 @@ Provide environment APIS.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

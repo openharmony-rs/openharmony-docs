@@ -14,7 +14,7 @@ Defines the BufferHandle struct for native window.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

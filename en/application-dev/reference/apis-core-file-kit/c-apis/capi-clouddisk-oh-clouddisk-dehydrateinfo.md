@@ -1,7 +1,7 @@
 # OH_CloudDisk_DehydrateInfo
 
 ```c
-struct OH_CloudDisk_DehydrateInfo {...}
+typedef struct OH_CloudDisk_DehydrateInfo {...} OH_CloudDisk_DehydrateInfo
 ```
 
 ## Overview

@@ -14,20 +14,20 @@ Defines enumerations and APIs related to **WaterFlow**.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_Margin](capi-arkui-nativemodule-arkui-margin.md) | ArkUI_Margin | Describes the margins of a component, which is used to define the blank area between the component boundary and its parent container or adjacent components, affecting the actually occupied space and position of the component in the layout. |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md) | ArkUI_WaterFlowSectionOption | Defines the water flow section configuration. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_WaterFlowLayoutMode](#arkui_waterflowlayoutmode) | ArkUI_WaterFlowLayoutMode | Enumerates the layout modes of the WaterFlow component. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

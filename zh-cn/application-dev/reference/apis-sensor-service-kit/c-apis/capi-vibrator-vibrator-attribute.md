@@ -1,7 +1,7 @@
 # Vibrator_Attribute
 
 ```c
-struct Vibrator_Attribute {...}
+typedef struct Vibrator_Attribute {...} Vibrator_Attribute
 ```
 
 ## 概述

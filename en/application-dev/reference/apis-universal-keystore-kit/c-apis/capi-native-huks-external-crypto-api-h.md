@@ -16,7 +16,7 @@ Defines the OpenHarmony Universal KeyStore (HUKS) APIs for external key manageme
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

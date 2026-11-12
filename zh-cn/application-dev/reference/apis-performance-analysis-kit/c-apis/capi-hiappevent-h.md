@@ -18,9 +18,9 @@ HiAppEvent模块为应用开发者提供的事件订阅和事件打点函数定�
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [HiAppEvent_AppEventInfo](capi-hiappevent-hiappevent-appeventinfo.md) | - | 单个事件信息，包含事件领域、事件名称、事件类型和事件携带的用JSON格式字符串表示的自定义参数列表。 |
-| [HiAppEvent_AppEventGroup](capi-hiappevent-hiappevent-appeventgroup.md) | - | 一组事件信息，用于管理和组织具有相同名称的事件信息。该结构体包含事件组的名称，按名称分组的单个事件信息数组，事件数组的长度。 |
-| [OH_HiAppEvent_ExternalLog](capi-hiappevent-oh-hiappevent-externallog.md) | - | The OH_HiAppEvent_ExternalLog 结构体用于描述外部日志信息，包括 文件路径、生成时间戳、文件大小、系统事件类型。 |
+| [HiAppEvent_AppEventInfo](capi-hiappevent-hiappevent-appeventinfo.md) | HiAppEvent_AppEventInfo | 单个事件信息，包含事件领域、事件名称、事件类型和事件携带的用JSON格式字符串表示的自定义参数列表。 |
+| [HiAppEvent_AppEventGroup](capi-hiappevent-hiappevent-appeventgroup.md) | HiAppEvent_AppEventGroup | 一组事件信息，用于管理和组织具有相同名称的事件信息。该结构体包含事件组的名称，按名称分组的单个事件信息数组，事件数组的长度。 |
+| [OH_HiAppEvent_ExternalLog](capi-hiappevent-oh-hiappevent-externallog.md) | OH_HiAppEvent_ExternalLog | The OH_HiAppEvent_ExternalLog 结构体用于描述外部日志信息，包括 文件路径、生成时间戳、文件大小、系统事件类型。 |
 | [ParamListNode*](capi-hiappevent-paramlistnode8h.md) | ParamList | 事件参数列表节点。用于组织和管理事件参数列表信息，通过ParamListNode可以构建参数链表，支持多参数事件的参数传递。 |
 | [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md) | HiAppEvent_Watcher | 接收应用事件的事件观察者。用于对应用事件进行监听和处理。 |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md) | HiAppEvent_Processor | 应用事件上报的处理者。用于事件的上报和管理，开发者可自定义数据处理配置，满足不同的数据处理需求。 |
@@ -819,7 +819,7 @@ int OH_HiAppEvent_Write(const char* domain, const char* name, enum EventType typ
 | -- | -- |
 | const char* domain | 事件领域。开发者可以根据需要自定义事件领域。 事件领域名称支持数字、字母、下划线字符，需要以字母开头且不能以下划线结尾，长度非空且不超过32个字符。 |
 | const char* name | 事件名称。开发者可以根据需要自定义事件名称。 首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过48个字符。 |
-| enum EventType type | 事件类型，在[EventType](capi-hiappevent-h.md#eventtype)中定义。 |
+| enum [EventType](capi-hiappevent-h.md#eventtype) type | 事件类型，在[EventType](capi-hiappevent-h.md#eventtype)中定义。 |
 | [const ParamList](capi-hiappevent-paramlistnode8h.md) list | 事件参数列表，每个参数由参数名和参数值组成，其规格定义如下： <br>1、参数名为字符串类型。 首字符必须为字母字符或$字符，中间字符必须为数字字符、字母字符或下划线字符，结尾字符必须为数字字符或字母字符，长度非空且不超过32个字符。 <br>2、参数值支持字符串、数值、布尔、数组类型。字符串类型参数长度需在8 * 1024个字符以内，超出会做丢弃处理； 数组类型参数中的元素类型只能为字符串、数值、布尔中的一种，且元素个数需在100以内，超出会做丢弃处理。 <br>3、参数个数需在32个以内，超出的参数会做丢弃处理。 |
 
 **返回值：**
@@ -1603,7 +1603,7 @@ int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType fra
 
 | 参数项 | 描述 |
 | -- | -- |
-| enum OH_HiAppEvent_FrameworkType frameworkType | 应用框架类型。 |
+| enum [OH_HiAppEvent_FrameworkType](capi-hiappevent-h.md#oh_hiappevent_frameworktype) frameworkType | 应用框架类型。 |
 | const char* frameworkVersion | 应用框架版本。 |
 | const char* description | 应用框架内存占用异常的描述信息。 |
 

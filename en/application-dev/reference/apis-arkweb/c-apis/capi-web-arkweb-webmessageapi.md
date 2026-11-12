@@ -6,7 +6,7 @@ typedef struct ArkWeb_WebMessageAPI {...} ArkWeb_WebMessageAPI
 
 ## Overview
 
-ArkWeb_WebMessageAPI is a native API struct for Web messages. This struct provides functions for creating and destroying messages, setting and obtaining message types, and managing message data buffers. This API is part of the postMessage bridge, supporting bidirectional communication between Native code and HTML pages.<br>Web message APIs must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Before calling, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义) to check the availability of function pointers, preventing crashes caused by a mismatch between the SDK and device ROM.
+ArkWeb_WebMessageAPI is a native API struct for Web messages. This struct provides functions for creating and destroying messages, setting and obtaining message types, and managing message data buffers. This API is part of the postMessage bridge, supporting bidirectional communication between Native code and HTML pages.<br>Web message APIs must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method. Before calling, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check the availability of function pointers, preventing crashes caused by a mismatch between the SDK and device ROM.
 
 <!--Device-typedef struct ArkWeb_WebMessageAPI {...} ArkWeb_WebMessageAPI--><!--Device-typedef struct ArkWeb_WebMessageAPI {...} ArkWeb_WebMessageAPI-End-->
 

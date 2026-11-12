@@ -16,7 +16,7 @@ Declares the data types for filter effects, used to define the matrices, status 
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,7 +24,7 @@ Declares the data types for filter effects, used to define the matrices, status 
 | [OH_Filter](capi-effectkit-oh-filter.md) | OH_Filter | Defines a filter struct used with EffectKit module APIs to implement filter effect processing. |
 | [OH_PixelmapNative](capi-effectkit-oh-pixelmapnative.md) | OH_PixelmapNative | Declares a pixel map object defined by the image framework. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

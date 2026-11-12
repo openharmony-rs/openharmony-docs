@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_UDMF_VirtualFileCallbacks](capi-udmf-oh-udmf-virtualfilecallbacks.md) | - | 描述用于提供虚拟文件元数据和内容的回调。<br> <code>structSize</code>必须设置为<code>sizeof(OH_UDMF_VirtualFileCallbacks)</code>。 <code>onRead</code>为必选回调，<code>onStat</code>和<code>onCancel</code>为可选回调；所有文件必须预先声明大小。 不需要取消通知时，将<code>onCancel</code>设置为nullptr。 不同线程可能并发调用回调，回调不得无限期阻塞。 |
+| [OH_UDMF_VirtualFileCallbacks](capi-udmf-oh-udmf-virtualfilecallbacks.md) | OH_UDMF_VirtualFileCallbacks | 描述用于提供虚拟文件元数据和内容的回调。<br> <code>structSize</code>必须设置为<code>sizeof(OH_UDMF_VirtualFileCallbacks)</code>。 <code>onRead</code>为必选回调，<code>onStat</code>和<code>onCancel</code>为可选回调；所有文件必须预先声明大小。 不需要取消通知时，将<code>onCancel</code>设置为nullptr。 不同线程可能并发调用回调，回调不得无限期阻塞。 |
 | [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) | OH_UdsPlainText | 描述纯文本类型数据的统一数据结构。 |
 | [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) | OH_UdsHyperlink | 描述超链接类型的统一数据结构。 |
 | [OH_UdsHtml](capi-udmf-oh-udshtml.md) | OH_UdsHtml | 描述超文本标记语言类型的统一数据结构。 |

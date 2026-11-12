@@ -14,14 +14,14 @@ Provides APIs for global text information, such as setting the text rendering hi
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_TextHighContrast](#oh_drawing_texthighcontrast) | OH_Drawing_TextHighContrast | Defines an enum of the high contrast modes for text rendering. |
 | [OH_Drawing_TextUndefinedGlyphDisplay](#oh_drawing_textundefinedglyphdisplay) | OH_Drawing_TextUndefinedGlyphDisplay | Defines an enum of the modes for displaying undefined glyphs. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

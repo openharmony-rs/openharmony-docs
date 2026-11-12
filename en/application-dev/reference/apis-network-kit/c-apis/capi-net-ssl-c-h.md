@@ -14,7 +14,7 @@ Defines C APIs for the SSL/TLS certificate chain verification module.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

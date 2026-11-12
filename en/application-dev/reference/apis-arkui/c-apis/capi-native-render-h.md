@@ -14,7 +14,7 @@ Declares the APIs of **NativeRender**. For details, see Building a Rendering Nod
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -38,13 +38,13 @@ Declares the APIs of **NativeRender**. For details, see Building a Rendering Nod
 | [ArkUI_RenderNodeClipOption](capi-arkui-rendernodeutils-arkui-rendernodeclipoption.md) | ArkUI_RenderNodeClipOption | Defines a clipping option for a render node. It is used to describe the clipping area of a render node through a rectangle, rounded rectangle, circle, ellipse, or custom path, and serves as the input parameter of [OH_ArkUI_RenderNodeUtils_SetClip](capi-native-render-h.md#oh_arkui_rendernodeutils_setclip) to apply clipping to the render node. |
 | [ArkUI_RenderBlurStyleOption](capi-arkui-rendernodeutils-arkui-renderblurstyleoption.md) | ArkUI_RenderBlurStyleOption | Defines a blur style. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) | OH_ArkUI_RenderNodeAttachPolicy | Defines the attach policy for a child render node, which determines whether the child and it complete render node subtree inherit the parent render node's instance. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

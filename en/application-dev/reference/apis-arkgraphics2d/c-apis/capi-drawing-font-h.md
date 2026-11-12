@@ -14,21 +14,21 @@ This file declares the functions related to the font in the drawing module.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md) | OH_Drawing_TypefaceFallbackInfo | Defines the typeface fallback info structure for a run of glyphs that share the same fallback typeface. |
-| [OH_Drawing_Font_Metrics](capi-drawing-oh-drawing-font-metrics.md) | - | This struct describes the measurement information about a font. |
+| [OH_Drawing_Font_Metrics](capi-drawing-oh-drawing-font-metrics.md) | OH_Drawing_Font_Metrics | This struct describes the measurement information about a font. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_FontHinting](#oh_drawing_fonthinting) | OH_Drawing_FontHinting | Defines an enum for the font hinting types. |
 | [OH_Drawing_FontEdging](#oh_drawing_fontedging) | OH_Drawing_FontEdging | Enumerates the font edging types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

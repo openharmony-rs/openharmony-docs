@@ -31,7 +31,7 @@ Provides the custom dialog box APIs for the native side.
 
 | Name | Description |
 | -- | -- |
-| [int32_t (\*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)](#setkeyboardavoiddistance) | - | Defines the distance between the customDialog and system keyboard.<br>  |
+| [int32_t (\*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)](#setkeyboardavoiddistance) | - | Defines the distance between the customDialog and system keyboard.<br> |
 | [int32_t (\*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMode)](#setlevelmode) | - | Sets the level mode for a custom dialog box. |
 | [int32_t (\*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)](#setleveluniqueid) | - | Sets the level uniqueId for a custom dialog box. |
 | [int32_t (\*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode immersiveMode)](#setimmersivemode) | - | Sets the immersive mode for a custom dialog box. |
@@ -46,7 +46,7 @@ int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float dista
 
 **Description**
 
-Defines the distance between the customDialog and system keyboard.<br> 
+Defines the distance between the customDialog and system keyboard.<br>
 
 > **Note**:
 >

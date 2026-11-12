@@ -14,19 +14,19 @@ Defines the APIs for debugging.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) | OH_HiDebug_ProfilerOptions | Forward declaration for resource profiler options. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | HIVIEWDFX_HIDEBUG_H | Defines the APIs for debugging.<br>**Since**: 12<br>**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

@@ -16,7 +16,7 @@ Declares the error codes of the distributed device management module.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

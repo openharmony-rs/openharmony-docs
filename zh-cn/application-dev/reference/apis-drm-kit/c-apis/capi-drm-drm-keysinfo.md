@@ -1,7 +1,7 @@
 # DRM_KeysInfo
 
 ```c
-struct DRM_KeysInfo {...}
+typedef struct DRM_KeysInfo {...} DRM_KeysInfo
 ```
 
 ## 概述

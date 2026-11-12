@@ -12,7 +12,7 @@ The file declares the enums used by the AVImageGenerator.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

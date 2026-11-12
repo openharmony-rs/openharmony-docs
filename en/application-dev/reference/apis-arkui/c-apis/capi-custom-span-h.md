@@ -16,7 +16,7 @@ Defines enumerations and APIs related to **CustomSpan**, which is used to implem
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,7 +24,7 @@ Defines enumerations and APIs related to **CustomSpan**, which is used to implem
 | [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md) | ArkUI_CustomSpanMetrics | Describes the metrics of a custom span, which is used to set layout information such as the width and height of a component. It applies to mixed text and image layout in scenarios such as rich text editors and chat applications. |
 | [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md) | ArkUI_CustomSpanDrawInfo | Defines the drawing information of a custom span, which is passed to you in the drawing callback of the span. You can obtain and use the information in the custom drawing process to achieve custom drawing effects for the span. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

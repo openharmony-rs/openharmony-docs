@@ -12,7 +12,7 @@ Enumerates the event types supported by the NativeNode component.
 
 ## Summary
 
-### Enum
+### Enums
 
 
 <!--Del-->

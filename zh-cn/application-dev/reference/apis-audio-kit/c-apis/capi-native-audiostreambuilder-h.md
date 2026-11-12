@@ -370,7 +370,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererCallback(OH_AudioStreamBu
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioRenderer_Callbacks callbacks | [in] 将被用来处理音频播放流相关事件的回调函数集合。 |
+| [OH_AudioRenderer_Callbacks](capi-ohaudio-oh-audiorenderer-callbacks-struct.md) callbacks | [in] 将被用来处理音频播放流相关事件的回调函数集合。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
 **返回值：**
@@ -463,7 +463,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerCallback(OH_AudioStreamBu
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | [in] 指向[OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create)创建的构造器实例。 |
-| OH_AudioCapturer_Callbacks callbacks | [in] 将被用来处理音频录制流相关事件的回调函数集合。 |
+| [OH_AudioCapturer_Callbacks](capi-ohaudio-oh-audiocapturer-callbacks-struct.md) callbacks | [in] 将被用来处理音频录制流相关事件的回调函数集合。 |
 | void* userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
 **返回值：**

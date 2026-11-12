@@ -25,3 +25,4 @@ Provide the definition of the C interface for the native AbilityRuntime
 | [native_ability_wrapper.h](capi-native-ability-wrapper-h.md) | Provides the NativeAbility data information APIs for obtaining the Ability instance ID, Ability name, and napi_env.<br> **File to include:** <AbilityKit/ability_runtime/native_ability_wrapper.h> |
 | [modular_object_extension_context.h](capi-modular-object-extension-context-h.md) | Declares the context APIs of ModularObjectExtensionAbility, including starting a UIAbility, destroying the ModularObjectExtensionAbility itself, and creating and destroying IPC objects.<br> **File to include:** <AbilityKit/ability_runtime/modular_object_extension_context.h> |
 | [child_process_info.h](capi-child-process-info-h.md) | Defines the child process info type and accessor functions. |
+| [app_memory_optimizer.h](capi-app-memory-optimizer-h.md) | Defines the child process active state type and notification function. |

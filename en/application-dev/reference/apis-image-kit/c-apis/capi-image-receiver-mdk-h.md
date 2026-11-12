@@ -14,14 +14,14 @@ Declares the APIs for obtaining image data from the native layer.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OhosImageReceiverInfo](capi-image-ohosimagereceiverinfo.md) | - | Defines the information about an image receiver. |
 | [ImageReceiverNative_](capi-image-imagereceivernative-.md) | - | Defines an <b>ImageReceiver</b> object at the native layer. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

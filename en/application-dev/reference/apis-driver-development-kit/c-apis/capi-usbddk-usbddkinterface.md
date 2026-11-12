@@ -1,7 +1,7 @@
 # UsbDdkInterface
 
 ```c
-struct UsbDdkInterface {...}
+typedef struct UsbDdkInterface {...} UsbDdkInterface
 ```
 
 ## Overview
@@ -25,6 +25,6 @@ Defines a USB DDK API, which is a collection of alternate settings for a particu
 | Name | Description |
 | -- | -- |
 | uint8_t numAltsetting | Number of alternate settings of the USB interface. |
-| struct UsbDdkInterfaceDescriptor *altsetting | Pointer to the array of alternate settings of the USB interface. The length of the array is specified by **<br>numAltsetting**. |
+| [struct UsbDdkInterfaceDescriptor](capi-usbddk-usbddkinterfacedescriptor.md) *altsetting | Pointer to the array of alternate settings of the USB interface. The length of the array is specified by **<br>numAltsetting**. |
 
 

@@ -16,7 +16,7 @@ Declares APIs for discovering and connecting to printers, printing files, and qu
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -34,7 +34,7 @@ Declares APIs for discovering and connecting to printers, printing files, and qu
 | [Print_PrintAttributes](capi-print-print-printattributes.md) | Print_PrintAttributes | Represents the print attributes to be configured in a print task, including the print range, paper size, margin, number of copies, duplex mode, color mode, print orientation, and print options. This API can be used to perform refined control over the print output. |
 | [Print_PrintDocCallback](capi-print-print-printdoccallback.md) | Print_PrintDocCallback | Represents a callback for the printed document. This API can be used by native apps written in C or C++ to provide file generation and task status receiving capabilities for the print framework. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -50,7 +50,7 @@ Declares APIs for discovering and connecting to printers, printing files, and qu
 | [Print_JobDocAdapterState](#print_jobdocadapterstate) | Print_JobDocAdapterState | Enumerates the print job adapter states. |
 | [OH_Print_JobState](#oh_print_jobstate) | OH_Print_JobState | Enumerates the print job states. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

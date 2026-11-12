@@ -14,7 +14,7 @@ Declares APIs for accessing a Native XComponent.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -22,8 +22,8 @@ Declares APIs for accessing a Native XComponent.
 | [OH_NativeXComponent_TouchPoint](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-touchpoint.md) | OH_NativeXComponent_TouchPoint | Represents the touch point information of touch event. |
 | [OH_NativeXComponent_TouchEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-touchevent.md) | OH_NativeXComponent_TouchEvent | Represents the touch event. |
 | [OH_NativeXComponent_MouseEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-mouseevent.md) | OH_NativeXComponent_MouseEvent | Represents the mouse event information. |
-| [OH_NativeXComponent_Callback](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md) | - | Registers the surface lifecycle and touch event callbacks. |
-| [OH_NativeXComponent_MouseEvent_Callback](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-mouseevent-callback.md) | - | Registers the mouse event callbacks. |
+| [OH_NativeXComponent_Callback](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md) | OH_NativeXComponent_Callback | Registers the surface lifecycle and touch event callbacks. |
+| [OH_NativeXComponent_MouseEvent_Callback](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-mouseevent-callback.md) | OH_NativeXComponent_MouseEvent_Callback | Registers the mouse event callbacks. |
 | [OH_NativeXComponent_ExpectedRateRange](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-expectedraterange.md) | OH_NativeXComponent_ExpectedRateRange | Defines the expected frame rate range struct. |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) | OH_NativeXComponent | Provides an encapsulated <b>OH_NativeXComponent</b> instance. |
 | [OH_NativeXComponent_KeyEvent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md) | OH_NativeXComponent_KeyEvent | Provides an encapsulated <b>OH_NativeXComponent_KeyEvent</b> instance. |
@@ -33,7 +33,7 @@ Declares APIs for accessing a Native XComponent.
 | [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md) | OHNativeWindow | Forward declaration of OHNativeWindow. |
 | [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md) | ArkUI_XComponentSurfaceConfig | Declares the config for Surface held by XComponent. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -46,7 +46,7 @@ Declares APIs for accessing a Native XComponent.
 | [OH_NativeXComponent_MouseEventButton](#oh_nativexcomponent_mouseeventbutton) | OH_NativeXComponent_MouseEventButton | Represents the mouse event button. |
 | [OH_NativeXComponent_TouchEvent_SourceTool](#oh_nativexcomponent_touchevent_sourcetool) | OH_NativeXComponent_TouchEvent_SourceTool | Represents the source tool type of TouchEvent |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -116,8 +116,8 @@ Declares APIs for accessing a Native XComponent.
 | [int32_t OH_ArkUI_XComponent_RegisterOnFrameCallback(ArkUI_NodeHandle node, void (\*callback)(ArkUI_NodeHandle node, uint64_t timestamp, uint64_t targetTimestamp))](#oh_arkui_xcomponent_registeronframecallback) | Registers an onFrame callback for the XComponent node. |
 | [int32_t OH_ArkUI_XComponent_UnregisterOnFrameCallback(ArkUI_NodeHandle node)](#oh_arkui_xcomponent_unregisteronframecallback) | UnRegister the onFrame callback for the XComponent node. |
 | [int32_t OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool needSoftKeyboard)](#oh_arkui_xcomponent_setneedsoftkeyboard) | Set whether the XComponent node needs soft keyboard when focused. |
-| [ArkUI_AccessibilityProvider* OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHandle node)](#oh_arkui_accessibilityprovider_create) | Create a <b>ArkUI_AccessibilityProvider</b> object from an XComponent node. |
-| [void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provider)](#oh_arkui_accessibilityprovider_dispose) | Disposes of an <b>ArkUI_AccessibilityProvider</b> object. |
+| [ArkUI_AccessibilityProvider* OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHandle node)](#oh_arkui_accessibilityprovider_create) | Creates an [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance for this **XComponent** instance. Only supports being called on the UI thread. |
+| [void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provider)](#oh_arkui_accessibilityprovider_dispose) | Disposes of the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance created using [OH_ArkUI_AccessibilityProvider_Create](capi-native-interface-xcomponent-h.md#oh_arkui_accessibilityprovider_create). Only supports being called on the UI thread. |
 | [void OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceShow)(OH_ArkUI_SurfaceHolder* surfaceHolder))](#oh_arkui_surfacecallback_setsurfaceshowevent) | Set the surface show event of the surface callback. |
 | [void OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* callback, void (\*onSurfaceHide)(OH_ArkUI_SurfaceHolder* surfaceHolder))](#oh_arkui_surfacecallback_setsurfacehideevent) | Set the surface hide event of the surface callback. |
 | [ArkUI_XComponentSurfaceConfig* OH_ArkUI_XComponentSurfaceConfig_Create()](#oh_arkui_xcomponentsurfaceconfig_create) | Create an <b>ArkUI_XComponentSurfaceConfig</b> object. |
@@ -125,7 +125,7 @@ Declares APIs for accessing a Native XComponent.
 | [void OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque(ArkUI_XComponentSurfaceConfig* config, bool isOpaque)](#oh_arkui_xcomponentsurfaceconfig_setisopaque) | Set whether the surface held by XComponent needs to be considered opaque, even if the surface has translucent pixel. |
 | [int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder *surfaceHolder, ArkUI_XComponentSurfaceConfig *config)](#oh_arkui_surfaceholder_setsurfaceconfig) | Set surface config for this <b>OH_ArkUI_SurfaceHolder</b> instance. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -275,6 +275,10 @@ Represents the mouse event action.
 
 | Enum item | Description |
 | -- | -- |
+| OH_NATIVEXCOMPONENT_MOUSE_NONE = 0 |  |
+| OH_NATIVEXCOMPONENT_MOUSE_PRESS |  |
+| OH_NATIVEXCOMPONENT_MOUSE_RELEASE |  |
+| OH_NATIVEXCOMPONENT_MOUSE_MOVE |  |
 | OH_NATIVEXCOMPONENT_MOUSE_CANCEL | Triggered when the mouse event is canceled.<br>**Since**: 18 |
 
 ### OH_NativeXComponent_MouseEventButton
@@ -295,6 +299,12 @@ Represents the mouse event button.
 
 | Enum item | Description |
 | -- | -- |
+| OH_NATIVEXCOMPONENT_NONE_BUTTON = 0 |  |
+| OH_NATIVEXCOMPONENT_LEFT_BUTTON = 0x01 |  |
+| OH_NATIVEXCOMPONENT_RIGHT_BUTTON = 0x02 |  |
+| OH_NATIVEXCOMPONENT_MIDDLE_BUTTON = 0x04 |  |
+| OH_NATIVEXCOMPONENT_BACK_BUTTON = 0x08 |  |
+| OH_NATIVEXCOMPONENT_FORWARD_BUTTON = 0x10 |  |
 
 ### OH_NativeXComponent_TouchEvent_SourceTool
 
@@ -314,6 +324,16 @@ Represents the source tool type of TouchEvent
 
 | Enum item | Description |
 | -- | -- |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN = 0 |  |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_FINGER = 1 |  |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2 |  |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3 |  |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_BRUSH = 4 |  |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_PENCIL = 5 |  |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_AIRBRUSH = 6 |  |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_MOUSE = 7 |  |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_LENS = 8 |  |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_TOUCHPAD = 9 |  |
 
 
 ## Function description
@@ -2219,7 +2239,7 @@ ArkUI_AccessibilityProvider* OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHan
 
 **Description**
 
-Create a <b>ArkUI_AccessibilityProvider</b> object from an XComponent node.
+Creates an [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance for this **XComponent** instance. Only supports being called on the UI thread.
 
 <!--Device-ArkUI_AccessibilityProvider* OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHandle node)--><!--Device-ArkUI_AccessibilityProvider* OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHandle node)-End-->
 
@@ -2231,13 +2251,13 @@ Create a <b>ArkUI_AccessibilityProvider</b> object from an XComponent node.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Indicates the pointer to the XComponent node. |
+| ArkUI_NodeHandle node | XComponent instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_AccessibilityProvider*](capi-arkui-accessibility-arkui-accessibilityprovider.md) | Returns the created <b>ArkUI_AccessibilityProvider</b> object's pointer. |
+| [ArkUI_AccessibilityProvider*](capi-arkui-accessibility-arkui-accessibilityprovider.md) | Pointer to the created [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) object, which is used for accessibility access. |
 
 ### OH_ArkUI_AccessibilityProvider_Dispose()
 
@@ -2247,7 +2267,7 @@ void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provide
 
 **Description**
 
-Disposes of an <b>ArkUI_AccessibilityProvider</b> object.
+Disposes of the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance created using [OH_ArkUI_AccessibilityProvider_Create](capi-native-interface-xcomponent-h.md#oh_arkui_accessibilityprovider_create). Only supports being called on the UI thread.
 
 <!--Device-void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provider)--><!--Device-void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provider)-End-->
 
@@ -2259,7 +2279,7 @@ Disposes of an <b>ArkUI_AccessibilityProvider</b> object.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)* provider | Indicates the pointer to <b>ArkUI_AccessibilityProvider</b> object needed to dispose. |
+| [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)* provider | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) instance created using [OH_ArkUI_AccessibilityProvider_Create](capi-native-interface-xcomponent-h.md#oh_arkui_accessibilityprovider_create). |
 
 ### OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent()
 

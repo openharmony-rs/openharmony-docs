@@ -16,7 +16,7 @@ Declares the APIs used to access HUKS.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

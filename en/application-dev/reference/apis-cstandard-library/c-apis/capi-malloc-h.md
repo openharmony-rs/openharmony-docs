@@ -12,14 +12,14 @@ Includes some memory-related methods and structures, such as: malloc, calloc, re
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | Description |
 | -- | -- |
 | [mallinfo](capi-muslmalloc-mallinfo.md) |  |
 | [mallinfo2](capi-muslmalloc-mallinfo2.md) |  |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -20,9 +20,9 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_CartesianPosition](capi-core-oh-cartesianposition.md) | - | 表示对象声源在笛卡尔坐标系（Cartesian coordinate system）中的位置。<br> 笛卡尔坐标系使用x、y、z轴定义三维空间中的位置。 |
-| [OH_PolarPosition](capi-core-oh-polarposition.md) | - | 表示极坐标系（polar coordinate system，也叫球坐标系）中的位置。<br> 极坐标系使用方位角、俯仰角和距离定义对象声源在三维空间中的位置。 |
-| [OH_AudioObjectPosition](capi-core-oh-audioobjectposition.md) | - | 表示音频对象声源在三维空间中的位置。<br> 该位置可以用笛卡尔坐标或极坐标表示。 |
+| [OH_CartesianPosition](capi-core-oh-cartesianposition.md) | OH_CartesianPosition | 表示对象声源在笛卡尔坐标系（Cartesian coordinate system）中的位置。<br> 笛卡尔坐标系使用x、y、z轴定义三维空间中的位置。 |
+| [OH_PolarPosition](capi-core-oh-polarposition.md) | OH_PolarPosition | 表示极坐标系（polar coordinate system，也叫球坐标系）中的位置。<br> 极坐标系使用方位角、俯仰角和距离定义对象声源在三维空间中的位置。 |
+| [OH_AudioObjectPosition](capi-core-oh-audioobjectposition.md) | OH_AudioObjectPosition | 表示音频对象声源在三维空间中的位置。<br> 该位置可以用笛卡尔坐标或极坐标表示。 |
 | [OH_AudioVividMetaBuilderStruct](capi-core-oh-audiovividmetabuilderstruct.md) | OH_AudioVividMetaBuilder | OH_AudioVividMetaBuilder的前向声明。 |
 
 ### 枚举

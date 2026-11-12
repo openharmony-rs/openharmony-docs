@@ -1,7 +1,7 @@
 # Camera_ConcurrentInfo
 
 ```c
-struct Camera_ConcurrentInfo {...}
+typedef struct Camera_ConcurrentInfo {...} Camera_ConcurrentInfo
 ```
 
 ## Overview
@@ -26,7 +26,7 @@ Concurrency capability infos.
 | -- | -- |
 | [Camera_Device](capi-oh-camera-camera-device.md) camera | Camera instance. |
 | [Camera_ConcurrentType](capi-camera-h.md#camera_concurrenttype) type | Supported concurrent type. |
-| Camera_SceneMode* sceneModes | Supported Modes. |
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode)* sceneModes | Supported Modes. |
 | [Camera_OutputCapability*](capi-oh-camera-camera-outputcapability.md) outputCapabilities | Supported outputCapabilities |
 | uint32_t modeAndCapabilitySize | Supported outputCapabilities size. |
 

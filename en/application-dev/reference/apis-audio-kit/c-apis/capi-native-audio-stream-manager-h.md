@@ -14,13 +14,13 @@ Declare audio stream manager related interfaces.<br> This file interface is used
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) | OH_AudioStreamManager | Declare the audio stream manager. Audio stream manager provides many functions about audio streams, like monitoring audio streams status, getting different stream types supported information and so on. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

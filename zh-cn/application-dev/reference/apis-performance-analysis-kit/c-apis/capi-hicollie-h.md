@@ -16,10 +16,10 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md) | 检测业务线程卡顿的相关参数。请注意，API 12及以上支持。 |
-| [HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md) | 定义OH_HiCollie_SetTimer函数的输入参数。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md) | HiCollie_DetectionParam | 检测业务线程卡顿的相关参数。请注意，API 12及以上支持。 |
+| [HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md) | HiCollie_SetTimerParam | 定义OH_HiCollie_SetTimer函数的输入参数。 |
 
 ### 枚举
 

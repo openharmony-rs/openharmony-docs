@@ -1,7 +1,7 @@
 # OH_AudioSuite_SpaceRenderExtensionParams
 
 ```c
-struct OH_AudioSuite_SpaceRenderExtensionParams {...}
+typedef struct OH_AudioSuite_SpaceRenderExtensionParams {...} OH_AudioSuite_SpaceRenderExtensionParams
 ```
 
 ## Overview

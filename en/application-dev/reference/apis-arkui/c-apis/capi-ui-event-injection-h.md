@@ -16,13 +16,13 @@ Declares the APIs used by in-app intelligent agents and UI automation to inject 
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_ArkUI_NativeModule_UIEventInjection_ResultCode](#oh_arkui_nativemodule_uieventinjection_resultcode) | OH_ArkUI_NativeModule_UIEventInjection_ResultCode | Enumerates the result codes of UI event injection.<br> This enumeration is shared by all injection APIs, including relaxed interaction injection (non-precise) and precise component-targeted injection. A nonzero result code indicates an execution failure, and its specific value conveys the failure reason. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

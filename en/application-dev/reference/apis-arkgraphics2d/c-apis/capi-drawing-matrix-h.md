@@ -14,13 +14,13 @@ This file declares the functions related to the matrix in the drawing module.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_ScaleToFit](#oh_drawing_scaletofit) | OH_Drawing_ScaleToFit | Defines an enum for the matrix scaling modes. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

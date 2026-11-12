@@ -16,7 +16,7 @@ Defines key codes of the key device.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -125,7 +125,7 @@ Enumerates the key codes.
 | KEYCODE_BACKSLASH = 2061 | Key \<br>**Since**: 12 |
 | KEYCODE_SEMICOLON = 2062 | Key ; |
 | KEYCODE_APOSTROPHE = 2063 | Key ' (single quote)<br>**Since**: 12 |
-| KEYCODE_SLASH = 2064 | Key <br>**Since**: 12 |
+| KEYCODE_SLASH = 2064 | Key<br>**Since**: 12 |
 | KEYCODE_AT = 2065 | Key @ |
 | KEYCODE_PLUS = 2066 | Key + |
 | KEYCODE_MENU = 2067 | Menu key |

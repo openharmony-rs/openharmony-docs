@@ -1,7 +1,7 @@
 # OH_AudioSession_DeactivatedEvent
 
 ```c
-struct OH_AudioSession_DeactivatedEvent {...}
+typedef struct OH_AudioSession_DeactivatedEvent {...} OH_AudioSession_DeactivatedEvent
 ```
 
 ## Overview

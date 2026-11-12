@@ -14,13 +14,13 @@ Provides extended interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [ta_caller_info](capi-teetrusted-ta-caller-info.md) | Defines the caller information. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [ta_caller_info](capi-teetrusted-ta-caller-info.md) | caller_info | Defines the caller information. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -33,7 +33,7 @@ Provides extended interfaces.
 | SESSION_FROM_NOT_SUPPORTED   0xFE | Defines the TA task is not found, for example, from TA sub thread.<br>**Since**: 20 |
 | SESSION_FROM_UNKNOWN   0xFF | Defines the TA caller is not found.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -64,7 +64,7 @@ Get caller info of current session, refer caller_info struct for more details.
 
 | Parameter | Description |
 | -- | -- |
-| caller_info *caller_info_data | A pointer to a buffer where the caller_info struct will be stored. |
+| [caller_info](capi-teetrusted-ta-caller-info.md) *[caller_info](capi-teetrusted-ta-caller-info.md)_data | A pointer to a buffer where the caller_info struct will be stored. |
 | uint32_t length | The size of the buffer pointed to by caller_info_data. |
 
 **Returns**:

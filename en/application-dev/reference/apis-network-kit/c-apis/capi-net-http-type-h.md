@@ -14,24 +14,24 @@ Defines the data structures for the C APIs of the HTTP request module.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [Http_Buffer](capi-netstack-http-buffer.md) | - | Defines the HTTP buffer structure. |
-| [Http_HeaderValue](capi-netstack-http-headervalue.md) | - | Defines the type of a mapped value in a request or response header. |
-| [Http_HeaderEntry](capi-netstack-http-headerentry.md) | - | Defines all key-value pairs in the request or response header. |
-| [Http_ClientCert](capi-netstack-http-clientcert.md) | - | Defines the client certificate sent to a remote server, which will be used by the server to verify the identity of the client. |
-| [Http_CustomProxy](capi-netstack-http-customproxy.md) | - | Defines the custom proxy configuration. |
-| [Http_Proxy](capi-netstack-http-proxy.md) | - | Defines the proxy configuration structure. |
-| [Http_PerformanceTiming](capi-netstack-http-performancetiming.md) | - | Defines the HTTP response timing information, which will be collected via [Http_Response](capi-netstack-http-response.md). |
-| [Http_RequestOptions](capi-netstack-http-requestoptions.md) | - | Defines the structure of HTTP requests. |
-| [Http_Response](capi-netstack-http-response.md) | - | Defines the structure of HTTP responses. |
-| [Http_Request](capi-netstack-http-request.md) | - | Defines an HTTP request. |
-| [Http_EventsHandler](capi-netstack-http-eventshandler.md) | - | Defines the callback for various HTTP events. |
+| [Http_Buffer](capi-netstack-http-buffer.md) | Http_Buffer | Defines the HTTP buffer structure. |
+| [Http_HeaderValue](capi-netstack-http-headervalue.md) | Http_HeaderValue | Defines the type of a mapped value in a request or response header. |
+| [Http_HeaderEntry](capi-netstack-http-headerentry.md) | Http_HeaderEntry | Defines all key-value pairs in the request or response header. |
+| [Http_ClientCert](capi-netstack-http-clientcert.md) | Http_ClientCert | Defines the client certificate sent to a remote server, which will be used by the server to verify the identity of the client. |
+| [Http_CustomProxy](capi-netstack-http-customproxy.md) | Http_CustomProxy | Defines the custom proxy configuration. |
+| [Http_Proxy](capi-netstack-http-proxy.md) | Http_Proxy | Defines the proxy configuration structure. |
+| [Http_PerformanceTiming](capi-netstack-http-performancetiming.md) | Http_PerformanceTiming | Defines the HTTP response timing information, which will be collected via [Http_Response](capi-netstack-http-response.md). |
+| [Http_RequestOptions](capi-netstack-http-requestoptions.md) | Http_RequestOptions | Defines the structure of HTTP requests. |
+| [Http_Response](capi-netstack-http-response.md) | Http_Response | Defines the structure of HTTP responses. |
+| [Http_Request](capi-netstack-http-request.md) | Http_Request | Defines an HTTP request. |
+| [Http_EventsHandler](capi-netstack-http-eventshandler.md) | Http_EventsHandler | Defines the callback for various HTTP events. |
 | [Http_Headers](capi-netstack-http-headers.md) | Http_Headers | Defines the header of an HTTP request or response. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -42,7 +42,7 @@ Defines the data structures for the C APIs of the HTTP request module.
 | [Http_CertType](#http_certtype) | Http_CertType | Defines the Cert Type. |
 | [Http_ProxyType](#http_proxytype) | Http_ProxyType | Proxy type. Used to distinguish different proxy configurations. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -58,7 +58,7 @@ Defines the data structures for the C APIs of the HTTP request module.
 | NET_HTTP_METHOD_PUT "PUT" | Sets the HTTP request method to PUT.<br>**Since**: 20 |
 | NET_HTTP_METHOD_PATCH "CONNECT" | Sets the HTTP request method to CONNECT.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -89,40 +89,40 @@ Defines http error code.
 | Enum item | Description |
 | -- | -- |
 | OH_HTTP_RESULT_OK = 0 | Operation success. |
-| OH_HTTP_PARAMETER_ERROR = 401 | @brief Parameter error. |
-| OH_HTTP_PERMISSION_DENIED = 201 | @brief Permission denied. |
-| OH_HTTP_NETSTACK_E_BASE = 2300000 | @brief Error code base. |
-| OH_HTTP_UNSUPPORTED_PROTOCOL = (OH_HTTP_NETSTACK_E_BASE + 1) | @brief Unsupported protocol. |
-| OH_HTTP_INVALID_URL = (OH_HTTP_NETSTACK_E_BASE + 3) | @brief Invalid URL format or missing URL. |
-| OH_HTTP_RESOLVE_PROXY_FAILED = (OH_HTTP_NETSTACK_E_BASE + 5) | @brief Failed to resolve the proxy name. |
-| OH_HTTP_RESOLVE_HOST_FAILED = (OH_HTTP_NETSTACK_E_BASE + 6) | @brief Failed to resolve the host name. |
-| OH_HTTP_CONNECT_SERVER_FAILED = (OH_HTTP_NETSTACK_E_BASE + 7) | @brief Failed to connect to the server. |
-| OH_HTTP_INVALID_SERVER_RESPONSE = (OH_HTTP_NETSTACK_E_BASE + 8) | @brief Invalid server response. |
-| OH_HTTP_ACCESS_REMOTE_DENIED = (OH_HTTP_NETSTACK_E_BASE + 9) | @brief Access to the remote resource denied. |
-| OH_HTTP_HTTP2_FRAMING_ERROR = (OH_HTTP_NETSTACK_E_BASE + 16) | @brief Error in the HTTP2 framing layer. |
-| OH_HTTP_TRANSFER_PARTIAL_FILE = (OH_HTTP_NETSTACK_E_BASE + 18) | @brief Transferred a partial file. |
-| OH_HTTP_WRITE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 23) | @brief Failed to write the received data to the disk or application. |
-| OH_HTTP_UPLOAD_FAILED = (OH_HTTP_NETSTACK_E_BASE + 25) | @brief Upload failed. |
-| OH_HTTP_OPEN_LOCAL_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 26) | @brief Failed to open or read local data from the file or application. |
-| OH_HTTP_OUT_OF_MEMORY = (OH_HTTP_NETSTACK_E_BASE + 27) | @brief Out of memory. |
-| OH_HTTP_OPERATION_TIMEOUT = (OH_HTTP_NETSTACK_E_BASE + 28) | @brief Operation timeout. |
-| OH_HTTP_TOO_MANY_REDIRECTIONS = (OH_HTTP_NETSTACK_E_BASE + 47) | @brief The number of redirections reaches the maximum allowed. |
-| OH_HTTP_SERVER_RETURNED_NOTHING = (OH_HTTP_NETSTACK_E_BASE + 52) | @brief The server returned nothing (no header or data). |
-| OH_HTTP_SEND_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 55) | @brief Failed to send data to the peer. |
-| OH_HTTP_RECEIVE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 56) | @brief Failed to receive data from the peer. |
-| OH_HTTP_SSL_CERTIFICATE_ERROR = (OH_HTTP_NETSTACK_E_BASE + 58) | @brief Local SSL certificate error. |
-| OH_HTTP_SSL_CIPHER_USED_ERROR = (OH_HTTP_NETSTACK_E_BASE + 59) | @brief The specified SSL cipher cannot be used. |
-| OH_HTTP_INVALID_SSL_PEER_CERT = (OH_HTTP_NETSTACK_E_BASE + 60) | @brief Invalid SSL peer certificate or SSH remote key. |
-| OH_HTTP_INVALID_ENCODING_FORMAT = (OH_HTTP_NETSTACK_E_BASE + 61) | @brief Invalid HTTP encoding format. |
-| OH_HTTP_FILE_TOO_LARGE = (OH_HTTP_NETSTACK_E_BASE + 63) | @brief Maximum file size exceeded. |
-| OH_HTTP_REMOTE_DISK_FULL = (OH_HTTP_NETSTACK_E_BASE + 70) | @brief Remote disk full. |
-| OH_HTTP_REMOTE_FILE_EXISTS = (OH_HTTP_NETSTACK_E_BASE + 73) | @brief Remote file already exists. |
-| OH_HTTP_SSL_CA_NOT_EXIST = (OH_HTTP_NETSTACK_E_BASE + 77) | @brief The SSL CA certificate does not exist or is inaccessible. |
-| OH_HTTP_REMOTE_FILE_NOT_FOUND = (OH_HTTP_NETSTACK_E_BASE + 78) | @brief Remote file not found. |
-| OH_HTTP_AUTHENTICATION_ERROR = (OH_HTTP_NETSTACK_E_BASE + 94) | @brief Authentication error. |
+| OH_HTTP_PARAMETER_ERROR = 401 | Parameter error. |
+| OH_HTTP_PERMISSION_DENIED = 201 | Permission denied. |
+| OH_HTTP_NETSTACK_E_BASE = 2300000 | Error code base. |
+| OH_HTTP_UNSUPPORTED_PROTOCOL = (OH_HTTP_NETSTACK_E_BASE + 1) | Unsupported protocol. |
+| OH_HTTP_INVALID_URL = (OH_HTTP_NETSTACK_E_BASE + 3) | Invalid URL format or missing URL. |
+| OH_HTTP_RESOLVE_PROXY_FAILED = (OH_HTTP_NETSTACK_E_BASE + 5) | Failed to resolve the proxy name. |
+| OH_HTTP_RESOLVE_HOST_FAILED = (OH_HTTP_NETSTACK_E_BASE + 6) | Failed to resolve the host name. |
+| OH_HTTP_CONNECT_SERVER_FAILED = (OH_HTTP_NETSTACK_E_BASE + 7) | Failed to connect to the server. |
+| OH_HTTP_INVALID_SERVER_RESPONSE = (OH_HTTP_NETSTACK_E_BASE + 8) | Invalid server response. |
+| OH_HTTP_ACCESS_REMOTE_DENIED = (OH_HTTP_NETSTACK_E_BASE + 9) | Access to the remote resource denied. |
+| OH_HTTP_HTTP2_FRAMING_ERROR = (OH_HTTP_NETSTACK_E_BASE + 16) | Error in the HTTP2 framing layer. |
+| OH_HTTP_TRANSFER_PARTIAL_FILE = (OH_HTTP_NETSTACK_E_BASE + 18) | Transferred a partial file. |
+| OH_HTTP_WRITE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 23) | Failed to write the received data to the disk or application. |
+| OH_HTTP_UPLOAD_FAILED = (OH_HTTP_NETSTACK_E_BASE + 25) | Upload failed. |
+| OH_HTTP_OPEN_LOCAL_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 26) | Failed to open or read local data from the file or application. |
+| OH_HTTP_OUT_OF_MEMORY = (OH_HTTP_NETSTACK_E_BASE + 27) | Out of memory. |
+| OH_HTTP_OPERATION_TIMEOUT = (OH_HTTP_NETSTACK_E_BASE + 28) | Operation timeout. |
+| OH_HTTP_TOO_MANY_REDIRECTIONS = (OH_HTTP_NETSTACK_E_BASE + 47) | The number of redirections reaches the maximum allowed. |
+| OH_HTTP_SERVER_RETURNED_NOTHING = (OH_HTTP_NETSTACK_E_BASE + 52) | The server returned nothing (no header or data). |
+| OH_HTTP_SEND_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 55) | Failed to send data to the peer. |
+| OH_HTTP_RECEIVE_DATA_FAILED = (OH_HTTP_NETSTACK_E_BASE + 56) | Failed to receive data from the peer. |
+| OH_HTTP_SSL_CERTIFICATE_ERROR = (OH_HTTP_NETSTACK_E_BASE + 58) | Local SSL certificate error. |
+| OH_HTTP_SSL_CIPHER_USED_ERROR = (OH_HTTP_NETSTACK_E_BASE + 59) | The specified SSL cipher cannot be used. |
+| OH_HTTP_INVALID_SSL_PEER_CERT = (OH_HTTP_NETSTACK_E_BASE + 60) | Invalid SSL peer certificate or SSH remote key. |
+| OH_HTTP_INVALID_ENCODING_FORMAT = (OH_HTTP_NETSTACK_E_BASE + 61) | Invalid HTTP encoding format. |
+| OH_HTTP_FILE_TOO_LARGE = (OH_HTTP_NETSTACK_E_BASE + 63) | Maximum file size exceeded. |
+| OH_HTTP_REMOTE_DISK_FULL = (OH_HTTP_NETSTACK_E_BASE + 70) | Remote disk full. |
+| OH_HTTP_REMOTE_FILE_EXISTS = (OH_HTTP_NETSTACK_E_BASE + 73) | Remote file already exists. |
+| OH_HTTP_SSL_CA_NOT_EXIST = (OH_HTTP_NETSTACK_E_BASE + 77) | The SSL CA certificate does not exist or is inaccessible. |
+| OH_HTTP_REMOTE_FILE_NOT_FOUND = (OH_HTTP_NETSTACK_E_BASE + 78) | Remote file not found. |
+| OH_HTTP_AUTHENTICATION_ERROR = (OH_HTTP_NETSTACK_E_BASE + 94) | Authentication error. |
 | OH_HTTP_REQUEST_INTERCEPTED = (OH_HTTP_NETSTACK_E_BASE + 996) | The request was intercepted by the HTTP global interceptor.<br>**Since**: 26.0.0 |
-| OH_HTTP_ACCESS_DOMAIN_NOT_ALLOWED = (OH_HTTP_NETSTACK_E_BASE + 998) | @brief It is not allowed to access this domain. |
-| OH_HTTP_UNKNOWN_ERROR = (OH_HTTP_NETSTACK_E_BASE + 999) | @brief Unknown error. |
+| OH_HTTP_ACCESS_DOMAIN_NOT_ALLOWED = (OH_HTTP_NETSTACK_E_BASE + 998) | It is not allowed to access this domain. |
+| OH_HTTP_UNKNOWN_ERROR = (OH_HTTP_NETSTACK_E_BASE + 999) | Unknown error. |
 
 ### Http_ResponseCode
 
@@ -142,42 +142,42 @@ Defines http response code.
 
 | Enum item | Description |
 | -- | -- |
-| OH_HTTP_OK = 200 | @brief The request was successful. |
-| OH_HTTP_CREATED = 201 | @brief Successfully requested and created a new resource. |
-| OH_HTTP_ACCEPTED = 202 | @brief The request has been accepted but has not been processed completely. |
-| OH_HTTP_NON_AUTHORITATIVE_INFO = 203 | @brief Unauthorized information. The request was successful. |
-| OH_HTTP_NO_CONTENT = 204 | @brief No content. The server successfully processed, but did not return content. |
-| OH_HTTP_RESET = 205 | @brief Reset the content. |
-| OH_HTTP_PARTIAL = 206 | @brief Partial content. The server successfully processed some GET requests. |
-| OH_HTTP_MULTI_CHOICE = 300 | @brief Multiple options. |
+| OH_HTTP_OK = 200 | The request was successful. |
+| OH_HTTP_CREATED = 201 | Successfully requested and created a new resource. |
+| OH_HTTP_ACCEPTED = 202 | The request has been accepted but has not been processed completely. |
+| OH_HTTP_NON_AUTHORITATIVE_INFO = 203 | Unauthorized information. The request was successful. |
+| OH_HTTP_NO_CONTENT = 204 | No content. The server successfully processed, but did not return content. |
+| OH_HTTP_RESET = 205 | Reset the content. |
+| OH_HTTP_PARTIAL = 206 | Partial content. The server successfully processed some GET requests. |
+| OH_HTTP_MULTI_CHOICE = 300 | Multiple options. |
 | OH_HTTP_MOVED_PERM = 301 | Permanently move. The requested resource has been permanently moved to a new URI, and the returned information will include the new URI. The browser will automatically redirect to the new URI. |
-| OH_HTTP_MOVED_TEMP = 302 | @brief Temporary movement. |
-| OH_HTTP_SEE_OTHER = 303 | @brief View other addresses. |
-| OH_HTTP_NOT_MODIFIED = 304 | @brief Not modified. |
-| OH_HTTP_USE_PROXY = 305 | @brief Using proxies. |
-| OH_HTTP_BAD_REQUEST = 400 | @brief The server cannot understand the syntax error error requested by the client. |
-| OH_HTTP_UNAUTHORIZED = 401 | @brief Request for user authentication. |
-| OH_HTTP_PAYMENT_REQUIRED = 402 | @brief Reserved for future use. |
-| OH_HTTP_FORBIDDEN = 403 | @brief The server understands the request from the requesting client, but refuses to execute it. |
-| OH_HTTP_NOT_FOUND = 404 | @brief The server was unable to find resources (web pages) based on the client's request. |
-| OH_HTTP_BAD_METHOD = 405 | @brief The method in the client request is prohibited. |
-| OH_HTTP_NOT_ACCEPTABLE = 406 | @brief The server unabled to complete request based on the content characteristics requested by the client. |
-| OH_HTTP_PROXY_AUTH = 407 | @brief Request authentication of the proxy's identity. |
-| OH_HTTP_CLIENT_TIMEOUT = 408 | @brief The request took too long and timed out. |
+| OH_HTTP_MOVED_TEMP = 302 | Temporary movement. |
+| OH_HTTP_SEE_OTHER = 303 | View other addresses. |
+| OH_HTTP_NOT_MODIFIED = 304 | Not modified. |
+| OH_HTTP_USE_PROXY = 305 | Using proxies. |
+| OH_HTTP_BAD_REQUEST = 400 | The server cannot understand the syntax error error requested by the client. |
+| OH_HTTP_UNAUTHORIZED = 401 | Request for user authentication. |
+| OH_HTTP_PAYMENT_REQUIRED = 402 | Reserved for future use. |
+| OH_HTTP_FORBIDDEN = 403 | The server understands the request from the requesting client, but refuses to execute it. |
+| OH_HTTP_NOT_FOUND = 404 | The server was unable to find resources (web pages) based on the client's request. |
+| OH_HTTP_BAD_METHOD = 405 | The method in the client request is prohibited. |
+| OH_HTTP_NOT_ACCEPTABLE = 406 | The server unabled to complete request based on the content characteristics requested by the client. |
+| OH_HTTP_PROXY_AUTH = 407 | Request authentication of the proxy's identity. |
+| OH_HTTP_CLIENT_TIMEOUT = 408 | The request took too long and timed out. |
 | OH_HTTP_CONFLICT = 409 | The server may have returned this code when completing the client's PUT request, as there was a conflict when the server was processing the request. |
-| OH_HTTP_GONE = 410 | @brief The resource requested by the client no longer exists. |
-| OH_HTTP_LENGTH_REQUIRED = 411 | @brief The server is unable to process request information sent by the client without Content Length. |
-| OH_HTTP_PRECON_FAILED = 412 | @brief The prerequisite for requesting information from the client is incorrect. |
-| OH_HTTP_ENTITY_TOO_LARGE = 413 | @brief The request was rejected because the requested entity was too large for the server to process. |
-| OH_HTTP_REQUEST_TOO_LONG = 414 | @brief The requested URI is too long (usually a URL) and the server cannot process it. |
-| OH_HTTP_UNSUPPORTED_TYPE = 415 | @brief The server is unable to process the requested format. |
-| OH_HTTP_RANGE_NOT_MET = 416 | @brief Requested Range not satisfiable. |
-| OH_HTTP_INTERNAL_ERROR = 500 | @brief Internal server error, unable to complete the request. |
-| OH_HTTP_NOT_IMPLEMENTED = 501 | @brief The server does not support the requested functionality and cannot complete the request. |
-| OH_HTTP_BAD_GATEWAY = 502 | @brief The server acting as a gateway or proxy received an invalid request from the remote server. |
-| OH_HTTP_UNAVAILABLE = 503 | @brief Due to overload or system maintenance, the server is temporarily unable to process client requests. |
-| OH_HTTP_GATEWAY_TIMEOUT = 504 | @brief The server acting as gateway did not obtain requests from the remote server in a timely manner. |
-| OH_HTTP_VERSION = 505 | @brief The version of the HTTP protocol requested by the server. |
+| OH_HTTP_GONE = 410 | The resource requested by the client no longer exists. |
+| OH_HTTP_LENGTH_REQUIRED = 411 | The server is unable to process request information sent by the client without Content Length. |
+| OH_HTTP_PRECON_FAILED = 412 | The prerequisite for requesting information from the client is incorrect. |
+| OH_HTTP_ENTITY_TOO_LARGE = 413 | The request was rejected because the requested entity was too large for the server to process. |
+| OH_HTTP_REQUEST_TOO_LONG = 414 | The requested URI is too long (usually a URL) and the server cannot process it. |
+| OH_HTTP_UNSUPPORTED_TYPE = 415 | The server is unable to process the requested format. |
+| OH_HTTP_RANGE_NOT_MET = 416 | Requested Range not satisfiable. |
+| OH_HTTP_INTERNAL_ERROR = 500 | Internal server error, unable to complete the request. |
+| OH_HTTP_NOT_IMPLEMENTED = 501 | The server does not support the requested functionality and cannot complete the request. |
+| OH_HTTP_BAD_GATEWAY = 502 | The server acting as a gateway or proxy received an invalid request from the remote server. |
+| OH_HTTP_UNAVAILABLE = 503 | Due to overload or system maintenance, the server is temporarily unable to process client requests. |
+| OH_HTTP_GATEWAY_TIMEOUT = 504 | The server acting as gateway did not obtain requests from the remote server in a timely manner. |
+| OH_HTTP_VERSION = 505 | The version of the HTTP protocol requested by the server. |
 
 ### Http_AddressFamilyType
 

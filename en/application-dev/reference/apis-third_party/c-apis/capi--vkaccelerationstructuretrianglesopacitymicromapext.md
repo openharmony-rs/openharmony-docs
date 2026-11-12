@@ -18,7 +18,7 @@
 | uint32_t baseTriangle |  |
 | uint32_t usageCountsCount |  |
 | [const VkMicromapUsageEXT*](capi--vkmicromapusageext.md) pUsageCounts |  |
-| const VkMicromapUsageEXT* const* ppUsageCounts |  |
+| const [VkMicromapUsageEXT](capi--vkmicromapusageext.md)* const* ppUsageCounts |  |
 | VkMicromapEXT micromap |  |
 
 

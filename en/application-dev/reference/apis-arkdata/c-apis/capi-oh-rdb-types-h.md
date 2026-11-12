@@ -14,19 +14,19 @@ Provides type define related to the data value.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) | OH_RDB_ReturningContext | Define the OH_RDB_ReturningContext structure type. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [Rdb_ConflictResolution](#rdb_conflictresolution) | Rdb_ConflictResolution | Describe the security area of the database. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

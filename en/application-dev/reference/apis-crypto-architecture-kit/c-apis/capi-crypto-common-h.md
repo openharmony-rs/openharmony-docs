@@ -16,20 +16,20 @@ Defines common data structures and error codes for crypto operations.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) | Crypto data structure. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) | Crypto_DataBlob | Crypto data structure. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Crypto_ErrCode](#oh_crypto_errcode) | OH_Crypto_ErrCode | Enumerates the error codes. |
 | [Crypto_CipherMode](#crypto_ciphermode) | Crypto_CipherMode | Defines the cipher mode. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

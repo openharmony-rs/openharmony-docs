@@ -14,13 +14,13 @@ Defines xcomponent attribute enum value.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_XComponentType](#arkui_xcomponenttype) | ArkUI_XComponentType | Enumerates the types of the **XComponent** component. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

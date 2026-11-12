@@ -1,7 +1,7 @@
 # Camera_CaptureStartInfo
 
 ```c
-struct Camera_CaptureStartInfo {...}
+typedef struct Camera_CaptureStartInfo {...} Camera_CaptureStartInfo
 ```
 
 ## 概述

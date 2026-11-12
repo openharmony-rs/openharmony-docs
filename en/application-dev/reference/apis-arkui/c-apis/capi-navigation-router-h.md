@@ -14,7 +14,7 @@ Defines the enumerations related to the **NavDestination** and **Router** compon
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

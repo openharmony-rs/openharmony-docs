@@ -14,7 +14,7 @@ Declares the condition variable interfaces in C.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

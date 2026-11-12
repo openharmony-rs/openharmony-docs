@@ -1,7 +1,7 @@
 # DRM_PsshInfo
 
 ```c
-struct DRM_PsshInfo {...}
+typedef struct DRM_PsshInfo {...} DRM_PsshInfo
 ```
 
 ## 概述

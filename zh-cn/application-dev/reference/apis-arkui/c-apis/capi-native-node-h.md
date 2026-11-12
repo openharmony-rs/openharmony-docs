@@ -177,6 +177,9 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)](#oh
 | [int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDragging)](#oh_arkui_swiper_isfakedragging) | - | Get the fake drag state of the Swiper node. |
 | [int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_swiper_showprevious) | - | Show the previous page of the Swiper node. |
 | [int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_swiper_shownext) | - | Show the next page of the Swiper node. |
+| [int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_showprevious) | - | 显示ArcSwiper节点的上一页。 |
+| [int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_shownext) | - | 显示ArcSwiper节点的下一页。 |
+| [int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_finishanimation) | - | 停止ArcSwiper节点执行的动画。 |
 | [int32_t OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext(ArkUI_ContextHandle context, ArkUI_NodeHandle* rootNode)](#oh_arkui_nativemodule_getpagerootnodehandlebycontext) | - | 获取指定实例的页面的根节点。 |
 | [ArkUI_GestureCollectInterceptInfo* OH_ArkUI_NodeEvent_GetGestureCollectInterceptInfo(ArkUI_NodeEvent* nodeEvent)](#oh_arkui_nodeevent_getgesturecollectinterceptinfo) | - | Obtains the <b>ArkUI_GestureCollectInterceptInfo</b> object from a specified <b>ArkUI_NodeEvent</b> object. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node, OH_ArkUI_NodeMountPolicy policy)](#oh_arkui_nativemodule_setchildmountpolicy) | - | Set the subnode mounting policy of the target node. |
@@ -3742,6 +3745,90 @@ Show the next page of the Swiper node.
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | Error code. [ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) Success. [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) Function parameter exception. |
+
+### OH_ArkUI_ArcSwiper_ShowPrevious()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)
+```
+
+**描述：**
+
+显示ArcSwiper节点的上一页。
+
+<!--Device-int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)--><!--Device-int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle指针。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)函数参数异常。 |
+
+### OH_ArkUI_ArcSwiper_ShowNext()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)
+```
+
+**描述：**
+
+显示ArcSwiper节点的下一页。
+
+<!--Device-int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)--><!--Device-int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle指针。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)函数参数异常。 |
+
+### OH_ArkUI_ArcSwiper_FinishAnimation()
+
+```c
+int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)
+```
+
+**描述：**
+
+停止ArcSwiper节点执行的动画。
+
+<!--Device-int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)--><!--Device-int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle指针。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)成功。[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)函数参数异常。 |
 
 ### OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext()
 

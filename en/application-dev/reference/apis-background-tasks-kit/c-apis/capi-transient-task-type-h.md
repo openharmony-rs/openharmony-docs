@@ -14,26 +14,26 @@ Defines the data structures for the C APIs of transient task.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md) | A struct that describes the returned information about a transient task. The struct returns the ID and remaining time of the transient task. |
-| [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) | A struct that describes all transient task information. The struct returns all transient task information, including the remaining quota of the current day. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md) | TransientTask_DelaySuspendInfo | A struct that describes the returned information about a transient task. The struct returns the ID and remaining time of the transient task. |
+| [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) | TransientTask_TransientTaskInfo | A struct that describes all transient task information. The struct returns all transient task information, including the remaining quota of the current day. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [TransientTask_ErrorCode](#transienttask_errorcode) | TransientTask_ErrorCode | Enumerates the error codes available for a transient task. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | TRANSIENT_TASK_MAX_NUM 3 | Defines the maximum number of transient tasks at the same time.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

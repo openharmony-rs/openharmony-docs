@@ -14,7 +14,7 @@ Provides the error codes returned by internationalization APIs.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -40,8 +40,8 @@ error codes of i18n
 
 | Enum item | Description |
 | -- | -- |
-| SUCCESS = 0 | @error Success |
-| ERROR_INVALID_PARAMETER = 8900001 | @error Invalid input parameter |
-| UNEXPECTED_ERROR = 8900050 | @error Unexpected error, such as memory error. |
+| SUCCESS = 0 | &nbsp;Success |
+| ERROR_INVALID_PARAMETER = 8900001 | &nbsp;Invalid input parameter |
+| UNEXPECTED_ERROR = 8900050 | &nbsp;Unexpected error, such as memory error. |
 
 

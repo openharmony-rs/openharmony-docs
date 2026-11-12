@@ -16,7 +16,7 @@ Defines enumerations related to **ImageSpan**, which are used to embed images in
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

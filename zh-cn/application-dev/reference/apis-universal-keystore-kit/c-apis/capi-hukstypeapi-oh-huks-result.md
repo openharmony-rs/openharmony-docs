@@ -1,7 +1,7 @@
 # OH_Huks_Result
 
 ```c
-struct OH_Huks_Result {...}
+typedef struct OH_Huks_Result {...} OH_Huks_Result
 ```
 
 ## 概述

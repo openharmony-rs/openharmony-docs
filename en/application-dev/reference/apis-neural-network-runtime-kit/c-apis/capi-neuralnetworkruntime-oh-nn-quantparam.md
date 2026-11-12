@@ -1,7 +1,7 @@
 # OH_NN_QuantParam
 
 ```c
-struct OH_NN_QuantParam {...}
+typedef struct OH_NN_QuantParam {...} OH_NN_QuantParam
 ```
 
 ## Overview

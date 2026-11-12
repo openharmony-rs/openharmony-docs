@@ -14,7 +14,7 @@ The file declares the DRM error codes.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -53,6 +53,6 @@ Enumerates the DRM error codes.
 | DRM_ERR_UNSUPPORTED = DRM_CAPI_ERR_BASE + 9 | Unsupported operation. |
 | DRM_ERR_MAX_SYSTEM_NUM_REACHED = DRM_CAPI_ERR_BASE + 10 | Too many MediaKeySystem instances. |
 | DRM_ERR_MAX_SESSION_NUM_REACHED = DRM_CAPI_ERR_BASE + 11 | Too many MediaKeySession instances. |
-| DRM_ERR_EXTEND_START  = DRM_CAPI_ERR_BASE + 100 | Extended error codes start. |
+| DRM_ERR_EXTEND_START = DRM_CAPI_ERR_BASE + 100 | Extended error codes start. |
 
 

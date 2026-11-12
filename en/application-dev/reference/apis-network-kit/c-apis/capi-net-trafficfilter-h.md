@@ -14,7 +14,7 @@ Declares the C APIs for network traffic filtering and redirection. This header f
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -56,8 +56,8 @@ Creates a traffic redirection instance for redirecting TCP traffic to a proxy se
 
 | Parameter | Description |
 | -- | -- |
-| uint32_t group_id | Redirection link ID, which is a logical group ID within an app. Different **group_id** values can be used for multiple redirectors within the same app. Redirectors with the same **group_id** in different apps are automatically isolated. The value range is [[OH_TRAFFICFILTER_MIN_GROUP_ID](capi-net-trafficfilter-type-h.md#宏定义), [OH_TRAFFICFILTER_MAX_GROUP_ID](capi-net-trafficfilter-type-h.md#宏定义)]. If the value is out of this range, the function returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). |
-| uint32_t priority | Priority, which determines the execution order among links with different **group_id** values. A smaller value indicates a higher priority. Note: The redirector priority is higher than the packet filter priority. The value range is [[OH_TRAFFICFILTER_MIN_PRIORITY](capi-net-trafficfilter-type-h.md#宏定义), [OH_TRAFFICFILTER_MAX_PRIORITY](capi-net-trafficfilter-type-h.md#宏定义)]. If the value is out of range, the function returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). |
+| uint32_t group_id | Redirection link ID, which is a logical group ID within an app. Different **group_id** values can be used for multiple redirectors within the same app. Redirectors with the same **group_id** in different apps are automatically isolated. The value range is [[OH_TRAFFICFILTER_MIN_GROUP_ID](capi-net-trafficfilter-type-h.md#macros), [OH_TRAFFICFILTER_MAX_GROUP_ID](capi-net-trafficfilter-type-h.md#macros)]. If the value is out of this range, the function returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). |
+| uint32_t priority | Priority, which determines the execution order among links with different **group_id** values. A smaller value indicates a higher priority. Note: The redirector priority is higher than the packet filter priority. The value range is [[OH_TRAFFICFILTER_MIN_PRIORITY](capi-net-trafficfilter-type-h.md#macros), [OH_TRAFFICFILTER_MAX_PRIORITY](capi-net-trafficfilter-type-h.md#macros)]. If the value is out of range, the function returns [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode). |
 | [OH_TrafficFilter_Redirector](capi-trafficfilter-oh-trafficfilter-redirector.md)** redirector | Output parameter, which is the redirection handle when the operation is successful. |
 
 **Returns**:

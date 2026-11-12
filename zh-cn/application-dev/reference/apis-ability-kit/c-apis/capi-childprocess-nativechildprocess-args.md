@@ -1,7 +1,7 @@
 # NativeChildProcess_Args
 
 ```c
-struct NativeChildProcess_Args {...}
+typedef struct NativeChildProcess_Args {...} NativeChildProcess_Args
 ```
 
 ## 概述

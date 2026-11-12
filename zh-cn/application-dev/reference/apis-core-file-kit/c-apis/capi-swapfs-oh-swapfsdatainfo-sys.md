@@ -1,7 +1,7 @@
 # OH_SwapfsDataInfo（系统接口）
 
 ```c
-struct OH_SwapfsDataInfo {...}
+typedef struct OH_SwapfsDataInfo {...} OH_SwapfsDataInfo
 ```
 
 ## 概述

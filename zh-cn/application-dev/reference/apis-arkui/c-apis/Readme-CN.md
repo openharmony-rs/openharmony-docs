@@ -194,6 +194,8 @@
     - [ArkUI_NodeAdapter*](capi-arkui-nativemodule-arkui-nodeadapter8h.md)
     - [ArkUI_NodeAdapterEvent](capi-arkui-nativemodule-arkui-nodeadapterevent.md)
     - [ArkUI_NodeContentEvent](capi-arkui-nativemodule-arkui-nodecontentevent.md)
+    - [OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md)
+    - [OH_ArkUI_ApplicationShortcutCallbackInfo](capi-arkui-nativemodule-oh-arkui-applicationshortcutcallbackinfo.md)
     - [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)
     - [ArkUI_DragPreviewOption](capi-arkui-nativemodule-arkui-dragpreviewoption.md)
     - [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)

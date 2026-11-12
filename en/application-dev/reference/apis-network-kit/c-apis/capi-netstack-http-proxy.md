@@ -1,7 +1,7 @@
 # Http_Proxy
 
 ```c
-struct Http_Proxy {...}
+typedef struct Http_Proxy {...} Http_Proxy
 ```
 
 ## Overview

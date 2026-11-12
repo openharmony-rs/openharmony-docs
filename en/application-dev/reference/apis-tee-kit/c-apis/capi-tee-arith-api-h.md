@@ -14,13 +14,13 @@ Provides APIs for operating big integers.
 
 ## Summary
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | TEE_BigIntSizeInU32(n) ((((n) + 31) / 32) + 2) | Obtains the size of the array of uint32_t values required to represent a <b>BigInt</b>.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -62,7 +62,7 @@ Provides APIs for operating big integers.
 | [void TEE_BigIntComputeFMM(TEE_BigIntFMM *dest, const TEE_BigIntFMM *op1, const TEE_BigIntFMM *op2, const TEE_BigInt *n, const TEE_BigIntFMMContext *context)](#tee_bigintcomputefmm) | Computes dest = op1* op2 in the fast modular multiplication representation. |
 | [TEE_Result TEE_BigIntExpMod(TEE_BigInt *des, TEE_BigInt *op1, const TEE_BigInt *op2, const TEE_BigInt *n, TEE_BigIntFMMContext *context)](#tee_bigintexpmod) | Computes dest = (op1 ^ op2)(mod n). |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

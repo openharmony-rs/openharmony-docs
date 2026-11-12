@@ -12,7 +12,7 @@
 
 | Name | Description |
 | -- | -- |
-| const struct \_\_ani_vm_api *c_api |  |
+| [const struct \_\_ani_vm_api](capi----ani-vm-api.md) *c_api |  |
 | ani_status DestroyVM()
     {
         return c_api->DestroyVM(this);

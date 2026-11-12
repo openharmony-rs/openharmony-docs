@@ -14,14 +14,14 @@ Declare playbackState interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md) | - | Defines the playback position. |
+| [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md) | AVSession_PlaybackPosition | Defines the playback position. |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md) | OH_AVSession_AVPlaybackState | AVSession playbackstate object. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -22,15 +22,15 @@
 | -- | -- | -- |
 | [OH_Rdb_Config](capi-rdb-oh-rdb-config.md) | OH_Rdb_Config | 管理关系型数据库配置。 |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | OH_Rdb_Store | 表示数据库实例。 |
-| [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) | - | 记录表的分布式配置信息。 |
-| [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) | - | 描述发生变化的行的主键或者行号。 |
-| [Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md) | - | 记录端云同步过程详情。 |
-| [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md) | - | 表示回调函数。 |
-| [Rdb_DataObserver](capi-rdb-rdb-dataobserver.md) | - | 表示数据观察者。 |
-| [Rdb_Statistic](capi-rdb-rdb-statistic.md) | - | 描述数据库表的端云同步过程的统计信息。 |
-| [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) | - | 描述数据库表执行端云同步任务上传和下载的统计信息。 |
-| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) | - | 描述数据库整体执行端云同步任务上传和下载的统计信息。 |
-| [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) | - | 端云同步进度观察者。 |
+| [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) | Rdb_DistributedConfig | 记录表的分布式配置信息。 |
+| [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) | Rdb_KeyInfo | 描述发生变化的行的主键或者行号。 |
+| [Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md) | Rdb_ChangeInfo | 记录端云同步过程详情。 |
+| [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md) | Rdb_SubscribeCallback | 表示回调函数。 |
+| [Rdb_DataObserver](capi-rdb-rdb-dataobserver.md) | Rdb_DataObserver | 表示数据观察者。 |
+| [Rdb_Statistic](capi-rdb-rdb-statistic.md) | Rdb_Statistic | 描述数据库表的端云同步过程的统计信息。 |
+| [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) | Rdb_TableDetails | 描述数据库表执行端云同步任务上传和下载的统计信息。 |
+| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) | Rdb_ProgressDetails | 描述数据库整体执行端云同步任务上传和下载的统计信息。 |
+| [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) | Rdb_ProgressObserver | 端云同步进度观察者。 |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) | OH_Rdb_ConfigV2 | 管理关系数据库配置，与[OH_Rdb_Config](capi-rdb-oh-rdb-config.md)的区别是该结构体成员变量不对外暴露，使用一系列方法配置该结构体的属性，支持向量数据库。 |
 
 ### 枚举
@@ -228,9 +228,9 @@ enum Rdb_Tokenizer
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_NONE_TOKENIZER = 1 | 表示不使用分词器。<br> <br>**起始版本：** 17 |
-| RDB_ICU_TOKENIZER = 2 | 表示使用ICU分词器。<br> <br>**起始版本：** 17 |
-| RDB_CUSTOM_TOKENIZER = 3 | 表示使用CUSTOM分词器。<br> <br>**起始版本：** 18 |
+| RDB_NONE_TOKENIZER = 1 | 表示不使用分词器。<br><br>**起始版本：** 17 |
+| RDB_ICU_TOKENIZER = 2 | 表示使用ICU分词器。<br><br>**起始版本：** 17 |
+| RDB_CUSTOM_TOKENIZER = 3 | 表示使用CUSTOM分词器。<br><br>**起始版本：** 18 |
 
 ### Rdb_DistributedType
 

@@ -14,13 +14,13 @@ This file declares the functions related to the mask filter in the drawing modul
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_BlurType](#oh_drawing_blurtype) | OH_Drawing_BlurType | Defines an enum for the blur types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

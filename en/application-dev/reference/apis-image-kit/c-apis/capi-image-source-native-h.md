@@ -14,7 +14,7 @@ The file declares the APIs for image decoding.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,7 +24,7 @@ The file declares the APIs for image decoding.
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) | - | The OH_DecodingOptions struct describes the decoding options encapsulated at the native layer. The struct is used to set decoding options and is passed in as an input parameter for creating a PixelMap. For details, see [OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap). |
 | [OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md) | OH_ImageRawData | Defines raw data in an image. It is used in [OH_ImageSourceNative_CreateImageRawData](capi-image-source-native-h.md#oh_imagesourcenative_createimagerawdata). |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -32,7 +32,7 @@ The file declares the APIs for image decoding.
 | [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) | IMAGE_ALLOCATOR_TYPE | Enumerates the types of allocators used to allocate PixelMap memory. |
 | [Image_CropAndScaleStrategy](#image_cropandscalestrategy) | Image_CropAndScaleStrategy | Enumerates the cropping and scaling strategies when **desiredSize** and **desiredRegion** are both specified.<br> If the **ImageCropAndScaleStrategy** parameter is not specified in [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) and both **desiredRegion** and **desiredSize** are set, the final decoding result may vary slightly due to differences in decoding algorithms used for different image formats.<br> For example, if the original image size is 200x200, and you specify **desiredSize:{width: 150, height: 150}, desiredRegion:{x: 0, y: 0, width: 100, height: 100}**, the expectation is to decode the top-left 1/4 region of the original image and then scale the pixelMap size to 150x150.<br> For JPEG and WebP images (as well as some DNG images that decode a JPEG preview within the file and therefore are treated as JPEG format), the system first performs downsampling. For instance, it might downsample by 7/8 and then crop the region based on a 175x175 image size. As a result, the final cropped region will be slightly larger than the top-left 1/4 of the original image.<br> For SVG images, which are vector-based and can be scaled without losing clarity, the system scales the image based on the ratio of **desiredSize** to the original image size and then crops the region. This results in a decoded region that may differ from the exact 1/4 region of the original image.<br> To ensure consistent results when both **desiredRegion** and **desiredSize** are set, set the **ImageCropAndScaleStrategy**<br>parameter to **CROP_FIRST**. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

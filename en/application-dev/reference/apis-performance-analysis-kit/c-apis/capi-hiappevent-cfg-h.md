@@ -14,7 +14,7 @@ Defines the names of all the configuration items of the event logging configurat
 
 ## Summary
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

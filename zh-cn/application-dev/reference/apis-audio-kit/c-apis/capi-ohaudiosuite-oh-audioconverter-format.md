@@ -1,7 +1,7 @@
 # OH_AudioConverter_Format
 
 ```c
-struct OH_AudioConverter_Format {...}
+typedef struct OH_AudioConverter_Format {...} OH_AudioConverter_Format
 ```
 
 ## 概述

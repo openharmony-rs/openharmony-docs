@@ -1,7 +1,7 @@
 # CaptureSession_Callbacks
 
 ```c
-struct CaptureSession_Callbacks {...}
+typedef struct CaptureSession_Callbacks {...} CaptureSession_Callbacks
 ```
 
 ## 概述

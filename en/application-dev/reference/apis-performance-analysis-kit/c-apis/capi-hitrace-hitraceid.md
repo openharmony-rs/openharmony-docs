@@ -1,7 +1,7 @@
 # HiTraceId
 
 ```c
-struct HiTraceId {...}
+typedef struct HiTraceId {...} HiTraceId
 ```
 
 ## Overview

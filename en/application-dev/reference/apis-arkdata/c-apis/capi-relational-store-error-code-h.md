@@ -14,7 +14,7 @@ Declaration error code information.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

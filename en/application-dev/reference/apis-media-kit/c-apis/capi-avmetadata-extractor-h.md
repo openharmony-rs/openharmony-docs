@@ -12,13 +12,13 @@ The file declares the AVMetadataExtractor APIs. You can use the APIs to obtain m
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) | OH_AVMetadataExtractor | The struct describes the OH_AVMetadataExtractor type. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

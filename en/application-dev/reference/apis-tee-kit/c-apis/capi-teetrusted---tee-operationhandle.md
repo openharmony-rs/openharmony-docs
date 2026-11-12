@@ -43,7 +43,7 @@ Defines the cryptographic operation handle.
 | void *privateKey | Private key |
 | uint32_t privateKeyLen | Length of the private key |
 | uint32_t IVLen | Length of the IV |
-| TEE_DH_OtherInfo *dh_otherinfo | TEE_DH_OtherInfo |
+| [TEE_DH_OtherInfo](capi-teetrusted-tee-dh-otherinfo.md) *dh_otherinfo | TEE_DH_OtherInfo |
 | uint32_t dh_hash_mode | TEE_DH_HASH_Mode |
 | uint32_t dh_derive_func | TEE_DH_DerivFuncMode |
 | uint32_t dh_op_mode;

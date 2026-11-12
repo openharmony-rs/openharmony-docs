@@ -474,7 +474,7 @@ NODE_TEXT_EDITOR_UNDERLINE_COLOR = 22039
 
 **描述：**
 
-开启下划线时，支持配置下划线颜色，支持属性设置、属性重置和属性获取。 <br>需先设置NODE_TEXT_EDITOR_SHOW_UNDERLINE属性为1以开启下划线后，本属性设置才生效。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：typing下划线颜色，表示键入时的下划线颜色，0xARGB类型。</li> <li>.value[1].u32：normal下划线颜色，表示非特殊状态时下划线颜色，0xARGB类型。</li> <li>.value[2].u32：error下划线颜色，表示错误时下划线颜色，0xARGB类型。</li> <li>.value[3].u32：disable下划线颜色，表示禁用时下划线颜色，0xARGB类型。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：typing下划线颜色，表示键入时的下划线颜色，0xARGB类型。</li> <li>.value[1].u32：normal下划线颜色，表示非特殊状态时下划线颜色，0xARGB类型。</li> <li>.value[2].u32：error下划线颜色，表示错误时下划线颜色，0xARGB类型。</li> <li>.value[3].u32：disable下划线颜色，表示禁用时下划线颜色，0xARGB类型。</li> </ul>
+开启下划线时，支持配置下划线颜色，支持属性设置、属性重置和属性获取。 <br>需先设置NODE_TEXT_EDITOR_SHOW_UNDERLINE属性为1以开启下划线后，本属性设置才生效。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：表示键入时的下划线颜色，0xARGB类型。</li> <li>.value[1].u32：表示非特殊状态时下划线颜色，0xARGB类型。</li> <li>.value[2].u32：表示错误时下划线颜色，0xARGB类型。</li> <li>.value[3].u32：表示禁用时下划线颜色，0xARGB类型。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：表示键入时的下划线颜色，0xARGB类型。</li> <li>.value[1].u32：表示非特殊状态时下划线颜色，0xARGB类型。</li> <li>.value[2].u32：表示错误时下划线颜色，0xARGB类型。</li> <li>.value[3].u32：表示禁用时下划线颜色，0xARGB类型。</li> </ul>
 
 **起始版本：** 26.1.0
 

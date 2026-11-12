@@ -132,7 +132,7 @@ Neural Network Runtime 定义的错误码类型。
 ### OH_NN_FuseType
 
 ```c
-enum OH_NN_FuseType
+enum OH_NN_FuseType : int8_t
 ```
 
 **描述：**

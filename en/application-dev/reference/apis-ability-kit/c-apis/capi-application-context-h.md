@@ -14,7 +14,7 @@ The file declares the APIs related to the application-level context.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

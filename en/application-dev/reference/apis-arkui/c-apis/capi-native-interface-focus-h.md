@@ -14,13 +14,13 @@ Declares APIs for focus management, mainly used for actively transferring focus,
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_KeyProcessingMode](#arkui_keyprocessingmode) | ArkUI_KeyProcessingMode | Enumerates the processing modes of key events. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

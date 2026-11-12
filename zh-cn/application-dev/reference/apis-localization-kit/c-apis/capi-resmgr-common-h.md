@@ -16,9 +16,9 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) | 设备状态的结构体。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md) | ResourceManager_Configuration | 设备状态的结构体。 |
 
 ### 枚举
 

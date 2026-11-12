@@ -1,7 +1,7 @@
 # OH_TrafficFilter_RedirectRule
 
 ```c
-struct OH_TrafficFilter_RedirectRule {...}
+typedef struct OH_TrafficFilter_RedirectRule {...} OH_TrafficFilter_RedirectRule
 ```
 
 ## 概述

@@ -1,7 +1,7 @@
 # OH_CloudDisk_FetchRangeDataRequest
 
 ```c
-struct OH_CloudDisk_FetchRangeDataRequest {...}
+typedef struct OH_CloudDisk_FetchRangeDataRequest {...} OH_CloudDisk_FetchRangeDataRequest
 ```
 
 ## Overview
@@ -27,6 +27,6 @@ A struct that encapsulates the fetch range data request information.
 | [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePath | Relative file path in the sync root path.<br>**Since**: 26.1.0 |
 | uint64_t offset | Start offset of the fetched range data, in bytes.<br>**Since**: 26.1.0 |
 | uint64_t size | Size of the fetched range data, in bytes.<br>**Since**: 26.1.0 |
-| OH_CloudDisk_DataBuf *data | The data that needs to be read.<br>**Since**: 26.1.0 |
+| [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) *data | The data that needs to be read.<br>**Since**: 26.1.0 |
 
 

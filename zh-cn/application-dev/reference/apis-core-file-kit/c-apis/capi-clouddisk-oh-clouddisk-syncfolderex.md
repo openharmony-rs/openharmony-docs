@@ -1,7 +1,7 @@
 # OH_CloudDisk_SyncFolderEx
 
 ```c
-struct OH_CloudDisk_SyncFolderEx {...}
+typedef struct OH_CloudDisk_SyncFolderEx {...} OH_CloudDisk_SyncFolderEx
 ```
 
 ## 概述

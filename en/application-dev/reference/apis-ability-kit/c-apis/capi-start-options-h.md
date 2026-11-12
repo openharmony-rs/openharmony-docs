@@ -14,13 +14,13 @@ Defines the start options APIs.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-abilityruntime-startoptions.md) | AbilityRuntime_StartOptions |  |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

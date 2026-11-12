@@ -1,7 +1,7 @@
 # Http_Request
 
 ```c
-struct Http_Request {...}
+typedef struct Http_Request {...} Http_Request
 ```
 
 ## 概述
@@ -26,6 +26,6 @@ HTTP请求结构体。
 | -- | -- |
 | uint32_t requestId | HTTP请求的ID。 |
 | char *url | HTTP请求的URL。 |
-| Http_RequestOptions *options | Pointer to the HTTP request configuration. For details, see [Http_RequestOptions](capi-netstack-http-requestoptions.md). |
+| [Http_RequestOptions](capi-netstack-http-requestoptions.md) *options | Pointer to the HTTP request configuration. For details, see [Http_RequestOptions](capi-netstack-http-requestoptions.md). |
 
 

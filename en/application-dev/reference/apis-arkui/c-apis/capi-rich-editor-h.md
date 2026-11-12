@@ -14,7 +14,7 @@ Defines structs, enumerations, and APIs related to <b>RichEditor</b>. <b>RichEdi
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,7 +24,7 @@ Defines structs, enumerations, and APIs related to <b>RichEditor</b>. <b>RichEdi
 | [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md) | OH_ArkUI_TextEditorParagraphStyle | Defines the paragraph style of a text editor, which describes the formatting attributes of paragraphs in a text editor. You can call related APIs to set and obtain the paragraph style. It applies to scenarios where style attributes such as the paragraph alignment, indentation, and line spacing need to be set. |
 | [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md) | OH_ArkUI_TextEditorTextStyle | Defines the text style of a text editor, which supports the setting of text attributes such as the font, color, and size. It applies to scenarios where the content style of a text editor needs to be controlled, helping you flexibly customize the display effect of text in the editor. For example, in a rich text editor, you can set styles such as the font, color, and size for different paragraphs or text. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -34,7 +34,7 @@ Defines structs, enumerations, and APIs related to <b>RichEditor</b>. <b>RichEdi
 | [OH_ArkUI_TextMenuType](#oh_arkui_textmenutype) | OH_ArkUI_TextMenuType | Enumerates text menu types, which are used to distinguish different types of pop-up menus in the text editor, including the text selection menu and the preview menu. Different menu types correspond to different interaction scenarios and menu display modes. For example, the text selection menu pops up when the user selects text and is used for text operations such as copy and delete; the preview menu pops up when the user long-presses an image and is used to trigger image content drag preview as well as copy and deletion operations. |
 | [OH_ArkUI_TextEditorType](#oh_arkui_texteditortype) | OH_ArkUI_TextEditorType | Enumerates the text editor input types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

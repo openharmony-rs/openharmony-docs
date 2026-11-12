@@ -14,13 +14,13 @@ The file declares the metadata object ext concepts.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md) | OH_Camera_MetadataObjectExt | The struct describes the camera metadata object ext. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -16,7 +16,7 @@ Defines the mouse cursor styles.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

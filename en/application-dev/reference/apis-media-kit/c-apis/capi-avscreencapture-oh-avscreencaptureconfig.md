@@ -1,7 +1,7 @@
 # OH_AVScreenCaptureConfig
 
 ```c
-struct OH_AVScreenCaptureConfig {...}
+typedef struct OH_AVScreenCaptureConfig {...} OH_AVScreenCaptureConfig
 ```
 
 ## Overview

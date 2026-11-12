@@ -1,7 +1,7 @@
 # NetStack_CertificatePinning
 
 ```c
-struct NetStack_CertificatePinning {...}
+typedef struct NetStack_CertificatePinning {...} NetStack_CertificatePinning
 ```
 
 ## Overview

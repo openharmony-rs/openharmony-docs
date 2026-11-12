@@ -1,7 +1,7 @@
 # UsbDdkEndpointDescriptor
 
 ```c
-struct UsbDdkEndpointDescriptor {...}
+typedef struct UsbDdkEndpointDescriptor {...} UsbDdkEndpointDescriptor
 ```
 
 ## 概述

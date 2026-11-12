@@ -1,7 +1,7 @@
 # OH_AbilityRuntime_ModObjDispatcher_TypeInfo
 
 ```c
-struct OH_AbilityRuntime_ModObjDispatcher_TypeInfo {...}
+typedef struct OH_AbilityRuntime_ModObjDispatcher_TypeInfo {...} OH_AbilityRuntime_ModObjDispatcher_TypeInfo
 ```
 
 ## 概述

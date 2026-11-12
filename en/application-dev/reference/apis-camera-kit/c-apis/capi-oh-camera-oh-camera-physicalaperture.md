@@ -1,7 +1,7 @@
 # OH_Camera_PhysicalAperture
 
 ```c
-struct OH_Camera_PhysicalAperture {...}
+typedef struct OH_Camera_PhysicalAperture {...} OH_Camera_PhysicalAperture
 ```
 
 ## Overview

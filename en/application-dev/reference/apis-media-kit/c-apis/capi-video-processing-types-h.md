@@ -14,26 +14,26 @@ Type definitions for video processing.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [VideoProcessing_ColorSpaceInfo](capi-videoprocessing-videoprocessing-colorspaceinfo.md) | - | The struct describes the color space information of video processing. |
+| [VideoProcessing_ColorSpaceInfo](capi-videoprocessing-videoprocessing-colorspaceinfo.md) | VideoProcessing_ColorSpaceInfo | The struct describes the color space information of video processing. |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md) | OH_VideoProcessing | Define the video processing object.<br> Define a null pointer of OH_VideoProcessing and call [OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create) to create a video processing instance. The pointer should be null before creating instance. User can create multiple video processing instances for different processing types. |
 | [NativeWindow](capi-videoprocessing-nativewindow.md) | OHNativeWindow | Forward declaration of NativeWindow. |
 | [OH_AVFormat](capi-videoprocessing-oh-avformat.md) | OH_AVFormat | Forward declaration of OH_AVFormat. |
 | [VideoProcessing_Callback](capi-videoprocessing-videoprocessing-callback.md) | VideoProcessing_Callback | Video processing asynchronous callback object type.<br> Define a null pointer of VideoProcessing_Callback and call [OH_VideoProcessingCallback_Create](capi-video-processing-h.md#oh_videoprocessingcallback_create) to create a callback object. The pointer should be null before creating the callback object. Register the callback to a video processing instance by calling [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback). |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [VideoDetailEnhancer_QualityLevel](#videodetailenhancer_qualitylevel) | VideoDetailEnhancer_QualityLevel | The quality level is used for detail enhancement.<br> It is the value of the key parameter [VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-video-processing-types-h.md#变量). |
-| [VideoMetadataGeneratorStyleControl](#videometadatageneratorstylecontrol) | VideoMetadataGeneratorStyleControl | The style control is used for video metadata generator.<br> It is the value of the key parameter [VIDEO_METADATA_GENERATOR_STYLE_CONTROL](capi-video-processing-types-h.md#变量). |
+| [VideoDetailEnhancer_QualityLevel](#videodetailenhancer_qualitylevel) | VideoDetailEnhancer_QualityLevel | The quality level is used for detail enhancement.<br> It is the value of the key parameter [VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-video-processing-types-h.md#variables). |
+| [VideoMetadataGeneratorStyleControl](#videometadatageneratorstylecontrol) | VideoMetadataGeneratorStyleControl | The style control is used for video metadata generator.<br> It is the value of the key parameter [VIDEO_METADATA_GENERATOR_STYLE_CONTROL](capi-video-processing-types-h.md#variables). |
 | [VideoProcessing_ErrorCode](#videoprocessing_errorcode) | VideoProcessing_ErrorCode | Video processing error code. |
-| [VideoProcessing_State](#videoprocessing_state) | VideoProcessing_State | Video processing states.<br> The state is reported to user by callback function OH_VideoProcessing_OnState. |
+| [VideoProcessing_State](#videoprocessing_state) | VideoProcessing_State | Video processing states.<br> The state is reported to user by callback function [OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate). |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -41,7 +41,7 @@ Type definitions for video processing.
 | [typedef void (\*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state, void* userData)](#oh_videoprocessingcallback_onstate) | OH_VideoProcessingCallback_OnState | The callback function pointer definition for reporting video processing state.<br> The state will be [VIDEO_PROCESSING_STATE_RUNNING](capi-video-processing-types-h.md#videoprocessing_state) after [OH_VideoProcessing_Start](capi-video-processing-h.md#oh_videoprocessing_start) is called successfully. The state will be [VIDEO_PROCESSING_STATE_STOPPED](capi-video-processing-types-h.md#videoprocessing_state) after all the buffers cached before [OH_VideoProcessing_Stop](capi-video-processing-h.md#oh_videoprocessing_stop) is called are processed. |
 | [typedef void (\*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index, void* userData)](#oh_videoprocessingcallback_onnewoutputbuffer) | OH_VideoProcessingCallback_OnNewOutputBuffer | The callback function pointer definition for reporting a new output buffer is filled with processed data.<br> Every new output buffer's index will report to user once the buffer is filled with processed data. Then call [OH_VideoProcessing_RenderOutputBuffer](capi-video-processing-h.md#oh_videoprocessing_renderoutputbuffer) with the buffer's index to send the output buffer out. If this function is not registered, the output buffer is sent out as soon as the buffer is filled with processed data without reporting. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -64,7 +64,7 @@ enum VideoDetailEnhancer_QualityLevel
 
 **Description**
 
-The quality level is used for detail enhancement.<br> It is the value of the key parameter [VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-video-processing-types-h.md#变量).
+The quality level is used for detail enhancement.<br> It is the value of the key parameter [VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-video-processing-types-h.md#variables).
 
 <!--Device-VideoDetailEnhancer_QualityLevel--><!--Device-VideoDetailEnhancer_QualityLevel-End-->
 
@@ -93,7 +93,7 @@ enum VideoMetadataGeneratorStyleControl
 
 **Description**
 
-The style control is used for video metadata generator.<br> It is the value of the key parameter [VIDEO_METADATA_GENERATOR_STYLE_CONTROL](capi-video-processing-types-h.md#变量).
+The style control is used for video metadata generator.<br> It is the value of the key parameter [VIDEO_METADATA_GENERATOR_STYLE_CONTROL](capi-video-processing-types-h.md#variables).
 
 <!--Device-VideoMetadataGeneratorStyleControl--><!--Device-VideoMetadataGeneratorStyleControl-End-->
 
@@ -131,16 +131,16 @@ Video processing error code.
 
 | Enum item | Description |
 | -- | -- |
-| VIDEO_PROCESSING_SUCCESS | @error Operation is successful. |
+| VIDEO_PROCESSING_SUCCESS | &nbsp;Operation is successful. |
 | VIDEO_PROCESSING_ERROR_INVALID_PARAMETER = 401 | &nbsp;Input parameter is invalid. This error is returned for all of the following error conditions: 1 - Invalid input or output video buffer - The video buffer is null. 2 - Invalid parameter - The parameter is null. 3 - Invalid type - The type passed in the create function does not exist. |
-| VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001 | @error Some unknown error occurred, such as GPU calculation failure or memcpy failure. |
+| VIDEO_PROCESSING_ERROR_UNKNOWN = 29210001 | &nbsp;Some unknown error occurred, such as GPU calculation failure or memcpy failure. |
 | VIDEO_PROCESSING_ERROR_INITIALIZE_FAILED | &nbsp;The global environment initialization for video processing failed, such as failure to initialize the GPU environment. |
 | VIDEO_PROCESSING_ERROR_CREATE_FAILED | &nbsp;Failed to create video processing instance. For example, the number of instances exceeds the upper limit. |
-| VIDEO_PROCESSING_ERROR_PROCESS_FAILED | @error Failed to process video buffer. For example, the processing times out. |
+| VIDEO_PROCESSING_ERROR_PROCESS_FAILED | &nbsp;Failed to process video buffer. For example, the processing times out. |
 | VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | &nbsp;The processing is not supported. You may call OH_VideoProcessing_IsXXXSupported to check whether the capability is supported. |
-| VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | @error The operation is not permitted. This may be caused by incorrect status. |
-| VIDEO_PROCESSING_ERROR_NO_MEMORY | @error Out of memory. |
-| VIDEO_PROCESSING_ERROR_INVALID_INSTANCE | @error The video processing instance is invalid. This may be caused by null instance. |
+| VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | &nbsp;The operation is not permitted. This may be caused by incorrect status. |
+| VIDEO_PROCESSING_ERROR_NO_MEMORY | &nbsp;Out of memory. |
+| VIDEO_PROCESSING_ERROR_INVALID_INSTANCE | &nbsp;The video processing instance is invalid. This may be caused by null instance. |
 | VIDEO_PROCESSING_ERROR_INVALID_VALUE | &nbsp;Input value is invalid. This error is returned for all of the following error conditions: 1 - Invalid input or output video buffer - The video buffer width(height) is too large or colorspace is incorrect. 2 - Invalid parameter - The parameter does not contain valid information, such as detail enhancer level is incorrect. |
 
 ### VideoProcessing_State
@@ -151,7 +151,7 @@ enum VideoProcessing_State
 
 **Description**
 
-Video processing states.<br> The state is reported to user by callback function OH_VideoProcessing_OnState.
+Video processing states.<br> The state is reported to user by callback function [OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate).
 
 <!--Device-VideoProcessing_State--><!--Device-VideoProcessing_State-End-->
 

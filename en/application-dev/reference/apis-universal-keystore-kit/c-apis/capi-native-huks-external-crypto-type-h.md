@@ -16,21 +16,21 @@ Defines the structs, enums, and macros for external key management extensions.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [OH_Huks_ExternalCryptoParam](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparam.md) | Defines a single parameter in a parameter set. |
-| [OH_Huks_ExternalCryptoParamSet](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparamset.md) | Defines an external cryptographic parameter set. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [OH_Huks_ExternalCryptoParam](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparam.md) | OH_Huks_ExternalCryptoParam | Defines a single parameter in a parameter set. |
+| [OH_Huks_ExternalCryptoParamSet](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparamset.md) | OH_Huks_ExternalCryptoParamSet | Defines an external cryptographic parameter set. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Huks_ExternalCryptoTag](#oh_huks_externalcryptotag) | OH_Huks_ExternalCryptoTag | Enumerates the tag values used in a parameter set. |
 | [OH_Huks_ExternalPinAuthState](#oh_huks_externalpinauthstate) | OH_Huks_ExternalPinAuthState | Enumerates the UKey PIN authentication states. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

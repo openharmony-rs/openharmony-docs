@@ -10,7 +10,7 @@
 
 | Name | Description |
 | -- | -- |
-| union sigval sigev_value |  |
+| union [sigval](capi--sigval.md) sigev_value |  |
 | int sigev_signo |  |
 | int sigev_notify |  |
 | pthread_attr_t *sigev_notify_attributes |  |

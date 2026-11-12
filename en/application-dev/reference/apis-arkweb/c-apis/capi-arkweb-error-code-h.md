@@ -14,7 +14,7 @@ Declares the exception error codes of ArkWeb NDK APIs, which are used to return 
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

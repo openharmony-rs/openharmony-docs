@@ -14,7 +14,7 @@ Declares the APIs for starting or stopping vibration. Two vibration modes are su
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

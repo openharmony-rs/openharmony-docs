@@ -14,19 +14,19 @@ Declares the queue interfaces in C.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) | ffrt_queue_t | Queue handle, which identifies different queues. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ffrt_queue_type_t](#ffrt_queue_type_t) | ffrt_queue_type_t | Enumerates the queue types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -53,7 +53,7 @@ Declares the queue interfaces in C.
 | [FFRT_C_API ffrt_queue_t ffrt_get_main_queue(void)](#ffrt_get_main_queue) | Gets the application main thread queue. |
 | [FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)](#ffrt_get_current_queue) | Gets the application worker (ArkTS) thread queue.(Deprecated in API18) |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -287,7 +287,7 @@ Gets the timeout callback of a queue attribute.
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API ffrt_function_header_t* | The queue task timeout callback function. |
+| FFRT_C_API [ffrt_function_header_t](capi-ffrt-ffrt-function-header-t.md)* | The queue task timeout callback function. |
 
 ### ffrt_queue_attr_set_max_concurrency()
 
@@ -419,7 +419,7 @@ Creates a queue.<br> The queue must later be destroyed by [ffrt_queue_destroy](c
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API ffrt_queue_t | A non-null queue handle if the queue is created; a null pointer otherwise. |
+| FFRT_C_API [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) | A non-null queue handle if the queue is created; a null pointer otherwise. |
 
 ### ffrt_queue_destroy()
 
@@ -500,7 +500,7 @@ Submits a task to the queue, and obtains a task handle.
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | A non-null task handle if the task is submitted; a null pointer otherwise. |
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | A non-null task handle if the task is submitted; a null pointer otherwise. |
 
 **Reference**:
 
@@ -566,7 +566,7 @@ Submits a task to a queue, and obtains a handle, simplified from the [ffrt_queue
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | A non-null task handle if the task is submitted; a null pointer otherwise. |
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | A non-null task handle if the task is submitted; a null pointer otherwise. |
 
 **Reference**:
 
@@ -643,7 +643,7 @@ Gets the application main thread queue.
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API ffrt_queue_t | The application main thread queue. |
+| FFRT_C_API [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) | The application main thread queue. |
 
 ### ffrt_get_current_queue()
 
@@ -667,6 +667,6 @@ Gets the application worker (ArkTS) thread queue.
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API ffrt_queue_t | The application worker (ArkTS) thread queue. |
+| FFRT_C_API [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) | The application worker (ArkTS) thread queue. |
 
 

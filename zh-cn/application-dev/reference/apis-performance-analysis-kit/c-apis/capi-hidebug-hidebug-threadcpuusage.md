@@ -1,7 +1,7 @@
 # HiDebug_ThreadCpuUsage
 
 ```c
-struct HiDebug_ThreadCpuUsage {...}
+typedef struct HiDebug_ThreadCpuUsage {...} HiDebug_ThreadCpuUsage
 ```
 
 ## 概述
@@ -26,6 +26,6 @@ struct HiDebug_ThreadCpuUsage {...}
 | -- | -- |
 | uint32_t threadId | 线程ID。 |
 | double cpuUsage | 线程CPU使用率百分比。 |
-| struct HiDebug_ThreadCpuUsage *next | 下一个线程的使用率信息。 |
+| [struct HiDebug_ThreadCpuUsage](capi-hidebug-hidebug-threadcpuusage.md) *next | 下一个线程的使用率信息。 |
 
 

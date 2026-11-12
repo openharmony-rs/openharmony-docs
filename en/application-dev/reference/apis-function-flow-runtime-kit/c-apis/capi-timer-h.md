@@ -14,7 +14,7 @@ Declares the timer interfaces in C.<br> Provides timer capabilities based on QoS
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

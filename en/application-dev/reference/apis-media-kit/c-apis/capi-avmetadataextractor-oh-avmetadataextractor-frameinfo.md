@@ -1,7 +1,7 @@
 # OH_AVMetadataExtractor_FrameInfo
 
 ```c
-struct OH_AVMetadataExtractor_FrameInfo {...}
+typedef struct OH_AVMetadataExtractor_FrameInfo {...} OH_AVMetadataExtractor_FrameInfo
 ```
 
 ## Overview

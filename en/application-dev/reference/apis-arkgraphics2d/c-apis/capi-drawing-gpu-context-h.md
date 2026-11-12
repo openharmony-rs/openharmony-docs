@@ -14,13 +14,13 @@ This file declares the functions related to the GPU context in the drawing modul
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_GpuContextOptions](capi-drawing-oh-drawing-gpucontextoptions.md) | OH_Drawing_GpuContextOptions | This struct describes the options about the GPU context. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

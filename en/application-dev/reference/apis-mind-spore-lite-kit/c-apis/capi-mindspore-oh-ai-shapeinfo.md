@@ -1,7 +1,7 @@
 # OH_AI_ShapeInfo
 
 ```c
-struct OH_AI_ShapeInfo {...}
+typedef struct OH_AI_ShapeInfo {...} OH_AI_ShapeInfo
 ```
 
 ## Overview

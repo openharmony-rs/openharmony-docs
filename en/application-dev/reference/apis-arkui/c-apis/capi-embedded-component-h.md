@@ -14,20 +14,20 @@ Defines embedded component attribute and interface.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md) | AbilityBase_Want | Declares the Ability base want. |
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | Define the EmbeddedComponentOption for the EmbeddedComponent. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | ARKUI_EMBEDDED_COMPONENT_H | Defines embedded component attribute and interface.<br>**Since**: 12<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

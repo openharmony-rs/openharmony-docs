@@ -14,23 +14,23 @@ Type definitions for image processing.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md) | - | The color space information is used for color space conversion capability query. |
+| [ImageProcessing_ColorSpaceInfo](capi-imageprocessing-imageprocessing-colorspaceinfo.md) | ImageProcessing_ColorSpaceInfo | The color space information is used for color space conversion capability query. |
 | [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md) | OH_ImageProcessing | Define the object for image processing.<br> Define a null pointer of OH_ImageProcessing and call [OH_ImageProcessing_Create](capi-image-processing-h.md#oh_imageprocessing_create) to create an image processing instance. The pointer should be null before creating instance. User can create multiple image processing instances for different processing types. |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md) | OH_PixelmapNative | Forward declaration of OH_PixelmapNative. |
 | [OH_AVFormat](capi-imageprocessing-oh-avformat.md) | OH_AVFormat | Forward declaration of OH_AVFormat. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ImageDetailEnhancer_QualityLevel](#imagedetailenhancer_qualitylevel) | ImageDetailEnhancer_QualityLevel | The quality level is used for detail enhancement.<br> It is the value of the key parameter [IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-image-processing-types-h.md#变量). |
+| [ImageDetailEnhancer_QualityLevel](#imagedetailenhancer_qualitylevel) | ImageDetailEnhancer_QualityLevel | The quality level is used for detail enhancement.<br> It is the value of the key parameter [IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-image-processing-types-h.md#variables). |
 | [ImageProcessing_ErrorCode](#imageprocessing_errorcode) | ImageProcessing_ErrorCode | Image processing error code. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -51,7 +51,7 @@ enum ImageDetailEnhancer_QualityLevel
 
 **Description**
 
-The quality level is used for detail enhancement.<br> It is the value of the key parameter [IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-image-processing-types-h.md#变量).
+The quality level is used for detail enhancement.<br> It is the value of the key parameter [IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-image-processing-types-h.md#variables).
 
 <!--Device-ImageDetailEnhancer_QualityLevel--><!--Device-ImageDetailEnhancer_QualityLevel-End-->
 
@@ -90,16 +90,16 @@ Image processing error code.
 
 | Enum item | Description |
 | -- | -- |
-| IMAGE_PROCESSING_SUCCESS | @error Operation is successful. |
+| IMAGE_PROCESSING_SUCCESS | &nbsp;Operation is successful. |
 | IMAGE_PROCESSING_ERROR_INVALID_PARAMETER = 401 | &nbsp;Input parameter is invalid. This error is returned for all of the following error conditions: 1 - Invalid input or output image buffer - The image buffer is null. 2 - Invalid parameter - The parameter is null. 3 - Invalid type - The type passed in the create function does not exist. |
-| IMAGE_PROCESSING_ERROR_UNKNOWN = 29200001 | @error Some unknown error occurred, such as GPU calculation failure or memcpy failure. |
+| IMAGE_PROCESSING_ERROR_UNKNOWN = 29200001 | &nbsp;Some unknown error occurred, such as GPU calculation failure or memcpy failure. |
 | IMAGE_PROCESSING_ERROR_INITIALIZE_FAILED | &nbsp;The global environment initialization for image processing failed, such as failure to initialize the GPU environment. |
 | IMAGE_PROCESSING_ERROR_CREATE_FAILED | &nbsp;Failed to create image processing instance. For example, the number of instances exceeds the upper limit. |
-| IMAGE_PROCESSING_ERROR_PROCESS_FAILED | @error Failed to process image buffer. For example, the processing times out. |
+| IMAGE_PROCESSING_ERROR_PROCESS_FAILED | &nbsp;Failed to process image buffer. For example, the processing times out. |
 | IMAGE_PROCESSING_ERROR_UNSUPPORTED_PROCESSING | &nbsp;The processing is not supported. You may call OH_ImageProcessing_IsXXXSupported to check whether the capability is supported. |
-| IMAGE_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | @error The operation is not permitted. This may be caused by incorrect status. |
-| IMAGE_PROCESSING_ERROR_NO_MEMORY | @error Out of memory. |
-| IMAGE_PROCESSING_ERROR_INVALID_INSTANCE | @error The image processing instance is invalid. This may be caused by null instance. |
+| IMAGE_PROCESSING_ERROR_OPERATION_NOT_PERMITTED | &nbsp;The operation is not permitted. This may be caused by incorrect status. |
+| IMAGE_PROCESSING_ERROR_NO_MEMORY | &nbsp;Out of memory. |
+| IMAGE_PROCESSING_ERROR_INVALID_INSTANCE | &nbsp;The image processing instance is invalid. This may be caused by null instance. |
 | IMAGE_PROCESSING_ERROR_INVALID_VALUE | &nbsp;Input value is invalid. This error is returned for all of the following error conditions: 1 - Invalid input or output image buffer - The image buffer width(height) is too large or colorspace is incorrect. 2 - Invalid parameter - The parameter does not contain valid information, such as detail enhancer level is incorrect. |
 
 

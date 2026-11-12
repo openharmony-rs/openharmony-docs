@@ -1,7 +1,7 @@
 # NetConn_NetHandle
 
 ```c
-struct NetConn_NetHandle {...}
+typedef struct NetConn_NetHandle {...} NetConn_NetHandle
 ```
 
 ## Overview

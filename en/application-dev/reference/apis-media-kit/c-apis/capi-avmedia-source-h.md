@@ -14,7 +14,7 @@ Defines the struct and enum of **AVMediaSource**.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -23,13 +23,13 @@ Defines the struct and enum of **AVMediaSource**.
 | [OH_AVMediaSourceLoadingRequest](capi-avmediasource-oh-avmediasourceloadingrequest.md) | OH_AVMediaSourceLoadingRequest | Defines a load request object for the media resource, through which the application obtains the location of the requested resource. |
 | [OH_AVMediaSourceLoader](capi-avmediasource-oh-avmediasourceloader.md) | OH_AVMediaSourceLoader | Declares the media source loader type, which is implemented by the application. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [AVLoadingRequestError](#avloadingrequesterror) | AVLoadingRequestError | Enumerates the error codes of network loading requests. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

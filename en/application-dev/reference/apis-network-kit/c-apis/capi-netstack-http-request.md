@@ -1,7 +1,7 @@
 # Http_Request
 
 ```c
-struct Http_Request {...}
+typedef struct Http_Request {...} Http_Request
 ```
 
 ## Overview
@@ -26,6 +26,6 @@ Defines an HTTP request.
 | -- | -- |
 | uint32_t requestId | ID of an HTTP request. |
 | char *url | Pointer to the HTTP request URL. |
-| Http_RequestOptions *options | Pointer to the HTTP request configuration. For details, see [Http_RequestOptions](capi-netstack-http-requestoptions.md). |
+| [Http_RequestOptions](capi-netstack-http-requestoptions.md) *options | Pointer to the HTTP request configuration. For details, see [Http_RequestOptions](capi-netstack-http-requestoptions.md). |
 
 

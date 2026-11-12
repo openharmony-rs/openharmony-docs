@@ -1,7 +1,7 @@
 # NetConn_ProbeResultInfo
 
 ```c
-struct NetConn_ProbeResultInfo {...}
+typedef struct NetConn_ProbeResultInfo {...} NetConn_ProbeResultInfo
 ```
 
 ## 概述

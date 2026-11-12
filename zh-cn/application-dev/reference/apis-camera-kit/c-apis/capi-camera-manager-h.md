@@ -16,9 +16,9 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) | 相机设备状态的回调。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) | CameraManager_Callbacks | 相机设备状态的回调。 |
 
 ### 函数
 

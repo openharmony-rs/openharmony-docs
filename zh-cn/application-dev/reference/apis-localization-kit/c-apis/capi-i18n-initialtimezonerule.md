@@ -1,7 +1,7 @@
 # InitialTimeZoneRule
 
 ```c
-struct InitialTimeZoneRule {...}
+typedef struct InitialTimeZoneRule {...} InitialTimeZoneRule
 ```
 
 ## 概述

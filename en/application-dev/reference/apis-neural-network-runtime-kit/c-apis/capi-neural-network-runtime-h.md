@@ -14,7 +14,7 @@ Defines the Neural Network Runtime APIs. The AI inference framework uses the Nat
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

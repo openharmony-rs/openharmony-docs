@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md) | - | 媒体播放位置的相关属性。 |
+| [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md) | AVSession_PlaybackPosition | 媒体播放位置的相关属性。 |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md) | OH_AVSession_AVPlaybackState | 播放状态对象。 |
 
 ### 函数

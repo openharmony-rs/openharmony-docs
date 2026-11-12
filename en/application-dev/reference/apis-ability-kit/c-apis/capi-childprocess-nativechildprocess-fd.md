@@ -1,7 +1,7 @@
 # NativeChildProcess_Fd
 
 ```c
-struct NativeChildProcess_Fd {...}
+typedef struct NativeChildProcess_Fd {...} NativeChildProcess_Fd
 ```
 
 ## Overview

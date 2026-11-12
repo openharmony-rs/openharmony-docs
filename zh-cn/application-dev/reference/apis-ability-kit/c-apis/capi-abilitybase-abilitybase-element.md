@@ -1,7 +1,7 @@
 # AbilityBase_Element
 
 ```c
-struct AbilityBase_Element {...}
+typedef struct AbilityBase_Element {...} AbilityBase_Element
 ```
 
 ## 概述

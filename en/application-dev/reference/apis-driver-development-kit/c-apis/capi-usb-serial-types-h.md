@@ -16,14 +16,14 @@ Provides the enumeration types and structures used in USB Serial DDK APIs. It is
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [UsbSerial_Params](capi-usbserialddk-usbserial-params.md) | - | Defines the USB serial port parameters for the USB Serial DDK, which are used for configuring the communication parameters of the USB-to-serial device. The parameter configuration must be consistent with that of the target communication device. Otherwise, the communication may fail. It is commonly used in scenarios where communication with devices through the USB serial port is required, such as industrial control devices, debugging tools, and sensor data collection. |
 | [UsbSerial_Device](capi-usbserialddk-usbserial-device.md) | UsbSerial_Device | Defines the data structures for the USB serial port device (opaque), which is used to indicate the USB serial port device. You can obtain this structure instance by calling the [OH_UsbSerial_Open](capi-usb-serial-api-h.md#oh_usbserial_open) API. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

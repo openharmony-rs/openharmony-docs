@@ -14,14 +14,14 @@ The file declares the metadata output concepts.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md) | - | The struct describes the callbacks related to metadata output. |
+| [MetadataOutput_Callbacks](capi-oh-camera-metadataoutput-callbacks.md) | MetadataOutput_Callbacks | The struct describes the callbacks related to metadata output. |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md) | Camera_MetadataOutput | Defines a struct for the metadata output object.<br>You can use the [OH_CameraManager_CreateMetadataOutput](capi-camera-manager-h.md#oh_cameramanager_createmetadataoutput) method and **OH_CameraManager_CreateMetadataOutputWithObjectTypes** method (supported since API version 23) to create a pointer. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -442,7 +442,7 @@ Adds the metadata object types.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode OH_MetadataOutput_AddMetadataObjectTypes | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) OH_MetadataOutput_AddMetadataObjectTypes | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### ()
 
@@ -472,7 +472,7 @@ Removes the metadata object types.
 
 | Type | Description |
 | -- | -- |
-| Camera_ErrorCode OH_MetadataOutput_RemoveMetadataObjectTypes | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) OH_MetadataOutput_RemoveMetadataObjectTypes | **CAMERA_OK**: The operation is successful. <br>**CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect. <br>**CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_MetadataOutput_IsLockMetadataObjectTrackingSupported()
 

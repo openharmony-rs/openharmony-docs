@@ -14,13 +14,13 @@ The file declares the attribute definition of the media struct AVMemory.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVMemory](capi-core-oh-avmemory.md) | OH_AVMemory | Describes a native object for the audio and video memory interface. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

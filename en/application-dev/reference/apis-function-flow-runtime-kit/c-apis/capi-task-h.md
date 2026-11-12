@@ -14,7 +14,7 @@ Declares the FFRT task C APIs, including task attribute initialization and destr
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -298,7 +298,7 @@ Gets the priority of a task attribute.
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API ffrt_queue_priority_t | The priority of a concurrent queue task. |
+| FFRT_C_API [ffrt_queue_priority_t](capi-type-def-h.md#ffrt_queue_priority_t) | The priority of a concurrent queue task. |
 
 ### ffrt_task_attr_set_stack_size()
 
@@ -521,7 +521,7 @@ Submits a task, and obtains a task handle.<br> The task is submitted to the FFRT
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | A non-null task handle if the task is submitted; a null pointer otherwise. |
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | A non-null task handle if the task is submitted; a null pointer otherwise. |
 
 **Reference**:
 
@@ -589,7 +589,7 @@ Submits a task, and obtains a handle, simplified from the [ffrt_submit_h_base](c
 
 | Type | Description |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | A non-null task handle if the task is submitted; a null pointer otherwise. |
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | A non-null task handle if the task is submitted; a null pointer otherwise. |
 
 **Reference**:
 

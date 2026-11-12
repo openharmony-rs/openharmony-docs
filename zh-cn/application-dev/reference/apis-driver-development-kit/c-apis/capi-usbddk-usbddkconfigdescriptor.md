@@ -1,7 +1,7 @@
 # UsbDdkConfigDescriptor
 
 ```c
-struct UsbDdkConfigDescriptor {...}
+typedef struct UsbDdkConfigDescriptor {...} UsbDdkConfigDescriptor
 ```
 
 ## 概述
@@ -25,7 +25,7 @@ struct UsbDdkConfigDescriptor {...}
 | 名称 | 描述 |
 | -- | -- |
 | [struct UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) configDescriptor | 标准配置描述符。 |
-| struct UsbDdkInterface *interface | 该配置所包含的接口。 |
+| [struct UsbDdkInterface](capi-usbddk-usbddkinterface.md) *interface | 该配置所包含的接口。 |
 | const uint8_t *extra | 未做解析的描述符指针，包含特定于类或供应商的描述符。 |
 | uint32_t extraLength | 未做解析的描述符长度。 |
 

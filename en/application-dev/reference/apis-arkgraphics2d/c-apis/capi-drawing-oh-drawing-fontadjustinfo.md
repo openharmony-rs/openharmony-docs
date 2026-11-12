@@ -1,7 +1,7 @@
 # OH_Drawing_FontAdjustInfo
 
 ```c
-struct OH_Drawing_FontAdjustInfo {...}
+typedef struct OH_Drawing_FontAdjustInfo {...} OH_Drawing_FontAdjustInfo
 ```
 
 ## Overview

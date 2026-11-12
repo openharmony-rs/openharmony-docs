@@ -16,13 +16,13 @@ Provides methods for creating, destroying, reading, and writing the text box avo
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) | InputMethod_TextAvoidInfo | Information used by the input box to avoid the keyboard. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

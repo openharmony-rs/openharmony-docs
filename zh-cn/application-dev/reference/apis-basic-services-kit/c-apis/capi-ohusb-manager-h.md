@@ -18,13 +18,13 @@ Declares the C APIs for USB device management.
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md) | 定义用于发送或接收数据的USB端点。端点从[OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md)获取。 |
-| [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md) | 定义USB接口。一个[OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md)可以包含多个 <br>OH_UsbManager_UsbInterface实例，每个实例提供特定功能。 |
-| [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) | 定义USB配置。一个[OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md)可以包含多个 <br>OH_UsbManager_UsbConfig实例。 |
-| [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) | 定义USB设备的扁平化表示。 |
-| [OH_UsbManager_UsbPipe](capi-usbmanager-oh-usbmanager-usbpipe.md) | 定义用于与已打开设备通信的USB设备管道。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md) | OH_UsbManager_UsbEndpoint | 定义用于发送或接收数据的USB端点。端点从[OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md)获取。 |
+| [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md) | OH_UsbManager_UsbInterface | 定义USB接口。一个[OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md)可以包含多个 <br>OH_UsbManager_UsbInterface实例，每个实例提供特定功能。 |
+| [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) | OH_UsbManager_UsbConfig | 定义USB配置。一个[OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md)可以包含多个 <br>OH_UsbManager_UsbConfig实例。 |
+| [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) | OH_UsbManager_UsbDevice | 定义USB设备的扁平化表示。 |
+| [OH_UsbManager_UsbPipe](capi-usbmanager-oh-usbmanager-usbpipe.md) | OH_UsbManager_UsbPipe | 定义用于与已打开设备通信的USB设备管道。 |
 
 ### 枚举
 

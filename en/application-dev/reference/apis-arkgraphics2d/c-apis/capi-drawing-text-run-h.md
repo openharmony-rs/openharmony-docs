@@ -14,7 +14,7 @@ This file declares the capabilities of runs, such as obtaining the typographic b
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

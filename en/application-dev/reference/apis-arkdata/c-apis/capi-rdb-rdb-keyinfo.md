@@ -1,7 +1,7 @@
 # Rdb_KeyInfo
 
 ```c
-struct Rdb_KeyInfo {...}
+typedef struct Rdb_KeyInfo {...} Rdb_KeyInfo
 ```
 
 ## Overview

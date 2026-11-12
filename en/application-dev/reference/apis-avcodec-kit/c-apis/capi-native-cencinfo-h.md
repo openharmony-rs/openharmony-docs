@@ -14,22 +14,22 @@ The file declares the native APIs used to set decryption parameters.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [DrmSubsample](capi-multimedia-drm-drmsubsample.md) | - | The struct describes the subsample type. |
+| [DrmSubsample](capi-multimedia-drm-drmsubsample.md) | DrmSubsample | The struct describes the subsample type. |
 | [OH_AVBuffer](capi-multimedia-drm-oh-avbuffer.md) | OH_AVBuffer | The struct describes a native object for the media memory interface. |
 | [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md) | OH_AVCencInfo | The struct describes the audio/video Common Encryption Scheme (CENC) information. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [DrmCencAlgorithm](#drmcencalgorithm) | DrmCencAlgorithm | Enumerates the DRM CENC algorithm types. |
 | [DrmCencInfoMode](#drmcencinfomode) | DrmCencInfoMode | Enumerates the modes for setting the key ID, IV, and subsample in the CENC information. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -37,7 +37,7 @@ The file declares the native APIs used to set decryption parameters.
 | DRM_KEY_IV_SIZE 16 | The length of the Initialization Vector (IV) is 16 bytes.<br>**Since**: 12 |
 | DRM_KEY_MAX_SUB_SAMPLE_NUM 64 | The maximum number of subsamples is 64.<br>**Since**: 12 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -171,7 +171,7 @@ Sets an encryption algorithm of the CENC information.
 | Parameter | Description |
 | -- | -- |
 | [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md) *cencInfo | Pointer to an OH_AVCencInfo instance. |
-| enum DrmCencAlgorithm algo | Encryption algorithm. |
+| enum [DrmCencAlgorithm](capi-native-cencinfo-h.md#drmcencalgorithm) algo | Encryption algorithm. |
 
 **Returns**:
 
@@ -265,7 +265,7 @@ Sets the CENC information mode.
 | Parameter | Description |
 | -- | -- |
 | [OH_AVCencInfo](capi-multimedia-drm-oh-avcencinfo.md) *cencInfo | Pointer to an OH_AVCencInfo instance. |
-| enum DrmCencInfoMode mode | CENC information mode, indicating whether the key ID, IV, and subsample are set. |
+| enum [DrmCencInfoMode](capi-native-cencinfo-h.md#drmcencinfomode) mode | CENC information mode, indicating whether the key ID, IV, and subsample are set. |
 
 **Returns**:
 

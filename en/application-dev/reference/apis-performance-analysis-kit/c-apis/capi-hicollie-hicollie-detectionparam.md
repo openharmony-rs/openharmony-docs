@@ -1,7 +1,7 @@
 # HiCollie_DetectionParam
 
 ```c
-struct HiCollie_DetectionParam {...}
+typedef struct HiCollie_DetectionParam {...} HiCollie_DetectionParam
 ```
 
 ## Overview

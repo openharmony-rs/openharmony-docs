@@ -14,11 +14,11 @@ Defines the APIs and structs related to the uniform data structs. If the paramet
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_UDMF_VirtualFileCallbacks](capi-udmf-oh-udmf-virtualfilecallbacks.md) | - | Describes the callbacks used to provide virtual file metadata and content.<br> <code>structSize</code> must be set to <code>sizeof(OH_UDMF_VirtualFileCallbacks)</code>. <code>onRead</code> is mandatory, and <code>onStat</code> and <code>onCancel</code> are optional. All files must be pre-declared in size. Set <code>onCancel</code> to nullptr if you do not need to cancel the notification. Different threads may invoke callbacks concurrently. Callbacks cannot be blocked indefinitely. |
+| [OH_UDMF_VirtualFileCallbacks](capi-udmf-oh-udmf-virtualfilecallbacks.md) | OH_UDMF_VirtualFileCallbacks | Describes the callbacks used to provide virtual file metadata and content.<br> <code>structSize</code> must be set to <code>sizeof(OH_UDMF_VirtualFileCallbacks)</code>. <code>onRead</code> is mandatory, and <code>onStat</code> and <code>onCancel</code> are optional. All files must be pre-declared in size. Set <code>onCancel</code> to nullptr if you do not need to cancel the notification. Different threads may invoke callbacks concurrently. Callbacks cannot be blocked indefinitely. |
 | [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) | OH_UdsPlainText | Describes the unified data struct of plaintext. |
 | [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) | OH_UdsHyperlink | Describes the unified data struct of hyperlink. |
 | [OH_UdsHtml](capi-udmf-oh-udshtml.md) | OH_UdsHtml | Defines a struct for the unified data of the Hypertext Markup Language (HTML) type. |
@@ -31,13 +31,13 @@ Defines the APIs and structs related to the uniform data structs. If the paramet
 | [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) | OH_UdsArrayBuffer | Describes the unified data struct of array buffer. |
 | [OH_UdsDetails](capi-udmf-oh-udsdetails.md) | OH_UdsDetails | Describes the key-value object of UDS data. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [Udmf_AuthPermission](#udmf_authpermission) | Udmf_AuthPermission | Enumerates the URI authorization policies in the drag scenario.<br> > **NOTE**<br>> > This authorization policy takes effect only in drag scenarios.<br> The **NONE**, **READ**, **WRITE**, and **PERSIST** policies are supported. They can be combined, and only the following combinations take effect:<br> - **NONE**: No file permission is granted. - **READ**: Only one-time read permission is granted. - **WRITE**: Only one-time read and write permissions are granted. (Write permission includes read permission.) - **READ+WRITE**: One-time read and write authorization is performed, which is equivalent to **WRITE** authorization. - **READ+PERSIST**: Persistent read permission is granted. - **WRITE+PERSIST**: Persistent read and write permissions are granted. - **READ+WRITE+PERSIST**: Persistent read and write permissions are granted. The rules for applying the drag authorization policies are as follows (in descending order of priority): - Single data level: The **FileUri** and **HTML** (UDSs) support the configuration of authorization policy parameters, which take effect only once for a single record and have the highest priority. - [OH_UdmfData](capi-udmf-oh-udmfdata.md) level: The authorization parameters provided in [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) are valid for a single drag operation. If an authorization policy is configured for a piece of data, the configuration of the data is preferentially used. This level has the second highest priority. - Default level: If no authorization policy is configured for a single piece of data or [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md), proxy authorization is performed based on the default drag logic. The default logic is as follows: - FileUri data: By default, the **READ**, **WRITE**, and **PERSIST** permissions are granted in drag scenarios. - HTML data: Grants read permission only to the URIs in the img tags of the HTML text. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

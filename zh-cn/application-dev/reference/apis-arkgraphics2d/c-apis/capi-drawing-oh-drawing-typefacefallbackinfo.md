@@ -24,7 +24,7 @@ typedef struct OH_Drawing_TypefaceFallbackInfo {...} OH_Drawing_TypefaceFallback
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_Drawing_Typeface *typeface | 指向匹配到的字体对象的指针。<br>**起始版本：** 26.0.1 |
+| [OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md) *typeface | 指向匹配到的字体对象的指针。<br>**起始版本：** 26.0.1 |
 | uint16_t *glyphIds | 指向字形ID数组的指针。<br>**起始版本：** 26.0.1 |
 | uint32_t glyphCount | 字形ID数组glyphIds的大小。<br>**起始版本：** 26.0.1 |
 

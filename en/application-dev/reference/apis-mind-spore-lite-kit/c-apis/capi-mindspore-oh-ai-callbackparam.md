@@ -1,7 +1,7 @@
 # OH_AI_CallBackParam
 
 ```c
-struct OH_AI_CallBackParam {...}
+typedef struct OH_AI_CallBackParam {...} OH_AI_CallBackParam
 ```
 
 ## Overview

@@ -16,12 +16,12 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md) | 定义拦截器的请求/响应头信息。 |
-| [OH_Http_Interceptor_Request](capi-netstack-oh-http-interceptor-request.md) | 定义拦截器的HTTP请求数据包结构。 |
-| [OH_Http_Interceptor_Response](capi-netstack-oh-http-interceptor-response.md) | 定义拦截器的HTTP响应数据包结构。 |
-| [OH_Http_Interceptor](capi-netstack-oh-http-interceptor.md) | 定义HTTP全局拦截器的配置信息。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [OH_Http_Interceptor_Headers](capi-netstack-oh-http-interceptor-headers.md) | OH_Http_Interceptor_Headers | 定义拦截器的请求/响应头信息。 |
+| [OH_Http_Interceptor_Request](capi-netstack-oh-http-interceptor-request.md) | OH_Http_Interceptor_Request | 定义拦截器的HTTP请求数据包结构。 |
+| [OH_Http_Interceptor_Response](capi-netstack-oh-http-interceptor-response.md) | OH_Http_Interceptor_Response | 定义拦截器的HTTP响应数据包结构。 |
+| [OH_Http_Interceptor](capi-netstack-oh-http-interceptor.md) | OH_Http_Interceptor | 定义HTTP全局拦截器的配置信息。 |
 
 ### 枚举
 

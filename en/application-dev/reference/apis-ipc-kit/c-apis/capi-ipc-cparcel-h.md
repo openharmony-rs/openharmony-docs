@@ -16,7 +16,7 @@ This file provides C APIs for IPC serialization and deserialization, which are u
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,7 +24,7 @@ This file provides C APIs for IPC serialization and deserialization, which are u
 | [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) | OHIPCRemoteProxy | IPC remote proxy object, which is used on the client side to proxy the capabilities of a remote service to implement cross-process communication. This object encapsulates a reference to the remote service and supports sending requests to and receiving responses from the remote service. It is applicable to scenarios that require cross-process service capability invocation, such as cross-process service calls, system service access, and cross-application data sharing. Using this object simplifies the implementation of cross-process communication and improves development efficiency. |
 | [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) | OHIPCRemoteStub | Defines an IPC remote service object. This struct is used to represent a remote service on the server. As the service agent of the server in IPC, it processes requests from the client and implements cross-process communication. **OHIPCRemoteStub** is a core struct provided by IPC Kit. It simplifies the IPC service development process and provides a unified request processing mechanism, helping you quickly implement cross-process communication capabilities. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

@@ -1,7 +1,7 @@
 # OH_AudioSuite_MetaFrame（系统接口）
 
 ```c
-struct OH_AudioSuite_MetaFrame {...}
+typedef struct OH_AudioSuite_MetaFrame {...} OH_AudioSuite_MetaFrame
 ```
 
 ## 概述

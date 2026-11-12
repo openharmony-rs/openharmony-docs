@@ -1,7 +1,7 @@
 # AVPlayerCallback
 
 ```c
-struct AVPlayerCallback {...}
+typedef struct AVPlayerCallback {...} AVPlayerCallback
 ```
 
 ## Overview

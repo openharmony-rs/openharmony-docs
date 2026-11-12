@@ -16,7 +16,7 @@ Declares the APIs for filter effects. It supports creating and managing various 
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

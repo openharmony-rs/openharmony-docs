@@ -14,7 +14,7 @@ Define interfaces for querying location switch status, starting locating, and st
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

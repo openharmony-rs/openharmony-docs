@@ -14,14 +14,14 @@ The file declares the APIs used to obtain image data from the native layer.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md) | OH_ImageReceiverNative | The OH_ImageReceiverNative struct describes the image receiver, which is encapsulated at the native layer. The struct cannot be directly operated. Instead, functions must be called to create and release the struct and operate the fields in the struct. |
 | [OH_ImageReceiverOptions](capi-image-nativemodule-oh-imagereceiveroptions.md) | OH_ImageReceiverOptions | The struct describes the data type name of the image receiver options. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

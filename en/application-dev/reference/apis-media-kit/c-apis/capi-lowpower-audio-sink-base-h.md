@@ -14,14 +14,14 @@ The file declares the structs and enums of the LowPowerAudioSink.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md) | OH_LowPowerAudioSink | The struct describes the declaration for the LowPowerAudioSink. |
 | [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md) | OH_LowPowerAudioSinkCallback | The struct contains a set of callback function pointers for the LowPowerAudioSink. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

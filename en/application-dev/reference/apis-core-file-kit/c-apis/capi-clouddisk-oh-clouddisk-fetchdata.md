@@ -1,7 +1,7 @@
 # OH_CloudDisk_FetchData
 
 ```c
-struct OH_CloudDisk_FetchData {...}
+typedef struct OH_CloudDisk_FetchData {...} OH_CloudDisk_FetchData
 ```
 
 ## Overview

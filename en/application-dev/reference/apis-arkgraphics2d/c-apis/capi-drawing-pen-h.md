@@ -14,20 +14,20 @@ This file declares functions related to the pen in the drawing module.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_NativeColorSpaceManager](capi-drawing-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | Provides the declaration of an **OH_NativeColorSpaceManager** struct. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_PenLineCapStyle](#oh_drawing_penlinecapstyle) | OH_Drawing_PenLineCapStyle | Enumerates the line cap styles of a pen. The line cap style defines the style of both ends of a line segment drawn by the pen. |
 | [OH_Drawing_PenLineJoinStyle](#oh_drawing_penlinejoinstyle) | OH_Drawing_PenLineJoinStyle | Enumerates the line join styles of a pen. The line join style defines the shape of the joints of a polyline segment drawn by the pen. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

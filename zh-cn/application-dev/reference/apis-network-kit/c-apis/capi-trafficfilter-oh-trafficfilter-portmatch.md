@@ -1,7 +1,7 @@
 # OH_TrafficFilter_PortMatch
 
 ```c
-struct OH_TrafficFilter_PortMatch {...}
+typedef struct OH_TrafficFilter_PortMatch {...} OH_TrafficFilter_PortMatch
 ```
 
 ## 概述

@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) | - | 用于录像输出的回调。 |
+| [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) | VideoOutput_Callbacks | 用于录像输出的回调。 |
 | [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md) | Camera_VideoOutput | 录像输出对象。<br> 可以使用[OH_CameraManager_CreateVideoOutput](capi-camera-manager-h.md#oh_cameramanager_createvideooutput)方法创建指针。 |
 
 ### 函数

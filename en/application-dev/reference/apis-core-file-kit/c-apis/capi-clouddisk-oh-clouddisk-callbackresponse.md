@@ -1,7 +1,7 @@
 # OH_CloudDisk_CallbackResponse
 
 ```c
-union OH_CloudDisk_CallbackResponse {...}
+typedef union OH_CloudDisk_CallbackResponse {...} OH_CloudDisk_CallbackResponse
 ```
 
 ## Overview
@@ -24,6 +24,6 @@ A union that encapsulates callback response information.
 
 | Name | Description |
 | -- | -- |
-| OH_CloudDisk_FetchData *fetchData | Fetch data response. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
+| [OH_CloudDisk_FetchData](capi-clouddisk-oh-clouddisk-fetchdata.md) *fetchData | Fetch data response. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
 
 

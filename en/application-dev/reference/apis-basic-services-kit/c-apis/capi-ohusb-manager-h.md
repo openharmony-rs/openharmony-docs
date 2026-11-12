@@ -16,24 +16,24 @@ Declares the C APIs for USB device management.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md) | Defines the USB endpoint from which data is sent or received. An endpoint <br>is obtained from [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md). |
-| [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md) | Defines a USB interface. One [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) can contain <br>multiple OH_UsbManager_UsbInterface instances, each providing a specific function. |
-| [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) | Defines a USB configuration. One [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) can contain multiple <br>**OH_UsbManager_UsbConfig** instances. |
-| [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) | Defines a flat representation of a USB device. |
-| [OH_UsbManager_UsbPipe](capi-usbmanager-oh-usbmanager-usbpipe.md) | Defines the USB device pipe used to communicate with an opened device. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md) | OH_UsbManager_UsbEndpoint | Defines the USB endpoint from which data is sent or received. An endpoint <br>is obtained from [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md). |
+| [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md) | OH_UsbManager_UsbInterface | Defines a USB interface. One [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) can contain <br>multiple OH_UsbManager_UsbInterface instances, each providing a specific function. |
+| [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) | OH_UsbManager_UsbConfig | Defines a USB configuration. One [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) can contain multiple <br>**OH_UsbManager_UsbConfig** instances. |
+| [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) | OH_UsbManager_UsbDevice | Defines a flat representation of a USB device. |
+| [OH_UsbManager_UsbPipe](capi-usbmanager-oh-usbmanager-usbpipe.md) | OH_UsbManager_UsbPipe | Defines the USB device pipe used to communicate with an opened device. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_UsbManager_ErrorCode](#oh_usbmanager_errorcode) | OH_UsbManager_ErrorCode | Enumerates the USB Manager error codes. |
 | [OH_UsbManager_RequestDirection](#oh_usbmanager_requestdirection) | OH_UsbManager_RequestDirection | Enumerates USB request directions. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

@@ -1,7 +1,7 @@
 # Camera_FrameRateRange
 
 ```c
-struct Camera_FrameRateRange {...}
+typedef struct Camera_FrameRateRange {...} Camera_FrameRateRange
 ```
 
 ## 概述

@@ -18,10 +18,10 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [NativeChildProcess_Fd](capi-childprocess-nativechildprocess-fd.md) | - | 传递给子进程的文件描述符信息。 |
-| [NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) | - | 传递给子进程的文件描述符信息列表，文件描述符记录个数不能超过16个。 |
-| [NativeChildProcess_Options](capi-childprocess-nativechildprocess-options.md) | - | 启动子进程的配置选项。 |
-| [NativeChildProcess_Args](capi-childprocess-nativechildprocess-args.md) | - | 传递给子进程的参数。 |
+| [NativeChildProcess_Fd](capi-childprocess-nativechildprocess-fd.md) | NativeChildProcess_Fd | 传递给子进程的文件描述符信息。 |
+| [NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) | NativeChildProcess_FdList | 传递给子进程的文件描述符信息列表，文件描述符记录个数不能超过16个。 |
+| [NativeChildProcess_Options](capi-childprocess-nativechildprocess-options.md) | NativeChildProcess_Options | 启动子进程的配置选项。 |
+| [NativeChildProcess_Args](capi-childprocess-nativechildprocess-args.md) | NativeChildProcess_Args | 传递给子进程的参数。 |
 | [Ability_ChildProcessConfigs](capi-childprocess-ability-childprocessconfigs.md) | Ability_ChildProcessConfigs | 启动子进程的配置信息，包括子进程的进程名、数据沙箱与网络环境的共享模式、主进程与子进程的uid是否隔离的配置。开发者可以使用 [OH_Ability_ChildProcessConfigs_SetProcessName](capi-native-child-process-h.md#oh_ability_childprocessconfigs_setprocessname)、[OH_Ability_ChildProcessConfigs_SetIsolationMode](capi-native-child-process-h.md#oh_ability_childprocessconfigs_setisolationmode)、 [OH_Ability_ChildProcessConfigs_SetIsolationUid](capi-native-child-process-h.md#oh_ability_childprocessconfigs_setisolationuid)接口来修改相应的配置信息。 |
 
 ### 枚举

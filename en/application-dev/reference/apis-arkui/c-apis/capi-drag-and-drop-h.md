@@ -14,7 +14,7 @@ Declares the APIs of **NativeDrag**, supporting obtaining drag events, setting a
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -23,7 +23,7 @@ Declares the APIs of **NativeDrag**, supporting obtaining drag events, setting a
 | [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md) | ArkUI_DragAction | Defines a drag action handle, which is used to proactively initiate dragging, where you proactively call an API to start dragging, as opposed to passively responding to drag events. This handle supports creating, configuring, executing, and destroying a drag action. You can set drag data and proactively start dragging.<br> The usage process of **ArkUI_DragAction** is as follows:<br> 1. Create an object by calling [OH_ArkUI_CreateDragActionWithNode](capi-drag-and-drop-h.md#oh_arkui_createdragactionwithnode) or [OH_ArkUI_CreateDragActionWithContext](capi-drag-and-drop-h.md#oh_arkui_createdragactionwithcontext). 2. Set drag parameters by calling APIs such as **OH_ArkUI_DragAction_SetData**. 3. Start dragging by calling [OH_ArkUI_StartDrag](capi-drag-and-drop-h.md#oh_arkui_startdrag). 4. When the object is no longer needed, call [OH_ArkUI_DragAction_Dispose](capi-drag-and-drop-h.md#oh_arkui_dragaction_dispose) to destroy the object and release resources.<br> For details about the creation, configuration, and execution mechanisms, see Binding Drag Events. |
 | [ArkUI_DragAndDropInfo](capi-arkui-nativemodule-arkui-draganddropinfo.md) | ArkUI_DragAndDropInfo | Defines drag and drop information returned through a drag status listener after dragging is proactively initiated. You can obtain the drag start or end status and the drag event data when the drag ends from this struct, and perform subsequent processing based on the status. For details about how to register the drag callback, see drag_and_drop.h. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -33,7 +33,7 @@ Declares the APIs of **NativeDrag**, supporting obtaining drag events, setting a
 | [ArkUI_DragPreviewScaleMode](#arkui_dragpreviewscalemode) | ArkUI_DragPreviewScaleMode | Enumerates drag preview scale modes. |
 | [ArkUI_DragStatus](#arkui_dragstatus) | ArkUI_DragStatus | Enumerates drag operation states. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -1106,8 +1106,8 @@ Starts data synchronization using the specified synchronization parameters. When
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | Pointer to the target **ArkUI_DragEvent** object. |
 | [OH_UdmfGetDataParams](../../apis-arkdata/c-apis/capi-udmf-oh-udmfgetdataparams.md)* options | Pointer to the option array for data obtaining, used to configure data request options during this drag data synchronization. |
-| char* key | Pointer to the key value allocated after data loading is successfully started. The length of the character array used to receive the key must be no less than that specified by [UDMF_KEY_BUFFER_LEN](../../apis-arkdata/c-apis/capi-udmf-h.md#宏定义). |
-| unsigned int keyLen | Length of the key string. It must be no less than the length defined by [UDMF_KEY_BUFFER_LEN](../../apis-arkdata/c-apis/capi-udmf-h.md#宏定义), which is used to ensure that the key can be completely received. |
+| char* key | Pointer to the key value allocated after data loading is successfully started. The length of the character array used to receive the key must be no less than that specified by [UDMF_KEY_BUFFER_LEN](../../apis-arkdata/c-apis/capi-udmf-h.md#macros). |
+| unsigned int keyLen | Length of the key string. It must be no less than the length defined by [UDMF_KEY_BUFFER_LEN](../../apis-arkdata/c-apis/capi-udmf-h.md#macros), which is used to ensure that the key can be completely received. |
 
 **Returns**:
 

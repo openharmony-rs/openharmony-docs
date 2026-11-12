@@ -1,7 +1,7 @@
 # ScsiPeripheral_DeviceMemMap
 
 ```c
-struct ScsiPeripheral_DeviceMemMap {...}
+typedef struct ScsiPeripheral_DeviceMemMap {...} ScsiPeripheral_DeviceMemMap
 ```
 
 ## 概述

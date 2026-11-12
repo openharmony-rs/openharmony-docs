@@ -14,13 +14,13 @@ The file declares the camera manager concepts.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) | The struct describes the callbacks used to listen for camera status changes. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [CameraManager_Callbacks](capi-oh-camera-cameramanager-callbacks.md) | CameraManager_Callbacks | The struct describes the callbacks used to listen for camera status changes. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

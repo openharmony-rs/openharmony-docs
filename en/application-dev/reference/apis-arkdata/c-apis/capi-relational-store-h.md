@@ -14,24 +14,24 @@ Provides database related functions and enumerations.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Rdb_Config](capi-rdb-oh-rdb-config.md) | OH_Rdb_Config | Manages relational database configurations. |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | OH_Rdb_Store | Define OH_Rdb_Store type. |
-| [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) | - | Manages the distributed configuration of the table. |
-| [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) | - | Describes the primary keys or row-ids of changed rows. |
-| [Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md) | - | Describes the notify info of data change. |
-| [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md) | - | Indicates the callback functions. |
-| [Rdb_DataObserver](capi-rdb-rdb-dataobserver.md) | - | Indicates the observer of data. |
-| [Rdb_Statistic](capi-rdb-rdb-statistic.md) | - | Describes the statistic of the cloud sync process. |
-| [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) | - | Describes the [Rdb_Statistic](capi-rdb-rdb-statistic.md) details of the table. |
-| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) | - | Describes detail of the cloud sync progress. |
-| [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) | - | The observer of progress. |
+| [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) | Rdb_DistributedConfig | Manages the distributed configuration of the table. |
+| [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md) | Rdb_KeyInfo | Describes the primary keys or row-ids of changed rows. |
+| [Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md) | Rdb_ChangeInfo | Describes the notify info of data change. |
+| [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md) | Rdb_SubscribeCallback | Indicates the callback functions. |
+| [Rdb_DataObserver](capi-rdb-rdb-dataobserver.md) | Rdb_DataObserver | Indicates the observer of data. |
+| [Rdb_Statistic](capi-rdb-rdb-statistic.md) | Rdb_Statistic | Describes the statistic of the cloud sync process. |
+| [Rdb_TableDetails](capi-rdb-rdb-tabledetails.md) | Rdb_TableDetails | Describes the [Rdb_Statistic](capi-rdb-rdb-statistic.md) details of the table. |
+| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) | Rdb_ProgressDetails | Describes detail of the cloud sync progress. |
+| [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) | Rdb_ProgressObserver | The observer of progress. |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) | OH_Rdb_ConfigV2 | Define OH_Rdb_ConfigV2 type. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -46,7 +46,7 @@ Provides database related functions and enumerations.
 | [Rdb_Progress](#rdb_progress) | Rdb_Progress | The cloud sync progress |
 | [Rdb_ProgressCode](#rdb_progresscode) | Rdb_ProgressCode | Describes the status of cloud sync progress. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -54,7 +54,7 @@ Provides database related functions and enumerations.
 | DISTRIBUTED_CHANGE_INFO_VERSION 1 | Indicates version of [Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md)<br>**Since**: 11 |
 | DISTRIBUTED_PROGRESS_DETAIL_VERSION 1 | Indicates version of [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md)<br>**Since**: 11 |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -225,9 +225,9 @@ Define Rdb_Tokenizer type.
 
 | Enum item | Description |
 | -- | -- |
-| RDB_NONE_TOKENIZER = 1 | Means not using tokenizer. <br>**Since**: 17 |
-| RDB_ICU_TOKENIZER = 2 | Means using native icu tokenizer. <br>**Since**: 17 |
-| RDB_CUSTOM_TOKENIZER = 3 | Means using self-developed enhance tokenizer. <br>**Since**: 18 |
+| RDB_NONE_TOKENIZER = 1 | Means not using tokenizer.<br>**Since**: 17 |
+| RDB_ICU_TOKENIZER = 2 | Means using native icu tokenizer.<br>**Since**: 17 |
+| RDB_CUSTOM_TOKENIZER = 3 | Means using self-developed enhance tokenizer.<br>**Since**: 18 |
 
 ### Rdb_DistributedType
 

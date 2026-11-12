@@ -14,30 +14,30 @@ Declares the Vulkan APIs extended by OpenHarmony. File to include: <vulkan/vulka
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [VkSurfaceCreateInfoOHOS](capi-vulkan-vksurfacecreateinfoohos.md) | - | Defines the parameters required for creating a Vulkan surface. |
-| [VkNativeBufferOHOS](capi-vulkan-vknativebufferohos.md) | - | move to vk_ohos_native_buffer.h |
-| [VkSwapchainImageCreateInfoOHOS](capi-vulkan-vkswapchainimagecreateinfoohos.md) | - | move to vk_ohos_native_buffer.h |
-| [VkPhysicalDevicePresentationPropertiesOHOS](capi-vulkan-vkphysicaldevicepresentationpropertiesohos.md) | - | move to vk_ohos_native_buffer.h |
-| [VkNativeBufferUsageOHOS](capi-vulkan-vknativebufferusageohos.md) | - | Defines the usage of a <b>OH_NativeBuffer</b>. |
-| [VkNativeBufferPropertiesOHOS](capi-vulkan-vknativebufferpropertiesohos.md) | - | Defines the properties of a <b>OH_NativeBuffer</b>. |
-| [VkNativeBufferFormatPropertiesOHOS](capi-vulkan-vknativebufferformatpropertiesohos.md) | - | Defines the format properties of a <b>OH_NativeBuffer</b>. |
-| [VkImportNativeBufferInfoOHOS](capi-vulkan-vkimportnativebufferinfoohos.md) | - | Defines the pointer to an <b>OH_NativeBuffer</b> struct. |
-| [VkMemoryGetNativeBufferInfoOHOS](capi-vulkan-vkmemorygetnativebufferinfoohos.md) | - | Defines a struct used to obtain an <b>OH_NativeBuffer</b> from the Vulkan memory. |
-| [VkExternalFormatOHOS](capi-vulkan-vkexternalformatohos.md) | - | Defines an externally defined format. |
+| [VkSurfaceCreateInfoOHOS](capi-vulkan-vksurfacecreateinfoohos.md) | VkSurfaceCreateInfoOHOS | Defines the parameters required for creating a Vulkan surface. |
+| [VkNativeBufferOHOS](capi-vulkan-vknativebufferohos.md) | VkNativeBufferOHOS | move to vk_ohos_native_buffer.h |
+| [VkSwapchainImageCreateInfoOHOS](capi-vulkan-vkswapchainimagecreateinfoohos.md) | VkSwapchainImageCreateInfoOHOS | move to vk_ohos_native_buffer.h |
+| [VkPhysicalDevicePresentationPropertiesOHOS](capi-vulkan-vkphysicaldevicepresentationpropertiesohos.md) | VkPhysicalDevicePresentationPropertiesOHOS | move to vk_ohos_native_buffer.h |
+| [VkNativeBufferUsageOHOS](capi-vulkan-vknativebufferusageohos.md) | VkNativeBufferUsageOHOS | Defines the usage of a <b>OH_NativeBuffer</b>. |
+| [VkNativeBufferPropertiesOHOS](capi-vulkan-vknativebufferpropertiesohos.md) | VkNativeBufferPropertiesOHOS | Defines the properties of a <b>OH_NativeBuffer</b>. |
+| [VkNativeBufferFormatPropertiesOHOS](capi-vulkan-vknativebufferformatpropertiesohos.md) | VkNativeBufferFormatPropertiesOHOS | Defines the format properties of a <b>OH_NativeBuffer</b>. |
+| [VkImportNativeBufferInfoOHOS](capi-vulkan-vkimportnativebufferinfoohos.md) | VkImportNativeBufferInfoOHOS | Defines the pointer to an <b>OH_NativeBuffer</b> struct. |
+| [VkMemoryGetNativeBufferInfoOHOS](capi-vulkan-vkmemorygetnativebufferinfoohos.md) | VkMemoryGetNativeBufferInfoOHOS | Defines a struct used to obtain an <b>OH_NativeBuffer</b> from the Vulkan memory. |
+| [VkExternalFormatOHOS](capi-vulkan-vkexternalformatohos.md) | VkExternalFormatOHOS | Defines an externally defined format. |
 | [NativeWindow](capi-vulkan-nativewindow.md) | OHNativeWindow | Defines the <b>OHNativeWindow</b> struct. |
 | [OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md) | - | Defines the <b>OH_NativeBuffer</b> struct. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [VkSwapchainImageUsageFlagBitsOHOS](#vkswapchainimageusageflagbitsohos) | VkSwapchainImageUsageFlagBitsOHOS | move to vk_ohos_native_buffer.h(Deprecated in API23) |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -48,7 +48,7 @@ Declares the Vulkan APIs extended by OpenHarmony. File to include: <vulkan/vulka
 | VK_OHOS_EXTERNAL_MEMORY_SPEC_VERSION 1 | Defines the external memory extension version of OpenHarmony.<br>**Since**: 10 |
 | VK_OHOS_EXTERNAL_MEMORY_EXTENSION_NAME "VK_OHOS_external_memory" | Defines the external memory extension name of OpenHarmony.<br>**Since**: 10 |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -68,7 +68,7 @@ Declares the Vulkan APIs extended by OpenHarmony. File to include: <vulkan/vulka
 | [VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)](#vkgetnativebufferpropertiesohos) | - | Obtains the properties of an <b>OH_NativeBuffer</b> instance. |
 | [VKAPI_ATTR VkResult VKAPI_CALL vkGetMemoryNativeBufferOHOS(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)](#vkgetmemorynativebufferohos) | - | Obtains an <b>OH_NativeBuffer</b> instance. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -96,6 +96,8 @@ move to vk_ohos_native_buffer.h
 
 | Enum item | Description |
 | -- | -- |
+| VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_OHOS = 0x00000001 |  |
+| VK_SWAPCHAIN_IMAGE_USAGE_FLAG_BITS_MAX_ENUM_OHOS = 0x7FFFFFFF |  |
 
 
 ## Function description

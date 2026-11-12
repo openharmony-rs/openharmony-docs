@@ -14,6 +14,13 @@
 
 ## 汇总
 
+### 结构体
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) | OH_ArkUI_KeyboardShortcutKey | 定义键盘快捷键按键结构体，描述快捷键按键的设计逻辑，如按键类型和按键值。应用可注册和管理自定义快捷键。 |
+| [OH_ArkUI_ApplicationShortcutCallbackInfo](capi-arkui-nativemodule-oh-arkui-applicationshortcutcallbackinfo.md) | OH_ArkUI_ApplicationShortcutCallbackInfo | 定义应用级键盘快捷键的回调信息。 |
+
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
@@ -22,37 +29,52 @@
 | [ArkUI_KeyEventType](#arkui_keyeventtype) | ArkUI_KeyEventType | 按键的类型。 |
 | [ArkUI_KeySourceType](#arkui_keysourcetype) | ArkUI_KeySourceType | 触发当前按键的输入设备类型。 |
 | [ArkUI_KeyIntension](#arkui_keyintension) | ArkUI_KeyIntension | 按键对应的意图。 |
+| [OH_ArkUI_KeyboardShortcutModifierKey](#oh_arkui_keyboardshortcutmodifierkey) | OH_ArkUI_KeyboardShortcutModifierKey | 枚举键盘快捷键支持的修饰键。<br> 枚举值为位标志，可以使用按位或运算符进行组合。 |
+| [OH_ArkUI_KeyboardShortcutFunctionKey](#oh_arkui_keyboardshortcutfunctionkey) | OH_ArkUI_KeyboardShortcutFunctionKey | 枚举键盘快捷键支持的功能键。 |
+| [OH_ArkUI_KeyboardShortcutKeyType](#oh_arkui_keyboardshortcutkeytype) | OH_ArkUI_KeyboardShortcutKeyType | 枚举键盘快捷键支持的按键类型。 |
 
 ### 函数
 
-| 名称 | 描述 |
-| -- | -- |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_Create(ArkUI_UIInputEvent** event)](#oh_arkui_keyevent_create) | 创建可通过 [OH_ArkUI_KeyEvent_Dispatch](capi-native-key-event-h.md#oh_arkui_keyevent_dispatch) 分发的按键事件。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_Destroy(ArkUI_UIInputEvent** event)](#oh_arkui_keyevent_destroy) | 销毁通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件，并将事件指针置空。<br> 当 **event** 不为空且 **event** 指向的事件指针为空时，函数执行成功。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetType(ArkUI_UIInputEvent* event, ArkUI_KeyEventType type)](#oh_arkui_keyevent_settype) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件类型。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyCode(ArkUI_UIInputEvent* event, int32_t keyCode)](#oh_arkui_keyevent_setkeycode) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件键码。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyText(ArkUI_UIInputEvent* event, const char* keyText)](#oh_arkui_keyevent_setkeytext) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件键值。<br> 本函数会复制 **keyText**。函数返回后，调用方可以释放或复用原字符串。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeySource(ArkUI_UIInputEvent* event, ArkUI_KeySourceType keySource)](#oh_arkui_keyevent_setkeysource) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件输入设备类型。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetDeviceId(ArkUI_UIInputEvent* event, int32_t deviceId)](#oh_arkui_keyevent_setdeviceid) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件设备ID。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetUnicode(ArkUI_UIInputEvent* event, uint32_t unicode)](#oh_arkui_keyevent_setunicode) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件Unicode码值。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetEventTime(ArkUI_UIInputEvent* event, int64_t timestamp)](#oh_arkui_keyevent_seteventtime) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件发生时间。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetPressedKeys(ArkUI_UIInputEvent* event, const int32_t* pressedKeyCodes, int32_t length)](#oh_arkui_keyevent_setpressedkeys) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件中所有已按下的按键。<br> 本函数会复制 **pressedKeyCodes**。函数返回后，调用方可以释放或复用原数组。 将 **pressedKeyCodes** 传入空指针、**length** 传入 **0** 可以清空已按下的按键。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event, OH_ArkUI_KeyIntention intentionCode)](#oh_arkui_keyevent_setkeyintentioncode) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件意图码。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool isNumLockOn)](#oh_arkui_keyevent_setnumlockon) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件NumLock状态。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool isCapsLockOn)](#oh_arkui_keyevent_setcapslockon) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件CapsLock状态。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, bool isScrollLockOn)](#oh_arkui_keyevent_setscrolllockon) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件ScrollLock状态。 |
-| [ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_gettype) | 获取按键的类型。 |
-| [int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeycode) | 获取按键的键码。 |
-| [const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeytext) | 获取按键的键值。 |
-| [ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeysource) | 获取当前按键的输入设备类型。 |
-| [void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)](#oh_arkui_keyevent_stoppropagation) | 阻塞事件冒泡传递。 |
-| [ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeyintensioncode) | 获取按键对应的意图。 |
-| [uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getunicode) | 获取按键的Unicode码值。支持范围为非空格的基本拉丁字符：0x0021-0x007E，不支持字符为0。组合键场景下，返回当前keyEvent对应按键的Unicode码值。 |
-| [void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsumed)](#oh_arkui_keyevent_setconsumed) | 在按键事件回调中，设置事件是否被该回调消费。 |
-| [void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_dispatch) | 将按键事件分发到特定组件节点。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_isnumlockon) | 获取按键事件发生时NumLock的状态。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_iscapslockon) | 获取按键事件发生时CapsLock的状态。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_isscrolllockon) | 获取按键事件发生时ScrollLock的状态。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_Create(ArkUI_UIInputEvent** event)](#oh_arkui_keyevent_create) | - | 创建可通过 [OH_ArkUI_KeyEvent_Dispatch](capi-native-key-event-h.md#oh_arkui_keyevent_dispatch) 分发的按键事件。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_Destroy(ArkUI_UIInputEvent** event)](#oh_arkui_keyevent_destroy) | - | 销毁通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件，并将事件指针置空。<br> 当 **event** 不为空且 **event** 指向的事件指针为空时，函数执行成功。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetType(ArkUI_UIInputEvent* event, ArkUI_KeyEventType type)](#oh_arkui_keyevent_settype) | - | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyCode(ArkUI_UIInputEvent* event, int32_t keyCode)](#oh_arkui_keyevent_setkeycode) | - | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件键码。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyText(ArkUI_UIInputEvent* event, const char* keyText)](#oh_arkui_keyevent_setkeytext) | - | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件键值。<br> 本函数会复制 **keyText**。函数返回后，调用方可以释放或复用原字符串。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeySource(ArkUI_UIInputEvent* event, ArkUI_KeySourceType keySource)](#oh_arkui_keyevent_setkeysource) | - | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件输入设备类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetDeviceId(ArkUI_UIInputEvent* event, int32_t deviceId)](#oh_arkui_keyevent_setdeviceid) | - | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件设备ID。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetUnicode(ArkUI_UIInputEvent* event, uint32_t unicode)](#oh_arkui_keyevent_setunicode) | - | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件Unicode码值。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetEventTime(ArkUI_UIInputEvent* event, int64_t timestamp)](#oh_arkui_keyevent_seteventtime) | - | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件发生时间。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetPressedKeys(ArkUI_UIInputEvent* event, const int32_t* pressedKeyCodes, int32_t length)](#oh_arkui_keyevent_setpressedkeys) | - | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件中所有已按下的按键。<br> 本函数会复制 **pressedKeyCodes**。函数返回后，调用方可以释放或复用原数组。 将 **pressedKeyCodes** 传入空指针、**length** 传入 **0** 可以清空已按下的按键。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event, OH_ArkUI_KeyIntention intentionCode)](#oh_arkui_keyevent_setkeyintentioncode) | - | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件意图码。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool isNumLockOn)](#oh_arkui_keyevent_setnumlockon) | - | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件NumLock状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool isCapsLockOn)](#oh_arkui_keyevent_setcapslockon) | - | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件CapsLock状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, bool isScrollLockOn)](#oh_arkui_keyevent_setscrolllockon) | - | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件ScrollLock状态。 |
+| [ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_gettype) | - | 获取按键的类型。 |
+| [int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeycode) | - | 获取按键的键码。 |
+| [const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeytext) | - | 获取按键的键值。 |
+| [ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeysource) | - | 获取当前按键的输入设备类型。 |
+| [void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)](#oh_arkui_keyevent_stoppropagation) | - | 阻塞事件冒泡传递。 |
+| [ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeyintensioncode) | - | 获取按键对应的意图。 |
+| [uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getunicode) | - | 获取按键的Unicode码值。支持范围为非空格的基本拉丁字符：0x0021-0x007E，不支持字符为0。组合键场景下，返回当前keyEvent对应按键的Unicode码值。 |
+| [void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsumed)](#oh_arkui_keyevent_setconsumed) | - | 在按键事件回调中，设置事件是否被该回调消费。 |
+| [void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_dispatch) | - | 将按键事件分发到特定组件节点。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_isnumlockon) | - | 获取按键事件发生时NumLock的状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_iscapslockon) | - | 获取按键事件发生时CapsLock的状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_isscrolllockon) | - | 获取按键事件发生时ScrollLock的状态。 |
+| [OH_ArkUI_KeyboardShortcutKey* OH_ArkUI_KeyboardShortcutKey_Create(void)](#oh_arkui_keyboardshortcutkey_create) | - | 创建键盘快捷键按键对象。可调用[OH_ArkUI_KeyboardShortcutKey_Destroy](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkey_destroy)销毁键盘快捷键按键对象。 |
+| [void OH_ArkUI_KeyboardShortcutKey_Destroy(OH_ArkUI_KeyboardShortcutKey** key)](#oh_arkui_keyboardshortcutkey_destroy) | - | 销毁键盘快捷键按键对象。 |
+| [void OH_ArkUI_KeyboardShortcutKey_SetType(OH_ArkUI_KeyboardShortcutKey* key, OH_ArkUI_KeyboardShortcutKeyType type)](#oh_arkui_keyboardshortcutkey_settype) | - | 设置键盘快捷键按键的类型。 |
+| [OH_ArkUI_KeyboardShortcutKeyType OH_ArkUI_KeyboardShortcutKey_GetType(const OH_ArkUI_KeyboardShortcutKey* key)](#oh_arkui_keyboardshortcutkey_gettype) | - | 获取键盘快捷键按键的类型。 |
+| [void OH_ArkUI_KeyboardShortcutKey_SetCharacter(OH_ArkUI_KeyboardShortcutKey* key, char character)](#oh_arkui_keyboardshortcutkey_setcharacter) | - | 设置字符键盘快捷键按键的字符。调用此函数前，按键类型必须已设置为 [OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_CHARACTER](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype)。 |
+| [char OH_ArkUI_KeyboardShortcutKey_GetCharacter(const OH_ArkUI_KeyboardShortcutKey* key)](#oh_arkui_keyboardshortcutkey_getcharacter) | - | 获取字符键盘快捷键按键的字符。 |
+| [void OH_ArkUI_KeyboardShortcutKey_SetFunctionKey(OH_ArkUI_KeyboardShortcutKey* key, OH_ArkUI_KeyboardShortcutFunctionKey functionKey)](#oh_arkui_keyboardshortcutkey_setfunctionkey) | - | 设置功能键盘快捷键按键的功能键。调用此函数前，按键类型必须已设置为 [OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_FUNCTION_KEY](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype)。 |
+| [OH_ArkUI_KeyboardShortcutFunctionKey OH_ArkUI_KeyboardShortcutKey_GetFunctionKey(const OH_ArkUI_KeyboardShortcutKey* key)](#oh_arkui_keyboardshortcutkey_getfunctionkey) | - | 获取功能键盘快捷键按键的功能键。 |
+| [typedef void (\*OH_ArkUI_ApplicationShortcutCallback)(const OH_ArkUI_ApplicationShortcutCallbackInfo* info, void* userData)](#oh_arkui_applicationshortcutcallback) | OH_ArkUI_ApplicationShortcutCallback | 定义应用级键盘快捷键触发时调用的回调函数。该回调在触发快捷键的UI实例对应的UI线程上执行。 |
+| [ArkUI_ContextHandle OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext(const OH_ArkUI_ApplicationShortcutCallbackInfo* info)](#oh_arkui_applicationshortcutcallbackinfo_getuicontext) | - | 获取触发应用级键盘快捷键的UI实例对应的UI上下文。 |
+| [ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Register(const OH_ArkUI_KeyboardShortcutKey* key, uint32_t modifierKeys, void* userData, OH_ArkUI_ApplicationShortcutCallback callback, int32_t* registrationId)](#oh_arkui_applicationshortcut_register) | - | 注册应用级键盘快捷键。该快捷键在应用内全局生效。 如果存在匹配的组件级快捷键，则优先触发组件级快捷键。<br> 每次注册生成一个应用内唯一的正整数注册标识符，即使快捷键和回调相同，标识符也不同。 同一个快捷键的多次注册均被保留，仅最近一次未注销的注册生效。 注册标识符在应用运行期间不复用。 |
+| [ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Unregister(int32_t registrationId)](#oh_arkui_applicationshortcut_unregister) | - | 注销指定注册标识符对应的应用级键盘快捷键绑定。<br> 仅移除该标识符对应的绑定，其他绑定不受影响。如果移除的是当前生效的绑定， 则最近一次仍未注销的同快捷键绑定恢复生效。标识符不存在或已注销时，不执行任何操作，仍返回成功。 |
 
 ### 变量
 
@@ -317,6 +339,101 @@ enum ArkUI_KeyIntension
 | ARKUI_KEY_INTENTION_VOLUME_DOWN = 108 | 音量降低。 |
 | ARKUI_KEY_INTENTION_CALL = 200 | 接听电话。 |
 | ARKUI_KEY_INTENTION_CAMERA = 300 | 拍照。 |
+
+### OH_ArkUI_KeyboardShortcutModifierKey
+
+```c
+enum OH_ArkUI_KeyboardShortcutModifierKey
+```
+
+**描述：**
+
+枚举键盘快捷键支持的修饰键。<br> 枚举值为位标志，可以使用按位或运算符进行组合。
+
+<!--Device-OH_ArkUI_KeyboardShortcutModifierKey--><!--Device-OH_ArkUI_KeyboardShortcutModifierKey-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_NONE = 0 | 不使用修饰键。该值仅可与功能键一起使用。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_CTRL = 1 | Ctrl键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_SHIFT = 2 | Shift键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_ALT = 4 | Alt键。<br>**起始版本：** 26.1.0 |
+
+### OH_ArkUI_KeyboardShortcutFunctionKey
+
+```c
+enum OH_ArkUI_KeyboardShortcutFunctionKey
+```
+
+**描述：**
+
+枚举键盘快捷键支持的功能键。
+
+<!--Device-OH_ArkUI_KeyboardShortcutFunctionKey--><!--Device-OH_ArkUI_KeyboardShortcutFunctionKey-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ESC = 0 | Esc键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F1 = 1 | F1键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F2 = 2 | F2键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F3 = 3 | F3键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F4 = 4 | F4键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F5 = 5 | F5键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F6 = 6 | F6键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F7 = 7 | F7键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F8 = 8 | F8键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F9 = 9 | F9键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F10 = 10 | F10键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F11 = 11 | F11键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F12 = 12 | F12键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_TAB = 13 | Tab键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_UP = 14 | 向上方向键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_DOWN = 15 | 向下方向键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_LEFT = 16 | 向左方向键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_RIGHT = 17 | 向右方向键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_CAPS_LOCK = 18 | CapsLock键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PRINT_SCREEN = 19 | PrintScreen键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_SCROLL_LOCK = 20 | ScrollLock键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAUSE_BREAK = 21 | Pause/Break键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_NUM_LOCK = 22 | NumLock键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_INSERT = 23 | Insert键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DELETE = 24 | Delete键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_HOME = 25 | Home键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_END = 26 | End键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAGE_UP = 27 | Page Up键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAGE_DOWN = 28 | Page Down键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ENTER = 29 | Enter键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_BACKSPACE = 30 | Backspace键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_SPACE = 31 | Space键。<br>**起始版本：** 26.1.0 |
+
+### OH_ArkUI_KeyboardShortcutKeyType
+
+```c
+enum OH_ArkUI_KeyboardShortcutKeyType
+```
+
+**描述：**
+
+枚举键盘快捷键支持的按键类型。
+
+<!--Device-OH_ArkUI_KeyboardShortcutKeyType--><!--Device-OH_ArkUI_KeyboardShortcutKeyType-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_CHARACTER = 0 | 字符键。<br>**起始版本：** 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_FUNCTION_KEY = 1 | 功能键。<br>**起始版本：** 26.1.0 |
 
 
 ## 函数说明
@@ -1051,5 +1168,315 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event
 | 类型 | 说明 |
 | -- | -- |
 | ArkUI_ErrorCode | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_KeyboardShortcutKey_Create()
+
+```c
+OH_ArkUI_KeyboardShortcutKey* OH_ArkUI_KeyboardShortcutKey_Create(void)
+```
+
+**描述：**
+
+创建键盘快捷键按键对象。可调用[OH_ArkUI_KeyboardShortcutKey_Destroy](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkey_destroy)销毁键盘快捷键按键对象。
+
+<!--Device-OH_ArkUI_KeyboardShortcutKey* OH_ArkUI_KeyboardShortcutKey_Create(void)--><!--Device-OH_ArkUI_KeyboardShortcutKey* OH_ArkUI_KeyboardShortcutKey_Create(void)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**资源释放：** [OH_ArkUI_KeyboardShortcutKey_Destroy](#oh_arkui_keyboardshortcutkey_destroy)
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutKey*](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) | 键盘快捷键按键对象。<ul> <li>成功时返回归调用方所有的[OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md)对象，调用方必须通过[OH_ArkUI_KeyboardShortcutKey_Destroy](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkey_destroy)释放。</li> <li>操作失败时（例如内存分配失败）返回<b>nullptr</b>。</li> </ul> |
+
+### OH_ArkUI_KeyboardShortcutKey_Destroy()
+
+```c
+void OH_ArkUI_KeyboardShortcutKey_Destroy(OH_ArkUI_KeyboardShortcutKey** key)
+```
+
+**描述：**
+
+销毁键盘快捷键按键对象。
+
+<!--Device-void OH_ArkUI_KeyboardShortcutKey_Destroy(OH_ArkUI_KeyboardShortcutKey** key)--><!--Device-void OH_ArkUI_KeyboardShortcutKey_Destroy(OH_ArkUI_KeyboardShortcutKey** key)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md)** key | [in] 键盘快捷键按键对象。 |
+
+### OH_ArkUI_KeyboardShortcutKey_SetType()
+
+```c
+void OH_ArkUI_KeyboardShortcutKey_SetType(OH_ArkUI_KeyboardShortcutKey* key, OH_ArkUI_KeyboardShortcutKeyType type)
+```
+
+**描述：**
+
+设置键盘快捷键按键的类型。
+
+<!--Device-void OH_ArkUI_KeyboardShortcutKey_SetType(OH_ArkUI_KeyboardShortcutKey* key, OH_ArkUI_KeyboardShortcutKeyType type)--><!--Device-void OH_ArkUI_KeyboardShortcutKey_SetType(OH_ArkUI_KeyboardShortcutKey* key, OH_ArkUI_KeyboardShortcutKeyType type)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md)* key | [in] 键盘快捷键按键对象指针。 |
+| [OH_ArkUI_KeyboardShortcutKeyType](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype) type | [in] 按键类型。 |
+
+### OH_ArkUI_KeyboardShortcutKey_GetType()
+
+```c
+OH_ArkUI_KeyboardShortcutKeyType OH_ArkUI_KeyboardShortcutKey_GetType(const OH_ArkUI_KeyboardShortcutKey* key)
+```
+
+**描述：**
+
+获取键盘快捷键按键的类型。
+
+<!--Device-OH_ArkUI_KeyboardShortcutKeyType OH_ArkUI_KeyboardShortcutKey_GetType(const OH_ArkUI_KeyboardShortcutKey* key)--><!--Device-OH_ArkUI_KeyboardShortcutKeyType OH_ArkUI_KeyboardShortcutKey_GetType(const OH_ArkUI_KeyboardShortcutKey* key)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md)* key | [in] 键盘快捷键按键对象指针。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutKeyType](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype) | 按键类型。<ul> <li>按键类型。</li> <li>如果<b>key</b>为<b>nullptr</b>，则返回[OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_CHARACTER](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype)。</li> </ul> |
+
+### OH_ArkUI_KeyboardShortcutKey_SetCharacter()
+
+```c
+void OH_ArkUI_KeyboardShortcutKey_SetCharacter(OH_ArkUI_KeyboardShortcutKey* key, char character)
+```
+
+**描述：**
+
+设置字符键盘快捷键按键的字符。调用此函数前，按键类型必须已设置为 [OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_CHARACTER](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype)。
+
+<!--Device-void OH_ArkUI_KeyboardShortcutKey_SetCharacter(OH_ArkUI_KeyboardShortcutKey* key, char character)--><!--Device-void OH_ArkUI_KeyboardShortcutKey_SetCharacter(OH_ArkUI_KeyboardShortcutKey* key, char character)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md)* key | [in] 键盘快捷键按键对象指针。 |
+| char character | [in] 可通过键盘输入的单个字符。 |
+
+### OH_ArkUI_KeyboardShortcutKey_GetCharacter()
+
+```c
+char OH_ArkUI_KeyboardShortcutKey_GetCharacter(const OH_ArkUI_KeyboardShortcutKey* key)
+```
+
+**描述：**
+
+获取字符键盘快捷键按键的字符。
+
+<!--Device-char OH_ArkUI_KeyboardShortcutKey_GetCharacter(const OH_ArkUI_KeyboardShortcutKey* key)--><!--Device-char OH_ArkUI_KeyboardShortcutKey_GetCharacter(const OH_ArkUI_KeyboardShortcutKey* key)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md)* key | [in] 键盘快捷键按键对象指针。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| char | 字符。<ul> <li>字符。</li> <li>如果<b>key</b>为<b>nullptr</b>，则返回<b>'\\0'</b>。</li> </ul> |
+
+### OH_ArkUI_KeyboardShortcutKey_SetFunctionKey()
+
+```c
+void OH_ArkUI_KeyboardShortcutKey_SetFunctionKey(OH_ArkUI_KeyboardShortcutKey* key, OH_ArkUI_KeyboardShortcutFunctionKey functionKey)
+```
+
+**描述：**
+
+设置功能键盘快捷键按键的功能键。调用此函数前，按键类型必须已设置为 [OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_FUNCTION_KEY](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype)。
+
+<!--Device-void OH_ArkUI_KeyboardShortcutKey_SetFunctionKey(OH_ArkUI_KeyboardShortcutKey* key, OH_ArkUI_KeyboardShortcutFunctionKey functionKey)--><!--Device-void OH_ArkUI_KeyboardShortcutKey_SetFunctionKey(OH_ArkUI_KeyboardShortcutKey* key, OH_ArkUI_KeyboardShortcutFunctionKey functionKey)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md)* key | [in] 键盘快捷键按键对象指针。 |
+| [OH_ArkUI_KeyboardShortcutFunctionKey](capi-native-key-event-h.md#oh_arkui_keyboardshortcutfunctionkey) functionKey | [in] 功能键。 |
+
+### OH_ArkUI_KeyboardShortcutKey_GetFunctionKey()
+
+```c
+OH_ArkUI_KeyboardShortcutFunctionKey OH_ArkUI_KeyboardShortcutKey_GetFunctionKey(const OH_ArkUI_KeyboardShortcutKey* key)
+```
+
+**描述：**
+
+获取功能键盘快捷键按键的功能键。
+
+<!--Device-OH_ArkUI_KeyboardShortcutFunctionKey OH_ArkUI_KeyboardShortcutKey_GetFunctionKey(const OH_ArkUI_KeyboardShortcutKey* key)--><!--Device-OH_ArkUI_KeyboardShortcutFunctionKey OH_ArkUI_KeyboardShortcutKey_GetFunctionKey(const OH_ArkUI_KeyboardShortcutKey* key)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md)* key | [in] 键盘快捷键按键对象指针。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutFunctionKey](capi-native-key-event-h.md#oh_arkui_keyboardshortcutfunctionkey) | 功能键。<ul> <li>功能键。</li> <li>如果<b>key</b>为<b>nullptr</b>，则返回[OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ESC](capi-native-key-event-h.md#oh_arkui_keyboardshortcutfunctionkey)。</li> </ul> |
+
+### OH_ArkUI_ApplicationShortcutCallback()
+
+```c
+typedef void (*OH_ArkUI_ApplicationShortcutCallback)(const OH_ArkUI_ApplicationShortcutCallbackInfo* info, void* userData)
+```
+
+**描述：**
+
+定义应用级键盘快捷键触发时调用的回调函数。该回调在触发快捷键的UI实例对应的UI线程上执行。
+
+<!--Device-typedef void (*OH_ArkUI_ApplicationShortcutCallback)(const OH_ArkUI_ApplicationShortcutCallbackInfo* info, void* userData)--><!--Device-typedef void (*OH_ArkUI_ApplicationShortcutCallback)(const OH_ArkUI_ApplicationShortcutCallbackInfo* info, void* userData)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_ApplicationShortcutCallbackInfo](capi-arkui-nativemodule-oh-arkui-applicationshortcutcallbackinfo.md)* info | [out] 指向触发快捷键的UI实例回调信息对象的指针，不能为空。使用 [OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext](capi-native-key-event-h.md#oh_arkui_applicationshortcutcallbackinfo_getuicontext)获取对应的UI上下文。该对象仅在回调执行期间 有效，不得持有。 |
+| void* userData | [out] 注册快捷键时传入的用户自定义数据。该值不会被复制，在快捷键注销前必须保持有效。 |
+
+### OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext()
+
+```c
+ArkUI_ContextHandle OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext(const OH_ArkUI_ApplicationShortcutCallbackInfo* info)
+```
+
+**描述：**
+
+获取触发应用级键盘快捷键的UI实例对应的UI上下文。
+
+<!--Device-ArkUI_ContextHandle OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext(const OH_ArkUI_ApplicationShortcutCallbackInfo* info)--><!--Device-ArkUI_ContextHandle OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext(const OH_ArkUI_ApplicationShortcutCallbackInfo* info)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_ApplicationShortcutCallbackInfo](capi-arkui-nativemodule-oh-arkui-applicationshortcutcallbackinfo.md)* info | [in] 指向[OH_ArkUI_ApplicationShortcutCallback](capi-native-key-event-h.md#oh_arkui_applicationshortcutcallback)接收到的单个回调信息对象的指针， 不能为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ContextHandle | UI上下文。<ul> <li>触发快捷键的UI实例对应的UI上下文。</li> <li>如果<b>info</b>无效，则返回<b>nullptr</b>。</li> </ul> |
+
+### OH_ArkUI_ApplicationShortcut_Register()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Register(const OH_ArkUI_KeyboardShortcutKey* key, uint32_t modifierKeys, void* userData, OH_ArkUI_ApplicationShortcutCallback callback, int32_t* registrationId)
+```
+
+**描述：**
+
+注册应用级键盘快捷键。该快捷键在应用内全局生效。 如果存在匹配的组件级快捷键，则优先触发组件级快捷键。<br> 每次注册生成一个应用内唯一的正整数注册标识符，即使快捷键和回调相同，标识符也不同。 同一个快捷键的多次注册均被保留，仅最近一次未注销的注册生效。 注册标识符在应用运行期间不复用。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Register(const OH_ArkUI_KeyboardShortcutKey* key, uint32_t modifierKeys, void* userData, OH_ArkUI_ApplicationShortcutCallback callback, int32_t* registrationId)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Register(const OH_ArkUI_KeyboardShortcutKey* key, uint32_t modifierKeys, void* userData, OH_ArkUI_ApplicationShortcutCallback callback, int32_t* registrationId)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md)* key | [in] 指向键盘快捷键按键对象的指针，不能为<b>nullptr</b>。该对象通过 [OH_ArkUI_KeyboardShortcutKey_Create](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkey_create)创建。字符键通过 [OH_ArkUI_KeyboardShortcutKey_SetCharacter](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkey_setcharacter)设置的字符必须为单个可通过键盘输入的字符。 |
+| uint32_t modifierKeys | [in] 修饰键位掩码。使用[OH_ArkUI_KeyboardShortcutModifierKey](capi-native-key-event-h.md#oh_arkui_keyboardshortcutmodifierkey)中的值进行按位或组合。功能键可使用 [OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_NONE](capi-native-key-event-h.md#oh_arkui_keyboardshortcutmodifierkey)注册不带修饰键的快捷键，字符键至少需要指定一个修饰键。 仅接受[OH_ArkUI_KeyboardShortcutModifierKey](capi-native-key-event-h.md#oh_arkui_keyboardshortcutmodifierkey)中定义的位，设置其他位时返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。 |
+| void* userData | [in] 传递给回调函数的用户自定义数据，可以为<b>nullptr</b>。该值不会被复制， 在快捷键注销前必须保持有效。 |
+| [OH_ArkUI_ApplicationShortcutCallback](capi-native-key-event-h.md#oh_arkui_applicationshortcutcallback) callback | [in] 快捷键触发时调用的回调函数，不能为<b>nullptr</b>。 |
+| int32_t* registrationId | [out] 用于接收本次快捷键绑定注册标识符的输出指针，不能为<b>nullptr</b>。 仅在注册成功时写入，注册失败时保持原值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回执行结果。<ul> <li>如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)。</li> <li>如果参数无效，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)。</li> </ul> |
+
+### OH_ArkUI_ApplicationShortcut_Unregister()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Unregister(int32_t registrationId)
+```
+
+**描述：**
+
+注销指定注册标识符对应的应用级键盘快捷键绑定。<br> 仅移除该标识符对应的绑定，其他绑定不受影响。如果移除的是当前生效的绑定， 则最近一次仍未注销的同快捷键绑定恢复生效。标识符不存在或已注销时，不执行任何操作，仍返回成功。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Unregister(int32_t registrationId)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Unregister(int32_t registrationId)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t registrationId | [in] 注册快捷键时获得的注册标识符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回执行结果。<br>如果操作成功或注册标识符不存在，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)。 |
 
 

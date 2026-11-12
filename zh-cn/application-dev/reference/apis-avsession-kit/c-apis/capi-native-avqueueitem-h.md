@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md) | - | 音视频队列元素的定义。 |
+| [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md) | OH_AVSession_AVQueueItem | 音视频队列元素的定义。 |
 | [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md) | OH_AVSession_AVMediaDescription | 定义OH_AVSession_AVMediaDescription结构体，用于描述应用为当前资源设置的音视频媒体信息。 |
 | [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md) | OH_AVSession_AVMediaDescriptionBuilder | 音视频媒体描述构建器的声明。 构建器的实例用于创建媒体描述信息。 |
 

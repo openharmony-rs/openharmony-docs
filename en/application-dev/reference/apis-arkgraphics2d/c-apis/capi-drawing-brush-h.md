@@ -14,13 +14,13 @@ This file declares the functions related to the brush in the drawing module.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_NativeColorSpaceManager](capi-drawing-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | Provides the declaration of an **OH_NativeColorSpaceManager** struct. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

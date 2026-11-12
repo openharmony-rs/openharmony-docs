@@ -1,7 +1,7 @@
 # VideoOutput_Callbacks
 
 ```c
-struct VideoOutput_Callbacks {...}
+typedef struct VideoOutput_Callbacks {...} VideoOutput_Callbacks
 ```
 
 ## Overview

@@ -199,11 +199,8 @@ enum AVSession_ConnectionState
 
 | 枚举项 | 描述 |
 | -- | -- |
-| * @since 23 | 表示设备正处于连接状态。 |
 | STATE_CONNECTING = 0 | 表示设备正处于连接状态。<br>**起始版本：** 23 |
-| * @since 23 | 表示设备处于已连接状态。 |
 | STATE_CONNECTED = 1 | 表示设备处于已连接状态。<br>**起始版本：** 23 |
-| * @since 23 | 表示设备已处于断开默认连接的状态。 |
 | STATE_DISCONNECTED = 6 | 表示设备已处于断开默认连接的状态。<br>**起始版本：** 23 |
 
 ### AVSession_AVCastCategory
@@ -245,13 +242,9 @@ enum AVSession_DeviceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| * @since 23 | 一种设备类型，标识音频路由为设备自身的内置扬声器或音频插孔。 |
 | DEVICE_TYPE_LOCAL = 0 | 一种设备类型，标识音频路由为设备自身的内置扬声器或音频插孔。<br>**起始版本：** 23 |
-| * @since 23 | 一种设备类型，标识音频路由为电视端。 |
 | DEVICE_TYPE_TV = 2 | 一种设备类型，标识音频路由为电视端。<br>**起始版本：** 23 |
-| * @since 23 | 一种设备类型，标识音频路由为智能音箱端。 |
 | DEVICE_TYPE_SMART_SPEAKER = 3 | 一种设备类型，标识音频路由为智能音箱端。<br>**起始版本：** 23 |
-| * @since 23 | 一种设备类型，标识音频路由为蓝牙设备端。 |
 | DEVICE_TYPE_BLUETOOTH = 10 | 一种设备类型，标识音频路由为蓝牙设备端。<br>**起始版本：** 23 |
 
 ### AVSession_ProtocolType
@@ -272,13 +265,9 @@ enum AVSession_ProtocolType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| * @since 23 | 默认为本地设备。 包括设备本身的内置扬声器或音频插孔，A2DP（Advanced Audio Distribution Profile）设备。 |
 | TYPE_LOCAL = 0 | 默认为本地设备。 包括设备本身的内置扬声器或音频插孔，A2DP（Advanced Audio Distribution Profile）设备。<br>**起始版本：** 23 |
-| * @since 23 | Cast+的Stream模式。 表示媒体正在其他设备上展示，应用需要一个AVCastController来控制远程播放。 |
 | TYPE_CAST_PLUS_STREAM = 2 | Cast+的Stream模式。 表示媒体正在其他设备上展示，应用需要一个AVCastController来控制远程播放。<br>**起始版本：** 23 |
-| * @since 23 | DLNA（DIGITAL LIVING NETWORK ALLIANCE）协议。 表示设备支持DLNA协议，应用需要一个AVCastController来控制远程播放。 |
 | TYPE_DLNA = 4 | DLNA（DIGITAL LIVING NETWORK ALLIANCE）协议。 表示设备支持DLNA协议，应用需要一个AVCastController来控制远程播放。<br>**起始版本：** 23 |
-| * @since 23 | 表示该设备支持高清晰度的音频投播，以获得更好的音质。 |
 | TYPE_CAST_PLUS_AUDIO = 8 | 表示该设备支持高清晰度的音频投播，以获得更好的音质。<br>**起始版本：** 23 |
 
 ### AVSession_AVCastControlCommandType
@@ -299,25 +288,15 @@ enum AVSession_AVCastControlCommandType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| * @since 23 | 播放命令。 |
 | CAST_CONTROL_CMD_PLAY = 0 | 播放命令。<br>**起始版本：** 23 |
-| * @since 23 | 暂停命令。 |
 | CAST_CONTROL_CMD_PAUSE = 1 | 暂停命令。<br>**起始版本：** 23 |
-| * @since 23 | 停止命令。 |
 | CAST_CONTROL_CMD_STOP = 2 | 停止命令。<br>**起始版本：** 23 |
-| * @since 23 | 下一首命令。 |
 | CAST_CONTROL_CMD_PLAY_NEXT = 3 | 下一首命令。<br>**起始版本：** 23 |
-| * @since 23 | 上一首命令。 |
 | CAST_CONTROL_CMD_PLAY_PREVIOUS = 4 | 上一首命令。<br>**起始版本：** 23 |
-| * @since 23 | 快进命令。 |
 | CAST_CONTROL_CMD_FAST_FORWARD = 5 | 快进命令。<br>**起始版本：** 23 |
-| * @since 23 | 快退命令。 |
 | CAST_CONTROL_CMD_REWIND = 6 | 快退命令。<br>**起始版本：** 23 |
-| * @since 23 | 跳转到指定播放位置命令。 |
 | CAST_CONTROL_CMD_SEEK = 7 | 跳转到指定播放位置命令。<br>**起始版本：** 23 |
-| * @since 23 | 设置音量命令。 |
 | CAST_CONTROL_CMD_SET_VOLUME = 8 | 设置音量命令。<br>**起始版本：** 23 |
-| * @since 23 | 设置播放倍速命令。 |
 | CAST_CONTROL_CMD_SET_SPEED = 9 | 设置播放倍速命令。<br>**起始版本：** 23 |
 
 ### AVSession_PlaybackSpeed
@@ -338,19 +317,12 @@ enum AVSession_PlaybackSpeed
 
 | 枚举项 | 描述 |
 | -- | -- |
-| * @since 23 | 以正常播速的0.75倍速播放音视频。 |
 | SPEED_FORWARD_0_75_X = 0 | 以正常播速的0.75倍速播放音视频。<br>**起始版本：** 23 |
-| * @since 23 | 以正常播速（1.00x）播放音视频。 |
 | SPEED_FORWARD_1_00_X = 1 | 以正常播速（1.00x）播放音视频。<br>**起始版本：** 23 |
-| * @since 23 | 以正常播速的1.25倍速播放音视频。 |
 | SPEED_FORWARD_1_25_X = 2 | 以正常播速的1.25倍速播放音视频。<br>**起始版本：** 23 |
-| * @since 23 | 以正常播速的1.75倍速播放音视频。 |
 | SPEED_FORWARD_1_75_X = 3 | 以正常播速的1.75倍速播放音视频。<br>**起始版本：** 23 |
-| * @since 23 | 以正常播速的2倍速播放音视频。 |
 | SPEED_FORWARD_2_00_X = 4 | 以正常播速的2倍速播放音视频。<br>**起始版本：** 23 |
-| * @since 23 | 以正常播速的0.5倍速播放音视频。 |
 | SPEED_FORWARD_0_50_X = 5 | 以正常播速的0.5倍速播放音视频。<br>**起始版本：** 23 |
-| * @since 23 | 以正常播速的1.5倍速播放音视频。 |
 | SPEED_FORWARD_1_50_X = 6 | 以正常播速的1.5倍速播放音视频。<br>**起始版本：** 23 |
 
 ### AVSession_PlaybackFilter
@@ -371,13 +343,9 @@ enum AVSession_PlaybackFilter
 
 | 枚举项 | 描述 |
 | -- | -- |
-| * @since 23 | 过滤状态。 |
 | FILTER_STATE = 1 << 0 | 过滤状态。<br>**起始版本：** 23 |
-| * @since 23 | 过滤位置。 |
 | FILTER_POSITION = 1 << 1 | 过滤位置。<br>**起始版本：** 23 |
-| * @since 23 | 过滤倍速。 |
 | FILTER_SPEED = 1 << 2 | 过滤倍速。<br>**起始版本：** 23 |
-| * @since 23 | 过滤音量。 |
 | FILTER_VOLUME = 1 << 3 | 过滤音量。<br>**起始版本：** 23 |
 
 

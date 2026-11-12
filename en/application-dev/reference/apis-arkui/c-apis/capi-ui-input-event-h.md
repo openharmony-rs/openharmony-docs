@@ -14,7 +14,7 @@ Provides input event definitions for ArkUI on the native side, including touch, 
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -24,7 +24,7 @@ Provides input event definitions for ArkUI on the native side, including touch, 
 | [ArkUI_TouchTestInfoItem](capi-arkui-eventmodule-arkui-touchtestinfoitem.md) | ArkUI_TouchTestInfoItem | Defines a touch test information item. A touch test is a hit test process that determines the target component based on touch event coordinates. The touch test information item can be obtained in the event callback only when you register the [NODE_ON_CHILD_TOUCH_TEST](capi-native-node-h.md#arkui_nodeeventtype) event through [registerNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent). This information item contains the information about child components in the touch test, and is applicable to scenarios where child component information needs to be obtained and identified. You can use the OH_ArkUI_TouchTestInfoItem_GetXXX series APIs to obtain the information and process the touch test result. |
 | [ArkUI_TouchTestInfoItem*](capi-arkui-eventmodule-arkui-touchtestinfoitem8h.md) | ArkUI_TouchTestInfoItemHandle | Defines a touch test information item handle, which represents information such as the coordinates, region, and component ID of a child component during a touch test. For details about the touch test APIs, see ui_input_event.h. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -45,7 +45,7 @@ Provides input event definitions for ArkUI on the native side, including touch, 
 | [ArkUI_TouchTestStrategy](#arkui_touchteststrategy) | ArkUI_TouchTestStrategy | Defines the touch test policy. |
 | [ArkUI_CompetitionStrategy](#arkui_competitionstrategy) | ArkUI_CompetitionStrategy | Strategy that determines whether the gesture identification result between the event injector and the injected end is in a competition scenario. This strategy determines how the event injector interacts with the gesture processing logic of the injected end. In non-competition scenarios, the gestures of the two parties are triggered simultaneously. In competition scenarios, only the gesture of one party is triggered. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -199,7 +199,7 @@ Provides input event definitions for ArkUI on the native side, including touch, 
 | [ArkUI_ErrorCode OH_ArkUI_ClonedEvent_SetPressedButtons(const ArkUI_UIInputEvent* event, const int32_t* pressedButtons, int32_t length)](#oh_arkui_clonedevent_setpressedbuttons) | Sets the pressed keys in a cloned event. This API applies to mouse events. This API can be used only for the *<br>*ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent). |
 | [ArkUI_ErrorCode OH_ArkUI_PointerEvent_PostClonedEventWithStrategy(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event, ArkUI_CompetitionStrategy strategy)](#oh_arkui_pointerevent_postclonedeventwithstrategy) | Posts a cloned event to a specific node using a specified competition policy. This API is applicable to the scenario where a cloned event is injected to a target node and whether the injected event competes with the existing gestures on the target node needs to be controlled. This API can be used only for the **ArkUI_UIInputEvent** objects created by [OH_ArkUI_PointerEvent_CreateClonedPointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createclonedpointerevent) and [OH_ArkUI_PointerEvent_CreatePointerEvent](capi-ui-input-event-h.md#oh_arkui_pointerevent_createpointerevent). |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

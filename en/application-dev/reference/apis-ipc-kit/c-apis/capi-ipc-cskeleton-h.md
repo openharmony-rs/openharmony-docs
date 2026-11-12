@@ -16,7 +16,7 @@ The **ipc_cskeleton.h** module provides C APIs for managing the token IDs, crede
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

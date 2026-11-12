@@ -14,7 +14,7 @@ Defines the AVRecorder APIs. AVRecorder enables media recording and supports aud
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

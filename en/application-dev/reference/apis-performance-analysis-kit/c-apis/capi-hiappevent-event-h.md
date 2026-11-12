@@ -14,7 +14,7 @@ Defines the event names of all predefined events.<br> In addition to custom even
 
 ## Summary
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |

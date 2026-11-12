@@ -1,7 +1,7 @@
 # OH_UsbManager_UsbInterface
 
 ```c
-struct OH_UsbManager_UsbInterface {...}
+typedef struct OH_UsbManager_UsbInterface {...} OH_UsbManager_UsbInterface
 ```
 
 ## 概述
@@ -30,7 +30,7 @@ struct OH_UsbManager_UsbInterface {...}
 | uint8_t subClass | 接口子类。<br>**起始版本：** 26.0.1 |
 | uint8_t alternateSetting | 此USB接口的交替设置编号，由USB接口描述符定义。值0表示 <br>默认的交替设置。<br>**起始版本：** 26.0.1 |
 | const char *name | 接口名称。<br>**起始版本：** 26.0.1 |
-| OH_UsbManager_UsbEndpoint *endpoints | 属于该USB接口的端点。<br>**起始版本：** 26.0.1 |
+| [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md) *endpoints | 属于该USB接口的端点。<br>**起始版本：** 26.0.1 |
 | uint32_t endpointCount | 接口中的端点数量。<br>**起始版本：** 26.0.1 |
 
 

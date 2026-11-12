@@ -16,7 +16,7 @@ Declares APIs for converting <b>FrameNode</b> objects on the ArkTS side to <b>Ar
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

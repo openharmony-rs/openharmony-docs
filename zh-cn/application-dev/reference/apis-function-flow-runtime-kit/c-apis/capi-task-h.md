@@ -298,7 +298,7 @@ FFRT_C_API ffrt_queue_priority_t ffrt_task_attr_get_queue_priority(const ffrt_ta
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_queue_priority_t | 并发队列任务的优先级。 |
+| FFRT_C_API [ffrt_queue_priority_t](capi-type-def-h.md#ffrt_queue_priority_t) | 并发队列任务的优先级。 |
 
 ### ffrt_task_attr_set_stack_size()
 
@@ -521,7 +521,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, cons
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | 任务提交成功时返回非空的任务句柄；否则返回空指针。 |
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | 任务提交成功时返回非空的任务句柄；否则返回空指针。 |
 
 **参考：**
 
@@ -589,7 +589,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, c
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | 任务提交成功时返回非空的任务句柄；否则返回空指针。 |
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | 任务提交成功时返回非空的任务句柄；否则返回空指针。 |
 
 **参考：**
 

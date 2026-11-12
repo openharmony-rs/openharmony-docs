@@ -8,7 +8,7 @@ typedef const struct {...} JSVM_CompileProfile
 
 compile profile passed with JSVM_COMPILE_COMPILE_PROFILE
 
-<!--Device-typedef const struct {...} JSVM_CompileProfile--><!--Device-typedef const struct {...} JSVM_CompileProfile-End-->
+<!--Device-typedef struct JSVM_CompileProfile {...} JSVM_CompileProfile--><!--Device-typedef struct JSVM_CompileProfile {...} JSVM_CompileProfile-End-->
 
 **System capability**: SystemCapability.ArkCompiler.JSVM
 

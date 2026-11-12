@@ -12,7 +12,7 @@
 
 | Name | Description |
 | -- | -- |
-| const struct \_\_ani_interaction_api *c_api |  |
+| [const struct \_\_ani_interaction_api](capi----ani-interaction-api.md) *c_api |  |
 | ani_status GetVersion(uint32_t *result)
     {
         return c_api->GetVersion(this, result);

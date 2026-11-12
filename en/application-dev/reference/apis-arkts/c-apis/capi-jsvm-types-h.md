@@ -14,7 +14,7 @@ Provides the JSVM API type define.<br> Provides API to Provide independent, stan
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -50,7 +50,7 @@ Provides the JSVM API type define.<br> Provides API to Provide independent, stan
 | [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md) | JSVM_Callback | Function pointer type for user-provided native function which are to exposed to js via JSVM-API. |
 | [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md) | JSVM_PropertyHandlerCfg | The pointer type of the structure which contains the property handlers. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -78,7 +78,7 @@ Provides the JSVM API type define.<br> Provides API to Provide independent, stan
 | [JSVM_GCCallbackFlags](#jsvm_gccallbackflags) | JSVM_GCCallbackFlags | The GC callback flags. |
 | [JSVM_DebugOption](#jsvm_debugoption) | JSVM_DebugOption | Debug options. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -91,7 +91,7 @@ Provides the JSVM API type define.<br> Provides API to Provide independent, stan
 | [typedef void(JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)](#jsvm_cdecl-jsvm_handlerforgc) | JSVM_CDECL* JSVM_HandlerForGC | Function pointer type of GC callback. |
 | [typedef void(JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)](#jsvm_cdecl-jsvm_handlerforheapthreshold) | JSVM_CDECL* JSVM_HandlerForHeapThreshold | Function pointer type for heap threshold callback. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

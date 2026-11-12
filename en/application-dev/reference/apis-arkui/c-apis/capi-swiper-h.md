@@ -14,7 +14,7 @@ Defines the enumerations and APIs of the **Swiper** component for implementing s
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -22,7 +22,7 @@ Defines the enumerations and APIs of the **Swiper** component for implementing s
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | Defines the style of the digit navigation indicator for the **Swiper** component, which is used to display the current position and total number of pages in digits. |
 | [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | Defines the navigation arrow style of the **Swiper** component, which implements page-turning guidance by configuring attributes such as the arrow position, size, and color. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -32,7 +32,7 @@ Defines the enumerations and APIs of the **Swiper** component for implementing s
 | [ArkUI_SwiperAnimationMode](#arkui_swiperanimationmode) | ArkUI_SwiperAnimationMode | Enumerates the animation modes for the **Swiper** component when jumping to the page with the specified index. |
 | [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype) | ArkUI_SwiperIndicatorType | Enumerates the navigation indicator types of the **Swiper** component. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

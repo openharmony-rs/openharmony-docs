@@ -1,7 +1,7 @@
 # Region
 
 ```c
-struct Region {...}
+typedef struct Region {...} Region
 ```
 
 ## Overview

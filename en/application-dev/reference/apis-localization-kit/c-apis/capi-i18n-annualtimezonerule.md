@@ -1,7 +1,7 @@
 # AnnualTimeZoneRule
 
 ```c
-struct AnnualTimeZoneRule {...}
+typedef struct AnnualTimeZoneRule {...} AnnualTimeZoneRule
 ```
 
 ## Overview

@@ -1,7 +1,7 @@
 # VkSurfaceCreateInfoOHOS
 
 ```c
-struct VkSurfaceCreateInfoOHOS {...}
+typedef struct VkSurfaceCreateInfoOHOS {...} VkSurfaceCreateInfoOHOS
 ```
 
 ## Overview

@@ -14,13 +14,13 @@ Defines APIs for game devices.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [GameDevice_AllDeviceInfos](capi-gamecontroller-gamedevice-alldeviceinfos.md) | GameDevice_AllDeviceInfos | Defines the result returned by [OH_GameDevice_GetAllDeviceInfos](capi-game-device-h.md#oh_gamedevice_getalldeviceinfos). |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

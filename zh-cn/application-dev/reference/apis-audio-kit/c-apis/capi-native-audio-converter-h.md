@@ -18,10 +18,10 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioConverter_Format](capi-ohaudiosuite-oh-audioconverter-format.md) | - | 定义音频转换器格式数据结构，用于描述基本音频格式。 |
-| [OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex.md) | - | 定义扩展音频转换器格式信息结构体，用于描述支持任意采样率的音频格式。 |
-| [OH_AudioSuite_ConverterInputInfo](capi-ohaudiosuite-oh-audiosuite-converterinputinfo.md) | - | 定义音频转换器输入数据结构体。 |
-| [OH_AudioSuite_ConverterOutputInfo](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo.md) | - | 定义音频转换器输出数据结构体，用于直接处理模式接收转换后的音频数据。 |
+| [OH_AudioConverter_Format](capi-ohaudiosuite-oh-audioconverter-format.md) | OH_AudioConverter_Format | 定义音频转换器格式数据结构，用于描述基本音频格式。 |
+| [OH_AudioSuite_ConverterFormatEx](capi-ohaudiosuite-oh-audiosuite-converterformatex.md) | OH_AudioSuite_ConverterFormatEx | 定义扩展音频转换器格式信息结构体，用于描述支持任意采样率的音频格式。 |
+| [OH_AudioSuite_ConverterInputInfo](capi-ohaudiosuite-oh-audiosuite-converterinputinfo.md) | OH_AudioSuite_ConverterInputInfo | 定义音频转换器输入数据结构体。 |
+| [OH_AudioSuite_ConverterOutputInfo](capi-ohaudiosuite-oh-audiosuite-converteroutputinfo.md) | OH_AudioSuite_ConverterOutputInfo | 定义音频转换器输出数据结构体，用于直接处理模式接收转换后的音频数据。 |
 | [OH_AudioConverterStruct](capi-ohaudiosuite-oh-audioconverterstruct.md) | OH_AudioConverter | 声明音频格式转换器。<br> 音频格式转换器句柄用于执行音频格式转换相关功能。 |
 
 ### 枚举

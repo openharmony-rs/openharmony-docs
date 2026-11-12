@@ -16,10 +16,10 @@
 
 ### 结构体
 
-| 名称 | 描述 |
-| -- | -- |
-| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) | 授予或激活权限失败的URI策略结果，用于记录失败URI、错误码和失败原因。 |
-| [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) | 需要授予或激活URI访问权限的策略信息，用于描述跨应用文件共享场景中的目标URI和访问模式。 |
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md) | FileShare_PolicyErrorResult | 授予或激活权限失败的URI策略结果，用于记录失败URI、错误码和失败原因。 |
+| [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md) | FileShare_PolicyInfo | 需要授予或激活URI访问权限的策略信息，用于描述跨应用文件共享场景中的目标URI和访问模式。 |
 
 ### 枚举
 

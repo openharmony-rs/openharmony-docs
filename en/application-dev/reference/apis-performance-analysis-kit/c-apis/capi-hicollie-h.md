@@ -14,14 +14,14 @@ Defines the interface of the HiCollie module.
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md) | Defines the parameters of the jank event detection. Note that this struct is supported since API 12. |
-| [HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md) | Defines the input parameters of the **OH_HiCollie_SetTimer** function. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md) | HiCollie_DetectionParam | Defines the parameters of the jank event detection. Note that this struct is supported since API 12. |
+| [HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md) | HiCollie_SetTimerParam | Defines the input parameters of the **OH_HiCollie_SetTimer** function. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -29,7 +29,7 @@ Defines the interface of the HiCollie module.
 | [HiCollie_Flag](#hicollie_flag) | HiCollie_Flag | Enumerates the actions to be performed when a function times out. |
 | [OH_HiCollie_Freeze_Type](#oh_hicollie_freeze_type) | OH_HiCollie_Freeze_Type | Enumerates the freeze event types returned by **FreezeCallback**. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

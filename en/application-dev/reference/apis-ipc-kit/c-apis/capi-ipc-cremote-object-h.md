@@ -16,20 +16,20 @@ This file provides C APIs for remote object creation, destruction, data sending,
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_IPC_MessageOption](capi-ohipcremoteobject-oh-ipc-messageoption.md) | OH_IPC_MessageOption | Defines IPC message options, which are used to configure request parameters during IPC communication. |
 | [OHIPCDeathRecipient](capi-ohipcremoteobject-ohipcdeathrecipient.md) | OHIPCDeathRecipient | Defines the IPC death notification object, which is used to listen for the death event of a remote IPC object. After an **OHIPCDeathRecipient** object is created, it must be registered with the OHIPCRemoteObject object to take effect. If it is not registered, death events cannot be listened for. When a remote process terminates unexpectedly or is destroyed, the local process that has registered the death listener will receive a death notification callback. This allows the local process to release related resources or handle errors in a timely manner. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_IPC_RequestMode](#oh_ipc_requestmode) | OH_IPC_RequestMode | Enumerates the IPC request modes. The synchronous request mode is suitable for scenarios where you need to wait for a response from the remote side. The asynchronous request mode is suitable for scenarios where you do not need to wait for a response or where you need to improve concurrent performance. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

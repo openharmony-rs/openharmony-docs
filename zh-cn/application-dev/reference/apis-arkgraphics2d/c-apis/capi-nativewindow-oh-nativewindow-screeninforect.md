@@ -1,7 +1,7 @@
 # OH_NativeWindow_ScreenInfoRect
 
 ```c
-struct OH_NativeWindow_ScreenInfoRect {...}
+typedef struct OH_NativeWindow_ScreenInfoRect {...} OH_NativeWindow_ScreenInfoRect
 ```
 
 ## 概述
@@ -12,7 +12,7 @@ struct OH_NativeWindow_ScreenInfoRect {...}
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **相关模块：** [NativeWindow](capi-arkgraphics2d-nativewindow.md)
 

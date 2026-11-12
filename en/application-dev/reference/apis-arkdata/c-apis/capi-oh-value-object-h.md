@@ -14,7 +14,7 @@ Provides numeric type conversion functions.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

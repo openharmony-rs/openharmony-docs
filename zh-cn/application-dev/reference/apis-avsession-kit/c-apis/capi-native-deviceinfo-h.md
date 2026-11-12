@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) | - | 输出设备信息的定义。 |
+| [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-outputdeviceinfo.md) | AVSession_OutputDeviceInfo | 输出设备信息的定义。 |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) | AVSession_DeviceInfo | 设备信息的结构体声明。 该结构体用于存储设备信息及详细属性。 |
 
 ### 函数

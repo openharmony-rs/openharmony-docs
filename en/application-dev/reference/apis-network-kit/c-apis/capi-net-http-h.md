@@ -14,7 +14,7 @@ Defines the APIs of the HTTP request module.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

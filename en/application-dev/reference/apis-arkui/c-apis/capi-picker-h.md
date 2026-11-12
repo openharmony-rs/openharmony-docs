@@ -16,7 +16,7 @@ Defines **Picker** node types for **NativeNode** APIs, which support various pic
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -28,7 +28,7 @@ Defines **Picker** node types for **NativeNode** APIs, which support various pic
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | Defines the option content array of a text picker. This struct is used to configure the option list of a text picker, setting the icon and text content of each option by index. It applies to scenarios such as date selection, time selection, and list selection that require displaying multiple options for users to select by scrolling. |
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | Defines an option array of a multi-column text cascade picker. This struct is used to configure the hierarchical data of a multi-column text cascade picker, that is, configure the text and child-level data of each column's options through indexes. It is applicable to scenarios that require multi-column data cascade, such as province-city-district cascade and product category selection. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -37,7 +37,7 @@ Defines **Picker** node types for **NativeNode** APIs, which support various pic
 | [ArkUI_CalendarAlignment](#arkui_calendaralignment) | ArkUI_CalendarAlignment | Enumerates the alignment modes between the calendar picker and the entry component. |
 | [ArkUI_PickerIndicatorType](#arkui_pickerindicatortype) | ArkUI_PickerIndicatorType | Enumerates the indicator types of the selected item. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -14,24 +14,24 @@ The file declares the APIs for obtaining picture data and information.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_PictureNative_AuxiliaryPictureCopyItem](capi-image-nativemodule-oh-picturenative-auxiliarypicturecopyitem.md) | - | This structure is used to specify an auxiliary picture copy rule when creating a deep copy of a PictureNative object. It describes how to copy an auxiliary picture from one type to another. |
-| [OH_PictureNative_MetadataCopyItem](capi-image-nativemodule-oh-picturenative-metadatacopyitem.md) | - | This structure is used to specify a metadata copy rule when creating a deep copy of a PictureNative object. It describes how to copy metadata from one type to another. |
+| [OH_PictureNative_AuxiliaryPictureCopyItem](capi-image-nativemodule-oh-picturenative-auxiliarypicturecopyitem.md) | OH_PictureNative_AuxiliaryPictureCopyItem | This structure is used to specify an auxiliary picture copy rule when creating a deep copy of a PictureNative object. It describes how to copy an auxiliary picture from one type to another. |
+| [OH_PictureNative_MetadataCopyItem](capi-image-nativemodule-oh-picturenative-metadatacopyitem.md) | OH_PictureNative_MetadataCopyItem | This structure is used to specify a metadata copy rule when creating a deep copy of a PictureNative object. It describes how to copy metadata from one type to another. |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) | OH_PictureNative | The struct is used to perform operations related to the picture. |
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) | OH_AuxiliaryPictureNative | The struct describes the auxiliary picture, which is used to perform operations related to the auxiliary picture. |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) | OH_AuxiliaryPictureInfo | The struct describes the auxiliary picture information, which is used to perform operations related to the auxiliary picture information. |
 | [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) | OH_ComposeOptions | **OH_ComposeOptions** is the HDR composition option struct encapsulated at the native layer. It is used to specify parameters used for HDR composition, such as the target pixel format. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [Image_AuxiliaryPictureType](#image_auxiliarypicturetype) | Image_AuxiliaryPictureType | Type of the auxiliary picture. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

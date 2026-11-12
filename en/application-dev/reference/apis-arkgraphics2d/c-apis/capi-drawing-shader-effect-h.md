@@ -14,13 +14,13 @@ This file declares the functions related to the shader effect in the drawing mod
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_Drawing_TileMode](#oh_drawing_tilemode) | OH_Drawing_TileMode | Defines an enum for the tile modes of the shader effect. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

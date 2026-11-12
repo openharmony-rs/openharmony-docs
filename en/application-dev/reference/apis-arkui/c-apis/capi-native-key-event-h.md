@@ -14,7 +14,14 @@ Declares the APIs of **NativeKeyEvent** for obtaining the type, key code, key va
 
 ## Summary
 
-### Enum
+### Structs
+
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) | OH_ArkUI_KeyboardShortcutKey | Defines the keyboard shortcut key struct, which describes the shortcut key design logic such as the key type and key value. Applications can register and manage custom shortcut keys. |
+| [OH_ArkUI_ApplicationShortcutCallbackInfo](capi-arkui-nativemodule-oh-arkui-applicationshortcutcallbackinfo.md) | OH_ArkUI_ApplicationShortcutCallbackInfo | Defines the callback information for an application-level keyboard shortcut. |
+
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -22,39 +29,54 @@ Declares the APIs of **NativeKeyEvent** for obtaining the type, key code, key va
 | [ArkUI_KeyEventType](#arkui_keyeventtype) | ArkUI_KeyEventType | Enumerates the types of key events. |
 | [ArkUI_KeySourceType](#arkui_keysourcetype) | ArkUI_KeySourceType | Enumerates the types of input devices that trigger key events. |
 | [ArkUI_KeyIntension](#arkui_keyintension) | ArkUI_KeyIntension | Enumerates the intentions corresponding to key events. |
+| [OH_ArkUI_KeyboardShortcutModifierKey](#oh_arkui_keyboardshortcutmodifierkey) | OH_ArkUI_KeyboardShortcutModifierKey | Enumerates the modifier keys supported by keyboard shortcuts.<br> The values are bit flags and can be combined by using the bitwise OR operator. |
+| [OH_ArkUI_KeyboardShortcutFunctionKey](#oh_arkui_keyboardshortcutfunctionkey) | OH_ArkUI_KeyboardShortcutFunctionKey | Enumerates the function keys supported by keyboard shortcuts. |
+| [OH_ArkUI_KeyboardShortcutKeyType](#oh_arkui_keyboardshortcutkeytype) | OH_ArkUI_KeyboardShortcutKeyType | Enumerates the types of keys supported by keyboard shortcuts. |
 
-### Function
+### Functions
 
-| Name | Description |
-| -- | -- |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_Create(ArkUI_UIInputEvent** event)](#oh_arkui_keyevent_create) | Creates a key event that can be dispatched by [OH_ArkUI_KeyEvent_Dispatch](capi-native-key-event-h.md#oh_arkui_keyevent_dispatch). |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_Destroy(ArkUI_UIInputEvent** event)](#oh_arkui_keyevent_destroy) | Destroys a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) and sets the event pointer to null.<br> If **event** is not null and the pointer referenced by **event** is null, this function returns successfully. |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetType(ArkUI_UIInputEvent* event, ArkUI_KeyEventType type)](#oh_arkui_keyevent_settype) | Sets the type of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyCode(ArkUI_UIInputEvent* event, int32_t keyCode)](#oh_arkui_keyevent_setkeycode) | Sets the key code of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyText(ArkUI_UIInputEvent* event, const char* keyText)](#oh_arkui_keyevent_setkeytext) | Sets the key text of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).<br> This function copies **keyText**. The caller can release or reuse the original string after this function returns. |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeySource(ArkUI_UIInputEvent* event, ArkUI_KeySourceType keySource)](#oh_arkui_keyevent_setkeysource) | Sets the input device type of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetDeviceId(ArkUI_UIInputEvent* event, int32_t deviceId)](#oh_arkui_keyevent_setdeviceid) | Sets the device ID of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetUnicode(ArkUI_UIInputEvent* event, uint32_t unicode)](#oh_arkui_keyevent_setunicode) | Sets the Unicode value of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetEventTime(ArkUI_UIInputEvent* event, int64_t timestamp)](#oh_arkui_keyevent_seteventtime) | Sets the occurrence time of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetPressedKeys(ArkUI_UIInputEvent* event, const int32_t* pressedKeyCodes, int32_t length)](#oh_arkui_keyevent_setpressedkeys) | Sets all pressed keys of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).<br> This function copies **pressedKeyCodes**. The caller can release or reuse the original array after this function returns. Pass null for **pressedKeyCodes** and **0** for **length** to clear the pressed keys. |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event, OH_ArkUI_KeyIntention intentionCode)](#oh_arkui_keyevent_setkeyintentioncode) | Sets the intention code of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool isNumLockOn)](#oh_arkui_keyevent_setnumlockon) | Sets the NumLock state of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool isCapsLockOn)](#oh_arkui_keyevent_setcapslockon) | Sets the CapsLock state of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, bool isScrollLockOn)](#oh_arkui_keyevent_setscrolllockon) | Sets the ScrollLock state of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
-| [ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_gettype) | Obtains the type of the specified key event. |
-| [int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeycode) | Obtains the key code from the specified key event. |
-| [const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeytext) | Obtains the key value from the specified key event. |
-| [ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeysource) | Obtains the type of input device that triggers the specified key event. |
-| [void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)](#oh_arkui_keyevent_stoppropagation) | Stops event bubbling in the key event callback. This API applies to scenarios where a child component has already handled a key event in a nested component structure and does not want the parent component to respond to the same key again, for example, stopping the event from bubbling upward when handling custom shortcuts. Unlike **OH_ArkUI_KeyEvent_SetConsumed**, this API controls the bubbling of the event, whereas **OH_ArkUI_KeyEvent_SetConsumed** sets whether the event is consumed by the callback. The two APIs can be used together without affecting each other. You are advised to select the appropriate API based on whether you need to stop bubbling or mark consumption. |
-| [ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeyintensioncode) | Obtains the intention code associated with the specified key event. |
-| [uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getunicode) | Obtains the Unicode value of the key. Non-space basic Latin characters in the 0x0021-0x007E range are supported. Characters with a value of 0 are not supported. In the case of key combination, this API returns the Unicode value of the key corresponding to the key event. |
-| [void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsumed)](#oh_arkui_keyevent_setconsumed) | Sets whether the event is consumed by the callback in the key event callback. This API applies to scenarios such as shortcut key handling and custom key response of a component, where the event needs to be marked as handled to avoid repeated processing. Unlike **OH_ArkUI_KeyEvent_StopPropagation**, this API marks whether the event is consumed by the current callback rather than controlling event bubbling. To stop the event from bubbling upward, use **OH_ArkUI_KeyEvent_StopPropagation**.<br> For the process and specific timing of key event triggering, see [Key Event Data Flow](../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow). |
-| [void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_dispatch) | Dispatches the key event to the specified component node. After this API is called, the key event triggers the key event callback registered on the target node. This API can be used in the key event callback to forward the current key event to the specified component node for secondary processing. Unlike **StopPropagation** and **SetConsumed**, **Dispatch** does not affect the processing state of the current event. |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_isnumlockon) | Obtains the state of the NumLock key when the specified key event occurs. |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_iscapslockon) | Obtains the state of the CapsLock key when the specified key event occurs. |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_isscrolllockon) | Obtains the state of the ScrollLock key when the specified key event occurs. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_Create(ArkUI_UIInputEvent** event)](#oh_arkui_keyevent_create) | - | Creates a key event that can be dispatched by [OH_ArkUI_KeyEvent_Dispatch](capi-native-key-event-h.md#oh_arkui_keyevent_dispatch). |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_Destroy(ArkUI_UIInputEvent** event)](#oh_arkui_keyevent_destroy) | - | Destroys a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) and sets the event pointer to null.<br> If **event** is not null and the pointer referenced by **event** is null, this function returns successfully. |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetType(ArkUI_UIInputEvent* event, ArkUI_KeyEventType type)](#oh_arkui_keyevent_settype) | - | Sets the type of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyCode(ArkUI_UIInputEvent* event, int32_t keyCode)](#oh_arkui_keyevent_setkeycode) | - | Sets the key code of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyText(ArkUI_UIInputEvent* event, const char* keyText)](#oh_arkui_keyevent_setkeytext) | - | Sets the key text of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).<br> This function copies **keyText**. The caller can release or reuse the original string after this function returns. |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeySource(ArkUI_UIInputEvent* event, ArkUI_KeySourceType keySource)](#oh_arkui_keyevent_setkeysource) | - | Sets the input device type of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetDeviceId(ArkUI_UIInputEvent* event, int32_t deviceId)](#oh_arkui_keyevent_setdeviceid) | - | Sets the device ID of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetUnicode(ArkUI_UIInputEvent* event, uint32_t unicode)](#oh_arkui_keyevent_setunicode) | - | Sets the Unicode value of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetEventTime(ArkUI_UIInputEvent* event, int64_t timestamp)](#oh_arkui_keyevent_seteventtime) | - | Sets the occurrence time of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetPressedKeys(ArkUI_UIInputEvent* event, const int32_t* pressedKeyCodes, int32_t length)](#oh_arkui_keyevent_setpressedkeys) | - | Sets all pressed keys of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create).<br> This function copies **pressedKeyCodes**. The caller can release or reuse the original array after this function returns. Pass null for **pressedKeyCodes** and **0** for **length** to clear the pressed keys. |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event, OH_ArkUI_KeyIntention intentionCode)](#oh_arkui_keyevent_setkeyintentioncode) | - | Sets the intention code of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool isNumLockOn)](#oh_arkui_keyevent_setnumlockon) | - | Sets the NumLock state of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool isCapsLockOn)](#oh_arkui_keyevent_setcapslockon) | - | Sets the CapsLock state of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, bool isScrollLockOn)](#oh_arkui_keyevent_setscrolllockon) | - | Sets the ScrollLock state of a key event created by [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create). |
+| [ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_gettype) | - | Obtains the type of the specified key event. |
+| [int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeycode) | - | Obtains the key code from the specified key event. |
+| [const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeytext) | - | Obtains the key value from the specified key event. |
+| [ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeysource) | - | Obtains the type of input device that triggers the specified key event. |
+| [void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)](#oh_arkui_keyevent_stoppropagation) | - | Stops event bubbling in the key event callback. This API applies to scenarios where a child component has already handled a key event in a nested component structure and does not want the parent component to respond to the same key again, for example, stopping the event from bubbling upward when handling custom shortcuts. Unlike **OH_ArkUI_KeyEvent_SetConsumed**, this API controls the bubbling of the event, whereas **OH_ArkUI_KeyEvent_SetConsumed** sets whether the event is consumed by the callback. The two APIs can be used together without affecting each other. You are advised to select the appropriate API based on whether you need to stop bubbling or mark consumption. |
+| [ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeyintensioncode) | - | Obtains the intention code associated with the specified key event. |
+| [uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getunicode) | - | Obtains the Unicode value of the key. Non-space basic Latin characters in the 0x0021-0x007E range are supported. Characters with a value of 0 are not supported. In the case of key combination, this API returns the Unicode value of the key corresponding to the key event. |
+| [void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsumed)](#oh_arkui_keyevent_setconsumed) | - | Sets whether the event is consumed by the callback in the key event callback. This API applies to scenarios such as shortcut key handling and custom key response of a component, where the event needs to be marked as handled to avoid repeated processing. Unlike **OH_ArkUI_KeyEvent_StopPropagation**, this API marks whether the event is consumed by the current callback rather than controlling event bubbling. To stop the event from bubbling upward, use **OH_ArkUI_KeyEvent_StopPropagation**.<br> For the process and specific timing of key event triggering, see [Key Event Data Flow](../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow). |
+| [void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_dispatch) | - | Dispatches the key event to the specified component node. After this API is called, the key event triggers the key event callback registered on the target node. This API can be used in the key event callback to forward the current key event to the specified component node for secondary processing. Unlike **StopPropagation** and **SetConsumed**, **Dispatch** does not affect the processing state of the current event. |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_isnumlockon) | - | Obtains the state of the NumLock key when the specified key event occurs. |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_iscapslockon) | - | Obtains the state of the CapsLock key when the specified key event occurs. |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_isscrolllockon) | - | Obtains the state of the ScrollLock key when the specified key event occurs. |
+| [OH_ArkUI_KeyboardShortcutKey *OH_ArkUI_KeyboardShortcutKey_Create(void)](#oh_arkui_keyboardshortcutkey_create) | - | Creates a keyboard shortcut key object. You can call [OH_ArkUI_KeyboardShortcutKey_Destroy](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkey_destroy) to destroy a keyboard shortcut key object. |
+| [void OH_ArkUI_KeyboardShortcutKey_Destroy(OH_ArkUI_KeyboardShortcutKey ** key)](#oh_arkui_keyboardshortcutkey_destroy) | - | Destroys a keyboard shortcut key object. |
+| [void OH_ArkUI_KeyboardShortcutKey_SetType(OH_ArkUI_KeyboardShortcutKey *key, OH_ArkUI_KeyboardShortcutKeyType type)](#oh_arkui_keyboardshortcutkey_settype) | - | Sets the type of a keyboard shortcut key. |
+| [OH_ArkUI_KeyboardShortcutKeyType OH_ArkUI_KeyboardShortcutKey_GetType(const OH_ArkUI_KeyboardShortcutKey *key)](#oh_arkui_keyboardshortcutkey_gettype) | - | Obtains the type of a keyboard shortcut key. |
+| [void OH_ArkUI_KeyboardShortcutKey_SetCharacter(OH_ArkUI_KeyboardShortcutKey *key, char character)](#oh_arkui_keyboardshortcutkey_setcharacter) | - | Sets the character for a character keyboard shortcut key. The key type must be set to [OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_CHARACTER](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype) before calling this function. |
+| [char OH_ArkUI_KeyboardShortcutKey_GetCharacter(const OH_ArkUI_KeyboardShortcutKey *key)](#oh_arkui_keyboardshortcutkey_getcharacter) | - | Obtains the character of a character keyboard shortcut key. |
+| [void OH_ArkUI_KeyboardShortcutKey_SetFunctionKey(OH_ArkUI_KeyboardShortcutKey *key, OH_ArkUI_KeyboardShortcutFunctionKey functionKey)](#oh_arkui_keyboardshortcutkey_setfunctionkey) | - | Sets the function key for a function keyboard shortcut key. The key type must be set to [OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_FUNCTION_KEY](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype) before calling this function. |
+| [OH_ArkUI_KeyboardShortcutFunctionKey OH_ArkUI_KeyboardShortcutKey_GetFunctionKey(const OH_ArkUI_KeyboardShortcutKey *key)](#oh_arkui_keyboardshortcutkey_getfunctionkey) | - | Obtains the function key of a function keyboard shortcut key. |
+| [typedef void (\*OH_ArkUI_ApplicationShortcutCallback)(const OH_ArkUI_ApplicationShortcutCallbackInfo *info, void *userData)](#oh_arkui_applicationshortcutcallback) | OH_ArkUI_ApplicationShortcutCallback | Defines the callback invoked when an application-level keyboard shortcut is triggered. The callback is invoked on the UI thread of the UI instance where the shortcut is triggered. |
+| [ArkUI_ContextHandle OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext(const OH_ArkUI_ApplicationShortcutCallbackInfo *info)](#oh_arkui_applicationshortcutcallbackinfo_getuicontext) | - | Obtains the UI context of the UI instance where an application-level keyboard shortcut is triggered. |
+| [ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Register(const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys, void *userData, OH_ArkUI_ApplicationShortcutCallback callback, int32_t *registrationId)](#oh_arkui_applicationshortcut_register) | - | Registers an application-level keyboard shortcut. The shortcut takes effect globally in the application. A matching component-level shortcut is triggered before the application-level shortcut. This function must be called on the UI thread. This API does not support Form render and Dynamic render containers.<br> Each registration generates a positive integer registration ID unique within the application, even when the shortcut and callback are identical. Multiple registrations of the same shortcut are retained, and all matching registrations are invoked in increasing registration ID order when the shortcut is triggered. Registration IDs are not reused during the application lifetime. The registration ID is a positive int32 value; if the ID space is exhausted, 0 is returned to indicate failure. Callbacks already collected for the current event can still run after the corresponding registration is unregistered; <b>userData</b> must remain valid until the current event completes. |
+| [ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Unregister(int32_t registrationId)](#oh_arkui_applicationshortcut_unregister) | - | Unregisters the application-level keyboard shortcut binding identified by the registration ID. This function must be called on the UI thread.<br> Only the specified binding is removed. Other bindings are unaffected. Callbacks already collected for the current event can still run. If the ID does not exist or has already been unregistered, this method does nothing and still succeeds. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -317,6 +339,101 @@ Enumerates the intentions corresponding to key events.
 | ARKUI_KEY_INTENTION_VOLUME_DOWN = 108 | Volume down. |
 | ARKUI_KEY_INTENTION_CALL = 200 | Answer a call. |
 | ARKUI_KEY_INTENTION_CAMERA = 300 | Take a photo. |
+
+### OH_ArkUI_KeyboardShortcutModifierKey
+
+```c
+enum OH_ArkUI_KeyboardShortcutModifierKey
+```
+
+**Description**
+
+Enumerates the modifier keys supported by keyboard shortcuts.<br> The values are bit flags and can be combined by using the bitwise OR operator.
+
+<!--Device-OH_ArkUI_KeyboardShortcutModifierKey--><!--Device-OH_ArkUI_KeyboardShortcutModifierKey-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+| Enum item | Description |
+| -- | -- |
+| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_NONE = 0 | No modifier key. This value can be used only with a function key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_CTRL = 1 | Ctrl key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_SHIFT = 2 | Shift key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_ALT = 4 | Alt key.<br>**Since**: 26.1.0 |
+
+### OH_ArkUI_KeyboardShortcutFunctionKey
+
+```c
+enum OH_ArkUI_KeyboardShortcutFunctionKey
+```
+
+**Description**
+
+Enumerates the function keys supported by keyboard shortcuts.
+
+<!--Device-OH_ArkUI_KeyboardShortcutFunctionKey--><!--Device-OH_ArkUI_KeyboardShortcutFunctionKey-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+| Enum item | Description |
+| -- | -- |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ESC = 0 | Esc key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F1 = 1 | F1 key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F2 = 2 | F2 key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F3 = 3 | F3 key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F4 = 4 | F4 key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F5 = 5 | F5 key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F6 = 6 | F6 key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F7 = 7 | F7 key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F8 = 8 | F8 key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F9 = 9 | F9 key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F10 = 10 | F10 key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F11 = 11 | F11 key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_F12 = 12 | F12 key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_TAB = 13 | Tab key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_UP = 14 | Up arrow key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_DOWN = 15 | Down arrow key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_LEFT = 16 | Left arrow key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DPAD_RIGHT = 17 | Right arrow key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_CAPS_LOCK = 18 | CapsLock key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PRINT_SCREEN = 19 | PrintScreen key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_SCROLL_LOCK = 20 | ScrollLock key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAUSE_BREAK = 21 | Pause/Break key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_NUM_LOCK = 22 | NumLock key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_INSERT = 23 | Insert key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_DELETE = 24 | Delete key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_HOME = 25 | Home key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_END = 26 | End key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAGE_UP = 27 | Page Up key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_PAGE_DOWN = 28 | Page Down key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ENTER = 29 | Enter key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_BACKSPACE = 30 | Backspace key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_SPACE = 31 | Space key.<br>**Since**: 26.1.0 |
+
+### OH_ArkUI_KeyboardShortcutKeyType
+
+```c
+enum OH_ArkUI_KeyboardShortcutKeyType
+```
+
+**Description**
+
+Enumerates the types of keys supported by keyboard shortcuts.
+
+<!--Device-OH_ArkUI_KeyboardShortcutKeyType--><!--Device-OH_ArkUI_KeyboardShortcutKeyType-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+| Enum item | Description |
+| -- | -- |
+| OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_CHARACTER = 0 | Character key.<br>**Since**: 26.1.0 |
+| OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_FUNCTION_KEY = 1 | Function key.<br>**Since**: 26.1.0 |
 
 
 ## Function description
@@ -1051,5 +1168,315 @@ Obtains the state of the ScrollLock key when the specified key event occurs.
 | Type | Description |
 | -- | -- |
 | ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
+
+### OH_ArkUI_KeyboardShortcutKey_Create()
+
+```c
+OH_ArkUI_KeyboardShortcutKey *OH_ArkUI_KeyboardShortcutKey_Create(void)
+```
+
+**Description**
+
+Creates a keyboard shortcut key object. You can call [OH_ArkUI_KeyboardShortcutKey_Destroy](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkey_destroy) to destroy a keyboard shortcut key object.
+
+<!--Device-OH_ArkUI_KeyboardShortcutKey *OH_ArkUI_KeyboardShortcutKey_Create(void)--><!--Device-OH_ArkUI_KeyboardShortcutKey *OH_ArkUI_KeyboardShortcutKey_Create(void)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Resource release**: [OH_ArkUI_KeyboardShortcutKey_Destroy](#oh_arkui_keyboardshortcutkey_destroy)
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutKey *](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) | Keyboard shortcut key object. <ul> <li>On success, returns a caller-owned [OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) object that the caller must release with [OH_ArkUI_KeyboardShortcutKey_Destroy](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkey_destroy).</li> <li>Returns <b>nullptr</b> if the operation fails, for example, due to a memory allocation failure.</li> </ul> |
+
+### OH_ArkUI_KeyboardShortcutKey_Destroy()
+
+```c
+void OH_ArkUI_KeyboardShortcutKey_Destroy(OH_ArkUI_KeyboardShortcutKey ** key)
+```
+
+**Description**
+
+Destroys a keyboard shortcut key object.
+
+<!--Device-void OH_ArkUI_KeyboardShortcutKey_Destroy(OH_ArkUI_KeyboardShortcutKey ** key)--><!--Device-void OH_ArkUI_KeyboardShortcutKey_Destroy(OH_ArkUI_KeyboardShortcutKey ** key)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutKey ](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md)** key | [in] Keyboard shortcut key object. |
+
+### OH_ArkUI_KeyboardShortcutKey_SetType()
+
+```c
+void OH_ArkUI_KeyboardShortcutKey_SetType(OH_ArkUI_KeyboardShortcutKey *key, OH_ArkUI_KeyboardShortcutKeyType type)
+```
+
+**Description**
+
+Sets the type of a keyboard shortcut key.
+
+<!--Device-void OH_ArkUI_KeyboardShortcutKey_SetType(OH_ArkUI_KeyboardShortcutKey *key, OH_ArkUI_KeyboardShortcutKeyType type)--><!--Device-void OH_ArkUI_KeyboardShortcutKey_SetType(OH_ArkUI_KeyboardShortcutKey *key, OH_ArkUI_KeyboardShortcutKeyType type)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) *key | [in] Pointer to the keyboard shortcut key object. |
+| [OH_ArkUI_KeyboardShortcutKeyType](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype) type | [in] Key type. |
+
+### OH_ArkUI_KeyboardShortcutKey_GetType()
+
+```c
+OH_ArkUI_KeyboardShortcutKeyType OH_ArkUI_KeyboardShortcutKey_GetType(const OH_ArkUI_KeyboardShortcutKey *key)
+```
+
+**Description**
+
+Obtains the type of a keyboard shortcut key.
+
+<!--Device-OH_ArkUI_KeyboardShortcutKeyType OH_ArkUI_KeyboardShortcutKey_GetType(const OH_ArkUI_KeyboardShortcutKey *key)--><!--Device-OH_ArkUI_KeyboardShortcutKeyType OH_ArkUI_KeyboardShortcutKey_GetType(const OH_ArkUI_KeyboardShortcutKey *key)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) *key | [in] Pointer to the keyboard shortcut key object. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutKeyType](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype) | Key type. <ul> <li>Key type, if the operation is successful.</li> <li>[OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_CHARACTER](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype), if <b>key</b> is <b>nullptr</b>.</li> </ul> |
+
+### OH_ArkUI_KeyboardShortcutKey_SetCharacter()
+
+```c
+void OH_ArkUI_KeyboardShortcutKey_SetCharacter(OH_ArkUI_KeyboardShortcutKey *key, char character)
+```
+
+**Description**
+
+Sets the character for a character keyboard shortcut key. The key type must be set to [OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_CHARACTER](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype) before calling this function.
+
+<!--Device-void OH_ArkUI_KeyboardShortcutKey_SetCharacter(OH_ArkUI_KeyboardShortcutKey *key, char character)--><!--Device-void OH_ArkUI_KeyboardShortcutKey_SetCharacter(OH_ArkUI_KeyboardShortcutKey *key, char character)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) *key | [in] Pointer to the keyboard shortcut key object. |
+| char character | [in] Single character that can be entered through the keyboard. |
+
+### OH_ArkUI_KeyboardShortcutKey_GetCharacter()
+
+```c
+char OH_ArkUI_KeyboardShortcutKey_GetCharacter(const OH_ArkUI_KeyboardShortcutKey *key)
+```
+
+**Description**
+
+Obtains the character of a character keyboard shortcut key.
+
+<!--Device-char OH_ArkUI_KeyboardShortcutKey_GetCharacter(const OH_ArkUI_KeyboardShortcutKey *key)--><!--Device-char OH_ArkUI_KeyboardShortcutKey_GetCharacter(const OH_ArkUI_KeyboardShortcutKey *key)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) *key | [in] Pointer to the keyboard shortcut key object. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| char | Character. <ul> <li>Character, if the operation is successful.</li> <li><b>'\\0'</b>, if <b>key</b> is <b>nullptr</b>.</li> </ul> |
+
+### OH_ArkUI_KeyboardShortcutKey_SetFunctionKey()
+
+```c
+void OH_ArkUI_KeyboardShortcutKey_SetFunctionKey(OH_ArkUI_KeyboardShortcutKey *key, OH_ArkUI_KeyboardShortcutFunctionKey functionKey)
+```
+
+**Description**
+
+Sets the function key for a function keyboard shortcut key. The key type must be set to [OH_ARKUI_KEYBOARD_SHORTCUT_KEY_TYPE_FUNCTION_KEY](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkeytype) before calling this function.
+
+<!--Device-void OH_ArkUI_KeyboardShortcutKey_SetFunctionKey(OH_ArkUI_KeyboardShortcutKey *key, OH_ArkUI_KeyboardShortcutFunctionKey functionKey)--><!--Device-void OH_ArkUI_KeyboardShortcutKey_SetFunctionKey(OH_ArkUI_KeyboardShortcutKey *key, OH_ArkUI_KeyboardShortcutFunctionKey functionKey)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) *key | [in] Pointer to the keyboard shortcut key object. |
+| [OH_ArkUI_KeyboardShortcutFunctionKey](capi-native-key-event-h.md#oh_arkui_keyboardshortcutfunctionkey) functionKey | [in] Function key. |
+
+### OH_ArkUI_KeyboardShortcutKey_GetFunctionKey()
+
+```c
+OH_ArkUI_KeyboardShortcutFunctionKey OH_ArkUI_KeyboardShortcutKey_GetFunctionKey(const OH_ArkUI_KeyboardShortcutKey *key)
+```
+
+**Description**
+
+Obtains the function key of a function keyboard shortcut key.
+
+<!--Device-OH_ArkUI_KeyboardShortcutFunctionKey OH_ArkUI_KeyboardShortcutKey_GetFunctionKey(const OH_ArkUI_KeyboardShortcutKey *key)--><!--Device-OH_ArkUI_KeyboardShortcutFunctionKey OH_ArkUI_KeyboardShortcutKey_GetFunctionKey(const OH_ArkUI_KeyboardShortcutKey *key)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) *key | [in] Pointer to the keyboard shortcut key object. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [OH_ArkUI_KeyboardShortcutFunctionKey](capi-native-key-event-h.md#oh_arkui_keyboardshortcutfunctionkey) | Function key. <ul> <li>Function key, if the operation is successful.</li> <li>[OH_ARKUI_KEYBOARD_SHORTCUT_FUNCTION_KEY_ESC](capi-native-key-event-h.md#oh_arkui_keyboardshortcutfunctionkey), if <b>key</b> is <b>nullptr</b>.</li> </ul> |
+
+### OH_ArkUI_ApplicationShortcutCallback()
+
+```c
+typedef void (*OH_ArkUI_ApplicationShortcutCallback)(const OH_ArkUI_ApplicationShortcutCallbackInfo *info, void *userData)
+```
+
+**Description**
+
+Defines the callback invoked when an application-level keyboard shortcut is triggered. The callback is invoked on the UI thread of the UI instance where the shortcut is triggered.
+
+<!--Device-typedef void (*OH_ArkUI_ApplicationShortcutCallback)(const OH_ArkUI_ApplicationShortcutCallbackInfo *info, void *userData)--><!--Device-typedef void (*OH_ArkUI_ApplicationShortcutCallback)(const OH_ArkUI_ApplicationShortcutCallbackInfo *info, void *userData)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_ArkUI_ApplicationShortcutCallbackInfo](capi-arkui-nativemodule-oh-arkui-applicationshortcutcallbackinfo.md) *info | [in] Pointer to the callback information object for the UI instance where the shortcut is triggered. The value must not be <b>nullptr</b>. Use [OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext](capi-native-key-event-h.md#oh_arkui_applicationshortcutcallbackinfo_getuicontext) to obtain its UI context. The object is valid only during the callback and must not be retained. |
+| void *userData | [in] User-defined data passed when the shortcut is registered. The value is not copied and must remain valid until the shortcut is unregistered. |
+
+### OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext()
+
+```c
+ArkUI_ContextHandle OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext(const OH_ArkUI_ApplicationShortcutCallbackInfo *info)
+```
+
+**Description**
+
+Obtains the UI context of the UI instance where an application-level keyboard shortcut is triggered.
+
+<!--Device-ArkUI_ContextHandle OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext(const OH_ArkUI_ApplicationShortcutCallbackInfo *info)--><!--Device-ArkUI_ContextHandle OH_ArkUI_ApplicationShortcutCallbackInfo_GetUIContext(const OH_ArkUI_ApplicationShortcutCallbackInfo *info)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_ArkUI_ApplicationShortcutCallbackInfo](capi-arkui-nativemodule-oh-arkui-applicationshortcutcallbackinfo.md) *info | [in] Pointer to the callback information object received by [OH_ArkUI_ApplicationShortcutCallback](capi-native-key-event-h.md#oh_arkui_applicationshortcutcallback). The value must not be <b>nullptr</b>. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ContextHandle | UI context. <ul> <li>The UI context of the UI instance where the shortcut is triggered, if the operation is successful.</li> <li><b>nullptr</b>, if <b>info</b> is invalid.</li> </ul> |
+
+### OH_ArkUI_ApplicationShortcut_Register()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Register(const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys, void *userData, OH_ArkUI_ApplicationShortcutCallback callback, int32_t *registrationId)
+```
+
+**Description**
+
+Registers an application-level keyboard shortcut. The shortcut takes effect globally in the application. A matching component-level shortcut is triggered before the application-level shortcut. This function must be called on the UI thread. This API does not support Form render and Dynamic render containers.<br> Each registration generates a positive integer registration ID unique within the application, even when the shortcut and callback are identical. Multiple registrations of the same shortcut are retained, and all matching registrations are invoked in increasing registration ID order when the shortcut is triggered. Registration IDs are not reused during the application lifetime. The registration ID is a positive int32 value; if the ID space is exhausted, 0 is returned to indicate failure. Callbacks already collected for the current event can still run after the corresponding registration is unregistered; <b>userData</b> must remain valid until the current event completes.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Register(const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys, void *userData, OH_ArkUI_ApplicationShortcutCallback callback, int32_t *registrationId)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Register(const OH_ArkUI_KeyboardShortcutKey *key, uint32_t modifierKeys, void *userData, OH_ArkUI_ApplicationShortcutCallback callback, int32_t *registrationId)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [const OH_ArkUI_KeyboardShortcutKey](capi-arkui-nativemodule-oh-arkui-keyboardshortcutkey.md) *key | [in] Pointer to a keyboard shortcut key object created by [OH_ArkUI_KeyboardShortcutKey_Create](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkey_create). The value must not be <b>nullptr</b>. For a character key, the character set through [OH_ArkUI_KeyboardShortcutKey_SetCharacter](capi-native-key-event-h.md#oh_arkui_keyboardshortcutkey_setcharacter) must be a single keyboard-input character. |
+| uint32_t modifierKeys | [in] Modifier key bitmask. Use a bitwise OR combination of values in [OH_ArkUI_KeyboardShortcutModifierKey](capi-native-key-event-h.md#oh_arkui_keyboardshortcutmodifierkey). For a function key, use [OH_ARKUI_KEYBOARD_SHORTCUT_MODIFIER_NONE](capi-native-key-event-h.md#oh_arkui_keyboardshortcutmodifierkey) to register the shortcut without a modifier key. At least one modifier key must be specified for a character key. Only the bits defined in [OH_ArkUI_KeyboardShortcutModifierKey](capi-native-key-event-h.md#oh_arkui_keyboardshortcutmodifierkey) are accepted; if any other bit is set, ARKUI_ERROR_CODE_PARAM_INVALID is returned. |
+| void *userData | [in] User-defined data passed to the callback. The value can be <b>nullptr</b>. The value is not copied and must remain valid until the shortcut is unregistered. |
+| [OH_ArkUI_ApplicationShortcutCallback](capi-native-key-event-h.md#oh_arkui_applicationshortcutcallback) callback | [in] Callback invoked when the shortcut is triggered. The value must not be <b>nullptr</b>. |
+| int32_t *registrationId | [out] Output pointer that receives the registration ID of this shortcut binding. The value must not be <b>nullptr</b>. The ID is written only on success; the output is unchanged on failure. Returns 0 if registration fails. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Result code. <ul> <li>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter is invalid.</li> <li>Returns ARKUI_ERROR_CODE_INTERNAL_ERROR if an internal error occurs, such as ID exhaustion.</li> </ul> |
+
+### OH_ArkUI_ApplicationShortcut_Unregister()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Unregister(int32_t registrationId)
+```
+
+**Description**
+
+Unregisters the application-level keyboard shortcut binding identified by the registration ID. This function must be called on the UI thread.<br> Only the specified binding is removed. Other bindings are unaffected. Callbacks already collected for the current event can still run. If the ID does not exist or has already been unregistered, this method does nothing and still succeeds.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Unregister(int32_t registrationId)--><!--Device-ArkUI_ErrorCode OH_ArkUI_ApplicationShortcut_Unregister(int32_t registrationId)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| int32_t registrationId | [in] Registration ID obtained when registering the shortcut. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation succeeds or the registration ID does not exist. |
 
 

@@ -1,7 +1,7 @@
 # OH_PrivacyProtectInfo
 
 ```c
-struct OH_PrivacyProtectInfo {...}
+typedef struct OH_PrivacyProtectInfo {...} OH_PrivacyProtectInfo
 ```
 
 ## Overview

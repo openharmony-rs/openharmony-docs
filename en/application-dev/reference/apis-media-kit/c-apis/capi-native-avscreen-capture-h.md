@@ -14,7 +14,7 @@ The file declares the APIs used to create an OH_AVScreenCapture instance.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

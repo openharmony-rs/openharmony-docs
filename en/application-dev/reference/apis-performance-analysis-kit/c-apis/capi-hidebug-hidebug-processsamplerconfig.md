@@ -1,7 +1,7 @@
 # HiDebug_ProcessSamplerConfig
 
 ```c
-struct HiDebug_ProcessSamplerConfig {...}
+typedef struct HiDebug_ProcessSamplerConfig {...} HiDebug_ProcessSamplerConfig
 ```
 
 ## Overview

@@ -1,7 +1,7 @@
 # CameraInput_Callbacks
 
 ```c
-struct CameraInput_Callbacks {...}
+typedef struct CameraInput_Callbacks {...} CameraInput_Callbacks
 ```
 
 ## Overview

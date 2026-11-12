@@ -1,7 +1,7 @@
 # ScsiPeripheral_VerifyRequest
 
 ```c
-struct ScsiPeripheral_VerifyRequest {...}
+typedef struct ScsiPeripheral_VerifyRequest {...} ScsiPeripheral_VerifyRequest
 ```
 
 ## Overview

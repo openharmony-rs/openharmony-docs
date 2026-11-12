@@ -14,7 +14,7 @@ This file declares the capabilities for obtaining the character position in a te
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

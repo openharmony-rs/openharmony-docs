@@ -1,7 +1,7 @@
 # ScsiPeripheral_Response
 
 ```c
-struct ScsiPeripheral_Response {...}
+typedef struct ScsiPeripheral_Response {...} ScsiPeripheral_Response
 ```
 
 ## 概述

@@ -1,7 +1,7 @@
 # Http_HeaderEntry
 
 ```c
-struct Http_HeaderEntry {...}
+typedef struct Http_HeaderEntry {...} Http_HeaderEntry
 ```
 
 ## 概述
@@ -25,7 +25,7 @@ struct Http_HeaderEntry {...}
 | 名称 | 描述 |
 | -- | -- |
 | char *key | 请求或者响应的标头中的键。 |
-| Http_HeaderValue *value | Value of the key in the request or response header. For details, see [Http_HeaderValue](capi-netstack-http-headervalue.md). |
-| struct Http_HeaderEntry *next | 链式存储。指向下一个Http_HeaderEntry。 |
+| [Http_HeaderValue](capi-netstack-http-headervalue.md) *value | Value of the key in the request or response header. For details, see [Http_HeaderValue](capi-netstack-http-headervalue.md). |
+| [struct Http_HeaderEntry](capi-netstack-http-headerentry.md) *next | 链式存储。指向下一个Http_HeaderEntry。 |
 
 

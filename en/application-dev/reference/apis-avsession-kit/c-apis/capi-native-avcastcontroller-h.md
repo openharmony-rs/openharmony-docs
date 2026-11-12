@@ -14,13 +14,13 @@ Declare avcastcontroller interface.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md) | OH_AVCastController | OH_AVCastController object<br> A pointer can be created using the [OH_AVSession_CreateAVCastController](capi-native-avsession-h.md#oh_avsession_createavcastcontroller) method. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

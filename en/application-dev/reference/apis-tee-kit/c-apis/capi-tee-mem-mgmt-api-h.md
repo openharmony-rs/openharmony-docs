@@ -14,13 +14,13 @@ Provides APIs for memory management.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | Description |
 | -- | -- |
 | [MALLOC_HINT](#malloc_hint) | Defines the enumeration values for memory allocation hints. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
@@ -33,7 +33,7 @@ Provides APIs for memory management.
 | TEE_MEMORY_ACCESS_WRITE     0x00000002 | Grants write access to memory.<br>**Since**: 20 |
 | TEE_MEMORY_ACCESS_ANY_OWNER 0x00000004 | Grants access to memory by any owner.<br>**Since**: 20 |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -67,15 +67,15 @@ Defines the enumeration values for memory allocation hints.
 
 | Enum item | Description |
 | -- | -- |
-| ZERO           = 0 | Uninitialized buffer. |
-| NOT_ZERO       = 1 | Non-zero initialized buffer. |
-| ALIGN_004      = 0x80000002 | 4-byte aligned buffer. |
-| ALIGN_008      = 0x80000003 | 8-byte aligned buffer. |
-| ALIGN_016      = 0x80000004 | 16-byte aligned buffer. |
-| ALIGN_032      = 0x80000005 | 32-byte aligned buffer. |
-| ALIGN_064      = 0x80000006 | 64-byte aligned buffer. |
-| ALIGN_128      = 0x80000007 | 128-byte aligned buffer. |
-| ALIGN_256      = 0x80000008 | 256-byte aligned buffer. |
+| ZERO = 0 | Uninitialized buffer. |
+| NOT_ZERO = 1 | Non-zero initialized buffer. |
+| ALIGN_004 = 0x80000002 | 4-byte aligned buffer. |
+| ALIGN_008 = 0x80000003 | 8-byte aligned buffer. |
+| ALIGN_016 = 0x80000004 | 16-byte aligned buffer. |
+| ALIGN_032 = 0x80000005 | 32-byte aligned buffer. |
+| ALIGN_064 = 0x80000006 | 64-byte aligned buffer. |
+| ALIGN_128 = 0x80000007 | 128-byte aligned buffer. |
+| ALIGN_256 = 0x80000008 | 256-byte aligned buffer. |
 | ALIGN_004_ZERO = 0x80000012 | 4-byte aligned buffer initialized to zero. |
 | ALIGN_008_ZERO = 0x80000013 | 8-byte aligned buffer initialized to zero. |
 | ALIGN_016_ZERO = 0x80000014 | 16-byte aligned buffer initialized to zero. |

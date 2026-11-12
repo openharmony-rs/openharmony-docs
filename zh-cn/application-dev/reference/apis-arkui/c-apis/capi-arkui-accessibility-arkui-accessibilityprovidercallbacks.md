@@ -1,7 +1,7 @@
 # ArkUI_AccessibilityProviderCallbacks
 
 ```c
-struct ArkUI_AccessibilityProviderCallbacks {...}
+typedef struct ArkUI_AccessibilityProviderCallbacks {...} ArkUI_AccessibilityProviderCallbacks
 ```
 
 ## 概述

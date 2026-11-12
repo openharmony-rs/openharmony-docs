@@ -16,13 +16,13 @@ Provides methods for creating, destroying, reading, and writing private data obj
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecommand.md) | InputMethod_PrivateCommand | Represents the private data exchanged between the text box and the input method application. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

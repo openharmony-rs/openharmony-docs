@@ -1,7 +1,7 @@
 # VkMemoryGetNativeBufferInfoOHOS
 
 ```c
-struct VkMemoryGetNativeBufferInfoOHOS {...}
+typedef struct VkMemoryGetNativeBufferInfoOHOS {...} VkMemoryGetNativeBufferInfoOHOS
 ```
 
 ## Overview

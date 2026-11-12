@@ -14,7 +14,7 @@ The file declares the capability to take screenshots.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

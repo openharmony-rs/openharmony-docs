@@ -1,7 +1,7 @@
 # OH_AudioSession_StateChangedEvent
 
 ```c
-struct OH_AudioSession_StateChangedEvent {...}
+typedef struct OH_AudioSession_StateChangedEvent {...} OH_AudioSession_StateChangedEvent
 ```
 
 ## 概述

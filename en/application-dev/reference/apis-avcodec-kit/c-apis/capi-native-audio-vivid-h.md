@@ -16,22 +16,22 @@ The file declares the functions and enums related to Audio Vivid.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_CartesianPosition](capi-core-oh-cartesianposition.md) | - | Represents a position in Cartesian coordinates.<br> Cartesian coordinates use x, y, and z axes to define a position in three-dimensional space. |
-| [OH_PolarPosition](capi-core-oh-polarposition.md) | - | Represents a position in polar (spherical) coordinates.<br> Polar coordinates use azimuth, elevation, and distance to define a position in three-dimensional space. |
-| [OH_AudioObjectPosition](capi-core-oh-audioobjectposition.md) | - | Represents the position of an audio object in three-dimensional space.<br> The position can be expressed in either Cartesian or polar coordinates. |
+| [OH_CartesianPosition](capi-core-oh-cartesianposition.md) | OH_CartesianPosition | Represents a position in Cartesian coordinates.<br> Cartesian coordinates use x, y, and z axes to define a position in three-dimensional space. |
+| [OH_PolarPosition](capi-core-oh-polarposition.md) | OH_PolarPosition | Represents a position in polar (spherical) coordinates.<br> Polar coordinates use azimuth, elevation, and distance to define a position in three-dimensional space. |
+| [OH_AudioObjectPosition](capi-core-oh-audioobjectposition.md) | OH_AudioObjectPosition | Represents the position of an audio object in three-dimensional space.<br> The position can be expressed in either Cartesian or polar coordinates. |
 | [OH_AudioVividMetaBuilderStruct](capi-core-oh-audiovividmetabuilderstruct.md) | OH_AudioVividMetaBuilder | Forward declaration of OH_AudioVividMetaBuilder. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AudioVividSignalFormat](#oh_audiovividsignalformat) | OH_AudioVividSignalFormat | Enumerates the signal formats of the Audio Vivid encoder. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -129,7 +129,7 @@ Updates the position of the audio object when the Audio Vivid signal format is [
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**. |
-| int32_t objectIndex | Index of the audio object to be updated, starting from 0. The value cannot be greater than [OH_MD_KEY_AUDIO_OBJECT_NUMBER](capi-native-avcodec-base-h.md#变量) set in the **format** parameter passed to [OH_AudioVividMetaBuilder_Create](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_create) for creating the builder. |
+| int32_t objectIndex | Index of the audio object to be updated, starting from 0. The value cannot be greater than [OH_MD_KEY_AUDIO_OBJECT_NUMBER](capi-native-avcodec-base-h.md#variables) set in the **format** parameter passed to [OH_AudioVividMetaBuilder_Create](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_create) for creating the builder. |
 | [OH_AudioObjectPosition](capi-core-oh-audioobjectposition.md) pos | New position of the audio object source. |
 
 **Returns**:
@@ -159,7 +159,7 @@ Updates the linear gain of audio object rendering when the Audio Vivid signal fo
 | Parameter | Description |
 | -- | -- |
 | [OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**. |
-| int32_t objectIndex | Index of the audio object to be updated, starting from 0. The value cannot be greater than [OH_MD_KEY_AUDIO_OBJECT_NUMBER](capi-native-avcodec-base-h.md#变量) set in the **format** parameter passed to [OH_AudioVividMetaBuilder_Create](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_create) for creating the builder. |
+| int32_t objectIndex | Index of the audio object to be updated, starting from 0. The value cannot be greater than [OH_MD_KEY_AUDIO_OBJECT_NUMBER](capi-native-avcodec-base-h.md#variables) set in the **format** parameter passed to [OH_AudioVividMetaBuilder_Create](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_create) for creating the builder. |
 | float gain | Linear gain applied during object rendering. The value range is [0.0, 6.0], where **0.0** indicates silence, and **1.0** indicates no change. This parameter is optional. If it is not set, no gain is applied. |
 
 **Returns**:

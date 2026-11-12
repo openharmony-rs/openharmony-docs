@@ -14,7 +14,7 @@ Defines the functions for using native fence.
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

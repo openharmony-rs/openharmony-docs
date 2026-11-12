@@ -14,14 +14,14 @@ The file declares the preview output concepts.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [PreviewOutput_Callbacks](capi-oh-camera-previewoutput-callbacks.md) | - | The struct describes the callbacks related to preview output. |
+| [PreviewOutput_Callbacks](capi-oh-camera-previewoutput-callbacks.md) | PreviewOutput_Callbacks | The struct describes the callbacks related to preview output. |
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md) | Camera_PreviewOutput | The struct describes the preview output object. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

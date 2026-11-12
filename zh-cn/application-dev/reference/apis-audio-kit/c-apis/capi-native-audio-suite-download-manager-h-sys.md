@@ -20,9 +20,9 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioSuite_DownloadStatusInfo（系统接口）](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) | - | 定义下载状态信息结构体。<br>**系统接口：** 此接口为系统接口。 |
-| [OH_AudioSuite_DownloadStatusInfoArray（系统接口）](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) | - | 定义下载状态信息数组结构体。<br>**系统接口：** 此接口为系统接口。 |
-| [OH_AudioSuite_FeatureVersionInfo（系统接口）](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md) | - | 定义特性版本信息结构体。<br>**系统接口：** 此接口为系统接口。 |
+| [OH_AudioSuite_DownloadStatusInfo（系统接口）](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) | OH_AudioSuite_DownloadStatusInfo | 定义下载状态信息结构体。<br>**系统接口：** 此接口为系统接口。 |
+| [OH_AudioSuite_DownloadStatusInfoArray（系统接口）](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) | OH_AudioSuite_DownloadStatusInfoArray | 定义下载状态信息数组结构体。<br>**系统接口：** 此接口为系统接口。 |
+| [OH_AudioSuite_FeatureVersionInfo（系统接口）](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md) | OH_AudioSuite_FeatureVersionInfo | 定义特性版本信息结构体。<br>**系统接口：** 此接口为系统接口。 |
 | [OH_AudioSuite_DownloadManagerStruct（系统接口）](capi-ohaudiosuite-oh-audiosuite-downloadmanagerstruct-sys.md) | OH_AudioSuite_DownloadManager | 声明音频下载管理器。 音频下载管理器的句柄用于下载相关功能。<br>**系统接口：** 此接口为系统接口。 |
 
 ### 函数

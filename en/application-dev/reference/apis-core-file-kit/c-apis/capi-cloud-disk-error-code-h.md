@@ -14,7 +14,7 @@ This file defines the error codes for the cloud disk management module.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

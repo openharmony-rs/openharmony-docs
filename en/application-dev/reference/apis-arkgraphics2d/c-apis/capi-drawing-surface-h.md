@@ -14,7 +14,7 @@ This file declares the functions related to the surface in the drawing module, i
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

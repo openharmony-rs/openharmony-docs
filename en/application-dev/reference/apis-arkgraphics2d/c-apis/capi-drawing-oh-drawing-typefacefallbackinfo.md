@@ -24,7 +24,7 @@ Defines the typeface fallback info structure for a run of glyphs that share the 
 
 | Name | Description |
 | -- | -- |
-| OH_Drawing_Typeface *typeface | Pointer to the matched typeface.<br>**Since**: 26.0.1 |
+| [OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md) *typeface | Pointer to the matched typeface.<br>**Since**: 26.0.1 |
 | uint16_t *glyphIds | Pointer to the glyph ID array.<br>**Since**: 26.0.1 |
 | uint32_t glyphCount | Number of glyph IDs in the glyphIds array.<br>**Since**: 26.0.1 |
 

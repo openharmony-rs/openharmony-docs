@@ -14,15 +14,15 @@ Declares the common location attributes.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [Location_BasicInfo](capi-location-location-basicinfo.md) | - | Defines the location information. |
+| [Location_BasicInfo](capi-location-location-basicinfo.md) | Location_BasicInfo | Defines the location information. |
 | [Location_Info](capi-location-location-info.md) | Location_Info | Define the structure of location information. |
 | [Location_RequestConfig](capi-location-location-requestconfig.md) | Location_RequestConfig | Define the structure of location request parameters. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -31,7 +31,7 @@ Declares the common location attributes.
 | [Location_PowerConsumptionScene](#location_powerconsumptionscene) | Location_PowerConsumptionScene | Enumerates the power consumption scenario. |
 | [Location_SourceType](#location_sourcetype) | Location_SourceType | Enumerates the source type of location. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

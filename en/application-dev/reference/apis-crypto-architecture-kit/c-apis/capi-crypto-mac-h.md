@@ -16,19 +16,19 @@ Defines the message authentication code interfaces.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_CryptoMac](capi-cryptomacapi-oh-cryptomac.md) | OH_CryptoMac | MAC structure, representing a MAC context. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [CryptoMac_ParamType](#cryptomac_paramtype) | CryptoMac_ParamType | Defines MAC algorithm parameter types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

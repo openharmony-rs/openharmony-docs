@@ -14,7 +14,7 @@ Provides immersive material types and API declarations for ArkUI on the native s
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -23,20 +23,20 @@ Provides immersive material types and API declarations for ArkUI on the native s
 | [ArkUI_LightEffectOptions](capi-arkui-nativemodule-arkui-lighteffectoptions.md) | ArkUI_LightEffectOptions | Defines a light sensing interaction effect configuration object for immersive materials, which is used to configure the light sensing response effect generated when users interact with immersive materials. For details about the design logic, see [native_material.h](capi-native-material-h.md). An immersive material is a visual material style with a sense of depth and layering, and the light sensing interaction effect refers to the light and shadow visual feedback generated when users interact with components. After creation, the configuration object must be set to the immersive material object through [OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect) to take effect. |
 | [ArkUI_LightEffectOptions*](capi-arkui-nativemodule-arkui-lighteffectoptions8h.md) | ArkUI_LightEffectOptionsHandle | Defines the pointer to the light effect options. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_ImmersiveStyle](#arkui_immersivestyle) | ArkUI_ImmersiveStyle | Enumerates the immersive material styles. Different styles correspond to different material parameters, which affect the thickness of the material. |
 | [ArkUI_MaterialLevel](#arkui_materiallevel) | ArkUI_MaterialLevel | Enumerates the material levels, which indicate the computing power level of the device. Use [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel) to obtain the material level of the current device. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | ARKUI_NATIVE_MATERIAL_H | Provides immersive material types and API declarations for ArkUI on the native side, to implement immersive UI effects such as the blurred background in semi-transparent mode and light sensing interaction feedback.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -58,7 +58,7 @@ Provides immersive material types and API declarations for ArkUI on the native s
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect(ArkUI_ImmersiveMaterialHandle material, const ArkUI_LightEffectOptionsHandle options)](#oh_arkui_nativemodule_immersivematerial_setlighteffect) | Sets the light sensing interaction effect for an immersive material object, that is, the light reflection on the material surface that dynamically changes with user interaction. This parameter takes effect for materials of all levels. |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetLightEffectColor(ArkUI_ImmersiveMaterialHandle material, uint32_t* color)](#oh_arkui_nativemodule_immersivematerial_getlighteffectcolor) | Obtains the color of the light sensing interaction effect for an immersive material object. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

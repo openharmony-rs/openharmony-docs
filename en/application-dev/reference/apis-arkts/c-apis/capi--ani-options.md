@@ -13,6 +13,6 @@
 | Name | Description |
 | -- | -- |
 | size_t nr_options |  |
-| const ani_option *options |  |
+| [const ani_option](capi--ani-option.md) *options |  |
 
 

@@ -14,7 +14,7 @@ Declares MIDI related interfaces.<br> MIDI is a technical standard that enables 
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

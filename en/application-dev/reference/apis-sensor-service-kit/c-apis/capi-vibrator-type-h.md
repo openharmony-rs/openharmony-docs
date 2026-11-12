@@ -14,14 +14,14 @@ Declares the APIs for controlling vibration. This module supports multiple vibra
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) | The **Vibrator_Attribute** struct is used to describe the attributes of the vibrator. You can use this struct to specify the vibrator ID and vibration scenario. For details about the application scenarios and implementation mechanism, see the Vibrator module documentation. |
-| [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md) | Defines the vibration file description. This method is used to describe the file information of a custom vibration pattern. You can use a custom vibration file to implement precise vibration control. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) | Vibrator_Attribute | The **Vibrator_Attribute** struct is used to describe the attributes of the vibrator. You can use this struct to specify the vibrator ID and vibration scenario. For details about the application scenarios and implementation mechanism, see the Vibrator module documentation. |
+| [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md) | Vibrator_FileDescription | Defines the vibration file description. This method is used to describe the file information of a custom vibration pattern. You can use a custom vibration file to implement precise vibration control. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -33,7 +33,7 @@ Declares the APIs for controlling vibration. This module supports multiple vibra
 ### Vibrator_ErrorCode
 
 ```c
-enum Vibrator_ErrorCode
+enum Vibrator_ErrorCode : int32_t
 ```
 
 **Description**
@@ -80,5 +80,6 @@ Enumerates the vibration priorities in different scenarios. A vibration with a h
 | VIBRATOR_USAGE_MEDIA = 6 | Media. Choose this option in media app scenarios such as music and videos. The vibration is synchronized * with the media content to enhance the immersive experience. |
 | VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | Physical feedback. Choose this option in scenarios that require physical feedback, such as games and * simulations. It provides physical interaction experiences such as physical key feedback and tactile force * feedback. The vibration mode can be customized to simulate real touch sensations. |
 | VIBRATOR_USAGE_SIMULATED_REALITY = 8 | Simulated reality. Choose this option for tactile feedback in immersive scenarios such as VR/AR. The * vibration intensity and mode are precisely controllable to provide realistic environmental feedback. |
+| VIBRATOR_USAGE_MAX |  |
 
 

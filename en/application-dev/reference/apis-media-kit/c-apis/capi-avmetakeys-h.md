@@ -14,7 +14,7 @@ Defines audio and video metadata keys.
 
 ## Summary
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

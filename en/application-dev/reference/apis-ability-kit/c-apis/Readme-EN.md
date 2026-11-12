@@ -23,6 +23,7 @@
     - [native_ability_wrapper.h](capi-native-ability-wrapper-h.md)
     - [modular_object_extension_context.h](capi-modular-object-extension-context-h.md)
     - [child_process_info.h](capi-child-process-info-h.md)
+    - [app_memory_optimizer.h](capi-app-memory-optimizer-h.md)
     - [ability_resource_info.h](capi-ability-resource-info-h.md)
     - [native_interface_bundle.h](capi-native-interface-bundle-h.md)
     - [bundle_manager_common.h](capi-bundle-manager-common-h.md)

@@ -14,7 +14,7 @@ Provides archive APIs.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -25,7 +25,7 @@ Provides archive APIs.
 | [ArchiveStreamWriteCtx](capi-archive-archivestreamwritectx.md) | *OH_Archive_StreamWrite_Ctx | Archive streamWrite context structure. |
 | [ArchiveStreamReadCtx](capi-archive-archivestreamreadctx.md) | *OH_Archive_StreamRead_Ctx | Archive streamRead context structure. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -35,13 +35,13 @@ Provides archive APIs.
 | [OH_Archive_ProgressType](#oh_archive_progresstype) | OH_Archive_ProgressType | Archive progress type enumeration. |
 | [OH_Archive_StreamChecksumAlg](#oh_archive_streamchecksumalg) | OH_Archive_StreamChecksumAlg | Hash algorithm used for checksum. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | FILE_MANAGEMENT_ARCHIVE_OH_ARCHIVE_H | Provides archive APIs.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.FileManagement.File.FileIO |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

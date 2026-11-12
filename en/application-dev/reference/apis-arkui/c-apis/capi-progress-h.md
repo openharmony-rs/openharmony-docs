@@ -16,19 +16,19 @@ Defines enumerations and APIs related to **Progress**, supporting multiple progr
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md) | ArkUI_ProgressLinearStyleOption | Defines the style option of a linear progress indicator. It is applicable to scenarios where the display style of a linear progress indicator needs to be customized. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_ProgressType](#arkui_progresstype) | ArkUI_ProgressType | Enumerates progress indicator types. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

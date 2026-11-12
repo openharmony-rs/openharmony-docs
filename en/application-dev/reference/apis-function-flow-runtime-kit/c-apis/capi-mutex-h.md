@@ -14,7 +14,7 @@ Declares the mutex interfaces in C, which provide mutual exclusion between concu
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

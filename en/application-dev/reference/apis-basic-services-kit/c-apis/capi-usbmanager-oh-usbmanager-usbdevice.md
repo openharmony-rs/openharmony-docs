@@ -1,7 +1,7 @@
 # OH_UsbManager_UsbDevice
 
 ```c
-struct OH_UsbManager_UsbDevice {...}
+typedef struct OH_UsbManager_UsbDevice {...} OH_UsbManager_UsbDevice
 ```
 
 ## Overview
@@ -35,7 +35,7 @@ Defines a flat representation of a USB device.
 | uint8_t clazz | Device class.<br>**Since**: 26.0.1 |
 | uint8_t subClass | Device subclass.<br>**Since**: 26.0.1 |
 | uint8_t protocol | Device protocol.<br>**Since**: 26.0.1 |
-| OH_UsbManager_UsbConfig *configs | Device configuration descriptor information.<br>**Since**: 26.0.1 |
+| [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md) *configs | Device configuration descriptor information.<br>**Since**: 26.0.1 |
 | uint32_t configCount | Number of configurations in the device.<br>**Since**: 26.0.1 |
 
 

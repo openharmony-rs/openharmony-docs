@@ -14,20 +14,20 @@ Provides database transaction related functions and enumerations.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md) | OH_RDB_TransOptions | Define the OH_RDB_TransOptions structure type. |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) | OH_Rdb_Transaction | Define the OH_Rdb_Transaction structure type. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_RDB_TransType](#oh_rdb_transtype) | OH_RDB_TransType | Indicates relation database transaction type. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

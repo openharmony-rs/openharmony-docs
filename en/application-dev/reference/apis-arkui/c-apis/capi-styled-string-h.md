@@ -16,7 +16,7 @@ Defines text styles and text layout managers for the component whose [ArkUI_Node
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -39,7 +39,7 @@ Defines text styles and text layout managers for the component whose [ArkUI_Node
 | [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md) | OH_ArkUI_LineSpacingStyle | Defines a line spacing style, which is used to set the spacing between text lines to improve text readability and visual effect. It applies to scenarios that require fine-grained control over the line spacing of multi-line text layout, such as e-book readers, news and information applications, and editors for long documents.<br> Call [OH_ArkUI_LineSpacingStyle_Create](capi-styled-string-h.md#oh_arkui_linespacingstyle_create) to create a line spacing style object. The default line spacing value is <b>0</b>, and whether the line spacing takes effect only between lines defaults to <b>false</b>.<br> Call [OH_ArkUI_LineSpacingStyle_Destroy](capi-styled-string-h.md#oh_arkui_linespacingstyle_destroy) to destroy the line spacing style object.<br> After the object is created, call [OH_ArkUI_LineSpacingStyle_SetLineSpacing](capi-styled-string-h.md#oh_arkui_linespacingstyle_setlinespacing) to set the line spacing value. For details about the value range and constraints, see the description of this API.<br> Call [OH_ArkUI_LineSpacingStyle_SetOnlyBetweenLines](capi-styled-string-h.md#oh_arkui_linespacingstyle_setonlybetweenlines) to set whether the line spacing takes effect only between lines. For details about the value principle, see the description of this API. |
 | [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md) | ArkUI_TextLayoutManager | Defines a text layout manager object used to lay out text. It is suitable for scenarios that require precise control over text display and layout effects, helping you implement custom text layout. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -47,7 +47,7 @@ Defines text styles and text layout managers for the component whose [ArkUI_Node
 | [OH_ArkUI_SuperscriptStyle](#oh_arkui_superscriptstyle) | OH_ArkUI_SuperscriptStyle | Enumerates the text superscript and subscript styles. |
 | [OH_ArkUI_TextEncoding](#oh_arkui_textencoding) | OH_ArkUI_TextEncoding | Enumerates the text encoding types supported by ArkUI text layout query APIs. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

@@ -14,19 +14,19 @@ Provides the data type of asset.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) | Data_Asset | Define the Data_Asset structure type.<br> Provides information of an asset. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [Data_AssetStatus](#data_assetstatus) | Data_AssetStatus | Describes the status of asset. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

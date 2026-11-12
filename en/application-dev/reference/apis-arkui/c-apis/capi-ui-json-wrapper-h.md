@@ -16,19 +16,19 @@ Declares the shared JSON data object for APIs such as UI perception and control.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md) | OH_ArkUI_NativeModule_UIJsonWrapper | Defines an opaque, immutable JSON data object.<br> The object holds a JSON string. It is used both to carry data delivered by the framework (UI sensing) and to carry commands injected by the application (UI control). The JSON object must contain a top-level schemaVersion field for version control and future compatibility. This requirement applies both to JSON supplied by the application and to JSON returned or delivered through callbacks by the framework, including results with no collected content.<br> The object is not reference-counted. Copying its pointer creates a borrowed alias, not an independent object or an additional ownership claim. The owner must destroy the object exactly once. Destruction invalidates all aliases and data pointers; do not use or destroy them again. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_ArkUI_NativeModule_UIJsonFormat](#oh_arkui_nativemodule_uijsonformat) | OH_ArkUI_NativeModule_UIJsonFormat | Enumerated type of the JSON output format. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

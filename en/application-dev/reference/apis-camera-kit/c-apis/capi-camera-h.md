@@ -14,41 +14,41 @@ Defines the basic APIs of the camera.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [Camera_Size](capi-oh-camera-camera-size.md) | - | The struct describes the parameters related to the size. |
-| [Camera_Profile](capi-oh-camera-camera-profile.md) | - | The struct describes the profile of a camera stream. |
-| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md) | - | The struct describes the frame rate range. |
-| [Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md) | - | The struct describes the video profile. |
-| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md) | - | The struct describes the camera output capability. |
-| [Camera_Device](capi-oh-camera-camera-device.md) | - | The struct describes the camera device. |
-| [Camera_StatusInfo](capi-oh-camera-camera-statusinfo.md) | - | The struct describes the camera status information. |
-| [Camera_Point](capi-oh-camera-camera-point.md) | - | The struct describes the parameters related to a point. |
-| [Camera_Location](capi-oh-camera-camera-location.md) | - | The struct describes the location where a photo is taken. |
-| [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | - | The struct describes the parameters related to photo capture. |
-| [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | - | The struct describes the frame shutter information. |
-| [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | - | The struct describes the capture end information. |
-| [Camera_Rect](capi-oh-camera-camera-rect.md) | - | The struct describes a rectangle. The coordinate system for the returned detection points is based on the landscape device orientation, with the charging port on the right. In this coordinate system, the top-left corner is (0, 0), and the bottom-right corner corresponds to the pixel dimensions of the camera preview output stream. All member values are integer pixel values. Here, **topLeftX** and **topLeftY** represent the coordinates of the top-left corner of the rectangle, whereas **width** and **height** represent the width and height of the rectangle, respectively. |
-| [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md) | - | The struct describes the camera metadata. |
-| [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md) | - | The struct describes the flashlight status information. |
-| [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md) | - | The struct describes the smooth zoom information. |
-| [Camera_CaptureStartInfo](capi-oh-camera-camera-capturestartinfo.md) | - | The struct describes the capture start information. |
-| [Camera_FrameShutterEndInfo](capi-oh-camera-camera-frameshutterendinfo.md) | - | The struct describes the frame shutter end information during capture. |
-| [Camera_FoldStatusInfo](capi-oh-camera-camera-foldstatusinfo.md) | - | The struct describes the fold status information of the camera. |
-| [Camera_AutoDeviceSwitchStatusInfo](capi-oh-camera-camera-autodeviceswitchstatusinfo.md) | - | Auto device switch status info. |
-| [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | - | Concurrency capability infos. |
-| [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | - | The struct describes the effect status information of a camera controller. |
-| [Camera_DeviceQueryInfo](capi-oh-camera-camera-devicequeryinfo.md) | - | Camera device query information. |
-| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | - | Provides the check result for whether a camera lens is blocked or dirty. |
-| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) | - | Describes the zoom range configuration. |
-| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | - | Describes the physical aperture configuration. |
-| [OH_Camera_ZoomPointInfo](capi-oh-camera-oh-camera-zoompointinfo.md) | - | Describes the zoom point info. |
-| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md) | - | Describes the camera rect ext. |
+| [Camera_Size](capi-oh-camera-camera-size.md) | Camera_Size | The struct describes the parameters related to the size. |
+| [Camera_Profile](capi-oh-camera-camera-profile.md) | Camera_Profile | The struct describes the profile of a camera stream. |
+| [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md) | Camera_FrameRateRange | The struct describes the frame rate range. |
+| [Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md) | Camera_VideoProfile | The struct describes the video profile. |
+| [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md) | Camera_OutputCapability | The struct describes the camera output capability. |
+| [Camera_Device](capi-oh-camera-camera-device.md) | Camera_Device | The struct describes the camera device. |
+| [Camera_StatusInfo](capi-oh-camera-camera-statusinfo.md) | Camera_StatusInfo | The struct describes the camera status information. |
+| [Camera_Point](capi-oh-camera-camera-point.md) | Camera_Point | The struct describes the parameters related to a point. |
+| [Camera_Location](capi-oh-camera-camera-location.md) | Camera_Location | The struct describes the location where a photo is taken. |
+| [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | Camera_PhotoCaptureSetting | The struct describes the parameters related to photo capture. |
+| [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | Camera_FrameShutterInfo | The struct describes the frame shutter information. |
+| [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | Camera_CaptureEndInfo | The struct describes the capture end information. |
+| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | The struct describes a rectangle. The coordinate system for the returned detection points is based on the landscape device orientation, with the charging port on the right. In this coordinate system, the top-left corner is (0, 0), and the bottom-right corner corresponds to the pixel dimensions of the camera preview output stream. All member values are integer pixel values. Here, **topLeftX** and **topLeftY** represent the coordinates of the top-left corner of the rectangle, whereas **width** and **height** represent the width and height of the rectangle, respectively. |
+| [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md) | Camera_MetadataObject | The struct describes the camera metadata. |
+| [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md) | Camera_TorchStatusInfo | The struct describes the flashlight status information. |
+| [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md) | Camera_SmoothZoomInfo | The struct describes the smooth zoom information. |
+| [Camera_CaptureStartInfo](capi-oh-camera-camera-capturestartinfo.md) | Camera_CaptureStartInfo | The struct describes the capture start information. |
+| [Camera_FrameShutterEndInfo](capi-oh-camera-camera-frameshutterendinfo.md) | Camera_FrameShutterEndInfo | The struct describes the frame shutter end information during capture. |
+| [Camera_FoldStatusInfo](capi-oh-camera-camera-foldstatusinfo.md) | Camera_FoldStatusInfo | The struct describes the fold status information of the camera. |
+| [Camera_AutoDeviceSwitchStatusInfo](capi-oh-camera-camera-autodeviceswitchstatusinfo.md) | Camera_AutoDeviceSwitchStatusInfo | Auto device switch status info. |
+| [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | Camera_ConcurrentInfo | Concurrency capability infos. |
+| [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | Camera_ControlCenterStatusInfo | The struct describes the effect status information of a camera controller. |
+| [Camera_DeviceQueryInfo](capi-oh-camera-camera-devicequeryinfo.md) | Camera_DeviceQueryInfo | Camera device query information. |
+| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | Camera_OcclusionDetectionResult | Provides the check result for whether a camera lens is blocked or dirty. |
+| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) | OH_Camera_ZoomRange | Describes the zoom range configuration. |
+| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | OH_Camera_PhysicalAperture | Describes the physical aperture configuration. |
+| [OH_Camera_ZoomPointInfo](capi-oh-camera-oh-camera-zoompointinfo.md) | OH_Camera_ZoomPointInfo | Describes the zoom point info. |
+| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md) | OH_Camera_Rect_Ext | Describes the camera rect ext. |
 | [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | The struct describes the camera manager. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -89,7 +89,7 @@ Defines the basic APIs of the camera.
 | [OH_Camera_OISAxes](#oh_camera_oisaxes) | OH_Camera_OISAxes | Enum for OIS (Optical Image Stabilization) axes. |
 | [OH_Camera_MetadataObjectEmotion](#oh_camera_metadataobjectemotion) | OH_Camera_MetadataObjectEmotion | Enum for metadata object emotion. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -815,7 +815,7 @@ Enum for camera concurrent type.
 
 | Enum item | Description |
 | -- | -- |
-| CAMERA_CONCURRENT_TYPE_LIMITED_CAPABILITY  = 0 | Cameras concurrency with limited capability. |
+| CAMERA_CONCURRENT_TYPE_LIMITED_CAPABILITY = 0 | Cameras concurrency with limited capability. |
 | CAMERA_CONCURRENT_TYPE_FULL_CAPABILITY = 1 | Cameras concurrenct with full capability. |
 
 ### Camera_SystemPressureLevel

@@ -14,7 +14,7 @@ The file declares the error codes of the AbilityRuntime module.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -76,5 +76,6 @@ Enumerates the error codes of the AbilityRuntime module.
 | ABILITY_RUNTIME_ERROR_CODE_ABILITY_WRAPPER_INVALID = 16000177 | The native ability wrapper is invalid or incomplete.<br>**Since**: 26.0.0 |
 | ABILITY_RUNTIME_ERROR_CODE_METADATA_INVALID = 16000178 | The type library metadata is invalid, for example, missing or duplicate main interface.<br>**Since**: 26.0.0 |
 | ABILITY_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL = 16000179 | The buffer is too small.<br>**Since**: 26.0.1 |
+| ABILITY_RUNTIME_ERROR_CODE_CHILD_PROCESS_NOT_EXIST = 16000206 | The child process does not exist or is not created by the caller.<br>**Since**: 26.1.0 |
 
 

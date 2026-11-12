@@ -1,7 +1,7 @@
 # OH_VideoCaptureInfo
 
 ```c
-struct OH_VideoCaptureInfo {...}
+typedef struct OH_VideoCaptureInfo {...} OH_VideoCaptureInfo
 ```
 
 ## 概述

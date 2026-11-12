@@ -16,7 +16,7 @@ Provides custom node event definitions for <b>NativeNode</b> APIs.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

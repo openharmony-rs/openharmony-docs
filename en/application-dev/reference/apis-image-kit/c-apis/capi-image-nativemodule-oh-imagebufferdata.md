@@ -1,7 +1,7 @@
 # OH_ImageBufferData
 
 ```c
-struct OH_ImageBufferData {...}
+typedef struct OH_ImageBufferData {...} OH_ImageBufferData
 ```
 
 ## Overview
@@ -28,6 +28,6 @@ struct OH_ImageBufferData {...}
 | int32_t *pixelStride | pixelStride of each component. |
 | int32_t numStride | number of strides. |
 | size_t bufferSize | byte length of the buffer |
-| OH_NativeBuffer *nativeBuffer | native buffer of the image. |
+| [OH_NativeBuffer](../../apis-arkgraphics2d/c-apis/capi-oh-nativebuffer-oh-nativebuffer.md) *nativeBuffer | native buffer of the image. |
 
 

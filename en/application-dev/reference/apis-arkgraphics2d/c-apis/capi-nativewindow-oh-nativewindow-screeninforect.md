@@ -1,7 +1,7 @@
 # OH_NativeWindow_ScreenInfoRect
 
 ```c
-struct OH_NativeWindow_ScreenInfoRect {...}
+typedef struct OH_NativeWindow_ScreenInfoRect {...} OH_NativeWindow_ScreenInfoRect
 ```
 
 ## Overview

@@ -18,17 +18,17 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Http_Buffer](capi-netstack-http-buffer.md) | - | HTTP缓存结构体。 |
-| [Http_HeaderValue](capi-netstack-http-headervalue.md) | - | 请求或者响应的标头映射的值类型。 |
-| [Http_HeaderEntry](capi-netstack-http-headerentry.md) | - | 请求或者响应的标头的所有键值对。 |
-| [Http_ClientCert](capi-netstack-http-clientcert.md) | - | 发送到服务端的客户端证书配置，服务端将通过客户端证书校验客户端身份。 |
-| [Http_CustomProxy](capi-netstack-http-customproxy.md) | - | 用户自定义代理配置。 |
-| [Http_Proxy](capi-netstack-http-proxy.md) | - | 代理配置结构体。 |
-| [Http_PerformanceTiming](capi-netstack-http-performancetiming.md) | - | HTTP响应时间信息，会在[Http_Response](capi-netstack-http-response.md)中收集。 |
-| [Http_RequestOptions](capi-netstack-http-requestoptions.md) | - | 定义HTTP请求配置的结构体。 |
-| [Http_Response](capi-netstack-http-response.md) | - | 定义HTTP响应的结构体。 |
-| [Http_Request](capi-netstack-http-request.md) | - | HTTP请求结构体。 |
-| [Http_EventsHandler](capi-netstack-http-eventshandler.md) | - | 监听不同HTTP事件的回调函数。 |
+| [Http_Buffer](capi-netstack-http-buffer.md) | Http_Buffer | HTTP缓存结构体。 |
+| [Http_HeaderValue](capi-netstack-http-headervalue.md) | Http_HeaderValue | 请求或者响应的标头映射的值类型。 |
+| [Http_HeaderEntry](capi-netstack-http-headerentry.md) | Http_HeaderEntry | 请求或者响应的标头的所有键值对。 |
+| [Http_ClientCert](capi-netstack-http-clientcert.md) | Http_ClientCert | 发送到服务端的客户端证书配置，服务端将通过客户端证书校验客户端身份。 |
+| [Http_CustomProxy](capi-netstack-http-customproxy.md) | Http_CustomProxy | 用户自定义代理配置。 |
+| [Http_Proxy](capi-netstack-http-proxy.md) | Http_Proxy | 代理配置结构体。 |
+| [Http_PerformanceTiming](capi-netstack-http-performancetiming.md) | Http_PerformanceTiming | HTTP响应时间信息，会在[Http_Response](capi-netstack-http-response.md)中收集。 |
+| [Http_RequestOptions](capi-netstack-http-requestoptions.md) | Http_RequestOptions | 定义HTTP请求配置的结构体。 |
+| [Http_Response](capi-netstack-http-response.md) | Http_Response | 定义HTTP响应的结构体。 |
+| [Http_Request](capi-netstack-http-request.md) | Http_Request | HTTP请求结构体。 |
+| [Http_EventsHandler](capi-netstack-http-eventshandler.md) | Http_EventsHandler | 监听不同HTTP事件的回调函数。 |
 | [Http_Headers](capi-netstack-http-headers.md) | Http_Headers | HTTP请求或者是响应中的标头。 |
 
 ### 枚举

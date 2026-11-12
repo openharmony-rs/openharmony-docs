@@ -19,18 +19,18 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_Drawing_PlaceholderSpan](capi-drawing-oh-drawing-placeholderspan.md) | OH_Drawing_PlaceholderSpan | 用于描述占位符跨度的结构体。 |
-| [OH_Drawing_FontFallbackInfo](capi-drawing-oh-drawing-fontfallbackinfo.md) | - | 备用字体信息结构体。 |
-| [OH_Drawing_FontFallbackGroup](capi-drawing-oh-drawing-fontfallbackgroup.md) | - | 备用字体集信息结构体。 |
-| [OH_Drawing_FontAdjustInfo](capi-drawing-oh-drawing-fontadjustinfo.md) | - | 字重映射信息结构体。 |
-| [OH_Drawing_FontAliasInfo](capi-drawing-oh-drawing-fontaliasinfo.md) | - | 别名字体信息结构体。 |
-| [OH_Drawing_FontGenericInfo](capi-drawing-oh-drawing-fontgenericinfo.md) | - | 系统所支持的通用字体集信息结构体。 |
-| [OH_Drawing_FontConfigInfo](capi-drawing-oh-drawing-fontconfiginfo.md) | - | 系统字体配置信息结构体。 |
-| [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) | - | 描述系统字体详细信息的结构体。 |
-| [OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md) | - | 文字行位置信息。 |
-| [OH_Drawing_FontStyleStruct](capi-drawing-oh-drawing-fontstylestruct.md) | - | 定义字体样式信息的结构体。 |
+| [OH_Drawing_FontFallbackInfo](capi-drawing-oh-drawing-fontfallbackinfo.md) | OH_Drawing_FontFallbackInfo | 备用字体信息结构体。 |
+| [OH_Drawing_FontFallbackGroup](capi-drawing-oh-drawing-fontfallbackgroup.md) | OH_Drawing_FontFallbackGroup | 备用字体集信息结构体。 |
+| [OH_Drawing_FontAdjustInfo](capi-drawing-oh-drawing-fontadjustinfo.md) | OH_Drawing_FontAdjustInfo | 字重映射信息结构体。 |
+| [OH_Drawing_FontAliasInfo](capi-drawing-oh-drawing-fontaliasinfo.md) | OH_Drawing_FontAliasInfo | 别名字体信息结构体。 |
+| [OH_Drawing_FontGenericInfo](capi-drawing-oh-drawing-fontgenericinfo.md) | OH_Drawing_FontGenericInfo | 系统所支持的通用字体集信息结构体。 |
+| [OH_Drawing_FontConfigInfo](capi-drawing-oh-drawing-fontconfiginfo.md) | OH_Drawing_FontConfigInfo | 系统字体配置信息结构体。 |
+| [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) | OH_Drawing_FontDescriptor | 描述系统字体详细信息的结构体。 |
+| [OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md) | OH_Drawing_LineMetrics | 文字行位置信息。 |
+| [OH_Drawing_FontStyleStruct](capi-drawing-oh-drawing-fontstylestruct.md) | OH_Drawing_FontStyleStruct | 定义字体样式信息的结构体。 |
 | [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md) | OH_Drawing_FontFeature | 描述文本字体特征结构体。 |
 | [OH_Drawing_StrutStyle](capi-drawing-oh-drawing-strutstyle.md) | OH_Drawing_StrutStyle | 用于描述支柱样式的结构体。支柱样式用于控制绘制文本时行之间的间距、基线对齐方式以及其他与行高相关的属性。 |
-| [OH_Drawing_RectSize](capi-drawing-oh-drawing-rectsize.md) | - | 定义文本矩形结构体。 |
+| [OH_Drawing_RectSize](capi-drawing-oh-drawing-rectsize.md) | OH_Drawing_RectSize | 定义文本矩形结构体。 |
 
 ### 枚举
 

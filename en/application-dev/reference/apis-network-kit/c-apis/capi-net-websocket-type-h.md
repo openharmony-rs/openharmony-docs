@@ -14,7 +14,7 @@ Defines the data structure for the C APIs of the WebSocket client module.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | Description |
 | -- | -- |
@@ -26,13 +26,13 @@ Defines the data structure for the C APIs of the WebSocket client module.
 | [WebSocket_RequestOptions](capi-netstack-websocket-requestoptions.md) | Defines the parameters for the connection between the WebSocket client and server. |
 | [WebSocket](capi-netstack-websocket.md) | Defines the parameters for the connection closure received by the WebSocket client. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [WebSocket_ErrCode](#websocket_errcode) | WebSocket_ErrCode | Defines the parameters for the connection closure received by the WebSocket client. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

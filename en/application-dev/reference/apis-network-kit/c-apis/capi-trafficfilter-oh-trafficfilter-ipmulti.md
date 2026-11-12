@@ -1,7 +1,7 @@
 # OH_TrafficFilter_IPMulti
 
 ```c
-struct OH_TrafficFilter_IPMulti {...}
+typedef struct OH_TrafficFilter_IPMulti {...} OH_TrafficFilter_IPMulti
 ```
 
 ## Overview

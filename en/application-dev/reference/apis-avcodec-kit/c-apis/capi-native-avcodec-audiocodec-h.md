@@ -16,13 +16,13 @@ The file declares the native APIs used for audio encoding and decoding.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [MediaKeySession](capi-audiocodec-mediakeysession.md) | MediaKeySession | The struct describes a media key session. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

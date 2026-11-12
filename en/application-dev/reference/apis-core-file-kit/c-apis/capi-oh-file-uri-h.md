@@ -14,7 +14,7 @@ uri verification and conversion This class is mainly for URI format verification
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

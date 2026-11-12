@@ -14,7 +14,7 @@ The file declares the error codes generated during screen capture.
 
 ## Summary
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

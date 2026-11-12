@@ -14,7 +14,7 @@ Provides declarations of data structures related to 2D text drawing.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |

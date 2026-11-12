@@ -14,19 +14,19 @@ The **HiAppEvent** module provides event subscription and event logging function
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [HiAppEvent_AppEventInfo](capi-hiappevent-hiappevent-appeventinfo.md) | - | Defines a struct for the information about a single event, including the domain, name, type, and custom parameter list in JSON string format. |
-| [HiAppEvent_AppEventGroup](capi-hiappevent-hiappevent-appeventgroup.md) | - | Defines the information of an event group, including its name, the array of event information grouped by name, and the length of the event array. |
-| [OH_HiAppEvent_ExternalLog](capi-hiappevent-oh-hiappevent-externallog.md) | - | The OH_HiAppEvent_ExternalLog structure is used to describe external log information, including the file path, the generation timestamp, file size, and type of system event. |
+| [HiAppEvent_AppEventInfo](capi-hiappevent-hiappevent-appeventinfo.md) | HiAppEvent_AppEventInfo | Defines a struct for the information about a single event, including the domain, name, type, and custom parameter list in JSON string format. |
+| [HiAppEvent_AppEventGroup](capi-hiappevent-hiappevent-appeventgroup.md) | HiAppEvent_AppEventGroup | Defines the information of an event group, including its name, the array of event information grouped by name, and the length of the event array. |
+| [OH_HiAppEvent_ExternalLog](capi-hiappevent-oh-hiappevent-externallog.md) | OH_HiAppEvent_ExternalLog | The OH_HiAppEvent_ExternalLog structure is used to describe external log information, including the file path, the generation timestamp, file size, and type of system event. |
 | [ParamListNode*](capi-hiappevent-paramlistnode8h.md) | ParamList | Defines the event parameter list node. |
 | [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md) | HiAppEvent_Watcher | Defines the watcher for application events. |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md) | HiAppEvent_Processor | Defines a processor for application events. |
 | [HiAppEvent_Config](capi-hiappevent-hiappevent-config.md) | HiAppEvent_Config | Defines the configuration object used to set the conditions for triggering system events. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -35,7 +35,7 @@ The **HiAppEvent** module provides event subscription and event logging function
 | [OH_HiAppEvent_SysEvent](#oh_hiappevent_sysevent) | OH_HiAppEvent_SysEvent | System event types.<br> You are advised to select system event types based on their respective usage scenarios. |
 | [OH_HiAppEvent_FrameworkType](#oh_hiappevent_frameworktype) | OH_HiAppEvent_FrameworkType | Enumerates the application framework types. You are advised to select an application framework type based on the actual application scenario. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -819,7 +819,7 @@ Logs application events whose parameters are of the list type. Before applicatio
 | -- | -- |
 | const char* domain | Event domain. You can customize event domains as required. The value is a string that contains a maximum of 32 characters, including digits (0 to 9), letters (a to z) (A to Z), and underscore (\_). It must start with a letter and cannot end with an underscore (\_). |
 | const char* name | Event name. You can customize event names as required. The value is a string that contains a maximum of 48 characters, including digits (0 to 9), letters (a to z) (A to Z), underscore (\_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter. |
-| enum EventType type | Event type. For details, see [EventType](capi-hiappevent-h.md#eventtype). |
+| enum [EventType](capi-hiappevent-h.md#eventtype) type | Event type. For details, see [EventType](capi-hiappevent-h.md#eventtype). |
 | [const ParamList](capi-hiappevent-paramlistnode8h.md) list | List of event parameters, each of which consists of a parameter name and a parameter value. The specifications are as follows: <br>1. The value is a string that contains a maximum of 32 characters, including digits (0 to 9), letters (a to z)(A to Z),underscore (_), and dollar sign (`$`). It must start with a letter or dollar sign (`$`) and end with a digit or letter. <br>2. The parameter value can be a string, number, Boolean, or array. The length of a string must be less than 8 * 1024 characters. If this limit is exceeded, excess characters will be truncated. The element type of an array parameter can only be a string, number, or Boolean, and the number of elements must be less than 100. If this limit is exceeded, excess elements will be discarded. <br>3. The maximum number of parameters is 32. If this limit is exceeded, excess parameters will be discarded. |
 
 **Returns**:
@@ -848,8 +848,8 @@ Configures the application event logging function. This function is used to conf
 
 | Parameter | Description |
 | -- | -- |
-| const char* name | Configuration item name The value can be [DISABLE](capi-hiappevent-cfg-h.md#宏定义) or [MAX_STORAGE](capi-hiappevent-cfg-h.md#宏定义). |
-| const char* value | Configuration item value. If the configuration item name is [DISABLE](capi-hiappevent-cfg-h.md#宏定义), the value can be **true**<br>or **false**. If the configuration item name is [MAX_STORAGE](capi-hiappevent-cfg-h.md#宏定义), the quota value consists of only digits and a unit (including b\|k\|kb\|m\|mb\|g\|gb\|t\|tb, which are case-insensitive). The quota value must start with a digit. You can determine whether to pass the unit. If the unit is left empty, **b**(that is, byte) is used by default. |
+| const char* name | Configuration item name The value can be [DISABLE](capi-hiappevent-cfg-h.md#macros) or [MAX_STORAGE](capi-hiappevent-cfg-h.md#macros). |
+| const char* value | Configuration item value. If the configuration item name is [DISABLE](capi-hiappevent-cfg-h.md#macros), the value can be **true**<br>or **false**. If the configuration item name is [MAX_STORAGE](capi-hiappevent-cfg-h.md#macros), the quota value consists of only digits and a unit (including b\|k\|kb\|m\|mb\|g\|gb\|t\|tb, which are case-insensitive). The quota value must start with a digit. You can determine whether to pass the unit. If the unit is left empty, **b**(that is, byte) is used by default. |
 
 **Returns**:
 
@@ -1658,7 +1658,7 @@ Reports information about abnormal memory usage of the application framework. <b
 
 | Parameter | Description |
 | -- | -- |
-| enum OH_HiAppEvent_FrameworkType frameworkType | Application framework type. |
+| enum [OH_HiAppEvent_FrameworkType](capi-hiappevent-h.md#oh_hiappevent_frameworktype) frameworkType | Application framework type. |
 | const char* frameworkVersion | Pointer to the application framework version. |
 | const char* description | Description of the abnormal memory usage of the application framework. |
 

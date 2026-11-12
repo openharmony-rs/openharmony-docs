@@ -14,7 +14,7 @@ Declare image processing functions.<br> Provides SDR content processing for imag
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -332,7 +332,7 @@ Conversion between single-layer images.<br> The function generate the destinatio
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | An image processing instance pointer. The instance should be created with type [IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION](capi-image-processing-types-h.md#变量). |
+| [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | An image processing instance pointer. The instance should be created with type [IMAGE_PROCESSING_TYPE_COLOR_SPACE_CONVERSION](capi-image-processing-types-h.md#variables). |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)* sourceImage | Input image pointer. |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)* destinationImage | Output image pointer. |
 
@@ -362,7 +362,7 @@ Composition from dual-layer HDR images to single-layer HDR images.<br> The funct
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | An image processing instance pointer. The instance should be created with type [IMAGE_PROCESSING_TYPE_COMPOSITION](capi-image-processing-types-h.md#变量). |
+| [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | An image processing instance pointer. The instance should be created with type [IMAGE_PROCESSING_TYPE_COMPOSITION](capi-image-processing-types-h.md#variables). |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)* sourceImage | Input image pointer. |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)* sourceGainmap | Input gainmap pointer. |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)* destinationImage | Output image pointer. |
@@ -393,7 +393,7 @@ Decomposition from single-layer HDR images to dual-layer HDR images.<br> The fun
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | An image processing instance pointer. The instance should be created with type [IMAGE_PROCESSING_TYPE_DECOMPOSITION](capi-image-processing-types-h.md#变量). |
+| [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | An image processing instance pointer. The instance should be created with type [IMAGE_PROCESSING_TYPE_DECOMPOSITION](capi-image-processing-types-h.md#variables). |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)* sourceImage | Input image pointer. |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)* destinationImage | Output image pointer. |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)* destinationGainmap | Output gainmap pointer. |
@@ -424,7 +424,7 @@ Metadata Generation for HDR images.<br> The function generate metadata for the s
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | An image processing instance pointer. The instance should be created with type [IMAGE_PROCESSING_TYPE_METADATA_GENERATION](capi-image-processing-types-h.md#变量). |
+| [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | An image processing instance pointer. The instance should be created with type [IMAGE_PROCESSING_TYPE_METADATA_GENERATION](capi-image-processing-types-h.md#variables). |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)* sourceImage | Input image pointer. |
 
 **Returns**:
@@ -453,7 +453,7 @@ Clarity enhancement for images.<br> The function generate the destinationImage f
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | An image processing instance pointer. The instance should be created with type [IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER](capi-image-processing-types-h.md#变量). |
+| [OH_ImageProcessing](capi-imageprocessing-oh-imageprocessing.md)* imageProcessor | An image processing instance pointer. The instance should be created with type [IMAGE_PROCESSING_TYPE_DETAIL_ENHANCER](capi-image-processing-types-h.md#variables). |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)* sourceImage | Input image pointer. |
 | [OH_PixelmapNative](capi-imageprocessing-oh-pixelmapnative.md)* destinationImage | Output image pointer. |
 

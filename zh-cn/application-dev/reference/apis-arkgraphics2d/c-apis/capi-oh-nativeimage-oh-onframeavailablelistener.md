@@ -1,7 +1,7 @@
 # OH_OnFrameAvailableListener
 
 ```c
-struct OH_OnFrameAvailableListener {...}
+typedef struct OH_OnFrameAvailableListener {...} OH_OnFrameAvailableListener
 ```
 
 ## 概述

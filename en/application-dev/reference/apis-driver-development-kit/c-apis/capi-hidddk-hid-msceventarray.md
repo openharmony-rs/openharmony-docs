@@ -1,7 +1,7 @@
 # Hid_MscEventArray
 
 ```c
-struct Hid_MscEventArray {...}
+typedef struct Hid_MscEventArray {...} Hid_MscEventArray
 ```
 
 ## Overview
@@ -24,7 +24,7 @@ Defines an array of miscellaneous events, which stores information about the mis
 
 | Name | Description |
 | -- | -- |
-| Hid_MscEvent *hidMscEvent | Pointer to the array of miscellaneous events, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length. |
+| [Hid_MscEvent](capi-hid-ddk-types-h.md#hid_mscevent) *hidMscEvent | Pointer to the array of miscellaneous events, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length. |
 | uint16_t length | Valid length of the array, which cannot exceed the actual length of the **hidEventType** array. |
 
 

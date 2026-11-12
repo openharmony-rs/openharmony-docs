@@ -10,18 +10,6 @@
 
 **所在头文件：** [native_node.h](capi-native-node-h.md)
 
-### 
-
-```c
-
-```
-
-**描述：**
-
-设置时间选择器组件的选中项时间，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string：时间。默认值：当前系统时间。设置格式：时:分或时-分（例：23:59或23-59）。返回格式：时,分,秒（例：23,59,0）。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.string：选中的时间。格式：时,分,秒，使用`,`分隔（例：23,59,0）。</li> </ul>
-
-**起始版本：** 12
-
 ### NODE_TIME_PICKER_USE_MILITARY_TIME
 
 ```c

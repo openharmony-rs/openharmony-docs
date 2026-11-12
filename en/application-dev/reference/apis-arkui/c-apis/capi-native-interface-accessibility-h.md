@@ -14,7 +14,7 @@ Declares the APIs used to access the native Accessibility.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -23,15 +23,15 @@ Declares the APIs used to access the native Accessibility.
 | [ArkUI_AccessibleRangeInfo](capi-arkui-accessibility-arkui-accessiblerangeinfo.md) | ArkUI_AccessibleRangeInfo | Define a struct for the accessible range information. |
 | [ArkUI_AccessibleGridInfo](capi-arkui-accessibility-arkui-accessiblegridinfo.md) | ArkUI_AccessibleGridInfo | Defines a struct for the accessible grid information. |
 | [ArkUI_AccessibleGridItemInfo](capi-arkui-accessibility-arkui-accessiblegriditeminfo.md) | ArkUI_AccessibleGridItemInfo | Defines a struct for the accessible grid item information. |
-| [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) | - | Registers callbacks for the accessibility provider. |
-| [ArkUI_AccessibilityProviderCallbacksWithInstance](capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) | - | Registers callbacks with instance for the accessibility provider. |
+| [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) | ArkUI_AccessibilityProviderCallbacks | Registers callbacks for the accessibility provider. |
+| [ArkUI_AccessibilityProviderCallbacksWithInstance](capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) | ArkUI_AccessibilityProviderCallbacksWithInstance | Registers callbacks with instance for the accessibility provider. |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) | ArkUI_AccessibilityElementInfo | Defines a struct for accessibility element information. |
 | [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) | ArkUI_AccessibilityEventInfo | Defines a struct for accessibility event information. |
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) | ArkUI_AccessibilityProvider | Defines a struct for the local provider of accessibility. |
 | [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md) | ArkUI_AccessibilityActionArguments | Defines a struct for accessibility action arguments. |
 | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md) | ArkUI_AccessibilityElementInfoList | Defines a struct for the accessibility element information list. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -42,13 +42,13 @@ Declares the APIs used to access the native Accessibility.
 | [ArkUI_AccessibilityFocusType](#arkui_accessibilityfocustype) | ArkUI_AccessibilityFocusType | Defines an enum for the accessibility focus types. |
 | [ArkUI_AccessibilityFocusMoveDirection](#arkui_accessibilityfocusmovedirection) | ArkUI_AccessibilityFocusMoveDirection | Enumerates the directions for moving the accessibility focus. |
 
-### Macro
+### Macros
 
 | Name | Description |
 | -- | -- |
 | _NATIVE_INTERFACE_ACCESSIBILITY_H | Declares the APIs used to access the native Accessibility.<br>**Since**: 13<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

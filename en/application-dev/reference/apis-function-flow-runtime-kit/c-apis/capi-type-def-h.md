@@ -14,7 +14,7 @@ Declares common types.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -32,7 +32,7 @@ Declares common types.
 | [ffrt_fiber_t](capi-ffrt-ffrt-fiber-t.md) | ffrt_fiber_t | Defines the fiber structure used to store fiber execution context. |
 | [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | ffrt_task_handle_t | Defines the task handle, which identifies different tasks. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -45,7 +45,7 @@ Declares common types.
 | [ffrt_mutex_type](#ffrt_mutex_type) | ffrt_mutex_type | Enumerates the mutex types. |
 | [qos_default](#qos_default) | - | Enumerates the task QoS types.<br> Each enumerator mirrors the corresponding enumerator in [ffrt_qos_default_t](capi-type-def-h.md#ffrt_qos_default_t). |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -53,7 +53,7 @@ Declares common types.
 | [typedef void (\*ffrt_poller_cb)(void* data, uint32_t event)](#ffrt_poller_cb) | ffrt_poller_cb | Defines the poller callback function type.<br> The callback is invoked when the poller detects a registered event. The data pointer carries user data passed in at registration time, and the event value identifies the triggered event type. |
 | [typedef void (\*ffrt_timer_cb)(void* data)](#ffrt_timer_cb) | ffrt_timer_cb | Defines the timer callback function type.<br> The callback is invoked when the timer expires. The data pointer carries user data passed in at timer registration. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |
@@ -140,7 +140,9 @@ Defines the storage size of multiple types of structs, in bytes.
 | ffrt_cond_storage_size = 64 | Condition variable storage size, in bytes. |
 | ffrt_queue_attr_storage_size = 128 | Queue storage size, in bytes. |
 | ffrt_rwlock_storage_size = 64 | Rwlock storage size, in bytes.<br>**Since**: 18 |
-| ffrt_fiber_storage_size = 22 | Fiber storage size, in bytes.<br> This constant defines the fiber storage size. The actual value depends on the target architecture: - \_\_aarch64\_\_: 22 - \_\_arm\_\_: 64 - \_\_x86_64\_\_: 8<br>**Since**: 20 |
+| ffrt_fiber_storage_size = 8 | Fiber storage size, in bytes.<br> This constant defines the fiber storage size. The actual value depends on the target architecture: - \_\_aarch64\_\_: 22 - \_\_arm\_\_: 64 - \_\_x86_64\_\_: 8<br>**Since**: 20 |
+| ffrt_fiber_storage_size = 8 | Fiber storage size, in bytes.<br> This constant defines the fiber storage size. The actual value depends on the target architecture: - \_\_aarch64\_\_: 22 - \_\_arm\_\_: 64 - \_\_x86_64\_\_: 8<br>**Since**: 20 |
+| ffrt_fiber_storage_size = 8 | Fiber storage size, in bytes.<br> This constant defines the fiber storage size. The actual value depends on the target architecture: - \_\_aarch64\_\_: 22 - \_\_arm\_\_: 64 - \_\_x86_64\_\_: 8<br>**Since**: 20 |
 
 ### ffrt_function_kind_t
 

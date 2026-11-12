@@ -14,13 +14,13 @@ The file declares the native APIs used for video decoding.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [MediaKeySession](capi-videodecoder-mediakeysession.md) | MediaKeySession | Describes a native object for MediaKeySession. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |
@@ -37,7 +37,7 @@ The file declares the native APIs used for video decoding.
 \| OH_MD_KEY_HEIGHT \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \|
 \| OH_MD_KEY_PIXEL_FORMAT [OH_AVPixelFormat](capi-native-avformat-h.md#oh_avpixelformat) \| AV_ERR_OK \| AV_ERR_UNSUPPORT \| AV_ERR_OK \|
 \| OH_MD_KEY_FRAME_RATE \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \|
-\| [OH_MD_KEY_ROTATION](capi-native-avcodec-base-h.md#变量)\| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \| |
+\| [OH_MD_KEY_ROTATION](capi-native-avcodec-base-h.md#variables)\| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \| |
 | [OH_AVErrCode OH_VideoDecoder_Prepare(OH_AVCodec *codec)](#oh_videodecoder_prepare) | Prepares internal resources for a video decoder. This function must be called after [OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure). |
 | [OH_AVErrCode OH_VideoDecoder_Start(OH_AVCodec *codec)](#oh_videodecoder_start) | Starts a video decoder. This function should be called after a successful call of [OH_VideoDecoder_Prepare](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_prepare). After being started, the decoder starts to report the registered event. |
 | [OH_AVErrCode OH_VideoDecoder_Stop(OH_AVCodec *codec)](#oh_videodecoder_stop) | Stops a video decoder and releases the input and output buffers. After the video decoder is stopped, you can call [OH_VideoDecoder_Start](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_start) to enter the running state again.<br> If you have passed codec-specific data in the previous **Start** for the decoder, you must pass it again. |
@@ -253,7 +253,7 @@ Configures a video decoder. It is typically necessary to provide the information
 \| OH_MD_KEY_HEIGHT \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_INVALID_VAL \|
 \| OH_MD_KEY_PIXEL_FORMAT [OH_AVPixelFormat](capi-native-avformat-h.md#oh_avpixelformat) \| AV_ERR_OK \| AV_ERR_UNSUPPORT \| AV_ERR_OK \|
 \| OH_MD_KEY_FRAME_RATE \| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \|
-\| [OH_MD_KEY_ROTATION](capi-native-avcodec-base-h.md#变量)\| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \|
+\| [OH_MD_KEY_ROTATION](capi-native-avcodec-base-h.md#variables)\| AV_ERR_OK \| AV_ERR_INVALID_VAL \| AV_ERR_OK \|
 
 > **Note**:
 >

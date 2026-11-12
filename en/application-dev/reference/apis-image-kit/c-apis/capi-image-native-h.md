@@ -14,14 +14,14 @@ The file declares the cropping rectangle, size, and component data of an image.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) | - | [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) is the image data struct encapsulated at the native layer. To obtain an [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) object, call [OH_ImageNative_GetBufferData](capi-image-native-h.md#oh_imagenative_getbufferdata).<br> The struct stores the shallow copy of the original image data. Once the original data is released, no read or write operations should be performed on the pointers within this struct; otherwise, undefined behavior will occur. |
+| [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) | OH_ImageBufferData | [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) is the image data struct encapsulated at the native layer. To obtain an [OH_ImageBufferData](capi-image-nativemodule-oh-imagebufferdata.md) object, call [OH_ImageNative_GetBufferData](capi-image-native-h.md#oh_imagenative_getbufferdata).<br> The struct stores the shallow copy of the original image data. Once the original data is released, no read or write operations should be performed on the pointers within this struct; otherwise, undefined behavior will occur. |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) | OH_ImageNative | The struct describes the alias for an image object at the native layer. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

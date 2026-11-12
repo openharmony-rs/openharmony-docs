@@ -1,7 +1,7 @@
 # Usb_NonRootHubArray
 
 ```c
-struct Usb_NonRootHubArray {...}
+typedef struct Usb_NonRootHubArray {...} Usb_NonRootHubArray
 ```
 
 ## 概述

@@ -14,13 +14,13 @@ Provides the NativeAbility data information APIs for obtaining the Ability insta
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [AbilityRuntime_NativeAbilityWrapper](capi-abilityruntime-abilityruntime-nativeabilitywrapper.md) | AbilityRuntime_NativeAbilityWrapper | Defines the AbilityRuntime_NativeAbilityWrapper struct type, which is used to encapsulate the information about UIAbility. |
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

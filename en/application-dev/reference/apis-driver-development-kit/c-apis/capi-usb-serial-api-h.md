@@ -16,7 +16,7 @@ Declares the USB Serial DDK APIs used by the host to access the serial port devi
 
 ## Summary
 
-### Function
+### Functions
 
 | Name | Description |
 | -- | -- |

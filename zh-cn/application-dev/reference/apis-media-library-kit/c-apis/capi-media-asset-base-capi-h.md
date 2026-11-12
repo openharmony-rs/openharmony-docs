@@ -18,8 +18,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | - | 定义请求ID。<br>当请求媒体库资源时，会返回此类型。<br>请求ID可用于取消请求。<br>如果请求失败，值将全为零，如 "00000000-0000-0000-0000-000000000000"。 |
-| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) | - | 请求策略模式配置项。<br>此结构体为媒体资源请求策略模式配置项。 |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | MediaLibrary_RequestId | 定义请求ID。<br>当请求媒体库资源时，会返回此类型。<br>请求ID可用于取消请求。<br>如果请求失败，值将全为零，如 "00000000-0000-0000-0000-000000000000"。 |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) | MediaLibrary_RequestOptions | 请求策略模式配置项。<br>此结构体为媒体资源请求策略模式配置项。 |
 | [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) | OH_MediaAssetManager | 定义媒体资产管理器。<br>此结构提供了请求媒体库资源的能力。<br>如果创建失败，则返回空指针。 |
 | [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) | OH_MediaAssetChangeRequest | 定义媒体资产更改请求。<br>此结构体提供了处理媒体资产更改请求的能力。 |
 | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) | OH_MovingPhoto | 定义动态照片。<br>此结构体提供了获取关于动态照片的信息的能力。 |

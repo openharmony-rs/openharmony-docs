@@ -1,7 +1,7 @@
 # Http_HeaderValue
 
 ```c
-struct Http_HeaderValue {...}
+typedef struct Http_HeaderValue {...} Http_HeaderValue
 ```
 
 ## 概述
@@ -25,6 +25,6 @@ struct Http_HeaderValue {...}
 | 名称 | 描述 |
 | -- | -- |
 | char *value | 标头键值对的值。 |
-| struct Http_HeaderValue *next | 链式存储。指向下一个Http_HeaderValue。 |
+| [struct Http_HeaderValue](capi-netstack-http-headervalue.md) *next | 链式存储。指向下一个Http_HeaderValue。 |
 
 

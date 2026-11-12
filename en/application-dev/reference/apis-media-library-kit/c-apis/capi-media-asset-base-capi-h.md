@@ -14,18 +14,18 @@ The file declares the structs and enums for the media asset manager.
 
 ## Summary
 
-### Struct
+### Structs
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | - | Defines a struct for the request ID. |
-| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) | - | The struct defines how media assets are requested and processed. |
+| [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) | MediaLibrary_RequestId | Defines a struct for the request ID. |
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) | MediaLibrary_RequestOptions | The struct defines how media assets are requested and processed. |
 | [OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md) | OH_MediaAssetManager | The struct describes the media asset manager. |
 | [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) | OH_MediaAssetChangeRequest | The struct describes a media asset change request. |
 | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) | OH_MovingPhoto | The struct describes a moving photo. |
 | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) | OH_MediaAsset | The struct describes a media asset. |
 
-### Enum
+### Enums
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -38,7 +38,7 @@ The file declares the structs and enums for the media asset manager.
 | [MediaLibrary_MediaQuality](#medialibrary_mediaquality) | MediaLibrary_MediaQuality | Enumerates the media resource quality, |
 | [MediaLibrary_MediaContentType](#medialibrary_mediacontenttype) | MediaLibrary_MediaContentType | Enumerates the media content types. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -47,7 +47,7 @@ The file declares the structs and enums for the media asset manager.
 | [typedef void (\*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_MovingPhoto* movingPhoto)](#oh_medialibrary_onmovingphotodataprepared) | OH_MediaLibrary_OnMovingPhotoDataPrepared | Called when the requested moving photo is ready. |
 | [typedef void (\*OH_MediaLibrary_OnQuickImageDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_ImageSourceNative* imageSourceNative, OH_PictureNative* pictureNative)](#oh_medialibrary_onquickimagedataprepared) | OH_MediaLibrary_OnQuickImageDataPrepared | This callback is called when the requested image source is ready. If an image buffer exists in the system, an image object is returned, reducing the encoding time. |
 
-### Variable
+### Variables
 
 | Name | Description |
 | -- | -- |

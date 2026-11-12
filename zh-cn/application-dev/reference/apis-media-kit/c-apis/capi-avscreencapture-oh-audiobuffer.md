@@ -1,7 +1,7 @@
 # OH_AudioBuffer
 
 ```c
-struct OH_AudioBuffer {...}
+typedef struct OH_AudioBuffer {...} OH_AudioBuffer
 ```
 
 ## 概述

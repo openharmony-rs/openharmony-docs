@@ -14,14 +14,14 @@ The file declares the MediaKeySession APIs for DRM operations. The APIs can be u
 
 ## Summary
 
-### Struct
+### Structs
 
-| Name | Description |
-| -- | -- |
-| [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) | The MediaKeySession_Callback struct describes the callbacks for media key session events such as key expiration and key changes. It does not provide a MediaKeySession instance, making it suitable for single-session decryption scenarios. |
-| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) | The OH_MediaKeySession_Callback struct describes the callbacks for media key session events such as key expiration and key changes. It provides a MediaKeySession instance, making it suitable for multi-session decryption scenarios. |
+| Name | typedef keyword | Description |
+| -- | -- | -- |
+| [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) | OH_MediaKeySession_Callback | The MediaKeySession_Callback struct describes the callbacks for media key session events such as key expiration and key changes. It does not provide a MediaKeySession instance, making it suitable for single-session decryption scenarios. |
+| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) | OH_MediaKeySession_Callback | The OH_MediaKeySession_Callback struct describes the callbacks for media key session events such as key expiration and key changes. It provides a MediaKeySession instance, making it suitable for multi-session decryption scenarios. |
 
-### Function
+### Functions
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
@@ -488,7 +488,7 @@ Set media key session event callback.
 | Parameter | Description |
 | -- | -- |
 | [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Media key session instance. |
-| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) *callback | Callback to be set to the media key session. |
+| [OH_MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) *callback | Callback to be set to the media key session. |
 
 **Returns**:
 

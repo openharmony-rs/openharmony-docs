@@ -25,7 +25,7 @@ Defines the capabilities of an audio accessory.<br> <b>Version Control:</b> Call
 | Name | Description |
 | -- | -- |
 | uint32_t structSize | Size of this structure in bytes. Must be initialized by the caller (e.g., caps.structSize = sizeof(OH_AudioAccessoryCapabilities)).<br>**Since**: 26.0.0 |
-| const OH_AudioStreamInfo *streamProperties | Array of supported stream configurations. Each entry represents one valid combination of sample rate, format, and channel count. The framework performs a deep copy of this array.<br>**Since**: 26.0.0 |
+| [const OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamProperties | Array of supported stream configurations. Each entry represents one valid combination of sample rate, format, and channel count. The framework performs a deep copy of this array.<br>**Since**: 26.0.0 |
 | uint32_t streamPropertyCount | Number of supported stream configurations.<br>**Since**: 26.0.0 |
 
 
