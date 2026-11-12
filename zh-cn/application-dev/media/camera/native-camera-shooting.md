@@ -294,7 +294,7 @@
 
    NAPI层buffer回调处理参考示例代码：
 
-   <!-- @[napi_buffer_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/mai   cpp) -->
+   <!-- @[napi_buffer_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/main.cpp) -->
    
    ``` C++
    // NAPI层buffer回调方法。
