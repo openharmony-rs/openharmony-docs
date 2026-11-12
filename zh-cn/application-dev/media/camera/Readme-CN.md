@@ -36,6 +36,7 @@
   - [微距能力设置(ArkTS)](camera-macro.md)
   - [多摄同开(ArkTS)](camera-concurrent-open.md)
   - [YUV拍照(ArkTS)](camera-yuv-shooting.md)<!--RP1--><!--RP1End-->
+  - [拍摄成片内容证真溯源设置(ArkTS)](camera-c2pa.md)
   <!--Del-->
   - [高性能拍照(仅对系统应用开放)(ArkTS)](camera-deferred-photo-sys.md)
   - [高性能拍照实践(仅对系统应用开放)(ArkTS)](camera-deferred-photo-case-sys.md)
