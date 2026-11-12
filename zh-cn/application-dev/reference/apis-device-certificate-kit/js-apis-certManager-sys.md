@@ -2,7 +2,7 @@
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @chaceli-->
+<!--Owner: @liutianqi-->
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
