@@ -89,7 +89,7 @@ Check on workInfo failed.
 
 1. 请检查workInfo中的bundleName是否与应用uid匹配。
 2. 如取消或查询延迟任务时出现此错误，请确认该延迟任务已正确创建。
-3. 请检查workInfo中的isPerformanceSensitive，当设置为true时，isCharging与isDeepIdle必须同时为true，且周期性任务的repeatCycleTime必须大于等于24小时。
+3. 请检查workInfo中的isPerformanceSensitive，当设置为true时，isCharging与isDeepIdle必须同时为true，且周期性任务的repeatCycleTime必须大于等于24h。
 
 ## 9700005 StartWork失败
 
