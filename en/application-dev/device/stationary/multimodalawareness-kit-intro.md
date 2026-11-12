@@ -20,10 +20,4 @@ Using multimodal awareness capabilities requires your application to request the
 
 <!--RP2--><!--RP2End-->
 
-<!--RP1-->
-
-### Emulator Support
-
-This Kit does not support the Emulator.
-
-<!--RP1End-->
+<!--RP1--><!--RP1End-->
