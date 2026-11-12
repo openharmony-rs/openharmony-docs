@@ -470,7 +470,7 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_Render
 | [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) node | [入参] 目标父渲染节点。 |
 | [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) child | [入参] 待挂载的子渲染节点，调用前应解除其已有父子关系。 |
 | [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) sibling | [入参] 用于确定插入位置的参考兄弟渲染节点。若该有效节点不在node的当前子节点列表中，则将child追加到末尾。 |
-| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) policy | [入参]  挂载策略，用于指定子节点及其渲染节点子树是否继承父节点实例。 |
+| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) policy | [入参] 挂载策略，用于指定子节点及其渲染节点子树是否继承父节点实例。 |
 
 **返回值：**
 
