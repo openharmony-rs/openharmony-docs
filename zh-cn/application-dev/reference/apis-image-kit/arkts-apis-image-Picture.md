@@ -601,7 +601,7 @@ async function Release(pictureObj : image.Picture) {
     pictureObj.release();
     console.info(funcName, 'Succeeded in releasing a picture.');
   } catch(error) {
-    console.error(funcName, 'Failed to release a picture. error: ${JSON.stringify(error)}');
+    console.error(funcName, 'Failed to release a picture. Error:', error.message);
   }
 }
 ```
