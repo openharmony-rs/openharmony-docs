@@ -194,7 +194,7 @@ import { formInfo } from '@kit.FormKit';
 |-----|-----|----|----|-----|
 | formId       | string  | 否  | 否  | 卡片id。|
 | isOverflow   | boolean | 否  | 否  | 动效请求类型标记，true 表示互动卡片请求触发动效，false 表示互动卡片请求取消动效。|
-| overflowInfo | [formInfo.OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | 否 | 是 | 动效请求参数信息，包括动效时长（单位：ms）和动效区域（动效区域范围以卡片左上角为原点，单位为vp），默认值为空。 |
+| overflowInfo | [OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | 否 | 是 | 动效请求参数信息，包括动效时长（单位：ms）和动效区域（动效区域范围以卡片左上角为原点，单位为vp），默认值为空。 |
 
 ## ChangeSceneAnimationStateRequest<sup>20+</sup>
 
@@ -305,7 +305,7 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
 | moduleName | string | 否 | 否  | 卡片所属模块的名称。 |
 | abilityName | string | 否 | 否  | 卡片所属的Ability名称。 |
 | formName | string | 否 | 否  | 卡片名称。 |
-| dimension | [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension) | 否 | 否  | 卡片规格。 |
+| dimension | [FormDimension](js-apis-app-form-formInfo.md#formdimension) | 否 | 否  | 卡片规格。 |
 | detailId | string | 否 | 否  | 卡片信息id。 |
 | displayName | string | 否 | 否  | 卡片展示名称。 |
 | description | string | 否 | 否  | 卡片描述。 |

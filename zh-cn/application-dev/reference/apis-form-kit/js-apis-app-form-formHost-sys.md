@@ -2856,7 +2856,7 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | caller is not a system app.                 |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
 | 16501000 | An internal functional error occurred.                       |
