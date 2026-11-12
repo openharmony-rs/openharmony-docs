@@ -21,16 +21,6 @@
 
 使用网盘服务底座能力的相关接口，需确认设备具有以下系统能力：SystemCapability.FileManagement.CloudDiskManager
 
-网盘服务底座占位符与水合能力存在以下size与并发约束：
-
-| 约束项 | 上限/规则 | 触发表现 |
-| -------- | -------- | -------- |
-| 占位符logicalSize上限 | off_t最大值（INT64_MAX） | 创建/更新占位符返回OH_CLOUD_DISK_FILE_TOO_LARGE |
-| 单次Execute回传数据块上限 | 128 KiB | 回传请求被拒绝，返回CLOUD_DISK_INVALID_ARG |
-| 同一应用并发水合任务上限 | 5个（水合中状态） | 超出的水合请求排队等待，取数回调延迟下发 |
-| 水合任务空闲超时 | 5分钟（每次Execute回传刷新计时） | 任务被取消，并通过回调表下发取消取数请求 |
-| 占位符customInfo上限 | 1024字节 | 创建/更新占位符返回CLOUD_DISK_INVALID_ARG |
-
 ## 环境准备
 
 网盘服务底座各项能力对IDE与SDK版本的要求不同，请根据实际使用的能力选择对应的版本：
@@ -1350,6 +1340,16 @@ static napi_value Execute(napi_env env, napi_callback_info info)
 - 回传水合数据时保持fetchDataRsp.totalSize与云侧真实大小一致，多次回传totalSize不变。
 - 云侧真实大小变化或水合完成后发现实际大小与预设值不一致时，通过OH_CloudDisk_UpdatePlaceholder()修正占位符元数据，不要放任尾部空洞。
 - 不要依赖st_size判断文件实际数据量：未水合占位符的st_size等于预设值但本地无数据，应以应用自身记录的云侧大小为准。
+
+**系统侧size与并发约束**
+
+| 约束项 | 上限/规则 | 触发表现 |
+| -------- | -------- | -------- |
+| 占位符logicalSize上限 | off_t最大值（INT64_MAX） | 创建/更新占位符返回OH_CLOUD_DISK_FILE_TOO_LARGE |
+| 单次Execute回传数据块上限 | 128 KiB | 回传请求被拒绝，返回CLOUD_DISK_INVALID_ARG |
+| 同一应用并发水合任务上限 | 5个（水合中状态） | 超出的水合请求排队等待，取数回调延迟下发 |
+| 水合任务空闲超时 | 5分钟（每次Execute回传刷新计时） | 任务被取消，并通过回调表下发取消取数请求 |
+| 占位符customInfo上限 | 1024字节 | 创建/更新占位符返回CLOUD_DISK_INVALID_ARG |
 
 **取消水合**
 
