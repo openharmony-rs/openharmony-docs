@@ -4343,6 +4343,8 @@ getPageRootNode(): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **返回值：**
 
 | 类型                                       | 说明            |
