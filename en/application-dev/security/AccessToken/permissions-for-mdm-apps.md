@@ -990,3 +990,20 @@ Allows a device management application to use the non-anonymous key attestation 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.1.0
+
+## ohos.permission.MANAGE_DATA_ENCRYPTION_POLICY
+
+Allows an enterprise application to configure encryption policies for enterprise devices.
+
+<!--RP1--><!--RP1End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.1.0
