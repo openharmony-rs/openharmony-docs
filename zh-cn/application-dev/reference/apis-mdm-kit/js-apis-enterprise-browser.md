@@ -222,7 +222,7 @@ setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, pol
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | bundleName  | string                                                  | 是   | 应用包名，用于指定浏览器，表示应用的唯一标识。                                     |
 | policyName  | string                                                  | 是   | 浏览器策略名，由接口调用方和指定浏览器约定。<!--RP2--><!--RP2End--> |
-| policyValue | string                                                  | 是   | 浏览器策略值。当此值为空字符串时，表示取消浏览器策略名对应浏览器子策略。 |
+| policyValue | string                                                  | 是   | 浏览器策略值。当此值为空字符串时，表示取消浏览器策略名对应浏览器策略。 |
 
 **错误码**：
 
@@ -256,6 +256,89 @@ let policyValue: string = '{"level":"mandatory","scope":"machine","source":"plat
 
 try {
   browser.setManagedBrowserPolicy(wantTemp, bundleName, policyName, policyValue);
+  console.info('Succeeded in setting managed browser policy.');
+} catch (err) {
+  console.error(`Failed to set managed browser policy. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## browser.setManagedBrowserPolicy
+
+setManagedBrowserPolicy(bundleName: string, policyName: string, policyValue: string, forceOverride?: boolean): void
+
+为指定的浏览器设置浏览器策略，适用于企业统一管理员工浏览器行为的场景，例如配置浏览器安全策略等。成功后会发布系统公共事件[COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed)。
+
+本接口与[browser.setManagedBrowserPolicy<sup>15+</sup>](#browsersetmanagedbrowserpolicy15)的区别在于：本接口支持强制覆盖其他MDM应用通过[browser.setManagedBrowserPolicy<sup>15+</sup>](#browsersetmanagedbrowserpolicy15)接口或[browser.setManagedBrowserPolicy](#browsersetmanagedbrowserpolicy)接口所配置的策略。该覆盖操作会导致其他MDM应用已配置的策略失效。对于非业务诉求的场景，不建议开启强制覆盖。
+
+> **说明：**
+>
+> 通过本接口设置的浏览器策略需要浏览器进行适配。对应的浏览器需要监听[COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed)公共事件，并调用[browser.getSelfManagedBrowserPolicyVersion](#browsergetselfmanagedbrowserpolicyversion15)接口查询浏览器策略版本是否变化，若版本发生变化，再调用[browser.getSelfManagedBrowserPolicy](#browsergetselfmanagedbrowserpolicy15)接口获取最新的浏览器策略，由浏览器自身更新浏览器策略配置。
+>
+> 在多个MDM应用场景下，同一个浏览器应用的同一个策略默认是[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，将forceOverride设置为true可强制覆盖；不同浏览器、同一浏览器的不同策略[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+> 在多个MDM应用场景下，强制覆盖会导致其他MDM配置失效，并且其他MDM应用也必须通过强制覆盖才能修改配置。建议在使用强制覆盖前，先调用[browser.getManagedBrowserPolicy<sup>15+</sup>](#browsergetmanagedbrowserpolicy15)接口查询是否已有配置信息；若已存在配置，不建议直接覆盖。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型    | 必填 | 说明                                                         |
+| ------------- | ------- | ---- | ------------------------------------------------------------ |
+| bundleName    | string  | 是   | 应用包名，用于指定浏览器，表示应用的唯一标识。                |
+| policyName    | string  | 是   | 浏览器策略名，由接口调用方和指定浏览器约定。                  |
+| policyValue   | string  | 是   | 浏览器策略值。当此值为空字符串时，表示取消浏览器策略名对应浏览器策略。 |
+| forceOverride | boolean | 否   | 是否强制覆盖已有策略。true表示强制覆盖已有策略；false表示不强制覆盖已有策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout.                                             |
+
+**示例：**
+
+```ts
+import { browser } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { util } from '@kit.ArkTS';
+
+// 需根据实际情况进行替换
+// 企业设备管理扩展组件信息，用于查询已有浏览器策略
+let wantTemp: Want = {
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 浏览器应用包名
+let bundleName: string = 'com.example.testbrowser';
+// 浏览器策略名称
+let policyName: string = 'InsecurePrivateNetworkRequestsAllowed';
+// 浏览器策略值
+let policyValue: string = '{"level":"mandatory","scope":"machine","source":"platform","value":true}';
+
+try {
+  // 设置前先通过getManagedBrowserPolicy查询指定浏览器已有的策略
+  let buffer: ArrayBuffer = browser.getManagedBrowserPolicy(wantTemp, bundleName);
+  let intBuffer: Uint8Array = new Uint8Array(buffer);
+  let decoder: util.TextDecoder = util.TextDecoder.create('utf-8');
+  let policies: Record<string, string> = JSON.parse(decoder.decodeToString(intBuffer)) as Record<string, string>;
+  if (Object.keys(policies).includes(policyName)) {
+    // 查询到已有策略值时，不建议强制覆盖；如业务确有诉求，谨慎使用强制覆盖
+    browser.setManagedBrowserPolicy(bundleName, policyName, policyValue, true);
+  } else {
+    // 未查询到已有策略值，无需强制覆盖
+    browser.setManagedBrowserPolicy(bundleName, policyName, policyValue);
+  }
   console.info('Succeeded in setting managed browser policy.');
 } catch (err) {
   console.error(`Failed to set managed browser policy. Code is ${err.code}, message is ${err.message}`);
