@@ -189,7 +189,7 @@ function greet(): void {
 
 ## 类型声明
 
-类型声明通过类型标注在编译期约束变量、参数和返回值的类型，使编译器能在运行前发现类型不匹配的错误（如将`string`赋给`number`变量），而非等到运行时才暴露。ArkTS中类型声明有三种形式：[类型注解](#类型标注)（`: type`）、[类型别名](#类型别名)（`type Name = ...`）和[接口声明](arkts-language-guide-interfaces.md)（`interface`），分别适用于不同场景。
+类型声明通过类型标注在编译期约束变量、参数和返回值的类型，使编译器能在运行前发现类型不匹配的错误（如将`string`赋给`number`变量），而非等到运行时才暴露。ArkTS中类型声明有三种形式：[类型标注](#类型标注)（`: type`）、[类型别名](#类型别名)（`type Name = ...`）和[接口声明](arkts-language-guide-interfaces.md)（`interface`），分别适用于不同场景。
 
 ### 基本类型声明
 
@@ -562,7 +562,7 @@ nullHandleGreet('Alice', 'Dr.');    // 'Hello, Dr. Alice'
 
 ## 非空断言
 
-非空断言（Non-null Assertion）使用`!`操作符，告诉编译器“此处按非空处理”。非空断言会绕过编译器的空值检查，但不会在运行时生成任何验证代码。应优先使用类型守卫、可选链或空值合并，仅在确信非空时使用非空断言。
+非空断言（Non-null Assertion）使用`!`运算符，告诉编译器“此处按非空处理”。非空断言会绕过编译器的空值检查，但不会在运行时生成任何验证代码。应优先使用类型守卫、可选链或空值合并，仅在确信非空时使用非空断言。
 
 <!-- @[non_null_assertion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -645,7 +645,7 @@ function riskyOperation(): number {
 }
 
 function parseJSON(data: string): Object {
-  return JSON.parse(data);
+  return JSON.parse(data); // 返回类型为Object
 }
 
 let tcData: string = '{"name": "Alice"}';

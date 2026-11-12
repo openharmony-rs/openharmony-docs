@@ -161,7 +161,6 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid distributedInfo. |
 | 12300003 | Account identified by localId or by distributedInfo not found. |
@@ -222,7 +221,6 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 | -------- | ------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 202 | Permission verification failed. A non-system application calls a system API.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid distributedInfo. |
 | 12300003 | Account identified by localId or by distributedInfo not found. |

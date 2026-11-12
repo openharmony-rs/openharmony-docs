@@ -5,7 +5,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=39c39bc7d6f38e5435e335a13e8450290f36df13 translatedAt=2026-11-02T13:01:13.959Z pushedAt=2026-11-09T06:12:10.556Z nl=1 -->
+<!-- md-trans-meta sourceCommit=547d5da4e68381c84c1e968690fa235d825d53b6 translatedAt=2026-11-09T11:36:36.972Z pushedAt=2026-11-10T01:07:07.463Z nl=1 -->
 
 > **NOTE**
 >
@@ -159,11 +159,11 @@ export default class EntryAbility extends UIAbility {
       ctx: this.context
     };
     try {
-      window.createWindow(config).then((value:window.Window) => {
+      window.createWindow(config).then((value: window.Window) => {
         console.info('Succeeded in creating the window. Data: ' + JSON.stringify(value));
         windowClass = value;
         windowClass.resize(500, 1000);
-      }).catch((err:BusinessError) => {
+      }).catch((err: BusinessError) => {
         console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (exception) {

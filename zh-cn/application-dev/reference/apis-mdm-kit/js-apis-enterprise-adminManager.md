@@ -740,6 +740,7 @@ try {
 | MANAGED_EVENT_BOOT_COMPLETED<sup>24+</sup>  | 9    | 设备启动完成事件。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 | MANAGED_EVENT_BUNDLE_UPDATED                | 10    | 应用更新事件。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 | MANAGED_EVENT_POLICIES_CHANGED                | 11    | 策略变更事件。仅支持超级设备管理应用订阅该事件，其他类型设备管理应用订阅该事件时返回9200002错误码。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| MANAGED_EVENT_PASSWORD_FAILED                 | 13    | 锁屏密码认证失败事件。<br>**起始版本**：26.1.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## AdminType<sup>15+</sup>
 

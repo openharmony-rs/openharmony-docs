@@ -2858,7 +2858,7 @@ getSoundCardInfo(): Promise\<SoundCardInfo\>
 
 | 类型 | 说明 |
 | ------------------- | ------------------------------ |
-| Promise\<[SoundCardInfo](#soundcardinfo)\> | Promise对象，返回内置声卡信息。 |
+| Promise\<[SoundCardInfo](arkts-apis-audio-AudioDeviceEnhanceManager.md#soundcardinfo)\> | Promise对象，返回内置声卡信息。 |
 
 **错误码：**
 
@@ -3620,26 +3620,6 @@ try {
   console.error(`Failed to unsubscribe download status change. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-## SoundCardInfo
-
-描述声卡信息。
-
-**起始版本：** 26.0.0
-
-**系统接口：** 此接口为系统接口。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| name | string | 否 | 否 | 声卡名称。 |
-| vendor | string | 否 | 否 | 声卡厂商。 |
-| model | string | 否 | 否 | 声卡型号。 |
-| busAddress | string | 否 | 否 | 声卡总线地址。 |
-| driver | string | 否 | 否 | 声卡驱动信息。 |
 
 ## AudioRoutingManager<sup>9+</sup>
 

@@ -1,12 +1,11 @@
 # ArkUI_NativeGestureAPI_3
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T08:25:44.731Z pushedAt=2026-08-20T03:50:26.450Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:44:10.874Z pushedAt=2026-11-10T03:35:01.855Z nl=1 -->
 
 ```c
 typedef struct {...} ArkUI_NativeGestureAPI_3
@@ -32,6 +31,7 @@ This API collection supports setting parallel gesture event callbacks for ArkUI 
 |-------------------------------------------| -- |
 | [ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)* gestureApi2 | Pointer to the **ArkUI_NativeGestureAPI_2** struct.|
 
+
 ### Member Functions
 
 | Name| Description|
@@ -47,6 +47,7 @@ ArkUI_ErrorCode (*setGestureParallelTo)(ArkUI_NodeHandle node, void* userData, A
 ```
 
 **Description**
+
 
 Sets the callback function for parallel gesture events. When the callback is triggered, you can return, from the conflicting gesture recognizers provided by the event, an object that needs to be recognized in parallel with the current gesture. This API applies to scenarios where your custom gesture needs to be processed in parallel with gestures of other components on the response chain.
 

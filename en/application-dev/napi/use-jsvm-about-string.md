@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "How to use JSVM-API to create and retrieve JavaScript strings using UTF-8, UTF-16, and Latin-1 encoding."
+keywords: [OH_JSVM_CreateStringUtf8, OH_JSVM_GetValueStringUtf8, OH_JSVM_CreateStringUtf16, OH_JSVM_GetValueStringUtf16, OH_JSVM_CreateStringLatin1, OH_JSVM_GetValueStringLatin1, encoding schemes, UTF-8, Latin-1]
+doctype: guide
+status: active
+---
+
 # Creating and Obtaining String Values Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.338Z nl=1 -->
 
 ## Introduction
 
@@ -12,7 +21,7 @@ This topic walks you through on how to use JSVM-API to convert data between nati
 
 ## Basic Concepts
 
-Strings are a common data type in programming. They are used to store and manipulate text data, build user interface (UI) elements such as tags, buttons, and text boxes, process user input, and validate and format data. Different encodings support different character sets and languages. Major encoding schemes include the following:
+`string` is a commonly used data type in programming. It is used to store and manipulate text data. It can be used to build UI elements such as labels, buttons, and text boxes, process user input, and validate and format data. Different encoding schemes support different character sets and languages. The following are some major encoding schemes and their differences:
 
 - ASCII<br>ASCII is one of the earliest character encoding schemes. It uses 7 bits to represent English letters, digits, and some basic symbols. It serves as the foundation for encoding schemes.
 - UTF-8<br>UTF-8 is a variable-length encoding scheme that can represent any Unicode character. It uses 8 bits per character and uses byte sequences of different lengths depending on the range of the character. UTF-8 is widely used for web content.
@@ -40,12 +49,15 @@ Call **OH_JSVM_GetValueStringUtf8** to convert a JS string into a UTF-8-encoded 
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_value_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/getvaluestringutf8/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
 #include <cstdlib>
+// ...
+
 // Define OH_JSVM_GetValueStringUtf8.
 static JSVM_Value GetValueStringUtf8(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -54,12 +66,11 @@ static JSVM_Value GetValueStringUtf8(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     size_t length = 0;
     JSVM_Status status = OH_JSVM_GetValueStringUtf8(env, args[0], nullptr, 0, &length);
-    char *buf = (char *)malloc(length + 1);
-    if (buf == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "malloc failed");
+    if (length == 0 || length > MAX_MALLOC_SIZE) {
+        OH_LOG_ERROR(LOG_APP, "Invalid string length: %{public}zu", length);
         return nullptr;
     }
-    memset(buf, 0, length + 1);
+    char *buf = (char *)malloc(length + 1);
     status = OH_JSVM_GetValueStringUtf8(env, args[0], buf, length + 1, &length);
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM GetValueStringUtf8 fail");
@@ -84,16 +95,15 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
-    let data = "aaBC+-$%^Hello 123";
+const char *SRC_CALL_NATIVE = R"JS(
+    let data = "aaBC+-$%^Hello123";
     let script = getValueStringUtf8(data);
 )JS";
 ```
-<!-- @[oh_jsvm_get_value_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/getvaluestringutf8/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```cpp
-JSVM GetValueStringUtf8 success: aaBC+-$%^Hello 123
+``` C++
+JSVM GetValueStringUtf8 success: aaBC+-$%^Hello123
 ```
 **NOTE**<br>The call fails if the input parameter **arg** of **getValueStringUtf8()** is not of the string type.
 
@@ -103,12 +113,15 @@ Call **OH_JSVM_CreateStringUtf8** to create a JS string from a UTF8-encoded C st
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/createstringutf8/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
 #include <string>
+// ...
+
 // Define OH_JSVM_CreateStringUtf8.
 static JSVM_Value CreateStringUtf8(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -135,14 +148,13 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let script = createStringUtf8();
 )JS";
 ```
-<!-- @[oh_jsvm_create_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/createstringutf8/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```cpp
+``` C++
 JSVM CreateStringUtf8 success: Hello, World!, succeed in creating UTF-8 string!
 ```
 ### OH_JSVM_GetValueStringUtf16
@@ -151,19 +163,22 @@ Call **OH_JSVM_GetValueStringUtf16** to convert a JS string into a UTF-16-encode
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_value_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/getvaluestringutf16/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
 #include <codecvt>
 #include <locale>
 #include <cstdlib>
+// ...
 
 // Define OH_JSVM_GetValueStringUtf16.
 // Set the maximum length of the string buffer.
 static const int MAX_BUFFER_SIZE = 128;
-static JSVM_Value GetValueStringUtf16(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value GetValueStringUtf16(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -198,15 +213,14 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let data = "ahello.";
     let script = getValueStringUtf16(data);
 )JS";
 ```
-<!-- @[oh_jsvm_get_value_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/getvaluestringutf16/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```cpp
+``` C++
 JSVM GetValueStringUtf16 success: ahello.
 ```
 **Note**: The **arg** parameter of **getValueStringUtf16(arg)** must be a string. Otherwise, the API call fails.
@@ -217,14 +231,16 @@ Call **OH_JSVM_GetValueStringUtf16** to create a JS string from a UTF16-encoded 
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/createstringutf16/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
 #include <codecvt>
 #include <locale>
 #include <cstring>
+// ...
 
 // Define OH_JSVM_CreateStringUtf16.
 static JSVM_Value CreateStringUtf16(JSVM_Env env, JSVM_CallbackInfo info)
@@ -240,7 +256,7 @@ static JSVM_Value CreateStringUtf16(JSVM_Env env, JSVM_CallbackInfo info)
     std::string strResult = converter.to_bytes(u16str);
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM CreateStringUtf16 fail");
-    }else {
+    } else {
         OH_LOG_INFO(LOG_APP, "JSVM CreateStringUtf16 success: %{public}s", strResult.c_str());
     }
     return result;
@@ -256,14 +272,13 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let script = createStringUtf16();
 )JS";
 ```
-<!-- @[oh_jsvm_create_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/createstringutf16/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```cpp
+``` C++
 JSVM CreateStringUtf16 success: Hello, World!, succeed in creating UTF-16 string!
 ```
 ### OH_JSVM_GetValueStringLatin1
@@ -272,12 +287,15 @@ Call **OH_JSVM_GetValueStringLatin1** to convert a JS string into an ISO-8859-1-
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_value_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/getvaluestringlatin1/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
 #include <cstdlib>
+// ...
+
 // Define OH_JSVM_GetValueStringLatin1.
 // Set the maximum length of the string buffer.
 static const int MAX_BUFFER_SIZE = 128;
@@ -309,12 +327,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let data = "Chinese";
     let script = getValueStringLatin1(data);
 )JS";
 ```
-<!-- @[oh_jsvm_get_value_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/getvaluestringlatin1/src/main/cpp/hello.cpp) -->
 
 Expected output (The ISO-8859-1 encoding does not support Chinese characters. If Chinese characters are passed in, garbled characters will be displayed.)
 
@@ -328,12 +345,15 @@ Call **OH_JSVM_CreateStringLatin1** to create a JS string from an ISO-8859-1-enc
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/createstringlatin1/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
 #include <cstring>
+// ...
+
 // Register the CreateStringLatin1 callback.
 // Set the maximum length of the string buffer.
 static const int MAX_BUFFER_SIZE = 128;
@@ -348,8 +368,8 @@ static JSVM_Value CreateStringLatin1(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_ERROR(LOG_APP, "JSVM CreateStringLatin1 fail");
     } else {
         char buf[MAX_BUFFER_SIZE];
-        size_t length = 0;
-        OH_JSVM_GetValueStringLatin1(env, result, buf, MAX_BUFFER_SIZE, &length);
+        size_t lengthInner = 0;
+        OH_JSVM_GetValueStringLatin1(env, result, buf, MAX_BUFFER_SIZE, &lengthInner);
         OH_LOG_INFO(LOG_APP, "JSVM CreateStringLatin1 success: %{public}s", buf);
     }
     return result;
@@ -364,13 +384,12 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call the C++ code from JS.
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let script = createStringLatin1();
 )JS";
 ```
-<!-- @[oh_jsvm_create_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/createstringlatin1/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```cpp
+``` C++
 JSVM CreateStringLatin1 success: Hello, World! éçñ, succeed in creating Latin1 string!
 ```

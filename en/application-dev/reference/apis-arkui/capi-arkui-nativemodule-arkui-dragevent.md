@@ -1,12 +1,11 @@
 # ArkUI_DragEvent
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T04:17:40.865Z pushedAt=2026-08-19T07:22:47.608Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:41:28.614Z pushedAt=2026-11-10T02:03:34.367Z nl=1 -->
 
 ```c
 typedef struct ArkUI_DragEvent ArkUI_DragEvent
@@ -21,3 +20,4 @@ Defines a drag event, used to represent event information during the drag proces
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [drag_and_drop.h](capi-drag-and-drop-h.md)
+

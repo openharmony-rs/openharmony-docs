@@ -1,12 +1,11 @@
-# ArkUI_FloatPropertyHandle
-
+# ArkUI_FloatProperty*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f8ecdb82f3ec053eb7dde21e27a6f047d194898a translatedAt=2026-07-17T09:23:53.332Z pushedAt=2026-07-17T10:40:15.286Z -->
+<!-- md-trans-meta sourceCommit=1e574c3201e96cfe7f2709f4dc19e462d9daf562 translatedAt=2026-11-09T11:42:02.383Z pushedAt=2026-11-10T02:18:32.108Z nl=1 -->
 
 ```c
 typedef struct ArkUI_FloatProperty* ArkUI_FloatPropertyHandle

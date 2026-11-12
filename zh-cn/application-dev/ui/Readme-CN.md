@@ -194,7 +194,8 @@
         - [绑定全模态页面（bindContentCover）](arkts-contentcover-page.md)
      - [即时反馈（Toast）](arkts-create-toast.md)
      - [设置浮层（OverlayManager）](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
-  - 沉浸光感<!--arkts-immersive-light-sense-->
+     - [弹窗跟手](arkts-ui-handedness.md)
+   - 沉浸光感<!--arkts-immersive-light-sense-->
     - [沉浸光感简介](arkts-immersive-light-sense-overview.md)
     - 沉浸光感开发指导<!--arkts-immersive-light-sense-development-->
       - [开启沉浸光感](arkts-immersive-light-sense-enable.md)

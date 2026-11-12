@@ -1870,3 +1870,17 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.1.0
+
+## ohos.permission.HOOK_INPUT_EVENT
+
+允许应用拦截输入事件。
+
+<!--RP122--><!--RP122End-->
+
+**权限级别**：system_basic
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0

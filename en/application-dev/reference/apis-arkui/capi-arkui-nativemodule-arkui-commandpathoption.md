@@ -1,12 +1,11 @@
-# ArkUI_CommandPathOption
-
+# ArkUI_CommandPath
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-17T02:51:29.149Z pushedAt=2026-07-17T06:03:25.368Z -->
+<!-- md-trans-meta sourceCommit=1e574c3201e96cfe7f2709f4dc19e462d9daf562 translatedAt=2026-11-09T11:40:44.784Z pushedAt=2026-11-10T01:59:03.816Z nl=1 -->
 
 ```c
 typedef struct ArkUI_CommandPath ArkUI_CommandPathOption

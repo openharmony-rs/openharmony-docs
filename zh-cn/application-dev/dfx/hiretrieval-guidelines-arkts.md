@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @ljy_love_code-->
+<!--Owner: @buzhenwang-->
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -14,9 +14,10 @@
 
 开发者在云端新建任务时，可以选择已实现的一类故障。<!--RP2End-->在任务激活期间，被圈选的设备发生了对应故障，则会自动采集对应的日志并上传到云端。
 
-> **注意：**
+> **说明：**
 >
-> 当前暂不支持多实例应用，若在多实例应用中调用[hiRetrieval.init()](../reference/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit)，会抛出错误码36000002，详细处理步骤请参考应用灰度错误码[36000002](../reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hiretrieval.md#36000002)。
+> - 对于API版本26.1.0及之后的版本，应用灰度支持多实例应用。
+> - 对于API版本26.1.0之前的版本，应用灰度不支持多实例应用，若在多实例应用中调用[hiRetrieval.init()](../reference/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit)，会抛出错误码。
 
 ## 工作原理
 
@@ -34,7 +35,9 @@
 
 1. 导入所需的依赖模块，以EntryAbility.ets为例。 
 
-   ```ts
+   <!-- @[hiretrieval_import_sample_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiRetrieval/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+   ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
    ```

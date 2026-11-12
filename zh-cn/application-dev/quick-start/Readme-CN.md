@@ -45,7 +45,7 @@
   - [初识ArkTS语言](arkts-get-started.md)
   - ArkTS语法<!--arkts-language-guide-->
     - [基础知识](arkts-language-guide-basics.md)
-    - [基本操作符](arkts-language-guide-basic-operators.md)
+    - [基本运算符](arkts-language-guide-basic-operators.md)
     - [字符串](arkts-language-guide-strings.md)
     - [集合类型](arkts-language-guide-collection-types.md)
     - [控制语句](arkts-language-guide-control-statements.md)

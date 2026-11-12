@@ -397,16 +397,16 @@ baselineOffset(value: LengthMetrics): T
 
 定义Span的背景样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型     | 只读 | 可选 | 说明         |
 | ------ | ------- | ---- | ---- | ------------ |
-| color  | [ResourceColor](ts-types.md#resourcecolor)                                  | 否   | 是 | 文本背景色。默认为透明，无背景色。 |
-| radius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](./ts-types.md#borderradiuses9) | 否   | 是 | 文本背景圆角。默认无圆角。 |
+| color  | [ResourceColor](ts-types.md#resourcecolor)                                  | 否   | 是 | 文本背景色。默认为透明，无背景色。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| radius | [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](./ts-types.md#borderradiuses9) | 否   | 是 | 文本背景圆角。默认无圆角。<br>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。 |
+| borderWidth | [Dimension](ts-types.md#dimension10) | 否   | 是 | 文本背景边框宽度。默认值为0，不显示边框。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| borderColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是 | 文本背景边框颜色。默认跟随字体颜色。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 ### 示例1（设置文本样式）

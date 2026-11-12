@@ -1,12 +1,11 @@
 # Interfaces (Others)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:28:28.212Z pushedAt=2026-08-07T08:07:48.238Z -->
+<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-11-06T11:02:06.631Z pushedAt=2026-11-10T02:05:48.217Z nl=1 -->
 
 > **NOTE**
 >
@@ -162,17 +161,6 @@ Provides the element information of the area being clicked. For the sample code,
 | ---- | ---- | ---- | ---- |---- |
 | type | [WebHitTestType](./arkts-apis-webview-e.md#webhittesttype) | No| No| Element type of the area being clicked.|
 | extra | string        | No| No|Extra information of the area being clicked. If the area being clicked is an image or a link, the extra information is the URL of the image or link.|
-
-## ControllerAttachState<sup>20+</sup>
-
-Binding state between WebviewController and the Web component.
-
-**System capability**: SystemCapability.Web.Webview.Core
-
-| Name| Value| Description|
-| ------------------------------- | - | ---------- |
-| UNATTACHED | 0 | Unattached.|
-| ATTACHED   | 1 | Attached.|
 
 ## BlanklessInfo<sup>20+</sup>
 

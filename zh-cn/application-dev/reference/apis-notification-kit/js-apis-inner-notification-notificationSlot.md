@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API版本7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## NotificationSlot
 
@@ -27,8 +27,8 @@
 | vibrationEnabled     | boolean               | 否 | 是  | 是否可振动。默认值为false。<br> - true：可振动。<br> - false：不可振动。                  |
 | sound                | string                | 否 | 是  | 该渠道的通知的[自定义铃声](../../notification/notification-glossary.md#customized-ringtone自定义铃声)文件名。该文件放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。大小不超过243字节，超出部分会被截断。 |
 | lightEnabled         | boolean               | 否 | 是  | 是否闪灯。默认值为false。<br> - true：闪灯。<br> - false：不闪灯。                        |
-| type<sup>(deprecated)</sup> | [notification.SlotType](js-apis-notification.md#slottype) | 否 | 是  | 渠道类型。<br>从API版本7开始支持，从API版本11开始废弃，建议使用notificationType替代。        |
-| level<sup>(deprecated)</sup> | [notification.SlotLevel](js-apis-notification.md#slotlevel) | 否 | 是  | 通知级别。<br>从API版本7开始支持，从API版本20开始废弃，建议使用notificationLevel替代。 |
+| type<sup>(deprecated)</sup> | [notification.SlotType](js-apis-notification.md#slottype) | 否 | 是  | 渠道类型。<br>从API version 7开始支持，从API version 11开始废弃，建议使用notificationType替代。        |
+| level<sup>(deprecated)</sup> | [notification.SlotLevel](js-apis-notification.md#slotlevel) | 否 | 是  | 通知级别。<br>从API version 7开始支持，从API version 20开始废弃，建议使用notificationLevel替代。 |
 | lockscreenVisibility | number                | 否 | 是  | 在锁定屏幕上显示通知的模式。预留能力，暂不支持。 |
 | lightColor           | number                | 否 | 是  | 通知灯颜色。预留能力，暂不支持。                |
 | vibrationValues      | Array\<number\>       | 否 | 是  | 通知振动样式。预留能力，暂不支持。              |
