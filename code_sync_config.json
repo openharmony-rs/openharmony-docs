@@ -14120,6 +14120,26 @@
 						"start_line":19
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderPlaceholderList.ets",
+				"functions":[
+					{
+						"end_line":73,
+						"name":"builder_placeholder_list",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderPlaceholderList.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"BuilderPlaceholderList",
+						"start_line":19
+					}
+				]
 			}
 		]
 	},
