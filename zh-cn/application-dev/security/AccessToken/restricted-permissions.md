@@ -1674,7 +1674,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 ## ohos.permission.vehicle.MMA_OCCUPANT
  
-允许系统应用调用乘员感知接口，识别车内乘员人数、状态。
+允许车载应用获取车内乘员状态，包括乘员占位情况、乘员类型等。
  
 <!--RP119--><!--RP119End-->
  
@@ -1688,7 +1688,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
  
 ## ohos.permission.vehicle.MMA_CARSTATUS
  
-允许系统应用获取车辆状态信息。
+允许车载应用获取车辆零部件的即时状态。
  
 <!--RP120--><!--RP120End-->
  
