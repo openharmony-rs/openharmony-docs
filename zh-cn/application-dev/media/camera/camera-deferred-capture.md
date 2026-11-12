@@ -160,58 +160,58 @@
 
 - 通过注册固定的captureStartWithInfo回调函数获取监听拍照开始结果，photoOutput创建成功时即可监听，相机设备已经准备开始这次拍照时触发，该事件返回此次拍照的captureId。
 
-   <!-- @[camera_onPhotoOutputCaptureStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
+  <!-- @[camera_onPhotoOutputCaptureStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
 
-   ``` TypeScript
-   onPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
-     photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo) => {
-       if (err !== undefined && err.code !== 0) {
-         return;
-       }
-       console.info(`photo capture started, captureId : ${captureStartInfo.captureId}`);
-     });
-   }
-   ```
+  ``` TypeScript
+  onPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
+    photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo) => {
+      if (err !== undefined && err.code !== 0) {
+        return;
+      }
+      console.info(`photo capture started, captureId : ${captureStartInfo.captureId}`);
+    });
+  }
+  ```
 
 - 通过注册固定的captureEnd回调函数获取监听拍照结束结果，photoOutput创建成功时即可监听，该事件返回结果为拍照完全结束后的相关信息[CaptureEndInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#captureendinfo)。
 
-   <!-- @[camera_onPhotoOutputCaptureEnd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
+  <!-- @[camera_onPhotoOutputCaptureEnd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
 
-   ``` TypeScript
-   onPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
-     photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo) => {
-       if (err !== undefined && err.code !== 0) {
-         return;
-       }
-       console.info(`photo capture end, captureId : ${captureEndInfo.captureId}`);
-       console.info(`frameCount : ${captureEndInfo.frameCount}`);
-     });
-   }
-   ```
+  ``` TypeScript
+  onPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
+    photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo) => {
+      if (err !== undefined && err.code !== 0) {
+        return;
+      }
+      console.info(`photo capture end, captureId : ${captureEndInfo.captureId}`);
+      console.info(`frameCount : ${captureEndInfo.frameCount}`);
+    });
+  }
+  ```
 
 - 通过注册固定的captureReady回调函数获取监听可拍下一张结果，photoOutput创建成功时即可监听，当下一张可拍时触发，该事件返回结果为下一张可拍的相关信息。
 
-   <!-- @[camera_onPhotoOutputCaptureReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
+  <!-- @[camera_onPhotoOutputCaptureReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
 
-   ``` TypeScript
-   onPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): void {
-     photoOutput.on('captureReady', (err: BusinessError) => {
-       if (err !== undefined && err.code !== 0) {
-         return;
-       }
-       console.info(`photo capture ready`);
-     });
-   }
-   ```
+  ``` TypeScript
+  onPhotoOutputCaptureReady(photoOutput: camera.PhotoOutput): void {
+    photoOutput.on('captureReady', (err: BusinessError) => {
+      if (err !== undefined && err.code !== 0) {
+        return;
+      }
+      console.info(`photo capture ready`);
+    });
+  }
+  ```
 
 - 通过注册固定的error回调函数获取监听拍照输出流的错误结果。callback返回拍照输出接口使用错误时的对应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
 
-   <!-- @[camera_onPhotoOutputError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
+  <!-- @[camera_onPhotoOutputError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets)) -->
 
-   ``` TypeScript
-   onPhotoOutputError(photoOutput: camera.PhotoOutput): void {
-     photoOutput.on('error', (error: BusinessError) => {
-       console.error(`Photo output error code: ${error.code}`);
-     });
-   }
-   ```
+  ``` TypeScript
+  onPhotoOutputError(photoOutput: camera.PhotoOutput): void {
+    photoOutput.on('error', (error: BusinessError) => {
+      console.error(`Photo output error code: ${error.code}`);
+    });
+  }
+  ```

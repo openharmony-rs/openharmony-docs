@@ -238,7 +238,7 @@
                  context: this.context, // 将宿主线程的context传给worker线程使用。
                  surfaceId: this.surfaceId, // 将surfaceId传给worker线程使用。
                })
-             })// The width and height of the surface are opposite to those of the XComponent.
+             }) // Surface的宽度和高度与XComponent的宽度和高度相反。
              .width(this.uiContext.px2vp(this.imageHeight))
              .height(this.uiContext.px2vp(this.imageWidth))
    

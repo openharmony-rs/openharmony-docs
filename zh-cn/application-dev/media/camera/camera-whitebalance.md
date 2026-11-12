@@ -24,7 +24,7 @@
    - 方法一：通过[isWhiteBalanceModeSupported](../../reference/apis-camera-kit/arkts-apis-camera-WhiteBalanceQuery.md#iswhitebalancemodesupported20)判断是否支持该白平衡模式。再通过[setWhiteBalanceMode](../../reference/apis-camera-kit/arkts-apis-camera-WhiteBalance.md#setwhitebalancemode20)和[getWhiteBalanceMode](../../reference/apis-camera-kit/arkts-apis-camera-WhiteBalance.md#getwhitebalancemode20)分别设置和查看白平衡模式（只能查看当前已设置的白平衡模式）。该接口提供白平衡模式设置，目前包括：自动、手动、阴天、白炽光、荧光、日光和锁定。当同时设置白平衡模式和设置白平衡值时，仅可生效一种，默认白平衡模式优先生效。
 
       <!-- @[camera_isWhiteBalanceModeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   
+      
       ``` TypeScript
       isWhiteBalanceModeSupported(session: camera.PhotoSession | camera.VideoSession): boolean {
         let status: boolean = false;

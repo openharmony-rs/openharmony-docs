@@ -313,7 +313,7 @@
 
 ### 开发步骤
 
-使能高性能拍照。
+使用高性能拍照。
 
    <!-- @[camera_enableHighPerfCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
@@ -344,70 +344,70 @@
 
 - 在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)结束之后进行调用。 
 
-   <!-- @[camera_useHighPerfCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   
-   ``` TypeScript
-   async startSessionWithHighPerf(photoSession: camera.PhotoSession, cameraInput: camera.CameraInput,
-     previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
-     try {
-       photoSession.addInput(cameraInput);
-       let canAddPreviewOutput: boolean = false;
-       canAddPreviewOutput = photoSession.canAddOutput(previewOutput);
-       if (!canAddPreviewOutput) {
-         console.error(`Failed to add preview output.`);
-         return;
-       }
-       photoSession.addOutput(previewOutput);
-       let canAddPhotoOutput: boolean = false;
-       canAddPhotoOutput = photoSession.canAddOutput(photoOutput);
-       if (!canAddPhotoOutput) {
-         console.error(`Failed to add photo output.`);
-         return;
-       }
-       photoSession.addOutput(photoOutput);
-       await photoSession.commitConfig();
-       await photoSession.start();
-       await this.modeSwitchToHigh(photoSession, photoOutput);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`session flow error: ${err.code}`);
-     }
-   }
-   ```
+  <!-- @[camera_useHighPerfCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  async startSessionWithHighPerf(photoSession: camera.PhotoSession, cameraInput: camera.CameraInput,
+    previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+    try {
+      photoSession.addInput(cameraInput);
+      let canAddPreviewOutput: boolean = false;
+      canAddPreviewOutput = photoSession.canAddOutput(previewOutput);
+      if (!canAddPreviewOutput) {
+        console.error(`Failed to add preview output.`);
+        return;
+      }
+      photoSession.addOutput(previewOutput);
+      let canAddPhotoOutput: boolean = false;
+      canAddPhotoOutput = photoSession.canAddOutput(photoOutput);
+      if (!canAddPhotoOutput) {
+        console.error(`Failed to add photo output.`);
+        return;
+      }
+      photoSession.addOutput(photoOutput);
+      await photoSession.commitConfig();
+      await photoSession.start();
+      await this.modeSwitchToHigh(photoSession, photoOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`session flow error: ${err.code}`);
+    }
+  }
+  ```
 
 - 在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)之前调用。 
 
-   <!-- @[camera_useHighPerfCapture_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   
-   ``` TypeScript
-   async startSessionWithHighPerfOption(photoSession: camera.PhotoSession, cameraInput: camera.CameraInput,
-     previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
-     try {
-       photoSession.addInput(cameraInput);
-       let canAddPreviewOutput: boolean = false;
-       canAddPreviewOutput = photoSession.canAddOutput(previewOutput);
-       if (!canAddPreviewOutput) {
-         console.error(`Failed to add preview output.`);
-         return;
-       }
-       photoSession.addOutput(previewOutput);
-       let canAddPhotoOutput: boolean = false;
-       canAddPhotoOutput = photoSession.canAddOutput(photoOutput);
-       if (!canAddPhotoOutput) {
-         console.error(`Failed to add photo output.`);
-         return;
-       }
-       photoSession.addOutput(photoOutput);
-       // 在commitConfig之前设置高性能拍照。
-       await this.modeSwitchToHigh(photoSession, photoOutput);
-       await photoSession.commitConfig();
-       await photoSession.start();
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`session flow error: ${err.code}`);
-     }
-   }
-   ```
+  <!-- @[camera_useHighPerfCapture_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  async startSessionWithHighPerfOption(photoSession: camera.PhotoSession, cameraInput: camera.CameraInput,
+    previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+    try {
+      photoSession.addInput(cameraInput);
+      let canAddPreviewOutput: boolean = false;
+      canAddPreviewOutput = photoSession.canAddOutput(previewOutput);
+      if (!canAddPreviewOutput) {
+        console.error(`Failed to add preview output.`);
+        return;
+      }
+      photoSession.addOutput(previewOutput);
+      let canAddPhotoOutput: boolean = false;
+      canAddPhotoOutput = photoSession.canAddOutput(photoOutput);
+      if (!canAddPhotoOutput) {
+        console.error(`Failed to add photo output.`);
+        return;
+      }
+      photoSession.addOutput(photoOutput);
+      // 在commitConfig之前设置高性能拍照。
+      await this.modeSwitchToHigh(photoSession, photoOutput);
+      await photoSession.commitConfig();
+      await photoSession.start();
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`session flow error: ${err.code}`);
+    }
+  }
+  ```
 
 ## 状态监听
 
@@ -415,48 +415,48 @@
 
 - 通过注册固定的captureStart回调函数获取监听拍照开始结果，photoOutput创建成功时即可监听，相机设备已经准备开始这次拍照时触发，该事件返回此次拍照的captureId。
 
-   <!-- @[capture_start_with_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   
-   ``` TypeScript
-   // 监听拍照开始。
-   photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo): void => {
-     Logger.info(TAG, `photoOutputCallBack captureStartWithInfo success: ${JSON.stringify(captureStartInfo)}`);
-   });
-   ```
+  <!-- @[capture_start_with_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  // 监听拍照开始。
+  photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo): void => {
+    Logger.info(TAG, `photoOutputCallBack captureStartWithInfo success: ${JSON.stringify(captureStartInfo)}`);
+  });
+  ```
 
 - 通过注册固定的captureEnd回调函数获取监听拍照结束结果，photoOutput创建成功时即可监听，该事件返回结果为拍照完全结束后的相关信息[CaptureEndInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#captureendinfo)。
 
 
-   <!-- @[capture_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   
-   ``` TypeScript
-   // 监听拍照结束。
-   photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo): void => {
-     Logger.info(TAG, `photoOutputCallBack captureEnd captureId:
-       ${captureEndInfo.captureId}, frameCount: ${captureEndInfo.frameCount}`);
-   });
-   ```
+  <!-- @[capture_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  // 监听拍照结束。
+  photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo): void => {
+    Logger.info(TAG, `photoOutputCallBack captureEnd captureId:
+      ${captureEndInfo.captureId}, frameCount: ${captureEndInfo.frameCount}`);
+  });
+  ```
 
 - 通过注册固定的captureReady回调函数获取监听可拍下一张结果，photoOutput创建成功时即可监听，当下一张可拍时触发，该事件返回结果为下一张可拍的相关信息。
 
-   <!-- @[capture_ready](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   
-   ``` TypeScript
-   photoOutput.on('captureReady', (err: BusinessError) => {
-     if (err !== undefined && err.code !== 0) {
-       return;
-     }
-     console.info(`photo capture ready`);
-   });
-   ```
+  <!-- @[capture_ready](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  photoOutput.on('captureReady', (err: BusinessError) => {
+    if (err !== undefined && err.code !== 0) {
+      return;
+    }
+    console.info(`photo capture ready`);
+  });
+  ```
 
 - 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
 
-   <!-- @[photoOutput_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   
-   ``` TypeScript
-   // 监听拍照异常。
-   photoOutput.on('error', (err: BusinessError): void => {
-     console.error(`photoOutput error, err code: ${err.code}`);
-   });
-   ```
+  <!-- @[photoOutput_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+  ``` TypeScript
+  // 监听拍照异常。
+  photoOutput.on('error', (err: BusinessError): void => {
+    console.error(`photoOutput error, err code: ${err.code}`);
+  });
+  ```
