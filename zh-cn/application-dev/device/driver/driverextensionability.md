@@ -62,7 +62,7 @@
            // 示例中为接收了"Hello"，并将"Hello World"返回给应用。
            reply.writeString(optFir + ` World`);
          }
-       } catch {
+       } catch (err) {
           console.info('testTag', `onRemoteMessageRequest error code is: ${err.code} with info: ${err.message}`);
        }
        return true;
