@@ -2,7 +2,7 @@
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @chaceli-->
+<!--Owner: @liutianqi-->
 <!--Designer: @chande-->
 <!--Tester: @sunzibin001-->
 <!--Adviser: @zengyawen-->
@@ -20,8 +20,8 @@
 | 命令          | 描述                                                         |
 | ------------- | ------------------------------------------------------------ |
 | -h            | 帮助命令，用于查询工具支持的命令信息。                         |
-| installUserCA | 安装用户CA证书。  |
-| findUserCA    | 查询用户CA证书。  |
+| installUserCA | 安装用户CA证书。从API版本26.0.1开始支持。 |
+| findUserCA    | 查询用户CA证书。从API版本26.1.0开始支持。 |
 
 ## 帮助命令（-h）
 
