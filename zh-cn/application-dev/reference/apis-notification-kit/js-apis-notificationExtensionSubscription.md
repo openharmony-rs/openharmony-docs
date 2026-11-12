@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API版本22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 通过本模块订阅的通知扩展事件不通过本模块的接口回调投递，而是通过[NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md)的回调（如onReceiveMessage）投递，相关回调在该ExtensionAbility实例的主线程上执行。
 ## 导入模块
@@ -349,7 +349,7 @@ getUserGrantedBundleIcon(bundleName: string): Promise\<image.PixelMap\>
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| bundleName | string | 是 | 需要查询图标的应用包名。 |
+| bundleName | string | 是 | 包名。 |
 
 **返回值：**
 
@@ -399,7 +399,7 @@ disableUserGrantedByBundle(bundle: GrantedBundleInfo): Promise\<void\>
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| bundle | [GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 是 | 需要关闭开关的应用的包信息。 |
+| bundle | [GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 是 | 描述已授权应用的包信息。 |
 
 **返回值：**
 
@@ -413,8 +413,8 @@ disableUserGrantedByBundle(bundle: GrantedBundleInfo): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.     |
+| 801      | Capability not supported. Possible causes: <br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. |
 | 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.Database operation failed. |
 | 1600003  | Failed to connect to the service. |
 | 1600022  | The specified bundle is invalid. |

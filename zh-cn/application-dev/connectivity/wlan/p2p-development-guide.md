@@ -45,7 +45,7 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
    ``` TypeScript
    import { wifiManager } from '@kit.ConnectivityKit';
    ```
-2. 开启设备的Wi-Fi。
+2. 开启设备的Wi-Fi，开启之前您可以调用[wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 创建/删除P2P群组。
    <!-- @[createGroup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
@@ -126,7 +126,7 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
    ``` TypeScript
    import { wifiManager } from '@kit.ConnectivityKit';
    ```
-2. 开启设备的Wi-Fi。
+2. 开启设备的Wi-Fi，开启之前您可以调用[wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 注册"p2pPeerDeviceChange"事件回调，并在回调实现中执行P2P连接。
    <!-- @[connectP2p](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
@@ -236,7 +236,7 @@ P2P模式，主要提供了WLAN设备的一种点对点连接技术，它可以�
 
 ### 获取对端IP以及Socket通信
 1. import需要的Wi-Fi模块。
-2. 开启设备的Wi-Fi。
+2. 开启设备的Wi-Fi，开启之前您可以调用[wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 3. 需要SystemCapability.Communication.WiFi.P2P系统能力。
 4. 通过[wifiP2pLinkedInfo.connectState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#p2pconnectstate)获取P2P连接状态，确保连接状态为CONNECTED。
 5. 通过[wifiP2pGroupInfo.goIpAddress](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifip2pgroupinfo)获取群组IP地址，以便Socket通信。

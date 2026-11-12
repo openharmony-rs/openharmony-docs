@@ -114,6 +114,7 @@
 | [supportDevicePerformanceClasses](#supportdeviceperformanceclasses标签) | 表示特定卡片支持的设备性能等级信息。例如，卡片的supportDevicePerformanceClasses字段配置了“high”、“medium”、“low”，那么该卡片就支持在性能等级为“high”、“medium”、“low”设备上面显示。<br/>**说明：**<br/>从API version 22开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["high", "medium", "low"]。 |
 | [standby](#standby标签) | 待机屏保显示页面卡片扩展字段。<br/>**说明：**<br/>从API version 23开始，支持该字段。依赖系统实现待机屏保应用。 | 对象 | 可缺省，属性缺省值见[standby标签](#standby标签)。 |
 | isColorModeRefreshEnabled | 表示卡片是否使能深浅色模式切换触发刷新。<br/>-&nbsp;true：使能。<br/>-&nbsp;false：不使能。<br/>**说明：**<br/>从API版本26.1.0开始，支持该字段。 | 布尔类型 | 可缺省，缺省值为false。 |
+| enableTint | 表示卡片是否使能赋色。<br/>-&nbsp;true：使能。<br/>-&nbsp;false：不使能。<br/>**说明：**<br/>从API版本26.1.0开始，支持该字段，功能仅系统应用支持。 | 布尔类型 | 可缺省，缺省值为true。 |
 
 ### supportDeviceTypes标签
 
@@ -154,8 +155,8 @@
 | 名称                | 类型  | 必填 | 说明                                                                                                                                  |
 |-------------------|-----|----|-------------------------------------------------------------------------------------------------------------------------------------|
 | abilityName       | 字符串 | 否  | 趣味交互场景LiveFormExtensionAbility名称，默认为空。                                                                                              |
-| targetBundleName  | 字符串 | 是  | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。       |
-| subBundleName     | 字符串 | 否  | 趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)，默认为空。|
+| targetBundleName  | 字符串 | 是  | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/doccenter-games/games-quickgame-independent-subpackage-0000002351933645)。       |
+| subBundleName     | 字符串 | 否  | 趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/doccenter-games/games-quickgame-independent-subpackage-0000002351933645)，默认为空。|
 | keepStateDuration | 数值  | 否  | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为(0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为(0,10000]的整数，超过取值范围则取默认值10000。                                               |
 
 ```json5

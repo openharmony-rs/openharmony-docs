@@ -18,7 +18,16 @@ ArkTS提供丰富的函数特性，包括参数、返回值、类型定义、重
 
 ## 函数的声明与调用
 
-函数通过`function`关键字声明，包含函数名、参数列表、返回类型和函数体，通过函数名加括号调用。函数的作用体现在四个方面：将重复逻辑封装以避免代码冗余、将复杂操作封装以提供清晰接口、将大任务分解为小函数以便管理和测试、隐藏实现细节只暴露必要接口。由此带来的好处是提高复用性（一次编写多处调用）、增强可读性（函数名直观表达功能）、易于维护（修改一处所有调用点生效）、便于测试（独立函数更易单独测试调试）。
+函数通过`function`关键字声明，包含函数名、参数列表、返回类型和函数体，通过函数名加括号调用。
+
+函数的作用体现在四个方面：
+
+- 将重复逻辑封装，避免代码冗余。
+- 将复杂操作封装，提供清晰接口。
+- 将大任务分解为小函数，便于管理和测试。
+- 隐藏实现细节，只暴露必要接口。
+
+由此带来的好处包括：提高复用性（一次编写多处调用）、增强可读性（函数名直观表达功能）、易于维护（修改一处所有调用点生效）、便于测试（独立函数更易单独测试调试）。
 
 ### 函数的基本语法结构
 
@@ -329,12 +338,12 @@ function log(message: string): void {
   console.info(`${message}`);
 }
 
-function notify(message: string): void {
-  alert(message);
-}
-
 function alert(message: string): void {
   console.info(`Alert: ${message}`);
+}
+
+function notify(message: string): void {
+  alert(message);
 }
 
 // void函数可以提前返回
@@ -1328,11 +1337,11 @@ type VcCallback = () => void;
 
 // 返回number的函数可赋给void返回类型
 let vcCb: VcCallback = (): number => {
-  console.info('side effect');
+  console.info('副作用');
   return 42;
 };
 
-vcCb(); // 打印side effect，返回值42被忽略
+vcCb(); // 打印'副作用'，返回值42被忽略
 ```
 
 此规则仅适用于返回值类型为`void`时，不适用于其他返回类型。常用于事件处理、回调注册等不需要返回值的场景。

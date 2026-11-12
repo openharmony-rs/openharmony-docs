@@ -9690,6 +9690,132 @@ async function example(context: Context, assetUri: string) {
 }
 ```
 
+### deleteLocalAssetsAndGetUris
+
+static deleteLocalAssetsAndGetUris(context: Context, assetUris: string[]): Promise&lt;Array&lt;AssetUriResult&gt;&gt;
+
+批量删除本地的媒体资产（照片或视频）到回收站，并返回每个资产的操作结果。使用Promise异步回调。
+
+> **说明：**
+>
+> - 对仅存在于本端设备的资产，直接删除到回收站，操作成功后resultUri为该资产在回收站中的新URI。
+> - 对仅存在于云端的资产，不做任何处理，操作结果中isSuccess为false，resultUri为空字符串。
+> - 对同时存储在本端设备和云端的资产，调用接口后仅保留云端资产，本地资产进入回收站，操作成功后resultUri为本地资产在回收站中的新URI。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 传入Ability实例的Context。 |
+| assetUris | string[] | 是    | 待删除的图片或者视频URI数组，数组中元素个数不超过500个。 |
+
+**返回值：**
+
+| 类型                  | 说明         |
+| ------------------- | ---------- |
+| Promise&lt;Array&lt;AssetUriResult&gt;&gt; | Promise对象，返回每个资产的操作结果数组，结果数组与入参assetUris数组一一对应。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: <br>1. The context is empty;<br>2. Asset uri array size is empty or bigger than 500. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted;<br>2. The file system is abnormal;<br>3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(context: Context, assetUris: string[]) {
+  console.info('deleteLocalAssetsAndGetUrisDemo');
+  try {
+    let results: Array<photoAccessHelper.AssetUriResult> =
+      await photoAccessHelper.MediaAssetChangeRequest.deleteLocalAssetsAndGetUris(context, assetUris);
+    for (const result of results) {
+      console.info(`originalUri: ${result.originalUri}, resultUri: ${result.resultUri}, isSuccess: ${result.isSuccess}`);
+    }
+  } catch (err) {
+    console.error(`deleteLocalAssetsAndGetUris failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### recoverAssetsAndGetUris
+
+static recoverAssetsAndGetUris(context: Context, assetUris: string[]): Promise&lt;Array&lt;AssetUriResult&gt;&gt;
+
+从回收站中批量恢复指定的URI字符串数组所对应的资产，并返回每个资产的操作结果。使用Promise异步回调。
+
+> **说明：**
+>
+> - 操作成功后，资产从回收站恢复到正常状态，resultUri为恢复后资产的新URI。
+>
+> - 操作失败时，isSuccess为false，resultUri为空字符串。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 传入Ability实例的Context。 |
+| assetUris | string[] | 是    | 待从回收站中恢复的资产URI数组，数组中元素个数不超过500个。 |
+
+**返回值：**
+
+| 类型                  | 说明         |
+| ------------------- | ---------- |
+| Promise&lt;Array&lt;AssetUriResult&gt;&gt; | Promise对象，返回每个资产的操作结果数组，结果数组与入参assetUris数组一一对应。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: <br>1. The context is empty;<br>2. Asset uri array size is empty or bigger than 500. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: <br>1. Database corrupted;<br>2. The file system is abnormal;<br>3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+async function example(context: Context, assetUris: string[]) {
+  console.info('recoverAssetsAndGetUrisDemo');
+  try {
+    let results: Array<photoAccessHelper.AssetUriResult> =
+      await photoAccessHelper.MediaAssetChangeRequest.recoverAssetsAndGetUris(context, assetUris);
+    for (const result of results) {
+      console.info(`originalUri: ${result.originalUri}, resultUri: ${result.resultUri}, isSuccess: ${result.isSuccess}`);
+    }
+  } catch (err) {
+    console.error(`recoverAssetsAndGetUris failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### deleteCloudAssetsWithUri<sup>22+</sup>
 
 static deleteCloudAssetsWithUri(context: Context, assetUris: string[]): Promise&lt;void&gt;
@@ -14609,6 +14735,24 @@ async function example(context: Context) {
 | ---------------------- |---------------------------------| ---- |---- | ------------------------------------------------ |
 | sourceMode           | [SourceMode](#sourcemode11)     | 否  | 是   | 资源文件的读取类型，可以指定当前请求获取的是源文件或编辑后的文件。<br>**系统接口**：此接口为系统接口。 |
 
+## AssetUriResult
+
+媒体资产URI的操作结果信息。
+
+**起始版本：** 26.1.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| originalUri | string | 是 | 否 | 操作对应的原始资产URI。 |
+| resultUri | string | 是 | 否 | 操作结果对应的资产URI。操作失败时为空字符串。 |
+| isSuccess | boolean | 是 | 否 | 操作是否成功。true表示成功，false表示失败，失败时resultUri为空字符串。 |
+
 ## Progress
 
 复制操作的进度信息。
@@ -16659,6 +16803,138 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.info('apply getShareAlbumMemberInfo successfully');
   } catch (err) {
     console.error(`getShareAlbumMemberInfo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### setShareCoverUri
+
+setShareCoverUri(owner: string, coverUri: string): void
+
+设置共享相册封面。该操作需通过[applyShareAlbumChanges](#applysharealbumchanges)提交后生效。
+
+> **说明：**
+>
+> - 仅共享相册创建者可以修改封面。
+> - coverUri必须为当前共享相册中的图片或视频资产的URI；若该资产被删除、隐藏或风控，封面恢复为默认封面。
+> - 手动设置封面后，封面不再随默认封面规则变更；如需恢复默认封面，请调用[resetShareCoverUri](#resetsharecoveruri)。
+> - 封面更新后，封面设置信息会同步到云端；多设备同时设置封面时，以最后同步到云端的封面为最终封面。
+> - 共享相册信息已从云端同步到本端，但封面资产尚未下载到本端时，本端仍按本地规则配置封面：已手动设置封面则保持本端设置的封面、未设置则保持默认封面、待封面资产下载到本端后再刷新封面。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO 和 ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| owner | string | 是   | 共享相册创建者的OwnerId。 |
+| coverUri | string | 是   | 待设置为封面的资产URI，必须为当前共享相册中的图片或视频资产。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The albums are not share album. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, coverUri: string) {
+  console.info('setShareCoverUriDemo');
+  try {
+    // 查询共享相册。
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums();
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    // 创建共享相册变更请求。
+    let shareAlbumChangeRequest: photoAccessHelper.MediaShareAlbumChangeRequest =
+      new photoAccessHelper.MediaShareAlbumChangeRequest(album);
+    // 设置共享相册封面，coverUri需为当前相册内图片或视频资产的URI。
+    shareAlbumChangeRequest.setShareCoverUri('ownerId', coverUri);
+    // 提交共享相册变更请求。
+    await phAccessHelper.applyShareAlbumChanges(shareAlbumChangeRequest);
+    console.info('setShareCoverUri successfully');
+  } catch (err) {
+    console.error(`setShareCoverUriDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### resetShareCoverUri
+
+resetShareCoverUri(owner: string): void
+
+恢复共享相册的默认封面。该操作需通过[applyShareAlbumChanges](#applysharealbumchanges)提交后生效。
+
+> **说明：**
+>
+> - 仅共享相册创建者可以恢复默认封面。
+> - 恢复后按默认封面规则选取封面：使用共享相册中最新一批、拍摄时间最新且未被风控的图片。新增或变更图片时，先比较批次，再比较添加时间，取批次最大、添加时间最新的图片。
+> - 封面资产被删除、隐藏或风控时，会在未被风控的资产中重新选取默认封面。
+> - 恢复默认封面后，封面重新随默认封面规则变化。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO 和 ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| owner | string | 是   | 共享相册创建者的OwnerId。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The albums are not share album. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('resetShareCoverUriDemo');
+  try {
+    // 查询共享相册。
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums();
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    // 创建共享相册变更请求。
+    let shareAlbumChangeRequest: photoAccessHelper.MediaShareAlbumChangeRequest =
+      new photoAccessHelper.MediaShareAlbumChangeRequest(album);
+    // 恢复共享相册的默认封面。
+    shareAlbumChangeRequest.resetShareCoverUri('ownerId');
+    // 提交共享相册变更请求。
+    await phAccessHelper.applyShareAlbumChanges(shareAlbumChangeRequest);
+    console.info('resetShareCoverUri successfully');
+  } catch (err) {
+    console.error(`resetShareCoverUriDemo failed with error: ${err.code}, ${err.message}`);
   }
 }
 ```

@@ -40,13 +40,13 @@ openToast(options: ShowToastOptions): Promise&lt;number&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数**
+**参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明           |
 | ------- | ------------------------------------------------------------ | ---- | -------------- |
 | options | [ShowToastOptions](#showtoastoptions) | 是   | Toast选项，用于配置Toast的显示内容和样式。 |
 
-**返回值**
+**返回值：**
 
 | 类型             | 说明                                 |
 | ---------------- | ------------------------------------ |
@@ -126,7 +126,7 @@ closeToast(toastId: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数**
+**参数：**
 
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | ----------------------------- |

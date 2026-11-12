@@ -15,6 +15,8 @@
 >
 > 应用正常关闭时，不会触发[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)备份流程。应用正常启动（例如通过startAbility接口启动或点击图标启动）时，不触发[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)恢复流程。
 
+Navigation/router等多页面应用的页面栈恢复配置与深栈补推，详见[UIAbility备份恢复适配指导](app-restore-adaptation.md)。
+
 ## 运行机制
 - [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)数据备份：当应用后台运行时，如果因系统资源管控、进程被kill、异常崩溃等非正常原因退出时，系统自动调用[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)进行备份。
 - [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)数据恢复：恢复的[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)数据可以在应用的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中获取，页面栈数据在应用的[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期中恢复。

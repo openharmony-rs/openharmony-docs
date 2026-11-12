@@ -53,8 +53,7 @@ constructor(node: FrameNode, distance: number)
 import {
   BaseGestureHandlingProposal,
   GestureHandlingResolution,
-  ScrollActionProposal,
-  GestureShortcut,
+  ScrollActionProposal
 } from '@kit.ArkUI';
 
 @Entry

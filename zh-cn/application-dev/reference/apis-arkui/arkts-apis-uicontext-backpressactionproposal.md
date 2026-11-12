@@ -32,8 +32,7 @@ constructor()
 import {
   BackPressActionProposal,
   BaseGestureHandlingProposal,
-  GestureHandlingResolution,
-  GestureShortcut,
+  GestureHandlingResolution
 } from '@kit.ArkUI';
 
 @Entry

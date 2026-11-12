@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍音频输入设备管理能力，指导开发者使用AudioRoutingManager查询输入设备信息、监听设备连接状态变化，并说明支持的音频输入设备类型。"
+keywords: [音频输入设备, AudioRoutingManager, getDevices, deviceChange, 麦克风, 蓝牙耳机, 有线耳机, 星闪设备, 录音设备]
+doctype: guide
+status: active
+---
 # 查询和监听音频输入设备
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -121,3 +128,9 @@ async function getRoutingManager() {
 }
 ```
 <!--DelEnd-->
+
+## 相关主题推荐
+
+- [实现音频输入设备路由切换](audio-input-device-switcher.md)
+- [查询和监听音频输出设备](audio-output-device-management.md)
+- [选择合适的录制流类型](using-right-sourcetype-for-recording.md)
