@@ -437,7 +437,7 @@ function nfcTechDemo() {
     try {
         isoDep.isExtendedApduSupported((err: BusinessError, response: boolean) => {
             if (err) {
-                console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${err.code}, message: ${err. message}`);
+                console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("isoDep isExtendedApduSupported AsyncCallback response: " + response);
             }
