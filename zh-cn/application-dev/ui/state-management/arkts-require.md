@@ -24,7 +24,15 @@
 
 ## 限制条件
 
-\@Require装饰器仅用于装饰struct内的\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）。
+1. \@Require装饰器仅用于装饰struct内的\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）。
+
+2. 从API版本26.1.0开始，在ArkTS-Dyn上下文中，父组件在构造子组件时，若向\@Require装饰的非空类型字段传入undefined，将在编译期输出WARN告警。
+
+   告警示例如下：
+
+   ```ts
+   The type of property 'required_value' decorated with '@Require' is expected to be 'number', but is actually 'undefined' in the component constructor.
+   ```
 
 <!--RP1-->
 

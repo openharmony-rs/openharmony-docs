@@ -53,7 +53,7 @@ HiTraceChain在ArkTS中的使用方法参考以下示例，开发者可参考[�
    ```
 
    定义测试方法：
-   <!-- @[TestHiTraceChain_TestFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[TestHiTraceChain_TestFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    function initTraceId() {
@@ -80,6 +80,8 @@ HiTraceChain在ArkTS中的使用方法参考以下示例，开发者可参考[�
      hilog.info(0x0000, 'testTag', 'record with traceId at first task');
      test(10).then(()=>{
        hilog.info(0x0000, 'testTag', 'record with traceId at then function');
+     }).catch((err: Error) => {
+       hilog.error(0x0000, 'testTag', `test failed, code: ${err.message}`);
      })
      hiTraceChain.end(traceId);
      hilog.info(0x0000, 'testTag', 'hiTraceChain end in main thread');

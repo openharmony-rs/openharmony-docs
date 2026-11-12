@@ -248,7 +248,7 @@ toybox的执行方式有两种：
 | expand    | 根据输入参数将制表符展开为空格。<br/>usage: expand [-t TABLIST] [FILE...] |
 | fallocate | 让文件系统给文件预留空间。<br/>usage: fallocate [-o OFFSET] -l SIZE FILE |
 | file      | 检查给定的文件并描述其内容类型。<br/>usage: file [-bhLs] [FILE...] |
-| find      | 在目录中搜索匹配的文件。<br/>usage: find [-HL] [DIR...] [<options>] |
+| find      | 在目录中搜索匹配的文件。<br/>usage: find [-HL] [DIR...] [&lt;options&gt;] |
 | flock     | 管理文件锁（advisory lock）。<br/>usage: flock [-sxun] fd |
 | fmt       | 将输入重新格式化为给定行长的换行，保留现有的缩进级别，写入标准输出设备。<br/>usage: fmt [-w WIDTH] [FILE...] |
 | gunzip    | 解压文件。如果没有文件，则从标准输入设备解压到标准输出设备。成功后，输入文件将被删除并替换为新的没有.gz后缀的文件。<br/>usage: gunzip [-cfkt] [FILE...] |

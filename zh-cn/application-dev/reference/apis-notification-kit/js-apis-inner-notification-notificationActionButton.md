@@ -11,7 +11,7 @@ NotificationActionButton模块定义了通知中显示的操作按钮，用于�
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
-> - 本模块首批接口从API版本7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## NotificationActionButton
 

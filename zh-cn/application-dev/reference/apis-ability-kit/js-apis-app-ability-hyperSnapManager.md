@@ -233,3 +233,53 @@ try {
   console.error(`Failed to get last error. Code: ${code}, Message: ${message}`);
 }
 ```
+
+## hyperSnapManager.isHyperSnapInitializing
+
+isHyperSnapInitializing(): boolean
+
+查询当前进程是否正在进行快启初始化。
+
+> **说明：**
+>
+> - 该接口可用于应用区分正常冷启动和快启模板进程初始化，从而调整初始化逻辑。
+
+**起始版本：** 26.1.0
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 表示当前进程是否正在进行快启初始化。true表示正在进行快启初始化，false表示未进行快启初始化（快照已完成、失败或进程不是模板进程）。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000050 | Connect to system service failed. |
+
+**示例：**
+
+```ts
+import { hyperSnapManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isInitializing: boolean = hyperSnapManager.isHyperSnapInitializing();
+  if (isInitializing) {
+    console.info('The current process is undergoing Hyper Snap initialization.');
+  } else {
+    console.info('The current process is not undergoing Hyper Snap initialization.');
+  }
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`Failed to check Hyper Snap initialization. Code: ${code}, Message: ${message}`);
+}
+```

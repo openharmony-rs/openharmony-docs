@@ -2974,8 +2974,8 @@ export default class EntryAbility extends UIAbility {
 <!--Table: 25%; 25%; 8%; 8%; 44%-->
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考长时任务主类型与子类型对照表。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24      |
-| backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考长时任务主类型与子类型对照表。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24 |
+| backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考[长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24      |
+| backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考[长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24 |
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24  |
 | combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24 |
 | continuousTaskId | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 是    | 长时任务ID，默认值为-1。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24    |
@@ -3447,7 +3447,7 @@ class EntryAbility extends UIAbility {
 
 ## BackgroundTaskMode<sup>21+</sup>
 
-长时任务主类型。通常与长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)配合使用，对照关系请参考长时任务主类型与子类型对照表，两者共同作为API version 21新增的申请[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)、更新[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)长时任务接口入参，用于指定长时任务类型。<br/>仅当主类型为MODE_SPECIAL_SCENARIO_PROCESSING特殊场景类型，或非PC/2in1设备主类型为MODE_TASK_KEEPING计算任务时，调用长时任务相关接口时需同时申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)，其他场景无需申请该权限。
+长时任务主类型。通常与长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)配合使用，对照关系请参考[长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)，两者共同作为API version 21新增的申请[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)、更新[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)长时任务接口入参，用于指定长时任务类型。<br/>仅当主类型为MODE_SPECIAL_SCENARIO_PROCESSING特殊场景类型，或非PC/2in1设备主类型为MODE_TASK_KEEPING计算任务时，调用长时任务相关接口时需同时申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)，其他场景无需申请该权限。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -3469,7 +3469,7 @@ class EntryAbility extends UIAbility {
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
-长时任务子类型。通常与长时任务主类型[BackgroundTaskMode](#backgroundtaskmode21)配合使用，对照关系请参考长时任务主类型与子类型对照表，两者共同作为API version 21新增的申请、更新长时任务接口入参，用于指定长时任务类型。
+长时任务子类型。通常与长时任务主类型[BackgroundTaskMode](#backgroundtaskmode21)配合使用，对照关系请参考[长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)，两者共同作为API version 21新增的申请、更新长时任务接口入参，用于指定长时任务类型。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -3487,23 +3487,6 @@ class EntryAbility extends UIAbility {
 | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup>  | 9 | 媒体处理，例如：应用在后台导出媒体文件，通知类型为普通文本通知。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24    |
 | SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  | 10 | 视频投播，例如：应用使用三方投播组件在后台进行投播，通知类型为普通文本通知。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24  |
 | SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup>  | 11 | 运动，例如：应用在后台有室内跑步场景，通知类型为普通文本通知。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br> **ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 24 |
-
-**长时任务主类型与子类型对照表：**
-
-| 长时任务主类型[BackgroundTaskMode](#backgroundtaskmode21) | 长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)  |
-| --------------------------------- | ----------------------------------- |
-| MODE_DATA_TRANSFER                | SUBMODE_LIVE_VIEW_NOTIFICATION      |
-| MODE_AUDIO_PLAYBACK               | SUBMODE_NORMAL_NOTIFICATION         |
-| MODE_AUDIO_RECORDING              | SUBMODE_NORMAL_NOTIFICATION         |
-| MODE_LOCATION                     | SUBMODE_NORMAL_NOTIFICATION         |
-| MODE_BLUETOOTH_INTERACTION        | SUBMODE_NORMAL_NOTIFICATION <br/>SUBMODE_CAR_KEY_NORMAL_NOTIFICATION         |
-| MODE_MULTI_DEVICE_CONNECTION      | SUBMODE_NORMAL_NOTIFICATION         |
-| MODE_VOIP                         | SUBMODE_NORMAL_NOTIFICATION         |
-| MODE_TASK_KEEPING                 | SUBMODE_NORMAL_NOTIFICATION         |
-| MODE_AV_PLAYBACK_AND_RECORD  | SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<br/>SUBMODE_AVSESSION_AUDIO_PLAYBACK<br/>SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<br/>SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<br/>SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION  |
-| MODE_SPECIAL_SCENARIO_PROCESSING  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION <br/>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION  <br/>SUBMODE_WORK_OUT_NORMAL_NOTIFICATION |
-| MODE_NEARLINK          | SUBMODE_NORMAL_NOTIFICATION         |
-| MODE_USB_CONNECTION             | SUBMODE_NORMAL_NOTIFICATION         |
 
 ## UserAuthResult<sup>22+</sup>
 

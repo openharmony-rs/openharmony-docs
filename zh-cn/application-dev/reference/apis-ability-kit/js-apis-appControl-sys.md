@@ -313,9 +313,8 @@ ArkTS-Sta示例:
 ```ts
 'use static'
 
-import { appControl } from '@kit.AbilityKit';
+import { appControl, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 // 开发者需根据实际工程更新appId。
 let appId = "com.example.myapplication_xxxxx";
 

@@ -8,7 +8,7 @@
 
 默认情况下，通知消息会进行[跨设备协同](notification-glossary.md#cross-device-collaboration跨设备协同)。如果应用已通过分布式通信能力实现跨设备协同（例如短信通知消息由短信应用本身协同到Wearable、Tablet、PC/2in1等设备），为了避免通知消息在不同设备上重复发送，需要针对[分布式通知](notification-glossary.md#distributed-notification分布式通知)的协同设备进行管理。
 
-从API版本18开始，支持系统应用通过以下方式对分布式通知的协同设备进行管理：
+从API version 18开始，支持系统应用通过以下方式对分布式通知的协同设备进行管理：
 
 - 当应用的某个通知消息仅在当前设备发布时，需要将[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md)参数中的**notDistributed**字段配置为true。
 - 当应用的某个通知消息需要按设备管控名单发布时，需要将[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md)参数中的**notDistributed**字段配置为false，**forceDistributed**字段配置为true。

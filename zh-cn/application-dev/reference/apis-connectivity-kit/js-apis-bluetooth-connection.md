@@ -283,6 +283,67 @@ try {
 ```
 
 
+## connection.cancelPairedDevice
+
+cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
+
+删除已配对的对端设备。使用Promise异步回调。
+
+删除行为因调用方的身份而异：对于第三方应用，删除配对前会弹出系统确认对话框，只有在用户确认对话框后，配对才会被移除。
+
+**起始版本**： 26.1.0
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型     | 必填   | 说明                                    |
+| -------- | ------ | ---- | ------------------------------------- |
+| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+
+**返回值：**
+
+| 类型                  | 说明            |
+| ------------------- | ------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|202 | Non-system applications are not allowed to use system APIs.<br>适用版本：10-26.0.1 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900013 | The user does not respond.<br>适用版本：26.1.0+ |
+|2900014 | User refuse the action.<br>适用版本：26.1.0+ |
+|2900016 | Device unpaired.<br>适用版本：26.1.0+ |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    connection.cancelPairedDevice('11:22:33:44:55:66').then(() => {
+        console.info('cancelPairedDevice');
+    }, (error: BusinessError) => {
+        console.error('cancelPairedDevice: errCode:' + error.code + ',errMessage' + error.message);
+    })
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + err.message);
+}
+```
+
+
 ## connection.getRemoteDeviceName
 
 getRemoteDeviceName(deviceId: string): string
