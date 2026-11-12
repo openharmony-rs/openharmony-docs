@@ -74,7 +74,7 @@
      cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
      let photoProfilesArray: camera.Profile[] = cameraOutputCapability.photoProfiles;
      if (!photoProfilesArray || photoProfilesArray.length === 0) {
-       console.error('photoProfilesArray is null or []');
+       console.error(`photoProfilesArray is null or []`);
      }
      let photoOutput: camera.PhotoOutput | undefined = undefined;
      try {
@@ -102,16 +102,16 @@
    setPhotoOutputCb(photoOutput: camera.PhotoOutput, context: Context) {
      // 设置回调之后，调用photoOutput的capture方法，就会将拍照的buffer回传到回调中。
      photoOutput.on('photoAvailable', (errCode: BusinessError, photo: camera.Photo): void => {
-       console.info('getPhoto start');
+       console.info(`getPhoto start`);
        if (errCode || photo === undefined) {
          console.error(`getPhoto failed, err: ${errCode}`);
          return;
        }
-         // 如需要在图库中看到所保存的图片、视频资源，请使用用户无感的安全控件创建媒体资源。
-         this.mediaLibSavePhotoSingle(context, photo.main)
+       // 如需要在图库中看到所保存的图片、视频资源，请使用用户无感的安全控件创建媒体资源。
+       this.mediaLibSavePhotoSingle(context, photo.main)
      });
    }
-   
+
    mediaLibSavePhotoSingle(context: Context, imageObj: image.Image) {
      imageObj.getComponent(image.ComponentType.JPEG, async (errCode: BusinessError, component: image.Component) => {
        if (errCode || component === undefined) {
@@ -255,10 +255,10 @@
        }
        this.photoOutput.capture(settings, (err: BusinessError) => {
          if (err) {
-           console.error(`Failed to capture the photo. error: ${err}`);
+           console.error(`Failed to capture the photo. error: ${err.code}`);
            return;
          }
-         console.info('Callback invoked to indicate the photo capture request success.');
+         console.info(`Callback invoked to indicate the photo capture request success.`);
        });
      } catch (error) {
        console.error(`capture call failed. error: ${error}`);
@@ -467,7 +467,7 @@
   <!-- @[capture_start_with_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
   
   ``` TypeScript
-  // 监听拍照开始
+  // 监听拍照开始。
   photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo): void => {
     Logger.info(TAG, `photoOutputCallBack captureStartWithInfo success: ${JSON.stringify(captureStartInfo)}`);
   });
@@ -478,7 +478,7 @@
   <!-- @[capture_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
   
   ``` TypeScript
-  // 监听拍照结束
+  // 监听拍照结束。
   photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo): void => {
     Logger.info(TAG, `photoOutputCallBack captureEnd captureId:
       ${captureEndInfo.captureId}, frameCount: ${captureEndInfo.frameCount}`);
@@ -503,8 +503,8 @@
   <!-- @[photoOutput_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
   
   ``` TypeScript
-  // 监听拍照异常
-  photoOutput.on('error', (data: BusinessError): void => {
-    Logger.info(TAG, `photoOutput data: ${JSON.stringify(data)}`);
+  // 监听拍照异常。
+  photoOutput.on('error', (err: BusinessError): void => {
+    console.error(`photoOutput error, err code: ${err.code}`);
   });
   ```

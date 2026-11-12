@@ -45,7 +45,7 @@
      }
      let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
      if (!photoProfilesArray || photoProfilesArray.length === 0) {
-       console.error("photoProfilesArray is null or []");
+       console.error(`photoProfilesArray is null or []`);
        return;
      }
      let photoOutput: camera.PhotoOutput | undefined = undefined;
@@ -130,10 +130,10 @@
    function onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput, context: Context): void {
      photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset): void => {
        if (err) {
-         console.error(`photoAssetAvailable error: ${err}.`);
+         console.error(`photoAssetAvailable error: ${err.code}.`);
          return;
        }
-       console.info('photoOutPutCallBack photoAssetAvailable');
+       console.info(photoOutputCallBack photoAssetAvailable);
        // 调用媒体库落盘接口保存一阶段图和动态照片视频。
        mediaLibSavePhoto(photoAsset, getPhotoAccessHelper(context));
      });

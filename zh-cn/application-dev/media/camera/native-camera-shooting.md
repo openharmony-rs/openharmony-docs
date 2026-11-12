@@ -46,6 +46,7 @@
    #include "ohcamera/video_output.h"
    #include "napi/native_api.h"
    #include "ohcamera/camera_manager.h"
+   #include "ohcamera/camera_device.h"
    #include <window_manager/oh_display_info.h>
    #include <window_manager/oh_display_manager.h>
    
@@ -87,7 +88,7 @@
    通过[OH_CameraManager_CreatePhotoOutputWithoutSurface()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface)方法创建拍照输出流。
 
    <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->    
-   
+
    ``` C++
    Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurfaceId()
    {
@@ -305,7 +306,7 @@
          napi_value asyncResource = nullptr;
          napi_value asyncResourceName = nullptr;
          napi_async_work work;
-     
+
          if (size == 0 || size > SIZE_MAX) {
              OH_LOG_ERROR(LOG_APP, "BufferCb size is invalid");
              return;
@@ -315,7 +316,7 @@
              return;
          }
          OH_LOG_INFO(LOG_APP, "BufferCb copyBuffer:%{public}p", copyBuffer);
-         // 使用std::memcpy复制buffer的内容到copyBuffer。
+         // 使用 std::memcpy 复制 buffer 的内容到 copyBuffer。
          std::memcpy(copyBuffer, buffer, size);
          napi_create_string_utf8(env_, "BufferCb", NAPI_AUTO_LENGTH, &asyncResourceName);
          napi_status status = napi_create_async_work(
