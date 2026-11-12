@@ -133,7 +133,7 @@
 
 示例：
 
-<!-- @[spc_menu_uec_development_guidance_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityPrivacyCenter/MenuUIAbilityDemo/entry/src/main/ets/entryability/EntryAbility.ets)  -->
+<!-- @[spc_menu_development_guidance_ui_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityPrivacyCenter/MenuUIAbilityDemo/entry/src/main/ets/entryability/EntryAbility.ets)  -->
 
 ```typescript
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
