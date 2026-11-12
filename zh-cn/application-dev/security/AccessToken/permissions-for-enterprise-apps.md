@@ -813,9 +813,9 @@ UDID（Unified Device ID）是设备的唯一标识。
 
 ## ohos.permission.ENTERPRISE_MANAGE_DISK
 
-允许企业应用查询本地磁盘硬件信息。
+允许企业普通应用查询本地磁盘硬件信息。
 
-获取该权限后，应用可查询本地磁盘的开关机次数（GetDiskPowerCycleCount）和开机时长（GetDiskPowerOnHours），帮助企业管理员监控磁盘健康状态。
+获取该权限后，应用可查询本地磁盘的相关敏感信息，如磁盘运转时间、磁盘启停次数等，帮助企业管理员监控磁盘健康状态。
 
 <!--RP2--><!--RP2End-->
 
