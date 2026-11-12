@@ -27,6 +27,8 @@ isWifiActive(): boolean
 
 查询Wi-Fi是否已使能。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.isWifiActive](js-apis-wifiManager.md#wifimanageriswifiactive)替代。
@@ -60,6 +62,8 @@ scan(): boolean
 
 启动Wi-Fi扫描。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.scan](js-apis-wifiManager.md#wifimanagerscandeprecated)替代。
@@ -92,6 +96,8 @@ getScanInfos(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
 获取扫描结果，使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getScanInfoList](js-apis-wifiManager.md#wifimanagergetscaninfolist10)替代。
@@ -112,6 +118,8 @@ getScanInfos(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 getScanInfos(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
 获取扫描结果，使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -213,6 +221,8 @@ addUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
 添加不可信网络配置，使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.addCandidateConfig](js-apis-wifiManager.md#wifimanageraddcandidateconfig)替代。
@@ -271,6 +281,8 @@ addUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boolean&
 
 添加不可信网络配置，使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.addCandidateConfig](js-apis-wifiManager.md#wifimanageraddcandidateconfig-1)替代。
@@ -323,6 +335,8 @@ try {
 removeUntrustedConfig(config: WifiDeviceConfig): Promise&lt;boolean&gt;
 
 移除不可信网络配置，使用Promise异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -384,6 +398,8 @@ removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;boole
 
 移除不可信网络配置，使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.removeCandidateConfig](js-apis-wifiManager.md#wifimanagerremovecandidateconfig-1)替代。
@@ -437,6 +453,8 @@ getSignalLevel(rssi: number, band: number): number
 
 查询Wi-Fi信号强度。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getSignalLevel](js-apis-wifiManager.md#wifimanagergetsignallevel)替代。
@@ -479,6 +497,8 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 获取Wi-Fi连接信息。使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getLinkedInfo](js-apis-wifiManager.md#wifimanagergetlinkedinfo)替代。
@@ -499,6 +519,8 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 获取Wi-Fi连接信息。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -587,6 +609,8 @@ isConnected(): boolean
 
 查询Wi-Fi是否已连接。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.isConnected](js-apis-wifiManager.md#wifimanagerisconnected)替代。
@@ -607,6 +631,8 @@ isConnected(): boolean
 isFeatureSupported(featureId: number): boolean
 
 判断设备是否支持指定featureId对应的Wi-Fi特性。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -649,6 +675,8 @@ try {
 getIpInfo(): IpInfo
 
 获取IP信息。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -703,6 +731,8 @@ getCountryCode(): string
 
 获取国家码信息。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.getCountryCode](js-apis-wifiManager.md#wifimanagergetcountrycode)替代。
@@ -729,12 +759,13 @@ try {
 }
 ```
 
-
 ## wifi.getP2pLinkedInfo<sup>(deprecated)</sup>
 
 getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 获取P2P连接信息。使用Promise异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -749,7 +780,6 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
   | 类型 | 说明 |
   | -------- | -------- |
   | Promise&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | Promise对象。表示P2P连接信息。 |
-
 
 
 ## WifiP2pLinkedInfo<sup>(deprecated)</sup>
@@ -791,6 +821,8 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 获取P2P连接信息。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.getP2pLinkedInfo](js-apis-wifiManager.md#wifimanagergetp2plinkedinfo-1)替代。
@@ -828,6 +860,8 @@ getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
 获取P2P当前组信息。使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.getCurrentGroup](js-apis-wifiManager.md#wifimanagergetcurrentgroup)替代。
@@ -848,6 +882,8 @@ getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
 获取P2P当前组信息。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -886,6 +922,8 @@ getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
 获取P2P对端设备列表信息。使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.getP2pPeerDevices](js-apis-wifiManager.md#wifimanagergetp2ppeerdevices)替代。
@@ -906,6 +944,8 @@ getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
 获取P2P对端设备列表信息。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -981,6 +1021,8 @@ wifi.getP2pPeerDevices().then(data => {
 createGroup(config: WifiP2PConfig): boolean
 
 创建群组。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1063,6 +1105,8 @@ removeGroup(): boolean
 
 移除群组。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.removeGroup](js-apis-wifiManager.md#wifimanagerremovegroup)替代。
@@ -1093,6 +1137,8 @@ try {
 p2pConnect(config: WifiP2PConfig): boolean
 
 执行P2P连接。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1189,6 +1235,8 @@ p2pCancelConnect(): boolean
 
 取消P2P连接。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.p2pCancelConnect](js-apis-wifiManager.md#wifimanagerp2pcancelconnect)替代。
@@ -1220,6 +1268,8 @@ startDiscoverDevices(): boolean
 
 开始发现设备。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.startDiscoverDevices](js-apis-wifiManager.md#wifimanagerstartdiscoverdevices)替代。
@@ -1250,6 +1300,8 @@ try {
 stopDiscoverDevices(): boolean
 
 停止发现设备。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1306,6 +1358,8 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 注册Wi-Fi状态改变事件。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronwifistatechange)替代。
@@ -1336,6 +1390,8 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 取消注册Wi-Fi状态改变事件。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1374,6 +1430,8 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 注册Wi-Fi连接状态改变事件。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronwificonnectionchange)替代。
@@ -1402,6 +1460,8 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
 取消注册Wi-Fi连接状态改变事件。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1439,6 +1499,8 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 注册扫描状态改变事件。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronwifiscanstatechange)替代。
@@ -1467,6 +1529,8 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 取消注册扫描状态改变事件。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1504,6 +1568,8 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 注册RSSI状态改变事件。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronwifirssichange)替代。
@@ -1525,6 +1591,8 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
 取消注册RSSI状态改变事件。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1563,6 +1631,8 @@ wifi.off("wifiRssiChange", recvWifiRssiChangeFunc);
 on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 注册热点状态改变事件。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1632,6 +1702,8 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 注册P2P开关状态改变事件。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pstatechange)替代。
@@ -1662,6 +1734,8 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
 取消注册P2P开关状态改变事件。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1699,6 +1773,8 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
 
 注册P2P连接状态改变事件。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pconnectionchange)替代。
@@ -1720,6 +1796,8 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
 off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 取消注册P2P连接状态改变事件。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1757,6 +1835,8 @@ on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
 注册P2P设备状态改变事件。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pdevicechange)替代。
@@ -1778,6 +1858,8 @@ on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 取消注册P2P设备状态改变事件。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1815,6 +1897,8 @@ on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
 注册P2P对端设备状态改变事件。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2ppeerdevicechange)替代。
@@ -1836,6 +1920,8 @@ on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
 off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): void
 
 取消注册P2P对端设备状态改变事件。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1873,6 +1959,8 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 注册P2P永久组状态改变事件。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2ppersistentgroupchange)替代。
@@ -1894,6 +1982,8 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
 取消注册P2P永久组状态改变事件。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >
@@ -1932,6 +2022,8 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 注册发现设备状态改变事件。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 >
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pdiscoverychange)替代。
@@ -1960,6 +2052,8 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 取消注册发现设备状态改变事件。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 >

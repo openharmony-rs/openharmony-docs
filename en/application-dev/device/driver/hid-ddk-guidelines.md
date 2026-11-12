@@ -55,7 +55,7 @@ A non-standard peripheral application obtains the HID device ID by using the per
 | int32_t OH_Hid_Write(Hid_DeviceHandle *dev, uint8_t *data, uint32_t length, uint32_t *bytesWritten) | Writes a report to a HID device.|
 | int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, int timeout, uint32_t *bytesRead) | Reads a report from a HID device within the specified time.|
 | int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, uint32_t *bytesRead) | Reads a report from a HID device in the specified mode. The blocking mode (that is, blocking remains active until data can be read) is used by default. You can call **OH_Hid_SetNonBlocking** to change the mode.|
-| int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonblock) | Sets the device read mode to non-blocking mode.|
+| int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonBlock) | Sets the device read mode to non-blocking mode.|
 | int32_t OH_Hid_GetRawInfo(Hid_DeviceHandle *dev, Hid_RawDevInfo *rawDevInfo) | Obtains the raw information of a HID device.|
 | int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t bufSize) | Obtains the raw name of a HID device.|
 | int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t bufSize) | Obtains the physical address of a HID device.|

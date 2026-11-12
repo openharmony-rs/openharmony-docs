@@ -54,7 +54,7 @@ HidDdk（HID Driver Development Kit）是为开发者提供的HID设备驱动程
 | int32_t OH_Hid_Write(Hid_DeviceHandle *dev, uint8_t *data, uint32_t length, uint32_t *bytesWritten) | 向设备写入报告。 |
 | int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, int timeout, uint32_t *bytesRead) | 在指定的超时时间内从设备读取报告。 |
 | int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, uint32_t *bytesRead) | 从设备读取报告，默认为阻塞模式（阻塞等待直到有数据可读取），可以调用OH_Hid_SetNonBlocking改变模式。 |
-| int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonblock) | 设置设备读取模式为非阻塞。 |
+| int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonBlock) | 设置设备读取模式为非阻塞。 |
 | int32_t OH_Hid_GetRawInfo(Hid_DeviceHandle *dev, Hid_RawDevInfo *rawDevInfo) | 获取设备原始信息。 |
 | int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t bufSize) | 获取设备原始名称。 |
 | int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t bufSize) | 获取设备物理地址。 |

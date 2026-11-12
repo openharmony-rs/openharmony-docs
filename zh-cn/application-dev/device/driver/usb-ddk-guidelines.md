@@ -51,10 +51,11 @@ UsbDdk（USB Driver Development Kit）是为开发者提供的USB驱动程序开
 | 名称 | 描述 |
 | -------- | -------- |
 | int32_t OH_Usb_Init(void) | 初始化DDK。 |
-| int32_t OH_Usb_Release(void) | 释放DDK。 |
+| void OH_Usb_Release(void) | 释放DDK。 |
+| int32_t OH_Usb_ReleaseResource(void) | 释放USB DDK。在不再使用USB DDK功能时使用以正确释放资源，需在调用OH_Usb_Init()完成初始化后使用。该接口返回一个整数值，可用于判断执行结果。 |
 | int32_t OH_Usb_GetDeviceDescriptor(uint64_t deviceId, struct UsbDeviceDescriptor *desc) | 获取设备描述符。 |
 | int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struct UsbDdkConfigDescriptor **const config) | 获取配置描述符。请在描述符使用完后使用OH_Usb_FreeConfigDescriptor()释放描述符，否则会造成内存泄漏。 |
-| int32_t OH_Usb_FreeConfigDescriptor(const struct UsbDdkConfigDescriptor *const config) | 释放配置描述符，请在描述符使用完后释放描述符，否则会造成内存泄漏。 |
+| void OH_Usb_FreeConfigDescriptor(struct UsbDdkConfigDescriptor *const config) | 释放配置描述符，请在描述符使用完后释放描述符，否则会造成内存泄漏。 |
 | int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_t *interfaceHandle) | 声明接口。 |
 | int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingIndex) | 激活接口的备用设置。 |
 | int32_t OH_Usb_GetCurrentInterfaceSetting(uint64_t interfaceHandle, uint8_t \*settingIndex) | 获取接口当前激活的备用设置。 |
@@ -62,9 +63,12 @@ UsbDdk（USB Driver Development Kit）是为开发者提供的USB驱动程序开
 | int32_t OH_Usb_SendControlWriteRequest(uint64_t interfaceHandle, const struct UsbControlRequestSetup \*setup, uint32_t timeout, const uint8_t \*data, uint32_t dataLen) | 发送控制写请求，该接口为同步接口。 |
 | int32_t OH_Usb_ReleaseInterface(uint64_t interfaceHandle) | 释放接口。 |
 | int32_t OH_Usb_SendPipeRequest(const struct UsbRequestPipe *pipe, UsbDeviceMemMap *devMmap) | 发送管道请求，该接口为同步接口。中断传输和批量传输都使用该接口发送请求。 |
+| int32_t OH_Usb_SendPipeRequestWithAshmem(const struct UsbRequestPipe *pipe, DDK_Ashmem *ashmem) | 基于共享内存发送管道请求，该接口为同步接口。中断传输和批量传输都使用该接口发送请求。 |
 | int32_t OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMap **devMmap) | 创建缓冲区。请在缓冲区使用完后，调用OH_Usb_DestroyDeviceMemMap()销毁缓冲区，否则会造成资源泄漏。 |
-| int32_t OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap) | 销毁缓冲区。请在缓冲区使用完后及时销毁缓冲区，否则会造成资源泄漏。 |
+| void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap) | 销毁缓冲区。请在缓冲区使用完后及时销毁缓冲区，否则会造成资源泄漏。 |
 | int32_t OH_Usb_GetDevices(struct Usb_DeviceArray *devices) | 获取USB设备ID列表。请保证传入的指针参数是有效的，申请的设备ID数组的大小建议不超过128，以避免过度占用内存。在使用完结构之后，释放成员内存，否则造成资源泄漏。获取到的USB设备ID，已通过驱动配置信息中的vid进行筛选过滤。 |
+| int32_t OH_Usb_ControlTransfer(uint64_t deviceID, const struct UsbControlRequestSetup *setupPacket, uint8_t *data, uint32_t timeout) | 执行USB控制传输，该接口为同步接口。 |
+| int32_t OH_Usb_GetNonRootHubs(struct Usb_NonRootHubArray *nonRootHub) | 查询并返回非根集线器列表。请保证传入的指针参数是有效的，申请的非根集线器ID数组的大小建议不超过128，以避免过度占用内存。在使用完结构体之后，需释放成员内存，否则会造成资源泄漏。 |
 
 详细的接口说明请参考[UsbDdk](../../reference/apis-driverdevelopment-kit/capi-usbddk.md)。
 
