@@ -41,6 +41,7 @@
 | [ArkUI_DismissReason](#arkui_dismissreason) | ArkUI_DismissReason | 弹窗关闭的触发方式。 |
 | [ArkUI_LevelMode](#arkui_levelmode) | ArkUI_LevelMode | 设置弹窗显示层级。 |
 | [ArkUI_ImmersiveMode](#arkui_immersivemode) | ArkUI_ImmersiveMode | 指定嵌入式弹窗的蒙层覆盖区域。 |
+| [OH_ArkUI_NativeModule_HandednessMode](#oh_arkui_nativemodule_handednessmode) | OH_ArkUI_NativeModule_HandednessMode | 枚举弹窗的握持手适配模式。 |
 | [ArkUI_DialogState](#arkui_dialogstate) | ArkUI_DialogState |  弹窗的状态。 |
 
 ### 函数
@@ -73,6 +74,8 @@
 | [int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, bool isModal)](#oh_arkui_customdialog_setmodalmode) | - | 设置自定义弹窗是否开启模态样式的弹窗。 |
 | [int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, bool autoCancel)](#oh_arkui_customdialog_setautocancel) | - | 设置自定义弹窗是否允许点击遮罩层退出。 |
 | [int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* options, bool showInSubwindow)](#oh_arkui_customdialog_setsubwindowmode) | - | 设置弹窗是否在子窗口显示此弹窗。 |
+| [int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandednessInOptions(ArkUI_CustomDialogOptions* options, OH_ArkUI_NativeModule_HandednessMode mode)](#oh_arkui_nativemodule_customdialog_setadapttohandednessinoptions) | - | 设置弹窗参数的握持手适配模式。 |
+| [int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandedness(ArkUI_NativeDialogHandle handle, OH_ArkUI_NativeModule_HandednessMode mode)](#oh_arkui_nativemodule_customdialog_setadapttohandedness) | - | 设置指定弹窗的握持手适配模式。 |
 | [int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32_t maskColor, const ArkUI_Rect* maskRect)](#oh_arkui_customdialog_setmask) | - | 设置自定义弹窗遮罩属性。 |
 | [int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* options, ArkUI_KeyboardAvoidMode keyboardAvoidMode)](#oh_arkui_customdialog_setkeyboardavoidmode) | - | 设置弹窗避让键盘的模式。 |
 | [int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* options, bool enabled)](#oh_arkui_customdialog_sethovermodeenabled) | - | 设置弹窗是否响应悬停态。 |
@@ -143,6 +146,25 @@ enum ArkUI_ImmersiveMode
 | -- | -- |
 | ARKUI_IMMERSIVE_MODE_DEFAULT = 0 | 弹窗蒙层按照显示页面给定的布局约束显示。 |
 | ARKUI_IMMERSIVE_MODE_EXTEND = 1 | 弹窗蒙层可扩展至覆盖状态栏和导航条。 |
+
+### OH_ArkUI_NativeModule_HandednessMode
+
+```c
+enum OH_ArkUI_NativeModule_HandednessMode
+```
+
+**描述：**
+
+
+枚举弹窗的握持手适配模式。
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_NONE = 0 | 不做适配，弹窗保持当前布局。 |
+| OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_ANCHOR = 1 | 弹窗跟随触发组件的位置。 |
+| OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_GRIP_HAND = 2 | 弹窗跟随握持手（握持设备的手）。 |
 
 ### ArkUI_DialogState
 
@@ -870,6 +892,64 @@ int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* option
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | bool showInSubwindow | 设置弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true：弹窗可以显示在主窗口外，独立子窗口。值为false：弹窗显示在应用内，非独立子窗口。<br/>默认值：false|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandednessInOptions()
+
+```c
+int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandednessInOptions(ArkUI_CustomDialogOptions* options, OH_ArkUI_NativeModule_HandednessMode mode)
+```
+
+**描述：**
+
+
+设置弹窗参数的握持手适配模式。弹窗向触发组件位置（OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_ANCHOR）或握持手（握持设备的手）（OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_GRIP_HAND）一侧偏移。当不存在触发组件或感知服务不可用时，回退至当前布局。
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 指向弹窗参数对象的指针。指针不能为NULL。 |
+| [OH_ArkUI_NativeModule_HandednessMode](#oh_arkui_nativemodule_handednessmode) mode | 握持手适配模式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandedness()
+
+```c
+int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandedness(ArkUI_NativeDialogHandle handle, OH_ArkUI_NativeModule_HandednessMode mode)
+```
+
+**描述：**
+
+
+设置指定弹窗的握持手适配模式。弹窗向触发组件位置（OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_ANCHOR）或握持手（握持设备的手）（OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_GRIP_HAND）一侧偏移。当不存在触发组件或感知服务不可用时，回退至当前布局。
+
+> **说明：**
+>
+> 本方法需要在调用[show](capi-arkui-nativemodule-arkui-nativedialogapi-1.md#show)方法之前调用。
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
+| [OH_ArkUI_NativeModule_HandednessMode](#oh_arkui_nativemodule_handednessmode) mode | 握持手适配模式。 |
 
 **返回：**
 
