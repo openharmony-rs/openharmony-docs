@@ -283,11 +283,11 @@
      return obj;
    }
    
-   function testencode(obj: test_pb) {
+   function testEncode(obj: test_pb) {
      return test_pb.encode(obj);
    }
    
-   function testdecode(data: ArrayBuffer | collections.ArrayBuffer) {
+   function testDecode(data: ArrayBuffer | collections.ArrayBuffer) {
      let obj = test_pb.decode(data);
      console.info(`expect value_int32 ${obj?.value_int32} = 1`);
      console.info(`expect value_double ${obj?.value_double} = 12`);
@@ -298,9 +298,9 @@
    
    export function testProtobuf(): test_pb {
      let obj = testCreate();
-     let buf = testencode(obj);
+     let buf = testEncode(obj);
      if (buf) {
-       testdecode(buf);
+       testDecode(buf);
      }
      return obj;
    }
