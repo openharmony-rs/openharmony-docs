@@ -1,4 +1,4 @@
-# RecoverableStorage: 应用终止场景状态变量自动保存与恢复
+# RecoverableStorage: 资源管控终止恢复
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了增强状态管理框架在应用被系统终止或异常退出场景下的数据恢复能力，开发者可以使用RecoverableStorage自动保存与恢复状态变量。
+为了增强状态管理框架在应用被系统资源管控终止或异常退出场景下的数据恢复能力，开发者可以使用RecoverableStorage自动保存与恢复状态变量。
 
 RecoverableStorage是应用程序中的可选单例对象。此对象的作用是：当应用被系统以资源管控方式终止（如低内存）或因JS_ERROR、APP_FREEZE异常退出时，自动保存所声明的状态变量的当前值；应用被系统重新拉起后，自动恢复这些值，实现UI无感恢复。
 
@@ -20,7 +20,7 @@ RecoverableStorage是应用程序中的可选单例对象。此对象的作用�
 
 ## 概述
 
-RecoverableStorage是应用启动时创建的单例，提供终止/异常退出场景下状态变量的声明、保存与恢复能力。开发者通过`connect`声明变量后，系统在存盘时机自动提取当前值；应用被系统重新拉起后，再次执行`connect`即可读回保存的值。
+RecoverableStorage是应用启动时创建的单例，提供资源管控终止/异常退出场景下状态变量的声明、保存与恢复能力。开发者通过`connect`声明变量后，系统在存盘时机自动提取当前值；应用被系统重新拉起后，再次执行`connect`即可读回保存的值。
 
 **快照模型 vs 写穿模型**：
 
@@ -45,7 +45,7 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(): void {
-    // ② 终止链门控（点卡恢复通道）
+    // ② 资源管控终止链门控（点卡恢复通道）
     this.context.setRestoreEnabled(true);
 
     // ③ 异常链恢复的关键一步：系统判定"是否走默认恢复"时要读contentStorage，
@@ -62,7 +62,7 @@ export default class EntryAbility extends UIAbility {
 
 ### 两场景唯一差异：调不调enableAppRecovery
 
-**终止场景**：不创建AbilityStage（或创建但不调`enableAppRecovery`）。
+**资源管控终止场景**：不创建AbilityStage（或创建但不调`enableAppRecovery`）。
 
 **异常退出场景**：
 
@@ -175,7 +175,7 @@ struct CartPage {
 
 ## 使用场景
 
-### 终止后恢复
+### 资源管控终止后恢复
 
 应用被系统资源管控终止后，系统自动重新拉起，`connect`读回退后台时保存的值。
 
@@ -199,7 +199,7 @@ struct DraftPage {
 }
 ```
 
-用户在TextInput输入文字 → 按Home退后台（触发存档）→ 应用被终止 → 系统重新拉起 → TextInput文字复原。
+用户在TextInput输入文字 → 按Home退后台（触发存档）→ 应用被资源管控终止 → 系统重新拉起 → TextInput文字复原。
 
 ### 异常退出后恢复
 
