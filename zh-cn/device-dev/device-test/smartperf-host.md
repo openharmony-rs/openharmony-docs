@@ -10,7 +10,7 @@ Smartperf-Host是一款深入挖掘数据、细粒度地展示数据的性能功
 
 PC端以Smartperf-Host网站的形式进行发布，内部分为Trace Streamer数据解析、SQLite数据存储、hdc设备管理、数据导入、UI绘制、数据分析等模块。下文会重点对Smartperf-Host提供的各项能力进行介绍。
 ## 项目目录
-```
+```text
 /smartperf_host
 ├── host                          # Smartperf-Host 相关代码。
 │   ├── doc                       # Smartperf-Host 相关使用文档。

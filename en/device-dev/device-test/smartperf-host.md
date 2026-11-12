@@ -10,7 +10,7 @@ The device end consists of modules such as Native Hook (application-embedded com
 
 The PC end is accessible from the Smartperf-Host website. It consists of modules such as Trace Streamer, SQLite, HDC device management, data import, UI drawing, and data analysis.  
 ## Project Directory
-```
+```text
 /smartperf_host
 ├── host                          # Smartperf-Host related code
 │   ├── doc                       # Smartperf-Host documentation
