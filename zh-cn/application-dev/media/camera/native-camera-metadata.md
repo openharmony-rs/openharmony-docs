@@ -109,7 +109,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 5. 配置session，完成后通过调用[OH_CaptureSession_Start()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_start)方法输出metadata数据。接口调用失败会返回相应错误码，错误码类型参见[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
 
    <!-- @[add_metadata_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-   
+
    ``` C++
    // 开始配置会话。
    Camera_ErrorCode ret = OH_CaptureSession_BeginConfig(captureSession_);
