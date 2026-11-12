@@ -356,9 +356,11 @@ async function testAddWaterMark() {
 
 skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
-录屏时，应用可对本应用的隐私窗口做安全豁免。使用Promise异步回调。
+录屏时豁免指定隐私窗口列表。使用Promise异步回调。
 
-如录屏时，用户在本应用进行输入密码等操作，应用不会进行黑屏处理。
+> **说明：**
+>
+> 录屏时，应用仅能对本应用的隐私窗口做安全豁免。例如，用户在本应用内输入密码等操作时，默认该隐私窗口会被黑屏遮挡；豁免后该窗口在录制画面中正常显示。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -857,11 +859,10 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 201      | permission denied. |
 | 5400103  | IO error. Return by ErrorCallback. |
 | 5400105  | Service died. Return by ErrorCallback. |
 

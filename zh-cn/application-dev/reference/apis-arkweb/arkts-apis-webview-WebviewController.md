@@ -2813,6 +2813,9 @@ getZoomFactor(): number
 > **说明：**
 >
 > - 本接口返回当前Web组件实际生效的页面缩放倍率。该倍率可能由本Controller通过[setZoomFactor](#setzoomfactor)设置，也可能在`zoomControlAccess`开启时由用户通过Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板调整，还可能受其他同Host Web组件的缩放操作影响，因此不一定等于本Controller上次设置的值。
+>
+> - 当设置的倍率已生效且未被其他操作改变时，由于内部浮点换算，查询值可能与设置后预期的倍率存在小于`0.001`的数值差异。例如，设置为`5`时可能查询到`4.999999999999999`，不影响页面缩放效果。
+>
 > - 浏览器实例尚未创建时，`getZoomFactor`返回默认值`1.0`，不会返回尚待应用的设置值。
 
 **起始版本：** 26.1.0
@@ -4003,7 +4006,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-清除应用内所有Webview产生的资源缓存。
+清除与当前WebView上下文相关的资源缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -11560,7 +11563,9 @@ struct WebComponent {
 </html>
 ```
 
-> **示例说明：** 示例中使用的`iframe_error.html`文件需放置在应用资源的`resources/rawfile/`目录下，该HTML文件中包含一个加载失败URL的iframe，用于触发subframe错误页。
+> **说明：**
+>
+> 示例中使用的`iframe_error.html`文件需放置在应用资源的`resources/rawfile/`目录下，该HTML文件中包含一个加载失败URL的iframe，用于触发subframe错误页。
 
 ## getSubframeErrorPageEnabled
 
@@ -11596,14 +11601,16 @@ getSubframeErrorPageEnabled(): boolean
 
 enableAutoReload(enable: boolean): void
 
-设置是否启用错误页面的自动重载。
+设置是否启用错误页面的自动重新加载。
 
-启用后，Web组件会在出现网络错误时自动重试加载，每次重试的时间间隔依次为：1s → 5s → 30s → 1min → 5min → 10min → 30min。最多重试7次后停止。
+启用后，Web组件会在出现网络错误时自动重新加载，每次重试的时间间隔依次为：1s → 5s → 30s → 1min → 5min → 10min → 30min。最多重试7次后停止。
 
 > **说明：**
 >
 > - 只有网络错误才会触发自动重新加载。不包括以下内容：证书错误、SSL（安全套接字层）协议错误、身份验证错误、POST请求、非HTTP(S)协议和客户端拦截的错误。
+>
 > - 自动重新加载不会影响[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调。
+>
 > - 当触发自动重新加载时，每次重试时[onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive)回调都会被重新调用。
 
 **起始版本：** 26.1.0
@@ -11616,7 +11623,7 @@ enableAutoReload(enable: boolean): void
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| enable | boolean | 是 | 是否启用自动重载。true表示启用，false表示不启用。|
+| enable | boolean | 是 | 是否启用自动重新加载。true表示启用，false表示不启用。|
 
 **错误码：**
 
@@ -11641,11 +11648,11 @@ struct WebComponent {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
         .onControllerAttached(() => {
-          // 启用错误页面的自动重载
+          // 启用错误页面的自动重新加载
           this.controller.enableAutoReload(true);
           // 查询是否已启用
           let isEnabled: boolean = this.controller.isAutoReloadEnabled();
-          console.info("已启用自动重载: " + isEnabled);
+          console.info("已启用自动重新加载: " + isEnabled);
         })
     }
   }
@@ -11656,7 +11663,7 @@ struct WebComponent {
 
 isAutoReloadEnabled(): boolean
 
-获取是否启用错误页面的自动重载。
+获取是否启用错误页面的自动重新加载。
 
 **起始版本：** 26.1.0
 
@@ -11668,7 +11675,7 @@ isAutoReloadEnabled(): boolean
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| boolean | 是否使能自动重新加载。如果启用，则返回true，否则返回false。|
+| boolean | 是否启用自动重新加载。如果启用，则返回true，否则返回false。|
 
 **错误码：**
 
@@ -11681,3 +11688,227 @@ isAutoReloadEnabled(): boolean
 **示例：**
 
 完整示例代码参考[enableAutoReload](#enableautoreload)。
+
+## setNavigationEntryUserData
+
+setNavigationEntryUserData(key: string, value: string): void
+
+在当前导航条目上设置用户数据的键值对。
+
+用户数据与导航条目生命周期相关联。当前导航条目是指导航历史记录中的活动条目。当条目被销毁时（例如，通过历史导航或clearHistory）会清除用户数据。如果已存在相同键的用户数据，则原值会被覆盖。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| key    | string | 是   | 用户数据的键。 |
+| value  | string | 是   | 用户数据的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          // 在当前导航条目上设置用户数据
+          this.controller.setNavigationEntryUserData('key', 'value');
+          // 获取用户数据
+          let value: string = this.controller.getNavigationEntryUserData('key');
+          console.info("获取用户数据: " + value);
+          // 删除用户数据
+          this.controller.removeNavigationEntryUserData('key');
+        })
+    }
+  }
+}
+```
+
+## getNavigationEntryUserData
+
+getNavigationEntryUserData(key: string): string
+
+获取与当前导航条目的指定键关联的用户数据值。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| key    | string | 是   | 用户数据的键。 |
+
+**返回值：**
+
+| 类型   | 说明                                       |
+| ------ | ------------------------------------------ |
+| string | 用户数据的值。如果键不存在，则返回为空字符串。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+完整示例代码参考[setNavigationEntryUserData](#setnavigationentryuserdata)。
+
+## removeNavigationEntryUserData
+
+removeNavigationEntryUserData(key: string): void
+
+从当前导航条目中删除与指定键关联的用户数据。如果键不存在，则此API不执行任何操作。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| key    | string | 是   | 要删除的用户数据的键。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+完整示例代码参考[setNavigationEntryUserData](#setnavigationentryuserdata)。
+
+## setDataDirectorySuffix
+
+static setDataDirectorySuffix(suffix: string): void
+
+设置当前进程 ArkWeb 的数据目录后缀。
+
+> **说明：**
+>
+> 同一应用不同进程的Web组件共享一份数据目录(cookie/缓存/存储)，多账号、多业务线数据互相污染。
+> 
+> 通过本接口为进程设置数据目录后缀后，该进程内Web引擎初始化时的用户数据目录将由默认的 `<filesDir>/../files/__arkweb`、`<filesDir>/../cache/web` 变为 
+> `<filesDir>/../files/__arkweb_<suffix>`、`<filesDir>/../cache/web_<suffix>`，从而实现按后缀的数据隔离。
+>
+> 该接口为全局静态API，必须在initializeWebEngine()初始化内核之前调用，否则设置无效。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| suffix | string | 是 | 数据目录后缀。仅支持字母与数字，长度为 1~128。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------------------------------ |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. The suffix only supports letters and digits with length 1 to 128. |
+| 17100025 | Engine already initialized. The suffix must be set before the web engine is initialized. |
+| 17100026 | Data directory suffix has already been set. Only one suffix can be set per process. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info("EntryAbility onCreate");
+    webview.WebviewController.setDataDirectorySuffix("myCustomSuffix");
+    if (webview.WebviewController.getDataDirectorySuffix() == "myCustomSuffix") {
+      console.info("DataDirectorySuffix is set to myCustomSuffix");
+    }
+    console.info("EntryAbility onCreate done");
+    webview.WebviewController.initializeWebEngine();
+  }
+}
+```
+
+## getDataDirectorySuffix
+
+static getDataDirectorySuffix(): string
+
+获取当前进程通过setDataDirectorySuffix设置的数据目录后缀。
+
+本接口仅返回已记录的后缀，不需要在Web内核初始化之前调用。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ------------------------------------------------ |
+| string | 当前进程的数据目录后缀；未设置时返回空字符串。 |
+
+**示例：**
+
+```ts
+// pages/Index.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getDataDirectorySuffix')
+        .onClick(() => {
+          const suffix: string = webview.WebviewController.getDataDirectorySuffix();
+          console.info(`DataDirectorySuffix is ${suffix}`);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```

@@ -35,9 +35,9 @@ import { FaultLogger } from '@kit.PerformanceAnalysisKit';
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | NO_SPECIFIC | 0 | 不区分故障类型。 |
-| CPP_CRASH | 2 | C++程序故障类型。 |
+| CPP_CRASH | 2 | Native运行时异常。 |
 | JS_CRASH | 3 | JS程序故障类型。 |
-| APP_FREEZE | 4 | 应用程序卡死故障类型。 |
+| APP_FREEZE | 4 | 应用程序冻屏故障类型。 |
 
 ## FaultLogInfo
 
@@ -69,7 +69,7 @@ query(faultType: FaultType, callback: AsyncCallback&lt;Array&lt;FaultLogInfo&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | faultType | [FaultType](#faulttype) | 是 | 输入要查询的故障类型。 |
-| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | 是 | 回调函数，在回调函数中获取故障信息数组。<br/>-&nbsp;value拿到故障信息数组；value为undefined表示获取过程中出现异常，error返回错误提示字符串。|
+| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | 是 | 回调函数，在回调函数中获取故障信息数组。<br/>value拿到故障信息数组；value为undefined表示获取过程中出现异常，error返回错误提示字符串。|
 
 **错误码：**
 
@@ -130,7 +130,7 @@ query(faultType: FaultType) : Promise&lt;Array&lt;FaultLogInfo&gt;&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise实例，可以在其then()方法中获取故障信息实例，也可以使用await。 <br/>-&nbsp;value拿到故障信息数组；value为undefined表示获取过程中出现异常。 |
+| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise实例，可以在其then()方法中获取故障信息实例，也可以使用await。 <br/>value拿到故障信息数组；value为undefined表示获取过程中出现异常。 |
 
 **错误码：**
 
@@ -188,7 +188,7 @@ querySelfFaultLog(faultType: FaultType, callback: AsyncCallback&lt;Array&lt;Faul
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | faultType | [FaultType](#faulttype) | 是 | 输入要查询的故障类型。 |
-| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | 是 | 回调函数，在回调函数中获取故障信息数组。<br/>-&nbsp;value拿到故障信息数组；value为undefined表示获取过程中出现异常，error返回错误提示字符串。|
+| callback | AsyncCallback&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | 是 | 回调函数，在回调函数中获取故障信息数组。<br/>value拿到故障信息数组；value为undefined表示获取过程中出现异常，error返回错误提示字符串。|
 
 **示例：**
 
@@ -240,7 +240,7 @@ querySelfFaultLog(faultType: FaultType) : Promise&lt;Array&lt;FaultLogInfo&gt;&g
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise实例，可以在其then()方法中获取故障信息实例，也可以使用await。 <br/>-&nbsp;value拿到故障信息数组；value为undefined表示获取过程中出现异常。 |
+| Promise&lt;Array&lt;[FaultLogInfo](#faultloginfo)&gt;&gt; | Promise实例，可以在其then()方法中获取故障信息实例，也可以使用await。 <br/>value拿到故障信息数组；value为undefined表示获取过程中出现异常。 |
 
 **示例：**
 

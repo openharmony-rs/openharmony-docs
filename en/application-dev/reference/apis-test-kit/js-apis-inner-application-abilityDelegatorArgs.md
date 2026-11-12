@@ -6,15 +6,15 @@
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=f49b12145b93fb1a0a3564baf1cfde447ea3a867 translatedAt=2026-08-07T09:45:30.442Z pushedAt=2026-08-10T01:35:02.249Z -->
+<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-11-03T01:19:03.990Z pushedAt=2026-11-03T03:28:36.397Z nl=1 -->
 
 **AbilityDelegatorArgs** encapsulates and provides test case parameters, which are obtained by calling [getArguments](js-apis-app-ability-abilityDelegatorRegistry.md#abilitydelegatorregistrygetarguments) in **AbilityDelegatorRegistry**. The parameters include key test parameters such as **bundleName**, **parameters**, and **testCaseNames**. This module provides a standard way to access parameters for test scripts.
-
+ 
 This module is applicable to scenarios where test parameters need to be obtained for condition judgment or test environment configuration during unit test script writing. Note that the APIs of this module can be used only in the test framework and should not be called in formal service code.
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
 > 
 > The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
 

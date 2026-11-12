@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍音频焦点的概念与工作机制，指导开发者使用合适的音频类型进行焦点申请与释放，处理焦点打断事件。"
+keywords: [音频焦点, 焦点被抢占, 音频打断, 并发播放, 焦点事件, 焦点是什么, 短音播放, 静音播放, InterruptEvent]
+doctype: guide
+status: active
+---
 # 音频焦点介绍
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -164,8 +171,8 @@ import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
 
-let isPlaying: boolean; // 是否正在播放，实际开发中，对应与音频播放状态相关的模块。
-let isDucked: boolean; // 是否降低音量，实际开发中，对应与音频音量相关的模块。
+let isPlaying: boolean; // 是否正在播放，实际开发中，对应于音频播放状态相关的模块。
+let isDucked: boolean; // 是否降低音量，实际开发中，对应于音频音量相关的模块。
 let started: boolean; // 标识符，记录“开始播放（start）”操作是否成功。
 
 async function onAudioInterrupt(): Promise<void> {

@@ -1,10 +1,20 @@
-# Working with Proxy Using JSVM-API
-<!--Kit: NDK Development-->
+---
+kits: ["ArkTS Kit"]
+description: "How to use JSVM-API to create Proxy objects, check whether a JSVM_Value is a Proxy, and obtain the target object of a proxy."
+keywords: [OH_JSVM_CreateProxy, OH_JSVM_IsProxy, OH_JSVM_ProxyGetTarget, Proxy, proxy objects, target objects, handler]
+doctype: guide
+status: active
+---
+
+# Working with Proxies Using JSVM-API
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.337Z nl=1 -->
+
 ## Introduction
 This topic walks you through on how to use JSVM-API to create a proxy instance, check whether the given **JSVM_Value** is of the proxy type, and obtain the target object from the given proxy.
 
@@ -12,7 +22,7 @@ This topic walks you through on how to use JSVM-API to create a proxy instance, 
 
 | API                    | Description                                           |
 | ---------------------- | ----------------------------------------------- |
-| OH_JSVM_CreateProxy    | Creates a proxy. This API is equivalent to calling **new Proxy (target, handler)** in JS.|
+| OH_JSVM_CreateProxy    | Creates a Proxy, which is equivalent to executing new Proxy(target, handler) in JS. |
 | OH_JSVM_IsProxy        | Checks whether the **JSVM_Value** is of the proxy type.                  |
 | OH_JSVM_ProxyGetTarget | Obtains the target object of the specified proxy.                               |
 
@@ -20,10 +30,10 @@ This topic walks you through on how to use JSVM-API to create a proxy instance, 
 If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved in proxy-related APIs.
 
 CPP code:
-```
+```cpp
 // Define OH_JSVM_CreateProxy.
 static JSVM_Value CreateProxy(JSVM_Env env, JSVM_CallbackInfo info) {
-    // Pass in two parameters: target and handler.
+    // Receive two input parameters. The first parameter is target, and the second parameter is handler.
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr));
@@ -104,7 +114,7 @@ const char *srcCallNative = R"JS(
 ```
 
 Expected result:
-```
+```txt
 JSVM OH_JSVM_CreateProxy: success
 JSVM OH_JSVM_IsProxy: success: is a proxy
 JSVM OH_JSVM_ProxyGetTarget: success

@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=3fa841f3ce49ec23efb5ea5b364ee13bf2e45234 translatedAt=2026-09-29T11:13:59.451Z pushedAt=2026-09-30T09:44:40.055Z -->
+<!-- md-trans-meta sourceCommit=d92fd96c7713dc18450281df98f1c9ed5f77b2c9 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 - [About This Kit](notification-overview.md)
 - [Requesting Notification Authorization](notification-enable.md)

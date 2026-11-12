@@ -56,7 +56,7 @@ Input method engine error. Possible causes:
 Input method client error. Possible causes: 
 1. the edit box is not focused.
 2. no edit box is bound to current input method application.
-3. ipc failed due to data transferred exceeding 1MB or invalid data format.
+3. ipc failed due to the large amount of data transferred or other reasons.
 
 **错误描述**
 
@@ -73,6 +73,9 @@ Input method client error. Possible causes:
 1. 开发者重新将输入法应用与应用进行绑定：将应用后台进程杀死，重新启动应用，触发输入法键盘的显示，若键盘正常显示则问题解决。隐藏键盘时需调用hideTextInput接口与showTextInput配对使用。
 2. 开发者将应用切换至前台，确保无其他应用或窗口遮挡，触发键盘弹出。
 3. 开发者根据IPC的约束与限制，调整传输数据量为较小规模后再发起请求。一次接口调用在IPC层的总传输数据量等于应用侧发送的数据量加系统层处理所需的必要数据量，应用调用接口时实际可发送的最大数据量（约1MB），会小于IPC本身限制的最大数据量（约1.2MB）。注意：showTextInput与hideTextInput需配对调用，避免资源泄漏。
+
+> **说明：**
+> 应用内代理输入法场景下，数据通过Binder机制传输，数据量过大或格式不正确同样可能导致此错误。
 
 ## 12800004 不是输入法应用
 
@@ -497,7 +500,7 @@ Cross-user operation denied. Only user 0 applications are authorized for this op
 
 Input method system panel error. Possible causes: 
 1. system panel not connected.
-2. ipc failed due to data transferred exceeding 1MB or invalid data format.
+2. ipc failed due to the large amount of data transferred or other reasons.
 3. the caller is not system panel.
 
 **错误描述**
@@ -516,3 +519,57 @@ Input method system panel error. Possible causes:
 2. 开发者根据[IPC的约束与限制](../../ipc/ipc-rpc-overview.md#约束与限制)，需先调整传输数据量，控制为较小规模后再发起请求。需特别注意：一次接口调用在IPC层的总传输数据量=应用侧发送的数据量+系统层处理所需的必要数据量，因此应用调用接口时实际可发送的最大数据量，会小于IPC本身限制的最大数据量。
 3. 开发者确保调用者为系统面板。
 <!--DelEnd-->
+
+## 12800027 调用者不是获焦应用
+
+**错误信息**
+
+The caller is not a focused application.
+
+**错误描述**
+
+当未获焦的应用调用需要应用获焦的接口时，系统会报此错误码。
+
+**可能原因**
+
+应用在后台或尚未获焦时调用了需要应用获焦的接口。
+
+**处理步骤**
+
+监听到应用窗口获焦后再调用相关接口。
+
+## 12800028 输入法Extension不允许调用
+
+**错误信息**
+
+The input method extension is not allowed.
+
+**错误描述**
+
+当输入法Extension调用了仅供普通应用使用的接口时，系统会报此错误码。
+
+**可能原因**
+
+输入法Extension调用了仅供普通应用使用的应用内代理相关接口。
+
+**处理步骤**
+
+在普通应用中调用此类接口。
+
+## 12800029 输入类型不支持
+
+**错误信息**
+
+The input type is not supported.
+
+**错误描述**
+
+当前输入法未设置对应的输入类型。
+
+**可能原因**
+
+调用[requestSystemInputCapability](js-apis-inputmethod.md#requestsysteminputcapability)请求翻译输入能力时，当前输入法未设置翻译输入类型。
+
+**处理步骤**
+
+开发者需确认当前输入法已配置对应能力的子类型后再发起请求。

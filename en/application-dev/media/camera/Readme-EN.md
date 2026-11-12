@@ -67,7 +67,7 @@
     - [Video Recording (C/C++)](native-camera-recording.md)
     - [Video Recording Practices (C/C++)](native-camera-recording-case.md)
   - Camera Parameter Settings (C/C++)<!--camera-dev-native-params-->
-    - [Using the Flashlight (C++)](native-camera-torch-use.md)
+    - [Using the Flashlight (C/C++)](native-camera-torch-use.md)
     - [Macro Photography Settings (C/C++)](native-camera-macro.md)<!--RP10--><!--RP10End-->
   - Camera Performance Optimization(C/C++)<!--camera-dev-native-perf--><!--RP9--><!--RP9End-->
     - [Pressure Management (C/C++)](native-camera-system-pressure.md)

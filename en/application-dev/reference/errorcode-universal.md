@@ -1,6 +1,14 @@
 # Universal Error Codes
 
-## 201 Permission Denied
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @zengyawen-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=100e5b11e9eb72bea7c4221b30191424eac1d556 translatedAt=2026-11-02T14:35:59.867Z pushedAt=2026-11-03T03:29:38.703Z nl=1 -->
+
+## 201 API Permission Verification Failed
 
 **Error Message**
 
@@ -12,13 +20,21 @@ This error code is reported when permission verification fails.
 
 **Possible Causes**
 
-The application calls an API without the required permission.
+1. The application configuration file does not declare the required permission.
+
+2. The sensitive permission has not been dynamically requested, and the user has not granted the permission.
+
+3. The application identity does not meet the permission invocation constraints of the API.
 
 **Solution**
 
-Check the permission required to call the API and make sure the application has the permission.
+1. Add the permission required by the API to the configuration file. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
-## 202 Permission Verification Failed for Calling a System API
+2. Add the dynamic request logic for sensitive permissions. For details, see [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
+
+3. Ensure that the identity of the calling application meets the permission requirements of the API.
+
+## 202 Non-System Application Calls System API
 
 **Error Message**
 
@@ -52,10 +68,10 @@ You attempted to operate a system function that has been disabled by the device 
 
 **Solution**
 
-Use [getDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy) to check whether the system function is disabled, and use [setDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) to enable the system function.
+Use [getDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicydeprecated) to check whether the system function is disabled, and use [setDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) to remove the disabled state.
 
 <!--Del-->
-## 204 Access Denied by User Access Control Policy
+## 204 User Access Control Policy Interception, Access Denied
 
 **Error Message**
 
@@ -65,9 +81,7 @@ Access denied due to user access control policy. Possible causes:
 
 **Description**
 
-Access denied due to user access control policy. Possible causes:
-1. The required privilege for the operation has not been obtained.
-2. The operation is restricted by OS-account constraints.
+Access is denied because it is intercepted by the user access control policy.
 
 **Possible Causes**
 
@@ -81,7 +95,7 @@ Access denied due to user access control policy. Possible causes:
 3. If the target operation is subject to privilege control, call [acquireAuthorization](./apis-basic-services-kit/js-apis-osAccount-sys.md#acquireauthorization24) to request the required privilege. If the request succeeds, continue the target operation. Otherwise, stop the operation.
 <!--DelEnd-->
 
-## 401 Parameter Check Failed
+## 401 Function Parameter Quantity or Type Mismatch
 
 **Error Message**
 
@@ -113,22 +127,60 @@ Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 
 
 Make sure all the mandatory parameters are passed in and the types of the passed-in parameter are valid. If parameter verification fails, read the parameter specifications and locate the fault based on the possible causes.
 
-## 801 API Not Supported
+## 501 Resource Occupied by Another Thread, Access Denied
 
 **Error Message**
 
-Capability not supported. Failed to call the API due to limited device capabilities.
+Access denied because the resource is occupied by another thread.
 
-**Description**
+**Symptom**
 
-The device does not support this API. Therefore, it cannot be called properly.
+The resource is occupied and locked by another thread, so this access request is denied.
 
-**Possible Causes**
+**Possible Cause**
 
-The device supports Syscap associated with the API but does not support the API itself.
+The resource is currently being used by another thread, so the operation cannot be completed.
 
 **Solution**
 
-Do not use this API on the device. Alternatively, implement conditional checks in the code to mitigate the effects of the application running across various devices, particularly under abnormal circumstances.
+Ensure that the same component/resource is used in only one thread.
+
+## 801 API Not Supported on Some Devices
+
+**Error Message**
+
+Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.
+
+**Description**
+
+The function is not supported.
+
+**Possible Causes**
+
+This error code may occur in the following scenarios: the hardware does not support the capability, or a dependent service feature is not supported.
+
+**Solution**
+
+1. Avoid using this API on the device.
+
+2. If the API has a preceding isxxxsupported interface, call isxxxsupported first to check whether the API function is supported, and then call this API.
+
+## 803 Service Unavailable in the Current Country or Region
+
+**Error Message**
+
+The service is unavailable in the current country or region.
+
+**Symptom**
+
+The service is unavailable in the current country or region.
+
+**Possible Cause**
+
+The service is not available in the current country.
+
+**Solution**
+
+The application should catch the error and isolate the functions provided by the service to avoid affecting user experience. You can further query the developer documentation for the countries and regions supported by the Kit.
 
 <!--RP1--><!--RP1End-->

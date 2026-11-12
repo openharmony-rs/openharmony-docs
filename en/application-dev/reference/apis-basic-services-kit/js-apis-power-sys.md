@@ -6,26 +6,27 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=dd5b685f010c5165097ee61a87d6b3f816c00eb8 translatedAt=2026-11-06T01:43:27.927Z pushedAt=2026-11-09T03:05:41.346Z nl=1 -->
 
-The **power** module provides APIs for rebooting and shutting down the system, as well as querying the screen status.
+This module provides system APIs for device power state management, including shutting down and restarting a device, waking up a device, putting a device to sleep or into hibernation, setting the power mode, setting the screen-off timeout, refreshing the device active state, configuring the power key filtering policy, subscribing to and unsubscribing from shutdown/restart callbacks, and querying and setting power configurations. It applies to scenarios where system apps need to manage and control the device power state, such as controlling device power-on/off, hibernation and wakeup, power saving mode switching, and screen timeout management by device management apps. This module can help you implement refined management and automated control of device power behavior.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.power (Power Management)](js-apis-power.md).
+> This topic describes only system APIs provided by this module. For details about its public APIs, see [@ohos.power (System Power Management)](js-apis-power.md).
 
 ## Modules to Import
 
 ```js
-import {power} from '@kit.BasicServicesKit';
+import { power, BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## power.shutdown
 
 shutdown(reason: string): void
 
-Shuts down the system.
+Shuts down the system. The difference between the **shutdown** and **reboot** methods is as follows: **shutdown** completely powers off the device so that it no longer runs, while **reboot** automatically restarts the device after it is powered off.
 
 **System API**: This is a system API.
 
@@ -37,7 +38,7 @@ Shuts down the system.
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| reason | string | Yes   | Shutdown reason. The value must be a string.|
+| reason | string | Yes    | Shutdown reason. |
 
 **Error codes**
 
@@ -56,8 +57,8 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 ```js
 try {
     power.shutdown('shutdown_test');
-} catch(err) {
-    console.error('shutdown failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to shutdown. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -77,7 +78,7 @@ Reboots a device.
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| reason | string | Yes  | Reason for system reboot. For example, **updater** indicates that the device enters the update mode after reboot. If this parameter is not specified, the system enters the normal mode after reboot.|
+| reason | string | Yes | Reason for the reboot. For example, **updater** indicates that the device enters the update mode after the reboot. If an empty string is passed in, the system enters the normal mode after the reboot. |
 
 **Error codes**
 
@@ -95,8 +96,8 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 ```js
 try {
     power.reboot('reboot_test');
-} catch(err) {
-    console.error('reboot failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to reboot. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -104,21 +105,23 @@ try {
 
 wakeup(detail: string): void
 
-Wakes up a device.
+Wakes up a device and restores it from the sleep state to the active state.
 
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.POWER_MANAGER
 
-For API version 9 to 18, no permission is required; since API version 19, this permission is required.
+For API versions 9 to 18, no permission is required to use this API. Since API version 19, the **ohos.permission.POWER_MANAGER** permission is required.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Device behavior differences:** When this API is called on a car device, error code 801 is returned. On other devices, it is called normally.
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| detail | string | Yes  | Wakeup reason. The value must be a string.|
+| detail | string | Yes | Wakeup reason. |
 
 **Error codes**
 
@@ -130,14 +133,15 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices. <br>Applicable versions: 26.0.1+|
 
 **Example**
 
 ```js
 try {
     power.wakeup('wakeup_test');
-} catch(err) {
-    console.error('wakeup failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to wakeup device. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -147,19 +151,25 @@ suspend(isImmediate?: boolean): void
 
 Enables a device to enter the sleep state.
 
+After this method is called, the device enters the sleep state. To restore the device to the active state, call [power.wakeup](#powerwakeup9) to wake up the device.
+
+The difference between the **suspend** and **hibernate** methods is as follows: when **suspend** is called, the device enters a shallower low-power sleep state (the device enters sleep after the screen is turned off); when **hibernate** is called, the device enters a deeper hibernation state (the buffer can be optionally cleared before hibernation). Use **suspend** when the device needs to be restored to the active state quickly, and use **hibernate** when power needs to be saved to the greatest extent.
+
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.POWER_MANAGER
 
-For API version 9 to 18, no permission is required; since API version 19, this permission is required.
+For API versions 9 to 18, no permission is required to use this API. Since API version 19, the **ohos.permission.POWER_MANAGER** permission is required.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Device behavior differences:** When this API is called on a car device, error code 801 is returned. On other devices, it is called normally.
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| isImmediate<sup>10+</sup> | boolean |  No | Whether the device enters the sleep state immediately. The value **true** indicates that the device enters the sleep state immediately after the screen is turned off; **false** indicates that the system controls when the device enters the sleep state. If this parameter is not set, the default value **false** is used. If you only want to turn off the screen, you are advised not to set this parameter.<br>**NOTE**: This parameter is supported since API version 10.|
+| isImmediate<sup>10+</sup> | boolean |  No  | Whether to put the device into sleep state directly. The value **true** means the device enters sleep immediately after the screen is turned off. If this parameter is not set, the default value **false** is used, which means the system automatically detects when to enter sleep after the screen is turned off. If you only want to turn off the screen, you are advised not to set this parameter.<br>**Note:** This parameter is supported since API version 10.|
 
 
 **Error codes**
@@ -172,14 +182,16 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
+| 4900701 | Failed to suspend the device. Possible causes: 1. Not allowed to turn off the screen during the exam.<br>Applicable versions: 26.0.1+ |
+| 801     | Capability not supported. This API cannot work in car devices.<br>Applicable versions: 26.0.1+ |
 
 **Example**
 
 ```js
 try {
     power.suspend();
-} catch(err) {
-    console.error('suspend failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to suspend device. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -187,7 +199,7 @@ try {
 
 setPowerMode(mode: DevicePowerMode, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the power mode of a device. This API uses an asynchronous callback to return the result.
+Sets the power mode of the current device. Different power modes affect the performance and power consumption policies of the device. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -199,7 +211,7 @@ Sets the power mode of a device. This API uses an asynchronous callback to retur
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| mode     | DevicePowerMode | Yes  | Power mode. The value must be an enum.                                                  |
+| mode     | [DevicePowerMode](js-apis-power.md#devicepowermode9) | Yes   | Power mode. For the meaning of each mode, see the [DevicePowerMode](js-apis-power.md#devicepowermode9) enum. |
 | callback | AsyncCallback&lt;void&gt;            | Yes  | Callback invoked to return the result.<br> If the power mode is successfully set, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -212,16 +224,17 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 203     | This function is prohibited by enterprise management policies. <br>**Applicable versions:** 26.1.0+ |
 
 **Example**
 
 ```js
-power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: Error) => {
-    if (typeof err === 'undefined') {
-        console.info('set power mode to MODE_PERFORMANCE');
-    } else {
-        console.error('set power mode failed, err: ' + err);
+power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: BusinessError) => {
+    if (err) {
+        console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
+        return;
     }
+    console.info('set power mode to MODE_PERFORMANCE');
 });
 ```
 
@@ -229,7 +242,7 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: Error) => {
 
 setPowerMode(mode: DevicePowerMode): Promise&lt;void&gt;
 
-Sets the power mode of a device. This API uses a promise to return the result.
+Sets the power mode of the current device. The power mode affects the performance and power consumption policies of the device. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -241,7 +254,7 @@ Sets the power mode of a device. This API uses a promise to return the result.
 
 | Name| Type                                | Mandatory| Description      |
 | ------ | ------------------------------------ | ---- | ---------- |
-| mode   | DevicePowerMode | Yes  | Power mode. The value must be an enum.|
+| mode   | [DevicePowerMode](js-apis-power.md#devicepowermode9) | Yes   | Power mode. For the meaning of each mode, see the [DevicePowerMode](js-apis-power.md#devicepowermode9) enum. |
 
 **Return value**
 
@@ -259,6 +272,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 203     | This function is prohibited by enterprise management policies. <br>**Applicable versions:** 26.1.0+ |
 
 **Example**
 
@@ -267,8 +281,8 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
 .then(() => {
     console.info('set power mode to MODE_PERFORMANCE');
 })
-.catch((err : Error)=> {
-    console.error('set power mode failed, err: ' + err);
+.catch((err: BusinessError) => {
+    console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -276,21 +290,23 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
 
 setScreenOffTime(timeout: number): void
 
-Sets the screen-off timeout duration.
+Sets the screen-off timeout duration. For example, a longer timeout duration can be set to keep the screen always on for self-service terminals or display devices, and a shorter timeout duration can be set to save power in low-battery scenarios.
 
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.POWER_MANAGER
 
-For API version 12 to 18, no permission is required; since API version 19, this permission is required.
+For API versions 12 to 18, no permission is required to use this API. Starting from API version 19, the **ohos.permission.POWER_MANAGER** permission is required.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Device behavior differences:** When this API is called on a car device, error code 801 is returned. On other devices, it is called normally.
 
 **Parameters**
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| timeout | number | Yes   | Screen-off timeout duration, in milliseconds. A value greater than **0** indicates the specified timeout duration is used, and the value **-1** indicates that the default timeout duration is used. Other values are invalid.|
+| timeout | number | Yes | Screen-off timeout duration, in milliseconds. A value greater than 0 indicates the screen-off timeout duration, and **-1** indicates restoring the default timeout duration. If any other value is passed, an exception is thrown with error code 401. |
 
 **Error codes**
 
@@ -302,14 +318,15 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices.<br>Applicable versions: 26.0.1+|
 
 **Example**
 
 ```js
 try {
     power.setScreenOffTime(30000);
-} catch(err) {
-    console.error('set screen off time failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to set screen off time. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -319,11 +336,13 @@ hibernate(clearMemory: boolean): void
 
 Hibernates a device.
 
+The difference between the **hibernate** and **suspend** methods is as follows: when **hibernate** is called, the device enters a deeper sleep state (the buffer can be cleared before hibernation); when **suspend** is called, the device enters a shallower low-power sleep state (the device enters sleep after the screen is turned off). Use **hibernate** when maximum power saving is required, and choose **suspend** when the device needs to resume activity quickly. This **hibernate** method is applicable to scenarios where the device is idle for a long time and requires deep power saving.
+
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.POWER_MANAGER
 
-For API version 12 to 18, no permission is required; since API version 19, this permission is required.
+For API versions 12 to 18, no permission is required to use this API. Starting from API version 19, the **ohos.permission.POWER_MANAGER** permission is required.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -331,7 +350,7 @@ For API version 12 to 18, no permission is required; since API version 19, this 
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| clearMemory | boolean | Yes   | Whether to clear the memory. The value **true** means to clear the memory before the system enters the hibernation state, and the value **false** means the opposite.|
+| clearMemory | boolean | Yes | Whether to clear the buffer before entering hibernation. The value **true** means to clear the buffer, and **false** means not to clear the buffer. |
 
 **Error codes**
 
@@ -349,8 +368,8 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 ```js
 try {
     power.hibernate(true);
-} catch(err) {
-    console.error('hibernate failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to hibernate device. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -358,9 +377,9 @@ try {
 
 refreshActivity(reason: string): void
 
-Refreshes the device activity status (for example, resetting the screen-off time).
+Refreshes the active state of the device. For example, resets the screen-off timeout duration.
 
-This API takes effect only when the device is active. For details about the device activity status, see [power.isActive](js-apis-power.md#powerisactive9).
+This API takes effect only when the device is in the active state.
 
 **System API**: This is a system API.
 
@@ -368,11 +387,13 @@ This API takes effect only when the device is active. For details about the devi
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
+**Device behavior differences:** When this API is called on a car device, error code 801 is returned. On other devices, it is called normally.
+
 **Parameters**
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| reason | string | Yes   | Reason for refreshing the device activity status. The value must be a string.|
+| reason | string | Yes    | Reason for refreshing the active state of the device. It takes effect only when the device is in the active state. For details about the active state, see [power.isActive](js-apis-power.md#powerisactive9). |
 
 **Error codes**
 
@@ -384,14 +405,15 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | 4900201 |The device activity is being refreshed too frequently; the minimum time interval is 100 ms. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
+| 801     | Capability not supported. This API cannot work in car devices.<br>Applicable versions: 26.0.1+ |
 
 **Example**
 
 ```js
 try {
     power.refreshActivity('refreshActivity_test');
-} catch(err) {
-    console.error('refreshActivity failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to refresh activity. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -413,7 +435,7 @@ For details about the power key filtering strategy, see [power.PowerKeyFiltering
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| strategy | PowerKeyFilteringStrategy | Yes   | Power key filtering strategy. The value must be of the enum type.|
+| strategy | [PowerKeyFilteringStrategy](js-apis-power.md#powerkeyfilteringstrategy21) | Yes | Power key filtering strategy, which is used to configure the handling method of power key events. For the meaning of each strategy, see [PowerKeyFilteringStrategy](js-apis-power.md#powerkeyfilteringstrategy21). |
 
 **Error codes**
 
@@ -430,8 +452,8 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 ```js
 try {
     power.setPowerKeyFilteringStrategy(power.PowerKeyFilteringStrategy.LONG_PRESS_FILTERING_ONCE);
-} catch(err) {
-    console.error('setPowerKeyFilteringStrategy failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to set power key filtering strategy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -439,7 +461,7 @@ try {
 
 registerShutdownCallback(callback: Callback&lt;boolean&gt;): void
 
-Registers a callback to be invoked when the device is shut down or rebooted. This API uses an asynchronous callback to return the result.
+Registers a callback for power shutdown or restart. This API uses an asynchronous callback to return the result. After registering a callback by calling this API, you can call [power.unregisterShutdownCallback](#powerunregistershutdowncallback23) to unregister the callback and release system resources when the callback is no longer needed.
 
 **System API**: This is a system API.
 
@@ -468,11 +490,11 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 ```js
 try {
     power.registerShutdownCallback((isReboot: boolean) => {
-        console.info('device shutdown is: ' + isReboot);
+        console.info('device is reboot: ' + isReboot);
     });
     console.info('register shutdown callback success.');
-} catch(err) {
-    console.error('register shutdown callback failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to register shutdown callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -480,7 +502,7 @@ try {
 
 unregisterShutdownCallback(callback?: Callback\<void>): void
 
-Unregisters the callback to be invoked when the device is shut down or rebooted. This API uses a callback to return the result.
+Unregisters the callback for power shutdown or restart. This API uses a synchronous callback to return the result. This API must be used in pairs with [power.registerShutdownCallback](#powerregistershutdowncallback23). You must call **registerShutdownCallback** to register a callback before calling this API to unregister the callback.
 
 **System API**: This is a system API.
 
@@ -492,7 +514,7 @@ Unregisters the callback to be invoked when the device is shut down or rebooted.
 
 | Name  | Type                | Mandatory| Description                                          |
 | -------- | -------------------- | ---- | ---------------------------------------------- |
-| callback | Callback&lt;void&gt; | No  | Callback that returns no value.|
+| callback | Callback&lt;void&gt; | No | Callback that returns no value. This callback is invoked after the unregistration succeeds. If this parameter is not passed, the unregistration still takes effect, but no callback notification is triggered. |
 
 **Error codes**
 
@@ -512,8 +534,8 @@ try {
         console.info('unsubscribe shutdown success.');
     });
     console.info('unregister shutdown callback success.');
-} catch(err) {
-    console.error('unregister shutdown callback failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to unregister shutdown callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -521,7 +543,7 @@ try {
 
 getPowerConfig(sceneName: string): string
 
-Obtains the power configuration based on the specified scenario.
+Queries the power configuration value by scenario name. For example, this API is used when the system power management app needs to read the power configuration parameters of a specific scenario.
 
 **Since**: 26.0.0
 
@@ -537,13 +559,13 @@ Obtains the power configuration based on the specified scenario.
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| sceneName | string | Yes   | Name of the power configuration scenario. The name can contain a maximum of 128 bytes.|
+| sceneName | string | Yes | Name of the power configuration scenario. The value contains a maximum of 128 bytes. Empty strings are not supported. |
 
 **Return value**
 
 | Type    | Description        |
 | ------ | ------------ |
-| string | Power configuration value.|
+| string | Power configuration value corresponding to the specified scenario name. The specific content of the configuration value depends on the queried scenario name. |
 
 **Error codes**
 
@@ -563,8 +585,8 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 try {
     let configVal = power.getPowerConfig('scene_name_test');
     console.info('get power config success, configVal: ' + configVal);
-} catch(err) {
-    console.error('get power config failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to get power config. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -572,7 +594,7 @@ try {
 
 setPowerConfig(sceneName: string, value: string): void
 
-Sets the power configuration based on the specified scenario.
+Sets the power configuration value by scenario name. For example, this API is used when the system power management app needs to dynamically adjust the power configuration parameters of a specific scenario.
 
 **Since**: 26.0.0
 
@@ -588,8 +610,8 @@ Sets the power configuration based on the specified scenario.
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| sceneName | string | Yes   | Name of the power configuration scenario. The name can contain a maximum of 128 bytes.|
-| value | string | Yes   | Power configuration value. The name can contain a maximum of 128 bytes.|
+| sceneName | string | Yes    | Name of the power configuration scenario. The value contains a maximum of 128 bytes. Empty strings are not supported. |
+| value | string | Yes    | Power configuration value. The value contains a maximum of 128 bytes. Empty strings are not supported. |
 
 **Error codes**
 
@@ -609,7 +631,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 try {
     power.setPowerConfig('scene_name_test', 'value_test');
     console.info('set power config success');
-} catch(err) {
-    console.error('set power config failed, err: ' + err);
+} catch (err) {
+    console.error(`Failed to set power config. Code: ${err.code}, message: ${err.message}`);
 }
 ```

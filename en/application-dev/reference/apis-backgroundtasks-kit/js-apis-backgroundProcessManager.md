@@ -6,6 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=2041fbedbdac475325c766ada1b1f6cc4b3c8b40 translatedAt=2026-11-03T03:26:56.342Z pushedAt=2026-11-03T06:03:12.745Z nl=1 -->
 
 The **backgroundProcessManager** module provides APIs for background child process management. You can use these APIs to suppress and unsuppress child processes to prevent child processes from occupying too many system resources and causing system stuttering. The APIs take effect only for the child processes created through [OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess).
 
@@ -46,7 +47,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message            |
 |----------|------------------|
-| 401      | Parameter error. Possible causes: priority is out of range. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -118,7 +119,7 @@ You can set to enter the power saving mode when:
 
 | Name     | Type     | Mandatory     | Description     |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | Yes       | Process ID. |
+| pid         | number    | Yes        | Process ID.<br>The value is a positive integer.  |
 | powerSaveMode | [PowerSaveMode](#powersavemode20) | Yes| Power saving mode.|
 
 **Return value**
@@ -133,8 +134,8 @@ For details about the error codes, see [backgroundProcessManager Error Codes](er
 
 | ID   | Error Message            |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. PowerSaveMode status is out of range. |
 | 31800003      | Setup error, This setting is overridden by settings in Task Manager |
 | 31800004      | The setting failed due to system scheduling reasons. |
@@ -145,11 +146,15 @@ For details about the error codes, see [backgroundProcessManager Error Codes](er
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
-let pid = 33333;
+let pid = 33333;  // Replace with the actual process ID.
 try {
-    backgroundProcessManager.setPowerSaveMode(pid, backgroundProcessManager.PowerSaveMode.EFFICIENCY_MODE); 
+  backgroundProcessManager.setPowerSaveMode(pid, backgroundProcessManager.PowerSaveMode.EFFICIENCY_MODE).then(() => {
+    console.info('setPowerSaveMode promise');
+  }).catch((err: BusinessError) => {
+    console.error(`setPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`setPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`setPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -169,7 +174,7 @@ Queries whether the process is in power saving mode. This API uses a promise to 
 
 | Name     | Type     | Mandatory     | Description     |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | Yes       | Process ID. |
+| pid         | number    | Yes        | Process ID.<br>The value is a positive integer.  |
 
 **Return value**
 
@@ -183,8 +188,8 @@ For details about the error codes, see [backgroundProcessManager Error Codes](er
 
 | ID   | Error Message            |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
 
 **Example**
@@ -193,13 +198,15 @@ For details about the error codes, see [backgroundProcessManager Error Codes](er
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 
-let pid = 33333;
+let pid = 33333;  // Replace with the actual process ID.
 try {
-    backgroundProcessManager.isPowerSaveMode(pid).then((result: boolean) => {
-        console.info("isPowerSaveMode: " + result.toString());
-    });
+  backgroundProcessManager.isPowerSaveMode(pid).then((result: boolean) => {
+    console.info(`isPowerSaveMode: ${result}`);
+  }).catch((err: BusinessError) => {
+    console.error(`isPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`isPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`isPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -219,7 +226,7 @@ Obtains the power saving mode of a process. This API uses a promise to return th
 
 | Name     | Type     | Mandatory     | Description     |
 |-------------|-----------|-----------|-----------|
-| pid         | number    | Yes       | Process ID.<br>Value range: any integer greater than 0. |
+| pid         | number    | Yes        | Process ID.<br>The value is a positive integer.  |
 
 **Return value**
 
@@ -233,8 +240,8 @@ For details about the error codes, see [backgroundProcessManager Error Codes](er
 
 | ID   | Error Message            |
 |----------|------------------|
-| 201      | Permission denied. |
-| 801      | Capability not supported. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types. |
 
 **Example**
@@ -242,14 +249,16 @@ For details about the error codes, see [backgroundProcessManager Error Codes](er
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
-// Replace the process ID with the actual one.
-let pid = 33333;
+
+let pid = 33333;  // Replace it with the actual process ID.
 try {
-    backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
-        console.info("getPowerSaveMode: " + result.toString());
-    });
+  backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
+    console.info(`getPowerSaveMode: ${result}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getPowerSaveMode failed, promise errCode: ${err.code}, message: ${err.message}`);
+  });
 } catch (error) {
-    console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`getPowerSaveMode failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -274,3 +283,4 @@ Specifies the power saving mode.
 |-----|----|-------|
 | EFFICIENCY_MODE | 1 | Efficiency mode. Applications set to this mode will not enter the power saving mode, where fewer CPU resources are available.|
 | DEFAULT_MODE | 2 | Default mode. Applications set to this mode may follow the system to enter the power saving mode.|
+

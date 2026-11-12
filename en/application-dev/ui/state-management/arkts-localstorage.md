@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-10-28T03:59:38.078Z pushedAt=2026-10-28T07:51:07.593Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ad6e19148a2e0fc0380b16e183aef2ad5ce1d4ae translatedAt=2026-11-03T06:33:00.269Z pushedAt=2026-11-03T07:54:17.274Z nl=1 -->
 
 
 LocalStorage provides storage for the page-level UI state. The parameters of the LocalStorage type accepted through the \@Entry decorator share the same LocalStorage instance on the page. LocalStorage supports status sharing among multiple pages in a [UIAbility](../../application-models/uiability-overview.md) instance.
@@ -16,7 +16,7 @@ This topic describes only the usage scenarios of LocalStorage and the related de
 
 Before reading this topic, you are advised to read [State Management Overview](./arkts-state-management-overview.md) to have a basic understanding of the state management framework.
 
-LocalStorage also provides APIs for manual create, retrieve, update, delete (CRUD) operations outside custom components. For details, see [LocalStorage API Reference](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9). For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management).
+LocalStorage also provides APIs that allow developers to manually trigger the add, delete, modify, and query operations on the value corresponding to a Storage key from outside a custom component. It is recommended to read this topic together with the [LocalStorage API documentation](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9).
 
 > **NOTE**
 >

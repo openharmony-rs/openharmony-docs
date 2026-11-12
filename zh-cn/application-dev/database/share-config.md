@@ -52,7 +52,7 @@ API版本26.0.0之前，一个应用最多可以发布32个配置项；从API版
 
 
 ## 配置发布方
-### module.json5 配置
+### module.json5配置
 配置发布方需要配置module.json5文件中的crossAppSharedConfig字段，通过crossAppSharedConfig字段引用shared_config.json文件，shared_config.json为共享配置文件，定义了应用希望与其他应用共享的配置项。共享配置文件需放置在工程resources/base/profile目录下，并通过`$`资源访问方式引用。  
 
 

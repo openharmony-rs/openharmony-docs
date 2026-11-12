@@ -1,13 +1,13 @@
 # ArkUI_Node
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7fabd52bae7140eadd5a67f7598648fef13cb50e translatedAt=2026-08-19T08:25:46.302Z pushedAt=2026-08-20T03:53:02.550Z -->
+<!-- md-trans-meta sourceCommit=3ddb6f7d5458e03f96ae5f64e626eb2fb03d26f6 translatedAt=2026-11-09T11:44:15.533Z pushedAt=2026-11-10T03:35:16.779Z nl=2 -->
 
+ 
 ```c 
 struct ArkUI_Node 
 ``` 
@@ -20,4 +20,4 @@ Defines an ArkUI native component object, which is used by the **ArkUI_NodeHandl
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [drawable_descriptor.h](capi-drawable-descriptor-h.md)
+**Header file**: [native_type.h](capi-native-type-h.md)

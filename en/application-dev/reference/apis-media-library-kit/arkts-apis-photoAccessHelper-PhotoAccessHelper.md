@@ -6,6 +6,7 @@
 <!--Designer: @guxinggang; @liweilu1-->
 <!--Tester: @wangbeibei; @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b0d0d56013f4ec0c7a57bdd1787f25e7f6703a87 translatedAt=2026-11-03T07:09:23.730Z pushedAt=2026-11-04T03:11:19.969Z nl=1 -->
 
 The **PhotoAccessHelper** interface provides access management capabilities for image and video resources. It allows you to obtain, create, and delete media assets, manage albums, and listen for asset changes.
 
@@ -79,7 +80,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
         console.info('photoAsset.displayName : ' + photoAsset.displayName);
       }
     } else {
-      console.error(`fetchResult fail with error: ${err.code}, ${err.message}`);
+      console.error(`failed to fetchResult`);
     }
   });
 }
@@ -1349,7 +1350,7 @@ console.info('requestPhotoUrisReadPermissionExDemo.');
 }
 ```
 
-## getSupportedPhotoFormats<sup>18+</sup> 
+## getSupportedPhotoFormats<sup>18+</sup>
 
 getSupportedPhotoFormats(photoType: PhotoType): Promise&lt;Array&lt;string&gt;&gt;
 
@@ -1409,7 +1410,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, phot
 }
 ```
 
-## on('photoChange')<sup>20+</sup> 
+## on('photoChange')<sup>20+</sup>
 
 on(type: 'photoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -1467,7 +1468,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## off('photoChange')<sup>20+</sup> 
+## off('photoChange')<sup>20+</sup>
 
 off(type: 'photoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -1528,7 +1529,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## on('photoAlbumChange')<sup>20+</sup> 
+## on('photoAlbumChange')<sup>20+</sup>
 
 on(type: 'photoAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -1586,7 +1587,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## off('photoAlbumChange')<sup>20+</sup> 
+## off('photoAlbumChange')<sup>20+</sup>
 
 off(type: 'photoAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -1695,7 +1696,7 @@ createDeleteRequest(uriList: Array&lt;string&gt;, callback: AsyncCallback&lt;voi
 
 Creates a dialog box for deleting media files. This API uses an asynchronous callback to return the result. The deleted media files are moved to the trash.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [MediaAssetChangeRequest.deleteAssets](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#deleteassets11-1) instead.
 
@@ -1931,7 +1932,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-## onSinglePhotoChange<sup>23+</sup> 
+## onSinglePhotoChange<sup>23+</sup>
 
 onSinglePhotoChange(asset: PhotoAsset, callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2002,7 +2003,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## offSinglePhotoChange<sup>23+</sup> 
+## offSinglePhotoChange<sup>23+</sup>
 
 offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
@@ -2092,7 +2093,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## onSinglePhotoAlbumChange<sup>23+</sup> 
+## onSinglePhotoAlbumChange<sup>23+</sup>
 
 onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt;): void
 
@@ -2107,7 +2108,7 @@ Registers a listener for changes of a single common asset. This API uses an asyn
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | album | Album | Yes| Album to be listened for. After the registration is complete, any change to the albums is returned through the callback.|
-| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes| Callback used to return the album information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**<br>This API can be used to register multiple different callbacks.|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes | Callback invoked to return the changed media album information.<br>**Note:**<br>This API can register multiple different callbacks for listening. |
 
 **Error codes**
 
@@ -2161,7 +2162,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-## offSinglePhotoAlbumChange<sup>23+</sup> 
+## offSinglePhotoAlbumChange<sup>23+</sup>
 
 offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos&gt;): void
 

@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者实现音频输出设备路由切换，覆盖媒体流与通话流切换、设置默认输出设备、连接外设强制切换及PC/2in1场景，说明AVCastPicker与路由切换接口的用法。"
+keywords: [输出设备切换, AVCastPicker, setDefaultOutputDevice, setMediaOutputDevice, AudioDeviceEnhanceManager, 听筒, 扬声器, 外放, 蓝牙耳机, 有线耳机, 通话设备, PC/2in1, 媒体播放]
+doctype: guide
+status: active
+---
 # 实现音频输出设备路由切换
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -15,7 +22,11 @@
 ## 使用场景
 
 1. 若应用需要为用户提供可视化、可交互的音频输出设备切换入口时，可以使用`AVCastPicker`组件，开发者只需在布局中放置该组件，系统会自动检测当前可用的音频输出设备列表，用户点击后即可完成路由切换。
-2. 应用在不同场景下对默认输出设备存在不同要求。例如，语音消息流通常默认从扬声器播放，以便用户直接收听；但在某些私密场景下，应用可能希望将语音消息设置为默认从听筒播放，以保护用户隐私。此时，开发者可使用`setDefaultOutputDevice`接口，灵活更改语音消息的默认输出设备，满足特定业务需求。
+2. 扬声器/听筒设备切换典型场景：
+   - **语音消息私密播放**：语音消息流（STREAM_USAGE_VOICE_MESSAGE）默认从扬声器播放，便于用户直接收听。但在会议、公共场合等私密场景下，应用希望语音消息默认从听筒播放，以保护用户隐私。此时应用可调用`setDefaultOutputDevice`将默认输出设备设置为听筒（EARPIECE）。
+   - **VoIP通话听筒/扬声器切换**：VoIP通话（STREAM_USAGE_VOICE_COMMUNICATION）过程中，用户可在听筒和扬声器之间切换。应用可通过`setDefaultOutputDevice`设置通话流的默认输出设备；通话中如需临时切换，可再次调用`setDefaultOutputDevice`将输出设备更新为新的目标设备。
+   - **视频通话外放场景**：视频通话（STREAM_USAGE_VIDEO_COMMUNICATION）时，用户通常希望声音从扬声器外放。应用可将默认输出设备设置为扬声器（SPEAKER），在无外设连接时，视频通话声音从扬声器输出。
+   - **外设断开后的回落播放**：设置了默认输出设备后，当蓝牙耳机、有线耳机等外设断开时，系统会自动将音频切换回设置的默认输出设备播放，应用无需主动切换设备。
 3. 连接蓝牙耳机或有线耳机等外设时，系统优先从外设播放。但某些场景下，应用希望即使外设已连接，仍将媒体音频强制切换到扬声器播放（如实时翻译对话给对方）。从API版本26.0.0开始，开发者可调用`setMediaOutputDevice`接口，在连接外设的情况下通过将参数设为`audio.DeviceType.SPEAKER`强制切换媒体输出设备为扬声器；需要恢复系统默认路由时，可再次调用`setMediaOutputDevice`接口，将参数设为`audio.DeviceType.DEFAULT`即可。
 
 ## 实现媒体流输出设备路由切换
@@ -473,3 +484,42 @@ C/C++示例：
       // ...
   }
   ```
+
+## 扬声器/听筒设备切换常见问题
+
+### 设置了默认输出设备但未生效
+
+调用`setDefaultOutputDevice`设置扬声器或听筒后，实际播放设备未变化，常见原因如下：
+
+- **流类型不受支持**：
+  - **可能原因**：`setDefaultOutputDevice`仅对以下三种[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)生效：`STREAM_USAGE_VOICE_MESSAGE`、`STREAM_USAGE_VOICE_COMMUNICATION`、`STREAM_USAGE_VIDEO_COMMUNICATION`。普通媒体播放（如音乐、视频）等流类型调用本接口不会生效。
+  - **解决措施**：改用上述三种受支持的流类型创建音频流后，再调用本接口。
+- **外设仍处于连接状态**：
+  - **可能原因**：外设（如蓝牙耳机、有线耳机）接入时，系统优先从外设播放，设置的默认输出设备仅在无外设连接时生效。
+  - **解决措施**：断开外设后系统会自动回落至设置的默认输出设备；如需在外设连接状态下强制切换到扬声器，可参考[连接外设时强制切换媒体输出设备](#连接外设时强制切换媒体输出设备)。
+- **应用级设置覆盖流级设置**：
+  - **可能原因**：如果同时通过`AudioSessionManager.setDefaultOutputDevice`和`AudioRenderer.setDefaultOutputDevice`设置了默认输出设备，`AudioSessionManager`的应用级设置会覆盖流级设置，`AudioRenderer`的流级设置将不生效。
+  - **解决措施**：检查是否同时设置了应用级与流级默认输出设备，确认[设置默认输出设备](#设置默认输出设备)中两种方式的优先级，按需移除其一。
+- **设备无听筒**：
+  - **可能原因**：在无听筒（EARPIECE）的设备（如TV、部分平板）上，将默认输出设备设置为听筒不会生效，系统将继续使用扬声器或其他可用设备播放。
+  - **解决措施**：先通过[getDevicesSync](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevicessync10)查询确认设备是否支持听筒，若不支持则改用扬声器或其他可用设备作为目标设备。
+
+### 通话时无法切换到听筒或扬声器
+
+**可能原因**：当前通话使用的音频流[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)不是`STREAM_USAGE_VOICE_COMMUNICATION`或`STREAM_USAGE_VIDEO_COMMUNICATION`。
+
+**解决措施**：若使用其他流类型（如媒体流）进行通话，需先调整为上述流类型或改用其他切换方式。
+
+### 设置默认输出设备后外设接入，声音从外设播放
+
+系统默认策略为外设接入后优先从外设播放，设置的默认输出设备仅在外设断开后生效，这是为了尊重用户显式连接外设的意图。该行为符合预期。
+
+### 不确定默认输出设备是否生效
+
+应用可通过[AudioSessionManager.getDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#getdefaultoutputdevice20)查询通过`setDefaultOutputDevice`设置的默认输出设备类型；也可监听[CurrentOutputDeviceChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#currentoutputdevicechangedevent20)事件获取当前实际输出设备，以确认设备切换是否生效。
+
+## 相关主题推荐
+
+- [查询和监听音频输出设备](audio-output-device-management.md)
+- [实现音频输入设备路由切换](audio-input-device-switcher.md)
+- [选择合适的播放流类型](using-right-streamusage-for-playback.md)

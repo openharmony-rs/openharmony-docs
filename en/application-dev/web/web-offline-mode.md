@@ -5,7 +5,7 @@
 <!--Designer: @qianlf-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a1a66e5c6f23403599f8c889ccfd4d206a6e4cd7 translatedAt=2026-09-21T02:20:44.371Z pushedAt=2026-09-21T13:37:18.627Z -->
+<!-- md-trans-meta sourceCommit=d9d3817c13eb1347a1cffbfe3b55115b01f7d2f1 translatedAt=2026-11-03T03:09:50.155Z pushedAt=2026-11-03T03:23:48.755Z nl=1 -->
 
 The **Web** component can be attached to and detached from the component trees in different windows. With this capability, you can create **Web** components in advance to optimize performance. For example, when a tab page is implemented with a **Web** component, pre-creation of the **Web** component allows for ahead-of-time rendering, so that the page appears instantly when accessed.
 
@@ -40,12 +40,12 @@ import { window } from '@kit.ArkUI';
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err && err.code) {
-        console.info('loadContent failed. errorCode: ' + err.code);
+        console.error('loadContent failed. errorCode: ' + err.code);
         return;
       }
       let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
       if (!windowClass) {
-        console.info('windowClass is null');
+        console.error('windowClass is null');
         return;
       }
       // Create a Web dynamic component (UIContext must be passed in). It can be created at any time after loadContent.
@@ -192,12 +192,12 @@ import { createNWeb } from '../pages/Common';
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err && err.code) {
-        console.info('loadContent failed. errorCode: ' + err.code);
+        console.error('loadContent failed. errorCode: ' + err.code);
         return;
       }
       let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
       if (!windowClass) {
-        console.info('windowClass is null');
+        console.error('windowClass is null');
         return;
       }
       // Create an empty Web dynamic component (UIContext needs to be passed in). It can be created at any time after loadContent.
@@ -372,12 +372,12 @@ import { window } from '@kit.ArkUI';
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err && err.code) {
-        console.info('loadContent failed. errorCode: ' + err.code);
+        console.error('loadContent failed. errorCode: ' + err.code);
         return;
       }
       let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
       if (!windowClass) {
-        console.info('windowClass is null');
+        console.error('windowClass is null');
         return;
       }
       // Create a Web dynamic component (UIContext must be passed in). It can be created at any time after loadContent.
@@ -684,37 +684,37 @@ The following four UI pages are used as examples: Index, Home, Page1, and Page2.
 
 ## Common Troubleshooting Procedure
 
-1. Check the network permission of the application.
+1. Check the application's network permission configuration.
 
-Check whether the network permission has been added to **module.json5**. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
+   Check whether the network permission has been added to module.json5. For details about how to add it, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-<!-- @[add_network_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
+   <!-- @[add_network_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
+   
+   ``` JSON5
+   "requestPermissions":[
+     {
+       "name" : "ohos.permission.INTERNET"
+     }
+   ],
+   ```
 
-``` JSON5
-"requestPermissions":[
-  {
-    "name" : "ohos.permission.INTERNET"
-  }
-],
-```
 
+2. Check the logic of binding [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) to the node.
 
-2. Check the logic for binding [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) to the node.
+   Check whether the node has been mounted on the component tree. It is recommended that you add a Text component above the existing Web component (see the following example). If the Text component does not appear when the screen is blank, check the binding between [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) and the node.
 
-Check whether the node has been added to the component tree. For diagnostics purposes, you are advised to add a **Text** component above the existing **Web** component, as shown in the following example. If the **Text** component is not displayed on the white screen, there is a potential issue with the binding between the [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) and the node.
+   ```ts
+   @Builder
+   function WebBuilder(data:Data) {
+     Column() {
+       Text('test')
+       Web({ src: data.url, controller: data.controller })
+         .width("100%")
+         .height("100%")
+     }
+   }
+   ```
 
-```ts
-@Builder
-function WebBuilder(data:Data) {
-  Column() {
-    Text('test')
-    Web({ src: data.url, controller: data.controller })
-      .width("100%")
-      .height("100%")
-  }
-}
-```
+3. Check the Web visibility state.
 
-3. Check the visibility of the **Web** component.
-
-If the node has been added to the tree, examine the [WebPattern::OnVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange) log to check whether the **Web** component is visible. Invisible **Web** components may cause a white screen.
+   If the entire node has been mounted on the tree, check whether the Web component's visibility state is correct through the log [WebPattern::OnVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange). An invisible Web component may cause a blank screen.

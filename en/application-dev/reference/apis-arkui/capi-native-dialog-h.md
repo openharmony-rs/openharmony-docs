@@ -1,12 +1,11 @@
 # native_dialog.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f9ee958314ea662124f5aa4c8b3902f47eb53485 translatedAt=2026-08-21T12:11:06.379Z pushedAt=2026-08-24T09:08:35.543Z -->
+<!-- md-trans-meta sourceCommit=55df9c11d6d7c450cc6d9d1ac7b0b998394459f6 translatedAt=2026-11-09T11:52:31.214Z pushedAt=2026-11-10T06:39:25.184Z nl=1 -->
 
 ## Overview
 
@@ -104,6 +103,7 @@ enum ArkUI_DismissReason
 
 **Description**
 
+
 Enumerates the actions for triggering closure of the dialog box.
 
 **Since**: 12
@@ -123,6 +123,7 @@ enum ArkUI_LevelMode
 
 **Description**
 
+
 Enumerates the display level modes of the dialog box.
 
 **Since**: 15
@@ -139,6 +140,7 @@ enum ArkUI_ImmersiveMode
 ```
 
 **Description**
+
 
 Enumerates the display areas of the embedded dialog box overlay.
 
@@ -157,6 +159,7 @@ enum OH_ArkUI_DialogDisplayModeInSubWindow
 
 **Description**
 
+
 Enumerates the display modes of the dialog box in the subwindow.
 
 **Since**: 26.0.0
@@ -174,6 +177,7 @@ enum ArkUI_DialogState
 
 **Description**
 
+
 Enumerates dialog box states.
 
 **Since**: 20
@@ -187,6 +191,7 @@ Enumerates dialog box states.
 | DIALOG_DISAPPEARING = 4 | State during the dialog box disappearance animation.|
 | DIALOG_DISAPPEARED = 5 | State after the dialog box disappearance animation ends.|
 
+
 ## Function Description
 
 ### ArkUI_OnWillDismissEvent()
@@ -196,6 +201,7 @@ typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)
 ```
 
 **Description**
+
 
 Defines a pointer to the callback invoked when the dialog box is closed.
 
@@ -221,9 +227,11 @@ void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent*
 
 **Description**
 
+
 Sets whether to block the system behavior of dismissing a dialog box. The value **true** indicates that the system behavior is blocked and the dialog box is not dismissed, and **false** indicates that it is not blocked. When there are important unfinished operations in the dialog box (such as unsaved form data or payment confirmation), you can set **shouldBlockDismiss** to **true** to prevent users from dismissing the dialog box through system methods such as touching the Back button, swiping left or right on the screen, or pressing the Esc key, forcing them to complete the operation or tap the dismissal button.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -240,9 +248,11 @@ void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)
 
 **Description**
 
+
 Obtains the pointer to user data in a dialog box dismiss event object.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -264,9 +274,11 @@ int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* e
 
 **Description**
 
+
 Obtains the dismissal reason from a dialog box dismiss event object.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -288,9 +300,11 @@ int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, voi
 
 **Description**
 
+
 Displays a custom dialog box.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -313,9 +327,10 @@ typedef void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, vo
 
 **Description**
 
+
 A callback invoked when the dialog box is displayed.
 
-**Since:** 26.0.1
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -335,7 +350,7 @@ void OH_ArkUI_CustomDialog_OpenDialogWithCallback(ArkUI_CustomDialogOptions* opt
 
 Opens a custom dialog box.
 
-**Since:** 26.0.1
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -353,9 +368,11 @@ int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, v
 
 **Description**
 
+
 Updates a custom dialog box.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -378,9 +395,11 @@ int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)
 
 **Description**
 
+
 Closes a custom dialog box.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -402,9 +421,11 @@ ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle 
 
 **Description**
 
+
 Creates custom dialog box options.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -426,9 +447,11 @@ void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)
 
 **Description**
 
+
 Disposes of the custom dialog box options.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -444,13 +467,15 @@ int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, A
 
 **Description**
 
+
 Sets the display level of the dialog box.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -473,13 +498,15 @@ int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* option
 
 **Description**
 
+
 Sets the ID of the node under the dialog box's display level.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -502,6 +529,7 @@ int32_t OH_ArkUI_CustomDialog_SetImmersiveMode(ArkUI_CustomDialogOptions* option
 
 **Description**
 
+
 Sets the display area of the embedded dialog box overlay.
 
 > **NOTE**
@@ -509,6 +537,7 @@ Sets the display area of the embedded dialog box overlay.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -531,6 +560,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* opti
 
 **Description**
 
+
 Sets the background color of a dialog box.
 
 > **NOTE**
@@ -538,6 +568,7 @@ Sets the background color of a dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -560,6 +591,7 @@ int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options
 
 **Description**
 
+
 Sets the corner radius for a custom dialog box.
 
 > **NOTE**
@@ -567,6 +599,7 @@ Sets the corner radius for a custom dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -592,6 +625,7 @@ int32_t OH_ArkUI_CustomDialog_SetBorderWidth(ArkUI_CustomDialogOptions* options,
 
 **Description**
 
+
 Sets the border width of a dialog box.
 
 > **NOTE**
@@ -599,6 +633,7 @@ Sets the border width of a dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -625,6 +660,7 @@ int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options,
 
 **Description**
 
+
 Sets the border color of the dialog box.
 
 > **NOTE**
@@ -632,6 +668,7 @@ Sets the border color of the dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -657,6 +694,7 @@ int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options,
 
 **Description**
 
+
 Sets the border style of a dialog box.
 
 > **NOTE**
@@ -664,6 +702,7 @@ Sets the border style of a dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -689,6 +728,7 @@ int32_t OH_ArkUI_CustomDialog_SetWidth(ArkUI_CustomDialogOptions* options, float
 
 **Description**
 
+
 Sets the width of the dialog box background.
 
 > **NOTE**
@@ -696,6 +736,7 @@ Sets the width of the dialog box background.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -719,6 +760,7 @@ int32_t OH_ArkUI_CustomDialog_SetHeight(ArkUI_CustomDialogOptions* options, floa
 
 **Description**
 
+
 Sets the height of the dialog box background.
 
 > **NOTE**
@@ -726,6 +768,7 @@ Sets the height of the dialog box background.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -749,6 +792,7 @@ int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkU
 
 **Description**
 
+
 Sets the shadow of the dialog box background.
 
 > **NOTE**
@@ -756,6 +800,7 @@ Sets the shadow of the dialog box background.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -778,6 +823,7 @@ int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options
 
 **Description**
 
+
 Sets the shadow of the dialog box background.
 
 > **NOTE**
@@ -785,6 +831,7 @@ Sets the shadow of the dialog box background.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -807,6 +854,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* 
 
 **Description**
 
+
 Sets the background blur style of the dialog box.
 
 > **NOTE**
@@ -814,6 +862,7 @@ Sets the background blur style of the dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -836,6 +885,7 @@ int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, i
 
 **Description**
 
+
 Sets the alignment mode of a dialog box.
 
 > **NOTE**
@@ -843,6 +893,7 @@ Sets the alignment mode of a dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -867,6 +918,7 @@ int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, b
 
 **Description**
 
+
 Sets whether to enable the modal mode for a custom dialog box.
 
 > **NOTE**
@@ -874,6 +926,7 @@ Sets whether to enable the modal mode for a custom dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -896,6 +949,7 @@ int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, 
 
 **Description**
 
+
 Sets whether to allow users to touch the mask to dismiss the custom dialog box.
 
 > **NOTE**
@@ -903,6 +957,7 @@ Sets whether to allow users to touch the mask to dismiss the custom dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -925,6 +980,7 @@ int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* option
 
 **Description**
 
+
 Sets whether to display the dialog box in a subwindow.
 
 > **NOTE**
@@ -934,6 +990,7 @@ Sets whether to display the dialog box in a subwindow.
 > When used together with [OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow](#oh_arkui_customdialog_setdisplaymodeinsubwindow), this API can further set the display mode of the dialog box in the subwindow.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -956,9 +1013,11 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterial(ArkUI_NativeDialogH
 
 **Description**
 
+
 Sets the immersive material for a specified dialog box. Immersive materials are classified into different levels based on device computing power. A material level is defined by [ArkUI_MaterialLevel](./capi-native-material-h.md#arkui_materiallevel) and can be obtained through [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](./capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel). For devices with high- and medium-level computing power, the filter, shadow, ([OH_ArkUI_CustomDialog_SetShadow](./capi-native-dialog-h.md#oh_arkui_customdialog_setshadow) or [OH_ArkUI_CustomDialog_SetCustomShadow](./capi-native-dialog-h.md#oh_arkui_customdialog_setcustomshadow)), background blur ([OH_ArkUI_CustomDialog_SetBackgroundBlurStyle](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundblurstyle)), and background effect ([OH_ArkUI_CustomDialog_SetBackgroundEffect](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundeffect)) of the material layer are affected. For devices with low-level computing power, the background color ([OH_ArkUI_CustomDialog_SetBackgroundColor](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundcolor)), background blur ([OH_ArkUI_CustomDialog_SetBackgroundBlurStyle](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundblurstyle)), background effect ([OH_ArkUI_CustomDialog_SetBackgroundEffect](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundeffect)), border color ([OH_ArkUI_CustomDialog_SetBorderColor](./capi-native-dialog-h.md#oh_arkui_customdialog_setbordercolor)), border width ([OH_ArkUI_CustomDialog_SetBorderWidth](./capi-native-dialog-h.md#oh_arkui_customdialog_setborderwidth)), and shadow ([OH_ArkUI_CustomDialog_SetShadow](./capi-native-dialog-h.md#oh_arkui_customdialog_setshadow) or [OH_ArkUI_CustomDialog_SetCustomShadow](./capi-native-dialog-h.md#oh_arkui_customdialog_setcustomshadow)) are affected. The interactive deformation and flowing light effects automatically take effect based on devices' computing power levels. The interactive deformation and flowing light effects take effect on devices with high-level computing power, the interactive deformation effect takes effect on devices with medium-level computing power, and neither of the two effects takes effect on devices with low-level computing power.
 
 **Since**: 26.0.0
+
 
 **Parameters**
 
@@ -981,6 +1040,7 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions(ArkUI_Cust
 
 **Description**
 
+
 Sets the immersive material attributes for a dialog box.
 
 > **NOTE**
@@ -988,6 +1048,7 @@ Sets the immersive material attributes for a dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 26.0.0
+
 
 **Parameters**
 
@@ -1010,6 +1071,7 @@ int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOption
 
 **Description**
 
+
 Sets the display mode of the dialog box in the subwindow.
 
 > **NOTE**
@@ -1019,6 +1081,7 @@ Sets the display mode of the dialog box in the subwindow.
 > This API takes effect only when the dialog box is set to be displayed in a subwindow by calling [OH_ArkUI_CustomDialog_SetSubwindowMode](#oh_arkui_customdialog_setsubwindowmode).
 
 **Since**: 26.0.0
+
 
 **Parameters**
 
@@ -1041,6 +1104,7 @@ int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32
 
 **Description**
 
+
 Sets the mask for a custom dialog box.
 
 > **NOTE**
@@ -1048,6 +1112,7 @@ Sets the mask for a custom dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -1071,6 +1136,7 @@ int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* op
 
 **Description**
 
+
 Sets the keyboard avoidance mode of a dialog box.
 
 > **NOTE**
@@ -1078,6 +1144,7 @@ Sets the keyboard avoidance mode of a dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -1100,6 +1167,7 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* opt
 
 **Description**
 
+
 Sets whether to enable the hover mode for a dialog box.
 
 > **NOTE**
@@ -1107,6 +1175,7 @@ Sets whether to enable the hover mode for a dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -1129,6 +1198,7 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* option
 
 **Description**
 
+
 Sets the default display area of a dialog box in hover mode.
 
 > **NOTE**
@@ -1136,6 +1206,7 @@ Sets the default display area of a dialog box in hover mode.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -1158,6 +1229,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOp
 
 **Description**
 
+
 Registers a callback for the dismissal event of a custom dialog box.
 
 > **NOTE**
@@ -1165,6 +1237,7 @@ Registers a callback for the dismissal event of a custom dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -1188,6 +1261,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOpt
 
 **Description**
 
+
 Registers a callback to be invoked when the specified custom dialog box is about to appear.
 
 > **NOTE**
@@ -1195,6 +1269,7 @@ Registers a callback to be invoked when the specified custom dialog box is about
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -1218,6 +1293,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOpti
 
 **Description**
 
+
 Registers a callback to be invoked when the specified custom dialog box appears.
 
 > **NOTE**
@@ -1225,6 +1301,7 @@ Registers a callback to be invoked when the specified custom dialog box appears.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -1248,6 +1325,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialog
 
 **Description**
 
+
 Registers a callback to be invoked when the specified custom dialog box is about to disappear.
 
 > **NOTE**
@@ -1255,6 +1333,7 @@ Registers a callback to be invoked when the specified custom dialog box is about
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -1278,6 +1357,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogO
 
 **Description**
 
+
 Registers a callback to be invoked when the specified custom dialog box disappears.
 
 > **NOTE**
@@ -1285,6 +1365,7 @@ Registers a callback to be invoked when the specified custom dialog box disappea
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -1308,9 +1389,11 @@ int32_t OH_ArkUI_CustomDialog_GetState(ArkUI_NativeDialogHandle handle, ArkUI_Di
 
 **Description**
 
+
 Obtains the state of a dialog box.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -1333,6 +1416,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOp
 
 **Description**
 
+
 Sets the background blur effect for a dialog box.
 
 > **NOTE**
@@ -1340,6 +1424,7 @@ Sets the background blur effect for a dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -1362,6 +1447,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundEffect(ArkUI_CustomDialogOptions* opt
 
 **Description**
 
+
 Sets the background effect parameters for a dialog box.
 
 > **NOTE**
@@ -1369,6 +1455,7 @@ Sets the background effect parameters for a dialog box.
 > This API must be called before the [OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog) API is invoked.
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -1382,3 +1469,5 @@ Sets the background effect parameters for a dialog box.
 | Type| Description|
 | -- | -- |
 | int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+
+

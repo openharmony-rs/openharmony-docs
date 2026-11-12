@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-10-28T03:52:47.429Z pushedAt=2026-10-28T07:12:50.744Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ad6e19148a2e0fc0380b16e183aef2ad5ce1d4ae translatedAt=2026-11-03T06:31:36.964Z pushedAt=2026-11-03T07:53:45.255Z nl=1 -->
 
 Before reading this document, it is recommended that you review the [State Management Overview](./arkts-state-management-overview.md) to understand the role of AppStorage within the state management framework.
 
@@ -13,7 +13,7 @@ AppStorage is a global UI state storage center bound to the application process.
 
 Serving as the application's "central hub," AppStorage acts as the intermediary bridge between persistent data ([PersistentStorage](arkts-persiststorage.md)), environment variables ([Environment](arkts-environment.md)), and UI interactions. Its primary value lies in providing you with cross-ability UI state sharing capabilities.
 
-AppStorage provides APIs for manual create, retrieve, update, delete (CRUD) operations outside custom components. For details, see [AppStorage API Reference](../../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage). For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management).
+AppStorage provides an API interface that allows developers to manually trigger add, delete, modify, and query operations on the corresponding AppStorage properties outside custom components. It is recommended to read this in conjunction with the [AppStorage API documentation](../../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage).
 
 > **NOTE**
 >

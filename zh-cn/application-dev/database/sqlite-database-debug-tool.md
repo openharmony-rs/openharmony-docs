@@ -100,7 +100,7 @@ sqlite>.q
 | `.tables`          | 列出当前数据库中的所有表。              |
 | ` .show`           | 查看SQLite命令提示符的默认设置。        |
 | `.schema`          | 获取表的完整信息。                     |
-| `.quit` 或 `.exit` | 退出SQLite命令行界面。                  |
+| `.quit`或`.exit` | 退出SQLite命令行界面。                  |
 | `.schema [TABLE]`  | 显示表的创建SQL语句（或所有表的结构）。 |
 
 ## 注意事项
@@ -238,7 +238,7 @@ sqlite>.tables
 
 ### 查询数据
 
-在sqlite>提示符下，可通过` SELECT`查询数据，支持以下几种数据查询：
+在sqlite>提示符下，可通过`SELECT`查询数据，支持以下几种数据查询：
 
 - 可通过SQL语句`SELECT * FROM 表的名称`查询所有数据
 

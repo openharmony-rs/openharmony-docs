@@ -1312,7 +1312,7 @@ A property decorated by \'xxx\' cannot define a set method.
 
 ## 10905131 @Builder装饰器使用位置校验异常
 **错误信息**<br>
-The \'@Builder\' decorator can only pass arguments when decorating a global function.
+Only global functions decorated with @Builder support parameter passing.
 
 **错误描述**<br>
 携带实参的@Builder装饰器仅支持装饰全局函数。
@@ -1325,7 +1325,7 @@ The \'@Builder\' decorator can only pass arguments when decorating a global func
 
 ## 10905132 @Builder装饰器实参校验异常
 **错误信息**<br>
-The \'@Builder\' decorator only supports passing a single object literal.
+The @Builder decorator supports passing only object literals.
 
 **错误描述**<br>
 @Builder装饰器仅支持传入单个对象字面量实参。
@@ -1338,7 +1338,7 @@ The \'@Builder\' decorator only supports passing a single object literal.
 
 ## 10905133 @Builder配置项isPlaceholder校验异常
 **错误信息**<br>
-The \'isPlaceholder\' option of the \'@Builder\' decorator only supports passing true/false.
+The \'isPlaceholder\' option of the @Builder decorator only supports passing boolean literal.
 
 **错误描述**<br>
 @Builder装饰器配置项中的isPlaceholder属性仅支持取值true或false。
@@ -1351,7 +1351,7 @@ The \'isPlaceholder\' option of the \'@Builder\' decorator only supports passing
 
 ## 10905134 占位构建函数参数校验异常
 **错误信息**<br>
-The \'@Builder\' function cannot have parameters when it serves as a placeholder.
+An @Builder function with placeholder capabilities does not support parameter passing.
 
 **错误描述**<br>
 @Builder函数作为占位构建函数时不能声明参数。

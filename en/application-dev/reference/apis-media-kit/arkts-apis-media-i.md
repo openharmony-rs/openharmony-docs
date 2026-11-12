@@ -5,6 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=86db439bd1c352608e3d723cdd2ae7ab72defe03 translatedAt=2026-11-09T06:26:22.431Z pushedAt=2026-11-09T08:18:13.853Z nl=1 -->
 
 > **NOTE**
 >
@@ -176,7 +177,9 @@ Describes the audio and video recording configuration parameters.
 | videoFrameRate   | number                                       | No  | Yes  | Video frame rate. This parameter is mandatory for video recording. The recommended value range is [1, 60], in frames per second (FPS).            |
 | isHdr<sup>11+</sup>            | boolean                        | No  | Yes  | HDR encoding. This parameter is optional for video recording. The default value of **isHdr** is **false**, and there is no requirement on the encoding format. When **isHdr** is set to **true**, the encoding format must be **video/hevc**.|
 | enableTemporalScale<sup>12+</sup>            | boolean                        | No  | Yes  | Whether temporal layered encoding is supported. This parameter is optional for video recording. The default value is **false**. If this parameter is set to **true**, some frames in the video output streams can be skipped without being encoded.|
-| enableBFrame<sup>20+</sup>            | boolean                        | No  | Yes  | Whether B-frame encoding is enabled for video recording. **true** if enabled (valid only when the video encoding format is H.265 and the device hardware supports B-frame encoding), **false** otherwise.<br>This parameter is optional in video recording scenarios. The default value is **false**.|
+| enableBFrame<sup>20+</sup>            | boolean                        | No   | Yes   | Whether to enable B-frame encoding for video recording. This parameter takes effect only when the video encoding format is H.265 and the device hardware supports it. The value **true** means to enable B-frame encoding, and **false** means the opposite.<br>This parameter is optional in the video recording scenario. The default value is **false**.|
+| enableStableQualityMode            | boolean                        | No   | Yes   | Whether to enable the stable quality mode for video encoding. This parameter takes effect only when the video encoding format is H.265 and the device hardware supports it. The value **true** means to enable it, and **false** means the opposite.<br>This parameter is optional in the video recording scenario. The default value is **false**.<br>**Since:** 26.0.1|
+| sqrFactor            | number                        | No   | Yes   | Quality parameter of the SQR rate control mode.<br>The value is an integer in the range [0, 51]. A smaller value indicates a higher encoding output bit rate and higher image quality.<br>This parameter takes effect only after **enableStableQualityMode** is set to **true**.<br>This parameter is optional in the video recording scenario. The default value is dynamically configured by the underlying layer based on the device platform and resolution.<br>**Since:** 26.0.1 <br>**Model restriction:** This API can be used only in the stage model.|
 
 ### Audio Parameters
 
@@ -247,6 +250,8 @@ Describes the video transcoding parameters.
 | videoFrameWidth        | number | No|  Yes  | Width of the output video frame, in pixels. The minimum value is 240p, and the maximum value depends on the encoder capability of the device. The default value is the width of the source video frame.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | videoFrameHeight        | number | No|  Yes  | Height of the output video frame, in pixels. The minimum value is 240p, and the maximum value depends on the encoder capability of the device. The default value is the height of the source video frame.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | enableBFrame<sup>20+</sup> | boolean | No|  Yes  | Whether B-frame encoding is enabled for transcoding. **true** if enabled, **false** otherwise.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet these constraints, B-frames will be skipped, and encoding will proceed as if B-frame video encoding were not enabled.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| enableStableQualityMode            | boolean                        | No   | Yes   | Whether to enable the stable quality mode for video encoding. It takes effect only when the video encoding format is H.265 and the device hardware supports it. The value **true** means to enable the mode, and **false** means to disable it.<br>This parameter is optional in video transcoding scenarios. The default value is **false**.<br>**Since:** 26.1.0 <br>**Model restriction:** This interface is only available in the stage model.<br> **Atomic service API:** Starting with API version 26.1.0, this interface is supported in atomic services.|
+| sqrFactor            | number                        | No   | Yes   | Sets the quality parameter of the SQR rate control mode.<br>The value is an integer in the range [0, 51]. A smaller value indicates a higher encoding output bitrate and higher image quality.<br>This parameter takes effect only after **enableStableQualityMode** is set to **true**.<br>This parameter is optional in video transcoding scenarios. The default value is **25**.<br>**Since:** 26.1.0 <br>**Model restriction:** This interface is only available in the stage model.<br> **Atomic service API:** Starting with API version 26.1.0, this interface is supported in atomic services.|
 
 
 ## AVMetadata<sup>11+</sup>
@@ -264,7 +269,7 @@ Defines the audio and video metadata.
 | dateTime | string | No| Yes| Time when the media asset is created. This property cannot be set for the AVRecorder.|
 | dateTimeFormat | string | No| Yes| Time when the media asset is created. The value is in the YYYY-MM-DD HH:mm:ss format. This property cannot be set for the AVRecorder.|
 | composer | string | No| Yes| Composer of the media asset. This property cannot be set for the AVRecorder.|
-| duration | string | No| Yes| Duration of the media asset. This property cannot be set for the AVRecorder.|
+| duration | string | No | Yes | Duration of the media resource, in milliseconds (ms). Setting this attribute is not supported for AVRecorder. |
 | genre | string | No| Yes| Type or genre of the media asset.|
 | hasAudio | string | No| Yes| Whether the media asset contains audio. This property cannot be set for the AVRecorder.|
 | hasVideo | string | No| Yes| Whether the media asset contains a video. This property cannot be set for the AVRecorder.|
@@ -438,9 +443,12 @@ Describes the screen capture strategy.
 | Name                 | Type   | Read-Only| Optional| Description                |
 | --------------------- | ------- | --- | --- | -------------------- |
 | keepCaptureDuringCall | boolean | No| Yes | Whether to keep screen capture during a cellular call. The value **true** means to keep screen capture during a cellular call, and **false** means the opposite. The default value is **false**.|
-| enableBFrame | boolean | No| Yes| Whether to enable B-frame encoding for screen capture. **true** to enable, **false** otherwise. The default value is **false**.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet the restrictions, B-frames will be skipped during screen capture, and no error will be returned.|
+| enableBFrame | boolean | No| Yes| Whether to enable B-frame encoding for screen capture. **true** to enable, **false** otherwise. The default value is **false**.<br>For details about the restrictions on B-frame video encoding, see [Constraints](../../media/avcodec/video-encoding-b-frame.md#constraints) for B-frame video encoding. If the current environment does not meet the restrictions, B-frames will be skipped during screen capture, and no error will be returned.|
 | privacyMaskMode<sup>23+</sup> | number | No| Yes| Mask mode for privacy windows during screen capture.<br> - **0**: Full-screen mask mode for privacy windows. The default value is **0**.<br> - **1**: Window mask mode for privacy windows.<br> - If this parameter is set to other values, an error is returned.<br> **Model restriction**: This API can be used only in the stage model.|
 | enablePause | boolean | No| Yes| Whether screen capture can be paused.<br>**true**: yes; **false**: no. The default value is **false**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| enableAEC | boolean | No | Yes | Whether to enable echo detection and echo cancellation when microphone capture is enabled.<br>true indicates that echo cancellation is enabled, and false indicates that echo cancellation is disabled. The default value is false.<br>**Since:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model.|
+| enableHDR | boolean | No | Yes | Whether to output images in HDR format during screen recording.<br>true indicates that the image is in HDR format, and false indicates that the image is in SDR format.<br>The default value is false.<br>**Since:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model.|
+| contentAutoPauseScenes | Array<[AVScreenCaptureAutoPauseCaptureScene](arkts-apis-media-e.md#avscreencaptureautopausecapturescene)> | No | Yes | Set of scenes for automatically pausing screen content capture.<br>When the capture session is running, if any scene in the scene set occurs, the system automatically pauses screen content capture.<br>Screen content capture can be resumed by calling [resumeRecording](arkts-apis-media-AVScreenCaptureRecorder.md#resumerecording).<br>By default, screen content capture is not automatically paused (that is, the default behavior when this parameter is not set).<br>**Since:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## AVScreenCaptureRecordConfig<sup>12+</sup>
 
@@ -554,3 +562,20 @@ Describes the information about time-based metadata.
 | start | number | No  | No  | Offset of time-based metadata from the start time of the entire media.<br>The value must be an integer.<br>Unit: ms.|
 | duration | number | No  | No  | Duration of time-based metadata.<br>The value must be an integer.<br>Unit: ms.|
 | contents | Record<string, object> | No  | No  | Key-value pair collection corresponding to time-based metadata.|
+
+## RectangleRegion
+
+Defines the configuration parameters of a rectangular region, which is used to specify the actual area to be recorded during screen recording in the [setCaptureArea](arkts-apis-media-AVScreenCaptureRecorder.md#setcapturearea) API. The region position is calculated with the upper left corner of the screen as the origin, and the region size is determined by its width and height.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name   | Type   | Read-Only | Optional | Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| top    | number | No   | No   | Offset of the rectangular region from the top edge of the screen.<br>The value must be an integer greater than or equal to 0.<br>Unit: pixel (px). |
+| left   | number | No   | No   | Offset of the rectangular region from the left edge of the screen.<br>The value must be an integer greater than or equal to 0.<br>Unit: pixel (px). |
+| width  | number | No   | No   | Width of the rectangular region.<br>The value must be an integer greater than 0, and the sum of left and width must not exceed the screen width.<br>Unit: pixel (px). |
+| height | number | No   | No   | Height of the rectangular region.<br>The value must be an integer greater than 0, and the sum of top and height must not exceed the screen height.<br>Unit: pixel (px). |

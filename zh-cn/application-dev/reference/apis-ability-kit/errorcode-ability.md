@@ -2179,7 +2179,7 @@ The API is not called in the main thread.
 请将接口调用逻辑迁移到主线程中执行。
 
 <!--Del-->
-## 16000206 指定应用未获授解锁前启动权限
+## 16000207 指定应用未获授解锁前启动权限
 
 **错误信息**
 
@@ -3029,15 +3029,15 @@ The number of registered observers for the current application has reached the u
 
 **错误描述**
 
-注册新的observer失败。
+当前应用已注册的observer数量达到上限，注册失败。
 
 **可能原因**
 
-当前应用已注册observer数量达到上限。
+当前应用已注册的observer数量达到上限。
 
 **处理步骤**
 
-注销掉其他进程中的observer。
+注销掉当前应用其他进程中的observer。
 
 ## 35600004 指定的AgentCard版本低于当前版本
 

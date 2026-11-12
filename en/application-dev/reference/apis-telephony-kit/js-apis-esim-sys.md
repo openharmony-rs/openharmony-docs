@@ -5,8 +5,9 @@
 <!--Designer: @ghxbob-->
 <!--Tester: @weitiantian-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=ac6128f8725916ac63683a8d976c9a087c4a19f7 translatedAt=2026-11-03T03:50:06.130Z pushedAt=2026-11-03T08:59:52.976Z nl=1 -->
 
-The **esim** module provides APIs for eSIM management and eSIM services.
+Wearable devices support eSIM. The telephony service provides APIs for eSIM card management and eSIM card services, supporting capabilities such as obtaining the EID of the eUICC hardware, performing operating system upgrades, downloading and deleting profiles, switching and setting profiles, obtaining the list of downloadable profiles and their metadata, obtaining eUICC and profile information, and restoring factory settings. These APIs are applicable to scenarios where the lifecycle of eSIM card profiles needs to be managed on a device.
 
 > **NOTE**
 >
@@ -23,7 +24,7 @@ import { eSIM } from '@kit.TelephonyKit';
 
 getEid\(slotId: number\): Promise\<string\>
 
-Obtains the equipment identifier (EID) of the eUICC hardware in a specified card slot.
+Gets the EID (Equipment Identifier) of the eUICC hardware for the specified slot ID.
 
 **System API**: This is a system API.
 
@@ -45,7 +46,7 @@ Obtains the equipment identifier (EID) of the eUICC hardware in a specified card
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID                | Error Message                        |
 | --------------------- | ---------------------------------- |
@@ -59,12 +60,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 eSIM.getEid(1).then((eid) => {
     console.info(`the EID is:` + eid);
-}).catch((err:BusinessError<void>) => {
-    console.error(`getEid, promise: err->${JSON.stringify(err)}`)
+}).catch((err: BusinessError<void>) => {
+    console.error(`getOsuStatus, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -122,7 +124,7 @@ eSIM.getOsuStatus(1).then(() => {
 
 startOsu\(slotId: number\): Promise\<OsuStatus\>
 
-Upgrades the OS if the OS version of the eSIM in the specified slot is not the latest. This API uses a promise to return the result.
+Performs an operating system upgrade if the operating system of the specified slot is not up to date. After the upgrade is performed, you can call the getOsuStatus API to query the upgrade status (for example, upgrading, upgrade success, or upgrade failure). This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -172,7 +174,7 @@ eSIM.startOsu(1).then(() => {
 
 getDownloadableProfileMetadata\(slotId: number, portIndex: number, profile: DownloadableProfile, forceDisableProfile: boolean\): Promise\<GetDownloadableProfileMetadataResult\>
 
-Obtains the metadata of the downloadable profile. This API uses a promise to return the result.
+Requests and obtains the metadata (such as the service provider name and profile class) of the profile from the SM-DP+ server based on the passed-in downloadable profile information (including the activation code). This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -185,9 +187,9 @@ Obtains the metadata of the downloadable profile. This API uses a promise to ret
 | Name| Type| Mandatory| Description                                                                                                  |
 | ------ | ------ | ----- |------------------------------------------------------------------------------------------------------|
 | slotId              | number                                        | Yes| Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2                                                                     |
-| portIndex           | number                                        | Yes| Port index of the slot.                                                                                            |
+| portIndex           | number                                        | Yes | Port index of the slot.<br/>- 0: port 1.<br/>- 1: port 2.                                                                                             |
 | profile             | [DownloadableProfile](./js-apis-esim.md#downloadableprofile) | Yes| Downloadable profile.                                                                                         |
-| forceDisableProfile | boolean | Yes| Whether to forcibly deactivate the current profile during profile switching.<br> **true**: The current profile is forcibly deactivated, and profile switching can be directly performed.<br> **false**: An error is returned, and profile switching can be performed only after the user authorization is obtained.|
+| forceDisableProfile | boolean | Yes | Whether the profile can be directly deactivated. The value true means that when switching profiles, if the current profile needs to be deactivated, the operation can be performed directly. The value false means that if the current profile needs to be deactivated, the result code RESULT_MUST_DISABLE_PROFILE is returned. After user authorization, set forceDisableProfile to true and continue calling this API to perform the profile switch. |
 
 **Returns**
 
@@ -215,7 +217,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 let profile: eSIM.DownloadableProfile = {
-  activationCode:'1',
+  activationCode: '1',
   confirmationCode:'1',
   carrierName:'test',
   accessRules:[{
@@ -249,7 +251,7 @@ Obtains the list of downloadable profiles. This API uses a promise to return the
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ----- | ----- |
 | slotId              | number  | Yes| Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
-| portIndex           | number  | Yes| Port index of the slot.|
+| portIndex           | number  | Yes | Port index of the slot.<br/>- 0: port 1.<br/>- 1: port 2. |
 | forceDisableProfile | boolean | Yes| Whether to forcibly deactivate the current profile during profile switching.<br> **true**: The current profile is forcibly deactivated, and profile switching can be directly performed.<br> **false**: An error is returned, and profile switching can be performed only after the user authorization is obtained.|
 
 **Returns**
@@ -301,7 +303,7 @@ Downloads a profile. This API uses a promise to return the result.
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ----- | ----- |
 | slotId        | number                                            | Yes| Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
-| portIndex     | number                                            | Yes| Port index of the slot.|
+| portIndex     | number                                            | Yes | Port index of the slot.<br/>- 0: port 1.<br/>- 1: port 2. |
 | profile       | [DownloadableProfile](./js-apis-esim.md#downloadableprofile)     | Yes| Downloadable profile.|
 | configuration | [DownloadConfiguration](#downloadconfiguration) | Yes| Download configuration.|
 
@@ -331,7 +333,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
 let profile: eSIM.DownloadableProfile = {
-  activationCode:'1',
+  activationCode: '1',
   confirmationCode:'1',
   carrierName:'test',
   accessRules:[{
@@ -426,7 +428,7 @@ Obtains eUICC information. This API uses a promise to return the result.
 
 | Type                 | Description                              |
 | --------------------- | ---------------------------------- |
-| Promise\<[EuiccInfo](#euiccinfo)\> | Promise used to return the eUICC information.|
+| Promise\<[EuiccInfo](#euiccinfo)\> | Promise used to return the eUICC information. |
 
 **Error codes**
 
@@ -471,7 +473,7 @@ Deletes a profile. This API uses a promise to return the result.
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ----- | ----- |
 | slotId | number | Yes| Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
-| iccid  | string | Yes| Profile ID.|
+| iccid  | string  | Yes | ID of the profile. An ICCID usually consists of 19 to 20 digits. |
 
 **Returns**
 
@@ -509,7 +511,7 @@ eSIM.deleteProfile(1, 'testId').then(() => {
 
 switchToProfile\(slotId: number, portIndex: number, iccid: string, forceDisableProfile: boolean\): Promise\<ResultCode\>
 
-Switches to the specified profile. This API uses a promise to return the result.
+Switches to (enables) the given profile. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -522,8 +524,8 @@ Switches to the specified profile. This API uses a promise to return the result.
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ----- | ----- |
 | slotId              | number  | Yes| Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
-| portIndex           | number  | Yes| Port index of the slot.|
-| iccid               | string  | Yes| Profile ID.  |
+| portIndex           | number  | Yes | Port index of the slot.<br/>- 0: port 1.<br/>- 1: port 2. |
+| iccid               | string  | Yes | ID of the profile. An ICCID usually consists of 19 to 20 digits.   |
 | forceDisableProfile | boolean | Yes| Whether to forcibly deactivate the current profile during profile switching.<br> **true**: The current profile is forcibly deactivated, and profile switching can be directly performed.<br> **false**: An error is returned, and profile switching can be performed only after the user authorization is obtained.|
 
 **Returns**
@@ -575,7 +577,7 @@ Sets a nickname for the specified profile. This API uses a promise to return the
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ----- | ----- |
 | slotId   | number | Yes| Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
-| iccid    | string | Yes| Profile ID.|
+| iccid    | string | Yes | ID of the profile. An ICCID usually consists of 19 to 20 digits. |
 | nickname | string | Yes| Profile nickname.|
 
 **Returns**
@@ -614,7 +616,7 @@ eSIM.setProfileNickname(1, 'testId', 'testName').then(() => {
 
 resetMemory\(slotId: number, options?: ResetOption\): Promise\<ResultCode\>
 
-Clears all specific profiles and resets the eUICC. This API uses a promise to return the result.
+Clears all specific profiles and resets the eUICC. Unlike reserveProfilesForFactoryRestore, this API clears the profiles. To restore factory settings while retaining existing profiles, use reserveProfilesForFactoryRestore. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -627,7 +629,7 @@ Clears all specific profiles and resets the eUICC. This API uses a promise to re
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ----- | ----- |
 | slotId  | number                        | Yes| Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
-| options | [ResetOption](#resetoption) | No| Reset options.|
+| options | [ResetOption](#resetoption) | No | Reset state. If this parameter is not passed, the default configuration is used. Passing the corresponding enum value specifies the reset options, and multiple options can be combined with bitwise OR. |
 
 **Returns**
 
@@ -665,7 +667,7 @@ eSIM.resetMemory(1).then(() => {
 
 reserveProfilesForFactoryRestore\(slotId: number\): Promise\<ResultCode\>
 
-Restores factory settings and retains profiles. This API uses a promise to return the result.
+Restores factory settings while retaining profiles. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -728,7 +730,7 @@ Sets or updates the default SM-DP+ address stored in the eUICC. This API uses a 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ----- | ----- |
 | slotId  | number | Yes| Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
-| address | string | Yes| Default SM-DP+ address.|
+| address | string | Yes | Default SM-DP+ address to set, which must be in a valid URL format, for example, https://example.com. |
 
 **Returns**
 
@@ -816,7 +818,7 @@ eSIM.getDefaultSmdpAddress(1).then((data: string) => {
 
 cancelSession\(slotId: number, transactionId: string, cancelReason: CancelReason\): Promise\<ResultCode\>
 
-Cancels a session. This API uses a promise to return the result.
+Cancels an ongoing eSIM service session (such as a profile download session) with the SM-DP+ server. By passing in the transaction ID and the cancellation reason, this API terminates the ongoing session operation. This API uses a promise to return the result asynchronously.
 
 **System API**: This is a system API.
 
@@ -829,7 +831,7 @@ Cancels a session. This API uses a promise to return the result.
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ----- | ----- |
 | slotId        | number                          | Yes| Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
-| transactionId | string                          | Yes| Service ID.|
+| transactionId | string                          | Yes | Transaction ID of the session to be canceled, returned by operations such as downloading a profile. |
 | cancelReason  | [CancelReason](#cancelreason) | Yes| Reason for canceling the session.|
 
 **Returns**
@@ -868,10 +870,10 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
 ```
 
 ## eSIM.getSupportedPkids<sup>20+</sup>
- 	 
+
 getSupportedPkids\(slotId: number\): Promise\<string\>
 
-Obtains the public key ID information supported by the phone.
+Gets the public key ID information supported by the phone, which is used for security authentication in the eSIM provisioning process. Before calling the getContractInfo API for encrypted authentication, call this API first to obtain the available public key IDs.
 
 **System API**: This is a system API.
 
@@ -889,7 +891,7 @@ Obtains the public key ID information supported by the phone.
 
 | Type                 | Description                               |
 | --------------------- | ---------------------------------- |
-| Promise\<string\> |Promise used to return the public key ID information supported by the mobile phone in the Tag-Length-Value (TLV) format.|
+| Promise\<string\> |Promise object used to return the public key ID information supported by the phone, in Tag-Length-Value (TLV) format. |
 
 **Error codes**
 
@@ -899,6 +901,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -906,21 +909,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-try {
-    let supportedPkids: string = await eSIM.getSupportedPkids(1);
-    console.info(`supported pkids is:` + supportedPkids);
-} catch (err) {
+eSIM.getSupportedPkids(1).then((data: string) => {
+    console.info(`supported pkids is:` + data);
+}).catch((err: BusinessError<void>) => {
     console.error(`getSupportedPkids, promise: err->${JSON.stringify(err)}`)
-}
+});
 ```
 
 ## eSIM.getContractInfo<sup>20+</sup>
 
 getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<string\>
 
-Obtains the encrypted eSIM ID and other information required for enabling eSIM.
+Gets the encrypted EID and other information required for activating an eSIM.
 
 **System API**: This is a system API.
 
@@ -933,13 +936,13 @@ Obtains the encrypted eSIM ID and other information required for enabling eSIM.
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2  |
-| requestData | [ContractRequestData](./js-apis-esim-sys.md#contractrequestdata20)| Yes  | Information to be encrypted.  |
+| requestData | [ContractRequestData](#contractrequestdata20)| Yes   | Information to be encrypted.   |
 
 **Returns**
 
 | Type                 | Description                               |
 | --------------------- | ---------------------------------- |
-| Promise\<string\> | Promise used to return the encrypted information in the Tag-Length-Value (TLV) format.|
+| Promise\<string\> | Promise object that returns the encryption information in TLV (Tag-Length-Value) format. |
 
 **Error codes**
 
@@ -949,6 +952,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -956,25 +960,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
-try {
-    let request: eSIM.ContractRequestData = {
-        publicKey: "",
-        nonce: "",
-        pkid: ""
-    }
-    let contractInfo: string = await eSIM.getContractInfo(1, request);
-    console.info(`contract info is:` + contractInfo);
-} catch (err) {
+
+let request: eSIM.ContractRequestData = {
+    publicKey: "",
+    nonce: "",
+    pkid: ""
+};
+
+eSIM.getContractInfo(1, request).then((data: string) => {
+    console.info(`contract info is:` + data);
+}).catch((err: BusinessError<void>) => {
     console.error(`getContractInfo, promise: err->${JSON.stringify(err)}`)
-}
+});
 ```
 
 ## eSIM.getEsimFreeStorage<sup>23+</sup>
 
 getEsimFreeStorage\(): Promise\<number>
 
-This API is used to obtain the remaining storage space of the eUICC hardware. This API uses a promise to return the result.
+Gets the remaining storage space of the eUICC hardware. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -990,12 +996,12 @@ This API is used to obtain the remaining storage space of the eUICC hardware. Th
 
 **Error codes**
 
-For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Telephony Subsystem Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID  | Error Message                                   |
 | ------- | --------------------------------------- |
 | 201     | Permission denied.                      |
-| 202     | Nonsystem applications use system APIs. |
+| 202     | Non-system applications use system APIs. |
 | 801     | Capability not supported.               |
 | 3120001 | Service connection failed.              |
 | 3120002 | System internal error.                  |
@@ -1076,7 +1082,7 @@ Obtains the profile information list.
 
 ## OperatorId
 
-Obtains information about the eUICC chip or device.
+Operator identification information.
 
 **System API**: This is a system API.
 
@@ -1105,7 +1111,7 @@ Profile information.
 | profileName         | string                                                | No| No| Profile name.  |
 | state               | [ProfileState](#profilestate)                       | No| No| Profile status.|
 | profileClass        | [ProfileClass](#profileclass)                       | No| No| Profile class.    |
-| operatorId          | [OperatorId](#operatorid)                           | No| No| Operation ID of the profile.|
+| operatorId          | [OperatorId](#operatorid)                           | No | No | Operator ID of the profile.|
 | policyRules         | [PolicyRules](#policyrules)                         | No| No| Profile policy rules.  |
 | accessRules         | Array\<[AccessRule](./js-apis-esim.md#accessrule20)\> | No| No| Profile access rules.  |
 
@@ -1132,7 +1138,7 @@ Defines the reset options.
 | Name| Value| Description|
 | ----- | ----- | ----- |
 |DELETE_OPERATIONAL_PROFILES       | 1      | Deletion of all operational profiles.|
-|DELETE_FIELD_LOADED_TEST_PROFILES | 1 << 1 | Deletion of the downloaded test profiles.|
+|DELETE_FIELD_LOADED_TEST_PROFILES | 1 << 1 | Deletes all field-loaded test profiles. |
 |RESET_DEFAULT_SMDP_ADDRESS        | 1 << 2 | Resetting of the default SM-DP+ address.|
 
 ## OsuStatus
@@ -1294,6 +1300,6 @@ Information required for encryption.
 
 | Name| Type| Read-Only| Optional| Description|
 | ----- | ----- |----|----| -----|
-| publicKey | string  | No | No | Public key.|
-| nonce           | string  | No | No | Random number.|
-| pkid            | string  | No | No | Selected public key ID.|
+| publicKey | string  | No  | No  | Public key in Base64 encoding format. |
+| nonce           | string  | No  | No  | Random number in hexadecimal encoding format. |
+| pkid            | string  | No  | No  | ID of the selected public key, which must be selected from the values returned by getSupportedPkids. |

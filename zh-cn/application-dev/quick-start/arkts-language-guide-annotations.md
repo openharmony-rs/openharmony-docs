@@ -9,18 +9,24 @@ status: active
 # 注解
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao; @cy917474985-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-注解（Annotation）是ArkTS的语言特性，通过添加元数据来改变应用声明的语义。本章介绍注解的声明、使用、导入导出及源码态注解等内容。
+注解（Annotation）是ArkTS的语言特性，用于为类、方法等声明附加结构化的元数据。本章介绍注解的声明、使用、导入导出及源码态注解等内容。
 
 ## 注解的基础概念
 
 ### 注解的定义与作用
 
-注解通过`@interface`声明，以`@`前缀使用，为类和方法等声明添加元信息。注解不是TypeScript中的特性，只能在`.ets/.d.ets`文件中使用。
+注解通过`@interface`声明，以`@`前缀使用，为类和方法等声明添加元数据。
+
+元数据是描述代码的信息，本身不属于程序逻辑。注解不会改变被标注代码的运行行为，其价值在于元数据可以被编译器和工具链读取并处理。作者、版本这类信息写在注释里无法被程序化识别，注解则将其结构化地附加到声明上，随代码一起编译，典型场景包括：
+
+- 描述与治理：为类、方法附加作者、版本、评审人等信息（如下文示例中的`ClassAuthor`）。这些信息可随编译产物和.d.ets声明文件保留，便于跨团队协作时获取。
+- 工具识别与统一处理：工具可以按注解识别出一批声明并统一处理。例如通过注解标记需要拦截的方法实现AOP（Aspect Oriented Programming，面向切面编程）插桩，统一完成日志记录、性能监控、权限校验。业务代码本身无需修改。
+- 生命周期可控：源码态注解是一类特殊形式的注解，其生命周期只在编译期，不会影响编译产物。从API version 24开始，开发者可通过ArkTS提供的`Retention`接口构造自定义源码态注解，详见[源码态注解](#源码态注解)。
 
 ### 注解的声明与使用
 
@@ -42,11 +48,11 @@ class MyClass {
 ```
 
 - 使用`@interface`声明注解。
-- 注解`ClassAuthor`需要将元信息添加到类声明中。
+- 注解`ClassAuthor`为类声明附加作者元数据。
 - 注解必须放置在声明之前。
 - 注解可以包含上述示例中所示的参数。
 
-对于要使用的注解，其名称必须以符号`@`（例如：@MyAnno）为前缀。
+对于要使用的注解，其名称必须以符号`@`（例如：`@MyAnno`）为前缀。
 
 ``` TypeScript
 ClassAuthor({authorName: "Bob"}) // 编译错误：注解需要'@'为前缀
@@ -86,16 +92,16 @@ class MyClass1 {
 
 注解字段仅限于下面列举的类型：
 
-* number
-* boolean
-* string
+* `number`
+* `boolean`
+* `string`
 * 枚举
 * 以上类型的数组
 
 > **说明：**
 > 
 > - 如果使用其他类型用作注解字段的类型，则会发生编译错误。
-> - 注解字段类型不支持bigint。
+> - 注解字段类型不支持`bigint`。
 
 注解字段的默认值必须使用常量表达式来指定。常量表达式的场景如下所示：
 
@@ -107,27 +113,23 @@ class MyClass1 {
 
 > **说明：**
 > 
-> 如果枚举值不能在编译时确定，会编译报错。
+> 如果枚举值不能在编译时确定，会引发编译错误。
 
 ``` TypeScript
-// a.ts
-export enum X {
-  x = foo(); // x不是编译时能确定的常量
+function foo(): number {
+  return 1;
 }
 
-// b.ets
-import {X} from './a';
-
 @interface Position {
-  data: number = X.x; // 编译错误：注解字段的默认值必须使用常量表达式
+  data: number = foo(); // 编译错误：注解字段的默认值必须使用常量表达式
 }
 ```
 
-注解必须定义在顶层作用域（top-level），否则会出现编译报错。
+注解必须定义在顶层作用域（top-level），否则会出现编译错误。
 
-注解的名称不能与注解定义所在作用域内可见的其他实体名称相同，否则会出现编译报错。
+注解的名称不能与注解定义所在作用域内可见的其他实体名称相同，否则会出现编译错误。
 
-注解不支持TypeScript中的合并，否则会出现编译报错。
+注解不支持TypeScript中的合并，否则会出现编译错误。
 
 ``` TypeScript
 namespace ns {
@@ -153,14 +155,14 @@ class Position { // 编译错误：注解的名称不能与注解定义所在作
 }
 ```
 
-注解不是类型，把注解当类型使用时会出现编译报错（例如：对注解使用类型别名）。
+注解不是类型，把注解当类型使用时会出现编译错误（例如：对注解使用类型别名）。
 
 ``` TypeScript
 @interface Position {}
 type Pos = Position; // 编译错误：注解不是类型
 ```
 
-注解不支持在类的getter和setter方法中添加，若添加注解会编译报错。
+注解不支持在类的getter和setter方法中添加，若添加注解将导致编译错误。
 
 ``` TypeScript
 @interface ClassAuthor {
@@ -240,7 +242,7 @@ class C3 {
 > 赋值应当与注解声明的类型一致，所赋的值与注解字段默认值的要求一样，只能使用常量表达式。
 
 ``` TypeScript
-@ClassPreamble() // 编译错误：authorName字段未定义
+@ClassPreamble() // 编译错误：authorName字段未赋值
 class C1 {
   // ...
 }
@@ -313,13 +315,13 @@ class C {
 }
 ```
 
-- 不允许在import中对注解进行重命名。
+- 不允许在`import`中对注解进行重命名。
 
 ``` TypeScript
 import { MyAnno as Anno } from './a'; // 编译错误：不允许在import中对注解进行重命名
 ```
 
-不允许对注解使用任何其他形式的import/export，这会导致编译报错。
+不允许对注解使用任何其他形式的`import`/`export`，这会导致编译错误。
 
 - 由于注解不是类型，因此禁止使用`type`符号进行导入和导出。
 
@@ -388,7 +390,7 @@ export declare @interface NameAnno{name: string = ""}
 export @interface NameAnno{name: string = ""} // ok
 ```
 
-环境声明的注解和class类似，也可以被import使用。
+环境声明的注解和`class`类似，也可以被`import`使用。
 
 <!-- @[annotation_anno](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->
 
@@ -435,7 +437,7 @@ class C {
 
 2. 当下面所有条件成立时，源代码中实体的注解实例会在.d.ets文件中保留。
 
-  - 2.1 注解的定义被导出（import的注解也算作被导出）。
+  - 2.1 注解的定义被导出（`import`的注解也算作被导出）。
   - 2.2 如果实体是类，则类被导出。
   - 2.3 如果实体是方法，则类被导出，并且方法不是私有方法。
 
@@ -506,15 +508,17 @@ class C {
 }
 ```
 
-在最终编译产物中，class C没有注解。
+在最终编译产物中，`class` C没有注解。
 
 ## 重复注解与继承
 
 同一个实体不能重复使用同一注解，否则会导致编译错误。
 
 ``` TypeScript
-@MyAnno({name: "123", value: 456})
-@MyAnno({name: "321", value: 654}) // 编译错误：不允许重复注解
+@interface MyAnno3 { name: string; value: number }
+
+@MyAnno3({name: "123", value: 456})
+@MyAnno3({name: "321", value: 654}) // 编译错误：不允许重复注解
 class C {
   // ...
 }
@@ -527,9 +531,9 @@ class C {
 不支持对抽象类或抽象方法使用注解，否则将导致编译错误。
 
 ``` TypeScript
-@MyAnno // 编译错误：不允许在抽象类和抽象方法上使用注解
+@MyAnno3 // 编译错误：不允许在抽象类和抽象方法上使用注解
 abstract class C {
-  @MyAnno
+  @MyAnno3
   abstract foo(): void; // 编译错误：不允许在抽象类和抽象方法上使用注解
 }
 ```
@@ -607,11 +611,11 @@ enum ColorSet { RED, GREEN, BLUE }
 
 ### 注解不是类型
 
-注解不能作为类型使用，不能对注解使用类型别名，否则会出现编译报错。
+注解不能作为类型使用，不能对注解使用类型别名，否则会出现编译错误。
 
 ### 注解不支持在getter和setter上使用
 
-注解不支持在类的getter和setter方法中添加，若添加注解会编译报错。
+注解不支持在类的getter和setter方法中添加，若添加注解将导致编译错误。
 
 ### 不允许重复注解
 

@@ -4,7 +4,7 @@
 <!--Subsystem: Graphic-->
 <!--Owner: @xubo85-->
 <!--Designer: @comicchang; @chensiyi_CE-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
 远程控制窗口组件，可以通过此组件控制应用窗口，提供启动退出过程中控件动画和应用窗口联动动画的能力。

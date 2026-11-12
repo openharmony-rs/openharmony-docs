@@ -754,6 +754,34 @@ With this permission, the application can improve handwriting performance, ensur
 
 **Since**: 26.0.0
 
+## ohos.permission.QUERY_PUBLIC_CLI_TOOL
+
+Allows an application to query available CLI tools.
+
+With this permission, third-party agent applications can access the Claw function.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
+## ohos.permission.EXEC_PUBLIC_CLI_TOOL
+
+Allows an application to execute available CLI tools.
+
+With this permission, third-party agent applications can access the Claw function.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
 ## ohos.permission.GET_ENTERPRISE_CONFIG
 
 Allows an application to obtain custom enterprise device management (EDM) configuration files.
@@ -795,6 +823,34 @@ After obtaining this permission, applications can query the privacy-related agre
 **Supported devices**: cars
 
 **Since**: 26.0.1
+
+## ohos.permission.vehicle.HIMA_DATA_READ
+ 
+Allows an application to read data from the HIMA cloud.
+ 
+With this permission, the application can read vehicle-related data from the HIMA cloud.
+ 
+**Permission level**: normal
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.HIMA_DATA_WRITE
+ 
+Allows an application to write data to the HIMA cloud.
+ 
+With this permission, the application can write vehicle-related data to the HIMA cloud.
+ 
+**Permission level**: normal
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
 
 ## ohos.permission.DCAS_RUN_MODEL
 

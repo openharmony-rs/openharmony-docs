@@ -60,9 +60,9 @@ applyNormalAttribute?(instance: SymbolGlyphAttribute): void
 该示例通过[SymbolGlyphModifier](#symbolglyphmodifier)和TextInput组件的[cancelButton](./ts-basic-components-textinput.md#cancelbutton18)属性展示了自定义右侧symbol类型清除按钮样式的效果。
 
 ```ts
+// xxx.ets
 import { SymbolGlyphModifier } from '@kit.ArkUI';
 
-// xxx.ets
 @Entry
 @Component
 struct Index {

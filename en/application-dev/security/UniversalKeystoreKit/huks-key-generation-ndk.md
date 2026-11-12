@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=fc50c8d990bffee49b4e7ddbe84b245946468e4c translatedAt=2026-11-03T05:39:44.675Z pushedAt=2026-11-03T07:39:11.100Z nl=1 -->
 
 This topic walks you through on how to randomly generate a key with the ECC algorithm. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-key-generation-overview.md#supported-algorithms).
 
@@ -23,7 +24,11 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. Initialize the key property set. Construct **paramSet** using [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset), [OH_Huks_AddParams](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_addparams), and [OH_Huks_BuildParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_buildparamset).
 
-   The key property set must contain the [OH_Huks_KeyAlg](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyalg), [OH_Huks_KeySize](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keysize), and [OH_Huks_KeyPurpose](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keypurpose) properties. Note that a key can have only one purpose, and the purpose specified during key generation must match the key purpose during usage. Otherwise, an exception occurs.
+   The key property set must contain the [OH_Huks_KeyAlg](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyalg), [OH_Huks_KeySize](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keysize), and [OH_Huks_KeyPurpose](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keypurpose) properties.
+
+   > **Note:**
+   >
+   > A key can have only one type of PURPOSE, and the purpose specified during key generation must match the way it is used. Otherwise, an exception occurs.
 
 3. Call [OH_Huks_GenerateKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_generatekeyitem) and pass in the key alias and key property set to generate a key.
 
@@ -49,12 +54,10 @@ OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_
     }
     ret = OH_Huks_AddParams(*paramSet, params, paramCount);
     if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(paramSet);
         return ret;
     }
     ret = OH_Huks_BuildParamSet(paramSet);
     if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(paramSet);
         return ret;
     }
     return ret;

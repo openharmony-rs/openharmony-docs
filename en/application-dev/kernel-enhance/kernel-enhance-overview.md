@@ -6,7 +6,7 @@
 <!--Designer: @tanyihua; @lingminghw; @wangxiayang-->
 <!--Tester: @panny060; @RayShih; @lianxuanself-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=906890335bf480362f63f05961ebc2618e5bb601 translatedAt=2026-07-02T12:58:12.986Z pushedAt=2026-07-03T10:42:31.356Z -->
+<!-- md-trans-meta sourceCommit=8d8362324d3dcaa608a365b0dd991343eedfd06a translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z -->
 
 ## Overview
 
@@ -75,6 +75,8 @@ The Gewu service provides the following optimizations for on-device inference sc
 
 ## Constraints
 
+<!--RP2--><!--RP2End-->
+
 ### QoS Constraints
 
 - QoS APIs can set only the QoS level of the current task, not the QoS level of other tasks.
@@ -98,3 +100,5 @@ The Gewu service provides the following optimizations for on-device inference sc
 - [Purgeable Memory Development](purgeable-memory-guidelines.md)
 
 - [Gewu Service Development](gewu-ndk-api-guidelines.md)
+
+<!--RP1--><!--RP1End-->

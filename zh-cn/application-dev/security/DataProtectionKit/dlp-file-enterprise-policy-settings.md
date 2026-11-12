@@ -14,6 +14,8 @@ Data Protection Kit为应用提供了设置动态防护策略的能力，在用�
 
 使用该能力无需预先注册通信插件。
 
+<!--RP1--><!--RP1End-->
+
 ## 开发步骤
 
 1.  接口所需模块导入。
@@ -32,7 +34,7 @@ Data Protection Kit为应用提供了设置动态防护策略的能力，在用�
     2.3 调用[dlpPermission.setEnterprisePolicy](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionsetenterprisepolicy21)完成防护策略设置。
 
     <!-- @[dlp_setEnterprisePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     setEnterprisePolicy() {
       try {

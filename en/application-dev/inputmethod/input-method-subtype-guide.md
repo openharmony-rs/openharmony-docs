@@ -1,16 +1,17 @@
 # Setting Input Method Subtypes
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=47c7709ba7e841213519ba94d84d1b77015d82aa translatedAt=2026-11-03T08:26:27.517Z pushedAt=2026-11-03T08:26:27.517Z nl=1 -->
 
 The input method subtypes allow the input method to switch to a specific mode or language, for example, the Chinese or English keyboard.
 
 ## Configuring and Implementing an Input Method Subtype
 
-1. Implement an **InputMethodExtensionAbility** instance for an input method, which will be shared by all subtypes of the input method. Add **metadata** with the name **ohos.extension.input_method** to the [module.json5](../quick-start/module-configuration-file.md) file to configure resource information for all subtypes.
+1. Implement an **InputMethodExtensionAbility** instance for an input method, which will be shared by all subtypes of the input method. Add [metadata](../quick-start/module-configuration-file.md#metadata) with the name **ohos.extension.input_method** to the [module.json5](../quick-start/module-configuration-file.md) file to configure resource information for all subtypes.
 
    <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
    
@@ -64,10 +65,10 @@ The input method subtypes allow the input method to switch to a specific mode or
    // Register a listener in the input method application for subtype changes.
    inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
      if (inputMethodSubtype.id === 'InputMethodExtAbility') {
-       AppStorage.setOrCreate('subtypeChange', 0);
+       AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.english);
      }
      if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
-       AppStorage.setOrCreate('subtypeChange', 1);
+       AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.chinese);
      }
    });
    ```

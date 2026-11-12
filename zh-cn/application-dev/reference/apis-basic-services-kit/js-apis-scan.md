@@ -113,7 +113,6 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | minValue | number | 否 | 否 | 范围的最小值。 |
@@ -126,7 +125,6 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | optionName | string | 否 | 否 | 选项名称。 |
@@ -146,7 +144,6 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | valueType | [OptionValueType](#optionvaluetype) | 否 | 否 | 值类型，决定应使用的值字段。 |
@@ -160,7 +157,6 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | progress | number | 否 | 否 | 当前进度百分比，取值范围为0~100。 |
@@ -173,7 +169,6 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | scannerId | string | 否 | 否 | 扫描仪的ID。 |
@@ -189,7 +184,6 @@ import { scan } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | scannerId | string | 否 | 否 | 扫描仪的ID。 |
@@ -209,6 +203,7 @@ init(): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **返回值：**
+
 | **类型** | **说明** |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，初始化扫描服务成功时resolve，失败时reject。 |
@@ -222,8 +217,7 @@ init(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 scan.init().then(() => {
     console.info('scan init success');
@@ -243,6 +237,7 @@ exit(): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **返回值：**
+
 | **类型** | **说明** |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，退出扫描服务成功时resolve，失败时reject。 |
@@ -256,8 +251,7 @@ exit(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 scan.exit().then(() => {
     console.info('scan exit success');
@@ -277,6 +271,7 @@ startScannerDiscovery(): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **返回值：**
+
 | **类型** | **说明** |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，开始发现扫描仪成功时resolve，失败时reject。 |
@@ -290,8 +285,7 @@ startScannerDiscovery(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 scan.startScannerDiscovery().then(() => {
     console.info('start scanner discovery success');
@@ -311,11 +305,13 @@ openScanner(scannerId: string): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 要打开的扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
+
 | **类型** | **说明** |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，打开扫描仪成功时resolve，失败时reject。 |
@@ -329,8 +325,7 @@ openScanner(scannerId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.openScanner(scannerId).then(() => {
@@ -351,11 +346,13 @@ closeScanner(scannerId: string): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 要关闭的扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
+
 | **类型** | **说明** |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，关闭扫描仪成功时resolve，失败时reject。 |
@@ -369,8 +366,7 @@ closeScanner(scannerId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.closeScanner(scannerId).then(() => {
@@ -391,11 +387,13 @@ getScannerParameter(scannerId: string): Promise&lt;ScannerParameter[]&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
+
 | **类型** | **说明** |
 | -------- | -------- |
 | Promise&lt;[ScannerParameter](#scannerparameter)[]&gt; | Promise对象，获取扫描仪参数成功时resolve并返回扫描仪参数数组，失败时reject。 |
@@ -409,8 +407,7 @@ getScannerParameter(scannerId: string): Promise&lt;ScannerParameter[]&gt;
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.getScannerParameter(scannerId).then((parameters: scan.ScannerParameter[]) => {
@@ -431,6 +428,7 @@ setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOption
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 要设置参数的扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
@@ -438,6 +436,7 @@ setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOption
 | value | [ScannerOptionValue](#scanneroptionvalue) | 是 | 要设置的扫描仪选项值，包含值类型（valueType）及对应的数值（numValue）、字符串值（strValue）或布尔值（boolValue）。 |
 
 **返回值：**
+
 | **类型** | **说明** |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，设置扫描仪参数成功时resolve，失败时reject。 |
@@ -451,8 +450,7 @@ setScannerParameter(scannerId: string, optionIndex: number, value: ScannerOption
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
@@ -478,12 +476,14 @@ setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 | optionIndex | number | 是 | 要设置为自动的选项的索引，可通过getScannerParameter()获取。 |
 
 **返回值：**
+
 | **类型** | **说明** |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，设置扫描选项为自动模式成功时resolve，失败时reject。 |
@@ -497,8 +497,7 @@ setScanAutoOption(scannerId: string, optionIndex: number): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
@@ -520,12 +519,14 @@ getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise&lt;Sca
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 要获取当前设置的扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 | optionIndex | number | 是 | 要获取的选项的索引，可通过getScannerParameter()获取。 |
 
 **返回值：**
+
 | **类型** | **说明** |
 | -------- | -------- |
 | Promise&lt;[ScannerOptionValue](#scanneroptionvalue)&gt; | Promise对象，获取当前扫描仪设置成功时resolve并返回扫描仪选项值，失败时reject。 |
@@ -539,8 +540,7 @@ getScannerCurrentSetting(scannerId: string, optionIndex: number): Promise&lt;Sca
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
@@ -562,12 +562,14 @@ startScan(scannerId: string, batchMode: boolean): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 | batchMode | boolean | 是 | 是否使用批处理模式。true表示使用批处理模式，可连续扫描多页文档；false表示不使用批处理模式，仅扫描单页。 |
 
 **返回值：**
+
 | **类型** | **说明** |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，开始扫描成功时resolve，失败时reject。 |
@@ -581,8 +583,7 @@ startScan(scannerId: string, batchMode: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let batchMode: boolean = true;
@@ -604,11 +605,13 @@ cancelScan(scannerId: string): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
+
 | **类型** | **说明** |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，取消扫描成功时resolve，失败时reject。 |
@@ -622,8 +625,7 @@ cancelScan(scannerId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.cancelScan(scannerId).then(() => {
@@ -644,11 +646,13 @@ getPictureScanProgress(scannerId: string): Promise&lt;PictureScanProgress&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID，可以在startScannerDiscovery后通过scanDeviceFound回调获取。 |
 
 **返回值：**
+
 | **类型** | **说明** |
 | -------- | -------- |
 | Promise&lt;[PictureScanProgress](#picturescanprogress)&gt; | Promise对象，获取图片扫描进度成功时resolve并返回图片扫描进度信息，失败时reject。 |
@@ -662,8 +666,7 @@ getPictureScanProgress(scannerId: string): Promise&lt;PictureScanProgress&gt;
 **示例：**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.getPictureScanProgress(scannerId).then((progress: scan.PictureScanProgress) => {
@@ -684,6 +687,7 @@ on(type: 'scanDeviceFound', callback: Callback&lt;ScannerDevice&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceFound' | 是 | 事件类型。 |
@@ -716,6 +720,7 @@ off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceFound' | 是 | 事件类型。 |
@@ -751,6 +756,7 @@ on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceSync' | 是 | 事件类型。 |
@@ -783,6 +789,7 @@ off(type: 'scanDeviceSync', callback?: Callback&lt;ScannerSyncDevice&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
+
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceSync' | 是 | 事件类型。 |

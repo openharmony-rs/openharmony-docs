@@ -1,11 +1,12 @@
-# USB Isochronous Transfer
+# USB Isochronous Transfer (ArkTS)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=153a2d56058c66354e11239cdb98b8313af7ef4e translatedAt=2026-11-06T12:10:21.207Z pushedAt=2026-11-09T12:38:35.069Z nl=1 -->
 
 ## When to Use
 
@@ -22,7 +23,7 @@ Isochronous transfer is a transfer mode in which data is transferred in a fixed 
 
 - SDK version configuration:
 
-  The ArkTs APIs for peripheral management can be used only when the SDK is of API version 16 or later.
+  The ArkTS APIs provided by Extended Peripheral Management require SDK API version 16 or later.
 
 
 - HDC configuration:
@@ -32,7 +33,7 @@ Isochronous transfer is a transfer mode in which data is transferred in a fixed 
 ### Environment Setup
 
 - Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/) 4.1 or later on the PC.
-- Update the public SDK to API version 16 or later.<!--Del--> For details, see [Switching to Full SDK](../../../../faqs/full-sdk-switch-guide.md).<!--DelEnd-->
+- Update the public-SDK to API 16 or later<!--Del-->. For details about updating the SDK, see [Update Guide](../../../../faqs/full-sdk-switch-guide.md)<!--DelEnd-->.
 - Install hdc on the PC. You can use it to interact with a real device or the Emulator on Windows, Linux, or macOS.
 - Use a USB cable to connect a device to the PC.
 
@@ -45,35 +46,42 @@ Isochronous transfer is a transfer mode in which data is transferred in a fixed 
 | usbSubmitTransfer(transfer: UsbDataTransferParams): void                                                         | Submits isochronous, bulk, or interrupt transfer in an asynchronous manner.                                  |
 | usbCancelTransfer(transfer: UsbDataTransferParams): void                                                         | Cancels the submitted asynchronous transfer.                                            |
 
-For details about the APIs of device management and transfer modes, see [@ohos.usbManager (USB Manager)](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md).
+For more details about the APIs for device management and transfer modes, see [@ohos.usbManager](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md).
 
 ### How to Develop
 
 Connect a host to a device and use the **usbSubmitTransfer** API to transfer data. The following steps describe how to implement an interrupt transfer:
 
-> **NOTE**
+> **NOTE** 
 >
 > The following sample code shows only a basic process. You should execute the code in a specific method. When calling this method, you must comply with device protocols to ensure proper data transfer and device compatibility.
 
 1. Import modules.
 
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // Import the usbManager module.
-   import { usbManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { usbManager, BusinessError } from '@kit.BasicServicesKit';
    import { JSON } from '@kit.ArkTS';
    ```
 
 
 2. Obtain the USB device list.
 
-   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // Obtain the USB device list.
-   let deviceList: usbManager.USBDevice[] = usbManager.getDevices();
+   let deviceList: usbManager.USBDevice[] = [];
+   try {
+     deviceList = usbManager.getDevices();
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB getDevices failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB getDevices failed: code=' + errorObj.code + ', message=' + errorObj.message;
+   }
+   
    console.info(`deviceList: ${deviceList}`);
    this.logInfo_ += '\n[INFO] deviceList: ' + JSON.stringify(deviceList);
    if (deviceList === undefined || deviceList.length === 0) {
@@ -82,63 +90,63 @@ Connect a host to a device and use the **usbSubmitTransfer** API to transfer dat
      return;
    }
    /*
-   Example deviceList structure:
-   [
-     {
-       name: '1-1',
-       serial: '',
-       manufacturerName: '',
-       productName: '',
-       version: '',
-       vendorId: 7531,
-       productId: 2,
-       clazz: 9,
-       subClass: 0,
-       protocol: 1,
-       devAddress: 1,
-       busNum: 1,
-       configs: [
-         {
-           id: 1,
-           attributes: 224,
-           isRemoteWakeup: true,
-           isSelfPowered: true,
-           maxPower: 0,
-           name: '1-1',
-           interfaces: [
-             {
-               id: 0,
-               protocol: 0,
-               clazz: 9,
-               subClass: 0,
-               alternateSetting: 0,
-               name: '1-1',
-               endpoints: [
-                 {
-                   address: 129,
-                   attributes: 3,
-                   interval: 12,
-                   maxPacketSize: 4,
-                   direction: 128,
-                   number: 1,
-                   type: 3,
-                   interfaceId: 0,
-                 }
-               ]
-             }
-           ]
-         }
-       ]
-     }
-   ]
-   */
+     deviceList structure example
+     [
+       {
+         name: '1-1',
+         serial: '',
+         manufacturerName: '',
+         productName: '',
+         version: '',
+         vendorId: 7531,
+         productId: 2,
+         clazz: 9,
+         subClass: 0,
+         protocol: 1,
+         devAddress: 1,
+         busNum: 1,
+         configs: [
+           {
+             id: 1,
+             attributes: 224,
+             isRemoteWakeup: true,
+             isSelfPowered: true,
+             maxPower: 0,
+             name: '1-1',
+             interfaces: [
+               {
+                 id: 0,
+                 protocol: 0,
+                 clazz: 9,
+                 subClass: 0,
+                 alternateSetting: 0,
+                 name: '1-1',
+                 endpoints: [
+                   {
+                     address: 129,
+                     attributes: 3,
+                     interval: 12,
+                     maxPacketSize: 4,
+                     direction: 128,
+                     number: 1,
+                     type: 3,
+                     interfaceId: 0,
+                   }
+                 ]
+               }
+             ]
+           }
+         ]
+       }
+     ]
+    */
    this.deviceList_ = deviceList;
    ```
 
 
 3. Obtain the device operation permissions.
 
-   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -153,29 +161,50 @@ Connect a host to a device and use the **usbSubmitTransfer** API to transfer dat
      console.info('usb device request right result: ' + hasRight);
      this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
    }).catch((error: BusinessError) => {
-     console.error(`usb device request right failed : ${error}`);
-     this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+     console.error(`usb device request right failed : code=${error.code}, message=${error.message}`);
+     this.logInfo_ += '\n[ERROR] usb device request right failed: code=' + error.code + ', message=' + error.message;
    });
    ```
 
 
 4. Obtain the endpoint for reading data through interrupt transfer.
 
-   <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-     console.error('deviceList_ is empty');
-     this.logInfo_ += '\n[ERROR] deviceList_ is empty';
+     console.error('deviceList is empty');
+     this.logInfo_ += '\n[ERROR] deviceList is empty';
      return;
    }
    let usbDevice: usbManager.USBDevice = this.deviceList_[0];
-   if (!usbManager.hasRight(usbDevice.name)) {
-     console.error('permission denied');
-     this.logInfo_ += '\n[ERROR] permission denied';
+   try {
+     if (!usbManager.hasRight(usbDevice.name)) {
+       console.error('permission denied');
+       this.logInfo_ += '\n[ERROR] permission denied';
+       return;
+     }
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB hasRight failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: code=' + errorObj.code + ', message=' + errorObj.message;
      return;
    }
-   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(usbDevice);
+   
+   let devicePipe: usbManager.USBDevicePipe;
+   try {
+     devicePipe = usbManager.connectDevice(usbDevice);
+     if (!devicePipe) {
+       console.error('connectDevice failed, pipe is undefined');
+       this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
+       return;
+     }
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`connectDevice failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] connectDevice: code=' + errorObj.code + ', message=' + errorObj.message;
+     return
+   }
    let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
    let usbInterfaces: usbManager.USBInterface[] = [];
    let usbInterface: usbManager.USBInterface | undefined = undefined;
@@ -200,37 +229,69 @@ Connect a host to a device and use the **usbSubmitTransfer** API to transfer dat
      this.logInfo_ += '\n[ERROR] get usbEndpoint error';
      return;
    }
+   if (usbInterface === undefined) {
+     console.error(`get usbInterface error`);
+     this.logInfo_ += '\n[ERROR] get usbInterface error';
+     return;
+   }
    ```
 
    
 5. Connect to the device and register the communication interface.
 
-   <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   // Register a communication interface. If the registration is successful, 0 is returned; otherwise, other error codes are returned.
-   let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
-   if (claimInterfaceResult !== 0) {
-     console.error(`claimInterface error = ${claimInterfaceResult}`)
-     this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
-     return;
-   }
-   
-   // When the transfer is of the isochronous type, you need to register a device interface. If the registration is successful, 0 is returned; otherwise, other error codes are returned.
-   if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
-     let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
-     if (setInterfaceResult !== 0) {
-       console.error(`setInterfaceResult error = ${setInterfaceResult}`)
-       this.logInfo_ += '\n[ERROR] setInterfaceResult error = ' + JSON.stringify(setInterfaceResult);
-       return;
-     }
-   }
-   ```
+    <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+    
+    ``` TypeScript
+    // Register the communication interface. Return 0 if registration succeeds, and return another error code if registration fails.
+    try {
+      if (this.isExclusiveClaim_) {
+        usbManager.claimInterfaceExclusive(devicePipe, usbInterface, true,
+          (conflict: usbManager.InterfaceConflictInfo) => {
+          // Asynchronous conflict notification when another application claims the same interface.
+          const conflictMsg = `busNum = ${conflict.busNum}, devAddr = ${conflict.devAddr}, ` +
+            `interfaceId = ${conflict.interfaceId}`;
+          console.info(`interface conflict: ${conflictMsg}`);
+          this.logInfo_ += `\n[INFO] interface conflict: ${conflictMsg}`;
+        });
+        console.info('claimInterfaceExclusive success');
+        this.logInfo_ += '\n[INFO] claimInterfaceExclusive success';
+      } else {
+        let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
+        if (claimInterfaceResult !== 0) {
+          console.error(`claimInterface error = ${claimInterfaceResult}`)
+          this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+          return;
+        }
+      }
+    } catch (error) {
+      let errorObj: BusinessError = error as BusinessError;
+      console.error(`USB claimInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+      this.logInfo_ += '\n[ERROR] USB claimInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
+      return;
+    }
+    
+    // When the transfer type is "real-time transfer", set the device interface. Return 0 if the setting succeeds, and return another error code if registration fails.
+    if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
+      try {
+        let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
+        if (setInterfaceResult !== 0) {
+          console.error(`setInterfaceResult error = ${setInterfaceResult}`)
+          this.logInfo_ += '\n[ERROR] setInterfaceResult error = ' + JSON.stringify(setInterfaceResult);
+          return;
+        }
+      } catch (error) {
+        let errorObj: BusinessError = error as BusinessError;
+        console.error(`USB setInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+        this.logInfo_ += '\n[ERROR] USB setInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
+        return;
+      }
+    }
+    ```
 
 
 6. Perform data transfer.
 
-   <!-- @[isochronousTransfer_isochronousTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[isochronousTransfer_isochronousTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let transferParams: usbManager.UsbDataTransferParams | undefined = undefined;
@@ -243,41 +304,59 @@ Connect a host to a device and use the **usbSubmitTransfer** API to transfer dat
        type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS,
        timeout: 2000,
        length: 10,
-       callback: () => {
+       callback: (err: BusinessError , callBackData: usbManager.SubmitTransferCallback) => {
+         if (err) {
+           console.error(`transfer error: ${err}`);
+           this.logInfo_ += '\n[ERROR] transfer error: ' + JSON.stringify(err);
+           return;
+         }
+         console.info(`callBackData = ${callBackData}`);
+         this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
+         console.info('transfer success,result = ' + transferParams?.buffer.toString());
+         this.logInfo_ += '\n[INFO] transfer success,result = ' + transferParams?.buffer.toString();
        },
        userData: new Uint8Array(10),
        buffer: new Uint8Array(10),
        isoPacketCount: 2,
      };
-   
-     transferParams.callback = (err: Error, callBackData: usbManager.SubmitTransferCallback) => {
-       console.info(`callBackData = ${callBackData}`);
-       this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
-       console.info('transfer success,result = ' + transferParams?.buffer.toString());
-       this.logInfo_ += '\n[INFO] transfer success,result = ' + transferParams?.buffer.toString();
-     }
      usbManager.usbSubmitTransfer(transferParams);
      console.info('USB transfer request submitted.');
      this.logInfo_ += '\n[INFO] USB transfer request submitted.';
    } catch (error) {
-     console.error(`USB transfer failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB transfer failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB transfer failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB transfer failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
 
 7. Cancel the data transfer, releases the interface, and closes the USB device pipe.
 
-   <!-- @[isochronousTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[isochronousTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
-     usbManager.usbCancelTransfer(transferParams);
+     if (transferParams) {
+       usbManager.usbCancelTransfer(transferParams);
+     }
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`usbCancelTransfer failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] usbCancelTransfer failed: code=' + errorObj.code + ', message=' + errorObj.message;
+   }
+   try {
      usbManager.releaseInterface(devicePipe, usbInterface);
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`releaseInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] releaseInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
+   }
+   try {
      usbManager.closePipe(devicePipe);
    } catch (error) {
-     console.error(`release failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] release failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`closePipe failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] closePipe failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 

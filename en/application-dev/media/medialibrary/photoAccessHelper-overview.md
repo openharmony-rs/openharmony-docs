@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a74fb1a2fdaa8eeff41e0ec9337db4863689d591 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Media Library Kit provides the capabilities of managing albums and media files, including images and videos, to enable your application to quickly display images and play back videos.
 
@@ -20,13 +21,14 @@ The following capabilities are opened to all applications:
 - Managing moving photos
   - [Accessing and Managing Moving Photos](photoAccessHelper-movingphoto.md)
   - [Playing Moving Photos with MovingPhotoView](movingphotoview-guidelines.md)
+
 <!--RP2--><!--RP2End-->
 
 The following capabilities are restrictedly opened to third-party applications:
 
 > **NOTE**
->
-> The restrictively open capabilities require [requesting permissions related to the album management module](photoAccessHelper-preparation.md#requesting-permissions). <!--RP1-->The following permissions are opened to third-party applications with certain restrictions.<!--RP1End-->
+> 
+> The restrictedly opened capabilities require [requesting permissions related to album management module features](photoAccessHelper-preparation.md#requesting-permissions).<!--RP1-->These permissions are restrictedly opened.<!--RP1End-->
 
 - [Managing media assets](photoAccessHelper-resource-guidelines.md)
   - Obtaining media assets
@@ -46,19 +48,22 @@ The following capabilities are restrictedly opened to third-party applications:
   - Unregistering a listener for the specified URI
 
 <!--Del-->
+
 The following capabilities are opened to system applications:
 
 - Media asset operations, including:
+  
   - Creating a media asset
   - Moving a media asset to the trash
   - Deleting a media asset permanently
-
 - Album-related operations, including:
+  
   - Creating a user album
   - Deleting a user album
   - Hiding an album
   - Favoriting and unfavoriting an album
   - Using the Screenshots album
+
 <!--DelEnd-->
 
 ## Features
@@ -71,3 +76,6 @@ The following capabilities are opened to system applications:
 ## Working Principles
 
 The media library receives requests for obtaining or changing media assets from users, verifies the request validity and permissions, interacts with the database if the verification is successful, and returns the result.
+
+<!--RP3--><!--RP3End-->
+

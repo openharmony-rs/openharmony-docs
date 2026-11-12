@@ -219,7 +219,7 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
       });
       console.info('checkPathPermission finish');
     } catch (error) {
-      console.info(`checkPathPermission error, Code: ${error.code}, message: ${error.message}`);
+      console.error(`checkPathPermission error, Code: ${error.code}, message: ${error.message}`);
     }
   }
   ```
@@ -282,7 +282,7 @@ grantUriPermission(policies: Array&lt;PolicyInfo&gt;, targetBundleName: string, 
         console.error(`grantUriPermission failed. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
-      console.info(`grantUriPermission error, Code: ${error.code}, message: ${error.message}`);
+      console.error(`grantUriPermission error, Code: ${error.code}, message: ${error.message}`);
     }
   }
   ```

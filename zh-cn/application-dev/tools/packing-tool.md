@@ -186,14 +186,14 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 | --replace-pack-info    | 否     | boolean          | 打包APP时，是否使用由--pack-info-path参数指定的pack.info文件替换HAP、HSP包中的pack.info文件。如果为true表示替换，false表示不替换，默认值为true。<br/>从API version 22开始支持该参数。 |
 | --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
-| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
-| --deduplist-sdk-path | 否 | NA | 指定deduplist_sdk.json文件路径，用于在打包时删除HAP/HSP包内与系统预置so重复的so，上架应用市场及安装到ROM内的HAP/HSP均不含被删除的so。<br/>去重完成后，将在发生去重的HAP/HSP根目录下生成去重报告dedupfiles.json，并在日志中打印去重结果。deduplist_sdk.json和dedupfiles.json的详细说明请参见[SDK清单so去重](#sdk清单so去重)。<br/>去重策略：<br/>- 当App包中存在与系统预置so重复的so，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了SDK清单so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.2.0开始支持该参数。|
+| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`、`anyOfDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
+| --deduplist-sdk-path | 否 | NA | 指定deduplist_sdk.json文件路径，用于在打包时删除HAP/HSP包内与系统预置so重复的so，上架应用市场及安装到ROM内的HAP/HSP均不含被删除的so。<br/>去重完成后，将在发生去重的HAP/HSP根目录下生成去重报告dedupfiles.json，并在日志中打印去重结果。deduplist_sdk.json和dedupfiles.json的详细说明请参见[SDK清单so去重](#sdk清单so去重)。<br/>去重策略：<br/>- 当App包中存在与系统预置so重复的so，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`requiredDeviceFeatures`、`anyOfDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了SDK清单so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.1.0开始支持该参数。|
 
 ## installer模式打包指令
 
 从API版本26.0.1开始支持installer模式。
 
-installer模式用于将一个或多个应用的HAP、HSP和安装清单打包为一个.app包，供安装器读取。生成的包采用ZIP格式，根目录包含manifest.json和Contents目录，Contents下按应用目录存放原始HAP、HSP文件。
+installer模式用于将一个或多个应用的HAP、HSP和应用描述文件打包为一个.app包，供安装器读取。生成的包采用ZIP格式，根目录包含manifest.json和Contents目录，Contents下按应用目录存放原始HAP、HSP文件。
 
 该包与[App打包指令](#app打包指令)生成的包具有不同的内部结构，使用时需要安装器支持installer包格式。打包工具负责生成容器，不执行应用安装或签名、验签。
 
@@ -209,8 +209,8 @@ java -jar app_packing_tool.jar --mode installer --contents <path> [--manifest <p
 | --- | --- | --- | --- |
 | --mode | 是 | installer | 打包类型。 |
 | --contents | 是 | NA | 包含应用目录的输入目录路径。该目录必须非空，其直接子目录分别对应一个应用。目录结构要求见[输入目录与包结构](#输入目录与包结构)。 |
-| --manifest | 否 | NA | 外部安装清单文件路径，必须指向非空、可读的普通文件。提供时，工具校验清单后保留其原始内容；不提供时，工具自动生成清单。清单要求见[安装清单](#安装清单)。 |
-| --out-path | 是 | NA | 输出文件路径，文件名必须以小写.app为后缀。输出必须位于--contents目录之外，且不能与输入HAP、HSP或外部清单指向同一文件。 |
+| --manifest | 否 | NA | 应用描述文件路径，必须指向非空、可读的普通文件。提供时，工具校验应用描述文件后保留其原始内容；不提供时，工具自动生成应用描述文件。要求见[应用描述文件](#应用描述文件)。 |
+| --out-path | 是 | NA | 输出文件路径，文件名必须以小写.app为后缀。输出必须位于--contents目录之外，且不能与输入HAP、HSP或应用描述文件指向同一文件。 |
 | --force | 否 | boolean | 是否覆盖已存在的输出文件。true表示允许覆盖已有普通文件，false表示输出已存在时终止打包并报错，默认值为false。仅在校验和写入成功后替换已有输出；输出路径为目录时不能覆盖。 |
 
 ### 输入目录与包结构
@@ -247,15 +247,15 @@ example.app
 
 打包时保留HAP、HSP的原始文件内容，不修改模块内部文件，不在installer包根目录生成pack.info。manifest.json和HAP、HSP在外层ZIP中均采用DEFLATE压缩，压缩等级固定为5，与模块的debug配置无关。
 
-### 安装清单
+### 应用描述文件
 
-manifest.json记录应用信息。未传入--manifest时，工具自动生成清单；传入时，工具校验后将外部清单的原始内容写入包内。
+manifest.json记录应用信息。未传入--manifest时，工具自动生成应用描述文件；传入时，工具校验后将外部应用描述文件的原始内容写入包内。
 
 **表7** manifest.json顶层字段说明
 
 | 字段 | 类型 | 是否必填 | 描述 |
 | --- | --- | --- | --- |
-| version | number | 否 | 清单格式版本号。 |
+| version | number | 否 | 应用描述文件版本号。 |
 | distributionType | string | 否 | 分发类型。 |
 | apps | Array&lt;Object&gt; | 是 | 非空应用信息数组，与--contents下的应用目录一一对应。 |
 
@@ -272,7 +272,7 @@ manifest.json记录应用信息。未传入--manifest时，工具自动生成清
 
 versionCode和minAPIVersion均须为[0, 2147483647]范围内的整数，不接受数字字符串。
 
-自动生成时，apps按应用目录名的Unicode码点顺序排序，minAPIVersion取对应应用内所有模块的最大值，第一个应用设为核心应用。需要指定其他核心应用时，可通过--manifest传入外部清单。
+自动生成时，apps按应用目录名的Unicode码点顺序排序，minAPIVersion取对应应用内所有模块的最大值，第一个应用设为核心应用。需要指定其他核心应用时，可通过--manifest传入外部应用描述文件。
 
 ## 多工程打包指令
 
@@ -318,8 +318,8 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 | --atomic-service-entry-size-limit      | 否         | NA            | 设置元服务entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果entry包是release模式（module.json5文件中type字段值为entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的entry包大小（包含其依赖包的大小）。                       |
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 | --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
-| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
-| --deduplist-sdk-path | 否 | NA | 指定deduplist_sdk.json文件路径，用于在打包时删除HAP/HSP包内与系统预置so重复的so，上架应用市场及安装到ROM内的HAP/HSP均不含被删除的so。<br/>去重完成后，将在发生去重的HAP/HSP根目录下生成去重报告dedupfiles.json，并在日志中打印去重结果。deduplist_sdk.json和dedupfiles.json的详细说明请参见[SDK清单so去重](#sdk清单so去重)。<br/>去重策略：<br/>- 当App包中存在与系统预置so重复的so，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了SDK清单so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.2.0开始支持该参数。|
+| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`、`anyOfDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
+| --deduplist-sdk-path | 否 | NA | 指定deduplist_sdk.json文件路径，用于在打包时删除HAP/HSP包内与系统预置so重复的so，上架应用市场及安装到ROM内的HAP/HSP均不含被删除的so。<br/>去重完成后，将在发生去重的HAP/HSP根目录下生成去重报告dedupfiles.json，并在日志中打印去重结果。deduplist_sdk.json和dedupfiles.json的详细说明请参见[SDK清单so去重](#sdk清单so去重)。<br/>去重策略：<br/>- 当App包中存在与系统预置so重复的so，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`requiredDeviceFeatures`、`anyOfDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了SDK清单so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.1.0开始支持该参数。|
 
 ## HQF打包指令
 
@@ -517,8 +517,8 @@ java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <p
 | --atomic-service-entry-size-limit      | 否         | NA            | 设置元服务entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果entry包是release模式（module.json5文件中type字段值为entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的entry包大小（包含其依赖包的大小）。                      |
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 | --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
-| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
-| --deduplist-sdk-path | 否 | NA | 指定deduplist_sdk.json文件路径，用于在打包时删除HAP/HSP包内与系统预置so重复的so，上架应用市场及安装到ROM内的HAP/HSP均不含被删除的so。<br/>去重完成后，将在发生去重的HAP/HSP根目录下生成去重报告dedupfiles.json，并在日志中打印去重结果。deduplist_sdk.json和dedupfiles.json的详细说明请参见[SDK清单so去重](#sdk清单so去重)。<br/>去重策略：<br/>- 当App包中存在与系统预置so重复的so，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了SDK清单so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.2.0开始支持该参数。|
+| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`、`anyOfDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
+| --deduplist-sdk-path | 否 | NA | 指定deduplist_sdk.json文件路径，用于在打包时删除HAP/HSP包内与系统预置so重复的so，上架应用市场及安装到ROM内的HAP/HSP均不含被删除的so。<br/>去重完成后，将在发生去重的HAP/HSP根目录下生成去重报告dedupfiles.json，并在日志中打印去重结果。deduplist_sdk.json和dedupfiles.json的详细说明请参见[SDK清单so去重](#sdk清单so去重)。<br/>去重策略：<br/>- 当App包中存在与系统预置so重复的so，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`requiredDeviceFeatures`、`anyOfDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了SDK清单so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.1.0开始支持该参数。|
 
 ## 扫描重复so文件
 
@@ -3101,7 +3101,7 @@ installer模式下，必填参数、输出后缀或覆盖设置不符合要求�
 
 **处理步骤**
 
-1. 按照[installer打包指令参数说明](#命令与参数)提供非空的--contents和--out-path；使用外部清单时，提供有效的--manifest文件路径。
+1. 按照[installer打包指令参数说明](#命令与参数)提供非空的--contents和--out-path；使用外部应用描述文件时，提供有效的--manifest文件路径。
 2. 将输出文件后缀设置为小写.app。
 3. 将--force设置为true或false，或省略该参数以使用默认值false。
 4. 检查输出路径。需要覆盖已有普通文件时设置--force true；若输出路径为目录，改用其他输出文件路径。
@@ -3119,14 +3119,14 @@ installer模式下，输出路径与输入冲突，或包内路径名称不符�
 **可能原因**
 
 1. 输出位于--contents目录内部。
-2. 输出路径与输入HAP、HSP或外部清单指向同一文件，包括通过链接指向同一文件的情况。
+2. 输出路径与输入HAP、HSP或外部应用描述文件指向同一文件，包括通过链接指向同一文件的情况。
 3. 应用目录名或模块文件名为`.`、`..`，或包含`/`、`\`、`:`。
 
 **处理步骤**
 
 1. 将--out-path设置为--contents目录之外的文件路径。
 2. 使用与输入文件不同的输出路径，并检查链接指向的实际文件。
-3. 根据日志定位名称不合法的目录或文件，修改名称，并同步更新外部清单中的path。
+3. 根据日志定位名称不合法的目录或文件，修改名称，并同步更新外部应用描述文件中的path。
 
 ### 10022003 installer输入目录无效
 
@@ -3192,7 +3192,7 @@ installer模式下，同一应用目录内的模块未通过应用校验。
 1. 核对同一应用目录下各模块的应用标识和版本配置，确保一致，修改后重新构建模块。
 2. 优先查看此前的模块校验错误，根据日志修正配置及跨模块关系。
 
-### 10022006 installer安装清单无效
+### 10022006 installer应用描述文件无效
 
 **错误信息**
 
@@ -3200,18 +3200,18 @@ Installer manifest is invalid.
 
 **错误描述**
 
-installer模式下，外部安装清单无法解析或未通过清单校验。
+installer模式下，外部应用描述文件无法解析或未通过应用描述文件校验。
 
 **可能原因**
 
-1. 清单不是可解析的JSON对象，或apps不是非空对象数组；必填字段缺失、为空或类型、数值范围不合法。
+1. 应用描述文件不是可解析的JSON对象，或apps不是非空对象数组；必填字段缺失、为空或类型、数值范围不合法。
 2. apps的path重复、遗漏应用目录、包含不存在的目录，或不符合`Contents/<应用目录名>`格式。
-3. 清单中的bundleName、versionCode、versionName与模块不一致，或minAPIVersion低于对应应用目录内模块的最大值。
+3. 应用描述文件中的bundleName、versionCode、versionName与模块不一致，或minAPIVersion低于对应应用目录内模块的最大值。
 4. coreApp=true的数量不是1，或coreApp使用了非布尔值。
 
 **处理步骤**
 
-1. 根据[安装清单](#安装清单)检查JSON结构、必填字段及类型。versionCode、minAPIVersion使用[0, 2147483647]范围内的整数数值，不使用数字字符串。
+1. 根据[应用描述文件](#应用描述文件)检查JSON结构、必填字段及类型。versionCode、minAPIVersion使用[0, 2147483647]范围内的整数数值，不使用数字字符串。
 2. 确保每个输入应用目录恰好对应一条apps记录，path使用`Contents/<应用目录名>`，且使用正斜杠。
 3. 按实际模块信息修正应用标识和版本字段，使minAPIVersion不低于对应应用目录内所有模块的最大值。
 4. 仅为一个应用设置布尔值coreApp=true，其余应用省略该字段或设置为false。
@@ -3285,14 +3285,14 @@ Installer file operation failed.
 
 **错误描述**
 
-installer模式下，访问输入目录、模块或外部清单时发生文件系统错误。
+installer模式下，访问输入目录、模块或外部应用描述文件时发生文件系统错误。
 
 **可能原因**
 
-1. 输入路径不存在或无法访问，或模块、外部清单路径不是普通文件。
-2. 外部清单无法读取，或遍历输入目录、获取文件信息等操作失败。
+1. 输入路径不存在或无法访问，或模块、外部应用描述文件路径不是普通文件。
+2. 外部应用描述文件无法读取，或遍历输入目录、获取文件信息等操作失败。
 
 **处理步骤**
 
-1. 根据日志检查路径是否存在、可访问，并确保模块和外部清单为可读的普通文件。
+1. 根据日志检查路径是否存在、可访问，并确保模块和外部应用描述文件为可读的普通文件。
 2. 检查输入目录的访问权限、文件读取权限及文件系统状态，修正后重试。

@@ -82,6 +82,8 @@ $rawfile(value: string): Resource
 | --------------------------------- | ---------------------------------------------------------- |
 | [Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9) | 资源相关信息，包括应用包名、应用模块名、资源id等。 |
 
+**示例：**
+
 ```ts
 // src/main/resources/rawfile目录下添加startIcon.png。
 

@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes the complete development process for cross-language interaction between ArkTS/JS and C/C++ using Node-API, including creating a Native C++ project, registering modules, mapping APIs, and calling native functions from ArkTS."
+keywords: [Node-API, development process, cross-language interaction, module registration, native project, C++, ArkTS calls, napi_module_register]
+doctype: guide
+status: active
+---
+
 # Node-API Development Process
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.393Z nl=1 -->
 
 
 To implement cross-language interaction using Node-API, you need to register and load modules based on the Node-API mechanism first.

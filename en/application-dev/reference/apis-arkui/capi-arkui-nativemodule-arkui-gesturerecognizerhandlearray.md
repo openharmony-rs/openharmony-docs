@@ -1,12 +1,11 @@
 # ArkUI_GestureRecognizerHandleArray
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T08:23:25.661Z pushedAt=2026-08-20T02:09:00.036Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:43:21.318Z pushedAt=2026-11-10T02:30:29.722Z nl=1 -->
 
 ```c
 typedef ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray

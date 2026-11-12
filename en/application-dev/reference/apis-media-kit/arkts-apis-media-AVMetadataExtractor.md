@@ -5,6 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c0a8c80e3eae15048fc63a8ee57c58dd2f0366c6 translatedAt=2026-11-09T06:23:12.648Z pushedAt=2026-11-09T08:01:38.404Z nl=1 -->
 
 AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
 
@@ -262,17 +263,17 @@ async function fetchFramesByTimesDemo() {
   // Obtain the thumbnail.
   let avMetadataExtractor = await media.createAVMetadataExtractor();
   if (avMetadataExtractor) {
-    console.info('Succeeded in creating AVMetadataExtractor');
+  console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
-      if (err) {
-        console.error(`fetchFramesByTimes callback failed, code: ${err.code} message: ${err.message}`);
+    if (err) {
+      console.error(`fetchFramesByTimes callback failed, code: ${err.code} message: ${err.message}`);
         return;
-      }
+        }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        this.pixelMap = frameInfo.image;
-      }});
+      this.pixelMap = frameInfo.image;
+        }});
+      }
   }
-}
 ```
 
 ## fetchFramesByTimesWithTimeout
@@ -335,17 +336,17 @@ async function fetchFramesByTimesDemo() {
   // Obtain the thumbnail.
   let avMetadataExtractor = await media.createAVMetadataExtractor();
   if (avMetadataExtractor) {
-    console.info('Succeeded in creating AVMetadataExtractor');
+  console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, (frameInfo: media.FrameInfo, err: BusinessError) => {
-      if (err) {
-        console.error(`fetchFramesByTimes callback failed, code: ${err.code}, message: ${err.message}`);
+    if (err) {
+      console.error(`fetchFramesByTimes callback failed, code: ${err.code}, message: ${err.message}`);
         return;
-      }
+        }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        this.pixelMap = frameInfo.image;
-      }});
+      this.pixelMap = frameInfo.image;
+        }});
+      }
   }
-}
 ```
 
 ## cancelAllFetchFrames<sup>23+</sup>
@@ -537,7 +538,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
-| 5400102  | Operation not allowed. Return by callback. |
+| 5400102  | Operation not allowed. Returned by callback. |
 | 5400106  | Unsupported format. Returned by callback.  |
 
 **Example**

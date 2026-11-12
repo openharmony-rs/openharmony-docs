@@ -1,11 +1,11 @@
-# ArkUI_ColorPropertyHandle
+# ArkUI_ColorProperty*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-17T02:51:26.182Z pushedAt=2026-07-17T06:00:28.917Z -->
+<!-- md-trans-meta sourceCommit=1e574c3201e96cfe7f2709f4dc19e462d9daf562 translatedAt=2026-11-09T11:40:38.775Z pushedAt=2026-11-10T01:58:50.095Z nl=1 -->
 
 ```c
 typedef struct ArkUI_ColorProperty* ArkUI_ColorPropertyHandle

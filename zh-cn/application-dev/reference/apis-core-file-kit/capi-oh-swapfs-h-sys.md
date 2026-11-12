@@ -111,6 +111,8 @@ OH_Swapfs_ErrCode OH_Swapfs_CreateManager(const OH_SwapfsConfig *config, OH_Swap
 
 **起始版本：** 26.0.0
 
+**资源释放：** [OH_Swapfs_DestroyManager](capi-oh-swapfs-h-sys.md#oh_swapfs_destroymanager)
+
 **参数：**
 
 | 参数项 | 描述 |
