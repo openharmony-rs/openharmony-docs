@@ -138,12 +138,16 @@
 | [char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)](#oh_udsdetails_getallkeys)| 获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中所有键的结果集。 |
 | [int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)](#oh_udshtml_setauthpolicy)| 给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
 | [int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)](#oh_udsfileuri_setauthpolicy)| 给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
-| [OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)](#oh_udmf_createvirtualfileitem)| 创建虚拟文件节点[OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UDMF_DestroyVirtualItem](capi-uds-h.md#oh_udmf_destroyvirtualitem)销毁实例对象，否则会导致内存泄漏。 |
-| [OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_t modifyTime)](#oh_udmf_createvirtualdirectoryitem)| 创建虚拟目录节点[OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UDMF_DestroyVirtualItem](capi-uds-h.md#oh_udmf_destroyvirtualitem)销毁实例对象，否则会导致内存泄漏。 |
-| [void OH_UDMF_DestroyVirtualItem(OH_UDMF_VirtualItem* item)](#oh_udmf_destroyvirtualitem)| 销毁虚拟节点[OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)。 |
-| [int OH_UDMF_SetVirtualFileSize(OH_UDMF_VirtualItem* item, int64_t size)](#oh_udmf_setvirtualfilesize) | 设置虚拟文件节点[OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)的文件大小，单位为字节。 |
-| [int OH_UDMF_AddVirtualItemChild(OH_UDMF_VirtualItem* directory, const OH_UDMF_VirtualItem* child)](#oh_udmf_addvirtualitemchild)| 向虚拟目录[OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)添加子节点。 |
-| [OH_UDMF_VirtualFileInfo* OH_UDMF_CreateVirtualFileInfo(const OH_UDMF_VirtualItem* itemInfo, const OH_UDMF_VirtualFileCallbacks* callbacks, void* context, OH_UDMF_VirtualFileFinalize finalize)](#oh_udmf_createvirtualfileinfo)| 创建虚拟文件[OH_UDMF_VirtualFileInfo](capi-udmf-oh-udmf-virtualfileinfo.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UDMF_DestroyVirtualFileInfo](capi-uds-h.md#oh_udmf_destroyvirtualfileinfo)销毁实例对象，否则会导致内存泄漏。 |
+| [OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)](#oh_udmf_createvirtualfileitem)| 根据文件名、文件标识和修改时间创建虚拟文件节点。 |
+| [OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_t modifyTime)](#oh_udmf_createvirtualdirectoryitem)| 创建虚拟目录节点。 |
+| [void OH_UDMF_DestroyVirtualItem(OH_UDMF_VirtualItem* item)](#oh_udmf_destroyvirtualitem)| 销毁虚拟节点。 |
+| [int OH_UDMF_SetVirtualFileSize(OH_UDMF_VirtualItem* item, int64_t size)](#oh_udmf_setvirtualfilesize) | 设置虚拟文件节点的文件大小，单位为字节。 |
+| [int OH_UDMF_AddVirtualItemChild(OH_UDMF_VirtualItem* directory, const OH_UDMF_VirtualItem* child)](#oh_udmf_addvirtualitemchild)| 向虚拟目录添加子节点。 |
+| [typedef OH_UDMF_VirtualItem* (\*OH_UDMF_VirtualFileOnStat)(void* context, const char* id)](#oh_udmf_virtualfileonstat) | 根据文件标识返回对应虚拟文件的信息，如文件名、大小和修改时间。 |
+| [typedef int (\*OH_UDMF_VirtualFileOnRead)(void* context, const char* id, int64_t offset, uint32_t length, uint8_t* data, uint32_t* bytesRead)](#oh_udmf_virtualfileonread)  | 根据文件标识、读取起始位置和请求长度，将文件内容写入提供的缓冲区，并返回实际读取的字节数和处理结果。|
+| [typedef int (\*OH_UDMF_VirtualFileOnCancel)(void* context, const char* const *idList, uint32_t count)](#oh_udmf_virtualfileoncancel) | 根据文件标识列表取消对应文件的待处理任务。 |
+| [typedef void (\*OH_UDMF_VirtualFileFinalize)(void* context)](#oh_udmf_virtualfilefinalize) | 释放UDMF持有的用户上下文。 |
+| [OH_UDMF_VirtualFileInfo* OH_UDMF_CreateVirtualFileInfo(const OH_UDMF_VirtualItem* itemInfo, const OH_UDMF_VirtualFileCallbacks* callbacks, void* context, OH_UDMF_VirtualFileFinalize finalize)](#oh_udmf_createvirtualfileinfo)| 创建虚拟文件信息。 |
 | [void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)](#oh_udmf_destroyvirtualfileinfo)| 销毁虚拟文件信息。 |
 | [int OH_UDMF_SetFileUriVirtualEntry(OH_UdsFileUri* fileUri, const OH_UDMF_VirtualFileInfo* info)](#oh_udmf_setfileurivirtualentry)| 向文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)附加虚拟文件信息。 |
 | [int OH_UDMF_ClearFileUriVirtualEntry(OH_UdsFileUri* fileUri)](#oh_udmf_clearfileurivirtualentry)| 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)移除虚拟文件信息。 |
@@ -1236,9 +1240,7 @@ typedef OH_UDMF_VirtualItem* (*OH_UDMF_VirtualFileOnStat)(void* context, const c
 
 **描述：**
 
-通过文件标识返回对应虚拟文件的信息，如文件名、大小和修改时间。
-
-返回的节点必须由[OH_UDMF_CreateVirtualFileItem](capi-uds-h.md#oh_udmf_createvirtualfileitem)创建，其所有权将转移给UDMF，回调返回后不可销毁该节点。
+根据文件标识返回对应虚拟文件的信息，如文件名、大小和修改时间。
 
 <!--Device-typedef OH_UDMF_VirtualItem* (*OH_UDMF_VirtualFileOnStat)(void* context, const char* id)--><!--Device-typedef OH_UDMF_VirtualItem* (*OH_UDMF_VirtualFileOnStat)(void* context, const char* id)-End-->
 
@@ -1282,9 +1284,9 @@ typedef int (*OH_UDMF_VirtualFileOnRead)(void* context, const char* id, int64_t 
 | void* context | [入参] 通过[OH_UDMF_CreateVirtualFileInfo](capi-uds-h.md#oh_udmf_createvirtualfileinfo)传入的用户上下文。 |
 | const char* id | [入参] 请求的虚拟文件标识。 |
 | int64_t offset | [入参] 读取偏移量，单位为字节。 |
-| uint32_t length | [入参] 本次最多需要提供的字节数，正常FUSE回调中取值为1～5,242,880（5MiB），且不超过文件剩余大小。 |
+| uint32_t length | [入参] 本次最多需要提供的字节数，正常FUSE回调中取值为1～5242880（5MiB），且不超过文件剩余大小。 |
 | uint8_t* data | [出参] UDMF提供的目标缓冲区，仅在回调执行期间有效。 |
-| uint32_t* bytesRead | [出参] 用于返回实际写入`data`的字节数。成功时须设置`*bytesRead`，取值为0～`length`；到达文件末尾且无数据可返回时设置为0，EOF处理约束见上述描述。 |
+| uint32_t* bytesRead | [出参] 用于返回实际写入`data`的字节数。 |
 
 **返回值：**
 
@@ -1332,8 +1334,6 @@ typedef void (*OH_UDMF_VirtualFileFinalize)(void* context)
 
 释放UDMF持有的用户上下文。
 
-引用该上下文的全部虚拟文件对象释放后，此回调仅执行一次。回调可能在任意线程执行。
-
 <!--Device-typedef void (*OH_UDMF_VirtualFileFinalize)(void* context)--><!--Device-typedef void (*OH_UDMF_VirtualFileFinalize)(void* context)-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
@@ -1354,7 +1354,7 @@ OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char*
 
 **描述：**
 
-根据文件名、文件标识和修改时间创建虚拟文件节点，用于配置文件大小、添加到虚拟目录或创建虚拟文件信息对象。
+根据文件名、文件标识和修改时间创建虚拟文件节点。
 
 <!--Device-OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)--><!--Device-OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)-End-->
 
@@ -1530,7 +1530,7 @@ void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)
 
 **描述：**
 
-销毁调用方持有的虚拟文件信息句柄。
+销毁虚拟文件信息。
 
 <!--Device-void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)--><!--Device-void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)-End-->
 

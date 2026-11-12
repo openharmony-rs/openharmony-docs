@@ -344,7 +344,7 @@ type VirtualFileOnStat = (id: string) => Promise&lt;VirtualFileItem&gt;
 
 type VirtualFileOnRead = (id: string, offset: number, length: number) => Promise&lt;Uint8Array&gt;
 
-从虚拟文件读取至多length字节，单次请求最大为5 MiB。使用Promise异步回调。
+从虚拟文件读取至多length字节，单次请求最大为5MiB。使用Promise异步回调。
 
 **起始版本**：26.1.0
 
@@ -358,7 +358,7 @@ type VirtualFileOnRead = (id: string, offset: number, length: number) => Promise
 | --- | --- | --- | --- |
 | id | string | 是 | 待读取文件的标识，非空且最多1024字节。 |
 | offset | number | 是 | 本次读取在文件中的起始位置，单位为字节，从0开始计算。 |
-| length | number | 是 | 本次最多需要提供的字节数，正常回调中取值为1～5242880（5 MiB），且不超过文件剩余大小。返回的数据长度不得超过该值。 |
+| length | number | 是 | 本次最多需要提供的字节数，正常回调中取值为1～5242880（5MiB），且不超过文件剩余大小。返回的数据长度不得超过该值。 |
 
 **返回值：**
 
