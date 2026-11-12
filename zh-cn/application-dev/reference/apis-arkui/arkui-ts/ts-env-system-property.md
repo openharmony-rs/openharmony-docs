@@ -172,8 +172,8 @@ protected constructor()
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                              |
 | -------- | -------- | -------- | -------- |-------------------------------------------------------------------------------------------------|
-| DIRECTION | [WritableSystemEnvKey](#writablesystemenvkeyt)\<Direction\>| 是 | 否 |[\@Env](#env)变量参数，通过\@Env(WritableEnvKey.DIRECTION)可获取[Direction](./ts-appendix-enums.md#direction)枚举类型的值。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取窗口所在屏幕的布局方向。|
-| FONT_SCALE | [WritableSystemEnvKey](#writablesystemenvkeyt)\<number\> | 是 | 否 |[\@Env](#env)变量参数，通过\@Env(WritableEnvKey.FONT_SCALE)可获取number类型的值，取值无上限，小于等于0的值按0处理。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于为后代组件提供局部字体缩放倍数。|
+| DIRECTION | [WritableSystemEnvKey](#writablesystemenvkeyt)\<Direction\>| 是 | 否 |布局方向系统环境变量参数，可作为[WithEnv](./ts-container-with-env.md)的[env](./ts-container-with-env.md#env)方法和[\@Env](#env)的参数用于指代布局方向的系统环境变量。|
+| FONT_SCALE | [WritableSystemEnvKey](#writablesystemenvkeyt)\<number\> | 是 | 否 |字体缩放倍数系统环境变量参数，可作为[WithEnv](./ts-container-with-env.md)的[env](./ts-container-with-env.md#env)方法和[\@Env](#env)的参数用于指代字体缩放倍数的系统环境变量。|
 
 ## ReadonlyEnvKey
 
