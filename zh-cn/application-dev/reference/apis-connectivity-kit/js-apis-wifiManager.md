@@ -1762,7 +1762,7 @@ getLinkedInfoSync(): WifiLinkedInfo
 | isRestricted | boolean | 否 | 否 | Wi-Fi接入点是否限制数据量，true: 限制，false:不限制。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | macType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | macAddress | string | 否 | 否 | 设备的MAC地址。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Wi-Fi连接的IP地址。<br>1.IP地址在WiFi连接信息和"设置 > 关于本机 > 状态信息"中可以查看。<br>2.ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)。**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Wi-Fi连接的IP地址。<br>1.IP地址在WiFi连接信息和"设置 > 关于本机 > 状态信息"中可以查看。<br>2.ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/doccenter-dev-faq/connectivity-kit-faq-0003)。**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | connState | [ConnState](#connstate) | 否 | 否 | Wi-Fi连接状态。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。 **ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
 | wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | 否 | 否 | 当前路由器支持的最高Wi-Fi标准。 **ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
@@ -2076,7 +2076,7 @@ IPV4信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | IP地址。(ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4))。|
+| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | IP地址。(ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/doccenter-dev-faq/connectivity-kit-faq-0003))。|
 | gateway | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网关。 |
 | netmask | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 掩码。 |
 | primaryDns | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 主DNS服务器IP地址。 |
