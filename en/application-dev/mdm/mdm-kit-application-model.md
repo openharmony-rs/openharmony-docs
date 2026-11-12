@@ -17,7 +17,7 @@ An app model is the abstraction of capabilities required by an app. It provides 
 
 ### Process Model
 
-The process model of an MDM app inherits from the [process model](.../application-models/process-model-overview.md) of a regular app. Building on the regular app model, an MDM app includes an additional independent **EnterpriseAdmin** process. When the **EnterpriseAdminExtensionAbility** component of the MDM app is activated, the **EnterpriseAdmin** process is created. As the background process of the device administrator app, the **EnterpriseAdmin** process receives callbacks for events such as MDM app activation and deactivation. Its lifecycle is independent of the main process and is managed by the system. The way the **EnterpriseAdmin** process lifecycle is [managed](#enterpriseadminextensionability-capability-differences-after-activation) varies based on how the component is activated.
+The process model of an MDM app inherits from the [process model](../application-models/process-model-overview.md) of a regular app. Building on the regular app model, an MDM app includes an additional independent **EnterpriseAdmin** process. When the **EnterpriseAdminExtensionAbility** component of the MDM app is activated, the **EnterpriseAdmin** process is created. As the background process of the device administrator app, the **EnterpriseAdmin** process receives callbacks for events such as MDM app activation and deactivation. Its lifecycle is independent of the main process and is managed by the system. The way the **EnterpriseAdmin** process lifecycle is [managed](#enterpriseadminextensionability-capability-differences-after-activation) varies based on how the component is activated.
 
 **Figure 1** MDM app process model
 
