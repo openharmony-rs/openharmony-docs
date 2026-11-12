@@ -33,7 +33,7 @@ status: active
 
 - 方法2：注册stateChange监听AudioCapturer的状态变化：
 
-  <!-- @[listen_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+  <!-- @[listen_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
   
   ``` TypeScript
   audioCapturer.on('stateChange', (capturerState: audio.AudioState) => {

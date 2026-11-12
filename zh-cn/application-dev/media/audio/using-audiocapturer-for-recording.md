@@ -91,7 +91,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    >   1. 静音期间仍需保持录音流运行：应用在`readData`回调中复制采集数据，并将副本中的全部采样数据设置为静音值后保存或发送。有符号PCM格式的静音值为`0`；`SAMPLE_FORMAT_U8`格式的静音值为`0x80`。
    >   2. 业务允许静音期间不再采集数据：由应用主动停止录音流，后续需要录音时再重新启动，以停止采集替代静音处理。
 
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -186,7 +186,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 下面展示了使用AudioCapturer录制音频的完整示例代码。
 
-<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
