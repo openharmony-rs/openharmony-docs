@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 <!--RP1-->
-<!-- md-trans-meta sourceCommit=511bb5fce50bf1615b068552c2a1f2432adc2fed translatedAt=2026-09-16T03:57:14.346Z pushedAt=2026-09-16T08:45:37.314Z -->
+<!-- md-trans-meta sourceCommit=fe4141d28cbe992879debc9072f8c6ee828e6e65 translatedAt=2026-11-11T01:35:32.119Z pushedAt=2026-11-11T06:06:17.144Z nl=2 -->
 
 User-Agent (UA) is a special string that contains key information such as the device type, operating system, and version. In web development, UA is used by the server to identify the source device of the request and its features, so that the server can provide custom content and services. If UAs cannot be correctly identified on a page, multiple exceptions may occur. For example, a page layout optimized for a mobile device may be displayed in disorder on a desktop device, and vice versa. In addition, some browser features or CSS styles are supported only in specific browser versions. If a page cannot successfully identify the UA, rendering problems or logic errors may occur.
 
@@ -83,9 +83,9 @@ struct WebComponent {
 
 In the following example, [setCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) is used to set a custom user agent, which overwrites the default user agent. Therefore, you are advised to add the extension field to the end of the default user agent. For example, to develop a third-party application, you can add a specific application identifier while maintaining the original user agent information.
 
-When the **src** of the **Web** component is set to a URL, it is recommended that you set the User-Agent in the [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10) callback event. For details about how to set it, see the example. It is not recommended that you set the User-Agent in the [onLoadIntercept](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10) callback event, because the setting may fail with a certain probability. If the User-Agent is not set in the onControllerAttached callback event, an abnormal behavior may occur when setCustomUserAgent is called later, where the loaded page does not match the actually set User-Agent.
+When the `src` of the Web component is set to a URL, you are advised to set the User-Agent in the [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10) callback event. For details about how to set it, see the example. Do not set the User-Agent in the [onLoadIntercept](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10) callback event, because the setting may fail intermittently. If the User-Agent is not set in the `onControllerAttached` callback event, an abnormal phenomenon may occur when `setCustomUserAgent()` is called later: the loaded page does not match the actually set User-Agent.
 
-When **src** of the **Web** component is set to an empty string, call **setCustomUserAgent** to set **User-Agent** and then use **loadUrl** to load a specific page.
+When the `src` of the Web component is set to an empty string, you are advised to first call `setCustomUserAgent()` to set the User-Agent, and then load the specific page through `loadUrl()`.
 <!-- @[set_up_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_two.ets) -->
 
 ``` TypeScript
@@ -119,7 +119,7 @@ struct WebComponent {
 
 Since API version 20, you can use the [setAppCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setappcustomuseragent20) API to set an application-level custom user agent or use the [setUserAgentForHosts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setuseragentforhosts20) API to set an application-level custom user agent for a specific website. The custom user agent overwrites the system user agent and takes effect for all **Web** components in the application.
 
-It is recommended that you call the static API [getDefaultUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14) to obtain the default **User-Agent** string, then call **setAppCustomUserAgent** and **setUserAgentForHosts** to set the **User-Agent**, and then create a **Web** component with the specified **src** or load a specific page using **loadUrl**.
+You are advised to first call the static interface [getDefaultUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14) to obtain the default User-Agent string before creating the Web component, then call `setAppCustomUserAgent()` and `setUserAgentForHosts()` to set the User-Agent, and finally create the Web component with the specified `src` or load the specific page through `loadUrl()`.
 <!-- @[set_app_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->
 
 ``` TypeScript
@@ -157,7 +157,7 @@ struct WebComponent {
 }
 ```
 
-In the following example, [getCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getcustomuseragent10) is used to obtain the custom user agent. 
+In the following example, [getCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getcustomuseragent10) is used to obtain the custom user agent.
 <!-- @[get_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_three.ets) -->
 
 ``` TypeScript
@@ -228,10 +228,10 @@ OpenHarmony devices are identified mainly based on three dimensions in the User-
    // Check whether the device is a mobile phone.
    const isPhone = () => /Phone/i.test(navigator.userAgent);
 
-   // Check whether the device is a tablet. 
+   // Check whether the device is a tablet.  
    const isTablet = () => /Tablet/i.test(navigator.userAgent);
    
-   // Check whether the device is a 2-in-1 device. 
+   // Check whether the device is a 2-in-1 device.  
    const is2in1 = () => /PC/i.test(navigator.userAgent);
    ```
 
@@ -241,7 +241,7 @@ In Windows, macOS, and Linux, you can use the **User-Agent** rewriting capabilit
 
 ### How do I customize the User-Agent in OpenHarmony to implement HTML5 compatibility?
 
-OpenHarmony provides the [setCustomUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) API to customize the **User-Agent**. To adapt to the UA identifier detection (such as Mobile and OpenHarmony) that mobile HTML5 pages usually depend on and ensure that the default UA information is not overwritten, you are advised to perform the following operations: First, obtain the default **User-Agent** string through the [getDefaultUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14) API. Then, append the custom identifier field required for HTML5 compatibility to the end of the string. Finally, call the **setCustomUserAgent** API to set the complete UA string.
+OpenHarmony provides the [setCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) interface to support custom User-Agent settings. To adapt to the UA identifier detection (such as Mobile and OpenHarmony) that mobile H5 pages usually rely on, and to ensure that the system default UA information is not overwritten, the following approach is recommended: first call [getDefaultUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14) to obtain the system default User-Agent string, then append the custom identifier fields required for H5 compatibility to the end of the string, and finally call `setCustomUserAgent()` to set the modified complete UA string.
 
 ### How to solve the UA compatibility problem of HTML5 pages?
 
@@ -255,7 +255,7 @@ A: The web page is not adapted to the OpenHarmony UA, so the page needs to handl
 
 Q: Why does the page redirect in a loop?
 
-A: The application sets conflicting UA identifiers for the two pages that redirect to each other. As a result, the redirection logic on the server enters an infinite loop. Ensure that the application maintains consistent logic when calling **setUserAgentForHosts** to configure a compatible UA for associated websites, so as to avoid infinite loops in web page redirection logic caused by UA differences.
+A: The application sets conflicting UA identifiers for two pages that have a redirect relationship, causing the server-side redirect logic to fall into an infinite loop. Ensure that the application maintains consistent logic when calling `setUserAgentForHosts()` to set a compatible UA for related websites, so as to avoid triggering a web page redirect loop due to UA differences.
 
 Q: Why the download link provided by the web page does not match the device platform? For example, the download package for an OpenHarmony device is an APK.
 

@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4; @jingbotao-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:02:42.411Z pushedAt=2026-11-04T08:17:27.619Z nl=1 -->
+<!-- md-trans-meta sourceCommit=1cf279b63d22d781cd443b881b2d7eec991156af translatedAt=2026-11-11T01:45:25.542Z pushedAt=2026-11-11T06:33:47.496Z nl=1 -->
 
 ## When to Use
 
@@ -44,7 +44,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
              }
              subWindowClass = data;
              if (!subWindowClass) {
-               console.error('sub_windowClass is null');
+               console.error('subWindowClass is null');
                return;
              }
              console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
@@ -71,7 +71,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
            promise.then((data: window.Window | undefined) => {
              independentWindowClass = data;
              if (!independentWindowClass) {
-               console.error('independent_sub_windowClass is null');
+               console.error('independentSubWindowClass is null');
                return;
              }
              console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
@@ -104,7 +104,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
      }
      console.info('Succeeded in moving the window.');
      if (!independentWindowClass) {
-       console.error('independent_windowClass is null');
+       console.error('independentWindowClass is null');
        return;
      }
      independentWindowClass.resize(1000, 500, (err) => {
@@ -134,7 +134,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
      }
      console.info('Succeeded in loading the content.');
      if (!independentWindowClass) {
-       console.error('independent_windowClass is null');
+       console.error('independentWindowClass is null');
        return;
      }
      // Show the subwindow.
@@ -157,7 +157,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
    <!-- @[destroy_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
-   // 4. Destroy the subwindow. When the subwindow is no longer needed, you can destroy it using destroy based on the specific implementation logic.
+   // 4. Destroy the subwindow. When the subwindow is no longer needed, call destroyWindow to destroy it based on the specific implementation logic.
    independentWindowClass.destroyWindow((err) => {
      if (err?.code) {
        console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);

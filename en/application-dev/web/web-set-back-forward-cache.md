@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ac865d1619615b6b4f1ef99400a745419948a433 translatedAt=2026-11-04T02:04:45.938Z pushedAt=2026-11-04T04:26:14.347Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fe4141d28cbe992879debc9072f8c6ee828e6e65 translatedAt=2026-11-11T01:43:27.743Z pushedAt=2026-11-11T06:32:29.480Z nl=1 -->
 
 The **Web** component provides the function of enabling and configuring the back-forward cache (BFCache), which can significantly improve the speed of returning to the previous web page, especially for users with poor network conditions.
 
@@ -13,7 +13,7 @@ After BFCache is enabled, the **Web** component saves the snapshot of the curren
 
 ## Enabling BFCache
 
-Before calling [initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the ArkWeb kernel, you need to call [enableBackForwardCache()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enablebackforwardcache12) to enable BFCache. The **enableBackForwardCache** function receives the [BackForwardCacheSupportedFeatures](../reference/apis-arkweb/arkts-apis-webview-BackForwardCacheSupportedFeatures.md) parameter, which is used to control whether to allow pages with the same-layer rendering feature and video takeover feature to enter the BFCache.
+Before calling [initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the ArkWeb kernel, you need to call [enableBackForwardCache()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enablebackforwardcache12) to enable BFCache. The **enableBackForwardCache()** function can accept the [BackForwardCacheSupportedFeatures](../reference/apis-arkweb/arkts-apis-webview-BackForwardCacheSupportedFeatures.md) parameter, which is used to control whether to allow pages with the same-layer rendering feature and video takeover feature to enter the BFCache.
 
 <!-- @[web_module_open_bf_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry2/src/main/ets/entryability/EntryAbility.ets) -->
 
@@ -40,7 +40,7 @@ export default class EntryAbility extends UIAbility {
 
 ## Setting the Size and Live Time of Cached pages
 
-After BFCache is enabled, only one page can be stored by default, and a page that enters BFCache in the **Web** component can remain alive for 600 seconds by default. You can call [setBackForwardCacheOptions()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setbackforwardcacheoptions12) to set the back-forward cache policy for each **Web** instance. This includes adjusting the maximum number of pages in the cache so that BFCache can hold more pages, providing faster loading when the user performs consecutive back and forward operations. In addition, you can modify the retention time of each page in the cache to extend how long pages stay in BFCache, thereby optimizing the browsing experience.
+After BFCache is enabled, only one page can be stored by default, and a page that enters BFCache in the **Web** component can remain alive for 600 seconds by default. You can call [setBackForwardCacheOptions()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setbackforwardcacheoptions12) to set the BFCache policy for each **Web** instance. This includes adjusting the maximum number of pages in the cache so that BFCache can hold more pages, providing faster loading when the user performs consecutive back and forward operations. In addition, you can modify the retention time of each page in the cache to extend how long pages stay in BFCache, thereby optimizing the browsing experience.
 
 In the following example, the maximum number of pages that can be cached in the **Web** component is set to **10**, and each page is cached for 300s.
 

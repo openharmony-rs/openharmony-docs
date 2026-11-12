@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=b66b4cc302945603fb47bc2deed937f803b52674 translatedAt=2026-11-04T01:57:10.309Z pushedAt=2026-11-04T03:37:49.161Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fe4141d28cbe992879debc9072f8c6ee828e6e65 translatedAt=2026-11-11T01:30:55.804Z pushedAt=2026-11-11T06:02:56.239Z nl=1 -->
 
 This guide applies to the communication between ArkWeb applications and frontend pages. You can use the ArkWeb native APIs to conduct the service communication mechanism (native JSBridge for short) based on the application architecture.
 
@@ -17,7 +17,7 @@ If an application is developed using a mix of ArkTS and C++, or if the applicati
 
   ![arkweb_jsbridge_arch](figures/arkweb_jsbridge_arch.png)
 
-  The preceding figure shows a general architecture of applets with universal applicability. In this architecture, the logical layer depends on a JavaScript runtime built in an application, and the runtime runs in an existing C++ environment. The logic layer can communicate with the view layer (in which ArkWeb serves as the renderer) in the C++ environment through the native API, instead of using the ArkTS **JSBridge** API in the ArkTS environment.
+  The preceding figure shows a general architecture of applets with universal applicability. In this architecture, the logic layer depends on a JavaScript runtime built in an application, and the runtime runs in an existing C++ environment. The logic layer can communicate with the view layer (in which ArkWeb serves as the renderer) in the C++ environment through the native API, instead of using the ArkTS **JSBridge** API in the ArkTS environment.
 
   The figure on the left shows that the application needs to invoke the ArkTS environment and then the C++ environment to build an applet using the ArkTS **JSBridge** API. Using the native **JSBridge** API is more efficient because the switching between the ArkTS and C++ environments is not required, as shown in the figure on the right.
 
@@ -28,11 +28,11 @@ If an application is developed using a mix of ArkTS and C++, or if the applicati
 ## Using Native APIs to Implement JSBridge Communication (Recommended)
 In the previous version, the return value of native synchronization APIs is fixed to void. However, to meet service requirements, alternative APIs are introduced since API version 18 to support return values of the Boolean and string types.
 
-In addition, the [permission](#invoking-application-functions-on-the-frontend-page) field is added for the synchronous API [registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex) and asynchronous API [registerAsyncJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerasyncjavascriptproxyex) to control the invoking permission.
+In addition, the [permission](#invoking-application-functions-on-the-frontend-page) field is added for the synchronous API [registerJavaScriptProxyEx()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex) and asynchronous API [registerAsyncJavaScriptProxyEx()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerasyncjavascriptproxyex) to control the invoking permission.
 
-### Substitute APIs
+### Alternative APIs
 
-|             Unrecommended API           |               Substitute API               |            Description           |
+|             Unrecommended API           |               Alternative  API               |            Description           |
 | :-----------------------------------: | :-----------------------------------: | :------------------------: |
 |         ArkWeb_OnJavaScriptProxyCallback      |      ArkWeb_OnJavaScriptProxyCallbackWithResult             |      Defines a callback used when the proxy method is executed.     |
 |     ArkWeb_ProxyMethod     |         ArkWeb_ProxyMethodWithResult          |        Defines a proxy method.         |
@@ -136,7 +136,7 @@ Register the component lifecycle callback using [ArkWeb_ComponentAPI](../referen
 
 ### Invoking Application Functions on the Frontend Page
 
-Register the application functions with the frontend page through [registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex). The registration takes effect after the next loading or reloading.
+Register the application functions with the frontend page through [registerJavaScriptProxyEx()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex). The registration takes effect after the next loading or reloading.
 
   <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/hello.cpp) -->
   
@@ -216,7 +216,7 @@ Register the application functions with the frontend page through [registerJavaS
 
 ### Invoking Frontend Page Functions on the Application
 
-Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#runjavascript) to call the frontend page function.
+Use [runJavaScript()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#runjavascript) to call the frontend page function.
 
   ```c++
   // Construct a struct executed in runJS.
@@ -942,7 +942,7 @@ Register the component lifecycle callback using [ArkWeb_ComponentAPI](../referen
 
 ### Invoking Application Functions on the Frontend Page
 
-Register the application functions with the frontend page through [registerJavaScriptProxy](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxy). The registration takes effect after the next loading or reloading.
+Register the application functions with the frontend page through [registerJavaScriptProxy()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxy). The registration takes effect after the next loading or reloading.
 
   <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/hello.cpp) -->
   
@@ -961,7 +961,7 @@ Register the application functions with the frontend page through [registerJavaS
 
 ### Invoking Frontend Page Functions on the Application
 
-Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#runjavascript) to call the frontend page function.
+Use [runJavaScript()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#runjavascript) to call the frontend page function.
 
   ```c++
   // Construct a struct executed in runJS.

@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=6e0cfd8f83967d543c9f6622b6054d6211da68ad translatedAt=2026-11-04T02:02:47.582Z pushedAt=2026-11-04T04:23:29.562Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fe4141d28cbe992879debc9072f8c6ee828e6e65 translatedAt=2026-11-11T01:42:20.412Z pushedAt=2026-11-11T06:27:18.662Z nl=1 -->
 
 
 Page loading is a basic capability of the **Web** component. Depending on the data source, page loading falls into three types: loading of network pages, loading of local pages, and loading of HTML rich text data.
@@ -26,7 +26,7 @@ To obtain network resources during page loading, configure the network access pe
 You can specify the default network page to load when creating a Web component. After the default page is loaded, to change the network page displayed by the Web component, call the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to load the specified web page. The first parameter variable `src` of the [Web component](../reference/apis-arkweb/arkts-basic-components-web.md) cannot be dynamically changed through a state variable (for example, [@State](../ui/state-management/arkts-state.md)). To change the address, call [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) to reload the page.
 
 
-In the following example, after the **www.\example.com** page is loaded by the **Web** component, **loadUrl** is called to change the displayed page to **www\.example1.com**.
+In the following example, after the **www\.example.com** page is loaded by the **Web** component, you can call `loadUrl()` to change the displayed page to **www\.example1.com**.
 
 <!-- @[use_load_interface_to_show_web_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingWebPages.ets) -->
 
@@ -188,7 +188,7 @@ Example of loading local page files in the sandbox:
    }
    ```
 
-2. Modify the **EntryAbility.ets** file.
+2. Modify the `EntryAbility.ets` file.
 
    The following uses **filesDir** as an example to describe how to obtain the path of the sandbox. For details about how to obtain other paths, see [Obtaining Application File Paths](../application-models/application-context-stage.md#obtaining-application-file-paths).
   <!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/entryability/EntryAbility.ets) -->
