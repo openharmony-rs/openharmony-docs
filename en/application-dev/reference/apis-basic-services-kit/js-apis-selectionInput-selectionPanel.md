@@ -2,11 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
-<!--Owner: @no86-->
-<!--Designer: @no86-->
+<!--Owner: @zl_startup-->
+<!--Designer: @zl_startup-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=d682c265ebaab7ba09f14d1bce2dfd9303f27af1 translatedAt=2026-07-29T01:27:30.934Z pushedAt=2026-07-29T11:55:39.802Z -->
+<!-- md-trans-meta sourceCommit=0010014add01270f39617ed7d7e4e70f8fedab9e translatedAt=2026-11-12T04:54:26.315Z pushedAt=2026-11-12T12:25:12.518Z nl=1 -->
 
 The text selection panel is an operation panel that pops up after a user selects text. This module is applicable when quick operations such as translation and search need to be provided for the selected text. This helps developers quickly integrate the text selection capability and improve user interaction experience. The panel adopts a two-level architecture design. The menu panel (**MENU_PANEL**) is the level-1 panel, which displays the function entries (such as translation and search) provided by the current app. The main panel (**MAIN_PANEL**) is the level-2 panel, which pops up after a user taps a function button on the menu panel and displays the specific function result. This module provides the attributes and types of the word selection panel. You can use [PanelInfo](#panelinfo) to set the position and size of the panel and use [PanelType](#paneltype) to specify the panel type. [createPanel](js-apis-selectionInput-selectionManager.md#createpanel) and [show](js-apis-selectionInput-selectionManager.md#show) are used to create and display the word selection panel.
 

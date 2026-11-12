@@ -1,10 +1,11 @@
 # ohscan.h
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
 <!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=8ee0eefda2c8f7c51afc8d61427d4e7289d6c89f translatedAt=2026-11-12T04:03:09.660Z pushedAt=2026-11-12T12:13:20.938Z nl=1 -->
 
 ## Overview
 
@@ -18,7 +19,7 @@ Declares APIs for discovering and connecting to scanners, scanning images, obtai
 
 **Since**: 12
 
-**Related module**: [OH_Scan](capi-oh-scan.md)
+**Related module**: [Scan](capi-oh-scan.md)
 
 ## Summary
 

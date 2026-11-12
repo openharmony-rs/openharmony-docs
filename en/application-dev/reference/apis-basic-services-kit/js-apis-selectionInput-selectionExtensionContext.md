@@ -2,11 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
-<!--Owner: @no86-->
-<!--Designer: @no86-->
+<!--Owner: @zl_startup-->
+<!--Designer: @zl_startup-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=bb3fe7567540ccb1863f77532b1f5c54ec3874e8 translatedAt=2026-08-04T01:03:11.279Z pushedAt=2026-08-04T01:36:49.473Z -->
+<!-- md-trans-meta sourceCommit=0010014add01270f39617ed7d7e4e70f8fedab9e translatedAt=2026-11-12T04:53:46.973Z pushedAt=2026-11-12T12:24:29.287Z nl=1 -->
 
 **SelectionExtensionContext** is the context of [SelectionExtensionAbility](./js-apis-selectionInput-selectionExtensionAbility.md), which inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
 
@@ -27,7 +27,7 @@ import { SelectionExtensionContext } from '@kit.BasicServicesKit';
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 ### startAbility
 
@@ -37,7 +37,7 @@ Starts the target ability in the same app. This method is applicable when you ne
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 

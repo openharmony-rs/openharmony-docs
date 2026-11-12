@@ -6,7 +6,7 @@
 <!--Designer: @zl_startup-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=0010014add01270f39617ed7d7e4e70f8fedab9e translatedAt=2026-09-08T07:22:43.553Z pushedAt=2026-09-08T09:24:13.038Z -->
+<!-- md-trans-meta sourceCommit=c3287af346061f28c66de3bd429f95a889e6cc78 translatedAt=2026-11-12T04:55:06.211Z pushedAt=2026-11-12T12:25:05.504Z nl=1 -->
 
 This module provides word selection management capabilities, including creating, displaying, moving, hiding, and destroying panels, listening for word selection events using a mouse or touchpad, and retrieving the selected text. The typical usage process is as follows:
 1. Call [on('selectionCompleted')](#selectionmanageronselectioncompleted) to subscribe to the selection completion event.
@@ -188,7 +188,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
 
 **Example**
@@ -264,7 +264,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 
 **Example**
 
@@ -385,7 +385,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -427,7 +427,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -465,7 +465,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -503,7 +503,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -565,7 +565,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
@@ -615,7 +615,7 @@ For details about the following error codes, see [Word Selection Error Codes](er
 
 | ID  | Error Message                      |
 | ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
+| 33600001   | Selection service invocation exception. |
 | 33600002   | This selection window has been destroyed. |
 
 **Example**

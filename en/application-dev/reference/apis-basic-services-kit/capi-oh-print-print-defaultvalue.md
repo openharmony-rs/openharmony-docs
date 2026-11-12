@@ -1,11 +1,11 @@
 # Print_DefaultValue
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=a077482f26289b96749dbeb1a0c6856695ebea0a translatedAt=2026-09-01T03:03:03.512Z pushedAt=2026-09-03T08:36:24.578Z -->
+<!-- md-trans-meta sourceCommit=8ee0eefda2c8f7c51afc8d61427d4e7289d6c89f translatedAt=2026-11-12T03:55:03.628Z pushedAt=2026-11-12T12:08:36.772Z nl=1 -->
 
 ```cpp
 typedef struct {...} Print_DefaultValue
@@ -17,7 +17,7 @@ Enumerates default attributes of a printer, including the color mode, duplex mod
 
 **Since**: 12
 
-**Related module**: [OH_Print](capi-oh-print.md)
+**Related module**: [Print](capi-oh-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 
@@ -30,7 +30,7 @@ Enumerates default attributes of a printer, including the color mode, duplex mod
 | [Print_ColorMode](capi-ohprint-h.md#print_colormode) defaultColorMode | Default color mode, which indicates the color mode of the print output. The value is determined by the color modes supported by the printer. |
 | [Print_DuplexMode](capi-ohprint-h.md#print_duplexmode) defaultDuplexMode | Default duplex mode, which indicates whether printing is single-sided or double-sided. The value is determined by the duplex modes supported by the printer. |
 | char *defaultMediaType | Default media type, which indicates the type of media (such as ordinary paper or glossy paper) used for printing. The value is determined by the media types supported by the printer. |
-| char *defaultPageSizeId | Default paper size ID, which indicates the paper size ID (such as **A4** or **Letter**) used for printing. The value is determined by the paper sizes supported by the printer. |
+| char *defaultPageSizeId | Default page size ID, such as **A4** or **Letter**. It is used for printing. The value is determined by the page sizes supported by the printer. |
 | [Print_Margin](capi-oh-print-print-margin.md) defaultMargin | Default margin, which indicates the margin settings of the printed page. The value is determined by the margins supported by the printer. |
 | char *defaultPaperSource | Default paper source, which indicates the paper source (such as automatic paper feeder or manual feeding) used for printing. The value is determined by the paper sources supported by the printer. |
 | [Print_Quality](capi-ohprint-h.md#print_quality) defaultPrintQuality | Default print quality, which indicates the quality level of the print. The value is determined by the print quality supported by the printer. |

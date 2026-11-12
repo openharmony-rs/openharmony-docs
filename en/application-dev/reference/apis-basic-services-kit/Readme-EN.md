@@ -1,128 +1,130 @@
-# Basic Services Kit
+# Basic Services Kit (Basic Services)
 <!--Kit: Common-->
 <!--Subsystem: Common-->
 <!--Owner: @fang-jinxu-->
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=8ee0eefda2c8f7c51afc8d61427d4e7289d6c89f translatedAt=2026-11-12T05:22:22.718Z pushedAt=2026-11-12T12:30:20.409Z nl=1 -->
 
-- ArkTS APIs<!--basic-services-arkts-->
+- ArkTS API<!--basic-services-arkts-->
   - Account Management<!--account-management-arkts-->
     - [@ohos.account.appAccount (Application Account Management)](js-apis-appAccount.md)
     - [@ohos.account.distributedAccount (Distributed Account Management)](js-apis-distributed-account.md)
     - [@ohos.account.osAccount (System Account Management)](js-apis-osAccount.md)
     - [@ohos.account.osAccount.authorization (OS Account Authorization Manager)](js-apis-osAccount-authorization.md)
     <!--Del-->
-    - [@ohos.account.distributedAccount (Distributed Account Management) (System API)](js-apis-distributed-account-sys.md)
-    - [@ohos.account.osAccount (System Account Management) (System API)](js-apis-osAccount-sys.md)
+    - [@ohos.account.distributedAccount (Distributed Account Management)(System API)](js-apis-distributed-account-sys.md)
+    - [@ohos.account.osAccount (System Account Management)(System API)](js-apis-osAccount-sys.md)
     <!--DelEnd-->
     - [OS Account Constraints](appendix-osAccount-constraints.md)
     - [OS Account Privilege List](appendix-osAccount-authorization-privileges.md)
   - Device Management<!--device-management-arkts-->
     - [@ohos.batteryInfo (Battery Information)](js-apis-battery-info.md)
-    - [@ohos.busManager.serial (Serial Port Management)](js-apis-busmanager-serial.md)
+    - [@ohos.boardInfo (Board Hardware Information)](js-apis-board-info.md)
+    - [@ohos.busManager.serial (Serial Port Communication Management)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (Device Information)](js-apis-device-info.md)
     - [@ohos.power (Power Management)](js-apis-power.md)
     - [@ohos.runningLock (RunningLock)](js-apis-runninglock.md)
     - [@ohos.thermal (Thermal Management)](js-apis-thermal.md)
-    - [@ohos.usbManager (USB Manager)](js-apis-usbManager.md)
+    - [@ohos.usbManager (USB Management)](js-apis-usbManager.md)
     - [@ohos.usbManager.serial (Serial Port Management)](js-apis-serialManager.md)
     <!--Del-->
-    - [@ohos.batteryInfo (Battery Information) (System API)](js-apis-battery-info-sys.md)
-    - [@ohos.batteryStatistics (Battery Statistics) (System API)](js-apis-batteryStatistics-sys.md)
-    - [@ohos.brightness (Screen Brightness) (System API)](js-apis-brightness-sys.md)
-    - [@ohos.busManager.serial (Serial Port Management) (System API)](js-apis-busmanager-serial-sys.md)
-    - [@ohos.charger (Charger) (System API)](js-apis-charger-sys.md)
-    - [@ohos.deviceAttest (Device Attestation) (System API)](js-apis-deviceAttest-sys.md)
-    - [@ohos.power (Power Management) (System API)](js-apis-power-sys.md)
-    - [@ohos.systemCapability (SystemCapability) (System API)](js-apis-system-capability-sys.md)
-    - [@ohos.systemParameterEnhance (System Parameter) (System API)](js-apis-system-parameterEnhance-sys.md)
-    - [@ohos.screenLock (Screen Lock) (System API)](js-apis-screen-lock-sys.md)
-    - [@ohos.usbManager (USB Management) (System API)](js-apis-usbManager-sys.md)
-    - [@ohos.usbManager.serial (Serial Port Management) (system API)](js-apis-serialManager-sys.md)
-    - [@ohos.update (Update) (System API)](js-apis-update-sys.md)
+    - [@ohos.batteryInfo (Battery Information)(System API)](js-apis-battery-info-sys.md)
+    - [@ohos.batteryStatistics (Power Consumption Statistics)(System API)](js-apis-batteryStatistics-sys.md)
+    - [@ohos.brightness (Screen Brightness)(System API)](js-apis-brightness-sys.md)
+    - [@ohos.busManager.serial (Serial Port Communication Management)(System API)](js-apis-busmanager-serial-sys.md)
+    - [@ohos.charger (Charger Type)(System API)](js-apis-charger-sys.md)
+    - [@ohos.deviceAttest (Device Attestation)(System API)](js-apis-deviceAttest-sys.md)
+    - [@ohos.power (System Power Management)(System API)](js-apis-power-sys.md)
+    - [@ohos.systemCapability (System Capability)(System API)](js-apis-system-capability-sys.md)
+    - [@ohos.systemParameterEnhance (System Parameter)(System API)](js-apis-system-parameterEnhance-sys.md)
+    - [@ohos.screenLock (Lock Screen Management)(System API)](js-apis-screen-lock-sys.md)
+    - [@ohos.usbManager (USB Management)(System API)](js-apis-usbManager-sys.md)
+    - [@ohos.usbManager.serial (Serial Port Management)(System API)](js-apis-serialManager-sys.md)
+    - [@ohos.update (Upgrade)(System API)](js-apis-update-sys.md)
     <!--DelEnd-->
   - Data File Processing<!--data-file-processing-arkts-->
-    - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability)](js-apis-app-ability-PrintExtensionAbility.md)
+    - [@ohos.app.ability.PrintExtensionAbility (Print Extension Capability)](js-apis-app-ability-PrintExtensionAbility.md)
     - [PrintExtensionContext](js-apis-PrintExtensionContext.md)
-    - [@ohos.pasteboard (Pasteboard)](js-apis-pasteboard.md)
+    - [@ohos.pasteboard (Clipboard)](js-apis-pasteboard.md)
     - [@ohos.print (Print)](js-apis-print.md)
     - [@ohos.scan (Scan)](js-apis-scan.md)
     - [@ohos.request (Upload and Download)](js-apis-request.md)
-    - [@ohos.request.cacheDownload (Download and Cache)](js-apis-request-cacheDownload.md)
-    - [@ohos.zlib (Zip)](js-apis-zlib.md)
-    - [@ohos.selectionInput.SelectionExtensionAbility (SelectionExtensionAbility)](js-apis-selectionInput-selectionExtensionAbility.md)
-    - [@ohos.selectionInput.SelectionExtensionContext (Word Selection Extension Context)](js-apis-selectionInput-selectionExtensionContext.md)
-    - [@ohos.selectionInput.selectionManager (Word Selection Management)](js-apis-selectionInput-selectionManager.md)
-    - [@ohos.selectionInput.SelectionPanel (Word Selection Panel)](js-apis-selectionInput-selectionPanel.md)
+    - [@ohos.request.cacheDownload (Cache Download)](js-apis-request-cacheDownload.md)
+    - [@ohos.zlib (Zip Module)](js-apis-zlib.md)
+    - [@ohos.selectionInput.SelectionExtensionAbility (Text Selection Extension Capability)](js-apis-selectionInput-selectionExtensionAbility.md)
+    - [@ohos.selectionInput.SelectionExtensionContext (Text Selection Extension Context)](js-apis-selectionInput-selectionExtensionContext.md)
+    - [@ohos.selectionInput.selectionManager (Text Selection Management)](js-apis-selectionInput-selectionManager.md)
+    - [@ohos.selectionInput.SelectionPanel (Text Selection Panel)](js-apis-selectionInput-selectionPanel.md)
     <!--Del-->
-    - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability) (System API)](js-apis-app-ability-PrintExtensionAbility-sys.md)
-    - [@ohos.print (Print) (System API)](js-apis-print-sys.md)
-    - [@ohos.scan (Scan) (System API)](js-apis-scan-sys.md)
-    - [@ohos.request (Upload and Download) (System API)](js-apis-request-sys.md)
+    - [@ohos.app.ability.PrintExtensionAbility (Print Extension Capability)(System API)](js-apis-app-ability-PrintExtensionAbility-sys.md)
+    - [@ohos.print (Print)(System API)](js-apis-print-sys.md)
+    - [@ohos.scan (Scan)(System API)](js-apis-scan-sys.md)
+    - [@ohos.request (Upload and Download)(System API)](js-apis-request-sys.md)
     <!--DelEnd-->
   - Process and Thread Communication<!--process-thread-communi-arkts-->
-    - [System Common Events](common_event/commonEventManager-definitions.md)
+    - [System-defined Common Event](common_event/commonEventManager-definitions.md)
     <!--Del-->
-    - [System Common Events (System API)] (common_event/commonEventManager-definitions-sys.md)
+    - [System Common Event (System API)](common_event/commonEventManager-definitions-sys.md)
     <!--DelEnd-->
-    - [@ohos.commonEventManager (Common Event)](js-apis-commonEventManager.md)
+    - [@ohos.commonEventManager (Common Event Module)](js-apis-commonEventManager.md)
     - [@ohos.events.emitter (Emitter)](js-apis-emitter.md)
     <!--Del-->
-    - [@ohos.commonEventManager (Common Event) (System API)](js-apis-commonEventManager-sys.md)
-    - [@ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility) (System API)](js-apis-application-staticSubscriberExtensionAbility-sys.md)
-    - [@ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext) (System API)](js-apis-application-StaticSubscriberExtensionContext-sys.md)
+    - [@ohos.commonEventManager (Common Event Module)(System Application)](js-apis-commonEventManager-sys.md)
+    - [@ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility)(System API)](js-apis-application-staticSubscriberExtensionAbility-sys.md)
+    - [@ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext)(System API)](js-apis-application-StaticSubscriberExtensionContext-sys.md)
     <!--DelEnd-->
     - commonEvent<!--commonevent-->
       - [CommonEventData](js-apis-inner-commonEvent-commonEventData.md)
       - [CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md)
       - [CommonEventSubscriber](js-apis-inner-commonEvent-commonEventSubscriber.md)
       - [CommonEventSubscribeInfo](js-apis-inner-commonEvent-commonEventSubscribeInfo.md)
-  - Others<!--basic-services-others-->
+  - Other<!--basic-services-others-->
     <!--Del-->
-    - [@ohos.ai.intelligentVoice (Intelligent Voice) (System API)](js-apis-intelligentVoice-sys.md)
+    - [@ohos.ai.intelligentVoice (Intelligent Voice)(System API)](js-apis-intelligentVoice-sys.md)
     <!--DelEnd-->
-    - [@ohos.base (Public Callback Information)](js-apis-base.md)
+    - [@ohos.base (Common Callback Information)](js-apis-base.md)
     - [@ohos.annotation (Annotation)](js-apis-annotation.md)
-    - [@ohos.customization.customConfig (Custom Configurations)](js-apis-customization-customConfig.md)
-    - [@ohos.settings (Data Item Settings)](js-apis-settings.md)
-    - [@ohos.settingsLite (Setting Information)](js-apis-settings-lite.md)
+    - [@ohos.customization.customConfig (Custom Configuration)](js-apis-customization-customConfig.md)
+    - [@ohos.settings (Settings activation Item Name)](js-apis-settings.md)
+    - [@ohos.settingsLite (Settings Information)](js-apis-settings-lite.md)
     - [@ohos.wallpaper (Wallpaper)](js-apis-wallpaper.md)
-    - [@ohos.resourceschedule.systemload (System Load Level Management)](js-apis-resourceschedule-systemload.md)
+    - [@ohos.resourceschedule.systemload (Performance, Power, and Thermal Fusion Level)](js-apis-resourceschedule-systemload.md)
     - [@ohos.systemDateTime (System Time and Time Zone)](js-apis-date-time.md)
-    - [@ohos.intelligentScene (Intelligent Scene)](js-apis-intelligentScene.md)
+    - [@ohos.intelligentScene (Scenario Mode)](js-apis-intelligentScene.md)
     <!--Del-->
-    - [@ohos.configPolicy (Configuration Policy) (System API)](js-apis-configPolicy-sys.md)
-    - [@ohos.settings (Data Item Settings) (System API)](js-apis-settings-sys.md)
-    - [@ohos.systemDateTime (System Time and Time Zone) (System API)](js-apis-system-date-time-sys.md)<!--DelEnd-->
+    - [@ohos.configPolicy (Configuration Policy)(System API)](js-apis-configPolicy-sys.md)
+    - [@ohos.settings (Settings activation Item Name)(System API)](js-apis-settings-sys.md)
+    - [@ohos.systemDateTime (System Time and Time Zone)(System API)](js-apis-system-date-time-sys.md)<!--DelEnd-->
      <!--Del-->
-    - [@ohos.wallpaper (Wallpaper) (System API)](js-apis-wallpaper-sys.md)
-    - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility) (System API)](js-apis-WallpaperExtensionAbility-sys.md)
-    - [@ohos.systemTimer (System Timer) (System API)](js-apis-system-timer-sys.md)
+    - [@ohos.wallpaper (Wallpaper)(System API)](js-apis-wallpaper-sys.md)
+    - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(System API)](js-apis-WallpaperExtensionAbility-sys.md)
+    - [@ohos.systemTimer (System Timer)(System API)](js-apis-system-timer-sys.md)
     <!--DelEnd-->
-  - APIs No Longer Maintained<!--basic-services-arkts-dep-->
-    - [System Common Events](common_event/commonEvent-definitions.md)
-    - [@ohos.commonEvent (Common Event)](js-apis-commonEvent.md)
-    - [@ohos.usb (USB)](js-apis-usb-deprecated.md)
+  - Deprecated APIs<!--basic-services-arkts-dep-->
+    - [System Common Event Definition](common_event/commonEvent-definitions.md)
+    - [@ohos.commonEvent (Common Event Module)](js-apis-commonEvent.md)
+    - [@ohos.usb (USB Management)](js-apis-usb-deprecated.md)
     - [@system.brightness (Screen Brightness)](js-apis-system-brightness.md)
     - [@system.battery (Battery Information)](js-apis-system-battery.md)
     - [@system.device (Device Information)](js-apis-system-device.md)
     - [@system.request (Upload and Download)](js-apis-system-request.md)
-    - [@ohos.screenLock (Screen Lock)](js-apis-screen-lock.md)
+    - [@ohos.screenLock (Lock Screen Management)](js-apis-screen-lock.md)
     <!--Del-->
-    - [@ohos.commonEvent (Common Event) (System API)](js-apis-commonEvent-sys.md)
-    - [@ohos.usb (USB) (System API)](js-apis-usb-deprecated-sys.md)
-    - [@ohos.systemParameter (System Parameter) (System API)](js-apis-system-parameter-sys.md)
+    - [@ohos.commonEvent (Common Event Module)(System Application)](js-apis-commonEvent-sys.md)
+    - [@ohos.usb (USB Management)(System API)](js-apis-usb-deprecated-sys.md)
+    - [@ohos.systemParameter (System Property)(System API)](js-apis-system-parameter-sys.md)
     <!--DelEnd-->
     - [@ohos.systemTime (System Time and Time Zone)](js-apis-system-time.md)
-- C APIs<!--basic-services-c-->
-  - Modules<!--basic-services-module-->
+- C API<!--basic-services-c-->
+  - Module<!--basic-services-module-->
     - [OH_CommonEvent](capi-oh-commonevent.md)
     - [DeviceInfo](capi-deviceinfo.md)
     - [OsAccount](capi-osaccount.md)
     - [OH_BatteryInfo](capi-oh-batteryinfo.md)
-    - [OH_Scan](capi-oh-scan.md)
-    - [OH_Print](capi-oh-print.md)
+    - [Scan](capi-oh-scan.md)
+    - [Print](capi-oh-print.md)
     - [Pasteboard](capi-pasteboard.md)
     - [TimeService](capi-timeservice.md)
     - [UsbManager](capi-usbmanager.md)
@@ -168,39 +170,38 @@
     - [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md)
     - [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md)
     - [OH_UsbManager_UsbPipe](capi-usbmanager-oh-usbmanager-usbpipe.md)
-- Error Codes<!--basic-services-arkts-errcode-->
-  - [USB Error Codes](errorcode-usb.md)
-  - [Serial Port Management Error Codes](errorcode-busmanager-serial.md)
-  - [Running Lock Error Codes](errorcode-runninglock.md)
-  - [zlib Error Codes](errorcode-zlib.md)
+- Error Code<!--basic-services-arkts-errcode-->
+  - [USB Service Error Code](errorcode-usb.md)
+  - [Serial Port Management Error Code](errorcode-busmanager-serial.md)
+  - [RunningLock Error Code](errorcode-runninglock.md)
+  - [zlib Subsystem Error Code](errorcode-zlib.md)
   <!--Del-->
-  - [Battery Info Error Codes](errorcode-battery-info.md)
-  - [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md)
+  - [Battery Information Error Code](errorcode-battery-info.md)
+  - [Power Consumption Statistics Error Code](errorcode-batteryStatistics.md)
   <!--DelEnd-->
-  - [Pasteboard Error Codes](errorcode-pasteboard.md)
+  - [Clipboard Error Code](errorcode-pasteboard.md)
   <!--Del-->
-  - [Brightness Error Codes](errorcode-brightness.md)
+  - [Screen Brightness Error Code](errorcode-brightness.md)
   <!--DelEnd-->
-  - [Thermal Manager Error Codes](errorcode-thermal.md)
-  - [Upload and Download Error Codes](errorcode-request.md)
-  - [Time and Time Zone Service Error Codes](errorcode-time.md)
-  - [Common Event Error Codes](errorcode-CommonEventService.md)
+  - [Thermal Management Error Code](errorcode-thermal.md)
+  - [Upload and Download Error Code](errorcode-request.md)
+  - [Time and Time Zone Service Error Code](errorcode-time.md)
+  - [Common Event Error Code](errorcode-CommonEventService.md)
   <!--Del-->
-  - [System Parameter Error Codes](errorcode-system-parameterV9.md)
+  - [System Parameter Error Code](errorcode-system-parameterV9.md)
   <!--DelEnd-->
-  - [Power Manager Error Codes](errorcode-power.md)
-  - [Account Management Error Codes](errorcode-account.md)
+  - [System Power Management Error Code](errorcode-power.md)
+  - [Account Management Error Code](errorcode-account.md)
   <!--Del-->
-  - [Update Error Codes](errorcode-update.md)
+  - [Upgrade Error Code](errorcode-update.md)
   <!--DelEnd-->
-  - [Print Service Error Codes](errorcode-print.md)
-  - [Settings Error Codes](errorcode-settings.md)
-  - [Word Selection Service Error Codes](errorcode-selection.md)
-  - [Intelligent Scene Error Codes](errorcode-intelligentScene.md)
+  - [Print Service Error Code](errorcode-print.md)
+  - [Settings activation Item Error Code](errorcode-settings.md)
+  - [Text Selection Service Error Code](errorcode-selection.md)
+  - [Scenario Mode Error Code](errorcode-intelligentScene.md)
   <!--Del-->
-  - [Screen Lock Management Error Codes](errorcode-screenlock.md)
-  - [Device Attestation Error Codes](errorcode-deviceAttest.md)
-  - [Intelligent Voice Error Codes](errorcode-intelligentVoice.md)
+  - [Lock Screen Service Error Code](errorcode-screenlock.md)
+  - [Device Attestation Error Code](errorcode-deviceAttest.md)
+  - [Intelligent Voice Error Code](errorcode-intelligentVoice.md)
   <!--DelEnd-->
-  - [deviceInfo Error Codes](errorcode-device-info.md)
-<!--no_check-->
+  - [deviceInfo Error Code](errorcode-device-info.md)
