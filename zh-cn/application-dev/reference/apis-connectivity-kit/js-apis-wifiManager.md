@@ -4698,11 +4698,11 @@ isWlanSupported(): boolean
 
 枚举，P2P服务协议类型。
 
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**ArkTS-Dyn起始版本：** 26.0.1
-
-**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4718,11 +4718,11 @@ isWlanSupported(): boolean
 
 表示P2P服务信息。
 
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**ArkTS-Dyn起始版本：** 26.0.1
-
-**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4738,13 +4738,13 @@ addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Ma
 
 添加并注册一个DNS-SD（DNS Service Discovery，基于DNS的服务发现）本地P2P服务描述，供对端进行服务发现。
 
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**ArkTS-Dyn起始版本：** 26.0.1
-
-**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4787,13 +4787,13 @@ addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&g
 
 添加并注册一个UPnP（Universal Plug and Play，通用即插即用）本地P2P服务描述，供对端进行服务发现。
 
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**ArkTS-Dyn起始版本：** 26.0.1
-
-**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4837,13 +4837,13 @@ removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
 
 移除通过[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)或[addUpnpLocalP2pService](#wifimanageraddupnplocalp2pservice)添加的已注册本地服务。
 
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**ArkTS-Dyn起始版本：** 26.0.1
-
-**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4886,13 +4886,13 @@ getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
 
 查询本地P2P服务，使用Promise异步回调。
 
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**ArkTS-Dyn起始版本：** 26.0.1
-
-**ArkTS-Sta起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4922,4 +4922,461 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 }).catch((error: BusinessError) => {
   console.error("failed: " + JSON.stringify(error));
 });
+```
+
+## WifiP2pServiceRequest
+
+表示待处理的P2P服务发现请求，即TLV（Type-Length-Value，类型-长度-值）查询。类型为[P2pServiceProtocolType](#p2pserviceprotocoltype)表示的服务协议类型，值为对应的查询字节。该请求由[addDnsSdServiceRequest](#wifimanageradddnssdservicerequest)或[addUpnpServiceRequest](#wifimanageraddupnpservicerequest)添加，供[discoverServices](#wifimanagerdiscoverservices)按查询匹配对端服务。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| protocolType | [P2pServiceProtocolType](#p2pserviceprotocoltype) | 否 | 否 | 服务协议类型。 |
+| query | Uint8Array | 否 | 否 | 查询字节。最大长度为256字节。 |
+
+## P2pDnsSdInfo
+
+表示从对端设备收到的DNS-SD（DNS-Based Service Discovery，基于DNS的服务发现）服务响应信息。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| instanceName | string | 否 | 否 | 已发现Bonjour（零配置网络发现协议）服务的实例名。 |
+| registrationType | string | 否 | 否 | 已发现Bonjour服务的注册类型。取值前缀与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的serviceType入参相同，并在末尾追加".local"。例如serviceType为"_http._tcp"时，取值为"_http._tcp.local"。 |
+| device | [WifiP2pDevice](#wifip2pdevice) | 否 | 否 | 返回该服务响应的对端设备。 |
+
+## P2pDnsSdTxtInfo
+
+表示从对端设备收到的DNS-SD TXT（DNS-Based Service Discovery Text，基于DNS的服务发现文本）记录信息。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| wholeDomainName | string | 否 | 否 | TXT记录的完整域名。格式为instanceName + "." + serviceType + ".local"。例如instanceName为"instanceName"、serviceType为"_http._tcp"时，取值为"instanceName._http._tcp.local"。 |
+| txtRecord | Map&lt;string, string&gt; | 否 | 否 | 包含键值对的TXT记录。 |
+| device | [WifiP2pDevice](#wifip2pdevice) | 否 | 否 | 返回该TXT记录的对端设备。 |
+
+## P2pUpnpInfo
+
+表示从对端设备收到的UPnP（Universal Plug and Play，通用即插即用）服务响应信息。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| uniqueServiceNames | Array&lt;string&gt; | 否 | 否 | 已发现的唯一服务名称列表。单条数据记录的最大大小为1024字节，数据量与目标设备上的服务数量相关。 |
+| device | [WifiP2pDevice](#wifip2pdevice) | 否 | 否 | 返回该UPnP服务响应的对端设备。 |
+
+## P2pGenericInfo
+
+表示从对端设备收到的通用服务响应信息。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| protocolType | [P2pServiceProtocolType](#p2pserviceprotocoltype) | 否 | 否 | 响应的服务协议类型。 |
+| responseData | Uint8Array | 否 | 否 | 对端设备返回的原始响应数据。最大长度为1024字节。 |
+| device | [WifiP2pDevice](#wifip2pdevice) | 否 | 否 | 返回该服务响应的对端设备。 |
+
+## P2pServiceDiscoveryInfo
+
+type P2pServiceDiscoveryInfo = P2pDnsSdInfo | P2pDnsSdTxtInfo | P2pUpnpInfo | P2pGenericInfo
+
+表示从对端设备收到的P2P服务发现响应信息。具体类型由响应的服务协议类型决定。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [P2pDnsSdInfo](#p2pdnssdinfo) | 从对端设备收到的DNS-SD服务响应信息。 |
+| [P2pDnsSdTxtInfo](#p2pdnssdtxtinfo) | 从对端设备收到的DNS-SD TXT记录信息。 |
+| [P2pUpnpInfo](#p2pupnpinfo) | 从对端设备收到的UPnP服务响应信息。 |
+| [P2pGenericInfo](#p2pgenericinfo) | 从对端设备收到的通用服务响应信息。 |
+
+## wifiManager.addDnsSdServiceRequest
+
+addDnsSdServiceRequest(serviceType?: string, instanceName?: string): void
+
+添加与DNS-SD服务匹配的DNS-SD服务发现请求。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| serviceType | string | 否 | 服务类型，用于对端服务发现，最大长度为63字符。格式为"&lt;ServiceName&gt;.&lt;Protocol&gt;"，例如"_http._tcp"。与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的serviceType入参对应。未指定时默认为空字符串。 |
+| instanceName | string | 否 | 实例名，用于发现对端服务，最大长度为63字符。与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的instanceName入参对应。未指定时默认为空字符串。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+  wifiManager.addDnsSdServiceRequest("_http._tcp", "instanceName");
+} catch (error) {
+  console.error("failed: " + JSON.stringify(error));
+}
+```
+
+## wifiManager.addUpnpServiceRequest
+
+addUpnpServiceRequest(searchTarget?: string): void
+
+添加与指定搜索目标匹配的UPnP服务发现请求。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| searchTarget | string | 否 | UPnP搜索目标。未指定时默认为空字符串。搜索设备类型时建议不超过255字节，搜索服务类型时不得超过512字节。入参类型示例：<br>- 搜索所有UPnP设备和服务："ssdp:all"<br>- 搜索特定根设备："upnp:rootdevice"<br>- 搜索特定设备类型（urn:schemas-upnp-org:device:...），例如"urn:schemas-upnp-org:device:MediaServer:2"<br>- 搜索特定服务类型（urn:schemas-upnp-org:service:...），例如"urn:schemas-upnp-org:service:ContentDirectory:2"<br>- 搜索特定UUID，例如"uuid:6859dede-8574-59ab-9332-123456789012" |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+  wifiManager.addUpnpServiceRequest("ssdp:all");
+} catch (error) {
+  console.error("failed: " + JSON.stringify(error));
+}
+```
+
+## wifiManager.getP2pServiceRequest
+
+getP2pServiceRequest(): Promise&lt;Array&lt;WifiP2pServiceRequest&gt;&gt;
+
+查询待处理的P2P服务发现请求，使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;Array&lt;[WifiP2pServiceRequest](#wifip2pservicerequest)&gt;&gt; | Promise对象。用于返回待处理的服务发现请求列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wifiManager.getP2pServiceRequest().then((data: wifiManager.WifiP2pServiceRequest[]) => {
+  console.info("get P2P service requests: " + JSON.stringify(data));
+}).catch((error: BusinessError) => {
+  console.error("failed: " + JSON.stringify(error));
+});
+```
+
+## wifiManager.removeP2pServiceRequest
+
+removeP2pServiceRequest(request: WifiP2pServiceRequest): void
+
+移除待处理的P2P服务发现请求。可通过调用[getP2pServiceRequest](#wifimanagergetp2pservicerequest)获取已注册的服务发现请求列表。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| request | [WifiP2pServiceRequest](#wifip2pservicerequest) | 是 | 要移除的服务发现请求。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+wifiManager.getP2pServiceRequest().then((data: wifiManager.WifiP2pServiceRequest[]) => {
+  data.forEach((item: wifiManager.WifiP2pServiceRequest) => {
+    wifiManager.removeP2pServiceRequest(item);
+  });
+}).catch((error: BusinessError) => {
+  console.error("failed: " + JSON.stringify(error));
+});
+```
+
+## wifiManager.removeAllP2pServiceRequests
+
+removeAllP2pServiceRequests(): void
+
+移除所有待处理的服务发现请求。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+  wifiManager.removeAllP2pServiceRequests();
+} catch (error) {
+  console.error("failed: " + JSON.stringify(error));
+}
+```
+
+## wifiManager.discoverServices
+
+discoverServices(): void
+
+启动P2P服务发现。使用待处理请求的TLV查询；若待处理列表为空，则回退为发现所有服务类型。在启动发现前，请使用[addDnsSdServiceRequest](#wifimanageradddnssdservicerequest)或[addUpnpServiceRequest](#wifimanageraddupnpservicerequest)添加服务请求。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_PEERS_MAC
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+| 2801001 | Wi-Fi STA disabled. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+try {
+  wifiManager.addDnsSdServiceRequest("_http._tcp");
+  wifiManager.discoverServices();
+} catch (error) {
+  console.error("failed: " + JSON.stringify(error));
+}
+```
+
+## wifiManager.onP2pServiceDiscovery
+
+onP2pServiceDiscovery(callback: Callback&lt;P2pServiceDiscoveryInfo&gt;): void
+
+订阅对端设备的通用服务响应事件。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[P2pServiceDiscoveryInfo](#p2pservicediscoveryinfo)&gt; | 是 | 从对端设备收到服务发现响应时调用的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+let recvP2pServiceDiscoveryFunc = (info: wifiManager.P2pServiceDiscoveryInfo) => {
+  console.info("Receive p2p service discovery event: " + JSON.stringify(info));
+};
+
+wifiManager.onP2pServiceDiscovery(recvP2pServiceDiscoveryFunc);
+```
+
+## wifiManager.offP2pServiceDiscovery
+
+offP2pServiceDiscovery(callback?: Callback&lt;P2pServiceDiscoveryInfo&gt;): void
+
+取消订阅通用服务响应事件。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[P2pServiceDiscoveryInfo](#p2pservicediscoveryinfo)&gt; | 否 | 要取消订阅的回调。未指定该参数时，取消订阅所有回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 2801000 | Operation failed. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+let recvP2pServiceDiscoveryFunc = (info: wifiManager.P2pServiceDiscoveryInfo) => {
+  console.info("Receive p2p service discovery event: " + JSON.stringify(info));
+};
+
+// 注册事件。
+wifiManager.onP2pServiceDiscovery(recvP2pServiceDiscoveryFunc);
+
+// 注销事件。
+wifiManager.offP2pServiceDiscovery(recvP2pServiceDiscoveryFunc);
 ```
