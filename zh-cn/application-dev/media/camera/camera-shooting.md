@@ -373,7 +373,7 @@
        console.error(`session flow error: ${err.code}`);
      }
    }
-  ```
+   ```
 
 - 在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)之前调用。 
 

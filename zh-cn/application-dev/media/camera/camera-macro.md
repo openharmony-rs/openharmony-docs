@@ -67,4 +67,4 @@
    unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
      photoSession.off('macroStatusChanged');
    }
-   ```  
+   ```
