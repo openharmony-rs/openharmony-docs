@@ -5290,6 +5290,8 @@ getPageRootNode(): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **ArkTS-Dyn起始版本：** 24
 
 **ArkTS-Sta起始版本：** 24
