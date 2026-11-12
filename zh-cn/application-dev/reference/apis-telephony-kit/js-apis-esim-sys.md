@@ -868,7 +868,7 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
 ```
 
 ## eSIM.getSupportedPkids<sup>20+</sup>
- 	 
+
 getSupportedPkids\(slotId: number\): Promise\<string\>
 
 获取手机支持的公钥ID信息。
