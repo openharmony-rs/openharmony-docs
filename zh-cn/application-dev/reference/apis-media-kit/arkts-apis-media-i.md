@@ -491,7 +491,7 @@ async function setupPlayer() {
 | preferredBufferDurationForPlaying<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 播放策略首选起播缓冲水线。当起播缓冲时间超过该值，开始播放。单位为秒（s），取值范围[0, 20]。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
 | thresholdForAutoQuickPlay<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 智能追帧水线，单位为秒（s），取值应不小于2s，且需大于起播缓冲水线，默认设置为5s。<br>播放策略可以通过设置智能追帧水线来保证直播的实时性。flv直播场景下应用可按需设置，非flv直播场景暂不支持。网络状态的变化可能会导致播放器在某段时间内积压大量数据。播放器会定期检查当前播放时间与缓存中最新的帧时间戳之间的差值，当这个差值过大时，播放器将以1.2倍速开始智能追帧。[on('speedDone')](arkts-apis-media-AVPlayer.md#onspeeddone9)事件会回调特定值100，表示智能追帧开启成功。当差值小于起播缓冲水线时，则停止追帧并恢复到正常播放速度。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
 | keepDecodingOnMute<sup>20+</sup>  | boolean | 否   | 是   | 表示在关闭视频媒体时解码器是否继续运行，用于方便快速打开媒体。目前仅支持视频。默认设置为false，表示当媒体关闭时，相应的解码器将停止运行以减少功耗。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
-| disableMedia | [MediaType](arkts-apis-media-e.md#mediatype8) | 否   | 是   | 配置播放期间禁用的媒体类型。<br>只支持禁用音频或视频，取值为MediaType.MEDIA_TYPE_AUD或MediaType.MEDIA_TYPE_VID。<br>若未设置此参数，默认不禁用任何媒体类型。<br> **ArkTS-Dyn起始版本：** 26.1.0<br> **ArkTS-Sta起始版本：** 26.1.0<br>**模型约束：** 从API版本26.1.0开始，此接口仅可在Stage模型下使用。 |
+| disableMedia | [MediaType](arkts-apis-media-e.md#mediatype8) | 否   | 是   | 配置播放期间禁用的媒体类型。<br>只支持禁用音频或视频，取值为MediaType.MEDIA_TYPE_AUD或MediaType.MEDIA_TYPE_VID。<br>若未设置此参数，默认不禁用任何媒体类型。<br>**模型约束：** 从API版本26.1.0开始，此接口仅可在Stage模型下使用。<br> **ArkTS-Dyn起始版本：** 26.1.0<br> **ArkTS-Sta起始版本：** 26.1.0 |
 
 ## AVScreenCaptureStrategy<sup>20+</sup>
 
