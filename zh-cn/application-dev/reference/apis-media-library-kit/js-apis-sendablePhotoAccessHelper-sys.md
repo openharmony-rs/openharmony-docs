@@ -118,10 +118,10 @@ createAsset(displayName: string): Promise&lt;PhotoAsset&gt;
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020 | Invalid argument.         |
 | 14000001 | Invalid display name.         |
-| 14000011 | Internal system error                                        |
+| 14000011 | MediaLibrary inner fail.                                        |
 
 **示例：**
 
@@ -179,10 +179,10 @@ createAsset(displayName: string, options: photoAccessHelper.PhotoCreateOptions):
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020 | Invalid argument.         |
 | 14000001 | Invalid display name.         |
-| 14000011 | Internal system error                                        |
+| 14000011 | MediaLibrary inner fail.                                        |
 
 **示例：**
 
@@ -238,8 +238,8 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options?: FetchOptions): Promise&
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | Internal system error.                                        |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail.                                        |
 
 **示例：**
 
@@ -463,7 +463,7 @@ requestSource(): Promise&lt;number&gt;
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 14000011 | Internal system error                                        |
+| 14000011 | MediaLibrary inner fail.                                        |
 
 **示例：**
 
@@ -529,8 +529,8 @@ getAnalysisData(analysisType: AnalysisType): Promise\<string>
 | :------- | :----------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14000011 | Internal system error                                        |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail.                                       |
 
 **示例：**
 
@@ -588,7 +588,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 | isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏，默认为false。|
 | title | string | 否 | 否 | 图片资产的标题。|
 | position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。|
-| dateTrashed | number | 否 | 否 | 图片资产被移入回收站的时长。单位为毫秒（ms），取值应为≥0的整数。 |
+| dateTrashed | number | 否 | 否 | 图片资产被移入回收站的时长。单位为秒（s），取值应为≥0的整数。 |
 | hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏，默认为false。|
 | userComment | string | 否 | 否 | 图片资产的用户评论信息。|
 | cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。|
@@ -652,7 +652,7 @@ getFaceId(): Promise\<string>
 | :------- | :----------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 14000011 | Internal system error                                        |
+| 14000011 | MediaLibrary inner fail.                                        |
 
 **示例：**
 
