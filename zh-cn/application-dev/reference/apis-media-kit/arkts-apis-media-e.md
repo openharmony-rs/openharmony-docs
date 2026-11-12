@@ -612,18 +612,20 @@ Codec MIME类型枚举。
 > **说明：**
 >
 > 用于指定透明视频的Alpha数据在图像中的位置，以便播放器正确合成透明视频。Alpha是描述像素不透明度的标量数据。
- 
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
 | 名称                       | 值   | 说明                                   |
 | -------------------------- | ---- | -------------------------------------- |
 | SIDE_BY_SIDE_LAYOUT_HORIZONTAL | 0    | 表示透明视频为左右布局，左边数据为Alpha数据。 |
 | SIDE_BY_SIDE_LAYOUT_VERTICAL | 1    | 表示透明视频为上下布局，上边数据为Alpha数据。 |
-| SIDE_BY_SIDE_LAYOUT_HORIZONTAL_REVERSE | 2    | 表示透明视频为左右布局，右边数据为Alpha数据 |
+| SIDE_BY_SIDE_LAYOUT_HORIZONTAL_REVERSE | 2    | 表示透明视频为左右布局，右边数据为Alpha数据。 |
 | SIDE_BY_SIDE_LAYOUT_VERTICAL_REVERSE | 3    | 表示透明视频为上下布局，下边数据为Alpha数据。 |
 
 ## AudioEncoder<sup>(deprecated)</sup>
