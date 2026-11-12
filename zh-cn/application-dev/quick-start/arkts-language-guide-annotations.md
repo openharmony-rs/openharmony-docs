@@ -113,27 +113,23 @@ class MyClass1 {
 
 > **说明：**
 > 
-> 如果枚举值不能在编译时确定，会编译报错。
+> 如果枚举值不能在编译时确定，会引发编译错误。
 
 ``` TypeScript
-// a.ts
-export enum X {
-  x = foo(); // x不是编译时能确定的常量
+function foo(): number {
+  return 1;
 }
 
-// b.ets
-import {X} from './a';
-
 @interface Position {
-  data: number = X.x; // 编译错误：注解字段的默认值必须使用常量表达式
+  data: number = foo(); // 编译错误：注解字段的默认值必须使用常量表达式
 }
 ```
 
-注解必须定义在顶层作用域（top-level），否则会出现编译报错。
+注解必须定义在顶层作用域（top-level），否则会出现编译错误。
 
-注解的名称不能与注解定义所在作用域内可见的其他实体名称相同，否则会出现编译报错。
+注解的名称不能与注解定义所在作用域内可见的其他实体名称相同，否则会出现编译错误。
 
-注解不支持TypeScript中的合并，否则会出现编译报错。
+注解不支持TypeScript中的合并，否则会出现编译错误。
 
 ``` TypeScript
 namespace ns {
@@ -159,14 +155,14 @@ class Position { // 编译错误：注解的名称不能与注解定义所在作
 }
 ```
 
-注解不是类型，把注解当类型使用时会出现编译报错（例如：对注解使用类型别名）。
+注解不是类型，把注解当类型使用时会出现编译错误（例如：对注解使用类型别名）。
 
 ``` TypeScript
 @interface Position {}
 type Pos = Position; // 编译错误：注解不是类型
 ```
 
-注解不支持在类的getter和setter方法中添加，若添加注解会编译报错。
+注解不支持在类的getter和setter方法中添加，若添加注解将导致编译错误。
 
 ``` TypeScript
 @interface ClassAuthor {
@@ -246,7 +242,7 @@ class C3 {
 > 赋值应当与注解声明的类型一致，所赋的值与注解字段默认值的要求一样，只能使用常量表达式。
 
 ``` TypeScript
-@ClassPreamble() // 编译错误：authorName字段未定义
+@ClassPreamble() // 编译错误：authorName字段未赋值
 class C1 {
   // ...
 }
@@ -325,7 +321,7 @@ class C {
 import { MyAnno as Anno } from './a'; // 编译错误：不允许在import中对注解进行重命名
 ```
 
-不允许对注解使用任何其他形式的`import`/`export`，这会导致编译报错。
+不允许对注解使用任何其他形式的`import`/`export`，这会导致编译错误。
 
 - 由于注解不是类型，因此禁止使用`type`符号进行导入和导出。
 
@@ -519,8 +515,10 @@ class C {
 同一个实体不能重复使用同一注解，否则会导致编译错误。
 
 ``` TypeScript
-@MyAnno({name: "123", value: 456})
-@MyAnno({name: "321", value: 654}) // 编译错误：不允许重复注解
+@interface MyAnno3 { name: string; value: number }
+
+@MyAnno3({name: "123", value: 456})
+@MyAnno3({name: "321", value: 654}) // 编译错误：不允许重复注解
 class C {
   // ...
 }
@@ -533,9 +531,9 @@ class C {
 不支持对抽象类或抽象方法使用注解，否则将导致编译错误。
 
 ``` TypeScript
-@MyAnno // 编译错误：不允许在抽象类和抽象方法上使用注解
+@MyAnno3 // 编译错误：不允许在抽象类和抽象方法上使用注解
 abstract class C {
-  @MyAnno
+  @MyAnno3
   abstract foo(): void; // 编译错误：不允许在抽象类和抽象方法上使用注解
 }
 ```
@@ -613,11 +611,11 @@ enum ColorSet { RED, GREEN, BLUE }
 
 ### 注解不是类型
 
-注解不能作为类型使用，不能对注解使用类型别名，否则会出现编译报错。
+注解不能作为类型使用，不能对注解使用类型别名，否则会出现编译错误。
 
 ### 注解不支持在getter和setter上使用
 
-注解不支持在类的getter和setter方法中添加，若添加注解会编译报错。
+注解不支持在类的getter和setter方法中添加，若添加注解将导致编译错误。
 
 ### 不允许重复注解
 
