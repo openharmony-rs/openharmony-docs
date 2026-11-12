@@ -1070,7 +1070,7 @@ Image_ErrorCode OH_PixelmapNative_ReadPixelsFromArea(OH_PixelmapNative *pixelmap
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 
 公式中各符号的含义如下：
@@ -1110,7 +1110,7 @@ Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap,
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 
 公式中各符号的含义如下：
@@ -1155,7 +1155,7 @@ Image_ErrorCode OH_PixelmapNative_WritePixelsToAreaWithPixelFormat(OH_PixelmapNa
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 
 公式中各符号的含义如下：
 

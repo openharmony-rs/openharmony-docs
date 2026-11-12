@@ -285,7 +285,7 @@ readPixelsToArea(area: PositionArea): Promise\<void\>
 >
 > 所需的最小缓冲区大小（单位：字节）计算公式如下：
 >
-> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 >
 > 公式中各符号的含义如下：
@@ -392,7 +392,7 @@ readPixelsToAreaSync(area: PositionArea): void
 >
 > 所需的最小缓冲区大小（单位：字节）计算公式如下：
 >
-> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 > - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 >
 > 公式中各符号的含义如下：
@@ -495,7 +495,7 @@ readPixels(area: PositionArea): Promise\<void>
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 
 公式中各符号的含义如下：
@@ -574,7 +574,7 @@ readPixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 
 公式中各符号的含义如下：
@@ -652,7 +652,7 @@ readPixelsSync(area: PositionArea): void
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 
 公式中各符号的含义如下：
@@ -718,7 +718,7 @@ writePixelsFromArea(area: PositionArea): Promise\<void\>
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 
 公式中各符号的含义如下：
@@ -842,7 +842,7 @@ writePixelsFromAreaSync(area: PositionArea): void
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 
 公式中各符号的含义如下：
@@ -961,7 +961,7 @@ writePixelsFromArea(area: PositionArea, sourcePixelFormat: PixelMapFormat): Prom
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 
 公式中各符号的含义如下：
 
@@ -1054,7 +1054,7 @@ writePixelsFromAreaSync(area: PositionArea, sourcePixelFormat: PixelMapFormat): 
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 
 公式中各符号的含义如下：
 
@@ -1140,7 +1140,7 @@ writePixels(area: PositionArea): Promise\<void>
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 
 公式中各符号的含义如下：
@@ -1225,7 +1225,7 @@ writePixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 
 公式中各符号的含义如下：
@@ -1309,7 +1309,7 @@ writePixelsSync(area: PositionArea): void
 
 所需的最小缓冲区大小（单位：字节）计算公式如下：
 
-- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
 - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
 
 公式中各符号的含义如下：
