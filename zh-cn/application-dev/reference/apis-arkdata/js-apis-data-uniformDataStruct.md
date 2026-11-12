@@ -260,7 +260,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| name | string | 否 | 否 | 节点名称，最多255字节。不能为空、`.`、`..`，也不能包含斜杠、反斜杠或空字符。同一目录下子节点名称不得重复。 |
+| name | string | 否 | 否 | 节点名称，最多255字节，不能为空、`.`、`..`，也不能包含斜杠、反斜杠或空字符。同一目录下子节点名称不得重复。 |
 | type | 'file' \| 'dir' | 是 | 否 | 节点类型，file为文件类型，dir为目录类型。 |
 | modifyTime | number | 否 | 否 | 最近的修改时间，以Unix时间戳表示，单位为ms。 |
 
@@ -276,7 +276,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| id | string | 否 | 否 | 传给虚拟文件回调的文件标识，最多1024字节。不同文件应使用不同id，仅当多个节点表示同一内容资源时可复用id，此时应用需保证内容和大小一致，并正确处理并发读取与取消。 |
+| id | string | 否 | 否 | 传给虚拟文件回调的文件标识，最多1024字节，不同文件应使用不同id。 |
 | type | 'file' | 是 | 否 | 文件节点类型。 |
 | size | number | 否 | 否 | 文件大小，单位为字节。需为非负整数，0表示真实空文件。 |
 

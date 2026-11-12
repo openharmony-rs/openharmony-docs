@@ -1368,8 +1368,8 @@ OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char*
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* name | [入参] 文件名，不能包含路径分隔符。 |
-| const char* id | [入参] 传递给虚拟文件回调的文件标识。 |
+| const char* name | [入参] 文件名，最多255字节，不能为空、`.`、`..`，也不能包含斜杠、反斜杠或空字符。同一目录下子节点名称不得重复。 |
+| const char* id | [入参] 传给虚拟文件回调的文件标识，最多1024字节，不同文件应使用不同id。 |
 | int64_t modifyTime | [入参] 文件修改时间，以Unix时间戳表示，单位为ms。 |
 
 **返回值：**
@@ -1400,7 +1400,7 @@ OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char* name | [入参] 目录名，不能包含路径分隔符。 |
+| const char* name | [入参] 目录名，最多255字节。不能为空、`.`、`..`，也不能包含斜杠、反斜杠或空字符。同一目录下子节点名称不得重复。 |
 | int64_t modifyTime | [入参] 目录修改时间，以Unix时间戳表示，单位为ms。 |
 
 **返回值：**
