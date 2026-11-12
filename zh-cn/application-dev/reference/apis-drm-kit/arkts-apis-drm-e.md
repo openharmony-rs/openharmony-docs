@@ -54,7 +54,7 @@
 
 | 名称                       | 值   | 说明            |
 | ------------------------- | ---- | ------------    |
-| MEDIA_KEY_TYPE_OFFLINE        | 0   | 离线媒体密钥，用于离线播放场景。   |
+| MEDIA_KEY_TYPE_OFFLINE        | 0    | 离线媒体密钥，用于离线播放场景。   |
 | MEDIA_KEY_TYPE_ONLINE   | 1    | 在线媒体密钥，用于在线播放场景。     |
 
 ## OfflineMediaKeyStatus
