@@ -832,29 +832,16 @@ release(): void
 
 ArkTS-Dyn示例：
 ```ts
-async function Release(pictureObj : image.Picture) {
-  let funcName = "Release";
-  if(pictureObj == null || pictureObj == undefined) {
-    console.error(funcName, 'Picture object is null.');
-    return;
-  }
-  try {
-    pictureObj.release();
-    console.info(funcName, 'Succeeded in releasing a picture.');
-  } catch(error) {
-    console.error(funcName, 'Failed to release a picture. Error:', error.message);
-  }
+function Release(pictureObj: image.Picture): void {
+  pictureObj.release();
+  console.info('Succeeded in releasing a picture.');
 }
 ```
 
 ArkTS-Sta示例：
 ```ts
-function ReleaseFunc(picture: image.Picture): void {
-  try {
-    picture.release();
-    console.info(0x00000, 'ReleaseFunc', 'release success!');
-  } catch (err) {
-    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
-  }
+function Release(pictureObj: image.Picture): void {
+  pictureObj.release();
+  console.info('Succeeded in releasing a picture.');
 }
 ```
