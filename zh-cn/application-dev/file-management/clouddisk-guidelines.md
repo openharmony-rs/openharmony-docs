@@ -1265,11 +1265,13 @@ static napi_value UnregisterCallbackTable(napi_env env, napi_callback_info info)
 
 **响应回调请求**
 
-应用在回调中收到水合取数请求后，从云侧下载完文件数据，可调用OH_CloudDisk_Execute()接口将数据回传给网盘服务底座完成落盘；收到取消取数请求时，也通过该接口响应。该接口为统一的Execute函数，根据不同的回调类型处理不同的请求。
+应用在回调中收到水合取数请求后，从云侧下载完文件数据，可调用OH_CloudDisk_Execute()接口将数据回传给网盘服务底座完成落盘；收到取消取数请求时，也通过该接口响应。该接口为统一的Execute函数，根据不同的回调类型处理不同的请求。回传数据的总量以首次回传的fetchDataRsp.totalSize为准，后续回传需保持一致，占位符logicalSize仅为创建时的预设值，不代表水合完成后本地文件的最终大小。
 
 > **注意：**
 >
-> 数据分多次传输时，需重复调用直至fetchDataRsp.isComplete为true。
+> - 数据分多次传输时，需重复调用直至fetchDataRsp.isComplete为true。
+> - 占位符的logicalSize仅为创建占位符时的预设值，不代表水合完成后本地文件的最终大小：水合完成后，本地文件体积可能等于占位符预设的logicalSize，而非实际下载的数据大小（实际数据小于预设值时，尾部以稀疏空洞形式保留）。
+> - 系统不校验占位符logicalSize与云侧真实文件大小的一致性，应用需在自身生命周期内管控占位符size与实际文件size的一致性，详见[占位符大小一致性与防滥用](#占位符大小一致性与防滥用)。
 
 <!-- @[execute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -1432,3 +1434,43 @@ static napi_value DehydrateFile(napi_env env, napi_callback_info info)
     return result;
 }
 ```
+
+### 占位符大小一致性与防滥用
+
+**占位符size与实际文件size的解耦边界**
+
+占位符的logicalSize是应用创建占位符时写入的预设值：创建时系统即把本地文件的st_size设置为该预设值，文件本体为稀疏空洞、不占用数据块。系统在全链路不校验该预设值与云侧真实文件大小的一致性，一致性由应用负责维护：
+
+- 创建/更新占位符时，系统仅校验logicalSize不超过off_t上限，不校验其与云侧真实大小是否一致。
+- 触发水合后，水合任务总量以占位符当前st_size初始化；首次调用OH_CloudDisk_Execute()回传的fetchDataRsp.totalSize覆盖该值，后续回传的totalSize必须与首次一致，且offset+size不得超过totalSize，否则回传请求被拒绝。
+- 水合完成落盘时，系统按实际回传数据写文件、不校正文件大小：实际数据小于预设logicalSize时，尾部以稀疏空洞保留，本地文件st_size等于预设值而非实际下载大小；实际数据大于预设值时，文件被扩展至实际大小。
+
+logicalSize与实际文件size不一致的典型后果：
+
+- 预设值偏小：水合后文件被扩展至实际大小，占位符预设值失效，进度总量、展示大小与实际数据量对不上，应用侧难以对账。
+- 预设值偏大：水合完成后本地文件体积虚高，尾部为全零空洞；按st_size全量读取、拷贝、上传的链路会把空洞当作有效数据处理，空洞被写实时还会转为真实磁盘块。
+
+**系统侧size与并发约束**
+
+| 约束项 | 上限/规则 | 触发表现 |
+| -------- | -------- | -------- |
+| 占位符logicalSize上限 | off_t最大值（INT64_MAX） | 创建/更新占位符返回OH_CLOUD_DISK_FILE_TOO_LARGE |
+| 单次Execute回传数据块上限 | 128 KiB | 回传请求被拒绝，返回CLOUD_DISK_INVALID_ARG |
+| 同一应用并发水合任务上限 | 5个（水合中状态） | 超出的水合请求排队等待，取数回调延迟下发 |
+| 水合任务空闲超时 | 5分钟（每次Execute回传刷新计时） | 任务被取消，并通过回调表下发取消取数请求 |
+| 占位符customInfo上限 | 1024字节 | 创建/更新占位符返回CLOUD_DISK_INVALID_ARG |
+
+**占位符size超大的滥用风险**
+
+logicalSize上限高达off_t最大值，且创建占位符时系统只写元数据、不预分配数据块。应用若以远超云侧真实大小的值设置logicalSize（例如为未知大小的文件统一填最大值、或用预设值"预留"本地空间），会得到st_size巨大而本地无实际数据的文件：
+
+- 文件管理器等按st_size展示、排序、统计的链路出现大小虚高，用户配额与空间统计误判。
+- 水合完成后尾部空洞长期存在；任何按st_size全量读取、拷贝、上传的处理（复制到非稀疏感知的存储、备份、二次同步上云等）都会把空洞展开为实际数据，磁盘占用与流量被成倍放大。
+- 占位符反复水合、脱水时，预设值口径漂移，应用侧无法对账实际占用。
+
+**应用侧防滥用实践**
+
+- 创建占位符时，按云侧真实大小设置logicalSize；云侧大小未知时先查询元数据、拿到真实大小后再创建，避免为未知大小的文件创建占位符。
+- 回传水合数据时，保持fetchDataRsp.totalSize与占位符logicalSize一致，多次回传totalSize不变。
+- 云侧真实大小变化时，先调用OH_CloudDisk_UpdatePlaceholder()修正占位符元数据再触发水合；水合完成后若实际大小与预设值不一致，同样用OH_CloudDisk_UpdatePlaceholder()修正，不要放任尾部空洞。
+- 不要依赖st_size判断文件实际数据量：未水合占位符的st_size等于预设值但本地无数据，水合完成后st_size可能仍为预设值而非实际下载大小，应以应用自身记录的云侧大小为准。
