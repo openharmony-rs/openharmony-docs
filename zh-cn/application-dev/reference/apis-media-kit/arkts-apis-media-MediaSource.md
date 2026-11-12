@@ -210,8 +210,6 @@ setTransparentVideoLayoutMode(mode : SideBySideTransparentVideoLayoutMode): void
 >
 > 透明视频是指每一帧画面都携带像素透明度信息的视频。如果入参非法设置，则当作普通视频播放。
  
-
- 
 **模型约束：** 此接口仅可在Stage模型下使用。
  
 **系统能力：** SystemCapability.Multimedia.Media.Core
