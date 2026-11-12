@@ -3878,7 +3878,7 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| instanceName | string | 否 | 否 | 已发现Bonjour（苹果零配置网络协议）服务的实例名。 |
+| instanceName | string | 否 | 否 | 已发现Bonjour（零配置网络发现协议）服务的实例名。 |
 | registrationType | string | 否 | 否 | 已发现Bonjour服务的注册类型。取值前缀与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的serviceType入参相同，并在末尾追加".local"。例如serviceType为"_http._tcp"时，取值为"_http._tcp.local"。 |
 | device | [WifiP2pDevice](#wifip2pdevice) | 否 | 否 | 返回该服务响应的对端设备。 |
 
