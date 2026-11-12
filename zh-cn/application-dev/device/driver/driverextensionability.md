@@ -53,17 +53,22 @@
      // 接收应用传递过来的消息处理，以及将处理的结果返回给客户端。
      onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
        option: rpc.MessageOption) {
-       if (code === REQUEST_CODE) {
-         // 接收应用传递过来的数据。
-         // 应用使用多次调用data.writeString()写入多个数据时，驱动可以通过多次调用data.readString()方法接收对应的数据。
-         let optFir: string = data.readString();
-         // 驱动将数据的处理结果返回给应用。
-         // 示例中为接收了"Hello"，并将"Hello World"返回给应用。
-         reply.writeString(optFir + ` World`);
+       try {
+         if (code === REQUEST_CODE) {
+           // 接收应用传递过来的数据。
+           // 应用使用多次调用data.writeString()写入多个数据时，驱动可以通过多次调用data.readString()方法接收对应的数据。
+           let optFir: string = data.readString();
+           // 驱动将数据的处理结果返回给应用。
+           // 示例中为接收了"Hello"，并将"Hello World"返回给应用。
+           reply.writeString(optFir + ` World`);
+         }
+       } catch (err) {
+         console.info('testTag', `onRemoteMessageRequest error code is: ${err.code} with info: ${err.message}`);
        }
        return true;
      }
    }
+  
    ```
 
 6. 在DriverExtAbility.ets文件中，增加导入[DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)的依赖包，该包提供了onInit()、onRelease()、onConnect()和onDisconnect()生命周期回调，自定义类继承[DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)并根据需要重写生命周期回调。
@@ -113,6 +118,9 @@
        "requestPermissions": [
          {
            "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // 此处为扩展外设相关权限，必须配置。
+         },
+         {
+          "name": "ohos.permission.ACCESS_DDK_DRIVERS"
          }
        ],
        "deliveryWithInstall": true,

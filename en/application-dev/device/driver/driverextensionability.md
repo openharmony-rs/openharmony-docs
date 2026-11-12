@@ -115,6 +115,9 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
        "requestPermissions": [
          {
            "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // Peripheral-specific permission, which is mandatory.
+         },
+         {
+          "name": "ohos.permission.ACCESS_DDK_DRIVERS"
          }
        ],
        "deliveryWithInstall": true,

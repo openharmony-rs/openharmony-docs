@@ -45,24 +45,24 @@ A non-standard peripheral application obtains the HID device ID by using the per
 
 | Name| Description|
 | -------- | -------- |
-| OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEventProperties) | Creates a HID device. When the device is no longer required, call **OH_Hid_DestroyDevice** to destroy it.|
-| OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t length) | Sends an event to a HID device.|
-| OH_Hid_DestroyDevice(int32_t deviceId) | Destroys a HID device.|
+| int32_t OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEventProperties) | Creates a HID device. When the device is no longer required, call **OH_Hid_DestroyDevice** to destroy it.|
+| int32_t OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t length) | Sends an event to a HID device.|
+| int32_t OH_Hid_DestroyDevice(int32_t deviceId) | Destroys a HID device.|
 | int32_t OH_Hid_Init(void) | Initializes the HidDdk.|
 | int32_t OH_Hid_Release(void) | Releases the HidDdk.|
 | int32_t OH_Hid_Open(uint64_t deviceId, uint8_t interfaceIndex, Hid_DeviceHandle **dev) | Opens the device specified by **deviceId** and **interfaceIndex**.|
 | int32_t OH_Hid_Close(Hid_DeviceHandle **dev) | Closes a HID device.|
 | int32_t OH_Hid_Write(Hid_DeviceHandle *dev, uint8_t *data, uint32_t length, uint32_t *bytesWritten) | Writes a report to a HID device.|
-| int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buffSize, int timeout, uint32_t *bytesRead) | Reads a report from a HID device within the specified time.|
-| int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buffSize, uint32_t *bytesRead) | Reads a report from a HID device in the specified mode. The blocking mode (that is, blocking remains active until data can be read) is used by default. You can call **OH_Hid_SetNonBlocking** to change the mode.|
+| int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, int timeout, uint32_t *bytesRead) | Reads a report from a HID device within the specified time.|
+| int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, uint32_t *bytesRead) | Reads a report from a HID device in the specified mode. The blocking mode (that is, blocking remains active until data can be read) is used by default. You can call **OH_Hid_SetNonBlocking** to change the mode.|
 | int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonblock) | Sets the device read mode to non-blocking mode.|
 | int32_t OH_Hid_GetRawInfo(Hid_DeviceHandle *dev, Hid_RawDevInfo *rawDevInfo) | Obtains the raw information of a HID device.|
-| int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t buffSize) | Obtains the raw name of a HID device.|
-| int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t buffSize) | Obtains the physical address of a HID device.|
-| int32_t OH_Hid_GetRawUniqueId(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buffSize) | Obtains the raw unique identifier of a HID device.|
+| int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t bufSize) | Obtains the raw name of a HID device.|
+| int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t bufSize) | Obtains the physical address of a HID device.|
+| int32_t OH_Hid_GetRawUniqueId(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize) | Obtains the raw unique identifier of a HID device.|
 | int32_t OH_Hid_SendReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, const uint8_t *data, uint32_t length) | Sends a report to a HID device.|
-| int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8_t *data, uint32_t buffSize) | Obtains a report from a HID device.|
-| int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t buffSize, uint32_t *bytesRead) | Obtains the report descriptor of a HID device.|
+| int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8_t *data, uint32_t bufSize) | Obtains a report from a HID device.|
+| int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t bufSize, uint32_t *bytesRead) | Obtains the report descriptor of a HID device.|
 
 For details about the APIs, see [HidDdk](../../reference/apis-driverdevelopment-kit/capi-hidddk.md).
 
