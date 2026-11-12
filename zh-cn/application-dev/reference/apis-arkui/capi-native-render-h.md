@@ -218,7 +218,7 @@
 ### OH_ArkUI_RenderNodeAttachPolicy
 
 ```c
-enum OH_ArkUI_RenderNodeAttachPolicy;
+enum OH_ArkUI_RenderNodeAttachPolicy
 ```
 
 **描述：**
@@ -432,6 +432,7 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(ArkUI_RenderNodeHand
 ```
 
 **描述：**
+
 向目标父渲染节点添加子节点，并根据挂载策略将子节点及其完整渲染节点子树迁移到父节点实例。
 
 **起始版本：** 26.1.0
@@ -440,11 +441,11 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(ArkUI_RenderNodeHand
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标父渲染节点。 |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) child | 待挂载的子渲染节点，调用前应解除其已有父子关系。 |
-| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) policy | 挂载策略，用于指定子节点及其渲染节点子树是否继承父节点实例。 |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) node | [入参] 目标父渲染节点。 |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) child | [入参] 待挂载的子渲染节点，调用前应解除其已有父子关系。 |
+| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) policy | [入参] 挂载策略，用于指定子节点及其渲染节点子树是否继承父节点实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -457,6 +458,7 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_Render
 ```
 
 **描述：**
+
 向父节点的目标子节点后插入子节点，并根据挂载策略将子节点及其完整渲染节点子树迁移到父节点实例。
 
 **起始版本：** 26.1.0
@@ -465,12 +467,12 @@ ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_Render
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标父渲染节点。 |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) child | 待挂载的子渲染节点，调用前应解除其已有父子关系。 |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) sibling | 用于确定插入位置的参考兄弟渲染节点。若该有效节点不在node的当前子节点列表中，则将child追加到末尾。 |
-| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) policy | 挂载策略，用于指定子节点及其渲染节点子树是否继承父节点实例。 |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) node | [入参] 目标父渲染节点。 |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) child | [入参] 待挂载的子渲染节点，调用前应解除其已有父子关系。 |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) sibling | [入参] 用于确定插入位置的参考兄弟渲染节点。若该有效节点不在node的当前子节点列表中，则将child追加到末尾。 |
+| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) policy | [入参]  挂载策略，用于指定子节点及其渲染节点子树是否继承父节点实例。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
