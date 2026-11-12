@@ -3637,9 +3637,9 @@ isWlanSupported(): boolean
 
 枚举，P2P服务协议类型。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3655,9 +3655,9 @@ isWlanSupported(): boolean
 
 表示P2P服务信息。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3673,11 +3673,11 @@ addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Ma
 
 添加并注册一个DNS-SD（DNS Service Discovery，基于DNS的服务发现）本地P2P服务描述，供对端进行服务发现。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3720,11 +3720,11 @@ addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&g
 
 添加并注册一个UPnP（Universal Plug and Play，通用即插即用）本地P2P服务描述，供对端进行服务发现。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3768,11 +3768,11 @@ removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
 
 移除通过[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)或[addUpnpLocalP2pService](#wifimanageraddupnplocalp2pservice)添加的已注册本地服务。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3815,11 +3815,11 @@ getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
 
 查询本地P2P服务，使用Promise异步回调。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3853,11 +3853,11 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 ## WifiP2pServiceRequest
 
-表示P2P服务发现请求，即TLV（Type-Length-Value，类型-长度-值）查询。
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
+表示待处理的P2P服务发现请求，即TLV（Type-Length-Value，类型-长度-值）查询。类型为[P2pServiceProtocolType](#p2pserviceprotocoltype)表示的服务协议类型，值为对应的查询字节。该请求由[addDnsSdServiceRequest](#wifimanageradddnssdservicerequest)或[addUpnpServiceRequest](#wifimanageraddupnpservicerequest)添加，供[discoverServices](#wifimanagerdiscoverservices)按查询匹配对端服务。
 
 **起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3870,9 +3870,9 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 表示从对端设备收到的DNS-SD（DNS-Based Service Discovery，基于DNS的服务发现）服务响应信息。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3886,9 +3886,9 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 表示从对端设备收到的DNS-SD TXT（DNS-Based Service Discovery Text，基于DNS的服务发现文本）记录信息。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3902,9 +3902,9 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 表示从对端设备收到的UPnP（Universal Plug and Play，通用即插即用）服务响应信息。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3917,9 +3917,9 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 表示从对端设备收到的通用服务响应信息。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3935,9 +3935,9 @@ type P2pServiceDiscoveryInfo = P2pDnsSdInfo | P2pDnsSdTxtInfo | P2pUpnpInfo | P2
 
 表示从对端设备收到的P2P服务发现响应信息。具体类型由响应的服务协议类型决定。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3954,11 +3954,11 @@ addDnsSdServiceRequest(serviceType?: string, instanceName?: string): void
 
 添加与DNS-SD服务匹配的DNS-SD服务发现请求。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3997,11 +3997,11 @@ addUpnpServiceRequest(searchTarget?: string): void
 
 添加与指定搜索目标匹配的UPnP服务发现请求。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4039,11 +4039,11 @@ getP2pServiceRequest(): Promise&lt;Array&lt;WifiP2pServiceRequest&gt;&gt;
 
 查询待处理的P2P服务发现请求，使用Promise异步回调。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4082,11 +4082,11 @@ removeP2pServiceRequest(request: WifiP2pServiceRequest): void
 
 移除待处理的P2P服务发现请求。可通过调用[getP2pServiceRequest](#wifimanagergetp2pservicerequest)获取已注册的服务发现请求列表。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4127,11 +4127,11 @@ removeAllP2pServiceRequests(): void
 
 移除所有待处理的服务发现请求。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4163,11 +4163,11 @@ discoverServices(): void
 
 启动P2P服务发现。使用待处理请求的TLV查询；若待处理列表为空，则回退为发现所有服务类型。在启动发现前，请使用[addDnsSdServiceRequest](#wifimanageradddnssdservicerequest)或[addUpnpServiceRequest](#wifimanageraddupnpservicerequest)添加服务请求。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_PEERS_MAC
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4200,11 +4200,11 @@ onP2pServiceDiscovery(callback: Callback&lt;P2pServiceDiscoveryInfo&gt;): void
 
 订阅对端设备的通用服务响应事件。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4241,11 +4241,11 @@ offP2pServiceDiscovery(callback?: Callback&lt;P2pServiceDiscoveryInfo&gt;): void
 
 取消订阅通用服务响应事件。
 
+**起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
-
-**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
