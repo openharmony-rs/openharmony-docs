@@ -92,7 +92,7 @@ Input param failed.
 2. 如取消或查询延迟任务时出现此错误，请确认该延迟任务已正确创建。
 3. 请检查taskInfo中abilityName是否为launcher ability。
 4. 如果要完成、查询或取消注册后台刷新任务，请检查taskId是否正确。
-5. 请检查workInfo中的isPerformanceSensitive，当设置为true时，isCharging与isDeepIdle必须同时为true，且周期性任务的repeatCycleTime必须大于等于24小时
+5. 请检查workInfo中的isPerformanceSensitive，当设置为true时，isCharging与isDeepIdle必须同时为true，且周期性任务的repeatCycleTime必须大于等于24小时。
 
 ## 9700005 StartWork失败
 
