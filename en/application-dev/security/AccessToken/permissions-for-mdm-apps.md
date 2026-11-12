@@ -993,7 +993,7 @@ Allows a device management application to use the non-anonymous key attestation 
 
 ## ohos.permission.MANAGE_DATA_ENCRYPTION_POLICY
 
-Allows an enterprise application to configure encryption policies for enterprise devices.
+Allows an enterprise application to configure data encryption policies for ToB devices.
 
 <!--RP1--><!--RP1End-->
 
