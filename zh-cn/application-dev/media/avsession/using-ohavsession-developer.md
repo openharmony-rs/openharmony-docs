@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "介绍音视频应用使用OHAVSession提供的C API（NDK）作为媒体会话提供方接入AVSession的开发流程，涵盖会话创建、元数据构造、播放状态更新及播控命令回调注册。"
+keywords: [媒体会话提供方, NDK, OH_AVSession, OH_AVMetadataBuilder, 播控命令回调, 会话类型, 播放状态设置, 元数据构造]
+doctype: guide
+status: active
+---
+
 # 媒体会话提供方(C/C++)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
@@ -188,3 +196,9 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 针对媒体会话提供方的NDK开发，有以下相关实例可供参考：
 
 - [媒体会话——提供方（C/C++）（API13）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVSession/MediaProvider)
+
+## 相关主题推荐
+
+- [媒体会话提供方(ArkTS)](using-avsession-developer.md)
+- [应用接入AVSession场景介绍](avsession-access-scene.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)

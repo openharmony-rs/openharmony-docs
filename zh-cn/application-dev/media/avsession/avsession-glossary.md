@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "AVSession Kit术语表，收录媒体会话、媒体会话元数据、媒体播放状态、媒体会话控制器、音频模板、置顶会话、后台播放模式等核心概念的定义与说明。"
+keywords: [AVSession术语, 媒体会话, 媒体会话元数据, 媒体播放状态, 媒体会话控制器, 媒体会话管理器, 音频模板, 置顶会话, 后台播放模式]
+doctype: glossary
+status: active
+---
+
 # AVSession Kit术语
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
@@ -63,3 +71,8 @@
 ### TopSession；置顶会话
 
 系统中优先级最高的媒体会话，例如当前处于正在播放状态的会话。媒体会话控制方可以在不用获取对应控制器的情况下，直接与置顶会话通信，例如直接向置顶会话发送播控命令和按键事件。
+
+## 相关主题推荐
+
+- [AVSession Kit简介](avsession-overview.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)

@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "介绍系统应用使用分布式媒体会话进行远端投播的开发步骤，涵盖导入模块接口、获取音频设备列表及调用castAudio接口将会话投播到指定设备。"
+keywords: [分布式媒体会话, castAudio, 远端媒体会话, 远端媒体会话控制器, 音频设备描述符, 设备列表获取]
+doctype: guide
+status: active
+---
+
 # 使用分布式媒体会话（仅对系统应用开放）
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->

@@ -492,6 +492,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | 字段                | 类型                     | 描述                                                         | 备注        |
 | ------------------- | -------------------------| ------------------------------------------------------------ |-----------|
 | name                | String                   | 标识forms的名称。                                              | NA        |
+| formManagerAnimatedImages | List\<String> | 标识卡片动态图片资源的解析结果列表，资源未命中时保留原始引用。 | 仅Stage模型支持。缺字段或空数组时返回空列表。从API版本26.1.0开始支持。|
 | type                | String                   | 标签标识卡片的类型。                                           | NA        |
 | updateEnabled       | boolean                  | 标识该卡片是否支持定时刷新。true表示支持，false表示不支持。                                   | NA        |
 | scheduledUpdateTime | String                   | 标签标识卡片定时刷新的时间，采用24小时计数，精确到分钟。       | NA        |

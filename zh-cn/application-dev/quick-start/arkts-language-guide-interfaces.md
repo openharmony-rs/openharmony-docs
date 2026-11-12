@@ -81,7 +81,7 @@ console.info(`Point: (${point.x}, ${point.y})`);
 
 ``` TypeScript
 interface Product {
-    // 必选属性
+  // 必选属性
   id: number;
   name: string;
   price: number;
@@ -103,7 +103,7 @@ let product: Product = {
 
 // 可以访问可选属性
 if (product.description) {
-    console.info(`${product.description}`);
+  console.info(`${product.description}`);
 }
 
 // 只读属性不能修改
@@ -196,7 +196,7 @@ console.info(`${person.fullName}`); // 'Bob Brown'
 
 ### 类实现接口
 
-类通过`implements`关键字实现接口，必须提供接口中所有必选成员的具体实现，不同类可以实现同一接口提供不同行为。
+类通过`implements`关键字实现接口，必须提供接口中所有必选成员的实现，不同类可以实现同一接口提供不同行为。
 
 <!-- @[class_implements_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -254,7 +254,7 @@ fileLogger.error('Connection failed');
 
 ## 接口的继承与组合
 
-接口通过`extends`单继承和多继承复用和组合类型定义。
+接口通过`extends`单继承和多继承复用、组合类型定义。
 
 ### 接口的单继承
 
@@ -345,7 +345,7 @@ console.info(`${miUser1.compareTo(miUser2)}`); // -1
 
 ### 接口继承的约束规则
 
-接口继承时可以添加新成员，也可以覆盖同名成员；覆盖方法时签名需与父接口兼容，返回类型可以不同；但不能把成员重新声明为不兼容的类型，否则会编译错误。
+接口继承时可以添加新成员，也可以覆盖同名成员。覆盖方法时签名需与父接口兼容，返回类型可以不同。但不能把成员重新声明为不兼容的类型，否则会编译错误。
 
 <!-- @[ts_interface_inheritance_rules](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
 
@@ -470,8 +470,8 @@ interface BaseInterface {
 
 // 扩展接口（包含可选成员）
 interface ExtendedInterface extends BaseInterface {
-    optionalMethod?(): void;
-    optionalProperty?: number;
+  optionalMethod?(): void;
+  optionalProperty?: number;
 }
 
 class BaseInterfaceImpl implements BaseInterface {
@@ -578,7 +578,7 @@ console.info(`${strContainer.getValue()}`); // 'Hello'
 
 ### 类实现单个接口
 
-类使用`implements`关键字实现单个接口，必须提供接口中所有必选成员的具体实现。
+类使用`implements`关键字实现单个接口，必须提供接口中所有必选成员的实现。
 
 <!-- @[single_interface_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -777,11 +777,11 @@ console.info(`${maxValue ? maxValue.value : 0}`); // 15
 
 ## 接口作为类型使用
 
-接口可以作为变量的类型注解，约束对象的结构。
+接口可以作为变量的类型标注，约束对象的结构。
 
 ### 接口作为变量类型
 
-接口名可直接作为变量的类型注解，赋值时对象字面量必须包含所有必选成员且类型匹配，多余属性会被编译器拒绝。
+接口名可直接作为变量的类型标注，赋值时对象字面量必须包含所有必选成员且类型匹配，多余属性会被编译器拒绝。
 
 <!-- @[interface_object_literal_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -909,7 +909,7 @@ makeAnimalSpeak(cow); // 'Daisy moos: Moo!'
 let animals: PolyAnimal[] = [dog, cat, cow];
 
 animals.forEach(animal => {
-    animal.speak();
+  animal.speak();
 });
 ```
 

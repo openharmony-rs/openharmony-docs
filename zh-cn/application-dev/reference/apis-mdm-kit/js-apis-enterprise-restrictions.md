@@ -1351,6 +1351,7 @@ try {
 | SUDO | 8    | superuser do，表示以超级用户执行，当前仅支持PC/2in1设备使用。禁用后企业空间或个人空间不能以超级用户执行。如果已经通过[setDisallowedPolicy](#restrictionssetdisallowedpolicy24)接口禁用设备级sudo能力，再调用本接口禁用用户级sudo能力，会发生策略冲突，抛出9200010错误码。 |
 | DISTRIBUTED_TRANSMISSION_OUTGOING | 9    | 设备间分布式单向传输数据的能力（仅包含向其他设备传输数据），<!--RP8--><!--RP8End-->当已禁用分布式管理服务（[DISTRIBUTED_TRANSMISSION](#featureforaccount)），再禁用设备间分布式单向传输数据的能力，会报策略冲突。 |
 | OPEN_FILE_BOOST | 10    | <!--RP6-->文件打开加速能力<!--RP6End-->，为应用提供文件打开加速状态感知能力。应用可以通过接入对应API，感知文件的加速状态，进而应用可以实现对已加速文件给出独特的UI（user interface）标识等功能，优化用户文件打开体验，当前仅支持PC/2in1设备使用。 |
+| FREE_WINDOW | 14    | 自由多窗模式。禁用后无法打开[自由多窗模式](../../windowmanager/freeform-window-overview.md#自由多窗模式)。若自由多窗模式已开启，禁用后会关闭自由多窗模式，已打开的自由多窗窗口立即关闭，控制中心中自由多窗入口置灰不可操作。当前仅支持手机、平板设备使用；其他设备调用设置接口返回801错误码，调用查询接口返回false。<br>**起始版本：** 26.1.0 |
 
 ## SettingsForDevice
 
