@@ -162,17 +162,7 @@ AsyncLock.request使用锁名称获取锁对象。需要保护同一份共享资
 
 ## 分析锁等待和可能的死锁
 
-排查时可以先向目标进程发送SIGQUIT信号，获取当前进程的整体等待信息。当应用已经卡住、无法再执行主动诊断代码时，运行时接收SIGQUIT后会将Mutex和RWLock的等待原因、请求模式、RWLock数量快照和任务调用栈写入运行时日志。在有权限的调试环境中，可以执行以下命令：
-
-```shell
-# Linux环境
-kill -3 <pid>
-
-# 设备调试环境
-hdc shell kill -3 <pid>
-```
-
-如果应用仍能执行调试代码，或需要更精细地控制采集时机、重复采集以及按字段筛选结果，可以使用[静态并发状态信息检测](../reference/apis-arkts/arkts-sta-concurrency-state-detection.md)提供的dumpCoroutineInfo()接口。建议从未参与阻塞链路、仍可以运行的任务或调试入口调用该接口。
+排查时，可以使用[静态并发状态信息检测](../reference/apis-arkts/arkts-sta-concurrency-state-detection.md)提供的dumpCoroutineInfo()接口，获取Mutex和RWLock的等待原因、请求模式、RWLock数量快照和任务调用栈。该接口支持控制采集时机、重复采集以及按字段筛选结果，建议从未参与阻塞链路、仍可以运行的任务或调试入口调用。
 
 下面的辅助函数只输出正在等待Mutex或RWLock的任务：
 
@@ -335,47 +325,39 @@ function reproduceRWLockUpgrade(): void {
   while (!rwLockWriteRequested.load()) {
   }
 
-  // 保持当前阻塞现场，从调试终端向当前进程发送SIGQUIT。
+  // 状态快照具有时效性，循环采集直到观察到写锁等待状态。
+  let writeWaitFound = false;
+  while (!writeWaitFound) {
+    let states: CoroutineDumpInfo[] = CoroutineDump.dumpCoroutineInfo();
+    for (let i = 0; i < states.length; i++) {
+      if (states[i].status == 'BLOCKED' && states[i].waitReason == 'RWLOCK_WRITE') {
+        writeWaitFound = true;
+        break;
+      }
+    }
+  }
+
+  // 调用前文辅助函数，采集并打印当前锁等待快照。
+  printLockWaitSnapshot();
 }
 
 reproduceRWLockUpgrade();
 ```
 
-确认任务开始申请写锁后，按照前文命令向目标进程发送SIGQUIT。为便于说明，以下日志展示主Worker和与问题相关的Worker，实际任务名称、Worker名称、记录顺序和调用栈地址以运行结果为准：
+确认任务进入写锁等待状态后，示例调用前文的辅助函数输出锁等待快照。以下为关键输出，实际任务名称和调用栈地址以运行结果为准：
 
 ```text
--> Dump ArkTS coroutine info
-==========
-StackfullCoroutineStateInfoTable
-==========
-Worker: [main] worker 0
-IsMain: Yes
-----------
-Coroutine: [fiber_sch] [main] worker 0
-Status: RUNNABLE
-Type: SCHEDULER
-Panda call stack:
-----------
-==========
-Worker: worker 1
-IsMain: No
-----------
-Coroutine: lock_guide.ETSGLOBAL::updateVersionedConfig
-Status: BLOCKED
-Type: MUTATOR
+Task: updateVersionedConfig
 WaitReason: RWLOCK_WRITE
 WaitMode: WRITELOCK
 Readers: 1
 Writers: 1
+CallStack:
 Panda call stack:
    0: 0x7e41acfc0080 in std.core.WriteLock::lock (managed)
    1: 0x7e41acfc0000 in lock_guide.VersionedConfig::updateIfNeeded (managed)
    2: 0x7e41acfbe000 in lock_guide.ETSGLOBAL::updateVersionedConfig (managed)
-----------
-==========
 ```
-
-SIGQUIT日志中，`==========`用于分隔状态快照标题和不同的Worker，并标记当前Worker输出结束；`----------`用于分隔Worker基本信息和任务列表，并标记每条任务记录结束。一个Worker上包含多个任务时，这些任务会依次输出，并通过`----------`分隔。
 
 `RWLOCK_WRITE`和`WRITELOCK`说明任务正在等待写锁，`Readers`和`Writers`是任务进入等待时记录的数量，不代表采集完成后的实时状态。调用栈同时显示该任务停在`updateIfNeeded()`中的`WriteLock.lock()`，应进一步检查该路径是否仍持有读锁。
 
