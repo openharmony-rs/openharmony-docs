@@ -53088,5 +53088,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/module-configuration-file.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":120,
+						"name":"module_executableBinaryPaths",
+						"start_line":18
+					}
+				]
+			}
+		]
 	}
 ]
