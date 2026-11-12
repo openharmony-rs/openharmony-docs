@@ -162,7 +162,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
        }
    ```
 5. 调用[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)方法销毁实例，释放资源。
-<!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+<!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
