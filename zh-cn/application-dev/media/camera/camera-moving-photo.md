@@ -37,19 +37,16 @@
 
    <!-- @[camera_getPhotoOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
-   ```ts
-   function getPhotoOutput(cameraManager: camera.CameraManager, 
+   ``` TypeScript
+   getPhotoOutput(cameraManager: camera.CameraManager,
      cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
-     if (!cameraOutputCapability || !cameraOutputCapability.photoProfiles) {
-       return;
-     }
-     let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
+     let photoProfilesArray: camera.Profile[] = cameraOutputCapability.photoProfiles;
      if (!photoProfilesArray || photoProfilesArray.length === 0) {
        console.error(`photoProfilesArray is null or []`);
-       return;
      }
      let photoOutput: camera.PhotoOutput | undefined = undefined;
      try {
+       this.photoProfileObj = photoProfilesArray[0]
        photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
      } catch (error) {
        let err = error as BusinessError;
@@ -67,19 +64,23 @@
 
    <!-- @[camera_moving_photo_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
-    ```ts
-    function isMovingPhotoSupported(photoOutput: camera.PhotoOutput): boolean {
-      let isSupported: boolean = false;
-      try {
-        isSupported = photoOutput.isMovingPhotoSupported();
-      } catch (error) {
-        // 失败返回错误码error.code并处理。
-        let err = error as BusinessError;
-        console.error(`The isMovingPhotoSupported call failed. error code: ${err.code}`);
-      }
-      return isSupported;
-    }
-    ```
+   ``` TypeScript
+   isMovingPhotoSupported(): boolean {
+     let isSupported: boolean = false;
+     try {
+       if (this.photoOutput == undefined) {
+         console.error(`photoOutput is nullptr.`);
+         return false;
+       }
+       isSupported = this.photoOutput.isMovingPhotoSupported();
+     } catch (error) {
+       // 失败返回错误码error.code并处理。
+       let err = error as BusinessError;
+       console.error(`The isMovingPhotoSupported call failed. error code: ${err.code}`);
+     }  
+     return isSupported;
+   }
+   ```
 
 4. 使能动态照片拍照能力。
 
@@ -89,17 +90,20 @@
 
    <!-- @[camera_moving_photo_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
-    ```ts
-    function enableMovingPhoto(photoOutput: camera.PhotoOutput): void {
-      try {
-        photoOutput.enableMovingPhoto(true);
-      } catch (error) {
-        // 失败返回错误码error.code并处理。
-        let err = error as BusinessError;
+   ``` TypeScript
+   enableMovingPhoto(enable: boolean): void {
+     try {
+       if (this.photoOutput != undefined) {
+         console.info(TAG, `enableMovingPhoto: ${enable}`);
+         this.photoOutput.enableMovingPhoto(enable);
+       }
+     } catch (error) {
+       // 失败返回错误码error.code并处理。
+       let err = error as BusinessError;
        console.error(`The enableMovingPhoto call failed. error code: ${err.code}`);
-      }
-    }
-    ```
+     }
+   }
+   ```
 
 5. 触发拍照，与普通拍照方式相同，请参考[拍照](camera-shooting.md)。
 
@@ -107,36 +111,67 @@
 
 在相机应用开发过程中，可以随时监听动态照片拍照输出流状态。通过注册photoAsset的回调函数获取监听结果，photoOutput创建成功时即可监听。
 
-<!-- @[photo_asset_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @[photo_asset_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
-   ```ts
-   function getPhotoAccessHelper(context: Context): photoAccessHelper.PhotoAccessHelper {
-     let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-     return phAccessHelper;
-   }
-
-   async function mediaLibSavePhoto(photoAsset: photoAccessHelper.PhotoAsset,
-     phAccessHelper: photoAccessHelper.PhotoAccessHelper): Promise<void> {
-     try {
-       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
-       assetChangeRequest.saveCameraPhoto();
-       await phAccessHelper.applyChanges(assetChangeRequest);
-       console.info('apply saveCameraPhoto successfully');
-     } catch (err) {
-       console.error(`apply saveCameraPhoto failed with error: ${err.code}, ${err.message}`);
-     }
-   }
-
-   function onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput, context: Context): void {
-     photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset): void => {
+   ``` TypeScript
+   onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput, context: Context): void {
+     photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset) => {
        if (err) {
          console.error(`photoAssetAvailable error: ${err.code}.`);
          return;
        }
-       console.info(photoOutputCallBack photoAssetAvailable);
-       // 调用媒体库落盘接口保存一阶段图和动态照片视频。
-       mediaLibSavePhoto(photoAsset, getPhotoAccessHelper(context));
+       console.info(`photoOutputCallBack photoAssetAvailable`);
+       // 开发者可通过photoAsset调用媒体库相关接口，自定义处理图片。
+       // 处理方式一：调用媒体库落盘接口保存一阶段图，二阶段图就绪后媒体库会主动帮应用替换落盘图片。
+       let accessHelper: photoAccessHelper.PhotoAccessHelper =
+         photoAccessHelper.getPhotoAccessHelper(this.context);
+       this.mediaLibSavePhoto(photoAsset, accessHelper);
+       // 处理方式二：调用媒体库接口请求图片并注册一阶段图或二阶段图buffer回调，自定义使用。
+       this.mediaLibRequestBuffer(photoAsset, context, this.callback);
      });
+   }
+
+   async mediaLibSavePhoto(photoAsset: photoAccessHelper.PhotoAsset,
+     phAccessHelper: photoAccessHelper.PhotoAccessHelper): Promise<void> {
+     try {
+       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+         new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
+       assetChangeRequest.saveCameraPhoto();
+       await phAccessHelper.applyChanges(assetChangeRequest);
+       phAccessHelper.release().catch(() => {
+         console.error(`release failed.`);
+       });
+     } catch (error) {
+       Logger.error(`apply saveCameraPhoto failed with error: ${error.code}, ${error.message}`);
+     }
+   }
+
+   async mediaLibRequestBuffer(photoAsset: photoAccessHelper.PhotoAsset, context: Context,
+     callback: (pixelMap: image.PixelMap, url: string) => void) {
+     class MediaDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
+       onDataPrepared(data: ArrayBuffer) {
+         if (data === undefined) {
+           Logger.error('Error occurred when preparing data');
+           return;
+         }
+         let imageSource = image.createImageSource(data);
+         imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+           callback(pixelMap, photoAsset.uri);
+         }).catch((err: BusinessError) => {
+           Logger.error(`createPixelMap err:${err.code}`);
+         })
+       }
+     }
+
+     let requestOptions: photoAccessHelper.RequestOptions = {
+       deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+     }
+     const handler = new MediaDataHandler();
+     try {
+       await photoAccessHelper.MediaAssetManager.requestImageData(context, photoAsset, requestOptions, handler);
+     } catch (error) {
+       console.error(`requestImageData failed, err: ${error.code}`);
+     }
    }
    ```
 ## HDR动态照片
