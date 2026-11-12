@@ -57364,6 +57364,21 @@
 						"end_line":343,
 						"name":"buffer_decompress_example",
 						"start_line":298
+					},
+					{
+						"end_line":19,
+						"name":"archive_include",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":17,
+						"name":"archive_cmake_link_libraries",
+						"start_line":15
 					}
 				]
 			}
@@ -57384,6 +57399,21 @@
 						"end_line":623,
 						"name":"zip_file_decompress_example",
 						"start_line":589
+					},
+					{
+						"end_line":19,
+						"name":"archive_include",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":17,
+						"name":"archive_cmake_link_libraries",
+						"start_line":15
 					}
 				]
 			}
@@ -57414,6 +57444,21 @@
 						"end_line":491,
 						"name":"stream_decompress_cancel_example",
 						"start_line":435
+					},
+					{
+						"end_line":19,
+						"name":"archive_include",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":17,
+						"name":"archive_cmake_link_libraries",
+						"start_line":15
 					}
 				]
 			}
