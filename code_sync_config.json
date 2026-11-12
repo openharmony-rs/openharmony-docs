@@ -33224,7 +33224,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":83,
+						"end_line":86,
 						"name":"driver_service_step7",
 						"start_line":1
 					}
