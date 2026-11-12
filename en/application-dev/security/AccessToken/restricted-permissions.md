@@ -1199,7 +1199,7 @@ Allows an application to obtain the device hardware information.
 
 ## ohos.permission.vehicle.MMA_OCCUPANT
  
-Allows system applicatons to call the passenger perception interface to identify the number and status of passengers in the vehicle.
+Allows an in-vehicle application to obtain occupant status, including seat occupancy and occupant types.
  
 <!--RP119--><!--RP119End-->
  
@@ -1213,7 +1213,7 @@ Allows system applicatons to call the passenger perception interface to identify
  
 ## ohos.permission.vehicle.MMA_CARSTATUS
  
-Allows system applications to obtain vehicle status information.
+Allows an in-vehicle application to obtain the real-time status of vehicle components.
  
 <!--RP120--><!--RP120End-->
  
