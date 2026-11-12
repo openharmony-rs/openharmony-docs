@@ -273,7 +273,7 @@ When creating a Web component, you can enable incognito mode for it by setting t
   }
   ```
 
-- Use [configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11) to set the value of a single cookie for the specified URL in incognitoincognito mode.
+- Use [configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11) to set the value of a single cookie for the specified URL in incognito mode.
   <!-- @[set_the_value_of_a_single_cookie_for_a_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ConfigCookieSync.ets) -->
   
   ``` TypeScript
