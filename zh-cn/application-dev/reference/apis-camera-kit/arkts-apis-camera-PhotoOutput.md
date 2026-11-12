@@ -1557,3 +1557,92 @@ function setAutoAuxiliaryPhotosDeliveryEnabled(photoOutput: camera.PhotoOutput):
   }
 }
 ```
+
+## isC2PASignatureSupported
+
+isC2PASignatureSupported(): boolean
+
+判断设备是否支持C2PA（Coalition for Content Provenance and Authenticity）签名功能。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型      | 说明                                         |
+|---------|----------------------------------------------|
+| boolean | 是否支持C2PA签名功能。返回true表示支持，返回false表示不支持。若接口调用失败，返回undefined。|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function isC2PASignatureSupported(photoOutput: camera.PhotoOutput): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoOutput.isC2PASignatureSupported();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The isC2PASignatureSupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```
+
+## configureC2PASignature
+
+configureC2PASignature(enableC2PA: boolean, config?: C2PASignatureConfig): void
+
+是否启用C2PA签名功能，并传入签名相关数据。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                                                                | 必填 | 说明                                      |
+| -------- |-------------------------------------------------------------------|---|-----------------------------------------|
+| enableC2PA | boolean                                                           | 是 | 是否启用C2PA签名功能。true表示启用，false表示不启用。       |
+| config | [C2PASignatureConfig](arkts-apis-camera-i.md#c2pasignatureconfig) | 否 | 启用C2PA签名时，使用的姓名和ID。若签名时不想加上相关信息，可不传此参数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID    | 错误信息                                                   |
+| -------- |--------------------------------------------------------|
+| 7400201  | Camera service fatal error.                            |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function configureC2PASignature(photoOutput: camera.PhotoOutput): void {
+  try {
+    let signature: camera.C2PASignatureConfig = {
+      authorName: 'wang',
+      authorID: '9527'
+    };
+    photoOutput.configureC2PASignature(true, signature);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The configureC2PASignature call failed. error code: ${err.code}`);
+  }
+}
+```
