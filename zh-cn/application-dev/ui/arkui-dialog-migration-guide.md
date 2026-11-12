@@ -18,11 +18,10 @@
 
 | 接口名 | 说明 |
 |--------|------|
-| [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) | 提供一个固定样式的弹出框，返回对话结果。使用Promise异步回调。适用于使用系统统一样式展示提示或确认信息的场景。 |
-| [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present-1) | 提供一个自定义样式的弹出框，其中包含所提供的内容，返回对话结果，使用Promise异步回调。适用于需要自定义弹出框内容、布局和样式的场景。 |
-| [DialogPresenter.update](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#update) | 更新已弹出的自定义弹出框，无返回结果。使用Promise异步回调。适用于弹出框已弹出后需要动态更新其样式或位置的交互场景。 |
-| [DialogPresenter.dismiss](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#dismiss) | 关闭弹出框，无返回结果。使用Promise异步回调。适用于在用户完成交互后关闭弹出框的场景。 |
-| [DialogTextStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions) | 在Dialog中定义文本样式属性，可作为消息内容的文字样式。 |
+| [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) | 弹出固定样式的弹出框（标题、消息、按钮、菜单项等均由系统统一样式呈现），替换[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)旧接口。 |
+| [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present-1) | 弹出自定义样式的弹出框（内容由[CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)或[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)提供），替换[CustomDialogController.open()](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open)、[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)、[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)旧接口。 |
+| [DialogPresenter.update](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#update) | 更新已弹出的自定义弹出框的样式与位置，替换[updateCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatecustomdialog12)旧接口。适用于弹出框已弹出后需要动态更新其对齐方式、偏移量、蒙层颜色等属性的交互场景。 |
+| [DialogPresenter.dismiss](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#dismiss) | 关闭已弹出的弹出框，替换[CustomDialogController.close()](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#close)、[closeCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closecustomdialog12)旧接口。支持通过弹出框ID或ComponentContent引用指定关闭目标。 |
 
 ## 弹出框新旧接口差异
 
