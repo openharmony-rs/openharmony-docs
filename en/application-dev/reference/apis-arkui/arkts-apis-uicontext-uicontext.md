@@ -5,7 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8a87e80bde1813ae427ef9168f35f718a39ede16 translatedAt=2026-10-29T09:13:50.778Z pushedAt=2026-10-30T07:42:44.379Z nl=1 -->
+<!-- md-trans-meta sourceCommit=bb1c9a97d7fc141459c116712e73f90ace0d667b translatedAt=2026-11-11T09:22:47.555Z pushedAt=2026-11-12T02:57:10.872Z nl=1 -->
 
 The UIContext instance provides contextual capabilities associated with the current UI instance. It supports obtaining UI-related controllers, managing dialogs and animations, querying node and window information, and converting pixel units. This is suitable for scenarios where you need to manage pages, components, and interactions within a specified UI instance.
 
@@ -676,6 +676,30 @@ Obtains a **PromptAction** object.
 **Example**
 
 See the example for [PromptAction](arkts-apis-uicontext-promptaction.md).
+
+## getDialogPresenter
+
+getDialogPresenter(): DialogPresenter
+
+Obtains the **DialogPresenter** object, which can be used to manage the display, update, and closure of dialog boxes.
+
+**Since**: 26.0.1
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                            | Description                  |
+| ----------------------------- | ------------------- |
+| [DialogPresenter](arkts-apis-uicontext-dialogpresenter.md) | **DialogPresenter** instance, which can be used to manage and display dialog boxes. |
+
+**Example**
+
+For details, see the example for [DialogPresenter](arkts-apis-uicontext-dialogpresenter.md).
 
 ## getOverlayManager<sup>12+</sup>
 

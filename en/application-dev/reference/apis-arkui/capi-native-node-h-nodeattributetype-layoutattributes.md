@@ -189,7 +189,7 @@ One or four parameters can be passed:
 1: Specify the same width for the four borders.<br>
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Width for the four borders, in vp. Value range: [0, +∞). The default value is **0vp**. | |
+| .value[0].f32 | Width for the four borders, in vp. Value range: [0, +∞). The default value is **0vp**. |
 
 2: Specify different width values for the four borders.<br>
 
