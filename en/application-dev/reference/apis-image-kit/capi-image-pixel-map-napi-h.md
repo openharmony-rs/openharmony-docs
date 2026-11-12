@@ -1,16 +1,15 @@
 # image_pixel_map_napi.h
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6042d9d9617859b76ebd8cd6c8254c9a301271df translatedAt=2026-08-03T04:05:10.668Z pushedAt=2026-08-04T02:47:43.894Z -->
+<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-06T02:10:37.145Z pushedAt=2026-11-12T07:50:18.611Z nl=1 -->
 
 ## Overview
 
-The file declares the APIs used to lock, access, and unlock a PixelMap.
+The file declares the APIs used to lock, access, and unlock a pixel map.
 
 **Library**: libpixelmap_ndk.z.so
 
@@ -28,7 +27,7 @@ The file declares the APIs used to lock, access, and unlock a PixelMap.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OhosPixelMapInfo](capi-image-ohospixelmapinfo.md) | - | Describes the information about a PixelMap.|
+| [OhosPixelMapInfo](capi-image-ohospixelmapinfo.md) | - | Describes the information about a pixel map.|
 
 ### Enums
 
@@ -36,15 +35,15 @@ The file declares the APIs used to lock, access, and unlock a PixelMap.
 | -- | -- |
 | [Error Codes Returned by Functions](#error-codes-returned-by-functions)| Enumerates the error codes returned by the functions.|
 | [Pixel Formats](#pixel-formats)| Enumerates the pixel formats.|
-| [anonymous enum](#pixelmap-scale-modes)| Enumerates the PixelMap scale modes.|
+| [anonymous enum](#pixelmap-scale-modes)| Enumerates the pixel map scale modes.|
 
 ### Functions
 
 | Name| Description|
 | -- | -- |
-| [int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)](#oh_getimageinfo) | Obtains the information of a PixelMap and records it in an [OhosPixelMapInfo](capi-image-ohospixelmapinfo.md) struct. |
-| [int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)](#oh_accesspixels) | Obtains the memory address of a PixelMap object and locks the memory.<br>**\*addrPtr** is the memory address obtained. After finishing the access, you must use [OH_UnAccessPixels](#oh_unaccesspixels) to unlock the memory. Otherwise, resources cannot be released. After the unlocking, the memory cannot be accessed or operated.|
-| [int32_t OH_UnAccessPixels(napi_env env, napi_value value)](#oh_unaccesspixels) | Unlocks the memory of a PixelMap object. This function is used with [OH_AccessPixels](#oh_accesspixels) in pairs.|
+| [int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)](#oh_getimageinfo) | Obtains the information of a pixel map and records it in an [OhosPixelMapInfo](capi-image-ohospixelmapinfo.md) struct. |
+| [int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)](#oh_accesspixels) | Obtains the memory address of a pixel map object and locks the memory.<br>**\*addrPtr** is the memory address obtained. After finishing the access, you must use [OH_UnAccessPixels](#oh_unaccesspixels) to unlock the memory. Otherwise, resources cannot be released. After the unlocking, the memory cannot be accessed or operated.|
+| [int32_t OH_UnAccessPixels(napi_env env, napi_value value)](#oh_unaccesspixels) | Unlocks the memory of a pixel map object. This function is used with [OH_AccessPixels](#oh_accesspixels) in pairs.|
 
 ## Enum Description
 
@@ -95,7 +94,7 @@ enum anonymous enum
 
 **Description**
 
-Enumerates the PixelMap scale modes.
+Enumerates the pixel map scale modes.
 
 **Since**: 10
 
@@ -103,6 +102,7 @@ Enumerates the PixelMap scale modes.
 | -- | -- |
 | OHOS_PIXEL_MAP_SCALE_MODE_FIT_TARGET_SIZE = 0 | Scaling mode that fits the target image size.
 | OHOS_PIXEL_MAP_SCALE_MODE_CENTER_CROP = 1 | Scaling mode from the center.|
+
 
 ## Function Description
 
@@ -114,18 +114,19 @@ int32_t OH_GetImageInfo(napi_env env, napi_value value, OhosPixelMapInfo *info)
 
 **Description**
 
-Obtains the information of a PixelMap and records the information in an [OhosPixelMapInfo](capi-image-ohospixelmapinfo.md) struct.
+Obtains the information of a pixel map and records the information in an [OhosPixelMapInfo](capi-image-ohospixelmapinfo.md) struct.
 
 **Since**: 8
 
 **Deprecated from**: 10
+
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | napi_env env | Pointer to the NAPI environment.|
-| napi_value value | PixelMap object at the application layer.|
+| napi_value value | Pixel map object at the application layer.|
 | [OhosPixelMapInfo](capi-image-ohospixelmapinfo.md) *info | Pointer to the object that stores the information obtained.|
 
 **Returns**
@@ -142,7 +143,7 @@ int32_t OH_AccessPixels(napi_env env, napi_value value, void** addrPtr)
 
 **Description**
 
-Obtains the memory address of a PixelMap object and locks the memory.
+Obtains the memory address of a pixel map object and locks the memory.
 
 **\*addrPtr** is the memory address obtained. After finishing the access, you must use [OH_UnAccessPixels](#oh_unaccesspixels) to unlock the memory. Otherwise, resources cannot be released. After the unlocking, the memory cannot be accessed or operated.
 
@@ -150,12 +151,13 @@ Obtains the memory address of a PixelMap object and locks the memory.
 
 **Deprecated from**: 10
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | napi_env env | Pointer to the NAPI environment.|
-| napi_value value | PixelMap object at the application layer.|
+| napi_value value | Pixel map object at the application layer.|
 | void** addrPtr | Double pointer to the memory address.|
 
 **Returns**
@@ -172,21 +174,25 @@ int32_t OH_UnAccessPixels(napi_env env, napi_value value)
 
 **Description**
 
-Unlocks the memory of a PixelMap object. This function is used with [OH_AccessPixels](#oh_accesspixels) in pairs.
+Unlocks the memory of a pixel map object. This function is used with [OH_AccessPixels](#oh_accesspixels) in pairs.
 
 **Since**: 8
 
 **Deprecated from**: 10
+
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | napi_env env | Pointer to the NAPI environment.|
-| napi_value value | PixelMap object at the application layer.|
+| napi_value value | Pixel map object at the application layer.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | int32_t | One of the following [error codes](#error-codes-returned-by-functions):<br>**OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br>**OHOS_IMAGE_RESULT_BAD_PARAMETER**: The operation fails.|
+
+
+

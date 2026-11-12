@@ -1,12 +1,11 @@
 # image_receiver_native.h
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1ac76e4bcc0baa77f2de408485e684e0024a2a1d translatedAt=2026-08-03T04:06:12.181Z pushedAt=2026-08-04T02:22:12.931Z -->
+<!-- md-trans-meta sourceCommit=55df9c11d6d7c450cc6d9d1ac7b0b998394459f6 translatedAt=2026-11-06T02:13:21.084Z pushedAt=2026-11-12T07:56:09.689Z nl=1 -->
 
 ## Overview
 
@@ -47,13 +46,14 @@ The file declares the APIs used to obtain image data from the native layer.
 | [Image_ErrorCode OH_ImageReceiverNative_GetReceivingSurfaceId(OH_ImageReceiverNative* receiver, uint64_t* surfaceId)](#oh_imagereceivernative_getreceivingsurfaceid) | - | Obtains the surface ID through an OH_ImageReceiverNative object. |
 | [Image_ErrorCode OH_ImageReceiverNative_ReadLatestImage(OH_ImageReceiverNative* receiver, OH_ImageNative** image)](#oh_imagereceivernative_readlatestimage) | - | Obtains the latest image through an OH_ImageReceiverNative object.|
 | [Image_ErrorCode OH_ImageReceiverNative_ReadNextImage(OH_ImageReceiverNative* receiver, OH_ImageNative** image)](#oh_imagereceivernative_readnextimage) | - | Obtains the next image through an OH_ImageReceiverNative object.|
-| [Image_ErrorCode OH_ImageReceiverNative_On(OH_ImageReceiverNative* receiver, OH_ImageReceiver_OnCallback callback)](#oh_imagereceivernative_on) | - | Registers the [OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback) callback.<br>This callback is triggered whenever a new image is received.|
-| [Image_ErrorCode OH_ImageReceiverNative_Off(OH_ImageReceiverNative* receiver)](#oh_imagereceivernative_off) | - | Unregisters the [OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback) callback.<br>The callback is registered by calling [OH_ImageReceiverNative_On](#oh_imagereceivernative_on).|
+| [Image_ErrorCode OH_ImageReceiverNative_On(OH_ImageReceiverNative* receiver, OH_ImageReceiver_OnCallback callback)](#oh_imagereceivernative_on) | - | Registers the [OH_ImageReceiver_OnCallback()](#oh_imagereceiver_oncallback) callback.<br>This callback is triggered whenever a new image is received.|
+| [Image_ErrorCode OH_ImageReceiverNative_Off(OH_ImageReceiverNative* receiver)](#oh_imagereceivernative_off) | - | Unregisters the [OH_ImageReceiver_OnCallback()](#oh_imagereceiver_oncallback) callback.<br>The callback is registered by calling [OH_ImageReceiverNative_On()](#oh_imagereceivernative_on).|
 | [Image_ErrorCode OH_ImageReceiverNative_GetSize(OH_ImageReceiverNative* receiver, Image_Size* size)](#oh_imagereceivernative_getsize) | - | Obtains the size of an **OH_ImageReceiverNative**.|
 | [Image_ErrorCode OH_ImageReceiverNative_GetCapacity(OH_ImageReceiverNative* receiver, int32_t* capacity)](#oh_imagereceivernative_getcapacity) | - | Obtains the capacity of an **OH_ImageReceiverNative**.|
 | [Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)](#oh_imagereceivernative_release) | - | Releases an OH_ImageReceiverNative object.|
-| [Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative *receiver, OH_ImageReceiver_ImageArriveCallback callback, void *userData)](#oh_imagereceivernative_onimagearrive) | - | Registers the [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback) callback.|
-| [Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative *receiver, OH_ImageReceiver_ImageArriveCallback callback)](#oh_imagereceivernative_offimagearrive) | - | Unregisters the [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback) callback.|
+| [Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative *receiver, OH_ImageReceiver_ImageArriveCallback callback, void *userData)](#oh_imagereceivernative_onimagearrive) | - | Registers the [OH_ImageReceiver_ImageArriveCallback()](#oh_imagereceiver_imagearrivecallback) callback.|
+| [Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative *receiver, OH_ImageReceiver_ImageArriveCallback callback)](#oh_imagereceivernative_offimagearrive) | - | Unregisters the [OH_ImageReceiver_ImageArriveCallback()](#oh_imagereceiver_imagearrivecallback) callback.|
+| [Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNative* receiver, const char *name, uint32_t size)](#oh_imagereceivernative_setmemoryname) | - | Sets the memory name of the **OH_ImageReceiverNative** object. Only ASCII visible characters are supported. Spaces, line breaks, tabs, and other control characters will be filtered out. If the filtered result consists entirely of digits, the prefix **ImageReceiver:** will be automatically added. The length of the filtered name (including the terminator '\0') must not exceed 256 bytes. |
 
 ## Function Description
 
@@ -93,6 +93,7 @@ Creates an OH_ImageReceiverOptions object at the application layer.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -116,6 +117,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetSize(OH_ImageReceiverOptions* options
 Obtains the image size of an OH_ImageReceiverOptions object.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -142,6 +144,7 @@ Sets the image size of an OH_ImageReceiverOptions object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -166,6 +169,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* opt
 Obtains the image cache capacity of an OH_ImageReceiverOptions object.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -192,6 +196,7 @@ Sets the image cache capacity of an OH_ImageReceiverOptions object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -217,6 +222,7 @@ Releases an OH_ImageReceiverOptions object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -240,6 +246,7 @@ Image_ErrorCode OH_ImageReceiverNative_Create(OH_ImageReceiverOptions* options, 
 Creates an OH_ImageReceiverNative object at the application layer.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -265,6 +272,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetReceivingSurfaceId(OH_ImageReceiverNat
 Obtains the surface ID through an OH_ImageReceiverNative object.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -297,6 +305,7 @@ Obtains the latest image through an OH_ImageReceiverNative object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -326,7 +335,9 @@ Obtains the next image through an OH_ImageReceiverNative object.
 > - When **OH_ImageNative** returned by this API is no longer needed, call [OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release) to release it. Then new data can be received properly.
 > - This API requires a lock to ensure that the **OH_ImageReceiverNative** object is not released during use. For details, see [Using Image_NativeModule to Receive Images](../../media/image/image-receiver-c.md).
 
+
 **Since**: 12
+
 
 **Parameters**
 
@@ -355,6 +366,7 @@ This callback is triggered whenever a new image is received.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -382,6 +394,7 @@ The callback is registered by calling [OH_ImageReceiverNative_On](#oh_imagerecei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -405,6 +418,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetSize(OH_ImageReceiverNative* receiver,
 Obtains the size of an **ImageReceiver** using **OH_ImageReceiverNative**.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -430,6 +444,7 @@ Image_ErrorCode OH_ImageReceiverNative_GetCapacity(OH_ImageReceiverNative* recei
 Obtains the capacity of an **OH_ImageReceiverNative**.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -460,6 +475,7 @@ Releases an OH_ImageReceiverNative object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -483,6 +499,7 @@ Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative *rec
 Registers the [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback) callback.
 
 **Since**: 20
+
 
 **Parameters**
 
@@ -510,15 +527,42 @@ Unregisters the [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagear
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md) *receiver | Pointer to an OH_ImageReceiverNative object that processes the callback.|
-| [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback) callback | Callback to unregister.|
+| [OH_ImageReceiver_ImageArriveCallback()](#oh_imagereceiver_imagearrivecallback) callback | OH_ImageReceiver_ImageArriveCallback to unregister. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) |**IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_RECEIVER_INVALID_PARAMETER**: The **receiver** or **callback** parameter is not registered.|
+
+### OH_ImageReceiverNative_SetMemoryName()
+
+```c
+Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNative* receiver, const char *name, uint32_t size)
+```
+
+**Description**
+
+Sets the memory name of the **OH_ImageReceiverNative** object. Only ASCII visible characters are supported. Spaces, line breaks, tabs, and other control characters will be filtered out. If the filtered result consists entirely of digits, the prefix **ImageReceiver:** will be automatically added. The length of the filtered name (including the terminator '\0') must not exceed 256 bytes.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| const [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md)* receiver | Pointer to the **OH_ImageReceiverNative** object. It cannot be null. |
+| const char *name | Pointer to the memory name string to be set. It cannot be null The string must end with '\0'. |
+| uint32_t size | Size of the name string in bytes, including the terminator '\0'. It must be greater than 0. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**IMAGE_RECEIVER_INVALID_PARAMETER**: **receiver** or **name** is null, **size** is **0**, no visible characters remain after filtering name, or the filtered size exceeds 256 bytes. |

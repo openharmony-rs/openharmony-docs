@@ -5,7 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=e02a35e7895a80d0c3fa1af229bc105038f7fb17 translatedAt=2026-11-06T02:08:44.498Z pushedAt=2026-11-12T06:49:32.709Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e02a35e7895a80d0c3fa1af229bc105038f7fb17 translatedAt=2026-11-06T02:08:44.498Z pushedAt=2026-11-12T07:26:17.767Z nl=1 -->
 
 ## Overview
 
@@ -41,21 +41,21 @@ The file declares the APIs for image encoding.
 
 | Name| Description|
 | -- | -- |
-| [Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)](#oh_packingoptions_create) | Creates the pointer to an OH_PackingOptions struct.|
+| [Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)](#oh_packingoptions_create) | Creates the pointer to an **OH_PackingOptions** struct.|
 | [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | Obtains the MIME type in the encoding parameters. **format.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.|
 | [Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetypewithnull) | Obtains the MIME type in the encoding parameters. **format.data** obtained by this API ends with the string terminator **\0**.|
 | [Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_setmimetype) | Sets the MIME type.|
 | [Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options, uint32_t *quality)](#oh_packingoptions_getquality) | Obtains the encoding quality.|
 | [Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options, uint32_t quality)](#oh_packingoptions_setquality) | Sets the encoding quality.|
-| [ Image_ErrorCode OH_PackingOptions_GetNeedsPackProperties(OH_PackingOptions *options, bool *needsPackProperties)](#oh_packingoptions_getneedspackproperties) | Obtains the **needsPackProperties** parameter in the OH_PackingOptions struct.|
-| [Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *options, bool needsPackProperties)](#oh_packingoptions_setneedspackproperties) | Sets the **needsPackProperties** parameter in the OH_PackingOptions struct.|
-| <!--DelRow--> [Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)](#oh_packingoptions_getneedspackdfxdata) | Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.|
-| <!--DelRow--> [Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)](#oh_packingoptions_setneedspackdfxdata) | Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.|
+| [ Image_ErrorCode OH_PackingOptions_GetNeedsPackProperties(OH_PackingOptions *options, bool *needsPackProperties)](#oh_packingoptions_getneedspackproperties) | Obtains the **needsPackProperties** parameter in the **OH_PackingOptions** struct.|
+| [Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *options, bool needsPackProperties)](#oh_packingoptions_setneedspackproperties) | Sets the **needsPackProperties** parameter in the **OH_PackingOptions** struct.|
+| <!--DelRow--> [Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)](#oh_packingoptions_getneedspackdfxdata) | Obtains the **needsPackDfxData** parameter in the **OH_PackingOptions** struct.|
+| <!--DelRow--> [Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)](#oh_packingoptions_setneedspackdfxdata) | Obtains the **needsPackDfxData** parameter in the **OH_PackingOptions** struct.|
 | <!--DelRow--> [Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, uint32_t c2paDataSize)](#oh_packingoptions_setc2padatasize) | Sets the size of the space reserved for coalition for content provenance and authenticity (C2PA) data in the encoding output. |
 | <!--DelRow--> [Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *options, uint32_t *c2paDataSize)](#oh_packingoptions_getc2padatasize) | Obtains the size of the space reserved for C2PA data in the encoding output, in bytes. |
 | [Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions \*options, int32_t\* desiredDynamicRange)](#oh_packingoptions_getdesireddynamicrange) | Obtains the desired dynamic range of the image during encoding. |
 | [Image_ErrorCode OH_PackingOptions_SetDesiredDynamicRange(OH_PackingOptions *options, int32_t desiredDynamicRange)](#oh_packingoptions_setdesireddynamicrange) | Sets the desired dynamic range during encoding.|
-| [Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)](#oh_packingoptions_release) | Releases the pointer to an OH_PackingOptions struct.|
+| [Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)](#oh_packingoptions_release) | Releases the pointer to an **OH_PackingOptions** struct.|
 | [Image_ErrorCode OH_PackingOptionsForSequence_Create(OH_PackingOptionsForSequence **options)](#oh_packingoptionsforsequence_create) | Creates the pointer to an OH_PackingOptionsForSequence struct.|
 | [Image_ErrorCode OH_PackingOptionsForSequence_SetFrameCount(OH_PackingOptionsForSequence *options, uint32_t frameCount)](#oh_packingoptionsforsequence_setframecount) | Sets the number of frames for image sequence encoding.|
 | [Image_ErrorCode OH_PackingOptionsForSequence_GetFrameCount(OH_PackingOptionsForSequence *options, uint32_t *frameCount)](#oh_packingoptionsforsequence_getframecount) | Obtains the number of frames for image sequence encoding.|
@@ -108,7 +108,7 @@ Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)
 
 **Description**
 
-Creates the pointer to an OH_PackingOptions struct.
+Creates the pointer to an **OH_PackingOptions** struct.
 
 Restrictions: **options** cannot be a null pointer. If the API returns a failure, the output parameter content should not be used.
 
@@ -121,7 +121,7 @@ Resource management: The OH_PackingOptions object returned by the API is managed
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) **options | Double pointer to the OH_PackingOptions struct created.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) **options | Double pointer to the **OH_PackingOptions** struct created.|
 
 **Returns**
 
@@ -150,7 +150,7 @@ Resource management: After the API is successfully executed, **format.data** is 
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Pointer to the image format. The format does not need to be manually initialized, and the system will allocate memory. However, you must deallocate the memory after use.<br>**format.data** obtained through this API lacks the string terminator **\0**. You need to check whether the actual data length exceeds the length of the allocated buffer.|
 
 **Returns**
@@ -182,7 +182,7 @@ Resource management: After the API is successfully executed, **format.data** is 
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Pointer to the MIME type.|
 
 **Returns**
@@ -214,7 +214,7 @@ Resource management: The API copies the input MIME type data and does not hold t
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | [Image_MimeType](capi-image-nativemodule-image-string.md) *format | Target encoding format.|
 
 **Returns**
@@ -242,7 +242,7 @@ Restrictions: **options** and **quality** cannot be null pointers. If the API re
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | uint32_t *quality | Pointer to the encoding quality.|
 
 **Returns**
@@ -270,7 +270,7 @@ Restrictions: **options** cannot be a null pointer. The value range of **quality
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | uint32_t quality | Encoding quality. The value ranges from 0 to 100 and the default value is **0**.|
 
 **Returns**
@@ -287,7 +287,7 @@ Restrictions: **options** cannot be a null pointer. The value range of **quality
 
 **Description**
 
-Obtains the **needsPackProperties** parameter in the OH_PackingOptions struct.
+Obtains the **needsPackProperties** parameter in the **OH_PackingOptions** struct.
 
 Restrictions: **options** and **needsPackProperties** cannot be null pointers. If the API returns a failure, the output parameter content should not be used.
 
@@ -298,7 +298,7 @@ Restrictions: **options** and **needsPackProperties** cannot be null pointers. I
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | bool *needsPackProperties | Whether to encode image property information (for example, Exif). The values include **true** (yes) and **false** (no).|
 
 **Returns**
@@ -315,7 +315,7 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *opti
 
 **Description**
 
-Sets the **needsPackProperties** parameter in the OH_PackingOptions struct.
+Sets the **needsPackProperties** parameter in the **OH_PackingOptions** struct.
 
 Use scenarios: When you need to retain or write image property information (such as Exif information) into the encoding output, set **needsPackProperties** to **true**. Set **needsPackProperties** to **false** if you are only concerned about pixel content or want to reduce the size of the output data, or if the target format does not require the property information.
 
@@ -328,7 +328,7 @@ Restrictions: **options** cannot be a null pointer.
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | bool needsPackProperties | Whether to encode image property information (for example, Exif). The values include **true** (yes) and **false** (no). The default value is **false**.<br>If the raw image does not have Exif data, the output file will not contain these properties even if **needsPackProperties** is set to **true**.|
 
 **Returns**
@@ -345,7 +345,7 @@ Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options
 
 **Description**
 
-Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.
+Obtains the **needsPackDfxData** parameter in the **OH_PackingOptions** struct.
 
 **Since:** 26.0.0
 
@@ -355,7 +355,7 @@ Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to the OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to the **OH_PackingOptions** struct.|
 | bool *needsPackDfxData | Whether the image DFX data needs to be encoded. The value **true** indicates yes, and the value **false** indicates no.|
 
 **Returns**
@@ -372,7 +372,7 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options
 
 **Description**
 
-Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.
+Obtains the **needsPackDfxData** parameter in the **OH_PackingOptions** struct.
 
 **Since:** 26.0.0
 
@@ -382,7 +382,7 @@ Obtains the **needsPackDfxData** parameter in the OH_PackingOptions struct.
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to the OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to the **OH_PackingOptions** struct.|
 | bool needsPackDfxData | Whether the image DFX data needs to be encoded. The value **true** indicates yes, and the value **false** indicates no.|
 
 **Returns**
@@ -447,7 +447,7 @@ Obtains the size of the space reserved for C2PA data in the encoding output, in 
 
 | Type | Description |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**202**: A non-system applica calls this API.<br>**IMAGE_PACKER_INVALID_PARAMETER**: **options** or **c2paDataSize** is null. |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**202**: A non-system app calls this API.<br>**IMAGE_PACKER_INVALID_PARAMETER**: **options** or **c2paDataSize** is null. |
 
 <!--DelEnd-->
 ### OH_PackingOptions_GetDesiredDynamicRange()
@@ -469,7 +469,7 @@ Restrictions: **options** and **desiredDynamicRange** cannot be null pointers. I
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | int32_t* desiredDynamicRange | Desired dynamic range. For details, see [IMAGE_PACKER_DYNAMIC_RANGE](#image_packer_dynamic_range).|
 
 **Returns**
@@ -497,7 +497,7 @@ Restrictions: **options** cannot be a null pointer.
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | int32_t desiredDynamicRange | Desired dynamic range. For details, see [IMAGE_PACKER_DYNAMIC_RANGE](#image_packer_dynamic_range). The default value is **IMAGE_PACKER_DYNAMIC_RANGE_SDR**.|
 
 **Returns**
@@ -514,7 +514,7 @@ Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)
 
 **Description**
 
-Releases the pointer to an OH_PackingOptions struct.
+Releases the pointer to an **OH_PackingOptions** struct.
 
 Restrictions: **options** cannot be a null pointer.
 
@@ -527,7 +527,7 @@ Resource management: This API must be called to release objects successfully cre
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 
 **Returns**
 
@@ -556,7 +556,7 @@ Resource management: The OH_PackingOptionsForSequence object returned by the API
 
 | Name| Description|
 | -- | -- |
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) **options | Double pointer to OH_PackingOptionsForSequence.|
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) **options | Double pointer to **OH_PackingOptionsForSequence**.|
 
 **Returns**
 
@@ -870,7 +870,7 @@ Use scenarios: This API is applicable for transcoding an existing ImageSource to
 
 Restrictions: **imagePacker**, **options**, **imageSource**, **outData**, and **size** cannot be null pointers. Before calling this API, set ***size** to the capacity of **outData**. If the API returns a failure, the content in **outData** or the output value of **size** should not be used.
 
-Resource management: The caller allocates and releases **outData**. Before calling this API, *set **size** to the size of the **outData** writable buffer. After this API is called successfully*, the value of **size** is updated to the actual length of the encoded data. The lifecycle of **imagePacker**, **options**, and **imageSource** is still managed by the caller. This API does not release these objects.
+Resource management: The caller allocates and releases **outData**. Before calling this API, set ***size** to the size of the **outData** writable buffer. After this API is called successfully, the value of **size** is updated to the actual length of the encoded data. The lifecycle of **imagePacker**, **options**, and **imageSource** is still managed by the caller. This API does not release these objects.
 
 **Since**: 12
 
@@ -880,7 +880,7 @@ Resource management: The caller allocates and releases **outData**. Before calli
 | Name| Description|
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *imageSource | Pointer to the image source to encode.|
 | uint8_t *outData | Pointer to the buffer used to store the output data.|
 | size_t *size | Pointer to the size of the buffer.|
@@ -905,7 +905,7 @@ Use scenarios: This API is applicable for encoding a PixelMap that has been deco
 
 Restrictions: **imagePacker**, **options**, **pixelmap**, **outData**, and **size** cannot be null pointers. Before calling this API, set ***size** to the capacity of **outData**. If the API returns a failure, do not use the content in **outData** or the output value of **size**.
 
-Resource management: The caller allocates and releases **outData**. Before calling this API, *set **size** to the size of the **outData** writable buffer. After this API is called successfully*, the value of **size** is updated to the actual length of the encoded data. The lifecycle of **imagePacker**, **options**, and **pixelmap** is still managed by the caller. This API does not release these objects.
+Resource management: The caller allocates and releases **outData**. Before calling this API, set ***size** to the size of the **outData** writable buffer. After this API is called successfully, the value of **size** is updated to the actual length of the encoded data. The lifecycle of **imagePacker**, **options**, and **pixelmap** is still managed by the caller. This API does not release these objects.
 
 **Since**: 12
 
@@ -915,7 +915,7 @@ Resource management: The caller allocates and releases **outData**. Before calli
 | Name| Description|
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer to the PixelMap to encode.|
 | uint8_t *outData | Pointer to the buffer used to store the output data.|
 | size_t *size | Pointer to the size of the buffer.|
@@ -938,7 +938,7 @@ Encodes a picture into data in a given format.
 
 Restrictions: **imagePacker**, **options**, **picture**, **outData**, and **size** cannot be null pointers. Before calling this API, set ***size** to the capacity of **outData**. If the API returns a failure, the content in **outData** or the output value of **size** should not be used.
 
-Resource management: The caller allocates and releases **outData**. Before calling this API, *set **size** to the size of the **outData** writable buffer. After this API is called successfully*, the value of **size** is updated to the actual length of the encoded data. The lifecycle of **imagePacker**, **options**, and **picture** is still managed by the caller. This API does not release these objects.
+Resource management: The caller allocates and releases **outData**. Before calling this API, set ***size** to the size of the **outData** writable buffer. After this API is called successfully, the value of **size** is updated to the actual length of the encoded data. The lifecycle of **imagePacker**, **options**, and **picture** is still managed by the caller. This API does not release these objects.
 
 **Since**: 13
 
@@ -948,7 +948,7 @@ Resource management: The caller allocates and releases **outData**. Before calli
 | Name| Description|
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to the picture to encode.|
 | uint8_t *outData | Pointer to the buffer used to store the output data.|
 | size_t *size | Pointer to the size of the buffer.|
@@ -1019,7 +1019,7 @@ Resource management: **fd** must be a writable file descriptor. The caller is re
 | Name| Description|
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *imageSource | Pointer to the image source to encode.|
 | int32_t fd | File descriptor, which is writable.|
 
@@ -1053,7 +1053,7 @@ Resource management: **fd** must be a writable file descriptor. The caller is re
 | Name| Description|
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer to the PixelMap to encode.|
 | int32_t fd | File descriptor, which is writable.|
 
@@ -1085,7 +1085,7 @@ Resource management: The caller is responsible for opening and closing the file 
 | Name| Description|
 | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) *imagePacker | Pointer to OH_ImagePackerNative.|
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an OH_PackingOptions struct.|
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | Pointer to an **OH_PackingOptions** struct.|
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) *picture | Pointer to the picture to encode.|
 | int32_t fd | File descriptor, which is writable.|
 
