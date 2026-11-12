@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=95d2818bb09ee126bc2417fe2f2587d9e29fc623 translatedAt=2026-11-03T03:10:04.001Z pushedAt=2026-11-03T03:23:51.049Z nl=1 -->
+<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:44:35.819Z pushedAt=2026-11-12T08:29:03.724Z nl=1 -->
 
 
 Page loading is a basic capability of the **Web** component. Depending on the data source, page loading falls into three types: loading of network pages, loading of local pages, and loading of HTML rich text data.
@@ -26,7 +26,7 @@ To obtain network resources during page loading, configure the network access pe
 You can specify the default network page to load when creating a Web component. After the default page is loaded, to change the network page displayed by the Web component, call the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to load the specified web page. The first parameter variable `src` of the [Web component](../reference/apis-arkweb/arkts-basic-components-web.md) cannot be dynamically changed through a state variable (for example, [@State](../ui/state-management/arkts-state.md)). To change the address, call [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) to reload the page.
 
 
-In the following example, after the **www.\example.com** page is loaded by the **Web** component, **loadUrl** is called to change the displayed page to **www\.example1.com**.
+In the following example, after the **www\.example.com** page is loaded by the **Web** component, you can call `loadUrl()` to change the displayed page to **www\.example1.com**.
 
 <!-- @[use_load_interface_to_show_web_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingWebPages.ets) -->
 

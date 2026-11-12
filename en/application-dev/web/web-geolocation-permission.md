@@ -5,7 +5,7 @@
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ec7c4d6039480424fb9a02d246bce504dfd4da6b translatedAt=2026-11-03T03:07:28.437Z pushedAt=2026-11-03T03:22:22.253Z nl=1 -->
+<!-- md-trans-meta sourceCommit=47c341fd96878f63302426cc10515b4a7384fa50 translatedAt=2026-11-12T04:42:27.229Z pushedAt=2026-11-12T08:26:00.597Z nl=1 -->
 
 Since API version 9, the **Web** component supports the [GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md) class and [onGeolocationShow](../reference/apis-arkweb/arkts-basic-components-web-events.md#ongeolocationshow) method for managing web page location permissions. For details, see <!--RP1-->[Privacy Protection](../../device-dev/security/security-privacy-protection.md)<!--RP1End-->.
 
@@ -33,8 +33,6 @@ In the following example, when a user clicks the **Get Location** button on the 
 
 
 - Frontend page code:
-
-<!-- @[getLocation_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/resources/rawfile/getLocation.html) -->
 
 ``` HTML
 <!DOCTYPE html>

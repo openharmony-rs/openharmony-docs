@@ -5,7 +5,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=4b147a8ab794ba7c64aa17af65c3afbc0d5ea1eb translatedAt=2026-11-03T02:57:15.180Z pushedAt=2026-11-03T03:03:29.705Z nl=1 -->
+<!-- md-trans-meta sourceCommit=d06f2ab001b0c671340f900e2c8925bfc491700c translatedAt=2026-11-12T04:56:33.241Z pushedAt=2026-11-12T08:02:08.735Z nl=1 -->
 
 ## F
 
@@ -17,7 +17,7 @@ Floating windows are divided into multi-window floating windows, global floating
 
   They are typically used to temporarily handle another task while a full-screen task is running or for short-term parallel use of multiple tasks, such as replying to messages while browsing the web.
 
-  For details, see [Introduction to Multi-Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro) and [Multi-Window](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-window-practice).
+  Related reference: [Multi-Window Introduction](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro).
 
 - A global floating window is a special type of app auxiliary window that can remain displayed on the foreground even after the app's main window and corresponding UIAbility are moved to the background.
 
@@ -99,6 +99,20 @@ A practical paradigm that combines multiple window modes, allowing multiple app 
 ### Desktop Mode
 
 An interaction method that supports multi-tasking on mobile devices. In Desktop Mode, multiple app windows can be displayed simultaneously on a single screen. In this mode, app windows are [freeform window](#freeform-window). On some tablets, you can enable Desktop Mode by pulling down Control Panel and tapping the **Desktop mode** button.
+
+## R
+
+### Relative Coordinate System
+
+A relative coordinate system is a coordinate system that uses the upper-left corner of a specified screen as the origin (0, 0), the right side of the screen as the positive x-axis direction, and the lower side of the screen as the positive y-axis direction, and describes the position of an object only within the specified screen.
+
+Unlike the [global coordinate system](#global-coordinate-system), which takes unified values across multiple screens, a relative coordinate system applies only to a single screen: the coordinates of in-app UI components and the coordinates reported by touch or mouse events are usually relative coordinates on the screen where the application is located, so the application has no need to perceive the continuous multi-screen display space. In a multi-screen scenario, the same position has different coordinate values in the two types of coordinate systems. These values can be mutually converted through the coordinate conversion API (only the main screen and extended screen are supported). For details, see [Implementing Coordinate Conversion on the Extended Screen](../displaymanager/extend-coordinate-transformation-guideline.md).
+
+![relative-coordinate-system](figures/relative-coordinate-system.png)
+
+Usage scenarios:
+
+- UI layout and event processing: The layout positions of in-app UI components and the positions reported by touch or mouse events are all represented based on the relative coordinate system of the screen where the application is located.
 
 ## S
 

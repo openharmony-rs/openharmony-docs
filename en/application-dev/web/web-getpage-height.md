@@ -5,7 +5,7 @@
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=31486454548072b32f17e325049368cad895a039 translatedAt=2026-11-03T03:07:49.384Z pushedAt=2026-11-03T03:22:25.244Z nl=1 -->
+<!-- md-trans-meta sourceCommit=1389a0bf562dce26806026e0ecb83e6c9af5454c translatedAt=2026-11-12T04:42:45.142Z pushedAt=2026-11-12T08:26:05.068Z nl=1 -->
 
 The [getPageHeight](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight) API can obtain the actual height of the current web page content. You can select a proper method as required.
 
@@ -123,7 +123,7 @@ Frontend code:
         if (typeof jsbObj !== 'undefined') {
             jsbObj.notifyToGet();
         } else {
-            console.info("jsbObj is undefined");
+            console.error("jsbObj is undefined");
         }
     })
 </script>
@@ -153,7 +153,7 @@ In the frontend code, replace the sample image path with the actual image resour
         if (typeof jsbObj !== 'undefined') {
             jsbObj.notifyToGet();
         } else {
-            console.info("jsbObj is error");
+            console.error("jsbObj is undefined");
         }
     });
 </script>
@@ -191,7 +191,7 @@ Replace the image in the frontend code with a real image.
             if (typeof jsbObj !== 'undefined') {
                 jsbObj.notifyToGet();
             } else {
-                console.info("jsbObj is error");
+                console.error("jsbObj is undefined");
             }
         })
     }

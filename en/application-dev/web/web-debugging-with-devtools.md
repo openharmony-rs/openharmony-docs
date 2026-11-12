@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=b0b2c896e2b3fdb267fb7000f3a2655a0ee2a486 translatedAt=2026-09-21T02:05:06.384Z pushedAt=2026-09-21T10:28:50.073Z -->
+<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:40:38.203Z pushedAt=2026-11-12T08:22:10.536Z nl=1 -->
 
 
 The **Web** component supports debugging of web frontend pages by using DevTools, a web frontend development and debugging tool that allows you to debug an application's frontend pages on a PC. Before you do this, use [setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess) to enable frontend page debugging for the **Web** component and make sure the test device connected to the PC runs 4.1.0 or a later version.
@@ -21,7 +21,7 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
 
    1. To enable the web debugging feature in application code, call the [setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20) API to set the TCP socket port and enable the web debugging feature.
       <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
-
+      
       ``` TypeScript
       import { webview } from '@kit.ArkWeb';
       import { BusinessError } from '@kit.BasicServicesKit';
@@ -55,7 +55,7 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
    2. To enable the debugging feature, you need to add the following permission to the **module.json5** file of the application's HAP in DevEco Studio. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
         <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
-
+       
        ``` JSON5
         "requestPermissions":[
           {
@@ -95,7 +95,7 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
 1. Enable web frontend page debugging in the application code.
 
     <!-- @[web_Debugging_USB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithUSB.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     
@@ -120,7 +120,7 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
 2. To enable the debugging feature, you need to add the following permission to the **module.json5** file of the application's HAP in DevEco Studio. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
     <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
-
+    
     ``` JSON5
     "requestPermissions":[
       {
@@ -159,7 +159,7 @@ Connect the device to a PC and enable Developer mode for subsequent port forward
    ```
 
 ### Port Forwarding
-After the application code calls the **setWebDebuggingAccess** API to enable web debugging, the ArkWeb kernel starts a domain socket listener to enable DevTools to debug web pages.
+When the application code calls setWebDebuggingAccess() to enable the Web debug switch, the ArkWeb kernel starts listening on a domain socket, thereby enabling DevTools debugging of webpages.
 
 However, Chrome cannot directly access the domain socket on the device. Therefore, the domain socket on the device needs to be forwarded to the PC.
 

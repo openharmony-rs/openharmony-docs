@@ -6,7 +6,7 @@
 <!--Designer: @yyuehao-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T02:55:20.501Z pushedAt=2026-11-03T03:02:04.627Z nl=1 -->
+<!-- md-trans-meta sourceCommit=61a7c2ec12eeace89554c9ac8de41395967200e9 translatedAt=2026-11-12T04:55:07.508Z pushedAt=2026-11-12T07:56:38.422Z nl=1 -->
 
 ## When to Use
 
@@ -190,7 +190,7 @@ In the [freeform window](freeform-window-overview.md#freeform-window) state and 
 
   > **NOTE**
   > 
-  > For more information about multi-window floating windows, see [Introduction to Multi-Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro) and [Best Practices for Multi-Window](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-window-practice).
+  > For more information about the floating window, see [Introduction to Multi-Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro).
 
 ### SPLIT_SCREEN
 
@@ -291,7 +291,7 @@ When an app calls [startAbility()](../reference/apis-ability-kit/js-apis-inner-a
 
 Through the [metadata tag](window-config-m.md#metadata) under the [abilities](../quick-start/module-configuration-file.md#abilities) in the [module.json5 configuration file](../quick-start/module-configuration-file.md), you can set window-related metadata attributes, including supported window modes in freeform multi-window.
 
-**Configuration Item Description:**
+**Configuration item description:**
 
 | Configuration Item | Description | Value |
 | -------- | -------- | -------- |
@@ -325,4 +325,3 @@ The **supportWindowMode** attribute under the [abilities tag](../quick-start/mod
 - In the [freeform window](freeform-window-overview.md#freeform-window) state, this configuration method has the lowest priority compared with the other methods described above.
 
 - In the [freeform window](freeform-window-overview.md#freeform-window) state, when both **"fullscreen"** and **"split"** are configured, the window starts in floating window mode if the app's [targetAPIVersion](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) is earlier than 15, and starts in full-screen mode if the app's [targetAPIVersion](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) is 15 or later.
-<!--no_check-->
