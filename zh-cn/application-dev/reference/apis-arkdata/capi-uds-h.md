@@ -138,14 +138,14 @@
 | [char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)](#oh_udsdetails_getallkeys)| 获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中所有键的结果集。 |
 | [int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)](#oh_udshtml_setauthpolicy)| 给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
 | [int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)](#oh_udsfileuri_setauthpolicy)| 给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
-| [OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)](#oh_udmf_createvirtualfileitem)| 创建必须显式设置文件大小的虚拟文件节点。<br> 将节点添加到目录或创建虚拟文件信息前，必须调用[OH_UDMF_SetVirtualFileSize](capi-uds-h.md#oh_udmf_setvirtualfilesize)设置文件大小。 文件大小为0表示空文件，未设置大小时不会通过其他方式推断文件大小。 |
-| [OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_t modifyTime)](#oh_udmf_createvirtualdirectoryitem)| 创建虚拟目录节点。 |
-| [void OH_UDMF_DestroyVirtualItem(OH_UDMF_VirtualItem* item)](#oh_udmf_destroyvirtualitem)| 销毁虚拟节点。 |
-| [int OH_UDMF_SetVirtualFileSize(OH_UDMF_VirtualItem* item, int64_t size)](#oh_udmf_setvirtualfilesize) | 设置虚拟文件节点的文件大小，单位为字节。 |
-| [int OH_UDMF_AddVirtualItemChild(OH_UDMF_VirtualItem* directory, const OH_UDMF_VirtualItem* child)](#oh_udmf_addvirtualitemchild)| 向虚拟目录添加子节点。<br> 此接口会复制`child`，调用方仍持有原节点的所有权。 |
-| [OH_UDMF_VirtualFileInfo* OH_UDMF_CreateVirtualFileInfo(const OH_UDMF_VirtualItem* itemInfo, const OH_UDMF_VirtualFileCallbacks* callbacks, void* context, OH_UDMF_VirtualFileFinalize finalize)](#oh_udmf_createvirtualfileinfo)| 创建虚拟文件信息。<br> 此接口会复制节点树和回调表。`context`非nullptr时必须提供`finalize`。 接口执行成功后，UDMF持有该上下文，直到最后一个引用释放。 |
-| [void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)](#oh_udmf_destroyvirtualfileinfo)| 销毁虚拟文件信息。<br> 虚拟文件信息已附加到文件Uri或统一数据记录时，回调状态会保持有效，直到相关引用全部释放。 |
-| [int OH_UDMF_SetFileUriVirtualEntry(OH_UdsFileUri* fileUri, const OH_UDMF_VirtualFileInfo* info)](#oh_udmf_setfileurivirtualentry)| 为文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)附加虚拟文件信息。 |
+| [OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualFileItem(const char* name, const char* id, int64_t modifyTime)](#oh_udmf_createvirtualfileitem)| 创建虚拟文件节点[OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UDMF_DestroyVirtualItem](capi-uds-h.md#oh_udmf_destroyvirtualitem)销毁实例对象，否则会导致内存泄漏。 |
+| [OH_UDMF_VirtualItem* OH_UDMF_CreateVirtualDirectoryItem(const char* name, int64_t modifyTime)](#oh_udmf_createvirtualdirectoryitem)| 创建虚拟目录节点[OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UDMF_DestroyVirtualItem](capi-uds-h.md#oh_udmf_destroyvirtualitem)销毁实例对象，否则会导致内存泄漏。 |
+| [void OH_UDMF_DestroyVirtualItem(OH_UDMF_VirtualItem* item)](#oh_udmf_destroyvirtualitem)| 销毁虚拟节点[OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)。 |
+| [int OH_UDMF_SetVirtualFileSize(OH_UDMF_VirtualItem* item, int64_t size)](#oh_udmf_setvirtualfilesize) | 设置虚拟文件节点[OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)的文件大小，单位为字节。 |
+| [int OH_UDMF_AddVirtualItemChild(OH_UDMF_VirtualItem* directory, const OH_UDMF_VirtualItem* child)](#oh_udmf_addvirtualitemchild)| 向虚拟目录[OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)添加子节点。 |
+| [OH_UDMF_VirtualFileInfo* OH_UDMF_CreateVirtualFileInfo(const OH_UDMF_VirtualItem* itemInfo, const OH_UDMF_VirtualFileCallbacks* callbacks, void* context, OH_UDMF_VirtualFileFinalize finalize)](#oh_udmf_createvirtualfileinfo)| 创建虚拟文件[OH_UDMF_VirtualFileInfo](capi-udmf-oh-udmf-virtualfileinfo.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UDMF_DestroyVirtualFileInfo](capi-uds-h.md#oh_udmf_destroyvirtualfileinfo)销毁实例对象，否则会导致内存泄漏。 |
+| [void OH_UDMF_DestroyVirtualFileInfo(OH_UDMF_VirtualFileInfo* info)](#oh_udmf_destroyvirtualfileinfo)| 销毁虚拟文件信息。 |
+| [int OH_UDMF_SetFileUriVirtualEntry(OH_UdsFileUri* fileUri, const OH_UDMF_VirtualFileInfo* info)](#oh_udmf_setfileurivirtualentry)| 向文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)附加虚拟文件信息。 |
 | [int OH_UDMF_ClearFileUriVirtualEntry(OH_UdsFileUri* fileUri)](#oh_udmf_clearfileurivirtualentry)| 从文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)移除虚拟文件信息。 |
 
 
