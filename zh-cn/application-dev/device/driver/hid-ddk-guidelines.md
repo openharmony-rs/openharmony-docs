@@ -44,24 +44,24 @@ HidDdk（HID Driver Development Kit）是为开发者提供的HID设备驱动程
 
 | 名称 | 描述 |
 | -------- | -------- |
-| OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEventProperties) | 创建HID设备。请在设备使用完后使用OH_Hid_DestroyDevice销毁设备。 |
-| OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t length) | 向指定deviceId的HID设备发送事件。 |
-| OH_Hid_DestroyDevice(int32_t deviceId) | 销毁指定deviceId的HID设备。 |
+| int32_t OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEventProperties) | 创建HID设备。请在设备使用完后使用OH_Hid_DestroyDevice销毁设备。 |
+| int32_t OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t length) | 向指定deviceId的HID设备发送事件。 |
+| int32_t OH_Hid_DestroyDevice(int32_t deviceId) | 销毁指定deviceId的HID设备。 |
 | int32_t OH_Hid_Init(void) | 初始化HidDdk。 |
 | int32_t OH_Hid_Release(void) | 释放HidDdk。 |
 | int32_t OH_Hid_Open(uint64_t deviceId, uint8_t interfaceIndex, Hid_DeviceHandle **dev) | 打开deviceId和interfaceIndex指定的设备。 |
 | int32_t OH_Hid_Close(Hid_DeviceHandle **dev) | 关闭设备。 |
 | int32_t OH_Hid_Write(Hid_DeviceHandle *dev, uint8_t *data, uint32_t length, uint32_t *bytesWritten) | 向设备写入报告。 |
-| int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buffSize, int timeout, uint32_t *bytesRead) | 在指定的超时时间内从设备读取报告。 |
-| int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buffSize, uint32_t *bytesRead) | 从设备读取报告，默认为阻塞模式（阻塞等待直到有数据可读取），可以调用OH_Hid_SetNonBlocking改变模式。 |
-| int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonblock) | 设置设备读取模式为非阻塞。 |
+| int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, int timeout, uint32_t *bytesRead) | 在指定的超时时间内从设备读取报告。 |
+| int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, uint32_t *bytesRead) | 从设备读取报告，默认为阻塞模式（阻塞等待直到有数据可读取），可以调用OH_Hid_SetNonBlocking改变模式。 |
+| int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonBlock) | 设置设备读取模式为非阻塞。 |
 | int32_t OH_Hid_GetRawInfo(Hid_DeviceHandle *dev, Hid_RawDevInfo *rawDevInfo) | 获取设备原始信息。 |
-| int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t buffSize) | 获取设备原始名称。 |
-| int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t buffSize) | 获取设备物理地址。 |
-| int32_t OH_Hid_GetRawUniqueId(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buffSize) | 获取设备原始唯一标识符。 |
+| int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t bufSize) | 获取设备原始名称。 |
+| int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t bufSize) | 获取设备物理地址。 |
+| int32_t OH_Hid_GetRawUniqueId(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize) | 获取设备原始唯一标识符。 |
 | int32_t OH_Hid_SendReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, const uint8_t *data, uint32_t length) | 向设备发送报告。 |
-| int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8_t *data, uint32_t buffSize) | 获取设备报告。 |
-| int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t buffSize, uint32_t *bytesRead) | 获取设备报告描述符。 |
+| int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8_t *data, uint32_t bufSize) | 获取设备报告。 |
+| int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t bufSize, uint32_t *bytesRead) | 获取设备报告描述符。 |
 
 详细的接口说明请参考[HidDdk](../../reference/apis-driverdevelopment-kit/capi-hidddk.md)。
 
@@ -174,21 +174,53 @@ libhid.z.so
 
 2. 打开设备。
 
-   初始化HidDdk后，使用 **hid_ddk_api.h** 的 **OH_Hid_Open** 打开HID设备。
+   使用 **hid_ddk_api.h** 的 **OH_Hid_Open** 打开HID设备，需要传入 deviceId 和 interfaceIndex 接口编号。其中 deviceId 可通过USB DDK接口 **OH_Usb_GetDevices** 获取（需先调用 **OH_Usb_Init** 初始化USB DDK），interfaceIndex 可通过 **OH_Usb_GetConfigDescriptor** 获取配置描述符后从中读取各接口的 `bInterfaceNumber`。
 
-   <!-- @[driver_hid_report_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
-   
+   <!-- @[driver_hid_report_step2_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
+
    ``` C++
-   uint32_t bInterfaceNum1 = 0x00;
-   // 打开deviceId和interfaceIndex1指定的HID设备（一般为/dev/hidraw0设备文件）
+   // 初始化USB DDK并获取deviceId
+   ret = OH_Usb_Init();
+   if (ret != USB_DDK_SUCCESS) {
+       OH_LOG_ERROR(LOG_APP, "OH_Usb_Init failed, ret: %{public}d", ret);
+       return ret;
+   }
+   constexpr size_t maxUsbDeviceNum = 255;
+   struct Usb_DeviceArray deviceArray;
+   deviceArray.deviceIds = new uint64_t[maxUsbDeviceNum];
+   ret = OH_Usb_GetDevices(&deviceArray);
+   if (ret != USB_DDK_SUCCESS) {
+       OH_LOG_ERROR(LOG_APP, "OH_Usb_GetDevices failed, ret: %{public}d", ret);
+       delete[] deviceArray.deviceIds;
+       return ret;
+   }
+   deviceID_ = deviceArray.deviceIds[0];
+   delete[] deviceArray.deviceIds;
+
+   // 获取配置描述符（configIndex默认取1），读取HID接口的bInterfaceNumber（这里用前两个HID类型的Interface为例）
+   struct UsbDdkConfigDescriptor *config = nullptr;
+   ret = OH_Usb_GetConfigDescriptor(deviceID_, 1, &config);
+   if (ret != USB_DDK_SUCCESS) {
+       OH_LOG_ERROR(LOG_APP, "OH_Usb_GetConfigDescriptor failed, ret: %{public}d", ret);
+       return ret;
+   }
+   uint8_t bInterfaceNum1 = config->interface[0].altsetting[0].interfaceDescriptor.bInterfaceNumber;
+   uint8_t bInterfaceNum2 = config->interface[1].altsetting[0].interfaceDescriptor.bInterfaceNumber;
+   OH_Usb_FreeConfigDescriptor(config);
+   ```
+
+   获取到 deviceId 和 bInterfaceNumber 后，调用 **OH_Hid_Open** 打开对应的HID设备。示例设备包含两个HID接口，因此调用了两次；实际使用时调用次数取决于设备的接口数量，若只有一个HID接口只需调用一次。
+
+   <!-- @[driver_hid_report_step2_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
+
+   ``` C++
+   // 使用从配置描述符中读取的bInterfaceNum打开HID设备（一般为/dev/hidraw*文件）
    ret = OH_Hid_Open(deviceID_, bInterfaceNum1, &hid_);
    if (ret != HID_DDK_SUCCESS) {
        OH_LOG_ERROR(LOG_APP, "Failed to open hid device, interface number:%{public}u ret:%{public}d",
            bInterfaceNum1, ret);
        return ret;
    }
-   uint32_t bInterfaceNum2 = 0x01;
-   // 打开deviceId和interfaceIndex2指定的HID设备（一般为/dev/hidraw1设备文件）
    ret = OH_Hid_Open(deviceID_, bInterfaceNum2, &hid2_);
    if (ret != HID_DDK_SUCCESS) {
        OH_LOG_ERROR(LOG_APP, "Failed to open hid device, interface number:%{public}u ret:%{public}d",
