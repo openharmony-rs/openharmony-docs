@@ -15595,7 +15595,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":62,
 						"name":"save_the_uiContext_to_localstorage_in_entry_ability",
 						"start_line":16
 					}
@@ -15605,7 +15605,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":61,
 						"name":"save_uiContext_to_localstorage_in_entry_ability",
 						"start_line":16
 					}
@@ -16270,7 +16270,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_one.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":75,
 						"name":"pass_an_array_between_the_application_side_and_the_front_end_page",
 						"start_line":16
 					}
@@ -16280,7 +16280,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_two.ets",
 				"functions":[
 					{
-						"end_line":79,
+						"end_line":81,
 						"name":"the_base_type_is_passed_between_the_app_side_and_front_end_pages",
 						"start_line":16
 					}
@@ -16290,7 +16290,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_three.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":75,
 						"name":"the_application_side_calls_the_callback_of_the_front_end_page",
 						"start_line":16
 					}
@@ -16300,7 +16300,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_four.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":75,
 						"name":"call_the_function_in_the_object_of_the_front_end_page_on_the_application_side",
 						"start_line":16
 					}
@@ -16310,7 +16310,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_five.ets",
 				"functions":[
 					{
-						"end_line":87,
+						"end_line":91,
 						"name":"the_front_end_page_calls_the_function_in_the_object_on_the_application_side",
 						"start_line":16
 					}
@@ -16320,7 +16320,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/Promise_one.ets",
 				"functions":[
 					{
-						"end_line":78,
+						"end_line":81,
 						"name":"on_the_application_side_of_new_promise",
 						"start_line":16
 					}
@@ -16330,7 +16330,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/Promise_two.ets",
 				"functions":[
 					{
-						"end_line":72,
+						"end_line":75,
 						"name":"on_the_front_end_page_new_promise",
 						"start_line":16
 					}
