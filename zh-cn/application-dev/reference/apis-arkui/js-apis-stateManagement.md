@@ -2772,3 +2772,243 @@ type ReusableComponentConstructor = Function
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+## RecoverableStorage<sup>26.1.0+</sup>
+
+提供在应用被资源管控终止或异常退出时自动保存与恢复所声明的状态变量的能力。通过connect声明变量后，其值在系统恢复链路的保存时机自动保存，并在下一次恢复重启时自动恢复。具体UI使用说明，详见[RecoverableStorage: 查杀场景状态变量自动保存与恢复](../../ui/state-management/arkts-new-recoverablestorage.md)。
+
+>**说明：**
+>
+>1. 资源管控终止（如低内存）场景：恢复退后台时保存的值。
+>
+>2. **JS_ERROR**与**APP_FREEZE**异常退出场景：异常发生时刻的值被保存，并在系统自动重启后恢复。前提是应用已调用**enableAppRecovery**（默认参数即可满足）且未注册错误观察者。
+>
+>3. 仅系统携带恢复重启参数拉起的启动会执行恢复。用户手动启动应用始终为冷启动，**connect**返回默认值。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### connect<sup>26.1.0+</sup>
+
+static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object\>( <br>
+&nbsp;&nbsp;&nbsp;&nbsp;params:&nbsp;RecoverableConnectOptions\<T,&nbsp;S\> <br>
+):&nbsp;T
+
+声明一个可恢复的状态变量。若该变量已存在（内存或快照中），返回已存的值；否则通过**defaultCreator**构造默认值并返回。
+
+>**说明：**
+>
+>1. 仅支持对象类型。连接number、string、boolean等简单类型会抛出BusinessError(140124)。
+>
+>2. 同一实例的同一key以相同类型重复连接时，返回已有引用；类型不匹配时抛出BusinessError(140124)。
+>
+>3. 恢复重启时恢复值优先于默认值；恢复失败时返回通过**defaultCreator**构造的默认值，并经**notifyOnError**上报错误。
+>
+>4. 典型用法为修改所连接对象的属性。对V1 \@State变量整体重新赋值会导致已存引用失效，不被跟踪。
+>
+>5. 变量按**component**获取的窗口级实例ID隔离，不同实例的变量互不影响。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| params | [RecoverableConnectOptions\<T, S\>](#recoverableconnectoptionst-s26100) | 是 | 连接选项，包含component、type、defaultCreator等配置项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ------------------------------------------------------------ |
+| T | 连接成功时返回恢复值或默认值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../../errorcodes/errorcode-common.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 140124 | Unsupported type or parameters. |
+
+**示例：**
+
+```ts
+import { RecoverableStorage } from '@kit.ArkUI';
+
+class Draft {
+  text: string = '';
+  constructor(text: string = '') { this.text = text; }
+}
+
+@Entry
+@Component
+struct DraftPage {
+  @State draft: Draft = RecoverableStorage.connect({
+    component: this,
+    type: Draft,
+    defaultCreator: (): Draft => new Draft('')
+  });
+
+  build() {
+    Column() {
+      TextInput({ text: this.draft.text })
+        .onChange((v: string) => { this.draft.text = v; })
+    }
+  }
+}
+```
+
+### keys<sup>26.1.0+</sup>
+
+static&nbsp;keys(component:&nbsp;BaseCustomComponent):&nbsp;Array\<string\>
+
+获取当前实例（以**component**的窗口级实例ID标识）注册的所有可恢复状态变量的key。
+
+>**说明：**
+>
+>key在Array中的顺序是无序的，与key注册的顺序无关。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| component | [BaseCustomComponent](../../ui/state-management/arkts-create-custom-components.md) | 是 | 自定义组件实例，传入**this**。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ------------------------------------------------------------ |
+| Array\<string\> | 当前实例注册的所有key。未注册变量时返回空数组。 |
+
+**示例：**
+
+```ts
+import { RecoverableStorage } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyPage {
+  @State keys: string[] = [];
+
+  build() {
+    Column() {
+      Button('keys').onClick(() => {
+        this.keys = RecoverableStorage.keys(this);
+      })
+      Text(this.keys.join(','))
+    }
+  }
+}
+```
+
+### remove<sup>26.1.0+</sup>
+
+static&nbsp;remove\<T\>(component:&nbsp;BaseCustomComponent,&nbsp;keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithArgs\<T\>):&nbsp;void
+
+注销当前实例（以**component**的窗口级实例ID标识）指定key的可恢复状态变量。注销后该变量不再保存与恢复，再次连接该key时返回默认值。
+
+>**说明：**
+>
+>注销不存在的key时会报告警告。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| component | [BaseCustomComponent](../../ui/state-management/arkts-create-custom-components.md) | 是 | 自定义组件实例，传入**this**。 |
+| keyOrType | string&nbsp;\|&nbsp;[TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是 | 待注销的key。若传入类型，则注销以该类型名为key的变量。 |
+
+**示例：**
+
+```ts
+import { RecoverableStorage } from '@kit.ArkUI';
+
+class Draft { text: string = ''; }
+
+@Entry
+@Component
+struct MyPage {
+  build() {
+    Column() {
+      Button("remove 'draft'").onClick(() => {
+        RecoverableStorage.remove(this, 'draft');
+      })
+      Button('remove(Draft)').onClick(() => {
+        RecoverableStorage.remove(this, Draft);
+      })
+    }
+  }
+}
+```
+
+## RecoverableConnectOptions\<T, S\><sup>26.1.0+</sup>
+
+定义[RecoverableStorage.connect](#connect26100)的连接选项。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此类型仅可在Stage模型下使用。
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| component | [BaseCustomComponent](../../ui/state-management/arkts-create-custom-components.md) | 是 | 自定义组件实例，传入**this**，用于获取窗口级实例ID实现实例间隔离。 |
+| type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是 | 可恢复状态变量的类型。仅支持对象类型。 |
+| key | string | 否 | 可恢复状态变量的key。不指定时使用类型名作为key。 |
+| defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 是 | 默认值构造器。首次连接时使用，恢复失败时作为回退。 |
+| defaultSubCreator | [StorageDefaultCreator\<S\>](#storagedefaultcreatort) | 否 | 集合嵌套\@Type成员的构造器，恢复时用于重建嵌套对象。仅对容器类型（Array/Map/Set）顶层生效。 |
+| notifyOnError | [NotifyOnErrorCallback](#notifyonerrorcallback26100) | 否 | 序列化/反序列化错误回调。不指定时错误在内部处理，不会导致应用崩溃。 |
+
+## RecoverableStorageError<sup>26.1.0+</sup>
+
+定义[RecoverableStorage](#recoverablestorage26100)回调上报的错误信息。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| reason | 'serialization' \| 'deserialization' | 是 | 错误原因。'serialization'表示序列化失败（如超出序列化上限或字段不可序列化），'deserialization'表示反序列化失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以BusinessError(140124)直接抛出，不经本回调上报。推荐用户数据总量：每实例≤100KB（150KB序列化预算，与系统数据共享）。 |
+| keys | Array\<string\> | 是 | 受错误影响的key列表。 |
+| message | string | 是 | 错误的附加信息。 |
+
+## NotifyOnErrorCallback<sup>26.1.0+</sup>
+
+type&nbsp;NotifyOnErrorCallback&nbsp;=&nbsp;(error:&nbsp;RecoverableStorageError)&nbsp;=>&nbsp;void
+
+定义用于上报[RecoverableStorage](#recoverablestorage26100)错误的回调。回调在UI线程执行，回调内不应抛出异常。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此类型仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| error | [RecoverableStorageError](#recoverablestorageerror26100) | 是 | 错误信息。 |

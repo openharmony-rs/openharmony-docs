@@ -358,3 +358,29 @@ The data source of the @Link-decorated variable 'xxx' in custom component 'yyy' 
 **处理步骤**
 
 父组件初始化子组件@Link变量时，应该直接传入父组件的状态变量，参考@Link[变量的传递/访问规则说明](../../ui/state-management/arkts-link.md#变量的传递访问规则说明)。
+
+## 140124 RecoverableStorage使用不支持的类型或参数
+
+**错误信息：**
+
+Unsupported type or parameters.
+
+**错误描述：**
+
+调用RecoverableStorage.connect时传入了不支持的类型（如number、string、boolean等简单类型）或非法参数（如null/undefined组件实例、非构造器类型、非法key等）。
+
+**可能原因：**
+
+1. type参数传入简单类型（number、string、boolean）或不支持的数据类型（如PixelMap、NativePointer、ArrayList等）。
+2. component参数传入null、undefined或非自定义组件实例。
+3. key为空字符串或长度不小于1024字节。
+4. 同一key连接不同类型的数据。
+5. defaultCreator返回的值不是指定type的实例。
+
+**处理步骤：**
+
+1. 确认type参数为对象类型（class、interface等），并满足T extends object约束。
+2. 确认component参数传入的是自定义组件内的this（BaseCustomComponent实例）。
+3. 确认key非空且长度小于1024字节，建议由字母、数字、下划线组成。
+4. 确认同一key使用相同类型连接；如需更换类型，先调用remove注销原key。
+5. 确认defaultCreator返回指定type的实例，而非其他类型。
