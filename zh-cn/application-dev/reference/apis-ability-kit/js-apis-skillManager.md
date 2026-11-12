@@ -9,11 +9,13 @@
 本模块提供技能（Skill）信息的查询能力，支持查询应用自身的技能信息、指定应用的技能信息以及所有应用的技能信息。AI代理框架在规划任务时，可通过本模块查询设备上所有应用可用的技能，选择合适的技能来完成用户请求。通过技能信息查询，可以实现智能任务调度、能力匹配优化，提升AI代理的任务执行效率，降低开发者的技能集成复杂度。
 
 >
->**说明：**
+> **说明：**
 >
->本模块仅适用于ArkTS-Dyn。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 ## 导入模块
 
@@ -26,6 +28,8 @@ import { skillManager } from '@kit.AbilityKit';
 技能信息标志，指示需要获取的技能信息的内容。
 
 **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,6 +53,8 @@ getSkillInfoForSelf(moduleName: string, skillName: string, flags: number): Promi
 获取本应用中指定模块下指定名称的技能信息。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -81,6 +87,7 @@ getSkillInfoForSelf(moduleName: string, skillName: string, flags: number): Promi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { skillManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -101,6 +108,29 @@ try {
   hilog.error(0x0000, 'testTag', 'getSkillInfoForSelf failed: error %{public}d  %{public}s', code, message);
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { skillManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let moduleName = "entry";
+let skillName = "mySkill";
+let flags = skillManager.SkillInfoFlag.GET_SKILL_INFO_DEFAULT;
+try {
+  skillManager.getSkillInfoForSelf(moduleName, skillName, flags).then((data: skillManager.SkillInfo) => {
+    hilog.info(0x0000, 'testTag', `getSkillInfoForSelf succeed: Data: ${JSON.stringify(data)}`);
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', `getSkillInfoForSelf failed: errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
+} catch (err) {
+  if (err instanceof BusinessError) {
+    hilog.error(0x0000, 'testTag', `getSkillInfoForSelf failed: errCode:${err.code}  message:${err.message}`);
+  } else {
+    hilog.error(0x0000, 'testTag', `getSkillInfoForSelf failed: error: ${err.message}`);
+  }
+}
+```
 
 ## skillManager.getSkillInfosForSelf
 
@@ -109,6 +139,8 @@ getSkillInfosForSelf(flags: number): Promise\<Array\<[SkillInfo](js-apis-bundleM
 获取本应用的所有技能信息。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -139,6 +171,7 @@ getSkillInfosForSelf(flags: number): Promise\<Array\<[SkillInfo](js-apis-bundleM
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { skillManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -157,6 +190,27 @@ try {
   hilog.error(0x0000, 'testTag', 'getSkillInfosForSelf failed: error %{public}d  %{public}s', code, message);
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { skillManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let flags = skillManager.SkillInfoFlag.GET_SKILL_INFO_DEFAULT;
+try {
+  skillManager.getSkillInfosForSelf(flags).then((data: Array<skillManager.SkillInfo>) => {
+    hilog.info(0x0000, 'testTag', `getSkillInfosForSelf succeed: Data: ${JSON.stringify(data)}`);
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', `getSkillInfosForSelf failed: errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
+} catch (err) {
+  if (err instanceof BusinessError) {
+    hilog.error(0x0000, 'testTag', `getSkillInfosForSelf failed: errCode:${err.code}  message:${err.message}`);
+  } else {
+    hilog.error(0x0000, 'testTag', `getSkillInfosForSelf failed: error: ${err.message}`);
+  }
+}
+```
 
 ## skillManager.getSkillInfo
 
@@ -165,6 +219,8 @@ getSkillInfo(bundleName: string, moduleName: string, skillName: string, flags: n
 获取指定应用中指定模块下指定名称的技能信息。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE（该权限仅系统应用可申请） 或 ohos.permission.MANAGE_SKILL
 
@@ -208,6 +264,7 @@ getSkillInfo(bundleName: string, moduleName: string, skillName: string, flags: n
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { skillManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -229,6 +286,30 @@ try {
   hilog.error(0x0000, 'testTag', 'getSkillInfo failed: error %{public}d  %{public}s', code, message);
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { skillManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.example.myapplication";
+let moduleName = "entry";
+let skillName = "mySkill";
+let flags = skillManager.SkillInfoFlag.GET_SKILL_INFO_DEFAULT;
+try {
+  skillManager.getSkillInfo(bundleName, moduleName, skillName, flags).then((data: skillManager.SkillInfo) => {
+    hilog.info(0x0000, 'testTag', `getSkillInfo succeed: Data: ${JSON.stringify(data)}`);
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', `getSkillInfo failed: errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
+} catch (err) {
+  if (err instanceof BusinessError) {
+    hilog.error(0x0000, 'testTag', `getSkillInfo failed: errCode:${err.code}  message:${err.message}`);
+  } else {
+    hilog.error(0x0000, 'testTag', `getSkillInfo failed: error: ${err.message}`);
+  }
+}
+```
 
 ## skillManager.getSkillInfos
 
@@ -237,6 +318,8 @@ getSkillInfos(bundleName: string, flags: number, userId?: number): Promise\<Arra
 获取指定应用的所有技能信息。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE（该权限仅系统应用可申请） 或 ohos.permission.MANAGE_SKILL
 
@@ -276,6 +359,7 @@ getSkillInfos(bundleName: string, flags: number, userId?: number): Promise\<Arra
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { skillManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -295,6 +379,28 @@ try {
   hilog.error(0x0000, 'testTag', 'getSkillInfos failed: error %{public}d  %{public}s', code, message);
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { skillManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.example.myapplication";
+let flags = skillManager.SkillInfoFlag.GET_SKILL_INFO_DEFAULT;
+try {
+  skillManager.getSkillInfos(bundleName, flags).then((data: Array<skillManager.SkillInfo>) => {
+    hilog.info(0x0000, 'testTag', `getSkillInfos succeed: Data: ${JSON.stringify(data)}`);
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', `getSkillInfos failed: errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
+} catch (err) {
+  if (err instanceof BusinessError) {
+    hilog.error(0x0000, 'testTag', `getSkillInfos failed: errCode:${err.code}  message:${err.message}`);
+  } else {
+    hilog.error(0x0000, 'testTag', `getSkillInfos failed: error: ${err.message}`);
+  }
+}
+```
 
 ## skillManager.getAllSkillInfos
 
@@ -303,6 +409,8 @@ getAllSkillInfos(flags: number, userId?: number): Promise\<Array\<[SkillInfo](js
 获取设备上安装应用的所有技能信息。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.MANAGE_SKILL_PRIVILEGE（该权限仅系统应用可申请） 或 ohos.permission.MANAGE_SKILL
 
@@ -340,6 +448,7 @@ getAllSkillInfos(flags: number, userId?: number): Promise\<Array\<[SkillInfo](js
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { skillManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -358,6 +467,27 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllSkillInfos failed: error %{public}d  %{public}s', code, message);
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { skillManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let flags = skillManager.SkillInfoFlag.GET_SKILL_INFO_DEFAULT;
+try {
+  skillManager.getAllSkillInfos(flags).then((data: Array<skillManager.SkillInfo>) => {
+    hilog.info(0x0000, 'testTag', `getAllSkillInfos succeed: Data: ${JSON.stringify(data)}`);
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', `getAllSkillInfos failed: errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
+} catch (err) {
+  if (err instanceof BusinessError) {
+    hilog.error(0x0000, 'testTag', `getAllSkillInfos failed: errCode:${err.code}  message:${err.message}`);
+  } else {
+    hilog.error(0x0000, 'testTag', `getAllSkillInfos failed: error: ${err.message}`);
+  }
+}
+```
 
 ## SkillInfo
 
@@ -366,6 +496,8 @@ type SkillInfo = _SkillInfo
 技能配置信息，用于定义AI代理的技能能力。
 
 **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -385,6 +517,8 @@ type SkillType = _SkillType
 技能类型的枚举。
 
 **ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
