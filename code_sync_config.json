@@ -52998,5 +52998,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/SecurityPrivacyCenter/auto-menu-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/SecurityPrivacyCenter/MenuUIAbilityDemo/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"spc_menu_development_guidance_ui_ability",
+						"start_line":1
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/SecurityPrivacyCenter/MenuUECDemo/entry/src/main/ets/entryuiextensionability/EntryUIExtensionAbility.ets",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"spc_menu_uec_development_guidance_ability",
+						"start_line":1
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/SecurityPrivacyCenter/MenuUIAbilityDemo/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"spc_menu_development_guidance_ui_ability_back",
+						"start_line":1
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/SecurityPrivacyCenter/MenuUECDemo/entry/src/main/ets/pages/UECPage.ets",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"spc_menu_uec_development_guidance_back",
+						"start_line":1
+					}
+				]
+			}
+		]
 	}
 ]
