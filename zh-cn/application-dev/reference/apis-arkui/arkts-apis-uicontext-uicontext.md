@@ -14,8 +14,6 @@ UIContext实例对象。
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
 > - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](#getcallingscopeuicontext22)获取UIContext实例。本文中UIContext对象以uiContext表示。
@@ -75,6 +73,8 @@ constructor()
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -164,6 +164,8 @@ static getCallingScopeUIContext(): UIContext | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 22
 
 **ArkTS-Sta起始版本：** 24
@@ -214,6 +216,8 @@ static getLastFocusedUIContext(): UIContext | undefined
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -266,6 +270,8 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 22
 
 **ArkTS-Sta起始版本：** 24
@@ -316,6 +322,8 @@ static getAllUIContexts(): UIContext[]
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -380,6 +388,8 @@ static resolveUIContext(): ResolvedUIContext
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 22
 
 **ArkTS-Sta起始版本：** 23
@@ -421,6 +431,8 @@ isAvailable(): boolean
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -502,6 +514,8 @@ getFont(): Font
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -525,6 +539,8 @@ getComponentUtils(): ComponentUtils
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -550,6 +566,8 @@ getUIInspector(): UIInspector
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -573,6 +591,8 @@ getUIObserver(): UIObserver
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -670,6 +690,8 @@ ArkTS-Sta: getId(): int
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 22
 
 **ArkTS-Sta起始版本：** 23
@@ -733,6 +755,8 @@ getRouter(): Router
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -756,6 +780,8 @@ getPromptAction(): PromptAction
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -783,6 +809,8 @@ getDialogPresenter(): DialogPresenter
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 26.0.1
 
 **返回值：**
@@ -804,6 +832,8 @@ getOverlayManager(): OverlayManager
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -828,6 +858,8 @@ setOverlayManagerOptions(options: OverlayManagerOptions): boolean
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -858,6 +890,8 @@ getOverlayManagerOptions(): OverlayManagerOptions
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -1197,6 +1231,8 @@ getFrameNodeById(id: string): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -1230,6 +1266,8 @@ getAttachedFrameNodeById(id: string): FrameNode | null
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -1297,6 +1335,8 @@ ArkTS-Sta: getFrameNodeByUniqueId(id: int): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -1350,6 +1390,8 @@ ArkTS-Sta: getPageInfoByUniqueId(id: int): PageInfo
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -1428,6 +1470,8 @@ ArkTS-Sta: getNavigationInfoByUniqueId(id: int): observer.NavigationInfo | undef
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -1461,6 +1505,8 @@ showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButto
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1520,6 +1566,8 @@ showActionSheet(value: ActionSheetOptions): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1599,6 +1647,8 @@ showDatePickerDialog(options: DatePickerDialogOptions): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -1680,6 +1730,8 @@ showTimePickerDialog(options: TimePickerDialogOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **ArkTS-Dyn起始版本：** 10
@@ -1750,6 +1802,8 @@ showTextPickerDialog(options: TextPickerDialogOptions): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -1982,6 +2036,8 @@ showTextPickerDialog(style: TextPickerDialogOptions\|TextPickerDialogOptionsExt)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **ArkTS-Dyn起始版本：** 20
@@ -2138,6 +2194,8 @@ runScopedTask(callback: () => void): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -2279,6 +2337,8 @@ getAtomicServiceBar(): Nullable\<AtomicServiceBar>
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -2321,6 +2381,8 @@ getDragController(): DragController
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -2429,6 +2491,8 @@ getFocusController(): FocusController
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2452,6 +2516,8 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2561,6 +2627,8 @@ ArkTS-Sta: getFilteredInspectorTreeById(id: string, depth: int, filters?: Array\
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2647,6 +2715,8 @@ getCursorController(): CursorController
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2670,6 +2740,8 @@ getContextMenuController(): ContextMenuController
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2717,6 +2789,8 @@ getMeasureUtils(): MeasureUtils
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2742,6 +2816,8 @@ getComponentSnapshot(): ComponentSnapshot
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2778,6 +2854,8 @@ ArkTS-Sta: vp2px(value : double) : double
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2844,6 +2922,8 @@ ArkTS-Sta: px2vp(value : double) : double
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2907,6 +2987,8 @@ ArkTS-Sta: fp2px(value : double) : double
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2972,6 +3054,8 @@ ArkTS-Sta: px2fp(value : double) : double
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -3031,6 +3115,8 @@ ArkTS-Sta: lpx2px(value : double) : double
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -3092,6 +3178,8 @@ ArkTS-Sta: px2lpx(value : double) : double
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -3143,6 +3231,8 @@ getWindowName(): string | undefined
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -3201,6 +3291,8 @@ ArkTS-Sta: getWindowId(): int | undefined
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
@@ -3249,6 +3341,8 @@ getWindowWidthBreakpoint(): WidthBreakpoint
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -3302,6 +3396,8 @@ getWindowHeightBreakpoint(): HeightBreakpoint
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -3429,6 +3525,8 @@ postFrameCallback(frameCallback: FrameCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -3483,6 +3581,8 @@ ArkTS-Sta: postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: lon
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -3535,6 +3635,8 @@ requireDynamicSyncScene(id: string): Array&lt;DynamicSyncScene&gt;
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -4109,6 +4211,8 @@ bindTabsToScrollable(tabsController: TabsController, scroller: Scroller): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 13
 
 **ArkTS-Sta起始版本：** 23
@@ -4229,6 +4333,8 @@ unbindTabsFromScrollable(tabsController: TabsController, scroller: Scroller): vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 13
 
 **ArkTS-Sta起始版本：** 23
@@ -4253,6 +4359,8 @@ bindTabsToNestedScrollable(tabsController: TabsController, parentScroller: Scrol
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -4279,6 +4387,8 @@ unbindTabsFromNestedScrollable(tabsController: TabsController, parentScroller: S
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -4347,6 +4457,8 @@ getTextMenuController(): TextMenuController
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 16
 
 **ArkTS-Sta起始版本：** 23
@@ -4374,6 +4486,8 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 17
 
@@ -4429,6 +4543,8 @@ static destroyUIContextWithoutWindow(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 17
 
 **ArkTS-Sta起始版本：** 23
@@ -4461,6 +4577,8 @@ setUIStates(callback: VoidCallback): void
 在debug模式下，若检测到未通过setUIStates在非UI线程更新状态变量，系统将输出错误日志（需要使用try-catch捕获异常）。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -4522,6 +4640,8 @@ ArkTS-Sta: dispatchKeyEvent(node: int | string, event: KeyEvent): boolean
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -4675,6 +4795,8 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 21
@@ -4736,6 +4858,8 @@ setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
@@ -4786,6 +4910,8 @@ setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../a
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
@@ -4831,6 +4957,8 @@ getMagnifier(): Magnifier
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -5290,6 +5418,8 @@ getPageRootNode(): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **ArkTS-Dyn起始版本：** 24
 
 **ArkTS-Sta起始版本：** 24
@@ -5503,6 +5633,8 @@ onTextChange(callback: Callback<observer.TextChangeEventInfo>): void
 注册当文本框的文本内容发生变化时触发的回调函数。使用callback异步回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
