@@ -549,5 +549,6 @@ release(): void
 ```ts
 function Release(pictureObj: image.Picture): void {
   pictureObj.release();
+  console.info('Succeeded in releasing a picture.');
 }
 ```
