@@ -141,6 +141,11 @@ struct BuilderPlaceholderList {
     this.data = list;
   }
 
+  aboutToDisappear(): void {
+    this.getUIContext().getPlaceholderRegister()
+      .unregister('itemPlaceholder');
+  }
+
   build() {
     Column({ space: 5 }) {
       List({ space: 10 }) {
