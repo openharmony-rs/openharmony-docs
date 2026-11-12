@@ -210,9 +210,9 @@ USB Key PIN码认证请求。
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | certType | [CertificateType](#certificatetype14)   | 否   | 否   | 表示要安装的证书类型，当前支持CA_CERT、CREDENTIAL_USER和CREDENTIAL_SYSTEM。 |
-| certScope | [CertificateScope](#certificatescope14)   | 否   | 否   | 表示要安装的证书的使用范围，当前支持CURRENT_USER和NOT_SPECIFIED。 |
+| certScope | [CertificateScope](#certificatescope14)   | 否   | 否   | 表示待安装证书的使用范围，目前支持CURRENT_USER和NOT_SPECIFIED。 |
 | cert | Uint8Array   | 否   | 否   | 表示证书数据，大小不超过8KB。<br>当certType为CA_CERT时，证书数据必须为PEM或DER编码格式的证书数据。<br>当certType为CREDENTIAL_USER或CREDENTIAL_SYSTEM时，证书数据必须为P12编码格式的证书凭据数据。 |
-| keystorePwd | string   | 否   | 是   | 表示密钥库文件的密码，最大长度为128。<br>该参数仅当certType取值为CREDENTIAL_USER或CREDENTIAL_SYSTEM时有效；若指定该参数，则对话框中无需用户输入密码。 |
+| keystorePwd | string   | 否   | 是   | 表示密钥库文件的密码，最大长度为32字节。<br>该参数仅当certType取值为CREDENTIAL_USER或CREDENTIAL_SYSTEM时有效；若指定该参数，则对话框中无需用户输入密码。 |
 
 ## certificateManagerDialog.openCertificateManagerDialog
 
@@ -776,7 +776,7 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 | 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.                                 |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
 | 29700002 | The user cancels the authentication operation or operation timed out.                                                                             |
-| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. The Ukey authentication dialog box cannot be opened concurrently. Please try again later. |
+| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal. Please ask the user to check the status of the Ukey. The Ukey authentication dialog box cannot be opened concurrently. Please try again later. |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
 
 **示例**：
@@ -889,7 +889,7 @@ openAuthDialogForUkeyProvider(dialogInfo: UkeyAuthDialogInfo, ukeyAuthRequest: U
 | 801      | Capability not supported because the certificate management application hap is not preinstalled in the system.                                 |
 | 29700001 | The certificate manager service processing failed. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 29700002 | The user cancels the authentication operation.                                                                                                   |
-| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. |
+| 29700003 | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal. Please ask the user to check the status of the Ukey. |
 | 29700005 | The operation does not comply with the device security policy. Only the PC/2in1 device can open the dialog box of the UkeyAuthExtensionAbility type.  |
 | 29700006 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.            |
 | 29700009 | The operation in the Ukey authentication dialog box timed out.                                                                                  |
