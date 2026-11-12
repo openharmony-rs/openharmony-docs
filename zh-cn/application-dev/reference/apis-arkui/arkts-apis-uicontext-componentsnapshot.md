@@ -592,9 +592,8 @@ getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOption
 **示例：**
 
 ```ts
-import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+import { NodeController, FrameNode, typeNode, UIContext } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
-import { UIContext } from '@kit.ArkUI';
 // 自定义节点控制器，创建包含Image的FrameNode节点
 class MyNodeController extends NodeController {
   public node: FrameNode | null = null;
