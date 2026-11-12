@@ -47354,7 +47354,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
 				"functions":[
 					{
-						"end_line":220,
+						"end_line":229,
 						"name":"import_header",
 						"start_line":18
 					}
@@ -47374,9 +47374,9 @@
 						"start_line":892
 					},
 					{
-						"end_line":1542,
+						"end_line":1518,
 						"name":"macro_status_callback",
-						"start_line":1517
+						"start_line":1493
 					}
 				]
 			}
@@ -47389,7 +47389,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
 				"functions":[
 					{
-						"end_line":220,
+						"end_line":229,
 						"name":"import_header",
 						"start_line":18
 					}
@@ -47469,7 +47469,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
 				"functions":[
 					{
-						"end_line":220,
+						"end_line":229,
 						"name":"import_header",
 						"start_line":18
 					}
@@ -47524,7 +47524,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
 				"functions":[
 					{
-						"end_line":220,
+						"end_line":229,
 						"name":"import_header",
 						"start_line":18
 					}
@@ -47579,7 +47579,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h",
 				"functions":[
 					{
-						"end_line":220,
+						"end_line":229,
 						"name":"import_header",
 						"start_line":18
 					}
@@ -47594,9 +47594,9 @@
 						"start_line":475
 					},
 					{
-						"end_line":1471,
+						"end_line":1472,
 						"name":"photo_available",
-						"start_line":1309
+						"start_line":1310
 					},
 					{
 						"end_line":811,
@@ -55491,9 +55491,9 @@
 						"start_line":940
 					},
 					{
-						"end_line":860,
+						"end_line":863,
 						"name":"photo_asset_available",
-						"start_line":800
+						"start_line":803
 					}
 				]
 			}
@@ -55521,9 +55521,9 @@
 						"start_line":1015
 					},
 					{
-						"end_line":1054,
+						"end_line":1199,
 						"name":"camera_video_stop",
-						"start_line":1033
+						"start_line":1178
 					},
 					{
 						"end_line":940,
@@ -55566,19 +55566,19 @@
 						"start_line":1132
 					},
 					{
-						"end_line":419,
+						"end_line":421,
 						"name":"camera_capture",
-						"start_line":387
+						"start_line":388
 					},
 					{
-						"end_line":747,
+						"end_line":874,
 						"name":"capture_start_with_info",
-						"start_line":742
+						"start_line":869
 					},
 					{
-						"end_line":759,
+						"end_line":886,
 						"name":"capture_end",
-						"start_line":753
+						"start_line":880
 					},
 					{
 						"end_line":767,
@@ -55586,9 +55586,9 @@
 						"start_line":760
 					},
 					{
-						"end_line":897,
+						"end_line":900,
 						"name":"photoOutput_error",
-						"start_line":892
+						"start_line":895
 					}
 				]
 			}
@@ -72757,9 +72757,9 @@
 						"start_line":546
 					},
 					{
-						"end_line":1000,
+						"end_line":1003,
 						"name":"on_camera_status",
-						"start_line":965
+						"start_line":968
 					}
 				]
 			}
@@ -72782,9 +72782,9 @@
 						"start_line":1605
 					},
 					{
-						"end_line":1661,
+						"end_line":1662,
 						"name":"get_camera_devices",
-						"start_line":1625
+						"start_line":1626
 					},
 					{
 						"end_line":1682,
