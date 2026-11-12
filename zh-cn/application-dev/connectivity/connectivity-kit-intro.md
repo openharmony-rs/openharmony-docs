@@ -52,7 +52,7 @@
   提供基于电话簿访问协议（Phone Book Access Profile）实现设备间电话簿数据共享的能力。例如：手机与车载间的联系人和通话记录的数据同步。具体内容可参考API [@ohos.bluetooth.pbap](../reference/apis-connectivity-kit/js-apis-bluetooth-pbap.md)。
 
 ### WLAN简介
-无线局域网（Wireless Local Area Networks, WLAN），是通过无线电、红外光信号或者其他技术发送和接收数据的局域网，用户可以通过WLAN实现结点之间无物理连接的网络通讯。常用于用户携带可移动终端的办公、公众环境中。
+无线局域网（Wireless Local Area Networks, WLAN），是通过无线电、红外光信号或者其他技术发送和接收数据的局域网，用户可以通过WLAN实现节点之间无物理连接的网络通讯。常用于用户携带可移动终端的办公、公众环境中。
 
 WLAN系统为用户提供接入WLAN网络功能（STA模式）、点对点的数据传输功能（P2P模式）和热点分享功能（AP模式），让应用可以通过WLAN和其他设备互联互通。
 

@@ -36,7 +36,7 @@ Wi-Fi扫描是指设备（如手机、电脑、路由器等）搜索周围可用
 1. 导入需要的Wi-Fi模块。
 2. 需要SystemCapability.Communication.WiFi.STA系统能力。
 3. 需要权限ohos.permission.GET_WIFI_INFO。
-4. 开启设备的Wi-Fi。
+4. 开启设备的Wi-Fi，开启之前您可以调用[wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 5. 示例代码：
 
    > **说明：**
