@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API版本7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
@@ -269,7 +269,7 @@ onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
 
 > **说明：**
 >
-> 此接口从API版本8开始支持，从API版本11开始不再维护，建议使用[onDoNotDisturbChanged](js-apis-inner-notification-notificationSubscriber-sys.md#ondonotdisturbchanged11)代替。
+> 此接口从API version 8开始支持，从API version 11开始不再维护，建议使用[onDoNotDisturbChanged](js-apis-inner-notification-notificationSubscriber-sys.md#ondonotdisturbchanged11)代替。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -599,7 +599,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 | bundle      | string | 是   | 否   | 应用的包名。 |
 | uid         | number | 是   | 否   | 应用的uid。  |
 | badgeNumber | number | 是   | 否   | 角标个数。   |
-| instanceKey<sup>(deprecated)</sup>  | number | 是   | 是   | 应用实例键值。从API版本12开始支持，从API版本15开始废弃，建议使用appInstanceKey替代。   |
+| instanceKey<sup>(deprecated)</sup>  | number | 是   | 是   | 应用实例键值。从API version 12开始支持，从API version 15开始废弃，建议使用appInstanceKey替代。   |
 | appInstanceKey<sup>15+</sup>  | string | 是   | 是   | 应用实例键值。   |
 
 
