@@ -38,8 +38,8 @@ interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Pro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reqContext | [HttpRequestContext](arkts-network-http-httprequestcontext-i.md) | 是 | the context of the target HTTP request. |
-| rspContext | [HttpResponse](arkts-network-http-httpresponse-i.md) | 是 | the context of the target HTTP response. |
+| reqContext | [HttpRequestContext](arkts-network-http-httprequestcontext-i.md) | 是 | 经过HTTP拦截器的请求参数的上下文。 |
+| rspContext | [HttpResponse](arkts-network-http-httpresponse-i.md) | 是 | 经过HTTP拦截器的返回结果的上下文。 |
 
 **返回值：**
 
@@ -73,7 +73,7 @@ let customInterceptor = new CustomInterceptor();
 interceptorType: InterceptorType
 ```
 
-The type of this interceptor. It defines when this intercptor would be called.
+拦截器类型，定义此拦截器何时被调用。
 
 **类型：** [InterceptorType](arkts-network-http-interceptortype-e.md)
 

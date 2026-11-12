@@ -30,8 +30,8 @@ function batchUpdate(sourceAttributes: Array<AssetMap>, destAttributes: Array<As
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sourceAttributes | Array&lt;[AssetMap](arkts-assetstore-asset-assetmap-t.md)&gt; | 是 | 待更新关键资产的搜索条件数组。 |
-| destAttributes | Array&lt;[AssetMap](arkts-assetstore-asset-assetmap-t.md)&gt; | 是 | 待更新关键资产的属性集合数组。 |
+| sourceAttributes | Array&lt;[AssetMap](arkts-assetstore-asset-assetmap-t.md)&gt; | 是 | 待更新关键资产的搜索条件数组。<br>数组最大长度为100，数组中所有元素的[GROUP_ID](arkts-assetstore-asset-tag-e.md#group_id)和[REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tag-e.md#require_attr_encrypted)属性值必须相同。 |
+| destAttributes | Array&lt;[AssetMap](arkts-assetstore-asset-assetmap-t.md)&gt; | 是 | 待更新关键资产的属性集合数组。<br>数组最大长度为100，且应与sourceAttributes长度保持一致，数组中所有元素的[GROUP_ID](arkts-assetstore-asset-tag-e.md#group_id)和[REQUIRE_ATTR_ENCRYPTED](arkts-assetstore-asset-tag-e.md#require_attr_encrypted)属性值必须相同。 |
 
 **返回值：**
 

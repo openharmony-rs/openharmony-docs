@@ -12,7 +12,7 @@ import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 export function queryControlAppStatus(appInfo: AppInfo[]): Promise<ControlAppStatusResult[]>
 ```
 
-Queries the control permission status for the specified applications. This function checks whether each application in the input list is allowed or denied to be controlled by external tools. The result list corresponds to the input order.
+This API is used to query the control permission status of a specified application. This function checks whether each application in the input list is allowed or denied Controlled by external tools. The result list corresponds to the input order.
 
 **Since:** 26.1.0
 
@@ -34,7 +34,7 @@ Queries the control permission status for the specified applications. This funct
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[ControlAppStatusResult](arkts-ability-abilitytoolaccessctrl-controlappstatusresult-i.md)[]&gt; | Promise used to return ${ControlAppStatusResult[]}. |
+| Promise&lt;[ControlAppStatusResult](arkts-ability-abilitytoolaccessctrl-controlappstatusresult-i.md)[]&gt; | Promise object that returns ${ControlAppStatusResult[]}. |
 
 **Error codes:**
 

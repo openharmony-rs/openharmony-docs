@@ -4,7 +4,7 @@
 interface InterceptedRecord
 ```
 
-拦截记录。
+拦截记录信息结构。
 
 **起始版本：** 14
 
@@ -26,7 +26,7 @@ import { netFirewall } from '@kit.NetworkKit';
 appUid?: number
 ```
 
-Application or service ID.
+应用程序或服务UID，默认值为0。
 
 **类型：** number
 
@@ -44,6 +44,8 @@ Application or service ID.
 domain?: string
 ```
 
+域名。
+
 **类型：** string
 
 **起始版本：** 14
@@ -59,6 +61,8 @@ domain?: string
 ```TypeScript
 localIp?: string
 ```
+
+本地IP。
 
 **类型：** string
 
@@ -76,7 +80,7 @@ localIp?: string
 localPort?: number
 ```
 
-Local port.
+本地端口，默认值为0。
 
 **类型：** number
 
@@ -94,7 +98,7 @@ Local port.
 protocol?: number
 ```
 
-Transport layer protocol.
+传输层协议，默认值为0。
 
 **类型：** number
 
@@ -112,6 +116,8 @@ Transport layer protocol.
 remoteIp?: string
 ```
 
+远端IP。
+
 **类型：** string
 
 **起始版本：** 14
@@ -128,7 +134,7 @@ remoteIp?: string
 remotePort?: number
 ```
 
-Remote port.
+远端端口，默认值为0。
 
 **类型：** number
 
@@ -146,7 +152,7 @@ Remote port.
 time: number
 ```
 
-Time stamp.
+时间戳。
 
 **类型：** number
 

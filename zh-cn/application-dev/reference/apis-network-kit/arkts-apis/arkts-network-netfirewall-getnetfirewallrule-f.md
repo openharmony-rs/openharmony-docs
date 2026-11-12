@@ -33,7 +33,7 @@ function getNetFirewallRule(userId: number, ruleId: number): Promise<NetFirewall
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetFirewallRule](arkts-network-netfirewall-netfirewallrule-i.md)&gt; | 以Promise形式返回防火墙规则。 |
+| Promise&lt;[NetFirewallRule](arkts-network-netfirewall-netfirewallrule-i.md)&gt; | Promise对象，返回防火墙规则。 |
 
 **错误码：**
 

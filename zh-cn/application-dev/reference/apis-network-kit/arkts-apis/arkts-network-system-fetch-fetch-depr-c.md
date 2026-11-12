@@ -22,6 +22,7 @@ export default class Fetch
 ## 导入模块
 
 ```TypeScript
+import { Fetch } from '@system.fetch';
 ```
 
 ## fetch

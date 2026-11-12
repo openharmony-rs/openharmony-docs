@@ -14,8 +14,6 @@ function getNetCapabilities(netHandle: NetHandle, callback: AsyncCallback<NetCap
 
 Obtains the network capability set of the data network specified by **NetHandle**, including the uplink and downlink bandwidth, specific network capabilities, and network type. This API uses an asynchronous callback to return the result.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
-
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
@@ -74,8 +72,6 @@ function getNetCapabilities(netHandle: NetHandle): Promise<NetCapabilities>
 ```
 
 Obtains the network capability set of the data network specified by **NetHandle**, including the uplink and downlink bandwidth, specific network capabilities, and network type. This API uses a promise to return the result.
-
-**Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since:** 8
 

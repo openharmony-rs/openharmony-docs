@@ -12,7 +12,7 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 function init(): void
 ```
 
-初始化应用灰度模块。多实例应用不支持调用此接口。
+初始化应用灰度模块。
 
 **起始版本：** 26.0.0
 
@@ -24,8 +24,18 @@ function init(): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
-**错误码：**
+**示例**
 
-| 错误码ID | 错误信息 |
-| --- | --- |
-| 36000002 | Multi-instance applications not supported error. Possibly caused by invoking this function in a multi-instance application. |
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
+
+try {
+  // 初始化应用灰度模块
+  hiRetrieval.init();
+} catch (err) {
+  // 捕获并打印错误信息
+  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
+}
+// 后续可以完成其他的灰度接口调用
+```

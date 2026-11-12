@@ -16,7 +16,7 @@ function getUidTxBytes(uid: number, callback: AsyncCallback<number>): void
 
 > **说明：** 
 > 
-> 若重启后该应用未产生流量消耗，则会抛出2103005错误码。
+> 若重启后该应用未产生流量消耗，则会抛出2103005错误码。 &gt;
 
 **起始版本：** 10
 
@@ -33,7 +33,7 @@ function getUidTxBytes(uid: number, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uid | number | 是 | 指定查询的应用 uid。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取应用实时上行流量时，error为undefined，stats为获取到的应用上行流量(单位:字节)；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取应用实时上行流量时，err为undefined，stats为获取到的应用上行流量（单位：字节）；否则为错误对象。 |
 
 **错误码：**
 
@@ -73,7 +73,7 @@ function getUidTxBytes(uid: number): Promise<number>
 
 > **说明：** 
 > 
-> 若重启后该应用未产生流量消耗，则会抛出2103005错误码。
+> 若重启后该应用未产生流量消耗，则会抛出2103005错误码。 &gt;
 
 **起始版本：** 10
 
@@ -95,7 +95,7 @@ function getUidTxBytes(uid: number): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | The promise returned by the function. |
+| Promise&lt;number&gt; | Promise对象，返回指定应用从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。 |
 
 **错误码：**
 

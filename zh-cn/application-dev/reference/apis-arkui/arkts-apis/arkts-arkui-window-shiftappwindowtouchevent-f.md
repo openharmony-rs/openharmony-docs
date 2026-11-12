@@ -44,7 +44,7 @@ function shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. SourceWindow cannot find: not created or not belong to current process;         2. TargetWindow cannot find: not created or not belong to current process;         3. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and subwindows are supported;         2. The two windows are not from the same process. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-参数错误) | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例**
 

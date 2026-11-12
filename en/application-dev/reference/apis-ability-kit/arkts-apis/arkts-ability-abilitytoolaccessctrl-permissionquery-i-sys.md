@@ -146,7 +146,7 @@ Task identity.
 ticketExpireTimeMs?: number
 ```
 
-Ticket expiration time in milliseconds. Unit: milliseconds. The value must be greater than 0. Value constraint: Greater than 0.
+Credential expiration time, in milliseconds. The value must be greater than 0. Value restriction: The value must be greater than 0.
 
 **Type:** number
 

@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { formHost } from '@ohos.application.formHost';
 ```
 
 ## isSystemReady

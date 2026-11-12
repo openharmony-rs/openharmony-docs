@@ -196,7 +196,10 @@ The error code indicates that the attributes required to be consistent are incon
 INVALID_ARGUMENT = 401
 ```
 
-The argument is invalid.
+Parameter error. Possible causes:
+1. Mandatory parameters are not specified.
+2. The parameter type is incorrect.
+3. Parameter verification failed.
 
 **Since:** 11
 

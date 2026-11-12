@@ -450,7 +450,7 @@ Sets up a **TLSSocket** connection, and creates and initializes a TLS session af
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
@@ -717,7 +717,7 @@ Obtains the local digital certificate after a **TLSSocket** connection is establ
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[X509CertRawData](arkts-network-socket-x509certrawdata-t.md)&gt; | Promise used to return the result. If the operation fails, an error message is returned. |
+| Promise&lt;[X509CertRawData](arkts-network-socket-x509certrawdata-t.md)&gt; | Promise used to return the local digital certificate. Returns an error code and error message on failure. |
 
 **Error codes:**
 
@@ -821,7 +821,7 @@ Obtains the cipher suite negotiated by both communication parties after a **TLSS
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the result. If the operation fails, an error message is returned. |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the cipher suites supported by both communicating parties. On failure, returns an error code and error message. |
 
 **Error codes:**
 
@@ -954,7 +954,7 @@ Obtains the communication protocol version after a **TLSSocket** connection is e
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Promise used to return the result. If the operation fails, an error message is returned. |
+| Promise&lt;string&gt; | Promise used to return the protocol of the communication. On failure, returns the error code and error message. |
 
 **Error codes:**
 
@@ -1039,7 +1039,7 @@ Obtains the remote address of a TLS socket connection. This API uses a promise t
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise used to return the result. If the operation fails, an error message is returned. |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise used to return the result of obtaining the local socket address. On failure, returns the error code and error message. |
 
 **Error codes:**
 
@@ -1141,7 +1141,7 @@ Obtains the digital certificate of the server after a **TLSSocket** connection i
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[X509CertRawData](arkts-network-socket-x509certrawdata-t.md)&gt; | Promise used to return the result. If the operation fails, an error message is returned. |
+| Promise&lt;[X509CertRawData](arkts-network-socket-x509certrawdata-t.md)&gt; | Promise used to return the server's digital certificate. If the operation fails, an error code and error message are returned. |
 
 **Error codes:**
 
@@ -1245,7 +1245,7 @@ Obtains the signing algorithm negotiated by both communication parties after a *
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the result. |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the obtained signature algorithms supported by both parties. |
 
 **Error codes:**
 
@@ -1292,7 +1292,7 @@ Obtains the file descriptor of the **TLSSocket** object. This API uses a promise
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the result. |
+| Promise&lt;number&gt; | Promise used to return the file descriptor of the socket. |
 
 **Examples**
 
@@ -1388,7 +1388,7 @@ Obtains the status of the TLS socket connection. This API uses a promise to retu
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | Promise used to return the result. If the operation fails, an error message is returned. |
+| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | Promise used to return and obtain the result of the TLSSocket state. On failure, returns the error code and error message. |
 
 **Error codes:**
 
@@ -1440,8 +1440,8 @@ Unsubscribes from **message** events of the **TLSSocket** object. This API uses 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'message' | Yes | Event type.<br> **message**: message receiving event. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SocketMessageInfo](arkts-network-socket-socketmessageinfo-i.md)&gt; | No | Callback used to return the result.<br>**Since:** 11 |
+| type | 'message' | Yes | Event type. <br> **message**: message receiving event. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SocketMessageInfo](arkts-network-socket-socketmessageinfo-i.md)&gt; | No | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.<br>**Since:** 11 |
 
 **Error codes:**
 
@@ -1490,7 +1490,7 @@ Unsubscribes from **connect** or **close** events of the **TLSSocket** object. T
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'connect' &#124; 'close' | Yes | Event type.<br> <br>- **connect**: connection event. <br>- **close**: close event. |
+| type | 'connect' &#124; 'close' | Yes | Event type. <br> <br>- **connect**: connection event. <br>- **close**: close event. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | Callback used to return the result. |
 
 **Error codes:**
@@ -1539,7 +1539,7 @@ Unsubscribes from **error** events of the **TLSSocket** object. This API uses an
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'error' | Yes | Event type.<br> **error**: error event. |
+| type | 'error' | Yes | Event type. <br> **error**: error event. |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | No | Callback used to return the result. |
 
 **Error codes:**
@@ -1585,7 +1585,7 @@ Subscribes to **message** events of the **TLSSocket** object. This API uses an a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'message' | Yes | Event type.<br> **message**: message receiving event. |
+| type | 'message' | Yes | Event type. <br> **message**: message receiving event. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SocketMessageInfo](arkts-network-socket-socketmessageinfo-i.md)&gt; | Yes | Callback used to return the result.<br>**Since:** 11 |
 
 **Error codes:**
@@ -1647,7 +1647,7 @@ Subscribes to **connect** or **close** events of the **TLSSocket** object. This 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'connect' &#124; 'close' | Yes | Event type.<br> <br>- **connect**: connection event. <br>- **close**: close event. |
+| type | 'connect' &#124; 'close' | Yes | Event type. <br> <br>- **connect**: connection event. <br>- **close**: close event. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -1704,7 +1704,7 @@ Subscribes to **error** events of the **TLSSocket** object. This API uses an asy
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'error' | Yes | Event type.<br> **error**: error event. |
+| type | 'error' | Yes | Event type. <br> **error**: error event. |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | Yes | Callback used to return the result. |
 
 **Error codes:**

@@ -19,6 +19,7 @@ Represents a **Schema** instance, which provides the APIs for defining the value
 ## Modules to Import
 
 ```TypeScript
+import { distributedData } from '@ohos.data.distributedData';
 ```
 
 ## appendChild

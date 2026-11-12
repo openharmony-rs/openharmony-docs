@@ -4,7 +4,7 @@
 export interface ValidationContext
 ```
 
-[ValidationCallback](arkts-network-http-validationcallback-t.md)的验证上下文
+验证远端服务器身份时的证书上下文信息，作为[ValidationCallback](arkts-network-http-validationcallback-t.md)的参数传入。
 
 **起始版本：** 26.0.0
 
@@ -24,7 +24,7 @@ import { http } from '@kit.NetworkKit';
 host: string
 ```
 
-此请求的主机
+本次请求的目标主机名。
 
 **类型：** string
 
@@ -42,7 +42,7 @@ host: string
 ip: string
 ```
 
-此请求连接到的真实IP
+本次请求实际连接的IP地址。
 
 **类型：** string
 
@@ -60,7 +60,7 @@ ip: string
 pemCerts: string[]
 ```
 
-证书的PEM格式的原始数据
+PEM格式的证书原始数据。
 
 **类型：** string[]
 
@@ -78,7 +78,7 @@ pemCerts: string[]
 x509Certs: X509Cert[]
 ```
 
-X509证书链
+X509证书链。
 
 **类型：** [X509Cert](arkts-network-http-x509cert-t.md)[]
 

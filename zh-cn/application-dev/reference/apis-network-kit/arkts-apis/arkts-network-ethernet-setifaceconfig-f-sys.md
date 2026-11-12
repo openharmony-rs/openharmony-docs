@@ -12,7 +12,7 @@ import { ethernet } from '@kit.NetworkKit';
 function setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallback<void>): void
 ```
 
-设置网络接口配置信息，使用callback异步回调。
+设置网络接口配置信息。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -39,7 +39,7 @@ function setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: Asy
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
-| [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
+| [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 | [2201004](../errorcode-net-ethernet.md#2201004-以太网配置信息无效) | Invalid Ethernet profile. |
@@ -81,7 +81,7 @@ ethernet.setIfaceConfig("eth0", config, (error: BusinessError) => {
 function setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise<void>
 ```
 
-设置网络接口配置信息，使用Promise异步回调。
+设置网络接口配置信息。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -104,7 +104,7 @@ function setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以Promise形式返回执行结果。成功无返回，失败返回对应错误码。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -113,7 +113,7 @@ function setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise<void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
-| [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
+| [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 | [2201004](../errorcode-net-ethernet.md#2201004-以太网配置信息无效) | Invalid Ethernet profile. |

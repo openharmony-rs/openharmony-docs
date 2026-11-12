@@ -19,6 +19,7 @@ FormBindingData提供卡片数据绑定的能力，用于存储卡片需要展�
 ## 导入模块
 
 ```TypeScript
+import { formBindingData } from '@ohos.application.formBindingData';
 ```
 
 ## data

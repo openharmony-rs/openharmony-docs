@@ -227,6 +227,39 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+## configureC2PASignature
+
+```TypeScript
+configureC2PASignature(enableC2PA: boolean, config?: C2PASignatureConfig): void
+```
+
+配置C2PA签名设置。该接口用于启用或禁用C2PA签名，并可选地设置C2PA签名的作者信息。
+
+调用该接口前，请先通过[isC2PASignatureSupported](#isc2pasignaturesupported)检查是否支持C2PA签名。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-PhotoOutput-configureC2PASignature(enableC2PA: boolean, config?: C2PASignatureConfig): void--><!--Device-PhotoOutput-configureC2PASignature(enableC2PA: boolean, config?: C2PASignatureConfig): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| enableC2PA | boolean | 是 | 是否启用C2PA签名。**true**表示启用，**false**表示禁用。 |
+| config | [C2PASignatureConfig](arkts-camera-camera-c2pasignatureconfig-i.md) | 否 | C2PA签名配置，包含作者名称和作者ID。该参数可选。如果不传入，生成的C2PA签名将不包含作者信息。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
+
 ## enableAutoExtendedGainmapDelivery
 
 ```TypeScript
@@ -624,6 +657,30 @@ function isAutoExtendedGainmapDeliverySupported(photoOutput: camera.PhotoOutput)
   return isSupported;
 }
 ```
+
+## isC2PASignatureSupported
+
+```TypeScript
+isC2PASignatureSupported(): boolean
+```
+
+检查是否支持C2PA签名。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-PhotoOutput-isC2PASignatureSupported(): boolean--><!--Device-PhotoOutput-isC2PASignatureSupported(): boolean-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | C2PA签名是否支持的检查结果。**true**表示支持，**false**表示不支持。如果接口调用失败，返回undefined。 |
 
 ## isMirrorSupported
 

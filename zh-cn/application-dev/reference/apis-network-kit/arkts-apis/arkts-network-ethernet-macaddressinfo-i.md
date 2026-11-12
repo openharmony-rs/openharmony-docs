@@ -24,7 +24,7 @@ import { ethernet } from '@kit.NetworkKit';
 iface: string
 ```
 
-以太网网卡名称。
+以太网网卡名称，如"eth0"。可通过getMacAddress获取。
 
 **类型：** string
 
@@ -40,7 +40,7 @@ iface: string
 macAddress: string
 ```
 
-以太网网卡MAC地址信息。
+以太网网卡MAC地址信息，格式为"XX:XX:XX:XX:XX:XX"。
 
 **类型：** string
 

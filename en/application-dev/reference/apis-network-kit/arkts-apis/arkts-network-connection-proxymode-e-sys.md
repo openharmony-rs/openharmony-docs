@@ -4,7 +4,7 @@
 export enum ProxyMode
 ```
 
-Enumerates the proxy modes. This API uses a promise to return the result.
+Enumerates the proxy modes.
 
 **Since:** 20
 

@@ -12,7 +12,7 @@ import { connection } from '@kit.NetworkKit';
 function enableAirplaneMode(callback: AsyncCallback<void>): void
 ```
 
-开启飞行模式，使用callback异步回调。
+开启飞行模式。使用callback异步回调。
 
 **起始版本：** 8
 
@@ -28,7 +28,7 @@ function enableAirplaneMode(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当开启飞行模式成功，error为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -61,7 +61,7 @@ connection.enableAirplaneMode((error: BusinessError) => {
 function enableAirplaneMode(): Promise<void>
 ```
 
-开启飞行模式，使用Promise异步回调。
+开启飞行模式。使用Promise异步回调。
 
 **起始版本：** 8
 
@@ -77,7 +77,7 @@ function enableAirplaneMode(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回值的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

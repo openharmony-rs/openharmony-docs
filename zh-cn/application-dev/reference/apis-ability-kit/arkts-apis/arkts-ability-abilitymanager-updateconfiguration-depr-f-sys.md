@@ -3,6 +3,7 @@
 ## 导入模块
 
 ```TypeScript
+import { abilityManager } from '@ohos.application.abilityManager';
 ```
 
 ## updateConfiguration

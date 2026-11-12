@@ -40,7 +40,7 @@ CA certificate of the server, which is used to authenticate the digital certific
 cert?: string | Array<string>
 ```
 
-Digital certificate of the local client. An array can be passed since API version 24. A maximum of 1000 certificates can be set.
+Digital certificate of the local client. Starting from API version 24, an array can be passed in, and up to 1000 certificates can be set.
 
 **Type:** string &#124; Array&lt;string&gt;
 

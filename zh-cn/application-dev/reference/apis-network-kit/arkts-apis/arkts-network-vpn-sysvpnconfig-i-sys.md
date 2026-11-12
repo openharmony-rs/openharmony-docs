@@ -28,6 +28,8 @@ import { vpn } from '@kit.NetworkKit';
 forwardingRoutes?: string
 ```
 
+VPN网络的转发路由。
+
 **类型：** string
 
 **起始版本：** 12
@@ -64,6 +66,8 @@ VPN接口的地址数组
 password?: string
 ```
 
+VPN网络的用户密码。
+
 **类型：** string
 
 **起始版本：** 12
@@ -80,7 +84,7 @@ password?: string
 pkcs12FileData?: Uint8Array
 ```
 
-The p12 cert data for the ipsec VPN network.
+IPSec VPN网络的p12证书数据。
 
 **类型：** Uint8Array
 
@@ -98,7 +102,7 @@ The p12 cert data for the ipsec VPN network.
 pkcs12Password?: string
 ```
 
-The p12 cert password for the ipsec VPN network.
+IPSec VPN网络的p12证书密码。
 
 **类型：** string
 
@@ -116,7 +120,7 @@ The p12 cert password for the ipsec VPN network.
 remoteAddresses?: Array<string>
 ```
 
-The array of addresses for remote server.
+远程服务器地址数组。
 
 **类型：** Array&lt;string&gt;
 
@@ -134,6 +138,8 @@ The array of addresses for remote server.
 saveLogin?: boolean
 ```
 
+是否保存VPN网络的登录名和密码，默认值为false。
+
 **类型：** boolean
 
 **起始版本：** 12
@@ -150,7 +156,7 @@ saveLogin?: boolean
 userId?: number
 ```
 
-The system user id for the VPN network.
+VPN网络的系统用户ID。
 
 **类型：** number
 
@@ -168,6 +174,8 @@ The system user id for the VPN network.
 userName?: string
 ```
 
+VPN网络的用户名。
+
 **类型：** string
 
 **起始版本：** 12
@@ -183,6 +191,8 @@ userName?: string
 ```TypeScript
 vpnId?: string
 ```
+
+VPN网络的uuid。
 
 **类型：** string
 
@@ -200,6 +210,8 @@ vpnId?: string
 vpnName?: string
 ```
 
+VPN网络的名称。
+
 **类型：** string
 
 **起始版本：** 12
@@ -215,6 +227,8 @@ vpnName?: string
 ```TypeScript
 vpnType?: SysVpnType
 ```
+
+VPN网络的类型。
 
 **类型：** [SysVpnType](arkts-network-vpn-sysvpntype-e-sys.md)
 

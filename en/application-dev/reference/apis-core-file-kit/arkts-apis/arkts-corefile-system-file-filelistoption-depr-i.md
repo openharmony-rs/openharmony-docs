@@ -17,6 +17,7 @@ Defines the options used in list().
 ## Modules to Import
 
 ```TypeScript
+import { FileListOption } from '@system.file';
 ```
 
 ## complete

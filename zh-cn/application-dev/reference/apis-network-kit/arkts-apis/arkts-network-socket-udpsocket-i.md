@@ -229,7 +229,7 @@ getLocalAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -406,7 +406,7 @@ getState(): Promise<SocketStateBase>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | 以Promise形式返回获取UDPSocket状态的结果。 |
+| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | Promise对象，返回获取UDPSocket状态的结果。 |
 
 **错误码：**
 

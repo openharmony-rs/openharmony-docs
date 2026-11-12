@@ -278,7 +278,7 @@ windowRect: Rect
 windowType?: WindowType
 ```
 
-含义：窗口类型使用场景：判断当前窗口主窗口还是子窗口等
+窗口类型，默认值是[TYPE_MAIN](arkts-arkui-window-windowtype-e.md#type_main)。
 
 **类型：** [WindowType](arkts-arkui-window-windowtype-e.md)
 
@@ -300,7 +300,7 @@ dimBehindValue: number
 
 下层窗口的暗度值。该参数为浮点数，取值范围为[0.0, 1.0]，其取1.0表示最暗。
 
-**说明：** 从API version 7开始支持，从API version 9开始废弃，当前无可替代接口。
+**说明：** 从API版本7开始支持，从API版本9开始废弃，当前无可替代接口。
 
 **类型：** number
 

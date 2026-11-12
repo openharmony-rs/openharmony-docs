@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function getSharingIfaces(state: SharingIfaceState, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定状态的网卡名称列表，使用 callback 异步回调。
+获取指定状态的网卡名称列表。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -87,7 +87,7 @@ function getSharingIfaces(state: SharingIfaceState): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | 以 Promise 形式返回指定状态网卡名称列表。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定状态网卡名称列表。 |
 
 **错误码：**
 

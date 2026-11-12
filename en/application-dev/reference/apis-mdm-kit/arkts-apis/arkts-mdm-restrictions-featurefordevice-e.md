@@ -481,6 +481,22 @@ Network packet filtering.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## PARENT_CONTROL
+
+```TypeScript
+PARENT_CONTROL = 61
+```
+
+Parent Control
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-PARENT_CONTROL = 61--><!--Device-FeatureForDevice-PARENT_CONTROL = 61-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## PRINTER
 
 ```TypeScript

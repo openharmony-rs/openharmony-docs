@@ -14,8 +14,6 @@ function getNetCapabilitiesSync(netHandle: NetHandle): NetCapabilities
 
 Obtains the network capability information of the data network specified by **NetHandle**, including the uplink and downlink bandwidth, specific network capabilities, and network type. This API returns the result synchronously.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
-
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO

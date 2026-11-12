@@ -42,7 +42,7 @@ name: string
 value: string
 ```
 
-媒体密钥状态值。
+媒体密钥状态值，表示与状态名称对应的具体状态信息。
 
 **类型：** string
 

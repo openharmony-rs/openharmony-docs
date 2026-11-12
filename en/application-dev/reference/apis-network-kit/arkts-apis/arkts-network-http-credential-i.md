@@ -24,7 +24,7 @@ import { http } from '@kit.NetworkKit';
 password: string
 ```
 
-Password of credential. Default is ''.
+Password used for authentication. The default value is ''.
 
 **Type:** string
 
@@ -42,7 +42,7 @@ Password of credential. Default is ''.
 username: string
 ```
 
-Username of credential. Default is ''.
+Username used for authentication. The default value is ''.
 
 **Type:** string
 

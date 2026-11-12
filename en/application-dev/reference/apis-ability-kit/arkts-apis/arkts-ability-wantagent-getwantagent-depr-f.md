@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { wantAgent } from '@ohos.wantAgent';
 ```
 
 ## getWantAgent

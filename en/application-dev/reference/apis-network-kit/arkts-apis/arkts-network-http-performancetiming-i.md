@@ -4,7 +4,7 @@
 export interface PerformanceTiming
 ```
 
-Configures the timing for performance tracing, in ms.
+Defines the performance timing (unit: ms).
 
 **Since:** 11
 
@@ -24,7 +24,7 @@ import { http } from '@kit.NetworkKit';
 dnsTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request-1) is sent to the time when the DNS resolution is complete.
+Time elapsed from [request](arkts-network-http-httprequest-i.md#request-1) to DNS resolution completion. Unit: millisecond (ms).
 
 **Type:** number
 
@@ -40,7 +40,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 firstReceiveTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request-1) is sent to the time when the first byte is received.
+Time elapsed from [request](arkts-network-http-httprequest-i.md#request-1) to receiving the first byte. Unit: millisecond (ms).
 
 **Type:** number
 
@@ -56,7 +56,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 firstSendTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request-1) is sent to the time when the first byte is sent.
+Time elapsed from [request](arkts-network-http-httprequest-i.md#request-1) to the start of sending the first byte. Unit: millisecond (ms).
 
 **Type:** number
 
@@ -72,7 +72,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 redirectTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request-1) is sent to the time when all redirection steps are complete.
+Time elapsed from [request](arkts-network-http-httprequest-i.md#request-1) to completion of all redirect steps. Unit: millisecond (ms).
 
 **Type:** number
 
@@ -88,7 +88,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 responseBodyTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request-1) is sent to the time when the body resolution is complete.
+Time elapsed from [request](arkts-network-http-httprequest-i.md#request-1) to body parsing completion. Unit: millisecond (ms).
 
 **Type:** number
 
@@ -104,7 +104,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 responseHeaderTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request-1) is sent to the time when the header resolution is complete.
+Time elapsed from [request](arkts-network-http-httprequest-i.md#request-1) to header parsing completion. Unit: millisecond (ms).
 
 **Type:** number
 
@@ -120,7 +120,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 tcpTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request-1) is sent to the time when the TCP connection is complete.
+Time elapsed from [request](arkts-network-http-httprequest-i.md#request-1) to TCP connection completion. Unit: millisecond (ms).
 
 **Type:** number
 
@@ -136,7 +136,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 tlsTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request-1) is sent to the time when the TLS connection is complete.
+Time elapsed from [request](arkts-network-http-httprequest-i.md#request-1) to TLS connection completion. Unit: millisecond (ms).
 
 **Type:** number
 
@@ -152,7 +152,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 totalFinishTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request-1) is sent to the time when the request is complete.
+Time elapsed from [request](arkts-network-http-httprequest-i.md#request-1) to request completion. Unit: millisecond (ms).
 
 **Type:** number
 
@@ -168,7 +168,7 @@ Duration from the time when the [request](arkts-network-http-httprequest-i.md#re
 totalTiming: number
 ```
 
-Duration from the time when the [request](arkts-network-http-httprequest-i.md#request-1) is sent to the time when a callback is returned to the application.
+Time elapsed from [request](arkts-network-http-httprequest-i.md#request-1) callback to the application. Unit: millisecond (ms).
 
 **Type:** number
 

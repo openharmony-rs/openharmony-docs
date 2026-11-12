@@ -24,7 +24,7 @@ import { drm } from '@kit.DrmKit';
 name: string
 ```
 
-度量记录名。
+度量记录名，用于标识度量指标的键名。
 
 **类型：** string
 
@@ -42,7 +42,7 @@ name: string
 value: string
 ```
 
-度量记录值。
+度量记录值，表示度量指标的数值或状态。
 
 **类型：** string
 

@@ -24,7 +24,7 @@ import { window } from '@kit.ArkUI';
 windowAlpha?: number
 ```
 
-窗口透明度。有效值范围为[0.0, 1.0]，0.0表示完全透明，1.0表示完全不透明。默认值是-1.0，表示未查询到窗口透明度或者查询失败。
+窗口透明度。有效值范围为[0.0, 1.0]，0.0表示完全透明，1.0表示完全不透明。默认值是-1.0，表示未查询到窗口透明度或者查询失败。<br>说明：本透明度非窗口背景色透明度（可通过[setWindowBackgroundColor()](arkts-arkui-window-window-i.md#setwindowbackgroundcolor)接口设置）。
 
 **类型：** number
 

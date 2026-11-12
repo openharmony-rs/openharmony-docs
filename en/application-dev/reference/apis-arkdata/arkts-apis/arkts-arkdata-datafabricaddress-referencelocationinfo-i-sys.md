@@ -17,6 +17,7 @@ Indicates the location information of the reference coordinates.
 ## Modules to Import
 
 ```TypeScript
+import { dataFabricAddress } from '@ohos.data.dataFabricAddress';
 ```
 
 ## actionType

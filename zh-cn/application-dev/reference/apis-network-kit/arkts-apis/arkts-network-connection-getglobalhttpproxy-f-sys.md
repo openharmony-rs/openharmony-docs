@@ -12,7 +12,7 @@ import { connection } from '@kit.NetworkKit';
 function getGlobalHttpProxy(callback: AsyncCallback<HttpProxy>): void
 ```
 
-获取网络的全局代理配置信息，使用callback异步回调。
+获取网络的全局代理配置信息。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -59,7 +59,7 @@ connection.getGlobalHttpProxy((error: BusinessError, data: connection.HttpProxy)
 function getGlobalHttpProxy(): Promise<HttpProxy>
 ```
 
-获取网络的全局代理配置信息，使用Promise异步回调。
+获取网络的全局代理配置信息。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -73,7 +73,7 @@ function getGlobalHttpProxy(): Promise<HttpProxy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[HttpProxy](arkts-network-connection-httpproxy-i.md)&gt; | 以Promise形式返回网络的全局代理配置信息。 |
+| Promise&lt;[HttpProxy](arkts-network-connection-httpproxy-i.md)&gt; | Promise对象，返回网络的全局代理配置信息。 |
 
 **错误码：**
 

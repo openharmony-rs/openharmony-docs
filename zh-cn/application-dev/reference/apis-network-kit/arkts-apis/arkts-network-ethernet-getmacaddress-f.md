@@ -12,7 +12,7 @@ import { ethernet } from '@kit.NetworkKit';
 function getMacAddress(): Promise<Array<MacAddressInfo>>
 ```
 
-获取所有以太网网卡名称及对应网卡的MAC地址信息，使用Promise方式作为异步方法。
+获取所有以太网网卡名称及对应网卡的MAC地址信息，使用Promise异步回调。
 
 **起始版本：** 14
 
@@ -26,7 +26,7 @@ function getMacAddress(): Promise<Array<MacAddressInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[MacAddressInfo](arkts-network-ethernet-macaddressinfo-i.md)&gt;&gt; | 以Promise形式返回接口信息。 |
+| Promise&lt;Array&lt;[MacAddressInfo](arkts-network-ethernet-macaddressinfo-i.md)&gt;&gt; | Promise对象，返回所有以太网网卡名称及对应网卡的MAC地址信息。 |
 
 **错误码：**
 

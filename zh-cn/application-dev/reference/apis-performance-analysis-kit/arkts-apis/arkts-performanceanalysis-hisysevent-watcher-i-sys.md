@@ -26,7 +26,7 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 onEvent: (info: SysEventInfo) => void
 ```
 
-订阅事件的回调方法(info: [SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md)) =&gt; void。
+订阅事件的回调方法(info: [SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md)) =&gt; void。当订阅的事件发生时此回调方法会被触发，回调函数接收订阅到的[SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md)，用于处理订阅到的事件数据。
 
 **起始版本：** 9
 
@@ -48,7 +48,7 @@ onEvent: (info: SysEventInfo) => void
 onServiceDied: () => void
 ```
 
-系统事件服务关闭的回调方法() =&gt; void。
+系统事件服务关闭的回调方法() =&gt; void。当系统事件服务异常关闭或停止时触发，用于处理服务异常情况（如记录日志、重新订阅事件等）。
 
 **起始版本：** 9
 

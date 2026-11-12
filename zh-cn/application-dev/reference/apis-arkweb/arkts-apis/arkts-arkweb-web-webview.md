@@ -67,11 +67,14 @@ import { webview } from '@kit.ArkWeb';
 | [BlanklessInfo](arkts-arkweb-webview-blanklessinfo-i.md) | 页面首屏加载预测信息，主要包括首屏相似度预测值、首屏加载耗时预测值、预测错误码，应用需根据此信息来决策是否启用无白屏加载插帧方案。 |
 | [BlanklessLoadingParam](arkts-arkweb-webview-blanklessloadingparam-i.md) | 无白屏加载插帧方案的加载参数。 |
 | [CacheOptions](arkts-arkweb-webview-cacheoptions-i.md) | Web组件预编译JavaScript生成字节码缓存的配置对象，用于控制字节码缓存更新。 |
+| [DeferThrottleCallback](arkts-arkweb-webview-deferthrottlecallback-i.md) | 为返回 DEFER 的[NavigationThrottle](arkts-arkweb-webview-navigationthrottle-i.md)回调提供异步决策能力。 |
 | [HistoryItem](arkts-arkweb-webview-historyitem-i.md) | 页面历史记录项。 |
 | [HitTestValue](arkts-arkweb-webview-hittestvalue-i.md) | 提供点击区域的元素信息。示例代码参考[getLastHitTest](arkts-arkweb-webview-webviewcontroller-c.md#getlasthittest)。 |
 | [MediaInfo](arkts-arkweb-webview-mediainfo-i.md) | [CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的一个参数。包含了网页中媒体的信息。应用可以根据这些信息来创建接管网页媒体播放的播放器。 |
 | [NativeMediaPlayerBridge](arkts-arkweb-webview-nativemediaplayerbridge-i.md) | NativeMediaPlayerBridge 是[CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的返回值类型，是接管网页媒体的播放器和 ArkWeb 内核之间的一个接口类。ArkWeb 内核通过该接口类的实例对象控制应用创建的用于接管网页媒体的播放器。该接口允许应用使用自定义的媒体播放器接管网页中的媒体内容播放，同时，该接口还支持播放器的挂起和恢复机制。 |
 | [NativeMediaPlayerHandler](arkts-arkweb-webview-nativemediaplayerhandler-i.md) | NativeMediaPlayerHandler 是[CreateNativeMediaPlayerCallback](arkts-arkweb-webview-createnativemediaplayercallback-t.md)回调函数的参数。当应用使用[NativeMediaPlayerBridge](arkts-arkweb-webview-nativemediaplayerbridge-i.md)接管网页媒体播放时，需要通过将播放器的各种状态变化实时同步给 ArkWeb 内核，确保网页JavaScript 能够获取正确的播放器状态，ArkWeb 内核会将这些状态转换为标准的 HTML5 Media Events，触发网页中注册的事件监听器，从而保证网页功能的正常运行。 |
+| [NavigationInfo](arkts-arkweb-webview-navigationinfo-i.md) | 传递给[NavigationThrottle](arkts-arkweb-webview-navigationthrottle-i.md)回调的导航信息。不同字段在不同回调阶段有效：  - **willStartRequest**：url、isMainFrame、hasUserGesture、pageTransition、requestMethod、isRendererInitiated 有效。  - **willRedirectRequest**：url（重定向目标）、isMainFrame、hasUserGesture、isRedirect、pageTransition、  requestMethod、isRendererInitiated 有效。  - **willProcessResponse**：url、isMainFrame、statusCode、mimeType、contentDisposition 有效。  - **willFailRequest**：url、isMainFrame、errorCode、errorDescription 有效。 |
+| [NavigationThrottle](arkts-arkweb-webview-navigationthrottle-i.md) | 在多个阶段拦截导航请求的接口。 |
 | [OfflineResourceMap](arkts-arkweb-webview-offlineresourcemap-i.md) | 本地离线资源配置对象，用于配置将被[injectOfflineResources](arkts-arkweb-webview-webviewcontroller-c.md#injectofflineresources)接口注入到内存缓存的本地离线资源的相关信息，内核会根据此信息生成资源缓存，并据此控制缓存的有效期。 |
 | [PdfConfiguration](arkts-arkweb-webview-pdfconfiguration-i.md) | [createPdf](arkts-arkweb-webview-webviewcontroller-c.md#createpdf-1)函数输入参数。 |
 | [RectEvent](arkts-arkweb-webview-rectevent-i.md) | 矩形定义。 |
@@ -105,6 +108,7 @@ import { webview } from '@kit.ArkWeb';
 | [MediaError](arkts-arkweb-webview-mediaerror-e.md) | 播放器的错误类型。 |
 | [MediaPlaybackState](arkts-arkweb-webview-mediaplaybackstate-e.md) | 当前网页的播放控制状态。 |
 | [MediaType](arkts-arkweb-webview-mediatype-e.md) | 表示媒体类型。 |
+| [NavigationThrottleAction](arkts-arkweb-webview-navigationthrottleaction-e.md) | NavigationThrottle 回调可执行的动作枚举。 |
 | [NetworkState](arkts-arkweb-webview-networkstate-e.md) | 播放器的网络状态。 |
 | [OfflineResourceType](arkts-arkweb-webview-offlineresourcetype-e.md) | [OfflineResourceMap](arkts-arkweb-webview-offlineresourcemap-i.md)对象对应的本地离线资源的接口类型。 |
 | [PlaybackStatus](arkts-arkweb-webview-playbackstatus-e.md) | [handleStatusChanged](arkts-arkweb-webview-nativemediaplayerhandler-i.md#handlestatuschanged) 接口参数， 用于表示播放器的播放状态。 |

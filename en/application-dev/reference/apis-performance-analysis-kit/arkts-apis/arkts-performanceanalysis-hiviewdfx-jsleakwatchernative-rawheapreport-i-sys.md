@@ -17,6 +17,7 @@ Report information of a raw heap dump result.
 ## Modules to Import
 
 ```TypeScript
+import { jsLeakWatcherNative } from '@ohos.hiviewdfx.jsLeakWatcherNative';
 ```
 
 ## dynamicRawheapPath

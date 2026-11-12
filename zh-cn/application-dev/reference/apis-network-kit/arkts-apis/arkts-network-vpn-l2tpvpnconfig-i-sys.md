@@ -28,6 +28,8 @@ import { vpn } from '@kit.NetworkKit';
 ipsecCaCertConfig?: string
 ```
 
+L2TP VPN网络的CA证书配置。
+
 **类型：** string
 
 **起始版本：** 12
@@ -43,6 +45,8 @@ ipsecCaCertConfig?: string
 ```TypeScript
 ipsecCaCertFilePath?: string
 ```
+
+L2TP VPN网络的CA证书文件路径。
 
 **类型：** string
 
@@ -60,6 +64,8 @@ ipsecCaCertFilePath?: string
 ipsecConfig?: string
 ```
 
+L2TP VPN网络的配置。
+
 **类型：** string
 
 **起始版本：** 12
@@ -75,6 +81,8 @@ ipsecConfig?: string
 ```TypeScript
 ipsecIdentifier?: string
 ```
+
+L2TP VPN网络的标识符。
 
 **类型：** string
 
@@ -92,6 +100,8 @@ ipsecIdentifier?: string
 ipsecPreSharedKey?: string
 ```
 
+L2TP VPN网络的预共享密钥。
+
 **类型：** string
 
 **起始版本：** 12
@@ -107,6 +117,8 @@ ipsecPreSharedKey?: string
 ```TypeScript
 ipsecPrivateServerCertConfig?: string
 ```
+
+L2TP VPN网络的服务端私钥证书配置。
 
 **类型：** string
 
@@ -124,6 +136,8 @@ ipsecPrivateServerCertConfig?: string
 ipsecPrivateServerCertFilePath?: string
 ```
 
+L2TP VPN网络的服务端私钥证书文件路径。
+
 **类型：** string
 
 **起始版本：** 12
@@ -139,6 +153,8 @@ ipsecPrivateServerCertFilePath?: string
 ```TypeScript
 ipsecPrivateUserCertConfig?: string
 ```
+
+L2TP VPN网络的用户私钥证书配置。
 
 **类型：** string
 
@@ -156,6 +172,8 @@ ipsecPrivateUserCertConfig?: string
 ipsecPrivateUserCertFilePath?: string
 ```
 
+L2TP VPN网络的用户私钥证书文件路径。
+
 **类型：** string
 
 **起始版本：** 12
@@ -171,6 +189,8 @@ ipsecPrivateUserCertFilePath?: string
 ```TypeScript
 ipsecPublicServerCertConfig?: string
 ```
+
+L2TP VPN网络的服务端公钥证书配置。
 
 **类型：** string
 
@@ -188,6 +208,8 @@ ipsecPublicServerCertConfig?: string
 ipsecPublicServerCertFilePath?: string
 ```
 
+L2TP VPN网络的服务端公钥证书文件路径。
+
 **类型：** string
 
 **起始版本：** 12
@@ -203,6 +225,8 @@ ipsecPublicServerCertFilePath?: string
 ```TypeScript
 ipsecPublicUserCertConfig?: string
 ```
+
+L2TP VPN网络的用户公钥证书配置。
 
 **类型：** string
 
@@ -220,6 +244,8 @@ ipsecPublicUserCertConfig?: string
 ipsecPublicUserCertFilePath?: string
 ```
 
+L2TP VPN网络的用户公钥证书文件路径。
+
 **类型：** string
 
 **起始版本：** 12
@@ -235,6 +261,8 @@ ipsecPublicUserCertFilePath?: string
 ```TypeScript
 ipsecSecrets?: string
 ```
+
+L2TP VPN网络的secrets文件。
 
 **类型：** string
 
@@ -252,6 +280,8 @@ ipsecSecrets?: string
 l2tpSharedKey?: string
 ```
 
+L2TP VPN网络的共享密钥。
+
 **类型：** string
 
 **起始版本：** 12
@@ -267,6 +297,8 @@ l2tpSharedKey?: string
 ```TypeScript
 optionsL2tpdClient?: string
 ```
+
+L2TP VPN网络的客户端配置项。
 
 **类型：** string
 
@@ -284,6 +316,8 @@ optionsL2tpdClient?: string
 strongSwanConfig?: string
 ```
 
+L2TP VPN网络的strongSwan配置。
+
 **类型：** string
 
 **起始版本：** 12
@@ -299,6 +333,8 @@ strongSwanConfig?: string
 ```TypeScript
 xl2tpdConfig?: string
 ```
+
+L2TP VPN网络的xl2tpd配置。
 
 **类型：** string
 

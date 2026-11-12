@@ -150,6 +150,36 @@ function createDepthDataOutput(cameraOutputCapability: camera.CameraOutputCapabi
 
 <!--DelEnd-->
 
+## getControlCenterHeight
+
+```TypeScript
+getControlCenterHeight(): number
+```
+
+获取控制中心的高度。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CameraManager-getControlCenterHeight(): double--><!--Device-CameraManager-getControlCenterHeight(): double-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 控制中心的高度。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+
 ## isCameraMuteSupported
 
 ```TypeScript

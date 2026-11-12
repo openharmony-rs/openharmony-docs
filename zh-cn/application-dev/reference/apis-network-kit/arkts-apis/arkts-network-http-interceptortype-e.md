@@ -26,7 +26,7 @@ HTTP拦截器的类型枚举。
 CACHE_CHECKED = 'READ_CACHE'
 ```
 
-Intercept after we checked the HTTP cache.
+在检查并且命中HTTP缓存时拦截。
 
 **起始版本：** 22
 
@@ -42,7 +42,7 @@ Intercept after we checked the HTTP cache.
 FINAL_RESPONSE = 'FINAL_RESPONSE'
 ```
 
-Intercept when we get the final HTTP response.
+在获取最终HTTP响应时拦截。
 
 **起始版本：** 22
 
@@ -58,7 +58,7 @@ Intercept when we get the final HTTP response.
 INITIAL_REQUEST = 'INITIAL_REQUEST'
 ```
 
-在初始HTTP请求组装完成后进行拦截。
+在初始HTTP请求组装完成后拦截。
 
 **起始版本：** 22
 
@@ -74,7 +74,7 @@ INITIAL_REQUEST = 'INITIAL_REQUEST'
 NETWORK_CONNECT = 'CONNECT_NETWORK'
 ```
 
-Intercept when we perform network connection, such as TLS and TCP.
+在网络请求将要发出前拦截。
 
 **起始版本：** 22
 
@@ -90,7 +90,7 @@ Intercept when we perform network connection, such as TLS and TCP.
 REDIRECTION = 'REDIRECTION'
 ```
 
-在初始HTTP请求组装完成后进行拦截。
+当收到重定向响应时拦截。
 
 **起始版本：** 22
 

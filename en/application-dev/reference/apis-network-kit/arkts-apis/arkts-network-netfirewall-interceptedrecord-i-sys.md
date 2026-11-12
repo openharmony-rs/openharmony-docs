@@ -4,7 +4,7 @@
 interface InterceptedRecord
 ```
 
-Intercepted record.
+Defines an interception record.
 
 **Since:** 14
 
@@ -26,7 +26,7 @@ import { netFirewall } from '@kit.NetworkKit';
 appUid?: number
 ```
 
-Application or service ID.
+Application or service UID. The default value is **0**.
 
 **Type:** number
 
@@ -44,7 +44,7 @@ Application or service ID.
 domain?: string
 ```
 
-Blocked domain name information.
+Domain name.
 
 **Type:** string
 
@@ -62,7 +62,7 @@ Blocked domain name information.
 localIp?: string
 ```
 
-Local IP.
+Local IP address.
 
 **Type:** string
 
@@ -80,7 +80,7 @@ Local IP.
 localPort?: number
 ```
 
-Local port.
+Local port. The default value is **0**.
 
 **Type:** number
 
@@ -98,7 +98,7 @@ Local port.
 protocol?: number
 ```
 
-Transport layer protocol.
+Transport layer protocol. The default value is **0**.
 
 **Type:** number
 
@@ -116,7 +116,7 @@ Transport layer protocol.
 remoteIp?: string
 ```
 
-Remote IP.
+Remote IP address.
 
 **Type:** string
 
@@ -134,7 +134,7 @@ Remote IP.
 remotePort?: number
 ```
 
-Remote port.
+Remote port. The default value is **0**.
 
 **Type:** number
 

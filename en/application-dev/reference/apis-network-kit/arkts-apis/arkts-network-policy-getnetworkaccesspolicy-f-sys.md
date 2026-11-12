@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getNetworkAccessPolicy(uid: number): Promise<NetworkAccessPolicy>
 ```
 
-Obtains whether the application with the specified UID can access the network. This API uses a promise to return the result.
+Obtains the network access policy of the application with the specified UID. This API uses a promise to return the result.
 
 **Since:** 12
 
@@ -28,13 +28,13 @@ Obtains whether the application with the specified UID can access the network. T
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | Unique app ID, which is a positive integer within the int32_t range. |
+| uid | number | Yes | Unique identifier of the app. The value range is a positive integer within the range of int32_t. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetworkAccessPolicy](arkts-network-policy-networkaccesspolicy-i-sys.md)&gt; | Promise used to return the result. |
+| Promise&lt;[NetworkAccessPolicy](arkts-network-policy-networkaccesspolicy-i-sys.md)&gt; | Promise used to return the set result. |
 
 **Error codes:**
 
@@ -72,7 +72,7 @@ policy
 function getNetworkAccessPolicy(): Promise<UidNetworkAccessPolicy>
 ```
 
-Obtains the network access policy of all applications under the current user. This API uses a promise to return the result.
+Obtains the network access policy information of all applications under the current user. This API uses a promise to return the result.
 
 **Since:** 12
 
@@ -88,7 +88,7 @@ Obtains the network access policy of all applications under the current user. Th
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[UidNetworkAccessPolicy](arkts-network-policy-uidnetworkaccesspolicy-i-sys.md)&gt; | Promise used to return the result. |
+| Promise&lt;[UidNetworkAccessPolicy](arkts-network-policy-uidnetworkaccesspolicy-i-sys.md)&gt; | Promise used to return the set result. |
 
 **Error codes:**
 

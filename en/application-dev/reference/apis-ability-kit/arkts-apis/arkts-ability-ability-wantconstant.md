@@ -15,6 +15,7 @@ The module provides the actions, entities, and flags used in Want objects.
 ## Modules to Import
 
 ```TypeScript
+import { wantConstant } from '@ohos.ability.wantConstant';
 ```
 
 ## Summary

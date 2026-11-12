@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function isSharing(callback: AsyncCallback<boolean>): void
 ```
 
-获取当前网络共享状态，使用 callback 异步回调。
+获取当前网络共享状态。使用callback异步回调。
 
 **起始版本：** 9
 

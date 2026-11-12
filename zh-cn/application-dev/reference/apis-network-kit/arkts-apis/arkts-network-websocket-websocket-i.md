@@ -24,7 +24,7 @@ import { webSocket } from '@kit.NetworkKit';
 close(callback: AsyncCallback<boolean>): void
 ```
 
-关闭WebSocket连接，使用callback异步回调。
+关闭WebSocket连接。使用callback异步回调。
 
 **起始版本：** 6
 
@@ -40,7 +40,7 @@ close(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。true:关闭请求创建成功；false:关闭请求创建失败。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示关闭请求创建成功；返回false表示关闭请求创建失败。 |
 
 **错误码：**
 
@@ -71,7 +71,7 @@ ws.close((err: BusinessError) => {
 close(options: WebSocketCloseOptions, callback: AsyncCallback<boolean>): void
 ```
 
-根据参数options，关闭WebSocket连接，使用callback异步回调。
+根据参数options，关闭WebSocket连接。使用callback异步回调。
 
 **起始版本：** 6
 
@@ -88,7 +88,7 @@ close(options: WebSocketCloseOptions, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [WebSocketCloseOptions](arkts-network-websocket-websocketcloseoptions-i.md) | 是 | 参考[WebSocketCloseOptions](arkts-network-websocket-websocketcloseoptions-i.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。true:关闭请求创建成功；false:关闭请求创建失败。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示关闭请求创建成功；返回false表示关闭请求创建失败。 |
 
 **错误码：**
 
@@ -147,7 +147,7 @@ close(options?: WebSocketCloseOptions): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | 以Promise形式返回关闭连接的结果。true:关闭请求创建成功；false:关闭请求创建失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示关闭请求创建成功；返回false表示关闭请求创建失败。 |
 
 **错误码：**
 
@@ -181,7 +181,7 @@ promise.then((value: boolean) => {
 connect(url: string, callback: AsyncCallback<boolean>): void
 ```
 
-根据URL地址，建立一个WebSocket连接，使用callback异步回调。
+根据URL地址，建立一个WebSocket连接。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -207,7 +207,7 @@ connect(url: string, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | url | string | 是 | 建立WebSocket连接的URL地址。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。true:连接请求创建成功；false:连接请求创建失败。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示连接请求创建成功；返回false表示连接请求创建失败。 |
 
 **错误码：**
 
@@ -244,7 +244,7 @@ ws.connect(url, (err: BusinessError, value: boolean) => {
 connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback<boolean>): void
 ```
 
-根据URL地址，建立一个WebSocket连接，使用callback异步回调。
+根据URL地址，建立一个WebSocket连接。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -271,7 +271,7 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback<b
 | --- | --- | --- | --- |
 | url | string | 是 | 建立WebSocket连接的URL地址。 |
 | options | [WebSocketRequestOptions](arkts-network-websocket-websocketrequestoptions-i.md) | 是 | 参考[WebSocketRequestOptions](arkts-network-websocket-websocketrequestoptions-i.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。true:连接请求创建成功；false:连接请求创建失败。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示连接请求创建成功；返回false表示连接请求创建失败。 |
 
 **错误码：**
 
@@ -364,7 +364,7 @@ connect(url: string, options?: WebSocketRequestOptions): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | 回调函数。true:连接请求创建成功；false:连接请求创建失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示连接请求创建成功；返回false表示连接请求创建失败。 |
 
 **错误码：**
 
@@ -399,7 +399,7 @@ promise.then((value: boolean) => {
 off(type: 'open', callback?: AsyncCallback<Object>): void
 ```
 
-取消订阅WebSocket的打开事件，使用callback异步回调。
+取消订阅WebSocket的打开事件。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -445,7 +445,7 @@ ws.off('open', callback1);
 off(type: 'openInfo', callback?: AsyncCallback<WebSocketOpenInfo>): void
 ```
 
-取消订阅WebSocket的打开信息事件，使用callback异步回调。
+取消订阅WebSocket的打开信息事件。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -491,7 +491,7 @@ ws.off('openInfo', callback1);
 off(type: 'message', callback?: AsyncCallback<string | ArrayBuffer>): void
 ```
 
-取消订阅WebSocket的接收服务器消息事件，使用callback异步回调。
+取消订阅WebSocket的接收服务器消息事件。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -529,7 +529,7 @@ ws.off('message');
 off(type: 'close', callback?: AsyncCallback<CloseResult>): void
 ```
 
-取消订阅WebSocket的关闭事件，使用callback异步回调。
+取消订阅WebSocket的关闭事件。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -565,7 +565,7 @@ ws.off('close');
 off(type: 'error', callback?: ErrorCallback): void
 ```
 
-取消订阅WebSocket的Error事件，使用callback异步回调。
+取消订阅WebSocket的Error事件。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -601,7 +601,7 @@ ws.off('error');
 off(type: 'dataEnd', callback?: Callback<void>): void
 ```
 
-取消订阅WebSocket的数据接收结束事件，使用callback异步回调。
+取消订阅WebSocket的数据接收结束事件。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -635,7 +635,7 @@ ws.off('dataEnd');
 off(type: 'headerReceive', callback?: Callback<ResponseHeaders>): void
 ```
 
-取消订阅HTTP Response Header事件，使用callback异步回调。
+取消订阅HTTP Response Header事件。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -669,7 +669,7 @@ ws.off('headerReceive');
 on(type: 'open', callback: AsyncCallback<Object>): void
 ```
 
-订阅WebSocket的打开事件，使用callback异步回调。该事件用于指示WebSocket是否连接成功。该接口需要在调用[connect](#connect-1)发起连接请求前调用。
+订阅WebSocket的打开事件。使用callback异步回调。该事件用于指示WebSocket是否连接成功。该接口需要在调用[connect](#connect-1)发起连接请求前调用。
 
 **起始版本：** 6
 
@@ -708,7 +708,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 on(type: 'message', callback: AsyncCallback<string | ArrayBuffer>): void
 ```
 
-订阅WebSocket的接收服务器消息事件，使用callback异步回调。
+订阅WebSocket的接收服务器消息事件。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -747,7 +747,7 @@ ws.on('message', (err: BusinessError<void>, value: string | ArrayBuffer) => {
 on(type: 'openInfo', callback: AsyncCallback<WebSocketOpenInfo>): void
 ```
 
-订阅WebSocket的打开信息事件，使用callback异步回调。该事件用于获取WebSocket连接成功后的详细信息。该接口需要在调用[connect](#connect-1)发起连接请求前调用。
+订阅WebSocket的打开信息事件。使用callback异步回调。该事件用于获取WebSocket连接成功后的详细信息。该接口需要在调用[connect](#connect-1)发起连接请求前调用。
 
 **起始版本：** 26.0.0
 
@@ -786,7 +786,7 @@ ws.on('openInfo', (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
 on(type: 'close', callback: AsyncCallback<CloseResult>): void
 ```
 
-订阅WebSocket的关闭事件，使用callback异步回调。
+订阅WebSocket的关闭事件。使用callback异步回调。
 
 **起始版本：** 6
 
@@ -821,7 +821,7 @@ ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-订阅WebSocket的Error事件，使用callback异步回调。
+订阅WebSocket的Error事件。使用callback异步回调。
 
 关于[error](#onerror)事件回调的错误码说明：WebSocket的本质是HTTP协议升级，若服务器同意升级，服务器会返回101。状态码表示协议从HTTP切换为WebSocket协议（触发open回调），而如果服务器拒绝了升级或出现其他异常，则返回200，表示服务器只是将请求当作普通的HTTP请求来处理。
 
@@ -858,7 +858,7 @@ ws.on('error', (err: BusinessError) => {
 on(type: 'dataEnd', callback: Callback<void>): void
 ```
 
-订阅WebSocket的数据接收结束事件，使用callback异步回调。
+订阅WebSocket的数据接收结束事件。使用callback异步回调。
 
 **起始版本：** 11
 
@@ -890,7 +890,7 @@ ws.on('dataEnd', () => {
 on(type: 'headerReceive', callback: Callback<ResponseHeaders>): void
 ```
 
-订阅HTTP Response Header事件，使用callback异步回调。
+订阅HTTP Response Header事件。使用callback异步回调。
 
 **起始版本：** 12
 
@@ -922,7 +922,11 @@ ws.on('headerReceive', (data) => {
 send(data: string | ArrayBuffer, callback: AsyncCallback<boolean>): void
 ```
 
-通过WebSocket连接发送数据，使用callback异步回调。
+通过WebSocket连接发送数据。使用callback异步回调。
+
+> **说明：** 
+> 
+> send接口必须在监听到open事件后才可以调用。
 
 **起始版本：** 6
 
@@ -939,7 +943,7 @@ send(data: string | ArrayBuffer, callback: AsyncCallback<boolean>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | data | string &#124; ArrayBuffer | 是 | 发送的数据。<br>API 6及更早版本仅支持string类型。API 8起同时支持string和ArrayBuffer类型。最大支持发送5242864字节数据(即5 * 1024 * 1024 - 16)，超过该大小会返回401错误码。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。true:发送请求创建成功；false:发送请求创建失败。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示发送请求创建成功；返回false表示发送请求创建失败。 |
 
 **错误码：**
 
@@ -987,6 +991,10 @@ send(data: string | ArrayBuffer): Promise<boolean>
 
 通过WebSocket连接发送数据。使用Promise异步回调。
 
+> **说明：** 
+> 
+> send接口必须在监听到open事件后才可以调用。
+
 **起始版本：** 6
 
 **需要权限：** ohos.permission.INTERNET
@@ -1007,7 +1015,7 @@ send(data: string | ArrayBuffer): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | 以Promise形式返回发送数据的结果。true:发送请求创建成功；false:发送请求创建失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示发送请求创建成功；返回false表示发送请求创建失败。 |
 
 **错误码：**
 

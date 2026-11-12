@@ -17,6 +17,7 @@ Returns the file read, including the file content.
 ## Modules to Import
 
 ```TypeScript
+import { FileReadArrayBufferResponse } from '@system.file';
 ```
 
 ## buffer

@@ -14,8 +14,6 @@ function reportNetDisconnected(netHandle: NetHandle, callback: AsyncCallback<voi
 
 Reports the network unavailability to the network management module. This API uses an asynchronous callback to return the result.
 
-**Permission required**: ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
-
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
@@ -71,8 +69,6 @@ function reportNetDisconnected(netHandle: NetHandle): Promise<void>
 
 Reports the network unavailability to the network management module. This API uses a promise to return the result.
 
-**Permission required**: ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
-
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
@@ -91,7 +87,7 @@ Reports the network unavailability to the network management module. This API us
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

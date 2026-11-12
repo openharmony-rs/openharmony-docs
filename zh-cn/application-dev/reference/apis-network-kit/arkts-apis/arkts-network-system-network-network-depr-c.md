@@ -13,6 +13,7 @@ export default class Network
 ## 导入模块
 
 ```TypeScript
+import { Network } from '@system.network';
 ```
 
 ## getType

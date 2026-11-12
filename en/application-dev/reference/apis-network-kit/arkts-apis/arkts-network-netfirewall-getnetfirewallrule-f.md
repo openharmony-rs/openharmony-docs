@@ -14,8 +14,6 @@ function getNetFirewallRule(userId: number, ruleId: number): Promise<NetFirewall
 
 Obtains a firewall rule based on the specified user ID and rule ID. This API uses a promise to return the result.
 
-**Required permission**: ohos.permission.GET_NET_FIREWALL
-
 **Since:** 15
 
 **Required permissions:** ohos.permission.GET_NET_FIREWALL
@@ -35,7 +33,7 @@ Obtains a firewall rule based on the specified user ID and rule ID. This API use
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetFirewallRule](arkts-network-netfirewall-netfirewallrule-i.md)&gt; | Promise used to return the result, which is a firewall rule. |
+| Promise&lt;[NetFirewallRule](arkts-network-netfirewall-netfirewallrule-i.md)&gt; | Promise used to return the firewall rule. |
 
 **Error codes:**
 

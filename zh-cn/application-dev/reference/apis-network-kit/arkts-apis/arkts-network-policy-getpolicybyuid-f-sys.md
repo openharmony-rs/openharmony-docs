@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getPolicyByUid(uid: number, callback: AsyncCallback<NetUidPolicy>): void
 ```
 
-通过应用 uid 获取对应访问网络策略，使用 callback 异步回调。
+通过应用 uid 获取对应访问网络策略。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -29,7 +29,7 @@ function getPolicyByUid(uid: number, callback: AsyncCallback<NetUidPolicy>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uid | number | 是 | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md)&gt; | 是 | 回调函数。成功返回获取策略结果，失败返回错误码错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md)&gt; | 是 | 回调函数。成功返回获取策略结果，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
@@ -63,7 +63,7 @@ policy.getPolicyByUid(11111, (error: BusinessError, data: policy.NetUidPolicy) =
 function getPolicyByUid(uid: number): Promise<NetUidPolicy>
 ```
 
-通过应用 uid 获取对应访问网络策略，使用 Promise 异步回调。
+通过应用 uid 获取对应访问网络策略。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -85,7 +85,7 @@ function getPolicyByUid(uid: number): Promise<NetUidPolicy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md)&gt; | 以 Promise 形式返回获取策略结果。失败返回错误码错误信息。 |
+| Promise&lt;[NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md)&gt; | Promise对象，返回获取策略结果。失败时返回错误码和错误信息。 |
 
 **错误码：**
 

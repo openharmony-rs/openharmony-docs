@@ -46,7 +46,7 @@ Static Bluetooth MAC address of the distributed device. This parameter is availa
 
 **Type:** string
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

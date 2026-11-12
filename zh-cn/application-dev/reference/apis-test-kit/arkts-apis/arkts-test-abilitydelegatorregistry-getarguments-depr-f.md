@@ -3,6 +3,7 @@
 ## 导入模块
 
 ```TypeScript
+import { abilityDelegatorRegistry } from '@ohos.application.abilityDelegatorRegistry';
 ```
 
 ## getArguments

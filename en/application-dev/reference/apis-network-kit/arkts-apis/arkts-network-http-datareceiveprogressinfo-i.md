@@ -24,7 +24,7 @@ import { http } from '@kit.NetworkKit';
 receiveSize: number
 ```
 
-Amount of data that has been received, in bytes.
+Amount of data received, in bytes.
 
 **Type:** number
 
@@ -42,7 +42,7 @@ Amount of data that has been received, in bytes.
 totalSize: number
 ```
 
-Amount of data to be received, in bytes.
+Total amount of data to be received, in bytes.
 
 **Type:** number
 

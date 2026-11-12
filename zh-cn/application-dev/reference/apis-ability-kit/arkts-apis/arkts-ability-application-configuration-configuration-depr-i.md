@@ -19,6 +19,7 @@ export interface Configuration
 ## 导入模块
 
 ```TypeScript
+import { Configuration } from '@ohos.application.Configuration';
 ```
 
 ## colorMode

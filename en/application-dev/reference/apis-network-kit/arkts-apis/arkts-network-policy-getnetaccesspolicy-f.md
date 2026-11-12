@@ -29,14 +29,14 @@ Queries the network access policy of an application (whether cellular or Wi-Fi n
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetAccessPolicy](arkts-network-policy-netaccesspolicy-i.md)&gt; | Promise used to return the network access policy of the application. |
+| Promise&lt;[NetAccessPolicy](arkts-network-policy-netaccesspolicy-i.md)&gt; | Promise used to return the network access policy of the application itself. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
-| [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error, such as nullptr。 |
+| [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error, such as nullptr. |
 
 **Examples**
 

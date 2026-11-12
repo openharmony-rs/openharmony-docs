@@ -1,19 +1,21 @@
 # UidNetStatsInfo（系统接口）
 
 ```TypeScript
-export type UidNetStatsInfo = Record<number, NetStatsInfo>
+export type UidNetStatsInfo = {
+    [uid: number]: NetStatsInfo;
+  }
 ```
 
-[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md) for every UID. Key is UID. [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md) for every UID. Key is UID.
+获取的所有应用历史流量信息。
 
-**类型：** Record&lt;number, [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt;
+**类型：** {
+    [uid: number]: NetStatsInfo;
+  }
 
 **起始版本：** 12
 
-<!--Device-statistics-export type UidNetStatsInfo = Record<int, NetStatsInfo>--><!--Device-statistics-export type UidNetStatsInfo = Record<int, NetStatsInfo>-End-->
+<!--Device-statistics-export type UidNetStatsInfo = {    [uid: int]: NetStatsInfo;  }--><!--Device-statistics-export type UidNetStatsInfo = {    [uid: int]: NetStatsInfo;  }-End-->
 
-**系统能力：** 
-- SystemCapability.Communication.NetManager.Core [NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md) for every UID. Key is UID.
-- SystemCapability.Communication.NetManager.Core
+**系统能力：** SystemCapability.Communication.NetManager.Core
 
 **系统接口：** 此接口为系统接口。

@@ -48,8 +48,6 @@ ID of the target user to be authenticated, which specifies the user to be authen
 
 **Type:** number
 
-**Default:** The ID of the current user. The value is a positive integer greater than or equal to 0.
-
 **Since:** 18
 
 <!--Device-AuthParam-userId?: int--><!--Device-AuthParam-userId?: int-End-->

@@ -77,7 +77,10 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | Name | Description |
 | --- | --- |
 | [CommandDataType](arkts-ime-inputmethodengine-commanddatatype-t.md) | Defines the private data type, which varies depending on its function. |
+| [CursorContextChangeCallback](arkts-ime-inputmethodengine-cursorcontextchangecallback-t.md) | The callback of 'cursorContextChange' event. |
+| [InputKeyEventCallback](arkts-ime-inputmethodengine-inputkeyeventcallback-t.md) | The callback of 'keyEvent' event. |
 | [ProxyInputStartCallback](arkts-ime-inputmethodengine-proxyinputstartcallback-t.md) | The callback of 'inputStart' event for the proxy input method provider. |
+| [SelectionChangeCallback](arkts-ime-inputmethodengine-selectionchangecallback-t.md) | The callback of 'selectionChange' event. |
 | [SizeChangeCallback](arkts-ime-inputmethodengine-sizechangecallback-t.md) | Callback triggered when the size of the input method panel changes. |
 
 <!--Del-->

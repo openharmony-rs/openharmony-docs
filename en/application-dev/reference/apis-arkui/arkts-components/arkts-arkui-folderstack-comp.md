@@ -40,7 +40,7 @@ A foldable screen hover layout container that extends Stack. It implements the f
 
 | Name | Description |
 | --- | --- |
-| [OnFoldStatusChangeCallback](arkts-arkui-folderstack-comp-onfoldstatuschangecallback-t.md) | Triggered when the fold status changes<!--RP4-->, which takes effect only in landscape mode<!--RP4End-->. |
+| [OnFoldStatusChangeCallback](arkts-arkui-folderstack-comp-onfoldstatuschangecallback-t.md) | Triggered when the fold status changes, which takes effect only in landscape mode. |
 | [OnHoverStatusChangeCallback](arkts-arkui-folderstack-comp-onhoverstatuschangecallback-t.md) | Defines the current callback invoked when the hover state of the device changes. |
 | [WindowStatusType](arkts-arkui-folderstack-comp-windowstatustype-t.md) | Enumerates the window modes. |
 

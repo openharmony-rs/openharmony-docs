@@ -211,7 +211,7 @@ getExtraOptions(): Promise<ExtraOptionsBase>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md)&gt; | 以Promise形式返回设置LocalSocket套接字的属性。 |
+| Promise&lt;[ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md)&gt; | Promise对象，返回设置LocalSocket套接字的属性。 |
 
 **错误码：**
 
@@ -273,7 +273,7 @@ getLocalAddress(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise&lt;string&gt; | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -338,7 +338,7 @@ getSocketFd(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 以Promise形式返回socket的文件描述符。 |
+| Promise&lt;number&gt; | Promise对象，返回socket的文件描述符。 |
 
 **示例**
 
@@ -394,7 +394,7 @@ getState(): Promise<SocketStateBase>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | 以Promise形式返回获取LocalSocket状态的结果。 |
+| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | Promise对象，返回获取LocalSocket状态的结果。 |
 
 **示例**
 

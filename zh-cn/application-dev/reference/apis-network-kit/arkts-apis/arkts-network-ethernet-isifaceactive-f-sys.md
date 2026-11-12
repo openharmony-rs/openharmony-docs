@@ -12,7 +12,7 @@ import { ethernet } from '@kit.NetworkKit';
 function isIfaceActive(iface: string, callback: AsyncCallback<number>): void
 ```
 
-判断接口是否已激活，使用callback异步回调。
+判断接口是否已激活。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -29,7 +29,7 @@ function isIfaceActive(iface: string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | iface | string | 是 | 接口名。为空时代表查询是否存在激活接口。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。已激活：1，未激活：0，其他为获取失败错误码。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。 <br>- 1：已激活<br>- 0：未激活<br>- 其他值:表示获取失败的错误码。 |
 
 **错误码：**
 
@@ -68,7 +68,7 @@ ethernet.isIfaceActive("eth0", (error: BusinessError, value: number) => {
 function isIfaceActive(iface: string): Promise<number>
 ```
 
-判断接口是否已激活，使用Promise异步回调。
+判断接口是否已激活。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -90,7 +90,7 @@ function isIfaceActive(iface: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 以Promise形式返回获取结果。已激活：1，未激活：0，其他为获取失败错误码。 |
+| Promise&lt;number&gt; | Promise对象，返回获取结果。已激活：1，未激活：0，其他为获取失败错误码。 |
 
 **错误码：**
 

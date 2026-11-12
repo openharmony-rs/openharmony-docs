@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function setNetQuotaPolicies(quotaPolicies: Array<NetQuotaPolicy>, callback: AsyncCallback<void>): void
 ```
 
-设置计量网络策略，使用 callback 异步回调。
+设置计量网络策略。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -29,7 +29,7 @@ function setNetQuotaPolicies(quotaPolicies: Array<NetQuotaPolicy>, callback: Asy
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | quotaPolicies | Array&lt;[NetQuotaPolicy](arkts-network-policy-netquotapolicy-i-sys.md)&gt; | 是 | 计量网络策略。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回空，失败返回错误码错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回空，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
@@ -80,7 +80,7 @@ policy.setNetQuotaPolicies(netQuotaPolicyList, (error: BusinessError) => {
 function setNetQuotaPolicies(quotaPolicies: Array<NetQuotaPolicy>): Promise<void>
 ```
 
-设置计量网络策略，使用 Promise 异步回调。
+设置计量网络策略。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -102,7 +102,7 @@ function setNetQuotaPolicies(quotaPolicies: Array<NetQuotaPolicy>): Promise<void
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

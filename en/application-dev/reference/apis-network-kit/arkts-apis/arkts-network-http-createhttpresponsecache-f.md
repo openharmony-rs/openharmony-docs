@@ -26,7 +26,7 @@ Creates an **HttpResponseCache** object that stores the response data of HTTP re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| cacheSize | number | No | Cache size. The maximum value is 10*1024*1024 (10 MB). The maximum value is used by default. |
+| cacheSize | number | No | Response cache size, in bytes. The value range is from 1*1024*1024 to 10*1024*1024, that is, from 1 MB to 10 MB. The default value is 10 MB. If the value exceeds 10 MB, it is set to 10 MB; if the value is less than 1 MB, it is set to 1 MB. |
 
 **Return value:**
 

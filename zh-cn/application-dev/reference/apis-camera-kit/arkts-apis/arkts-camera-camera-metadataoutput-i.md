@@ -66,6 +66,30 @@ function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Ar
 }
 ```
 
+## isInFrameMetadataForEncoderSupported
+
+```TypeScript
+isInFrameMetadataForEncoderSupported(): boolean
+```
+
+检查是否支持编码器的帧内元数据。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-MetadataOutput-isInFrameMetadataForEncoderSupported(): boolean--><!--Device-MetadataOutput-isInFrameMetadataForEncoderSupported(): boolean-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 如果支持帧内元数据传递，返回**true**；否则返回**false**。 |
+
 ## isLockMetadataObjectTrackingSupported
 
 ```TypeScript
@@ -344,6 +368,40 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
   }
 }
 ```
+
+## setInFrameMetadataForEncoderEnabled
+
+```TypeScript
+setInFrameMetadataForEncoderEnabled(enable: boolean): void
+```
+
+启用或禁用编码器的帧内元数据传递。  
+> **说明：** 
+> 
+> 调用该方法前，请先通过[isInFrameMetadataForEncoderSupported](#isinframemetadataforencodersupported)检查相机设备是否支持编码器的帧内元数据传递。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-MetadataOutput-setInFrameMetadataForEncoderEnabled(enable: boolean): void--><!--Device-MetadataOutput-setInFrameMetadataForEncoderEnabled(enable: boolean): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| enable | boolean | 是 | 编码器帧内元数据传递的目标状态。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Check if the camera device supports the required in frame metadata delivery for encoder by using capability query APIs. |
+| [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
 ## start
 

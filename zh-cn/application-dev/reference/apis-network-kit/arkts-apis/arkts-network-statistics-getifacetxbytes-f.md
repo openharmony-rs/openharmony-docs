@@ -25,7 +25,7 @@ function getIfaceTxBytes(nic: string, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | nic | string | 是 | 指定查询的网卡名。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取到流量数据时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -78,7 +78,7 @@ function getIfaceTxBytes(nic: string): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | The promise returned by the function. |
+| Promise&lt;number&gt; | Promise对象，返回指定网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。 |
 
 **错误码：**
 

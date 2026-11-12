@@ -71,7 +71,7 @@ import { socket } from '@kit.NetworkKit';
 
 | Name | Description |
 | --- | --- |
-| [NetAddress](arkts-network-socket-netaddress-t.md) | Define a network address. |
+| [NetAddress](arkts-network-socket-netaddress-t.md) | Defines the destination address. |
 | [X509CertRawData](arkts-network-socket-x509certrawdata-t.md) | Defines the certificate raw data. |
 
 ### Enums

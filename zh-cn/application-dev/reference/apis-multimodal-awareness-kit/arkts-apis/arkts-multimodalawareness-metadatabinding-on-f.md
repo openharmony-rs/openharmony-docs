@@ -12,7 +12,7 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 function on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback<number>): void
 ```
 
-订阅系统应用请求获取编码内容的事件。当系统应用（如截图）请求获取应用的编码内容时触发该事件，应用注册回调后，事件发生时通过回调通知应用。调用on()方法订阅事件后，<br>必须在不再需要监听事件时调用off()方法取消订阅，释放监听资源。
+订阅系统应用请求获取编码内容的事件。当系统应用（如截图）请求获取应用的编码内容时触发该事件，应用注册回调后，事件发生时通过回调通知应用。调用on()方法订阅事件后，必须在不再需要监听事件时调用off()方法取消订阅，释放监听资源。
 
 **起始版本：** 18
 
@@ -28,7 +28,7 @@ function on(type: 'operationSubmitMetadata', bundleName: string, callback: Callb
 | --- | --- | --- | --- |
 | type | 'operationSubmitMetadata' | 是 | 事件类型，固定传入'operationSubmitMetadata'，表示系统应用获取编码内容。 |
 | bundleName | string | 是 | 应用包名，用于标识注册订阅事件的第三方应用。在事件发生时，系统将通过此包名识别并通知对应的注册应用。需确保传入的包名为有效的应用包名。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数，用于返回事件码。当事件值为1时表示截图事件，目前仅支持截图事件，取值范围：1（截图事件）。注意：回调函数应快速执行，<br>避免阻塞UI线程。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数，用于返回事件码。当事件值为1时表示截图事件，目前仅支持截图事件，取值范围：1（截图事件）。注意：回调函数应快速执行，避免阻塞UI线程。 |
 
 **错误码：**
 

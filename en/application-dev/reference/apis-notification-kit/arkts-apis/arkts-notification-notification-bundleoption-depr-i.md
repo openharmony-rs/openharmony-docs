@@ -19,6 +19,7 @@ Describes the **BundleOption** information
 ## Modules to Import
 
 ```TypeScript
+import { notification } from '@ohos.notification';
 ```
 
 ## bundle

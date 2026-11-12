@@ -14,8 +14,6 @@ function hasDefaultNetSync(): boolean
 
 Checks whether there is an available network. This API returns the result synchronously.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
-
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO

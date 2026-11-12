@@ -17,6 +17,7 @@ Define the change data information object.
 ## Modules to Import
 
 ```TypeScript
+import { storage } from '@ohos.data.storage';
 ```
 
 ## key

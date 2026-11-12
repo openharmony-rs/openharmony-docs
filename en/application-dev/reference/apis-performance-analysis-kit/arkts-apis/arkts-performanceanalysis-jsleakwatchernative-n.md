@@ -21,6 +21,7 @@ These interfaces are internal implementation details and are exposed as system A
 ## Modules to Import
 
 ```TypeScript
+import { jsLeakWatcherNative } from '@ohos.hiviewdfx.jsLeakWatcherNative';
 ```
 
 ## Summary

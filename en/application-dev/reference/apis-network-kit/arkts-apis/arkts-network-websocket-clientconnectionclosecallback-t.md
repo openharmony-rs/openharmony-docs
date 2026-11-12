@@ -16,5 +16,5 @@ Callback invoked when the WebSocketServer connection is closed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| clientConnection | [WebSocketConnection](arkts-network-websocket-websocketconnection-i.md) | Yes | the connection which is closed. |
-| closeReason | [CloseResult](arkts-network-websocket-closeresult-i.md) | Yes | the error code and reason why the connection is closed. |
+| clientConnection | [WebSocketConnection](arkts-network-websocket-websocketconnection-i.md) | Yes | Client information, including the IP address and port number. |
+| closeReason | [CloseResult](arkts-network-websocket-closeresult-i.md) | Yes | Represents the result obtained from the close event reported when the WebSocket connection is closed. |

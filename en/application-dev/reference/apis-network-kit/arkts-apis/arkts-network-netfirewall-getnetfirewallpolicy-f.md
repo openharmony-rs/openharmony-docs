@@ -14,8 +14,6 @@ function getNetFirewallPolicy(userId: number): Promise<NetFirewallPolicy>
 
 Queries the firewall policy for a system user ID, including the firewall switch status and default inbound or outbound behavior (allow or deny). This API uses a promise to return the result.
 
-**Required permission**: ohos.permission.GET_NET_FIREWALL
-
 **Since:** 15
 
 **Required permissions:** ohos.permission.GET_NET_FIREWALL
@@ -34,7 +32,7 @@ Queries the firewall policy for a system user ID, including the firewall switch 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetFirewallPolicy](arkts-network-netfirewall-netfirewallpolicy-i.md)&gt; | Promise used to return the result, which is a firewall policy. |
+| Promise&lt;[NetFirewallPolicy](arkts-network-netfirewall-netfirewallpolicy-i.md)&gt; | Promise used to return the firewall policy of the current user. |
 
 **Error codes:**
 

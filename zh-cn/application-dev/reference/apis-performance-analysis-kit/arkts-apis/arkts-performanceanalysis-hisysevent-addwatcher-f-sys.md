@@ -12,7 +12,7 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 function addWatcher(watcher: Watcher): void
 ```
 
-订阅系统事件，接收[Watcher](arkts-performanceanalysis-hisysevent-watcher-i-sys.md)类型的对象作为事件参数。
+订阅系统事件，接收[Watcher](arkts-performanceanalysis-hisysevent-watcher-i-sys.md)类型的对象作为事件参数。适用于需要实时监控系统事件的场景。
 
 **起始版本：** 9
 

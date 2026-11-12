@@ -136,7 +136,7 @@ ID of the firewall rule.
 interface?: string
 ```
 
-Interface name: valid when type = RULE_IP, otherwise it will be ignored.
+Name of the physical network interface card, for example, wlan0. Valid when **type=RULE_IP**; otherwise, it is ignored. Optional, with a maximum of 16 characters.
 
 **Type:** string
 
@@ -186,7 +186,7 @@ Local IP addresses. This parameter is valid only when **type** is set to **RULE_
 localPorts?: Array<NetFirewallPortParams>
 ```
 
-Local ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 IP addresses can be specified.
+Local ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 port ranges can be specified.
 
 **Type:** Array&lt;[NetFirewallPortParams](arkts-network-netfirewall-netfirewallportparams-i.md)&gt;
 
@@ -218,7 +218,7 @@ Rule name. This parameter is mandatory and can contain a maximum of 128 characte
 protocol?: number
 ```
 
-Protocol, which can be TCP (value **6**) or UDP (value **17**) or ICMP (value **1**) or ICMPv6 (value **58**). This parameter is valid only when **type** is set to **RULE_IP**.
+Protocol, including TCP: 6, UDP: 17, ICMP: 1, and ICMPv6: 58. Valid when **type=RULE_IP**.
 
 **Type:** number
 
@@ -250,7 +250,7 @@ Remote IP addresses. This parameter is valid only when **type** is set to **RULE
 remotePorts?: Array<NetFirewallPortParams>
 ```
 
-Remote ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 ports can be specified.
+Remote ports. This parameter is valid only when **type** is set to **RULE_IP**. Otherwise, it will be ignored. A maximum of 10 port ranges can be specified.
 
 **Type:** Array&lt;[NetFirewallPortParams](arkts-network-netfirewall-netfirewallportparams-i.md)&gt;
 

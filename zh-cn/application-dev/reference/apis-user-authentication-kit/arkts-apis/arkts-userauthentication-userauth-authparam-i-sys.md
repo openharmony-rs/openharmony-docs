@@ -48,8 +48,6 @@ userId?: number
 
 **类型：** number
 
-**默认值：** The ID of the current user. The value is a positive integer greater than or equal to 0.
-
 **起始版本：** 18
 
 <!--Device-AuthParam-userId?: int--><!--Device-AuthParam-userId?: int-End-->

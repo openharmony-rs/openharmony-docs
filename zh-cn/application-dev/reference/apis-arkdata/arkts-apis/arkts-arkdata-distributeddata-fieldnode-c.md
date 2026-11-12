@@ -19,6 +19,7 @@ class FieldNode
 ## 导入模块
 
 ```TypeScript
+import { distributedData } from '@ohos.data.distributedData';
 ```
 
 ## appendChild

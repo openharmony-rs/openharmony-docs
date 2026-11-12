@@ -301,9 +301,9 @@ extraData?: string | Object | ArrayBuffer
 header?: Object
 ```
 
-HTTP请求头字段。当请求方式为"POST" "PUT" "DELETE" 或者""时，默认{'content-Type': 'application/json'}， 否则默认{'content-Type': 'application/x-www-form-urlencoded'}。
+HTTP请求头字段。当请求方式为"POST"、"PUT"、"DELETE"或者""时，默认{'content-Type': 'application/json'}， 否则默认{'content-Type': 'application/x-www-form-urlencoded'}。
 
-如果head中包含number类型的字段，最大支持int64的整数。
+如果header中包含number类型的字段，最大支持int64的整数。
 
 header字段支持JSON格式如 [完整示例](../../../reference/apis-network-kit/js-apis-http.md#完整示例) 和Record<string, string>格式输入。
 

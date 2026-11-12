@@ -12,7 +12,7 @@ import { statistics } from '@kit.NetworkKit';
 function getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise<NetStatsInfoSequence>
 ```
 
-获取指定时间段内，应用在指定网络中的流量使用详情，使用 Promise 异步回调。
+获取指定时间段内，应用在指定网络中的流量使用详情，使用Promise异步回调。系统根据uid及networkInfo中的网络类型、时间范围、simId，从流量统计数据库中读取该应用在指定网络下的历史流量数据，按时间段返回NetStatsInfoSequence序列并以Promise形式返回；其中simId仅在网络类型为蜂窝网络（BEARER_CELLULAR）时生效。
 
 **起始版本：** 12
 
@@ -35,7 +35,7 @@ function getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Pro
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;NetStatsInfoSequence&gt; | 以 Promise 形式返回获取结果。返回应用历史流量统计信息。 |
+| Promise&lt;NetStatsInfoSequence&gt; | Promise对象，返回应用历史流量统计信息。 |
 
 **错误码：**
 

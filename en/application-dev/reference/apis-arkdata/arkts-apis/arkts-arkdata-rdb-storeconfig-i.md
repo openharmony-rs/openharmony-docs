@@ -19,6 +19,7 @@ Defines the RDB store configuration.
 ## Modules to Import
 
 ```TypeScript
+import { rdb } from '@ohos.data.rdb';
 ```
 
 ## name

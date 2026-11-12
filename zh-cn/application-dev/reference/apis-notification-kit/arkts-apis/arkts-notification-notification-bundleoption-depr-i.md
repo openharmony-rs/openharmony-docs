@@ -19,6 +19,7 @@ export interface BundleOption
 ## 导入模块
 
 ```TypeScript
+import { notification } from '@ohos.notification';
 ```
 
 ## bundle

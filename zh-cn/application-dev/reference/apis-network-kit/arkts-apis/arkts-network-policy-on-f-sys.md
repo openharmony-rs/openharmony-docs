@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function on(type: 'netUidPolicyChange', callback: Callback<NetUidPolicyInfo>): void
 ```
 
-注册 policy 发生改变时的回调，使用 callback 异步回调。
+注册网络策略发生改变时的回调。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -29,7 +29,7 @@ function on(type: 'netUidPolicyChange', callback: Callback<NetUidPolicyInfo>): v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'netUidPolicyChange' | 是 | 订阅的事件类型。'netUidPolicyChange'：注册policy发生改变事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetUidPolicyInfo](arkts-network-policy-netuidpolicyinfo-i-sys.md)&gt; | 是 | 回调函数。注册 policy 发生改变时调用。<br>**适用版本：** 11 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetUidPolicyInfo](arkts-network-policy-netuidpolicyinfo-i-sys.md)&gt; | 是 | 回调函数。注册网络策略发生改变时调用。<br>**适用版本：** 11 |
 
 **错误码：**
 
@@ -71,7 +71,7 @@ try {
 function on(type: 'netUidRuleChange', callback: Callback<NetUidRuleInfo>): void
 ```
 
-注册 rule 发生改变时的回调，使用 callback 异步回调。
+注册 rule 发生改变时的回调。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -130,7 +130,7 @@ try {
 function on(type: 'netMeteredIfacesChange', callback: Callback<Array<string>>): void
 ```
 
-注册计量 iface 发生改变时的回调，使用 callback 异步回调。
+注册计量 iface 发生改变时的回调。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -184,7 +184,7 @@ try {
 function on(type: 'netQuotaPolicyChange', callback: Callback<Array<NetQuotaPolicy>>): void
 ```
 
-注册计量网络策略发生改变时的回调，使用 callback 异步回调。
+注册计量网络策略发生改变时的回调。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -243,7 +243,7 @@ try {
 function on(type: 'netBackgroundPolicyChange', callback: Callback<boolean>): void
 ```
 
-注册后台网络策略发生改变时的回调，使用 callback 异步回调。
+注册后台网络策略发生改变时的回调。使用callback异步回调。
 
 **起始版本：** 10
 

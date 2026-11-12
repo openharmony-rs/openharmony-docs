@@ -4,7 +4,7 @@
 type Socks5Proxy = connection.Socks5Proxy
 ```
 
-Socks5 Proxy Configuration Information.
+Defines the SOCKS5 proxy configuration information.
 
 **Type:** [connection.Socks5Proxy](arkts-network-connection-socks5proxy-i.md)
 

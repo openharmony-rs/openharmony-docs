@@ -4,7 +4,7 @@
 enum NetFirewallOrderField
 ```
 
-Enumerates the sorting methods of firewall rules.
+Enumeration type, the sorting method of firewall rules.
 
 > **Description**
 > 

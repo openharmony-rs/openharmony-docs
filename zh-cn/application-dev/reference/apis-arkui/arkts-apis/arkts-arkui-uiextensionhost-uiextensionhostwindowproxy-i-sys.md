@@ -58,7 +58,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible causes:         1. The window is not created or destroyed.         2. Internal task error.         3. The subWindow has been created and cannot be created again.         4. It is not allowed to create non-secure window when secure extension exists. |
-| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause:         1. An AgentUIExtensionAbility cannot create a subwindow. |
+| [1300035](../errorcode-window.md#1300035-不允许创建子窗口) | Creating a subwindow is not allowed in the current context. Possible cause:         1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 <!--Del-->
 **示例**
@@ -149,7 +149,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible causes:         1. The window is not created or destroyed.         2. Internal task error.         3. The subWindow has been created and cannot be created again.         4. It is not allowed to create non-secure window when secure extension exists. |
-| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause:         1. An AgentUIExtensionAbility cannot create a subwindow. |
+| [1300035](../errorcode-window.md#1300035-不允许创建子窗口) | Creating a subwindow is not allowed in the current context. Possible cause:         1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 <!--Del-->
 **示例**

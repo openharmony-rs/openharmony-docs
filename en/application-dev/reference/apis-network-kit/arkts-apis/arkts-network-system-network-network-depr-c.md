@@ -13,6 +13,7 @@ export default class Network
 ## Modules to Import
 
 ```TypeScript
+import { Network } from '@system.network';
 ```
 
 ## getType

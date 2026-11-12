@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getDeviceIdleTrustlist(callback: AsyncCallback<Array<number>>): void
 ```
 
-获取休眠模式白名单所包含的 uid，使用 callback 异步回调。
+获取休眠模式白名单所包含的 uid。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -62,7 +62,7 @@ policy.getDeviceIdleTrustlist((error: BusinessError, data: number[]) => {
 function getDeviceIdleTrustlist(): Promise<Array<number>>
 ```
 
-获取休眠模式白名单所包含的 uid，使用 Promise 异步回调。
+获取休眠模式白名单所包含的 uid。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -78,7 +78,7 @@ function getDeviceIdleTrustlist(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | 以 Promise 形式返回设定结果。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回设定结果。 |
 
 **错误码：**
 

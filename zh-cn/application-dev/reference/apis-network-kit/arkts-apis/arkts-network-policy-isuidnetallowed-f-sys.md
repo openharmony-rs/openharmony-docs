@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function isUidNetAllowed(uid: number, isMetered: boolean, callback: AsyncCallback<boolean>): void
 ```
 
-判断对应 uid 能否访问计量或非计量网络，使用 callback 异步回调。
+判断对应 uid 能否访问计量或非计量网络。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -64,7 +64,7 @@ policy.isUidNetAllowed(11111, true, (error: BusinessError, data: boolean) => {
 function isUidNetAllowed(uid: number, isMetered: boolean): Promise<boolean>
 ```
 
-判断对应 uid 能否访问计量或非计量网络，使用 Promise 异步回调。
+判断对应 uid 能否访问计量或非计量网络。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -87,7 +87,7 @@ function isUidNetAllowed(uid: number, isMetered: boolean): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise 对象。 返回 true 表示这个uid可以访问计量或非计量网络，返回false表示这个uid不可以访问计量或非计量网络。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示这个uid可以访问计量或非计量网络；返回false表示这个uid不可以访问计量或非计量网络。 |
 
 **错误码：**
 
@@ -125,7 +125,7 @@ policy
 function isUidNetAllowed(uid: number, iface: string, callback: AsyncCallback<boolean>): void
 ```
 
-获取对应 uid 能否访问指定的 iface 的网络，使用 callback 异步回调。
+获取对应 uid 能否访问指定的 iface 的网络。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -177,7 +177,7 @@ policy.isUidNetAllowed(11111, 'wlan0', (error: BusinessError, data: boolean) => 
 function isUidNetAllowed(uid: number, iface: string): Promise<boolean>
 ```
 
-获取对应 uid 能否访问指定的 iface 的网络，使用 Promise 异步回调。
+获取对应 uid 能否访问指定的 iface 的网络。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -200,7 +200,7 @@ function isUidNetAllowed(uid: number, iface: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise 对象。 返回 true 表示对应 uid 能访问指定的 iface 的网络，返回false则表示不能访问。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示对应uid能访问指定的iface的网络；返回false则表示不能访问。 |
 
 **错误码：**
 

@@ -19,6 +19,7 @@ FormProvider模块提供了卡片提供方相关接口的能力，开发者在�
 ## 导入模块
 
 ```TypeScript
+import { formProvider } from '@ohos.application.formProvider';
 ```
 
 ## 汇总

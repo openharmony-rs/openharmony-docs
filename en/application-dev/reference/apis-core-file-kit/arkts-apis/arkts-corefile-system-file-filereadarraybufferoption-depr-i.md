@@ -17,6 +17,7 @@ Defines the options used in readArrayBuffer().
 ## Modules to Import
 
 ```TypeScript
+import { FileReadArrayBufferOption } from '@system.file';
 ```
 
 ## complete

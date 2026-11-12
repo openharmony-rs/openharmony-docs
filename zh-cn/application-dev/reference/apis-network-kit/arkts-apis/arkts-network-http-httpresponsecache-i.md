@@ -46,7 +46,7 @@ import { http } from '@kit.NetworkKit';
 delete(callback: AsyncCallback<void>): void
 ```
 
-禁用缓存并删除其中的数据，使用callback方式作为异步方法。
+禁用缓存并删除其中的数据，使用callback异步回调。
 
 **起始版本：** 9
 
@@ -94,7 +94,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
 delete(): Promise<void>
 ```
 
-禁用缓存并删除其中的数据，使用Promise方式作为异步方法。
+禁用缓存并删除其中的数据，使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -136,7 +136,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
 flush(callback: AsyncCallback<void>): void
 ```
 
-将缓存中的数据写入文件系统，以便在下一个HTTP请求中访问所有缓存数据，使用callback方式作为异步方法。缓存数据包括：响应头(header)、响应体(result)、cookies、请求时间(requestTime)和响应时间(responseTime)。
+将缓存中的数据写入文件系统，以便在下一个HTTP请求中访问所有缓存数据，使用callback异步回调。缓存数据包括：响应头(header)、响应体(result)、cookies、请求时间(requestTime)和响应时间(responseTime)。
 
 **起始版本：** 9
 
@@ -183,7 +183,7 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse)
 flush(): Promise<void>
 ```
 
-将缓存中的数据写入文件系统，以便在下一个HTTP请求中访问所有缓存数据，使用Promise方式作为异步方法。
+将缓存中的数据写入文件系统，以便在下一个HTTP请求中访问所有缓存数据，使用Promise异步回调。
 
 **起始版本：** 9
 

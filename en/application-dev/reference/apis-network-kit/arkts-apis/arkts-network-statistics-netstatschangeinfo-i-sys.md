@@ -4,7 +4,7 @@
 export interface NetStatsChangeInfo
 ```
 
-Defines the NIC status and usage of an application.
+NIC name and application UID reported in a traffic change event.
 
 **Since:** 11
 

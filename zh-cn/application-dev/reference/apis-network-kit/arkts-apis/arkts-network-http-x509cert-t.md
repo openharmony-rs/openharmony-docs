@@ -4,7 +4,7 @@
 export type X509Cert = cert.X509Cert
 ```
 
-X509证书
+X509证书对象。
 
 **类型：** [cert.X509Cert](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509cert-i.md)
 

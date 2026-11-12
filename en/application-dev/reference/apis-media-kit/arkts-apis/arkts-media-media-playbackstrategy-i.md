@@ -18,6 +18,24 @@ Provides preferred playback settings for player.
 import { media } from '@kit.MediaKit';
 ```
 
+## disableMedia
+
+```TypeScript
+disableMedia?: MediaType
+```
+
+Configure the media type to be disabled during playback. Value constraint: See the definition of MediaType. Default value: If this parameter is not set, no media is disabled by default.
+
+**Type:** [MediaType](arkts-media-media-mediatype-e.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PlaybackStrategy-disableMedia?: MediaType--><!--Device-PlaybackStrategy-disableMedia?: MediaType-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.Core
+
 ## enableSuperResolution
 
 ```TypeScript

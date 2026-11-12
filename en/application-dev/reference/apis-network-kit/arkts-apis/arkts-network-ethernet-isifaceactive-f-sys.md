@@ -12,7 +12,7 @@ import { ethernet } from '@kit.NetworkKit';
 function isIfaceActive(iface: string, callback: AsyncCallback<number>): void
 ```
 
-Checks whether the interface is activated. This API uses an asynchronous callback to return the result.
+Checks whether the interface is active. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -68,7 +68,7 @@ ethernet.isIfaceActive("eth0", (error: BusinessError, value: number) => {
 function isIfaceActive(iface: string): Promise<number>
 ```
 
-Checks whether the interface is activated. This API uses a promise to return the result.
+Checks whether the interface is active. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -90,7 +90,7 @@ Checks whether the interface is activated. This API uses a promise to return the
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the result. The value **1** means that the network interface is active, **0** means that the network interface is inactive, and any other value means that an error has occurred. |
+| Promise&lt;number&gt; | Promise used to return the result. 1 if activated; 0 if not activated; otherwise, an error code indicating the failure to obtain the result. |
 
 **Error codes:**
 

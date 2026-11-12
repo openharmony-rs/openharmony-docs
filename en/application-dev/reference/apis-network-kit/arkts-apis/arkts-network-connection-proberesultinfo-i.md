@@ -42,7 +42,7 @@ Packet loss rate. The value range is [0, 100]. For example, 100 indicates 100% p
 rtt: number[]
 ```
 
-Round-trip time (RTT), in milliseconds. Multiple probe packets are sent to the target host. The number of probe packets is determined by the **duration** parameter in the [queryProbeResult](arkts-network-connection-queryproberesult-f.md) API. The array elements are the minimum, average, maximum, and standard deviation of the RTTs of these probe packets, respectively.
+Round-trip time (RTT), in milliseconds. When multiple probe packets are sent to the target host, the number of probe packets is determined by the **duration** parameter in the [queryProbeResult](arkts-network-connection-queryproberesult-f.md) API. The array elements are the minimum, average, maximum, and standard deviation of the RTTs of these probe packets, respectively.
 
 **Type:** number[]
 

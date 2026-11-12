@@ -6,8 +6,6 @@ interface EapData
 
 Defines the EAP data.
 
-​
-
 **Since:** 20
 
 <!--Device-eap-interface EapData--><!--Device-eap-interface EapData-End-->

@@ -12,7 +12,7 @@ import { statistics } from '@kit.NetworkKit';
 function getAllRxBytes(callback: AsyncCallback<number>): void
 ```
 
-获取所有网卡从最近一次开机开始至接口调用时刻的下行流量总和(单位:字节)。使用callback异步回调。
+获取所有网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -26,7 +26,7 @@ function getAllRxBytes(callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取到流量数据时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -73,7 +73,7 @@ function getAllRxBytes(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | The promise returned by the function. |
+| Promise&lt;number&gt; | Promise对象，返回所有网卡从最近一次开机开始到现在的下行流量总和（单位：字节）。 |
 
 **错误码：**
 

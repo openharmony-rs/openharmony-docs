@@ -13,7 +13,7 @@ export function requestControlAppPermissionFromUser(context: Context, appInfo: A
     Promise<ControlAppStatusResult[]>
 ```
 
-向用户请求指定应用的控制权限。该函数会弹出一个用户对话框，获取对每个应用的控制授权决 。返回结果反映用户对每个应用的允许或拒绝决策。
+向用户请求指定应用的控制权限。该函数会弹出一个用户对话框，获取对每个应用的控制授权决策。返回结果反映用户对每个应用的允许或拒绝决策。
 
 **起始版本：** 26.1.0
 
@@ -36,7 +36,7 @@ export function requestControlAppPermissionFromUser(context: Context, appInfo: A
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[ControlAppStatusResult](arkts-ability-abilitytoolaccessctrl-controlappstatusresult-i.md)[]&gt; | Promise用于返回${ControlAppStatusResult[]}。 |
+| Promise&lt;[ControlAppStatusResult](arkts-ability-abilitytoolaccessctrl-controlappstatusresult-i.md)[]&gt; | Promise对象，返回${ControlAppStatusResult[]}。 |
 
 **错误码：**
 

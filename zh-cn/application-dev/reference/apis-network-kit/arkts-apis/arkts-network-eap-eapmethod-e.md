@@ -18,7 +18,7 @@ enum EapMethod
 EAP_AKA = 6
 ```
 
-Authentication and key agreement
+AKA类型。
 
 **起始版本：** 20
 
@@ -32,7 +32,7 @@ Authentication and key agreement
 EAP_AKA_PRIME = 7
 ```
 
-AKA prime
+AKA Prime类型。
 
 **起始版本：** 20
 
@@ -60,7 +60,7 @@ EAP_NONE = 0
 EAP_PEAP = 1
 ```
 
-Protected extensible authentication protocol
+PEAP类型。
 
 **起始版本：** 20
 
@@ -74,7 +74,7 @@ Protected extensible authentication protocol
 EAP_PWD = 4
 ```
 
-Password
+PWD类型。
 
 **起始版本：** 20
 
@@ -88,7 +88,7 @@ Password
 EAP_SIM = 5
 ```
 
-Subscriber identity module
+SIM类型。
 
 **起始版本：** 20
 
@@ -102,7 +102,7 @@ Subscriber identity module
 EAP_TLS = 2
 ```
 
-Transport layer security
+TLS类型。
 
 **起始版本：** 20
 
@@ -116,7 +116,7 @@ Transport layer security
 EAP_TTLS = 3
 ```
 
-Tunneled transport layer security
+TTLS类型。
 
 **起始版本：** 20
 
@@ -130,7 +130,7 @@ Tunneled transport layer security
 EAP_UNAUTH_TLS = 8
 ```
 
-Unauth TLS
+UNAUTH TLS类型。
 
 **起始版本：** 20
 

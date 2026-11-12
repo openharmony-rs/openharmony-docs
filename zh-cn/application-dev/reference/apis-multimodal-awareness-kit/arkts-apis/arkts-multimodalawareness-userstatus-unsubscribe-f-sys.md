@@ -12,7 +12,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 function unsubscribe(featureId: UserStatusFeature, callback?: Callback<UserStatusData>): number
 ```
 
-取消订阅用户状态监控。与subscribe()方法成对使用，用于取消订阅回调并释放资源。必须在subscribe()之后调用，取消未订阅的featureId返回失败。<br>建议在应用退出或不再需要监控时调用unsubscribe()。
+取消订阅用户状态监控。与subscribe()方法成对使用，用于取消订阅回调并释放资源。必须在subscribe()之后调用，取消未订阅的featureId返回失败。建议在应用退出或不再需要监控时调用unsubscribe()。
 
 **起始版本：** 26.0.0
 

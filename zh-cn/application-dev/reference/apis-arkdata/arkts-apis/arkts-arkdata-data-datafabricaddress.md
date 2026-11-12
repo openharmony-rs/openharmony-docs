@@ -15,6 +15,7 @@
 ## 导入模块
 
 ```TypeScript
+import { dataFabricAddress } from '@ohos.data.dataFabricAddress';
 ```
 
 ## 汇总

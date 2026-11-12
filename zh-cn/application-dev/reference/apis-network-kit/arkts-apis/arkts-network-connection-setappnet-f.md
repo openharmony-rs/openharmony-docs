@@ -14,6 +14,12 @@ function setAppNet(netHandle: NetHandle, callback: AsyncCallback<void>): void
 
 将App绑定到特定的网络，绑定后App只能通过netHandle对应的网络访问网络。使用callback异步回调。
 
+> **说明：** 
+> 
+> 当应用不再使用该网络或者该网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
+> 
+> 如需解除App和指定网络的绑定关系，可以调用[setAppNet](arkts-network-connection-setappnet-f.md)，并传入一个netId = 0的NetHandle对象。
+
 **起始版本：** 9
 
 **需要权限：** ohos.permission.INTERNET
@@ -98,6 +104,12 @@ function setAppNet(netHandle: NetHandle): Promise<void>
 ```
 
 将App异步绑定到特定的网络，绑定后App只能通过netHandle对应的网络访问网络。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 当应用不再使用该网络或者该网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
+> 
+> 如需解除App和指定网络的绑定关系，可以调用[setAppNet](arkts-network-connection-setappnet-f.md)，并传入一个netId = 0的NetHandle对象。
 
 **起始版本：** 9
 

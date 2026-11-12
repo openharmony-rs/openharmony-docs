@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { jsLeakWatcherNative } from '@ohos.hiviewdfx.jsLeakWatcherNative';
 ```
 
 ## handleGCTask

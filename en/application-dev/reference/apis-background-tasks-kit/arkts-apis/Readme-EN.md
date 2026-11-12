@@ -141,6 +141,18 @@
   <!--Del-->
   - [ResourceType(system api)](arkts-backgroundtasks-devicestandby-resourcetype-e-sys.md)<!--DelEnd-->
 <!--Del-->
+- [@ohos.resourceschedule.suspendManager(Suspend Manager)](arkts-backgroundtasks-resourceschedule-suspendmanager.md)<!--DelEnd-->
+  <!--Del-->
+  - [getSuspendStateByPidList(system api)](arkts-backgroundtasks-suspendmanager-getsuspendstatebypidlist-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [registerSuspendStateObserver(system api)](arkts-backgroundtasks-suspendmanager-registersuspendstateobserver-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [unregisterSuspendStateObserver(system api)](arkts-backgroundtasks-suspendmanager-unregistersuspendstateobserver-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SuspendStateObserver(system api)](arkts-backgroundtasks-suspendmanager-suspendstateobserver-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FreezeState(system api)](arkts-backgroundtasks-suspendmanager-freezestate-e-sys.md)<!--DelEnd-->
+<!--Del-->
 - [@ohos.resourceschedule.usageStatistics(Device Usage Statistics)](arkts-backgroundtasks-resourceschedule-usagestatistics.md)<!--DelEnd-->
   <!--Del-->
   - [isIdleState(system api)](arkts-backgroundtasks-usagestatistics-isidlestate-f-sys.md)<!--DelEnd-->

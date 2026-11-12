@@ -21,6 +21,7 @@ export interface FetchResponse
 ## Modules to Import
 
 ```TypeScript
+import { FetchResponse } from '@system.fetch';
 ```
 
 ## code

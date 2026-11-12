@@ -46,10 +46,10 @@ import { http } from '@kit.NetworkKit';
 | [HttpResponse](arkts-network-http-httpresponse-i.md) | Defines the response to an HTTP request. |
 | [HttpResponseCache](arkts-network-http-httpresponsecache-i.md) | Defines an object that stores the response to an HTTP request. Before invoking APIs provided by **HttpResponseCache**, you must call [createHttpResponseCache()](arkts-network-http-createhttpresponsecache-f.md) to create an **HttpRequestTask** object. |
 | [MultiFormData](arkts-network-http-multiformdata-i.md) | Defines the type of multi-form data. |
-| [PerformanceTiming](arkts-network-http-performancetiming-i.md) | Configures the timing for performance tracing, in ms. |
+| [PerformanceTiming](arkts-network-http-performancetiming-i.md) | Defines the performance timing (unit: ms). |
 | [ServerAuthentication](arkts-network-http-serverauthentication-i.md) | Defines HTTP server identity verification information. |
 | [TlsConfig](arkts-network-http-tlsconfig-i.md) | Defines the TLS configuration, including the version and cipher suite. |
-| [ValidationContext](arkts-network-http-validationcontext-i.md) | The validation context of [ValidationCallback](arkts-network-http-validationcallback-t.md) |
+| [ValidationContext](arkts-network-http-validationcontext-i.md) | Certificate context information used when verifying the identity of the remote server, which is passed in as a parameter of [ValidationCallback](arkts-network-http-validationcallback-t.md). |
 
 ### Types
 
@@ -63,7 +63,7 @@ import { http } from '@kit.NetworkKit';
 | [QueryParamObject](arkts-network-http-queryparamobject-t.md) | Defines the key-value object type used to construct URL query parameters. |
 | [QueryParamValue](arkts-network-http-queryparamvalue-t.md) | Defines the single-value type that can be used in **QueryParamObject**. |
 | [RemoteValidation](arkts-network-http-remotevalidation-t.md) | Enumerates the identity verification modes of the remote server. |
-| [Socks5Proxy](arkts-network-http-socks5proxy-t.md) | Socks5 Proxy Configuration Information. |
+| [Socks5Proxy](arkts-network-http-socks5proxy-t.md) | Defines the SOCKS5 proxy configuration information. |
 | [SslType](arkts-network-http-ssltype-t.md) | Defines the secure communications protocol. |
 | [TlsOptions](arkts-network-http-tlsoptions-t.md) | Defines the TLS configuration. |
 | [TlsV10CipherSuite](arkts-network-http-tlsv10ciphersuite-t.md) | Declares the cipher suite for TLS 1.0. |
@@ -73,8 +73,8 @@ import { http } from '@kit.NetworkKit';
 | [TlsV12SpecificCipherSuite](arkts-network-http-tlsv12specificciphersuite-t.md) | Enumerates cipher suites supported by TLS 1.2 or later. |
 | [TlsV13CipherSuite](arkts-network-http-tlsv13ciphersuite-t.md) | Declares the cipher suite for TLS 1.3, which is also compatible with TLS 1.2. |
 | [TlsV13SpecificCipherSuite](arkts-network-http-tlsv13specificciphersuite-t.md) | Enumerates cipher suites supported by TLS 1.3 or later. |
-| [ValidationCallback](arkts-network-http-validationcallback-t.md) | Self defined remote validation. This API uses a promise to return the result. |
-| [X509Cert](arkts-network-http-x509cert-t.md) | X509 certificate. |
+| [ValidationCallback](arkts-network-http-validationcallback-t.md) | Defines a custom callback for remote server identity verification. Developers can use this callback to implement custom certificate verification logic, supporting synchronous or asynchronous return of the verification result. |
+| [X509Cert](arkts-network-http-x509cert-t.md) | X509 certificate object. |
 
 ### Enums
 

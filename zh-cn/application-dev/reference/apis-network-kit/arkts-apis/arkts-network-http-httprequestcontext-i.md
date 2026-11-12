@@ -24,7 +24,7 @@ import { http } from '@kit.NetworkKit';
 body: Object
 ```
 
-The header of an HTTP request interceptor. It can be modified in an interceptor.
+HTTP拦截器从HTTP请求中获取到的请求体，支持在拦截器中进行修改。
 
 **类型：** Object
 
@@ -42,7 +42,7 @@ The header of an HTTP request interceptor. It can be modified in an interceptor.
 header: Object
 ```
 
-The header of an HTTP request interceptor. It can be modified in an interceptor.
+HTTP拦截器从HTTP请求中获取到的请求头，支持在拦截器中进行修改。
 
 **类型：** Object
 
@@ -60,7 +60,7 @@ The header of an HTTP request interceptor. It can be modified in an interceptor.
 url: string
 ```
 
-The URL of an HTTP request interceptor. It can be modified in an interceptor.
+HTTP拦截器从HTTP请求中获取到的URL，支持在拦截器中进行修改。
 
 **类型：** string
 

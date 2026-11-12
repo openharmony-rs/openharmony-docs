@@ -19,6 +19,7 @@ Defines the KV pairs stored in the KV store.
 ## Modules to Import
 
 ```TypeScript
+import { distributedData } from '@ohos.data.distributedData';
 ```
 
 ## key

@@ -28,7 +28,7 @@ function off(type: 'operationSubmitMetadata', bundleName: string, callback?: Cal
 | --- | --- | --- | --- |
 | type | 'operationSubmitMetadata' | 是 | 事件类型，固定传入'operationSubmitMetadata'，表示系统应用获取编码内容。 |
 | bundleName | string | 是 | 应用包名，标识注册应用的包名，需与订阅时传入的包名一致。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 回调函数，用于返回事件码。需要取消监听的回调函数，需与订阅时传入的回调函数一致。建议在订阅时保存回调函数引用，<br>在取消订阅时使用同一引用。若不填，则取消当前监听该事件的所有回调函数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 回调函数，用于返回事件码。需要取消监听的回调函数，需与订阅时传入的回调函数一致。建议在订阅时保存回调函数引用，在取消订阅时使用同一引用。若不填，则取消当前监听该事件的所有回调函数。 |
 
 **错误码：**
 

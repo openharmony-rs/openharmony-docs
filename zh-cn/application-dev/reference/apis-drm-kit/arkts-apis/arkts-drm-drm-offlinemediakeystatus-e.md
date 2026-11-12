@@ -18,7 +18,7 @@ enum OfflineMediaKeyStatus
 OFFLINE_MEDIA_KEY_STATUS_INACTIVE = 2
 ```
 
-失活状态。
+失活状态，可能因密钥过期或被服务端禁用导致，需要重新获取密钥。
 
 **起始版本：** 11
 

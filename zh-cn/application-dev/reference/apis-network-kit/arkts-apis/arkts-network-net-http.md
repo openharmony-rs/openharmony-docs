@@ -49,7 +49,7 @@ import { http } from '@kit.NetworkKit';
 | [PerformanceTiming](arkts-network-http-performancetiming-i.md) | 性能打点(单位：ms)。 |
 | [ServerAuthentication](arkts-network-http-serverauthentication-i.md) | HTTP服务器身份验证。 |
 | [TlsConfig](arkts-network-http-tlsconfig-i.md) | TLS加密版本及套件配置。 |
-| [ValidationContext](arkts-network-http-validationcontext-i.md) | [ValidationCallback](arkts-network-http-validationcallback-t.md)的验证上下文 |
+| [ValidationContext](arkts-network-http-validationcontext-i.md) | 验证远端服务器身份时的证书上下文信息，作为[ValidationCallback](arkts-network-http-validationcallback-t.md)的参数传入。 |
 
 ### 类型
 
@@ -74,7 +74,7 @@ import { http } from '@kit.NetworkKit';
 | [TlsV13CipherSuite](arkts-network-http-tlsv13ciphersuite-t.md) | TLS1.3的加密套件声明函数，支持TLS1.3版本，兼容TLS1.2版本。 |
 | [TlsV13SpecificCipherSuite](arkts-network-http-tlsv13specificciphersuite-t.md) | TLS1.3及以上版本支持的加密套件。 |
 | [ValidationCallback](arkts-network-http-validationcallback-t.md) | 自定义远程验证。该API使用Promise异步返回结果。 |
-| [X509Cert](arkts-network-http-x509cert-t.md) | X509证书 |
+| [X509Cert](arkts-network-http-x509cert-t.md) | X509证书对象。 |
 
 ### 枚举
 

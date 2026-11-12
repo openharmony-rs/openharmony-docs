@@ -415,6 +415,8 @@
   - [rebootDevice](arkts-basicservices-power-rebootdevice-f.md)
   - [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md)
   - [DevicePowerSubMode](arkts-basicservices-power-devicepowersubmode-e.md)
+  <!--Del-->
+  - [InvokeMode(system api)](arkts-basicservices-power-invokemode-e-sys.md)<!--DelEnd-->
   - [PowerKeyFilteringStrategy](arkts-basicservices-power-powerkeyfilteringstrategy-e.md)
 - [@ohos.print(Print)](arkts-basicservices-print.md)
   - [addPrinter](arkts-basicservices-print-addprinter-f.md)

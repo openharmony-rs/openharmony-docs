@@ -938,6 +938,8 @@
   <!--Del-->
   - [deleteDisposedStatusSync（系统接口）](arkts-ability-appcontrol-deletedisposedstatussync-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [deleteRecoverDisposedRule（系统接口）](arkts-ability-appcontrol-deleterecoverdisposedrule-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [deleteUninstallDisposedRule（系统接口）](arkts-ability-appcontrol-deleteuninstalldisposedrule-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getAllDisposedRules（系统接口）](arkts-ability-appcontrol-getalldisposedrules-f-sys.md)<!--DelEnd-->
@@ -950,6 +952,8 @@
   <!--Del-->
   - [getDisposedStatusSync（系统接口）](arkts-ability-appcontrol-getdisposedstatussync-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [getRecoverDisposedRule（系统接口）](arkts-ability-appcontrol-getrecoverdisposedrule-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [getUninstallDisposedRule（系统接口）](arkts-ability-appcontrol-getuninstalldisposedrule-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setDisposedRule（系统接口）](arkts-ability-appcontrol-setdisposedrule-f-sys.md)<!--DelEnd-->
@@ -960,11 +964,15 @@
   <!--Del-->
   - [setDisposedStatusSync（系统接口）](arkts-ability-appcontrol-setdisposedstatussync-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [setRecoverDisposedRule（系统接口）](arkts-ability-appcontrol-setrecoverdisposedrule-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [setUninstallDisposedRule（系统接口）](arkts-ability-appcontrol-setuninstalldisposedrule-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [DisposedRule（系统接口）](arkts-ability-appcontrol-disposedrule-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [DisposedRuleConfiguration（系统接口）](arkts-ability-appcontrol-disposedruleconfiguration-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RecoverDisposedRule（系统接口）](arkts-ability-appcontrol-recoverdisposedrule-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [UninstallDisposedRule（系统接口）](arkts-ability-appcontrol-uninstalldisposedrule-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -975,6 +983,8 @@
   - [DisposedType（系统接口）](arkts-ability-appcontrol-disposedtype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [PageJumpMode（系统接口）](arkts-ability-appcontrol-pagejumpmode-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RecoverComponentType（系统接口）](arkts-ability-appcontrol-recovercomponenttype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [UninstallComponentType（系统接口）](arkts-ability-appcontrol-uninstallcomponenttype-e-sys.md)<!--DelEnd-->
 - [@ohos.bundle.bundleManager（应用程序包管理模块）](arkts-ability-bundle-bundlemanager.md)

@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { appManager } from '@ohos.application.appManager';
 ```
 
 ## killProcessWithAccount

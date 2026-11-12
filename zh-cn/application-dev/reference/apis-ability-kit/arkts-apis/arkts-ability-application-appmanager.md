@@ -15,6 +15,7 @@ appManager模块提供应用管理的能力，包括查询当前系统是否处�
 ## 导入模块
 
 ```TypeScript
+import { appManager } from '@ohos.application.appManager';
 ```
 
 ## 汇总

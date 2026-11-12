@@ -14,6 +14,12 @@ function clearCustomDnsRules(callback: AsyncCallback<void>): void
 
 Removes all custom DNS rules of the current application. This API uses an asynchronous callback to return the result.
 
+> **NOTE:** 
+> 
+> Before deletion, ensure that no thread is currently using the existing custom rules to avoid conflicts.
+> 
+> You can call [addCustomDnsRule](arkts-network-connection-addcustomdnsrule-f.md#addcustomdnsrule-1) to add a custom rule.
+
 **Since:** 11
 
 **Required permissions:** ohos.permission.INTERNET
@@ -61,6 +67,12 @@ function clearCustomDnsRules(): Promise<void>
 ```
 
 Removes all custom DNS rules of the current application. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> Before deletion, ensure that no thread is currently using the existing custom rules to avoid conflicts.
+> 
+> You can call [addCustomDnsRule](arkts-network-connection-addcustomdnsrule-f.md#addcustomdnsrule-2) to add a custom rule.
 
 **Since:** 11
 

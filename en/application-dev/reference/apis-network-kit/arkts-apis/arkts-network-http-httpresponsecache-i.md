@@ -213,7 +213,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
 flush(callback: AsyncCallback<void>): void
 ```
 
-Flushes data in the cache to the file system so that the cached data can be accessed in the next HTTP request. This API uses an asynchronous callback to return the result. Cached data includes the response header (header), response body (result), cookies, request time (requestTime), and response time (responseTime).
+Writes the data in the cache to the file system so that all cached data can be accessed in the next HTTP request. This API uses an asynchronous callback to return the result. The cached data includes the response header, response body (**result**), cookies, request time (**requestTime**), and response time (**responseTime**).
 
 **Since:** 9
 
@@ -272,7 +272,7 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse)
 flush(): Promise<void>
 ```
 
-Flushes data in the cache to the file system so that the cached data can be accessed in the next HTTP request. This API uses a promise to return the result.
+Writes the data in the cache to the file system so that all cached data can be accessed in the next HTTP request. This API uses a promise to return the result.
 
 **Since:** 9
 

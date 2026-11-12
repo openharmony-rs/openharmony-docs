@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function isBackgroundAllowed(callback: AsyncCallback<boolean>): void
 ```
 
-获取当前应用是否允许后台访问网络，使用 callback 异步回调。
+获取当前应用是否允许后台访问网络。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -28,7 +28,7 @@ function isBackgroundAllowed(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回 true 代表后台策略为允许，失败返回错误码错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示后台策略为允许，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
@@ -62,7 +62,7 @@ policy.isBackgroundAllowed((error: BusinessError, data: boolean) => {
 function isBackgroundAllowed(): Promise<boolean>
 ```
 
-获取当前应用是否允许后台访问网络，使用 Promise 异步回调。
+获取当前应用是否允许后台访问网络。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -78,7 +78,7 @@ function isBackgroundAllowed(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise 对象。 返回 true 表示后台策略为允许，返回false表示后台策略不允许。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示后台策略为允许；返回false表示后台策略不允许。 |
 
 **错误码：**
 

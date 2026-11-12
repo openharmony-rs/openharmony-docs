@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function isUidNetAllowed(uid: number, isMetered: boolean, callback: AsyncCallback<boolean>): void
 ```
 
-Checks whether the application specified by a given UID is allowed to access a metered network. This API uses an asynchronous callback to return the result.
+Checks whether the application specified by a given UID can access a metered or non-metered network. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -28,7 +28,7 @@ Checks whether the application specified by a given UID is allowed to access a m
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | Unique app ID, which is a positive integer within the int32_t range. |
+| uid | number | Yes | Unique identifier of the app. The value range is a positive integer within the range of int32_t. |
 | isMetered | boolean | Yes | Whether the network is a metered network. The value **true** indicates that the network is a metered network, and the value **false** indicates the opposite. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** means that the application is allowed to access metered networks, and the value **false** means the opposite. |
 
@@ -64,7 +64,7 @@ policy.isUidNetAllowed(11111, true, (error: BusinessError, data: boolean) => {
 function isUidNetAllowed(uid: number, isMetered: boolean): Promise<boolean>
 ```
 
-Checks whether the application specified by a given UID is allowed to access a metered network. This API uses a promise to return the result.
+Checks whether the corresponding UID can access the metered or non-metered network. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -80,7 +80,7 @@ Checks whether the application specified by a given UID is allowed to access a m
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | Unique app ID, which is a positive integer within the int32_t range. |
+| uid | number | Yes | Unique identifier of the app. The value range is a positive integer within the int32_t range. |
 | isMetered | boolean | Yes | Whether the network is a metered network. The value **true** indicates that the network is a metered network, and the value **false** indicates the opposite. |
 
 **Return value:**
@@ -141,8 +141,8 @@ Obtains whether the network of the specified iface can be accessed by the corres
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | Unique app ID, which is a positive integer within the int32_t range. |
-| iface | string | Yes | Name of the target network. |
+| uid | number | Yes | Unique identifier of the app. The value range is a positive integer within the int32_t range. |
+| iface | string | Yes | Name of the corresponding network. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** means that the application is allowed to access the specified network, and the value **false** means the opposite. |
 
 **Error codes:**
@@ -177,7 +177,7 @@ policy.isUidNetAllowed(11111, 'wlan0', (error: BusinessError, data: boolean) => 
 function isUidNetAllowed(uid: number, iface: string): Promise<boolean>
 ```
 
-Obtains whether the UID can access the network of the specified iface. This API uses a promise to return the result.
+Obtains whether the network of the specified iface can be accessed by the corresponding UID. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -193,7 +193,7 @@ Obtains whether the UID can access the network of the specified iface. This API 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | Unique app ID, which is a positive integer within the int32_t range. |
+| uid | number | Yes | Unique identifier of the app. The value is a positive integer within the range of int32_t. |
 | iface | string | Yes | Name of the target network. |
 
 **Return value:**

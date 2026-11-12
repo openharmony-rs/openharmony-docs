@@ -19,6 +19,7 @@ KVStore数据库实例，提供增加数据、删除数据和订阅数据变更�
 ## 导入模块
 
 ```TypeScript
+import { distributedData } from '@ohos.data.distributedData';
 ```
 
 ## commit

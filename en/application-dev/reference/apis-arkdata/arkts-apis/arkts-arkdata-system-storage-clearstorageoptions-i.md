@@ -15,6 +15,7 @@ export interface ClearStorageOptions
 ## Modules to Import
 
 ```TypeScript
+import { ClearStorageOptions } from '@system.storage';
 ```
 
 ## complete

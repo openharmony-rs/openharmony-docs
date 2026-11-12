@@ -12,7 +12,7 @@ import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 export function queryControlAppStatus(appInfo: AppInfo[]): Promise<ControlAppStatusResult[]>
 ```
 
-查询指定应用的控制权限状态。此函数检查输入列表中的每个应用程序是否被允许或拒绝被外部工具控制。结果列表与输入顺序相对应。
+查询指定应用的控制权限状态。该函数检查输入列表中的每个应用程序是否被允许或拒绝被外部工具控制。结果列表与输入顺序相对应。
 
 **起始版本：** 26.1.0
 
@@ -34,7 +34,7 @@ export function queryControlAppStatus(appInfo: AppInfo[]): Promise<ControlAppSta
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[ControlAppStatusResult](arkts-ability-abilitytoolaccessctrl-controlappstatusresult-i.md)[]&gt; | Promise用于返回${ControlAppStatusResult[]}。 |
+| Promise&lt;[ControlAppStatusResult](arkts-ability-abilitytoolaccessctrl-controlappstatusresult-i.md)[]&gt; | Promise对象，返回${ControlAppStatusResult[]}。 |
 
 **错误码：**
 

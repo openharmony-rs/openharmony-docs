@@ -29,13 +29,13 @@ export function requestToolTicket(cliCmdInfos: CliCmdInfo[], ticketParams: Ticke
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | cliCmdInfos | [CliCmdInfo](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i.md)[] | 是 | CLI命令列表。 |
-| ticketParams | [TicketParams](arkts-ability-abilitytoolaccessctrl-ticketparams-i.md) | 是 | 生成授权凭据选项。 |
+| ticketParams | [TicketParams](arkts-ability-abilitytoolaccessctrl-ticketparams-i.md) | 是 | 用于生成凭据的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[TicketQueryResult](arkts-ability-abilitytoolaccessctrl-ticketqueryresult-i.md)&gt; | Promise用于返回${TicketQueryResult} |
+| Promise&lt;[TicketQueryResult](arkts-ability-abilitytoolaccessctrl-ticketqueryresult-i.md)&gt; | Promise对象，返回${TicketQueryResult} |
 
 **错误码：**
 

@@ -12,7 +12,7 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 function removeWatcher(watcher: Watcher): void
 ```
 
-取消订阅系统事件，接收[Watcher](arkts-performanceanalysis-hisysevent-watcher-i-sys.md)类型的对象作为事件参数。
+取消订阅系统事件，接收[Watcher](arkts-performanceanalysis-hisysevent-watcher-i-sys.md)类型的对象作为事件参数。适用于当不再需要监控某些事件时取消订阅的场景。取消订阅成功后，将不再接收该订阅者的事件。
 
 **起始版本：** 9
 

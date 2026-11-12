@@ -16,8 +16,8 @@ QueryParamObject中允许使用的单个参数值类型。
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 字符串类型。 |
-| int | 数字类型，会先转为字符串再参与编码。 |
-| boolean | 布尔类型，会先转为字符串再参与编码。 |
-| null | 空值类型，会按仅key不带`=`值的形式序列化。 |
-| undefined | 未定义类型，会按仅key不带`=`值的形式序列化。 |
+| string | String type. |
+| int | Number type, which is converted into a string before being encoded. |
+| boolean | Boolean type, which is converted into a string before being encoded. |
+| null | Null type, which is serialized in the format of only the key without the = value. |
+| undefined | Undefined type, which is serialized in the format of only the key without the = value. |

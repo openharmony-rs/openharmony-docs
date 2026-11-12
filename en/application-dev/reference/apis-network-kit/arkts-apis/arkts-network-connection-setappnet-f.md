@@ -14,6 +14,15 @@ function setAppNet(netHandle: NetHandle, callback: AsyncCallback<void>): void
 
 Binds an application to the network specified by **netHandle**, so that the application can access the external network only through this network. This API uses an asynchronous callback to return the result.
 
+> **NOTE:** 
+> 
+> When the application no longer uses the network or the network is unavailable, you need to unbind the
+> application from the specified network to prevent the application from failing to access the Internet.
+> 
+> To unbind the application from the specified network, call
+> [setAppNet](#setappnet-1) and pass a
+> **NetHandle** object with **netId** set to **0**. For details, see the following example.
+
 **Since:** 9
 
 **Required permissions:** ohos.permission.INTERNET
@@ -98,6 +107,15 @@ function setAppNet(netHandle: NetHandle): Promise<void>
 ```
 
 Binds an application to the network specified by **netHandle**, so that the application can access the external network only through this network. This API uses a promise to return the result. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> When the application no longer uses the network or the network is unavailable, you need to unbind the
+> application from the specified network to prevent the application from failing to access the Internet.
+> 
+> To unbind the application from the specified network, call
+> [setAppNet](#setappnet-2) and pass a
+> **NetHandle** object with **netId** set to **0**. For details, see the following example.
 
 **Since:** 9
 

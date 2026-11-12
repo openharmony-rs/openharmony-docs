@@ -28,13 +28,13 @@ function getSysVpnConfig(vpnId: string): Promise<SysVpnConfig>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| vpnId | string | 是 | Indicates the uuid of the VPN network. |
+| vpnId | string | 是 | 指定VPN网络的uuid。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md)&gt; | The promise returned by the VPN network configuration. |
+| Promise&lt;[SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md)&gt; | Promise对象，返回VPN网络配置。 |
 
 **错误码：**
 

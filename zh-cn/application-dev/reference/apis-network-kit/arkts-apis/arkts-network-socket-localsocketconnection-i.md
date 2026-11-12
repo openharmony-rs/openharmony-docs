@@ -81,7 +81,7 @@ getLocalAddress(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise&lt;string&gt; | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -141,7 +141,7 @@ getSocketFd(): Promise<number>
 > 
 > - 连接断开、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-localsocket-i.md#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 23
 

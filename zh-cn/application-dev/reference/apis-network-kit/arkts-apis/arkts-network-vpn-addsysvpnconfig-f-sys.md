@@ -28,13 +28,13 @@ function addSysVpnConfig(config: SysVpnConfig): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | [SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md) | 是 | Indicates the [SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md) configuration of the VPN network. |
+| config | [SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md) | 是 | 指定VPN网络的配置信息，参见[SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

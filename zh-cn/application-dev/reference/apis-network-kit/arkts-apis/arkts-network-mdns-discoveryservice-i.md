@@ -89,7 +89,7 @@ off(type: 'discoveryStop', callback?: Callback<DiscoveryEventInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'discoveryStop' | 是 | 取消订阅的事件'discoveryStop'。<br>discoveryStop：停止搜索局域网内的MDNS服务事件。 |
+| type | 'discoveryStop' | 是 | 取消订阅的事件，固定为'discoveryStop'。<br>discoveryStop：停止搜索局域网内的MDNS服务事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DiscoveryEventInfo](arkts-network-mdns-discoveryeventinfo-i.md)&gt; | 否 | MDNS服务的信息和事件错误信息。可以指定传入on中的callback取消对应的订阅，也可以不指定callback清空所有订阅。<br>**适用版本：** 11 |
 
 **示例**
@@ -231,7 +231,7 @@ discoveryService.off('serviceLost', (data: mdns.LocalServiceInfo) => {
 on(type: 'discoveryStart', callback: Callback<DiscoveryEventInfo>): void
 ```
 
-订阅开启监听mDNS服务的通知。
+订阅开启监听MDNS服务的通知。
 
 **起始版本：** 10
 

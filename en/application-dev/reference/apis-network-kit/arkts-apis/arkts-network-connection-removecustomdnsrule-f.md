@@ -16,7 +16,11 @@ Removes the custom DNS rules of the specified host from the current application.
 
 > **NOTE:** 
 > 
-> You can call [addCustomDnsRule](arkts-network-connection-addcustomdnsrule-f.md) to add a custom rule.
+> Before deletion, ensure that no thread is currently using the custom rule to avoid conflicts.
+> 
+> You can call
+> [addCustomDnsRule](arkts-network-connection-addcustomdnsrule-f.md#addcustomdnsrule-1)
+> to add a custom rule.
 
 **Since:** 11
 
@@ -71,7 +75,10 @@ Removes the custom DNS rules of the specified host from the current application.
 
 > **NOTE:** 
 > 
-> You can call [addCustomDnsRule](arkts-network-connection-addcustomdnsrule-f.md) to add a custom rule.
+> Before deletion, ensure that no thread is currently using the custom rule to avoid conflicts.
+> 
+> You can call [addCustomDnsRule](arkts-network-connection-addcustomdnsrule-f.md#addcustomdnsrule-2) to
+> add a custom rule.
 
 **Since:** 11
 

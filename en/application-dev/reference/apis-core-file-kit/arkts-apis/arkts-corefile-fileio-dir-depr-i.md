@@ -19,6 +19,7 @@ Manages directories. Before calling a method of the **Dir** class, use the **ope
 ## Modules to Import
 
 ```TypeScript
+import { fileIO } from '@ohos.fileio';
 ```
 
 ## close

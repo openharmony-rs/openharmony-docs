@@ -24,7 +24,7 @@ import { http } from '@kit.NetworkKit';
 sendSize: number
 ```
 
-Amount of data to be sent each time, in bytes.
+Amount of data sent each time, in bytes.
 
 **Type:** number
 
@@ -42,7 +42,7 @@ Amount of data to be sent each time, in bytes.
 totalSize: number
 ```
 
-Amount of data to be sent, in bytes.
+Total amount of data to be sent, in bytes.
 
 **Type:** number
 

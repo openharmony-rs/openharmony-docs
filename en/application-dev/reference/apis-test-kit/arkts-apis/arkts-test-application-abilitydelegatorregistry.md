@@ -15,6 +15,7 @@ The **AbilityDelegatorRegistry** module provides APIs for storing global registe
 ## Modules to Import
 
 ```TypeScript
+import { abilityDelegatorRegistry } from '@ohos.application.abilityDelegatorRegistry';
 ```
 
 ## Summary

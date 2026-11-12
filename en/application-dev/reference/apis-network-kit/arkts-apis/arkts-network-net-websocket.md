@@ -38,7 +38,7 @@ import { webSocket } from '@kit.NetworkKit';
 | [WebSocketCloseOptions](arkts-network-websocket-websocketcloseoptions-i.md) | Defines the optional parameters carried in the request for closing a WebSocket connection. |
 | [WebSocketConnection](arkts-network-websocket-websocketconnection-i.md) | Client information, including the IP address and port number. |
 | [WebSocketMessage](arkts-network-websocket-websocketmessage-i.md) | Callback used to return the result, which contains: |
-| [WebSocketOpenInfo](arkts-network-websocket-websocketopeninfo-i.md) | The result for open info of a WebSocket connection. |
+| [WebSocketOpenInfo](arkts-network-websocket-websocketopeninfo-i.md) | Detailed information after a WebSocket connection is successfully established. |
 | [WebSocketRequestOptions](arkts-network-websocket-websocketrequestoptions-i.md) | Defines the optional parameters carried in the request for establishing a WebSocket connection. |
 | [WebSocketServer](arkts-network-websocket-websocketserver-i.md) | Defines a **WebSocketServer** object. You need to use [webSocket.createWebSocketServer](arkts-network-websocket-createwebsocketserver-f.md) to create a **WebSocketServer** object before using its methods. |
 | [WebSocketServerConfig](arkts-network-websocket-websocketserverconfig-i.md) | Defines the WebSocketServer configuration. |

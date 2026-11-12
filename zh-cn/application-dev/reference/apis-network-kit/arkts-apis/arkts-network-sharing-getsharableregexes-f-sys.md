@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定类型网卡名称正则表达式列表，使用 callback 异步回调。
+获取指定类型网卡名称正则表达式列表。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -87,7 +87,7 @@ function getSharableRegexes(type: SharingIfaceType): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | 以 Promise 形式返回正则表达式列表。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回正则表达式列表。 |
 
 **错误码：**
 

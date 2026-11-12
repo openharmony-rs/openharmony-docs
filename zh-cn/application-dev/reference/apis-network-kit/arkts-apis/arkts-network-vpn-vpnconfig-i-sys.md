@@ -44,7 +44,7 @@ VPN虚拟网卡的 IP 地址。
 blockedApplications?: Array<string>
 ```
 
-string类型表示的包名不能接入VPN网络。
+string类型表示的包名不能接入VPN网络。不设置该参数时默认为空。
 
 **类型：** Array&lt;string&gt;
 
@@ -62,7 +62,7 @@ string类型表示的包名不能接入VPN网络。
 dnsAddresses?: Array<string>
 ```
 
-DNS服务器地址信息。
+DNS服务器地址信息。不设置该参数时默认为空。
 
 **类型：** Array&lt;string&gt;
 
@@ -152,7 +152,7 @@ isLegacy?: boolean
 mtu?: number
 ```
 
-最大传输单元MTU值(单位:字节)。
+最大传输单元MTU值(单位：字节)。不设置该参数时使用系统默认MTU值。
 
 **类型：** number
 
@@ -170,7 +170,7 @@ mtu?: number
 routes?: Array<RouteInfo>
 ```
 
-VPN虚拟网卡的路由信息。
+VPN虚拟网卡的路由信息。不设置该参数时默认为空。
 
 **类型：** Array&lt;[RouteInfo](arkts-network-vpn-routeinfo-t.md)&gt;
 
@@ -188,7 +188,7 @@ VPN虚拟网卡的路由信息。
 searchDomains?: Array<string>
 ```
 
-DNS 的搜索域列表。
+DNS 的搜索域列表。不设置该参数时默认为空。
 
 **类型：** Array&lt;string&gt;
 
@@ -206,7 +206,7 @@ DNS 的搜索域列表。
 trustedApplications?: Array<string>
 ```
 
-string类型表示的包名可以接入VPN网络。
+string类型表示的包名可以接入VPN网络。不设置该参数时默认为空。
 
 **类型：** Array&lt;string&gt;
 
@@ -224,7 +224,7 @@ string类型表示的包名可以接入VPN网络。
 vpnId?: string
 ```
 
-VPN唯一标识。
+VPN唯一标识。不设置该参数时默认为空。
 
 **类型：** string
 

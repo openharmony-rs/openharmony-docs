@@ -28,8 +28,9 @@ Stops listening for events of the **LocalSocketServer** object and releases the 
 
 > **NOTE:** 
 > 
-> This API does not close existing connections. To close the connection, call the [close] (#close11-1) API of
-> [LocalSocketConnection] (#localsocketconnection11).
+> This API does not close existing connections. To close the connection, call the
+> [close](arkts-network-socket-localsocketconnection-i.md#close) API of
+> [LocalSocketConnection](arkts-network-socket-localsocketconnection-i.md).
 
 **Since:** 20
 
@@ -101,7 +102,7 @@ Obtains the socket properties of the **LocalSocketServer** object. This API uses
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md)&gt; | Promise used to return the result. |
+| Promise&lt;[ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md)&gt; | Promise used to return the socket properties. |
 
 **Error codes:**
 
@@ -159,7 +160,7 @@ Obtains the local socket address of a **LocalSocketServer** connection. This API
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Promise used to return the result. |
+| Promise&lt;string&gt; | Promise used to return the result of obtaining the local socket address. |
 
 **Error codes:**
 
@@ -212,7 +213,7 @@ Obtains the file descriptor bound to the LocalSocketServer listening port. This 
 > 
 > - This API returns **-1** in abnormal cases such as listening exceptions or socket closed (for example, after close is called).
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-tcpsocketserver-i.md#close) method to close the socket connection, instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close) method to close the socket connection, instead of directly operating the file descriptor.
 
 **Since:** 23
 
@@ -277,7 +278,7 @@ Obtains the status of a local socket server connection. This API uses a promise 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | Promise used to return the result. |
+| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | Promise used to return and obtain the LocalSocketServer status. |
 
 **Examples**
 
@@ -337,7 +338,7 @@ Binds the address of the local socket file. The server listens to and accepts lo
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
@@ -390,7 +391,7 @@ Unsubscribes from **connect** events of the **LocalSocketServer** object. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'connect' | Yes | Event type.<br> 'connect': connection event. |
+| type | 'connect' | Yes | Event type. <br>'connect': connection event. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LocalSocketConnection](arkts-network-socket-localsocketconnection-i.md)&gt; | No | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events. |
 
 **Error codes:**
@@ -434,7 +435,7 @@ Unsubscribes from **error** events of the **LocalSocketServer** object. This API
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'error' | Yes | Event type.<br> **error**: error event. |
+| type | 'error' | Yes | Event type. <br> **error**: error event. |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | No | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events. |
 
 **Error codes:**
@@ -480,7 +481,7 @@ Subscribes to **connect** events of the **LocalSocketServer** object. This API u
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'connect' | Yes | Event type.<br> **connect**: connection event. |
+| type | 'connect' | Yes | Event type. <br> **connect**: connection event. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LocalSocketConnection](arkts-network-socket-localsocketconnection-i.md)&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -524,7 +525,7 @@ Subscribes to **error** events of the **LocalSocketServer** object. This API use
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'error' | Yes | Event type.<br> **error**: error event. |
+| type | 'error' | Yes | Event type. <br> **error**: error event. |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | Yes | Callback used to return the result. |
 
 **Error codes:**

@@ -19,6 +19,7 @@ Defines the KV store constants.
 ## Modules to Import
 
 ```TypeScript
+import { distributedData } from '@ohos.data.distributedData';
 ```
 
 ## Summary

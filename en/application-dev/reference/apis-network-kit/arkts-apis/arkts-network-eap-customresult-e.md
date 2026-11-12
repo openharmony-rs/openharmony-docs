@@ -6,8 +6,6 @@ enum CustomResult
 
 Enumerates the EAP authentication results.
 
-​
-
 **Since:** 20
 
 <!--Device-eap-enum CustomResult--><!--Device-eap-enum CustomResult-End-->

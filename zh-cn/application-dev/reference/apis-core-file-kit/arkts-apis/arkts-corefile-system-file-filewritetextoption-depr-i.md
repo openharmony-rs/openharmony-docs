@@ -17,6 +17,7 @@ export interface FileWriteTextOption
 ## 导入模块
 
 ```TypeScript
+import { FileWriteTextOption } from '@system.file';
 ```
 
 ## complete

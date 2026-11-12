@@ -17,6 +17,7 @@ export interface FileMkdirOption
 ## 导入模块
 
 ```TypeScript
+import { FileMkdirOption } from '@system.file';
 ```
 
 ## complete

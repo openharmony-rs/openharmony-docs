@@ -40,7 +40,7 @@ ca?: string | Array<string>
 cert?: string | Array<string>
 ```
 
-本地客户端的数字证书。从API Version 24开始支持传入数组，最多支持设置1000本证书。
+本地客户端的数字证书。从API version 24开始支持传入数组，最多支持设置1000本证书。
 
 **类型：** string &#124; Array&lt;string&gt;
 

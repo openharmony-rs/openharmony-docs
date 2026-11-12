@@ -68,7 +68,7 @@ function getAppNet(): Promise<NetHandle>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetHandle](arkts-network-connection-nethandle-i.md)&gt; | 以Promise形式返回App绑定的网络信息。 |
+| Promise&lt;[NetHandle](arkts-network-connection-nethandle-i.md)&gt; | Promise对象，返回App绑定的网络信息。 |
 
 **错误码：**
 

@@ -12,7 +12,7 @@ import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 export function generateTaskChallenge(taskIdentityInfo: TaskIdentityInfo): Promise<Uint8Array>
 ```
 
-Generate the challenge for task auth token generation. This function generates a challenge based on task identity info.
+Generate a challenge value for the task authentication token. This function generates challenge values based on task identity information.
 
 **Since:** 26.1.0
 
@@ -36,7 +36,7 @@ Generate the challenge for task auth token generation. This function generates a
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise used to return ${Uint8Array}. |
+| Promise&lt;Uint8Array&gt; | Promise object, which returns the challenge value in the format of ${Uint8Array}. |
 
 **Error codes:**
 

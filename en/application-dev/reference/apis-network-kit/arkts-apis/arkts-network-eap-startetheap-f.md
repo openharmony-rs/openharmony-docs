@@ -34,11 +34,11 @@ Starts EAP authentication on an Ethernet NIC.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [33200001](../errorcode-net-eap.md#33200001-invalid-netid) | Invalid netId |
-| [33200003](../errorcode-net-eap.md#33200003-invalid-eth-eap-configuration) | Invalid profile |
-| [33200009](../errorcode-net-eap.md#33200009-netmanager-not-exist) | netmanager stop |
-| [33200010](../errorcode-net-eap.md#33200010-invalid-eth-state) | invalid eth state |
-| [33200099](../errorcode-net-eap.md#33200099-internal-program-error) | internal error |
+| [33200001](../errorcode-net-eap.md#33200001-invalid-netid) | Invalid netId. |
+| [33200003](../errorcode-net-eap.md#33200003-invalid-eth-eap-configuration) | Invalid profile. |
+| [33200009](../errorcode-net-eap.md#33200009-netmanager-not-exist) | netmanager stop. |
+| [33200010](../errorcode-net-eap.md#33200010-invalid-eth-state) | invalid eth state. |
+| [33200099](../errorcode-net-eap.md#33200099-internal-program-error) | internal error. |
 
 **Examples**
 

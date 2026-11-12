@@ -17,6 +17,7 @@ export interface FileResponse
 ## 导入模块
 
 ```TypeScript
+import { FileResponse } from '@system.file';
 ```
 
 ## lastModifiedTime

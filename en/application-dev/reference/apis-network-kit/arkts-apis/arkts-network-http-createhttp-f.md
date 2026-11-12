@@ -30,7 +30,7 @@ Creates an HTTP request. You can use this API to initiate or destroy an HTTP req
 
 | Type | Description |
 | --- | --- |
-| [HttpRequest](arkts-network-http-httprequest-i.md) | An **HttpRequest** object, which contains the **request**, **requestInStream**, **requestSync**, **enableAutoCookie**, **destroy**, **on**, and **off** methods. |
+| [HttpRequest](arkts-network-http-httprequest-i.md) | **HttpRequest** object that includes the **request**, **requestInStream**, **requestSync**, **enableAutoCookie**, **destroy**, **on**, and **off** methods. |
 
 **Examples**
 

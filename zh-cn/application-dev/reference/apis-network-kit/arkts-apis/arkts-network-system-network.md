@@ -1,4 +1,4 @@
-# @system.network(网络状态)
+# @system.network(Network State)
 
 ## 导入模块
 

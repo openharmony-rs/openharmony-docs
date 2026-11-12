@@ -26,7 +26,7 @@ import { statistics } from '@kit.NetworkKit';
 ifaceInfo: IfaceInfo
 ```
 
-NIC information, including the NIC name and query time range.
+Network interface and time parameter information to query.
 
 **Type:** [IfaceInfo](arkts-network-statistics-ifaceinfo-i-sys.md)
 

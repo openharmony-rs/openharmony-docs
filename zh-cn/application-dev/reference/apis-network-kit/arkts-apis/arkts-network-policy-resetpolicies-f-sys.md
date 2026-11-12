@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function resetPolicies(simId: string, callback: AsyncCallback<void>): void
 ```
 
-重置对应 sim 卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略，使用 callback 异步回调。
+重置对应SIM卡ID的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -29,7 +29,7 @@ function resetPolicies(simId: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | simId | string | 是 | SIM 卡 ID。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回空，失败返回错误码错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回空，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
@@ -62,7 +62,7 @@ policy.resetPolicies('1', (error: BusinessError) => {
 function resetPolicies(simId: string): Promise<void>
 ```
 
-重置对应 sim 卡 id 的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略，使用 Promise 异步回调。
+重置对应SIM卡ID的蜂窝网络、后台网络策略、防火墙策略、应用对应的策略。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -84,7 +84,7 @@ function resetPolicies(simId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

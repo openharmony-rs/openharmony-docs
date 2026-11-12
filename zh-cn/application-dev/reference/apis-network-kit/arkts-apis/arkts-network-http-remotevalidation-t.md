@@ -18,4 +18,4 @@ export type RemoteValidation = 'system' | 'skip' | ValidationCallback
 | --- | --- |
 | 'system' | 表示使用系统CA验证远端服务器身份，值固定为'system'字符串，是未配置时的默认值。 |
 | 'skip' | 表示跳过验证远端服务器身份流程，值固定为'skip'字符串。 |
-| [ValidationCallback](arkts-network-http-validationcallback-t.md) | 表示使用自定义验证方式验证远端服务器身份。<br>**起始版本：** 26.0.0 |
+| [ValidationCallback](arkts-network-http-validationcallback-t.md) | use custom validation.<br>**起始版本：** 26.0.0 |

@@ -12,7 +12,7 @@ import { ethernet } from '@kit.NetworkKit';
 function setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallback<void>): void
 ```
 
-Sets the network interface configuration information. This API uses an asynchronous callback to return the result.
+Sets the network interface configuration. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -39,7 +39,7 @@ Sets the network interface configuration information. This API uses an asynchron
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| [2100001](../errorcode-net-connection.md#2100001-invalid-parameter-value) | Invalid parameter value. |
+| [2200001](../errorcode-net-ethernet.md#2200001-invalid-parameter-value) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-service-connection-failure) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-system-internal-error) | System internal error. |
 | 2201004 | Invalid Ethernet profile. |
@@ -81,7 +81,7 @@ ethernet.setIfaceConfig("eth0", config, (error: BusinessError) => {
 function setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise<void>
 ```
 
-Sets the network interface configuration information. This API uses a promise to return the result.
+Sets the network interface configuration. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -104,7 +104,7 @@ Sets the network interface configuration information. This API uses a promise to
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, the return result is empty. If the operation fails, an error code is returned. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
@@ -113,7 +113,7 @@ Sets the network interface configuration information. This API uses a promise to
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| [2100001](../errorcode-net-connection.md#2100001-invalid-parameter-value) | Invalid parameter value. |
+| [2200001](../errorcode-net-ethernet.md#2200001-invalid-parameter-value) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-service-connection-failure) | Failed to connect to the service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-system-internal-error) | System internal error. |
 | 2201004 | Invalid Ethernet profile. |

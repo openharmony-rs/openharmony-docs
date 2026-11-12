@@ -60,36 +60,6 @@ getEventTargetInfo(): EventTargetInfo
 isHostBelongsTo(uniqueId: number): boolean
 ```
 
-Check whether the current gesture binding node is a descendant of the passed-in component.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-TouchRecognizer-isHostBelongsTo(uniqueId: number): boolean--><!--Device-TouchRecognizer-isHostBelongsTo(uniqueId: number): boolean-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| uniqueId | number | 是 | the unique id of the component. |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| boolean | the query result. |
-
-## isHostBelongsTo
-
-```TypeScript
-isHostBelongsTo(uniqueId: number): boolean
-```
-
 返回当前触摸识别器绑定节点是否为传入组件的后代节点。
 
 **起始版本：** 26.0.0

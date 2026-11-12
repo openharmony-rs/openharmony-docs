@@ -4,7 +4,7 @@
 declare type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 ```
 
-当折叠状态改变时触发的回调<!--RP4-->，仅在横屏状态下生效<!--RP4End-->。
+当折叠状态改变时触发的回调，仅在横屏状态下生效。
 
 **起始版本：** 18
 

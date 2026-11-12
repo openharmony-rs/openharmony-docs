@@ -12,7 +12,7 @@ import { connection } from '@kit.NetworkKit';
 function factoryReset(): Promise<void>
 ```
 
-出厂重置网络设置，使用Promise异步回调。
+出厂重置网络设置。使用Promise异步回调。
 
 **起始版本：** 11
 
@@ -28,7 +28,7 @@ function factoryReset(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回值的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

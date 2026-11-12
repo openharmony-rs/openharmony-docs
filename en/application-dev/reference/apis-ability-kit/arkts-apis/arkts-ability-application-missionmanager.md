@@ -19,6 +19,7 @@ The missionManager module provides APIs to lock, unlock, and clear missions, and
 ## Modules to Import
 
 ```TypeScript
+import { missionManager } from '@ohos.application.missionManager';
 ```
 
 ## Summary

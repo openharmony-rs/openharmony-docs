@@ -28,8 +28,8 @@ function getSockfdRxBytes(sockfd: number, callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sockfd | number | 是 | 指定查询的Socket的FD(file description)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取Socket的下行流量时，error为undefined，否则为错误对象。 |
+| sockfd | number | 是 | 指定查询的Socket的FD(file descriptor)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取Socket的下行流量时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -79,13 +79,13 @@ function getSockfdRxBytes(sockfd: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sockfd | number | 是 | 指定查询的Socket的FD(file description)。 |
+| sockfd | number | 是 | 指定查询的Socket的FD(file descriptor)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象。返回该Socket的下行流量（单位：字节）。 |
+| Promise&lt;number&gt; | Promise对象，返回该Socket的下行流量（单位：字节）。 |
 
 **错误码：**
 

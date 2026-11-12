@@ -20,7 +20,7 @@ export enum NetBackgroundPolicy
 NET_BACKGROUND_POLICY_DISABLE = 2
 ```
 
-应用在后台不可以使用计量网路。
+应用在后台不可以使用计量网络。
 
 **起始版本：** 10
 
@@ -36,7 +36,7 @@ NET_BACKGROUND_POLICY_DISABLE = 2
 NET_BACKGROUND_POLICY_ENABLE = 1
 ```
 
-应用在后台可以使用计量网路。
+应用在后台可以使用计量网络。
 
 **起始版本：** 10
 

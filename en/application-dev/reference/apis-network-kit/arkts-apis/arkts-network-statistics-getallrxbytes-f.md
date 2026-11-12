@@ -12,7 +12,7 @@ import { statistics } from '@kit.NetworkKit';
 function getAllRxBytes(callback: AsyncCallback<number>): void
 ```
 
-Obtains the total downlink traffic (in bytes) of all NICs from the last startup to the time when this API is called. This API uses an asynchronous callback to return the result.
+Obtains the total downlink traffic of all network cards from the last boot to the time of interface call (in bytes). This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -73,7 +73,7 @@ Obtains the total downlink traffic (in bytes) of all NICs from the last startup 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the total downlink traffic (in bytes) of all NICs from the last startup to the current moment. |
+| Promise&lt;number&gt; | Promise used to return the total downlink traffic of all network cards from the last boot to the present (in bytes). |
 
 **Error codes:**
 

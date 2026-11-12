@@ -113,7 +113,10 @@
   - [InputMethodEngine](arkts-ime-inputmethodengine-inputmethodengine-i.md)
   - [TextInputClient](arkts-ime-inputmethodengine-textinputclient-i.md)
   - [CommandDataType](arkts-ime-inputmethodengine-commanddatatype-t.md)
+  - [CursorContextChangeCallback](arkts-ime-inputmethodengine-cursorcontextchangecallback-t.md)
+  - [InputKeyEventCallback](arkts-ime-inputmethodengine-inputkeyeventcallback-t.md)
   - [ProxyInputStartCallback](arkts-ime-inputmethodengine-proxyinputstartcallback-t.md)
+  - [SelectionChangeCallback](arkts-ime-inputmethodengine-selectionchangecallback-t.md)
   - [SizeChangeCallback](arkts-ime-inputmethodengine-sizechangecallback-t.md)
   <!--Del-->
   - [SizeUpdateCallback(system api)](arkts-ime-inputmethodengine-sizeupdatecallback-t-sys.md)<!--DelEnd-->

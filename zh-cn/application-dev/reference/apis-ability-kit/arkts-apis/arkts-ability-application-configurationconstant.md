@@ -15,6 +15,7 @@ ConfigurationConstant模块提供配置信息枚举值定义的能力。
 ## 导入模块
 
 ```TypeScript
+import { ConfigurationConstant } from '@ohos.application.ConfigurationConstant';
 ```
 
 ## 汇总

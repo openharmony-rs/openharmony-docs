@@ -16,8 +16,8 @@ Obtains the total uplink traffic (in bytes) of the NIC corresponding to the curr
 
 > **NOTE:** 
 > 
-> It is recommended to call this API when the cellular network is in the connected state. Otherwise, error code 210
-> 3012 will be thrown.
+> It is recommended to call this API when the cellular network is in the connected state.
+> Otherwise, error code 2103012 will be thrown.
 
 **Since:** 10
 
@@ -67,8 +67,8 @@ Obtains the total uplink traffic (in bytes) of the NIC corresponding to the curr
 
 > **NOTE:** 
 > 
-> It is recommended to call this API when the cellular network is in the connected state. Otherwise, error code 210
-> 3012 will be thrown.
+> It is recommended to call this API when the cellular network is in the connected state.
+> Otherwise, error code 2103012 will be thrown.
 
 **Since:** 10
 
@@ -80,7 +80,7 @@ Obtains the total uplink traffic (in bytes) of the NIC corresponding to the curr
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the total uplink traffic (in bytes) consumed on the cellular network since the last startup to the current moment. |
+| Promise&lt;number&gt; | Promise used to return the total uplink traffic consumed on the cellular network from the last boot to now (in bytes). |
 
 **Error codes:**
 

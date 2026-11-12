@@ -18,7 +18,7 @@ Obtains the default HTTP proxy configuration of the network. This API uses an as
 > 
 > - If the global proxy is set, the global proxy configuration is returned.
 > 
-> - If [setAppNet](arkts-network-connection-setappnet-f.md) is used to bind the application to the network specified by [NetHandle](arkts-network-connection-nethandle-i.md), the HTTP proxy configuration of this network is returned. In other cases, the HTTP proxy configuration of the default network is returned.
+> - If [setAppNet](arkts-network-connection-setappnet-f.md#setappnet-1)is used to bind the application to the network specified by [NetHandle](arkts-network-connection-nethandle-i.md),the HTTP proxy configuration of this network is returned. In other cases,the HTTP proxy configuration of the default network is returned.
 
 **Since:** 10
 
@@ -67,7 +67,7 @@ Obtains the default HTTP proxy configuration of the network. This API uses a pro
 > 
 > - If the global proxy is set, the global proxy configuration is returned.
 > 
-> - If [setAppNet](arkts-network-connection-setappnet-f.md) is used to bind the application to the network specified by [NetHandle](arkts-network-connection-nethandle-i.md), the HTTP proxy configuration of this network is returned. In other cases, the HTTP proxy configuration of the default network is returned.
+> - If [setAppNet](arkts-network-connection-setappnet-f.md#setappnet-2) is used to bind the application to the network specified by [NetHandle](arkts-network-connection-nethandle-i.md), the HTTP proxy configuration of this network is returned. In other cases, the HTTP proxy configuration of the default network is returned.
 
 **Since:** 10
 

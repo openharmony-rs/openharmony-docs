@@ -20,7 +20,7 @@ Enumerates the background network policies.
 NET_BACKGROUND_POLICY_DISABLE = 2
 ```
 
-Applications running in the background are not allowed to access a metered network.
+The application cannot use the metered network in the background.
 
 **Since:** 10
 
@@ -36,7 +36,7 @@ Applications running in the background are not allowed to access a metered netwo
 NET_BACKGROUND_POLICY_ENABLE = 1
 ```
 
-Background applications are allowed to access a metered network.
+The application can use the metered network in the background.
 
 **Since:** 10
 
@@ -68,7 +68,7 @@ No background network policy is specified. This is the default value.
 NET_BACKGROUND_POLICY_TRUSTLIST = 3
 ```
 
-Only applications on the allowlist are allowed to access metered networks when they are running in the background.
+Only applications on the trustlist are allowed to access metered networks when they are running in the background.
 
 **Since:** 10
 

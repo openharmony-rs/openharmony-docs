@@ -12,7 +12,12 @@ import { connection } from '@kit.NetworkKit';
 function refreshGlobalHttpProxy(): Promise<HttpProxy>
 ```
 
-通知系统需要重新验证全局代理。收到通知后，系统将重新处理全局代理的认证状态。
+通知系统重新认证全局代理。
+
+> **说明：** 
+> 
+> 若当前未配置全局代理或代理配置信息有误（例如未正确配置username和password），则会抛出2100003错误码。可通过
+> [getDefaultHttpProxy](arkts-network-connection-getdefaulthttpproxy-f.md)接口查询当前代理配置信息。
 
 **起始版本：** 26.0.0
 
@@ -28,7 +33,7 @@ function refreshGlobalHttpProxy(): Promise<HttpProxy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[HttpProxy](arkts-network-connection-httpproxy-i.md)&gt; | 函数返回的Promise。 |
+| Promise&lt;[HttpProxy](arkts-network-connection-httpproxy-i.md)&gt; | Promise对象，返回全局代理配置信息。其中username和password字段固定为空字符串，不返回有效信息。 |
 
 **错误码：**
 

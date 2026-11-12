@@ -20,6 +20,7 @@ import { cameraPicker } from '@kit.CameraKit';
 
 | 名称 | 说明 |
 | --- | --- |
+| [isC2PASignatureSupported](arkts-camera-camerapicker-isc2pasignaturesupported-f.md#isc2pasignaturesupported-1) | 检查是否支持C2PA签名。 |
 | [pick](arkts-camera-camerapicker-pick-f.md#pick-1) | 拉起相机选择器，根据媒体类型进入相应的模式。使用Promise异步回调。 |
 
 ### 类
@@ -28,6 +29,12 @@ import { cameraPicker } from '@kit.CameraKit';
 | --- | --- |
 | [PickerProfile](arkts-camera-camerapicker-pickerprofile-c.md) | 相机选择器的配置信息。 |
 | [PickerResult](arkts-camera-camerapicker-pickerresult-c.md) | 相机选择器的处理结果。 |
+
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [C2PASignatureConfig](arkts-camera-camerapicker-c2pasignatureconfig-i.md) | 描述C2PA签名配置，包含用于生成C2PA签名的作者名称和作者ID。 |
 
 ### 枚举
 

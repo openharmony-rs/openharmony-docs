@@ -19,6 +19,7 @@ Provides a stream for file operations. Before calling any API of the **Stream** 
 ## Modules to Import
 
 ```TypeScript
+import { fileIO } from '@ohos.fileio';
 ```
 
 ## close

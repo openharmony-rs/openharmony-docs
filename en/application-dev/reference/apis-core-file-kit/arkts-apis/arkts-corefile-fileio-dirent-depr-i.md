@@ -19,6 +19,7 @@ Provides information about files and directories. Before calling an API of the *
 ## Modules to Import
 
 ```TypeScript
+import { fileIO } from '@ohos.fileio';
 ```
 
 ## isBlockDevice

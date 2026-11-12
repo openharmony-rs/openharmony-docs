@@ -4,8 +4,8 @@
 
 - [AudioManager](arkts-audio-audio-audiomanager-i.md)：音频管理器。  
 - [AudioDeviceEnhanceManager](arkts-audio-audio-audiodeviceenhancemanager-i.md)：音频设备增强管理器。  
-- [AudioRenderer](arkts-audio-audio-audiorenderer-i.md)：音频渲染，用于播放PCM（Pulse Code Modulation）音频数据。  
-- [AudioCapturer](arkts-audio-audio-audiocapturer-i.md)：音频采集，用于录制PCM音频数据。
+- [AudioRenderer](arkts-audio-audio-audiorenderer-i.md)：音频渲染器，用于播放PCM（Pulse Code Modulation）音频数据。  
+- [AudioCapturer](arkts-audio-audio-audiocapturer-i.md)：音频采集器，用于录制PCM音频数据。
 
 **起始版本：** 7
 
@@ -213,7 +213,7 @@ import { audio } from '@kit.AudioKit';
 | [OutputDeviceChangeRecommendedAction](arkts-audio-audio-outputdevicechangerecommendedaction-e.md) | 表示输出设备变更后推荐操作的枚举。常见场景示例：耳机设备和外放设备之间进行切换。当佩戴耳机时，从外放设备切换到耳机设备，系统会推荐继续播放，提示应用无需停止当前播放。当摘下耳机设备切换到外放设备时，系统会推荐停止播放。 |
 | [PlaybackCaptureStartState](arkts-audio-audio-playbackcapturestartstate-e.md) | 表示调用[requestPlaybackCaptureStart](arkts-audio-audio-audiocapturer-i.md#requestplaybackcapturestart)后异步返回的内录启动状态的枚举。 |
 | [SoundCardType](arkts-audio-audio-soundcardtype-e.md) | 枚举声卡类型。 |
-| [SourceType](arkts-audio-audio-sourcetype-e.md) | 枚举，音源类型。 |
+| [SourceType](arkts-audio-audio-sourcetype-e.md) | 表示录制音频源类型的枚举。 |
 | [StreamUsage](arkts-audio-audio-streamusage-e.md) | 枚举，音频流使用类型。 |
 | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | 表示活跃设备类型的枚举。 |
 | [ContentType](arkts-audio-audio-contenttype-e.md) | 表示音频内容类型的枚举。 |
@@ -248,7 +248,7 @@ import { audio } from '@kit.AudioKit';
 | [NetworkType](arkts-audio-audio-networktype-e-sys.md) | 枚举，音频编创特性下载的网络类型。 |
 | [PolicyType](arkts-audio-audio-policytype-e-sys.md) | 表示静音策略类型的枚举。 |
 | [RenderTarget](arkts-audio-audio-rendertarget-e-sys.md) | 枚举，音频渲染器的渲染目标。 |
-| [SourceType](arkts-audio-audio-sourcetype-e-sys.md) | 枚举，音源类型。 |
+| [SourceType](arkts-audio-audio-sourcetype-e-sys.md) | 表示录制音频源类型的枚举。 |
 | [SpatialAudioSourceType](arkts-audio-audio-spatialaudiosourcetype-e-sys.md) | 表示空间音频源类型的枚举。 |
 | [StreamUsage](arkts-audio-audio-streamusage-e-sys.md) | 枚举，音频流使用类型。 |
 | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | 枚举，播放器的音调类型。 |

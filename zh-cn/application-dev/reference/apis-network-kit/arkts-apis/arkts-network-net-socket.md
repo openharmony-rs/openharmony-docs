@@ -70,7 +70,7 @@ import { socket } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [NetAddress](arkts-network-socket-netaddress-t.md) | 定义网络地址。 |
+| [NetAddress](arkts-network-socket-netaddress-t.md) | 目标地址信息。 |
 | [X509CertRawData](arkts-network-socket-x509certrawdata-t.md) | 存储证书的数据。 |
 
 ### 枚举

@@ -17,6 +17,7 @@ export interface FileAccessOption
 ## 导入模块
 
 ```TypeScript
+import { FileAccessOption } from '@system.file';
 ```
 
 ## complete

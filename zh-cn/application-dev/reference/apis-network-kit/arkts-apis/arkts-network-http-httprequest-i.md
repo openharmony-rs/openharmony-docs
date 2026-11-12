@@ -530,7 +530,7 @@ httpRequest.on("headerReceive", (data: BusinessError) => {
 once(type: "headersReceive", callback: Callback<Object>): void
 ```
 
-订阅HTTP Response Header 事件，只能触发一次。触发之后，订阅器就会被移除。使用callback方式作为异步方法。
+订阅HTTP Response Header 事件，只能触发一次。触发之后，订阅器就会被移除。使用callback异步回调。
 
 **起始版本：** 8
 
@@ -564,7 +564,7 @@ httpRequest.once("headersReceive", (header: Object) => {
 request(url: string, callback: AsyncCallback<HttpResponse>): void
 ```
 
-根据URL地址，发起HTTP网络请求，使用callback方式作为异步方法。
+根据URL地址，发起HTTP网络请求，使用callback异步回调。
 
 > **说明：** 
 > 
@@ -657,7 +657,7 @@ httpRequest.request("EXAMPLE_URL", (err: Error, data: http.HttpResponse) => {
 request(url: string, options: HttpRequestOptions, callback: AsyncCallback<HttpResponse>): void
 ```
 
-根据URL地址和相关配置项，发起HTTP网络请求，使用callback方式作为异步方法。
+根据URL地址和相关配置项，发起HTTP网络请求，使用callback异步回调。
 
 > **说明：** 
 > 
@@ -776,7 +776,7 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
 request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>
 ```
 
-根据URL地址，发起HTTP网络请求，使用Promise方式作为异步方法。
+根据URL地址，发起HTTP网络请求，使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -889,7 +889,7 @@ promise.then((data:http.HttpResponse) => {
 requestInStream(url: string, callback: AsyncCallback<number>): void
 ```
 
-根据URL地址，发起HTTP网络请求并返回流式响应，使用callback方式作为异步方法。
+根据URL地址，发起HTTP网络请求并返回流式响应，使用callback异步回调。
 
 **起始版本：** 10
 
@@ -969,7 +969,7 @@ httpRequest.requestInStream("EXAMPLE_URL", (err: BusinessError, data: number) =>
 requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallback<number>): void
 ```
 
-根据URL地址和相关配置项，发起HTTP网络请求并返回流式响应，使用callback方式作为异步方法。
+根据URL地址和相关配置项，发起HTTP网络请求并返回流式响应，使用callback异步回调。
 
 **起始版本：** 10
 
@@ -1072,7 +1072,7 @@ httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> , 
 requestInStream(url: string, options?: HttpRequestOptions): Promise<number>
 ```
 
-根据URL地址，发起HTTP网络请求并返回流式响应，使用Promise方式作为异步方法。
+根据URL地址，发起HTTP网络请求并返回流式响应，使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -1095,7 +1095,7 @@ requestInStream(url: string, options?: HttpRequestOptions): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 以Promise形式返回发起请求的结果，具体含义见[ResponseCode](arkts-network-http-responsecode-e.md)。 |
+| Promise&lt;number&gt; | Promise对象，返回发起请求的结果，具体含义见[ResponseCode](arkts-network-http-responsecode-e.md)。 |
 
 **错误码：**
 

@@ -17,6 +17,7 @@ Defines user information.
 ## Modules to Import
 
 ```TypeScript
+import { distributedData } from '@ohos.data.distributedData';
 ```
 
 ## userId

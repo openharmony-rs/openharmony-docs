@@ -12,7 +12,7 @@ import { netFirewall } from '@kit.NetworkKit';
 function getInterceptedRecords(userId: number, requestParam: RequestParam): Promise<InterceptedRecordPage>
 ```
 
-按userId获取截获的记录，需要指定分页查询参数。
+按userId获取拦截记录，需要指定分页查询参数。使用Promise异步回调。
 
 **起始版本：** 14
 
@@ -28,14 +28,14 @@ function getInterceptedRecords(userId: number, requestParam: RequestParam): Prom
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | number | 是 | Indicates the user ID. It cannot be the ID of a user that does not exist. |
-| requestParam | [RequestParam](arkts-network-netfirewall-requestparam-i.md) | 是 | Paging query input parameters. |
+| userId | number | 是 | 用户ID，取值范围只能为系统中存在的用户ID。 |
+| requestParam | [RequestParam](arkts-network-netfirewall-requestparam-i.md) | 是 | 查询参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[InterceptedRecordPage](arkts-network-netfirewall-interceptedrecordpage-i-sys.md)&gt; | Block Record List. |
+| Promise&lt;[InterceptedRecordPage](arkts-network-netfirewall-interceptedrecordpage-i-sys.md)&gt; | Promise对象，返回拦截记录列表。 |
 
 **错误码：**
 

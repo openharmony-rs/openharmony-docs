@@ -35,3 +35,25 @@ function participate(config: HiRetrievalConfig): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 36000001 | Initialization error. Possibly caused by invoking this function before invoking init function. |
+
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
+
+let config: hiRetrieval.HiRetrievalConfig = {
+  'userType': "testUserType",
+  'deviceType': "deviceType",
+  'deviceModel': "deviceModel"
+}
+try {
+  // 初始化应用灰度模块
+  hiRetrieval.init();
+  // 设置设备参与应用灰度活动
+  hiRetrieval.participate(config);
+} catch (err) {
+  // 捕获并打印错误信息
+  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
+}
+```

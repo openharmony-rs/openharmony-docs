@@ -63,13 +63,20 @@ Sets whether to automatically carry and share cookies. That is, whether to autom
 
 > **NOTE:** 
 > 
-> (1) The default value is **false**, indicating that cookies are not automatically carried.
-
-> (2) If the value is changed from **false** to **true**, the setting takes effect when the **request** API is
-> called to initiate a request, and cookies are automatically shared.
-
-> (3) If the value is changed from **true** to **false**, the cookie sharing status stored in the current
-> instance is cleared.
+> (1) The default value is **false**, which means cookies are not automatically carried by default.
+> 
+> (2) When the configuration is switched from **false** to **true**, it takes effect in subsequent requests
+> initiated by calling the **request** API, and cookies are automatically shared.
+> 
+> (3) When the configuration is switched from **true** to **false**, the cookie sharing state saved in the
+> current instance is cleared.
+> 
+> (4) Cookie handling in redirection scenarios: Cookies manually configured through the **header** field are
+> not automatically sent to the target host after redirection. Only cookies delivered by the server through
+> **Set-Cookie** are automatically carried based on domain name rules.
+> 
+> (5) Cross-domain cookie carrying rules: Automatic cookie carrying takes effect only between the same domain
+> name or the same subdomain. Automatic cookie carrying is not supported between different domain names.
 
 **Since:** 26.0.0
 
@@ -508,7 +515,7 @@ Registers an observer for events indicating receiving of HTTP streaming response
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | "dataReceive" | Yes | Event type. The value is **dataReceive**. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;ArrayBuffer&gt; | Yes | Callback used to return the result. If the operation is successful, **error** is **undefined**, and **data** is the received HTTP streaming data of the ArrayBuffer type. Otherwise, **error** is an error object. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;ArrayBuffer&gt; | Yes | Callback used to return the result. If the subscription is successful, **err** is **undefined** and data is the received HTTP streaming data of the ArrayBuffer type. Otherwise, the value is an error object. |
 
 **Examples**
 
@@ -730,7 +737,7 @@ httpRequest.on("headerReceive", (data: BusinessError) => {
 once(type: "headersReceive", callback: Callback<Object>): void
 ```
 
-Registers a one-time observer for HTTP Response Header events. Once triggered, the observer will be removed. This API uses an asynchronous callback to return the result.
+Subscribes to the HTTP Response Header event, which triggers only once. After it is triggered, the subscriber is removed. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -744,7 +751,7 @@ Registers a one-time observer for HTTP Response Header events. Once triggered, t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | "headersReceive" | Yes | Event type. The value is **headersReceive**. |
+| type | "headersReceive" | Yes | Subscription event. The value is fixed to **'headersReceive'**, which indicates the response header receive event. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Object&gt; | Yes | Callback used to return the HTTP response header. |
 
 **Examples**
@@ -776,7 +783,7 @@ httpRequest.once("headersReceive", (header: Object) => {
 request(url: string, callback: AsyncCallback<HttpResponse>): void
 ```
 
-Initiates an HTTP request to a given URL. This API uses an asynchronous callback to return the result.
+Initiates an HTTP network request to a given URL. This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
@@ -806,7 +813,7 @@ Initiates an HTTP request to a given URL. This API uses an asynchronous callback
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| url | string | Yes | URL for initiating an HTTP request. |
+| url | string | Yes | URL for initiating the network request. Example: https://www.test.com |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HttpResponse](arkts-network-http-httpresponse-i.md)&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -895,7 +902,7 @@ httpRequest.request("EXAMPLE_URL", (err: Error, data: http.HttpResponse) => {
 request(url: string, options: HttpRequestOptions, callback: AsyncCallback<HttpResponse>): void
 ```
 
-Initiates an HTTP request containing specified options to a given URL. This API uses an asynchronous callback to return the result.
+Initiates an HTTP network request to a given URL with the specified options. This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
@@ -1040,7 +1047,7 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
 request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>
 ```
 
-Initiates an HTTP request containing specified options to a given URL. This API uses a promise to return the result.
+Initiates an HTTP network request to a given URL. This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
@@ -1077,7 +1084,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[HttpResponse](arkts-network-http-httpresponse-i.md)&gt; | Promise used to return the result. |
+| Promise&lt;[HttpResponse](arkts-network-http-httpresponse-i.md)&gt; | Promise used to return the response result of the request. |
 
 **Error codes:**
 
@@ -1181,7 +1188,7 @@ promise.then((data:http.HttpResponse) => {
 requestInStream(url: string, callback: AsyncCallback<number>): void
 ```
 
-Initiates an HTTP request containing specified options to a given URL. This API uses an asynchronous callback to return the result, which is a streaming response.
+Initiates an HTTP network request to a given URL and returns a streaming response. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -1198,7 +1205,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | url | string | Yes | URL for initiating an HTTP request. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the request is successful, **err** is **undefined**, and the HTTP result code is returned. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the request is successful, **err** is **undefined**, and the HTTP request response error code is returned. For details about the meaning, see [ResponseCode](arkts-network-http-responsecode-e.md). Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -1279,7 +1286,7 @@ httpRequest.requestInStream("EXAMPLE_URL", (err: BusinessError, data: number) =>
 requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallback<number>): void
 ```
 
-Initiates an HTTP request containing specified options to a given URL. This API uses an asynchronous callback to return the result, which is a streaming response.
+Initiates an HTTP network request to a given URL with the specified options and returns a streaming response. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -1297,7 +1304,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 | --- | --- | --- | --- |
 | url | string | Yes | URL for initiating an HTTP request. |
 | options | [HttpRequestOptions](arkts-network-http-httprequestoptions-i.md) | Yes | Request options. For details, see [HttpRequestOptions](arkts-network-http-httprequestoptions-i.md). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the request is successful, **err** is **undefined**, and the [HTTP result code](arkts-network-http-responsecode-e.md) is returned. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the request is successful, **err** is **undefined**, and the HTTP request response error code is returned. For details about the meaning, see [ResponseCode](arkts-network-http-responsecode-e.md). Otherwise, an error object is returned. |
 
 **Error codes:**
 
@@ -1400,7 +1407,7 @@ httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> , 
 requestInStream(url: string, options?: HttpRequestOptions): Promise<number>
 ```
 
-Initiates an HTTP request containing specified options to a given URL. This API uses a promise to return the result, which is a streaming response.
+Initiates an HTTP network request to a given URL and returns a streaming response. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -1423,7 +1430,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the [result](arkts-network-http-responsecode-e.md). |
+| Promise&lt;number&gt; | Promise used to return the result of initiating the request. For details, see [ResponseCode](arkts-network-http-responsecode-e.md). |
 
 **Error codes:**
 
@@ -1530,8 +1537,6 @@ Initiates an HTTP network request based on the URL and related configuration opt
 > HTTP request.
 
 > (4) This API is synchronous and blocks the current thread until an HTTP response or error code is returned.
-
-**Required permission**: ohos.permission.INTERNET
 
 **Since:** 26.0.0
 

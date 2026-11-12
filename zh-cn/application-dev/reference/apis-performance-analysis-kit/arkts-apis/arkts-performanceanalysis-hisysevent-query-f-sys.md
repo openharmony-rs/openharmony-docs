@@ -12,7 +12,7 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 function query(queryArg: QueryArg, rules: QueryRule[], querier: Querier): void
 ```
 
-查询系统事件。
+查询系统事件。支持按时间范围、事件领域、事件名称等多种查询条件进行匹配查询。
 
 **起始版本：** 9
 

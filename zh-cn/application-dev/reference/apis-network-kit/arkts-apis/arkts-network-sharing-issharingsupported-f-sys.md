@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function isSharingSupported(callback: AsyncCallback<boolean>): void
 ```
 
-判断是否支持网络共享，使用 callback 异步回调。
+判断是否支持网络共享。使用callback异步回调。
 
 **起始版本：** 9
 

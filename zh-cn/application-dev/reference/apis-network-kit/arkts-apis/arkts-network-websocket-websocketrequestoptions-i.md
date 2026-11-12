@@ -172,7 +172,10 @@ skipServerCertVerification?: boolean
 supportOriginPort?: boolean
 ```
 
-支持源端口的选项。
+Origin是WebSocket握手请求中的HTTP请求头字段，用于标识请求来源，服务端可据此进行来源校验。该参数用于控制Origin字段是否携带自定义端口号。默认值为false。设置为true时：  
+- 调用[connect](arkts-network-websocket-websocket-i.md#connect-1)接口后，若其第一个参数url中指定的协议为ws，且显式指定的端口号不是80，则Origin字段中会携带对应的端口；其他情况不携带端口号。  
+- 调用[connect](arkts-network-websocket-websocket-i.md#connect-1)接口后，若其第一个参数url中指定的协议为wss，且显式指定的端口号不是443，则Origin字段中会携带对应的端口号；其他情况不携带端口号。  
+设置为false时，Origin字段不会携带端口号。
 
 **类型：** boolean
 

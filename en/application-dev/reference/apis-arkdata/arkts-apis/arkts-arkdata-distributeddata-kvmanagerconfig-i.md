@@ -19,6 +19,7 @@ Represents the configuration of a **KVManager** instance, including the bundle n
 ## Modules to Import
 
 ```TypeScript
+import { distributedData } from '@ohos.data.distributedData';
 ```
 
 ## bundleName

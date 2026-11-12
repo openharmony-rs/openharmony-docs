@@ -141,6 +141,18 @@
   <!--Del-->
   - [ResourceType（系统接口）](arkts-backgroundtasks-devicestandby-resourcetype-e-sys.md)<!--DelEnd-->
 <!--Del-->
+- [@ohos.resourceschedule.suspendManager（冻结管理）](arkts-backgroundtasks-resourceschedule-suspendmanager.md)<!--DelEnd-->
+  <!--Del-->
+  - [getSuspendStateByPidList（系统接口）](arkts-backgroundtasks-suspendmanager-getsuspendstatebypidlist-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [registerSuspendStateObserver（系统接口）](arkts-backgroundtasks-suspendmanager-registersuspendstateobserver-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [unregisterSuspendStateObserver（系统接口）](arkts-backgroundtasks-suspendmanager-unregistersuspendstateobserver-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SuspendStateObserver（系统接口）](arkts-backgroundtasks-suspendmanager-suspendstateobserver-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [FreezeState（系统接口）](arkts-backgroundtasks-suspendmanager-freezestate-e-sys.md)<!--DelEnd-->
+<!--Del-->
 - [@ohos.resourceschedule.usageStatistics（设备使用信息统计）](arkts-backgroundtasks-resourceschedule-usagestatistics.md)<!--DelEnd-->
   <!--Del-->
   - [isIdleState（系统接口）](arkts-backgroundtasks-usagestatistics-isidlestate-f-sys.md)<!--DelEnd-->

@@ -78,7 +78,7 @@ Obtains the metering network policy. This API uses a promise to return the resul
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[NetQuotaPolicy](arkts-network-policy-netquotapolicy-i-sys.md)&gt;&gt; | Promise used to return the result. |
+| Promise&lt;Array&lt;[NetQuotaPolicy](arkts-network-policy-netquotapolicy-i-sys.md)&gt;&gt; | Promise used to return the set result. |
 
 **Error codes:**
 

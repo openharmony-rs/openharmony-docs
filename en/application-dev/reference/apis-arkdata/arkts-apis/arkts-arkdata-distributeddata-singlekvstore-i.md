@@ -23,6 +23,7 @@ Data is not distinguished by device in a single KV store. The data written to di
 ## Modules to Import
 
 ```TypeScript
+import { distributedData } from '@ohos.data.distributedData';
 ```
 
 ## closeResultSet

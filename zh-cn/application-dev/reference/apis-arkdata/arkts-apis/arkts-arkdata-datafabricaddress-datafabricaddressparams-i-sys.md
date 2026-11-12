@@ -17,6 +17,7 @@ export interface DataFabricAddressParams
 ## 导入模块
 
 ```TypeScript
+import { dataFabricAddress } from '@ohos.data.dataFabricAddress';
 ```
 
 ## locationInfo

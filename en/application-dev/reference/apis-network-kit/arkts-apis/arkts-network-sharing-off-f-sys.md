@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function off(type: 'sharingStateChange', callback?: Callback<boolean>): void
 ```
 
-Unregisters the network sharing status change event. This method uses an asynchronous callback to return the result.
+Unregisters the listener for network sharing state changes. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -29,7 +29,7 @@ Unregisters the network sharing status change event. This method uses an asynchr
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'sharingStateChange' | Yes | Event type. The value **sharingStateChange** indicates a network sharing status change event. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | No | Callback invoked when the network sharing state changes. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | No | Callback invoked to return the network sharing state. |
 
 **Error codes:**
 
@@ -59,7 +59,7 @@ sharing.off('sharingStateChange', (data: boolean) => {
 function off(type: 'interfaceSharingStateChange', callback?: Callback<InterfaceSharingStateInfo>): void
 ```
 
-Unsubscribes from network sharing state changes of a specified NIC. This API uses an asynchronous callback to return the result.
+Unregisters the listener for network sharing state changes of a network interface card. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -76,7 +76,7 @@ Unsubscribes from network sharing state changes of a specified NIC. This API use
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'interfaceSharingStateChange' | Yes | Event type. The value **interfaceSharingStateChange** indicates a network sharing status change event of the NIC. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[InterfaceSharingStateInfo](arkts-network-sharing-interfacesharingstateinfo-i-sys.md)&gt; | No | Callback used to return the result.<br>**Since:** 11 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[InterfaceSharingStateInfo](arkts-network-sharing-interfacesharingstateinfo-i-sys.md)&gt; | No | Callback for the sharing state change event of the specified network interface card.<br>**Since:** 11 |
 
 **Error codes:**
 
@@ -106,7 +106,7 @@ sharing.off('interfaceSharingStateChange', (data: object) => {
 function off(type: 'sharingUpstreamChange', callback?: Callback<NetHandle>): void
 ```
 
-Unsubscribes from upstream network changes. This API uses an asynchronous callback to return the result.
+Unregisters the listener for upstream network changes. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -123,7 +123,7 @@ Unsubscribes from upstream network changes. This API uses an asynchronous callba
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'sharingUpstreamChange' | Yes | Event type. The value **sharingUpstreamChange** indicates an upstream network change event. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetHandle](arkts-network-sharing-nethandle-t.md)&gt; | No | Callback used for unsubscription from upstream network changes. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetHandle](arkts-network-sharing-nethandle-t.md)&gt; | No | Callback for the uplink network change event. |
 
 **Error codes:**
 

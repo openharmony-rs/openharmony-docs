@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function setPowerSaveTrustlist(uids: Array<number>, isAllowed: boolean, callback: AsyncCallback<void>): void
 ```
 
-Sets whether the app with the specified UID is in the whitelist of the power saving firewall. This API uses an asynchronous callback to return the result.
+Sets whether the app with the specified UID is in the trustlist of the power saving firewall. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -28,8 +28,8 @@ Sets whether the app with the specified UID is in the whitelist of the power sav
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uids | Array&lt;number&gt; | Yes | Unique ID of the application. |
-| isAllowed | boolean | Yes | Whether to add the application to the allowlist. The value **true** means to add the application to the allowlist, and the value **false** means the opposite. |
+| uids | Array&lt;number&gt; | Yes | Unique identifier of the application. |
+| isAllowed | boolean | Yes | Whether to add the application to the trustlist. The value **true** means to add the application to the trustlist, and the value **false** means the opposite. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
 
 **Error codes:**
@@ -63,7 +63,7 @@ policy.setPowerSaveTrustlist([11111, 22222], true, (error: BusinessError) => {
 function setPowerSaveTrustlist(uids: Array<number>, isAllowed: boolean): Promise<void>
 ```
 
-Sets whether the app with the specified UID is in the whitelist of the power saving firewall. This API uses a promise to return the result.
+Sets whether the app with the specified UID is in the trustlist of the power saving firewall. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -79,14 +79,14 @@ Sets whether the app with the specified UID is in the whitelist of the power sav
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uids | Array&lt;number&gt; | Yes | Unique ID of the application. |
-| isAllowed | boolean | Yes | Whether to add the application to the allowlist. The value **true** means to add the application to the allowlist, and the value **false** means the opposite. |
+| uids | Array&lt;number&gt; | Yes | Unique identifier of the app. |
+| isAllowed | boolean | Yes | Whether to add the application to the trustlist. The value **true** means to add the application to the trustlist, and the value **false** means the opposite. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

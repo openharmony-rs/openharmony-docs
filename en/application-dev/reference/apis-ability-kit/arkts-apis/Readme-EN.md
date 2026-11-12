@@ -966,6 +966,8 @@
   <!--Del-->
   - [deleteDisposedStatusSync(system api)](arkts-ability-appcontrol-deletedisposedstatussync-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [deleteRecoverDisposedRule(system api)](arkts-ability-appcontrol-deleterecoverdisposedrule-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [deleteUninstallDisposedRule(system api)](arkts-ability-appcontrol-deleteuninstalldisposedrule-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getAllDisposedRules(system api)](arkts-ability-appcontrol-getalldisposedrules-f-sys.md)<!--DelEnd-->
@@ -978,6 +980,8 @@
   <!--Del-->
   - [getDisposedStatusSync(system api)](arkts-ability-appcontrol-getdisposedstatussync-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [getRecoverDisposedRule(system api)](arkts-ability-appcontrol-getrecoverdisposedrule-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [getUninstallDisposedRule(system api)](arkts-ability-appcontrol-getuninstalldisposedrule-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setDisposedRule(system api)](arkts-ability-appcontrol-setdisposedrule-f-sys.md)<!--DelEnd-->
@@ -988,11 +992,15 @@
   <!--Del-->
   - [setDisposedStatusSync(system api)](arkts-ability-appcontrol-setdisposedstatussync-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [setRecoverDisposedRule(system api)](arkts-ability-appcontrol-setrecoverdisposedrule-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [setUninstallDisposedRule(system api)](arkts-ability-appcontrol-setuninstalldisposedrule-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [DisposedRule(system api)](arkts-ability-appcontrol-disposedrule-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [DisposedRuleConfiguration(system api)](arkts-ability-appcontrol-disposedruleconfiguration-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RecoverDisposedRule(system api)](arkts-ability-appcontrol-recoverdisposedrule-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [UninstallDisposedRule(system api)](arkts-ability-appcontrol-uninstalldisposedrule-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1003,6 +1011,8 @@
   - [DisposedType(system api)](arkts-ability-appcontrol-disposedtype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [PageJumpMode(system api)](arkts-ability-appcontrol-pagejumpmode-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [RecoverComponentType(system api)](arkts-ability-appcontrol-recovercomponenttype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [UninstallComponentType(system api)](arkts-ability-appcontrol-uninstallcomponenttype-e-sys.md)<!--DelEnd-->
 <!--Del-->

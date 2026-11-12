@@ -12,7 +12,7 @@ import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 export function revokeTaskIdentity(taskId: string[]): Promise<void>
 ```
 
-Batch revoke task authentication identities for agent commands. This function batch revokes the task authentication identities and deletes the local cache of task attributes.
+Task authentication ID of the batch deregistration proxy command. This function is used to cancel task authentication IDs in batches and delete the local cache of task attributes.
 
 **Since:** 26.1.0
 
@@ -30,20 +30,20 @@ Batch revoke task authentication identities for agent commands. This function ba
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| taskId | string[] | Yes | Task ID list to revoke authentication identity. |
+| taskId | string[] | Yes | ID list of tasks to be canceled. The maximum length of the list is 100. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise object. No result is returned. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The interface caller does not have permission "ohos.permission.QUERY_TOOL_PERMISSIONS". |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [24010000](../errorcode-abilityToolAccessCtrl-sys.md#24010000-invalid-parameter) | Invalid parameter. TicketExpireTime exceeds 24h, etc. |
+| [24010000](../errorcode-abilityToolAccessCtrl-sys.md#24010000-invalid-parameter) | Invalid parameter. Task ID is invalid, etc. |
 | [24010001](../errorcode-abilityToolAccessCtrl-sys.md#24010001-system-service-abnormal) | Service is abnormal. Possible cause: IPC failed. |
 | [24010002](../errorcode-abilityToolAccessCtrl-sys.md#24010002-internal-service-error) | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |

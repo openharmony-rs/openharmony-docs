@@ -14,8 +14,6 @@ function getConnectionPropertiesSync(netHandle: NetHandle): ConnectionProperties
 
 Obtains the connection information of the data network specified by **NetHandle**, including the NIC name, domain name, link information, route information, network address, and maximum transmission unit. This API returns the result synchronously.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
-
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO

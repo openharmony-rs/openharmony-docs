@@ -20,7 +20,7 @@ export enum NetUidPolicy
 NET_POLICY_ALLOW_METERED_BACKGROUND = 1 << 0
 ```
 
-应用在后台可以使用计量网路。
+允许应用在后台访问计量网络。
 
 **起始版本：** 10
 
@@ -52,7 +52,7 @@ NET_POLICY_NONE = 0
 NET_POLICY_REJECT_METERED_BACKGROUND = 1 << 1
 ```
 
-应用在后台不可以使用计量网路。
+拒绝应用在后台访问计量网络。
 
 **起始版本：** 10
 

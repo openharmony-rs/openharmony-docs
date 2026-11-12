@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function getStatsRxBytes(callback: AsyncCallback<number>): void
 ```
 
-获取共享网络接收数据量，使用 callback 异步回调。
+获取共享网络接收数据量。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -78,7 +78,7 @@ function getStatsRxBytes(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 以 Promise 形式返回共享网络接收数据量，单位：KB。 |
+| Promise&lt;number&gt; | Promise对象，返回共享网络接收数据量，单位：KB。 |
 
 **错误码：**
 

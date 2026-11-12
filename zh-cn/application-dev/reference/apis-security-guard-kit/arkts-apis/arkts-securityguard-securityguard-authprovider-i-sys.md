@@ -58,5 +58,5 @@ requestAuthResult(event: AuthEventInfo): Promise<AuthResult>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system application attempted to use a system API. |
-| 27000001 | Internal system error. <br>The possible causes are as follows: <br>1. The inter-process IPC call fails. <br>2. The system service process is faulty. |
-| 27000004 | Concurrent request count has reached the upper limit. |
+| [27000001](../errorcode-securityguard-sys.md#27000001-内部系统错误) | Internal system error. <br>The possible causes are as follows: <br>1. The inter-process IPC call fails. <br>2. The system service process is faulty. |
+| [27000004](../errorcode-securityguard-sys.md#27000004-并发请求数达上限) | Concurrent request count has reached the upper limit. |

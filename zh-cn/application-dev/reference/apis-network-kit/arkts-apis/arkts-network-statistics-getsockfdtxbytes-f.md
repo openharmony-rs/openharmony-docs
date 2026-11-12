@@ -28,15 +28,15 @@ function getSockfdTxBytes(sockfd: number, callback: AsyncCallback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sockfd | number | 是 | 指定查询的Socket的FD(file description)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取Socket的上行流量时，error为undefined，否则为错误对象。 |
+| sockfd | number | 是 | 指定查询的Socket的FD(file descriptor)。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功获取Socket的上行流量时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
-| [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value |
+| [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
@@ -79,20 +79,20 @@ function getSockfdTxBytes(sockfd: number): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sockfd | number | 是 | 指定查询的Socket的FD(file description)。 |
+| sockfd | number | 是 | 指定查询的Socket的FD(file descriptor)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象。返回该Socket的上行流量（单位：字节）。 |
+| Promise&lt;number&gt; | Promise对象，返回该Socket的上行流量（单位：字节）。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
-| [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value |
+| [2100001](../errorcode-net-connection.md#2100001-非法参数值) | Invalid parameter value. |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 

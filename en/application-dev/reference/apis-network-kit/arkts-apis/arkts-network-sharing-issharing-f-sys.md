@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function isSharing(callback: AsyncCallback<boolean>): void
 ```
 
-Obtains the current network sharing status. This API uses an asynchronous callback to return the result.
+Obtains the current network sharing state. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 

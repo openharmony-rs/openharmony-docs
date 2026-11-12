@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function getStatsRxBytes(callback: AsyncCallback<number>): void
 ```
 
-Obtains the volume of mobile data traffic received via network sharing. This API uses an asynchronous callback to return the result.
+Obtains the received data size of the shared network. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -78,7 +78,7 @@ Obtains the volume of mobile data traffic received via network sharing. This API
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the data volume, in KB. |
+| Promise&lt;number&gt; | Promise used to return the received data size of the shared network, in KB. |
 
 **Error codes:**
 

@@ -16,8 +16,8 @@ Obtains the total downlink traffic (in bytes) of the NIC corresponding to the cu
 
 > **NOTE:** 
 > 
-> It is recommended to call this API when the cellular network is in the connected state. Otherwise, error code 210
-> 3012 will be thrown.
+> It is recommended to call this API when the cellular network is in the connected state.
+> Otherwise, error code 2103012 will be thrown.
 
 **Since:** 10
 
@@ -67,8 +67,8 @@ Obtains the total downlink traffic (in bytes) of the NIC corresponding to the cu
 
 > **NOTE:** 
 > 
-> It is recommended to call this API when the cellular network is in the connected state. Otherwise, error code 210
-> 3012 will be thrown.
+> It is recommended to call this API when the cellular network is in the connected state.
+> Otherwise, error code 2103012 will be thrown.
 
 **Since:** 10
 
@@ -80,7 +80,7 @@ Obtains the total downlink traffic (in bytes) of the NIC corresponding to the cu
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the total downlink traffic (in bytes) of the specified NIC from the last startup to the time when the API is called. |
+| Promise&lt;number&gt; | Promise used to return the total downlink traffic of the specified network card from the last boot to the time of interface call (in bytes). |
 
 **Error codes:**
 

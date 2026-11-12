@@ -4,7 +4,7 @@
 export interface VpnConnection
 ```
 
-VPN连接对象。在调用VpnConnection的方法前，需要先通过vpnExt.createVpnConnection创建VPN连接对象。
+VPN连接对象。在调用VpnConnection的方法前，需要先通过vpnExtension.createVpnConnection创建VPN连接对象。
 
 **起始版本：** 11
 
@@ -84,7 +84,7 @@ create(config: VpnConfig): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 以 Promise 形式返回获取结果，返回指定虚拟网卡的文件描述符 fd。 |
+| Promise&lt;number&gt; | Promise对象，返回指定虚拟网卡的文件描述符 fd。 |
 
 **错误码：**
 
@@ -340,7 +340,7 @@ generateVpnId(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | 以Promise形式返回获取结果，返回vpnId。 |
+| Promise&lt;string&gt; | Promise对象，返回vpnId。 |
 
 **错误码：**
 
@@ -375,7 +375,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 protect(socketFd: number): Promise<void>
 ```
 
-保护套接字不受VPN连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发。使用Promise方式作为异步方法。
+保护套接字不受VPN连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发。使用Promise异步回调。
 
 **起始版本：** 11
 

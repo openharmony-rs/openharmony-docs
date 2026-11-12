@@ -19,6 +19,7 @@ Describes a **FormBindingData** object.
 ## Modules to Import
 
 ```TypeScript
+import { formBindingData } from '@ohos.application.formBindingData';
 ```
 
 ## data

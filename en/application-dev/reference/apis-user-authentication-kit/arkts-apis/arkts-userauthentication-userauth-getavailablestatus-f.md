@@ -14,6 +14,20 @@ function getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLev
 
 Checks whether the specified authentication capability is supported. This API is used to check whether the current device supports the specified authentication type and authentication trust level. It helps an application determine whether the authentication capability is available before initiating authentication, thereby avoiding unnecessary authentication failures. If the query is successful (no error is thrown), the authentication capability is available. If an error is thrown, the application should determine the cause based on the error code and take appropriate measures.
 
+Error code return sequence description:
+
+If the corresponding executor is not registered, the system does not support the authentication capability and returns 12500005.
+
+If the corresponding executor has been registered, the function is not disabled, but the authentication security level is lower than that specified by the service, 12500006 is returned.
+
+If the corresponding executor has been registered, the function is not disabled, but the user does not register the credential, 12500010 needs to be returned.
+
+If the corresponding executor has been registered, the function is not disabled, but the password expires, 12500013 needs to be returned.
+
+Note:
+
+If the screen lock password is a 4-digit PIN, the authentication trust level is ATL3. When this interface is invoked to query whether ATL4 password authentication is supported, 12500010 is returned.
+
 **Since:** 9
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC

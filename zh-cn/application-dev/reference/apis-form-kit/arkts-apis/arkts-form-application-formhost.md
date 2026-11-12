@@ -23,6 +23,7 @@ formHost模块提供了卡片使用方相关接口的能力，包括对使用方
 ## 导入模块
 
 ```TypeScript
+import { formHost } from '@ohos.application.formHost';
 ```
 
 ## 汇总

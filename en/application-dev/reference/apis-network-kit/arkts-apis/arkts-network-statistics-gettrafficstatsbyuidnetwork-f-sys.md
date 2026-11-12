@@ -12,7 +12,7 @@ import { statistics } from '@kit.NetworkKit';
 function getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise<NetStatsInfoSequence>
 ```
 
-Obtains the traffic statistics of the specified application on the specified network within the specified period. This method uses a promise to return the result.
+Obtains the traffic usage details of the application on the specified network within the specified period. This API uses a promise to return the result. Based on the UID and the network type, time range, and **simId** in **networkInfo**, the system reads the historical traffic data of the application on the specified network from the statistics database, returns a **NetStatsInfoSequence** sequence by time period, and returns it in a promise. The **simId** takes effect only when the network type is cellular (**BEARER_CELLULAR**).
 
 **Since:** 12
 
@@ -35,7 +35,7 @@ Obtains the traffic statistics of the specified application on the specified net
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;NetStatsInfoSequence&gt; | Promise used to return the result, which is the historical traffic statistics of the application. |
+| Promise&lt;NetStatsInfoSequence&gt; | Promise used to return the application historical traffic statistics information. |
 
 **Error codes:**
 

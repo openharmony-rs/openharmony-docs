@@ -15,6 +15,7 @@ The appManager module provides APIs for application management. For example, you
 ## Modules to Import
 
 ```TypeScript
+import { appManager } from '@ohos.application.appManager';
 ```
 
 ## Summary

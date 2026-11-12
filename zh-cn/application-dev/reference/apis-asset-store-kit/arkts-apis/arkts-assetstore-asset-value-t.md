@@ -16,6 +16,6 @@ declare type Value = boolean | number | Uint8Array
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | The value is a boolean value, with a range of true or false. |
-| number | The value is a number, and the value range is the enumerated value or number corresponding to the tag. |
-| Uint8Array | The value is a byte array, and the content is defined by the service. |
+| boolean | 表示值类型为布尔类型，取值为true或false。 |
+| number | 表示值类型为数字，取值为枚举值或对应Tag支持的数字。 |
+| Uint8Array | 表示值类型为字节数组，内容由业务定义。 |

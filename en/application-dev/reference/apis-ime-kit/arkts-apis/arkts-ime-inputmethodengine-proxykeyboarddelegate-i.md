@@ -38,7 +38,7 @@ Unsubscribe cursor context change.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | CursorContextChangeCallback | No | optional, the callback called when cursor information changes. |
+| callback | [CursorContextChangeCallback](arkts-ime-inputmethodengine-cursorcontextchangecallback-t.md) | No | optional, the callback called when cursor information changes. |
 
 ## offEditorAttributeChanged
 
@@ -82,7 +82,7 @@ Unsubscribe key event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | InputKeyEventCallback | No | optional, the callback called when a key event occurs. |
+| callback | [InputKeyEventCallback](arkts-ime-inputmethodengine-inputkeyeventcallback-t.md) | No | optional, the callback called when a key event occurs. |
 
 ## offSelectionChange
 
@@ -104,7 +104,7 @@ Unsubscribe selection change.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | SelectionChangeCallback | No | optional, the callback called when the text selection changes. |
+| callback | [SelectionChangeCallback](arkts-ime-inputmethodengine-selectionchangecallback-t.md) | No | optional, the callback called when the text selection changes. |
 
 ## offTextChange
 
@@ -148,7 +148,7 @@ Subscribe cursor context change.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | CursorContextChangeCallback | Yes | the callback called when cursor information changes. |
+| callback | [CursorContextChangeCallback](arkts-ime-inputmethodengine-cursorcontextchangecallback-t.md) | Yes | the callback called when cursor information changes. |
 
 ## onEditorAttributeChanged
 
@@ -192,7 +192,7 @@ Subscribe key event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | InputKeyEventCallback | Yes | the callback called when a key event occurs. If the key is processed by event subscriber, callback should be return true, else return false. |
+| callback | [InputKeyEventCallback](arkts-ime-inputmethodengine-inputkeyeventcallback-t.md) | Yes | the callback called when a key event occurs. If the key is processed by event subscriber, callback should be return true, else return false. |
 
 ## onSelectionChange
 
@@ -214,7 +214,7 @@ Subscribe selection change.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | SelectionChangeCallback | Yes | the callback called when the text selection changes. |
+| callback | [SelectionChangeCallback](arkts-ime-inputmethodengine-selectionchangecallback-t.md) | Yes | the callback called when the text selection changes. |
 
 ## onTextChange
 

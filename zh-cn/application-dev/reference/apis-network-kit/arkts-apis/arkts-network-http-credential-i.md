@@ -24,7 +24,7 @@ import { http } from '@kit.NetworkKit';
 password: string
 ```
 
-Password of credential. Default is ''.
+用于身份验证的密码。默认值为''。
 
 **类型：** string
 
@@ -42,7 +42,7 @@ Password of credential. Default is ''.
 username: string
 ```
 
-Username of credential. Default is ''.
+用于身份验证的用户名。默认值为''。
 
 **类型：** string
 

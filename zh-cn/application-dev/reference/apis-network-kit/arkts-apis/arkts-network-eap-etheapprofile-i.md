@@ -152,7 +152,7 @@ domainSuffixMatch: string
 eapMethod: EapMethod
 ```
 
-AP认证方式。
+EAP认证方式。
 
 **类型：** [EapMethod](arkts-network-eap-eapmethod-e.md)
 
@@ -200,7 +200,7 @@ identity: string
 password: string
 ```
 
-Password
+PWD类型。
 
 **类型：** string
 

@@ -73,7 +73,7 @@ Obtains the global network proxy configuration information. This API uses a prom
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[HttpProxy](arkts-network-connection-httpproxy-i.md)&gt; | Promise used to return the result. |
+| Promise&lt;[HttpProxy](arkts-network-connection-httpproxy-i.md)&gt; | Promise used to return the global proxy configuration information of the network. |
 
 **Error codes:**
 

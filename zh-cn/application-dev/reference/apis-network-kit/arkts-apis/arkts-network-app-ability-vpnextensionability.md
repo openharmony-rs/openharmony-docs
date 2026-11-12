@@ -1,4 +1,4 @@
-# @ohos.app.ability.VpnExtensionAbility(三方VPN能力)
+# @ohos.app.ability.VpnExtensionAbility
 
 ## 导入模块
 
@@ -12,4 +12,4 @@ import { VpnExtensionAbility, VpnExtensionContext } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [VpnExtensionAbility](arkts-network-app-ability-vpnextensionability-vpnextensionability-c.md) | VpnExtensionContext是VpnExtensionAbility的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。 |
+| [VpnExtensionAbility](arkts-network-app-ability-vpnextensionability-vpnextensionability-c.md) | VpnExtensionAbility模块提供三方VPN相关能力，提供三方VPN创建、销毁等生命周期回调。 |

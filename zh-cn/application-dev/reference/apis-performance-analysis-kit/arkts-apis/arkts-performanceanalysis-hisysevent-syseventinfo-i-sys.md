@@ -80,7 +80,7 @@ name: string
 params?: object
 ```
 
-事件参数。
+事件参数。参数需满足验证、字符串类型参数大小限制、参数总数限制、数组类型参数数量限制等要求。详见[系统事件错误码](../errorcode-hisysevent-sys.md)：11200001-11200054。
 
 **类型：** object
 

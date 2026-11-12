@@ -20,9 +20,16 @@ import { eap } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
+| [connect](arkts-network-eap-connect-f.md#connect-1) | 手动触发或断开以太网的802.1X EAP认证。 |
+| [deleteEthEapConfig](arkts-network-eap-deleteetheapconfig-f.md#deleteetheapconfig-1) | 删除保留的802.1X EAP配置并停止任何正在进行的自动身份验证。幂等性：即使没有存储任何配置，也能成功解析。 |
+| [getEthEapConfig](arkts-network-eap-getetheapconfig-f.md#getetheapconfig-1) | 获取以太网的802.1X EAP配置。敏感字段（密码、certPassword、certEntry）总是返回空。如果尚未存储任何配置，则以**null**进行解析。 |
+| [getEthEapStateInfo](arkts-network-eap-getetheapstateinfo-f.md#getetheapstateinfo-1) | 查询当前802.1X EAP认证状态信息。 |
 | [logOffEthEap](arkts-network-eap-logoffetheap-f.md#logoffetheap-1) | 该接口用于指定一个以太网卡从EAP已认证状态退出。 |
+| [offStateChange](arkts-network-eap-offstatechange-f.md#offstatechange-1) | 取消订阅802.1X EAP身份验证状态更改。 |
+| [onStateChange](arkts-network-eap-onstatechange-f.md#onstatechange-1) | 订阅802.1X EAP认证状态变化。 |
 | [regCustomEapHandler](arkts-network-eap-regcustomeaphandler-f.md#regcustomeaphandler-1) | 用于指定需要定制化处理的EAP报文类型和对应的处理callback。使用callback异步回调。 |
 | [replyCustomEapData](arkts-network-eap-replycustomeapdata-f.md#replycustomeapdata-1) | 该接口用于通知系统已完成该步定制化处理。 |
+| [setEthEapConfig](arkts-network-eap-setetheapconfig-f.md#setetheapconfig-1) | 设置以太网的802.1X EAP配置。配置是持久化的，并且是加密的。 |
 | [startEthEap](arkts-network-eap-startetheap-f.md#startetheap-1) | 该接口用于指定一个以太网卡发起EAP认证。 |
 | [unregCustomEapHandler](arkts-network-eap-unregcustomeaphandler-f.md#unregcustomeaphandler-1) | 用于指定需要取消定制化处理的EAP报文类型和对应的处理callback。使用callback异步回调。 |
 
@@ -31,7 +38,9 @@ import { eap } from '@kit.NetworkKit';
 | 名称 | 说明 |
 | --- | --- |
 | [EapData](arkts-network-eap-eapdata-i.md) | EAP信息。 |
+| [EthEapConfig](arkts-network-eap-etheapconfig-i.md) | 表示802.1X以太网EAP配置，包括EAP配置文件和功能切换。 |
 | [EthEapProfile](arkts-network-eap-etheapprofile-i.md) | 可扩展身份验证协议配置信息。 |
+| [EthEapStateInfo](arkts-network-eap-etheapstateinfo-i.md) | 表示通过stateChange回调传递的802.1X EAP身份验证状态信息。 |
 
 ### 枚举
 
@@ -39,4 +48,6 @@ import { eap } from '@kit.NetworkKit';
 | --- | --- |
 | [CustomResult](arkts-network-eap-customresult-e.md) | 表示EAP认证处理结果的枚举。 |
 | [EapMethod](arkts-network-eap-eapmethod-e.md) | 表示EAP认证方式的枚举。 |
+| [EthEapConnectAction](arkts-network-eap-etheapconnectaction-e.md) | 枚举以太网802.1X EAP认证的手动连接动作。 |
+| [EthEapState](arkts-network-eap-etheapstate-e.md) | 枚举802.1X EAP身份验证状态。 |
 | [Phase2Method](arkts-network-eap-phase2method-e.md) | 表示第二阶段认证方式的枚举。 |

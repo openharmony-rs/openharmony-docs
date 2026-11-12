@@ -17,6 +17,7 @@ export interface LocationInfo
 ## 导入模块
 
 ```TypeScript
+import { dataFabricAddress } from '@ohos.data.dataFabricAddress';
 ```
 
 ## coordinateSystemName

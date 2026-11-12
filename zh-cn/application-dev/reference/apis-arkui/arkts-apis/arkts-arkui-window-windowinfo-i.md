@@ -56,7 +56,7 @@ bundleName: string
 displayId?: number
 ```
 
-Indicates the ID of the display where the window is located.
+窗口所在屏幕的ID。默认返回主屏幕ID，该参数为整数。
 
 **类型：** number
 

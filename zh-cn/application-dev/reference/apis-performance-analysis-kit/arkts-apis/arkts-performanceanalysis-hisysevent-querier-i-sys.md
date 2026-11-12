@@ -26,7 +26,7 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 onComplete: (reason: number, total: number) => void
 ```
 
-查询结果统计的回调方法(reason: int, total: int) =&gt; void。
+查询结果统计的回调方法(reason: int, total: int) =&gt; void。当查询完成时触发（只调用一次），回调函数接收查询结果统计信息：reason表示查询完成的原因（如查询成功、查询超时等），total表示查询到的总事件数。
 
 **起始版本：** 9
 
@@ -49,7 +49,7 @@ onComplete: (reason: number, total: number) => void
 onQuery: (infos: SysEventInfo[]) => void
 ```
 
-返回查询到的系统事件的回调方法(infos: [SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md)[]) =&gt; void。
+返回查询到的系统事件的回调方法(infos: [SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md)[]) =&gt; void。当查询到系统事件时触发（可能调用多次），回调函数接收查询到的[SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md)数组，用于处理查询结果。
 
 **起始版本：** 9
 

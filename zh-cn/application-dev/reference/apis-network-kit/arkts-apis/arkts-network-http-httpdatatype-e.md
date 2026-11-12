@@ -24,7 +24,7 @@ HTTP的数据类型。
 ARRAY_BUFFER = 2
 ```
 
-The returned type is ArrayBuffer.
+二进制数组类型。
 
 **起始版本：** 9
 
@@ -40,7 +40,7 @@ The returned type is ArrayBuffer.
 OBJECT = 1
 ```
 
-The returned type is Object.
+对象类型。
 
 **起始版本：** 9
 
@@ -56,7 +56,7 @@ The returned type is Object.
 STRING = 0
 ```
 
-The returned type is string.
+字符串类型。
 
 **起始版本：** 9
 

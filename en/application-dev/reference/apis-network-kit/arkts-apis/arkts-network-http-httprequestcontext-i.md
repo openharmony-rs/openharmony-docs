@@ -24,7 +24,7 @@ import { http } from '@kit.NetworkKit';
 body: Object
 ```
 
-The header of an HTTP request interceptor. It can be modified in an interceptor.
+Request body obtained by the HTTP interceptor from the HTTP request, which can be modified in the interceptor.
 
 **Type:** Object
 
@@ -42,7 +42,7 @@ The header of an HTTP request interceptor. It can be modified in an interceptor.
 header: Object
 ```
 
-The header of an HTTP request interceptor. It can be modified in an interceptor.
+Request header obtained by the HTTP interceptor from the HTTP request, which can be modified in the interceptor.
 
 **Type:** Object
 
@@ -60,7 +60,7 @@ The header of an HTTP request interceptor. It can be modified in an interceptor.
 url: string
 ```
 
-The URL of an HTTP request interceptor. It can be modified in an interceptor.
+URL obtained by the HTTP interceptor from the HTTP request, which can be modified in the interceptor.
 
 **Type:** string
 

@@ -116,7 +116,7 @@ This API is not supported in windows that are subject to display scaling, such a
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300010](../errorcode-window.md#1300010-unsupported-operation-in-the-current-window-mode) | The operation in the current window status is invalid. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Examples**
 
@@ -1110,7 +1110,7 @@ Global floating window, modal window, or system window:
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;         2. Convert avoid area failed. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: Invalid parameter range. |
 
 **Examples**
 
@@ -1626,7 +1626,7 @@ Currently, this API can be used only on the main window of an application.
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Examples**
 
@@ -1695,7 +1695,7 @@ This API is not supported in windows that are subject to display scaling, such a
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300010](../errorcode-window.md#1300010-unsupported-operation-in-the-current-window-mode) | The operation in the current window status is invalid. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Examples**
 
@@ -1957,7 +1957,7 @@ Checks whether this window is in the specified window posture mode.
 | --- | --- |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: Invalid parameter range. |
 
 ## isReceiveDragEventEnabled
 
@@ -2941,7 +2941,7 @@ Maximize the app window.
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause:         1. Invalid window type. Only main windows and maximizable subwindows are supported;         2. The acrossDisplay parameter only supports main windows.         3. The snapshotAnimationConfig parameter only supports main windows. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: Invalid parameter range. |
 
 ## minimize
 
@@ -3495,7 +3495,7 @@ This API takes effect only when the window is in floating window mode (**window.
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed.         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300010](../errorcode-window.md#1300010-unsupported-operation-in-the-current-window-mode) | The operation in the current window status is invalid. Possible cause: The window status is not FLOATING. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Examples**
 
@@ -5012,7 +5012,7 @@ Unregisters a callback that is invoked when he window changes to the specified w
 | --- | --- |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: Invalid parameter range. |
 
 ## on('rotationChange')
 
@@ -6494,7 +6494,7 @@ Registers a callback that is invoked when the window changes to the specified wi
 | --- | --- |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: Invalid parameter range. |
 
 ## raiseToAppTop
 
@@ -6655,7 +6655,7 @@ Restores the main window from full-screen, maximized, or split-screen mode to a 
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error;         3. The window does not support floating mode. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause:         1. The snapshotAnimationConfig parameter only supports main windows. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: Invalid parameter range. |
 
 **Examples**
 
@@ -7402,7 +7402,7 @@ Sets the aspect ratio of the window content layout (excluding decorations like b
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause:         1. Invalid parameter range.         2. Invalid parameter length. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause:         1. Invalid parameter range.         2. Invalid parameter length. |
 
 **Examples**
 
@@ -7633,7 +7633,7 @@ If this API is called by a non-main window, error code 1300004 is returned.
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause:         1. Invalid parameter range; 2. The parameter format is incorrect. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause:         1. Invalid parameter range; 2. The parameter format is incorrect. |
 
 **Examples**
 
@@ -9132,7 +9132,7 @@ Sets the supported window modes of the app window.
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause:         1. Only main windows and subwindows are supported.         2. Not supported when subwindows are set to follow the main window. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause:         1. When called on a main window, the parameter should not only contain SPLIT.         2. When called on a sub window, the parameter should not contain SPLIT. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause:         1. When called on a main window, the parameter should not only contain SPLIT.         2. When called on a sub window, the parameter should not contain SPLIT. |
 
 ## setSystemAvoidAreaEnabled
 
@@ -9336,7 +9336,7 @@ Sets the touchable areas for this window. By default, the entire window is touch
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br>**Applicable version:** 26.0.0 and later |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: Invalid parameter range. |
 
 **Examples**
 
@@ -10770,7 +10770,7 @@ Set the window mask using a per-pixel alpha array
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;                                         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause:         1. The maskWidth is not equal to the window width or the maskHeight is not equal to the window height.         2. The length of windowMask is not equal to maskWidth multiplied by maskHeight. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause:         1. The maskWidth is not equal to the window width or the maskHeight is not equal to the window height.         2. The length of windowMask is not equal to maskWidth multiplied by maskHeight. |
 
 ## setWindowPrivacyMode
 
@@ -11744,7 +11744,7 @@ Currently, this API can be used only on the main window of an application.
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause:         1. Invalid parameter range;         2. Invalid parameter length. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause:         1. Invalid parameter range;         2. Invalid parameter length. |
 
 **Examples**
 
@@ -12012,7 +12012,7 @@ This API can be used only for application child windows, application main window
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function showWindow cannot work correctly due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Modal subwindow and dialog window cannot set focusOnShow. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter validation error. Possible cause: 1. The value of the parameter is out of the allowed range;         2. The length of the parameter exceeds the allowed length;         3. The parameter format is incorrect. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter validation error. Possible cause: 1. The value of the parameter is out of the allowed range;         2. The length of the parameter exceeds the allowed length;         3. The parameter format is incorrect. |
 
 **Examples**
 

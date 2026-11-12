@@ -24,7 +24,7 @@ import { connection } from '@kit.NetworkKit';
 blocked: boolean
 ```
 
-标识当前网络是否是堵塞状态。true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。
+标识当前网络是否是阻塞状态。true：标识当前网络是阻塞状态；false：标识当前网络不是阻塞状态。
 
 **类型：** boolean
 

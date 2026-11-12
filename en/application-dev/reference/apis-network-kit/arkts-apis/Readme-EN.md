@@ -1,6 +1,6 @@
 # ArkTS API<!--arkts-networkkit-->
 
-- [@ohos.app.ability.VpnExtensionAbility(Enhanced VPN Management)](arkts-network-app-ability-vpnextensionability.md)
+- [@ohos.app.ability.VpnExtensionAbility](arkts-network-app-ability-vpnextensionability.md)
   - [VpnExtensionAbility](arkts-network-app-ability-vpnextensionability-vpnextensionability-c.md)
 - [@ohos.net.connection(Network Connection Management)](arkts-network-net-connection.md)
   - [addCustomDnsRule](arkts-network-connection-addcustomdnsrule-f.md)

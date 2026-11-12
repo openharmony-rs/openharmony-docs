@@ -19,6 +19,7 @@ Listens for file change. You can call the **Watcher.stop()** method synchronousl
 ## Modules to Import
 
 ```TypeScript
+import { fileIO } from '@ohos.fileio';
 ```
 
 ## stop

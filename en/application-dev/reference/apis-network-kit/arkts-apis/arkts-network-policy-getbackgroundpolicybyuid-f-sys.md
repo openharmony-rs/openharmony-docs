@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getBackgroundPolicyByUid(uid: number, callback: AsyncCallback<NetBackgroundPolicy>): void
 ```
 
-Checks whether the specified UID can access the background network. This API uses an asynchronous callback to return the result.
+Obtains whether the specified UID can access the background network. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -28,7 +28,7 @@ Checks whether the specified UID can access the background network. This API use
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | Unique app ID, which is a positive integer within the int32_t range. |
+| uid | number | Yes | Unique identifier of the app. The value is a positive integer within the range of int32_t. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetBackgroundPolicy](arkts-network-policy-netbackgroundpolicy-e-sys.md)&gt; | Yes | Callback used to return the result. . |
 
 **Error codes:**
@@ -63,7 +63,7 @@ policy.getBackgroundPolicyByUid(11111, (error: BusinessError, data: policy.NetBa
 function getBackgroundPolicyByUid(uid: number): Promise<NetBackgroundPolicy>
 ```
 
-Obtains whether the UID can access the network of the background. This API uses a promise to return the result.
+Obtains whether the specified UID can access the background network. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -79,13 +79,13 @@ Obtains whether the UID can access the network of the background. This API uses 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | Unique app ID, which is a positive integer within the int32_t range. |
+| uid | number | Yes | Unique identifier of the app. The value range is a positive integer within the int32_t range. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetBackgroundPolicy](arkts-network-policy-netbackgroundpolicy-e-sys.md)&gt; | Promise used to return the result. |
+| Promise&lt;[NetBackgroundPolicy](arkts-network-policy-netbackgroundpolicy-e-sys.md)&gt; | Promise used to return the set result. |
 
 **Error codes:**
 

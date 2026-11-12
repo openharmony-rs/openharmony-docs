@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback<Array<number>>): void
 ```
 
-通过策略获取跟策略匹配的所有 uid，使用 callback 异步回调。
+通过策略获取跟策略匹配的所有 uid。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -29,7 +29,7 @@ function getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback<Array<num
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | policy | [NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md) | 是 | 应用对应的计量网络下的策略。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。成功返回应用的 uid 数组，失败返回错误码错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 回调函数。成功返回应用的uid数组，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
@@ -63,7 +63,7 @@ policy.getUidsByPolicy(11111, (error: BusinessError, data: number[]) => {
 function getUidsByPolicy(policy: NetUidPolicy): Promise<Array<number>>
 ```
 
-通过策略获取跟策略匹配的所有 uid，使用 Promise 异步回调。
+通过策略获取跟策略匹配的所有 uid。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -85,7 +85,7 @@ function getUidsByPolicy(policy: NetUidPolicy): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | 以 Promise 形式返回应用的 uid 数组，失败返回错误码错误信息。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回应用的uid数组，失败时返回错误码和错误信息。 |
 
 **错误码：**
 

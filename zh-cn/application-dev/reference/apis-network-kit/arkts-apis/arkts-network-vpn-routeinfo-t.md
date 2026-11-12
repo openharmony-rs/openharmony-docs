@@ -4,7 +4,7 @@
 export type RouteInfo = connection.RouteInfo
 ```
 
-获取网络路由信息。
+表示网络路由信息。
 
 **类型：** [connection.RouteInfo](arkts-network-connection-routeinfo-i.md)
 

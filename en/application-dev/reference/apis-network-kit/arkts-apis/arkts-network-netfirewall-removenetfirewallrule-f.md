@@ -14,8 +14,6 @@ function removeNetFirewallRule(userId: number, ruleId: number): Promise<void>
 
 Deletes a specified firewall rule of a system user ID. This API uses a promise to return the result.
 
-**Required permission**: ohos.permission.MANAGE_NET_FIREWALL
-
 **Since:** 15
 
 **Required permissions:** ohos.permission.MANAGE_NET_FIREWALL

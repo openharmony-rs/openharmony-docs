@@ -40,10 +40,10 @@ function replyCustomEapData(result: CustomResult, data: EapData): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [33200004](../errorcode-net-eap.md#33200004-无效的eap结果值) | Invalid result |
-| [33200005](../errorcode-net-eap.md#33200005-无效的eap数据长度) | Invalid size of eap data |
-| [33200009](../errorcode-net-eap.md#33200009-netmanager进程不存在) | netmanager stop |
-| [33200099](../errorcode-net-eap.md#33200099-程序内部错误) | internal error |
+| [33200004](../errorcode-net-eap.md#33200004-无效的eap结果值) | Invalid result. |
+| [33200005](../errorcode-net-eap.md#33200005-无效的eap数据长度) | Invalid size of eap data. |
+| [33200009](../errorcode-net-eap.md#33200009-netmanager进程不存在) | netmanager stop. |
+| [33200099](../errorcode-net-eap.md#33200099-程序内部错误) | internal error. |
 
 **示例**
 

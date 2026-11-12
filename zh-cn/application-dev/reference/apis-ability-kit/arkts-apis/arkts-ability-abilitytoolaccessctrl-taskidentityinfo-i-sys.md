@@ -26,7 +26,7 @@ import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 allowableDuration?: number
 ```
 
-可信持有物认证凭据的有效时长。单位为：秒。取值范围：(0,60]。
+可信持有物认证凭据的有效时长。单位为：毫秒。取值范围：(0,86400000]。
 
 **类型：** number
 

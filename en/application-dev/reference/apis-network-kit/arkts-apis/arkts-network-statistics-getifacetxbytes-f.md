@@ -78,7 +78,7 @@ Obtains the total uplink traffic (in bytes) of the specified NIC from the last s
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the total uplink traffic (in bytes) of the specified NIC from the last startup to the time when the API is called. |
+| Promise&lt;number&gt; | Promise used to return the total uplink traffic of the specified network card from the last boot to the time of interface call (in bytes). |
 
 **Error codes:**
 

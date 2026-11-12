@@ -42,7 +42,7 @@ lossRate: number
 rtt: number[]
 ```
 
-往返时间（RTT），单位为毫秒。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](arkts-network-connection-queryproberesult-f.md)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。
+往返时间（RTT），单位为毫秒(ms)。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](arkts-network-connection-queryproberesult-f.md)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。
 
 **类型：** number[]
 

@@ -17,6 +17,7 @@ export interface FileWriteArrayBufferOption
 ## 导入模块
 
 ```TypeScript
+import { FileWriteArrayBufferOption } from '@system.file';
 ```
 
 ## complete

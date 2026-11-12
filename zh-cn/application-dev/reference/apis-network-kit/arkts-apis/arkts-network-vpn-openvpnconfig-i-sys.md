@@ -28,6 +28,8 @@ import { vpn } from '@kit.NetworkKit';
 askpass?: string
 ```
 
+OpenVPN网络的askpass文件。
+
 **类型：** string
 
 **起始版本：** 12
@@ -44,7 +46,7 @@ askpass?: string
 ovpnAuthType?: number
 ```
 
-The auth type for the openvpn VPN network.
+OpenVPN网络的认证类型。
 
 **类型：** number
 
@@ -62,6 +64,8 @@ The auth type for the openvpn VPN network.
 ovpnCaCertFilePath?: string
 ```
 
+OpenVPN网络的CA证书文件路径。
+
 **类型：** string
 
 **起始版本：** 12
@@ -77,6 +81,8 @@ ovpnCaCertFilePath?: string
 ```TypeScript
 ovpnConfig?: string
 ```
+
+OpenVPN网络的配置。
 
 **类型：** string
 
@@ -94,6 +100,8 @@ ovpnConfig?: string
 ovpnConfigFilePath?: string
 ```
 
+OpenVPN网络的配置文件路径。
+
 **类型：** string
 
 **起始版本：** 12
@@ -109,6 +117,8 @@ ovpnConfigFilePath?: string
 ```TypeScript
 ovpnPort?: string
 ```
+
+OpenVPN网络的端口。
 
 **类型：** string
 
@@ -126,6 +136,8 @@ ovpnPort?: string
 ovpnPrivateKeyFilePath?: string
 ```
 
+OpenVPN网络的私钥文件路径。
+
 **类型：** string
 
 **起始版本：** 12
@@ -142,7 +154,7 @@ ovpnPrivateKeyFilePath?: string
 ovpnProtocol?: number
 ```
 
-The protocol for the openvpn VPN network.
+OpenVPN网络的协议。
 
 **类型：** number
 
@@ -159,6 +171,8 @@ The protocol for the openvpn VPN network.
 ```TypeScript
 ovpnUserCertFilePath?: string
 ```
+
+OpenVPN网络的用户证书文件路径。
 
 **类型：** string
 

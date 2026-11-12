@@ -327,7 +327,6 @@ Registers a listener for network status changes. To listen for a specific type o
 > **NOTE:** 
 > 
 > After using the **register** API, you need to call **unregister** to deregister the listener.
-> **Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since:** 8
 

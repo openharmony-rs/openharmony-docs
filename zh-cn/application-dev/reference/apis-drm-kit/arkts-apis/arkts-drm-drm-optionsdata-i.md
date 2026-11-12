@@ -24,7 +24,7 @@ import { drm } from '@kit.DrmKit';
 name: string
 ```
 
-可选数据名。
+可选数据名，用于标识可选数据的键名。
 
 **类型：** string
 
@@ -42,7 +42,7 @@ name: string
 value: string
 ```
 
-可选数据值。
+可选数据值，与可选数据名对应的值。
 
 **类型：** string
 

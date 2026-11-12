@@ -26,14 +26,14 @@ function getNetAccessPolicy(): Promise<NetAccessPolicy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetAccessPolicy](arkts-network-policy-netaccesspolicy-i.md)&gt; | Promise对象。返回应用自身联网策略。 |
+| Promise&lt;[NetAccessPolicy](arkts-network-policy-netaccesspolicy-i.md)&gt; | Promise对象，返回应用自身联网策略。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
-| [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error, such as nullptr。 |
+| [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error, such as nullptr. |
 
 **示例**
 

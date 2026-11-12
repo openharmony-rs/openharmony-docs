@@ -21,6 +21,7 @@ If an application has a service that can be intuitively perceived by users and n
 ## Modules to Import
 
 ```TypeScript
+import { backgroundTaskManager } from '@ohos.backgroundTaskManager';
 ```
 
 ## Summary

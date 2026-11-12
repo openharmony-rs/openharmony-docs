@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { missionManager } from '@ohos.application.missionManager';
 ```
 
 ## registerMissionListener

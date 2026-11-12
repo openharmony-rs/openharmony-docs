@@ -6,7 +6,7 @@
 const RULE_CAUTION_PRINT_LOG = 9223372036854775808n
 ```
 
-The caution rule print log.
+告警规则，当有告警时记录日志。
 
 **起始版本：** 8
 
@@ -20,7 +20,7 @@ The caution rule print log.
 const RULE_CAUTION_TRIGGER_CRASH = 4611686018427387904n
 ```
 
-The caution rule trigger crash.
+告警规则，当有告警时让应用退出。
 
 **起始版本：** 8
 
@@ -34,7 +34,7 @@ The caution rule trigger crash.
 const RULE_CHECK_ABILITY_CONNECTION_LEAK = 8589934592n
 ```
 
-The process rule check ability connection leak.
+检测规则，检测是否发生Ability泄漏。
 
 **起始版本：** 8
 
@@ -48,7 +48,7 @@ The process rule check ability connection leak.
 const RULE_CHECK_ARKUI_PERFORMANCE = 17179869184n
 ```
 
-The process rule check ability Arkui performance
+检测规则，检测arkui性能。
 
 **起始版本：** 11
 
@@ -64,8 +64,6 @@ const RULE_THREAD_CHECK_NETWORK_USAGE = 2n
 
 检测规则，检测线程是否调用网络耗时接口。
 
-**起始版本**: 26.0.0
-
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
@@ -80,7 +78,7 @@ const RULE_THREAD_CHECK_NETWORK_USAGE = 2n
 const RULE_THREAD_CHECK_SLOW_PROCESS = 1n
 ```
 
-The thread rule check slow process.
+检测规则，检测是否有耗时函数被调用。
 
 **起始版本：** 8
 

@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback<Array<string>>): void
 ```
 
-Obtains regular expressions of NICs of a specified type. This API uses an asynchronous callback to return the result.
+Obtains the list of regular expressions for network interface card names of the specified type. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -87,7 +87,7 @@ Obtains regular expressions of NICs of a specified type. This API uses a promise
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return an array of regular expressions. |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the list of regular expressions. |
 
 **Error codes:**
 

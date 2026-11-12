@@ -17,6 +17,7 @@ export interface FileReadArrayBufferResponse
 ## 导入模块
 
 ```TypeScript
+import { FileReadArrayBufferResponse } from '@system.file';
 ```
 
 ## buffer

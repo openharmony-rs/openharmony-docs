@@ -136,7 +136,9 @@ is not sent after the installation is complete (supported since API version 26.0
 - **ohos.bms.param.bundleEnableState**: If the value is **false**, the application is installed in disabled  
 state (enabled is false). If the value is **true** or this key is not present, the application is installed in enabled state (enabled is true, default behavior) (supported since API version 26.0.1).  
 - **ohos.bms.param.notarizationCredentialStatus**: If the value is "0", it indicates that the application  
-possesses a notarized credential when calling the installation interface. If the value is "1" or the key is not passed in, it indicates that there is no authentication credential when the application calls the installation interface (supported since API version 26.0.1).
+possesses a notarized credential when calling the installation interface. If the value is "1" or the key is not passed in, it indicates that there is no authentication credential when the application calls the installation interface (supported since API version 26.0.1).  
+- **ohos.bms.param.verifyRecoverRule**: If the value is **true**, the recovery disposed rule is checked to  
+block application recovery. If the value is **false** or this key is not present, the recovery disposed rule is not checked (default behavior) (supported since API version 26.1.0).
 
 **Type:** Array&lt;Parameters&gt;
 

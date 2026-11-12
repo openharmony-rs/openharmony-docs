@@ -44,4 +44,4 @@ Notifies the framework that the custom keyboard has been hidden. When the user t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. |
+| [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to the proxy input method. 3.ipc failed due to the large amount of data transferred or other reasons. |

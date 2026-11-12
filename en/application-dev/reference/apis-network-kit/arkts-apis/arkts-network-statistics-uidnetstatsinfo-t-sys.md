@@ -6,6 +6,8 @@ export type UidNetStatsInfo = {
   }
 ```
 
+Defines the historical traffic statistics of all applications.
+
 **Type:** {
     [uid: number]: NetStatsInfo;
   }

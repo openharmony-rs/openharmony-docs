@@ -33,11 +33,11 @@ function logOffEthEap(netId: number): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [33200001](../errorcode-net-eap.md#33200001-无效的netid值) | Invalid netId |
-| [33200002](../errorcode-net-eap.md#33200002-退出指定netid网卡扩展认证失败) | Log off fail |
-| [33200009](../errorcode-net-eap.md#33200009-netmanager进程不存在) | netmanager stop |
-| [33200010](../errorcode-net-eap.md#33200010-无效的eth状态) | invalid eth state |
-| [33200099](../errorcode-net-eap.md#33200099-程序内部错误) | internal error |
+| [33200001](../errorcode-net-eap.md#33200001-无效的netid值) | Invalid netId. |
+| [33200002](../errorcode-net-eap.md#33200002-退出指定netid网卡扩展认证失败) | Log off fail. |
+| [33200009](../errorcode-net-eap.md#33200009-netmanager进程不存在) | netmanager stop. |
+| [33200010](../errorcode-net-eap.md#33200010-无效的eth状态) | invalid eth state. |
+| [33200099](../errorcode-net-eap.md#33200099-程序内部错误) | internal error. |
 
 **示例**
 

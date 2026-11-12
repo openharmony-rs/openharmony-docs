@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getNetworkAccessPolicy(uid: number): Promise<NetworkAccessPolicy>
 ```
 
-获取指定 uid 能否访问网络策略，使用 Promise 异步回调。
+获取指定 uid 能否访问网络策略。使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -34,7 +34,7 @@ function getNetworkAccessPolicy(uid: number): Promise<NetworkAccessPolicy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetworkAccessPolicy](arkts-network-policy-networkaccesspolicy-i-sys.md)&gt; | 以 Promise 形式返回设定结果。 |
+| Promise&lt;[NetworkAccessPolicy](arkts-network-policy-networkaccesspolicy-i-sys.md)&gt; | Promise对象，返回设定结果。 |
 
 **错误码：**
 
@@ -72,7 +72,7 @@ policy
 function getNetworkAccessPolicy(): Promise<UidNetworkAccessPolicy>
 ```
 
-获取当前用户下所有应用 app 能否访问网络策略信息，使用 Promise 异步回调。
+获取当前用户下所有应用能否访问网络策略信息。使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -88,7 +88,7 @@ function getNetworkAccessPolicy(): Promise<UidNetworkAccessPolicy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[UidNetworkAccessPolicy](arkts-network-policy-uidnetworkaccesspolicy-i-sys.md)&gt; | 以 Promise 形式返回设定结果。 |
+| Promise&lt;[UidNetworkAccessPolicy](arkts-network-policy-uidnetworkaccesspolicy-i-sys.md)&gt; | Promise对象，返回设定结果。 |
 
 **错误码：**
 

@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function getSharingIfaces(state: SharingIfaceState, callback: AsyncCallback<Array<string>>): void
 ```
 
-Obtains the names of NICs in the specified network sharing state. This API uses an asynchronous callback to return the result.
+Obtains the list of network interface card names in the specified state. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -87,7 +87,7 @@ Obtains the names of NICs in the specified network sharing state. This API uses 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return an array of NIC names. |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the list of network interface card names in the specified state. |
 
 **Error codes:**
 

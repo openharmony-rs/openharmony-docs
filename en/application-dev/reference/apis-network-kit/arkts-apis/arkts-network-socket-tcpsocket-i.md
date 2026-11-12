@@ -572,7 +572,7 @@ Obtains the remote address of a socket connection. This API uses a promise to re
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise used to return the result. |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise used to return the result of obtaining the peer socket address. |
 
 **Error codes:**
 
@@ -619,7 +619,7 @@ Obtains the file descriptor of the **TCPSocket** object. This API uses an asynch
 > 
 > - This API can be called only after **bind** or **connect** is successfully called.
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close-1) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close-1) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 10
 
@@ -672,7 +672,7 @@ Obtains the file descriptor of the **TCPSocket** object. This API uses a promise
 > 
 > - This API can be called only after **bind** or **connect** is successfully called.
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close-1) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close-1) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 10
 
@@ -684,7 +684,7 @@ Obtains the file descriptor of the **TCPSocket** object. This API uses a promise
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the result. |
+| Promise&lt;number&gt; | Promise used to return the file descriptor of the socket. |
 
 **Examples**
 
@@ -795,7 +795,7 @@ Obtains the status of the TCP socket connection. This API uses a promise to retu
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | Promise used to return the result. |
+| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | Promise used to return and obtain the TCPSocket state. |
 
 **Error codes:**
 
@@ -848,7 +848,7 @@ Unsubscribes from **message** events of the **TCPSocket** object. This API uses 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'message' | Yes | Event type.<br> **message**: message receiving event. |
+| type | 'message' | Yes | Event type. <br> **message**: message receiving event. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SocketMessageInfo](arkts-network-socket-socketmessageinfo-i.md)&gt; | No | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.<br>**Since:** 11 |
 
 **Examples**
@@ -893,7 +893,7 @@ Unsubscribes from **connect** or **close** events of the **TCPSocket** object. T
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'connect' &#124; 'close' | Yes | Event type.<br> <br>- **connect**: connection event. <br>- **close**: close event. |
+| type | 'connect' &#124; 'close' | Yes | Event type. <br> <br>- **connect**: connection event. <br>- **close**: close event. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events. |
 
 **Examples**
@@ -937,7 +937,7 @@ Unsubscribes from **error** events of the **TCPSocket** object. This API uses an
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'error' | Yes | Event type.<br> **error**: error event. |
+| type | 'error' | Yes | Event type. <br> **error**: error event. |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | No | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events. |
 
 **Examples**
@@ -974,7 +974,7 @@ Subscribes to **message** events of the **TCPSocket** object. This API uses an a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'message' | Yes | Event type.<br> **message**: message receiving event. |
+| type | 'message' | Yes | Event type. <br> **message**: message receiving event. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SocketMessageInfo](arkts-network-socket-socketmessageinfo-i.md)&gt; | Yes | Callback used to return the result.<br>**Since:** 11 |
 
 **Examples**
@@ -1015,7 +1015,7 @@ Subscribes to **connect** or **close** events of the **TCPSocket** object. This 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'connect' &#124; 'close' | Yes | Event type.<br> <br>- **connect**: connection event. <br>- **close**: close event. |
+| type | 'connect' &#124; 'close' | Yes | Event type. <br> <br>- **connect**: connection event. <br>- **close**: close event. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Examples**
@@ -1051,7 +1051,7 @@ Subscribes to **error** events of the **TCPSocket** object. This API uses an asy
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'error' | Yes | Event type.<br> **error**: error event. |
+| type | 'error' | Yes | Event type. <br> **error**: error event. |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | Yes | Callback used to return the result. |
 
 **Examples**
