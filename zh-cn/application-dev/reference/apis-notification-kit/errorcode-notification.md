@@ -411,7 +411,6 @@ Distributed operation timed out.
 检查设备间连接是否正常（例如手机与手表是否配对成功）。
 <!--DelEnd-->
 
-<!--Del-->
 ## 1600022 无效的包信息
 
 **错误信息**
@@ -429,7 +428,6 @@ The specified bundle is invalid.
 **处理步骤**
 
 检查包信息是否正确。
-<!--DelEnd-->
 
 ## 1600023 应用未实现NotificationSubscriberExtensionAbility
 
