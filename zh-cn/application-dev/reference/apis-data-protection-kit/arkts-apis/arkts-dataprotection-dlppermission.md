@@ -119,6 +119,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 | [AccountType](arkts-dataprotection-dlppermission-accounttype-e.md) | 表示授权账号类型的枚举。 |
 | [ActionFlagType](arkts-dataprotection-dlppermission-actionflagtype-e.md) | 可以对DLP文件进行的操作类型枚举。例如：DLP沙箱应用可以根据是否具有操作权限，对其按钮进行置灰。 |
 | [ActionType](arkts-dataprotection-dlppermission-actiontype-e.md) | 表示在文件设定的权限时间到期后所执行的动作枚举，默认为NOT_OPEN。 |
+| [DlpAtomicPermissionType](arkts-dataprotection-dlppermission-dlpatomicpermissiontype-e.md) | 枚举DLP文件的原子权限，包括用户操作和应用权限控制。该枚举支持按位OR操作，以组合多个权限。 |
 | [DLPFileAccess](arkts-dataprotection-dlppermission-dlpfileaccess-e.md) | DLP文件授权类型的枚举。 |
 | [PluginCmd](arkts-dataprotection-dlppermission-plugincmd-e.md) | 可以执行的插件命令枚举。 |
 

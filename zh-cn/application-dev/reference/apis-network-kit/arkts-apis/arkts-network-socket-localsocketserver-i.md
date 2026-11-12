@@ -29,7 +29,7 @@ LocalSocketServer停止监听并释放通过[listen](#listen)方法绑定的监�
 > **说明：** 
 > 
 > 该方法不会关闭已有连接。如需关闭，请调用[LocalSocketConnection](arkts-network-socket-localsocketconnection-i.md)的
-> [close](arkts-network-socket-localsocket-i.md#close)方法。
+> [close](arkts-network-socket-localsocketconnection-i.md#close)方法。
 
 **起始版本：** 20
 
@@ -101,7 +101,7 @@ getExtraOptions(): Promise<ExtraOptionsBase>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md)&gt; | 以Promise形式返回套接字的属性。 |
+| Promise&lt;[ExtraOptionsBase](arkts-network-socket-extraoptionsbase-i.md)&gt; | Promise对象，返回套接字的属性。 |
 
 **错误码：**
 
@@ -159,7 +159,7 @@ getLocalAddress(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise&lt;string&gt; | Promise对象，返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -212,7 +212,7 @@ getSocketFd(): Promise<number>
 > 
 > - 监听异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-tcpsocketserver-i.md#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 23
 
@@ -277,7 +277,7 @@ getState(): Promise<SocketStateBase>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | 以Promise形式返回获取LocalSocketServer状态的结果。 |
+| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | Promise对象，返回获取LocalSocketServer状态的结果。 |
 
 **示例**
 
@@ -336,7 +336,7 @@ listen(address: LocalAddress): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以Promise形式返回执行结果， 成功返回空，失败返回错误码错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -511,7 +511,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 > **说明：** 
 > 
-> listen方法调用成功后，才可调用此方法。
+> [listen](#listen)方法调用成功后，才可调用此方法。
 
 **起始版本：** 11
 

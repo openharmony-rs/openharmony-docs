@@ -94,14 +94,14 @@ import { connection } from '@kit.NetworkKit';
 | [destroyVlanInterface](arkts-network-connection-destroyvlaninterface-f-sys.md#destroyvlaninterface-1) | Deletes a VLAN specified by **vlanId** from a specified Ethernet NIC. This API uses a promise to return the result. |
 | [disableAirplaneMode](arkts-network-connection-disableairplanemode-f-sys.md#disableairplanemode-1) | Disables airplane mode. This API uses an asynchronous callback to return the result. |
 | [disableAirplaneMode](arkts-network-connection-disableairplanemode-f-sys.md#disableairplanemode-2) | Disables airplane mode. This API uses a promise to return the result. |
-| [enableAirplaneMode](arkts-network-connection-enableairplanemode-f-sys.md#enableairplanemode-1) | Enables the airplane mode. This API uses an asynchronous callback to return the result. |
+| [enableAirplaneMode](arkts-network-connection-enableairplanemode-f-sys.md#enableairplanemode-1) | Enables airplane mode. This API uses an asynchronous callback to return the result. |
 | [enableAirplaneMode](arkts-network-connection-enableairplanemode-f-sys.md#enableairplanemode-2) | Enables airplane mode. This API uses a promise to return the result. |
-| [factoryReset](arkts-network-connection-factoryreset-f-sys.md#factoryreset-1) | Resets the network settings to the factory defaults. This API uses a promise to return the result. |
+| [factoryReset](arkts-network-connection-factoryreset-f-sys.md#factoryreset-1) | Resets network settings to factory defaults. This API uses a promise to return the result. |
 | [getGlobalHttpProxy](arkts-network-connection-getglobalhttpproxy-f-sys.md#getglobalhttpproxy-1) | Obtains the global network proxy configuration information. This API uses an asynchronous callback to return the result. |
 | [getGlobalHttpProxy](arkts-network-connection-getglobalhttpproxy-f-sys.md#getglobalhttpproxy-2) | Obtains the global network proxy configuration information. This API uses a promise to return the result. |
 | [getProxyMode](arkts-network-connection-getproxymode-f-sys.md#getproxymode-1) | Obtains the current proxy mode. This API uses a promise to return the result. |
-| [setGlobalHttpProxy](arkts-network-connection-setglobalhttpproxy-f-sys.md#setglobalhttpproxy-1) | Sets the global network HTTP proxy configuration information. This API uses an asynchronous callback to return the result. |
-| [setGlobalHttpProxy](arkts-network-connection-setglobalhttpproxy-f-sys.md#setglobalhttpproxy-2) | Sets the global network HTTP proxy configuration information. This API uses a promise to return the result. |
+| [setGlobalHttpProxy](arkts-network-connection-setglobalhttpproxy-f-sys.md#setglobalhttpproxy-1) | Sets the global HTTP proxy configuration information. This API uses an asynchronous callback to return the result. |
+| [setGlobalHttpProxy](arkts-network-connection-setglobalhttpproxy-f-sys.md#setglobalhttpproxy-2) | Sets the global HTTP proxy configuration information. This API uses a promise to return the result. |
 | [setInterfaceUp](arkts-network-connection-setinterfaceup-f-sys.md#setinterfaceup-1) | Set a specific interface up. |
 | [setProxyMode](arkts-network-connection-setproxymode-f-sys.md#setproxymode-1) | Sets the proxy mode. This API uses a promise to return the result. |
 <!--DelEnd-->
@@ -126,7 +126,7 @@ import { connection } from '@kit.NetworkKit';
 | [ProbeResultInfo](arkts-network-connection-proberesultinfo-i.md) | Defines the network probe result information. |
 | [QueryOptions](arkts-network-connection-queryoptions-i.md) | Defines the type of the IP address to be queried. |
 | [RouteInfo](arkts-network-connection-routeinfo-i.md) | Defines network route information. |
-| [Socks5Proxy](arkts-network-connection-socks5proxy-i.md) | Socks5 Proxy Configuration Information. |
+| [Socks5Proxy](arkts-network-connection-socks5proxy-i.md) | Defines the SOCKS5 proxy configuration. |
 | [TcpNetPortStatesInfo](arkts-network-connection-tcpnetportstatesinfo-i.md) | Describes the TCP port state information. |
 | [TraceRouteInfo](arkts-network-connection-tracerouteinfo-i.md) | Defines the route tracing information. |
 | [TraceRouteOptions](arkts-network-connection-tracerouteoptions-i.md) | Defines options for route tracing. |
@@ -150,7 +150,7 @@ import { connection } from '@kit.NetworkKit';
 | [NetCap](arkts-network-connection-netcap-e.md) | Defines the network capability. |
 | [PacketsType](arkts-network-connection-packetstype-e.md) | Defines the type of network probe data packets. |
 | [ProtocolType](arkts-network-connection-protocoltype-e.md) | Enumerates network protocol types. |
-| [Socks5DnsStrategy](arkts-network-connection-socks5dnsstrategy-e.md) | Socks5 DNS strategy |
+| [Socks5DnsStrategy](arkts-network-connection-socks5dnsstrategy-e.md) | Defines the DNS query strategy configuration of the SOCKS5 proxy. |
 | [TcpState](arkts-network-connection-tcpstate-e.md) | Enumerates TCP states. |
 
 <!--Del-->
@@ -158,5 +158,5 @@ import { connection } from '@kit.NetworkKit';
 
 | Name | Description |
 | --- | --- |
-| [ProxyMode](arkts-network-connection-proxymode-e-sys.md) | Enumerates the proxy modes. This API uses a promise to return the result. |
+| [ProxyMode](arkts-network-connection-proxymode-e-sys.md) | Enumerates the proxy modes. |
 <!--DelEnd-->

@@ -17,4 +17,4 @@ TLS1.3的加密套件声明函数，支持TLS1.3版本，兼容TLS1.2版本。
 | 类型 | 说明 |
 | --- | --- |
 | [TlsV12CipherSuite](arkts-network-http-tlsv12ciphersuite-t.md) | 表示值的类型为[TlsV11CipherSuite](arkts-network-http-tlsv11ciphersuite-t.md)。 |
-| [TlsV13SpecificCipherSuite](arkts-network-http-tlsv13specificciphersuite-t.md) | 表示值的类型为[TlsV13SpecificCipherSuite](arkts-network-http-tlsv13specificciphersuite-t.md)。 |
+| [TlsV13SpecificCipherSuite](arkts-network-http-tlsv13specificciphersuite-t.md) | 表示值的类型为[TlsV13SpecificCipherSuite](arkts-network-http-tlsv13specificciphersuite-t.md) |

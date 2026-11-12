@@ -12,6 +12,22 @@ DLP文件授权类型的枚举。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
+## ATOMIC_CONTROL
+
+```TypeScript
+ATOMIC_CONTROL = 4
+```
+
+用户对文件拥有原子控制，实现细粒度权限管理通过DlpAtomicPermissionType位掩码。与授予所有权限的FULL_CONTROL相比，这提供了更细粒度的控制。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DLPFileAccess-ATOMIC_CONTROL = 4--><!--Device-DLPFileAccess-ATOMIC_CONTROL = 4-End-->
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
 ## CONTENT_EDIT
 
 ```TypeScript

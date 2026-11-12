@@ -24,7 +24,10 @@ import { connection } from '@kit.NetworkKit';
 bearerPrivateIdentifier?: string
 ```
 
-网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。
+网络标识符。  
+- 蜂窝网络：标识符为simId，可通过[sim.getSimAccountInfo](../../apis-telephony-kit/arkts-apis/arkts-telephony-sim-getsimaccountinfo-f.md)接口获取对应卡槽的simId（例如"simId1"，其中1表示当前SIM卡的索引）；  
+- Wi-Fi网络：标识符固定为wlan0，但从API version 12开始，应用可通过传递已注册的WLAN热点信息来指定希望激活的WLAN网络；  
+- 以太网：标识符为eth，可在hdc shell中执行ifconfig命令查看具体的网卡标识（例如"eth0"）。
 
 **类型：** string
 

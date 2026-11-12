@@ -87,7 +87,7 @@ Obtains the network sharing state of the specified type. This API uses a promise
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[SharingIfaceState](arkts-network-sharing-sharingifacestate-e-sys.md)&gt; | Promise used to return the network sharing state. |
+| Promise&lt;[SharingIfaceState](arkts-network-sharing-sharingifacestate-e-sys.md)&gt; | Promise used to return the sharing state of the specified type of network. |
 
 **Error codes:**
 

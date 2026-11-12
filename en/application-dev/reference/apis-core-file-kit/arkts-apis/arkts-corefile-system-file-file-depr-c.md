@@ -17,6 +17,7 @@ File
 ## Modules to Import
 
 ```TypeScript
+import { File } from '@system.file';
 ```
 
 ## access

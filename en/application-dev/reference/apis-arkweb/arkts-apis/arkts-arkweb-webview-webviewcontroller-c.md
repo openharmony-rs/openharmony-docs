@@ -2853,6 +2853,32 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## getDefaultUserAgentLite
+
+```TypeScript
+static getDefaultUserAgentLite(): string
+```
+
+Obtains the default user agent without initializing the ArkWeb kernel.
+
+Unlike [getDefaultUserAgent](#getdefaultuseragent), this API does not trigger web engine initialization, so it can be called during application startup to report the user agent to a server without extra memory cost.
+
+If the ArkWeb engine library is unavailable, an empty string is returned.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebviewController-static getDefaultUserAgentLite(): string--><!--Device-WebviewController-static getDefaultUserAgentLite(): string-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | Default **User-Agent** string of ArkWeb, identical to the string returned by [getUserAgent](#getuseragent) after the web engine is initialized. |
+
 ## getErrorPageEnabled
 
 ```TypeScript
@@ -10227,6 +10253,41 @@ The user data is associated with the NavigationEntry lifecycle. The current navi
 | Error Code ID | Error Message |
 | --- | --- |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this API. |
+
+## setNavigationThrottle
+
+```TypeScript
+setNavigationThrottle(throttle: NavigationThrottle): void
+```
+
+Set NavigationThrottle to intercept navigation requests in multiple phases.
+
+NavigationThrottle provides callbacks for four navigation phases: `willStartRequest`, `willRedirectRequest`, `willProcessResponse`, `willFailRequest`. Each callback can return whether it isPROCEED, CANCEL, or DEFER. When DEFER is returned, navigation pauses until `proceed()` or `cancel()` of DeferThrottleCallback is called.
+
+> **Description* *
+> 
+> - Invoking this interface replaces the previously set NavigationThrottle, and the original navigationThrottle is no longer invoked.
+> - This interface does not affect [onOverrideUrlLoading](../arkts-components/arkts-arkweb-web-comp-attribute.md#onoverrideurlloading). When both are set,Invoke [onOverrideUrlLoading](../arkts-components/arkts-arkweb-web-comp-attribute.md#onoverrideurlloading) and then the NavigationThrottle callback.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebviewController-setNavigationThrottle(throttle: NavigationThrottle): void--><!--Device-WebviewController-setNavigationThrottle(throttle: NavigationThrottle): void-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| throttle | [NavigationThrottle](arkts-arkweb-webview-navigationthrottle-i.md) | Yes | The NavigationThrottle instance used to intercept navigation. Pass **undefined** or **null** to clear the current NavigationThrottle. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 ## setNetworkAvailable
 

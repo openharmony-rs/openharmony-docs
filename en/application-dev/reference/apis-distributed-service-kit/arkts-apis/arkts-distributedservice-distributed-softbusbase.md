@@ -15,6 +15,7 @@ The **softbusBase** module provides APIs for device perception, including starti
 ## Modules to Import
 
 ```TypeScript
+import { softbusBase } from '@ohos.distributed.softbusBase';
 ```
 
 ## Summary

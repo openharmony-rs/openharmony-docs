@@ -12,7 +12,7 @@ import { connection } from '@kit.NetworkKit';
 function disableAirplaneMode(callback: AsyncCallback<void>): void
 ```
 
-关闭飞行模式，使用callback异步回调。
+关闭飞行模式。使用callback异步回调。
 
 **起始版本：** 8
 
@@ -61,7 +61,7 @@ connection.disableAirplaneMode((error: BusinessError) => {
 function disableAirplaneMode(): Promise<void>
 ```
 
-关闭飞行模式，使用Promise异步回调。
+关闭飞行模式。使用Promise异步回调。
 
 **起始版本：** 8
 
@@ -77,7 +77,7 @@ function disableAirplaneMode(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回值的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

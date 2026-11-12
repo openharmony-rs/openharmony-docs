@@ -17,6 +17,7 @@ rawheap堆导出时打点上报
 ## 导入模块
 
 ```TypeScript
+import { jsLeakWatcherNative } from '@ohos.hiviewdfx.jsLeakWatcherNative';
 ```
 
 ## dynamicRawheapPath

@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function setBackgroundAllowed(isAllowed: boolean, callback: AsyncCallback<void>): void
 ```
 
-设置是否允许后台应用访问网络，使用 callback 异步回调。
+设置是否允许后台应用访问网络。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -29,7 +29,7 @@ function setBackgroundAllowed(isAllowed: boolean, callback: AsyncCallback<void>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isAllowed | boolean | 是 | 是否允许应用后台使用数据。true：允许应用后台使用数据；false：不允许应用后台使用数据。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，成功时，err 为 undefined，失败返回错误码错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功时，err为undefined，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
@@ -62,7 +62,7 @@ policy.setBackgroundAllowed(true, (error: BusinessError) => {
 function setBackgroundAllowed(isAllowed: boolean): Promise<void>
 ```
 
-设置是否允许后台应用访问网络，使用 Promise 异步回调。
+设置是否允许后台应用访问网络。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -84,7 +84,7 @@ function setBackgroundAllowed(isAllowed: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

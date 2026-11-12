@@ -25,7 +25,6 @@ Obtains the network handle used by the system by default, including the network 
 > - [NetHandle](arkts-network-connection-nethandle-i.md) is the unique identifier of the network. If no network is available,
 > **0** is returned. It can be used by [getNetCapabilities](arkts-network-connection-getnetcapabilities-f.md) to query more
 > network information.
-> **Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since:** 8
 
@@ -87,7 +86,6 @@ Obtains the network handle used by the system by default, including the network 
 > - [NetHandle](arkts-network-connection-nethandle-i.md) is the unique identifier of the network. If no network is available,
 > **0** is returned. It can be used by [getNetCapabilities](arkts-network-connection-getnetcapabilities-f.md) to query more
 > network information.
-> **Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since:** 8
 

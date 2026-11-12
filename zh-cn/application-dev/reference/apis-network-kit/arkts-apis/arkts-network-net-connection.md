@@ -28,7 +28,7 @@ import { connection } from '@kit.NetworkKit';
 | [addCustomDnsRule](arkts-network-connection-addcustomdnsrule-f.md#addcustomdnsrule-2) | 为当前应用程序添加自定义host和对应的IP地址的映射。使用Promise异步回调。 |
 | [clearCustomDnsRules](arkts-network-connection-clearcustomdnsrules-f.md#clearcustomdnsrules-1) | 删除当前应用程序的所有的自定义DNS规则。使用callback异步回调。 |
 | [clearCustomDnsRules](arkts-network-connection-clearcustomdnsrules-f.md#clearcustomdnsrules-2) | 删除当前应用程序的所有的自定义DNS规则。使用Promise异步回调。 |
-| [createNetConnection](arkts-network-connection-createnetconnection-f.md#createnetconnection-1) | 创建一个NetConnection对象，可用于监听网络状态。[netSpecifier](arkts-network-connection-netspecifier-i.md)表示需要监听网络的网络特征；timeout是超时时间（单位：毫秒)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。 |
+| [createNetConnection](arkts-network-connection-createnetconnection-f.md#createnetconnection-1) | 创建一个NetConnection对象，可用于监听网络状态。[netSpecifier](arkts-network-connection-netspecifier-i.md)表示需要监听网络的网络特征；timeout是超时时间（单位：ms)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。 |
 | [findProxyForUrl](arkts-network-connection-findproxyforurl-f.md#findproxyforurl-1) | 通过设置的PAC脚本，解析指定的URL代理地址，返回对应的PAC代理信息。 |
 | [getAddressesByName](arkts-network-connection-getaddressesbyname-f.md#getaddressesbyname-1) | 使用当前默认网络解析主机名以获取所有IP地址。使用callback异步回调。 |
 | [getAddressesByName](arkts-network-connection-getaddressesbyname-f.md#getaddressesbyname-2) | 使用当前默认网络解析主机名以获取所有IP地址。使用Promise异步回调。 |
@@ -68,7 +68,7 @@ import { connection } from '@kit.NetworkKit';
 | [isDefaultNetMeteredSync](arkts-network-connection-isdefaultnetmeteredsync-f.md#isdefaultnetmeteredsync-1) | 检查当前网络上的数据流量使用是否被计费（例如：WiFi网络不会被计费，蜂窝网络会被计费）。使用同步方式返回。 |
 | [queryProbeResult](arkts-network-connection-queryproberesult-f.md#queryproberesult-1) | 查询网络探测结果。若出现异常（例如断网），导致发送请求失败，则接口会立即返回，不再进行后续探测。本接口使用Promise方式作为异步方法。 |
 | [queryTraceRoute](arkts-network-connection-querytraceroute-f.md#querytraceroute-1) | 查询网络路由跟踪信息，使用Promise方式作为异步方法。 |
-| [refreshGlobalHttpProxy](arkts-network-connection-refreshglobalhttpproxy-f.md#refreshglobalhttpproxy-1) | 通知系统需要重新验证全局代理。收到通知后，系统将重新处理全局代理的认证状态。 |
+| [refreshGlobalHttpProxy](arkts-network-connection-refreshglobalhttpproxy-f.md#refreshglobalhttpproxy-1) | 通知系统重新认证全局代理。 |
 | [removeCustomDnsRule](arkts-network-connection-removecustomdnsrule-f.md#removecustomdnsrule-1) | 删除当前应用程序中对应host的自定义DNS规则。使用callback异步回调。 |
 | [removeCustomDnsRule](arkts-network-connection-removecustomdnsrule-f.md#removecustomdnsrule-2) | 删除当前应用程序中对应host的自定义DNS规则。使用Promise异步回调。 |
 | [reportNetConnected](arkts-network-connection-reportnetconnected-f.md#reportnetconnected-1) | 向网络管理上报网络处于可用状态。使用callback方式异步回调。 |
@@ -92,16 +92,16 @@ import { connection } from '@kit.NetworkKit';
 | [createVlanInterface](arkts-network-connection-createvlaninterface-f-sys.md#createvlaninterface-1) | 在指定的以太网网卡上，创建一个由vlanId指定的虚拟局域网。使用Promise异步回调。 |
 | [deleteVlanIp](arkts-network-connection-deletevlanip-f-sys.md#deletevlanip-1) | 从以太网网卡上对应vlanId的虚拟局域网中，删除已配置的IP地址及子网掩码。使用Promise异步回调。 |
 | [destroyVlanInterface](arkts-network-connection-destroyvlaninterface-f-sys.md#destroyvlaninterface-1) | 删除指定以太网网卡上由vlanId指定的虚拟局域网。使用Promise异步回调。 |
-| [disableAirplaneMode](arkts-network-connection-disableairplanemode-f-sys.md#disableairplanemode-1) | 关闭飞行模式，使用callback异步回调。 |
-| [disableAirplaneMode](arkts-network-connection-disableairplanemode-f-sys.md#disableairplanemode-2) | 关闭飞行模式，使用Promise异步回调。 |
-| [enableAirplaneMode](arkts-network-connection-enableairplanemode-f-sys.md#enableairplanemode-1) | 开启飞行模式，使用callback异步回调。 |
-| [enableAirplaneMode](arkts-network-connection-enableairplanemode-f-sys.md#enableairplanemode-2) | 开启飞行模式，使用Promise异步回调。 |
-| [factoryReset](arkts-network-connection-factoryreset-f-sys.md#factoryreset-1) | 出厂重置网络设置，使用Promise异步回调。 |
-| [getGlobalHttpProxy](arkts-network-connection-getglobalhttpproxy-f-sys.md#getglobalhttpproxy-1) | 获取网络的全局代理配置信息，使用callback异步回调。 |
-| [getGlobalHttpProxy](arkts-network-connection-getglobalhttpproxy-f-sys.md#getglobalhttpproxy-2) | 获取网络的全局代理配置信息，使用Promise异步回调。 |
+| [disableAirplaneMode](arkts-network-connection-disableairplanemode-f-sys.md#disableairplanemode-1) | 关闭飞行模式。使用callback异步回调。 |
+| [disableAirplaneMode](arkts-network-connection-disableairplanemode-f-sys.md#disableairplanemode-2) | 关闭飞行模式。使用Promise异步回调。 |
+| [enableAirplaneMode](arkts-network-connection-enableairplanemode-f-sys.md#enableairplanemode-1) | 开启飞行模式。使用callback异步回调。 |
+| [enableAirplaneMode](arkts-network-connection-enableairplanemode-f-sys.md#enableairplanemode-2) | 开启飞行模式。使用Promise异步回调。 |
+| [factoryReset](arkts-network-connection-factoryreset-f-sys.md#factoryreset-1) | 出厂重置网络设置。使用Promise异步回调。 |
+| [getGlobalHttpProxy](arkts-network-connection-getglobalhttpproxy-f-sys.md#getglobalhttpproxy-1) | 获取网络的全局代理配置信息。使用callback异步回调。 |
+| [getGlobalHttpProxy](arkts-network-connection-getglobalhttpproxy-f-sys.md#getglobalhttpproxy-2) | 获取网络的全局代理配置信息。使用Promise异步回调。 |
 | [getProxyMode](arkts-network-connection-getproxymode-f-sys.md#getproxymode-1) | 获取当前的代理模式。使用Promise异步回调。 |
-| [setGlobalHttpProxy](arkts-network-connection-setglobalhttpproxy-f-sys.md#setglobalhttpproxy-1) | 设置网络全局Http代理配置信息，使用callback异步回调。 |
-| [setGlobalHttpProxy](arkts-network-connection-setglobalhttpproxy-f-sys.md#setglobalhttpproxy-2) | 设置网络全局Http代理配置信息，使用Promise异步回调。 |
+| [setGlobalHttpProxy](arkts-network-connection-setglobalhttpproxy-f-sys.md#setglobalhttpproxy-1) | 设置网络全局Http代理配置信息。使用callback异步回调。 |
+| [setGlobalHttpProxy](arkts-network-connection-setglobalhttpproxy-f-sys.md#setglobalhttpproxy-2) | 设置网络全局Http代理配置信息。使用Promise异步回调。 |
 | [setInterfaceUp](arkts-network-connection-setinterfaceup-f-sys.md#setinterfaceup-1) | 将指定的网卡接口设置为启用状态，使其可以收发网络数据包，参与网络通信；启用后的网卡接口可以被路由子系统选择用于数据传输；系统可以检测到该网络的存在并尝试建立连接，使用Promise异步回调。 |
 | [setProxyMode](arkts-network-connection-setproxymode-f-sys.md#setproxymode-1) | 设置代理模式。使用Promise异步回调。 |
 <!--DelEnd-->
@@ -158,5 +158,5 @@ import { connection } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [ProxyMode](arkts-network-connection-proxymode-e-sys.md) | 表示代理模式的枚举。使用Promise异步回调。 |
+| [ProxyMode](arkts-network-connection-proxymode-e-sys.md) | 表示代理模式的枚举。 |
 <!--DelEnd-->

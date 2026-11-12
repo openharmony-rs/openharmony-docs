@@ -24,7 +24,7 @@ import { webSocket } from '@kit.NetworkKit';
 caPath?: string
 ```
 
-Path of CA certificates. If a path is set, the system uses the CA certificates in this path. If a path is not set, the system uses the preset CA certificate, namely, **\/etc/ssl/certs/cacert.pem**. This path is the sandbox mapping path, which can be obtained by using **UIAbilityContext** APIs. Currently, only text certificates in PEM format are supported.
+Path of the CA certificate. If a path is set, the system uses the CA certificate in this path. If a path is not set, the system uses the system-preset CA certificate, namely, **\/etc/ssl/certs/cacert.pem**. This path is the sandbox mapping path, which can be obtained by using capabilities provided by **UIAbilityContext**. Currently, only text certificates in PEM format are supported.
 
 **Type:** string
 
@@ -74,7 +74,7 @@ Header carrying optional parameters in the request for establishing a WebSocket 
 minSupportTlsProtocol?: TlsProtocol
 ```
 
-Custom minimum TLS version supported. For example, if this parameter is set to **TLS_V_1_1**, the client supports TLS 1.1, TLS 1.2, and TLS 1.3.
+Custom minimum supported TLS protocol version. For example, if this parameter is set to **TLS_V_1_1**, the client can support TLS protocol versions TLS1.1, TLS1.2, and TLS1.3.
 
 **Type:** [TlsProtocol](arkts-network-websocket-tlsprotocol-e.md)
 
@@ -108,7 +108,7 @@ Custom [heartbeat detection interval](../../../network/websocket-connection.md).
 pongTimeout?: number
 ```
 
-Timeout interval for disconnecting a connection after heartbeat detection is initiated. The default value is 30s. If no response is received during the specified interval, the connection is disconnected. The maximum value is 30000s, and the minimum value is 0s. **pongTimeout** must be less than or equal to **pingInterval**.
+Custom timeout interval for disconnecting a connection after heartbeat detection is initiated. The default value is 30s. If no response is received during the specified interval, the connection is disconnected. The maximum value is 30 000s, and the minimum value is 0s. **pongTimeout** must be less than or equal to **pingInterval**.
 
 **Type:** number
 
@@ -172,7 +172,14 @@ Whether to skip server certificate verification. The value **true** means to ski
 supportOriginPort?: boolean
 ```
 
-The option of supporting origin port.
+Origin is an HTTP request header field in the WebSocket handshake request, used to identify the request source, based on which the server can perform source verification. This parameter controls whether the Origin field carries a custom port number. The default value is **false**. When set to **true**:
+
+- After the [connect](arkts-network-websocket-websocket-i.md#connect-3) API is called, if the protocol specified in the first  
+parameter **url** is **ws** and the explicitly specified port number is not 80, the Origin field carries the corresponding port; otherwise, no port number is carried.  
+- After the [connect](arkts-network-websocket-websocket-i.md#connect-3) API is called, if the protocol specified in the first  
+parameter **url** is **wss** and the explicitly specified port number is not 443, the Origin field carries the corresponding port number; otherwise, no port number is carried.
+
+When set to **false**, the Origin field does not carry a port number.
 
 **Type:** boolean
 

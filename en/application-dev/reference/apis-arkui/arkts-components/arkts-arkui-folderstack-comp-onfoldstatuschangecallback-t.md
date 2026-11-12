@@ -4,7 +4,7 @@
 declare type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 ```
 
-Triggered when the fold status changes<!--RP4-->, which takes effect only in landscape mode<!--RP4End-->.
+Triggered when the fold status changes, which takes effect only in landscape mode.
 
 **Since:** 18
 

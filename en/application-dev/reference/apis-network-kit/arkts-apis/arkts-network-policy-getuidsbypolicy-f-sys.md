@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback<Array<number>>): void
 ```
 
-Obtains all UIDs that match the specified network policy. This API uses an asynchronous callback to return the result.
+Obtains all UIDs that match the policy. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -63,7 +63,7 @@ policy.getUidsByPolicy(11111, (error: BusinessError, data: number[]) => {
 function getUidsByPolicy(policy: NetUidPolicy): Promise<Array<number>>
 ```
 
-Obtains all UIDs that match the policy by policy. This API uses a promise to return the result.
+Obtains all UIDs that match the policy. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -79,13 +79,13 @@ Obtains all UIDs that match the policy by policy. This API uses a promise to ret
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| policy | [NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md) | Yes | Network policy for the application. |
+| policy | [NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md) | Yes | Policy of the application on the metered network. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the result. If the operation is successful, the operation result is returned. If the operation fails, an error message is returned. |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the UID array of the application. Returns an error code and error information on failure. |
 
 **Error codes:**
 

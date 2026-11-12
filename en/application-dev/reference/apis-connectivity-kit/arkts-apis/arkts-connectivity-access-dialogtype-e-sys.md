@@ -29,3 +29,21 @@ The type of bluetooth switch dialog.
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
+
+## BLUETOOTH_UNPAIR
+
+```TypeScript
+BLUETOOTH_UNPAIR = 1
+```
+
+Bluetooth Unpair dialog box.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DialogType-BLUETOOTH_UNPAIR = 1--><!--Device-DialogType-BLUETOOTH_UNPAIR = 1-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.

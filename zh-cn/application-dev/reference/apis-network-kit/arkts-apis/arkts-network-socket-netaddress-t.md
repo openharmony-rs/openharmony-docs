@@ -4,7 +4,7 @@
 export type NetAddress = connection.NetAddress
 ```
 
-定义网络地址。
+目标地址信息。
 
 **类型：** [connection.NetAddress](arkts-network-connection-netaddress-i.md)
 

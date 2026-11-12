@@ -115,7 +115,7 @@ setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Prom
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. The WindowStage is running in the background.         3. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause:         1. Invalid parameter range. 2. Invalid parameter length. |
+| [1300016](../errorcode-window.md#1300016-参数错误) | Parameter error. Possible cause:         1. Invalid parameter range. 2. Invalid parameter length. |
 
 <!--Del-->
 **示例**
@@ -223,7 +223,7 @@ setImageForRecent(imgResourceId: number, value: ImageFit): Promise<void>
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause:         1. Invalid parameter range. 2. Invalid parameter length. 3. Incorrect parameter format. |
+| [1300016](../errorcode-window.md#1300016-参数错误) | Parameter error. Possible cause:         1. Invalid parameter range. 2. Invalid parameter length. 3. Incorrect parameter format. |
 
 <!--Del-->
 **示例**

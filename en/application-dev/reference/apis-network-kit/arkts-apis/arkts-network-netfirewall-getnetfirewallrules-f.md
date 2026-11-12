@@ -14,8 +14,6 @@ function getNetFirewallRules(userId: number, requestParam: RequestParam): Promis
 
 Obtains firewall rules by user ID. You need to specify the pagination query parameter when calling this API. Currently, firewall rules can be sorted by name. This API uses a promise to return the result.
 
-**Required permission**: ohos.permission.GET_NET_FIREWALL
-
 **Since:** 15
 
 **Required permissions:** ohos.permission.GET_NET_FIREWALL
@@ -35,7 +33,7 @@ Obtains firewall rules by user ID. You need to specify the pagination query para
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[FirewallRulePage](arkts-network-netfirewall-firewallrulepage-i.md)&gt; | Promise used to return the result, which is list of firewall rules. |
+| Promise&lt;[FirewallRulePage](arkts-network-netfirewall-firewallrulepage-i.md)&gt; | Promise used to return the paginated firewall rule list. |
 
 **Error codes:**
 

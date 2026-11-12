@@ -44,7 +44,7 @@ IP address of the vNIC.
 blockedApplications?: Array<string>
 ```
 
-Used to specify that the bundle name of the string type cannot access the VPN network.
+Bundle names, represented by strings, that cannot access the VPN network. The value is empty by default if this parameter is not set.
 
 **Type:** Array&lt;string&gt;
 
@@ -62,7 +62,7 @@ Used to specify that the bundle name of the string type cannot access the VPN ne
 dnsAddresses?: Array<string>
 ```
 
-IP address of the DNS server.
+DNS server address information. The value is empty by default if this parameter is not set.
 
 **Type:** Array&lt;string&gt;
 
@@ -152,7 +152,7 @@ Whether the built-in VPN is supported. The value **true** indicates that the bui
 mtu?: number
 ```
 
-Maximum transmission unit (MTU), in bytes.
+Maximum transmission unit (MTU) value, in bytes. The system default MTU value is used if this parameter is not set.
 
 **Type:** number
 
@@ -170,7 +170,7 @@ Maximum transmission unit (MTU), in bytes.
 routes?: Array<RouteInfo>
 ```
 
-Route information of the vNIC.
+Route information of the VPN virtual network interface. The value is empty by default if this parameter is not set.
 
 **Type:** Array&lt;[RouteInfo](arkts-network-vpn-routeinfo-t.md)&gt;
 
@@ -188,7 +188,7 @@ Route information of the vNIC.
 searchDomains?: Array<string>
 ```
 
-List of DNS search domains.
+List of DNS search domains. The value is empty by default if this parameter is not set.
 
 **Type:** Array&lt;string&gt;
 
@@ -206,7 +206,7 @@ List of DNS search domains.
 trustedApplications?: Array<string>
 ```
 
-Used to specify that the bundle name of the string type can access the VPN network.
+Bundle names, represented by strings, that can access the VPN network. The value is empty by default if this parameter is not set.
 
 **Type:** Array&lt;string&gt;
 
@@ -224,7 +224,7 @@ Used to specify that the bundle name of the string type can access the VPN netwo
 vpnId?: string
 ```
 
-Unique VPN ID.
+Unique identifier of the VPN. The value is empty by default if this parameter is not set.
 
 **Type:** string
 

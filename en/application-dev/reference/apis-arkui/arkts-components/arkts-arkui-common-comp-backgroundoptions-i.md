@@ -24,13 +24,14 @@ Anonymous Object Rectification.
 
 **Type:** [Alignment](../arkts-apis/arkts-arkui-alignment-e.md)
 
-**Default:** Alignment.Center
+**Default:** 
+- API version 20+: Alignment.Center
 
-**Since:** 20
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BackgroundOptions-align?: Alignment--><!--Device-BackgroundOptions-align?: Alignment-End-->
 

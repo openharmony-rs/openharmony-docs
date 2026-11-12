@@ -445,7 +445,7 @@ getMulticastTTL(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 以Promise形式返回当前TTL数值。 |
+| Promise&lt;number&gt; | Promise对象，返回当前TTL数值。 |
 
 **错误码：**
 

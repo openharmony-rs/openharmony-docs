@@ -1,6 +1,6 @@
 # @ohos.net.netFirewall(网络防火墙)
 
-本模块为应用程序提供网络防火墙能力。应用程序可以对机器进行防火墙拦截记录的查询。
+网络防火墙模块为应用程序提供查询防火墙能力。 通过配置防火墙策略，应用程序可以对机器进行防火墙策略管控，并提供防火墙拦截记录的查询。
 
 **起始版本：** 14
 
@@ -33,7 +33,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getInterceptedRecords](arkts-network-netfirewall-getinterceptedrecords-f-sys.md#getinterceptedrecords-1) | 按userId获取截获的记录，需要指定分页查询参数。 |
+| [getInterceptedRecords](arkts-network-netfirewall-getinterceptedrecords-f-sys.md#getinterceptedrecords-1) | 按userId获取拦截记录，需要指定分页查询参数。使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 接口
@@ -54,8 +54,8 @@ import { netFirewall } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [InterceptedRecord](arkts-network-netfirewall-interceptedrecord-i-sys.md) | 拦截记录。 |
-| [InterceptedRecordPage](arkts-network-netfirewall-interceptedrecordpage-i-sys.md) | 拦截记录分页信息。 |
+| [InterceptedRecord](arkts-network-netfirewall-interceptedrecord-i-sys.md) | 拦截记录信息结构。 |
+| [InterceptedRecordPage](arkts-network-netfirewall-interceptedrecordpage-i-sys.md) | 拦截记录分页信息结构。 |
 <!--DelEnd-->
 
 ### 枚举

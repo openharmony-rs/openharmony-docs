@@ -6,7 +6,7 @@ declare enum AgentControlMode
 
 定义Agent生成事件的输入管控模式。
 
-Agent生成的事件包括系统Agent生成的事件，以及具有ohos.permission.CONTROL_DEVICE权限的应用注入的事件。管控仅适用于此类Agent生成的输入事件。
+Agent生成的事件包括系统Agent生成的事件，以及具有ohos.permission.CONTROL_COMPONENT权限的应用注入的事件。管控仅适用于此类Agent生成的输入事件。
 
 **起始版本：** 26.1.0
 

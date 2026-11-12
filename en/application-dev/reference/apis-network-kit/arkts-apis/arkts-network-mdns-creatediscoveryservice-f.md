@@ -26,14 +26,14 @@ Creates a **DiscoveryService** object, which is used to discover MDNS services o
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Application context. <br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md). <br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md). |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Application context. <br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md). <br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md). |
 | serviceType | string | Yes | MDNS service type. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [DiscoveryService](arkts-network-mdns-discoveryservice-i.md) | **DiscoveryService** object obtained based on the specified **serviceType** and **context**. |
+| [DiscoveryService](arkts-network-mdns-discoveryservice-i.md) | Discovery service object based on the specified service type (**serviceType**) and **Context**. |
 
 **Error codes:**
 

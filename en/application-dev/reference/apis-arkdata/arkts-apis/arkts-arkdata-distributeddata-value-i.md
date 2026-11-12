@@ -19,6 +19,7 @@ Defines the **value** object in a KV store.
 ## Modules to Import
 
 ```TypeScript
+import { distributedData } from '@ohos.data.distributedData';
 ```
 
 ## type

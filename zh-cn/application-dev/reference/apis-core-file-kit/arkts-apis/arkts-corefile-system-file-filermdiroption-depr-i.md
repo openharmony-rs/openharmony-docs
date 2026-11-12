@@ -17,6 +17,7 @@ export interface FileRmdirOption
 ## 导入模块
 
 ```TypeScript
+import { FileRmdirOption } from '@system.file';
 ```
 
 ## complete

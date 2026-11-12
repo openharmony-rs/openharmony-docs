@@ -14,6 +14,8 @@ function addCheckRule(rule: bigint) : void
 
 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈，当有相应规则触发时可在hilog中grep HiChecker查看运行信息。
 
+如果传入的规则级别为线程级别，则仅在当前线程中生效。
+
 **起始版本：** 9
 
 <!--Device-hichecker-function addCheckRule(rule: bigint) : void--><!--Device-hichecker-function addCheckRule(rule: bigint) : void-End-->
@@ -24,7 +26,7 @@ function addCheckRule(rule: bigint) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rule | bigint | 是 | 需要添加的规则。 |
+| rule | bigint | 是 | 需要添加的规则。支持使用或运算组合多个规则。可选值包括：<br>RULE_CAUTION_PRINT_LOG（记录日志）、RULE_CAUTION_TRIGGER_CRASH（应用退出）、RULE_THREAD_CHECK_SLOW_PROCESS（检测耗时函数调用）等，详见常量定义。 |
 
 **错误码：**
 

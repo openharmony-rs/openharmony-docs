@@ -15,6 +15,7 @@ export interface SetStorageOptions
 ## 导入模块
 
 ```TypeScript
+import { SetStorageOptions } from '@system.storage';
 ```
 
 ## complete

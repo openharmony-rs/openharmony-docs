@@ -16,9 +16,9 @@ function addNetFirewallRule(rule: NetFirewallRule): Promise<number>
 
 > **说明：** 
 > 
-> 1. 防火墙规则优先级说明（[setNetFirePolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md)和[addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md)无调用顺序要求）：
+> 1. 防火墙规则优先级说明（[setNetFirewallPolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md)和[addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md)无调用顺序要求）：
 > 
-> - 调用[setNetFirePolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md)设置默认策略为阻止，调用[addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md)新增显式规则，规则优先级由高到低为：
+> - 调用[setNetFirewallPolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md)设置默认策略为阻止，调用[addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md)新增显式规则，规则优先级由高到低为：
 > 
 > - 显式阻止规则
 > 
@@ -26,7 +26,7 @@ function addNetFirewallRule(rule: NetFirewallRule): Promise<number>
 > 
 > - 默认阻止策略
 > 
-> - 调用[setNetFirePolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md)设置默认策略为允许，调用[addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md)新增显式规则，规则优先级由高到低为：
+> - 调用[setNetFirewallPolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md)设置默认策略为允许，调用[addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md)新增显式规则，规则优先级由高到低为：
 > 
 > - 显式允许规则
 > 
@@ -40,11 +40,17 @@ function addNetFirewallRule(rule: NetFirewallRule): Promise<number>
 > 
 > - 若以IP方式访问，遵循以下原则：
 > 
-> - 域名规则放行，若以IP方式访问之前经历过域名解析过程，则IP规则拦截或者默认策略拦截是不生效的，最终以IP方式访问是放行的。
+> - 域名规则放行时，IP规则或默认策略的拦截均不生效，最终以IP方式访问放行。
 > 
-> - 域名规则放行，若以IP方式访问之前未经历过域名解析过程，则IP规则拦截或者默认策略拦截是生效的，最终以IP方式访问是拦截的。
+> - 域名规则拦截时，IP规则或默认策略的放行仍生效，最终以IP方式访问放行。
 > 
-> - 域名规则拦截，则IP规则放行或者默认策略放行是生效的，最终以IP方式访问是放行的。
+> - 系统侧识别域名访问与IP访问的方式：
+> 
+> - 若目标IP与系统网络层域名缓存表中的IP地址匹配，则认为应用侧以域名形式访问；
+> 
+> - 若目标IP未匹配上系统网络层域名缓存表中的任意IP地址，则认为应用侧以IP形式访问；
+> 
+> - 其中，系统网络层会主动查询防火墙配置的DNS信息，并缓存对应的IP地址，使域名放行规则生效。
 > 
 > 2. 规则类型补充说明：
 > 
@@ -82,7 +88,7 @@ function addNetFirewallRule(rule: NetFirewallRule): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 以Promise形式返回防火墙规则ID，防火墙规则ID由系统自动生成。 |
+| Promise&lt;number&gt; | Promise对象，返回防火墙规则ID，防火墙规则ID由系统自动生成。 |
 
 **错误码：**
 

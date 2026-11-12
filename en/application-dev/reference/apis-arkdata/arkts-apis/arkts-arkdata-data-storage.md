@@ -19,6 +19,7 @@ Lightweight storage provides applications with data processing capability and al
 ## Modules to Import
 
 ```TypeScript
+import { storage } from '@ohos.data.storage';
 ```
 
 ## Summary

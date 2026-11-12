@@ -15,6 +15,7 @@ export interface ClearStorageOptions
 ## 导入模块
 
 ```TypeScript
+import { ClearStorageOptions } from '@system.storage';
 ```
 
 ## complete

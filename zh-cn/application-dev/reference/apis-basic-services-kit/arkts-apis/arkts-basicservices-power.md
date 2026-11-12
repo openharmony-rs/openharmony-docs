@@ -36,6 +36,7 @@ import { power } from '@kit.BasicServicesKit';
 | [getPowerConfig](arkts-basicservices-power-getpowerconfig-f-sys.md#getpowerconfig-1) | 按场景名称查询电源配置值。例如，在系统电源管理应用中需要读取特定场景的电源配置参数时使用。 |
 | [hibernate](arkts-basicservices-power-hibernate-f-sys.md#hibernate-1) | 休眠设备。<br><br>与suspend方法的区别：hibernate为更深的休眠状态（休眠前可选择清理内存），suspend为较浅的低功耗睡眠状态（灭屏后进入睡眠）。需最大程度节省电量时选择hibernate，需快速恢复设备活动时选择suspend。适用于设备长时间闲置需要深度节能的场景。 |
 | [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot-1) | 重启设备。 |
+| [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot-2) | 重启设备。 |
 | [refreshActivity](arkts-basicservices-power-refreshactivity-f-sys.md#refreshactivity-1) | 刷新设备活动状态（如：重设屏幕超时灭屏时间等）。<br><br>此接口仅在设备活动状态下生效。 |
 | [registerShutdownCallback](arkts-basicservices-power-registershutdowncallback-f-sys.md#registershutdowncallback-1) | 订阅电源关机或重启的回调提醒。使用callback异步回调。调用此方法订阅回调后，可在不再需要时调用power.unregisterShutdownCallback取消订阅，释放系统资源。 |
 | [setPowerConfig](arkts-basicservices-power-setpowerconfig-f-sys.md#setpowerconfig-1) | 根据场景名称设置电源配置值。例如，在系统电源管理应用中需要动态调整特定场景的电源配置参数时使用。 |
@@ -45,9 +46,12 @@ import { power } from '@kit.BasicServicesKit';
 | [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-3) | 设置当前设备的电源模式及其子模式。使用 Promise 异步回调。如仅需设置电源模式，请使用[setPowerMode(promise)][setPowerMode(promise)](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-2)或 [setPowerMode(callback)](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-1)。 |
 | [setScreenOffTime](arkts-basicservices-power-setscreenofftime-f-sys.md#setscreenofftime-1) | 设置灭屏超时时间。例如，在自助终端或展示设备场景下可设置较长的超时时间以保持屏幕常亮，在低电量场景下可设置较短的超时时间以节省电量。 |
 | [shutdown](arkts-basicservices-power-shutdown-f-sys.md#shutdown-1) | 系统关机。与reboot方法的区别：shutdown使设备完全关机不再运行，reboot使设备关机后自动重启。 |
+| [shutdown](arkts-basicservices-power-shutdown-f-sys.md#shutdown-2) | 系统关机。与reboot方法的区别：shutdown使设备完全关机不再运行，reboot使设备关机后自动重启。 |
 | [suspend](arkts-basicservices-power-suspend-f-sys.md#suspend-1) | 使设备进入睡眠状态。<br><br>调用此方法后设备将进入睡眠，如需恢复到活动状态，需调用power.wakeup唤醒设备。<br><br>与hibernate方法的区别：suspend为较浅的低功耗睡眠状态（灭屏后进入睡眠），hibernate为更深的休眠状态（休眠前可选择清理内存）。需快速恢复设备活动时选择suspend，需最大程度节省电量时选择hibernate。 |
+| [suspend](arkts-basicservices-power-suspend-f-sys.md#suspend-2) | 使设备进入休眠状态。 |
 | [unregisterShutdownCallback](arkts-basicservices-power-unregistershutdowncallback-f-sys.md#unregistershutdowncallback-1) | 取消订阅电源关机或重启的回调提醒。使用callback同步回调。此方法与power.registerShutdownCallback配对使用，必须在先调用registerShutdownCallback订阅回调后，再调用此方法取消订阅。 |
 | [wakeup](arkts-basicservices-power-wakeup-f-sys.md#wakeup-1) | 唤醒设备，将设备从睡眠状态恢复到活动状态。 |
+| [wakeup](arkts-basicservices-power-wakeup-f-sys.md#wakeup-2) | 唤醒设备。 |
 <!--DelEnd-->
 
 ### 枚举
@@ -57,3 +61,11 @@ import { power } from '@kit.BasicServicesKit';
 | [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md) | 表示电源模式的枚举值。 |
 | [DevicePowerSubMode](arkts-basicservices-power-devicepowersubmode-e.md) | 电源模式子模式枚举。 |
 | [PowerKeyFilteringStrategy](arkts-basicservices-power-powerkeyfilteringstrategy-e.md) | 表示电源键过滤策略。 |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [InvokeMode](arkts-basicservices-power-invokemode-e-sys.md) | 枚举函数调用方式。表示API调用是如何执行的，以及它的结果是如何交付的。 |
+<!--DelEnd-->

@@ -4,7 +4,7 @@
 export type X509Cert = cert.X509Cert
 ```
 
-X509 certificate.
+X509 certificate object.
 
 **Type:** [cert.X509Cert](../../apis-device-certificate-kit/arkts-apis/arkts-devicecertificate-cert-x509cert-i.md)
 

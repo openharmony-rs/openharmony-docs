@@ -19,6 +19,7 @@ class RdbPredicates
 ## 导入模块
 
 ```TypeScript
+import { rdb } from '@ohos.data.rdb';
 ```
 
 ## and

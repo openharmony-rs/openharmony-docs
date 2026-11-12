@@ -94,7 +94,7 @@ Updates a reminder policy. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

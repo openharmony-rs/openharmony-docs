@@ -3,6 +3,7 @@
 ## 导入模块
 
 ```TypeScript
+import { formProvider } from '@ohos.application.formProvider';
 ```
 
 ## updateForm

@@ -448,7 +448,7 @@ connect(options: TLSConnectOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以Promise形式返回，成功无返回，失败返回错误码，错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -715,7 +715,7 @@ getCertificate(): Promise<X509CertRawData>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[X509CertRawData](arkts-network-socket-x509certrawdata-t.md)&gt; | 以Promise形式返回本地的数字证书的结果。失败返回错误码，错误信息。 |
+| Promise&lt;[X509CertRawData](arkts-network-socket-x509certrawdata-t.md)&gt; | Promise对象，返回本地的数字证书的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -819,7 +819,7 @@ getCipherSuite(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | 以Promise形式返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -952,7 +952,7 @@ getProtocol(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | 以Promise形式返回通信的协议。失败返回错误码，错误信息。 |
+| Promise&lt;string&gt; | Promise对象，返回通信的协议。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -1037,7 +1037,7 @@ getRemoteAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise对象，返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -1139,7 +1139,7 @@ getRemoteCertificate(): Promise<X509CertRawData>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[X509CertRawData](arkts-network-socket-x509certrawdata-t.md)&gt; | 以Promise形式返回服务端的数字证书的结果。失败返回错误码，错误信息。 |
+| Promise&lt;[X509CertRawData](arkts-network-socket-x509certrawdata-t.md)&gt; | Promise对象，返回服务端的数字证书的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -1243,7 +1243,7 @@ getSignatureAlgorithms(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | 以Promise形式返回获取到的双方支持的签名算法。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回获取到的双方支持的签名算法。 |
 
 **错误码：**
 
@@ -1290,7 +1290,7 @@ getSocketFd(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 以Promise形式返回socket的文件描述符。 |
+| Promise&lt;number&gt; | Promise对象，返回socket的文件描述符。 |
 
 **示例**
 
@@ -1386,7 +1386,7 @@ getState(): Promise<SocketStateBase>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | 以Promise形式返回获取TLSSocket状态的结果。失败返回错误码，错误信息。 |
+| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | Promise对象，返回获取TLSSocket状态的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -1439,7 +1439,7 @@ off(type: 'message', callback?: Callback<SocketMessageInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'message' | 是 | 订阅的事件类型。'message'：接收消息事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SocketMessageInfo](arkts-network-socket-socketmessageinfo-i.md)&gt; | 否 | 回调函数。TLSSocket连接取消订阅某类接受消息事件触发的调用函数，返回TLSSocket连接信息。<br>**适用版本：** 11 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SocketMessageInfo](arkts-network-socket-socketmessageinfo-i.md)&gt; | 否 | 回调函数。TLSSocket连接取消订阅某类接收消息事件触发的调用函数，返回TLSSocket连接信息。<br>**适用版本：** 11 |
 
 **错误码：**
 
@@ -1584,7 +1584,7 @@ on(type: 'message', callback: Callback<SocketMessageInfo>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'message' | 是 | 订阅的事件类型。'message'：接收消息事件。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SocketMessageInfo](arkts-network-socket-socketmessageinfo-i.md)&gt; | 是 | 回调函数。TLSSocket连接订阅某类接受消息事件触发的调用函数，返回TLSSocket连接信息。<br>**适用版本：** 11 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SocketMessageInfo](arkts-network-socket-socketmessageinfo-i.md)&gt; | 是 | 回调函数。TLSSocket连接订阅某类接收消息事件触发的调用函数，返回TLSSocket连接信息。<br>**适用版本：** 11 |
 
 **错误码：**
 
@@ -1752,7 +1752,7 @@ send(data: string | ArrayBuffer, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | string &#124; ArrayBuffer | 是 | 发送的数据内容。<br>**适用版本：** 9 - 11 |
+| data | string &#124; ArrayBuffer | 是 | 发送的数据内容。<br>**适用版本：** 12 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数,返回TLSSocket发送数据的结果。失败返回错误码、错误信息。 |
 
 **错误码：**
@@ -1800,7 +1800,7 @@ send(data: string | ArrayBuffer): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | string &#124; ArrayBuffer | 是 | 发送的数据内容。<br>**适用版本：** 9 - 11 |
+| data | string &#124; ArrayBuffer | 是 | 发送的数据内容。<br>**适用版本：** 12 |
 
 **返回值：**
 

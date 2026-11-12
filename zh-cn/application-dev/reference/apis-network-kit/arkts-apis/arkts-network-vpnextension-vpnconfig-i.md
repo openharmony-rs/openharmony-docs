@@ -58,7 +58,7 @@ blockedApplications?: Array<string>
 dnsAddresses?: Array<string>
 ```
 
-DNS服务器地址信息。当配置DNS服务器地址后，VPN启动状态下被代理的应用上网时，使用配置的DNS服务器做DNS查询。
+DNS服务器地址信息。当配置DNS服务器地址后，VPN启动状态下被代理的应用上网时，使用配置的DNS服务器做DNS查询。最多可配置64个DNS服务器地址。
 
 **类型：** Array&lt;string&gt;
 
@@ -74,7 +74,7 @@ DNS服务器地址信息。当配置DNS服务器地址后，VPN启动状态下�
 isBlocking?: boolean
 ```
 
-是否阻塞模式。true表示阻塞模式，false表示非阻塞模式, 默认值为false。
+是否阻塞模式。true表示阻塞模式，false表示非阻塞模式，默认值为false。
 
 **类型：** boolean
 
@@ -90,7 +90,7 @@ isBlocking?: boolean
 isInternal?: boolean
 ```
 
-是否支持内置VPN。true表示支持，false表示不支持, 默认值为false。
+是否支持内置VPN。true表示支持，false表示不支持，默认值为false。
 
 **类型：** boolean
 
@@ -106,7 +106,7 @@ isInternal?: boolean
 isIPv4Accepted?: boolean
 ```
 
-是否支持IPv4。true表示支持，false表示不支持, 默认值为true。
+是否支持IPv4。true表示支持，false表示不支持，默认值为true。
 
 **注意**：若支持IPv4功能，需要在addresses中配置IPv4类型的IP地址。
 
@@ -124,7 +124,7 @@ isIPv4Accepted?: boolean
 isIPv6Accepted?: boolean
 ```
 
-是否支持IPv6。true表示支持，false表示不支持, 默认值为false。
+是否支持IPv6。true表示支持，false表示不支持，默认值为false。
 
 **注意**：若支持IPv6功能，需要在addresses中配置IPv6类型的IP地址。
 
@@ -142,7 +142,7 @@ isIPv6Accepted?: boolean
 mtu?: number
 ```
 
-最大传输单元MTU值（单位：字节）。取值范围：[576，1500]。
+最大传输单元MTU值（单位：字节）。取值范围：[576, 1500]。
 
 **类型：** number
 

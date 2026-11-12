@@ -55,3 +55,48 @@ try {
 ```
 
 <!--DelEnd-->
+
+
+## suspend
+
+```TypeScript
+function suspend(isImmediate?: boolean, mode?: InvokeMode): void | Promise<void>
+```
+
+Enables a device to enter the sleep state.
+
+**Since:** 26.1.0
+
+**Required permissions:** ohos.permission.POWER_MANAGER
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-power-function suspend(isImmediate?: boolean, mode?: InvokeMode): void | Promise<void>--><!--Device-power-function suspend(isImmediate?: boolean, mode?: InvokeMode): void | Promise<void>-End-->
+
+**System capability:** SystemCapability.PowerManager.PowerManager.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| isImmediate | boolean | No | Whether the device enters the sleep state immediately. The value **true** indicates that the device enters the sleep state immediately after the screen is turned off; **false** indicates that the system controls when the device enters the sleep state. If this parameter is not set, the default value **false** is used. If you only want to turn off the screen, you are advised not to set this parameter. <br>Default value: false. |
+| mode | [InvokeMode](arkts-basicservices-power-invokemode-e-sys.md) | No | Invoking mode. You are advised to set this parameter to [InvokeMode.ASYNC](arkts-basicservices-power-invokemode-e-sys.md#async). If this parameter is not set, the default value [InvokeMode.SYNC](arkts-basicservices-power-invokemode-e-sys.md#sync) is used. <br>Default value: InvokeMode.SYNC. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [4900101](../errorcode-power.md#4900101-service-connection-failure) | Failed to connect to the service. |
+| [4900701](../errorcode-power.md#4900701-failed-to-suspend-the-device) | Failed to suspend the device. Possible causes:         1. Not allowed to turn off the screen during the exam. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. This API cannot work in car devices. |
+
+<!--Del-->
+**Examples**
+
+See [suspend](#suspend)
+
+<!--DelEnd-->

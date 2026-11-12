@@ -97,7 +97,7 @@ Obtains the total downlink traffic (in bytes) of the specified application from 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the total downlink traffic (in bytes) of the specified application from the last startup to the current moment. |
+| Promise&lt;number&gt; | Promise used to return the total downlink traffic of the specified application from the last boot to the present (in bytes). |
 
 **Error codes:**
 

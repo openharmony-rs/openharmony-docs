@@ -26,7 +26,7 @@ import { vpn } from '@kit.NetworkKit';
 destroy(callback: AsyncCallback<void>): void
 ```
 
-销毁启动的 VPN 网络，使用 callback 方式作为异步方法。
+销毁启动的VPN网络。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -42,7 +42,7 @@ destroy(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，成功时，error 为 undefined，失败返回错误码错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功时，error 为 undefined，失败返回错误码错误信息。 |
 
 **错误码：**
 
@@ -88,7 +88,7 @@ struct Index {
 destroy(): Promise<void>
 ```
 
-销毁启动的 VPN 网络，使用 Promise 方式作为异步方法。
+销毁启动的VPN网络。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -104,7 +104,7 @@ destroy(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以 Promise 形式返回设定结果，失败返回错误码错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。失败返回错误码错误信息。 |
 
 **错误码：**
 
@@ -152,7 +152,7 @@ struct Index {
 protect(socketFd: number, callback: AsyncCallback<void>): void
 ```
 
-保护套接字不受 VPN 连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过 VPN 转发，使用 callback 方式作为异步方法。
+保护指定套接字，使该套接字的数据流量绕过VPN网络，直接经物理网络收发数据。使用callback方式作为异步方法。
 
 **起始版本：** 10
 
@@ -168,8 +168,8 @@ protect(socketFd: number, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| socketFd | number | 是 | 指定保护的 socketfd, 该文件描述符通过[getSocketFd](arkts-network-socket-tcpsocket-i.md#getsocketfd)获取。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，成功时，error 为 undefined，失败返回错误码错误信息。 |
+| socketFd | number | 是 | 指定保护的 socketfd，该文件描述符通过[getSocketFd](arkts-network-socket-tcpsocket-i.md#getsocketfd)获取。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功时，error 为 undefined，失败返回错误码错误信息。 |
 
 **错误码：**
 
@@ -235,7 +235,7 @@ struct Index {
 protect(socketFd: number): Promise<void>
 ```
 
-保护套接字不受 VPN 连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过 VPN 转发, 使用 Promise 方式作为异步方法。
+保护指定套接字，使该套接字的数据流量绕过VPN网络，直接经物理网络收发数据。使用Promise方式作为异步方法。
 
 **起始版本：** 10
 
@@ -251,13 +251,13 @@ protect(socketFd: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| socketFd | number | 是 | 指定保护的 socketfd, 该文件描述符通过[getSocketFd](arkts-network-socket-tcpsocket-i.md#getsocketfd)获取。 |
+| socketFd | number | 是 | 指定保护的 socketfd，该文件描述符通过[getSocketFd](arkts-network-socket-tcpsocket-i.md#getsocketfd)获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以 Promise 形式返回设定结果，失败返回错误码错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。失败返回错误码错误信息。 |
 
 **错误码：**
 
@@ -325,7 +325,7 @@ struct Index {
 setUp(config: VpnConfig, callback: AsyncCallback<number>): void
 ```
 
-使用 config 创建一个 vpn 网络，使用 callback 方式作为异步方法。
+使用config创建一个VPN网络。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -342,7 +342,7 @@ setUp(config: VpnConfig, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | config | [VpnConfig](arkts-network-vpnextension-vpnconfig-i.md) | 是 | 指定 VPN 网络的配置信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数，当成功启动 VPN 网络时，返回虚拟网卡的文件描述符 fd, error 为 undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当成功启动VPN网络时，返回虚拟网卡的文件描述符fd，error为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -406,7 +406,7 @@ struct Index {
 setUp(config: VpnConfig): Promise<number>
 ```
 
-使用 config 创建一个 vpn 网络，使用 Promise 方式作为异步方法。
+使用config创建一个VPN网络。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -428,7 +428,7 @@ setUp(config: VpnConfig): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 以 Promise 形式返回获取结果，返回指定虚拟网卡的文件描述符 fd。 |
+| Promise&lt;number&gt; | Promise对象，返回指定虚拟网卡的文件描述符 fd。 |
 
 **错误码：**
 

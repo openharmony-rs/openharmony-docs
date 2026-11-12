@@ -12,7 +12,7 @@ import { connection } from '@kit.NetworkKit';
 function enableAirplaneMode(callback: AsyncCallback<void>): void
 ```
 
-Enables the airplane mode. This API uses an asynchronous callback to return the result.
+Enables airplane mode. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 

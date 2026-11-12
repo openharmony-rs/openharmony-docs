@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function setDeviceIdleTrustlist(uids: Array<number>, isAllowed: boolean, callback: AsyncCallback<void>): void
 ```
 
-设置多个 uid 是否在休眠防火墙的白名单，使用 callback 异步回调。
+设置多个 uid 是否在休眠防火墙的白名单。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -30,7 +30,7 @@ function setDeviceIdleTrustlist(uids: Array<number>, isAllowed: boolean, callbac
 | --- | --- | --- | --- |
 | uids | Array&lt;number&gt; | 是 | app 唯一标识符。 |
 | isAllowed | boolean | 是 | 是否加入白名单。true：加入白名单；false：没有加入白名单。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回空，失败返回错误码错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回空，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
@@ -63,7 +63,7 @@ policy.setDeviceIdleTrustlist([11111, 22222], true, (error: BusinessError) => {
 function setDeviceIdleTrustlist(uids: Array<number>, isAllowed: boolean): Promise<void>
 ```
 
-设置多个 uid 是否在休眠防火墙的白名单，使用 Promise 异步回调。
+设置多个 uid 是否在休眠防火墙的白名单。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -86,7 +86,7 @@ function setDeviceIdleTrustlist(uids: Array<number>, isAllowed: boolean): Promis
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

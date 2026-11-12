@@ -58,7 +58,7 @@ List of blocked applications, which are represented by bundle names of the strin
 dnsAddresses?: Array<string>
 ```
 
-IP address of the DNS server. After the IP address is configured, when the VPN is active and proxy-enabled applications access the Internet, the configured DNS server will be used for DNS queries.
+DNS server address information. After the DNS server address is configured, the proxied applications use the configured DNS server for DNS queries when accessing the network while the VPN is started. A maximum of 64 DNS server addresses can be configured.
 
 **Type:** Array&lt;string&gt;
 
@@ -74,7 +74,7 @@ IP address of the DNS server. After the IP address is configured, when the VPN i
 isBlocking?: boolean
 ```
 
-Whether the blocking mode is used. The value **true** indicates that the blocking mode is used, and the value **false** indicates the opposite. The default value is **false**.
+Whether the blocking mode is used. The value **true** indicates the blocking mode, and **false** indicates the non-blocking mode. The default value is **false**.
 
 **Type:** boolean
 
@@ -90,7 +90,7 @@ Whether the blocking mode is used. The value **true** indicates that the blockin
 isInternal?: boolean
 ```
 
-Whether the built-in VPN is supported. The value **true** indicates that the built-in VPN is supported, and the value **false** indicates the opposite. The default value is **false**.
+Whether the built-in VPN is supported. The value **true** indicates support, and **false** indicates not supported. The default value is **false**.
 
 **Type:** boolean
 
@@ -106,9 +106,9 @@ Whether the built-in VPN is supported. The value **true** indicates that the bui
 isIPv4Accepted?: boolean
 ```
 
-Whether IPv4 is supported. The value **true** indicates that the IPv4 is supported, and the value **false** indicates the opposite. The default value is **true**.
+Whether IPv4 is supported. The value **true** indicates support, and **false** indicates not supported. The default value is **true**.
 
-Note: If the IPv4 is supported, you need to configure IPv4 addresses in **addresses**.
+**Note:**  If IPv4 is supported, an IPv4 IP address must be configured in **addresses**.
 
 **Type:** boolean
 
@@ -124,9 +124,9 @@ Note: If the IPv4 is supported, you need to configure IPv4 addresses in **addres
 isIPv6Accepted?: boolean
 ```
 
-Whether IPv6 is supported. The value **true** indicates that the IPV6 is supported, and the value **false** indicates the opposite. The default value is **false**.
+Whether IPv6 is supported. The value **true** indicates support, and **false** indicates not supported. The default value is **false**.
 
-Note: If the IPv6 is supported, you need to configure IPv6 addresses in **addresses**.
+**Note:**  If IPv6 is supported, an IPv6 IP address must be configured in **addresses**.
 
 **Type:** boolean
 
@@ -142,7 +142,7 @@ Note: If the IPv6 is supported, you need to configure IPv6 addresses in **addres
 mtu?: number
 ```
 
-Maximum transmission unit (MTU), in bytes. The value range is [576,1500].
+Maximum transmission unit (MTU) value, in bytes. Value range: [576, 1500].
 
 **Type:** number
 

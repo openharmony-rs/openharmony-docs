@@ -14,6 +14,14 @@ export function certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
 Verifies the certificate passed by the application using the preset CA certificate and the CA certificate installed by the user in the certificate management. This API returns the result synchronously.
 
+> **NOTE:** 
+> 
+> The preceding error codes indicate errors that may occur during certificate verification.
+> 
+> **NOTE:** 
+> 
+> Be sure to replace the certificate data in the example with the actual certificate data.
+
 **Since:** 11
 
 <!--Device-networkSecurity-export function certVerificationSync(cert: CertBlob, caCert?: CertBlob): int--><!--Device-networkSecurity-export function certVerificationSync(cert: CertBlob, caCert?: CertBlob): int-End-->
@@ -25,13 +33,13 @@ Verifies the certificate passed by the application using the preset CA certifica
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | cert | [CertBlob](arkts-network-networksecurity-certblob-i.md) | Yes | Certificate to be verified. |
-| caCert | [CertBlob](arkts-network-networksecurity-certblob-i.md) | No | Custom CA certificate. |
+| caCert | [CertBlob](arkts-network-networksecurity-certblob-i.md) | No | Custom CA certificate passed in. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| number | Certificate verification result. The value **0** indicates that the certificate verification is successful, and a non-0 value indicates that the verification has failed. |
+| number | Indicates the result of certificate verification. If the certificate verification succeeds, **0** is returned; otherwise, the verification fails. |
 
 **Error codes:**
 

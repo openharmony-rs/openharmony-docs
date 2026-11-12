@@ -45,7 +45,7 @@ close(connection: WebSocketConnection, options?: webSocket.WebSocketCloseOptions
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | promise对象。返回true表示关闭请求创建成功；返回false表示关闭请求创建失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示关闭请求创建成功；返回false表示关闭请求创建失败。 |
 
 **错误码：**
 
@@ -114,7 +114,7 @@ listAllConnections(): WebSocketConnection[]
 
 | 类型 | 说明 |
 | --- | --- |
-| [WebSocketConnection](arkts-network-websocket-websocketconnection-i.md)[] | an array consists connections from all clients. |
+| [WebSocketConnection](arkts-network-websocket-websocketconnection-i.md)[] | 以字符串数组形式返回所有客户端的信息。 |
 
 **错误码：**
 
@@ -168,7 +168,7 @@ localServer.on('connect', async (connection: webSocket.WebSocketConnection) => {
 off(type: 'connect', callback?: Callback<WebSocketConnection>): void
 ```
 
-取消订阅WebSocketServer的连接事件（客户端与服务端建链成功），使用callback异步回调。
+取消订阅WebSocketServer的连接事件（客户端与服务端建链成功）。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -203,7 +203,7 @@ localServer.off('connect');
 off(type: 'messageReceive', callback?: Callback<WebSocketMessage>): void
 ```
 
-取消订阅WebSocketServer的接收到客户端消息事件，使用callback异步回调。
+取消订阅WebSocketServer的接收到客户端消息事件。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -238,7 +238,7 @@ localServer.off('messageReceive');
 off(type: 'close', callback?: ClientConnectionCloseCallback): void
 ```
 
-取消订阅WebSocketServer的关闭事件，使用callback异步回调。
+取消订阅WebSocketServer的关闭事件。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -273,7 +273,7 @@ localServer.off('close');
 off(type: 'error', callback?: ErrorCallback): void
 ```
 
-取消订阅WebSocketServer的Error事件，使用callback异步回调。
+取消订阅WebSocketServer的Error事件。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -308,7 +308,7 @@ localServer.off('error');
 on(type: 'connect', callback: Callback<WebSocketConnection>): void
 ```
 
-订阅WebSocketServer的连接事件（客户端与服务端建链成功），使用callback异步回调。
+订阅WebSocketServer的连接事件（客户端与服务端建链成功）。使用callback异步回调。
 
 **起始版本：** 19
 
@@ -341,7 +341,7 @@ localServer.on('connect', (connection: webSocket.WebSocketConnection) => {
 on(type: 'messageReceive', callback: Callback<WebSocketMessage>): void
 ```
 
-订阅WebSocketServer的接收客户端消息的事件，使用callback异步回调。
+订阅WebSocketServer的接收客户端消息的事件。使用callback异步回调。
 
 **起始版本：** 19
 
@@ -374,7 +374,7 @@ localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
 on(type: 'close', callback: ClientConnectionCloseCallback): void
 ```
 
-订阅WebSocketServer的关闭事件，使用callback异步回调。
+订阅WebSocketServer的关闭事件。使用callback异步回调。
 
 **起始版本：** 19
 
@@ -407,7 +407,7 @@ localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeR
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-订阅WebSocketServer的Error事件，使用callback异步回调。
+订阅WebSocketServer的Error事件。使用callback异步回调。
 
 **起始版本：** 19
 
@@ -465,7 +465,7 @@ send(data: string | ArrayBuffer, connection: WebSocketConnection): Promise<boole
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | promise对象。返回true表示发送请求创建成功；返回false表示发送请求创建失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示发送请求创建成功；返回false表示发送请求创建失败。 |
 
 **错误码：**
 
@@ -543,7 +543,7 @@ start(config: WebSocketServerConfig): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | promise对象。返回true表示服务器启动成功；返回false表示服务启动失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示服务器启动成功；返回false表示服务启动失败。 |
 
 **错误码：**
 
@@ -601,7 +601,7 @@ stop(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | promise对象。返回true表示停止服务端service请求创建成功；返回false表示停止服务端service请求创建失败。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示停止服务端service请求创建成功；返回false表示停止服务端service请求创建失败。 |
 
 **错误码：**
 

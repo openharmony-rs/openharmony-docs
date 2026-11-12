@@ -45,6 +45,7 @@ import { camera } from '@kit.CameraKit';
 | [AutoDeviceSwitchStatus](arkts-camera-camera-autodeviceswitchstatus-i.md) | 自动切换镜头状态信息。 |
 | [AutoExposure](arkts-camera-camera-autoexposure-i.md) | 自动曝光类，对设备自动曝光（AE）操作。 |
 | [AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md) | 针对设备的自动曝光特性提供了一系列查询功能。  >  > - 本模块接口在API版本12发生兼容变更，保留了内层元素的起始版本信息，会出现外层元素@since版本号大于内层元素的情况，不影响接口使用。 |
+| [C2PASignatureConfig](arkts-camera-camera-c2pasignatureconfig-i.md) | 描述C2PA签名配置，包含用于生成C2PA签名的作者名称和作者ID。 |
 | [CameraConcurrentInfo](arkts-camera-camera-cameraconcurrentinfo-i.md) | 相机的输出并发能力信息。 |
 | [CameraDevice](arkts-camera-camera-cameradevice-i.md) | 相机设备信息。 |
 | [CameraInput](arkts-camera-camera-camerainput-i.md) | 相机设备输入对象。 |

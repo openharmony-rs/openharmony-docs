@@ -14,8 +14,6 @@ function getNetExtAttribute(netHandle: NetHandle): Promise<string>
 
 Obtains the extended attributes of the network specified by **netHandle** to determine its security level. This API uses a promise to return the result.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
-
 **Since:** 20
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO

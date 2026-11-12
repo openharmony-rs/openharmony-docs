@@ -29,13 +29,13 @@ Obtain the execution authentication ticket for CLI tools. This function retrieve
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | cliCmdInfos | [CliCmdInfo](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i.md)[] | Yes | CLI command list. |
-| ticketParams | [TicketParams](arkts-ability-abilitytoolaccessctrl-ticketparams-i.md) | Yes | Used to generate ticket parameters. |
+| ticketParams | [TicketParams](arkts-ability-abilitytoolaccessctrl-ticketparams-i.md) | Yes | Parameters used to generate credentials. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[TicketQueryResult](arkts-ability-abilitytoolaccessctrl-ticketqueryresult-i.md)&gt; | Promise used to return ${TicketQueryResult}。 |
+| Promise&lt;[TicketQueryResult](arkts-ability-abilitytoolaccessctrl-ticketqueryresult-i.md)&gt; | Promise object, return ${TicketQueryResult} |
 
 **Error codes:**
 

@@ -266,7 +266,7 @@ To use the multi-VPN capability of the system, you need to call this API to gene
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Promise used to return the result. |
+| Promise&lt;string&gt; | Promise used to return the **vpnId**. |
 
 **Error codes:**
 

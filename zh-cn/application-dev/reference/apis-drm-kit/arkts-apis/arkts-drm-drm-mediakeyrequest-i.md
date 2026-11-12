@@ -42,7 +42,7 @@ data: Uint8Array
 defaultURL: string
 ```
 
-媒体密钥服务URL。
+媒体密钥服务URL。需符合URL格式规范，建议使用HTTPS协议。
 
 **类型：** string
 

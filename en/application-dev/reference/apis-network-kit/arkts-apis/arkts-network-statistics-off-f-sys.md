@@ -28,8 +28,8 @@ Unsubscribes from traffic change events. This API uses an asynchronous callback 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'netStatsChange' | Yes | Event type. This field has a fixed value of **netStatsChange**. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetStatsChangeInfo](arkts-network-statistics-netstatschangeinfo-i-sys.md)&gt; | No | Callback invoked when the traffic changes.<br>**Since:** 11 |
+| type | 'netStatsChange' | Yes | Unsubscribe event, fixed to **'netStatsChange'**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetStatsChangeInfo](arkts-network-statistics-netstatschangeinfo-i-sys.md)&gt; | No | Callback for the netStatsChange event, which is registered through **on('netStatsChange')**.<br>**Since:** 11 |
 
 **Error codes:**
 

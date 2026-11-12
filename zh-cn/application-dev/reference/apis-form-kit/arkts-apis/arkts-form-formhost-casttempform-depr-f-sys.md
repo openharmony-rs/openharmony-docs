@@ -3,6 +3,7 @@
 ## 导入模块
 
 ```TypeScript
+import { formHost } from '@ohos.application.formHost';
 ```
 
 ## castTempForm

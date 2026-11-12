@@ -3,6 +3,7 @@
 ## 导入模块
 
 ```TypeScript
+import { jsLeakWatcherNative } from '@ohos.hiviewdfx.jsLeakWatcherNative';
 ```
 
 ## unregisterWindowLifeCycleCallback

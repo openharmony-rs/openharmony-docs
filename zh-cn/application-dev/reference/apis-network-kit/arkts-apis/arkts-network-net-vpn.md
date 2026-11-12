@@ -1,5 +1,7 @@
 # @ohos.net.vpn(VPN管理)
 
+VPN管理模块，支持VPN的启动和停止功能。
+
 本模块是操作系统提供的内置VPN功能，允许用户通过系统的网络设置进行VPN连接，通常提供的功能较少，而且有比较严格的限制。
 
 > **说明：** 
@@ -33,9 +35,9 @@ import { vpn } from '@kit.NetworkKit';
 | [getSysVpnConfig](arkts-network-vpn-getsysvpnconfig-f-sys.md#getsysvpnconfig-1) | 获取指定vpnId的系统VPN网络配置。 |
 | [getSysVpnConfigList](arkts-network-vpn-getsysvpnconfiglist-f-sys.md#getsysvpnconfiglist-1) | 获取所有系统VPN网络配置。 |
 | [off('connect')](arkts-network-vpn-off-f-sys.md#offconnect) | 取消订阅VPN连接状态变化事件。 |
-| [off('connectMulti')](arkts-network-vpn-off-f-sys.md#offconnectmulti) | 取消订阅vpn连接状态变化。 |
+| [off('connectMulti')](arkts-network-vpn-off-f-sys.md#offconnectmulti) | 取消订阅VPN连接状态变化事件。 |
 | [on('connect')](arkts-network-vpn-on-f-sys.md#onconnect) | 订阅VPN连接状态变化事件。 |
-| [on('connectMulti')](arkts-network-vpn-on-f-sys.md#onconnectmulti) | 订阅vpn连接状态变化。 |
+| [on('connectMulti')](arkts-network-vpn-on-f-sys.md#onconnectmulti) | 订阅VPN连接状态变化事件。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -56,8 +58,8 @@ import { vpn } from '@kit.NetworkKit';
 | 名称 | 说明 |
 | --- | --- |
 | [AbilityContext](arkts-network-vpn-abilitycontext-t.md) |  |
-| [LinkAddress](arkts-network-vpn-linkaddress-t.md) | 获取网络链接信息。 |
-| [RouteInfo](arkts-network-vpn-routeinfo-t.md) | 获取网络路由信息。 |
+| [LinkAddress](arkts-network-vpn-linkaddress-t.md) | 表示网络链路信息。 |
+| [RouteInfo](arkts-network-vpn-routeinfo-t.md) | 表示网络路由信息。 |
 
 <!--Del-->
 ### 枚举（系统接口）

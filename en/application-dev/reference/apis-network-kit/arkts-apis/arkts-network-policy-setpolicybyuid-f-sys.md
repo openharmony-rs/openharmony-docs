@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function setPolicyByUid(uid: number, policy: NetUidPolicy, callback: AsyncCallback<void>): void
 ```
 
-Sets the metered network access policy for the application specified by a given UID. This API uses an asynchronous callback to return the result.
+Sets the policy for whether the application with the corresponding UID can access the metered network. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -28,7 +28,7 @@ Sets the metered network access policy for the application specified by a given 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | Unique app ID, which is a positive integer within the int32_t range. |
+| uid | number | Yes | Unique identifier of the app. The value range is a positive integer within the int32_t range. |
 | policy | [NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md) | Yes | Network access policy for the application. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
 
@@ -79,14 +79,14 @@ Sets whether the application with the corresponding UID can access the metering 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | Unique app ID, which is a positive integer within the int32_t range. |
+| uid | number | Yes | Unique identifier of the app. The value range is a positive integer within the int32_t range. |
 | policy | [NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md) | Yes | Network access policy for the application. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

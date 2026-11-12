@@ -471,7 +471,7 @@ setUIContext(path: string, storage?: LocalStorage): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible causes: Invalid path. |
+| [1300016](../errorcode-window.md#1300016-参数错误) | Parameter error. Possible causes: Invalid path. |
 
 **示例**
 
@@ -526,7 +526,7 @@ setUIContextByName(name: string, storage?: LocalStorage): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible causes: Invalid name. |
+| [1300016](../errorcode-window.md#1300016-参数错误) | Parameter error. Possible causes: Invalid name. |
 
 **示例**
 
@@ -610,7 +610,7 @@ setWindowSize(size: window.Size): Promise<void>
 | --- | --- |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: The value of the size is less than or equal to 0. |
+| [1300016](../errorcode-window.md#1300016-参数错误) | Parameter error. Possible cause: The value of the size is less than or equal to 0. |
 
 **示例**
 
@@ -772,7 +772,7 @@ switchTemplate(templateProperty: TemplateProperty): Promise<void>
 | --- | --- |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause:         1. Invalid template type.         2. The value of the size is less than or equal to 0. |
+| [1300016](../errorcode-window.md#1300016-参数错误) | Parameter error. Possible cause:         1. Invalid template type.         2. The value of the size is less than or equal to 0. |
 
 **示例**
 

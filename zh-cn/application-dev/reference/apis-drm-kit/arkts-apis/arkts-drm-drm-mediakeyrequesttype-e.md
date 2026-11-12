@@ -18,7 +18,7 @@ enum MediaKeyRequestType
 MEDIA_KEY_REQUEST_TYPE_INITIAL = 1
 ```
 
-初始化请求。
+初始化请求，在首次获取媒体密钥时触发。
 
 **起始版本：** 11
 
@@ -50,7 +50,7 @@ MEDIA_KEY_REQUEST_TYPE_NONE = 4
 MEDIA_KEY_REQUEST_TYPE_RELEASE = 3
 ```
 
-释放请求。
+释放请求，在主动释放离线密钥或关闭会话时触发，用于通知服务端释放资源。
 
 **起始版本：** 11
 
@@ -66,7 +66,7 @@ MEDIA_KEY_REQUEST_TYPE_RELEASE = 3
 MEDIA_KEY_REQUEST_TYPE_RENEWAL = 2
 ```
 
-续订请求。
+续订请求，在许可证即将过期或需要延长有效期时触发。
 
 **起始版本：** 11
 

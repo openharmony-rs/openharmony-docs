@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function getStatsTotalBytes(callback: AsyncCallback<number>): void
 ```
 
-Obtains the total volume of mobile data traffic sent via network sharing. This API uses an asynchronous callback to return the result.
+Obtains the total data size of the shared network. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -78,7 +78,7 @@ Obtains the total volume of mobile data traffic sent via network sharing. This A
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the data volume, in KB. |
+| Promise&lt;number&gt; | Promise used to return the total data size of the shared network, in KB. |
 
 **Error codes:**
 

@@ -26,7 +26,7 @@ Enumerates the types of HTTP interceptors.
 CACHE_CHECKED = 'READ_CACHE'
 ```
 
-Intercept after we checked the HTTP cache.
+Intercepts when the HTTP cache is checked and hit.
 
 **Since:** 22
 
@@ -42,7 +42,7 @@ Intercept after we checked the HTTP cache.
 FINAL_RESPONSE = 'FINAL_RESPONSE'
 ```
 
-Intercept when we get the final HTTP response.
+Intercepts when the final HTTP response is obtained.
 
 **Since:** 22
 
@@ -58,7 +58,7 @@ Intercept when we get the final HTTP response.
 INITIAL_REQUEST = 'INITIAL_REQUEST'
 ```
 
-Intercept after the initial HTTP request is assembled.
+Intercepts after the initial HTTP request is assembled.
 
 **Since:** 22
 
@@ -74,7 +74,7 @@ Intercept after the initial HTTP request is assembled.
 NETWORK_CONNECT = 'CONNECT_NETWORK'
 ```
 
-Intercept when we perform network connection, such as TLS and TCP.
+Intercepts before the network request is sent.
 
 **Since:** 22
 
@@ -90,7 +90,7 @@ Intercept when we perform network connection, such as TLS and TCP.
 REDIRECTION = 'REDIRECTION'
 ```
 
-Intercept when we get a redirection responsed and is going to send another request.
+Intercepts when a redirection response is received.
 
 **Since:** 22
 

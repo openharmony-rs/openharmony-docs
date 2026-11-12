@@ -21,7 +21,6 @@ Queries the UID of the application that initiates a specified network connection
 > - Set the port numbers of the **local** and **remote** parameters when calling the API. If the port number is not set or is set to 0, the API filters out a set of UIDs that meet the conditions based on other parameters and returns a matched UID.
 > 
 > - When protocol is set to PROTO_TYPE_UDP, if no UID is found based on the local and remote parameters, the UID is filtered based on the local parameter and the matched UID is returned.
-> **Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since:** 23
 

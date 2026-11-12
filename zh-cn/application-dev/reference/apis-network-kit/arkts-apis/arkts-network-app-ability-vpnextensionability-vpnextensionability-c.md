@@ -4,9 +4,7 @@
 export default class VpnExtensionAbility
 ```
 
-VpnExtensionContext是VpnExtensionAbility的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
-
-VpnExtensionContext可直接作为VpnExtension的上下文环境，提供允许访问特定于VpnExtensionAbility的资源的能力。
+VpnExtensionAbility模块提供三方VPN相关能力，提供三方VPN创建、销毁等生命周期回调。
 
 **起始版本：** 11
 
@@ -30,11 +28,11 @@ import { VpnExtensionAbility, VpnExtensionContext } from '@kit.NetworkKit';
 onCreate(want: Want): void
 ```
 
-拓展VPN启动初始化的时候进行回调。
+在启动三方VPN进行初始化时回调。
 
 > **说明：** 
 > 
-> 建议配对调用[onDestroy](#ondestroy)监听拓展VPN的销毁，及时执行资源清理等操作。
+> 建议配对调用[onDestroy](#ondestroy)监听三方VPN的销毁，执行资源清理等操作。
 
 **起始版本：** 11
 
@@ -69,7 +67,7 @@ class MyVpnExtAbility extends VpnExtensionAbility {
 onDestroy(): void
 ```
 
-拓展VPN销毁之前进行回调。
+VpnExtensionAbility生命周期回调，在销毁时回调，执行资源清理等操作。
 
 **起始版本：** 11
 
@@ -97,7 +95,7 @@ class MyVpnExtAbility extends VpnExtensionAbility {
 context: VpnExtensionContext
 ```
 
-指定context。
+VpnExtension的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
 
 **类型：** [VpnExtensionContext](arkts-network-vpnextensioncontext-c.md)
 

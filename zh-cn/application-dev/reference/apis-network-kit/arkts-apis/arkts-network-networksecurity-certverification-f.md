@@ -14,6 +14,14 @@ export function certVerification(cert: CertBlob, caCert?: CertBlob): Promise<num
 
 系统将使用证书管理中的预置CA证书和用户安装的CA证书来校验应用传入的证书。使用Promise异步回调。
 
+> **说明：** 
+> 
+> 这些错误代码对应于证书验证过程中的各种失败。
+> 
+> **注意：**
+> 
+> 请务必将示例中的证书数据替换为实际的证书内容。
+
 **起始版本：** 11
 
 <!--Device-networkSecurity-export function certVerification(cert: CertBlob, caCert?: CertBlob): Promise<int>--><!--Device-networkSecurity-export function certVerification(cert: CertBlob, caCert?: CertBlob): Promise<int>-End-->
@@ -31,7 +39,7 @@ export function certVerification(cert: CertBlob, caCert?: CertBlob): Promise<num
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | 以promise形式返回一个数字，表示证书验证的结果。如果证书验证成功，则返回0； 否则验证失败。 |
+| Promise&lt;number&gt; | Promise对象，返回一个数字，表示证书验证的结果。如果证书验证成功，则返回0； 否则验证失败。 |
 
 **错误码：**
 

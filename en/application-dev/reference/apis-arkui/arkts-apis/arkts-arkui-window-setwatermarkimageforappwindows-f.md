@@ -38,7 +38,7 @@ Sets a watermark image for windows in the current application process. This API 
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function setWatermarkImageForAppWindows can not work correctly due to limited device capabilities. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Examples**
 

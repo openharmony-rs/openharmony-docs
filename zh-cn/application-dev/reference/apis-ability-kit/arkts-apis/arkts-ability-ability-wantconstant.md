@@ -15,6 +15,7 @@ wantConstant模块提供Want常量的操作方法，并说明Flags标志位的�
 ## 导入模块
 
 ```TypeScript
+import { wantConstant } from '@ohos.ability.wantConstant';
 ```
 
 ## 汇总

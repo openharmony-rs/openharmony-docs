@@ -74,28 +74,6 @@ enableSecure(isSecure: boolean)
 | --- | --- | --- | --- |
 | isSecure | boolean | 是 | 是否开启隐私图层模式。<br>true：开启隐私图层模式；false：关闭隐私图层模式。<br>默认值：false |
 
-## enableSurfaceVisibilityLifecycle
-
-```TypeScript
-enableSurfaceVisibilityLifecycle(isVisibilityLifecycle: Optional<boolean>)
-```
-
-为XComponent启用surface可见性生命周期。
-
-**起始版本：** 26.1.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-XComponentAttribute-enableSurfaceVisibilityLifecycle(isVisibilityLifecycle: Optional<boolean>): XComponentAttribute--><!--Device-XComponentAttribute-enableSurfaceVisibilityLifecycle(isVisibilityLifecycle: Optional<boolean>): XComponentAttribute-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| isVisibilityLifecycle | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否启用surface可见性生命周期。 |
-
 ## hdrBrightness
 
 ```TypeScript

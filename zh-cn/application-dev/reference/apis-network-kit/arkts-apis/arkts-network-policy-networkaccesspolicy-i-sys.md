@@ -44,7 +44,7 @@ allowCellular?: boolean
 allowWiFi?: boolean
 ```
 
-是否允许应用访问wifi网络。true表示允许，false表示不允许。
+是否允许应用访问Wi-Fi网络。true表示允许，false表示不允许。
 
 **类型：** boolean
 
@@ -80,7 +80,7 @@ alwaysAllowCellular?: boolean
 alwaysAllowWiFi?: boolean
 ```
 
-是否允许应用一直访问wifi网络。true表示允许，false表示不允许。
+是否允许应用一直访问Wi-Fi网络。true表示允许，false表示不允许。
 
 **类型：** boolean
 

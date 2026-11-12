@@ -449,7 +449,7 @@ Obtains the TTL for multicast packets. This API uses a promise to return the res
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the result. |
+| Promise&lt;number&gt; | Promise used to return the current TTL value. |
 
 **Error codes:**
 

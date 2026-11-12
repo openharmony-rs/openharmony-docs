@@ -19,6 +19,7 @@ interface FormStateInfo
 ## 导入模块
 
 ```TypeScript
+import { formInfo } from '@ohos.application.formInfo';
 ```
 
 ## formState

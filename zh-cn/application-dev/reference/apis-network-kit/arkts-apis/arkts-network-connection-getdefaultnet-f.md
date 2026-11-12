@@ -97,7 +97,7 @@ function getDefaultNet(): Promise<NetHandle>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetHandle](arkts-network-connection-nethandle-i.md)&gt; | 以Promise形式返回默认网络的网络句柄。 |
+| Promise&lt;[NetHandle](arkts-network-connection-nethandle-i.md)&gt; | Promise对象，返回默认网络的网络句柄。 |
 
 **错误码：**
 

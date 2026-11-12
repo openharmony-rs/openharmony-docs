@@ -12,7 +12,7 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 function exportSysEvents(queryArg: QueryArg, rules: QueryRule[]): number
 ```
 
-批量导出系统事件，以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。
+批量导出系统事件，以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。调用成功后，返回接口调用时间戳，可用于定位导出的事件文件。
 
 **起始版本：** 10
 
@@ -35,7 +35,7 @@ function exportSysEvents(queryArg: QueryArg, rules: QueryRule[]): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 接口调用时间戳。 |
+| number | 接口调用时间戳，单位为毫秒（ms）。 |
 
 **错误码：**
 

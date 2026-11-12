@@ -146,7 +146,7 @@ taskIdentity?: TaskIdentity
 ticketExpireTimeMs?: number
 ```
 
-凭据过期时间，单位为毫秒。取值范围：(-∞,+∞)。
+凭据过期时间，单位为毫秒。取值必须大于0。取值约束：大于0。
 
 **类型：** number
 

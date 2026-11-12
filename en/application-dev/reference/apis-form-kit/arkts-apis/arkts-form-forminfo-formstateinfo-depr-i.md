@@ -19,6 +19,7 @@ Describes the widget state information.
 ## Modules to Import
 
 ```TypeScript
+import { formInfo } from '@ohos.application.formInfo';
 ```
 
 ## formState

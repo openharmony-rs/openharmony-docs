@@ -23,6 +23,7 @@
   - [Beauty（系统接口）](arkts-camera-camera-beauty-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [BeautyQuery（系统接口）](arkts-camera-camera-beautyquery-i-sys.md)<!--DelEnd-->
+  - [C2PASignatureConfig](arkts-camera-camera-c2pasignatureconfig-i.md)
   - [CameraConcurrentInfo](arkts-camera-camera-cameraconcurrentinfo-i.md)
   - [CameraDevice](arkts-camera-camera-cameradevice-i.md)
   <!--Del-->
@@ -352,7 +353,9 @@
   - [VideoStabilizationMode](arkts-camera-camera-videostabilizationmode-e.md)
   - [WhiteBalanceMode](arkts-camera-camera-whitebalancemode-e.md)
 - [@ohos.multimedia.cameraPicker（相机选择器）](arkts-camera-multimedia-camerapicker.md)
+  - [isC2PASignatureSupported](arkts-camera-camerapicker-isc2pasignaturesupported-f.md)
   - [pick](arkts-camera-camerapicker-pick-f.md)
   - [PickerProfile](arkts-camera-camerapicker-pickerprofile-c.md)
   - [PickerResult](arkts-camera-camerapicker-pickerresult-c.md)
+  - [C2PASignatureConfig](arkts-camera-camerapicker-c2pasignatureconfig-i.md)
   - [PickerMediaType](arkts-camera-camerapicker-pickermediatype-e.md)

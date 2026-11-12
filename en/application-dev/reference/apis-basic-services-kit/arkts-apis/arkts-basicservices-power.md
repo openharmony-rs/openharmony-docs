@@ -36,6 +36,7 @@ import { power } from '@kit.BasicServicesKit';
 | [getPowerConfig](arkts-basicservices-power-getpowerconfig-f-sys.md#getpowerconfig-1) | Query the power configuration value for a given scene name. |
 | [hibernate](arkts-basicservices-power-hibernate-f-sys.md#hibernate-1) | Hibernates a device. |
 | [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot-1) | Reboots a device. |
+| [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot-2) | Reboots a device. |
 | [refreshActivity](arkts-basicservices-power-refreshactivity-f-sys.md#refreshactivity-1) | Refreshes the device activity status (for example, resetting the screen-off time). |
 | [registerShutdownCallback](arkts-basicservices-power-registershutdowncallback-f-sys.md#registershutdowncallback-1) | Registers a callback to be invoked when the device is shut down or rebooted. This API uses an asynchronous callback to return the result. |
 | [setPowerConfig](arkts-basicservices-power-setpowerconfig-f-sys.md#setpowerconfig-1) | Update the power configuration value for a given scene name. |
@@ -45,9 +46,12 @@ import { power } from '@kit.BasicServicesKit';
 | [setPowerMode](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-3) | Sets the power mode and sub-mode of a device. This API uses a promise to return the result. To set the power mode only (without sub-mode), use [setPowerMode(promise)](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-2) or [setPowerMode(callback)](arkts-basicservices-power-setpowermode-f-sys.md#setpowermode-1). |
 | [setScreenOffTime](arkts-basicservices-power-setscreenofftime-f-sys.md#setscreenofftime-1) | Sets the screen-off timeout duration, in unit of ms. |
 | [shutdown](arkts-basicservices-power-shutdown-f-sys.md#shutdown-1) | Shuts down the system. |
+| [shutdown](arkts-basicservices-power-shutdown-f-sys.md#shutdown-2) | Shuts down the system. |
 | [suspend](arkts-basicservices-power-suspend-f-sys.md#suspend-1) | Enables a device to enter the sleep state. |
+| [suspend](arkts-basicservices-power-suspend-f-sys.md#suspend-2) | Enables a device to enter the sleep state. |
 | [unregisterShutdownCallback](arkts-basicservices-power-unregistershutdowncallback-f-sys.md#unregistershutdowncallback-1) | Unregisters the callback to be invoked when the device is shut down or rebooted. This API uses a callback to return the result. |
 | [wakeup](arkts-basicservices-power-wakeup-f-sys.md#wakeup-1) | Wakes up a device. |
+| [wakeup](arkts-basicservices-power-wakeup-f-sys.md#wakeup-2) | Wakes up a device. |
 <!--DelEnd-->
 
 ### Enums
@@ -57,3 +61,11 @@ import { power } from '@kit.BasicServicesKit';
 | [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md) | Enumerates power modes. |
 | [DevicePowerSubMode](arkts-basicservices-power-devicepowersubmode-e.md) | Enumerates power sub-modes. |
 | [PowerKeyFilteringStrategy](arkts-basicservices-power-powerkeyfilteringstrategy-e.md) | Enumerates the power key filtering strategies. |
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [InvokeMode](arkts-basicservices-power-invokemode-e-sys.md) | Enumerates the API invoking mode. Indicates how an API call is executed and how its result is delivered. |
+<!--DelEnd-->

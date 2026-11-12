@@ -12,7 +12,7 @@ import { connection } from '@kit.NetworkKit';
 function setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback<void>): void
 ```
 
-Sets the global network HTTP proxy configuration information. This API uses an asynchronous callback to return the result.
+Sets the global HTTP proxy configuration information. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -74,7 +74,7 @@ connection.setGlobalHttpProxy(httpProxy, (err: BusinessError) => {
 function setGlobalHttpProxy(httpProxy: HttpProxy): Promise<void>
 ```
 
-Sets the global network HTTP proxy configuration information. This API uses a promise to return the result.
+Sets the global HTTP proxy configuration information. This API uses a promise to return the result.
 
 **Since:** 10
 

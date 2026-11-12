@@ -28,7 +28,7 @@ function getSysVpnConfigList(): Promise<Array<SysVpnConfig>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md)&gt;&gt; | The promise returned by the all VPN network configuration. |
+| Promise&lt;Array&lt;[SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md)&gt;&gt; | Promise对象，返回所有VPN网络配置。 |
 
 **错误码：**
 

@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function startSharing(type: SharingIfaceType, callback: AsyncCallback<void>): void
 ```
 
-开启指定类型共享，使用 callback 异步回调。
+开启指定类型共享。使用callback异步回调。
 
 **起始版本：** 9
 

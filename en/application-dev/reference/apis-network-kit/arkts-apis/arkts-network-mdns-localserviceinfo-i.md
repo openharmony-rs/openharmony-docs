@@ -42,7 +42,7 @@ IP address of the device that provides the MDNS service. The IP address is not e
 port?: number
 ```
 
-Service port number. The value range is [0, 65535].
+Port number of the MDNS service. The value ranges from 0 to 65535.
 
 **Type:** number
 

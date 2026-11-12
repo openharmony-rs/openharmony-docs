@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function setNetworkAccessPolicy(uid: number, policy: NetworkAccessPolicy, isReconfirmed?: boolean): Promise<void>
 ```
 
-设置指定 uid 应用能否能访问网络的策略，使用 Promise 异步回调。
+设置指定 uid 应用能否访问网络的策略。使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -30,13 +30,13 @@ function setNetworkAccessPolicy(uid: number, policy: NetworkAccessPolicy, isReco
 | --- | --- | --- | --- |
 | uid | number | 是 | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
 | policy | [NetworkAccessPolicy](arkts-network-policy-networkaccesspolicy-i-sys.md) | 是 | 网络策略。 |
-| isReconfirmed | boolean | 否 | 默认false；false 表示需要重确认，应用访问网络会弹框; true 表示不需要重确认，无弹框。 |
+| isReconfirmed | boolean | 否 | 默认false；false 表示需要重确认，应用访问网络会弹框；true 表示不需要重确认，无弹框。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

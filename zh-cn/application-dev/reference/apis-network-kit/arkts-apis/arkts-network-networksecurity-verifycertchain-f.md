@@ -12,7 +12,15 @@ import { networkSecurity } from '@kit.NetworkKit';
 export function verifyCertChain(cert: CertBlob[], caCert?: CertBlob, hostname?: string): Promise<CertBlob[]>
 ```
 
-验证服务器证书链并返回排序后的证书链。
+传入证书链数组，进行证书链校验并构建排序后的证书链。系统将使用证书管理中的预置CA证书和用户安装的CA证书来配合校验传入的证书。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 这些错误代码对应于证书验证过程中的各种失败。
+> 
+> **注意：**
+> 
+> 请务必将示例中的证书数据替换为实际的证书内容。
 
 **起始版本：** 26.0.0
 
@@ -26,15 +34,15 @@ export function verifyCertChain(cert: CertBlob[], caCert?: CertBlob, hostname?: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cert | [CertBlob](arkts-network-networksecurity-certblob-i.md)[] | 是 | 要验证的证书链。 |
-| caCert | [CertBlob](arkts-network-networksecurity-certblob-i.md) | 否 | 入站自定义 CA 证书。 |
-| hostname | string | 否 | 要验证的主机名。 |
+| cert | [CertBlob](arkts-network-networksecurity-certblob-i.md)[] | 是 | 待校验证书数组。第一个元素必须是叶子证书（end-entity certificate），其余元素为中间证书。 |
+| caCert | [CertBlob](arkts-network-networksecurity-certblob-i.md) | 否 | 传入自定义的CA证书。不传入则使用系统预置CA证书。 |
+| hostname | string | 否 | 需要验证的主机名，用于校验证书中的主机名是否匹配。不传入则跳过主机名验证。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[CertBlob](arkts-network-networksecurity-certblob-i.md)[]&gt; | 返回一个 Promise，如果验证成功则解析为排序后的证书链（从叶子到根排序）。 |
+| Promise&lt;[CertBlob](arkts-network-networksecurity-certblob-i.md)[]&gt; | Promise对象，返回排序后的证书链数组，顺序为从叶子节点到根节点。 |
 
 **错误码：**
 

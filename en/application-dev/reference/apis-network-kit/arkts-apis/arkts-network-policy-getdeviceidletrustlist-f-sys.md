@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getDeviceIdleTrustlist(callback: AsyncCallback<Array<number>>): void
 ```
 
-Obtains the UID of applications that are on the device idle allowlist. This API uses an asynchronous callback to return the result.
+Obtains the UIDs contained in the sleep mode trustlist. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -62,7 +62,7 @@ policy.getDeviceIdleTrustlist((error: BusinessError, data: number[]) => {
 function getDeviceIdleTrustlist(): Promise<Array<number>>
 ```
 
-Obtains the UID of applications that are on the device idle allowlist. This API uses a promise to return the result.
+Obtains the UIDs contained in the sleep mode trustlist. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -78,7 +78,7 @@ Obtains the UID of applications that are on the device idle allowlist. This API 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the result. |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the set result. |
 
 **Error codes:**
 

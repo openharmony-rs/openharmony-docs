@@ -3,6 +3,7 @@
 ## 导入模块
 
 ```TypeScript
+import { bytrace } from '@ohos.bytrace';
 ```
 
 ## traceByValue

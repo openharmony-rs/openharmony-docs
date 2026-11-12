@@ -4,7 +4,7 @@
 export type ValidationCallback = (context: ValidationContext) => boolean | Promise<boolean>
 ```
 
-Self defined remote validation. This API uses a promise to return the result.
+Defines a custom callback for remote server identity verification. Developers can use this callback to implement custom certificate verification logic, supporting synchronous or asynchronous return of the verification result.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Self defined remote validation. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [ValidationContext](arkts-network-http-validationcontext-i.md) | Yes | Certificate context. |
+| context | [ValidationContext](arkts-network-http-validationcontext-i.md) | Yes | Certificate verification context, which contains information such as the certificate chain, host name, and IP address. |
 
 **Return value:**
 

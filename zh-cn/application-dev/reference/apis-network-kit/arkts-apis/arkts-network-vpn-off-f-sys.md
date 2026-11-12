@@ -28,8 +28,8 @@ function off(type: 'connect', callback?: Callback<VpnConnectState>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'connect' | 是 | Indicates vpn connect state changes. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;VpnConnectState&gt; | 否 | The callback of the vpn connect state. |
+| type | 'connect' | 是 | 取消订阅事件，固定为'connect'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;VpnConnectState&gt; | 否 | VPN连接状态改变时的回调函数。 |
 
 **错误码：**
 
@@ -49,7 +49,7 @@ function off(type: 'connect', callback?: Callback<VpnConnectState>): void
 function off(type: 'connectMulti', callback?: Callback<MultiVpnConnectState>): void
 ```
 
-取消订阅vpn连接状态变化。
+取消订阅VPN连接状态变化事件。
 
 **起始版本：** 20
 
@@ -65,8 +65,8 @@ function off(type: 'connectMulti', callback?: Callback<MultiVpnConnectState>): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'connectMulti' | 是 | Indicates multi vpn connect state changes. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;MultiVpnConnectState&gt; | 否 | The callback of the multi vpn connect state. |
+| type | 'connectMulti' | 是 | 取消订阅事件，固定为'connectMulti'。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;MultiVpnConnectState&gt; | 否 | 多VPN连接状态改变时的回调函数。 |
 
 **错误码：**
 

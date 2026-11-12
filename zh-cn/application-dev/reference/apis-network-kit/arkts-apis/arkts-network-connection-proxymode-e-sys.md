@@ -4,7 +4,7 @@
 export enum ProxyMode
 ```
 
-表示代理模式的枚举。使用Promise异步回调。
+表示代理模式的枚举。
 
 **起始版本：** 20
 

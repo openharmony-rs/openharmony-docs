@@ -78,7 +78,7 @@ Obtains the total downlink traffic (in bytes) of the specified NIC from the last
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the total downlink traffic (in bytes) of the specified NIC from the last startup to the current moment. |
+| Promise&lt;number&gt; | Promise used to return the total downlink traffic of the specified network card from the last boot to the time of interface call (unit: bytes). |
 
 **Error codes:**
 

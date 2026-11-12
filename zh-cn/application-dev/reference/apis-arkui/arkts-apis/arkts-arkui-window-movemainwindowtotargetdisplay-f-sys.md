@@ -53,7 +53,7 @@ function moveMainWindowToTargetDisplay(displayId: number, windowId: number, user
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: The window is not a main window. |
 | [1300008](../errorcode-window.md#1300008-显示设备异常) | Invalid display. Possible cause:         1. DisplayId is a negative number or not exists. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause:         1. The userId is not exist. |
+| [1300016](../errorcode-window.md#1300016-参数错误) | Parameter error. Possible cause:         1. The userId is not exist. |
 
 <!--Del-->
 **示例**

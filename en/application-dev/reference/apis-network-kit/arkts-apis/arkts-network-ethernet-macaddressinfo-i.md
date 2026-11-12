@@ -24,7 +24,7 @@ import { ethernet } from '@kit.NetworkKit';
 iface: string
 ```
 
-Name of the Ethernet NIC.
+Ethernet NIC name, for example, "eth0". It can be obtained through [getMacAddress](arkts-network-ethernet-getmacaddress-f.md).
 
 **Type:** string
 
@@ -40,7 +40,7 @@ Name of the Ethernet NIC.
 macAddress: string
 ```
 
-MAC address of the Ethernet NIC.
+MAC address information of the Ethernet NIC, in the format of "XX:XX:XX:XX:XX:XX".
 
 **Type:** string
 

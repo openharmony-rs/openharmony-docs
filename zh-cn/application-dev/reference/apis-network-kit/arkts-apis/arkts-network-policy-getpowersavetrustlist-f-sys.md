@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getPowerSaveTrustlist(callback: AsyncCallback<Array<number>>): void
 ```
 
-获取省电模式白名单所包含的 uid 数组，使用 callback 异步回调。
+获取省电模式白名单所包含的 uid 数组。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -62,7 +62,7 @@ policy.getPowerSaveTrustlist((error: BusinessError, data: number[]) => {
 function getPowerSaveTrustlist(): Promise<Array<number>>
 ```
 
-获取休眠模式白名单所包含的 uid 数组，使用 Promise 异步回调。
+获取省电模式白名单所包含的uid数组。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -78,7 +78,7 @@ function getPowerSaveTrustlist(): Promise<Array<number>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | 以 Promise 形式返回设定结果。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回设定结果。 |
 
 **错误码：**
 

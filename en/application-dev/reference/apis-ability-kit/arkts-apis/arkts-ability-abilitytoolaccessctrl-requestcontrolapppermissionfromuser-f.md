@@ -13,7 +13,7 @@ export function requestControlAppPermissionFromUser(context: Context, appInfo: A
     Promise<ControlAppStatusResult[]>
 ```
 
-Requests the control permission for the specified applications from the user. This function displays a user dialog to obtain authorization decisions for controlling each application. The result reflects the user's allow or deny decision for each app.
+Request the control permission of a specified application from a user. This function pops up a user dialog box to obtain the control authorization decision for each application. The returned result reflects the user's decision to allow or deny each application.
 
 **Since:** 26.1.0
 
@@ -36,7 +36,7 @@ Requests the control permission for the specified applications from the user. Th
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[ControlAppStatusResult](arkts-ability-abilitytoolaccessctrl-controlappstatusresult-i.md)[]&gt; | Promise used to return ${ControlAppStatusResult[]}. |
+| Promise&lt;[ControlAppStatusResult](arkts-ability-abilitytoolaccessctrl-controlappstatusresult-i.md)[]&gt; | Promise object that returns ${ControlAppStatusResult[]}. |
 
 **Error codes:**
 

@@ -13,7 +13,7 @@ function subscribe(featureId: UserStatusFeature, callback: Callback<UserStatusDa
     deviceInfo?: DeviceInfo[]): number
 ```
 
-订阅用户状态监控，以获取用户状态数据。调用subscribe()后，必须在使用完毕后调用unsubscribe()取消订阅以释放回调资源，未调用unsubscribe()会导致回调资源泄漏，<br>影响应用性能。建议先调用configure()配置功能参数，再调用subscribe()开始订阅。
+订阅用户状态监控，以获取用户状态数据。调用subscribe()后，必须在使用完毕后调用unsubscribe()取消订阅以释放回调资源，未调用unsubscribe()会导致回调资源泄漏，影响应用性能。建议先调用configure()配置功能参数，再调用subscribe()开始订阅。
 
 **起始版本：** 26.0.0
 

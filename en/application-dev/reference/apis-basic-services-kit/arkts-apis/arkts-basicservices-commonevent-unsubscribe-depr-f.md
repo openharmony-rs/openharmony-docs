@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { commonEvent } from '@ohos.commonEvent';
 ```
 
 ## unsubscribe

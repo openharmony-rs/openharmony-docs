@@ -15,6 +15,7 @@ interface StorageObserver
 ## 导入模块
 
 ```TypeScript
+import { storage } from '@ohos.data.storage';
 ```
 
 ## key

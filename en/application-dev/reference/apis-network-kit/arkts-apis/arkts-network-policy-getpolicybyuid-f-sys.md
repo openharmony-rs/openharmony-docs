@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getPolicyByUid(uid: number, callback: AsyncCallback<NetUidPolicy>): void
 ```
 
-Obtains the network access policy for the application specified by a given UID. This API uses an asynchronous callback to return the result.
+Obtains the network access policy by app UID. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -28,7 +28,7 @@ Obtains the network access policy for the application specified by a given UID. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | Unique app ID, which is a positive integer within the int32_t range. |
+| uid | number | Yes | Unique identifier of the app. The value range is a positive integer within the int32_t range. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md)&gt; | Yes | Callback used to return the result. If the operation is successful, the policy result is returned. If the operation fails, an error code is returned. |
 
 **Error codes:**
@@ -79,13 +79,13 @@ Obtains the network access policy by app UID. This API uses a promise to return 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | Unique app ID, which is a positive integer within the int32_t range. |
+| uid | number | Yes | Unique identifier of the app. The value is a positive integer within the range of int32_t. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md)&gt; | Promise used to return the result. If the operation fails, an error message is returned. |
+| Promise&lt;[NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md)&gt; | Promise used to return the policy retrieval result. Returns an error code and error information on failure. |
 
 **Error codes:**
 

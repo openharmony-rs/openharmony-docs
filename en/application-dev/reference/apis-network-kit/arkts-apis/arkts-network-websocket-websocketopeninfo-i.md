@@ -4,7 +4,7 @@
 export interface WebSocketOpenInfo
 ```
 
-The result for open info of a WebSocket connection.
+Detailed information after a WebSocket connection is successfully established.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { webSocket } from '@kit.NetworkKit';
 message: string
 ```
 
-result message.
+Status information returned by the server. It corresponds to the **status** field. For example, when **status=101** is set, this field returns "Switching Protocols".
 
 **Type:** string
 
@@ -42,7 +42,7 @@ result message.
 protocol?: string
 ```
 
-Negotiated protocol.
+Negotiated protocol returned by the server.
 
 **Type:** string
 
@@ -60,7 +60,7 @@ Negotiated protocol.
 status: number
 ```
 
-result status.
+Status code returned by the server. For example, 101 indicates that the connection is successfully established and upgraded to the WebSocket protocol.
 
 **Type:** number
 

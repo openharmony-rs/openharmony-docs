@@ -15,6 +15,7 @@ This module provides the Network Response.
 ## Modules to Import
 
 ```TypeScript
+import { NetworkResponse } from '@system.network';
 ```
 
 ## metered

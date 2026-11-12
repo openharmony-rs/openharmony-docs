@@ -17,6 +17,7 @@ Defines the options used in move().
 ## Modules to Import
 
 ```TypeScript
+import { FileMoveOption } from '@system.file';
 ```
 
 ## complete

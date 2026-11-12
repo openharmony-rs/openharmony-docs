@@ -12,7 +12,7 @@ import { statistics } from '@kit.NetworkKit';
 function getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback<NetStatsInfo>): void
 ```
 
-获取指定应用历史流量信息，使用 callback 异步回调。
+获取指定应用历史流量信息，使用callback异步回调。系统根据uidInfo中指定的应用uid及网卡、时间范围，从流量统计数据库中读取该应用在对应时间段内的收发字节数与包数，通过回调返回；若该应用在指定时间段内无流量记录，则返回全零的统计信息。
 
 **起始版本：** 10
 
@@ -29,7 +29,7 @@ function getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback<NetStats
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uidInfo | [UidInfo](arkts-network-statistics-uidinfo-i-sys.md) | 是 | 指定查询的应用信息，参见[UidInfo](arkts-network-statistics-uidinfo-i-sys.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | 是 | 回调函数。成功时 statsInfo 返回包含应用历史流量信息，error 为 undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | 是 | 回调函数。当成功获取指定应用历史流量信息时，err为undefined，data为获取到的应用历史流量信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -95,7 +95,7 @@ statistics.getTrafficStatsByUid(
 function getTrafficStatsByUid(uidInfo: UidInfo): Promise<NetStatsInfo>
 ```
 
-获取指定应用历史流量信息，使用 Promise 异步回调。
+获取指定应用历史流量信息，使用Promise异步回调。系统根据uidInfo中指定的应用uid及网卡、时间范围，从流量统计数据库中读取该应用在对应时间段内的收发字节数与包数并以Promise形式返回；若该应用在指定时间段内无流量记录，则返回全零的统计信息。
 
 **起始版本：** 10
 
@@ -117,7 +117,7 @@ function getTrafficStatsByUid(uidInfo: UidInfo): Promise<NetStatsInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | 以 Promise 形式返回获取结果,返回应用历史流量信息。 |
+| Promise&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | Promise对象，返回应用历史流量信息。 |
 
 **错误码：**
 

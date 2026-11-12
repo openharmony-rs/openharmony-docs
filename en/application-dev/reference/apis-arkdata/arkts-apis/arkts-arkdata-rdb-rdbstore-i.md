@@ -21,6 +21,7 @@ Before using the APIs of this class, use [executeSql](#executesql-1) to initiali
 ## Modules to Import
 
 ```TypeScript
+import { rdb } from '@ohos.data.rdb';
 ```
 
 ## batchInsert

@@ -77,7 +77,7 @@ Network interface card (NIC) name.
 isIPv4LinkValid?: boolean
 ```
 
-Whether IPv4 is available on the current network. **true**: IPv4 is available when the IPv4 address is valid and the default IPv4 route exists. **false**: IPv4 is unavailable when the IPv4 address is invalid or the default IPv 4 route does not exist.
+Whether IPv4 is available on the current network. **true**: IPv4 is available when the IPv4 address is valid and the default IPv4 route exists. **false**: IPv4 is unavailable when the IPv4 address is invalid or the default IPv4 route does not exist.
 
 **Type:** boolean
 
@@ -95,7 +95,7 @@ Whether IPv4 is available on the current network. **true**: IPv4 is available wh
 isIPv6LinkValid?: boolean
 ```
 
-Whether IPv6 is available on the current network. **true**: IPv6 is available when the IPv6 address is valid and the default IPv6 route exists. **false**: IPv6 is unavailable when the IPv6 address is invalid or the default IPv 6 route does not exist.
+Whether IPv6 is available on the current network. **true**: IPv6 is available when the IPv6 address is valid and the default IPv6 route exists. **false**: IPv6 is unavailable when the IPv6 address is invalid or the default IPv6 route does not exist.
 
 **Type:** boolean
 

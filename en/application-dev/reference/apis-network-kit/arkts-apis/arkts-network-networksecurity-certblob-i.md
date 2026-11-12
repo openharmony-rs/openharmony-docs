@@ -40,7 +40,7 @@ Certificate data.
 type: CertType
 ```
 
-Certificate type.
+Certificate encoding type.
 
 **Type:** [CertType](arkts-network-networksecurity-certtype-e.md)
 

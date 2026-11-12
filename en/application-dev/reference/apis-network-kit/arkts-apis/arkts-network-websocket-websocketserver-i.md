@@ -98,8 +98,6 @@ listAllConnections(): WebSocketConnection[]
 
 Obtains information about all clients connected to the server.
 
-**Required permission**: ohos.permission.INTERNET
-
 > **NOTE:** 
 > 
 > This API is called asynchronously. The **await** keyword needs to be used to wait until the asynchronous
@@ -118,7 +116,7 @@ Obtains information about all clients connected to the server.
 
 | Type | Description |
 | --- | --- |
-| [WebSocketConnection](arkts-network-websocket-websocketconnection-i.md)[] | an array consists connections from all clients. |
+| [WebSocketConnection](arkts-network-websocket-websocketconnection-i.md)[] | Information of all clients in a string array. |
 
 **Error codes:**
 
@@ -172,7 +170,7 @@ localServer.on('connect', async (connection: webSocket.WebSocketConnection) => {
 off(type: 'connect', callback?: Callback<WebSocketConnection>): void
 ```
 
-Unsubscribes from WebSocketServer connection events (the connection between the client and server is successfully established). This API uses an asynchronous callback to return the result.
+Unsubscribes from the connection event of WebSocketServer (the client is successfully connected to the server). This API uses an asynchronous callback.
 
 > **NOTE:** 
 > 
@@ -208,7 +206,7 @@ localServer.off('connect');
 off(type: 'messageReceive', callback?: Callback<WebSocketMessage>): void
 ```
 
-Unsubscribes from the WebSocketServer event of receiving client messages. This API uses an asynchronous callback to return the result.
+Unsubscribes from the event of WebSocketServer receiving messages from the client. This API uses an asynchronous callback.
 
 > **NOTE:** 
 > 
@@ -244,7 +242,7 @@ localServer.off('messageReceive');
 off(type: 'close', callback?: ClientConnectionCloseCallback): void
 ```
 
-Unsubscribes from WebSocketServer close events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the close event of WebSocketServer. This API uses an asynchronous callback.
 
 > **NOTE:** 
 > 
@@ -280,7 +278,7 @@ localServer.off('close');
 off(type: 'error', callback?: ErrorCallback): void
 ```
 
-Unsubscribes from WebSocketServer error events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the error event of WebSocketServer. This API uses an asynchronous callback.
 
 > **NOTE:** 
 > 
@@ -316,7 +314,7 @@ localServer.off('error');
 on(type: 'connect', callback: Callback<WebSocketConnection>): void
 ```
 
-Subscribes to the WebSocketServer connection event (the connection between the client and server is successfully established). This API uses an asynchronous callback to return the result.
+Subscribes to the connection event of WebSocketServer (when a client successfully establishes a connection with the server). This API uses an asynchronous callback to return the result.
 
 **Since:** 19
 
@@ -349,7 +347,7 @@ localServer.on('connect', (connection: webSocket.WebSocketConnection) => {
 on(type: 'messageReceive', callback: Callback<WebSocketMessage>): void
 ```
 
-Subscribes to the WebSocketServer event of receiving client messages. This API uses an asynchronous callback to return the result.
+Subscribes to the event of WebSocketServer receiving messages from the client. This API uses an asynchronous callback.
 
 **Since:** 19
 
@@ -382,7 +380,7 @@ localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
 on(type: 'close', callback: ClientConnectionCloseCallback): void
 ```
 
-Subscribes to WebSocketServer close events. This API uses an asynchronous callback to return the result.
+Subscribes to the close event of WebSocketServer. This API uses an asynchronous callback.
 
 **Since:** 19
 
@@ -415,7 +413,7 @@ localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeR
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-Subscribes to WebSocketServer error events. This API uses an asynchronous callback to return the result.
+Subscribes to the error event of WebSocketServer. This API uses an asynchronous callback.
 
 **Since:** 19
 
@@ -453,7 +451,6 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 > **NOTE:** 
 > 
 > The **send** API can be called only after a **connect** event is listened.
-> **Required permission**: ohos.permission.INTERNET
 
 **Since:** 19
 
@@ -533,7 +530,6 @@ Starts the WebSocketServer service based on the specified **config**. This API u
 > **NOTE:** 
 > 
 > You are advised not to listen for the same port when calling this API multiple times.
-> **Required permission**: ohos.permission.INTERNET
 
 **Since:** 19
 

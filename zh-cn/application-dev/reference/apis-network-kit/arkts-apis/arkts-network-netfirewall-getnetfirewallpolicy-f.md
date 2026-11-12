@@ -32,7 +32,7 @@ function getNetFirewallPolicy(userId: number): Promise<NetFirewallPolicy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetFirewallPolicy](arkts-network-netfirewall-netfirewallpolicy-i.md)&gt; | 以Promise形式返回当前用户防火墙策略。 |
+| Promise&lt;[NetFirewallPolicy](arkts-network-netfirewall-netfirewallpolicy-i.md)&gt; | Promise对象，返回当前用户防火墙策略。 |
 
 **错误码：**
 

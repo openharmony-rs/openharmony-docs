@@ -56,7 +56,7 @@ function setWindowPosition(list: Array<WindowPositionParams>): Promise<void>
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 | [1300008](../errorcode-window.md#1300008-显示设备异常) | The display device is abnormal. Possible cause: The window to be adjusted or the target main window specified by insertAfter is on a virtual screen. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: The windowPositions list exceeds the maximum size of 50. |
+| [1300016](../errorcode-window.md#1300016-参数错误) | Parameter error. Possible cause: The windowPositions list exceeds the maximum size of 50. |
 
 **示例**
 

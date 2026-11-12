@@ -350,6 +350,8 @@
   - [rebootDevice](arkts-basicservices-power-rebootdevice-f.md)
   - [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md)
   - [DevicePowerSubMode](arkts-basicservices-power-devicepowersubmode-e.md)
+  <!--Del-->
+  - [InvokeMode（系统接口）](arkts-basicservices-power-invokemode-e-sys.md)<!--DelEnd-->
   - [PowerKeyFilteringStrategy](arkts-basicservices-power-powerkeyfilteringstrategy-e.md)
 - [@ohos.print（打印）](arkts-basicservices-print.md)
   - [addPrinter](arkts-basicservices-print-addprinter-f.md)

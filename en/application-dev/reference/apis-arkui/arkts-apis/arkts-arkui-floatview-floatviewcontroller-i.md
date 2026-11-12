@@ -471,7 +471,7 @@ Loads the content of a page, with its path specified in the current project, for
 | Error Code ID | Error Message |
 | --- | --- |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The float view controller object is null. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible causes: Invalid path. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible causes: Invalid path. |
 
 **Examples**
 
@@ -526,7 +526,7 @@ Sets the UI content of a [named route](../../../ui/arkts-routing.md#named-route)
 | Error Code ID | Error Message |
 | --- | --- |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The float view controller object is null. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible causes: Invalid name. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible causes: Invalid name. |
 
 **Examples**
 
@@ -610,7 +610,7 @@ Sets the size of the float view. You are advised to call the [getFloatViewLimits
 | --- | --- |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The float view controller object is null. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. Possible cause: Internal IPC error. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: The value of the size is less than or equal to 0. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: The value of the size is less than or equal to 0. |
 
 **Examples**
 
@@ -772,7 +772,7 @@ Switches the template of the flow view and changes the window size. You are advi
 | --- | --- |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The float view controller object is null. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. Possible cause: Internal IPC error. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause:         1. Invalid template type.         2. The value of the size is less than or equal to 0. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause:         1. Invalid template type.         2. The value of the size is less than or equal to 0. |
 
 **Examples**
 

@@ -4,7 +4,7 @@
 export interface NetStatsChangeInfo
 ```
 
-监听和管理网络接口的状态和使用情况。
+流量变化事件上报的网卡名称及应用UID等信息。
 
 **起始版本：** 11
 

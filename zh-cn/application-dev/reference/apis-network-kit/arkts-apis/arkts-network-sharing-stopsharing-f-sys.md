@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function stopSharing(type: SharingIfaceType, callback: AsyncCallback<void>): void
 ```
 
-关闭指定类型共享，使用 callback 异步回调。
+关闭指定类型共享。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -29,7 +29,7 @@ function stopSharing(type: SharingIfaceType, callback: AsyncCallback<void>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | [SharingIfaceType](arkts-network-sharing-sharingifacetype-e-sys.md) | 是 | 共享类型，0：Wi-Fi 1：USB 2：BLUETOOTH。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数,返回停止网络共享结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，返回停止网络共享结果。 |
 
 **错误码：**
 

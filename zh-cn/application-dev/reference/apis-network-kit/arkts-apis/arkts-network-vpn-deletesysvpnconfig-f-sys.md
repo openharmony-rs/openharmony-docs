@@ -28,13 +28,13 @@ function deleteSysVpnConfig(vpnId: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| vpnId | string | 是 | Indicates the uuid of the VPN network configuration. |
+| vpnId | string | 是 | 指定VPN网络配置的uuid。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

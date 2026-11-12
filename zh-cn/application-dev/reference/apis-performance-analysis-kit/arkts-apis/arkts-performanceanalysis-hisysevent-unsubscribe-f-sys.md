@@ -12,7 +12,7 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 function unsubscribe(): void
 ```
 
-取消订阅系统事件。
+取消订阅所有的实时系统事件。取消订阅成功后，将不再接收实时事件。适用于当不再需要订阅实时事件时调用的场景，能够释放订阅资源，减少资源占用。
 
 **起始版本：** 10
 

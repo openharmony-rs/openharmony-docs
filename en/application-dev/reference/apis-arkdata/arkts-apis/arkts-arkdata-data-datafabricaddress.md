@@ -15,6 +15,7 @@ This module provides the capability of subscribing to and unsubscribing from add
 ## Modules to Import
 
 ```TypeScript
+import { dataFabricAddress } from '@ohos.data.dataFabricAddress';
 ```
 
 ## Summary

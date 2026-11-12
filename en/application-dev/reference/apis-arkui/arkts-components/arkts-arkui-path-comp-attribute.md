@@ -20,7 +20,7 @@ The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [unive
 commands(value: ResourceStr)
 ```
 
-Sets the command string that complies with the SVG Path Syntax, in px. The command string determines the drawing shape and trajectory of the path. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). For details about the pixel unit conversion method, see [Pixel Units](arkts-arkui-common-comp-commonmethod-c.md).
+Sets the command string that complies with the [SVG Path Syntax](arkts-arkui-path-comp.md), in px. The command string determines the drawing shape and trajectory of the path. This attribute can be dynamically set using [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier). For details about the pixel unit conversion method, see [Pixel Units](arkts-arkui-common-comp-commonmethod-c.md).
 
 **Since:** 7
 
@@ -36,4 +36,4 @@ Sets the command string that complies with the SVG Path Syntax, in px. The comma
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Command string for path drawing. It must comply with the SVG Path Syntax, in px. <br>Default value: empty string <br>Abnormal values **undefined** and **null** are processed as the default value.<br>**Since:** 20 |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Command string for path drawing. It must comply with the [SVG Path Syntax](arkts-arkui-path-comp.md), in px. <br>Default value: empty string <br>Abnormal values **undefined** and **null** are processed as the default value.<br>**Since:** 20 |

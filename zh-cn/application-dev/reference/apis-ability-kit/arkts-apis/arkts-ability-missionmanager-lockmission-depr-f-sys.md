@@ -3,6 +3,7 @@
 ## 导入模块
 
 ```TypeScript
+import { missionManager } from '@ohos.application.missionManager';
 ```
 
 ## lockMission

@@ -18,7 +18,7 @@ enum MediaKeyType
 MEDIA_KEY_TYPE_OFFLINE = 0
 ```
 
-离线。
+离线媒体密钥，用于离线播放场景。
 
 **起始版本：** 11
 
@@ -34,7 +34,7 @@ MEDIA_KEY_TYPE_OFFLINE = 0
 MEDIA_KEY_TYPE_ONLINE = 1
 ```
 
-在线。
+在线媒体密钥，用于在线播放场景。
 
 **起始版本：** 11
 

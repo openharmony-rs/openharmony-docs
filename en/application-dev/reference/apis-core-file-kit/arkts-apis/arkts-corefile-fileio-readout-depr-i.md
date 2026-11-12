@@ -17,6 +17,7 @@ Obtains the file read result. This class applies only to the **read()** method.
 ## Modules to Import
 
 ```TypeScript
+import { fileIO } from '@ohos.fileio';
 ```
 
 ## buffer

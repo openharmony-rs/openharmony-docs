@@ -36,14 +36,14 @@ Generate the task-based authentication identity for agent commands. This functio
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[TaskIdentity](arkts-ability-abilitytoolaccessctrl-taskidentity-i-sys.md)&gt; | Promise used to return ${TaskIdentity}。 |
+| Promise&lt;[TaskIdentity](arkts-ability-abilitytoolaccessctrl-taskidentity-i-sys.md)&gt; | Promise object that returns ${TaskIdentity}. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The interface caller does not have permission "ohos.permission.QUERY_TOOL_PERMISSIONS". |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [24010000](../errorcode-abilityToolAccessCtrl-sys.md#24010000-invalid-parameter) | Invalid parameter. TicketExpireTime exceeds 24h, etc. |
+| [24010000](../errorcode-abilityToolAccessCtrl-sys.md#24010000-invalid-parameter) | Invalid parameter. TaskId is empty, etc. |
 | [24010001](../errorcode-abilityToolAccessCtrl-sys.md#24010001-system-service-abnormal) | Service is abnormal. Possible cause: IPC failed. |
 | [24010002](../errorcode-abilityToolAccessCtrl-sys.md#24010002-internal-service-error) | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |

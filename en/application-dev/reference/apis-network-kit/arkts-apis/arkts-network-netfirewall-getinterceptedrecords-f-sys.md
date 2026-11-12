@@ -12,7 +12,7 @@ import { netFirewall } from '@kit.NetworkKit';
 function getInterceptedRecords(userId: number, requestParam: RequestParam): Promise<InterceptedRecordPage>
 ```
 
-Get intercepted records by userId, and it is necessary to specify the pagination query parameters.
+Obtains the interception records by **userId**. You need to specify the pagination query parameters. This API uses a promise to return the result.
 
 **Since:** 14
 
@@ -28,14 +28,14 @@ Get intercepted records by userId, and it is necessary to specify the pagination
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| userId | number | Yes | Indicates the user ID. It cannot be the ID of a user that does not exist. |
-| requestParam | [RequestParam](arkts-network-netfirewall-requestparam-i.md) | Yes | Paging query input parameters. |
+| userId | number | Yes | User ID. The value must be an existing user ID in the system. |
+| requestParam | [RequestParam](arkts-network-netfirewall-requestparam-i.md) | Yes | Query parameter. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[InterceptedRecordPage](arkts-network-netfirewall-interceptedrecordpage-i-sys.md)&gt; | Block Record List. |
+| Promise&lt;[InterceptedRecordPage](arkts-network-netfirewall-interceptedrecordpage-i-sys.md)&gt; | Promise used to return the list of intercepted records. |
 
 **Error codes:**
 

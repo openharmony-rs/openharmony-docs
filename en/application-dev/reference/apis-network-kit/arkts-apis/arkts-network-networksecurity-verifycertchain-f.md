@@ -12,7 +12,15 @@ import { networkSecurity } from '@kit.NetworkKit';
 export function verifyCertChain(cert: CertBlob[], caCert?: CertBlob, hostname?: string): Promise<CertBlob[]>
 ```
 
-Verifies the server certificate chain and returns a sorted chain.
+Passes in an array of certificates, verifies the certificate chain, and builds a sorted certificate chain. The system uses the preset CA certificates in certificate management and the CA certificates installed by users to verify the passed-in certificates. This API uses a promise to return the result asynchronously.
+
+> **NOTE:** 
+> 
+> These error codes correspond to various failures in the certificate verification process.
+> 
+> **NOTE:** 
+> 
+> Be sure to replace the certificate data in the example with the actual certificate content.
 
 **Since:** 26.0.0
 
@@ -26,15 +34,15 @@ Verifies the server certificate chain and returns a sorted chain.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| cert | [CertBlob](arkts-network-networksecurity-certblob-i.md)[] | Yes | Certificate chain to be verified. |
-| caCert | [CertBlob](arkts-network-networksecurity-certblob-i.md) | No | Incoming custom CA cert. |
-| hostname | string | No | Hostname to be verified. |
+| cert | [CertBlob](arkts-network-networksecurity-certblob-i.md)[] | Yes | Array of certificates to verify. The first element must be the end-entity certificate, and the remaining elements are intermediate certificates. |
+| caCert | [CertBlob](arkts-network-networksecurity-certblob-i.md) | No | Custom CA certificate. If this parameter is not passed in, the preset CA certificates of the system are used. |
+| hostname | string | No | Host name to verify, used to check whether the host name in the certificate matches. If this parameter is not passed in, host name verification is skipped. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[CertBlob](arkts-network-networksecurity-certblob-i.md)[]&gt; | Returns a promise that resolves to the sorted certificate chain (ordered from leaf to root) if verification succeeds. |
+| Promise&lt;[CertBlob](arkts-network-networksecurity-certblob-i.md)[]&gt; | Promise used to return the sorted certificate chain array, in the order from the leaf node to the root node. |
 
 **Error codes:**
 

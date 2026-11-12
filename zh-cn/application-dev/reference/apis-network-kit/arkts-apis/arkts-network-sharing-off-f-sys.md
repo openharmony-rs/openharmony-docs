@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function off(type: 'sharingStateChange', callback?: Callback<boolean>): void
 ```
 
-注销网络共享状态变化事件，使用 callback 异步回调。
+注销网络共享状态变化事件。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -59,7 +59,7 @@ sharing.off('sharingStateChange', (data: boolean) => {
 function off(type: 'interfaceSharingStateChange', callback?: Callback<InterfaceSharingStateInfo>): void
 ```
 
-注销网卡网络共享状态变化事件，使用 callback 异步回调。
+注销网卡网络共享状态变化事件。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -106,7 +106,7 @@ sharing.off('interfaceSharingStateChange', (data: object) => {
 function off(type: 'sharingUpstreamChange', callback?: Callback<NetHandle>): void
 ```
 
-注销上行网络变化事件，使用 callback 异步回调。
+注销上行网络变化事件。使用callback异步回调。
 
 **起始版本：** 9
 

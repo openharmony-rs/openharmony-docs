@@ -12,7 +12,7 @@ import { statistics } from '@kit.NetworkKit';
 function getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback<NetStatsInfo>): void
 ```
 
-Obtains the historical data traffic of the specified application. This API uses an asynchronous callback to return the result.
+Obtains the historical traffic information of the specified application. This API uses an asynchronous callback to return the result. Based on the application UID, network interface, and time range specified in **uidInfo**, the system reads the transmitted and received bytes and packets of the application in the corresponding period from the statistics database and returns them through the callback. If the application has no traffic records in the specified period, all-zero statistics are returned.
 
 **Since:** 10
 
@@ -29,7 +29,7 @@ Obtains the historical data traffic of the specified application. This API uses 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uidInfo | [UidInfo](arkts-network-statistics-uidinfo-i-sys.md) | Yes | Application information. For details, see [UidInfo](arkts-network-statistics-uidinfo-i-sys.md). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **error** is **undefined** and **statsInfo** is the historical traffic statistics of the application. Otherwise, **error** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | Yes | Callback used to return the application historical traffic information. If the operation is successful, **err** is **undefined** and **data** is the obtained application historical traffic information. Otherwise, err is an error object. |
 
 **Error codes:**
 
@@ -95,7 +95,7 @@ statistics.getTrafficStatsByUid(
 function getTrafficStatsByUid(uidInfo: UidInfo): Promise<NetStatsInfo>
 ```
 
-Obtains the historical data traffic of the specified application. This API uses a promise to return the result.
+Obtains the historical traffic information of the specified application. This API uses a promise to return the result. Based on the application UID, network interface, and time range specified in **uidInfo**, the system reads the transmitted and received bytes and packet counts of the application within the corresponding period from the statistics database and returns them in a promise. If the application has no traffic records within the specified period, all-zero statistics are returned.
 
 **Since:** 10
 
@@ -117,7 +117,7 @@ Obtains the historical data traffic of the specified application. This API uses 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | Promise used to return the result, which is the historical traffic statistics of the specified NIC. |
+| Promise&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | Promise used to return the application historical traffic information. |
 
 **Error codes:**
 

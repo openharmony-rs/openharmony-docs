@@ -24,7 +24,7 @@ Enumerates HTTP data types.
 ARRAY_BUFFER = 2
 ```
 
-The returned type is ArrayBuffer.
+Binary array type.
 
 **Since:** 9
 
@@ -40,7 +40,7 @@ The returned type is ArrayBuffer.
 OBJECT = 1
 ```
 
-The returned type is Object.
+Object type.
 
 **Since:** 9
 
@@ -56,7 +56,7 @@ The returned type is Object.
 STRING = 0
 ```
 
-The returned type is string.
+String type.
 
 **Since:** 9
 

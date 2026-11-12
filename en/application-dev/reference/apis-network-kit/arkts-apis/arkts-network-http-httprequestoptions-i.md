@@ -47,8 +47,6 @@ is serialized before being sent, and an **ArrayBuffer** is sent in binary format
 - If both **body** and **extraData** are configured, **body** takes precedence and **extraData** will be ignored.  
 - This field can be used with any request method to explicitly specify the request body.
 
-**Since**: 26.0.0
-
 **Type:** string &#124; Object &#124; ArrayBuffer
 
 **Since:** 26.0.0
@@ -85,9 +83,9 @@ The preset CA certificate is available at **\/etc/ssl/certs/cacert.pem**. This p
 caPath?: string
 ```
 
-CA certificate data. If this parameter is set and the certificate is valid, the system uses the specified CA certificate and the preset CA certificate. Otherwise, the system uses only the preset CA certificate. The CA certificate path is the sandbox mapping path, which can be obtained by using **UIAbilityContext** APIs. Currently, only **.pem** certificates are supported.
+If this parameter is set and the certificate is valid, the system uses the user-specified CA certificate and the system-preset CA certificate. Otherwise, only the system-preset CA certificate is used. The CA certificate path is a sandbox mapping path (you can obtain the application sandbox path through the capabilities provided by [UIAbilityContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md)). Currently, only text-format certificates with the .pem extension are supported.
 
-The preset CA certificate is available at **\/etc/ssl/certs/cacert.pem**.
+System-preset CA certificate location: **\/etc/ssl/certs/cacert.pem**.
 
 **Type:** string
 
@@ -155,7 +153,7 @@ Client certificate, which is used by the server to verify the client identity.
 connectTimeout?: number
 ```
 
-Connection timeout interval. The default value is **60000**, in ms. The input value must be an uint32_t integer.
+Connection timeout interval. The default value is **60000**, in ms. The input value must be a uint32_t integer.
 
 **Type:** number
 
@@ -234,7 +232,7 @@ servers are used.
 enablePartialChain?: boolean
 ```
 
-Indicates whether to enable partial chain verification. The default value is true when SslType is set to TLS, and false when SslType is set to TLCP. If set to false, the certificate chain must verify up to a trusted root CA. If set to true, the verification succeeds if the chain builds to a trusted intermediate CA, without requiring a path to a trusted root CA.
+Whether to allow the use of an intermediate CA certificate in the trust store as a trust anchor during certificate chain verification. When this parameter set to **false**, the certificate chain must be verified step by step up to a trusted root CA certificate. When set to **true**, if an intermediate CA certificate exists in the trust store, the certificate chain verification can be considered passed when it reaches this intermediate CA, without needing to trace back to the root CA certificate. When [SslType](arkts-network-http-ssltype-t.md) uses the default value or is set to TLS, the default value is **true**; when [SslType](arkts-network-http-ssltype-t.md) is set to TLCP, the default value is **false**.
 
 **Type:** boolean
 
@@ -310,7 +308,7 @@ HTTP request parameters. Parameters of the string type need to be encoded before
 header?: Object
 ```
 
-HTTP request header. If the request method is POST, PUT, DELETE, or null, the default value is {'content-Type': 'application/json'}. Otherwise, the default value is {'content-Type': 'application/x-www-form-urlencoded'}.
+HTTP request header. If the request method is POST, PUT, DELETE, or null, the default value is {'content-Type': ' application/json'}. Otherwise, the default value is {'content-Type': 'application/x-www-form-urlencoded'}.
 
 If the header contains fields of numeric type, the maximum value must be an int64 integer.
 
@@ -337,8 +335,6 @@ Maximum idle time of a connection in the connection pool. If this value is excee
 - The value range is (0, 2147483647]. If a value less than or equal to 0 is passed, the system uses the default  
 value 118s. This parameter does not take effect when **reuseConnections** is set to **false**.
 
-**Since**: 26.0.0
-
 **Type:** number
 
 **Since:** 26.0.0
@@ -355,9 +351,9 @@ value 118s. This parameter does not take effect when **reuseConnections** is set
 maxLimit?: number
 ```
 
-Maximum number of bytes in a response.
+Maximum byte limit of the response message.
 
-The default value is 5*1024*1024, in bytes. The maximum value is **100*1024*1024**.
+The default value is **5*1024*1024**, in bytes. The maximum value is **100*1024*1024**, in bytes.
 
 **Type:** number
 
@@ -443,7 +439,7 @@ Used to specify the network to be activated in an HTTP request.
 priority?: number
 ```
 
-Priority of concurrent HTTP/HTTPS requests. A larger value indicates a higher priority. The value range is [1, 1000]. The default value is **1**.
+Priority of HTTP/HTTPS requests. A larger value indicates a higher priority. The value range is [1,1000], and the default value is **1**. If the value is out of range, the default value will be used.
 
 **Type:** number
 
@@ -469,8 +465,6 @@ encoding). A **QueryParamObject** is automatically encoded and serialized by the
 - If both **queryParams** and **extraData** are configured, **queryParams** takes precedence, and the URL  
 parameter supplementation logic in **extraData** is ignored.
 
-**Since**: 26.0.0
-
 **Type:** string &#124; [QueryParamObject](arkts-network-http-queryparamobject-t.md)
 
 **Since:** 26.0.0
@@ -487,9 +481,9 @@ parameter supplementation logic in **extraData** is ignored.
 readTimeout?: number
 ```
 
-Read timeout duration. The default value is **60000**, in ms. The input value must be an uint32_t integer.
+Read timeout, in milliseconds (ms), with a default value of 60000 ms. The value passed in must be an integer within the uint32_t range.
 
-The value **0** indicates no timeout.
+Setting it to 0 means no timeout occurs.
 
 **Type:** number
 
@@ -569,8 +563,6 @@ Whether to reuse the connection for an HTTP request. The default value is **true
 
 - Connection reuse means that after an HTTP request is completed, the underlying TCP connection is not  
 immediately closed. Instead, it remains in the connection pool. If subsequent HTTP requests have the same target address, the connection can be reused, reducing the overhead of TCP and TLS handshakes and improving performance.
-
-**Since**: 26.0.0
 
 **Type:** boolean
 
@@ -679,7 +671,7 @@ Whether to use the cache. The value **true** indicates that the cache is prefere
 usingProtocol?: HttpProtocol
 ```
 
-Protocol. The default value is automatically specified by the system.
+Protocol version used by the HTTP request. If not specified, the system automatically negotiates the most suitable protocol version. If HTTP3 is specified, due to the security restrictions of the HTTP3 protocol, TLS version 1.3 must be specified through [TlsConfig](arkts-network-http-tlsconfig-i.md) and the target domain must support the HTTP3 protocol to enable HTTP3; otherwise, a downgrade is negotiated.
 
 **Type:** [HttpProtocol](arkts-network-http-httpprotocol-e.md)
 
@@ -697,12 +689,14 @@ Protocol. The default value is automatically specified by the system.
 usingProxy?: boolean | HttpProxy
 ```
 
-HTTP proxy configuration. If this item is not configured, the system proxy is used by default.
+HTTP proxy configuration. If this parameter is not configured, the system proxy is used by default.
 
-- If **usingProxy** is set to **true**, the default network proxy is used. If **usingProxy** is set to **false**,  
-no proxy is used.  
-- If **usingProxy** is of the **HttpProxy** type, the specified network proxy is used. The HttpProxy supports the  
-**username** and **password** fields from API version 22.
+- When **usingProxy** is of the boolean type and set to **true**, the default network proxy is used. When set  
+to **false**, no proxy is used.  
+- When **usingProxy** is of the HttpProxy type, the specified network proxy is used. Since API version 22,  
+HttpProxy supports specifying the **username** and **password** fields.  
+- Since API version 26.0.0, when **usingSocks5Proxy** is correctly configured, the **usingProxy** parameter  
+does not take effect.
 
 **Type:** boolean &#124; [HttpProxy](arkts-network-http-httpproxy-t.md)
 
@@ -720,7 +714,7 @@ no proxy is used.
 usingSocks5Proxy?: Socks5Proxy
 ```
 
-Specifies the use of a SOCKS5 proxy. Note that this configuration takes precedence over usingProxy. It is recommended not to configure both simultaneously.
+SOCKS5 proxy configuration. If this parameter is not configured, the SOCKS5 proxy is not started. When this parameter is correctly configured, if **usingProxy** is also configured, **usingProxy** does not take effect.
 
 **Type:** [Socks5Proxy](arkts-network-http-socks5proxy-t.md)
 

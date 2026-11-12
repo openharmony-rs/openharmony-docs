@@ -23,9 +23,3 @@ Init the HiRetrieval functionality.
 <!--Device-hiRetrieval-function init(): void--><!--Device-hiRetrieval-function init(): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiRetrieval
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| 36000002 | Multi-instance applications not supported error. Possibly caused by invoking this function in a multi-instance application. |

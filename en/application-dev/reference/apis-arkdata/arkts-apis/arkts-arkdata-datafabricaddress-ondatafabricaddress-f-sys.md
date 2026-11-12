@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { dataFabricAddress } from '@ohos.data.dataFabricAddress';
 ```
 
 ## onDataFabricAddress

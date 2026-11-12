@@ -19,6 +19,7 @@ Want是对象间信息传递的载体，可以用于应用组件间的信息传�
 ## 导入模块
 
 ```TypeScript
+import { Want } from '@ohos.application.Want';
 ```
 
 ## abilityName

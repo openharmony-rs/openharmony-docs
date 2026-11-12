@@ -60,13 +60,13 @@ import { vpnExtension } from '@kit.NetworkKit';
 | 名称 | 说明 |
 | --- | --- |
 | [VpnConfig](arkts-network-vpnextension-vpnconfig-i.md) | 三方VPN配置参数。 |
-| [VpnConnection](arkts-network-vpnextension-vpnconnection-i.md) | VPN连接对象。在调用VpnConnection的方法前，需要先通过vpnExt.createVpnConnection创建VPN连接对象。 |
-| [VpnObserver](arkts-network-vpnextension-vpnobserver-i.md) | VPN观察者对象。用于监听VPN相关事件。在调用VpnObserver的方法前，需要先通过[vpnExtension.createVpnObserver](arkts-network-vpnextension-createvpnobserver-f.md)创建VPN连接对象。 |
+| [VpnConnection](arkts-network-vpnextension-vpnconnection-i.md) | VPN连接对象。在调用VpnConnection的方法前，需要先通过vpnExtension.createVpnConnection创建VPN连接对象。 |
+| [VpnObserver](arkts-network-vpnextension-vpnobserver-i.md) | VPN观察者对象。用于监听VPN相关事件。在调用VpnObserver的方法前，需要先通过[vpnExtension.createVpnObserver](arkts-network-vpnextension-createvpnobserver-f.md)创建VPN观察者对象。 |
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [LinkAddress](arkts-network-vpnextension-linkaddress-t.md) | 获取网络链接信息。 |
+| [LinkAddress](arkts-network-vpnextension-linkaddress-t.md) | 获取网络链路信息。 |
 | [RouteInfo](arkts-network-vpnextension-routeinfo-t.md) | 获取网络路由信息。 |
 | [VpnExtensionContext](arkts-network-vpnextension-vpnextensioncontext-t.md) | VPN扩展的上下文。它允许访问serviceExtension特定资源。 |

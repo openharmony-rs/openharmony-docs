@@ -38,8 +38,8 @@ Intercepts the HTTP processing and modifies it as required.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| reqContext | [HttpRequestContext](arkts-network-http-httprequestcontext-i.md) | Yes | the context of the target HTTP request. |
-| rspContext | [HttpResponse](arkts-network-http-httpresponse-i.md) | Yes | the context of the target HTTP response. |
+| reqContext | [HttpRequestContext](arkts-network-http-httprequestcontext-i.md) | Yes | Context of the request parameters passed through the HTTP interceptor. |
+| rspContext | [HttpResponse](arkts-network-http-httpresponse-i.md) | Yes | Context of the return result passed through the HTTP interceptor. |
 
 **Return value:**
 
@@ -87,7 +87,7 @@ let customInterceptor = new CustomInterceptor();
 interceptorType: InterceptorType
 ```
 
-The type of this interceptor. It defines when this intercptor would be called.
+Interceptor type, which defines when the interceptor is called.
 
 **Type:** [InterceptorType](arkts-network-http-interceptortype-e.md)
 

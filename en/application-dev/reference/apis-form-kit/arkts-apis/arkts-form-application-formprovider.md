@@ -15,6 +15,7 @@ The **FormProvider** module provides APIs related to the widget provider. You ca
 ## Modules to Import
 
 ```TypeScript
+import { formProvider } from '@ohos.application.formProvider';
 ```
 
 ## Summary

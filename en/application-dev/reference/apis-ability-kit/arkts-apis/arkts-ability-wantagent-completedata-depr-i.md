@@ -19,6 +19,7 @@ Describes the data returned by after wantAgent.trigger is called.
 ## Modules to Import
 
 ```TypeScript
+import { wantAgent } from '@ohos.wantAgent';
 ```
 
 ## extraInfo

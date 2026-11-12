@@ -18,6 +18,24 @@ export interface AuthUser
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+## atomicDlpFileAccess
+
+```TypeScript
+atomicDlpFileAccess?: number
+```
+
+DLP文件的原子权限控制位掩码。值是由DlpAtomicPermissionType标志的按位或运算符（|）形成的掩码，来控制读取、编辑、复制、截图、打印和应用级权限。例如，`DlpAtomicPermissionType.ATOMIC_READ | DlpAtomicPermissionType.ATOMIC_COPY`同时授予读取和复制权限。默认值为0，表示不授予任何原子权限。
+
+**类型：** number
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AuthUser-atomicDlpFileAccess?: number--><!--Device-AuthUser-atomicDlpFileAccess?: number-End-->
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
 ## authAccount
 
 ```TypeScript

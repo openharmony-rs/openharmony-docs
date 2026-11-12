@@ -16,6 +16,6 @@ Represents the value of each attribute in [AssetMap](arkts-assetstore-asset-asse
 
 | Type | Description |
 | --- | --- |
-| boolean | The value is a boolean value, with a range of true or false. |
-| number | The value is a number, and the value range is the enumerated value or number corresponding to the tag. |
-| Uint8Array | The value is a byte array, and the content is defined by the service. |
+| boolean | The value type is Boolean. The value can be true or false. |
+| number | Indicates that the value type is a number. The value can be an enumerated value or a number supported by the corresponding tag. |
+| Uint8Array | Indicates that the value type is a byte array, and the content is defined by the service. |

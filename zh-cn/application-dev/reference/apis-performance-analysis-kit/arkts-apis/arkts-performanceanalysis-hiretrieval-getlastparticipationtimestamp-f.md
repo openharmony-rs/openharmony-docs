@@ -29,3 +29,12 @@ function getLastParticipationTimestamp(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 上一次参与应用灰度活动的UNIX时间戳，单位为毫秒。如果此设备从未参与则返回0。 |
+
+**示例**
+
+```TypeScript
+import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
+
+// 查询设备上次参与应用灰度活动的时间戳
+let ts = hiRetrieval.getLastParticipationTimestamp();
+```

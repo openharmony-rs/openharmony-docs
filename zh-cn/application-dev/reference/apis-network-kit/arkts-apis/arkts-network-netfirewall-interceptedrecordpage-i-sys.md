@@ -4,7 +4,7 @@
 interface InterceptedRecordPage
 ```
 
-拦截记录分页信息。
+拦截记录分页信息结构。
 
 **起始版本：** 14
 
@@ -26,6 +26,8 @@ import { netFirewall } from '@kit.NetworkKit';
 data: Array<InterceptedRecord>
 ```
 
+页面数据。
+
 **类型：** Array&lt;[InterceptedRecord](arkts-network-netfirewall-interceptedrecord-i-sys.md)&gt;
 
 **起始版本：** 14
@@ -42,7 +44,7 @@ data: Array<InterceptedRecord>
 page: number
 ```
 
-Current page number: indicates the page number of this query.
+当前页码。
 
 **类型：** number
 
@@ -60,7 +62,7 @@ Current page number: indicates the page number of this query.
 pageSize: number
 ```
 
-Page size: maximum number of records on a page for this query.
+页面大小。
 
 **类型：** number
 
@@ -78,7 +80,7 @@ Page size: maximum number of records on a page for this query.
 totalPage: number
 ```
 
-Total pages: total number of pages.
+总页数。
 
 **类型：** number
 

@@ -50,7 +50,7 @@ Deletes the specified resource.
 GET = "GET"
 ```
 
-Requests the representation of the specified resource. The GET request should only retrieve data and should not contain the request content.
+Requests a representation of the specified resource. Requests using **GET** should only retrieve data and should not contain a request body.
 
 **Since:** 6
 
@@ -66,7 +66,7 @@ Requests the representation of the specified resource. The GET request should on
 HEAD = "HEAD"
 ```
 
-Requests the same response (but does not have a response body) as the GET request.
+Requests or a response identical to that of a **GET** request, but without the response body.
 
 **Since:** 6
 
@@ -82,7 +82,7 @@ Requests the same response (but does not have a response body) as the GET reques
 OPTIONS = "OPTIONS"
 ```
 
-Describes the communication options of the target resource.
+Describes the communication options for the target resource.
 
 **Since:** 6
 
@@ -98,9 +98,7 @@ Describes the communication options of the target resource.
 PATCH = "PATCH"
 ```
 
-Modifies a resource partially.
-
-**Since**: 26.0.0
+Applies partial modifications to a resource.
 
 **Since:** 26.0.0
 
@@ -116,7 +114,7 @@ Modifies a resource partially.
 POST = "POST"
 ```
 
-Submits an entity to a specified resource, which usually causes a status change on the server.
+Submits an entity to the specified resource, often causing a change in state on the server.
 
 **Since:** 6
 
@@ -132,7 +130,7 @@ Submits an entity to a specified resource, which usually causes a status change 
 PUT = "PUT"
 ```
 
-Replaces all current representations of the target resource with the requested content.
+Replaces all current representations of the target resource with the request content.
 
 **Since:** 6
 
@@ -148,7 +146,7 @@ Replaces all current representations of the target resource with the requested c
 TRACE = "TRACE"
 ```
 
-Performs a message loopback test along the path to the target resource.
+Performs a message loop-back test along the path to the target resource.
 
 **Since:** 6
 

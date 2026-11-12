@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function setPolicyByUid(uid: number, policy: NetUidPolicy, callback: AsyncCallback<void>): void
 ```
 
-设置对应 uid 应用是否能够访问计量网络的策略，使用 callback 异步回调。
+设置对应 uid 应用是否能够访问计量网络的策略。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -30,7 +30,7 @@ function setPolicyByUid(uid: number, policy: NetUidPolicy, callback: AsyncCallba
 | --- | --- | --- | --- |
 | uid | number | 是 | app 唯一标识符，取值范围为int32_t范围内的正整数。 |
 | policy | [NetUidPolicy](arkts-network-policy-netuidpolicy-e-sys.md) | 是 | 应用对应的策略。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，成功返回空，失败返回错误码错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回空，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
@@ -63,7 +63,7 @@ policy.setPolicyByUid(11111, policy.NetUidPolicy.NET_POLICY_NONE, (error: Busine
 function setPolicyByUid(uid: number, policy: NetUidPolicy): Promise<void>
 ```
 
-设置对应 uid 应用是否能够访问计量网络的策略，使用 Promise 异步回调。
+设置对应 uid 应用是否能够访问计量网络的策略。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -86,7 +86,7 @@ function setPolicyByUid(uid: number, policy: NetUidPolicy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

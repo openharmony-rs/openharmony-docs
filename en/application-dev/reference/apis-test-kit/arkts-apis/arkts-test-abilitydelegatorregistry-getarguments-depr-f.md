@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { abilityDelegatorRegistry } from '@ohos.application.abilityDelegatorRegistry';
 ```
 
 ## getArguments

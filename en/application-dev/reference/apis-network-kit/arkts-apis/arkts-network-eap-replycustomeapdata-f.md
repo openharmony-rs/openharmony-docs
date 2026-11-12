@@ -16,9 +16,9 @@ Notifies the system of the extensible authentication result.
 
 > **NOTE:** 
 > 
-> - If this callback is used to process received EAP data packets, the customized portion added by the server must be removed from the EAP data transmitted to the system.
+> - If the callback is used to process received EAP packets (rx), the EAP data passed to the system must have the custom part added by the server stripped.
 > 
-> - If this callback is used to process sent EAP data packets, the EAP data transmitted to the system is the EAP data with the customized portion added by the server.
+> - If the callback is used to process sent EAP packets (tx), the EAP data passed to the system is the EAP data after the custom part is added.
 
 **Since:** 20
 
@@ -40,10 +40,10 @@ Notifies the system of the extensible authentication result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [33200004](../errorcode-net-eap.md#33200004-invalid-eap-result-value) | Invalid result |
-| [33200005](../errorcode-net-eap.md#33200005-invalid-data-length) | Invalid size of eap data |
-| [33200009](../errorcode-net-eap.md#33200009-netmanager-not-exist) | netmanager stop |
-| [33200099](../errorcode-net-eap.md#33200099-internal-program-error) | internal error |
+| [33200004](../errorcode-net-eap.md#33200004-invalid-eap-result-value) | Invalid result. |
+| [33200005](../errorcode-net-eap.md#33200005-invalid-data-length) | Invalid size of eap data. |
+| [33200009](../errorcode-net-eap.md#33200009-netmanager-not-exist) | netmanager stop. |
+| [33200099](../errorcode-net-eap.md#33200099-internal-program-error) | internal error. |
 
 **Examples**
 

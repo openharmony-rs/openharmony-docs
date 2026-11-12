@@ -19,6 +19,7 @@ Defines predicates for an RDB store. This class determines whether the condition
 ## Modules to Import
 
 ```TypeScript
+import { rdb } from '@ohos.data.rdb';
 ```
 
 ## and

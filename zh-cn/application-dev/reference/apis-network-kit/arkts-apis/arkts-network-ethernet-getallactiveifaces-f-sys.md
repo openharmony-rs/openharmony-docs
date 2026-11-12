@@ -12,7 +12,7 @@ import { ethernet } from '@kit.NetworkKit';
 function getAllActiveIfaces(callback: AsyncCallback<Array<string>>): void
 ```
 
-获取活动的网络接口，使用callback异步回调。
+获取活动的网络接口。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -67,7 +67,7 @@ ethernet.getAllActiveIfaces((error: BusinessError, value: string[]) => {
 function getAllActiveIfaces(): Promise<Array<string>>
 ```
 
-获取活动的网络接口，使用Promise异步回调。
+获取活动的网络接口。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -83,7 +83,7 @@ function getAllActiveIfaces(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | 以Promise形式返回获取结果。返回值为对应接口名。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回获取结果。返回值为对应接口名。 |
 
 **错误码：**
 

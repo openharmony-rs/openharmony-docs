@@ -19,6 +19,7 @@ Want is a carrier for information transfer between objects (application componen
 ## Modules to Import
 
 ```TypeScript
+import { Want } from '@ohos.application.Want';
 ```
 
 ## abilityName

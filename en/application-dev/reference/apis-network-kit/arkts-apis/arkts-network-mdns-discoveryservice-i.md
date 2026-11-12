@@ -89,7 +89,7 @@ Disables listening for **discoveryStop** events.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'discoveryStop' | Yes | Event type. This field has a fixed value of **discoveryStop**. <br>**discoveryStop**: event of stopping discovery of MDNS services on the LAN. |
+| type | 'discoveryStop' | Yes | Event to unsubscribe from, which is fixed to **'discoveryStop'**. <br>**discoveryStop**: event of stopping discovery of MDNS services on the local area network. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DiscoveryEventInfo](arkts-network-mdns-discoveryeventinfo-i.md)&gt; | No | Callback used to return the MDNS service and error information. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.<br>**Since:** 11 |
 
 **Examples**
@@ -231,7 +231,7 @@ discoveryService.off('serviceLost', (data: mdns.LocalServiceInfo) => {
 on(type: 'discoveryStart', callback: Callback<DiscoveryEventInfo>): void
 ```
 
-Enables listening for **discoveryStart** events.
+Subscribes to the notification for starting to listen for MDNS services.
 
 **Since:** 10
 

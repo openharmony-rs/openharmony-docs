@@ -28,6 +28,8 @@ import { vpn } from '@kit.NetworkKit';
 ipsecCaCertConfig?: string
 ```
 
+IPSec VPN网络的CA证书配置。
+
 **类型：** string
 
 **起始版本：** 12
@@ -43,6 +45,8 @@ ipsecCaCertConfig?: string
 ```TypeScript
 ipsecCaCertFilePath?: string
 ```
+
+IPSec VPN网络的CA证书文件路径。
 
 **类型：** string
 
@@ -60,6 +64,8 @@ ipsecCaCertFilePath?: string
 ipsecIdentifier?: string
 ```
 
+IPSec VPN网络的标识符。
+
 **类型：** string
 
 **起始版本：** 12
@@ -75,6 +81,8 @@ ipsecIdentifier?: string
 ```TypeScript
 ipsecPreSharedKey?: string
 ```
+
+IPSec VPN网络的预共享密钥。
 
 **类型：** string
 
@@ -92,6 +100,8 @@ ipsecPreSharedKey?: string
 ipsecPrivateServerCertConfig?: string
 ```
 
+IPSec VPN网络的服务端私钥证书配置。
+
 **类型：** string
 
 **起始版本：** 12
@@ -107,6 +117,8 @@ ipsecPrivateServerCertConfig?: string
 ```TypeScript
 ipsecPrivateServerCertFilePath?: string
 ```
+
+IPSec VPN网络的服务端私钥证书文件路径。
 
 **类型：** string
 
@@ -124,6 +136,8 @@ ipsecPrivateServerCertFilePath?: string
 ipsecPrivateUserCertConfig?: string
 ```
 
+IPSec VPN网络的用户私钥证书配置。
+
 **类型：** string
 
 **起始版本：** 12
@@ -139,6 +153,8 @@ ipsecPrivateUserCertConfig?: string
 ```TypeScript
 ipsecPrivateUserCertFilePath?: string
 ```
+
+IPSec VPN网络的用户私钥证书文件路径。
 
 **类型：** string
 
@@ -156,6 +172,8 @@ ipsecPrivateUserCertFilePath?: string
 ipsecPublicServerCertConfig?: string
 ```
 
+IPSec VPN网络的服务端公钥证书配置。
+
 **类型：** string
 
 **起始版本：** 12
@@ -171,6 +189,8 @@ ipsecPublicServerCertConfig?: string
 ```TypeScript
 ipsecPublicServerCertFilePath?: string
 ```
+
+IPSec VPN网络的服务端公钥证书文件路径。
 
 **类型：** string
 
@@ -188,6 +208,8 @@ ipsecPublicServerCertFilePath?: string
 ipsecPublicUserCertConfig?: string
 ```
 
+IPSec VPN网络的用户公钥证书配置。
+
 **类型：** string
 
 **起始版本：** 12
@@ -203,6 +225,8 @@ ipsecPublicUserCertConfig?: string
 ```TypeScript
 ipsecPublicUserCertFilePath?: string
 ```
+
+IPSec VPN网络的用户公钥证书文件路径。
 
 **类型：** string
 
@@ -220,6 +244,8 @@ ipsecPublicUserCertFilePath?: string
 strongSwanConfig?: string
 ```
 
+IPSec VPN网络的strongSwan配置。
+
 **类型：** string
 
 **起始版本：** 12
@@ -235,6 +261,8 @@ strongSwanConfig?: string
 ```TypeScript
 swanctlConfig?: string
 ```
+
+IPSec VPN网络的swanctl配置。
 
 **类型：** string
 

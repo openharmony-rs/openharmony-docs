@@ -19,6 +19,7 @@ Watcher是文件变化监听的实例，调用Watcher.stop()方法（同步或�
 ## 导入模块
 
 ```TypeScript
+import { fileIO } from '@ohos.fileio';
 ```
 
 ## stop

@@ -19,6 +19,7 @@ The module defines environment change information. Configuration is an interface
 ## Modules to Import
 
 ```TypeScript
+import { Configuration } from '@ohos.application.Configuration';
 ```
 
 ## colorMode

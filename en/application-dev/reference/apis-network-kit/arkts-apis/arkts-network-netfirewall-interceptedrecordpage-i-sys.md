@@ -4,7 +4,7 @@
 interface InterceptedRecordPage
 ```
 
-Intercepted record page information.
+Defines the pagination structure for interception records.
 
 **Since:** 14
 
@@ -26,7 +26,7 @@ import { netFirewall } from '@kit.NetworkKit';
 data: Array<InterceptedRecord>
 ```
 
-Page data: all records displayed on this page.
+Page data.
 
 **Type:** Array&lt;[InterceptedRecord](arkts-network-netfirewall-interceptedrecord-i-sys.md)&gt;
 
@@ -44,7 +44,7 @@ Page data: all records displayed on this page.
 page: number
 ```
 
-Current page number: indicates the page number of this query.
+Current page.
 
 **Type:** number
 
@@ -62,7 +62,7 @@ Current page number: indicates the page number of this query.
 pageSize: number
 ```
 
-Page size: maximum number of records on a page for this query.
+Page size.
 
 **Type:** number
 
@@ -80,7 +80,7 @@ Page size: maximum number of records on a page for this query.
 totalPage: number
 ```
 
-Total pages: total number of pages.
+Total number of pages.
 
 **Type:** number
 

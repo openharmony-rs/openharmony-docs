@@ -18,7 +18,7 @@ enum CertificateStatus
 CERT_STATUS_EXPIRED = 2
 ```
 
-设备证书过期。
+设备证书过期，需要重新申请设备证书。
 
 **起始版本：** 11
 

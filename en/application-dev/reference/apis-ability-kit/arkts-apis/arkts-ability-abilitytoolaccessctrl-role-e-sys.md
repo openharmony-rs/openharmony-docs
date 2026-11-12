@@ -20,7 +20,7 @@ Device role.
 CONTROLLED = 0x02
 ```
 
-Controlled device.
+Charged equipment.
 
 **Since:** 26.0.1
 
@@ -38,7 +38,7 @@ Controlled device.
 CONTROLLER = 0x01
 ```
 
-Controller device.
+Master device.
 
 **Since:** 26.0.1
 

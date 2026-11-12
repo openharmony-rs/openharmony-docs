@@ -14,6 +14,14 @@ export function certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
 系统将使用证书管理中的预置CA证书和用户安装的CA证书来校验应用传入的证书，使用同步方式返回。
 
+> **说明：** 
+> 
+> 这些错误代码对应于证书验证过程中的各种失败。
+> 
+> **注意：**
+> 
+> 请务必将示例中的证书数据替换为实际的证书内容。
+
 **起始版本：** 11
 
 <!--Device-networkSecurity-export function certVerificationSync(cert: CertBlob, caCert?: CertBlob): int--><!--Device-networkSecurity-export function certVerificationSync(cert: CertBlob, caCert?: CertBlob): int-End-->

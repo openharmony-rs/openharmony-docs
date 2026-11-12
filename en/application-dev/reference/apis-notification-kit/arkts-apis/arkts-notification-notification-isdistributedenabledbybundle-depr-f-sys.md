@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { notification } from '@ohos.notification';
 ```
 
 ## isDistributedEnabledByBundle

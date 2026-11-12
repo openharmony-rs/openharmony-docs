@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function resetPolicies(simId: string, callback: AsyncCallback<void>): void
 ```
 
-Restores all the policies (cellular network, background network, firewall, and application-specific network policies) for the specified SIM card. This API uses an asynchronous callback to return the result.
+Resets the cellular network, background network policy, firewall policy, and application-specific policy corresponding to the specified SIM card ID. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -62,7 +62,7 @@ policy.resetPolicies('1', (error: BusinessError) => {
 function resetPolicies(simId: string): Promise<void>
 ```
 
-Resets the cellular network, background network policy, firewall policy, and app policy corresponding to the SIM card ID. This API uses a promise to return the result.
+Resets the cellular network, background network policy, firewall policy, and application-specific policies corresponding to the SIM card ID. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -84,7 +84,7 @@ Resets the cellular network, background network policy, firewall policy, and app
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

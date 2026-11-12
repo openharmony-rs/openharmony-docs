@@ -17,6 +17,7 @@ declare interface ReadOut
 ## 导入模块
 
 ```TypeScript
+import { fileIO } from '@ohos.fileio';
 ```
 
 ## buffer

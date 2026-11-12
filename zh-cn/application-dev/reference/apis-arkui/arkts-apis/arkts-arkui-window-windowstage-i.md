@@ -1863,7 +1863,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause:         1. Only main windows and subwindows are supported.         2. Not supported when subwindows are set to follow the main window. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause:         1. When called on a main window, the parameter should not only contain SPLIT.         2. When called on a sub window, the parameter should not contain SPLIT. |
+| [1300016](../errorcode-window.md#1300016-参数错误) | Parameter error. Possible cause:         1. When called on a main window, the parameter should not only contain SPLIT.         2. When called on a sub window, the parameter should not contain SPLIT. |
 
 **示例**
 
@@ -1931,7 +1931,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Function setSupportedWindowModes can not work correctly due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause:         1. Invalid parameter range.         2. Invalid parameter length.         3. Incorrect parameter format. |
+| [1300016](../errorcode-window.md#1300016-参数错误) | Parameter error. Possible cause:         1. Invalid parameter range.         2. Invalid parameter length.         3. Incorrect parameter format. |
 
 **示例**
 

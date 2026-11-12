@@ -12,7 +12,7 @@ import { statistics } from '@kit.NetworkKit';
 function setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: number): Promise<void>
 ```
 
-设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据。使用Promise异步回调。
+设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据，接口会将simId对应的剩余流量（remainTraffic）与套餐总流量（totalTraffic）写入系统流量统计数据库并用于后续流量统计与校准计算，校准结果对后续查询接口返回的数据生效。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 

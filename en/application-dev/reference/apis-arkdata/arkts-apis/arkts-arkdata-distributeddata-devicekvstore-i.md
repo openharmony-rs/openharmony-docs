@@ -21,6 +21,7 @@ Provides APIs to query and synchronize data in a device KV store. This class inh
 ## Modules to Import
 
 ```TypeScript
+import { distributedData } from '@ohos.data.distributedData';
 ```
 
 ## closeResultSet

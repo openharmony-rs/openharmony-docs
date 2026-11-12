@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function setNetworkAccessPolicy(uid: number, policy: NetworkAccessPolicy, isReconfirmed?: boolean): Promise<void>
 ```
 
-Sets whether the application with the specified UID can access the network. This API uses a promise to return the result.
+Sets the policy on whether the application with the specified UID can access the network. This API uses a promise to return the result.
 
 **Since:** 12
 
@@ -28,7 +28,7 @@ Sets whether the application with the specified UID can access the network. This
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | Unique app ID, which is a positive integer within the int32_t range. |
+| uid | number | Yes | Unique identifier of the app. The value range is a positive integer within the int32_t range. |
 | policy | [NetworkAccessPolicy](arkts-network-policy-networkaccesspolicy-i-sys.md) | Yes | Network policy. |
 | isReconfirmed | boolean | No | Whether reconfirmation is required. The value **true** indicates that reconfirmation is not required and no dialog box is displayed. The value **false** indicates that reconfirmation is required and a dialog box is displayed when the application accesses the network. The default value is **false**. |
 
@@ -36,7 +36,7 @@ Sets whether the application with the specified UID can access the network. This
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

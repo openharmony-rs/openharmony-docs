@@ -12,7 +12,7 @@ import { ethernet } from '@kit.NetworkKit';
 function getAllActiveIfaces(callback: AsyncCallback<Array<string>>): void
 ```
 
-Obtains the active network interface. This API uses an asynchronous callback to return the result.
+Obtains the active network interfaces. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -67,7 +67,7 @@ ethernet.getAllActiveIfaces((error: BusinessError, value: string[]) => {
 function getAllActiveIfaces(): Promise<Array<string>>
 ```
 
-Obtains the active network interface. This API uses a promise to return the result.
+Obtains the active network interfaces. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -83,7 +83,7 @@ Obtains the active network interface. This API uses a promise to return the resu
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the result. |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the result. The return value is the corresponding API name. |
 
 **Error codes:**
 

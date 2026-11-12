@@ -14,8 +14,6 @@ function getConnectionProperties(netHandle: NetHandle, callback: AsyncCallback<C
 
 Obtains the connection information of the data network specified by **NetHandle**, including the NIC name, domain name, link information, route information, network address, and maximum transmission unit. This API uses an asynchronous callback to return the result.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
-
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
@@ -71,8 +69,6 @@ function getConnectionProperties(netHandle: NetHandle): Promise<ConnectionProper
 ```
 
 Obtains the connection information of the data network specified by **NetHandle**, including the NIC name, domain name, link information, route information, network address, and maximum transmission unit. This API uses a promise to return the result.
-
-**Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since:** 8
 

@@ -73,7 +73,7 @@ Obtains the total uplink traffic (in bytes) of all NICs from the last startup to
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the real-time uplink traffic (in bytes) of all NICs. |
+| Promise&lt;number&gt; | Promise used to return the real-time uplink traffic of all network cards (in bytes). |
 
 **Error codes:**
 

@@ -19,7 +19,6 @@ Reports the network availability to the network management module. This API uses
 > This API is used by the browser to connect to the portal network. After the network authentication is successful,
 > the browser reports the network connection success to the network management module. The network management
 > module then triggers network detection and updates the network status.
-> **Permission required**: ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
 
 **Since:** 8
 
@@ -68,8 +67,6 @@ function reportNetConnected(netHandle: NetHandle): Promise<void>
 
 Reports that the network is available to the network management module. This API uses a promise to return the result.
 
-**Permission required**: ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
-
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
@@ -88,7 +85,7 @@ Reports that the network is available to the network management module. This API
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

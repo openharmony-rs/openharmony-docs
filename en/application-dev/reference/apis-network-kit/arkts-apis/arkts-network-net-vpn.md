@@ -44,7 +44,7 @@ import { vpn } from '@kit.NetworkKit';
 | [OpenVpnConfig](arkts-network-vpn-openvpnconfig-i-sys.md) | Define configuration of the open VPN network. |
 | [SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md) | Define configuration of the system VPN network. |
 | [VpnConfig](arkts-network-vpn-vpnconfig-i-sys.md) | Defines the VPN configuration. |
-| [VpnConnection](arkts-network-vpn-vpnconnection-i-sys.md) | Defines a VPN connection object. Before calling **VpnConnection** APIs, you need to create a VPN connection object by calling [vpn.createVpnConnection](arkts-network-vpn-createvpnconnection-f-sys.md). |
+| [VpnConnection](arkts-network-vpn-vpnconnection-i-sys.md) | VPN connection object. Before calling the methods of **VpnConnection**, you must create a VPN connection object through [vpn.createVpnConnection](arkts-network-vpn-createvpnconnection-f-sys.md). |
 <!--DelEnd-->
 
 ### Types
@@ -52,8 +52,8 @@ import { vpn } from '@kit.NetworkKit';
 | Name | Description |
 | --- | --- |
 | [AbilityContext](arkts-network-vpn-abilitycontext-t.md) | The context of an ability. It allows access to ability-specific resources. |
-| [LinkAddress](arkts-network-vpn-linkaddress-t.md) | Defines the network link address information. |
-| [RouteInfo](arkts-network-vpn-routeinfo-t.md) | Defines the network route information. |
+| [LinkAddress](arkts-network-vpn-linkaddress-t.md) | Represents the network link information. |
+| [RouteInfo](arkts-network-vpn-routeinfo-t.md) | Represents the network route information. |
 
 <!--Del-->
 ### Enums(System API)

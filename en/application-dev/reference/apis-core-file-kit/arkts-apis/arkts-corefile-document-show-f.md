@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { document } from '@ohos.document';
 ```
 
 ## show

@@ -14,6 +14,8 @@ function removeCheckRule(rule: bigint) : void
 
 删除一条或多条规则，删除的规则后续将不再生效。
 
+如果传入的规则级别为线程级别，则仅从当前线程中删除。
+
 **起始版本：** 9
 
 <!--Device-hichecker-function removeCheckRule(rule: bigint) : void--><!--Device-hichecker-function removeCheckRule(rule: bigint) : void-End-->
@@ -24,7 +26,7 @@ function removeCheckRule(rule: bigint) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rule | bigint | 是 | 需要删除的规则。 |
+| rule | bigint | 是 | 需要删除的规则。支持使用或运算组合多个规则。可选值包括：<br>RULE_CAUTION_PRINT_LOG（记录日志）、RULE_CAUTION_TRIGGER_CRASH（应用退出）、RULE_THREAD_CHECK_SLOW_PROCESS（检测耗时函数调用）等，详见常量定义。 |
 
 **错误码：**
 

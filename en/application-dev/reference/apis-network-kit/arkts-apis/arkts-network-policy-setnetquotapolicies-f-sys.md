@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function setNetQuotaPolicies(quotaPolicies: Array<NetQuotaPolicy>, callback: AsyncCallback<void>): void
 ```
 
-Sets the metering network policy. This API uses an asynchronous callback to return the result.
+Sets the metered network policy. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -80,7 +80,7 @@ policy.setNetQuotaPolicies(netQuotaPolicyList, (error: BusinessError) => {
 function setNetQuotaPolicies(quotaPolicies: Array<NetQuotaPolicy>): Promise<void>
 ```
 
-Sets the metering network policy. This API uses a promise to return the result.
+Sets the metered network policy. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -102,7 +102,7 @@ Sets the metering network policy. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

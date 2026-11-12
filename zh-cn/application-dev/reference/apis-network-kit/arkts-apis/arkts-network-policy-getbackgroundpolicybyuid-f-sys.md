@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getBackgroundPolicyByUid(uid: number, callback: AsyncCallback<NetBackgroundPolicy>): void
 ```
 
-获取指定 uid 是否能访问后台网络，使用 callback 异步回调。
+获取指定 uid 是否能访问后台网络。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -63,7 +63,7 @@ policy.getBackgroundPolicyByUid(11111, (error: BusinessError, data: policy.NetBa
 function getBackgroundPolicyByUid(uid: number): Promise<NetBackgroundPolicy>
 ```
 
-获取指定 uid 能否访问后台网络，使用 Promise 异步回调。
+获取指定 uid 能否访问后台网络。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -85,7 +85,7 @@ function getBackgroundPolicyByUid(uid: number): Promise<NetBackgroundPolicy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetBackgroundPolicy](arkts-network-policy-netbackgroundpolicy-e-sys.md)&gt; | 以 Promise 形式返回设定结果。 |
+| Promise&lt;[NetBackgroundPolicy](arkts-network-policy-netbackgroundpolicy-e-sys.md)&gt; | Promise对象，返回设定结果。 |
 
 **错误码：**
 

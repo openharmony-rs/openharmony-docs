@@ -12,7 +12,7 @@ import { sharing } from '@kit.NetworkKit';
 function getSharingState(type: SharingIfaceType, callback: AsyncCallback<SharingIfaceState>): void
 ```
 
-获取指定类型网络共享状态，使用 callback 异步回调。
+获取指定类型网络共享状态。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -87,7 +87,7 @@ function getSharingState(type: SharingIfaceType): Promise<SharingIfaceState>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SharingIfaceState](arkts-network-sharing-sharingifacestate-e-sys.md)&gt; | 以 Promise 形式返回定类型网络共共享状态。 |
+| Promise&lt;[SharingIfaceState](arkts-network-sharing-sharingifacestate-e-sys.md)&gt; | Promise对象，返回指定类型网络共享状态。 |
 
 **错误码：**
 

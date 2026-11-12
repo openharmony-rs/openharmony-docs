@@ -12,7 +12,7 @@ import { connection } from '@kit.NetworkKit';
 function factoryReset(): Promise<void>
 ```
 
-Resets the network settings to the factory defaults. This API uses a promise to return the result.
+Resets network settings to factory defaults. This API uses a promise to return the result.
 
 **Since:** 11
 

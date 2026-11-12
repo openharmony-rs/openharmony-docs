@@ -14,57 +14,61 @@ function addNetFirewallRule(rule: NetFirewallRule): Promise<number>
 
 Adds a firewall rule for the system user ID. The supported rule types are IP, Domain, and DNS. This API uses a promise to return the result.
 
-> **Description**
+> **NOTE:** 
 > 
-> 1. The priority of firewall rules is described as follows (there is no requirement on the call sequence of [setNetFirePolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md) and [addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md)):
+> 1. Firewall rule priority description (no call order is required between [setNetFirewallPolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md) and [addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md)):
 > 
-> - Call [setNetFirePolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md) to set the default policy to **DENY** and call [addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md) to add an explicit rule. The priorities of the rules are as follows:
+> - When [setNetFirewallPolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md) is called to set the default policy to deny and [addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md) is called to add explicit rules, the rule priority from high to low is as follows:
 > 
-> - Explicit denying rule
+> - Explicit deny rule
 > 
-> - Explicit allowing rule
+> - Explicit allow rule
 > 
-> - Default denying policy
+> - Default deny policy
 > 
-> - Call [setNetFirePolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md) to set the default policy to **ALLOW** and call [addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md) to add an explicit rule. The priorities of the rules are as follows:
+> - When [setNetFirewallPolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md) is called to set the default policy to allow and [addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md) is called to add explicit rules, the rule priority from high to low is as follows:
 > 
-> - Explicit allowing rule
+> - Explicit allow rule
 > 
-> - Explicit denying rule
+> - Explicit deny rule
 > 
-> - Default allowing policy
+> - Default allow policy
 > 
-> - When the IP address rule and domain name rule of the firewall conflict (the IP of the domain name resolution is the same as that in the IP address rule, and the rule behavior conflicts):
+> - When a firewall IP rule conflicts with a domain rule (the IP resolved from the domain is the same as the IP in the IP rule, and the rule actions conflict):
 > 
-> - If the access is performed using a domain name, the domain name rule has a higher priority than the IP address rule and is not affected by the rule of the IP parsed from the domain name.
+> - If the access is performed by domain name, the domain rule takes precedence over the IP rule and is not affected by the rule of the IP resolved from the domain.
 > 
-> - If the access is performed using an IP address, the following rules are followed:
+> - If the access is performed by IP address, the following principles apply:
 > 
-> - If the domain name rule allows the access and the domain name resolution has been performed, the IP address denying rule or the default denying policy will not take effect, and the access using the IP address will be allowed.
+> - When the domain rule allows access, neither the IP rule nor the default policy can block the access, and the access by IP address is ultimately allowed.
 > 
-> - If the domain name rule allows the access and the domain name resolution has not been performed, the IP address denying rule or the default denying policy will take effect, and the access using the IP address will be denied.
+> - When the domain rule denies access, the allow action of the IP rule or the default policy still takes effect,and the access by IP address is ultimately allowed.
 > 
-> - If the domain name rule denies the access, the IP address allowing rule or the default policy will take effect,and the access using the IP address will be allowed.
+> - The system identifies domain-based access and IP-based access as follows:
+> 
+> - If the destination IP matches an IP address in the system network-layer domain cache table, the application is considered to access by domain name.
+> 
+> - If the destination IP does not match any IP address in the system network-layer domain cache table, the application is considered to access by IP address.
+> 
+> - The system network layer proactively queries the DNS information configured in the firewall and caches the corresponding IP addresses so that the domain allow rule takes effect.
 > 
 > 2. Supplementary description of rule types:
 > 
-> - When the input parameter **rule.type** of **addNetFirewallRule** is set to **RULE_IP**:
+> - When **rule.type** of **addNetFirewallRule** is set to **RULE_IP**:
 > 
-> - If **rule.action** is set to **RULE_ALLOW** and **rule.localIps** and **rule.remoteIps** are not configured,the rule takes effect as full IP range access is allowed.
+> - If **rule.action** is **RULE_ALLOW** and neither **rule.localIps** nor **rule.remoteIps** is configured, the rule takes effect as allowing all IP segments.
 > 
-> - If **rule.action** is set to **RULE_DENY** and **rule.localIps** and **rule.remoteIps** are not configured, the rule takes effect as full IP range access is denied.
+> - If **rule.action** is **RULE_DENY** and neither **rule.localIps** nor **rule.remoteIps** is configured, the rule takes effect as blocking all IP segments.
 > 
-> - If **rule.type** of **addNetFirewallRule** is set to **RULE_DOMAIN** and **rule.domains** is not configured,the rule does not take effect.
+> - When **rule.type** of **addNetFirewallRule** is set to **RULE_DOMAIN**, if **rule.domains** is not configured,the rule does not take effect.
 > 
 > 3. Description of the upper limit for adding firewall rules:
 > 
-> - A maximum of 1000 firewall rules can be added for a single system user ID. If this limit is exceeded, error code **29400001** is reported.
+> - The upper limit of firewall rules added for a single system user ID is 1000. If this limit is exceeded, error code **29400001** is reported.
 > 
-> - A maximum of 2000 firewall rules can be added for all system user IDs. If this limit is exceeded, error code
-> **29400001** is reported.
+> - The upper limit of the total number of firewall rules added for all system user IDs is 2000. If this limit is exceeded, error code 29400001 is reported.
 > 
-> - A maximum of 100 fuzzy domain name rules can be added for all system user IDs. If this limit is exceeded, error code **29400005** is reported.
-> **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
+> - The upper limit of the total number of wildcard domain rules added for all system user IDs is 100. If this limit is exceeded, error code 29400005 is reported.
 
 **Since:** 15
 
@@ -84,7 +88,7 @@ Adds a firewall rule for the system user ID. The supported rule types are IP, Do
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the result, which is the firewall rule ID automatically generated by the system. |
+| Promise&lt;number&gt; | Promise used to return the firewall rule ID, which is automatically generated by the system. |
 
 **Error codes:**
 

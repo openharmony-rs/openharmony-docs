@@ -4,7 +4,7 @@
 export type LinkAddress = connection.LinkAddress
 ```
 
-Defines the network link address information.
+Represents the network link information.
 
 **Type:** [connection.LinkAddress](arkts-network-connection-linkaddress-i.md)
 

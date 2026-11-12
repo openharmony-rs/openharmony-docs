@@ -10224,6 +10224,41 @@ setNavigationEntryUserData(key: string, value: string): void
 | --- | --- |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | 初始化错误。WebviewController必须与Web组件关联。调用该接口前，请确保WebviewController关联了Web组件。 |
 
+## setNavigationThrottle
+
+```TypeScript
+setNavigationThrottle(throttle: NavigationThrottle): void
+```
+
+设置 NavigationThrottle，用于在多个阶段拦截导航请求。
+
+NavigationThrottle 提供四个导航阶段的回调：`willStartRequest`、`willRedirectRequest`、`willProcessResponse`、`willFailRequest`。每个回调可返回 PROCEED、CANCEL 或 DEFER。返回 DEFER 时，导航暂停，直到调用 DeferThrottleCallback 的`proceed()`或`cancel()`。
+
+> **说明：** 
+> 
+> - 调用本接口会替换之前设置的 NavigationThrottle，原 throttle 不再被调用。
+> - 本接口不影响[onOverrideUrlLoading](../arkts-components/arkts-arkweb-web-comp-attribute.md#onoverrideurlloading)。两者同时设置时，先调用[onOverrideUrlLoading](../arkts-components/arkts-arkweb-web-comp-attribute.md#onoverrideurlloading)，再调用 NavigationThrottle 回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebviewController-setNavigationThrottle(throttle: NavigationThrottle): void--><!--Device-WebviewController-setNavigationThrottle(throttle: NavigationThrottle): void-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| throttle | [NavigationThrottle](arkts-arkweb-webview-navigationthrottle-i.md) | 是 | 用于拦截导航的 NavigationThrottle 实例。传入**undefined**或**null**清除当前 NavigationThrottle。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
+
 ## setNetworkAvailable
 
 ```TypeScript

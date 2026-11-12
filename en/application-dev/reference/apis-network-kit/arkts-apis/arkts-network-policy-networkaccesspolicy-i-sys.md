@@ -44,7 +44,7 @@ Whether the application is allowed to access the cellular network. The value **t
 allowWiFi?: boolean
 ```
 
-Whether the application is allowed to access the Wi-Fi network. The value **true** indicates that the application is allowed to access the Wi-Fi network, and the value **false** indicates the opposite.
+Whether to allow the application to access the Wi-Fi network. The value true means allowed, and false means not allowed.
 
 **Type:** boolean
 
@@ -80,7 +80,7 @@ Whether the application is always allowed to access the cellular network. The va
 alwaysAllowWiFi?: boolean
 ```
 
-Whether the application is always allowed to access the Wi-Fi network. The value **true** indicates that the application is always allowed to access the Wi-Fi network, and the value **false** indicates the opposite.
+Whether to allow the application to always access the Wi-Fi network. The value true means allowed, and false means not allowed.
 
 **Type:** boolean
 

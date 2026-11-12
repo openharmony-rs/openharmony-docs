@@ -18,7 +18,7 @@ enum ContentProtectionLevel
 CONTENT_PROTECTION_LEVEL_ENHANCED_HW = 3
 ```
 
-硬件增强内容保护级别。
+硬件增强内容保护级别，使用硬件安全模块解密，安全性最高，适用于高价值内容播放场景。
 
 **起始版本：** 11
 
@@ -34,7 +34,7 @@ CONTENT_PROTECTION_LEVEL_ENHANCED_HW = 3
 CONTENT_PROTECTION_LEVEL_HW_CRYPTO = 2
 ```
 
-硬件内容保护级别。
+硬件内容保护级别，使用硬件解密，安全性较高，适用于大多数商业内容播放场景。
 
 **起始版本：** 11
 
@@ -66,7 +66,7 @@ CONTENT_PROTECTION_LEVEL_MAX = 4
 CONTENT_PROTECTION_LEVEL_SW_CRYPTO = 1
 ```
 
-软件内容保护级别。
+软件内容保护级别，使用软件解密，适用于对安全性要求不高的播放场景。
 
 **起始版本：** 11
 

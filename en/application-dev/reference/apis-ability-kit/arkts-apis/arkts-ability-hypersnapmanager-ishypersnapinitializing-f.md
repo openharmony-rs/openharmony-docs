@@ -9,7 +9,7 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 ## isHyperSnapInitializing
 
 ```TypeScript
-function isHyperSnapInitializing(): Promise<boolean>
+function isHyperSnapInitializing(): boolean
 ```
 
 Checks whether the current process is undergoing Hyper Snap initialization. This API uses a promise to return the result.
@@ -22,7 +22,7 @@ This is useful for applications to distinguish between a normal cold start and a
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-hyperSnapManager-function isHyperSnapInitializing(): Promise<boolean>--><!--Device-hyperSnapManager-function isHyperSnapInitializing(): Promise<boolean>-End-->
+<!--Device-hyperSnapManager-function isHyperSnapInitializing(): boolean--><!--Device-hyperSnapManager-function isHyperSnapInitializing(): boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -30,7 +30,7 @@ This is useful for applications to distinguish between a normal cold start and a
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates the current process is undergoing Hyper Snap initialization, and **false** indicates the current process is not undergoing Hyper Snap initialization (snapshot completed, failed, or the process is not a template process). |
+| boolean | Returns a flag indicating whether initialization is in progress. The value **true** indicates the current process is undergoing Hyper Snap initialization, and **false** indicates the current process is not undergoing Hyper Snap initialization (snapshot completed, failed, or the process is not a template process). |
 
 **Error codes:**
 

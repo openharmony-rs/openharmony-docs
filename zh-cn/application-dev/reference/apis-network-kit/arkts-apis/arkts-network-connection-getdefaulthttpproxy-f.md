@@ -79,7 +79,7 @@ function getDefaultHttpProxy(): Promise<HttpProxy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[HttpProxy](arkts-network-connection-httpproxy-i.md)&gt; | 以Promise形式返回网络默认的代理配置信息。 |
+| Promise&lt;[HttpProxy](arkts-network-connection-httpproxy-i.md)&gt; | Promise对象，返回网络默认的代理配置信息。 |
 
 **错误码：**
 

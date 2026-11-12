@@ -12,7 +12,7 @@ import { statistics } from '@kit.NetworkKit';
 function getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise<UidNetStatsInfo>
 ```
 
-Obtains the traffic statistics of all applications on the specified network within the specified period. This API uses a promise to return the result.
+Obtains the traffic usage details of all applications on the specified network within the specified period. This API uses a promise to return the result. Based on the network type, time range, and **simId** in **networkInfo**, the system aggregates the historical traffic data of each application (by UID) on the network from the statistics database and returns **UidNetStatsInfo** in a promise. The **simId** takes effect only when the network type is cellular (**BEARER_CELLULAR**).
 
 **Since:** 12
 
@@ -34,7 +34,7 @@ Obtains the traffic statistics of all applications on the specified network with
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[UidNetStatsInfo](arkts-network-statistics-uidnetstatsinfo-t-sys.md)&gt; | Promise used to return the result, which is the historical traffic statistics of all applications. |
+| Promise&lt;[UidNetStatsInfo](arkts-network-statistics-uidnetstatsinfo-t-sys.md)&gt; | Promise used to return all application historical traffic information. |
 
 **Error codes:**
 

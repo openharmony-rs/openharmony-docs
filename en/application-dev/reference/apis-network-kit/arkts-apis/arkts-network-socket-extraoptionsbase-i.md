@@ -40,7 +40,7 @@ Size of the RX buffer, in bytes. The value ranges from 0 to 262144. If this para
 reuseAddress?: boolean
 ```
 
-Whether to reuse addresses. The value **true** means to reuse addresses, and the value **false** means the opposite.
+Whether to reuse addresses. The value **true** means to reuse addresses, and the value **false** means the opposite. The default value is **false**.
 
 **Type:** boolean
 
@@ -72,7 +72,7 @@ Size of the TX buffer, in bytes. The value ranges from 0 to 262144. If this para
 socketTimeout?: number
 ```
 
-Timeout duration of the local socket connection, in ms.
+Timeout duration of the local socket connection, in ms. The default value is **0**, indicating that the timeout period is not set.
 
 **Type:** number
 

@@ -13,7 +13,7 @@ export function verifyControllerDevicePackage(ticketInfo: RemoteAuthPackage[], r
     Promise<boolean[]>
 ```
 
-Verifies the authorization package from the controller device. This function verifies the remote authorization package sent by the controller device. It validates the ticket and remote device information to ensure the authorization is legitimate.
+Verify the authorization package from the master device. Verify the remote authorization package sent by the master device. Validate ticket and remote device information to ensure that authorization is legitimate.
 
 **Since:** 26.0.1
 
@@ -38,14 +38,14 @@ Verifies the authorization package from the controller device. This function ver
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean[]&gt; | Promise used to return ${boolean[]}. |
+| Promise&lt;boolean[]&gt; | Promise object that returns ${boolean[]}. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denial. The interface caller does not have permission "ohos.permission.QUERY_TOOL_PERMISSIONS". |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [24010000](../errorcode-abilityToolAccessCtrl-sys.md#24010000-invalid-parameter) | Invalid parameter. Format of ticketInfo or remoteInfo is invalid. |
 | [24010001](../errorcode-abilityToolAccessCtrl-sys.md#24010001-system-service-abnormal) | Service is abnormal. Possible cause: IPC failed. |
 | [24010002](../errorcode-abilityToolAccessCtrl-sys.md#24010002-internal-service-error) | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |

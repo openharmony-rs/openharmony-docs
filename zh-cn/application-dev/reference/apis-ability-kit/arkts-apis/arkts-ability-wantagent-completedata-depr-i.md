@@ -19,6 +19,7 @@ export interface CompleteData
 ## 导入模块
 
 ```TypeScript
+import { wantAgent } from '@ohos.wantAgent';
 ```
 
 ## extraInfo

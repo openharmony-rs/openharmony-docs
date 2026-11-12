@@ -4,7 +4,7 @@
 export type RouteInfo = connection.RouteInfo
 ```
 
-Defines the network route information.
+Represents the network route information.
 
 **Type:** [connection.RouteInfo](arkts-network-connection-routeinfo-i.md)
 

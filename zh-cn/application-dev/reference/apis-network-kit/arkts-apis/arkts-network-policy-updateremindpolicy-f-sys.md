@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function updateRemindPolicy(netType: NetBearType, simId: string, remindType: RemindType, callback: AsyncCallback<void>): void
 ```
 
-更新提醒策略，使用 callback 异步回调。
+更新提醒策略。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -31,7 +31,7 @@ function updateRemindPolicy(netType: NetBearType, simId: string, remindType: Rem
 | netType | [NetBearType](arkts-network-policy-netbeartype-t.md) | 是 | 网络类型。 |
 | simId | string | 是 | SIM 卡 ID。 |
 | remindType | [RemindType](arkts-network-policy-remindtype-e-sys.md) | 是 | 提醒类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回空，失败返回错误码错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回空，失败时返回错误码和错误信息。 |
 
 **错误码：**
 
@@ -70,7 +70,7 @@ policy.updateRemindPolicy(
 function updateRemindPolicy(netType: NetBearType, simId: string, remindType: RemindType): Promise<void>
 ```
 
-更新提醒策略，使用 Promise 异步回调。
+更新提醒策略。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -94,7 +94,7 @@ function updateRemindPolicy(netType: NetBearType, simId: string, remindType: Rem
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以 Promise 形式返回设定结果。成功返回空，失败返回错误码错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -4,7 +4,7 @@
 export interface VpnObserver
 ```
 
-VPN观察者对象。用于监听VPN相关事件。在调用VpnObserver的方法前，需要先通过[vpnExtension.createVpnObserver](arkts-network-vpnextension-createvpnobserver-f.md)创建VPN连接对象。
+VPN观察者对象。用于监听VPN相关事件。在调用VpnObserver的方法前，需要先通过[vpnExtension.createVpnObserver](arkts-network-vpnextension-createvpnobserver-f.md)创建VPN观察者对象。
 
 **起始版本：** 26.0.0
 
@@ -88,7 +88,7 @@ onAuthorizationResult(callback: Callback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 是 | 回调函数，用于返回用户授权结果。true表示用户同意授权，false表示用户拒绝授权。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。返回true表示用户同意授权；返回false表示用户拒绝授权。 |
 
 **示例**
 

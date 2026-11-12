@@ -23,7 +23,10 @@ export class ComponentSnapshot
 ## 导入模块
 
 ```TypeScript
-import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DialogPresenter, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager, PromptAction, Router, UIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, MeasureUtils, FrameCallback, OverlayManagerOptions, TargetInfo, TextMenuController, NodeIdentity, NodeRenderState, NodeRenderStateChangeCallback, Magnifier, ResolvedUIContext, TextSelectionClearPolicy, CustomKeyboardContinueFeature, BackgroundLuminanceSamplingConfigs, LuminanceSampler, GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObserverConfigs, GestureListenerCallback, SwiperContentInfo, SwiperItemInfo, BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
+import { AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DialogPresenter, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager, PromptAction, Router, UIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, MeasureUtils, FrameCallback, OverlayManagerOptions, TargetInfo, TextMenuController, NodeIdentity, NodeRenderState, NodeRenderStateChangeCallback, Magnifier, ResolvedUIContext, TextSelectionClearPolicy, CustomKeyboardContinueFeature, BackgroundLuminanceSamplingConfigs, LuminanceSampler } from '@kit.ArkUI';
+import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureObserverConfigs, GestureListenerCallback } from '@kit.ArkUI';
+import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
+import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
 
 ## createFromBuilder
@@ -363,7 +366,7 @@ struct Index {
 get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnapshot.SnapshotOptions): void
 ```
 
-获取已加载的组件的截图，传入组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，找到对应组件进行截图。使用callback异步回调。
+获取已加载的组件的截图，传入组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，找到对应组件进行截图，适用于生成组件预览图、保存或分享局部UI截图等场景。使用callback异步回调。
 
 > **说明：** 
 > 
@@ -444,7 +447,7 @@ struct SnapshotExample {
 get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 ```
 
-获取已加载的组件的截图，传入组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，找到对应组件进行截图。使用Promise异步回调。
+获取已加载的组件的截图，传入组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，找到对应组件进行截图，适用与生成组件预览图、保存或分享局部UI截图等场景。使用Promise异步回调。
 
 > **说明：** 
 > 
@@ -603,7 +606,7 @@ struct SnapshotColorModeExample {
 getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 ```
 
-获取已加载的组件的截图。传入组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，找到对应组件进行截图，同步等待截图完成返回[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)。本方法会阻塞主线程，请谨慎使用。接口的最大等待时间为3s，如果3s后未返回将会抛出异常。
+获取已加载的组件的截图。传入组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，找到对应组件进行截图，同步等待截图完成返回[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)，适用于需要及时获取截图结果或对性能要求不高的场景。本方法会阻塞主线程，请谨慎使用。接口的最大等待时间为3s，如果3s后未返回将会抛出异常。
 
 > **说明：** 
 > 
@@ -623,7 +626,7 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | 目标组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。 <br>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。 |
+| id | string | 是 | 目标组件的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。<br>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。 |
 | options | [componentSnapshot.SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | 否 | 截图相关的自定义参数。 |
 
 **返回值：**
@@ -708,7 +711,7 @@ getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOption
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uniqueId | number | 是 | 目标组件的uniqueId。FrameNode节点的uniqueId可通过getUniqueId接口获取。<br>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。 |
+| uniqueId | number | 是 | 目标组件的uniqueId。FrameNode节点的uniqueId可通过getUniqueId接口获取。<br>**说明：** 不支持未挂树组件，当传入的uniqueId对应离屏或缓存未挂树的节点时，系统不会对其进行截图。 |
 | options | [componentSnapshot.SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | 否 | 截图相关的自定义参数。 |
 
 **返回值：**
@@ -813,7 +816,7 @@ getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uniqueId | number | 是 | 目标组件的uniqueId。FrameNode节点的uniqueId可通过getUniqueId接口获取。 <br>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。 |
+| uniqueId | number | 是 | 目标组件的uniqueId。FrameNode节点的uniqueId可通过getUniqueId接口获取。<br>**说明：** 不支持未挂树组件，当传入的组件uniqueId对应的是离屏或缓存未挂树的节点时，系统不会对其进行截图。 |
 | options | [componentSnapshot.SnapshotOptions](arkts-arkui-componentsnapshot-snapshotoptions-i.md) | 否 | 截图相关的自定义参数。 |
 
 **返回值：**

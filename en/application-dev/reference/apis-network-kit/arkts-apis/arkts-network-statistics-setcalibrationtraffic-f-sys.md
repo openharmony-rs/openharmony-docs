@@ -12,7 +12,7 @@ import { statistics } from '@kit.NetworkKit';
 function setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: number): Promise<void>
 ```
 
-Sets traffic calibration data. You can use this API to set traffic data during traffic calibration. This API uses a promise to return the result.
+Sets traffic calibration data. During traffic calibration, you can use this API to set the related traffic data. The API writes the remaining traffic (**remainTraffic**) and the total traffic of the plan (**totalTraffic**) corresponding to **simId** into the system traffic statistics database for subsequent traffic statistics and calibration calculation. The calibration result takes effect on the data returned by subsequent query APIs. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 

@@ -113,7 +113,7 @@ close(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以Promise形式返回，成功返回空。失败返回错误码，错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -254,7 +254,7 @@ getCipherSuite(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | 以Promise形式返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回通信双方支持的加密套件。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -466,7 +466,7 @@ getRemoteAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise对象，返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -647,7 +647,7 @@ getRemoteCertificate(): Promise<X509CertRawData>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[X509CertRawData](arkts-network-socket-x509certrawdata-t.md)&gt; | 以Promise形式返回对端的数字证书的结果。失败返回错误码，错误信息。 |
+| Promise&lt;[X509CertRawData](arkts-network-socket-x509certrawdata-t.md)&gt; | Promise对象，返回对端的数字证书的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -830,7 +830,7 @@ getSignatureAlgorithms(): Promise<Array<string>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | 以Promise形式返回获取到的双方支持的签名算法。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回获取到的双方支持的签名算法。 |
 
 **错误码：**
 
@@ -893,7 +893,7 @@ getSocketFd(): Promise<number>
 > 
 > - 连接断开、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-tcpsocketconnection-i.md#close-1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close-1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 23
 
@@ -1477,7 +1477,7 @@ send(data: string | ArrayBuffer): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

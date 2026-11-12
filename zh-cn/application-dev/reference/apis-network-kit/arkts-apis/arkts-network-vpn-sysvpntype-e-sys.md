@@ -20,6 +20,8 @@ export enum SysVpnType
 IKEV2_IPSEC_MSCHAPV2 = 1
 ```
 
+IKEv2/IPsec MSCHAPv2 VPN网络的类型。
+
 **起始版本：** 12
 
 <!--Device-SysVpnType-IKEV2_IPSEC_MSCHAPV2 = 1--><!--Device-SysVpnType-IKEV2_IPSEC_MSCHAPV2 = 1-End-->
@@ -33,6 +35,8 @@ IKEV2_IPSEC_MSCHAPV2 = 1
 ```TypeScript
 IKEV2_IPSEC_PSK = 2
 ```
+
+IKEv2/IPsec PSK VPN网络的类型。
 
 **起始版本：** 12
 
@@ -48,6 +52,8 @@ IKEV2_IPSEC_PSK = 2
 IKEV2_IPSEC_RSA = 3
 ```
 
+IKEv2/IPsec RSA VPN网络的类型。
+
 **起始版本：** 12
 
 <!--Device-SysVpnType-IKEV2_IPSEC_RSA = 3--><!--Device-SysVpnType-IKEV2_IPSEC_RSA = 3-End-->
@@ -61,6 +67,8 @@ IKEV2_IPSEC_RSA = 3
 ```TypeScript
 IPSEC_HYBRID_RSA = 8
 ```
+
+IPsec HYBRID RSA VPN网络的类型。
 
 **起始版本：** 12
 
@@ -76,6 +84,8 @@ IPSEC_HYBRID_RSA = 8
 IPSEC_XAUTH_PSK = 6
 ```
 
+IPsec XAUTH PSK VPN网络的类型。
+
 **起始版本：** 12
 
 <!--Device-SysVpnType-IPSEC_XAUTH_PSK = 6--><!--Device-SysVpnType-IPSEC_XAUTH_PSK = 6-End-->
@@ -89,6 +99,8 @@ IPSEC_XAUTH_PSK = 6
 ```TypeScript
 IPSEC_XAUTH_RSA = 7
 ```
+
+IPsec XAUTH RSA VPN网络的类型。
 
 **起始版本：** 12
 
@@ -104,6 +116,8 @@ IPSEC_XAUTH_RSA = 7
 L2TP_IPSEC_PSK = 4
 ```
 
+L2TP/IPsec PSK VPN网络的类型。
+
 **起始版本：** 12
 
 <!--Device-SysVpnType-L2TP_IPSEC_PSK = 4--><!--Device-SysVpnType-L2TP_IPSEC_PSK = 4-End-->
@@ -118,6 +132,8 @@ L2TP_IPSEC_PSK = 4
 L2TP_IPSEC_RSA = 5
 ```
 
+L2TP/IPsec RSA VPN网络的类型。
+
 **起始版本：** 12
 
 <!--Device-SysVpnType-L2TP_IPSEC_RSA = 5--><!--Device-SysVpnType-L2TP_IPSEC_RSA = 5-End-->
@@ -131,6 +147,8 @@ L2TP_IPSEC_RSA = 5
 ```TypeScript
 OPENVPN = 9
 ```
+
+OpenVPN网络的类型。
 
 **起始版本：** 12
 

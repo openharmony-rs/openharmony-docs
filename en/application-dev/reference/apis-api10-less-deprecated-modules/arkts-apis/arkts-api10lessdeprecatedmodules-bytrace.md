@@ -19,6 +19,7 @@ The **bytrace** module implements performance tracing for processes.
 ## Modules to Import
 
 ```TypeScript
+import { bytrace } from '@ohos.bytrace';
 ```
 
 ## Summary

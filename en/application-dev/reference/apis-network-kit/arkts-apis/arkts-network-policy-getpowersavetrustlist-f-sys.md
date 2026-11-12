@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function getPowerSaveTrustlist(callback: AsyncCallback<Array<number>>): void
 ```
 
-Obtains the UID array of applications that are on the power saving allowlist. This API uses an asynchronous callback to return the result.
+Obtains the UID array contained in the power save mode trustlist. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -62,7 +62,7 @@ policy.getPowerSaveTrustlist((error: BusinessError, data: number[]) => {
 function getPowerSaveTrustlist(): Promise<Array<number>>
 ```
 
-Obtains the UID array of applications that are on the device idle allowlist. This API uses a promise to return the result.
+Obtains the UID array contained in the sleep mode trustlist. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -78,7 +78,7 @@ Obtains the UID array of applications that are on the device idle allowlist. Thi
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the result. |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the set result. |
 
 **Error codes:**
 

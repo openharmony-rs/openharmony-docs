@@ -24,7 +24,7 @@ import { networkSecurity } from '@kit.NetworkKit';
 | [certVerificationSync](arkts-network-networksecurity-certverificationsync-f.md#certverificationsync-1) | Verifies the certificate passed by the application using the preset CA certificate and the CA certificate installed by the user in the certificate management. This API returns the result synchronously. |
 | [isCleartextPermitted](arkts-network-networksecurity-iscleartextpermitted-f.md#iscleartextpermitted-1) | Checks whether plaintext HTTP access is allowed from the preset **network_config.json** file of the application. By default, plaintext HTTP access is allowed. |
 | [isCleartextPermittedByHostName](arkts-network-networksecurity-iscleartextpermittedbyhostname-f.md#iscleartextpermittedbyhostname-1) | Checks whether host name–based plaintext HTTP access is allowed from the preset **network_config.json** file of the application. By default, plaintext HTTP access is allowed. |
-| [verifyCertChain](arkts-network-networksecurity-verifycertchain-f.md#verifycertchain-1) | Verifies the server certificate chain and returns a sorted chain. |
+| [verifyCertChain](arkts-network-networksecurity-verifycertchain-f.md#verifycertchain-1) | Passes in an array of certificates, verifies the certificate chain, and builds a sorted certificate chain. The system uses the preset CA certificates in certificate management and the CA certificates installed by users to verify the passed-in certificates. This API uses a promise to return the result asynchronously. |
 
 ### Interfaces
 

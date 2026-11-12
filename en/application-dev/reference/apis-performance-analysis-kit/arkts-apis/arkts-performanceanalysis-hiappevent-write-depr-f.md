@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { hiAppEvent } from '@ohos.hiAppEvent';
 ```
 
 ## write

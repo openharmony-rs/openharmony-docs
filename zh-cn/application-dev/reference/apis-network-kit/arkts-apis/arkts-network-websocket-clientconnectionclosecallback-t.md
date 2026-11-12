@@ -16,5 +16,5 @@ export type ClientConnectionCloseCallback = (clientConnection: WebSocketConnecti
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| clientConnection | [WebSocketConnection](arkts-network-websocket-websocketconnection-i.md) | 是 | the connection which is closed. |
-| closeReason | [CloseResult](arkts-network-websocket-closeresult-i.md) | 是 | the error code and reason why the connection is closed. |
+| clientConnection | [WebSocketConnection](arkts-network-websocket-websocketconnection-i.md) | 是 | 客户端信息，包括客户端的ip地址和端口号port。 |
+| closeReason | [CloseResult](arkts-network-websocket-closeresult-i.md) | 是 | 关闭WebSocket连接时，订阅close事件得到的关闭结果。 |

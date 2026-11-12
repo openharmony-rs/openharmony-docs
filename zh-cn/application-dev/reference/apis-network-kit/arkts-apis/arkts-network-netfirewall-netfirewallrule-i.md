@@ -136,7 +136,7 @@ id?: number
 interface?: string
 ```
 
-接口名：当type=RULE_IP时有效，否则忽略。
+物理网卡名称，例如wlan0。当type=RULE_IP时有效，否则将被忽略。可选，最多16个字符。
 
 **类型：** string
 

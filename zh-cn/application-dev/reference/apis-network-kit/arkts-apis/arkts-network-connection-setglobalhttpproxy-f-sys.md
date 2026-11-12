@@ -12,7 +12,7 @@ import { connection } from '@kit.NetworkKit';
 function setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback<void>): void
 ```
 
-设置网络全局Http代理配置信息，使用callback异步回调。
+设置网络全局Http代理配置信息。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -74,7 +74,7 @@ connection.setGlobalHttpProxy(httpProxy, (err: BusinessError) => {
 function setGlobalHttpProxy(httpProxy: HttpProxy): Promise<void>
 ```
 
-设置网络全局Http代理配置信息，使用Promise异步回调。
+设置网络全局Http代理配置信息。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -96,7 +96,7 @@ function setGlobalHttpProxy(httpProxy: HttpProxy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回值的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

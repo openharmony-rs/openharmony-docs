@@ -48,7 +48,7 @@ onAuthResult: (result: userAuth.UserAuthResult) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| result | [userAuth.UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md) | 是 | Authentication result information. |
+| result | [userAuth.UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md) | 是 | 用户认证结果。 |
 
 ## onIconClick
 

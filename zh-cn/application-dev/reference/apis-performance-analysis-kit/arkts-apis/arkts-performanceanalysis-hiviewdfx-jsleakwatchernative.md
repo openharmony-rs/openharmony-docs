@@ -6,6 +6,7 @@ system APIs only. They should not be called directly by any other applications i
 ## 导入模块
 
 ```TypeScript
+import { jsLeakWatcherNative } from '@ohos.hiviewdfx.jsLeakWatcherNative';
 ```
 
 ## 汇总

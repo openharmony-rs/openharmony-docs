@@ -18,6 +18,26 @@ class PickerProfile
 import { cameraPicker } from '@kit.CameraKit';
 ```
 
+## c2PASignatureConfig
+
+```TypeScript
+c2PASignatureConfig?: C2PASignatureConfig
+```
+
+C2PA签名配置。
+
+**类型：** [C2PASignatureConfig](arkts-camera-camerapicker-c2pasignatureconfig-i.md)
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-PickerProfile-c2PASignatureConfig?: C2PASignatureConfig--><!--Device-PickerProfile-c2PASignatureConfig?: C2PASignatureConfig-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 ## cameraPosition
 
 ```TypeScript
@@ -33,6 +53,26 @@ cameraPosition: camera.CameraPosition
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PickerProfile-cameraPosition: camera.CameraPosition--><!--Device-PickerProfile-cameraPosition: camera.CameraPosition-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## enableC2PA
+
+```TypeScript
+enableC2PA?: boolean
+```
+
+启用或禁用拍照输出的C2PA签名功能。
+
+**类型：** boolean
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-PickerProfile-enableC2PA?: boolean--><!--Device-PickerProfile-enableC2PA?: boolean-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

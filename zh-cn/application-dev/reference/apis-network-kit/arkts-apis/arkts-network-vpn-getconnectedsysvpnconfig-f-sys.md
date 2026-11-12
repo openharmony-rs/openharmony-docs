@@ -28,7 +28,7 @@ function getConnectedSysVpnConfig(): Promise<SysVpnConfig>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md)&gt; | The promise returned by the connected VPN network configuration. |
+| Promise&lt;[SysVpnConfig](arkts-network-vpn-sysvpnconfig-i-sys.md)&gt; | Promise对象，返回已连接的VPN网络配置。 |
 
 **错误码：**
 

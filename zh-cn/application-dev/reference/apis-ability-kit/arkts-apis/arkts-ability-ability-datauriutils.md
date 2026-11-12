@@ -15,6 +15,7 @@ DataUriUtils模块提供用于处理uri对象的能力，包括获取、绑定�
 ## 导入模块
 
 ```TypeScript
+import { dataUriUtils } from '@ohos.ability.dataUriUtils';
 ```
 
 ## 汇总

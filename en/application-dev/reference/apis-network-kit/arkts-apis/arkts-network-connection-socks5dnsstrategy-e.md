@@ -4,7 +4,7 @@
 export enum Socks5DnsStrategy
 ```
 
-Socks5 DNS strategy
+Defines the DNS query strategy configuration of the SOCKS5 proxy.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Socks5 DNS strategy
 PROXY_MODE = 1
 ```
 
-Proxy DNS mode.
+When the SOCKS5 proxy is used, the proxy server performs DNS resolution.
 
 **Since:** 26.0.0
 
@@ -34,7 +34,7 @@ Proxy DNS mode.
 SYSTEM_MODE = 0
 ```
 
-System DNS mode.
+When the SOCKS5 proxy is used, the system performs DNS resolution.
 
 **Since:** 26.0.0
 

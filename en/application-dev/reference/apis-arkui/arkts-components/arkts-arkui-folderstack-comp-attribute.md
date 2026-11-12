@@ -113,7 +113,7 @@ Sets whether to use the default animation effect. After this attribute is set, t
 onFolderStateChange(callback: OnFoldStatusChangeCallback)
 ```
 
-Triggered when the fold status of the current device changes <!--RP3-->(This callback takes effect only in landscape mode.)<!--RP3End-->.
+Triggered when the fold status of the current device changes(This callback takes effect only in landscape mode.).
 
 Typical usage: Adjust the app layout based on the fold status, for example, displaying a two-column layout in the expanded state and adjusting the content distribution between the upper and lower screens in the half-fold status.
 

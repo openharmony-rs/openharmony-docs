@@ -56,4 +56,4 @@ Main windows on a virtual screen are not supported. If the window to be adjusted
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 | [1300008](../errorcode-window.md#1300008-display-device-exception) | The display device is abnormal. Possible cause: The window to be adjusted or the target main window specified by insertAfter is on a virtual screen. |
-| [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: The windowPositions list exceeds the maximum size of 50. |
+| [1300016](../errorcode-window.md#1300016-parameter-error) | Parameter error. Possible cause: The windowPositions list exceeds the maximum size of 50. |

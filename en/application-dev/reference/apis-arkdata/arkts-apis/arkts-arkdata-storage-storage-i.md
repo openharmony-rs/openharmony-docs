@@ -21,6 +21,7 @@ Before calling the following APIs, use [data_storage.getStorage](arkts-arkdata-s
 ## Modules to Import
 
 ```TypeScript
+import { storage } from '@ohos.data.storage';
 ```
 
 ## clear

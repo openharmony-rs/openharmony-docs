@@ -17,6 +17,7 @@ AbilityManager模块提供对Ability相关信息和状态信息进行获取、�
 ## 导入模块
 
 ```TypeScript
+import { abilityManager } from '@ohos.application.abilityManager';
 ```
 
 ## 汇总

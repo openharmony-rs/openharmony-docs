@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { bytrace } from '@ohos.bytrace';
 ```
 
 ## traceByValue

@@ -4,7 +4,7 @@
 export interface ValidationContext
 ```
 
-The validation context of [ValidationCallback](arkts-network-http-validationcallback-t.md)
+Certificate context information used when verifying the identity of the remote server, which is passed in as a parameter of [ValidationCallback](arkts-network-http-validationcallback-t.md).
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { http } from '@kit.NetworkKit';
 host: string
 ```
 
-The host of this request.
+Target host name of this request.
 
 **Type:** string
 
@@ -42,7 +42,7 @@ The host of this request.
 ip: string
 ```
 
-The real IP which this request connect to.
+IP address actually connected for this request.
 
 **Type:** string
 
@@ -60,7 +60,7 @@ The real IP which this request connect to.
 pemCerts: string[]
 ```
 
-The raw data which in PEM format of certificate.
+Raw certificate data in PEM format.
 
 **Type:** string[]
 
@@ -78,7 +78,7 @@ The raw data which in PEM format of certificate.
 x509Certs: X509Cert[]
 ```
 
-X509 certificate chain.
+X.509 certificate chain.
 
 **Type:** [X509Cert](arkts-network-http-x509cert-t.md)[]
 

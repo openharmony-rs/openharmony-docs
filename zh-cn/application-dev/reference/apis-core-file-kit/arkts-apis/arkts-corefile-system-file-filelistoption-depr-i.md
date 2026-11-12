@@ -17,6 +17,7 @@ export interface FileListOption
 ## 导入模块
 
 ```TypeScript
+import { FileListOption } from '@system.file';
 ```
 
 ## complete

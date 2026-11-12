@@ -12,7 +12,7 @@ import { statistics } from '@kit.NetworkKit';
 function getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback<NetStatsInfo>): void
 ```
 
-获取指定网卡历史流量信息，使用 callback 异步回调。
+获取指定网卡历史流量信息，使用callback异步回调。系统根据ifaceInfo中指定的网卡名和时间范围，从流量统计数据库中读取该网卡在对应时间段内的收发字节数与包数，通过回调返回；若网卡名无效或该时间段内无统计数据，则返回全零的统计信息。
 
 **起始版本：** 10
 
@@ -29,7 +29,7 @@ function getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback<Ne
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | ifaceInfo | [IfaceInfo](arkts-network-statistics-ifaceinfo-i-sys.md) | 是 | 指定查询的网卡信息，参见[IfaceInfo](arkts-network-statistics-ifaceinfo-i-sys.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | 是 | 回调函数。成功时 statsInfo 返回包含网卡历史流量信息，error 为 undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | 是 | 回调函数。当成功获取指定网卡历史流量信息时，err为undefined，data为获取到的网卡历史流量信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -86,11 +86,7 @@ if (iFaceInfo) {
 function getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise<NetStatsInfo>
 ```
 
-获取指定网卡历史流量信息，使用 Promise 异步回调。
-
-| 参数名 | 类型 | 必填 | 说明 |  
-| --------- | ------------------------- | ---- | --------------------------------------------------- |  
-| ifaceInfo | [IfaceInfo](arkts-network-statistics-ifaceinfo-i-sys.md) | 是 | 指定查询的网卡信息，参见[IfaceInfo](arkts-network-statistics-ifaceinfo-i-sys.md)。 |
+获取指定网卡历史流量信息，使用Promise异步回调。系统根据ifaceInfo中指定的网卡名和时间范围，从流量统计数据库中读取该网卡在对应时间段内的收发字节数与包数并以Promise形式返回；若网卡名无效或该时间段内无统计数据，则返回全零的统计信息。
 
 **起始版本：** 10
 
@@ -106,13 +102,13 @@ function getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise<NetStatsInfo>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| ifaceInfo | [IfaceInfo](arkts-network-statistics-ifaceinfo-i-sys.md) | 是 | Detailed query content. See [IfaceInfo](arkts-network-statistics-ifaceinfo-i-sys.md). |
+| ifaceInfo | [IfaceInfo](arkts-network-statistics-ifaceinfo-i-sys.md) | 是 | 指定查询的网卡信息，参见[IfaceInfo](arkts-network-statistics-ifaceinfo-i-sys.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | The promise returned by the function. |
+| Promise&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | Promise对象，返回网卡历史流量信息。 |
 
 **错误码：**
 

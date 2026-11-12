@@ -17,6 +17,7 @@ export interface FileDeleteOption
 ## 导入模块
 
 ```TypeScript
+import { FileDeleteOption } from '@system.file';
 ```
 
 ## complete

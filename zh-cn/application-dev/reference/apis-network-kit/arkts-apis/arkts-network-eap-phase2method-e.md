@@ -18,7 +18,7 @@ enum Phase2Method
 PHASE2_AKA = 6
 ```
 
-Authentication and key agreement
+AKA类型。
 
 **起始版本：** 20
 
@@ -32,7 +32,7 @@ Authentication and key agreement
 PHASE2_AKA_PRIME = 7
 ```
 
-AKA prime
+AKA Prime类型。
 
 **起始版本：** 20
 
@@ -46,7 +46,7 @@ AKA prime
 PHASE2_GTC = 4
 ```
 
-Generic token card
+GTC类型。
 
 **起始版本：** 20
 
@@ -60,7 +60,7 @@ Generic token card
 PHASE2_MSCHAP = 2
 ```
 
-Microsoft challenge handshake authentication protocol
+MSCHAP类型。
 
 **起始版本：** 20
 
@@ -74,7 +74,7 @@ Microsoft challenge handshake authentication protocol
 PHASE2_MSCHAPV2 = 3
 ```
 
-Microsoft challenge handshake authentication protocol version 2
+MSCHAPV2类型。
 
 **起始版本：** 20
 
@@ -102,7 +102,7 @@ PHASE2_NONE = 0
 PHASE2_PAP = 1
 ```
 
-Password authentication protocol
+PAP类型。
 
 **起始版本：** 20
 
@@ -116,7 +116,7 @@ Password authentication protocol
 PHASE2_SIM = 5
 ```
 
-Subscriber identity module
+SIM类型。
 
 **起始版本：** 20
 

@@ -6,6 +6,7 @@ system APIs only. They should not be called directly by any other applications i
 ## Modules to Import
 
 ```TypeScript
+import { jsLeakWatcherNative } from '@ohos.hiviewdfx.jsLeakWatcherNative';
 ```
 
 ## Summary

@@ -72,6 +72,30 @@ Called when the tab content is about to be displayed. The scenarios include the 
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | Yes | Callback for when the tab content is about to be displayed. |
 
+## sidebarSection
+
+```TypeScript
+sidebarSection(value: Optional<SidebarSection>)
+```
+
+Sets the sidebar section grouping for this TabContent.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-TabContentAttribute-sidebarSection(value: Optional<SidebarSection>): TabContentAttribute--><!--Device-TabContentAttribute-sidebarSection(value: Optional<SidebarSection>): TabContentAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[SidebarSection](arkts-arkui-tabcontent-comp-sidebarsection-i.md)&gt; | Yes | The sidebar section. |
+
 ## tabBar
 
 ```TypeScript

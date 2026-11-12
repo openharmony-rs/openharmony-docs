@@ -17,6 +17,7 @@ Returns a file list, including the file list information.
 ## Modules to Import
 
 ```TypeScript
+import { FileListResponse } from '@system.file';
 ```
 
 ## fileList

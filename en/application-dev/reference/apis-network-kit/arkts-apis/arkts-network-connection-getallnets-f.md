@@ -14,8 +14,6 @@ function getAllNets(callback: AsyncCallback<Array<NetHandle>>): void
 
 Obtains the list of all connected networks. This API uses an asynchronous callback to return the result.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
-
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
@@ -62,8 +60,6 @@ function getAllNets(): Promise<Array<NetHandle>>
 ```
 
 Obtains the list of all connected networks. This API uses a promise to return the result.
-
-**Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **Since:** 8
 

@@ -4,7 +4,7 @@
 export type LinkAddress = connection.LinkAddress
 ```
 
-获取网络链接信息。
+获取网络链路信息。
 
 **类型：** [connection.LinkAddress](arkts-network-connection-linkaddress-i.md)
 

@@ -12,7 +12,7 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 function subscribe(rules: QueryRule[]): number
 ```
 
-订阅实时系统事件(事件需满足低频率或偶发性的约束条件)，事件发生时立即以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。
+订阅实时系统事件(事件需满足低频率或偶发性的约束条件)，事件发生时立即以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。用于实时监控关键系统事件并进行告警，如性能异常告警、安全事件监控等场景。适用于低频率或偶发性的关键事件，不建议高频事件使用。
 
 **起始版本：** 10
 

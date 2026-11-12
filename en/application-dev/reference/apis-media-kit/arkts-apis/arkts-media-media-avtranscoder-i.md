@@ -334,7 +334,6 @@ An application can subscribe to only one AVTranscoder error event. When the appl
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [5400101](../errorcode-media.md#5400101-memory-allocation-failed) | No memory. |
 | [5400102](../errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. |
 | [5400103](../errorcode-media.md#5400103-io-error) | I/O error. |

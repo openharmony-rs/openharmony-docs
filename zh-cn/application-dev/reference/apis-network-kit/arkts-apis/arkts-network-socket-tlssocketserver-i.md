@@ -24,12 +24,12 @@ import { socket } from '@kit.NetworkKit';
 close(): Promise<void>
 ```
 
-TLSSocketServer停止监听并释放通过[listen](arkts-network-socket-tcpsocketserver-i.md#listen)方法绑定的端口。使用Promise异步回调。
+TLSSocketServer停止监听并释放通过[listen](#listen)方法绑定的端口。使用Promise异步回调。
 
 > **说明：** 
 > 
 > 该方法不会关闭已有连接。如需关闭，请调用[TLSSocketConnection](arkts-network-socket-tlssocketconnection-i.md)的
-> [close](arkts-network-socket-tcpsocketconnection-i.md#close-1)方法。
+> [close](arkts-network-socket-tlssocketconnection-i.md#close-1)方法。
 
 **起始版本：** 20
 
@@ -228,7 +228,7 @@ getCertificate(): Promise<X509CertRawData>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[X509CertRawData](arkts-network-socket-x509certrawdata-t.md)&gt; | 以Promise形式返回本地的数字证书的结果。失败返回错误码，错误信息。 |
+| Promise&lt;[X509CertRawData](arkts-network-socket-x509certrawdata-t.md)&gt; | Promise对象，返回本地的数字证书的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -461,7 +461,7 @@ getProtocol(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;string&gt; | 以Promise形式返回通信的协议。失败返回错误码，错误信息。 |
+| Promise&lt;string&gt; | Promise对象，返回通信的协议。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -519,11 +519,11 @@ getSocketFd(): Promise<number>
 
 > **说明：** 
 > 
-> - [listen](arkts-network-socket-tcpsocketserver-i.md#listen)方法调用成功后，才可调用此方法。多次调用listen时，会获取最新监听端口绑定的文件描述符。
+> - [listen](#listen)方法调用成功后，才可调用此方法。多次调用listen时，会获取最新监听端口绑定的文件描述符。
 > 
 > - 监听异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-tcpsocketserver-i.md#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 23
 
@@ -677,7 +677,7 @@ getState(): Promise<SocketStateBase>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | 以Promise形式返回获取TLSSocketServer状态的结果。失败返回错误码，错误信息。 |
+| Promise&lt;[SocketStateBase](arkts-network-socket-socketstatebase-i.md)&gt; | Promise对象，返回获取TLSSocketServer状态的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -730,7 +730,7 @@ tlsServer.getState().then(() => {
 listen(options: TLSConnectOptions, callback: AsyncCallback<void>): void
 ```
 
-绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，创建和初始化TLS会话，实现建立连接过程，加载证书秘钥并验证，使用callback异步回调。
+绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，创建和初始化TLS会话，实现建立连接过程，加载证书密钥并验证，使用callback异步回调。
 
 > **注意：**
 > 
@@ -806,7 +806,7 @@ tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
 listen(options: TLSConnectOptions): Promise<void>
 ```
 
-绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，并创建和初始化TLS会话，实现建立连接过程，加载证书秘钥并验证，使用Promise异步回调。
+绑定IP地址和端口，在TLSSocketServer上bind成功之后，监听客户端的连接，并创建和初始化TLS会话，实现建立连接过程，加载证书密钥并验证，使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -826,7 +826,7 @@ listen(options: TLSConnectOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1278,7 +1278,7 @@ setExtraOptions(options: TCPExtraOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 以Promise形式返回，成功返回空，失败返回错误码，错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -26,7 +26,7 @@ import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 allowableDuration?: number
 ```
 
-Valid duration of auth token. Unit: seconds. Value range: (0,60].
+Validity period of the trusted possession authentication credential. The unit is millisecond. Value range: (0, 86400000].
 
 **Type:** number
 

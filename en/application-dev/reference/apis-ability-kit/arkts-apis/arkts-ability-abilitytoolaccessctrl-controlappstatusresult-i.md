@@ -4,7 +4,7 @@
 interface ControlAppStatusResult
 ```
 
-Control permission status result for an application.
+Control permission status result of the application.
 
 **Since:** 26.1.0
 

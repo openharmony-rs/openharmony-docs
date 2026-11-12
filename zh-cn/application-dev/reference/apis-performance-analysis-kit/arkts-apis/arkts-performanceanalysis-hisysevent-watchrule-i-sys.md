@@ -80,7 +80,7 @@ ruleType: RuleType
 tag?: string
 ```
 
-事件标签。
+事件标签。省略时使用空字符串作为默认值。
 
 **类型：** string
 

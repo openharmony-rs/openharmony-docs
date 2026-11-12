@@ -33,7 +33,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 | Name | Description |
 | --- | --- |
-| [getInterceptedRecords](arkts-network-netfirewall-getinterceptedrecords-f-sys.md#getinterceptedrecords-1) | Get intercepted records by userId, and it is necessary to specify the pagination query parameters. |
+| [getInterceptedRecords](arkts-network-netfirewall-getinterceptedrecords-f-sys.md#getinterceptedrecords-1) | Obtains the interception records by **userId**. You need to specify the pagination query parameters. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces
@@ -54,8 +54,8 @@ import { netFirewall } from '@kit.NetworkKit';
 
 | Name | Description |
 | --- | --- |
-| [InterceptedRecord](arkts-network-netfirewall-interceptedrecord-i-sys.md) | Intercepted record. |
-| [InterceptedRecordPage](arkts-network-netfirewall-interceptedrecordpage-i-sys.md) | Intercepted record page information. |
+| [InterceptedRecord](arkts-network-netfirewall-interceptedrecord-i-sys.md) | Defines an interception record. |
+| [InterceptedRecordPage](arkts-network-netfirewall-interceptedrecordpage-i-sys.md) | Defines the pagination structure for interception records. |
 <!--DelEnd-->
 
 ### Enums
@@ -63,7 +63,7 @@ import { netFirewall } from '@kit.NetworkKit';
 | Name | Description |
 | --- | --- |
 | [FirewallRuleAction](arkts-network-netfirewall-firewallruleaction-e.md) | Enumerates the firewall rule actions, including allowing or denying network connections. |
-| [NetFirewallOrderField](arkts-network-netfirewall-netfirewallorderfield-e.md) | Enumerates the sorting methods of firewall rules. |
+| [NetFirewallOrderField](arkts-network-netfirewall-netfirewallorderfield-e.md) | Enumeration type, the sorting method of firewall rules. |
 | [NetFirewallOrderType](arkts-network-netfirewall-netfirewallordertype-e.md) | Enumerates the sorting order of firewall rules, which can be ascending or descending. |
 | [NetFirewallRuleDirection](arkts-network-netfirewall-netfirewallruledirection-e.md) | Enumerates the firewall rule directions, including inbound and outbound. |
 | [NetFirewallRuleType](arkts-network-netfirewall-netfirewallruletype-e.md) | Enumerates the firewall rule types, including IP, Domain, and DNS. |

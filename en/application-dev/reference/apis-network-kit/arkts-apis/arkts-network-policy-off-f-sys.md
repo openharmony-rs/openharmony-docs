@@ -12,7 +12,7 @@ import { policy } from '@kit.NetworkKit';
 function off(type: 'netUidPolicyChange', callback?: Callback<NetUidPolicyInfo>): void
 ```
 
-Unsubscribes from **policy** changes. This API uses an asynchronous callback to return the result.
+Unsubscribes from network policy changes. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -29,7 +29,7 @@ Unsubscribes from **policy** changes. This API uses an asynchronous callback to 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'netUidPolicyChange' | Yes | Event type. The value **netUidPolicyChange** indicates a policy change event. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetUidPolicyInfo](arkts-network-policy-netuidpolicyinfo-i-sys.md)&gt; | No | Callback used to return the result. It is called when the network policy changes.<br>**Since:** 11 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetUidPolicyInfo](arkts-network-policy-netuidpolicyinfo-i-sys.md)&gt; | No | Callback for the network policy change event.<br>**Since:** 11 |
 
 **Error codes:**
 
@@ -79,7 +79,7 @@ try {
 function off(type: 'netUidRuleChange', callback?: Callback<NetUidRuleInfo>): void
 ```
 
-Unsubscribes from **rule** changes. This API uses an asynchronous callback to return the result.
+Unregisters the callback for rule changes. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -96,7 +96,7 @@ Unsubscribes from **rule** changes. This API uses an asynchronous callback to re
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'netUidRuleChange' | Yes | Event type. The value **netUidRuleChange** indicates a rule change event. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetUidRuleInfo](arkts-network-policy-netuidruleinfo-i-sys.md)&gt; | No | Callback used to return the result. It is called when the rule changes.<br>**Since:** 11 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NetUidRuleInfo](arkts-network-policy-netuidruleinfo-i-sys.md)&gt; | No | Callback function. Callback invoked when the rule changes.<br>**Since:** 11 |
 
 **Error codes:**
 
@@ -146,7 +146,7 @@ try {
 function off(type: 'netMeteredIfacesChange', callback?: Callback<Array<string>>): void
 ```
 
-Unsubscribes from the changes of the metering interface. This API uses an asynchronous callback to return the result.
+Unregisters the callback for metered iface changes. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -163,7 +163,7 @@ Unsubscribes from the changes of the metering interface. This API uses an asynch
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'netMeteredIfacesChange' | Yes | Event type. The value **netMeteredIfacesChange** indicates a metered **iface** change event. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | No | Callback used to return the result. It is called when the registered metered **iface** changes. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;string&gt;&gt; | No | Callback invoked when the metered iface changes. |
 
 **Error codes:**
 
@@ -208,7 +208,7 @@ try {
 function off(type: 'netQuotaPolicyChange', callback?: Callback<Array<NetQuotaPolicy>>): void
 ```
 
-Unsubscribes from the changes of the metering network policy. This API uses an asynchronous callback to return the result.
+Unregisters the callback for metered network policy changes. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -270,7 +270,7 @@ try {
 function off(type: 'netBackgroundPolicyChange', callback?: Callback<boolean>): void
 ```
 
-Unsubscribes from background network policy changes. This API uses an asynchronous callback to return the result.
+Unregisters the callback for background network policy changes. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 

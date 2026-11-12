@@ -4,7 +4,7 @@
 enum ControlAppStatus
 ```
 
-任务标识。
+控制权限状态。
 
 **起始版本：** 26.1.0
 
