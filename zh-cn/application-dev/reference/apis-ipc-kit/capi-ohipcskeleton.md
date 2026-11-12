@@ -18,4 +18,4 @@ ipc_cskeleton.h提供IPC框架TokenId、凭据、PID/UID、线程池配置等功
 
 | 名称 | 描述 |
 | ---- | ---- |
-| [ipc_cskeleton.h](capi-ipc-cskeleton-h.md) | 提供IPC框架TokenId、凭据、PID/UID、线程池配置等等功能C接口。 |
+| [ipc_cskeleton.h](capi-ipc-cskeleton-h.md) | 提供IPC框架TokenId、凭据、PID/UID、线程池配置等功能C接口。 |
