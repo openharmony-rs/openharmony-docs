@@ -16806,3 +16806,135 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   }
 }
 ```
+
+### setShareCoverUri
+
+setShareCoverUri(owner: string, coverUri: string): void
+
+设置共享相册封面。该操作需通过[applyShareAlbumChanges](#applysharealbumchanges)提交后生效。
+
+> **说明：**
+>
+> - 仅共享相册创建者可以修改封面。
+> - coverUri必须为当前共享相册中的图片或视频资产的URI；若该资产被删除、隐藏或风控，封面恢复为默认封面。
+> - 手动设置封面后，封面不再随默认封面规则变更；如需恢复默认封面，请调用[resetShareCoverUri](#resetsharecoveruri)。
+> - 封面更新后，封面设置信息会同步到云端；多设备同时设置封面时，以最后同步到云端的封面为最终封面。
+> - 共享相册信息已从云端同步到本端，但封面资产尚未下载到本端时，本端仍按本地规则配置封面：已手动设置封面则保持本端设置的封面、未设置则保持默认封面、待封面资产下载到本端后再刷新封面。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO 和 ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| owner | string | 是   | 共享相册创建者的OwnerId。 |
+| coverUri | string | 是   | 待设置为封面的资产URI，必须为当前共享相册中的图片或视频资产。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The albums are not share album. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, coverUri: string) {
+  console.info('setShareCoverUriDemo');
+  try {
+    // 查询共享相册。
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums();
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    // 创建共享相册变更请求。
+    let shareAlbumChangeRequest: photoAccessHelper.MediaShareAlbumChangeRequest =
+      new photoAccessHelper.MediaShareAlbumChangeRequest(album);
+    // 设置共享相册封面，coverUri需为当前相册内图片或视频资产的URI。
+    shareAlbumChangeRequest.setShareCoverUri('ownerId', coverUri);
+    // 提交共享相册变更请求。
+    await phAccessHelper.applyShareAlbumChanges(shareAlbumChangeRequest);
+    console.info('setShareCoverUri successfully');
+  } catch (err) {
+    console.error(`setShareCoverUriDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### resetShareCoverUri
+
+resetShareCoverUri(owner: string): void
+
+恢复共享相册的默认封面。该操作需通过[applyShareAlbumChanges](#applysharealbumchanges)提交后生效。
+
+> **说明：**
+>
+> - 仅共享相册创建者可以恢复默认封面。
+> - 恢复后按默认封面规则选取封面：使用共享相册中最新一批、拍摄时间最新且未被风控的图片。新增或变更图片时，先比较批次，再比较添加时间，取批次最大、添加时间最新的图片。
+> - 封面资产被删除、隐藏或风控时，会在未被风控的资产中重新选取默认封面。
+> - 恢复默认封面后，封面重新随默认封面规则变化。
+
+**起始版本：** 26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.MANAGE_SHARE_PHOTO 和 ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| owner | string | 是   | 共享相册创建者的OwnerId。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The albums are not share album. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('resetShareCoverUriDemo');
+  try {
+    // 查询共享相册。
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getShareAlbums();
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    albumFetchResult.close();
+    // 创建共享相册变更请求。
+    let shareAlbumChangeRequest: photoAccessHelper.MediaShareAlbumChangeRequest =
+      new photoAccessHelper.MediaShareAlbumChangeRequest(album);
+    // 恢复共享相册的默认封面。
+    shareAlbumChangeRequest.resetShareCoverUri('ownerId');
+    // 提交共享相册变更请求。
+    await phAccessHelper.applyShareAlbumChanges(shareAlbumChangeRequest);
+    console.info('resetShareCoverUri successfully');
+  } catch (err) {
+    console.error(`resetShareCoverUriDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
