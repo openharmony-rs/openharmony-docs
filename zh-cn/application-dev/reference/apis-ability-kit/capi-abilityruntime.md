@@ -21,6 +21,7 @@
 | -- | -- |
 | [ability_runtime_common.h](capi-ability-runtime-common-h.md) | 提供AbilityRuntime模块的错误码。 |
 | [application_context.h](capi-application-context-h.md) | 提供应用级别上下文相关的接口。 |
+| [app_memory_optimizer.h](capi-app-memory-optimizer-h.md) | 提供子进程活跃状态枚举和通知接口。 |
 | [context.h](capi-abilityruntime-context-h.md) | 提供上下文数据结构[AbilityRuntime_Context](capi-abilityruntime-abilityruntime-context.md)和相关接口用于获取当前上下文的应用文件路径、数据加密等级和进程名等信息。|
 | [context_constant.h](capi-context-constant-h.md) | 提供AbilityRuntime模块上下文常量的定义。 |
 | [connect_options.h](capi-connect-options-h.md) | 声明ExtensionAbility的连接选项，包括连接成功、断开连接和连接失败的回调接口。 |
