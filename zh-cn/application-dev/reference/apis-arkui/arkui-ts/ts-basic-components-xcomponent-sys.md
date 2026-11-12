@@ -177,7 +177,7 @@ import {
   XComponent,
   XComponentType,
   XComponentExtraFlag
-} from 'kit.ArkUI';
+} from '@kit.ArkUI';
 
 @Entry
 @Component
