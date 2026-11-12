@@ -868,7 +868,7 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
 ```
 
 ## eSIM.getSupportedPkids<sup>20+</sup>
- 	 
+
 getSupportedPkids\(slotId: number\): Promise\<string\>
 
 获取手机支持的公钥ID信息。
@@ -990,7 +990,7 @@ getEsimFreeStorage\(): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息                                    |
 | ------- | --------------------------------------- |
