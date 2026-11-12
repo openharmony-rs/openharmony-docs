@@ -139,6 +139,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 
    // 提交会话配置信息。
    ret = OH_CaptureSession_CommitConfig(captureSession_);
+   // ...
 
    InitPreviewRotation();
    // 开始会话。
