@@ -1,12 +1,11 @@
 # OH_Pixelmap_HdrMetadataValue
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=62f43af624b3dd8e087aab6967d3e43810260062 translatedAt=2026-08-03T04:02:31.842Z pushedAt=2026-08-04T06:15:15.945Z -->
+<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-06T02:02:46.441Z pushedAt=2026-11-12T06:04:17.577Z nl=1 -->
 
 ```c
 typedef struct OH_Pixelmap_HdrMetadataValue {...} OH_Pixelmap_HdrMetadataValue
