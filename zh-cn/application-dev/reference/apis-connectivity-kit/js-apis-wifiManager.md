@@ -4687,11 +4687,11 @@ isWlanSupported(): boolean
 
 枚举，P2P服务协议类型。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4707,11 +4707,11 @@ isWlanSupported(): boolean
 
 表示P2P服务信息。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4727,13 +4727,13 @@ addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Ma
 
 添加并注册一个DNS-SD（DNS Service Discovery，基于DNS的服务发现）本地P2P服务描述，供对端进行服务发现。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4776,13 +4776,13 @@ addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&g
 
 添加并注册一个UPnP（Universal Plug and Play，通用即插即用）本地P2P服务描述，供对端进行服务发现。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4826,13 +4826,13 @@ removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
 
 移除通过[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)或[addUpnpLocalP2pService](#wifimanageraddupnplocalp2pservice)添加的已注册本地服务。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4875,13 +4875,13 @@ getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
 
 查询本地P2P服务，使用Promise异步回调。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4915,13 +4915,13 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 ## WifiP2pServiceRequest
 
-表示P2P服务发现请求，即TLV（Type-Length-Value，类型-长度-值）查询。
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
+表示待处理的P2P服务发现请求，即TLV（Type-Length-Value，类型-长度-值）查询。类型为[P2pServiceProtocolType](#p2pserviceprotocoltype)表示的服务协议类型，值为对应的查询字节。该请求由[addDnsSdServiceRequest](#wifimanageradddnssdservicerequest)或[addUpnpServiceRequest](#wifimanageraddupnpservicerequest)添加，供[discoverServices](#wifimanagerdiscoverservices)按查询匹配对端服务。
 
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4934,35 +4934,35 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 表示从对端设备收到的DNS-SD（DNS-Based Service Discovery，基于DNS的服务发现）服务响应信息。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.0.1
 
 **ArkTS-Sta起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| instanceName | string | 否 | 否 | 已发现Bonjour（苹果零配置网络协议）服务的实例名。 |
-| registrationType | string | 否 | 否 | 已发现Bonjour服务的注册类型。取值前缀与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的serviceType入参相同，并在末尾追加".local"。 |
+| instanceName | string | 否 | 否 | 已发现Bonjour（零配置网络发现协议）服务的实例名。 |
+| registrationType | string | 否 | 否 | 已发现Bonjour服务的注册类型。取值前缀与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的serviceType入参相同，并在末尾追加".local"。例如serviceType为"_http._tcp"时，取值为"_http._tcp.local"。 |
 | device | [WifiP2pDevice](#wifip2pdevice) | 否 | 否 | 返回该服务响应的对端设备。 |
 
 ## P2pDnsSdTxtInfo
 
 表示从对端设备收到的DNS-SD TXT（DNS-Based Service Discovery Text，基于DNS的服务发现文本）记录信息。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| wholeDomainName | string | 否 | 否 | TXT记录的完整域名。格式为instanceName + "." + serviceType + ".local"。 |
+| wholeDomainName | string | 否 | 否 | TXT记录的完整域名。格式为instanceName + "." + serviceType + ".local"。例如instanceName为"instanceName"、serviceType为"_http._tcp"时，取值为"instanceName._http._tcp.local"。 |
 | txtRecord | Map&lt;string, string&gt; | 否 | 否 | 包含键值对的TXT记录。 |
 | device | [WifiP2pDevice](#wifip2pdevice) | 否 | 否 | 返回该TXT记录的对端设备。 |
 
@@ -4970,11 +4970,11 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 表示从对端设备收到的UPnP（Universal Plug and Play，通用即插即用）服务响应信息。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4987,11 +4987,11 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 表示从对端设备收到的通用服务响应信息。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5007,11 +5007,11 @@ type P2pServiceDiscoveryInfo = P2pDnsSdInfo | P2pDnsSdTxtInfo | P2pUpnpInfo | P2
 
 表示从对端设备收到的P2P服务发现响应信息。具体类型由响应的服务协议类型决定。
 
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5028,13 +5028,13 @@ addDnsSdServiceRequest(serviceType?: string, instanceName?: string): void
 
 添加与DNS-SD服务匹配的DNS-SD服务发现请求。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5042,8 +5042,8 @@ addDnsSdServiceRequest(serviceType?: string, instanceName?: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| serviceType | string | 否 | 服务类型，用于对端服务发现。格式为"&lt;ServiceName&gt;.&lt;Protocol&gt;"，例如"_http._tcp"。与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的serviceType入参对应。未指定时默认为空字符串。 |
-| instanceName | string | 否 | 实例名，用于发现对端服务。与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的instanceName入参对应。未指定时默认为空字符串。 |
+| serviceType | string | 否 | 服务类型，用于对端服务发现，最大长度为63字符。格式为"&lt;ServiceName&gt;.&lt;Protocol&gt;"，例如"_http._tcp"。与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的serviceType入参对应。未指定时默认为空字符串。 |
+| instanceName | string | 否 | 实例名，用于发现对端服务，最大长度为63字符。与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的instanceName入参对应。未指定时默认为空字符串。 |
 
 **错误码：**
 
@@ -5073,13 +5073,13 @@ addUpnpServiceRequest(searchTarget?: string): void
 
 添加与指定搜索目标匹配的UPnP服务发现请求。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5087,7 +5087,7 @@ addUpnpServiceRequest(searchTarget?: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| searchTarget | string | 否 | UPnP搜索目标。未指定时默认为空字符串。入参类型示例：<br>- 搜索所有UPnP设备和服务："ssdp:all"<br>- 搜索特定根设备："upnp:rootdevice"<br>- 搜索特定设备类型（urn:schemas-upnp-org:device:...），例如"urn:schemas-upnp-org:device:MediaServer:2"<br>- 搜索特定服务类型（urn:schemas-upnp-org:service:...），例如"urn:schemas-upnp-org:service:ContentDirectory:2"<br>- 搜索特定UUID，例如"uuid:6859dede-8574-59ab-9332-123456789012" |
+| searchTarget | string | 否 | UPnP搜索目标。未指定时默认为空字符串。搜索设备类型时建议不超过255字节，搜索服务类型时不得超过512字节。入参类型示例：<br>- 搜索所有UPnP设备和服务："ssdp:all"<br>- 搜索特定根设备："upnp:rootdevice"<br>- 搜索特定设备类型（urn:schemas-upnp-org:device:...），例如"urn:schemas-upnp-org:device:MediaServer:2"<br>- 搜索特定服务类型（urn:schemas-upnp-org:service:...），例如"urn:schemas-upnp-org:service:ContentDirectory:2"<br>- 搜索特定UUID，例如"uuid:6859dede-8574-59ab-9332-123456789012" |
 
 **错误码：**
 
@@ -5117,13 +5117,13 @@ getP2pServiceRequest(): Promise&lt;Array&lt;WifiP2pServiceRequest&gt;&gt;
 
 查询待处理的P2P服务发现请求，使用Promise异步回调。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5162,13 +5162,13 @@ removeP2pServiceRequest(request: WifiP2pServiceRequest): void
 
 移除待处理的P2P服务发现请求。可通过调用[getP2pServiceRequest](#wifimanagergetp2pservicerequest)获取已注册的服务发现请求列表。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5209,13 +5209,13 @@ removeAllP2pServiceRequests(): void
 
 移除所有待处理的服务发现请求。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5247,13 +5247,13 @@ discoverServices(): void
 
 启动P2P服务发现。使用待处理请求的TLV查询；若待处理列表为空，则回退为发现所有服务类型。在启动发现前，请使用[addDnsSdServiceRequest](#wifimanageradddnssdservicerequest)或[addUpnpServiceRequest](#wifimanageraddupnpservicerequest)添加服务请求。
 
-**需要权限：** ohos.permission.GET_WIFI_PEERS_MAC
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_PEERS_MAC
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5286,13 +5286,13 @@ onP2pServiceDiscovery(callback: Callback&lt;P2pServiceDiscoveryInfo&gt;): void
 
 订阅对端设备的通用服务响应事件。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5329,13 +5329,13 @@ offP2pServiceDiscovery(callback?: Callback&lt;P2pServiceDiscoveryInfo&gt;): void
 
 取消订阅通用服务响应事件。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 **ArkTS-Dyn起始版本：** 26.1.0
 
 **ArkTS-Sta起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.GET_WIFI_INFO
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
