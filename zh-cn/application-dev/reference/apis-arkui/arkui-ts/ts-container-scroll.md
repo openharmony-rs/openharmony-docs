@@ -1640,7 +1640,7 @@ FastScrollMode表示滚动到指定Index时使用的快速滚动模式，配合[
 | -- | -- | -- |
 | NONE | 0 | 不启用快速滚动优化，与不设置fastScroll参数时的行为相同。开启动画时，会在动画开始前创建并测量滚动路径上的所有子组件。 |
 | SKIP_MEASURE | 1 | 跳过中间子组件的测量，仍可创建中间子组件以确认类型和目标所在行。适用于多列List中同时存在ListItem和ListItemGroup的场景：ListItem占一行中的一列，ListItemGroup占满一整行，需要根据子组件类型确定目标所在行。 |
-| SKIP_CREATE_AND_MEASURE | 2 | 跳过中间子组件的创建和测量，进一步减少开销。<br/>**说明：**<br/>不适用于多列List中同时存在ListItem和ListItemGroup的场景。在该场景下使用此模式会导致List布局和滚动异常，应改用SKIP_MEASURE。<br/>WaterFlow组件建议使用此模式。 |
+| SKIP_CREATE_AND_MEASURE | 2 | 跳过中间子组件的创建和测量，进一步减少开销。<br/>**说明：**<br/>不适用于多列List中同时存在ListItem和ListItemGroup的场景。在该场景下使用此模式会导致List布局和滚动异常，应改用SKIP_MEASURE。<br/>WaterFlow组件建议使用此模式。[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)布局模式下，WaterFlow定位目标FlowItem不依赖中间子组件，SKIP_MEASURE仍会创建沿途中间子组件，带来多余的创建开销。 |
 
 ## ScrollPageOptions<sup>14+</sup>对象说明
 
