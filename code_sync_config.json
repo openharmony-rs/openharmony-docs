@@ -38182,14 +38182,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp",
 				"functions":[
 					{
-						"end_line":322,
+						"end_line":561,
 						"name":"GetAudioResourceManager",
 						"start_line":23
 					},
 					{
-						"end_line":326,
+						"end_line":565,
 						"name":"CreateWorkgroup",
-						"start_line":26
+						"start_line":29
 					},
 					{
 						"end_line":330,
@@ -38422,9 +38422,9 @@
 						"start_line":18
 					},
 					{
-						"end_line":162,
+						"end_line":190,
 						"name":"Render_Create",
-						"start_line":34
+						"start_line":38
 					},
 					{
 						"end_line":219,
@@ -38442,9 +38442,9 @@
 						"start_line":59
 					},
 					{
-						"end_line":207,
+						"end_line":235,
 						"name":"Render_GenerateRenderer",
-						"start_line":38
+						"start_line":42
 					},
 					{
 						"end_line":254,
@@ -38467,14 +38467,14 @@
 						"start_line":101
 					},
 					{
-						"end_line":382,
+						"end_line":621,
 						"name":"Render_CustomCallback",
-						"start_line":48
+						"start_line":52
 					},
 					{
-						"end_line":402,
+						"end_line":641,
 						"name":"Render_callBackInit",
-						"start_line":49
+						"start_line":53
 					},
 					{
 						"end_line":261,
