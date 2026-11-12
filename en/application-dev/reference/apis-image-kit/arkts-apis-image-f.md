@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=74febd75f3a8ada5f76e4f78791dddfc21d8b56a translatedAt=2026-11-06T01:52:15.989Z pushedAt=2026-11-12T02:09:20.070Z nl=1 -->
 
 This module provides image processing capabilities, including creating image objects such as PixelMap, Picture, ImageSource, ImagePacker, and ImageReceiver. It supports image decoding, encoding, pixel data manipulation, and image transformation. These capabilities are suitable for scenarios such as image editing, image processing, and camera preview frame capturing.
 
@@ -308,8 +309,8 @@ function createPixelMapFromPixelsSync() {
   try {
     const pixelMap = image.createPixelMapFromPixelsSync(pixels, config);
     console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -340,7 +341,7 @@ Creates an empty PixelMap based on image properties.
 
 | Name | Type                                            | Mandatory| Description                                                            |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Image properties, including the dimensions, pixel format, transparency type, scaling mode, and editability.<br>**Note:** If the pixel format is specified as ASTC_4x4, the default RGBA_8888 format will be used.|
+| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Image properties, including the dimensions, pixel format, alpha type, scaling mode, and editability.<br>**Note:** If the pixel format is specified as ASTC_4x4, the default RGBA_8888 format will be used.|
 
 **Return value**
 
@@ -373,8 +374,8 @@ function createEmptyPixelMap() {
   try {
     const pixelMap = image.createEmptyPixelMap(config);
     console.info('Succeeded in creating the empty PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the empty PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -506,7 +507,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **Example**
 
@@ -514,18 +515,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function createPixelMapSync() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96 indicates the size of the pixel buffer to create. The value is calculated as follows: width × height × 4.
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to be created, calculated as: width * height * 4.
   let opts: image.InitializationOptions = {
     size: { height: 4, width: 6 },
     srcPixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the source pixel data in the buffer.
-    pixelFormat: image.PixelMapFormat.BGRA_8888, // Pixel format of the new PixelMap.
+    pixelFormat: image.PixelMapFormat.BGRA_8888, // Pixel format of the newly created pixel map.
     editable: true
   };
   try {
     let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    if (pixelMap == undefined) {
+      console.error(`Failed to create the PixelMap.`);
+      return;
+    }
     console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -549,7 +554,7 @@ Creates an empty PixelMap based on image properties. This API returns the result
 
 | Name | Type                                            | Mandatory| Description                                                            |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| options | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Image properties, including the dimensions, pixel format, transparency type, scaling mode, and editability.<br>**Note:** If the pixel format is specified as ASTC_4x4, the default RGBA_8888 format will be used.|
+| options | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Image properties, including the dimensions, pixel format, alpha type, scaling mode, and editability.<br>**Note:** If the pixel format is specified as ASTC_4x4, the default RGBA_8888 format will be used.|
 
 **Return value**
 | Type                            | Description                 |
@@ -562,7 +567,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **Example**
 
@@ -573,9 +578,13 @@ function createPixelMapSync() {
   let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_1010102, size: { height: 4, width: 6 } };
   try {
     let pixelMap: image.PixelMap = image.createPixelMapSync(opts);
+    if (pixelMap == undefined) {
+      console.error(`Failed to create the PixelMap.`);
+      return;
+    }
     console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -589,8 +598,8 @@ Creates a PixelMap based on the pixel data and image properties. You can specify
 
 > **NOTE**
 >
-> - This API cannot create PixelMaps of the ASTC_4x4 format.
-> - Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+> - This API does not support creating a pixel map in the following pixel formats: **YCBCR_P010**, **YCRCB_P010**, and **ASTC_4x4**.
+> - Because images occupy a large amount of memory, call [release](./arkts-apis-image-PixelMap.md#release7) to release the memory in a timely manner after the pixel map object is no longer used. Before the release, ensure that all asynchronous methods of the object have been executed and that the object will no longer be used.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -600,7 +609,7 @@ Creates a PixelMap based on the pixel data and image properties. You can specify
 | -------- | ------------------------------------------------ | ---- | -------------------------- |
 | colors   | ArrayBuffer                                      | Yes  | Buffer for storing the pixel data. It is used to initialize the pixels of the PixelMap. The pixel data in the buffer must be tightly packed and must not contain memory-alignment padding bytes.<br>Before initialization, the pixel format in the buffer must be specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat. Otherwise, the creation fails.<br>**Note:** The buffer size is calculated as: image width × image height × bytes per pixel.|
 | param  | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Initialization properties for creating an image, including size, pixel format, alpha type, scaling mode, and editability.<br>**Note:** If the pixel format is specified as ASTC_4x4, the default RGBA_8888 format will be used.|
-| allocatorType  | [AllocatorType](arkts-apis-image-e.md#allocatortype15)          | No  | Memory type of the PixelMap to be created. The default value is **AllocatorType.AUTO**.<br> 1. **image.AllocatorType.AUTO**: The following formats are not supported for this memory type: UNKNOWN, YCBCR_P010, YCRCB_P010, and ASTC_4x4. For RGBA_1010102, DMA memory is allocated by default. For other formats (RGB_565, RGBA_8888, BGRA_8888, and RGBA_F16), DMA memory is allocated by default if the image size is greater than 512 × 512 pixels; otherwise, shared memory is used.<br>2. image.AllocatorType.DMA: The RGBA_1010102, RGB_565, RGBA_8888, BGRA_8888, and RGBA_F16 formats support DMA memory; other formats do not.<br>3. image.AllocatorType.SHARE_MEMORY: The UNKNOWN, RGBA_1010102, YCBCR_P010, YCRCB_P010, and ASTC_4x4 formats do not support shared memory; other formats do.|
+| allocatorType  | [AllocatorType](arkts-apis-image-e.md#allocatortype15)          | No   | Allocator type for creating a pixel map. The default value is **AllocatorType.AUTO**.<br>1. **image.AllocatorType.AUTO**: The formats that do not support this memory type are **UNKNOWN**, **YCBCR_P010**, **YCRCB_P010**, and **ASTC_4x4**.<br>**RGBA_1010102** applies for DMA memory by default.<br>**RGB_565**, **RGBA_8888**, **BGRA_8888**, **RGBA_F16**, and **ALPHA_F16** (supported since API version 26.0.0) apply for DMA memory by default when the size is greater than or equal to 512*512 pixels; otherwise, they apply for shared memory.<br>Other formats apply for shared memory by default.<br>2. **image.AllocatorType.DMA**: **RGBA_1010102**, **RGB_565**, **RGBA_8888**, **BGRA_8888**, **RGBA_F16**, and **ALPHA_F16** support the DMA memory type, while other formats do not.<br>3. **image.AllocatorType.SHARE_MEMORY**: **UNKNOWN**, **RGBA_1010102**, **YCBCR_P010**, **YCRCB_P010**, and **ASTC_4x4** do not support shared memory, while other formats do. |
 
 **Return value**
 
@@ -647,18 +656,18 @@ Creates a PixelMap based on the pixel data and image properties. You can specify
 
 > **NOTE**
 >
-> - This API cannot create PixelMaps of the ASTC_4x4 format.
-> - Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+> - This API does not support creating a pixel map in the following pixel formats: **YCBCR_P010**, **YCRCB_P010**, and **ASTC_4x4**.
+> - Because images occupy a large amount of memory, call [release](./arkts-apis-image-PixelMap.md#release7) to release the memory in a timely manner after the pixel map object is no longer used. Before the release, ensure that all asynchronous methods of the object have been executed and that the object will no longer be used.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
 
-| Name | Type                                            | Mandatory| Description                                                            |
-| ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| colors  | ArrayBuffer                                      | Yes  | Buffer for storing the pixel data. It is used to initialize the pixels of the PixelMap. The pixel data in the buffer must be tightly packed and must not contain memory-alignment padding bytes.<br>Before initialization, the pixel format in the buffer must be specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat. Otherwise, the creation fails.<br>**Note:** The buffer size is calculated as: image width × image height × bytes per pixel.|
-| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Initialization properties for creating an image, including size, pixel format, alpha type, scaling mode, and editability.<br>**Note:** If the pixel format is specified as ASTC_4x4, the default RGBA_8888 format will be used.|
-| allocatorType  | [AllocatorType](arkts-apis-image-e.md#allocatortype15)          | No  | Memory type of the PixelMap to be created. The default value is **AllocatorType.AUTO**.<br> 1. **image.AllocatorType.AUTO**: The following formats are not supported for this memory type: UNKNOWN, YCBCR_P010, YCRCB_P010, and ASTC_4x4. For RGBA_1010102, DMA memory is allocated by default. For other formats (RGB_565, RGBA_8888, BGRA_8888, and RGBA_F16), DMA memory is allocated by default if the image size is greater than 512 × 512 pixels; otherwise, shared memory is used.<br>2. image.AllocatorType.DMA: The RGBA_1010102, RGB_565, RGBA_8888, BGRA_8888, and RGBA_F16 formats support DMA memory; other formats do not.<br>3. image.AllocatorType.SHARE_MEMORY: The UNKNOWN, RGBA_1010102, YCBCR_P010, YCRCB_P010, and ASTC_4x4 formats do not support shared memory; other formats do.|
+| Name  | Type                                            | Mandatory| Description                      |
+| -------- | ------------------------------------------------ | ---- | -------------------------- |
+| colors   | ArrayBuffer                                      | Yes  | Buffer for storing the pixel data. It is used to initialize the pixels of the PixelMap. The pixel data in the buffer must be tightly packed and must not contain memory-alignment padding bytes.<br>Before initialization, the pixel format in the buffer must be specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat. Otherwise, the creation fails.<br>**Note:** The buffer size is calculated as: image width × image height × bytes per pixel.|
+| param  | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Initialization properties for creating an image, including size, pixel format, alpha type, scaling mode, and editability.<br>**Note:** If the pixel format is specified as ASTC_4x4, the default RGBA_8888 format will be used.|
+| allocatorType  | [AllocatorType](arkts-apis-image-e.md#allocatortype15)          | No   | Allocator type for creating a pixel map. The default value is **AllocatorType.AUTO**.<br>1. **image.AllocatorType.AUTO**: The formats that do not support this memory type are **UNKNOWN**, **YCBCR_P010**, **YCRCB_P010**, and **ASTC_4x4**.<br>**RGBA_1010102** applies for DMA memory by default.<br>**RGB_565**, **RGBA_8888**, **BGRA_8888**, **RGBA_F16**, and **ALPHA_F16** (supported since API version 26.0.0) apply for DMA memory by default when the size is greater than or equal to 512*512 pixels; otherwise, they apply for shared memory.<br>Other formats apply for shared memory by default.<br>2. **image.AllocatorType.DMA**: **RGBA_1010102**, **RGB_565**, **RGBA_8888**, **BGRA_8888**, **RGBA_F16**, and **ALPHA_F16** support the DMA memory type, while other formats do not.<br>3. **image.AllocatorType.SHARE_MEMORY**: **UNKNOWN**, **RGBA_1010102**, **YCBCR_P010**, **YCRCB_P010**, and **ASTC_4x4** do not support shared memory, while other formats do. |
 
 **Return value**
 
@@ -682,18 +691,22 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function createPixelMapUsingAllocatorSync() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96 indicates the size of the pixel buffer to create. The value is calculated as follows: width × height × 4.
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96 is the size of the pixel buffer to be created, calculated as: width * height * 4.
   let opts: image.InitializationOptions = {
     size: { height: 4, width: 6 },
     srcPixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the source pixel data in the buffer.
-    pixelFormat: image.PixelMapFormat.BGRA_8888, // Pixel format of the new PixelMap.
+    pixelFormat: image.PixelMapFormat.BGRA_8888, // Pixel format of the newly created PixelMap.
     editable: true
   };
   try {
     let pixelMap: image.PixelMap = image.createPixelMapUsingAllocatorSync(color, opts, image.AllocatorType.DMA);
+    if (pixelMap == undefined) {
+      console.error(`Failed to create the PixelMap.`);
+      return;
+    }
     console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -717,7 +730,7 @@ Creates an empty PixelMap based on the image properties. You can specify the mem
 | Name | Type                                            | Mandatory| Description                                                            |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
 | param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Initialization properties for creating an image, including size, pixel format, alpha type, scaling mode, and editability.<br>**Note:** If the pixel format is specified as ASTC_4x4, the default RGBA_8888 format will be used.|
-| allocatorType  | [AllocatorType](arkts-apis-image-e.md#allocatortype15)          | No  | Memory type of the PixelMap to be created. The default value is **AllocatorType.AUTO**.<br> 1. **image.AllocatorType.AUTO**: The following formats are not supported for this memory type: UNKNOWN, YCBCR_P010, YCRCB_P010, and ASTC_4x4. For RGBA_1010102, DMA memory is allocated by default. For other formats (RGB_565, RGBA_8888, BGRA_8888, and RGBA_F16), DMA memory is allocated by default if the image size is greater than 512 × 512 pixels; otherwise, shared memory is used.<br>2. image.AllocatorType.DMA: The RGBA_1010102, RGB_565, RGBA_8888, BGRA_8888, and RGBA_F16 formats support DMA memory; other formats do not.<br>3. image.AllocatorType.SHARE_MEMORY: The UNKNOWN, RGBA_1010102, YCBCR_P010, YCRCB_P010, and ASTC_4x4 formats do not support shared memory; other formats do.|
+| allocatorType  | [AllocatorType](arkts-apis-image-e.md#allocatortype15)          | No   | Allocator type for creating a pixel map. The default value is **AllocatorType.AUTO**.<br>1. **image.AllocatorType.AUTO**: The formats that do not support this memory type are **UNKNOWN** and **ASTC_4x4**.<br>**RGBA_1010102**, **YCBCR_P010**, and **YCRCB_P010** apply for DMA memory by default.<br>**RGB_565**, **RGBA_8888**, **BGRA_8888**, **RGBA_F16**, and **ALPHA_F16** (supported since API version 26.0.0) apply for DMA memory by default when the size is greater than or equal to 512*512 pixels; otherwise, they apply for shared memory.<br>Other formats apply for shared memory by default.<br>2. **image.AllocatorType.DMA**: **RGBA_1010102**, **RGB_565**, **RGBA_8888**, **BGRA_8888**, **RGBA_F16**, **ALPHA_F16**, **YCBCR_P010**, and **YCRCB_P010** support the DMA memory type, while other formats do not.<br>3. **image.AllocatorType.SHARE_MEMORY**: **UNKNOWN**, **RGBA_1010102**, **YCBCR_P010**, **YCRCB_P010**, and **ASTC_4x4** do not support shared memory, while other formats do. |
 
 **Return value**
 
@@ -743,9 +756,13 @@ function createPixelMapUsingAllocatorSync() {
   let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.BGRA_8888, size: { height: 4, width: 6 } };
   try {
     let pixelMap: image.PixelMap = image.createPixelMapUsingAllocatorSync(opts, image.AllocatorType.DMA);
+    if (pixelMap == undefined) {
+      console.error(`Failed to create the PixelMap.`);
+      return;
+    }
     console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -809,8 +826,8 @@ class MySequence implements rpc.Parcelable {
   unmarshalling(messageSequence: rpc.MessageSequence) {
     try {
       this.pixelMap = image.createPixelMapFromParcel(messageSequence);
-    } catch (e) {
-      const err = e as BusinessError;
+    } catch (error) {
+      const err = error as BusinessError;
       console.error(`Failed to create the PixelMap from parcel. Code: ${err.code}, message: ${err.message}`);
       return false;
     }
@@ -858,8 +875,8 @@ Creates a PixelMap object based on the surface ID and region information. The si
 
 > **NOTE**
 >
-> - For foldable devices, during switching between folded and unfolded states, the API call may fail because of the built-in rotation angle of the surface. You need to adjust the input width and height values accordingly based on the surface rotation angle (for example, swap the width and height when the rotation angle is 90° or 270°). If you need to capture the entire surface area, it is advised to use [image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15).
-> - Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+> - On a foldable device, when the folding state changes, the API may fail to create the object because the surface carries a rotation angle. Adjust the width and height passed in based on the rotation angle of the surface. For example, swap the width and height when the rotation angle is 90° or 270°. If you need to capture the entire surface area, use [image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15).
+> - Because images occupy a large amount of memory, call [release](./arkts-apis-image-PixelMap.md#release7) to release the memory in a timely manner after the pixel map object is no longer used. Before the release, ensure that all asynchronous methods of the object have been executed and that the object will no longer be used.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -909,8 +926,8 @@ Creates a PixelMap object based on the surface ID and region information. The si
 
 > **NOTE**
 >
-> - For foldable devices, during switching between folded and unfolded states, the API call may fail because of the built-in rotation angle of the surface. You need to adjust the input width and height values accordingly based on the surface rotation angle (for example, swap the width and height when the rotation angle is 90° or 270°). If you need to capture the entire surface area, it is advised to use [image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15).
-> - Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+> - On a foldable device, when the folding state changes, the API may fail to create the object because the surface carries a rotation angle. Adjust the width and height passed in based on the rotation angle of the surface. For example, swap the width and height when the rotation angle is 90° or 270°. If you need to capture the entire surface area, use [image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15).
+> - Because images occupy a large amount of memory, call [release](./arkts-apis-image-PixelMap.md#release7) to release the memory in a timely manner after the pixel map object is no longer used. Before the release, ensure that all asynchronous methods of the object have been executed and that the object will no longer be used.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -947,8 +964,8 @@ function createPixelMapFromSurfaceSync(surfaceId: string) {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
     console.info('Succeeded in creating the PixelMap from Surface.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -962,8 +979,8 @@ Creates a PixelMap object from a surface ID. This API returns the result asynchr
 
 > **NOTE**
 >
-> - If the surface carries rotation or flipping information and processing is required, use [image.createPixelMapFromSurfaceWithTransformation](#imagecreatepixelmapfromsurfacewithtransformation23).
-> - Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+> - If the surface carries rotation or flip transformation information and the orientation needs to be corrected, use [image.createPixelMapFromSurfaceWithTransformation](#imagecreatepixelmapfromsurfacewithtransformation23).
+> - Because images occupy a large amount of memory, call [release](./arkts-apis-image-PixelMap.md#release7) to release the memory in a timely manner after the pixel map object is no longer used. Before the release, ensure that all asynchronous methods of the object have been executed and that the object will no longer be used.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -985,9 +1002,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-| 62980105 | Failed to get the data |
-| 62980178 | Failed to create the PixelMap |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 62980105 | Failed to get the data. |
+| 62980178 | Failed to create the PixelMap. |
 
 **Example**
 
@@ -1011,8 +1028,8 @@ Creates a PixelMap object from a surface ID. This API returns the result synchro
 
 > **NOTE**
 >
-> - If the surface carries rotation or flipping information and processing is required, use [image.createPixelMapFromSurfaceWithTransformationSync](#imagecreatepixelmapfromsurfacewithtransformationsync23).
-> - Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+> - If the surface carries rotation or flip transformation information and the orientation needs to be corrected, use [image.createPixelMapFromSurfaceWithTransformationSync](#imagecreatepixelmapfromsurfacewithtransformationsync23).
+> - Because images occupy a large amount of memory, call [release](./arkts-apis-image-PixelMap.md#release7) to release the memory in a timely manner after the pixel map object is no longer used. Before the release, ensure that all asynchronous methods of the object have been executed and that the object will no longer be used.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -1034,9 +1051,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-| 62980105 | Failed to get the data |
-| 62980178 | Failed to create the PixelMap |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 62980105 | Failed to get the data. |
+| 62980178 | Failed to create the PixelMap. |
 
 **Example**
 
@@ -1047,8 +1064,8 @@ function createPixelMapFromSurfaceSync(surfaceId: string) {
   try {
     let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId);
     console.info('Succeeded in creating the PixelMap from Surface.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1062,7 +1079,8 @@ Creates a PixelMap object for previewing a stream based on a surface ID. The sur
 
 > **NOTE**
 >
-> Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+> - Before API version 23, to obtain a PixelMap without transformation, you can use the [@ohos.arkui.componentSnapshot (component snapshot)](../apis-arkui/js-apis-arkui-componentSnapshot.md) capability, or use [image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15) to capture the image and then call [rotate](./arkts-apis-image-PixelMap.md#rotate9)/[flip](./arkts-apis-image-PixelMap.md#flip9) to manually correct the orientation.
+> - Images occupy a large amount of memory. When you finish using a pixel map object, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the object, ensure that all asynchronous methods of the object have been executed and that the object will no longer be used.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1073,7 +1091,7 @@ Creates a PixelMap object for previewing a stream based on a surface ID. The sur
 | Name                | Type          | Mandatory| Description                                    |
 | ---------------------- | ------------- | ---- | ---------------------------------------- |
 | surfaceId              | string        | Yes  | Surface ID, which can be obtained through the preview component, for example, [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md).|
-| transformEnabled       | boolean       | Yes  | Whether to perform inverse transformation on the surface that carries transformation information to eliminate the rotation or flipping effect of the PixelMap. If the surface does not carry transformation information, this parameter does not take effect.<br>If this parameter is set to **true**, the inverse transformation is performed. The transform angle matches the angle carried by the surface but in the opposite direction, and the output PixelMap has no rotation or flipping effect.<br>If this parameter is set to **false**, no inverse transformation is performed. The output PixelMap has the rotation or flipping effect based on the transformation information in the surface.|
+| transformEnabled       | boolean       | Yes   | Whether to perform inverse transformation on the surface that carries transformation information in advance to eliminate the rotation or flip effect of the pixel map, that is, whether to perform orientation correction. If the surface does not carry transformation information, this parameter does not take effect.<br>The value **true** indicates that inverse transformation is performed, with the transformation angle consistent with that carried by the surface but in the opposite direction, so that the output pixel map has no rotation or flip effect.<br>The value **false** indicates that inverse transformation is not performed, and the output pixel map carries the rotation or flip effect based on the transformation information in the surface. |
 
 **Return value**
 
@@ -1114,7 +1132,8 @@ Creates a PixelMap object for previewing a stream based on a surface ID. The sur
 
 > **NOTE**
 >
-> Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+> - Before API version 23, to obtain a pixel map without transformation, you can use the [@ohos.arkui.componentSnapshot (component snapshot)](../apis-arkui/js-apis-arkui-componentSnapshot.md) capability, or use [image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15) to capture the image and then call [rotateSync](./arkts-apis-image-PixelMap.md#rotatesync12)/[flipSync](./arkts-apis-image-PixelMap.md#flipsync12) to manually correct the orientation.
+> - Images occupy a large amount of memory. When you finish using a pixel map object, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the object, ensure that all asynchronous methods of the object have been executed and that the object will no longer be used.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1125,7 +1144,7 @@ Creates a PixelMap object for previewing a stream based on a surface ID. The sur
 | Name                | Type          | Mandatory| Description                                    |
 | ---------------------- | ------------- | ---- | ---------------------------------------- |
 | surfaceId              | string        | Yes  | Surface ID, which can be obtained through the preview component, for example, [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md).|
-| transformEnabled       | boolean       | Yes  | Whether to perform inverse transformation on the surface that carries transformation information to eliminate the rotation or flipping effect of the PixelMap. If the surface does not carry transformation information, this parameter does not take effect.<br>If this parameter is set to **true**, the inverse transformation is performed. The transform angle matches the angle carried by the surface but in the opposite direction, and the output PixelMap has no rotation or flipping effect.<br>If this parameter is set to **false**, no inverse transformation is performed. The output PixelMap has the rotation or flipping effect based on the transformation information in the surface.|
+| transformEnabled       | boolean       | Yes   | Whether to perform inverse transformation on the surface that carries transformation information in advance to eliminate the rotation or flip effect of the pixel map, that is, whether to perform orientation correction. If the surface does not carry transformation information, this parameter does not take effect.<br>The value **true** indicates that inverse transformation is performed, with the transformation angle consistent with that carried by the surface but in the opposite direction, so that the output pixel map has no rotation or flip effect.<br>The value **false** indicates that inverse transformation is not performed, and the output pixel map carries the rotation or flip effect based on the transformation information in the surface. |
 
 **Return value**
 
@@ -1153,8 +1172,8 @@ function createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, tran
   try {
     const pixelMap: image.PixelMap = image.createPixelMapFromSurfaceWithTransformationSync(surfaceId, transformEnabled);
     console.info('Succeeded in creating the PixelMap from Surface.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap from Surface. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1187,10 +1206,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401          | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
-|  62980103     | The image data is not supported |
-|  62980246     | Failed to read the pixelMap |
-|  62980248     | Pixelmap not allow modify |
+|  401          | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  62980103     | The image data is not supported. |
+|  62980246     | Failed to read the pixelMap. |
+|  62980248     | Pixelmap not allow modify. |
 
 **Example**
 
@@ -1252,10 +1271,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401          | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
-|  62980103     | The image data is not supported |
-|  62980246     | Failed to read the pixelMap |
-|  62980248     | Pixelmap not allow modify |
+|  401          | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  62980103     | The image data is not supported. |
+|  62980246     | Failed to read the pixelMap. |
+|  62980248     | Pixelmap not allow modify. |
 
 **Example**
 
@@ -1310,10 +1329,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-|  401          | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
-|  62980103     | The image data is not supported |
-|  62980246     | Failed to read the pixelMap |
-|  62980248     | Pixelmap not allow modify |
+|  401          | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  62980103     | The image data is not supported. |
+|  62980246     | Failed to read the pixelMap. |
+|  62980248     | Pixelmap not allow modify. |
 
 **Example**
 
@@ -1422,7 +1441,7 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 | Name| Type  | Mandatory| Description                              |
 | ------ | ------ | ---- | ---------------------------------- |
-| uri    | string | Yes  | Image path. Currently, only the application sandbox path is supported.<br>Currently, the following formats are supported: JPEG, PNG, GIF, BMP, WebP, DNG, HEIC<sup>12+</sup>, WBMP<sup>23+</sup>, HEIFS<sup>23+</sup>, TIFF<sup>23+</sup>, [SVG<sup>10+</sup>](#svg-tags), and ICO<sup>11+</sup>. Since API version 26.0.0, the AVIF and AVIS formats are supported.<br>Decoding support for certain formats depends on the specific device hardware. You are advised to use the [image.getImageSourceSupportedFormats](#imagegetimagesourcesupportedformats20) API before calling this API to dynamically query the decoding capabilities of the current device.|
+| uri    | string | Yes  | Image path. Currently, only the application sandbox path is supported.<br>Currently, the following formats are supported: JPEG, PNG, GIF, BMP, WebP, DNG, HEIC<sup>12+</sup>, WBMP<sup>23+</sup>, HEIFS<sup>23+</sup>, TIFF<sup>23+</sup>, [SVG Tags](#svg-tags), and ICO<sup>11+</sup>. Since API version 26.0.0, the AVIF and AVIS formats are supported.<br>Decoding support for certain formats depends on the specific device hardware. You are advised to use the [image.getImageSourceSupportedFormats](#imagegetimagesourcesupportedformats20) API before calling this API to dynamically query the decoding capabilities of the current device.|
 
 **Return value**
 
@@ -1457,7 +1476,7 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 | Name | Type                           | Mandatory| Description                               |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| uri     | string                          | Yes  | Image path. Currently, only the application sandbox path is supported. For details, see [How to Use](../apis-core-file-kit/js-apis-file-fs.md#how-to-use)<br>Currently, the following formats are supported: JPEG, PNG, GIF, BMP, WebP, DNG, HEIC<sup>12+</sup>, WBMP<sup>23+</sup>, HEIFS<sup>23+</sup>, TIFF<sup>23+</sup>, [SVG<sup>10+</sup>](#svg-tags), and ICO<sup>11+</sup>. Since API version 26.0.0, the AVIF and AVIS formats are supported. Decoding support for certain formats depends on the specific device hardware. You are advised to use the [image.getImageSourceSupportedFormats](#imagegetimagesourcesupportedformats20) API before calling this API to dynamically query the decoding capabilities of the current device.|
+| uri     | string                          | Yes  | Image path. Currently, only the application sandbox path is supported. For details, see [How to Use](../apis-core-file-kit/js-apis-file-fs.md#how-to-use)<br>Currently, the following formats are supported: JPEG, PNG, GIF, BMP, WebP, DNG, HEIC<sup>12+</sup>, WBMP<sup>23+</sup>, HEIFS<sup>23+</sup>, TIFF<sup>23+</sup>, [SVG Tags](#svg-tags), and ICO<sup>11+</sup>. Since API version 26.0.0, the AVIF and AVIS formats are supported. Decoding support for certain formats depends on the specific device hardware. You are advised to use the [image.getImageSourceSupportedFormats](#imagegetimagesourcesupportedformats20) API before calling this API to dynamically query the decoding capabilities of the current device.|
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | Yes  | Image properties, including the image pixel density, pixel format, and image size.|
 
 **Return value**
@@ -1559,7 +1578,7 @@ async function CreateImageSource(context : Context) {
 
 createImageSource(buf: ArrayBuffer): ImageSource
 
-Creates an ImageSource instance based on buffers. The data passed by **buf** must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12).
+Creates an **ImageSource** instance from a buffer. The buffer data is undecoded data. Do not pass in pixel buffer data such as RGBA or YUV. To create a pixel map from pixel buffer data, call an API such as [image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12).
 
 Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -1594,7 +1613,7 @@ async function CreateImageSource() {
 
 createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 
-Creates an ImageSource instance based on buffers. The data passed by **buf** must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12).
+Creates an **ImageSource** instance from a buffer. The buffer data is undecoded data. Do not pass in pixel buffer data such as RGBA or YUV. To create a pixel map from pixel buffer data, call an API such as [image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12).
 
 Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -1684,7 +1703,7 @@ The ImageSource instance created in incremental mode supports the following capa
 - Obtaining an image property: Call [getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11) to obtain the value of a property with the specified index in an image.
 - Obtaining image properties: Call [getImageProperties](arkts-apis-image-ImageSource.md#getimageproperties12) to obtain the values of properties with the given names in an image.
 - Updating incremental data: Call [updateData](arkts-apis-image-ImageSource.md#updatedata9).
-- Creating a PixelMap object: Call [createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7) or [createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-2) to create a PixelMap object based on decoding options; call [createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-1) to create a PixelMap object based on default parameters.
+- Creating a PixelMap object: Call [createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7) or [createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-1) to create a PixelMap object based on decoding options; call [createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-2) to create a PixelMap object based on default parameters.
 - Releasing an ImageSource instance: Call [release](arkts-apis-image-ImageSource.md#release).
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource

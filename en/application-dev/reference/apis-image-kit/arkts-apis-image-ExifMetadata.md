@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b59b61fd2f62203257450ac8b01cc7e71e0aa5d2 translatedAt=2026-11-06T01:49:01.246Z pushedAt=2026-11-12T01:39:44.950Z nl=1 -->
 
 ExifMetadata implements Metadata
 
@@ -12,7 +13,9 @@ Exchangeable Image File Format (Exif) metadata.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 23. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 23. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - Before an app queries media library images using [PhotoAccessHelper](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md) and reads GPS-related properties such as **gpsLatitude**, **gpsLongitude**, **gpsAltitude**, and **gpsTimestamp**, it must declare and request the [ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location) permission from the user. If the GPS-related attributes are all **0** or null, check whether the permission has been granted and whether the original image contains GPS information.
 
 ## Modules to Import
 

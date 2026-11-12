@@ -1,18 +1,17 @@
 # Interface (ImageReceiver)
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=791f15158a2551a4a160285457a793e77ffb08ff translatedAt=2026-08-03T03:56:14.320Z pushedAt=2026-08-04T03:27:12.539Z -->
+<!-- md-trans-meta sourceCommit=74febd75f3a8ada5f76e4f78791dddfc21d8b56a translatedAt=2026-11-06T01:51:02.705Z pushedAt=2026-11-12T02:25:58.757Z nl=1 -->
 
 The **ImageReceiver** class provides APIs to obtain the surface ID of a component, read the latest image, read the next image, and release the ImageReceiver instance. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
 
-Before calling any APIs in ImageReceiver, you must use [image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver11) to create an ImageReceiver instance.
+Before calling any APIs in **ImageReceiver**, you must use [image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver11) to create an **ImageReceiver** instance.
 
-Since API version 23, you are advised to use [image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver23) to create an **ImageReceiver** instance based on the passed [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23). 
+Since API version 23, you are advised to use [image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver23) to create an **ImageReceiver** instance based on the passed [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23).
 
 Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](#release9) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
@@ -102,7 +101,8 @@ readLatestImage(callback: AsyncCallback\<Image>): void
 Reads the latest image from the ImageReceiver instance. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
-> This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+>
+> This API must be called after the [on](#on9) callback is triggered to receive data properly. In addition, after the [Image](arkts-apis-image-Image.md) object returned by this API is used, the [release](arkts-apis-image-Image.md#release9) method must be called to release it. Only after the release can new data be received.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -128,6 +128,7 @@ async function ReadLatestImage(receiver : image.ImageReceiver) {
       imgComponent: image.Component) => {
       if (err || imgComponent === undefined) {
         console.error('Failed to getComponent.');
+        return;
       }
       if (imgComponent.byteBuffer) {
         // Process the binary image data.
@@ -147,7 +148,8 @@ readLatestImage(): Promise\<Image>
 Reads the latest image from the ImageReceiver instance. This API uses a promise to return the result.
 
 > **NOTE**
->This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+>
+> This API must be called after the [on](#on9) callback is triggered to receive data properly. In addition, after the [Image](arkts-apis-image-Image.md) object returned by this API is used, the [release](arkts-apis-image-Image.md#release9) method must be called to release it. Only after the release can new data be received.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -169,6 +171,7 @@ async function ReadLatestImage(receiver : image.ImageReceiver) {
       imgComponent: image.Component) => {
       if (err || imgComponent === undefined) {
         console.error('Failed to getComponent.');
+        return;
       }
       if (imgComponent.byteBuffer) {
         // Process the binary image data.
@@ -190,7 +193,8 @@ readNextImage(callback: AsyncCallback\<Image>): void
 Reads the next image from the ImageReceiver instance. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+>
+> This API must be called after the [on](#on9) callback is triggered to receive data properly. In addition, after the [Image](arkts-apis-image-Image.md) object returned by this API is used, the [release](arkts-apis-image-Image.md#release9) method must be called to release it. Only after the release can new data be received.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -216,6 +220,7 @@ async function ReadNextImage(receiver : image.ImageReceiver) {
       imgComponent: image.Component) => {
       if (err || imgComponent === undefined) {
         console.error('Failed to getComponent.');
+        return;
       }
       if (imgComponent.byteBuffer) {
         // Process the binary image data.
@@ -235,7 +240,8 @@ readNextImage(): Promise\<Image>
 Reads the next image from the ImageReceiver instance. This API uses a promise to return the result.
 
 > **NOTE**
->This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+>
+> This API must be called after the [on](#on9) callback is triggered to receive data properly. In addition, after the [Image](arkts-apis-image-Image.md) object returned by this API is used, the [release](arkts-apis-image-Image.md#release9) method must be called to release it. Only after the release can new data be received.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -257,6 +263,7 @@ async function ReadNextImage(receiver : image.ImageReceiver) {
       imgComponent: image.Component) => {
       if (err || imgComponent === undefined) {
         console.error('Failed to getComponent.');
+        return;
       }
       if (imgComponent.byteBuffer) {
         // Process the binary image data.
@@ -392,5 +399,69 @@ async function Release(receiver : image.ImageReceiver) {
   }).catch((error: BusinessError) => {
     console.error(`Failed to release the receiver.code ${error.code},message is ${error.message}`);
   })
+}
+```
+
+## setMemoryName
+
+setMemoryName(name: string): void
+
+Sets a memory name for the image buffer received by the **ImageReceiver**, so that the buffer can be identified during memory debugging or issue locating. You are advised to set the identifier before registering the [on](#on9) callback and before calling [readNextImage](#readnextimage9) or [readLatestImage](#readlatestimage9) to read an image.
+
+> **NOTE**
+>
+> - To ensure that the passed-in value is consistent with the memory name that actually takes effect, set **name** based on the following rules:
+>
+>   - Use only visible ASCII characters (0x21 to 0x7E). Do not include spaces, line breaks, tabs, or other control characters.
+>   - The name length ranges from 1 to 255 bytes.
+>   - When the name consists of digits only, the API automatically adds the prefix **ImageReceiver: **to the name. The total length of the memory name after the prefix is added cannot exceed 255 bytes, that is, a name consisting of digits only can be up to 241 bytes.
+>
+> - If you want the passed-in value to be exactly the same as the memory name that actually takes effect, it is recommended that the name contain at least one non-digit character.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageReceiver
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | ---- |
+| name   | string | Yes   | Memory name of the image buffer received by the **ImageReceiver**. Use visible ASCII characters (0x21 to 0x7E), with a length of 1 to 255 bytes. When the name consists of digits only, the API automatically adds the prefix **ImageReceiver:**. The total length of the memory name after the prefix is added cannot exceed 255 bytes, that is, a name consisting of digits only can be up to 241 bytes. |
+
+**Error codes**
+
+For details about the following error codes, see [Image Error Codes](errorcode-image.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 7900201  | Invalid parameter. Possible causes:<br>Name is empty.<br>Name contains no visible characters after filtering.<br>The length of name exceeds 256 bytes.<br>Ensure the name parameter contains visible ASCII characters. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setMemoryNameSync(receiver: image.ImageReceiver) {
+  try {
+    // It is recommended to set the memory name before registering the imageArrival callback and reading the image.
+    receiver.setMemoryName('ImageReceiverNameTest');
+    console.info('Succeeded in setting memory name.');
+  } catch (error) {
+    const err = error as BusinessError;
+    console.error(`Failed to set memory name. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+
+  receiver.on('imageArrival', () => {
+    receiver.readNextImage().then((nextImage: image.Image) => {
+      console.info('Succeeded in reading the next Image.');
+      // Process the image data.
+      nextImage.release();
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to read the next Image. Code: ${error.code}, message: ${error.message}`);
+    });
+  });
 }
 ```
