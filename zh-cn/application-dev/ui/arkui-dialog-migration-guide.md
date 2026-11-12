@@ -1,4 +1,4 @@
-# 弹出框迁移指南
+# 弹出框迁移指导
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
@@ -33,17 +33,7 @@
 
 ### 属性差异
 
-新旧接口汇总表格：
-
-| 旧接口 | 新接口 |
-|-------|--------|
-| [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) | [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
-| [UIContext.showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog) | [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
-| [UIContext.showActionSheet(options)](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet) | [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
-| [promptAction.showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog) | [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
-| [promptAction.showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu) | [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
-| [promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18) | [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
-| [promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18) | [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
+下面提供[自定义弹窗 (CustomDialog)](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[警告弹窗 (AlertDialog)](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[列表选择弹窗 (ActionSheet)](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[showDialog（对话框）](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[showActionMenu（操作菜单）](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[presentCustomDialog（自定义弹出框）](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)、[openCustomDialogWithController（带控制器的自定义弹出框）](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)新旧接口的差异，并提供示例。
 
 - CustomDialog（自定义弹出框）
 
