@@ -4885,6 +4885,10 @@ addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Ma
 
 调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
+**ArkTS-Sta起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -4931,6 +4935,10 @@ addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&g
 添加并注册一个UPnP（Universal Plug and Play，通用即插即用）本地P2P服务描述，供对端进行服务发现。
 
 调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
+**ArkTS-Sta起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
@@ -4980,6 +4988,10 @@ removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
 
 调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
+**ArkTS-Sta起始版本：** 26.1.0
+
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -5026,6 +5038,10 @@ getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
 查询本地P2P服务，使用Promise异步回调。
 
 调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
+**ArkTS-Sta起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
