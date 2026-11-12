@@ -160,7 +160,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
 
 1. 导入依赖的相关文件。
    
-   <!-- @[arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+   <!-- @[arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) --> 
    
    ``` TypeScript
    import { UIContext, NodeController, FrameNode, RenderNode, DrawContext} from '@kit.ArkUI';
@@ -181,7 +181,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    2. 对离屏Canvas进行自定义的绘制操作。
    3. 将离屏Canvas的绘制结果交给RenderNode。
 
-   <!-- @[arkts_graphics_draw_indirect_canvas_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) -->
+   <!-- @[arkts_graphics_draw_indirect_canvas_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasGetResult.ets) --> 
    
    ``` TypeScript
    // 2. 自定义RenderNode
