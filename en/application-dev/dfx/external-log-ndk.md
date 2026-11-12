@@ -98,8 +98,8 @@ For API usage, including parameter constraints and value ranges, see [hiappevent
         OH_LOG_INFO(LogType::LOG_APP, "[ExternalLogMgr_c] onCapacityReached triggered, log count: %{public}u", arrLen);
         for (uint32_t i = 0; i < arrLen; i++) {
             OH_HiAppEvent_ExternalLog* log = &externalLogArr[i];
-            OH_LOG_INFO(LogType::LOG_APP, "[ExternalLogMgr_c] filePath: %{public}s, %{public}lld, %{public}ld,
-                kb event: %{public}d", log->filePath, log->generationTs, log->fileSize, log->event);
+            OH_LOG_INFO(LogType::LOG_APP, "[ExternalLogMgr_c] filePath: %{public}s, %{public}lld, %{public}ld,"
+                "kb event: %{public}d", log->filePath, log->generationTs, log->fileSize, log->event);
             // Decide which fault files to delete. This example deletes the first 5 returned files.
             if (i < 5) {
                 remove(log->filePath);
