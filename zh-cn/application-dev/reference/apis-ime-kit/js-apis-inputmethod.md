@@ -828,6 +828,108 @@ inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 inputMethod.offAttachmentDidFail(attachmentDidFailCallback);
 ```
 
+## inputMethod.injectText
+
+injectText(text: string): Promise&lt;void&gt;
+
+向前台应用当前获焦的编辑框插入文本。使用Promise异步回调。仅支持PC设备。
+
+需要在当前调用中同步取得请求发送结果时，请使用[injectTextSync](#inputmethodinjecttextsync)。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION 或 ohos.permission.CONTROL_DEVICE
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| text | string | 是 | 待插入的文本，无默认值。UTF-8编码后的长度为0到512字节。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201 | Permissions check fails. |
+| 801 | Capability not supported. |
+| 12800003 | Input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | Input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800016 | Input method client is not editable. |
+
+**示例：**
+
+```ts
+import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let text: string = 'a'.repeat(512);
+inputMethod.injectText(text).then(() => {
+  console.info(`Succeeded in inserting text, length: ${text.length}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to injectText, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## inputMethod.injectTextSync
+
+injectTextSync(text: string): void
+
+同步向前台应用当前获焦的编辑框插入文本。仅支持PC设备。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION 或 ohos.permission.CONTROL_DEVICE
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| text | string | 是 | 待插入的文本，无默认值。UTF-8编码后的长度为0到512字节。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201 | Permissions check fails. |
+| 801 | Capability not supported. |
+| 12800003 | Input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | Input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800016 | Input method client is not editable. |
+
+**示例：**
+
+```ts
+import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let text: string = 'a'.repeat(512);
+try {
+  inputMethod.injectTextSync(text);
+  console.info(`Succeeded in inserting text synchronously, length: ${text.length}`);
+} catch (error) {
+  const err = error as BusinessError;
+  console.error(`Failed to injectTextSync, code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## TextInputType<sup>10+</sup>
 
 文本输入类型。
