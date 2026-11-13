@@ -459,7 +459,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetUsbHeadsetType(OH_AudioDeviceD
 | [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | USB耳机设备描述符。通过 [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) 或者[OH_AudioRoutingManager_OnDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ondevicechangedcallback)获取。 |
 | [OH_AudioDevice_UsbHeadsetType](capi-native-audio-device-base-h.md#oh_audiodevice_usbheadsettype) *usbHeadsetType | 指向用于接收USB耳机子类型的变量。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

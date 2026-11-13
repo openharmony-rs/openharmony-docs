@@ -299,11 +299,11 @@ OH_AudioCommon_Result OH_AudioStreamManager_IsUltraFastPlaybackSupported(OH_Audi
 | [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
 | bool *supported | 指向接收是否支持超低时延播放结果的变量。true表示支持超低时延播放，false表示不支持超低时延播放。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS = 0 ：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 ：<br>                                                    1.参数streamManager为nullptr；<br>                                                    2.参数streamInfo无效；<br>                                                    3.参数supported为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED = 6800302 ：音频服务进程异常退出。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>                                                    1.参数streamManager为nullptr；<br>                                                    2.参数streamInfo无效；<br>                                                    3.参数supported为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED：音频服务进程异常退出。 |
 
 ### OH_AudioStreamManager_IsUltraFastRecordingSupported()
  
@@ -328,11 +328,11 @@ OH_AudioCommon_Result OH_AudioStreamManager_IsUltraFastRecordingSupported(
 | [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) source | 音频流使用场景。 |
 | bool *supported | 指向接收是否支持超低时延录音结果的变量。true表示支持超低时延录制，false表示不支持超低时延录制。 |
  
-**返回：**
+**返回值：**
  
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS = 0 ：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 ：<br>                                                    1.参数streamManager为nullptr；<br>                                                    2.参数streamInfo无效；<br>                                                    3.参数supported为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED = 6800302 ：音频服务进程异常退出。 |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>                                                    1.参数streamManager为nullptr；<br>                                                    2.参数streamInfo无效；<br>                                                    3.参数supported为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED：音频服务进程异常退出。 |
  
 
 
