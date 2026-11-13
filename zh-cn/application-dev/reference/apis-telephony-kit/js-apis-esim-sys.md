@@ -1000,7 +1000,7 @@ getEsimFreeStorage\(): Promise\<number>
 | 错误码ID   | 错误信息                                    |
 | ------- | --------------------------------------- |
 | 201     | Permission denied.                      |
-| 202     | Nonsystem applications use system APIs. |
+| 202     | Non-system applications use system APIs. |
 | 801     | Capability not supported.               |
 | 3120001 | Service connection failed.              |
 | 3120002 | System internal error.                  |
