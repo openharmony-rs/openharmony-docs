@@ -4113,7 +4113,7 @@ setRotationLocked(locked: boolean): Promise&lt;void&gt;
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal.  Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300029 | This window type is invalid. Possible cause: A non-system window calls this API. |
 
@@ -4157,7 +4157,7 @@ getRotationLocked(): boolean
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801 | Capability not supported. Function getRotationLocked can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal.  Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300029 | This window type is invalid. Possible cause: A non-system window calls this API. |
 
