@@ -121,7 +121,7 @@ es2abc在某些情况下会直接异常退出而不产生日志。
 
 > **说明：**
 >
-> 由于此类异常与代码结构和运行环境相关，目前无法提供完整列表；如上述情况均无法解释，可结合崩溃日志或使用[GDB](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-gdb)/[LLDB](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/debug-lldb)进一步定位。
+> 由于此类异常与代码结构和运行环境相关，目前无法提供完整列表；如上述情况均无法解释，可结合崩溃日志或使用[GDB](https://developer.huawei.com/consumer/cn/doc/hiai-Guides/cannkit-gdb-0000002122163408)/[LLDB](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/debug-lldb)进一步定位。
 
 
 **栈溢出场景示例及排查方法**
