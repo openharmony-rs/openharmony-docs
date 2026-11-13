@@ -1188,7 +1188,7 @@ int OH_UdsFileUri_SetFileUri(OH_UdsFileUri* pThis, const char* fileUri)
 
 **描述**
 
-设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的Uri信息。若使用[OH_UDMF_SetFileUriVirtualEntry](oh_udmf_setfileurivirtualentry)函数设置了虚拟文件信息，`fileUri`可填写一个非空的占位文件 URI，不要求对应的真实文件已经存在。
+设置文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)对象的Uri信息。若使用[OH_UDMF_SetFileUriVirtualEntry](capi-uds-h.md#oh_udmf_setfileurivirtualentry)函数设置了虚拟文件信息，`fileUri`可填写一个非空的占位文件 URI，不要求对应的真实文件已经存在。
 
 **起始版本：** 13
 
