@@ -4023,7 +4023,7 @@ try {
 
 getAllMainWindowStates(): Array\<MainWindowStates\>
 
-获取当前设备上所有主窗口的状态信息列表。
+获取当前设备上所有[主窗口](../../windowmanager/window-type-overview.md#主窗口)的状态信息列表。
 
 > **说明：**
 >
@@ -4031,7 +4031,7 @@ getAllMainWindowStates(): Array\<MainWindowStates\>
 >
 > 2. 当前用户无主窗口时，返回空数组。
 >
-> 3. 主窗口指应用的主界面窗口，不包括弹窗、悬浮窗等应用子窗口，也不包括壁纸、状态栏等系统窗口。同一应用（进程）可以拥有多个主窗口，此时返回结果中包含多条pid（应用进程ID）相同的记录，每条记录的state（[主窗口状态](#windowstate)）对应其中一个主窗口的当前状态。
+> 3. 同一应用（进程）可以拥有多个主窗口，此时返回结果中包含多条pid（应用进程ID）相同的记录，每条记录的state（主窗口状态）对应其中一个主窗口的当前状态。
 
 **起始版本：** 26.1.0
 
@@ -4090,4 +4090,4 @@ try {
 | ----------- | --------| ----- | ---- | ------------------------------- |
 | pid | number | 否 | 否 | 应用进程ID。 |
 | bundleName | string | 否 | 否 | 应用包名。 |
-| state | [WindowState](#windowstate) | 否 | 否 | 主窗口状态。|
+| state | [WindowState](#windowstate) | 否 | 否 | 应用窗口状态。在本结构体中只代表主窗口状态（主窗口属于应用窗口的一种）。|
