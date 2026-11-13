@@ -1,6 +1,6 @@
 ---
 kits: ["ArkTS Kit"]
-description: "Usage and precedence of basic ArkTS operators, including assignment, arithmetic, comparison, logical, and ternary conditional operators, with differences and restrictions relative to TypeScript."
+description: "Explains ArkTS basic operators, including assignment, arithmetic, comparison, logical, and ternary conditional operators, and operator precedence rules."
 keywords: ["ArkTS", "basic operators", "assignment operators", "arithmetic operators", "comparison operators", "logical operators", "ternary conditional operator", "operator precedence"]
 doctype: guide
 status: active
@@ -9,11 +9,11 @@ status: active
 # Basic Operators
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8923bda514baa1452b967ea964ea779c7417bd8e translatedAt=2026-11-12T12:34:02.246Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 ArkTS provides a rich set of operators for data operations, logical judgment, and assignment operations.
 
@@ -35,22 +35,6 @@ let active: boolean = true;
 // Reassign the value.
 value = 20;
 name = 'Bob';
-```
-
-### Assignment and Tuples
-
-ArkTS does not support tuple destructuring assignment (for example, `let [a, b] = [1, 2]`). Assign each variable individually.
-
-<!-- @[ts_no_destructuring_assignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Operators.ts) -->
-
-``` TypeScript
-// Destructuring assignment is not supported.
-let [a, b] = [1, 2];
-
-// Correct approach: assign variables individually.
-let arr: number[] = [1, 2];
-let aVal: number = arr[0];
-let bVal: number = arr[1];
 ```
 
 ### Return Value of an Assignment Expression
@@ -114,7 +98,7 @@ let message: string = 'Count: ' + 10;
 
 ### Subtraction Operator (-)
 
-The subtraction operator (`-`) computes the difference between two numeric operands. The operands must be of the `number` type, and ArkTS does not allow cross-type operations such as between `number` and `string`.
+The subtraction operator (`-`) calculates the difference between two numeric operands, which must be of type `number`. Unlike `+`, which supports string concatenation, `-`, `*`, `/`, `%`, and unary negation do not allow cross-type operations involving types such as `number` and `string`.
 
 <!-- @[subtraction_and_negative_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -196,19 +180,6 @@ let negB: number = -10;
 let positive: number = -negB;  // 10
 ```
 
-### Unary Plus Operator (+)
-
-The unary plus operator converts a value to the numeric type and is used for type conversion.
-
-<!-- @[unary_plus_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
-
-``` TypeScript
-let plusA: number = 5;
-let plus: number = +plusA;  // 5
-
-// Used for explicit conversion (Number.parseInt is recommended).
-let strNum: number = Number.parseInt('42', 10);
-```
 
 ### Exponentiation Operator (**)
 
@@ -235,38 +206,66 @@ Compound assignment operators combine an operation and an assignment to simplify
 ``` TypeScript
 // Addition assignment
 let total: number = 100;
-total += 50;
-console.info(`${total}`);  // 150
+total += 50;  // 150
 
 // String concatenation assignment
 let compoundMessage: string = 'Hello';
-compoundMessage += ' World';
-console.info(`${compoundMessage}`);  // Hello World
+compoundMessage += ' World';  // 'Hello World'
 
 // Subtraction assignment
 let balance: number = 1000;
-balance -= 200;
-console.info(`${balance}`);  // 800
+balance -= 200;  // 800
 
 // multiplication assignment
 let price: number = 10;
-price *= 2;
-console.info(`${price}`);  // 20
+price *= 2;  // 20
 
 // division assignment
 let amount: number = 100;
-amount /= 4;
-console.info(`${amount}`);  // 25
+amount /= 4;  // 25
 
 // modulo assignment
 let compoundValue: number = 17;
-compoundValue %= 5;
-console.info(`${compoundValue}`);  // 2
+compoundValue %= 5;  // 2
 
 // exponentiation assignment
 let compoundBase: number = 2;
-compoundBase **= 4;
-console.info(`${compoundBase}`);  // 16
+compoundBase **= 4;  // 16
+```
+
+### Logical Assignment Operators (??=, ||=, &&=)
+
+Logical assignment operators (??=, ||=, &&=) combine logical operations with assignment. Their semantics match `??`, `||`, and `&&`, respectively, including short-circuiting: the right-hand expression is evaluated only when assignment is needed. Evaluation follows JavaScript's truthy/falsy concepts: `false`, `0`, `-0`, `NaN`, `''` (the empty string), `null`, and `undefined` are falsy in a Boolean context; all other values are truthy. The logical and nullish coalescing operators described later use the same concepts.
+
+- `a ??= b`: assigns `b` to `a` only if `a` is `null` or `undefined`.
+- `a ||= b`: assigns `b` to `a` only if `a` is falsy.
+- `a &&= b`: assigns `b` to `a` only if `a` is truthy.
+
+<!-- @[logical_assignment_operators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+
+``` TypeScript
+// ??= assigns only if the left-hand value is null or undefined.
+let configValue: string | null = null;
+configValue ??= 'default';  // "default" (the original value is null, so assignment occurs)
+
+let timeout: number | null = 0;
+timeout ??= 3000;  // 0 (0 is a valid value, so no assignment occurs)
+
+// ||= assigns only if the left-hand value is falsy.
+let label: string = '';
+label ||= 'unnamed';  // "unnamed" ('' is falsy, so assignment occurs)
+
+// &&= assigns only if the left-hand value is truthy.
+let logicalCount: number = 10;
+logicalCount &&= logicalCount * 2;  // 20 (10 is truthy, so assignment occurs)
+
+// Short-circuiting: the right-hand expression is not evaluated if the left-hand condition is not met.
+let cache: string | null = 'cached';
+function loadFromDisk(): string {
+  console.info('Reading from disk');
+  return 'loaded';
+}
+cache ??= loadFromDisk();  // "cached" (not null, so loadFromDisk is not called)
 ```
 
 ## Comparison Operators
@@ -275,7 +274,7 @@ Comparison operators determine the relationship between values and return a Bool
 
 ### Equality Operator (===)
 
-Strict equality (===) returns true when both the value and the type are the same.
+Strict equality (===) returns `true` when both values and types are the same.
 
 <!-- @[strict_equality_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -303,11 +302,49 @@ class EqPoint {
 let p1: EqPoint = new EqPoint(1, 2);
 let p2: EqPoint = new EqPoint(1, 2);
 console.info(`${p1 === p2}`);  // false (different objects)
+
+// NaN is not equal to itself.
+let nan1: number = 0 / 0;  // Floating-point calculation produces NaN.
+let nan2: number = 0 / 0;  // Floating-point calculation produces NaN.
+console.info(`${nan1 === nan2}`);        // false
+console.info(`${Number.isNaN(nan1)}`);   // true
+```
+
+`NaN` is not equal to any value, including itself. `NaN === NaN` is always `false`, so do not use `===` to check whether a floating-point calculation produces `NaN`. Use `Number.isNaN` instead.
+
+ArkTS also supports loose equality (==). Because static type checking limits comparisons between values of different types, the main difference between `==` and `===` is how they handle `null` and `undefined`: `==` considers them equal, whereas `===` distinguishes them. Unless specifically needed, use the stricter `===`:
+
+<!-- @[loose_equality_not_recommended](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+
+``` TypeScript
+// == considers null and undefined equal.
+let inputValue: string | null = null;
+let missing: string | undefined = undefined;
+
+console.info(`${inputValue == null}`);     // true
+console.info(`${missing == null}`);        // true (undefined == null is true)
+console.info(`${inputValue == missing}`);  // true
+
+// === distinguishes null from undefined.
+console.info(`${inputValue === null}`);  // true
+console.info(`${missing === null}`);     // false (undefined !== null)
+```
+
+Use strict equality:
+
+<!-- @[strict_equality_preferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+
+``` TypeScript
+let eqValue: string | null = null;
+let eqCount: number = 0;
+// Recommended: use strict equality.
+if (eqValue === null) { }
+if (eqCount === 0) { }
 ```
 
 ### Not Equal Operator (!==)
 
-Strict inequality (!==) returns true when the values or types differ.
+Strict inequality (!==) returns `true` when values or types differ. Loose inequality (!=) is likewise not recommended. Use `!==` consistently.
 
 <!-- @[strict_inequality_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -323,7 +360,7 @@ console.info(`${neNum1 !== neNum2}`); // true
 
 ### Greater Than Operator (>)
 
-The greater than operator (>) returns true when the value on the left is greater than the value on the right.
+Greater than (>) returns `true` when the left-hand value is greater than the right-hand value.
 
 <!-- @[greater_than_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -342,7 +379,7 @@ console.info(`${'abc' > 'abb'}`); // true
 
 ### Less-Than Operator (<)
 
-The less-than operator (<) returns true when the value on the left is less than the value on the right.
+Less than (<) returns `true` when the left-hand value is less than the right-hand value.
 
 <!-- @[less_than_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -357,7 +394,7 @@ console.info(`${ltA < ltA}`);   // false
 
 ### Greater Than or Equal To Operator (>=)
 
-The greater than or equal to operator (>=) returns true when the value on the left is greater than or equal to the value on the right.
+Greater than or equal to (>=) returns `true` when the left-hand value is greater than or equal to the right-hand value.
 
 <!-- @[greater_than_or_equal_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -373,7 +410,7 @@ console.info(`${gteB >= gteA}`);  // false
 
 ### Less Than or Equal To Operator (<=)
 
-The less than or equal to (<=) operator returns true when the value on the left is less than or equal to the value on the right.
+Less than or equal to (<=) returns `true` when the left-hand value is less than or equal to the right-hand value.
 
 <!-- @[less_than_or_equal_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -387,33 +424,9 @@ console.info(`${lteA <= lteC}`);  // true
 console.info(`${lteB <= lteA}`);  // true
 ```
 
-### Comparing Tuples
-
-Arrays and tuples do not have built-in element-wise equality comparison; `===` compares references rather than contents. When comparing manually, first check that the lengths are equal, and then compare each element by index.
-
-<!-- @[tuple_comparison](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
-
-``` TypeScript
-function compareTuples(a: number[], b: number[]): boolean {
-  if (a.length !== b.length) {
-    return false;
-  }
-  for (let i: number = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) {
-      return false;
-    }
-  }
-  return true;
-}
-
-let tuple1: number[] = [1, 2];
-let tuple2: number[] = [1, 2];
-console.info(`${compareTuples(tuple1, tuple2)}`);  // true
-```
-
 ## Ternary Conditional Operator
 
-The ternary conditional operator selects one of two values as the result based on the Boolean value of a conditional expression. It is a concise form of if-else and is suitable for simple conditional assignment scenarios.
+The ternary conditional operator selects one of two values based on the Boolean value of a condition. It is a concise form of `if-else`, suitable for simple conditional assignments.
 
 ``` TypeScript
 condition ? valueIfTrue : valueIfFalse
@@ -447,14 +460,16 @@ let role: string = isAdmin ? 'admin' : 'user';
 
 ## Nullish Coalescing Operator
 
-The nullish coalescing operator ?? provides a default value and handles null and undefined.
+The nullish coalescing operator (??) provides a default value, returning the right-hand value only when the left-hand value is `null` or `undefined`.
+
+`??` and logical OR `||` differ in how they handle [falsy values](#logical-assignment-operators): `||` returns the right-hand value whenever the left-hand value is falsy, potentially replacing valid values such as `0`, `''`, and `false`. `??` returns the right-hand value only for `null` or `undefined` (a subset of falsy values), preserving other valid values.
 
 <!-- @[nullish_coalescing_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
 ``` TypeScript
 let coalesceValue: string | null = null;
 let coalesceResult: string = coalesceValue ?? 'default';
-console.info(`${coalesceResult}`);  // "default"
+console.info(`${coalesceResult}`);  // 'default'
 
 let value2: string = 'hello';
 let result2: string = value2 ?? 'default';  // "hello"
@@ -478,61 +493,7 @@ let secondary: string | null = null;
 let fallback: string = 'default';
 
 let result3: string = primary ?? secondary ?? fallback;
-console.info(`${result3}`);  // "default"
-```
-
-## Simulating Range Checks
-
-A range check determines whether a value falls within a range, and is used for range validation.
-
-### Closed Interval Check
-
-A closed interval check uses `>=` and `<=` to check whether a value is within a specified range, including both boundary values.
-
-<!-- @[closed_range_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
-
-``` TypeScript
-function inClosedRange(checkValue: number, min: number, max: number): boolean {
-  return checkValue >= min && checkValue <= max;
-}
-
-let checkValue: number = 50;
-let inRange: boolean = inClosedRange(checkValue, 10, 100);  // true
-```
-
-### Half-Open Interval Check
-
-A half-open interval check determines whether a value falls within a range that includes the start but excludes the end.
-
-<!-- @[half_open_range_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
-
-``` TypeScript
-function inHalfOpenRange(checkValue2: number, min: number, max: number): boolean {
-  return checkValue2 >= min && checkValue2 < max;
-}
-
-let checkValue2: number = 100;
-let checkInRange: boolean = inHalfOpenRange(checkValue2, 10, 100);  // false
-```
-
-### One-Sided Range Check
-
-A one-sided range check checks whether a value is greater than or less than a boundary.
-
-<!-- @[single_boundary_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
-
-``` TypeScript
-function aboveMin(checkValue3: number, min: number): boolean {
-  return checkValue3 >= min;
-}
-
-function belowMax(checkValue3: number, max: number): boolean {
-  return checkValue3 <= max;
-}
-
-let checkValue3: number = 150;
-let isAbove: boolean = aboveMin(checkValue3, 100);  // true
-let isBelow: boolean = belowMax(checkValue3, 200);  // true
+console.info(`${result3}`);  // 'default'
 ```
 
 ## Logical Operators
@@ -541,7 +502,7 @@ Logical operators include NOT (!), AND (&&), and OR (||). They perform logical o
 
 ### Logical NOT Operator (!)
 
-The logical NOT operator (!) converts `true` to `false` and `false` to `true`.
+Logical NOT (!) converts `true` to `false` and `false` to `true`.
 
 <!-- @[logical_not_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -559,7 +520,7 @@ console.info(`${!!notValue}`);  // true (equivalent to Boolean(notValue))
 
 ### Logical AND Operator (&&)
 
-The logical AND (&&) returns true only when both operands are true. When the left operand is false, the right operand is skipped due to short-circuit evaluation.
+Logical AND (&&) returns `true` only when both operands are `true`. If the left-hand operand is `false`, evaluation short-circuits and skips the right-hand operand.
 
 <!-- @[logical_and_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -587,7 +548,7 @@ let canDrive: boolean = andAge >= 18 && hasLicense && hasInsurance;
 
 ### Logical OR Operator (||)
 
-The logical OR (||) returns true if either side is true, and short-circuits to skip the right side when the left side is true.
+Logical OR (||) returns `true` when either operand is `true`. If the left-hand operand is `true`, evaluation short-circuits and skips the right-hand operand.
 
 <!-- @[logical_or_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -612,36 +573,6 @@ let hasPermission: boolean = true;
 let canAccess: boolean = orRole === 'admin' || hasPermission;
 ```
 
-### Combining Logical Operators
-
-Logical operators can be combined to implement complex conditions. Pay attention to precedence and short-circuit evaluation.
-
-<!-- @[boolean_logic_combination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
-
-``` TypeScript
-let boolLogAge: number = 25;
-let boolLogHasLicense: boolean = true;
-let isGuest: boolean = false;
-
-// All conditions must be met.
-let boolLogCanDrive: boolean = boolLogAge >= 18 && boolLogHasLicense;
-
-// Any condition is met.
-let hasAccess: boolean = isGuest || boolLogHasLicense;
-
-// Compound condition.
-let canRentCar: boolean = boolLogAge >= 21 && (boolLogHasLicense || isGuest);
-
-// Exclusion condition
-let userStatus: string = 'active';
-let isInactive: boolean = !(userStatus === 'active');
-
-// Apply De Morgan's law
-let invalid: boolean = !(boolLogHasLicense && boolLogAge >= 18);
-// Equivalent to
-let invalid2: boolean = !boolLogHasLicense || boolLogAge < 18;
-```
-
 ### Short-Circuit Evaluation
 
 The logical AND (&&) and logical OR (||) operators skip the evaluation of the right-hand side when the left-hand side already determines the result.
@@ -664,8 +595,8 @@ function fallbackValue(): string {
   return 'default';
 }
 
-let circuitPrimary: string | null = 'circuitPrimary';
-let circuitValue: string = circuitPrimary !== null ? circuitPrimary : fallbackValue();  // fallbackValue is not executed.
+let circuitPrimary: string = 'primary';
+let circuitValue: string = circuitPrimary || fallbackValue();  // "primary"; fallbackValue is not called.
 
 // ?? short-circuit: if the left side is not null/undefined, the right side is not evaluated.
 function expensiveDefault(): string {
@@ -677,9 +608,29 @@ let provided: string = 'text';
 let circuitResult2: string = provided ?? expensiveDefault();  // expensiveDefault is not executed.
 ```
 
-## Operator Precedence
+## Operator Precedence and Associativity
 
-Use parentheses to explicitly indicate the operation precedence and avoid ambiguity caused by relying on default rules.
+Operator precedence determines the evaluation order of different operators. Associativity determines the evaluation direction (left to right or right to left) for operators of the same precedence. The following table lists the operators in this chapter from highest to lowest precedence:
+
+| Precedence | Operator | Description | Associativity |
+| ------ | ------ | ---- | ------ |
+| 1 | `()` | Parenthesized grouping | - |
+| 2 | `?.` | Optional chaining | Left to right |
+| 3 | `++`, `--` (postfix), `!` (postfix) | Postfix increment, postfix decrement, non-null assertion | - |
+| 4 | `**` | Exponentiation | Right to left |
+| 5 | `!`, `+`, `-` (unary), `++`, `--` (prefix) | Unary operators | Right to left |
+| 6 | `*`, `/`, `%` | Multiplication, division, remainder | Left to right |
+| 7 | `+`, `-` | Addition, subtraction | Left to right |
+| 8 | `<`, `<=`, `>`, `>=` | Relational comparison | Left to right |
+| 9 | `===`, `!==`, `==`, `!=` | Equality comparison | Left to right |
+| 10 | `&&` | Logical AND | Left to right |
+| 11 | `\|\|`, `??` | Logical OR, nullish coalescing | Left to right |
+| 12 | `?:` | Ternary conditional | Right to left |
+| 13 | `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `**=`, `??=`, `\|\|=`, `&&=` | Assignment, compound assignment | Right to left |
+
+For the precedence and associativity of advanced operators such as bitwise and shift operators, see [Advanced Operators](arkts-language-guide-advanced-operators.md#precedence-and-associativity-of-advanced-operators).
+
+`??` cannot be mixed directly with `&&` or `||`; use parentheses to group expressions. In practice, explicitly mark precedence with parentheses to avoid ambiguity from relying on default rules:
 
 <!-- @[parentheses_for_precedence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
@@ -719,104 +670,44 @@ let postDec: number = decrCount--; // decrCount=5, postDec=6
 
 ## Optional Chaining Operator
 
-The optional chaining operator (?. ) safely accesses a property when it may be null/undefined, avoiding runtime errors.
+The optional chaining operator (?.) safely accesses a variable or its properties that may be `null`/`undefined`, avoiding runtime errors.
 
 <!-- @[optional_chaining_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
 ``` TypeScript
-class User {
-  public profile: Profile | null = null;
+// Access works whether the variable is an array or null.
+function printScores(scores: number[] | null) {
+  // Safely access a property: return undefined if scores is null.
+  let scoreCount: number | undefined = scores?.length;
+  console.info(`Score count: ${scoreCount}`);
+  
+  // Safely call a method: return undefined if scores is null.
+  let hasPass: boolean | undefined = scores?.includes(60);
+  console.info(`Has passing score: ${hasPass}`);
+  
+  // Combine with nullish coalescing to provide a default.
+  let safeCount: number = scores?.length ?? 0;
+  console.info(`Safe count: ${safeCount}`);
 }
 
-class Profile {
-  public nickname: string = '';
-}
+// Test the null case.
+printScores(null);  // Output: Score count: undefined, Has passing score: undefined, Safe count: 0
 
-let user: User | null = new User();
-
-// Safely access a property chain.
-let nickname: string | undefined = user?.profile?.nickname;
-console.info(`${nickname}`);  // undefined
-
-// Access a method.
-class Service {
-  public getData(): string {
-    return 'data';
-  }
-}
-function getService(): Service | null {
-  return null;
-}
-let service: Service | null = getService();
-let data: string | null | undefined = service?.getData();
-
-// Access an array element.
-function getArr(): number[] | null {
-  return null;
-}
-let arr: number[] | null = getArr();
-let first: number | undefined = arr !== null ? arr[0] : undefined;
-
-// Combined with nullish coalescing
-let display: string = user?.profile?.nickname ?? 'Unknown';
+// Test the array case.
+printScores([80, 95]);  // Output: Score count: 2, Has passing score: false, Safe count: 2
 ```
 
-## ArkTS Constraints
+## Non-Null Assertion Operator
 
-ArkTS supports loose equality (`==`), but its use is not recommended. Use strict equality (`===`) instead to avoid implicit type conversion.
+The non-null assertion operator (!) follows a nullable value and tells the compiler that the value is neither `null` nor `undefined`, allowing direct property access or method calls. Unlike optional chaining `?.`, which safely returns `undefined` for a nullish value, `!` assumes the value is non-null and causes a runtime exception if it is actually nullish. Use it only when non-nullness is guaranteed; otherwise, prefer `?.` or `??`.
 
-### Discouraged Use of Loose Equality
-
-ArkTS supports loose equality with `==` and `!=`, but their use is discouraged. Use strict equality with `===` and `!==` instead to avoid potential issues caused by implicit type conversion.
-
-<!-- @[loose_equality_not_recommended](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @[non_null_assertion_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
 ``` TypeScript
-let inputValue: string | null = null;
-let itemCount: number = 0;
-if (inputValue == null) { }
-if (itemCount == 0) { }
-```
+function getValue(): string | null {
+  return 'Alice';
+}
 
-Use strict equality:
-
-<!-- @[strict_equality_preferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
-
-``` TypeScript
-let eqValue: string | null = null;
-let eqCount: number = 0;
-// Recommended: use strict equality.
-if (eqValue === null) { }
-if (eqCount === 0) { }
-```
-
-### Destructuring Assignment Not Supported
-
-ArkTS does not support destructuring assignment. You need to retrieve elements one by one by index and assign them separately.
-
-<!-- @[ts_no_destructuring_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Operators.ts) -->
-
-``` TypeScript
-// Not supported
-let point = { x: 1, y: 2 };
-let arr: number[] = [1, 2];
-let [a1, b1] = [1, 2];
-let {x, y} = point;
-
-// Correct: assign separately
-let a2: number = arr[0] ?? 0;
-let b2: number = arr[1] ?? 0;
-```
-
-### Types Must Match
-
-ArkTS requires that the operands on both sides of an operator have the same type or be deterministically compatible at compile time; otherwise, a compilation error is reported. For example, `5 > '5'` reports an error because the `number` and `string` types do not match. This restriction avoids the unexpected runtime behavior caused by implicit type conversion in JavaScript.
-
-**Example (incorrect)**
-
-<!-- @[ts_static_type_checking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Operators.ts) -->
-
-``` TypeScript
-let num: number = 5;
-num = 'text';  // Compilation error.
+let nickname: string | null = getValue();
+console.info(nickname!.toUpperCase());  // 'ALICE' (call directly after asserting non-nullness)
 ```

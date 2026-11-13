@@ -9,11 +9,11 @@ status: active
 # Strings
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8923bda514baa1452b967ea964ea779c7417bd8e translatedAt=2026-11-12T12:34:02.443Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 A string is a basic type that represents text data. ArkTS provides a rich set of string operation methods and supports features such as template strings and Unicode handling.
 
@@ -35,24 +35,6 @@ let template: string = `ArkTS`;
 
 Single quotes are the most common form. Double quotes are functionally identical to single quotes (single quotes are recommended) and are mainly used for JSON data or strings that contain single quotes. Template strings (backticks) support more features such as interpolation and multiline text.
 
-### Multiline String Literals
-
-Template strings (backticks) natively support multiline text without escape characters, making them suitable for storing long text (such as email content and HTML fragments), writing code fragments (such as SQL queries), and formatting reports and document output.
-
-<!-- @[multiline_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-let multiLine: string = `Line 1
-Line 2
-Line 3`;
-
-let paragraph: string = `This is a paragraph
-that spans multiple lines
-of text`;
-```
-
-Line breaks, indentation, and spaces within backticks are all preserved, so the format matches the displayed result, which facilitates reading and maintenance.
-
 ### Special Characters in String Literals
 
 Special characters must be represented using escape characters, including the newline character `\n`, the tab character `\t`, quotation marks, and so on.
@@ -69,7 +51,75 @@ let mixed: string = 'Hello\n\tWorld';
 
 ### Template Strings
 
-Template strings (backticks) preserve the original format (line breaks and spaces), making it easy to embed multi-line code in a string while keeping it readable.
+Template literals (backticks) are the most versatile form of string literal. They preserve formatting (line breaks and spaces) and support variable and expression interpolation with `${}`. They are suitable for long text (such as email content and HTML fragments), code snippets (such as SQL queries), formatted reports and documents, and dynamic text (such as logs and error messages).
+
+Template literals support multiline text without escape characters:
+
+<!-- @[multiline_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+
+``` TypeScript
+let multiLine: string = `Line 1
+Line 2
+Line 3`;
+
+let paragraph: string = `This is a paragraph
+that spans multiple lines
+of text`;
+```
+
+Line breaks, indentation, and spaces within backticks are all preserved, so the format matches the displayed result, which facilitates reading and maintenance.
+
+Template literals use `${}` to interpolate variables and expressions. Expression results are automatically converted to strings:
+
+<!-- @[template_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+
+``` TypeScript
+let name: string = 'Alice';
+let age: number = 25;
+
+// Variable interpolation
+let interpMessage: string = `Hello, ${name}`;
+console.info(`${interpMessage}`);  // 'Hello, Alice'
+
+// Expression interpolation
+let info: string = `Name: ${name}, Age: ${age}`;
+let nextAge: string = `Next year: ${age + 1}`;
+
+// Object property interpolation
+interface User {
+  name: string;
+  email: string;
+}
+
+let user: User = { name: 'Bob', email: 'bob@example.com' };
+let profile: string = `User: ${user.name} (${user.email})`;
+```
+
+Interpolation must contain a valid expression, not a complex statement:
+
+<!-- @[ts_template_expressions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Strings.ts) -->
+
+``` TypeScript
+// Supported expression types
+let a: number = 10;
+let b: number = 20;
+
+let arithmetic: string = `${a + b}`;         // '30'
+let comparison: string = `${a > b}`;         // 'false'
+let logical: string = `${a > 0 && b > 0}`;   // 'true'
+let functionCall: string = `${Math.max(a, b)}`; // '20'
+
+// Supports the ternary operator
+let result: string = `${a > b ? 'greater' : 'less'}`;  // 'less'
+
+// Does not support complex statements
+let invalid: string = `${if (a > b) { 'yes' }}`;  // Compilation error.
+
+// Nested template string.
+let outer: string = `Outer: ${`Inner: ${a}`}`;  // 'Outer: Inner: 10'
+```
+
+In a template literal, `${}` triggers interpolation. To output the literal `${`, precede it with a backslash as `\${`. Escape backticks to avoid ending the string prematurely:
 
 <!-- @[template_string_escape](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
@@ -86,11 +136,23 @@ let escaped: string = `Price: \$100`;
 let backtick: string = `Use \`backticks\``;
 ```
 
-In a template string, `${}` triggers an interpolation expression. Escape `$` or wrap it in backticks to avoid unintended interpolation; escape backticks to avoid terminating the string prematurely.
+## String Immutability
 
-## String Mutability
+A string cannot be modified after it is created. All operations return a new string, which is a core characteristic of strings.
 
-Strings are immutable; all modification operations return a new string.
+<!-- @[ts_string_immutability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Strings.ts) -->
+
+``` TypeScript
+let original: string = 'Hello';
+
+// The method returns a new string.
+let modified: string = original.toUpperCase();
+console.info(`${original}`);  // 'Hello' (the original string is unchanged)
+console.info(`${modified}`);  // 'HELLO'
+
+// The string content cannot be modified directly.
+original[0] = 'J';  // Compilation error
+```
 
 ### Declaring Mutable Strings
 
@@ -122,31 +184,148 @@ const VERSION: string = '1.0.0';
 APP_NAME = 'NewApp';  // Compilation error: cannot reassign
 ```
 
-### String Immutability
+## Common String Operations
 
-A string cannot be modified after it is created. All operations return a new string, which is a core characteristic of strings.
+Common string operations include concatenation, length, indexing, substrings, comparison, case conversion, searching, replacement, padding, and regular expression matching.
 
-<!-- @[ts_string_immutability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Strings.ts) -->
+### String Concatenation
+
+Concatenate strings using the `+` operator or template strings (`...${}...`). For multiple variables, template strings (see [Template Strings](#template-strings)) are clearer than successive `+` operations:
+
+<!-- @[string_concatenation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
 ``` TypeScript
-let original: string = 'Hello';
+let firstName: string = 'John';
+let lastName: string = 'Doe';
 
-// The method returns a new string.
-let modified: string = original.toUpperCase();
-console.info(`${original}`);  // "Hello" (the original string remains unchanged)
-console.info(`${modified}`);  // "HELLO"
+// Use the + operator.
+let fullName: string = firstName + ' ' + lastName;  // 'John Doe'
 
-// The string content cannot be modified directly.
-original[0] = 'J';  // Invalid operation.
+// Use a template literal.
+let templateName: string = `${firstName} ${lastName}`;  // 'John Doe'
+
+// Use the concat method.
+let combined: string = firstName.concat(' ', lastName);  // 'John Doe'
+
+// Use the join method.
+let parts: string[] = [firstName, lastName];
+let joined: string = parts.join(' ');  // 'John Doe'
 ```
 
-## Characters
+The concatenation assignment operator `+=` appends the right-hand string to the left-hand variable, simplifying concatenation:
 
-ArkTS does not have a dedicated character type. A single character is represented by a string.
+<!-- @[compound_assignment_concat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+
+``` TypeScript
+let compoundMessage: string = '';
+
+// Use += to concatenate by assignment.
+compoundMessage += 'Hello';
+compoundMessage += ' ';
+compoundMessage += 'World';
+console.info(`${compoundMessage}`);  // 'Hello World'
+
+// Use compound assignment.
+let compoundText: string = 'Part 1';
+compoundText += ' Part 2';  // 'Part 1 Part 2'
+```
+
+### String Length
+
+The `length` property returns the number of UTF-16 code units in a string, not the number of characters. Most common characters (such as English letters and common Chinese characters) occupy one code unit. Some characters (such as emoji) require two adjacent UTF-16 code units, called a surrogate pair. A string containing surrogate pairs therefore has a `length` greater than its actual character count.
+
+<!-- @[string_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+
+``` TypeScript
+let lengthText: string = 'Hello';
+let length: number = lengthText.length;  // 5
+
+let empty: string = '';
+let emptyLength: number = empty.length;  // 0
+
+let space: string = '   ';
+let spaceLength: number = space.length;  // 3
+
+// The length of a multiline string includes the newline character.
+let lengthMultiLine: string = `Line1
+Line2`;
+let multiLength: number = lengthMultiLine.length;  // 11 (including \n)
+```
+
+Account for surrogate pairs when calculating the length of strings containing complex Unicode characters:
+
+<!-- @[multibyte_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+
+``` TypeScript
+// Chinese characters: each occupies one code unit, so length equals the character count.
+let multibyteChinese: string = '你好世界';
+console.info(`${multibyteChinese.length.toString()}`);  // 4
+
+// Emoji: a surrogate pair encodes one character using two code units.
+let multibyteEmoji: string = '😀';
+console.info(`${multibyteEmoji.length.toString()}`);  // 2
+
+// Use for...of to iterate by code point and count characters correctly.
+function countCharacters(text: string): number {
+  let count: number = 0;
+  for (let char of text) {
+    count++;
+  }
+  return count;
+}
+
+console.info(`${countCharacters('你好世界').toString()}`);  // 4
+console.info(`${countCharacters('😀').toString()}`);  // 1 (length is 2, but the character count is 1)
+```
+
+### String Indexing
+
+Use an index or `charAt` to access a character at a specified position, and `indexOf`/`lastIndexOf` to locate substrings. `charAt` and indexed access retrieve a single character, while `charCodeAt` retrieves a character code:
+
+<!-- @[string_indexing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+
+``` TypeScript
+let indexText: string = 'Hello World';
+
+// Access by index.
+let first: string = indexText[0];           // 'H'
+let fifth: string = indexText[4];           // 'o'
+let last: string = indexText[indexText.length - 1];  // 'd'
+
+// Use the charAt method.
+let second: string = indexText.charAt(1);   // 'e'
+
+// Access out of bounds.
+let outOfBounds: string | undefined = indexText[100];  // undefined
+let outOfBounds2: string = indexText.charAt(100);      // '' (empty string)
+```
+
+`indexOf` locates a substring, while `lastIndexOf` searches backward:
+
+<!-- @[string_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+
+``` TypeScript
+let searchText: string = 'Hello World';
+
+// Find the character position.
+let indexOfO: number = searchText.indexOf('o');      // 4
+let indexOfWorld: number = searchText.indexOf('World'); // 6
+let lastIndexOfO: number = searchText.lastIndexOf('o'); // 7
+
+// Search from the specified position.
+let indexOfO2: number = searchText.indexOf('o', 5);   // 7 (starting from index 5)
+
+// Search for a nonexistent string.
+let notFound: number = searchText.indexOf('xyz');    // -1
+
+// Calculate the index offset.
+let nextIndex: number = indexOfO + 1;          // 5
+let prevIndex: number = indexOfO - 1;          // 3
+```
 
 ### Iterating over Characters in a String
 
-You can access each character in a string one by one through indexing or a for-of loop.
+ArkTS has no separate character type; a single character is represented by `string`. Use indexing or a `for...of` loop to access characters individually.
 
 <!-- @[string_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
@@ -159,7 +338,7 @@ for (let char of iterText) {
 }
 
 // Use a for loop to iterate.
-for (let i: number = 0; i < iterText.length; i++) {
+for (let i = 0; i < iterText.length; i++) {
   let char: string = iterText[i];
   console.info(`${char}`);
 }
@@ -192,306 +371,9 @@ let codePoint: number = accessText.codePointAt(0) ?? 0; // 72
 let charFromCode: string = String.fromCharCode(72);  // 'H'
 ```
 
-## String Concatenation
+### Substrings
 
-String concatenation is implemented through the `+` operator or template literals (`...${}...`).
-
-### String and String Concatenation
-
-Strings can be combined into a new string using the + operator or concatenation methods.
-
-<!-- @[string_concatenation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-let firstName: string = 'John';
-let lastName: string = 'Doe';
-
-// Use the + operator.
-let fullName: string = firstName + ' ' + lastName;  // "John Doe"
-
-// Use the concat method.
-let combined: string = firstName.concat(' ', lastName);  // "John Doe"
-
-// Use the join method.
-let parts: string[] = [firstName, lastName];
-let joined: string = parts.join(' ');  // "John Doe"
-```
-
-### Concatenating Strings and Characters
-
-When a string is concatenated with a character, the character is automatically converted to its string form.
-
-<!-- @[string_append](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-let appendText: string = 'Hello';
-let char: string = '!';
-
-let result: string = appendText + char;  // "Hello!"
-
-// Concatenate multiple characters.
-let appendChars: string[] = ['a', 'b', 'c'];
-let combinedChars: string = appendChars.join('');  // "abc"
-```
-
-### Concatenation Assignment
-
-The concatenation assignment operator `+=` appends the string on the right to the variable on the left, simplifying concatenation code.
-
-<!-- @[compound_assignment_concat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-let compoundMessage: string = '';
-
-// Use += to concatenate by assignment.
-compoundMessage += 'Hello';
-compoundMessage += ' ';
-compoundMessage += 'World';
-console.info(`${compoundMessage}`);  // "Hello World"
-
-// Use compound assignment.
-let compoundText: string = 'Part 1';
-compoundText += ' Part 2';  // "Part 1 Part 2"
-```
-
-## String Interpolation
-
-Template strings use `${}` to insert variables and expressions.
-
-### Basic Interpolation Usage
-
-A template string uses `${}` to embed expressions, and the expression results are automatically converted to strings.
-
-<!-- @[template_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-let name: string = 'Alice';
-let age: number = 25;
-
-// Variable interpolation
-let interpMessage: string = `Hello, ${name}`;
-console.info(`${interpMessage}`);  // "Hello, Alice"
-
-// Expression interpolation
-let info: string = `Name: ${name}, Age: ${age}`;
-let nextAge: string = `Next year: ${age + 1}`;
-
-// Object property interpolation
-interface User {
-  name: string;
-  email: string;
-}
-
-let user: User = { name: 'Bob', email: 'bob@example.com' };
-let profile: string = `User: ${user.name} (${user.email})`;
-```
-
-### Limitations of Interpolation Expressions
-
-An interpolation expression must be a valid expression and cannot contain unescaped backticks or dollar signs ($).
-
-<!-- @[ts_template_expressions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Strings.ts) -->
-
-``` TypeScript
-// Supported expression types
-let a: number = 10;
-let b: number = 20;
-
-let arithmetic: string = `${a + b}`;         // "30"
-let comparison: string = `${a > b}`;         // "false"
-let logical: string = `${a > 0 && b > 0}`;   // "true"
-let functionCall: string = `${Math.max(a, b)}`; // "20"
-
-// Supports the ternary operator
-let result: string = `${a > b ? 'greater' : 'less'}`;  // "less"
-
-// Does not support complex statements
-let invalid: string = `${if (a > b) { 'yes' }}`;  // Compilation error.
-
-// Nested template string.
-let outer: string = `Outer: ${`Inner: ${a}`}`;  // "Outer: Inner: 10"
-```
-
-## Unicode Representation of Strings
-
-Unicode encoding represents international characters and supports multiple encoding forms.
-
-### Unicode Scalar Values
-
-A Unicode scalar value is a valid range of Unicode code points, excluding surrogate code points.
-
-<!-- @[unicode_representation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-// Unicode character representation
-let unicode1: string = 'A';               // Direct character
-let unicode2: string = '\u0041';          // Unicode escape ('A')
-let unicode3: string = '\x41';            // ASCII escape ('A')
-
-// Unicode code point
-let emoji: string = '\u{1F600}';          // 😀 (emoji)
-let chinese: string = '\u{4E2D}';         // the Chinese character for 'middle'
-
-// Obtain the Unicode code point of the character.
-let unicodeReprCodePoint: number = 'A'.codePointAt(0) ?? 0;  // 65
-let emojiCode: number = '😀'.codePointAt(0) ?? 0; // 128512
-
-// Create a character from a code point.
-let fromCode: string = String.fromCodePoint(65);      // 'A'
-let fromEmoji: string = String.fromCodePoint(128512); // '😀'
-```
-
-### Converting Between Unicode Representations
-
-To convert among the three representations - string, array of Unicode code points, and Unicode escape sequence - use the codePointAt and fromCodePoint methods.
-
-<!-- @[unicode_codepoint_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-let unicodeText: string = 'Hello';
-
-// Convert the string to an array of Unicode code points.
-let codePoints: number[] = [];
-for (let char of unicodeText) {
-  codePoints.push(char.codePointAt(0) ?? 0);
-}
-console.info(`${codePoints.join(', ')}`);  // 72, 101, 108, 108, 111
-
-// Convert Unicode code points to a string.
-let reconstructed: string = '';
-for (let code of codePoints) {
-  reconstructed += String.fromCodePoint(code);
-}
-console.info(`${reconstructed}`);  // "Hello"
-
-// Unicode escape form
-let unicodeEscaped: string = '';
-for (let char of unicodeText) {
-  let code: number = char.codePointAt(0) ?? 0;
-  unicodeEscaped += `\\u${code.toString(16).padStart(4, '0')}`;
-}
-console.info(`${unicodeEscaped}`);  // "\u0048\u0065\u006c\u006c\u006f"
-```
-
-## String Length
-
-The `length` property of a string returns the number of UTF-16 code units. Note the impact of surrogate pairs.
-
-### Calculating the Length of a String
-
-The `length` property of a string returns the number of UTF-16 code units. A surrogate pair occupies two units.
-
-<!-- @[string_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-let lengthText: string = 'Hello';
-let length: number = lengthText.length;  // 5
-
-let empty: string = '';
-let emptyLength: number = empty.length;  // 0
-
-let space: string = '   ';
-let spaceLength: number = space.length;  // 3
-
-// The length of a multiline string includes the newline character.
-let lengthMultiLine: string = `Line1
-Line2`;
-let multiLength: number = lengthMultiLine.length;  // 11 (including \n)
-```
-
-### Considerations for Length Calculation
-
-When calculating the length of a string that contains complex Unicode characters, consider the impact of surrogate pairs.
-
-<!-- @[multibyte_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-// Ordinary ASCII characters
-let ascii: string = 'Hello';
-console.info(`${ascii.length.toString()}`);  // 5
-
-// Chinese characters (each character has a length of 1)
-let multibyteChinese: string = 'Hello world';
-console.info(`${multibyteChinese.length.toString()}`);  // 4
-
-// Emoji character (the length of some multibyteEmoji may be 2).
-let multibyteEmoji: string = '😀';
-console.info(`${multibyteEmoji.length.toString()}`);  // 2 (surrogate pair)
-
-// Combined character.
-let multibyteCombined: string = 'é';  // e + combining accent
-console.info(`${multibyteCombined.length.toString()}`);  // May be 2.
-
-// Correctly count characters (using iteration).
-function countCharacters(text: string): number {
-  let count: number = 0;
-  for (let char of text) {
-    count++;
-  }
-  return count;
-}
-
-console.info(`${countCharacters('😀').toString()}`);  // 1 (correct count).
-```
-
-## String Indexing
-
-A string allows you to access the character at a specified position by index or through `charAt`, and to locate the position of a substring through `indexOf`/`lastIndexOf`.
-
-### Accessing a Single Character in a String
-
-Use `charAt` and index access to obtain a single character, and use `charCodeAt` to obtain the character code.
-
-<!-- @[string_indexing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-let indexText: string = 'Hello World';
-
-// Access by index.
-let first: string = indexText[0];           // 'H'
-let fifth: string = indexText[4];           // 'o'
-let last: string = indexText[indexText.length - 1];  // 'd'
-
-// Use the charAt method.
-let second: string = indexText.charAt(1);   // 'e'
-
-// Access out of bounds.
-let outOfBounds: string | undefined = indexText[100];  // undefined
-let outOfBounds2: string = indexText.charAt(100);      // '' (empty string)
-```
-
-### Obtaining and Offsetting Indexes
-
-`indexOf` finds the position of a substring, and `lastIndexOf` searches from the end.
-
-<!-- @[string_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-let searchText: string = 'Hello World';
-
-// Find the character position.
-let indexOfO: number = searchText.indexOf('o');      // 4
-let indexOfWorld: number = searchText.indexOf('World'); // 6
-let lastIndexOfO: number = searchText.lastIndexOf('o'); // 7
-
-// Search from the specified position.
-let indexOfO2: number = searchText.indexOf('o', 5);   // 7 (starting from index 5)
-
-// Search for a nonexistent string.
-let notFound: number = searchText.indexOf('xyz');    // -1
-
-// Calculate the index offset.
-let nextIndex: number = indexOfO + 1;          // 5
-let prevIndex: number = indexOfO - 1;          // 3
-```
-
-## Substring
-
-Substring operations extract, find, and replace text fragments.
-
-### Obtaining Substrings
-
-The `substring` and `slice` methods extract string fragments, and `split` splits a string into an array. **The key difference between the two**: `substring` automatically adjusts the argument order (for example, `substring(5, 0)` is equivalent to `substring(0, 5)`), and negative arguments are treated as 0; `slice` does not adjust the argument order and supports negative indexes (counting from the end).
+Substring operations extract, find, and replace text fragments. Use `substring` and `slice` to extract string segments, and `split` to split a string into an array. **Key differences**: `substring` automatically swaps arguments when needed (for example, `substring(5, 0)` is equivalent to `substring(0, 5)`) and treats negative arguments as 0. `slice` does not swap arguments and supports negative indexes counted from the end.
 
 <!-- @[substring_extraction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
@@ -499,25 +381,23 @@ The `substring` and `slice` methods extract string fragments, and `split` splits
 let extractText: string = 'Hello World';
 
 // substring method
-let sub1: string = extractText.substring(0, 5);    // "Hello"
-let sub2: string = extractText.substring(6);       // "World"
-let sub3: string = extractText.substring(6, 11);   // "World"
+let sub1: string = extractText.substring(0, 5);    // 'Hello'
+let sub2: string = extractText.substring(6);       // 'World'
+let sub3: string = extractText.substring(6, 11);   // 'World'
 
 // slice method
-let slice1: string = extractText.slice(0, 5);      // "Hello"
-let slice2: string = extractText.slice(-5);        // "World" (negative index)
-let slice3: string = extractText.slice(6, -1);     // "Worl"
+let slice1: string = extractText.slice(0, 5);      // 'Hello'
+let slice2: string = extractText.slice(-5);        // 'World' (negative index)
+let slice3: string = extractText.slice(6, -1);     // 'Worl'
 
 // substring vs slice
 // substring automatically adjusts the parameter order and treats negative numbers as 0; slice does not adjust the parameter order and supports negative indexes.
-let subNeg: string = extractText.substring(-2, 3);  // "Hel" (-2 is treated as 0)
-let reversed: string = extractText.substring(5, 0);  // "Hello" (automatically adjusted)
-let reversedSlice: string = extractText.slice(5, 0);  // "" (not adjusted)
+let subNeg: string = extractText.substring(-2, 3);  // 'Hel' (-2 is treated as 0)
+let reversed: string = extractText.substring(5, 0);  // 'Hello' (arguments are swapped)
+let reversedSlice: string = extractText.slice(5, 0);  // '' (arguments are not swapped)
 ```
 
-### Lifecycle and Conversion of Substrings
-
-A substring is a new string that exists independently of the original string. Modifying the substring does not affect the original string.
+A substring is a new string independent of the original. Modifying the substring does not affect the original string:
 
 <!-- @[substring_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
@@ -527,26 +407,22 @@ let original: string = 'Hello World';
 // A substring is a new string that exists independently.
 let sub: string = original.substring(0, 5);
 sub = sub.toUpperCase();  // Modifying the substring does not affect the original string.
-console.info(`${original}`);  // "Hello World"
+console.info(`${original}`);  // 'Hello World'
 
 // Convert the substring to an array.
 let substrParts: string[] = sub.split('');
-console.info(`[${substrParts.join(', ')}]`);  // H, e, l, l, o
+console.info(`[${substrParts.join(', ')}]`);  // '[H, E, L, L, O]'
 
 // Concatenate the substring.
-let newString: string = sub + ' ArkTS';  // "Hello ArkTS"
+let newString: string = sub + ' ArkTS';  // 'HELLO ArkTS'
 
 // Replace the substring.
-let replaced: string = original.replace(sub, 'Hi');  // "Hi World"
+let replaced: string = original.replace('Hello', 'Hi');  // 'Hi World'
 ```
 
-## String Comparison
+### String Comparison
 
-String comparison determines equality and ordering relationships, and supports locale-aware comparison.
-
-### String Equality Comparison
-
-Use `===` to compare both the value and type of strings, and avoid the implicit conversion of `==`.
+String comparison determines equality and sort order and supports locale-sensitive comparison. Use `===` to compare string values and types, avoiding the implicit conversions of `==`.
 
 <!-- @[string_comparison](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
@@ -569,9 +445,7 @@ let equalIgnoreCase: boolean =
   str1.toLowerCase() === upper.toLowerCase();  // true
 ```
 
-### Prefix Comparison
-
-The startsWith method checks whether a string starts with the specified text, and is used for format validation.
+The `startsWith` method checks whether a string starts with specified text, for example, to validate a format:
 
 <!-- @[starts_with_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
@@ -591,9 +465,7 @@ function hasPrefix(text: string, prefix: string): boolean {
 }
 ```
 
-### Suffix Comparison
-
-endsWith() determines whether a string ends with the specified substring.
+`endsWith()` checks whether a string ends with a specified substring:
 
 <!-- @[ends_with_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
@@ -614,23 +486,21 @@ function hasSuffix(text: string, suffix: string): boolean {
 }
 ```
 
-## String Case Conversion
+### String Case Conversion
 
-Use `toUpperCase()` and `toLowerCase()` to convert the case of a string. Note: Accessing a character by index (for example, `text[0]`) returns the `string` type, so you can call string methods directly.
+Use `toUpperCase()` and `toLowerCase()` to convert string case. Indexed string access (such as `text[0]`) returns a `string`, on which string methods can be called directly.
 
-### Converting to Uppercase
-
-The toUpperCase method converts all characters in a string to uppercase.
+`toUpperCase()` converts lowercase letters in a string to uppercase:
 
 <!-- @[to_uppercase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
 ``` TypeScript
-let upperText: string = 'Hello World';
+let upperText: string = 'hello world';
 
-let upperUpper: string = upperText.toUpperCase();  // "HELLO WORLD"
+let upperUpper: string = upperText.toUpperCase();  // 'HELLO WORLD'
 
 // Partially uppercase.
-let firstUpper: string = upperText[0].toUpperCase() + upperText.substring(1);  // "Hello World"
+let firstUpper: string = upperText[0].toUpperCase() + upperText.substring(1);  // 'Hello world'
 
 // Capitalize the first letter of each word.
 function capitalizeWords(upperText: string): string {
@@ -641,22 +511,20 @@ function capitalizeWords(upperText: string): string {
   return capitalized.join(' ');
 }
 
-let upperResult: string = capitalizeWords('hello world');  // "Hello World"
+let upperResult: string = capitalizeWords('hello world');  // 'Hello World'
 ```
 
-### Converting to All Lowercase
-
-`toLowerCase()` converts uppercase letters in a string to lowercase.
+`toLowerCase()` converts uppercase letters in a string to lowercase:
 
 <!-- @[to_lowercase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
 ``` TypeScript
 let lowerText: string = 'Hello World';
 
-let lower: string = lowerText.toLowerCase();  // "hello world"
+let lower: string = lowerText.toLowerCase();  // 'hello world'
 
 // Partially lowercase
-let lowerMixed: string = lowerText[0] + lowerText.substring(1).toLowerCase();  // "Hello world"
+let lowerMixed: string = lowerText[0] + lowerText.substring(1).toLowerCase();  // 'Hello world'
 
 // Check whether it is lowercase
 function isLowerCase(lowerText: string): boolean {
@@ -666,10 +534,6 @@ function isLowerCase(lowerText: string): boolean {
 console.info(`${isLowerCase('hello')}`);  // true
 console.info(`${isLowerCase('Hello')}`);  // false
 ```
-
-## Commonly Used String Methods
-
-String methods include operations such as search, extraction, replacement, and splitting.
 
 ### Search Methods
 
@@ -704,16 +568,16 @@ Extraction methods are used to obtain a substring within a specified range from 
 let sliceText: string = 'Hello World';
 
 // slice: Extract a substring.
-let slice: string = sliceText.slice(0, 5);        // "Hello"
+let slice: string = sliceText.slice(0, 5);        // 'Hello'
 
 // substring: Extract a substring.
-let substring: string = sliceText.substring(7);    // "World"
+let substring: string = sliceText.substring(7);    // 'World'
 
 // split: Split into an array.
 let split: string[] = sliceText.split(' ');
-console.info(`[${split.join(', ')}]`);  // Hello, World
+console.info(`[${split.join(', ')}]`);  // '[Hello, World]'
 let splitAll: string[] = sliceText.split('');
-console.info(`[${splitAll.join(', ')}]`);  // H, e, l, l, o,  , W, o, r, l, d
+console.info(`[${splitAll.join(', ')}]`);  // '[H, e, l, l, o,  , W, o, r, l, d]'
 ```
 
 ### Modification Methods
@@ -726,86 +590,153 @@ Modification methods are used to change the content of a string, such as replaci
 let commonMethodsText: string = 'Hello World';
 
 // replace: Replace.
-let commonMethodsReplaced: string = commonMethodsText.replace('World', 'ArkTS');  // "Hello ArkTS"
+let commonMethodsReplaced: string = commonMethodsText.replace('World', 'ArkTS');  // 'Hello ArkTS'
 
 // replaceAll: Replace all (ES2021, supported by ArkTS).
 let multiple: string = 'aa bb aa';
-let allReplaced: string = multiple.replaceAll('aa', 'xx');  // "xx bb xx"
+let allReplaced: string = multiple.replaceAll('aa', 'xx');  // 'xx bb xx'
 
 // trim: Remove leading and trailing spaces.
-let trimmed: string = '  Hello ArkTS  '.trim();  // "Hello ArkTS"
+let trimmed: string = '  Hello ArkTS  '.trim();  // 'Hello ArkTS'
 
 // trimStart: Remove leading spaces.
-let trimStart: string = '  Hello ArkTS  '.trimStart();  // "Hello ArkTS  "
+let trimStart: string = '  Hello ArkTS  '.trimStart();  // 'Hello ArkTS  '
 
 // trimEnd: Remove trailing spaces.
-let trimEnd: string = '  Hello ArkTS  '.trimEnd();  // "  Hello ArkTS"
+let trimEnd: string = '  Hello ArkTS  '.trimEnd();  // '  Hello ArkTS'
 
 // padStart: Pad on the left.
-let padded: string = '5'.padStart(3, '0');  // "005"
+let padded: string = '5'.padStart(3, '0');  // '005'
 
 // padEnd: Pad on the right.
-let paddedEnd: string = '5'.padEnd(3, '0'); // "500"
+let paddedEnd: string = '5'.padEnd(3, '0'); // '500'
 
 // repeat: Repeat.
-let repeated: string = 'ab'.repeat(3);      // "ababab"
+let repeated: string = 'ab'.repeat(3);      // 'ababab'
 ```
 
 ### Other Methods
 
-The string type also provides practical methods such as charAt, charCodeAt, concat, localeCompare, toString, and valueOf.
+Strings also provide `localeCompare` to compare two strings. In addition, almost all types can be converted to strings with `toString` (for example, `(42).toString()`), as used in sections such as [bigint Type](arkts-language-guide-basics.md#bigint-type).
 
 <!-- @[string_utility_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
 ``` TypeScript
-let utilityText: string = 'Hello';
-
-// charAt: Obtain the character at the specified position.
-let utilityChar: string = utilityText.charAt(0);  // 'H'
-
-// charCodeAt: Obtain the character code.
-let utilityCode: number = utilityText.charCodeAt(0);  // 72
-
-// concat: Concatenate strings.
-let concatenated: string = 'Hello'.concat(' ', 'World');  // "Hello World"
-
-// localeCompare: Performs locale-aware comparison.
-let comparison: number = 'a'.localeCompare('b');  // -1 (a < b)
-
-// toString: Converts to a string.
-let numStr: string = (42).toString();  // "42"
-let boolStr: string = (true).toString();  // "true"
-
-// valueOf: Obtains the primitive value.
-let value: string = 'test'.valueOf();  // "test"
+// localeCompare: compare two strings using locale rules, returning a negative number, 0, or a positive number.
+let comparison: number = 'a'.localeCompare('b');     // -1 (a < b)
+let sameComparison: number = 'a'.localeCompare('a');  // 0 (equal)
 ```
 
-## Strings and Regular Expressions
+### String Padding and Repetition
 
-Regular expressions are used for matching, searching, and replacing strings, and are created through the RegExp object.
+`padStart` and `padEnd` are used to pad a string to a specified length at the beginning or end, and `repeat` is used to repeat a string.
+
+<!-- @[string_pad_repeat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+
+``` TypeScript
+// padStart: pad at the beginning
+let prS1: string = '5'.padStart(3, '0');
+console.info(`${prS1}`);  // '005'
+
+let prS2: string = 'hi'.padStart(5, '-');
+console.info(`${prS2}`);  // '---hi'
+
+// padEnd: pad at the end
+let prS3: string = 'hi'.padEnd(5, '-');
+console.info(`${prS3}`);  // 'hi---'
+
+// repeat: repeat the string
+let prS4: string = 'ab'.repeat(3);
+console.info(`${prS4}`);  // 'ababab'
+```
+
+### Strings and Regular Expressions
+
+Regular expressions match, search, and replace strings. Create them using a `/pattern/` literal or a `RegExp` object. The following example uses literals:
 
 <!-- @[string_regex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
 
 ``` TypeScript
-// match: Match a regular expression.
+// match: match a regular expression (/quick/ matches the substring 'quick').
 let regexText: string = 'The quick brown fox';
 let matches: RegExpMatchArray | null = regexText.match(/quick/);
 
-// search: Find the match position.
+// search: find the match position (/brown/ finds the first occurrence of 'brown').
 let regexPos: number = regexText.search(/brown/);  // 10
 
-// replace: Replace using a regular expression.
-let regexReplaced: string = regexText.replace(/fox/, 'cat');  // "The quick brown cat"
+// replace: replace a regular expression match (/fox/ identifies the substring 'fox' to replace).
+let regexReplaced: string = regexText.replace(/fox/, 'cat');  // 'The quick brown cat'
 
-// split: split by regular expression
-let regexParts: string[] = 'a1b2c3'.split(/\d/);
-console.info(`[${regexParts.join(', ')}]`);  // a, b, c, 
+// split: split using a regular expression (/\d/ uses a single digit as the delimiter).
+let regexParts: string[] = 'a1b2c3d'.split(/\d/);
+console.info(`${regexParts}`);  // 'a,b,c,d'
 
-// matchAll: global matching (ES2020, supported by ArkTS)
+// matchAll: match globally (ES2020, supported by ArkTS; /\w+/g matches consecutive word characters globally).
 let allMatches: IterableIterator<RegExpMatchArray> = regexText.matchAll(/\w+/g);
 ```
 
-## Unicode Character Handling
+## Unicode Representation of Strings
+
+Unicode encoding represents international characters and supports multiple encoding forms.
+
+### Unicode Scalar Values
+
+A Unicode scalar value is a valid range of Unicode code points, excluding surrogate code points.
+
+<!-- @[unicode_representation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+
+``` TypeScript
+// Unicode character representation
+let unicode1: string = 'A';               // Direct character
+let unicode2: string = '\u0041';          // Unicode escape ('A')
+let unicode3: string = '\x41';            // ASCII escape ('A')
+
+// Unicode code point
+let emoji: string = '\u{1F600}';          // '😀' (emoji)
+let chinese: string = '\u{4E2D}';         // the Chinese character for 'middle'
+
+// Obtain the Unicode code point of the character.
+let unicodeReprCodePoint: number = 'A'.codePointAt(0) ?? 0;  // 65
+let emojiCode: number = '😀'.codePointAt(0) ?? 0; // 128512
+
+// Create a character from a code point.
+let fromCode: string = String.fromCodePoint(65);      // 'A'
+let fromEmoji: string = String.fromCodePoint(128512); // '😀'
+```
+
+### Converting Between Unicode Representations
+
+Use `codePointAt` and `fromCodePoint` to convert between strings, Unicode code point arrays, and Unicode escape sequences.
+
+<!-- @[unicode_codepoint_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+
+``` TypeScript
+let unicodeText: string = 'Hello';
+
+// Convert the string to an array of Unicode code points.
+let codePoints: number[] = [];
+for (let char of unicodeText) {
+  codePoints.push(char.codePointAt(0) ?? 0);
+}
+console.info(`${codePoints.join(', ')}`);  // 72, 101, 108, 108, 111
+
+// Convert Unicode code points to a string.
+let reconstructed: string = '';
+for (let code of codePoints) {
+  reconstructed += String.fromCodePoint(code);
+}
+console.info(`${reconstructed}`);  // 'Hello'
+
+// Unicode escape form
+let unicodeEscaped: string = '';
+for (let char of unicodeText) {
+  let code: number = char.codePointAt(0) ?? 0;
+  unicodeEscaped += `\\u${code.toString(16).padStart(4, '0')}`;
+}
+console.info(`${unicodeEscaped}`);  // '\u0048\u0065\u006c\u006c\u006f'
+```
+
+### Unicode Character Handling
 
 A character in a string may consist of multiple UTF-16 code units (for example, an emoji). Use `codePointAt` and `fromCodePoint` to handle complete Unicode code points.
 
@@ -815,109 +746,15 @@ A character in a string may consist of multiple UTF-16 code units (for example, 
 let unicodeEmoji: string = '🎉';
 let unicodeCode: number | undefined = unicodeEmoji.codePointAt(0);
 if (unicodeCode !== undefined) {
-  console.info(`${unicodeCode.toString()}`);  // 129395
+  console.info(`${unicodeCode.toString()}`);  // 127881
 }
 
 let unicodeChar: string = String.fromCodePoint(128516);
-console.info(`${unicodeChar}`);  // 😄
+console.info(`${unicodeChar}`);  // '😄'
 
 // Iterate by Unicode code points (instead of UTF-16 code units).
 let unicodeText2: string = 'a🎉b';
 for (let uc of unicodeText2) {
   console.info(`${uc}`);  // Output in sequence: a, 🎉, b.
 }
-```
-
-## String Padding and Repetition
-
-`padStart` and `padEnd` are used to pad a string to a specified length at the beginning or end, and `repeat` is used to repeat a string.
-
-<!-- @[string_pad_repeat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-// padStart: pad at the beginning
-let prS1: string = '5'.padStart(3, '0');
-console.info(`${prS1}`);  // 005
-
-let prS2: string = 'hi'.padStart(5, '-');
-console.info(`${prS2}`);  // ---hi
-
-// padEnd: pad at the end
-let prS3: string = 'hi'.padEnd(5, '-');
-console.info(`${prS3}`);  // hi---
-
-// repeat: repeat the string
-let prS4: string = 'ab'.repeat(3);
-console.info(`${prS4}`);  // ababab
-```
-
-## at Method and Negative Index Access
-
-The `at` method supports negative index access to string characters, which is more flexible than the bracket notation `[]`.
-
-**TypeScript Comparison**
-
-<!-- @[ts_string_at](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Strings.ts) -->
-
-``` TypeScript
-// TypeScript comparison (ES2022); in ArkTS, use charAt instead
-let tsAtWord: string = 'hello';
-console.info(`${tsAtWord.at(0)}`);   // 'h'
-console.info(`${tsAtWord.at(-1)}`);  // 'o' (the last character)
-```
-
-ArkTS does not support the `at` method. Use `charAt` with manual index calculation instead.
-
-<!-- @[at_method_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-let atWord: string = 'hello';
-console.info(`${atWord.charAt(0)}`);              // h
-console.info(`${atWord.charAt(atWord.length - 1)}`);  // o
-console.info(`${atWord.charAt(10)}`);             // (empty string, out of range)
-```
-
-## Template Literal Types
-
-Template literal types are used in TypeScript to concatenate string literals at the type level. ArkTS does not support this feature.
-
-**TypeScript Comparison**
-
-<!-- @[ts_template_literal_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Strings.ts) -->
-
-``` TypeScript
-// TypeScript equivalent, not supported in ArkTS.
-type TltWorld = 'world';
-type TltGreeting = `hello ${TltWorld}`;  // 'hello world'
-
-// Union expansion.
-type TltLocale = `${'en' | 'ja'}_${'welcome' | 'bye'}`;
-// 'en_welcome' | 'en_bye' | 'ja_welcome' | 'ja_bye'
-
-// Built-in string operation types.
-type TltUpper = Uppercase<'hello'>;      // 'HELLO'
-type TltLower = Lowercase<'HELLO'>;      // 'hello'
-type TltCap = Capitalize<'hello'>;       // 'Hello'
-type TltUncap = Uncapitalize<'Hello'>;   // 'hello'
-```
-
-ArkTS does not support template literal types. Use ordinary string constants, enums, or union types instead, and implement dynamic strings through runtime string concatenation.
-
-<!-- @[template_literal_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
-
-``` TypeScript
-enum TltEventType {
-  Click = 'click',
-  Hover = 'hover',
-  Focus = 'focus'
-}
-
-function tltHandleEvent(type: TltEventType, callback: () => void): void {
-  console.info(`Handling ${type}`);
-  callback();
-}
-
-tltHandleEvent(TltEventType.Click, (): void => {
-  console.info('Clicked!');
-});
 ```

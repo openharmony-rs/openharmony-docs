@@ -9,21 +9,21 @@ status: active
 # Basics
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8923bda514baa1452b967ea964ea779c7417bd8e translatedAt=2026-11-12T12:34:02.263Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
-ArkTS is an extension language based on TypeScript, designed specifically for OpenHarmony development. This chapter introduces the basics of ArkTS, including core concepts such as constants and variables, the type system, comments, and semicolons.
+ArkTS is an extension of TypeScript designed for OpenHarmony application development. This chapter introduces ArkTS fundamentals, including constants and variables, the type system, comments, semicolons, and other core concepts.
 
 ## Constants and Variables
 
-ArkTS uses `const` to declare constants that cannot be reassigned and `let` to declare variables that can be reassigned. Selection guideline: use `const` by default and switch to `let` only when reassignment is required. This follows the principle of least privilege: data that is not intended to be modified should not be accidentally written to. `const` guarantees that the variable binding remains unchanged, but for object types, `const` only locks the reference; the internal properties of the object can still be modified (for example, `const arr = []; arr.push(1)` is valid). ArkTS does not use `var`, because its function scope and variable hoisting do not meet the requirements of statically predictable coding.
+ArkTS uses `const` to declare constants that cannot be reassigned and `let` to declare variables that can be reassigned. Use `const` by default and switch to `let` only when reassignment is needed. This follows the principle of least privilege: data that is not intended to change should not be accidentally overwritten. `const` keeps the variable binding unchanged, but for objects it only locks the reference; properties inside the object can still be modified (for example, `const arr = []; arr.push(1)` is valid).
 
 ### Declaration
 
-ArkTS uses `let` and `const` to declare variables and constants. In TypeScript, `var` has function scope and variable hoisting, which do not meet ArkTS's requirements for static and predictable scopes. Therefore, `var` is not used in ArkTS code.
+ArkTS uses `let` and `const` to declare variables and constants.
 
 <!-- @[variable_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -94,15 +94,16 @@ The following keywords have special semantics in ArkTS and cannot be used as ide
 
 | Category | Keywords |
 | --- | --- |
-| Control flow | `break` `case` `catch` `continue` `default` `do` `else` `finally` `for` `if` `return` `switch` `throw` `try` `while` |
-| Declarations | `class` `const` `enum` `export` `extends` `function` `import` `interface` `let` `var` |
+| Control flow | `break` `case` `catch` `continue` `default` `do` `else` `finally` `for` `if` `of` `return` `switch` `throw` `try` `while` |
+| Declarations | `class` `const` `declare` `enum` `export` `extends` `function` `import` `interface` `let` `type` `var` |
+| Modifiers and accessors | `abstract` `get` `private` `protected` `public` `readonly` `set` `static` |
 | Operators and operations | `delete` `in` `instanceof` `new` `super` `this` `typeof` `void` |
 | Values | `false` `null` `true` |
-| Others | `abstract` `as` `async` `await` `debugger` `implements` `package` `readonly` `static` `with` `yield` |
+| Others | `as` `async` `await` `debugger` `implements` `package` `with` `yield` |
 
 ### Printing
 
-`console` provides multiple output methods: `console.info` outputs general information, `console.warn` outputs warnings, and `console.error` outputs errors. During development and debugging, you can use template literals to concatenate variable values, or use `JSON.stringify` to output objects.
+`console` provides multiple output methods: `console.info` for general information, `console.warn` for warnings, `console.error` for errors, and `console.log` for logs. Use `console.info` instead of `console.log`, which is not recommended. During development and debugging, you can use template literals to include variable values or `JSON.stringify` to output objects.
 
 <!-- @[variable_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -110,12 +111,12 @@ The following keywords have special semantics in ArkTS and cannot be used as ide
 let outputName: string = 'ArkTS';
 const version: number = 1.0;
 
-console.info(`${outputName}`);              // ArkTS
+console.info(`${outputName}`);              // 'ArkTS'
 console.info(`${version}`);      // 1
-console.info(`Name: ${outputName}`);   // Name: ArkTS
-console.info(`Version: ${version}, Name: ${outputName}`);  // Version: 1, Name: ArkTS
-console.warn(`Version: ${version}, Name: ${outputName}`);  // Version: 1, Name: ArkTS
-console.error('Invalid input');        // Invalid input
+console.info(`Name: ${outputName}`);   // 'Name: ArkTS'
+console.info(`Version: ${version}, Name: ${outputName}`);  // 'Version: 1, Name: ArkTS'
+console.warn(`Version: ${version}, Name: ${outputName}`);  // 'Version: 1, Name: ArkTS'
+console.error('Invalid input');        // 'Invalid input'
 ```
 
 During debugging, select the corresponding method based on the information level, and use template strings or `JSON.stringify` to format complex object output.
@@ -189,11 +190,11 @@ function greet(): void {
 
 ## Type Declaration
 
-Type declarations use type annotations to constrain the types of variables, parameters, and return values at compile time, enabling the compiler to detect type mismatch errors (such as assigning a `string` to a `number` variable) before runtime rather than exposing them only when the program runs. In ArkTS, there are three forms of type declaration: type annotation (`: type`), type alias (`type Name = ...`), and interface declaration (`interface`), each suited to different scenarios.
+Type declarations constrain the types of variables, parameters, and return values at compile time through type annotations, allowing the compiler to detect type mismatches (such as assigning a `string` to a `number` variable) before execution rather than at runtime. ArkTS provides three forms of type declarations: [type annotations](#type-annotation) (`: type`), [type aliases](#type-alias) (`type Name = ...`), and [interface declarations](arkts-language-guide-interfaces.md) (`interface`), each suited to different scenarios.
 
 ### Basic Type Declaration
 
-Annotate the types of variables, parameters, and return values through [type annotation](#type-annotation) (: type).
+Use [type annotations](#type-annotation) (`: type`) to annotate types for variables, parameters, and return values.
 
 <!-- @[type_annotation_examples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -229,7 +230,7 @@ userId = 'ABC';
 
 ### API Declaration
 
-An interface defines the structural contract of an object, describing property names, types, and optionality. For details, see [Interfaces](arkts-language-guide-interfaces.md).
+`interface` defines a structural contract for objects, describing property names, types, and optionality. For details, see [Interfaces](arkts-language-guide-interfaces.md).
 
 <!-- @[interface_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -245,11 +246,11 @@ let user: IfaceDefUser = { id: 1, name: 'Alice' };
 
 ## Type
 
-ArkTS provides types such as `number`, `boolean`, `string`, `array`, and `enum` to constrain the range of values and operations.
+ArkTS provides types such as `number`, `boolean`, `string`, arrays, and enums to constrain value ranges and operations.
 
 ### number Type
 
-The `number` type represents IEEE 754 double-precision floating-point numbers (64-bit) and has no separate integer type. Decimal, hexadecimal, binary, and octal literals are supported.
+The `number` type represents IEEE 754 double-precision floating-point numbers (64-bit), with no separate integer type. It supports decimal, hexadecimal, binary, and octal literals.
 
 <!-- @[number_literals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -262,7 +263,7 @@ let octal: number = 0o755;     // octal (493)
 
 ### boolean Type
 
-The boolean type represents the logical values true or false, which are produced by direct assignment, comparison operations (`===`, `!==`, `>`, `<`), and logical operations (`&&`, `||`, `!`). The boolean type cannot be implicitly converted to or from other types, which avoids the type confusion issues found in JavaScript.
+The `boolean` type represents the logical values `true` and `false`, produced by direct assignment, comparison operators (`===`, `!==`, `>`, `<`), and logical operators (`&&`, `||`, `!`). Boolean values cannot be implicitly converted to or from other types, avoiding JavaScript type confusion.
 
 <!-- @[boolean_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -297,35 +298,9 @@ let first: number = arrTypeNumbers[0];
 
 The two syntaxes are equivalent. It is recommended that a team consistently use `number[]` to keep the style uniform.
 
-### object Type
-
-The object type represents a reference type, including class instances and interface objects, accessed by reference.
-
-<!-- @[object_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-class Point {
-  public x: number = 0;
-  public y: number = 0;
-}
-
-let point: Point = new Point();
-point.x = 10;
-point.y = 20;
-
-// Use an interface to define the object structure.
-interface ObjTypeUser {
-  id: number;
-  name: string;
-}
-
-let objTypeUser: ObjTypeUser = { id: 1, name: 'Alice' };
-```
-ArkTS requires the object layout to be determined at compile time, and does not dynamically add or remove properties at runtime. For details, see [Collection Types](arkts-language-guide-collection-types.md).
-
 ### enum Type
 
-The enum type defines an enumeration of named constant values, making it easier to express fixed states semantically. For details, see [Enums](arkts-language-guide-enums.md).
+The `enum` type defines an enumeration of named constant values, providing meaningful names for fixed states. For details, see [Enums](arkts-language-guide-enums.md).
 
 <!-- @[enum_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -385,7 +360,7 @@ For a stable set of states, prefer `enum` to avoid scattering a large number of 
 
 ### void Type
 
-The `void` type indicates that a function returns no value. It is commonly used for functions that only perform operations without returning a result. Note that `void` differs from `undefined`, which represents an undefined value.
+The `void` type indicates that a function has no return value. It is commonly used for functions that perform operations without returning results. Note that `void` differs from `undefined`, which represents an undefined value.
 
 <!-- @[void_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -401,7 +376,7 @@ function doNothing(): void {
 
 ### never Type
 
-The `never` type represents functions that never return—those that throw an exception or run an infinite loop.
+The `never` type represents functions that never return, either because they throw an exception or loop indefinitely.
 
 <!-- @[never_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -415,40 +390,11 @@ function assertNever(value: never): never {
 }
 ```
 
-The `never` type is commonly used in two scenarios: exception functions that always throw an exception and never return, and exhaustiveness checking—returning `never` from the `default` branch to ensure that a `switch` covers all enumerated values.
-
-### Restrictions on any and unknown
-
-ArkTS does not support the `any` and `unknown` types. Use an explicit type, a union type, or a generic instead.
-
-**TypeScript Comparison**
-
-<!-- @[ts_avoid_any_unknown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// Not used in ArkTS:
-let value: any;
-let raw: unknown;
-
-type InputValue = string | number | boolean;
-let inputValue: InputValue = 'ok';
-```
-When defining a variable type, choose an explicit type, a union type, an interface, or a class based on the specific scenario to achieve type safety.
-
-### Advanced Type Boundaries
-
-ArkTS places greater emphasis on statically decidable type relationships. The following TypeScript advanced types are not supported in ArkTS. Prefer alternatives such as `interface extends`, class inheritance, and generic constraints:
-
-| TypeScript Advanced Type | Syntax Example | ArkTS Alternative |
-| --- | --- | --- |
-| Intersection type | `A & B` | Use `interface extends` multiple inheritance or class composition |
-| Conditional type | `T extends U ? X : Y` | Use an explicit interface or function overloading |
-| Mapped type | `{ [K in keyof T]: ... }` | Use an explicit interface or class |
-| Indexed access type | `T[K]` | Use an explicit return type and field access methods |
+The `never` type is commonly used in two scenarios: exception functions that always throw and never return, and exhaustiveness checks, where making the `default` branch return `never` ensures that a `switch` covers all enum values.
 
 ### bigint Type
 
-The bigint type represents integers of arbitrary precision. Its literals are marked with the `n` suffix, making it suitable for operations on very large integers.
+The `bigint` type represents arbitrary-precision integers. Its literals use an n suffix, making it suitable for very large integer calculations.
 
 <!-- @[bigint_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -460,7 +406,7 @@ let nextValue: bigint = bigValue + 1n;
 console.info(`${nextValue.toString()}`);
 ```
 
-Appending `n` to a numeric literal indicates the bigint type. `bigValue` represents a very large integer without precision loss, and `nextValue` performs addition with an exact result. bigint cannot be directly mixed with `number` in operations; explicit conversion is required.
+Adding `n` after a numeric literal indicates the `bigint` type. `bigValue` represents a very large integer without precision loss, and `nextValue` performs addition with an exact result. `bigint` and `number` cannot be used together directly in arithmetic; explicit conversion is required.
 
 <!-- @[bigint_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -470,25 +416,7 @@ let preciseCount: bigint = BigInt(bigintCount);
 let total: bigint = preciseCount + 20n;
 ```
 
-Note that certain APIs (such as Date-related methods) or annotation fields may not support `bigint`. Before using it, check the type constraints in the corresponding API documentation. For large integers, prefer bigint to avoid the precision loss of `number`. Mixed operations require explicit conversion. bigint supports only integer operations, not decimals. Some APIs in older versions may not support bigint.
-
-### symbol Type
-
-symbol represents a globally unique primitive value. It is created through `Symbol()`, and each call returns a different unique value. It is suitable for use as an object property key to avoid naming conflicts. **ArkTS does not support the `Symbol()` API**.
-
-<!-- @[ts_symbol_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// TypeScript supports the symbol type, while ArkTS does not support the Symbol() API
-let sym1: symbol = Symbol('name');
-let sym2: symbol = Symbol('name');
-console.info(`${sym1 === sym2}`); // false, each symbol is unique
-
-let uniqueKey: symbol = Symbol('id');
-let myMap: Map<symbol, string> = new Map();
-myMap.set(uniqueKey, '123');
-console.info(`${myMap.get(uniqueKey)}`); // 123
-```
+Some APIs (such as `Date`-related methods) or annotation fields may not support `bigint`. Check the type constraints in the corresponding API documentation before use. Prefer `bigint` for large integers to avoid `number` precision loss, and use explicit conversion for mixed arithmetic. `bigint` supports only integer arithmetic, not fractions, and some older API versions may not support it.
 
 ## Type Annotation
 
@@ -538,9 +466,7 @@ const tiPi = 3.14;   // Inferred as 3.14 (literal type).
 let tiRatio = 3.14;  // Inferred as number (widened type).
 ```
 
-### Best Common Type
-
-When multiple candidate types exist, the compiler selects the most general type among them. When an array contains elements of multiple types, the type is inferred as a union of the element types.
+When multiple candidate types exist, the compiler selects the most general type. If an array contains elements of multiple types (such as numbers and `null`), explicitly annotate it as an array of the union of the element types.
 
 <!-- @[type_inference_best_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -551,21 +477,6 @@ let tiNames: string[] = ['Alice', 'Bob'];      // Inferred as string[].
 
 If no unified common type can be found, you must annotate the type explicitly.
 
-### Contextual Type
-
-A contextual type refers to the type that the compiler infers based on the position of a variable (such as a function parameter or a callback). When the parameter type of a function is known, the parameters of the callback function passed in are inferred automatically.
-
-<!-- @[type_inference_contextual](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-let tiCtxNames: string[] = ['Alice', 'Bob', 'Charlie'];
-tiCtxNames.forEach((s) => {
-  console.info(s.toUpperCase()); // s is automatically inferred as string.
-});
-```
-
-The parameter `s` of the callback function does not need a type annotation; the compiler infers it as `string` based on the signature of `forEach`. Contextual types and best common types complement each other and together cover most inference scenarios.
-
 ### Control Flow Inference
 
 The compiler tracks type changes along control flow branches such as `if`/`else`, `switch`, and loops, narrowing a variable to a more specific type within different branches and taking the union type after the branches merge.
@@ -575,23 +486,19 @@ The compiler tracks type changes along control flow branches such as `if`/`else`
 ``` TypeScript
 let tiValue: string | number = 'hello';
 if (typeof tiValue === 'string') {
-  console.info(tiValue.toUpperCase()); // Here value is narrowed to string
+  console.info(tiValue.toUpperCase()); // tiValue is narrowed to string here.
 } else {
-  console.info(`${tiValue}`);          // Here value is narrowed to number
+  console.info(`${tiValue}`);          // tiValue is narrowed to number here.
 }
 ```
 
-### Literal Type Inference
-
-Object properties are inferred as broad types rather than literal types by default. In TypeScript, you can use `as const` to infer object properties as literal types. ArkTS does not use `as const`; when literal type constraints are required, use `enum` or explicit type annotations.
-
 ## Optional/Nullable Types
 
-An optional type allows null or undefined, indicating a value that may be missing.
+Optional types allow `null` or `undefined` to represent values that may be absent.
 
 ### null/undefined
 
-`null` represents an intentionally assigned empty value, while `undefined` indicates that a variable has not been assigned or a property does not exist. The two have different semantics and must be explicitly distinguished in ArkTS.
+`null` represents an intentionally assigned empty value, while `undefined` indicates that a variable has not been assigned or a property does not exist. They have different semantics and must be explicitly distinguished in ArkTS.
 
 <!-- @[null_undefined_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -634,7 +541,7 @@ When accessing optional properties nested at multiple levels, optional chaining 
 
 ### Providing Default Values
 
-Use the nullish coalescing operator (`??`) or function default parameters to provide fallback values when a value is `null`/`undefined`. Note that `??` applies only to `null`/`undefined`, while `||` applies to all falsy values (`0`, `false`, `''`). Choose the appropriate one based on the scenario.
+Use the nullish coalescing operator (??) or default function parameters to provide fallback values for `null`/`undefined`. Note that `??` applies only to `null`/`undefined`, while `||` applies to all falsy values (`0`, `false`, and `''`). Choose according to the scenario.
 
 <!-- @[null_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -648,8 +555,8 @@ function nullHandleGreet(name: string, title: string = 'User'): string {
   return `Hello, ${title} ${name}`;
 }
 
-nullHandleGreet('Alice');           // Hello, User Alice
-nullHandleGreet('Alice', 'Dr.');    // Hello, Dr. Alice
+nullHandleGreet('Alice');           // 'Hello, User Alice'
+nullHandleGreet('Alice', 'Dr.');    // 'Hello, Dr. Alice'
 ```
 
 When the default value needs to preserve legitimate values such as `0`, `false`, and `''`, you must use `??` instead of `||`.
@@ -701,13 +608,11 @@ let obj: NullableObj = {};
 let sub: string | undefined = obj?.prop?.sub;
 ```
 
-## Type Safety and Immutability
+## Type Safety
 
-Type safety catches type errors at compile time, and immutability prevents values from being reassigned through `const`.
+Type safety catches type errors at compile time, reducing runtime issues that are difficult to diagnose.
 
-### Type Safety
-
-The compiler rejects assignments with mismatched types, such as assigning a string to a number variable.
+The compiler rejects type-mismatched assignments, such as assigning a `string` to a `number` variable.
 
 <!-- @[ts_type_mismatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
 
@@ -725,37 +630,13 @@ typeCheckAdd(1, '2');    // Compilation error
 
 Type safety detects errors at compile time to avoid runtime crashes, improves code readability and refactoring safety, and supports intelligent hints in DevEco Studio.
 
-### Immutability
-
-Variables declared with `const` cannot be reassigned, ensuring that their values remain unchanged throughout their lifetime.
-
-<!-- @[ts_immutability_violation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// Declare an immutable constant with const.
-const MAX_VALUE: number = 100;
-MAX_VALUE = 200;  // Compilation error.
-
-// readonly read-only property.
-interface Config {
-  readonly apiKey: string;
-}
-
-let config: Config = { apiKey: 'key' };
-config.apiKey = 'new';  // Compilation error
-
-// Read-only array
-let readonlyNumbers: ReadonlyArray<number> = [1, 2, 3];
-readonlyNumbers[0] = 10;  // Compilation error
-```
-
 ## Error Handling
 
-Use `try-catch` to catch runtime exceptions and prevent the program from terminating unexpectedly.
+Use `try-catch` to catch runtime exceptions and prevent unexpected program termination.
 
 ### try-catch Exception Handling
 
-The try block wraps code that may throw exceptions, and the catch block catches and handles the exceptions to prevent the program from terminating unexpectedly.
+The `try` block contains code that may throw an exception, and the `catch` block catches and handles the exception to prevent unexpected program termination.
 
 <!-- @[try_catch_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -803,7 +684,7 @@ function validateAge(age: number): void {
 }
 ```
 
-When throwing an exception, always use an `Error` object with a clear and specific error message. Throw exceptions only in genuinely exceptional situations, and avoid using exceptions to control normal flow.
+Always throw an `Error` object with a clear error message, and throw only for genuinely exceptional conditions. Avoid using exceptions to control normal program flow.
 
 ### Error Handling Conventions
 
@@ -829,86 +710,13 @@ if (error !== null) {
 }
 ```
 
-## Assertions and Preconditions
-
-Assertions verify internal assumptions during development, while preconditions validate external input parameters at function entry.
-
-### Debugging with Assertions
-
-An assertion function throws an error when a condition is false, and is used to detect logic errors during development.
-
-<!-- @[assertion_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-function assert(condition: boolean, message: string = 'Assertion failed'): void {
-  if (!condition) {
-    throw new Error(message);
-  }
-}
-
-function assertEqual<T>(actual: T, expected: T, message?: string): void {
-  if (actual !== expected) {
-    throw new Error(message ?? `Expected ${expected}, got ${actual}`);
-  }
-}
-
-// Use assertions.
-let assertFuncValue: number = 10;
-assert(assertFuncValue > 0, 'Value must be positive');
-assertEqual(assertFuncValue, 10);
-```
-
-### Enforcing Preconditions
-
-A precondition function validates parameters at the function entry and throws an error immediately when the condition is not met.
-
-<!-- @[precondition_checks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-function precondition(condition: boolean, message: string): void {
-  if (!condition) {
-    throw new Error(`Precondition failed: ${message}`);
-  }
-}
-
-function calculateSquareRoot(value: number): number {
-  precondition(value >= 0, 'The parameter must be non-negative.');
-  return Math.sqrt(value);
-}
-
-function getElement(arr: number[], index: number): number {
-  precondition(index >= 0, 'The index must not be negative.');
-  precondition(index < arr.length, 'The index is out of range.');
-  return arr[index];
-}
-```
-
 ## Scope Rules
 
 Scope determines the visibility and lifecycle of variables. ArkTS supports block scope and function scope.
 
-### var Declaration (Function Scope)
-
-Variables declared with `var` have function scope and are subject to hoisting, which means they can be accessed before declaration (with the value `undefined`) and can be declared repeatedly. **ArkTS does not support `var` declarations**; use `let` or `const` instead.
-
-<!-- @[ts_var_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// TypeScript supports var declarations, but ArkTS does not.
-function tsVarScope(): void {
-  var x: number = 10;
-  if (true) {
-    var x: number = 20; // Repeated declaration in the same scope.
-  }
-  console.info(`${x}`); // 20
-}
-
-tsVarScope();
-```
-
 ### let/const Declarations (Block Scope)
 
-Variables declared with `let` and `const` have block scope and are protected by the temporal dead zone (TDZ). They cannot be accessed before declaration, and redeclaration within the same scope is not allowed.
+Variables declared with `let` and `const` have block scope, cannot be accessed before their declaration, and cannot be redeclared in the same scope.
 
 <!-- @[let_const_block_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -927,7 +735,7 @@ function blockScope(): void {
 
 ### Nested Scope
 
-An inner scope can access variables in an outer scope, but not vice versa. `let`/`const` can shadow a variable of the same name in an outer scope within a nested block, whereas `var` cannot (it shares the same function scope).
+An inner scope can access outer variables, but not vice versa. `let`/`const` declarations in nested blocks can shadow outer variables with the same names.
 
 <!-- @[nested_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
@@ -946,151 +754,26 @@ function nestedScope(): void {
 }
 ```
 
-ArkTS recommends using `let` and `const` and avoiding `var`. Use `const` for references that are not reassigned, and `let` for variables that need to be modified.
-
-## Destructuring Assignment
-
-Destructuring assignment allows you to extract values from an array or an object by position or name and assign them to variables. TypeScript supports array destructuring and object destructuring, but ArkTS does not support the destructuring assignment syntax.
-
-### Array Destructuring
-
-In TypeScript, you can use `let [a, b] = [1, 2]` to extract elements from an array. ArkTS does not support destructuring variable declarations (`arkts-no-destruct-decls`). For details, see [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md#destructuring-assignment-is-not-supported). Use element-by-element assignment instead.
-
-**TypeScript Comparison**
-
-<!-- @[ts_array_destructuring](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// TypeScript array destructuring, which ArkTS does not support
-let pair: number[] = [1, 2];
-let [first, second] = pair;
-console.info(`${first}, ${second}`); // 1, 2
-```
-
-ArkTS alternative approach: access array elements by index.
-
-<!-- @[array_access_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-let arrPair: number[] = [1, 2];
-let arrFirst: number = arrPair[0];
-let arrSecond: number = arrPair[1];
-```
-
-### Object Destructuring
-
-In TypeScript, you can use `let { name, age } = obj` to extract properties from an object. ArkTS does not support destructuring variable declarations (`arkts-no-destruct-decls`). For details, see [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md#destructuring-assignment-is-not-supported). Use individual assignments instead.
-
-**TypeScript Comparison**
-
-<!-- @[ts_object_destructuring](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// TypeScript object destructuring syntax, which ArkTS does not support
-interface TsUserInfo {
-  name: string;
-  age: number;
-}
-
-let tsUser: TsUserInfo = { name: 'Alice', age: 25 };
-let { name: userName, age: userAge } = tsUser;
-console.info(`${userName}, ${userAge}`); // Alice, 25
-```
-
-ArkTS alternative approach: access properties one by one.
-
-<!-- @[object_access_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-interface DestrUserInfo {
-  name: string;
-  age: number;
-}
-
-let destrUser: DestrUserInfo = { name: 'Alice', age: 25 };
-let destrUserName: string = destrUser.name;
-let destrUserAge: number = destrUser.age;
-```
-
-### Function Parameter Destructuring
-
-In TypeScript, function parameters can directly destructure objects. ArkTS does not support parameter destructuring (`arkts-no-destruct-params`). For details, see [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md#destructuring-assignment-is-not-supported). Use an interface type parameter instead.
-
-**TypeScript Comparison**
-
-<!-- @[ts_param_destructuring](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// TypeScript syntax; ArkTS does not support function parameter destructuring
-interface GreetParam {
-  name: string;
-  age: number;
-}
-
-function greet({ name, age }: GreetParam): void {
-  console.info(`Hello, ${name}, age ${age}`);
-}
-
-let greetParam: GreetParam = { name: 'Alice', age: 25 };
-greet(greetParam);
-```
-
-ArkTS alternative approach: use an interface type parameter instead.
-
-<!-- @[param_destructuring_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
-
-``` TypeScript
-interface ParamUserInfo {
-  name: string;
-  age: number;
-}
-
-function greetUser(user: ParamUserInfo): void {
-  console.info(`Hello, ${user.name}, age ${user.age}`);
-}
-
-greetUser({ name: 'Alice', age: 25 });
-```
-
 ## Spread Syntax (spread)
 
-In ArkTS, the spread syntax `...` supports only arrays and rest parameters, and does not support object spread (`arkts-no-spread`). For details, see [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md#spread-operator-is-supported-in-partial-scenarios). To copy object properties, assign them one by one.
-
-**TypeScript Comparison**
-
-<!-- @[ts_object_spread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Basics.ts) -->
-
-``` TypeScript
-// TypeScript object spread syntax, which ArkTS does not support
-interface TsConfig {
-  host: string;
-  port: number;
-}
-
-let original: TsConfig = { host: 'localhost', port: 8080 };
-let copy: TsConfig = { ...original, port: 3000 };
-console.info(`${copy.host}, ${copy.port}`); // localhost, 3000
-```
-
-ArkTS alternative approach: assign object properties one by one.
+The spread syntax `...` expands an array into individual elements. ArkTS supports spreading arrays in array literals and passing spread arrays to function rest parameters.
 
 <!-- @[spread_syntax_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Basics.ets) -->
 
 ``` TypeScript
-interface SpreadConfig {
-  host: string;
-  port: number;
-}
-
-// Array spread, supported by ArkTS
+// Copy an array into an array literal.
 let spreadArr1: number[] = [1, 2, 3];
 let spreadArr2: number[] = [...spreadArr1, 4, 5];
 
-// Copy object properties by assigning them one by one
-let spreadOriginal: SpreadConfig = { host: 'localhost', port: 8080 };
-let spreadCopy: SpreadConfig = {
-  host: spreadOriginal.host,
-  port: 3000
-};
-console.info(`${spreadCopy.host}, ${spreadCopy.port}`); // localhost, 3000
+// Spread an array into a rest parameter.
+function spreadTotal(...values: number[]): number {
+  let total: number = 0;
+  for (const value of values) {
+    total += value;
+  }
+  return total;
+}
+
+let spreadNums: number[] = [1, 2, 3];
+console.info(`${spreadTotal(...spreadNums)}`);  // 6
 ```

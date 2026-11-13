@@ -1,3 +1,11 @@
+---
+kits: ["ArkUI"]
+description: "Introduces core display management terms, explains logical and physical screens and their mapping, and covers main, mirrored, extended, heterogeneous, built-in, external, and virtual screens to help you understand multi-screen development."
+keywords: [logical screen, physical screen, main screen, mirrored screen, extended screen, heterogeneous screen, virtual screen]
+doctype: glossary
+status: active
+---
+
 # Display Management Development Terminology
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
@@ -5,7 +13,7 @@
 <!--Designer: @wulong158-->
 <!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z -->
+<!-- md-trans-meta sourceCommit=27bf6967fc994505af5bc56dd1e6eb560ab219d9 translatedAt=2026-11-12T12:34:02.136Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
 
 Display management development centers on two core concepts: logical screens and physical screens.
 

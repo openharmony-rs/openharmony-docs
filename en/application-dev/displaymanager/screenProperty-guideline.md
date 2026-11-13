@@ -1,4 +1,12 @@
-# Using Display to Obtain Display Properties and Listen for Status Changes (ArkTS)
+---
+kits: ["ArkUI"]
+description: "Describes how to use @ohos.display to obtain Display objects and query display properties, and listen for display connection and disconnection, screen capture, casting and recording status, available area changes, and folding state changes to adapt the UI to different screen forms."
+keywords: [Display, display property query, display connection and disconnection monitoring, display status monitoring, available area, folding state monitoring]
+doctype: guide
+status: active
+---
+
+# Obtaining Display Properties and Listening for Status Changes (ArkTS)
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
@@ -6,7 +14,7 @@
 <!--Designer: @wulong158-->
 <!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z -->
+<!-- md-trans-meta sourceCommit=0d8c45b21d8a570119acc3e826554bd3c3d6e189 translatedAt=2026-11-12T12:34:02.171Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
 
 ## When to Use
 

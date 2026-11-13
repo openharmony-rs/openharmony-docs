@@ -1,7 +1,7 @@
 ---
 kits: ["ArkTS Kit"]
-description: "Syntax and usage of ArkTS control statements, including branches, loops, and jumps, with early returns from functions and API availability checks across system versions and devices."
-keywords: ["ArkTS", "control statements", "branch statements", "loop statements", "switch", "jump statements", "early returns", "API availability checks"]
+description: "Syntax and usage of ArkTS branch, loop, and jump statements, including common techniques for loop control and early exits."
+keywords: [ArkTS, control statements, branch statements, loop statements, switch, jump statements, early exits]
 doctype: guide
 status: active
 ---
@@ -9,11 +9,11 @@ status: active
 # Control Statements
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8923bda514baa1452b967ea964ea779c7417bd8e translatedAt=2026-11-12T12:34:02.325Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 Control statements control the execution flow of a program. ArkTS provides branch statements, loop statements, and jump statements to implement complex logic control.
 
@@ -23,29 +23,26 @@ Branch statements select different execution paths based on conditions.
 
 ### if Statement
 
-The `if` statement executes the corresponding code block when the condition is true. It can be used with `else if` and `else` to handle multi-branch scenarios.
+The `if` statement executes the corresponding code block when the condition is `true`. It can be used with `else if` and `else` to handle multi-branch scenarios. For simple scenarios where code only needs to execute when the condition is met, omit `else` if no other branches are needed:
 
-<!-- @[basic_if_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @[simple_condition_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
 
 ``` TypeScript
-let score: number = 85;
+let value: number = 10;
 
-if (score >= 60) {
-  console.info('Passed');
+// Only check the condition; no else needed.
+if (value > 0) {
+  console.info('Positive number');
 }
 
-let age: number = 25;
-if (age >= 18) {
-  console.info('Adult');
+// Omit an empty else branch.
+if (value < 0) {
+  console.info('Negative number');
 }
 
-let enabled: boolean = true;
-if (enabled) {
-  startService();
-}
-
-function startService(): void {
-  console.info('Service started');
+// Concise form.
+if (value !== 0) {
+  console.info('non-zero');
 }
 ```
 
@@ -66,18 +63,6 @@ if (chainScore >= 90) {
   console.info('Fail');
 }
 
-let chainAge: number = 25;
-
-if (chainAge < 13) {
-  console.info('Child');
-} else if (chainAge < 18) {
-  console.info('Teenager');
-} else if (chainAge < 60) {
-  console.info('Adult');
-} else {
-  console.info('Senior');
-}
-
 // Combine multiple conditions
 let role: string = 'admin';
 let hasPermission: boolean = true;
@@ -91,34 +76,10 @@ if (role === 'admin') {
 }
 ```
 
-For simple scenarios where you only need to execute when the condition is met and do not need to handle other branches, you can omit the `else` part:
-
-<!-- @[simple_condition_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-let value: number = 10;
-
-// Only check the condition; no else needed.
-if (value > 0) {
-  console.info('Positive number');
-}
-
-// The else branch can be omitted if empty.
-if (value < 0) {
-  console.info('Negative number');
-} else {
-  // The empty branch can be omitted.
-}
-
-// Concise form.
-if (value !== 0) {
-  console.info('non-zero');
-}
-```
 
 ### switch Statement
 
-The switch statement matches multiple case branches based on the value of an expression. It is suitable for multi-branch selection of discrete values and is clearer than multiple else if statements.
+The `switch` statement matches `case` branches based on an expression's value and suits multi-branch selection among discrete values.
 
 ``` TypeScript
 switch (expression) {
@@ -184,15 +145,16 @@ switch (status) {
 }
 ```
 
-Multiple `case` labels can share the same block of execution logic to group values for matching:
+The `break` statement prevents `switch` from falling through. Omitting `break` and unintentionally executing further logic is a common programming error.
+
+The `default` branch catches all unmatched cases and suits scenarios such as handling unknown commands.
+
+Omitting `break` is commonly used to combine multiple `case` labels and share the same execution logic, grouping values for matching:
 
 <!-- @[switch_case_fallthrough](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
 
 ``` TypeScript
 let fallValue: number = 5;
-
-// TypeScript does not support: case 1, 2, 3:
-// Write them separately.
 
 switch (fallValue) {
   case 1:
@@ -208,26 +170,9 @@ switch (fallValue) {
   default:
     console.info('Large value');
 }
-
-let color: string = 'red';
-
-switch (color) {
-  case 'red':
-  case 'yellow':
-  case 'orange':
-    console.info('Warm tone');
-    break;
-  case 'blue':
-  case 'green':
-  case 'purple':
-    console.info('Cool tone');
-    break;
-  default:
-    console.info('Other colors');
-}
 ```
 
-For range checks, `switch` and `if...else if` each have their applicable scenarios. The following example compares the two approaches:
+`switch` and `if...else if` suit different scenarios: the former handles explicit, discrete values, while the latter handles complex conditions and ranges. The following example compares the two approaches:
 
 <!-- @[switch_vs_if_range](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
 
@@ -269,128 +214,51 @@ switch (grade) {
 }
 ```
 
-switch can also be used with `typeof` or a discriminant field to handle union types, safely using the narrowed type within each `case` branch.
-
-<!-- @[switch_typeof_matching](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-let stmValue: number | string | boolean = 'text';
-
-switch (typeof stmValue) {
-  case 'number':
-    console.info(`Number: ${stmValue}`);
-    break;
-  case 'string':
-    console.info(`String: ${stmValue}`);
-    break;
-  case 'boolean':
-    console.info(`Boolean: ${stmValue}`);
-    break;
-  default:
-    console.info('Unknown type');
-}
-```
-
-Use an enum as the discriminant field, together with a unified interface, to branch by enumerated value in a `switch` statement.
-
-<!-- @[switch_enum_matching](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-enum ShapeKind {
-  Circle,
-  Rectangle,
-  Triangle
-}
-
-interface ShapeInfo {
-  kind: ShapeKind;
-  radius: number;
-  width: number;
-  height: number;
-  base: number;
-}
-
-let semShape: ShapeInfo = { kind: ShapeKind.Circle, radius: 5, width: 0, height: 0, base: 0 };
-
-switch (semShape.kind) {
-  case ShapeKind.Circle:
-    console.info(`Circle area: ${Math.PI * semShape.radius * semShape.radius}`);
-    break;
-  case ShapeKind.Rectangle:
-    console.info(`Rectangle area: ${semShape.width * semShape.height}`);
-    break;
-  case ShapeKind.Triangle:
-    console.info(`Triangle area: ${0.5 * semShape.base * semShape.height}`);
-    break;
-}
-```
-
-The `default` branch of `switch` is used to catch all unmatched cases, which is suitable for scenarios such as handling unknown commands:
-
-<!-- @[switch_default_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-let command: string = 'unknown';
-
-switch (command) {
-  case 'start':
-    console.info('Start');
-    break;
-  case 'stop':
-    console.info('Stop');
-    break;
-  case 'restart':
-    console.info('Restart');
-    break;
-  default:
-    console.info('Unknown command');
-    handleUnknown(command);
-}
-
-function handleUnknown(cmd: string): void {
-  console.info(`Handling unknown command: ${cmd}`);
-}
-```
-
-The `break` statement controls whether `switch` falls through to the next case. Omitting `break` triggers fallthrough:
-
-<!-- @[switch_break_fallthrough](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-let fallValue2: number = 1;
-
-switch (fallValue2) {
-  case 1:
-    console.info('Match 1');
-    break;  // A break is required; otherwise, execution falls through to the next case.
-  case 2:
-    console.info('Match 2');
-    break;
-  default:
-    console.info('Default');
-}
-
-// Without break, execution continues.
-switch (fallValue2) {
-  case 1:
-    console.info('One');
-    // Without break, execution continues to case 2.
-  case 2:
-    console.info('Two');
-    break;
-  default:
-    console.info('Default');
-}
-// Output: one, two.
-```
-
 ## Loop Statements
 
-A loop statement repeatedly executes a code block while the condition holds true. ArkTS provides several loop forms, including for, for...of, while, and do...while.
+A loop statement repeatedly executes a code block while its condition holds true. ArkTS provides several loop forms, including `for`, `for...of`, `while`, and `do...while`.
 
+### for Loop (Traditional Counter-Based)
+
+A traditional `for` loop uses a counter and consists of initialization, a condition check, and an iteration expression.
+
+Execution proceeds as follows: run the initialization expression once, check the condition (`true` continues and `false` exits), execute the loop body, run the iteration expression, and return to the condition check.
+
+<!-- @[traditional_for_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+
+``` TypeScript
+// Basic structure
+// Initialization: let i = 0
+// Condition: i < 5
+// Increment: i++
+for (let i = 0; i < 5; i++) {
+  console.info(`${i}`);
+}
+
+// Reverse loop
+for (let i = 5; i >= 0; i--) {
+  console.info(`${i}`);
+}
+
+// Step of 2
+for (let i = 0; i < 10; i += 2) {
+  console.info(`${i}`);
+}
+
+// Iterate over array indices
+let arr: number[] = [10, 20, 30, 40, 50];
+for (let i = 0; i < arr.length; i++) {
+  console.info(`Index ${i}: ${arr[i] ?? 0}`);
+}
+
+// Multi-variable loop
+for (let i = 0, j = 10; i < j; i++, j--) {
+  console.info(`i=${i}, j=${j}`);
+}
+```
 ### for...of Loop
 
-The for...of statement iterates over the elements of an iterable object. It features concise syntax, strong versatility, and type safety, and it does not iterate over properties on the prototype chain.
+`for...of` iterates over elements of an iterable object, providing concise syntax, versatility, and type safety.
 
 <!-- @[for_of_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
 
@@ -406,168 +274,13 @@ let text: string = 'Hello';
 for (let char of text) {
   console.info(`${char}`);
 }
-
-// Iterate over the Set.
-let set: Set<number> = new Set<number>();
-set.add(1);
-set.add(2);
-set.add(3);
-for (let value of set) {
-  console.info(`${value}`);
-}
-
-// Iterate over the Map.
-let map: Map<string, number> = new Map<string, number>();
-map.set('a', 1);
-map.set('b', 2);
-map.set('c', 3);
-
-for (let key of map.keys()) {
-  let mapValue: number | undefined = map.get(key);
-  if (mapValue !== undefined) {
-    console.info(`Key: ${key}, Value: ${mapValue}`);
-  }
-}
-
-// Iterate over the values of the Map.
-for (let value of map.values()) {
-  console.info(`${value}`);
-}
-
-// Iterate over the keys of the Map.
-for (let key of map.keys()) {
-  console.info(`${key}`);
-}
 ```
 
-When iterating over the key-value pairs of `Map`, ArkTS does not support destructuring syntax. You need to extract the key and value from `entry` separately by index:
-
-<!-- @[for_of_key_value_pairs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-// TypeScript supports: for (let [key, value] of pairsMap)
-// ArkTS requires separate extraction.
-
-let pairsMap: Map<string, number> = new Map([
-  ['a', 1],
-  ['b', 2]
-]);
-
-for (let entry of pairsMap) {
-  let key: string = entry[0];
-  let value: number = entry[1];
-  console.info(`${key}: ${value}`);
-}
-
-// Array iteration (no destructuring required).
-let pairs: number[][] = [[1, 2], [3, 4], [5, 6]];
-for (let pair of pairs) {
-  let first: number = pair[0];
-  let second: number = pair[1];
-  console.info(`${first}, ${second}`);
-}
-```
-
-### for...in Loop
-
-`for...in` iterates over the **property keys** of an object (including inherited enumerable properties), unlike `for...of`, which iterates over **values**. The iteration order of `for...in` is not guaranteed to be fixed, and when iterating over an array it returns string indices (such as `"0"` instead of `0`), which can easily lead to type and logic errors. ArkTS does not support `for...in` (`arkts-no-for-in`). For details, see [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md#for--in-is-not-supported). To iterate over an array, use `for...of` or `forEach`; to iterate over object keys, use `Object.keys()`.
-
-**TypeScript Comparison**
-
-<!-- @[ts_for_in_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Control.ts) -->
-
-``` TypeScript
-// TypeScript equivalent (ArkTS does not support for...in)
-// for...in iterates over an object and returns its property keys
-let finObj: Record<string, number> = { 'a': 1, 'b': 2, 'c': 3 };
-for (let key in finObj) {
-  console.info(`${key}: ${finObj[key]}`); // a: 1, b: 2, c: 3
-}
-
-// for...in iterates over an array and returns string indexes ("0" instead of 0)
-let finArr: number[] = [10, 20, 30];
-for (let index in finArr) {
-  console.info(`${index}`); // "0", "1", "2" (string indexes, not numeric values)
-}
-```
-
-> **NOTE**
-> 
-> `for...in` returns the key names (strings), while `for...of` returns the values. To iterate over an array, use `for...of` or `forEach`. To iterate over the key names of an object, use `Object.keys()`.
-
-### for Loop (Traditional Counter-Based)
-
-The traditional `for` loop uses a counter to control the loop and consists of three parts: initialization, condition evaluation, and iteration.
-
-The execution flow is as follows: first, the initialization expression is executed (only once); then the condition expression is evaluated (the loop continues if it is `true` and exits if it is `false`); then the loop body is executed; and after the iteration expression is executed, the flow returns to the condition evaluation.
-
-<!-- @[traditional_for_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-// Basic structure
-for (let i: number = 0; i < 5; i++) {
-  console.info(`${i}`);
-}
-
-// Initialization: let i = 0
-// Condition: i < 5
-// Increment: i++
-
-// Reverse loop
-for (let i: number = 5; i >= 0; i--) {
-  console.info(`${i}`);
-}
-
-// Step of 2
-for (let i: number = 0; i < 10; i += 2) {
-  console.info(`${i}`);
-}
-
-// Iterate over array indices
-let arr: number[] = [10, 20, 30, 40, 50];
-for (let i: number = 0; i < arr.length; i++) {
-  console.info(`Index ${i}: ${arr[i] ?? 0}`);
-}
-
-// Multi-variable loop
-for (let i: number = 0, j = 10; i < j; i++, j--) {
-  console.info(`i=${i}, j=${j}`);
-}
-```
-
-With a counter variable, a `for` loop can also iterate over a specified range:
-
-<!-- @[iterate_range_numbers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-// Iterate over a specified range
-function range(start: number, end: number): number[] {
-  let result: number[] = [];
-  for (let i: number = start; i < end; i++) {
-    result.push(i);
-  }
-  return result;
-}
-
-let numsNumbers: number[] = range(1, 10);
-for (let num of numsNumbers) {
-  console.info(`${num}`);
-}
-
-// Iterate over odd numbers in the range
-for (let i: number = 1; i <= 20; i += 2) {
-  console.info(`${i}`);
-}
-
-// Iterate over even numbers in the range.
-for (let i: number = 2; i <= 20; i += 2) {
-  console.info(`${i}`);
-}
-```
+`for...of` is commonly used to traverse collection types. For more examples, see [Collection Types](./arkts-language-guide-collection-types.md).
 
 ### while Loop
 
-A `while` loop evaluates the condition first and then executes the loop body. It is a condition-controlled loop statement.
+A `while` loop checks its condition before executing the loop body and is controlled by that condition.
 
 ``` TypeScript
 while (condition) {
@@ -619,7 +332,7 @@ console.info(`Accumulated to ${sum}`);
 
 ### do...while Loop
 
-The do...while loop executes the loop body first and then re-evaluates the condition. It is suitable for scenarios that require execution before evaluation, such as user input validation (asking at least once), resource acquisition (attempting at least once), and status checking. The execution flow is as follows: the loop body is executed first, then the condition expression is evaluated. If the condition is true, execution continues; if it is false, the loop exits.
+A `do...while` loop executes its body before checking the condition. It suits scenarios that require execution before checking, such as user input validation (ask at least once), resource acquisition (try at least once), and state checks. It executes the body, checks the condition, continues if `true`, and exits if `false`.
 
 <!-- @[do_while_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
 
@@ -663,19 +376,19 @@ function tryConnect(): boolean {
 
 ## Jump Statements
 
-Jump statements are used to alter the execution flow of a loop or a function.
+Jump statements change loop execution flow.
 
 ### break Statement
 
-`break` is used to exit a loop or a `switch` statement, immediately terminating the execution of the current loop or branch.
+`break` exits a loop or `switch`, immediately terminating the current loop or branch.
 
-`break` is commonly used to terminate a loop after an element is found, exit when a condition is met, break out when an error occurs, and end meaningless loops early to optimize performance.
+`break` is commonly used to stop after finding an element, exit when a condition is met, break out on errors, or improve performance by ending unnecessary iterations early.
 
 <!-- @[break_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
 
 ``` TypeScript
 // Exit the for loop.
-for (let i: number = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   if (i === 5) {
     break;  // Exit the loop.
   }
@@ -703,36 +416,14 @@ for (let num of breakNumbers) {
 }
 ```
 
-In a `switch` statement, `break` is also used to terminate the execution of the current branch:
-
-<!-- @[break_in_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-let switchValue: number = 2;
-
-switch (switchValue) {
-  case 1:
-    console.info('One');
-    break;  // Exit the switch
-  case 2:
-    console.info('Two');
-    break;  // A break is required
-  case 3:
-    console.info('Three');
-    break;
-  default:
-    console.info('Default');
-}
-```
-
 In nested loops, a labeled `break` can directly exit the outer loop:
 
 <!-- @[nested_loop_break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
 
 ``` TypeScript
 // Labeled break: exit the outer loop.
-outerLoop: for (let i: number = 0; i < 10; i++) {
-  for (let j: number = 0; j < 10; j++) {
+outerLoop: for (let i = 0; i < 10; i++) {
+  for (let j = 0; j < 10; j++) {
     if (i + j === 15) {
       console.info(`Found: i=${i}, j=${j}`);
       break outerLoop;
@@ -743,15 +434,13 @@ outerLoop: for (let i: number = 0; i < 10; i++) {
 
 ### continue Statement
 
-`continue` skips the current iteration and proceeds to the next one. It is an important statement for loop control.
-
-`continue` is commonly used to filter invalid data, skip when a condition is met, avoid executing unnecessary code to optimize performance, and replace complex if-else nesting to simplify logic.
+`continue` skips the current iteration and proceeds to the next one. It is commonly used to filter invalid data, skip when a condition is met, improve performance by avoiding unnecessary code, and simplify logic by replacing complex `if-else` nesting.
 
 <!-- @[continue_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
 
 ``` TypeScript
 // Skip even numbers.
-for (let i: number = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   if (i % 2 === 0) {
     continue;  // Skip even numbers.
   }
@@ -789,8 +478,8 @@ Similarly, `continue` also supports the label syntax, which is used to skip the 
 
 ``` TypeScript
 // Labeled continue: skip the current iteration of the outer loop.
-outerLoop: for (let i: number = 0; i < 5; i++) {
-  for (let j: number = 0; j < 5; j++) {
+outerLoop: for (let i = 0; i < 5; i++) {
+  for (let j = 0; j < 5; j++) {
     if (j === 2) {
       continue outerLoop;
     }
@@ -799,330 +488,6 @@ outerLoop: for (let i: number = 0; i < 5; i++) {
 }
 ```
 
-### return Statement (Control Flow Within a Function)
+### Other Control Statements (return and throw)
 
-The `return` statement returns from a function, immediately terminating the function execution and handing control back to the caller while returning the specified value. Code after `return` is not executed. It is commonly used to return a computation result, exit early when a parameter is invalid, return different results based on conditions, and return error information when an error occurs.
-
-<!-- @[return_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-// Basic return
-function add(a: number, b: number): number {
-  return a + b;
-}
-
-let result: number = add(1, 2);
-
-// Function with no return value
-function log(message: string): void {
-  console.info(`${message}`);
-  return;  // Can be omitted
-}
-
-// Conditional return
-function classify(value: number): string {
-  if (value > 0) {
-    return 'positive';
-  } else if (value < 0) {
-    return 'negative';
-  }
-  return 'zero';
-}
-
-// Early return
-function validate(input: string): boolean {
-  if (input.length === 0) {
-    return false;  // Early return
-  }
-  if (input.length > 100) {
-    return false;
-  }
-  return true;
-}
-
-// Return a complex type
-function getUser(id: number): User | null {
-  if (id <= 0) {
-    return null;
-  }
-  return { id: id, name: 'User' };
-}
-
-interface User {
-  id: number;
-  name: string;
-}
-```
-
-## Early Exit (Flow Control Within a Function)
-
-Early exit means validating preconditions at the function entry and returning directly when they are not met, thereby avoiding deep nesting and keeping the main flow flat.
-
-### Conditional return to Terminate Function Execution Early
-
-At the function entry, validate the preconditions (parameter validity, permissions, and state). If they are not met, return directly to exit, avoiding deep nesting and keeping the main flow flat and clear.
-
-<!-- @[early_exit_pattern](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-// Exit early after parameter validation.
-function processData(data: string | null | undefined): void {
-  if (data === null || data === undefined) {
-    console.info('Invalid data.');
-    return;  // Exit early.
-  }
-  
-  // Normal processing.
-  console.info(`Processing: ${data}`);
-}
-
-// Exit early after permission check.
-function accessResource(user: PatternUser): void {
-  if (!user.hasPermission) {
-    console.info('No permission');
-    return;
-  }
-  
-  // Handle when permission is granted.
-  loadResource();
-}
-
-function loadResource(): void {
-  console.info('Loading resources');
-}
-
-interface PatternUser {
-  hasPermission: boolean;
-}
-
-// Early exit after error handling
-function safeDivide(a: number, b: number): number | null {
-  if (b === 0) {
-    console.info('The divisor cannot be zero');
-    return null;  // Early exit, return null
-  }
-  
-  return a / b;
-}
-
-// Early exit after boundary check
-function getArrayElement(arr: number[], index: number): number | null {
-  if (index < 0 || index >= arr.length) {
-    return null;  // early exit
-  }
-  
-  return arr[index];
-}
-```
-
-### Early Exit Combined with Optional Value Checks
-
-Return early when an optional value is null/undefined to avoid deep nesting.
-
-<!-- @[null_undefined_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-// Handle optional parameters.
-function greet(name: string | null): string {
-  if (name === null) {
-    return 'Hello, Guest';  // Early exit.
-  }
-  
-  return `Hello, ${name}`;
-}
-
-// Handle optional chaining results.
-function processConfig(config: Config | null): void {
-  if (config === null) {
-    console.info('Configuration does not exist');
-    return;
-  }
-  
-  if (config.value === undefined) {
-    console.info('Configuration value is undefined');
-    return;
-  }
-  
-  console.info(`Configuration value: ${config.value}`);
-}
-
-interface Config {
-  value: number | undefined;
-}
-
-// Multi-level null check
-function deepProcess(data: Data | null): void {
-  if (data === null) {
-    return;
-  }
-  
-  if (data.inner === null) {
-    return;
-  }
-  
-  if (data.inner.value === null) {
-    return;
-  }
-  
-  console.info(`${data.inner.value}`);
-}
-
-interface Data {
-  inner: Inner | null;
-}
-
-interface Inner {
-  value: string | null;
-}
-```
-
-## Detecting API Availability
-
-In HarmonyOS multi-version and multi-device scenarios, some APIs may be available only on specific versions or devices. Detecting API availability at runtime ensures backward compatibility: use the new implementation when the new API is available, and fall back to the compatible implementation when it is not.
-
-### Runtime Environment Detection
-
-Determine the current runtime environment by checking whether object methods exist using `typeof`.
-
-<!-- @[check_object_method_existence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-// Check the global object.
-function checkEnvironment(): void {
-  if (typeof console !== 'undefined') {
-    console.info('console available');
-  }
-  
-  if (typeof setTimeout !== 'undefined') {
-    console.info('setTimeout available');
-  }
-}
-
-class OptionalWorker {
-  public methodName?: () => void;
-}
-
-// Check whether the method exists.
-function safeCall(): void {
-  let obj: OptionalWorker = new OptionalWorker();
-  
-  if (obj.methodName !== undefined) {
-    obj.methodName();
-  } else {
-    console.info('The method does not exist.');
-  }
-}
-
-// Use type checking in ArkTS.
-interface Feature {
-  newMethod?(): void;
-}
-
-function useFeature(feature: Feature): void {
-  if (feature.newMethod !== undefined) {
-    feature.newMethod();
-  } else {
-    console.info('Use the legacy method.');
-    fallbackMethod();
-  }
-}
-
-function fallbackMethod(): void {
-  console.info('Fallback method.');
-}
-```
-
-### Feature Compatibility Check
-
-At runtime, determine whether the current environment supports a feature based on the version number or a feature flag, and branch between the new implementation and the compatible legacy implementation accordingly to ensure backward compatibility.
-
-<!-- @[version_feature_platform_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
-
-``` TypeScript
-// Check the version.
-function checkVersion(): void {
-  const MIN_VERSION: number = 2;
-  let currentVersion: number = getCurrentVersion();
-  
-  if (currentVersion < MIN_VERSION) {
-    console.info('// The version is too old; use the compatible solution.');
-    useLegacyImplementation();
-  } else {
-    useNewImplementation();
-  }
-}
-
-function getCurrentVersion(): number {
-  return 3;
-}
-
-function useLegacyImplementation(): void {
-  console.info('// Use the legacy implementation.');
-}
-
-function useNewImplementation(): void {
-  console.info('Use the new implementation');
-}
-
-// Feature switch
-function processWithOptions(options: ProcessOptions): void {
-  if (options.useNewFeature) {
-    processNewWay();
-  } else {
-    processOldWay();
-  }
-}
-
-interface ProcessOptions {
-  useNewFeature: boolean;
-}
-
-function processNewWay(): void {
-  console.info('Process in the new way');
-}
-
-function processOldWay(): void {
-  console.info('Process in the old way');
-}
-
-// Platform detection
-function detectPlatform(): string {
-  let platform: string = getPlatform();
-  
-  switch (platform) {
-    case 'mobile':
-      configureForMobile();
-      break;
-    case 'desktop':
-      configureForDesktop();
-      break;
-    case 'web':
-      configureForWeb();
-      break;
-    default:
-      useDefaultConfig();
-  }
-  
-  return platform;
-}
-
-function getPlatform(): string {
-  return 'mobile';
-}
-
-function configureForMobile(): void {
-  console.info('Mobile configuration');
-}
-
-function configureForDesktop(): void {
-  console.info('Desktop configuration');
-}
-
-function configureForWeb(): void {
-  console.info('Web configuration');
-}
-
-function useDefaultConfig(): void {
-  console.info('Default configuration');
-}
-```
+ArkTS also supports other control statements, such as [return](./arkts-language-guide-functions.md) and [throw](./arkts-language-guide-error-handling.md). For details, see the linked topics.
