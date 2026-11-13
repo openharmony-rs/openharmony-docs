@@ -50,7 +50,7 @@
 创建播放实例时，系统会校验权限和设备能力：若应用未申请`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`权限，接口返回错误码201（AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED）；若当前硬件不支持超低时延能力，接口返回错误码6800104（AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY）。以上两种情况均不会创建播放实例。
 
 创建成功后，在以下场景中，即使设置了超低时延模式，系统仍会使用低时延模式或普通模式。
-- 当前输出设备不支持超低时延模式，降级为低时延模式。
+- 当前输出设备不支持超低时延模式时，降级为低时延模式。
 - 当前系统中存在更高优先级流（如：蜂窝通话），新增的流降级为普通模式。
 
 
@@ -87,26 +87,26 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 2. 通过能力查询接口判断当前设备和当前音频场景是否支持超低时延。
 
-    获取audiomanager 。
-    <!-- @[Render_GetAudioStreamManager]https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    获取音频流管理器。
+    <!-- @[Render_GetAudioStreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
     查询当前设备和当前音频场景是否支持。
-    <!-- @[Render_IsUltraFastPlaybackSupported]https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    <!-- @[Render_IsUltraFastPlaybackSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 3. 设置超低时延模式。
 
     在查询结果为支持的前提下，通过 `OH_AudioStreamBuilder_SetLatencyMode` 设置超低时延模式，并创建音频流。
-    <!-- @[Render_SetUltraFastLatencyMode]https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    <!-- @[Render_SetUltraFastLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 4. 查询超低时延流实际运行状态。
 
     音频流创建并启动后，通过 `OH_AudioRenderer_GetFastStatus`查询实际运行状态。
-    <!-- @[Render_GetUltraFastStatus]https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    <!-- @[Render_GetUltraFastStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 5. 查询状态及监听
 
     可通过注册`OH_AudioRenderer_OnFastStatusChange`回调，在运行态发生变化时及时感知状态变化。
-    <!-- @[Render_SetRendererUltraFastStatusChangeCallback]https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    <!-- @[Render_SetRendererUltraFastStatusChangeCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 针对OHAudio开发音频播放，有以下相关实例可供参考：
 
