@@ -16,7 +16,7 @@ status: active
 
 ## 场景介绍
 
-[扩展屏](display-terminology.md#扩展屏)是作为[主屏](display-terminology.md#主屏)延伸的逻辑屏，用于增加屏幕的使用空间。设备连接扩展屏后，鼠标、窗口可以在主屏与扩展屏之间移动。
+[扩展屏](display-terminology.md#扩展屏)是作为[主屏](display-terminology.md#主屏)延伸的逻辑屏，用于增加屏幕的使用空间。PC/2in1设备外接显示器进入多屏模式后，鼠标、窗口可以在主屏与扩展屏之间移动。
 
 多屏场景下，系统与应用描述位置的参照不同：系统以主屏左上角为原点的[全局坐标系](../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)描述整个多屏空间；应用的UI布局、触摸与鼠标事件坐标则以所在屏幕左上角为原点，即[相对坐标系](../windowmanager/window-terminology.md#relative-coordinate-system相对坐标系)。同一个位置在两套坐标系中取值不同，因此应用在跨屏业务中需要进行以下适配：
 
@@ -32,7 +32,7 @@ status: active
 
 设备外接屏幕进入多屏模式后，主要涉及以下几种显示模式：
 
-| 名称   | 值  | 说明                                                                                                                                                                                                                                                                            |
+| 名称   | 值  | 说明                                                |
 | ------ | --- | -------------------------------------------------- |
 | MAIN   | 1   | 表示设备当前为主屏。主屏是承载系统核心UI（如任务栏）和默认交互焦点的屏幕，应用窗口默认创建并显示在主屏上。设备未外接屏幕时，设备自带的屏幕即为主屏。    |
 | EXTEND | 3   | 表示设备当前为扩展显示模式。处于该模式的屏幕即扩展屏，扩展屏与主屏构成一个连续的显示空间，可以设置与主屏的相对位置，鼠标、窗口可以在主屏与扩展屏之间移动。扩展屏左上角在全局坐标系中的位置可通过其Display对象的x、y属性获取，应用可以在扩展屏上创建窗口，显示与主屏不同的内容。 |
@@ -46,7 +46,7 @@ status: active
 >
 > 设备外接屏幕后，外接屏幕的显示模式在系统设置中可由用户改变。
 >
-> 用户切换投屏模式、插拔显示器时，相关屏幕的sourceMode会随之变化，应用可通过[display.on('add'|'remove'|'change')](../reference/apis-arkui/js-apis-display.md#displayonadd--remove--change)监听变化后重新查询，具体可见下文开发步骤。
+> 用户切换投屏模式、插拔显示器时，相关屏幕的sourceMode会随之变化，应用可通过[display.on('add' | 'remove' | 'change')](../reference/apis-arkui/js-apis-display.md#displayonadd--remove--change)监听变化后重新查询，具体可见下文开发步骤。
 
 1. 获取所有屏幕的显示模式。
 
@@ -93,7 +93,7 @@ status: active
 
 3. 监听屏幕显示模式变化。
 
-    屏幕的接入、移除或显示模式切换（例如用户在系统设置中切换投屏模式）时，会触发'add'、'remove'或'change'事件，可通过[display.on('add'|'remove'|'change')](../reference/apis-arkui/js-apis-display.md#displayonadd--remove--change)进行监听，在回调中重新查询各屏幕的显示模式，及时更新应用的业务逻辑。
+    屏幕的接入、移除或显示模式切换（例如用户在系统设置中切换投屏模式）时，会触发'add'、'remove'或'change'事件，可通过[display.on('add' | 'remove' | 'change')](../reference/apis-arkui/js-apis-display.md#displayonadd--remove--change)进行监听，在回调中重新查询各屏幕的显示模式，及时更新应用的业务逻辑。
 
     <!-- @[listen_source_mode_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
     
@@ -132,7 +132,7 @@ status: active
 - [全局坐标系](../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)：以主屏左上角为原点。在扩展显示模式下，主屏和扩展屏按照其实际相对位置排列，构成一个连续的显示空间。任意一块屏幕左上角在全局坐标系中的位置，可通过Display对象的x、y属性获取。需要注意的是，仅显示模式为MAIN（主屏）和EXTEND（扩展屏）的屏幕返回实际坐标值，其余显示模式（镜像屏、异源屏等）返回默认值0。
 - [相对坐标系](../windowmanager/window-terminology.md#relative-coordinate-system相对坐标系)：以指定屏幕左上角为原点，坐标值表示在该屏幕内的位置。应用内UI组件的坐标、触摸或鼠标事件上报的坐标等，通常都是相对于应用所在屏幕的相对坐标。
 
-![extend-mode-coordinate-system](figures/extend-mode-coordinate-system.png)
+![extend-mode-coordinate-system](figures/extended-mode-coordinate-system.png)
 
 如上图所示，以主屏分辨率为2560×1600、扩展屏位于主屏右侧且分辨率为1920×1080为例， 扩展显示模式下，主屏和扩展屏构成连续的显示空间，布局在同一个全局坐标系中。
 
