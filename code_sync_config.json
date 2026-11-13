@@ -53684,5 +53684,25 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/device/driver/hid-ddk-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp",
+				"functions":[
+					{
+						"end_line":76,
+						"name":"driver_hid_report_step2_1",
+						"start_line":47
+					},
+					{
+						"end_line":92,
+						"name":"driver_hid_report_step2_2",
+						"start_line":78
+					}
+				]
+			}
+		]
 	}
 ]
