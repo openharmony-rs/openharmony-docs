@@ -1425,7 +1425,7 @@ struct Index {
               console.info(`Succeeded in setting touchpad tap switch.`);
             });
           } catch (error) {
-            console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`); 
+            console.error(`Failed to set touchpad tap switch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -3528,7 +3528,7 @@ struct Index {
 
 setGlobalPriorityCursor(cursor: CustomCursor): Promise\<void>
 
-设置全局高优先级光标。设置成功后，当光标可见时光标样式将被锁定和限制，不受其他样式的影响，直到它被清除或被新的全局高优先级光标覆盖。
+设置全局高优先级光标。设置成功后，当光标可见时光标样式将被锁定和限制，不受其他样式的影响，直到它被清除或被新的全局高优先级光标覆盖。使用Promise异步回调。
 
 **起始版本**：26.1.0
 

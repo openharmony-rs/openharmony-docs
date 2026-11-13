@@ -8864,17 +8864,17 @@ Allows an application to configure the capability of unlocking devices via enter
 **Valid since**: 26.0.1
 
 ## ohos.permission.MOUNT_BUNDLE_INFO
- 
+
 Allows an application to mount the specified file directory to the sandbox directory of the SceneBoard application.
- 
+
 **Permission level**: system_basic
- 
+
 **Authorization mode**: system_grant
- 
+
 **Certificate-based authorization**: true
- 
+
 **Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars| lite wearables
- 
+
 **Since**: 26.0.1
 
 ## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
@@ -9822,29 +9822,29 @@ Allows an application to bind to the automotive ambient light engine service (Aa
 ## ohos.permission.vehicle.HIMA_COOPERATE
 
 Allows an application to call the device-cloud synergy API to query and download resources and configuration files.
- 
+
 **Permission level**: system_basic
- 
+
 **Authorization mode**: system_grant
- 
+
 **Certificate-based authorization**: true
- 
+
 **Supported devices**: cars
- 
+
 **Valid since**: 26.0.1
- 
+
 ## ohos.permission.vehicle.HIMA_DEVICE_AUTH
- 
+
 Allows an application to call the genuine device authentication API to perform device authenticity verification.
- 
+
 **Permission level**: system_basic
- 
+
 **Authorization mode**: system_grant
- 
+
 **Certificate-based authorization**: true
- 
+
 **Supported devices**: cars
- 
+
 **Valid since**: 26.0.1
 
 ## ohos.permission.PROMPT_INJECT_DETECTION
@@ -9877,7 +9877,7 @@ Allows an application to mount the specified file directory to the sandbox direc
 
 ## ohos.permission.MANAGE_CURSOR_STYLE
 
-Allows the app to manage the mouse cursor style.
+Allows an application to manage mouse cursor styles.
 
 **Permission level**: system_basic
 
@@ -9885,6 +9885,6 @@ Allows the app to manage the mouse cursor style.
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Phone | 2in1 | Tablet | TV |
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 26.1.0

@@ -8891,19 +8891,19 @@
 **起始版本**：26.0.1
 
 ## ohos.permission.MOUNT_BUNDLE_INFO
- 
+
 允许应用将指定文件目录挂载到SceneBoard应用沙箱目录。
- 
+
 **权限级别**：system_basic
- 
+
 **授权方式**：系统授权（system_grant）
- 
+
 **是否支持证书授权**：true
- 
+
 **支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable
- 
+
 **起始版本**：26.0.1
- 
+
 ## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
 
 允许应用接入互联互通助手服务。
@@ -9875,31 +9875,31 @@
 **起始版本**：26.0.1
 
 ## ohos.permission.vehicle.HIMA_COOPERATE
- 
+
 允许应用调用端云协同API，查询、下载资源和配置文件。
- 
+
 **权限级别**：system_basic
- 
+
 **授权方式**：系统授权（system_grant）
- 
+
 **是否支持证书授权**：true
- 
+
 **支持设备**：Car
- 
+
 **起始版本**：26.0.1
- 
+
 ## ohos.permission.vehicle.HIMA_DEVICE_AUTH
- 
+
 允许应用调用正品认证API，进行设备正品认证。
- 
+
 **权限级别**：system_basic
- 
+
 **授权方式**：系统授权（system_grant）
- 
+
 **是否支持证书授权**：true
- 
+
 **支持设备**：Car
- 
+
 **起始版本**：26.0.1
 
 ## ohos.permission.PROMPT_INJECT_DETECTION
@@ -9940,7 +9940,6 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Phone | 2in1 | Tablet | TV |
+**支持设备**：Phone | 2in1 | Tablet | TV
 
 **起始版本**：26.1.0
-
