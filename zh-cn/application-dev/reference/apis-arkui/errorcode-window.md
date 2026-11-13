@@ -1044,19 +1044,18 @@ Updating static template-based floating balls is not supported.
 
 **错误信息**
 
-This window type is invalid. Possible cause: A non-system window calls this API.
+This window type is invalid.
 
 **错误描述**
 
-窗口类型无效，例如非系统窗口调用仅支持系统窗口的接口时，会报此错误码。
+窗口类型不支持该操作
 
 **可能原因**
-
-非系统窗口调用仅支持系统窗口的接口。
+窗口、子窗、dialog、TYPE_FLOAT非系统窗类型不支持某些操作。
 
 **处理步骤**
 
-请使用系统窗口调用该接口。
+返回该错误码表示当前窗口类型不支持该操作，应用需要更改窗口类型。
 <!--DelEnd-->
 
 ## 1300030 重复操作闪控窗
