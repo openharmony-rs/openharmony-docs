@@ -27,6 +27,75 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 <!-- @[sign_with_sm2_key_pair_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/sm2_sign.cpp) -->
 
+``` C++
+#include "signing_signature_verification.h"
+
+static const uint8_t g_plainText[] = {
+    0x96, 0x46, 0x2e, 0xde, 0x3f, 0x47, 0xbf, 0xd6, 0x87, 0x48, 0x36, 0x1d, 0x75, 0x35, 0xbd, 0xbc,
+    0x6b, 0x06, 0xe8, 0xb3, 0x68, 0x91, 0x53, 0xce, 0x76, 0x5d, 0x24, 0xda, 0xdc, 0xc4, 0x9f, 0x94,
+};
+
+static void CleanupSm2SignResources(OH_CryptoAsymKeyGenerator *keyCtx,
+    OH_CryptoKeyPair *keyPair, OH_CryptoSign *sign)
+{
+    if (sign != nullptr) {
+        OH_CryptoSign_Destroy(sign);
+    }
+    if (keyPair != nullptr) {
+        OH_CryptoKeyPair_Destroy(keyPair);
+    }
+    if (keyCtx != nullptr) {
+        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+    }
+}
+
+OH_Crypto_ErrCode DoTestSm2Sign()
+{
+    OH_CryptoAsymKeyGenerator *keyCtx = nullptr;
+    OH_CryptoKeyPair *keyPair = nullptr;
+    OH_CryptoSign *sign = nullptr;
+    Crypto_DataBlob msgBlob = {.data = const_cast<uint8_t *>(g_plainText), .len = sizeof(g_plainText)};
+
+    OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create((const char *)"SM2_256", &keyCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    ret = OH_CryptoAsymKeyGenerator_Generate(keyCtx, &keyPair);
+    if (ret != CRYPTO_SUCCESS) {
+        CleanupSm2SignResources(keyCtx, keyPair, sign);
+        return ret;
+    }
+
+    OH_CryptoPrivKey *privKey = OH_CryptoKeyPair_GetPrivKey(keyPair);
+    ret = OH_CryptoSign_Create((const char *)"SM2_256|SM3", &sign);
+    if (ret != CRYPTO_SUCCESS) {
+        CleanupSm2SignResources(keyCtx, keyPair, sign);
+        return ret;
+    }
+    ret = OH_CryptoSign_Init(sign, privKey);
+    if (ret != CRYPTO_SUCCESS) {
+        CleanupSm2SignResources(keyCtx, keyPair, sign);
+        return ret;
+    }
+
+    ret = OH_CryptoSign_Update(sign, &msgBlob);
+    if (ret != CRYPTO_SUCCESS) {
+        CleanupSm2SignResources(keyCtx, keyPair, sign);
+        return ret;
+    }
+
+    Crypto_DataBlob signBlob = {.data = nullptr, .len = 0};
+    ret = OH_CryptoSign_Final(sign, nullptr, &signBlob);
+    if (ret != CRYPTO_SUCCESS) {
+        CleanupSm2SignResources(keyCtx, keyPair, sign);
+        return ret;
+    }
+    CleanupSm2SignResources(keyCtx, keyPair, sign);
+    OH_Crypto_FreeDataBlob(&signBlob);
+    return CRYPTO_SUCCESS;
+}
+```
+
 
 ## 验签开发步骤
 
