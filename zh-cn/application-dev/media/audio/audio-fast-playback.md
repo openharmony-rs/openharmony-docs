@@ -29,9 +29,8 @@ status: active
 ### 使用超低时延流的场景
 
 - 如果使用低时延模式后，时延指标依然无法满足用户体验要求，并且与目标时延差距在10ms左右时，可以考虑使用超低时延模式，如K歌实时耳返场景（需要注意该模式的性能要求和功耗影响高于低时延模式，从而可能带来音频卡顿风险和功耗的升高，建议开发者做好完备的评估和验证后再使用）。
-- 该模式仅推荐在连续音频播放场景使用，不要使用在短音频的场景，否则可能会带来不好的用户体验。
+- 该模式仅推荐在连续音频播放场景使用，不建议用于短音频场景，否则可能会带来不好的用户体验。
 - 超低时延通路资源有限，仅建议在关键业务流上使用。
-
 
 ## 约束与限制
 
@@ -86,11 +85,10 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 1. 申请ACL权限。
 
-    应用需要申请 `ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM` 权限后，才具备请求超低时延音频流的能力。具体请参考[申请受限权限](../../security/AccessToken/declare-permissions-in-acl.md)。如果应用未具备该权限，在创建超低时延音频流时，`OH_AudioStreamBuilder_GenerateRenderer` 或 `OH_AudioStreamBuilder_GenerateCapturer` 可能返回 `AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED`。权限申请完成后，应用仍然需要继续执行能力查询。权限只表示应用具备请求资格，不表示当前设备、当前路由或当前音频流配置一定支持超低时延
+    应用需要申请 `ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM` 权限后，才具备请求超低时延音频流的能力。具体请参考[申请受限权限](../../security/AccessToken/declare-permissions-in-acl.md)。如果应用未具备该权限，在创建超低时延音频流时，`OH_AudioStreamBuilder_GenerateRenderer` 或 `OH_AudioStreamBuilder_GenerateCapturer` 可能返回 `AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED`。权限申请完成后，应用仍然需要继续执行能力查询。权限只表示应用具备请求资格，不表示当前设备、当前路由或当前音频流配置一定支持超低时延。
 
 2. 判断当前设备和当前音频场景是否支持超低时延。
 
-    查询当前设备和当前音频场景是否支持。
     <!-- @[Render_IsUltraFastPlaybackSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
     ``` C++
@@ -129,7 +127,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
     OH_AudioStream_Result result = OH_AudioRenderer_GetFastStatus(g_ultraAudioRenderer, &fastStatus);
     ```
 
-5. 查询状态及监听。
+5. 监听状态变化。
 
     可通过注册`OH_AudioRenderer_OnFastStatusChange`回调，在运行态发生变化时及时感知状态变化。
     <!-- @[Render_SetRendererUltraFastStatusChangeCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
