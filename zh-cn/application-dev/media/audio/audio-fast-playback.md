@@ -94,15 +94,41 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
     查询当前设备和当前音频场景是否支持。
     <!-- @[Render_IsUltraFastPlaybackSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
+    ``` C++
+    // 构造与待创建播放流一致的音频流参数。
+    const int samplingRate48K = 48000;
+    OH_AudioStreamInfo streamInfo;
+    streamInfo.samplingRate = samplingRate48K;
+    streamInfo.channelLayout = CH_LAYOUT_STEREO;
+    streamInfo.encodingType = AUDIOSTREAM_ENCODING_TYPE_RAW;
+    streamInfo.sampleFormat = AUDIOSTREAM_SAMPLE_S16LE;
+ 
+    // 查询当前设备是否支持超低时延播放。
+    bool supported = false;
+    OH_AudioCommon_Result result = OH_AudioStreamManager_IsUltraFastPlaybackSupported(
+        audioStreamManager, &streamInfo, AUDIOSTREAM_USAGE_MUSIC, &supported);
+    ```
+
 3. 设置超低时延模式。
 
     在查询结果为支持的前提下，通过 `OH_AudioStreamBuilder_SetLatencyMode` 设置超低时延模式，并创建音频流。
     <!-- @[Render_SetUltraFastLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
+    ``` C++
+    OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST;
+    OH_AudioStreamBuilder_SetLatencyMode(g_ultraBuilder, latencyMode);
+    ```
+
 4. 查询超低时延流实际运行状态。
 
     音频流创建并启动后，通过 `OH_AudioRenderer_GetFastStatus`查询实际运行状态。
     <!-- @[Render_GetUltraFastStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+    ``` C++
+    // 查询音频流实际运行的低时延状态。
+    OH_AudioStream_FastStatus fastStatus = AUDIOSTREAM_FASTSTATUS_NORMAL;
+    OH_AudioStream_Result result = OH_AudioRenderer_GetFastStatus(g_ultraAudioRenderer, &fastStatus);
+    ```
 
 5. 查询状态及监听。
 
