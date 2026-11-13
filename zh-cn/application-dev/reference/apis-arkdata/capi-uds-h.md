@@ -35,9 +35,9 @@
 | [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)| OH_UdsArrayBuffer | 描述ArrayBuffer类型的统一数据结构。    |
 | [OH_UdsContentForm](capi-udmf-oh-udscontentform.md)| OH_UdsContentForm | 描述内容卡片类型的统一数据结构。       |
 | [OH_UdsDetails](capi-udmf-oh-udsdetails.md)| OH_UdsDetails | 描述字典类型的统一数据结构。 |
-| [OH_UDMF_VirtualFileCallbacks](capi-udmf-oh-udmf-virtualfilecallbacks.md)| OH_UDMF_VirtualFileCallbacks | 描述用于提供虚拟文件元数据和内容的回调。<br> `structSize`必须设置为`sizeof(OH_UDMF_VirtualFileCallbacks)`。 `onRead`为必选回调，`onStat`和`onCancel`为可选回调；所有文件必须预先声明大小。 不需要取消通知时，将`onCancel`设置为nullptr。 不同线程可能并发调用回调，回调不可无限期阻塞。 |
-| [OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)| OH_UDMF_VirtualItem | 描述虚拟文件或虚拟目录的节点。 |
-| [OH_UDMF_VirtualFileInfo](capi-udmf-oh-udmf-virtualfileinfo.md)| OH_UDMF_VirtualFileInfo | 描述虚拟文件的入口及其数据回调。 |
+| [OH_UDMF_VirtualFileCallbacks](capi-udmf-oh-udmf-virtualfilecallbacks.md)| OH_UDMF_VirtualFileCallbacks | 描述用于提供虚拟文件元数据和内容的回调。 |
+| [OH_UDMF_VirtualItem](capi-udmf-oh-udmf-virtualitem.md)| OH_UDMF_VirtualItem | 描述虚拟文件或虚拟目录节点。 |
+| [OH_UDMF_VirtualFileInfo](capi-udmf-oh-udmf-virtualfileinfo.md)| OH_UDMF_VirtualFileInfo | 描述虚拟文件入口及其数据回调。 |
 
 ### 枚举
 
