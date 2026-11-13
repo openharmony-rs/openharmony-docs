@@ -672,7 +672,7 @@ let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
   }
 }
 try {
-  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.capture(onscreenAwarenessCap);
+  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.capture(onscreenAwarenessCap, onscreenAwarenessOptions);
   console.info(`capture resultCode: ${info[0].resultCode}`);
 } catch (err) {
   console.error(`capture failed, Code: ${err.code}, message: ${err.message}`);
