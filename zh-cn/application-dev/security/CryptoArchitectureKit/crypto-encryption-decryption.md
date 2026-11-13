@@ -254,8 +254,6 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 从API版本26.0.0开始，支持分组密码算法[CAST](crypto-key-generation-conversion.md#cast)，分组长度为8字节，密钥长度支持40位～128位，且该值须为8的倍数。
 
-[CAST](crypto-key-generation-conversion.md#cast)为分组密码算法，分组长度为8字节，密钥长度支持40位～128位，且该值须为8的倍数。
-
 算法库当前提供了CAST加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
 > **说明：**
