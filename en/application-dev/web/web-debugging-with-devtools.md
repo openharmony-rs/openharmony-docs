@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ad5469fbcda822087d5c238527a41ea4012361c4 translatedAt=2026-09-16T03:55:59.872Z pushedAt=2026-09-16T08:45:23.909Z -->
+<!-- md-trans-meta sourceCommit=fe4141d28cbe992879debc9072f8c6ee828e6e65 translatedAt=2026-11-11T01:34:53.761Z pushedAt=2026-11-11T06:06:10.218Z nl=1 -->
 
 
 The **Web** component supports debugging of web frontend pages by using DevTools, a web frontend development and debugging tool that allows you to debug an application's frontend pages on a PC. Before you do this, use [setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess) to enable frontend page debugging for the **Web** component and make sure the test device connected to the PC runs 4.1.0 or a later version.
@@ -21,7 +21,7 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
 
    1. To enable the web debugging feature in application code, call the [setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20) API to set the TCP socket port and enable the web debugging feature.
       <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
-
+      
       ``` TypeScript
       import { webview } from '@kit.ArkWeb';
       import { BusinessError } from '@kit.BasicServicesKit';
@@ -55,7 +55,7 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
    2. To enable the debugging feature, you need to add the following permission to the **module.json5** file of the application's HAP in DevEco Studio. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
         <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
-
+       
        ``` JSON5
         "requestPermissions":[
           {
@@ -65,10 +65,10 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
         ```
 ### Opening the Debugging Tool Page in Chrome
 
-   1. Input **chrome://inspect/\#devices** in the address box of Chrome on the PC and open the page. 
-   2. Configure the Chrome debugging tool.<br>  
-     Select **Discover network targets** to discover the web page to be debugged based on the specified IP address and port number.<br> 
-     (1) Click the **Configure** button.<br>  
+   1. Input **chrome://inspect/\#devices** in the address box of Chrome on the PC and open the page.  
+   2. Configure the Chrome debugging tool.<br>   
+     Select **Discover network targets** to discover the web page to be debugged based on the specified IP address and port number.<br>  
+     (1) Click the **Configure** button.<br>   
      (2) In **Target discovery settings**, add the IP address of the device to be debugged and the port specified in the [setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20) API, for example, **192.168.0.3:8888**.
 
    > **NOTE**
@@ -88,14 +88,14 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
 
 ### Enabling Web Debugging for Application Code
 
-Before debugging a web page, call the [setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess) API to enable the web debugging feature. 
+Before debugging a web page, call the [setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess) API to enable the web debugging feature.  
 
 If the web debugging function is not enabled, DevTools cannot detect the web page to be debugged.
 
 1. Enable web frontend page debugging in the application code.
 
     <!-- @[web_Debugging_USB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithUSB.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     
@@ -120,7 +120,7 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
 2. To enable the debugging feature, you need to add the following permission to the **module.json5** file of the application's HAP in DevEco Studio. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
     <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
-
+    
     ``` JSON5
     "requestPermissions":[
       {
@@ -134,13 +134,13 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
 
 Connect the device to a PC and enable Developer mode for subsequent port forwarding operations.
 
-1. Enable Developer mode and USB debugging on your device. 
+1. Enable Developer mode and USB debugging on your device.  
 
    (1) Choose **Settings** > **System** and check whether **Developer options** is available. If not, go to **Settings** > **About** and touch the version number for seven consecutive times until the message "Enable developer mode?" is displayed. Touch **OK** and enter the PIN (if set). Then the device will automatically restart.
 
    (2) Connect the device to the PC using a USB cable. Choose **Settings** > **System** > **Developer options** and enable USB debugging. In the displayed dialog box, touch **Allow**.
 
-2. Run the hdc command to connect to the device. 
+2. Run the hdc command to connect to the device.  
 
    Run the following command in the CLI to check whether hdc can discover the device.
    ```shell
@@ -151,7 +151,7 @@ Connect the device to a PC and enable Developer mode for subsequent port forward
    - If the command returns `[Empty]`, hdc has not discovered the device.<br/>
    ![hdc_list_targets_empty](figures/devtools_resources_hdc_list_targets_empty.jpg)
 
-3. Enter the hdc shell.  
+3. Enter the hdc shell.   
 
    After the device is connected, run the following command to enter hdc shell:
    ```shell
@@ -159,14 +159,14 @@ Connect the device to a PC and enable Developer mode for subsequent port forward
    ```
 
 ### Port Forwarding
-After the application code calls the **setWebDebuggingAccess** API to enable web debugging, the ArkWeb kernel starts a domain socket listener to enable DevTools to debug web pages.
+When the application code calls setWebDebuggingAccess() to enable the Web debug switch, the ArkWeb kernel starts listening on a domain socket, thereby enabling DevTools debugging of webpages.
 
 However, Chrome cannot directly access the domain socket on the device. Therefore, the domain socket on the device needs to be forwarded to the PC.
 
 <!--RP1-->
 <!--RP1End-->
 
-1. Run the following command in hdc shell to obtain the domain socket created by ArkWeb on the device. 
+1. Run the following command in hdc shell to obtain the domain socket created by ArkWeb on the device.  
    ```shell
    cat /proc/net/unix | grep devtools
    ```
@@ -177,7 +177,7 @@ However, Chrome cannot directly access the domain socket on the device. Therefor
      (1) The web debugging switch is enabled for the app.<br/>
      (2) The app uses the **Web** component to load the web page.
 
-2. Exit hdc shell, and run the following command to forward the obtained domain socket to TCP port 9222 of the PC. 
+2. Exit hdc shell, and run the following command to forward the obtained domain socket to TCP port 9222 of the PC.  
 
    Run the **exit** command to exit the hdc shell.
    ```shell
@@ -190,7 +190,7 @@ However, Chrome cannot directly access the domain socket on the device. Therefor
    ```
    > **NOTE**
    >
-   > The number following **webview_devtools_remote_** indicates the process ID of the application where the **Web** component is located. The number is not fixed. Change the number following **webview_devtools_remote_** to the obtained value. 
+   > The number following **webview_devtools_remote_** indicates the process ID of the application where the **Web** component is located. The number is not fixed. Change the number following **webview_devtools_remote_** to the obtained value.  
    > If the process ID of the application changes (for example, the application is restarted), configure port forwarding again.
 
    The following figure shows a successful command execution:<br/>
@@ -347,10 +347,10 @@ This script deletes all port forwarding rules first. If other tools (such as Dev
    ```
 
 ### Opening the Debugging Tool Page in Chrome
-  1. Input **chrome://inspect/\#devices** in the address box of Chrome on the PC and open the page. 
+  1. Input **chrome://inspect/\#devices** in the address box of Chrome on the PC and open the page.  
   2. Configure the Chrome debugging tool.<br>
      The web page to be debugged needs to be discovered from the local TCP port 9222. Therefore, ensure that **Discover network targets** is selected. Then, configure the network.<br>
-     (1) Click the **Configure** button.<br> 
+     (1) Click the **Configure** button.<br>  
      (2) Add **localhost:9222** to **Target discovery settings**.<br>
 
      ![chrome_configure](figures/devtools_resources_chrome_configure.jpg)
@@ -437,7 +437,7 @@ It depends on whether the web debugging feature is enabled for the system browse
 **Solution**
 
   * Ensure that the domain socket exists on the device.
-  * Ensure that **tcp:9222** on the PC is not occupied. 
+  * Ensure that **tcp:9222** on the PC is not occupied.  
     If **tcp:9222** is occupied, forward the domain socket to another TCP port that is not occupied, for example, **tcp:9223**.<br>
     If the domain socket is forwarded to a new TCP port, you need to change the port number in **Target discovery settings** of Chrome on the PC.
 

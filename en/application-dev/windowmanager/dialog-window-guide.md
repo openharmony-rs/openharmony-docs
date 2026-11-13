@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4; @jingbotao-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-04T08:00:58.301Z pushedAt=2026-11-04T08:16:58.841Z nl=1 -->
+<!-- md-trans-meta sourceCommit=1cf279b63d22d781cd443b881b2d7eec991156af translatedAt=2026-11-11T01:44:29.885Z pushedAt=2026-11-11T06:33:42.492Z nl=1 -->
 
 A dialog window is used to temporarily display critical information or guide users to complete specific actions (such as saving information). It interrupts the user's current operation flow and requires a response before other operations can continue. It is typically used in scenarios where important information needs to be conveyed to the user.
 
@@ -46,7 +46,7 @@ A dialog window is used to temporarily display critical information or guide use
    <!-- @[dialog_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
-   // 2. After the modal window is created, set its position, size, and related attributes.
+   // 2. After the dialog window is created, set its position, size, and related attributes.
    dialogWindowClass.moveWindowTo(100, 100, (err) => {
      if (err?.code) {
        console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
@@ -54,7 +54,7 @@ A dialog window is used to temporarily display critical information or guide use
      }
      console.info('Succeeded in moving the window.');
      if (!dialogWindowClass) {
-       console.error('dialog_windowClass is null');
+       console.error('dialogWindowClass is null');
        return;
      }
      dialogWindowClass.resize(500, 500, (err) => {
@@ -74,14 +74,14 @@ A dialog window is used to temporarily display critical information or guide use
    <!-- @[dialog_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
-   // 3. Load the corresponding target page for the modal window.
+   // 3. Load the corresponding target page for the dialog window.
    dialogWindowClass.setUIContent('pages/DialogWindow', (err) => {
      if (err?.code) {
        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
        return;
      }
      console.info('Succeeded in loading the content.');
-     // Display the modal window.
+     // Display the dialog window.
      (dialogWindowClass as window.Window).showWindow((err) => {
        if (err?.code) {
          console.error(`Failed to show the window. Cause code: ${err.code}, message: ${err.message}`);
@@ -99,7 +99,7 @@ A dialog window is used to temporarily display critical information or guide use
    <!-- @[destroy_dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/DialogWindow.ets) -->  
    
    ``` TypeScript
-   // 4. Destroy the modal window. When the modal window is no longer needed, destroy it by calling destroy based on the specific implementation logic.
+   // 4. Destroy the dialog window. When the dialog window is no longer needed, destroy it with destroyWindow based on the specific implementation logic.
    dialogWindowClass.destroyWindow((err: BusinessError) => {
      let errCode: number = err.code;
      if (errCode) {

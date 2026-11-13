@@ -6,6 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ddb7a7b726b6f379b2e031e3dc170e3535be08f6 translatedAt=2026-11-11T01:27:21.951Z pushedAt=2026-11-12T00:40:27.038Z nl=1 -->
 
 A user authentication is required before an application accesses a critical functionality or sensitive data. This topic walks you through the process.
 
@@ -31,29 +32,23 @@ The system provides a unified user authentication widget, which stands out with 
 The following figure shows the style of the user authentication widget, which can be set via the [WidgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10) parameter.
 
 <!--RP1-->
-
 ![unified-UI-component-authentication](figures/unified-UI-component-authentication.png)
-
 <!--RP1End-->
 
 - ①: Title (**WidgetParam.title**) of the user authentication page, which cannot be empty or exceed 500 characters. You are advised to set the title to the authentication purpose, for example, payment and application login.
-
 <!--RP2-->
-
 - ②: Text on the navigation button (**WidgetParam.navigationButtonText**), which cannot exceed 60 characters. It can be configured only in single fingerprint or facial authentication scenarios in API versions 10 to 17. Since API version 18, it can also be configured in the combined fingerprint and facial authentication.
 
   If biometric authentication fails, a button is displayed. The user can tap the button to switch to custom authentication.<!--RP2End-->
 
 <!--Del-->
-
 - The following shows the display modes (**WidgetParam.windowMode**) of the user authentication widget.
-
+  
   The user authentication widget provides two display modes: dialog box (default mode, as shown in figure on the left) and full screen (as shown in the figure on the right).
 
   Currently, the full screen mode is available only for system applications.
 
   ![popup-authentication](figures/popup-authentication.png)
-
 <!--DelEnd-->
 
 The user authentication widget supports the following types of authentication:
@@ -78,7 +73,6 @@ The user authentication widget supports the following types of authentication:
 
 <!--RP3--><!--RP3End-->
 
-
 ## How to Develop
 
 1. Check that the application has the ohos.permission.ACCESS_BIOMETRIC permission. For details about how to request permissions, see [Requesting Permissions](prerequisites.md#requesting-permissions).
@@ -91,7 +85,7 @@ The user authentication widget supports the following types of authentication:
 
 **Example 1**
 
- Initiate face recognition + fingerprint + lock screen password authentication at ATL3 or higher.
+ Initiate facial recognition + fingerprint + lock screen password authentication at ATL3 or higher.
 
 <!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
@@ -139,9 +133,10 @@ initiatingUserAuthentication1() {
 }
 ```
 
+
 **Example 2**
 
-Initiate user authentication (trusted authentication level ≥ ATL3), using face recognition + authentication type-related validation + reuse of the maximum valid duration for device unlock, and then retrieve the authentication result.
+Initiate user authentication (trusted authentication level ≥ ATL3), using facial recognition + authentication type-related validation + reuse of the maximum valid duration for device unlock, and then retrieve the authentication result.
 
 <!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
@@ -193,6 +188,7 @@ initiatingUserAuthentication2() {
   }
 }
 ```
+
 
 **Example 3**
 
@@ -249,6 +245,7 @@ initiatingUserAuthentication3() {
 }
 ```
 
+
 **Example 4**
 
 Start the user authentication widget in application modal dialog mode.
@@ -303,6 +300,7 @@ initiatingUserAuthentication4() {
 }
 ```
 
+
 ## Sample Code
 
-  - [Initiating Authentication](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) sample code.

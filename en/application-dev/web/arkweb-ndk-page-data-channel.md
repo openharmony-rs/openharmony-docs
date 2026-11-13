@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=b66b4cc302945603fb47bc2deed937f803b52674 translatedAt=2026-11-04T01:57:46.082Z pushedAt=2026-11-04T03:38:32.672Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fe4141d28cbe992879debc9072f8c6ee828e6e65 translatedAt=2026-11-11T01:31:52.205Z pushedAt=2026-11-11T06:03:13.231Z nl=1 -->
 
 The native **PostWebMessage** is provided to implement communication between the frontend page and the application, which reduces unnecessary switching to the ArkTS environment and allows messages and callbacks to be reported in non-UI threads to avoid UI blocking. Currently, only the string and buffer can be sent.
 
@@ -15,7 +15,7 @@ If an application is developed using ArkTS and C++ language, or if its architect
 
   ![arkweb_jsbridge_arch](figures/arkweb_jsbridge_arch.png)
 
-  The preceding figure shows a general architecture of applets with universal applicability. In this architecture, the logical layer depends on a JavaScript runtime built in an application, and the runtime runs in an existing C++ environment. The logic layer can communicate with the view layer (in which ArkWeb serves as the renderer) in the C++ environment through the native API, instead of using the ArkTS **PostWebMessage** API in the ArkTS environment.
+  The preceding figure shows a general architecture of applets with universal applicability. In this architecture, the logic layer depends on a JavaScript runtime built in an application, and the runtime runs in an existing C++ environment. The logic layer can communicate with the view layer (in which ArkWeb serves as the renderer) in the C++ environment through the native API, instead of using the ArkTS **PostWebMessage** API in the ArkTS environment.
 
   The figure on the left shows that the application needs to invoke the ArkTS environment and then the C++ environment to build an applet using the ArkTS **PostWebMessage** API. Using the native **PostWebMessage** API is more efficient because the switch between the ArkTS and C++ environments is not required, as shown in the figure on the right.
 
@@ -61,7 +61,7 @@ To invoke the native APIs, obtain the API structs on the ArkWeb native side firs
 
 ### Sample Code
 
-Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums) to check whether the function struct has the corresponding pointer before calling an API to avoid crashes caused by mismatch between the SDK and the device ROM. [createWebMessagePorts](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports), [postWebMessage](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage) and [close](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close) must run in the UI thread.
+Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer before calling an API to avoid crashes caused by mismatch between the SDK and the device ROM. [createWebMessagePorts()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports), [postWebMessage()](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage) and [close()](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close) must run in the UI thread.
 
 * Frontend page code:
   

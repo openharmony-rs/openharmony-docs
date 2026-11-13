@@ -6,7 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e600b12aae0cc3101939a6eae88a77b38f916061 translatedAt=2026-10-10T03:30:40.975Z pushedAt=2026-10-10T03:41:57.103Z -->
+<!-- md-trans-meta sourceCommit=ddb7a7b726b6f379b2e031e3dc170e3535be08f6 translatedAt=2026-11-11T01:26:44.246Z pushedAt=2026-11-12T00:39:42.436Z nl=1 -->
 
 From API version 20, you can adjust and perceive the authentication process using related APIs.
 
@@ -91,4 +91,4 @@ perceiveAndAdjustAuthentication() {
 
 ## Sample Code
 
-  - [Perceiving and Adjusting the Authentication Process](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) sample code.

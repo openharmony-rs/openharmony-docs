@@ -6,20 +6,18 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ebfce68b85e3c1c39c3a7543955bdd1d3b7ea7c7 translatedAt=2026-08-14T06:45:07.775Z pushedAt=2026-08-14T07:59:38.467Z -->
+<!-- md-trans-meta sourceCommit=ddb7a7b726b6f379b2e031e3dc170e3535be08f6 translatedAt=2026-11-11T01:25:56.814Z pushedAt=2026-11-12T00:39:08.531Z nl=1 -->
 
 If the biometric authentication fails and the user taps the navigation button for a custom authentication, the unified user authentication framework will terminate the system authentication process and instruct the caller to launch the custom authentication page.
 
 For example, if the facial or fingerprint authentication provided by the system fails in a payment process, the user can switch to the password authentication defined by the device vendor.
 
-Since payment password authentication is not a system authentication capability, the application must provide explicit navigation button information, for example, **Use Payment Password**, when initiating authentication. This ensures that a **Use Payment Password** button is displayed on the authentication page.
+Since password authentication is not a system authentication capability, the application must provide explicit navigation button information, for example, **Use Payment Password**, when initiating authentication. This ensures that a **Use Payment Password** button is displayed on the authentication page.
 
-When the user taps this button, the application that initiates the custom authentication request will receive a special authentication result returned by the user authentication framework, indicating that the system authentication process is ended and prompting the application to launch its custom authentication page. As a result, the payment password authentication page customized by the service is displayed.
+When the user taps this button, the application that initiates the custom authentication request will receive a special authentication result returned by the user authentication framework, indicating that the system authentication process is ended and prompting the application to launch its custom authentication page. As a result, the password authentication page customized by the service is displayed.
 
 <!--RP1-->
-
 ![](figures/authentication-widget.png)
-
 <!--RP1End-->
 
 As shown in the following figure, the selected area is the **WidgetParam.navigationButtonText** field. You can configure this field to guide users to switch from biometric authentication to the service password authentication customized by the application.
@@ -99,6 +97,7 @@ applyingCustomAuthentication() {
 }
 ```
 
+
 ## Sample Code
 
-  - [Switching to Custom Authentication](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) sample code.
