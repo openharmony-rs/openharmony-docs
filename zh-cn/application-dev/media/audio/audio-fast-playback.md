@@ -116,6 +116,12 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
     ``` C++
     OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST;
     OH_AudioStreamBuilder_SetLatencyMode(g_ultraBuilder, latencyMode);
+    <!-- @[Render_GetUltraFastStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    
+    ``` C++
+    // 查询音频流实际运行的低时延状态。
+    OH_AudioStream_FastStatus fastStatus = AUDIOSTREAM_FASTSTATUS_NORMAL;
+    OH_AudioStream_Result result = OH_AudioRenderer_GetFastStatus(g_ultraAudioRenderer, &fastStatus);
     ```
 
 4. 查询超低时延流实际运行状态。
