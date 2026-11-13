@@ -22,10 +22,27 @@ UIContext实例对象。
 
 **示例：**
 
-以下示例展示了三种获取UIContext实例的方法。
+以下示例展示了三种获取UIContext实例的方法，三种方法获取到的UIContext没有差异。三种方法分布在两个文件中，因此由两个互相独立的示例脚本承载：示例脚本一须完整拷贝到UIAbility文件EntryAbility.ets中，示例脚本二须完整拷贝到页面文件index.ets中，请勿将两个脚本拷贝到同一个文件。
+
+**示例脚本一（EntryAbility.ets）：**
 
 ```ts
-// 三种方法获取到的UIContext没有差异
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 第一种：通过ohos.window中的getUIContext()方法获取UIContext实例
+    windowStage.getMainWindowSync().getUIContext();
+    // 其他运行逻辑
+  }
+}
+```
+
+**示例脚本二（index.ets）：**
+
+```ts
 // index.ets
 import { UIContext } from '@kit.ArkUI';
 
@@ -34,11 +51,11 @@ import { UIContext } from '@kit.ArkUI';
 struct Index {
   build() {
     Column() {
-      Button("Button")
-          .onClick(()=>{
-            // 通过自定义组件内置方法获取
-            this.getUIContext()
-            // 通过UIContext类的静态方法获取
+      Button('Button')
+          .onClick(() => {
+            // 第二种：通过自定义组件内置方法getUIContext()获取UIContext实例
+            this.getUIContext();
+            // 第三种：通过UIContext类的静态方法（如getCallingScopeUIContext）获取UIContext实例
             let uiContext = UIContext.getCallingScopeUIContext();
             // 其他运行逻辑
           })
@@ -46,20 +63,6 @@ struct Index {
   }
 }
 
-// EntryAbility.ets
-import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
-
-const DOMAIN = 0x0000;
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // 通过ohos.window获取
-    windowStage.getMainWindowSync().getUIContext()
-    // 其他运行逻辑
-  }
-}
 ```
 
 ## constructor<sup>22+</sup>
@@ -5810,7 +5813,9 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+```
 
+```ts
 // Index.ets
 @Entry
 @Component
