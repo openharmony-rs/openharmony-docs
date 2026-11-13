@@ -288,7 +288,7 @@ console.info(`${compoundBase}`);  // 16
 Logical compound assignment includes `??=` (nullish assignment), `||=` (logical OR assignment), and `&&=` (logical AND assignment). These operators combine a logical operation and assignment while retaining the short-circuit behavior of the corresponding logical operator: the right-hand expression is evaluated only when assignment is needed.
 
 - `x ??= y`: assigns `y` to `x` only when `x` is `null` or `undefined`.
-- `x ||= y`: assigns `y` to `x` only when `x` is a [falsy value](arkts-language-guide-basic-operators.md#logical-assignment-operators-).
+- `x ||= y`: assigns `y` to `x` only when `x` is a [falsy value](arkts-language-guide-basic-operators.md#logical-assignment-operators---).
 - `x &&= y`: assigns `y` to `x` only when `x` is truthy.
 
 <!-- @[logical_operation_compound_assignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->

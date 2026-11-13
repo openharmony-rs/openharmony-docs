@@ -462,7 +462,7 @@ let role: string = isAdmin ? 'admin' : 'user';
 
 The nullish coalescing operator (??) provides a default value, returning the right-hand value only when the left-hand value is `null` or `undefined`.
 
-`??` and logical OR `||` differ in how they handle [falsy values](#logical-assignment-operators-): `||` returns the right-hand value whenever the left-hand value is falsy, potentially replacing valid values such as `0`, `''`, and `false`. `??` returns the right-hand value only for `null` or `undefined` (a subset of falsy values), preserving other valid values.
+`??` and logical OR `||` differ in how they handle [falsy values](#logical-assignment-operators---): `||` returns the right-hand value whenever the left-hand value is falsy, potentially replacing valid values such as `0`, `''`, and `false`. `??` returns the right-hand value only for `null` or `undefined` (a subset of falsy values), preserving other valid values.
 
 <!-- @[nullish_coalescing_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
 
