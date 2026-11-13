@@ -281,6 +281,11 @@ struct BuilderPlaceholderList {
     this.data = list;
   }
 
+  aboutToDisappear(): void {
+    this.getUIContext().getPlaceholderRegister()
+      .unregister('itemPlaceholder');
+  }
+
   build() {
     Column({ space: 5 }) {
       List({ space: 10 }) {
@@ -346,6 +351,11 @@ struct BuilderPlaceholderList {
     this.data = list;
   }
 
+  aboutToDisappear(): void {
+    this.getUIContext().getPlaceholderRegister()
+      .unregister('itemPlaceholder');
+  }
+
   build() {
     Column({ space: 5 } as ColumnOptions) {
       List({ space: 10 }) {
@@ -383,7 +393,7 @@ struct BuilderPlaceholderList {
 
 - `isPlaceholder`设置为`true`时，该\@Builder为占位构建函数。占位构建函数必须为全局、无参数的函数，内部仅执行不依赖状态变量的静态渲染，不能注册手势或业务回调。
 
-- `isPlaceholder`的默认值为`false`。设置为`false`时，该\@Builder等价于未传入配置项的\@Builder；`@Builder()`与`@Builder({})`同样等价于未传入配置项的\@Builder。
+- `isPlaceholder`设置为`false`时，该\@Builder等价于未传入配置项的\@Builder。
 
 传入配置项的\@Builder需要注意如下限制条件：
 
