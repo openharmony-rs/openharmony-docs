@@ -212,7 +212,7 @@ libhid.z.so
    获取到 deviceId 和 bInterfaceNumber 后，调用 **OH_Hid_Open** 打开对应的HID设备。示例设备包含两个HID接口，因此调用了两次；实际使用时调用次数取决于设备的接口数量，若只有一个HID接口只需调用一次。
 
    <!-- @[driver_hid_report_step2_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
-
+   
    ``` C++
    // 使用从配置描述符中读取的bInterfaceNum打开HID设备（一般为/dev/hidraw*文件）
    ret = OH_Hid_Open(deviceID_, bInterfaceNum1, &hid_);
