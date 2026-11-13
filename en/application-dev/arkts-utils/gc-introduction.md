@@ -316,7 +316,7 @@ This thread pool is mainly used to execute concurrent tasks in the GC process. W
 | longPauseTime | 40ms | Determines the threshold for an excessively long GC. An excessively long GC triggers the printing of complete GC log information, making it easier for developers to locate and analyze issues. It can be configured through `gc-long-paused-time`. |
 
 
-### Shared Heap Structure
+### SharedHeap Structure
 
 ![image](./figures/gc-shared-heap.png)
 

@@ -8,7 +8,7 @@
 <!--Adviser: @ge-yafang-->
 <!-- md-trans-meta sourceCommit=55df9c11d6d7c450cc6d9d1ac7b0b998394459f6 translatedAt=2026-11-03T13:35:06.121Z pushedAt=2026-11-04T06:31:41.962Z nl=1 -->
 
-A command recording utility object used to generate replayable record drawing commands. Obtain a recording-type canvas through [beginRecording](#beginrecording); the drawing interfaces called on that canvas are recorded as commands. After recording is complete, generate a [RecordCmd](arkts-apis-graphics-drawing-i.md#recordcmd) object through [finishRecording](#finishrecording), and then call [Canvas.drawRecordCmd](arkts-apis-graphics-drawing-Canvas.md#drawrecordcmd) to replay the recorded drawing commands.
+A command recording utility object used to generate replayable record drawing commands. Obtain a recording-type canvas through [beginRecording](#beginrecording); the drawing interfaces called on that canvas are recorded as commands. After recording is complete, generate a [RecordCmd](arkts-apis-graphics-drawing-i.md) object through [finishRecording](#finishrecording), and then call [Canvas.drawRecordCmd](arkts-apis-graphics-drawing-Canvas.md) to replay the recorded drawing commands.
 
 > **NOTE**
 >
@@ -83,7 +83,7 @@ class DrawingRenderNode extends RenderNode {
 
 finishRecording(): RecordCmd
 
-Ends recording and returns the recorded drawing command object [RecordCmd](arkts-apis-graphics-drawing-i.md#recordcmd). Before calling this API, you need to call [beginRecording](#beginrecording) to start recording. All drawing commands recorded on the canvas during recording are encapsulated into the returned RecordCmd object.
+Ends recording and returns the recorded drawing command object [RecordCmd](arkts-apis-graphics-drawing-i.md). Before calling this API, you need to call [beginRecording](#beginrecording) to start recording. All drawing commands recorded on the canvas during recording are encapsulated into the returned RecordCmd object.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -95,7 +95,7 @@ Ends recording and returns the recorded drawing command object [RecordCmd](arkts
 
 | Type                                            | Description                                       |
 | ----------------------------------------------- | ------------------------------------------ |
-| [RecordCmd](arkts-apis-graphics-drawing-i.md#recordcmd) | Returns the recorded drawing command object, which can be used to replay drawing commands through [Canvas.drawRecordCmd](arkts-apis-graphics-drawing-Canvas.md#drawrecordcmd). |
+| [RecordCmd](arkts-apis-graphics-drawing-i.md) | Returns the recorded drawing command object, which can be used to replay drawing commands through [Canvas.drawRecordCmd](arkts-apis-graphics-drawing-Canvas.md). |
 
 **Example**
 
