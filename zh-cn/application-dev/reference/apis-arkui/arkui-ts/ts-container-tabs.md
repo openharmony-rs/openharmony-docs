@@ -1065,6 +1065,108 @@ showSidebarControlButton(value: Optional\<boolean>)
 | ------ | -------- | ---- | --------- |
 | value   | Optional\<boolean> | 是 | 侧边页签栏是否显示控制按钮。<br/>true表示显示按钮；false表示不显示按钮。<br/>设置undefined时，取默认值false。 |
 
+### tabViewCustomization
+
+tabViewCustomization(value: Optional\<TabViewCustomization>)
+
+设置Tabs侧边页签栏自定义配置，主要用于控制页签可见性、分组、排序。
+
+> **说明：**
+>
+> - 支持给部分侧边栏页签配置可见性、分组和排序优先级。
+> - 对于每个侧边栏页签，可见性配置的优先级是：visibilityMap中的TabVisibility > TabContent的[tabBarVisibility](./ts-container-tabcontent.md#tabbarvisibility)。
+> - 对于每个侧边栏页签，分组的优先级是：sectionMap中的SidebarSection > TabContent的[sidebarSection](./ts-container-tabcontent.md#sidebarsection)。
+> - 如果没有配置orderMap，则侧边栏页签排序规则可以参考[SidebarSection](./ts-container-tabcontent.md#sidebarsection-1)类型的说明。
+> - 如果配置了orderMap，则在进行上述页签排序前，需要先根据优先级配置做初步排序，然后基于该初步排序的结果，再进行分组排序处理。
+> - 上述初步排序的规则是：有优先级的排在前面，没有的排在后面，没有优先级的或者优先级相同的按照原始TabContent顺序排列。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| value   | Optional\<[TabViewCustomization](#tabviewcustomization-1)> | 是 | 侧边页签栏自定义配置项，设置为undefined时清空自定义配置。 |
+
+**示例：**
+
+该示例通过[tabViewCustomization](#tabviewcustomization)属性给Tabs侧边栏设置自定义配置，统一设置了页签的排序，分组和可见性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsTabViewCustomizationExample {
+  private visibilityMap: Map<number, TabVisibility> = new Map()
+  private sectionMap: Map<number, SidebarSection> = new Map()
+  private orderMap: Map<number, number> = new Map()
+
+  aboutToAppear(): void {
+    // 将索引为3的页签在侧边页签栏中隐藏
+    this.visibilityMap.set(3, TabVisibility.HIDDEN)
+    // 将索引为0的页签设置到Home分组
+    this.sectionMap.set(0, {title: 'Home', order: 0})
+    // 将索引为1的页签设置到Home分组
+    this.sectionMap.set(1, {title: 'Home', order: 0})
+    // 将索引为2的页签设置到Media分组
+    this.sectionMap.set(2, {title: 'Media', order: 1})
+    // 给索引为1和索引为0的页签设置优先级，让索引为1的页签排在前面
+    this.orderMap.set(1, 0)
+    this.orderMap.set(0, 1)
+  }
+
+  build() {
+    Stack({alignContent: Alignment.Center}) {
+      Tabs() {
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text(`content0`).fontSize(24)
+          }.width('100%').height('100%')
+        }
+        .tabBar({ icon: $r('app.media.startIcon'), text: `content0`})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text(`content1`).fontSize(24)
+          }.width('100%').height('100%')
+        }
+        .tabBar({ icon: $r('app.media.startIcon'), text: `content1`})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text(`content2`).fontSize(24)
+          }.width('100%').height('100%')
+        }
+        .tabBar({ icon: $r('app.media.startIcon'), text: `content2`})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text(`content3`).fontSize(24)
+          }.width('100%').height('100%')
+        }
+        .tabBar({ icon: $r('app.media.startIcon'), text: `content3`})
+      }
+      .width(450)
+      .height(400)
+      .border({width: 1, color: Color.Black})
+      // 设置Tabs为侧边页签栏样式
+      .barStyle(TabBarStyle.SIDEBAR)
+      // 设置侧边页签栏自定义配置
+      .tabViewCustomization({
+        visibilityMap: this.visibilityMap,
+        sectionMap: this.sectionMap,
+        orderMap: this.orderMap
+      })
+    }.width('100%').height('100%')
+  }
+}
+```
+
+![tabViewCustomization](figures/tabViewCustomization.jpg)
+
 ## DividerStyle<sup>10+</sup>对象说明
 
 分割线样式对象。
@@ -1211,6 +1313,24 @@ TabBar顶部悬浮样式的配置选项。
 | maskHeight | [Length](ts-types.md#length) | 否 | 是 | 蒙层的高度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>未设置时，不显示蒙层。 |
 | maxWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的最大宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>未设置时，TabBar最大宽度由barSideMargin计算得到。 |
 | offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | 否 | 是 | TabBar的偏移量。<br/>单位：vp<br/>默认值为{ x: 0, y: 0 }。<br/>x、y的取值范围：(-∞, +∞) |
+
+## TabViewCustomization
+
+Tabs侧边页签栏的自定义配置。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称          | 类型                                     | 只读 | 可选   | 说明                                       |
+| ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
+| visibilityMap | Map\<number, [TabVisibility](./ts-container-tabcontent.md#tabvisibility)> | 否 | 是 | 页签可见性配置，仅作用于侧边页签栏。<br/>**说明：**<br/>Map的key代表页签对应TabContent的原始索引，key需要是整数，如果不是则会被截断成整数，有效范围是[0, TabContent数量 - 1]。Map的value代表对应页签的可见性。无效记录会被忽略，key重复的记录后者会覆盖前者。 |
+| sectionMap | Map\<number, [SidebarSection](./ts-container-tabcontent.md#sidebarsection-1)> | 否 | 是 | 页签的分组配置，仅作用于侧边页签栏。<br/>**说明：**<br/>Map的key代表页签对应TabContent的原始索引，key需要是整数，如果不是则会被截断成整数，有效范围是[0, TabContent数量 - 1]。Map的value代表对应页签的分组配置。无效记录会被忽略，key重复的记录后者会覆盖前者。 |
+| orderMap | Map\<number, number> | 否 | 是 | 页签的排序配置，仅作用于侧边页签栏。<br/>**说明：**<br/>Map的key代表页签对应TabContent的原始索引，key需要是整数，如果不是则会被截断成整数，有效范围是[0, TabContent数量 - 1]。Map的value代表对应页签的排序优先级，value也需要是整数，如果不是则会被截断成整数，有效范围是[0, 2^31 - 1]，优先级值越小，排序越靠前。无效记录会被忽略，key重复的记录后者会覆盖前者。 |
 
 ## TabsSidebarSearchFilterCallback
 
