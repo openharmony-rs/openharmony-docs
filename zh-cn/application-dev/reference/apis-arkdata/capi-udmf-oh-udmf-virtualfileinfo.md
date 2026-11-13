@@ -1,4 +1,10 @@
 # OH_UDMF_VirtualFileInfo
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @jcwen-->
+<!--Designer: @xuexuexuehc-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ```c
 typedef struct OH_UDMF_VirtualFileInfo OH_UDMF_VirtualFileInfo
