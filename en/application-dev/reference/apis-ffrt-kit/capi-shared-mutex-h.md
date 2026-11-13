@@ -2,14 +2,15 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=1c82fe64143ca179b80fafe272ca5a84323e9159 translatedAt=2026-11-13T03:07:06.117Z pushedAt=2026-11-13T08:52:53.357Z nl=1 -->
 
 ## Overview
 
-The **shared_mutex.h** file declares read-write lock APIs in C.
+Declares the C APIs of the read-write lock (rwlock).
 
 **File to include**: <ffrt/shared_mutex.h>
 
@@ -27,13 +28,13 @@ The **shared_mutex.h** file declares read-write lock APIs in C.
 
 | Name| Description|
 | -- | -- |
-| [FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* attr)](#ffrt_rwlock_init) | Initializes a read-write lock.|
-| [FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)](#ffrt_rwlock_wrlock) | Obtains a write lock.|
-| [FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock)](#ffrt_rwlock_trywrlock) | Attempts to obtain a write lock.|
-| [FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)](#ffrt_rwlock_rdlock) | Obtains a read lock.|
-| [FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock)](#ffrt_rwlock_tryrdlock) | Attempts to obtain a read lock.|
-| [FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock)](#ffrt_rwlock_unlock) | Releases the read-write lock.|
-| [FFRT_C_API int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock)](#ffrt_rwlock_destroy) | Destroys the read-write lock.|
+| [FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* attr)](#ffrt_rwlock_init) | Initializes an rwlock. When the rwlock is no longer used, it must be destroyed by [ffrt_rwlock_destroy](capi-shared-mutex-h.md#ffrt_rwlock_destroy). |
+| [FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)](#ffrt_rwlock_wrlock) | Acquires a write lock. Blocks the current thread when the lock is unavailable. On success, the calling thread holds an exclusive write lock until it is released by [ffrt_rwlock_unlock](capi-shared-mutex-h.md#ffrt_rwlock_unlock). A write lock is exclusive and cannot be held simultaneously with any read lock. |
+| [FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock)](#ffrt_rwlock_trywrlock) | Attempts to acquire a write lock. Does not block the current thread. On success, the calling thread holds an exclusive write lock until it is released by [ffrt_rwlock_unlock](capi-shared-mutex-h.md#ffrt_rwlock_unlock). |
+| [FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)](#ffrt_rwlock_rdlock) | Acquires a read lock. Blocks the current thread when the lock is unavailable. On success, the calling thread holds a read lock until it is released by [ffrt_rwlock_unlock](capi-shared-mutex-h.md#ffrt_rwlock_unlock). Multiple readers can hold the lock simultaneously, but it cannot be held simultaneously with a write lock. |
+| [FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock)](#ffrt_rwlock_tryrdlock) | Attempts to acquire a read lock. Does not block the current thread. On success, the calling thread holds a read lock until it is released by [ffrt_rwlock_unlock](capi-shared-mutex-h.md#ffrt_rwlock_unlock). |
+| [FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock)](#ffrt_rwlock_unlock) | Unlocks an rwlock. The calling thread must already hold the rwlock, and the lock must have been acquired by [ffrt_rwlock_rdlock](capi-shared-mutex-h.md#ffrt_rwlock_rdlock), [ffrt_rwlock_tryrdlock](capi-shared-mutex-h.md#ffrt_rwlock_tryrdlock), [ffrt_rwlock_wrlock](capi-shared-mutex-h.md#ffrt_rwlock_wrlock), or [ffrt_rwlock_trywrlock](capi-shared-mutex-h.md#ffrt_rwlock_trywrlock). |
+| [FFRT_C_API int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock)](#ffrt_rwlock_destroy) | Destroys an rwlock. The rwlock must have been initialized by [ffrt_rwlock_init](capi-shared-mutex-h.md#ffrt_rwlock_init), and it must not be held by any thread as a read lock or write lock when this API is called. |
 
 ## Function Description
 
@@ -45,7 +46,7 @@ FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* 
 
 **Description**
 
-Initializes a read-write lock.
+Initializes an rwlock. When the rwlock is no longer used, it must be destroyed by [ffrt_rwlock_destroy](capi-shared-mutex-h.md#ffrt_rwlock_destroy).
 
 **Since**: 18
 
@@ -53,14 +54,14 @@ Initializes a read-write lock.
 
 | Name| Description|
 | -- | -- |
-| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the read-write lock.|
-| [const ffrt_rwlockattr_t](capi-ffrt-ffrt-rwlockattr-t.md)* attr | Pointer to the **rwlock** property. Only the default value (null) is supported.|
+| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the rwlock. |
+| [const ffrt_rwlockattr_t](capi-ffrt-ffrt-rwlockattr-t.md)* attr | Pointer to the rwlock attribute. Currently only the default mode is supported, and it must be set to a null pointer. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | If `rwlock` is not empty and `attr` is empty, the initialization is successful, and **ffrt_success** is returned. Otherwise, the rwlock fails to be initialized, and **ffrt_error_inval** is returned.|
+| FFRT_C_API int | Returns **ffrt_success** if the rwlock is initialized successfully and attr is a null pointer.<br>         Returns **ffrt_error_inval** otherwise. |
 
 ### ffrt_rwlock_wrlock()
 
@@ -70,7 +71,7 @@ FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)
 
 **Description**
 
-Obtains a write lock.
+Acquires a write lock. Blocks the current thread when the lock is unavailable. On success, the calling thread holds an exclusive write lock until it is released by [ffrt_rwlock_unlock](capi-shared-mutex-h.md#ffrt_rwlock_unlock). A write lock is exclusive and cannot be held simultaneously with any read lock.
 
 **Since**: 18
 
@@ -78,13 +79,20 @@ Obtains a write lock.
 
 | Name| Description|
 | -- | -- |
-| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the read-write lock.|
+| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the rwlock. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the write lock is successfully obtained; returns **ffrt_error_inval** or blocks the task otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the rwlock is locked successfully.<br>         Returns **ffrt_error_inval** if **rwlock** is a null pointer. |
+
+**Reference**
+
+[ffrt_rwlock_rdlock](capi-shared-mutex-h.md#ffrt_rwlock_rdlock)
+
+[ffrt_rwlock_trywrlock](capi-shared-mutex-h.md#ffrt_rwlock_trywrlock)
+
 
 ### ffrt_rwlock_trywrlock()
 
@@ -94,7 +102,7 @@ FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock)
 
 **Description**
 
-Attempts to obtain a write lock.
+Tries to acquire a write lock. Does not block the current thread. On success, the calling thread holds an exclusive write lock until it is released by [ffrt_rwlock_unlock](capi-shared-mutex-h.md#ffrt_rwlock_unlock).
 
 **Since**: 18
 
@@ -102,13 +110,18 @@ Attempts to obtain a write lock.
 
 | Name| Description|
 | -- | -- |
-| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the read-write lock.|
+| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the rwlock. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the write lock is successfully obtained; returns **ffrt_error_inval** or **ffrt_error_busy** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the rwlock is locked successfully.<br>         Returns **ffrt_error_inval** or **ffrt_error_busy** otherwise. |
+
+**Reference**
+
+[ffrt_rwlock_wrlock](capi-shared-mutex-h.md#ffrt_rwlock_wrlock)
+
 
 ### ffrt_rwlock_rdlock()
 
@@ -118,7 +131,7 @@ FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)
 
 **Description**
 
-Obtains a read lock.
+Obtains a read lock. Blocks the current thread when the lock is unavailable. On success, the calling thread holds a read lock until it is released by [ffrt_rwlock_unlock](capi-shared-mutex-h.md#ffrt_rwlock_unlock). Multiple readers can hold the lock simultaneously, but it cannot be held simultaneously with a write lock.
 
 **Since**: 18
 
@@ -126,13 +139,20 @@ Obtains a read lock.
 
 | Name| Description|
 | -- | -- |
-| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the read-write lock.|
+| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the rwlock. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the read lock is successfully obtained; returns **ffrt_error_inval** or blocks the task otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the rwlock is locked successfully;<br>         Returns **ffrt_error_inval** if **rwlock** is a null pointer. |
+
+**Reference**
+
+[ffrt_rwlock_wrlock](capi-shared-mutex-h.md#ffrt_rwlock_wrlock)
+
+[ffrt_rwlock_tryrdlock](capi-shared-mutex-h.md#ffrt_rwlock_tryrdlock)
+
 
 ### ffrt_rwlock_tryrdlock()
 
@@ -142,7 +162,7 @@ FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock)
 
 **Description**
 
-Attempts to obtain a read lock.
+Attempts to acquire a read lock. Does not block the current thread. On success, the calling thread holds a read lock until it is released by [ffrt_rwlock_unlock](capi-shared-mutex-h.md#ffrt_rwlock_unlock).
 
 **Since**: 18
 
@@ -150,13 +170,18 @@ Attempts to obtain a read lock.
 
 | Name| Description|
 | -- | -- |
-| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the read-write lock.|
+| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the rwlock. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the read lock is successfully obtained; returns **ffrt_error_inval** or **ffrt_error_busy** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the rwlock is locked successfully.<br>         Returns **ffrt_error_inval** or **ffrt_error_busy** otherwise. |
+
+**Reference**
+
+[ffrt_rwlock_rdlock](capi-shared-mutex-h.md#ffrt_rwlock_rdlock)
+
 
 ### ffrt_rwlock_unlock()
 
@@ -166,7 +191,7 @@ FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock)
 
 **Description**
 
-Releases the read-write lock.
+Unlocks an rwlock. The calling thread must already hold the rwlock, and the lock must have been acquired by [ffrt_rwlock_rdlock](capi-shared-mutex-h.md#ffrt_rwlock_rdlock), [ffrt_rwlock_tryrdlock](capi-shared-mutex-h.md#ffrt_rwlock_tryrdlock), [ffrt_rwlock_wrlock](capi-shared-mutex-h.md#ffrt_rwlock_wrlock), or [ffrt_rwlock_trywrlock](capi-shared-mutex-h.md#ffrt_rwlock_trywrlock).
 
 **Since**: 18
 
@@ -174,13 +199,13 @@ Releases the read-write lock.
 
 | Name| Description|
 | -- | -- |
-| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the read-write lock.|
+| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the rwlock. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the read-write lock is successfully released; returns **ffrt_error_inval** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the rwlock is unlocked successfully.<br>         Returns **ffrt_error_inval** otherwise. |
 
 ### ffrt_rwlock_destroy()
 
@@ -190,7 +215,7 @@ FFRT_C_API int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock)
 
 **Description**
 
-Destroys the read-write lock.
+Destroys an rwlock. The rwlock must have been initialized by [ffrt_rwlock_init](capi-shared-mutex-h.md#ffrt_rwlock_init), and it must not be held by any thread as a read lock or write lock when this API is called.
 
 **Since**: 18
 
@@ -198,10 +223,12 @@ Destroys the read-write lock.
 
 | Name| Description|
 | -- | -- |
-| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the read-write lock.|
+| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the rwlock. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the read-write lock is destroyed successfully; returns **ffrt_error_inval** otherwise.|
+| FFRT_C_API int | Returns **ffrt_success** if the rwlock is destroyed successfully.<br>         Returns **ffrt_error_inval** otherwise. |
+
+

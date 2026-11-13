@@ -2,10 +2,11 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=1c82fe64143ca179b80fafe272ca5a84323e9159 translatedAt=2026-11-13T03:03:34.506Z pushedAt=2026-11-13T08:26:35.914Z nl=1 -->
 
 ```c
 typedef struct {...} ffrt_mutex_t
@@ -13,7 +14,7 @@ typedef struct {...} ffrt_mutex_t
 
 ## Overview
 
-The **ffrt_mutex_t** struct describes an FFRT mutex.
+Mutex structure, used to store the internal data of a mutex.
 
 **Since**: 10
 
@@ -27,4 +28,4 @@ The **ffrt_mutex_t** struct describes an FFRT mutex.
 
 | Name| Description|
 | -- | -- |
-| uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Storage size of a mutex.|
+| uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Internal storage of the mutex. Do not access it directly. Manage it through APIs such as **ffrt_mutex_***. |
