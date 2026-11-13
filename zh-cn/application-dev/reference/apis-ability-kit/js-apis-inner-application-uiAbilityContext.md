@@ -2700,6 +2700,133 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+### showAbility
+
+showAbility(params: ShowParams): Promise\<void>
+
+显示当前UIAbility。使用Promise异步回调。
+ 
+> **说明：**
+>
+> - 仅支持在主线程中调用。
+>
+> - 调用此接口前，请确保当前应用已添加至系统状态栏。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| params | [ShowParams](js-apis-app-ability-showParams.md) | 是 | 窗口显示配置项，控制窗口是否获焦及置顶显示。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 16000050 | Internal error. |
+| 16000067 | The StartOptions check failed. |
+
+**示例：**
+
+EntryAbility.ts 示例请参考[showAbility<sup>12+</sup>](#showability12)
+
+ArkTS-Dyn示例：
+
+```ts
+// Index.ets
+import { common, ShowParams } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  @State showAbility: string = 'showAbility'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.showAbility)
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let params: ShowParams = {
+              windowShowParams: {
+                windowFocused: false,
+                raiseTop: true
+              }
+            };
+
+            // 显示当前UIAbility
+            context.showAbility(params).then(() => {
+              console.info(`showAbility success`);
+            }).catch((err: BusinessError) => {
+              console.error(`showAbility fail, err: ${JSON.stringify(err)}`);
+            });
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common, ShowParams } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Column, Text, Row, Component, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State showAbility: string = 'showAbility'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.showAbility)
+          .fontSize(30)
+          .fontWeight(700)
+          .onClick(() => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let params: ShowParams = {
+              windowShowParams: {
+                windowFocused: false,
+                raiseTop: true
+              }
+            };
+
+            context.showAbility(params).then(() => {
+              console.info(`showAbility success.`);
+            }).catch((err): void => {
+              console.info(`showAbility error: ${JSON.stringify(err)}.`);
+            });
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 ### hideAbility<sup>12+</sup>
 
