@@ -6,15 +6,15 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:29:43.986Z pushedAt=2026-06-25T01:35:11.429Z -->
+<!-- md-trans-meta sourceCommit=dca31322189f91fc40f262b55618120da7c83182 translatedAt=2026-11-13T04:12:24.249Z pushedAt=2026-11-13T11:02:28.479Z nl=1 -->
 
-MindSpore Lite is a lightweight and high-performance on-device AI engine that provides standard model inference and training APIs and built-in universal high-performance operator libraries. It supports Neural Network Runtime Kit for a higher inference efficiency, empowering intelligent applications in all scenarios.
+MindSpore Lite is a lightweight, high-performance on-device AI engine. It provides standard model inference and training APIs, and is built with high-performance operator libraries for general-purpose hardware. It supports the Neural Network Runtime Kit to enable AI-dedicated chips for accelerated inference, helping build all-scenario intelligent applications.
 
-This topic describes the model inference and training capabilities supported by the MindSpore Lite AI engine.
+This module mainly describes the capabilities of the MindSpore Lite AI engine for on-device model inference and training.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version. Unless otherwise stated, the MindSpore model is used in the sample code.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version. The models used in the sample code are all MindSpore on-device models.
 > 
 > - The APIs of this module can be used only in the stage model.
 
@@ -28,18 +28,18 @@ import { mindSporeLite } from '@kit.MindSporeLiteKit';
 
 loadModelFromFile(model: string, callback: Callback&lt;Model&gt;): void
 
-Loads the input model from the full path for CPU inference. This API uses an asynchronous callback to return the result.
+Loads an input model from a complete path for CPU inference. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                                            |
+| Name     | Type                      | Mandatory | Description                                             |
 | -------- | ------------------------- | ---- | ------------------------------------------------ |
-| model    | string                    | Yes  | Complete path of the input model. The string length is subject to the file system.|
-| callback | Callback<[Model](#model)> | Yes  | Callback used to return the model object. If the check finds the model input is empty during the callback, the callback fails.                         |
+| model    | string                    | Yes   | Complete input path of the model. The string length limit follows the file system. |
+| callback | Callback<[Model](#model)> | Yes   | Callback invoked to return the model object. Loading fails when the model input is detected to be empty.                         |
 
-**Example**
+**Example** 
 
 ```ts
 let modelFile: string = '/path/to/xxx.ms';
@@ -54,24 +54,23 @@ mindSporeLite.loadModelFromFile(modelFile, (mindSporeLiteModel: mindSporeLite.Mo
   }
 })
 ```
-
 ## mindSporeLite.loadModelFromFile
 
 loadModelFromFile(model: string, context: Context, callback: Callback&lt;Model&gt;): void
 
-Loads the input model from the full path for model inference. This API uses an asynchronous callback to return the result.
+Loads the input model from the full path for inference. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name  | Type                               | Mandatory| Description                  |
+| Name     | Type                                | Mandatory | Description                   |
 | -------- | ----------------------------------- | ---- | ---------------------- |
-| model    | string                              | Yes  | Complete path of the input model. The string length is subject to the file system.|
-| context | [Context](#context) | Yes| Configuration information of the running environment.|
-| callback | Callback<[Model](#model)> | Yes | Callback used to return the model object. If the model input is empty during the callback, the callback fails. |
+| model    | string                              | Yes   | Complete input path of the model. The string length limit follows the file system. |
+| context | [Context](#context) | Yes | Configuration of the runtime environment. |
+| callback | Callback<[Model](#model)> | Yes   | Callback used to return the model object. If the model input is empty during the callback, the callback fails. |
 
-**Example**
+**Example** 
 
 ```ts
 let context: mindSporeLite.Context = {};
@@ -88,29 +87,28 @@ mindSporeLite.loadModelFromFile(modelFile, context, (mindSporeLiteModel: mindSpo
   }
 })
 ```
-
 ## mindSporeLite.loadModelFromFile
 
 loadModelFromFile(model: string, context?: Context): Promise&lt;Model&gt;
 
-Loads the input model from the full path for model inference. This API uses a promise to return the result.
+Loads an input model from a complete path for inference. This API uses a promise to return the result asynchronously.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name | Type               | Mandatory| Description                                            |
+| Name    | Type                | Mandatory | Description                                             |
 | ------- | ------------------- | ---- | ------------------------------------------------ |
-| model   | string              | Yes  | Complete path of the input model. The string length is subject to the file system.|
-| context | [Context](#context) | No  | Configuration information of the running environment. By default, **CpuDevice** is used for initialization.   |
+| model   | string              | Yes   | Complete input path of the model. The string length limit follows the file system. |
+| context | [Context](#context) | No   | Configuration of the runtime environment. By default, CpuDevice is used for initialization.    |
 
 **Return value**
 
-| Type                     | Description                        |
+| Type                      | Description                         |
 | ------------------------- | ---------------------------- |
-| Promise<[Model](#model)> | Promise used to return the result, which is a **Model** object.|
+| Promise<[Model](#model)> | Promise object. Returns the Model object. |
 
-**Example**
+**Example** 
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
@@ -127,23 +125,22 @@ mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLi
   console.error(`Failed to load model from file. Model file: ${modelFile}, Error: ${error.message}`);
 });
 ```
-
 ## mindSporeLite.loadModelFromBuffer
 
 loadModelFromBuffer(model: ArrayBuffer, callback: Callback&lt;Model&gt;): void
 
-Loads the input model from the memory for CPU inference. This API uses an asynchronous callback to return the result.
+Loads an input model from memory for CPU inference. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                    |
+| Name     | Type                      | Mandatory | Description                     |
 | -------- | ------------------------- | ---- | ------------------------ |
-| model    | ArrayBuffer               | Yes  | Memory that contains the input model.        |
-| callback | Callback<[Model](#model)> | Yes   | Callback used to return the model object. If the check finds that the model input is empty during the callback, the callback fails. |
+| model    | ArrayBuffer               | Yes   | Memory that contains the model.         |
+| callback | Callback<[Model](#model)> | Yes   | Callback used to return the model object. If the model input is empty during the callback, the callback fails. |
 
-**Example**
+**Example** 
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -170,24 +167,23 @@ globalContext.getApplicationContext()
     console.error(`Failed to read model file from resources. File name: ${modelFile}, Error code: ${error.code}, Error message: ${error.message}`);
   });
 ```
-
 ## mindSporeLite.loadModelFromBuffer
 
 loadModelFromBuffer(model: ArrayBuffer, context: Context, callback: Callback&lt;Model&gt;): void
 
-Loads the input model from the memory for inference. This API uses an asynchronous callback to return the result.
+Loads an input model from memory for inference. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name  | Type                               | Mandatory| Description                  |
+| Name     | Type                                | Mandatory | Description                   |
 | -------- | ----------------------------------- | ---- | ---------------------- |
-| model    | ArrayBuffer                   | Yes  | Memory that contains the input model.|
-| context | [Context](#context) | Yes | Configuration information of the running environment.|
-| callback | Callback<[Model](#model)> | Yes   | Callback used to return the model object. If the check finds that the model input is empty during the callback, the callback fails. |
+| model    | ArrayBuffer                   | Yes   | Memory that contains the model. |
+| context | [Context](#context) | Yes  | Configuration of the runtime environment. |
+| callback | Callback<[Model](#model)> | Yes   | Callback used to return the model object. If the model input is empty during the callback, the callback fails. |
 
-**Example**
+**Example** 
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -217,29 +213,28 @@ globalContext.getApplicationContext()
     console.error(`Failed to read model file from resources. File name: ${modelFile}, Error code: ${error.code}, Error message: ${error.message}`);
   });
 ```
-
 ## mindSporeLite.loadModelFromBuffer
 
 loadModelFromBuffer(model: ArrayBuffer, context?: Context): Promise&lt;Model&gt;
 
-Loads the input model from the memory for inference. This API uses a promise to return the result.
+Loads an input model from memory for inference. This API uses a promise to return the result asynchronously.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name | Type               | Mandatory| Description                                         |
+| Name    | Type                | Mandatory | Description                                          |
 | ------- | ------------------- | ---- | --------------------------------------------- |
-| model   | ArrayBuffer         | Yes  | Memory that contains the input model.                             |
-| context | [Context](#context) | No  | Configuration information of the running environment. By default, **CpuDevice** is used for initialization.|
+| model   | ArrayBuffer         | Yes   | Memory that contains the model.                              |
+| context | [Context](#context) | No   | Configuration of the runtime environment. By default, CpuDevice is used for initialization. |
 
 **Return value**
 
-| Type                           | Description                        |
+| Type                            | Description                         |
 | ------------------------------- | ---------------------------- |
-| Promise<[Model](#model)> | Promise used to return the result, which is a **Model** object.|
+| Promise<[Model](#model)> | Promise object. Returns the Model object. |
 
-**Example**
+**Example** 
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -268,23 +263,22 @@ globalContext.getApplicationContext()
     console.error(`Failed to read model file from resources. File name: ${modelFile}, Error code: ${error.code}, Error message: ${error.message}`);
   });
 ```
-
 ## mindSporeLite.loadModelFromFd
 
 loadModelFromFd(model: number, callback: Callback&lt;Model&gt;): void
 
-Loads the input model based on the specified file descriptor for CPU inference. This API uses an asynchronous callback to return the result.
+Loads the input model from a file descriptor for CPU inference. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name  | Type                               | Mandatory| Description                  |
+| Name     | Type                                | Mandatory | Description                   |
 | -------- | ----------------------------------- | ---- | ---------------------- |
-| model    | number                         | Yes  | File descriptor of the input model. The **fd** value returned by the file system is passed.|
-| callback | Callback<[Model](#model)> | Yes   | Callback used to return the model object. If the check finds that the model input is empty during the callback, the callback fails. |
+| model    | number                         | Yes   | File descriptor of the model. Pass the fd value returned by the file system. |
+| callback | Callback<[Model](#model)> | Yes   | Callback used to return the model object. If the model input is empty during the callback, the callback fails. |
 
-**Example**
+**Example** 
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
@@ -302,24 +296,23 @@ mindSporeLite.loadModelFromFd(file.fd, (mindSporeLiteModel: mindSporeLite.Model)
   }
 })
 ```
-
 ## mindSporeLite.loadModelFromFd
 
 loadModelFromFd(model: number, context: Context, callback: Callback&lt;Model&gt;): void
 
-Loads the input model based on the specified file descriptor for inference. This API uses an asynchronous callback to return the result.
+Loads an input model from a file descriptor for inference. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name  | Type                               | Mandatory| Description                  |
+| Name     | Type                                | Mandatory | Description                   |
 | -------- | ----------------------------------- | ---- | ---------------------- |
-| model    | number                   | Yes  | File descriptor of the input model. The **fd** value returned by the file system is passed.|
-| context | [Context](#context) | Yes | Configuration information of the running environment.|
-| callback | Callback<[Model](#model)> | Yes | Callback used to return the model object. If the check finds that the model input is empty during the callback, the callback fails. |
+| model    | number                   | Yes   | File descriptor of the model. Pass the fd value returned by the file system. |
+| context | [Context](#context) | Yes  | Configuration of the runtime environment. |
+| callback | Callback<[Model](#model)> | Yes   | Callback used to return the model object. If the model input is empty during the callback, the callback fails. |
 
-**Example**
+**Example** 
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
@@ -339,29 +332,28 @@ mindSporeLite.loadModelFromFd(file.fd, context, (mindSporeLiteModel: mindSporeLi
   }
 })
 ```
-
 ## mindSporeLite.loadModelFromFd
 
 loadModelFromFd(model: number, context?: Context): Promise&lt;Model&gt;
 
-Loads the input model based on the specified file descriptor for inference. This API uses a promise to return the result.
+Loads the input model from a file descriptor for inference. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name | Type               | Mandatory| Description                                         |
+| Name    | Type                | Mandatory | Description                                          |
 | ------- | ------------------- | ---- | --------------------------------------------- |
-| model   | number              | Yes  | File descriptor of the input model. The **fd** value returned by the file system is passed. |
-| context | [Context](#context) | No  | Configuration information of the running environment. By default, **CpuDevice** is used for initialization.|
+| model   | number              | Yes   | File descriptor of the model. Pass the fd value returned by the file system.  |
+| context | [Context](#context) | No   | Configuration of the runtime environment. By default, CpuDevice is used for initialization. |
 
 **Return value**
 
-| Type                     | Description                        |
+| Type                      | Description                         |
 | ------------------------- | ---------------------------- |
-| Promise<[Model](#model)> | Promise used to return the result, which is a **Model** object.|
+| Promise<[Model](#model)> | Promise object. Returns the Model object. |
 
-**Example**
+**Example** 
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
@@ -386,25 +378,25 @@ mindSporeLite.loadModelFromFd(file.fd).then((mindSporeLiteModel: mindSporeLite.M
 
 loadTrainModelFromFile(model: string, trainCfg?: TrainCfg, context?: Context): Promise&lt;Model&gt;
 
-Loads the training model file based on the specified path. This API uses a promise to return the result.
+Loads a training model file from a path. This API uses a promise to return the result asynchronously.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name  | Type                   | Mandatory| Description                                            |
+| Name     | Type                    | Mandatory | Description                                             |
 | -------- | ----------------------- | ---- | ------------------------------------------------ |
-| model    | string                  | Yes  | Complete path of the input model. The string length is subject to the file system.|
-| trainCfg | [TrainCfg](#traincfg12) | No  | Model training configuration. The default value is an array of the default values of attributes in **TrainCfg**.    |
-| context  | [Context](#context)     | No  | Configuration information of the running environment. By default, **CpuDevice** is used for initialization.   |
+| model    | string                  | Yes   | Complete input path of the model. The string length limit follows the file system. |
+| trainCfg | [TrainCfg](#traincfg12) | No   | Training configuration of the model. The default value is the default value of each TrainCfg attribute.     |
+| context  | [Context](#context)     | No   | Configuration of the runtime environment. By default, CpuDevice is used for initialization.    |
 
 **Return value**
 
-| Type                      | Description                  |
+| Type                       | Description                   |
 | ------------------------ | -------------------- |
-| Promise<[Model](#model)> | Promise used to return the result, which is a **Model** object.|
+| Promise<[Model](#model)> | Promise object. Returns the Model object. |
 
-**Example**
+**Example** 
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
@@ -426,25 +418,25 @@ mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSp
 
 loadTrainModelFromBuffer(model: ArrayBuffer, trainCfg?: TrainCfg, context?: Context): Promise&lt;Model&gt;
 
-Loads a training model from the memory buffer. This API uses a promise to return the result.
+Loads a training model from a memory buffer. This API uses a promise to return the result asynchronously.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name  | Type                   | Mandatory| Description                                         |
+| Name     | Type                    | Mandatory | Description                                          |
 | -------- | ----------------------- | ---- | --------------------------------------------- |
-| model    | ArrayBuffer             | Yes  | Memory accommodating the training model.                         |
-| trainCfg | [TrainCfg](#traincfg12) | No  | Model training configuration. The default value is an array of the default values of attributes in **TrainCfg**. |
-| context  | [Context](#context)     | No  | Configuration information of the running environment. By default, **CpuDevice** is used for initialization.|
+| model    | ArrayBuffer             | Yes   | Memory that contains the training model.                          |
+| trainCfg | [TrainCfg](#traincfg12) | No   | Training configuration of the model. The default value is the default value of each TrainCfg attribute.  |
+| context  | [Context](#context)     | No   | Configuration of the runtime environment. By default, CpuDevice is used for initialization. |
 
 **Return value**
 
-| Type                      | Description                  |
+| Type                       | Description                   |
 | ------------------------ | -------------------- |
-| Promise<[Model](#model)> | Promise used to return the result, which is a **Model** object.|
+| Promise<[Model](#model)> | Promise object. Returns the Model object. |
 
-**Example**
+**Example** 
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -473,25 +465,25 @@ globalContext.getApplicationContext()
 
 loadTrainModelFromFd(model: number, trainCfg?: TrainCfg, context?: Context): Promise&lt;Model&gt;
 
-Loads the training model file from the file descriptor. This API uses a promise to return the result.
+Loads a training model file from a file descriptor. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name  | Type                   | Mandatory| Description                                            |
+| Name     | Type                    | Mandatory | Description                                             |
 | -------- | ----------------------- | ---- | ------------------------------------------------ |
-| model    | number                  | Yes  | File descriptor of the training model. The **fd** value returned by the file system is passed.|
-| trainCfg | [TrainCfg](#traincfg12) | No  | Model training configuration. The default value is an array of the default values of attributes in **TrainCfg**.    |
-| context  | [Context](#context)     | No  | Configuration information of the running environment. By default, **CpuDevice** is used for initialization.   |
+| model    | number                  | Yes   | File descriptor of the training model. Pass the fd value returned by the file system. |
+| trainCfg | [TrainCfg](#traincfg12) | No   | Training configuration of the model. The default value is the default value of each TrainCfg attribute.     |
+| context  | [Context](#context)     | No   | Configuration of the runtime environment. By default, CpuDevice is used for initialization.    |
 
 **Return value**
 
-| Type                    | Description                        |
+| Type                     | Description                         |
 | ------------------------ | ---------------------------- |
-| Promise<[Model](#model)> | Promise used to return the result, which is a **Model** object.|
+| Promise<[Model](#model)> | Promise object. Returns the Model object. |
 
-**Example**
+**Example** 
 
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
@@ -509,17 +501,17 @@ mindSporeLite.loadTrainModelFromFd(file.fd).then((mindSporeLiteModel: mindSporeL
 
 getAllNNRTDeviceDescriptions() : NNRTDeviceDescription[]
 
-Obtains all device descriptions in NNRt.
+Obtains all device descriptions in NNRt (Neural Network Runtime).
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Return value**
 
-| Type                                               | Description                  |
+| Type                                                | Description                   |
 | --------------------------------------------------- | ---------------------- |
-| [NNRTDeviceDescription](#nnrtdevicedescription12)[] | NNRt device description array.|
+| [NNRTDeviceDescription](#nnrtdevicedescription12)[] | Array of NNRt device descriptions. |
 
-**Example**
+**Example** 
 
 ```ts
 try {
@@ -536,17 +528,18 @@ try {
 
 ## Context
 
-Defines the configuration information of the running environment.
+Defines the configuration information of the runtime environment.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name  | Type                     | Read Only| Optional| Description                                                        |
+
+| Name   | Type                      | Read-Only | Optional | Description                                                         |
 | ------ | ------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| target | string[]                  | No  | Yes  | Target backend. The value can be **cpu** or **nnrt**. The default value is **cpu**.                |
-| cpu    | [CpuDevice](#cpudevice)   | No  | Yes  | CPU backend device option. Set this parameter set only when **target** is set to **cpu**. The default value is an array of the default values of attributes in **CpuDevice**.|
-| nnrt   | [NNRTDevice](#nnrtdevice) | No  | Yes  | NNRt backend device option. Set this parameter set only when **target** is set to **nnrt**. The default value is an array of the default values of attributes in **NNRTDevice**.|
+| target | string[]                  | No   | Yes   | Configures the target backend. The value can be 'cpu' or 'nnrt'. The default value is 'cpu'.                 |
+| cpu    | [CpuDevice](#cpudevice)   | No   | Yes   | CPU backend device options. This attribute can be set only when target contains 'cpu'. The default value is the default value of each attribute of CpuDevice. |
+| nnrt   | [NNRTDevice](#nnrtdevice) | No   | Yes   | NNRt backend device options. This attribute can be set only when target contains 'nnrt'. The default value is the default value of each attribute of NNRTDevice. |
 
-**Example**
+**Example** 
 
 ```ts
 let context: mindSporeLite.Context = {};
@@ -555,20 +548,20 @@ context.target = ['cpu','nnrt'];
 
 ## CpuDevice
 
-Defines the CPU backend device option.
+CPU backend device options.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name                  | Type                                     | Read Only| Optional| Description                                                        |
+| Name                   | Type                                      | Read-Only | Optional | Description                                                         |
 | ---------------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| threadNum              | number                                    | No  | Yes  | Number of runtime threads. The default value is **2**.                             |
-| threadAffinityMode     | [ThreadAffinityMode](#threadaffinitymode) | No  | Yes  | Affinity mode for binding runtime threads to CPU cores. The default value is **mindSporeLite.ThreadAffinityMode.NO_AFFINITIES**.|
-| threadAffinityCoreList | number[]                                  | No  | Yes  | List of CPU cores bound to runtime threads. Set this parameter only when **threadAffinityMode** is set. If **threadAffinityMode** is set to **mindSporeLite.ThreadAffinityMode.NO_AFFINITIES**, this parameter is empty. The number in the list indicates the SN of the CPU core. The default value is **[]**.|
-| precisionMode          | string                                    | No  | Yes  | Whether to enable the Float16 inference mode. The value **preferred_fp16** means to enable half-precision inference and the default value **enforce_fp32** means to disable half-precision inference. Other settings are not supported.|
+| threadNum              | number                                    | No   | Yes   | Sets the number of threads at runtime. Default value: **2**.                              |
+| threadAffinityMode     | [ThreadAffinityMode](#threadaffinitymode) | No   | Yes   | Sets the CPU core binding policy mode at runtime. The default value is no core binding: **mindSporeLite.ThreadAffinityMode.NO_AFFINITIES**. |
+| threadAffinityCoreList | number[]                                  | No   | Yes   | Sets the CPU core binding list at runtime. It takes effect after the core binding policy mode is set. When the core binding policy mode is **mindSporeLite.ThreadAffinityMode.NO_AFFINITIES**, the core binding list is empty. The numbers in the list represent the core sequence numbers. Default value: **[]**. |
+| precisionMode          | string                                    | No   | Yes   | Sets whether to enable the **Float16 inference mode**. The value **'preferred_fp16'** enables half-precision inference, and any other value disables half-precision inference. The default value **'enforce_fp32'** indicates that half-precision inference is disabled. |
 
-**Float16 inference mode**: a mode that uses half-precision inference. Float16 uses 16 bits to represent a number and therefore it is also called half-precision.
+**Float16 inference mode**: Indicates that half-precision (Float16) is used for inference computation. Compared with full precision (Float32), it reduces memory usage and improves inference speed.
 
-**Example**
+**Example** 
 
 ```ts
 let context: mindSporeLite.Context = {};
@@ -582,72 +575,72 @@ context.cpu.threadAffinityCoreList = [0, 1, 2];
 
 ## ThreadAffinityMode
 
-Specifies the affinity mode for binding runtime threads to CPU cores.
+Sets the CPU core binding policy mode at runtime. The valid values are 0 to 2, where 0 indicates no core binding by default, 1 indicates binding to big cores, and 2 indicates binding to little cores.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name              | Value  | Description        |
+| Name               | Value   | Description         |
 | ------------------ | ---- | ------------ |
-| NO_AFFINITIES      | 0    | No affinities.    |
-| BIG_CORES_FIRST    | 1    | Big cores first.|
-| LITTLE_CORES_FIRST | 2    | Medium cores first.|
+| NO_AFFINITIES      | 0    | No core binding.     |
+| BIG_CORES_FIRST    | 1    | Big cores first. |
+| LITTLE_CORES_FIRST | 2    | Little cores first. |
 
 ## NNRTDevice
 
-Represents an NNRt device. Neural Network Runtime (NNRt) is a bridge that connects the upper-layer AI inference framework to the bottom-layer acceleration chip to implement cross-chip inference and computing of AI models. An NNRt backend can be configured for MindSpore Lite.
+Neural Network Runtime (NNRt) is a neural network runtime. As an intermediate bridge, it connects the upper-layer AI inference framework and the underlying acceleration chips to implement cross-chip inference computing of AI models. MindSpore Lite can be configured with the NNRt backend.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name                         | Type                               | Read Only| Optional| Description                    |
+| Name                          | Type                                | Read-Only | Optional | Description                     |
 | ----------------------------- | ----------------------------------- | ---- | ------------------------ | ------------------------ |
-| deviceID<sup>12+</sup>        | bigint                              | No| Yes | NNRt device ID. The default value is **0**.    |
-| performanceMode<sup>12+</sup> | [PerformanceMode](#performancemode12) | No | Yes | NNRt device performance mode. The default value is **PERFORMANCE_NONE**.|
-| priority<sup>12+</sup>        | [Priority](#priority12)               | No | Yes | NNRt inference task priority. The default value is **PRIORITY_MEDIUM**.|
-| extensions<sup>12+</sup>      | [Extension](#extension12)[]         | No | Yes | Extended NNRt device configuration. This parameter is left empty by default.|
+| deviceID<sup>12+</sup>        | bigint                              | No | Yes  | NNRt device ID. The default value is 0.     |
+| performanceMode<sup>12+</sup> | [PerformanceMode](#performancemode12) | No  | Yes  | Working performance mode of the NNRt device. The default value is PERFORMANCE_NONE. |
+| priority<sup>12+</sup>        | [Priority](#priority12)               | No  | Yes  | Priority of the NNRt inference task. The default value is PRIORITY_MEDIUM. |
+| extensions<sup>12+</sup>      | [Extension](#extension12)[]         | No  | Yes  | Extended configuration of the NNRt device. The default value is empty. |
 
 ## PerformanceMode<sup>12+</sup>
 
-Enumerates NNRt device performance modes.
+Enumerates the performance modes of an NNRt (Neural Network Runtime) device.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name               | Value  | Description               |
+| Name                | Value   | Description                |
 | ------------------- | ---- | ------------------- |
-| PERFORMANCE_NONE    | 0    | No special settings.       |
-| PERFORMANCE_LOW     | 1    | Low power consumption.       |
-| PERFORMANCE_MEDIUM  | 2    | Power consumption and performance balancing.|
-| PERFORMANCE_HIGH    | 3    | High performance.       |
-| PERFORMANCE_EXTREME | 4    | Ultimate performance.     |
+| PERFORMANCE_NONE    | 0    | No special settings.        |
+| PERFORMANCE_LOW     | 1    | Low power consumption mode.        |
+| PERFORMANCE_MEDIUM  | 2    | Balanced power consumption and performance mode. |
+| PERFORMANCE_HIGH    | 3    | High performance mode.        |
+| PERFORMANCE_EXTREME | 4    | Extreme performance mode.      |
 
 ## Priority<sup>12+</sup>
 
-Enumerates NNRt inference task priorities.
+Enumerates the priorities of NNRt inference tasks.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name           | Value  | Description          |
+| Name            | Value   | Description           |
 | --------------- | ---- | -------------- |
-| PRIORITY_NONE   | 0    | No priority preference.|
-| PRIORITY_LOW    | 1    | Low priority.|
-| PRIORITY_MEDIUM | 2    | Medium priority.|
-| PRIORITY_HIGH   | 3    | High priority.|
+| PRIORITY_NONE   | 0    | No priority preference. |
+| PRIORITY_LOW    | 1    | Low-priority task. |
+| PRIORITY_MEDIUM | 2    | Medium-priority task. |
+| PRIORITY_HIGH   | 3    | High-priority task. |
 
 ## Extension<sup>12+</sup>
 
-Defines the extended NNRt device configuration.
+Defines the extension information of an NNRt device.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name               | Type       | Read Only| Optional| Description            |
+| Name                | Type        | Read-Only | Optional | Description             |
 | ------------------- | ----------- | ---- | ---- | ---------------- |
-| name  | string      | No  | No  | Configuration name.      |
-| value | ArrayBuffer | No  | No  | Memory accommodating the extended configuration.|
+| name  | string      | No   | No   | Extension name.       |
+| value | ArrayBuffer | No   | No   | Memory that contains the extension. |
 
 ## NNRTDeviceDescription<sup>12+</sup>
 
-Defines NNRt device information, including the device ID and device name.
+Describes the NNRt (Neural Network Runtime) device information, including the device ID, device name, and other information.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 ### deviceID<sup>12+</sup>
 
@@ -655,15 +648,15 @@ deviceID() : bigint
 
 Obtains the NNRt device ID.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Return value**
 
-| Type  | Description        |
+| Type   | Description         |
 | ------ | ------------ |
-| bigint | NNRt device ID.|
+| bigint | NNRt device ID. |
 
-**Example**
+**Example** 
 
 ```ts
 let context: mindSporeLite.Context = {};
@@ -676,7 +669,7 @@ if (allDevices == null || allDevices.length === 0) {
   console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
     for (let i: number = 0; i < allDevices.length; i++) {
       console.info(`Device ${i} ID: ${allDevices[i].deviceID().toString()}`);
-  }
+    }
 }
 ```
 
@@ -684,17 +677,17 @@ if (allDevices == null || allDevices.length === 0) {
 
 deviceType() : NNRTDeviceType
 
-Obtains the device model.
+Obtains the NNRt device type.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Return value**
 
-| Type                               | Description          |
+| Type                                | Description           |
 | ----------------------------------- | -------------- |
-| [NNRTDeviceType](#nnrtdevicetype12) | NNRt device type.|
+| [NNRTDeviceType](#nnrtdevicetype12) | NNRt device type. |
 
-**Example**
+**Example** 
 
 ```ts
 let context: mindSporeLite.Context = {};
@@ -704,7 +697,7 @@ let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
 if (allDevices == null || allDevices.length === 0) {
   console.error(`Failed to get NNRT device descriptions. Context: ${JSON.stringify(context)}, Result: null or empty`);
 } else {
-console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
+  console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
   for (let i: number = 0; i < allDevices.length; i++) {
     console.info(`Device ${i} type: ${allDevices[i].deviceType().toString()}`);
   }
@@ -717,15 +710,15 @@ deviceName() : string
 
 Obtains the NNRt device name.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Return value**
 
-| Type  | Description          |
+| Type   | Description           |
 | ------ | -------------- |
-| string | NNRt device name.|
+| string | NNRt device name. |
 
-**Example**
+**Example** 
 
 ```ts
 let context: mindSporeLite.Context = {};
@@ -735,7 +728,7 @@ let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
 if (allDevices == null || allDevices.length === 0) {
   console.error(`Failed to get NNRT device descriptions. Context: ${JSON.stringify(context)}, Result: null or empty`);
 } else {
-console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
+  console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
   for (let i: number = 0; i < allDevices.length; i++) {
     console.info(`Device ${i} name: ${allDevices[i].deviceName()}`);
   }
@@ -744,29 +737,29 @@ console.info(`Succeeded in getting NNRT device descriptions. Device count: ${all
 
 ## NNRTDeviceType<sup>12+</sup>
 
-Enumerates NNRt device types.
+Enumerates the device types of NNRt (Neural Network Runtime).
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name                  | Value  | Description                               |
+| Name                   | Value   | Description                                |
 | ---------------------- | ---- | ----------------------------------- |
-| NNRTDEVICE_OTHERS      | 0    | Others (any device type except the following three types).|
-| NNRTDEVICE_CPU         | 1    | CPU.                          |
-| NNRTDEVICE_GPU         | 2    | GPU.                          |
-| NNRTDEVICE_ACCELERATOR | 3    | Specific acceleration device.                   |
+| NNRTDEVICE_OTHERS      | 0    | The device type does not belong to any of the following three types. |
+| NNRTDEVICE_CPU         | 1    | CPU device.                           |
+| NNRTDEVICE_GPU         | 2    | GPU device.                           |
+| NNRTDEVICE_ACCELERATOR | 3    | A specific accelerator device.                    |
 
 ## TrainCfg<sup>12+</sup>
 
-Defines the configuration for on-device training.
+Configuration file for on-device training related parameters.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name                           | Type                                     | Read Only| Optional| Description                                                        |
+| Name                            | Type                                      | Read-Only | Optional | Description                                                         |
 | ------------------------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| lossName         | string[]                                  | No  | Yes  | List of loss functions. The default value is ["loss_fct", "_loss_fn", "SigmoidCrossEntropy"].|
-| optimizationLevel | [OptimizationLevel](#optimizationlevel12) | No  | Yes  | Network optimization level for on-device training. The default value is **O0**.                        |
+| lossName         | string[]                                  | No   | Yes   |  List of loss function names, used to identify the loss function nodes in the model during on-device training. The default value is ["loss_fct", "_loss_fn", "SigmoidCrossEntropy"]. |
+| optimizationLevel | [OptimizationLevel](#optimizationlevel12) | No   | Yes   | Network optimization level for on-device training. The default value is O0.                         |
 
-**Example**
+**Example** 
 
 ```ts
 let cfg: mindSporeLite.TrainCfg = {};
@@ -776,59 +769,60 @@ cfg.optimizationLevel = mindSporeLite.OptimizationLevel.O0;
 
 ## OptimizationLevel<sup>12+</sup>
 
-Enumerates network optimization levels for on-device training.
+Enumerates the network optimization levels for on-device training.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name| Value  | Description                                                      |
+| Name | Value   | Description                                                       |
 | ---- | ---- | ---------------------------------------------------------- |
-| O0   | 0    | No optimization level.                                              |
-| O2   | 2    | Converts the precision type of the network to float16 and keeps the precision type of the batch normalization layer and loss function as float32.|
-| O3   | 3    | Converts the precision type of the network (including the batch normalization layer) to float16.                   |
-| AUTO | 4    | Selects an optimization level based on the device.                                    |
+| O0   | 0    | No optimization.                                               |
+| O2   | 2    | Converts the network to Float16 while keeping the batch normalization layers and the loss function as Float32. |
+| O3   | 3    | Converts the network to Float16, including the batch normalization layers.                    |
+| AUTO | 4    | Selects the optimization level based on the device.                                     |
+
 
 ## QuantizationType<sup>12+</sup>
 
-Enumerates quantization types.
+Quantization type information. Valid values range from 0 to 2.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name        | Value  | Description      |
+| Name         | Value   | Description       |
 | ------------ | ---- | ---------- |
-| NO_QUANT     | 0    | No quantification.|
-| WEIGHT_QUANT | 1    | Weight quantization.|
-| FULL_QUANT   | 2    | Full quantization.  |
+| NO_QUANT     | 0    | No quantization. |
+| WEIGHT_QUANT | 1    | Weight quantization. |
+| FULL_QUANT   | 2    | Full quantization.   |
 
 ## Model
 
-Represents a **Model** instance, with properties and APIs defined.
+Model instance. Describes the properties and methods of the Model object.
 
-In the following sample code, you first need to use [loadModelFromFile()](#mindsporeliteloadmodelfromfile), [loadModelFromBuffer()](#mindsporeliteloadmodelfrombuffer), or [loadModelFromFd()](#mindsporeliteloadmodelfromfd) to obtain a **Model** instance before calling related APIs.
+In the following API examples, you must first obtain a Model instance by using any of the following methods: [loadModelFromFile()](#mindsporeliteloadmodelfromfile), [loadModelFromBuffer()](#mindsporeliteloadmodelfrombuffer), or [loadModelFromFd()](#mindsporeliteloadmodelfromfd). Then call the corresponding method through this instance.
 
 ### Attributes
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name                      | Type   | Read Only| Optional| Description                                                        |
+| Name                       | Type    | Read-Only | Optional | Description                                                         |
 | -------------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| learningRate<sup>12+</sup> | number  | No  | Yes  | Learning rate of a training model. The default value is read from the loaded model.                |
-| trainMode<sup>12+</sup>    | boolean | No  | Yes  | Training mode. The value **true** indicates the training mode, and the value **false** indicates the non-training mode. The default value is **true** for a training model and **false** for an inference model.|
+| learningRate<sup>12+</sup> | number  | No   | Yes   | Learning rate of the training model. The default value is read from the loaded model.                 |
+| trainMode<sup>12+</sup>    | boolean | No   | Yes   | Whether the model is in training mode. The value true indicates training mode, and false indicates non-training mode. For a training model, the default value of trainMode is true; for an inference model, the default value is false. |
 
 ### getInputs
 
 getInputs(): MSTensor[]
 
-Obtains the model input for inference.
+Obtains the model inputs for inference.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Return value**
 
-| Type                   | Description              |
+| Type                    | Description               |
 | ----------------------- | ------------------ |
-| [MSTensor](#mstensor)[] | List of **MSTensor** objects. |
+| [MSTensor](#mstensor)[] | List of MSTensor objects. |
 
-**Example**
+**Example** 
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
@@ -845,30 +839,29 @@ mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLi
   console.error(`Failed to load model. Model file: ${modelFile}, Error: ${error.message}`);
 });
 ```
-
 ### predict
 
 predict(inputs: MSTensor[], callback: Callback&lt;MSTensor[]&gt;): void
 
-Executes the inference model. This API uses an asynchronous callback to return the result. Ensure that the model object is not reclaimed when being invoked.
+Performs model inference. This API uses an asynchronous callback to return the result. Ensure that the model object is not reclaimed by resources when this API is called.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name| Type                   | Mandatory| Description                      |
+| Name | Type                    | Mandatory | Description                       |
 | ------ | ----------------------- | ---- | -------------------------- |
-| inputs | [MSTensor](#mstensor)[] | Yes  | List of input models.  |
-| callback | Callback<[MSTensor](#mstensor)[]> | Yes | Callback used to return the list of **MSTensor** objects. . |
+| inputs | [MSTensor](#mstensor)[] | Yes   | Input list of the model. An MSTensor object. |
+| callback | Callback<[MSTensor](#mstensor)[]> | Yes   | Callback invoked to return the list of MSTensor objects. |
 
-**Example**
+**Example** 
 
 ```ts
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// File name of the preprocessed model input data
+// Preprocessed model input activation file name.
 let inputName = 'input_data.bin';
 let modelFile: string = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -907,35 +900,34 @@ globalContext.getApplicationContext()
     console.error(`Failed to read input data. File name: ${inputName}, Error code: ${error.code}, Error message: ${error.message}`);
   });
 ```
-
 ### predict
 
 predict(inputs: MSTensor[]): Promise&lt;MSTensor[]&gt;
 
-Executes model inference. This API uses a promise to return the result. Ensure that the model object is not reclaimed when being invoked.
+Performs model inference and returns the inference result. This API uses a promise to return the result asynchronously. Ensure that the model object is not reclaimed by the resource collector when this API is called.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name| Type                   | Mandatory| Description                          |
+| Name | Type                    | Mandatory | Description                           |
 | ------ | ----------------------- | ---- | ------------------------------ |
-| inputs | [MSTensor](#mstensor)[] | Yes  | List of input models.  |
+| inputs | [MSTensor](#mstensor)[] | Yes   | Input list of the model. An MSTensor object. |
 
 **Return value**
 
-| Type                   | Description                  |
+| Type                    | Description                   |
 | ----------------------- | ---------------------- |
-| Promise<[MSTensor](#mstensor)[]> | Promise used to return the result, List of **MSTensor** objects.|
+| Promise<[MSTensor](#mstensor)[]> | Promise object. Returns a list of MSTensor objects. |
 
-**Example**
+**Example** 
 
 ```ts
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// File name of the preprocessed model input data
+// Preprocessed model input activation file name.
 let inputName = 'input_data.bin';
 let modelFile = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -981,24 +973,24 @@ globalContext.getApplicationContext()
 
 resize(inputs: MSTensor[], dims: Array&lt;Array&lt;number&gt;&gt;): boolean
 
-Resets the tensor size. It allows dynamic modification of model input shapes at runtime without reloading the model. It is commonly used to process images of different sizes, dynamically adjust batch sizes, or accelerate inference by reducing resolution. It only changes the input shape while keeping the model weights unchanged, enabling a single model to support multiple input configurations, saving storage and improving flexibility.
+Resizes the tensors. It allows the model input shape to be dynamically modified at runtime without reloading the model. It is commonly used to process images of different sizes, dynamically adjust the batch size, or accelerate inference by reducing the resolution. It changes only the input shape while keeping the model weights unchanged, so that a single model can support multiple input configurations, saving storage and improving flexibility.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name| Type                 | Mandatory| Description                         |
+| Name | Type                  | Mandatory | Description                          |
 | ------ | --------------------- | ---- | ----------------------------- |
-| inputs | [MSTensor](#mstensor)[]            | Yes  | List of input models. |
-| dims   | Array&lt;Array&lt;number&gt;&gt; | Yes  | Target tensor size.|
+| inputs | [MSTensor](#mstensor)[]            | Yes   | Input list of the model.  |
+| dims   | Array&lt;Array&lt;number&gt;&gt; | Yes   | Target tensor size to be modified. |
 
 **Return value**
 
-| Type   | Description                                                        |
+| Type    | Description                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | Result indicating whether the setting is successful. The value **true** indicates that the tensor size is successfully reset, and the value **false** indicates the opposite.|
+| boolean | Whether the tensor size is set successfully. The value **true** indicates that the tensor size is set successfully, and **false** indicates the opposite. |
 
-**Example**
+**Example** 
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
@@ -1007,11 +999,11 @@ mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLi
   let originalShape = modelInputs[0].shape;
   console.info(`Original input shape: [${originalShape.join(', ')}]`);
   
-  let new_dim = [[1, 32, 32, 1]];
-  let ret = mindSporeLiteModel.resize(modelInputs, new_dim);
+  let newDim = [[1, 32, 32, 1]];
+  let ret = mindSporeLiteModel.resize(modelInputs, newDim);
   
   if (ret === false) {
-    console.error(`Failed to resize model inputs. Model file: ${modelFile}, Original shape: [${originalShape.join(', ')}], Target shape: [${new_dim[0].join(', ')}]`);
+    console.error(`Failed to resize model inputs. Model file: ${modelFile}, Original shape: [${originalShape.join(', ')}], Target shape: [${newDim[0].join(', ')}]`);
   } else {
     console.info(`Succeeded in resizing model inputs. Model file: ${modelFile}, Original shape: [${originalShape.join(', ')}], New shape: [${modelInputs[0].shape.join(', ')}]`);
   }
@@ -1024,23 +1016,23 @@ mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLi
 
 runStep(inputs: MSTensor[]): boolean
 
-Defines a single-step training model. This API is used only for on-device training.
+Performs a single-step training of the model. This API is used only for on-device training.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name   | Type                     | Mandatory | Description      |
+| Name    | Type                      | Mandatory  | Description       |
 | ------ | ----------------------- | --- | -------- |
-| inputs | [MSTensor](#mstensor)[] | Yes  | List of input models.|
+| inputs | [MSTensor](#mstensor)[] | Yes   | Input list of the model. |
 
 **Return value**
 
-| Type   | Description                                                        |
+| Type    | Description                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | Result indicating whether the operation is successful. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| boolean | Whether the single-step training of the model is successful. The value **true** indicates that the single-step training is successful, and **false** indicates the opposite. |
 
-**Example**
+**Example** 
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
@@ -1069,17 +1061,17 @@ mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSp
 
 getWeights(): MSTensor[]
 
-Obtains all weight tensors of a model. This API is used only for on-device training.
+Obtains all weights of the model. This API is used only for on-device training.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Return value**
 
-| Type                     | Description        |
+| Type                      | Description         |
 | ----------------------- | ---------- |
-| [MSTensor](#mstensor)[] | The weight tensor list of the model. |
+| [MSTensor](#mstensor)[] | List of weight tensors of the model. |
 
-**Example**
+**Example** 
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1120,23 +1112,23 @@ globalContext.getApplicationContext()
 
 updateWeights(weights: MSTensor[]): boolean
 
-Weight of the updated model, which is used only for on-device training.
+Updates the weights of the model. This API is used only for on-device training.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name | Type                   | Mandatory| Description          |
+| Name  | Type                    | Mandatory | Description           |
 | ------- | ----------------------- | ---- | -------------- |
-| weights | [MSTensor](#mstensor)[] | Yes  | List of weight tensors.|
+| weights | [MSTensor](#mstensor)[] | Yes   | List of weight tensors. |
 
 **Return value**
 
-| Type   | Description                                                        |
+| Type    | Description                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | Result indicating whether the operation is successful. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| boolean | Whether the weights are updated successfully. true indicates success, and false indicates failure. |
 
-**Example**
+**Example** 
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1182,23 +1174,23 @@ setupVirtualBatch(virtualBatchMultiplier: number, lr: number, momentum: number):
 
 Sets the virtual batch for training. This API is used only for on-device training.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name                | Type  | Mandatory| Description                                                |
+| Name                 | Type   | Mandatory | Description                                                 |
 | ---------------------- | ------ | ---- | ---------------------------------------------------- |
-| virtualBatchMultiplier | number | Yes  | Virtual batch multiplier, which must be an integer. A value less than 1 indicates that the virtual batch is disabled. A value of 1 is equivalent to disabling the virtual batch. A value greater than 1 indicates that a large batch is split into multiple small batches. |
-| lr                     | number | Yes  | Learning rate, which controls the step size of moving along the gradient direction during each parameter update. A value of -1 indicates that the default learning rate is used. A value less than -1 or greater than -1 but less than 0 indicates an invalid value, which will cause the setting to fail. A value of 0 indicates that the current parameters are fixed. A value greater than 0 indicates a custom learning rate. |
-| momentum               | number | Yes  | Momentum, which is used to accelerate training and reduce gradient oscillation. A value of -1 indicates that the system default momentum value is used, which is the choice when the specific value is uncertain. A value of 0 indicates that momentum optimization is not used, and the algorithm degrades to a pure gradient descent algorithm. A value between 0.5 and 0.9 can achieve a good balance between training speed and stability. A value between 0.9 and 0.99 can significantly accelerate the training process and is suitable for convex optimization problems. A value less than 0 and not -1 indicates an invalid value, which will cause the virtual batch setting to fail.                                              |
+| virtualBatchMultiplier | number | Yes   | Virtual batch multiplier, which must be an integer. A value less than 1 disables the virtual batch. A value of 1 is equivalent to disabling the virtual batch. A value greater than 1 splits a large batch into N small batches. |
+| lr                     | number | Yes   | Learning rate, which controls the step size moved along the gradient direction in each parameter update. A value of -1 uses the default learning rate. A value less than 0 but not -1 is invalid and causes the setting to fail. A value of 0 fixes the current parameters. A value greater than 0 uses a custom learning rate. |
+| momentum               | number | Yes   | Momentum, which accelerates training and reduces gradient oscillation. A value of -1 uses the system default momentum, which is the choice when the exact value is uncertain. A value of 0 disables momentum optimization and degrades to the pure gradient descent algorithm. A value between 0.5 and 0.9 achieves a good balance between training speed and stability. A value between 0.9 and 0.99 significantly accelerates the training process and is suitable for convex optimization problems. A value less than 0 but not -1 is invalid and causes the virtual batch setting to fail.                                              |
 
 **Return value**
 
-| Type   | Description                                                        |
+| Type    | Description                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | Result indicating whether the operation is successful. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| boolean | Whether the virtual batch is set successfully. The value true indicates that the virtual batch is set successfully, and false indicates the opposite. |
 
-**Example**
+**Example** 
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1240,26 +1232,26 @@ globalContext.getApplicationContext()
 
 exportModel(modelFile: string, quantizationType?: QuantizationType, exportInferenceOnly?: boolean, outputTensorName?: string[]): boolean
 
-Exports a training model. This API is used only for on-device training.
+Exports a training model, which is used only for on-device training.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name             | Type                                   | Mandatory| Description                                                        |
+| Name              | Type                                    | Mandatory | Description                                                         |
 | ------------------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| modelFile           | string                                  | Yes  | File path of the training models. The string length is subject to the file system.            |
-| quantizationType    | [QuantizationType](#quantizationtype12) | No  | Quantization type. The default value is **NO_QUANT**.                                  |
-| exportInferenceOnly | boolean                                 | No  | Whether to export inference models only. The value **true** means to export only inference models, and the value **false** means to export both training and inference models. The default value is **true**.|
-| outputTensorName    | string[]                                | No  | Name of the output tensor of the exported training model. The default value is an empty string array, which indicates full export.|
+| modelFile           | string                                  | Yes   | Path of the model file to export. The string length limit follows the file system.             |
+| quantizationType    | [QuantizationType](#quantizationtype12) | No   | Quantization type. The default value is NO_QUANT.                                   |
+| exportInferenceOnly | boolean                                 | No   | Whether to export only the inference model. The value true means to export only the inference model, and false means to export both the training model and the inference model. The default value is true. |
+| outputTensorName    | string[]                                | No   | Names of the output tensors of the exported model. The default value is an empty string array, which means to export all tensors. |
 
 **Return value**
 
-| Type   | Description                                                        |
+| Type    | Description                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | Result indicating whether the operation is successful. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| boolean | Whether the training model is exported successfully. The value true means that the training model is exported successfully, and false means that the export fails. |
 
-**Example**
+**Example** 
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
@@ -1284,28 +1276,28 @@ mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSp
 
 exportWeightsCollaborateWithMicro(weightFile: string, isInference?: boolean, enableFp16?: boolean, changeableWeightsName?: string[]): boolean
 
-Exports model weights for micro inference usage, only for on-device training.
+Exports the model weights for micro inference. This API is used only for on-device training.
 
-Micro inference is an ultra-lightweight micro AI deployment solution provided by MindSpore Lite to deploy hardware backends for Micro Controller Units (MCUs). This solution directly converts models into lightweight code in offline mode, eliminating the need for online model parsing and graph compilation.
+**Micro inference**: an ultra-lightweight AI deployment solution of MindSpore Lite for MCUs (MicroControllerUnits). This solution directly converts the model into lightweight code in the offline phase, without the need to parse the model and compile the graph online on the device.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name               | Type    | Mandatory| Description                                                        |
+| Name                | Type     | Mandatory | Description                                                         |
 | --------------------- | -------- | ---- | ------------------------------------------------------------ |
-| weightFile            | string   | Yes  | Path of the weight file. The string length is subject to the file system.                  |
-| isInference           | boolean  | No  | Whether to export weights from the inference model. The value **true** means to export weights from the inference model. The default value is **true**. Currently, only **true** is supported.|
-| enableFp16            | boolean  | No  | Whether to store floating-point weights in float16 format. The value **true** means to store floating-point weights in float16 format, and the value **false** means the opposite. The default value is **false**.|
-| changeableWeightsName | string[] | No  | Name of the variable weight. The default value is an empty string array.                    |
+| weightFile            | string   | Yes   | Path of the weight file. The string length limit follows the file system.                   |
+| isInference           | boolean  | No   | Whether to export weights from the inference model. The value **true** means to export weights from the inference model. Currently, only **true** is supported, and the default value is **true**. |
+| enableFp16            | boolean  | No   | Whether to save floating-point weights in float16 format. The value **true** means to save them in float16 format, and **false** means not to save them in float16 format. The default value is **false**. |
+| changeableWeightsName | string[] | No   | Names of the changeable weights. The default value is an empty string array.                     |
 
 **Return value**
 
-| Type   | Description                                                        |
+| Type    | Description                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | Result indicating whether the operation is successful. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| boolean | Whether the model weights for micro inference are exported successfully. The value **true** means that the model weights for micro inference are exported successfully, and **false** means the opposite. |
 
-**Example**
+**Example** 
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
@@ -1324,24 +1316,24 @@ mindSporeLite.loadTrainModelFromFile(modelFile).then((mindSporeLiteModel: mindSp
 
 ## MSTensor
 
-Represents an **MSTensor** instance, with properties and APIs defined. It is a special data structure similar to arrays and matrices. It is the basic data structure used in MindSpore Lite network operations.
+Represents a model tensor instance. Describes the attributes and methods of an MSTensor object. Similar to arrays and matrices, it is the basic data structure used in MindSpore Lite network operations.
 
-In the following sample code, you first need to use [getInputs()](#getinputs) to obtain an **MSTensor** instance before calling related APIs.
+In the API examples below, you need to first obtain an MSTensor instance by using [getInputs](#getinputs), and then call the corresponding method through this instance.
 
 ### Attributes
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name      | Type                 | Read Only| Optional| Description                  |
+| Name       | Type                  | Read-Only | Optional | Description                   |
 | ---------- | --------------------- | ---- | ---- | ---------------------- |
-| name       | string                | No  | No  | Tensor name.          |
-| shape      | number[]              | No  | No  | Tensor dimension array.      |
-| elementNum | number                | No  | No  | Length of the tensor dimension array.|
-| dataSize   | number                | No  | No  | Length of tensor data.    |
-| dtype      | [DataType](#datatype) | No  | No  | Tensor data type.      |
-| format     | [Format](#format)     | No  | No  | Tensor data format.  |
+| name       | string                | No   | No   | Name of the tensor.           |
+| shape      | number[]              | No   | No   | Dimension array of the tensor.       |
+| elementNum | number                | No   | No   | Total number of elements in the tensor.       |
+| dataSize   | number                | No   | No   | Length of the tensor data.     |
+| dtype      | [DataType](#datatype) | No   | No   | Data type of the tensor.       |
+| format     | [Format](#format)     | No   | No   | Data layout of the tensor.   |
 
-**Example**
+**Example** 
 
 ```ts
 let modelFile = '/path/to/xxx.ms';
@@ -1363,24 +1355,24 @@ mindSporeLite.loadModelFromFile(modelFile).then((mindSporeLiteModel: mindSporeLi
 
 getData(): ArrayBuffer
 
-Obtains tensor data.
+Obtains the data of the tensor.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Return value**
 
-| Type       | Description                |
+| Type        | Description                 |
 | ----------- | -------------------- |
-| ArrayBuffer | Pointer to the tensor data.|
+| ArrayBuffer | Pointer to the data of the tensor. |
 
-**Example**
+**Example** 
 
 ```ts
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// File name of the preprocessed model input data
+// Preprocessed model input activation file name.
 let inputName = 'input_data.bin';
 let modelFile = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -1426,24 +1418,24 @@ globalContext.getApplicationContext()
 
 setData(inputArray: ArrayBuffer): void
 
-Sets the tensor data.
+Sets the data of the tensor.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters**
 
-| Name    | Type       | Mandatory| Description                  |
+| Name     | Type        | Mandatory | Description                   |
 | ---------- | ----------- | ---- | ---------------------- |
-| inputArray | ArrayBuffer | Yes  | Input data buffer of the tensor.|
+| inputArray | ArrayBuffer | Yes   | Input data buffer of the tensor. |
 
-**Example**
+**Example** 
 
 ```ts
 import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// File name of the preprocessed model input data
+// Preprocessed model input activation file name.
 let inputName = 'input_data.bin';
 let modelFile = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -1473,37 +1465,37 @@ globalContext.getApplicationContext()
 
 ## DataType
 
-Tensor data type.
+Data type of the tensor.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name               | Value  | Description               |
+| Name                | Value   | Description                |
 | ------------------- | ---- | ------------------- |
-| TYPE_UNKNOWN        | 0    | Unknown type.         |
-| NUMBER_TYPE_INT8    | 32   | Int8 type.   |
-| NUMBER_TYPE_INT16   | 33   | Int16 type.  |
-| NUMBER_TYPE_INT32   | 34   | Int32 type.  |
-| NUMBER_TYPE_INT64   | 35   | Int64 type.  |
-| NUMBER_TYPE_UINT8   | 37   | UInt8 type.  |
-| NUMBER_TYPE_UINT16  | 38   | UInt16 type. |
-| NUMBER_TYPE_UINT32  | 39   | UInt32 type. |
-| NUMBER_TYPE_UINT64  | 40   | UInt64 type. |
-| NUMBER_TYPE_FLOAT16 | 42   | Float16 type.|
-| NUMBER_TYPE_FLOAT32 | 43   | Float32 type.|
-| NUMBER_TYPE_FLOAT64 | 44   | Float64 type.|
+| TYPE_UNKNOWN        | 0    | Unknown.          |
+| NUMBER_TYPE_INT8    | 32   | Keeps the Int8 type.    |
+| NUMBER_TYPE_INT16   | 33   | Keeps the Int16 type.   |
+| NUMBER_TYPE_INT32   | 34   | Keeps the Int32 type.   |
+| NUMBER_TYPE_INT64   | 35   | Keeps the Int64 type.   |
+| NUMBER_TYPE_UINT8   | 37   | Keeps the UInt8 type.   |
+| NUMBER_TYPE_UINT16  | 38   | Keeps the UInt16 type.  |
+| NUMBER_TYPE_UINT32  | 39   | Keeps the UInt32 type.  |
+| NUMBER_TYPE_UINT64  | 40   | Keeps the UInt64 type.  |
+| NUMBER_TYPE_FLOAT16 | 42   | Keeps the Float16 type. |
+| NUMBER_TYPE_FLOAT32 | 43   | Keeps the Float32 type. |
+| NUMBER_TYPE_FLOAT64 | 44   | Keeps the Float64 type. |
 
 ## Format
 
-Enumerates tensor data formats.
+Data layout of the tensor.
 
-**System capability**: SystemCapability.AI.MindSporeLite
+**System capability:** SystemCapability.AI.MindSporeLite
 
-| Name          | Value  | Description                 |
+| Name           | Value   | Description                  |
 | -------------- | ---- | --------------------- |
-| DEFAULT_FORMAT | -1   | Unknown data format.   |
-| NCHW           | 0    | NCHW format. |
-| NHWC           | 1    | NHWC format. |
-| NHWC4          | 2    | NHWC4 format.|
-| HWKC           | 3    | HWKC format. |
-| HWCK           | 4    | HWCK format. |
-| KCHW           | 5    | KCHW format. |
+| DEFAULT_FORMAT | -1   | Unknown data layout.    |
+| NCHW           | 0    | Data layout is NCHW.  |
+| NHWC           | 1    | Data layout is NHWC.  |
+| NHWC4          | 2    | Data layout is NHWC4. |
+| HWKC           | 3    | Data layout is HWKC.  |
+| HWCK           | 4    | Data layout is HWCK.  |
+| KCHW           | 5    | Data layout is KCHW.  |
