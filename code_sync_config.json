@@ -14215,7 +14215,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderPlaceholderList.ets",
 				"functions":[
 					{
-						"end_line":79,
+						"end_line":84,
 						"name":"BuilderPlaceholderList",
 						"start_line":19
 					}
