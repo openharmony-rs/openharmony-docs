@@ -6,10 +6,11 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=d0f9db76c80159a3fb7828933b431896f69e162b translatedAt=2026-11-06T12:23:54.397Z pushedAt=2026-11-13T11:47:11.857Z nl=1 -->
 
 SystemCapability (SysCap) is a standalone feature in the operating system.
 
-Before using an API for development, you are advised to familiarize yourself with [SysCap](syscap.md), and then consult the following tables to see whether the SysCap set required for the API is supported by the target device type.
+Before using an API for development, you are advised to read the [SysCap Usage Guide](syscap.md) to understand the definition and usage guidance of SysCap. Then, refer to the table below to determine whether a specific capability set is supported on a device, so as to improve development efficiency.
 
 > **NOTE**
 >
@@ -104,8 +105,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Multimedia.Image.ImagePacker
 - SystemCapability.Multimedia.Image.ImageReceiver
 - SystemCapability.Multimedia.ImageEffect.Core
-- SystemCapability.Multimedia.MediaLibrary.Core
-- SystemCapability.Multimedia.MediaLibrary.DistributedCore
 - SystemCapability.Multimedia.SystemSound.Core
 - SystemCapability.Telephony.CoreService
 - SystemCapability.Telephony.CallManager
@@ -192,7 +191,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Ability.AbilityRuntime.FAModel
 - SystemCapability.Ability.AbilityRuntime.AbilityCore
 - SystemCapability.Ability.AbilityRuntime.Mission
-- SystemCapability.Ability.AbilityTools.AbilityAssistant
 - SystemCapability.Ability.Form
 - SystemCapability.Ability.DistributedAbilityManager
 - SystemCapability.Applications.CalendarData
@@ -225,6 +223,7 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.BundleManager.BundleFramework.AppControl
 - SystemCapability.BundleManager.AppDomainVerify
 - SystemCapability.Ability.AbilityRuntime.QuickFix
+- SystemCapability.Ability.AgentRuntime.Core
 - SystemCapability.Graphic.Graphic2D.ColorManager.Core
 - SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 - SystemCapability.XTS.DeviceAttest

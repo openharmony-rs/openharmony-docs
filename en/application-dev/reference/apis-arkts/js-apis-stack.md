@@ -1,19 +1,20 @@
 # @ohos.util.Stack (Linear Container Stack)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=e5b97192dbd8772da0547377cfcea671178fb9e9 translatedAt=2026-11-06T09:38:23.183Z pushedAt=2026-11-13T06:50:22.827Z nl=1 -->
 
 Stack is implemented based on the array data structure. It follows the principle Last Out First In (LOFI) and supports data insertion and removal at one end.
 
-Unlike [Queue](js-apis-queue.md), which is implemented based on the queue data structure and supports insertion at one end and removal at the other end, Stack supports insertion and removal at the same end.
+Compared with [Queue](js-apis-queue.md), Stack is implemented based on the array data structure, while Queue is implemented based on the circular queue, which adds elements at the tail and removes elements at the head. Stack, however, performs insertion and removal operations only at one end.
 
-**Recommended use case**: Use Stack in LOFI scenarios.
+**Recommended use cases:** Stack is generally suitable for scenarios that follow the Last In First Out (LIFO) principle, such as history management for undo/redo operations and function call stack simulation.
 
-This topic uses the following to identify the use of generics:
-- T: Type
+Generics are used in this document. The following generic type parameters are involved:
+- T: Type, a generic type parameter, which can be of any type
 
 > **NOTE**
 >
@@ -45,7 +46,7 @@ import { Stack } from '@kit.ArkTS';
 
 constructor()
 
-A constructor used to create a **Stack** instance.
+Constructor of Stack. After being called, an empty Stack instance object is created, with an initial length of 0.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -62,7 +63,9 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// Create a Stack instance.
 let stack = new Stack<number | string | Object>();
+console.info("length:", stack.length);  // length: 0
 ```
 
 
@@ -80,13 +83,13 @@ Adds an element at the top of this Stack.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| item | T | Yes| Target element.|
+| item | T | Yes | Element to insert at the top of the stack. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Element added.|
+| T | Returns the element inserted at the top of the stack. |
 
 **Error codes**
 
@@ -99,15 +102,24 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-class C1 {
-  name: string = ""
-  age: string = ""
+class PersonInfo {
+  name: string = "";
+  age: string = "";
+  constructor(name: string, age: string) {
+    this.name = name;
+    this.age = age;
+  }
 }
-let stack = new Stack<number | string | C1>();
-let result = stack.push("a");
-let result1 = stack.push(1);
-let c : C1  = {name : "Dylan", age : "13"};
-let result2 = stack.push(c);
+// Create a Stack instance that supports multiple types.
+let stack = new Stack<number | string | PersonInfo>();
+// Push a string element onto the stack.
+console.info("push:", stack.push("a"));  // push: a
+// Push a number element onto the stack.
+console.info("push:", stack.push(1));  //  push: 1
+// Create a class instance and push it onto the stack.
+let person1: PersonInfo = new PersonInfo("Dylan", "13");
+let result = stack.push(person1);
+console.info("result instanceof PersonInfo:", result instanceof PersonInfo);  // result instanceof PersonInfo: true
 console.info("length:", stack.length);  // length: 3
 ```
 
@@ -144,6 +156,7 @@ stack.push(4);
 stack.push(5);
 stack.push(2);
 stack.push(4);
+// Remove the top element and return it.
 let result = stack.pop(); 
 console.info("result = " + result); // result = 4
 ```
@@ -152,7 +165,7 @@ console.info("result = " + result); // result = 4
 
 peek(): T
 
-Obtains the top element of this Stack. If the Stack is empty, **undefined** is returned.
+Returns the top element of the stack. When the stack is empty, undefined is returned. The content of the stack remains unchanged after the call.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -180,6 +193,7 @@ stack.push(2);
 stack.push(4);
 stack.push(5);
 stack.push(2);
+// View the top element of the stack without removing it.
 let result = stack.peek();
 console.info("result:", result);  // result: 2
 ```
@@ -198,7 +212,7 @@ Obtains the index of the first occurrence of the specified element in this Stack
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| element | T | Yes| Target element.|
+| element | T | Yes | Element to find. |
 
 **Return value**
 
@@ -222,6 +236,7 @@ stack.push(2);
 stack.push(4);
 stack.push(5);
 stack.push(2);
+// Find the index of the first occurrence of element 5.
 let result = stack.locate(5);
 console.info("result:", result);  // result: 2
 ```
@@ -230,7 +245,7 @@ console.info("result:", result);  // result: 2
 
 forEach(callbackFn: (value: T, index?: number, stack?: Stack&lt;T&gt;) => void, thisArg?: Object): void
 
-Uses a callback to traverse each element in the **Stack** instance.
+Traverses each element in the Stack instance object in the order from the bottom to the top of the stack, and executes the callback function on each element.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -240,24 +255,23 @@ Uses a callback to traverse each element in the **Stack** instance.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback invoked to traverse the elements in the Stack.|
-| thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this instance.|
+| callbackFn | function | Yes | Callback function executed when traversing each element. |
+| thisArg | Object | No | Used as the value of this when callbackFn is invoked. Default Value: the current instance object when not passed. |
 
 callbackFn parameters
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | T | Yes| Value of the element that is currently traversed.|
-| index | number | No| Position index of the element that is currently traversed. The default value is **0**.|
+| index | number | No | Subscript value of the current traversal, starting from 0 and incrementing sequentially. Default Value: 0. |
 | stack | Stack&lt;T&gt; | No| Instance that calls the **forEach** API. The default value is this instance.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **Example**
@@ -268,7 +282,8 @@ stack.push(2);
 stack.push(4);
 stack.push(5);
 stack.push(4);
-stack.forEach((value : number, index: number) :void => {
+// Traverse each element in the stack and execute the callback function.
+stack.forEach((value: number, index: number): void => {
   console.info("value:" + value, "index:" + index);
 });
 // value:2 index:0
@@ -281,7 +296,7 @@ stack.forEach((value : number, index: number) :void => {
 
 isEmpty(): boolean
 
-Checks whether this Stack is empty (contains no elements).
+Checks whether the stack is empty. Returns true if it is empty, and false otherwise.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -309,6 +324,7 @@ stack.push(2);
 stack.push(4);
 stack.push(5);
 stack.push(4);
+// Check whether the stack is empty.
 let result = stack.isEmpty();
 console.info("result:", result);  // result: false
 ```
@@ -317,7 +333,7 @@ console.info("result:", result);  // result: false
 
 [Symbol.iterator]\(): IterableIterator&lt;T&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator, each item of which is an element of type T.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -327,7 +343,7 @@ Returns an iterator, each item of which is a JavaScript object.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;T&gt; | Iterator obtained.|
+| IterableIterator&lt;T&gt; | Returns an iterator used to traverse all elements in the Stack in the storage order. |
 
 **Error codes**
 
@@ -355,11 +371,14 @@ for (let value of stack) {
 // value: 4
 
 // Method 2:
+// Create an iterator.
 let iter = stack[Symbol.iterator]();
-let temp: IteratorResult<number> = iter.next().value;
-while(temp != undefined) {
-  console.info("value: " + temp);
-  temp = iter.next().value;
+// Obtain the first iteration result.
+let currentValue: IteratorResult<number> = iter.next().value;
+// Traverse the elements in the iterator.
+while (currentValue != undefined) {
+  console.info("value: " + currentValue);
+  currentValue = iter.next().value;
 }
 // value: 2
 // value: 4

@@ -1,10 +1,11 @@
 # NDK-Related musl libc Interface Usage Restrictions
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: commonlibrary-->
 <!--Owner: @liyiming13-->
-<!--Designer: @huang_huijin-->
+<!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=6df432d6e98eabe45df0f220a25bf9077b530bbb translatedAt=2026-11-06T12:14:09.735Z pushedAt=2026-11-13T11:21:44.275Z nl=1 -->
 
 ## Overview
 
@@ -203,6 +204,9 @@ When developing an application using DevEco Studio or NDK, you may need to use t
 | unistd.h       | tcgetpgrp      |
 | unistd.h       | tcsetpgrp      |
 | utmp.h         | login_tty      |
+| wordexp.h      | wordexp        |
+
+Reference: [interfaces in third_party_musl strongly related to SELinux](#interfaces-in-third_party_musl-strongly-related-to-selinux-categorized-by-implementation-path)
 
 
 ## Sandbox-Affected musl Interfaces
@@ -265,3 +269,86 @@ Common Capabilities-Affected Interfaces
 | unistd.h       | setdomainname     | CAP_SYS_ADMIN        |
 | unistd.h       | sethostname       | CAP_SYS_ADMIN        |
 | unistd.h       | chroot            | CAP_SYS_CHROOT       |
+
+
+## Interfaces in third_party_musl strongly related to SELinux (categorized by implementation path)
+
+### pty/tty and terminal link
+
+| Header file | musl interface name | Fixed access path |
+| --- | --- | --- |
+| pty.h | forkpty | None; indirectly accesses `/dev/ptmx` and `/dev/pts/%d` through `openpty` |
+| pty.h | openpty | `/dev/ptmx`, `/dev/pts/%d` |
+| stdlib.h | ptsname | None; indirectly obtains `/dev/pts/%d` through `ptsname_r` |
+| stdlib.h | ptsname_r | `/dev/pts/%d` |
+| stdlib.h | posix_openpt | `/dev/ptmx` |
+| stdlib.h | unlockpt | None; executes `ioctl(TIOCSPTLCK)` on the passed-in fd |
+| unistd.h | ctermid | None; only returns the `/dev/tty` string |
+| unistd.h | ttyname_r | `/proc/self/fd/` |
+| unistd.h | getpass | `/dev/tty` |
+| utmp.h | login_tty | None; executes `ioctl(TIOCSCTTY)` on the passed-in fd |
+
+> **Description:**
+>
+> These interfaces are often associated with `dev_ptmx`, `devpts`, and `tty_device`, and in policies they are usually not "unconditionally opened to all subjects".
+
+### Shared Memory and Named Semaphores
+
+| Header File | musl Interface Name | Fixed Access Path |
+| --- | --- | --- |
+| sys/mman.h | shm_open / shm_unlink | `/dev/shm/` |
+| semaphore.h | sem_open | `/dev/shm/`, `/dev/shm/tmp-%d` |
+| semaphore.h | sem_unlink | `/dev/shm/` |
+
+> **Description:**
+>
+> The `/dev/shm` path is controlled by system-side SELinux.
+
+### Shell Execution and Log Console
+
+| Header File | musl Interface Name | Fixed Access Path |
+| --- | --- | --- |
+| stdio.h | popen | `/bin/sh` |
+| stdio.h | pclose | None; waits for and reaps the child process created by `popen` |
+| stdlib.h | system | `/bin/sh` |
+| wordexp.h | wordexp | `/bin/sh` |
+| syslog.h | syslog-related interfaces | `/dev/log`, `/dev/console` |
+| fmtmsg.h | fmtmsg | `/dev/console` |
+
+> **Description:**
+>
+> Access to `/dev/log` and `/dev/console` generally depends on subject domain authorization and is not fully permitted by default.
+
+### Accounts and Sensitive Files
+
+| Header File | musl Interface Name | Fixed Access Path |
+| --- | --- | --- |
+| shadow.h | getspnam_r | `/etc/tcb/%s/shadow`, `/etc/shadow` |
+
+> **Note:**
+>
+> The objects of these interfaces are highly sensitive. It is recommended to audit them separately with least privilege.
+
+### Interfaces without a fixed path but with SELinux control points
+
+| Header file | musl interface name | Possible cause of impact |
+| --- | --- | --- |
+| net/if.h | if_indextoname | Through `socket` + `ioctl(SIOCGIFNAME)`, SELinux controls `udp_socket/unix_dgram_socket ioctl` |
+| net/if.h | if_nametoindex | Through `socket` + `ioctl(SIOCGIFINDEX)`, SELinux controls `udp_socket/unix_dgram_socket ioctl` |
+| sys/mount.h | mount / umount / umount2 | The path is determined by the parameter passed in, SELinux controls `filesystem { mount unmount remount }` and the mount point `dir/file mounton` |
+| sys/msg.h | msgctl / msgget / msgrcv / msgsnd | System V message queue objects, SELinux controls `msg/msgq` |
+| sys/sem.h | semget / semctl / semop / semtimedop | System V semaphore objects, SELinux controls `sem` |
+| sys/shm.h | shmget / shmat / shmdt / shmctl | System V shared memory objects, SELinux controls `shm` |
+| sys/stat.h | mkfifo / mkfifoat | The path is determined by the parameter passed in, SELinux controls the parent directory `add_name/create` and the target `fifo_file` |
+| sys/stat.h | mknod / mknodat | The path is determined by the parameter passed in, SELinux controls the parent directory `add_name/create` and the target `chr_file/blk_file/fifo_file` |
+| sys/ioctl.h | ioctl | Accesses the target object through fd, typically controlled by `ioctl`/`allowxperm` |
+| termios.h | tcgetattr / tcsetattr | Executes `ioctl` through fd, the typical object is `tty_device/devpts:chr_file` |
+| termios.h | tcsendbreak / tcdrain / tcflush / tcflow / tcgetsid | Executes `ioctl` through fd, the typical object is `tty_device/devpts:chr_file` |
+| unistd.h | tcgetpgrp / tcsetpgrp | Executes `ioctl` through fd, the typical object is `tty_device/devpts:chr_file` |
+| unistd.h | link / linkat | The path is determined by the parameter passed in, SELinux controls `file link` and the parent directory `add_name` |
+| unistd.h | readlink / readlinkat | The path is determined by the parameter passed in, SELinux controls `lnk_file read/getattr` |
+| unistd.h | symlink / symlinkat | The path is determined by the parameter passed in, SELinux controls `lnk_file create` and the parent directory `add_name` |
+
+> **Description:**
+>
+> The interfaces above do not have a fixed access path inside musl. Whether SELinux interception is triggered depends on the calling subject, the path or fd passed in, the kernel object label, and the corresponding policy.

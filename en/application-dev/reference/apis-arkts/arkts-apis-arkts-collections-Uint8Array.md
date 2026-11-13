@@ -1,19 +1,21 @@
 # Class (Uint8Array)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
-A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md).
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=71db7138e2704708b0a19c70a4e677ab1c2014cd translatedAt=2026-11-06T08:54:20.707Z pushedAt=2026-11-13T03:23:50.248Z nl=2 -->
+
+A linear data structure whose underlying implementation is based on [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module can be imported only to ArkTS files (with the file name extension .ets).
+> This module can be imported and used only in ArkTS files (with the .ets file name extension).
 
-**Decorator**: \@Sendable
+**Decorator type:** [\@Sendable](../../arkts-utils/arkts-sendable.md#sendable-decorator)
 
 ## Modules to Import
 
@@ -23,30 +25,30 @@ import { collections } from '@kit.ArkTS';
 
 ## Properties
 
-**System capability**: SystemCapability.Utils.Lang
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Utils.Lang
 
 | Name  | Type  | Read Only| Optional| Description             |
 | ------ | ------ | ---- | ---- | ----------------|
 | buffer | ArrayBuffer | Yes  | No | Bottom-layer buffer used by an ArkTS Uint8Array.|
-| byteLength | number | Yes  | No  | Number of bytes occupied by an ArkTS Uint8Array.|
-| byteOffset | number | Yes  | No  | Offset between the ArkTS Uint8Array and the start position of the ArrayBuffer.|
+| byteLength | number | Yes | No | Number of bytes occupied by the ArkTS Uint8Array. |
+| byteOffset | number | Yes | No | Byte offset of the ArkTS Uint8Array from the start of its ArrayBuffer. |
 | length | number | Yes  | No | Number of elements in an ArkTS Uint8Array.|
-| BYTES_PER_ELEMENT | number | Yes  | No  | Number of bytes occupied by each element in the ArkTS Uint8Array.|
+| BYTES_PER_ELEMENT | number | Yes | No | Number of bytes occupied by each element in the ArkTS Uint8Array. |
 
 ## constructor
 constructor()
 
 A constructor used to create an empty ArkTS Uint8Array.
 
-**System capability**: SystemCapability.Utils.Lang
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Utils.Lang
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
@@ -71,15 +73,14 @@ A constructor used to create an ArkTS Uint8Array of a given length.
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | --------------------------- |
-| length | number | Yes| Length of the ArkTS Uint8Array.|
+| length | number | Yes | Used to specify the length of the ArkTS Uint8Array, with a value that is a non-negative integer. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                                 |
 | -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint8Array's constructor cannot be directly invoked. |
 
 
@@ -103,24 +104,23 @@ A constructor that creates an ArkTS Uint8Array from an iterable object.
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| elements |  Iterable\<number> | Yes| An iterable collection of numbers used to construct an ArkTS Uint8Array object.|
+| elements |  Iterable\<number> | Yes | An iterable collection of numbers used to construct an ArkTS Uint8Array object. The value range of the numbers in the collection is [0, 255], and values out of range are truncated to the lower 8 bits (for example, the binary of 256 is 100000000, which becomes 00000000 after truncation). |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint8Array's constructor cannot be directly invoked. |
 
 **Example**
 
 ```ts
 // Construct objects from an iterable object.
-let set: Set<number> = new Set<number>([1, 2, 3]);
-let array: collections.Uint8Array = new collections.Uint8Array(set);
-// Uint8Array [1, 2, 3]
+let set: Set<number> = new Set<number>([1, 2, 3, 256]);
+let uint8Array: collections.Uint8Array = new collections.Uint8Array(set);
+// Uint8Array [1, 2, 3, 0]
 ```
 
 ## constructor
@@ -136,15 +136,14 @@ A constructor that creates an ArkTS Uint8Array from an array-like object or ArkT
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| array |  ArrayLike\<number> \| ArrayBuffer | Yes| Object used to construct the ArkTS Uint8Array. When the parameter type is ArrayBuffer, the number of bytes occupied by the buffer must be an integer multiple of 4.|
+| array |  ArrayLike\<number> \| ArrayBuffer | Yes | Object used to construct the ArkTS Uint8Array. When ArrayLike\<number> is passed in, the value range is [0, 255], and out-of-range values are truncated to the lower 8 bits (for example, the binary of 256 is 100000000, which becomes 00000000 after truncation). |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint8Array's constructor cannot be directly invoked. |
 
 **Example**
@@ -152,13 +151,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // Example 1: Construct an object from an array-like object.
 let arrayLike = [1, 3, 5];
-let array: collections.Uint8Array = new collections.Uint8Array(arrayLike);
+let uint8Array: collections.Uint8Array = new collections.Uint8Array(arrayLike);
 ```
 
 ```ts
 // Example 2: Construct an object from an ArrayBuffer.
-let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(12);
-let array: collections.Uint8Array = new collections.Uint8Array(arrayBuffer);
+let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(10);
+let uint8Array: collections.Uint8Array = new collections.Uint8Array(arrayBuffer);
 ```
 
 ```ts
@@ -183,33 +182,32 @@ A constructor that creates an ArkTS Uint8Array from an ArrayBuffer.
 
 | Name | Type  | Mandatory| Description                                        |
 | ------- | ------ | ---- | ------------------------------------------ |
-| buffer | ArrayBuffer | Yes| ArrayBuffer object used to construct the ArkTS Uint8Array. The number of bytes occupied by the buffer must be an integer multiple of 4.|
-| byteOffset | number | No| Byte offset of the buffer, beginning at 0. The default value is **0**.|
-| length | number | No| Length of the ArkTS Uint8Array. The default value is **0**.|
+| buffer | ArrayBuffer | Yes | ArrayBuffer object used to construct the ArkTS Uint8Array. The ArkTS Uint8Array and this ArrayBuffer share memory, and modifying data in one affects the other. |
+| byteOffset | number | No | Specifies the byte offset of the buffer. The value is a non-negative integer and must be less than buffer.byteLength. An exception is thrown when the value is out of range. The default value is 0. |
+| length | number | No | Specifies the length of the ArkTS Uint8Array. The sum of byteOffset and length cannot exceed buffer.byteLength. An exception is thrown when the value is out of range. The default value is buffer.byteLength - byteOffset. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                                  |
 | -------- | -------------------------------------------------------   |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint8Array's constructor cannot be directly invoked. |
 
 **Example**
 
 ```ts
 let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5, 6]);
-console.info("byteLength: " + uint8Array.buffer.byteLength); // byteLength: 6
-// Start from the first byte of the buffer corresponding to int8Array. The length is 5.
+console.info(`byteLength: ${uint8Array.buffer.byteLength}`); // byteLength: 6
+// Obtain 5 elements starting from index 1 in the buffer of uint8Array.
 let uint8Array1: collections.Uint8Array = new collections.Uint8Array(uint8Array.buffer, 1, 5);
-console.info("[" + uint8Array1 + "]"); // [2, 3, 4, 5, 6]
+console.info(`[${uint8Array1}]`); // [2, 3, 4, 5, 6]
 ```
 
 ## from
 static from(arrayLike: ArrayLike\<number>): Uint8Array
 
-Creates an ArkTS Uint8Array from an array-like or iterator object.
+Creates an ArkTS Uint8Array object from an ArrayLike.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -219,7 +217,7 @@ Creates an ArkTS Uint8Array from an array-like or iterator object.
 
 | Name | Type  | Mandatory| Description                                                 |
 | ------- | ------ | ---- | --------------------------------------------------- |
-| arrayLike | ArrayLike\<number> | Yes| Array-like object used to construct the ArkTS Uint8Array.|
+| arrayLike | ArrayLike\<number> | Yes | The ArrayLike object used to construct the ArkTS Uint8Array. The value range of numeric elements is [0, 255], and out-of-range values are truncated to the lower 8 bits (for example, the binary of 256 is 100000000, which becomes 00000000 after truncation). |
 
 **Return value**
 
@@ -227,18 +225,10 @@ Creates an ArkTS Uint8Array from an array-like or iterator object.
 | ------------ | --------- |
 | Uint8Array | New ArkTS Uint8Array generated.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                 |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
-
 **Example**
 ```ts
 let arrayLike = [1, 3, 5];
-let array: collections.Uint8Array = collections.Uint8Array.from(arrayLike); // array [1, 3, 5]
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from(arrayLike); // Uint8Array [1, 3, 5]
 ```
 
 ## from
@@ -253,8 +243,8 @@ Creates an ArkTS Uint8Array from an array-like object.
 **Parameters**
 | Name | Type  | Mandatory| Description                                       |
 | ------- | ------ | ---- | ------------------------------------------|
-| arrayLike | ArrayLike\<T> | Yes| Array-like object used to construct the ArkTS Uint8Array.             |
-| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<T, number> | Yes| Mapping function.|
+| arrayLike | ArrayLike\<T> | Yes | ArrayLike object used to construct the ArkTS Uint8Array. The value range of numeric elements is [0, 255], and out-of-range values are truncated to the lower 8 bits (for example, the binary of 256 is 100000000, which becomes 00000000 after truncation). |
+| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<T, number> | Yes | Mapping function that maps each element in the ArrayLike from type T to type number, used to create the ArkTS Uint8Array. The value range of numeric elements is [0, 255], and out-of-range values are truncated to the lower 8 bits (for example, the binary of 256 is 100000000, which becomes 00000000 after truncation). |
 
 **Return value**
 
@@ -262,33 +252,25 @@ Creates an ArkTS Uint8Array from an array-like object.
 | ------------ | --------- |
 | Uint8Array | New ArkTS Uint8Array generated.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                 |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
-
 **Example**
 
 ```ts
 // Example 1: Create an ArkTS Uint8Array from an object.
-let array: collections.Uint8Array = collections.Uint8Array.from<number>(
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from<number>(
   { length: 5 }, (v: Object, k: number) => k);
 // Uint8Array [0, 1, 2, 3, 4]
 ```
 
 ```ts
 // Example 2: Create an ArkTS Uint8Array from a string array.
-let array: collections.Uint8Array = collections.Uint8Array.from<string>(
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from<string>(
   ["1", "3", "5"], (v: string, k: number) => parseInt(v));
 // Uint8Array [1, 3, 5]
 ```
 
 ```ts
 // Example 3: Create an ArkTS Uint8Array from a string.
-let array: collections.Uint8Array = collections.Uint8Array.from<string>(
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from<string>(
   "12345", (v: string, k: number) => parseInt(v));
 // Uint8Array [1, 2, 3, 4, 5]
 ```
@@ -305,8 +287,8 @@ Creates an ArkTS Uint8Array from an iterator object.
 **Parameters**
 | Name | Type  | Mandatory| Description                               |
 | ------- | ------ | ---- | -----------------------------------|
-| arrayLike | Iterable\<number> | Yes| Iterator object used to construct the ArkTS Uint8Array.  |
-| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<number, number> | No| Mapping function. If no value is passed in, no special processing is conducted on the elements.|
+| arrayLike | Iterable\<number> | Yes | Iterable object used to construct the ArkTS Uint8Array. The value range of numeric elements is [0, 255], and out-of-range values are truncated to the lower 8 bits (for example, the binary of 256 is 100000000, which becomes 00000000 after truncation).   |
+| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<number, number> | No | Mapping function. If omitted, elements are not processed, and the original data is directly used to create the Uint8Array. The value range of numeric elements is [0, 255], and out-of-range values are truncated to the lower 8 bits (for example, the binary of 256 is 100000000, which becomes 00000000 after truncation).|
 
 **Return value**
 
@@ -314,27 +296,19 @@ Creates an ArkTS Uint8Array from an iterator object.
 | ------------ | --------- |
 | Uint8Array | New ArkTS Uint8Array generated.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                 |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
-
 **Example**
 
 ```ts
 // Example 1: No mapping function is specified.
 let set: Set<number> = new Set<number>([1, 2, 3]);
-let array: collections.Uint8Array = collections.Uint8Array.from(set);
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from(set);
 // Uint8Array [1, 2, 3]
 ```
 
 ```ts
 // Example 2: A mapping function is specified.
 let set: Set<number> = new Set<number>([1, 2, 3]);
-let array: collections.Uint8Array = collections.Uint8Array.from(
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from(
   set, (v: number, k: number) => v + k);
 // Uint8Array [1, 3, 5]
 ```
@@ -343,7 +317,7 @@ let array: collections.Uint8Array = collections.Uint8Array.from(
 
 static of(...items: number[]): Uint8Array
 
-Creates an ArkTS Uint8Array with a variable number of parameters.
+Creates a new ArkTS Uint8Array object from a variable number of arguments.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -353,34 +327,26 @@ Creates an ArkTS Uint8Array with a variable number of parameters.
 
 | Name   | Type         | Mandatory| Description                           |
 | --------- | ------------- | ---- | ------------------------------- |
-| items | number[] | No  | Array of elements used to create the array. The number of elements can be zero, one, or more. The default value is an empty array.|
+| items | number[] | No   | Elements used to create the Uint8Array. The number of parameters can be 0, 1, or more. The value range of each parameter is [0, 255]. Values out of range are truncated to the lower 8 bits (for example, the binary of 256 is 100000000, which becomes 00000000 after truncation). The default value is an empty array. |
 
 **Return value**
 
 | Type     | Description                   |
 | --------- | ----------------------- |
-| Uint8Array | New ArkTS Uint8Array instance.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                        |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| Uint8Array | Newly created ArkTS Uint8Array object. |
 
 **Example**
 
 ```ts
-let arr: collections.Uint8Array = collections.Uint8Array.of(1, 2, 3, 4);
-console.info(arr.toString()); // Expected output: 1,2,3,4
+let uint8Array: collections.Uint8Array = collections.Uint8Array.of(1, 2, 3, 4);
+console.info(uint8Array.toString()); // Expected output: 1,2,3,4
 ```
 
 ## toString<sup>18+</sup>
 
 toString(): string
 
-Converts an ArkTS Uint8Array into a string.
+Converts the ArkTS Uint8Array to a string, returning a string formed by concatenating all elements separated by commas.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -404,16 +370,16 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let array = new collections.Uint8Array([1, 2, 3, 4, 5]);
-let stringArray = array.toString();
-console.info(stringArray); // Expected output: 1,2,3,4,5
+let uint8Array = new collections.Uint8Array([1, 2, 3, 4, 5]);
+let resultString = uint8Array.toString();
+console.info(resultString); // Expected output: 1,2,3,4,5
 ```
 
 ## toLocaleString<sup>18+</sup>
 
 toLocaleString(): string
 
-Generates a string of digits that matches the cultural conventions of the current system locale. Each element converts its digits to a string via its **toLocaleString** API, and these strings are then joined together in sequence with commas (,).
+Converts each element to a localized string based on the system locale of the current application, and concatenates them in order with commas into the resulting string.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -423,7 +389,7 @@ Generates a string of digits that matches the cultural conventions of the curren
 
 | Type        | Description           |
 | ---------- | ------------- |
-| string | A string that contains all elements of the array.|
+| string | A string containing all elements of the array, formatted according to the system locale. |
 
 **Error codes**
 
@@ -438,15 +404,15 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 // The system where the application is running is set to the French locale.
-let array = new collections.Uint8Array([100, 110, 120]);
-let stringArray = array.toLocaleString();
-console.info(stringArray); // Expected output: 100,110,120
+let uint8Array = new collections.Uint8Array([100, 110, 120]);
+let resultString = uint8Array.toLocaleString();
+console.info(resultString); // Expected output: 100,110,120
 ```
 
 ## copyWithin
 copyWithin(target: number, start: number, end?: number): Uint8Array
 
-Copies elements within a given range from this ArkTS Uint8Array to another position in sequence.
+Copies the elements within the specified range of the ArkTS Uint8Array to the target position in its own buffer in sequence, overwriting the original data in the target range, and returns the modified ArkTS Uint8Array.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -456,7 +422,7 @@ Copies elements within a given range from this ArkTS Uint8Array to another posit
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| target | number | Yes| Start index of the range. If a negative number is passed in, it refers to the index of `target + array.length`.|
+| target | number | Yes | Subscript of the target start position. If `target < 0`, it starts from the position `target + Uint8Array.length`. |
 | start | number | Yes| Start index of the range. If a negative number is passed in, it refers to the index of `start + Uint8Array.length`.|
 | end | number | No| End index of the range (exclusive). If a negative number is passed in, it refers to the index of `end + Uint8Array.length`. The default value is the length of the ArkTS Uint8Array.|
 
@@ -464,30 +430,29 @@ Copies elements within a given range from this ArkTS Uint8Array to another posit
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint8Array | ArkTS Uint8Array after being modified.|
+| Uint8Array | The modified ArkTS Uint8Array. (In-place modification, returns the original object reference.) |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The copyWithin method cannot be bound.           |
 | 10200201 | Concurrent modification error.               |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
-let copied: collections.Uint8Array = array.copyWithin(3, 1, 3);
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
+let copied: collections.Uint8Array = uint8Array.copyWithin(3, 1, 3);
 // Uint8Array [1, 2, 3, 2, 3, 6, 7, 8]
 ```
 
 ## some
 some(predicate: TypedArrayPredicateFn\<number, Uint8Array>): boolean
 
-Checks whether any element in this ArkTS Uint8Array meets a given condition.
+Tests whether any element in the ArkTS Uint8Array satisfies the specified condition. Returns true if such an element exists; otherwise, returns false.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -507,11 +472,10 @@ Checks whether any element in this ArkTS Uint8Array meets a given condition.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The some method cannot be bound.   |
 | 10200201 | Concurrent modification error. |
 
@@ -526,7 +490,7 @@ uint8Array.some((element: number) => element < 1); // false
 ## every
 every(predicate: TypedArrayPredicateFn\<number, Uint8Array>): boolean
 
-Checks whether all elements in this ArkTS Uint8Array meet a given condition.
+Tests whether all elements in the ArkTS Uint8Array satisfy the specified condition. Returns true if all of them satisfy the condition; otherwise, returns false.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -546,11 +510,10 @@ Checks whether all elements in this ArkTS Uint8Array meet a given condition.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The every method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -565,7 +528,7 @@ uint8Array.every((element: number) => element > 1);  // true
 ## fill
 fill(value: number, start?: number, end?: number): Uint8Array
 
-Fills all elements in a given range in this ArkTS Uint8Array with a value.
+Fills and replaces all elements within the specified range of the ArkTS Uint8Array with a specific value, and returns the modified ArkTS Uint8Array.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -575,23 +538,22 @@ Fills all elements in a given range in this ArkTS Uint8Array with a value.
 
 | Name | Type  | Mandatory| Description                                                     |
 | ------- | ------ | ---- | --------------------------------------------------------|
-| value | number | Yes| Value to fill in.|
+| value | number | Yes | Value to be filled. The value range is [0, 255]. Values out of range are truncated. |
 | start | number | No| Start index of the range. If a negative number is passed in, it refers to the index of `start + Uint8Array.length`. The default value is **0**.|
-| end | number | No| End index of the range (exclusive). If a negative number is passed in, it refers to the index of `end + Uint8Array.length`. The default value is the length of the ArkTS Uint8Array.|
+| end | number | No | Index at which to end filling (the element at this index is not included). If `end < 0`, filling ends at `end + Uint8Array.length`. The default value is the length of the ArkTS Uint8Array. |
 
 **Return value**
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint8Array | Filled ArkTS Uint8Array.|
+| Uint8Array | The filled ArkTS Uint8Array (in-place modification, returns the original object reference). |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The fill method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -627,19 +589,18 @@ Returns a new ArkTS Uint8Array that contains all elements that meet the given co
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The filter method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([0, 1, 2, 3, 4]);
-let filtered: collections.Uint8Array = array.filter((element: number) => element % 2 == 0);
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([0, 1, 2, 3, 4]);
+let filtered: collections.Uint8Array = uint8Array.filter((element: number) => element % 2 == 0);
 // Uint8Array [0, 2, 4]
 ```
 
@@ -666,20 +627,19 @@ Returns the value of the first element that passes a test provided by a callback
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The find method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([0, 1, 2, 3, 4]);
-array.find((element: number) => element > 2); // 3
-array.find((element: number) => element > 4); // undefined
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([0, 1, 2, 3, 4]);
+uint8Array.find((element: number) => element > 2); // 3
+uint8Array.find((element: number) => element > 4); // undefined
 ```
 
 ## findIndex
@@ -705,25 +665,24 @@ Returns the index of the first element that passes a test provided by a callback
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                      |
 | 10200011 | The findIndex method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
 **Example**
 
 ```ts
-const array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-let foundIndex: number = array.findIndex((element: number) => element % 2 === 0); // 1
+const uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+let foundIndex: number = uint8Array.findIndex((element: number) => element % 2 === 0); // 1
 ```
 
 ## forEach
 forEach(callbackFn: TypedArrayForEachCallback\<number, Uint8Array>): void
 
-Calls a callback function for each element in this ArkTS Uint8Array.
+Executes the provided callback function on each element of the ArkTS Uint8Array in order. This method has no return value.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -738,11 +697,10 @@ Calls a callback function for each element in this ArkTS Uint8Array.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The forEach method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -758,7 +716,7 @@ uint8Array.forEach((value: number, index: number, array: collections.Uint8Array)
 ## indexOf
 indexOf(searchElement: number, fromIndex?: number): number
 
-Returns the index of the first occurrence of a value in this ArkTS Uint8Array. If the value is not found, **-1** is returned.
+Returns the first index of the given element in the ArkTS Uint8Array, or -1 if the element is not found.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -768,40 +726,39 @@ Returns the index of the first occurrence of a value in this ArkTS Uint8Array. I
 
 | Name       | Type  | Mandatory| Description                       |
 | ------------- | ------ | ---- | ---------------------------|
-| searchElement | number | Yes  | Value to search for.               |
-| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS Uint8Array, **-1** is returned. If a negative number is passed in, the search starts from the end of the ArkTS Uint8Array.|
+| searchElement | number | Yes  | Element whose index is to be found.                |
+| fromIndex     | number | No   | Starting index for the front-to-back search. The default value is 0. If `fromIndex < 0`, the search starts from the position `fromIndex + Uint8Array.length` in a front-to-back manner. If the value of fromIndex causes the search interval to have no overlap with the array range, -1 is returned. |
 
 **Return value**
 
 | Type        | Description     |
 | ------------ | --------- |
-| number | Index of the first occurrence of the value. If the value is not found, **-1** is returned.|
+| number | The first index of the specified element in the specified range of the array; if not found, -1 is returned. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The indexOf method cannot be bound. |
 | 10200201 | Concurrent modification error.                |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([3, 5, 9]);
-array.indexOf(3); // 0
-array.indexOf(7); // -1
-array.indexOf(9, 2); // 2
-array.indexOf(9, -2); // 2
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([3, 5, 9]);
+uint8Array.indexOf(3); // 0
+uint8Array.indexOf(7); // -1
+uint8Array.indexOf(9, 2); // 2
+uint8Array.indexOf(9, -2); // 2
 ```
 
 ## lastIndexOf<sup>18+</sup>
 
 lastIndexOf(searchElement: number, fromIndex?: number): number
 
-Obtains the index of the last occurrence of the specified value in this ArkTS Uint8Array.
+Returns the index of the last occurrence of the given element in the ArkTS Uint8Array instance, or -1 if the element is not found.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -811,18 +768,18 @@ Obtains the index of the last occurrence of the specified value in this ArkTS Ui
 
 | Name          | Type    | Mandatory | Description                                                                               |
 | ------------- | ------ | --- | --------------------------------------------------------------------------------- |
-| searchElement | number | Yes  | Value to search for.                                                                           |
-| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS Uint8Array, **-1** is returned. If a negative number is passed in, the search starts from the end of the ArkTS Uint8Array.|
+| searchElement | number | Yes  | Element to search for.                                                                            |
+| fromIndex     | number | No   | Starting index for searching from back to front. The default value is the length of ArkTS Uint8Array minus 1. If `fromIndex < 0`, the search starts from the position `fromIndex + Uint8Array.length` and proceeds from back to front. If the value of fromIndex causes the search interval to have no overlap with the array range, -1 is returned. |
 
 **Return value**
 
 | Type    | Description                     |
 | ------ | ----------------------- |
-| number | Index of the last occurrence of the value. If the value is not found, **-1** is returned.|
+| number | The last index of the element in the specified range of the array; if not found, -1 is returned. |
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
@@ -832,11 +789,11 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([3, 5, 9]);
-console.info(array.lastIndexOf(3) + ''); // Expected output: 0
-console.info(array.lastIndexOf(7) + ''); // Expected output: -1
-console.info(array.lastIndexOf(9, 2) + ''); // Expected output: 2
-console.info(array.lastIndexOf(9, -2) + ''); // Expected output: -1
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([3, 5, 9]);
+console.info(`${uint8Array.lastIndexOf(3)}`); // Expected output: 0
+console.info(`${uint8Array.lastIndexOf(7)}`); // Expected output: -1
+console.info(`${uint8Array.lastIndexOf(9, 2)}`); // Expected output: 2
+console.info(`${uint8Array.lastIndexOf(9, -2)}`); // Expected output: -1
 ```
 
 ## join
@@ -862,19 +819,18 @@ Concatenates all elements in this ArkTS Uint8Array into a string, with a given s
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The join method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-let joined: string = array.join('-'); // "1-2-3-4-5"
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+let joined: string = uint8Array.join('-'); // "1-2-3-4-5"
 ```
 
 ## map
@@ -889,30 +845,29 @@ Applies a callback function to each element in this ArkTS Uint8Array and uses th
 **Parameters**
 | Name   | Type  | Mandatory| Description                                                |
 | --------- | ------ | ---- | ---------------------------------------------------- |
-| callbackFn | [TypedArrayMapCallback](arkts-apis-arkts-collections-Types.md#typedarraymapcallback)\<number, Uint8Array> | Yes | Callback function to run for each element.|
+| callbackFn | [TypedArrayMapCallback](arkts-apis-arkts-collections-Types.md#typedarraymapcallback)\<number, Uint8Array> | Yes | Callback function that performs a conversion operation on each element in the ArkTS Uint8Array. The return value is used as the new element at the corresponding position. If the return value is out of the value range [0, 255], it is truncated to the lower 8 bits (for example, the binary of 256 is 100000000, which becomes 00000000 after truncation). |
 
 
 **Return value**
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint8Array | New ArkTS Uint8Array.|
+| Uint8Array | Newly created ArkTS Uint8Array object containing the conversion result of the callback function. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The map method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([25, 36, 49]);
-const mapped: collections.Uint8Array = array.map(Math.sqrt); // Uint8Array [5, 6 ,7]
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([25, 36, 49]);
+const mapped: collections.Uint8Array = uint8Array.map(Math.sqrt); // Uint8Array [5, 6, 7]
 ```
 
 ## reduce
@@ -937,19 +892,18 @@ Applies a reduce function on each element in this ArkTS Uint8Array and returns t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID|                      Error Message                    |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The reduce method cannot be bound.               |
 | 10200201 | Concurrent modification error.               |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-let reducedValue: number = array.reduce((accumulator: number, value: number) => accumulator + value);
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+let reducedValue: number = uint8Array.reduce((accumulator: number, value: number) => accumulator + value);
 // reducedValue == 15
 ```
 
@@ -976,26 +930,25 @@ Reversely traverses this ArkTS Uint8Array, applies a reduce function on each ele
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-let reducedValue: number = array.reduceRight((accumulator: number, value: number) => accumulator + value);
-console.info(reducedValue + ''); // Expected output: 15
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+let reducedValue: number = uint8Array.reduceRight((accumulator: number, value: number) => accumulator + value);
+console.info(`${reducedValue}`); // Expected output: 15
 ```
 
 ## reduce
 reduce(callbackFn: TypedArrayReduceCallback\<number, number, Uint8Array>, initialValue: number): number
 
-Applies a reduce function for each element in this ArkTS Uint8Array, receives an initial value as the parameter called by the reduce function for the first time, and returns the final reduction result.
+Executes a reduction function on each element in the ArkTS Uint8Array, receives an initial value as the argument for the first call, and returns the final reduction result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1016,19 +969,18 @@ Applies a reduce function for each element in this ArkTS Uint8Array, receives an
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-let reducedValue: number = array.reduce((accumulator: number, value: number) => accumulator + value, 1);
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+let reducedValue: number = uint8Array.reduce((accumulator: number, value: number) => accumulator + value, 1);
 // reducedValue == 16
 ```
 
@@ -1036,7 +988,7 @@ let reducedValue: number = array.reduce((accumulator: number, value: number) => 
 
 reduceRight\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Uint8Array>, initialValue: U): U
 
-Reversely traverses this ArkTS Uint8Array, applies a reduce function for each element in the array, receives an initial value as the parameter called by the reduce function for the first time, and returns the final reduction result.
+Traverses the ArkTS Uint8Array in reverse order, executes a reduction function on each element, receives an initial value as the argument for the first call of the reduction function, and returns the final reduction result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1056,20 +1008,19 @@ Reversely traverses this ArkTS Uint8Array, applies a reduce function for each el
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-let reducedValue: number = array.reduceRight((accumulator: number, value: number) => accumulator + value, 1);
-console.info(reducedValue + ''); // Expected output: 16
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+let reducedValue: number = uint8Array.reduceRight((accumulator: number, value: number) => accumulator + value, 1);
+console.info(`${reducedValue}`); // Expected output: 16
 ```
 
 ## reduce
@@ -1096,26 +1047,25 @@ Applies a reduce function for each element in this ArkTS Uint8Array, receives an
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-let reducedValue: string = array.reduce<string>((accumulator: string, value: number) => accumulator + value, "initialValue");
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+let reducedValue: string = uint8Array.reduce<string>((accumulator: string, value: number) => accumulator + value, "initialValue");
 // reducedValue == initialValue12345
 ```
 
 ## reverse
 reverse(): Uint8Array
 
-Reverses this ArkTS Uint8Array.
+Reverses the order of the elements in the ArkTS Uint8Array and returns the reversed ArkTS Uint8Array object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1125,11 +1075,11 @@ Reverses this ArkTS Uint8Array.
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint8Array   | Reversed ArkTS Uint8Array.|
+| Uint8Array   | The reversed ArkTS Uint8Array object (in-place modification, returns the original object reference). |
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
@@ -1139,14 +1089,14 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-let reversed: collections.Uint8Array = array.reverse(); // Uint8Array [5, 4, 3, 2, 1]
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+let reversed: collections.Uint8Array = uint8Array.reverse(); // Uint8Array [5, 4, 3, 2, 1]
 ```
 
 ## set
 set(array: ArrayLike\<number>, offset?: number): void
 
-Writes the elements in an array-like object to the given start position in sequence.
+Writes the passed-in ArrayLike elements into the ArkTS Uint8Array in sequence, replacing the original elements starting from the start position.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1155,16 +1105,15 @@ Writes the elements in an array-like object to the given start position in seque
 **Parameters**
 | Name   | Type  | Mandatory| Description                                                |
 | --------- | ------ | ---- | ---------------------------------------------------- |
-| array | ArrayLike\<number> | Yes | Array-like object whose elements will be written.|
-| offset | number | No | Start position for writing data. The default value is **0**.|
+| array | ArrayLike\<number> | Yes | The ArrayLike object used for setting. The value range of numeric elements is [0, 255], and out-of-range values are truncated to the lower 8 bits (for example, the binary of 256 is 100000000, which becomes 00000000 after truncation). |
+| offset | number | No | The starting position for writing, which is a non-negative integer. The sum of offset and array.length cannot exceed the length of the ArkTS Uint8Array; otherwise, an exception is thrown. The default value is 0. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The set method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -1172,14 +1121,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let buffer: collections.ArrayBuffer = new collections.ArrayBuffer(8);
-let array: collections.Uint8Array = new collections.Uint8Array(buffer);
-array.set([1, 2, 3], 3); // Uint8Array [0, 0, 0, 1, 2, 3, 0, 0]
+let uint8Array: collections.Uint8Array = new collections.Uint8Array(buffer);
+uint8Array.set([1, 2, 3], 3); // Uint8Array [0, 0, 0, 1, 2, 3, 0, 0]
 ```
 
 ## slice
 slice(start?: number, end?: number): Uint8Array
 
-Selects a range of elements in this ArkTS Uint8Array to create an ArkTS Uint8Array.
+Returns a new ArkTS Uint8Array object that copies the content of the specified range of the original ArkTS Uint8Array. Unlike [subarray](#subarray), this method generates an independent copy and does not affect the original ArkTS Uint8Array object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1196,25 +1145,24 @@ Selects a range of elements in this ArkTS Uint8Array to create an ArkTS Uint8Arr
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint8Array | New ArkTS Uint8Array.|
+| Uint8Array | A new ArkTS Uint8Array object containing the elements in the specified range of the original ArkTS Uint8Array. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The slice method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-array.slice(); // Uint8Array [1, 2, 3, 4, 5]
-array.slice(1, 3); // Uint8Array [2, 3]
-array.slice(-2); // Uint8Array [4, 5]
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+uint8Array.slice(); // Uint8Array [1, 2, 3, 4, 5]
+uint8Array.slice(1, 3); // Uint8Array [2, 3]
+uint8Array.slice(-2); // Uint8Array [4, 5]
 ```
 
 ## sort
@@ -1236,31 +1184,30 @@ Sorts elements in this ArkTS Uint8Array and returns the sorted ArkTS Uint8Array.
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint8Array | Sorted ArkTS Uint8Array.|
+| Uint8Array | The sorted ArkTS Uint8Array object (in-place sorting, returns a reference to the original object). |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                   |
 | -------- | ------------------------------------------ |
-| 401      | Parameter error.                 |
 | 10200011 | The sort method cannot be bound. |
 | 10200201 | Concurrent modification error.         |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 3, 5, 4, 2]);
-array.sort(); // Uint8Array [1, 2, 3, 4, 5]
-array.sort((a: number, b: number) => a - b); // Uint8Array [1, 2, 3, 4, 5]
-array.sort((a: number, b: number) => b - a); // Uint8Array [5, 4, 3, 2, 1]
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 3, 5, 4, 2]);
+uint8Array.sort(); // Uint8Array [1, 2, 3, 4, 5]
+uint8Array.sort((a: number, b: number) => a - b); // Uint8Array [1, 2, 3, 4, 5]
+uint8Array.sort((a: number, b: number) => b - a); // Uint8Array [5, 4, 3, 2, 1]
 ```
 
 ## subarray
 subarray(begin?: number, end?: number): Uint8Array
 
-Truncates an array from a specified position and returns a new ArkTS Uint8Array based on the same ArkTS ArrayBuffer.
+Extracts an array from the specified position and returns a new ArkTS Uint8Array object based on the same ArkTS ArrayBuffer. Unlike [slice](#slice), this method does not generate an independent copy and affects the original ArkTS Uint8Array object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1277,23 +1224,22 @@ Truncates an array from a specified position and returns a new ArkTS Uint8Array 
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint8Array | New ArkTS Uint8Array.|
+| Uint8Array | A new ArkTS Uint8Array object based on the original ArkTS Uint8Array, truncated from the specified position. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID|            Error Message                              |
 | -------- | -------------------------------------------------|
-| 401      | Parameter error.                                 |
 | 10200011 | The subarray method cannot be bound.             |
 | 10200201 | Concurrent modification error.               |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-let subArray: collections.Uint8Array = array.subarray(); // Uint8Array [1, 2, 3, 4, 5]
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+let subArray: collections.Uint8Array = uint8Array.subarray(); // Uint8Array [1, 2, 3, 4, 5]
 subArray.set([10, 20, 30]); // Uint8Array [10, 20, 30, 4, 5]
 ```
 
@@ -1319,27 +1265,26 @@ Returns the element at the given index. If no element is found, **undefined** is
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID|                       Error Message                   |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The at method cannot be bound.                   |
 | 10200201 | Concurrent modification error.               |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-console.info("element: " + array.at(2));  // element: 3
-console.info("element: " + array.at(-1)); // element: 5
-console.info("element: " + array.at(6));  // element: undefined
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+console.info(`element: ${uint8Array.at(2)}`);  // element: 3
+console.info(`element: ${uint8Array.at(-1)}`); // element: 5
+console.info(`element: ${uint8Array.at(6)}`);  // element: undefined
 ```
 
 ## includes
 includes(searchElement: number, fromIndex?: number): boolean
 
-Checks whether elements are contained in this ArkTS Uint8Array.
+Determines whether the ArkTS Uint8Array contains a specific element. Returns true if it does, and false otherwise.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1349,7 +1294,7 @@ Checks whether elements are contained in this ArkTS Uint8Array.
 | Name| Type  | Mandatory| Description                                     |
 | ------ | ------ | ---- | --------------------------------------- |
 | searchElement  | number | Yes  | Element to search for.|
-| fromIndex  | number | No | Index from which the search starts. If a negative number is passed in, it refers to the index of `fromIndex + Uint8Array.length`. The default value is **0**.|
+| fromIndex  | number | No  | The index to start searching from, with a default value of 0. If `fromIndex < 0`, the search starts from the position `fromIndex + Uint8Array.length` and proceeds from front to back. If the value of fromIndex causes the search interval to have no overlap with the array range, false is returned. |
 
 **Return value**
 
@@ -1357,30 +1302,28 @@ Checks whether elements are contained in this ArkTS Uint8Array.
 | ------- | ---------------------------------------------------------- |
 | boolean | Check result. The value **true** is returned if the element exists; otherwise, **false** is returned.|
 
-
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                     |
 | 10200011 | The includes method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3]);
-console.info("includes: " + array.includes(2));    // includes: true
-console.info("includes: " + array.includes(4));    // includes: false
-console.info("includes: " + array.includes(3, 3)); // includes: false
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3]);
+console.info(`includes: ${uint8Array.includes(2)}`);    // includes: true
+console.info(`includes: ${uint8Array.includes(4)}`);    // includes: false
+console.info(`includes: ${uint8Array.includes(3, 3)}`); // includes: false
 ```
 
 ## entries
 entries(): IterableIterator\<[number, number]>
 
-Returns an iterator object that contains the key-value pair of each element in this ArkTS Uint8Array.
+Returns a new iterator object that contains the key-value pairs of each element in the ArkTS Uint8Array. During iteration, methods that change the content of the ArkTS Uint8Array must not be used.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1390,11 +1333,11 @@ Returns an iterator object that contains the key-value pair of each element in t
 
 | Type        | Description     |
 | ------------ | --------- |
-| IterableIterator\<[number, number]>| Iterator object.|
+| IterableIterator\<[number, number]>| An iterator object containing the key-value pair of each element in the ArkTS Uint8Array. |
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
@@ -1404,17 +1347,17 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([11, 22, 33]);
-let iterator: IterableIterator<[number, number]> = array.entries();
-console.info("value: " + iterator.next().value); // value: 0,11
-console.info("value: " + iterator.next().value); // value: 1,22
-console.info("value: " + iterator.next().value); // value: 2,33
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([11, 22, 33]);
+let iterator: IterableIterator<[number, number]> = uint8Array.entries();
+console.info(`value: ${iterator.next().value}`); // value: 0,11
+console.info(`value: ${iterator.next().value}`); // value: 1,22
+console.info(`value: ${iterator.next().value}`); // value: 2,33
 ```
 
 ## keys
 keys(): IterableIterator\<number>
 
-Returns an iterator object that contains the key (index) of each element in this ArkTS Uint8Array.
+Returns a new iterator object that contains the keys (indices) of each element in the ArkTS Uint8Array. During iteration, methods that change the content of the ArkTS Uint8Array must not be used.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1424,11 +1367,11 @@ Returns an iterator object that contains the key (index) of each element in this
 
 | Type        | Description     |
 | ------------ | --------- |
-| IterableIterator\<number> | Iterator object.|
+| IterableIterator\<number> | An iterator object containing the key (index) of each element in the ArkTS Uint8Array.|
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
@@ -1438,17 +1381,17 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-let iterator: IterableIterator<number> = array.keys();
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+let iterator: IterableIterator<number> = uint8Array.keys();
 for (const key of iterator) {
-  console.info("" + key); // 0, 1, 2, 3, and 4 are returned in sequence.
+  console.info(`${key}`); // Output 0,1,2,3,4 in sequence
 }
 ```
 
 ## values
 values(): IterableIterator\<number>
 
-Returns an iterator object that contains the value of each element in this ArkTS Uint8Array.
+Returns a new iterator object that contains the values of each element in the ArkTS Uint8Array. During iteration, methods that change the content of the ArkTS Uint8Array must not be used.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1458,11 +1401,11 @@ Returns an iterator object that contains the value of each element in this ArkTS
 
 | Type        | Description     |
 | ------------ | --------- |
-| IterableIterator\<number> | Iterator object.|
+| IterableIterator\<number> | An iterator object containing the value of each element in ArkTS Uint8Array.|
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
@@ -1472,10 +1415,10 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
-let iterator: IterableIterator<number> = array.values();
+let uint8Array: collections.Uint8Array = collections.Uint8Array.from([1, 2, 3, 4, 5]);
+let iterator: IterableIterator<number> = uint8Array.values();
 for (const value of iterator) {
-  console.info("" + value); // 1, 2, 3, 4, and 5 are returned in sequence.
+  console.info(`${value}`); // Output 1,2,3,4,5 in sequence.
 }
 ```
 
@@ -1483,11 +1426,11 @@ for (const value of iterator) {
 
 [Symbol.iterator]\(): IterableIterator&lt;number&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator object for iterating over the value of each element in the ArkTS Uint8Array. During iteration, methods that change the content of the ArkTS Uint8Array must not be used.
 
 > **NOTE**
 >
-> This API cannot be used in .ets files.
+> This API is not supported in .ets files (unlike the other iterator methods in this document, which do not have this restriction).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1497,11 +1440,11 @@ Returns an iterator, each item of which is a JavaScript object.
 
 | Type                     | Description            |
 | ------------------------- | ---------------- |
-| IterableIterator&lt;number&gt; | Iterator obtained.|
+| IterableIterator&lt;number&gt; | Iterator object containing the value of each element. |
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language base library error codes](errorcode-utils.md).
 
 | ID| Error Message                                   |
 | -------- | ------------------------------------------- |
@@ -1521,7 +1464,7 @@ for (let item of uint8Array) {
 
 &#91;index: number&#93;: number
 
-Returns the element at a given index in this Uint8Array.
+Returns the element at the specified index in the ArkTS Uint8Array.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1529,17 +1472,17 @@ Returns the element at a given index in this Uint8Array.
 
 | Name   | Type  | Mandatory| Description                    |
 | ----- | ------ | ---- | -------------------------- |
-| index | number | Yes  | Index of the element. The index starts from zero.|
+| index | number | Yes | Zero-based index of the desired element, an integer in the value range from 0 to Uint8Array.length-1. Returns undefined when out of range or not an integer. |
 
 **Return value**
 
 | Type  | Description                |
 | ----- | ---------------------|
-| number | Number data type.|
+| number | Element at the specified index. Returns undefined if the index is out of the array range. |
 
 **Example**
 
 ```ts
 let uint8Array = collections.Uint8Array.from([1, 2, 4]);
-console.info("Element at index 1: ", uint8Array[1]);
+console.info(`Element at index 1: ${uint8Array[1]}`);
 ```
