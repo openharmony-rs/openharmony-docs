@@ -149,7 +149,7 @@ status: active
 
    回调注册可参考AudioCaptureSampleJS页面代码中的`listen_AudioCapturer`。
 
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->   
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
